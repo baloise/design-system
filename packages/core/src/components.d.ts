@@ -24,11 +24,6 @@ export namespace Components {
          */
         "buttonColor": DS.ButtonColor;
         /**
-          * If `true` the button is expanded to full width. Only applies if `button` is `true`.
-          * @default false
-         */
-        "buttonExpanded": boolean;
-        /**
           * BalIcon of the close trigger button
          */
         "buttonIconClose"?: string;
@@ -48,6 +43,11 @@ export namespace Components {
           * The size of the button. Only applies if `button` is `true`.
          */
         "buttonSize"?: DS.ButtonSize;
+        /**
+          * If `true` the button is expanded to full width. Only applies if `button` is `true`.
+          * @default false
+         */
+        "buttonWide": boolean;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
@@ -187,11 +187,6 @@ export namespace Components {
          */
         "elementType": DS.ButtonElementType;
         /**
-          * If `true` the button has a full width
-          * @default false
-         */
-        "expanded": boolean;
-        /**
           * If `true` the button has no padding and a reduced height
           * @default false
          */
@@ -270,6 +265,11 @@ export namespace Components {
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
+        /**
+          * If `true` the button has a full width
+          * @default false
+         */
+        "wide": boolean;
     }
     interface DsButtonGroup {
         /**
@@ -282,15 +282,15 @@ export namespace Components {
          */
         "direction": DS.ButtonGroupDirection;
         /**
-          * If `true` the buttons will expand to fill the available space on mobile.
-          * @default false
-         */
-        "expanded": boolean;
-        /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
          */
         "reverse": boolean;
+        /**
+          * If `true` the buttons will expand to fill the available space on mobile.
+          * @default false
+         */
+        "wide": boolean;
     }
     interface DsCard {
         /**
@@ -1206,6 +1206,24 @@ export namespace Components {
           * @default null
          */
         "value": number | null;
+    }
+    interface DsProgressBar {
+        /**
+          * The background color
+          * @default 'dark'
+         */
+        "background": DS.ProgressBarBackground;
+        /**
+          * The progress bar color
+          * @default 'primary'
+         */
+        "color": DS.ProgressBarColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+          * @default 0
+         */
+        "value": number;
     }
     interface DsRadio {
         /**
@@ -2368,6 +2386,12 @@ declare global {
         prototype: HTMLDsNumberInputElement;
         new (): HTMLDsNumberInputElement;
     };
+    interface HTMLDsProgressBarElement extends Components.DsProgressBar, HTMLStencilElement {
+    }
+    var HTMLDsProgressBarElement: {
+        prototype: HTMLDsProgressBarElement;
+        new (): HTMLDsProgressBarElement;
+    };
     interface HTMLDsRadioElementEventMap {
         "dsFocus": DS.RadioFocusDetail;
         "dsBlur": DS.RadioBlurDetail;
@@ -2598,6 +2622,7 @@ declare global {
         "ds-logo": HTMLDsLogoElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
+        "ds-progress-bar": HTMLDsProgressBarElement;
         "ds-radio": HTMLDsRadioElement;
         "ds-radio-group": HTMLDsRadioGroupElement;
         "ds-segment": HTMLDsSegmentElement;
@@ -2627,11 +2652,6 @@ declare namespace LocalJSX {
          */
         "buttonColor"?: DS.ButtonColor;
         /**
-          * If `true` the button is expanded to full width. Only applies if `button` is `true`.
-          * @default false
-         */
-        "buttonExpanded"?: boolean;
-        /**
           * BalIcon of the close trigger button
          */
         "buttonIconClose"?: string;
@@ -2651,6 +2671,11 @@ declare namespace LocalJSX {
           * The size of the button. Only applies if `button` is `true`.
          */
         "buttonSize"?: DS.ButtonSize;
+        /**
+          * If `true` the button is expanded to full width. Only applies if `button` is `true`.
+          * @default false
+         */
+        "buttonWide"?: boolean;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
          */
@@ -2801,11 +2826,6 @@ declare namespace LocalJSX {
          */
         "elementType"?: DS.ButtonElementType;
         /**
-          * If `true` the button has a full width
-          * @default false
-         */
-        "expanded"?: boolean;
-        /**
           * If `true` the button has no padding and a reduced height
           * @default false
          */
@@ -2908,6 +2928,11 @@ declare namespace LocalJSX {
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
+        /**
+          * If `true` the button has a full width
+          * @default false
+         */
+        "wide"?: boolean;
     }
     interface DsButtonGroup {
         /**
@@ -2920,15 +2945,15 @@ declare namespace LocalJSX {
          */
         "direction"?: DS.ButtonGroupDirection;
         /**
-          * If `true` the buttons will expand to fill the available space on mobile.
-          * @default false
-         */
-        "expanded"?: boolean;
-        /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
          */
         "reverse"?: boolean;
+        /**
+          * If `true` the buttons will expand to fill the available space on mobile.
+          * @default false
+         */
+        "wide"?: boolean;
     }
     interface DsCard {
         /**
@@ -3922,6 +3947,23 @@ declare namespace LocalJSX {
          */
         "value"?: number | null;
     }
+    interface DsProgressBar {
+        /**
+          * The background color
+          * @default 'dark'
+         */
+        "background"?: DS.ProgressBarBackground;
+        /**
+          * The progress bar color
+          * @default 'primary'
+         */
+        "color"?: DS.ProgressBarColor;
+        /**
+          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+          * @default 0
+         */
+        "value"?: number;
+    }
     interface DsRadio {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -4844,6 +4886,7 @@ declare namespace LocalJSX {
         "ds-logo": DsLogo;
         "ds-notification": DsNotification;
         "ds-number-input": DsNumberInput;
+        "ds-progress-bar": DsProgressBar;
         "ds-radio": DsRadio;
         "ds-radio-group": DsRadioGroup;
         "ds-segment": DsSegment;
@@ -4891,6 +4934,7 @@ declare module "@stencil/core" {
             "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
             "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
+            "ds-progress-bar": LocalJSX.DsProgressBar & JSXBase.HTMLAttributes<HTMLDsProgressBarElement>;
             "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
             "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
             "ds-segment": LocalJSX.DsSegment & JSXBase.HTMLAttributes<HTMLDsSegmentElement>;

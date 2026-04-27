@@ -153,35 +153,6 @@
           "setter": false
         },
         {
-          "name": "buttonExpanded",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "button-expanded",
-          "reflectToAttr": false,
-          "docs": "If `true` the button is expanded to full width. Only applies if `button` is `true`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "buttonIconClose",
           "type": "string | undefined",
           "complexType": {
@@ -328,6 +299,35 @@
             }
           ],
           "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "buttonWide",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "button-wide",
+          "reflectToAttr": false,
+          "docs": "If `true` the button is expanded to full width. Only applies if `button` is `true`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -1693,35 +1693,6 @@
           "setter": false
         },
         {
-          "name": "expanded",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "expanded",
-          "reflectToAttr": false,
-          "docs": "If `true` the button has a full width",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "flat",
           "type": "boolean",
           "complexType": {
@@ -2259,6 +2230,35 @@
           "required": false,
           "getter": false,
           "setter": false
+        },
+        {
+          "name": "wide",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "wide",
+          "reflectToAttr": false,
+          "docs": "If `true` the button has a full width",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -2482,7 +2482,7 @@
           "setter": false
         },
         {
-          "name": "expanded",
+          "name": "reverse",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -2490,9 +2490,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "expanded",
+          "attr": "reverse",
           "reflectToAttr": false,
-          "docs": "If `true` the buttons will expand to fill the available space on mobile.",
+          "docs": "If `true` the flex direction is used in reverse on mobile.",
           "docsTags": [
             {
               "name": "default",
@@ -2511,7 +2511,7 @@
           "setter": false
         },
         {
-          "name": "reverse",
+          "name": "wide",
           "type": "boolean",
           "complexType": {
             "original": "boolean",
@@ -2519,9 +2519,9 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "reverse",
+          "attr": "wide",
           "reflectToAttr": false,
-          "docs": "If `true` the flex direction is used in reverse on mobile.",
+          "docs": "If `true` the buttons will expand to fill the available space on mobile.",
           "docsTags": [
             {
               "name": "default",
@@ -10474,6 +10474,191 @@
           "passive": false
         }
       ]
+    },
+    {
+      "fileName": "progress-bar.tsx",
+      "tag": "ds-progress-bar",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "background",
+          "type": "\"dark\" | \"light\"",
+          "complexType": {
+            "original": "DS.ProgressBarBackground",
+            "resolved": "\"dark\" | \"light\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "background",
+          "reflectToAttr": false,
+          "docs": "The background color",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'dark'"
+            }
+          ],
+          "default": "'dark'",
+          "values": [
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"green\" | \"primary\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.ProgressBarColor",
+            "resolved": "\"green\" | \"primary\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "The progress bar color",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "The value of the bar in percentage. So min is 0 and 100 would be the max value.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "configChanged",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(state: DsConfigState) => Promise<void>",
+            "parameters": [
+              {
+                "name": "state",
+                "type": "DsConfigState",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "DsConfigState": {
+                "location": "import",
+                "path": "../../utils/config",
+                "id": "src/utils/config/index.ts::DsConfigState",
+                "referenceLocation": "DsConfigState"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "configChanged(state: DsConfigState) => Promise<void>",
+          "parameters": [
+            {
+              "name": "state",
+              "type": "DsConfigState",
+              "docs": ""
+            }
+          ],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "line",
+          "docs": ""
+        }
+      ],
+      "listeners": []
     },
     {
       "fileName": "radio.tsx",

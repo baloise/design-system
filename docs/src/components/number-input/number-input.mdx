@@ -73,21 +73,21 @@ Use semantic HTML so assistive technologies understand the form field's structur
 
 The `ds-number-input` element manages the following automatically:
 
-- **Label linking** — renders the \`<label>\` inside the Field component wrapper and links it to the input via \`for\` attribute
+- **Label linking** — renders the \`\<label>\` inside the Field component wrapper and links it to the input via \`for\` attribute
 - **`aria-describedby`** — links the input to the description element so screen readers announce hints and validation errors
 - **`aria-invalid`** — kept in sync with the \`invalid\` prop; added to both the input and description
 - **`aria-required`** — applied when the \`required\` prop is true so assistive tech announces the requirement
-- **`disabled` / `readonly` forwarding** — propagated from props to the native \`<input>\` element
+- **`disabled` / `readonly` forwarding** — propagated from props to the native \`\<input>\` element
 - **`inputmode="decimal"`** — set automatically to show numeric keyboards on mobile
-- **Form association** — uses \`ElementInternals\` to participate in native \`<form>\` submit and reset without extra markup
+- **Form association** — uses \`ElementInternals\` to participate in native \`\<form>\` submit and reset without extra markup
 - **Numeric validation** — rejects non-numeric characters in real time; applies \`min\`, \`max\`, and decimal precision constraints
 - **Locale-aware formatting** — automatically applies thousand separators and decimal separators based on user's locale and the \`region\` prop
 - **Suffix display** — appends currency or unit symbol (e.g. "CHF") to the formatted value after blur for clearer user intent
 
 ### References
 
-- [\`<label>\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
-- [\`<input type="text">\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text) — MDN
+- [\`label\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [\`input\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) — MDN
 - [\`inputmode\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) — MDN
 - [\`aria-describedby\`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) — MDN
 - [\`aria-invalid\`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — MDN

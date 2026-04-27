@@ -14164,6 +14164,157 @@
           }
         }
       }
+    },
+    "ProgressBar": {
+      "Background": {
+        "Light": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🔤 Text.Color.White}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:1",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Dark": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🎨 Background.Color.GreyLight}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:2",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Purple": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Purple.2}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:3",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Yellow": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Yellow.2}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:4",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Red": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Red.2}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:5",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Green": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.Green.2}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:6",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Line": {
+        "Radius": {
+          "$type": "number",
+          "$value": "{🏷️ Semantic.🔵 Radius.Rounded}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:372:7",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Color": {
+          "Primary": {
+            "$type": "color",
+            "$value": "{🏷️ Semantic.🎨 Background.Color.Primary}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:372:8",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "Purple": {
+            "$type": "color",
+            "$value": "{🧱 Primitive.🌈 Color.Purple.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:372:9",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "Yellow": {
+            "$type": "color",
+            "$value": "{🧱 Primitive.🌈 Color.Yellow.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:372:10",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "Red": {
+            "$type": "color",
+            "$value": "{🧱 Primitive.🌈 Color.Red.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:372:11",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "Green": {
+            "$type": "color",
+            "$value": "{🧱 Primitive.🌈 Color.Green.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:372:12",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          }
+        }
+      },
+      "Height": {
+        "$type": "number",
+        "$value": "0.25rem",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:372:13",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.isOverride": true
+        }
+      }
     }
   },
   "$extensions": {

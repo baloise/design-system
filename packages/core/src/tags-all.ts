@@ -25,6 +25,7 @@ export const tags = [
   "ds-logo",
   "ds-notification",
   "ds-number-input",
+  "ds-progress-bar",
   "ds-radio",
   "ds-radio-group",
   "ds-segment",

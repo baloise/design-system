@@ -7,17 +7,17 @@
 | Outline Shadow                   | Define it as a variable to overide the color                          | ✅     |
 | Playwright                       | Replace all Cypess test with Playwright                               | ✅     |
 | Default vs Base                  | Use Default for states with hover and active                          | ✅     |
-| FIGMA API                        | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
+| UI Icons change base color       | Change base color of svg to primary and not black                     | ✅     |
+| FullWidth,Expanded,Wide          | Stick with one nameing                                                | ✅     |
 | Modal                            | Use new native dialog API                                             | ⬜     |
 | Popup                            | Use new native popup API                                              | ⬜     |
+| FIGMA API                        | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
 | Sandbox                          | Use new sandbox api                                                   | ⬜     |
 | Brand Icons                      | Update brand icons                                                    | ⬜     |
 | Brand Icons API                  | Create a task to automate the update                                  | ⬜     |
-| Gap Analyses Material            | Check Components use cases                                            | ⬜     |
 | NPM Updates                      | Check Vurnabilites and Renovate                                       | ⬜     |
-| UI Icons change base color       | Change base color of svg to primary and not black                     | ✅     |
+| Gap Analyses Material            | Check Components use cases                                            | ⬜     |
 | Anuglar React                    | Add frameworks back after migrating too shadow dom                    | ⬜     |
-| FullWidth,Expanded,Wide          | Stick with one nameing                                                | ⬜     |
 | Check min height of 48px to 40px | Verify if we can reduce the standard height 0f 48px to 40px           | ⬜     |
 
 ## Componentes
@@ -57,15 +57,15 @@
 | segment             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | app                 | WC     | ✅     | ⬜   | ✅     | ⬜   | ⬜     | ⬜        |
 | number-input        | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| modal               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| progress-bar        | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | pagination          | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| tabs                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| steps               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| table               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| modal               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | popover             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | tooltip             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | hint                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| tabs                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| progress-bar        | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| steps               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| table               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | data                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | time-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | footer              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
