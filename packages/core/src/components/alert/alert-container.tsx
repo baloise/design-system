@@ -1,8 +1,6 @@
 import { Element, Component, Method, h, Host, Prop, ComponentInterface, State } from '@stencil/core'
-import { raf, wait } from '../../utils/helpers'
+import { raf, wait, createPausableTimer, Loggable, Logger, type LogInstance, PausableTimer } from '@utils'
 import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-container.interfaces'
-import { createPausableTimer, PausableTimer } from '../../utils/timer'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-alert-container',

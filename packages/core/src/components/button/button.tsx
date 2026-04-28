@@ -1,9 +1,14 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { ariaBooleanToString } from '../../utils/aria'
-import { Attributes, inheritAttributes } from '../../utils/attributes'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import {
+  ariaBooleanToString,
+  inheritAttributes,
+  normalizeDeprecatedTShirtSize,
+  Loggable,
+  Logger,
+  type LogInstance,
+  type Attributes,
+} from '@utils'
 
 @Component({
   tag: 'ds-button',

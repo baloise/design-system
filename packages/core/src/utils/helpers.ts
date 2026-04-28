@@ -1,7 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from './browser'
-import { DsConfig, useDsConfig } from '../global'
+import { DsConfig, useDsConfig } from '@global'
 import {
   IconClock,
   IconClose,
@@ -40,7 +40,7 @@ import {
   IconAlert,
   IconBell,
   IconInformation,
-} from '../global'
+} from '@global'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any

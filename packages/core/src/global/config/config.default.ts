@@ -38,7 +38,7 @@ import {
   IconBell,
   IconInformation,
 } from '../constants/icons.constant'
-import { defaultLoggerConfig } from '../../utils'
+import { defaultLoggerConfig } from '@utils'
 import type { DsConfigState } from './config.types'
 
 export const defaultIcons = {

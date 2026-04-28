@@ -12,9 +12,16 @@ import {
   Watch,
   h,
 } from '@stencil/core'
-import { DsBreakpointObserver, DsBreakpoints, ListenToBreakpoints, dsBreakpoints } from '../../utils/breakpoints'
-import { DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '../../global'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import {
+  DsBreakpointObserver,
+  DsBreakpoints,
+  ListenToBreakpoints,
+  dsBreakpoints,
+  Loggable,
+  Logger,
+  LogInstance,
+} from '@utils'
+import { DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
 import { generatePaginationControl } from './pagination.util'
 
@@ -194,7 +201,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
   private renderEllipsisElement() {
     return (
       <li aria-hidden="true">
-        <div id="ellipsis">
+        <div id="ellipsis" part="ellipsis">
           <span>&hellip;</span>
         </div>
       </li>
@@ -208,6 +215,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
       return (
         <li>
           <button
+            part="page"
             class={{
               'dot': true,
               'is-active': isActive,
@@ -224,6 +232,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
     return (
       <li>
         <button
+          part="page"
           class={{
             'button': true,
             'is-square': true,
@@ -278,10 +287,11 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
           [`is-align-${this.align}`]: this.align !== '',
         }}
       >
-        <nav class={{}} id="nav" role="navigation" aria-label={labelControlTitle}>
+        <nav class={{}} id="nav" part="navigation" role="navigation" aria-label={labelControlTitle}>
           {!this.disabled && (
             <button
               id="previous"
+              part="previous"
               aria-label={leftControlTitle}
               title={leftControlTitle}
               class={{
@@ -301,6 +311,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
           {!this.disabled && (
             <button
               id="next"
+              part="next"
               aria-label={rightControlTitle}
               title={rightControlTitle}
               class={{
@@ -318,7 +329,9 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
             </button>
           )}
           {hasBasicNavigationButtons ? (
-            <ul class={{ dots: this.variant === 'dots' }}>{items}</ul>
+            <ul class={{ dots: this.variant === 'dots' }} part="list">
+              {items}
+            </ul>
           ) : (
             <DotsWithText></DotsWithText>
           )}

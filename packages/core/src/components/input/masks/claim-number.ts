@@ -1,5 +1,5 @@
-import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '../../../global'
-import { stopEventBubbling } from '../../../utils/form-control'
+import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '@global'
+import { stopEventBubbling } from '@utils'
 import { InputMaskFormatterInterface } from '../input.mask'
 
 export class ClaimNumber implements InputMaskFormatterInterface {

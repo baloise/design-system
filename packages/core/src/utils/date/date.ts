@@ -1,5 +1,5 @@
 import { DateTime, Info, Settings } from 'luxon'
-import { useDsConfig } from '../../global'
+import { useDsConfig } from '@global'
 import { dateSeparator } from './date.helpers'
 
 export interface DsDateInfoOptions {

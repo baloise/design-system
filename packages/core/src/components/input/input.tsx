@@ -13,15 +13,21 @@ import {
   Watch,
 } from '@stencil/core'
 import isNil from 'lodash/isNil'
-import { inheritAttributes } from '../../utils/attributes'
-import { ACTION_KEYS, isCtrlOrCommandKey } from '../../global'
-import { FormControlInterface, FormControl, stopEventBubbling } from '../../utils/form-control'
-import { debounceEvent } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import {
+  inheritAttributes,
+  FormControlInterface,
+  FormControl,
+  stopEventBubbling,
+  debounceEvent,
+  Loggable,
+  Logger,
+  type LogInstance,
+} from '@utils'
+import { ACTION_KEYS, isCtrlOrCommandKey } from '@global'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../global'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from './field.util'
 
 @Component({

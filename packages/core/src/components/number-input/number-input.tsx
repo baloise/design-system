@@ -15,12 +15,19 @@ import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import isEmpty from 'lodash/isEmpty'
 import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
-import { inheritAttributes } from '../../utils/attributes'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../global'
-import { FormControl, FormControlInterface, stopEventBubbling } from '../../utils/form-control'
-import { debounceEvent } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { getDecimalSeparator, getThousandSeparator } from '../../utils/number'
+import {
+  inheritAttributes,
+  FormControl,
+  FormControlInterface,
+  stopEventBubbling,
+  debounceEvent,
+  Loggable,
+  Logger,
+  type LogInstance,
+  getDecimalSeparator,
+  getThousandSeparator,
+} from '@utils'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
   isNotNumber,
   mapDecimalSeparator,

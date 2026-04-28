@@ -11,8 +11,7 @@ import {
   Prop,
   State,
 } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { Attributes, inheritAttributes } from '../../utils/attributes'
+import { Loggable, Logger, type LogInstance, inheritAttributes, type Attributes } from '@utils'
 
 @Component({
   tag: 'ds-toggle',

@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-shape',

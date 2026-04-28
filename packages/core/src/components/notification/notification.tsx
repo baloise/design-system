@@ -10,9 +10,7 @@ import {
   ComponentInterface,
   State,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../utils/form-control'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { stopEventBubbling, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-notification',

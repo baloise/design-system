@@ -2,7 +2,7 @@ import { Config } from './config'
 import { DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
 import { DsConfigObserver } from './observable/observer'
 
-import { dsBrowser } from '../../utils'
+import { dsBrowser } from '@utils'
 
 export type DsConfigChangeFn = (config: DsConfigState) => void
 

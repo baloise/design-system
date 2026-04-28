@@ -1,9 +1,8 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig } from '../../global'
-import { raf, rOnLoad } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { raf, rOnLoad, Loggable, Logger, type LogInstance } from '@utils'
+import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig } from '@global'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 

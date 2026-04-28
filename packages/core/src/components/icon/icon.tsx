@@ -1,10 +1,8 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '../../global'
-import { sanitizeSvg } from '../../utils/svg'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { sanitizeSvg, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
 
 @Component({
   tag: 'ds-icon',

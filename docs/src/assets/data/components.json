@@ -10948,7 +10948,32 @@
       ],
       "styles": [],
       "slots": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "ellipsis",
+          "docs": ""
+        },
+        {
+          "name": "list",
+          "docs": ""
+        },
+        {
+          "name": "navigation",
+          "docs": ""
+        },
+        {
+          "name": "next",
+          "docs": ""
+        },
+        {
+          "name": "page",
+          "docs": ""
+        },
+        {
+          "name": "previous",
+          "docs": ""
+        }
+      ],
       "listeners": []
     },
     {
@@ -11106,7 +11131,7 @@
               },
               "DsConfigState": {
                 "location": "import",
-                "path": "../../global",
+                "path": "@global",
                 "id": "src/global/index.ts::DsConfigState",
                 "referenceLocation": "DsConfigState"
               }

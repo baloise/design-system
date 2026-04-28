@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-tag-group',

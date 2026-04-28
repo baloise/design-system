@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser } from '../../utils/browser'
+import { dsBrowser, Loggable, Logger, type LogInstance } from '@utils'
 import {
   HEADING_COLORS,
   HEADING_ORDER,
@@ -10,7 +10,6 @@ import {
   HeadingSize,
   HeadingTag,
 } from './heading.const'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-heading',

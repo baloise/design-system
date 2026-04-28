@@ -1,11 +1,8 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser } from '../../utils/browser'
-import { updateDsAllowedLanguages, updateDsAnimated, updateDsLogger } from '../../global'
-import { dsDevice } from '../../utils/device'
+import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Loggable, Logger, type LogInstance } from '@utils'
+import { updateDsAllowedLanguages, updateDsAnimated, updateDsLogger } from '@global'
 import { startFocusVisible } from './app.focus.util'
-import { debounce, rIC, rOnLoad } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'ds-app',

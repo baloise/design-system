@@ -11,13 +11,10 @@ import {
   Prop,
   State,
 } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { Loggable, Logger, type LogInstance, stopEventBubbling, isDescendant, ListenToResize, ResizeInfo } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../global'
-import { stopEventBubbling } from '../../../utils/form-control'
-import { isDescendant } from '../../../utils/helpers'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { SegmentItemInterface } from '../segment-item.type'
-import { ListenToResize, ResizeInfo } from '../../../utils/resize'
 
 @Component({
   tag: 'ds-segment',

@@ -1,10 +1,18 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, h } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import {
+  Loggable,
+  Logger,
+  type LogInstance,
+  DsBreakpointObserver,
+  ListenToBreakpoints,
+  DsBreakpoints,
+  raf,
+  WindowResizeObserver,
+  ListenToWindowResize,
+  initialBreakpoints,
+} from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { DsBreakpointObserver, ListenToBreakpoints, initialBreakpoints, DsBreakpoints } from '../../utils/breakpoints'
-import type { DsConfigObserver, DsConfigState } from '../../global'
-import { raf } from '../../utils/helpers'
-import { WindowResizeObserver, ListenToWindowResize } from '../../utils/resize'
+import type { DsConfigObserver, DsConfigState } from '@global'
 
 @Component({
   tag: 'ds-progress-bar',

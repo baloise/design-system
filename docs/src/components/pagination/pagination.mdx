@@ -1,6 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as PaginationStories from './pagination.stories'
+import PaginationParts from './pagination.parts.svg'
 
 <Meta of={PaginationStories} />
 
@@ -54,6 +55,19 @@ import * as PaginationStories from './pagination.stories'
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+## Parts
+
+<img src={PaginationParts} alt="Pagination parts diagram" />
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `navigation` | `<nav>` | Flex row wrapping all controls. Alignment applied here. |
+| `previous` | `<button>` | Square icon button. Navigates to the previous page. |
+| `list` | `<ul>` | Flex row of page items with responsive gap. |
+| `page` | `<button>` | Page number button. Transparent background when inactive, primary fill when active (current page). |
+| `ellipsis` | `<div>` | Skipped-range indicator between page groups. |
+| `next` | `<button>` | Square icon button. Navigates to the next page. |
 
 ## CSS Variables
 

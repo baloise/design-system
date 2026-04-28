@@ -12,11 +12,9 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { Loggable, Logger, type LogInstance, stopEventBubbling, hasTagName, isDescendant } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../global'
-import { stopEventBubbling } from '../../../utils/form-control'
-import { hasTagName, isDescendant } from '../../../utils/helpers'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 
 @Component({
   tag: 'ds-radio-group',

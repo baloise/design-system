@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DsConfigState } from "./global";
+import { DsConfigState } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-export { DsConfigState } from "./global";
+export { DsConfigState } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export namespace Components {
     interface DsAccordion {

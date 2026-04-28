@@ -12,11 +12,16 @@ import {
   Watch,
 } from '@stencil/core'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
-import { inheritAttributes } from '../../utils/attributes'
-import { FormControl, FormControlInterface } from '../../utils/form-control'
-import { debounceEvent } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../global'
+import {
+  inheritAttributes,
+  FormControl,
+  FormControlInterface,
+  debounceEvent,
+  Loggable,
+  Logger,
+  type LogInstance,
+} from '@utils'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
 
 @Component({

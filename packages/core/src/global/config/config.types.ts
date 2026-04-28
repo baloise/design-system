@@ -1,4 +1,4 @@
-import { DsLogger } from '../../utils'
+import { DsLogger } from '@utils'
 
 export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'
 

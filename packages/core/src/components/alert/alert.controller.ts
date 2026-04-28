@@ -1,4 +1,4 @@
-import { getAppRoot } from '../../utils/helpers'
+import { getAppRoot } from '@utils'
 import { Alert, AlertType } from './alert-container.interfaces'
 
 export type { Alert } from './alert-container.interfaces'

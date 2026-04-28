@@ -1,12 +1,19 @@
 import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { DsBreakpointObserver, DsBreakpoints, dsBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../global'
-import { rOnLoad } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import {
+  DsBreakpointObserver,
+  DsBreakpoints,
+  dsBreakpoints,
+  ListenToBreakpoints,
+  rOnLoad,
+  normalizeDeprecatedTShirtSize,
+  Loggable,
+  Logger,
+  type LogInstance,
+} from '@utils'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 

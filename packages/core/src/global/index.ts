@@ -7,6 +7,8 @@ export * from './constants/tags.constant'
 // Config
 export * from './config'
 
+// Initialize
+export { initializeDesignSystem } from './initialize'
 import { initializeDesignSystem } from './initialize'
 
 export default function () {

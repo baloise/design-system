@@ -11,12 +11,9 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../../utils/form-control'
+import { stopEventBubbling, raf, sanitizeSvg, Loggable, Logger, type LogInstance } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
-import { raf } from '../../../utils/helpers'
-import { sanitizeSvg } from '../../../utils/svg'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../global'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 
 @Component({
   tag: 'ds-toast',

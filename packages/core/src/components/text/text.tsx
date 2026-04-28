@@ -1,6 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { ElementStateInfo } from '../../utils/element-states'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { ElementStateInfo, Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-text',

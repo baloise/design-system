@@ -1,7 +1,7 @@
 import { h, Host, FunctionalComponent } from '@stencil/core'
-import { ariaBooleanToString } from '../../utils/aria'
+import { ariaBooleanToString } from '@utils'
 import { I18nDsLabel } from '../label/label.i18n'
-import { DsLanguage } from '../../global'
+import { DsLanguage } from '@global'
 
 export type FieldInterface = {
   color: DS.InputColor

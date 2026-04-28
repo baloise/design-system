@@ -1,6 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
+import { Loggable, Logger, type LogInstance, normalizeDeprecatedTShirtSize } from '@utils'
 
 @Component({
   tag: 'ds-stack',

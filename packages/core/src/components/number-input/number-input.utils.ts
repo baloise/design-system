@@ -1,7 +1,7 @@
 import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
-import { ACTION_KEYS, NUMBER_KEYS } from '../../global'
-import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol, getThousandSeparator } from '../../utils/number'
+import { ACTION_KEYS, NUMBER_KEYS } from '@global'
+import { formatLocaleNumber, getDecimalSeparator, getNegativeSymbol, getThousandSeparator } from '@utils'
 
 function checkIfValueIsStringAndDoesNotHaveGermanFormat(val: any): boolean {
   return typeof val === 'string' && getThousandSeparator() !== '.'

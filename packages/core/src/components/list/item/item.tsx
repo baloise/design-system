@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { Event, EventEmitter, HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { Loggable, Logger, type LogInstance } from '@utils'
 
 type Attributes = {
   disabled?: boolean

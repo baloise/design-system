@@ -1,8 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { inheritAttributes } from '../../utils/attributes'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { inheritAttributes, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-tag',

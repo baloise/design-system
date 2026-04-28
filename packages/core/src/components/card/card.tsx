@@ -1,7 +1,6 @@
 import { Component, ComponentInterface, h, Host, Prop, Watch, Element } from '@stencil/core'
 import isEmpty from 'lodash/isEmpty'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-card',

@@ -1,4 +1,4 @@
-import { dsBrowser } from '../../utils'
+import { dsBrowser } from '@utils'
 import { config, configFromLocalStorage } from './config'
 
 import { DsConfig } from './config.types'

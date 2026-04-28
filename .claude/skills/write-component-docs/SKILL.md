@@ -19,7 +19,8 @@ digraph docs {
   "style.html has matching sections?" [shape=diamond];
   "Generate stories: HTML + WebComponent variants" [shape=box];
   "Generate stories: WebComponent only" [shape=box];
-  "Write stories.ts + .mdx" [shape=box];
+  "Generate parts SVG from tsx" [shape=box];
+  "Write stories.ts + .mdx + .parts.svg" [shape=box];
 
   "Read visual.html sections" -> "style.html exists?";
   "style.html exists?" -> "Read style.html sections" [label="yes"];
@@ -29,8 +30,9 @@ digraph docs {
   "User selects stories" -> "style.html has matching sections?" [label="for each"];
   "style.html has matching sections?" -> "Generate stories: HTML + WebComponent variants" [label="yes"];
   "style.html has matching sections?" -> "Generate stories: WebComponent only" [label="no"];
-  "Generate stories: HTML + WebComponent variants" -> "Write stories.ts + .mdx";
-  "Generate stories: WebComponent only" -> "Write stories.ts + .mdx";
+  "Generate stories: HTML + WebComponent variants" -> "Generate parts SVG from tsx";
+  "Generate stories: WebComponent only" -> "Generate parts SVG from tsx";
+  "Generate parts SVG from tsx" -> "Write stories.ts + .mdx + .parts.svg";
 }
 ```
 
@@ -130,6 +132,67 @@ For each selected section (after basic):
 
 Inner HTML comes directly from the respective HTML file section — copy it verbatim, stripping only the outer `<section>` wrapper and `<span>` label.
 
+## Step 3.5 — Generate `<component>.parts.svg`
+
+Read `packages/core/src/components/<component>/<component>.tsx` and collect every `part="…"` attribute value, the HTML element it sits on, and its nesting position inside `render()`.
+
+### Color assignment (design-token primitives)
+
+Assign one of four color families by conceptual role. Each family provides: zone bg (shade 1), zone stroke (shade 3–4), badge fill (shade 5), badge text = white.
+
+| Role                                               | Color      | bg        | stroke    | badge     |
+| -------------------------------------------------- | ---------- | --------- | --------- | --------- |
+| Host wrapper (`ds-*`)                              | **Purple** | `#F9F3FF` | `#B8B2FF` | `#9F52CC` |
+| Outermost container part                           | **Yellow** | `#FFF9E8` | `#FFBE19` | `#FA9319` |
+| List / content container part                      | **Green**  | `#E9FBF7` | `#21D9AC` | `#00B28F` |
+| Interactive controls (buttons, inputs, indicators) | **Red**    | `#FFEEF1` | `#FF596F` | `#D9304C` |
+
+If fewer than four roles exist, skip Red and use Purple → Yellow → Green. Part name text colour in the reference table matches the badge colour (shade 5 for readability on white).
+
+Additional shades for element states:
+
+- Inactive control: white bg, Green-3 stroke `#94E3D4`
+- Active/selected control: Green-5 fill `#00B28F`, white text
+- Muted indicator (ellipsis etc.): shade-1 bg + shade-2 stroke of its family
+
+### SVG layout rules
+
+- Canvas width: **880px**. Height: calculated (host zone + callout area only — no table).
+- **No title, no table** — the title `## Parts` and the reference table are written in the MDX file.
+- Nested container parts render as dashed-border rectangles, innermost first.
+- Each zone has a pill badge (`part="name"`) anchored to its top-left border edge.
+- Leaf parts (buttons, divs) render as individual element boxes inside their parent zone.
+- If a leaf part has two visual states (active/inactive), show both side by side. Drop a dashed callout line from each to a pill label below: `part="name" inactive` / `part="name" active`.
+
+### SVG structure template
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Design token primitives:
+  Purple  1:#F9F3FF  2:#E1D9FF  3:#B8B2FF  5:#9F52CC  6:#6C2273
+  Yellow  1:#FFF9E8  2:#FFECBC  3:#FAE052  4:#FFBE19  5:#FA9319  6:#B24A00
+  Red     1:#FFEEF1  2:#FFD7D7  3:#FFACA6  4:#FF596F  5:#D9304C  6:#99172D
+  Green   1:#E9FBF7  2:#CBF2EC  3:#94E3D4  4:#21D9AC  5:#00B28F  6:#1B5951
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="{H}" viewBox="0 0 880 {H}">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect width="880" height="{H}" fill="#ffffff"/>
+
+  <!-- host zone (Purple) -->
+  <!-- container part zones (Yellow, Green) -->
+  <!-- leaf part boxes (Red for controls, Green for list items) -->
+  <!-- callout lines + state pills (when applicable) -->
+  <!-- NO table — table goes in the MDX as markdown -->
+</svg>
+```
+
+Write the finished SVG to `docs/src/components/<component>/<component>.parts.svg`.
+
 ## Step 4 — Generate ONE `<component>.mdx`
 
 **One file. All selected story Canvas blocks go inside it as sections.**
@@ -195,6 +258,12 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
+## Parts
+
+import <ComponentName>Parts from './<component>.parts.svg'
+
+<img src={<ComponentName>Parts} alt="<ComponentName> parts diagram" />
+
 ## CSS Variables
 
 <TokenOverview component="<component-name>" />
@@ -244,11 +313,12 @@ After generating the MDX file, immediately invoke the `add-component-a11y-docs` 
 - `StoryFactory<Args>(meta)` returns the `Story()` helper
 - Story inner HTML should be the raw section content, not wrapped in `<section>`
 
-## Output — exactly two files per component
+## Output — exactly three files per component
 
-| File                                                     | Contents                                                                               |
-| -------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `docs/src/components/<component>/<component>.stories.ts` | `meta` default export + ALL selected story named exports                               |
-| `docs/src/components/<component>/<component>.mdx`        | Banner, BasicStoryTabs/Canvas, ALL selected story sections, API + TokenOverview footer |
+| File                                                     | Contents                                                                                     |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `docs/src/components/<component>/<component>.stories.ts` | `meta` default export + ALL selected story named exports                                     |
+| `docs/src/components/<component>/<component>.parts.svg`  | Parts anatomy diagram (880px, no title, token primitive colours, Part/Element/Purpose table) |
+| `docs/src/components/<component>/<component>.mdx`        | Banner, BasicStoryTabs/Canvas, story sections, API, Parts diagram, TokenOverview, footer     |
 
 **Never create separate files per story.** Create the `docs/src/components/<component>/` directory if it doesn't exist. Do NOT create or edit `api.md` (auto-generated by Stencil).

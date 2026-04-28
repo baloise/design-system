@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Host, h } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { Loggable, Logger, LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-card-content',

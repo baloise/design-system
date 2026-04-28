@@ -1,7 +1,6 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-list',

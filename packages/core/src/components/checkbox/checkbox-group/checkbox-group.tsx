@@ -12,12 +12,9 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../global'
-import { stopEventBubbling } from '../../../utils/form-control'
-import { hasTagName, isDescendant } from '../../../utils/helpers'
-import { areArraysEqual } from '../../../utils/array'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import { Loggable, Logger, LogInstance, hasTagName, isDescendant, stopEventBubbling, areArraysEqual } from '@utils'
 
 @Component({
   tag: 'ds-checkbox-group',

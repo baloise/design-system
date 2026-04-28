@@ -11,12 +11,19 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { DsBreakpointObserver, DsBreakpoints, ListenToBreakpoints, dsBreakpoints } from '../../../utils/breakpoints'
-import { stopEventBubbling } from '../../../utils/form-control'
+import {
+  DsBreakpointObserver,
+  DsBreakpoints,
+  ListenToBreakpoints,
+  dsBreakpoints,
+  stopEventBubbling,
+  sanitizeSvg,
+  raf,
+  Loggable,
+  Logger,
+  type LogInstance,
+} from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
-import { sanitizeSvg } from '../../../utils/svg'
-import { raf } from '../../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'ds-snackbar',

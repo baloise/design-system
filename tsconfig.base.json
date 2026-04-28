@@ -25,6 +25,12 @@
       "dom"
     ],
     "paths": {
+      "@utils": [
+        "packages/core/src/utils/index.ts"
+      ],
+      "@global": [
+        "packages/core/src/global/index.ts"
+      ],
       "@baloise/ds-angular": [
         "packages/angular/src/index.ts"
       ],

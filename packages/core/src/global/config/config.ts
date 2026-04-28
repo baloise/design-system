@@ -1,4 +1,4 @@
-import { DsLogger } from '../../utils'
+import { DsLogger } from '@utils'
 import { DS_ANIMATION_KEY } from './config.const'
 import { defaultConfig } from './config.default'
 import { DsBrand, DsConfig, DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
