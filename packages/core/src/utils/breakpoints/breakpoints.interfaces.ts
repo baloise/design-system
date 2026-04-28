@@ -9,5 +9,5 @@ export type DsBreakpoints = {
 }
 
 export interface DsBreakpointObserver {
-  breakpointListener(breakpoints: DsBreakpoints): void
+  listenToBreakpoint(breakpoints: DsBreakpoints): void
 }

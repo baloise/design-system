@@ -1,30 +1,7 @@
 /**
  * Config
  */
-export {
-  attachToConfig,
-  DsConfig,
-  DsConfigObserver,
-  DsConfigState,
-  DsGermanLanguage,
-  DsIcons,
-  DsLanguage,
-  DsLuxembourgInternationalLanguage,
-  DsLuxembourgLanguage,
-  DsPlatformConfig,
-  DsRegion,
-  DsSwissLanguage,
-  defaultConfig,
-  detachFromConfig,
-  onDsConfigChange,
-  setupDsConfig,
-  updateDsAllowedLanguages,
-  updateDsAnimated,
-  updateDsIcons,
-  updateDsLanguage,
-  updateDsRegion,
-  useDsConfig,
-} from './utils/config'
+export * from './global/config'
 
 /**
  * Components
@@ -47,6 +24,7 @@ export { Components, JSX } from './components'
  */
 export * from './components/close/close.i18n'
 export * from './components/label/label.i18n'
+export * from './components/pagination/pagination.i18n'
 // export * from './components/date/date.i18n'
 // export * from './components/field/field-label/field-label.i18n'
 // export * from './components/input-stepper/input-stepper.i18n'
@@ -60,7 +38,7 @@ export * from './components/label/label.i18n'
 // export { newBalOptionValue, newBalSingleOptionValue } from './components/select/utils/option.util'
 // export { newBalStepOption } from './components/steps/step.util'
 // export { newBalTabOption } from './components/tabs/tab.util'
-export { initializeDesignSystem as initialize, initializeDesignSystem } from './initialize'
+export { initializeDesignSystem as initialize, initializeDesignSystem } from './global/initialize'
 export {
   dsBreakpoints,
   dsBreakpointSubject,
@@ -73,7 +51,7 @@ export { dsBrowser } from './utils/browser'
 export { DsDate } from './utils/date'
 export { dsDevice, DsDevice } from './utils/device'
 // export { newBalOption } from './utils/dropdown/option'
-export { scrollToFirstInvalidField } from './utils/form'
+// export { scrollToFirstInvalidField } from './utils/form'
 export {
   componentOnReady,
   deepReady,

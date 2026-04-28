@@ -18,5 +18,27 @@
       "format": "svg"
     }
   ],
+  "vsicons.associations.folders": [
+    {
+      "icon": "app",
+      "extensions": ["global"]
+    },
+    {
+      "icon": "component",
+      "extensions": ["core"]
+    },
+    {
+      "icon": "cli",
+      "extensions": ["devkit"]
+    },
+    {
+      "icon": "db",
+      "extensions": ["tokens"]
+    },
+    {
+      "icon": "test",
+      "extensions": ["playwright", "spec", "test"]
+    }
+  ],
   "vitest.disableWorkspaceWarning": true
 }

@@ -15,7 +15,7 @@ import { stopEventBubbling } from '../../../utils/form-control'
 import { AlertComponent } from '../alert-container.interfaces'
 import { raf } from '../../../utils/helpers'
 import { sanitizeSvg } from '../../../utils/svg'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../utils/config'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../../global'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({

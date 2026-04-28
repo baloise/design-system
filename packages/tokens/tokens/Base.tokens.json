@@ -14165,6 +14165,129 @@
         }
       }
     },
+    "Pagination": {
+      "Gap": {
+        "Mobile": {
+          "$type": "number",
+          "$value": "0.25rem",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:1",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Tablet": {
+          "$type": "number",
+          "$value": "0.5rem",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:2",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Desktop": {
+          "$type": "number",
+          "$value": "0.5rem",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:3",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Dots": {
+        "Background": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🎨 Background.Color.GreyLight}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:4",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Radius": {
+          "$type": "number",
+          "$value": "{🏷️ Semantic.🔵 Radius.Base}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:5",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "ActiveColor": {
+          "$type": "color",
+          "$value": "{🏷️ Semantic.🎨 Background.Color.Primary}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:6",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "InactiveColor": {
+          "$type": "color",
+          "$value": "{🧱 Primitive.🌈 Color.White}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:7",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Disabled": {
+        "TextColor": {
+          "$type": "color",
+          "$value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:8",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Text": {
+        "Weight": {
+          "$type": "string",
+          "$value": "{🏷️ Semantic.🔤 Text.Weight.Bold}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:9",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Elevation": {
+        "Sticky": {
+          "$type": "number",
+          "$value": "{🏷️ Semantic.🗂️ ZIndex.Sticky}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:373:10",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        }
+      }
+    },
     "ProgressBar": {
       "Background": {
         "Light": {

@@ -8,7 +8,7 @@ export class WindowResizeSubject extends SingleSubject<WindowResizeObserver> {
 
   constructor() {
     super((observer, _data) => {
-      observer.windowResizeListener()
+      observer.listenToWindowResize()
     })
   }
 

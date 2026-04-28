@@ -9,7 +9,7 @@ export class DsSwipeSubject extends SingleSubject<DsSwipeObserver, DsSwipeInfo> 
   constructor(private options: { mobileOnly: boolean } = { mobileOnly: false }) {
     super((observer, data) => {
       if (data) {
-        observer.swipeListener(data)
+        observer.listenToSwipe(data)
       }
     })
   }

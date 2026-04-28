@@ -1,15 +1,7 @@
 import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import {
-  DsConfigObserver,
-  DsConfigState,
-  DsLanguage,
-  DsRegion,
-  defaultConfig,
-  ListenToConfig,
-} from '../../utils/config'
+import { DsConfigObserver, DsConfigState, DsLanguage, DsRegion, defaultConfig, ListenToConfig } from '../../global'
 import { ElementStateInfo } from '../../utils/element-states'
-import { AriaForm, AriaFormLinking, defaultDsAriaForm } from '../../utils/form'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { I18nDsLabel } from './label.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
@@ -19,12 +11,11 @@ import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
   styleUrl: './label.host.scss',
   shadow: true,
 })
-export class Label implements ComponentInterface, Loggable, DsConfigObserver, ElementStateInfo, AriaFormLinking {
+export class Label implements ComponentInterface, Loggable, DsConfigObserver, ElementStateInfo {
   @Element() el!: HTMLStencilElement
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
-  @State() ariaForm: AriaForm = defaultDsAriaForm
 
   log!: LogInstance
 
@@ -118,14 +109,6 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
    * ------------------------------------------------------
    */
 
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  async setAriaForm(ariaForm: AriaForm) {
-    this.ariaForm = { ...ariaForm }
-  }
-
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
   }
@@ -137,8 +120,8 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
 
   render() {
     const suffix = this.required === false ? I18nDsLabel[this.language].optional || '' : ''
-    const id = this.ariaForm.labelId || this.htmlId
-    const htmlFor = this.htmlFor || this.ariaForm.controlId
+    const id = this.htmlId
+    const htmlFor = this.htmlFor
 
     return (
       <Host

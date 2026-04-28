@@ -11,9 +11,9 @@ packages/assets/maps/svg.json
 packages/assets/maps/svg.ts
 
 packages/tokens/tokens/Base.tokens.json
-packages/core/src/utils/constants/icons.constant.ts
+packages/core/src/global/constants/icons.constant.ts
+packages/core/src/global/constants/tags.constant.ts
 packages/core/src/components.d.ts
-packages/core/src/tags-all.ts
 packages/devkit/src/**/*.js
 packages/devkit/src/**/*.d.ts
 

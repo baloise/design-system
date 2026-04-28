@@ -594,7 +594,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
     color: var(--ds-button-color-disabled-base-text);
 
     & > ds-icon {
-      --icon-size: var(--ds-button-color-disabled-base-text);
+      --icon-color: var(--ds-button-color-disabled-base-text);
     }
 
     & > ds-spinner {

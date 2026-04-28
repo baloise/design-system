@@ -1,4 +1,4 @@
-import { defaultLocale, useDsConfig } from './config'
+import { defaultLocale, useDsConfig } from '../global'
 
 const getLocale = (): string => {
   const config = useDsConfig()

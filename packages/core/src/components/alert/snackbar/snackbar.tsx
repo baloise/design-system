@@ -162,7 +162,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    */
 
   @ListenToBreakpoints()
-  breakpointListener(breakpoints: DsBreakpoints): void {
+  listenToBreakpoint(breakpoints: DsBreakpoints): void {
     this.isMobile = breakpoints.mobile
   }
 

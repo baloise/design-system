@@ -8,7 +8,7 @@ export class ElementStateSubject extends SingleSubject<ElementStateObserver, Ele
   constructor() {
     super((observer, data) => {
       if (data) {
-        observer.elementStateListener(data)
+        observer.listenToElementState(data)
       }
     })
   }

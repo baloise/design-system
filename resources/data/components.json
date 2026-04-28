@@ -6227,6 +6227,7 @@
         "ds-input",
         "ds-item",
         "ds-number-input",
+        "ds-pagination",
         "ds-radio-group",
         "ds-segment",
         "ds-snackbar",
@@ -6254,6 +6255,9 @@
           "ds-icon"
         ],
         "ds-number-input": [
+          "ds-icon"
+        ],
+        "ds-pagination": [
           "ds-icon"
         ],
         "ds-radio-group": [
@@ -10476,6 +10480,478 @@
       ]
     },
     {
+      "fileName": "pagination.tsx",
+      "tag": "ds-pagination",
+      "overview": "",
+      "usage": {},
+      "docs": "",
+      "docsTags": [],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-pagination": [
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "align",
+          "type": "\"\" | \"end\" | \"start\"",
+          "complexType": {
+            "original": "DS.PaginationAlignment",
+            "resolved": "\"\" | \"end\" | \"start\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "align",
+          "reflectToAttr": false,
+          "docs": "Align the buttons to start, center or end",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "false",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "Disables component",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label for the navigation landmark",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "pageRange",
+          "type": "2",
+          "complexType": {
+            "original": "2",
+            "resolved": "2",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "page-range",
+          "reflectToAttr": false,
+          "docs": "Specify the max visible pages before and after the selected page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "2"
+            }
+          ],
+          "default": "2",
+          "values": [
+            {
+              "value": "2",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "size",
+          "type": "\"\" | \"sm\"",
+          "complexType": {
+            "original": "DS.PaginationSize",
+            "resolved": "\"\" | \"sm\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Size of the buttons",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "sticky",
+          "type": "boolean",
+          "complexType": {
+            "original": "false",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "sticky",
+          "reflectToAttr": false,
+          "docs": "If 'true, the pagination will be sticky to the top",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "textNext",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "text-next",
+          "reflectToAttr": false,
+          "docs": "The label for the next page button",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "textPrevious",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "text-previous",
+          "reflectToAttr": false,
+          "docs": "The label for the previous page button",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "top",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "top",
+          "reflectToAttr": false,
+          "docs": "If sticky, the top position will be determined by this value",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "totalPages",
+          "type": "1",
+          "complexType": {
+            "original": "1",
+            "resolved": "1",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "total-pages",
+          "reflectToAttr": false,
+          "docs": "The total amount of pages",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Current selected page",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "variant",
+          "type": "\"\" | \"dots\"",
+          "complexType": {
+            "original": "DS.PaginationVariant",
+            "resolved": "\"\" | \"dots\"",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Defines the layout of the pagination",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "dots",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "next",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "next() => Promise<void>",
+          "parameters": [],
+          "docs": "Go to the next page",
+          "docsTags": []
+        },
+        {
+          "name": "previous",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "previous() => Promise<void>",
+          "parameters": [],
+          "docs": "Go to the previous page",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsChange",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "DS.PaginationChangeDetail",
+            "resolved": "number",
+            "references": {
+              "DS": {
+                "location": "global",
+                "id": "global::DS"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggers when a page change happens",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "listeners": []
+    },
+    {
       "fileName": "progress-bar.tsx",
       "tag": "ds-progress-bar",
       "overview": "",
@@ -10630,8 +11106,8 @@
               },
               "DsConfigState": {
                 "location": "import",
-                "path": "../../utils/config",
-                "id": "src/utils/config/index.ts::DsConfigState",
+                "path": "../../global",
+                "id": "src/global/index.ts::DsConfigState",
                 "referenceLocation": "DsConfigState"
               }
             },
@@ -17262,10 +17738,10 @@
     }
   ],
   "typeLibrary": {
-    "src/utils/config/index.ts::DsConfigState": {
+    "src/global/index.ts::DsConfigState": {
       "declaration": "any",
       "docstring": "",
-      "path": "src/utils/config/index.ts"
+      "path": "src/global/index.ts"
     },
     "src/components/alert/alert-container.interfaces.tsx::AlertType": {
       "declaration": "export type AlertType = 'toast' | 'snackbar'",
@@ -17286,11 +17762,6 @@
       "declaration": "export type AlertComponent = Alert & {\n  alertId: string\n  visible: boolean\n}",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
-    },
-    "src/utils/form.ts::AriaForm": {
-      "declaration": "export interface AriaForm {\n  controlId?: string\n  labelId?: string\n  messageId?: string\n}",
-      "docstring": "",
-      "path": "src/utils/form.ts"
     }
   }
 }

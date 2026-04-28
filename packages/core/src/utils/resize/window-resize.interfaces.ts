@@ -6,5 +6,5 @@ export type WindowResizeListenerFn = () => void
 
 export interface WindowResizeObserver {
   el: HTMLElement | HTMLStencilElement
-  windowResizeListener(): void
+  listenToWindowResize(): void
 }

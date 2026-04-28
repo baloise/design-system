@@ -136,19 +136,9 @@ export class FormControl<Value extends NonNullable<unknown> | null = string | nu
  * ------------------------------------------------------
  */
 
-// export const getUpcomingValue = <Value>(component: FormControlInterface<Value>, ev: KeyboardEvent) => {
-//   const value = component.nativeInput?.value || ''
-//   const idx = (ev as any).target?.selectionStart
-//   return value.slice(0, idx) + ev.key + value.slice(idx + Math.abs(0))
-// }
-
 export const getControlTarget = (ev: Event): HTMLInputElement | null => {
   return ev.target as HTMLInputElement | null
 }
-
-// export const getNativeControlValue = <Value>(component: FormControlInterface<Value>): string => {
-//   return component.nativeInput?.value || ''
-// }
 
 export const isEmptyValue = (value: any): boolean => {
   return (

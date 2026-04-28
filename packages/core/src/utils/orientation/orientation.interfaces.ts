@@ -4,5 +4,5 @@ export type DsOrientationInfo = {
 }
 
 export interface DsOrientationObserver {
-  orientationListener(info: DsOrientationInfo): void
+  listenToOrientation(info: DsOrientationInfo): void
 }

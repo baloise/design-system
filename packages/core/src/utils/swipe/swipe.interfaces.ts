@@ -9,5 +9,5 @@ export type DsSwipeListenerFn = (info: DsSwipeInfo) => void
 
 export interface DsSwipeObserver {
   el: HTMLElement | HTMLStencilElement
-  swipeListener(info: DsSwipeInfo): void
+  listenToSwipe(info: DsSwipeInfo): void
 }

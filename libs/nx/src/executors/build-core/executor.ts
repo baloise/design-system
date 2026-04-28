@@ -101,7 +101,7 @@ export async function createTagList() {
   const json = JSON.parse(content)
   const componentTags = json.components.map(component => component.tag).filter(tag => !tag.startsWith('ds-doc'))
 
-  const filePathAllTags = join('packages/core/src/tags-all.ts')
+  const filePathAllTags = join('packages/core/src/globals/constants.tags.constant.ts')
   await mkdir(dirname(filePathAllTags), { recursive: true })
   await writeFile(filePathAllTags, `export const tags = ${JSON.stringify(componentTags, undefined, 2)}`)
 

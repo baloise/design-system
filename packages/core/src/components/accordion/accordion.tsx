@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { ariaBooleanToString } from '../../utils/aria'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../utils/config'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../global'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({

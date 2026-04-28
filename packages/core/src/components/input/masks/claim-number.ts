@@ -1,4 +1,4 @@
-import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
+import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '../../../global'
 import { stopEventBubbling } from '../../../utils/form-control'
 import { InputMaskFormatterInterface } from '../input.mask'
 

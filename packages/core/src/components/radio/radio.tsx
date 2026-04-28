@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { isSpaceKey } from '../../utils/keyboard'
-import { FOCUS_KEYS } from '../../utils/focus-visible'
+import { FOCUS_KEYS } from '../app/app.focus.util'
 import { inheritAttributes } from '../../utils/attributes'
 import { isDescendant, waitAfterIdleCallback } from '../../utils/helpers'
 import { stopEventBubbling } from '../../utils/form-control'

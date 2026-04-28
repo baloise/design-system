@@ -9,5 +9,5 @@ export type ElementStateListenerFn = (info: ElementStateInfo) => void
 
 export interface ElementStateObserver {
   el: HTMLElement | HTMLStencilElement
-  elementStateListener(info: ElementStateInfo): void
+  listenToElementState(info: ElementStateInfo): void
 }

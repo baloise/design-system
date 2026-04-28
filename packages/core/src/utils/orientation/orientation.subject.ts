@@ -8,7 +8,7 @@ export class DsOrientationSubject extends Subject<DsOrientationObserver> {
   private state: DsOrientationInfo = dsDevice.orientation.toObject()
 
   constructor() {
-    super(observer => observer.orientationListener(this.state))
+    super(observer => observer.listenToOrientation(this.state))
     this.listener.connect()
     this.listener.add(() => {
       const newState = dsDevice.orientation.toObject()
@@ -21,7 +21,7 @@ export class DsOrientationSubject extends Subject<DsOrientationObserver> {
 
   override attach(observer: DsOrientationObserver): void {
     super.attach(observer)
-    observer.orientationListener(this.state)
+    observer.listenToOrientation(this.state)
   }
 
   private isEqual(newState: DsOrientationInfo) {

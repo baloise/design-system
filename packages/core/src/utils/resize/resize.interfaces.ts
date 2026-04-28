@@ -10,5 +10,5 @@ export type ResizeListenerFn = (info: ResizeInfo) => void
 
 export interface ResizeObserver {
   el: HTMLElement | HTMLStencilElement
-  resizeListener(info: ResizeInfo): void
+  listenToResize(info: ResizeInfo): void
 }

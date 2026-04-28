@@ -1,4 +1,4 @@
-import { FOCUS_KEYS } from '../focus-visible'
+import { FOCUS_KEYS } from '../../components/app/app.focus.util'
 import { addEventListener, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { KeyboardInfo } from './keyboard.interfaces'

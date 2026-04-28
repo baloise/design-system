@@ -1,13 +1,6 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import {
-  DsConfigObserver,
-  DsConfigState,
-  DsLanguage,
-  DsRegion,
-  ListenToConfig,
-  defaultConfig,
-} from '../../utils/config'
+import { DsConfigObserver, DsConfigState, DsLanguage, DsRegion, ListenToConfig, defaultConfig } from '../../global'
 import { i18nDsClose } from './close.i18n'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 import { Loggable, Logger, LogInstance } from '../../utils/log'

@@ -13,7 +13,7 @@ import {
 } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../utils/config'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../global'
 import { stopEventBubbling } from '../../../utils/form-control'
 import { isDescendant } from '../../../utils/helpers'
 import { SegmentItemInterface } from '../segment-item.type'
@@ -223,7 +223,7 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
    */
   @Method()
   @ListenToResize()
-  async resizeListener(): Promise<void> {
+  async listenToResize(): Promise<void> {
     this.updateLayout()
   }
 

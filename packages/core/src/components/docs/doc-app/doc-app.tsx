@@ -3,7 +3,7 @@ import globalScript from '../../../global'
 import { dsBrowser } from '../../../utils/browser'
 import { DsLogger } from '../../../utils/log'
 // import { Icons } from '@baloise/ds-assets'
-import { DsIcons, updateDsIcons } from '../../../utils/config'
+import { DsIcons, updateDsIcons } from '../../../global'
 
 /**
  * @internal

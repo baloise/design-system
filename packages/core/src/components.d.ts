@@ -5,12 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DsConfigState } from "./utils/config";
+import { DsConfigState } from "./global";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-import { AriaForm } from "./utils/form";
-export { DsConfigState } from "./utils/config";
+export { DsConfigState } from "./global";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-export { AriaForm } from "./utils/form";
 export namespace Components {
     interface DsAccordion {
         /**
@@ -1029,7 +1027,6 @@ export namespace Components {
           * @default true
          */
         "required": boolean;
-        "setAriaForm": (ariaForm: AriaForm) => Promise<void>;
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
@@ -1206,6 +1203,77 @@ export namespace Components {
           * @default null
          */
         "value": number | null;
+    }
+    interface DsPagination {
+        /**
+          * Align the buttons to start, center or end
+          * @default ''
+         */
+        "align": DS.PaginationAlignment;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Disables component
+          * @default false
+         */
+        "disabled": false;
+        /**
+          * The label for the navigation landmark
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Go to the next page
+         */
+        "next": () => Promise<void>;
+        /**
+          * Specify the max visible pages before and after the selected page
+          * @default 2
+         */
+        "pageRange": 2;
+        /**
+          * Go to the previous page
+         */
+        "previous": () => Promise<void>;
+        /**
+          * Size of the buttons
+          * @default ''
+         */
+        "size": DS.PaginationSize;
+        /**
+          * If 'true, the pagination will be sticky to the top
+          * @default false
+         */
+        "sticky": false;
+        /**
+          * The label for the next page button
+          * @default ''
+         */
+        "textNext": string;
+        /**
+          * The label for the previous page button
+          * @default ''
+         */
+        "textPrevious": string;
+        /**
+          * If sticky, the top position will be determined by this value
+          * @default 0
+         */
+        "top": number;
+        /**
+          * The total amount of pages
+          * @default 1
+         */
+        "totalPages": 1;
+        /**
+          * Current selected page
+          * @default 1
+         */
+        "value": number;
+        /**
+          * Defines the layout of the pagination
+          * @default ''
+         */
+        "variant": DS.PaginationVariant;
     }
     interface DsProgressBar {
         /**
@@ -1435,6 +1503,7 @@ export namespace Components {
           * The label of the input, which is displayed above the input field.
          */
         "label"?: string;
+        "listenToResize": () => Promise<void>;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -1454,7 +1523,6 @@ export namespace Components {
           * @default true
          */
         "required": boolean;
-        "resizeListener": () => Promise<void>;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the segment group.
@@ -2064,6 +2132,10 @@ export interface DsNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsNumberInputElement;
 }
+export interface DsPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsPaginationElement;
+}
 export interface DsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsRadioElement;
@@ -2386,6 +2458,23 @@ declare global {
         prototype: HTMLDsNumberInputElement;
         new (): HTMLDsNumberInputElement;
     };
+    interface HTMLDsPaginationElementEventMap {
+        "dsChange": DS.PaginationChangeDetail;
+    }
+    interface HTMLDsPaginationElement extends Components.DsPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsPaginationElementEventMap>(type: K, listener: (this: HTMLDsPaginationElement, ev: DsPaginationCustomEvent<HTMLDsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsPaginationElementEventMap>(type: K, listener: (this: HTMLDsPaginationElement, ev: DsPaginationCustomEvent<HTMLDsPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsPaginationElement: {
+        prototype: HTMLDsPaginationElement;
+        new (): HTMLDsPaginationElement;
+    };
     interface HTMLDsProgressBarElement extends Components.DsProgressBar, HTMLStencilElement {
     }
     var HTMLDsProgressBarElement: {
@@ -2622,6 +2711,7 @@ declare global {
         "ds-logo": HTMLDsLogoElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
+        "ds-pagination": HTMLDsPaginationElement;
         "ds-progress-bar": HTMLDsProgressBarElement;
         "ds-radio": HTMLDsRadioElement;
         "ds-radio-group": HTMLDsRadioGroupElement;
@@ -3947,6 +4037,72 @@ declare namespace LocalJSX {
          */
         "value"?: number | null;
     }
+    interface DsPagination {
+        /**
+          * Align the buttons to start, center or end
+          * @default ''
+         */
+        "align"?: DS.PaginationAlignment;
+        /**
+          * Disables component
+          * @default false
+         */
+        "disabled"?: false;
+        /**
+          * The label for the navigation landmark
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Triggers when a page change happens
+         */
+        "onDsChange"?: (event: DsPaginationCustomEvent<DS.PaginationChangeDetail>) => void;
+        /**
+          * Specify the max visible pages before and after the selected page
+          * @default 2
+         */
+        "pageRange"?: 2;
+        /**
+          * Size of the buttons
+          * @default ''
+         */
+        "size"?: DS.PaginationSize;
+        /**
+          * If 'true, the pagination will be sticky to the top
+          * @default false
+         */
+        "sticky"?: false;
+        /**
+          * The label for the next page button
+          * @default ''
+         */
+        "textNext"?: string;
+        /**
+          * The label for the previous page button
+          * @default ''
+         */
+        "textPrevious"?: string;
+        /**
+          * If sticky, the top position will be determined by this value
+          * @default 0
+         */
+        "top"?: number;
+        /**
+          * The total amount of pages
+          * @default 1
+         */
+        "totalPages"?: 1;
+        /**
+          * Current selected page
+          * @default 1
+         */
+        "value"?: number;
+        /**
+          * Defines the layout of the pagination
+          * @default ''
+         */
+        "variant"?: DS.PaginationVariant;
+    }
     interface DsProgressBar {
         /**
           * The background color
@@ -4886,6 +5042,7 @@ declare namespace LocalJSX {
         "ds-logo": DsLogo;
         "ds-notification": DsNotification;
         "ds-number-input": DsNumberInput;
+        "ds-pagination": DsPagination;
         "ds-progress-bar": DsProgressBar;
         "ds-radio": DsRadio;
         "ds-radio-group": DsRadioGroup;
@@ -4934,6 +5091,7 @@ declare module "@stencil/core" {
             "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
             "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
+            "ds-pagination": LocalJSX.DsPagination & JSXBase.HTMLAttributes<HTMLDsPaginationElement>;
             "ds-progress-bar": LocalJSX.DsProgressBar & JSXBase.HTMLAttributes<HTMLDsProgressBarElement>;
             "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
             "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;

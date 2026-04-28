@@ -1,4 +1,4 @@
-import { setupDsConfig, useDsConfig } from '../config'
+import { setupDsConfig, useDsConfig } from '../../global'
 import { DsDate } from './date'
 
 describe('DsDate', () => {

@@ -8,7 +8,7 @@ export class ResizeSubject extends SingleSubject<ResizeObserver, ResizeInfo> {
 
   constructor() {
     super((observer, data) => {
-      rIC(() => data && observer.resizeListener(data))
+      rIC(() => data && observer.listenToResize(data))
     })
   }
 

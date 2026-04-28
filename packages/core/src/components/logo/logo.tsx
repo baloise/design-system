@@ -2,11 +2,10 @@ import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, P
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { DsBreakpointObserver, DsBreakpoints, dsBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../utils/config'
+import { DsConfigObserver, DsConfigState, ListenToConfig } from '../../global'
 import { rOnLoad } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
-import { cssVariables } from '../../utils/css'
 import { normalizeDeprecatedTShirtSize } from '../../utils/t-shirt'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
@@ -99,7 +98,7 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
    */
 
   @ListenToBreakpoints()
-  breakpointListener(breakpoints: DsBreakpoints): void {
+  listenToBreakpoint(breakpoints: DsBreakpoints): void {
     this.isTouch = breakpoints.touch
   }
 

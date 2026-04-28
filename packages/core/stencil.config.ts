@@ -64,9 +64,10 @@ export const config: Config = {
   preamble: '(C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
+  transformAliasedImportPaths: true,
   // buildEs5: 'prod',
-  globalScript: 'src/global.ts',
-  globalStyle: 'src/global.scss',
+  globalScript: 'src/global/index.ts',
+  globalStyle: 'src/global/global.scss',
   // transformAliasedImportPaths: true,
   tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
@@ -130,6 +131,12 @@ export const config: Config = {
             empty: true,
             includeGlobalScripts: false,
             generateTypeDeclarations: true,
+            /**
+             * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
+             * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
+             * contains a dynamic import that caused a warning in Angular.
+             */
+            externalRuntime: false,
           },
         ]
       : []),

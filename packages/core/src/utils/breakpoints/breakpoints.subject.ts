@@ -11,7 +11,7 @@ export class DsBreakpointSubject extends Subject<DsBreakpointObserver> {
   private debouncedNotify = debounce(() => this.notify(), 50)
 
   constructor() {
-    super(observer => observer.breakpointListener(this.state))
+    super(observer => observer.listenToBreakpoint(this.state))
     this.listener.connect()
     this.listener.add(() => {
       dsBreakpoints.detect()

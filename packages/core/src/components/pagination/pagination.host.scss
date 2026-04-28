@@ -1,0 +1,169 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+
+@forward '../button/button.style.scss';
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  @include vars.base(pagination);
+  @include vars.local(pagination-gap-mobile, var(--ds-pagination-gap-mobile));
+  @include vars.local(pagination-gap-tablet, var(--ds-pagination-gap-tablet));
+  @include vars.local(pagination-gap-desktop, var(--ds-pagination-gap-desktop));
+
+  @include vars.local(pagination-dots-background, var(--ds-pagination-dots-background));
+  @include vars.local(pagination-dots-radius, var(--ds-pagination-dots-radius));
+  @include vars.local(pagination-disabled-text-color, var(--ds-pagination-disabled-text-color));
+  @include vars.local(pagination-elevation-sticky, var(--ds-pagination-elevation-sticky));
+  @include vars.local(pagination-text-weight, var(--ds-pagination-text-weight));
+  @include vars.local(pagination-dots-inactive-color, var(--ds-pagination-dots-inactive-color));
+  @include vars.local(pagination-dots-active-color, var(--ds-pagination-dots-active-color));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include unselectable;
+
+  display: block;
+
+  #nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--_pagination-gap-mobile);
+
+      order: 2;
+      width: unset;
+      text-align: center;
+
+      @include tablet {
+        gap: var(--_pagination-gap-tablet);
+      }
+
+      @include desktop {
+        gap: var(--_pagination-gap-desktop);
+      }
+    }
+  }
+
+  #previous {
+    order: 1;
+  }
+
+  #next {
+    order: 3;
+  }
+
+  #ellipsis {
+    width: 2rem;
+    font-weight: 700;
+
+    @include tablet {
+      width: 3rem;
+    }
+  }
+
+  button.is-disabled.is-text {
+    background: transparent;
+    border-color: transparent;
+  }
+}
+
+:host(.is-sticky) {
+  position: sticky;
+  z-index: var(--_pagination-elevation-sticky);
+}
+
+:host(.is-disabled) {
+  pointer-events: none;
+
+  #ellipsis {
+    color: var(--_pagination-disabled-text-color);
+  }
+}
+
+// Size
+// --------------------------------
+
+:host(.is-size-small) {
+  --mod-pagination-gap: 0.125rem;
+
+  #ellipsis {
+    width: 2rem;
+  }
+}
+
+// Alignment
+// --------------------------------
+
+:host(.is-align-start) #nav {
+  justify-content: flex-start;
+}
+
+:host(.is-align-end) #nav {
+  justify-content: flex-end;
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+// Dots Variant
+// --------------------------------
+
+:host(.is-variant-dots) .dots {
+  order: 2;
+  max-width: 88px;
+  min-width: 63px;
+  min-height: 2rem;
+  margin: 0 20px 0 !important;
+  background: var(--_pagination-dots-background);
+  border-radius: var(--_pagination-dots-radius);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.125rem;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  strong {
+    font-weight: var(--_pagination-text-weight);
+  }
+
+  button.dot {
+    cursor: pointer;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--_pagination-dots-inactive-color);
+    border: none;
+    padding: 0;
+
+    &.is-active {
+      background-color: var(--_pagination-dots-active-color);
+    }
+  }
+}

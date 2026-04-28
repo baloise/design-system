@@ -16,7 +16,7 @@ import { inheritAttributes } from '../../utils/attributes'
 import { FormControl, FormControlInterface } from '../../utils/form-control'
 import { debounceEvent } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../utils/config'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../global'
 import { Field, FieldInterface } from '../input/field.util'
 
 @Component({

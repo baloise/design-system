@@ -2,7 +2,7 @@ import { Component, ComponentInterface, Element, Host, Method, Prop, h } from '@
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsBreakpointObserver, ListenToBreakpoints, initialBreakpoints, DsBreakpoints } from '../../utils/breakpoints'
-import type { DsConfigObserver, DsConfigState } from '../../utils/config'
+import type { DsConfigObserver, DsConfigState } from '../../global'
 import { raf } from '../../utils/helpers'
 import { WindowResizeObserver, ListenToWindowResize } from '../../utils/resize'
 
@@ -57,12 +57,12 @@ export class ProgressBar
    */
 
   @ListenToBreakpoints()
-  breakpointListener(_breakpoints: DsBreakpoints) {
+  listenToBreakpoint(_breakpoints: DsBreakpoints) {
     this.updateProgress()
   }
 
   @ListenToWindowResize()
-  windowResizeListener() {
+  listenToWindowResize() {
     this.updateProgress()
   }
 

@@ -8,7 +8,7 @@ export class KeyboardSubject extends SingleSubject<KeyboardObserver, KeyboardInf
   constructor() {
     super((observer, data) => {
       if (data) {
-        observer.keyboardListener(data)
+        observer.listenToKeyboard(data)
       }
     })
   }

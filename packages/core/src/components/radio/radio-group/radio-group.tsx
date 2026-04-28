@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../utils/config'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '../../../global'
 import { stopEventBubbling } from '../../../utils/form-control'
 import { hasTagName, isDescendant } from '../../../utils/helpers'
 
