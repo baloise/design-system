@@ -66,9 +66,8 @@ export const config: Config = {
   enableCache: true,
   transformAliasedImportPaths: true,
   // buildEs5: 'prod',
-  globalScript: 'src/global/index.ts',
+  globalScript: 'src/global/global.ts',
   globalStyle: 'src/global/global.scss',
-  // transformAliasedImportPaths: true,
   tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({

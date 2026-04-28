@@ -1215,7 +1215,7 @@ export namespace Components {
           * Disables component
           * @default false
          */
-        "disabled": false;
+        "disabled": boolean;
         /**
           * The label for the navigation landmark
           * @default ''
@@ -1229,7 +1229,7 @@ export namespace Components {
           * Specify the max visible pages before and after the selected page
           * @default 2
          */
-        "pageRange": 2;
+        "pageRange": number;
         /**
           * Go to the previous page
          */
@@ -1243,7 +1243,7 @@ export namespace Components {
           * If 'true, the pagination will be sticky to the top
           * @default false
          */
-        "sticky": false;
+        "sticky": boolean;
         /**
           * The label for the next page button
           * @default ''
@@ -1263,7 +1263,7 @@ export namespace Components {
           * The total amount of pages
           * @default 1
          */
-        "totalPages": 1;
+        "totalPages": number;
         /**
           * Current selected page
           * @default 1
@@ -4047,7 +4047,7 @@ declare namespace LocalJSX {
           * Disables component
           * @default false
          */
-        "disabled"?: false;
+        "disabled"?: boolean;
         /**
           * The label for the navigation landmark
           * @default ''
@@ -4061,7 +4061,7 @@ declare namespace LocalJSX {
           * Specify the max visible pages before and after the selected page
           * @default 2
          */
-        "pageRange"?: 2;
+        "pageRange"?: number;
         /**
           * Size of the buttons
           * @default ''
@@ -4071,7 +4071,7 @@ declare namespace LocalJSX {
           * If 'true, the pagination will be sticky to the top
           * @default false
          */
-        "sticky"?: false;
+        "sticky"?: boolean;
         /**
           * The label for the next page button
           * @default ''
@@ -4091,7 +4091,7 @@ declare namespace LocalJSX {
           * The total amount of pages
           * @default 1
          */
-        "totalPages"?: 1;
+        "totalPages"?: number;
         /**
           * Current selected page
           * @default 1

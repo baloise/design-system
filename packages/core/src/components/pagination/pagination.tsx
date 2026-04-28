@@ -19,7 +19,9 @@ import {
   dsBreakpoints,
   Loggable,
   Logger,
-  LogInstance,
+  type LogInstance,
+  checkEmptyOrType,
+  checkEmptyOrOneOf,
 } from '@utils'
 import { DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
@@ -40,7 +42,6 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
 
   @Element() el!: HTMLDsPaginationElement
 
-  @State() _value = 1
   @State() isMobile = dsBreakpoints.isMobile
   @State() language: DsLanguage = defaultConfig.language
 
@@ -55,44 +56,39 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
   @Prop() readonly align: DS.PaginationAlignment = ''
 
   /**
+   * Disables component
+   */
+  @Prop({ reflect: true }) readonly disabled: boolean = false
+
+  /**
+   * The label for the navigation landmark
+   */
+  @Prop() readonly label: string = ''
+
+  /**
+   * Specify the max visible pages before and after the selected page
+   */
+  @Prop() readonly pageRange: number = 2
+
+  /**
    * Size of the buttons
    */
   @Prop() readonly size: DS.PaginationSize = ''
 
   /**
-   * Defines the layout of the pagination
-   */
-  @Prop() readonly variant: DS.PaginationVariant = ''
-
-  /**
-   * Disables component
-   */
-  @Prop() readonly disabled = false
-
-  /**
-   * Current selected page
-   */
-  @Prop() value = 1
-
-  @Watch('value')
-  valueChanged(newValue: number) {
-    this._value = newValue
-  }
-
-  /**
-   * The total amount of pages
-   */
-  @Prop() readonly totalPages = 1
-
-  /**
-   * Specify the max visible pages before and after the selected page
-   */
-  @Prop() readonly pageRange = 2
-
-  /**
    * If 'true, the pagination will be sticky to the top
    */
-  @Prop() readonly sticky = false
+  @Prop() readonly sticky: boolean = false
+
+  /**
+   * The label for the next page button
+   */
+  @Prop() readonly textNext: string = ''
+
+  /**
+   * The label for the previous page button
+   */
+  @Prop() readonly textPrevious: string = ''
 
   /**
    * If sticky, the top position will be determined by this value
@@ -107,19 +103,19 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
   }
 
   /**
-   * The label for the navigation landmark
+   * The total amount of pages
    */
-  @Prop() readonly label: string = ''
+  @Prop() readonly totalPages: number = 1
 
   /**
-   * The label for the previous page button
+   * Current selected page
    */
-  @Prop() readonly textPrevious: string = ''
+  @Prop({ reflect: true, mutable: true }) value = 1
 
   /**
-   * The label for the next page button
+   * Defines the layout of the pagination
    */
-  @Prop() readonly textNext: string = ''
+  @Prop() readonly variant: DS.PaginationVariant = ''
 
   /**
    * Triggers when a page change happens
@@ -131,10 +127,36 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    * ------------------------------------------------------
    */
 
+  connectedCallback(): void {
+    this.validateProps()
+  }
+
   componentWillLoad() {
-    this._value = this.value
     this.topValueChanged(this.top)
   }
+
+  componentWillUpdate() {
+    this.validateProps()
+  }
+
+  /**
+   * PROPERTY VALIDATION
+   * ------------------------------------------------------
+   */
+
+  private validateProps() {
+    checkEmptyOrType(this, 'label', 'string')
+    checkEmptyOrOneOf(this, 'align', ['', 'start', 'end'])
+    checkEmptyOrOneOf(this, 'size', ['', 'sm'])
+    checkEmptyOrOneOf(this, 'variant', ['', 'dots'])
+    checkEmptyOrType(this, 'textNext', 'string')
+    checkEmptyOrType(this, 'textPrevious', 'string')
+  }
+
+  /**
+   * PUBLIC LISTENERS
+   * ------------------------------------------------------
+   */
 
   @ListenToBreakpoints()
   listenToBreakpoint(breakpoints: DsBreakpoints): void {
@@ -151,9 +173,9 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
   @Method()
   async next() {
-    if (this._value < this.totalPages) {
-      this._value = this._value + 1
-      this.dsChangeEventEmitter.emit(this._value)
+    if (this.value < this.totalPages) {
+      this.value = this.value + 1
+      this.dsChangeEventEmitter.emit(this.value)
     }
   }
 
@@ -162,9 +184,9 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
   @Method()
   async previous() {
-    if (this._value !== 1) {
-      this._value = this._value - 1
-      this.dsChangeEventEmitter.emit(this._value)
+    if (this.value !== 1) {
+      this.value = this.value - 1
+      this.dsChangeEventEmitter.emit(this.value)
     }
   }
 
@@ -183,12 +205,12 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
 
   private selectPage(pageNumber: number) {
-    this._value = pageNumber
-    this.dsChangeEventEmitter.emit(this._value)
+    this.value = pageNumber
+    this.dsChangeEventEmitter.emit(this.value)
   }
 
   private getItems(pageRange = 2) {
-    const controls = generatePaginationControl(this._value, this.totalPages, pageRange)
+    const controls = generatePaginationControl(this.value, this.totalPages, pageRange)
     return controls.map((control: any) => {
       if (control.type === 'page') {
         return this.renderPageElement(Number(control.label))
@@ -209,7 +231,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
   }
 
   private renderPageElement(pageNumber: number) {
-    const isActive = this._value === pageNumber
+    const isActive = this.value === pageNumber
 
     if (this.variant === 'dots') {
       return (
@@ -271,7 +293,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
 
     const DotsWithText: FunctionalComponent = () => (
       <span class="dots">
-        <strong>{this._value}</strong>
+        <strong>{this.value}</strong>
         <span>/</span>
         <span>{this.totalPages}</span>
       </span>
@@ -297,15 +319,15 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
               class={{
                 'button': true,
                 'is-square': true,
-                'is-disabled': this._value < 2,
+                'is-disabled': this.value < 2,
                 'is-flat': flat,
                 [buttonColor]: true,
                 [buttonSize]: true,
               }}
-              disabled={this._value < 2}
+              disabled={this.value < 2}
               onClick={() => this.previous()}
             >
-              <ds-icon name="nav-go-left" size="sm" disabled={this._value < 2} />
+              <ds-icon name="nav-go-left" size="sm" disabled={this.value < 2} />
             </button>
           )}
           {!this.disabled && (
@@ -317,15 +339,15 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
               class={{
                 'button': true,
                 'is-square': true,
-                'is-disabled': this._value === this.totalPages,
+                'is-disabled': this.value === this.totalPages,
                 'is-flat': flat,
                 [buttonColor]: true,
                 [buttonSize]: true,
               }}
-              disabled={this._value === this.totalPages}
+              disabled={this.value === this.totalPages}
               onClick={() => this.next()}
             >
-              <ds-icon name="nav-go-right" size="sm" disabled={this._value === this.totalPages} />
+              <ds-icon name="nav-go-right" size="sm" disabled={this.value === this.totalPages} />
             </button>
           )}
           {hasBasicNavigationButtons ? (

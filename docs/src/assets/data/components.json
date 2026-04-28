@@ -10543,13 +10543,13 @@
           "name": "disabled",
           "type": "boolean",
           "complexType": {
-            "original": "false",
+            "original": "boolean",
             "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Disables component",
           "docsTags": [
             {
@@ -10599,10 +10599,10 @@
         },
         {
           "name": "pageRange",
-          "type": "2",
+          "type": "number",
           "complexType": {
-            "original": "2",
-            "resolved": "2",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
@@ -10618,7 +10618,6 @@
           "default": "2",
           "values": [
             {
-              "value": "2",
               "type": "number"
             }
           ],
@@ -10669,7 +10668,7 @@
           "name": "sticky",
           "type": "boolean",
           "complexType": {
-            "original": "false",
+            "original": "boolean",
             "resolved": "boolean",
             "references": {}
           },
@@ -10783,10 +10782,10 @@
         },
         {
           "name": "totalPages",
-          "type": "1",
+          "type": "number",
           "complexType": {
-            "original": "1",
-            "resolved": "1",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
@@ -10802,7 +10801,6 @@
           "default": "1",
           "values": [
             {
-              "value": "1",
               "type": "number"
             }
           ],
@@ -10819,9 +10817,9 @@
             "resolved": "number",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "value",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Current selected page",
           "docsTags": [
             {

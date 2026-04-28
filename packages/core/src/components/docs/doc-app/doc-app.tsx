@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import globalScript from '@global'
+import globalScript from '../../../global/global'
 import { dsBrowser, DsLogger } from '@utils'
 // import { Icons } from '@baloise/ds-assets'
 // import { DsIcons, updateDsIcons } from '@global'

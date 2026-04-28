@@ -1,12 +1,17 @@
-import { defaultLocale, useDsConfig } from '@global'
+import { defaultLocale } from '@global'
 
 const getLocale = (): string => {
-  const config = useDsConfig()
-  // workaround for swiss french locale which uses non standard number formatting
-  if (config && config.locale && config.locale === 'fr-CH') {
-    return 'de-CH'
+  try {
+    const { useDsConfig } = require('@global') as typeof import('@global')
+    const config = useDsConfig()
+    // workaround for swiss french locale which uses non standard number formatting
+    if (config && config.locale && config.locale === 'fr-CH') {
+      return 'de-CH'
+    }
+    return (config && config.locale) || defaultLocale
+  } catch (e) {
+    return defaultLocale
   }
-  return (config && config.locale) || defaultLocale
 }
 
 export function getDecimalSeparator(): string {

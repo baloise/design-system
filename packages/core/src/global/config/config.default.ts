@@ -38,7 +38,6 @@ import {
   IconBell,
   IconInformation,
 } from '../constants/icons.constant'
-import { defaultLoggerConfig } from '@utils'
 import type { DsConfigState } from './config.types'
 
 export const defaultIcons = {
@@ -89,7 +88,13 @@ export const defaultConfig: DsConfigState = {
   allowedLanguages: ['de', 'fr', 'it', 'en'],
   icons: defaultIcons,
   fallbackLanguage: 'de',
-  logger: defaultLoggerConfig,
+  logger: {
+    components: [],
+    event: false,
+    lifecycle: false,
+    render: false,
+    custom: false,
+  },
   animated: true,
   httpFormSubmit: true,
   _generateHydrateForCustomElementsOutput: false,

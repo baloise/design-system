@@ -1,7 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from './browser'
-import { DsConfig, useDsConfig } from '@global'
+import { type DsConfig } from '@global'
 import {
   IconClock,
   IconClose,
@@ -265,14 +265,20 @@ const transitionEnd = (
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (dsBrowser.hasWindow) {
-    const config = useDsConfig()
-    if (config) {
-      const ael = config._ael
-      if (ael) {
-        return ael(el, eventName, callback, opts)
-      } else if (config._ael) {
-        return config._ael(el, eventName, callback, opts)
+    // Lazy import to break circular dependency: import only when function is called
+    try {
+      const { useDsConfig } = require('@global') as typeof import('@global')
+      const config = useDsConfig()
+      if (config) {
+        const ael = config._ael
+        if (ael) {
+          return ael(el, eventName, callback, opts)
+        } else if (config._ael) {
+          return config._ael(el, eventName, callback, opts)
+        }
       }
+    } catch (e) {
+      // Fallback if @global is not yet initialized
     }
   }
 
@@ -281,14 +287,20 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (dsBrowser.hasWindow) {
-    const config = useDsConfig()
-    if (config) {
-      const rel = config._rel
-      if (rel) {
-        return rel(el, eventName, callback, opts)
-      } else if (config._rel) {
-        return config._rel(el, eventName, callback, opts)
+    // Lazy import to break circular dependency: import only when function is called
+    try {
+      const { useDsConfig } = require('@global') as typeof import('@global')
+      const config = useDsConfig()
+      if (config) {
+        const rel = config._rel
+        if (rel) {
+          return rel(el, eventName, callback, opts)
+        } else if (config._rel) {
+          return config._rel(el, eventName, callback, opts)
+        }
       }
+    } catch (e) {
+      // Fallback if @global is not yet initialized
     }
   }
 

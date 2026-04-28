@@ -1,10 +1,10 @@
 import { setPlatformHelpers } from '@stencil/core/internal'
 
 import { tags } from './constants/tags.constant'
-import { dsBrowser } from '@utils'
 import { DsConfig, DsPlatformConfig, setupDsConfig } from './config'
 import { VERSION } from './constants/version.constant'
 import { dsSnackbarController, dsToastController } from '../components/alert/alert.controller'
+import { dsBrowser } from '@utils'
 
 export const initializeDesignSystem = (
   userConfig: DsConfig = {},
