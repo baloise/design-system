@@ -1,7 +1,6 @@
 import {
   AttachInternals,
   Component,
-  ComponentInterface,
   Element,
   Event,
   EventEmitter,
@@ -13,7 +12,6 @@ import {
   State,
 } from '@stencil/core'
 import {
-  Loggable,
   Logger,
   type LogInstance,
   isSpaceKey,
@@ -23,6 +21,19 @@ import {
   stopEventBubbling,
 } from '@utils'
 import { FOCUS_KEYS } from '../app/app.focus.util'
+import {
+  RADIO_GROUP_COLUMNS,
+  RADIO_TILE_COLORS,
+  RADIO_LABEL_POSITIONS,
+  type RadioGroupColumns,
+  type RadioTileColor,
+  type RadioLabelPosition,
+  type RadioFocusDetail,
+  type RadioBlurDetail,
+  type RadioChangeDetail,
+} from './radio.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-radio',
@@ -30,13 +41,13 @@ import { FOCUS_KEYS } from '../app/app.focus.util'
   shadow: true,
   formAssociated: true,
 })
-export class Radio implements ComponentInterface, Loggable {
+export class Radio implements DsComponentInterface {
   inputId = `ds-rb-${radioIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
   private nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLDsRadioElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('radio')
@@ -68,7 +79,7 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
-  @Prop() readonly labelPosition: DS.RadioLabelPosition = 'right'
+  @Prop() readonly labelPosition: RadioLabelPosition = 'right'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
@@ -116,37 +127,37 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Defines the color of the tile radio.
    */
-  @Prop() readonly tileColor?: DS.RadioTileColor
+  @Prop() readonly tileColor?: RadioTileColor
 
   /**
    * @internal
    */
-  @Prop() readonly cols: DS.RadioGroupColumns = 1
+  @Prop() readonly cols: RadioGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() readonly colsTablet: DS.RadioGroupColumns = 1
+  @Prop() readonly colsTablet: RadioGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() readonly colsMobile: DS.RadioGroupColumns = 1
+  @Prop() readonly colsMobile: RadioGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.RadioFocusDetail>
+  @Event() dsFocus!: EventEmitter<RadioFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() dsBlur!: EventEmitter<DS.RadioBlurDetail>
+  @Event() dsBlur!: EventEmitter<RadioBlurDetail>
 
   /**
    * Emitted when the value property has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.RadioChangeDetail>
+  @Event() dsChange!: EventEmitter<RadioChangeDetail>
 
   /**
    * LIFECYCLE

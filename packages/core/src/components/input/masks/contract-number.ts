@@ -1,9 +1,10 @@
 import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '@global'
 import { stopEventBubbling } from '@utils'
 import { InputMaskFormatterInterface } from '../input.mask'
+import { InputMask } from '../input.interfaces'
 
 export class ContractNumber implements InputMaskFormatterInterface {
-  name: DS.InputMask = 'contract-number'
+  name: InputMask = 'contract-number'
   maxLength = 10
 
   format(value: string | null): string | null {

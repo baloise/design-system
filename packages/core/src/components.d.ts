@@ -5,10 +5,66 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 import { DsConfigState } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
+import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
+import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonSpinner, ButtonTarget } from "./components/button/button.interfaces";
+import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardSpace } from "./components/card/card.interfaces";
+import { HeadingColor, HeadingLevel, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
+import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
+import { CloseSize } from "./components/close/close.interfaces";
+import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
+import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
+import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
+import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+import { LabelSize } from "./components/label/label.interfaces";
+import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
+import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
+import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
+import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
+import { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
+import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
+import { SegmentBlurDetail, SegmentChangeDetail, SegmentColor, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
+import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
+import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
+import { SpinnerColor, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
+import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
+import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
+import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
+import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 export { DsConfigState } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
+export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
+export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonSpinner, ButtonTarget } from "./components/button/button.interfaces";
+export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardSpace } from "./components/card/card.interfaces";
+export { HeadingColor, HeadingLevel, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
+export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
+export { CloseSize } from "./components/close/close.interfaces";
+export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
+export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
+export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
+export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+export { LabelSize } from "./components/label/label.interfaces";
+export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
+export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
+export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
+export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
+export { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
+export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
+export { SegmentBlurDetail, SegmentChangeDetail, SegmentColor, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
+export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
+export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
+export { SpinnerColor, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
+export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
+export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
+export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
+export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleTileColor } from "./components/toggle/toggle.interfaces";
 export namespace Components {
     interface DsAccordion {
         /**
@@ -20,27 +76,32 @@ export namespace Components {
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
          */
-        "buttonColor": DS.ButtonColor;
+        "buttonColor": AccordionButtonColor;
         /**
           * BalIcon of the close trigger button
+          * @default ''
          */
-        "buttonIconClose"?: string;
+        "buttonIconClose": string;
         /**
           * BalIcon of the open trigger button
+          * @default ''
          */
-        "buttonIconOpen"?: string;
+        "buttonIconOpen": string;
         /**
           * Label of the close trigger button
+          * @default ''
          */
-        "buttonLabelClose"?: string;
+        "buttonLabelClose": string;
         /**
           * Label of the open trigger button
+          * @default ''
          */
-        "buttonLabelOpen"?: string;
+        "buttonLabelOpen": string;
         /**
           * The size of the button. Only applies if `button` is `true`.
+          * @default ''
          */
-        "buttonSize"?: DS.ButtonSize;
+        "buttonSize": AccordionButtonSize;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -49,16 +110,19 @@ export namespace Components {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+          * @default ''
          */
-        "group"?: string;
+        "group": string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+          * @default ''
          */
-        "marker"?: DS.AccordionMarker;
+        "marker": AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
+          * @default ''
          */
-        "markerPosition"?: DS.AccordionMarkerPosition;
+        "markerPosition": AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -68,15 +132,17 @@ export namespace Components {
           * The heading level of the summary
           * @default 'h3'
          */
-        "summaryLevel": DS.AccordionSummaryLevel;
+        "summaryLevel": AccordionSummaryLevel;
         /**
           * If `true` the summary is styled as a title.
+          * @default false
          */
-        "summaryTitle"?: boolean;
+        "summaryTitle": boolean;
         /**
           * The visual heading level of the summary.
+          * @default ''
          */
-        "summaryVisualLevel"?: DS.AccordionSummaryLevel;
+        "summaryVisualLevel": AccordionSummaryLevel;
     }
     interface DsAlertContainer {
         "addAlert": (alert: Alert) => Promise<string>;
@@ -113,16 +179,17 @@ export namespace Components {
           * Define the color for the badge.
           * @default ''
          */
-        "color": DS.BadgeColor;
+        "color": BadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
+          * @default ''
          */
-        "icon"?: string;
+        "icon": string;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default ''
          */
-        "position": DS.BadgePosition;
+        "position": BadgePosition;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default false
@@ -132,29 +199,29 @@ export namespace Components {
           * Define the size of badge. Small is recommended for tabs.
           * @default ''
          */
-        "size": DS.BadgeSize;
+        "size": BadgeSize;
     }
     interface DsButton {
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
-        "a11yControls"?: string;
+        "a11yControls": string;
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
-        "a11yHaspopup"?: string;
+        "a11yHaspopup": string;
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
-        "a11yLabel"?: string;
+        "a11yLabel": string;
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
-        "a11yTitle"?: string;
+        "a11yTitle": string;
         /**
           * If `true` the button is circular and width of the buttons is limited
           * @default false
@@ -164,7 +231,7 @@ export namespace Components {
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
-        "color": DS.ButtonColor;
+        "color": ButtonColor;
         /**
           * If `true` the button has a dashed border.
           * @default false
@@ -177,13 +244,14 @@ export namespace Components {
         "disabled": boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+          * @default ''
          */
-        "download"?: string;
+        "download": string;
         /**
           * The type of button.
           * @default 'button'
          */
-        "elementType": DS.ButtonElementType;
+        "elementType": ButtonElementType;
         /**
           * If `true` the button has no padding and a reduced height
           * @default false
@@ -191,16 +259,19 @@ export namespace Components {
         "flat": boolean;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
-        "href"?: string;
+        "href": string;
         /**
           * Name of the left button icon
+          * @default ''
          */
-        "icon"?: string;
+        "icon": string;
         /**
           * Name of the right button icon
+          * @default ''
          */
-        "iconRight"?: string;
+        "iconRight": string;
         /**
           * If `true` the icon turns
           * @default false
@@ -215,11 +286,12 @@ export namespace Components {
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading": DS.ButtonSpinner;
+        "loading": ButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
+          * @default ''
          */
-        "name"?: string;
+        "name": string;
         /**
           * The label of the button will not break
           * @default false
@@ -232,8 +304,9 @@ export namespace Components {
         "outlined": boolean;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+          * @default ''
          */
-        "rel"?: string;
+        "rel": string;
         /**
           * If `true` the button is rounded.
           * @default false
@@ -248,7 +321,7 @@ export namespace Components {
           * Size of the button
           * @default undefined
          */
-        "size": DS.ButtonSize;
+        "size": ButtonSize;
         /**
           * If `true` the width of the buttons is limited
           * @default false
@@ -258,11 +331,12 @@ export namespace Components {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target": DS.ButtonTarget;
+        "target": ButtonTarget;
         /**
           * The value of the button, which is submitted with the form data.
+          * @default ''
          */
-        "value"?: string | number;
+        "value": string;
         /**
           * If `true` the button has a full width
           * @default false
@@ -273,12 +347,12 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: DS.ButtonGroupAlignment;
+        "align"?: ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
          */
-        "direction": DS.ButtonGroupDirection;
+        "direction": ButtonGroupDirection;
         /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
@@ -294,7 +368,7 @@ export namespace Components {
         /**
           * Defines the text alignment of the card content.
          */
-        "align"?: DS.CardAlignment;
+        "align"?: CardAlignment;
         /**
           * If `true` the card has a hover effect.
           * @default false
@@ -303,7 +377,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color"?: DS.CardColor;
+        "color"?: CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -341,7 +415,7 @@ export namespace Components {
         /**
           * Defines the space of the card content.
          */
-        "space"?: DS.CardSpace;
+        "space"?: CardSpace;
         /**
           * If `true` the card loses its border radius.
           * @default false
@@ -357,7 +431,7 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: DS.CardActionsAlignment;
+        "align"?: CardActionsAlignment;
     }
     interface DsCardContent {
     }
@@ -365,7 +439,7 @@ export namespace Components {
         /**
           * @default 'row'
          */
-        "direction": DS.CardHeaderDirection;
+        "direction": CardHeaderDirection;
     }
     interface DsCardSubtitle {
         /**
@@ -377,7 +451,7 @@ export namespace Components {
           * If `true` the card text color becomes white.
           * @default ''
          */
-        "color": DS.HeadingColor;
+        "color": HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -394,11 +468,12 @@ export namespace Components {
           * The actual heading level used in the HTML markup.
           * @default 'h3'
          */
-        "level": DS.HeadingLevel;
+        "level": HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+          * @default ''
          */
-        "visualLevel"?: DS.HeadingVisualLevel;
+        "visualLevel": HeadingVisualLevel;
     }
     interface DsCheckbox {
         /**
@@ -414,15 +489,15 @@ export namespace Components {
         /**
           * @default 1
          */
-        "cols": DS.CheckboxGroupColumns;
+        "cols": CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile": DS.CheckboxGroupColumns;
+        "colsMobile": CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet": DS.CheckboxGroupColumns;
+        "colsTablet": CheckboxGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -442,7 +517,7 @@ export namespace Components {
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition": DS.CheckboxLabelPosition;
+        "labelPosition": CheckboxLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -466,7 +541,7 @@ export namespace Components {
         /**
           * Defines the color of the tile checkbox.
          */
-        "tileColor"?: DS.CheckboxTileColor;
+        "tileColor"?: CheckboxTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
           * @default 'on'
@@ -478,22 +553,22 @@ export namespace Components {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color": DS.InputColor;
+        "color": InputColor;
         /**
           * Defines the column size like the grid.
           * @default 1
          */
-        "cols": DS.CheckboxGroupColumns;
+        "cols": CheckboxGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
           * @default 1
          */
-        "colsMobile": DS.CheckboxGroupColumns;
+        "colsMobile": CheckboxGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
           * @default 1
          */
-        "colsTablet": DS.CheckboxGroupColumns;
+        "colsTablet": CheckboxGroupColumns;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` it acts as the main form control
@@ -502,8 +577,9 @@ export namespace Components {
         "control": boolean;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
-        "description"?: string;
+        "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -514,17 +590,19 @@ export namespace Components {
         "invalid": boolean | undefined;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
-        "invalidText"?: string;
+        "invalidText": string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
-        "label"?: string;
+        "label": string;
         /**
           * Defines the position of the label, either before or after the checkbox input. Default is after.
           * @default 'right'
          */
-        "labelPosition": DS.CheckboxLabelPosition;
+        "labelPosition": CheckboxLabelPosition;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -552,7 +630,7 @@ export namespace Components {
         /**
           * Defines the color of the tile checkbox.
          */
-        "tileColor"?: DS.CheckboxTileColor;
+        "tileColor"?: CheckboxTileColor;
         /**
           * The value of the control.
           * @default []
@@ -573,7 +651,7 @@ export namespace Components {
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
-        "buttonColor"?: DS.ButtonColor;
+        "buttonColor"?: ButtonColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
@@ -588,37 +666,37 @@ export namespace Components {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: DS.CloseSize;
+        "size"?: CloseSize;
     }
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
          */
-        "align"?: DS.ContentAlignment;
-        "alignment"?: DS.StackAlignment;
+        "align"?: ContentAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
          */
-        "direction"?: DS.StackDirection;
+        "direction"?: StackDirection;
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: DS.StackLayout;
+        "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
-        "space"?: DS.ContentSpace;
+        "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
          */
-        "textAlign"?: DS.ContentTextAlignment;
+        "textAlign"?: ContentTextAlignment;
     }
     interface DsDivider {
         /**
           * Defines the color of the separator line.
           * @default 'grey'
          */
-        "color": DS.DividerColor;
+        "color": DividerColor;
         /**
           * Defines if the separator line is dashed or solid. Default is solid.
           * @default false
@@ -628,12 +706,12 @@ export namespace Components {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
           * @default 'horizontal'
          */
-        "layout": DS.DividerLayout;
+        "layout": DividerLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
           * @default 'none'
          */
-        "space": DS.DividerSpace;
+        "space": DividerSpace;
     }
     interface DsDocApp {
         /**
@@ -672,12 +750,12 @@ export namespace Components {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "autoLevel"?: DS.HeadingVisualLevel;
+        "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
           * @default ''
          */
-        "color": DS.HeadingColor;
+        "color": HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -687,7 +765,7 @@ export namespace Components {
           * The actual heading level used in the HTML markup.
           * @default 'h1'
          */
-        "level": DS.HeadingLevel;
+        "level": HeadingLevel;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
           * @default false
@@ -710,13 +788,13 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: DS.HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     interface DsIcon {
         /**
           * The theme type of the button.
          */
-        "color"?: DS.IconColor;
+        "color"?: IconColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -740,8 +818,9 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Name of the baloise icon.
+          * @default ''
          */
-        "name"?: string;
+        "name": string;
         /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
@@ -750,15 +829,16 @@ export namespace Components {
         /**
           * If `true` the icon is displayed in a circle with a background color.
          */
-        "shape"?: DS.IconShape;
+        "shape"?: IconShape;
         /**
           * Defines the size of the icon.
          */
-        "size": DS.IconSize;
+        "size": IconSize;
         /**
           * Svg content.
+          * @default ''
          */
-        "svg"?: string;
+        "svg": string;
         /**
           * If `true` the icon acts as a tile with a background color.
           * @default false
@@ -768,7 +848,7 @@ export namespace Components {
           * If `true` the icon acts as a tile with a background color. Default is purple
           * @default 'purple'
          */
-        "tileColor": DS.IconTileColor;
+        "tileColor": IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -778,12 +858,14 @@ export namespace Components {
     interface DsInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+          * @default ''
          */
-        "accept"?: string;
+        "accept": string;
         /**
           * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+          * @default ''
          */
-        "allowedKeyPress"?: string;
+        "allowedKeyPress": string;
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
           * @default false
@@ -798,12 +880,12 @@ export namespace Components {
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
          */
-        "autocomplete": DS.InputAutocomplete;
+        "autocomplete": InputAutocomplete;
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
           * @default 'off'
          */
-        "autocorrect": DS.InputAutocorrect;
+        "autocorrect": InputAutocorrect;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
           * @default false
@@ -813,7 +895,7 @@ export namespace Components {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color": DS.InputColor;
+        "color": InputColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -822,8 +904,9 @@ export namespace Components {
         "debounce": 0;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
-        "description"?: string;
+        "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -836,7 +919,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: DS.InputInputMode;
+        "inputmode"?: InputInputMode;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -844,12 +927,14 @@ export namespace Components {
         "invalid": boolean;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
-        "invalidText"?: string;
+        "invalidText": string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
-        "label"?: string;
+        "label": string;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -859,19 +944,21 @@ export namespace Components {
           * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'basic-contract-number': '99/1.234.567' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
           * @default undefined
          */
-        "mask"?: DS.InputMask;
+        "mask"?: InputMask;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
+          * @default ''
          */
-        "max"?: string;
+        "max": string;
         /**
           * Defines the max length of the value.
          */
         "maxLength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
+          * @default ''
          */
-        "min"?: string;
+        "min": string;
         /**
           * Defines the min length of the value.
          */
@@ -887,12 +974,14 @@ export namespace Components {
         "name": string;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+          * @default ''
          */
-        "pattern"?: string;
+        "pattern": string;
         /**
           * Instructional text that shows before the input has a value.
+          * @default ''
          */
-        "placeholder"?: string;
+        "placeholder": string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -918,13 +1007,14 @@ export namespace Components {
         "spellcheck": boolean;
         /**
           * Adds a suffix the the input-value after blur.
+          * @default ''
          */
-        "suffix"?: string;
+        "suffix": string;
         /**
           * Defines the type of the input (text, number, email ...).
           * @default 'text'
          */
-        "type": DS.InputInputType;
+        "type": InputInputType;
         /**
           * The value of the input.
           * @default null
@@ -934,16 +1024,17 @@ export namespace Components {
     interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+          * @default ''
          */
-        "accordionGroup"?: string;
+        "accordionGroup": string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
          */
-        "accordionMarker"?: DS.AccordionMarker;
+        "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
          */
-        "accordionMarkerPosition"?: DS.AccordionMarkerPosition;
+        "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -953,7 +1044,10 @@ export namespace Components {
           * @default 'default'
          */
         "actionIcon": 'link' | 'link-external' | 'download' | 'default';
-        "description"?: string;
+        /**
+          * @default ''
+         */
+        "description": string;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -961,13 +1055,18 @@ export namespace Components {
         "disabled": boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+          * @default ''
          */
-        "download"?: string;
+        "download": string;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
-        "href"?: string;
-        "label"?: string;
+        "href": string;
+        /**
+          * @default ''
+         */
+        "label": string;
         /**
           * @default 'h5'
          */
@@ -975,13 +1074,14 @@ export namespace Components {
         "labelSize"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base';
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+          * @default ''
          */
-        "rel"?: string;
+        "rel": string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target": DS.ButtonTarget;
+        "target": ButtonTarget;
         /**
           * @default 'default'
          */
@@ -1000,14 +1100,14 @@ export namespace Components {
         "hovered": boolean;
         /**
           * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
-          * @default undefined
+          * @default ''
          */
-        "htmlFor"?: string;
+        "htmlFor": string;
         /**
           * Define the id of the native label element
           * @default `ds-lbl-${labelIds++}`
          */
-        "htmlId"?: string;
+        "htmlId": string;
         /**
           * If `true` the component gets a invalid red style.
           * @default false
@@ -1030,7 +1130,7 @@ export namespace Components {
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
-        "size"?: DS.LabelSize;
+        "size"?: LabelSize;
         /**
           * If `true` the component gets a valid green style.
           * @default false
@@ -1053,17 +1153,17 @@ export namespace Components {
           * Defines the brand of the logo. Default is 'baloise'.
           * @default ''
          */
-        "brand": DS.LogoBrand;
+        "brand": LogoBrand;
         /**
           * Defines the color of the logo.
           * @default 'primary'
          */
-        "color": DS.LogoColor;
+        "color": LogoColor;
         /**
           * Size of the logo svg
           * @default ''
          */
-        "size": DS.LogoSize;
+        "size": LogoSize;
     }
     interface DsNotification {
         /**
@@ -1087,11 +1187,12 @@ export namespace Components {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: DS.NotificationColor;
+        "color"?: NotificationColor;
         /**
           * Defines the heading of the notification.
+          * @default ''
          */
-        "heading"?: string;
+        "heading": string;
         /**
           * If `true` there will be no icon provided
           * @default false
@@ -1100,14 +1201,14 @@ export namespace Components {
         /**
           * Defines the size of the notification, small, medium or large.
          */
-        "size"?: DS.NotificationSize;
+        "size"?: NotificationSize;
     }
     interface DsNumberInput {
         /**
           * Defines the color state of the input.
           * @default 'primary'
          */
-        "color": DS.InputColor;
+        "color": InputColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
@@ -1121,8 +1222,9 @@ export namespace Components {
         "decimal": 0;
         /**
           * The description displayed below the field.
+          * @default ''
          */
-        "description"?: string;
+        "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or submitted with the form.
           * @default false
@@ -1144,20 +1246,24 @@ export namespace Components {
         "invalid": boolean;
         /**
           * Text shown in the description area when `invalid` is true.
+          * @default ''
          */
-        "invalidText"?: string;
+        "invalidText": string;
         /**
           * The label displayed above the field.
+          * @default ''
          */
-        "label"?: string;
+        "label": string;
         /**
           * The maximum value.
+          * @default ''
          */
-        "max"?: string;
+        "max": string;
         /**
           * The minimum value.
+          * @default ''
          */
-        "min"?: string;
+        "min": string;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.numberInputId
@@ -1170,12 +1276,14 @@ export namespace Components {
         "onlyPositive": boolean;
         /**
           * Overrides the auto-generated input validation pattern.
+          * @default ''
          */
-        "pattern"?: string;
+        "pattern": string;
         /**
           * Instructional text shown when the input has no value.
+          * @default ''
          */
-        "placeholder"?: string;
+        "placeholder": string;
         /**
           * If `true`, the element cannot be edited by the user.
           * @default false
@@ -1196,8 +1304,9 @@ export namespace Components {
         "setFocus": () => Promise<void>;
         /**
           * Text appended to the formatted value after blur (e.g. `"CHF"`).
+          * @default ''
          */
-        "suffix"?: string;
+        "suffix": string;
         /**
           * The numeric value of the input. `null` means no value.
           * @default null
@@ -1209,7 +1318,7 @@ export namespace Components {
           * Align the buttons to start, center or end
           * @default ''
          */
-        "align": DS.PaginationAlignment;
+        "align": PaginationAlignment;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Disables component
@@ -1238,7 +1347,7 @@ export namespace Components {
           * Size of the buttons
           * @default ''
          */
-        "size": DS.PaginationSize;
+        "size": PaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
           * @default false
@@ -1273,19 +1382,19 @@ export namespace Components {
           * Defines the layout of the pagination
           * @default ''
          */
-        "variant": DS.PaginationVariant;
+        "variant": PaginationVariant;
     }
     interface DsProgressBar {
         /**
           * The background color
           * @default 'dark'
          */
-        "background": DS.ProgressBarBackground;
+        "background": ProgressBarBackground;
         /**
           * The progress bar color
           * @default 'primary'
          */
-        "color": DS.ProgressBarColor;
+        "color": ProgressBarColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
@@ -1307,15 +1416,15 @@ export namespace Components {
         /**
           * @default 1
          */
-        "cols": DS.RadioGroupColumns;
+        "cols": RadioGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile": DS.RadioGroupColumns;
+        "colsMobile": RadioGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet": DS.RadioGroupColumns;
+        "colsTablet": RadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1335,7 +1444,7 @@ export namespace Components {
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition": DS.RadioLabelPosition;
+        "labelPosition": RadioLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -1368,7 +1477,7 @@ export namespace Components {
         /**
           * Defines the color of the tile radio.
          */
-        "tileColor"?: DS.RadioTileColor;
+        "tileColor"?: RadioTileColor;
         "updateState": () => Promise<void>;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
@@ -1385,27 +1494,28 @@ export namespace Components {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color": DS.InputColor;
+        "color": InputColor;
         /**
           * Defines the column size like the grid.
           * @default 1
          */
-        "cols": DS.RadioGroupColumns;
+        "cols": RadioGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
           * @default 1
          */
-        "colsMobile": DS.RadioGroupColumns;
+        "colsMobile": RadioGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
           * @default 1
          */
-        "colsTablet": DS.RadioGroupColumns;
+        "colsTablet": RadioGroupColumns;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
-        "description"?: string;
+        "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -1416,17 +1526,19 @@ export namespace Components {
         "invalid": boolean | undefined;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
-        "invalidText"?: string;
+        "invalidText": string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
-        "label"?: string;
+        "label": string;
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition": DS.RadioLabelPosition;
+        "labelPosition": RadioLabelPosition;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -1455,7 +1567,7 @@ export namespace Components {
         /**
           * Defines the color of the tile checkbox.
          */
-        "tileColor"?: DS.RadioTileColor;
+        "tileColor"?: RadioTileColor;
         /**
           * the value of the radio group.
          */
@@ -1476,12 +1588,13 @@ export namespace Components {
           * Defines the color of the input. The default value is `primary`.
           * @default ''
          */
-        "color": DS.SegmentColor;
+        "color": SegmentColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
-        "description"?: string;
+        "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -1497,12 +1610,14 @@ export namespace Components {
         "invalid": boolean | undefined;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
-        "invalidText"?: string;
+        "invalidText": string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
-        "label"?: string;
+        "label": string;
         "listenToResize": () => Promise<void>;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
@@ -1562,8 +1677,9 @@ export namespace Components {
         "label": "";
         /**
           * Svg content for the icon.
+          * @default ''
          */
-        "svg"?: string;
+        "svg": string;
         /**
           * A DOMString representing the value of the segment item. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the item's name.
          */
@@ -1574,40 +1690,43 @@ export namespace Components {
           * The shape color
           * @default 'green'
          */
-        "color": DS.ShapeColor;
+        "color": ShapeColor;
         /**
           * The shape rotation
           * @default '0'
          */
-        "rotation": DS.ShapeRotation;
+        "rotation": ShapeRotation;
         /**
           * The shape variation
           * @default '1'
          */
-        "variation": DS.ShapeVariation;
+        "variation": ShapeVariation;
     }
     interface DsSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
          */
-        "action"?: string;
+        "action": string;
         /**
           * @default () => void 0
          */
         "actionHandler": (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
-        "actionHref"?: string;
+        "actionHref": string;
         /**
           * Defines the icon of the action button.
+          * @default ''
          */
-        "actionIcon"?: string;
+        "actionIcon": string;
         /**
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget": DS.ButtonTarget;
+        "actionTarget": ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -1628,23 +1747,25 @@ export namespace Components {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: DS.SnackbarColor;
+        "color"?: SnackbarColor;
         /**
           * Defines the heading of the notification.
          */
         "heading": string;
         /**
           * Defines the icon of the notification.
+          * @default ''
          */
-        "icon"?: string;
+        "icon": string;
         /**
           * Defines the message of the notification as html content
          */
         "message": string;
         /**
           * Defines the svg content of the icon
+          * @default ''
          */
-        "svg"?: string;
+        "svg": string;
         /**
           * @default true
          */
@@ -1655,7 +1776,7 @@ export namespace Components {
           * Defines the color of the spinner.
           * @default 'blue'
          */
-        "color": DS.SpinnerColor;
+        "color": SpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
           * @default false
@@ -1670,7 +1791,7 @@ export namespace Components {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
           * @default ''
          */
-        "size": DS.SpinnerSize;
+        "size": SpinnerSize;
         /**
           * @Deprecated Use size="sm" instead. If `true` the component is smaller
           * @default false
@@ -1680,19 +1801,19 @@ export namespace Components {
           * Defines the look of the spinner
           * @default 'logo'
          */
-        "variation": DS.SpinnerVariation;
+        "variation": SpinnerVariation;
     }
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
          */
-        "align"?: DS.StackAlignment;
-        "alignment"?: DS.StackAlignment;
+        "align"?: StackAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
           * @default 'column'
          */
-        "direction": DS.StackDirection;
+        "direction": StackDirection;
         /**
           * Defines the width of the stack to be exactly the with of the content.
           * @default false
@@ -1701,31 +1822,31 @@ export namespace Components {
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: DS.StackLayout;
+        "layout"?: StackLayout;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "p"?: DS.StackPadding;
+        "p"?: StackPadding;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "px"?: DS.StackPadding;
+        "px"?: StackPadding;
         /**
           * Defines the vertical padding top and bottom of the stack element.
          */
-        "py"?: DS.StackPadding;
+        "py"?: StackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "space"?: DS.StackSpace;
+        "space"?: StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceColumn"?: DS.StackSpace;
+        "spaceColumn"?: StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceRow"?: DS.StackSpace;
+        "spaceRow"?: StackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
           * @default false
@@ -1741,7 +1862,7 @@ export namespace Components {
         /**
           * The theme type of the tag.
          */
-        "color"?: DS.TagColor;
+        "color"?: TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1755,15 +1876,15 @@ export namespace Components {
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
          */
-        "position"?: DS.TagPlacement;
+        "position"?: TagPlacement;
         /**
           * The shape of the tag element like square or pill
          */
-        "shape"?: DS.TagShape;
+        "shape"?: TagShape;
         /**
           * The size of the tag element
          */
-        "size"?: DS.TagSize;
+        "size"?: TagSize;
     }
     interface DsTagGroup {
     }
@@ -1771,7 +1892,7 @@ export namespace Components {
         /**
           * If `true` the component gets a invalid style.
          */
-        "align"?: DS.TextAlign;
+        "align"?: TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -1780,7 +1901,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color"?: DS.TextColor;
+        "color"?: TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -1827,11 +1948,11 @@ export namespace Components {
         /**
           * Defines the size of the paragraph
          */
-        "size"?: DS.TextSize;
+        "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: DS.TextSpace;
+        "space"?: TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -1853,7 +1974,7 @@ export namespace Components {
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
          */
-        "autocomplete": DS.InputAutocomplete;
+        "autocomplete": InputAutocomplete;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
           * @default false
@@ -1863,7 +1984,7 @@ export namespace Components {
           * Defines the color state of the textarea.
           * @default 'primary'
          */
-        "color": DS.InputColor;
+        "color": InputColor;
         /**
           * The visible width of the text control, in average character widths.
          */
@@ -1876,8 +1997,9 @@ export namespace Components {
         "debounce": 0;
         /**
           * The description displayed below the textarea field.
+          * @default ''
          */
-        "description"?: string;
+        "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form.
           * @default false
@@ -1890,7 +2012,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display.
          */
-        "inputmode"?: DS.TextareaInputMode;
+        "inputmode"?: TextareaInputMode;
         /**
           * If `true` the component gets an invalid style.
           * @default false
@@ -1898,12 +2020,14 @@ export namespace Components {
         "invalid": boolean;
         /**
           * Text shown in the description area when `invalid` is true.
+          * @default ''
          */
-        "invalidText"?: string;
+        "invalidText": string;
         /**
           * The label displayed above the textarea field.
+          * @default ''
          */
-        "label"?: string;
+        "label": string;
         /**
           * Specifies the maximum number of characters that the user can enter.
          */
@@ -1914,13 +2038,14 @@ export namespace Components {
         "minLength"?: number;
         /**
           * The name of the control, which is submitted with the form data.
-          * @default this.textareaId
+          * @default this.inputId
          */
         "name": string;
         /**
           * Instructional text that shows before the textarea has a value.
+          * @default ''
          */
-        "placeholder"?: string;
+        "placeholder": string;
         /**
           * If `true` the element can not be mutated, meaning the user can not edit the control.
           * @default false
@@ -1951,30 +2076,33 @@ export namespace Components {
         /**
           * Indicates how the control wraps text.
          */
-        "wrap"?: DS.TextareaWrap;
+        "wrap"?: TextareaWrap;
     }
     interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
          */
-        "action"?: string;
+        "action": string;
         /**
           * @default () => void 0
          */
         "actionHandler": (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
-        "actionHref"?: string;
+        "actionHref": string;
         /**
           * Defines the icon of the action button.
+          * @default ''
          */
-        "actionIcon"?: string;
+        "actionIcon": string;
         /**
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget": DS.ButtonTarget;
+        "actionTarget": ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -1995,28 +2123,30 @@ export namespace Components {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: DS.ToastColor;
+        "color"?: ToastColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * @default 0
          */
-        "duration": DS.ToastDuration;
+        "duration": ToastDuration;
         /**
           * Defines the heading of the notification.
          */
         "heading": string;
         /**
           * Defines the icon of the notification.
+          * @default ''
          */
-        "icon"?: string;
+        "icon": string;
         /**
           * Defines the message of the notification as html content
          */
         "message": string;
         /**
           * Defines the svg content of the icon
+          * @default ''
          */
-        "svg"?: string;
+        "svg": string;
         /**
           * @default true
          */
@@ -2036,19 +2166,19 @@ export namespace Components {
         /**
           * Defines the color of the tile toggle.
          */
-        "color"?: DS.ToggleTileColor;
+        "color"?: ToggleTileColor;
         /**
           * @default 1
          */
-        "cols": DS.CheckboxGroupColumns;
+        "cols": CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile": DS.CheckboxGroupColumns;
+        "colsMobile": CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet": DS.CheckboxGroupColumns;
+        "colsTablet": CheckboxGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2068,7 +2198,7 @@ export namespace Components {
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition": DS.CheckboxLabelPosition;
+        "labelPosition": CheckboxLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -2174,9 +2304,9 @@ export interface DsToggleCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLDsAccordionElementEventMap {
-        "dsToggle": DS.AccordionToggleDetail;
-        "dsOpened": DS.AccordionToggleDetail;
-        "dsClosed": DS.AccordionToggleDetail;
+        "dsToggle": AccordionToggleDetail;
+        "dsOpened": AccordionToggleDetail;
+        "dsClosed": AccordionToggleDetail;
     }
     interface HTMLDsAccordionElement extends Components.DsAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsAccordionElementEventMap>(type: K, listener: (this: HTMLDsAccordionElement, ev: DsAccordionCustomEvent<HTMLDsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2222,11 +2352,11 @@ declare global {
         new (): HTMLDsBadgeElement;
     };
     interface HTMLDsButtonElementEventMap {
-        "dsClick": DS.ButtonClickDetail;
-        "dsNavigate": DS.ButtonNavigateDetail;
-        "dsFocus": DS.ButtonFocusDetail;
-        "dsBlur": DS.ButtonBlurDetail;
-        "dsDidRender": DS.ButtonDidRenderDetail;
+        "dsClick": ButtonClickDetail;
+        "dsNavigate": ButtonNavigateDetail;
+        "dsFocus": ButtonFocusDetail;
+        "dsBlur": ButtonBlurDetail;
+        "dsDidRender": ButtonDidRenderDetail;
     }
     interface HTMLDsButtonElement extends Components.DsButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsButtonElementEventMap>(type: K, listener: (this: HTMLDsButtonElement, ev: DsButtonCustomEvent<HTMLDsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2285,9 +2415,9 @@ declare global {
         new (): HTMLDsCardTitleElement;
     };
     interface HTMLDsCheckboxElementEventMap {
-        "dsFocus": DS.CheckboxFocusDetail;
-        "dsBlur": DS.CheckboxBlurDetail;
-        "dsChange": DS.CheckboxChangeDetail;
+        "dsFocus": CheckboxFocusDetail;
+        "dsBlur": CheckboxBlurDetail;
+        "dsChange": CheckboxChangeDetail;
     }
     interface HTMLDsCheckboxElement extends Components.DsCheckbox, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsCheckboxElementEventMap>(type: K, listener: (this: HTMLDsCheckboxElement, ev: DsCheckboxCustomEvent<HTMLDsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2304,9 +2434,9 @@ declare global {
         new (): HTMLDsCheckboxElement;
     };
     interface HTMLDsCheckboxGroupElementEventMap {
-        "dsBlur": DS.CheckboxGroupBlurDetail;
-        "dsFocus": DS.CheckboxGroupFocusDetail;
-        "dsChange": DS.CheckboxGroupChangeDetail;
+        "dsBlur": CheckboxGroupBlurDetail;
+        "dsFocus": CheckboxGroupFocusDetail;
+        "dsChange": CheckboxGroupChangeDetail;
     }
     interface HTMLDsCheckboxGroupElement extends Components.DsCheckboxGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLDsCheckboxGroupElement, ev: DsCheckboxGroupCustomEvent<HTMLDsCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2359,12 +2489,12 @@ declare global {
         new (): HTMLDsIconElement;
     };
     interface HTMLDsInputElementEventMap {
-        "dsBlur": DS.InputBlurDetail;
-        "dsKeyPress": DS.InputKeyPressDetail;
-        "dsFocus": DS.InputFocusDetail;
-        "dsClick": DS.InputClickDetail;
-        "dsInput": DS.InputInputDetail;
-        "dsChange": DS.InputChangeDetail;
+        "dsBlur": InputBlurDetail;
+        "dsKeyPress": InputKeyPressDetail;
+        "dsFocus": InputFocusDetail;
+        "dsClick": InputClickDetail;
+        "dsInput": InputInputDetail;
+        "dsChange": InputChangeDetail;
     }
     interface HTMLDsInputElement extends Components.DsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2381,10 +2511,10 @@ declare global {
         new (): HTMLDsInputElement;
     };
     interface HTMLDsItemElementEventMap {
-        "dsClick": DS.ButtonClickDetail;
-        "dsAccordionToggle": DS.AccordionToggleDetail;
-        "dsAccordionOpened": DS.AccordionToggleDetail;
-        "dsAccordionClosed": DS.AccordionToggleDetail;
+        "dsClick": ButtonClickDetail;
+        "dsAccordionToggle": AccordionToggleDetail;
+        "dsAccordionOpened": AccordionToggleDetail;
+        "dsAccordionClosed": AccordionToggleDetail;
     }
     interface HTMLDsItemElement extends Components.DsItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsItemElementEventMap>(type: K, listener: (this: HTMLDsItemElement, ev: DsItemCustomEvent<HTMLDsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2419,7 +2549,7 @@ declare global {
         new (): HTMLDsLogoElement;
     };
     interface HTMLDsNotificationElementEventMap {
-        "dsCloseClick": DS.NotificationCloseClickDetail;
+        "dsCloseClick": NotificationCloseClickDetail;
         "dsDidLoad": void;
     }
     interface HTMLDsNotificationElement extends Components.DsNotification, HTMLStencilElement {
@@ -2437,12 +2567,12 @@ declare global {
         new (): HTMLDsNotificationElement;
     };
     interface HTMLDsNumberInputElementEventMap {
-        "dsInput": DS.NumberInputInputDetail;
-        "dsChange": DS.NumberInputChangeDetail;
-        "dsBlur": DS.NumberInputBlurDetail;
-        "dsFocus": DS.NumberInputFocusDetail;
-        "dsClick": DS.NumberInputClickDetail;
-        "dsKeyPress": DS.NumberInputKeyPressDetail;
+        "dsInput": NumberInputInputDetail;
+        "dsChange": NumberInputChangeDetail;
+        "dsBlur": NumberInputBlurDetail;
+        "dsFocus": NumberInputFocusDetail;
+        "dsClick": NumberInputClickDetail;
+        "dsKeyPress": NumberInputKeyPressDetail;
     }
     interface HTMLDsNumberInputElement extends Components.DsNumberInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsNumberInputElementEventMap>(type: K, listener: (this: HTMLDsNumberInputElement, ev: DsNumberInputCustomEvent<HTMLDsNumberInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2459,7 +2589,7 @@ declare global {
         new (): HTMLDsNumberInputElement;
     };
     interface HTMLDsPaginationElementEventMap {
-        "dsChange": DS.PaginationChangeDetail;
+        "dsChange": PaginationChangeDetail;
     }
     interface HTMLDsPaginationElement extends Components.DsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsPaginationElementEventMap>(type: K, listener: (this: HTMLDsPaginationElement, ev: DsPaginationCustomEvent<HTMLDsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2482,9 +2612,9 @@ declare global {
         new (): HTMLDsProgressBarElement;
     };
     interface HTMLDsRadioElementEventMap {
-        "dsFocus": DS.RadioFocusDetail;
-        "dsBlur": DS.RadioBlurDetail;
-        "dsChange": DS.RadioChangeDetail;
+        "dsFocus": RadioFocusDetail;
+        "dsBlur": RadioBlurDetail;
+        "dsChange": RadioChangeDetail;
     }
     interface HTMLDsRadioElement extends Components.DsRadio, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsRadioElementEventMap>(type: K, listener: (this: HTMLDsRadioElement, ev: DsRadioCustomEvent<HTMLDsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2501,9 +2631,9 @@ declare global {
         new (): HTMLDsRadioElement;
     };
     interface HTMLDsRadioGroupElementEventMap {
-        "dsBlur": DS.RadioGroupBlurDetail;
-        "dsFocus": DS.RadioGroupFocusDetail;
-        "dsChange": DS.RadioGroupChangeDetail;
+        "dsBlur": RadioGroupBlurDetail;
+        "dsFocus": RadioGroupFocusDetail;
+        "dsChange": RadioGroupChangeDetail;
     }
     interface HTMLDsRadioGroupElement extends Components.DsRadioGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsRadioGroupElementEventMap>(type: K, listener: (this: HTMLDsRadioGroupElement, ev: DsRadioGroupCustomEvent<HTMLDsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2520,9 +2650,9 @@ declare global {
         new (): HTMLDsRadioGroupElement;
     };
     interface HTMLDsSegmentElementEventMap {
-        "dsBlur": DS.SegmentBlurDetail;
-        "dsFocus": DS.SegmentFocusDetail;
-        "dsChange": DS.SegmentChangeDetail;
+        "dsBlur": SegmentBlurDetail;
+        "dsFocus": SegmentFocusDetail;
+        "dsChange": SegmentChangeDetail;
     }
     interface HTMLDsSegmentElement extends Components.DsSegment, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsSegmentElementEventMap>(type: K, listener: (this: HTMLDsSegmentElement, ev: DsSegmentCustomEvent<HTMLDsSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2562,8 +2692,8 @@ declare global {
         new (): HTMLDsShapeElement;
     };
     interface HTMLDsSnackbarElementEventMap {
-        "dsCloseClick": DS.SnackbarCloseClickDetail;
-        "dsActionClick": DS.SnackbarActionClickDetail;
+        "dsCloseClick": SnackbarCloseClickDetail;
+        "dsActionClick": SnackbarActionClickDetail;
         "dsDidLoad": void;
     }
     interface HTMLDsSnackbarElement extends Components.DsSnackbar, HTMLStencilElement {
@@ -2593,7 +2723,7 @@ declare global {
         new (): HTMLDsStackElement;
     };
     interface HTMLDsTagElementEventMap {
-        "dsCloseClick": DS.TagCloseClickDetail;
+        "dsCloseClick": TagCloseClickDetail;
     }
     interface HTMLDsTagElement extends Components.DsTag, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsTagElementEventMap>(type: K, listener: (this: HTMLDsTagElement, ev: DsTagCustomEvent<HTMLDsTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2622,12 +2752,12 @@ declare global {
         new (): HTMLDsTextElement;
     };
     interface HTMLDsTextareaElementEventMap {
-        "dsBlur": DS.TextareaBlurDetail;
-        "dsKeyPress": DS.TextareaKeyPressDetail;
-        "dsFocus": DS.TextareaFocusDetail;
-        "dsClick": DS.TextareaClickDetail;
-        "dsInput": DS.TextareaInputDetail;
-        "dsChange": DS.TextareaChangeDetail;
+        "dsBlur": TextareaBlurDetail;
+        "dsKeyPress": TextareaKeyPressDetail;
+        "dsFocus": TextareaFocusDetail;
+        "dsClick": TextareaClickDetail;
+        "dsInput": TextareaInputDetail;
+        "dsChange": TextareaChangeDetail;
     }
     interface HTMLDsTextareaElement extends Components.DsTextarea, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsTextareaElementEventMap>(type: K, listener: (this: HTMLDsTextareaElement, ev: DsTextareaCustomEvent<HTMLDsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2644,8 +2774,8 @@ declare global {
         new (): HTMLDsTextareaElement;
     };
     interface HTMLDsToastElementEventMap {
-        "dsCloseClick": DS.ToastCloseClickDetail;
-        "dsActionClick": DS.ToastActionClickDetail;
+        "dsCloseClick": ToastCloseClickDetail;
+        "dsActionClick": ToastActionClickDetail;
         "dsDidLoad": void;
         "dsDidPause": void;
         "dsDidResume": void;
@@ -2665,9 +2795,9 @@ declare global {
         new (): HTMLDsToastElement;
     };
     interface HTMLDsToggleElementEventMap {
-        "dsFocus": DS.ToggleFocusDetail;
-        "dsBlur": DS.ToggleBlurDetail;
-        "dsChange": DS.ToggleChangeDetail;
+        "dsFocus": ToggleFocusDetail;
+        "dsBlur": ToggleBlurDetail;
+        "dsChange": ToggleChangeDetail;
     }
     interface HTMLDsToggleElement extends Components.DsToggle, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsToggleElementEventMap>(type: K, listener: (this: HTMLDsToggleElement, ev: DsToggleCustomEvent<HTMLDsToggleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2740,27 +2870,32 @@ declare namespace LocalJSX {
           * The color of the button. Only applies if `button` is `true`.
           * @default 'primary'
          */
-        "buttonColor"?: DS.ButtonColor;
+        "buttonColor"?: AccordionButtonColor;
         /**
           * BalIcon of the close trigger button
+          * @default ''
          */
         "buttonIconClose"?: string;
         /**
           * BalIcon of the open trigger button
+          * @default ''
          */
         "buttonIconOpen"?: string;
         /**
           * Label of the close trigger button
+          * @default ''
          */
         "buttonLabelClose"?: string;
         /**
           * Label of the open trigger button
+          * @default ''
          */
         "buttonLabelOpen"?: string;
         /**
           * The size of the button. Only applies if `button` is `true`.
+          * @default ''
          */
-        "buttonSize"?: DS.ButtonSize;
+        "buttonSize"?: AccordionButtonSize;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -2768,28 +2903,31 @@ declare namespace LocalJSX {
         "buttonWide"?: boolean;
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+          * @default ''
          */
         "group"?: string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+          * @default ''
          */
-        "marker"?: DS.AccordionMarker;
+        "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
+          * @default ''
          */
-        "markerPosition"?: DS.AccordionMarkerPosition;
+        "markerPosition"?: AccordionMarkerPosition;
         /**
           * Emitted when the accordion is closed.
          */
-        "onDsClosed"?: (event: DsAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsClosed"?: (event: DsAccordionCustomEvent<AccordionToggleDetail>) => void;
         /**
           * Emitted when the accordion is opened.
          */
-        "onDsOpened"?: (event: DsAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsOpened"?: (event: DsAccordionCustomEvent<AccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsToggle"?: (event: DsAccordionCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsToggle"?: (event: DsAccordionCustomEvent<AccordionToggleDetail>) => void;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -2799,15 +2937,17 @@ declare namespace LocalJSX {
           * The heading level of the summary
           * @default 'h3'
          */
-        "summaryLevel"?: DS.AccordionSummaryLevel;
+        "summaryLevel"?: AccordionSummaryLevel;
         /**
           * If `true` the summary is styled as a title.
+          * @default false
          */
         "summaryTitle"?: boolean;
         /**
           * The visual heading level of the summary.
+          * @default ''
          */
-        "summaryVisualLevel"?: DS.AccordionSummaryLevel;
+        "summaryVisualLevel"?: AccordionSummaryLevel;
     }
     interface DsAlertContainer {
         /**
@@ -2844,16 +2984,17 @@ declare namespace LocalJSX {
           * Define the color for the badge.
           * @default ''
          */
-        "color"?: DS.BadgeColor;
+        "color"?: BadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
+          * @default ''
          */
         "icon"?: string;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default ''
          */
-        "position"?: DS.BadgePosition;
+        "position"?: BadgePosition;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default false
@@ -2863,27 +3004,27 @@ declare namespace LocalJSX {
           * Define the size of badge. Small is recommended for tabs.
           * @default ''
          */
-        "size"?: DS.BadgeSize;
+        "size"?: BadgeSize;
     }
     interface DsButton {
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
         "a11yControls"?: string;
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
         "a11yHaspopup"?: string;
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
         "a11yLabel"?: string;
         /**
           * A11y attributes for the native button element.
-          * @default undefined
+          * @default ''
          */
         "a11yTitle"?: string;
         /**
@@ -2895,7 +3036,7 @@ declare namespace LocalJSX {
           * The color to use from your application's color palette.aaa
           * @default 'primary'
          */
-        "color"?: DS.ButtonColor;
+        "color"?: ButtonColor;
         /**
           * If `true` the button has a dashed border.
           * @default false
@@ -2908,13 +3049,14 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+          * @default ''
          */
         "download"?: string;
         /**
           * The type of button.
           * @default 'button'
          */
-        "elementType"?: DS.ButtonElementType;
+        "elementType"?: ButtonElementType;
         /**
           * If `true` the button has no padding and a reduced height
           * @default false
@@ -2926,14 +3068,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
         "href"?: string;
         /**
           * Name of the left button icon
+          * @default ''
          */
         "icon"?: string;
         /**
           * Name of the right button icon
+          * @default ''
          */
         "iconRight"?: string;
         /**
@@ -2950,9 +3095,10 @@ declare namespace LocalJSX {
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading"?: DS.ButtonSpinner;
+        "loading"?: ButtonSpinner;
         /**
           * The name of the button, which is submitted with the form data.
+          * @default ''
          */
         "name"?: string;
         /**
@@ -2963,23 +3109,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onDsBlur"?: (event: DsButtonCustomEvent<DS.ButtonBlurDetail>) => void;
+        "onDsBlur"?: (event: DsButtonCustomEvent<ButtonBlurDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onDsClick"?: (event: DsButtonCustomEvent<DS.ButtonClickDetail>) => void;
+        "onDsClick"?: (event: DsButtonCustomEvent<ButtonClickDetail>) => void;
         /**
           * Emitted when the button has been  rendered.
          */
-        "onDsDidRender"?: (event: DsButtonCustomEvent<DS.ButtonDidRenderDetail>) => void;
+        "onDsDidRender"?: (event: DsButtonCustomEvent<ButtonDidRenderDetail>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onDsFocus"?: (event: DsButtonCustomEvent<DS.ButtonFocusDetail>) => void;
+        "onDsFocus"?: (event: DsButtonCustomEvent<ButtonFocusDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onDsNavigate"?: (event: DsButtonCustomEvent<DS.ButtonNavigateDetail>) => void;
+        "onDsNavigate"?: (event: DsButtonCustomEvent<ButtonNavigateDetail>) => void;
         /**
           * If `true` the button is outlined
           * @default false
@@ -2987,6 +3133,7 @@ declare namespace LocalJSX {
         "outlined"?: boolean;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+          * @default ''
          */
         "rel"?: string;
         /**
@@ -3003,7 +3150,7 @@ declare namespace LocalJSX {
           * Size of the button
           * @default undefined
          */
-        "size"?: DS.ButtonSize;
+        "size"?: ButtonSize;
         /**
           * If `true` the width of the buttons is limited
           * @default false
@@ -3013,11 +3160,12 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target"?: DS.ButtonTarget;
+        "target"?: ButtonTarget;
         /**
           * The value of the button, which is submitted with the form data.
+          * @default ''
          */
-        "value"?: string | number;
+        "value"?: string;
         /**
           * If `true` the button has a full width
           * @default false
@@ -3028,12 +3176,12 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: DS.ButtonGroupAlignment;
+        "align"?: ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
          */
-        "direction"?: DS.ButtonGroupDirection;
+        "direction"?: ButtonGroupDirection;
         /**
           * If `true` the flex direction is used in reverse on mobile.
           * @default false
@@ -3049,7 +3197,7 @@ declare namespace LocalJSX {
         /**
           * Defines the text alignment of the card content.
          */
-        "align"?: DS.CardAlignment;
+        "align"?: CardAlignment;
         /**
           * If `true` the card has a hover effect.
           * @default false
@@ -3058,7 +3206,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: DS.CardColor;
+        "color"?: CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -3096,7 +3244,7 @@ declare namespace LocalJSX {
         /**
           * Defines the space of the card content.
          */
-        "space"?: DS.CardSpace;
+        "space"?: CardSpace;
         /**
           * If `true` the card loses its border radius.
           * @default false
@@ -3112,7 +3260,7 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "align"?: DS.CardActionsAlignment;
+        "align"?: CardActionsAlignment;
     }
     interface DsCardContent {
     }
@@ -3120,7 +3268,7 @@ declare namespace LocalJSX {
         /**
           * @default 'row'
          */
-        "direction"?: DS.CardHeaderDirection;
+        "direction"?: CardHeaderDirection;
     }
     interface DsCardSubtitle {
         /**
@@ -3132,7 +3280,7 @@ declare namespace LocalJSX {
           * If `true` the card text color becomes white.
           * @default ''
          */
-        "color"?: DS.HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -3149,11 +3297,12 @@ declare namespace LocalJSX {
           * The actual heading level used in the HTML markup.
           * @default 'h3'
          */
-        "level"?: DS.HeadingLevel;
+        "level"?: HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+          * @default ''
          */
-        "visualLevel"?: DS.HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     interface DsCheckbox {
         /**
@@ -3169,15 +3318,15 @@ declare namespace LocalJSX {
         /**
           * @default 1
          */
-        "cols"?: DS.CheckboxGroupColumns;
+        "cols"?: CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile"?: DS.CheckboxGroupColumns;
+        "colsMobile"?: CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet"?: DS.CheckboxGroupColumns;
+        "colsTablet"?: CheckboxGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3201,7 +3350,7 @@ declare namespace LocalJSX {
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition"?: DS.CheckboxLabelPosition;
+        "labelPosition"?: CheckboxLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -3210,15 +3359,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onDsBlur"?: (event: DsCheckboxCustomEvent<DS.CheckboxBlurDetail>) => void;
+        "onDsBlur"?: (event: DsCheckboxCustomEvent<CheckboxBlurDetail>) => void;
         /**
           * Emitted when the value property has changed.
          */
-        "onDsChange"?: (event: DsCheckboxCustomEvent<DS.CheckboxChangeDetail>) => void;
+        "onDsChange"?: (event: DsCheckboxCustomEvent<CheckboxChangeDetail>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onDsFocus"?: (event: DsCheckboxCustomEvent<DS.CheckboxFocusDetail>) => void;
+        "onDsFocus"?: (event: DsCheckboxCustomEvent<CheckboxFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -3237,7 +3386,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the tile checkbox.
          */
-        "tileColor"?: DS.CheckboxTileColor;
+        "tileColor"?: CheckboxTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
           * @default 'on'
@@ -3249,22 +3398,22 @@ declare namespace LocalJSX {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color"?: DS.InputColor;
+        "color"?: InputColor;
         /**
           * Defines the column size like the grid.
           * @default 1
          */
-        "cols"?: DS.CheckboxGroupColumns;
+        "cols"?: CheckboxGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
           * @default 1
          */
-        "colsMobile"?: DS.CheckboxGroupColumns;
+        "colsMobile"?: CheckboxGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
           * @default 1
          */
-        "colsTablet"?: DS.CheckboxGroupColumns;
+        "colsTablet"?: CheckboxGroupColumns;
         /**
           * If `true` it acts as the main form control
           * @default false
@@ -3272,6 +3421,7 @@ declare namespace LocalJSX {
         "control"?: boolean;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
         "description"?: string;
         /**
@@ -3288,17 +3438,19 @@ declare namespace LocalJSX {
         "invalid"?: boolean | undefined;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
         "invalidText"?: string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
         "label"?: string;
         /**
           * Defines the position of the label, either before or after the checkbox input. Default is after.
           * @default 'right'
          */
-        "labelPosition"?: DS.CheckboxLabelPosition;
+        "labelPosition"?: CheckboxLabelPosition;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -3312,15 +3464,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsBlur"?: (event: DsCheckboxGroupCustomEvent<DS.CheckboxGroupBlurDetail>) => void;
+        "onDsBlur"?: (event: DsCheckboxGroupCustomEvent<CheckboxGroupBlurDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsChange"?: (event: DsCheckboxGroupCustomEvent<DS.CheckboxGroupChangeDetail>) => void;
+        "onDsChange"?: (event: DsCheckboxGroupCustomEvent<CheckboxGroupChangeDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onDsFocus"?: (event: DsCheckboxGroupCustomEvent<DS.CheckboxGroupFocusDetail>) => void;
+        "onDsFocus"?: (event: DsCheckboxGroupCustomEvent<CheckboxGroupFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -3338,7 +3490,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the tile checkbox.
          */
-        "tileColor"?: DS.CheckboxTileColor;
+        "tileColor"?: CheckboxTileColor;
         /**
           * The value of the control.
           * @default []
@@ -3359,7 +3511,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
-        "buttonColor"?: DS.ButtonColor;
+        "buttonColor"?: ButtonColor;
         /**
           * If `true` the close component will be disabled and not interactive.
           * @default false
@@ -3373,37 +3525,37 @@ declare namespace LocalJSX {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: DS.CloseSize;
+        "size"?: CloseSize;
     }
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
          */
-        "align"?: DS.ContentAlignment;
-        "alignment"?: DS.StackAlignment;
+        "align"?: ContentAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
          */
-        "direction"?: DS.StackDirection;
+        "direction"?: StackDirection;
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: DS.StackLayout;
+        "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
-        "space"?: DS.ContentSpace;
+        "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
          */
-        "textAlign"?: DS.ContentTextAlignment;
+        "textAlign"?: ContentTextAlignment;
     }
     interface DsDivider {
         /**
           * Defines the color of the separator line.
           * @default 'grey'
          */
-        "color"?: DS.DividerColor;
+        "color"?: DividerColor;
         /**
           * Defines if the separator line is dashed or solid. Default is solid.
           * @default false
@@ -3413,12 +3565,12 @@ declare namespace LocalJSX {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
           * @default 'horizontal'
          */
-        "layout"?: DS.DividerLayout;
+        "layout"?: DividerLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
           * @default 'none'
          */
-        "space"?: DS.DividerSpace;
+        "space"?: DividerSpace;
     }
     interface DsDocApp {
         /**
@@ -3457,12 +3609,12 @@ declare namespace LocalJSX {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "autoLevel"?: DS.HeadingVisualLevel;
+        "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
           * @default ''
          */
-        "color"?: DS.HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -3472,7 +3624,7 @@ declare namespace LocalJSX {
           * The actual heading level used in the HTML markup.
           * @default 'h1'
          */
-        "level"?: DS.HeadingLevel;
+        "level"?: HeadingLevel;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
           * @default false
@@ -3495,13 +3647,13 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: DS.HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     interface DsIcon {
         /**
           * The theme type of the button.
          */
-        "color"?: DS.IconColor;
+        "color"?: IconColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3524,6 +3676,7 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Name of the baloise icon.
+          * @default ''
          */
         "name"?: string;
         /**
@@ -3534,13 +3687,14 @@ declare namespace LocalJSX {
         /**
           * If `true` the icon is displayed in a circle with a background color.
          */
-        "shape"?: DS.IconShape;
+        "shape"?: IconShape;
         /**
           * Defines the size of the icon.
          */
-        "size"?: DS.IconSize;
+        "size"?: IconSize;
         /**
           * Svg content.
+          * @default ''
          */
         "svg"?: string;
         /**
@@ -3552,7 +3706,7 @@ declare namespace LocalJSX {
           * If `true` the icon acts as a tile with a background color. Default is purple
           * @default 'purple'
          */
-        "tileColor"?: DS.IconTileColor;
+        "tileColor"?: IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -3562,10 +3716,12 @@ declare namespace LocalJSX {
     interface DsInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+          * @default ''
          */
         "accept"?: string;
         /**
           * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+          * @default ''
          */
         "allowedKeyPress"?: string;
         /**
@@ -3582,12 +3738,12 @@ declare namespace LocalJSX {
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
          */
-        "autocomplete"?: DS.InputAutocomplete;
+        "autocomplete"?: InputAutocomplete;
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
           * @default 'off'
          */
-        "autocorrect"?: DS.InputAutocorrect;
+        "autocorrect"?: InputAutocorrect;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
           * @default false
@@ -3597,7 +3753,7 @@ declare namespace LocalJSX {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color"?: DS.InputColor;
+        "color"?: InputColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
@@ -3605,6 +3761,7 @@ declare namespace LocalJSX {
         "debounce"?: 0;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
         "description"?: string;
         /**
@@ -3619,7 +3776,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: DS.InputInputMode;
+        "inputmode"?: InputInputMode;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -3627,10 +3784,12 @@ declare namespace LocalJSX {
         "invalid"?: boolean;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
         "invalidText"?: string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -3642,9 +3801,10 @@ declare namespace LocalJSX {
           * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'basic-contract-number': '99/1.234.567' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
           * @default undefined
          */
-        "mask"?: DS.InputMask;
+        "mask"?: InputMask;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
+          * @default ''
          */
         "max"?: string;
         /**
@@ -3653,6 +3813,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
+          * @default ''
          */
         "min"?: string;
         /**
@@ -3671,33 +3832,35 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsBlur"?: (event: DsInputCustomEvent<DS.InputBlurDetail>) => void;
+        "onDsBlur"?: (event: DsInputCustomEvent<InputBlurDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsChange"?: (event: DsInputCustomEvent<DS.InputChangeDetail>) => void;
+        "onDsChange"?: (event: DsInputCustomEvent<InputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked
          */
-        "onDsClick"?: (event: DsInputCustomEvent<DS.InputClickDetail>) => void;
+        "onDsClick"?: (event: DsInputCustomEvent<InputClickDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onDsFocus"?: (event: DsInputCustomEvent<DS.InputFocusDetail>) => void;
+        "onDsFocus"?: (event: DsInputCustomEvent<InputFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsInput"?: (event: DsInputCustomEvent<DS.InputInputDetail>) => void;
+        "onDsInput"?: (event: DsInputCustomEvent<InputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onDsKeyPress"?: (event: DsInputCustomEvent<DS.InputKeyPressDetail>) => void;
+        "onDsKeyPress"?: (event: DsInputCustomEvent<InputKeyPressDetail>) => void;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+          * @default ''
          */
         "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
+          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -3717,13 +3880,14 @@ declare namespace LocalJSX {
         "spellcheck"?: boolean;
         /**
           * Adds a suffix the the input-value after blur.
+          * @default ''
          */
         "suffix"?: string;
         /**
           * Defines the type of the input (text, number, email ...).
           * @default 'text'
          */
-        "type"?: DS.InputInputType;
+        "type"?: InputInputType;
         /**
           * The value of the input.
           * @default null
@@ -3733,16 +3897,17 @@ declare namespace LocalJSX {
     interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
+          * @default ''
          */
         "accordionGroup"?: string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
          */
-        "accordionMarker"?: DS.AccordionMarker;
+        "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
          */
-        "accordionMarkerPosition"?: DS.AccordionMarkerPosition;
+        "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -3752,6 +3917,9 @@ declare namespace LocalJSX {
           * @default 'default'
          */
         "actionIcon"?: 'link' | 'link-external' | 'download' | 'default';
+        /**
+          * @default ''
+         */
         "description"?: string;
         /**
           * If `true`, the user cannot interact with the button.
@@ -3760,12 +3928,17 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+          * @default ''
          */
         "download"?: string;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
         "href"?: string;
+        /**
+          * @default ''
+         */
         "label"?: string;
         /**
           * @default 'h5'
@@ -3775,28 +3948,29 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion is closed.
          */
-        "onDsAccordionClosed"?: (event: DsItemCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsAccordionClosed"?: (event: DsItemCustomEvent<AccordionToggleDetail>) => void;
         /**
           * Emitted when the accordion is opened.
          */
-        "onDsAccordionOpened"?: (event: DsItemCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsAccordionOpened"?: (event: DsItemCustomEvent<AccordionToggleDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsAccordionToggle"?: (event: DsItemCustomEvent<DS.AccordionToggleDetail>) => void;
+        "onDsAccordionToggle"?: (event: DsItemCustomEvent<AccordionToggleDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onDsClick"?: (event: DsItemCustomEvent<DS.ButtonClickDetail>) => void;
+        "onDsClick"?: (event: DsItemCustomEvent<ButtonClickDetail>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+          * @default ''
          */
         "rel"?: string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
           * @default '_self'
          */
-        "target"?: DS.ButtonTarget;
+        "target"?: ButtonTarget;
         /**
           * @default 'default'
          */
@@ -3814,7 +3988,7 @@ declare namespace LocalJSX {
         "hovered"?: boolean;
         /**
           * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
-          * @default undefined
+          * @default ''
          */
         "htmlFor"?: string;
         /**
@@ -3844,7 +4018,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
-        "size"?: DS.LabelSize;
+        "size"?: LabelSize;
         /**
           * If `true` the component gets a valid green style.
           * @default false
@@ -3867,17 +4041,17 @@ declare namespace LocalJSX {
           * Defines the brand of the logo. Default is 'baloise'.
           * @default ''
          */
-        "brand"?: DS.LogoBrand;
+        "brand"?: LogoBrand;
         /**
           * Defines the color of the logo.
           * @default 'primary'
          */
-        "color"?: DS.LogoColor;
+        "color"?: LogoColor;
         /**
           * Size of the logo svg
           * @default ''
          */
-        "size"?: DS.LogoSize;
+        "size"?: LogoSize;
     }
     interface DsNotification {
         /**
@@ -3897,9 +4071,10 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: DS.NotificationColor;
+        "color"?: NotificationColor;
         /**
           * Defines the heading of the notification.
+          * @default ''
          */
         "heading"?: string;
         /**
@@ -3910,7 +4085,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button got clicked.
          */
-        "onDsCloseClick"?: (event: DsNotificationCustomEvent<DS.NotificationCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: DsNotificationCustomEvent<NotificationCloseClickDetail>) => void;
         /**
           * Emitted when the component has loaded.
          */
@@ -3918,14 +4093,14 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the notification, small, medium or large.
          */
-        "size"?: DS.NotificationSize;
+        "size"?: NotificationSize;
     }
     interface DsNumberInput {
         /**
           * Defines the color state of the input.
           * @default 'primary'
          */
-        "color"?: DS.InputColor;
+        "color"?: InputColor;
         /**
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
           * @default 0
@@ -3938,6 +4113,7 @@ declare namespace LocalJSX {
         "decimal"?: 0;
         /**
           * The description displayed below the field.
+          * @default ''
          */
         "description"?: string;
         /**
@@ -3961,18 +4137,22 @@ declare namespace LocalJSX {
         "invalid"?: boolean;
         /**
           * Text shown in the description area when `invalid` is true.
+          * @default ''
          */
         "invalidText"?: string;
         /**
           * The label displayed above the field.
+          * @default ''
          */
         "label"?: string;
         /**
           * The maximum value.
+          * @default ''
          */
         "max"?: string;
         /**
           * The minimum value.
+          * @default ''
          */
         "min"?: string;
         /**
@@ -3983,27 +4163,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onDsBlur"?: (event: DsNumberInputCustomEvent<DS.NumberInputBlurDetail>) => void;
+        "onDsBlur"?: (event: DsNumberInputCustomEvent<NumberInputBlurDetail>) => void;
         /**
           * Emitted when the value changes on blur.
          */
-        "onDsChange"?: (event: DsNumberInputCustomEvent<DS.NumberInputChangeDetail>) => void;
+        "onDsChange"?: (event: DsNumberInputCustomEvent<NumberInputChangeDetail>) => void;
         /**
           * Emitted when the input is clicked.
          */
-        "onDsClick"?: (event: DsNumberInputCustomEvent<DS.NumberInputClickDetail>) => void;
+        "onDsClick"?: (event: DsNumberInputCustomEvent<NumberInputClickDetail>) => void;
         /**
           * Emitted when the input gains focus.
          */
-        "onDsFocus"?: (event: DsNumberInputCustomEvent<DS.NumberInputFocusDetail>) => void;
+        "onDsFocus"?: (event: DsNumberInputCustomEvent<NumberInputFocusDetail>) => void;
         /**
           * Emitted on each keystroke with the current numeric value (or null).
          */
-        "onDsInput"?: (event: DsNumberInputCustomEvent<DS.NumberInputInputDetail>) => void;
+        "onDsInput"?: (event: DsNumberInputCustomEvent<NumberInputInputDetail>) => void;
         /**
           * Emitted on keypress.
          */
-        "onDsKeyPress"?: (event: DsNumberInputCustomEvent<DS.NumberInputKeyPressDetail>) => void;
+        "onDsKeyPress"?: (event: DsNumberInputCustomEvent<NumberInputKeyPressDetail>) => void;
         /**
           * When `true`, only positive numbers are accepted (blocks the minus sign).
           * @default false
@@ -4011,10 +4191,12 @@ declare namespace LocalJSX {
         "onlyPositive"?: boolean;
         /**
           * Overrides the auto-generated input validation pattern.
+          * @default ''
          */
         "pattern"?: string;
         /**
           * Instructional text shown when the input has no value.
+          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -4029,6 +4211,7 @@ declare namespace LocalJSX {
         "required"?: boolean;
         /**
           * Text appended to the formatted value after blur (e.g. `"CHF"`).
+          * @default ''
          */
         "suffix"?: string;
         /**
@@ -4042,7 +4225,7 @@ declare namespace LocalJSX {
           * Align the buttons to start, center or end
           * @default ''
          */
-        "align"?: DS.PaginationAlignment;
+        "align"?: PaginationAlignment;
         /**
           * Disables component
           * @default false
@@ -4056,7 +4239,7 @@ declare namespace LocalJSX {
         /**
           * Triggers when a page change happens
          */
-        "onDsChange"?: (event: DsPaginationCustomEvent<DS.PaginationChangeDetail>) => void;
+        "onDsChange"?: (event: DsPaginationCustomEvent<PaginationChangeDetail>) => void;
         /**
           * Specify the max visible pages before and after the selected page
           * @default 2
@@ -4066,7 +4249,7 @@ declare namespace LocalJSX {
           * Size of the buttons
           * @default ''
          */
-        "size"?: DS.PaginationSize;
+        "size"?: PaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
           * @default false
@@ -4101,19 +4284,19 @@ declare namespace LocalJSX {
           * Defines the layout of the pagination
           * @default ''
          */
-        "variant"?: DS.PaginationVariant;
+        "variant"?: PaginationVariant;
     }
     interface DsProgressBar {
         /**
           * The background color
           * @default 'dark'
          */
-        "background"?: DS.ProgressBarBackground;
+        "background"?: ProgressBarBackground;
         /**
           * The progress bar color
           * @default 'primary'
          */
-        "color"?: DS.ProgressBarColor;
+        "color"?: ProgressBarColor;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
           * @default 0
@@ -4134,15 +4317,15 @@ declare namespace LocalJSX {
         /**
           * @default 1
          */
-        "cols"?: DS.RadioGroupColumns;
+        "cols"?: RadioGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile"?: DS.RadioGroupColumns;
+        "colsMobile"?: RadioGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet"?: DS.RadioGroupColumns;
+        "colsTablet"?: RadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -4166,7 +4349,7 @@ declare namespace LocalJSX {
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition"?: DS.RadioLabelPosition;
+        "labelPosition"?: RadioLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -4175,15 +4358,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onDsBlur"?: (event: DsRadioCustomEvent<DS.RadioBlurDetail>) => void;
+        "onDsBlur"?: (event: DsRadioCustomEvent<RadioBlurDetail>) => void;
         /**
           * Emitted when the value property has changed.
          */
-        "onDsChange"?: (event: DsRadioCustomEvent<DS.RadioChangeDetail>) => void;
+        "onDsChange"?: (event: DsRadioCustomEvent<RadioChangeDetail>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onDsFocus"?: (event: DsRadioCustomEvent<DS.RadioFocusDetail>) => void;
+        "onDsFocus"?: (event: DsRadioCustomEvent<RadioFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false
@@ -4202,7 +4385,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the tile radio.
          */
-        "tileColor"?: DS.RadioTileColor;
+        "tileColor"?: RadioTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
@@ -4218,24 +4401,25 @@ declare namespace LocalJSX {
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
-        "color"?: DS.InputColor;
+        "color"?: InputColor;
         /**
           * Defines the column size like the grid.
           * @default 1
          */
-        "cols"?: DS.RadioGroupColumns;
+        "cols"?: RadioGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
           * @default 1
          */
-        "colsMobile"?: DS.RadioGroupColumns;
+        "colsMobile"?: RadioGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
           * @default 1
          */
-        "colsTablet"?: DS.RadioGroupColumns;
+        "colsTablet"?: RadioGroupColumns;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
         "description"?: string;
         /**
@@ -4252,17 +4436,19 @@ declare namespace LocalJSX {
         "invalid"?: boolean | undefined;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
         "invalidText"?: string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
         "label"?: string;
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition"?: DS.RadioLabelPosition;
+        "labelPosition"?: RadioLabelPosition;
         /**
           * Shows a loading indicator at the end of the input and replaces the end slot content.
           * @default false
@@ -4276,15 +4462,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsBlur"?: (event: DsRadioGroupCustomEvent<DS.RadioGroupBlurDetail>) => void;
+        "onDsBlur"?: (event: DsRadioGroupCustomEvent<RadioGroupBlurDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsChange"?: (event: DsRadioGroupCustomEvent<DS.RadioGroupChangeDetail>) => void;
+        "onDsChange"?: (event: DsRadioGroupCustomEvent<RadioGroupChangeDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onDsFocus"?: (event: DsRadioGroupCustomEvent<DS.RadioGroupFocusDetail>) => void;
+        "onDsFocus"?: (event: DsRadioGroupCustomEvent<RadioGroupFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4302,7 +4488,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the tile checkbox.
          */
-        "tileColor"?: DS.RadioTileColor;
+        "tileColor"?: RadioTileColor;
         /**
           * the value of the radio group.
          */
@@ -4323,9 +4509,10 @@ declare namespace LocalJSX {
           * Defines the color of the input. The default value is `primary`.
           * @default ''
          */
-        "color"?: DS.SegmentColor;
+        "color"?: SegmentColor;
         /**
           * The description of the input, which is displayed below the input field.
+          * @default ''
          */
         "description"?: string;
         /**
@@ -4347,10 +4534,12 @@ declare namespace LocalJSX {
         "invalid"?: boolean | undefined;
         /**
           * The text to display when the input is in an invalid state.
+          * @default ''
          */
         "invalidText"?: string;
         /**
           * The label of the input, which is displayed above the input field.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -4366,15 +4555,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsBlur"?: (event: DsSegmentCustomEvent<DS.SegmentBlurDetail>) => void;
+        "onDsBlur"?: (event: DsSegmentCustomEvent<SegmentBlurDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onDsChange"?: (event: DsSegmentCustomEvent<DS.SegmentChangeDetail>) => void;
+        "onDsChange"?: (event: DsSegmentCustomEvent<SegmentChangeDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onDsFocus"?: (event: DsSegmentCustomEvent<DS.SegmentFocusDetail>) => void;
+        "onDsFocus"?: (event: DsSegmentCustomEvent<SegmentFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4435,6 +4624,7 @@ declare namespace LocalJSX {
         "onDsWillUpdate"?: (event: DsSegmentItemCustomEvent<void>) => void;
         /**
           * Svg content for the icon.
+          * @default ''
          */
         "svg"?: string;
         /**
@@ -4447,21 +4637,22 @@ declare namespace LocalJSX {
           * The shape color
           * @default 'green'
          */
-        "color"?: DS.ShapeColor;
+        "color"?: ShapeColor;
         /**
           * The shape rotation
           * @default '0'
          */
-        "rotation"?: DS.ShapeRotation;
+        "rotation"?: ShapeRotation;
         /**
           * The shape variation
           * @default '1'
          */
-        "variation"?: DS.ShapeVariation;
+        "variation"?: ShapeVariation;
     }
     interface DsSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
          */
         "action"?: string;
         /**
@@ -4470,17 +4661,19 @@ declare namespace LocalJSX {
         "actionHandler"?: (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
         "actionHref"?: string;
         /**
           * Defines the icon of the action button.
+          * @default ''
          */
         "actionIcon"?: string;
         /**
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget"?: DS.ButtonTarget;
+        "actionTarget"?: ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -4497,13 +4690,14 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: DS.SnackbarColor;
+        "color"?: SnackbarColor;
         /**
           * Defines the heading of the notification.
          */
         "heading": string;
         /**
           * Defines the icon of the notification.
+          * @default ''
          */
         "icon"?: string;
         /**
@@ -4513,14 +4707,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button got clicked.
          */
-        "onDsActionClick"?: (event: DsSnackbarCustomEvent<DS.SnackbarActionClickDetail>) => void;
+        "onDsActionClick"?: (event: DsSnackbarCustomEvent<SnackbarActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
-        "onDsCloseClick"?: (event: DsSnackbarCustomEvent<DS.SnackbarCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: DsSnackbarCustomEvent<SnackbarCloseClickDetail>) => void;
         "onDsDidLoad"?: (event: DsSnackbarCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
+          * @default ''
          */
         "svg"?: string;
         /**
@@ -4533,7 +4728,7 @@ declare namespace LocalJSX {
           * Defines the color of the spinner.
           * @default 'blue'
          */
-        "color"?: DS.SpinnerColor;
+        "color"?: SpinnerColor;
         /**
           * If `true` the component will not add the spinner animation svg
           * @default false
@@ -4548,7 +4743,7 @@ declare namespace LocalJSX {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
           * @default ''
          */
-        "size"?: DS.SpinnerSize;
+        "size"?: SpinnerSize;
         /**
           * @Deprecated Use size="sm" instead. If `true` the component is smaller
           * @default false
@@ -4558,19 +4753,19 @@ declare namespace LocalJSX {
           * Defines the look of the spinner
           * @default 'logo'
          */
-        "variation"?: DS.SpinnerVariation;
+        "variation"?: SpinnerVariation;
     }
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
          */
-        "align"?: DS.StackAlignment;
-        "alignment"?: DS.StackAlignment;
+        "align"?: StackAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
           * @default 'column'
          */
-        "direction"?: DS.StackDirection;
+        "direction"?: StackDirection;
         /**
           * Defines the width of the stack to be exactly the with of the content.
           * @default false
@@ -4579,31 +4774,31 @@ declare namespace LocalJSX {
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "layout"?: DS.StackLayout;
+        "layout"?: StackLayout;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "p"?: DS.StackPadding;
+        "p"?: StackPadding;
         /**
           * Defines the horizontal padding left and right of the stack element.
          */
-        "px"?: DS.StackPadding;
+        "px"?: StackPadding;
         /**
           * Defines the vertical padding top and bottom of the stack element.
          */
-        "py"?: DS.StackPadding;
+        "py"?: StackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "space"?: DS.StackSpace;
+        "space"?: StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceColumn"?: DS.StackSpace;
+        "spaceColumn"?: StackSpace;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "spaceRow"?: DS.StackSpace;
+        "spaceRow"?: StackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
           * @default false
@@ -4619,7 +4814,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag.
          */
-        "color"?: DS.TagColor;
+        "color"?: TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -4633,19 +4828,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input got clicked.
          */
-        "onDsCloseClick"?: (event: DsTagCustomEvent<DS.TagCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: DsTagCustomEvent<TagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
          */
-        "position"?: DS.TagPlacement;
+        "position"?: TagPlacement;
         /**
           * The shape of the tag element like square or pill
          */
-        "shape"?: DS.TagShape;
+        "shape"?: TagShape;
         /**
           * The size of the tag element
          */
-        "size"?: DS.TagSize;
+        "size"?: TagSize;
     }
     interface DsTagGroup {
     }
@@ -4653,7 +4848,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the component gets a invalid style.
          */
-        "align"?: DS.TextAlign;
+        "align"?: TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -4662,7 +4857,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: DS.TextColor;
+        "color"?: TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -4709,11 +4904,11 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the paragraph
          */
-        "size"?: DS.TextSize;
+        "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: DS.TextSpace;
+        "space"?: TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -4735,7 +4930,7 @@ declare namespace LocalJSX {
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
          */
-        "autocomplete"?: DS.InputAutocomplete;
+        "autocomplete"?: InputAutocomplete;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
           * @default false
@@ -4745,7 +4940,7 @@ declare namespace LocalJSX {
           * Defines the color state of the textarea.
           * @default 'primary'
          */
-        "color"?: DS.InputColor;
+        "color"?: InputColor;
         /**
           * The visible width of the text control, in average character widths.
          */
@@ -4757,6 +4952,7 @@ declare namespace LocalJSX {
         "debounce"?: 0;
         /**
           * The description displayed below the textarea field.
+          * @default ''
          */
         "description"?: string;
         /**
@@ -4771,7 +4967,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display.
          */
-        "inputmode"?: DS.TextareaInputMode;
+        "inputmode"?: TextareaInputMode;
         /**
           * If `true` the component gets an invalid style.
           * @default false
@@ -4779,10 +4975,12 @@ declare namespace LocalJSX {
         "invalid"?: boolean;
         /**
           * Text shown in the description area when `invalid` is true.
+          * @default ''
          */
         "invalidText"?: string;
         /**
           * The label displayed above the textarea field.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -4795,35 +4993,36 @@ declare namespace LocalJSX {
         "minLength"?: number;
         /**
           * The name of the control, which is submitted with the form data.
-          * @default this.textareaId
+          * @default this.inputId
          */
         "name"?: string;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsBlur"?: (event: DsTextareaCustomEvent<DS.TextareaBlurDetail>) => void;
+        "onDsBlur"?: (event: DsTextareaCustomEvent<TextareaBlurDetail>) => void;
         /**
           * Emitted when the textarea value has changed.
          */
-        "onDsChange"?: (event: DsTextareaCustomEvent<DS.TextareaChangeDetail>) => void;
+        "onDsChange"?: (event: DsTextareaCustomEvent<TextareaChangeDetail>) => void;
         /**
           * Emitted when the textarea has been clicked.
          */
-        "onDsClick"?: (event: DsTextareaCustomEvent<DS.TextareaClickDetail>) => void;
+        "onDsClick"?: (event: DsTextareaCustomEvent<TextareaClickDetail>) => void;
         /**
           * Emitted when the textarea has focus.
          */
-        "onDsFocus"?: (event: DsTextareaCustomEvent<DS.TextareaFocusDetail>) => void;
+        "onDsFocus"?: (event: DsTextareaCustomEvent<TextareaFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onDsInput"?: (event: DsTextareaCustomEvent<DS.TextareaInputDetail>) => void;
+        "onDsInput"?: (event: DsTextareaCustomEvent<TextareaInputDetail>) => void;
         /**
           * Emitted when a keyboard key has been pressed.
          */
-        "onDsKeyPress"?: (event: DsTextareaCustomEvent<DS.TextareaKeyPressDetail>) => void;
+        "onDsKeyPress"?: (event: DsTextareaCustomEvent<TextareaKeyPressDetail>) => void;
         /**
           * Instructional text that shows before the textarea has a value.
+          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -4848,11 +5047,12 @@ declare namespace LocalJSX {
         /**
           * Indicates how the control wraps text.
          */
-        "wrap"?: DS.TextareaWrap;
+        "wrap"?: TextareaWrap;
     }
     interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
+          * @default ''
          */
         "action"?: string;
         /**
@@ -4861,17 +5061,19 @@ declare namespace LocalJSX {
         "actionHandler"?: (id: string) => void;
         /**
           * Specifies the URL of the page the link goes to
+          * @default ''
          */
         "actionHref"?: string;
         /**
           * Defines the icon of the action button.
+          * @default ''
          */
         "actionIcon"?: string;
         /**
           * Specifies where to open the linked document.
           * @default '_blank'
          */
-        "actionTarget"?: DS.ButtonTarget;
+        "actionTarget"?: ButtonTarget;
         /**
           * @default crypto.randomUUID() as string
          */
@@ -4888,17 +5090,18 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: DS.ToastColor;
+        "color"?: ToastColor;
         /**
           * @default 0
          */
-        "duration"?: DS.ToastDuration;
+        "duration"?: ToastDuration;
         /**
           * Defines the heading of the notification.
          */
         "heading": string;
         /**
           * Defines the icon of the notification.
+          * @default ''
          */
         "icon"?: string;
         /**
@@ -4908,16 +5111,17 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button got clicked.
          */
-        "onDsActionClick"?: (event: DsToastCustomEvent<DS.ToastActionClickDetail>) => void;
+        "onDsActionClick"?: (event: DsToastCustomEvent<ToastActionClickDetail>) => void;
         /**
           * Emitted when the close button got clicked.
          */
-        "onDsCloseClick"?: (event: DsToastCustomEvent<DS.ToastCloseClickDetail>) => void;
+        "onDsCloseClick"?: (event: DsToastCustomEvent<ToastCloseClickDetail>) => void;
         "onDsDidLoad"?: (event: DsToastCustomEvent<void>) => void;
         "onDsDidPause"?: (event: DsToastCustomEvent<void>) => void;
         "onDsDidResume"?: (event: DsToastCustomEvent<void>) => void;
         /**
           * Defines the svg content of the icon
+          * @default ''
          */
         "svg"?: string;
         /**
@@ -4939,19 +5143,19 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the tile toggle.
          */
-        "color"?: DS.ToggleTileColor;
+        "color"?: ToggleTileColor;
         /**
           * @default 1
          */
-        "cols"?: DS.CheckboxGroupColumns;
+        "cols"?: CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile"?: DS.CheckboxGroupColumns;
+        "colsMobile"?: CheckboxGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet"?: DS.CheckboxGroupColumns;
+        "colsTablet"?: CheckboxGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -4975,7 +5179,7 @@ declare namespace LocalJSX {
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
          */
-        "labelPosition"?: DS.CheckboxLabelPosition;
+        "labelPosition"?: CheckboxLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -4984,15 +5188,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onDsBlur"?: (event: DsToggleCustomEvent<DS.ToggleBlurDetail>) => void;
+        "onDsBlur"?: (event: DsToggleCustomEvent<ToggleBlurDetail>) => void;
         /**
           * Emitted when the value property has changed.
          */
-        "onDsChange"?: (event: DsToggleCustomEvent<DS.ToggleChangeDetail>) => void;
+        "onDsChange"?: (event: DsToggleCustomEvent<ToggleChangeDetail>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onDsFocus"?: (event: DsToggleCustomEvent<DS.ToggleFocusDetail>) => void;
+        "onDsFocus"?: (event: DsToggleCustomEvent<ToggleFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
           * @default false

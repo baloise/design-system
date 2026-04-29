@@ -1,17 +1,9 @@
-import {
-  AttachInternals,
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from '@stencil/core'
-import { Loggable, Logger, type LogInstance, inheritAttributes, type Attributes } from '@utils'
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
+import { Logger, type LogInstance, inheritAttributes, type Attributes } from '@utils'
+import { DsComponentInterface } from '@global'
+import { CheckboxLabelPosition, CheckboxGroupColumns } from '../checkbox/checkbox.interfaces'
+import { ToggleTileColor, ToggleFocusDetail, ToggleBlurDetail, ToggleChangeDetail } from './toggle.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-toggle',
@@ -19,12 +11,12 @@ import { Loggable, Logger, type LogInstance, inheritAttributes, type Attributes 
   shadow: true,
   formAssociated: true,
 })
-export class Toggle implements ComponentInterface, Loggable {
+export class Toggle implements DsComponentInterface {
   inputId = `ds-tg-${toggleIds++}`
   private inheritAttributes: Attributes = {}
   private nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLDsToggleElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('toggle')
@@ -54,7 +46,7 @@ export class Toggle implements ComponentInterface, Loggable {
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
-  @Prop() readonly labelPosition: DS.CheckboxLabelPosition = 'right'
+  @Prop() readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
    * A DOMString representing the value of the toggle. This is not displayed on the
@@ -97,7 +89,7 @@ export class Toggle implements ComponentInterface, Loggable {
   /**
    * Defines the color of the tile toggle.
    */
-  @Prop() readonly color?: DS.ToggleTileColor
+  @Prop() readonly color?: ToggleTileColor
 
   /**
    * Defines the layout of the input
@@ -107,32 +99,32 @@ export class Toggle implements ComponentInterface, Loggable {
   /**
    * @internal
    */
-  @Prop() readonly cols: DS.CheckboxGroupColumns = 1
+  @Prop() readonly cols: CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() readonly colsTablet: DS.CheckboxGroupColumns = 1
+  @Prop() readonly colsTablet: CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() readonly colsMobile: DS.CheckboxGroupColumns = 1
+  @Prop() readonly colsMobile: CheckboxGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.ToggleFocusDetail>
+  @Event() dsFocus!: EventEmitter<ToggleFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() dsBlur!: EventEmitter<DS.ToggleBlurDetail>
+  @Event() dsBlur!: EventEmitter<ToggleBlurDetail>
 
   /**
    * Emitted when the value property has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.ToggleChangeDetail>
+  @Event() dsChange!: EventEmitter<ToggleChangeDetail>
 
   /**
    * LIFECYCLE

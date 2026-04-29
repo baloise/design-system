@@ -1,7 +1,6 @@
 import {
   AttachInternals,
   Component,
-  ComponentInterface,
   Element,
   Event,
   EventEmitter,
@@ -12,9 +11,19 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Loggable, Logger, type LogInstance, stopEventBubbling, hasTagName, isDescendant } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, hasTagName, isDescendant } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import { InputColor } from '../../input/input.interfaces'
+import {
+  RadioLabelPosition,
+  RadioTileColor,
+  RadioGroupColumns,
+  RadioGroupBlurDetail,
+  RadioGroupFocusDetail,
+  RadioGroupChangeDetail,
+} from '../radio.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-radio-group',
@@ -22,11 +31,11 @@ import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } fr
   shadow: true,
   formAssociated: true,
 })
-export class RadioGroup implements ComponentInterface, Loggable, FieldInterface {
+export class RadioGroup implements DsComponentInterface, FieldInterface {
   private initialValue?: any | null
   inputId = `ds-rg-${radioGroupIds++}`
 
-  @Element() el!: HTMLDsRadioGroupElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('radio-group')
@@ -52,22 +61,22 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   /**
    * The label of the input, which is displayed above the input field.
    */
-  @Prop() readonly label?: string
+  @Prop() readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
-  @Prop() readonly labelPosition: DS.RadioLabelPosition = 'right'
+  @Prop() readonly labelPosition: RadioLabelPosition = 'right'
 
   /**
    * The description of the input, which is displayed below the input field.
    */
-  @Prop() readonly description?: string
+  @Prop() readonly description: string = ''
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() readonly color: DS.InputColor = 'primary'
+  @Prop() readonly color: InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
@@ -82,7 +91,7 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   /**
    * The text to display when the input is in an invalid state.
    */
-  @Prop() readonly invalidText?: string
+  @Prop() readonly invalidText: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -127,37 +136,37 @@ export class RadioGroup implements ComponentInterface, Loggable, FieldInterface 
   /**
    * Defines the color of the tile checkbox.
    */
-  @Prop() readonly tileColor?: DS.RadioTileColor
+  @Prop() readonly tileColor?: RadioTileColor
 
   /**
    * Defines the column size like the grid.
    */
-  @Prop() readonly cols: DS.RadioGroupColumns = 1
+  @Prop() readonly cols: RadioGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() readonly colsTablet: DS.RadioGroupColumns = 1
+  @Prop() readonly colsTablet: RadioGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() readonly colsMobile: DS.RadioGroupColumns = 1
+  @Prop() readonly colsMobile: RadioGroupColumns = 1
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsBlur!: EventEmitter<DS.RadioGroupBlurDetail>
+  @Event() dsBlur!: EventEmitter<RadioGroupBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.RadioGroupFocusDetail>
+  @Event() dsFocus!: EventEmitter<RadioGroupFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.RadioGroupChangeDetail>
+  @Event() dsChange!: EventEmitter<RadioGroupChangeDetail>
 
   /**
    * LIFECYCLE

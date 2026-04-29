@@ -1,6 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import {
-  Loggable,
   Logger,
   type LogInstance,
   normalizeDeprecatedTShirtSize,
@@ -8,14 +8,18 @@ import {
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import { DsComponentInterface } from '@global'
+import { DividerLayout, DividerSpace, DividerColor } from './divider.interfaces'
 
 @Component({
   tag: 'ds-divider',
   styleUrl: './divider.host.scss',
   shadow: true,
 })
-export class Divider implements ComponentInterface, Loggable {
+export class Divider implements DsComponentInterface {
   log!: LogInstance
+
+  @Element() el!: HTMLStencilElement
 
   @Logger('divider')
   createLogger(log: LogInstance) {
@@ -33,16 +37,16 @@ export class Divider implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('horizontal', 'vertical', '')
-  readonly layout: DS.DividerLayout = 'horizontal'
+  readonly layout: DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
   @ValidateEmptyOrOneOf('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '')
-  space: DS.DividerSpace = 'none'
+  space: DividerSpace = 'none'
   @Watch('space')
-  spaceChanged(newValue: DS.DividerSpace) {
+  spaceChanged(newValue: DividerSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue) || 'none'
   }
 
@@ -66,7 +70,7 @@ export class Divider implements ComponentInterface, Loggable {
     'light-blue',
     '',
   )
-  readonly color: DS.DividerColor = 'grey'
+  readonly color: DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.

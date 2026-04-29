@@ -1,21 +1,39 @@
-import { Component, ComponentInterface, h, Host, Prop, Watch, Element } from '@stencil/core'
+import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
 import isEmpty from 'lodash/isEmpty'
 import {
   normalizeDeprecatedTShirtSize,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import {
+  CARD_ALIGNMENTS,
+  CARD_ACTIONS_ALIGNMENTS,
+  CARD_FOOTER_POSITIONS,
+  CARD_HEADER_DIRECTIONS,
+  CARD_SPACES,
+  CARD_COLORS,
+  type CardAlignment,
+  type CardActionsAlignment,
+  type CardFooterPosition,
+  type CardHeaderDirection,
+  type CardSpace,
+  type CardColor,
+  type CardButtonElementType,
+  type CardButtonTarget,
+} from './card.interfaces'
+import type { ButtonElementType, ButtonTarget } from '../button/button.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-card',
   styleUrl: 'card.host.scss',
   shadow: true,
 })
-export class Card implements ComponentInterface, Loggable {
+export class Card implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('card')
@@ -23,7 +41,7 @@ export class Card implements ComponentInterface, Loggable {
     this.log = log
   }
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLStencilElement
 
   /**
    * If `true` the card loses its shadow.
@@ -101,16 +119,16 @@ export class Card implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('left', 'center', 'right', '')
-  readonly align?: DS.CardAlignment
+  readonly align?: CardAlignment
 
   /**
    * Defines the space of the card content.
    */
   @Prop({ mutable: true })
   @ValidateEmptyOrOneOf('sm', 'md', 'lg', '')
-  space?: DS.CardSpace
+  space?: CardSpace
   @Watch('space')
-  spaceChanged(newValue: DS.CardSpace) {
+  spaceChanged(newValue: CardSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -152,7 +170,7 @@ export class Card implements ComponentInterface, Loggable {
     'light-blue',
     '',
   )
-  readonly color?: DS.CardColor
+  readonly color?: CardColor
 
   connectedCallback(): void {
     setupValidation(this)

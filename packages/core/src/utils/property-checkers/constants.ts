@@ -1,1 +1,1 @@
-export const EMPTY_VALUES = [undefined, null, '', Number.NaN];
+export const EMPTY_VALUES = [undefined, null, '', Number.NaN]

@@ -1,8 +1,9 @@
-import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { raf, rOnLoad, Loggable, Logger, type LogInstance } from '@utils'
-import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig } from '@global'
+import { raf, rOnLoad, Logger, type LogInstance } from '@utils'
+import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig, DsComponentInterface } from '@global'
+import { SpinnerColor, SpinnerSize, SpinnerVariation } from './spinner.interfaces'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
@@ -11,7 +12,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
   styleUrl: 'spinner.host.scss',
   shadow: true,
 })
-export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
+export class Spinner implements DsComponentInterface, DsConfigObserver {
   private animationItem!: AnimationItem
   private animationFunction?: SpinnerAnimationFunction
   private currentRaf: number | undefined
@@ -56,7 +57,7 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   /**
    * Defines the color of the spinner.
    */
-  @Prop({ reflect: true }) readonly color: DS.SpinnerColor = 'blue'
+  @Prop({ reflect: true }) readonly color: SpinnerColor = 'blue'
 
   /**
    * @Deprecated
@@ -73,14 +74,14 @@ export class Spinner implements ComponentInterface, Loggable, DsConfigObserver {
   /**
    * Defines the size of the spinner. If `sm` the spinner is smaller.
    */
-  @Prop({ reflect: true, mutable: true }) size: DS.SpinnerSize = ''
+  @Prop({ reflect: true, mutable: true }) size: SpinnerSize = ''
 
   /**
    * Defines the look of the spinner
    */
-  @Prop({ reflect: true }) readonly variation: DS.SpinnerVariation = 'logo'
+  @Prop({ reflect: true }) readonly variation: SpinnerVariation = 'logo'
   @Watch('variation')
-  variationChanged(newValue: DS.SpinnerVariation, oldValue: DS.SpinnerVariation) {
+  variationChanged(newValue: SpinnerVariation, oldValue: SpinnerVariation) {
     if (newValue !== oldValue) {
       if (this.variation === 'circle') {
         this.destroy()

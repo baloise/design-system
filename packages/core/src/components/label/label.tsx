@@ -1,15 +1,24 @@
-import { Component, ComponentInterface, Element, h, Host, Method, Prop, State } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { ElementStateInfo, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
-import { DsConfigObserver, DsConfigState, DsLanguage, DsRegion, defaultConfig, ListenToConfig } from '@global'
+import { ElementStateInfo, normalizeDeprecatedTShirtSize, Logger, type LogInstance } from '@utils'
+import {
+  DsConfigObserver,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
+  defaultConfig,
+  ListenToConfig,
+  DsComponentInterface,
+} from '@global'
 import { I18nDsLabel } from './label.i18n'
+import { LABEL_WEIGHTS, LABEL_SIZES, type LabelWeight, type LabelSize } from './label.interfaces'
 
 @Component({
   tag: 'ds-label',
   styleUrl: './label.host.scss',
   shadow: true,
 })
-export class Label implements ComponentInterface, Loggable, DsConfigObserver, ElementStateInfo {
+export class Label implements DsComponentInterface, DsConfigObserver, ElementStateInfo {
   @Element() el!: HTMLStencilElement
 
   @State() language: DsLanguage = defaultConfig.language
@@ -32,12 +41,12 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
    * form-related element in the same document as the <label> element.
    * So, any given label element can be associated with only one form control.
    */
-  @Prop() readonly htmlFor?: string = undefined
+  @Prop() readonly htmlFor: string = ''
 
   /**
    * Define the id of the native label element
    */
-  @Prop() readonly htmlId?: string = `ds-lbl-${labelIds++}`
+  @Prop() readonly htmlId: string = `ds-lbl-${labelIds++}`
 
   /**
    * If `true` the form control needs to be filled. If it is set to
@@ -71,9 +80,9 @@ export class Label implements ComponentInterface, Loggable, DsConfigObserver, El
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop({ mutable: true, reflect: true }) size?: DS.LabelSize
+  @Prop({ mutable: true, reflect: true }) size?: LabelSize
   @Watch('size')
-  sizeChanged(newValue: DS.LabelSize) {
+  sizeChanged(newValue: LabelSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 

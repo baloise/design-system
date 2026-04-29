@@ -1,25 +1,12 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Method,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import isNil from 'lodash/isNil'
+import { DsComponentInterface } from '@global'
 import {
   inheritAttributes,
   FormControlInterface,
   FormControl,
   stopEventBubbling,
   debounceEvent,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
@@ -32,6 +19,20 @@ import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from './field.util'
+import {
+  InputColor,
+  InputInputType,
+  InputAutocomplete,
+  InputAutocorrect,
+  InputInputMode,
+  InputMask,
+  InputBlurDetail,
+  InputKeyPressDetail,
+  InputFocusDetail,
+  InputClickDetail,
+  InputInputDetail,
+  InputChangeDetail,
+} from './input.interfaces'
 
 @Component({
   tag: 'ds-input',
@@ -39,7 +40,7 @@ import { Field, FieldInterface } from './field.util'
   shadow: true,
   formAssociated: true,
 })
-export class Input implements ComponentInterface, FieldInterface, FormControlInterface<string | null>, Loggable {
+export class Input implements DsComponentInterface, FieldInterface, FormControlInterface<string | null> {
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
   private maskUtil = new InputMaskUtil(this)
@@ -83,21 +84,21 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly label?: string
+  readonly label: string = ''
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly description?: string
+  readonly description: string = ''
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
   @ValidateEmptyOrOneOf('primary', 'danger', 'success', 'warning', '')
-  readonly color: DS.InputColor = 'primary'
+  readonly color: InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
@@ -118,7 +119,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly invalidText?: string
+  readonly invalidText: string = ''
 
   /**
    * Defines the type of the input (text, number, email ...).
@@ -143,14 +144,14 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
     'week',
     '',
   )
-  readonly type: DS.InputInputType = 'text'
+  readonly type: InputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly accept?: string
+  readonly accept: string = ''
 
   /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
@@ -215,14 +216,14 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
     'photo',
     '',
   )
-  readonly autocomplete: DS.InputAutocomplete = 'off'
+  readonly autocomplete: InputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
   @Prop()
   @ValidateEmptyOrOneOf('on', 'off', '')
-  readonly autocorrect: DS.InputAutocorrect = 'off'
+  readonly autocorrect: InputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -248,14 +249,14 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly placeholder?: string
+  readonly placeholder: string = ''
 
   /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly max?: string
+  readonly max: string = ''
 
   /**
    * Defines the max length of the value.
@@ -269,7 +270,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly min?: string
+  readonly min: string = ''
 
   /**
    * Defines the min length of the value.
@@ -290,14 +291,14 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly pattern?: string
+  readonly pattern: string = ''
 
   /**
    * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly allowedKeyPress?: string
+  readonly allowedKeyPress: string = ''
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -332,7 +333,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly suffix?: string
+  readonly suffix: string = ''
 
   /**
    * A hint to the browser for which keyboard to display.
@@ -341,7 +342,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
    */
   @Prop()
   @ValidateEmptyOrOneOf('none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search', '')
-  readonly inputmode?: DS.InputInputMode
+  readonly inputmode?: InputInputMode
 
   /**
    * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.
@@ -363,7 +364,7 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
     'be-iban',
     '',
   )
-  readonly mask?: DS.InputMask = undefined
+  readonly mask?: InputMask = undefined
   @Watch('mask')
   protected maskChanged() {
     this.maskUtil.setFormatter(getMask(this.mask))
@@ -377,32 +378,32 @@ export class Input implements ComponentInterface, FieldInterface, FormControlInt
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsBlur!: EventEmitter<DS.InputBlurDetail>
+  @Event() dsBlur!: EventEmitter<InputBlurDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() dsKeyPress!: EventEmitter<DS.InputKeyPressDetail>
+  @Event() dsKeyPress!: EventEmitter<InputKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.InputFocusDetail>
+  @Event() dsFocus!: EventEmitter<InputFocusDetail>
 
   /**
    * Emitted when the input has clicked
    */
-  @Event() dsClick!: EventEmitter<DS.InputClickDetail>
+  @Event() dsClick!: EventEmitter<InputClickDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsInput!: EventEmitter<DS.InputInputDetail>
+  @Event() dsInput!: EventEmitter<InputInputDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.InputChangeDetail>
+  @Event() dsChange!: EventEmitter<InputChangeDetail>
 
   /**
    * LISTENERS

@@ -1,3 +1,4 @@
+import { InputMask } from '../input.interfaces'
 import { InputMaskFormatterInterface } from '../input.mask'
 import { BasicContractNumber } from './basic-contract-number'
 import { BeEnterpriseNumber } from './be-enterprise-number'
@@ -17,4 +18,4 @@ export const masks: InputMaskFormatterInterface[] = [
   new BeIBAN(),
 ]
 
-export const getMask = (name: DS.InputMask | undefined) => masks.find(m => m.name === name)
+export const getMask = (name: InputMask | undefined) => masks.find(m => m.name === name)

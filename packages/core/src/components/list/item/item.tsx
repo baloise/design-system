@@ -1,6 +1,9 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
-import { Event, EventEmitter, HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { Loggable, Logger, type LogInstance } from '@utils'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { Event, EventEmitter, HTMLStencilElement } from '@stencil/core/internal'
+import { Logger, type LogInstance } from '@utils'
+import { AccordionMarker, AccordionMarkerPosition, AccordionToggleDetail } from '../../accordion/accordion.interfaces'
+import { ButtonTarget, ButtonClickDetail } from '../../button/button.interfaces'
+import { DsComponentInterface } from '@global'
 
 type Attributes = {
   disabled?: boolean
@@ -16,7 +19,7 @@ type Attributes = {
   styleUrl: 'item.host.scss',
   shadow: true,
 })
-export class Item implements ComponentInterface, Loggable {
+export class Item implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('item')
@@ -38,36 +41,36 @@ export class Item implements ComponentInterface, Loggable {
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
    * close when another accordion in the same group is opened.
    */
-  @Prop() readonly accordionGroup?: string
+  @Prop() readonly accordionGroup: string = ''
 
   /**
    * The marker variant. Only applies if `button` is `false`.
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() readonly accordionMarker?: DS.AccordionMarker
+  @Prop() readonly accordionMarker?: AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
-  @Prop() readonly accordionMarkerPosition?: DS.AccordionMarkerPosition
+  @Prop() readonly accordionMarkerPosition?: AccordionMarkerPosition
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() readonly href?: string
+  @Prop() readonly href: string = ''
 
   /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() readonly target: DS.ButtonTarget = '_self'
+  @Prop() readonly target: ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
-  @Prop() readonly rel?: string
+  @Prop() readonly rel: string = ''
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -75,38 +78,38 @@ export class Item implements ComponentInterface, Loggable {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() readonly download?: string
+  @Prop() readonly download: string = ''
 
   /**
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true }) readonly disabled: boolean = false
 
-  @Prop() readonly label?: string
+  @Prop() readonly label: string = ''
   @Prop() readonly labelLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h5'
   @Prop() readonly labelSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base'
 
-  @Prop() readonly description?: string
+  @Prop() readonly description: string = ''
 
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() dsClick!: EventEmitter<DS.ButtonClickDetail>
+  @Event() dsClick!: EventEmitter<ButtonClickDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsAccordionToggle!: EventEmitter<DS.AccordionToggleDetail>
+  @Event() dsAccordionToggle!: EventEmitter<AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is opened.
    */
-  @Event() dsAccordionOpened!: EventEmitter<DS.AccordionToggleDetail>
+  @Event() dsAccordionOpened!: EventEmitter<AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is closed.
    */
-  @Event() dsAccordionClosed!: EventEmitter<DS.AccordionToggleDetail>
+  @Event() dsAccordionClosed!: EventEmitter<AccordionToggleDetail>
 
   /**
    * RENDER

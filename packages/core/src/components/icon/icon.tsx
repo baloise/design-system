@@ -1,30 +1,43 @@
-import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
 import {
   sanitizeSvg,
   normalizeDeprecatedTShirtSize,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import { DsComponentInterface } from '@global'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
+import {
+  ICON_SHAPES,
+  ICON_COLORS,
+  ICON_TILE_COLORS,
+  ICON_SIZES,
+  type IconShape,
+  type IconColor,
+  type IconTileColor,
+  type IconSize,
+} from './icon.interfaces'
 
 @Component({
   tag: 'ds-icon',
   styleUrl: 'icon.host.scss',
   shadow: true,
 })
-export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
+export class Icon implements DsComponentInterface, DsConfigObserver {
   log!: LogInstance
 
   @Logger('icon')
   createLogger(log: LogInstance) {
     this.log = log
   }
+
+  @Element() el!: HTMLStencilElement
 
   @State() icons: DsIcons = defaultConfig.icons
   @State() svgContent = ''
@@ -39,38 +52,23 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrType('string')
-  readonly name?: string
+  readonly name: string = ''
 
   /**
    * Svg content.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly svg?: string
+  readonly svg: string = ''
 
   /**
    * Defines the size of the icon.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrOneOf(
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    '2xl',
-    'xsmall',
-    'x-small',
-    'small',
-    'medium',
-    'large',
-    'x-large',
-    'xx-large',
-    '',
-  )
-  size: DS.IconSize
+  @ValidateEmptyOrOneOf(...ICON_SIZES)
+  size: IconSize
   @Watch('size')
-  sizeChanged(newValue: DS.IconSize) {
+  sizeChanged(newValue: IconSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
@@ -78,35 +76,15 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
    * The theme type of the button.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'blue',
-    'light-blue',
-    'success',
-    'success-dark',
-    'success-darker',
-    'danger',
-    'danger-dark',
-    'danger-darker',
-    'warning',
-    'warning-dark',
-    'warning-darker',
-    'white',
-    'grey',
-    'grey-light',
-    'grey-dark',
-    'primary',
-    'primary-light',
-    'primary-dark',
-    '',
-  )
-  readonly color?: DS.IconColor
+  @ValidateEmptyOrOneOf(...ICON_COLORS)
+  readonly color?: IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('triangle', 'circle', '')
-  readonly shape?: DS.IconShape
+  @ValidateEmptyOrOneOf(...ICON_SHAPES)
+  readonly shape?: IconShape
 
   /**
    * If `true` the icon acts as a tile with a background color.
@@ -119,38 +97,50 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
   @Prop()
-  @ValidateEmptyOrOneOf('purple', 'red', 'yellow', 'green')
-  readonly tileColor: DS.IconTileColor = 'purple'
+  @ValidateEmptyOrOneOf(...ICON_TILE_COLORS)
+  readonly tileColor: IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
    */
-  @Prop() readonly inline: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inline: boolean = false
 
   /**
    * If `true` the icon is inverted
    */
-  @Prop() readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
-  @Prop() readonly turn: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly turn: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() readonly shadow: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly shadow: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() readonly invalid: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
 
   /**
    * LIFE CYCLE

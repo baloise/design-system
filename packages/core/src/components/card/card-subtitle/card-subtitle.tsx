@@ -1,13 +1,15 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
-import { Loggable, Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
+import { HeadingColor } from '../../heading/heading.interfaces'
+import { DsComponentInterface } from '@global'
 
 @Component({
   tag: 'ds-card-subtitle',
   styleUrl: 'card-subtitle.host.scss',
   shadow: true,
 })
-export class CardSubtitle implements ComponentInterface, Loggable {
+export class CardSubtitle implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('card-subtitle')
@@ -36,7 +38,7 @@ export class CardSubtitle implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('primary', 'secondary', 'success', 'warning', 'danger', '')
-  readonly color: DS.HeadingColor = ''
+  readonly color: HeadingColor = ''
 
   connectedCallback(): void {
     setupValidation(this)

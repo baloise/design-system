@@ -1,21 +1,29 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { DsComponentInterface } from '@global'
 import {
   normalizeDeprecatedTShirtSize,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import {
+  BADGE_SIZES,
+  BADGE_COLORS,
+  BADGE_POSITIONS,
+  type BadgeSize,
+  type BadgeColor,
+  type BadgePosition,
+} from './badge.interfaces'
 
 @Component({
   tag: 'ds-badge',
   styleUrl: 'badge.host.scss',
   shadow: true,
 })
-export class Badge implements ComponentInterface, Loggable {
+export class Badge implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('badge')
@@ -30,16 +38,16 @@ export class Badge implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly icon?: string
+  readonly icon: string = ''
 
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf(...DS.BADGE_SIZES)
-  size: DS.BadgeSize = ''
+  @ValidateEmptyOrOneOf(...BADGE_SIZES)
+  size: BadgeSize = ''
   @Watch('size')
-  sizeChanged(newValue: DS.BadgeSize) {
+  sizeChanged(newValue: BadgeSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
   }
 
@@ -47,15 +55,15 @@ export class Badge implements ComponentInterface, Loggable {
    * Define the color for the badge.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...DS.BADGE_COLORS)
-  readonly color: DS.BadgeColor = ''
+  @ValidateEmptyOrOneOf(...BADGE_COLORS)
+  readonly color: BadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...DS.BADGE_POSITIONS)
-  readonly position: DS.BadgePosition = ''
+  @ValidateEmptyOrOneOf(...BADGE_POSITIONS)
+  readonly position: BadgePosition = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.

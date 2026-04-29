@@ -1,13 +1,15 @@
-import { Element, Component, Method, h, Host, Prop, ComponentInterface, State } from '@stencil/core'
-import { raf, wait, createPausableTimer, Loggable, Logger, type LogInstance, PausableTimer } from '@utils'
+import { Element, Component, Method, h, Host, Prop, State } from '@stencil/core'
+import { raf, wait, createPausableTimer, Logger, type LogInstance, PausableTimer } from '@utils'
 import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-container.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-alert-container',
   styleUrl: 'alert-container.host.scss',
   shadow: true,
 })
-export class AlertContainer implements ComponentInterface, Loggable {
+export class AlertContainer implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('alert-container')
@@ -15,10 +17,11 @@ export class AlertContainer implements ComponentInterface, Loggable {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+
   private maxVisibleItems = 5
   private animationDurationMs = 300
 
-  @Element() el!: HTMLDsAlertContainerElement
   private containerEl: HTMLDivElement | undefined
 
   @State() alerts: AlertComponent[] = []

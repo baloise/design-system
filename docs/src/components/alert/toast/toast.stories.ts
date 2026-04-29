@@ -28,9 +28,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(
-    () => `<ds-toast closable> Your changes have been saved. </ds-toast>`,
-  ),
+  ...withRender(() => `<ds-toast closable> Your changes have been saved. </ds-toast>`),
 })
 Basic.storyName = '🧩 Basic'
 

@@ -57,7 +57,11 @@ export function Validate(validator: (component: any, propName: string) => void) 
 /**
  * Internal helper to set validation metadata
  */
-function setValidationMetadata(target: any, propertyKey: string, validator: (component: any, propName: string) => void) {
+function setValidationMetadata(
+  target: any,
+  propertyKey: string,
+  validator: (component: any, propName: string) => void,
+) {
   if (!target[VALIDATE_METADATA]) {
     target[VALIDATE_METADATA] = {}
   }

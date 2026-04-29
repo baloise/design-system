@@ -1,3 +1,5 @@
+import { type InputMask } from './input.interfaces'
+
 export interface InputMaskInterface {}
 
 export class InputMaskUtil {
@@ -25,7 +27,7 @@ export class InputMaskUtil {
 }
 
 export interface InputMaskFormatterInterface {
-  name: DS.InputMask
+  name: InputMask
   maxLength: number
 
   format(value: string | null): string | null

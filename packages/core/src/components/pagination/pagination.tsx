@@ -1,6 +1,5 @@
 import {
   Component,
-  ComponentInterface,
   Element,
   Event,
   EventEmitter,
@@ -17,31 +16,32 @@ import {
   DsBreakpoints,
   ListenToBreakpoints,
   dsBreakpoints,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrType,
   ValidateEmptyOrOneOf,
   setupValidation,
 } from '@utils'
-import { DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
+import { DsComponentInterface, DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
 import { generatePaginationControl } from './pagination.util'
+import { PaginationAlignment, PaginationSize, PaginationVariant, PaginationChangeDetail } from './pagination.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-pagination',
   styleUrl: 'pagination.host.scss',
   shadow: true,
 })
-export class Pagination implements ComponentInterface, DsBreakpointObserver, Loggable {
+export class Pagination implements DsComponentInterface, DsBreakpointObserver {
   log!: LogInstance
 
-  @Logger('ds-pagination')
+  @Logger('pagination')
   createLogger(log: LogInstance) {
     this.log = log
   }
 
-  @Element() el!: HTMLDsPaginationElement
+  @Element() el!: HTMLStencilElement
 
   @State() isMobile = dsBreakpoints.isMobile
   @State() language: DsLanguage = defaultConfig.language
@@ -56,7 +56,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
   @Prop()
   @ValidateEmptyOrOneOf('', 'start', 'end')
-  readonly align: DS.PaginationAlignment = ''
+  readonly align: PaginationAlignment = ''
 
   /**
    * Disables component
@@ -82,7 +82,7 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
   @Prop()
   @ValidateEmptyOrOneOf('', 'sm')
-  readonly size: DS.PaginationSize = ''
+  readonly size: PaginationSize = ''
 
   /**
    * If 'true, the pagination will be sticky to the top
@@ -134,12 +134,12 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
   @Prop()
   @ValidateEmptyOrOneOf('', 'dots')
-  readonly variant: DS.PaginationVariant = ''
+  readonly variant: PaginationVariant = ''
 
   /**
    * Triggers when a page change happens
    */
-  @Event({ eventName: 'dsChange' }) dsChangeEventEmitter!: EventEmitter<DS.PaginationChangeDetail>
+  @Event({ eventName: 'dsChange' }) dsChangeEventEmitter!: EventEmitter<PaginationChangeDetail>
 
   /**
    * LIFECYCLE

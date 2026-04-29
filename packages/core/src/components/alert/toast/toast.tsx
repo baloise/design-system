@@ -1,21 +1,8 @@
-import {
-  Element,
-  Component,
-  Method,
-  h,
-  Host,
-  Prop,
-  Event,
-  EventEmitter,
-  ComponentInterface,
-  State,
-  Watch,
-} from '@stencil/core'
+import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State, Watch } from '@stencil/core'
 import {
   stopEventBubbling,
   raf,
   sanitizeSvg,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
@@ -24,14 +11,17 @@ import {
   setupValidation,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
+import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
+import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from './toast.interfaces'
+import { ButtonTarget } from '../../button/button.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-toast',
   styleUrl: 'toast.host.scss',
   shadow: true,
 })
-export class Toast implements ComponentInterface, AlertComponent, DsConfigObserver, Loggable {
+export class Toast implements DsComponentInterface, AlertComponent, DsConfigObserver {
   log!: LogInstance
 
   @Logger('toast')
@@ -39,7 +29,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
     this.log = log
   }
 
-  @Element() el!: HTMLDsToastElement
+  @Element() el!: HTMLStencilElement
 
   @State() animated = false
   @State() didLoad = false
@@ -56,7 +46,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    */
   @Prop()
   @ValidateEmptyOrOneOf('base', 'info', 'success', 'warning', 'danger', '')
-  readonly color?: DS.ToastColor
+  readonly color?: ToastColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -82,7 +72,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly icon?: string
+  readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
     this.generateIconName()
@@ -93,7 +83,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly svg?: string
+  readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
     this.generateSvgContent()
@@ -104,28 +94,28 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly action?: string
+  readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly actionIcon?: string
+  readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
   @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
-  readonly actionTarget: DS.ButtonTarget = '_blank'
+  readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly actionHref?: string
+  readonly actionHref: string = ''
 
   /**
    * @internal
@@ -139,7 +129,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    * The duration of the toast in milliseconds.
    */
   @Prop()
-  readonly duration: DS.ToastDuration = 0
+  readonly duration: ToastDuration = 0
 
   /**
    * @internal
@@ -161,12 +151,12 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<DS.ToastCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<ToastCloseClickDetail>
 
   /**
    * Emitted when the action button got clicked.
    */
-  @Event() dsActionClick!: EventEmitter<DS.ToastActionClickDetail>
+  @Event() dsActionClick!: EventEmitter<ToastActionClickDetail>
 
   /**
    * @internal

@@ -44,7 +44,7 @@ export const HEADING_SIZES: { [key: string]: HeadingSize } = {
   'base': 'base',
 }
 
-export type HeadingColor = 'primary' | 'success' | 'warning' | 'danger' | 'white'
+export type HeadingColor = 'primary' | 'success' | 'warning' | 'danger' | 'white' | ''
 
 export const HEADING_COLORS: { [key: string]: HeadingColor } = {
   primary: 'primary',

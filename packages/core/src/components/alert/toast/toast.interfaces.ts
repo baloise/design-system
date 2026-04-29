@@ -1,28 +1,21 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../../interfaces.d.ts" />
+export const TOAST_COLORS = ['base', 'info', 'success', 'warning', 'danger'] as const
 
-namespace DS {
-  export const TOAST_COLORS = ['base', 'info', 'success', 'warning', 'danger'] as const
+export type ToastColor = (typeof TOAST_COLORS)[number]
+export type ToastDuration = number | 'infinite'
 
-  export type ToastColor = (typeof TOAST_COLORS)[number]
-  export type ToastDuration = number | 'infinite'
-
-  export interface ToastCustomEvent<T> extends CustomEvent<T> {
-    detail: T
-    target: HTMLDsToastElement
-  }
-
-  export type ToastCloseClickDetail = MouseEvent
-  export type ToastCloseClick = ToastCustomEvent<ToastCloseClickDetail>
-
-  export type ToastActionClickDetail = MouseEvent
-  export type ToastActionClick = ToastCustomEvent<ToastActionClickDetail>
-
-  export type ToastDidPauseDetail = void
-  export type ToastDidPause = ToastCustomEvent<ToastDidPauseDetail>
-
-  export type ToastDidResumeDetail = void
-  export type ToastDidResume = ToastCustomEvent<ToastDidResumeDetail>
+export interface ToastCustomEvent<T> extends CustomEvent<T> {
+  detail: T
+  target: HTMLDsToastElement
 }
+
+export type ToastCloseClickDetail = MouseEvent
+export type ToastCloseClick = ToastCustomEvent<ToastCloseClickDetail>
+
+export type ToastActionClickDetail = MouseEvent
+export type ToastActionClick = ToastCustomEvent<ToastActionClickDetail>
+
+export type ToastDidPauseDetail = void
+export type ToastDidPause = ToastCustomEvent<ToastDidPauseDetail>
+
+export type ToastDidResumeDetail = void
+export type ToastDidResume = ToastCustomEvent<ToastDidResumeDetail>

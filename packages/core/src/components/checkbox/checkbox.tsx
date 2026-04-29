@@ -1,18 +1,5 @@
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
 import {
-  AttachInternals,
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from '@stencil/core'
-import {
-  Loggable,
   Logger,
   type LogInstance,
   inheritAttributes,
@@ -21,6 +8,16 @@ import {
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import {
+  CheckboxLabelPosition,
+  CheckboxTileColor,
+  CheckboxGroupColumns,
+  CheckboxFocusDetail,
+  CheckboxBlurDetail,
+  CheckboxChangeDetail,
+} from './checkbox.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-checkbox',
@@ -28,12 +25,12 @@ import {
   shadow: true,
   formAssociated: true,
 })
-export class Checkbox implements ComponentInterface, Loggable {
+export class Checkbox implements DsComponentInterface {
   inputId = `ds-cb-${checkboxIds++}`
   private inheritAttributes: Attributes = {}
   private nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLDsCheckboxElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('checkbox')
@@ -69,7 +66,7 @@ export class Checkbox implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('left', 'top', 'right')
-  readonly labelPosition: DS.CheckboxLabelPosition = 'right'
+  readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
@@ -128,7 +125,7 @@ export class Checkbox implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('purple', 'green', 'yellow', 'red', '')
-  readonly tileColor?: DS.CheckboxTileColor
+  readonly tileColor?: CheckboxTileColor
 
   /**
    * Defines the layout of the input
@@ -141,34 +138,34 @@ export class Checkbox implements ComponentInterface, Loggable {
    * @internal
    */
   @Prop()
-  readonly cols: DS.CheckboxGroupColumns = 1
+  readonly cols: CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  readonly colsTablet: DS.CheckboxGroupColumns = 1
+  readonly colsTablet: CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  readonly colsMobile: DS.CheckboxGroupColumns = 1
+  readonly colsMobile: CheckboxGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.CheckboxFocusDetail>
+  @Event() dsFocus!: EventEmitter<CheckboxFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() dsBlur!: EventEmitter<DS.CheckboxBlurDetail>
+  @Event() dsBlur!: EventEmitter<CheckboxBlurDetail>
 
   /**
    * Emitted when the value property has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.CheckboxChangeDetail>
+  @Event() dsChange!: EventEmitter<CheckboxChangeDetail>
 
   /**
    * LIFECYCLE

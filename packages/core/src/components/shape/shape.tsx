@@ -1,14 +1,16 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
-import { Loggable, Logger, type LogInstance } from '@utils'
+import { Logger, type LogInstance } from '@utils'
+import { ShapeVariation, ShapeColor, ShapeRotation } from './shape.interfaces'
+import { DsComponentInterface } from '@global'
 
 @Component({
   tag: 'ds-shape',
   styleUrl: 'shape.host.scss',
   shadow: true,
 })
-export class Shape implements ComponentInterface, Loggable {
+export class Shape implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('shape')
@@ -21,17 +23,17 @@ export class Shape implements ComponentInterface, Loggable {
   /**
    * The shape variation
    */
-  @Prop({ reflect: true }) readonly variation: DS.ShapeVariation = '1'
+  @Prop({ reflect: true }) readonly variation: ShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop({ reflect: true }) readonly color: DS.ShapeColor = 'green'
+  @Prop({ reflect: true }) readonly color: ShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop({ reflect: true }) readonly rotation: DS.ShapeRotation = '0'
+  @Prop({ reflect: true }) readonly rotation: ShapeRotation = '0'
 
   render() {
     return (

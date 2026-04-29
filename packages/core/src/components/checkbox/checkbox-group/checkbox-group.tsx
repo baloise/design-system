@@ -1,7 +1,6 @@
 import {
   AttachInternals,
   Component,
-  ComponentInterface,
   Element,
   Event,
   EventEmitter,
@@ -12,10 +11,10 @@ import {
   State,
   Watch,
 } from '@stencil/core'
+import { DsComponentInterface } from '@global'
 import { Field, FieldInterface } from '../../input/field.util'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
-  Loggable,
   Logger,
   LogInstance,
   hasTagName,
@@ -26,6 +25,16 @@ import {
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import { InputColor } from '../../input/input.interfaces'
+import {
+  CheckboxLabelPosition,
+  CheckboxTileColor,
+  CheckboxGroupColumns,
+  CheckboxGroupBlurDetail,
+  CheckboxGroupFocusDetail,
+  CheckboxGroupChangeDetail,
+} from '../checkbox.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-checkbox-group',
@@ -33,10 +42,10 @@ import {
   shadow: true,
   formAssociated: true,
 })
-export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterface {
+export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   inputId = `ds-cg-${checkboxGroupIds++}`
 
-  @Element() el!: HTMLDsCheckboxGroupElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('checkbox-group')
@@ -104,28 +113,28 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly label?: string
+  readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the checkbox input. Default is after.
    */
   @Prop()
   @ValidateEmptyOrOneOf('left', 'top', 'right')
-  readonly labelPosition: DS.CheckboxLabelPosition = 'right'
+  readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly description?: string
+  readonly description: string = ''
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly color: DS.InputColor = 'primary'
+  readonly color: InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
@@ -146,7 +155,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly invalidText?: string
+  readonly invalidText: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -188,43 +197,43 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
    */
   @Prop()
   @ValidateEmptyOrOneOf('purple', 'green', 'yellow', 'red', '')
-  readonly tileColor?: DS.CheckboxTileColor
+  readonly tileColor?: CheckboxTileColor
 
   /**
    * Defines the column size like the grid.
    */
   @Prop()
   @ValidateEmptyOrOneOf(1, 2, 3, 4)
-  readonly cols: DS.CheckboxGroupColumns = 1
+  readonly cols: CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
   @Prop()
   @ValidateEmptyOrOneOf(1, 2, 3, 4)
-  readonly colsTablet: DS.CheckboxGroupColumns = 1
+  readonly colsTablet: CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
   @Prop()
   @ValidateEmptyOrOneOf(1, 2, 3, 4)
-  readonly colsMobile: DS.CheckboxGroupColumns = 1
+  readonly colsMobile: CheckboxGroupColumns = 1
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsBlur!: EventEmitter<DS.CheckboxGroupBlurDetail>
+  @Event() dsBlur!: EventEmitter<CheckboxGroupBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.CheckboxGroupFocusDetail>
+  @Event() dsFocus!: EventEmitter<CheckboxGroupFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.CheckboxGroupChangeDetail>
+  @Event() dsChange!: EventEmitter<CheckboxGroupChangeDetail>
 
   /**
    * LIFECYCLE

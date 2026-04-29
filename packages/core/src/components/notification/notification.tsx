@@ -1,23 +1,15 @@
-import {
-  Element,
-  Component,
-  Method,
-  h,
-  Host,
-  Prop,
-  Event,
-  EventEmitter,
-  ComponentInterface,
-  State,
-} from '@stencil/core'
-import { stopEventBubbling, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State } from '@stencil/core'
+import { stopEventBubbling, normalizeDeprecatedTShirtSize, Logger, type LogInstance } from '@utils'
+import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from './notification.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-notification',
   styleUrl: 'notification.host.scss',
   shadow: true,
 })
-export class Notification implements ComponentInterface, Loggable {
+export class Notification implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('notification')
@@ -25,7 +17,8 @@ export class Notification implements ComponentInterface, Loggable {
     this.log = log
   }
 
-  @Element() el!: HTMLDsNotificationElement
+  @Element() el!: HTMLStencilElement
+
   @State() didLoad = false
 
   private timer!: NodeJS.Timeout
@@ -34,7 +27,7 @@ export class Notification implements ComponentInterface, Loggable {
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() readonly color?: DS.NotificationColor
+  @Prop() readonly color?: NotificationColor
 
   /**
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
@@ -54,15 +47,15 @@ export class Notification implements ComponentInterface, Loggable {
   /**
    * Defines the size of the notification, small, medium or large.
    */
-  @Prop({ reflect: true, mutable: true }) size?: DS.NotificationSize
-  private watchSize(newValue: DS.NotificationSize) {
+  @Prop({ reflect: true, mutable: true }) size?: NotificationSize
+  private watchSize(newValue: NotificationSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
    * Defines the heading of the notification.
    */
-  @Prop() readonly heading?: string
+  @Prop() readonly heading: string = ''
 
   /**
    * @internal Handler for on close event
@@ -72,7 +65,7 @@ export class Notification implements ComponentInterface, Loggable {
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<DS.NotificationCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<NotificationCloseClickDetail>
 
   /**
    * Emitted when the component has loaded.

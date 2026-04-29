@@ -14,11 +14,14 @@
   @include vars.focus(accordion);
   @include vars.local(accordion-marker-size, 1rem);
 
-  @include vars.local(accordion-summary-color, inherit);
-  @include vars.local(accordion-summary-family, var(--ds-body-family));
-  @include vars.local(accordion-summary-weight, var(--ds-body-weight));
-  @include vars.local(accordion-summary-line-height, var(--ds-body-line-height));
-  @include vars.local(accordion-summary-size, var(--ds-text-size-base-device));
+  @include vars.local(accordion-summary-color, var(--ds-accordion-summary-color-base));
+  @include vars.local(accordion-summary-family, var(--ds-accordion-summary-family));
+  @include vars.local(accordion-summary-weight, var(--ds-accordion-summary-weight));
+  @include vars.local(accordion-summary-line-height, var(--ds-accordion-summary-line-height));
+  @include vars.local(accordion-summary-size, var(--ds-accordion-summary-size-device));
+  @include vars.local(accordion-summary-color-hover, var(--ds-accordion-summary-color-hover));
+  @include vars.local(accordion-summary-color-active, var(--ds-accordion-summary-color-active));
+  @include vars.local(accordion-radius-base, var(--ds-accordion-radius-base));
 }
 
 /**
@@ -67,18 +70,18 @@
   @include hover {
     &:hover,
     &.is-hovered {
-      color: var(--ds-link-color-base-hover);
+      color: var(--_accordion-summary-color-hover);
       ds-icon {
-        --icon-color: var(--ds-link-color-base-hover);
+        --icon-color: var(--_accordion-summary-color-hover);
       }
     }
   }
 
   &:active,
   &.is-pressed {
-    color: var(--ds-link-color-base-active);
+    color: var(--_accordion-summary-color-active);
     ds-icon {
-      --icon-color: var(--ds-link-color-base-active);
+      --icon-color: var(--_accordion-summary-color-active);
     }
   }
 
@@ -95,7 +98,7 @@
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--ds-radius-base);
+        border-radius: var(--_accordion-radius-base);
       }
     }
   }

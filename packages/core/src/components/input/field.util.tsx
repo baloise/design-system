@@ -2,15 +2,16 @@ import { h, Host, FunctionalComponent } from '@stencil/core'
 import { ariaBooleanToString } from '@utils'
 import { I18nDsLabel } from '../label/label.i18n'
 import { DsLanguage } from '@global'
+import { InputColor } from './input.interfaces'
 
 export type FieldInterface = {
-  color: DS.InputColor
+  color: InputColor
   disabled: boolean | undefined
   invalid: boolean | undefined
   loading?: boolean
-  label?: string
-  description?: string
-  invalidText?: string
+  label: string
+  description: string
+  invalidText: string
   required: boolean
   language: DsLanguage
   inputId?: string

@@ -9,3 +9,6 @@ export * from './config'
 
 // Initialize
 export { initializeDesignSystem } from './initialize'
+
+// Component Interface
+export * from './component.type'

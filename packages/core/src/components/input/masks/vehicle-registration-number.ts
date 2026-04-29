@@ -1,9 +1,10 @@
 import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '@global'
 import { stopEventBubbling } from '@utils'
 import { InputMaskFormatterInterface } from '../input.mask'
+import { InputMask } from '../input.interfaces'
 
 export class VehicleRegistrationNumber implements InputMaskFormatterInterface {
-  name: DS.InputMask = 'vehicle-registration-number'
+  name: InputMask = 'vehicle-registration-number'
   maxLength = 12
 
   format(value: string | null): string | null {

@@ -1,7 +1,6 @@
 import {
   AttachInternals,
   Component,
-  ComponentInterface,
   Element,
   Event,
   EventEmitter,
@@ -12,8 +11,9 @@ import {
   Prop,
   State,
 } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { DsComponentInterface } from '@global'
 import {
-  Loggable,
   Logger,
   type LogInstance,
   isSpaceKey,
@@ -31,7 +31,16 @@ import { FOCUS_KEYS } from '../app/app.focus.util'
   shadow: true,
   formAssociated: true,
 })
-export class SegmentItem implements ComponentInterface {
+export class SegmentItem implements DsComponentInterface {
+  log!: LogInstance
+
+  @Logger('segment-item')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  @Element() el!: HTMLStencilElement
+
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
@@ -52,7 +61,7 @@ export class SegmentItem implements ComponentInterface {
   /**
    * Svg content for the icon.
    */
-  @Prop() readonly svg?: string
+  @Prop() readonly svg: string = ''
 
   /**
    * Label text to display in the segment item.

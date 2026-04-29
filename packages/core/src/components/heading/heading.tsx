@@ -1,30 +1,16 @@
-import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  dsBrowser,
-  Loggable,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
-import {
-  HEADING_COLORS,
-  HEADING_ORDER,
-  HEADING_SIZES,
-  HEADING_TAGS,
-  HeadingColor,
-  HeadingSize,
-  HeadingTag,
-} from './heading.const'
+import { dsBrowser, Logger, type LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import { HeadingColor, HeadingLevel, HeadingVisualLevel } from './heading.interfaces'
+import { HEADING_COLORS, HEADING_ORDER, HEADING_SIZES, HEADING_TAGS, HeadingSize, HeadingTag } from './heading.const'
+import { DsComponentInterface } from '@global'
 
 @Component({
   tag: 'ds-heading',
   styleUrl: 'heading.host.scss',
   shadow: true,
 })
-export class Heading implements ComponentInterface, Loggable {
+export class Heading implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('heading')
@@ -48,7 +34,7 @@ export class Heading implements ComponentInterface, Loggable {
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', 'span', 'p', '')
-  readonly level: DS.HeadingLevel = 'h1'
+  readonly level: HeadingLevel = 'h1'
 
   @Watch('level')
   levelChanged() {
@@ -62,7 +48,7 @@ export class Heading implements ComponentInterface, Loggable {
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', '')
-  readonly visualLevel?: DS.HeadingVisualLevel
+  readonly visualLevel?: HeadingVisualLevel
 
   @Watch('visualLevel')
   visualLevelChanged() {
@@ -74,7 +60,7 @@ export class Heading implements ComponentInterface, Loggable {
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', '')
-  readonly autoLevel?: DS.HeadingVisualLevel
+  readonly autoLevel?: HeadingVisualLevel
 
   @Watch('autoLevel')
   autoLevelChanged() {
@@ -109,7 +95,7 @@ export class Heading implements ComponentInterface, Loggable {
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrOneOf('primary', 'info', 'success', 'warning', 'danger', 'blue', 'white', '')
-  readonly color: DS.HeadingColor = ''
+  readonly color: HeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds

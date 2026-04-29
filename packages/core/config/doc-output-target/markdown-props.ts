@@ -12,11 +12,11 @@ export const propsToMarkdown = (props: d.JsonDocsProp[]) => {
 
   const table = new MarkdownTable()
 
-  table.addHeader(['Property', 'Attribute', 'Description', 'Type', 'Default'])
+  table.addHeader(['Property', 'Description', 'Type', 'Default'])
 
   props.forEach(prop => {
     table.addRow([
-      getPropertyField(prop),
+      // getPropertyField(prop),
       getAttributeField(prop),
       getDocsField(prop),
       getPropertyType(prop),

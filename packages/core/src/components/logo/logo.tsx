@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, FunctionalComponent, h, Host, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import {
@@ -8,12 +8,12 @@ import {
   ListenToBreakpoints,
   rOnLoad,
   normalizeDeprecatedTShirtSize,
-  Loggable,
   Logger,
   type LogInstance,
 } from '@utils'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
+import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
+import { LogoBrand, LogoColor, LogoSize } from './logo.interfaces'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 
@@ -22,7 +22,7 @@ type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) =>
   styleUrl: 'logo.host.scss',
   shadow: true,
 })
-export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver, DsConfigObserver {
+export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfigObserver {
   private animationItem!: AnimationItem
   private animatedLogoElement!: HTMLDivElement
   private animationFunction?: LogoAnimationFunction
@@ -38,7 +38,7 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
 
   @State() isTouch = dsBreakpoints.isTouch
   @State() doesConfigAllowAnimation = true
-  @State() configBrand: DS.LogoBrand = 'baloise'
+  @State() configBrand: LogoBrand = 'baloise'
 
   /**
    * PUBLIC PROPERTY API
@@ -48,21 +48,21 @@ export class Logo implements ComponentInterface, Loggable, DsBreakpointObserver,
   /**
    * Defines the color of the logo.
    */
-  @Prop({ reflect: true }) readonly color: DS.LogoColor = 'primary'
+  @Prop({ reflect: true }) readonly color: LogoColor = 'primary'
 
   /**
    * Size of the logo svg
    */
-  @Prop({ mutable: true, reflect: true }) size: DS.LogoSize = ''
+  @Prop({ mutable: true, reflect: true }) size: LogoSize = ''
   @Watch('size')
-  sizeChanged(newValue: DS.LogoSize) {
+  sizeChanged(newValue: LogoSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || ''
   }
 
   /**
    * Defines the brand of the logo. Default is 'baloise'.
    */
-  @Prop({ reflect: true }) readonly brand: DS.LogoBrand = ''
+  @Prop({ reflect: true }) readonly brand: LogoBrand = ''
 
   /**
    * Defines if the animation should be active

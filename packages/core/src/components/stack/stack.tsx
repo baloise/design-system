@@ -1,12 +1,28 @@
-import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
-import { Loggable, Logger, type LogInstance, normalizeDeprecatedTShirtSize } from '@utils'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize } from '@utils'
+import { DsComponentInterface } from '@global'
+import {
+  STACK_LAYOUTS,
+  STACK_SPACES,
+  STACK_PADDINGS,
+  STACK_ALIGNMENTS,
+  STACK_DIRECTIONS,
+  type StackLayout,
+  type StackSpace,
+  type StackPadding,
+  type StackAlignment,
+  type StackDirection,
+} from './stack.interfaces'
 
 @Component({
   tag: 'ds-stack',
   styleUrl: './stack.host.scss',
 })
-export class Stack implements ComponentInterface, Loggable {
+export class Stack implements DsComponentInterface {
   log!: LogInstance
+
+  @Element() el!: HTMLStencilElement
 
   @Logger('stack')
   createLogger(log: LogInstance) {
@@ -23,9 +39,9 @@ export class Stack implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() readonly layout?: DS.StackLayout
+  @Prop() readonly layout?: StackLayout
   @Watch('layout')
-  layoutChanged(newValue?: DS.StackLayout) {
+  layoutChanged(newValue?: StackLayout) {
     if (newValue !== undefined) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
@@ -42,65 +58,65 @@ export class Stack implements ComponentInterface, Loggable {
   /**
    * Defines the direction of the child elements. Default is column.
    */
-  @Prop() direction: DS.StackDirection = 'column'
+  @Prop() direction: StackDirection = 'column'
 
   /**
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() readonly align?: DS.StackAlignment
+  @Prop() readonly align?: StackAlignment
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop({ mutable: true }) space?: DS.StackSpace
+  @Prop({ mutable: true }) space?: StackSpace
   @Watch('space')
-  spaceChanged(newValue?: DS.StackSpace) {
+  spaceChanged(newValue?: StackSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop() spaceRow?: DS.StackSpace
+  @Prop() spaceRow?: StackSpace
   @Watch('spaceRow')
-  spaceRowChanged(newValue?: DS.StackSpace) {
+  spaceRowChanged(newValue?: StackSpace) {
     this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop() spaceColumn?: DS.StackSpace
+  @Prop() spaceColumn?: StackSpace
   @Watch('spaceColumn')
-  spaceColumnChanged(newValue?: DS.StackSpace) {
+  spaceColumnChanged(newValue?: StackSpace) {
     this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop() p?: DS.StackPadding
+  @Prop() p?: StackPadding
   @Watch('p')
-  pChanged(newValue?: DS.StackPadding) {
+  pChanged(newValue?: StackPadding) {
     this.p = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop() px?: DS.StackPadding
+  @Prop() px?: StackPadding
   @Watch('px')
-  pxChanged(newValue?: DS.StackPadding) {
+  pxChanged(newValue?: StackPadding) {
     this.px = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * Defines the vertical padding top and bottom of the stack element.
    */
-  @Prop() py?: DS.StackPadding
+  @Prop() py?: StackPadding
   @Watch('py')
-  pyChanged(newValue?: DS.StackPadding) {
+  pyChanged(newValue?: StackPadding) {
     this.py = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -119,7 +135,7 @@ export class Stack implements ComponentInterface, Loggable {
    * @internal
    * Please use align instead.
    */
-  @Prop() readonly alignment?: DS.StackAlignment
+  @Prop() readonly alignment?: StackAlignment
 
   connectedCallback(): void {
     this.layoutChanged(this.layout)

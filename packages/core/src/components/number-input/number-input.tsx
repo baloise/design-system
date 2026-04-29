@@ -1,16 +1,4 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Listen,
-  Method,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import isEmpty from 'lodash/isEmpty'
 import isNaN from 'lodash/isNaN'
@@ -21,13 +9,12 @@ import {
   FormControlInterface,
   stopEventBubbling,
   debounceEvent,
-  Loggable,
   Logger,
   type LogInstance,
   getDecimalSeparator,
   getThousandSeparator,
 } from '@utils'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
   isNotNumber,
   mapDecimalSeparator,
@@ -37,6 +24,15 @@ import {
   validateKeyDown,
 } from './number-input.utils'
 import { Field, FieldInterface } from '../input/field.util'
+import { InputColor } from '../input/input.interfaces'
+import {
+  NumberInputInputDetail,
+  NumberInputChangeDetail,
+  NumberInputBlurDetail,
+  NumberInputFocusDetail,
+  NumberInputClickDetail,
+  NumberInputKeyPressDetail,
+} from './number-input.interfaces'
 
 @Component({
   tag: 'ds-number-input',
@@ -44,7 +40,7 @@ import { Field, FieldInterface } from '../input/field.util'
   shadow: true,
   formAssociated: true,
 })
-export class NumberInput implements ComponentInterface, FieldInterface, FormControlInterface<number | null>, Loggable {
+export class NumberInput implements DsComponentInterface, FieldInterface, FormControlInterface<number | null> {
   private numberInputId = `ds-number-input-${NumberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private selectTimeout?: NodeJS.Timeout
@@ -105,22 +101,22 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * The label displayed above the field.
    */
-  @Prop() readonly label?: string
+  @Prop() readonly label: string = ''
 
   /**
    * The description displayed below the field.
    */
-  @Prop() readonly description?: string
+  @Prop() readonly description: string = ''
 
   /**
    * Defines the color state of the input.
    */
-  @Prop() readonly color: DS.InputColor = 'primary'
+  @Prop() readonly color: InputColor = 'primary'
 
   /**
    * Text shown in the description area when `invalid` is true.
    */
-  @Prop() readonly invalidText?: string
+  @Prop() readonly invalidText: string = ''
 
   /**
    * If `true` the component gets an invalid style.
@@ -140,17 +136,17 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * Text appended to the formatted value after blur (e.g. `"CHF"`).
    */
-  @Prop() readonly suffix?: string
+  @Prop() readonly suffix: string = ''
 
   /**
    * Overrides the auto-generated input validation pattern.
    */
-  @Prop() readonly pattern?: string
+  @Prop() readonly pattern: string = ''
 
   /**
    * Instructional text shown when the input has no value.
    */
-  @Prop() readonly placeholder?: string
+  @Prop() readonly placeholder: string = ''
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -175,12 +171,12 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * The maximum value.
    */
-  @Prop() readonly max?: string
+  @Prop() readonly max: string = ''
 
   /**
    * The minimum value.
    */
-  @Prop() readonly min?: string
+  @Prop() readonly min: string = ''
 
   /**
    * Milliseconds to wait before triggering `dsChange` after each keystroke.
@@ -200,32 +196,32 @@ export class NumberInput implements ComponentInterface, FieldInterface, FormCont
   /**
    * Emitted on each keystroke with the current numeric value (or null).
    */
-  @Event() dsInput!: EventEmitter<DS.NumberInputInputDetail>
+  @Event() dsInput!: EventEmitter<NumberInputInputDetail>
 
   /**
    * Emitted when the value changes on blur.
    */
-  @Event() dsChange!: EventEmitter<DS.NumberInputChangeDetail>
+  @Event() dsChange!: EventEmitter<NumberInputChangeDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() dsBlur!: EventEmitter<DS.NumberInputBlurDetail>
+  @Event() dsBlur!: EventEmitter<NumberInputBlurDetail>
 
   /**
    * Emitted when the input gains focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.NumberInputFocusDetail>
+  @Event() dsFocus!: EventEmitter<NumberInputFocusDetail>
 
   /**
    * Emitted when the input is clicked.
    */
-  @Event() dsClick!: EventEmitter<DS.NumberInputClickDetail>
+  @Event() dsClick!: EventEmitter<NumberInputClickDetail>
 
   /**
    * Emitted on keypress.
    */
-  @Event() dsKeyPress!: EventEmitter<DS.NumberInputKeyPressDetail>
+  @Event() dsKeyPress!: EventEmitter<NumberInputKeyPressDetail>
 
   /**
    * LISTENERS

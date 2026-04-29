@@ -1,29 +1,46 @@
-import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   ariaBooleanToString,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
-import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
+import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
+import {
+  ACCORDION_SUMMARY_LEVELS,
+  ACCORDION_MARKERS,
+  ACCORDION_MARKER_POSITIONS,
+  ACCORDION_BUTTON_COLORS,
+  ACCORDION_BUTTON_SIZES,
+  type AccordionSummaryLevel,
+  type AccordionMarker,
+  type AccordionMarkerPosition,
+  type AccordionButtonColor,
+  type AccordionButtonSize,
+  type AccordionToggleDetail,
+  type AccordionToggle,
+} from './accordion.interfaces'
+import { DsComponentDescriptionListDetailWeight } from 'packages/tokens/dist/js/base.tokens'
 
 @Component({
   tag: 'ds-accordion',
   styleUrl: 'accordion.host.scss',
   shadow: true,
 })
-export class Accordion implements ComponentInterface, DsConfigObserver, Loggable {
+export class Accordion implements DsComponentInterface, DsConfigObserver {
   private accordionId = `ds-accordion-${accordionIds++}`
 
   @State() animated = true
   @State() isAnimating = false
 
+  @Element() el!: HTMLStencilElement
+
   log!: LogInstance
 
-  @Logger('ds-accordion')
+  @Logger('accordion')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -46,28 +63,28 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrType('string')
-  readonly group?: string
+  readonly group: string = ''
 
   /**
    * The heading level of the summary
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.ACCORDION_SUMMARY_LEVELS)
-  readonly summaryLevel: DS.AccordionSummaryLevel = 'h3'
+  @ValidateEmptyOrOneOf(...ACCORDION_SUMMARY_LEVELS)
+  readonly summaryLevel: AccordionSummaryLevel = 'h3'
 
   /**
    * The visual heading level of the summary.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.ACCORDION_SUMMARY_LEVELS)
-  readonly summaryVisualLevel?: DS.AccordionSummaryLevel
+  @ValidateEmptyOrOneOf(...ACCORDION_SUMMARY_LEVELS)
+  readonly summaryVisualLevel: AccordionSummaryLevel = ''
 
   /**
    * If `true` the summary is styled as a title.
    */
   @Prop()
   @ValidateEmptyOrType('boolean')
-  readonly summaryTitle?: boolean
+  readonly summaryTitle: boolean = false
 
   /**
    * The marker variant. Only applies if `button` is `false`.
@@ -75,15 +92,15 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    * a plus icon for closed and a minus icon for open state is used.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.ACCORDION_MARKERS)
-  readonly marker?: DS.AccordionMarker
+  @ValidateEmptyOrOneOf(...ACCORDION_MARKERS)
+  readonly marker: AccordionMarker = ''
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.ACCORDION_MARKER_POSITIONS)
-  readonly markerPosition?: DS.AccordionMarkerPosition
+  @ValidateEmptyOrOneOf(...ACCORDION_MARKER_POSITIONS)
+  readonly markerPosition: AccordionMarkerPosition = ''
 
   /**
    * Displays the summary as a button and hides the default marker.
@@ -103,15 +120,15 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    * The color of the button. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.ACCORDION_BUTTON_COLORS)
-  readonly buttonColor: DS.AccordionButtonColor = 'primary'
+  @ValidateEmptyOrOneOf(...ACCORDION_BUTTON_COLORS)
+  readonly buttonColor: AccordionButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.ACCORDION_BUTTON_SIZES)
-  readonly buttonSize?: DS.AccordionButtonSize
+  @ValidateEmptyOrOneOf(...ACCORDION_BUTTON_SIZES)
+  readonly buttonSize: AccordionButtonSize = ''
 
   /**
    * Label of the open trigger button
@@ -125,7 +142,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly buttonIconOpen?: string
+  readonly buttonIconOpen: string = ''
 
   /**
    * Label of the close trigger button
@@ -139,22 +156,22 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly buttonIconClose?: string
+  readonly buttonIconClose: string = ''
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsToggle!: EventEmitter<DS.AccordionToggleDetail>
+  @Event() dsToggle!: EventEmitter<AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is opened.
    */
-  @Event() dsOpened!: EventEmitter<DS.AccordionToggleDetail>
+  @Event() dsOpened!: EventEmitter<AccordionToggleDetail>
 
   /**
    * Emitted when the accordion is closed.
    */
-  @Event() dsClosed!: EventEmitter<DS.AccordionToggleDetail>
+  @Event() dsClosed!: EventEmitter<AccordionToggleDetail>
 
   /**
    * LIFECYCLE
@@ -171,7 +188,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    */
 
   @Listen('dsOpened', { target: 'window' })
-  listenToDsOpened(event: DS.AccordionToggle) {
+  listenToDsOpened(event: AccordionToggle) {
     const { id, group } = event.detail
 
     // ignore self
@@ -201,7 +218,7 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
     // check if target is link or button and ignore toggle if so,
     // to allow nested interactive elements in the summary
     const target = event.target as HTMLElement
-    const interactiveElement = target.closest('a, button')
+    const interactiveElement = target.closest('a, button, input, ds-toggle, ds-checkbox')
     if (interactiveElement && interactiveElement !== (event.currentTarget as HTMLElement)) {
       return
     }

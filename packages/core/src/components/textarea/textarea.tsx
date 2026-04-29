@@ -1,28 +1,19 @@
-import {
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Listen,
-  Method,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
-import {
-  inheritAttributes,
-  FormControl,
-  FormControlInterface,
-  debounceEvent,
-  Loggable,
-  Logger,
-  type LogInstance,
-} from '@utils'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import { inheritAttributes, FormControl, FormControlInterface, debounceEvent, Logger, type LogInstance } from '@utils'
+import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
+import { InputColor, InputAutocomplete } from '../input/input.interfaces'
+import {
+  TextareaWrap,
+  TextareaInputMode,
+  TextareaBlurDetail,
+  TextareaKeyPressDetail,
+  TextareaFocusDetail,
+  TextareaClickDetail,
+  TextareaInputDetail,
+  TextareaChangeDetail,
+} from './textarea.interfaces'
 
 @Component({
   tag: 'ds-textarea',
@@ -30,8 +21,8 @@ import { Field, FieldInterface } from '../input/field.util'
   shadow: true,
   formAssociated: true,
 })
-export class Textarea implements ComponentInterface, FieldInterface, FormControlInterface<string | null>, Loggable {
-  private textareaId = `ds-textarea-${TextareaIds++}`
+export class Textarea implements DsComponentInterface, FieldInterface, FormControlInterface<string | null> {
+  inputId = `ds-textarea-${TextareaIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
 
@@ -62,27 +53,27 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() readonly name: string = this.textareaId
+  @Prop() readonly name: string = this.inputId
 
   /**
    * The label displayed above the textarea field.
    */
-  @Prop() readonly label?: string
+  @Prop() readonly label: string = ''
 
   /**
    * The description displayed below the textarea field.
    */
-  @Prop() readonly description?: string
+  @Prop() readonly description: string = ''
 
   /**
    * Defines the color state of the textarea.
    */
-  @Prop() readonly color: DS.InputColor = 'primary'
+  @Prop() readonly color: InputColor = 'primary'
 
   /**
    * Text shown in the description area when `invalid` is true.
    */
-  @Prop() readonly invalidText?: string
+  @Prop() readonly invalidText: string = ''
 
   /**
    * If `true` the component gets an invalid style.
@@ -97,7 +88,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() readonly autocomplete: DS.InputAutocomplete = 'off'
+  @Prop() readonly autocomplete: InputAutocomplete = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -117,7 +108,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * Instructional text that shows before the textarea has a value.
    */
-  @Prop() readonly placeholder?: string
+  @Prop() readonly placeholder: string = ''
 
   /**
    * Specifies the maximum number of characters that the user can enter.
@@ -152,7 +143,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * Indicates how the control wraps text.
    */
-  @Prop() readonly wrap?: DS.TextareaWrap
+  @Prop() readonly wrap?: TextareaWrap
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -162,7 +153,7 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * A hint to the browser for which keyboard to display.
    */
-  @Prop() readonly inputmode?: DS.TextareaInputMode
+  @Prop() readonly inputmode?: TextareaInputMode
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid.
@@ -177,32 +168,32 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsBlur!: EventEmitter<DS.TextareaBlurDetail>
+  @Event() dsBlur!: EventEmitter<TextareaBlurDetail>
 
   /**
    * Emitted when a keyboard key has been pressed.
    */
-  @Event() dsKeyPress!: EventEmitter<DS.TextareaKeyPressDetail>
+  @Event() dsKeyPress!: EventEmitter<TextareaKeyPressDetail>
 
   /**
    * Emitted when the textarea has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.TextareaFocusDetail>
+  @Event() dsFocus!: EventEmitter<TextareaFocusDetail>
 
   /**
    * Emitted when the textarea has been clicked.
    */
-  @Event() dsClick!: EventEmitter<DS.TextareaClickDetail>
+  @Event() dsClick!: EventEmitter<TextareaClickDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsInput!: EventEmitter<DS.TextareaInputDetail>
+  @Event() dsInput!: EventEmitter<TextareaInputDetail>
 
   /**
    * Emitted when the textarea value has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.TextareaChangeDetail>
+  @Event() dsChange!: EventEmitter<TextareaChangeDetail>
 
   /**
    * LISTENERS
@@ -314,7 +305,6 @@ export class Textarea implements ComponentInterface, FieldInterface, FormControl
         invalidText={this.invalidText}
         required={this.required}
         language={this.language}
-        inputId="textarea"
       >
         <textarea
           id="textarea"

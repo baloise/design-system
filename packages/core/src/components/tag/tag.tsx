@@ -1,13 +1,27 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { inheritAttributes, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import { inheritAttributes, normalizeDeprecatedTShirtSize, Logger, type LogInstance } from '@utils'
+import {
+  TAG_COLORS,
+  TAG_SHAPES,
+  TAG_SIZES,
+  TAG_FONT_WEIGHTS,
+  TAG_PLACEMENTS,
+  type TagColor,
+  type TagSize,
+  type TagShape,
+  type TagFontWeight,
+  type TagPlacement,
+  type TagCloseClickDetail,
+} from './tag.interfaces'
+import { DsComponentInterface } from '@global'
 
 @Component({
   tag: 'ds-tag',
   styleUrl: 'tag.host.scss',
   shadow: true,
 })
-export class Tag implements ComponentInterface, Loggable {
+export class Tag implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('tag')
@@ -22,21 +36,21 @@ export class Tag implements ComponentInterface, Loggable {
   /**
    * The theme type of the tag.
    */
-  @Prop({ reflect: true }) readonly color?: DS.TagColor
+  @Prop({ reflect: true }) readonly color?: TagColor
 
   /**
    * The size of the tag element
    */
-  @Prop({ mutable: true, reflect: true }) size?: DS.TagSize
+  @Prop({ mutable: true, reflect: true }) size?: TagSize
   @Watch('size')
-  sizeChanged(newValue: DS.TagSize) {
+  sizeChanged(newValue: TagSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
    * The shape of the tag element like square or pill
    */
-  @Prop({ reflect: true }) readonly shape?: DS.TagShape
+  @Prop({ reflect: true }) readonly shape?: TagShape
 
   /**
    * The theme type of the tag.
@@ -56,12 +70,12 @@ export class Tag implements ComponentInterface, Loggable {
   /**
    * Choosing left or center the tag is aligned to that side in the ds-card.
    */
-  @Prop({ reflect: true }) readonly position?: DS.TagPlacement
+  @Prop({ reflect: true }) readonly position?: TagPlacement
 
   /**
    * Emitted when the input got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<DS.TagCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<TagCloseClickDetail>
 
   connectedCallback(): void {
     this.size = normalizeDeprecatedTShirtSize(this.size)

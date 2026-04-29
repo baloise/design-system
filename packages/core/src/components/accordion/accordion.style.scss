@@ -24,6 +24,9 @@ details.accordion {
   /* Default marker variant */
   @include vars.local(accordion-marker-icon, var(--accordion-marker-chevron));
   @include vars.local(accordion-marker-size, 1rem);
+  @include vars.local(accordion-summary-color-hover, var(--ds-accordion-summary-color-hover));
+  @include vars.local(accordion-summary-color-active, var(--ds-accordion-summary-color-active));
+  @include vars.local(accordion-radius-base, var(--ds-accordion-radius-base));
 }
 
 /**
@@ -50,24 +53,24 @@ details.accordion > summary:not(.button) {
   @include hover {
     &:hover,
     &.is-hovered {
-      color: var(--ds-link-color-base-hover);
+      color: var(--_accordion-summary-color-hover);
       ds-icon {
-        --icon-color: var(--ds-link-color-base-hover);
+        --icon-color: var(--_accordion-summary-color-hover);
       }
       &:after {
-        background: var(--ds-link-color-base-hover);
+        background: var(--_accordion-summary-color-hover);
       }
     }
   }
 
   &:active,
   &.is-pressed {
-    color: var(--ds-link-color-base-active);
+    color: var(--_accordion-summary-color-active);
     ds-icon {
-      --icon-color: var(--ds-link-color-base-active);
+      --icon-color: var(--_accordion-summary-color-active);
     }
     &:after {
-      background: var(--ds-link-color-base-active);
+      background: var(--_accordion-summary-color-active);
     }
   }
 
@@ -84,7 +87,7 @@ details.accordion > summary:not(.button) {
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--ds-radius-base);
+        border-radius: var(--_accordion-radius-base);
       }
     }
   }

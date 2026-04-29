@@ -1,14 +1,14 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Loggable, Logger, type LogInstance } from '@utils'
-import { updateDsAllowedLanguages, updateDsAnimated, updateDsLogger } from '@global'
+import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Logger, type LogInstance } from '@utils'
+import { DsComponentInterface, updateDsAnimated, updateDsLogger } from '@global'
 import { startFocusVisible } from './app.focus.util'
 
 @Component({
   tag: 'ds-app',
   styleUrl: 'app.scss',
 })
-export class App implements ComponentInterface, Loggable {
+export class App implements DsComponentInterface {
   private focusVisible?: any
   private debouncedNotify = debounce(() => this.notifyResize(), 100)
 

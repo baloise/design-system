@@ -1,23 +1,32 @@
-import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
+import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import {
   normalizeDeprecatedTShirtSize,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
-import { DsConfigObserver, DsConfigState, DsLanguage, DsRegion, ListenToConfig, defaultConfig } from '@global'
+import {
+  DsComponentInterface,
+  DsConfigObserver,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '@global'
 import { i18nDsClose } from './close.i18n'
+import { ButtonColor } from '../button/button.interfaces'
+import { CloseSize } from './close.interfaces'
 
 @Component({
   tag: 'ds-close',
   styleUrl: 'close.host.scss',
   shadow: true,
 })
-export class Close implements ComponentInterface, DsConfigObserver, Loggable {
+export class Close implements DsComponentInterface, DsConfigObserver {
   log!: LogInstance
 
   @Logger('close')
@@ -35,9 +44,9 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
    */
   @Prop({ mutable: true, reflect: true })
   @ValidateEmptyOrOneOf('', 'xs', 'sm', 'md', 'lg', 'xl')
-  size?: DS.CloseSize
+  size?: CloseSize
   @Watch('size')
-  sizeChanged(newValue: DS.CloseSize) {
+  sizeChanged(newValue: CloseSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
@@ -68,7 +77,7 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('primary', 'secondary', 'success', 'warning', 'danger', '')
-  readonly buttonColor?: DS.ButtonColor
+  readonly buttonColor?: ButtonColor
 
   /**
    * @internal define config for the component

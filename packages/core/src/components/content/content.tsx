@@ -1,20 +1,18 @@
-import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
-import {
-  Loggable,
-  Logger,
-  type LogInstance,
-  normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateEmptyOrOneOf, setupValidation } from '@utils'
+import { DsComponentInterface } from '@global'
+import { StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
+import { ContentAlignment, ContentTextAlignment, ContentSpace } from './content.interfaces'
 
 @Component({
   tag: 'ds-content',
   styleUrl: './content.host.scss',
 })
-export class Content implements ComponentInterface, Loggable {
+export class Content implements DsComponentInterface {
   log!: LogInstance
+
+  @Element() el!: HTMLStencilElement
 
   @Logger('content')
   createLogger(log: LogInstance) {
@@ -31,9 +29,9 @@ export class Content implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() readonly layout?: DS.StackLayout
+  @Prop() readonly layout?: StackLayout
   @Watch('layout')
-  layoutChanged(newValue?: DS.StackLayout) {
+  layoutChanged(newValue?: StackLayout) {
     if (newValue !== undefined) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
@@ -52,7 +50,7 @@ export class Content implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('column', 'row', 'column-reverse', 'row-reverse')
-  direction?: DS.StackDirection
+  direction?: StackDirection
 
   /**
    * Defines the positioning like center, end or
@@ -60,7 +58,7 @@ export class Content implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('start', 'center', 'end', '')
-  readonly align?: DS.ContentAlignment
+  readonly align?: ContentAlignment
 
   /**
    * Defines the text positioning like center, right or
@@ -68,16 +66,16 @@ export class Content implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('left', 'center', 'right', '')
-  readonly textAlign?: DS.ContentTextAlignment
+  readonly textAlign?: ContentTextAlignment
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
   @ValidateEmptyOrOneOf('none', '3xs', '2xs', 'xs', 'sm', 'base', '')
-  space?: DS.ContentSpace
+  space?: ContentSpace
   @Watch('space')
-  spaceChanged(newValue?: DS.ContentSpace) {
+  spaceChanged(newValue?: ContentSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -86,7 +84,7 @@ export class Content implements ComponentInterface, Loggable {
    * Please use align instead.
    */
   @Prop()
-  readonly alignment?: DS.StackAlignment
+  readonly alignment?: StackAlignment
 
   connectedCallback(): void {
     setupValidation(this)

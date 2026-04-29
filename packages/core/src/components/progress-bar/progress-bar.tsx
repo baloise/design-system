@@ -1,6 +1,5 @@
-import { Component, ComponentInterface, Element, Host, Method, Prop, h } from '@stencil/core'
+import { Component, Element, Host, Method, Prop, h } from '@stencil/core'
 import {
-  Loggable,
   Logger,
   type LogInstance,
   DsBreakpointObserver,
@@ -12,23 +11,27 @@ import {
   initialBreakpoints,
 } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import type { DsConfigObserver, DsConfigState } from '@global'
+import type { DsComponentInterface, DsConfigObserver, DsConfigState } from '@global'
+import { ProgressBarBackground, ProgressBarColor } from './progress-bar.interfaces'
 
 @Component({
   tag: 'ds-progress-bar',
   styleUrl: 'progress-bar.host.scss',
   shadow: true,
 })
-export class ProgressBar
-  implements ComponentInterface, Loggable, DsConfigObserver, DsBreakpointObserver, WindowResizeObserver
-{
-  log!: LogInstance
-
-  @Element() el!: HTMLStencilElement
-
+export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBreakpointObserver, WindowResizeObserver {
   private animated = true
   private lineEl?: HTMLDivElement
   private isTouch = initialBreakpoints.touch // need this part to improve a none side effect import
+
+  @Element() el!: HTMLStencilElement
+
+  log!: LogInstance
+
+  @Logger('progress-bar')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   /**
    * PUBLIC PROPERTY API
@@ -43,12 +46,12 @@ export class ProgressBar
   /**
    * The background color
    */
-  @Prop() readonly background: DS.ProgressBarBackground = 'dark'
+  @Prop() readonly background: ProgressBarBackground = 'dark'
 
   /**
    * The progress bar color
    */
-  @Prop() readonly color: DS.ProgressBarColor = 'primary'
+  @Prop() readonly color: ProgressBarColor = 'primary'
 
   /**
    * LIFECYCLE
@@ -72,11 +75,6 @@ export class ProgressBar
   @ListenToWindowResize()
   listenToWindowResize() {
     this.updateProgress()
-  }
-
-  @Logger('ds-progress-bar')
-  createLogger(log: LogInstance) {
-    this.log = log
   }
 
   @Method()

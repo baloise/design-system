@@ -1,10 +1,10 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { DsComponentInterface } from '@global'
 import {
   ariaBooleanToString,
   inheritAttributes,
   normalizeDeprecatedTShirtSize,
-  Loggable,
   Logger,
   type LogInstance,
   type Attributes,
@@ -12,6 +12,29 @@ import {
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
+import {
+  BUTTON_COLORS,
+  BUTTON_ELEMENT_TYPES,
+  BUTTON_SIZES,
+  BUTTON_TARGETS,
+  BUTTON_SPINNERS,
+  type ButtonColor,
+  type ButtonElementType,
+  type ButtonSize,
+  type ButtonTarget,
+  type ButtonSpinner,
+  type ButtonAria,
+  type ButtonBlur,
+  type ButtonFocus,
+  type ButtonClick,
+  type ButtonNavigate,
+  type ButtonDidRender,
+  ButtonBlurDetail,
+  ButtonClickDetail,
+  ButtonDidRenderDetail,
+  ButtonFocusDetail,
+  ButtonNavigateDetail,
+} from './button.interfaces'
 
 @Component({
   tag: 'ds-button',
@@ -19,7 +42,7 @@ import {
   shadow: true,
   formAssociated: true,
 })
-export class Button implements ComponentInterface, Loggable {
+export class Button implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('button')
@@ -51,14 +74,14 @@ export class Button implements ComponentInterface, Loggable {
     'danger',
     '',
   )
-  readonly color: DS.ButtonColor = 'primary'
+  readonly color: ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrOneOf('button', 'reset', 'submit', '')
-  readonly elementType: DS.ButtonElementType = 'button'
+  readonly elementType: ButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -72,9 +95,9 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop({ mutable: true })
   @ValidateEmptyOrOneOf('sm', 'lg', 'xl', '')
-  size: DS.ButtonSize = undefined
+  size: ButtonSize = undefined
   @Watch('size')
-  sizeChanged(newValue: DS.ButtonSize) {
+  sizeChanged(newValue: ButtonSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
@@ -83,7 +106,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly href?: string
+  readonly href: string = ''
 
   /**
    * Specifies where to display the linked URL.
@@ -91,7 +114,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
-  readonly target: DS.ButtonTarget = '_self'
+  readonly target: ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -99,7 +122,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly rel?: string
+  readonly rel: string = ''
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -109,7 +132,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly download?: string
+  readonly download: string = ''
 
   /**
    * If `true` the button has a dashed border.
@@ -172,7 +195,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop({ reflect: true })
   @ValidateEmptyOrType('boolean')
-  readonly loading: DS.ButtonSpinner = false
+  readonly loading: ButtonSpinner = false
 
   /**
    * If `true` the button is rounded.
@@ -191,7 +214,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly icon?: string
+  readonly icon: string = ''
 
   /**
    * If `true` the icon turns
@@ -205,7 +228,7 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly iconRight?: string
+  readonly iconRight: string = ''
 
   /**
    * The label of the button will not break
@@ -219,67 +242,67 @@ export class Button implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly name?: string
+  readonly name: string = ''
 
   /**
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly value?: string | number
+  readonly value: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly a11yControls?: string = undefined
+  readonly a11yControls: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly a11yTitle?: string = undefined
+  readonly a11yTitle: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly a11yLabel?: string = undefined
+  readonly a11yLabel: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop()
+  @Prop({ mutable: true })
   @ValidateEmptyOrType('string')
-  a11yHaspopup?: string = undefined
+  a11yHaspopup = ''
 
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() dsClick!: EventEmitter<DS.ButtonClickDetail>
+  @Event() dsClick!: EventEmitter<ButtonClickDetail>
 
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() dsNavigate!: EventEmitter<DS.ButtonNavigateDetail>
+  @Event() dsNavigate!: EventEmitter<ButtonNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.ButtonFocusDetail>
+  @Event() dsFocus!: EventEmitter<ButtonFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() dsBlur!: EventEmitter<DS.ButtonBlurDetail>
+  @Event() dsBlur!: EventEmitter<ButtonBlurDetail>
 
   /**
    * Emitted when the button has been  rendered.
    */
-  @Event() dsDidRender!: EventEmitter<DS.ButtonDidRenderDetail>
+  @Event() dsDidRender!: EventEmitter<ButtonDidRenderDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenToClick(ev: UIEvent) {

@@ -1,20 +1,10 @@
-import {
-  AttachInternals,
-  Component,
-  ComponentInterface,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Listen,
-  Method,
-  Prop,
-  State,
-} from '@stencil/core'
-import { Loggable, Logger, type LogInstance, stopEventBubbling, isDescendant, ListenToResize, ResizeInfo } from '@utils'
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State } from '@stencil/core'
+import { Logger, type LogInstance, stopEventBubbling, isDescendant, ListenToResize } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { SegmentItemInterface } from '../segment-item.type'
+import { SegmentColor, SegmentBlurDetail, SegmentFocusDetail, SegmentChangeDetail } from '../segment-item.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-segment',
@@ -22,11 +12,11 @@ import { SegmentItemInterface } from '../segment-item.type'
   shadow: true,
   formAssociated: true,
 })
-export class Segment implements ComponentInterface, Loggable, Omit<FieldInterface, 'color'> {
+export class Segment implements DsComponentInterface, Omit<FieldInterface, 'color'> {
   private initialValue?: any | null
   inputId = `ds-sg-${segmentIds++}`
 
-  @Element() el!: HTMLDsSegmentElement
+  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('segment')
@@ -59,17 +49,17 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   /**
    * The label of the input, which is displayed above the input field.
    */
-  @Prop() readonly label?: string
+  @Prop() readonly label: string = ''
 
   /**
    * The description of the input, which is displayed below the input field.
    */
-  @Prop() readonly description?: string
+  @Prop() readonly description: string = ''
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() readonly color: DS.SegmentColor = ''
+  @Prop() readonly color: SegmentColor = ''
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
@@ -84,7 +74,7 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   /**
    * The text to display when the input is in an invalid state.
    */
-  @Prop() readonly invalidText?: string
+  @Prop() readonly invalidText: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -134,17 +124,17 @@ export class Segment implements ComponentInterface, Loggable, Omit<FieldInterfac
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() dsBlur!: EventEmitter<DS.SegmentBlurDetail>
+  @Event() dsBlur!: EventEmitter<SegmentBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() dsFocus!: EventEmitter<DS.SegmentFocusDetail>
+  @Event() dsFocus!: EventEmitter<SegmentFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() dsChange!: EventEmitter<DS.SegmentChangeDetail>
+  @Event() dsChange!: EventEmitter<SegmentChangeDetail>
 
   /**
    * LIFECYCLE

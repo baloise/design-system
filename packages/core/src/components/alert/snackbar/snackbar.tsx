@@ -1,16 +1,4 @@
-import {
-  Element,
-  Component,
-  Method,
-  h,
-  Host,
-  Prop,
-  Event,
-  EventEmitter,
-  ComponentInterface,
-  State,
-  Watch,
-} from '@stencil/core'
+import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State, Watch } from '@stencil/core'
 import {
   DsBreakpointObserver,
   DsBreakpoints,
@@ -19,7 +7,6 @@ import {
   stopEventBubbling,
   sanitizeSvg,
   raf,
-  Loggable,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
@@ -28,13 +15,17 @@ import {
   setupValidation,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
+import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from './snackbar.interfaces'
+import { ButtonTarget } from '../../button/button.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-snackbar',
   styleUrl: 'snackbar.host.scss',
   shadow: true,
 })
-export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpointObserver, Loggable {
+export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpointObserver {
   log!: LogInstance
 
   @Logger('snackbar')
@@ -42,7 +33,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
     this.log = log
   }
 
-  @Element() el!: HTMLDsSnackbarElement
+  @Element() el!: HTMLStencilElement
 
   @State() isMobile = dsBreakpoints.isMobile
   @State() mobileOpenState = false
@@ -59,7 +50,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    */
   @Prop()
   @ValidateEmptyOrOneOf('base', 'info', 'success', 'warning', 'danger', '')
-  readonly color?: DS.SnackbarColor
+  readonly color?: SnackbarColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -87,7 +78,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly icon?: string
+  readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
     this.generateIconName()
@@ -98,7 +89,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly svg?: string
+  readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
     this.generateSvgContent()
@@ -109,28 +100,28 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly action?: string
+  readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly actionIcon?: string
+  readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
   @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
-  readonly actionTarget: DS.ButtonTarget = '_blank'
+  readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
   @ValidateEmptyOrType('string')
-  readonly actionHref?: string
+  readonly actionHref: string = ''
 
   /**
    * @internal
@@ -158,12 +149,12 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
   /**
    * Emitted when the close button got clicked.
    */
-  @Event() dsCloseClick!: EventEmitter<DS.SnackbarCloseClickDetail>
+  @Event() dsCloseClick!: EventEmitter<SnackbarCloseClickDetail>
 
   /**
    * Emitted when the action button got clicked.
    */
-  @Event() dsActionClick!: EventEmitter<DS.SnackbarActionClickDetail>
+  @Event() dsActionClick!: EventEmitter<SnackbarActionClickDetail>
 
   /**
    * @internal

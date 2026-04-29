@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-declare namespace DS {}
-
 import './components/accordion/accordion.interfaces'
 import './components/app/app.interfaces'
 import './components/badge/badge.interfaces'

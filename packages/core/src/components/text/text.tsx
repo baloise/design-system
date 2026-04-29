@@ -1,18 +1,23 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { ElementStateInfo, Loggable, Logger, type LogInstance } from '@utils'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { ElementStateInfo, Logger, type LogInstance } from '@utils'
+import { DsComponentInterface } from '@global'
+import { TextSize, TextColor, TextSpace, TextAlign } from './text.interfaces'
 
 @Component({
   tag: 'ds-text',
   styleUrl: 'text.host.scss',
   shadow: true,
 })
-export class Text implements ComponentInterface, ElementStateInfo, Loggable {
+export class Text implements DsComponentInterface, ElementStateInfo {
   log!: LogInstance
 
   @Logger('text')
   createLogger(log: LogInstance) {
     this.log = log
   }
+
+  @Element() el!: HTMLStencilElement
 
   /**
    * PUBLIC API
@@ -22,7 +27,7 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * Defines the size of the paragraph
    */
-  @Prop({ mutable: true, reflect: true }) size?: DS.TextSize
+  @Prop({ mutable: true, reflect: true }) size?: TextSize
 
   /**
    * If `true` the text has heading font family
@@ -54,12 +59,12 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * Defines the color of the text.
    */
-  @Prop() readonly color?: DS.TextColor
+  @Prop() readonly color?: TextColor
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) readonly space?: DS.TextSpace
+  @Prop({ reflect: true }) readonly space?: TextSpace
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -84,7 +89,7 @@ export class Text implements ComponentInterface, ElementStateInfo, Loggable {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() readonly align?: DS.TextAlign
+  @Prop() readonly align?: TextAlign
 
   /**
    * @internal

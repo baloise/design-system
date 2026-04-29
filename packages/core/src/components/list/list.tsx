@@ -1,13 +1,14 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
-import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import { DsComponentInterface } from '@global'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { Logger, type LogInstance } from '@utils'
 
 @Component({
   tag: 'ds-list',
   styleUrl: 'list.host.scss',
   shadow: true,
 })
-export class List implements ComponentInterface, Loggable {
+export class List implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('list')

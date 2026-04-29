@@ -1,4 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { DsComponentInterface } from '@global'
 import globalScript from '../../../global/global'
 import { dsBrowser, DsLogger } from '@utils'
 // import { Icons } from '@baloise/ds-assets'
@@ -11,7 +13,9 @@ import { dsBrowser, DsLogger } from '@utils'
   tag: 'ds-doc-app',
   styleUrl: 'doc-app.scss',
 })
-export class DocApp implements ComponentInterface {
+export class DocApp {
+  @Element() el!: HTMLStencilElement
+
   @Prop() logComponents = ''
   @Prop() logLifecycle = true
   @Prop() logEvents = true

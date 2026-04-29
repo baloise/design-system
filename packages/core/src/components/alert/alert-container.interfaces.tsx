@@ -1,3 +1,5 @@
+import { ButtonTarget } from '../button/button.interfaces'
+
 export const ALERT_TYPES = ['toast', 'snackbar'] as const
 
 export const ALERT_CONTAINER_SIZES = ['fluid', 'detail-page', 'compact', 'blog-page', 'wide'] as const
@@ -30,7 +32,7 @@ export type Alert = {
   closeHandler: (id: string) => void
   action?: string
   actionIcon?: string
-  actionTarget?: DS.ButtonTarget
+  actionTarget?: ButtonTarget
   actionHref?: string
   actionHandler: (id: string) => void
 }

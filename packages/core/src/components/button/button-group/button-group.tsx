@@ -1,13 +1,15 @@
-import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
-import { Loggable, Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
+import { ButtonGroupAlignment, ButtonGroupDirection } from '../button.interfaces'
+import { DsComponentInterface } from '@global'
 
 @Component({
   tag: 'ds-button-group',
   styleUrl: 'button-group.host.scss',
   shadow: true,
 })
-export class ButtonGroup implements ComponentInterface, Loggable {
+export class ButtonGroup implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('button-group')
@@ -22,7 +24,7 @@ export class ButtonGroup implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('left', 'center', 'right', '')
-  readonly align?: DS.ButtonGroupAlignment
+  readonly align?: ButtonGroupAlignment
 
   /**
    * `auto` will position the button items vertical and full width.
@@ -30,7 +32,7 @@ export class ButtonGroup implements ComponentInterface, Loggable {
    */
   @Prop()
   @ValidateEmptyOrOneOf('auto', 'row', 'column')
-  readonly direction: DS.ButtonGroupDirection = 'auto'
+  readonly direction: ButtonGroupDirection = 'auto'
 
   /**
    * If `true` the flex direction is used in reverse on mobile.
