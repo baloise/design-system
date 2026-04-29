@@ -11,6 +11,7 @@ import {
   TokenOverview,
 } from '../../../.storybook/blocks'
 import * as AccordionStories from './accordion.stories'
+import AccordionParts from './accordion.parts.svg'
 
 <Meta of={AccordionStories} />
 
@@ -66,6 +67,21 @@ import * as AccordionStories from './accordion.stories'
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+## Parts
+
+<img src={AccordionParts} alt="Accordion parts diagram" />
+
+<Markdown>
+{`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`header\` | heading element | Wraps the summary button; level is set by the \`summaryLevel\` prop (defaults to \`<h3>\`). |
+| \`summary\` | \`<button>\` | Clickable toggle trigger; manages \`aria-expanded\` and \`aria-controls\`. |
+| \`marker\` | \`<ds-icon>\` | Caret or plus/minus icon on the right of the summary; animates on open/close. |
+| \`content\` | \`<div>\` | Collapsible content region; hidden when the accordion is closed. |
+`}
+</Markdown>
 
 ## CSS Variables
 

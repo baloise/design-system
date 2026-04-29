@@ -11,7 +11,16 @@ import {
   Prop,
   State,
 } from '@stencil/core'
-import { Loggable, Logger, type LogInstance, inheritAttributes, type Attributes } from '@utils'
+import {
+  Loggable,
+  Logger,
+  type LogInstance,
+  inheritAttributes,
+  type Attributes,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 
 @Component({
   tag: 'ds-checkbox',
@@ -44,80 +53,107 @@ export class Checkbox implements ComponentInterface, Loggable {
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() readonly name: string = this.inputId
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
 
   /**
    * Label of the radio item.
    */
-  @Prop() readonly label = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
-  @Prop() readonly labelPosition: DS.CheckboxLabelPosition = 'right'
+  @Prop()
+  @ValidateEmptyOrOneOf('left', 'top', 'right')
+  readonly labelPosition: DS.CheckboxLabelPosition = 'right'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
    * client-side, but on the server this is the value given to the data
    * submitted with the checkbox's name.
    */
-  @Prop() readonly value: string | number = 'on'
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly value: string | number = 'on'
 
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true }) checked = false
+  @Prop({ mutable: true })
+  @ValidateEmptyOrType('boolean')
+  checked = false
   private initialValue = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly readonly: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = false
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() readonly invalid: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
 
   /**
    * Defines the color of the tile checkbox.
    */
-  @Prop() readonly tileColor?: DS.CheckboxTileColor
+  @Prop()
+  @ValidateEmptyOrOneOf('purple', 'green', 'yellow', 'red', '')
+  readonly tileColor?: DS.CheckboxTileColor
 
   /**
    * Defines the layout of the input
    */
-  @Prop() readonly tile: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
    * @internal
    */
-  @Prop() readonly cols: DS.CheckboxGroupColumns = 1
+  @Prop()
+  readonly cols: DS.CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() readonly colsTablet: DS.CheckboxGroupColumns = 1
+  @Prop()
+  readonly colsTablet: DS.CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() readonly colsMobile: DS.CheckboxGroupColumns = 1
+  @Prop()
+  readonly colsMobile: DS.CheckboxGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
@@ -140,6 +176,7 @@ export class Checkbox implements ComponentInterface, Loggable {
    */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.initialValue = this.checked
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
   }

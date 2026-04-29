@@ -1,0 +1,90 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../../.storybook/blocks'
+import * as ToastStories from './toast.stories'
+import ToastParts from './toast.parts.svg'
+
+<Meta of={ToastStories} />
+
+<StoryHeading of={ToastStories.Basic} hidden></StoryHeading>
+
+<Banner of={ToastStories} />
+
+<Lead>**Toast** is a brief, non-blocking notification that appears temporarily to inform users about the result of an action.</Lead>
+
+<Canvas of={ToastStories.Basic} sourceState={'shown'} />
+
+<PlaygroundBar of={ToastStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToastStories.Variants}></StoryHeading>
+
+<Canvas of={ToastStories.Variants} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToastStories.Colors}></StoryHeading>
+
+<Canvas of={ToastStories.Colors} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Parts
+
+<img src={ToastParts} alt="Toast parts diagram" />
+
+<Markdown>
+{`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`icon\` | \`<ds-icon>\` | Status icon on the left; shape and color reflect the \`color\` prop. |
+| \`content\` | \`<span>\` | Container wrapping the heading and message text. |
+| \`heading\` | \`<h2>\` | Optional heading rendered above the message. |
+| \`message\` | \`<span>\` | The main notification text or slot content. |
+| \`button\` | \`<ds-button>\` | Optional action button; shown when the \`action\` prop is set. |
+| \`close\` | \`<ds-close>\` | Close button; shown when \`closable\` is \`true\`. |
+`}
+</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="toast" />
+
+## Integration
+
+import integration from '../../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+`ds-toast` is a web component with no CSS-only mode. All accessibility behavior is handled automatically by the component.
+
+### Web component
+
+The `ds-toast` element manages the following automatically:
+
+- **`role="alert"`** — applied to the host so screen readers announce the notification immediately when it appears
+- **`aria-live="assertive"`** — interrupts the current reading flow to announce the toast; appropriate for time-sensitive notifications
+- **`aria-atomic="true"`** — ensures the full notification content is read as a single unit, not piecemeal
+- **Icon semantics** — the status icon (`ds-icon`) is decorative and carries no additional ARIA role; meaning is conveyed by the heading and message text
+- **Auto-dismiss pause** — when `duration` is set, hovering the toast pauses the timer via `mouseenter`/`mouseleave`; focus management is left to the browser
+- **Close button** — rendered as a `<ds-close>` element (a native `<button>`) when `closable` is `true`; fully keyboard-accessible via Tab and Enter/Space
+- **Action button** — rendered as a `<ds-button>` (native `<button>` or `<a>`) when the `action` prop is set; keyboard-accessible via Tab and Enter/Space
+
+### References
+
+- [`role="alert"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+- [`aria-atomic`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-atomic) — MDN
+- [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) — MDN
+
+<Footer />

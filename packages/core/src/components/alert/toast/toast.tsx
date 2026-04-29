@@ -11,7 +11,18 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { stopEventBubbling, raf, sanitizeSvg, Loggable, Logger, type LogInstance } from '@utils'
+import {
+  stopEventBubbling,
+  raf,
+  sanitizeSvg,
+  Loggable,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateRequiredAndType,
+  setupValidation,
+} from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 
@@ -28,7 +39,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
     this.log = log
   }
 
-  @Element() element!: HTMLDsToastElement
+  @Element() el!: HTMLDsToastElement
 
   @State() animated = false
   @State() didLoad = false
@@ -43,7 +54,9 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() readonly color?: DS.ToastColor
+  @Prop()
+  @ValidateEmptyOrOneOf('base', 'info', 'success', 'warning', 'danger', '')
+  readonly color?: DS.ToastColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -53,17 +66,23 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   /**
    * Defines the heading of the notification.
    */
-  @Prop() readonly heading?: string
+  @Prop()
+  @ValidateRequiredAndType('string')
+  readonly heading!: string
 
   /**
    * Defines the message of the notification as html content
    */
-  @Prop() readonly message?: string
+  @Prop()
+  @ValidateRequiredAndType('string')
+  readonly message!: string
 
   /**
    * Defines the icon of the notification.
    */
-  @Prop() readonly icon?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly icon?: string
   @Watch('icon')
   iconChanged() {
     this.generateIconName()
@@ -72,7 +91,9 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   /**
    * Defines the svg content of the icon
    */
-  @Prop() readonly svg?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly svg?: string
   @Watch('svg')
   svgChanged() {
     this.generateSvgContent()
@@ -81,40 +102,51 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
   /**
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
-  @Prop() readonly action?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly action?: string
 
   /**
    * Defines the icon of the action button.
    */
-  @Prop() readonly actionIcon?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly actionIcon?: string
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() readonly actionTarget: DS.ButtonTarget = '_blank'
+  @Prop()
+  @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
+  readonly actionTarget: DS.ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() readonly actionHref?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly actionHref?: string
 
   /**
    * @internal
    * The id of the toast, used for internal handling, if not provided a random id will be generated
    */
-  @Prop() readonly alertId = crypto.randomUUID() as string
+  @Prop()
+  readonly alertId = crypto.randomUUID() as string
 
   /**
    * @internal
    * The duration of the toast in milliseconds.
    */
-  @Prop() readonly duration: DS.ToastDuration = 0
+  @Prop()
+  readonly duration: DS.ToastDuration = 0
 
   /**
    * @internal
    * If `true` the notification is visible.
    */
-  @Prop({ reflect: true }) readonly visible: boolean = true
+  @Prop({ reflect: true })
+  readonly visible: boolean = true
 
   /**
    * @internal Handler for on close event
@@ -160,6 +192,7 @@ export class Toast implements ComponentInterface, AlertComponent, DsConfigObserv
    */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.generateIconName()
     this.generateSvgContent()
   }

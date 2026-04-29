@@ -1,13 +1,13 @@
 import { isValueEmpty } from './is-value-empty'
 
-export function emptyOr<T extends { el: HTMLElement }, K extends keyof T, ExtraArgs extends unknown[]>(
-  check: (component: T, prop: K, ...extraArgs: ExtraArgs) => void,
-) {
-  return (component: T, prop: K, ...extraArgs: ExtraArgs) => {
-    const value = component[prop]
-
-    if (!isValueEmpty(value)) {
-      check(component, prop, ...extraArgs)
+export function emptyOr(checkFactory: (value: any) => (component: any, prop: string) => void) {
+  return (value: any) => {
+    const checker = checkFactory(value)
+    return (component: any, prop: string) => {
+      const propValue = component[prop]
+      if (!isValueEmpty(propValue)) {
+        checker(component, prop)
+      }
     }
   }
 }

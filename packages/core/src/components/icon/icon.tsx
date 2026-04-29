@@ -1,7 +1,16 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-import { sanitizeSvg, normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import {
+  sanitizeSvg,
+  normalizeDeprecatedTShirtSize,
+  Loggable,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
 
 @Component({
@@ -28,17 +37,38 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
   /**
    * Name of the baloise icon.
    */
-  @Prop({ reflect: true }) readonly name?: string
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('string')
+  readonly name?: string
 
   /**
    * Svg content.
    */
-  @Prop() readonly svg?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly svg?: string
 
   /**
    * Defines the size of the icon.
    */
-  @Prop({ reflect: true, mutable: true }) size: DS.IconSize
+  @Prop({ reflect: true, mutable: true })
+  @ValidateEmptyOrOneOf(
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    '2xl',
+    'xsmall',
+    'x-small',
+    'small',
+    'medium',
+    'large',
+    'x-large',
+    'xx-large',
+    '',
+  )
+  size: DS.IconSize
   @Watch('size')
   sizeChanged(newValue: DS.IconSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
@@ -47,22 +77,50 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
   /**
    * The theme type of the button.
    */
-  @Prop() readonly color?: DS.IconColor
+  @Prop()
+  @ValidateEmptyOrOneOf(
+    'blue',
+    'light-blue',
+    'success',
+    'success-dark',
+    'success-darker',
+    'danger',
+    'danger-dark',
+    'danger-darker',
+    'warning',
+    'warning-dark',
+    'warning-darker',
+    'white',
+    'grey',
+    'grey-light',
+    'grey-dark',
+    'primary',
+    'primary-light',
+    'primary-dark',
+    '',
+  )
+  readonly color?: DS.IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
-  @Prop() readonly shape?: DS.IconShape
+  @Prop()
+  @ValidateEmptyOrOneOf('triangle', 'circle', '')
+  readonly shape?: DS.IconShape
 
   /**
    * If `true` the icon acts as a tile with a background color.
    */
-  @Prop() readonly tile: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
-  @Prop() readonly tileColor: DS.IconTileColor = 'purple'
+  @Prop()
+  @ValidateEmptyOrOneOf('purple', 'red', 'yellow', 'green')
+  readonly tileColor: DS.IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
@@ -100,6 +158,7 @@ export class Icon implements DsConfigObserver, ComponentInterface, Loggable {
    */
 
   connectedCallback() {
+    setupValidation(this)
     this.generateSvgContent(this.name)
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }

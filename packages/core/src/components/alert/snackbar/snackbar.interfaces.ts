@@ -5,7 +5,9 @@
 
 namespace DS {
   export type SnackbarDuration = number | 'infinite'
-  export type SnackbarColor = 'base' | 'info' | 'success' | 'warning' | 'danger'
+  export const SNACKBAR_COLORS = ['base', 'info', 'success', 'warning', 'danger'] as const
+
+  export type SnackbarColor = (typeof SNACKBAR_COLORS)[number]
 
   export interface SnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T

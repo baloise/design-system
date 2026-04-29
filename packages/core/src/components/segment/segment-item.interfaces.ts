@@ -4,6 +4,10 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
+  export const SEGMENT_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
+
+  export type SegmentColor = (typeof SEGMENT_COLORS)[number]
+
   export interface SegmentItemCustomEvent<T> extends CustomEvent<T> {
     detail: T
     target: HTMLDsSegmentItemElement
@@ -17,8 +21,6 @@ namespace DS {
 
   // export type SegmentItemBlurDetail = FocusEvent
   // export type SegmentItemBlur = SegmentItemCustomEvent<SegmentItemBlurDetail>
-
-  export type SegmentColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export interface SegmentCustomEvent<T> extends CustomEvent<T> {
     detail: T

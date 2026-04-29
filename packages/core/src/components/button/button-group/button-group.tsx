@@ -1,5 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '@utils'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-button-group',
@@ -14,26 +15,40 @@ export class ButtonGroup implements ComponentInterface, Loggable {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() readonly align?: DS.ButtonGroupAlignment
+  @Prop()
+  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  readonly align?: DS.ButtonGroupAlignment
 
   /**
    * `auto` will position the button items vertical and full width.
    * `row` will force that the buttons are also horizontal on mobile.
    */
-  @Prop() readonly direction: DS.ButtonGroupDirection = 'auto'
+  @Prop()
+  @ValidateEmptyOrOneOf('auto', 'row', 'column')
+  readonly direction: DS.ButtonGroupDirection = 'auto'
 
   /**
    * If `true` the flex direction is used in reverse on mobile.
    */
-  @Prop() readonly reverse: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly reverse: boolean = false
 
   /**
    * If `true` the buttons will expand to fill the available space on mobile.
    */
-  @Prop() readonly wide: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly wide: boolean = false
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
 
   render() {
     return (

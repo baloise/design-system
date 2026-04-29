@@ -4,9 +4,13 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type CheckboxGroupColumns = 1 | 2 | 3 | 4
-  export type CheckboxTileColor = '' | 'purple' | 'green' | 'yellow' | 'red'
-  export type CheckboxLabelPosition = 'left' | 'top' | 'right'
+  export const CHECKBOX_GROUP_COLUMNS = [1, 2, 3, 4] as const
+  export const CHECKBOX_TILE_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
+  export const CHECKBOX_LABEL_POSITIONS = ['left', 'top', 'right'] as const
+
+  export type CheckboxGroupColumns = (typeof CHECKBOX_GROUP_COLUMNS)[number]
+  export type CheckboxTileColor = (typeof CHECKBOX_TILE_COLORS)[number]
+  export type CheckboxLabelPosition = (typeof CHECKBOX_LABEL_POSITIONS)[number]
 
   export interface CheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T

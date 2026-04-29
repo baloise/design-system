@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Design token primitives:
+  Purple  1:#F9F3FF  2:#E1D9FF  3:#B8B2FF  5:#9F52CC  6:#6C2273
+  Yellow  1:#FFF9E8  2:#FFECBC  3:#FAE052  4:#FFBE19  5:#FA9319  6:#B24A00
+  Red     1:#FFEEF1  2:#FFD7D7  3:#FFACA6  4:#FF596F  5:#D9304C  6:#99172D
+  Green   1:#E9FBF7  2:#CBF2EC  3:#94E3D4  4:#21D9AC  5:#00B28F  6:#1B5951
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect width="880" height="440" fill="#ffffff"/>
+
+  <!-- ○ Host: ds-badge (Purple — outermost) -->
+  <circle cx="440" cy="225" r="180" fill="#F9F3FF" stroke="#B8B2FF" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- ○ part="badge" (Yellow — middle) -->
+  <circle cx="440" cy="225" r="135" fill="#FFF9E8" stroke="#FFBE19" stroke-width="2"/>
+
+  <!-- ○ part="icon" (Red — innermost) -->
+  <circle cx="440" cy="225" r="70" fill="#FFEEF1" stroke="#FF596F" stroke-width="2"/>
+
+  <!-- Badge pills anchored to the top border of each circle (centered on x=440) -->
+
+  <!-- ds-badge pill — top border of host circle (cy - r = 225 - 180 = 45) -->
+  <rect x="375" y="32" width="130" height="26" rx="13" fill="#9F52CC"/>
+  <text x="440" y="50" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="600">ds-badge</text>
+
+  <!-- part="badge" pill — top border of badge circle (cy - r = 225 - 135 = 90) -->
+  <rect x="376" y="77" width="128" height="26" rx="13" fill="#FA9319"/>
+  <text x="440" y="95" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="badge"</text>
+
+  <!-- part="icon" pill — top border of icon circle (cy - r = 225 - 70 = 155) -->
+  <rect x="386" y="142" width="108" height="26" rx="13" fill="#D9304C"/>
+  <text x="440" y="160" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="icon"</text>
+</svg>

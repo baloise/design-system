@@ -1,5 +1,13 @@
 import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
-import { Loggable, Logger, type LogInstance, normalizeDeprecatedTShirtSize } from '@utils'
+import {
+  Loggable,
+  Logger,
+  type LogInstance,
+  normalizeDeprecatedTShirtSize,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 
 @Component({
   tag: 'ds-divider',
@@ -23,12 +31,16 @@ export class Divider implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is verticaly.
    */
-  @Prop() readonly layout: DS.DividerLayout = 'horizontal'
+  @Prop()
+  @ValidateEmptyOrOneOf('horizontal', 'vertical', '')
+  readonly layout: DS.DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop({ mutable: true }) space: DS.DividerSpace = 'none'
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '')
+  space: DS.DividerSpace = 'none'
   @Watch('space')
   spaceChanged(newValue: DS.DividerSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue) || 'none'
@@ -37,14 +49,34 @@ export class Divider implements ComponentInterface, Loggable {
   /**
    * Defines the color of the separator line.
    */
-  @Prop() readonly color: DS.DividerColor = 'grey'
+  @Prop()
+  @ValidateEmptyOrOneOf(
+    'primary',
+    'primary-light',
+    'primary-dark',
+    'grey-light',
+    'grey',
+    'grey-dark',
+    'warning',
+    'success',
+    'danger',
+    'danger-dark',
+    'danger-darker',
+    'white',
+    'light-blue',
+    '',
+  )
+  readonly color: DS.DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
-  @Prop() readonly dashed: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly dashed: boolean = false
 
   connectedCallback(): void {
+    setupValidation(this)
     this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
   }
 

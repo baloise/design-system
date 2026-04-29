@@ -1,12 +1,12 @@
-export function checkPattern<T extends { el: HTMLElement }>(component: T, prop: keyof T, pattern: RegExp) {
-  const componentName = component.el.localName
-  const value = component[prop]
+export function checkPattern(pattern: RegExp) {
+  return (component: any, prop: string) => {
+    const componentName = component.el.localName
+    const value = component[prop]
 
-  const message = `The prop \`${String(
-    prop,
-  )}\` of the \`${componentName}\` component must follow the format \`${pattern}\`.`
+    const message = `The prop \`${prop}\` of the \`${componentName}\` component must follow the format \`${pattern}\`. Received: ${JSON.stringify(value)}`
 
-  if (typeof value !== 'string' || !pattern.test(value)) {
-    console.error(`${message}\n`, component.el)
+    if (typeof value !== 'string' || !pattern.test(value)) {
+      console.error(`${message}\n`, component.el)
+    }
   }
 }

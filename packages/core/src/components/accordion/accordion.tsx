@@ -1,5 +1,13 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
-import { ariaBooleanToString, Loggable, Logger, type LogInstance } from '@utils'
+import {
+  ariaBooleanToString,
+  Loggable,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 
 @Component({
@@ -28,80 +36,110 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
   /**
    * If `true` the accordion is open.
    */
-  @Prop({ reflect: true, mutable: true }) open = false
+  @Prop({ reflect: true, mutable: true })
+  @ValidateEmptyOrType('boolean')
+  open = false
 
   /**
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
    * close when another accordion in the same group is opened.
    */
-  @Prop({ reflect: true }) readonly group?: string
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('string')
+  readonly group?: string
 
   /**
    * The heading level of the summary
    */
-  @Prop() readonly summaryLevel: DS.AccordionSummaryLevel = 'h3'
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.ACCORDION_SUMMARY_LEVELS)
+  readonly summaryLevel: DS.AccordionSummaryLevel = 'h3'
 
   /**
    * The visual heading level of the summary.
    */
-  @Prop() readonly summaryVisualLevel?: DS.AccordionSummaryLevel
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.ACCORDION_SUMMARY_LEVELS)
+  readonly summaryVisualLevel?: DS.AccordionSummaryLevel
 
   /**
    * If `true` the summary is styled as a title.
    */
-  @Prop() readonly summaryTitle?: boolean
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly summaryTitle?: boolean
 
   /**
    * The marker variant. Only applies if `button` is `false`.
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() readonly marker?: DS.AccordionMarker
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.ACCORDION_MARKERS)
+  readonly marker?: DS.AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
-  @Prop() readonly markerPosition?: DS.AccordionMarkerPosition
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.ACCORDION_MARKER_POSITIONS)
+  readonly markerPosition?: DS.AccordionMarkerPosition
 
   /**
    * Displays the summary as a button and hides the default marker.
    */
-  @Prop() readonly button: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly button: boolean = false
 
   /**
    * If `true` the button is expanded to full width. Only applies if `button` is `true`.
    */
-  @Prop() readonly buttonWide: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly buttonWide: boolean = false
 
   /**
    * The color of the button. Only applies if `button` is `true`.
    */
-  @Prop() readonly buttonColor: DS.ButtonColor = 'primary'
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.ACCORDION_BUTTON_COLORS)
+  readonly buttonColor: DS.AccordionButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
-  @Prop() readonly buttonSize?: DS.ButtonSize
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.ACCORDION_BUTTON_SIZES)
+  readonly buttonSize?: DS.AccordionButtonSize
 
   /**
    * Label of the open trigger button
    */
-  @Prop() readonly buttonLabelOpen?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly buttonLabelOpen: string = ''
 
   /**
    * BalIcon of the open trigger button
    */
-  @Prop() readonly buttonIconOpen?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly buttonIconOpen?: string
 
   /**
    * Label of the close trigger button
    */
-  @Prop() readonly buttonLabelClose?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly buttonLabelClose: string = ''
 
   /**
    * BalIcon of the close trigger button
    */
-  @Prop() readonly buttonIconClose?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly buttonIconClose?: string
 
   /**
    * Emitted when the input value has changed.
@@ -117,6 +155,15 @@ export class Accordion implements ComponentInterface, DsConfigObserver, Loggable
    * Emitted when the accordion is closed.
    */
   @Event() dsClosed!: EventEmitter<DS.AccordionToggleDetail>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
 
   /**
    * LISTENERS

@@ -4,7 +4,13 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type BadgeSize = 'small' | 'large' | ''
-  export type BadgeColor = 'grey' | 'danger' | 'warning' | 'success' | 'red' | 'yellow' | 'green' | 'purple' | ''
-  export type BadgePosition = 'card' | 'button' | 'tabs' | ''
+  // Define const arrays as the SOURCE OF TRUTH
+  export const BADGE_SIZES = ['small', 'large', ''] as const
+  export const BADGE_COLORS = ['grey', 'danger', 'warning', 'success', 'red', 'yellow', 'green', 'purple', ''] as const
+  export const BADGE_POSITIONS = ['card', 'button', 'tabs', ''] as const
+
+  // Derive the types from the arrays
+  export type BadgeSize = (typeof BADGE_SIZES)[number]
+  export type BadgeColor = (typeof BADGE_COLORS)[number]
+  export type BadgePosition = (typeof BADGE_POSITIONS)[number]
 }

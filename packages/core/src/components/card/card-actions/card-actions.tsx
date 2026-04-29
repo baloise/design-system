@@ -1,5 +1,7 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '@utils'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance, ValidateEmptyOrOneOf, setupValidation } from '@utils'
+import { HTMLStencilElement } from '@stencil/core/internal'
+
 @Component({
   tag: 'ds-card-actions',
   shadow: true,
@@ -12,10 +14,18 @@ export class CardActions implements ComponentInterface, Loggable {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() readonly align?: DS.CardActionsAlignment
+  @Prop()
+  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  readonly align?: DS.CardActionsAlignment
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
 
   render() {
     return (

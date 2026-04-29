@@ -1,23 +1,30 @@
-export type AlertType = 'toast' | 'snackbar'
+export const ALERT_TYPES = ['toast', 'snackbar'] as const
 
-export type AlertContainerSize = 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide'
+export const ALERT_CONTAINER_SIZES = ['fluid', 'detail-page', 'compact', 'blog-page', 'wide'] as const
 
-export type AlertColors =
-  | 'base'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'outline-base'
-  | 'outline-purple'
-  | 'outline-green'
-  | 'outline-yellow'
-  | 'outline-red'
+export const ALERT_COLORS = [
+  'base',
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'outline-base',
+  'outline-purple',
+  'outline-green',
+  'outline-yellow',
+  'outline-red',
+] as const
+
+export type AlertType = (typeof ALERT_TYPES)[number]
+
+export type AlertContainerSize = (typeof ALERT_CONTAINER_SIZES)[number]
+
+export type AlertColors = (typeof ALERT_COLORS)[number]
 
 export type Alert = {
   color?: AlertColors
-  heading?: string
-  message?: string
+  heading: string
+  message: string
   duration?: number | 'infinite'
   closable: boolean
   closeHandler: (id: string) => void

@@ -4,7 +4,9 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type TextareaWrap = 'hard' | 'soft' | 'off'
+  export const TEXTAREA_WRAPS = ['hard', 'soft', 'off'] as const
+
+  export type TextareaWrap = (typeof TEXTAREA_WRAPS)[number]
   export type TextareaInputMode = InputInputMode
 
   export interface TextareaCustomEvent<T> extends CustomEvent<T> {

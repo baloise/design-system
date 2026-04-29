@@ -1,5 +1,13 @@
 import { Component, ComponentInterface, h, Host, Prop, Watch } from '@stencil/core'
-import { Loggable, Logger, type LogInstance, normalizeDeprecatedTShirtSize } from '@utils'
+import {
+  Loggable,
+  Logger,
+  type LogInstance,
+  normalizeDeprecatedTShirtSize,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 
 @Component({
   tag: 'ds-content',
@@ -42,24 +50,32 @@ export class Content implements ComponentInterface, Loggable {
   /**
    * Defines the direction of the child elements. Default is column.
    */
-  @Prop() direction?: DS.StackDirection
+  @Prop()
+  @ValidateEmptyOrOneOf('column', 'row', 'column-reverse', 'row-reverse')
+  direction?: DS.StackDirection
 
   /**
    * Defines the positioning like center, end or
    * default to start.
    */
-  @Prop() readonly align?: DS.ContentAlignment
+  @Prop()
+  @ValidateEmptyOrOneOf('start', 'center', 'end', '')
+  readonly align?: DS.ContentAlignment
 
   /**
    * Defines the text positioning like center, right or
    * default to left.
    */
-  @Prop() readonly textAlign?: DS.ContentTextAlignment
+  @Prop()
+  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  readonly textAlign?: DS.ContentTextAlignment
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop({ mutable: true }) space?: DS.ContentSpace
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf('none', '3xs', '2xs', 'xs', 'sm', 'base', '')
+  space?: DS.ContentSpace
   @Watch('space')
   spaceChanged(newValue?: DS.ContentSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
@@ -69,9 +85,11 @@ export class Content implements ComponentInterface, Loggable {
    * @internal
    * Please use align instead.
    */
-  @Prop() readonly alignment?: DS.StackAlignment
+  @Prop()
+  readonly alignment?: DS.StackAlignment
 
   connectedCallback(): void {
+    setupValidation(this)
     this.layoutChanged(this.layout)
     this.spaceChanged(this.space)
   }

@@ -1,6 +1,14 @@
 import { Component, ComponentInterface, h, Host, Prop, Watch, Element } from '@stencil/core'
 import isEmpty from 'lodash/isEmpty'
-import { normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import {
+  normalizeDeprecatedTShirtSize,
+  Loggable,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 
 @Component({
   tag: 'ds-card',
@@ -20,63 +28,87 @@ export class Card implements ComponentInterface, Loggable {
   /**
    * If `true` the card loses its shadow.
    */
-  @Prop() readonly flat: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly flat: boolean = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
-  @Prop() readonly tile: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
-  @Prop() readonly dense: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly dense: boolean = false
 
   /**
    * If `true` the card image is displayed as a teaser, which means
    * it is displayed with a large image.
    */
-  @Prop() readonly imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
+  @Prop()
+  @ValidateEmptyOrOneOf('wide-left', 'wide-center', 'wide-right', '')
+  readonly imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
 
   /**
    * If `true` the card loses its border radius.
    */
-  @Prop() readonly square: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly square: boolean = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
-  @Prop() readonly outlined: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
    */
-  @Prop() readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * If `true` the card has a hover effect.
    */
-  @Prop() readonly clickable: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly clickable: boolean = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
-  @Prop() readonly selected: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly selected: boolean = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
-  @Prop() readonly fullheight: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly fullheight: boolean = false
 
   /**
    * Defines the text alignment of the card content.
    */
-  @Prop() readonly align?: DS.CardAlignment
+  @Prop()
+  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  readonly align?: DS.CardAlignment
 
   /**
    * Defines the space of the card content.
    */
-  @Prop({ mutable: true }) space?: DS.CardSpace
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf('sm', 'md', 'lg', '')
+  space?: DS.CardSpace
   @Watch('space')
   spaceChanged(newValue: DS.CardSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
@@ -85,9 +117,45 @@ export class Card implements ComponentInterface, Loggable {
   /**
    * Defines the color of the card.
    */
-  @Prop() readonly color?: DS.CardColor
+  @Prop()
+  @ValidateEmptyOrOneOf(
+    'white',
+    'primary',
+    'info',
+    'success',
+    'warning',
+    'danger',
+    'grey',
+    'blue',
+    'red',
+    'yellow',
+    'purple',
+    'green',
+    'primary-light',
+    'primary-dark',
+    'grey-light',
+    'grey-dark',
+    'blue-light',
+    'purple-light',
+    'purple-lighter',
+    'purple-2',
+    'purple-1',
+    'success-light',
+    'success-dark',
+    'success-darker',
+    'warning-light',
+    'warning-dark',
+    'warning-darker',
+    'danger-light',
+    'danger-dark',
+    'danger-darker',
+    'light-blue',
+    '',
+  )
+  readonly color?: DS.CardColor
 
   connectedCallback(): void {
+    setupValidation(this)
     this.space = normalizeDeprecatedTShirtSize(this.space)
   }
 

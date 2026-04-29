@@ -1632,7 +1632,7 @@ export namespace Components {
         /**
           * Defines the heading of the notification.
          */
-        "heading"?: string;
+        "heading": string;
         /**
           * Defines the icon of the notification.
          */
@@ -1640,7 +1640,7 @@ export namespace Components {
         /**
           * Defines the message of the notification as html content
          */
-        "message"?: string;
+        "message": string;
         /**
           * Defines the svg content of the icon
          */
@@ -2004,7 +2004,7 @@ export namespace Components {
         /**
           * Defines the heading of the notification.
          */
-        "heading"?: string;
+        "heading": string;
         /**
           * Defines the icon of the notification.
          */
@@ -2012,7 +2012,7 @@ export namespace Components {
         /**
           * Defines the message of the notification as html content
          */
-        "message"?: string;
+        "message": string;
         /**
           * Defines the svg content of the icon
          */
@@ -4501,7 +4501,7 @@ declare namespace LocalJSX {
         /**
           * Defines the heading of the notification.
          */
-        "heading"?: string;
+        "heading": string;
         /**
           * Defines the icon of the notification.
          */
@@ -4509,7 +4509,7 @@ declare namespace LocalJSX {
         /**
           * Defines the message of the notification as html content
          */
-        "message"?: string;
+        "message": string;
         /**
           * Emitted when the action button got clicked.
          */
@@ -4896,7 +4896,7 @@ declare namespace LocalJSX {
         /**
           * Defines the heading of the notification.
          */
-        "heading"?: string;
+        "heading": string;
         /**
           * Defines the icon of the notification.
          */
@@ -4904,7 +4904,7 @@ declare namespace LocalJSX {
         /**
           * Defines the message of the notification as html content
          */
-        "message"?: string;
+        "message": string;
         /**
           * Emitted when the action button got clicked.
          */

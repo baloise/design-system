@@ -1,6 +1,14 @@
 import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser, Loggable, Logger, type LogInstance } from '@utils'
+import {
+  dsBrowser,
+  Loggable,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import {
   HEADING_COLORS,
   HEADING_ORDER,
@@ -38,7 +46,9 @@ export class Heading implements ComponentInterface, Loggable {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop({ reflect: true }) readonly level: DS.HeadingLevel = 'h1'
+  @Prop({ reflect: true })
+  @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', 'span', 'p', '')
+  readonly level: DS.HeadingLevel = 'h1'
 
   @Watch('level')
   levelChanged() {
@@ -50,7 +60,9 @@ export class Heading implements ComponentInterface, Loggable {
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop({ reflect: true }) readonly visualLevel?: DS.HeadingVisualLevel
+  @Prop({ reflect: true })
+  @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', '')
+  readonly visualLevel?: DS.HeadingVisualLevel
 
   @Watch('visualLevel')
   visualLevelChanged() {
@@ -60,7 +72,9 @@ export class Heading implements ComponentInterface, Loggable {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop({ reflect: true }) readonly autoLevel?: DS.HeadingVisualLevel
+  @Prop({ reflect: true })
+  @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', '')
+  readonly autoLevel?: DS.HeadingVisualLevel
 
   @Watch('autoLevel')
   autoLevelChanged() {
@@ -72,32 +86,44 @@ export class Heading implements ComponentInterface, Loggable {
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) readonly noWrap: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly noWrap: boolean = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
-  @Prop({ reflect: true }) readonly subtitle: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly subtitle: boolean = false
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) readonly space?: 'none' | 'bottom' | 'top' | 'all'
+  @Prop({ reflect: true })
+  @ValidateEmptyOrOneOf('none', 'bottom', 'top', 'all', '')
+  readonly space?: 'none' | 'bottom' | 'top' | 'all'
 
   /**
    * The theme type of the toast.
    */
-  @Prop({ reflect: true }) readonly color: DS.HeadingColor = ''
+  @Prop({ reflect: true })
+  @ValidateEmptyOrOneOf('primary', 'info', 'success', 'warning', 'danger', 'blue', 'white', '')
+  readonly color: DS.HeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
-  @Prop({ reflect: true }) readonly inverted: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
-  @Prop({ reflect: true }) readonly shadow: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly shadow: boolean = false
 
   /**
    * LIFECYCLE
@@ -105,6 +131,7 @@ export class Heading implements ComponentInterface, Loggable {
    */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.updateAutoFontSize()
   }
 

@@ -1,6 +1,14 @@
 import { Component, ComponentInterface, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { normalizeDeprecatedTShirtSize, Loggable, Logger, type LogInstance } from '@utils'
+import {
+  normalizeDeprecatedTShirtSize,
+  Loggable,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsConfigObserver, DsConfigState, DsLanguage, DsRegion, ListenToConfig, defaultConfig } from '@global'
 import { i18nDsClose } from './close.i18n'
 
@@ -25,7 +33,9 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true }) size?: DS.CloseSize
+  @Prop({ mutable: true, reflect: true })
+  @ValidateEmptyOrOneOf('', 'xs', 'sm', 'md', 'lg', 'xl')
+  size?: DS.CloseSize
   @Watch('size')
   sizeChanged(newValue: DS.CloseSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
@@ -34,23 +44,31 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
   /**
    * If `true` it supports dark backgrounds.
    */
-  @Prop() readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
-  @Prop({ reflect: true }) readonly disabled: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * If `true` the close component will be rendered as a button element.
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
-  @Prop() readonly button: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly button: boolean = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
-  @Prop() readonly buttonColor?: DS.ButtonColor
+  @Prop()
+  @ValidateEmptyOrOneOf('primary', 'secondary', 'success', 'warning', 'danger', '')
+  readonly buttonColor?: DS.ButtonColor
 
   /**
    * @internal define config for the component
@@ -63,7 +81,7 @@ export class Close implements ComponentInterface, DsConfigObserver, Loggable {
   }
 
   connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+    setupValidation(this)
   }
 
   render() {

@@ -20,8 +20,9 @@ import {
   Loggable,
   Logger,
   type LogInstance,
-  checkEmptyOrType,
-  checkEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateEmptyOrOneOf,
+  setupValidation,
 } from '@utils'
 import { DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
@@ -53,47 +54,61 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
   /**
    * Align the buttons to start, center or end
    */
-  @Prop() readonly align: DS.PaginationAlignment = ''
+  @Prop()
+  @ValidateEmptyOrOneOf('', 'start', 'end')
+  readonly align: DS.PaginationAlignment = ''
 
   /**
    * Disables component
    */
-  @Prop({ reflect: true }) readonly disabled: boolean = false
+  @Prop({ reflect: true })
+  readonly disabled: boolean = false
 
   /**
    * The label for the navigation landmark
    */
-  @Prop() readonly label: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
 
   /**
    * Specify the max visible pages before and after the selected page
    */
-  @Prop() readonly pageRange: number = 2
+  @Prop()
+  readonly pageRange: number = 2
 
   /**
    * Size of the buttons
    */
-  @Prop() readonly size: DS.PaginationSize = ''
+  @Prop()
+  @ValidateEmptyOrOneOf('', 'sm')
+  readonly size: DS.PaginationSize = ''
 
   /**
    * If 'true, the pagination will be sticky to the top
    */
-  @Prop() readonly sticky: boolean = false
+  @Prop()
+  readonly sticky: boolean = false
 
   /**
    * The label for the next page button
    */
-  @Prop() readonly textNext: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly textNext: string = ''
 
   /**
    * The label for the previous page button
    */
-  @Prop() readonly textPrevious: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly textPrevious: string = ''
 
   /**
    * If sticky, the top position will be determined by this value
    */
-  @Prop() readonly top: number = 0
+  @Prop()
+  readonly top: number = 0
 
   @Watch('top')
   topValueChanged(newValue: number) {
@@ -105,17 +120,21 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
   /**
    * The total amount of pages
    */
-  @Prop() readonly totalPages: number = 1
+  @Prop()
+  readonly totalPages: number = 1
 
   /**
    * Current selected page
    */
-  @Prop({ reflect: true, mutable: true }) value = 1
+  @Prop({ reflect: true, mutable: true })
+  value = 1
 
   /**
    * Defines the layout of the pagination
    */
-  @Prop() readonly variant: DS.PaginationVariant = ''
+  @Prop()
+  @ValidateEmptyOrOneOf('', 'dots')
+  readonly variant: DS.PaginationVariant = ''
 
   /**
    * Triggers when a page change happens
@@ -128,29 +147,11 @@ export class Pagination implements ComponentInterface, DsBreakpointObserver, Log
    */
 
   connectedCallback(): void {
-    this.validateProps()
+    setupValidation(this)
   }
 
   componentWillLoad() {
     this.topValueChanged(this.top)
-  }
-
-  componentWillUpdate() {
-    this.validateProps()
-  }
-
-  /**
-   * PROPERTY VALIDATION
-   * ------------------------------------------------------
-   */
-
-  private validateProps() {
-    checkEmptyOrType(this, 'label', 'string')
-    checkEmptyOrOneOf(this, 'align', ['', 'start', 'end'])
-    checkEmptyOrOneOf(this, 'size', ['', 'sm'])
-    checkEmptyOrOneOf(this, 'variant', ['', 'dots'])
-    checkEmptyOrType(this, 'textNext', 'string')
-    checkEmptyOrType(this, 'textPrevious', 'string')
   }
 
   /**

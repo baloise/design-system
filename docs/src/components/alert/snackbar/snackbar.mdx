@@ -1,0 +1,97 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../../.storybook/blocks'
+import * as SnackbarStories from './snackbar.stories'
+import SnackbarParts from './snackbar.parts.svg'
+
+<Meta of={SnackbarStories} />
+
+<StoryHeading of={SnackbarStories.Basic} hidden></StoryHeading>
+
+<Banner of={SnackbarStories} />
+
+<Lead>**Snackbar** is a persistent banner notification that stays visible until the user dismisses it or takes an action.</Lead>
+
+<Canvas of={SnackbarStories.Basic} sourceState={'shown'} />
+
+<PlaygroundBar of={SnackbarStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SnackbarStories.Variants}></StoryHeading>
+
+<Canvas of={SnackbarStories.Variants} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SnackbarStories.VariantsWithBrandIcon}></StoryHeading>
+
+<Canvas of={SnackbarStories.VariantsWithBrandIcon} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SnackbarStories.Colors}></StoryHeading>
+
+<Canvas of={SnackbarStories.Colors} sourceState={'shown'} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Parts
+
+<img src={SnackbarParts} alt="Snackbar parts diagram" />
+
+<Markdown>
+{`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`icon\` | \`<ds-icon>\` | Status icon on the left; shape and color reflect the \`color\` prop. |
+| \`content\` | \`<span>\` | Container wrapping the heading and message text. |
+| \`heading\` | \`<h2>\` | Optional heading rendered above the message. |
+| \`message\` | \`<span>\` | The main notification text or slot content. |
+| \`action\` | \`<ds-button-group>\` | Wraps the action button(s) and the close button. |
+| \`button\` | \`<ds-button>\` | Optional action button; shown when the \`action\` prop is set. |
+| \`close\` | \`<ds-close>\` | Close button; shown when \`closable\` is \`true\`. |
+`}
+</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="snackbar" />
+
+## Integration
+
+import integration from '../../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+### HTML / CSS only
+
+`ds-snackbar` is a web component with no CSS-only mode. All accessibility behavior is handled automatically by the component.
+
+### Web component
+
+The `ds-snackbar` element manages the following automatically:
+
+- **`role="status"`** — applied to the host so screen readers announce the notification without interrupting the current reading flow
+- **`aria-live="polite"`** — waits for the user to finish the current interaction before announcing; appropriate for persistent, non-urgent notifications
+- **`aria-atomic="true"`** — ensures the full notification content is read as a single unit
+- **Icon semantics** — the status icon (`ds-icon`) is decorative; meaning is conveyed by the heading and message text
+- **Mobile collapse** — on mobile breakpoints the snackbar collapses to a square icon button (`ds-button`); clicking it expands the full notification; the button is keyboard-accessible via Tab and Enter/Space
+- **Close button** — rendered as a `<ds-close>` element (a native `<button>`) when `closable` is `true`; keyboard-accessible via Tab and Enter/Space
+- **Action slot** — consumers can place `<ds-button>` or `<ds-button-group>` in the `action` slot; those elements bring their own keyboard semantics
+
+### References
+
+- [`role="status"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+- [`aria-atomic`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-atomic) — MDN
+- [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) — MDN
+
+<Footer />

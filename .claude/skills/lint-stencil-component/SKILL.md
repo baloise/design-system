@@ -1,6 +1,6 @@
 ---
 name: lint-stencil-component
-description: Use when asked to check, audit, review, or fix a Stencil component in the Baloise Design System against the design system style guide and Stencil best practices — verifies and repairs imports (@utils, @global aliases), props (readonly, type annotations on defaults, reflect attribute, enum types), lifecycle validation, event handlers, Watch handlers, Listen handlers, method visibility, event naming, ComponentInterface/Loggable implementation, section comment dividers, JSDocs, and code organization per Stencil style guide
+description: Use when asked to check, audit, review, or fix a Stencil component in the Baloise Design System against the design system style guide and Stencil best practices — verifies and repairs imports (@utils, @global aliases), component interfaces (const arrays with derived types), props (readonly, type annotations on defaults, reflect attribute, enum types), lifecycle validation, event handlers, Watch handlers, Listen handlers, method visibility, event naming, ComponentInterface/Loggable implementation, @Validate decorators, section comment dividers, JSDocs, and code organization per Stencil style guide
 
 # Lint Stencil Component
 
@@ -8,10 +8,10 @@ Audits a Stencil `.tsx` component file against the design system style guide and
 
 ## Process
 
-1. Read the target component file
-2. Run every check below in order (checks 0-15)
+1. Read the target component file AND its corresponding interfaces file
+2. Run every check below in order (checks 0-16)
 3. Report violations as a numbered list
-4. Apply all fixes in a single Edit pass
+4. Apply all fixes in single Edit passes (to component file and interfaces file as needed)
 5. Confirm what was changed
 
 ## Checks & Fixes
@@ -58,7 +58,74 @@ import { defaultConfig, DsConfigState, ListenToConfig } from '@global'
 
 ---
 
-### 1. `@Prop()` — readonly and type annotations
+### 1. Component Interface File — Const Arrays with Derived Types
+
+**Location:** `packages/core/src/components/<component>/<component>.interfaces.ts`
+
+**Rule:** Component interfaces must define const arrays as the **single source of truth** for enum/union type values. Types are then derived from these arrays using `typeof arr[number]` pattern. This eliminates duplication and ensures validators always match the type system.
+
+**Pattern:**
+
+```ts
+/* component.interfaces.ts */
+
+namespace DS {
+  // Define const arrays as the SOURCE OF TRUTH
+  export const BADGE_SIZES = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const
+  export const BADGE_COLORS = ['grey', 'danger', 'warning', 'success', 'red', 'yellow', 'green', 'purple', ''] as const
+  export const BADGE_POSITIONS = ['card', 'button', 'tabs', ''] as const
+
+  // Derive the types from the arrays
+  export type BadgeSize = (typeof BADGE_SIZES)[number]
+  export type BadgeColor = (typeof BADGE_COLORS)[number]
+  export type BadgePosition = (typeof BADGE_POSITIONS)[number]
+}
+```
+
+**Usage in component:**
+
+```ts
+/* component.tsx */
+
+import { ValidateEmptyOrOneOf } from '@utils'
+
+@Prop({ reflect: true })
+@ValidateEmptyOrOneOf(...DS.BADGE_SIZES)
+readonly size: DS.BadgeSize = ''
+
+@Prop({ reflect: true })
+@ValidateEmptyOrOneOf(...DS.BADGE_COLORS)
+readonly color: DS.BadgeColor = ''
+
+@Prop({ reflect: true })
+@ValidateEmptyOrOneOf(...DS.BADGE_POSITIONS)
+readonly position: DS.BadgePosition = ''
+```
+
+**Benefits:**
+
+- ✅ Single source of truth — values defined once in const array
+- ✅ Types automatically stay in sync with validators
+- ✅ Validators use exact same values as type system
+- ✅ No manual duplication of enum values
+- ✅ Easy to maintain — update const array once, type and validators both update
+
+**How to detect violations:**
+
+- Type is defined as a union string literal instead of derived from const: `type BadgeSize = 'xs' | 'sm' | 'md'` (not `typeof BADGE_SIZES[number]`)
+- Const array and type definition don't match — array has different values than type union
+- Component uses hardcoded values in `@ValidateEmptyOrOneOf(...)` instead of spreading const array: `@ValidateEmptyOrOneOf('xs', 'sm', 'md')` instead of `@ValidateEmptyOrOneOf(...DS.BADGE_SIZES)`
+
+**How to fix:**
+
+1. Create const arrays in interfaces file for all constrained types
+2. Change type definitions to use `typeof` derivation
+3. Update all `@ValidateEmptyOrOneOf(...)` decorators to spread the const array: `@ValidateEmptyOrOneOf(...DS.BADGE_SIZES)`
+4. Verify build passes and types are correct
+
+---
+
+### 2. `@Prop()` — readonly and type annotations
 
 **Rule:** Every `@Prop()` that is never reassigned inside the class must be `readonly`.
 
@@ -114,7 +181,7 @@ import { defaultConfig, DsConfigState, ListenToConfig } from '@global'
 
 ---
 
-### 2. `@Prop()` — `reflect` attribute for state props
+### 3. `@Prop()` — `reflect` attribute for state props
 
 **Rule:** State-related props (props that reflect the component's internal state and are typically form-related or data-state) MUST have `reflect: true` so the HTML attribute stays in sync with the JS property. Customizable UI props (visual/behavioral options) MUST NOT have `reflect: true`.
 
@@ -154,37 +221,54 @@ import { defaultConfig, DsConfigState, ListenToConfig } from '@global'
 
 ---
 
-### 3. Property Validation — `validateProps()` method
+### 4. Property Validation — @Validate decorators
 
-**Rule:** Components with `@Prop()` values that need runtime validation must implement a `private validateProps()` method. This method is called from `connectedCallback()` and `componentWillUpdate()` to ensure props are valid after initial render and any updates.
+**Rule:** Every component with `@Prop()` declarations **MUST** implement a `private validateProps()` method. This is not optional. This method ensures all props are validated at runtime:
+
+- After the component is inserted into the DOM (`connectedCallback()`)
+- After any prop update (`componentWillUpdate()`)
+
+Runtime validation catches developer errors early (e.g., passing invalid enum values, wrong types, out-of-range strings, invalid URLs, malformed dates) and logs helpful error messages to the console with the DOM element selector.
+
+**Mandatory requirements:**
+
+- ✅ **Every component with `@Prop()` must have `validateProps()`** — no exceptions
+- ✅ **Call from `connectedCallback()`** — validate props when component is inserted into DOM
+- ✅ **Call from `componentWillUpdate()`** — validate props on every update
+- ✅ **Validate every `@Prop()` declaration** — include a checker for each prop
+- ✅ String/enum props must use `checkEmptyOrOneOf()` or `checkRequiredAndOneOf()`
+- ✅ Boolean/number props must use `checkEmptyOrType()` or `checkRequiredAndType()`
+- ✅ Complex types (URLs, dates, arrays) must use appropriate checkers
+- ✅ If a component has **no `@Prop()` declarations**, add a comment: `// no props to validate`
 
 **Available validation checkers** from `@utils/property-checkers/`:
 
-- `checkEmptyOrType(component, 'prop', 'string'|'number'|'boolean'|'array')` — validates prop is either empty or matches type
-- `checkEmptyOrOneOf(component, 'prop', ['option1', 'option2'])` — validates prop is empty or one of allowed values
-- `checkEmptyOrPattern(component, 'prop', /regex/)` — validates prop is empty or matches regex
-- `checkEmptyOrUrl(component, 'prop')` — validates prop is empty or valid URL
-- `checkEmptyOrArrayOf(component, 'prop', 'string'|'number'|...)` — validates prop is empty or array of specified type
-- `checkEmptyOrDate(component, 'prop')` — validates prop is empty or valid date
-- `checkRequiredAndType(component, 'prop', 'string'|...)` — validates prop is required and matches type
-- `checkRequiredAndOneOf(component, 'prop', [...])` — validates prop is required and one of allowed values
-- `checkRequiredAndPattern(component, 'prop', /regex/)` — validates prop is required and matches pattern
-- `checkIsoDate(component, 'prop')` — validates prop is ISO 8601 date format
+| Checker                                                                       | Usage                                                        | Example                                                                     |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| `checkEmptyOrType(component, 'prop', 'string'\|'number'\|'boolean'\|'array')` | Optional prop that must match type if provided               | `checkEmptyOrType(this, 'label', 'string')` — label can be `''` or a string |
+| `checkEmptyOrOneOf(component, 'prop', ['val1', 'val2'])`                      | Optional enum prop (empty string is valid, or one of values) | `checkEmptyOrOneOf(this, 'size', ['', 'sm', 'md', 'lg'])`                   |
+| `checkEmptyOrPattern(component, 'prop', /regex/)`                             | Optional string matching pattern                             | `checkEmptyOrPattern(this, 'pattern', /^[a-z]+$/)`                          |
+| `checkEmptyOrUrl(component, 'prop')`                                          | Optional valid URL string                                    | `checkEmptyOrUrl(this, 'href')`                                             |
+| `checkEmptyOrArrayOf(component, 'prop', 'string'\|'number')`                  | Optional array of specific type                              | `checkEmptyOrArrayOf(this, 'items', 'string')`                              |
+| `checkEmptyOrDate(component, 'prop')`                                         | Optional valid date string                                   | `checkEmptyOrDate(this, 'birthDate')`                                       |
+| `checkRequiredAndType(component, 'prop', 'string'\|...)`                      | Required prop that must match type                           | `checkRequiredAndType(this, 'id', 'string')`                                |
+| `checkRequiredAndOneOf(component, 'prop', [...])`                             | Required enum prop (must be one of values)                   | `checkRequiredAndOneOf(this, 'role', ['button', 'link'])`                   |
+| `checkRequiredAndPattern(component, 'prop', /regex/)`                         | Required string matching pattern                             | `checkRequiredAndPattern(this, 'id', /^[a-z0-9-]+$/)`                       |
+| `checkIsoDate(component, 'prop')`                                             | Validates ISO 8601 date format (YYYY-MM-DD)                  | `checkIsoDate(this, 'date')`                                                |
+
+**Example: Pagination component** (from design system)
 
 ```ts
-// ❌ (no validation)
-export class MyComponent implements ComponentInterface {
-  @Prop() readonly label: string = ''
-  @Prop() readonly size: 'sm' | 'md' | 'lg' = 'md'
-  // No validation method
-}
-
-// ✅ (with validation)
+// ✅ REQUIRED: Every prop must be validated
 import { checkEmptyOrType, checkEmptyOrOneOf } from '@utils'
 
-export class MyComponent implements ComponentInterface {
+export class DsPagination implements ComponentInterface {
   @Prop() readonly label: string = ''
-  @Prop() readonly size: 'sm' | 'md' | 'lg' = 'md'
+  @Prop() readonly align: 'start' | 'end' = ''
+  @Prop() readonly size: 'sm' | '' = ''
+  @Prop() readonly variant: 'dots' | '' = ''
+  @Prop() readonly textNext: string = ''
+  @Prop() readonly textPrevious: string = ''
 
   connectedCallback(): void {
     this.validateProps()
@@ -201,21 +285,119 @@ export class MyComponent implements ComponentInterface {
 
   private validateProps() {
     checkEmptyOrType(this, 'label', 'string')
-    checkEmptyOrOneOf(this, 'size', ['sm', 'md', 'lg'])
+    checkEmptyOrOneOf(this, 'align', ['', 'start', 'end'])
+    checkEmptyOrOneOf(this, 'size', ['', 'sm'])
+    checkEmptyOrOneOf(this, 'variant', ['', 'dots'])
+    checkEmptyOrType(this, 'textNext', 'string')
+    checkEmptyOrType(this, 'textPrevious', 'string')
   }
 }
 ```
 
-**How to detect:**
+**Example: Accordion component** (all optional props)
 
-- Find each `@Prop()` that should have runtime validation (typically string/enum props with default values)
-- Check if `connectedCallback()` and `componentWillUpdate()` exist and call a `validateProps()` method
-- Check if a `private validateProps()` method exists with appropriate checker calls
-- Match each `@Prop()` that needs validation with the appropriate checker function
+```ts
+// ✅ REQUIRED: Even with optional props, add validateProps()
+import { checkEmptyOrType, checkEmptyOrOneOf } from '@utils'
+
+export class Accordion implements ComponentInterface {
+  @Prop() readonly button: boolean = false
+  @Prop() readonly buttonColor: DS.ButtonColor = 'primary'
+  @Prop() readonly marker?: DS.AccordionMarker
+  @Prop() readonly group?: string
+
+  connectedCallback(): void {
+    this.validateProps()
+  }
+
+  componentWillUpdate() {
+    this.validateProps()
+  }
+
+  /**
+   * PROPERTY VALIDATION
+   * ------------------------------------------------------
+   */
+
+  private validateProps() {
+    checkEmptyOrType(this, 'button', 'boolean')
+    checkEmptyOrOneOf(this, 'buttonColor', ['primary', 'secondary'])
+    checkEmptyOrOneOf(this, 'marker', ['', 'plus', 'plus-minus', 'none'])
+    checkEmptyOrType(this, 'group', 'string')
+  }
+}
+```
+
+**Example: Component with no props**
+
+```ts
+// ✅ REQUIRED: Add validateProps() with comment if no props
+export class Spinner implements ComponentInterface {
+  connectedCallback(): void {
+    this.validateProps()
+  }
+
+  componentWillUpdate() {
+    this.validateProps()
+  }
+
+  /**
+   * PROPERTY VALIDATION
+   * ------------------------------------------------------
+   */
+
+  private validateProps() {
+    // no props to validate
+  }
+}
+```
+
+**How to detect validation violations:**
+
+1. **Component exists but no `validateProps()` method** → VIOLATION: Add the method
+2. **`validateProps()` exists but not called from `connectedCallback()`** → VIOLATION: Add call
+3. **`validateProps()` exists but not called from `componentWillUpdate()`** → VIOLATION: Add call
+4. **`@Prop()` has no corresponding validation checker call** → VIOLATION: Add the checker call
+5. **Wrong checker used for prop type** → VIOLATION: Replace with correct checker from table above
+6. **Component has no `@Prop()` but no `validateProps()` method** → VIOLATION: Add the method with comment
+
+**Placement in class body:**
+
+Add the `validateProps()` method **after LIFECYCLE** and **before PUBLIC LISTENERS**. It must be called from both `connectedCallback()` and `componentWillUpdate()`:
+
+```ts
+/**
+ * LIFECYCLE
+ * ─────────────────────────────────────────────────────
+ */
+connectedCallback(): void {
+  this.validateProps()  ← Call validateProps() first
+}
+
+componentWillUpdate() {
+  this.validateProps()  ← Call validateProps() on every update
+}
+
+/**
+ * PROPERTY VALIDATION          ← Add this section
+ * ─────────────────────────────────────────────────────
+ */
+private validateProps() {
+  checkEmptyOrType(this, 'label', 'string')
+  checkEmptyOrOneOf(this, 'size', ['', 'sm', 'md'])
+  // ... one checker per @Prop()
+}
+
+/**
+ * PUBLIC LISTENERS
+ * ─────────────────────────────────────────────────────
+ */
+@Listen(...) listenTo...() { ... }
+```
 
 ---
 
-### 4. `@Listen()` — naming
+### 5. `@Listen()` — naming
 
 **Rule:** Methods decorated with `@Listen()` must be named `listenTo<Event>` in PascalCase.
 
@@ -230,7 +412,7 @@ export class MyComponent implements ComponentInterface {
 
 ---
 
-### 5. `@Watch()` — naming
+### 6. `@Watch()` — naming
 
 **Rule:** Methods decorated with `@Watch('propName')` must be named `<propName>Changed` in camelCase.
 
@@ -245,7 +427,7 @@ export class MyComponent implements ComponentInterface {
 
 ---
 
-### 6. DOM event handlers — naming and arrow function
+### 7. DOM event handlers — naming and arrow function
 
 **Rule:** Inline DOM event handlers must be named `handle<Event>` (camelCase) and defined as arrow functions.
 
@@ -263,7 +445,7 @@ Arrow function form: `handleFoo = (event?: Event) => { ... }` — keeps `this` b
 
 ---
 
-### 7. `@Event()` — `ds` prefix
+### 8. `@Event()` — `ds` prefix
 
 **Rule:** All `@Event()` emitters and their `EventEmitter` type must use the `ds` prefix, lowercase `d` + lowercase `s`.
 
@@ -280,7 +462,7 @@ Also check call sites: `this.change.emit(...)` → `this.dsChange.emit(...)`.
 
 ---
 
-### 8. `ComponentInterface` + `Loggable`
+### 9. `ComponentInterface` + `Loggable`
 
 **Rule:** The class must implement both `ComponentInterface` and `Loggable`, and wire up the logger fields.
 
@@ -307,7 +489,7 @@ export class MyComponent implements ComponentInterface, Loggable {
 
 ---
 
-### 9. Method visibility — `private`
+### 10. Method visibility — `private`
 
 **Rule:** All methods must be `private` **except**:
 
@@ -332,7 +514,7 @@ private async fetchData() { ... }
 
 ---
 
-### 10. Section Comment Dividers
+### 11. Section Comment Dividers
 
 **Rule:** The component class body must include section dividers to organize code logically. Add these dividers at the top of each section:
 
@@ -391,7 +573,7 @@ private async fetchData() { ... }
 
 ---
 
-### 11. JSDocs — `@Prop()`, `@Event()`, `@Method()`
+### 12. JSDocs — `@Prop()`, `@Event()`, `@Method()`
 
 **Rule:** All `@Prop()`, `@Event()`, and `@Method()` declarations must have a JSDoc comment block above them. This enables documentation generation and improves IDE intellisense.
 
@@ -423,7 +605,7 @@ async open() { }
 
 ---
 
-### 12. Alphabetical Order — `@Prop()`, `@State()`, `@Event()`
+### 13. Alphabetical Order — `@Prop()`, `@State()`, `@Event()`
 
 **Rule:** Group related declarations and order them alphabetically within each group for consistency and easier scanning.
 
@@ -512,23 +694,25 @@ export class Button {}
 
 ## Quick Reference
 
-| Check | Required form                        | Example                                                                       |
-| ----- | ------------------------------------ | ----------------------------------------------------------------------------- |
-| 0     | Import from `@utils` or `@global`    | `import { Loggable, Logger, type LogInstance } from '@utils'`                 |
-| 1     | `@Prop() readonly foo: T = default`  | `@Prop() readonly count: number = 2`; `@Prop() readonly align: DS.Align = ''` |
-| 2     | State props have `reflect: true`     | `@Prop({ reflect: true }) readonly disabled: boolean`                         |
-| 3     | `listenToEvent()`                    | `listenToClick()`                                                             |
-| 4     | `propChanged()`                      | `valueChanged()`                                                              |
-| 5     | `handleEvent = () => {}`             | `handleClick = () => {}`                                                      |
-| 6     | `dsEventName: EventEmitter<T>`       | `dsChange: EventEmitter<number>`                                              |
-| 7     | `ComponentInterface, Loggable`       | `implements ComponentInterface, Loggable`                                     |
-| 8     | `private methodName()`               | `private doSomething()`                                                       |
-| 9     | Seven section dividers               | See Check 9 for exact format                                                  |
-| 10    | JSDoc on @Prop, @Event, @Method      | `/** Label text */ @Prop()`                                                   |
-| 11    | Alphabetical ordering                | align, disabled, name (not name, disabled, align)                             |
-| 12    | @Prop + @Watch together              | Prop immediately followed by Watch below                                      |
-| 13    | @Method() must be async              | `@Method() async open(): Promise<void>`                                       |
-| 14    | Tag with `ds-` prefix, class without | `@Component({ tag: 'ds-button' }) export class Button`                        |
+| Check | Required form                                 | Example                                                                                         |
+| ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| 0     | Import from `@utils` or `@global`             | `import { Loggable, Logger, type LogInstance } from '@utils'`                                   |
+| 1     | Const arrays with derived types in interfaces | `export const BADGE_SIZES = ['xs', 'sm'] as const; type BadgeSize = typeof BADGE_SIZES[number]` |
+| 2     | `@Prop() readonly foo: T = default`           | `@Prop() readonly count: number = 2`; `@Prop() readonly align: DS.Align = ''`                   |
+| 3     | State props have `reflect: true`              | `@Prop({ reflect: true }) readonly disabled: boolean`                                           |
+| 4     | `@Validate` decorators on every @Prop         | `@Prop() @ValidateEmptyOrType('string') readonly label: string`                                 |
+| 5     | `listenToEvent()`                             | `listenToClick()`                                                                               |
+| 6     | `propChanged()`                               | `valueChanged()`                                                                                |
+| 7     | `handleEvent = () => {}`                      | `handleClick = () => {}`                                                                        |
+| 8     | `dsEventName: EventEmitter<T>`                | `dsChange: EventEmitter<number>`                                                                |
+| 9     | `ComponentInterface, Loggable`                | `implements ComponentInterface, Loggable`                                                       |
+| 10    | `private methodName()`                        | `private doSomething()`                                                                         |
+| 11    | Seven section dividers                        | See Check 11 for exact format                                                                   |
+| 12    | JSDoc on @Prop, @Event, @Method               | `/** Label text */ @Prop()`                                                                     |
+| 13    | Alphabetical ordering                         | align, disabled, name (not name, disabled, align)                                               |
+| 14    | @Prop + @Watch together                       | Prop immediately followed by Watch below                                                        |
+| 15    | @Method() must be async                       | `@Method() async open(): Promise<void>`                                                         |
+| 16    | Tag with `ds-` prefix, class without          | `@Component({ tag: 'ds-button' }) export class Button`                                          |
 
 ## Output Format
 

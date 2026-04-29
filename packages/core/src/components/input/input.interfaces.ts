@@ -4,93 +4,102 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type InputColor = 'primary' | 'danger' | 'success' | 'warning'
-  export type InputAutocorrect = 'on' | 'off'
-  export type InputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
-  export type InputMask =
-    | 'vehicle-registration-number'
-    | 'contract-number'
-    | 'basic-contract-number'
-    | 'claim-number'
-    | 'offer-number'
-    | 'be-enterprise-number'
-    | 'be-iban'
+  export const INPUT_COLORS = ['primary', 'danger', 'success', 'warning'] as const
+  export const INPUT_AUTOCORRECTS = ['on', 'off'] as const
+  export const INPUT_INPUT_MODES = ['none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search'] as const
+  export const INPUT_MASKS = [
+    'vehicle-registration-number',
+    'contract-number',
+    'basic-contract-number',
+    'claim-number',
+    'offer-number',
+    'be-enterprise-number',
+    'be-iban',
+  ] as const
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
-  export type InputInputType =
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'range'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
+  export const INPUT_INPUT_TYPES = [
+    'color',
+    'date',
+    'datetime-local',
+    'email',
+    'file',
+    'image',
+    'month',
+    'number',
+    'password',
+    'range',
+    'search',
+    'tel',
+    'text',
+    'time',
+    'url',
+    'week',
+  ] as const
 
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-  export type InputAutocomplete =
-    | 'on'
-    | 'off'
-    | 'name'
-    | 'honorific-prefix'
-    | 'given-name'
-    | 'additional-name'
-    | 'family-name'
-    | 'honorific-suffix'
-    | 'nickname'
-    | 'email'
-    | 'username'
-    | 'new-password'
-    | 'current-password'
-    | 'one-time-code'
-    | 'organization-title'
-    | 'organization'
-    | 'street-address'
-    | 'address-line1'
-    | 'address-line2'
-    | 'address-line3'
-    | 'address-level4'
-    | 'address-level3'
-    | 'address-level2'
-    | 'address-level1'
-    | 'country'
-    | 'country-name'
-    | 'postal-code'
-    | 'cc-name'
-    | 'cc-given-name'
-    | 'cc-additional-name'
-    | 'cc-family-name'
-    | 'cc-family-name'
-    | 'cc-number'
-    | 'cc-exp'
-    | 'cc-exp-month'
-    | 'cc-exp-year'
-    | 'cc-csc'
-    | 'cc-type'
-    | 'transaction-currency'
-    | 'transaction-amount'
-    | 'language'
-    | 'bday'
-    | 'bday-day'
-    | 'bday-month'
-    | 'bday-year'
-    | 'sex'
-    | 'tel'
-    | 'tel-country-code'
-    | 'tel-national'
-    | 'tel-area-code'
-    | 'tel-local'
-    | 'tel-extension'
-    | 'impp'
-    | 'url'
-    | 'photo'
+  export const INPUT_AUTOCOMPLETES = [
+    'on',
+    'off',
+    'name',
+    'honorific-prefix',
+    'given-name',
+    'additional-name',
+    'family-name',
+    'honorific-suffix',
+    'nickname',
+    'email',
+    'username',
+    'new-password',
+    'current-password',
+    'one-time-code',
+    'organization-title',
+    'organization',
+    'street-address',
+    'address-line1',
+    'address-line2',
+    'address-line3',
+    'address-level4',
+    'address-level3',
+    'address-level2',
+    'address-level1',
+    'country',
+    'country-name',
+    'postal-code',
+    'cc-name',
+    'cc-given-name',
+    'cc-additional-name',
+    'cc-family-name',
+    'cc-number',
+    'cc-exp',
+    'cc-exp-month',
+    'cc-exp-year',
+    'cc-csc',
+    'cc-type',
+    'transaction-currency',
+    'transaction-amount',
+    'language',
+    'bday',
+    'bday-day',
+    'bday-month',
+    'bday-year',
+    'sex',
+    'tel',
+    'tel-country-code',
+    'tel-national',
+    'tel-area-code',
+    'tel-local',
+    'tel-extension',
+    'impp',
+    'url',
+    'photo',
+  ] as const
+
+  export type InputColor = (typeof INPUT_COLORS)[number]
+  export type InputAutocorrect = (typeof INPUT_AUTOCORRECTS)[number]
+  export type InputInputMode = (typeof INPUT_INPUT_MODES)[number]
+  export type InputMask = (typeof INPUT_MASKS)[number]
+  export type InputInputType = (typeof INPUT_INPUT_TYPES)[number]
+  export type InputAutocomplete = (typeof INPUT_AUTOCOMPLETES)[number]
 
   export interface InputCustomEvent<T> extends CustomEvent<T> {
     detail: T

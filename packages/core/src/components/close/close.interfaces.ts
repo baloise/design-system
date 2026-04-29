@@ -4,5 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type CloseSize = 'sm' | 'md' | 'small' | 'medium'
+  export const CLOSE_SIZES = ['sm', 'md', 'small', 'medium'] as const
+
+  export type CloseSize = (typeof CLOSE_SIZES)[number]
 }

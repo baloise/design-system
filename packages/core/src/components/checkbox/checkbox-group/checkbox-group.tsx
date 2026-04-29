@@ -14,7 +14,18 @@ import {
 } from '@stencil/core'
 import { Field, FieldInterface } from '../../input/field.util'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
-import { Loggable, Logger, LogInstance, hasTagName, isDescendant, stopEventBubbling, areArraysEqual } from '@utils'
+import {
+  Loggable,
+  Logger,
+  LogInstance,
+  hasTagName,
+  isDescendant,
+  stopEventBubbling,
+  areArraysEqual,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 
 @Component({
   tag: 'ds-checkbox-group',
@@ -46,12 +57,16 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * The name of the checkboxes in the group. Child checkboxes will inherit the name.
    */
-  @Prop() readonly name: string = this.inputId
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
 
   /**
    * If `true` it acts as the main form control
    */
-  @Prop() readonly control: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly control: boolean = false
 
   /**
    * The value of the control.
@@ -87,82 +102,114 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
   /**
    * The label of the input, which is displayed above the input field.
    */
-  @Prop() readonly label?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label?: string
 
   /**
    * Defines the position of the label, either before or after the checkbox input. Default is after.
    */
-  @Prop() readonly labelPosition: DS.CheckboxLabelPosition = 'right'
+  @Prop()
+  @ValidateEmptyOrOneOf('left', 'top', 'right')
+  readonly labelPosition: DS.CheckboxLabelPosition = 'right'
 
   /**
    * The description of the input, which is displayed below the input field.
    */
-  @Prop() readonly description?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description?: string
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() readonly color: DS.InputColor = 'primary'
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly color: DS.InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
-  @Prop() readonly loading: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly loading: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() readonly invalid: boolean | undefined
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean | undefined
 
   /**
    * The text to display when the input is in an invalid state.
    */
-  @Prop() readonly invalidText?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly invalidText?: string
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled: boolean | undefined
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean | undefined
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly readonly: boolean | undefined
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean | undefined
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required: boolean = true
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
 
   /**
    * Displays the checkboxes vertically
    */
-  @Prop() readonly vertical: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly vertical: boolean = false
 
   /**
    * Defines the layout of the input
    */
-  @Prop() readonly tile: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
    * Defines the color of the tile checkbox.
    */
-  @Prop() readonly tileColor?: DS.CheckboxTileColor
+  @Prop()
+  @ValidateEmptyOrOneOf('purple', 'green', 'yellow', 'red', '')
+  readonly tileColor?: DS.CheckboxTileColor
 
   /**
    * Defines the column size like the grid.
    */
-  @Prop() readonly cols: DS.CheckboxGroupColumns = 1
+  @Prop()
+  @ValidateEmptyOrOneOf(1, 2, 3, 4)
+  readonly cols: DS.CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() readonly colsTablet: DS.CheckboxGroupColumns = 1
+  @Prop()
+  @ValidateEmptyOrOneOf(1, 2, 3, 4)
+  readonly colsTablet: DS.CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() readonly colsMobile: DS.CheckboxGroupColumns = 1
+  @Prop()
+  @ValidateEmptyOrOneOf(1, 2, 3, 4)
+  readonly colsMobile: DS.CheckboxGroupColumns = 1
 
   /**
    * Emitted when a keyboard input occurred.
@@ -185,6 +232,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, FieldInterfa
    */
 
   connectedCallback() {
+    setupValidation(this)
     this.valueChanged()
     this.passDownAttributes()
     this.internals.setFormValue(this.internalValue.join(','))

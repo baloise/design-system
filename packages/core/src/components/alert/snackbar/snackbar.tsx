@@ -22,6 +22,10 @@ import {
   Loggable,
   Logger,
   type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateRequiredAndType,
+  setupValidation,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 
@@ -38,7 +42,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
     this.log = log
   }
 
-  @Element() element!: HTMLDsSnackbarElement
+  @Element() el!: HTMLDsSnackbarElement
 
   @State() isMobile = dsBreakpoints.isMobile
   @State() mobileOpenState = false
@@ -53,27 +57,37 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() readonly color?: DS.SnackbarColor
+  @Prop()
+  @ValidateEmptyOrOneOf('base', 'info', 'success', 'warning', 'danger', '')
+  readonly color?: DS.SnackbarColor
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() readonly closable: boolean = true
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly closable: boolean = true
 
   /**
    * Defines the heading of the notification.
    */
-  @Prop() readonly heading?: string
+  @Prop()
+  @ValidateRequiredAndType('string')
+  readonly heading!: string
 
   /**
    * Defines the message of the notification as html content
    */
-  @Prop() readonly message?: string
+  @Prop()
+  @ValidateRequiredAndType('string')
+  readonly message!: string
 
   /**
    * Defines the icon of the notification.
    */
-  @Prop() readonly icon?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly icon?: string
   @Watch('icon')
   iconChanged() {
     this.generateIconName()
@@ -82,7 +96,9 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
   /**
    * Defines the svg content of the icon
    */
-  @Prop() readonly svg?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly svg?: string
   @Watch('svg')
   svgChanged() {
     this.generateSvgContent()
@@ -91,22 +107,30 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
   /**
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
-  @Prop() readonly action?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly action?: string
 
   /**
    * Defines the icon of the action button.
    */
-  @Prop() readonly actionIcon?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly actionIcon?: string
 
   /**
    * Specifies where to open the linked document.
    */
-  @Prop() readonly actionTarget: DS.ButtonTarget = '_blank'
+  @Prop()
+  @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
+  readonly actionTarget: DS.ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() readonly actionHref?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly actionHref?: string
 
   /**
    * @internal
@@ -118,7 +142,8 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    * @internal
    * If `true` the notification is visible.
    */
-  @Prop({ reflect: true }) readonly visible: boolean = true
+  @Prop({ reflect: true })
+  readonly visible: boolean = true
 
   /**
    * @internal Handler for on close event
@@ -152,6 +177,7 @@ export class Snackbar implements ComponentInterface, AlertComponent, DsBreakpoin
    */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.generateIconName()
     this.generateSvgContent()
   }

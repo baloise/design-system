@@ -55,8 +55,42 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
 
+### HTML / CSS only
 
+`ds-content` is a presentational layout component that does not impose accessibility requirements of its own. Accessibility depends entirely on the semantic structure of content placed inside it.
 
+<Markdown>
+  {`
+| Requirement          | How to implement                                                                                |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+| Semantic structure   | Use semantic HTML for all child content (\`<h1>\`–\`<h6>\`, \`<p>\`, \`<ul>\`, \`<section>\`) |
+| Heading hierarchy    | Ensure heading levels are nested correctly and unique per section                              |
+| Images               | All \`<img>\` must have descriptive \`alt\` text; decorative images use \`alt=""\`               |
+| Icons                | Icon elements must have \`aria-label\` and \`title\` when used for meaningful content            |
+| Links and buttons    | Link text must be descriptive; avoid "click here" or "more"                                    |
+| Form controls        | All \`<input>\`, \`<select>\`, \`<textarea>\` must have associated \`<label>\` elements         |
+| Color contrast       | Text must have a 4.5:1 contrast ratio; UI components must have a 3:1 ratio                     |
+`}
+</Markdown>
+
+### Web component
+
+`ds-content` itself does not manage any accessibility features. The component:
+
+- **Preserves semantic structure** — renders child content as-is without wrapping in non-semantic elements
+- **Does not add roles** — semantics are determined entirely by the content placed inside
+- **Does not add ARIA** — child elements retain their native or explicitly set ARIA attributes
+- **Supports all HTML content** — form controls, links, text, images, and components remain fully interactive and accessible
+
+### References
+
+- [`<h1>–<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) — MDN
+- [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p) — MDN
+- [`<section>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) — MDN
+- [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) — MDN
+- [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) — MDN
+- [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) — MDN
 
 <Footer />

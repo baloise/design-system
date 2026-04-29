@@ -1,5 +1,6 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '@utils'
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
   tag: 'ds-card-subtitle',
@@ -14,20 +15,32 @@ export class CardSubtitle implements ComponentInterface, Loggable {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * If `true` the card text color is bold.
    */
-  @Prop() readonly bold: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly bold: boolean = false
 
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() readonly color: DS.HeadingColor = ''
+  @Prop()
+  @ValidateEmptyOrOneOf('primary', 'secondary', 'success', 'warning', 'danger', '')
+  readonly color: DS.HeadingColor = ''
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
 
   render() {
     return (

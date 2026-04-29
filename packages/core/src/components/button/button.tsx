@@ -8,6 +8,9 @@ import {
   Logger,
   type LogInstance,
   type Attributes,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
 } from '@utils'
 
 @Component({
@@ -32,22 +35,44 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * The color to use from your application's color palette.aaa
    */
-  @Prop() readonly color: DS.ButtonColor = 'primary'
+  @Prop()
+  @ValidateEmptyOrOneOf(
+    'primary',
+    'secondary',
+    'tertiary',
+    'tertiary-purple',
+    'tertiary-red',
+    'tertiary-yellow',
+    'tertiary-green',
+    'link',
+    'light',
+    'success',
+    'warning',
+    'danger',
+    '',
+  )
+  readonly color: DS.ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop({ reflect: true }) readonly elementType: DS.ButtonElementType = 'button'
+  @Prop({ reflect: true })
+  @ValidateEmptyOrOneOf('button', 'reset', 'submit', '')
+  readonly elementType: DS.ButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
    */
-  @Prop({ reflect: true }) readonly disabled: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * Size of the button
    */
-  @Prop({ mutable: true }) size: DS.ButtonSize = undefined
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf('sm', 'lg', 'xl', '')
+  size: DS.ButtonSize = undefined
   @Watch('size')
   sizeChanged(newValue: DS.ButtonSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
@@ -56,19 +81,25 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() readonly href?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly href?: string
 
   /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() readonly target: DS.ButtonTarget = '_self'
+  @Prop()
+  @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
+  readonly target: DS.ButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
-  @Prop() readonly rel?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly rel?: string
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -76,57 +107,79 @@ export class Button implements ComponentInterface, Loggable {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() readonly download?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly download?: string
 
   /**
    * If `true` the button has a dashed border.
    * */
-  @Prop() readonly dashed: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly dashed: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
-  @Prop() readonly shadow: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly shadow: boolean = false
 
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop() readonly square: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly square: boolean = false
 
   /**
    * If `true` the button is circular and width of the buttons is limited
    */
-  @Prop() readonly circle: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly circle: boolean = false
 
   /**
    * If `true` the button has a full width
    */
-  @Prop() readonly wide: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly wide: boolean = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
-  @Prop() readonly flat: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly flat: boolean = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop() readonly outlined: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly outlined: boolean = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop({ reflect: true }) readonly loading: DS.ButtonSpinner = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly loading: DS.ButtonSpinner = false
 
   /**
    * If `true` the button is rounded.
    */
-  @Prop() readonly rounded: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly rounded: boolean = false
 
   // /**
   //  * If `true` the button is a popup.
@@ -136,52 +189,72 @@ export class Button implements ComponentInterface, Loggable {
   /**
    * Name of the left button icon
    */
-  @Prop() readonly icon?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly icon?: string
 
   /**
    * If `true` the icon turns
    */
-  @Prop() readonly iconTurn: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly iconTurn: boolean = false
 
   /**
    * Name of the right button icon
    */
-  @Prop() readonly iconRight?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly iconRight?: string
 
   /**
    * The label of the button will not break
    */
-  @Prop() readonly noWrap: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly noWrap: boolean = false
 
   /**
    * The name of the button, which is submitted with the form data.
    */
-  @Prop() readonly name?: string
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name?: string
 
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() readonly value?: string | number
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly value?: string | number
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() readonly a11yControls?: string = undefined
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly a11yControls?: string = undefined
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() readonly a11yTitle?: string = undefined
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly a11yTitle?: string = undefined
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() readonly a11yLabel?: string = undefined
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly a11yLabel?: string = undefined
 
   /**
    * A11y attributes for the native button element.
    */
-  @Prop() a11yHaspopup?: string = undefined
+  @Prop()
+  @ValidateEmptyOrType('string')
+  a11yHaspopup?: string = undefined
 
   /**
    * Emitted when the link element has clicked.
@@ -217,6 +290,7 @@ export class Button implements ComponentInterface, Loggable {
   }
 
   connectedCallback(): void {
+    setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size)
   }
 

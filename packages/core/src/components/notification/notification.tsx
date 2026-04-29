@@ -25,7 +25,7 @@ export class Notification implements ComponentInterface, Loggable {
     this.log = log
   }
 
-  @Element() element!: HTMLDsNotificationElement
+  @Element() el!: HTMLDsNotificationElement
   @State() didLoad = false
 
   private timer!: NodeJS.Timeout

@@ -829,7 +829,7 @@
             "parameters": [
               {
                 "name": "alert",
-                "type": "{ color?: AlertColors | undefined; heading?: string | undefined; message?: string | undefined; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: ButtonTarget | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+                "type": "{ color?: \"base\" | \"info\" | \"success\" | \"warning\" | \"danger\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \" _parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
                 "docs": ""
               }
             ],
@@ -857,7 +857,7 @@
           "parameters": [
             {
               "name": "alert",
-              "type": "{ color?: AlertColors | undefined; heading?: string | undefined; message?: string | undefined; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: ButtonTarget | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+              "type": "{ color?: \"base\" | \"info\" | \"success\" | \"warning\" | \"danger\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \" _parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
               "docs": ""
             }
           ],
@@ -13537,10 +13537,10 @@
         },
         {
           "name": "heading",
-          "type": "string | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "string | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -13551,13 +13551,10 @@
           "values": [
             {
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
-          "required": false,
+          "optional": false,
+          "required": true,
           "getter": false,
           "setter": false
         },
@@ -13589,10 +13586,10 @@
         },
         {
           "name": "message",
-          "type": "string | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "string | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -13603,13 +13600,10 @@
           "values": [
             {
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
-          "required": false,
+          "optional": false,
+          "required": true,
           "getter": false,
           "setter": false
         },
@@ -17085,10 +17079,10 @@
         },
         {
           "name": "heading",
-          "type": "string | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "string | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -17099,13 +17093,10 @@
           "values": [
             {
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
-          "required": false,
+          "optional": false,
+          "required": true,
           "getter": false,
           "setter": false
         },
@@ -17137,10 +17128,10 @@
         },
         {
           "name": "message",
-          "type": "string | undefined",
+          "type": "string",
           "complexType": {
             "original": "string",
-            "resolved": "string | undefined",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -17151,13 +17142,10 @@
           "values": [
             {
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
-          "required": false,
+          "optional": false,
+          "required": true,
           "getter": false,
           "setter": false
         },
@@ -17767,17 +17755,17 @@
       "path": "src/global/index.ts"
     },
     "src/components/alert/alert-container.interfaces.tsx::AlertType": {
-      "declaration": "export type AlertType = 'toast' | 'snackbar'",
+      "declaration": "\"toast\" | \"snackbar\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
     "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
-      "declaration": "export type AlertContainerSize = 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide'",
+      "declaration": "\"fluid\" | \"detail-page\" | \"compact\" | \"blog-page\" | \"wide\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
     "src/components/alert/alert-container.interfaces.tsx::Alert": {
-      "declaration": "{\n  color?: AlertColors\n  heading?: string\n  message?: string\n  duration?: number | 'infinite'\n  closable: boolean\n  closeHandler: (id: string) => void\n  action?: string\n  actionIcon?: string\n  actionTarget?: DS.ButtonTarget\n  actionHref?: string\n  actionHandler: (id: string) => void\n}",
+      "declaration": "{\n  color?: AlertColors\n  heading: string\n  message: string\n  duration?: number | 'infinite'\n  closable: boolean\n  closeHandler: (id: string) => void\n  action?: string\n  actionIcon?: string\n  actionTarget?: DS.ButtonTarget\n  actionHref?: string\n  actionHandler: (id: string) => void\n}",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },

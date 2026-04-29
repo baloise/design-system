@@ -4,9 +4,13 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace DS {
-  export type ToggleGroupColumns = 1 | 2 | 3 | 4
-  export type ToggleTileColor = '' | 'purple' | 'green' | 'yellow' | 'red'
-  export type ToggleLabelPosition = 'left' | 'top' | 'right'
+  export const TOGGLE_GROUP_COLUMNS = [1, 2, 3, 4] as const
+  export const TOGGLE_TILE_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
+  export const TOGGLE_LABEL_POSITIONS = ['left', 'top', 'right'] as const
+
+  export type ToggleGroupColumns = (typeof TOGGLE_GROUP_COLUMNS)[number]
+  export type ToggleTileColor = (typeof TOGGLE_TILE_COLORS)[number]
+  export type ToggleLabelPosition = (typeof TOGGLE_LABEL_POSITIONS)[number]
 
   export interface ToggleCustomEvent<T> extends CustomEvent<T> {
     detail: T

@@ -4,7 +4,9 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace DS {
-  export type ToastColor = 'base' | 'info' | 'success' | 'warning' | 'danger'
+  export const TOAST_COLORS = ['base', 'info', 'success', 'warning', 'danger'] as const
+
+  export type ToastColor = (typeof TOAST_COLORS)[number]
   export type ToastDuration = number | 'infinite'
 
   export interface ToastCustomEvent<T> extends CustomEvent<T> {
