@@ -12,9 +12,9 @@ export default create({
   fontCode: 'monospace',
 
   colorPrimary: '#000d6e',
-  colorSecondary: '#d9304c',
+  colorSecondary: '#B8B2FF',
 
-  appBg: '#fafafa',
+  appBg: '#ffffff',
   appContentBg: '#ffffff',
   appBorderColor: '#e8e8e8',
   appBorderRadius: 12,

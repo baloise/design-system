@@ -10,7 +10,7 @@ addons.setConfig({
   theme: baloiseTheme,
   sidebar: {
     showRoots: true,
-    collapsedRoots: ['foundation', 'development', 'css-utilities', 'components', 'tokens'],
+    collapsedRoots: ['Foundation', 'Development', 'CSS-Utilities', 'Components', 'Tokens'],
   },
 })
 

@@ -7,6 +7,23 @@ html {
   /* padding: 2rem 20px !important; */
 }
 
+#root > div > div {
+  border-right-width: 2px;
+}
+
+#root section[data-test-id='sb-preview-toolbar'] {
+  box-shadow: rgb(232, 232, 232) 0px -2px 0px 0px inset;
+}
+
+.sidebar-item[data-selected='true'] {
+  background-color: #000d6e !important;
+}
+
+.sidebar-item[data-selected='true'] > div > button {
+  background-color: #000d6e !important;
+  box-shadow: none !important;
+}
+
 /***************************************
  * SEARCH FIELD
  ***************************************/
@@ -36,6 +53,14 @@ html {
  * SIDEBAR ROOTs
  ***************************************/
 
+[data-parent-id]:has(+ :not([data-parent-id])) {
+  margin-bottom: 16px !important;
+}
+
+.sidebar-header img {
+  max-width: 100% !important;
+}
+/*
 .sidebar-subheading {
   margin-top: 16px !important;
   margin-bottom: 6px !important;
@@ -45,6 +70,10 @@ html {
   min-height: 18px !important;
   letter-spacing: 0 !important;
   text-transform: none !important;
+} */
+
+.sidebar-subheading {
+  margin-block: 4px !important;
 }
 
 .sidebar-subheading > button {
@@ -54,18 +83,23 @@ html {
   font-size: 18px;
   letter-spacing: 0;
   text-transform: none;
+  width: 100%;
+}
+.sidebar-subheading > button[aria-expanded='true'] {
+  background: #e8e8e8 !important;
 }
 
-.sidebar-subheading > button > span {
+/* .sidebar-subheading > button > span {
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-left: 6px solid;
   margin-right: 10px !important;
-}
+} */
 
-.sidebar-subheading > button.sidebar-subheading-action > svg {
-  height: 14px !important;
-  width: 14px !important;
+.sidebar-subheading > button.sidebar-subheading-action {
+  display: none !important;
+  /* height: 14px !important; */
+  /* width: 14px !important; */
 }
 
 /***************************************
@@ -73,11 +107,25 @@ html {
  ***************************************/
 
 .sidebar-item,
-.sidebar-item > a {
+.sidebar-item > a,
+.sidebar-item > button {
   color: #000d6e;
   font-family: 'BaloiseCreateText';
   font-weight: 400;
   font-size: 16px !important;
+}
+
+/* .sidebar-item > a {
+  padding-inline: 1rem !important;
+  padding-block: 6px !important;
+} */
+
+.sidebar-item > a > div {
+  margin-top: 3px !important;
+}
+
+.sidebar-item > div[data-testid='context-menu'] {
+  top: 2px !important;
 }
 
 .sidebar-item > span {
@@ -117,7 +165,7 @@ html {
   display: none;
 }
 
-svg[type="story"] {
+svg[type='story'] {
   display: none;
 }
 

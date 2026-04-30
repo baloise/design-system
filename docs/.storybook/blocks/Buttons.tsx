@@ -17,20 +17,20 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
   }
 
   return (
-    <a
+    <button
       {...linkObj}
       style={{ flex: 1 }}
-      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-1 flex-direction-column bg-${
-        color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal radius text-large text-primary`}
+      className={`sb-unstyled button mb-none flex flex-1 flex-direction-column ${
+        color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-tertiary'
+      } p-normal text-large`}
     >
       <span className="flex justify-content-center text-xx-large text-align-center">
         {icon}
         {children}
       </span>
       <span className="block title text-medium text-align-center mb-none">{label}</span>
-      <span className="block text-small text-align-center">{description}</span>
-    </a>
+      <span className="block text text-small text-align-center">{description}</span>
+    </button>
   )
 }
 
@@ -40,22 +40,20 @@ export const LinkCards = ({ children }) => {
 
 export const LinkCard = ({ children, color, icon, label, description, pageTitle }) => {
   return (
-    <a
+    <button
       onClick={() => {
         navigate({ title: pageTitle })
       }}
-      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-direction-row bg-${
-        color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal radius text-large text-primary gap-normal`}
+      className={`sb-unstyled button is-secondary flex py-base`}
     >
       <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
         <span className="block title text-normal mb-none">{label || pageTitle}</span>
-        <span className="block text-small">{description}</span>
+        <span className="block text text-align-left is-small">{description}</span>
       </div>
       <span className="flex justify-content-center align-items-center text-xx-large text-align-center">
         <ds-icon name="nav-go-right"></ds-icon>
       </span>
-    </a>
+    </button>
   )
 }
 
@@ -162,9 +160,9 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
   return (
     <div className="col is-6">
       <div className="h-full">
-        <a
+        <button
           onClick={() => navigate({ title: pageTitle })}
-          className={`flex gap-normal justify-content-center align-items-center bg-${color}-1 p-normal h-full radius doc-shadow-hover cursor-pointer`}
+          className={`button flex gap-normal justify-content-center align-items-center is-tertiary-${color} p-normal h-full w-full`}
         >
           {svg ? (
             <div style={{ minWidth: '80px' }}>
@@ -174,14 +172,14 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
             ''
           )}
           {svg ? (
-            <div className="flex-1 h-full">
+            <div className="flex-1 h-full  text-align-left">
               <h2 className="title text-large mb-xx-small">{label}</h2>
-              <span className="h-full">{description}</span>
+              <span className="text text-small h-full">{description}</span>
             </div>
           ) : (
-            <div className="flex-1 h-full">
+            <div className="flex-1 h-full  text-align-left">
               <h2 className="title text-medium mb-xx-small">{label}</h2>
-              <small className="h-full">{description}</small>
+              <small className="text text-small h-full">{description}</small>
             </div>
           )}
           {!svg ? (
@@ -191,7 +189,7 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
           ) : (
             ''
           )}
-        </a>
+        </button>
       </div>
     </div>
   )

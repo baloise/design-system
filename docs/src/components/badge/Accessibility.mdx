@@ -1,0 +1,114 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import BadgeParts from './badge.parts.svg'
+
+<Meta of={BadgeStories} />
+
+<StoryHeading of={BadgeStories.Basic} hidden></StoryHeading>
+
+<Banner of={BadgeStories} />
+<BannerTabs
+  of={BadgeStories}
+  tabs={[
+    { label: 'Overview', storyId: 'components-data-display-badge--documentation' },
+    { label: 'Usage', storyId: 'components-data-display-badge--usage', active: true },
+    { label: 'Variants', storyId: 'components-data-display-badge--variants', active: true },
+    { label: 'Styling', storyId: 'components-data-display-badge--styling', active: true },
+    { label: 'Accessibility', storyId: 'components-data-display-badge--accessibility', active: true },
+  ]}
+/>
+
+<Lead>
+  **Badge** indicates a not visited or read action. It can only be used in combination with other components like
+  [BalButton](?path=/docs/components-containment-button--documentation),
+  [BalCard](?path=/docs/components-containment-card--documentation) or
+  [BalTabs](?path=/docs/components-navigation-tabs--documentation).
+</Lead>
+
+<Canvas of={BadgeStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={BadgeStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.WithIcon}></StoryHeading>
+
+<Canvas of={BadgeStories.WithIcon} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Colors}></StoryHeading>
+
+<Canvas of={BadgeStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Sizes}></StoryHeading>
+
+<Canvas of={BadgeStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ListBadges}></StoryHeading>
+
+<Canvas of={BadgeStories.ListBadges} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.CardBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.CardBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ButtonBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.ButtonBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.TabsBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.TabsBadge} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Parts
+
+<img src={BadgeParts} alt="Badge parts diagram" />
+
+<Markdown>
+{`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`badge\` | \`<span>\` | Outer wrapper of the badge; carries the background color, size, and position styles. |
+| \`icon\` | \`<ds-icon>\` | Optional icon inside the badge; only rendered when the \`icon\` prop is set and size is not \`small\`. |
+`}
+</Markdown>
+
+## CSS Variables
+
+<TokenOverview component="badge" />
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+## Accessibility
+
+- Always include visible text content (a number, abbreviation, or label) inside the badge so screen readers can announce it.
+- When using the `icon` prop, add an `aria-label` to the **parent element** that describes what the badge indicates — for example `<button aria-label="Notifications, 3 unread">`.
+- Do not rely on color alone to convey meaning; pair color variants with surrounding text or semantic context.
+- For purely decorative badges, add `aria-hidden="true"` to the `<ds-badge>` element.
+
+<Footer />
