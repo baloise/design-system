@@ -1,6 +1,6 @@
-export const INPUT_COLORS = ['primary', 'danger', 'success', 'warning'] as const
-export const INPUT_AUTOCORRECTS = ['on', 'off'] as const
-export const INPUT_INPUT_MODES = ['none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search'] as const
+export const INPUT_COLORS = ['primary', 'danger', 'success', 'warning', ''] as const
+export const INPUT_AUTOCORRECTS = ['on', 'off', ''] as const
+export const INPUT_INPUT_MODES = ['none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search', ''] as const
 export const INPUT_MASKS = [
   'vehicle-registration-number',
   'contract-number',
@@ -9,6 +9,7 @@ export const INPUT_MASKS = [
   'offer-number',
   'be-enterprise-number',
   'be-iban',
+  '',
 ] as const
 // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
 export const INPUT_INPUT_TYPES = [
@@ -28,6 +29,7 @@ export const INPUT_INPUT_TYPES = [
   'time',
   'url',
   'week',
+  '',
 ] as const
 
 // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
@@ -86,6 +88,7 @@ export const INPUT_AUTOCOMPLETES = [
   'impp',
   'url',
   'photo',
+  '',
 ] as const
 
 export type InputColor = (typeof INPUT_COLORS)[number]

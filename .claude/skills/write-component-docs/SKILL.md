@@ -249,6 +249,8 @@ For sections with **WC only** (no matching style.html section):
 
 ### Fixed footer (always at end)
 
+**Web-component-only** (no `style.html` — single `## Accessibility` section):
+
 ```mdx
 {/* ------------------------------------------------------ */}
 
@@ -264,6 +266,14 @@ import <ComponentName>Parts from './<component>.parts.svg'
 
 <img src={<ComponentName>Parts} alt="<ComponentName> parts diagram" />
 
+<Markdown>
+  {`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`part-name\` | \`<element>\` | Description. |
+`}
+</Markdown>
+
 ## CSS Variables
 
 <TokenOverview component="<component-name>" />
@@ -274,6 +284,16 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Accessibility
+
+_TODO: run the `add-component-a11y-docs` skill to generate this section._
+
+<Footer />
+```
+
+**Hybrid component** (`style.html` exists — split into two subsections):
+
+```mdx
 ## Accessibility
 
 ### HTML / CSS only
@@ -287,7 +307,18 @@ _TODO: run the `add-component-a11y-docs` skill to generate this section._
 <Footer />
 ```
 
-After generating the MDX file, immediately invoke the `add-component-a11y-docs` skill to fill in the Accessibility section with content derived from the component's `.tsx`, `.style.html`, and `.a11y.play.ts` files.
+### Accessibility content principle
+
+The `## Accessibility` section documents **consumer requirements only** — what the user of the library must do or be aware of. It must **not** describe internal component implementation details (which ARIA attributes the component sets, which elements it renders, how slots work internally).
+
+Write each point as an actionable instruction directed at the consumer:
+
+```
+✓ Add an `aria-label` to the parent element when using an icon-only badge.
+✗ The icon prop renders a ds-icon with aria-hidden="true".
+```
+
+After generating the MDX file, immediately invoke the `add-component-a11y-docs` skill to fill in the Accessibility section.
 
 ## Naming Conventions
 

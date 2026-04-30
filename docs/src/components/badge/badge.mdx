@@ -1,6 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as BadgeStories from './badge.stories'
+import BadgeParts from './badge.parts.svg'
 
 <Meta of={BadgeStories} />
 
@@ -70,6 +71,19 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
+## Parts
+
+<img src={BadgeParts} alt="Badge parts diagram" />
+
+<Markdown>
+{`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`badge\` | \`<span>\` | Outer wrapper of the badge; carries the background color, size, and position styles. |
+| \`icon\` | \`<ds-icon>\` | Optional icon inside the badge; only rendered when the \`icon\` prop is set and size is not \`small\`. |
+`}
+</Markdown>
+
 ## CSS Variables
 
 <TokenOverview component="badge" />
@@ -82,38 +96,9 @@ import integration from '../../snippets/integration.md?raw'
 
 ## Accessibility
 
-### HTML / CSS only
-
-Badges are **presentational status indicators** (counts, flags, notifications). Always include descriptive text content or an `aria-label` on the parent element.
-
-<Markdown>
-  {`
-| Requirement           | How to implement                                                                               |
-| --------------------- | -------- |
-| Badge content         | Always include text (count, abbreviation, etc.) or wrap badge in labeled container             |
-| Meaningful content    | Avoid badges with only icons; if icon-only, add \`aria-label\` to parent                     |
-| Color semantics       | Do not rely on color alone (e.g., red for error); pair with text or semantic context          |
-| Decorative badge      | If purely decorative count, add \`aria-hidden="true"\` to badge                               |
-| Positioned badge      | When positioned on a button/card, badge text helps users understand the status                |
-`}
-</Markdown>
-
-> **Note:** Badges convey meaning through content (usually text or number), not appearance alone. If your badge is icon-only with position styling, ensure the parent element (button, tab, card) has an accessible label that explains what the badge indicates.
-
-### Web component
-
-The `ds-badge` element is a **presentational status indicator**:
-
-- **No ARIA by default** — badges rely on text content for meaning; add labels to parent if needed
-- **Slot for content** — any slotted text (numbers, abbreviations, icons) is announced by AT
-- **Icon support** — the `icon` prop adds an icon via `ds-icon` with `aria-hidden="true"`; only text content is announced
-- **Color & size variants** — affect styling only; do not convey semantic meaning on their own
-- **Pulse animation** — visual feedback for new notifications; does not affect AT
-
-### References
-
-- [`aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) — MDN
-- [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — MDN
-- [WCAG 2.1 — Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+- Always include visible text content (a number, abbreviation, or label) inside the badge so screen readers can announce it.
+- When using the `icon` prop, add an `aria-label` to the **parent element** that describes what the badge indicates — for example `<button aria-label="Notifications, 3 unread">`.
+- Do not rely on color alone to convey meaning; pair color variants with surrounding text or semantic context.
+- For purely decorative badges, add `aria-hidden="true"` to the `<ds-badge>` element.
 
 <Footer />

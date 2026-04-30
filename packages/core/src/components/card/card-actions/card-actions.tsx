@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { Logger, LogInstance, ValidateEmptyOrOneOf, setupValidation } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { CardActionsAlignment } from '../card.interfaces'
+import { CARD_ACTIONS_ALIGNMENTS, CardActionsAlignment } from '../card.interfaces'
 import { DsComponentInterface } from '@global'
 
 @Component({
@@ -22,7 +22,7 @@ export class CardActions implements DsComponentInterface {
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  @ValidateEmptyOrOneOf(...CARD_ACTIONS_ALIGNMENTS)
   readonly align?: CardActionsAlignment
 
   connectedCallback(): void {

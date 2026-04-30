@@ -1,6 +1,6 @@
 export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p'
 
-export const HEADING_TAGS: { [key: string]: HeadingTag } = {
+export const HEADING_TAG_MAP: { [key: string]: HeadingTag } = {
   'display': 'h1',
   'display-2': 'h1',
   'h1': 'h1',
@@ -44,9 +44,7 @@ export const HEADING_SIZES: { [key: string]: HeadingSize } = {
   'base': 'base',
 }
 
-export type HeadingColor = 'primary' | 'success' | 'warning' | 'danger' | 'white' | ''
-
-export const HEADING_COLORS: { [key: string]: HeadingColor } = {
+export const HEADING_COLOR_MAP: { [key: string]: string } = {
   primary: 'primary',
   info: 'primary',
   blue: 'primary',

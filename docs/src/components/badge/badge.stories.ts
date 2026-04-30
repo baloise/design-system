@@ -25,11 +25,7 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(
-    ({ content, ...args }) => `<ds-badge ${props(args)}>
-  ${content}
-</ds-badge>`,
-  ),
+  ...withRender(({ content, ...args }) => `<ds-badge ${props(args)}>${content}</ds-badge>`),
 }
 
 export default meta

@@ -20,7 +20,7 @@ export const BUTTON_COLORS = [
 ] as const
 export const BUTTON_ELEMENT_TYPES = ['button', 'reset', 'submit'] as const
 export const BUTTON_SIZES = ['sm', '', 'lg', 'xl', 'small'] as const
-export const BUTTON_TARGETS = ['_blank', ' _parent', '_self', '_top'] as const
+export const BUTTON_TARGETS = ['_blank', '_parent', '_self', '_top'] as const
 export const BUTTON_SPINNERS = ['logo', 'circle', true, false, '', undefined] as const
 
 export type ButtonGroupAlignment = (typeof BUTTON_GROUP_ALIGNMENTS)[number]

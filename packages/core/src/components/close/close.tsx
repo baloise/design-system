@@ -18,8 +18,8 @@ import {
   defaultConfig,
 } from '@global'
 import { i18nDsClose } from './close.i18n'
-import { ButtonColor } from '../button/button.interfaces'
-import { CloseSize } from './close.interfaces'
+import { BUTTON_COLORS, ButtonColor } from '../button/button.interfaces'
+import { CLOSE_SIZES, CloseSize } from './close.interfaces'
 
 @Component({
   tag: 'ds-close',
@@ -43,11 +43,11 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf('', 'xs', 'sm', 'md', 'lg', 'xl')
-  size?: CloseSize
+  @ValidateEmptyOrOneOf(...CLOSE_SIZES)
+  size: CloseSize = ''
   @Watch('size')
   sizeChanged(newValue: CloseSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
@@ -76,7 +76,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('primary', 'secondary', 'success', 'warning', 'danger', '')
+  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
   readonly buttonColor?: ButtonColor
 
   /**

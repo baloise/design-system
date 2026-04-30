@@ -12,7 +12,14 @@ import {
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
-import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from './toast.interfaces'
+import {
+  ToastActionClickDetail,
+  ToastCloseClickDetail,
+  ToastColor,
+  ToastDuration,
+  TOAST_COLORS,
+  TOAST_TARGETS,
+} from './toast.interfaces'
 import { ButtonTarget } from '../../button/button.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
@@ -38,15 +45,13 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
   @State() svgContent?: string
   @State() iconName?: string
 
-  private timer!: NodeJS.Timeout
-
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('base', 'info', 'success', 'warning', 'danger', '')
-  readonly color?: ToastColor
+  @ValidateEmptyOrOneOf(...TOAST_COLORS)
+  readonly color: ToastColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
@@ -107,7 +112,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
+  @ValidateEmptyOrOneOf(...TOAST_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**

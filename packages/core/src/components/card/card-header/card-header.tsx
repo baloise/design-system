@@ -1,8 +1,8 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, LogInstance } from '@utils'
+import { Logger, LogInstance, ValidateEmptyOrOneOf } from '@utils'
 import { DsComponentInterface } from '@global'
-import { CardHeaderDirection } from '../card.interfaces'
+import { CARD_HEADER_DIRECTIONS, CardHeaderDirection } from '../card.interfaces'
 
 @Component({
   tag: 'ds-card-header',
@@ -19,7 +19,9 @@ export class CardHeader implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
-  @Prop() readonly direction: CardHeaderDirection = 'row'
+  @Prop()
+  @ValidateEmptyOrOneOf(...CARD_HEADER_DIRECTIONS)
+  readonly direction: CardHeaderDirection = 'row'
 
   render() {
     return (

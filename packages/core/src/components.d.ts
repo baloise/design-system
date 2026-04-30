@@ -10,8 +10,8 @@ import { DsConfigState } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonSpinner, ButtonTarget } from "./components/button/button.interfaces";
-import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardSpace } from "./components/card/card.interfaces";
-import { HeadingColor, HeadingLevel, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
+import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 import { CloseSize } from "./components/close/close.interfaces";
@@ -40,8 +40,8 @@ export { DsConfigState } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonSpinner, ButtonTarget } from "./components/button/button.interfaces";
-export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardSpace } from "./components/card/card.interfaces";
-export { HeadingColor, HeadingLevel, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
+export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 export { CloseSize } from "./components/close/close.interfaces";
@@ -396,7 +396,7 @@ export namespace Components {
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
          */
-        "imageTeaser"?: '' | 'wide-left' | 'wide-center' | 'wide-right';
+        "imageTeaser"?: CardImageTeaser;
         /**
           * If `true` the card background color becomes blue.
           * @default false
@@ -540,8 +540,9 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile checkbox.
+          * @default ''
          */
-        "tileColor"?: CheckboxTileColor;
+        "tileColor": CheckboxTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
           * @default 'on'
@@ -629,8 +630,9 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile checkbox.
+          * @default ''
          */
-        "tileColor"?: CheckboxTileColor;
+        "tileColor": CheckboxTileColor;
         /**
           * The value of the control.
           * @default []
@@ -665,31 +667,37 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
+          * @default ''
          */
-        "size"?: CloseSize;
+        "size": CloseSize;
     }
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
+          * @default ''
          */
-        "align"?: ContentAlignment;
+        "align": ContentAlignment;
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
+          * @default ''
          */
-        "direction"?: StackDirection;
+        "direction": StackDirection;
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+          * @default ''
          */
-        "layout"?: StackLayout;
+        "layout": StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
+          * @default ''
          */
-        "space"?: ContentSpace;
+        "space": ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
+          * @default ''
          */
-        "textAlign"?: ContentTextAlignment;
+        "textAlign": ContentTextAlignment;
     }
     interface DsDivider {
         /**
@@ -779,7 +787,7 @@ export namespace Components {
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: 'none' | 'bottom' | 'top' | 'all';
+        "space"?: HeadingSpace;
         /**
           * If `true` the heading gets displayed slimmer.
           * @default false
@@ -1733,7 +1741,7 @@ export namespace Components {
         "alertId": string;
         /**
           * If `true` the notification can be closed by the user.
-          * @default true
+          * @default false
          */
         "closable": boolean;
         /**
@@ -1746,10 +1754,12 @@ export namespace Components {
         "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default 'base'
          */
-        "color"?: SnackbarColor;
+        "color": SnackbarColor;
         /**
           * Defines the heading of the notification.
+          * @default ''
          */
         "heading": string;
         /**
@@ -1759,6 +1769,7 @@ export namespace Components {
         "icon": string;
         /**
           * Defines the message of the notification as html content
+          * @default ''
          */
         "message": string;
         /**
@@ -2122,8 +2133,9 @@ export namespace Components {
         "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default 'base'
          */
-        "color"?: ToastColor;
+        "color": ToastColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * @default 0
@@ -3225,7 +3237,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
          */
-        "imageTeaser"?: '' | 'wide-left' | 'wide-center' | 'wide-right';
+        "imageTeaser"?: CardImageTeaser;
         /**
           * If `true` the card background color becomes blue.
           * @default false
@@ -3385,6 +3397,7 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile checkbox.
+          * @default ''
          */
         "tileColor"?: CheckboxTileColor;
         /**
@@ -3489,6 +3502,7 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile checkbox.
+          * @default ''
          */
         "tileColor"?: CheckboxTileColor;
         /**
@@ -3524,29 +3538,35 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
+          * @default ''
          */
         "size"?: CloseSize;
     }
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
+          * @default ''
          */
         "align"?: ContentAlignment;
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
+          * @default ''
          */
         "direction"?: StackDirection;
         /**
           * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+          * @default ''
          */
         "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
+          * @default ''
          */
         "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
+          * @default ''
          */
         "textAlign"?: ContentTextAlignment;
     }
@@ -3638,7 +3658,7 @@ declare namespace LocalJSX {
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: 'none' | 'bottom' | 'top' | 'all';
+        "space"?: HeadingSpace;
         /**
           * If `true` the heading gets displayed slimmer.
           * @default false
@@ -4680,7 +4700,7 @@ declare namespace LocalJSX {
         "alertId"?: string;
         /**
           * If `true` the notification can be closed by the user.
-          * @default true
+          * @default false
          */
         "closable"?: boolean;
         /**
@@ -4689,12 +4709,14 @@ declare namespace LocalJSX {
         "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default 'base'
          */
         "color"?: SnackbarColor;
         /**
           * Defines the heading of the notification.
+          * @default ''
          */
-        "heading": string;
+        "heading"?: string;
         /**
           * Defines the icon of the notification.
           * @default ''
@@ -4702,8 +4724,9 @@ declare namespace LocalJSX {
         "icon"?: string;
         /**
           * Defines the message of the notification as html content
+          * @default ''
          */
-        "message": string;
+        "message"?: string;
         /**
           * Emitted when the action button got clicked.
          */
@@ -5089,6 +5112,7 @@ declare namespace LocalJSX {
         "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default 'base'
          */
         "color"?: ToastColor;
         /**

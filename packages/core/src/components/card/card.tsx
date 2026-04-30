@@ -13,9 +13,11 @@ import {
   CARD_ACTIONS_ALIGNMENTS,
   CARD_FOOTER_POSITIONS,
   CARD_HEADER_DIRECTIONS,
+  CARD_IMAGE_TEASERS,
   CARD_SPACES,
   CARD_COLORS,
   type CardAlignment,
+  type CardImageTeaser,
   type CardActionsAlignment,
   type CardFooterPosition,
   type CardHeaderDirection,
@@ -69,8 +71,8 @@ export class Card implements DsComponentInterface {
    * it is displayed with a large image.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('wide-left', 'wide-center', 'wide-right', '')
-  readonly imageTeaser?: '' | 'wide-left' | 'wide-center' | 'wide-right'
+  @ValidateEmptyOrOneOf(...CARD_IMAGE_TEASERS)
+  readonly imageTeaser?: CardImageTeaser
 
   /**
    * If `true` the card loses its border radius.
@@ -118,14 +120,14 @@ export class Card implements DsComponentInterface {
    * Defines the text alignment of the card content.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  @ValidateEmptyOrOneOf(...CARD_ALIGNMENTS)
   readonly align?: CardAlignment
 
   /**
    * Defines the space of the card content.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf('sm', 'md', 'lg', '')
+  @ValidateEmptyOrOneOf(...CARD_SPACES)
   space?: CardSpace
   @Watch('space')
   spaceChanged(newValue: CardSpace) {
@@ -136,40 +138,7 @@ export class Card implements DsComponentInterface {
    * Defines the color of the card.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'white',
-    'primary',
-    'info',
-    'success',
-    'warning',
-    'danger',
-    'grey',
-    'blue',
-    'red',
-    'yellow',
-    'purple',
-    'green',
-    'primary-light',
-    'primary-dark',
-    'grey-light',
-    'grey-dark',
-    'blue-light',
-    'purple-light',
-    'purple-lighter',
-    'purple-2',
-    'purple-1',
-    'success-light',
-    'success-dark',
-    'success-darker',
-    'warning-light',
-    'warning-dark',
-    'warning-darker',
-    'danger-light',
-    'danger-dark',
-    'danger-darker',
-    'light-blue',
-    '',
-  )
+  @ValidateEmptyOrOneOf(...CARD_COLORS)
   readonly color?: CardColor
 
   connectedCallback(): void {

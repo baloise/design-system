@@ -1,8 +1,24 @@
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser, Logger, type LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
-import { HeadingColor, HeadingLevel, HeadingVisualLevel } from './heading.interfaces'
-import { HEADING_COLORS, HEADING_ORDER, HEADING_SIZES, HEADING_TAGS, HeadingSize, HeadingTag } from './heading.const'
+import {
+  HEADING_COLORS,
+  HEADING_LEVELS,
+  HEADING_SPACES,
+  HEADING_VISUAL_LEVELS,
+  HeadingColor,
+  HeadingLevel,
+  HeadingSpace,
+  HeadingVisualLevel,
+} from './heading.interfaces'
+import {
+  HEADING_COLOR_MAP,
+  HEADING_TAG_MAP,
+  HEADING_ORDER,
+  HEADING_SIZES,
+  HeadingSize,
+  HeadingTag,
+} from './heading.const'
 import { DsComponentInterface } from '@global'
 
 @Component({
@@ -33,7 +49,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', 'span', 'p', '')
+  @ValidateEmptyOrOneOf(...HEADING_LEVELS)
   readonly level: HeadingLevel = 'h1'
 
   @Watch('level')
@@ -47,7 +63,7 @@ export class Heading implements DsComponentInterface {
    * but still keep it h1 in the markup.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', '')
+  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
   readonly visualLevel?: HeadingVisualLevel
 
   @Watch('visualLevel')
@@ -59,7 +75,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf('display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', '')
+  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
   readonly autoLevel?: HeadingVisualLevel
 
   @Watch('autoLevel')
@@ -87,14 +103,14 @@ export class Heading implements DsComponentInterface {
    * Defines at which position the heading has spacing.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf('none', 'bottom', 'top', 'all', '')
-  readonly space?: 'none' | 'bottom' | 'top' | 'all'
+  @ValidateEmptyOrOneOf(...HEADING_SPACES)
+  readonly space?: HeadingSpace
 
   /**
    * The theme type of the toast.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf('primary', 'info', 'success', 'warning', 'danger', 'blue', 'white', '')
+  @ValidateEmptyOrOneOf(...HEADING_COLORS)
   readonly color: HeadingColor = ''
 
   /**
@@ -157,7 +173,7 @@ export class Heading implements DsComponentInterface {
     if (this.inverted) {
       return 'white'
     }
-    return HEADING_COLORS[this.color]
+    return HEADING_COLOR_MAP[this.color] as HeadingColor
   }
 
   private get fontSize(): HeadingSize {
@@ -165,7 +181,7 @@ export class Heading implements DsComponentInterface {
   }
 
   private get tag(): HeadingTag {
-    return HEADING_TAGS[this.level]
+    return HEADING_TAG_MAP[this.level]
   }
 
   /**

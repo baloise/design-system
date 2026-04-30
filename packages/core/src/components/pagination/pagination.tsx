@@ -25,7 +25,15 @@ import {
 import { DsComponentInterface, DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
 import { generatePaginationControl } from './pagination.util'
-import { PaginationAlignment, PaginationSize, PaginationVariant, PaginationChangeDetail } from './pagination.interfaces'
+import {
+  PaginationAlignment,
+  PaginationSize,
+  PaginationVariant,
+  PaginationChangeDetail,
+  PAGINATION_ALIGNMENTS,
+  PAGINATION_SIZES,
+  PAGINATION_VARIANTS,
+} from './pagination.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
 @Component({
@@ -55,7 +63,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Align the buttons to start, center or end
    */
   @Prop()
-  @ValidateEmptyOrOneOf('', 'start', 'end')
+  @ValidateEmptyOrOneOf(...PAGINATION_ALIGNMENTS)
   readonly align: PaginationAlignment = ''
 
   /**
@@ -81,7 +89,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Size of the buttons
    */
   @Prop()
-  @ValidateEmptyOrOneOf('', 'sm')
+  @ValidateEmptyOrOneOf(...PAGINATION_SIZES)
   readonly size: PaginationSize = ''
 
   /**
@@ -133,7 +141,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Defines the layout of the pagination
    */
   @Prop()
-  @ValidateEmptyOrOneOf('', 'dots')
+  @ValidateEmptyOrOneOf(...PAGINATION_VARIANTS)
   readonly variant: PaginationVariant = ''
 
   /**

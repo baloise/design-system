@@ -1,6 +1,7 @@
 import { ButtonElementType, ButtonTarget } from '../button/button.interfaces'
 
-export const CARD_ALIGNMENTS = ['right', 'center', 'left'] as const
+export const CARD_ALIGNMENTS = ['right', 'center', 'left', ''] as const
+export const CARD_IMAGE_TEASERS = ['wide-left', 'wide-center', 'wide-right', ''] as const
 export const CARD_ACTIONS_ALIGNMENTS = ['right', 'center', 'left'] as const
 export const CARD_FOOTER_POSITIONS = ['right', 'center', 'left'] as const
 export const CARD_HEADER_DIRECTIONS = ['row', 'column'] as const
@@ -19,11 +20,26 @@ export const CARD_COLORS = [
   'yellow',
   'purple',
   'green',
+  'primary-light',
+  'primary-dark',
+  'grey-light',
+  'grey-dark',
+  'blue-light',
   'red-light',
   'yellow-light',
   'purple-light',
+  'purple-lighter',
   'green-light',
-  'grey-light',
+  'success-light',
+  'success-dark',
+  'success-darker',
+  'warning-light',
+  'warning-dark',
+  'warning-darker',
+  'danger-light',
+  'danger-dark',
+  'danger-darker',
+  'light-blue',
   'purple-1',
   'purple-2',
   'purple-3',
@@ -39,6 +55,7 @@ export const CARD_COLORS = [
 ] as const
 
 export type CardAlignment = (typeof CARD_ALIGNMENTS)[number]
+export type CardImageTeaser = (typeof CARD_IMAGE_TEASERS)[number]
 export type CardActionsAlignment = (typeof CARD_ACTIONS_ALIGNMENTS)[number]
 export type CardFooterPosition = (typeof CARD_FOOTER_POSITIONS)[number]
 export type CardHeaderDirection = (typeof CARD_HEADER_DIRECTIONS)[number]

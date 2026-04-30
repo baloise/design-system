@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { HeadingColor } from '../../heading/heading.interfaces'
+import { HEADING_COLORS, HeadingColor } from '../../heading/heading.interfaces'
 import { DsComponentInterface } from '@global'
 
 @Component({
@@ -37,7 +37,7 @@ export class CardSubtitle implements DsComponentInterface {
    * If `true` the card text color becomes white.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('primary', 'secondary', 'success', 'warning', 'danger', '')
+  @ValidateEmptyOrOneOf(...HEADING_COLORS)
   readonly color: HeadingColor = ''
 
   connectedCallback(): void {

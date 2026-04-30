@@ -2,8 +2,15 @@ import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateEmptyOrOneOf, setupValidation } from '@utils'
 import { DsComponentInterface } from '@global'
-import { StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
-import { ContentAlignment, ContentTextAlignment, ContentSpace } from './content.interfaces'
+import { STACK_LAYOUTS, StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
+import {
+  ContentAlignment,
+  ContentTextAlignment,
+  ContentSpace,
+  CONTENT_DIRECTIONS,
+  CONTENT_ALIGNMENTS,
+  CONTENT_SPACES,
+} from './content.interfaces'
 
 @Component({
   tag: 'ds-content',
@@ -29,10 +36,12 @@ export class Content implements DsComponentInterface {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() readonly layout?: StackLayout
+  @Prop()
+  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
+  readonly layout: StackLayout = ''
   @Watch('layout')
   layoutChanged(newValue?: StackLayout) {
-    if (newValue !== undefined) {
+    if (newValue !== '') {
       if (newValue === 'horizontal') {
         this.direction = 'row'
       } else if (newValue === 'vertical') {
@@ -48,34 +57,34 @@ export class Content implements DsComponentInterface {
   /**
    * Defines the direction of the child elements. Default is column.
    */
-  @Prop()
-  @ValidateEmptyOrOneOf('column', 'row', 'column-reverse', 'row-reverse')
-  direction?: StackDirection
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...CONTENT_DIRECTIONS)
+  direction: StackDirection = ''
 
   /**
    * Defines the positioning like center, end or
    * default to start.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('start', 'center', 'end', '')
-  readonly align?: ContentAlignment
+  @ValidateEmptyOrOneOf(...CONTENT_ALIGNMENTS)
+  readonly align: ContentAlignment = ''
 
   /**
    * Defines the text positioning like center, right or
    * default to left.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
-  readonly textAlign?: ContentTextAlignment
+  @ValidateEmptyOrOneOf(...CONTENT_ALIGNMENTS)
+  readonly textAlign: ContentTextAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf('none', '3xs', '2xs', 'xs', 'sm', 'base', '')
-  space?: ContentSpace
+  @ValidateEmptyOrOneOf(...CONTENT_SPACES)
+  space: ContentSpace = ''
   @Watch('space')
-  spaceChanged(newValue?: ContentSpace) {
+  spaceChanged(newValue: ContentSpace) {
     this.space = normalizeDeprecatedTShirtSize(newValue)
   }
 

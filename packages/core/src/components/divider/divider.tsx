@@ -9,7 +9,15 @@ import {
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
-import { DividerLayout, DividerSpace, DividerColor } from './divider.interfaces'
+import {
+  DividerLayout,
+  DividerSpace,
+  DividerColor,
+  DIVIDER_LAYOUTS,
+  DIVIDER_SPACES,
+  DIVIDER_COLORS,
+} from './divider.interfaces'
+import { CONTENT_LAYOUTS } from '../content/content.interfaces'
 
 @Component({
   tag: 'ds-divider',
@@ -36,14 +44,14 @@ export class Divider implements DsComponentInterface {
    * are showed verticaly or horizontally. Default is verticaly.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('horizontal', 'vertical', '')
+  @ValidateEmptyOrOneOf(...DIVIDER_LAYOUTS)
   readonly layout: DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '')
+  @ValidateEmptyOrOneOf(...DIVIDER_SPACES)
   space: DividerSpace = 'none'
   @Watch('space')
   spaceChanged(newValue: DividerSpace) {
@@ -54,22 +62,7 @@ export class Divider implements DsComponentInterface {
    * Defines the color of the separator line.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'primary',
-    'primary-light',
-    'primary-dark',
-    'grey-light',
-    'grey',
-    'grey-dark',
-    'warning',
-    'success',
-    'danger',
-    'danger-dark',
-    'danger-darker',
-    'white',
-    'light-blue',
-    '',
-  )
+  @ValidateEmptyOrOneOf(...DIVIDER_COLORS)
   readonly color: DividerColor = 'grey'
 
   /**

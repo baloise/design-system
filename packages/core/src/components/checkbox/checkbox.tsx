@@ -15,6 +15,8 @@ import {
   CheckboxFocusDetail,
   CheckboxBlurDetail,
   CheckboxChangeDetail,
+  CHECKBOX_LABEL_POSITIONS,
+  CHECKBOX_TILE_COLORS,
 } from './checkbox.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
@@ -65,7 +67,7 @@ export class Checkbox implements DsComponentInterface {
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('left', 'top', 'right')
+  @ValidateEmptyOrOneOf(...CHECKBOX_LABEL_POSITIONS)
   readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
@@ -124,8 +126,8 @@ export class Checkbox implements DsComponentInterface {
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('purple', 'green', 'yellow', 'red', '')
-  readonly tileColor?: CheckboxTileColor
+  @ValidateEmptyOrOneOf(...CHECKBOX_TILE_COLORS)
+  readonly tileColor: CheckboxTileColor = ''
 
   /**
    * Defines the layout of the input

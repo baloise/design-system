@@ -30,6 +30,9 @@ import {
   CheckboxLabelPosition,
   CheckboxTileColor,
   CheckboxGroupColumns,
+  CHECKBOX_LABEL_POSITIONS,
+  CHECKBOX_TILE_COLORS,
+  CHECKBOX_GROUP_COLUMNS,
   CheckboxGroupBlurDetail,
   CheckboxGroupFocusDetail,
   CheckboxGroupChangeDetail,
@@ -119,7 +122,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    * Defines the position of the label, either before or after the checkbox input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('left', 'top', 'right')
+  @ValidateEmptyOrOneOf(...CHECKBOX_LABEL_POSITIONS)
   readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
@@ -196,28 +199,28 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('purple', 'green', 'yellow', 'red', '')
-  readonly tileColor?: CheckboxTileColor
+  @ValidateEmptyOrOneOf(...CHECKBOX_TILE_COLORS)
+  readonly tileColor: CheckboxTileColor = ''
 
   /**
    * Defines the column size like the grid.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(1, 2, 3, 4)
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
   readonly cols: CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(1, 2, 3, 4)
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
   readonly colsTablet: CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(1, 2, 3, 4)
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
   readonly colsMobile: CheckboxGroupColumns = 1
 
   /**

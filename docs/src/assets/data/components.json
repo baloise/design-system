@@ -838,7 +838,7 @@
             "parameters": [
               {
                 "name": "alert",
-                "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \" _parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+                "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
                 "docs": ""
               }
             ],
@@ -866,7 +866,7 @@
           "parameters": [
             {
               "name": "alert",
-              "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \" _parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+              "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
               "docs": ""
             }
           ],
@@ -2189,10 +2189,10 @@
         },
         {
           "name": "target",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -2215,11 +2215,11 @@
           "default": "'_self'",
           "values": [
             {
-              "value": " _parent",
+              "value": "_blank",
               "type": "string"
             },
             {
-              "value": "_blank",
+              "value": "_parent",
               "type": "string"
             },
             {
@@ -2614,10 +2614,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "CardAlignment",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "CardAlignment": {
                 "location": "import",
@@ -2633,6 +2633,9 @@
           "docs": "Defines the text alignment of the card content.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -2685,10 +2688,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
+          "type": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
           "complexType": {
             "original": "CardColor",
-            "resolved": "\"\" | \"blue\" | \"danger\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-light\" | \"info\" | \"primary\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"warning\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
+            "resolved": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
             "references": {
               "CardColor": {
                 "location": "import",
@@ -2712,7 +2715,23 @@
               "type": "string"
             },
             {
+              "value": "blue-light",
+              "type": "string"
+            },
+            {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "danger-dark",
+              "type": "string"
+            },
+            {
+              "value": "danger-darker",
+              "type": "string"
+            },
+            {
+              "value": "danger-light",
               "type": "string"
             },
             {
@@ -2740,6 +2759,10 @@
               "type": "string"
             },
             {
+              "value": "grey-dark",
+              "type": "string"
+            },
+            {
               "value": "grey-light",
               "type": "string"
             },
@@ -2748,7 +2771,19 @@
               "type": "string"
             },
             {
+              "value": "light-blue",
+              "type": "string"
+            },
+            {
               "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "primary-dark",
+              "type": "string"
+            },
+            {
+              "value": "primary-light",
               "type": "string"
             },
             {
@@ -2769,6 +2804,10 @@
             },
             {
               "value": "purple-light",
+              "type": "string"
+            },
+            {
+              "value": "purple-lighter",
               "type": "string"
             },
             {
@@ -2796,7 +2835,31 @@
               "type": "string"
             },
             {
+              "value": "success-dark",
+              "type": "string"
+            },
+            {
+              "value": "success-darker",
+              "type": "string"
+            },
+            {
+              "value": "success-light",
+              "type": "string"
+            },
+            {
               "value": "warning",
+              "type": "string"
+            },
+            {
+              "value": "warning-dark",
+              "type": "string"
+            },
+            {
+              "value": "warning-darker",
+              "type": "string"
+            },
+            {
+              "value": "warning-light",
               "type": "string"
             },
             {
@@ -2923,9 +2986,16 @@
           "name": "imageTeaser",
           "type": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
           "complexType": {
-            "original": "'' | 'wide-left' | 'wide-center' | 'wide-right'",
+            "original": "CardImageTeaser",
             "resolved": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
-            "references": {}
+            "references": {
+              "CardImageTeaser": {
+                "location": "import",
+                "path": "./card.interfaces",
+                "id": "src/components/card/card.interfaces.ts::CardImageTeaser",
+                "referenceLocation": "CardImageTeaser"
+              }
+            }
           },
           "mutable": false,
           "attr": "image-teaser",
@@ -3506,10 +3576,10 @@
         },
         {
           "name": "level",
-          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
+          "type": "\"\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
           "complexType": {
             "original": "HeadingLevel",
-            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
+            "resolved": "\"\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
             "references": {
               "HeadingLevel": {
                 "location": "import",
@@ -3531,6 +3601,17 @@
           ],
           "default": "'h3'",
           "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "display",
+              "type": "string"
+            },
+            {
+              "value": "display-2",
+              "type": "string"
+            },
             {
               "value": "h1",
               "type": "string"
@@ -3989,10 +4070,10 @@
         },
         {
           "name": "tileColor",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
             "original": "CheckboxTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
               "CheckboxTileColor": {
                 "location": "import",
@@ -4006,7 +4087,13 @@
           "attr": "tile-color",
           "reflectToAttr": false,
           "docs": "Defines the color of the tile checkbox.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -4026,12 +4113,9 @@
             {
               "value": "yellow",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -4178,10 +4262,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "InputColor",
-            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
             "references": {
               "InputColor": {
                 "location": "import",
@@ -4203,6 +4287,9 @@
           ],
           "default": "'primary'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -4729,10 +4816,10 @@
         },
         {
           "name": "tileColor",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
             "original": "CheckboxTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
               "CheckboxTileColor": {
                 "location": "import",
@@ -4746,7 +4833,13 @@
           "attr": "tile-color",
           "reflectToAttr": false,
           "docs": "Defines the color of the tile checkbox.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -4766,12 +4859,9 @@
             {
               "value": "yellow",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -5152,10 +5242,10 @@
         },
         {
           "name": "size",
-          "type": "\"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
+          "type": "\"\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "CloseSize",
-            "resolved": "\"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
+            "resolved": "\"\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
             "references": {
               "CloseSize": {
                 "location": "import",
@@ -5169,8 +5259,17 @@
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Define the size of badge. Small is recommended for tabs.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "md",
               "type": "string"
@@ -5186,12 +5285,9 @@
             {
               "value": "small",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -5223,10 +5319,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"center\" | \"end\" | \"start\" | undefined",
+          "type": "\"\" | \"center\" | \"end\" | \"start\"",
           "complexType": {
             "original": "ContentAlignment",
-            "resolved": "\"center\" | \"end\" | \"start\" | undefined",
+            "resolved": "\"\" | \"center\" | \"end\" | \"start\"",
             "references": {
               "ContentAlignment": {
                 "location": "import",
@@ -5240,8 +5336,17 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the positioning like center, end or\ndefault to start.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -5253,22 +5358,19 @@
             {
               "value": "start",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "direction",
-          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
+          "type": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
           "complexType": {
             "original": "StackDirection",
-            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
+            "resolved": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
             "references": {
               "StackDirection": {
                 "location": "import",
@@ -5278,12 +5380,21 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "column",
               "type": "string"
@@ -5299,22 +5410,19 @@
             {
               "value": "row-reverse",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "layout",
-          "type": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
+          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
           "complexType": {
             "original": "StackLayout",
-            "resolved": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
+            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
             "references": {
               "StackLayout": {
                 "location": "import",
@@ -5332,10 +5440,18 @@
             {
               "name": "deprecated",
               "text": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally."
+            },
+            {
+              "name": "default",
+              "text": "''"
             }
           ],
+          "default": "''",
           "deprecation": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "horizontal",
               "type": "string"
@@ -5351,22 +5467,19 @@
             {
               "value": "vertical-reverse",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "space",
-          "type": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
+          "type": "\"\" | \"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\"",
           "complexType": {
             "original": "ContentSpace",
-            "resolved": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\"",
             "references": {
               "ContentSpace": {
                 "location": "import",
@@ -5380,8 +5493,17 @@
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -5425,22 +5547,19 @@
             {
               "value": "xxx-small",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "textAlign",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
           "complexType": {
             "original": "ContentTextAlignment",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
             "references": {
               "ContentTextAlignment": {
                 "location": "import",
@@ -5454,8 +5573,17 @@
           "attr": "text-align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or\ndefault to left.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -5467,12 +5595,9 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -5981,10 +6106,10 @@
         },
         {
           "name": "level",
-          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
+          "type": "\"\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
           "complexType": {
             "original": "HeadingLevel",
-            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
+            "resolved": "\"\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\"",
             "references": {
               "HeadingLevel": {
                 "location": "import",
@@ -6006,6 +6131,17 @@
           ],
           "default": "'h1'",
           "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "display",
+              "type": "string"
+            },
+            {
+              "value": "display-2",
+              "type": "string"
+            },
             {
               "value": "h1",
               "type": "string"
@@ -6100,11 +6236,18 @@
         },
         {
           "name": "space",
-          "type": "\"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
+          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
           "complexType": {
-            "original": "'none' | 'bottom' | 'top' | 'all'",
-            "resolved": "\"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
-            "references": {}
+            "original": "HeadingSpace",
+            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
+            "references": {
+              "HeadingSpace": {
+                "location": "import",
+                "path": "./heading.interfaces",
+                "id": "src/components/heading/heading.interfaces.ts::HeadingSpace",
+                "referenceLocation": "HeadingSpace"
+              }
+            }
           },
           "mutable": false,
           "attr": "space",
@@ -6112,6 +6255,9 @@
           "docs": "Defines at which position the heading has spacing.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "all",
               "type": "string"
@@ -6956,10 +7102,10 @@
         },
         {
           "name": "autocomplete",
-          "type": "\"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
+          "type": "\"\" | \"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
           "complexType": {
             "original": "InputAutocomplete",
-            "resolved": "\"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
+            "resolved": "\"\" | \"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
             "references": {
               "InputAutocomplete": {
                 "location": "import",
@@ -6981,6 +7127,9 @@
           ],
           "default": "'off'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "additional-name",
               "type": "string"
@@ -7205,10 +7354,10 @@
         },
         {
           "name": "autocorrect",
-          "type": "\"off\" | \"on\"",
+          "type": "\"\" | \"off\" | \"on\"",
           "complexType": {
             "original": "InputAutocorrect",
-            "resolved": "\"off\" | \"on\"",
+            "resolved": "\"\" | \"off\" | \"on\"",
             "references": {
               "InputAutocorrect": {
                 "location": "import",
@@ -7230,6 +7379,9 @@
           ],
           "default": "'off'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "off",
               "type": "string"
@@ -7275,10 +7427,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "InputColor",
-            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
             "references": {
               "InputColor": {
                 "location": "import",
@@ -7300,6 +7452,9 @@
           ],
           "default": "'primary'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -7412,10 +7567,10 @@
         },
         {
           "name": "inputmode",
-          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+          "type": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
           "complexType": {
             "original": "InputInputMode",
-            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+            "resolved": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
             "references": {
               "InputInputMode": {
                 "location": "import",
@@ -7431,6 +7586,9 @@
           "docs": "A hint to the browser for which keyboard to display.\nPossible values: `\"none\"`, `\"text\"`, `\"tel\"`, `\"url\"`,\n`\"email\"`, `\"numeric\"`, `\"decimal\"`, and `\"search\"`.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "decimal",
               "type": "string"
@@ -7590,10 +7748,10 @@
         },
         {
           "name": "mask",
-          "type": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
+          "type": "\"\" | \"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
           "complexType": {
             "original": "InputMask",
-            "resolved": "\"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
+            "resolved": "\"\" | \"basic-contract-number\" | \"be-enterprise-number\" | \"be-iban\" | \"claim-number\" | \"contract-number\" | \"offer-number\" | \"vehicle-registration-number\" | undefined",
             "references": {
               "InputMask": {
                 "location": "import",
@@ -7615,6 +7773,9 @@
           ],
           "default": "undefined",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "basic-contract-number",
               "type": "string"
@@ -7993,10 +8154,10 @@
         },
         {
           "name": "type",
-          "type": "\"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"image\" | \"month\" | \"number\" | \"password\" | \"range\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+          "type": "\"\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"image\" | \"month\" | \"number\" | \"password\" | \"range\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
           "complexType": {
             "original": "InputInputType",
-            "resolved": "\"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"image\" | \"month\" | \"number\" | \"password\" | \"range\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+            "resolved": "\"\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"image\" | \"month\" | \"number\" | \"password\" | \"range\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
             "references": {
               "InputInputType": {
                 "location": "import",
@@ -8018,6 +8179,9 @@
           ],
           "default": "'text'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "color",
               "type": "string"
@@ -8811,10 +8975,10 @@
         },
         {
           "name": "target",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -8837,11 +9001,11 @@
           "default": "'_self'",
           "values": [
             {
-              "value": " _parent",
+              "value": "_blank",
               "type": "string"
             },
             {
-              "value": "_blank",
+              "value": "_parent",
               "type": "string"
             },
             {
@@ -9918,10 +10082,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "InputColor",
-            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
             "references": {
               "InputColor": {
                 "location": "import",
@@ -9943,6 +10107,9 @@
           ],
           "default": "'primary'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -11933,10 +12100,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "InputColor",
-            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
             "references": {
               "InputColor": {
                 "location": "import",
@@ -11958,6 +12125,9 @@
           ],
           "default": "'primary'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -13707,10 +13877,10 @@
         },
         {
           "name": "actionTarget",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -13733,11 +13903,11 @@
           "default": "'_blank'",
           "values": [
             {
-              "value": " _parent",
+              "value": "_blank",
               "type": "string"
             },
             {
-              "value": "_blank",
+              "value": "_parent",
               "type": "string"
             },
             {
@@ -13769,10 +13939,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "true"
+              "text": "false"
             }
           ],
-          "default": "true",
+          "default": "false",
           "values": [
             {
               "type": "boolean"
@@ -13785,10 +13955,10 @@
         },
         {
           "name": "color",
-          "type": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
+          "type": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "SnackbarColor",
-            "resolved": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
+            "resolved": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
             "references": {
               "SnackbarColor": {
                 "location": "import",
@@ -13802,7 +13972,13 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'base'"
+            }
+          ],
+          "default": "'base'",
           "values": [
             {
               "value": "base",
@@ -13823,12 +13999,9 @@
             {
               "value": "warning",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -13845,14 +14018,20 @@
           "attr": "heading",
           "reflectToAttr": false,
           "docs": "Defines the heading of the notification.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "string"
             }
           ],
           "optional": false,
-          "required": true,
+          "required": false,
           "getter": false,
           "setter": false
         },
@@ -13897,14 +14076,20 @@
           "attr": "message",
           "reflectToAttr": false,
           "docs": "Defines the message of the notification as html content",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "string"
             }
           ],
           "optional": false,
-          "required": true,
+          "required": false,
           "getter": false,
           "setter": false
         },
@@ -14322,10 +14507,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
+          "type": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
           "complexType": {
             "original": "StackAlignment",
-            "resolved": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
+            "resolved": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
             "references": {
               "StackAlignment": {
                 "location": "import",
@@ -14341,6 +14526,9 @@
           "docs": "Defines the text positioning like center, right or\ndefault to start.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "bottom center",
               "type": "string"
@@ -14388,10 +14576,10 @@
         },
         {
           "name": "direction",
-          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+          "type": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
           "complexType": {
             "original": "StackDirection",
-            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+            "resolved": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
             "references": {
               "StackDirection": {
                 "location": "import",
@@ -14413,6 +14601,9 @@
           ],
           "default": "'column'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "column",
               "type": "string"
@@ -14466,10 +14657,10 @@
         },
         {
           "name": "layout",
-          "type": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
+          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
             "original": "StackLayout",
-            "resolved": "\"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
+            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
               "StackLayout": {
                 "location": "import",
@@ -14491,6 +14682,9 @@
           ],
           "deprecation": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "horizontal",
               "type": "string"
@@ -14518,10 +14712,10 @@
         },
         {
           "name": "p",
-          "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "StackPadding",
-            "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "StackPadding": {
                 "location": "import",
@@ -14537,6 +14731,9 @@
           "docs": "Defines the horizontal padding left and right of the stack element.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -14616,10 +14813,10 @@
         },
         {
           "name": "px",
-          "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "StackPadding",
-            "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "StackPadding": {
                 "location": "import",
@@ -14635,6 +14832,9 @@
           "docs": "Defines the horizontal padding left and right of the stack element.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -14714,10 +14914,10 @@
         },
         {
           "name": "py",
-          "type": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "StackPadding",
-            "resolved": "\"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "StackPadding": {
                 "location": "import",
@@ -14733,6 +14933,9 @@
           "docs": "Defines the vertical padding top and bottom of the stack element.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -14812,10 +15015,10 @@
         },
         {
           "name": "space",
-          "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "StackSpace",
-            "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "StackSpace": {
                 "location": "import",
@@ -14831,6 +15034,9 @@
           "docs": "Defines the space between the child elements. Default is normal.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -14914,10 +15120,10 @@
         },
         {
           "name": "spaceColumn",
-          "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "StackSpace",
-            "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "StackSpace": {
                 "location": "import",
@@ -14933,6 +15139,9 @@
           "docs": "Defines the space between the child elements. Default is normal.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -15016,10 +15225,10 @@
         },
         {
           "name": "spaceRow",
-          "type": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
             "original": "StackSpace",
-            "resolved": "\"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
             "references": {
               "StackSpace": {
                 "location": "import",
@@ -15035,6 +15244,9 @@
           "docs": "Defines the space between the child elements. Default is normal.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xs",
               "type": "string"
@@ -16175,10 +16387,10 @@
         },
         {
           "name": "autocomplete",
-          "type": "\"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
+          "type": "\"\" | \"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
           "complexType": {
             "original": "InputAutocomplete",
-            "resolved": "\"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
+            "resolved": "\"\" | \"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
             "references": {
               "InputAutocomplete": {
                 "location": "import",
@@ -16200,6 +16412,9 @@
           ],
           "default": "'off'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "additional-name",
               "type": "string"
@@ -16453,10 +16668,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "InputColor",
-            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
             "references": {
               "InputColor": {
                 "location": "import",
@@ -16478,6 +16693,9 @@
           ],
           "default": "'primary'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -16616,10 +16834,10 @@
         },
         {
           "name": "inputmode",
-          "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+          "type": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
           "complexType": {
             "original": "TextareaInputMode",
-            "resolved": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+            "resolved": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
             "references": {
               "TextareaInputMode": {
                 "location": "import",
@@ -16635,6 +16853,9 @@
           "docs": "A hint to the browser for which keyboard to display.",
           "docsTags": [],
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "decimal",
               "type": "string"
@@ -17346,10 +17567,10 @@
         },
         {
           "name": "actionTarget",
-          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -17372,11 +17593,11 @@
           "default": "'_blank'",
           "values": [
             {
-              "value": " _parent",
+              "value": "_blank",
               "type": "string"
             },
             {
-              "value": "_blank",
+              "value": "_parent",
               "type": "string"
             },
             {
@@ -17424,10 +17645,10 @@
         },
         {
           "name": "color",
-          "type": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
+          "type": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "ToastColor",
-            "resolved": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\" | undefined",
+            "resolved": "\"base\" | \"danger\" | \"info\" | \"success\" | \"warning\"",
             "references": {
               "ToastColor": {
                 "location": "import",
@@ -17441,7 +17662,13 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'base'"
+            }
+          ],
+          "default": "'base'",
           "values": [
             {
               "value": "base",
@@ -17462,12 +17689,9 @@
             {
               "value": "warning",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -18225,7 +18449,7 @@
       "path": "src/components/alert/snackbar/snackbar.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonTarget": {
-      "declaration": "\"_blank\" | \" _parent\" | \"_self\" | \"_top\"",
+      "declaration": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -18329,8 +18553,13 @@
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
+    "src/components/card/card.interfaces.ts::CardImageTeaser": {
+      "declaration": "\"\" | \"wide-left\" | \"wide-center\" | \"wide-right\"",
+      "docstring": "",
+      "path": "src/components/card/card.interfaces.ts"
+    },
     "src/components/card/card.interfaces.ts::CardAlignment": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/card/card.interfaces.ts"
     },
@@ -18340,7 +18569,7 @@
       "path": "src/components/card/card.interfaces.ts"
     },
     "src/components/card/card.interfaces.ts::CardColor": {
-      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"white\" | \"blue\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"grey-light\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"green-1\" | \"green-2\" | \"green-3\" | \"red-1\" | \"red-2\" | \"red-3\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\"",
+      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"primary-light\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"white\" | \"blue\" | \"primary-dark\" | \"grey-light\" | \"grey-dark\" | \"blue-light\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"purple-lighter\" | \"green-light\" | \"success-light\" | \"success-dark\" | \"success-darker\" | \"warning-light\" | \"warning-dark\" | \"warning-darker\" | \"danger-light\" | \"danger-dark\" | \"danger-darker\" | \"light-blue\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"green-1\" | \"green-2\" | \"green-3\" | \"red-1\" | \"red-2\" | \"red-3\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\"",
       "docstring": "",
       "path": "src/components/card/card.interfaces.ts"
     },
@@ -18360,7 +18589,7 @@
       "path": "src/components/heading/heading.interfaces.ts"
     },
     "src/components/heading/heading.interfaces.ts::HeadingLevel": {
-      "declaration": "export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p'",
+      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"p\" | \"span\" | \"display\" | \"display-2\"",
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
     },
@@ -18400,7 +18629,7 @@
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputColor": {
-      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\"",
+      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
@@ -18420,37 +18649,37 @@
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
     "src/components/close/close.interfaces.ts::CloseSize": {
-      "declaration": "\"sm\" | \"small\" | \"medium\" | \"md\"",
+      "declaration": "\"\" | \"sm\" | \"small\" | \"medium\" | \"md\"",
       "docstring": "",
       "path": "src/components/close/close.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackLayout": {
-      "declaration": "\"horizontal\" | \"vertical\" | \"horizontal-reverse\" | \"vertical-reverse\"",
+      "declaration": "\"\" | \"horizontal\" | \"vertical\" | \"horizontal-reverse\" | \"vertical-reverse\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackDirection": {
-      "declaration": "\"row\" | \"column\" | \"row-reverse\" | \"column-reverse\"",
+      "declaration": "\"\" | \"row\" | \"column\" | \"row-reverse\" | \"column-reverse\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentAlignment": {
-      "declaration": "\"center\" | \"start\" | \"end\"",
+      "declaration": "\"\" | \"center\" | \"start\" | \"end\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentTextAlignment": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentSpace": {
-      "declaration": "\"none\" | \"sm\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"3xs\" | \"2xs\" | \"xs\" | \"xxx-small\"",
+      "declaration": "\"\" | \"none\" | \"sm\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"3xs\" | \"2xs\" | \"xs\" | \"xxx-small\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackAlignment": {
-      "declaration": "\"center\" | \"top start\" | \"top center\" | \"top end\" | \"start\" | \"end\" | \"bottom start\" | \"bottom center\" | \"bottom end\"",
+      "declaration": "\"\" | \"center\" | \"top start\" | \"top center\" | \"top end\" | \"start\" | \"end\" | \"bottom start\" | \"bottom center\" | \"bottom end\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
@@ -18465,9 +18694,14 @@
       "path": "src/components/divider/divider.interfaces.ts"
     },
     "src/components/divider/divider.interfaces.ts::DividerColor": {
-      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"primary-light\" | \"grey\" | \"white\" | \"grey-light\" | \"primary-dark\" | \"grey-dark\" | \"danger-dark\" | \"danger-darker\" | \"light-blue\"",
+      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"primary-light\" | \"grey\" | \"white\" | \"primary-dark\" | \"grey-light\" | \"grey-dark\" | \"danger-dark\" | \"danger-darker\" | \"light-blue\"",
       "docstring": "",
       "path": "src/components/divider/divider.interfaces.ts"
+    },
+    "src/components/heading/heading.interfaces.ts::HeadingSpace": {
+      "declaration": "\"\" | \"none\" | \"bottom\" | \"top\" | \"all\"",
+      "docstring": "",
+      "path": "src/components/heading/heading.interfaces.ts"
     },
     "src/components/icon/icon.interfaces.ts::IconSize": {
       "declaration": "export type IconSize = (typeof ICON_SIZES)[number] | undefined",
@@ -18490,27 +18724,27 @@
       "path": "src/components/icon/icon.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputInputType": {
-      "declaration": "\"number\" | \"search\" | \"time\" | \"text\" | \"image\" | \"month\" | \"week\" | \"tel\" | \"url\" | \"email\" | \"color\" | \"date\" | \"datetime-local\" | \"file\" | \"password\" | \"range\"",
+      "declaration": "\"\" | \"number\" | \"search\" | \"time\" | \"text\" | \"image\" | \"month\" | \"week\" | \"tel\" | \"url\" | \"email\" | \"color\" | \"date\" | \"datetime-local\" | \"file\" | \"password\" | \"range\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputAutocomplete": {
-      "declaration": "\"off\" | \"on\" | \"tel\" | \"url\" | \"email\" | \"name\" | \"honorific-prefix\" | \"given-name\" | \"additional-name\" | \"family-name\" | \"honorific-suffix\" | \"nickname\" | \"username\" | \"new-password\" | \"current-password\" | \"one-time-code\" | \"organization-title\" | \"organization\" | \"street-address\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"address-level4\" | \"address-level3\" | \"address-level2\" | \"address-level1\" | \"country\" | \"country-name\" | \"postal-code\" | \"cc-name\" | \"cc-given-name\" | \"cc-additional-name\" | \"cc-family-name\" | \"cc-number\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-csc\" | \"cc-type\" | \"transaction-currency\" | \"transaction-amount\" | \"language\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"sex\" | \"tel-country-code\" | \"tel-national\" | \"tel-area-code\" | \"tel-local\" | \"tel-extension\" | \"impp\" | \"photo\"",
+      "declaration": "\"\" | \"off\" | \"on\" | \"tel\" | \"url\" | \"email\" | \"name\" | \"honorific-prefix\" | \"given-name\" | \"additional-name\" | \"family-name\" | \"honorific-suffix\" | \"nickname\" | \"username\" | \"new-password\" | \"current-password\" | \"one-time-code\" | \"organization-title\" | \"organization\" | \"street-address\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"address-level4\" | \"address-level3\" | \"address-level2\" | \"address-level1\" | \"country\" | \"country-name\" | \"postal-code\" | \"cc-name\" | \"cc-given-name\" | \"cc-additional-name\" | \"cc-family-name\" | \"cc-number\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-csc\" | \"cc-type\" | \"transaction-currency\" | \"transaction-amount\" | \"language\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"sex\" | \"tel-country-code\" | \"tel-national\" | \"tel-area-code\" | \"tel-local\" | \"tel-extension\" | \"impp\" | \"photo\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputAutocorrect": {
-      "declaration": "\"off\" | \"on\"",
+      "declaration": "\"\" | \"off\" | \"on\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputInputMode": {
-      "declaration": "\"none\" | \"search\" | \"text\" | \"numeric\" | \"tel\" | \"url\" | \"email\" | \"decimal\"",
+      "declaration": "\"\" | \"none\" | \"search\" | \"text\" | \"numeric\" | \"tel\" | \"url\" | \"email\" | \"decimal\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputMask": {
-      "declaration": "\"vehicle-registration-number\" | \"contract-number\" | \"basic-contract-number\" | \"claim-number\" | \"offer-number\" | \"be-enterprise-number\" | \"be-iban\"",
+      "declaration": "\"\" | \"vehicle-registration-number\" | \"contract-number\" | \"basic-contract-number\" | \"claim-number\" | \"offer-number\" | \"be-enterprise-number\" | \"be-iban\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
@@ -18735,12 +18969,12 @@
       "path": "src/components/spinner/spinner.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackSpace": {
-      "declaration": "\"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
+      "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackPadding": {
-      "declaration": "\"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
+      "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
@@ -18775,12 +19009,12 @@
       "path": "src/components/text/text.interfaces.ts"
     },
     "src/components/text/text.interfaces.ts::TextColor": {
-      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"primary-light\" | \"grey\" | \"white\" | \"blue\" | \"light-blue\" | \"blue-dark\" | \"blue-light\" | \"black\"",
+      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"primary-light\" | \"grey\" | \"white\" | \"blue\" | \"blue-light\" | \"light-blue\" | \"blue-dark\" | \"black\"",
       "docstring": "",
       "path": "src/components/text/text.interfaces.ts"
     },
     "src/components/text/text.interfaces.ts::TextSpace": {
-      "declaration": "\"\" | \"none\" | \"top\" | \"bottom\" | \"all\"",
+      "declaration": "\"\" | \"none\" | \"bottom\" | \"top\" | \"all\"",
       "docstring": "",
       "path": "src/components/text/text.interfaces.ts"
     },
@@ -18795,7 +19029,7 @@
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
     "src/components/textarea/textarea.interfaces.ts::TextareaInputMode": {
-      "declaration": "\"none\" | \"search\" | \"text\" | \"numeric\" | \"tel\" | \"url\" | \"email\" | \"decimal\"",
+      "declaration": "\"\" | \"none\" | \"search\" | \"text\" | \"numeric\" | \"tel\" | \"url\" | \"email\" | \"decimal\"",
       "docstring": "",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },

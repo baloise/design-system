@@ -1,4 +1,5 @@
 export const TOAST_COLORS = ['base', 'info', 'success', 'warning', 'danger'] as const
+export const TOAST_TARGETS = ['_blank', '_parent', '_self', '_top'] as const
 
 export type ToastColor = (typeof TOAST_COLORS)[number]
 export type ToastDuration = number | 'infinite'

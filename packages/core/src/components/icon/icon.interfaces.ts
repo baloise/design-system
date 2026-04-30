@@ -9,6 +9,7 @@ export const ICON_COLORS = [
   'danger',
   'danger-dark',
   'danger-darker',
+  'info',
   'warning',
   'warning-dark',
   'warning-darker',

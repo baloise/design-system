@@ -1,0 +1,82 @@
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-layer token architecture: Primitive, Semantic, Component">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Layer 1: Primitive -->
+  <rect x="20" y="30" width="200" height="260" rx="12" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="120" y="22" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b" font-weight="600">LAYER 1</text>
+  <text x="120" y="58" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0369a1">🧱 Primitive</text>
+  <text x="120" y="78" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b">Raw design values</text>
+
+  <rect x="36" y="92" width="168" height="26" rx="6" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="120" y="110" text-anchor="middle" font-family="monospace" font-size="9" fill="#0c4a6e">--ds-color-primary-4</text>
+
+  <rect x="36" y="126" width="168" height="26" rx="6" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="120" y="144" text-anchor="middle" font-family="monospace" font-size="9" fill="#0c4a6e">--ds-color-grey-2</text>
+
+  <rect x="36" y="160" width="168" height="26" rx="6" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="120" y="178" text-anchor="middle" font-family="monospace" font-size="9" fill="#0c4a6e">--ds-font-size-16</text>
+
+  <rect x="36" y="194" width="168" height="26" rx="6" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="120" y="212" text-anchor="middle" font-family="monospace" font-size="9" fill="#0c4a6e">--ds-space-16</text>
+
+  <rect x="36" y="228" width="168" height="26" rx="6" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="120" y="246" text-anchor="middle" font-family="monospace" font-size="9" fill="#0c4a6e">--ds-elevation-shadow-2</text>
+
+  <text x="120" y="280" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">↑ Actual values (#hex, px, rem)</text>
+
+  <!-- Arrow 1 → 2 -->
+  <line x1="220" y1="160" x2="268" y2="160" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4 3"/>
+
+  <!-- Layer 2: Semantic -->
+  <rect x="280" y="30" width="200" height="260" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="380" y="22" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b" font-weight="600">LAYER 2</text>
+  <text x="380" y="58" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#15803d">🏷️ Semantic</text>
+  <text x="380" y="78" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b">Design intent</text>
+
+  <rect x="296" y="92" width="168" height="26" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="380" y="110" text-anchor="middle" font-family="monospace" font-size="9" fill="#14532d">--ds-background-color-primary</text>
+
+  <rect x="296" y="126" width="168" height="26" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="380" y="144" text-anchor="middle" font-family="monospace" font-size="9" fill="#14532d">--ds-background-color-disabled</text>
+
+  <rect x="296" y="160" width="168" height="26" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="380" y="178" text-anchor="middle" font-family="monospace" font-size="9" fill="#14532d">--ds-text-color-primary</text>
+
+  <rect x="296" y="194" width="168" height="26" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="380" y="212" text-anchor="middle" font-family="monospace" font-size="9" fill="#14532d">--ds-space-component-s</text>
+
+  <rect x="296" y="228" width="168" height="26" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="380" y="246" text-anchor="middle" font-family="monospace" font-size="9" fill="#14532d">--ds-border-color-primary</text>
+
+  <text x="380" y="280" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">↑ Named for purpose, not value</text>
+
+  <!-- Arrow 2 → 3 -->
+  <line x1="480" y1="160" x2="528" y2="160" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4 3"/>
+
+  <!-- Layer 3: Component -->
+  <rect x="540" y="30" width="200" height="260" rx="12" fill="#faf5ff" stroke="#a855f7" stroke-width="2"/>
+  <text x="640" y="22" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b" font-weight="600">LAYER 3</text>
+  <text x="640" y="58" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#7e22ce">🧩 Component</text>
+  <text x="640" y="78" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b">UI-specific decisions</text>
+
+  <rect x="556" y="92" width="168" height="26" rx="6" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+  <text x="640" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#3b0764">--ds-button-color-primary-base-bg</text>
+
+  <rect x="556" y="126" width="168" height="26" rx="6" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+  <text x="640" y="144" text-anchor="middle" font-family="monospace" font-size="8" fill="#3b0764">--ds-button-color-primary-hover-bg</text>
+
+  <rect x="556" y="160" width="168" height="26" rx="6" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+  <text x="640" y="178" text-anchor="middle" font-family="monospace" font-size="8" fill="#3b0764">--ds-input-color-base-border</text>
+
+  <rect x="556" y="194" width="168" height="26" rx="6" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+  <text x="640" y="212" text-anchor="middle" font-family="monospace" font-size="8" fill="#3b0764">--ds-tag-color-primary-base-text</text>
+
+  <rect x="556" y="228" width="168" height="26" rx="6" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+  <text x="640" y="246" text-anchor="middle" font-family="monospace" font-size="8" fill="#3b0764">--ds-card-elevation-shadow</text>
+
+  <text x="640" y="280" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">↑ Points to semantic tokens</text>
+</svg>

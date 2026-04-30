@@ -20,6 +20,12 @@ import { getMask } from './masks'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from './field.util'
 import {
+  INPUT_COLORS,
+  INPUT_AUTOCORRECTS,
+  INPUT_INPUT_MODES,
+  INPUT_INPUT_TYPES,
+  INPUT_MASKS,
+  INPUT_AUTOCOMPLETES,
   InputColor,
   InputInputType,
   InputAutocomplete,
@@ -97,7 +103,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('primary', 'danger', 'success', 'warning', '')
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
@@ -125,25 +131,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Defines the type of the input (text, number, email ...).
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'color',
-    'date',
-    'datetime-local',
-    'email',
-    'file',
-    'image',
-    'month',
-    'number',
-    'password',
-    'range',
-    'search',
-    'tel',
-    'text',
-    'time',
-    'url',
-    'week',
-    '',
-  )
+  @ValidateEmptyOrOneOf(...INPUT_INPUT_TYPES)
   readonly type: InputInputType = 'text'
 
   /**
@@ -165,64 +153,14 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'off',
-    'on',
-    'name',
-    'email',
-    'username',
-    'new-password',
-    'current-password',
-    'one-time-code',
-    'organization-title',
-    'organization',
-    'street-address',
-    'address-line1',
-    'address-line2',
-    'address-line3',
-    'address-level4',
-    'address-level3',
-    'address-level2',
-    'address-level1',
-    'country',
-    'country-name',
-    'postal-code',
-    'cc-name',
-    'cc-given-name',
-    'cc-additional-name',
-    'cc-family-name',
-    'cc-number',
-    'cc-exp',
-    'cc-exp-month',
-    'cc-exp-year',
-    'cc-csc',
-    'cc-type',
-    'transaction-currency',
-    'transaction-amount',
-    'language',
-    'bday',
-    'bday-day',
-    'bday-month',
-    'bday-year',
-    'sex',
-    'tel',
-    'tel-country-code',
-    'tel-national',
-    'tel-area-code',
-    'tel-local',
-    'tel-extension',
-    'impp',
-    'url',
-    'photo',
-    '',
-  )
+  @ValidateEmptyOrOneOf(...INPUT_AUTOCOMPLETES)
   readonly autocomplete: InputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('on', 'off', '')
+  @ValidateEmptyOrOneOf(...INPUT_AUTOCORRECTS)
   readonly autocorrect: InputAutocorrect = 'off'
 
   /**
@@ -341,7 +279,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search', '')
+  @ValidateEmptyOrOneOf(...INPUT_INPUT_MODES)
   readonly inputmode?: InputInputMode
 
   /**
@@ -354,16 +292,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'vehicle-registration-number',
-    'contract-number',
-    'basic-contract-number',
-    'claim-number',
-    'offer-number',
-    'be-enterprise-number',
-    'be-iban',
-    '',
-  )
+  @ValidateEmptyOrOneOf(...INPUT_MASKS)
   readonly mask?: InputMask = undefined
   @Watch('mask')
   protected maskChanged() {

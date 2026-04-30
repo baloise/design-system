@@ -59,28 +59,14 @@ export class Button implements DsComponentInterface {
    * The color to use from your application's color palette.aaa
    */
   @Prop()
-  @ValidateEmptyOrOneOf(
-    'primary',
-    'secondary',
-    'tertiary',
-    'tertiary-purple',
-    'tertiary-red',
-    'tertiary-yellow',
-    'tertiary-green',
-    'link',
-    'light',
-    'success',
-    'warning',
-    'danger',
-    '',
-  )
+  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
   readonly color: ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf('button', 'reset', 'submit', '')
+  @ValidateEmptyOrOneOf(...BUTTON_ELEMENT_TYPES)
   readonly elementType: ButtonElementType = 'button'
 
   /**
@@ -94,7 +80,7 @@ export class Button implements DsComponentInterface {
    * Size of the button
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf('sm', 'lg', 'xl', '')
+  @ValidateEmptyOrOneOf(...BUTTON_SIZES)
   size: ButtonSize = undefined
   @Watch('size')
   sizeChanged(newValue: ButtonSize) {
@@ -113,7 +99,7 @@ export class Button implements DsComponentInterface {
    * Only applies when an `href` is provided.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
+  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
   readonly target: ButtonTarget = '_self'
 
   /**

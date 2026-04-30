@@ -11,12 +11,16 @@ import {
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
-  ValidateRequiredAndType,
   setupValidation,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
-import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from './snackbar.interfaces'
-import { ButtonTarget } from '../../button/button.interfaces'
+import {
+  SNACKBAR_COLORS,
+  SnackbarActionClickDetail,
+  SnackbarCloseClickDetail,
+  SnackbarColor,
+} from './snackbar.interfaces'
+import { BUTTON_TARGETS, ButtonTarget } from '../../button/button.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
@@ -42,36 +46,34 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
   @State() svgContent?: string
   @State() iconName?: string
 
-  private timer!: NodeJS.Timeout
-
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('base', 'info', 'success', 'warning', 'danger', '')
-  readonly color?: SnackbarColor
+  @ValidateEmptyOrOneOf(...SNACKBAR_COLORS)
+  readonly color: SnackbarColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
   @ValidateEmptyOrType('boolean')
-  readonly closable: boolean = true
+  readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateRequiredAndType('string')
-  readonly heading!: string
+  @ValidateEmptyOrType('string')
+  readonly heading: string = ''
 
   /**
    * Defines the message of the notification as html content
    */
   @Prop()
-  @ValidateRequiredAndType('string')
-  readonly message!: string
+  @ValidateEmptyOrType('string')
+  readonly message: string = ''
 
   /**
    * Defines the icon of the notification.
@@ -113,7 +115,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('_blank', '_parent', '_self', '_top', '')
+  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**

@@ -1,6 +1,7 @@
-export const STACK_LAYOUTS = ['horizontal', 'vertical', 'horizontal-reverse', 'vertical-reverse'] as const
+export const STACK_LAYOUTS = ['', 'horizontal', 'vertical', 'horizontal-reverse', 'vertical-reverse'] as const
 
 export const STACK_SPACES = [
+  '',
   'auto',
   'none',
   '2xs',
@@ -22,6 +23,7 @@ export const STACK_SPACES = [
   'xx-large',
 ] as const
 export const STACK_PADDINGS = [
+  '',
   'none',
   '2xs',
   'xs',
@@ -42,6 +44,7 @@ export const STACK_PADDINGS = [
   'xx-large',
 ] as const
 export const STACK_ALIGNMENTS = [
+  '',
   'top start',
   'top center',
   'top end',
@@ -53,7 +56,7 @@ export const STACK_ALIGNMENTS = [
   'bottom end',
 ] as const
 
-export const STACK_DIRECTIONS = ['row', 'column', 'row-reverse', 'column-reverse'] as const
+export const STACK_DIRECTIONS = ['', 'row', 'column', 'row-reverse', 'column-reverse'] as const
 
 export type StackLayout = (typeof STACK_LAYOUTS)[number]
 export type StackSpace = (typeof STACK_SPACES)[number]

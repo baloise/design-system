@@ -1,7 +1,12 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ButtonGroupAlignment, ButtonGroupDirection } from '../button.interfaces'
+import {
+  BUTTON_GROUP_ALIGNMENTS,
+  BUTTON_GROUP_DIRECTIONS,
+  ButtonGroupAlignment,
+  ButtonGroupDirection,
+} from '../button.interfaces'
 import { DsComponentInterface } from '@global'
 
 @Component({
@@ -23,7 +28,7 @@ export class ButtonGroup implements DsComponentInterface {
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('left', 'center', 'right', '')
+  @ValidateEmptyOrOneOf(...BUTTON_GROUP_ALIGNMENTS)
   readonly align?: ButtonGroupAlignment
 
   /**
@@ -31,7 +36,7 @@ export class ButtonGroup implements DsComponentInterface {
    * `row` will force that the buttons are also horizontal on mobile.
    */
   @Prop()
-  @ValidateEmptyOrOneOf('auto', 'row', 'column')
+  @ValidateEmptyOrOneOf(...BUTTON_GROUP_DIRECTIONS)
   readonly direction: ButtonGroupDirection = 'auto'
 
   /**
