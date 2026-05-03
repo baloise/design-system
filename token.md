@@ -22,11 +22,11 @@ The token system is organized into three hierarchical layers. Each layer builds 
 
 ![Three-layer token architecture: Primitive, Semantic, Component](token-layers.svg)
 
-| Layer | Emoji | Purpose | Example value |
-|-------|-------|---------|---------------|
-| **Primitive** | 🧱 | The raw palette — every possible value the system can use | `#005EFF`, `16px`, `700` |
-| **Semantic** | 🏷️ | What a value *means* — its intended use in the UI | "primary background color" |
-| **Component** | 🧩 | What a value does *for a specific component* | "button primary background" |
+| Layer         | Emoji | Purpose                                                   | Example value               |
+| ------------- | ----- | --------------------------------------------------------- | --------------------------- |
+| **Primitive** | 🧱    | The raw palette — every possible value the system can use | `#005EFF`, `16px`, `700`    |
+| **Semantic**  | 🏷️    | What a value _means_ — its intended use in the UI         | "primary background color"  |
+| **Component** | 🧩    | What a value does _for a specific component_              | "button primary background" |
 
 ---
 
@@ -36,14 +36,14 @@ Primitives hold every concrete value: color swatches, font sizes, spacing steps,
 
 **Examples from the system:**
 
-| Token | Value |
-|-------|-------|
-| `--ds-color-primary-4` | `#005EFF` |
-| `--ds-color-primary-5` | `#004BD4` |
-| `--ds-color-danger-1` | `#FCE8E6` |
-| `--ds-color-white` | `#FFFFFF` |
-| `--ds-font-size-14` | `0.875rem` |
-| `--ds-space-16` | `1rem` |
+| Token                     | Value                         |
+| ------------------------- | ----------------------------- |
+| `--ds-color-primary-4`    | `#005EFF`                     |
+| `--ds-color-primary-5`    | `#004BD4`                     |
+| `--ds-color-danger-1`     | `#FCE8E6`                     |
+| `--ds-color-white`        | `#FFFFFF`                     |
+| `--ds-font-size-14`       | `0.875rem`                    |
+| `--ds-space-16`           | `1rem`                        |
 | `--ds-elevation-shadow-2` | `0 4px 8px rgba(0,7,57,0.14)` |
 
 > Primitives are **never used directly in components**. They exist only so that semantic and component tokens have something concrete to reference.
@@ -56,14 +56,14 @@ Semantic tokens assign meaning. Instead of "primary color at shade 4", a semanti
 
 **Examples from the system:**
 
-| Token | References | Meaning |
-|-------|------------|---------|
-| `--ds-background-color-primary` | `--ds-color-primary-4` | Primary action surfaces |
-| `--ds-background-color-primary-hover` | `--ds-color-primary-5` | Primary surfaces on hover |
-| `--ds-background-color-disabled` | `--ds-color-grey-2` | Any disabled surface |
-| `--ds-text-color-white` | `--ds-color-white` | Text on dark/colored backgrounds |
-| `--ds-border-color-primary` | `--ds-color-primary-4` | Primary borders |
-| `--ds-radius-base` | `4px` | Default border radius |
+| Token                                 | References             | Meaning                          |
+| ------------------------------------- | ---------------------- | -------------------------------- |
+| `--ds-background-color-primary`       | `--ds-color-primary-4` | Primary action surfaces          |
+| `--ds-background-color-primary-hover` | `--ds-color-primary-5` | Primary surfaces on hover        |
+| `--ds-background-color-disabled`      | `--ds-color-grey-2`    | Any disabled surface             |
+| `--ds-text-color-white`               | `--ds-color-white`     | Text on dark/colored backgrounds |
+| `--ds-border-color-primary`           | `--ds-color-primary-4` | Primary borders                  |
+| `--ds-radius-base`                    | `4px`                  | Default border radius            |
 
 > Semantic tokens are what **UX designers work with** when building themes or making system-wide color decisions.
 
@@ -75,14 +75,14 @@ Component tokens map semantic tokens to specific parts of a component. They carr
 
 **Examples from the system — Button:**
 
-| Token | References |
-|-------|------------|
-| `--ds-button-color-primary-base-background` | `--ds-background-color-primary` |
-| `--ds-button-color-primary-hover-background` | `--ds-background-color-primary-hover` |
+| Token                                         | References                             |
+| --------------------------------------------- | -------------------------------------- |
+| `--ds-button-color-primary-base-background`   | `--ds-background-color-primary`        |
+| `--ds-button-color-primary-hover-background`  | `--ds-background-color-primary-hover`  |
 | `--ds-button-color-primary-active-background` | `--ds-background-color-primary-active` |
-| `--ds-button-color-primary-base-text` | `--ds-text-color-white` |
-| `--ds-button-color-primary-base-border` | `--ds-border-color-primary` |
-| `--ds-button-radius-base` | `--ds-radius-base` |
+| `--ds-button-color-primary-base-text`         | `--ds-text-color-white`                |
+| `--ds-button-color-primary-base-border`       | `--ds-border-color-primary`            |
+| `--ds-button-radius-base`                     | `--ds-radius-base`                     |
 
 ---
 
@@ -114,9 +114,7 @@ The SCSS `vars.local` mixin generates this entire chain automatically:
 @include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
 
 // What it produces:
---_button-color-text: var(--button-color-text,
-  var(--mod-button-color-text,
-    var(--ds-button-color-primary-base-text)));
+--_button-color-text: var(--button-color-text, var(--mod-button-color-text, var(--ds-button-color-primary-base-text)));
 ```
 
 ---
@@ -129,12 +127,12 @@ Semantic tokens for typography, spacing, and layout carry **three breakpoint var
 
 ### Two ways to use a responsive token
 
-| Form | Token name | Behaviour |
-|------|-----------|-----------|
-| **Fixed** | `--ds-text-size-3xl-mobile` | Always the mobile value, regardless of viewport |
-| **Fixed** | `--ds-text-size-3xl-tablet` | Always the tablet value |
-| **Fixed** | `--ds-text-size-3xl-desktop` | Always the desktop value |
-| **Device** | `--ds-text-size-3xl-device` | Automatically switches at breakpoints |
+| Form       | Token name                   | Behaviour                                       |
+| ---------- | ---------------------------- | ----------------------------------------------- |
+| **Fixed**  | `--ds-text-size-3xl-mobile`  | Always the mobile value, regardless of viewport |
+| **Fixed**  | `--ds-text-size-3xl-tablet`  | Always the tablet value                         |
+| **Fixed**  | `--ds-text-size-3xl-desktop` | Always the desktop value                        |
+| **Device** | `--ds-text-size-3xl-device`  | Automatically switches at breakpoints           |
 
 **Always prefer `-device` in component code.** The fixed variants exist for edge cases (e.g. a component that should always render at mobile size inside a sidebar).
 
@@ -189,15 +187,15 @@ Token names are composed of ordered segments, each narrowing the scope of the de
 
 ### Segment definitions
 
-| Segment | What it expresses | Our examples |
-|---------|-------------------|-------------|
-| **Namespace** | System identifier — prevents collisions with other CSS | `ds` |
-| **Category / Component** | The visual property type or component name | `color`, `font`, `space`, `button`, `input` |
-| **Property** | The attribute within that category | `background`, `text`, `border` |
-| **Variant** | Visual alternatives of the same component | `primary`, `secondary`, `ghost` |
-| **State** | Interactive condition | `base`, `hover`, `active`, `disabled`, `focus` |
-| **Element** | A nested part within a component | `background`, `text`, `border`, `icon` |
-| **Scale** | Ordered sizing options | `1`–`6` for colors, `xs`/`sm`/`md`/`lg` for sizes |
+| Segment                  | What it expresses                                      | Our examples                                      |
+| ------------------------ | ------------------------------------------------------ | ------------------------------------------------- |
+| **Namespace**            | System identifier — prevents collisions with other CSS | `ds`                                              |
+| **Category / Component** | The visual property type or component name             | `color`, `font`, `space`, `button`, `input`       |
+| **Property**             | The attribute within that category                     | `background`, `text`, `border`                    |
+| **Variant**              | Visual alternatives of the same component              | `primary`, `secondary`, `ghost`                   |
+| **State**                | Interactive condition                                  | `base`, `hover`, `active`, `disabled`, `focus`    |
+| **Element**              | A nested part within a component                       | `background`, `text`, `border`, `icon`            |
+| **Scale**                | Ordered sizing options                                 | `1`–`6` for colors, `xs`/`sm`/`md`/`lg` for sizes |
 
 ### Key rules we follow
 
@@ -246,13 +244,13 @@ Both create ambiguity in variable names. We use `font` for typography and `text`
 
 The token build (Style Dictionary) generates five consumable formats from a single source:
 
-| Format | File | Used by |
-|--------|------|---------|
-| CSS custom properties | `dist/css/base.tokens.css` | Web components, global stylesheet |
-| SCSS variables | `dist/scss/base.tokens.scss` | Sass-based builds |
-| JavaScript ES6 exports | `dist/js/base.tokens.js` | JS tooling, design tool integrations |
-| Flat JSON | `dist/web/base.tokens.json` | Documentation tooling |
-| Hierarchical JSON | `dist/docs/base.tokens.json` | Storybook `<TokenOverview />` component |
+| Format                 | File                         | Used by                                 |
+| ---------------------- | ---------------------------- | --------------------------------------- |
+| CSS custom properties  | `dist/css/base.tokens.css`   | Web components, global stylesheet       |
+| SCSS variables         | `dist/scss/base.tokens.scss` | Sass-based builds                       |
+| JavaScript ES6 exports | `dist/js/base.tokens.js`     | JS tooling, design tool integrations    |
+| Flat JSON              | `dist/web/base.tokens.json`  | Documentation tooling                   |
+| Hierarchical JSON      | `dist/docs/base.tokens.json` | Storybook `<TokenOverview />` component |
 
 ---
 
