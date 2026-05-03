@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as CardStories from './card.stories'
 import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 
 <Meta title="Components/Card/Overview" />
-<Banner label={'Overview'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
-<BannerTabs
-  of={CardStories}
-  tabs={getCardTabs('overview')}
-/>
 
-<Lead>
-  **Card** groups related content together in a contained, visually distinct container. Perfect for displaying product information, user profiles, blog posts, and other modular content pieces.
-</Lead>
+<Banner label={'Overview'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+
+<BannerTabs of={CardStories} tabs={getCardTabs('overview')} />
+
+<ComponentLead component="card" />
 
 <Canvas of={CardStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="card" />
 
 <Footer />

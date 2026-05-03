@@ -1,65 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as SpinnerStories from './spinner.stories'
 import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
 
 <Meta title="Components/Spinner/Styling" />
+
 <Banner label={'Styling'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
-<BannerTabs
-  of={SpinnerStories}
-  tabs={getSpinnerTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={SpinnerStories} tabs={getSpinnerTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="spinner" />
 
-<br />
+<ComponentCssVariables component="spinner" />
 
-**Example:** Target the spinner element:
-
-```css
-/* Style the spinner animation */
-ds-spinner::part(spinner) {
-  animation-duration: 1s;
-  opacity: 0.8;
-}
-```
-
-<br />
-
-Primary parts of the spinner component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `spinner` | SVG | The spinner graphic and animation. |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override spinner styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-spinner-size: 32px;
-  --ds-spinner-color: #005eb8;
-}
-
-/* Override for a specific spinner */
-ds-spinner {
-  --spinner-color: #e85c41;
-}
-```
-
-<TokenOverview component="spinner" />
+<ComponentDesignTokens component="spinner" />
 
 <Footer />

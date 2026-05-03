@@ -1,59 +1,22 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
-  BannerTabs,
   ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
   Footer,
-  TokenOverview,
 } from '../../../../.storybook/blocks'
 import * as SnackbarStories from './snackbar.stories'
-import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
+import { SNACKBAR_DOC_CONFIG } from './snackbar.doc-config'
 
 <Meta title="Components/Snackbar/Styling" />
 
 <Banner label={'Styling'} section={SNACKBAR_DOC_CONFIG.section} color={SNACKBAR_DOC_CONFIG.color} />
 
-<BannerTabs of={SnackbarStories} tabs={getSnackbarTabs('styling')} />
-
-## CSS Shadow Parts
-
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
-
-<br />
-
-**Example:** Target specific parts to customize appearance:
-
-```css
-ds-snackbar::part(icon) {
-  color: #ff6b6b;
-}
-
-ds-snackbar::part(message) {
-  font-weight: 500;
-}
-```
-
-<br />
-
-Primary parts of the snackbar component include:
-
 <ComponentParts component="snackbar" />
 
-## Design Tokens
+<ComponentCssVariables component="snackbar" />
 
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override styling using CSS variables:
-
-```css
-:root {
-  --ds-snackbar-color-success-base-text: #ffffff;
-  --ds-snackbar-color-success-base-background: #00b28f;
-}
-```
-
-<TokenOverview component="snackbar" />
+<ComponentDesignTokens component="snackbar" />
 
 <Footer />

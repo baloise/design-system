@@ -1,66 +1,22 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
-  BannerTabs,
+  ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as CheckboxStories from './checkbox.stories'
-import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
+import { CHECKBOX_DOC_CONFIG } from './checkbox.doc-config'
 
 <Meta title="Components/Forms/Checkbox/Styling" />
+
 <Banner label={'Styling'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
-<BannerTabs
-  of={CheckboxStories}
-  tabs={getCheckboxTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<ComponentParts component="checkbox" />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentCssVariables component="checkbox" />
 
-<br />
-
-**Example:** Target the checkbox control:
-
-```css
-/* Style the checkbox control */
-ds-checkbox::part(control) {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-}
-```
-
-<br />
-
-Primary parts of the checkbox component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `control` | Div | The checkbox visual indicator. |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override checkbox styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-checkbox-color-background: #ffffff;
-  --ds-checkbox-color-border: #cccccc;
-}
-
-/* Override for a specific checkbox */
-ds-checkbox {
-  --checkbox-color-checked: #005eb8;
-}
-```
-
-<TokenOverview component="checkbox" />
+<ComponentDesignTokens component="checkbox" />
 
 <Footer />

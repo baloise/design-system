@@ -1,65 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as ListStories from './list.stories'
 import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
 
 <Meta title="Components/List/Styling" />
+
 <Banner label={'Styling'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
-<BannerTabs
-  of={ListStories}
-  tabs={getListTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={ListStories} tabs={getListTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="list" />
 
-<br />
+<ComponentCssVariables component="list" />
 
-**Example:** Target the list container:
-
-```css
-/* Style the list wrapper */
-ds-list::part(list) {
-  padding: 0;
-  margin: 16px 0;
-}
-```
-
-<br />
-
-Primary parts of the list component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `list` | Container | The main list wrapper (ul or ol). |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override list styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-list-margin: 16px 0;
-  --ds-list-padding: 0 0 0 24px;
-}
-
-/* Override for a specific list */
-ds-list {
-  --list-item-margin: 8px 0;
-}
-```
-
-<TokenOverview component="list" />
+<ComponentDesignTokens component="list" />
 
 <Footer />

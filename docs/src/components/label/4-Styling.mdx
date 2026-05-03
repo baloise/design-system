@@ -1,52 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as LabelStories from './label.stories'
-import LabelParts from './label.parts.svg'
 import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
 
 <Meta title="Components/Forms/Label/Styling" />
+
 <Banner label={'Styling'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
-<BannerTabs
-  of={LabelStories}
-  tabs={getLabelTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={LabelStories} tabs={getLabelTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="label" />
 
-<br />
+<ComponentCssVariables component="label" />
 
-**Example:** Target the native label element:
-
-```css
-/* Style the native label element */
-ds-label::part(label) {
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-```
-
-<br />
-
-Primary parts of the label component include:
-
-<img src={LabelParts} alt="Label parts diagram" />
-
-<Markdown>
-  {`
-| Part | Element | Purpose |
-| --- | --- | --- |
-| \`label\` | \`<label>\` | The native HTML label element; contains text content and optional required suffix. |
-`}</Markdown>
-
-## Design Tokens
-
-<TokenOverview component="label" />
+<ComponentDesignTokens component="label" />
 
 <Footer />

@@ -1,71 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as LinkStories from './link.stories'
 import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <Meta title="Components/Link/Styling" />
+
 <Banner label={'Styling'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
-<BannerTabs
-  of={LinkStories}
-  tabs={getLinkTabs('styling')}
-/>
 
-## CSS Classes
+<BannerTabs of={LinkStories} tabs={getLinkTabs('styling')} />
 
-Link styling uses CSS classes applied directly to anchor elements for standard HTML semantic links.
+<ComponentParts component="link" />
 
-<br />
+<ComponentCssVariables component="link" />
 
-**Example:** Style links with classes:
-
-```html
-<!-- Basic link with default styling -->
-<a href="/" class="link">Home</a>
-
-<!-- External link indicator -->
-<a href="https://example.com" class="link link--external">External Link</a>
-
-<!-- Disabled state -->
-<a href="/" class="link link--disabled">Disabled Link</a>
-```
-
-<br />
-
-Primary CSS classes for link styling:
-
-| Class | Purpose |
-| --- | --- |
-| `link` | Base link styling |
-| `link--external` | External link with icon |
-| `link--disabled` | Disabled link state |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally to override link styling.
-
-<br />
-
-**Example:** Override link styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-link-color: #0066cc;
-  --ds-link-color-hover: #0052a3;
-  --ds-link-color-visited: #800080;
-}
-
-/* Override for specific links */
-a.link {
-  --link-color-text: #0066cc;
-}
-```
-
-<TokenOverview component="link" />
+<ComponentDesignTokens component="link" />
 
 <Footer />

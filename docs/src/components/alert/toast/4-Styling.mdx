@@ -1,59 +1,22 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
-  BannerTabs,
   ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
   Footer,
-  TokenOverview,
 } from '../../../../.storybook/blocks'
 import * as ToastStories from './toast.stories'
-import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
+import { TOAST_DOC_CONFIG } from './toast.doc-config'
 
 <Meta title="Components/Toast/Styling" />
 
 <Banner label={'Styling'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
 
-<BannerTabs of={ToastStories} tabs={getToastTabs('styling')} />
-
-## CSS Shadow Parts
-
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
-
-<br />
-
-**Example:** Target specific parts to customize appearance:
-
-```css
-ds-toast::part(icon) {
-  color: #4ecdc4;
-}
-
-ds-toast::part(message) {
-  font-size: 14px;
-}
-```
-
-<br />
-
-Primary parts of the toast component include:
-
 <ComponentParts component="toast" />
 
-## Design Tokens
+<ComponentCssVariables component="toast" />
 
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override styling using CSS variables:
-
-```css
-:root {
-  --ds-toast-color-success-base-text: #ffffff;
-  --ds-toast-color-success-base-background: #21d9ac;
-}
-```
-
-<TokenOverview component="toast" />
+<ComponentDesignTokens component="toast" />
 
 <Footer />

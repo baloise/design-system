@@ -1,20 +1,24 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+  Lead,
+} from '../../../.storybook/blocks'
 import * as ButtonStories from './button.stories'
 import * as ButtonGroupStories from './button-group/button-group.stories'
 import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
 
 <Meta title="Components/Button/Overview" />
-<Banner label={'Overview'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
-<BannerTabs
-  of={ButtonStories}
-  tabs={getButtonTabs('overview')}
-/>
 
-<Lead>
-  **Button** provides a clickable element for forms and interactive UI — supporting text, icons, or both across
-  multiple visual styles, sizes, and states.
-</Lead>
+<Banner label={'Overview'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+
+<BannerTabs of={ButtonStories} tabs={getButtonTabs('overview')} />
+
+<ComponentLead component="button" />
 
 <Canvas of={ButtonStories.Basic} sourceState="shown" />
 
@@ -34,5 +38,7 @@ import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="button" />
 
 <Footer />

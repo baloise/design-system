@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as ShapeStories from './shape.stories'
 import { SHAPE_DOC_CONFIG, getShapeTabs } from './shape.doc-config'
 
 <Meta title="Components/Shape/Overview" />
-<Banner label={'Overview'} section={SHAPE_DOC_CONFIG.section} color={SHAPE_DOC_CONFIG.color} />
-<BannerTabs
-  of={ShapeStories}
-  tabs={getShapeTabs('overview')}
-/>
 
-<Lead>
-  **Shape** is a decorative element for adding geometric shapes and visual accents to pages. Provides configurable shape types, sizes, and colors for design flexibility without custom SVG.
-</Lead>
+<Banner label={'Overview'} section={SHAPE_DOC_CONFIG.section} color={SHAPE_DOC_CONFIG.color} />
+
+<BannerTabs of={ShapeStories} tabs={getShapeTabs('overview')} />
+
+<ComponentLead component="shape" />
 
 <Canvas of={ShapeStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { SHAPE_DOC_CONFIG, getShapeTabs } from './shape.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="shape" />
 
 <Footer />

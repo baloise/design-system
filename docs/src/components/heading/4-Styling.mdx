@@ -1,52 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as HeadingStories from './heading.stories'
-import HeadingParts from './heading.parts.svg'
 import { HEADING_DOC_CONFIG, getHeadingTabs } from './heading.doc-config'
 
 <Meta title="Components/Heading/Styling" />
+
 <Banner label={'Styling'} section={HEADING_DOC_CONFIG.section} color={HEADING_DOC_CONFIG.color} />
-<BannerTabs
-  of={HeadingStories}
-  tabs={getHeadingTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={HeadingStories} tabs={getHeadingTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="heading" />
 
-<br />
+<ComponentCssVariables component="heading" />
 
-**Example:** Target the native heading element:
-
-```css
-/* Style the native heading element */
-ds-heading::part(heading) {
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-```
-
-<br />
-
-Primary parts of the heading component include:
-
-<img src={HeadingParts} alt="Heading parts diagram" />
-
-<Markdown>
-  {`
-| Part | Element | Purpose |
-| --- | --- | --- |
-| \`heading\` | \`<h1>–<h6>\` | The semantic HTML heading element; carries all text content and structure. |
-`}</Markdown>
-
-## Design Tokens
-
-<TokenOverview component="heading" />
+<ComponentDesignTokens component="heading" />
 
 <Footer />

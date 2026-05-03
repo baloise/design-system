@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as DividerStories from './divider.stories'
 import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
 
 <Meta title="Components/Divider/Overview" />
-<Banner label={'Overview'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
-<BannerTabs
-  of={DividerStories}
-  tabs={getDividerTabs('overview')}
-/>
 
-<Lead>
-  **Divider** renders a visual separator line for grouping or distinguishing content sections.
-</Lead>
+<Banner label={'Overview'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={DividerStories} tabs={getDividerTabs('overview')} />
+
+<ComponentLead component="divider" />
 
 <Canvas of={DividerStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="divider" />
 
 <Footer />

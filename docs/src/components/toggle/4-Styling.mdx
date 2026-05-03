@@ -1,76 +1,22 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
-  BannerTabs,
+  ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as ToggleStories from './toggle.stories'
-import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
+import { TOGGLE_DOC_CONFIG } from './toggle.doc-config'
 
 <Meta title="Components/Forms/Toggle/Styling" />
+
 <Banner label={'Styling'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
-<BannerTabs
-  of={ToggleStories}
-  tabs={getToggleTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<ComponentParts component="toggle" />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentCssVariables component="toggle" />
 
-<br />
-
-**Example:** Target the toggle switch and thumb:
-
-```css
-/* Style the toggle container */
-ds-toggle::part(container) {
-  padding: 4px;
-}
-
-/* Style the toggle switch background */
-ds-toggle::part(switch) {
-  border-radius: 20px;
-}
-
-/* Style the toggle thumb (sliding knob) */
-ds-toggle::part(thumb) {
-  border-radius: 50%;
-}
-```
-
-<br />
-
-Primary parts of the toggle component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `container` | Div | The main toggle container. |
-| `switch` | Div | The toggle switch background. |
-| `thumb` | Div | The toggle thumb (sliding knob). |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override toggle styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-toggle-color-off: #ccc;
-  --ds-toggle-color-on: #4caf50;
-}
-
-/* Override for a specific toggle */
-ds-toggle {
-  --toggle-size-height: 32px;
-}
-```
-
-<TokenOverview component="toggle" />
+<ComponentDesignTokens component="toggle" />
 
 <Footer />

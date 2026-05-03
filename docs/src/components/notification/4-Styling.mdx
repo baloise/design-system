@@ -1,71 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as NotificationStories from './notification.stories'
 import { NOTIFICATION_DOC_CONFIG, getNotificationTabs } from './notification.doc-config'
 
 <Meta title="Components/Notification/Styling" />
+
 <Banner label={'Styling'} section={NOTIFICATION_DOC_CONFIG.section} color={NOTIFICATION_DOC_CONFIG.color} />
-<BannerTabs
-  of={NotificationStories}
-  tabs={getNotificationTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={NotificationStories} tabs={getNotificationTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="notification" />
 
-<br />
+<ComponentCssVariables component="notification" />
 
-**Example:** Target the notification container:
-
-```css
-/* Style the notification wrapper */
-ds-notification::part(notification) {
-  border-radius: 4px;
-  padding: 16px;
-}
-
-/* Style the content area */
-ds-notification::part(content) {
-  font-size: 14px;
-}
-```
-
-<br />
-
-Primary parts of the notification component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `notification` | Container | The main notification wrapper element. |
-| `content` | Content | The text and content area of the notification. |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override notification styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-notification-color-background-success: #d4edda;
-  --ds-notification-color-text-success: #155724;
-}
-
-/* Override for a specific notification */
-ds-notification {
-  --notification-color-background: #e7d4f5;
-}
-```
-
-<TokenOverview component="notification" />
+<ComponentDesignTokens component="notification" />
 
 <Footer />

@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as SpinnerStories from './spinner.stories'
 import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
 
 <Meta title="Components/Spinner/Overview" />
-<Banner label={'Overview'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
-<BannerTabs
-  of={SpinnerStories}
-  tabs={getSpinnerTabs('overview')}
-/>
 
-<Lead>
-  **Spinner** displays a loading animation to indicate that an operation is in progress. Use spinners to provide visual feedback while waiting for async operations to complete.
-</Lead>
+<Banner label={'Overview'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
+
+<BannerTabs of={SpinnerStories} tabs={getSpinnerTabs('overview')} />
+
+<ComponentLead component="spinner" />
 
 <Canvas of={SpinnerStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="spinner" />
 
 <Footer />

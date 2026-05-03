@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as TagStories from './tag.stories'
 import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
 
 <Meta title="Components/Tag/Overview" />
-<Banner label={'Overview'} section={TAG_DOC_CONFIG.section} color={TAG_DOC_CONFIG.color} />
-<BannerTabs
-  of={TagStories}
-  tabs={getTagTabs('overview')}
-/>
 
-<Lead>
-  **Tag** renders a compact label element for categorizing, filtering, or marking content. Tags can be dismissed with a close button and support multiple colors for semantic meaning.
-</Lead>
+<Banner label={'Overview'} section={TAG_DOC_CONFIG.section} color={TAG_DOC_CONFIG.color} />
+
+<BannerTabs of={TagStories} tabs={getTagTabs('overview')} />
+
+<ComponentLead component="tag" />
 
 <Canvas of={TagStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="tag" />
 
 <Footer />

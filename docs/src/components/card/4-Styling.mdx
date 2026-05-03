@@ -1,65 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as CardStories from './card.stories'
 import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 
 <Meta title="Components/Card/Styling" />
+
 <Banner label={'Styling'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
-<BannerTabs
-  of={CardStories}
-  tabs={getCardTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={CardStories} tabs={getCardTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="card" />
 
-<br />
+<ComponentCssVariables component="card" />
 
-**Example:** Target the card container:
-
-```css
-/* Style the main card element */
-ds-card::part(card) {
-  border-radius: 8px;
-  background-color: #ffffff;
-}
-```
-
-<br />
-
-Primary parts of the card component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `card` | Container | The main card wrapper element. |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override card styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-card-color-background: #ffffff;
-  --ds-card-color-border: #e0e0e0;
-}
-
-/* Override for a specific card */
-ds-card {
-  --card-color-background: #f5f5f5;
-}
-```
-
-<TokenOverview component="card" />
+<ComponentDesignTokens component="card" />
 
 <Footer />

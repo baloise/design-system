@@ -33,33 +33,33 @@ goal is to have all stories in a folder called Variants the the Variants page sh
 | Component                              | Done |
 | -------------------------------------- | ---- |
 | accordion                              | ✅   |
-| button                                 |      |
-| badge                                  |      |
-| heading                                |      |
-| text                                   |      |
-| label                                  |      |
-| link                                   |      |
-| stack                                  |      |
-| divider                                |      |
-| tag                                    |      |
-| notification                           |      |
-| card                                   |      |
-| list                                   |      |
-| icon                                   |      |
-| spinner                                |      |
-| logo                                   |      |
-| close                                  |      |
-| alert/toast                            |      |
-| alert/snackbar                         |      |
-| input                                  |      |
-| textarea                               |      |
-| radio                                  |      |
-| checkbox                               |      |
+| button                                 | ✅   |
+| badge                                  | ✅   |
+| heading                                | ✅   |
+| text                                   | ✅   |
+| label                                  | ✅   |
+| link                                   | ✅   |
+| stack                                  | ✅   |
+| divider                                | ✅   |
+| tag                                    | ✅   |
+| notification                           | ✅   |
+| card                                   | ✅   |
+| list                                   | ✅   |
+| icon                                   | ✅   |
+| spinner                                | ✅   |
+| logo                                   | ✅   |
+| close                                  | ✅   |
+| alert/toast                            | ✅   |
+| alert/snackbar                         | ✅   |
+| input                                  | ✅   |
+| textarea                               | ✅   |
+| radio                                  | ✅   |
+| checkbox                               | ✅   |
 | segment/segment + segment/segment-item |      |
-| app                                    |      |
-| number-input                           |      |
-| progress-bar                           |      |
-| pagination                             |      |
-| content                                |      |
-| shape                                  |      |
-| toggle                                 |      |
+| app                                    | ✅   |
+| number-input                           | ✅   |
+| progress-bar                           | ✅   |
+| pagination                             | ✅   |
+| content                                | ✅   |
+| shape                                  | ✅   |
+| toggle                                 | ✅   |

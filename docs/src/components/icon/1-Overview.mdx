@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as IconStories from './icon.stories'
 import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
 
 <Meta title="Components/Icon/Overview" />
-<Banner label={'Overview'} section={ICON_DOC_CONFIG.section} color={ICON_DOC_CONFIG.color} />
-<BannerTabs
-  of={IconStories}
-  tabs={getIconTabs('overview')}
-/>
 
-<Lead>
-  **Icon** renders optimized SVG icons from a unified design system library. Perfect for enhancing visual communication and reinforcing button and link actions.
-</Lead>
+<Banner label={'Overview'} section={ICON_DOC_CONFIG.section} color={ICON_DOC_CONFIG.color} />
+
+<BannerTabs of={IconStories} tabs={getIconTabs('overview')} />
+
+<ComponentLead component="icon" />
 
 <Canvas of={IconStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="icon" />
 
 <Footer />

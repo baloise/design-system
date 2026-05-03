@@ -1,64 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as IconStories from './icon.stories'
 import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
 
 <Meta title="Components/Icon/Styling" />
+
 <Banner label={'Styling'} section={ICON_DOC_CONFIG.section} color={ICON_DOC_CONFIG.color} />
-<BannerTabs
-  of={IconStories}
-  tabs={getIconTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={IconStories} tabs={getIconTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="icon" />
 
-<br />
+<ComponentCssVariables component="icon" />
 
-**Example:** Target the SVG element:
-
-```css
-/* Style the icon SVG */
-ds-icon::part(icon) {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-```
-
-<br />
-
-Primary parts of the icon component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `icon` | SVG | The SVG element containing the icon graphic. |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override icon styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-icon-size: 24px;
-  --ds-icon-color: #333;
-}
-
-/* Override for a specific icon */
-ds-icon {
-  --icon-color: #005eb8;
-}
-```
-
-<TokenOverview component="icon" />
+<ComponentDesignTokens component="icon" />
 
 <Footer />

@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as CheckboxStories from './checkbox.stories'
 import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
 
 <Meta title="Components/Forms/Checkbox/Overview" />
-<Banner label={'Overview'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
-<BannerTabs
-  of={CheckboxStories}
-  tabs={getCheckboxTabs('overview')}
-/>
 
-<Lead>
-  **Checkbox** is a form control for selecting zero, one, or more options from a set of choices. Perfect for multi-select scenarios where users should be able to select any combination of options independently.
-</Lead>
+<Banner label={'Overview'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
+
+<BannerTabs of={CheckboxStories} tabs={getCheckboxTabs('overview')} />
+
+<ComponentLead component="checkbox" />
 
 <Canvas of={CheckboxStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="checkbox" />
 
 <Footer />

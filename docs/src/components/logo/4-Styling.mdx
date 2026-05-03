@@ -1,64 +1,25 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
   Footer,
-  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as LogoStories from './logo.stories'
 import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
 
 <Meta title="Components/Logo/Styling" />
+
 <Banner label={'Styling'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
-<BannerTabs
-  of={LogoStories}
-  tabs={getLogoTabs('styling')}
-/>
 
-## CSS Shadow Parts
+<BannerTabs of={LogoStories} tabs={getLogoTabs('styling')} />
 
-Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+<ComponentParts component="logo" />
 
-<br />
+<ComponentCssVariables component="logo" />
 
-**Example:** Target the logo container:
-
-```css
-/* Style the logo wrapper */
-ds-logo::part(logo) {
-  display: flex;
-  align-items: center;
-}
-```
-
-<br />
-
-Primary parts of the logo component include:
-
-| Part | Element | Purpose |
-| --- | --- | --- |
-| `logo` | Container | The logo wrapper and link element. |
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override logo styling:
-
-```css
-/* Override globally */
-:root {
-  --ds-logo-size: 64px;
-}
-
-/* Override for a specific logo */
-ds-logo {
-  --logo-size: 48px;
-}
-```
-
-<TokenOverview component="logo" />
+<ComponentDesignTokens component="logo" />
 
 <Footer />

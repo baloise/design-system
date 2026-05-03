@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as LogoStories from './logo.stories'
 import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
 
 <Meta title="Components/Logo/Overview" />
-<Banner label={'Overview'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
-<BannerTabs
-  of={LogoStories}
-  tabs={getLogoTabs('overview')}
-/>
 
-<Lead>
-  **Logo** displays the Helvetia brand logo with optional animation. Use for header, footer, and branding contexts to maintain visual consistency across applications.
-</Lead>
+<Banner label={'Overview'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
+
+<BannerTabs of={LogoStories} tabs={getLogoTabs('overview')} />
+
+<ComponentLead component="logo" />
 
 <Canvas of={LogoStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="logo" />
 
 <Footer />

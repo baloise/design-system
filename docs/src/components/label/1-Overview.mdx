@@ -1,18 +1,22 @@
 import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
 import * as LabelStories from './label.stories'
 import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
 
 <Meta title="Components/Forms/Label/Overview" />
-<Banner label={'Overview'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
-<BannerTabs
-  of={LabelStories}
-  tabs={getLabelTabs('overview')}
-/>
 
-<Lead>
-  **Label** renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
-</Lead>
+<Banner label={'Overview'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+
+<BannerTabs of={LabelStories} tabs={getLabelTabs('overview')} />
+
+<ComponentLead component="label" />
 
 <Canvas of={LabelStories.Basic} sourceState="shown" />
 
@@ -25,5 +29,7 @@ import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
     },
   ]}
 />
+
+<ComponentPublicMethods component="label" />
 
 <Footer />
