@@ -20,42 +20,20 @@ import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={DividerStories.Colors}></StoryHeading>
-
-Divider colors support the full design system palette. Use colors to communicate meaning: primary for important sections, warning for cautionary content, danger for critical areas.
-
-<Canvas of={DividerStories.Colors} sourceState="hidden" />
-
-{/* ------------------------------------------------------ */}
-
 <StoryHeading of={DividerStories.Dashed}></StoryHeading>
 
-Solid dividers are the default, providing clear visual separation. The dashed variant offers a lighter, less prominent visual break.
+Use dashed dividers to create a more subtle separation between content sections, providing a lighter visual break compared to solid dividers.
 
-<Canvas of={DividerStories.Dashed} sourceState="hidden" />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={DividerStories.DashedVertical}></StoryHeading>
-
-Vertical dashed dividers separate side-by-side content columns while maintaining a subtle visual distinction.
-
-<Canvas of={DividerStories.DashedVertical} sourceState="hidden" />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={DividerStories.Horizontal}></StoryHeading>
-
-Horizontal dividers (default) separate vertical content stacks and are the most common layout use case.
-
-<Canvas of={DividerStories.Horizontal} sourceState="hidden" />
+<BasicStoryTabs tag="button" htmlStory={DividerStories.DashedHtml} webComponentStory={DividerStories.Dashed} index={1} noGuide />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={DividerStories.Vertical}></StoryHeading>
 
-Vertical dividers separate horizontally arranged content, useful for multi-column layouts and side-by-side content sections.
+Use vertical dividers to separate content sections in a vertical layout, providing a clear visual distinction between elements.
 
-<Canvas of={DividerStories.Vertical} sourceState="hidden" />
+<BasicStoryTabs tag="button" htmlStory={DividerStories.VerticalHtml} webComponentStory={DividerStories.Vertical} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
 
 <Footer />

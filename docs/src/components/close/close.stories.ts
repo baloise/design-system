@@ -1,13 +1,13 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalClose & { content: string }
+type Args = JSX.DsClose
 
 const tag = 'ds-close'
 
 const meta: Meta<Args> = {
-  title: 'Components/Close',
+  title: 'Components/Close/Variants',
   args: {},
   argTypes: {
     ...withComponentControls({ tag }),

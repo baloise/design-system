@@ -1,22 +1,18 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsSegment & { content: string }
+type Args = JSX.DsSegment
 
 const tag = 'ds-segment'
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Segment',
-  args: {
-    ...withDefaultContent(),
-  },
+  title: 'Components/Forms/Segment/Variants',
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ ...args }) => `
 <ds-segment ${props(args)}>
   <ds-segment-item value="apple" label="Apple"></ds-segment-item>
   <ds-segment-item value="strawberry" label="Strawberry"></ds-segment-item>

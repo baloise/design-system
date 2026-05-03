@@ -7,11 +7,11 @@ export const TAG_DOC_CONFIG = {
   section: 'Components / Tag',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-data-display-tag--overview' },
-    { label: 'Usage', storyId: 'components-data-display-tag--usage' },
-    { label: 'Variants', storyId: 'components-data-display-tag--variants-overview' },
-    { label: 'Styling', storyId: 'components-data-display-tag--styling' },
-    { label: 'Accessibility', storyId: 'components-data-display-tag--accessibility' },
+    { label: 'Overview', storyId: 'components-tag--overview' },
+    { label: 'Usage', storyId: 'components-tag--usage' },
+    { label: 'Variants', storyId: 'components-tag--variants-overview' },
+    { label: 'Styling', storyId: 'components-tag--styling' },
+    { label: 'Accessibility', storyId: 'components-tag--accessibility' },
   ],
 }
 

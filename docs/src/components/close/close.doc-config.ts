@@ -7,11 +7,11 @@ export const CLOSE_DOC_CONFIG = {
   section: 'Components / Close',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-feedback-close--overview' },
-    { label: 'Usage', storyId: 'components-feedback-close--usage' },
-    { label: 'Variants', storyId: 'components-feedback-close--variants-overview' },
-    { label: 'Styling', storyId: 'components-feedback-close--styling' },
-    { label: 'Accessibility', storyId: 'components-feedback-close--accessibility' },
+    { label: 'Overview', storyId: 'components-close--overview' },
+    { label: 'Usage', storyId: 'components-close--usage' },
+    { label: 'Variants', storyId: 'components-close--variants-overview' },
+    { label: 'Styling', storyId: 'components-close--styling' },
+    { label: 'Accessibility', storyId: 'components-close--accessibility' },
   ],
 }
 

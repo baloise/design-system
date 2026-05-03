@@ -7,11 +7,11 @@ export const BADGE_DOC_CONFIG = {
   section: 'Components / Badge',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-data-display-badge--overview' },
-    { label: 'Usage', storyId: 'components-data-display-badge--usage' },
-    { label: 'Variants', storyId: 'components-data-display-badge--variants-overview' },
-    { label: 'Styling', storyId: 'components-data-display-badge--styling' },
-    { label: 'Accessibility', storyId: 'components-data-display-badge--accessibility' },
+    { label: 'Overview', storyId: 'components-badge--overview' },
+    { label: 'Usage', storyId: 'components-badge--usage' },
+    { label: 'Variants', storyId: 'components-badge--variants-overview' },
+    { label: 'Styling', storyId: 'components-badge--styling' },
+    { label: 'Accessibility', storyId: 'components-badge--accessibility' },
   ],
 }
 

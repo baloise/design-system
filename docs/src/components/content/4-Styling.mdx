@@ -1,17 +1,20 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  BannerTabs,
   ComponentParts,
   ComponentCssVariables,
   ComponentDesignTokens,
   Footer,
 } from '../../../.storybook/blocks'
 import * as ContentStories from './content.stories'
-import { CONTENT_DOC_CONFIG } from './content.doc-config'
+import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
 
 <Meta title="Components/Content/Styling" />
 
 <Banner label={'Styling'} section={CONTENT_DOC_CONFIG.section} color={CONTENT_DOC_CONFIG.color} />
+
+<BannerTabs of={ContentStories} tabs={getContentTabs('styling')} />
 
 <ComponentParts component="content" />
 

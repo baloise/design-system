@@ -7,11 +7,11 @@ export const CARD_DOC_CONFIG = {
   section: 'Components / Card',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-data-display-card--overview' },
-    { label: 'Usage', storyId: 'components-data-display-card--usage' },
-    { label: 'Variants', storyId: 'components-data-display-card--variants-overview' },
-    { label: 'Styling', storyId: 'components-data-display-card--styling' },
-    { label: 'Accessibility', storyId: 'components-data-display-card--accessibility' },
+    { label: 'Overview', storyId: 'components-card--overview' },
+    { label: 'Usage', storyId: 'components-card--usage' },
+    { label: 'Variants', storyId: 'components-card--variants-overview' },
+    { label: 'Styling', storyId: 'components-card--styling' },
+    { label: 'Accessibility', storyId: 'components-card--accessibility' },
   ],
 }
 

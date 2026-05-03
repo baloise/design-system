@@ -1390,6 +1390,34 @@
       ],
       "styles": [
         {
+          "name": "--app-breakpoint-mobile",
+          "docs": "Mobile breakpoint width."
+        },
+        {
+          "name": "--app-breakpoint-tablet",
+          "docs": "Tablet breakpoint width."
+        },
+        {
+          "name": "--app-breakpoint-desktop",
+          "docs": "Desktop breakpoint width."
+        },
+        {
+          "name": "--app-font-family",
+          "docs": "Base font family for all components."
+        },
+        {
+          "name": "--app-text-color",
+          "docs": "Default text color."
+        },
+        {
+          "name": "--app-background-color",
+          "docs": "Default background color."
+        },
+        {
+          "name": "--app-animation-enabled",
+          "docs": "Whether animations are enabled globally."
+        },
+        {
           "name": "--ds-app-height",
           "docs": "tbd"
         }
@@ -1660,7 +1688,64 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--badge-font-family",
+          "docs": "Font family of the badge text."
+        },
+        {
+          "name": "--badge-font-weight",
+          "docs": "Font weight of the badge text."
+        },
+        {
+          "name": "--badge-min-width",
+          "docs": "Minimum width of the badge container."
+        },
+        {
+          "name": "--badge-height",
+          "docs": "Height of the badge container."
+        },
+        {
+          "name": "--badge-radius",
+          "docs": "Border radius of the badge."
+        },
+        {
+          "name": "--badge-color-background",
+          "docs": "Background color of the badge."
+        },
+        {
+          "name": "--badge-color-text",
+          "docs": "Text color of the badge."
+        },
+        {
+          "name": "--badge-pulse-color",
+          "docs": "Color of the pulse animation effect."
+        },
+        {
+          "name": "--badge-font-size",
+          "docs": "Font size of the badge text."
+        },
+        {
+          "name": "--badge-icon-size",
+          "docs": "Size of the icon inside the badge."
+        },
+        {
+          "name": "--badge-icon-color",
+          "docs": "Color of the icon inside the badge."
+        },
+        {
+          "name": "--badge-gap",
+          "docs": "Gap between icon and text in the badge."
+        },
+        {
+          "name": "--badge-padding-inline",
+          "docs": "Horizontal padding inside the badge."
+        },
+        {
+          "name": "--badge-padding-block",
+          "docs": "Vertical padding inside the badge."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -3562,7 +3647,96 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--button-font-family",
+          "docs": "Font family of the button label."
+        },
+        {
+          "name": "--button-font-weight",
+          "docs": "Font weight of the button label."
+        },
+        {
+          "name": "--button-font-size",
+          "docs": "Font size of the button label."
+        },
+        {
+          "name": "--button-line-height",
+          "docs": "Line height of the button label."
+        },
+        {
+          "name": "--button-radius",
+          "docs": "Border radius of the button."
+        },
+        {
+          "name": "--button-color-text",
+          "docs": "Text color of the button."
+        },
+        {
+          "name": "--button-color-border",
+          "docs": "Border color of the button."
+        },
+        {
+          "name": "--button-color-background",
+          "docs": "Background color of the button."
+        },
+        {
+          "name": "--button-color-text-hover",
+          "docs": "Text color on hover state."
+        },
+        {
+          "name": "--button-color-border-hover",
+          "docs": "Border color on hover state."
+        },
+        {
+          "name": "--button-color-background-hover",
+          "docs": "Background color on hover state."
+        },
+        {
+          "name": "--button-color-text-active",
+          "docs": "Text color on active state."
+        },
+        {
+          "name": "--button-color-border-active",
+          "docs": "Border color on active state."
+        },
+        {
+          "name": "--button-color-background-active",
+          "docs": "Background color on active state."
+        },
+        {
+          "name": "--button-width",
+          "docs": "Width of the button."
+        },
+        {
+          "name": "--button-border-style",
+          "docs": "Border style of the button."
+        },
+        {
+          "name": "--button-gap",
+          "docs": "Gap between icon and label."
+        },
+        {
+          "name": "--button-min-height",
+          "docs": "Minimum height of the button."
+        },
+        {
+          "name": "--button-min-width",
+          "docs": "Minimum width of the button."
+        },
+        {
+          "name": "--button-padding-inline",
+          "docs": "Horizontal padding inside the button."
+        },
+        {
+          "name": "--button-box-shadow",
+          "docs": "Box shadow of the button."
+        },
+        {
+          "name": "--button-text-shadow",
+          "docs": "Text shadow of the button label."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -10226,6 +10400,50 @@
       "events": [],
       "styles": [
         {
+          "name": "--card-color-background",
+          "docs": "Background color of the card."
+        },
+        {
+          "name": "--card-color-border",
+          "docs": "Border color of the card."
+        },
+        {
+          "name": "--card-border-radius",
+          "docs": "Border radius of the card."
+        },
+        {
+          "name": "--card-border-width",
+          "docs": "Border width of the card."
+        },
+        {
+          "name": "--card-padding",
+          "docs": "Padding inside the card."
+        },
+        {
+          "name": "--card-gap",
+          "docs": "Gap between card sections."
+        },
+        {
+          "name": "--card-shadow",
+          "docs": "Box shadow of the card."
+        },
+        {
+          "name": "--card-header-background",
+          "docs": "Background color of the card header."
+        },
+        {
+          "name": "--card-header-padding",
+          "docs": "Padding inside the header section."
+        },
+        {
+          "name": "--card-footer-background",
+          "docs": "Background color of the card footer."
+        },
+        {
+          "name": "--card-footer-padding",
+          "docs": "Padding inside the footer section."
+        },
+        {
           "name": "--ds-card-background",
           "docs": "Background of the card"
         },
@@ -13366,7 +13584,64 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--checkbox-size",
+          "docs": "Size of the checkbox box."
+        },
+        {
+          "name": "--checkbox-color-border",
+          "docs": "Border color of the checkbox."
+        },
+        {
+          "name": "--checkbox-color-background",
+          "docs": "Background color of the checkbox."
+        },
+        {
+          "name": "--checkbox-color-background-checked",
+          "docs": "Background color when checkbox is checked."
+        },
+        {
+          "name": "--checkbox-color-border-checked",
+          "docs": "Border color when checkbox is checked."
+        },
+        {
+          "name": "--checkbox-color-checkmark",
+          "docs": "Color of the checkmark icon."
+        },
+        {
+          "name": "--checkbox-label-color",
+          "docs": "Text color of the checkbox label."
+        },
+        {
+          "name": "--checkbox-label-font-size",
+          "docs": "Font size of the checkbox label."
+        },
+        {
+          "name": "--checkbox-label-font-family",
+          "docs": "Font family of the checkbox label."
+        },
+        {
+          "name": "--checkbox-label-font-weight",
+          "docs": "Font weight of the checkbox label."
+        },
+        {
+          "name": "--checkbox-focus-color",
+          "docs": "Focus outline color of the checkbox."
+        },
+        {
+          "name": "--checkbox-gap",
+          "docs": "Gap between checkbox and label."
+        },
+        {
+          "name": "--checkbox-helper-color",
+          "docs": "Text color of helper text."
+        },
+        {
+          "name": "--checkbox-helper-font-size",
+          "docs": "Font size of helper text."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -14904,10 +15179,6 @@
       "docs": "Close renders a button element for closing or dismissing UI components with customizable size and color.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "- Optional label or icon content."
-        },
-        {
           "name": "part",
           "text": "close - The close button element."
         }
@@ -15180,13 +15451,41 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
-      "slots": [
+      "styles": [
         {
-          "name": "",
-          "docs": "Optional label or icon content."
+          "name": "--close-color-background",
+          "docs": "Background color of the close button."
+        },
+        {
+          "name": "--close-color-background-hover",
+          "docs": "Background color on hover state."
+        },
+        {
+          "name": "--close-color-background-active",
+          "docs": "Background color on active/pressed state."
+        },
+        {
+          "name": "--close-color-focus",
+          "docs": "Focus outline color of the close button."
+        },
+        {
+          "name": "--close-color-icon",
+          "docs": "Color of the close icon."
+        },
+        {
+          "name": "--close-size",
+          "docs": "Size of the close button."
+        },
+        {
+          "name": "--close-icon-size",
+          "docs": "Size of the close icon."
+        },
+        {
+          "name": "--close-border-radius",
+          "docs": "Border radius of the close button."
         }
       ],
+      "slots": [],
       "parts": [
         {
           "name": "button",
@@ -15762,7 +16061,36 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--content-direction",
+          "docs": "Direction of the content layout (row or column)."
+        },
+        {
+          "name": "--content-gap",
+          "docs": "Spacing between content children."
+        },
+        {
+          "name": "--content-align",
+          "docs": "Alignment of items perpendicular to main axis."
+        },
+        {
+          "name": "--content-justify",
+          "docs": "Justification along the main axis."
+        },
+        {
+          "name": "--content-wrap",
+          "docs": "Whether items wrap to multiple lines."
+        },
+        {
+          "name": "--content-padding",
+          "docs": "Padding around the content container."
+        },
+        {
+          "name": "--content-max-width",
+          "docs": "Maximum width of the content."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -16071,7 +16399,28 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--divider-color",
+          "docs": "Color of the divider line."
+        },
+        {
+          "name": "--divider-width",
+          "docs": "Width or thickness of the divider line."
+        },
+        {
+          "name": "--divider-gap",
+          "docs": "Spacing around the divider."
+        },
+        {
+          "name": "--divider-font-size",
+          "docs": "Font size of divider label text if present."
+        },
+        {
+          "name": "--divider-font-weight",
+          "docs": "Font weight of divider label text if present."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -17019,7 +17368,40 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--heading-color",
+          "docs": "Text color of the heading."
+        },
+        {
+          "name": "--heading-family",
+          "docs": "Font family of the heading."
+        },
+        {
+          "name": "--heading-weight",
+          "docs": "Font weight of the heading."
+        },
+        {
+          "name": "--heading-line-height",
+          "docs": "Line height of the heading text."
+        },
+        {
+          "name": "--heading-font-size",
+          "docs": "Font size of the heading."
+        },
+        {
+          "name": "--heading-space",
+          "docs": "Spacing applied to the heading."
+        },
+        {
+          "name": "--heading-shadow",
+          "docs": "Text shadow effect applied to the heading."
+        },
+        {
+          "name": "--heading-text-align",
+          "docs": "Text alignment of the heading."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -18677,7 +19059,40 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--icon-size",
+          "docs": "Size of the icon element."
+        },
+        {
+          "name": "--icon-inner-size",
+          "docs": "Internal size of the SVG icon."
+        },
+        {
+          "name": "--icon-inner-mt",
+          "docs": "Margin top of the SVG icon."
+        },
+        {
+          "name": "--icon-color",
+          "docs": "Color of the icon."
+        },
+        {
+          "name": "--icon-shape",
+          "docs": "Shape variant color of the icon."
+        },
+        {
+          "name": "--icon-tile-background",
+          "docs": "Background color of the tile around the icon."
+        },
+        {
+          "name": "--icon-tile-radius",
+          "docs": "Border radius of the tile background."
+        },
+        {
+          "name": "--icon-rotation",
+          "docs": "Rotation angle of the icon."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -20903,7 +21318,80 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--input-color-background",
+          "docs": "Background color of the input field."
+        },
+        {
+          "name": "--input-color-border",
+          "docs": "Border color of the input field."
+        },
+        {
+          "name": "--input-color-text",
+          "docs": "Text color inside the input field."
+        },
+        {
+          "name": "--input-color-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--input-font-size",
+          "docs": "Font size of the input text."
+        },
+        {
+          "name": "--input-font-family",
+          "docs": "Font family of the input text."
+        },
+        {
+          "name": "--input-line-height",
+          "docs": "Line height of the input text."
+        },
+        {
+          "name": "--input-border-radius",
+          "docs": "Border radius of the input field."
+        },
+        {
+          "name": "--input-border-width",
+          "docs": "Border width of the input field."
+        },
+        {
+          "name": "--input-padding-inline",
+          "docs": "Horizontal padding inside the input."
+        },
+        {
+          "name": "--input-padding-block",
+          "docs": "Vertical padding inside the input."
+        },
+        {
+          "name": "--input-min-height",
+          "docs": "Minimum height of the input field."
+        },
+        {
+          "name": "--input-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--input-label-font-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--input-label-font-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--input-description-color",
+          "docs": "Text color of the description text."
+        },
+        {
+          "name": "--input-description-font-size",
+          "docs": "Font size of the description text."
+        },
+        {
+          "name": "--input-error-color",
+          "docs": "Color of error messages and invalid state."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -23657,7 +24145,28 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--label-family",
+          "docs": "Font family of the label text."
+        },
+        {
+          "name": "--label-weight",
+          "docs": "Font weight of the label text."
+        },
+        {
+          "name": "--label-line-height",
+          "docs": "Line height of the label text."
+        },
+        {
+          "name": "--label-size",
+          "docs": "Font size of the label text."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -24603,7 +25112,28 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--list-gap",
+          "docs": "Gap between list items."
+        },
+        {
+          "name": "--list-padding",
+          "docs": "Padding around the list."
+        },
+        {
+          "name": "--list-margin",
+          "docs": "Margin around the list."
+        },
+        {
+          "name": "--list-item-padding",
+          "docs": "Padding inside each list item."
+        },
+        {
+          "name": "--list-item-margin",
+          "docs": "Margin for each list item."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -25135,7 +25665,28 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--logo-color",
+          "docs": "Color of the logo."
+        },
+        {
+          "name": "--logo-height",
+          "docs": "Height of the logo."
+        },
+        {
+          "name": "--logo-width",
+          "docs": "Width of the logo."
+        },
+        {
+          "name": "--logo-animation-duration",
+          "docs": "Duration of the logo animation."
+        },
+        {
+          "name": "--logo-animation-easing",
+          "docs": "Easing function of the logo animation."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -25497,7 +26048,60 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--notification-color-background",
+          "docs": "Background color of the notification."
+        },
+        {
+          "name": "--notification-color-border",
+          "docs": "Border color of the notification."
+        },
+        {
+          "name": "--notification-color-text",
+          "docs": "Text color of the notification."
+        },
+        {
+          "name": "--notification-font-family",
+          "docs": "Font family of the notification text."
+        },
+        {
+          "name": "--notification-font-size",
+          "docs": "Font size of the notification text."
+        },
+        {
+          "name": "--notification-font-weight",
+          "docs": "Font weight of the notification text."
+        },
+        {
+          "name": "--notification-line-height",
+          "docs": "Line height of the notification text."
+        },
+        {
+          "name": "--notification-border-radius",
+          "docs": "Border radius of the notification."
+        },
+        {
+          "name": "--notification-border-width",
+          "docs": "Border width of the notification."
+        },
+        {
+          "name": "--notification-padding",
+          "docs": "Padding inside the notification."
+        },
+        {
+          "name": "--notification-gap",
+          "docs": "Gap between icon and content."
+        },
+        {
+          "name": "--notification-icon-color",
+          "docs": "Color of the icon."
+        },
+        {
+          "name": "--notification-shadow",
+          "docs": "Box shadow of the notification."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -27354,7 +27958,84 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--number-input-color-background",
+          "docs": "Background color of the number input field."
+        },
+        {
+          "name": "--number-input-color-border",
+          "docs": "Border color of the number input field."
+        },
+        {
+          "name": "--number-input-color-text",
+          "docs": "Text color inside the number input."
+        },
+        {
+          "name": "--number-input-color-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--number-input-font-size",
+          "docs": "Font size of the input text."
+        },
+        {
+          "name": "--number-input-font-family",
+          "docs": "Font family of the input text."
+        },
+        {
+          "name": "--number-input-line-height",
+          "docs": "Line height of the input text."
+        },
+        {
+          "name": "--number-input-border-radius",
+          "docs": "Border radius of the input field."
+        },
+        {
+          "name": "--number-input-border-width",
+          "docs": "Border width of the input field."
+        },
+        {
+          "name": "--number-input-padding-inline",
+          "docs": "Horizontal padding inside the input."
+        },
+        {
+          "name": "--number-input-padding-block",
+          "docs": "Vertical padding inside the input."
+        },
+        {
+          "name": "--number-input-min-height",
+          "docs": "Minimum height of the input field."
+        },
+        {
+          "name": "--number-input-button-size",
+          "docs": "Size of increment/decrement buttons."
+        },
+        {
+          "name": "--number-input-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--number-input-label-font-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--number-input-label-font-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--number-input-description-color",
+          "docs": "Text color of the description text."
+        },
+        {
+          "name": "--number-input-description-font-size",
+          "docs": "Font size of the description text."
+        },
+        {
+          "name": "--number-input-error-color",
+          "docs": "Color of error messages and invalid state."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -27884,7 +28565,52 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--pagination-gap-mobile",
+          "docs": "Gap between pagination items on mobile."
+        },
+        {
+          "name": "--pagination-gap-tablet",
+          "docs": "Gap between pagination items on tablet."
+        },
+        {
+          "name": "--pagination-gap-desktop",
+          "docs": "Gap between pagination items on desktop."
+        },
+        {
+          "name": "--pagination-dots-background",
+          "docs": "Background color of the ellipsis dots."
+        },
+        {
+          "name": "--pagination-dots-radius",
+          "docs": "Border radius of the ellipsis dots."
+        },
+        {
+          "name": "--pagination-item-color-background",
+          "docs": "Background color of pagination buttons."
+        },
+        {
+          "name": "--pagination-item-color-text",
+          "docs": "Text color of pagination buttons."
+        },
+        {
+          "name": "--pagination-item-color-background-active",
+          "docs": "Background color of active/current button."
+        },
+        {
+          "name": "--pagination-item-color-text-active",
+          "docs": "Text color of active/current button."
+        },
+        {
+          "name": "--pagination-button-min-width",
+          "docs": "Minimum width of pagination button items."
+        },
+        {
+          "name": "--pagination-button-min-height",
+          "docs": "Minimum height of pagination button items."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -28357,7 +29083,40 @@
         }
       ],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--progress-bar-height",
+          "docs": "Height of the progress bar."
+        },
+        {
+          "name": "--progress-bar-radius",
+          "docs": "Border radius of the progress bar."
+        },
+        {
+          "name": "--progress-bar-background",
+          "docs": "Background color of the progress bar container."
+        },
+        {
+          "name": "--progress-bar-line-color",
+          "docs": "Color of the progress indicator fill."
+        },
+        {
+          "name": "--progress-bar-gap",
+          "docs": "Gap between progress bar and label."
+        },
+        {
+          "name": "--progress-bar-label-color",
+          "docs": "Text color of the progress label."
+        },
+        {
+          "name": "--progress-bar-label-font-size",
+          "docs": "Font size of the progress label."
+        },
+        {
+          "name": "--progress-bar-animation-duration",
+          "docs": "Duration of the progress animation."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -29181,7 +29940,60 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--radio-size",
+          "docs": "Size of the radio button circle."
+        },
+        {
+          "name": "--radio-color-border",
+          "docs": "Border color of the radio button."
+        },
+        {
+          "name": "--radio-color-background",
+          "docs": "Background color of the radio button."
+        },
+        {
+          "name": "--radio-color-background-checked",
+          "docs": "Background color when radio is checked."
+        },
+        {
+          "name": "--radio-color-border-checked",
+          "docs": "Border color when radio is checked."
+        },
+        {
+          "name": "--radio-label-color",
+          "docs": "Text color of the radio label."
+        },
+        {
+          "name": "--radio-label-font-size",
+          "docs": "Font size of the radio label."
+        },
+        {
+          "name": "--radio-label-font-family",
+          "docs": "Font family of the radio label."
+        },
+        {
+          "name": "--radio-label-font-weight",
+          "docs": "Font weight of the radio label."
+        },
+        {
+          "name": "--radio-focus-color",
+          "docs": "Focus outline color of the radio."
+        },
+        {
+          "name": "--radio-gap",
+          "docs": "Gap between radio and label."
+        },
+        {
+          "name": "--radio-helper-color",
+          "docs": "Text color of helper text."
+        },
+        {
+          "name": "--radio-helper-font-size",
+          "docs": "Font size of helper text."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -31277,7 +32089,56 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--segment-color-background",
+          "docs": "Background color of the segment."
+        },
+        {
+          "name": "--segment-color-background-selected",
+          "docs": "Background color of the selected item."
+        },
+        {
+          "name": "--segment-color-text",
+          "docs": "Text color of the segment items."
+        },
+        {
+          "name": "--segment-color-text-selected",
+          "docs": "Text color of the selected item."
+        },
+        {
+          "name": "--segment-border-radius",
+          "docs": "Border radius of the segment container."
+        },
+        {
+          "name": "--segment-border-width",
+          "docs": "Border width of the segment."
+        },
+        {
+          "name": "--segment-gap",
+          "docs": "Gap between segment items."
+        },
+        {
+          "name": "--segment-padding",
+          "docs": "Padding inside the segment."
+        },
+        {
+          "name": "--segment-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--segment-label-font-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--segment-description-color",
+          "docs": "Text color of description text."
+        },
+        {
+          "name": "--segment-description-font-size",
+          "docs": "Font size of description text."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -32030,7 +32891,40 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--segment-item-padding",
+          "docs": "Padding inside the segment item button."
+        },
+        {
+          "name": "--segment-item-font-size",
+          "docs": "Font size of the segment item text."
+        },
+        {
+          "name": "--segment-item-color-background",
+          "docs": "Background color of the item."
+        },
+        {
+          "name": "--segment-item-color-background-selected",
+          "docs": "Background color when selected."
+        },
+        {
+          "name": "--segment-item-color-text",
+          "docs": "Text color of the item."
+        },
+        {
+          "name": "--segment-item-color-text-selected",
+          "docs": "Text color when selected."
+        },
+        {
+          "name": "--segment-item-border-radius",
+          "docs": "Border radius of the item."
+        },
+        {
+          "name": "--segment-item-transition-duration",
+          "docs": "Duration of state transition animations."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -32236,7 +33130,24 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--shape-color",
+          "docs": "Fill color of the shape."
+        },
+        {
+          "name": "--shape-size",
+          "docs": "Size of the shape (width and height)."
+        },
+        {
+          "name": "--shape-rotation",
+          "docs": "Rotation angle of the shape."
+        },
+        {
+          "name": "--shape-opacity",
+          "docs": "Opacity of the shape."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -32702,7 +33613,48 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--snackbar-shadow",
+          "docs": "Box shadow of the snackbar."
+        },
+        {
+          "name": "--snackbar-radius",
+          "docs": "Border radius of the snackbar."
+        },
+        {
+          "name": "--snackbar-color-background",
+          "docs": "Background color of the snackbar."
+        },
+        {
+          "name": "--snackbar-color-text",
+          "docs": "Text color inside the snackbar."
+        },
+        {
+          "name": "--snackbar-icon",
+          "docs": "Color of the snackbar icon."
+        },
+        {
+          "name": "--snackbar-progress-duration",
+          "docs": "Duration of the progress bar animation."
+        },
+        {
+          "name": "--snackbar-padding",
+          "docs": "Padding inside the snackbar."
+        },
+        {
+          "name": "--snackbar-gap",
+          "docs": "Gap between content and close button."
+        },
+        {
+          "name": "--snackbar-font-size",
+          "docs": "Font size of the snackbar message."
+        },
+        {
+          "name": "--snackbar-min-height",
+          "docs": "Minimum height of the snackbar."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -33433,7 +34385,36 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--spinner-size",
+          "docs": "Size of the spinner component."
+        },
+        {
+          "name": "--spinner-circle-size",
+          "docs": "Size of the spinner circle."
+        },
+        {
+          "name": "--spinner-circle-border-width",
+          "docs": "Border width of the spinner circle."
+        },
+        {
+          "name": "--spinner-circle-color-border-background",
+          "docs": "Background color of the circle border."
+        },
+        {
+          "name": "--spinner-circle-color-border-progress",
+          "docs": "Progress/animation color of the circle border."
+        },
+        {
+          "name": "--spinner-animation-duration",
+          "docs": "Duration of the spinner animation."
+        },
+        {
+          "name": "--spinner-animation-easing",
+          "docs": "Easing function of the spinner animation."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -34515,7 +35496,32 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--stack-direction",
+          "docs": "Direction of the stack layout (row or column)."
+        },
+        {
+          "name": "--stack-gap",
+          "docs": "Spacing between stack items."
+        },
+        {
+          "name": "--stack-align",
+          "docs": "Alignment of items within the stack."
+        },
+        {
+          "name": "--stack-justify",
+          "docs": "Justification of items along the main axis."
+        },
+        {
+          "name": "--stack-wrap",
+          "docs": "Whether items wrap to multiple lines."
+        },
+        {
+          "name": "--stack-padding",
+          "docs": "Padding around the stack container."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -34904,7 +35910,60 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--tag-color-text",
+          "docs": "Text color of the tag."
+        },
+        {
+          "name": "--tag-color-border",
+          "docs": "Border color of the tag."
+        },
+        {
+          "name": "--tag-color-background",
+          "docs": "Background color of the tag."
+        },
+        {
+          "name": "--tag-font-family",
+          "docs": "Font family of the tag text."
+        },
+        {
+          "name": "--tag-font-weight",
+          "docs": "Font weight of the tag text."
+        },
+        {
+          "name": "--tag-font-size",
+          "docs": "Font size of the tag text."
+        },
+        {
+          "name": "--tag-line-height",
+          "docs": "Line height of the tag text."
+        },
+        {
+          "name": "--tag-border-radius",
+          "docs": "Border radius of the tag."
+        },
+        {
+          "name": "--tag-padding-inline",
+          "docs": "Horizontal padding of the tag."
+        },
+        {
+          "name": "--tag-padding-block",
+          "docs": "Vertical padding of the tag."
+        },
+        {
+          "name": "--tag-min-height",
+          "docs": "Minimum height of the tag."
+        },
+        {
+          "name": "--tag-gap",
+          "docs": "Gap between icon and text."
+        },
+        {
+          "name": "--tag-icon-size",
+          "docs": "Size of the icon in the tag."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -37048,7 +38107,40 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--text-color",
+          "docs": "Text color of the paragraph."
+        },
+        {
+          "name": "--text-align",
+          "docs": "Text alignment of the paragraph."
+        },
+        {
+          "name": "--text-family",
+          "docs": "Font family of the text."
+        },
+        {
+          "name": "--text-weight",
+          "docs": "Font weight of the text."
+        },
+        {
+          "name": "--text-line-height",
+          "docs": "Line height of the text."
+        },
+        {
+          "name": "--text-size",
+          "docs": "Font size of the text."
+        },
+        {
+          "name": "--text-shadow",
+          "docs": "Text shadow effect applied to the text."
+        },
+        {
+          "name": "--text-space",
+          "docs": "Spacing applied to the text element."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -38205,7 +39297,80 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--textarea-color-background",
+          "docs": "Background color of the textarea field."
+        },
+        {
+          "name": "--textarea-color-border",
+          "docs": "Border color of the textarea field."
+        },
+        {
+          "name": "--textarea-color-text",
+          "docs": "Text color inside the textarea."
+        },
+        {
+          "name": "--textarea-color-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--textarea-font-size",
+          "docs": "Font size of the textarea text."
+        },
+        {
+          "name": "--textarea-font-family",
+          "docs": "Font family of the textarea text."
+        },
+        {
+          "name": "--textarea-line-height",
+          "docs": "Line height of the textarea text."
+        },
+        {
+          "name": "--textarea-border-radius",
+          "docs": "Border radius of the textarea field."
+        },
+        {
+          "name": "--textarea-border-width",
+          "docs": "Border width of the textarea field."
+        },
+        {
+          "name": "--textarea-padding-inline",
+          "docs": "Horizontal padding inside the textarea."
+        },
+        {
+          "name": "--textarea-padding-block",
+          "docs": "Vertical padding inside the textarea."
+        },
+        {
+          "name": "--textarea-min-height",
+          "docs": "Minimum height of the textarea field."
+        },
+        {
+          "name": "--textarea-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--textarea-label-font-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--textarea-label-font-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--textarea-description-color",
+          "docs": "Text color of the description text."
+        },
+        {
+          "name": "--textarea-description-font-size",
+          "docs": "Font size of the description text."
+        },
+        {
+          "name": "--textarea-error-color",
+          "docs": "Color of error messages and invalid state."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -38678,7 +39843,48 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--toast-shadow",
+          "docs": "Box shadow of the toast."
+        },
+        {
+          "name": "--toast-radius",
+          "docs": "Border radius of the toast."
+        },
+        {
+          "name": "--toast-color-background",
+          "docs": "Background color of the toast."
+        },
+        {
+          "name": "--toast-color-text",
+          "docs": "Text color inside the toast."
+        },
+        {
+          "name": "--toast-icon",
+          "docs": "Color of the toast icon."
+        },
+        {
+          "name": "--toast-progress-duration",
+          "docs": "Duration of the progress bar animation."
+        },
+        {
+          "name": "--toast-padding",
+          "docs": "Padding inside the toast."
+        },
+        {
+          "name": "--toast-gap",
+          "docs": "Gap between content and close button."
+        },
+        {
+          "name": "--toast-font-size",
+          "docs": "Font size of the toast message."
+        },
+        {
+          "name": "--toast-min-height",
+          "docs": "Minimum height of the toast."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -39841,7 +41047,64 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--toggle-size",
+          "docs": "Size of the toggle switch."
+        },
+        {
+          "name": "--toggle-height",
+          "docs": "Height of the toggle switch."
+        },
+        {
+          "name": "--toggle-color-background",
+          "docs": "Background color of the toggle when off."
+        },
+        {
+          "name": "--toggle-color-background-checked",
+          "docs": "Background color when toggle is on."
+        },
+        {
+          "name": "--toggle-color-indicator",
+          "docs": "Color of the toggle indicator/circle."
+        },
+        {
+          "name": "--toggle-border-radius",
+          "docs": "Border radius of the toggle switch."
+        },
+        {
+          "name": "--toggle-label-color",
+          "docs": "Text color of the toggle label."
+        },
+        {
+          "name": "--toggle-label-font-size",
+          "docs": "Font size of the toggle label."
+        },
+        {
+          "name": "--toggle-label-font-family",
+          "docs": "Font family of the toggle label."
+        },
+        {
+          "name": "--toggle-label-font-weight",
+          "docs": "Font weight of the toggle label."
+        },
+        {
+          "name": "--toggle-focus-color",
+          "docs": "Focus outline color of the toggle."
+        },
+        {
+          "name": "--toggle-gap",
+          "docs": "Gap between toggle and label."
+        },
+        {
+          "name": "--toggle-helper-color",
+          "docs": "Text color of helper text."
+        },
+        {
+          "name": "--toggle-helper-font-size",
+          "docs": "Font size of helper text."
+        }
+      ],
       "slots": [
         {
           "name": "",

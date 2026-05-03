@@ -7,11 +7,11 @@ export const STACK_DOC_CONFIG = {
   section: 'Components / Stack',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-layout-containment-stack--overview' },
-    { label: 'Usage', storyId: 'components-layout-containment-stack--usage' },
-    { label: 'Variants', storyId: 'components-layout-containment-stack--variants-overview' },
-    { label: 'Styling', storyId: 'components-layout-containment-stack--styling' },
-    { label: 'Accessibility', storyId: 'components-layout-containment-stack--accessibility' },
+    { label: 'Overview', storyId: 'components-layout-stack--overview' },
+    { label: 'Usage', storyId: 'components-layout-stack--usage' },
+    { label: 'Variants', storyId: 'components-layout-stack--variants-overview' },
+    { label: 'Styling', storyId: 'components-layout-stack--styling' },
+    { label: 'Accessibility', storyId: 'components-layout-stack--accessibility' },
   ],
 }
 

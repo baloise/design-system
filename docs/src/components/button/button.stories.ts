@@ -6,12 +6,10 @@ import {
   props,
   StoryFactory,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalButton & { content: string }
+type Args = JSX.DsButton & { slot: string }
 
 const tag = 'ds-button'
 const css = createCssMappings(tag)
@@ -19,14 +17,13 @@ const css = createCssMappings(tag)
 const meta: Meta<Args> = {
   title: 'Components/Button/Variants',
   args: {
-    ...withDefaultContent('Button'),
+    slot: 'Button',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <button ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
@@ -41,7 +38,7 @@ const meta: Meta<Args> = {
       },
       args,
       'button',
-    )}>${content}</button>
+    )}>${slot}</button>
 `,
   ),
 }
@@ -56,7 +53,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(({ content, ...args }) => `<ds-button ${props(args)}>${content}</ds-button>`),
+  ...withRender(({ slot, ...args }) => `<ds-button ${props(args)}>${slot}</ds-button>`),
 })
 Basic.storyName = '🧩 Basic'
 
@@ -65,10 +62,10 @@ BasicHtml.storyName = '🌍 Basic'
 
 export const Group = Story({
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
  <ds-button-group>
-  <ds-button ${props(args)}>${content}</ds-button>
-  <ds-button ${props(args)}>${content}</ds-button>
+  <ds-button ${props(args)}>${slot}</ds-button>
+  <ds-button ${props(args)}>${slot}</ds-button>
  </ds-button-group>
   `,
   ),

@@ -1,16 +1,16 @@
 import type { Meta } from '@storybook/html-vite'
 import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = { content: string }
+type Args = { slot: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Link',
+  title: 'Components/Link/Variants',
   args: {
-    content: 'Link',
+    slot: 'Link',
   },
   ...withRender(
-    ({ content, ...args }) => `
-<a class="link">${content}</a>
+    ({ slot, ...args }) => `
+<a class="link">${slot}</a>
 `,
   ),
 }

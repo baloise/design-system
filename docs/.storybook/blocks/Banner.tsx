@@ -61,6 +61,7 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
           </div>
           {definedPuzzle ? (
             <div
+              className="mobile:hidden"
               style={{
                 position: 'absolute',
                 top: '0',

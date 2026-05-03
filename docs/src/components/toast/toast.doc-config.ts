@@ -2,11 +2,11 @@ export const TOAST_DOC_CONFIG = {
   section: 'Components / Toast',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-feedback-toast--overview' },
-    { label: 'Usage', storyId: 'components-feedback-toast--usage' },
-    { label: 'Variants', storyId: 'components-feedback-toast--variants-overview' },
-    { label: 'Styling', storyId: 'components-feedback-toast--styling' },
-    { label: 'Accessibility', storyId: 'components-feedback-toast--accessibility' },
+    { label: 'Overview', storyId: 'components-toast--overview' },
+    { label: 'Usage', storyId: 'components-toast--usage' },
+    { label: 'Variants', storyId: 'components-toast--variants-overview' },
+    { label: 'Styling', storyId: 'components-toast--styling' },
+    { label: 'Accessibility', storyId: 'components-toast--accessibility' },
   ],
 }
 

@@ -22,7 +22,6 @@ import { CONTENT_LAYOUTS } from '../content/content.interfaces'
 /**
  * Divider renders a visual separator line for grouping or distinguishing content sections.
  *
- * @slot - Optional content to display alongside the divider line.
  * @part divider - The divider line element.
  */
 @Component({

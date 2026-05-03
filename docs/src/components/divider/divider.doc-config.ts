@@ -7,11 +7,11 @@ export const DIVIDER_DOC_CONFIG = {
   section: 'Components / Divider',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-data-display-utilities-divider--overview' },
-    { label: 'Usage', storyId: 'components-data-display-utilities-divider--usage' },
-    { label: 'Variants', storyId: 'components-data-display-utilities-divider--variants-overview' },
-    { label: 'Styling', storyId: 'components-data-display-utilities-divider--styling' },
-    { label: 'Accessibility', storyId: 'components-data-display-utilities-divider--accessibility' },
+    { label: 'Overview', storyId: 'components-divider--overview' },
+    { label: 'Usage', storyId: 'components-divider--usage' },
+    { label: 'Variants', storyId: 'components-divider--variants-overview' },
+    { label: 'Styling', storyId: 'components-divider--styling' },
+    { label: 'Accessibility', storyId: 'components-divider--accessibility' },
   ],
 }
 

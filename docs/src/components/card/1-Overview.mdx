@@ -8,6 +8,11 @@ import {
   Footer,
 } from '../../../.storybook/blocks'
 import * as CardStories from './card.stories'
+import * as CardHeaderStories from './card-header/card-header.stories'
+import * as CardTitleStories from './card-title/card-title.stories'
+import * as CardSubtitleStories from './card-subtitle/card-subtitle.stories'
+import * as CardContentStories from './card-content/card-content.stories'
+import * as CardActionsStories from './card-actions/card-actions.stories'
 import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 
 <Meta title="Components/Card/Overview" />
@@ -26,6 +31,31 @@ import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
       id: 'ds-card',
       label: 'ds-card',
       content: <Controls of={CardStories.Basic} />,
+    },
+    {
+      id: 'ds-card-header',
+      label: 'ds-card-header',
+      content: <Controls of={CardHeaderStories.Basic} />,
+    },
+    {
+      id: 'ds-card-title',
+      label: 'ds-card-title',
+      content: <Controls of={CardTitleStories.Basic} />,
+    },
+    {
+      id: 'ds-card-subtitle',
+      label: 'ds-card-subtitle',
+      content: <Controls of={CardSubtitleStories.Basic} />,
+    },
+    {
+      id: 'ds-card-content',
+      label: 'ds-card-content',
+      content: <Controls of={CardContentStories.Basic} />,
+    },
+    {
+      id: 'ds-card-actions',
+      label: 'ds-card-actions',
+      content: <Controls of={CardActionsStories.Basic} />,
     },
   ]}
 />

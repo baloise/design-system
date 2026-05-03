@@ -56,9 +56,9 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
           display: 'flex',
           gap: 0,
           borderBottom: '2px solid #e8e8e8',
-          // background: '#fafafa',
           borderRadius: '4px 4px 0 0',
-          // overflow: 'hidden',
+          overflowX: 'auto',
+          overflowY: 'hidden',
         }}
       >
         {tabs.map(tab => (
@@ -68,7 +68,7 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
             role="tab"
             aria-selected={activeTab === tab.id}
             aria-controls={`panel-${tab.id}`}
-            className="title"
+            className="title hover:text-primary-hover active:text-primary-active"
             style={{
               padding: '12px 24px',
               border: 'none',
@@ -82,18 +82,6 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
               borderBottom: activeTab === tab.id ? '2px solid #000d6e' : '2px solid transparent',
               transition: 'all 150ms ease-in-out',
               whiteSpace: 'nowrap',
-            }}
-            onMouseEnter={e => {
-              if (activeTab !== tab.id) {
-                e.currentTarget.style.color = '#0014aa'
-                // e.currentTarget.style.background = '#fafafa'
-              }
-            }}
-            onMouseLeave={e => {
-              if (activeTab !== tab.id) {
-                e.currentTarget.style.color = '#000d6e'
-                // e.currentTarget.style.background = 'transparent'
-              }
             }}
           >
             {tab.label}

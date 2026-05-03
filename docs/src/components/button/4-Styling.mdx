@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta, Markdown } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
@@ -21,43 +21,5 @@ import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
 <ComponentCssVariables component="button" />
 
 <ComponentDesignTokens component="button" />
-
-<Footer />
-
-<Markdown>
-  {`
-| Part | Element | Purpose |
-| --- | --- | --- |
-| \`native\` | \`<button>\` or \`<a>\` | The native interactive element; carries all accessibility attributes and event handlers. |
-| \`spinner\` | \`<ds-spinner>\` | Loading spinner shown when the \`loading\` prop is set; hidden otherwise. |
-| \`icon\` | \`<ds-icon>\` | Leading icon rendered when the \`icon\` prop is set. |
-| \`label\` | \`<span>\` | Wrapper for the default slot (button text content). |
-| \`icon-right\` | \`<ds-icon>\` | Trailing icon rendered when the \`iconRight\` prop is set. |
-`}
-</Markdown>
-
-## Design Tokens
-
-CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
-
-<br />
-
-**Example:** Override button colors using CSS variables:
-
-```css
-/* Override globally for all primary buttons */
-:root {
-  --ds-button-color-primary-base-text: #ffffff;
-  --ds-button-color-primary-base-background: #005eb8;
-}
-
-/* Override for a specific button instance */
-ds-button {
-  --button-color-background: #fae052;
-  --button-color-text: #1a1a1a;
-}
-```
-
-<TokenOverview component="button" />
 
 <Footer />

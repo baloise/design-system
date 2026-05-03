@@ -46,13 +46,11 @@ Icons should reinforce, not replace, text labels. Always provide accompanying te
       type: 'correct',
       title: 'Correct: Icon reinforces label',
       content: (
-        <div style={{ display: 'flex', gap: '16px' }}>
-          <ds-button>
-            <ds-icon name="download"></ds-icon>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+          <ds-button icon="download">
             Download
           </ds-button>
-          <ds-button>
-            <ds-icon name="trash"></ds-icon>
+          <ds-button icon="trash">
             Delete
           </ds-button>
         </div>
@@ -63,7 +61,7 @@ Icons should reinforce, not replace, text labels. Always provide accompanying te
       type: 'incorrect',
       title: 'Incorrect: Icon replaces label without context',
       content: (
-        <div style={{ display: 'flex', gap: '16px' }}>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center'   }}>
           <ds-button square>
             <ds-icon name="download"></ds-icon>
           </ds-button>

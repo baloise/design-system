@@ -1,19 +1,18 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalLogo & { content: string }
+type Args = JSX.DsLogo & { slot: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Logo',
+  title: 'Components/Logo/Variants',
   args: {
-    ...withDefaultContent(''),
+    slot: '',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-logo' }),
   },
-  ...withRender(({ content, ...args }) => `<ds-logo ${props(args)}>${content}</ds-logo>`),
+  ...withRender(({ slot, ...args }) => `<ds-logo ${props(args)}>${slot}</ds-logo>`),
 }
 
 export default meta

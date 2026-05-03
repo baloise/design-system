@@ -20,26 +20,18 @@ import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={IconStories.AllIcons}></StoryHeading>
+<StoryHeading of={IconStories.UiIcons}></StoryHeading>
 
-Browse the complete library of available icons. Each icon is optimized for clarity at multiple sizes.
+These icons are already available in the Design System. More can be added through the config.
 
-<BasicStoryTabs tag="icon" noGuide />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={IconStories.Sizes}></StoryHeading>
-
-Icons are available in multiple sizes. Choose a size that matches your layout and provides adequate visual clarity.
-
-<BasicStoryTabs tag="icon" noGuide />
+<Canvas of={IconStories.UiIcons} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={IconStories.Colors}></StoryHeading>
+<StoryHeading of={IconStories.BrandIcons}></StoryHeading>
 
-Icons inherit text color by default but can be styled with custom colors.
+Brand icons for popular platforms and services, used to indicate integrations or supported platforms.
 
-<BasicStoryTabs tag="icon" noGuide />
+<Canvas of={IconStories.BrandIcons} sourceState="hidden" />
 
 <Footer />

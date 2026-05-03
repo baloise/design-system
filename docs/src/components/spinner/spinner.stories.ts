@@ -2,10 +2,10 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalSpinner
+type Args = JSX.DsSpinner
 
 const meta: Meta<Args> = {
-  title: 'Components/Spinner',
+  title: 'Components/Spinner/Variants',
   args: {},
   argTypes: {
     ...withComponentControls({ tag: 'ds-spinner' }),

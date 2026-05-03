@@ -6,27 +6,24 @@ import {
   props,
   StoryFactory,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.DsText & { content: string }
+type Args = JSX.DsText & { slot: string }
 
 const tag = 'ds-text'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Text',
+  title: 'Components/Text/Variants',
   args: {
-    ...withDefaultContent('The quick brown fox jumps over the lazy dog'),
+    slot: 'The quick brown fox jumps over the lazy dog',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) =>
+    ({ slot, ...args }) =>
       `<p ${cssClasses(
         {
           ...css('color', (color: string) => `is-${color}`),
@@ -42,7 +39,7 @@ const meta: Meta<Args> = {
         },
         args,
         'text',
-      )}>${content}</p>`,
+      )}>${slot}</p>`,
   ),
 }
 
@@ -56,7 +53,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(({ content, ...args }) => `<ds-text ${props(args)}>${content}</ds-text>`),
+  ...withRender(({ slot, ...args }) => `<ds-text ${props(args)}>${slot}</ds-text>`),
 })
 Basic.storyName = '🧩 Basic'
 
@@ -80,8 +77,8 @@ DisabledText.storyName = '🌍 Disabled Text'
 
 export const NestedText = Story({
   ...withRender(
-    ({ args, content }) => `
-<p><b>Primary paragraph</b> ${content}</p>
+    ({ slot }) => `
+<p><b>Primary paragraph</b> ${slot}</p>
 <p class="text-primary-light text-small"><b>Secondary paragraph</b> used for hints</p>
 `,
   ),
@@ -90,7 +87,7 @@ NestedText.storyName = '🌍 Nested Text'
 
 export const Colors = Story({
   ...withRender(
-    ({ args, content }) => `
+    () => `
 <p class="text">Base</p>
 <p class="text is-primary">Primary</p>
 <p class="text is-primary-hover">Primary Hover</p>
@@ -118,7 +115,7 @@ Colors.storyName = '🌍 Colors'
 
 export const Sizes = Story({
   ...withRender(
-    ({ args, content }) => `
+    () => `
 <p class="text is-lead">lead</p>
 <p class="text is-block">block</p>
 <hr class="divider has-space-xl"/>
@@ -180,8 +177,7 @@ FontWeight.storyName = '🌍 Font Weight'
 
 export const NoWrap = Story({
   args: {
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    slot: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     noWrap: true,
   },
 })

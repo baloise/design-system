@@ -2,17 +2,20 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalContent & { content: string }
+type Args = JSX.DsContent & { slot: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Content',
+  title: 'Components/Content/Variants',
+  args: {
+    slot: 'Content helps to align text nodes inside a section.',
+  },
   argTypes: {
     ...withComponentControls({ tag: 'ds-content' }),
   },
   ...withRender(
-    () => `<ds-content>
+    ({ slot, ...args }) => `<ds-content ${props(args)}>
   <ds-label>The Content Component</ds-label>
-  <ds-text>Content helps to align text nodes inside a section.</ds-text>
+  <ds-text>${slot}</ds-text>
 </ds-content>`,
   ),
 }

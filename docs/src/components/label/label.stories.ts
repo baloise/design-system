@@ -5,27 +5,24 @@ import {
   cssClasses,
   StoryFactory,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalLabel & { content: string }
+type Args = JSX.DsLabel & { slot: string }
 
 const tag = 'ds-label'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Label',
+  title: 'Components/Forms/Label/Variants',
   args: {
-    ...withDefaultContent('Label'),
+    slot: 'Label',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <label ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
@@ -38,7 +35,7 @@ const meta: Meta<Args> = {
       },
       args,
       'label',
-    )}>${content}</label>
+    )}>${slot}</label>
   `,
   ),
 }
@@ -61,7 +58,7 @@ Basic.storyName = '🌍 Basic'
 
 export const RequiredAndOptional = Story({
   args: {
-    content: 'Label (optional)',
+    slot: 'Label (optional)',
   },
 })
 RequiredAndOptional.storyName = '🌍 Required And Optional'

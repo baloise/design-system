@@ -1,22 +1,21 @@
 import { BrandIconCarGreen } from '@baloise/ds-assets/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsCheckbox & { content: string }
+type Args = JSX.DsCheckbox & { slot: string }
 
 const tag = 'ds-checkbox'
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Checkbox',
+  title: 'Components/Forms/Checkbox/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<ds-checkbox ${props(args)}>${content}</ds-checkbox>`),
+  ...withRender(({ slot, ...args }) => `<ds-checkbox ${props(args)}>${slot}</ds-checkbox>`),
 }
 
 export default meta

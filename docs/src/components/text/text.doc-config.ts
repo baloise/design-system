@@ -7,11 +7,11 @@ export const TEXT_DOC_CONFIG = {
   section: 'Components / Text',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-foundation-typography-text--overview' },
-    { label: 'Usage', storyId: 'components-foundation-typography-text--usage' },
-    { label: 'Variants', storyId: 'components-foundation-typography-text--variants-overview' },
-    { label: 'Styling', storyId: 'components-foundation-typography-text--styling' },
-    { label: 'Accessibility', storyId: 'components-foundation-typography-text--accessibility' },
+    { label: 'Overview', storyId: 'components-text--overview' },
+    { label: 'Usage', storyId: 'components-text--usage' },
+    { label: 'Variants', storyId: 'components-text--variants-overview' },
+    { label: 'Styling', storyId: 'components-text--styling' },
+    { label: 'Accessibility', storyId: 'components-text--accessibility' },
   ],
 }
 

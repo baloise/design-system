@@ -1,31 +1,20 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import {
-  createCssMappings,
-  cssClasses,
-  props,
-  StoryFactory,
-  withComponentControls,
-  withContent,
-  withDefaultContent,
-  withRender,
-} from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalBadge & { content: string }
+type Args = JSX.DsBadge & { slot: string }
 
 const tag = 'ds-badge'
-const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Badge/Variants',
   args: {
-    ...withDefaultContent('42'),
+    slot: '42',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<ds-badge ${props(args)}>${content}</ds-badge>`),
+  ...withRender(({ slot, ...args }) => `<ds-badge ${props(args)}>${slot}</ds-badge>`),
 }
 
 export default meta
@@ -44,7 +33,7 @@ export const WithIcon = Story({
   args: {
     color: 'success',
     icon: 'check',
-    content: '',
+    slot: '',
   },
 })
 WithIcon.storyName = '🧩 With Icon'

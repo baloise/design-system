@@ -1,21 +1,20 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsToggle & { content: string }
+type Args = JSX.DsToggle & { slot: string }
 
 const tag = 'ds-toggle'
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Toggle',
+  title: 'Components/Forms/Toggle/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<ds-toggle ${props(args)}>${content}</ds-toggle>`),
+  ...withRender(({ slot, ...args }) => `<ds-toggle ${props(args)}>${slot}</ds-toggle>`),
 }
 
 export default meta

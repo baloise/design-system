@@ -6,27 +6,24 @@ import {
   props,
   StoryFactory,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalHeading & { content: string }
+type Args = JSX.DsHeading & { slot: string }
 
 const tag = 'ds-heading'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Heading',
+  title: 'Components/Heading/Variants',
   args: {
-    ...withDefaultContent('Heading'),
+    slot: 'Heading',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <h1 ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
@@ -41,7 +38,7 @@ const meta: Meta<Args> = {
       },
       args,
       'title',
-    )}>${content}</h1>
+    )}>${slot}</h1>
 <p class="subtitle is-xx-large">Subtitle</p>
 `,
   ),
@@ -63,7 +60,7 @@ export const Basic = Story({
     space: 'bottom',
     inverted: false,
   },
-  ...withRender(({ content, ...args }) => `<ds-heading ${props(args)}>${content}</ds-heading>`),
+  ...withRender(({ slot, ...args }) => `<ds-heading ${props(args)}>${slot}</ds-heading>`),
 })
 Basic.storyName = '🧩 Basic'
 
@@ -134,10 +131,9 @@ export const Spacing = Story({
 Spacing.storyName = '🌍 Spacing'
 
 export const AutoLevel = Story({
-  ...withRender(({ content, ...args }) => `<ds-heading auto-level="h5" ${props(args)}>${content}</ds-heading>`),
+  ...withRender(({ slot, ...args }) => `<ds-heading auto-level="h5" ${props(args)}>${slot}</ds-heading>`),
   args: {
-    content:
-      'This heading is actual a H1 level, but since it requires more than one line we shrink it until it matches or is the same level as the auto-level.',
+    slot: 'This heading is actual a H1 level, but since it requires more than one line we shrink it until it matches or is the same level as the auto-level.',
     level: 'h1',
     subtitle: false,
     space: 'bottom',

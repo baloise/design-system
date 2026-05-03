@@ -7,11 +7,11 @@ export const SHAPE_DOC_CONFIG = {
   section: 'Components / Shape',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-utilities-shape--overview' },
-    { label: 'Usage', storyId: 'components-utilities-shape--usage' },
-    { label: 'Variants', storyId: 'components-utilities-shape--variants-overview' },
-    { label: 'Styling', storyId: 'components-utilities-shape--styling' },
-    { label: 'Accessibility', storyId: 'components-utilities-shape--accessibility' },
+    { label: 'Overview', storyId: 'components-shape--overview' },
+    { label: 'Usage', storyId: 'components-shape--usage' },
+    { label: 'Variants', storyId: 'components-shape--variants-overview' },
+    { label: 'Styling', storyId: 'components-shape--styling' },
+    { label: 'Accessibility', storyId: 'components-shape--accessibility' },
   ],
 }
 

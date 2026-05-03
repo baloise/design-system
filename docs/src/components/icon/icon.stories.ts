@@ -1,20 +1,19 @@
 import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalIcon & { content: string }
+type Args = JSX.DsIcon & { slot: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Icon',
+  title: 'Components/Icon/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-icon' }),
   },
-  ...withRender(({ content, ...args }) => `<ds-icon ${props(args)}>${content}</ds-icon>`),
+  ...withRender(({ slot, ...args }) => `<ds-icon ${props(args)}>${slot}</ds-icon>`),
 }
 
 export default meta
@@ -30,7 +29,7 @@ export const Basic = Story({
   args: {
     name: 'info-circle',
     size: 'large',
-    content: '',
+    slot: '',
   },
 })
 Basic.storyName = '🧩 Basic'
@@ -39,7 +38,7 @@ export const UiIcons = Story({
   args: {
     name: 'info-circle',
     size: 'large',
-    content: '',
+    slot: '',
   },
   ...withRender(
     () =>
@@ -98,10 +97,10 @@ export const BrandIcons = Story({
   args: {
     size: 'x-large',
     color: 'auto',
-    content: '',
+    slot: '',
   },
   ...withRender(
-    ({ content, ...args }) => `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${content}</ds-icon>`,
+    ({ slot, ...args }) => `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${slot}</ds-icon>`,
   ),
 })
 BrandIcons.storyName = '🧩 Brand Icons'

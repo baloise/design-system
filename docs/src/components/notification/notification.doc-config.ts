@@ -7,11 +7,11 @@ export const NOTIFICATION_DOC_CONFIG = {
   section: 'Components / Notification',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-feedback-notification--overview' },
-    { label: 'Usage', storyId: 'components-feedback-notification--usage' },
-    { label: 'Variants', storyId: 'components-feedback-notification--variants-overview' },
-    { label: 'Styling', storyId: 'components-feedback-notification--styling' },
-    { label: 'Accessibility', storyId: 'components-feedback-notification--accessibility' },
+    { label: 'Overview', storyId: 'components-notification--overview' },
+    { label: 'Usage', storyId: 'components-notification--usage' },
+    { label: 'Variants', storyId: 'components-notification--variants-overview' },
+    { label: 'Styling', storyId: 'components-notification--styling' },
+    { label: 'Accessibility', storyId: 'components-notification--accessibility' },
   ],
 }
 

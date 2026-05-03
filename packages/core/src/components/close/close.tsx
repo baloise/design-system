@@ -24,7 +24,6 @@ import { CLOSE_SIZES, CloseSize } from './close.interfaces'
 /**
  * Close renders a button element for closing or dismissing UI components with customizable size and color.
  *
- * @slot - Optional label or icon content.
  * @part close - The close button element.
  */
 @Component({

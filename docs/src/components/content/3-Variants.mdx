@@ -1,37 +1,40 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  BasicStoryTabs,
-  Footer,
-  StoryHeading,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, BasicStoryTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as ContentStories from './content.stories'
 import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
 
 <Meta title="Components/Content/Variants/Overview" />
+
 <StoryHeading of={ContentStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={CONTENT_DOC_CONFIG.section} color={CONTENT_DOC_CONFIG.color} />
-<BannerTabs
-  of={ContentStories}
-  tabs={getContentTabs('variants')}
-/>
+
+<BannerTabs of={ContentStories} tabs={getContentTabs('variants')} />
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ContentStories.WithSections}></StoryHeading>
+<StoryHeading of={ContentStories.Alignment}></StoryHeading>
 
-Content organized with multiple semantic sections and headers.
+Content area with different text alignments: left, center, and right.
 
-<BasicStoryTabs tag="content" noGuide />
+<Canvas of={ContentStories.Alignment} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ContentStories.WithNavigation}></StoryHeading>
+<StoryHeading of={ContentStories.Layout}></StoryHeading>
 
-Content area with navigation controls and breadcrumb support.
+Content area with various layout options, including different spacing and
+arrangement of elements to create visually appealing and organized content sections.
 
-<BasicStoryTabs tag="content" noGuide />
+<Canvas of={ContentStories.Layout} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContentStories.Space}></StoryHeading>
+
+Content area with different spacing options to control the amount of whitespace around and between elements, enhancing readability and visual hierarchy.
+
+<Canvas of={ContentStories.Space} />
 
 <Footer />

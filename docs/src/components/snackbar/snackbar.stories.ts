@@ -7,7 +7,7 @@ type Args = JSX.DsSnackbar & { slot: string; slotAction: string }
 const tag = 'ds-snackbar'
 
 const meta: Meta<Args> = {
-  title: 'Components/Snackbar',
+  title: 'Components/Snackbar/Variants',
   args: {
     slot: lorem1,
     slotAction: 'Okay',

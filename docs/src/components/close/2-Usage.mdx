@@ -72,34 +72,4 @@ Place close buttons in logical, consistent locations. Top-right is the standard 
   ]}
 />
 
-### Close Button Accessibility
-
-Always provide an accessible label. The X symbol alone is not sufficient.
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Close button with aria-label',
-      content: (
-        <>
-          <ds-close aria-label="Close dialog"></ds-close>
-          <div style={{ textAlign: 'left', marginTop: '12px' }}>
-            <Code noPreview code={'<ds-close aria-label="Close dialog"></ds-close>'} />
-          </div>
-        </>
-      ),
-      description: 'Screen readers announce button purpose',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Close button without label',
-      content: (
-        <ds-close></ds-close>
-      ),
-      description: 'Screen readers won\'t announce purpose',
-    },
-  ]}
-/>
-
 <Footer />

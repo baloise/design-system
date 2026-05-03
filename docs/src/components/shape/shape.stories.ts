@@ -1,19 +1,18 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalShape & { content: string }
+type Args = JSX.DsShape & { slot: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Shape',
+  title: 'Components/Shape/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-shape' }),
   },
-  ...withRender(({ content, ...args }) => `<ds-shape ${props(args)}>${content}</ds-shape>`),
+  ...withRender(({ slot, ...args }) => `<ds-shape ${props(args)}>${slot}</ds-shape>`),
 }
 
 export default meta
@@ -27,7 +26,7 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   args: {
-    content: '',
+    slot: '',
     color: 'green',
     rotation: '0',
     variation: '1',

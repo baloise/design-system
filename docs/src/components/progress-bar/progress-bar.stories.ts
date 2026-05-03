@@ -7,7 +7,7 @@ type Args = JSX.DsProgressBar
 const tag = 'ds-progress-bar'
 
 const meta: Meta<Args> = {
-  title: 'Components/Progress Bar',
+  title: 'Components/Progress Bar/Variants',
   argTypes: {
     ...withComponentControls({ tag }),
   },

@@ -7,11 +7,11 @@ export const APP_DOC_CONFIG = {
   section: 'Components / App',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-navigation-app--overview' },
-    { label: 'Usage', storyId: 'components-navigation-app--usage' },
-    { label: 'Variants', storyId: 'components-navigation-app--variants-overview' },
-    { label: 'Styling', storyId: 'components-navigation-app--styling' },
-    { label: 'Accessibility', storyId: 'components-navigation-app--accessibility' },
+    { label: 'Overview', storyId: 'components-app--overview' },
+    { label: 'Usage', storyId: 'components-app--usage' },
+    { label: 'Variants', storyId: 'components-app--variants-overview' },
+    { label: 'Styling', storyId: 'components-app--styling' },
+    { label: 'Accessibility', storyId: 'components-app--accessibility' },
   ],
 }
 

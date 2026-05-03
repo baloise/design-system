@@ -3,7 +3,7 @@ import { navigate } from '@storybook/addon-links'
 
 const getGitHubEditUrl = () => {
   try {
-    // Get the story ID from the URL (e.g., "welcome--documentation" or "components-containment-accordion--documentation")
+    // Get the story ID from the URL (e.g., "welcome--documentation" or "components-accordion--documentation")
     const params = new URLSearchParams(window.location.search)
     const storyId = params.get('id') || ''
 
@@ -28,7 +28,7 @@ const getGitHubEditUrl = () => {
     }
 
     // Parse component stories: components-category-component--variant
-    // e.g., "components-containment-accordion" -> docs/stories/components/accordion/accordion.mdx
+    // e.g., "components-accordion" -> docs/stories/components/accordion/accordion.mdx
     if (cleanId.startsWith('components-')) {
       const parts = cleanId.replace('components-', '').split('-')
       if (parts.length >= 2) {
@@ -59,8 +59,17 @@ export const Footer = ({ children }) => {
   return (
     <section className="sb-unstyled mt-4xl">
       {children}
-      <section style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', marginTop: '2rem' }}>
-        <div className="bg-grey-2" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
+      <section
+        className="bg-grey-2"
+        style={{
+          marginLeft: 'calc(-50vw + 50%)',
+          marginRight: 'calc(-50vw + 50%)',
+          marginTop: '2rem',
+          paddingLeft: '3rem',
+          paddingRight: '3rem',
+        }}
+      >
+        <div style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
           <div className="container" style={{ maxWidth: '1000px', paddingLeft: '0', paddingRight: '0' }}>
             <div className="mb-large">
               <p className="mb-small">

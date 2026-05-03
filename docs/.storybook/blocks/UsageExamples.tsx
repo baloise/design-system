@@ -14,9 +14,22 @@ interface UsageExamplesProps {
 
 export const UsageExamples = ({ items }: UsageExamplesProps): React.ReactElement => {
   return (
+    <>
+      <style>{`
+        .usage-examples-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+          .usage-examples-grid {
+            grid-template-columns: 50% 50%;
+          }
+        }
+      `}</style>
     <div
-      className="sb-unstyled mt-lg"
-      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}
+      className="sb-unstyled mt-lg usage-examples-grid"
     >
       {items.map((item, index) => {
         const isCorrect = item.type === 'correct'
@@ -38,6 +51,7 @@ export const UsageExamples = ({ items }: UsageExamplesProps): React.ReactElement
                 backgroundColor: '#f5f5f5',
                 borderRadius: '8px',
                 textAlign: item.contentIsLeftAligned ? 'left' : 'center',
+                overflow: 'auto',
               }}
             >
               <div style={{ marginBottom: '1rem', textAlign: item.contentIsLeftAligned ? 'left' : 'center' }}>
@@ -49,5 +63,6 @@ export const UsageExamples = ({ items }: UsageExamplesProps): React.ReactElement
         )
       })}
     </div>
+    </>
   )
 }

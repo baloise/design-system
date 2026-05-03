@@ -1,25 +1,24 @@
 import { BrandIconCarGreen } from '@baloise/ds-assets/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsRadio & { content: string }
+type Args = JSX.DsRadio & { slot: string }
 
 const tag = 'ds-radio'
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Radio',
+  title: 'Components/Forms/Radio/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <ds-radio-group name="playground">
-  <ds-radio ${props(args)}>${content}</ds-radio>
+  <ds-radio ${props(args)}>${slot}</ds-radio>
 </ds-radio-group>`,
   ),
 }

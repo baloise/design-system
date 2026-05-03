@@ -7,10 +7,10 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalStack & { content: string }
+type Args = JSX.DsStack
 
 const meta: Meta<Args> = {
-  title: 'Components/Stack',
+  title: 'Components/Stack/Variants',
   argTypes: {
     ...withComponentControls({ tag: 'ds-stack' }),
   },

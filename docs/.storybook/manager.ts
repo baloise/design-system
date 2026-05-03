@@ -11,6 +11,9 @@ addons.setConfig({
   sidebar: {
     showRoots: true,
     collapsedRoots: ['foundation', 'css-utilities', 'components', 'tokens', 'development', 'contributing'],
+    filters: {
+      cssOnly: item => !item.name.startsWith('🌍'),
+    },
   },
 })
 

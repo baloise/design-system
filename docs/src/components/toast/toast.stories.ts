@@ -1,21 +1,20 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 
-type Args = JSX.DsToast & { content: string }
+type Args = JSX.DsToast & { slot: string }
 
 const tag = 'ds-toast'
 
 const meta: Meta<Args> = {
-  title: 'Components/Toast',
+  title: 'Components/Toast/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<ds-toast ${props(args)}>${content}</ds-toast>`),
+  ...withRender(({ slot, ...args }) => `<ds-toast ${props(args)}>${slot}</ds-toast>`),
 }
 
 export default meta

@@ -6,30 +6,25 @@ import {
   cssClasses,
   props,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalNotification & { content: string }
+type Args = JSX.DsNotification & { slot: string }
 
 const tag = 'ds-notification'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Notification',
+  title: 'Components/Notification/Variants',
   args: {
-    ...withDefaultContent(),
     heading: 'Strong Title',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    slot: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ content, heading, ...args }) => `
+    ({ slot, heading, ...args }) => `
 <section role="status" aria-live="polite" aria-atomic="true" ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
@@ -40,7 +35,7 @@ const meta: Meta<Args> = {
       'notification',
     )}>
   <h2>${heading}</h2>
-  ${content}
+  ${slot}
 </section>`,
   ),
 }
@@ -57,8 +52,8 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   args: {},
   ...withRender(
-    ({ content, ...args }) => `<ds-notification ${props(args)}>
-  ${content}
+    ({ slot, ...args }) => `<ds-notification ${props(args)}>
+  ${slot}
 </ds-notification>`,
   ),
 })
@@ -73,22 +68,22 @@ export const Alerts = Story({
     heading: undefined,
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <div class="stack">
   <ds-notification ${props(args)} heading="Alert">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="info" heading="Information">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="success" heading="Success">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="warning" heading="Warning">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="danger" heading="Danger">
-    ${content}
+    ${slot}
   </ds-notification>
 </div>`,
   ),
@@ -100,22 +95,22 @@ export const Outlines = Story({
     heading: undefined,
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <div class="stack">
   <ds-notification ${props(args)} color="outline-base" heading="Alert">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="outline-purple" heading="Information">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="outline-green" heading="Success">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="outline-yellow" heading="Warning">
-    ${content}
+    ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="outline-red" heading="Danger">
-    ${content}
+    ${slot}
   </ds-notification>
 </div>`,
   ),

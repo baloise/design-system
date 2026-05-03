@@ -7,11 +7,11 @@ export const SPINNER_DOC_CONFIG = {
   section: 'Components / Spinner',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-feedback-spinner--overview' },
-    { label: 'Usage', storyId: 'components-feedback-spinner--usage' },
-    { label: 'Variants', storyId: 'components-feedback-spinner--variants-overview' },
-    { label: 'Styling', storyId: 'components-feedback-spinner--styling' },
-    { label: 'Accessibility', storyId: 'components-feedback-spinner--accessibility' },
+    { label: 'Overview', storyId: 'components-spinner--overview' },
+    { label: 'Usage', storyId: 'components-spinner--usage' },
+    { label: 'Variants', storyId: 'components-spinner--variants-overview' },
+    { label: 'Styling', storyId: 'components-spinner--styling' },
+    { label: 'Accessibility', storyId: 'components-spinner--accessibility' },
   ],
 }
 

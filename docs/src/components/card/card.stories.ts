@@ -1,38 +1,30 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import {
-  lorem1,
-  props,
-  StoryFactory,
-  withComponentControls,
-  withContent,
-  withDefaultContent,
-  withRender,
-} from '../../utils'
+import { lorem1, props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalCard & { content: string }
+type Args = JSX.DsCard & { slot: string; slotHeader: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Card',
+  title: 'Components/Card/Variants',
   args: {
-    ...withDefaultContent(lorem1),
+    slotHeader: 'Heading',
+    slot: lorem1,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-card' }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, slotHeader, ...args }) => `
 <ds-card ${props(args)}>
   <ds-card-header>
-    <ds-card-title>Heading</ds-card-title>
+    <ds-card-title>${slotHeader}</ds-card-title>
   </ds-card-header>
   <ds-card-content>
-    ${content}
+    ${slot}
   </ds-card-content>
   <ds-card-actions>
-    <ds-button color="secondary">Button</ds-button>
-    <ds-button>Button</ds-button>
+    <ds-button color="secondary">Secondary</ds-button>
+    <ds-button>Primary</ds-button>
   </ds-card-actions>
 </ds-card>`,
   ),
@@ -52,13 +44,13 @@ Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <article class="card">
   <header class="card-header">
     <h3 class="title">Heading</h3>
   </header>
   <div class="card-content">
-    ${content}
+    ${slot}
   </div>
   <footer class="card-actions">
     <button class="button is-secondary">Button</button>
@@ -79,7 +71,7 @@ Outlined.storyName = '🧩 Outlined'
 
 export const CardHeader = Story({
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <ds-card ${props(args)}>
   <ds-card-header>
     <ds-card-title>
@@ -101,7 +93,7 @@ export const CardHeader = Story({
     <ds-card-subtitle>Subtitle</ds-card-subtitle>
   </ds-card-header>
   <ds-card-content>
-    ${content}
+    ${slot}
   </ds-card-content>
 </ds-card>`,
   ),
@@ -214,7 +206,7 @@ TeaserCards.storyName = '🧩 Teaser Cards'
 
 export const CardImages = Story({
   ...withRender(
-    ({ content, ...args }) => `
+    () => `
  <div class="grid">
   <div class="col is-one-third">
     <ds-card dense space="sm">
@@ -297,7 +289,7 @@ CardImages.storyName = '🧩 Card Images'
 
 export const ImageTeaser = Story({
   ...withRender(
-    ({ content }) => `
+    () => `
 <ds-card image-teaser="wide">
   <a
     slot="picture"

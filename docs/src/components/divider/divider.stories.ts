@@ -2,13 +2,13 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalDivider & { content: string }
+type Args = JSX.DsDivider
 
 const tag = 'ds-divider'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Divider',
+  title: 'Components/Divider/Variants',
   argTypes: {
     ...withComponentControls({ tag }),
   },
@@ -42,7 +42,7 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   ...withRender(
-    ({ content, ...args }) => `
+    ({ ...args }) => `
 <div class="stack as-col">
   <span>Before</span>
   <ds-divider ${props(args)}></ds-divider>

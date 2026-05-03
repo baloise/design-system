@@ -40,39 +40,5 @@ import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
 
 Use app as the root wrapper. Only one per application.
 
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: App as root container',
-      content: (
-        <div>
-          &lt;ds-app&gt;
-          <br />
-          &nbsp;&nbsp;&lt;ds-header&gt;Navigation&lt;/ds-header&gt;
-          <br />
-          &nbsp;&nbsp;&lt;ds-content&gt;Page content&lt;/ds-content&gt;
-          <br />
-          &nbsp;&nbsp;&lt;ds-footer&gt;Footer&lt;/ds-footer&gt;
-          <br />
-          &lt;/ds-app&gt;
-        </div>
-      ),
-      description: 'App provides consistent root structure',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Multiple app wrappers',
-      content: (
-        <div>
-          &lt;ds-app&gt;Page 1&lt;/ds-app&gt;
-          <br />
-          &lt;ds-app&gt;Page 2&lt;/ds-app&gt;
-        </div>
-      ),
-      description: 'Multiple app wrappers conflict',
-    },
-  ]}
-/>
 
 <Footer />

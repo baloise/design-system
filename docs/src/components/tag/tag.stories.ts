@@ -6,29 +6,26 @@ import {
   props,
   StoryFactory,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalTag & { content: string }
+type Args = JSX.DsTag & { slot: string }
 
 const tag = 'ds-tag'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Tag',
+  title: 'Components/Tag/Variants',
   args: {
-    ...withDefaultContent(),
+    slot: 'Hello World',
     color: undefined,
     closable: false,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-tag' }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slot, ...args }) => `
 <span ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
@@ -42,7 +39,7 @@ const meta: Meta<Args> = {
       ? `
   <ds-icon name="${args.icon}" size="small"></ds-icon>`
       : ''
-  }${content}${
+  }${slot}${
     args.closable
       ? `
   <ds-close></ds-close>`
@@ -63,7 +60,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(({ content, ...args }) => `<ds-tag ${props(args)}>${content}</ds-tag>`),
+  ...withRender(({ slot, ...args }) => `<ds-tag ${props(args)}>${slot}</ds-tag>`),
 })
 Basic.storyName = '🧩 Basic'
 
@@ -71,7 +68,7 @@ export const BasicHtml = Story({})
 BasicHtml.storyName = '🌍 Basic'
 
 export const Closable = Story({
-  ...withRender(({ content, ...args }) => `<ds-tag closable>${content}</ds-tag>`),
+  ...withRender(({ slot, ...args }) => `<ds-tag closable>${slot}</ds-tag>`),
 })
 Closable.storyName = '🧩 Closable'
 

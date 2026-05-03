@@ -2,27 +2,20 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import {
   StoryFactory,
-  lorem1,
   props,
   withComponentControls,
-  withContent,
-  withDefaultContent,
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalList & { content: string }
+type Args = JSX.DsList
 
 const meta: Meta<Args> = {
-  title: 'Components/List',
-  args: {
-    ...withDefaultContent(lorem1),
-  },
+  title: 'Components/List/Variants',
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-list' }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ ...args }) => `
 <ds-list ${props(args)}>
   <ds-item label="Item 1"></ds-item>
   <ds-item label="Item 2" description="This is a description for item"></ds-item>
@@ -55,7 +48,7 @@ Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
   ...withRender(
-    ({ content, ...args }) => ` <ul class="list">
+    () => ` <ul class="list">
     <li class="item">
       <h5 class="item-title">Item 2</h5>
     </li>
