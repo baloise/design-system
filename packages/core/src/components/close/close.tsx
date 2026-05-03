@@ -21,6 +21,12 @@ import { i18nDsClose } from './close.i18n'
 import { BUTTON_COLORS, ButtonColor } from '../button/button.interfaces'
 import { CLOSE_SIZES, CloseSize } from './close.interfaces'
 
+/**
+ * Close renders a button element for closing or dismissing UI components with customizable size and color.
+ *
+ * @slot - Optional label or icon content.
+ * @part close - The close button element.
+ */
 @Component({
   tag: 'ds-close',
   styleUrl: 'close.host.scss',

@@ -8,7 +8,7 @@ const tag = 'ds-divider'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Layout/Divider',
+  title: 'Components/Divider',
   argTypes: {
     ...withComponentControls({ tag }),
   },

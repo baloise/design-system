@@ -4,6 +4,12 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import { HEADING_COLORS, HeadingColor } from '../../heading/heading.interfaces'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Card subtitle renders a subtitle heading for cards with customizable color and styling.
+ *
+ * @slot - The subtitle text.
+ * @part card-subtitle - The card subtitle element.
+ */
 @Component({
   tag: 'ds-card-subtitle',
   styleUrl: 'card-subtitle.host.scss',

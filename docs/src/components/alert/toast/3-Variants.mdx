@@ -1,0 +1,35 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  StoryHeading,
+} from '../../../../.storybook/blocks'
+import * as ToastStories from './toast.stories'
+import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
+
+<Meta title="Components/Toast/Variants/Overview" />
+
+<StoryHeading of={ToastStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
+
+<BannerTabs of={ToastStories} tabs={getToastTabs('variants')} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToastStories.Variants}></StoryHeading>
+
+Display toasts with different configurations: closable option, with action buttons, and various content arrangements.
+
+<Canvas of={ToastStories.Variants} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToastStories.Colors}></StoryHeading>
+
+Different color variants to convey different notification types and urgency levels.
+
+<Canvas of={ToastStories.Colors} />
+
+<Footer />

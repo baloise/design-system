@@ -15,6 +15,14 @@ import {
   TextareaChangeDetail,
 } from './textarea.interfaces'
 
+/**
+ * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
+ *
+ * @slot - The textarea field content and surrounding elements.
+ * @part textarea - The native HTML textarea element.
+ * @part prefix - The prefix wrapper (if used).
+ * @part suffix - The suffix wrapper (if used).
+ */
 @Component({
   tag: 'ds-textarea',
   styleUrl: 'textarea.host.scss',

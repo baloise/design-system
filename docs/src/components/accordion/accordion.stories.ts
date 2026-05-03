@@ -1,32 +1,23 @@
-import { BrandIconCarGreen } from '@baloise/ds-assets/dist'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import {
-  StoryFactory,
-  lorem1,
-  props,
-  withComponentControls,
-  withContent,
-  withDefaultContent,
-  withRender,
-} from '../../utils'
+import { StoryFactory, lorem1, props, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.BalAccordion & { content: string }
+type Args = JSX.DsAccordion & { slotSummary: string; slotContent: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Containment/Accordion',
+  title: 'Components/Accordion/Variants',
   args: {
-    ...withDefaultContent(lorem1),
+    slotSummary: 'Accordion Summary',
+    slotContent: lorem1,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'ds-accordion' }),
   },
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slotSummary, slotContent, ...args }) => `
 <ds-accordion ${props(args)}>
-  <div slot="summary">Details</div>
-  <div slot="content" class="py-base">${content}</div>
+  <div slot="summary">${slotSummary}</div>
+  <div slot="content" class="py-base">${slotContent}</div>
 </ds-accordion>`,
   ),
 }
@@ -67,7 +58,7 @@ LeftMarkerAccordion.storyName = '🧩 Left Marker Accordion'
 export const StackAccordion = Story({
   args: {},
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slotSummary, slotContent, ...args }) => `
 <ds-card>
   <ds-card-content>
     <ds-accordion ${props(args)}>
@@ -82,13 +73,13 @@ export const StackAccordion = Story({
         ></ds-icon>
         <div class="stack-content">
           <h5 class="title">Label Heading</h5>
-          <span class="text is-sm">${content}</span>
+          <span class="text is-sm">${slotSummary}</span>
         </div>
         <ds-toggle></ds-toggle>
       </div>
       <div slot="content" class="py-base">
-        ${content}
-        ${content}
+        ${slotContent}
+        ${slotContent}
       </div>
     </ds-accordion>
   </ds-card-content>
@@ -100,20 +91,20 @@ StackAccordion.storyName = '🧩 Stack Accordion'
 export const AccordionGroup = Story({
   args: {},
   ...withRender(
-    ({ content, ...args }) => `
+    ({ slotContent, slotSummary, ...args }) => `
 <ds-accordion group="accordion-group">
-  <div slot="summary">Accordion 1</div>
-  <div slot="content" class="py-base bg-purple-2">${content}</div>
+  <div slot="summary">${slotSummary} 1</div>
+  <div slot="content" class="py-base bg-purple-2">${slotContent}</div>
 </ds-accordion>
 <hr class="divider" />
 <ds-accordion group="accordion-group">
-  <div slot="summary">Accordion 2</div>
-  <div slot="content" class="py-base bg-yellow-2">${content}</div>
+  <div slot="summary">${slotSummary} 2</div>
+  <div slot="content" class="py-base bg-yellow-2">${slotContent}</div>
 </ds-accordion>
 <hr class="divider" />
 <ds-accordion group="accordion-group" open>
-  <div slot="summary">Accordion 3</div>
-  <div slot="content" class="py-base bg-red-2">${content}</div>
+  <div slot="summary">${slotSummary} 3</div>
+  <div slot="content" class="py-base bg-red-2">${slotContent}</div>
 </ds-accordion>`,
   ),
 })

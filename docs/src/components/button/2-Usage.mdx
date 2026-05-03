@@ -1,0 +1,100 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ButtonStories from './button.stories'
+import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
+
+<Meta title="Components/Button/Usage" />
+<Banner label={'Usage'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+<BannerTabs
+  of={ButtonStories}
+  tabs={getButtonTabs('usage')}
+/>
+
+## When to Use
+
+- Trigger an action or event (form submit, navigation, opening a dialog)
+- Provide a clear call-to-action with a visible label
+- Group related actions in a button group or toolbar
+- Show a loading state while an async operation is in progress
+
+## When NOT to Use
+
+- For navigation between pages — use a plain `<a>` link or the `link` color variant instead
+- As a container for complex content — buttons should contain only short labels and/or an icon
+- To display status information — use a badge or tag component instead
+- When no interaction is available — do not render a disabled button as a placeholder
+
+## Do's and Don'ts
+
+### Button Labels
+
+Labels should be short, specific, and action-oriented. Avoid generic verbs like "Click here" or "Submit".
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Action-oriented label',
+      content: (
+        <ds-button color="primary">Save changes</ds-button>
+      ),
+      description: 'Tells the user exactly what will happen',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Generic label',
+      content: (
+        <ds-button color="primary">Click here</ds-button>
+      ),
+      description: 'Gives no context about what the button does',
+    },
+  ]}
+/>
+
+### Icon-only Buttons
+
+Always provide an accessible label for icon-only square or circle buttons.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: aria-label on icon button',
+      content: (
+        <>
+          <ds-button square aria-label="Add item">
+            <ds-icon name="plus"></ds-icon>
+          </ds-button>
+          <div style={{ textAlign: 'left' }}>
+            <Code noPreview code={'<ds-button square aria-label="Add item">\n  <ds-icon name="plus"></ds-icon>\n</ds-button>'} />
+          </div>
+        </>
+      ),
+      description: 'Screen readers announce "Add item, button"',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No accessible label',
+      content: (
+        <>
+          <ds-button square>
+            <ds-icon name="plus"></ds-icon>
+          </ds-button>
+          <div style={{ textAlign: 'left' }}>
+            <Code noPreview code={'<ds-button square>\n  <ds-icon name="plus"></ds-icon>\n</ds-button>'} />
+          </div>
+        </>
+      ),
+      description: 'Screen readers have no context for this button',
+    },
+  ]}
+/>
+
+<Footer />

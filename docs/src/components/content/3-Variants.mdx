@@ -1,0 +1,37 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ContentStories from './content.stories'
+import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
+
+<Meta title="Components/Content/Variants/Overview" />
+<StoryHeading of={ContentStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={CONTENT_DOC_CONFIG.section} color={CONTENT_DOC_CONFIG.color} />
+<BannerTabs
+  of={ContentStories}
+  tabs={getContentTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContentStories.WithSections}></StoryHeading>
+
+Content organized with multiple semantic sections and headers.
+
+<BasicStoryTabs tag="content" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContentStories.WithNavigation}></StoryHeading>
+
+Content area with navigation controls and breadcrumb support.
+
+<BasicStoryTabs tag="content" noGuide />
+
+<Footer />

@@ -8,7 +8,7 @@ type Args = JSX.DsCheckbox & { content: string }
 const tag = 'ds-checkbox'
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Checkbox',
+  title: 'Components/Forms/Checkbox',
   args: {
     ...withDefaultContent(),
   },

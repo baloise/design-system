@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as TextStories from './text.stories'
 
 <Meta of={TextStories} />
@@ -18,9 +18,7 @@ components. This helps improve the rendering speed of your application or websit
 
 <BasicStoryTabs tag="text" htmlStory={TextStories.BasicHtml} webComponentStory={TextStories.Basic} index={1} />
 
-<PlaygroundBar of={TextStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
+{/* STORIES */}}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TextStories.BoldText}></StoryHeading>

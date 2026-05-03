@@ -7,7 +7,7 @@ type Args = JSX.BalClose & { content: string }
 const tag = 'ds-close'
 
 const meta: Meta<Args> = {
-  title: 'Components/Navigation/Close',
+  title: 'Components/Close',
   args: {},
   argTypes: {
     ...withComponentControls({ tag }),

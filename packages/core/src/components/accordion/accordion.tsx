@@ -23,8 +23,19 @@ import {
   type AccordionToggleDetail,
   type AccordionToggle,
 } from './accordion.interfaces'
-import { DsComponentDescriptionListDetailWeight } from 'packages/tokens/dist/js/base.tokens'
 
+/**
+ * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
+ * Perfect for organizing large amounts of content into logical, expandable groups.
+ *
+ * @slot content - The content slot defines the collapsible content of the accordion, which is hidden by default and becomes visible when the accordion is opened.
+ * @slot summary - The summary slot defines the summary of the accordion, which is always visible and serves as the toggle button to open or close the accordion.
+ * @part accordion - The accordion container element.
+ * @part header - The header element that contains the summary and marker.
+ * @part summary - The summary element that serves as the toggle button.
+ * @part marker - The marker element that indicates the open/close state of the accordion.
+ * @part content - The content element that contains the collapsible content of the accordion.
+ */
 @Component({
   tag: 'ds-accordion',
   styleUrl: 'accordion.host.scss',
@@ -332,6 +343,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
         >
           <div id="inner">
             <slot name="content" />
+            <slot />
           </div>
         </div>
       </Host>

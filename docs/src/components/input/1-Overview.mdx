@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as InputStories from './input.stories'
+import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
+
+<Meta title="Components/Forms/Input/Overview" />
+<Banner label={'Overview'} section={INPUT_DOC_CONFIG.section} color={INPUT_DOC_CONFIG.color} />
+<BannerTabs
+  of={InputStories}
+  tabs={getInputTabs('overview')}
+/>
+
+<Lead>
+  **Input** is a text form field for collecting single-line user data. Supports various types (text, email, password, search) and validation states with optional icons and helper text.
+</Lead>
+
+<Canvas of={InputStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-input',
+      label: 'ds-input',
+      content: <Controls of={InputStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

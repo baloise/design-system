@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as TextareaStories from './textarea.stories'
+import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
+
+<Meta title="Components/Forms/Textarea/Overview" />
+<Banner label={'Overview'} section={TEXTAREA_DOC_CONFIG.section} color={TEXTAREA_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextareaStories}
+  tabs={getTextareaTabs('overview')}
+/>
+
+<Lead>
+  **Textarea** is a multi-line text input field for collecting longer form content. Perfect for comments, feedback, descriptions, and other longer text inputs with optional character counting and resize control.
+</Lead>
+
+<Canvas of={TextareaStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-textarea',
+      label: 'ds-textarea',
+      content: <Controls of={TextareaStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

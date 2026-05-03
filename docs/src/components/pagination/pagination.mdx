@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, Footer, Lead, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as PaginationStories from './pagination.stories'
 import PaginationParts from './pagination.parts.svg'
 
@@ -16,9 +16,7 @@ import PaginationParts from './pagination.parts.svg'
 
 <Canvas of={PaginationStories.Basic} sourceState={'shown'} />
 
-<PlaygroundBar of={PaginationStories.Basic}></PlaygroundBar>
-
-{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}}
 
 <StoryHeading of={PaginationStories.Alignment}></StoryHeading>
 
@@ -56,7 +54,7 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
-## Parts
+## CSS Shadow Parts
 
 <img src={PaginationParts} alt="Pagination parts diagram" />
 

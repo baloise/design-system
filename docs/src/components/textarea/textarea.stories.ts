@@ -7,7 +7,7 @@ type Args = JSX.DsTextarea
 const tag = 'ds-textarea'
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Textarea',
+  title: 'Components/Forms/Textarea',
   args: {},
   argTypes: {
     ...withComponentControls({ tag }),

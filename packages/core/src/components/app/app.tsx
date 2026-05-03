@@ -4,6 +4,12 @@ import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Logger, type LogInstance }
 import { DsComponentInterface, updateDsAnimated, updateDsLogger } from '@global'
 import { startFocusVisible } from './app.focus.util'
 
+/**
+ * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+ *
+ * @slot - All content and child elements.
+ * @part app - The app container element.
+ */
 @Component({
   tag: 'ds-app',
   styleUrl: 'app.scss',

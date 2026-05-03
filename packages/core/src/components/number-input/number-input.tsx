@@ -34,6 +34,16 @@ import {
   NumberInputKeyPressDetail,
 } from './number-input.interfaces'
 
+/**
+ * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
+ *
+ * @slot - The number input field content and surrounding elements.
+ * @part input - The native HTML input element.
+ * @part prefix - The prefix wrapper (if used).
+ * @part suffix - The suffix wrapper (if used).
+ * @part decrement - The decrement button.
+ * @part increment - The increment button.
+ */
 @Component({
   tag: 'ds-number-input',
   styleUrl: 'number-input.host.scss',

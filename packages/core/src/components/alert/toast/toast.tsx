@@ -23,6 +23,14 @@ import {
 import { ButtonTarget } from '../../button/button.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
+ *
+ * @slot - The toast message content.
+ * @slot action - The action button (if used).
+ * @part toast - The toast container element.
+ * @part close - The close button element.
+ */
 @Component({
   tag: 'ds-toast',
   styleUrl: 'toast.host.scss',

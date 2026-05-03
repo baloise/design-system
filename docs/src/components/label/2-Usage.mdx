@@ -1,0 +1,96 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as LabelStories from './label.stories'
+import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
+
+<Meta title="Components/Forms/Label/Usage" />
+<Banner label={'Usage'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+<BannerTabs
+  of={LabelStories}
+  tabs={getLabelTabs('usage')}
+/>
+
+## When to Use
+
+- Label form input fields to improve accessibility and usability
+- Indicate required or optional form fields with clear visual indicators
+- Display form field status (valid, invalid, disabled)
+- Provide context and instructions for form inputs
+- Associate labels with inputs using the `htmlFor` attribute
+
+## When NOT to Use
+
+- Do not use labels for decorative text or non-form content — use the Text component instead
+- Do not omit `htmlFor` attribute — always associate labels with input fields
+- Do not use multiple labels for the same input field
+- For form field instructions or helper text — consider using separate helper text components
+
+## Do's and Don'ts
+
+### Label Association
+
+Always use the `htmlFor` attribute to associate labels with their corresponding input fields. This improves accessibility and expands the clickable area.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Label associated with input',
+      content: (
+        <>
+          <Code noPreview code={'<ds-label htmlFor="email-input">Email</ds-label>\n<input id="email-input" type="email" />'} />
+        </>
+      ),
+      description: 'Users can click the label to focus the input; screen readers announce the association',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Label not associated',
+      content: (
+        <>
+          <Code noPreview code={'<ds-label>Email</ds-label>\n<input type="email" />'} />
+        </>
+      ),
+      description: 'No programmatic relationship between label and input; poor accessibility',
+    },
+  ]}
+/>
+
+### Required Indicators
+
+Use the `required` prop to automatically display required/optional indicators. Set to `false` to show "optional" suffix.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear required status',
+      content: (
+        <>
+          <ds-label htmlFor="required-input" required="true">Email address</ds-label>
+          <ds-label htmlFor="optional-input" required="false" class="mt-normal">Company (optional)</ds-label>
+        </>
+      ),
+      description: 'Users understand which fields are required before interaction',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Ambiguous requirements',
+      content: (
+        <>
+          <ds-label htmlFor="input">Email</ds-label>
+        </>
+      ),
+      description: 'Users must discover requirements through validation',
+    },
+  ]}
+/>
+
+<Footer />

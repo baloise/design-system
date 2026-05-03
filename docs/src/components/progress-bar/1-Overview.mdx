@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
+
+<Meta title="Components/Progress-bar/Overview" />
+<Banner label={'Overview'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
+<BannerTabs
+  of={ProgressBarStories}
+  tabs={getProgressBarTabs('overview')}
+/>
+
+<Lead>
+  **Progress-bar** displays the progress of a task or operation as a visual indicator. Shows completion percentage, loading status, or multi-step process progress with optional labels.
+</Lead>
+
+<Canvas of={ProgressBarStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-progress-bar',
+      label: 'ds-progress-bar',
+      content: <Controls of={ProgressBarStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

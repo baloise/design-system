@@ -1,6 +1,21 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use './app.vars' as *;
 
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --app-breakpoint-mobile: Mobile breakpoint width.
+ * @prop --app-breakpoint-tablet: Tablet breakpoint width.
+ * @prop --app-breakpoint-desktop: Desktop breakpoint width.
+ * @prop --app-font-family: Base font family for all components.
+ * @prop --app-text-color: Default text color.
+ * @prop --app-background-color: Default background color.
+ * @prop --app-animation-enabled: Whether animations are enabled globally.
+ */
+
 .ds-app {
   position: relative;
 }

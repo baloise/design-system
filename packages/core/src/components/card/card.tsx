@@ -30,6 +30,14 @@ import type { ButtonElementType, ButtonTarget } from '../button/button.interface
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Card groups related content together in a contained, visually distinct container with optional header and footer.
+ *
+ * @slot - The main card content.
+ * @slot header - Content displayed in the card header.
+ * @slot footer - Content displayed in the card footer.
+ * @part card - The card container element.
+ */
 @Component({
   tag: 'ds-card',
   styleUrl: 'card.host.scss',

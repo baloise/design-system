@@ -1,0 +1,77 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as PaginationStories from './pagination.stories'
+import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
+
+<Meta title="Components/Pagination/Styling" />
+<Banner label={'Styling'} section={PAGINATION_DOC_CONFIG.section} color={PAGINATION_DOC_CONFIG.color} />
+<BannerTabs
+  of={PaginationStories}
+  tabs={getPaginationTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target pagination buttons and nav:
+
+```css
+/* Style page buttons */
+ds-pagination::part(button) {
+  border-radius: 4px;
+}
+
+/* Style active page button */
+ds-pagination::part(button-active) {
+  font-weight: bold;
+}
+
+/* Style navigation wrapper */
+ds-pagination::part(nav) {
+  gap: 16px;
+}
+```
+
+<br />
+
+Primary parts of the pagination component include:
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `nav` | Nav | The pagination navigation container. |
+| `button` | Button | A page button. |
+| `button-active` | Button | The current active page button. |
+| `prev-button` | Button | The previous page button. |
+| `next-button` | Button | The next page button. |
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override pagination styling:
+
+```css
+/* Override globally */
+:root {
+  --ds-pagination-color-background: #f5f5f5;
+}
+
+/* Override for a specific pagination */
+ds-pagination {
+  --pagination-color-border: #999;
+}
+```
+
+<TokenOverview component="pagination" />
+
+<Footer />

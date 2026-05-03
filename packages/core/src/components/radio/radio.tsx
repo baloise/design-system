@@ -35,6 +35,14 @@ import {
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
+ *
+ * @slot - The radio label content.
+ * @slot helper - The helper or hint text below the radio.
+ * @part radio - The native HTML input element.
+ * @part container - The radio and label wrapper.
+ */
 @Component({
   tag: 'ds-radio',
   styleUrl: 'radio.host.scss',

@@ -7,7 +7,7 @@ type Args = JSX.DsPagination
 const tag = 'ds-pagination'
 
 const meta: Meta<Args> = {
-  title: 'Components/Navigation/Pagination',
+  title: 'Components/Pagination',
   argTypes: {
     ...withComponentControls({ tag }),
   },

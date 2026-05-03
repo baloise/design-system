@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withRender } from '../../ut
 type Args = JSX.BalSpinner
 
 const meta: Meta<Args> = {
-  title: 'Components/Feedback/Spinner',
+  title: 'Components/Spinner',
   args: {},
   argTypes: {
     ...withComponentControls({ tag: 'ds-spinner' }),

@@ -1,0 +1,45 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as CheckboxStories from './checkbox.stories'
+import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
+
+<Meta title="Components/Forms/Checkbox/Variants/Overview" />
+<StoryHeading of={CheckboxStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
+<BannerTabs
+  of={CheckboxStories}
+  tabs={getCheckboxTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.States}></StoryHeading>
+
+Checkboxes support checked, unchecked, and indeterminate states.
+
+<BasicStoryTabs tag="checkbox" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Disabled}></StoryHeading>
+
+Checkboxes can be disabled to prevent interaction when selection is not available.
+
+<BasicStoryTabs tag="checkbox" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Sizes}></StoryHeading>
+
+Control checkbox size with size prop.
+
+<BasicStoryTabs tag="checkbox" noGuide />
+
+<Footer />

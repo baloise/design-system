@@ -24,6 +24,14 @@ import { BUTTON_TARGETS, ButtonTarget } from '../../button/button.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
+ *
+ * @slot - The snackbar message content.
+ * @slot action - The action button (if used).
+ * @part snackbar - The snackbar container element.
+ * @part close - The close button element.
+ */
 @Component({
   tag: 'ds-snackbar',
   styleUrl: 'snackbar.host.scss',

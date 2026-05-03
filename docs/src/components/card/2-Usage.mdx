@@ -1,0 +1,108 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Usage" />
+<Banner label={'Usage'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+<BannerTabs
+  of={CardStories}
+  tabs={getCardTabs('usage')}
+/>
+
+## When to Use
+
+- Display related content as a self-contained module
+- Create product, article, or profile summary cards
+- Group form fields or steps in a focused container
+- Highlight featured content or promotions
+- Build grids of related items (gallery, product listing)
+
+## When NOT to Use
+
+- For simple content that doesn't require visual separation — use plain dividers or spacing instead
+- As the only layout method on a page — combine cards with other layout components
+- To hide content that should be immediately visible — do not nest important information inside cards
+- For very simple elements like single buttons or links — cards add unnecessary overhead
+
+## Do's and Don'ts
+
+### Card Content Organization
+
+Keep card content organized with clear visual hierarchy. Use headers, footers, and internal spacing effectively.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Organized card with header and footer',
+      content: (
+        <ds-card>
+          <div slot="header">
+            <strong>Product Title</strong>
+          </div>
+          <p>Product description and details go here.</p>
+          <div slot="footer">Action buttons</div>
+        </ds-card>
+      ),
+      description: 'Clear structure guides users through content',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Unorganized card content',
+      content: (
+        <ds-card>
+          <p>Title mixed with description mixed with buttons all in one place</p>
+        </ds-card>
+      ),
+      description: 'Difficult for users to scan and understand hierarchy',
+    },
+  ]}
+/>
+
+### Card Images and Teasers
+
+Use the `imageTeaser` prop to display large images that attract attention and provide context.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Image teaser for visual emphasis',
+      content: (
+        <>
+          <ds-card imageTeaser="top">
+            <img src="https://via.placeholder.com/300x200" alt="Card image" />
+            <p>Content with visual context</p>
+          </ds-card>
+          <div style={{ textAlign: 'left' }}>
+            <Code noPreview code={'<ds-card imageTeaser="top">\n  <img src="..." />\n  <p>Content</p>\n</ds-card>'} />
+          </div>
+        </>
+      ),
+      description: 'Images draw attention and provide context',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Image without structure',
+      content: (
+        <>
+          <ds-card>
+            <img src="https://via.placeholder.com/300x200" alt="" />
+            <p>Content</p>
+          </ds-card>
+        </>
+      ),
+      description: 'Images should be intentionally positioned',
+    },
+  ]}
+/>
+
+<Footer />

@@ -1,0 +1,105 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
+
+<Meta title="Components/Close/Usage" />
+<Banner label={'Usage'} section={CLOSE_DOC_CONFIG.section} color={CLOSE_DOC_CONFIG.color} />
+<BannerTabs
+  of={CloseStories}
+  tabs={getCloseTabs('usage')}
+/>
+
+## When to Use
+
+- Dismiss notifications or alerts
+- Close modals or dialogs
+- Remove tags from a tag list or input
+- Close collapsible panels or popovers
+- Remove items from selectable lists
+- Dismiss temporary UI elements
+
+## When NOT to Use
+
+- As a generic button — use the button component instead
+- For primary navigation or actions — close buttons should be secondary
+- Without clear intent about what will be dismissed
+- On elements that can't be dismissed or hidden
+- Without proper labeling and accessibility attributes
+
+## Do's and Don'ts
+
+### Close Button Placement
+
+Place close buttons in logical, consistent locations. Top-right is the standard for modals and cards.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Close button in top-right',
+      content: (
+        <div style={{ border: '1px solid #ccc', padding: '16px', position: 'relative', width: '300px' }}>
+          <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
+            <ds-close></ds-close>
+          </div>
+          <h3>Dialog Title</h3>
+          <p>Dialog content goes here.</p>
+        </div>
+      ),
+      description: 'Follows user expectations for modal layout',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Close button buried in content',
+      content: (
+        <div style={{ border: '1px solid #ccc', padding: '16px' }}>
+          <h3>Dialog Title</h3>
+          <p>Dialog content goes here.</p>
+          <p>Some more content</p>
+          <ds-close></ds-close>
+        </div>
+      ),
+      description: 'Hard for users to find and dismiss',
+    },
+  ]}
+/>
+
+### Close Button Accessibility
+
+Always provide an accessible label. The X symbol alone is not sufficient.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Close button with aria-label',
+      content: (
+        <>
+          <ds-close aria-label="Close dialog"></ds-close>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code noPreview code={'<ds-close aria-label="Close dialog"></ds-close>'} />
+          </div>
+        </>
+      ),
+      description: 'Screen readers announce button purpose',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Close button without label',
+      content: (
+        <ds-close></ds-close>
+      ),
+      description: 'Screen readers won\'t announce purpose',
+    },
+  ]}
+/>
+
+<Footer />

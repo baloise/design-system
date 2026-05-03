@@ -7,7 +7,7 @@ type Args = JSX.DsSegment & { content: string }
 const tag = 'ds-segment'
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Segment',
+  title: 'Components/Forms/Segment',
   args: {
     ...withDefaultContent(),
   },

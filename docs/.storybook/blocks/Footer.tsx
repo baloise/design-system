@@ -57,7 +57,7 @@ const getGitHubEditUrl = () => {
 export const Footer = ({ children }) => {
   const githubEditUrl = useMemo(() => getGitHubEditUrl(), [])
   return (
-    <section className="sb-unstyled mt-2xl">
+    <section className="sb-unstyled mt-4xl">
       {children}
       <section style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', marginTop: '2rem' }}>
         <div className="bg-grey-2" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>

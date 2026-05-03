@@ -1,0 +1,73 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as AppStories from './app.stories'
+import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
+
+<Meta title="Components/App/Styling" />
+<Banner label={'Styling'} section={APP_DOC_CONFIG.section} color={APP_DOC_CONFIG.color} />
+<BannerTabs
+  of={AppStories}
+  tabs={getAppTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target app sections and layout:
+
+```css
+/* Style the app root container */
+ds-app::part(container) {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* Style the main content area */
+ds-app::part(main) {
+  flex: 1;
+  overflow-y: auto;
+}
+```
+
+<br />
+
+Primary parts of the app component include:
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `container` | Div | The root app container. |
+| `main` | Div | The main content area. |
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override app styling:
+
+```css
+/* Override globally */
+:root {
+  --ds-app-color-background: #ffffff;
+  --ds-app-color-text: #000000;
+}
+
+/* Override for a specific app */
+ds-app {
+  --app-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+```
+
+<TokenOverview component="app" />
+
+<Footer />

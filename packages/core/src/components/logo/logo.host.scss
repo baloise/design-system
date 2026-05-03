@@ -7,6 +7,12 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --logo-color: Color of the logo.
+ * @prop --logo-height: Height of the logo.
+ * @prop --logo-width: Width of the logo.
+ * @prop --logo-animation-duration: Duration of the logo animation.
+ * @prop --logo-animation-easing: Easing function of the logo animation.
  */
 
 :host {

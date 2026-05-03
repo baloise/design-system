@@ -1,0 +1,69 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
+
+<Meta title="Components/Forms/Number-input/Usage" />
+<Banner label={'Usage'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
+<BannerTabs
+  of={NumberInputStories}
+  tabs={getNumberInputTabs('usage')}
+/>
+
+## When to Use
+
+- Collect quantity or amount inputs
+- Input numeric values with specific ranges (age, quantity, price)
+- Set numeric preferences with increment/decrement controls
+- Ensure data validation for numeric entries
+- Provide clear min/max value constraints
+
+## When NOT to Use
+
+- For phone numbers or codes that shouldn't be mathematically treated — use regular input
+- For date/time values — use appropriate date/time inputs
+- For simple yes/no choices — use checkbox or radio
+- When you need extensive text entry — use regular input or textarea
+- For measurements with units — consider adding unit selector separately
+
+## Do's and Don'ts
+
+### Min/Max Constraints
+
+Always define min/max constraints when applicable. Users need to know the acceptable range.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear constraints',
+      content: (
+        <div>
+          <label htmlFor="age">Age (18-100)</label>
+          <ds-input id="age" type="number" min="18" max="100" value="25"></ds-input>
+        </div>
+      ),
+      description: 'Users understand acceptable values',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No constraints shown',
+      content: (
+        <div>
+          <label htmlFor="qty">Quantity</label>
+          <ds-input id="qty" type="number"></ds-input>
+        </div>
+      ),
+      description: 'Users unsure of valid range',
+    },
+  ]}
+/>
+
+<Footer />

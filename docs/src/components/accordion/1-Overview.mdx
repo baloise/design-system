@@ -1,0 +1,28 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+  Lead,
+} from '../../../.storybook/blocks'
+import * as AccordionStories from './accordion.stories'
+import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
+
+<Meta title="Components/Accordion/Overview" />
+
+<Banner label={'Overview'} section={ACCORDION_DOC_CONFIG.section} color={ACCORDION_DOC_CONFIG.color} />
+
+<BannerTabs of={AccordionStories} tabs={getAccordionTabs('overview')} />
+
+<ComponentLead component="accordion" />
+
+<Canvas of={AccordionStories.Basic} sourceState="shown" />
+
+<Controls of={AccordionStories.Basic} />
+
+<ComponentPublicMethods component="accordion" />
+
+<Footer />

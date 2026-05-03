@@ -5,6 +5,14 @@ import { CheckboxLabelPosition, CheckboxGroupColumns } from '../checkbox/checkbo
 import { ToggleTileColor, ToggleFocusDetail, ToggleBlurDetail, ToggleChangeDetail } from './toggle.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
+ *
+ * @slot - The toggle label content.
+ * @slot helper - The helper or hint text below the toggle.
+ * @part toggle - The native HTML input element.
+ * @part container - The toggle and label wrapper.
+ */
 @Component({
   tag: 'ds-toggle',
   styleUrl: 'toggle.host.scss',

@@ -46,6 +46,8 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
           marginRight: 'calc(-50vw + 50%)',
           minHeight: '10rem',
           position: 'relative',
+          paddingLeft: '3rem',
+          paddingRight: '3rem',
         }}
       >
         <div className="flex gap-base" style={{ maxWidth: '1000px', margin: 'auto', position: 'relative' }}>
@@ -116,6 +118,7 @@ export const BannerTabs = ({ of, children, color, label, section, puzzle, tabs }
       className={className}
       style={{
         marginTop: '0',
+        marginBottom: '6rem',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
         position: 'sticky',
@@ -127,10 +130,11 @@ export const BannerTabs = ({ of, children, color, label, section, puzzle, tabs }
         <div
           style={{
             borderBottom: `2px solid #ffaca6`,
-            // marginTop: '2rem',
             position: 'sticky',
             top: 0,
             zIndex: 1000,
+            paddingLeft: '3rem',
+            paddingRight: '3rem',
           }}
         >
           <div
@@ -140,33 +144,40 @@ export const BannerTabs = ({ of, children, color, label, section, puzzle, tabs }
               margin: 'auto',
             }}
           >
-            {tabs.map((tab, index) => (
-              <a
-                className="title hover:text-primary-hover active:text-primary-active text-align-center"
-                key={index}
-                href={tab.href}
-                style={{
-                  padding: '0.75rem 1.5rem',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  borderBottom: tab.active
-                    ? `3px solid ${background === 'bg-primary' ? 'white' : 'currentColor'}`
-                    : 'none',
-                  borderRadius: 0,
-                  cursor: 'pointer',
-                  fontWeight: '700',
-                  fontSize: '1.125rem',
-                  transition: 'all 0.2s ease',
-                  marginBottom: '-2px',
-                }}
-                onClick={e => {
-                  e.preventDefault()
-                  navigate({ title: tab.storyId })
-                }}
-              >
-                {tab.label}
-              </a>
-            ))}
+            <div
+              style={{
+                display: 'flex',
+                marginLeft: '-1.5rem',
+              }}
+            >
+              {tabs.map((tab, index) => (
+                <a
+                  className="title hover:text-primary-hover active:text-primary-active text-align-center"
+                  key={index}
+                  href={tab.href}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    borderBottom: tab.active
+                      ? `3px solid ${background === 'bg-primary' ? 'white' : 'currentColor'}`
+                      : 'none',
+                    borderRadius: 0,
+                    cursor: 'pointer',
+                    fontWeight: '700',
+                    fontSize: '1.125rem',
+                    transition: 'all 0.2s ease',
+                    marginBottom: '-2px',
+                  }}
+                  onClick={e => {
+                    e.preventDefault()
+                    navigate({ title: tab.storyId })
+                  }}
+                >
+                  {tab.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       )}

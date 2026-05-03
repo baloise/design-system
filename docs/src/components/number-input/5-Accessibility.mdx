@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
+
+<Meta title="Components/Forms/Number-input/Accessibility" />
+<Banner label={'Accessibility'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
+<BannerTabs
+  of={NumberInputStories}
+  tabs={getNumberInputTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Associated Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always associate a <code>&lt;label&gt;</code> with the number input using the <code>for</code> attribute. Include min/max constraints in the label.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Announce Constraints',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Make min/max constraints clear in the label or with <code>aria-describedby</code>. Screen users need to know the valid range.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Accessible Buttons',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Increment/decrement buttons should have accessible labels like "Increase" or "Decrease" announced by screen readers.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Control',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Support arrow keys (up/down) for keyboard users to increment/decrement values easily.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use number inputs without labels. Screen readers need clear context about what number is being requested.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Hidden Constraints',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't hide min/max constraints in placeholder text or elsewhere. Make them immediately visible and announced.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The number-input component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Labels (1.3.1)** — Inputs have associated labels
+- **Identification of Input (3.3.2)** — Input purpose is clearly labeled
+- **Focus Visible (2.4.7)** — Clear focus indicator
+- **Keyboard Accessible (2.1.1)** — Arrow keys and buttons are keyboard accessible
+- **Name, Role, Value (4.1.2)** — Proper semantics for buttons and input
+
+<Footer />

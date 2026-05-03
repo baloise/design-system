@@ -15,6 +15,12 @@ import {
   type StackDirection,
 } from './stack.interfaces'
 
+/**
+ * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
+ *
+ * @slot - The stack items (child elements).
+ * @part stack - The stack container element.
+ */
 @Component({
   tag: 'ds-stack',
   styleUrl: './stack.host.scss',

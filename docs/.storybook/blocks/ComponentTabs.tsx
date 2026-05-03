@@ -44,17 +44,21 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
 
   const activeTabData = tabs.find(t => t.id === activeTab)
 
+  if (tabs.length === 1) {
+    return <div className="sb-unstyled">{tabs[0].content}</div>
+  }
+
   return (
-    <div className="sb-unstyled" style={{ display: 'flex', flexDirection: 'column', margin: '24px 0' }}>
+    <div className="sb-unstyled" style={{ display: 'flex', flexDirection: 'column', margin: '2rem 0' }}>
       <div
         role="tablist"
         style={{
           display: 'flex',
           gap: 0,
-          borderBottom: '2px solid #e9e9e9',
-          background: '#f9f9f9',
+          borderBottom: '2px solid #e8e8e8',
+          // background: '#fafafa',
           borderRadius: '4px 4px 0 0',
-          overflow: 'hidden',
+          // overflow: 'hidden',
         }}
       >
         {tabs.map(tab => (
@@ -64,30 +68,31 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
             role="tab"
             aria-selected={activeTab === tab.id}
             aria-controls={`panel-${tab.id}`}
+            className="title"
             style={{
-              padding: '12px 20px',
+              padding: '12px 24px',
               border: 'none',
               background: activeTab === tab.id ? '#fff' : 'transparent',
-              color: activeTab === tab.id ? '#2563eb' : '#666',
+              color: activeTab === tab.id ? '#000d6e' : '#000d6e',
               cursor: 'pointer',
-              fontWeight: activeTab === tab.id ? '600' : '500',
-              fontSize: '14px',
+              fontSize: '16px',
               lineHeight: '1.5',
-              borderBottom: activeTab === tab.id ? '3px solid #2563eb' : 'none',
               marginBottom: '-2px',
+              zIndex: 100,
+              borderBottom: activeTab === tab.id ? '2px solid #000d6e' : '2px solid transparent',
               transition: 'all 150ms ease-in-out',
               whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => {
               if (activeTab !== tab.id) {
-                e.currentTarget.style.color = '#2563eb'
-                e.currentTarget.style.background = '#f0f0f0'
+                e.currentTarget.style.color = '#0014aa'
+                // e.currentTarget.style.background = '#fafafa'
               }
             }}
             onMouseLeave={e => {
               if (activeTab !== tab.id) {
-                e.currentTarget.style.color = '#666'
-                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.color = '#000d6e'
+                // e.currentTarget.style.background = 'transparent'
               }
             }}
           >
@@ -95,17 +100,7 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
           </button>
         ))}
       </div>
-      <div
-        role="tabpanel"
-        id={`panel-${activeTab}`}
-        style={{
-          padding: '24px',
-          background: '#fff',
-          border: '1px solid #e9e9e9',
-          borderTop: 'none',
-          borderRadius: '0 0 4px 4px',
-        }}
-      >
+      <div role="tabpanel" id={`panel-${activeTab}`} style={{}}>
         {activeTabData?.content}
       </div>
     </div>

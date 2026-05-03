@@ -1,6 +1,6 @@
 ---
 name: lint-stencil-component
-description: Use when asked to check, audit, review, or fix a Stencil component in the Baloise Design System against the design system style guide and Stencil best practices — verifies and repairs imports (@utils, @global aliases), component interfaces (const arrays with derived types), props (readonly, type annotations on defaults, reflect attribute, enum types), lifecycle validation, event handlers, Watch handlers, Listen handlers, method visibility, event naming, ComponentInterface/Loggable implementation, @Validate decorators, section comment dividers, JSDocs, and code organization per Stencil style guide
+description: Use when asked to check, audit, review, or fix a Stencil component in the Baloise Design System against the design system style guide and Stencil best practices — verifies and repairs imports (@utils, @global aliases), component interfaces (const arrays with derived types), props (readonly, type annotations on defaults, reflect attribute, enum types), lifecycle validation, event handlers, Watch handlers, Listen handlers, method visibility, event naming, ComponentInterface/Loggable implementation, @Validate decorators, section comment dividers, JSDocs, code organization per Stencil style guide, a short one-sentence component description, and @slot/@part JSDoc tags on the class for every slot and shadow part used in render()
 
 # Lint Stencil Component
 
@@ -692,27 +692,188 @@ export class Button {}
 
 ---
 
-## Quick Reference
+### 16. `@slot` and `@part` — Class-level JSDoc tags
 
-| Check | Required form                                 | Example                                                                                         |
-| ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| 0     | Import from `@utils` or `@global`             | `import { Loggable, Logger, type LogInstance } from '@utils'`                                   |
-| 1     | Const arrays with derived types in interfaces | `export const BADGE_SIZES = ['xs', 'sm'] as const; type BadgeSize = typeof BADGE_SIZES[number]` |
-| 2     | `@Prop() readonly foo: T = default`           | `@Prop() readonly count: number = 2`; `@Prop() readonly align: DS.Align = ''`                   |
-| 3     | State props have `reflect: true`              | `@Prop({ reflect: true }) readonly disabled: boolean`                                           |
-| 4     | `@Validate` decorators on every @Prop         | `@Prop() @ValidateEmptyOrType('string') readonly label: string`                                 |
-| 5     | `listenToEvent()`                             | `listenToClick()`                                                                               |
-| 6     | `propChanged()`                               | `valueChanged()`                                                                                |
-| 7     | `handleEvent = () => {}`                      | `handleClick = () => {}`                                                                        |
-| 8     | `dsEventName: EventEmitter<T>`                | `dsChange: EventEmitter<number>`                                                                |
-| 9     | `ComponentInterface, Loggable`                | `implements ComponentInterface, Loggable`                                                       |
-| 10    | `private methodName()`                        | `private doSomething()`                                                                         |
-| 11    | Seven section dividers                        | See Check 11 for exact format                                                                   |
-| 12    | JSDoc on @Prop, @Event, @Method               | `/** Label text */ @Prop()`                                                                     |
-| 13    | Alphabetical ordering                         | align, disabled, name (not name, disabled, align)                                               |
-| 14    | @Prop + @Watch together                       | Prop immediately followed by Watch below                                                        |
-| 15    | @Method() must be async                       | `@Method() async open(): Promise<void>`                                                         |
-| 16    | Tag with `ds-` prefix, class without          | `@Component({ tag: 'ds-button' }) export class Button`                                          |
+**Rule:** Every component that uses `<slot />` in its `render()` must document each slot with a `@slot` JSDoc tag on the component class. Every component that uses `part="..."` attributes in its `render()` must document each part with a `@part` JSDoc tag on the component class. These tags are parsed by the Stencil compiler and populate the `slots` and `parts` arrays in `components.json`.
+
+**Slot format:** `@slot <name> - <description>`  
+For the unnamed default slot, use an empty name: `@slot - <description>`
+
+**Part format:** `@part <name> - <description>`
+
+```ts
+// ❌ — has <slot /> and part="..." in render() but no class JSDoc
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface {
+  render() {
+    return <button part="native"><span part="label"><slot /></span></button>
+  }
+}
+
+// ✅ — all slots and parts documented on the class
+/**
+ * @slot - Button label text and/or icon children. Rendered inside the `label` part.
+ * @part native - The native `<button>` or `<a>` element.
+ * @part label - The text label wrapper (`<span>`).
+ * @part icon - The leading icon wrapper.
+ * @part icon-right - The trailing icon wrapper.
+ * @part spinner - The loading spinner shown when `loading` is true.
+ */
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface {
+  render() {
+    return <button part="native"><span part="label"><slot /></span></button>
+  }
+}
+```
+
+**Named slot example:**
+
+```ts
+/**
+ * @slot - Default content area.
+ * @slot header - Content placed in the card header.
+ * @slot footer - Content placed in the card footer.
+ * @part container - The outer wrapper element.
+ */
+@Component({ tag: 'ds-card', shadow: true })
+export class Card implements ComponentInterface {
+  render() {
+    return (
+      <div part="container">
+        <slot name="header" />
+        <slot />
+        <slot name="footer" />
+      </div>
+    )
+  }
+}
+```
+
+**How to detect violations:**
+
+1. Scan the `render()` method for `<slot` occurrences:
+   - `<slot />` or `<slot></slot>` → requires `@slot - <description>` on the class
+   - `<slot name="foo"` → requires `@slot foo - <description>` on the class
+2. Scan the `render()` method for `part="..."` attributes:
+   - `part="native"` → requires `@part native - <description>` on the class
+   - Multiple parts in one element (e.g. `part="icon icon-sm"`) → each part name needs its own `@part` tag
+3. Check the class-level JSDoc block (the comment directly above `@Component(...)`) for matching `@slot` and `@part` entries
+4. **Violation if:** a slot or part is used in `render()` but has no corresponding tag in the class JSDoc
+5. **Also violation if:** a `@slot` or `@part` tag is present in the class JSDoc but the slot/part is not used in `render()` (stale documentation)
+
+**How to fix:**
+
+1. Collect all unique slot names from `render()` (empty string for unnamed slots)
+2. Collect all unique part names from `render()` (split space-separated `part="foo bar"` attributes)
+3. Add or update the class-level JSDoc block directly above `@Component(...)` with matching `@slot` and `@part` tags
+4. Write meaningful descriptions — refer to the element type and purpose
+5. Remove any stale tags that no longer have a corresponding slot/part in `render()`
+
+**Placement:** The `@slot`/`@part` JSDoc block goes **directly above `@Component(...)`**, before the class declaration.
+
+```ts
+/**
+ * @slot - ...
+ * @part native - ...
+ */
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface { ... }
+```
+
+---
+
+### 17. Component Description — One-sentence class JSDoc
+
+**Rule:** Every component class must have a one-sentence plain-English description as the first line of its class-level JSDoc block (the comment directly above `@Component(...)`). The description must:
+
+- Start with the component name in title case (e.g. `Badge`, `Button`, `Notification`)
+- Use a single sentence ending with a period
+- Summarise what the component is and what it does — no implementation details
+- Come **before** any `@slot` or `@part` tags in the same JSDoc block
+
+```ts
+// ❌ — no description
+/**
+ * @slot - Button label text.
+ * @part native - The native button element.
+ */
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface {}
+
+// ❌ — description too vague or missing component name
+/**
+ * This is a button.
+ */
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface {}
+
+// ✅ — correct: one clear sentence, component name first
+/**
+ * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
+ *
+ * @slot - Button label text and/or icon children.
+ * @part native - The native `<button>` or `<a>` element.
+ */
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface {}
+```
+
+**More examples (from the design system):**
+
+```ts
+// Badge
+/**
+ * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
+ */
+
+// Notification
+/**
+ * Notification presents inline feedback messages for success, warning, error, or informational states.
+ */
+
+// Spinner
+/**
+ * Spinner indicates an ongoing operation with an animated loading indicator.
+ */
+```
+
+**How to detect violations:**
+
+1. Find the JSDoc block directly above `@Component(...)`
+2. Check that the **first non-empty line** of the block is a plain sentence (not a `@tag`)
+3. **Violation if:** the block is missing entirely, starts with a `@tag` instead of a sentence, or the sentence does not begin with the component’s display name
+
+**How to fix:**
+
+1. Derive the display name from the component tag: `ds-button` → `Button`, `ds-progress-bar` → `Progress Bar`
+2. Write a single sentence describing what the component is and what it does
+3. Insert it as the first line of the class JSDoc, followed by a blank line before any `@slot`/`@part` tags
+
+---
+
+| Check | Required form                                  | Example                                                                                         |
+| ----- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| 0     | Import from `@utils` or `@global`              | `import { Loggable, Logger, type LogInstance } from '@utils'`                                   |
+| 1     | Const arrays with derived types in interfaces  | `export const BADGE_SIZES = ['xs', 'sm'] as const; type BadgeSize = typeof BADGE_SIZES[number]` |
+| 2     | `@Prop() readonly foo: T = default`            | `@Prop() readonly count: number = 2`; `@Prop() readonly align: DS.Align = ''`                   |
+| 3     | State props have `reflect: true`               | `@Prop({ reflect: true }) readonly disabled: boolean`                                           |
+| 4     | `@Validate` decorators on every @Prop          | `@Prop() @ValidateEmptyOrType('string') readonly label: string`                                 |
+| 5     | `listenToEvent()`                              | `listenToClick()`                                                                               |
+| 6     | `propChanged()`                                | `valueChanged()`                                                                                |
+| 7     | `handleEvent = () => {}`                       | `handleClick = () => {}`                                                                        |
+| 8     | `dsEventName: EventEmitter<T>`                 | `dsChange: EventEmitter<number>`                                                                |
+| 9     | `ComponentInterface, Loggable`                 | `implements ComponentInterface, Loggable`                                                       |
+| 10    | `private methodName()`                         | `private doSomething()`                                                                         |
+| 11    | Seven section dividers                         | See Check 11 for exact format                                                                   |
+| 12    | JSDoc on @Prop, @Event, @Method                | `/** Label text */ @Prop()`                                                                     |
+| 13    | Alphabetical ordering                          | align, disabled, name (not name, disabled, align)                                               |
+| 14    | @Prop + @Watch together                        | Prop immediately followed by Watch below                                                        |
+| 15    | @Method() must be async                        | `@Method() async open(): Promise<void>`                                                         |
+| 16    | Tag with `ds-` prefix, class without           | `@Component({ tag: 'ds-button' }) export class Button`                                          |
+| 17    | One-sentence description on the class JSDoc    | `Button provides a clickable element for triggering actions...`                                 |
+| 18    | `@slot` tag for every `<slot>` in render()     | `@slot - Label text and icon children` / `@slot header - Card header content`                   |
+| 18    | `@part` tag for every `part="..."` in render() | `@part native - The native button element` / `@part label - The text wrapper`                   |
 
 ## Output Format
 

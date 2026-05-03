@@ -7,7 +7,7 @@ type Args = JSX.DsNumberInput
 const tag = 'ds-number-input'
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Number Input',
+  title: 'Components/Forms/Number Input',
   args: {},
   argTypes: {
     ...withComponentControls({ tag }),

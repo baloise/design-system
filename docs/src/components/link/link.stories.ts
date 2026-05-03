@@ -4,7 +4,7 @@ import { createCssMappings, cssClasses, props, StoryFactory, withComponentContro
 type Args = { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Navigation/Link',
+  title: 'Components/Link',
   args: {
     content: 'Link',
   },

@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withContent, withDefaultCon
 type Args = JSX.BalLogo & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Layout/Logo',
+  title: 'Components/Logo',
   args: {
     ...withDefaultContent(''),
   },

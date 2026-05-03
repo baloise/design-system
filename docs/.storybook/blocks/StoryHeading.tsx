@@ -9,12 +9,11 @@ export const StoryHeading = ({ of, children, hidden }) => {
     <Unstyled>
       <h2
         id={id}
-        className="sb-unstyled font-family-heading text-primary font-weight-bold text-xx-large"
+        className="sb-unstyled font-family-heading text-primary font-weight-bold text-2xl"
         style={{
-          marginBottom: hidden === true ? '0' : '.5rem',
-          marginTop: hidden === true ? '0' : '4rem',
+          marginBottom: hidden === true ? '0' : '1rem',
+          marginTop: hidden === true ? '0' : '6rem',
           paddingBottom: hidden === true ? '0' : '4px',
-          borderBottom: hidden === true ? '0' : '1px solid hsla(203, 50%, 30%, 0.15)',
           lineHeight: hidden === true ? '0' : '1.3',
           visibility: hidden === true ? 'hidden' : 'visible',
         }}

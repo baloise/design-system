@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withRender } from '../../ut
 type Args = JSX.BalContent & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Layout/Content',
+  title: 'Components/Content',
   argTypes: {
     ...withComponentControls({ tag: 'ds-content' }),
   },

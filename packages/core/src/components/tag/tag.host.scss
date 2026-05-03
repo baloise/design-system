@@ -2,3 +2,28 @@
 @use './tag.style' with (
   $use-host: true
 );
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --tag-color-text: Text color of the tag.
+ * @prop --tag-color-border: Border color of the tag.
+ * @prop --tag-color-background: Background color of the tag.
+ * @prop --tag-font-family: Font family of the tag text.
+ * @prop --tag-font-weight: Font weight of the tag text.
+ * @prop --tag-font-size: Font size of the tag text.
+ * @prop --tag-line-height: Line height of the tag text.
+ * @prop --tag-border-radius: Border radius of the tag.
+ * @prop --tag-padding-inline: Horizontal padding of the tag.
+ * @prop --tag-padding-block: Vertical padding of the tag.
+ * @prop --tag-min-height: Minimum height of the tag.
+ * @prop --tag-gap: Gap between icon and text.
+ * @prop --tag-icon-size: Size of the icon in the tag.
+ */
+
+:host {
+  display: inline-flex;
+}

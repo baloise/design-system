@@ -1,21 +1,21 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withContent, withDefaultContent, withRender } from '../../../utils'
+import { lorem1, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 
-type Args = JSX.DsSnackbar & { content: string }
+type Args = JSX.DsSnackbar & { slot: string; slotAction: string }
 
 const tag = 'ds-snackbar'
 
 const meta: Meta<Args> = {
-  title: 'Components/Feedback/Snackbar',
+  title: 'Components/Snackbar',
   args: {
-    ...withDefaultContent(),
+    slot: lorem1,
+    slotAction: 'Okay',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ content, ...args }) => `<ds-snackbar ${props(args)}>${content}</ds-snackbar>`),
+  ...withRender(({ slot, slotAction, ...args }) => `<ds-snackbar ${props(args)}>${slot}</ds-snackbar>`),
 }
 
 export default meta
@@ -30,68 +30,37 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 Basic.storyName = '🧩 Basic'
 
-export const Variants = Story({
+export const WithAction = Story({
+  args: {
+    heading: 'Heading',
+    closable: true,
+  },
   ...withRender(
-    () => `<div class="flex gap-small flex-direction-column">
-  <ds-snackbar closable>
-    <b>Closable</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur mollitia,
-    reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam dignissimos
-    reiciendis ratione illum? Earum, ipsa a!
-  </ds-snackbar>
-  <ds-snackbar>
-    <b>Action</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur mollitia,
-    reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam dignissimos
-    reiciendis ratione illum? Earum, ipsa a!
-    <ds-button slot="action">Okay</ds-button>
-  </ds-snackbar>
-  <ds-snackbar closable>
-    <b>Closable + Action</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur
-    mollitia, reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam
-    dignissimos reiciendis ratione illum? Earum, ipsa a!
-    <ds-button slot="action">Okay</ds-button>
-  </ds-snackbar>
-  <ds-snackbar heading="Heading">
-    <b>Heading</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur mollitia,
-    reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam dignissimos
-    reiciendis ratione illum? Earum, ipsa a!
-  </ds-snackbar>
-  <ds-snackbar heading="Heading" closable>
-    <b>Heading + Closable</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur
-    mollitia, reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam
-    dignissimos reiciendis ratione illum? Earum, ipsa a!
-  </ds-snackbar>
-  <ds-snackbar heading="Heading">
-    <b>Heading + Action</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur
-    mollitia, reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam
-    dignissimos reiciendis ratione illum? Earum, ipsa a!
-    <ds-button slot="action">Okay</ds-button>
-  </ds-snackbar>
-  <ds-snackbar heading="Heading" closable>
-    <b>Heading + Closable + Action</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-    repellat tenetur mollitia, reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero
-    quisquam dignissimos reiciendis ratione illum? Earum, ipsa a!
-    <ds-button slot="action">Okay</ds-button>
-  </ds-snackbar>
-</div>`,
+    ({ slot, slotAction, ...args }) => `<ds-snackbar ${props(args)}>
+    <b>Heading + Closable + Action</b> ${slot}
+    <ds-button slot="action">${slotAction}</ds-button>
+  </ds-snackbar>`,
   ),
 })
-Variants.storyName = '🧩 Variants'
+WithAction.storyName = '🧩 WithAction'
 
 import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets/dist'
-export const VariantsWithBrandIcon = Story({
+export const WithBrandIcon = Story({
+  args: {
+    heading: 'Heading',
+    closable: true,
+  },
   ...withRender(
-    () => `<ds-snackbar svg='${BrandIconCarCrashWithAnimalGreen}' closable>
-  <b>Closable</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore repellat tenetur mollitia,
-  reprehenderit odit inventore? Autem ipsum aliquid quas voluptatem, nesciunt vero quisquam dignissimos
-  reiciendis ratione illum? Earum, ipsa a!
+    ({ slot, slotAction, ...args }) => `<ds-snackbar svg='${BrandIconCarCrashWithAnimalGreen}'  ${props(args)}>
+  ${slot}
 </ds-snackbar>`,
   ),
 })
-VariantsWithBrandIcon.storyName = '🧩 Variants With Brand Icon'
+WithBrandIcon.storyName = '🧩 WithBrandIcon'
 
 export const Colors = Story({
   ...withRender(
-    () => `<div class="flex gap-small flex-direction-column">
+    ({ slot, slotAction, ...args }) => `<div class="flex gap-small flex-direction-column">
   <ds-snackbar heading="Default"> Your changes have been saved. </ds-snackbar>
   <ds-snackbar color="info" heading="Information"> Your changes have been saved. </ds-snackbar>
   <ds-snackbar color="success" heading="Success"> Your changes have been saved. </ds-snackbar>

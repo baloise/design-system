@@ -16,6 +16,13 @@ import {
 } from './tag.interfaces'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
+ *
+ * @slot - The tag label text.
+ * @part tag - The tag container element.
+ * @part icon - The icon wrapper (if an icon is used).
+ */
 @Component({
   tag: 'ds-tag',
   styleUrl: 'tag.host.scss',

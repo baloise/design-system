@@ -9,6 +9,12 @@ import {
 } from '../button.interfaces'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Button group groups multiple buttons together with layout control for alignment and direction.
+ *
+ * @slot - One or more `ds-button` or `<button>` elements to group together.
+ * @part group - The container element that wraps the grouped buttons.
+ */
 @Component({
   tag: 'ds-button-group',
   styleUrl: 'button-group.host.scss',
@@ -23,6 +29,11 @@ export class ButtonGroup implements DsComponentInterface {
   }
 
   @Element() el!: HTMLStencilElement
+
+  /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
 
   /**
    * The value of the button, which is submitted with the form data.
@@ -53,9 +64,19 @@ export class ButtonGroup implements DsComponentInterface {
   @ValidateEmptyOrType('boolean')
   readonly wide: boolean = false
 
+  /**
+   * LIFECYCLE
+   * ─────────────────────────────────────────────────────
+   */
+
   connectedCallback(): void {
     setupValidation(this)
   }
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     return (

@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as InputStories from './input.stories'
 
 <Meta of={InputStories} />
@@ -12,9 +12,7 @@ import * as InputStories from './input.stories'
 
 <BasicStoryTabs tag="input" htmlStory={InputStories.BasicHtml} webComponentStory={InputStories.Basic} index={1} />
 
-<PlaygroundBar of={InputStories.Basic}></PlaygroundBar>
-
-{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}}
 
 <StoryHeading of={InputStories.Disabled}></StoryHeading>
 

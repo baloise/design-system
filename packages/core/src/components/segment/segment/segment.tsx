@@ -6,6 +6,12 @@ import { SegmentItemInterface } from '../segment-item.type'
 import { SegmentColor, SegmentBlurDetail, SegmentFocusDetail, SegmentChangeDetail } from '../segment-item.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
+ *
+ * @slot - One or more ds-segment-item elements.
+ * @part segment - The segment container element.
+ */
 @Component({
   tag: 'ds-segment',
   styleUrl: 'segment.host.scss',

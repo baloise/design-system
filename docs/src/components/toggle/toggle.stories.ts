@@ -7,7 +7,7 @@ type Args = JSX.DsToggle & { content: string }
 const tag = 'ds-toggle'
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Toggle',
+  title: 'Components/Forms/Toggle',
   args: {
     ...withDefaultContent(),
   },

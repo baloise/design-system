@@ -12,7 +12,7 @@ const preview: Preview = {
   },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    controls: { expanded: true },
+    controls: { expanded: false },
     docs: {
       // toc: {
       //   contentsSelector: '.sbdocs-content',
@@ -43,11 +43,11 @@ const preview: Preview = {
             'Spacing',
             'Typography',
           ],
-          'Development',
           'Tokens',
           'CSS Utilities',
           'Components',
-          ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography'],
+          ['Overview'],
+          'Development',
         ],
       },
     },

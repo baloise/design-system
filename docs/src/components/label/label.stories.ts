@@ -16,7 +16,7 @@ const tag = 'ds-label'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Label',
+  title: 'Components/Forms/Label',
   args: {
     ...withDefaultContent('Label'),
   },

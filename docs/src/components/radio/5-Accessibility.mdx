@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as RadioStories from './radio.stories'
+import { RADIO_DOC_CONFIG, getRadioTabs } from './radio.doc-config'
+
+<Meta title="Components/Forms/Radio/Accessibility" />
+<Banner label={'Accessibility'} section={RADIO_DOC_CONFIG.section} color={RADIO_DOC_CONFIG.color} />
+<BannerTabs
+  of={RadioStories}
+  tabs={getRadioTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use Fieldset and Legend',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Wrap radio groups in a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> to group related options. This helps screen readers announce the group purpose.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Descriptive Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Each radio button needs a descriptive label. Use <code>&lt;label&gt;</code> elements with the <code>for</code> attribute matching the radio's <code>id</code>.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Users should navigate between radio options with arrow keys. Tab moves between radio groups, not between options.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Same Name Attribute',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          All radio buttons in a group must have the same <code>name</code> attribute. This ensures only one can be selected at a time.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No Labels or Legends',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never omit labels or legends. Screen reader users won't understand what the radio options represent.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Relying on Visual Positioning',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't rely on visual proximity alone to group radios. Use proper HTML structure with fieldset and legend.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The radio component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Grouped Inputs (1.3.1)** — Radio groups use fieldset/legend
+- **Labels (1.3.1)** — Radio buttons have associated labels
+- **Keyboard Navigation (2.1.1)** — Arrow keys navigate options, Tab moves between groups
+- **Focus Visible (2.4.7)** — Clear focus indicator on radio buttons
+- **Name, Role, Value (4.1.2)** — Proper semantics and ARIA support
+
+<Footer />

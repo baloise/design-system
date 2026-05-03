@@ -1,0 +1,61 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as HeadingStories from './heading.stories'
+import { HEADING_DOC_CONFIG, getHeadingTabs } from './heading.doc-config'
+
+<Meta title="Components/Heading/Variants/Overview" />
+<StoryHeading of={HeadingStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={HEADING_DOC_CONFIG.section} color={HEADING_DOC_CONFIG.color} />
+<BannerTabs
+  of={HeadingStories}
+  tabs={getHeadingTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Colors}></StoryHeading>
+
+Headings support multiple colors for visual emphasis and theming. The default color adapts to background context with the `inverted` prop.
+
+<Canvas of={HeadingStories.Colors} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Sizes}></StoryHeading>
+
+Six semantic heading levels (h1–h6) provide a structured hierarchy for document content. Each level has distinct sizing and visual weight.
+
+<Canvas of={HeadingStories.Sizes} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Shadow}></StoryHeading>
+
+Use the shadow variant when displaying headings over images or dark backgrounds to improve text readability and contrast.
+
+<Canvas of={HeadingStories.Shadow} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.NoWrap}></StoryHeading>
+
+Enable text truncation with ellipsis when space is constrained. Truncation requires a defined width on the container.
+
+<Canvas of={HeadingStories.NoWrap} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Spaces}></StoryHeading>
+
+Spacing variants control margin around headings to manage vertical rhythm and visual grouping in layouts.
+
+<Canvas of={HeadingStories.Spaces} sourceState="hidden" />
+
+<Footer />

@@ -17,6 +17,12 @@ import { LogoBrand, LogoColor, LogoSize } from './logo.interfaces'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 
+/**
+ * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
+ *
+ * @slot - Optional label or caption text.
+ * @part logo - The logo SVG animation container element.
+ */
 @Component({
   tag: 'ds-logo',
   styleUrl: 'logo.host.scss',

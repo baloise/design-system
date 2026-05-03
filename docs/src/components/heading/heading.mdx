@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, InfoQuote, Lead, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as HeadingStories from './heading.stories'
 
 <Meta of={HeadingStories} />
@@ -18,8 +18,6 @@ We recommend using standard <b>HTML elements</b> such as `<h1>`, `<h2>`, `<h3>`,
 components. This helps improve the rendering speed of your application or website.
 
 <BasicStoryTabs tag="heading" htmlStory={HeadingStories.BasicHtml} webComponentStory={HeadingStories.Basic} index={1} />
-
-<PlaygroundBar of={HeadingStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}

@@ -1,5 +1,5 @@
 import { ArgTypes, Canvas, ColorItem, ColorPalette, Markdown, Meta, Subtitle, Title, Unstyled } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as TagStories from './tag.stories'
 
 <Meta of={TagStories} />
@@ -12,9 +12,7 @@ import * as TagStories from './tag.stories'
 
 <BasicStoryTabs tag="tag" htmlStory={TagStories.BasicHtml} webComponentStory={TagStories.Basic} index={1} />
 
-<PlaygroundBar of={TagStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
+{/* STORIES */}}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TagStories.Closable}></StoryHeading>

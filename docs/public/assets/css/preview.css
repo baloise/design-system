@@ -178,6 +178,13 @@ code:not(.language-diff, .language-scss) {
   background-color: var(--ds-color-primary-1) !important;
   border: 1px solid var(--ds-color-primary-1) !important;
   color: var(--ds-color-primary-5) !important;
+  font-size: var(--ds-text-size-sm-device) !important;
+  border-radius: var(--ds-radius-base) !important;
+  padding-inline: 4px;
+}
+
+pre > code {
+  padding-inline: 0;
 }
 
 a > code {

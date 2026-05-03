@@ -5,6 +5,28 @@
 /**
  * Variables
  * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --number-input-color-background: Background color of the number input field.
+ * @prop --number-input-color-border: Border color of the number input field.
+ * @prop --number-input-color-text: Text color inside the number input.
+ * @prop --number-input-color-placeholder: Placeholder text color.
+ * @prop --number-input-font-size: Font size of the input text.
+ * @prop --number-input-font-family: Font family of the input text.
+ * @prop --number-input-line-height: Line height of the input text.
+ * @prop --number-input-border-radius: Border radius of the input field.
+ * @prop --number-input-border-width: Border width of the input field.
+ * @prop --number-input-padding-inline: Horizontal padding inside the input.
+ * @prop --number-input-padding-block: Vertical padding inside the input.
+ * @prop --number-input-min-height: Minimum height of the input field.
+ * @prop --number-input-button-size: Size of increment/decrement buttons.
+ * @prop --number-input-label-color: Text color of the label.
+ * @prop --number-input-label-font-size: Font size of the label.
+ * @prop --number-input-label-font-weight: Font weight of the label.
+ * @prop --number-input-description-color: Text color of the description text.
+ * @prop --number-input-description-font-size: Font size of the description text.
+ * @prop --number-input-error-color: Color of error messages and invalid state.
  */
 
 :host {

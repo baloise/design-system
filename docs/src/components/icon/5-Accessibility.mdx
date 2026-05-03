@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as IconStories from './icon.stories'
+import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
+
+<Meta title="Components/Icon/Accessibility" />
+<Banner label={'Accessibility'} section={ICON_DOC_CONFIG.section} color={ICON_DOC_CONFIG.color} />
+<BannerTabs
+  of={IconStories}
+  tabs={getIconTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Pair with Text Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always accompany icons with text labels for important content. Icons alone are not sufficient to communicate meaning to all users.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Accessible Icon-only Buttons',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>aria-label</code> on buttons containing only icons. This tells screen readers what the button does.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Decorative Icon Aria Hiding',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Mark purely decorative icons with <code>aria-hidden="true"</code> so screen readers skip them.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Sufficient Size',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use icon sizes of at least 24px for interactive elements to ensure adequate clickable area for all users, including those with motor impairments.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Icon as Only Meaning Carrier',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely solely on icons to convey critical information. Users may not understand the icon, or it may not render properly for some.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color as Only Indicator',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use color alone to differentiate icon meanings. Users with color blindness won't perceive the difference.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The icon component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Text Alternatives (1.1.1)** — Icons have text labels or ARIA labels
+- **Color Contrast (4.11.1)** — Icons have sufficient contrast against backgrounds
+- **Name, Role, Value (4.1.2)** — Proper ARIA labels on icon-only interactive elements
+- **Visual Size (2.5.5)** — Icons are large enough to be easily clickable
+
+<Footer />

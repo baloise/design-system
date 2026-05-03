@@ -14,6 +14,13 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import type { DsComponentInterface, DsConfigObserver, DsConfigState } from '@global'
 import { ProgressBarBackground, ProgressBarColor } from './progress-bar.interfaces'
 
+/**
+ * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
+ *
+ * @slot - Optional label or caption text.
+ * @part progress-bar - The progress bar container element.
+ * @part indicator - The filled progress indicator element.
+ */
 @Component({
   tag: 'ds-progress-bar',
   styleUrl: 'progress-bar.host.scss',

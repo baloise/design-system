@@ -7,6 +7,15 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --icon-size: Size of the icon element.
+ * @prop --icon-inner-size: Internal size of the SVG icon.
+ * @prop --icon-inner-mt: Margin top of the SVG icon.
+ * @prop --icon-color: Color of the icon.
+ * @prop --icon-shape: Shape variant color of the icon.
+ * @prop --icon-tile-background: Background color of the tile around the icon.
+ * @prop --icon-tile-radius: Border radius of the tile background.
+ * @prop --icon-rotation: Rotation angle of the icon.
  */
 
 :host {

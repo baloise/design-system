@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as PaginationStories from './pagination.stories'
+import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
+
+<Meta title="Components/Pagination/Overview" />
+<Banner label={'Overview'} section={PAGINATION_DOC_CONFIG.section} color={PAGINATION_DOC_CONFIG.color} />
+<BannerTabs
+  of={PaginationStories}
+  tabs={getPaginationTabs('overview')}
+/>
+
+<Lead>
+  **Pagination** enables navigation between multiple pages or sections of content. Displays page buttons, previous/next controls, and optional information about total pages and current page position.
+</Lead>
+
+<Canvas of={PaginationStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-pagination',
+      label: 'ds-pagination',
+      content: <Controls of={PaginationStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

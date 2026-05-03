@@ -21,6 +21,14 @@ import {
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
+ *
+ * @slot - The checkbox label content.
+ * @slot helper - The helper or hint text below the checkbox.
+ * @part checkbox - The native HTML input element.
+ * @part container - The checkbox and label wrapper.
+ */
 @Component({
   tag: 'ds-checkbox',
   styleUrl: 'checkbox.host.scss',

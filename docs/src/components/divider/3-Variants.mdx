@@ -1,0 +1,61 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as DividerStories from './divider.stories'
+import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
+
+<Meta title="Components/Divider/Variants/Overview" />
+<StoryHeading of={DividerStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
+<BannerTabs
+  of={DividerStories}
+  tabs={getDividerTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.Colors}></StoryHeading>
+
+Divider colors support the full design system palette. Use colors to communicate meaning: primary for important sections, warning for cautionary content, danger for critical areas.
+
+<Canvas of={DividerStories.Colors} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.Dashed}></StoryHeading>
+
+Solid dividers are the default, providing clear visual separation. The dashed variant offers a lighter, less prominent visual break.
+
+<Canvas of={DividerStories.Dashed} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.DashedVertical}></StoryHeading>
+
+Vertical dashed dividers separate side-by-side content columns while maintaining a subtle visual distinction.
+
+<Canvas of={DividerStories.DashedVertical} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.Horizontal}></StoryHeading>
+
+Horizontal dividers (default) separate vertical content stacks and are the most common layout use case.
+
+<Canvas of={DividerStories.Horizontal} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.Vertical}></StoryHeading>
+
+Vertical dividers separate horizontally arranged content, useful for multi-column layouts and side-by-side content sections.
+
+<Canvas of={DividerStories.Vertical} sourceState="hidden" />
+
+<Footer />

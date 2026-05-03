@@ -1,0 +1,37 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as PaginationStories from './pagination.stories'
+import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
+
+<Meta title="Components/Pagination/Variants/Overview" />
+<StoryHeading of={PaginationStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={PAGINATION_DOC_CONFIG.section} color={PAGINATION_DOC_CONFIG.color} />
+<BannerTabs
+  of={PaginationStories}
+  tabs={getPaginationTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.ManyPages}></StoryHeading>
+
+Pagination with many pages showing abbreviated page range.
+
+<BasicStoryTabs tag="pagination" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.EdgeCases}></StoryHeading>
+
+First and last page states with disabled navigation buttons.
+
+<BasicStoryTabs tag="pagination" noGuide />
+
+<Footer />

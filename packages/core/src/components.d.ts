@@ -66,6 +66,10 @@ export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, Textarea
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
 export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleTileColor } from "./components/toggle/toggle.interfaces";
 export namespace Components {
+    /**
+     * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
+     * Perfect for organizing large amounts of content into logical, expandable groups.
+     */
     interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
@@ -158,6 +162,9 @@ export namespace Components {
          */
         "type": AlertType;
     }
+    /**
+     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+     */
     interface DsApp {
         /**
           * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
@@ -174,6 +181,9 @@ export namespace Components {
         "ready": boolean;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
+    /**
+     * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
+     */
     interface DsBadge {
         /**
           * Define the color for the badge.
@@ -201,6 +211,9 @@ export namespace Components {
          */
         "size": BadgeSize;
     }
+    /**
+     * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
+     */
     interface DsButton {
         /**
           * A11y attributes for the native button element.
@@ -228,7 +241,7 @@ export namespace Components {
          */
         "circle": boolean;
         /**
-          * The color to use from your application's color palette.aaa
+          * The color to use from your application's color palette.
           * @default 'primary'
          */
         "color": ButtonColor;
@@ -343,6 +356,9 @@ export namespace Components {
          */
         "wide": boolean;
     }
+    /**
+     * Button group groups multiple buttons together with layout control for alignment and direction.
+     */
     interface DsButtonGroup {
         /**
           * The value of the button, which is submitted with the form data.
@@ -364,6 +380,9 @@ export namespace Components {
          */
         "wide": boolean;
     }
+    /**
+     * Card groups related content together in a contained, visually distinct container with optional header and footer.
+     */
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
@@ -427,20 +446,32 @@ export namespace Components {
          */
         "tile": boolean;
     }
+    /**
+     * Card actions renders a container for action buttons or controls at the end of a card.
+     */
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
          */
         "align"?: CardActionsAlignment;
     }
+    /**
+     * Card content renders the main content area of a card for grouping body text and media.
+     */
     interface DsCardContent {
     }
+    /**
+     * Card header renders the header section of a card with optional layout direction for title and image/icon.
+     */
     interface DsCardHeader {
         /**
           * @default 'row'
          */
         "direction": CardHeaderDirection;
     }
+    /**
+     * Card subtitle renders a subtitle heading for cards with customizable color and styling.
+     */
     interface DsCardSubtitle {
         /**
           * If `true` the card text color is bold.
@@ -458,6 +489,9 @@ export namespace Components {
          */
         "inverted": boolean;
     }
+    /**
+     * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
+     */
     interface DsCardTitle {
         /**
           * If `true` the card text color becomes white.
@@ -475,6 +509,9 @@ export namespace Components {
          */
         "visualLevel": HeadingVisualLevel;
     }
+    /**
+     * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
+     */
     interface DsCheckbox {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -644,6 +681,9 @@ export namespace Components {
          */
         "vertical": boolean;
     }
+    /**
+     * Close renders a button element for closing or dismissing UI components with customizable size and color.
+     */
     interface DsClose {
         /**
           * If `true` the close component will be rendered as a button element. This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
@@ -671,6 +711,9 @@ export namespace Components {
          */
         "size": CloseSize;
     }
+    /**
+     * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
+     */
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
@@ -699,6 +742,9 @@ export namespace Components {
          */
         "textAlign": ContentTextAlignment;
     }
+    /**
+     * Divider renders a visual separator line for grouping or distinguishing content sections.
+     */
     interface DsDivider {
         /**
           * Defines the color of the separator line.
@@ -754,6 +800,9 @@ export namespace Components {
          */
         "stickyFooter": boolean;
     }
+    /**
+     * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
+     */
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
@@ -798,6 +847,9 @@ export namespace Components {
          */
         "visualLevel"?: HeadingVisualLevel;
     }
+    /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
     interface DsIcon {
         /**
           * The theme type of the button.
@@ -863,6 +915,9 @@ export namespace Components {
          */
         "turn": boolean;
     }
+    /**
+     * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
+     */
     interface DsInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -1095,6 +1150,9 @@ export namespace Components {
          */
         "variant": 'link' | 'button' | 'accordion' | 'default';
     }
+    /**
+     * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
+     */
     interface DsLabel {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
@@ -1145,12 +1203,18 @@ export namespace Components {
          */
         "valid": boolean;
     }
+    /**
+     * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     */
     interface DsList {
         /**
           * @default false
          */
         "ordered": boolean;
     }
+    /**
+     * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
+     */
     interface DsLogo {
         /**
           * Defines if the animation should be active
@@ -1173,6 +1237,9 @@ export namespace Components {
          */
         "size": LogoSize;
     }
+    /**
+     * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
+     */
     interface DsNotification {
         /**
           * If `true` the notification will be displayed as an alert, otherwise as a status message.
@@ -1211,6 +1278,9 @@ export namespace Components {
          */
         "size"?: NotificationSize;
     }
+    /**
+     * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
+     */
     interface DsNumberInput {
         /**
           * Defines the color state of the input.
@@ -1321,6 +1391,9 @@ export namespace Components {
          */
         "value": number | null;
     }
+    /**
+     * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
+     */
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
@@ -1392,6 +1465,9 @@ export namespace Components {
          */
         "variant": PaginationVariant;
     }
+    /**
+     * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
+     */
     interface DsProgressBar {
         /**
           * The background color
@@ -1410,6 +1486,9 @@ export namespace Components {
          */
         "value": number;
     }
+    /**
+     * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
+     */
     interface DsRadio {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -1586,6 +1665,9 @@ export namespace Components {
          */
         "vertical": boolean;
     }
+    /**
+     * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
+     */
     interface DsSegment {
         /**
           * If `true`, the segment items can be deselected.
@@ -1667,6 +1749,9 @@ export namespace Components {
          */
         "wide": boolean;
     }
+    /**
+     * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
+     */
     interface DsSegmentItem {
         /**
           * Description text to display in the segment item.
@@ -1693,6 +1778,9 @@ export namespace Components {
          */
         "value"?: any | null;
     }
+    /**
+     * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
+     */
     interface DsShape {
         /**
           * The shape color
@@ -1710,6 +1798,9 @@ export namespace Components {
          */
         "variation": ShapeVariation;
     }
+    /**
+     * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
+     */
     interface DsSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -1782,6 +1873,9 @@ export namespace Components {
          */
         "visible": boolean;
     }
+    /**
+     * Spinner displays an animated loading indicator with customizable color, size, and variation.
+     */
     interface DsSpinner {
         /**
           * Defines the color of the spinner.
@@ -1814,6 +1908,9 @@ export namespace Components {
          */
         "variation": SpinnerVariation;
     }
+    /**
+     * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
+     */
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
@@ -1864,6 +1961,9 @@ export namespace Components {
          */
         "useWrap": boolean;
     }
+    /**
+     * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
+     */
     interface DsTag {
         /**
           * The theme type of the tag.
@@ -1899,6 +1999,9 @@ export namespace Components {
     }
     interface DsTagGroup {
     }
+    /**
+     * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
+     */
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
@@ -1970,6 +2073,9 @@ export namespace Components {
          */
         "subtitle": boolean;
     }
+    /**
+     * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
+     */
     interface DsTextarea {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid.
@@ -2089,6 +2195,9 @@ export namespace Components {
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
+     */
     interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -2164,6 +2273,9 @@ export namespace Components {
          */
         "visible": boolean;
     }
+    /**
+     * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
+     */
     interface DsToggle {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -2320,6 +2432,10 @@ declare global {
         "dsOpened": AccordionToggleDetail;
         "dsClosed": AccordionToggleDetail;
     }
+    /**
+     * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
+     * Perfect for organizing large amounts of content into logical, expandable groups.
+     */
     interface HTMLDsAccordionElement extends Components.DsAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsAccordionElementEventMap>(type: K, listener: (this: HTMLDsAccordionElement, ev: DsAccordionCustomEvent<HTMLDsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2343,6 +2459,9 @@ declare global {
     interface HTMLDsAppElementEventMap {
         "dsAppReady": void;
     }
+    /**
+     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+     */
     interface HTMLDsAppElement extends Components.DsApp, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2357,6 +2476,9 @@ declare global {
         prototype: HTMLDsAppElement;
         new (): HTMLDsAppElement;
     };
+    /**
+     * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
+     */
     interface HTMLDsBadgeElement extends Components.DsBadge, HTMLStencilElement {
     }
     var HTMLDsBadgeElement: {
@@ -2370,6 +2492,9 @@ declare global {
         "dsBlur": ButtonBlurDetail;
         "dsDidRender": ButtonDidRenderDetail;
     }
+    /**
+     * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
+     */
     interface HTMLDsButtonElement extends Components.DsButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsButtonElementEventMap>(type: K, listener: (this: HTMLDsButtonElement, ev: DsButtonCustomEvent<HTMLDsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2384,42 +2509,63 @@ declare global {
         prototype: HTMLDsButtonElement;
         new (): HTMLDsButtonElement;
     };
+    /**
+     * Button group groups multiple buttons together with layout control for alignment and direction.
+     */
     interface HTMLDsButtonGroupElement extends Components.DsButtonGroup, HTMLStencilElement {
     }
     var HTMLDsButtonGroupElement: {
         prototype: HTMLDsButtonGroupElement;
         new (): HTMLDsButtonGroupElement;
     };
+    /**
+     * Card groups related content together in a contained, visually distinct container with optional header and footer.
+     */
     interface HTMLDsCardElement extends Components.DsCard, HTMLStencilElement {
     }
     var HTMLDsCardElement: {
         prototype: HTMLDsCardElement;
         new (): HTMLDsCardElement;
     };
+    /**
+     * Card actions renders a container for action buttons or controls at the end of a card.
+     */
     interface HTMLDsCardActionsElement extends Components.DsCardActions, HTMLStencilElement {
     }
     var HTMLDsCardActionsElement: {
         prototype: HTMLDsCardActionsElement;
         new (): HTMLDsCardActionsElement;
     };
+    /**
+     * Card content renders the main content area of a card for grouping body text and media.
+     */
     interface HTMLDsCardContentElement extends Components.DsCardContent, HTMLStencilElement {
     }
     var HTMLDsCardContentElement: {
         prototype: HTMLDsCardContentElement;
         new (): HTMLDsCardContentElement;
     };
+    /**
+     * Card header renders the header section of a card with optional layout direction for title and image/icon.
+     */
     interface HTMLDsCardHeaderElement extends Components.DsCardHeader, HTMLStencilElement {
     }
     var HTMLDsCardHeaderElement: {
         prototype: HTMLDsCardHeaderElement;
         new (): HTMLDsCardHeaderElement;
     };
+    /**
+     * Card subtitle renders a subtitle heading for cards with customizable color and styling.
+     */
     interface HTMLDsCardSubtitleElement extends Components.DsCardSubtitle, HTMLStencilElement {
     }
     var HTMLDsCardSubtitleElement: {
         prototype: HTMLDsCardSubtitleElement;
         new (): HTMLDsCardSubtitleElement;
     };
+    /**
+     * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
+     */
     interface HTMLDsCardTitleElement extends Components.DsCardTitle, HTMLStencilElement {
     }
     var HTMLDsCardTitleElement: {
@@ -2431,6 +2577,9 @@ declare global {
         "dsBlur": CheckboxBlurDetail;
         "dsChange": CheckboxChangeDetail;
     }
+    /**
+     * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
+     */
     interface HTMLDsCheckboxElement extends Components.DsCheckbox, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsCheckboxElementEventMap>(type: K, listener: (this: HTMLDsCheckboxElement, ev: DsCheckboxCustomEvent<HTMLDsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2464,18 +2613,27 @@ declare global {
         prototype: HTMLDsCheckboxGroupElement;
         new (): HTMLDsCheckboxGroupElement;
     };
+    /**
+     * Close renders a button element for closing or dismissing UI components with customizable size and color.
+     */
     interface HTMLDsCloseElement extends Components.DsClose, HTMLStencilElement {
     }
     var HTMLDsCloseElement: {
         prototype: HTMLDsCloseElement;
         new (): HTMLDsCloseElement;
     };
+    /**
+     * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
+     */
     interface HTMLDsContentElement extends Components.DsContent, HTMLStencilElement {
     }
     var HTMLDsContentElement: {
         prototype: HTMLDsContentElement;
         new (): HTMLDsContentElement;
     };
+    /**
+     * Divider renders a visual separator line for grouping or distinguishing content sections.
+     */
     interface HTMLDsDividerElement extends Components.DsDivider, HTMLStencilElement {
     }
     var HTMLDsDividerElement: {
@@ -2488,12 +2646,18 @@ declare global {
         prototype: HTMLDsDocAppElement;
         new (): HTMLDsDocAppElement;
     };
+    /**
+     * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
+     */
     interface HTMLDsHeadingElement extends Components.DsHeading, HTMLStencilElement {
     }
     var HTMLDsHeadingElement: {
         prototype: HTMLDsHeadingElement;
         new (): HTMLDsHeadingElement;
     };
+    /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
     interface HTMLDsIconElement extends Components.DsIcon, HTMLStencilElement {
     }
     var HTMLDsIconElement: {
@@ -2508,6 +2672,9 @@ declare global {
         "dsInput": InputInputDetail;
         "dsChange": InputChangeDetail;
     }
+    /**
+     * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
+     */
     interface HTMLDsInputElement extends Components.DsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2542,18 +2709,27 @@ declare global {
         prototype: HTMLDsItemElement;
         new (): HTMLDsItemElement;
     };
+    /**
+     * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
+     */
     interface HTMLDsLabelElement extends Components.DsLabel, HTMLStencilElement {
     }
     var HTMLDsLabelElement: {
         prototype: HTMLDsLabelElement;
         new (): HTMLDsLabelElement;
     };
+    /**
+     * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     */
     interface HTMLDsListElement extends Components.DsList, HTMLStencilElement {
     }
     var HTMLDsListElement: {
         prototype: HTMLDsListElement;
         new (): HTMLDsListElement;
     };
+    /**
+     * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
+     */
     interface HTMLDsLogoElement extends Components.DsLogo, HTMLStencilElement {
     }
     var HTMLDsLogoElement: {
@@ -2564,6 +2740,9 @@ declare global {
         "dsCloseClick": NotificationCloseClickDetail;
         "dsDidLoad": void;
     }
+    /**
+     * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
+     */
     interface HTMLDsNotificationElement extends Components.DsNotification, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsNotificationElementEventMap>(type: K, listener: (this: HTMLDsNotificationElement, ev: DsNotificationCustomEvent<HTMLDsNotificationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2586,6 +2765,9 @@ declare global {
         "dsClick": NumberInputClickDetail;
         "dsKeyPress": NumberInputKeyPressDetail;
     }
+    /**
+     * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
+     */
     interface HTMLDsNumberInputElement extends Components.DsNumberInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsNumberInputElementEventMap>(type: K, listener: (this: HTMLDsNumberInputElement, ev: DsNumberInputCustomEvent<HTMLDsNumberInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2603,6 +2785,9 @@ declare global {
     interface HTMLDsPaginationElementEventMap {
         "dsChange": PaginationChangeDetail;
     }
+    /**
+     * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
+     */
     interface HTMLDsPaginationElement extends Components.DsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsPaginationElementEventMap>(type: K, listener: (this: HTMLDsPaginationElement, ev: DsPaginationCustomEvent<HTMLDsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2617,6 +2802,9 @@ declare global {
         prototype: HTMLDsPaginationElement;
         new (): HTMLDsPaginationElement;
     };
+    /**
+     * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
+     */
     interface HTMLDsProgressBarElement extends Components.DsProgressBar, HTMLStencilElement {
     }
     var HTMLDsProgressBarElement: {
@@ -2628,6 +2816,9 @@ declare global {
         "dsBlur": RadioBlurDetail;
         "dsChange": RadioChangeDetail;
     }
+    /**
+     * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
+     */
     interface HTMLDsRadioElement extends Components.DsRadio, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsRadioElementEventMap>(type: K, listener: (this: HTMLDsRadioElement, ev: DsRadioCustomEvent<HTMLDsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2666,6 +2857,9 @@ declare global {
         "dsFocus": SegmentFocusDetail;
         "dsChange": SegmentChangeDetail;
     }
+    /**
+     * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
+     */
     interface HTMLDsSegmentElement extends Components.DsSegment, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsSegmentElementEventMap>(type: K, listener: (this: HTMLDsSegmentElement, ev: DsSegmentCustomEvent<HTMLDsSegmentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2683,6 +2877,9 @@ declare global {
     interface HTMLDsSegmentItemElementEventMap {
         "dsWillUpdate": void;
     }
+    /**
+     * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
+     */
     interface HTMLDsSegmentItemElement extends Components.DsSegmentItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsSegmentItemElementEventMap>(type: K, listener: (this: HTMLDsSegmentItemElement, ev: DsSegmentItemCustomEvent<HTMLDsSegmentItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2697,6 +2894,9 @@ declare global {
         prototype: HTMLDsSegmentItemElement;
         new (): HTMLDsSegmentItemElement;
     };
+    /**
+     * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
+     */
     interface HTMLDsShapeElement extends Components.DsShape, HTMLStencilElement {
     }
     var HTMLDsShapeElement: {
@@ -2708,6 +2908,9 @@ declare global {
         "dsActionClick": SnackbarActionClickDetail;
         "dsDidLoad": void;
     }
+    /**
+     * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
+     */
     interface HTMLDsSnackbarElement extends Components.DsSnackbar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsSnackbarElementEventMap>(type: K, listener: (this: HTMLDsSnackbarElement, ev: DsSnackbarCustomEvent<HTMLDsSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2722,12 +2925,18 @@ declare global {
         prototype: HTMLDsSnackbarElement;
         new (): HTMLDsSnackbarElement;
     };
+    /**
+     * Spinner displays an animated loading indicator with customizable color, size, and variation.
+     */
     interface HTMLDsSpinnerElement extends Components.DsSpinner, HTMLStencilElement {
     }
     var HTMLDsSpinnerElement: {
         prototype: HTMLDsSpinnerElement;
         new (): HTMLDsSpinnerElement;
     };
+    /**
+     * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
+     */
     interface HTMLDsStackElement extends Components.DsStack, HTMLStencilElement {
     }
     var HTMLDsStackElement: {
@@ -2737,6 +2946,9 @@ declare global {
     interface HTMLDsTagElementEventMap {
         "dsCloseClick": TagCloseClickDetail;
     }
+    /**
+     * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
+     */
     interface HTMLDsTagElement extends Components.DsTag, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsTagElementEventMap>(type: K, listener: (this: HTMLDsTagElement, ev: DsTagCustomEvent<HTMLDsTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2757,6 +2969,9 @@ declare global {
         prototype: HTMLDsTagGroupElement;
         new (): HTMLDsTagGroupElement;
     };
+    /**
+     * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
+     */
     interface HTMLDsTextElement extends Components.DsText, HTMLStencilElement {
     }
     var HTMLDsTextElement: {
@@ -2771,6 +2986,9 @@ declare global {
         "dsInput": TextareaInputDetail;
         "dsChange": TextareaChangeDetail;
     }
+    /**
+     * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
+     */
     interface HTMLDsTextareaElement extends Components.DsTextarea, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsTextareaElementEventMap>(type: K, listener: (this: HTMLDsTextareaElement, ev: DsTextareaCustomEvent<HTMLDsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2792,6 +3010,9 @@ declare global {
         "dsDidPause": void;
         "dsDidResume": void;
     }
+    /**
+     * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
+     */
     interface HTMLDsToastElement extends Components.DsToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsToastElementEventMap>(type: K, listener: (this: HTMLDsToastElement, ev: DsToastCustomEvent<HTMLDsToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2811,6 +3032,9 @@ declare global {
         "dsBlur": ToggleBlurDetail;
         "dsChange": ToggleChangeDetail;
     }
+    /**
+     * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
+     */
     interface HTMLDsToggleElement extends Components.DsToggle, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsToggleElementEventMap>(type: K, listener: (this: HTMLDsToggleElement, ev: DsToggleCustomEvent<HTMLDsToggleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2872,6 +3096,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
+     * Perfect for organizing large amounts of content into logical, expandable groups.
+     */
     interface DsAccordion {
         /**
           * Displays the summary as a button and hides the default marker.
@@ -2972,6 +3200,9 @@ declare namespace LocalJSX {
          */
         "type"?: AlertType;
     }
+    /**
+     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+     */
     interface DsApp {
         /**
           * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
@@ -2991,6 +3222,9 @@ declare namespace LocalJSX {
          */
         "ready"?: boolean;
     }
+    /**
+     * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
+     */
     interface DsBadge {
         /**
           * Define the color for the badge.
@@ -3018,6 +3252,9 @@ declare namespace LocalJSX {
          */
         "size"?: BadgeSize;
     }
+    /**
+     * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
+     */
     interface DsButton {
         /**
           * A11y attributes for the native button element.
@@ -3045,7 +3282,7 @@ declare namespace LocalJSX {
          */
         "circle"?: boolean;
         /**
-          * The color to use from your application's color palette.aaa
+          * The color to use from your application's color palette.
           * @default 'primary'
          */
         "color"?: ButtonColor;
@@ -3184,6 +3421,9 @@ declare namespace LocalJSX {
          */
         "wide"?: boolean;
     }
+    /**
+     * Button group groups multiple buttons together with layout control for alignment and direction.
+     */
     interface DsButtonGroup {
         /**
           * The value of the button, which is submitted with the form data.
@@ -3205,6 +3445,9 @@ declare namespace LocalJSX {
          */
         "wide"?: boolean;
     }
+    /**
+     * Card groups related content together in a contained, visually distinct container with optional header and footer.
+     */
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
@@ -3268,20 +3511,32 @@ declare namespace LocalJSX {
          */
         "tile"?: boolean;
     }
+    /**
+     * Card actions renders a container for action buttons or controls at the end of a card.
+     */
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
          */
         "align"?: CardActionsAlignment;
     }
+    /**
+     * Card content renders the main content area of a card for grouping body text and media.
+     */
     interface DsCardContent {
     }
+    /**
+     * Card header renders the header section of a card with optional layout direction for title and image/icon.
+     */
     interface DsCardHeader {
         /**
           * @default 'row'
          */
         "direction"?: CardHeaderDirection;
     }
+    /**
+     * Card subtitle renders a subtitle heading for cards with customizable color and styling.
+     */
     interface DsCardSubtitle {
         /**
           * If `true` the card text color is bold.
@@ -3299,6 +3554,9 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
     }
+    /**
+     * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
+     */
     interface DsCardTitle {
         /**
           * If `true` the card text color becomes white.
@@ -3316,6 +3574,9 @@ declare namespace LocalJSX {
          */
         "visualLevel"?: HeadingVisualLevel;
     }
+    /**
+     * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
+     */
     interface DsCheckbox {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -3516,6 +3777,9 @@ declare namespace LocalJSX {
          */
         "vertical"?: boolean;
     }
+    /**
+     * Close renders a button element for closing or dismissing UI components with customizable size and color.
+     */
     interface DsClose {
         /**
           * If `true` the close component will be rendered as a button element. This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
@@ -3542,6 +3806,9 @@ declare namespace LocalJSX {
          */
         "size"?: CloseSize;
     }
+    /**
+     * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
+     */
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
@@ -3570,6 +3837,9 @@ declare namespace LocalJSX {
          */
         "textAlign"?: ContentTextAlignment;
     }
+    /**
+     * Divider renders a visual separator line for grouping or distinguishing content sections.
+     */
     interface DsDivider {
         /**
           * Defines the color of the separator line.
@@ -3625,6 +3895,9 @@ declare namespace LocalJSX {
          */
         "stickyFooter"?: boolean;
     }
+    /**
+     * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
+     */
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
@@ -3669,6 +3942,9 @@ declare namespace LocalJSX {
          */
         "visualLevel"?: HeadingVisualLevel;
     }
+    /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
     interface DsIcon {
         /**
           * The theme type of the button.
@@ -3733,6 +4009,9 @@ declare namespace LocalJSX {
          */
         "turn"?: boolean;
     }
+    /**
+     * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
+     */
     interface DsInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -3996,6 +4275,9 @@ declare namespace LocalJSX {
          */
         "variant"?: 'link' | 'button' | 'accordion' | 'default';
     }
+    /**
+     * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
+     */
     interface DsLabel {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -4045,12 +4327,18 @@ declare namespace LocalJSX {
          */
         "valid"?: boolean;
     }
+    /**
+     * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     */
     interface DsList {
         /**
           * @default false
          */
         "ordered"?: boolean;
     }
+    /**
+     * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
+     */
     interface DsLogo {
         /**
           * Defines if the animation should be active
@@ -4073,6 +4361,9 @@ declare namespace LocalJSX {
          */
         "size"?: LogoSize;
     }
+    /**
+     * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
+     */
     interface DsNotification {
         /**
           * If `true` the notification will be displayed as an alert, otherwise as a status message.
@@ -4115,6 +4406,9 @@ declare namespace LocalJSX {
          */
         "size"?: NotificationSize;
     }
+    /**
+     * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
+     */
     interface DsNumberInput {
         /**
           * Defines the color state of the input.
@@ -4240,6 +4534,9 @@ declare namespace LocalJSX {
          */
         "value"?: number | null;
     }
+    /**
+     * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
+     */
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
@@ -4306,6 +4603,9 @@ declare namespace LocalJSX {
          */
         "variant"?: PaginationVariant;
     }
+    /**
+     * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
+     */
     interface DsProgressBar {
         /**
           * The background color
@@ -4323,6 +4623,9 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    /**
+     * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
+     */
     interface DsRadio {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -4519,6 +4822,9 @@ declare namespace LocalJSX {
          */
         "vertical"?: boolean;
     }
+    /**
+     * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
+     */
     interface DsSegment {
         /**
           * If `true`, the segment items can be deselected.
@@ -4613,6 +4919,9 @@ declare namespace LocalJSX {
          */
         "wide"?: boolean;
     }
+    /**
+     * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
+     */
     interface DsSegmentItem {
         /**
           * Description text to display in the segment item.
@@ -4652,6 +4961,9 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    /**
+     * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
+     */
     interface DsShape {
         /**
           * The shape color
@@ -4669,6 +4981,9 @@ declare namespace LocalJSX {
          */
         "variation"?: ShapeVariation;
     }
+    /**
+     * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
+     */
     interface DsSnackbar {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -4746,6 +5061,9 @@ declare namespace LocalJSX {
          */
         "visible"?: boolean;
     }
+    /**
+     * Spinner displays an animated loading indicator with customizable color, size, and variation.
+     */
     interface DsSpinner {
         /**
           * Defines the color of the spinner.
@@ -4778,6 +5096,9 @@ declare namespace LocalJSX {
          */
         "variation"?: SpinnerVariation;
     }
+    /**
+     * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
+     */
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
@@ -4828,6 +5149,9 @@ declare namespace LocalJSX {
          */
         "useWrap"?: boolean;
     }
+    /**
+     * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
+     */
     interface DsTag {
         /**
           * The theme type of the tag.
@@ -4867,6 +5191,9 @@ declare namespace LocalJSX {
     }
     interface DsTagGroup {
     }
+    /**
+     * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
+     */
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
@@ -4938,6 +5265,9 @@ declare namespace LocalJSX {
          */
         "subtitle"?: boolean;
     }
+    /**
+     * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
+     */
     interface DsTextarea {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid.
@@ -5072,6 +5402,9 @@ declare namespace LocalJSX {
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
+     */
     interface DsToast {
         /**
           * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -5153,6 +5486,9 @@ declare namespace LocalJSX {
          */
         "visible"?: boolean;
     }
+    /**
+     * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
+     */
     interface DsToggle {
         /**
           * If `true`, in Angular reactive forms the control will not be set invalid
@@ -5292,48 +5628,160 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
+             * Perfect for organizing large amounts of content into logical, expandable groups.
+             */
             "ds-accordion": LocalJSX.DsAccordion & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
             "ds-alert-container": LocalJSX.DsAlertContainer & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
+            /**
+             * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+             */
             "ds-app": LocalJSX.DsApp & JSXBase.HTMLAttributes<HTMLDsAppElement>;
+            /**
+             * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
+             */
             "ds-badge": LocalJSX.DsBadge & JSXBase.HTMLAttributes<HTMLDsBadgeElement>;
+            /**
+             * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
+             */
             "ds-button": LocalJSX.DsButton & JSXBase.HTMLAttributes<HTMLDsButtonElement>;
+            /**
+             * Button group groups multiple buttons together with layout control for alignment and direction.
+             */
             "ds-button-group": LocalJSX.DsButtonGroup & JSXBase.HTMLAttributes<HTMLDsButtonGroupElement>;
+            /**
+             * Card groups related content together in a contained, visually distinct container with optional header and footer.
+             */
             "ds-card": LocalJSX.DsCard & JSXBase.HTMLAttributes<HTMLDsCardElement>;
+            /**
+             * Card actions renders a container for action buttons or controls at the end of a card.
+             */
             "ds-card-actions": LocalJSX.DsCardActions & JSXBase.HTMLAttributes<HTMLDsCardActionsElement>;
+            /**
+             * Card content renders the main content area of a card for grouping body text and media.
+             */
             "ds-card-content": LocalJSX.DsCardContent & JSXBase.HTMLAttributes<HTMLDsCardContentElement>;
+            /**
+             * Card header renders the header section of a card with optional layout direction for title and image/icon.
+             */
             "ds-card-header": LocalJSX.DsCardHeader & JSXBase.HTMLAttributes<HTMLDsCardHeaderElement>;
+            /**
+             * Card subtitle renders a subtitle heading for cards with customizable color and styling.
+             */
             "ds-card-subtitle": LocalJSX.DsCardSubtitle & JSXBase.HTMLAttributes<HTMLDsCardSubtitleElement>;
+            /**
+             * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
+             */
             "ds-card-title": LocalJSX.DsCardTitle & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
+            /**
+             * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
+             */
             "ds-checkbox": LocalJSX.DsCheckbox & JSXBase.HTMLAttributes<HTMLDsCheckboxElement>;
             "ds-checkbox-group": LocalJSX.DsCheckboxGroup & JSXBase.HTMLAttributes<HTMLDsCheckboxGroupElement>;
+            /**
+             * Close renders a button element for closing or dismissing UI components with customizable size and color.
+             */
             "ds-close": LocalJSX.DsClose & JSXBase.HTMLAttributes<HTMLDsCloseElement>;
+            /**
+             * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
+             */
             "ds-content": LocalJSX.DsContent & JSXBase.HTMLAttributes<HTMLDsContentElement>;
+            /**
+             * Divider renders a visual separator line for grouping or distinguishing content sections.
+             */
             "ds-divider": LocalJSX.DsDivider & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
             "ds-doc-app": LocalJSX.DsDocApp & JSXBase.HTMLAttributes<HTMLDsDocAppElement>;
+            /**
+             * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
+             */
             "ds-heading": LocalJSX.DsHeading & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
+            /**
+             * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+             */
             "ds-icon": LocalJSX.DsIcon & JSXBase.HTMLAttributes<HTMLDsIconElement>;
+            /**
+             * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
+             */
             "ds-input": LocalJSX.DsInput & JSXBase.HTMLAttributes<HTMLDsInputElement>;
             "ds-item": LocalJSX.DsItem & JSXBase.HTMLAttributes<HTMLDsItemElement>;
+            /**
+             * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
+             */
             "ds-label": LocalJSX.DsLabel & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
+            /**
+             * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+             */
             "ds-list": LocalJSX.DsList & JSXBase.HTMLAttributes<HTMLDsListElement>;
+            /**
+             * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
+             */
             "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
+            /**
+             * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
+             */
             "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
+            /**
+             * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
+             */
             "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
+            /**
+             * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
+             */
             "ds-pagination": LocalJSX.DsPagination & JSXBase.HTMLAttributes<HTMLDsPaginationElement>;
+            /**
+             * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
+             */
             "ds-progress-bar": LocalJSX.DsProgressBar & JSXBase.HTMLAttributes<HTMLDsProgressBarElement>;
+            /**
+             * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
+             */
             "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
             "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
+            /**
+             * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
+             */
             "ds-segment": LocalJSX.DsSegment & JSXBase.HTMLAttributes<HTMLDsSegmentElement>;
+            /**
+             * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
+             */
             "ds-segment-item": LocalJSX.DsSegmentItem & JSXBase.HTMLAttributes<HTMLDsSegmentItemElement>;
+            /**
+             * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
+             */
             "ds-shape": LocalJSX.DsShape & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
+            /**
+             * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
+             */
             "ds-snackbar": LocalJSX.DsSnackbar & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
+            /**
+             * Spinner displays an animated loading indicator with customizable color, size, and variation.
+             */
             "ds-spinner": LocalJSX.DsSpinner & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;
+            /**
+             * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
+             */
             "ds-stack": LocalJSX.DsStack & JSXBase.HTMLAttributes<HTMLDsStackElement>;
+            /**
+             * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
+             */
             "ds-tag": LocalJSX.DsTag & JSXBase.HTMLAttributes<HTMLDsTagElement>;
             "ds-tag-group": LocalJSX.DsTagGroup & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
+            /**
+             * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
+             */
             "ds-text": LocalJSX.DsText & JSXBase.HTMLAttributes<HTMLDsTextElement>;
+            /**
+             * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
+             */
             "ds-textarea": LocalJSX.DsTextarea & JSXBase.HTMLAttributes<HTMLDsTextareaElement>;
+            /**
+             * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
+             */
             "ds-toast": LocalJSX.DsToast & JSXBase.HTMLAttributes<HTMLDsToastElement>;
+            /**
+             * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
+             */
             "ds-toggle": LocalJSX.DsToggle & JSXBase.HTMLAttributes<HTMLDsToggleElement>;
         }
     }

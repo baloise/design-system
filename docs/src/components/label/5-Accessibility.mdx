@@ -1,0 +1,79 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as LabelStories from './label.stories'
+import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
+
+<Meta title="Components/Forms/Label/Accessibility" />
+<Banner label={'Accessibility'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+<BannerTabs
+  of={LabelStories}
+  tabs={getLabelTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always Use htmlFor Attribute',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always set the `htmlFor` attribute to match the input's `id`. This programmatically associates the label with the input, expanding the clickable area and improving accessibility for screen reader and keyboard users.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Clear Required Indicators',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use the `required` prop to clearly indicate which fields must be completed. Provide this information before the user interacts with the form to reduce errors and frustration.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Visible Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always display labels visibly in the form. Placeholder text alone is insufficient for accessibility; labels must be present on the page at all times.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Sufficient Label Length',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use descriptive label text that clearly identifies the input purpose. Short, meaningful labels help all users understand what information is expected.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Hidden or Invisible Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never hide labels off-screen or use visibility:hidden. Even though visually hidden labels can be announced by screen readers, visible labels benefit all users and improve usability.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Missing htmlFor Association',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not create labels without the `htmlFor` attribute. Labels must be programmatically associated with their inputs for screen readers to function correctly.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+<Footer />

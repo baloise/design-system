@@ -12,6 +12,12 @@ import {
   CONTENT_SPACES,
 } from './content.interfaces'
 
+/**
+ * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
+ *
+ * @slot - The content children (text, images, other elements).
+ * @part content - The content container element.
+ */
 @Component({
   tag: 'ds-content',
   styleUrl: './content.host.scss',

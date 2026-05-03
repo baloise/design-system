@@ -3,6 +3,12 @@ import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Logger, type LogInstance } from '@utils'
 
+/**
+ * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+ *
+ * @slot - The list items (li elements or content).
+ * @part list - The native HTML list element (ol or ul).
+ */
 @Component({
   tag: 'ds-list',
   styleUrl: 'list.host.scss',

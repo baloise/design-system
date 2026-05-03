@@ -25,6 +25,14 @@ import {
 } from '@utils'
 import { FOCUS_KEYS } from '../app/app.focus.util'
 
+/**
+ * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
+ *
+ * @slot - The segment item label content.
+ * @slot helper - The helper or hint text below the item.
+ * @part segment-item - The segment item container element.
+ * @part native - The native HTML input element.
+ */
 @Component({
   tag: 'ds-segment-item',
   styleUrl: 'segment-item.host.scss',

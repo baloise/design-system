@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead, StoryHeading } from '../../../.storybook/blocks'
+import * as AppStories from './app.stories'
+import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
+
+<Meta title="Components/App/Overview" />
+<Banner label={'Overview'} section={APP_DOC_CONFIG.section} color={APP_DOC_CONFIG.color} />
+<BannerTabs
+  of={AppStories}
+  tabs={getAppTabs('overview')}
+/>
+
+<Lead>
+  **App** is the root application wrapper component. Provides the primary container for entire application layouts, managing overall structure, theming, and top-level navigation architecture.
+</Lead>
+
+<Canvas of={AppStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-app',
+      label: 'ds-app',
+      content: <Controls of={AppStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

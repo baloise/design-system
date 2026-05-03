@@ -7,6 +7,25 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-color-background: Background color of the input field.
+ * @prop --input-color-border: Border color of the input field.
+ * @prop --input-color-text: Text color inside the input field.
+ * @prop --input-color-placeholder: Placeholder text color.
+ * @prop --input-font-size: Font size of the input text.
+ * @prop --input-font-family: Font family of the input text.
+ * @prop --input-line-height: Line height of the input text.
+ * @prop --input-border-radius: Border radius of the input field.
+ * @prop --input-border-width: Border width of the input field.
+ * @prop --input-padding-inline: Horizontal padding inside the input.
+ * @prop --input-padding-block: Vertical padding inside the input.
+ * @prop --input-min-height: Minimum height of the input field.
+ * @prop --input-label-color: Text color of the label.
+ * @prop --input-label-font-size: Font size of the label.
+ * @prop --input-label-font-weight: Font weight of the label.
+ * @prop --input-description-color: Text color of the description text.
+ * @prop --input-description-font-size: Font size of the description text.
+ * @prop --input-error-color: Color of error messages and invalid state.
  */
 
 :host {

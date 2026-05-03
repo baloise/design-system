@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withContent, withDefaultCon
 type Args = JSX.BalShape & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Layout/Shape',
+  title: 'Components/Shape',
   args: {
     ...withDefaultContent(),
   },

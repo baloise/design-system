@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ShapeStories from './shape.stories'
+import { SHAPE_DOC_CONFIG, getShapeTabs } from './shape.doc-config'
+
+<Meta title="Components/Shape/Accessibility" />
+<Banner label={'Accessibility'} section={SHAPE_DOC_CONFIG.section} color={SHAPE_DOC_CONFIG.color} />
+<BannerTabs
+  of={ShapeStories}
+  tabs={getShapeTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Mark as Decorative',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>aria-hidden="true"</code> for purely decorative shapes. Screen readers will skip them.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Provide Alt Text if Meaningful',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          If the shape has meaning, use <code>aria-label</code> to describe it for screen readers.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Sufficient Contrast',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure shapes have sufficient color contrast against background (3:1 minimum for graphics).
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Don\'t Obstruct Content',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure decorative shapes don't overlap or obscure meaningful content.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Meaningful Shapes Without Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use shapes to convey information without accessible descriptions or labels.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Low Contrast Shapes',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use shapes with insufficient contrast against backgrounds. Users may not see them.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The shape component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Semantics (1.3.1)** — Decorative shapes use aria-hidden
+- **Color Contrast (1.4.3)** — Sufficient contrast for visible shapes
+- **Meaningful Content (1.4.11)** — Shapes don't obscure important content
+- **Text Alternatives (1.1.1)** — Meaningful shapes have aria-label or alt text
+
+<Footer />

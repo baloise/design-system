@@ -2,6 +2,21 @@
 @forward '../stack/stack.style';
 
 /**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --content-direction: Direction of the content layout (row or column).
+ * @prop --content-gap: Spacing between content children.
+ * @prop --content-align: Alignment of items perpendicular to main axis.
+ * @prop --content-justify: Justification along the main axis.
+ * @prop --content-wrap: Whether items wrap to multiple lines.
+ * @prop --content-padding: Padding around the content container.
+ * @prop --content-max-width: Maximum width of the content.
+ */
+
+/**
   * Host Style
   */
 

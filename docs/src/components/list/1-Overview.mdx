@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Overview" />
+<Banner label={'Overview'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+<BannerTabs
+  of={ListStories}
+  tabs={getListTabs('overview')}
+/>
+
+<Lead>
+  **List** is a semantic container for organizing items in ordered or unordered lists. Perfect for displaying navigation, content hierarchies, or grouped information with proper HTML semantics.
+</Lead>
+
+<Canvas of={ListStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-list',
+      label: 'ds-list',
+      content: <Controls of={ListStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

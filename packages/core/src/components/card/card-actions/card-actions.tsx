@@ -4,6 +4,12 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import { CARD_ACTIONS_ALIGNMENTS, CardActionsAlignment } from '../card.interfaces'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Card actions renders a container for action buttons or controls at the end of a card.
+ *
+ * @slot - Action buttons or controls.
+ * @part card-actions - The card actions container element.
+ */
 @Component({
   tag: 'ds-card-actions',
   shadow: true,

@@ -1,0 +1,65 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
+
+<Meta title="Components/Close/Styling" />
+<Banner label={'Styling'} section={CLOSE_DOC_CONFIG.section} color={CLOSE_DOC_CONFIG.color} />
+<BannerTabs
+  of={CloseStories}
+  tabs={getCloseTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the close button:
+
+```css
+/* Style the close button */
+ds-close::part(close) {
+  padding: 8px;
+  border-radius: 4px;
+}
+```
+
+<br />
+
+Primary parts of the close component include:
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `close` | Button | The close button element. |
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override close button styling:
+
+```css
+/* Override globally */
+:root {
+  --ds-close-color-text: #666;
+  --ds-close-color-hover: #333;
+}
+
+/* Override for a specific close button */
+ds-close {
+  --close-color-text: #e85c41;
+}
+```
+
+<TokenOverview component="close" />
+
+<Footer />

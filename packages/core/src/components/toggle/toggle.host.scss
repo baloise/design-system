@@ -2,6 +2,28 @@
 @use './toggle.mixin.scss' as toggle;
 
 /**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --toggle-size: Size of the toggle switch.
+ * @prop --toggle-height: Height of the toggle switch.
+ * @prop --toggle-color-background: Background color of the toggle when off.
+ * @prop --toggle-color-background-checked: Background color when toggle is on.
+ * @prop --toggle-color-indicator: Color of the toggle indicator/circle.
+ * @prop --toggle-border-radius: Border radius of the toggle switch.
+ * @prop --toggle-label-color: Text color of the toggle label.
+ * @prop --toggle-label-font-size: Font size of the toggle label.
+ * @prop --toggle-label-font-family: Font family of the toggle label.
+ * @prop --toggle-label-font-weight: Font weight of the toggle label.
+ * @prop --toggle-focus-color: Focus outline color of the toggle.
+ * @prop --toggle-gap: Gap between toggle and label.
+ * @prop --toggle-helper-color: Text color of helper text.
+ * @prop --toggle-helper-font-size: Font size of helper text.
+ */
+
+/**
   * Basic Component Styles
   * --------------------------------
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.

@@ -21,6 +21,12 @@ import {
 } from './heading.const'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
+ *
+ * @slot - The heading content.
+ * @part heading - The native HTML heading element (h1–h6).
+ */
 @Component({
   tag: 'ds-heading',
   styleUrl: 'heading.host.scss',

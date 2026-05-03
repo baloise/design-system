@@ -17,7 +17,7 @@ const tag = 'ds-notification'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Containment/Notification',
+  title: 'Components/Notification',
   args: {
     ...withDefaultContent(),
     heading: 'Strong Title',
@@ -113,7 +113,7 @@ export const Outlines = Story({
   </ds-notification>
   <ds-notification ${props(args)} color="outline-yellow" heading="Warning">
     ${content}
-  </ds-notification>  
+  </ds-notification>
   <ds-notification ${props(args)} color="outline-red" heading="Danger">
     ${content}
   </ds-notification>

@@ -1,0 +1,103 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as NotificationStories from './notification.stories'
+import { NOTIFICATION_DOC_CONFIG, getNotificationTabs } from './notification.doc-config'
+
+<Meta title="Components/Notification/Usage" />
+<Banner label={'Usage'} section={NOTIFICATION_DOC_CONFIG.section} color={NOTIFICATION_DOC_CONFIG.color} />
+<BannerTabs
+  of={NotificationStories}
+  tabs={getNotificationTabs('usage')}
+/>
+
+## When to Use
+
+- Inform users about form submission results (success, error, warning)
+- Alert users to system status changes or service updates
+- Display validation errors or input issues
+- Show contextual messages related to user actions
+- Provide inline confirmations or acknowledgments
+
+## When NOT to Use
+
+- For minor or trivial information — use simple text or helper messages instead
+- As a replacement for form validation error fields — combine with field-level errors
+- For non-critical information that can be placed in page content — don't interrupt users unnecessarily
+- For errors that require user action but offer no guidance — include clear next steps
+
+## Do's and Don'ts
+
+### Notification Severity and Color
+
+Match notification color to severity level. Users should immediately understand the importance and urgency.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Appropriate severity color',
+      content: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <ds-notification color="success">Your changes have been saved successfully.</ds-notification>
+          <ds-notification color="warning">Your session is about to expire.</ds-notification>
+          <ds-notification color="danger">An error occurred. Please try again.</ds-notification>
+        </div>
+      ),
+      description: 'Colors match severity expectations',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Mismatched severity colors',
+      content: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <ds-notification color="warning">Your changes have been saved successfully.</ds-notification>
+          <ds-notification color="success">An error occurred. Please try again.</ds-notification>
+        </div>
+      ),
+      description: 'Colors don\'t match message urgency',
+    },
+  ]}
+/>
+
+### Clear, Actionable Messages
+
+Notification messages should be clear and actionable. Tell users what happened and what they should do next.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear and actionable message',
+      content: (
+        <>
+          <ds-notification color="warning">
+            Your password will expire in 24 hours. <a href="#">Update your password now</a>.
+          </ds-notification>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code noPreview code={'<ds-notification color="warning">\n  Your password will expire in 24 hours. <a href="#">Update now</a>.\n</ds-notification>'} />
+          </div>
+        </>
+      ),
+      description: 'Users know what to do next',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Vague message',
+      content: (
+        <ds-notification color="warning">
+          Something might happen later.
+        </ds-notification>
+      ),
+      description: 'Unclear what action user should take',
+    },
+  ]}
+/>
+
+<Footer />

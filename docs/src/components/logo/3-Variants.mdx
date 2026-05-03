@@ -1,0 +1,45 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as LogoStories from './logo.stories'
+import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
+
+<Meta title="Components/Logo/Variants" />
+<StoryHeading of={LogoStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
+<BannerTabs
+  of={LogoStories}
+  tabs={getLogoTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LogoStories.Static}></StoryHeading>
+
+The static logo displays the brand mark without animation. Ideal for use in navigation and branding contexts.
+
+<BasicStoryTabs tag="logo" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LogoStories.Animated}></StoryHeading>
+
+The animated logo includes subtle motion to create a more engaging brand presence. Use on page load or in interactive contexts.
+
+<BasicStoryTabs tag="logo" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LogoStories.Sizes}></StoryHeading>
+
+The logo is available in multiple sizes to fit different layout requirements.
+
+<BasicStoryTabs tag="logo" noGuide />
+
+<Footer />

@@ -1,0 +1,70 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import BadgeParts from './badge.parts.svg'
+import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
+
+<Meta title="Components/Badge/Usage" />
+<Banner label={'Usage'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
+<BannerTabs
+  of={BadgeStories}
+  tabs={getBadgeTabs('usage')}
+/>
+
+## When to Use
+
+- Display notification counts (e.g., unread messages, pending items)
+- Show status information (e.g., online/offline, active/inactive)
+- Highlight new or updated content
+- Indicate priority levels or importance
+
+## When NOT to Use
+
+- For displaying detailed information (use a tooltip or popover instead)
+- As a standalone component (badges should always be associated with another component)
+- For large amounts of text (badges should contain short, concise content)
+
+## Do's and Don'ts
+
+### Text Content Examples
+
+The most important guideline is keeping badge content short and concise. Here's how to do it right:
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Short & Concise',
+      content: (
+        <button className="button is-primary">
+          <ds-badge color="danger">5</ds-badge>
+          Notifications
+        </button>
+      ),
+      description: 'Short numbers work best',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Too Long',
+      content: (
+        <button className="button">
+          <ds-badge color="danger">You have 5 unread messages</ds-badge>
+          Notifications
+        </button>
+      ),
+      description: 'Sentences break the layout',
+    },
+  ]}
+/>
+
+<Footer />

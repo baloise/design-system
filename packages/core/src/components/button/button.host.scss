@@ -3,6 +3,36 @@
   $use-host: true
 );
 
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --button-font-family: Font family of the button label.
+ * @prop --button-font-weight: Font weight of the button label.
+ * @prop --button-font-size: Font size of the button label.
+ * @prop --button-line-height: Line height of the button label.
+ * @prop --button-radius: Border radius of the button.
+ * @prop --button-color-text: Text color of the button.
+ * @prop --button-color-border: Border color of the button.
+ * @prop --button-color-background: Background color of the button.
+ * @prop --button-color-text-hover: Text color on hover state.
+ * @prop --button-color-border-hover: Border color on hover state.
+ * @prop --button-color-background-hover: Background color on hover state.
+ * @prop --button-color-text-active: Text color on active state.
+ * @prop --button-color-border-active: Border color on active state.
+ * @prop --button-color-background-active: Background color on active state.
+ * @prop --button-width: Width of the button.
+ * @prop --button-border-style: Border style of the button.
+ * @prop --button-gap: Gap between icon and label.
+ * @prop --button-min-height: Minimum height of the button.
+ * @prop --button-min-width: Minimum width of the button.
+ * @prop --button-padding-inline: Horizontal padding inside the button.
+ * @prop --button-box-shadow: Box shadow of the button.
+ * @prop --button-text-shadow: Text shadow of the button label.
+ */
+
 :host {
   display: inline-block;
   width: var(--ds-button-width, fit-content);

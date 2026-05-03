@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
+
+<Meta title="Components/Forms/Number-input/Overview" />
+<Banner label={'Overview'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
+<BannerTabs
+  of={NumberInputStories}
+  tabs={getNumberInputTabs('overview')}
+/>
+
+<Lead>
+  **Number-input** is a specialized form field for collecting numeric values. Provides increment/decrement controls and supports validation of numeric ranges with optional min/max constraints.
+</Lead>
+
+<Canvas of={NumberInputStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-number-input',
+      label: 'ds-number-input',
+      content: <Controls of={NumberInputStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

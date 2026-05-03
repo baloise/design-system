@@ -1,0 +1,132 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ButtonStories from './button.stories'
+import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
+
+<Meta title="Components/Button/Variants/Overview" />
+<StoryHeading of={ButtonStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+<BannerTabs
+  of={ButtonStories}
+  tabs={getButtonTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Variants}></StoryHeading>
+
+Buttons are available in four main levels: **primary**, **secondary**, **tertiary**, and **link**. The primary level is specifically designed for prominent call-to-action elements.
+Tertiary buttons can be customized with branding colors to align with the overall theme. However, themed tertiary buttons are not suitable for use on non-white backgrounds.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.VariantsHtml} webComponentStory={ButtonStories.Variants} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Sizes}></StoryHeading>
+
+Buttons are available in two sizes: **small** and **normal** (default). Use small buttons in compact layouts such as data tables or inline toolbars. The HTML/CSS stylesheet also supports `large` and `x-large` sizes.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.SizesHtml} webComponentStory={ButtonStories.Sizes} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Inverted}></StoryHeading>
+
+Use the `inverted` prop to display buttons on dark or colored backgrounds. Inverted variants are available for primary, secondary, and link colors.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.InvertedHtml} webComponentStory={ButtonStories.Inverted} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.WithIcon}></StoryHeading>
+
+Buttons can include a leading icon via the `icon` prop, or a trailing icon via `iconRight`. Icons should reinforce — not replace — the button label.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.WithIconHtml} webComponentStory={ButtonStories.WithIcon} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.States}></StoryHeading>
+
+Buttons support `disabled` and `loading` states. When loading, the label is replaced by a spinner to signal an async operation in progress.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.StatesHtml} webComponentStory={ButtonStories.States} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Dashed}></StoryHeading>
+
+Dashed buttons use a dashed border and are available in the four tertiary branding colors. Pair with a circular icon for an "add" affordance.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.DashedHtml} webComponentStory={ButtonStories.Dashed} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.AlertButtons}></StoryHeading>
+
+Alert color variants — `info`, `success`, `warning`, and `danger` — are used in response or notification contexts to communicate the severity of an action.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.AlertButtonsHtml} webComponentStory={ButtonStories.AlertButtons} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.SquareButtons}></StoryHeading>
+
+Square and circle (rounded) buttons contain only an icon. Always add `aria-label` to describe the action. Use square for grid/toolbar contexts and circle for floating actions.
+
+<BasicStoryTabs tag="button" htmlStory={ButtonStories.SquareButtonsHtml} webComponentStory={ButtonStories.SquareButtons} index={1} noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroup}></StoryHeading>
+
+Use the `.buttons` container to group multiple buttons horizontally. Alignment can be set with `.is-centered` or `.is-right`.
+
+<Canvas of={ButtonStories.ButtonGroup} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroupAlignment}></StoryHeading>
+
+<Canvas of={ButtonStories.ButtonGroupAlignment} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroupAsRow}></StoryHeading>
+
+Use `.as-row` to place buttons in a space-between row layout — ideal for back/next navigation patterns.
+
+<Canvas of={ButtonStories.ButtonGroupAsRow} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroupAsCol}></StoryHeading>
+
+Use `.as-col` for vertical button stacks. Combine with `.is-left`, `.is-centered`, or `.is-right` for alignment.
+
+<Canvas of={ButtonStories.ButtonGroupAsCol} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Link}></StoryHeading>
+
+The `.link` class styles an `<a>` element as an inline text link. Use the inverted variant on dark backgrounds.
+
+<Canvas of={ButtonStories.Link} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.LinkButton}></StoryHeading>
+
+An `<a>` element styled as a button using the `.button.is-link` class. Use when the action navigates rather than submits.
+
+<Canvas of={ButtonStories.LinkButton} />
+
+<Footer />

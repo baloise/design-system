@@ -19,6 +19,12 @@ import {
 } from './divider.interfaces'
 import { CONTENT_LAYOUTS } from '../content/content.interfaces'
 
+/**
+ * Divider renders a visual separator line for grouping or distinguishing content sections.
+ *
+ * @slot - Optional content to display alongside the divider line.
+ * @part divider - The divider line element.
+ */
 @Component({
   tag: 'ds-divider',
   styleUrl: './divider.host.scss',

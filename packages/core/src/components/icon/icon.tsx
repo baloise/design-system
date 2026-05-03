@@ -24,6 +24,12 @@ import {
   type IconSize,
 } from './icon.interfaces'
 
+/**
+ * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+ *
+ * @slot - Icon label or caption text (when used as icon + text).
+ * @part icon - The SVG icon element wrapper.
+ */
 @Component({
   tag: 'ds-icon',
   styleUrl: 'icon.host.scss',

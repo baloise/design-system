@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement, Method, Watch } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
 import {
   ariaBooleanToString,
@@ -36,6 +36,16 @@ import {
   ButtonNavigateDetail,
 } from './button.interfaces'
 
+/**
+ * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
+ *
+ * @slot - Button label text and/or icon children. Rendered inside a `<span part="label">` wrapper.
+ * @part native - The native `<button>` or `<a>` element.
+ * @part spinner - The loading spinner shown when `loading` is true.
+ * @part icon - The leading icon wrapper.
+ * @part label - The text label wrapper (`<span>`).
+ * @part icon-right - The trailing icon wrapper.
+ */
 @Component({
   tag: 'ds-button',
   styleUrl: 'button.host.scss',
@@ -56,7 +66,12 @@ export class Button implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
-   * The color to use from your application's color palette.aaa
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
+   * The color to use from your application's color palette.
    */
   @Prop()
   @ValidateEmptyOrOneOf(...BUTTON_COLORS)
@@ -290,6 +305,11 @@ export class Button implements DsComponentInterface {
    */
   @Event() dsDidRender!: EventEmitter<ButtonDidRenderDetail>
 
+  /**
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
+   */
+
   @Listen('click', { capture: true, target: 'document' })
   listenToClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {
@@ -297,6 +317,11 @@ export class Button implements DsComponentInterface {
       ev.stopPropagation()
     }
   }
+
+  /**
+   * LIFECYCLE
+   * ─────────────────────────────────────────────────────
+   */
 
   connectedCallback(): void {
     setupValidation(this)
@@ -317,9 +342,15 @@ export class Button implements DsComponentInterface {
       this.a11yHaspopup = 'true'
     }
   }
+
   componentDidRender() {
     this.dsDidRender.emit()
   }
+
+  /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
 
   private get isIconInverted() {
     return this.inverted
@@ -387,6 +418,16 @@ export class Button implements DsComponentInterface {
       }
     }
   }
+
+  /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this

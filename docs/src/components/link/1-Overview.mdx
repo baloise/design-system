@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as LinkStories from './link.stories'
+import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
+
+<Meta title="Components/Link/Overview" />
+<Banner label={'Overview'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
+<BannerTabs
+  of={LinkStories}
+  tabs={getLinkTabs('overview')}
+/>
+
+<Lead>
+  **Link** provides semantic HTML anchor elements with design system styling. Supports navigation to URLs with multiple visual states (default, hover, active, visited) and accessibility features built in.
+</Lead>
+
+<Canvas of={LinkStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'link',
+      label: 'link',
+      content: <Controls of={LinkStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

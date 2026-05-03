@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../../.storybook/blocks'
+import { Banner, Footer, Lead, StoryHeading, TokenOverview } from '../../../../.storybook/blocks'
 import * as ToastStories from './toast.stories'
 import ToastParts from './toast.parts.svg'
 
@@ -12,8 +12,6 @@ import ToastParts from './toast.parts.svg'
 <Lead>**Toast** is a brief, non-blocking notification that appears temporarily to inform users about the result of an action.</Lead>
 
 <Canvas of={ToastStories.Basic} sourceState={'shown'} />
-
-<PlaygroundBar of={ToastStories.Basic}></PlaygroundBar>
 
 {/* ------------------------------------------------------ */}
 
@@ -35,7 +33,7 @@ import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
 
-## Parts
+## CSS Shadow Parts
 
 <img src={ToastParts} alt="Toast parts diagram" />
 

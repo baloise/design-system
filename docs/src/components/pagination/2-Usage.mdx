@@ -1,0 +1,68 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as PaginationStories from './pagination.stories'
+import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
+
+<Meta title="Components/Pagination/Usage" />
+<Banner label={'Usage'} section={PAGINATION_DOC_CONFIG.section} color={PAGINATION_DOC_CONFIG.color} />
+<BannerTabs
+  of={PaginationStories}
+  tabs={getPaginationTabs('usage')}
+/>
+
+## When to Use
+
+- Navigate large lists or search results across multiple pages
+- Break content into manageable chunks for readability
+- Show results count and page position to users
+- Provide next/previous navigation between sequential pages
+- Display paginated data in tables or galleries
+
+## When NOT to Use
+
+- For very small datasets (fewer than 20 items) — consider showing all items
+- For infinite scroll experiences — pagination breaks the paradigm
+- For sequential step-by-step workflows — use step indicators or breadcrumbs
+- For single long pages — pagination not needed
+- For mobile with limited space — consider infinite scroll or "Load More" button
+
+## Do's and Don'ts
+
+### Clear Page Information
+
+Always show the current page and total count. Users need to know where they are.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Show current and total pages',
+      content: (
+        <div>
+          <p>Page 2 of 10 (showing 10–20 of 95 results)</p>
+          <ds-pagination current-page="2" total-pages="10" on-page-change={() => {}}></ds-pagination>
+        </div>
+      ),
+      description: 'Users understand their position in the results',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No page information',
+      content: (
+        <div>
+          <ds-pagination current-page="2" total-pages="10" on-page-change={() => {}}></ds-pagination>
+        </div>
+      ),
+      description: 'Users unsure of current page or total count',
+    },
+  ]}
+/>
+
+<Footer />

@@ -3,6 +3,22 @@
 
 /**
  * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --segment-color-background: Background color of the segment.
+ * @prop --segment-color-background-selected: Background color of the selected item.
+ * @prop --segment-color-text: Text color of the segment items.
+ * @prop --segment-color-text-selected: Text color of the selected item.
+ * @prop --segment-border-radius: Border radius of the segment container.
+ * @prop --segment-border-width: Border width of the segment.
+ * @prop --segment-gap: Gap between segment items.
+ * @prop --segment-padding: Padding inside the segment.
+ * @prop --segment-label-color: Text color of the label.
+ * @prop --segment-label-font-size: Font size of the label.
+ * @prop --segment-description-color: Text color of description text.
+ * @prop --segment-description-font-size: Font size of description text.
  */
 
 @include segment.vars(':host');

@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as TextStories from './text.stories'
+import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
+
+<Meta title="Components/Text/Overview" />
+<Banner label={'Overview'} section={TEXT_DOC_CONFIG.section} color={TEXT_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextStories}
+  tabs={getTextTabs('overview')}
+/>
+
+<Lead>
+  **Text** renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
+</Lead>
+
+<Canvas of={TextStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-text',
+      label: 'ds-text',
+      content: <Controls of={TextStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

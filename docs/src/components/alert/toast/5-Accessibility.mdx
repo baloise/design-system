@@ -1,0 +1,55 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../../.storybook/blocks'
+import * as ToastStories from './toast.stories'
+import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
+
+<Meta title="Components/Toast/Accessibility" />
+
+<Banner label={'Accessibility'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
+
+<BannerTabs of={ToastStories} tabs={getToastTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use aria-live="polite" or aria-live="assertive"',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Ensure screen readers announce the toast notification. Use "assertive" for urgent alerts and "polite" for informational toasts.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Write clear, concise messages',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Keep toast text brief and meaningful so users can quickly understand the notification before it auto-dismisses.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Provide action buttons when necessary',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>If a toast requires user action, include a button that allows users to act before the notification disappears.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Avoid auto-dismissing critical information',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>For error messages or important warnings, consider making the toast persistent or providing a long enough timeout for users to read and understand.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Avoid displaying multiple toasts simultaneously',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Multiple overlapping toasts can confuse screen reader users and make the interface chaotic.</p>,
+    },
+  ]}
+/>
+
+## References
+
+- [`role="alert"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+- [`aria-atomic`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-atomic) — MDN
+
+<Footer />

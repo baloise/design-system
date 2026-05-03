@@ -1,0 +1,84 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import BadgeParts from './badge.parts.svg'
+import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
+
+<Meta title="Components/Badge/Styling" />
+<Banner label={'Styling'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
+<BannerTabs
+  of={BadgeStories}
+  tabs={getBadgeTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the badge part to customize its appearance:
+
+```css
+/* Style the badge part */
+ds-badge::part(badge) {
+  border-radius: 0.25rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the icon part */
+ds-badge::part(icon) {
+  margin: 0 0.25rem;
+}
+```
+
+<br />
+
+Primary parts of the badge component include:
+
+<img src={BadgeParts} alt="Badge parts diagram" />
+
+<Markdown>
+  {`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`badge\` | \`<span>\` | Outer wrapper of the badge; carries the background color, size, and position styles. |
+| \`icon\` | \`<ds-icon>\` | Optional icon inside the badge; only rendered when the \`icon\` prop is set and size is not \`small\`. |
+`}
+</Markdown>
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override badge color and styling using CSS variables:
+
+```css
+/* Override global badge colors */
+:root {
+  --ds-badge-color-success-base-text: #ffffff;
+  --ds-badge-color-success-base-background: #188d5b;
+}
+
+/* Or override for a specific badge instance */
+ds-badge {
+  --ds-badge-color-text: #000;
+  --ds-badge-background: #fae052;
+}
+```
+
+<TokenOverview component="badge" />
+
+<Footer />

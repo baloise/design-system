@@ -5,6 +5,27 @@
 /**
  * Variables
  * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --textarea-color-background: Background color of the textarea field.
+ * @prop --textarea-color-border: Border color of the textarea field.
+ * @prop --textarea-color-text: Text color inside the textarea.
+ * @prop --textarea-color-placeholder: Placeholder text color.
+ * @prop --textarea-font-size: Font size of the textarea text.
+ * @prop --textarea-font-family: Font family of the textarea text.
+ * @prop --textarea-line-height: Line height of the textarea text.
+ * @prop --textarea-border-radius: Border radius of the textarea field.
+ * @prop --textarea-border-width: Border width of the textarea field.
+ * @prop --textarea-padding-inline: Horizontal padding inside the textarea.
+ * @prop --textarea-padding-block: Vertical padding inside the textarea.
+ * @prop --textarea-min-height: Minimum height of the textarea field.
+ * @prop --textarea-label-color: Text color of the label.
+ * @prop --textarea-label-font-size: Font size of the label.
+ * @prop --textarea-label-font-weight: Font weight of the label.
+ * @prop --textarea-description-color: Text color of the description text.
+ * @prop --textarea-description-font-size: Font size of the description text.
+ * @prop --textarea-error-color: Color of error messages and invalid state.
  */
 
 :host {

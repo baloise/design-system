@@ -1,0 +1,71 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as TagStories from './tag.stories'
+import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
+
+<Meta title="Components/Tag/Styling" />
+<Banner label={'Styling'} section={TAG_DOC_CONFIG.section} color={TAG_DOC_CONFIG.color} />
+<BannerTabs
+  of={TagStories}
+  tabs={getTagTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the tag container and icon:
+
+```css
+/* Style the tag container */
+ds-tag::part(tag) {
+  padding: 4px 12px;
+  border-radius: 16px;
+}
+
+/* Style the icon wrapper */
+ds-tag::part(icon) {
+  margin-right: 4px;
+}
+```
+
+<br />
+
+Primary parts of the tag component include:
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `tag` | Container | The main tag wrapper element. |
+| `icon` | Icon | The icon wrapper (if an icon is used). |
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override tag styling:
+
+```css
+/* Override globally */
+:root {
+  --ds-tag-color-background: #e8f4f8;
+  --ds-tag-color-text: #005eb8;
+}
+
+/* Override for a specific tag */
+ds-tag {
+  --tag-color-background: #fff3cd;
+}
+```
+
+<TokenOverview component="tag" />
+
+<Footer />

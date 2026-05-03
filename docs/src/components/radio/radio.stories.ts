@@ -8,7 +8,7 @@ type Args = JSX.DsRadio & { content: string }
 const tag = 'ds-radio'
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Radio',
+  title: 'Components/Forms/Radio',
   args: {
     ...withDefaultContent(),
   },

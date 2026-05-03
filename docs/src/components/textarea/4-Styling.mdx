@@ -1,0 +1,65 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as TextareaStories from './textarea.stories'
+import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
+
+<Meta title="Components/Forms/Textarea/Styling" />
+<Banner label={'Styling'} section={TEXTAREA_DOC_CONFIG.section} color={TEXTAREA_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextareaStories}
+  tabs={getTextareaTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the textarea element:
+
+```css
+/* Style the textarea */
+ds-textarea::part(textarea) {
+  border-radius: 4px;
+  font-family: monospace;
+}
+```
+
+<br />
+
+Primary parts of the textarea component include:
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `textarea` | Textarea | The native textarea element. |
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override textarea styling:
+
+```css
+/* Override globally */
+:root {
+  --ds-textarea-color-background: #ffffff;
+  --ds-textarea-color-border: #cccccc;
+}
+
+/* Override for a specific textarea */
+ds-textarea {
+  --textarea-color-background: #f5f5f5;
+}
+```
+
+<TokenOverview component="textarea" />
+
+<Footer />

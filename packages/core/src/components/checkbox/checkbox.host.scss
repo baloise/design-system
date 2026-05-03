@@ -2,6 +2,28 @@
 @use './checkbox.mixin.scss' as checkbox;
 
 /**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --checkbox-size: Size of the checkbox box.
+ * @prop --checkbox-color-border: Border color of the checkbox.
+ * @prop --checkbox-color-background: Background color of the checkbox.
+ * @prop --checkbox-color-background-checked: Background color when checkbox is checked.
+ * @prop --checkbox-color-border-checked: Border color when checkbox is checked.
+ * @prop --checkbox-color-checkmark: Color of the checkmark icon.
+ * @prop --checkbox-label-color: Text color of the checkbox label.
+ * @prop --checkbox-label-font-size: Font size of the checkbox label.
+ * @prop --checkbox-label-font-family: Font family of the checkbox label.
+ * @prop --checkbox-label-font-weight: Font weight of the checkbox label.
+ * @prop --checkbox-focus-color: Focus outline color of the checkbox.
+ * @prop --checkbox-gap: Gap between checkbox and label.
+ * @prop --checkbox-helper-color: Text color of helper text.
+ * @prop --checkbox-helper-font-size: Font size of helper text.
+ */
+
+/**
   * Basic Component Styles
   * --------------------------------
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.

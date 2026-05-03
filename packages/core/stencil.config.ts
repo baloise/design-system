@@ -4,7 +4,6 @@ import fg from 'fast-glob'
 import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
-import { CustomDocumentationGenerator } from './config/doc-output-target'
 import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
@@ -119,7 +118,6 @@ export const config: Config = {
      */
     ...(!IS_DS_DEVELOPMENT && !IS_DS_PLAYWRIGHT_TESTING
       ? [
-          CustomDocumentationGenerator,
           webOutputTarget({
             dir: 'components',
             isTest: false,

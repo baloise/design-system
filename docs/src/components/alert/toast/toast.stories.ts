@@ -7,7 +7,7 @@ type Args = JSX.DsToast & { content: string }
 const tag = 'ds-toast'
 
 const meta: Meta<Args> = {
-  title: 'Components/Feedback/Toast',
+  title: 'Components/Toast',
   args: {
     ...withDefaultContent(),
   },

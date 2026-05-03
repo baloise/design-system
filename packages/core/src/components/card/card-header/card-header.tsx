@@ -4,6 +4,12 @@ import { Logger, LogInstance, ValidateEmptyOrOneOf } from '@utils'
 import { DsComponentInterface } from '@global'
 import { CARD_HEADER_DIRECTIONS, CardHeaderDirection } from '../card.interfaces'
 
+/**
+ * Card header renders the header section of a card with optional layout direction for title and image/icon.
+ *
+ * @slot - Header content (title, icon, image, etc.).
+ * @part card-header - The card header container element.
+ */
 @Component({
   tag: 'ds-card-header',
   styleUrl: 'card-header.host.scss',

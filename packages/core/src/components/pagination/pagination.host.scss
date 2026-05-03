@@ -8,6 +8,18 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --pagination-gap-mobile: Gap between pagination items on mobile.
+ * @prop --pagination-gap-tablet: Gap between pagination items on tablet.
+ * @prop --pagination-gap-desktop: Gap between pagination items on desktop.
+ * @prop --pagination-dots-background: Background color of the ellipsis dots.
+ * @prop --pagination-dots-radius: Border radius of the ellipsis dots.
+ * @prop --pagination-item-color-background: Background color of pagination buttons.
+ * @prop --pagination-item-color-text: Text color of pagination buttons.
+ * @prop --pagination-item-color-background-active: Background color of active/current button.
+ * @prop --pagination-item-color-text-active: Text color of active/current button.
+ * @prop --pagination-button-min-width: Minimum width of pagination button items.
+ * @prop --pagination-button-min-height: Minimum height of pagination button items.
  */
 
 :host {

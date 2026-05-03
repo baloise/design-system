@@ -1,0 +1,37 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ToggleStories from './toggle.stories'
+import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
+
+<Meta title="Components/Forms/Toggle/Variants/Overview" />
+<StoryHeading of={ToggleStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
+<BannerTabs
+  of={ToggleStories}
+  tabs={getToggleTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToggleStories.Disabled}></StoryHeading>
+
+Disabled toggle state for inactive options.
+
+<BasicStoryTabs tag="toggle" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToggleStories.Sizes}></StoryHeading>
+
+Small and large toggle variants for different use cases.
+
+<BasicStoryTabs tag="toggle" noGuide />
+
+<Footer />

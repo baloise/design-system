@@ -1,0 +1,61 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as LabelStories from './label.stories'
+import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
+
+<Meta title="Components/Forms/Label/Variants/Overview" />
+<StoryHeading of={LabelStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+<BannerTabs
+  of={LabelStories}
+  tabs={getLabelTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.NoWrap}></StoryHeading>
+
+Enable text truncation with ellipsis for long label text. Truncation requires a defined width on the container.
+
+<Canvas of={LabelStories.NoWrap} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.Sizes}></StoryHeading>
+
+Labels support multiple sizes to accommodate different layouts and visual hierarchies within forms.
+
+<Canvas of={LabelStories.Sizes} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.Required}></StoryHeading>
+
+The required prop controls the display of required/optional indicators. Set to false to show "optional" suffix automatically.
+
+<Canvas of={LabelStories.Required} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.States}></StoryHeading>
+
+Labels respond to form field states: valid (green), invalid (red), and disabled (greyed out) to communicate input status.
+
+<Canvas of={LabelStories.States} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.Colors}></StoryHeading>
+
+Labels inherit color styling from the design system for consistency. Default label color adjusts to theme context.
+
+<Canvas of={LabelStories.Colors} sourceState="hidden" />
+
+<Footer />

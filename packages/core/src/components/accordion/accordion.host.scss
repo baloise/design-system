@@ -8,6 +8,16 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --accordion-marker-size: Size of the expand/collapse marker icon.
+ * @prop --accordion-summary-color: Text color of the summary label.
+ * @prop --accordion-summary-family: Font family of the summary label.
+ * @prop --accordion-summary-weight: Font weight of the summary label.
+ * @prop --accordion-summary-line-height: Line height of the summary label.
+ * @prop --accordion-summary-size: Responsive font size of the summary label.
+ * @prop --accordion-summary-color-hover: Summary text color on hover.
+ * @prop --accordion-summary-color-active: Summary text color when pressed.
+ * @prop --accordion-radius-base: Border radius used for the focus ring outline.
  */
 
 :host {
@@ -38,6 +48,14 @@
 }
 
 //
+// Header
+:host #header {
+  min-height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // Summary
 :host #summary:not(.button) {
   @include unselectable();

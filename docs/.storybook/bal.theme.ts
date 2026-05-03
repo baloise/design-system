@@ -12,7 +12,7 @@ export default create({
   fontCode: 'monospace',
 
   colorPrimary: '#000d6e',
-  colorSecondary: '#B8B2FF',
+  colorSecondary: '#9f52cc',
 
   appBg: '#ffffff',
   appContentBg: '#ffffff',

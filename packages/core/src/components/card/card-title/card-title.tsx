@@ -4,6 +4,12 @@ import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType } from '
 import { DsComponentInterface } from '@global'
 import { HEADING_VISUAL_LEVELS, HEADING_TAGS, HeadingLevel, HeadingVisualLevel } from '../../heading/heading.interfaces'
 
+/**
+ * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
+ *
+ * @slot - The title text.
+ * @part card-title - The card title heading element.
+ */
 @Component({
   tag: 'ds-card-title',
   styleUrl: 'card-title.host.scss',

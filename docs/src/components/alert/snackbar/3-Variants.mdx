@@ -1,0 +1,43 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  StoryHeading,
+} from '../../../../.storybook/blocks'
+import * as SnackbarStories from './snackbar.stories'
+import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
+
+<Meta title="Components/Snackbar/Variants/Overview" />
+
+<StoryHeading of={SnackbarStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={SNACKBAR_DOC_CONFIG.section} color={SNACKBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={SnackbarStories} tabs={getSnackbarTabs('variants')} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SnackbarStories.WithAction}></StoryHeading>
+
+Snackbars with action buttons for user interaction.
+
+<Canvas of={SnackbarStories.WithAction} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SnackbarStories.WithBrandIcon}></StoryHeading>
+
+Snackbars with brand icons for enhanced visual communication.
+
+<Canvas of={SnackbarStories.WithBrandIcon} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SnackbarStories.Colors}></StoryHeading>
+
+Different color variants to represent different notification types and severity levels.
+
+<Canvas of={SnackbarStories.Colors} />
+
+<Footer />

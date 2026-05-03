@@ -17,7 +17,7 @@ const tag = 'ds-tag'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Tag',
+  title: 'Components/Tag',
   args: {
     ...withDefaultContent(),
     color: undefined,

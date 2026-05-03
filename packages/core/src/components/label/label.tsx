@@ -13,6 +13,12 @@ import {
 import { I18nDsLabel } from './label.i18n'
 import { LABEL_WEIGHTS, LABEL_SIZES, type LabelWeight, type LabelSize } from './label.interfaces'
 
+/**
+ * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
+ *
+ * @slot - The label content and text.
+ * @part label - The native HTML `<label>` element.
+ */
 @Component({
   tag: 'ds-label',
   styleUrl: './label.host.scss',

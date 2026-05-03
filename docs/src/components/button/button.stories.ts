@@ -17,7 +17,7 @@ const tag = 'ds-button'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Containment/Button',
+  title: 'Components/Button/Variants',
   args: {
     ...withDefaultContent('Button'),
   },

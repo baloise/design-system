@@ -1,0 +1,70 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
+
+<Meta title="Components/Forms/Number-input/Styling" />
+<Banner label={'Styling'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
+<BannerTabs
+  of={NumberInputStories}
+  tabs={getNumberInputTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the input element and controls:
+
+```css
+/* Style the number input */
+ds-number-input::part(input) {
+  border-radius: 4px;
+}
+
+/* Style increment/decrement buttons */
+ds-number-input::part(button-increment) {
+  padding: 8px;
+}
+```
+
+<br />
+
+Primary parts of the number-input component include:
+
+| Part | Element | Purpose |
+| --- | --- | --- |
+| `input` | Input | The number input field. |
+| `button-increment` | Button | The increment button. |
+| `button-decrement` | Button | The decrement button. |
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override number-input styling:
+
+```css
+/* Override globally */
+:root {
+  --ds-number-input-color-background: #ffffff;
+}
+
+/* Override for a specific number-input */
+ds-number-input {
+  --number-input-color-background: #f5f5f5;
+}
+```
+
+<TokenOverview component="number-input" />
+
+<Footer />

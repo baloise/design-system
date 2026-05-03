@@ -1,0 +1,111 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Usage" />
+<Banner label={'Usage'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+<BannerTabs
+  of={ListStories}
+  tabs={getListTabs('usage')}
+/>
+
+## When to Use
+
+- Display a series of related items or steps
+- Create navigation menus or breadcrumbs
+- Show search results or filtered content
+- Organize instructions or steps in sequence
+- Display related links or resources
+- Present hierarchical information with nesting
+
+## When NOT to Use
+
+- For tabular data with multiple columns — use a table component instead
+- As a replacement for proper content hierarchy — lists supplement structure, not define it
+- For single items or pairs of items — simple dividers are clearer
+- When items don't have a logical grouping — use individual components instead
+
+## Do's and Don'ts
+
+### List Structure and Nesting
+
+Use semantic lists with proper nesting. Keep list items at similar levels of importance.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Properly nested list structure',
+      content: (
+        <ds-list>
+          <li>Item 1</li>
+          <li>Item 2
+            <ds-list>
+              <li>Subitem 2a</li>
+              <li>Subitem 2b</li>
+            </ds-list>
+          </li>
+          <li>Item 3</li>
+        </ds-list>
+      ),
+      description: 'Clear hierarchy for screen readers',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Flat list with no hierarchy',
+      content: (
+        <ds-list>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Subitem 2a</li>
+          <li>Subitem 2b</li>
+          <li>Item 3</li>
+        </ds-list>
+      ),
+      description: 'No indication of relationship between items',
+    },
+  ]}
+/>
+
+### List Item Content
+
+Keep list items concise but descriptive. Use consistent formatting across items.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Concise, parallel list items',
+      content: (
+        <ds-list>
+          <li>Complete the form</li>
+          <li>Review your information</li>
+          <li>Submit your application</li>
+        </ds-list>
+      ),
+      description: 'Clear, parallel structure',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Inconsistent list item structure',
+      content: (
+        <ds-list>
+          <li>You should fill out the form completely</li>
+          <li>Review</li>
+          <li>After reviewing the information, you can then submit your application to us</li>
+        </ds-list>
+      ),
+      description: 'Inconsistent length and detail',
+    },
+  ]}
+/>
+
+<Footer />

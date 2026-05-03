@@ -7,6 +7,12 @@ import { SpinnerColor, SpinnerSize, SpinnerVariation } from './spinner.interface
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
+/**
+ * Spinner displays an animated loading indicator with customizable color, size, and variation.
+ *
+ * @slot - Optional label or caption text.
+ * @part spinner - The spinner animation container element.
+ */
 @Component({
   tag: 'ds-spinner',
   styleUrl: 'spinner.host.scss',

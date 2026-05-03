@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead, PlaygroundBar, StoryHeading, BasicStoryTabs, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, Footer, Lead, StoryHeading, BasicStoryTabs, TokenOverview } from '../../../.storybook/blocks'
 import * as CardStories from './card.stories'
 
 <Meta of={CardStories} />
@@ -11,8 +11,6 @@ import * as CardStories from './card.stories'
 <Lead>**Cards** contain content and actions about a single subject and can be combined with other components.</Lead>
 
 <BasicStoryTabs tag="card" htmlStory={CardStories.BasicHtml} webComponentStory={CardStories.Basic} index={1} />
-
-<PlaygroundBar of={CardStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}

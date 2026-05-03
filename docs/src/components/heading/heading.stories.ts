@@ -17,7 +17,7 @@ const tag = 'ds-heading'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Heading',
+  title: 'Components/Heading',
   args: {
     ...withDefaultContent('Heading'),
   },

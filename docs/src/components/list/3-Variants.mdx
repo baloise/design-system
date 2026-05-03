@@ -1,0 +1,53 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Variants" />
+<StoryHeading of={ListStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+<BannerTabs
+  of={ListStories}
+  tabs={getListTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.OrderedList}></StoryHeading>
+
+Ordered lists display items with numeric markers, perfect for sequential steps or prioritized items.
+
+<BasicStoryTabs tag="list" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.UnorderedList}></StoryHeading>
+
+Unordered lists display items with bullet markers, ideal for non-sequential related items.
+
+<BasicStoryTabs tag="list" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.NestedList}></StoryHeading>
+
+Lists can be nested to show hierarchical relationships between items.
+
+<BasicStoryTabs tag="list" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.CustomList}></StoryHeading>
+
+Customize list appearance with CSS variables and styling options.
+
+<BasicStoryTabs tag="list" noGuide />
+
+<Footer />

@@ -6,6 +6,15 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --close-color-background: Background color of the close button.
+ * @prop --close-color-background-hover: Background color on hover state.
+ * @prop --close-color-background-active: Background color on active/pressed state.
+ * @prop --close-color-focus: Focus outline color of the close button.
+ * @prop --close-color-icon: Color of the close icon.
+ * @prop --close-size: Size of the close button.
+ * @prop --close-icon-size: Size of the close icon.
+ * @prop --close-border-radius: Border radius of the close button.
  */
 
 :host {

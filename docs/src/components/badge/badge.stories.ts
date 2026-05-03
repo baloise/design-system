@@ -17,7 +17,7 @@ const tag = 'ds-badge'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Badge',
+  title: 'Components/Badge/Variants',
   args: {
     ...withDefaultContent('42'),
   },
@@ -105,7 +105,7 @@ export const ButtonBadge = Story({
   ...withRender(
     ({ ...args }) => `
 <button class="button">
-  <ds-badge>42</ds-badge>
+  <ds-badge pulse>99+</ds-badge>
   Button
 </button>`,
   ),

@@ -1,0 +1,70 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ShapeStories from './shape.stories'
+import { SHAPE_DOC_CONFIG, getShapeTabs } from './shape.doc-config'
+
+<Meta title="Components/Shape/Usage" />
+<Banner label={'Usage'} section={SHAPE_DOC_CONFIG.section} color={SHAPE_DOC_CONFIG.color} />
+<BannerTabs
+  of={ShapeStories}
+  tabs={getShapeTabs('usage')}
+/>
+
+## When to Use
+
+- Add decorative visual accents to layouts
+- Create abstract geometric designs
+- Add subtle background shapes to sections
+- Enhance visual hierarchy without content
+- Provide design system branded shapes
+- Create visual separation between sections
+
+## When NOT to Use
+
+- For meaningful content — use actual content elements
+- For interactive elements — shapes are purely decorative
+- For SEO-critical content — shapes don't contribute to page meaning
+- For functional icons — use the icon component
+- For complex illustrations — use custom SVG or images
+- For accessible diagrams — shapes may not convey meaning to screen readers
+
+## Do's and Don'ts
+
+### Semantic Presentation
+
+Use shapes as decorative enhancements, not substitutes for meaningful content.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Shape as design accent',
+      content: (
+        <div>
+          <ds-shape type="circle" size="small"></ds-shape>
+          <p>This section is enhanced by a decorative circle shape.</p>
+        </div>
+      ),
+      description: 'Shape supports but doesn\'t replace content',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Shape as primary content',
+      content: (
+        <div>
+          <ds-shape type="circle" size="large"></ds-shape>
+        </div>
+      ),
+      description: 'No context or meaning without accompanying content',
+    },
+  ]}
+/>
+
+<Footer />

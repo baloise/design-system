@@ -1,0 +1,87 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as ButtonStories from './button.stories'
+import ButtonParts from './button.parts.svg'
+import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
+
+<Meta title="Components/Button/Styling" />
+<Banner label={'Styling'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+<BannerTabs
+  of={ButtonStories}
+  tabs={getButtonTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the native button element and the label:
+
+```css
+/* Style the native <button> or <a> element */
+ds-button::part(native) {
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+
+/* Style the text label span */
+ds-button::part(label) {
+  font-weight: 700;
+}
+
+/* Style the loading spinner */
+ds-button::part(spinner) {
+  opacity: 0.6;
+}
+```
+
+<br />
+
+Primary parts of the button component include:
+
+<img src={ButtonParts} alt="Button parts diagram" />
+
+<Markdown>
+  {`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`native\` | \`<button>\` or \`<a>\` | The native interactive element; carries all accessibility attributes and event handlers. |
+| \`spinner\` | \`<ds-spinner>\` | Loading spinner shown when the \`loading\` prop is set; hidden otherwise. |
+| \`icon\` | \`<ds-icon>\` | Leading icon rendered when the \`icon\` prop is set. |
+| \`label\` | \`<span>\` | Wrapper for the default slot (button text content). |
+| \`icon-right\` | \`<ds-icon>\` | Trailing icon rendered when the \`iconRight\` prop is set. |
+`}
+</Markdown>
+
+## Design Tokens
+
+CSS variables (custom properties) allow you to define reusable values that can be customized globally or per component instance to override default styling without modifying the component code.
+
+<br />
+
+**Example:** Override button colors using CSS variables:
+
+```css
+/* Override globally for all primary buttons */
+:root {
+  --ds-button-color-primary-base-text: #ffffff;
+  --ds-button-color-primary-base-background: #005eb8;
+}
+
+/* Override for a specific button instance */
+ds-button {
+  --button-color-background: #fae052;
+  --button-color-text: #1a1a1a;
+}
+```
+
+<TokenOverview component="button" />
+
+<Footer />

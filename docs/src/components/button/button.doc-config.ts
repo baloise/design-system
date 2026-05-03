@@ -1,0 +1,35 @@
+/**
+ * Shared configuration for Button component documentation pages.
+ * Import and reuse this across all button documentation MDX files to reduce duplication.
+ */
+
+export const BUTTON_DOC_CONFIG = {
+  section: 'Components / Button',
+  color: 'blue' as const,
+  tabs: [
+    { label: 'Overview', storyId: 'components-containment-button--overview' },
+    { label: 'Usage', storyId: 'components-containment-button--usage' },
+    { label: 'Variants', storyId: 'components-containment-button--variants-overview' },
+    { label: 'Styling', storyId: 'components-containment-button--styling' },
+    { label: 'Accessibility', storyId: 'components-containment-button--accessibility' },
+  ],
+}
+
+export const BUTTON_TAB_TITLES = {
+  overview: 'Overview',
+  usage: 'Usage',
+  variants: 'Variants',
+  styling: 'Styling',
+  accessibility: 'Accessibility',
+}
+
+/**
+ * Helper to get tabs with active state set.
+ * Usage: getButtonTabs('usage')
+ */
+export const getButtonTabs = (activeLabel: keyof typeof BUTTON_TAB_TITLES) => {
+  return BUTTON_DOC_CONFIG.tabs.map(tab => ({
+    ...tab,
+    active: tab.label === BUTTON_TAB_TITLES[activeLabel],
+  }))
+}

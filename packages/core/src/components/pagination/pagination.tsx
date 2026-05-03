@@ -36,6 +36,13 @@ import {
 } from './pagination.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
+ *
+ * @slot - Optional custom content or labels.
+ * @part pagination - The pagination container element.
+ * @part item - Each pagination button or control item.
+ */
 @Component({
   tag: 'ds-pagination',
   styleUrl: 'pagination.host.scss',

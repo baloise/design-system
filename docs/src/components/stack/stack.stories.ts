@@ -10,7 +10,7 @@ import { props, StoryFactory, withComponentControls, withRender } from '../../ut
 type Args = JSX.BalStack & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Layout/Stack',
+  title: 'Components/Stack',
   argTypes: {
     ...withComponentControls({ tag: 'ds-stack' }),
   },

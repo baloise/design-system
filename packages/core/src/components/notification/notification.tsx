@@ -4,6 +4,13 @@ import { NotificationCloseClickDetail, NotificationColor, NotificationSize } fro
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
+ *
+ * @slot - The notification message content.
+ * @part notification - The notification container element.
+ * @part icon - The icon wrapper.
+ */
 @Component({
   tag: 'ds-notification',
   styleUrl: 'notification.host.scss',

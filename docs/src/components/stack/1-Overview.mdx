@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as StackStories from './stack.stories'
+import { STACK_DOC_CONFIG, getStackTabs } from './stack.doc-config'
+
+<Meta title="Components/Stack/Overview" />
+<Banner label={'Overview'} section={STACK_DOC_CONFIG.section} color={STACK_DOC_CONFIG.color} />
+<BannerTabs
+  of={StackStories}
+  tabs={getStackTabs('overview')}
+/>
+
+<Lead>
+  **Stack** arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
+</Lead>
+
+<Canvas of={StackStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-stack',
+      label: 'ds-stack',
+      content: <Controls of={StackStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, InfoQuote, Lead, PlaygroundBar, StoryHeading, BasicStoryTabs, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, Footer, InfoQuote, Lead, StoryHeading, BasicStoryTabs, TokenOverview } from '../../../.storybook/blocks'
 import * as DividerStories from './divider.stories'
 
 <Meta of={DividerStories} />
@@ -21,9 +21,7 @@ components. This helps improve the rendering speed of your application or websit
 
 <BasicStoryTabs tag="divider" htmlStory={DividerStories.BasicHtml} webComponentStory={DividerStories.Basic} index={1} />
 
-<PlaygroundBar of={DividerStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
+{/* STORIES */}}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={DividerStories.Vertical}></StoryHeading>

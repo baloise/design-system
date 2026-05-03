@@ -18,6 +18,13 @@ import {
   type BadgePosition,
 } from './badge.interfaces'
 
+/**
+ * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
+ *
+ * @slot - The badge content, which can be text or an icon.
+ * @part badge - The badge element itself.
+ * @part icon - The icon element, if an icon is used.
+ */
 @Component({
   tag: 'ds-badge',
   styleUrl: 'badge.host.scss',

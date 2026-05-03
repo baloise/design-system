@@ -5,7 +5,7 @@ import { StoryFactory, withComponentControls, withContent, withDefaultContent, w
 type Args = JSX.BalApp & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Layout/App',
+  title: 'Components/App',
   args: {
     ...withDefaultContent(),
   },

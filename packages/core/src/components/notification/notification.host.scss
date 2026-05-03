@@ -4,6 +4,27 @@
   $use-host: true
 );
 
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --notification-color-background: Background color of the notification.
+ * @prop --notification-color-border: Border color of the notification.
+ * @prop --notification-color-text: Text color of the notification.
+ * @prop --notification-font-family: Font family of the notification text.
+ * @prop --notification-font-size: Font size of the notification text.
+ * @prop --notification-font-weight: Font weight of the notification text.
+ * @prop --notification-line-height: Line height of the notification text.
+ * @prop --notification-border-radius: Border radius of the notification.
+ * @prop --notification-border-width: Border width of the notification.
+ * @prop --notification-padding: Padding inside the notification.
+ * @prop --notification-gap: Gap between icon and content.
+ * @prop --notification-icon-color: Color of the icon.
+ * @prop --notification-shadow: Box shadow of the notification.
+ */
+
 :host {
   display: block;
 }

@@ -6,7 +6,7 @@ import { props, StoryFactory, withComponentControls, withContent, withDefaultCon
 type Args = JSX.BalIcon & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Icon',
+  title: 'Components/Icon',
   args: {
     ...withDefaultContent(),
   },

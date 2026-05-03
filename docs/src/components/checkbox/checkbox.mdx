@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BasicStoryTabs, Footer, Lead, PlaygroundBar, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
+import { Banner, BasicStoryTabs, Footer, Lead, StoryHeading, TokenOverview } from '../../../.storybook/blocks'
 import * as CheckboxStories from './checkbox.stories'
 
 <Meta of={CheckboxStories} />
@@ -12,9 +12,7 @@ import * as CheckboxStories from './checkbox.stories'
 
 <BasicStoryTabs tag="checkbox" htmlStory={CheckboxStories.BasicHtml} webComponentStory={CheckboxStories.Basic} index={1} />
 
-<PlaygroundBar of={CheckboxStories.Basic}></PlaygroundBar>
-
-{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}}
 
 <StoryHeading of={CheckboxStories.Disabled}></StoryHeading>
 

@@ -5,6 +5,12 @@ import { Logger, type LogInstance } from '@utils'
 import { ShapeVariation, ShapeColor, ShapeRotation } from './shape.interfaces'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
+ *
+ * @slot - Optional overlay content or labels.
+ * @part shape - The SVG shape element container.
+ */
 @Component({
   tag: 'ds-shape',
   styleUrl: 'shape.host.scss',

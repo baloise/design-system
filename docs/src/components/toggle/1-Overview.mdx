@@ -1,0 +1,29 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentTabs, Footer, Lead } from '../../../.storybook/blocks'
+import * as ToggleStories from './toggle.stories'
+import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
+
+<Meta title="Components/Forms/Toggle/Overview" />
+<Banner label={'Overview'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
+<BannerTabs
+  of={ToggleStories}
+  tabs={getToggleTabs('overview')}
+/>
+
+<Lead>
+  **Toggle** is a binary form control for switching between two states (on/off, enabled/disabled). Provides a single interactive switch with optional label and size variants.
+</Lead>
+
+<Canvas of={ToggleStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-toggle',
+      label: 'ds-toggle',
+      content: <Controls of={ToggleStories.Basic} />,
+    },
+  ]}
+/>
+
+<Footer />

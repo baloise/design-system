@@ -1,0 +1,52 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as TextStories from './text.stories'
+import TextParts from './text.parts.svg'
+import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
+
+<Meta title="Components/Text/Styling" />
+<Banner label={'Styling'} section={TEXT_DOC_CONFIG.section} color={TEXT_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextStories}
+  tabs={getTextTabs('styling')}
+/>
+
+## CSS Shadow Parts
+
+Shadow DOM parts are named elements within a web component that can be targeted with CSS selectors from outside the component, allowing you to style specific internal elements without breaking encapsulation.
+
+<br />
+
+**Example:** Target the text element and override styling:
+
+```css
+/* Style the paragraph or span element */
+ds-text::part(text) {
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+```
+
+<br />
+
+Primary parts of the text component include:
+
+<img src={TextParts} alt="Text parts diagram" />
+
+<Markdown>
+  {`
+| Part | Element | Purpose |
+| --- | --- | --- |
+| \`text\` | \`<p>\` or \`<span>\` | The semantic text container; renders as paragraph or inline span depending on context. |
+`}</Markdown>
+
+## Design Tokens
+
+<TokenOverview component="text" />
+
+<Footer />

@@ -1,0 +1,53 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  BasicStoryTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Variants/Overview" />
+<StoryHeading of={CardStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+<BannerTabs
+  of={CardStories}
+  tabs={getCardTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Variants}></StoryHeading>
+
+Cards are available in multiple styles: **standard** (default), **flat** (no shadow), **outlined** (border), and **inverted** (dark background).
+
+<BasicStoryTabs tag="card" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.States}></StoryHeading>
+
+Cards can indicate interactivity with the **clickable** prop, which adds a hover effect. The **selected** state shows when a card is active.
+
+<BasicStoryTabs tag="card" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Spacing}></StoryHeading>
+
+Control card padding with the **space** prop. Options include **small**, **normal**, and **large** for different content densities.
+
+<BasicStoryTabs tag="card" noGuide />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.WithImages}></StoryHeading>
+
+Cards can display images as full-width teasers using the **imageTeaser** prop. This is ideal for product or article cards.
+
+<BasicStoryTabs tag="card" noGuide />
+
+<Footer />

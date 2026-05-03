@@ -4,6 +4,12 @@ import { ElementStateInfo, Logger, type LogInstance } from '@utils'
 import { DsComponentInterface } from '@global'
 import { TextSize, TextColor, TextSpace, TextAlign } from './text.interfaces'
 
+/**
+ * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
+ *
+ * @slot - The text content.
+ * @part text - The text container element.
+ */
 @Component({
   tag: 'ds-text',
   styleUrl: 'text.host.scss',

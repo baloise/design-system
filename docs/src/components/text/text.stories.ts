@@ -11,15 +11,15 @@ import {
   withRender,
 } from '../../utils'
 
-type Args = JSX.BalText & { content: string }
+type Args = JSX.DsText & { content: string }
 
 const tag = 'ds-text'
 const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
-  title: 'Components/Typography/Text',
+  title: 'Components/Text',
   args: {
-    ...withDefaultContent(),
+    ...withDefaultContent('The quick brown fox jumps over the lazy dog'),
   },
   argTypes: {
     ...withContent(),

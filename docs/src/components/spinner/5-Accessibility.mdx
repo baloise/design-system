@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SpinnerStories from './spinner.stories'
+import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
+
+<Meta title="Components/Spinner/Accessibility" />
+<Banner label={'Accessibility'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
+<BannerTabs
+  of={SpinnerStories}
+  tabs={getSpinnerTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Provide Context Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always include accompanying text explaining what is loading. This helps all users, especially those using screen readers, understand the current state.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use ARIA Live Regions',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Implement <code>aria-live="polite"</code> on parent containers to announce loading state changes to screen reader users.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Indicate Loading State',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>aria-busy="true"</code> on the element containing the spinner to indicate loading status to assistive technology.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Disable Interactivity During Loading',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Disable buttons and form controls while loading. This prevents users from triggering multiple submissions or confused actions.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Spinner Without Context',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never show a spinner without explaining what is loading. Users won't understand the current operation.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Indefinite Loading',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid showing spinners indefinitely without providing a way to cancel or escape. Users need a sense of control and progress.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The spinner component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Status Messages (4.1.3)** — Loading state is announced via ARIA live regions
+- **Name, Role, Value (4.1.2)** — Spinner has proper ARIA attributes
+- **Color Contrast (4.11.1)** — Spinner is visible against background
+- **Animation Concerns (2.3.3)** — No flashing or animations that could trigger seizures
+
+<Footer />
