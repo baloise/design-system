@@ -16,9 +16,9 @@ import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
 
 <BannerTabs of={ListStories} tabs={getListTabs('styling')} />
 
-<ComponentParts component="list" />
+<ComponentParts component="list" subComponents={['item']} />
 
-<ComponentCssVariables component="list" />
+<ComponentCssVariables component="list" subComponents={['item']} />
 
 <ComponentDesignTokens component="list" />
 

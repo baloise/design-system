@@ -6,6 +6,15 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --description-list-grid-term: Defines the grid column size for the term (dt) element.
+ * @prop --description-list-grid-detail: Defines the grid column size for the detail (dd) element.
+ * @prop --description-list-grid-row-gap: Defines the gap between rows in the description list.
+ * @prop --description-list-grid-column-gap: Defines the gap between columns in the description list.
+ * @prop --description-list-term-color: Defines the text color for the term (dt) element.
+ * @prop --description-list-term-weight: Defines the font weight for the term (dt) element.
+ * @prop --description-list-detail-color: Defines the text color for the detail (dd) element.
+ * @prop --description-list-detail-weight: Defines the font weight for the detail (dd) element.
  */
 
 dl.description-list {

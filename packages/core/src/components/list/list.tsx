@@ -1,7 +1,7 @@
 import { DsComponentInterface } from '@global'
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance } from '@utils'
+import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation } from '@utils'
 
 /**
  * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
@@ -24,7 +24,31 @@ export class List implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
-  @Prop() readonly ordered: boolean = false
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly ordered: boolean = false
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const ListTag = this.ordered ? 'ol' : 'ul'

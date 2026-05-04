@@ -7,11 +7,11 @@ export const LOGO_DOC_CONFIG = {
   section: 'Components / Logo',
   color: 'blue' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-brand-logo--overview' },
-    { label: 'Usage', storyId: 'components-brand-logo--usage' },
-    { label: 'Variants', storyId: 'components-brand-logo--variants-overview' },
-    { label: 'Styling', storyId: 'components-brand-logo--styling' },
-    { label: 'Accessibility', storyId: 'components-brand-logo--accessibility' },
+    { label: 'Overview', storyId: 'components-logo--overview' },
+    { label: 'Usage', storyId: 'components-logo--usage' },
+    { label: 'Variants', storyId: 'components-logo--variants-overview' },
+    { label: 'Styling', storyId: 'components-logo--styling' },
+    { label: 'Accessibility', storyId: 'components-logo--accessibility' },
   ],
 }
 

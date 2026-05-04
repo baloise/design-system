@@ -1,9 +1,25 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core'
-import { Event, EventEmitter, HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance } from '@utils'
-import { AccordionMarker, AccordionMarkerPosition, AccordionToggleDetail } from '../../accordion/accordion.interfaces'
-import { ButtonTarget, ButtonClickDetail } from '../../button/button.interfaces'
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { Logger, type LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import {
+  ACCORDION_MARKERS,
+  ACCORDION_MARKER_POSITIONS,
+  type AccordionMarker,
+  type AccordionMarkerPosition,
+  type AccordionToggleDetail,
+} from '../../accordion/accordion.interfaces'
+import { BUTTON_TARGETS, type ButtonTarget, type ButtonClickDetail } from '../../button/button.interfaces'
 import { DsComponentInterface } from '@global'
+import {
+  ITEM_VARIANTS,
+  ITEM_ACTION_ICONS,
+  ITEM_LABEL_LEVELS,
+  ITEM_LABEL_SIZES,
+  type ItemVariant,
+  type ItemActionIcon,
+  type ItemLabelLevel,
+  type ItemLabelSize,
+} from './item.interfaces'
 
 type Attributes = {
   disabled?: boolean
@@ -14,6 +30,20 @@ type Attributes = {
   onClick?: (event: MouseEvent) => void
 }
 
+/**
+ * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
+ *
+ * @slot icon - An optional icon to display on the left side of the item.
+ * @slot content - The main content of the item, displayed next to the label and description.
+ * @slot accordion-content - The content of the accordion, only applicable if `variant` is set to `accordion`.
+ *
+ * @part item - The main container of the item.
+ * @part accordion - The accordion element, only applicable if `variant` is set to `accordion`.
+ * @part accordion-content - The container of the accordion content, only applicable if `variant` is set to `accordion`.
+ * @part label - The label element, only applicable if the `label` prop is set.
+ * @part description - The description element, only applicable if the `description` prop is set.
+ * @part action-icon - The action icon, only applicable if `variant` is set to `link` or `button`.
+ */
 @Component({
   tag: 'ds-item',
   styleUrl: 'item.host.scss',
@@ -29,48 +59,62 @@ export class Item implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
-  @Prop() readonly variant: 'link' | 'button' | 'accordion' | 'default' = 'default'
-  @Prop() readonly actionIcon: 'link' | 'link-external' | 'download' | 'default' = 'default'
-
   /**
-   * If `true` the accordion is open.
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
    */
-  @Prop() readonly accordionOpen: boolean = false
 
   /**
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically
    * close when another accordion in the same group is opened.
    */
-  @Prop() readonly accordionGroup: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly accordionGroup: string = ''
 
   /**
-   * The marker variant. Only applies if `button` is `false`.
+   * The marker variant. Only applies if `variant` is set to `accordion`.
    * If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`
    * a plus icon for closed and a minus icon for open state is used.
    */
-  @Prop() readonly accordionMarker?: AccordionMarker
+  @Prop()
+  @ValidateEmptyOrOneOf(...ACCORDION_MARKERS)
+  readonly accordionMarker: AccordionMarker = ''
 
   /**
-   * The position of the marker. Only applies if `button` is `false`.
+   * The position of the marker. Only applies if `variant` is set to `accordion`.
    */
-  @Prop() readonly accordionMarkerPosition?: AccordionMarkerPosition
+  @Prop()
+  @ValidateEmptyOrOneOf(...ACCORDION_MARKER_POSITIONS)
+  readonly accordionMarkerPosition: AccordionMarkerPosition = ''
 
   /**
-   * Specifies the URL of the page the link goes to
+   * If `true` the accordion is open.
    */
-  @Prop() readonly href: string = ''
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly accordionOpen: boolean = false
 
   /**
-   * Specifies where to display the linked URL.
-   * Only applies when an `href` is provided.
+   * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
    */
-  @Prop() readonly target: ButtonTarget = '_self'
+  @Prop()
+  @ValidateEmptyOrOneOf(...ITEM_ACTION_ICONS)
+  readonly actionIcon: ItemActionIcon = 'default'
 
   /**
-   * Specifies the relationship of the target object to the link object.
-   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   * The description text displayed below the label.
    */
-  @Prop() readonly rel: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description: string = ''
+
+  /**
+   * If `true`, the user cannot interact with the item.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -78,18 +122,60 @@ export class Item implements DsComponentInterface {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() readonly download: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly download: string = ''
 
   /**
-   * If `true`, the user cannot interact with the button.
+   * Specifies the URL of the page the link goes to.
    */
-  @Prop({ reflect: true }) readonly disabled: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly href: string = ''
 
-  @Prop() readonly label: string = ''
-  @Prop() readonly labelLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' = 'h5'
-  @Prop() readonly labelSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base'
+  /**
+   * The label text displayed as a heading inside the item.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
 
-  @Prop() readonly description: string = ''
+  /**
+   * The semantic heading level of the label element.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ITEM_LABEL_LEVELS)
+  readonly labelLevel: ItemLabelLevel = 'h5'
+
+  /**
+   * The visual size of the label. Defaults to `labelLevel` if not set.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ITEM_LABEL_SIZES)
+  readonly labelSize: ItemLabelSize = ''
+
+  /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly rel: string = ''
+
+  /**
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
+  readonly target: ButtonTarget = '_self'
+
+  /**
+   * The visual and functional variant of the item.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ITEM_VARIANTS)
+  readonly variant: ItemVariant = 'default'
 
   /**
    * Emitted when the link element has clicked.
@@ -97,7 +183,7 @@ export class Item implements DsComponentInterface {
   @Event() dsClick!: EventEmitter<ButtonClickDetail>
 
   /**
-   * Emitted when the input value has changed.
+   * Emitted when the accordion is toggled.
    */
   @Event() dsAccordionToggle!: EventEmitter<AccordionToggleDetail>
 
@@ -110,6 +196,24 @@ export class Item implements DsComponentInterface {
    * Emitted when the accordion is closed.
    */
   @Event() dsAccordionClosed!: EventEmitter<AccordionToggleDetail>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
+
+  /**
+   * EVENT HANDLERS
+   * ------------------------------------------------------
+   */
+
+  handleClick = (ev: MouseEvent) => {
+    this.dsClick.emit(ev)
+  }
 
   /**
    * RENDER
@@ -167,9 +271,7 @@ export class Item implements DsComponentInterface {
       if (this.disabled) {
         attributes.disabled = this.disabled
       } else {
-        attributes.onClick = (ev: MouseEvent) => {
-          this.dsClick.emit(ev)
-        }
+        attributes.onClick = this.handleClick
       }
     }
 
@@ -203,9 +305,18 @@ export class Item implements DsComponentInterface {
             <div slot="summary" id="item" part="item">
               <slot name="icon"></slot>
               <div id="content">
-                {this.label && <LabelTag id="label">{this.label}</LabelTag>}
-                {this.description && <p id="description">{this.description}</p>}
+                {this.label && (
+                  <LabelTag id="label" part="label">
+                    {this.label}
+                  </LabelTag>
+                )}
+                {this.description && (
+                  <p id="description" part="description">
+                    {this.description}
+                  </p>
+                )}
                 <slot name="content"></slot>
+                <slot></slot>
               </div>
             </div>
             <div slot="content">
@@ -231,11 +342,20 @@ export class Item implements DsComponentInterface {
         <ItemTag id="item" part="item" {...attributes}>
           <slot name="icon"></slot>
           <div id="content">
-            {this.label && <LabelTag id="label">{this.label}</LabelTag>}
-            {this.description && <p id="description">{this.description}</p>}
+            {this.label && (
+              <LabelTag id="label" part="label">
+                {this.label}
+              </LabelTag>
+            )}
+            {this.description && (
+              <p id="description" part="description">
+                {this.description}
+              </p>
+            )}
             <slot name="content"></slot>
+            <slot></slot>
           </div>
-          {hasActionIcon && <ds-icon name={actionIconName}></ds-icon>}
+          {hasActionIcon && <ds-icon name={actionIconName} part="action-icon"></ds-icon>}
         </ItemTag>
       </Host>
     )

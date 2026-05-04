@@ -1,53 +1,33 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  BasicStoryTabs,
-  Footer,
-  StoryHeading,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, BasicStoryTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as NotificationStories from './notification.stories'
 import { NOTIFICATION_DOC_CONFIG, getNotificationTabs } from './notification.doc-config'
 
 <Meta title="Components/Notification/Variants/Overview" />
+
 <StoryHeading of={NotificationStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={NOTIFICATION_DOC_CONFIG.section} color={NOTIFICATION_DOC_CONFIG.color} />
-<BannerTabs
-  of={NotificationStories}
-  tabs={getNotificationTabs('variants')}
-/>
+
+<BannerTabs of={NotificationStories} tabs={getNotificationTabs('variants')} />
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={NotificationStories.Colors}></StoryHeading>
+<StoryHeading of={NotificationStories.Alerts}></StoryHeading>
 
-Notifications are available in five colors representing different severity levels: **info**, **success**, **warning**, **danger**, and **neutral**.
+With `alert` variant, the notification is styled to indicate an important message that requires user attention.
+It typically uses a more prominent color scheme and may include an icon to signify urgency or importance.
 
-<BasicStoryTabs tag="notification" noGuide />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={NotificationStories.WithIcon}></StoryHeading>
-
-Notifications can display an icon to reinforce the message severity. The icon can be set manually or inferred from the color.
-
-<BasicStoryTabs tag="notification" noGuide />
+<Canvas of={NotificationStories.Alerts} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={NotificationStories.Closable}></StoryHeading>
+<StoryHeading of={NotificationStories.Outlines}></StoryHeading>
 
-Use the **closable** prop to allow users to dismiss notifications. Listen to the `dsCloseClick` event to handle dismissal.
+With `outline` variant, the notification is styled with a border and a less prominent background,
+making it suitable for less urgent messages or secondary information.
 
-<BasicStoryTabs tag="notification" noGuide />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={NotificationStories.WithContent}></StoryHeading>
-
-Notifications support rich content including headings, links, and formatted text. Use this for more complex messages.
-
-<BasicStoryTabs tag="notification" noGuide />
+<Canvas of={NotificationStories.Outlines} />
 
 <Footer />

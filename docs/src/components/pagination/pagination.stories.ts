@@ -68,7 +68,7 @@ export const Disabled = Story({
 Disabled.storyName = '🧩 Disabled'
 
 export const Sizes = Story({
-  ...withRender(() => `<ds-pagination page-range="2" total-pages="20" value="2" size="small"></ds-pagination>`),
+  ...withRender(() => `<ds-pagination page-range="2" total-pages="20" value="2" size="sm"></ds-pagination>`),
 })
 Sizes.storyName = '🧩 Sizes'
 

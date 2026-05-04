@@ -2,6 +2,7 @@ import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  BasicStoryTabs,
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
@@ -18,7 +19,7 @@ import { NOTIFICATION_DOC_CONFIG, getNotificationTabs } from './notification.doc
 
 <ComponentLead component="notification" />
 
-<Canvas of={NotificationStories.Basic} sourceState="shown" />
+<BasicStoryTabs tag="button" htmlStory={NotificationStories.BasicHtml} webComponentStory={NotificationStories.Basic} index={1} noGuide />
 
 <ComponentTabs
   tabs={[

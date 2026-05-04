@@ -58,7 +58,6 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
           borderBottom: '2px solid #e8e8e8',
           borderRadius: '4px 4px 0 0',
           overflowX: 'auto',
-          overflowY: 'hidden',
         }}
       >
         {tabs.map(tab => (
@@ -77,7 +76,6 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
               cursor: 'pointer',
               fontSize: '16px',
               lineHeight: '1.5',
-              marginBottom: '-2px',
               zIndex: 100,
               borderBottom: activeTab === tab.id ? '2px solid #000d6e' : '2px solid transparent',
               transition: 'all 150ms ease-in-out',

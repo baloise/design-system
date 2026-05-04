@@ -35,46 +35,6 @@ import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
 
 ## Do's and Don'ts
 
-### List Structure and Nesting
-
-Use semantic lists with proper nesting. Keep list items at similar levels of importance.
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Properly nested list structure',
-      content: (
-        <ds-list>
-          <li>Item 1</li>
-          <li>Item 2
-            <ds-list>
-              <li>Subitem 2a</li>
-              <li>Subitem 2b</li>
-            </ds-list>
-          </li>
-          <li>Item 3</li>
-        </ds-list>
-      ),
-      description: 'Clear hierarchy for screen readers',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Flat list with no hierarchy',
-      content: (
-        <ds-list>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Subitem 2a</li>
-          <li>Subitem 2b</li>
-          <li>Item 3</li>
-        </ds-list>
-      ),
-      description: 'No indication of relationship between items',
-    },
-  ]}
-/>
-
 ### List Item Content
 
 Keep list items concise but descriptive. Use consistent formatting across items.
@@ -86,9 +46,9 @@ Keep list items concise but descriptive. Use consistent formatting across items.
       title: 'Correct: Concise, parallel list items',
       content: (
         <ds-list>
-          <li>Complete the form</li>
-          <li>Review your information</li>
-          <li>Submit your application</li>
+          <ds-item>Complete the form</ds-item>
+          <ds-item>Review your information</ds-item>
+          <ds-item>Submit your application</ds-item>
         </ds-list>
       ),
       description: 'Clear, parallel structure',
@@ -98,9 +58,9 @@ Keep list items concise but descriptive. Use consistent formatting across items.
       title: 'Incorrect: Inconsistent list item structure',
       content: (
         <ds-list>
-          <li>You should fill out the form completely</li>
-          <li>Review</li>
-          <li>After reviewing the information, you can then submit your application to us</li>
+          <ds-item>You should fill out the form completely</ds-item>
+          <ds-item>Review</ds-item>
+          <ds-item>After reviewing the information, you can then submit your application to us</ds-item>
         </ds-list>
       ),
       description: 'Inconsistent length and detail',

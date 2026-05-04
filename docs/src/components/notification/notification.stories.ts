@@ -1,13 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import {
-  StoryFactory,
-  createCssMappings,
-  cssClasses,
-  props,
-  withComponentControls,
-  withRender,
-} from '../../utils'
+import { StoryFactory, createCssMappings, cssClasses, props, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.DsNotification & { slot: string }
 

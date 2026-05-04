@@ -16113,10 +16113,6 @@
       "docs": "Divider renders a visual separator line for grouping or distinguishing content sections.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "- Optional content to display alongside the divider line."
-        },
-        {
           "name": "part",
           "text": "divider - The divider line element."
         }
@@ -16421,12 +16417,7 @@
           "docs": "Font weight of divider label text if present."
         }
       ],
-      "slots": [
-        {
-          "name": "",
-          "docs": "Optional content to display alongside the divider line."
-        }
-      ],
+      "slots": [],
       "parts": [
         {
           "name": "divider",
@@ -18523,10 +18514,6 @@
       "docs": "Icon displays SVG icons with customizable color, size, rotation, and optional tile background.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "- Icon label or caption text (when used as icon + text)."
-        },
-        {
           "name": "part",
           "text": "icon - The SVG icon element wrapper."
         }
@@ -19093,12 +19080,7 @@
           "docs": "Rotation angle of the icon."
         }
       ],
-      "slots": [
-        {
-          "name": "",
-          "docs": "Icon label or caption text (when used as icon + text)."
-        }
-      ],
+      "slots": [],
       "parts": [
         {
           "name": "icon",
@@ -23163,10 +23145,47 @@
     {
       "fileName": "item.tsx",
       "tag": "ds-item",
-      "overview": "",
+      "overview": "Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.",
       "usage": {},
-      "docs": "",
-      "docsTags": [],
+      "docs": "Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "icon - An optional icon to display on the left side of the item."
+        },
+        {
+          "name": "slot",
+          "text": "content - The main content of the item, displayed next to the label and description."
+        },
+        {
+          "name": "slot",
+          "text": "accordion-content - The content of the accordion, only applicable if `variant` is set to `accordion`."
+        },
+        {
+          "name": "part",
+          "text": "item - The main container of the item."
+        },
+        {
+          "name": "part",
+          "text": "accordion - The accordion element, only applicable if `variant` is set to `accordion`."
+        },
+        {
+          "name": "part",
+          "text": "accordion-content - The container of the accordion content, only applicable if `variant` is set to `accordion`."
+        },
+        {
+          "name": "part",
+          "text": "label - The label element, only applicable if the `label` prop is set."
+        },
+        {
+          "name": "part",
+          "text": "description - The description element, only applicable if the `description` prop is set."
+        },
+        {
+          "name": "part",
+          "text": "action-icon - The action icon, only applicable if `variant` is set to `link` or `button`."
+        }
+      ],
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
@@ -23214,10 +23233,10 @@
         },
         {
           "name": "accordionMarker",
-          "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
+          "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\"",
           "complexType": {
             "original": "AccordionMarker",
-            "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\" | undefined",
+            "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\"",
             "references": {
               "AccordionMarker": {
                 "location": "import",
@@ -23230,8 +23249,14 @@
           "mutable": false,
           "attr": "accordion-marker",
           "reflectToAttr": false,
-          "docs": "The marker variant. Only applies if `button` is `false`.\nIf `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`\na plus icon for closed and a minus icon for open state is used.",
-          "docsTags": [],
+          "docs": "The marker variant. Only applies if `variant` is set to `accordion`.\nIf `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`\na plus icon for closed and a minus icon for open state is used.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -23247,22 +23272,19 @@
             {
               "value": "plus-minus",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "accordionMarkerPosition",
-          "type": "\"\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"left\" | \"right\"",
           "complexType": {
             "original": "AccordionMarkerPosition",
-            "resolved": "\"\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"left\" | \"right\"",
             "references": {
               "AccordionMarkerPosition": {
                 "location": "import",
@@ -23275,8 +23297,14 @@
           "mutable": false,
           "attr": "accordion-marker-position",
           "reflectToAttr": false,
-          "docs": "The position of the marker. Only applies if `button` is `false`.",
-          "docsTags": [],
+          "docs": "The position of the marker. Only applies if `variant` is set to `accordion`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -23288,12 +23316,9 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -23308,7 +23333,7 @@
           },
           "mutable": false,
           "attr": "accordion-open",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the accordion is open.",
           "docsTags": [
             {
@@ -23331,14 +23356,21 @@
           "name": "actionIcon",
           "type": "\"default\" | \"download\" | \"link\" | \"link-external\"",
           "complexType": {
-            "original": "'link' | 'link-external' | 'download' | 'default'",
+            "original": "ItemActionIcon",
             "resolved": "\"default\" | \"download\" | \"link\" | \"link-external\"",
-            "references": {}
+            "references": {
+              "ItemActionIcon": {
+                "location": "import",
+                "path": "./item.interfaces",
+                "id": "src/components/list/item/item.interfaces.ts::ItemActionIcon",
+                "referenceLocation": "ItemActionIcon"
+              }
+            }
           },
           "mutable": false,
           "attr": "action-icon",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "The action icon variant. Controls which icon is displayed for `link` and `button` variants.",
           "docsTags": [
             {
               "name": "default",
@@ -23380,7 +23412,7 @@
           "mutable": false,
           "attr": "description",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "The description text displayed below the label.",
           "docsTags": [
             {
               "name": "default",
@@ -23409,7 +23441,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": true,
-          "docs": "If `true`, the user cannot interact with the button.",
+          "docs": "If `true`, the user cannot interact with the item.",
           "docsTags": [
             {
               "name": "default",
@@ -23467,7 +23499,7 @@
           "mutable": false,
           "attr": "href",
           "reflectToAttr": false,
-          "docs": "Specifies the URL of the page the link goes to",
+          "docs": "Specifies the URL of the page the link goes to.",
           "docsTags": [
             {
               "name": "default",
@@ -23496,7 +23528,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "The label text displayed as a heading inside the item.",
           "docsTags": [
             {
               "name": "default",
@@ -23516,16 +23548,23 @@
         },
         {
           "name": "labelLevel",
-          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+          "type": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
           "complexType": {
-            "original": "'h1' | 'h2' | 'h3' | 'h4' | 'h5'",
-            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
-            "references": {}
+            "original": "ItemLabelLevel",
+            "resolved": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+            "references": {
+              "ItemLabelLevel": {
+                "location": "import",
+                "path": "./item.interfaces",
+                "id": "src/components/list/item/item.interfaces.ts::ItemLabelLevel",
+                "referenceLocation": "ItemLabelLevel"
+              }
+            }
           },
           "mutable": false,
           "attr": "label-level",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "The semantic heading level of the label element.",
           "docsTags": [
             {
               "name": "default",
@@ -23534,6 +23573,9 @@
           ],
           "default": "'h5'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "h1",
               "type": "string"
@@ -23562,18 +23604,34 @@
         },
         {
           "name": "labelSize",
-          "type": "\"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | undefined",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\"",
           "complexType": {
-            "original": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base'",
-            "resolved": "\"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | undefined",
-            "references": {}
+            "original": "ItemLabelSize",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\"",
+            "references": {
+              "ItemLabelSize": {
+                "location": "import",
+                "path": "./item.interfaces",
+                "id": "src/components/list/item/item.interfaces.ts::ItemLabelSize",
+                "referenceLocation": "ItemLabelSize"
+              }
+            }
           },
           "mutable": false,
           "attr": "label-size",
           "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
+          "docs": "The visual size of the label. Defaults to `labelLevel` if not set.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "2xl",
               "type": "string"
@@ -23613,12 +23671,9 @@
             {
               "value": "xl",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -23705,14 +23760,21 @@
           "name": "variant",
           "type": "\"accordion\" | \"button\" | \"default\" | \"link\"",
           "complexType": {
-            "original": "'link' | 'button' | 'accordion' | 'default'",
+            "original": "ItemVariant",
             "resolved": "\"accordion\" | \"button\" | \"default\" | \"link\"",
-            "references": {}
+            "references": {
+              "ItemVariant": {
+                "location": "import",
+                "path": "./item.interfaces",
+                "id": "src/components/list/item/item.interfaces.ts::ItemVariant",
+                "referenceLocation": "ItemVariant"
+              }
+            }
           },
           "mutable": false,
           "attr": "variant",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "The visual and functional variant of the item.",
           "docsTags": [
             {
               "name": "default",
@@ -23806,7 +23868,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the input value has changed.",
+          "docs": "Emitted when the accordion is toggled.",
           "docsTags": []
         },
         {
@@ -23831,16 +23893,114 @@
           "docsTags": []
         }
       ],
-      "styles": [],
-      "slots": [],
-      "parts": [
+      "styles": [
+        {
+          "name": "--list-item-grid-template-columns",
+          "docs": "Grid template columns of the list item host element."
+        },
+        {
+          "name": "--list-item-min-height",
+          "docs": "Minimum height of a list item row."
+        },
+        {
+          "name": "--list-item-gap",
+          "docs": "Horizontal gap between the icon slot, content, and action icon."
+        },
+        {
+          "name": "--list-item-space",
+          "docs": "Vertical padding applied to the top and bottom of a list item."
+        },
+        {
+          "name": "--list-item-content-gap",
+          "docs": "Vertical gap between the label and description inside the content area."
+        },
+        {
+          "name": "--list-item-color",
+          "docs": "Text color of the list item."
+        },
+        {
+          "name": "--list-item-border-color",
+          "docs": "Color of the bottom border line drawn after each list item."
+        },
+        {
+          "name": "--list-item-border-width",
+          "docs": "Thickness of the bottom border line drawn after each list item."
+        },
+        {
+          "name": "--list-item-border-radius",
+          "docs": "Border radius of the bottom border line drawn after each list item."
+        },
+        {
+          "name": "--list-item-accordion-py",
+          "docs": "Vertical padding applied to slotted paragraph content inside the accordion variant."
+        },
+        {
+          "name": "--list-item-action-icon-size",
+          "docs": "Size of the trailing action icon shown in link and button variants."
+        },
+        {
+          "name": "--list-item-title-size",
+          "docs": "Font size of the label heading inside a list item."
+        },
+        {
+          "name": "--list-item-title-weight",
+          "docs": "Font weight of the label heading inside a list item."
+        },
+        {
+          "name": "--list-item-title-family",
+          "docs": "Font family of the label heading inside a list item."
+        },
+        {
+          "name": "--list-item-text-family",
+          "docs": "Font family of the description text inside a list item."
+        },
+        {
+          "name": "--list-item-text-weight",
+          "docs": "Font weight of the description text inside a list item."
+        },
+        {
+          "name": "--list-item-text-size",
+          "docs": "Font size of the description text inside a list item."
+        }
+      ],
+      "slots": [
         {
           "name": "accordion-content",
-          "docs": ""
+          "docs": "The content of the accordion, only applicable if `variant` is set to `accordion`."
+        },
+        {
+          "name": "content",
+          "docs": "The main content of the item, displayed next to the label and description."
+        },
+        {
+          "name": "icon",
+          "docs": "An optional icon to display on the left side of the item."
+        }
+      ],
+      "parts": [
+        {
+          "name": "accordion",
+          "docs": "The accordion element, only applicable if `variant` is set to `accordion`."
+        },
+        {
+          "name": "accordion-content",
+          "docs": "The container of the accordion content, only applicable if `variant` is set to `accordion`."
+        },
+        {
+          "name": "action-icon",
+          "docs": "The action icon, only applicable if `variant` is set to `link` or `button`."
+        },
+        {
+          "name": "description",
+          "docs": "The description element, only applicable if the `description` prop is set."
         },
         {
           "name": "item",
-          "docs": ""
+          "docs": "The main container of the item."
+        },
+        {
+          "name": "label",
+          "docs": "The label element, only applicable if the `label` prop is set."
         }
       ],
       "listeners": []
@@ -25091,7 +25251,7 @@
           "mutable": false,
           "attr": "ordered",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).",
           "docsTags": [
             {
               "name": "default",
@@ -25114,24 +25274,76 @@
       "events": [],
       "styles": [
         {
-          "name": "--list-gap",
-          "docs": "Gap between list items."
+          "name": "--description-list-grid-term",
+          "docs": "Defines the grid column size for the term (dt) element."
         },
         {
-          "name": "--list-padding",
-          "docs": "Padding around the list."
+          "name": "--description-list-grid-detail",
+          "docs": "Defines the grid column size for the detail (dd) element."
         },
         {
-          "name": "--list-margin",
-          "docs": "Margin around the list."
+          "name": "--description-list-grid-row-gap",
+          "docs": "Defines the gap between rows in the description list."
         },
         {
-          "name": "--list-item-padding",
-          "docs": "Padding inside each list item."
+          "name": "--description-list-grid-column-gap",
+          "docs": "Defines the gap between columns in the description list."
         },
         {
-          "name": "--list-item-margin",
-          "docs": "Margin for each list item."
+          "name": "--description-list-term-color",
+          "docs": "Defines the text color for the term (dt) element."
+        },
+        {
+          "name": "--description-list-term-weight",
+          "docs": "Defines the font weight for the term (dt) element."
+        },
+        {
+          "name": "--description-list-detail-color",
+          "docs": "Defines the text color for the detail (dd) element."
+        },
+        {
+          "name": "--description-list-detail-weight",
+          "docs": "Defines the font weight for the detail (dd) element."
+        },
+        {
+          "name": "--ordered-list-mb",
+          "docs": "Defines the margin-bottom for the ordered list."
+        },
+        {
+          "name": "--ordered-list-style-type",
+          "docs": "Defines the list style type for the ordered list."
+        },
+        {
+          "name": "--ordered-list-style-position",
+          "docs": "Defines the list style position for the ordered list."
+        },
+        {
+          "name": "--ordered-list-marker-color",
+          "docs": "Defines the color of the list marker for the ordered list."
+        },
+        {
+          "name": "--unordered-list-mb",
+          "docs": "Defines the margin-bottom for the unordered list."
+        },
+        {
+          "name": "--unordered-list-style-type",
+          "docs": "Defines the list style type for the unordered list."
+        },
+        {
+          "name": "--unordered-list-style-position",
+          "docs": "Defines the list style position for the unordered list."
+        },
+        {
+          "name": "--unordered-list-marker-color",
+          "docs": "Defines the color of the list marker for the unordered list."
+        },
+        {
+          "name": "--unordered-list-marker-radius",
+          "docs": "Defines the border radius of the list marker for the unordered list."
+        },
+        {
+          "name": "--unordered-list-marker-icon",
+          "docs": "Defines the icon for the list marker for the unordered list."
         }
       ],
       "slots": [
@@ -41538,6 +41750,26 @@
       "declaration": "\"\" | \"sm\" | \"lg\" | \"xl\" | \"small\" | \"large\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"2xl\" | \"3xl\"",
       "docstring": "",
       "path": "src/components/label/label.interfaces.ts"
+    },
+    "src/components/list/item/item.interfaces.ts::ItemActionIcon": {
+      "declaration": "\"link\" | \"default\" | \"link-external\" | \"download\"",
+      "docstring": "",
+      "path": "src/components/list/item/item.interfaces.ts"
+    },
+    "src/components/list/item/item.interfaces.ts::ItemLabelLevel": {
+      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+      "docstring": "",
+      "path": "src/components/list/item/item.interfaces.ts"
+    },
+    "src/components/list/item/item.interfaces.ts::ItemLabelSize": {
+      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | \"base\" | \"2xl\" | \"3xl\"",
+      "docstring": "",
+      "path": "src/components/list/item/item.interfaces.ts"
+    },
+    "src/components/list/item/item.interfaces.ts::ItemVariant": {
+      "declaration": "\"button\" | \"link\" | \"default\" | \"accordion\"",
+      "docstring": "",
+      "path": "src/components/list/item/item.interfaces.ts"
     },
     "src/components/logo/logo.interfaces.ts::LogoColor": {
       "declaration": "\"primary\" | \"white\"",

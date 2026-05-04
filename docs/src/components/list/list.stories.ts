@@ -1,11 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import {
-  StoryFactory,
-  props,
-  withComponentControls,
-  withRender,
-} from '../../utils'
+import { StoryFactory, props, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.DsList
 
@@ -353,7 +348,7 @@ export const OrderedList = Story({
   `,
   ),
 })
-OrderedList.storyName = '🧩 Ordered List'
+OrderedList.storyName = '🎨 Ordered List'
 
 export const UnorderedListHtml = Story({
   ...withRender(
@@ -396,7 +391,7 @@ export const UnorderedListHtml = Story({
   `,
   ),
 })
-UnorderedListHtml.storyName = '🌍 Unordered List'
+UnorderedListHtml.storyName = '🎨 Unordered List'
 
 export const OrderedListHtml = Story({
   ...withRender(
@@ -416,7 +411,7 @@ export const OrderedListHtml = Story({
 </div>`,
   ),
 })
-OrderedListHtml.storyName = '🌍 Ordered List'
+OrderedListHtml.storyName = '🎨 Ordered List'
 
 export const DescriptionListHtml = Story({
   ...withRender(
@@ -432,4 +427,4 @@ export const DescriptionListHtml = Story({
 </div>`,
   ),
 })
-DescriptionListHtml.storyName = '🌍 Description List'
+DescriptionListHtml.storyName = '🎨 Description List'

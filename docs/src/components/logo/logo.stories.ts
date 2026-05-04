@@ -8,6 +8,7 @@ const meta: Meta<Args> = {
   title: 'Components/Logo/Variants',
   args: {
     slot: '',
+    animated: true,
   },
   argTypes: {
     ...withComponentControls({ tag: 'ds-logo' }),
@@ -26,11 +27,3 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
-
-export const Animated = Story({
-  args: {
-    color: 'blue',
-    animated: true,
-  },
-})
-Animated.storyName = '🧩 Animated'

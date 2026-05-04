@@ -19,6 +19,7 @@ import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
@@ -49,6 +50,7 @@ export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
@@ -1084,6 +1086,9 @@ export namespace Components {
          */
         "value": string | null;
     }
+    /**
+     * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
+     */
     interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
@@ -1091,28 +1096,32 @@ export namespace Components {
          */
         "accordionGroup": string;
         /**
-          * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+          * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+          * @default ''
          */
-        "accordionMarker"?: AccordionMarker;
+        "accordionMarker": AccordionMarker;
         /**
-          * The position of the marker. Only applies if `button` is `false`.
+          * The position of the marker. Only applies if `variant` is set to `accordion`.
+          * @default ''
          */
-        "accordionMarkerPosition"?: AccordionMarkerPosition;
+        "accordionMarkerPosition": AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
          */
         "accordionOpen": boolean;
         /**
+          * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
           * @default 'default'
          */
-        "actionIcon": 'link' | 'link-external' | 'download' | 'default';
+        "actionIcon": ItemActionIcon;
         /**
+          * The description text displayed below the label.
           * @default ''
          */
         "description": string;
         /**
-          * If `true`, the user cannot interact with the button.
+          * If `true`, the user cannot interact with the item.
           * @default false
          */
         "disabled": boolean;
@@ -1122,19 +1131,25 @@ export namespace Components {
          */
         "download": string;
         /**
-          * Specifies the URL of the page the link goes to
+          * Specifies the URL of the page the link goes to.
           * @default ''
          */
         "href": string;
         /**
+          * The label text displayed as a heading inside the item.
           * @default ''
          */
         "label": string;
         /**
+          * The semantic heading level of the label element.
           * @default 'h5'
          */
-        "labelLevel": 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-        "labelSize"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base';
+        "labelLevel": ItemLabelLevel;
+        /**
+          * The visual size of the label. Defaults to `labelLevel` if not set.
+          * @default ''
+         */
+        "labelSize": ItemLabelSize;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
           * @default ''
@@ -1146,9 +1161,10 @@ export namespace Components {
          */
         "target": ButtonTarget;
         /**
+          * The visual and functional variant of the item.
           * @default 'default'
          */
-        "variant": 'link' | 'button' | 'accordion' | 'default';
+        "variant": ItemVariant;
     }
     /**
      * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
@@ -1208,6 +1224,7 @@ export namespace Components {
      */
     interface DsList {
         /**
+          * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered": boolean;
@@ -2695,6 +2712,9 @@ declare global {
         "dsAccordionOpened": AccordionToggleDetail;
         "dsAccordionClosed": AccordionToggleDetail;
     }
+    /**
+     * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
+     */
     interface HTMLDsItemElement extends Components.DsItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsItemElementEventMap>(type: K, listener: (this: HTMLDsItemElement, ev: DsItemCustomEvent<HTMLDsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4193,6 +4213,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
+     */
     interface DsItem {
         /**
           * The name of the group the accordion belongs to. Accordions with the same group name will automatically close when another accordion in the same group is opened.
@@ -4200,11 +4223,13 @@ declare namespace LocalJSX {
          */
         "accordionGroup"?: string;
         /**
-          * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+          * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
+          * @default ''
          */
         "accordionMarker"?: AccordionMarker;
         /**
-          * The position of the marker. Only applies if `button` is `false`.
+          * The position of the marker. Only applies if `variant` is set to `accordion`.
+          * @default ''
          */
         "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
@@ -4213,15 +4238,17 @@ declare namespace LocalJSX {
          */
         "accordionOpen"?: boolean;
         /**
+          * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
           * @default 'default'
          */
-        "actionIcon"?: 'link' | 'link-external' | 'download' | 'default';
+        "actionIcon"?: ItemActionIcon;
         /**
+          * The description text displayed below the label.
           * @default ''
          */
         "description"?: string;
         /**
-          * If `true`, the user cannot interact with the button.
+          * If `true`, the user cannot interact with the item.
           * @default false
          */
         "disabled"?: boolean;
@@ -4231,19 +4258,25 @@ declare namespace LocalJSX {
          */
         "download"?: string;
         /**
-          * Specifies the URL of the page the link goes to
+          * Specifies the URL of the page the link goes to.
           * @default ''
          */
         "href"?: string;
         /**
+          * The label text displayed as a heading inside the item.
           * @default ''
          */
         "label"?: string;
         /**
+          * The semantic heading level of the label element.
           * @default 'h5'
          */
-        "labelLevel"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-        "labelSize"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '3xl' | '2xl' | 'xl' | 'lg' | 'base';
+        "labelLevel"?: ItemLabelLevel;
+        /**
+          * The visual size of the label. Defaults to `labelLevel` if not set.
+          * @default ''
+         */
+        "labelSize"?: ItemLabelSize;
         /**
           * Emitted when the accordion is closed.
          */
@@ -4253,7 +4286,7 @@ declare namespace LocalJSX {
          */
         "onDsAccordionOpened"?: (event: DsItemCustomEvent<AccordionToggleDetail>) => void;
         /**
-          * Emitted when the input value has changed.
+          * Emitted when the accordion is toggled.
          */
         "onDsAccordionToggle"?: (event: DsItemCustomEvent<AccordionToggleDetail>) => void;
         /**
@@ -4271,9 +4304,10 @@ declare namespace LocalJSX {
          */
         "target"?: ButtonTarget;
         /**
+          * The visual and functional variant of the item.
           * @default 'default'
          */
-        "variant"?: 'link' | 'button' | 'accordion' | 'default';
+        "variant"?: ItemVariant;
     }
     /**
      * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
@@ -4332,6 +4366,7 @@ declare namespace LocalJSX {
      */
     interface DsList {
         /**
+          * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered"?: boolean;
@@ -5704,6 +5739,9 @@ declare module "@stencil/core" {
              * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
              */
             "ds-input": LocalJSX.DsInput & JSXBase.HTMLAttributes<HTMLDsInputElement>;
+            /**
+             * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
+             */
             "ds-item": LocalJSX.DsItem & JSXBase.HTMLAttributes<HTMLDsItemElement>;
             /**
              * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
