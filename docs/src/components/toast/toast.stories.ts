@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withRender } from '../../../utils'
+import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.DsToast & { slot: string }
 
@@ -9,6 +9,8 @@ const tag = 'ds-toast'
 const meta: Meta<Args> = {
   title: 'Components/Toast/Variants',
   args: {
+    heading: 'Information',
+    closable: true,
     slot: 'Hello World',
   },
   argTypes: {
@@ -26,9 +28,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(() => `<ds-toast closable> Your changes have been saved. </ds-toast>`),
-})
+export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
 export const Variants = Story({

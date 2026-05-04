@@ -1,6 +1,7 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { background } from 'storybook/theming'
 
 type Args = JSX.DsProgressBar
 
@@ -11,10 +12,11 @@ const meta: Meta<Args> = {
   argTypes: {
     ...withComponentControls({ tag }),
   },
-  ...withRender(
-    ({ value = 50, background, color }) =>
-      `<ds-progress-bar value="${value}"${background ? ` background="${background}"` : ''}${color ? ` color="${color}"` : ''}></ds-progress-bar>`,
-  ),
+  ...withRender(({ ...args }) => `<ds-progress-bar ${props(args)}></ds-progress-bar>`),
+  // globals: {
+  //   // 👇 Set background value for all component stories
+  //   backgrounds: { value: 'purple' },
+  // },
 }
 
 export default meta
@@ -27,20 +29,9 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(
-    () => `<ds-progress-bar id="progress" value="50"></ds-progress-bar>
-
-<ds-button id="button" class="mt-normal">Toggle</ds-button>
-
-<script>
-  const progress = document.getElementById('progress')
-  const button = document.getElementById('button')
-  button.addEventListener('click', () => {
-    const newValue = Math.random() * (101 - 1) + 1 - 1
-    progress.value = newValue
-  })
-</script>`,
-  ),
+  args: {
+    value: 50,
+  },
 })
 Basic.storyName = '🧩 Basic'
 
@@ -58,6 +49,9 @@ export const DarkVariants = Story({
 DarkVariants.storyName = '🧩 Dark Variants'
 
 export const LightVariants = Story({
+  globals: {
+    backgrounds: { value: 'purple' },
+  },
   ...withRender(
     () => `<div class="mb-medium flex gap-small flex-direction-column">
   <ds-progress-bar value="50" background="light"></ds-progress-bar>

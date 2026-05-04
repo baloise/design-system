@@ -2,12 +2,14 @@ import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  CanvasTabs,
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
   Footer,
 } from '../../../.storybook/blocks'
 import * as TagStories from './tag.stories'
+import * as TagGroupStories from './tag-group/tag-group.stories'
 import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
 
 <Meta title="Components/Tag/Overview" />
@@ -18,18 +20,23 @@ import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
 
 <ComponentLead component="tag" />
 
-<Canvas of={TagStories.Basic} sourceState="shown" />
+<CanvasTabs htmlOf={TagStories.BasicHtml} of={TagStories.Basic} />
 
 <ComponentTabs
   tabs={[
     {
       id: 'ds-tag',
-      label: 'ds-tag',
+      label: 'Tag',
       content: <Controls of={TagStories.Basic} />,
+    },
+    {
+      id: 'ds-tag-group',
+      label: 'Tag Group',
+      content: <Controls of={TagGroupStories.Basic} />,
     },
   ]}
 />
 
-<ComponentPublicMethods component="tag" />
+<ComponentPublicMethods component="tag" subComponents={['tag-group']} />
 
 <Footer />

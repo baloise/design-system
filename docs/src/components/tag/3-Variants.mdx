@@ -2,7 +2,7 @@ import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  BasicStoryTabs,
+  CanvasTabs,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -10,44 +10,36 @@ import * as TagStories from './tag.stories'
 import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
 
 <Meta title="Components/Tag/Variants/Overview" />
+
 <StoryHeading of={TagStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={TAG_DOC_CONFIG.section} color={TAG_DOC_CONFIG.color} />
-<BannerTabs
-  of={TagStories}
-  tabs={getTagTabs('variants')}
-/>
+
+<BannerTabs  of={TagStories}  tabs={getTagTabs('variants')}/>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TagStories.Variants}></StoryHeading>
-
-Tags are available in multiple colors to convey different meanings or categories. Choose colors that map to semantic intent in your application.
-
-<BasicStoryTabs tag="tag" noGuide />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TagStories.Sizes}></StoryHeading>
-
-Control tag size with the **size** prop. Options include **small**, **normal**, and **large**.
-
-<BasicStoryTabs tag="tag" noGuide />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TagStories.Shapes}></StoryHeading>
-
-Tags support different shapes: **rounded** (default), **square**, and **pill**. Shape affects visual emphasis and how the tag fits in layouts.
-
-<BasicStoryTabs tag="tag" noGuide />
-
-{/* ------------------------------------------------------ */}
-
 <StoryHeading of={TagStories.Closable}></StoryHeading>
 
-Use the **closable** prop to add a close button to tags. Listen to the `dsCloseClick` event to handle tag removal.
+Closable tags that can be removed by the user, providing a way to manage and dismiss tags as needed.
 
-<BasicStoryTabs tag="tag" noGuide />
+<CanvasTabs htmlOf={TagStories.ClosableHtml} of={TagStories.Closable} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.TagGroup}></StoryHeading>
+
+Grouping related tags together using the `TagGroup` component for better organization and visual hierarchy.
+
+<CanvasTabs htmlOf={TagStories.TagGroupHtml} of={TagStories.TagGroup} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.Colors}></StoryHeading>
+
+Use `color` property to apply different color variants to the tag, indicating various statuses or categories.
+
+<CanvasTabs htmlOf={TagStories.ColorsHtml} of={TagStories.Colors} />
 
 <Footer />

@@ -329,6 +329,7 @@ a.sbdocs-a.text-decoration-none {
   border-radius: 4px !important;
   background: var(--ds-color-primary-6);
   box-shadow: none !important;
+  margin: 0 !important;
 }
 
 .doc-code .docblock-source > div:last-child button,

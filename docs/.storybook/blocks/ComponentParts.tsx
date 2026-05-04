@@ -9,7 +9,10 @@ type ComponentPartsProps = {
 }
 
 const toPascalCase = (tag: string): string =>
-  tag.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('')
+  tag
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
 
 const findComponent = (name: string) => {
   const tag = name.startsWith('ds-') ? name : `ds-${name}`

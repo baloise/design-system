@@ -1,21 +1,11 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Code,
-  Footer,
-  Lead,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
 import * as SpinnerStories from './spinner.stories'
 import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
 
 <Meta title="Components/Spinner/Usage" />
 <Banner label={'Usage'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
-<BannerTabs
-  of={SpinnerStories}
-  tabs={getSpinnerTabs('usage')}
-/>
+<BannerTabs of={SpinnerStories} tabs={getSpinnerTabs('usage')} />
 
 ## When to Use
 
@@ -45,7 +35,7 @@ Always provide context about what is loading. Use accompanying text to explain t
       type: 'correct',
       title: 'Correct: Spinner with context',
       content: (
-        <div>
+        <div className="flex align-items-center flex-direction-column">
           <ds-spinner></ds-spinner>
           <p style={{ margin: '12px 0 0 0' }}>Loading your profile...</p>
         </div>
@@ -56,11 +46,11 @@ Always provide context about what is loading. Use accompanying text to explain t
       type: 'incorrect',
       title: 'Incorrect: Spinner without context',
       content: (
-        <div>
+        <div className="flex align-items-center flex-direction-column">
           <ds-spinner></ds-spinner>
         </div>
       ),
-      description: 'Users don\'t know what is being loaded',
+      description: "Users don't know what is being loaded",
     },
   ]}
 />
@@ -76,12 +66,11 @@ When showing loading state in buttons, disable the button and optionally replace
       title: 'Correct: Loading button with spinner',
       content: (
         <>
-          <ds-button disabled>
-            <ds-spinner></ds-spinner>
+          <ds-button disabled loading>
             Saving...
           </ds-button>
           <div style={{ textAlign: 'left', marginTop: '12px' }}>
-            <Code noPreview code={'<ds-button disabled>\n  <ds-spinner></ds-spinner>\n  Saving...\n</ds-button>'} />
+            <Code noPreview code={'<ds-button disabled loading>\n  Saving...\n</ds-button>'} />
           </div>
         </>
       ),
@@ -91,9 +80,7 @@ When showing loading state in buttons, disable the button and optionally replace
       type: 'incorrect',
       title: 'Incorrect: Spinner without disabled or label',
       content: (
-        <ds-button>
-          <ds-spinner></ds-spinner>
-        </ds-button>
+        <ds-button loading></ds-button>
       ),
       description: 'Users might click multiple times',
     },

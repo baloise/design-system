@@ -38,9 +38,7 @@ export class Content implements DsComponentInterface {
    */
 
   /**
-   * @deprecated Please use direction instead.
-   * Defines the position of the child elements if they
-   * are showed verticaly or horizontally. Default is horizontally.
+   * **Deprecated:** Use direction instead.
    */
   @Prop()
   @ValidateEmptyOrOneOf(...STACK_LAYOUTS)

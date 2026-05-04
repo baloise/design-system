@@ -1,6 +1,7 @@
 export * from './Banner'
 export * from './Breakpoints'
 export * from './Buttons'
+export * from './CanvasTabs'
 export * from './Clipboard'
 export * from './Code'
 export * from './ColorCard'

@@ -1,6 +1,13 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, normalizeDeprecatedTShirtSize } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  normalizeDeprecatedTShirtSize,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   STACK_LAYOUTS,
@@ -19,7 +26,6 @@ import {
  * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
  *
  * @slot - The stack items (child elements).
- * @part stack - The stack container element.
  */
 @Component({
   tag: 'ds-stack',
@@ -41,11 +47,40 @@ export class Stack implements DsComponentInterface {
    */
 
   /**
-   * @deprecated Please use direction instead.
-   * Defines the position of the child elements if they
-   * are showed verticaly or horizontally. Default is horizontally.
+   * Defines the text positioning like center, right or default to start.
    */
-  @Prop() readonly layout?: StackLayout
+  @Prop()
+  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
+  readonly align?: StackAlignment
+
+  /**
+   * @internal
+   * Please use align instead.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
+  readonly alignment?: StackAlignment
+
+  /**
+   * Defines the direction of the child elements. Default is column.
+   */
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_DIRECTIONS)
+  direction: StackDirection = 'column'
+
+  /**
+   * Defines the width of the stack to be exactly the width of the content.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly fitContent: boolean = false
+
+  /**
+   * **Deprecated:** Use direction instead.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
+  readonly layout?: StackLayout
   @Watch('layout')
   layoutChanged(newValue?: StackLayout) {
     if (newValue !== undefined) {
@@ -62,47 +97,11 @@ export class Stack implements DsComponentInterface {
   }
 
   /**
-   * Defines the direction of the child elements. Default is column.
+   * Defines the padding of the stack element.
    */
-  @Prop() direction: StackDirection = 'column'
-
-  /**
-   * Defines the text positioning like center, right or
-   * default to start.
-   */
-  @Prop() readonly align?: StackAlignment
-
-  /**
-   * Defines the space between the child elements. Default is normal.
-   */
-  @Prop({ mutable: true }) space?: StackSpace
-  @Watch('space')
-  spaceChanged(newValue?: StackSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue)
-  }
-
-  /**
-   * Defines the space between the child elements. Default is normal.
-   */
-  @Prop() spaceRow?: StackSpace
-  @Watch('spaceRow')
-  spaceRowChanged(newValue?: StackSpace) {
-    this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
-  }
-
-  /**
-   * Defines the space between the child elements. Default is normal.
-   */
-  @Prop() spaceColumn?: StackSpace
-  @Watch('spaceColumn')
-  spaceColumnChanged(newValue?: StackSpace) {
-    this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
-  }
-
-  /**
-   * Defines the horizontal padding left and right of the stack element.
-   */
-  @Prop() p?: StackPadding
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  p?: StackPadding
   @Watch('p')
   pChanged(newValue?: StackPadding) {
     this.p = normalizeDeprecatedTShirtSize(newValue)
@@ -111,7 +110,9 @@ export class Stack implements DsComponentInterface {
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop() px?: StackPadding
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  px?: StackPadding
   @Watch('px')
   pxChanged(newValue?: StackPadding) {
     this.px = normalizeDeprecatedTShirtSize(newValue)
@@ -120,30 +121,61 @@ export class Stack implements DsComponentInterface {
   /**
    * Defines the vertical padding top and bottom of the stack element.
    */
-  @Prop() py?: StackPadding
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  py?: StackPadding
   @Watch('py')
   pyChanged(newValue?: StackPadding) {
     this.py = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
-   * Defines if the child elements will wrap to the next line if there
-   * is not enough space left
+   * Defines the space between the child elements.
    */
-  @Prop() readonly useWrap: boolean = false
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  space: StackSpace = 'base'
+  @Watch('space')
+  spaceChanged(newValue: StackSpace) {
+    this.space = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
-   * Defines the width of the stack to be exactly the with of the content.
+   * Defines the column space between the child elements.
    */
-  @Prop() readonly fitContent: boolean = false
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  spaceColumn?: StackSpace
+  @Watch('spaceColumn')
+  spaceColumnChanged(newValue?: StackSpace) {
+    this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
+  }
 
   /**
-   * @internal
-   * Please use align instead.
+   * Defines the row space between the child elements.
    */
-  @Prop() readonly alignment?: StackAlignment
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  spaceRow?: StackSpace
+  @Watch('spaceRow')
+  spaceRowChanged(newValue?: StackSpace) {
+    this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
+  }
+
+  /**
+   * Defines if the child elements will wrap to the next line if there is not enough space left.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly useWrap: boolean = false
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.layoutChanged(this.layout)
     this.spaceChanged(this.space)
     this.spaceRowChanged(this.spaceRow)

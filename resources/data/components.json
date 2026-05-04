@@ -15891,19 +15891,14 @@
           "mutable": false,
           "attr": "layout",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "**Deprecated:** Use direction instead.",
           "docsTags": [
-            {
-              "name": "deprecated",
-              "text": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally."
-            },
             {
               "name": "default",
               "text": "''"
             }
           ],
           "default": "''",
-          "deprecation": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
           "values": [
             {
               "type": "\"\""
@@ -34338,10 +34333,6 @@
       "docs": "Spinner displays an animated loading indicator with customizable color, size, and variation.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "- Optional label or caption text."
-        },
-        {
           "name": "part",
           "text": "spinner - The spinner animation container element."
         }
@@ -34399,7 +34390,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "Defines the color of the spinner.",
+          "docs": "**Deprecated:** Use inverted=\"true\" for white spinner instead.",
           "docsTags": [
             {
               "name": "default",
@@ -34531,12 +34522,8 @@
           "mutable": false,
           "attr": "small",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "**Deprecated:** Use size=\"sm\" instead.",
           "docsTags": [
-            {
-              "name": "Deprecated",
-              "text": "Use size=\"sm\" instead. If `true` the component is smaller"
-            },
             {
               "name": "default",
               "text": "false"
@@ -34627,12 +34614,7 @@
           "docs": "Easing function of the spinner animation."
         }
       ],
-      "slots": [
-        {
-          "name": "",
-          "docs": "Optional label or caption text."
-        }
-      ],
+      "slots": [],
       "parts": [
         {
           "name": "inner",
@@ -34842,10 +34824,6 @@
         {
           "name": "slot",
           "text": "- The stack items (child elements)."
-        },
-        {
-          "name": "part",
-          "text": "stack - The stack container element."
         }
       ],
       "encapsulation": "none",
@@ -34871,7 +34849,7 @@
           "mutable": false,
           "attr": "align",
           "reflectToAttr": false,
-          "docs": "Defines the text positioning like center, right or\ndefault to start.",
+          "docs": "Defines the text positioning like center, right or default to start.",
           "docsTags": [],
           "values": [
             {
@@ -34937,7 +34915,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
@@ -34985,7 +34963,7 @@
           "mutable": false,
           "attr": "fit-content",
           "reflectToAttr": false,
-          "docs": "Defines the width of the stack to be exactly the with of the content.",
+          "docs": "Defines the width of the stack to be exactly the width of the content.",
           "docsTags": [
             {
               "name": "default",
@@ -35021,14 +34999,8 @@
           "mutable": false,
           "attr": "layout",
           "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [
-            {
-              "name": "deprecated",
-              "text": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally."
-            }
-          ],
-          "deprecation": "Please use direction instead.\nDefines the position of the child elements if they\nare showed verticaly or horizontally. Default is horizontally.",
+          "docs": "**Deprecated:** Use direction instead.",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -35073,10 +35045,10 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "p",
           "reflectToAttr": false,
-          "docs": "Defines the horizontal padding left and right of the stack element.",
+          "docs": "Defines the padding of the stack element.",
           "docsTags": [],
           "values": [
             {
@@ -35174,7 +35146,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "px",
           "reflectToAttr": false,
           "docs": "Defines the horizontal padding left and right of the stack element.",
@@ -35275,7 +35247,7 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "py",
           "reflectToAttr": false,
           "docs": "Defines the vertical padding top and bottom of the stack element.",
@@ -35363,10 +35335,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+          "type": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\"",
           "complexType": {
             "original": "StackSpace",
-            "resolved": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
+            "resolved": "\"\" | \"2xs\" | \"auto\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\"",
             "references": {
               "StackSpace": {
                 "location": "import",
@@ -35379,8 +35351,14 @@
           "mutable": true,
           "attr": "space",
           "reflectToAttr": false,
-          "docs": "Defines the space between the child elements. Default is normal.",
-          "docsTags": [],
+          "docs": "Defines the space between the child elements.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'base'"
+            }
+          ],
+          "default": "'base'",
           "values": [
             {
               "type": "\"\""
@@ -35456,12 +35434,9 @@
             {
               "value": "xxl",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -35481,10 +35456,10 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "space-column",
           "reflectToAttr": false,
-          "docs": "Defines the space between the child elements. Default is normal.",
+          "docs": "Defines the column space between the child elements.",
           "docsTags": [],
           "values": [
             {
@@ -35586,10 +35561,10 @@
               }
             }
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "space-row",
           "reflectToAttr": false,
-          "docs": "Defines the space between the child elements. Default is normal.",
+          "docs": "Defines the row space between the child elements.",
           "docsTags": [],
           "values": [
             {
@@ -35687,7 +35662,7 @@
           "mutable": false,
           "attr": "use-wrap",
           "reflectToAttr": false,
-          "docs": "Defines if the child elements will wrap to the next line if there\nis not enough space left",
+          "docs": "Defines if the child elements will wrap to the next line if there is not enough space left.",
           "docsTags": [
             {
               "name": "default",
@@ -35740,12 +35715,7 @@
           "docs": "The stack items (child elements)."
         }
       ],
-      "parts": [
-        {
-          "name": "stack",
-          "docs": "The stack container element."
-        }
-      ],
+      "parts": [],
       "listeners": []
     },
     {
@@ -41956,13 +41926,13 @@
       "docstring": "",
       "path": "src/components/spinner/spinner.interfaces.ts"
     },
-    "src/components/stack/stack.interfaces.ts::StackSpace": {
-      "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
+    "src/components/stack/stack.interfaces.ts::StackPadding": {
+      "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
-    "src/components/stack/stack.interfaces.ts::StackPadding": {
-      "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
+    "src/components/stack/stack.interfaces.ts::StackSpace": {
+      "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },

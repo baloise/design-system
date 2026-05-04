@@ -2,7 +2,7 @@ import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  BasicStoryTabs,
+  CanvasTabs,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -24,7 +24,7 @@ import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
 
 Use dashed dividers to create a more subtle separation between content sections, providing a lighter visual break compared to solid dividers.
 
-<BasicStoryTabs tag="button" htmlStory={DividerStories.DashedHtml} webComponentStory={DividerStories.Dashed} index={1} noGuide />
+<CanvasTabs htmlOf={DividerStories.DashedHtml} of={DividerStories.Dashed} />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,7 +32,7 @@ Use dashed dividers to create a more subtle separation between content sections,
 
 Use vertical dividers to separate content sections in a vertical layout, providing a clear visual distinction between elements.
 
-<BasicStoryTabs tag="button" htmlStory={DividerStories.VerticalHtml} webComponentStory={DividerStories.Vertical} index={1} noGuide />
+<CanvasTabs htmlOf={DividerStories.VerticalHtml} of={DividerStories.Vertical} />
 
 {/* ------------------------------------------------------ */}
 

@@ -2,7 +2,7 @@ import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  BasicStoryTabs,
+  CanvasTabs,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -20,18 +20,18 @@ import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={SpinnerStories.Sizes}></StoryHeading>
+<StoryHeading of={SpinnerStories.LoadingButton}></StoryHeading>
 
-Spinners are available in multiple sizes. Choose a size that fits your layout and provides adequate visibility.
+Spinner variants for loading states in buttons, providing visual feedback during asynchronous operations.
 
-<BasicStoryTabs tag="spinner" noGuide />
+<Canvas of={SpinnerStories.LoadingButton} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={SpinnerStories.Colors}></StoryHeading>
+<StoryHeading of={SpinnerStories.LoadingCard}></StoryHeading>
 
-Spinners can be displayed in different colors to match your design or indicate different loading states.
+Spinner variants for loading states in cards, indicating content is being loaded or refreshed.
 
-<BasicStoryTabs tag="spinner" noGuide />
+<Canvas of={SpinnerStories.LoadingCard} />
 
 <Footer />

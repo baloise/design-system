@@ -5,7 +5,7 @@ import {
   Footer,
   StoryHeading,
   UsageExamples,
-} from '../../../../.storybook/blocks'
+} from '../../../.storybook/blocks'
 import * as SnackbarStories from './snackbar.stories'
 import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 
@@ -28,61 +28,5 @@ import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 - For critical errors that require immediate user attention — use **Alert** in a modal dialog
 - For inline validation feedback on form fields — use field-level error messages
 
-## Do's and Don'ts
-
-### Dismissible and Clear
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Closable Snackbar',
-
-      content: (
-        <div className="bg-grey-light p-large radius">
-          <p className="text-small mb-normal">Always provide a close button so users can dismiss the notification.</p>
-        </div>
-      ),
-      description: 'Users appreciate control over when notifications disappear from their screen.',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: No Close Option',
-      content: (
-        <div className="bg-grey-light p-large radius">
-          <p className="text-small mb-normal">Avoid snackbars that only disappear on action or timeout.</p>
-        </div>
-      ),
-      description: 'Users may miss important information if they cannot explicitly dismiss it.',
-    },
-  ]}
-/>
-
-### Concise Content
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Focused Message',
-      content: (
-        <div className="bg-grey-light p-large radius">
-          <p className="text-small mb-normal"><strong>Document saved.</strong> All changes have been persisted to the server.</p>
-        </div>
-      ),
-      description: 'Keep the message brief and actionable.',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Verbose Message',
-      content: (
-        <div className="bg-grey-light p-large radius">
-          <p className="text-small mb-normal"><strong>Your document is being saved.</strong> Please wait while we upload your changes to the cloud storage server. This may take a few moments depending on file size and network connectivity...</p>
-        </div>
-      ),
-      description: 'Long messages are harder to read and understand at a glance.',
-    },
-  ]}
-/>
 
 <Footer />

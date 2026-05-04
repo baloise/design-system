@@ -32,6 +32,7 @@ interface ComponentPart {
 const description = (prop: ComponentProp | ComponentEvent | ComponentMethod | ComponentSlot | ComponentPart) =>
   (prop.docs || '').trim()
 
+const isNumber = (prop: ComponentProp) => prop.type === 'number'
 const isText = (prop: ComponentProp) => prop.type === 'string'
 const isBoolean = (prop: ComponentProp) => prop.type === 'boolean'
 const isEnum = (prop: ComponentProp) => prop.type.includes('|')
@@ -45,6 +46,21 @@ const enumOptions = (prop: ComponentProp) =>
 
 // https://storybook.js.org/docs/html/essentials/controls#choosing-the-control-type
 const generateProp = (prop: ComponentProp) => {
+  if (isNumber(prop)) {
+    return {
+      [prop.name]: {
+        control: 'number',
+        description: description(prop),
+        defaultValue: prop.default,
+        table: {
+          category: 'properties',
+          defaultValue: { summary: prop.default },
+          type: { summary: 'number' },
+        },
+      },
+    }
+  }
+
   if (isText(prop)) {
     return {
       [prop.name]: {

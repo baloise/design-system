@@ -1,11 +1,5 @@
 import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  ComponentLead,
-  ComponentPublicMethods,
-  Footer,
-} from '../../../../.storybook/blocks'
+import { Banner, BannerTabs, ComponentLead, ComponentPublicMethods, Footer } from '../../../.storybook/blocks'
 import * as ToastStories from './toast.stories'
 import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
 
@@ -21,10 +15,6 @@ import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
 
 <Controls of={ToastStories.Basic} />
 
-<ComponentPublicMethods
-  component="toast"
-  title="Public Methods"
-  description="These methods allow you to programmatically control the toast from your application code."
-/>
+<ComponentPublicMethods component="toast" />
 
 <Footer />

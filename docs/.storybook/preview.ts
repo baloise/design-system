@@ -10,6 +10,9 @@ const preview: Preview = {
       defaultValue: 'Angular',
     },
   },
+  initialGlobals: {
+    backgrounds: { value: 'light' },
+  },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: false },
@@ -99,33 +102,15 @@ const preview: Preview = {
       grid: {
         cellSize: 8,
       },
-      default: 'white',
-      options: [
-        {
-          name: 'white',
-          value: '#fff',
-        },
-        {
-          name: 'blue',
-          value: '#000d6e',
-        },
-        {
-          name: 'green',
-          value: '#94e3d4',
-        },
-        {
-          name: 'purple',
-          value: '#b8b2ff',
-        },
-        {
-          name: 'red',
-          value: '#ffaca6',
-        },
-        {
-          name: 'yellow',
-          value: '#fae052',
-        },
-      ],
+      // default: 'white',
+      options: {
+        light: { name: 'Light', value: '#ffffff' },
+        dark: { name: 'Dark', value: '#000d6e' },
+        green: { name: 'Green', value: '#94e3d4' },
+        purple: { name: 'Purple', value: '#b8b2ff' },
+        red: { name: 'Red', value: '#ffaca6' },
+        yellow: { name: 'Yellow', value: '#fae052' },
+      },
     },
   },
 }

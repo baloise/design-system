@@ -2,7 +2,7 @@ import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  BasicStoryTabs,
+  CanvasTabs,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -10,28 +10,25 @@ import * as ProgressBarStories from './progress-bar.stories'
 import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
 
 <Meta title="Components/Progress-bar/Variants/Overview" />
+
 <StoryHeading of={ProgressBarStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
-<BannerTabs
-  of={ProgressBarStories}
-  tabs={getProgressBarTabs('variants')}
-/>
+
+<BannerTabs  of={ProgressBarStories}  tabs={getProgressBarTabs('variants')}/>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ProgressBarStories.WithLabel}></StoryHeading>
+<StoryHeading of={ProgressBarStories.DarkVariants}></StoryHeading>
 
-Progress bar with accompanying label or percentage text.
-
-<BasicStoryTabs tag="progress-bar" noGuide />
+<Canvas of={ProgressBarStories.DarkVariants} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ProgressBarStories.Color}></StoryHeading>
+<StoryHeading of={ProgressBarStories.LightVariants}></StoryHeading>
 
-Different color variants for various progress states (success, warning, error).
-
-<BasicStoryTabs tag="progress-bar" noGuide />
+<Canvas className='bg-purple-light' of={ProgressBarStories.LightVariants} />
 
 <Footer />
+å

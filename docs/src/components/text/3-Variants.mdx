@@ -2,7 +2,7 @@ import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  BasicStoryTabs,
+  CanvasTabs,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -20,74 +20,71 @@ import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.Theme}></StoryHeading>
+<StoryHeading of={TextStories.BoldText}></StoryHeading>
 
-Text supports multiple font families and weights to provide visual variety. Use the heading and subtitle variants to match design system typography scale.
+Demonstrates the bold text variant for emphasizing important information.
 
-<Canvas of={TextStories.Theme} sourceState="hidden" />
+<Canvas of={TextStories.BoldText} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.NoWrap}></StoryHeading>
+<StoryHeading of={TextStories.DisabledText}></StoryHeading>
 
-Enable text truncation with ellipsis when content must fit within constrained space. Truncation requires a defined width on the container.
+Demonstrates the disabled text variant for indicating non-interactive or unavailable content.
 
-<Canvas of={TextStories.NoWrap} sourceState="hidden" />
+<Canvas of={TextStories.DisabledText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.NestedText}></StoryHeading>
+
+Demonstrates the nested text variant for indicating hierarchical or grouped content.
+
+<Canvas of={TextStories.NestedText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+
+<StoryHeading of={TextStories.Sizes}></StoryHeading>
+
+Different size variants to represent different levels of emphasis and hierarchy.
+
+<Canvas of={TextStories.Sizes} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TextStories.Colors}></StoryHeading>
 
-Text colors adapt to theme and semantic meaning. Use colors to provide visual feedback or emphasis, maintaining sufficient contrast for readability.
+Different color variants to represent different semantic meanings and emphasis levels.
 
-<Canvas of={TextStories.Colors} sourceState="hidden" />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TextStories.Sizes}></StoryHeading>
-
-Four size options (small, normal, large, x-large) accommodate different reading contexts and information hierarchy levels.
-
-<Canvas of={TextStories.Sizes} sourceState="hidden" />
+<Canvas of={TextStories.Colors} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.FontWeight}></StoryHeading>
+<StoryHeading of={TextStories.Spacing}></StoryHeading>
 
-Enable bold text for emphasis within larger text blocks. Use bold sparingly to avoid reducing readability of body text.
+Text with different spacing variants to demonstrate various layout and design options.
 
-<Canvas of={TextStories.FontWeight} sourceState="hidden" />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TextStories.Heading}></StoryHeading>
-
-Apply heading font family to text elements when you want heading aesthetics without semantic heading markup.
-
-<Canvas of={TextStories.Heading} sourceState="hidden" />
+<Canvas of={TextStories.Spacing} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.Inline}></StoryHeading>
 
-Use inline text variant to emphasize or color words within a paragraph without breaking flow or creating new lines.
+<StoryHeading of={TextStories.FontFamily}></StoryHeading>
 
-<Canvas of={TextStories.Inline} sourceState="hidden" />
+Text with different font family variants to demonstrate various typographic styles.
 
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TextStories.Shadow}></StoryHeading>
-
-Apply text shadow to improve readability when text appears over images or dark backgrounds. Adds depth and visual hierarchy.
-
-<Canvas of={TextStories.Shadow} sourceState="hidden" />
+<Canvas of={TextStories.FontFamily} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.Space}></StoryHeading>
 
-Spacing variants control margin around text to manage vertical rhythm and visual grouping in layouts.
+<StoryHeading of={TextStories.NoWrap}></StoryHeading>
 
-<Canvas of={TextStories.Space} sourceState="hidden" />
+Use `no-wrap` variant to prevent text from wrapping and ensure it stays on a single line.
+
+<Canvas of={TextStories.NoWrap} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
 
 <Footer />

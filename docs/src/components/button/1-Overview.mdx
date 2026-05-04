@@ -5,6 +5,7 @@ import {
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
+  CanvasTabs,
   Footer,
   Lead,
 } from '../../../.storybook/blocks'
@@ -20,20 +21,20 @@ import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
 
 <ComponentLead component="button" />
 
-<Canvas of={ButtonStories.Basic} sourceState="shown" />
+<CanvasTabs of={ButtonStories.Basic} htmlOf={ButtonStories.BasicHtml} />
 
-<Canvas of={ButtonGroupStories.Basic} sourceState="shown" />
+<CanvasTabs of={ButtonGroupStories.Basic} htmlOf={ButtonGroupStories.BasicHtml} />
 
 <ComponentTabs
   tabs={[
     {
       id: 'ds-button',
-      label: 'ds-button',
+      label: 'Button',
       content: <Controls of={ButtonStories.Basic} />,
     },
     {
       id: 'ds-button-group',
-      label: 'ds-button-group',
+      label: 'Button Group',
       content: <Controls of={ButtonGroupStories.Basic} />,
     },
   ]}

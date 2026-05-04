@@ -431,7 +431,7 @@ export class Button implements DsComponentInterface {
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this
-    const TagType = this.href === undefined ? 'button' : 'a'
+    const TagType = this.href === undefined || this.href === '' ? 'button' : 'a'
     const attrs =
       TagType === 'button'
         ? { type: elementType, name, value }

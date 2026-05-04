@@ -35,7 +35,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
+export const BasicHtml = Story({
   ...withRender(
     () => `
 <div class="stack">
@@ -45,9 +45,42 @@ export const Basic = Story({
 </div>`,
   ),
 })
-Basic.storyName = '🌍 Basic'
+BasicHtml.storyName = '🌍 Basic'
+
+export const Basic = Story({
+  ...withRender(
+    () => `
+<ds-stack>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+</ds-stack>`,
+  ),
+})
+Basic.storyName = '🧩 Basic'
 
 export const Nested = Story({
+  ...withRender(
+    () => `
+<ds-stack>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+  <ds-stack space="xs">
+    <div class="bg-yellow-3 h-2rem w-full"></div>
+    <ds-stack space="lg" direction="row">
+      <div class="bg-red-3 h-2rem w-full"></div>
+      <div class="bg-red-3 h-2rem w-full"></div>
+      <div class="bg-red-3 h-2rem w-full"></div>
+    </ds-stack>
+    <div class="bg-yellow-3 h-2rem w-full"></div>
+    <div class="bg-yellow-3 h-2rem w-full"></div>
+  </ds-stack>
+  <div class="bg-purple-3 h-2rem w-full"></div>
+</ds-stack>`,
+  ),
+})
+Nested.storyName = '🧩 Nested'
+
+export const NestedHtml = Story({
   ...withRender(
     () => `
 <div class="stack">
@@ -66,9 +99,24 @@ export const Nested = Story({
 </div>`,
   ),
 })
-Nested.storyName = '🌍 Nested'
+NestedHtml.storyName = '🌍 Nested'
 
 export const Item = Story({
+  ...withRender(
+    () => `
+<ds-stack direction="row" class="bg-purple-light p-base radius">
+  <ds-icon name="date" size="md"></ds-icon>
+  <ds-content>
+    <ds-label>My Item</ds-label>
+    <ds-text>Item is used to easaly group components and not be concered about the correct spacing.</ds-text>
+  </ds-content>
+  <ds-button>Button</ds-button>
+</ds-stack>`,
+  ),
+})
+Item.storyName = '🧩 Item'
+
+export const ItemHtml = Story({
   ...withRender(
     () => `
 <div class="stack as-row bg-purple-light p-base radius">
@@ -81,9 +129,25 @@ export const Item = Story({
 </div>`,
   ),
 })
-Item.storyName = '🌍 Item'
+ItemHtml.storyName = '🌍 Item'
 
 export const Direction = Story({
+  ...withRender(
+    () => `
+<ds-stack space="lg">
+  <ds-stack direction="row">
+    <div class="bg-red-3 p-base w-full">Row</div>
+    <div class="bg-red-3 p-base w-full">Row</div>
+    <div class="bg-red-3 p-base w-full">Row</div>
+  </ds-stack>
+  <div class="bg-yellow-3 p-base w-full">Column</div>
+  <div class="bg-yellow-3 p-base w-full">Column</div>
+</ds-stack>`,
+  ),
+})
+Direction.storyName = '🧩 Direction'
+
+export const DirectionHtml = Story({
   ...withRender(
     () => `
 <div class="stack has-space-lg">
@@ -97,9 +161,24 @@ export const Direction = Story({
 </div>`,
   ),
 })
-Direction.storyName = '🌍 Direction'
+DirectionHtml.storyName = '🌍 Direction'
 
 export const Alignment = Story({
+  ...withRender(
+    () => `
+<ds-stack align="center" class="bg-red-light p-base radius">
+  <ds-icon name="date" size="md"></ds-icon>
+  <ds-content class="align-top-center">
+    <ds-label>My Item</ds-label>
+    <ds-text>Item is used to easaly group components and not be concered about the correct spacing.</ds-text>
+  </ds-content>
+  <ds-button>Button</ds-button>
+</ds-stack>`,
+  ),
+})
+Alignment.storyName = '🧩 Alignment'
+
+export const AlignmentHtml = Story({
   ...withRender(
     () => `
 <div class="stack as-col align-center bg-red-light p-base radius">
@@ -112,7 +191,37 @@ export const Alignment = Story({
 </div>`,
   ),
 })
-Alignment.storyName = '🌍 Alignment'
+AlignmentHtml.storyName = '🌍 Alignment'
+
+const spaceBoxWC = (size: string) => `
+<ds-stack direction="row" space="${size}" class="bg-red-2">
+  <ds-content class="bg-green-2">
+    <ds-label>${size}</ds-label>
+  </ds-content>
+  <ds-content class="bg-green-2">
+    <ds-label>${size}</ds-label>
+  </ds-content>
+  <ds-content class="bg-green-2">
+    <ds-label>${size}</ds-label>
+  </ds-content>
+</ds-stack>
+`
+
+export const Space = Story({
+  ...withRender(
+    () => `<ds-stack>
+  ${spaceBoxWC('2xs')}
+  ${spaceBoxWC('xs')}
+  ${spaceBoxWC('sm')}
+  ${spaceBoxWC('base')}
+  ${spaceBoxWC('md')}
+  ${spaceBoxWC('lg')}
+  ${spaceBoxWC('xl')}
+  ${spaceBoxWC('2xl')}
+</ds-stack>`,
+  ),
+})
+Space.storyName = '🧩 Space'
 
 const spaceBox = (size: string) => `
 <div class="stack as-row bg-red-2 has-space-${size}">
@@ -127,7 +236,7 @@ const spaceBox = (size: string) => `
   </div>
 </div>
 `
-export const Space = Story({
+export const SpaceHtml = Story({
   ...withRender(
     () => `<div class="stack">
   ${spaceBox('2xs')}
@@ -141,9 +250,28 @@ export const Space = Story({
 </div>`,
   ),
 })
-Space.storyName = '🌍 Space'
+SpaceHtml.storyName = '🌍 Space'
 
 export const Padding = Story({
+  ...withRender(
+    () => `<div>
+  <ds-stack py="md" class="bg-red-2">
+    <ds-content class="bg-green-2">
+      <ds-label>Padding Horizontal Medium</ds-label>
+    </ds-content>
+  </ds-stack>
+  <br/>
+  <ds-stack px="md" class="bg-red-2">
+    <ds-content class="bg-green-2">
+      <ds-label>Padding Vertical Medium</ds-label>
+    </ds-content>
+  </ds-stack>
+</div>`,
+  ),
+})
+Padding.storyName = '🧩 Padding'
+
+export const PaddingHtml = Story({
   ...withRender(
     () => `<div>
   <div class="stack py-md bg-red-2">
@@ -160,9 +288,60 @@ export const Padding = Story({
 </div>`,
   ),
 })
-Padding.storyName = '🌍 Padding'
+PaddingHtml.storyName = '🌍 Padding'
 
 export const TeaserCards = Story({
+  ...withRender(
+    () => `<div class="grid">
+  <div class="col is-one-third">
+    <article class="card is-purple-light is-fullheight">
+      <div class="card-content">
+        <ds-stack align="center" space="lg">
+          <ds-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="2xl"></ds-icon>
+          <ds-content class="align-top-center">
+            <h3 class="title is-centered">Teaser Card</h3>
+            The item component can easily be combined with the card component to achieve a nice
+            teaser layout.
+          </ds-content>
+          <ds-button>Button</ds-button>
+        </ds-stack>
+      </div>
+    </article>
+  </div>
+  <div class="col is-one-third">
+    <article class="card is-yellow-light is-fullheight">
+      <div class="card-content">
+        <ds-stack align="center" space="lg">
+          <ds-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="2xl"></ds-icon>
+          <ds-content class="align-top-center">
+            <h3 class="title is-centered">Auto Height</h3>
+            The height of the cards adjust to the longest in the row.
+          </ds-content>
+          <ds-button>Button</ds-button>
+        </ds-stack>
+      </div>
+    </article>
+  </div>
+  <div class="col is-one-third">
+    <article class="card is-red-light is-fullheight">
+      <div class="card-content">
+        <ds-stack align="center" space="lg">
+          <ds-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="2xl"></ds-icon>
+          <ds-content class="align-top-center">
+            <h3 class="title is-centered">Item Component</h3>
+            Item is used to easaly group components and not be concered about the correct spacing.
+          </ds-content>
+          <ds-button>Button</ds-button>
+        </ds-stack>
+      </div>
+    </article>
+  </div>
+</div>`,
+  ),
+})
+TeaserCards.storyName = '🧩 Teaser Cards'
+
+export const TeaserCardsHtml = Story({
   ...withRender(
     ({ ...args }) => `<div class="grid">
   <div class="col is-one-third">
@@ -211,7 +390,7 @@ export const TeaserCards = Story({
 </div>`,
   ),
 })
-TeaserCards.storyName = '🌍 Teaser Cards'
+TeaserCardsHtml.storyName = '🌍 Teaser Cards'
 
 export const StackedTabs = Story({
   args: {

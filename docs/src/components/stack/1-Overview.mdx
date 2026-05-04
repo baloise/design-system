@@ -2,6 +2,7 @@ import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  CanvasTabs,
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
@@ -18,13 +19,13 @@ import { STACK_DOC_CONFIG, getStackTabs } from './stack.doc-config'
 
 <ComponentLead component="stack" />
 
-<Canvas of={StackStories.Basic} sourceState="shown" />
+<CanvasTabs htmlOf={StackStories.BasicHtml} of={StackStories.Basic} />
 
 <ComponentTabs
   tabs={[
     {
       id: 'ds-stack',
-      label: 'ds-stack',
+      label: 'Stack',
       content: <Controls of={StackStories.Basic} />,
     },
   ]}

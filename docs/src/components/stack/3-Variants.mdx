@@ -1,61 +1,65 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  BasicStoryTabs,
-  Footer,
-  StoryHeading,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as StackStories from './stack.stories'
 import { STACK_DOC_CONFIG, getStackTabs } from './stack.doc-config'
 
 <Meta title="Components/Stack/Variants/Overview" />
+
 <StoryHeading of={StackStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={STACK_DOC_CONFIG.section} color={STACK_DOC_CONFIG.color} />
-<BannerTabs
-  of={StackStories}
-  tabs={getStackTabs('variants')}
-/>
+
+<BannerTabs of={StackStories} tabs={getStackTabs('variants')} />
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={StackStories.Nested}></StoryHeading>
 
-Stacks can be nested to create complex multi-dimensional layouts. Each nested stack inherits layout properties while maintaining independent spacing and alignment.
-
-<Canvas of={StackStories.Nested} sourceState="hidden" />
+<CanvasTabs htmlOf={StackStories.NestedHtml} of={StackStories.Nested} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={StackStories.Item}></StoryHeading>
 
-Child items within a stack can use flex properties like `flex: 1` to grow and fill available space. This enables responsive layouts without media queries.
-
-<Canvas of={StackStories.Item} sourceState="hidden" />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={StackStories.Alignment}></StoryHeading>
-
-The align prop controls how items are positioned along the cross axis (vertical for row layout, horizontal for column layout).
-
-<Canvas of={StackStories.Alignment} sourceState="hidden" />
+<CanvasTabs htmlOf={StackStories.ItemHtml} of={StackStories.Item} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={StackStories.Direction}></StoryHeading>
 
-Direction determines the primary flow: `column` stacks vertically (default), `row` stacks horizontally. Reverse directions are also supported.
-
-<Canvas of={StackStories.Direction} sourceState="hidden" />
+<CanvasTabs htmlOf={StackStories.DirectionHtml} of={StackStories.Direction} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={StackStories.Spaces}></StoryHeading>
+<StoryHeading of={StackStories.Alignment}></StoryHeading>
 
-Multiple space options (small, normal, large) provide consistent gap values between items, maintaining visual harmony throughout layouts.
+<CanvasTabs htmlOf={StackStories.AlignmentHtml} of={StackStories.Alignment} />
 
-<Canvas of={StackStories.Spaces} sourceState="hidden" />
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Space}></StoryHeading>
+
+<CanvasTabs htmlOf={StackStories.SpaceHtml} of={StackStories.Space} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Padding}></StoryHeading>
+
+<CanvasTabs htmlOf={StackStories.PaddingHtml} of={StackStories.Padding} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.TeaserCards}></StoryHeading>
+
+<CanvasTabs htmlOf={StackStories.TeaserCardsHtml} of={StackStories.TeaserCards} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.StackedTabs}></StoryHeading>
+
+<Canvas of={StackStories.StackedTabs} />
+
+{/* ------------------------------------------------------ */}
 
 <Footer />

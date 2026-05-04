@@ -1,7 +1,5 @@
-import { Canvas } from '@storybook/addon-docs/blocks'
 import { navigate } from '@storybook/addon-links'
 import React, { PropsWithChildren } from 'react'
-import { ModuleExport } from 'storybook/internal/types'
 import { Code } from './Code'
 import { AngularFramework } from './Framework'
 import { Tabs } from './Tabs'
@@ -28,73 +26,6 @@ export const WarningQuote = ({ children }: InfoQuoteProps): React.ReactElement =
 
 type StylesQuoteProps = {
   tag: string
-}
-
-type BasicStoryTabsProps = {
-  index?: number
-  tag: string
-  noGuide?: boolean
-  htmlStory: ModuleExport
-  webComponentStory?: ModuleExport
-}
-
-export const BasicStoryTabs = ({
-  tag,
-  htmlStory,
-  webComponentStory,
-  index,
-  noGuide,
-}: BasicStoryTabsProps): React.ReactElement => {
-  if (index === 1) {
-    return (
-      <Tabs
-        tabs={[
-          {
-            label: 'Web Component',
-            content: (
-              <>
-                <Canvas of={webComponentStory} sourceState="shown" />
-                {noGuide !== true ? <WebComponentQuote tag={tag} /> : null}
-              </>
-            ),
-          },
-          {
-            label: 'HTML & CSS',
-            content: (
-              <>
-                <Canvas of={htmlStory} sourceState="shown" />
-                {noGuide !== true ? <StylesQuote tag={tag} /> : null}
-              </>
-            ),
-          },
-        ]}
-      />
-    )
-  }
-  return (
-    <Tabs
-      tabs={[
-        {
-          label: 'HTML & CSS',
-          content: (
-            <>
-              <Canvas of={htmlStory} sourceState="shown" />
-              {noGuide !== true ? <StylesQuote tag={tag} /> : null}
-            </>
-          ),
-        },
-        {
-          label: 'Web Component',
-          content: (
-            <>
-              <Canvas of={webComponentStory} sourceState="shown" />
-              {noGuide !== true ? <WebComponentQuote tag={tag} /> : null}
-            </>
-          ),
-        },
-      ]}
-    />
-  )
 }
 
 export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {

@@ -24,7 +24,11 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(() => `<ds-pagination page-range="2" total-pages="20" value="2"></ds-pagination>`),
+  args: {
+    pageRange: 2,
+    totalPages: 20,
+    value: 2,
+  },
 })
 Basic.storyName = '🧩 Basic'
 

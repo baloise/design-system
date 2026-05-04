@@ -1,21 +1,11 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Code,
-  Footer,
-  Lead,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
 import * as StackStories from './stack.stories'
 import { STACK_DOC_CONFIG, getStackTabs } from './stack.doc-config'
 
 <Meta title="Components/Stack/Usage" />
 <Banner label={'Usage'} section={STACK_DOC_CONFIG.section} color={STACK_DOC_CONFIG.color} />
-<BannerTabs
-  of={StackStories}
-  tabs={getStackTabs('usage')}
-/>
+<BannerTabs of={StackStories} tabs={getStackTabs('usage')} />
 
 ## When to Use
 
@@ -44,9 +34,13 @@ Use the stack for layouts with consistent spacing. Choose direction (row/column)
     {
       type: 'correct',
       title: 'Correct: Consistent spacing',
+      contentIsLeftAligned: true,
       content: (
         <>
-          <Code noPreview code={'<ds-stack direction="column" space="normal">\n  <div>Item 1</div>\n  <div>Item 2</div>\n</ds-stack>'} />
+          <Code
+            noPreview
+            code={'<ds-stack direction="column" space="base">\n  <div>Item 1</div>\n  <div>Item 2</div>\n</ds-stack>'}
+          />
         </>
       ),
       description: 'Automated consistent spacing between items improves visual harmony',
@@ -54,41 +48,16 @@ Use the stack for layouts with consistent spacing. Choose direction (row/column)
     {
       type: 'incorrect',
       title: 'Incorrect: Manual margin management',
+      contentIsLeftAligned: true,
       content: (
         <>
-          <Code noPreview code={'<div style="margin-bottom: 1rem">Item 1</div>\n<div style="margin-bottom: 1.5rem">Item 2</div>'} />
+          <Code
+            noPreview
+            code={'<div style="margin-bottom: 1rem">Item 1</div>\n<div style="margin-bottom: 1.5rem">Item 2</div>'}
+          />
         </>
       ),
       description: 'Manual margins are error-prone and hard to maintain',
-    },
-  ]}
-/>
-
-### Nested Stacks
-
-Stacks can be nested for complex layouts. Keep nesting depth reasonable to maintain performance and readability.
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Logical nesting',
-      content: (
-        <>
-          <Code noPreview code={'<ds-stack direction="row">\n  <ds-stack direction="column">Column 1</ds-stack>\n  <ds-stack direction="column">Column 2</ds-stack>\n</ds-stack>'} />
-        </>
-      ),
-      description: 'Nesting stacks enables complex layouts with minimal CSS',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Excessive nesting',
-      content: (
-        <>
-          <Code noPreview code={'<ds-stack><ds-stack><ds-stack><ds-stack>...</ds-stack></ds-stack></ds-stack></ds-stack>'} />
-        </>
-      ),
-      description: 'Deep nesting reduces readability and performance',
     },
   ]}
 />

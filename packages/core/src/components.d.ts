@@ -729,7 +729,7 @@ export namespace Components {
          */
         "direction": StackDirection;
         /**
-          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+          * **Deprecated:** Use direction instead.
           * @default ''
          */
         "layout": StackLayout;
@@ -1895,7 +1895,7 @@ export namespace Components {
      */
     interface DsSpinner {
         /**
-          * Defines the color of the spinner.
+          * **Deprecated:** Use inverted="true" for white spinner instead.
           * @default 'blue'
          */
         "color": SpinnerColor;
@@ -1915,7 +1915,7 @@ export namespace Components {
          */
         "size": SpinnerSize;
         /**
-          * @Deprecated Use size="sm" instead. If `true` the component is smaller
+          * **Deprecated:** Use size="sm" instead.
           * @default false
          */
         "small": boolean;
@@ -1940,16 +1940,16 @@ export namespace Components {
          */
         "direction": StackDirection;
         /**
-          * Defines the width of the stack to be exactly the with of the content.
+          * Defines the width of the stack to be exactly the width of the content.
           * @default false
          */
         "fitContent": boolean;
         /**
-          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+          * **Deprecated:** Use direction instead.
          */
         "layout"?: StackLayout;
         /**
-          * Defines the horizontal padding left and right of the stack element.
+          * Defines the padding of the stack element.
          */
         "p"?: StackPadding;
         /**
@@ -1961,19 +1961,20 @@ export namespace Components {
          */
         "py"?: StackPadding;
         /**
-          * Defines the space between the child elements. Default is normal.
+          * Defines the space between the child elements.
+          * @default 'base'
          */
-        "space"?: StackSpace;
+        "space": StackSpace;
         /**
-          * Defines the space between the child elements. Default is normal.
+          * Defines the column space between the child elements.
          */
         "spaceColumn"?: StackSpace;
         /**
-          * Defines the space between the child elements. Default is normal.
+          * Defines the row space between the child elements.
          */
         "spaceRow"?: StackSpace;
         /**
-          * Defines if the child elements will wrap to the next line if there is not enough space left
+          * Defines if the child elements will wrap to the next line if there is not enough space left.
           * @default false
          */
         "useWrap": boolean;
@@ -3842,7 +3843,7 @@ declare namespace LocalJSX {
          */
         "direction"?: StackDirection;
         /**
-          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+          * **Deprecated:** Use direction instead.
           * @default ''
          */
         "layout"?: StackLayout;
@@ -5101,7 +5102,7 @@ declare namespace LocalJSX {
      */
     interface DsSpinner {
         /**
-          * Defines the color of the spinner.
+          * **Deprecated:** Use inverted="true" for white spinner instead.
           * @default 'blue'
          */
         "color"?: SpinnerColor;
@@ -5121,7 +5122,7 @@ declare namespace LocalJSX {
          */
         "size"?: SpinnerSize;
         /**
-          * @Deprecated Use size="sm" instead. If `true` the component is smaller
+          * **Deprecated:** Use size="sm" instead.
           * @default false
          */
         "small"?: boolean;
@@ -5146,16 +5147,16 @@ declare namespace LocalJSX {
          */
         "direction"?: StackDirection;
         /**
-          * Defines the width of the stack to be exactly the with of the content.
+          * Defines the width of the stack to be exactly the width of the content.
           * @default false
          */
         "fitContent"?: boolean;
         /**
-          * @deprecated Please use direction instead. Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+          * **Deprecated:** Use direction instead.
          */
         "layout"?: StackLayout;
         /**
-          * Defines the horizontal padding left and right of the stack element.
+          * Defines the padding of the stack element.
          */
         "p"?: StackPadding;
         /**
@@ -5167,19 +5168,20 @@ declare namespace LocalJSX {
          */
         "py"?: StackPadding;
         /**
-          * Defines the space between the child elements. Default is normal.
+          * Defines the space between the child elements.
+          * @default 'base'
          */
         "space"?: StackSpace;
         /**
-          * Defines the space between the child elements. Default is normal.
+          * Defines the column space between the child elements.
          */
         "spaceColumn"?: StackSpace;
         /**
-          * Defines the space between the child elements. Default is normal.
+          * Defines the row space between the child elements.
          */
         "spaceRow"?: StackSpace;
         /**
-          * Defines if the child elements will wrap to the next line if there is not enough space left
+          * Defines if the child elements will wrap to the next line if there is not enough space left.
           * @default false
          */
         "useWrap"?: boolean;

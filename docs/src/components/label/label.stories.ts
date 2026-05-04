@@ -1,12 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import {
-  createCssMappings,
-  cssClasses,
-  StoryFactory,
-  withComponentControls,
-  withRender,
-} from '../../utils'
+import { createCssMappings, cssClasses, StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.DsLabel & { slot: string }
 

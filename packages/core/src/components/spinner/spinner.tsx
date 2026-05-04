@@ -10,7 +10,6 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
 /**
  * Spinner displays an animated loading indicator with customizable color, size, and variation.
  *
- * @slot - Optional label or caption text.
  * @part spinner - The spinner animation container element.
  */
 @Component({
@@ -61,13 +60,12 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * Defines the color of the spinner.
+   * **Deprecated:** Use inverted="true" for white spinner instead.
    */
   @Prop({ reflect: true }) readonly color: SpinnerColor = 'blue'
 
   /**
-   * @Deprecated
-   * Use size="sm" instead. If `true` the component is smaller
+   * **Deprecated:** Use size="sm" instead.
    */
   @Prop() readonly small: boolean = false
   @Watch('small')
@@ -217,7 +215,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
     }
 
     // Fallback to component props
-    return this.inverted || this.color === 'white' ? '#ffffff' : '#151f6d'
+    return this.inverted ? '#ffffff' : '#151f6d'
   }
 
   /**

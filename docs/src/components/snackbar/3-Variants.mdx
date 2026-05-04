@@ -4,7 +4,7 @@ import {
   BannerTabs,
   Footer,
   StoryHeading,
-} from '../../../../.storybook/blocks'
+} from '../../../.storybook/blocks'
 import * as SnackbarStories from './snackbar.stories'
 import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 
@@ -16,13 +16,6 @@ import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 
 <BannerTabs of={SnackbarStories} tabs={getSnackbarTabs('variants')} />
 
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={SnackbarStories.WithAction}></StoryHeading>
-
-Snackbars with action buttons for user interaction.
-
-<Canvas of={SnackbarStories.WithAction} />
 
 {/* ------------------------------------------------------ */}
 
