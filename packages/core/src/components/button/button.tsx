@@ -11,18 +11,17 @@ import {
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
+  ValidateType,
 } from '@utils'
 import {
   BUTTON_COLORS,
   BUTTON_ELEMENT_TYPES,
   BUTTON_SIZES,
   BUTTON_TARGETS,
-  BUTTON_SPINNERS,
   type ButtonColor,
   type ButtonElementType,
   type ButtonSize,
   type ButtonTarget,
-  type ButtonSpinner,
   type ButtonAria,
   type ButtonBlur,
   type ButtonFocus,
@@ -35,6 +34,7 @@ import {
   ButtonFocusDetail,
   ButtonNavigateDetail,
 } from './button.interfaces'
+import { SPINNER_VARIATIONS, SpinnerVariation } from '../spinner/spinner.interfaces'
 
 /**
  * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
@@ -195,8 +195,8 @@ export class Button implements DsComponentInterface {
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly loading: ButtonSpinner = false
+  @ValidateType('boolean')
+  readonly loading: boolean = false
 
   /**
    * If `true` the button is rounded.
@@ -356,12 +356,8 @@ export class Button implements DsComponentInterface {
     return this.inverted
   }
 
-  private get isLoading(): boolean {
-    return this.loading === true || this.loading === 'logo' || this.loading === 'circle' || this.loading === ''
-  }
-
   private get leftIconAttrs() {
-    if (!this.icon || this.isLoading) {
+    if (!this.icon || this.loading) {
       return {
         style: { display: 'none' },
       }
@@ -370,7 +366,7 @@ export class Button implements DsComponentInterface {
   }
 
   private get leftRightAttrs() {
-    if (!this.iconRight || this.isLoading) {
+    if (!this.iconRight || this.loading) {
       return {
         style: { display: 'none' },
       }
@@ -379,7 +375,7 @@ export class Button implements DsComponentInterface {
   }
 
   private get loadingAttrs() {
-    if (!this.isLoading) {
+    if (!this.loading) {
       return {
         style: { display: 'none' },
       }
@@ -459,7 +455,7 @@ export class Button implements DsComponentInterface {
           [`is-${this.size}`]: this.size !== undefined,
           [`is-inverted`]: this.inverted,
           [`is-disabled`]: this.disabled,
-          [`is-loading`]: this.isLoading,
+          [`is-loading`]: this.loading,
           [`is-flat`]: this.flat,
           [`is-rounded`]: this.rounded,
           [`is-square`]: this.square,
@@ -475,22 +471,16 @@ export class Button implements DsComponentInterface {
           type={this.elementType}
           id="button"
           part="native"
-          disabled={this.disabled || this.isLoading}
+          disabled={this.disabled || this.loading}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
           aria-busy={ariaBooleanToString(!!this.loading)}
-          aria-disabled={ariaBooleanToString(this.disabled || this.isLoading)}
+          aria-disabled={ariaBooleanToString(this.disabled || this.loading)}
           {...ariaAttributes}
         >
-          {this.isLoading ? (
-            <ds-spinner
-              {...this.loadingAttrs}
-              part="spinner"
-              variation={this.loading === 'circle' ? 'circle' : 'logo'}
-              size="sm"
-              deactivated={!this.isLoading}
-            />
+          {this.loading ? (
+            <ds-spinner {...this.loadingAttrs} part="spinner" size="sm" deactivated={!this.loading} />
           ) : (
             ''
           )}
@@ -500,7 +490,7 @@ export class Button implements DsComponentInterface {
               part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
-              size={this.dashed ? 'md' : this.square ? this.size : 'sm'}
+              size={this.dashed ? 'md' : this.size}
               shape={this.dashed ? 'circle' : undefined}
               turn={this.iconTurn}
               inverted={this.isIconInverted}

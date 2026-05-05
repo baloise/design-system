@@ -16,6 +16,7 @@ $host-selector: ('#input');
  */
 
 .field {
+  @include input.vars-field('input');
   @include input.vars('input');
   @include input.vars-container('input');
   @include input.vars-label('input');
@@ -29,9 +30,7 @@ $host-selector: ('#input');
   */
 
 .field {
-  position: relative;
-  display: grid;
-  gap: 0.25rem;
+  @include input.field-layout('input');
 
   @include input.style('input', '.input');
   @include input.container('input', '.control');
@@ -96,12 +95,4 @@ $host-selector: ('#input');
 
   --mod-input-color: var(--ds-input-control-color-value-disabled);
   --mod-input-placeholder: var(--ds-input-control-color-placeholder-disabled);
-}
-
-//
-// Default spacing between multiple inputs
-// --------------------------------
-.field + .field,
-.ds-field + .ds-field {
-  margin-top: 0.5rem;
 }

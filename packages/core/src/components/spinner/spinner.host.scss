@@ -36,17 +36,20 @@
 :host {
   @include unselectable();
 
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
+  &,
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
 
   svg {
     transform: unset !important;
   }
 }
 
-:host(:not([variation='circle'])) {
+:host(:not([variation='circle'])) > div {
   width: var(--_spinner-size);
 }
 
@@ -79,6 +82,30 @@
 :host([color='white']) {
   --mod-spinner-circle-color-border-background: var(--ds-spinner-circle-color-inverted-background);
   --mod-spinner-circle-color-border-progress: var(--ds-spinner-circle-color-progress-inverted);
+}
+
+/**
+  * Label
+  * --------------------------------
+  */
+
+:host(.is-label-right) {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: auto;
+}
+
+:host(.is-label-bottom) {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: auto;
+}
+
+::part(label) {
+  font-family: var(--ds-font-family-text);
+  line-height: var(--ds-typography-line-height-base);
 }
 
 /**

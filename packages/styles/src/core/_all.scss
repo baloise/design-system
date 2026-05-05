@@ -20,3 +20,13 @@
     margin-top: auto;
   }
 }
+
+.field + .field,
+.ds-field + .ds-field {
+  margin-top: 0.5rem;
+}
+
+.field:not(:last-child),
+.ds-field:not(:last-child) {
+  margin-bottom: 0.25rem;
+}

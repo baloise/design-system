@@ -74,6 +74,13 @@ export class Toggle implements DsComponentInterface {
   checked = false
 
   /**
+   * If `true`, the toggle is dense and has less size.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  dense = false
+
+  /**
    * Defines the color of the tile toggle.
    */
   @Prop()
@@ -246,6 +253,7 @@ export class Toggle implements DsComponentInterface {
           'is-disabled': this.disabled || this.readonly,
           'is-invalid': this.invalid,
           'is-checked': this.checked,
+          'is-dense': this.dense,
           'is-tile': this.tile,
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',

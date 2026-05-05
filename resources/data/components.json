@@ -3125,18 +3125,11 @@
         },
         {
           "name": "loading",
-          "type": "\"\" | \"circle\" | \"logo\" | boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "ButtonSpinner",
-            "resolved": "\"\" | \"circle\" | \"logo\" | boolean | undefined",
-            "references": {
-              "ButtonSpinner": {
-                "location": "import",
-                "path": "./button.interfaces",
-                "id": "src/components/button/button.interfaces.ts::ButtonSpinner",
-                "referenceLocation": "ButtonSpinner"
-              }
-            }
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
           },
           "mutable": false,
           "attr": "loading",
@@ -3151,21 +3144,7 @@
           "default": "false",
           "values": [
             {
-              "type": "\"\""
-            },
-            {
-              "value": "circle",
-              "type": "string"
-            },
-            {
-              "value": "logo",
-              "type": "string"
-            },
-            {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -31887,58 +31866,6 @@
           "setter": false
         },
         {
-          "name": "color",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
-          "complexType": {
-            "original": "SegmentColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
-            "references": {
-              "SegmentColor": {
-                "location": "import",
-                "path": "../segment-item.interfaces",
-                "id": "src/components/segment/segment-item.interfaces.ts::SegmentColor",
-                "referenceLocation": "SegmentColor"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "Defines the color of the input. The default value is `primary`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "green",
-              "type": "string"
-            },
-            {
-              "value": "purple",
-              "type": "string"
-            },
-            {
-              "value": "red",
-              "type": "string"
-            },
-            {
-              "value": "yellow",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "description",
           "type": "string",
           "complexType": {
@@ -41608,11 +41535,6 @@
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
-    "src/components/button/button.interfaces.ts::ButtonSpinner": {
-      "declaration": "boolean | \"\" | \"circle\" | \"logo\" | undefined",
-      "docstring": "",
-      "path": "src/components/button/button.interfaces.ts"
-    },
     "src/components/button/button.interfaces.ts::ButtonClickDetail": {
       "declaration": "interface MouseEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */\n    readonly altKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */\n    readonly button: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/buttons) */\n    readonly buttons: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientX) */\n    readonly clientX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientY) */\n    readonly clientY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerX) */\n    readonly layerX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerY) */\n    readonly layerY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementX) */\n    readonly movementX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementY) */\n    readonly movementY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetX) */\n    readonly offsetX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetY) */\n    readonly offsetY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageX) */\n    readonly pageX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageY) */\n    readonly pageY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenX) */\n    readonly screenX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenY) */\n    readonly screenY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/x) */\n    readonly x: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/y) */\n    readonly y: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/initMouseEvent)\n     */\n    initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void;\n}",
       "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
@@ -42032,11 +41954,6 @@
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/radio/radio.interfaces.ts"
-    },
-    "src/components/segment/segment-item.interfaces.ts::SegmentColor": {
-      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
-      "docstring": "",
-      "path": "src/components/segment/segment-item.interfaces.ts"
     },
     "src/components/segment/segment-item.interfaces.ts::SegmentBlurDetail": {
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",

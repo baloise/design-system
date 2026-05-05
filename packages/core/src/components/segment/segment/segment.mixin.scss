@@ -151,10 +151,6 @@ $_max-items: 8;
         }
       }
 
-      &:has(input:checked)::before {
-        opacity: 1;
-      }
-
       &:has(input:checked) {
         color: var(--_segment-item-selected-color-base);
         --icon-color: var(--_segment-item-selected-color-base);
@@ -188,6 +184,7 @@ $_max-items: 8;
         background-color: var(--_segment-divider-color);
         opacity: 1;
         transition: opacity 160ms ease;
+        z-index: -1;
       }
 
       // CSS-only pill: last label hosts the sliding ::after element and sits one
@@ -270,6 +267,10 @@ $_max-items: 8;
       padding-inline-end: calc(
         var(--_segment-item-padding-inline) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap)
       );
+
+      &:has(input:checked)::before {
+        opacity: 1;
+      }
 
       .description {
         text-align: left;

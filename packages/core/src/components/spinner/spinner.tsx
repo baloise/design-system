@@ -10,15 +10,26 @@ import {
   ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
-import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig, DsComponentInterface } from '@global'
+import {
+  DsConfigObserver,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
+  defaultConfig,
+  ListenToConfig,
+  DsComponentInterface,
+} from '@global'
 import {
   SPINNER_COLORS,
+  SPINNER_LABEL_POSITIONS,
   SPINNER_SIZES,
   SPINNER_VARIATIONS,
   SpinnerColor,
+  SpinnerLabelPosition,
   SpinnerSize,
   SpinnerVariation,
 } from './spinner.interfaces'
+import { i18nDsSpinner } from './spinner.i18n'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
@@ -43,6 +54,8 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   @Element() el!: HTMLStencilElement
 
   @State() animated = defaultConfig.animated
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
 
   private animationItem!: AnimationItem
   private animationFunction?: SpinnerAnimationFunction
@@ -106,6 +119,20 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Position of the visible label relative to the spinner animation.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...SPINNER_LABEL_POSITIONS)
+  readonly labelPosition: SpinnerLabelPosition = 'right'
+
+  /**
    * Defines the look of the spinner
    */
   @Prop()
@@ -162,6 +189,8 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   @ListenToConfig()
   async configChanged(state: DsConfigState): Promise<void> {
     this.animated = state.animated
+    this.language = state.language
+    this.region = state.region
     if (state.animated === false) {
       this.destroy()
     }
@@ -255,15 +284,22 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    */
 
   render() {
+    const ariaLabel = this.label || i18nDsSpinner[this.language].loading
+
     return (
       <Host
         role="progressbar"
-        aria-hidden="true"
+        aria-label={ariaLabel}
         class={{
-          ['is-animated']: this.animated,
+          'is-animated': this.animated,
+          'is-label-right': !!this.label && this.labelPosition === 'right',
+          'is-label-bottom': !!this.label && this.labelPosition === 'bottom',
         }}
       >
-        <div id="inner" part="inner" ref={el => (this.innerEl = el)}></div>
+        <div>
+          <div id="inner" part="inner" ref={el => (this.innerEl = el)}></div>
+        </div>
+        {this.label && <span part="label">{this.label}</span>}
       </Host>
     )
   }

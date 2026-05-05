@@ -267,6 +267,7 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
   if (dsBrowser.hasWindow) {
     // Lazy import to break circular dependency: import only when function is called
     try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { useDsConfig } = require('@global') as typeof import('@global')
       const config = useDsConfig()
       if (config) {
@@ -289,6 +290,7 @@ export const removeEventListener = (el: any, eventName: string, callback: any, o
   if (dsBrowser.hasWindow) {
     // Lazy import to break circular dependency: import only when function is called
     try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { useDsConfig } = require('@global') as typeof import('@global')
       const config = useDsConfig()
       if (config) {

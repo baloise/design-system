@@ -25,6 +25,12 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 Basic.storyName = '🧩 Basic'
 
+export const Label = Story({
+  label: 'Almost ready for you',
+  labelPosition: 'bottom',
+})
+Label.storyName = '🧩 Label'
+
 export const LoadingButton = Story({
   args: {
     // place props here

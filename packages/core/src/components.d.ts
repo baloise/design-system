@@ -9,7 +9,7 @@ import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMa
 import { DsConfigState } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
-import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonSpinner, ButtonTarget } from "./components/button/button.interfaces";
+import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
@@ -27,10 +27,10 @@ import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail,
 import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
 import { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
 import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
-import { SegmentBlurDetail, SegmentChangeDetail, SegmentColor, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
+import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-import { SpinnerColor, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -40,7 +40,7 @@ export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMa
 export { DsConfigState } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
-export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonSpinner, ButtonTarget } from "./components/button/button.interfaces";
+export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
@@ -58,10 +58,10 @@ export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail,
 export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
 export { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
 export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
-export { SegmentBlurDetail, SegmentChangeDetail, SegmentColor, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
+export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-export { SpinnerColor, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -318,7 +318,7 @@ export namespace Components {
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading": ButtonSpinner;
+        "loading": boolean;
         /**
           * The name of the button, which is submitted with the form data.
           * @default ''
@@ -1721,11 +1721,6 @@ export namespace Components {
           * @default false
          */
         "allowEmptySelection": boolean;
-        /**
-          * Defines the color of the input. The default value is `primary`.
-          * @default ''
-         */
-        "color": SegmentColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The description of the input, which is displayed below the input field.
@@ -1943,6 +1938,16 @@ export namespace Components {
           * @default false
          */
         "inverted": boolean;
+        /**
+          * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Position of the visible label relative to the spinner animation.
+          * @default 'right'
+         */
+        "labelPosition": SpinnerLabelPosition;
         /**
           * Defines the size of the spinner. If `sm` the spinner is smaller.
           * @default ''
@@ -2358,6 +2363,11 @@ export namespace Components {
           * @default 1
          */
         "colsTablet": ToggleGroupColumns;
+        /**
+          * If `true`, the toggle is dense and has less size.
+          * @default false
+         */
+        "dense": boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3422,7 +3432,7 @@ declare namespace LocalJSX {
           * If `true` the label is hidden and a loading spinner is shown instead.
           * @default false
          */
-        "loading"?: ButtonSpinner;
+        "loading"?: boolean;
         /**
           * The name of the button, which is submitted with the form data.
           * @default ''
@@ -4937,11 +4947,6 @@ declare namespace LocalJSX {
          */
         "allowEmptySelection"?: boolean;
         /**
-          * Defines the color of the input. The default value is `primary`.
-          * @default ''
-         */
-        "color"?: SegmentColor;
-        /**
           * The description of the input, which is displayed below the input field.
           * @default ''
          */
@@ -5191,6 +5196,16 @@ declare namespace LocalJSX {
           * @default false
          */
         "inverted"?: boolean;
+        /**
+          * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Position of the visible label relative to the spinner animation.
+          * @default 'right'
+         */
+        "labelPosition"?: SpinnerLabelPosition;
         /**
           * Defines the size of the spinner. If `sm` the spinner is smaller.
           * @default ''
@@ -5631,6 +5646,11 @@ declare namespace LocalJSX {
           * @default 1
          */
         "colsTablet"?: ToggleGroupColumns;
+        /**
+          * If `true`, the toggle is dense and has less size.
+          * @default false
+         */
+        "dense"?: boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false

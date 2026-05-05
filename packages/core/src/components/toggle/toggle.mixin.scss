@@ -23,6 +23,10 @@
     @include vars.local(toggle-border-width, var(--ds-border-width-base));
     @include vars.local(toggle-radius, var(--ds-radius-rounded));
 
+    // label layout
+    @include vars.local(toggle-padding-y, 0.25rem);
+    @include vars.local(toggle-min-height, 3rem);
+
     // Tile
     @include vars.local(toggle-tile-radius, var(--ds-radius-base));
     @include vars.local(toggle-tile-padding, 1rem);
@@ -76,9 +80,9 @@
   color: var(--_toggle-label-base-color);
   font-family: var(--ds-font-family-text);
   line-height: var(--ds-typography-line-height-base);
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  min-height: 3rem;
+  padding-top: var(--_toggle-padding-y);
+  padding-bottom: var(--_toggle-padding-y);
+  min-height: var(--_toggle-min-height);
 
   @include hover() {
     &:hover {
@@ -250,6 +254,11 @@
   --mod-toggle-checked-active-color-tick: var(--ds-color-white);
 }
 
+@mixin _dense-vars() {
+  --mod-toggle-min-height: 2rem;
+  --mod-toggle-padding-y: 0;
+}
+
 @mixin _disabled-vars() {
   cursor: default;
   pointer-events: none;
@@ -267,6 +276,10 @@
 // Invalid declared first, disabled declared second — disabled wins when both classes are present.
 @mixin states($wrapper: ':host') {
   @if $wrapper == ':host' {
+    :host(.is-dense) {
+      @include _dense-vars();
+    }
+
     :host(.is-invalid:not(.is-disabled)) {
       @include _invalid-vars();
     }
@@ -275,6 +288,10 @@
       @include _disabled-vars();
     }
   } @else {
+    #{$wrapper}.is-dense {
+      @include _dense-vars();
+    }
+
     #{$wrapper}.is-invalid:not(.is-disabled) {
       @include _invalid-vars();
     }

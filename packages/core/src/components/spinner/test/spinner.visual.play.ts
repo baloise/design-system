@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
 const TAG = 'ds-spinner'
-const VARIANTS = ['basic', 'sizes', 'inverted', 'circle-variation']
+const VARIANTS = ['basic', 'label', 'sizes', 'inverted', 'circle-variation']
 
 const image = screenshot(TAG)
 

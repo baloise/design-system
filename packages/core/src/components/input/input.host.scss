@@ -37,6 +37,7 @@
  */
 
 :host {
+  @include input.vars-field('input');
   @include input.vars('input');
   @include input.vars-container('input');
   @include input.vars-label('input');
@@ -50,14 +51,16 @@
   */
 
 :host {
-  position: relative;
-  display: grid;
-  gap: 0.25rem;
+  @include input.field-layout('input');
 
   @include input.style('input');
   @include input.container('input');
   @include input.label('input');
   @include input.description('input');
+
+  #inner {
+    @include input.field-layout('input');
+  }
 }
 
 /**

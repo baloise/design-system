@@ -13364,7 +13364,7 @@
         },
         "PaddingInline": {
           "$type": "number",
-          "$value": "{🏷️ Semantic.↔️ Space.SM.Mobile}",
+          "$value": "{🏷️ Semantic.↔️ Space.Base.Mobile}",
           "$extensions": {
             "com.figma.variableId": "VariableID:369:4",
             "com.figma.scopes": [

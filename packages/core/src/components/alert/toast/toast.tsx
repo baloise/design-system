@@ -308,11 +308,21 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
         {/* --------------------------------------*/}
         {/* Icon                                  */}
         {/* --------------------------------------*/}
-        {this.iconName && !this.svgContent && (
+        {!this.svgContent && (
           <ds-icon
             id="icon"
             part="icon"
-            name={this.iconName}
+            name={
+              this.iconName || this.color === 'warning'
+                ? 'alert'
+                : this.color === 'danger'
+                  ? 'alert'
+                  : this.color === 'success'
+                    ? 'check'
+                    : this.color === 'info'
+                      ? 'information'
+                      : 'bell'
+            }
             color={this.color}
             size="md"
             shape={

@@ -50,7 +50,7 @@
 | snackbar            | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | input               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | textarea            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| shape               | WC     | ✅     | ⬜   | ❓     | ✅   | ✅     | ✅        |
+| shape               | WC     | ✅     | ✅   | ❓     | ✅   | ✅     | ✅        |
 | stage               | WC     | ❓     | ⬜   | ❓     | ✅   | ✅     | ✅        |
 | input               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | textarea            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
@@ -60,7 +60,7 @@
 | app                 | WC     | ✅     | ⬜   | ✅     | ⬜   | ⬜     | ⬜        |
 | number-input        | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | progress-bar        | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| pagination          | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| pagination          | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | tabs                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | steps               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | table               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |

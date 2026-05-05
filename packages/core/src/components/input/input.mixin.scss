@@ -7,12 +7,31 @@
  */
 
 @mixin placeholder {
+  &::placeholder {
+    @content;
+  }
+
   $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input';
   @each $placeholder in $placeholders {
     &:#{$placeholder}-placeholder {
       @content;
     }
   }
+}
+
+/**
+ * Field Layout Mixins
+ * --------------------------------
+ */
+
+@mixin vars-field($prefix) {
+  @include vars.local(#{$prefix}-field-gap, 0.25rem);
+}
+
+@mixin field-layout($prefix) {
+  position: relative;
+  display: grid;
+  gap: var(--_#{$prefix}-field-gap);
 }
 
 /**

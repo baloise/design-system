@@ -45,6 +45,7 @@ CLAUDE.md
 docs/superpowers
 
 package-lock.json
+*.png
 *.svg
 *.mdx
 resources/data/components.json
