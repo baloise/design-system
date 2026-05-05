@@ -64,7 +64,9 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() readonly closable: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.

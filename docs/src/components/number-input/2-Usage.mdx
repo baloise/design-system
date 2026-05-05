@@ -1,21 +1,11 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Code,
-  Footer,
-  Lead,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
 import * as NumberInputStories from './number-input.stories'
 import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
 
 <Meta title="Components/Forms/Number-input/Usage" />
 <Banner label={'Usage'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
-<BannerTabs
-  of={NumberInputStories}
-  tabs={getNumberInputTabs('usage')}
-/>
+<BannerTabs of={NumberInputStories} tabs={getNumberInputTabs('usage')} />
 
 ## When to Use
 
@@ -44,26 +34,39 @@ Always define min/max constraints when applicable. Users need to know the accept
     {
       type: 'correct',
       title: 'Correct: Clear constraints',
+      contentIsLeftAligned: true,
       content: (
-        <div>
-          <label htmlFor="age">Age (18-100)</label>
-          <ds-input id="age" type="number" min="18" max="100" value="25"></ds-input>
-        </div>
+        <>
+          <ds-number-input label="Age (18-100)"  min="18" max="100" value="25"></ds-number-input>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code
+              noPreview
+              code={'<ds-number-input \n  label="Quantity" \n  min="18" \n  max="100" \n  value="25" \n ></ds-number-input>'}
+            />
+          </div>
+        </>
       ),
       description: 'Users understand acceptable values',
     },
     {
       type: 'incorrect',
       title: 'Incorrect: No constraints shown',
+      contentIsLeftAligned: true,
       content: (
-        <div>
-          <label htmlFor="qty">Quantity</label>
-          <ds-input id="qty" type="number"></ds-input>
-        </div>
+        <>
+          <ds-number-input label="Quantity"  value="25"></ds-number-input>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code
+              noPreview
+              code={'<ds-number-input \n  label="Quantity" \n  value="25" \n ></ds-number-input>'}
+            />
+          </div>
+        </>
       ),
       description: 'Users unsure of valid range',
     },
-  ]}
+
+]}
 />
 
 <Footer />

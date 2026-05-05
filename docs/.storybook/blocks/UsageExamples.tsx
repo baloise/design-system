@@ -60,7 +60,8 @@ export const UsageExamples = ({ items }: UsageExamplesProps): React.ReactElement
                   style={{
                     flex: 1,
                     padding: '1.5rem',
-                    backgroundColor: '#f5f5f5',
+                    // backgroundColor: '#f5f5f5',
+                    border: `2px dashed ${isCorrect ? '#00b28f' : '#d9304c'}`,
                     borderRadius: '8px',
                     marginBottom: '1rem',
                     textAlign: item.contentIsLeftAligned ? 'left' : 'center',

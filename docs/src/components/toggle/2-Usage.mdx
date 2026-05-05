@@ -45,12 +45,7 @@ Always pair toggles with descriptive labels. Users need to know what is being to
       type: 'correct',
       title: 'Correct: Clear label with state indication',
       content: (
-        <div>
-          <label>
-            <ds-toggle checked={true}></ds-toggle>
-            <span>Enable notifications</span>
-          </label>
-        </div>
+        <ds-toggle checked={true}>Enable notifications</ds-toggle>
       ),
       description: 'Users understand exactly what is being toggled',
     },
@@ -58,9 +53,7 @@ Always pair toggles with descriptive labels. Users need to know what is being to
       type: 'incorrect',
       title: 'Incorrect: No label or vague label',
       content: (
-        <div>
-          <ds-toggle checked={true}></ds-toggle>
-        </div>
+        <ds-toggle checked={true}></ds-toggle>
       ),
       description: 'Users unsure what the toggle controls',
     },

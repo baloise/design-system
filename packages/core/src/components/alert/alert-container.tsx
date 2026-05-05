@@ -1,9 +1,29 @@
 import { Element, Component, Method, h, Host, Prop, State } from '@stencil/core'
-import { raf, wait, createPausableTimer, Logger, type LogInstance, PausableTimer } from '@utils'
-import { Alert, AlertComponent, AlertType, AlertContainerSize } from './alert-container.interfaces'
+import {
+  raf,
+  wait,
+  createPausableTimer,
+  Logger,
+  type LogInstance,
+  PausableTimer,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
+import {
+  Alert,
+  AlertComponent,
+  AlertType,
+  AlertContainerSize,
+  ALERT_TYPES,
+  ALERT_CONTAINER_SIZES,
+} from './alert-container.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
+ */
 @Component({
   tag: 'ds-alert-container',
   styleUrl: 'alert-container.host.scss',
@@ -19,18 +39,60 @@ export class AlertContainer implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
+  @State() alerts: AlertComponent[] = []
+
   private maxVisibleItems = 5
   private animationDurationMs = 300
-
   private containerEl: HTMLDivElement | undefined
-
-  @State() alerts: AlertComponent[] = []
   private alertTimers: Record<string, PausableTimer> = {}
 
-  @Prop() readonly animated: boolean = false
-  @Prop() readonly type: AlertType = 'toast'
-  @Prop() readonly container?: AlertContainerSize
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
+  /**
+   * If `true`, alerts animate in and out.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly animated: boolean = false
+
+  /**
+   * Defines the container size constraint for the alert layout.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ALERT_CONTAINER_SIZES)
+  readonly container?: AlertContainerSize
+
+  /**
+   * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ALERT_TYPES)
+  readonly type: AlertType = 'toast'
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    setupValidation(this)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Adds an alert to the queue and returns its generated ID.
+   */
   @Method()
   async addAlert(alert: Alert): Promise<string> {
     if (this.hasDuplications(alert)) {
@@ -52,6 +114,9 @@ export class AlertContainer implements DsComponentInterface {
     return alertId
   }
 
+  /**
+   * Removes the alert with the given ID.
+   */
   @Method()
   async removeAlert(id: string) {
     this.alerts = this.alerts.map(n => (n.alertId === id ? { ...n, visible: false } : n))
@@ -60,6 +125,9 @@ export class AlertContainer implements DsComponentInterface {
     this.alerts = this.alerts.filter(n => n.alertId !== id)
   }
 
+  /**
+   * Removes all alerts.
+   */
   @Method()
   async removeAll() {
     this.alerts = this.alerts.map(n => ({ ...n, visible: false }))
@@ -67,6 +135,11 @@ export class AlertContainer implements DsComponentInterface {
     await wait(this.animationDurationMs)
     this.alerts = []
   }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
 
   private activeTimer(id: string, duration: number | 'infinite') {
     if (duration !== 'infinite') {
@@ -113,6 +186,11 @@ export class AlertContainer implements DsComponentInterface {
     )
     return !!existing
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const visibleAlerts = this.alerts.slice(0, this.maxVisibleItems)

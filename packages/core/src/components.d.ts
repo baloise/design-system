@@ -35,7 +35,7 @@ import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
-import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 export { DsConfigState } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
@@ -66,7 +66,7 @@ export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
-export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
 export namespace Components {
     /**
      * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
@@ -150,16 +150,33 @@ export namespace Components {
          */
         "summaryVisualLevel": AccordionSummaryLevel;
     }
+    /**
+     * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
+     */
     interface DsAlertContainer {
+        /**
+          * Adds an alert to the queue and returns its generated ID.
+         */
         "addAlert": (alert: Alert) => Promise<string>;
         /**
+          * If `true`, alerts animate in and out.
           * @default false
          */
         "animated": boolean;
+        /**
+          * Defines the container size constraint for the alert layout.
+         */
         "container"?: AlertContainerSize;
+        /**
+          * Removes the alert with the given ID.
+         */
         "removeAlert": (id: string) => Promise<void>;
+        /**
+          * Removes all alerts.
+         */
         "removeAll": () => Promise<void>;
         /**
+          * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
           * @default 'toast'
          */
         "type": AlertType;
@@ -588,6 +605,9 @@ export namespace Components {
          */
         "value": string | number;
     }
+    /**
+     * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
+     */
     interface DsCheckboxGroup {
         /**
           * Defines the color of the input. The default value is `primary`.
@@ -622,12 +642,14 @@ export namespace Components {
         "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
          */
-        "disabled": boolean | undefined;
+        "disabled": boolean;
         /**
           * If `true` the component gets a invalid style.
+          * @default false
          */
-        "invalid": boolean | undefined;
+        "invalid": boolean;
         /**
           * The text to display when the input is in an invalid state.
           * @default ''
@@ -655,8 +677,9 @@ export namespace Components {
         "name": string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
          */
-        "readonly": boolean | undefined;
+        "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
           * @default true
@@ -1248,6 +1271,7 @@ export namespace Components {
           * @default 'primary'
          */
         "color": LogoColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Size of the logo svg
           * @default ''
@@ -1309,12 +1333,12 @@ export namespace Components {
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
           * @default 0
          */
-        "debounce": 0;
+        "debounce": number;
         /**
           * Number of allowed decimal places. `0` means integers only.
           * @default 0
          */
-        "decimal": 0;
+        "decimal": number;
         /**
           * The description displayed below the field.
           * @default ''
@@ -1543,7 +1567,7 @@ export namespace Components {
           * Label of the radio item.
           * @default ''
          */
-        "label": "";
+        "label": string;
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -1584,10 +1608,13 @@ export namespace Components {
         "tileColor"?: RadioTileColor;
         "updateState": () => Promise<void>;
         /**
-          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+          * A DOMString representing the value of the radio. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the radio's name.
          */
         "value"?: any | null;
     }
+    /**
+     * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
+     */
     interface DsRadioGroup {
         /**
           * If `true`, the radios can be deselected.
@@ -1622,12 +1649,14 @@ export namespace Components {
         "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
          */
-        "disabled": boolean | undefined;
+        "disabled": boolean;
         /**
           * If `true` the component gets a invalid style.
+          * @default false
          */
-        "invalid": boolean | undefined;
+        "invalid": boolean;
         /**
           * The text to display when the input is in an invalid state.
           * @default ''
@@ -1655,8 +1684,9 @@ export namespace Components {
         "name": string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
          */
-        "readonly": boolean | undefined;
+        "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
           * @default true
@@ -1673,11 +1703,11 @@ export namespace Components {
          */
         "tileColor"?: RadioTileColor;
         /**
-          * the value of the radio group.
+          * The value of the radio group.
          */
         "value"?: any | null;
         /**
-          * Displays the checkboxes vertically
+          * Displays the radios vertically.
           * @default false
          */
         "vertical": boolean;
@@ -1704,8 +1734,9 @@ export namespace Components {
         "description": string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
          */
-        "disabled": boolean | undefined;
+        "disabled": boolean;
         /**
           * If `true`, the segment only shows icons without labels.
           * @default false
@@ -1713,8 +1744,9 @@ export namespace Components {
         "iconOnly": boolean;
         /**
           * If `true` the component gets a invalid style.
+          * @default false
          */
-        "invalid": boolean | undefined;
+        "invalid": boolean;
         /**
           * The text to display when the input is in an invalid state.
           * @default ''
@@ -1738,8 +1770,9 @@ export namespace Components {
         "name": string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
          */
-        "readonly": boolean | undefined;
+        "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
           * @default true
@@ -1774,17 +1807,17 @@ export namespace Components {
           * Description text to display in the segment item.
           * @default ''
          */
-        "description": "";
+        "description": string;
         /**
           * Name of the icon to display in the segment item.
           * @default ''
          */
-        "icon": "";
+        "icon": string;
         /**
           * Label text to display in the segment item.
           * @default ''
          */
-        "label": "";
+        "label": string;
         /**
           * Svg content for the icon.
           * @default ''
@@ -1899,6 +1932,7 @@ export namespace Components {
           * @default 'blue'
          */
         "color": SpinnerColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the component will not add the spinner animation svg
           * @default false
@@ -2015,6 +2049,9 @@ export namespace Components {
          */
         "size"?: TagSize;
     }
+    /**
+     * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
+     */
     interface DsTagGroup {
     }
     /**
@@ -2104,7 +2141,7 @@ export namespace Components {
           * Indicates whether and how the text value should be automatically capitalized.
           * @default 'off'
          */
-        "autocapitalize": "off";
+        "autocapitalize": string;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -2129,7 +2166,7 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
           * @default 0
          */
-        "debounce": 0;
+        "debounce": number;
         /**
           * The description displayed below the textarea field.
           * @default ''
@@ -2312,15 +2349,15 @@ export namespace Components {
         /**
           * @default 1
          */
-        "cols": CheckboxGroupColumns;
+        "cols": ToggleGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile": CheckboxGroupColumns;
+        "colsMobile": ToggleGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet": CheckboxGroupColumns;
+        "colsTablet": ToggleGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2332,15 +2369,15 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Label of the radio item.
+          * Label of the toggle item.
           * @default ''
          */
-        "label": "";
+        "label": string;
         /**
-          * Defines the position of the label, either before or after the radio input. Default is after.
+          * Defines the position of the label, either before or after the toggle input. Default is after.
           * @default 'right'
          */
-        "labelPosition": CheckboxLabelPosition;
+        "labelPosition": ToggleLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -2468,6 +2505,9 @@ declare global {
         prototype: HTMLDsAccordionElement;
         new (): HTMLDsAccordionElement;
     };
+    /**
+     * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
+     */
     interface HTMLDsAlertContainerElement extends Components.DsAlertContainer, HTMLStencilElement {
     }
     var HTMLDsAlertContainerElement: {
@@ -2614,9 +2654,12 @@ declare global {
     };
     interface HTMLDsCheckboxGroupElementEventMap {
         "dsBlur": CheckboxGroupBlurDetail;
-        "dsFocus": CheckboxGroupFocusDetail;
         "dsChange": CheckboxGroupChangeDetail;
+        "dsFocus": CheckboxGroupFocusDetail;
     }
+    /**
+     * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
+     */
     interface HTMLDsCheckboxGroupElement extends Components.DsCheckboxGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLDsCheckboxGroupElement, ev: DsCheckboxGroupCustomEvent<HTMLDsCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2833,9 +2876,9 @@ declare global {
         new (): HTMLDsProgressBarElement;
     };
     interface HTMLDsRadioElementEventMap {
-        "dsFocus": RadioFocusDetail;
         "dsBlur": RadioBlurDetail;
         "dsChange": RadioChangeDetail;
+        "dsFocus": RadioFocusDetail;
     }
     /**
      * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
@@ -2856,9 +2899,12 @@ declare global {
     };
     interface HTMLDsRadioGroupElementEventMap {
         "dsBlur": RadioGroupBlurDetail;
-        "dsFocus": RadioGroupFocusDetail;
         "dsChange": RadioGroupChangeDetail;
+        "dsFocus": RadioGroupFocusDetail;
     }
+    /**
+     * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
+     */
     interface HTMLDsRadioGroupElement extends Components.DsRadioGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsRadioGroupElementEventMap>(type: K, listener: (this: HTMLDsRadioGroupElement, ev: DsRadioGroupCustomEvent<HTMLDsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2875,8 +2921,8 @@ declare global {
     };
     interface HTMLDsSegmentElementEventMap {
         "dsBlur": SegmentBlurDetail;
-        "dsFocus": SegmentFocusDetail;
         "dsChange": SegmentChangeDetail;
+        "dsFocus": SegmentFocusDetail;
     }
     /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
@@ -2984,6 +3030,9 @@ declare global {
         prototype: HTMLDsTagElement;
         new (): HTMLDsTagElement;
     };
+    /**
+     * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
+     */
     interface HTMLDsTagGroupElement extends Components.DsTagGroup, HTMLStencilElement {
     }
     var HTMLDsTagGroupElement: {
@@ -3001,11 +3050,11 @@ declare global {
     };
     interface HTMLDsTextareaElementEventMap {
         "dsBlur": TextareaBlurDetail;
-        "dsKeyPress": TextareaKeyPressDetail;
-        "dsFocus": TextareaFocusDetail;
-        "dsClick": TextareaClickDetail;
-        "dsInput": TextareaInputDetail;
         "dsChange": TextareaChangeDetail;
+        "dsClick": TextareaClickDetail;
+        "dsFocus": TextareaFocusDetail;
+        "dsInput": TextareaInputDetail;
+        "dsKeyPress": TextareaKeyPressDetail;
     }
     /**
      * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
@@ -3049,9 +3098,9 @@ declare global {
         new (): HTMLDsToastElement;
     };
     interface HTMLDsToggleElementEventMap {
-        "dsFocus": ToggleFocusDetail;
         "dsBlur": ToggleBlurDetail;
         "dsChange": ToggleChangeDetail;
+        "dsFocus": ToggleFocusDetail;
     }
     /**
      * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
@@ -3210,13 +3259,21 @@ declare namespace LocalJSX {
          */
         "summaryVisualLevel"?: AccordionSummaryLevel;
     }
+    /**
+     * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
+     */
     interface DsAlertContainer {
         /**
+          * If `true`, alerts animate in and out.
           * @default false
          */
         "animated"?: boolean;
+        /**
+          * Defines the container size constraint for the alert layout.
+         */
         "container"?: AlertContainerSize;
         /**
+          * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
           * @default 'toast'
          */
         "type"?: AlertType;
@@ -3688,6 +3745,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
+     */
     interface DsCheckboxGroup {
         /**
           * Defines the color of the input. The default value is `primary`.
@@ -3721,16 +3781,18 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
          */
-        "disabled"?: boolean | undefined;
+        "disabled"?: boolean;
         /**
           * The `id` of a `<form>` element to associate this element with.
          */
         "form"?: string;
         /**
           * If `true` the component gets a invalid style.
+          * @default false
          */
-        "invalid"?: boolean | undefined;
+        "invalid"?: boolean;
         /**
           * The text to display when the input is in an invalid state.
           * @default ''
@@ -3770,8 +3832,9 @@ declare namespace LocalJSX {
         "onDsFocus"?: (event: DsCheckboxGroupCustomEvent<CheckboxGroupFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
          */
-        "readonly"?: boolean | undefined;
+        "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
           * @default true
@@ -4455,12 +4518,12 @@ declare namespace LocalJSX {
           * Milliseconds to wait before triggering `dsChange` after each keystroke.
           * @default 0
          */
-        "debounce"?: 0;
+        "debounce"?: number;
         /**
           * Number of allowed decimal places. `0` means integers only.
           * @default 0
          */
-        "decimal"?: 0;
+        "decimal"?: number;
         /**
           * The description displayed below the field.
           * @default ''
@@ -4703,7 +4766,7 @@ declare namespace LocalJSX {
           * Label of the radio item.
           * @default ''
          */
-        "label"?: "";
+        "label"?: string;
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -4746,10 +4809,13 @@ declare namespace LocalJSX {
          */
         "tileColor"?: RadioTileColor;
         /**
-          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
+          * A DOMString representing the value of the radio. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the radio's name.
          */
         "value"?: any | null;
     }
+    /**
+     * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
+     */
     interface DsRadioGroup {
         /**
           * If `true`, the radios can be deselected.
@@ -4783,16 +4849,18 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
          */
-        "disabled"?: boolean | undefined;
+        "disabled"?: boolean;
         /**
           * The `id` of a `<form>` element to associate this element with.
          */
         "form"?: string;
         /**
           * If `true` the component gets a invalid style.
+          * @default false
          */
-        "invalid"?: boolean | undefined;
+        "invalid"?: boolean;
         /**
           * The text to display when the input is in an invalid state.
           * @default ''
@@ -4819,7 +4887,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when a keyboard input occurred.
+          * Emitted when the input loses focus.
          */
         "onDsBlur"?: (event: DsRadioGroupCustomEvent<RadioGroupBlurDetail>) => void;
         /**
@@ -4832,8 +4900,9 @@ declare namespace LocalJSX {
         "onDsFocus"?: (event: DsRadioGroupCustomEvent<RadioGroupFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
          */
-        "readonly"?: boolean | undefined;
+        "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
           * @default true
@@ -4849,11 +4918,11 @@ declare namespace LocalJSX {
          */
         "tileColor"?: RadioTileColor;
         /**
-          * the value of the radio group.
+          * The value of the radio group.
          */
         "value"?: any | null;
         /**
-          * Displays the checkboxes vertically
+          * Displays the radios vertically.
           * @default false
          */
         "vertical"?: boolean;
@@ -4879,8 +4948,9 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
          */
-        "disabled"?: boolean | undefined;
+        "disabled"?: boolean;
         /**
           * The `id` of a `<form>` element to associate this element with.
          */
@@ -4892,8 +4962,9 @@ declare namespace LocalJSX {
         "iconOnly"?: boolean;
         /**
           * If `true` the component gets a invalid style.
+          * @default false
          */
-        "invalid"?: boolean | undefined;
+        "invalid"?: boolean;
         /**
           * The text to display when the input is in an invalid state.
           * @default ''
@@ -4928,8 +4999,9 @@ declare namespace LocalJSX {
         "onDsFocus"?: (event: DsSegmentCustomEvent<SegmentFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
+          * @default false
          */
-        "readonly"?: boolean | undefined;
+        "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
           * @default true
@@ -4963,7 +5035,7 @@ declare namespace LocalJSX {
           * Description text to display in the segment item.
           * @default ''
          */
-        "description"?: "";
+        "description"?: string;
         /**
           * If `true`, the user cannot interact with the element.
          */
@@ -4976,16 +5048,19 @@ declare namespace LocalJSX {
           * Name of the icon to display in the segment item.
           * @default ''
          */
-        "icon"?: "";
+        "icon"?: string;
         /**
           * Label text to display in the segment item.
           * @default ''
          */
-        "label"?: "";
+        "label"?: string;
         /**
           * The name of the element, used when submitting an HTML form.
          */
         "name"?: string;
+        /**
+          * Emitted when a property of the segment item changes, to notify the parent segment to re-render.
+         */
         "onDsWillUpdate"?: (event: DsSegmentItemCustomEvent<void>) => void;
         /**
           * Svg content for the icon.
@@ -5226,6 +5301,9 @@ declare namespace LocalJSX {
          */
         "size"?: TagSize;
     }
+    /**
+     * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
+     */
     interface DsTagGroup {
     }
     /**
@@ -5315,7 +5393,7 @@ declare namespace LocalJSX {
           * Indicates whether and how the text value should be automatically capitalized.
           * @default 'off'
          */
-        "autocapitalize"?: "off";
+        "autocapitalize"?: string;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -5339,7 +5417,7 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
           * @default 0
          */
-        "debounce"?: 0;
+        "debounce"?: number;
         /**
           * The description displayed below the textarea field.
           * @default ''
@@ -5544,15 +5622,15 @@ declare namespace LocalJSX {
         /**
           * @default 1
          */
-        "cols"?: CheckboxGroupColumns;
+        "cols"?: ToggleGroupColumns;
         /**
           * @default 1
          */
-        "colsMobile"?: CheckboxGroupColumns;
+        "colsMobile"?: ToggleGroupColumns;
         /**
           * @default 1
          */
-        "colsTablet"?: CheckboxGroupColumns;
+        "colsTablet"?: ToggleGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -5568,15 +5646,15 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Label of the radio item.
+          * Label of the toggle item.
           * @default ''
          */
-        "label"?: "";
+        "label"?: string;
         /**
-          * Defines the position of the label, either before or after the radio input. Default is after.
+          * Defines the position of the label, either before or after the toggle input. Default is after.
           * @default 'right'
          */
-        "labelPosition"?: CheckboxLabelPosition;
+        "labelPosition"?: ToggleLabelPosition;
         /**
           * The name of the control, which is submitted with the form data.
           * @default this.inputId
@@ -5670,6 +5748,9 @@ declare module "@stencil/core" {
              * Perfect for organizing large amounts of content into logical, expandable groups.
              */
             "ds-accordion": LocalJSX.DsAccordion & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
+            /**
+             * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
+             */
             "ds-alert-container": LocalJSX.DsAlertContainer & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
             /**
              * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
@@ -5715,6 +5796,9 @@ declare module "@stencil/core" {
              * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
              */
             "ds-checkbox": LocalJSX.DsCheckbox & JSXBase.HTMLAttributes<HTMLDsCheckboxElement>;
+            /**
+             * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
+             */
             "ds-checkbox-group": LocalJSX.DsCheckboxGroup & JSXBase.HTMLAttributes<HTMLDsCheckboxGroupElement>;
             /**
              * Close renders a button element for closing or dismissing UI components with customizable size and color.
@@ -5777,6 +5861,9 @@ declare module "@stencil/core" {
              * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
              */
             "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
+            /**
+             * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
+             */
             "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
             /**
              * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
@@ -5806,6 +5893,9 @@ declare module "@stencil/core" {
              * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
              */
             "ds-tag": LocalJSX.DsTag & JSXBase.HTMLAttributes<HTMLDsTagElement>;
+            /**
+             * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
+             */
             "ds-tag-group": LocalJSX.DsTagGroup & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
             /**
              * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.

@@ -25,7 +25,6 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
  *
  * @slot - The checkbox label content.
- * @slot helper - The helper or hint text below the checkbox.
  * @part checkbox - The native HTML input element.
  * @part container - The checkbox and label wrapper.
  */
@@ -286,7 +285,7 @@ export class Checkbox implements DsComponentInterface {
             {...this.inheritAttributes}
           />
           <div id="slot" part="slot">
-            <slot></slot>
+            <slot>{this.label}</slot>
           </div>
         </label>
       </Host>

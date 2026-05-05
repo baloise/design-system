@@ -19,14 +19,14 @@ import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
 
 <ComponentLead component="text" />
 
-<CanvasTabs of={TextStories.Basic} htmlOf={TextStories.BasicHtml} />
+<CanvasTabs of={TextStories.Basic} htmlOf={TextStories.BasicHtml} htmlFirst />
 
 <ComponentTabs
   tabs={[
     {
       id: 'ds-text',
       label: 'Text',
-      content: <Controls of={TextStories.Basic} />,
+      content: <Controls of={TextStories.BasicHtml} />,
     },
   ]}
 />

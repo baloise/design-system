@@ -20,26 +20,27 @@ import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextareaStories.Sizes}></StoryHeading>
+<StoryHeading of={TextareaStories.Optional}></StoryHeading>
 
-Textareas can be sized with different row counts and column widths.
-
-<CanvasTabs />
+<Canvas of={TextareaStories.Optional} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextareaStories.States}></StoryHeading>
+<StoryHeading of={TextareaStories.Disabled}></StoryHeading>
 
-Textareas support validation states: valid, invalid, or neutral.
-
-<CanvasTabs />
+<Canvas of={TextareaStories.Disabled} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextareaStories.Resizable}></StoryHeading>
+<StoryHeading of={TextareaStories.Invalid}></StoryHeading>
 
-Control textarea resizing behavior with the resize prop.
+<Canvas of={TextareaStories.Invalid} />
 
-<CanvasTabs />
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextareaStories.Rows}></StoryHeading>
+
+<Canvas of={TextareaStories.Rows} />
+
 
 <Footer />

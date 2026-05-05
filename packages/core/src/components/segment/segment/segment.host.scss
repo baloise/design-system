@@ -16,9 +16,15 @@
  * @prop --segment-gap: Gap between segment items.
  * @prop --segment-padding: Padding inside the segment.
  * @prop --segment-label-color: Text color of the label.
- * @prop --segment-label-font-size: Font size of the label.
- * @prop --segment-description-color: Text color of description text.
- * @prop --segment-description-font-size: Font size of description text.
+ * @prop --segment-label-family: Font family of the label.
+ * @prop --segment-label-weight: Font weight of the label.
+ * @prop --segment-label-size: Font size of the label.
+ * @prop --segment-label-line-height: Line height of the label.
+ * @prop --segment-description-color: Text color of the description.
+ * @prop --segment-description-family: Font family of the description.
+ * @prop --segment-description-weight: Font weight of the description.
+ * @prop --segment-description-size: Font size of the description.
+ * @prop --segment-description-line-height: Line height of the description.
  */
 
 @include segment.vars(':host');

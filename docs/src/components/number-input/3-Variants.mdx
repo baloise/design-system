@@ -20,18 +20,18 @@ import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={NumberInputStories.WithStep}></StoryHeading>
+<StoryHeading of={NumberInputStories.Decimal}></StoryHeading>
 
-Control increment/decrement step size. Useful for precise or coarse adjustments.
+Number inputs with decimal values for more precise numeric input.
 
-<CanvasTabs />
+<Canvas of={NumberInputStories.Decimal} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={NumberInputStories.WithConstraints}></StoryHeading>
+<StoryHeading of={NumberInputStories.Suffix}></StoryHeading>
 
-Apply min and max constraints to define acceptable numeric ranges.
+Number inputs with suffixes to indicate units or context for the numeric value.
 
-<CanvasTabs />
+<Canvas of={NumberInputStories.Suffix} />
 
 <Footer />

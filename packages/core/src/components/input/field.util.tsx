@@ -6,8 +6,8 @@ import { InputColor } from './input.interfaces'
 
 export type FieldInterface = {
   color: InputColor
-  disabled: boolean | undefined
-  invalid: boolean | undefined
+  disabled: boolean
+  invalid: boolean
   loading?: boolean
   label: string
   description: string

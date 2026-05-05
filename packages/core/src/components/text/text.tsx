@@ -1,8 +1,24 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ElementStateInfo, Logger, type LogInstance } from '@utils'
+import {
+  ElementStateInfo,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsComponentInterface } from '@global'
-import { TextSize, TextColor, TextSpace, TextAlign } from './text.interfaces'
+import {
+  TEXT_ALIGNS,
+  TEXT_COLORS,
+  TEXT_SIZES,
+  TEXT_SPACES,
+  TextSize,
+  TextColor,
+  TextSpace,
+  TextAlign,
+} from './text.interfaces'
 
 /**
  * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
@@ -26,86 +42,129 @@ export class Text implements DsComponentInterface, ElementStateInfo {
   @Element() el!: HTMLStencilElement
 
   /**
-   * PUBLIC API
+   * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
 
   /**
-   * Defines the size of the paragraph
+   * If `true` the component gets a invalid style.
    */
-  @Prop({ mutable: true, reflect: true }) size?: TextSize
+  @Prop()
+  @ValidateEmptyOrOneOf(...TEXT_ALIGNS)
+  readonly align?: TextAlign
+
+  /**
+   * If `true` the text is bold
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly bold: boolean = false
+
+  /**
+   * Defines the color of the text.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TEXT_COLORS)
+  readonly color?: TextColor
+
+  /**
+   * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * If `true` the text has heading font family
    */
-  @Prop({ reflect: true }) readonly heading: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly heading: boolean = false
 
   /**
-   * If `true` the text has subtitle font family
+   * @internal
    */
-  @Prop({ reflect: true }) readonly subtitle: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly hovered: boolean = false
+
+  /**
+   * If `true` the text is shown as a display inline
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inline: boolean = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * If `true` the color gets inverted for dark backgrounds
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) readonly noWrap: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly noWrap: boolean = false
 
   /**
-   * If `true` the text is bold
+   * @internal
    */
-  @Prop({ reflect: true }) readonly bold: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly pressed: boolean = false
 
   /**
-   * If `true` the text is shown as a display inline
+   * If `true` adds a text shadow to improve readability on image background
    */
-  @Prop({ reflect: true }) readonly inline: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly shadow: boolean = false
 
   /**
-   * Defines the color of the text.
+   * Defines the size of the paragraph
    */
-  @Prop() readonly color?: TextColor
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...TEXT_SIZES)
+  size?: TextSize
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop({ reflect: true }) readonly space?: TextSpace
+  @Prop()
+  @ValidateEmptyOrOneOf(...TEXT_SPACES)
+  readonly space?: TextSpace
 
   /**
-   * If `true` the color gets inverted for dark backgrounds
+   * If `true` the text has subtitle font family
    */
-  @Prop({ reflect: true }) readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly subtitle: boolean = false
 
   /**
-   * If `true` adds a text shadow to improve readability on image background
-   * */
-  @Prop({ reflect: true }) readonly shadow: boolean = false
-
-  /**
-   * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   * LIFECYCLE
+   * ------------------------------------------------------
    */
-  @Prop({ reflect: true }) readonly disabled: boolean = false
 
-  /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop({ reflect: true }) readonly invalid: boolean = false
+  connectedCallback() {
+    setupValidation(this)
+  }
 
-  /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop() readonly align?: TextAlign
-
-  /**
-   * @internal
-   */
-  @Prop() readonly hovered: boolean = false
-
-  /**
-   * @internal
-   */
-  @Prop() readonly pressed: boolean = false
+  componentWillUpdate() {
+    setupValidation(this)
+  }
 
   /**
    * PRIVATE METHODS

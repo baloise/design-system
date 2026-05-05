@@ -2,6 +2,7 @@ import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  CanvasTabs,
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
@@ -18,7 +19,7 @@ import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
 
 <ComponentLead component="toggle" />
 
-<Canvas of={ToggleStories.Basic} sourceState="shown" />
+<CanvasTabs of={ToggleStories.Basic} htmlOf={ToggleStories.BasicHtml} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

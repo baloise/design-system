@@ -11,11 +11,24 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Logger, type LogInstance, stopEventBubbling, hasTagName, isDescendant } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  stopEventBubbling,
+  hasTagName,
+  isDescendant,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+  ValidateType,
+} from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
-import { InputColor } from '../../input/input.interfaces'
+import { INPUT_COLORS, InputColor } from '../../input/input.interfaces'
 import {
+  RADIO_LABEL_POSITIONS,
+  RADIO_TILE_COLORS,
+  RADIO_GROUP_COLUMNS,
   RadioLabelPosition,
   RadioTileColor,
   RadioGroupColumns,
@@ -25,6 +38,11 @@ import {
 } from '../radio.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
+/**
+ * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
+ *
+ * @slot - The radio items to display inside the group.
+ */
 @Component({
   tag: 'ds-radio-group',
   styleUrl: 'radio-group.host.scss',
@@ -32,21 +50,21 @@ import { HTMLStencilElement } from '@stencil/core/internal'
   formAssociated: true,
 })
 export class RadioGroup implements DsComponentInterface, FieldInterface {
-  private initialValue?: any | null
-  inputId = `ds-rg-${radioGroupIds++}`
-
-  @Element() el!: HTMLStencilElement
-
   log!: LogInstance
+
   @Logger('radio-group')
   createLogger(log: LogInstance) {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+  @AttachInternals() internals!: ElementInternals
+
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
 
-  @AttachInternals() internals!: ElementInternals
+  inputId = `ds-rg-${radioGroupIds++}`
+  private initialValue?: any | null
 
   /**
    * PUBLIC PROPERTY API
@@ -54,114 +72,144 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    */
 
   /**
-   * The name of the radios in the group. Child radios will inherit the name.
+   * If `true`, the radios can be deselected.
    */
-  @Prop() readonly name: string = this.inputId
-
-  /**
-   * The label of the input, which is displayed above the input field.
-   */
-  @Prop() readonly label: string = ''
-
-  /**
-   * Defines the position of the label, either before or after the radio input. Default is after.
-   */
-  @Prop() readonly labelPosition: RadioLabelPosition = 'right'
-
-  /**
-   * The description of the input, which is displayed below the input field.
-   */
-  @Prop() readonly description: string = ''
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly allowEmptySelection: boolean = false
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
-  @Prop() readonly color: InputColor = 'primary'
+  @Prop()
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  readonly color: InputColor = 'primary'
 
   /**
-   * Shows a loading indicator at the end of the input and replaces the end slot content.
+   * Defines the column size like the grid.
    */
-  @Prop() readonly loading: boolean = false
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  readonly cols: RadioGroupColumns = 1
 
   /**
-   * If `true` the component gets a invalid style.
+   * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() readonly invalid: boolean | undefined
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  readonly colsMobile: RadioGroupColumns = 1
 
   /**
-   * The text to display when the input is in an invalid state.
+   * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() readonly invalidText: string = ''
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  readonly colsTablet: RadioGroupColumns = 1
+
+  /**
+   * The description of the input, which is displayed below the input field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled: boolean | undefined
+  @Prop({ reflect: true })
+  @ValidateType('boolean')
+  readonly disabled: boolean = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * The text to display when the input is in an invalid state.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly invalidText: string = ''
+
+  /**
+   * The label of the input, which is displayed above the input field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Defines the position of the label, either before or after the radio input. Default is after.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_LABEL_POSITIONS)
+  readonly labelPosition: RadioLabelPosition = 'right'
+
+  /**
+   * Shows a loading indicator at the end of the input and replaces the end slot content.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly loading: boolean = false
+
+  /**
+   * The name of the radios in the group. Child radios will inherit the name.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly readonly: boolean | undefined
+  @Prop({ reflect: true })
+  @ValidateType('boolean')
+  readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly required: boolean = true
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
 
   /**
-   * Displays the checkboxes vertically
+   * Defines the layout of the input
    */
-  @Prop() readonly vertical: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
-   * If `true`, the radios can be deselected.
+   * Defines the color of the tile checkbox.
    */
-  @Prop() readonly allowEmptySelection: boolean = false
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_TILE_COLORS)
+  readonly tileColor?: RadioTileColor
 
   /**
-   * the value of the radio group.
+   * The value of the radio group.
    */
-  @Prop({ mutable: true }) value?: any | null
-
+  @Prop({ mutable: true, reflect: true }) value?: any | null
   @Watch('value')
   valueChanged() {
     this.handleValueChange()
   }
 
   /**
-   * Defines the layout of the input
+   * Displays the radios vertically.
    */
-  @Prop() readonly tile: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly vertical: boolean = false
 
   /**
-   * Defines the color of the tile checkbox.
-   */
-  @Prop() readonly tileColor?: RadioTileColor
-
-  /**
-   * Defines the column size like the grid.
-   */
-  @Prop() readonly cols: RadioGroupColumns = 1
-
-  /**
-   * Defines the column size for tablet and bigger like the grid.
-   */
-  @Prop() readonly colsTablet: RadioGroupColumns = 1
-
-  /**
-   * Defines the column size for mobile and bigger like the grid.
-   */
-  @Prop() readonly colsMobile: RadioGroupColumns = 1
-
-  /**
-   * Emitted when a keyboard input occurred.
+   * Emitted when the input loses focus.
    */
   @Event() dsBlur!: EventEmitter<RadioGroupBlurDetail>
-
-  /**
-   * Emitted when the input has focus.
-   */
-  @Event() dsFocus!: EventEmitter<RadioGroupFocusDetail>
 
   /**
    * Emitted when the input value has changed.
@@ -169,17 +217,19 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
   @Event() dsChange!: EventEmitter<RadioGroupChangeDetail>
 
   /**
+   * Emitted when the input has focus.
+   */
+  @Event() dsFocus!: EventEmitter<RadioGroupFocusDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   connectedCallback() {
+    setupValidation(this)
     this.initialValue = this.value
     this.internals.setFormValue(this.value)
-    this.passDownAttributes()
-  }
-
-  componentWillUpdate() {
     this.passDownAttributes()
   }
 
@@ -187,8 +237,12 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
     this.handleValueChange()
   }
 
+  componentWillUpdate() {
+    this.passDownAttributes()
+  }
+
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -268,8 +322,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
         this.dsChange.emit(this.value)
         this.internals.setFormValue(this.value)
 
-        // Prevent browsers from jumping
-        // to the bottom of the screen
+        // Prevent browsers from jumping to the bottom of the screen
         ev.preventDefault()
       }
     }
@@ -294,6 +347,38 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
   async configChanged(state: DsConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
+  }
+
+  /**
+   * EVENT HANDLERS
+   * ------------------------------------------------------
+   */
+
+  private handleValueChange = async () => {
+    this.setRadioTabindex(this.value)
+    this.setRadioChecked()
+  }
+
+  private handleClick = (ev: Event) => {
+    const element = ev.target as HTMLAnchorElement
+    if (element.href) {
+      return
+    }
+
+    ev.preventDefault()
+
+    const selectedRadio = ev.target && (ev.target as HTMLElement).closest('ds-radio')
+    if (selectedRadio && !selectedRadio.disabled && !selectedRadio.readonly) {
+      const currentValue = this.value
+      const newValue = selectedRadio.value
+      if (newValue !== currentValue) {
+        this.value = newValue
+      } else if (this.allowEmptySelection) {
+        this.value = undefined
+      }
+      this.dsChange.emit(this.value)
+      this.internals.setFormValue(this.value)
+    }
   }
 
   /**
@@ -350,45 +435,8 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
     }
   }
 
-  /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
-
   private getRadios(): HTMLDsRadioElement[] {
     return Array.from(this.el.querySelectorAll('ds-radio'))
-  }
-
-  /**
-   * EVENT HANDLERS
-   * ------------------------------------------------------
-   */
-
-  private handleValueChange = async () => {
-    this.setRadioTabindex(this.value)
-    this.setRadioChecked()
-  }
-
-  private handleClick = (ev: Event) => {
-    const element = ev.target as HTMLAnchorElement
-    if (element.href) {
-      return
-    }
-
-    ev.preventDefault()
-
-    const selectedRadio = ev.target && (ev.target as HTMLElement).closest('ds-radio')
-    if (selectedRadio && !selectedRadio.disabled && !selectedRadio.readonly) {
-      const currentValue = this.value
-      const newValue = selectedRadio.value
-      if (newValue !== currentValue) {
-        this.value = newValue
-      } else if (this.allowEmptySelection) {
-        this.value = undefined
-      }
-      this.dsChange.emit(this.value)
-      this.internals.setFormValue(this.value)
-    }
   }
 
   /**

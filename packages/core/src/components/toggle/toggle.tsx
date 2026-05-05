@@ -1,8 +1,25 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, inheritAttributes, type Attributes } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  inheritAttributes,
+  type Attributes,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsComponentInterface } from '@global'
-import { CheckboxLabelPosition, CheckboxGroupColumns } from '../checkbox/checkbox.interfaces'
-import { ToggleTileColor, ToggleFocusDetail, ToggleBlurDetail, ToggleChangeDetail } from './toggle.interfaces'
+import {
+  ToggleTileColor,
+  ToggleLabelPosition,
+  ToggleGroupColumns,
+  TOGGLE_TILE_COLORS,
+  TOGGLE_LABEL_POSITIONS,
+  TOGGLE_GROUP_COLUMNS,
+  ToggleFocusDetail,
+  ToggleBlurDetail,
+  ToggleChangeDetail,
+} from './toggle.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
 /**
@@ -10,8 +27,9 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The toggle label content.
  * @slot helper - The helper or hint text below the toggle.
- * @part toggle - The native HTML input element.
- * @part container - The toggle and label wrapper.
+ * @part label - The label element wrapping the toggle.
+ * @part input - The native HTML checkbox input element.
+ * @part slot - The content slot wrapper.
  */
 @Component({
   tag: 'ds-toggle',
@@ -23,8 +41,7 @@ export class Toggle implements DsComponentInterface {
   inputId = `ds-tg-${toggleIds++}`
   private inheritAttributes: Attributes = {}
   private nativeInput?: HTMLInputElement
-
-  @Element() el!: HTMLStencilElement
+  private initialValue = false
 
   log!: LogInstance
   @Logger('toggle')
@@ -32,6 +49,7 @@ export class Toggle implements DsComponentInterface {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
   @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
@@ -42,19 +60,102 @@ export class Toggle implements DsComponentInterface {
    */
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly autoInvalidOff: boolean = false
+
+  /**
+   * If `true`, the toggle is selected.
+   */
+  @Prop({ mutable: true, reflect: true })
+  @ValidateEmptyOrType('boolean')
+  checked = false
+
+  /**
+   * Defines the color of the tile toggle.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TOGGLE_TILE_COLORS)
+  readonly color?: ToggleTileColor
+
+  /**
+   * @internal
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  readonly cols: ToggleGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  readonly colsMobile: ToggleGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  readonly colsTablet: ToggleGroupColumns = 1
+
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * Label of the toggle item.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Defines the position of the label, either before or after the toggle input. Default is after.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TOGGLE_LABEL_POSITIONS)
+  readonly labelPosition: ToggleLabelPosition = 'right'
+
+  /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() readonly name: string = this.inputId
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
 
   /**
-   * Label of the radio item.
+   * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly label = ''
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
 
   /**
-   * Defines the position of the label, either before or after the radio input. Default is after.
+   * If `true`, the user must fill in a value before submitting a form.
    */
-  @Prop() readonly labelPosition: CheckboxLabelPosition = 'right'
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = false
+
+  /**
+   * Defines the layout of the input
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
    * A DOMString representing the value of the toggle. This is not displayed on the
@@ -62,67 +163,6 @@ export class Toggle implements DsComponentInterface {
    * submitted with the toggle's name.
    */
   @Prop() readonly value: string | number = 'on'
-
-  /**
-   * If `true`, the toggle is selected.
-   */
-  @Prop({ mutable: true }) checked = false
-  private initialValue = false
-
-  /**
-   * If `true` the element can not mutated, meaning the user can not edit the control.
-   */
-  @Prop() readonly readonly: boolean = false
-
-  /**
-   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-   */
-  @Prop() readonly disabled: boolean = false
-
-  /**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() readonly required: boolean = false
-
-  /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
-   */
-  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
-
-  /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop() readonly invalid: boolean = false
-
-  /**
-   * Defines the color of the tile toggle.
-   */
-  @Prop() readonly color?: ToggleTileColor
-
-  /**
-   * Defines the layout of the input
-   */
-  @Prop() readonly tile: boolean = false
-
-  /**
-   * @internal
-   */
-  @Prop() readonly cols: CheckboxGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop() readonly colsTablet: CheckboxGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop() readonly colsMobile: CheckboxGroupColumns = 1
-
-  /**
-   * Emitted when the toggle has focus.
-   */
-  @Event() dsFocus!: EventEmitter<ToggleFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
@@ -135,11 +175,17 @@ export class Toggle implements DsComponentInterface {
   @Event() dsChange!: EventEmitter<ToggleChangeDetail>
 
   /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() dsFocus!: EventEmitter<ToggleFocusDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.initialValue = this.checked
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
   }
@@ -150,7 +196,7 @@ export class Toggle implements DsComponentInterface {
   }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -163,19 +209,15 @@ export class Toggle implements DsComponentInterface {
   }
 
   /**
-   * PUBLIC METHODS
-   * ------------------------------------------------------
-   */
-
-  /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
-
-  /**
    * EVENT HANDLERS
    * ------------------------------------------------------
    */
+
+  private handleBlur = (ev: FocusEvent) => {
+    if (this.disabled || this.readonly) return
+    this.focused = false
+    this.dsBlur.emit(ev)
+  }
 
   private handleChange = (ev: Event): void => {
     this.checked = (ev.target as HTMLInputElement).checked
@@ -187,12 +229,6 @@ export class Toggle implements DsComponentInterface {
     if (this.disabled || this.readonly) return
     this.focused = true
     this.dsFocus.emit(ev)
-  }
-
-  private handleBlur = (ev: FocusEvent) => {
-    if (this.disabled || this.readonly) return
-    this.focused = false
-    this.dsBlur.emit(ev)
   }
 
   /**

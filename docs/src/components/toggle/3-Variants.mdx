@@ -10,28 +10,30 @@ import * as ToggleStories from './toggle.stories'
 import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
 
 <Meta title="Components/Forms/Toggle/Variants/Overview" />
+
 <StoryHeading of={ToggleStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
-<BannerTabs
-  of={ToggleStories}
-  tabs={getToggleTabs('variants')}
-/>
+
+<BannerTabs of={ToggleStories} tabs={getToggleTabs('variants')} />
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ToggleStories.Disabled}></StoryHeading>
 
-Disabled toggle state for inactive options.
+Use `disabled` attribute to render a non-interactive toggle.
 
-<CanvasTabs />
+<CanvasTabs of={ToggleStories.Disabled} htmlOf={ToggleStories.DisabledHtml} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ToggleStories.Sizes}></StoryHeading>
+<StoryHeading of={ToggleStories.Invalid}></StoryHeading>
 
-Small and large toggle variants for different use cases.
+Use `invalid` attribute to indicate an error state. This is typically used in forms when the toggle's value fails validation.
 
-<CanvasTabs />
+<CanvasTabs of={ToggleStories.Invalid} htmlOf={ToggleStories.InvalidHtml} sourceState="shown" />
+
+
 
 <Footer />

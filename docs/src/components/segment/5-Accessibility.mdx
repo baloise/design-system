@@ -1,0 +1,98 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SegmentStories from './segment.stories'
+import { SEGMENT_DOC_CONFIG, getSegmentTabs } from './segment.doc-config'
+
+<Meta title="Components/Forms/Segment/Accessibility" />
+
+<Banner label={'Accessibility'} section={SEGMENT_DOC_CONFIG.section} color={SEGMENT_DOC_CONFIG.color} />
+<BannerTabs
+  of={SegmentStories}
+  tabs={getSegmentTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always Provide a Group Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set the <code>label</code> prop so the segment group has a visible and programmatic name. Screen readers announce the group label before reading individual options, giving users the context they need.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use Descriptive Option Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Write concise, self-explanatory labels for each <code>ds-segment-item</code>. Users should understand each choice without needing to read surrounding page content.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Add aria-label for Icon-Only Items',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using <code>icon-only</code>, always set the <code>label</code> prop on each <code>ds-segment-item</code>. The component automatically applies it as an <code>aria-label</code> and <code>title</code> so icon-only options remain accessible to screen reader and keyboard users.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use Invalid Text for Validation Errors',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When the segment is in an invalid state, always set <code>invalid-text</code> with a clear, actionable error message. The text is announced by screen readers and helps all users understand what must be corrected.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't Rely on Color Alone to Show State",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not use only a color change to communicate the selected, invalid, or disabled state. The component uses <code>aria-checked</code>, <code>aria-invalid</code>, and <code>aria-disabled</code> to expose state to assistive technologies alongside visual styling.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't Skip the Fieldset Wrapper in HTML-Only Mode",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When rendering the CSS-only variant, always wrap options in a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code>. Omitting these elements removes the group semantics that screen readers rely on to read the label before each radio input.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The segment component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Keyboard Navigation (2.1.1)** — Arrow keys cycle between options; Tab moves focus in and out of the group
+- **Focus Visible (2.4.7)** — A visible focus indicator is shown on the active option
+- **Name, Role, Value (4.1.2)** — `role="fieldset"`, `aria-checked`, `aria-invalid`, and `aria-disabled` are kept in sync with the component state
+- **Error Identification (3.3.1)** — Invalid state is communicated via `aria-invalid` and a visible `invalid-text` message
+- **Labels or Instructions (3.3.2)** — The `label` and `description` props expose a persistent group label and hint text
+
+## References
+
+- [MDN: `<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset) — groups related form controls with a shared label
+- [MDN: `<input type="radio">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio) — the native radio input used internally
+- [MDN: aria-checked](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked) — communicates the selected state
+- [MDN: aria-invalid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) — communicates the validation error state
+- [MDN: aria-disabled](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — communicates the disabled state without removing focusability
+
+<Footer />

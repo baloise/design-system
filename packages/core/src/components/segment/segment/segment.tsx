@@ -1,9 +1,18 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, stopEventBubbling, isDescendant, ListenToResize } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  stopEventBubbling,
+  isDescendant,
+  ListenToResize,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { SegmentItemInterface } from '../segment-item.type'
-import { SegmentColor, SegmentBlurDetail, SegmentFocusDetail, SegmentChangeDetail } from '../segment-item.interfaces'
+import { SegmentBlurDetail, SegmentFocusDetail, SegmentChangeDetail } from '../segment-item.interfaces'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
 /**
@@ -19,10 +28,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
   formAssociated: true,
 })
 export class Segment implements DsComponentInterface, Omit<FieldInterface, 'color'> {
-  private initialValue?: any | null
   inputId = `ds-sg-${segmentIds++}`
-
-  @Element() el!: HTMLStencilElement
 
   log!: LogInstance
   @Logger('segment')
@@ -30,13 +36,15 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+  @AttachInternals() internals!: ElementInternals
+
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
   @State() items: SegmentItemInterface[] = []
   @State() autoVertical = false
 
-  @AttachInternals() internals!: ElementInternals
-
+  private initialValue?: any | null
   private resizeObserver?: ResizeObserver
   // Natural (horizontal) offsetWidth of #group, stored just before going auto-vertical.
   // Used to decide when there is enough room to go back to horizontal layout.
@@ -48,84 +56,107 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    */
 
   /**
-   * The name of the segment items in the group. Child items will inherit the name.
+   * If `true`, the segment items can be deselected.
    */
-  @Prop() readonly name: string = this.inputId
-
-  /**
-   * The label of the input, which is displayed above the input field.
-   */
-  @Prop() readonly label: string = ''
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly allowEmptySelection: boolean = false
 
   /**
    * The description of the input, which is displayed below the input field.
    */
-  @Prop() readonly description: string = ''
-
-  /**
-   * Defines the color of the input. The default value is `primary`.
-   */
-  @Prop() readonly color: SegmentColor = ''
-
-  /**
-   * Shows a loading indicator at the end of the input and replaces the end slot content.
-   */
-  @Prop() readonly loading: boolean = false
-
-  /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop() readonly invalid: boolean | undefined
-
-  /**
-   * The text to display when the input is in an invalid state.
-   */
-  @Prop() readonly invalidText: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled: boolean | undefined
-
-  /**
-   * If `true` the element can not mutated, meaning the user can not edit the control.
-   */
-  @Prop() readonly readonly: boolean | undefined
-
-  /**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() readonly required: boolean = true
-
-  /**
-   * If `true`, segment items expand to fill the available width equally.
-   */
-  @Prop() readonly wide: boolean = false
-
-  /**
-   * Displays the segment items vertically
-   */
-  @Prop() readonly vertical: boolean = false
-
-  /**
-   * Displays the segment items vertically on mobile
-   */
-  @Prop() readonly verticalOnMobile: boolean = false
-
-  /**
-   * If `true`, the segment items can be deselected.
-   */
-  @Prop() readonly allowEmptySelection: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * If `true`, the segment only shows icons without labels.
    */
-  @Prop() readonly iconOnly: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly iconOnly: boolean = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * The text to display when the input is in an invalid state.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly invalidText: string = ''
+
+  /**
+   * The label of the input, which is displayed above the input field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Shows a loading indicator at the end of the input and replaces the end slot content.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly loading: boolean = false
+
+  /**
+   * The name of the segment items in the group. Child items will inherit the name.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
 
   /**
    * The value of the segment group.
    */
-  @Prop({ mutable: true }) value?: any | null
+  @Prop({ mutable: true, reflect: true }) value?: any | null
+
+  /**
+   * Displays the segment items vertically
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly vertical: boolean = false
+
+  /**
+   * Displays the segment items vertically on mobile
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly verticalOnMobile: boolean = false
+
+  /**
+   * If `true`, segment items expand to fill the available width equally.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly wide: boolean = false
 
   /**
    * Emitted when a keyboard input occurred.
@@ -133,14 +164,14 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   @Event() dsBlur!: EventEmitter<SegmentBlurDetail>
 
   /**
-   * Emitted when the input has focus.
-   */
-  @Event() dsFocus!: EventEmitter<SegmentFocusDetail>
-
-  /**
    * Emitted when the input value has changed.
    */
   @Event() dsChange!: EventEmitter<SegmentChangeDetail>
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() dsFocus!: EventEmitter<SegmentFocusDetail>
 
   /**
    * LIFECYCLE
@@ -148,6 +179,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    */
 
   connectedCallback() {
+    setupValidation(this)
     this.initialValue = this.value
     this.internals.setFormValue(this.value)
     this.resizeObserver = new ResizeObserver(() => {
@@ -170,7 +202,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -218,6 +250,34 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   @ListenToResize()
   async listenToResize(): Promise<void> {
     this.updateLayout()
+  }
+
+  /**
+   * EVENT HANDLERS
+   * ------------------------------------------------------
+   */
+
+  private handleInputChange = (itemValue: any) => {
+    if (this.disabled || this.readonly) return
+    this.value = itemValue
+    this.dsChange.emit(this.value)
+    this.internals.setFormValue(this.value)
+  }
+
+  // Native radio never fires "change" when clicking an already-checked item,
+  // so onClick is the only hook for deselection.
+  private handleInputClick = (ev: MouseEvent, itemValue: any) => {
+    if (!this.allowEmptySelection || this.disabled || this.readonly) return
+    if (this.value === itemValue) {
+      ev.preventDefault()
+      this.value = undefined
+      this.dsChange.emit(this.value)
+      this.internals.setFormValue(null)
+    }
+  }
+
+  private handleSlotChange = () => {
+    this.readItemsFromSlot()
   }
 
   /**
@@ -289,34 +349,6 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
         this.autoVertical = true
       }
     }
-  }
-
-  /**
-   * EVENT HANDLERS
-   * ------------------------------------------------------
-   */
-
-  private handleInputChange = (itemValue: any) => {
-    if (this.disabled || this.readonly) return
-    this.value = itemValue
-    this.dsChange.emit(this.value)
-    this.internals.setFormValue(this.value)
-  }
-
-  // Native radio never fires "change" when clicking an already-checked item,
-  // so onClick is the only hook for deselection.
-  private handleInputClick = (ev: MouseEvent, itemValue: any) => {
-    if (!this.allowEmptySelection || this.disabled || this.readonly) return
-    if (this.value === itemValue) {
-      ev.preventDefault()
-      this.value = undefined
-      this.dsChange.emit(this.value)
-      this.internals.setFormValue(null)
-    }
-  }
-
-  private handleSlotChange = () => {
-    this.readItemsFromSlot()
   }
 
   /**

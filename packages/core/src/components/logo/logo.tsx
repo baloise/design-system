@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import {
@@ -10,10 +10,13 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
 } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
-import { LogoBrand, LogoColor, LogoSize } from './logo.interfaces'
+import { LOGO_BRANDS, LOGO_COLORS, LOGO_SIZES, LogoBrand, LogoColor, LogoSize } from './logo.interfaces'
 
 type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) => AnimationItem
 
@@ -21,7 +24,7 @@ type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) =>
  * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
  *
  * @slot - Optional label or caption text.
- * @part logo - The logo SVG animation container element.
+ * @part animated - The animated logo container element.
  */
 @Component({
   tag: 'ds-logo',
@@ -29,10 +32,6 @@ type LogoAnimationFunction = (el: HTMLElement, color: string, loop?: boolean) =>
   shadow: true,
 })
 export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfigObserver {
-  private animationItem!: AnimationItem
-  private animatedLogoElement!: HTMLDivElement
-  private animationFunction?: LogoAnimationFunction
-
   log!: LogInstance
 
   @Logger('logo')
@@ -46,34 +45,21 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
   @State() doesConfigAllowAnimation = true
   @State() configBrand: LogoBrand = 'baloise'
 
+  private animationItem!: AnimationItem
+  private animatedLogoElement!: HTMLDivElement
+  private animationFunction?: LogoAnimationFunction
+
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
 
   /**
-   * Defines the color of the logo.
-   */
-  @Prop({ reflect: true }) readonly color: LogoColor = 'primary'
-
-  /**
-   * Size of the logo svg
-   */
-  @Prop({ mutable: true, reflect: true }) size: LogoSize = ''
-  @Watch('size')
-  sizeChanged(newValue: LogoSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
-  }
-
-  /**
-   * Defines the brand of the logo. Default is 'baloise'.
-   */
-  @Prop({ reflect: true }) readonly brand: LogoBrand = ''
-
-  /**
    * Defines if the animation should be active
    */
-  @Prop({ reflect: true }) readonly animated: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly animated: boolean = false
   @Watch('animated')
   animatedChanged() {
     if (!this.isAnimated) {
@@ -82,13 +68,43 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
   }
 
   /**
+   * Defines the brand of the logo. Default is 'baloise'.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...LOGO_BRANDS)
+  readonly brand: LogoBrand = ''
+
+  /**
+   * Defines the color of the logo.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...LOGO_COLORS)
+  readonly color: LogoColor = 'primary'
+
+  /**
+   * Size of the logo svg
+   */
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...LOGO_SIZES)
+  size: LogoSize = ''
+  @Watch('size')
+  sizeChanged(newValue: LogoSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+  }
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   connectedCallback() {
+    setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
     this.animatedChanged()
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   componentDidUpdate() {
@@ -106,7 +122,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
   }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -115,8 +131,12 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
     this.isTouch = breakpoints.touch
   }
 
+  /**
+   * @internal define config for the component
+   */
+  @Method()
   @ListenToConfig()
-  configChanged(state: DsConfigState): void {
+  async configChanged(state: DsConfigState): Promise<void> {
     this.doesConfigAllowAnimation = state.animated
     this.configBrand = state.brand
   }

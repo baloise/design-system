@@ -1,21 +1,11 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Code,
-  Footer,
-  Lead,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
 import * as CheckboxStories from './checkbox.stories'
 import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
 
 <Meta title="Components/Forms/Checkbox/Usage" />
 <Banner label={'Usage'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
-<BannerTabs
-  of={CheckboxStories}
-  tabs={getCheckboxTabs('usage')}
-/>
+<BannerTabs of={CheckboxStories} tabs={getCheckboxTabs('usage')} />
 
 ## When to Use
 
@@ -44,34 +34,24 @@ Always provide clear, descriptive labels for each checkbox. Never rely on ambigu
     {
       type: 'correct',
       title: 'Correct: Clear, descriptive labels',
+      contentIsLeftAligned: true,
       content: (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <label>
-            <ds-checkbox></ds-checkbox>
-            <span>Send me promotional emails</span>
-          </label>
-          <label>
-            <ds-checkbox></ds-checkbox>
-            <span>I agree to the terms and conditions</span>
-          </label>
-        </div>
+        <ds-checkbox-group vertical>
+          <ds-checkbox label="Send me promotional emails"></ds-checkbox>
+          <ds-checkbox label="I agree to the terms and conditions"></ds-checkbox>
+        </ds-checkbox-group>
       ),
       description: 'Users understand what each option controls',
     },
     {
       type: 'incorrect',
       title: 'Incorrect: Ambiguous labels',
+      contentIsLeftAligned: true,
       content: (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <label>
-            <ds-checkbox></ds-checkbox>
-            <span>Yes</span>
-          </label>
-          <label>
-            <ds-checkbox></ds-checkbox>
-            <span>Agree</span>
-          </label>
-        </div>
+        <ds-checkbox-group vertical>
+          <ds-checkbox>Yes</ds-checkbox>
+          <ds-checkbox>Agree</ds-checkbox>
+        </ds-checkbox-group>
       ),
       description: 'Unclear what the checkboxes are for',
     },
@@ -87,40 +67,31 @@ Group related checkboxes together for better organization and understanding.
     {
       type: 'correct',
       title: 'Correct: Grouped checkboxes',
+      contentIsLeftAligned:true,
       content: (
-        <fieldset>
-          <legend>Select your interests</legend>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <label>
-              <ds-checkbox></ds-checkbox>
-              <span>Technology</span>
-            </label>
-            <label>
-              <ds-checkbox></ds-checkbox>
-              <span>Design</span>
-            </label>
-            <label>
-              <ds-checkbox></ds-checkbox>
-              <span>Business</span>
-            </label>
-          </div>
-        </fieldset>
+        <ds-checkbox-group label="Select your interests">
+          <ds-checkbox>Technology</ds-checkbox>
+          <ds-checkbox>Design</ds-checkbox>
+          <ds-checkbox>Business</ds-checkbox>
+        </ds-checkbox-group>
       ),
       description: 'Clear group purpose and organized options',
     },
     {
       type: 'incorrect',
       title: 'Incorrect: Ungrouped checkboxes',
+      contentIsLeftAligned:true,
       content: (
-        <div>
-          <label><ds-checkbox></ds-checkbox> Technology</label>
-          <label><ds-checkbox></ds-checkbox> Design</label>
-          <label><ds-checkbox></ds-checkbox> Business</label>
-        </div>
+        <ds-checkbox-group>
+          <ds-checkbox>Technology</ds-checkbox>
+          <ds-checkbox>Design</ds-checkbox>
+          <ds-checkbox>Business</ds-checkbox>
+        </ds-checkbox-group>
       ),
       description: 'No indication of relationship between options',
     },
-  ]}
+
+]}
 />
 
 <Footer />

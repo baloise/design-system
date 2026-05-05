@@ -1,21 +1,11 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Code,
-  Footer,
-  Lead,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
 import * as RadioStories from './radio.stories'
 import { RADIO_DOC_CONFIG, getRadioTabs } from './radio.doc-config'
 
 <Meta title="Components/Forms/Radio/Usage" />
 <Banner label={'Usage'} section={RADIO_DOC_CONFIG.section} color={RADIO_DOC_CONFIG.color} />
-<BannerTabs
-  of={RadioStories}
-  tabs={getRadioTabs('usage')}
-/>
+<BannerTabs of={RadioStories} tabs={getRadioTabs('usage')} />
 
 ## When to Use
 
@@ -43,74 +33,29 @@ Always provide a group label and individual option labels. Never rely on values 
     {
       type: 'correct',
       title: 'Correct: Clear group and option labels',
+      contentIsLeftAligned: true,
       content: (
-        <fieldset>
-          <legend>Delivery Speed</legend>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <label>
-              <ds-radio name="speed" value="standard"></ds-radio>
-              Standard (5-7 business days)
-            </label>
-            <label>
-              <ds-radio name="speed" value="express"></ds-radio>
-              Express (2-3 business days)
-            </label>
-          </div>
-        </fieldset>
+        <ds-radio-group name="delivery-speed" label="Delivery Speed" vertical>
+          <ds-radio value="standard">Standard (5-7 business days)</ds-radio>
+          <ds-radio value="express">Express (2-3 business days)</ds-radio>
+        </ds-radio-group>
       ),
       description: 'Clear intent and options',
     },
     {
       type: 'incorrect',
       title: 'Incorrect: No group label',
+      contentIsLeftAligned: true,
       content: (
-        <div>
-          <label>
-            <ds-radio name="option" value="1"></ds-radio>
-            Option 1
-          </label>
-          <label>
-            <ds-radio name="option" value="2"></ds-radio>
-            Option 2
-          </label>
-        </div>
+        <ds-radio-group name="delivery-speed">
+          <ds-radio value="1">Option 1</ds-radio>
+          <ds-radio value="2">Option 2</ds-radio>
+        </ds-radio-group>
       ),
       description: 'Unclear what the choice is about',
     },
   ]}
 />
 
-### Radio Button Size and Spacing
-
-Ensure radio buttons are large enough and have sufficient spacing for easy selection.
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Adequate spacing and size',
-      content: (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <ds-radio name="option"></ds-radio>
-            <span>Option with good spacing and size</span>
-          </label>
-        </div>
-      ),
-      description: 'Easy to click and select',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Too small and cramped',
-      content: (
-        <div>
-          <label><ds-radio name="opt"></ds-radio> Opt</label>
-          <label><ds-radio name="opt"></ds-radio> Opt</label>
-        </div>
-      ),
-      description: 'Difficult to interact with',
-    },
-  ]}
-/>
 
 <Footer />

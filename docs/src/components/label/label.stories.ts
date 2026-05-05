@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { createCssMappings, cssClasses, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { createCssMappings, cssClasses, StoryFactory, withComponentControls, withRender, props } from '../../utils'
 
 type Args = JSX.DsLabel & { slot: string }
 
@@ -43,12 +43,20 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
+export const BasicHtml = Story({
   args: {
     required: undefined,
   },
 })
-Basic.storyName = '🌍 Basic'
+BasicHtml.storyName = '🌍 Basic'
+
+export const Basic = Story({
+  args: {
+    required: undefined,
+  },
+  ...withRender(({ slot, ...args }) => `<ds-label ${props(args)}>${slot}</ds-label>`),
+})
+Basic.storyName = '🧩 Basic'
 
 export const RequiredAndOptional = Story({
   args: {
@@ -77,16 +85,3 @@ export const Sizes = Story({
   ),
 })
 Sizes.storyName = '🌍 Sizes'
-
-export const FieldLabel = Story({
-  ...withRender(
-    () => `<ds-field>
-    <ds-field-label required="true">Field Label</ds-field-label>
-    <ds-field-control>
-      <ds-input name="my-input" placeholder="Placeholder"></ds-input>
-    </ds-field-control>
-    <ds-field-message>Field Message</ds-field-message>
-  </ds-field>`,
-  ),
-})
-FieldLabel.storyName = '🧩 Field Label'

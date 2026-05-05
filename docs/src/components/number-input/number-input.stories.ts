@@ -8,7 +8,11 @@ const tag = 'ds-number-input'
 
 const meta: Meta<Args> = {
   title: 'Components/Forms/Number Input/Variants',
-  args: {},
+  args: {
+    label: 'Age',
+    placeholder: '42',
+    description: 'Age is used to ....',
+  },
   argTypes: {
     ...withComponentControls({ tag }),
   },
@@ -24,14 +28,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `
-<ds-number-input label="Label" description="Description" placeholder="0"></ds-number-input>
-<ds-number-input label="Label" description="Description" placeholder="0" required="false"></ds-number-input>
-`,
-  ),
-})
+export const Basic = Story()
 Basic.storyName = '🧩 Basic'
 
 export const Decimal = Story({

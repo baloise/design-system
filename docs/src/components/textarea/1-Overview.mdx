@@ -2,6 +2,7 @@ import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  CanvasTabs,
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
@@ -18,7 +19,7 @@ import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
 
 <ComponentLead component="textarea" />
 
-<Canvas of={TextareaStories.Basic} sourceState="shown" />
+<CanvasTabs of={TextareaStories.Basic} htmlOf={TextareaStories.BasicHtml} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

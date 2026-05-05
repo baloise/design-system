@@ -1,45 +1,80 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  CanvasTabs,
-  Footer,
-  StoryHeading,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as CheckboxStories from './checkbox.stories'
 import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
 
 <Meta title="Components/Forms/Checkbox/Variants/Overview" />
+
 <StoryHeading of={CheckboxStories.Basic} hidden></StoryHeading>
+
 <Banner label={'Variants'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
-<BannerTabs
-  of={CheckboxStories}
-  tabs={getCheckboxTabs('variants')}
-/>
+
+<BannerTabs of={CheckboxStories} tabs={getCheckboxTabs('variants')} />
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CheckboxStories.States}></StoryHeading>
-
-Checkboxes support checked, unchecked, and indeterminate states.
-
-<CanvasTabs />
-
-{/* ------------------------------------------------------ */}
-
 <StoryHeading of={CheckboxStories.Disabled}></StoryHeading>
 
-Checkboxes can be disabled to prevent interaction when selection is not available.
+Use `disabled` state to indicate that the checkbox is not interactive and cannot be selected or deselected.
 
-<CanvasTabs />
+<CanvasTabs htmlOf={CheckboxStories.DisabledHtml} of={CheckboxStories.Disabled} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CheckboxStories.Sizes}></StoryHeading>
+<StoryHeading of={CheckboxStories.Invalid}></StoryHeading>
 
-Control checkbox size with size prop.
+Use `invalid` state to indicate that the checkbox selection is not valid, often accompanied by an error message to guide users in correcting their input.
 
-<CanvasTabs />
+<CanvasTabs htmlOf={CheckboxStories.InvalidHtml} of={CheckboxStories.Invalid} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Field}></StoryHeading>
+
+With `control` the group of checkboxes can be treated as a single field, allowing for better organization and management of related options.
+
+<CanvasTabs htmlOf={CheckboxStories.FieldHtml} of={CheckboxStories.Field} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.FieldVertical}></StoryHeading>
+
+Align checkboxes vertically to create a clear and organized layout, especially when dealing with multiple
+options or when space allows for a more traditional form design.
+
+<CanvasTabs htmlOf={CheckboxStories.FieldVerticalHtml} of={CheckboxStories.FieldVertical} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Form}></StoryHeading>
+
+<CanvasTabs htmlOf={CheckboxStories.FormHtml} of={CheckboxStories.Form} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileBasic}></StoryHeading>
+
+<Canvas of={CheckboxStories.TileBasic} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileColumns}></StoryHeading>
+
+<Canvas of={CheckboxStories.TileColumns} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileStack}></StoryHeading>
+
+<Canvas of={CheckboxStories.TileStack} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.TileStackCentered}></StoryHeading>
+
+<Canvas of={CheckboxStories.TileStackCentered} />
+
+{/* ------------------------------------------------------ */}
 
 <Footer />

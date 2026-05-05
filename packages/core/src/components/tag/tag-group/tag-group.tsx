@@ -3,6 +3,11 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import { Logger, type LogInstance } from '@utils'
 import { DsComponentInterface } from '@global'
 
+/**
+ * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
+ *
+ * @slot - The ds-tag elements to display inside the group.
+ */
 @Component({
   tag: 'ds-tag-group',
   styleUrl: 'tag-group.host.scss',
@@ -17,6 +22,11 @@ export class TagGroup implements DsComponentInterface {
   }
 
   @Element() el!: HTMLStencilElement
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     return (

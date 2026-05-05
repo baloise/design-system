@@ -8,24 +8,32 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --textarea-color-background: Background color of the textarea field.
- * @prop --textarea-color-border: Border color of the textarea field.
- * @prop --textarea-color-text: Text color inside the textarea.
- * @prop --textarea-color-placeholder: Placeholder text color.
- * @prop --textarea-font-size: Font size of the textarea text.
- * @prop --textarea-font-family: Font family of the textarea text.
- * @prop --textarea-line-height: Line height of the textarea text.
- * @prop --textarea-border-radius: Border radius of the textarea field.
- * @prop --textarea-border-width: Border width of the textarea field.
- * @prop --textarea-padding-inline: Horizontal padding inside the textarea.
- * @prop --textarea-padding-block: Vertical padding inside the textarea.
- * @prop --textarea-min-height: Minimum height of the textarea field.
- * @prop --textarea-label-color: Text color of the label.
- * @prop --textarea-label-font-size: Font size of the label.
- * @prop --textarea-label-font-weight: Font weight of the label.
- * @prop --textarea-description-color: Text color of the description text.
- * @prop --textarea-description-font-size: Font size of the description text.
- * @prop --textarea-error-color: Color of error messages and invalid state.
+ * @prop --input-color: Text color inside the textarea field.
+ * @prop --input-placeholder: Placeholder text color.
+ * @prop --input-family: Font family of the textarea text.
+ * @prop --input-weight: Font weight of the textarea text.
+ * @prop --input-size: Font size of the textarea text.
+ * @prop --input-line-height: Line height of the textarea text.
+ * @prop --input-container-background: Background color of the textarea container.
+ * @prop --input-container-border-color: Border color of the textarea container.
+ * @prop --input-container-border-width: Border width of the textarea container.
+ * @prop --input-container-radius: Border radius of the textarea container.
+ * @prop --input-container-hover-background: Container background color on hover.
+ * @prop --input-container-active-background: Container background color when active.
+ * @prop --input-container-focus-background: Container background color when focused.
+ * @prop --input-container-hover-border: Container border color on hover.
+ * @prop --input-container-active-border: Container border color when active.
+ * @prop --input-container-focus-border: Container border color when focused.
+ * @prop --input-label-color: Text color of the label.
+ * @prop --input-label-family: Font family of the label.
+ * @prop --input-label-weight: Font weight of the label.
+ * @prop --input-label-size: Font size of the label.
+ * @prop --input-label-line-height: Line height of the label.
+ * @prop --input-description-color: Text color of the description.
+ * @prop --input-description-family: Font family of the description.
+ * @prop --input-description-weight: Font weight of the description.
+ * @prop --input-description-size: Font size of the description.
+ * @prop --input-description-line-height: Line height of the description.
  */
 
 :host {

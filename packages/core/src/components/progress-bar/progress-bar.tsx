@@ -9,17 +9,24 @@ import {
   WindowResizeObserver,
   ListenToWindowResize,
   initialBreakpoints,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
 } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import type { DsComponentInterface, DsConfigObserver, DsConfigState } from '@global'
-import { ProgressBarBackground, ProgressBarColor } from './progress-bar.interfaces'
+import { ListenToConfig, type DsComponentInterface, type DsConfigObserver, type DsConfigState } from '@global'
+import {
+  PROGRESS_BAR_BACKGROUNDS,
+  PROGRESS_BAR_COLORS,
+  ProgressBarBackground,
+  ProgressBarColor,
+} from './progress-bar.interfaces'
 
 /**
  * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
  *
  * @slot - Optional label or caption text.
- * @part progress-bar - The progress bar container element.
- * @part indicator - The filled progress indicator element.
+ * @part line - The filled progress indicator element.
  */
 @Component({
   tag: 'ds-progress-bar',
@@ -27,12 +34,6 @@ import { ProgressBarBackground, ProgressBarColor } from './progress-bar.interfac
   shadow: true,
 })
 export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBreakpointObserver, WindowResizeObserver {
-  private animated = true
-  private lineEl?: HTMLDivElement
-  private isTouch = initialBreakpoints.touch // need this part to improve a none side effect import
-
-  @Element() el!: HTMLStencilElement
-
   log!: LogInstance
 
   @Logger('progress-bar')
@@ -40,37 +41,57 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+
+  private animated = true
+  private lineEl?: HTMLDivElement
+  private isTouch = initialBreakpoints.touch
+
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
 
   /**
-   * The value of the bar in percentage. So min is 0 and 100 would be the max value.
-   */
-  @Prop() readonly value: number = 0
-
-  /**
    * The background color
    */
-  @Prop() readonly background: ProgressBarBackground = 'dark'
+  @Prop()
+  @ValidateEmptyOrOneOf(...PROGRESS_BAR_BACKGROUNDS)
+  readonly background: ProgressBarBackground = 'dark'
 
   /**
    * The progress bar color
    */
-  @Prop() readonly color: ProgressBarColor = 'primary'
+  @Prop()
+  @ValidateEmptyOrOneOf(...PROGRESS_BAR_COLORS)
+  readonly color: ProgressBarColor = 'primary'
+
+  /**
+   * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('number')
+  readonly value: number = 0
 
   /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
+  connectedCallback() {
+    setupValidation(this)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   componentDidRender(): void {
     this.updateProgress()
   }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -84,7 +105,11 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
     this.updateProgress()
   }
 
+  /**
+   * @internal define config for the component
+   */
   @Method()
+  @ListenToConfig()
   async configChanged(state: DsConfigState) {
     this.animated = state.animated
   }

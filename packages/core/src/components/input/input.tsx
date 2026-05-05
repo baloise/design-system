@@ -43,7 +43,6 @@ import {
 /**
  * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
  *
- * @slot - The input field content and surrounding elements.
  * @part input - The native HTML input element.
  * @part prefix - The prefix wrapper (if used).
  * @part suffix - The suffix wrapper (if used).

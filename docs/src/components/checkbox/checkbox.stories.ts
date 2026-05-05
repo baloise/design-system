@@ -27,25 +27,15 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `
-<ds-checkbox name="basic" value="1">Unchecked</ds-checkbox>
-<ds-checkbox name="basic" value="2" checked>Checked</ds-checkbox>`,
-  ),
-})
+export const Basic = Story()
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
   ...withRender(
-    () => `
+    ({ slot }) => `
 <label class="checkbox">
   <input type="checkbox" />
-  Unchecked
-</label>
-<label class="checkbox">
-  <input type="checkbox" checked />
-  Checked
+  ${slot}
 </label>`,
   ),
 })

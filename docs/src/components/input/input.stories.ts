@@ -8,7 +8,11 @@ const tag = 'ds-input'
 
 const meta: Meta<Args> = {
   title: 'Components/Forms/Input/Variants',
-  args: {},
+  args: {
+    label: 'Label',
+    placeholder: 'Placeholder',
+    description: 'Description',
+  },
   argTypes: {
     ...withComponentControls({ tag }),
   },
@@ -24,14 +28,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `
-<ds-input label="Label" description="Description" placeholder="Enter a text"></ds-input>
-<ds-input label="Label" description="Description" placeholder="Enter a text" required="false"></ds-input>
-`,
-  ),
-})
+export const Basic = Story()
 Basic.storyName = `🧩 Basic`
 
 export const BasicHtml = Story({
@@ -40,7 +37,7 @@ export const BasicHtml = Story({
 <div class="field">
   <label class="label" for="input-basic">Label</label>
   <div class="control">
-    <input id="input-basic" class="input" placeholder="Enter a text" aria-describedby="help-basic" />
+    <input id="input-basic" class="input" placeholder="Placeholder" aria-describedby="help-basic" />
   </div>
   <p id="help-basic" class="help">Description</p>
 </div>
@@ -134,7 +131,6 @@ export const Loading = Story({
   ...withRender(
     () => `
 <ds-input label="Label" loading></ds-input>
-<ds-input label="Label" loading disabled></ds-input>
 `,
   ),
 })
@@ -150,15 +146,6 @@ export const LoadingHtml = Story({
     <ds-spinner size="sm" variation="circle"></ds-spinner>
   </div>
   <p id="help-loading-1" class="help"></p>
-</div>
-
-<div class="field is-disabled">
-  <label class="label" for="input-loading-2">Name</label>
-  <div class="control">
-    <input id="input-loading-2" class="input" aria-describedby="help-loading-2" />
-    <ds-spinner size="sm" variation="circle"></ds-spinner>
-  </div>
-  <p id="help-loading-2" class="help"></p>
 </div>
 `,
   ),

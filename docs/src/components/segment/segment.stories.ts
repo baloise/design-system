@@ -8,6 +8,13 @@ const tag = 'ds-segment'
 
 const meta: Meta<Args> = {
   title: 'Components/Forms/Segment/Variants',
+  args: {
+    name: 'basic',
+    value: 'apple',
+    label: 'Fruits',
+    description: 'Choose your favorite fruit',
+    allowEmptySelection: true,
+  },
   argTypes: {
     ...withComponentControls({ tag }),
   },
@@ -29,21 +36,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `
-<ds-segment
-  name="basic"
-  value="apple"
-  label="Fruits"
-  description="Choose your favorite fruit"
-  allow-empty-selection
->
-  <ds-segment-item value="apple" label="Apple"></ds-segment-item>
-  <ds-segment-item value="strawberry" label="Strawberry"></ds-segment-item>
-</ds-segment>`,
-  ),
-})
+export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({

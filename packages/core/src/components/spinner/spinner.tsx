@@ -1,16 +1,31 @@
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { raf, rOnLoad, Logger, type LogInstance } from '@utils'
+import {
+  raf,
+  rOnLoad,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsConfigObserver, DsConfigState, defaultConfig, ListenToConfig, DsComponentInterface } from '@global'
-import { SpinnerColor, SpinnerSize, SpinnerVariation } from './spinner.interfaces'
+import {
+  SPINNER_COLORS,
+  SPINNER_SIZES,
+  SPINNER_VARIATIONS,
+  SpinnerColor,
+  SpinnerSize,
+  SpinnerVariation,
+} from './spinner.interfaces'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
 /**
  * Spinner displays an animated loading indicator with customizable color, size, and variation.
  *
- * @part spinner - The spinner animation container element.
+ * @part inner - The spinner animation container element.
  */
 @Component({
   tag: 'ds-spinner',
@@ -18,13 +33,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
   shadow: true,
 })
 export class Spinner implements DsComponentInterface, DsConfigObserver {
-  private animationItem!: AnimationItem
-  private animationFunction?: SpinnerAnimationFunction
-  private currentRaf: number | undefined
-
   log!: LogInstance
-
-  @State() animated = defaultConfig.animated
 
   @Logger('spinner')
   createLogger(log: LogInstance) {
@@ -32,6 +41,12 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   @Element() el!: HTMLStencilElement
+
+  @State() animated = defaultConfig.animated
+
+  private animationItem!: AnimationItem
+  private animationFunction?: SpinnerAnimationFunction
+  private currentRaf: number | undefined
   private innerEl: HTMLDivElement | undefined
 
   /**
@@ -40,14 +55,18 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    */
 
   /**
-   * If `true` the component can be used on dark background
+   * **Deprecated:** Use inverted="true" for white spinner instead.
    */
-  @Prop({ reflect: true }) readonly inverted: boolean = false
+  @Prop()
+  @ValidateEmptyOrOneOf(...SPINNER_COLORS)
+  readonly color: SpinnerColor = 'blue'
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
-  @Prop({ reflect: true }) readonly deactivated: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly deactivated: boolean = false
   @Watch('deactivated')
   deactivatedChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue) {
@@ -60,14 +79,25 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * **Deprecated:** Use inverted="true" for white spinner instead.
+   * If `true` the component can be used on dark background
    */
-  @Prop({ reflect: true }) readonly color: SpinnerColor = 'blue'
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
+
+  /**
+   * Defines the size of the spinner. If `sm` the spinner is smaller.
+   */
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...SPINNER_SIZES)
+  size: SpinnerSize = ''
 
   /**
    * **Deprecated:** Use size="sm" instead.
    */
-  @Prop() readonly small: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly small: boolean = false
   @Watch('small')
   smallChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue && newValue === true) {
@@ -76,14 +106,11 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * Defines the size of the spinner. If `sm` the spinner is smaller.
-   */
-  @Prop({ reflect: true, mutable: true }) size: SpinnerSize = ''
-
-  /**
    * Defines the look of the spinner
    */
-  @Prop({ reflect: true }) readonly variation: SpinnerVariation = 'logo'
+  @Prop()
+  @ValidateEmptyOrOneOf(...SPINNER_VARIATIONS)
+  readonly variation: SpinnerVariation = 'logo'
   @Watch('variation')
   variationChanged(newValue: SpinnerVariation, oldValue: SpinnerVariation) {
     if (newValue !== oldValue) {
@@ -101,7 +128,12 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    */
 
   connectedCallback(): void {
+    setupValidation(this)
     this.smallChanged(this.small, false)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   componentDidLoad() {
@@ -119,12 +151,16 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
+  /**
+   * @internal define config for the component
+   */
+  @Method()
   @ListenToConfig()
-  configChanged(state: DsConfigState): void {
+  async configChanged(state: DsConfigState): Promise<void> {
     this.animated = state.animated
     if (state.animated === false) {
       this.destroy()
@@ -197,11 +233,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
       }
     })
   }
-
-  /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
 
   private getColor(): string {
     // Prefer a CSS custom property override if present on the host

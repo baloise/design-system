@@ -8,24 +8,32 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --input-color-background: Background color of the input field.
- * @prop --input-color-border: Border color of the input field.
- * @prop --input-color-text: Text color inside the input field.
- * @prop --input-color-placeholder: Placeholder text color.
- * @prop --input-font-size: Font size of the input text.
- * @prop --input-font-family: Font family of the input text.
+ * @prop --input-color: Text color inside the input field.
+ * @prop --input-placeholder: Placeholder text color.
+ * @prop --input-family: Font family of the input text.
+ * @prop --input-weight: Font weight of the input text.
+ * @prop --input-size: Font size of the input text.
  * @prop --input-line-height: Line height of the input text.
- * @prop --input-border-radius: Border radius of the input field.
- * @prop --input-border-width: Border width of the input field.
- * @prop --input-padding-inline: Horizontal padding inside the input.
- * @prop --input-padding-block: Vertical padding inside the input.
- * @prop --input-min-height: Minimum height of the input field.
+ * @prop --input-container-background: Background color of the input container.
+ * @prop --input-container-border-color: Border color of the input container.
+ * @prop --input-container-border-width: Border width of the input container.
+ * @prop --input-container-radius: Border radius of the input container.
+ * @prop --input-container-hover-background: Container background color on hover.
+ * @prop --input-container-active-background: Container background color when active.
+ * @prop --input-container-focus-background: Container background color when focused.
+ * @prop --input-container-hover-border: Container border color on hover.
+ * @prop --input-container-active-border: Container border color when active.
+ * @prop --input-container-focus-border: Container border color when focused.
  * @prop --input-label-color: Text color of the label.
- * @prop --input-label-font-size: Font size of the label.
- * @prop --input-label-font-weight: Font weight of the label.
- * @prop --input-description-color: Text color of the description text.
- * @prop --input-description-font-size: Font size of the description text.
- * @prop --input-error-color: Color of error messages and invalid state.
+ * @prop --input-label-family: Font family of the label.
+ * @prop --input-label-weight: Font weight of the label.
+ * @prop --input-label-size: Font size of the label.
+ * @prop --input-label-line-height: Line height of the label.
+ * @prop --input-description-color: Text color of the description.
+ * @prop --input-description-family: Font family of the description.
+ * @prop --input-description-weight: Font weight of the description.
+ * @prop --input-description-size: Font size of the description.
+ * @prop --input-description-line-height: Line height of the description.
  */
 
 :host {

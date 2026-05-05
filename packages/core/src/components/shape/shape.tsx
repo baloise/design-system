@@ -1,8 +1,15 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
-import { Logger, type LogInstance } from '@utils'
-import { ShapeVariation, ShapeColor, ShapeRotation } from './shape.interfaces'
+import { Logger, type LogInstance, ValidateEmptyOrOneOf, setupValidation } from '@utils'
+import {
+  SHAPE_COLORS,
+  SHAPE_ROTATIONS,
+  SHAPE_VARIATIONS,
+  ShapeColor,
+  ShapeRotation,
+  ShapeVariation,
+} from './shape.interfaces'
 import { DsComponentInterface } from '@global'
 
 /**
@@ -27,19 +34,48 @@ export class Shape implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
-   * The shape variation
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
    */
-  @Prop({ reflect: true }) readonly variation: ShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop({ reflect: true }) readonly color: ShapeColor = 'green'
+  @Prop()
+  @ValidateEmptyOrOneOf(...SHAPE_COLORS)
+  readonly color: ShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop({ reflect: true }) readonly rotation: ShapeRotation = '0'
+  @Prop()
+  @ValidateEmptyOrOneOf(...SHAPE_ROTATIONS)
+  readonly rotation: ShapeRotation = '0'
+
+  /**
+   * The shape variation
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...SHAPE_VARIATIONS)
+  readonly variation: ShapeVariation = '1'
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    setupValidation(this)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     return (

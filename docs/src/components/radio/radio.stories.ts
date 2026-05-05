@@ -8,7 +8,8 @@ type Args = JSX.DsRadio & { slot: string }
 const tag = 'ds-radio'
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Radio/Variants',
+  title: 'Components/Forms/Radio/Item',
+  tags: ['!dev'],
   args: {
     slot: 'Hello World',
   },
@@ -68,7 +69,7 @@ BasicHtml.storyName = '🌍 Basic'
 export const Disabled = Story({
   ...withRender(
     () => `
-<ds-radio-group name="disabled" value="2" disabled>
+<ds-radio-group name="disabled" value="2" disabled label="Disabled" description="description">
   <ds-radio value="1">Option 1</ds-radio>
   <ds-radio value="2">Option 2</ds-radio>
   <ds-radio value="3">Option 3</ds-radio>

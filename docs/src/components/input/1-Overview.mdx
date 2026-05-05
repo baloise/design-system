@@ -2,6 +2,7 @@ import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
+  CanvasTabs,
   ComponentPublicMethods,
   ComponentTabs,
   ComponentLead,
@@ -18,7 +19,7 @@ import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
 
 <ComponentLead component="input" />
 
-<Canvas of={InputStories.Basic} sourceState="shown" />
+<CanvasTabs of={InputStories.Basic} htmlOf={InputStories.BasicHtml} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

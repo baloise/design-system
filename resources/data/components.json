@@ -1035,9 +1035,9 @@
     {
       "fileName": "alert-container.tsx",
       "tag": "ds-alert-container",
-      "overview": "",
+      "overview": "Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.",
       "usage": {},
-      "docs": "",
+      "docs": "Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.",
       "docsTags": [],
       "encapsulation": "shadow",
       "dependents": [],
@@ -1055,7 +1055,7 @@
           "mutable": false,
           "attr": "animated",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "If `true`, alerts animate in and out.",
           "docsTags": [
             {
               "name": "default",
@@ -1091,7 +1091,7 @@
           "mutable": false,
           "attr": "container",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "Defines the container size constraint for the alert layout.",
           "docsTags": [],
           "values": [
             {
@@ -1141,7 +1141,7 @@
           "mutable": false,
           "attr": "type",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).",
           "docsTags": [
             {
               "name": "default",
@@ -1209,7 +1209,7 @@
               "docs": ""
             }
           ],
-          "docs": "",
+          "docs": "Adds an alert to the queue and returns its generated ID.",
           "docsTags": []
         },
         {
@@ -1243,7 +1243,7 @@
               "docs": ""
             }
           ],
-          "docs": "",
+          "docs": "Removes the alert with the given ID.",
           "docsTags": []
         },
         {
@@ -1265,7 +1265,7 @@
           },
           "signature": "removeAll() => Promise<void>",
           "parameters": [],
-          "docs": "",
+          "docs": "Removes all alerts.",
           "docsTags": []
         }
       ],
@@ -13110,10 +13110,6 @@
           "text": "- The checkbox label content."
         },
         {
-          "name": "slot",
-          "text": "helper - The helper or hint text below the checkbox."
-        },
-        {
           "name": "part",
           "text": "checkbox - The native HTML input element."
         },
@@ -13646,10 +13642,6 @@
         {
           "name": "",
           "docs": "The checkbox label content."
-        },
-        {
-          "name": "helper",
-          "docs": "The helper or hint text below the checkbox."
         }
       ],
       "parts": [
@@ -14394,10 +14386,15 @@
     {
       "fileName": "checkbox-group.tsx",
       "tag": "ds-checkbox-group",
-      "overview": "",
+      "overview": "Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.",
       "usage": {},
-      "docs": "",
-      "docsTags": [],
+      "docs": "Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The checkbox items to display inside the group."
+        }
+      ],
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
@@ -14670,23 +14667,26 @@
         },
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -14696,23 +14696,26 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid style.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -14833,7 +14836,7 @@
           },
           "mutable": false,
           "attr": "loading",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
           "docsTags": [
             {
@@ -14883,23 +14886,26 @@
         },
         {
           "name": "readonly",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -14917,7 +14923,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -15141,18 +15147,64 @@
           "docsTags": []
         }
       ],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--checkbox-group-label-color",
+          "docs": "Text color of the group label."
+        },
+        {
+          "name": "--checkbox-group-label-family",
+          "docs": "Font family of the group label."
+        },
+        {
+          "name": "--checkbox-group-label-weight",
+          "docs": "Font weight of the group label."
+        },
+        {
+          "name": "--checkbox-group-label-size",
+          "docs": "Font size of the group label."
+        },
+        {
+          "name": "--checkbox-group-label-line-height",
+          "docs": "Line height of the group label."
+        },
+        {
+          "name": "--checkbox-group-description-color",
+          "docs": "Text color of the group description."
+        },
+        {
+          "name": "--checkbox-group-description-family",
+          "docs": "Font family of the group description."
+        },
+        {
+          "name": "--checkbox-group-description-weight",
+          "docs": "Font weight of the group description."
+        },
+        {
+          "name": "--checkbox-group-description-size",
+          "docs": "Font size of the group description."
+        },
+        {
+          "name": "--checkbox-group-description-line-height",
+          "docs": "Line height of the group description."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The checkbox items to display inside the group."
+        }
+      ],
       "parts": [],
       "listeners": [
         {
-          "event": "dsChange",
+          "event": "dsBlur",
           "target": "document",
           "capture": true,
           "passive": false
         },
         {
-          "event": "reset",
+          "event": "dsChange",
           "target": "document",
           "capture": true,
           "passive": false
@@ -15164,7 +15216,7 @@
           "passive": false
         },
         {
-          "event": "dsBlur",
+          "event": "reset",
           "target": "document",
           "capture": true,
           "passive": false
@@ -19786,10 +19838,6 @@
       "docs": "Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.",
       "docsTags": [
         {
-          "name": "slot",
-          "text": "- The input field content and surrounding elements."
-        },
-        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -21297,84 +21345,111 @@
       ],
       "styles": [
         {
-          "name": "--input-color-background",
-          "docs": "Background color of the input field."
-        },
-        {
-          "name": "--input-color-border",
-          "docs": "Border color of the input field."
-        },
-        {
-          "name": "--input-color-text",
+          "name": "--input-color",
           "docs": "Text color inside the input field."
         },
         {
-          "name": "--input-color-placeholder",
+          "name": "--input-placeholder",
           "docs": "Placeholder text color."
         },
         {
-          "name": "--input-font-size",
-          "docs": "Font size of the input text."
+          "name": "--input-family",
+          "docs": "Font family of the input text."
         },
         {
-          "name": "--input-font-family",
-          "docs": "Font family of the input text."
+          "name": "--input-weight",
+          "docs": "Font weight of the input text."
+        },
+        {
+          "name": "--input-size",
+          "docs": "Font size of the input text."
         },
         {
           "name": "--input-line-height",
           "docs": "Line height of the input text."
         },
         {
-          "name": "--input-border-radius",
-          "docs": "Border radius of the input field."
+          "name": "--input-container-background",
+          "docs": "Background color of the input container."
         },
         {
-          "name": "--input-border-width",
-          "docs": "Border width of the input field."
+          "name": "--input-container-border-color",
+          "docs": "Border color of the input container."
         },
         {
-          "name": "--input-padding-inline",
-          "docs": "Horizontal padding inside the input."
+          "name": "--input-container-border-width",
+          "docs": "Border width of the input container."
         },
         {
-          "name": "--input-padding-block",
-          "docs": "Vertical padding inside the input."
+          "name": "--input-container-radius",
+          "docs": "Border radius of the input container."
         },
         {
-          "name": "--input-min-height",
-          "docs": "Minimum height of the input field."
+          "name": "--input-container-hover-background",
+          "docs": "Container background color on hover."
+        },
+        {
+          "name": "--input-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--input-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--input-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--input-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--input-container-focus-border",
+          "docs": "Container border color when focused."
         },
         {
           "name": "--input-label-color",
           "docs": "Text color of the label."
         },
         {
-          "name": "--input-label-font-size",
-          "docs": "Font size of the label."
+          "name": "--input-label-family",
+          "docs": "Font family of the label."
         },
         {
-          "name": "--input-label-font-weight",
+          "name": "--input-label-weight",
           "docs": "Font weight of the label."
         },
         {
+          "name": "--input-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--input-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
           "name": "--input-description-color",
-          "docs": "Text color of the description text."
+          "docs": "Text color of the description."
         },
         {
-          "name": "--input-description-font-size",
-          "docs": "Font size of the description text."
+          "name": "--input-description-family",
+          "docs": "Font family of the description."
         },
         {
-          "name": "--input-error-color",
-          "docs": "Color of error messages and invalid state."
-        }
-      ],
-      "slots": [
+          "name": "--input-description-weight",
+          "docs": "Font weight of the description."
+        },
         {
-          "name": "",
-          "docs": "The input field content and surrounding elements."
+          "name": "--input-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--input-description-line-height",
+          "docs": "Line height of the description."
         }
       ],
+      "slots": [],
       "parts": [
         {
           "name": "input",
@@ -24147,7 +24222,7 @@
           },
           "mutable": false,
           "attr": "no-wrap",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "When true, the text will be truncated with a text overflow ellipsis instead of wrapping.\nPlease note that text overflow can only occur in block or inline-block level elements,\nas these elements require a width to overflow.",
           "docsTags": [
             {
@@ -24212,7 +24287,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the size of the font. Default is like a heading 5 and small is used\nwith the form fields.",
           "docsTags": [],
           "values": [
@@ -25695,7 +25770,7 @@
         },
         {
           "name": "part",
-          "text": "logo - The logo SVG animation container element."
+          "text": "animated - The animated logo container element."
         }
       ],
       "encapsulation": "shadow",
@@ -25713,7 +25788,7 @@
           },
           "mutable": false,
           "attr": "animated",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines if the animation should be active",
           "docsTags": [
             {
@@ -25749,7 +25824,7 @@
           },
           "mutable": false,
           "attr": "brand",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the brand of the logo. Default is 'baloise'.",
           "docsTags": [
             {
@@ -25793,7 +25868,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the color of the logo.",
           "docsTags": [
             {
@@ -25834,7 +25909,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Size of the logo svg",
           "docsTags": [
             {
@@ -25903,11 +25978,7 @@
       "parts": [
         {
           "name": "animated",
-          "docs": ""
-        },
-        {
-          "name": "logo",
-          "docs": "The logo SVG animation container element."
+          "docs": "The animated logo container element."
         }
       ],
       "listeners": []
@@ -25925,11 +25996,15 @@
         },
         {
           "name": "part",
-          "text": "notification - The notification container element."
+          "text": "section - The notification container element."
         },
         {
           "name": "part",
-          "text": "icon - The icon wrapper."
+          "text": "close - The close button."
+        },
+        {
+          "name": "part",
+          "text": "heading - The notification heading."
         }
       ],
       "encapsulation": "shadow",
@@ -26153,7 +26228,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the size of the notification, small, medium or large.",
           "docsTags": [],
           "values": [
@@ -26318,23 +26393,15 @@
       "parts": [
         {
           "name": "close",
-          "docs": ""
+          "docs": "The close button."
         },
         {
           "name": "heading",
-          "docs": ""
-        },
-        {
-          "name": "icon",
-          "docs": "The icon wrapper."
-        },
-        {
-          "name": "notification",
-          "docs": "The notification container element."
+          "docs": "The notification heading."
         },
         {
           "name": "section",
-          "docs": ""
+          "docs": "The notification container element."
         }
       ],
       "listeners": [],
@@ -27461,10 +27528,10 @@
         },
         {
           "name": "debounce",
-          "type": "0",
+          "type": "number",
           "complexType": {
-            "original": "0",
-            "resolved": "0",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
@@ -27480,7 +27547,6 @@
           "default": "0",
           "values": [
             {
-              "value": "0",
               "type": "number"
             }
           ],
@@ -27491,10 +27557,10 @@
         },
         {
           "name": "decimal",
-          "type": "0",
+          "type": "number",
           "complexType": {
-            "original": "0",
-            "resolved": "0",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
@@ -27510,7 +27576,6 @@
           "default": "0",
           "values": [
             {
-              "value": "0",
               "type": "number"
             }
           ],
@@ -27558,7 +27623,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or submitted with the form.",
           "docsTags": [
             {
@@ -27616,7 +27681,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets an invalid style.",
           "docsTags": [
             {
@@ -27877,7 +27942,7 @@
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element cannot be edited by the user.",
           "docsTags": [
             {
@@ -27906,7 +27971,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -28167,80 +28232,108 @@
       ],
       "styles": [
         {
-          "name": "--number-input-color-background",
-          "docs": "Background color of the number input field."
+          "name": "--input-color",
+          "docs": "Text color inside the number input field."
         },
         {
-          "name": "--number-input-color-border",
-          "docs": "Border color of the number input field."
-        },
-        {
-          "name": "--number-input-color-text",
-          "docs": "Text color inside the number input."
-        },
-        {
-          "name": "--number-input-color-placeholder",
+          "name": "--input-placeholder",
           "docs": "Placeholder text color."
         },
         {
-          "name": "--number-input-font-size",
-          "docs": "Font size of the input text."
-        },
-        {
-          "name": "--number-input-font-family",
+          "name": "--input-family",
           "docs": "Font family of the input text."
         },
         {
-          "name": "--number-input-line-height",
+          "name": "--input-weight",
+          "docs": "Font weight of the input text."
+        },
+        {
+          "name": "--input-size",
+          "docs": "Font size of the input text."
+        },
+        {
+          "name": "--input-line-height",
           "docs": "Line height of the input text."
         },
         {
-          "name": "--number-input-border-radius",
-          "docs": "Border radius of the input field."
+          "name": "--input-container-background",
+          "docs": "Background color of the input container."
         },
         {
-          "name": "--number-input-border-width",
-          "docs": "Border width of the input field."
+          "name": "--input-container-border-color",
+          "docs": "Border color of the input container."
         },
         {
-          "name": "--number-input-padding-inline",
-          "docs": "Horizontal padding inside the input."
+          "name": "--input-container-border-width",
+          "docs": "Border width of the input container."
         },
         {
-          "name": "--number-input-padding-block",
-          "docs": "Vertical padding inside the input."
+          "name": "--input-container-radius",
+          "docs": "Border radius of the input container."
         },
         {
-          "name": "--number-input-min-height",
-          "docs": "Minimum height of the input field."
+          "name": "--input-container-hover-background",
+          "docs": "Container background color on hover."
         },
         {
-          "name": "--number-input-button-size",
-          "docs": "Size of increment/decrement buttons."
+          "name": "--input-container-active-background",
+          "docs": "Container background color when active."
         },
         {
-          "name": "--number-input-label-color",
+          "name": "--input-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--input-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--input-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--input-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--input-label-color",
           "docs": "Text color of the label."
         },
         {
-          "name": "--number-input-label-font-size",
-          "docs": "Font size of the label."
+          "name": "--input-label-family",
+          "docs": "Font family of the label."
         },
         {
-          "name": "--number-input-label-font-weight",
+          "name": "--input-label-weight",
           "docs": "Font weight of the label."
         },
         {
-          "name": "--number-input-description-color",
-          "docs": "Text color of the description text."
+          "name": "--input-label-size",
+          "docs": "Font size of the label."
         },
         {
-          "name": "--number-input-description-font-size",
-          "docs": "Font size of the description text."
+          "name": "--input-label-line-height",
+          "docs": "Line height of the label."
         },
         {
-          "name": "--number-input-error-color",
-          "docs": "Color of error messages and invalid state."
+          "name": "--input-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--input-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--input-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--input-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--input-description-line-height",
+          "docs": "Line height of the description."
         }
       ],
       "slots": [
@@ -29111,11 +29204,7 @@
         },
         {
           "name": "part",
-          "text": "progress-bar - The progress bar container element."
-        },
-        {
-          "name": "part",
-          "text": "indicator - The filled progress indicator element."
+          "text": "line - The filled progress indicator element."
         }
       ],
       "encapsulation": "shadow",
@@ -29227,7 +29316,7 @@
           },
           "mutable": false,
           "attr": "value",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The value of the bar in percentage. So min is 0 and 100 would be the max value.",
           "docsTags": [
             {
@@ -29247,48 +29336,7 @@
           "setter": false
         }
       ],
-      "methods": [
-        {
-          "name": "configChanged",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "(state: DsConfigState) => Promise<void>",
-            "parameters": [
-              {
-                "name": "state",
-                "type": "DsConfigState",
-                "docs": ""
-              }
-            ],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              },
-              "DsConfigState": {
-                "location": "import",
-                "path": "@global",
-                "id": "src/global/index.ts::DsConfigState",
-                "referenceLocation": "DsConfigState"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "configChanged(state: DsConfigState) => Promise<void>",
-          "parameters": [
-            {
-              "name": "state",
-              "type": "DsConfigState",
-              "docs": ""
-            }
-          ],
-          "docs": "",
-          "docsTags": []
-        }
-      ],
+      "methods": [],
       "events": [],
       "styles": [
         {
@@ -29332,16 +29380,8 @@
       ],
       "parts": [
         {
-          "name": "indicator",
-          "docs": "The filled progress indicator element."
-        },
-        {
           "name": "line",
-          "docs": ""
-        },
-        {
-          "name": "progress-bar",
-          "docs": "The progress bar container element."
+          "docs": "The filled progress indicator element."
         }
       ],
       "listeners": [],
@@ -29667,11 +29707,15 @@
         },
         {
           "name": "part",
-          "text": "radio - The native HTML input element."
+          "text": "label - The label wrapper element."
         },
         {
           "name": "part",
-          "text": "container - The radio and label wrapper."
+          "text": "input - The native HTML input element."
+        },
+        {
+          "name": "part",
+          "text": "slot - The content slot wrapper."
         }
       ],
       "encapsulation": "shadow",
@@ -29689,7 +29733,7 @@
           },
           "mutable": false,
           "attr": "auto-invalid-off",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
           "docsTags": [
             {
@@ -29718,7 +29762,7 @@
           },
           "mutable": true,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the checkbox is selected.",
           "docsTags": [
             {
@@ -29747,7 +29791,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
           "docsTags": [
             {
@@ -29776,7 +29820,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid style.",
           "docsTags": [
             {
@@ -29797,10 +29841,10 @@
         },
         {
           "name": "label",
-          "type": "\"\"",
+          "type": "string",
           "complexType": {
-            "original": "\"\"",
-            "resolved": "\"\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -29816,7 +29860,7 @@
           "default": "''",
           "values": [
             {
-              "type": "\"\""
+              "type": "string"
             }
           ],
           "optional": false,
@@ -29908,7 +29952,7 @@
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
           "docsTags": [
             {
@@ -29937,7 +29981,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -30042,10 +30086,10 @@
             "resolved": "any",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "value",
-          "reflectToAttr": false,
-          "docs": "A DOMString representing the value of the checkbox. This is not displayed on the\nclient-side, but on the server this is the value given to the data\nsubmitted with the checkbox's name.",
+          "reflectToAttr": true,
+          "docs": "A DOMString representing the value of the radio. This is not displayed on the\nclient-side, but on the server this is the value given to the data\nsubmitted with the radio's name.",
           "docsTags": [],
           "values": [
             {
@@ -30213,20 +30257,16 @@
       ],
       "parts": [
         {
-          "name": "container",
-          "docs": "The radio and label wrapper."
-        },
-        {
-          "name": "label",
-          "docs": ""
-        },
-        {
-          "name": "radio",
+          "name": "input",
           "docs": "The native HTML input element."
         },
         {
+          "name": "label",
+          "docs": "The label wrapper element."
+        },
+        {
           "name": "slot",
-          "docs": ""
+          "docs": "The content slot wrapper."
         }
       ],
       "listeners": [
@@ -30953,10 +30993,15 @@
     {
       "fileName": "radio-group.tsx",
       "tag": "ds-radio-group",
-      "overview": "",
+      "overview": "Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.",
       "usage": {},
-      "docs": "",
-      "docsTags": [],
+      "docs": "Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The radio items to display inside the group."
+        }
+      ],
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [
@@ -31229,23 +31274,26 @@
         },
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -31255,23 +31303,26 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid style.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -31392,7 +31443,7 @@
           },
           "mutable": false,
           "attr": "loading",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
           "docsTags": [
             {
@@ -31442,23 +31493,26 @@
         },
         {
           "name": "readonly",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -31476,7 +31530,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -31583,8 +31637,8 @@
           },
           "mutable": true,
           "attr": "value",
-          "reflectToAttr": false,
-          "docs": "the value of the radio group.",
+          "reflectToAttr": true,
+          "docs": "The value of the radio group.",
           "docsTags": [],
           "values": [
             {
@@ -31607,7 +31661,7 @@
           "mutable": false,
           "attr": "vertical",
           "reflectToAttr": false,
-          "docs": "Displays the checkboxes vertically",
+          "docs": "Displays the radios vertically.",
           "docsTags": [
             {
               "name": "default",
@@ -31646,7 +31700,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when a keyboard input occurred.",
+          "docs": "Emitted when the input loses focus.",
           "docsTags": []
         },
         {
@@ -31692,8 +31746,54 @@
           "docsTags": []
         }
       ],
-      "styles": [],
-      "slots": [],
+      "styles": [
+        {
+          "name": "--radio-group-label-color",
+          "docs": "Text color of the group label."
+        },
+        {
+          "name": "--radio-group-label-family",
+          "docs": "Font family of the group label."
+        },
+        {
+          "name": "--radio-group-label-weight",
+          "docs": "Font weight of the group label."
+        },
+        {
+          "name": "--radio-group-label-size",
+          "docs": "Font size of the group label."
+        },
+        {
+          "name": "--radio-group-label-line-height",
+          "docs": "Line height of the group label."
+        },
+        {
+          "name": "--radio-group-description-color",
+          "docs": "Text color of the group description."
+        },
+        {
+          "name": "--radio-group-description-family",
+          "docs": "Font family of the group description."
+        },
+        {
+          "name": "--radio-group-description-weight",
+          "docs": "Font weight of the group description."
+        },
+        {
+          "name": "--radio-group-description-size",
+          "docs": "Font size of the group description."
+        },
+        {
+          "name": "--radio-group-description-line-height",
+          "docs": "Line height of the group description."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The radio items to display inside the group."
+        }
+      ],
       "parts": [],
       "listeners": [
         {
@@ -31869,23 +31969,26 @@
         },
         {
           "name": "disabled",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -31924,23 +32027,26 @@
         },
         {
           "name": "invalid",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid style.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -32016,7 +32122,7 @@
           },
           "mutable": false,
           "attr": "loading",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "Shows a loading indicator at the end of the input and replaces the end slot content.",
           "docsTags": [
             {
@@ -32066,23 +32172,26 @@
         },
         {
           "name": "readonly",
-          "type": "boolean | undefined",
+          "type": "boolean",
           "complexType": {
-            "original": "boolean | undefined",
-            "resolved": "boolean | undefined",
+            "original": "boolean",
+            "resolved": "boolean",
             "references": {}
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
-            },
-            {
-              "type": "undefined"
             }
           ],
           "optional": false,
@@ -32100,7 +32209,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -32129,7 +32238,7 @@
           },
           "mutable": true,
           "attr": "value",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The value of the segment group.",
           "docsTags": [],
           "values": [
@@ -32334,16 +32443,40 @@
           "docs": "Text color of the label."
         },
         {
-          "name": "--segment-label-font-size",
+          "name": "--segment-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--segment-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--segment-label-size",
           "docs": "Font size of the label."
         },
         {
-          "name": "--segment-description-color",
-          "docs": "Text color of description text."
+          "name": "--segment-label-line-height",
+          "docs": "Line height of the label."
         },
         {
-          "name": "--segment-description-font-size",
-          "docs": "Font size of description text."
+          "name": "--segment-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--segment-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--segment-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--segment-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--segment-description-line-height",
+          "docs": "Line height of the description."
         }
       ],
       "slots": [
@@ -32943,15 +33076,15 @@
       "props": [
         {
           "name": "description",
-          "type": "\"\"",
+          "type": "string",
           "complexType": {
-            "original": "\"\"",
-            "resolved": "\"\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
           "attr": "description",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Description text to display in the segment item.",
           "docsTags": [
             {
@@ -32962,7 +33095,7 @@
           "default": "''",
           "values": [
             {
-              "type": "\"\""
+              "type": "string"
             }
           ],
           "optional": false,
@@ -32972,15 +33105,15 @@
         },
         {
           "name": "icon",
-          "type": "\"\"",
+          "type": "string",
           "complexType": {
-            "original": "\"\"",
-            "resolved": "\"\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
           "attr": "icon",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Name of the icon to display in the segment item.",
           "docsTags": [
             {
@@ -32991,7 +33124,7 @@
           "default": "''",
           "values": [
             {
-              "type": "\"\""
+              "type": "string"
             }
           ],
           "optional": false,
@@ -33001,15 +33134,15 @@
         },
         {
           "name": "label",
-          "type": "\"\"",
+          "type": "string",
           "complexType": {
-            "original": "\"\"",
-            "resolved": "\"\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
           "attr": "label",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Label text to display in the segment item.",
           "docsTags": [
             {
@@ -33020,7 +33153,7 @@
           "default": "''",
           "values": [
             {
-              "type": "\"\""
+              "type": "string"
             }
           ],
           "optional": false,
@@ -33094,7 +33227,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "",
+          "docs": "Emitted when a property of the segment item changes, to notify the parent segment to re-render.",
           "docsTags": []
         }
       ],
@@ -33192,7 +33325,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The shape color",
           "docsTags": [
             {
@@ -33257,7 +33390,7 @@
           },
           "mutable": false,
           "attr": "rotation",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The shape rotation",
           "docsTags": [
             {
@@ -33306,7 +33439,7 @@
           },
           "mutable": false,
           "attr": "variation",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The shape variation",
           "docsTags": [
             {
@@ -34334,7 +34467,7 @@
       "docsTags": [
         {
           "name": "part",
-          "text": "spinner - The spinner animation container element."
+          "text": "inner - The spinner animation container element."
         }
       ],
       "encapsulation": "shadow",
@@ -34389,7 +34522,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "**Deprecated:** Use inverted=\"true\" for white spinner instead.",
           "docsTags": [
             {
@@ -34423,7 +34556,7 @@
           },
           "mutable": false,
           "attr": "deactivated",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the component will not add the spinner animation svg",
           "docsTags": [
             {
@@ -34452,7 +34585,7 @@
           },
           "mutable": false,
           "attr": "inverted",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the component can be used on dark background",
           "docsTags": [
             {
@@ -34488,7 +34621,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the size of the spinner. If `sm` the spinner is smaller.",
           "docsTags": [
             {
@@ -34557,7 +34690,7 @@
           },
           "mutable": false,
           "attr": "variation",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the look of the spinner",
           "docsTags": [
             {
@@ -34618,10 +34751,6 @@
       "parts": [
         {
           "name": "inner",
-          "docs": ""
-        },
-        {
-          "name": "spinner",
           "docs": "The spinner animation container element."
         }
       ],
@@ -35731,11 +35860,7 @@
         },
         {
           "name": "part",
-          "text": "tag - The tag container element."
-        },
-        {
-          "name": "part",
-          "text": "icon - The icon wrapper (if an icon is used)."
+          "text": "label - The tag content element."
         }
       ],
       "encapsulation": "shadow",
@@ -35766,7 +35891,7 @@
           },
           "mutable": false,
           "attr": "closable",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The theme type of the tag.",
           "docsTags": [
             {
@@ -35802,7 +35927,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The theme type of the tag.",
           "docsTags": [],
           "values": [
@@ -35962,7 +36087,7 @@
           },
           "mutable": false,
           "attr": "position",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Choosing left or center the tag is aligned to that side in the ds-card.",
           "docsTags": [],
           "values": [
@@ -36004,7 +36129,7 @@
           },
           "mutable": false,
           "attr": "shape",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The shape of the tag element like square or pill",
           "docsTags": [],
           "values": [
@@ -36042,7 +36167,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "The size of the tag element",
           "docsTags": [],
           "values": [
@@ -36154,16 +36279,8 @@
       ],
       "parts": [
         {
-          "name": "icon",
-          "docs": "The icon wrapper (if an icon is used)."
-        },
-        {
           "name": "label",
-          "docs": ""
-        },
-        {
-          "name": "tag",
-          "docs": "The tag container element."
+          "docs": "The tag content element."
         }
       ],
       "listeners": [],
@@ -37723,10 +37840,15 @@
     {
       "fileName": "tag-group.tsx",
       "tag": "ds-tag-group",
-      "overview": "",
+      "overview": "Tag Group arranges multiple tag elements in a horizontal or wrapping layout.",
       "usage": {},
-      "docs": "",
-      "docsTags": [],
+      "docs": "Tag Group arranges multiple tag elements in a horizontal or wrapping layout.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The ds-tag elements to display inside the group."
+        }
+      ],
       "encapsulation": "shadow",
       "dependents": [],
       "dependencies": [],
@@ -37735,7 +37857,12 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The ds-tag elements to display inside the group."
+        }
+      ],
       "parts": [],
       "listeners": []
     },
@@ -37816,7 +37943,7 @@
           },
           "mutable": false,
           "attr": "bold",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the text is bold",
           "docsTags": [
             {
@@ -37959,7 +38086,7 @@
           },
           "mutable": false,
           "attr": "heading",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the text has heading font family",
           "docsTags": [
             {
@@ -37988,7 +38115,7 @@
           },
           "mutable": false,
           "attr": "inline",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the text is shown as a display inline",
           "docsTags": [
             {
@@ -38046,7 +38173,7 @@
           },
           "mutable": false,
           "attr": "inverted",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the color gets inverted for dark backgrounds",
           "docsTags": [
             {
@@ -38075,7 +38202,7 @@
           },
           "mutable": false,
           "attr": "no-wrap",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "When true, the text will be truncated with a text overflow ellipsis instead of wrapping.\nPlease note that text overflow can only occur in block or inline-block level elements,\nas these elements require a width to overflow.",
           "docsTags": [
             {
@@ -38104,7 +38231,7 @@
           },
           "mutable": false,
           "attr": "shadow",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` adds a text shadow to improve readability on image background",
           "docsTags": [
             {
@@ -38140,7 +38267,7 @@
           },
           "mutable": true,
           "attr": "size",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines the size of the paragraph",
           "docsTags": [],
           "values": [
@@ -38225,7 +38352,7 @@
           },
           "mutable": false,
           "attr": "space",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "Defines at which position the heading has spacing.",
           "docsTags": [],
           "values": [
@@ -38267,7 +38394,7 @@
           },
           "mutable": false,
           "attr": "subtitle",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true` the text has subtitle font family",
           "docsTags": [
             {
@@ -38384,7 +38511,7 @@
           },
           "mutable": false,
           "attr": "auto-invalid-off",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true`, in Angular reactive forms the control will not be set invalid.",
           "docsTags": [
             {
@@ -38405,10 +38532,10 @@
         },
         {
           "name": "autocapitalize",
-          "type": "\"off\"",
+          "type": "string",
           "complexType": {
-            "original": "\"off\"",
-            "resolved": "\"off\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -38424,7 +38551,6 @@
           "default": "'off'",
           "values": [
             {
-              "value": "off",
               "type": "string"
             }
           ],
@@ -38794,10 +38920,10 @@
         },
         {
           "name": "debounce",
-          "type": "0",
+          "type": "number",
           "complexType": {
-            "original": "0",
-            "resolved": "0",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
@@ -38813,7 +38939,6 @@
           "default": "0",
           "values": [
             {
-              "value": "0",
               "type": "number"
             }
           ],
@@ -38861,7 +38986,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
           "docsTags": [
             {
@@ -38955,7 +39080,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets an invalid style.",
           "docsTags": [
             {
@@ -39152,7 +39277,7 @@
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.",
           "docsTags": [
             {
@@ -39181,7 +39306,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -39481,76 +39606,108 @@
       ],
       "styles": [
         {
-          "name": "--textarea-color-background",
-          "docs": "Background color of the textarea field."
+          "name": "--input-color",
+          "docs": "Text color inside the textarea field."
         },
         {
-          "name": "--textarea-color-border",
-          "docs": "Border color of the textarea field."
-        },
-        {
-          "name": "--textarea-color-text",
-          "docs": "Text color inside the textarea."
-        },
-        {
-          "name": "--textarea-color-placeholder",
+          "name": "--input-placeholder",
           "docs": "Placeholder text color."
         },
         {
-          "name": "--textarea-font-size",
-          "docs": "Font size of the textarea text."
-        },
-        {
-          "name": "--textarea-font-family",
+          "name": "--input-family",
           "docs": "Font family of the textarea text."
         },
         {
-          "name": "--textarea-line-height",
+          "name": "--input-weight",
+          "docs": "Font weight of the textarea text."
+        },
+        {
+          "name": "--input-size",
+          "docs": "Font size of the textarea text."
+        },
+        {
+          "name": "--input-line-height",
           "docs": "Line height of the textarea text."
         },
         {
-          "name": "--textarea-border-radius",
-          "docs": "Border radius of the textarea field."
+          "name": "--input-container-background",
+          "docs": "Background color of the textarea container."
         },
         {
-          "name": "--textarea-border-width",
-          "docs": "Border width of the textarea field."
+          "name": "--input-container-border-color",
+          "docs": "Border color of the textarea container."
         },
         {
-          "name": "--textarea-padding-inline",
-          "docs": "Horizontal padding inside the textarea."
+          "name": "--input-container-border-width",
+          "docs": "Border width of the textarea container."
         },
         {
-          "name": "--textarea-padding-block",
-          "docs": "Vertical padding inside the textarea."
+          "name": "--input-container-radius",
+          "docs": "Border radius of the textarea container."
         },
         {
-          "name": "--textarea-min-height",
-          "docs": "Minimum height of the textarea field."
+          "name": "--input-container-hover-background",
+          "docs": "Container background color on hover."
         },
         {
-          "name": "--textarea-label-color",
+          "name": "--input-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--input-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--input-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--input-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--input-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--input-label-color",
           "docs": "Text color of the label."
         },
         {
-          "name": "--textarea-label-font-size",
-          "docs": "Font size of the label."
+          "name": "--input-label-family",
+          "docs": "Font family of the label."
         },
         {
-          "name": "--textarea-label-font-weight",
+          "name": "--input-label-weight",
           "docs": "Font weight of the label."
         },
         {
-          "name": "--textarea-description-color",
-          "docs": "Text color of the description text."
+          "name": "--input-label-size",
+          "docs": "Font size of the label."
         },
         {
-          "name": "--textarea-description-font-size",
-          "docs": "Font size of the description text."
+          "name": "--input-label-line-height",
+          "docs": "Line height of the label."
         },
         {
-          "name": "--textarea-error-color",
-          "docs": "Color of error messages and invalid state."
+          "name": "--input-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--input-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--input-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--input-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--input-description-line-height",
+          "docs": "Line height of the description."
         }
       ],
       "slots": [
@@ -40763,11 +40920,15 @@
         },
         {
           "name": "part",
-          "text": "toggle - The native HTML input element."
+          "text": "label - The label element wrapping the toggle."
         },
         {
           "name": "part",
-          "text": "container - The toggle and label wrapper."
+          "text": "input - The native HTML checkbox input element."
+        },
+        {
+          "name": "part",
+          "text": "slot - The content slot wrapper."
         }
       ],
       "encapsulation": "shadow",
@@ -40785,7 +40946,7 @@
           },
           "mutable": false,
           "attr": "auto-invalid-off",
-          "reflectToAttr": true,
+          "reflectToAttr": false,
           "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
           "docsTags": [
             {
@@ -40814,7 +40975,7 @@
           },
           "mutable": true,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the toggle is selected.",
           "docsTags": [
             {
@@ -40892,7 +41053,7 @@
           },
           "mutable": false,
           "attr": "disabled",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
           "docsTags": [
             {
@@ -40921,7 +41082,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets a invalid style.",
           "docsTags": [
             {
@@ -40942,16 +41103,16 @@
         },
         {
           "name": "label",
-          "type": "\"\"",
+          "type": "string",
           "complexType": {
-            "original": "\"\"",
-            "resolved": "\"\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "Label of the radio item.",
+          "docs": "Label of the toggle item.",
           "docsTags": [
             {
               "name": "default",
@@ -40961,7 +41122,7 @@
           "default": "''",
           "values": [
             {
-              "type": "\"\""
+              "type": "string"
             }
           ],
           "optional": false,
@@ -40973,21 +41134,21 @@
           "name": "labelPosition",
           "type": "\"left\" | \"right\" | \"top\"",
           "complexType": {
-            "original": "CheckboxLabelPosition",
+            "original": "ToggleLabelPosition",
             "resolved": "\"left\" | \"right\" | \"top\"",
             "references": {
-              "CheckboxLabelPosition": {
+              "ToggleLabelPosition": {
                 "location": "import",
-                "path": "../checkbox/checkbox.interfaces",
-                "id": "src/components/checkbox/checkbox.interfaces.ts::CheckboxLabelPosition",
-                "referenceLocation": "CheckboxLabelPosition"
+                "path": "./toggle.interfaces",
+                "id": "src/components/toggle/toggle.interfaces.ts::ToggleLabelPosition",
+                "referenceLocation": "ToggleLabelPosition"
               }
             }
           },
           "mutable": false,
           "attr": "label-position",
           "reflectToAttr": false,
-          "docs": "Defines the position of the label, either before or after the radio input. Default is after.",
+          "docs": "Defines the position of the label, either before or after the toggle input. Default is after.",
           "docsTags": [
             {
               "name": "default",
@@ -41053,7 +41214,7 @@
           },
           "mutable": false,
           "attr": "readonly",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the element can not mutated, meaning the user can not edit the control.",
           "docsTags": [
             {
@@ -41082,7 +41243,7 @@
           },
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
           "docsTags": [
             {
@@ -41299,20 +41460,16 @@
       ],
       "parts": [
         {
-          "name": "container",
-          "docs": "The toggle and label wrapper."
+          "name": "input",
+          "docs": "The native HTML checkbox input element."
         },
         {
           "name": "label",
-          "docs": ""
+          "docs": "The label element wrapping the toggle."
         },
         {
           "name": "slot",
-          "docs": ""
-        },
-        {
-          "name": "toggle",
-          "docs": "The native HTML input element."
+          "docs": "The content slot wrapper."
         }
       ],
       "listeners": [
@@ -41361,13 +41518,13 @@
       "docstring": "",
       "path": "src/global/index.ts"
     },
-    "src/components/alert/alert-container.interfaces.tsx::AlertType": {
-      "declaration": "\"toast\" | \"snackbar\"",
+    "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
+      "declaration": "\"fluid\" | \"detail-page\" | \"compact\" | \"blog-page\" | \"wide\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
-    "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
-      "declaration": "\"fluid\" | \"detail-page\" | \"compact\" | \"blog-page\" | \"wide\"",
+    "src/components/alert/alert-container.interfaces.tsx::AlertType": {
+      "declaration": "\"toast\" | \"snackbar\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
@@ -41576,14 +41733,14 @@
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
-    "src/components/checkbox/checkbox.interfaces.ts::CheckboxGroupFocusDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
-      "path": "src/components/checkbox/checkbox.interfaces.ts"
-    },
     "src/components/checkbox/checkbox.interfaces.ts::CheckboxGroupChangeDetail": {
       "declaration": "interface Array<T> {\n    /**\n     * Gets or sets the length of the array. This is a number one higher than the highest index in the array.\n     */\n    length: number;\n    /**\n     * Returns a string representation of an array.\n     */\n    toString(): string;\n    /**\n     * Returns a string representation of an array. The elements are converted to string using their toLocaleString methods.\n     */\n    toLocaleString(): string;\n    /**\n     * Removes the last element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    pop(): T | undefined;\n    /**\n     * Appends new elements to the end of an array, and returns the new length of the array.\n     * @param items New elements to add to the array.\n     */\n    push(...items: T[]): number;\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: ConcatArray<T>[]): T[];\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: (T | ConcatArray<T>)[]): T[];\n    /**\n     * Adds all the elements of an array into a string, separated by the specified separator string.\n     * @param separator A string used to separate one element of the array from the next in the resulting string. If omitted, the array elements are separated with a comma.\n     */\n    join(separator?: string): string;\n    /**\n     * Reverses the elements in an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     */\n    reverse(): T[];\n    /**\n     * Removes the first element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    shift(): T | undefined;\n    /**\n     * Returns a copy of a section of an array.\n     * For both start and end, a negative index can be used to indicate an offset from the end of the array.\n     * For example, -2 refers to the second to last element of the array.\n     * @param start The beginning index of the specified portion of the array.\n     * If start is undefined, then the slice begins at index 0.\n     * @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.\n     * If end is undefined, then the slice extends to the end of the array.\n     */\n    slice(start?: number, end?: number): T[];\n    /**\n     * Sorts an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     * @param compareFn Function used to determine the order of the elements. It is expected to return\n     * a negative value if the first argument is less than the second argument, zero if they're equal, and a positive\n     * value otherwise. If omitted, the elements are sorted in ascending, UTF-16 code unit order.\n     * ```ts\n     * [11,2,22,1].sort((a, b) => a - b)\n     * ```\n     */\n    sort(compareFn?: (a: T, b: T) => number): this;\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount?: number): T[];\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @param items Elements to insert into the array in place of the deleted elements.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount: number, ...items: T[]): T[];\n    /**\n     * Inserts new elements at the start of an array, and returns the new length of the array.\n     * @param items Elements to insert at the start of the array.\n     */\n    unshift(...items: T[]): number;\n    /**\n     * Returns the index of the first occurrence of a value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.\n     */\n    indexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Returns the index of the last occurrence of a specified value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin searching backward. If fromIndex is omitted, the search starts at the last index in the array.\n     */\n    lastIndexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[];\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Determines whether the specified callback function returns true for any element of an array.\n     * @param predicate A function that accepts up to three arguments. The some method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value true, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Performs the specified action for each element in an array.\n     * @param callbackfn A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;\n    /**\n     * Calls a defined callback function on each element of an array, and returns an array that contains the results.\n     * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[];\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n\n    [n: number]: T;\n}",
       "docstring": "",
+      "path": "src/components/checkbox/checkbox.interfaces.ts"
+    },
+    "src/components/checkbox/checkbox.interfaces.ts::CheckboxGroupFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
     "src/components/close/close.interfaces.ts::CloseSize": {
@@ -41741,6 +41898,11 @@
       "docstring": "",
       "path": "src/components/list/item/item.interfaces.ts"
     },
+    "src/components/logo/logo.interfaces.ts::LogoBrand": {
+      "declaration": "\"\" | \"baloise\" | \"helvetia\"",
+      "docstring": "",
+      "path": "src/components/logo/logo.interfaces.ts"
+    },
     "src/components/logo/logo.interfaces.ts::LogoColor": {
       "declaration": "\"primary\" | \"white\"",
       "docstring": "",
@@ -41748,11 +41910,6 @@
     },
     "src/components/logo/logo.interfaces.ts::LogoSize": {
       "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"large\"",
-      "docstring": "",
-      "path": "src/components/logo/logo.interfaces.ts"
-    },
-    "src/components/logo/logo.interfaces.ts::LogoBrand": {
-      "declaration": "\"\" | \"baloise\" | \"helvetia\"",
       "docstring": "",
       "path": "src/components/logo/logo.interfaces.ts"
     },
@@ -41831,6 +41988,11 @@
       "docstring": "",
       "path": "src/components/progress-bar/progress-bar.interfaces.ts"
     },
+    "src/components/radio/radio.interfaces.ts::RadioGroupColumns": {
+      "declaration": "4 | 3 | 1 | 2",
+      "docstring": "",
+      "path": "src/components/radio/radio.interfaces.ts"
+    },
     "src/components/radio/radio.interfaces.ts::RadioLabelPosition": {
       "declaration": "\"left\" | \"right\" | \"top\"",
       "docstring": "",
@@ -41839,16 +42001,6 @@
     "src/components/radio/radio.interfaces.ts::RadioTileColor": {
       "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
       "docstring": "",
-      "path": "src/components/radio/radio.interfaces.ts"
-    },
-    "src/components/radio/radio.interfaces.ts::RadioGroupColumns": {
-      "declaration": "4 | 3 | 1 | 2",
-      "docstring": "",
-      "path": "src/components/radio/radio.interfaces.ts"
-    },
-    "src/components/radio/radio.interfaces.ts::RadioFocusDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/radio/radio.interfaces.ts"
     },
     "src/components/radio/radio.interfaces.ts::RadioBlurDetail": {
@@ -41861,12 +42013,12 @@
       "docstring": "",
       "path": "src/components/radio/radio.interfaces.ts"
     },
-    "src/components/radio/radio.interfaces.ts::RadioGroupBlurDetail": {
+    "src/components/radio/radio.interfaces.ts::RadioFocusDetail": {
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/radio/radio.interfaces.ts"
     },
-    "src/components/radio/radio.interfaces.ts::RadioGroupFocusDetail": {
+    "src/components/radio/radio.interfaces.ts::RadioGroupBlurDetail": {
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/radio/radio.interfaces.ts"
@@ -41874,6 +42026,11 @@
     "src/components/radio/radio.interfaces.ts::RadioGroupChangeDetail": {
       "declaration": "boolean",
       "docstring": "",
+      "path": "src/components/radio/radio.interfaces.ts"
+    },
+    "src/components/radio/radio.interfaces.ts::RadioGroupFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/radio/radio.interfaces.ts"
     },
     "src/components/segment/segment-item.interfaces.ts::SegmentColor": {
@@ -41886,20 +42043,15 @@
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/segment/segment-item.interfaces.ts"
     },
-    "src/components/segment/segment-item.interfaces.ts::SegmentFocusDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
-      "path": "src/components/segment/segment-item.interfaces.ts"
-    },
     "src/components/segment/segment-item.interfaces.ts::SegmentChangeDetail": {
       "declaration": "boolean",
       "docstring": "",
       "path": "src/components/segment/segment-item.interfaces.ts"
     },
-    "src/components/shape/shape.interfaces.ts::ShapeVariation": {
-      "declaration": "\"1\" | \"2\" | \"3\"",
-      "docstring": "",
-      "path": "src/components/shape/shape.interfaces.ts"
+    "src/components/segment/segment-item.interfaces.ts::SegmentFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/segment/segment-item.interfaces.ts"
     },
     "src/components/shape/shape.interfaces.ts::ShapeColor": {
       "declaration": "\"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\"",
@@ -41908,6 +42060,11 @@
     },
     "src/components/shape/shape.interfaces.ts::ShapeRotation": {
       "declaration": "\"0\" | \"90\" | \"180\" | \"270\"",
+      "docstring": "",
+      "path": "src/components/shape/shape.interfaces.ts"
+    },
+    "src/components/shape/shape.interfaces.ts::ShapeVariation": {
+      "declaration": "\"1\" | \"2\" | \"3\"",
       "docstring": "",
       "path": "src/components/shape/shape.interfaces.ts"
     },
@@ -41941,8 +42098,8 @@
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
-    "src/components/tag/tag.interfaces.ts::TagSize": {
-      "declaration": "\"small\" | \"medium\" | \"large\"",
+    "src/components/tag/tag.interfaces.ts::TagPlacement": {
+      "declaration": "\"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
@@ -41951,8 +42108,8 @@
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
-    "src/components/tag/tag.interfaces.ts::TagPlacement": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+    "src/components/tag/tag.interfaces.ts::TagSize": {
+      "declaration": "\"small\" | \"medium\" | \"large\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
@@ -41961,8 +42118,8 @@
       "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
       "path": "src/components/tag/tag.interfaces.ts"
     },
-    "src/components/text/text.interfaces.ts::TextSize": {
-      "declaration": "\"\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"xs\" | \"md\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"lead\" | \"block\"",
+    "src/components/text/text.interfaces.ts::TextAlign": {
+      "declaration": "\"left\" | \"right\" | \"center\" | \"justify\"",
       "docstring": "",
       "path": "src/components/text/text.interfaces.ts"
     },
@@ -41971,23 +42128,23 @@
       "docstring": "",
       "path": "src/components/text/text.interfaces.ts"
     },
+    "src/components/text/text.interfaces.ts::TextSize": {
+      "declaration": "\"\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"xs\" | \"md\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"lead\" | \"block\"",
+      "docstring": "",
+      "path": "src/components/text/text.interfaces.ts"
+    },
     "src/components/text/text.interfaces.ts::TextSpace": {
       "declaration": "\"\" | \"none\" | \"bottom\" | \"top\" | \"all\"",
       "docstring": "",
       "path": "src/components/text/text.interfaces.ts"
     },
-    "src/components/text/text.interfaces.ts::TextAlign": {
-      "declaration": "\"left\" | \"right\" | \"center\" | \"justify\"",
-      "docstring": "",
-      "path": "src/components/text/text.interfaces.ts"
-    },
-    "src/components/textarea/textarea.interfaces.ts::TextareaWrap": {
-      "declaration": "\"off\" | \"hard\" | \"soft\"",
+    "src/components/textarea/textarea.interfaces.ts::TextareaInputMode": {
+      "declaration": "\"\" | \"none\" | \"search\" | \"text\" | \"numeric\" | \"tel\" | \"url\" | \"email\" | \"decimal\"",
       "docstring": "",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
-    "src/components/textarea/textarea.interfaces.ts::TextareaInputMode": {
-      "declaration": "\"\" | \"none\" | \"search\" | \"text\" | \"numeric\" | \"tel\" | \"url\" | \"email\" | \"decimal\"",
+    "src/components/textarea/textarea.interfaces.ts::TextareaWrap": {
+      "declaration": "\"off\" | \"hard\" | \"soft\"",
       "docstring": "",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
@@ -41996,14 +42153,9 @@
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
-    "src/components/textarea/textarea.interfaces.ts::TextareaKeyPressDetail": {
-      "declaration": "interface KeyboardEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */\n    readonly altKey: boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charCode)\n     */\n    readonly charCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code) */\n    readonly code: string;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/isComposing) */\n    readonly isComposing: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/key) */\n    readonly key: string;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keyCode)\n     */\n    readonly keyCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/location) */\n    readonly location: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat) */\n    readonly repeat: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/initKeyboardEvent)\n     */\n    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;\n    readonly DOM_KEY_LOCATION_STANDARD: 0x00;\n    readonly DOM_KEY_LOCATION_LEFT: 0x01;\n    readonly DOM_KEY_LOCATION_RIGHT: 0x02;\n    readonly DOM_KEY_LOCATION_NUMPAD: 0x03;\n}",
-      "docstring": "KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
-      "path": "src/components/textarea/textarea.interfaces.ts"
-    },
-    "src/components/textarea/textarea.interfaces.ts::TextareaFocusDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+    "src/components/textarea/textarea.interfaces.ts::TextareaChangeDetail": {
+      "declaration": "export type TextareaChangeDetail = string | null",
+      "docstring": "",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
     "src/components/textarea/textarea.interfaces.ts::TextareaClickDetail": {
@@ -42011,14 +42163,19 @@
       "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
+    "src/components/textarea/textarea.interfaces.ts::TextareaFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/textarea/textarea.interfaces.ts"
+    },
     "src/components/textarea/textarea.interfaces.ts::TextareaInputDetail": {
       "declaration": "export type TextareaInputDetail = string | null",
       "docstring": "",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
-    "src/components/textarea/textarea.interfaces.ts::TextareaChangeDetail": {
-      "declaration": "export type TextareaChangeDetail = string | null",
-      "docstring": "",
+    "src/components/textarea/textarea.interfaces.ts::TextareaKeyPressDetail": {
+      "declaration": "interface KeyboardEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */\n    readonly altKey: boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charCode)\n     */\n    readonly charCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code) */\n    readonly code: string;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/isComposing) */\n    readonly isComposing: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/key) */\n    readonly key: string;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keyCode)\n     */\n    readonly keyCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/location) */\n    readonly location: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat) */\n    readonly repeat: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/initKeyboardEvent)\n     */\n    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;\n    readonly DOM_KEY_LOCATION_STANDARD: 0x00;\n    readonly DOM_KEY_LOCATION_LEFT: 0x01;\n    readonly DOM_KEY_LOCATION_RIGHT: 0x02;\n    readonly DOM_KEY_LOCATION_NUMPAD: 0x03;\n}",
+      "docstring": "KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
     "src/components/toggle/toggle.interfaces.ts::ToggleTileColor": {
@@ -42026,9 +42183,14 @@
       "docstring": "",
       "path": "src/components/toggle/toggle.interfaces.ts"
     },
-    "src/components/toggle/toggle.interfaces.ts::ToggleFocusDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+    "src/components/toggle/toggle.interfaces.ts::ToggleGroupColumns": {
+      "declaration": "4 | 3 | 1 | 2",
+      "docstring": "",
+      "path": "src/components/toggle/toggle.interfaces.ts"
+    },
+    "src/components/toggle/toggle.interfaces.ts::ToggleLabelPosition": {
+      "declaration": "\"left\" | \"right\" | \"top\"",
+      "docstring": "",
       "path": "src/components/toggle/toggle.interfaces.ts"
     },
     "src/components/toggle/toggle.interfaces.ts::ToggleBlurDetail": {
@@ -42039,6 +42201,11 @@
     "src/components/toggle/toggle.interfaces.ts::ToggleChangeDetail": {
       "declaration": "boolean",
       "docstring": "",
+      "path": "src/components/toggle/toggle.interfaces.ts"
+    },
+    "src/components/toggle/toggle.interfaces.ts::ToggleFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/toggle/toggle.interfaces.ts"
     }
   }

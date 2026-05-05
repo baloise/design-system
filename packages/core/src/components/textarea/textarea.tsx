@@ -1,12 +1,35 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
-import { inheritAttributes, FormControl, FormControlInterface, debounceEvent, Logger, type LogInstance } from '@utils'
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import {
+  inheritAttributes,
+  FormControl,
+  FormControlInterface,
+  debounceEvent,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
-import { InputColor, InputAutocomplete } from '../input/input.interfaces'
+import { INPUT_COLORS, InputColor, InputAutocomplete } from '../input/input.interfaces'
 import {
   TextareaWrap,
   TextareaInputMode,
+  TEXTAREA_WRAPS,
   TextareaBlurDetail,
   TextareaKeyPressDetail,
   TextareaFocusDetail,
@@ -41,12 +64,11 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   }
 
   @Element() el!: HTMLStencilElement
+  @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
-
-  @AttachInternals() internals!: ElementInternals
 
   /**
    * PUBLIC PROPERTY API
@@ -54,124 +76,161 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    */
 
   /**
+   * Indicates whether and how the text value should be automatically capitalized.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly autocapitalize: string = 'off'
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly autocomplete: InputAutocomplete = 'off'
+
+  /**
+   * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly autofocus: boolean = false
+
+  /**
+   * If `true`, in Angular reactive forms the control will not be set invalid.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly autoInvalidOff: boolean = false
+
+  /**
+   * Defines the color state of the textarea.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  readonly color: InputColor = 'primary'
+
+  /**
+   * The visible width of the text control, in average character widths.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly cols?: number
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly debounce: number = 0
+
+  @Watch('debounce')
+  debounceChanged() {
+    this.dsChange = debounceEvent(this.dsChange, this.debounce)
+  }
+
+  /**
+   * The description displayed below the textarea field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description: string = ''
+
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
+
+  /**
+   * A hint to the browser for which keyboard to display.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly inputmode?: TextareaInputMode
+
+  /**
+   * If `true` the component gets an invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * Text shown in the description area when `invalid` is true.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly invalidText: string = ''
+
+  /**
+   * The label displayed above the textarea field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Specifies the maximum number of characters that the user can enter.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly maxLength?: number
+
+  /**
+   * Specifies the minimum number of characters that the user can enter.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly minLength?: number
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
+
+  /**
+   * Instructional text that shows before the textarea has a value.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly placeholder: string = ''
+
+  /**
+   * If `true` the element can not be mutated, meaning the user can not edit the control.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
+
+  /**
+   * The number of visible text lines for the control.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly rows?: number
+
+  /**
    * The value of the textarea.
    */
   @Prop({ mutable: true, reflect: true }) value: string | null = null
 
   /**
-   * The name of the control, which is submitted with the form data.
-   */
-  @Prop() readonly name: string = this.inputId
-
-  /**
-   * The label displayed above the textarea field.
-   */
-  @Prop() readonly label: string = ''
-
-  /**
-   * The description displayed below the textarea field.
-   */
-  @Prop() readonly description: string = ''
-
-  /**
-   * Defines the color state of the textarea.
-   */
-  @Prop() readonly color: InputColor = 'primary'
-
-  /**
-   * Text shown in the description area when `invalid` is true.
-   */
-  @Prop() readonly invalidText: string = ''
-
-  /**
-   * If `true` the component gets an invalid style.
-   */
-  @Prop() readonly invalid: boolean = false
-
-  /**
-   * Indicates whether and how the text value should be automatically capitalized.
-   */
-  @Prop() readonly autocapitalize = 'off'
-
-  /**
-   * Indicates whether the value of the control can be automatically completed by the browser.
-   */
-  @Prop() readonly autocomplete: InputAutocomplete = 'off'
-
-  /**
-   * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-   */
-  @Prop() readonly autofocus: boolean = false
-
-  /**
-   * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
-   */
-  @Prop() readonly debounce = 0
-
-  @Watch('debounce')
-  protected debounceChanged() {
-    this.dsChange = debounceEvent(this.dsChange, this.debounce)
-  }
-
-  /**
-   * Instructional text that shows before the textarea has a value.
-   */
-  @Prop() readonly placeholder: string = ''
-
-  /**
-   * Specifies the maximum number of characters that the user can enter.
-   */
-  @Prop() readonly maxLength?: number
-
-  /**
-   * Specifies the minimum number of characters that the user can enter.
-   */
-  @Prop() readonly minLength?: number
-
-  /**
-   * If `true`, the element is not mutable, focusable, or even submitted with the form.
-   */
-  @Prop() readonly disabled: boolean = false
-
-  /**
-   * If `true` the element can not be mutated, meaning the user can not edit the control.
-   */
-  @Prop() readonly readonly: boolean = false
-
-  /**
-   * The visible width of the text control, in average character widths.
-   */
-  @Prop() readonly cols?: number
-
-  /**
-   * The number of visible text lines for the control.
-   */
-  @Prop() readonly rows?: number
-
-  /**
    * Indicates how the control wraps text.
    */
-  @Prop() readonly wrap?: TextareaWrap
-
-  /**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() readonly required: boolean = true
-
-  /**
-   * A hint to the browser for which keyboard to display.
-   */
-  @Prop() readonly inputmode?: TextareaInputMode
-
-  /**
-   * If `true`, in Angular reactive forms the control will not be set invalid.
-   */
-  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
-
-  /**
-   * EVENTS
-   * ------------------------------------------------------
-   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...TEXTAREA_WRAPS)
+  readonly wrap?: TextareaWrap
 
   /**
    * Emitted when a keyboard input occurred.
@@ -179,14 +238,9 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   @Event() dsBlur!: EventEmitter<TextareaBlurDetail>
 
   /**
-   * Emitted when a keyboard key has been pressed.
+   * Emitted when the textarea value has changed.
    */
-  @Event() dsKeyPress!: EventEmitter<TextareaKeyPressDetail>
-
-  /**
-   * Emitted when the textarea has focus.
-   */
-  @Event() dsFocus!: EventEmitter<TextareaFocusDetail>
+  @Event() dsChange!: EventEmitter<TextareaChangeDetail>
 
   /**
    * Emitted when the textarea has been clicked.
@@ -194,17 +248,41 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   @Event() dsClick!: EventEmitter<TextareaClickDetail>
 
   /**
+   * Emitted when the textarea has focus.
+   */
+  @Event() dsFocus!: EventEmitter<TextareaFocusDetail>
+
+  /**
    * Emitted when a keyboard input occurred.
    */
   @Event() dsInput!: EventEmitter<TextareaInputDetail>
 
   /**
-   * Emitted when the textarea value has changed.
+   * Emitted when a keyboard key has been pressed.
    */
-  @Event() dsChange!: EventEmitter<TextareaChangeDetail>
+  @Event() dsKeyPress!: EventEmitter<TextareaKeyPressDetail>
 
   /**
-   * LISTENERS
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    setupValidation(this)
+    this.debounceChanged()
+    this.control.connectedCallback()
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
+  }
+
+  componentDidLoad() {
+    this.control.componentDidLoad()
+  }
+
+  /**
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -216,34 +294,6 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   @Listen('reset', { capture: true, target: 'document' })
   listenToReset(ev: UIEvent) {
     this.control.listenOnReset(ev)
-  }
-
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-  }
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    this.debounceChanged()
-    this.control.connectedCallback()
-  }
-
-  componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
-  }
-
-  componentDidLoad() {
-    this.control.componentDidLoad()
   }
 
   /**
@@ -272,12 +322,22 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * Returns the native `<textarea>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLTextAreaElement> {
-    return Promise.resolve(this.control.nativeEl as HTMLTextAreaElement)
+  async getInputElement(): Promise<HTMLTextAreaElement> {
+    return this.control.nativeEl as HTMLTextAreaElement
   }
 
   /**
-   * PRIVATE METHODS
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
+   * EVENT HANDLERS
    * ------------------------------------------------------
    */
 

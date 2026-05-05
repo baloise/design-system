@@ -1,6 +1,20 @@
-import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State } from '@stencil/core'
-import { stopEventBubbling, normalizeDeprecatedTShirtSize, Logger, type LogInstance } from '@utils'
-import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from './notification.interfaces'
+import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State, Watch } from '@stencil/core'
+import {
+  stopEventBubbling,
+  normalizeDeprecatedTShirtSize,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
+import {
+  NOTIFICATION_COLORS,
+  NOTIFICATION_SIZES,
+  NotificationCloseClickDetail,
+  NotificationColor,
+  NotificationSize,
+} from './notification.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
@@ -8,8 +22,9 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
  *
  * @slot - The notification message content.
- * @part notification - The notification container element.
- * @part icon - The icon wrapper.
+ * @part section - The notification container element.
+ * @part close - The close button.
+ * @part heading - The notification heading.
  */
 @Component({
   tag: 'ds-notification',
@@ -31,43 +46,61 @@ export class Notification implements DsComponentInterface {
   private timer!: NodeJS.Timeout
 
   /**
-   * Defines the color of the element
-   * Color type primary is deprecated, please use info instead.
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
    */
-  @Prop() readonly color?: NotificationColor
 
   /**
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
-  @Prop() readonly alert: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly alert: boolean = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
-  @Prop() readonly closable: boolean = false
-
-  /**
-   * If `true` there will be no icon provided
-   */
-  @Prop() readonly noIcon: boolean = false
-
-  /**
-   * Defines the size of the notification, small, medium or large.
-   */
-  @Prop({ reflect: true, mutable: true }) size?: NotificationSize
-  private watchSize(newValue: NotificationSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
-  }
-
-  /**
-   * Defines the heading of the notification.
-   */
-  @Prop() readonly heading: string = ''
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly closable: boolean = false
 
   /**
    * @internal Handler for on close event
    */
   @Prop() readonly closeHandler: () => void = () => void 0
+
+  /**
+   * Defines the color of the element
+   * Color type primary is deprecated, please use info instead.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...NOTIFICATION_COLORS)
+  readonly color?: NotificationColor
+
+  /**
+   * Defines the heading of the notification.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly heading: string = ''
+
+  /**
+   * If `true` there will be no icon provided
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly noIcon: boolean = false
+
+  /**
+   * Defines the size of the notification, small, medium or large.
+   */
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...NOTIFICATION_SIZES)
+  size?: NotificationSize
+  @Watch('size')
+  sizeChanged(newValue: NotificationSize) {
+    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+  }
 
   /**
    * Emitted when the close button got clicked.
@@ -79,14 +112,29 @@ export class Notification implements DsComponentInterface {
    */
   @Event() dsDidLoad!: EventEmitter<void>
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
   connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+    setupValidation(this)
+    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   componentDidLoad(): void {
     this.didLoad = true
     this.dsDidLoad.emit()
   }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Closes this notification
@@ -96,6 +144,11 @@ export class Notification implements DsComponentInterface {
     this.dsCloseClick.emit()
     this.closeHandler()
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     let a11yAttributes = {}

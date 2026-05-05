@@ -1,5 +1,17 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import isEmpty from 'lodash/isEmpty'
 import isNaN from 'lodash/isNaN'
 import isNil from 'lodash/isNil'
@@ -13,6 +25,9 @@ import {
   type LogInstance,
   getDecimalSeparator,
   getThousandSeparator,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
@@ -24,7 +39,7 @@ import {
   validateKeyDown,
 } from './number-input.utils'
 import { Field, FieldInterface } from '../input/field.util'
-import { InputColor } from '../input/input.interfaces'
+import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
 import {
   NumberInputInputDetail,
   NumberInputChangeDetail,
@@ -55,7 +70,6 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   private inheritedAttributes: { [k: string]: any } = {}
   private selectTimeout?: NodeJS.Timeout
   private control = new FormControl<number | null>(this)
-
   private lastValue = ''
 
   log!: LogInstance
@@ -65,6 +79,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   }
 
   @Element() el!: HTMLStencilElement
+  @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
   @State() language: DsLanguage = defaultConfig.language
@@ -72,25 +87,147 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   @State() nativeInputValue = ''
   @State() inputPattern = ''
 
-  @AttachInternals() internals!: ElementInternals
-
-  // Convenience getter — avoids repeated casting throughout the component
-  private get nativeInput(): HTMLInputElement | undefined {
-    return this.control.nativeEl as HTMLInputElement | undefined
-  }
-
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
 
   /**
+   * Defines the color state of the input.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  readonly color: InputColor = 'primary'
+
+  /**
+   * Milliseconds to wait before triggering `dsChange` after each keystroke.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly debounce: number = 0
+  @Watch('debounce')
+  debounceChanged() {
+    this.dsChange = debounceEvent(this.dsChange, this.debounce)
+  }
+
+  /**
+   * Number of allowed decimal places. `0` means integers only.
+   */
+  @Prop()
+  @ValidateEmptyOrType('number')
+  readonly decimal: number = 0
+
+  /**
+   * The description displayed below the field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description: string = ''
+
+  /**
+   * If `true`, the element is not mutable, focusable, or submitted with the form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
+
+  /**
+   * When `true`, displays `0` instead of an empty field when value is null.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly exactNumber: boolean = false
+
+  /**
+   * If `true` the component gets an invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * Text shown in the description area when `invalid` is true.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly invalidText: string = ''
+
+  /**
+   * The label displayed above the field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * The maximum value.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly max: string = ''
+
+  /**
+   * The minimum value.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly min: string = ''
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.numberInputId
+
+  /**
+   * When `true`, only positive numbers are accepted (blocks the minus sign).
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly onlyPositive: boolean = false
+
+  /**
+   * Overrides the auto-generated input validation pattern.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly pattern: string = ''
+
+  /**
+   * Instructional text shown when the input has no value.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly placeholder: string = ''
+
+  /**
+   * If `true`, the element cannot be edited by the user.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
+
+  /**
+   * Text appended to the formatted value after blur (e.g. `"CHF"`).
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly suffix: string = ''
+
+  /**
    * The numeric value of the input. `null` means no value.
    */
   @Prop({ mutable: true, reflect: true }) value: number | null = null
-
   @Watch('value')
-  protected valueChanged(newValue: number | null) {
+  valueChanged(newValue: number | null) {
     const isValueNotDefined = newValue === null || isNaN(newValue as number)
     const emptyValue = this.exactNumber ? '0' : ''
     const rawStr = isValueNotDefined ? emptyValue : (newValue as number).toFixed(this.decimal)
@@ -102,106 +239,6 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
       this.nativeInputValue = toUserFormattedNumber(rawStr, this.decimal, this.suffix)
     }
   }
-
-  /**
-   * The name of the control, which is submitted with the form data.
-   */
-  @Prop() readonly name: string = this.numberInputId
-
-  /**
-   * The label displayed above the field.
-   */
-  @Prop() readonly label: string = ''
-
-  /**
-   * The description displayed below the field.
-   */
-  @Prop() readonly description: string = ''
-
-  /**
-   * Defines the color state of the input.
-   */
-  @Prop() readonly color: InputColor = 'primary'
-
-  /**
-   * Text shown in the description area when `invalid` is true.
-   */
-  @Prop() readonly invalidText: string = ''
-
-  /**
-   * If `true` the component gets an invalid style.
-   */
-  @Prop() readonly invalid: boolean = false
-
-  /**
-   * Number of allowed decimal places. `0` means integers only.
-   */
-  @Prop() readonly decimal = 0
-
-  /**
-   * When `true`, only positive numbers are accepted (blocks the minus sign).
-   */
-  @Prop() readonly onlyPositive: boolean = false
-
-  /**
-   * Text appended to the formatted value after blur (e.g. `"CHF"`).
-   */
-  @Prop() readonly suffix: string = ''
-
-  /**
-   * Overrides the auto-generated input validation pattern.
-   */
-  @Prop() readonly pattern: string = ''
-
-  /**
-   * Instructional text shown when the input has no value.
-   */
-  @Prop() readonly placeholder: string = ''
-
-  /**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() readonly required: boolean = true
-
-  /**
-   * If `true`, the element is not mutable, focusable, or submitted with the form.
-   */
-  @Prop() readonly disabled: boolean = false
-
-  /**
-   * If `true`, the element cannot be edited by the user.
-   */
-  @Prop() readonly readonly: boolean = false
-
-  /**
-   * When `true`, displays `0` instead of an empty field when value is null.
-   */
-  @Prop() readonly exactNumber: boolean = false
-
-  /**
-   * The maximum value.
-   */
-  @Prop() readonly max: string = ''
-
-  /**
-   * The minimum value.
-   */
-  @Prop() readonly min: string = ''
-
-  /**
-   * Milliseconds to wait before triggering `dsChange` after each keystroke.
-   */
-  @Prop() readonly debounce = 0
-
-  @Watch('debounce')
-  protected debounceChanged() {
-    this.dsChange = debounceEvent(this.dsChange, this.debounce)
-  }
-
-  /**
-   * EVENTS
-   * ------------------------------------------------------
-   */
 
   /**
    * Emitted on each keystroke with the current numeric value (or null).
@@ -234,7 +271,32 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   @Event() dsKeyPress!: EventEmitter<NumberInputKeyPressDetail>
 
   /**
-   * LISTENERS
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    setupValidation(this)
+    this.debounceChanged()
+    this.control.connectedCallback()
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+    this.inputPattern = this.createPattern()
+    this.valueChanged(this.value)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
+  componentDidLoad() {
+    this.control.componentDidLoad()
+  }
+
+  /**
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -274,26 +336,6 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   }
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    this.debounceChanged()
-    this.control.connectedCallback()
-  }
-
-  componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-    this.inputPattern = this.createPattern()
-    this.valueChanged(this.value)
-  }
-
-  componentDidLoad() {
-    this.control.componentDidLoad()
-  }
-
-  /**
    * PUBLIC METHODS
    * ------------------------------------------------------
    */
@@ -319,36 +361,14 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!)
+  async getInputElement(): Promise<HTMLInputElement> {
+    return this.nativeInput!
   }
 
   /**
-   * PRIVATE METHODS
+   * EVENT HANDLERS
    * ------------------------------------------------------
    */
-
-  private get lastValueGetter(): string {
-    if (this.exactNumber && (isNil(this.lastValue) || isEmpty(this.lastValue))) {
-      return '0'
-    }
-    return this.lastValue
-  }
-
-  private createPattern(): string {
-    if (this.pattern) return this.pattern
-
-    let suffix = this.suffix || ''
-    if (suffix !== '') suffix = ` ${suffix}`
-
-    const thousandSeparator = getThousandSeparator()
-    let decimalSeparator = getDecimalSeparator()
-    if (decimalSeparator === ',') decimalSeparator = '\\,'
-
-    const negativeSymbol = this.onlyPositive ? '' : '-'
-
-    return `${negativeSymbol}?\\d{1,3}(?:${thousandSeparator}\\d{3})*(?:\\${decimalSeparator}\\d{1,2})?(?:${suffix})?`
-  }
 
   private handleInput = (_ev: Event) => {
     if (this.nativeInput && isNotNumber(this.nativeInput.value)) {
@@ -410,6 +430,37 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
     ) {
       return stopEventBubbling(ev)
     }
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private get nativeInput(): HTMLInputElement | undefined {
+    return this.control.nativeEl as HTMLInputElement | undefined
+  }
+
+  private get lastValueGetter(): string {
+    if (this.exactNumber && (isNil(this.lastValue) || isEmpty(this.lastValue))) {
+      return '0'
+    }
+    return this.lastValue
+  }
+
+  private createPattern(): string {
+    if (this.pattern) return this.pattern
+
+    let suffix = this.suffix || ''
+    if (suffix !== '') suffix = ` ${suffix}`
+
+    const thousandSeparator = getThousandSeparator()
+    let decimalSeparator = getDecimalSeparator()
+    if (decimalSeparator === ',') decimalSeparator = '\\,'
+
+    const negativeSymbol = this.onlyPositive ? '' : '-'
+
+    return `${negativeSymbol}?\\d{1,3}(?:${thousandSeparator}\\d{3})*(?:\\${decimalSeparator}\\d{1,2})?(?:${suffix})?`
   }
 
   /**

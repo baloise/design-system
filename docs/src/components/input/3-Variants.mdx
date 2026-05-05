@@ -20,34 +20,58 @@ import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={InputStories.Types}></StoryHeading>
+<StoryHeading of={InputStories.Disabled}></StoryHeading>
 
-Inputs support various types including text, email, password, search, and more. Each type provides appropriate keyboard and validation behavior.
-
-<CanvasTabs />
+<CanvasTabs of={InputStories.Disabled} htmlOf={InputStories.DisabledHtml} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={InputStories.States}></StoryHeading>
+<StoryHeading of={InputStories.Invalid}></StoryHeading>
 
-Inputs can show validation states: valid, invalid, or neutral. Use these to provide user feedback.
-
-<CanvasTabs />
+<CanvasTabs of={InputStories.Invalid} htmlOf={InputStories.InvalidHtml} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={InputStories.WithIcon}></StoryHeading>
+<StoryHeading of={InputStories.Valid}></StoryHeading>
 
-Inputs can display leading or trailing icons to provide context or indicate action (search, clear, etc).
-
-<CanvasTabs />
+<CanvasTabs of={InputStories.Valid} htmlOf={InputStories.ValidHtml} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={InputStories.Sizes}></StoryHeading>
+<StoryHeading of={InputStories.Loading}></StoryHeading>
 
-Control input field size with size prop. Options include small and normal (default).
+<CanvasTabs of={InputStories.Loading} htmlOf={InputStories.LoadingHtml} sourceState="shown" />
 
-<CanvasTabs />
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Suffix}></StoryHeading>
+
+<CanvasTabs of={InputStories.Suffix} htmlOf={InputStories.SuffixHtml} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.NumberType}></StoryHeading>
+
+<CanvasTabs of={InputStories.NumberType} htmlOf={InputStories.NumberTypeHtml} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.FormReset}></StoryHeading>
+
+<CanvasTabs of={InputStories.FormReset} htmlOf={InputStories.FormResetHtml} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Slots}></StoryHeading>
+
+<Canvas of={InputStories.Slots} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStories.Formatter}></StoryHeading>
+
+<Canvas of={InputStories.Formatter} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
 
 <Footer />

@@ -1,6 +1,14 @@
-import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
-import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import { ElementStateInfo, normalizeDeprecatedTShirtSize, Logger, type LogInstance } from '@utils'
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import {
+  ElementStateInfo,
+  normalizeDeprecatedTShirtSize,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -11,7 +19,7 @@ import {
   DsComponentInterface,
 } from '@global'
 import { I18nDsLabel } from './label.i18n'
-import { LABEL_WEIGHTS, LABEL_SIZES, type LabelWeight, type LabelSize } from './label.interfaces'
+import { LABEL_SIZES, LABEL_WEIGHTS, type LabelSize, type LabelWeight } from './label.interfaces'
 
 /**
  * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
@@ -25,11 +33,6 @@ import { LABEL_WEIGHTS, LABEL_SIZES, type LabelWeight, type LabelSize } from './
   shadow: true,
 })
 export class Label implements DsComponentInterface, DsConfigObserver, ElementStateInfo {
-  @Element() el!: HTMLStencilElement
-
-  @State() language: DsLanguage = defaultConfig.language
-  @State() region: DsRegion = defaultConfig.region
-
   log!: LogInstance
 
   @Logger('label')
@@ -37,73 +40,112 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
+
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+
   /**
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
 
   /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
+
+  /**
    * The value of the for attribute must be a single id for a labeled
    * form-related element in the same document as the <label> element.
    * So, any given label element can be associated with only one form control.
    */
-  @Prop() readonly htmlFor: string = ''
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly htmlFor: string = ''
 
   /**
    * Define the id of the native label element
    */
-  @Prop() readonly htmlId: string = `ds-lbl-${labelIds++}`
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly htmlId: string = `ds-lbl-${labelIds++}`
 
   /**
-   * If `true` the form control needs to be filled. If it is set to
-   * `false` an optional label is added to the label..
+   * @internal
    */
-  @Prop({ reflect: true }) readonly required: boolean = true
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly hovered: boolean = false
+
+  /**
+   * If `true` the component gets a invalid red style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
 
   /**
    * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
    * Please note that text overflow can only occur in block or inline-block level elements,
    * as these elements require a width to overflow.
    */
-  @Prop({ reflect: true }) readonly noWrap: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly noWrap: boolean = false
 
   /**
-   * If `true` the component gets a valid green style.
+   * @internal
    */
-  @Prop({ reflect: true }) readonly valid: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly pressed: boolean = false
 
   /**
-   * If `true` the component gets a invalid red style.
+   * If `true` the form control needs to be filled. If it is set to
+   * `false` an optional label is added to the label..
    */
-  @Prop({ reflect: true }) readonly invalid: boolean = false
-
-  /**
-   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-   */
-  @Prop({ reflect: true }) readonly disabled: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop({ mutable: true, reflect: true }) size?: LabelSize
+  @Prop({ mutable: true })
+  @ValidateEmptyOrOneOf(...LABEL_SIZES)
+  size?: LabelSize
   @Watch('size')
   sizeChanged(newValue: LabelSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
   }
 
   /**
-   * @internal
+   * If `true` the component gets a valid green style.
    */
-  @Prop() readonly hovered: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly valid: boolean = false
 
   /**
-   * @internal
+   * LIFECYCLE
+   * ------------------------------------------------------
    */
-  @Prop() readonly pressed: boolean = false
+
+  connectedCallback(): void {
+    setupValidation(this)
+    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
+  }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -115,15 +157,6 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
   async configChanged(state: DsConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
-  }
-
-  /**
-   * PUBLIC METHODS
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
   }
 
   /**

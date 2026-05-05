@@ -19,6 +19,9 @@ import {
   isDescendant,
   waitAfterIdleCallback,
   stopEventBubbling,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
 } from '@utils'
 import { FOCUS_KEYS } from '../app/app.focus.util'
 import {
@@ -40,8 +43,9 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The radio label content.
  * @slot helper - The helper or hint text below the radio.
- * @part radio - The native HTML input element.
- * @part container - The radio and label wrapper.
+ * @part label - The label wrapper element.
+ * @part input - The native HTML input element.
+ * @part slot - The content slot wrapper.
  */
 @Component({
   tag: 'ds-radio',
@@ -55,19 +59,21 @@ export class Radio implements DsComponentInterface {
   private keyboardMode = true
   private nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLStencilElement
-
   log!: LogInstance
+
   @Logger('radio')
   createLogger(log: LogInstance) {
     this.log = log
   }
 
+  @Element() el!: HTMLStencilElement
   @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
   @State() wasFocused = false
   @State() buttonTabindex?: number
+
+  private initialValue = false
 
   /**
    * PUBLIC PROPERTY API
@@ -75,87 +81,109 @@ export class Radio implements DsComponentInterface {
    */
 
   /**
-   * The name of the control, which is submitted with the form data.
+   * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop() readonly name: string = this.inputId
-
-  /**
-   * Label of the radio item.
-   */
-  @Prop() readonly label = ''
-
-  /**
-   * Defines the position of the label, either before or after the radio input. Default is after.
-   */
-  @Prop() readonly labelPosition: RadioLabelPosition = 'right'
-
-  /**
-   * A DOMString representing the value of the checkbox. This is not displayed on the
-   * client-side, but on the server this is the value given to the data
-   * submitted with the checkbox's name.
-   */
-  @Prop() value?: any | null
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true }) checked = false
-  private initialValue = false
+  @Prop({ mutable: true, reflect: true })
+  @ValidateEmptyOrType('boolean')
+  checked = false
+
+  /**
+   * @internal
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  readonly cols: RadioGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  readonly colsMobile: RadioGroupColumns = 1
+
+  /**
+   * @internal
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  readonly colsTablet: RadioGroupColumns = 1
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() readonly disabled: boolean = false
-
-  /**
-   * If `true` the element can not mutated, meaning the user can not edit the control.
-   */
-  @Prop() readonly readonly: boolean = false
-
-  /**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() readonly required: boolean = false
-
-  /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
-   */
-  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() readonly invalid: boolean = false
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * Label of the radio item.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Defines the position of the label, either before or after the radio input. Default is after.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_LABEL_POSITIONS)
+  readonly labelPosition: RadioLabelPosition = 'right'
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = false
 
   /**
    * Defines the layout of the input
    */
-  @Prop() readonly tile: boolean = false
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
 
   /**
    * Defines the color of the tile radio.
    */
-  @Prop() readonly tileColor?: RadioTileColor
+  @Prop()
+  @ValidateEmptyOrOneOf(...RADIO_TILE_COLORS)
+  readonly tileColor?: RadioTileColor
 
   /**
-   * @internal
+   * A DOMString representing the value of the radio. This is not displayed on the
+   * client-side, but on the server this is the value given to the data
+   * submitted with the radio's name.
    */
-  @Prop() readonly cols: RadioGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop() readonly colsTablet: RadioGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop() readonly colsMobile: RadioGroupColumns = 1
-
-  /**
-   * Emitted when the toggle has focus.
-   */
-  @Event() dsFocus!: EventEmitter<RadioFocusDetail>
+  @Prop({ mutable: true, reflect: true }) value?: any | null
 
   /**
    * Emitted when the toggle loses focus.
@@ -168,11 +196,17 @@ export class Radio implements DsComponentInterface {
   @Event() dsChange!: EventEmitter<RadioChangeDetail>
 
   /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() dsFocus!: EventEmitter<RadioFocusDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   connectedCallback() {
+    setupValidation(this)
     if (this.value === undefined) {
       this.value = this.inputId
     }
@@ -192,6 +226,10 @@ export class Radio implements DsComponentInterface {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   disconnectedCallback() {
     if (this.group) {
       this.group.removeEventListener('dsChange', this.updateState)
@@ -203,7 +241,7 @@ export class Radio implements DsComponentInterface {
   }
 
   /**
-   * LISTENERS
+   * PUBLIC LISTENERS
    * ------------------------------------------------------
    */
 
@@ -263,33 +301,6 @@ export class Radio implements DsComponentInterface {
   }
 
   /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
-
-  private get group(): HTMLDsRadioGroupElement | null {
-    return this.el.closest('ds-radio-group')
-  }
-
-  /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private setChecked = (state: boolean) => {
-    this.checked = state
-    this.dsChange.emit(this.checked)
-  }
-
-  private toggleChecked = (ev: Event) => {
-    ev.preventDefault()
-
-    this.setFocus()
-    this.checked = true
-    this.setChecked(this.checked)
-  }
-
-  /**
    * EVENT HANDLERS
    * ------------------------------------------------------
    */
@@ -341,6 +352,28 @@ export class Radio implements DsComponentInterface {
     }
 
     this.toggleChecked(ev)
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private get group(): HTMLDsRadioGroupElement | null {
+    return this.el.closest('ds-radio-group')
+  }
+
+  private setChecked = (state: boolean) => {
+    this.checked = state
+    this.dsChange.emit(this.checked)
+  }
+
+  private toggleChecked = (ev: Event) => {
+    ev.preventDefault()
+
+    this.setFocus()
+    this.checked = true
+    this.setChecked(this.checked)
   }
 
   /**

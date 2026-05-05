@@ -34,35 +34,6 @@ import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
 
 ## Do's and Don'ts
 
-### Label Association
-
-Always use the `htmlFor` attribute to associate labels with their corresponding input fields. This improves accessibility and expands the clickable area.
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Label associated with input',
-      content: (
-        <>
-          <Code noPreview code={'<ds-label htmlFor="email-input">Email</ds-label>\n<input id="email-input" type="email" />'} />
-        </>
-      ),
-      description: 'Users can click the label to focus the input; screen readers announce the association',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Label not associated',
-      content: (
-        <>
-          <Code noPreview code={'<ds-label>Email</ds-label>\n<input type="email" />'} />
-        </>
-      ),
-      description: 'No programmatic relationship between label and input; poor accessibility',
-    },
-  ]}
-/>
-
 ### Required Indicators
 
 Use the `required` prop to automatically display required/optional indicators. Set to `false` to show "optional" suffix.
@@ -72,10 +43,11 @@ Use the `required` prop to automatically display required/optional indicators. S
     {
       type: 'correct',
       title: 'Correct: Clear required status',
+      contentIsLeftAligned: true,
       content: (
         <>
           <ds-label htmlFor="required-input" required="true">Email address</ds-label>
-          <ds-label htmlFor="optional-input" required="false" class="mt-normal">Company (optional)</ds-label>
+          <ds-label htmlFor="optional-input" required="false" class="mt-normal">Company</ds-label>
         </>
       ),
       description: 'Users understand which fields are required before interaction',
@@ -83,6 +55,7 @@ Use the `required` prop to automatically display required/optional indicators. S
     {
       type: 'incorrect',
       title: 'Incorrect: Ambiguous requirements',
+      contentIsLeftAligned: true,
       content: (
         <>
           <ds-label htmlFor="input">Email</ds-label>

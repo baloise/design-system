@@ -9,7 +9,7 @@ const tag = 'ds-toggle'
 const meta: Meta<Args> = {
   title: 'Components/Forms/Toggle/Variants',
   args: {
-    slot: 'Hello World',
+    slot: 'Toggle me',
   },
   argTypes: {
     ...withComponentControls({ tag }),
@@ -26,13 +26,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `
-<ds-toggle name="basic" value="1">Unchecked</ds-toggle>
-<ds-toggle name="basic" value="2" checked>Checked</ds-toggle>`,
-  ),
-})
+export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
@@ -40,22 +34,16 @@ export const BasicHtml = Story({
     () => `
 <label class="toggle">
   <input type="checkbox" />
-  Unchecked
-</label>
-<label class="toggle">
-  <input type="checkbox" checked />
-  Checked
+  Toggle me
 </label>`,
   ),
 })
 BasicHtml.storyName = '🌍 Basic'
 
 export const Disabled = Story({
-  ...withRender(
-    () => `
-<ds-toggle name="disabled" value="1" disabled>Unchecked</ds-toggle>
-<ds-toggle name="disabled" value="2" disabled checked>Checked</ds-toggle>`,
-  ),
+  args: {
+    disabled: true,
+  },
 })
 Disabled.storyName = '🧩 Disabled'
 
@@ -65,21 +53,15 @@ export const DisabledHtml = Story({
 <label class="toggle is-disabled">
   <input type="checkbox" disabled />
   Unchecked
-</label>
-<label class="toggle is-disabled">
-  <input type="checkbox" checked disabled />
-  Checked
 </label>`,
   ),
 })
 DisabledHtml.storyName = '🌍 Disabled'
 
 export const Invalid = Story({
-  ...withRender(
-    () => `
-<ds-toggle name="invalid" value="1" invalid>Unchecked</ds-toggle>
-<ds-toggle name="invalid" value="2" invalid checked>Checked</ds-toggle>`,
-  ),
+  args: {
+    invalid: true,
+  },
 })
 Invalid.storyName = '🧩 Invalid'
 
@@ -89,10 +71,6 @@ export const InvalidHtml = Story({
 <label class="toggle is-invalid">
   <input type="checkbox" aria-invalid="true" />
   Unchecked
-</label>
-<label class="toggle is-invalid">
-  <input type="checkbox" checked aria-invalid="true" />
-  Checked
 </label>`,
   ),
 })
