@@ -9,29 +9,25 @@ import {
 import * as LinkStories from './link.stories'
 import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
-<Meta title="Components/Link/Variants" />
-<StoryHeading of={LinkStories.Basic} hidden></StoryHeading>
+<Meta title="Components/Link/Variants/Overview" />
+
 <Banner label={'Variants'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
-<BannerTabs
-  of={LinkStories}
-  tabs={getLinkTabs('variants')}
-/>
+
+<BannerTabs of={LinkStories} tabs={getLinkTabs('variants')} />
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={LinkStories.States}></StoryHeading>
+<StoryHeading of={LinkStories.Basic}></StoryHeading>
 
-Link states: default, hover, active, visited, and disabled.
-
-<CanvasTabs />
+<Canvas of={LinkStories.Basic} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={LinkStories.WithIcon}></StoryHeading>
+<StoryHeading of={LinkStories.Inverted}></StoryHeading>
 
-Links with icons for external links, downloads, or semantic meaning.
+<Canvas of={LinkStories.Inverted} className='bg-primary' />
 
-<CanvasTabs />
+{/* ------------------------------------------------------ */}
 
 <Footer />

@@ -13,10 +13,6 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag }),
   },
   ...withRender(({ ...args }) => `<ds-progress-bar ${props(args)}></ds-progress-bar>`),
-  // globals: {
-  //   // 👇 Set background value for all component stories
-  //   backgrounds: { value: 'purple' },
-  // },
 }
 
 export default meta

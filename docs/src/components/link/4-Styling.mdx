@@ -1,10 +1,8 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Source, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  ComponentCssVariables,
-  ComponentDesignTokens,
-  ComponentParts,
+  Clipboard,
   Footer,
 } from '../../../.storybook/blocks'
 import * as LinkStories from './link.stories'
@@ -16,10 +14,209 @@ import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <BannerTabs of={LinkStories} tabs={getLinkTabs('styling')} />
 
-<ComponentParts component="link" />
+<div className="sb-unstyled my-large">
+  <h2 className="title text-2xl mb-normal">CSS Variables</h2>
+  <p className="text-normal mb-normal">
+    Use these CSS variables to adjust the appearance of individual link instances. For global theming, use design tokens instead.
+  </p>
+  <table className="table w-full is-striped mb-large">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><Clipboard label="--link-color" /></td>
+        <td className="text-small">Text color in the default (resting) state</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-color-hover" /></td>
+        <td className="text-small">Text color on hover</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-color-active" /></td>
+        <td className="text-small">Text color when pressed or active</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-family" /></td>
+        <td className="text-small">Font family</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-weight" /></td>
+        <td className="text-small">Font weight</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-radius" /></td>
+        <td className="text-small">Border radius used by the focus ring</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-border-width" /></td>
+        <td className="text-small">Underline (text-decoration) thickness</td>
+      </tr>
+      <tr>
+        <td><Clipboard label="--link-underline-offset" /></td>
+        <td className="text-small">Distance between the text baseline and the underline</td>
+      </tr>
+    </tbody>
+  </table>
+  <p className="text-normal mb-small">
+    Set variables directly on the element to override styles for a specific instance:
+  </p>
+  <Source
+    dark
+    language="css"
+    code={`a.link {\n  --link-color: /* your value */;\n  --link-color-hover: /* your value */;\n}`}
+  />
+</div>
 
-<ComponentCssVariables component="link" />
-
-<ComponentDesignTokens component="link" />
+<div className="sb-unstyled my-large">
+  <h2 className="title text-2xl mb-normal">Design Tokens</h2>
+  <p className="text-normal mb-normal">
+    Design tokens define the default appearance of links. Override them on <code>:root</code> to apply a consistent
+    theme globally — unlike CSS variables, which only affect individual instances.
+  </p>
+  <table className="table w-full mb-large">
+    <thead>
+      <tr>
+        <th>CSS Variable</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody style={{ backgroundColor: 'var(--ds-color-white)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-color-base" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <div className="flex gap-small align-items-center">
+            <div className="radius flex-shrink-0" style={{ width: '20px', height: '20px', backgroundColor: '#000D6E', border: '1px solid var(--ds-color-grey-3)' }} />
+            <Clipboard label="#000D6E" />
+          </div>
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-color-base</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Color › Primary</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-color-base-hover" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <div className="flex gap-small align-items-center">
+            <div className="radius flex-shrink-0" style={{ width: '20px', height: '20px', backgroundColor: '#0014AA', border: '1px solid var(--ds-color-grey-3)' }} />
+            <Clipboard label="#0014AA" />
+          </div>
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-color-base-hover</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Color › PrimaryHover</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-white)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-color-base-active" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <div className="flex gap-small align-items-center">
+            <div className="radius flex-shrink-0" style={{ width: '20px', height: '20px', backgroundColor: '#000739', border: '1px solid var(--ds-color-grey-3)' }} />
+            <Clipboard label="#000739" />
+          </div>
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-color-base-active</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Color › PrimaryActive</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-color-inverted" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <div className="flex gap-small align-items-center">
+            <div className="radius flex-shrink-0" style={{ width: '20px', height: '20px', backgroundColor: '#FFFFFF', border: '1px solid var(--ds-color-grey-3)' }} />
+            <Clipboard label="#FFFFFF" />
+          </div>
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-color-inverted</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Color › InvertedPrimary</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-white)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-color-inverted-hover" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <div className="flex gap-small align-items-center">
+            <div className="radius flex-shrink-0" style={{ width: '20px', height: '20px', backgroundColor: '#A7D1FA', border: '1px solid var(--ds-color-grey-3)' }} />
+            <Clipboard label="#A7D1FA" />
+          </div>
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-color-inverted-hover</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Color › InvertedPrimaryHover</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-color-inverted-active" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <div className="flex gap-small align-items-center">
+            <div className="radius flex-shrink-0" style={{ width: '20px', height: '20px', backgroundColor: '#60A0E0', border: '1px solid var(--ds-color-grey-3)' }} />
+            <Clipboard label="#60A0E0" />
+          </div>
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-color-inverted-active</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Color › InvertedPrimaryActive</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-white)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-family" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <Clipboard label="inherit" />
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-family</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}></td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-weight" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <Clipboard label="700" />
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-grey-2)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-weight</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Text › Weight › Bold</td>
+      </tr>
+    </tbody>
+    <tbody style={{ backgroundColor: 'var(--ds-color-white)' }}>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}><Clipboard label="--ds-link-border-width" /></td>
+        <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
+          <Clipboard label="0.125rem" />
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: 'var(--ds-color-white)' }}>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>ds-link-border-width</td>
+        <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>Border › Width › Base</td>
+      </tr>
+    </tbody>
+  </table>
+  <p className="text-normal mb-small">Override globally by setting tokens on the <code>:root</code> selector:</p>
+  <Source
+    dark
+    language="css"
+    code={`:root {\n  --ds-link-color-base: /* your value */;\n  --ds-link-color-base-hover: /* your value */;\n}`}
+  />
+</div>
 
 <Footer />

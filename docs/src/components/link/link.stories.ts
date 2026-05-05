@@ -25,4 +25,16 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
-Basic.storyName = '🌍 Basic'
+Basic.storyName = 'Basic'
+
+export const Inverted = Story({
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
+  ...withRender(
+    ({ slot, ...args }) => `
+<a class="link is-inverted">${slot}</a>
+`,
+  ),
+})
+Inverted.storyName = 'Inverted'
