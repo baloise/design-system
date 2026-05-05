@@ -65,12 +65,12 @@ jobs:
       - name: Build Core
         run: npx nx run core:build
         env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
+          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
         run: npx nx run core:ci-e2e -- --update-snapshots
         env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
+          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Commit snapshots
         if: always()

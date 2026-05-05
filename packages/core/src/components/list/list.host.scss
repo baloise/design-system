@@ -1,0 +1,20 @@
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  ul,
+  ol {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}

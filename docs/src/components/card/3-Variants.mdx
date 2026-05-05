@@ -1,0 +1,50 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Variants/Overview" />
+<StoryHeading of={CardStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+<BannerTabs of={CardStories} tabs={getCardTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Outlined}></StoryHeading>
+
+<Canvas of={CardStories.Outlined} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.CardHeader}></StoryHeading>
+
+<Canvas of={CardStories.CardHeader} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.TileCard}></StoryHeading>
+
+<Canvas of={CardStories.TileCard} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.TeaserCards}></StoryHeading>
+
+<Canvas of={CardStories.TeaserCards} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.CardImages}></StoryHeading>
+
+<Canvas of={CardStories.CardImages} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.ImageTeaser}></StoryHeading>
+
+<Canvas of={CardStories.ImageTeaser} />
+
+{/* ------------------------------------------------------ */}
+
+<Footer />

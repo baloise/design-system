@@ -1,28 +1,46 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from './browser'
-import { BalConfig, useBalConfig } from './config'
+import { dsBrowser } from './browser'
+import { type DsConfig } from '@global'
 import {
-  balIconCaretDown,
-  balIconCaretLeft,
-  balIconCaretRight,
-  balIconCaretUp,
-  balIconCheck,
-  balIconClose,
-  balIconDate,
-  balIconDocument,
-  balIconEdit,
-  balIconInfoCircle,
-  balIconMenuBars,
-  balIconMinus,
-  balIconNavGoDown,
-  balIconNavGoLeft,
-  balIconNavGoRight,
-  balIconNavGoUp,
-  balIconPlus,
-  balIconTrash,
-  balIconUpload,
-} from './constants/icons.constant'
+  IconClock,
+  IconClose,
+  IconInfoCircle,
+  IconPlus,
+  IconMinus,
+  IconEdit,
+  IconTrash,
+  IconNavGoLeft,
+  IconNavGoRight,
+  IconNavGoDown,
+  IconNavGoUp,
+  IconCheck,
+  IconDate,
+  IconDocument,
+  IconUpload,
+  IconMenuBars,
+  IconFacebook,
+  IconInstagram,
+  IconLink,
+  IconLinkedin,
+  IconTwitter,
+  IconX,
+  IconXing,
+  IconYoutube,
+  IconWeb,
+  IconCaretDown,
+  IconCaretLeft,
+  IconCaretRight,
+  IconCaretUp,
+  IconFile,
+  IconPicture,
+  IconVideo,
+  IconAudio,
+  IconDownload,
+  IconAlert,
+  IconBell,
+  IconInformation,
+} from '@global'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
@@ -32,7 +50,7 @@ declare const requestAnimationFrame: any
  */
 export const rLCP = (callback: () => void, timeout = 3000) => {
   let isLargestContentPatinDone = false
-  if (!balBrowser.isSafari && balBrowser.hasWindow && 'PerformanceObserver' in window) {
+  if (!dsBrowser.isSafari && dsBrowser.hasWindow && 'PerformanceObserver' in window) {
     const observer = new PerformanceObserver(entryList => {
       const entries = entryList.getEntries()
       const lcpEntry = entries[entries.length - 1] // Get the last (largest) entry
@@ -70,7 +88,7 @@ export const rOnLoad = (callback: () => void, timeout = 32) => {
     }
   }
 
-  if (balBrowser.hasWindow) {
+  if (dsBrowser.hasWindow) {
     const timer = setTimeout(callOnce, timeout)
     window.addEventListener('load', () => {
       clearTimeout(timer)
@@ -82,7 +100,7 @@ export const rOnLoad = (callback: () => void, timeout = 32) => {
 }
 
 export const rIC = (callback: () => void, timeout = 5000) => {
-  if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
+  if (dsBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
@@ -154,7 +172,7 @@ export const getSibling = (parentTag: HTMLElement | EventTarget, child: string):
 }
 
 export const getAppRoot = (doc: Document) => {
-  return doc.querySelector('bal-app') || doc.body
+  return doc.querySelector('ds-app') || doc.body
 }
 
 /**
@@ -246,15 +264,21 @@ const transitionEnd = (
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  if (balBrowser.hasWindow) {
-    const config = useBalConfig()
-    if (config) {
-      const ael = config._ael
-      if (ael) {
-        return ael(el, eventName, callback, opts)
-      } else if (config._ael) {
-        return config._ael(el, eventName, callback, opts)
+  if (dsBrowser.hasWindow) {
+    // Lazy import to break circular dependency: import only when function is called
+    try {
+      const { useDsConfig } = require('@global') as typeof import('@global')
+      const config = useDsConfig()
+      if (config) {
+        const ael = config._ael
+        if (ael) {
+          return ael(el, eventName, callback, opts)
+        } else if (config._ael) {
+          return config._ael(el, eventName, callback, opts)
+        }
       }
+    } catch (e) {
+      // Fallback if @global is not yet initialized
     }
   }
 
@@ -262,15 +286,21 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 }
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  if (balBrowser.hasWindow) {
-    const config = useBalConfig()
-    if (config) {
-      const rel = config._rel
-      if (rel) {
-        return rel(el, eventName, callback, opts)
-      } else if (config._rel) {
-        return config._rel(el, eventName, callback, opts)
+  if (dsBrowser.hasWindow) {
+    // Lazy import to break circular dependency: import only when function is called
+    try {
+      const { useDsConfig } = require('@global') as typeof import('@global')
+      const config = useDsConfig()
+      if (config) {
+        const rel = config._rel
+        if (rel) {
+          return rel(el, eventName, callback, opts)
+        } else if (config._rel) {
+          return config._rel(el, eventName, callback, opts)
+        }
       }
+    } catch (e) {
+      // Fallback if @global is not yet initialized
     }
   }
 
@@ -312,9 +342,9 @@ export const isChildOfEventTarget = async (
     let target = ev.target as HTMLElement | HTMLStencilElement
 
     // special case for the navbar case
-    const isNavbarBrand = ev.target.nodeName === 'BAL-NAVBAR-BRAND'
+    const isNavbarBrand = ev.target.nodeName === 'DS-NAVBAR-BRAND'
     if (isNavbarBrand) {
-      target = target.closest('bal-navbar') as HTMLStencilElement
+      target = target.closest('ds-navbar') as HTMLStencilElement
     }
 
     if (target && isDescendant(target, el)) {
@@ -323,29 +353,47 @@ export const isChildOfEventTarget = async (
   }
 }
 
-export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
+export const waitForDesignSystem = async (el: any | null, _config?: DsConfig): Promise<void> => {
   const config: any = {
     animated: false,
     icons: {
-      balIconClose,
-      balIconInfoCircle,
-      balIconPlus,
-      balIconMinus,
-      balIconEdit,
-      balIconTrash,
-      balIconNavGoLeft,
-      balIconNavGoRight,
-      balIconNavGoDown,
-      balIconNavGoUp,
-      balIconCaretUp,
-      balIconCaretDown,
-      balIconCaretLeft,
-      balIconCaretRight,
-      balIconCheck,
-      balIconDate,
-      balIconDocument,
-      balIconUpload,
-      balIconMenuBars,
+      IconClock,
+      IconClose,
+      IconInfoCircle,
+      IconPlus,
+      IconMinus,
+      IconEdit,
+      IconTrash,
+      IconNavGoLeft,
+      IconNavGoRight,
+      IconNavGoDown,
+      IconNavGoUp,
+      IconCheck,
+      IconDate,
+      IconDocument,
+      IconUpload,
+      IconMenuBars,
+      IconFacebook,
+      IconInstagram,
+      IconLink,
+      IconLinkedin,
+      IconTwitter,
+      IconX,
+      IconXing,
+      IconYoutube,
+      IconWeb,
+      IconCaretDown,
+      IconCaretLeft,
+      IconCaretRight,
+      IconCaretUp,
+      IconFile,
+      IconPicture,
+      IconVideo,
+      IconAudio,
+      IconDownload,
+      IconAlert,
+      IconBell,
+      IconInformation,
     },
     ..._config,
   }
@@ -386,7 +434,7 @@ export const waitOnLoadEventCallback = () => {
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {
-  if (balBrowser.hasWindow && 'MessageChannel' in window) {
+  if (dsBrowser.hasWindow && 'MessageChannel' in window) {
     const messageChannel = new (window as any).MessageChannel()
     messageChannel.port1.onmessage = callback
     messageChannel.port2.postMessage(undefined)

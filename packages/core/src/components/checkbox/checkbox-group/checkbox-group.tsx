@@ -1,0 +1,421 @@
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core'
+import { DsComponentInterface } from '@global'
+import { Field, FieldInterface } from '../../input/field.util'
+import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
+import {
+  Logger,
+  LogInstance,
+  hasTagName,
+  isDescendant,
+  stopEventBubbling,
+  areArraysEqual,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
+import { INPUT_COLORS, InputColor } from '../../input/input.interfaces'
+import {
+  CheckboxLabelPosition,
+  CheckboxTileColor,
+  CheckboxGroupColumns,
+  CHECKBOX_LABEL_POSITIONS,
+  CHECKBOX_TILE_COLORS,
+  CHECKBOX_GROUP_COLUMNS,
+  CheckboxGroupBlurDetail,
+  CheckboxGroupFocusDetail,
+  CheckboxGroupChangeDetail,
+} from '../checkbox.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
+
+/**
+ * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
+ *
+ * @slot - The checkbox items to display inside the group.
+ */
+@Component({
+  tag: 'ds-checkbox-group',
+  styleUrl: 'checkbox-group.host.scss',
+  shadow: true,
+  formAssociated: true,
+})
+export class CheckboxGroup implements DsComponentInterface, FieldInterface {
+  inputId = `ds-cg-${checkboxGroupIds++}`
+
+  log!: LogInstance
+  @Logger('checkbox-group')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  @Element() el!: HTMLStencilElement
+  @AttachInternals() internals!: ElementInternals
+
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+  @State() private internalValue: any[] = []
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Defines the color of the input. The default value is `primary`.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  readonly color: InputColor = 'primary'
+
+  /**
+   * Defines the column size like the grid.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
+  readonly cols: CheckboxGroupColumns = 1
+
+  /**
+   * Defines the column size for mobile and bigger like the grid.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
+  readonly colsMobile: CheckboxGroupColumns = 1
+
+  /**
+   * Defines the column size for tablet and bigger like the grid.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
+  readonly colsTablet: CheckboxGroupColumns = 1
+
+  /**
+   * If `true` it acts as the main form control
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly control: boolean = false
+
+  /**
+   * The description of the input, which is displayed below the input field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly description: string = ''
+
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly disabled: boolean = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly invalid: boolean = false
+
+  /**
+   * The text to display when the input is in an invalid state.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly invalidText: string = ''
+
+  /**
+   * The label of the input, which is displayed above the input field.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  /**
+   * Defines the position of the label, either before or after the checkbox input. Default is after.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...CHECKBOX_LABEL_POSITIONS)
+  readonly labelPosition: CheckboxLabelPosition = 'right'
+
+  /**
+   * Shows a loading indicator at the end of the input and replaces the end slot content.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly loading: boolean = false
+
+  /**
+   * The name of the checkboxes in the group. Child checkboxes will inherit the name.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly name: string = this.inputId
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly readonly: boolean = false
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop({ reflect: true })
+  @ValidateEmptyOrType('boolean')
+  readonly required: boolean = true
+
+  /**
+   * Defines the layout of the input
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly tile: boolean = false
+
+  /**
+   * Defines the color of the tile checkbox.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...CHECKBOX_TILE_COLORS)
+  readonly tileColor: CheckboxTileColor = ''
+
+  /**
+   * The value of the control.
+   */
+  @Prop() readonly value: any[] = []
+  @Watch('value')
+  valueChanged() {
+    if (this.control) {
+      const newFormattedValue = this.formatValueToArray(this.value)
+      if (!areArraysEqual(newFormattedValue, this.internalValue)) {
+        this.internalValue = newFormattedValue
+        this.handleValueChange()
+      }
+    }
+  }
+
+  /**
+   * Displays the checkboxes vertically
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly vertical: boolean = false
+
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  @Event() dsBlur!: EventEmitter<CheckboxGroupBlurDetail>
+
+  /**
+   * Emitted when the input value has changed.
+   */
+  @Event() dsChange!: EventEmitter<CheckboxGroupChangeDetail>
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() dsFocus!: EventEmitter<CheckboxGroupFocusDetail>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    setupValidation(this)
+    this.valueChanged()
+    this.passDownAttributes()
+    this.internals.setFormValue(this.internalValue.join(','))
+  }
+
+  componentWillLoad() {
+    this.handleValueChange()
+  }
+
+  componentWillUpdate() {
+    this.passDownAttributes()
+  }
+
+  /**
+   * PUBLIC LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('dsBlur', { capture: true, target: 'document' })
+  listenToDsBlur(ev: CustomEvent<FocusEvent>) {
+    const { target } = ev
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-checkbox')) {
+      stopEventBubbling(ev)
+    }
+  }
+
+  @Listen('dsChange', { capture: true, target: 'document' })
+  listenToDsChange(ev: UIEvent) {
+    if (this.control) {
+      if (isDescendant(this.el, ev.target as HTMLElement)) {
+        stopEventBubbling(ev)
+        this.updateValues()
+      }
+    }
+  }
+
+  @Listen('dsFocus', { capture: true, target: 'document' })
+  listenToDsFocus(ev: CustomEvent<FocusEvent>) {
+    const { target } = ev
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-checkbox')) {
+      stopEventBubbling(ev)
+    }
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  listenToReset(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      if (this.control) {
+        this.internalValue = []
+      }
+      this.handleValueChange()
+    }
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
+   * EVENT HANDLERS
+   * ------------------------------------------------------
+   */
+
+  private handleValueChange = async () => {
+    if (this.control) {
+      const isChecked = (checkbox: HTMLDsCheckboxElement) => {
+        for (let index = 0; index < this.internalValue.length; index++) {
+          const valueItem = this.internalValue[index]
+          if (valueItem !== undefined && valueItem.toString() === checkbox.value.toString()) {
+            return true
+          }
+        }
+        return false
+      }
+
+      this.getCheckboxes().forEach((checkbox: HTMLDsCheckboxElement) => {
+        checkbox.checked = isChecked(checkbox)
+      })
+    }
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private formatValueToArray(value: any): any[] {
+    if (Array.isArray(value)) {
+      return value
+    } else if (value !== undefined && value !== null && value !== '') {
+      if (typeof value === 'string') {
+        return value.split(',').map(item => item.trim())
+      } else {
+        return [value]
+      }
+    } else {
+      return []
+    }
+  }
+
+  private getCheckboxes(): HTMLDsCheckboxElement[] {
+    return Array.from(this.el.querySelectorAll('ds-checkbox'))
+  }
+
+  private passDownAttributes() {
+    this.getCheckboxes().forEach(checkbox => {
+      if (this.control) {
+        if (this.disabled !== undefined) {
+          checkbox.disabled = this.disabled
+        }
+        if (this.readonly !== undefined) {
+          checkbox.readonly = this.readonly
+        }
+        if (this.invalid !== undefined) {
+          checkbox.invalid = this.invalid
+        }
+      }
+
+      checkbox.name = this.name
+      checkbox.labelPosition = this.labelPosition
+      checkbox.tile = this.tile
+      checkbox.tileColor = this.tileColor
+      checkbox.cols = this.cols
+      checkbox.colsTablet = this.colsTablet
+      checkbox.colsMobile = this.colsMobile
+    })
+  }
+
+  private updateValues() {
+    const newValue: any[] = []
+    this.getCheckboxes().forEach(cb => {
+      if (cb.checked) {
+        newValue.push(cb.value)
+      }
+    })
+
+    if (!areArraysEqual(this.internalValue, newValue)) {
+      this.internalValue = [...newValue]
+      this.dsChange.emit(this.internalValue)
+      this.internals.setFormValue(this.internalValue.join(','))
+    }
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
+  render() {
+    return (
+      <Field
+        role="fieldset"
+        disabled={this.disabled}
+        color={this.color}
+        invalid={this.invalid}
+        loading={this.loading}
+        label={this.label}
+        description={this.description}
+        invalidText={this.invalidText}
+        required={this.required}
+        language={this.language}
+        cssClasses={{
+          'is-vertical': this.vertical,
+          'is-tile': this.tile,
+        }}
+      >
+        <slot></slot>
+      </Field>
+    )
+  }
+}
+
+let checkboxGroupIds = 0

@@ -11,37 +11,37 @@
 @mixin input {
   @extend %control;
   justify-content: flex-start;
-  background-color: var(--bal-form-field-control-background);
-  border-color: var(--bal-form-field-control-border-color);
-  border-style: var(--bal-form-field-control-border-style);
-  border-radius: var(--bal-form-field-control-radius);
-  color: var(--bal-form-field-control-color);
+  background-color: var(--ds-form-field-control-background);
+  border-color: var(--ds-form-field-control-border-color);
+  border-style: var(--ds-form-field-control-border-style);
+  border-radius: var(--ds-form-field-control-radius);
+  color: var(--ds-form-field-control-color);
   @include placeholder {
-    color: var(--bal-form-field-control-placeholder-color);
+    color: var(--ds-form-field-control-placeholder-color);
   }
   @include hover() {
     &:hover,
     &.is-hovered {
-      border-color: var(--bal-form-field-control-border-color-hover);
-      background-color: var(--bal-form-field-control-background-hover);
+      border-color: var(--ds-form-field-control-border-color-hover);
+      background-color: var(--ds-form-field-control-background-hover);
     }
   }
-  &.bal-focused,
+  &.ds-focused,
   &:focus,
   &.is-focused,
   &:active,
   &.is-active {
-    border-color: var(--bal-form-field-control-border-color-active);
-    background-color: var(--bal-form-field-control-background-active);
+    border-color: var(--ds-form-field-control-border-color-active);
+    background-color: var(--ds-form-field-control-background-active);
   }
   &[disabled],
   fieldset[disabled] & {
-    background-color: var(--bal-form-field-control-disabled-background);
-    border-color: var(--bal-form-field-control-disabled-border-color);
+    background-color: var(--ds-form-field-control-disabled-background);
+    border-color: var(--ds-form-field-control-disabled-border-color);
     box-shadow: none;
-    color: var(--bal-form-field-control-disabled-color);
+    color: var(--ds-form-field-control-disabled-color);
     @include placeholder {
-      color: var(--bal-form-field-control-disabled-color);
+      color: var(--ds-form-field-control-disabled-color);
     }
   }
 }
@@ -49,17 +49,17 @@
   -moz-appearance: none !important;
   -webkit-appearance: none !important;
   align-items: center;
-  border-width: var(--bal-border-width-base);
-  border-color: var(--bal-color-border-base);
-  border-radius: var(--bal-radius-base);
+  border-width: var(--ds-border-width-base);
+  border-color: var(--ds-color-border-base);
+  border-radius: var(--ds-radius-base);
   box-shadow: none;
   display: inline-flex;
-  font-size: var(--bal-text-size-normal);
+  font-size: var(--ds-text-size-base);
   min-height: 3rem;
   height: 3rem;
   line-height: 1.5;
-  padding-left: calc(0.75em - var(--bal-border-width-base));
-  padding-right: calc(0.75em - var(--bal-border-width-base));
+  padding-left: calc(0.75em - var(--ds-border-width-base));
+  padding-right: calc(0.75em - var(--ds-border-width-base));
   position: relative;
   vertical-align: top;
   // States

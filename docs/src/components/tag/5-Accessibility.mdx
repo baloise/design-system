@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TagStories from './tag.stories'
+import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
+
+<Meta title="Components/Tag/Accessibility" />
+<Banner label={'Accessibility'} section={TAG_DOC_CONFIG.section} color={TAG_DOC_CONFIG.color} />
+<BannerTabs
+  of={TagStories}
+  tabs={getTagTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Descriptive Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use clear, meaningful text in tags that describes the category, status, or attribute. Avoid abbreviations or acronyms unless they're universally known.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Color + Text Combination',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always combine color with text to convey meaning. Users with color blindness should understand tag purpose from text alone.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Accessibility for Closable Tags',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using closable tags, ensure the close button is keyboard accessible. Users should be able to focus and activate close using keyboard alone.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Focus Indicators',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Provide clear focus indicators on closable tag close buttons. Keyboard users need visible feedback about which element has focus.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color as Only Indicator',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never rely solely on color to communicate tag meaning. Always include accompanying text so users with color vision deficiencies understand the tag purpose.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Icon-only Tags',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid using icons alone in tags without text labels. Screen readers and color-blind users won't understand meaning.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The tag component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Color Contrast (4.11.1)** — Text meets minimum contrast ratios against background
+- **Color Not Only Means (1.4.1)** — Color is not the only way to convey information
+- **Focus Visible (2.4.7)** — Close buttons have visible focus indicators
+- **Name, Role, Value (4.1.2)** — Proper semantic HTML and ARIA attributes
+
+<Footer />

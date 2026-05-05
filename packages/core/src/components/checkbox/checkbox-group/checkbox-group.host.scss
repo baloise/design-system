@@ -1,0 +1,86 @@
+@use './checkbox-group.mixin.scss' as group;
+@use '../../input/input.mixin' as input;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --checkbox-group-label-color: Text color of the group label.
+ * @prop --checkbox-group-label-family: Font family of the group label.
+ * @prop --checkbox-group-label-weight: Font weight of the group label.
+ * @prop --checkbox-group-label-size: Font size of the group label.
+ * @prop --checkbox-group-label-line-height: Line height of the group label.
+ * @prop --checkbox-group-description-color: Text color of the group description.
+ * @prop --checkbox-group-description-family: Font family of the group description.
+ * @prop --checkbox-group-description-weight: Font weight of the group description.
+ * @prop --checkbox-group-description-size: Font size of the group description.
+ * @prop --checkbox-group-description-line-height: Line height of the group description.
+ */
+
+:host {
+  @include input.vars-label('checkbox-group');
+  @include input.vars-description('checkbox-group');
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  display: block;
+
+  #inner {
+    position: relative;
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  @include input.label('checkbox-group', 'legend');
+  @include input.description('checkbox-group');
+
+  @include group.style('#container');
+}
+
+@include group.vertical('#container', ':host');
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-checkbox-group-description-color: var(--ds-input-description-color-danger);
+}
+
+//
+// Disabled
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-checkbox-group-label-color: var(--ds-input-label-color-disabled);
+  --mod-checkbox-group-description-color: var(--ds-input-description-color-disabled);
+}
+
+//
+// Tile
+// --------------------------------
+:host(.is-tile) {
+  #container {
+    flex-wrap: wrap;
+  }
+}

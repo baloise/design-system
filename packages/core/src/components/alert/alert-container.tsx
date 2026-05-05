@@ -1,0 +1,238 @@
+import { Element, Component, Method, h, Host, Prop, State } from '@stencil/core'
+import {
+  raf,
+  wait,
+  createPausableTimer,
+  Logger,
+  type LogInstance,
+  PausableTimer,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
+import {
+  Alert,
+  AlertComponent,
+  AlertType,
+  AlertContainerSize,
+  ALERT_TYPES,
+  ALERT_CONTAINER_SIZES,
+} from './alert-container.interfaces'
+import { DsComponentInterface } from '@global'
+import { HTMLStencilElement } from '@stencil/core/internal'
+
+/**
+ * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
+ */
+@Component({
+  tag: 'ds-alert-container',
+  styleUrl: 'alert-container.host.scss',
+  shadow: true,
+})
+export class AlertContainer implements DsComponentInterface {
+  log!: LogInstance
+
+  @Logger('alert-container')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  @Element() el!: HTMLStencilElement
+
+  @State() alerts: AlertComponent[] = []
+
+  private maxVisibleItems = 5
+  private animationDurationMs = 300
+  private containerEl: HTMLDivElement | undefined
+  private alertTimers: Record<string, PausableTimer> = {}
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * If `true`, alerts animate in and out.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly animated: boolean = false
+
+  /**
+   * Defines the container size constraint for the alert layout.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ALERT_CONTAINER_SIZES)
+  readonly container?: AlertContainerSize
+
+  /**
+   * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...ALERT_TYPES)
+  readonly type: AlertType = 'toast'
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    setupValidation(this)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Adds an alert to the queue and returns its generated ID.
+   */
+  @Method()
+  async addAlert(alert: Alert): Promise<string> {
+    if (this.hasDuplications(alert)) {
+      return ''
+    }
+
+    const alertId = crypto.randomUUID() as string
+    const duration = this.getDuration(alert)
+    const component: AlertComponent = {
+      ...alert,
+      visible: false,
+      duration,
+      alertId,
+    }
+
+    this.alerts = [...this.alerts, component]
+
+    this.activeTimer(alertId, duration)
+    return alertId
+  }
+
+  /**
+   * Removes the alert with the given ID.
+   */
+  @Method()
+  async removeAlert(id: string) {
+    this.alerts = this.alerts.map(n => (n.alertId === id ? { ...n, visible: false } : n))
+
+    await wait(this.animationDurationMs)
+    this.alerts = this.alerts.filter(n => n.alertId !== id)
+  }
+
+  /**
+   * Removes all alerts.
+   */
+  @Method()
+  async removeAll() {
+    this.alerts = this.alerts.map(n => ({ ...n, visible: false }))
+
+    await wait(this.animationDurationMs)
+    this.alerts = []
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private activeTimer(id: string, duration: number | 'infinite') {
+    if (duration !== 'infinite') {
+      this.alertTimers[id] = createPausableTimer(() => {
+        this.removeAlert(id)
+      }, duration + this.animationDurationMs)
+    }
+  }
+
+  private getDuration(alert: Alert): number | 'infinite' {
+    let duration: number | 'infinite' = 4000
+    if (alert.duration === 'infinite' || alert.duration === 0) {
+      duration = 'infinite'
+    } else if (alert.duration === undefined) {
+      //
+      // Toasts
+      if (this.type === 'toast') {
+        if (alert.color === 'danger') {
+          duration = 7000
+        } else if (alert.color === 'warning') {
+          duration = 5000
+        }
+      }
+      //
+      // Snackbars
+      else {
+        duration = 'infinite'
+      }
+    } else {
+      duration = alert.duration
+    }
+    return duration
+  }
+
+  private present(id: string): void {
+    raf(() => {
+      this.alerts = this.alerts.map(n => (n.alertId === id ? { ...n, visible: true } : n))
+    })
+  }
+
+  private hasDuplications(alert: Alert): boolean {
+    const existing = this.alerts.find(
+      n => n.color === alert.color && n.message === alert.message && n.heading === alert.heading,
+    )
+    return !!existing
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
+  render() {
+    const visibleAlerts = this.alerts.slice(0, this.maxVisibleItems)
+    const AlertElement = this.type === 'toast' ? 'ds-toast' : 'ds-snackbar'
+
+    return (
+      <Host
+        class={{
+          'is-toast': this.type === 'toast',
+          'is-snackbar': this.type === 'snackbar',
+        }}
+      >
+        <div id="wrapper" class={{ container: this.type === 'toast' }}>
+          {visibleAlerts.map(alert => (
+            <AlertElement
+              key={alert.alertId}
+              id={alert.alertId}
+              alertId={alert.alertId}
+              visible={alert.visible}
+              heading={alert.heading}
+              message={alert.message}
+              color={alert.color as any}
+              duration={alert.duration}
+              closable={alert.closable}
+              closeHandler={() => alert.closeHandler(alert.alertId)}
+              action={alert.action}
+              actionIcon={alert.actionIcon}
+              actionTarget={alert.actionTarget}
+              actionHref={alert.actionHref}
+              actionHandler={() => alert.actionHandler(alert.alertId)}
+              onDsCloseClick={() => this.removeAlert(alert.alertId)}
+              onDsDidLoad={() => this.present(alert.alertId)}
+              onDsDidPause={() => {
+                this.alertTimers[alert.alertId] && this.alertTimers[alert.alertId].pause()
+              }}
+              onDsDidResume={() => {
+                this.alertTimers[alert.alertId] && this.alertTimers[alert.alertId].resume()
+              }}
+            ></AlertElement>
+          ))}
+        </div>
+      </Host>
+    )
+  }
+}

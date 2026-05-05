@@ -18,12 +18,12 @@
   border-radius: 12px !important;
   background: #e1d9ff;
   min-width: 128px;
-  box-shadow: var(--bal-shadow-base);
+  box-shadow: var(--ds-shadow-base);
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
 
 .avatar:hover {
-  box-shadow: var(--bal-shadow-large);
+  box-shadow: var(--ds-shadow-large);
   color: #0014aa;
 }
 

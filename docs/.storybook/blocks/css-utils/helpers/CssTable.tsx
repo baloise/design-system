@@ -20,7 +20,7 @@ export const CssTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius-normal px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
@@ -41,7 +41,12 @@ export const CssTable = ({
           {list.map(item => (
             <tr key={item.name}>
               <td>
-                <Clipboard label={[css, item.key].filter(i => i).join('-')} />
+                <Clipboard
+                  label={[css, item.key]
+                    .filter(i => i)
+                    .join('-')
+                    .toLowerCase()}
+                />
               </td>
               <td>
                 <Clipboard label={`var(--${item.name})`} value={`var(--${item.name})`} />

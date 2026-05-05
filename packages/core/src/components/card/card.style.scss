@@ -1,0 +1,542 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../typography' as typography;
+@use '../button/button-group/button-group.mixin.scss' as button-group;
+@use './card-header/card-header.mixin.scss' as card-header;
+
+$use-host: false !default;
+$name: card;
+$css-selector: ('.card');
+$host-selector: ('#card');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(card-color-background, var(--ds-card-color-base-background));
+  @include vars.local(card-color-text, var(--ds-card-color-base-text));
+  @include vars.local(card-color-border, var(--ds-card-color-base-border, transparent));
+  @include vars.local(card-radius, var(--ds-card-radius-base));
+  @include vars.local(card-border-width, 0rem);
+  @include vars.local(card-border-style, solid);
+  @include vars.local(card-shadow, var(--ds-card-shadow-base));
+  @include vars.local(card-gap, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-left, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-right, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-top, var(--ds-card-space-base-device));
+  @include vars.local(card-padding-bottom, var(--ds-card-space-base-device));
+
+  @include vars.local(card-header-grid-template-columns, 1fr auto);
+  @include vars.local(card-header-margin-left, 0);
+
+  // only works without the mixin local() because of the grid-template-areas syntax
+  --_card-header-grid-template-areas: var(
+    --card-header-grid-template-areas,
+    var(--mod-card-header-grid-template-areas, 'title .' 'subtitle subtitle')
+  );
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--_card-color-text);
+  background-color: var(--_card-color-background);
+  border-radius: var(--_card-radius);
+  border-color: var(--_card-color-border);
+  border-width: var(--_card-border-width);
+  border-style: var(--_card-border-style);
+  box-shadow: var(--_card-shadow);
+  gap: var(--_card-gap);
+  padding-left: calc(var(--_card-padding-left) - var(--_card-border-width));
+  padding-right: calc(var(--_card-padding-right) - var(--_card-border-width));
+  padding-top: calc(var(--_card-padding-top) - var(--_card-border-width));
+  padding-bottom: calc(var(--_card-padding-bottom) - var(--_card-border-width));
+  text-decoration: none;
+
+  // Header
+  .card-header {
+    @include card-header.style();
+  }
+
+  // Content
+  .card-content {
+    @include typography.content();
+  }
+
+  // Actions as button group
+  .card-actions {
+    @include button-group.style();
+  }
+
+  // Allignment
+  &.align-center {
+    align-items: center;
+    --buttons-align-items: center;
+    --buttons-justify-content: center;
+  }
+
+  &.align-right {
+    --buttons-align-items: flex-end;
+    --buttons-justify-content: flex-end;
+  }
+}
+
+//
+// Picture
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  picture {
+    --picture-img-radius: var(--_card-radius);
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(picture) {
+      --picture-img-radius: var(--_card-radius);
+    }
+  }
+}
+
+//
+// Full Height
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-fullheight {
+    height: 100%;
+
+    .card-content,
+    .card-content > .stack,
+    .card-content > .flex,
+    .card-content > .is-flex {
+      height: 100%;
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-fullheight),
+  :host(.is-fullheight) #card {
+    height: 100%;
+  }
+
+  :host(.is-fullheight) {
+    ::slotted(ds-card-content) {
+      height: 100%;
+    }
+  }
+}
+
+//
+// Badge Positioning
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  > .badge:first-child,
+  > ds-badge:first-child {
+    --badge-position: absolute;
+    --badge-top: 0;
+    transform: translate(calc(50% + var(--_card-gap)), -50%);
+    align-self: flex-end;
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(ds-badge) {
+      --badge-position: absolute;
+      --badge-top: 0;
+
+      transform: translate(calc(50% + var(--_card-gap)), -50%);
+      align-self: flex-end;
+    }
+  }
+}
+
+//
+// Tags Positioning
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  > .tag.is-center:first-child,
+  > ds-tag[position='center']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: center;
+    transform: translateY(-50%);
+  }
+
+  > .tag.is-left:first-child,
+  > ds-tag[position='left']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: flex-start;
+    transform: translateY(-50%);
+  }
+
+  > .tag.is-right:first-child,
+  > ds-tag[position='right']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: flex-end;
+    transform: translateY(-50%);
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(ds-tag[position='left']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: flex-start;
+      transform: translateY(-50%);
+    }
+
+    ::slotted(ds-tag[position='center']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: center;
+      transform: translateY(-50%);
+    }
+
+    ::slotted(ds-tag[position='right']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: flex-end;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Square
+// --------------------------------
+@mixin square {
+  --mod-card-radius: var(--ds-card-radius-square);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-square {
+    @include square();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-square) {
+    @include square();
+  }
+}
+
+//
+// Flat
+// --------------------------------
+@mixin flat {
+  --mod-card-radius: var(--ds-card-radius-flat);
+  --mod-card-shadow: var(--ds-card-shadow-flat);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-flat {
+    @include flat();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-flat) {
+    @include flat();
+  }
+}
+
+//
+// Dense
+// --------------------------------
+@mixin dense {
+  --mod-card-shadow: var(--ds-card-shadow-flat);
+  --mod-card-padding-left: 0;
+  --mod-card-padding-right: 0;
+  --mod-card-padding-top: 0;
+  --mod-card-padding-bottom: 0;
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-dense {
+    @include dense();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-dense) {
+    @include dense();
+  }
+}
+
+//
+// Outlined
+// --------------------------------
+@mixin outlined {
+  --mod-card-shadow: var(--ds-card-shadow-flat);
+  --mod-card-border-width: var(--ds-card-outline-width);
+  --mod-card-border-style: dashed;
+  --mod-card-color-border: var(--ds-card-color-base-outline, transparent);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-outlined {
+    @include outlined();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-outlined) {
+    @include outlined();
+  }
+}
+
+//
+// Colors
+// --------------------------------
+
+$backgrounds: (
+  'white',
+  'primary',
+  'primary-light',
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'grey',
+  'grey-light',
+  'red',
+  'red-light',
+  'red-lighter',
+  'green',
+  'green-light',
+  'green-lighter',
+  'purple',
+  'purple-light',
+  'purple-lighter',
+  'yellow',
+  'yellow-light',
+  'yellow-lighter'
+);
+
+@mixin background-color($color) {
+  --mod-card-color-background: var(--ds-card-color-#{$color}-background);
+  --mod-card-color-text: var(--ds-card-color-#{$color}-text);
+  --mod-card-color-border: var(--ds-card-color-#{$color}-border, transparent);
+}
+
+@each $color in $backgrounds {
+  @include hybrid.styles($css-selector, $use-host) {
+    &.is-#{$color} {
+      @include background-color($color);
+
+      &.is-outlined {
+        --mod-card-color-border: var(--ds-card-color-#{$color}-outline, transparent);
+      }
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}) {
+      @include background-color($color);
+    }
+
+    :host(.is-#{$color}.is-outlined) {
+      --mod-card-color-border: var(--ds-card-color-#{$color}-outline, transparent);
+    }
+  }
+}
+
+//
+// Space
+// --------------------------------
+$spaces: ('sm', 'md', 'lg');
+
+@each $space in $spaces {
+  @include hybrid.styles($css-selector, $use-host) {
+    &.has-space-#{$space} {
+      --mod-card-gap: var(--ds-card-space-#{$space}-device);
+    }
+    &.has-space-#{$space}:not(.is-dense) {
+      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.has-space-#{$space}) {
+      --mod-card-gap: var(--ds-card-space-#{$space}-device);
+    }
+    :host(.has-space-#{$space}:not(.is-dense)) {
+      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
+    }
+  }
+}
+
+//
+// Tile
+// --------------------------------
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-tile {
+    --mod-card-header-grid-template-columns: auto 1fr auto;
+    --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
+
+    @include tablet() {
+      --mod-card-padding-left: calc(
+        var(--ds-card-space-base-device) + var(--ds-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+      );
+      --mod-card-header-margin-left: calc(calc(var(--ds-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-tile) {
+    --mod-card-header-grid-template-columns: auto 1fr auto;
+    --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
+
+    @include tablet() {
+      --mod-card-padding-left: calc(
+        var(--ds-card-space-base-device) + var(--ds-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+      );
+      --mod-card-header-margin-left: calc(calc(var(--ds-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+    }
+  }
+}
+
+//
+// Image Teaser
+// --------------------------------
+
+@include hybrid.styles('.image-teaser ', $use-host) {
+  .card {
+    margin-top: calc(var(--_card-gap) * -1 * 2);
+    margin-left: calc(var(--_card-gap));
+    margin-right: calc(var(--_card-gap));
+    max-width: fit-content;
+  }
+
+  &.is-wide {
+    @include tablet() {
+      .card {
+        width: 75%;
+        margin-left: calc(var(--_card-gap) * 2);
+        margin-right: calc(var(--_card-gap));
+      }
+
+      &.is-center {
+        .card {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      &.is-right {
+        .card {
+          margin-left: auto;
+          margin-right: calc(var(--_card-gap) * 2);
+        }
+      }
+    }
+
+    @include desktop() {
+      .card {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-image-teaser) #card {
+    margin-top: calc(var(--_card-gap) * -1 * 2);
+    margin-left: calc(var(--_card-gap));
+    margin-right: calc(var(--_card-gap));
+    max-width: fit-content;
+  }
+
+  :host(.is-image-teaser-wide) #card,
+  :host(.is-image-teaser-wide-center) #card,
+  :host(.is-image-teaser-wide-right) #card {
+    @include tablet() {
+      width: 75%;
+      margin-left: calc(var(--_card-gap) * 2);
+      margin-right: calc(var(--_card-gap));
+    }
+
+    @include desktop() {
+      width: 50%;
+    }
+  }
+
+  :host(.is-image-teaser-wide-center) #card {
+    @include tablet() {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  :host(.is-image-teaser-wide-right) #card {
+    @include tablet() {
+      margin-left: auto;
+      margin-right: calc(var(--_card-gap) * 2);
+    }
+  }
+}
+
+a.image-link,
+button.image-link {
+  cursor: pointer;
+
+  picture {
+    display: block;
+    overflow: hidden;
+  }
+
+  img {
+    display: block;
+    transition: all 0.4s ease-out;
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      transform: scale(1.1);
+    }
+  }
+}

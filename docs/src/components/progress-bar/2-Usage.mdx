@@ -1,0 +1,70 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
+
+<Meta title="Components/Progress-bar/Usage" />
+<Banner label={'Usage'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
+<BannerTabs
+  of={ProgressBarStories}
+  tabs={getProgressBarTabs('usage')}
+/>
+
+## When to Use
+
+- Display task or operation progress (0–100%)
+- Show loading or completion status in workflows
+- Indicate multi-step process progress
+- Provide visual feedback for long-running operations
+- Display file upload or download progress
+- Show form completion percentage
+
+## When NOT to Use
+
+- For status indicators that aren't measurable progress — use badge or notification
+- For simple loading without progress details — use spinner
+- For very large datasets where progress is unreliable — use skeleton loading
+- For circular progress animations — use spinner or circular progress component
+- For boolean states (done/not done) — use checkbox or toggle
+
+## Do's and Don'ts
+
+### Clear Progress Values
+
+Always provide meaningful progress information. Users need to know how much is complete.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Show progress percentage',
+      content: (
+        <div>
+          <p>File upload: 65%</p>
+          <ds-progress-bar value="65" max="100"></ds-progress-bar>
+        </div>
+      ),
+      description: 'Users understand progress toward completion',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No indication of progress',
+      content: (
+        <div>
+          <p>Processing...</p>
+          <ds-progress-bar value="0" max="100"></ds-progress-bar>
+        </div>
+      ),
+      description: 'Users unsure of progress or time remaining',
+    },
+  ]}
+/>
+
+<Footer />

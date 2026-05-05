@@ -1,7 +1,7 @@
 {
   "name": "@baloise/ds-core/components",
   "version": "0.0.0",
-  "description": "Baloise Design System Components exported as custom elements, extending HTMLElement.",
+  "description": "Helvetia Design System Components exported as custom elements, extending HTMLElement.",
   "main": "./index.js",
   "types": "./index.d.ts",
   "private": true,

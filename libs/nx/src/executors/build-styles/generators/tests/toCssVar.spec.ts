@@ -12,14 +12,14 @@ describe('toCssVar', () => {
           value: '1',
           noFigmaImport: true,
         },
-        name: 'bal-opacity-100',
+        name: 'ds-opacity-100',
         attributes: {
           category: 'opacity',
           type: '100',
         },
         path: ['opacity', '100'],
       }),
-    ).toEqual('var(--bal-opacity-100)')
+    ).toEqual('var(--ds-opacity-100)')
   })
 
   test('should parse the value of a reference', () => {
@@ -33,13 +33,13 @@ describe('toCssVar', () => {
           value: '{opacity.60}',
           noFigmaImport: true,
         },
-        name: 'bal-opacity-overlay',
+        name: 'ds-opacity-overlay',
         attributes: {
           category: 'opacity',
           type: 'overlay',
         },
         path: ['opacity', 'overlay'],
       }),
-    ).toEqual('var(--bal-opacity-overlay)')
+    ).toEqual('var(--ds-opacity-overlay)')
   })
 })

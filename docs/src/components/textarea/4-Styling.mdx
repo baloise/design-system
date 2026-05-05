@@ -1,0 +1,25 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TextareaStories from './textarea.stories'
+import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
+
+<Meta title="Components/Forms/Textarea/Styling" />
+
+<Banner label={'Styling'} section={TEXTAREA_DOC_CONFIG.section} color={TEXTAREA_DOC_CONFIG.color} />
+
+<BannerTabs of={TextareaStories} tabs={getTextareaTabs('styling')} />
+
+<ComponentParts component="textarea" />
+
+<ComponentCssVariables component="textarea" />
+
+<ComponentDesignTokens component="textarea" />
+
+<Footer />

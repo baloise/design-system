@@ -1,0 +1,37 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as SpinnerStories from './spinner.stories'
+import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
+
+<Meta title="Components/Spinner/Variants/Overview" />
+<StoryHeading of={SpinnerStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
+<BannerTabs
+  of={SpinnerStories}
+  tabs={getSpinnerTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SpinnerStories.LoadingButton}></StoryHeading>
+
+Spinner variants for loading states in buttons, providing visual feedback during asynchronous operations.
+
+<Canvas of={SpinnerStories.LoadingButton} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SpinnerStories.LoadingCard}></StoryHeading>
+
+Spinner variants for loading states in cards, indicating content is being loaded or refreshed.
+
+<Canvas of={SpinnerStories.LoadingCard} />
+
+<Footer />

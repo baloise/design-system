@@ -1,23 +1,29 @@
 Closes #
 
-{{short description}}
+## 📄 Description
 
-## Acceptance Criteria
+Please include a summary of the changes made in this PR.
 
-- Design & Technical Review
-  - [Style Guide](https://stenciljs.com/docs/style-guide)
-- Document changes with a changeset
-- Testing
-  - Visual
-  - Functional (component test)
-  - Browser
-    - Desktop
-      - Chrome
-      - Edge
-      - Safari
-      - Firefox
-    - Tablet
-      - iPad (Landscape / Portrait)
-    - Mobile
-      - Safari iOS
-      - Chrome Preview
+## 🚀 Demo
+
+If applicable, please add a screenshot or video to illustrate the changes.
+
+---
+
+## 🔮 Design review
+
+- [ ] Design review done
+- [ ] No design review needed
+
+## 🧪 Visual regression tests
+
+- [ ] Visual changes detected and approved
+
+## 📝 Checklist
+
+- ✅ My code follows the style guidelines of this project
+- 🛠️ I have performed a self-review of my own code
+- 📄 I have made corresponding changes to the documentation
+- ⚠️ My changes generate no new warnings or errors
+- 🧪 I have added tests that prove my fix is effective or that my feature works
+- ✔️ New and existing unit tests pass locally with my changes

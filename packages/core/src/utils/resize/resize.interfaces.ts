@@ -1,14 +1,14 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export type BalResizeInfo = {
+export type ResizeInfo = {
   width: boolean
   height: boolean
 }
 
-export type BalResizeListenerFn = (info: BalResizeInfo) => void
+export type ResizeListenerFn = (info: ResizeInfo) => void
 
-export interface BalResizeObserver {
+export interface ResizeObserver {
   el: HTMLElement | HTMLStencilElement
-  resizeListener(info: BalResizeInfo): void
+  listenToResize(info: ResizeInfo): void
 }

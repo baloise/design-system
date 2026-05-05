@@ -1,0 +1,23 @@
+@use './text.style' with (
+  $use-host: true
+);
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --text-color: Text color of the paragraph.
+ * @prop --text-align: Text alignment of the paragraph.
+ * @prop --text-family: Font family of the text.
+ * @prop --text-weight: Font weight of the text.
+ * @prop --text-line-height: Line height of the text.
+ * @prop --text-size: Font size of the text.
+ * @prop --text-shadow: Text shadow effect applied to the text.
+ * @prop --text-space: Spacing applied to the text element.
+ */
+
+:host {
+  display: block;
+}

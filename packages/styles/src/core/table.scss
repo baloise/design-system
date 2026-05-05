@@ -2,13 +2,13 @@
 
 .table {
   @extend %bottomSpacing;
-  background-color: var(--bal-table-background-color);
-  color: var(--bal-table-color);
+  background-color: var(--ds-table-background-color);
+  color: var(--ds-table-color);
   td,
   th {
-    border: var(--bal-table-cell-border);
-    border-width: var(--bal-table-cell-border-width);
-    padding: var(--bal-table-cell-padding);
+    border: var(--ds-table-cell-border);
+    border-width: var(--ds-table-cell-border-width);
+    padding: var(--ds-table-cell-padding);
     vertical-align: middle;
     // Modifiers
     &.is-narrow {
@@ -16,8 +16,8 @@
       width: 1%;
     }
     &.is-selected {
-      background-color: var(--bal-table-row-background-color-active);
-      color: var(--bal-table-row-color-active);
+      background-color: var(--ds-table-row-background-color-active);
+      color: var(--ds-table-row-color-active);
       a,
       strong {
         color: currentColor;
@@ -25,44 +25,44 @@
     }
   }
   th {
-    color: var(--bal-table-cell-heading-color);
+    color: var(--ds-table-cell-heading-color);
     &:not([align]) {
       text-align: inherit;
     }
   }
   tr {
     &.is-selected {
-      background-color: var(--bal-table-row-background-color-active);
-      color: var(--bal-table-row-color-active);
+      background-color: var(--ds-table-row-background-color-active);
+      color: var(--ds-table-row-color-active);
       a,
       strong {
         color: currentColor;
       }
       td,
       th {
-        border-color: var(--bal-table-row-color-active);
+        border-color: var(--ds-table-row-color-active);
         color: currentColor;
       }
     }
   }
   thead {
-    background-color: var(--bal-table-head-background-color);
+    background-color: var(--ds-table-head-background-color);
     td,
     th {
-      border-width: var(--bal-table-head-cell-border-width);
-      color: var(--bal-table-head-cell-color);
+      border-width: var(--ds-table-head-cell-border-width);
+      color: var(--ds-table-head-cell-color);
     }
   }
   tfoot {
-    background-color: var(--bal-table-foot-background-color);
+    background-color: var(--ds-table-foot-background-color);
     td,
     th {
-      border-width: var(--bal-table-foot-cell-border-width);
-      color: var(--bal-table-foot-cell-color);
+      border-width: var(--ds-table-foot-cell-border-width);
+      color: var(--ds-table-foot-cell-color);
     }
   }
   tbody {
-    background-color: var(--bal-table-body-background-color);
+    background-color: var(--ds-table-body-background-color);
     tr {
       &:last-child {
         td,
@@ -77,9 +77,9 @@
       border-top-width: 1px;
       border-left-width: 1px;
       border-right-width: 1px;
-      border-top-color: var(--bal-table-cell-border-color);
-      border-left-color: var(--bal-table-cell-border-color);
-      border-right-color: var(--bal-table-cell-border-color);
+      border-top-color: var(--ds-table-cell-border-color);
+      border-left-color: var(--ds-table-cell-border-color);
+      border-right-color: var(--ds-table-cell-border-color);
     }
     td {
       border-width: 1px;
@@ -92,14 +92,14 @@
       }
     }
   }
-  &.is-fullwidth {
+  &.is-wide {
     width: 100%;
   }
   &.is-hoverable {
     tbody {
       tr:not(.is-selected) {
         &:hover {
-          background-color: var(--bal-table-row-background-color-hover);
+          background-color: var(--ds-table-row-background-color-hover);
         }
       }
     }
@@ -107,9 +107,9 @@
       tbody {
         tr:not(.is-selected) {
           &:hover {
-            background-color: var(--bal-table-row-background-color-hover);
+            background-color: var(--ds-table-row-background-color-hover);
             &:nth-child(even) {
-              background-color: var(--bal-table-striped-row-even-background-color-hover);
+              background-color: var(--ds-table-striped-row-even-background-color-hover);
             }
           }
         }
@@ -126,7 +126,7 @@
     tbody {
       tr:not(.is-selected) {
         &:nth-child(even) {
-          background-color: var(--bal-table-striped-row-even-background-color);
+          background-color: var(--ds-table-striped-row-even-background-color);
         }
       }
     }
@@ -148,7 +148,8 @@ table.table {
       border-top: 0;
     }
     th {
-      border-color: var(--bal-table-head-cell-border-color);
+      font-family: var(--ds-table-head-font-family);
+      border-color: var(--ds-table-head-cell-border-color);
       border-bottom-width: 2px;
     }
   }
@@ -157,23 +158,22 @@ table.table {
   }
   td,
   th {
-    font-size: var(--bal-table-head-font-size);
-    font-family: var(--bal-table-head-font-family);
+    font-size: var(--ds-table-head-font-size);
     vertical-align: middle;
-    color: var(--bal-table-color);
+    color: var(--ds-table-color);
     text-align: left;
-    .bal-checkbox {
+    .ds-checkbox {
       padding: 0;
       margin-top: 1px;
     }
   }
   td {
-    color: var(--bal-table-color);
+    color: var(--ds-table-color);
     hyphens: auto;
   }
   td.has-buttons {
     padding: 2px;
-    .bal-button {
+    .ds-button {
       margin-right: 0.25rem;
       &:last-child {
         margin-right: 0px;

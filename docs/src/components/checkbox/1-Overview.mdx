@@ -1,0 +1,44 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CheckboxStories from './checkbox.stories'
+import * as CheckboxGroupStories from './checkbox-group/checkbox-group.stories'
+import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
+
+<Meta title="Components/Forms/Checkbox/Overview" />
+
+<Banner label={'Overview'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
+
+<BannerTabs of={CheckboxStories} tabs={getCheckboxTabs('overview')} />
+
+<ComponentLead component="checkbox" />
+
+<CanvasTabs of={CheckboxStories.Basic} htmlOf={CheckboxStories.BasicHtml} sourceState="shown" />
+
+<Canvas of={CheckboxGroupStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-checkbox',
+      label: 'Checkbox',
+      content: <Controls of={CheckboxStories.Basic} />,
+    },
+    {
+      id: 'ds-checkbox-group',
+      label: 'Checkbox Group',
+      content: <Controls of={CheckboxGroupStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="checkbox" subComponents={['checkbox-group']} />
+
+<Footer />

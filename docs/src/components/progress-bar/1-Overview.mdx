@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
+
+<Meta title="Components/Progress-bar/Overview" />
+
+<Banner label={'Overview'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
+
+<BannerTabs of={ProgressBarStories} tabs={getProgressBarTabs('overview')} />
+
+<ComponentLead component="progress-bar" />
+
+<Canvas of={ProgressBarStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-progress-bar',
+      label: 'Progress Bar',
+      content: <Controls of={ProgressBarStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="progress-bar" />
+
+<Footer />

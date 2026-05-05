@@ -1,0 +1,71 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Usage" />
+<Banner label={'Usage'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+<BannerTabs
+  of={ListStories}
+  tabs={getListTabs('usage')}
+/>
+
+## When to Use
+
+- Display a series of related items or steps
+- Create navigation menus or breadcrumbs
+- Show search results or filtered content
+- Organize instructions or steps in sequence
+- Display related links or resources
+- Present hierarchical information with nesting
+
+## When NOT to Use
+
+- For tabular data with multiple columns — use a table component instead
+- As a replacement for proper content hierarchy — lists supplement structure, not define it
+- For single items or pairs of items — simple dividers are clearer
+- When items don't have a logical grouping — use individual components instead
+
+## Do's and Don'ts
+
+### List Item Content
+
+Keep list items concise but descriptive. Use consistent formatting across items.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Concise, parallel list items',
+      content: (
+        <ds-list>
+          <ds-item>Complete the form</ds-item>
+          <ds-item>Review your information</ds-item>
+          <ds-item>Submit your application</ds-item>
+        </ds-list>
+      ),
+      description: 'Clear, parallel structure',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Inconsistent list item structure',
+      content: (
+        <ds-list>
+          <ds-item>You should fill out the form completely</ds-item>
+          <ds-item>Review</ds-item>
+          <ds-item>After reviewing the information, you can then submit your application to us</ds-item>
+        </ds-list>
+      ),
+      description: 'Inconsistent length and detail',
+    },
+  ]}
+/>
+
+<Footer />

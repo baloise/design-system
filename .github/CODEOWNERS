@@ -1,1 +1,9 @@
-*       @hirsch88 @m4rc0z @mmarinkov
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# these users will be requested for
+# review when someone opens a pull request.
+#
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Code owners for the entire repository
+*       @hirsch88

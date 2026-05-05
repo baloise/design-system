@@ -22,7 +22,7 @@ import {
 
 <Lead>A guide to integrate Design System Components into your application.</Lead>
 
-All the Baloise Design System packages are available on [NPM](https://www.npmjs.com/).
+All the Helvetia Design System packages are available on [NPM](https://www.npmjs.com/).
 
 <AngularFramework>
 
@@ -43,7 +43,7 @@ If you do not have an Angular app yet create one with [Nx](https://nx.dev/gettin
 ## Installation
 
 <InfoQuote>
-If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Baloise Design System.
+If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Helvetia Design System.
 
 <Code language="bash" noPreview code={`npm add -E @ngneat/transloco`} />
 
@@ -117,29 +117,29 @@ However, if the application requires all styles regardless of payload size, simp
 
 ### Standalone
 
-Use the `provideBaloiseDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
+Use the `provideDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
 
 **app.config.ts**
 
 ```typescript
 import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 
-import { provideBaloiseDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@baloise/ds-angular'
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBaloiseDesignSystem()],
+  providers: [provideDesignSystem()],
 }
 ```
 
 **app.component.ts**
 
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular component.
-In each app component, import the necessary Baloise Design System components or a bundled set.
+In each app component, import the necessary Helvetia Design System components or a bundled set.
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
+import { BalLayoutBundle, Heading, Button } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',
@@ -152,36 +152,36 @@ export class AppComponent {}
 
 **app.component.html**
 
-Add the `bal-app` to your `app.component.html` root element.
+Add the `ds-app` to your `app.component.html` root element.
 
 ```html
-<bal-app class="has-sticky-footer">
+<ds-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
   <main class="container">
     <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
+    <ds-heading>Hello World!</ds-heading>
+    <ds-button>Button</ds-button>
   </main>
-  <bal-footer>
+  <ds-footer>
     <!-- Footer content -->
-  </bal-footer>
-</bal-app>
+  </ds-footer>
+</ds-app>
 ```
 
 ### Module Based
 
-Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
+Import the `DesignSystemModule.forRoot()` into your angular root module.
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
-For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
+For each angular sub module you need to import the `DesignSystemModule` to provide the components and the value accessors.
 
 **app.module.ts**
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { BalButton, BalHeading, BalLayoutBundle, provideBaloiseDesignSystem } from '@baloise/ds-angular'
+import { BalButton, Heading, LayoutBundle, provideDesignSystem } from '@baloise/ds-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
@@ -189,7 +189,7 @@ import { AppComponent } from './app.component'
   imports: [
     BrowserModule,
     // Provide all components and value accessors to the app module.
-    provideBaloiseDesignSystem(),
+    provideDesignSystem(),
     ...BalLayoutBundle,
     BalHeading,
     BalButton,
@@ -204,25 +204,25 @@ export class AppModule {}
 
 **app.component.html**
 
-Add the `bal-app` to your `app.component.html` root element.
+Add the `ds-app` to your `app.component.html` root element.
 
 <Code
   language="html"
   noPreview
   code={`
-<bal-app class="has-sticky-footer">
+<ds-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
   <main class="container">
     <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
+    <ds-heading>Hello World!</ds-heading>
+    <ds-button>Button</ds-button>
   </main>
-  <bal-footer>
+  <ds-footer>
     <!-- Footer content -->
-  </bal-footer>
-</bal-app>
+  </ds-footer>
+</ds-app>
 `}
 />
 
@@ -247,7 +247,7 @@ npm add -E @baloise/ds-core
 
 After that create a `index.html` file and add the following 2 references to your `<head></head>`.
 
-Add the `bal-app` to your root element.
+Add the `ds-app` to your root element.
 
 ```html
 <!doctype html>
@@ -256,28 +256,28 @@ Add the `bal-app` to your root element.
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baloise Design System</title>
+    <title>Helvetia Design System</title>
     <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/all.css" />
     <script
       type="module"
-      src="node_modules/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
+      src="node_modules/@baloise/ds-core/dist/design-system/design-system.esm.js"
     ></script>
-    <script nomodule src="node_modules/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
+    <script nomodule src="node_modules/@baloise/ds-core/dist/design-system/design-system.js"></script>
   </head>
   <body>
-    <bal-app>
+    <ds-app>
       <main class="container mt-normal">
-        <bal-heading>Hello World</bal-heading>
-        <bal-button>Button</bal-button>
+        <ds-heading>Hello World</ds-heading>
+        <ds-button>Button</ds-button>
       </main>
-    </bal-app>
+    </ds-app>
   </body>
 </html>
 ```
 
 ### CDN
 
-As part of Baloise Design System, (Content Delivery Network) [CDN](https://www.jsdelivr.com/) (Content Delivery Network) is included.
+As part of Helvetia Design System, (Content Delivery Network) [CDN](https://www.jsdelivr.com/) (Content Delivery Network) is included.
 
 However, it's important to emphasize that the CDN integration, it is not advisable
 for production applications. This recommendation stems from the fact that it depends on a third-party
@@ -298,11 +298,11 @@ Add the following 4 references to your `<head></head>`
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/all.css" />
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
+  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
 ></script>
 <script
   nomodule
-  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"
+  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.js"
 ></script>
 ```
 
@@ -319,37 +319,37 @@ Here is how you can integrate it into your project.
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/all.css" />
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"
+      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
     ></script>
     <script
       nomodule
-      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"
+      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.js"
     ></script>
   </head>
   <body>
-    <bal-app class="has-sticky-footer">
+    <ds-app class="has-sticky-footer">
       <header>
-        <bal-navbar>
-          <bal-navbar-brand href="/" target="_blank">Design System</bal-navbar-brand>
-        </bal-navbar>
+        <ds-navbar>
+          <ds-navbar-brand href="/" target="_blank">Design System</ds-navbar-brand>
+        </ds-navbar>
       </header>
-      <bal-stage color="green" size="small">
-        <bal-stage-body>
-          <bal-heading>Welcome to the</bal-heading>
-          <bal-heading subtitle>Baloise Design System</bal-heading>
-        </bal-stage-body>
-      </bal-stage>
+      <ds-stage color="green" size="small">
+        <ds-stage-body>
+          <ds-heading>Welcome to the</ds-heading>
+          <ds-heading subtitle>Helvetia Design System</ds-heading>
+        </ds-stage-body>
+      </ds-stage>
       <main class="container mt-xx-large">
         <p>
-          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          The Helvetia Design System consists of UI components and a clearly defined visual style, released as both code
           implementations and design artifacts to build any number of web applications.
         </p>
-        <bal-button href="https://design.baloise.dev" target="_blank"> Check out the Documentation</bal-button>
+        <ds-button href="https://design.baloise.dev" target="_blank"> Check out the Documentation</ds-button>
       </main>
-      <bal-footer>
+      <ds-footer>
         <!-- Footer content -->
-      </bal-footer>
-    </bal-app>
+      </ds-footer>
+    </ds-app>
   </body>
 </html>
 ```
@@ -421,15 +421,15 @@ Add the `BalApp` to your root element.
 ```typescript
 import './App.scss'
 import {
-  useBaloiseDesignSystem,
+  useDesignSystem,
   BalApp,
   BalHeading,
-  BalButton,
-  BalFooter,
+  Button,
+  Footer,
 } from '@baloise/ds-react'
 
 function App() {
-  useBaloiseDesignSystem()
+  useDesignSystem()
 
   return (
     <BalApp className="has-sticky-footer">
@@ -479,12 +479,12 @@ export default App
     <LinkCard
       pageTitle={'Development/Theming'}
       description={
-        "The Baloise Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Baloise applications has never been simpler"
+        "The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Helvetia applications has never been simpler"
       }
     />
     <LinkCard
       pageTitle={'Development/Testing'}
-      description={'The Baloise Design System provides a collection of utility functions to test the web-components'}
+      description={'The Helvetia Design System provides a collection of utility functions to test the web-components'}
     />
   </LinkCards>
 </Footer>

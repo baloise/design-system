@@ -1,0 +1,379 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div class="stack">
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+        </div>
+      </section>
+
+      <!-- Nested -->
+      <section data-testid="nested">
+        <span>Nested</span>
+        <div class="stack">
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+          <div class="stack has-space-xs">
+            <div class="s-bg-2 s-height-2rem s-fullwidth"></div>
+            <div class="stack has-space-lg as-row">
+              <div class="s-bg-3 s-height-2rem s-flex-1"></div>
+              <div class="s-bg-3 s-height-2rem s-flex-1"></div>
+              <div class="s-bg-3 s-height-2rem s-flex-1"></div>
+            </div>
+            <div class="s-bg-2 s-height-2rem s-fullwidth"></div>
+            <div class="s-bg-2 s-height-2rem s-fullwidth"></div>
+          </div>
+          <div class="s-bg-1 s-height-2rem s-fullwidth"></div>
+        </div>
+      </section>
+
+      <!-- Item -->
+      <section data-testid="item">
+        <span>Item</span>
+        <div class="stack as-row">
+          <ds-icon name="date" size="medium"></ds-icon>
+          <div class="stack-content">
+            <label class="label">My Item</label>
+            <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
+          </div>
+          <button class="button">Button</button>
+        </div>
+      </section>
+
+      <!-- Alignment -->
+      <section data-testid="alignment">
+        <span>Alignment</span>
+        <div class="stack as-row align-top-start">
+          <div class="stack-content">
+            <label class="label">Alignment Start</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-square is-small">
+            <ds-icon name="date"></ds-icon>
+          </button>
+        </div>
+
+        <div class="stack as-row align-center">
+          <div class="stack-content">
+            <label class="label">Alignment Center</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-square is-small">
+            <ds-icon name="date"></ds-icon>
+          </button>
+        </div>
+
+        <div class="stack as-row align-bottom-end">
+          <div class="stack-content">
+            <label class="label">Alignment End</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-square is-small">
+            <ds-icon name="date"></ds-icon>
+          </button>
+        </div>
+      </section>
+
+      <!-- Direction -->
+      <section data-testid="direction">
+        <span>Direction</span>
+        <div class="stack">
+          <div class="stack-content">
+            <label class="label">Direction Column</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-square is-small">
+            <ds-icon name="date"></ds-icon>
+          </button>
+        </div>
+
+        <div class="stack is-vertical align-center">
+          <div class="stack-content align-center">
+            <label class="label">Direction Column / Alignment Center</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-square is-small">
+            <ds-icon name="date"></ds-icon>
+          </button>
+        </div>
+
+        <div class="stack is-vertical align-end">
+          <div class="stack-content align-end">
+            <label class="label">Direction Column / Alignment End</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-square is-small">
+            <ds-icon name="date"></ds-icon>
+          </button>
+        </div>
+      </section>
+
+      <!-- Spaces -->
+      <section class="s-bg-1" data-testid="spaces">
+        <span>Spaces</span>
+        <div class="stack as-row has-space-none">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space None</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-2xs">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space XX Small</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-xs">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space X Small</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-sm">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space Small</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-base">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space Normal</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-md">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space Medium</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-lg">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space Large</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-xl">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space X Large</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+
+        <div class="stack as-row has-space-2xl">
+          <div class="stack-content s-bg-2">
+            <label class="label">Space XX Large</label>
+            <ds-text
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+              accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+              necessitatibus architecto a, consequuntur aliquid distinctio.</ds-text
+            >
+          </div>
+          <button class="button is-small">Button</button>
+        </div>
+      </section>
+
+      <!-- Margins -->
+      <section class="s-bg-1" data-testid="margins">
+        <span>Margins</span>
+        <div class="stack has-space-none as-col">
+          <ds-heading class="s-bg-2">Heading</ds-heading>
+          <ds-text class="s-bg-2">Text</ds-text>
+          <ds-label class="s-bg-2">Label</ds-label>
+          <label class="label s-bg-2">Label</label>
+          <h1 class="s-bg-2">Heading Native</h1>
+          <h1 class="heading s-bg-2">Heading</h1>
+          <h1 class="title s-bg-2">Title Native</h1>
+          <h1 class="subtitle s-bg-2">SubTitle Native</h1>
+          <p class="s-bg-2">Paragraph</p>
+        </div>
+      </section>
+
+      <!-- Column Alignment Top -->
+      <section class="s-bg-1" data-testid="column-alignment-top">
+        <span>Column Alignment Top</span>
+        <div class="stack has-space-none align-top-start s-bg-2 s-mb s-height-8rem">
+          <button class="button">top start</button>
+        </div>
+        <div class="stack has-space-none align-top-center s-bg-2 s-mb s-height-8rem">
+          <button class="button">top center</button>
+        </div>
+        <div class="stack has-space-none align-top-end s-bg-2 s-height-8rem">
+          <button class="button">top end</button>
+        </div>
+      </section>
+
+      <!-- Column Alignment Center -->
+      <section class="s-bg-1" data-testid="column-alignment-center">
+        <span>Column Alignment Center</span>
+        <div class="stack has-space-none as-col align-start s-bg-2 s-mb s-height-8rem">
+          <button class="button">start</button>
+        </div>
+        <div class="stack has-space-none as-col align-center s-bg-2 s-mb s-height-8rem">
+          <button class="button">center</button>
+        </div>
+        <div class="stack has-space-none as-col align-end s-bg-2 s-height-8rem">
+          <button class="button">end</button>
+        </div>
+      </section>
+
+      <!-- Column Alignment Bottom -->
+      <section class="s-bg-1" data-testid="column-alignment-bottom">
+        <span>Column Alignment Bottom</span>
+        <div class="stack has-space-none as-col align-bottom-start s-bg-2 s-mb s-height-8rem">
+          <button class="button">bottom start</button>
+        </div>
+        <div class="stack has-space-none as-col align-bottom-center s-bg-2 s-mb s-height-8rem">
+          <button class="button">bottom center</button>
+        </div>
+        <div class="stack has-space-none as-col align-bottom-end s-bg-2 s-height-8rem">
+          <button class="button">bottom end</button>
+        </div>
+      </section>
+
+      <!-- Row Alignment Top -->
+      <section class="s-bg-1" data-testid="row-alignment-top">
+        <span>Row Alignment Top</span>
+        <div class="stack has-space-none as-row align-top-start s-bg-2 s-mb s-height-8rem">
+          <button class="button">top start</button>
+        </div>
+        <div class="stack has-space-none as-row align-top-center s-bg-2 s-mb s-height-8rem">
+          <button class="button">top center</button>
+        </div>
+        <div class="stack has-space-none as-row align-top-end s-bg-2 s-height-8rem">
+          <button class="button">top end</button>
+        </div>
+      </section>
+
+      <!-- Row Alignment Center -->
+      <section class="s-bg-1" data-testid="row-alignment-center">
+        <span>Row Alignment Center</span>
+        <div class="stack has-space-none as-row align-start s-bg-2 s-mb s-height-8rem">
+          <button class="button">start</button>
+        </div>
+        <div class="stack has-space-none as-row align-center s-bg-2 s-mb s-height-8rem">
+          <button class="button">center</button>
+        </div>
+        <div class="stack has-space-none as-row align-end s-bg-2 s-height-8rem">
+          <button class="button">end</button>
+        </div>
+      </section>
+
+      <!-- Row Alignment Bottom -->
+      <section class="s-bg-1" data-testid="row-alignment-bottom">
+        <span>Row Alignment Bottom</span>
+        <div class="stack has-space-none as-row align-bottom-start s-bg-2 s-mb s-height-8rem">
+          <button class="button">bottom start</button>
+        </div>
+        <div class="stack has-space-none as-row align-bottom-center s-bg-2 s-mb s-height-8rem">
+          <button class="button">bottom center</button>
+        </div>
+        <div class="stack has-space-none as-row align-bottom-end s-bg-2 s-height-8rem">
+          <button class="button">bottom end</button>
+        </div>
+      </section>
+
+      <!-- Padding -->
+      <section class="s-bg-1" data-testid="padding">
+        <span>Padding</span>
+        <div class="stack as-col p-medium s-bg-2 s-mb">
+          <button class="button">Button</button>
+          <button class="button">Button</button>
+        </div>
+        <div class="stack as-row py-medium s-bg-2 s-mb">
+          <button class="button">Button</button>
+          <button class="button">Button</button>
+        </div>
+        <div class="stack as-row px-medium has-space-auto s-bg-2 s-mb">
+          <button class="button">Button</button>
+          <button class="button">Button</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

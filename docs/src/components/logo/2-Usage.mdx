@@ -1,0 +1,41 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  Lead,
+} from '../../../.storybook/blocks'
+import * as LogoStories from './logo.stories'
+import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
+
+<Meta title="Components/Logo/Usage" />
+<Banner label={'Usage'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
+<BannerTabs
+  of={LogoStories}
+  tabs={getLogoTabs('usage')}
+/>
+
+## When to Use
+
+- Display branding in application headers and footers
+- Create brand identity in landing pages
+- Use as a clickable link to the home page
+- Show logo in authentication screens or login pages
+- Include in error pages or empty states for branding
+
+## When NOT to Use
+
+- Multiple times on the same page — one logo per page section is sufficient
+- At very small sizes where it becomes illegible
+- Without proper spacing from content — maintain adequate breathing room
+- As a replacement for proper page hierarchy — the logo supplements, not replaces, heading structure
+
+## Best Practices
+
+- Use the logo in headers and navigation areas where users expect brand identification
+- Ensure the logo has sufficient space around it (minimum 24px padding)
+- Keep the logo consistent in size and placement across related pages
+- Consider using the animated variant on load for engaging brand presence
+- Always make the logo clickable and link to the home page in navigation contexts
+
+<Footer />

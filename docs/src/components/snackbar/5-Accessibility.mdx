@@ -1,0 +1,55 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SnackbarStories from './snackbar.stories'
+import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
+
+<Meta title="Components/Snackbar/Accessibility" />
+
+<Banner label={'Accessibility'} section={SNACKBAR_DOC_CONFIG.section} color={SNACKBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={SnackbarStories} tabs={getSnackbarTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use aria-label for icon-only snackbars',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>When a snackbar contains only an icon or minimal text, provide an aria-label to describe its purpose.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Provide clear, concise messaging',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Keep snackbar text brief and actionable so screen reader users can quickly understand the notification.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Make close buttons keyboard accessible',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Ensure the close button can be reached via Tab navigation and activated with Enter or Space.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Avoid auto-dismissing important notifications',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>If a snackbar contains critical information, do not set an auto-dismiss timeout; let users control when they close it.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Avoid stacking too many snackbars',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Multiple overlapping snackbars can confuse screen reader users and make the page difficult to navigate.</p>,
+    },
+  ]}
+/>
+
+## References
+
+- [`role="status"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) — MDN
+- [`aria-live`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live) — MDN
+- [`aria-atomic`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-atomic) — MDN
+
+<Footer />

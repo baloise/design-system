@@ -1,0 +1,103 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as DividerStories from './divider.stories'
+import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
+
+<Meta title="Components/Divider/Usage" />
+<Banner label={'Usage'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
+<BannerTabs
+  of={DividerStories}
+  tabs={getDividerTabs('usage')}
+/>
+
+## When to Use
+
+- Separate different content sections or groups visually
+- Break up long pages into manageable sections
+- Distinguish between different types of content or data
+- Divide layouts into columns or sections
+- Provide visual breathing room between content blocks
+
+## When NOT to Use
+
+- Do not use dividers for purely decorative purposes without semantic meaning
+- Do not use multiple dividers in close succession — it reduces their visual impact
+- For structural separation that should use semantic HTML (e.g., `<section>`, `<article>`)
+- In dense data tables where borders would be more appropriate
+- As a replacement for proper whitespace and layout — use spacing instead
+
+## Do's and Don'ts
+
+### Placement and Spacing
+
+Use dividers strategically to enhance content organization without cluttering the layout.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear section separation',
+      content: (
+        <>
+          <ds-text>Section 1 content here</ds-text>
+          <ds-divider class="my-normal"></ds-divider>
+          <ds-text class="mt-normal">Section 2 content here</ds-text>
+        </>
+      ),
+      description: 'Divider with spacing clearly separates related content',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Excessive dividers',
+      content: (
+        <>
+          <ds-text>Item 1</ds-text>
+          <ds-divider class="my-small"></ds-divider>
+          <ds-text>Item 2</ds-text>
+          <ds-divider class="my-small"></ds-divider>
+          <ds-text>Item 3</ds-text>
+          <ds-divider class="my-small"></ds-divider>
+        </>
+      ),
+      description: 'Too many dividers create visual noise and reduce effectiveness',
+    },
+  ]}
+/>
+
+### Color Usage
+
+Use divider colors to reinforce meaning or hierarchy. Default grey works for most cases.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Semantic color',
+      content: (
+        <>
+          <Code noPreview code={'<ds-divider color="grey"></ds-divider><!-- default section break -->\n<ds-divider color="warning" class="mt-normal"></ds-divider><!-- alert or warning section -->'} />
+        </>
+      ),
+      description: 'Color choice reinforces the semantic meaning',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Random colors',
+      content: (
+        <>
+          <Code noPreview code={'<ds-divider color="danger"></ds-divider><!-- used for regular section break -->'} />
+        </>
+      ),
+      description: 'Misaligned color semantics confuse users',
+    },
+  ]}
+/>
+
+<Footer />

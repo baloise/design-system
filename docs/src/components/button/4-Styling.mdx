@@ -1,0 +1,25 @@
+import { Meta, Markdown } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ButtonStories from './button.stories'
+import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
+
+<Meta title="Components/Button/Styling" />
+
+<Banner label={'Styling'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+
+<BannerTabs of={ButtonStories} tabs={getButtonTabs('styling')} />
+
+<ComponentParts component="button" />
+
+<ComponentCssVariables component="button" />
+
+<ComponentDesignTokens component="button" />
+
+<Footer />

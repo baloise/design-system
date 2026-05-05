@@ -1,0 +1,25 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as LogoStories from './logo.stories'
+import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
+
+<Meta title="Components/Logo/Variants" />
+
+<StoryHeading of={LogoStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
+
+<BannerTabs  of={LogoStories}  tabs={getLogoTabs('variants')}/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+> WIP coming soon
+
+<Footer />

@@ -2,9 +2,9 @@
 
 import { HTMLStencilElement } from '@stencil/core/internal'
 
-export type BalWindowResizeListenerFn = () => void
+export type WindowResizeListenerFn = () => void
 
-export interface BalWindowResizeObserver {
+export interface WindowResizeObserver {
   el: HTMLElement | HTMLStencilElement
-  windowResizeListener(): void
+  listenToWindowResize(): void
 }

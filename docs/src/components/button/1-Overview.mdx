@@ -1,0 +1,45 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  CanvasTabs,
+  Footer,
+  Lead,
+} from '../../../.storybook/blocks'
+import * as ButtonStories from './button.stories'
+import * as ButtonGroupStories from './button-group/button-group.stories'
+import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
+
+<Meta title="Components/Button/Overview" />
+
+<Banner label={'Overview'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+
+<BannerTabs of={ButtonStories} tabs={getButtonTabs('overview')} />
+
+<ComponentLead component="button" />
+
+<CanvasTabs of={ButtonStories.Basic} htmlOf={ButtonStories.BasicHtml} />
+
+<CanvasTabs of={ButtonGroupStories.Basic} htmlOf={ButtonGroupStories.BasicHtml} />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-button',
+      label: 'Button',
+      content: <Controls of={ButtonStories.Basic} />,
+    },
+    {
+      id: 'ds-button-group',
+      label: 'Button Group',
+      content: <Controls of={ButtonGroupStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="button" />
+
+<Footer />

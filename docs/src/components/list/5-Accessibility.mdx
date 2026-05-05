@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Accessibility" />
+<Banner label={'Accessibility'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+<BannerTabs
+  of={ListStories}
+  tabs={getListTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use Semantic HTML',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always use semantic list elements: <code>&lt;ul&gt;</code> for unordered lists, <code>&lt;ol&gt;</code> for ordered lists, and <code>&lt;li&gt;</code> for list items. Screen readers announce list structure and count.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Proper Nesting',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Nest lists correctly to show hierarchy. Sublists should be contained within list items using proper HTML structure.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Descriptive List Items',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Write list item content that makes sense in context. Screen reader users should understand each item without surrounding text.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure interactive list items (links, buttons) are keyboard accessible. Users should navigate between items using arrow keys or Tab.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Divs Instead of Lists',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use divs or other elements to simulate lists. This removes semantic meaning and screen readers won't announce list structure.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No List for Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't skip lists for navigation. Use semantic list elements even in navigation menus so screen readers understand the menu structure.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The list component follows patterns that meet WCAG 2.2 Level AA standards:
+
+- **Semantic HTML (1.3.1)** — Proper list element usage conveys structure
+- **Keyboard Navigation (2.1.1)** — All interactive list items are keyboard accessible
+- **Focus Visible (2.4.7)** — Clear focus indicators for linked list items
+- **List Structure (1.3.1)** — Screen readers announce list type and number of items
+
+<Footer />

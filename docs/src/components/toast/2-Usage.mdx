@@ -1,0 +1,88 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  StoryHeading,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ToastStories from './toast.stories'
+import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
+
+<Meta title="Components/Toast/Usage" />
+
+<Banner label={'Usage'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
+
+<BannerTabs of={ToastStories} tabs={getToastTabs('usage')} />
+
+## When to Use
+
+- Display brief, temporary notifications that auto-dismiss after a short duration
+- Show confirmation messages for completed actions (e.g., "File saved successfully")
+- Provide non-blocking feedback that doesn't require user action
+- Inform users of background processes or updates that don't demand immediate attention
+
+## When NOT to Use
+
+- For notifications that need to remain visible for extended periods — use **Snackbar** instead
+- For critical errors or warnings that require user interaction — use **Alert** in a modal dialog
+- For large amounts of content or complex information — use a dedicated notification panel
+- For form validation errors — use inline field-level feedback
+
+## Do's and Don'ts
+
+### Timely and Non-intrusive
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Short Duration',
+      content: (
+        <div className="bg-grey-light p-large radius">
+          <p className="text-small mb-normal">Display toasts for 4-6 seconds, allowing users to read the message and then dismiss automatically.</p>
+        </div>
+      ),
+      description: 'Brief notifications respect user attention and screen space.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Too Long',
+      content: (
+        <div className="bg-grey-light p-large radius">
+          <p className="text-small mb-normal">Avoid displaying toasts that stay visible indefinitely or for more than 10 seconds.</p>
+        </div>
+      ),
+      description: 'Long-lived toasts feel intrusive and clutter the interface.',
+    },
+  ]}
+/>
+
+### Single-Line Messages
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Brief Message',
+      content: (
+        <div className="bg-grey-light p-large radius">
+          <p className="text-small mb-normal"><strong>Success!</strong> Your profile has been updated.</p>
+        </div>
+      ),
+      description: 'Short, scannable messages work best for transient notifications.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Multi-line Content',
+      content: (
+        <div className="bg-grey-light p-large radius">
+          <p className="text-small mb-normal"><strong>Operation completed.</strong> Your profile has been successfully updated with all the new information. Please check your email to verify your changes...</p>
+        </div>
+      ),
+      description: 'Long messages may not be read before the toast auto-dismisses.',
+    },
+  ]}
+/>
+
+<Footer />

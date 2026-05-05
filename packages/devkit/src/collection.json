@@ -5,13 +5,13 @@
       "aliases": ["init"],
       "schema": "./ng-add/schema.json",
       "factory": "./ng-add/index",
-      "description": "Add Baloise Design System"
+      "description": "Add Helvetia Design System"
     },
     "ng-upgrade-16": {
       "aliases": ["up16"],
       "schema": "./ng-upgrade-16/schema.json",
       "factory": "./ng-upgrade-16/index",
-      "description": "Upgrade an angular application the v16 of Baloise Design System"
+      "description": "Upgrade an angular application the v16 of Helvetia Design System"
     }
   }
 }

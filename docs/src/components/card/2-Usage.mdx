@@ -1,0 +1,39 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Usage" />
+<Banner label={'Usage'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+<BannerTabs
+  of={CardStories}
+  tabs={getCardTabs('usage')}
+/>
+
+## When to Use
+
+- Display related content as a self-contained module
+- Create product, article, or profile summary cards
+- Group form fields or steps in a focused container
+- Highlight featured content or promotions
+- Build grids of related items (gallery, product listing)
+
+## When NOT to Use
+
+- For simple content that doesn't require visual separation — use plain dividers or spacing instead
+- As the only layout method on a page — combine cards with other layout components
+- To hide content that should be immediately visible — do not nest important information inside cards
+- For very simple elements like single buttons or links — cards add unnecessary overhead
+
+## Do's and Don'ts
+
+> WIP
+
+<Footer />

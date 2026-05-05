@@ -1,0 +1,298 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --icon-size: Size of the icon element.
+ * @prop --icon-inner-size: Internal size of the SVG icon.
+ * @prop --icon-inner-mt: Margin top of the SVG icon.
+ * @prop --icon-color: Color of the icon.
+ * @prop --icon-shape: Shape variant color of the icon.
+ * @prop --icon-tile-background: Background color of the tile around the icon.
+ * @prop --icon-tile-radius: Border radius of the tile background.
+ * @prop --icon-rotation: Rotation angle of the icon.
+ */
+
+:host {
+  @include vars.base(icon);
+  @include vars.local(icon-size, var(--ds-icon-size-base));
+  @include vars.local(icon-inner-size, var(--ds-icon-size-base));
+  @include vars.local(icon-inner-mt, 0);
+  @include vars.local(icon-color, var(--ds-icon-color-primary));
+  // @include vars.local(icon-brand-color, inherit);
+  @include vars.local(icon-shape, var(--ds-icon-color-primary));
+
+  @include vars.local(icon-tile-size, var(--ds-icon-tile-size-base-mobile));
+  @include vars.local(icon-tile-size-tablet, var(--ds-icon-tile-size-base-tablet));
+  @include vars.local(icon-tile-color-background, var(--ds-icon-tile-color-purple));
+  @include vars.local(icon-tile-radius, var(--ds-icon-tile-radius));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include unselectable();
+
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  pointer-events: visible;
+
+  // Size
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+  max-height: var(--_icon-size);
+
+  #inner {
+    display: block;
+    position: static;
+    z-index: 1;
+    transition: transform 0.2s ease-in-out;
+    padding: 0.063rem;
+    margin-top: var(--_icon-inner-mt);
+
+    // Size
+    width: var(--_icon-inner-size);
+    height: var(--_icon-inner-size);
+    max-height: var(--_icon-inner-size);
+
+    // Inner SVG Icon
+    & > svg {
+      vertical-align: top;
+    }
+  }
+}
+
+// Color
+:host(.is-filled) svg {
+  @include fillSvg(var(--_icon-color));
+}
+
+// With that variable we can style the brand icon from outside
+// of the component.
+$colors:
+  // Green
+  '#E9FBF7',
+  '#e9fbf7',
+  '#CBF2EC',
+  '#cbf2ec',
+  '#94E3D4',
+  '#94e3d4',
+  '#21D9AC',
+  '#21d9ac',
+  '#00B28F',
+  '#00b28f',
+  '#1B5951',
+  '#1b5951',
+  // Yellow
+  '#FFF9E8',
+  '#fff9e8',
+  '#FFECBC',
+  '#ffecbc',
+  '#FAE052',
+  '#fae052',
+  '#FFBE19',
+  '#ffbe19',
+  '#FA9319',
+  '#fa9319',
+  '#B24A00',
+  '#b24a00',
+  // Red
+  '#FFEEF1',
+  '#ffeef1',
+  '#FFD7D7',
+  '#ffd7d7',
+  '#FFACA6',
+  '#ffaca6',
+  '#FF596F',
+  '#ff596f',
+  '#D9304C',
+  '#d9304c',
+  '#99172D',
+  '#99172d',
+  // Purple
+  '#F9F3FF',
+  '#f9f3ff',
+  '#E1D9FF',
+  '#e1d9ff',
+  '#B8B2FF',
+  '#b8b2ff',
+  '#BE82FA',
+  '#be82fa',
+  '#9F52CC',
+  '#9f52cc',
+  '#6C2273',
+  '#6c2273',
+  // Blue
+  '#000D6E',
+  '#000d6e';
+
+@each $color in $colors {
+  :host(:not(.is-filled)) svg {
+    path[fill='#{$color}'] {
+      fill: var(--icon-brand-color, #{$color});
+    }
+  }
+}
+
+// Inline
+:host(.is-inline) {
+  display: inline-flex;
+  line-height: 1;
+}
+
+// Shadow
+:host(.has-shadow) {
+  svg {
+    filter: drop-shadow(0px 0px 5rem rgba(0, 0, 0, 0.5));
+  }
+}
+
+// Turn Modifiers
+:host(.turn-plus) #inner {
+  transform: rotate(225deg);
+}
+:host(.turn-nav-go-down) #inner,
+:host(.turn-caret-down) #inner,
+:host(.turn-caret-up) #inner {
+  transform: rotate(180deg);
+}
+
+// Tile
+:host(.is-tile) {
+  background: var(--_icon-tile-color-background);
+  border-radius: var(--_icon-tile-radius);
+
+  height: var(--_icon-tile-size);
+  --mod-icon-size: var(--_icon-tile-size);
+  --mod-icon-inner-size: var(--_icon-tile-size);
+
+  @include tablet {
+    height: var(--_icon-tile-size-tablet);
+    --mod-icon-size: var(--_icon-tile-size-tablet);
+    --mod-icon-inner-size: var(--_icon-tile-size-tablet);
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Sizes
+$icon-sizes: ('xs', 'sm', 'md', 'lg', 'xl', '2xl');
+
+@each $size in $icon-sizes {
+  :host(.is-#{$size}:not(.is-tile, .has-shape-circle, .has-shape-triangle)) {
+    --mod-icon-size: var(--ds-icon-size-#{$size});
+    --mod-icon-inner-size: var(--ds-icon-size-#{$size});
+  }
+}
+
+//
+// Tile Sizes
+:host(.is-tile.is-lg) {
+  --mod-icon-tile-size: var(--ds-icon-tile-size-lg-mobile);
+  --mod-icon-tile-size-tablet: var(--ds-icon-tile-size-lg-tablet);
+}
+
+:host(.is-tile.is-xl) {
+  --mod-icon-tile-size: var(--ds-icon-tile-size-xl-mobile);
+  --mod-icon-tile-size-tablet: var(--ds-icon-tile-size-xl-tablet);
+}
+
+//
+// Colors
+:host(.is-inverted) {
+  --mod-icon-color: var(--ds-icon-color-white);
+}
+
+:host(.is-disabled) {
+  --mod-icon-color: var(--ds-icon-color-disabled);
+}
+
+$icon-colors: ('primary', 'primary-light', 'info', 'success', 'danger', 'warning', 'white', 'grey');
+
+@each $color in $icon-colors {
+  :host(.is-#{$color}) {
+    --mod-icon-color: var(--ds-icon-color-#{$color});
+    --mod-icon-shape: var(--ds-color-#{$color}-5);
+  }
+}
+
+:host(.is-tile-green) {
+  --mod-icon-tile-color-background: var(--ds-icon-tile-color-green);
+}
+
+:host(.is-tile-red) {
+  --mod-icon-tile-color-background: var(--ds-icon-tile-color-red);
+}
+
+:host(.is-tile-yellow) {
+  --mod-icon-tile-color-background: var(--ds-icon-tile-color-yellow);
+}
+
+//
+// Shapes
+:host(.has-shape-circle),
+:host(.has-shape-triangle) {
+  --mod-icon-color: white;
+}
+
+:host(.has-shape-triangle) {
+  --mod-icon-inner-mt: 2px;
+}
+
+$shape-sizes: ('md', 'lg', 'xl', '2xl');
+
+:host(.has-shape-circle),
+:host(.has-shape-triangle) {
+  --mod-icon-size: var(--ds-icon-size-base);
+  --mod-icon-inner-size: calc(var(--ds-icon-size-base) * 0.6);
+}
+
+@each $size in $shape-sizes {
+  :host(.has-shape-circle.is-#{$size}),
+  :host(.has-shape-triangle.is-#{$size}) {
+    --mod-icon-size: var(--ds-icon-size-#{$size});
+    --mod-icon-inner-size: calc(var(--ds-icon-size-#{$size}) * 0.6);
+  }
+}
+
+:host(.has-shape-circle)::before {
+  content: '';
+  mask-image: url('data:image/svg+xml;charset=UTF-8,<svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.8995 4.10051C21.9416 2.14257 19.447 0.809205 16.7313 0.269012C14.0155 -0.271181 11.2006 0.00606573 8.64244 1.06569C6.08426 2.12532 3.89777 3.91973 2.35943 6.22202C0.821087 8.52431 -3.3718e-07 11.2311 0 14C1.6859e-07 16.769 0.821085 19.4757 2.35943 21.778C3.89777 24.0803 6.08426 25.8747 8.64244 26.9343C11.2006 27.994 14.0155 28.2712 16.7313 27.731C19.447 27.1908 21.9416 25.8575 23.8995 23.8995C26.525 21.274 28 17.7131 28 14C28 10.287 26.525 6.72602 23.8995 4.10051Z" fill="black"/></svg>');
+  mask-size: cover;
+  background: var(--_icon-shape);
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  margin: 2px;
+}
+
+:host(.has-shape-triangle)::before {
+  content: '';
+  mask-image: url("data:image/svg+xml;charset=UTF-8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'>\
+    <path fill='black' d='M7 .006a1.5 1.5 0 0 0-1.335.816l-.002.004-5.5 10.999a1.503 1.503 0 0 0 .606 1.983 1.5 1.5 0 0 0 .73.192h11.003a1.5 1.5 0 0 0 1.335-2.174l-5.5-11-.002-.004A1.5 1.5 0 0 0 7 .006'/>\
+  </svg>");
+  mask-size: cover;
+  background: var(--_icon-shape);
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  margin: 2px;
+}

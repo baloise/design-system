@@ -1,0 +1,152 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-badge>1</ds-badge>
+        <ds-badge>99</ds-badge>
+        <ds-badge>Urgent</ds-badge>
+      </section>
+
+      <!-- Colors -->
+      <section data-testid="colors">
+        <span>Colors</span>
+        <div class="stack as-row">
+          <ds-badge color="red">R</ds-badge>
+          <ds-badge color="green">G</ds-badge>
+          <ds-badge color="yellow">Y</ds-badge>
+          <ds-badge color="purple">P</ds-badge>
+          <ds-badge color="grey">G</ds-badge>
+          <ds-badge color="success">S</ds-badge>
+          <ds-badge color="warning">W</ds-badge>
+          <ds-badge color="danger">D</ds-badge>
+        </div>
+        <div class="stack as-row">
+          <ds-badge color="red" icon="check"></ds-badge>
+          <ds-badge color="green" icon="check"></ds-badge>
+          <ds-badge color="yellow" icon="check"></ds-badge>
+          <ds-badge color="purple" icon="check"></ds-badge>
+          <ds-badge color="grey" icon="check"></ds-badge>
+          <ds-badge color="success" icon="check"></ds-badge>
+          <ds-badge color="warning" icon="check"></ds-badge>
+          <ds-badge color="danger" icon="check"></ds-badge>
+        </div>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <ds-badge size="sm">S</ds-badge>
+        <ds-badge size="md">M</ds-badge>
+        <ds-badge size="lg">L</ds-badge>
+      </section>
+
+      <!-- Icon -->
+      <section data-testid="icon">
+        <span>Icon</span>
+        <ds-badge color="green" icon="check"></ds-badge>
+        <ds-badge color="green" icon="check" size="lg"></ds-badge>
+      </section>
+
+      <!-- Attention -->
+      <section data-testid="attention">
+        <span>Attention</span>
+        <div class="stack as-row">
+          <ds-badge color="red" pulse>R</ds-badge>
+          <ds-badge color="green" pulse>G</ds-badge>
+          <ds-badge color="yellow" pulse>Y</ds-badge>
+          <ds-badge color="purple" pulse>P</ds-badge>
+          <ds-badge color="grey" pulse>G</ds-badge>
+        </div>
+      </section>
+
+      <!-- List -->
+      <section data-testid="list">
+        <span>List</span>
+        <div class="stack">
+          <!-- Row -->
+          <div class="stack as-row">
+            <ds-badge color="green" icon="check" size="lg"></ds-badge>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <ds-icon name="caret-right"></ds-icon>
+          </div>
+          <!-- Row -->
+          <div class="stack as-row">
+            <ds-badge color="purple" size="lg">2</ds-badge>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <ds-icon name="caret-right"></ds-icon>
+          </div>
+          <!-- Row -->
+          <div class="stack as-row">
+            <ds-badge color="grey" size="lg">3</ds-badge>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <ds-icon name="caret-right"></ds-icon>
+          </div>
+          <!-- Row -->
+          <div class="stack as-row">
+            <ds-badge color="grey" icon="document" size="lg"></ds-badge>
+            <div class="stack-content">
+              <p class="title is-5 has-space-none">Heading</p>
+              <p>Description</p>
+            </div>
+            <ds-icon name="caret-right"></ds-icon>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card Position -->
+      <!-- <section data-testid="card-position">
+        <span>Card Position</span>
+        <article class="card">
+          <ds-badge color="green" icon="check"></ds-badge>
+          <header class="card-header">
+            <h3 class="title" id="card-title-1">Header</h3>
+          </header>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </div>
+        </article>
+      </section> -->
+
+      <!-- Button Position -->
+      <!-- <section data-testid="button-position">
+        <span>Button Position</span>
+        <button class="button">
+          <ds-badge icon="check"></ds-badge>
+          Button
+        </button>
+      </section> -->
+
+      <!-- Tabs Position -->
+      <!-- <section data-testid="tabs-position">
+        <span>Tabs Position</span>
+        <ds-tabs interface="tabs" value="tab-b">
+          <ds-tab-item value="tab-a" label="Tab A">Content of Tab A</ds-tab-item>
+          <ds-tab-item value="tab-b" label="Tab B" bubble>Content of Tab B</ds-tab-item>
+        </ds-tabs>
+      </section> -->
+    </main>
+  </body>
+</html>

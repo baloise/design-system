@@ -1,0 +1,163 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './toggle.mixin.scss' as toggle;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --toggle-size: Size of the toggle switch.
+ * @prop --toggle-height: Height of the toggle switch.
+ * @prop --toggle-color-background: Background color of the toggle when off.
+ * @prop --toggle-color-background-checked: Background color when toggle is on.
+ * @prop --toggle-color-indicator: Color of the toggle indicator/circle.
+ * @prop --toggle-border-radius: Border radius of the toggle switch.
+ * @prop --toggle-label-color: Text color of the toggle label.
+ * @prop --toggle-label-font-size: Font size of the toggle label.
+ * @prop --toggle-label-font-family: Font family of the toggle label.
+ * @prop --toggle-label-font-weight: Font weight of the toggle label.
+ * @prop --toggle-focus-color: Focus outline color of the toggle.
+ * @prop --toggle-gap: Gap between toggle and label.
+ * @prop --toggle-helper-color: Text color of helper text.
+ * @prop --toggle-helper-font-size: Font size of helper text.
+ */
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include toggle.vars(':host');
+@include toggle.layout(':host');
+@include toggle.style(':host');
+@include toggle.states(':host');
+
+/**
+ * Label Position
+ * --------------------------------
+ */
+
+:host(.has-label-left) {
+  label {
+    flex-direction: row-reverse;
+  }
+}
+
+:host(.has-label-top) {
+  label {
+    flex-direction: column-reverse;
+  }
+}
+
+/**
+ * Tile
+ * --------------------------------
+ */
+
+:host(.is-tile) {
+  display: block;
+  flex: 0 0 100%;
+
+  label {
+    width: 100%;
+    height: 100%;
+    padding: var(--_toggle-tile-padding);
+    border-style: solid;
+    border-width: var(--_toggle-tile-border-width);
+    border-radius: var(--_toggle-tile-radius);
+    border-color: var(--_toggle-tile-base-border-color);
+    background: var(--_toggle-tile-base-background-color);
+
+    @include hover {
+      &:hover {
+        border-color: var(--_toggle-tile-hover-border-color);
+        background: var(--_toggle-tile-hover-background-color);
+      }
+    }
+
+    &:active {
+      border-color: var(--_toggle-tile-active-border-color);
+      background: var(--_toggle-tile-active-background-color);
+    }
+  }
+}
+
+:host(.is-tile.is-checked) {
+  --mod-toggle-tile-base-border-color: var(--_toggle-checked-base-color-background);
+}
+
+:host(.is-tile.is-disabled) {
+  --icon-brand-color: var(--ds-color-grey-5);
+}
+
+:host(.is-tile.is-invalid) {
+  --mod-toggle-tile-hover-background-color: var(--ds-color-danger-1);
+  --mod-toggle-tile-active-background-color: var(--ds-color-danger-1);
+
+  --mod-toggle-tile-hover-border-color: var(--ds-color-danger-5);
+  --mod-toggle-tile-active-border-color: var(--ds-color-danger-6);
+
+  label {
+    --icon-brand-color: var(--ds-color-danger-4);
+
+    @include hover {
+      &:hover {
+        --icon-brand-color: var(--ds-color-danger-5);
+      }
+    }
+
+    &:active {
+      --icon-brand-color: var(--ds-color-danger-6);
+    }
+  }
+}
+
+@include tablet {
+  :host(.is-tile.has-cols-2) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}
+
+@include mobile {
+  :host(.is-tile.has-cols-2-mobile) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3-mobile) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4-mobile) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}
+
+@include tablet {
+  :host(.is-tile.has-cols-2-tablet) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3-tablet) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4-tablet) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}
+
+@include desktop {
+  :host(.is-tile.has-cols-2-desktop) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3-desktop) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4-desktop) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}

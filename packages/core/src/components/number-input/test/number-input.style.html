@@ -1,0 +1,298 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div class="field">
+          <label class="label" for="number-basic-1">Amount</label>
+          <div class="control">
+            <input id="number-basic-1" class="input" type="text" inputmode="decimal" aria-describedby="help-basic-1" />
+          </div>
+          <p id="help-basic-1" class="help">Enter a numeric value</p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="number-basic-2">Amount</label>
+          <div class="control">
+            <input
+              id="number-basic-2"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              placeholder="0"
+              aria-describedby="help-basic-2"
+            />
+          </div>
+          <p id="help-basic-2" class="help">Enter a numeric value</p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="number-basic-3">Amount</label>
+          <div class="control">
+            <input
+              id="number-basic-3"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              value="1234"
+              aria-describedby="help-basic-3"
+            />
+          </div>
+          <p id="help-basic-3" class="help">Enter a numeric value</p>
+        </div>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <div class="field is-disabled">
+          <label class="label" for="number-disabled-1">Amount</label>
+          <div class="control">
+            <input
+              id="number-disabled-1"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              disabled
+              aria-describedby="help-disabled-1"
+            />
+          </div>
+          <p id="help-disabled-1" class="help">Enter a numeric value</p>
+        </div>
+
+        <div class="field is-disabled">
+          <label class="label" for="number-disabled-2">Amount</label>
+          <div class="control">
+            <input
+              id="number-disabled-2"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              placeholder="0"
+              disabled
+              aria-describedby="help-disabled-2"
+            />
+          </div>
+          <p id="help-disabled-2" class="help">Enter a numeric value</p>
+        </div>
+
+        <div class="field is-disabled">
+          <label class="label" for="number-disabled-3">Amount</label>
+          <div class="control">
+            <input
+              id="number-disabled-3"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              value="1234"
+              disabled
+              aria-describedby="help-disabled-3"
+            />
+          </div>
+          <p id="help-disabled-3" class="help">Enter a numeric value</p>
+        </div>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <div class="field is-danger">
+          <label class="label" for="number-invalid-1">Amount</label>
+          <div class="control">
+            <input
+              id="number-invalid-1"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              aria-invalid="true"
+              aria-describedby="help-invalid-1"
+            />
+          </div>
+          <p id="help-invalid-1" class="help">Please enter a valid number</p>
+        </div>
+
+        <div class="field is-danger">
+          <label class="label" for="number-invalid-2">Amount</label>
+          <div class="control">
+            <input
+              id="number-invalid-2"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              placeholder="0"
+              aria-invalid="true"
+              aria-describedby="help-invalid-2"
+            />
+          </div>
+          <p id="help-invalid-2" class="help">Please enter a valid number</p>
+        </div>
+
+        <div class="field is-danger">
+          <label class="label" for="number-invalid-3">Amount</label>
+          <div class="control">
+            <input
+              id="number-invalid-3"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              value="abc"
+              aria-invalid="true"
+              aria-describedby="help-invalid-3"
+            />
+          </div>
+          <p id="help-invalid-3" class="help">Please enter a valid number</p>
+        </div>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <div class="field is-success">
+          <label class="label" for="number-valid-1">Amount</label>
+          <div class="control">
+            <input id="number-valid-1" class="input" type="text" inputmode="decimal" aria-describedby="help-valid-1" />
+          </div>
+          <p id="help-valid-1" class="help">Valid amount</p>
+        </div>
+
+        <div class="field is-success">
+          <label class="label" for="number-valid-2">Amount</label>
+          <div class="control">
+            <input
+              id="number-valid-2"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              placeholder="0"
+              aria-describedby="help-valid-2"
+            />
+          </div>
+          <p id="help-valid-2" class="help">Valid amount</p>
+        </div>
+
+        <div class="field is-success">
+          <label class="label" for="number-valid-3">Amount</label>
+          <div class="control">
+            <input
+              id="number-valid-3"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              value="1234"
+              aria-describedby="help-valid-3"
+            />
+          </div>
+          <p id="help-valid-3" class="help">Valid amount</p>
+        </div>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <div class="field is-warning">
+          <label class="label" for="number-warning-1">Amount</label>
+          <div class="control">
+            <input
+              id="number-warning-1"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              aria-describedby="help-warning-1"
+            />
+          </div>
+          <p id="help-warning-1" class="help">Please review this amount</p>
+        </div>
+
+        <div class="field is-warning">
+          <label class="label" for="number-warning-2">Amount</label>
+          <div class="control">
+            <input
+              id="number-warning-2"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              placeholder="0"
+              aria-describedby="help-warning-2"
+            />
+          </div>
+          <p id="help-warning-2" class="help">Please review this amount</p>
+        </div>
+
+        <div class="field is-warning">
+          <label class="label" for="number-warning-3">Amount</label>
+          <div class="control">
+            <input
+              id="number-warning-3"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              value="1234"
+              aria-describedby="help-warning-3"
+            />
+          </div>
+          <p id="help-warning-3" class="help">Please review this amount</p>
+        </div>
+      </section>
+
+      <!-- Loading -->
+      <section data-testid="loading">
+        <span>Loading</span>
+        <div class="field">
+          <label class="label" for="number-loading-1">Amount</label>
+          <div class="control is-loading">
+            <input
+              id="number-loading-1"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              aria-describedby="help-loading-1"
+            />
+          </div>
+          <p id="help-loading-1" class="help">Processing...</p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="number-loading-2">Amount</label>
+          <div class="control is-loading">
+            <input
+              id="number-loading-2"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              placeholder="0"
+              aria-describedby="help-loading-2"
+            />
+          </div>
+          <p id="help-loading-2" class="help">Processing...</p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="number-loading-3">Amount</label>
+          <div class="control is-loading">
+            <input
+              id="number-loading-3"
+              class="input"
+              type="text"
+              inputmode="decimal"
+              value="1234"
+              aria-describedby="help-loading-3"
+            />
+          </div>
+          <p id="help-loading-3" class="help">Processing...</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

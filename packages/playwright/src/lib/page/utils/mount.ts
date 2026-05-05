@@ -1,8 +1,8 @@
 import type { TestInfo } from '@playwright/test'
-import type { BalPage } from '../../types'
+import type { DsPage } from '../../types'
 import { waitForChanges } from './wait-for-changes'
 
-export const mount = async (page: BalPage, content: string, testInfo: TestInfo) => {
+export const mount = async (page: DsPage, content: string, testInfo: TestInfo) => {
   if (page.isClosed()) {
     throw new Error('setContent unavailable: page is already closed')
   }
@@ -30,11 +30,11 @@ export const mount = async (page: BalPage, content: string, testInfo: TestInfo) 
     await page.goto(`${baseUrl}#`)
 
     await waitForChanges(page)
-    await page.waitForFunction(
-      () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
-      {},
-      { timeout: 5000 },
-    )
+    // await page.waitForFunction(
+    //   () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
+    //   {},
+    //   { timeout: 5000 },
+    // )
   } else {
     throw new Error('setContent unavailable: no dev server base URL provided')
   }
@@ -48,17 +48,17 @@ const template = (html: string) => `
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <script type="module" src="/build/baloise-design-system.esm.js"></script>
-    <script nomodule src="/build/baloise-design-system.js"></script>
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
 
-    <link rel="preload" href="/build/baloise-design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/build/baloise-design-system.css" /></noscript>
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
   </head>
 
   <body>
-    <bal-app animated="false">
+    <ds-app animated="false">
       <main id="root">${html}</main>
-    </bal-app>
+    </ds-app>
   </body>
 </html>
 `

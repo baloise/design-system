@@ -1,0 +1,126 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-text>Basic Paragraph</ds-text>
+      </section>
+
+      <!-- Theme -->
+      <section data-testid="theme">
+        <span>Theme</span>
+        <style>
+          ds-text.my-theme {
+            --text-color: red;
+            --text-size: 2rem;
+            --text-weight: 800;
+          }
+        </style>
+        <ds-text class="my-theme">Basic Paragraph</ds-text>
+      </section>
+
+      <!-- No Wrap -->
+      <section data-testid="no-wrap">
+        <span>No Wrap</span>
+        <ds-text no-wrap>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, voluptatum. Fugit tempore harum, aut
+          impedit non illum numquam consequuntur porro dolore itaque explicabo maiores sint velit corrupti enim
+          asperiores. Ratione. Dolorum a exercitationem quaerat asperiores modi accusantium maiores dolorem non
+          veritatis itaque dolor iste quis omnis ullam tenetur hic vitae, excepturi expedita sed reprehenderit delectus
+          magni eum. Nihil, veritatis voluptatum? Totam maxime officiis est officia necessitatibus quidem delectus
+          eveniet nostrum beatae. Amet blanditiis laudantium, quas eveniet dolor pariatur, tempore magnam qui aspernatur
+          similique est nostrum, nesciunt nisi dignissimos quasi cumque! Molestias consectetur consequuntur architecto
+          voluptatum non officiis, doloribus nihil repudiandae tempora autem optio voluptates rem iure nostrum est
+          inventore officia animi repellat error aliquam beatae vel quod. Sed, eum repellat. Asperiores non deleniti
+          accusantium sed qui, dolore, quasi error fuga quam unde at eveniet esse officia natus? Temporibus nam
+          quibusdam, modi assumenda, impedit adipisci totam quos beatae dolor repudiandae possimus! Rem est consequatur
+          numquam voluptates, quaerat quidem quasi nisi, corporis pariatur non, quas esse neque! Sint fuga excepturi
+          molestiae placeat sapiente animi iusto? Sit voluptas rem aspernatur quisquam. Ut, sunt?
+        </ds-text>
+      </section>
+
+      <!-- Colors -->
+      <section data-testid="colors" class="s-bg-1">
+        <span>Colors</span>
+        <ds-text color="white">white paragraph</ds-text>
+        <ds-text color="black">black paragraph</ds-text>
+        <ds-text color="primary">primary paragraph</ds-text>
+        <ds-text color="primary-hover">primary-hover paragraph</ds-text>
+        <ds-text color="primary-active">primary-active paragraph</ds-text>
+        <ds-text color="inverted-primary">inverted-primary paragraph</ds-text>
+        <ds-text color="inverted-primary-hover">inverted-primary-hover paragraph</ds-text>
+        <ds-text color="inverted-primary-active">inverted-primary-active paragraph</ds-text>
+        <ds-text color="primary-light">primary-light paragraph</ds-text>
+        <ds-text color="hint">hint paragraph</ds-text>
+        <ds-text color="grey-light">grey-light paragraph</ds-text>
+        <ds-text color="grey">grey paragraph</ds-text>
+        <ds-text color="grey-dark">grey-dark paragraph</ds-text>
+        <ds-text color="disabled">disabled paragraph</ds-text>
+        <ds-text color="inverted-disabled">inverted-disabled paragraph</ds-text>
+        <ds-text color="info">info paragraph</ds-text>
+        <ds-text color="warning">warning paragraph</ds-text>
+        <ds-text color="success">success paragraph</ds-text>
+        <ds-text color="danger">danger paragraph</ds-text>
+        <ds-text color="danger-hover">danger-hover paragraph</ds-text>
+        <ds-text color="danger-active">danger-active paragraph</ds-text>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <ds-text size="small">small paragraph</ds-text>
+        <ds-text>base paragraph</ds-text>
+        <ds-text size="block">block paragraph</ds-text>
+        <ds-text size="lead">lead paragraph</ds-text>
+      </section>
+
+      <!-- Font Weight -->
+      <section data-testid="font-weight">
+        <span>Font Weight</span>
+        <ds-text bold>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+      </section>
+
+      <!-- Heading -->
+      <section data-testid="heading">
+        <span>Heading</span>
+        <ds-text heading>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+        <ds-text subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+      </section>
+
+      <!-- Inline -->
+      <section data-testid="inline">
+        <span>Inline</span>
+        <ds-text inline>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+      </section>
+
+      <!-- Shadow -->
+      <section data-testid="shadow">
+        <span>Shadow</span>
+        <ds-text shadow>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+      </section>
+
+      <!-- Space -->
+      <section data-testid="space" class="s-bg-1">
+        <span>Space</span>
+        <ds-text space="none" class="s-bg-2">None - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+        <ds-text space="top" class="s-bg-2">Top - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+        <ds-text space="bottom" class="s-bg-2"
+          >Bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text
+        >
+        <ds-text space="all" class="s-bg-2">All - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ds-text>
+      </section>
+    </main>
+  </body>
+</html>

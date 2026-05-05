@@ -1,0 +1,73 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as SegmentStories from './segment.stories'
+import { SEGMENT_DOC_CONFIG, getSegmentTabs } from './segment.doc-config'
+
+<Meta title="Components/Forms/Segment/Variants/Overview" />
+<StoryHeading of={SegmentStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={SEGMENT_DOC_CONFIG.section} color={SEGMENT_DOC_CONFIG.color} />
+<BannerTabs of={SegmentStories} tabs={getSegmentTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Basic}></StoryHeading>
+
+The default segment renders a horizontal row of options. Set a `value` to pre-select an item, and use `allow-empty-selection` to let users deselect the current choice.
+
+CSS-only equivalent using a `<fieldset>`, `<legend>`, and `<input type="radio">` elements. No JavaScript is required.
+
+<CanvasTabs of={SegmentStories.Basic} htmlOf={SegmentStories.BasicHtml} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Vertical}></StoryHeading>
+
+Add the `vertical` attribute to stack segment items in a column. Each item can include an optional `description` for additional context.
+
+CSS-only vertical variant using the `is-vertical` modifier class on the segment container.
+
+<CanvasTabs of={SegmentStories.Vertical} htmlOf={SegmentStories.VerticalHtml} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Disabled}></StoryHeading>
+
+Apply the `disabled` attribute to prevent interaction with all segment items. The selected value is preserved but cannot be changed.
+
+CSS-only disabled variant using the `is-disabled` modifier class and the `disabled` attribute on each `<input>`.
+
+<CanvasTabs of={SegmentStories.Disabled} htmlOf={SegmentStories.DisabledHtml} />
+
+{/* ------------------------------------------------------ */}
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Invalid}></StoryHeading>
+
+Apply `invalid` and `invalid-text` to display a validation error message below the group.
+
+CSS-only invalid variant using the `is-danger` modifier class and `aria-invalid="true"` on each `<input>`.
+
+<CanvasTabs of={SegmentStories.Invalid} htmlOf={SegmentStories.InvalidHtml} />
+
+{/* ------------------------------------------------------ */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Wide}></StoryHeading>
+
+Add the `wide` attribute to make each segment item expand equally and fill the full available width.
+
+<Canvas of={SegmentStories.Wide} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SegmentStories.Icon}></StoryHeading>
+
+Add `icon` to each `ds-segment-item` and `icon-only` to the parent to display icon-only items. Accessible labels are applied automatically.
+
+<Canvas of={SegmentStories.Icon} />
+
+{/* ------------------------------------------------------ */}
+
+<Footer />

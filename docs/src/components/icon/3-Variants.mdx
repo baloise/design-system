@@ -1,0 +1,37 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as IconStories from './icon.stories'
+import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
+
+<Meta title="Components/Icon/Variants/Overview" />
+<StoryHeading of={IconStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={ICON_DOC_CONFIG.section} color={ICON_DOC_CONFIG.color} />
+<BannerTabs
+  of={IconStories}
+  tabs={getIconTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={IconStories.UiIcons}></StoryHeading>
+
+These icons are already available in the Design System. More can be added through the config.
+
+<Canvas of={IconStories.UiIcons} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={IconStories.BrandIcons}></StoryHeading>
+
+Brand icons for popular platforms and services, used to indicate integrations or supported platforms.
+
+<Canvas of={IconStories.BrandIcons} sourceState="hidden" />
+
+<Footer />

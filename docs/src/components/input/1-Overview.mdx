@@ -1,0 +1,36 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as InputStories from './input.stories'
+import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
+
+<Meta title="Components/Forms/Input/Overview" />
+
+<Banner label={'Overview'} section={INPUT_DOC_CONFIG.section} color={INPUT_DOC_CONFIG.color} />
+
+<BannerTabs of={InputStories} tabs={getInputTabs('overview')} />
+
+<ComponentLead component="input" />
+
+<CanvasTabs of={InputStories.Basic} htmlOf={InputStories.BasicHtml} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-input',
+      label: 'Input',
+      content: <Controls of={InputStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="input" />
+
+<Footer />

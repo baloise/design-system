@@ -31,27 +31,27 @@ export const updateAppComponent = (host: Tree) => {
         appComponentPath,
         `import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
+import { DsLayoutBundle, DsHeading, DsButton } from '@baloise/ds-angular'
 
 @Component({
   selector: '${prefix}-root',
   standalone: true,${onPushTemplate}
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
+  imports: [CommonModule, DsLayoutBundle, DsHeading, DsButton],
   ${styleTemplate}
-  template: \` <bal-app class="has-sticky-footer">
+  template: \` <ds-app class="has-sticky-footer">
     <header>
       <!-- Header content -->
     </header>
     <main class="container">
       <!-- Your application content -->
-      <bal-heading>Hello World!</bal-heading>
-      <bal-button>Button</bal-button>
+      <ds-heading>Hello World!</ds-heading>
+      <ds-button>Button</ds-button>
     </main>
-    <bal-footer>
+    <ds-footer>
       <!-- Footer content -->
-    </bal-footer>
-  </bal-app>\`,
+    </ds-footer>
+  </ds-app>\`,
 })
 export class AppComponent {}
 `,
@@ -61,13 +61,13 @@ export class AppComponent {}
         appComponentPath,
         `import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/ds-angular'
+import { DsLayoutBundle, DsHeading, DsButton } from '@baloise/ds-angular'
 
 @Component({
   selector: '${prefix}-root',
   standalone: true,${onPushTemplate}
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
+  imports: [CommonModule, DsLayoutBundle, DsHeading, DsButton],
   templateUrl: './app${newAngularApp ? '' : 'component.'}html',
   ${styleTemplate}
 })
@@ -77,19 +77,19 @@ export class AppComponent {}
 
       host.overwrite(
         appTemplatePath,
-        `<bal-app class="has-sticky-footer">
+        `<ds-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
   <main class="container">
     <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
+    <ds-heading>Hello World!</ds-heading>
+    <ds-button>Button</ds-button>
   </main>
-  <bal-footer>
+  <ds-footer>
     <!-- Footer content -->
-  </bal-footer>
-</bal-app>`,
+  </ds-footer>
+</ds-app>`,
       )
     }
   } else {

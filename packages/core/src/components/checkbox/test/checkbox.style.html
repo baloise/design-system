@@ -1,0 +1,167 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <label class="checkbox">
+          <input type="checkbox" />
+          Unchecked
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" checked />
+          Checked
+        </label>
+      </section>
+
+      <!-- No label -->
+      <section data-testid="no-label">
+        <span>No Label</span>
+        <label class="checkbox">
+          <input type="checkbox" />
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" checked />
+        </label>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <label class="checkbox is-disabled">
+          <input type="checkbox" disabled />
+          Unchecked
+        </label>
+        <label class="checkbox is-disabled">
+          <input type="checkbox" checked disabled />
+          Checked
+        </label>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <label class="checkbox is-invalid">
+          <input type="checkbox" />
+          Unchecked
+        </label>
+        <label class="checkbox is-invalid">
+          <input type="checkbox" checked />
+          Checked
+        </label>
+      </section>
+
+      <!-- Invalid + Disabled -->
+      <section data-testid="invalid-disabled">
+        <span>Invalid + Disabled</span>
+        <label class="checkbox is-invalid is-disabled">
+          <input type="checkbox" disabled />
+          Unchecked
+        </label>
+        <label class="checkbox is-invalid is-disabled">
+          <input type="checkbox" checked disabled />
+          Checked
+        </label>
+      </section>
+
+      <!-- Field -->
+      <section data-testid="field">
+        <span>Field</span>
+        <fieldset class="field">
+          <legend class="label">Label</legend>
+          <div class="checkbox-group">
+            <label class="checkbox">
+              <input required type="checkbox" aria-describedby="help" value="1" name="field" />
+              Checkbox 1
+            </label>
+            <label class="checkbox">
+              <input required type="checkbox" aria-describedby="help" value="2" name="field" />
+              Checkbox 2
+            </label>
+          </div>
+          <p class="help" id="help">This username is available</p>
+        </fieldset>
+      </section>
+
+      <!-- Field Vertical -->
+      <section data-testid="field-vertical">
+        <span>Field Vertical</span>
+        <fieldset class="field">
+          <legend class="label">Label</legend>
+          <div class="checkbox-group is-vertical">
+            <label class="checkbox">
+              <input required type="checkbox" name="field-vertical" value="1" aria-describedby="help-2" />
+              Checkbox 1
+            </label>
+            <label class="checkbox">
+              <input required type="checkbox" name="field-vertical" value="2" aria-describedby="help-2" />
+              Checkbox 2
+            </label>
+          </div>
+          <p class="help" id="help-2">This username is available</p>
+        </fieldset>
+      </section>
+
+      <!-- Form submit -->
+      <section data-testid="form">
+        <span>Form</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <label class="checkbox">
+            <input type="checkbox" name="terms" value="accepted" />
+            Accept terms and conditions
+          </label>
+          <br /><br />
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+      </section>
+
+      <!-- Field Disabled -->
+      <section data-testid="field-disabled">
+        <span>Field Disabled</span>
+        <fieldset class="field is-disabled">
+          <legend class="label">Label</legend>
+          <div class="checkbox-group">
+            <label class="checkbox is-disabled">
+              <input type="checkbox" name="field-disabled" disabled aria-describedby="help" />
+              Checkbox 1
+            </label>
+            <label class="checkbox is-disabled">
+              <input type="checkbox" name="field-disabled" disabled aria-describedby="help" />
+              Checkbox 2
+            </label>
+          </div>
+          <p class="help" id="help">This username is available</p>
+        </fieldset>
+      </section>
+
+      <!-- Field Invalid -->
+      <section data-testid="field-invalid">
+        <span>Field Invalid</span>
+        <fieldset class="field is-invalid">
+          <legend class="label">Label</legend>
+          <div class="checkbox-group">
+            <label class="checkbox is-invalid">
+              <input type="checkbox" name="field-invalid" aria-invalid="true" aria-describedby="help" />
+              Checkbox 1
+            </label>
+            <label class="checkbox is-invalid">
+              <input type="checkbox" name="field-invalid" aria-invalid="true" aria-describedby="help" />
+              Checkbox 2
+            </label>
+          </div>
+          <p class="help" id="help">This username is available</p>
+        </fieldset>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+@forward '../../../../styles/sass/normalize';
+@forward './stack.style';
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --stack-direction: Direction of the stack layout (row or column).
+ * @prop --stack-gap: Spacing between stack items.
+ * @prop --stack-align: Alignment of items within the stack.
+ * @prop --stack-justify: Justification of items along the main axis.
+ * @prop --stack-wrap: Whether items wrap to multiple lines.
+ * @prop --stack-padding: Padding around the stack container.
+ */
+
+/**
+  * Host Style
+  */
+
+ds-stack {
+  position: static;
+}

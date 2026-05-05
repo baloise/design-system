@@ -1,0 +1,48 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as LabelStories from './label.stories'
+import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
+
+<Meta title="Components/Forms/Label/Variants/Overview" />
+
+<StoryHeading of={LabelStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+
+<BannerTabs  of={LabelStories}  tabs={getLabelTabs('variants')}/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.RequiredAndOptional}></StoryHeading>
+
+By default, all form fields are considered required.
+To indicate optional fields, use the `required` attribute with a value of `false` on the label component.
+
+<Canvas of={LabelStories.RequiredAndOptional} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.States}></StoryHeading>
+
+Labels can be in different states, such as normal, disabled, or with an error.
+
+<Canvas of={LabelStories.States} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.Sizes}></StoryHeading>
+
+Labels are available in different sizes to fit various design needs.
+
+<Canvas of={LabelStories.Sizes} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<Footer />

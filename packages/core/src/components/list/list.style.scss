@@ -1,0 +1,282 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+@use './description-list-native.styles.scss';
+@use './list-native.styles.scss';
+
+@use '../../vars' as vars;
+@use '../../hybrid' as hybrid;
+@use '../../typography' as typography;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+ul.list .item,
+ol.list .item,
+ul.list li details,
+ol.list li details {
+  @include vars.focus(list-item);
+
+  @include vars.local(list-item-grid-template-columns, 1fr);
+  @include vars.local(list-item-min-height, 3.5rem);
+  @include vars.local(list-item-gap, 1rem);
+  @include vars.local(list-item-space, 0.5rem);
+  @include vars.local(list-item-content-gap, 1px);
+
+  @include vars.local(list-item-color, inherit);
+  @include vars.local(list-item-border-color, var(--ds-list-item-border-color));
+  @include vars.local(list-item-border-width, var(--ds-list-item-border-width, 2px));
+  @include vars.local(list-item-border-radius, 12px);
+
+  @include vars.local(list-item-accordion-py, var(--ds-space-base-device));
+
+  @include vars.local(list-item-action-icon-size, var(--ds-icon-size-xs));
+
+  @include vars.local(list-item-title-size, var(--ds-heading-5-size-device));
+  @include vars.local(list-item-title-weight, var(--ds-text-weight-bold));
+  @include vars.local(list-item-title-family, var(--ds-font-family-heading));
+
+  @include vars.local(list-item-text-family, var(--ds-font-family-body));
+  @include vars.local(list-item-text-weight, var(--ds-text-weight-regular));
+  @include vars.local(list-item-text-size, var(--ds-text-size-sm-device));
+}
+
+/**
+  * Mixins
+  * --------------------------------
+  */
+@mixin border() {
+  content: '';
+  border-radius: 12px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+//
+// List
+ul.list,
+ol.list {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+//
+// List Items
+ol.list li,
+ul.list li {
+  position: relative;
+  display: grid;
+  box-sizing: border-box;
+}
+
+ol.list li:not(.item),
+ul.list li:not(.item) {
+  grid-template-columns: 1fr;
+}
+
+ol.list li.item,
+ol.list li .item,
+ul.list li.item,
+ul.list li .item {
+  min-height: var(--_list-item-min-height);
+  // grid-template-columns: var(--_list-item-grid-template-columns);
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--_list-item-gap);
+  width: 100%;
+
+  color: var(--_list-item-color);
+  background: inherit;
+  border: none;
+  align-self: stretch;
+  text-align: left;
+  font-family: var(--_list-item-title-family);
+
+  padding: var(--_list-item-space) 0;
+  padding-bottom: calc(var(--_list-item-space) + 2px);
+
+  //
+  // Icons
+  ds-icon {
+    flex-shrink: 0;
+  }
+
+  .item-content + ds-icon {
+    --icon-size: var(--_list-item-action-icon-size);
+    --icon-inner-size: var(--_list-item-action-icon-size);
+  }
+
+  //
+  // Content
+  .item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--_list-item-content-gap);
+  }
+
+  .item-title {
+    font-family: var(--_list-item-title-family);
+    font-weight: var(--_list-item-title-weight);
+    font-size: var(--_list-item-title-size);
+    margin: 0;
+  }
+
+  .item-text,
+  .item-subtitle {
+    font-family: var(--_list-item-text-family);
+    font-weight: var(--_list-item-text-weight);
+    font-size: var(--_list-item-text-size);
+    margin: 0;
+  }
+
+  //
+  // Border
+  &:after {
+    @include border();
+    height: var(--_list-item-border-width);
+    background: var(--_list-item-border-color);
+  }
+}
+
+/**
+  * Link inside list item
+  */
+
+ol.list li a.item,
+ol.list li button.item,
+ul.list li a.item,
+ul.list li button.item {
+  @include font-smoothing();
+  @include unselectable();
+
+  cursor: pointer;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  font-family: var(--_list-item-title-family);
+  font-weight: var(--ds-text-weight-bold);
+  color: var(--ds-link-color-base);
+
+  outline: none;
+  text-decoration: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  @include hover {
+    &:hover,
+    &.is-hovered {
+      --mod-list-item-border-color: var(--ds-link-color-base-hover);
+
+      color: var(--ds-link-color-base-hover);
+      ds-icon {
+        --icon-color: var(--ds-link-color-base-hover);
+      }
+    }
+  }
+
+  &:active,
+  &.is-pressed {
+    --mod-list-item-border-color: var(--ds-link-color-base-active);
+
+    color: var(--ds-link-color-base-active);
+    ds-icon {
+      --icon-color: var(--ds-link-color-base-active);
+    }
+  }
+
+  &:focus-visible,
+  &.is-focused {
+    &:not(:active) {
+      &:before {
+        @include vars.focus-styles(list-item);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        border-radius: var(--ds-radius-base);
+      }
+    }
+  }
+}
+
+/**
+  * Accordion inside list item
+  */
+
+ol.list li details,
+ul.list li details {
+  position: relative;
+  padding: 0;
+
+  &:after {
+    @include border();
+    height: var(--_list-item-border-width);
+    background: var(--_list-item-border-color);
+  }
+
+  &,
+  & summary {
+    min-height: calc(3.5rem - 1rem);
+  }
+
+  summary {
+    padding: 0.5rem 0;
+    position: relative;
+    &:before {
+      @include border();
+      height: var(--_list-item-border-width);
+      background: var(--_list-item-border-color);
+    }
+  }
+}
+
+/**
+  * Disabled
+  */
+
+ul.list li.item.is-disabled,
+ul.list li .item.is-disabled,
+ol.list li.item.is-disabled,
+ol.list li .item.is-disabled {
+  pointer-events: none !important;
+  cursor: default !important;
+
+  color: var(--ds-list-item-disabled);
+
+  ds-icon {
+    --icon-color: var(--ds-list-item-disabled);
+  }
+}
+
+/**
+  * Component Styles
+  * --------------------------------
+  */
+
+ds-item [slot='content'] {
+  font-size: var(--ds-text-size-sm);
+  @include typography.content(false);
+}

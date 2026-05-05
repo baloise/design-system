@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
+
+<Meta title="Components/Badge/Styling" />
+
+<Banner label={'Styling'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
+
+<BannerTabs of={BadgeStories} tabs={getBadgeTabs('styling')} />
+
+<ComponentParts component="badge" />
+
+<ComponentCssVariables component="badge" />
+
+<ComponentDesignTokens component="badge" />
+
+<Footer />

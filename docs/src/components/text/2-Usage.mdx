@@ -1,0 +1,97 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as TextStories from './text.stories'
+import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
+
+<Meta title="Components/Text/Usage" />
+<Banner label={'Usage'} section={TEXT_DOC_CONFIG.section} color={TEXT_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextStories}
+  tabs={getTextTabs('usage')}
+/>
+
+## When to Use
+
+- Display body text, paragraphs, and article content
+- Create multi-line blocks of readable content
+- Apply consistent typography styling across different text sizes and weights
+- Render semantic `<p>` or `<span>` elements based on context
+- Show text with theme variations (heading font, subtitle font)
+
+## When NOT to Use
+
+- For main page titles or section headers — use the Heading component instead
+- As a replacement for semantic HTML `<strong>` or `<em>` elements for emphasis
+- For single words or short labels without context — use plain HTML for simplicity
+- When maximum performance and minimal JS are critical — consider plain HTML with CSS classes
+
+## Do's and Don'ts
+
+### Text Sizing
+
+Choose text sizes based on the content hierarchy and reading experience. Balance readability with visual weight.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Appropriate sizing hierarchy',
+      content: (
+        <>
+          <ds-heading level="h2">Article Title</ds-heading>
+          <ds-text class="mt-normal">This is the body text for the article.</ds-text>
+        </>
+      ),
+      description: 'Proper size hierarchy guides reading flow',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: All text same size',
+      content: (
+        <>
+          <ds-text>Article Title</ds-text>
+          <ds-text class="mt-normal">This is the body text for the article.</ds-text>
+        </>
+      ),
+      description: 'Equal sizing makes content structure unclear',
+    },
+  ]}
+/>
+
+### Color and Contrast
+
+Ensure sufficient contrast between text and background for readability. Use inverted variant on dark backgrounds.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: High contrast text',
+      content: (
+        <>
+          <ds-text>Dark text on light background provides good contrast</ds-text>
+        </>
+      ),
+      description: 'Meets WCAG 2.2 AA contrast requirements',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Low contrast',
+      content: (
+        <>
+          <ds-text color="grey">Light grey text on white background is hard to read</ds-text>
+        </>
+      ),
+      description: 'Fails accessibility contrast ratios',
+    },
+  ]}
+/>
+
+<Footer />

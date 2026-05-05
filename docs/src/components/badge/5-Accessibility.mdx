@@ -1,0 +1,72 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import BadgeParts from './badge.parts.svg'
+import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
+
+<Meta title="Components/Badge/Accessibility" />
+<Banner label={'Accessibility'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
+<BannerTabs
+  of={BadgeStories}
+  tabs={getBadgeTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Text Content',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always include visible text content (a number, abbreviation, or label) inside the badge so screen readers can announce it.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Parent Labeling',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using the <code>icon</code> prop, add an <code>aria-label</code> to the <strong>parent element</strong> that describes what the badge indicates — for example: <code>&lt;button aria-label="Notifications, 3 unread"&gt;</code>
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Color Contrast',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely on color alone to convey meaning. Pair color variants with surrounding text or semantic context to ensure the message is clear to all users.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Decorative Badges',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          For purely decorative badges, add <code>aria-hidden="true"</code> to the <code>&lt;ds-badge&gt;</code> element so screen readers ignore them.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) - Provides an accessible label for elements without visible text.
+- [MDN: aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) - Hides elements from assistive technology when they are decorative or redundant.
+
+<Footer />

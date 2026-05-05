@@ -1,0 +1,93 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Variants/Overview" />
+
+<StoryHeading of={ListStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+
+<BannerTabs of={ListStories} tabs={getListTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.LinkedList}></StoryHeading>
+
+List of links for navigation or reference.
+
+<CanvasTabs
+ 
+  htmlOf={ListStories.LinkedListHtml}
+  of={ListStories.LinkedList}
+ 
+ 
+/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.DownloadList}></StoryHeading>
+
+List of downloadable items with associated actions.
+
+<CanvasTabs
+ 
+  htmlOf={ListStories.DownloadListHtml}
+  of={ListStories.DownloadList}
+ 
+ 
+/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.AccordionList}></StoryHeading>
+
+List of items that can be expanded or collapsed to show more content.
+
+<Canvas of={ListStories.AccordionList} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.AccordionListNested}></StoryHeading>
+
+List of nested items that can be expanded or collapsed to show more content.
+
+<Canvas of={ListStories.AccordionListNested} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.OrderedList}></StoryHeading>
+
+List of items in a specific sequence or order.
+
+<Canvas of={ListStories.OrderedList} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.UnorderedListHtml}></StoryHeading>
+
+Native bullet point list for unordered items.
+
+<Canvas of={ListStories.UnorderedListHtml} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.OrderedListHtml}></StoryHeading>
+
+Native numbered list for ordered items.
+
+<Canvas of={ListStories.OrderedListHtml} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ListStories.DescriptionListHtml}></StoryHeading>
+
+Description list for pairs of terms and descriptions.
+
+<Canvas of={ListStories.DescriptionListHtml} />
+
+{/* ------------------------------------------------------ */}
+
+<Footer />

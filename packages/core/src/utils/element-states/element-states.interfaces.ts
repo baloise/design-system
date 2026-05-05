@@ -1,13 +1,13 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 
-export type BalElementStateInfo = {
+export type ElementStateInfo = {
   hovered: boolean
   pressed: boolean
 }
 
-export type BalElementStateListenerFn = (info: BalElementStateInfo) => void
+export type ElementStateListenerFn = (info: ElementStateInfo) => void
 
-export interface BalElementStateObserver {
+export interface ElementStateObserver {
   el: HTMLElement | HTMLStencilElement
-  elementStateListener(info: BalElementStateInfo): void
+  listenToElementState(info: ElementStateInfo): void
 }

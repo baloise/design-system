@@ -34,7 +34,7 @@ All these icons are included in the package `@baloise/ds-icons`.
 
 ### Colors
 
-<bal-doc-app>
+<ds-app>
   <table className="sb-unstyled table w-full">
     <thead>
       <tr>
@@ -47,9 +47,9 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <bal-icon name="star-full" size="medium" color="primary"></bal-icon>
-            <bal-icon name="star-full" size="medium" color="primary-light"></bal-icon>
-            <bal-icon name="star-full" size="medium" color="primary-dark"></bal-icon>
+            <ds-icon name="file" size="medium" color="primary"></ds-icon>
+            <ds-icon name="file" size="medium" color="primary-light"></ds-icon>
+            {/* <ds-icon name="file" size="medium" color="primary-dark"></ds-icon> */}
           </div>
         </td>
         <td>
@@ -62,21 +62,21 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-primary)</code>
+              <code>var(--ds-icon-color-primary)</code>
             </pre>
             <pre>
-              <code>var(--bal-icon-color-primary-light)</code>
+              <code>var(--ds-icon-color-primary-light)</code>
             </pre>
-            <pre>
-              <code>var(--bal-icon-color-primary-dark)</code>
-            </pre>
+            {/* <pre>
+              <code>var(--ds-icon-color-primary-dark)</code>
+            </pre> */}
           </small>
         </td>
       </tr>
       <tr>
         <td>
           <div className="bg-primary p-small">
-            <bal-icon name="date" size="medium" color="white"></bal-icon>
+            <ds-icon name="date" size="medium" color="white"></ds-icon>
           </div>
         </td>
         <td>
@@ -87,15 +87,15 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-white)</code>
+              <code>var(--ds-icon-color-white)</code>
             </pre>
           </small>
         </td>
       </tr>
-      <tr>
+      {/* <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <bal-icon name="location" size="medium" color="light-blue"></bal-icon>
+            <ds-icon name="picture" size="medium" color="light-blue"></ds-icon>
           </div>
         </td>
         <td>
@@ -106,16 +106,16 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-primary)</code>
+              <code>var(--ds-icon-color-primary)</code>
             </pre>
           </small>
         </td>
-      </tr>
+      </tr> */}
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <bal-icon name="edit" size="medium" color="grey"></bal-icon>
-            <bal-icon name="edit" size="medium" color="grey-light"></bal-icon>
+            <ds-icon name="edit" size="medium" color="grey"></ds-icon>
+            <ds-icon name="edit" size="medium" color="disabled"></ds-icon>
           </div>
         </td>
         <td>
@@ -126,12 +126,12 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-grey)</code>
+              <code>var(--ds-icon-color-grey)</code>
             </pre>
           </small>
           <small>
             <pre>
-              <code>var(--bal-icon-color-grey-light)</code>
+              <code>var(--ds-icon-color-disabled)</code>
             </pre>
           </small>
         </td>
@@ -139,9 +139,9 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <bal-icon name="check-circle" size="medium" color="success"></bal-icon>
-            <bal-icon name="check-circle" size="medium" color="success-dark"></bal-icon>
-            <bal-icon name="check-circle" size="medium" color="success-darker"></bal-icon>
+            <ds-icon name="info-circle" size="medium" color="success"></ds-icon>
+            {/* <ds-icon name="info-circle" size="medium" color="success-dark"></ds-icon> */}
+            {/* <ds-icon name="info-circle" size="medium" color="success-darker"></ds-icon> */}
           </div>
         </td>
         <td>
@@ -152,27 +152,27 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-success)</code>
+              <code>var(--ds-icon-color-success)</code>
+            </pre>
+          </small>
+          {/* <small>
+            <pre>
+              <code>var(--ds-icon-color-success-dark)</code>
             </pre>
           </small>
           <small>
             <pre>
-              <code>var(--bal-icon-color-success-dark)</code>
+              <code>var(--ds-icon-color-success-darker)</code>
             </pre>
-          </small>
-          <small>
-            <pre>
-              <code>var(--bal-icon-color-success-darker)</code>
-            </pre>
-          </small>
+          </small> */}
         </td>
       </tr>
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <bal-icon name="alert-triangle" size="medium" color="warning"></bal-icon>
-            <bal-icon name="alert-triangle" size="medium" color="warning-dark"></bal-icon>
-            <bal-icon name="alert-triangle" size="medium" color="warning-darker"></bal-icon>
+            <ds-icon name="alert" size="medium" color="warning"></ds-icon>
+            {/* <ds-icon name="alert" size="medium" color="warning-dark"></ds-icon> */}
+            {/* <ds-icon name="alert" size="medium" color="warning-darker"></ds-icon> */}
           </div>
         </td>
         <td>
@@ -183,27 +183,27 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-warning)</code>
+              <code>var(--ds-icon-color-warning)</code>
+            </pre>
+          </small>
+          {/* <small>
+            <pre>
+              <code>var(--ds-icon-color-warning-dark)</code>
             </pre>
           </small>
           <small>
             <pre>
-              <code>var(--bal-icon-color-warning-dark)</code>
+              <code>var(--ds-icon-color-warning-darker)</code>
             </pre>
-          </small>
-          <small>
-            <pre>
-              <code>var(--bal-icon-color-warning-darker)</code>
-            </pre>
-          </small>
+          </small> */}
         </td>
       </tr>
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <bal-icon name="close-circle" size="medium" color="danger"></bal-icon>
-            <bal-icon name="close-circle" size="medium" color="danger-dark"></bal-icon>
-            <bal-icon name="close-circle" size="medium" color="danger-darker"></bal-icon>
+            <ds-icon name="close" size="medium" color="danger"></ds-icon>
+            {/* <ds-icon name="close" size="medium" color="danger-dark"></ds-icon> */}
+            {/* <ds-icon name="close" size="medium" color="danger-darker"></ds-icon> */}
           </div>
         </td>
         <td>
@@ -214,28 +214,28 @@ All these icons are included in the package `@baloise/ds-icons`.
         <td>
           <small>
             <pre>
-              <code>var(--bal-icon-color-danker)</code>
+              <code>var(--ds-icon-color-danger)</code>
+            </pre>
+          </small>
+          {/* <small>
+            <pre>
+              <code>var(--ds-icon-color-danger-dark)</code>
             </pre>
           </small>
           <small>
             <pre>
-              <code>var(--bal-icon-color-danker-dark)</code>
+              <code>var(--ds-icon-color-danger-darker)</code>
             </pre>
-          </small>
-          <small>
-            <pre>
-              <code>var(--bal-icon-color-danker-darker)</code>
-            </pre>
-          </small>
+          </small> */}
         </td>
       </tr>
     </tbody>
   </table>
-</bal-doc-app>
+</ds-app>
 
 ### Sizes
 
-<bal-doc-app>
+<ds-app>
   <table className="sb-unstyled table w-full">
     <thead>
       <tr>
@@ -249,8 +249,8 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal">
-            <bal-icon name="caret-left" size="x-small"></bal-icon>
-            <bal-icon name="caret-down" size="x-small"></bal-icon>
+            <ds-icon name="caret-left" size="x-small"></ds-icon>
+            <ds-icon name="caret-down" size="x-small"></ds-icon>
           </div>
         </td>
         <td>
@@ -266,8 +266,8 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal">
-            <bal-icon name="search" size="small"></bal-icon>
-            <bal-icon name="account" size="small"></bal-icon>
+            <ds-icon name="trash" size="small"></ds-icon>
+            <ds-icon name="audio" size="small"></ds-icon>
           </div>
         </td>
         <td>
@@ -281,8 +281,8 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal">
-            <bal-icon name="edit"></bal-icon>
-            <bal-icon name="menu-bars"></bal-icon>
+            <ds-icon name="edit"></ds-icon>
+            <ds-icon name="menu-bars"></ds-icon>
           </div>
         </td>
         <td>
@@ -296,8 +296,8 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal">
-            <bal-icon name="close" size="medium"></bal-icon>
-            <bal-icon name="upload" size="medium"></bal-icon>
+            <ds-icon name="close" size="medium"></ds-icon>
+            <ds-icon name="upload" size="medium"></ds-icon>
           </div>
         </td>
         <td>
@@ -312,11 +312,11 @@ All these icons are included in the package `@baloise/ds-icons`.
       </tr>
     </tbody>
   </table>
-</bal-doc-app>
+</ds-app>
 
 ## Brand Icons
 
-The brand icons are the visual expression of Baloise brand's products, services, and tools.
+The brand icons are the visual expression of Helvetia brand's products, services, and tools.
 Each brand icon is available in the 4 different color combinations.
 
 All these icons are included in the package `@baloise/ds-brand-icons`.
@@ -332,7 +332,7 @@ import BrandIconBanner from '../assets/images/BAL_Frontify_Digital_Icons_2.png'
 
 ### Sizes
 
-<bal-doc-app>
+<ds-app>
   <table className="sb-unstyled table w-full">
     <thead>
       <tr>
@@ -411,7 +411,7 @@ import BrandIconBanner from '../assets/images/BAL_Frontify_Digital_Icons_2.png'
       </tr>
     </tbody>
   </table>
-</bal-doc-app>
+</ds-app>
 
 ### Dont's
 

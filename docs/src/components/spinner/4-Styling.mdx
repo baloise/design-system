@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SpinnerStories from './spinner.stories'
+import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
+
+<Meta title="Components/Spinner/Styling" />
+
+<Banner label={'Styling'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
+
+<BannerTabs of={SpinnerStories} tabs={getSpinnerTabs('styling')} />
+
+<ComponentParts component="spinner" />
+
+<ComponentCssVariables component="spinner" />
+
+<ComponentDesignTokens component="spinner" />
+
+<Footer />

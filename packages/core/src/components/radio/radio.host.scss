@@ -1,0 +1,178 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use './radio.mixin.scss' as radio;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --radio-size: Size of the radio button circle.
+ * @prop --radio-color-border: Border color of the radio button.
+ * @prop --radio-color-background: Background color of the radio button.
+ * @prop --radio-color-background-checked: Background color when radio is checked.
+ * @prop --radio-color-border-checked: Border color when radio is checked.
+ * @prop --radio-label-color: Text color of the radio label.
+ * @prop --radio-label-font-size: Font size of the radio label.
+ * @prop --radio-label-font-family: Font family of the radio label.
+ * @prop --radio-label-font-weight: Font weight of the radio label.
+ * @prop --radio-focus-color: Focus outline color of the radio.
+ * @prop --radio-gap: Gap between radio and label.
+ * @prop --radio-helper-color: Text color of helper text.
+ * @prop --radio-helper-font-size: Font size of helper text.
+ */
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include radio.vars(':host');
+@include radio.layout(':host');
+@include radio.style(':host');
+@include radio.states(':host');
+
+/**
+ * Label Position
+ * --------------------------------
+ */
+
+:host(.has-label-left) {
+  label {
+    flex-direction: row-reverse;
+  }
+}
+
+:host(.has-label-top) {
+  label {
+    flex-direction: column-reverse;
+  }
+}
+
+/**
+ * Tile
+ * --------------------------------
+ */
+
+:host(.is-tile) {
+  display: block;
+  flex: 0 0 100%;
+
+  label {
+    width: 100%;
+    height: 100%;
+    padding: var(--_radio-tile-padding);
+    border-style: solid;
+    border-width: var(--_radio-tile-border-width);
+    border-radius: var(--_radio-tile-radius);
+    border-color: var(--_radio-tile-base-border-color);
+    background: var(--_radio-tile-base-background-color);
+
+    @include hover {
+      &:hover {
+        border-color: var(--_radio-tile-hover-border-color);
+        background: var(--_radio-tile-hover-background-color);
+      }
+    }
+
+    &:active {
+      border-color: var(--_radio-tile-active-border-color);
+      background: var(--_radio-tile-active-background-color);
+    }
+  }
+}
+
+:host(.is-tile.is-checked) {
+  --mod-radio-tile-base-border-color: var(--_radio-checked-base-color-background);
+}
+
+:host(.is-tile.has-tile-green.is-checked) {
+  --mod-radio-tile-base-background-color: var(--ds-color-green-1);
+}
+
+:host(.is-tile.has-tile-red.is-checked) {
+  --mod-radio-tile-base-background-color: var(--ds-color-red-1);
+}
+
+:host(.is-tile.has-tile-yellow.is-checked) {
+  --mod-radio-tile-base-background-color: var(--ds-color-yellow-1);
+}
+
+:host(.is-tile.has-tile-purple.is-checked) {
+  --mod-radio-tile-base-background-color: var(--ds-color-purple-1);
+}
+
+:host(.is-tile.is-disabled) {
+  --icon-brand-color: var(--ds-color-grey-5);
+}
+
+:host(.is-tile.is-invalid) {
+  --mod-radio-tile-hover-background-color: var(--ds-color-danger-1);
+  --mod-radio-tile-active-background-color: var(--ds-color-danger-1);
+
+  --mod-radio-tile-hover-border-color: var(--ds-color-danger-5);
+  --mod-radio-tile-active-border-color: var(--ds-color-danger-6);
+
+  label {
+    --icon-brand-color: var(--ds-color-danger-4);
+
+    @include hover {
+      &:hover {
+        --icon-brand-color: var(--ds-color-danger-5);
+      }
+    }
+
+    &:active {
+      --icon-brand-color: var(--ds-color-danger-6);
+    }
+  }
+}
+
+@include tablet {
+  :host(.is-tile.has-cols-2) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}
+
+@include mobile {
+  :host(.is-tile.has-cols-2-mobile) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3-mobile) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4-mobile) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}
+
+@include tablet {
+  :host(.is-tile.has-cols-2-tablet) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3-tablet) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4-tablet) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}
+
+@include desktop {
+  :host(.is-tile.has-cols-2-desktop) {
+    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+  }
+  :host(.is-tile.has-cols-3-desktop) {
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+  }
+  :host(.is-tile.has-cols-4-desktop) {
+    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+  }
+}

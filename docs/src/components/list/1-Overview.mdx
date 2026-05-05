@@ -1,0 +1,41 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ListStories from './list.stories'
+import * as ListItemStories from './item/item.stories'
+import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
+
+<Meta title="Components/List/Overview" />
+
+<Banner label={'Overview'} section={LIST_DOC_CONFIG.section} color={LIST_DOC_CONFIG.color} />
+
+<BannerTabs of={ListStories} tabs={getListTabs('overview')} />
+
+<ComponentLead component="list" />
+
+<Canvas of={ListStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-list',
+      label: 'List',
+      content: <Controls of={ListStories.Basic} />,
+    },
+    {
+      id: 'ds-item',
+      label: 'Item',
+      content: <Controls of={ListItemStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="list" subComponents={['item']} />
+
+<Footer />

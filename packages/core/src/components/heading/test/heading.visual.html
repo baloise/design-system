@@ -1,0 +1,103 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-heading>Basic Heading</ds-heading>
+        <ds-heading subtitle>Basic Subtitle</ds-heading>
+      </section>
+
+      <!-- Colors -->
+      <section class="s-bg-1" data-testid="colors">
+        <span>Colors</span>
+        <ds-heading color="primary">Primary</ds-heading>
+        <ds-heading color="success">Success</ds-heading>
+        <ds-heading color="warning">Warning</ds-heading>
+        <ds-heading color="danger">Danger</ds-heading>
+        <ds-heading color="white">White</ds-heading>
+        <ds-heading color="black">Black</ds-heading>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <ds-heading level="h1">Level 1</ds-heading>
+        <ds-heading level="h2">Level 2</ds-heading>
+        <ds-heading level="h3">Level 3</ds-heading>
+        <ds-heading level="h4">Level 4</ds-heading>
+        <ds-heading level="h5">Level 5</ds-heading>
+
+        <ds-heading visual-level="display">Visual Display 1</ds-heading>
+        <ds-heading visual-level="display-2">Visual Display 2</ds-heading>
+        <ds-heading visual-level="h1">Visual Level 1</ds-heading>
+        <ds-heading visual-level="h2">Visual Level 2</ds-heading>
+        <ds-heading visual-level="h3">Visual Level 3</ds-heading>
+        <ds-heading visual-level="h4">Visual Level 4</ds-heading>
+        <ds-heading visual-level="h5">Visual Level 5</ds-heading>
+      </section>
+
+      <!-- Shadow -->
+      <section data-testid="shadow">
+        <span>Text Shadow</span>
+        <ds-heading shadow>Heading with Text Shadow</ds-heading>
+      </section>
+
+      <!-- No Wrap  -->
+      <section data-testid="no-wrap">
+        <span>No Wrap</span>
+        <ds-heading no-wrap>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium tempore nisi perspiciatis sint! Minus,
+          ullam enim iste inventore veniam atque! Id ad vel dicta hic praesentium minus, totam cumque ab?
+        </ds-heading>
+      </section>
+
+      <!-- Spaces  -->
+      <section data-testid="spaces">
+        <span>Spaces</span>
+        <div class="s-bg-1 s-mb">
+          <ds-heading class="s-bg-2" level="h5">Space Basic</ds-heading>
+          <ds-heading class="s-bg-2" level="h5">Space Basic</ds-heading>
+        </div>
+
+        <div class="s-bg-1 s-mb">
+          <ds-heading class="s-bg-2" level="h5" space="all">Space All</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="all">Space All</ds-heading>
+        </div>
+
+        <div class="s-bg-1 s-mb">
+          <ds-heading class="s-bg-2" level="h5" space="top">Space Top</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="top">Space Top</ds-heading>
+        </div>
+
+        <div class="s-bg-1 s-mb">
+          <ds-heading class="s-bg-2" level="h5" space="bottom">Space Bottom</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="bottom">Space Bottom</ds-heading>
+        </div>
+
+        <div class="s-bg-1 s-mb">
+          <ds-heading class="s-bg-2" level="h5" space="none">Space None</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="none">Space None</ds-heading>
+        </div>
+
+        <div class="s-bg-1 s-mb">
+          <ds-heading class="s-bg-2" level="h5">Space Basic</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="top">Space Top</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="bottom">Space Bottom</ds-heading>
+          <ds-heading class="s-bg-2" level="h5" space="none">Space None</ds-heading>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

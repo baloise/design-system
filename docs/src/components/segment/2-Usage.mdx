@@ -1,0 +1,99 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
+import * as SegmentStories from './segment.stories'
+import { SEGMENT_DOC_CONFIG, getSegmentTabs } from './segment.doc-config'
+
+<Meta title="Components/Forms/Segment/Usage" />
+<Banner label={'Usage'} section={SEGMENT_DOC_CONFIG.section} color={SEGMENT_DOC_CONFIG.color} />
+<BannerTabs of={SegmentStories} tabs={getSegmentTabs('usage')} />
+
+## When to Use
+
+- Let users pick exactly one option from a small set of mutually exclusive choices (2–5 items)
+- Replace a group of radio buttons when the options benefit from a compact, button-like appearance
+- Provide quick mode or filter switching (e.g. Monthly / Yearly, List / Grid)
+- Use inside forms when the label and description context clarify the choice being made
+
+## When NOT to Use
+
+- When the number of options exceeds five — a select or radio group is easier to scan
+- When multiple selections are allowed — use checkboxes instead
+- When options are long sentences or need rich formatting — a radio group with full descriptions is clearer
+- When the choice is not part of a form and has an immediate page-level effect — consider tabs or a toggle instead
+
+## Do's and Don'ts
+
+### Labelling the Group
+
+Always provide a label so users know what they are selecting.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Descriptive group label',
+      contentIsLeftAligned:true,
+      content: (
+        <ds-segment name="do-label" value="monthly" label="Billing cycle" description="How often you will be charged">
+          <ds-segment-item value="monthly" label="Monthly"></ds-segment-item>
+          <ds-segment-item value="yearly" label="Yearly"></ds-segment-item>
+        </ds-segment>
+      ),
+      description: 'A clear label tells users exactly what the selection controls.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No label',
+      contentIsLeftAligned:true,
+      content: (
+        <ds-segment name="dont-label" value="monthly">
+          <ds-segment-item value="monthly" label="Monthly"></ds-segment-item>
+          <ds-segment-item value="yearly" label="Yearly"></ds-segment-item>
+        </ds-segment>
+      ),
+      description: 'Without a label, users cannot determine the purpose of the selection.',
+    },
+  ]}
+/>
+
+### Number of Options
+
+Keep the option count small so the segment remains compact and scannable.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: 2–4 short options',
+        contentIsLeftAligned:true,
+      content: (
+        <ds-segment name="do-count" value="s" label="Size">
+          <ds-segment-item value="s" label="S"></ds-segment-item>
+          <ds-segment-item value="m" label="M"></ds-segment-item>
+          <ds-segment-item value="l" label="L"></ds-segment-item>
+          <ds-segment-item value="xl" label="XL"></ds-segment-item>
+        </ds-segment>
+      ),
+      description: 'A handful of short labels fits comfortably and is easy to compare.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Too many options',
+        contentIsLeftAligned:true,
+      content: (
+        <ds-segment name="dont-count" value="mon" label="Day">
+          <ds-segment-item value="mon" label="Monday"></ds-segment-item>
+          <ds-segment-item value="tue" label="Tuesday"></ds-segment-item>
+          <ds-segment-item value="wed" label="Wednesday"></ds-segment-item>
+          <ds-segment-item value="thu" label="Thursday"></ds-segment-item>
+          <ds-segment-item value="fri" label="Friday"></ds-segment-item>
+          <ds-segment-item value="sat" label="Saturday"></ds-segment-item>
+          <ds-segment-item value="sun" label="Sunday"></ds-segment-item>
+        </ds-segment>
+      ),
+      description: 'Too many options overflow and force the segment to wrap or scroll — use a select instead.',
+    },
+  ]}
+/>
+
+<Footer />

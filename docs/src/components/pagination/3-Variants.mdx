@@ -1,0 +1,53 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as PaginationStories from './pagination.stories'
+import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
+
+<Meta title="Components/Pagination/Variants/Overview" />
+<StoryHeading of={PaginationStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={PAGINATION_DOC_CONFIG.section} color={PAGINATION_DOC_CONFIG.color} />
+<BannerTabs of={PaginationStories} tabs={getPaginationTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.Alignment}></StoryHeading>
+
+With `align` prop, you can align the pagination to the left, center, or right of its container.
+By default, it is aligned to the center.
+
+<Canvas of={PaginationStories.Alignment} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.Ranges}></StoryHeading>
+
+With `range` prop, you can control the number of pages displayed in the pagination.
+
+<Canvas of={PaginationStories.Ranges} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.Disabled}></StoryHeading>
+
+The `disabled` prop can be used to disable the pagination, preventing user interaction and visually indicating that it is inactive.
+
+<Canvas of={PaginationStories.Disabled} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.Sizes}></StoryHeading>
+
+With `size` prop, you can adjust the size of the pagination to fit different design needs and contexts.
+
+<Canvas of={PaginationStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.Dots}></StoryHeading>
+
+<Canvas of={PaginationStories.Dots} />
+
+{/* ------------------------------------------------------ */}
+
+<Footer />

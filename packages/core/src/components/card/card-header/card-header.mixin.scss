@@ -1,0 +1,63 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../card-title/card-title.mixin.scss' as title;
+@use '../card-subtitle/card-subtitle.mixin.scss' as subtitle;
+
+@mixin style() {
+  // --heading-line-height: 32px;
+
+  // Only use small buttons in the card header
+  // to have the same height as the title
+  --button-font-size: var(--ds-button-size-sm);
+  --button-min-height: 2rem;
+  --button-min-width: 2rem;
+  --button-padding-inline: 0.75rem;
+  --tags-display: flex;
+  --tags-mt: 0.25rem;
+
+  @include tablet() {
+    --buttons-wrap: nowrap;
+    --tags-display: inline-flex;
+    --tags-mt: 0;
+  }
+
+  column-gap: calc(var(--_card-gap) / 2);
+  display: grid;
+  align-items: start;
+  grid-auto-rows: auto;
+
+  margin-left: var(--_card-header-margin-left);
+  grid-template-columns: var(--_card-header-grid-template-columns);
+  grid-template-areas: var(--_card-header-grid-template-areas);
+
+  ds-icon,
+  ::slotted(ds-icon) {
+    grid-area: icon;
+  }
+
+  & > .tag,
+  & > .tags,
+  & > ds-tag,
+  & > ds-tag-group,
+  ::slotted(ds-tag),
+  ::slotted(ds-tag-group) {
+    grid-area: tag;
+    margin-bottom: 1rem;
+  }
+
+  .title,
+  ds-card-title {
+    @include title.style();
+  }
+
+  & > p,
+  .subtitle,
+  ds-card-subtitle {
+    @include subtitle.style();
+  }
+
+  .title,
+  .subtitle,
+  .heading {
+    margin: 0;
+  }
+}

@@ -1,0 +1,22 @@
+@use '../../hybrid' as hybrid;
+
+@use './label.style' with (
+  $use-host: true
+);
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --label-color: Text color of the label.
+ * @prop --label-family: Font family of the label text.
+ * @prop --label-weight: Font weight of the label text.
+ * @prop --label-line-height: Line height of the label text.
+ * @prop --label-size: Font size of the label text.
+ */
+
+:host {
+  display: block;
+}

@@ -1,0 +1,412 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../../vars' as vars;
+
+// SCSS variables used in both layout and the @for-loop transform.
+// Must be SCSS values (not CSS custom properties) because they are
+// interpolated into translateX() at compile time.
+
+$_max-items: 8;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@mixin vars($wrapper: ':host') {
+  #{$wrapper} {
+    @include vars.local(segment-radius, var(--ds-segment-radius));
+    @include vars.local(segment-background, var(--ds-segment-background));
+    @include vars.local(segment-gap, var(--ds-segment-gap));
+    @include vars.local(segment-padding, var(--ds-segment-padding));
+    @include vars.local(segment-item-height, var(--ds-segment-item-height));
+    @include vars.local(segment-item-padding-inline, var(--ds-segment-item-padding-inline));
+    @include vars.local(segment-item-padding-block, var(--ds-segment-item-padding-block));
+    @include vars.local(segment-item-icon-size, var(--ds-segment-item-icon-size));
+    @include vars.local(segment-item-icon-gap, var(--ds-segment-item-icon-gap));
+    @include vars.local(segment-item-font-weight, var(--ds-segment-item-font-weight));
+    @include vars.local(segment-description-font-size, var(--ds-segment-description-font-size));
+    @include vars.local(segment-description-font-weight, var(--ds-segment-description-font-weight));
+    @include vars.local(segment-focus-color, var(--ds-segment-focus-color));
+
+    @include vars.local(segment-item-unselected-color-base, var(--ds-segment-item-unselected-color-base));
+    @include vars.local(segment-item-unselected-color-hover, var(--ds-segment-item-unselected-color-hover));
+    @include vars.local(segment-item-unselected-color-active, var(--ds-segment-item-unselected-color-active));
+
+    @include vars.local(segment-item-selected-color-base, var(--ds-segment-item-selected-color-base));
+    @include vars.local(segment-item-selected-color-hover, var(--ds-segment-item-selected-color-hover));
+    @include vars.local(segment-item-selected-color-active, var(--ds-segment-item-selected-color-active));
+    @include vars.local(segment-item-selected-background, var(--ds-segment-item-selected-background));
+    @include vars.local(segment-divider-color, var(--ds-segment-divider-color));
+  }
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  *
+  * $include-pill: true  → CSS-only mode: sliding pill via ::after + @for transforms on the last label
+  * $include-pill: false → web component mode: pill is a JS-driven <div id="pill">
+  */
+
+@mixin style($selector: '#container', $include-pill: true) {
+  #{$selector} {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    width: max-content;
+    gap: var(--_segment-gap);
+    padding: var(--_segment-padding);
+    border-radius: var(--_segment-radius);
+    background: var(--_segment-background);
+
+    label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      // Symmetric wider padding keeps text centred while reserving space
+      // on the left for the icon (which is position:absolute).
+      padding-inline: calc(
+        var(--_segment-item-padding-inline) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap)
+      );
+      padding-block: calc(var(--_segment-item-padding-block));
+      min-height: var(--_segment-item-height);
+      border-radius: inherit;
+      cursor: pointer;
+      user-select: none;
+      font-weight: var(--_segment-item-font-weight);
+
+      color: var(--_segment-item-unselected-color-base);
+      --icon-color: var(--_segment-item-unselected-color-base);
+
+      .description {
+        font-size: var(--_segment-description-font-size);
+        font-weight: var(--_segment-description-font-weight);
+        text-align: center;
+      }
+
+      ds-icon {
+        --icon-mt: 0.25rem;
+        --icon-mb: 0.25rem;
+      }
+
+      #content {
+        display: grid;
+      }
+
+      // Checkmark icon — always positioned on the left, hidden when unchecked.
+      // position:absolute keeps it out of flex flow so text never shifts.
+      &::before {
+        content: '';
+        position: absolute;
+        left: var(--_segment-item-padding-inline);
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--_segment-item-icon-size);
+        height: var(--_segment-item-icon-size);
+        background-color: var(--_segment-item-selected-color-base);
+        mask-image: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
+        mask-size: 75%;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        opacity: 0;
+        transition: opacity 160ms ease-in-out;
+      }
+
+      @include hover {
+        &:not(:has(input:checked)):hover {
+          color: var(--_segment-item-unselected-color-hover);
+          --icon-color: var(--_segment-item-unselected-color-hover);
+        }
+      }
+
+      &:not(:has(input:checked)):active {
+        color: var(--_segment-item-unselected-color-active);
+        --icon-color: var(--_segment-item-unselected-color-active);
+      }
+
+      @include hover {
+        &:has(input:checked):hover {
+          color: var(--_segment-item-selected-color-hover);
+          --icon-color: var(--_segment-item-selected-color-hover);
+
+          &::before {
+            background-color: var(--_segment-item-selected-color-hover);
+          }
+        }
+      }
+
+      &:has(input:checked):active {
+        color: var(--_segment-item-selected-color-active);
+        --icon-color: var(--_segment-item-selected-color-active);
+
+        &::before {
+          background-color: var(--_segment-item-selected-color-active);
+        }
+      }
+
+      &:has(input:checked)::before {
+        opacity: 1;
+      }
+
+      &:has(input:checked) {
+        color: var(--_segment-item-selected-color-base);
+        --icon-color: var(--_segment-item-selected-color-base);
+      }
+
+      input[type='radio'] {
+        appearance: none;
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        padding: 0;
+        border-radius: inherit;
+        cursor: pointer;
+
+        &:focus-visible {
+          outline: var(--ds-interaction-focus-width, 2px) solid var(--_segment-focus-color);
+          outline-offset: 2px;
+          border-radius: inherit;
+        }
+      }
+
+      // Divider line between non-selected items — hidden adjacent to the selection.
+      &:not(:last-of-type)::after {
+        content: '';
+        position: absolute;
+        right: calc(var(--_segment-gap) * -0.5 - 1px);
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        border-radius: 2px;
+        background-color: var(--_segment-divider-color);
+        opacity: 1;
+        transition: opacity 160ms ease;
+      }
+
+      // CSS-only pill: last label hosts the sliding ::after element and sits one
+      // z-level below so sibling selectors targeting it work correctly.
+      @if $include-pill {
+        &:last-of-type {
+          z-index: 1;
+        }
+
+        // Pill hidden by default via display:none — no opacity trick needed.
+        // CSS transitions do NOT fire across display:none ↔ visible changes
+        // (that requires opt-in transition-behavior:allow-discrete), so:
+        //   first selection  → none→block  → no transition → instant appearance
+        //   switching items  → block stays → transform transition fires → slide
+        //   deselecting      → block→none  → no transition → instant disappearance
+        &:last-of-type::after {
+          content: '';
+          display: none;
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          background-color: var(--_segment-item-selected-background);
+          border-radius: inherit;
+          clip-path: inset(0 round var(--_segment-radius));
+          transition:
+            transform 160ms cubic-bezier(0.4, 0, 0.2, 1),
+            clip-path 80ms ease;
+        }
+
+        // does not work with :has() alone, needs the extra :last-of-type to target the correct element
+        &:has(input:checked) {
+          ~ :last-of-type::after,
+          &:last-of-type::after {
+            display: block;
+          }
+        }
+
+        // Slide the pill left by $i positions when the ($i+1)-th label
+        // from the end is checked.  gap must be the same value used
+        // above so the compiled calc() stays correct.
+        @for $i from 1 through $_max-items {
+          &:nth-last-of-type(#{$i + 1}):has(input:checked) ~ label:last-of-type::after {
+            transform: translateX(calc(#{$i} * -100% - #{$i} * var(--_segment-gap)));
+          }
+        }
+
+        // Press effect: clip the pill inward by 2px — pure visual, no geometry change,
+        // so translateX keeps working correctly.
+        &:has(input:checked):active ~ label:last-of-type::after,
+        &:last-of-type:has(input:checked):active::after {
+          clip-path: inset(2px round var(--_segment-radius));
+        }
+      }
+    }
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+// Shared column-layout rules extracted to avoid repetition in the vertical mixin.
+@mixin _vertical-layout($selector, $include-pill: true) {
+  #{$selector} {
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+    width: auto;
+
+    label {
+      // Left-align content when stacked vertically
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.75rem;
+      text-align: left;
+      // Reserve space on the right for the icon; restore normal left padding.
+      padding-inline-start: var(--_segment-item-padding-inline);
+      padding-inline-end: calc(
+        var(--_segment-item-padding-inline) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap)
+      );
+
+      .description {
+        text-align: left;
+      }
+
+      // Move icon to the right side, vertically centred within the label.
+      &::before {
+        left: auto;
+        right: var(--_segment-item-padding-inline);
+      }
+
+      // Description span — smaller text on a new line below the label
+      span + span {
+        font-size: var(--_segment-description-font-size);
+      }
+
+      // Vertical divider: horizontal bar at the bottom of each non-last item.
+      &:not(:last-of-type)::after {
+        right: 0;
+        top: auto;
+        bottom: calc(var(--_segment-gap) * -0.5 - 1px);
+        width: auto;
+        left: 0;
+        height: 2px;
+      }
+
+      @if $include-pill {
+        @for $i from 1 through $_max-items {
+          &:nth-last-of-type(#{$i + 1}):has(input:checked) ~ label:last-of-type::after {
+            transform: translateY(calc(#{$i} * -100% - #{$i} * var(--_segment-gap)));
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin vertical($selector: '#container', $wrapper: '', $include-pill: true) {
+  @if $wrapper == ':host' {
+    // Always vertical (explicit prop or auto-detected overflow)
+    :host(.is-vertical),
+    :host(.is-auto-vertical) {
+      @include _vertical-layout($selector, $include-pill);
+    }
+
+    // Vertical only on mobile (below tablet breakpoint)
+    @include mobile() {
+      :host(.is-vertical-on-mobile) {
+        @include _vertical-layout($selector, $include-pill);
+      }
+    }
+  } @else {
+    // CSS-only: always vertical
+    @include _vertical-layout('#{$selector}.is-vertical', $include-pill);
+
+    // CSS-only: vertical on mobile
+    @include mobile() {
+      @include _vertical-layout('#{$selector}.is-vertical-on-mobile', $include-pill);
+    }
+  }
+}
+
+@mixin wide($selector: '#container', $wrapper: '') {
+  @if $wrapper == ':host' {
+    :host(.is-wide) {
+      #{$selector} {
+        grid-auto-columns: 1fr;
+        width: auto;
+      }
+    }
+  } @else {
+    #{$selector} {
+      grid-auto-columns: 1fr;
+      width: auto;
+    }
+  }
+}
+
+// --- State helpers ---
+
+@mixin _invalid-vars() {
+  // Form field label + description
+  --mod-segment-description-color: var(--ds-color-danger-4);
+
+  // Item text — unselected
+  --mod-segment-item-unselected-color-base: var(--ds-color-danger-4);
+  --mod-segment-item-unselected-color-hover: var(--ds-color-danger-5);
+  --mod-segment-item-unselected-color-active: var(--ds-color-danger-6);
+
+  // Item text — selected (white on danger pill)
+  --mod-segment-item-selected-color-base: var(--ds-color-white);
+  --mod-segment-item-selected-color-hover: var(--ds-color-white);
+  --mod-segment-item-selected-color-active: var(--ds-color-white);
+
+  // Sliding pill
+  --mod-segment-background: var(--ds-color-danger-1);
+  --mod-segment-item-selected-background: var(--ds-color-danger-4);
+}
+
+@mixin _disabled-vars() {
+  cursor: default;
+  pointer-events: none;
+
+  // Form field label + description
+  --mod-segment-label-color: var(--ds-color-grey-5);
+  --mod-segment-description-color: var(--ds-color-grey-5);
+
+  // Item text — all states flattened to grey
+  --mod-segment-item-unselected-color-base: var(--ds-color-grey-5);
+  --mod-segment-item-unselected-color-hover: var(--ds-color-grey-5);
+  --mod-segment-item-unselected-color-active: var(--ds-color-grey-5);
+  --mod-segment-item-selected-color-base: var(--ds-color-grey-6);
+  --mod-segment-item-selected-color-hover: var(--ds-color-grey-6);
+  --mod-segment-item-selected-color-active: var(--ds-color-grey-6);
+
+  // Sliding pill
+  --mod-segment-item-selected-background: var(--ds-color-grey-3);
+}
+
+// Field applies `is-danger` (not `is-invalid`) and `is-disabled`.
+// Invalid declared first, disabled declared second — disabled wins when both are present.
+@mixin states($wrapper: ':host') {
+  @if $wrapper == ':host' {
+    :host(.is-danger:not(.is-disabled)) {
+      @include _invalid-vars();
+    }
+
+    :host(.is-disabled) {
+      @include _disabled-vars();
+    }
+  } @else {
+    #{$wrapper}.is-danger:not(.is-disabled) {
+      @include _invalid-vars();
+    }
+
+    #{$wrapper}.is-disabled {
+      @include _disabled-vars();
+    }
+  }
+}

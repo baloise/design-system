@@ -1,0 +1,116 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../vars' as vars;
+@use './textarea.mixin' as textarea;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-color: Text color inside the textarea field.
+ * @prop --input-placeholder: Placeholder text color.
+ * @prop --input-family: Font family of the textarea text.
+ * @prop --input-weight: Font weight of the textarea text.
+ * @prop --input-size: Font size of the textarea text.
+ * @prop --input-line-height: Line height of the textarea text.
+ * @prop --input-container-background: Background color of the textarea container.
+ * @prop --input-container-border-color: Border color of the textarea container.
+ * @prop --input-container-border-width: Border width of the textarea container.
+ * @prop --input-container-radius: Border radius of the textarea container.
+ * @prop --input-container-hover-background: Container background color on hover.
+ * @prop --input-container-active-background: Container background color when active.
+ * @prop --input-container-focus-background: Container background color when focused.
+ * @prop --input-container-hover-border: Container border color on hover.
+ * @prop --input-container-active-border: Container border color when active.
+ * @prop --input-container-focus-border: Container border color when focused.
+ * @prop --input-label-color: Text color of the label.
+ * @prop --input-label-family: Font family of the label.
+ * @prop --input-label-weight: Font weight of the label.
+ * @prop --input-label-size: Font size of the label.
+ * @prop --input-label-line-height: Line height of the label.
+ * @prop --input-description-color: Text color of the description.
+ * @prop --input-description-family: Font family of the description.
+ * @prop --input-description-weight: Font weight of the description.
+ * @prop --input-description-size: Font size of the description.
+ * @prop --input-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include textarea.vars('input');
+  @include textarea.vars-container('input');
+  @include textarea.vars-label('input');
+  @include textarea.vars-description('input');
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  position: relative;
+  display: grid;
+  gap: 0.25rem;
+
+  @include textarea.style('input', '#textarea');
+  @include textarea.container('input');
+  @include textarea.label('input');
+  @include textarea.description('input');
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-input-container-border-color: var(--ds-input-container-color-danger-border);
+  --mod-input-description-color: var(--ds-input-description-color-danger);
+  --mod-input-container-hover-border: var(--ds-input-container-color-danger-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-input-container-border-color: var(--ds-input-container-color-success-border);
+  --mod-input-description-color: var(--ds-input-description-color-success);
+  --mod-input-container-hover-border: var(--ds-input-container-color-success-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-input-container-border-color: var(--ds-input-container-color-warning-border);
+  --mod-input-description-color: var(--ds-input-description-color-warning);
+  --mod-input-container-hover-border: var(--ds-input-container-color-warning-border);
+  --mod-input-container-active-border: var(--ds-input-container-color-warning-border);
+}
+
+//
+// Disabled
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #textarea {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-input-container-background: var(--ds-input-container-color-disabled-background);
+  --mod-input-container-border-color: var(--ds-input-container-color-disabled-border);
+  --mod-input-label-color: var(--ds-input-label-color-disabled);
+  --mod-input-description-color: var(--ds-input-description-color-disabled);
+
+  --mod-input-color: var(--ds-input-control-color-value-disabled);
+  --mod-input-placeholder: var(--ds-input-control-color-placeholder-disabled);
+}

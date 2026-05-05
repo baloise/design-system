@@ -1,5 +1,5 @@
 import type { JSHandle } from '@playwright/test'
-import { BalPage } from '../types'
+import { DsPage } from '../types'
 
 /**
  * The EventSpy class allows developers to listen for a particular event emission and
@@ -66,7 +66,7 @@ export class EventSpy {
  *
  * @param page The Playwright test page object.
  */
-export const initPageEvents = async (page: BalPage) => {
+export const initPageEvents = async (page: DsPage) => {
   page._e2eEventsIds = 0
   page._e2eEvents = new Map()
 
@@ -90,7 +90,7 @@ export const initPageEvents = async (page: BalPage) => {
  * @param callback The callback to execute when the event is fired.
  */
 export const addE2EListener = async (
-  page: BalPage,
+  page: DsPage,
   elmHandle: JSHandle,
   eventName: string,
   callback: (ev: any) => void,

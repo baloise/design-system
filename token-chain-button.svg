@@ -1,0 +1,45 @@
+<svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Token chain for primary button background color">
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1: Color swatch -->
+  <rect x="20" y="60" width="140" height="80" rx="10" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="1.5"/>
+  <rect x="32" y="72" width="116" height="36" rx="6" fill="#005EFF"/>
+  <text x="90" y="126" text-anchor="middle" font-family="monospace" font-size="10" fill="#0c4a6e">--ds-color-primary-4</text>
+  <text x="90" y="140" text-anchor="middle" font-family="monospace" font-size="10" fill="#0c4a6e">#005EFF</text>
+  <text x="90" y="56" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="600" fill="#0369a1">🧱 PRIMITIVE</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="100" x2="200" y2="100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Step 2: Semantic -->
+  <rect x="210" y="60" width="170" height="80" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="295" y="56" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="600" fill="#15803d">🏷️ SEMANTIC</text>
+  <text x="295" y="88" text-anchor="middle" font-family="monospace" font-size="10" fill="#14532d">--ds-background-color</text>
+  <text x="295" y="102" text-anchor="middle" font-family="monospace" font-size="10" fill="#14532d">-primary</text>
+  <text x="295" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#166534">→ var(--ds-color-primary-4)</text>
+  <text x="295" y="136" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">"primary background"</text>
+
+  <!-- Arrow 2 -->
+  <line x1="380" y1="100" x2="420" y2="100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Step 3: Component -->
+  <rect x="430" y="60" width="195" height="80" rx="10" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="527" y="56" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="600" fill="#7e22ce">🧩 COMPONENT</text>
+  <text x="527" y="88" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#3b0764">--ds-button-color-primary</text>
+  <text x="527" y="102" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#3b0764">-base-background</text>
+  <text x="527" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6b21a8">→ var(--ds-background-color-primary)</text>
+  <text x="527" y="136" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">"button · primary · base · bg"</text>
+
+  <!-- Arrow 3 -->
+  <line x1="625" y1="100" x2="665" y2="100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Step 4: Button preview -->
+  <rect x="675" y="70" width="70" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="682" y="82" width="56" height="28" rx="6" fill="#005EFF"/>
+  <text x="710" y="102" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="600" fill="#ffffff">Button</text>
+  <text x="710" y="145" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">Result</text>
+</svg>

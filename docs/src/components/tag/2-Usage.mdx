@@ -1,0 +1,102 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as TagStories from './tag.stories'
+import { TAG_DOC_CONFIG, getTagTabs } from './tag.doc-config'
+
+<Meta title="Components/Tag/Usage" />
+<Banner label={'Usage'} section={TAG_DOC_CONFIG.section} color={TAG_DOC_CONFIG.color} />
+<BannerTabs
+  of={TagStories}
+  tabs={getTagTabs('usage')}
+/>
+
+## When to Use
+
+- Display categories or classifications for content
+- Show skill tags or technology labels
+- Indicate status or priority levels
+- Filter or organize items by attribute
+- Display removable tokens in an input field
+- Show badges or labels for user-generated content
+
+## When NOT to Use
+
+- For standalone buttons or navigation elements — use the button component instead
+- To display primary action calls-to-action — buttons are more prominent
+- For important alerts or critical information — use notification or alert components
+- As large block-level containers — tags are intended to be compact inline elements
+
+## Do's and Don'ts
+
+### Tag Content and Length
+
+Keep tag content short and concise. Use single words or short phrases that quickly convey meaning.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Short, clear label',
+      content: (
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <ds-tag>JavaScript</ds-tag>
+          <ds-tag>React</ds-tag>
+          <ds-tag>Accessible</ds-tag>
+        </div>
+      ),
+      description: 'Quick to scan and understand at a glance',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Long, wordy tag content',
+      content: (
+        <div>
+          <ds-tag>This is a very long tag that explains in detail what the thing is</ds-tag>
+        </div>
+      ),
+      description: 'Too verbose, defeats the purpose of tags',
+    },
+  ]}
+/>
+
+### Color and Semantic Meaning
+
+Use different tag colors to convey semantic meaning or category. Be consistent across your application.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Consistent semantic colors',
+      content: (
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <ds-tag color="success">Active</ds-tag>
+          <ds-tag color="warning">Pending</ds-tag>
+          <ds-tag color="danger">Closed</ds-tag>
+        </div>
+      ),
+      description: 'Colors consistently map to status meanings',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Random color usage',
+      content: (
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <ds-tag color="warning">Active</ds-tag>
+          <ds-tag color="danger">Pending</ds-tag>
+          <ds-tag color="success">Closed</ds-tag>
+        </div>
+      ),
+      description: 'Colors don\'t match status meanings',
+    },
+  ]}
+/>
+
+<Footer />

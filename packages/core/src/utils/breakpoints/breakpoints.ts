@@ -1,17 +1,17 @@
-import type { BalBreakpoints } from './breakpoints.interfaces'
-import { balBrowser } from '../browser'
+import type { DsBreakpoints } from './breakpoints.interfaces'
+import { dsBrowser } from '../browser'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 
-export type BalBreakpoint = keyof typeof BREAKPOINTS_MAP
+export type DsBreakpoint = keyof typeof BREAKPOINTS_MAP
 
-export class BalBreakpointsUtil {
+export class DsBreakpointsUtil {
   private win?: any
-  private breakpoints: BalBreakpoint[] = []
+  private breakpoints: DsBreakpoint[] = []
 
   constructor() {
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       this.win = window
-      this.win.BaloiseDesignSystem = this.win.BaloiseDesignSystem || {}
+      this.win.DesignSystem = this.win.DesignSystem || {}
       this.detect()
     }
   }
@@ -38,31 +38,31 @@ export class BalBreakpointsUtil {
   }
 
   /**
-   * Is true when desktop, highDefinition, widescreen or fullhd breakpoint is active
+   * Is true when desktop, desktopLg, desktopXl or desktop2Xl breakpoint is active
    */
   public get isDesktop(): boolean {
     return this.includes('desktop')
   }
 
   /**
-   * Is true when highDefinition breakpoint is active
+   * Is true when desktopLg breakpoint is active
    */
-  public get isHighDefinition(): boolean {
-    return this.includes('highDefinition')
+  public get isDesktopLg(): boolean {
+    return this.includes('desktopLg')
   }
 
   /**
-   * Is true when widescreen breakpoint is active
+   * Is true when desktopXl breakpoint is active
    */
-  public get isWidescreen(): boolean {
-    return this.includes('widescreen')
+  public get isDesktopXl(): boolean {
+    return this.includes('desktopXl')
   }
 
   /**
-   * Is true when fullhd breakpoint is active
+   * Is true when desktop2Xl breakpoint is active
    */
-  public get isFullHD(): boolean {
-    return this.includes('fullhd')
+  public get isDesktop2Xl(): boolean {
+    return this.includes('desktop2Xl')
   }
 
   /**
@@ -70,7 +70,7 @@ export class BalBreakpointsUtil {
    * @param breakpoint
    * @returns boolean: True if breakpoint is active
    */
-  public includes(breakpoint: BalBreakpoint): boolean {
+  public includes(breakpoint: DsBreakpoint): boolean {
     this.detect()
     return !!this.breakpoints?.includes(breakpoint)
   }
@@ -79,11 +79,11 @@ export class BalBreakpointsUtil {
    * Detects breakpoints and updates state
    * @returns breakpoints: list of breakpoints which are active
    */
-  public detect(): BalBreakpoint[] {
+  public detect(): DsBreakpoint[] {
     if (this.win) {
-      this.breakpoints = (Object.keys(BREAKPOINTS_MAP) as BalBreakpoint[]).filter(p => BREAKPOINTS_MAP[p](this.win))
-      this.win.BaloiseDesignSystem.breakpoints = this.breakpoints
-      this.win.BaloiseDesignSystem.platforms = this.breakpoints
+      this.breakpoints = (Object.keys(BREAKPOINTS_MAP) as DsBreakpoint[]).filter(p => BREAKPOINTS_MAP[p](this.win))
+      this.win.DesignSystem.breakpoints = this.breakpoints
+      this.win.DesignSystem.platforms = this.breakpoints
     }
     return this.breakpoints
   }
@@ -92,17 +92,17 @@ export class BalBreakpointsUtil {
    * Turns the breakpoints array to a object.
    * @returns Object with all the breakpoints
    */
-  public toObject(): BalBreakpoints {
+  public toObject(): DsBreakpoints {
     return {
       mobile: this.breakpoints.includes('mobile'),
       tablet: this.breakpoints.includes('tablet'),
       touch: this.breakpoints.includes('touch'),
       desktop: this.breakpoints.includes('desktop'),
-      highDefinition: this.breakpoints.includes('highDefinition'),
-      widescreen: this.breakpoints.includes('widescreen'),
-      fullhd: this.breakpoints.includes('fullhd'),
+      desktopLg: this.breakpoints.includes('desktopLg'),
+      desktopXl: this.breakpoints.includes('desktopXl'),
+      desktop2Xl: this.breakpoints.includes('desktop2Xl'),
     }
   }
 }
 
-export const balBreakpoints = /*@__PURE__*/ new BalBreakpointsUtil()
+export const dsBreakpoints = /*@__PURE__*/ new DsBreakpointsUtil()

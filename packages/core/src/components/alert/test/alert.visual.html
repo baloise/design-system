@@ -1,0 +1,117 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+
+    <script type="module">
+      import { dsToastController, dsSnackbarController } from '/build/index.esm.js'
+
+      window.dsToastController = dsToastController
+      window.dsSnackbarController = dsSnackbarController
+    </script>
+  </head>
+  <body>
+    <ds-app animated="false">
+      <main class="container">
+        <!-- Toast -->
+        <section data-testid="toasts">
+          <span>Toast</span>
+          <!-- Basic Toast -->
+          <ds-button id="toast-basic" data-testid="toast-basic">Basic</ds-button>
+          <script>
+            let id = 1
+            document.getElementById('toast-basic').addEventListener('click', () => {
+              dsToastController.create({
+                message: 'Hi I am a default Toast! Hi I am a default Toast! ' + id++,
+              })
+            })
+          </script>
+          <!-- Closable + Infinite Toast -->
+          <ds-button id="toast-closable" data-testid="toast-closable">Closable + Infinite</ds-button>
+          <script>
+            document.getElementById('toast-closable').addEventListener('click', () => {
+              dsToastController.create({
+                heading: 'Closable + Infinite',
+                message: 'Hi I am a default Toast! Hi I am a default Toast!',
+                closable: true,
+                duration: 'infinite',
+                color: 'warning',
+              })
+            })
+          </script>
+          <!-- Infinite Toast -->
+          <ds-button id="toast-infinite" data-testid="toast-infinite">Infinite</ds-button>
+          <script>
+            document.getElementById('toast-infinite').addEventListener('click', async () => {
+              const toastId = await dsToastController.create({
+                heading: 'Heading',
+                message: 'Hi I am a default Toast! Hi I am a default Toast!',
+                color: 'danger',
+                closeable: false,
+                duration: 'infinite',
+                action: 'Close',
+                actionHandler: id => {
+                  console.log('Action callback called', id)
+                  dsToastController.remove(id)
+                },
+              })
+            })
+          </script>
+        </section>
+
+        <!-- Snackbar -->
+        <section>
+          <span>Snackbar</span>
+          <!-- Basic Snackbar -->
+          <ds-button data-testid="snackbar-basic" id="snackbar-basic">Basic</ds-button>
+          <script>
+            let idSnackbar = 1
+            document.getElementById('snackbar-basic').addEventListener('click', () => {
+              dsSnackbarController.create({
+                message: 'Hi I am a default Snackbar! Hi I am a default Snackbar! ' + idSnackbar++,
+              })
+            })
+          </script>
+          <!-- Closable + Infinite Snackbar -->
+          <ds-button id="snackbar-closable" data-testid="snackbar-closable">Closable + Infinite</ds-button>
+          <script>
+            document.getElementById('snackbar-closable').addEventListener('click', () => {
+              dsSnackbarController.create({
+                heading: 'Closable + Infinite',
+                message: 'Hi I am a default Snackbar! Hi I am a default Snackbar!',
+                closable: true,
+                duration: 'infinite',
+                color: 'warning',
+              })
+            })
+          </script>
+          <!-- Infinite Snackbar -->
+          <ds-button id="snackbar-infinite" data-testid="snackbar-infinite">Infinite</ds-button>
+          <script>
+            document.getElementById('snackbar-infinite').addEventListener('click', async () => {
+              const snackbarId = await dsSnackbarController.create({
+                heading: 'Heading',
+                message: 'Hi I am a default Snackbar! Hi I am a default Snackbar!',
+                color: 'danger',
+                closeable: false,
+                duration: 'infinite',
+                action: 'Close',
+                actionHandler: id => {
+                  console.log('Action callback called', id)
+                  dsSnackbarController.remove(id)
+                },
+              })
+            })
+          </script>
+        </section>
+      </main>
+    </ds-app>
+  </body>
+</html>

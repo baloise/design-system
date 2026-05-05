@@ -1,0 +1,8 @@
+@use '../../../hybrid' as hybrid;
+@use './card-header.mixin.scss' as card-header;
+
+@include hybrid.host-base(card-header, flex);
+
+:host {
+  @include card-header.style();
+}

@@ -1,0 +1,93 @@
+@use '@baloise/ds-styles/sass/mixins' as *;
+@use '../../hybrid' as hybrid;
+@use '../../vars' as vars;
+@use '../../attr' as attr;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --shape-color: Fill color of the shape.
+ * @prop --shape-size: Size of the shape (width and height).
+ * @prop --shape-rotation: Rotation angle of the shape.
+ * @prop --shape-opacity: Opacity of the shape.
+ */
+
+:host {
+  @include vars.base(shape);
+  @include vars.local(shape-color, var(--ds-background-color-green-base));
+  @include vars.local(shape-size, 66px);
+  @include vars.local(shape-rotation, 0deg);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include unselectable();
+
+  display: block;
+  overflow: hidden;
+  transform: rotate(var(--_shape-rotation));
+  fill: var(--_shape-color);
+
+  // Size
+  width: var(--_shape-size);
+  height: var(--_shape-size);
+
+  @include tablet {
+    --mod-shape-size: 120px;
+  }
+
+  @include desktop {
+    --mod-shape-size: 198px;
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Rotation modifiers
+@include attr.has('rotation', '0') {
+  --mod-shape-rotation: 0deg;
+}
+
+@include attr.has('rotation', '90') {
+  --mod-shape-rotation: 90deg;
+}
+
+@include attr.has('rotation', '180') {
+  --mod-shape-rotation: 180deg;
+}
+
+@include attr.has('rotation', '270') {
+  --mod-shape-rotation: 270deg;
+}
+
+//
+// Colors
+$shape-colors: (
+  'red': 'red-6',
+  'green': 'green-6',
+  'yellow': 'yellow-6',
+  'purple': 'purple-6',
+  'red-light': 'red-3',
+  'green-light': 'green-3',
+  'yellow-light': 'yellow-3',
+  'purple-light': 'purple-3',
+);
+
+@each $name, $token in $shape-colors {
+  @include attr.has('color', $name) {
+    --mod-shape-color: var(--ds-color-#{$token});
+  }
+}
