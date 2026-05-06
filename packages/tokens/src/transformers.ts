@@ -56,7 +56,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
       let tokenName = token.name
       const isPrimitive = token.path.includes('🧱 Primitive')
       if (isPrimitive) {
-        tokenName = tokenName.replace('-primitive', '')
+        tokenName = tokenName.replace('-primitive', '-global')
       }
 
       const isSemantic = token.path.includes('🏷️ Semantic')
@@ -93,7 +93,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     name: `ds/js/name`,
     transform: (token, _options) => {
       let tokenName = token.name
-      tokenName = tokenName.replace('Primitive', '')
+      tokenName = tokenName.replace('Primitive', 'Global')
       tokenName = tokenName.replace('Semantic', '')
 
       return tokenName

@@ -18,15 +18,15 @@ $host-selector: ('#tag');
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(tag-min-height, 2rem);
   @include vars.local(tag-gap, 0.25rem);
-  @include vars.local(tag-padding-inline, var(--ds-tag-space-x));
-  @include vars.local(tag-padding-block, var(--ds-tag-space-y));
+  @include vars.local(tag-px, var(--ds-tag-space-padding-x-base));
+  @include vars.local(tag-py, var(--ds-tag-space-padding-y-base));
   @include vars.local(tag-radius, var(--ds-tag-radius-base));
-  @include vars.local(tag-color-text, var(--ds-tag-color-base-text));
-  @include vars.local(tag-color-background, var(--ds-tag-color-base-background));
+  @include vars.local(tag-color, var(--ds-tag-default-color-text-base));
+  @include vars.local(tag-bg, var(--ds-tag-default-color-bg-base));
   @include vars.local(tag-line-height, 1);
-  @include vars.local(tag-font-family, var(--ds-tag-family));
-  @include vars.local(tag-font-size, var(--ds-tag-size));
-  @include vars.local(tag-font-weight, var(--ds-tag-weight));
+  @include vars.local(tag-font-family, var(--ds-tag-font-family));
+  @include vars.local(tag-font-size, var(--ds-tag-font-size-base));
+  @include vars.local(tag-font-weight, var(--ds-tag-font-weight-base));
   @include vars.local(tag-close-mr, calc(0.25rem * -1));
 }
 
@@ -48,12 +48,12 @@ $host-selector: ('#tag');
   width: fit-content;
 
   min-height: var(--_tag-min-height);
-  padding-block: var(--_tag-padding-block);
-  padding-inline: var(--_tag-padding-inline);
+  padding-block: var(--_tag-py);
+  padding-inline: var(--_tag-px);
   border-radius: var(--_tag-radius);
 
-  color: var(--_tag-color-text);
-  background-color: var(--_tag-color-background);
+  color: var(--_tag-color);
+  background-color: var(--_tag-bg);
 
   font-family: var(--_tag-font-family);
   line-height: var(--_tag-line-height);
@@ -119,9 +119,9 @@ $colors: (
 );
 
 @mixin color($color) {
-  --icon-color: var(--ds-tag-color-#{$color}-text);
-  --mod-tag-color-text: var(--ds-tag-color-#{$color}-text);
-  --mod-tag-color-background: var(--ds-tag-color-#{$color}-background);
+  --icon-color: var(--ds-tag-#{$color}-color-text-base);
+  --mod-tag-color: var(--ds-tag-#{$color}-color-text-base);
+  --mod-tag-bg: var(--ds-tag-#{$color}-color-bg-base);
 }
 
 @each $color in $colors {
@@ -197,9 +197,10 @@ $close-inverted: (
 
 @mixin sizeSmall() {
   --mod-tag-min-height: 1.5rem;
-  --mod-tag-padding: var(--ds-tag-sm-space-y) var(--ds-tag-sm-space-x);
-  --mod-tag-font-size: var(--ds-tag-sm-size);
-  --mod-tag-font-weight: var(--ds-tag-sm-weight);
+  --mod-tag-py: var(--ds-tag-space-padding-y-sm);
+  --mod-tag-px: var(--ds-tag-space-padding-x-sm);
+  --mod-tag-font-size: var(--ds-tag-font-size-sm);
+  --mod-tag-font-weight: var(--ds-tag-font-weight-sm);
 
   > .close,
   > ds-close {
@@ -210,16 +211,18 @@ $close-inverted: (
 
 @mixin sizeMedium() {
   --mod-tag-min-height: 2.5rem;
-  --mod-tag-padding: var(--ds-tag-md-space-y) var(--ds-tag-md-space-x);
-  --mod-tag-font-size: var(--ds-tag-md-size);
-  --mod-tag-font-weight: var(--ds-tag-md-weight);
+  --mod-tag-py: var(--ds-tag-space-padding-y-md);
+  --mod-tag-px: var(--ds-tag-space-padding-x-md);
+  --mod-tag-font-size: var(--ds-tag-font-size-md);
+  --mod-tag-font-weight: var(--ds-tag-font-weight-md);
 }
 
 @mixin sizeLarge() {
   --mod-tag-min-height: 3rem;
-  --mod-tag-padding: var(--ds-tag-lg-space-y) var(--ds-tag-lg-space-x);
-  --mod-tag-font-size: var(--ds-tag-lg-size);
-  --mod-tag-font-weight: var(--ds-tag-lg-weight);
+  --mod-tag-py: var(--ds-tag-space-padding-y-lg);
+  --mod-tag-px: var(--ds-tag-space-padding-x-lg);
+  --mod-tag-font-size: var(--ds-tag-font-size-lg);
+  --mod-tag-font-weight: var(--ds-tag-font-weight-lg);
 }
 
 @include hybrid.styles($css-selector, $use-host) {

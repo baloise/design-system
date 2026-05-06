@@ -6,7 +6,7 @@ A guide for UX designers and developers working with the Baloise Design System t
 
 ## What are Design Tokens?
 
-Design tokens are the **named, reusable design decisions** of a system — colors, spacing, typography, shadows — stored as data rather than hard-coded values. Instead of writing `color: #005EFF` everywhere, you write `color: var(--ds-button-color-primary-base-background)`.
+Design tokens are the **named, reusable design decisions** of a system — colors, spacing, typography, shadows — stored as data rather than hard-coded values. Instead of writing `color: #005EFF` everywhere, you write `color: var(--ds-button-primary-color-bg-base)`.
 
 This separation means:
 
@@ -22,11 +22,11 @@ The token system is organized into three hierarchical layers. Each layer builds 
 
 ![Three-layer token architecture: Primitive, Semantic, Component](token-layers.svg)
 
-| Layer         | Emoji | Purpose                                                   | Example value               |
-| ------------- | ----- | --------------------------------------------------------- | --------------------------- |
-| **Primitive** | 🧱    | The raw palette — every possible value the system can use | `#005EFF`, `16px`, `700`    |
-| **Semantic**  | 🏷️    | What a value _means_ — its intended use in the UI         | "primary background color"  |
-| **Component** | 🧩    | What a value does _for a specific component_              | "button primary background" |
+| Layer         | Emoji | Purpose                                                   | Example value             |
+| ------------- | ----- | --------------------------------------------------------- | ------------------------- |
+| **Primitive** | 🧱    | The raw palette — every possible value the system can use | `#005EFF`, `16px`, `700`  |
+| **Semantic**  | 🏷️    | What a value _means_ — its intended use in the UI         | "primary bg color"        |
+| **Component** | 🧩    | What a value does _for a specific component_              | "button primary color bg" |
 
 ---
 
@@ -56,14 +56,14 @@ Semantic tokens assign meaning. Instead of "primary color at shade 4", a semanti
 
 **Examples from the system:**
 
-| Token                                 | References             | Meaning                          |
-| ------------------------------------- | ---------------------- | -------------------------------- |
-| `--ds-background-color-primary`       | `--ds-color-primary-4` | Primary action surfaces          |
-| `--ds-background-color-primary-hover` | `--ds-color-primary-5` | Primary surfaces on hover        |
-| `--ds-background-color-disabled`      | `--ds-color-grey-2`    | Any disabled surface             |
-| `--ds-text-color-white`               | `--ds-color-white`     | Text on dark/colored backgrounds |
-| `--ds-border-color-primary`           | `--ds-color-primary-4` | Primary borders                  |
-| `--ds-radius-base`                    | `4px`                  | Default border radius            |
+| Token                         | References             | Meaning                          |
+| ----------------------------- | ---------------------- | -------------------------------- |
+| `--ds-bg-color-primary`       | `--ds-color-primary-4` | Primary action surfaces          |
+| `--ds-bg-color-primary-hover` | `--ds-color-primary-5` | Primary surfaces on hover        |
+| `--ds-bg-color-disabled`      | `--ds-color-grey-2`    | Any disabled surface             |
+| `--ds-text-color-white`       | `--ds-color-white`     | Text on dark/colored backgrounds |
+| `--ds-border-color-primary`   | `--ds-color-primary-4` | Primary borders                  |
+| `--ds-radius-base`            | `4px`                  | Default border radius            |
 
 > Semantic tokens are what **UX designers work with** when building themes or making system-wide color decisions.
 
@@ -75,14 +75,14 @@ Component tokens map semantic tokens to specific parts of a component. They carr
 
 **Examples from the system — Button:**
 
-| Token                                         | References                             |
-| --------------------------------------------- | -------------------------------------- |
-| `--ds-button-color-primary-base-background`   | `--ds-background-color-primary`        |
-| `--ds-button-color-primary-hover-background`  | `--ds-background-color-primary-hover`  |
-| `--ds-button-color-primary-active-background` | `--ds-background-color-primary-active` |
-| `--ds-button-color-primary-base-text`         | `--ds-text-color-white`                |
-| `--ds-button-color-primary-base-border`       | `--ds-border-color-primary`            |
-| `--ds-button-radius-base`                     | `--ds-radius-base`                     |
+| Token                                   | References                     |
+| --------------------------------------- | ------------------------------ |
+| `--ds-button-primary-color-bg-base`     | `--ds-bg-color-primary`        |
+| `--ds-button-primary-color-bg-hover`    | `--ds-bg-color-primary-hover`  |
+| `--ds-button-primary-color-bg-active`   | `--ds-bg-color-primary-active` |
+| `--ds-button-primary-color-text-base`   | `--ds-text-color-white`        |
+| `--ds-button-primary-color-border-base` | `--ds-border-color-primary`    |
+| `--ds-button-radius-base`               | `--ds-radius-base`             |
 
 ---
 
@@ -94,7 +94,7 @@ Tracing a single decision — the background color of a primary button — all t
 
 ```
 🧱 Primitive          🏷️ Semantic                    🧩 Component
-#005EFF  ──────►  --ds-background-color-primary  ──►  --ds-button-color-primary-base-background
+#005EFF  ──────►  --ds-bg-color-primary  ──►  --ds-button-primary-color-bg-base
 ```
 
 **Why this matters:** If we need to rebrand the primary blue, we change **one primitive token** and the update cascades through every semantic and component token that references it — automatically, across the entire system.
@@ -111,10 +111,10 @@ The SCSS `vars.local` mixin generates this entire chain automatically:
 
 ```scss
 // What you write:
-@include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
+@include vars.local(button-color, var(--ds-button-primary-color-text-base));
 
 // What it produces:
---_button-color-text: var(--button-color-text, var(--mod-button-color-text, var(--ds-button-color-primary-base-text)));
+--_button-color: var(--button-color, var(--mod-button-color, var(--ds-button-primary-color-text-base)));
 ```
 
 ---
@@ -187,15 +187,17 @@ Token names are composed of ordered segments, each narrowing the scope of the de
 
 ### Segment definitions
 
-| Segment                  | What it expresses                                      | Our examples                                      |
-| ------------------------ | ------------------------------------------------------ | ------------------------------------------------- |
-| **Namespace**            | System identifier — prevents collisions with other CSS | `ds`                                              |
-| **Category / Component** | The visual property type or component name             | `color`, `font`, `space`, `button`, `input`       |
-| **Property**             | The attribute within that category                     | `background`, `text`, `border`                    |
-| **Variant**              | Visual alternatives of the same component              | `primary`, `secondary`, `ghost`                   |
-| **State**                | Interactive condition                                  | `base`, `hover`, `active`, `disabled`, `focus`    |
-| **Element**              | A nested part within a component                       | `background`, `text`, `border`, `icon`            |
-| **Scale**                | Ordered sizing options                                 | `1`–`6` for colors, `xs`/`sm`/`md`/`lg` for sizes |
+| Segment        | What it expresses                                      | Our examples                                      |
+| -------------- | ------------------------------------------------------ | ------------------------------------------------- |
+| **Namespace**  | System identifier — prevents collisions with other CSS | `ds`                                              |
+| **Component**  | component name                                         | `button`, `input`                                 |
+| **Variant**    | Visual alternatives of the same component              | `primary`, `secondary`, `ghost`                   |
+| **Element**    | The inner element of a component (parts)               | `header`, `label`, `inner`                        |
+| **Category**   | The visual property type                               | `color`, `font`, `space`                          |
+| **Property**   | The attribute within that category                     | `bg`, `text`, `border`                            |
+| **State**      | Interactive condition                                  | `base`, `hover`, `active`, `disabled`, `focus`    |
+| **Scale**      | Ordered sizing options                                 | `1`–`6` for colors, `xs`/`sm`/`md`/`lg` for sizes |
+| **Breakpoint** | Device Size                                            | `mobile`,`tablet`, `desktop` or `device`          |
 
 ### Key rules we follow
 
@@ -203,25 +205,25 @@ Token names are composed of ordered segments, each narrowing the scope of the de
 All tokens are prefixed `--ds-` so they never clash with third-party CSS or browser properties.
 
 **2. Semantic names describe intent, not value**  
-Write `--ds-background-color-primary`, not `--ds-color-blue-500`. The name survives a rebrand; `blue-500` does not.
+Write `--ds-bg-color-primary`, not `--ds-color-blue-500`. The name survives a rebrand; `blue-500` does not.
 
 **3. Primitives describe what they are; semantic/component tokens describe what they do**
 
 ```
-✅ --ds-color-primary-4          (primitive — what it is)
-✅ --ds-background-color-primary  (semantic  — what it does)
-✅ --ds-button-color-primary-base-background  (component — where it does it)
+✅ --ds-color-primary-4               (primitive — what it is)
+✅ --ds-bg-color-primary              (semantic  — what it does)
+✅ --ds-button-primary-color-bg-base  (component — where it does it)
 
-❌ --ds-blue                     (too vague)
-❌ --ds-button-blue              (value, not intent)
+❌ --ds-blue                          (too vague)
+❌ --ds-button-blue                   (value, not intent)
 ```
 
 **4. States are explicit, never assumed**  
 Always include the state even when it is the default (`-base`). Avoids ambiguity when hover/active/disabled variants are added.
 
 ```
---ds-button-color-primary-base-background   ✅
---ds-button-color-primary-background        ❌  (which state?)
+--ds-button-primary-color-bg-base   ✅
+--ds-button-primary-color-bg        ❌  (which state?)
 ```
 
 **5. Never skip the semantic layer for components**  
