@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'ds-label'
+const TAG = 'label'
 const VARIANTS = ['basic', 'no-wrap', 'sizes', 'required', 'states', 'colors'] as const
 
 const image = screenshot(TAG)

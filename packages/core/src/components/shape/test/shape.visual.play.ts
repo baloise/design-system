@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'ds-shape'
+const TAG = 'shape'
 const VARIANTS = ['basic', 'colors', 'variation-1', 'variation-2', 'variation-3']
 
 const image = screenshot(TAG)

@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-checkbox'
+const TAG = 'checkbox'
 
 const STYLE_VARIANTS = [
   'basic',

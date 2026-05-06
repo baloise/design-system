@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-pagination'
+const TAG = 'pagination'
 
 const HOST_VARIANTS = ['basic', 'alignment', 'ranges', 'disabled', 'sizes', 'dots']
 

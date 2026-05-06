@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-progress-bar'
+const TAG = 'progress-bar'
 const VARIANTS = ['basic', 'value', 'dark-variants', 'light-variants']
 
 const image = screenshot(TAG)

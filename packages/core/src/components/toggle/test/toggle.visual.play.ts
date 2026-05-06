@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-toggle'
+const TAG = 'toggle'
 
 const STYLE_VARIANTS = ['basic', 'no-label', 'disabled', 'invalid', 'invalid-disabled', 'required', 'field', 'form']
 const HOST_VARIANTS = ['basic', 'no-label', 'disabled', 'invalid', 'invalid-disabled', 'required', 'form']

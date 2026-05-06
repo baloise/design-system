@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-segment'
+const TAG = 'segment'
 
 const STYLE_VARIANTS = [
   'basic',

@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'ds-badge'
+const TAG = 'badge'
 const VARIANTS = ['basic', 'colors', 'sizes', 'icon', 'list']
 
 const image = screenshot(TAG)

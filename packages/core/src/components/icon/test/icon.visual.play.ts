@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'ds-icon'
+const TAG = 'icon'
 const VARIANTS = [
   'basic',
   'override',

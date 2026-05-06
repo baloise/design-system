@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-radio'
+const TAG = 'radio'
 
 const STYLE_VARIANTS = [
   'basic',

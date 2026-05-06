@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'ds-input'
+const TAG = 'input'
 const VARIANTS = [
   'basic',
   'disabled',

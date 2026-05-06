@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
 
-const TAG = 'ds-text'
+const TAG = 'text'
 
 const VARIANTS = [
   'basic',

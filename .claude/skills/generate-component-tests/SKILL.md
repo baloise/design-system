@@ -275,7 +275,7 @@ Audit: every `data-testid` section in `visual.html` must have a corresponding te
 ```ts
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-<component>'
+const TAG = '<component>'
 
 // One entry per data-testid in visual.html — must be complete
 const HOST_VARIANTS = ['basic', 'disabled', 'invalid', 'sizes', 'form']

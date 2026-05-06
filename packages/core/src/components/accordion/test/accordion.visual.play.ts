@@ -1,12 +1,12 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-accordion'
+const TAG = 'accordion'
 const VARIANTS = ['basic', 'nested', 'markers', 'left-markers', 'stack-item', 'accordions', 'button-accordion']
 
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/ds-list/test/ds-list-native.visual.html`)
+  await page.setupVisualTest(`/components/list/test/list-native.visual.html`)
 })
 
 test.describe('style', () => {

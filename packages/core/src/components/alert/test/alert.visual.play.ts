@@ -1,6 +1,6 @@
 import { DsSnackbar, DsToast, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'ds-alert'
+const TAG = 'alert'
 
 const image = screenshot(TAG)
 
