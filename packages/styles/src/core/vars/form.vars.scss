@@ -65,74 +65,74 @@
   //
   // form control
   --ds-form-field-control-font-size: var(--ds-text-size-base);
-  --ds-form-field-control-font-family: var(--ds-font-family-text);
-  --ds-form-field-control-color: var(--ds-color-text-primary);
-  --ds-form-field-control-placeholder-color: var(--ds-color-text-primary-light);
+  --ds-form-field-control-font-family: var(--ds-global-font-family-text);
+  --ds-form-field-control-color: var(--ds-global-color-text-primary);
+  --ds-form-field-control-placeholder-color: var(--ds-global-color-text-primary-light);
   --ds-form-field-control-radius: var(--ds-radius-base);
-  --ds-form-field-control-background: var(--ds-color-white);
-  --ds-form-field-control-background-hover: var(--ds-color-grey-1);
-  --ds-form-field-control-background-active: var(--ds-color-grey-1);
+  --ds-form-field-control-background: var(--ds-global-color-white);
+  --ds-form-field-control-background-hover: var(--ds-global-color-grey-1);
+  --ds-form-field-control-background-active: var(--ds-global-color-grey-1);
   --ds-form-field-control-border-width: var(--ds-border-width-base);
   --ds-form-field-control-border-style: solid;
-  --ds-form-field-control-border-color: var(--ds-color-border-base);
+  --ds-form-field-control-border-color: var(--ds-global-color-border-base);
   --ds-form-field-control-border-color-hover: var(--ds-form-field-control-border-color);
-  --ds-form-field-control-border-color-active: var(--ds-color-border-primary-base);
+  --ds-form-field-control-border-color-active: var(--ds-global-color-border-primary-base);
   // success
-  --ds-form-field-control-success-background: var(--ds-color-success-1);
-  --ds-form-field-control-success-background-hover: var(--ds-color-success-1);
-  --ds-form-field-control-success-background-active: var(--ds-color-success-1);
-  --ds-form-field-control-success-border-color: var(--ds-color-border-success-base);
+  --ds-form-field-control-success-background: var(--ds-global-color-success-1);
+  --ds-form-field-control-success-background-hover: var(--ds-global-color-success-1);
+  --ds-form-field-control-success-background-active: var(--ds-global-color-success-1);
+  --ds-form-field-control-success-border-color: var(--ds-global-color-border-success-base);
   --ds-form-field-control-success-border-color-hover: var(--ds-form-field-control-border-color);
-  --ds-form-field-control-success-border-color-active: var(--ds-color-border-primary-base);
+  --ds-form-field-control-success-border-color-active: var(--ds-global-color-border-primary-base);
   // danger
-  --ds-form-field-control-danger-background: var(--ds-color-danger-1);
-  --ds-form-field-control-danger-background-hover: var(--ds-color-danger-1);
-  --ds-form-field-control-danger-background-active: var(--ds-color-danger-1);
-  --ds-form-field-control-danger-border-color: var(--ds-color-border-danger-base);
+  --ds-form-field-control-danger-background: var(--ds-global-color-danger-1);
+  --ds-form-field-control-danger-background-hover: var(--ds-global-color-danger-1);
+  --ds-form-field-control-danger-background-active: var(--ds-global-color-danger-1);
+  --ds-form-field-control-danger-border-color: var(--ds-global-color-border-danger-base);
   --ds-form-field-control-danger-border-color-hover: var(--ds-form-field-control-border-color);
-  --ds-form-field-control-danger-border-color-active: var(--ds-color-border-primary-base);
+  --ds-form-field-control-danger-border-color-active: var(--ds-global-color-border-primary-base);
   // disabled
-  --ds-form-field-control-disabled-color: var(--ds-color-text-grey-dark);
-  --ds-form-field-control-disabled-background: var(--ds-color-grey-2);
-  --ds-form-field-control-disabled-border-color: var(--ds-color-border-grey-dark);
+  --ds-form-field-control-disabled-color: var(--ds-global-color-text-grey-dark);
+  --ds-form-field-control-disabled-background: var(--ds-global-color-grey-2);
+  --ds-form-field-control-disabled-border-color: var(--ds-global-color-border-grey-dark);
   //
   // field label
   --ds-form-field-label-font-size: var(--ds-text-size-sm);
   --ds-form-field-label-line-height: var(--ds-line-height-small);
   --ds-form-field-label-font-weight: var(--ds-text-weight-bold);
-  --ds-form-field-label-font-family: var(--ds-font-family-text);
+  --ds-form-field-label-font-family: var(--ds-global-font-family-text);
   --ds-form-field-label-margin-bottom: 0.25rem;
   --ds-form-field-label-color-hover: var(--ds-link-color-text-primary-hover);
   --ds-form-field-label-color-active: var(--ds-link-color-text-primary-active);
-  --ds-form-field-label-success-color: var(--ds-color-text-success);
-  --ds-form-field-label-danger-color: var(--ds-color-text-danger);
-  --ds-form-field-label-danger-color-hover: var(--ds-color-text-danger-hover);
-  --ds-form-field-label-danger-color-active: var(--ds-color-text-danger-active);
-  --ds-form-field-label-disabled-color: var(--ds-color-text-grey);
+  --ds-form-field-label-success-color: var(--ds-global-color-text-success);
+  --ds-form-field-label-danger-color: var(--ds-global-color-text-danger);
+  --ds-form-field-label-danger-color-hover: var(--ds-global-color-text-danger-hover);
+  --ds-form-field-label-danger-color-active: var(--ds-global-color-text-danger-active);
+  --ds-form-field-label-disabled-color: var(--ds-global-color-text-grey);
   //
   // field message
   --ds-form-field-message-font-size: var(--ds-text-size-xs);
   --ds-form-field-message-font-weight: var(--ds-text-weight-regular);
-  --ds-form-field-message-color: var(--ds-color-text-primary-light);
+  --ds-form-field-message-color: var(--ds-global-color-text-primary-light);
   --ds-form-field-message-color-hover: var(--ds-link-color-text-primary-hover);
   --ds-form-field-message-color-active: var(--ds-link-color-text-primary-active);
   --ds-form-field-message-font-weight: var(--ds-text-weight-regular);
-  --ds-form-field-message-success-color: var(--ds-color-text-success);
-  --ds-form-field-message-danger-color: var(--ds-color-text-danger);
-  --ds-form-field-message-disabled-color: var(--ds-color-text-grey);
+  --ds-form-field-message-success-color: var(--ds-global-color-text-success);
+  --ds-form-field-message-danger-color: var(--ds-global-color-text-danger);
+  --ds-form-field-message-disabled-color: var(--ds-global-color-text-grey);
   //
   // field icon
   --ds-form-field-icon-color: var(--ds-link-color-text-primary-base);
   --ds-form-field-icon-color-hover: var(--ds-link-color-text-primary-hover);
   --ds-form-field-icon-color-active: var(--ds-link-color-text-primary-active);
-  --ds-form-field-icon-success-color: var(--ds-color-text-success);
-  --ds-form-field-icon-danger-color: var(--ds-color-text-danger);
-  --ds-form-field-icon-disabled-color: var(--ds-color-text-grey);
+  --ds-form-field-icon-success-color: var(--ds-global-color-text-success);
+  --ds-form-field-icon-danger-color: var(--ds-global-color-text-danger);
+  --ds-form-field-icon-disabled-color: var(--ds-global-color-text-grey);
   //
   // file upload
   --ds-file-label-color: var(--ds-link-color-text-primary-base);
   --ds-file-label-color-hover: var(--ds-link-color-text-primary-hover);
   --ds-file-label-color-active: var(--ds-link-color-text-primary-active);
   --ds-file-border-style: dashed;
-  --ds-file-label-disabled-color: var(--ds-color-text-grey-dark);
+  --ds-file-label-disabled-color: var(--ds-global-color-text-grey-dark);
 }

@@ -117,23 +117,23 @@
   }
   &.is-warning {
     select {
-      border-color: var(--ds-color-border-warning-base);
-      background: var(--ds-color-warning-1);
+      border-color: var(--ds-global-color-border-warning-base);
+      background: var(--ds-global-color-warning-1);
       &.ds-focused,
       &:focus,
       &.is-focused,
       &:active,
       &.is-active {
-        border-color: var(--ds-color-border-primary);
+        border-color: var(--ds-global-color-border-primary);
       }
     }
     &::after {
-      border-color: var(--ds-color-border-warning-base) !important;
+      border-color: var(--ds-global-color-border-warning-base) !important;
     }
     &:focus::after,
     &:active::after,
     &:focus-within::after {
-      border-color: var(--ds-color-border-primary) !important;
+      border-color: var(--ds-global-color-border-primary) !important;
     }
   }
   &.is-wide {

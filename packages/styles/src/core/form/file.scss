@@ -140,11 +140,11 @@
 .file.is-warning {
   .file-label,
   .file-cta {
-    color: var(--ds-color-text-warning);
+    color: var(--ds-global-color-text-warning);
   }
   .file-cta {
-    border-color: var(--ds-color-border-warning-base);
-    background: var(--ds-color-warning-1);
+    border-color: var(--ds-global-color-border-warning-base);
+    background: var(--ds-global-color-warning-1);
   }
   .file-label {
     &:active,
