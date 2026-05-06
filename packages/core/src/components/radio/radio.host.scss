@@ -88,43 +88,43 @@
 }
 
 :host(.is-tile.has-tile-green.is-checked) {
-  --mod-radio-tile-base-background-color: var(--ds-color-green-1);
+  --mod-radio-tile-base-background-color: var(--ds-global-color-green-1);
 }
 
 :host(.is-tile.has-tile-red.is-checked) {
-  --mod-radio-tile-base-background-color: var(--ds-color-red-1);
+  --mod-radio-tile-base-background-color: var(--ds-global-color-red-1);
 }
 
 :host(.is-tile.has-tile-yellow.is-checked) {
-  --mod-radio-tile-base-background-color: var(--ds-color-yellow-1);
+  --mod-radio-tile-base-background-color: var(--ds-global-color-yellow-1);
 }
 
 :host(.is-tile.has-tile-purple.is-checked) {
-  --mod-radio-tile-base-background-color: var(--ds-color-purple-1);
+  --mod-radio-tile-base-background-color: var(--ds-global-color-purple-1);
 }
 
 :host(.is-tile.is-disabled) {
-  --icon-brand-color: var(--ds-color-grey-5);
+  --icon-brand-color: var(--ds-global-color-grey-5);
 }
 
 :host(.is-tile.is-invalid) {
-  --mod-radio-tile-hover-background-color: var(--ds-color-danger-1);
-  --mod-radio-tile-active-background-color: var(--ds-color-danger-1);
+  --mod-radio-tile-hover-background-color: var(--ds-global-color-danger-1);
+  --mod-radio-tile-active-background-color: var(--ds-global-color-danger-1);
 
-  --mod-radio-tile-hover-border-color: var(--ds-color-danger-5);
-  --mod-radio-tile-active-border-color: var(--ds-color-danger-6);
+  --mod-radio-tile-hover-border-color: var(--ds-global-color-danger-5);
+  --mod-radio-tile-active-border-color: var(--ds-global-color-danger-6);
 
   label {
-    --icon-brand-color: var(--ds-color-danger-4);
+    --icon-brand-color: var(--ds-global-color-danger-4);
 
     @include hover {
       &:hover {
-        --icon-brand-color: var(--ds-color-danger-5);
+        --icon-brand-color: var(--ds-global-color-danger-5);
       }
     }
 
     &:active {
-      --icon-brand-color: var(--ds-color-danger-6);
+      --icon-brand-color: var(--ds-global-color-danger-6);
     }
   }
 }

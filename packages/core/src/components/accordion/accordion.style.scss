@@ -26,7 +26,7 @@ details.accordion {
   @include vars.local(accordion-marker-size, 1rem);
   @include vars.local(accordion-summary-color-hover, var(--ds-accordion-summary-color-hover));
   @include vars.local(accordion-summary-color-active, var(--ds-accordion-summary-color-active));
-  @include vars.local(accordion-radius-base, var(--ds-accordion-radius-base));
+  @include vars.local(accordion-radius, var(--ds-accordion-radius-base));
 }
 
 /**
@@ -87,7 +87,7 @@ details.accordion > summary:not(.button) {
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--_accordion-radius-base);
+        border-radius: var(--_accordion-radius);
       }
     }
   }

@@ -601,7 +601,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
     }
 
     & > ds-spinner.is-circle {
-      --spinner-circle-color-border-background: var(--ds-color-grey-4);
+      --spinner-circle-color-border-background: var(--ds-global-color-grey-4);
       --spinner-circle-color-border-progress: var(--ds-button-color-disabled-base-text);
     }
   }

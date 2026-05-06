@@ -16,7 +16,7 @@
 
 :host {
   @include vars.base(logo);
-  @include vars.local(logo-color, var(--ds-color-primary-5));
+  @include vars.local(logo-color, var(--ds-global-color-primary-5));
   @include vars.local(logo-height, 22px);
 }
 
@@ -73,7 +73,7 @@
 }
 
 :host(.is-white) {
-  --mod-logo-color: var(--ds-color-white);
+  --mod-logo-color: var(--ds-global-color-white);
 }
 
 :host(.is-sm) {

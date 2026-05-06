@@ -9,36 +9,36 @@
  *
  * @prop --toast-shadow: Box shadow of the toast.
  * @prop --toast-radius: Border radius of the toast.
- * @prop --toast-color-background: Background color of the toast.
- * @prop --toast-color-text: Text color inside the toast.
- * @prop --toast-icon: Color of the toast icon.
+ * @prop --toast-bg: Background color of the toast.
+ * @prop --toast-color: Text color inside the toast.
+ * @prop --toast-icon-color: Color of the toast icon.
  * @prop --toast-progress-duration: Duration of the progress bar animation.
- * @prop --toast-padding: Padding inside the toast.
+ * @prop --toast-progress-bar-bg: Background color of the progress bar.
+ * @prop --toast-progress-bg: Background color of the progress track.
+ * @prop --toast-p: Padding inside the toast.
  * @prop --toast-gap: Gap between content and close button.
- * @prop --toast-font-size: Font size of the toast message.
- * @prop --toast-min-height: Minimum height of the toast.
  */
 
 :host {
   @include vars.base(toast);
   @include vars.local(toast-shadow, var(--ds-shadow-box-base));
   @include vars.local(toast-radius, var(--ds-toast-radius));
-  @include vars.local(toast-color-background, var(--ds-toast-base-background));
-  @include vars.local(toast-color-text, var(--ds-toast-base-text));
-  @include vars.local(toast-icon, var(--ds-toast-base-icon));
+  @include vars.local(toast-bg, var(--ds-toast-default-color-bg-base));
+  @include vars.local(toast-color, var(--ds-toast-default-color-text-base));
+  @include vars.local(toast-icon-color, var(--ds-toast-default-color-icon-base));
 
   @include vars.local(toast-progress-duration, 0);
-  @include vars.local(toast-progress-bar, var(--ds-toast-base-progress-bar));
-  @include vars.local(toast-progress-background, var(--ds-toast-base-progress-background));
+  @include vars.local(toast-progress-bar-bg, var(--ds-toast-default-color-progress-bar-base));
+  @include vars.local(toast-progress-bg, var(--ds-toast-default-color-progress-bg-base));
 
-  @include vars.local(toast-heading-family, var(--ds-text-family-heading));
-  @include vars.local(toast-heading-weight, var(--ds-text-weight-bold));
-  @include vars.local(toast-heading-size, var(--ds-text-size-base-device));
+  @include vars.local(toast-heading-font-family, var(--ds-text-family-heading));
+  @include vars.local(toast-heading-font-weight, var(--ds-text-weight-bold));
+  @include vars.local(toast-heading-font-size, var(--ds-text-size-base-device));
   @include vars.local(toast-heading-line-height, var(--ds-text-line-height-heading));
 
-  @include vars.local(toast-content-family, var(--ds-text-family-body));
-  @include vars.local(toast-content-weight, inherit);
-  @include vars.local(toast-content-size, var(--ds-text-size-sm-device));
+  @include vars.local(toast-content-font-family, var(--ds-text-family-body));
+  @include vars.local(toast-content-font-weight, inherit);
+  @include vars.local(toast-content-font-size, var(--ds-text-size-sm-device));
   @include vars.local(toast-content-line-height, var(--ds-text-line-height-body));
 
   @include vars.local(toast-gap, 0.125rem);
@@ -72,8 +72,8 @@
   position: relative;
   hyphens: auto;
 
-  color: var(--_toast-color-text);
-  background: var(--_toast-color-background);
+  color: var(--_toast-color);
+  background: var(--_toast-bg);
   border-radius: var(--_toast-radius);
   box-shadow: var(--_toast-shadow);
 
@@ -112,10 +112,10 @@
     & > strong,
     & > b,
     & > h2 {
-      font-family: var(--_toast-heading-family);
-      font-weight: var(--_toast-heading-weight);
+      font-family: var(--_toast-heading-font-family);
+      font-weight: var(--_toast-heading-font-weight);
       line-height: var(--_toast-heading-line-height);
-      font-size: var(--_toast-heading-size);
+      font-size: var(--_toast-heading-font-size);
       margin: 0 !important;
     }
 
@@ -125,9 +125,9 @@
     &,
     & > span,
     & > p {
-      font-family: var(--_toast-content-family);
-      font-size: var(--_toast-content-size);
-      font-weight: var(--_toast-content-weight);
+      font-family: var(--_toast-content-font-family);
+      font-size: var(--_toast-content-font-size);
+      font-weight: var(--_toast-content-font-weight);
       line-height: var(--_toast-content-line-height);
     }
   }
@@ -201,7 +201,7 @@
     height: 0.25rem;
     width: 100%;
     content: '';
-    background-color: var(--_toast-progress-background);
+    background-color: var(--_toast-progress-bg);
     border-bottom-left-radius: var(--_toast-radius);
     border-bottom-right-radius: var(--_toast-radius);
   }
@@ -214,7 +214,7 @@
     height: 0.25rem;
     width: 16px;
     content: '';
-    background-color: var(--_toast-progress-bar);
+    background-color: var(--_toast-progress-bar-bg);
     border-bottom-left-radius: var(--_toast-radius);
     animation: progress var(--_toast-progress-duration) linear forwards;
   }
@@ -233,12 +233,12 @@ $colors: ('info', 'success', 'warning', 'danger');
 
 @each $color in $colors {
   :host(.is-#{$color}) {
-    --mod-toast-color-text: var(--ds-toast-#{$color}-text);
-    --mod-toast-color-border: var(--ds-toast-#{$color}-border);
-    --mod-toast-color-background: var(--ds-toast-#{$color}-background);
-    --mod-toast-icon: var(--ds-toast-#{$color}-icon);
-    --mod-toast-progress-bar: var(--ds-toast-#{$color}-progress-bar);
-    --mod-toast-progress-background: var(--ds-toast-#{$color}-progress-background);
+    --mod-toast-color: var(--ds-toast-#{$color}-color-text-base);
+    --mod-toast-border-color: var(--ds-toast-#{$color}-color-border-base);
+    --mod-toast-bg: var(--ds-toast-#{$color}-color-bg-base);
+    --mod-toast-icon-color: var(--ds-toast-#{$color}-color-icon-base);
+    --mod-toast-progress-bar-bg: var(--ds-toast-#{$color}-color-progress-bar-base);
+    --mod-toast-progress-bg: var(--ds-toast-#{$color}-color-progress-bg-base);
   }
 }
 
@@ -257,7 +257,7 @@ $colors: ('info', 'success', 'warning', 'danger');
     height: 0.25rem;
     width: 16px;
     content: '';
-    background-color: var(--_toast-progress-bar);
+    background-color: var(--_toast-progress-bar-bg);
     border-bottom-left-radius: var(--_toast-radius);
     animation: progress var(--_toast-progress-duration) linear forwards;
   }

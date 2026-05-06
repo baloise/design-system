@@ -14,8 +14,8 @@
     // layout
     @include vars.local(toggle-gap, 0.5rem);
     @include vars.local(toggle-label-base-color, inherit);
-    @include vars.local(toggle-label-hover-color, var(--ds-color-sky-5));
-    @include vars.local(toggle-label-active-color, var(--ds-color-primary-6));
+    @include vars.local(toggle-label-hover-color, var(--ds-global-color-sky-5));
+    @include vars.local(toggle-label-active-color, var(--ds-global-color-primary-6));
 
     // dimensions
     @include vars.local(toggle-height, 1.5rem);
@@ -33,38 +33,38 @@
     @include vars.local(toggle-tile-border-width, var(--ds-border-width-base));
 
     @include vars.local(toggle-tile-base-background-color, inherit);
-    @include vars.local(toggle-tile-base-border-color, var(--ds-color-grey-3));
+    @include vars.local(toggle-tile-base-border-color, var(--ds-global-color-grey-3));
 
-    @include vars.local(toggle-tile-hover-background-color, var(--ds-color-grey-2));
-    @include vars.local(toggle-tile-hover-border-color, var(--ds-color-sky-5));
+    @include vars.local(toggle-tile-hover-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(toggle-tile-hover-border-color, var(--ds-global-color-sky-5));
 
-    @include vars.local(toggle-tile-active-background-color, var(--ds-color-grey-2));
-    @include vars.local(toggle-tile-active-border-color, var(--ds-color-primary-6));
+    @include vars.local(toggle-tile-active-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(toggle-tile-active-border-color, var(--ds-global-color-primary-6));
 
     // unchecked base
-    @include vars.local(toggle-unchecked-base-color-background, var(--ds-color-grey-3));
-    @include vars.local(toggle-unchecked-base-color-tick, var(--ds-color-primary-5));
+    @include vars.local(toggle-unchecked-base-color-background, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-unchecked-base-color-tick, var(--ds-global-color-primary-5));
 
     // unchecked hover
-    @include vars.local(toggle-unchecked-hover-color-background, var(--ds-color-grey-3));
-    @include vars.local(toggle-unchecked-hover-color-tick, var(--ds-color-sky-5));
+    @include vars.local(toggle-unchecked-hover-color-background, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-unchecked-hover-color-tick, var(--ds-global-color-sky-5));
 
     // unchecked active/pressed
-    @include vars.local(toggle-unchecked-active-color-background, var(--ds-color-grey-3));
-    @include vars.local(toggle-unchecked-active-color-tick, var(--ds-color-primary-6));
+    @include vars.local(toggle-unchecked-active-color-background, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-unchecked-active-color-tick, var(--ds-global-color-primary-6));
 
     // checked base
-    @include vars.local(toggle-checked-base-color-background, var(--ds-color-success-4));
-    @include vars.local(toggle-checked-base-color-tick, var(--ds-color-white));
-    @include vars.local(toggle-checked-base-color-icon, var(--ds-color-white));
+    @include vars.local(toggle-checked-base-color-background, var(--ds-global-color-success-4));
+    @include vars.local(toggle-checked-base-color-tick, var(--ds-global-color-white));
+    @include vars.local(toggle-checked-base-color-icon, var(--ds-global-color-white));
 
     // checked hover
-    @include vars.local(toggle-checked-hover-color-background, var(--ds-color-success-5));
-    @include vars.local(toggle-checked-hover-color-tick, var(--ds-color-white));
+    @include vars.local(toggle-checked-hover-color-background, var(--ds-global-color-success-5));
+    @include vars.local(toggle-checked-hover-color-tick, var(--ds-global-color-white));
 
     // checked active/pressed
-    @include vars.local(toggle-checked-active-color-background, var(--ds-color-success-6));
-    @include vars.local(toggle-checked-active-color-tick, var(--ds-color-white));
+    @include vars.local(toggle-checked-active-color-background, var(--ds-global-color-success-6));
+    @include vars.local(toggle-checked-active-color-tick, var(--ds-global-color-white));
   }
 }
 
@@ -78,7 +78,7 @@
   cursor: pointer;
   user-select: none;
   color: var(--_toggle-label-base-color);
-  font-family: var(--ds-font-family-text);
+  font-family: var(--ds-global-font-family-text);
   line-height: var(--ds-typography-line-height-base);
   padding-top: var(--_toggle-padding-y);
   padding-bottom: var(--_toggle-padding-y);
@@ -235,23 +235,23 @@
 // --- State helpers ---
 
 @mixin _invalid-vars() {
-  --mod-toggle-label-base-color: var(--ds-color-danger-4);
-  --mod-toggle-label-hover-color: var(--ds-color-danger-5);
-  --mod-toggle-label-active-color: var(--ds-color-danger-6);
+  --mod-toggle-label-base-color: var(--ds-global-color-danger-4);
+  --mod-toggle-label-hover-color: var(--ds-global-color-danger-5);
+  --mod-toggle-label-active-color: var(--ds-global-color-danger-6);
 
-  --mod-toggle-unchecked-base-color-background: var(--ds-color-danger-1);
-  --mod-toggle-unchecked-base-color-tick: var(--ds-color-danger-4);
-  --mod-toggle-unchecked-hover-color-background: var(--ds-color-danger-1);
-  --mod-toggle-unchecked-hover-color-tick: var(--ds-color-danger-5);
-  --mod-toggle-unchecked-active-color-background: var(--ds-color-danger-1);
-  --mod-toggle-unchecked-active-color-tick: var(--ds-color-danger-6);
+  --mod-toggle-unchecked-base-color-background: var(--ds-global-color-danger-1);
+  --mod-toggle-unchecked-base-color-tick: var(--ds-global-color-danger-4);
+  --mod-toggle-unchecked-hover-color-background: var(--ds-global-color-danger-1);
+  --mod-toggle-unchecked-hover-color-tick: var(--ds-global-color-danger-5);
+  --mod-toggle-unchecked-active-color-background: var(--ds-global-color-danger-1);
+  --mod-toggle-unchecked-active-color-tick: var(--ds-global-color-danger-6);
 
-  --mod-toggle-checked-base-color-background: var(--ds-color-danger-4);
-  --mod-toggle-checked-base-color-tick: var(--ds-color-white);
-  --mod-toggle-checked-hover-color-background: var(--ds-color-danger-5);
-  --mod-toggle-checked-hover-color-tick: var(--ds-color-white);
-  --mod-toggle-checked-active-color-background: var(--ds-color-danger-6);
-  --mod-toggle-checked-active-color-tick: var(--ds-color-white);
+  --mod-toggle-checked-base-color-background: var(--ds-global-color-danger-4);
+  --mod-toggle-checked-base-color-tick: var(--ds-global-color-white);
+  --mod-toggle-checked-hover-color-background: var(--ds-global-color-danger-5);
+  --mod-toggle-checked-hover-color-tick: var(--ds-global-color-white);
+  --mod-toggle-checked-active-color-background: var(--ds-global-color-danger-6);
+  --mod-toggle-checked-active-color-tick: var(--ds-global-color-white);
 }
 
 @mixin _dense-vars() {
@@ -262,15 +262,15 @@
 @mixin _disabled-vars() {
   cursor: default;
   pointer-events: none;
-  --mod-toggle-label-base-color: var(--ds-color-grey-5);
-  --mod-toggle-label-hover-color: var(--ds-color-grey-5);
-  --mod-toggle-label-active-color: var(--ds-color-grey-5);
+  --mod-toggle-label-base-color: var(--ds-global-color-grey-5);
+  --mod-toggle-label-hover-color: var(--ds-global-color-grey-5);
+  --mod-toggle-label-active-color: var(--ds-global-color-grey-5);
 
-  --mod-toggle-unchecked-base-color-background: var(--ds-color-grey-3);
-  --mod-toggle-unchecked-base-color-tick: var(--ds-color-grey-5);
+  --mod-toggle-unchecked-base-color-background: var(--ds-global-color-grey-3);
+  --mod-toggle-unchecked-base-color-tick: var(--ds-global-color-grey-5);
 
-  --mod-toggle-checked-base-color-background: var(--ds-color-grey-5);
-  --mod-toggle-checked-base-color-tick: var(--ds-color-grey-3);
+  --mod-toggle-checked-base-color-background: var(--ds-global-color-grey-5);
+  --mod-toggle-checked-base-color-tick: var(--ds-global-color-grey-3);
 }
 
 // Invalid declared first, disabled declared second — disabled wins when both classes are present.

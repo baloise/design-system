@@ -89,27 +89,27 @@
 }
 
 :host(.is-tile.is-disabled) {
-  --icon-brand-color: var(--ds-color-grey-5);
+  --icon-brand-color: var(--ds-global-color-grey-5);
 }
 
 :host(.is-tile.is-invalid) {
-  --mod-toggle-tile-hover-background-color: var(--ds-color-danger-1);
-  --mod-toggle-tile-active-background-color: var(--ds-color-danger-1);
+  --mod-toggle-tile-hover-background-color: var(--ds-global-color-danger-1);
+  --mod-toggle-tile-active-background-color: var(--ds-global-color-danger-1);
 
-  --mod-toggle-tile-hover-border-color: var(--ds-color-danger-5);
-  --mod-toggle-tile-active-border-color: var(--ds-color-danger-6);
+  --mod-toggle-tile-hover-border-color: var(--ds-global-color-danger-5);
+  --mod-toggle-tile-active-border-color: var(--ds-global-color-danger-6);
 
   label {
-    --icon-brand-color: var(--ds-color-danger-4);
+    --icon-brand-color: var(--ds-global-color-danger-4);
 
     @include hover {
       &:hover {
-        --icon-brand-color: var(--ds-color-danger-5);
+        --icon-brand-color: var(--ds-global-color-danger-5);
       }
     }
 
     &:active {
-      --icon-brand-color: var(--ds-color-danger-6);
+      --icon-brand-color: var(--ds-global-color-danger-6);
     }
   }
 }

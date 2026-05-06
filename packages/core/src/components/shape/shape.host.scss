@@ -88,6 +88,6 @@ $shape-colors: (
 
 @each $name, $token in $shape-colors {
   @include attr.has('color', $name) {
-    --mod-shape-color: var(--ds-color-#{$token});
+    --mod-shape-color: var(--ds-global-color-#{$token});
   }
 }

@@ -11,13 +11,13 @@
  *
  * @prop --accordion-marker-size: Size of the expand/collapse marker icon.
  * @prop --accordion-summary-color: Text color of the summary label.
- * @prop --accordion-summary-family: Font family of the summary label.
- * @prop --accordion-summary-weight: Font weight of the summary label.
- * @prop --accordion-summary-line-height: Line height of the summary label.
- * @prop --accordion-summary-size: Responsive font size of the summary label.
+ * @prop --accordion-summary-font-family: Font family of the summary label.
+ * @prop --accordion-summary-font-weight: Font weight of the summary label.
+ * @prop --accordion-summary-font-line-height: Line height of the summary label.
+ * @prop --accordion-summary-font-size: Responsive font size of the summary label.
  * @prop --accordion-summary-color-hover: Summary text color on hover.
  * @prop --accordion-summary-color-active: Summary text color when pressed.
- * @prop --accordion-radius-base: Border radius used for the focus ring outline.
+ * @prop --accordion-radius: Border radius used for the focus ring outline.
  */
 
 :host {
@@ -25,13 +25,13 @@
   @include vars.local(accordion-marker-size, 1rem);
 
   @include vars.local(accordion-summary-color, var(--ds-accordion-summary-color-base));
-  @include vars.local(accordion-summary-family, var(--ds-accordion-summary-family));
-  @include vars.local(accordion-summary-weight, var(--ds-accordion-summary-weight));
-  @include vars.local(accordion-summary-line-height, var(--ds-accordion-summary-line-height));
-  @include vars.local(accordion-summary-size, var(--ds-accordion-summary-size-device));
+  @include vars.local(accordion-summary-font-family, var(--ds-accordion-summary-font-family));
+  @include vars.local(accordion-summary-font-weight, var(--ds-accordion-summary-font-weight));
+  @include vars.local(accordion-summary-font-line-height, var(--ds-accordion-summary-font-line-height));
+  @include vars.local(accordion-summary-font-size, var(--ds-accordion-summary-font-size-device));
   @include vars.local(accordion-summary-color-hover, var(--ds-accordion-summary-color-hover));
   @include vars.local(accordion-summary-color-active, var(--ds-accordion-summary-color-active));
-  @include vars.local(accordion-radius-base, var(--ds-accordion-radius-base));
+  @include vars.local(accordion-radius, var(--ds-accordion-radius-base));
 }
 
 /**
@@ -74,10 +74,10 @@
   outline: none;
 
   color: var(--_accordion-summary-color);
-  font-family: var(--_accordion-summary-family);
-  font-weight: var(--_accordion-summary-weight);
-  line-height: var(--_accordion-summary-line-height);
-  font-size: var(--_accordion-summary-size);
+  font-family: var(--_accordion-summary-font-family);
+  font-weight: var(--_accordion-summary-font-weight);
+  line-height: var(--_accordion-summary-font-line-height);
+  font-size: var(--_accordion-summary-font-size);
 
   &.has-marker-left {
     #marker {
@@ -116,7 +116,7 @@
         right: 0;
         bottom: 0;
         z-index: 1;
-        border-radius: var(--_accordion-radius-base);
+        border-radius: var(--_accordion-radius);
       }
     }
   }
@@ -136,29 +136,29 @@
 }
 
 :host(.is-title) {
-  --mod-accordion-summary-family: var(--ds-heading-family);
-  --mod-accordion-summary-weight: var(--ds-heading-weight);
-  --mod-accordion-summary-line-height: var(--ds-heading-line-height);
+  --mod-accordion-summary-font-family: var(--ds-heading-family);
+  --mod-accordion-summary-font-weight: var(--ds-heading-weight);
+  --mod-accordion-summary-font-line-height: var(--ds-heading-line-height);
 }
 
 :host(.is-h1) {
-  --mod-accordion-summary-size: var(--ds-heading-1-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-1-size-device);
 }
 
 :host(.is-h2) {
-  --mod-accordion-summary-size: var(--ds-heading-2-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-2-size-device);
 }
 
 :host(.is-h3) {
-  --mod-accordion-summary-size: var(--ds-heading-3-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-3-size-device);
 }
 
 :host(.is-h4) {
-  --mod-accordion-summary-size: var(--ds-heading-4-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-4-size-device);
 }
 
 :host(.is-h5) {
-  --mod-accordion-summary-size: var(--ds-heading-5-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-5-size-device);
 }
 
 //

@@ -228,7 +228,7 @@ $icon-colors: ('primary', 'primary-light', 'info', 'success', 'danger', 'warning
 @each $color in $icon-colors {
   :host(.is-#{$color}) {
     --mod-icon-color: var(--ds-icon-color-#{$color});
-    --mod-icon-shape: var(--ds-color-#{$color}-5);
+    --mod-icon-shape: var(--ds-global-color-#{$color}-5);
   }
 }
 

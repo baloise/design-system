@@ -353,21 +353,21 @@ $_max-items: 8;
 
 @mixin _invalid-vars() {
   // Form field label + description
-  --mod-segment-description-color: var(--ds-color-danger-4);
+  --mod-segment-description-color: var(--ds-global-color-danger-4);
 
   // Item text — unselected
-  --mod-segment-item-unselected-color-base: var(--ds-color-danger-4);
-  --mod-segment-item-unselected-color-hover: var(--ds-color-danger-5);
-  --mod-segment-item-unselected-color-active: var(--ds-color-danger-6);
+  --mod-segment-item-unselected-color-base: var(--ds-global-color-danger-4);
+  --mod-segment-item-unselected-color-hover: var(--ds-global-color-danger-5);
+  --mod-segment-item-unselected-color-active: var(--ds-global-color-danger-6);
 
   // Item text — selected (white on danger pill)
-  --mod-segment-item-selected-color-base: var(--ds-color-white);
-  --mod-segment-item-selected-color-hover: var(--ds-color-white);
-  --mod-segment-item-selected-color-active: var(--ds-color-white);
+  --mod-segment-item-selected-color-base: var(--ds-global-color-white);
+  --mod-segment-item-selected-color-hover: var(--ds-global-color-white);
+  --mod-segment-item-selected-color-active: var(--ds-global-color-white);
 
   // Sliding pill
-  --mod-segment-background: var(--ds-color-danger-1);
-  --mod-segment-item-selected-background: var(--ds-color-danger-4);
+  --mod-segment-background: var(--ds-global-color-danger-1);
+  --mod-segment-item-selected-background: var(--ds-global-color-danger-4);
 }
 
 @mixin _disabled-vars() {
@@ -375,19 +375,19 @@ $_max-items: 8;
   pointer-events: none;
 
   // Form field label + description
-  --mod-segment-label-color: var(--ds-color-grey-5);
-  --mod-segment-description-color: var(--ds-color-grey-5);
+  --mod-segment-label-color: var(--ds-global-color-grey-5);
+  --mod-segment-description-color: var(--ds-global-color-grey-5);
 
   // Item text — all states flattened to grey
-  --mod-segment-item-unselected-color-base: var(--ds-color-grey-5);
-  --mod-segment-item-unselected-color-hover: var(--ds-color-grey-5);
-  --mod-segment-item-unselected-color-active: var(--ds-color-grey-5);
-  --mod-segment-item-selected-color-base: var(--ds-color-grey-6);
-  --mod-segment-item-selected-color-hover: var(--ds-color-grey-6);
-  --mod-segment-item-selected-color-active: var(--ds-color-grey-6);
+  --mod-segment-item-unselected-color-base: var(--ds-global-color-grey-5);
+  --mod-segment-item-unselected-color-hover: var(--ds-global-color-grey-5);
+  --mod-segment-item-unselected-color-active: var(--ds-global-color-grey-5);
+  --mod-segment-item-selected-color-base: var(--ds-global-color-grey-6);
+  --mod-segment-item-selected-color-hover: var(--ds-global-color-grey-6);
+  --mod-segment-item-selected-color-active: var(--ds-global-color-grey-6);
 
   // Sliding pill
-  --mod-segment-item-selected-background: var(--ds-color-grey-3);
+  --mod-segment-item-selected-background: var(--ds-global-color-grey-3);
 }
 
 // Field applies `is-danger` (not `is-invalid`) and `is-disabled`.

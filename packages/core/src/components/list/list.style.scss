@@ -37,9 +37,9 @@ ol.list li details {
 
   @include vars.local(list-item-title-size, var(--ds-heading-5-size-device));
   @include vars.local(list-item-title-weight, var(--ds-text-weight-bold));
-  @include vars.local(list-item-title-family, var(--ds-font-family-heading));
+  @include vars.local(list-item-title-family, var(--ds-global-font-family-heading));
 
-  @include vars.local(list-item-text-family, var(--ds-font-family-body));
+  @include vars.local(list-item-text-family, var(--ds-global-font-family-body));
   @include vars.local(list-item-text-weight, var(--ds-text-weight-regular));
   @include vars.local(list-item-text-size, var(--ds-text-size-sm-device));
 }

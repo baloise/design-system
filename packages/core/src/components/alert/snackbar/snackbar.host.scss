@@ -9,36 +9,36 @@
  *
  * @prop --snackbar-shadow: Box shadow of the snackbar.
  * @prop --snackbar-radius: Border radius of the snackbar.
- * @prop --snackbar-color-background: Background color of the snackbar.
- * @prop --snackbar-color-text: Text color inside the snackbar.
- * @prop --snackbar-icon: Color of the snackbar icon.
+ * @prop --snackbar-bg: Background color of the snackbar.
+ * @prop --snackbar-color: Text color inside the snackbar.
+ * @prop --snackbar-icon-color: Color of the snackbar icon.
  * @prop --snackbar-progress-duration: Duration of the progress bar animation.
- * @prop --snackbar-padding: Padding inside the snackbar.
+ * @prop --snackbar-progress-bar-bg: Background color of the progress bar.
+ * @prop --snackbar-progress-bg: Background color of the progress track.
+ * @prop --snackbar-p: Padding inside the snackbar.
  * @prop --snackbar-gap: Gap between content and close button.
- * @prop --snackbar-font-size: Font size of the snackbar message.
- * @prop --snackbar-min-height: Minimum height of the snackbar.
  */
 
 :host {
   @include vars.base(snackbar);
   @include vars.local(snackbar-shadow, var(--ds-shadow-box-base));
   @include vars.local(snackbar-radius, var(--ds-snackbar-radius));
-  @include vars.local(snackbar-color-background, var(--ds-snackbar-base-background));
-  @include vars.local(snackbar-color-text, var(--ds-snackbar-base-text));
-  @include vars.local(snackbar-icon, var(--ds-snackbar-base-icon));
+  @include vars.local(snackbar-bg, var(--ds-snackbar-default-color-bg-base));
+  @include vars.local(snackbar-color, var(--ds-snackbar-default-color-text-base));
+  @include vars.local(snackbar-icon-color, var(--ds-snackbar-default-color-icon-base));
 
   @include vars.local(snackbar-progress-duration, 0);
-  @include vars.local(snackbar-progress-bar, var(--ds-snackbar-base-progress-bar));
-  @include vars.local(snackbar-progress-background, var(--ds-snackbar-base-progress-background));
+  @include vars.local(snackbar-progress-bar-bg, var(--ds-snackbar-default-color-progress-bar-base));
+  @include vars.local(snackbar-progress-bg, var(--ds-snackbar-default-color-progress-bg-base));
 
-  @include vars.local(snackbar-heading-family, var(--ds-text-family-heading));
-  @include vars.local(snackbar-heading-weight, var(--ds-text-weight-bold));
-  @include vars.local(snackbar-heading-size, var(--ds-text-size-base-device));
+  @include vars.local(snackbar-heading-font-family, var(--ds-text-family-heading));
+  @include vars.local(snackbar-heading-font-weight, var(--ds-text-weight-bold));
+  @include vars.local(snackbar-heading-font-size, var(--ds-text-size-base-device));
   @include vars.local(snackbar-heading-line-height, var(--ds-text-line-height-heading));
 
-  @include vars.local(snackbar-content-family, var(--ds-text-family-body));
-  @include vars.local(snackbar-content-weight, inherit);
-  @include vars.local(snackbar-content-size, var(--ds-text-size-sm-device));
+  @include vars.local(snackbar-content-font-family, var(--ds-text-family-body));
+  @include vars.local(snackbar-content-font-weight, inherit);
+  @include vars.local(snackbar-content-font-size, var(--ds-text-size-sm-device));
   @include vars.local(snackbar-content-line-height, var(--ds-text-line-height-body));
 
   @include vars.local(snackbar-gap, 0.125rem);
@@ -72,8 +72,8 @@
   position: relative;
   hyphens: auto;
 
-  color: var(--_snackbar-color-text);
-  background: var(--_snackbar-color-background);
+  color: var(--_snackbar-color);
+  background: var(--_snackbar-bg);
   border-radius: var(--_snackbar-radius);
   box-shadow: var(--_snackbar-shadow);
 
@@ -107,10 +107,10 @@
     & > strong,
     & > b,
     & > h2 {
-      font-family: var(--_snackbar-heading-family);
-      font-weight: var(--_snackbar-heading-weight);
+      font-family: var(--_snackbar-heading-font-family);
+      font-weight: var(--_snackbar-heading-font-weight);
       line-height: var(--_snackbar-heading-line-height);
-      font-size: var(--_snackbar-heading-size);
+      font-size: var(--_snackbar-heading-font-size);
       margin: 0 !important;
     }
 
@@ -120,9 +120,9 @@
     &,
     & > span,
     & > p {
-      font-family: var(--_snackbar-content-family);
-      font-size: var(--_snackbar-content-size);
-      font-weight: var(--_snackbar-content-weight);
+      font-family: var(--_snackbar-content-font-family);
+      font-size: var(--_snackbar-content-font-size);
+      font-weight: var(--_snackbar-content-font-weight);
       line-height: var(--_snackbar-content-line-height);
     }
   }
@@ -192,7 +192,7 @@
   max-width: fit-content;
 
   --mod-snackbar-p: 0;
-  --mod-snackbar-background: transparent;
+  --mod-snackbar-bg: transparent;
   --mod-snackbar-width: fit-content;
 
   #icon,
@@ -227,7 +227,7 @@
     height: 0.25rem;
     width: 100%;
     content: '';
-    background-color: var(--_snackbar-progress-background);
+    background-color: var(--_snackbar-progress-bg);
     border-bottom-left-radius: var(--_snackbar-radius);
     border-bottom-right-radius: var(--_snackbar-radius);
   }
@@ -240,7 +240,7 @@
     height: 0.25rem;
     width: 16px;
     content: '';
-    background-color: var(--_snackbar-progress-bar);
+    background-color: var(--_snackbar-progress-bar-bg);
     border-bottom-left-radius: var(--_snackbar-radius);
     animation: progress var(--_snackbar-progress-duration) linear forwards;
   }
@@ -259,12 +259,12 @@ $colors: ('info', 'success', 'warning', 'danger');
 
 @each $color in $colors {
   :host(.is-#{$color}) {
-    --mod-snackbar-color-text: var(--ds-snackbar-#{$color}-text);
-    --mod-snackbar-color-border: var(--ds-snackbar-#{$color}-border);
-    --mod-snackbar-color-background: var(--ds-snackbar-#{$color}-background);
-    --mod-snackbar-icon: var(--ds-snackbar-#{$color}-icon);
-    --mod-snackbar-progress-bar: var(--ds-snackbar-#{$color}-progress-bar);
-    --mod-snackbar-progress-background: var(--ds-snackbar-#{$color}-progress-background);
+    --mod-snackbar-color: var(--ds-snackbar-#{$color}-color-text-base);
+    --mod-snackbar-border-color: var(--ds-snackbar-#{$color}-color-border-base);
+    --mod-snackbar-bg: var(--ds-snackbar-#{$color}-color-bg-base);
+    --mod-snackbar-icon-color: var(--ds-snackbar-#{$color}-color-icon-base);
+    --mod-snackbar-progress-bar-bg: var(--ds-snackbar-#{$color}-color-progress-bar-base);
+    --mod-snackbar-progress-bg: var(--ds-snackbar-#{$color}-color-progress-bg-base);
   }
 }
 
@@ -283,7 +283,7 @@ $colors: ('info', 'success', 'warning', 'danger');
     height: 0.25rem;
     width: 16px;
     content: '';
-    background-color: var(--_snackbar-progress-bar);
+    background-color: var(--_snackbar-progress-bar-bg);
     border-bottom-left-radius: var(--_snackbar-radius);
     animation: progress var(--_snackbar-progress-duration) linear forwards;
   }
