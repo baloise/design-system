@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/html-vite'
-// import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Meta, StoryObj, StoryContext } from '@storybook/html-vite'
+// import type { Meta, StoryObj, StoryContext } from '@storybook/web-components-vite';
 
 export const StoryFactory = <TArgs>(meta: Meta<TArgs>) => {
   return (story: StoryObj<TArgs> = {}) => {
     const renderer = story.render ? story.render : meta.render
-    const args = { ...meta.args, ...story.args } as TArgs
+    const initialArgs = { ...meta.args, ...story.args } as TArgs
     let template = 'No source code available'
 
     if (renderer) {
-      const rawTemplate = renderer(args, {} as any) as any
-      template = rawTemplate.innerHTML
+      const rawTemplate = renderer(initialArgs, {} as any) as any
+      template = rawTemplate?.innerHTML ?? 'No source code available'
     }
 
     return {
@@ -20,7 +20,15 @@ export const StoryFactory = <TArgs>(meta: Meta<TArgs>) => {
           ...story.parameters?.docs,
           source: {
             ...story.parameters?.docs?.source,
-            code: template,
+            // Re-renders the story template with live args so the source panel
+            // stays in sync when the user changes controls.
+            transform: (_: string, ctx: StoryContext<TArgs>) => {
+              if (renderer) {
+                const el = renderer({ ...initialArgs, ...ctx.args } as TArgs, {} as any) as any
+                return el?.innerHTML ?? 'No source code available'
+              }
+              return 'No source code available'
+            },
           },
         },
         mySource: template,

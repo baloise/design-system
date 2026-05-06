@@ -18,7 +18,11 @@ export const CanvasTabs = ({
 }: CanvasTabsProps): React.ReactElement => {
   const wcTab = {
     label: 'Web Component',
-    content: <Canvas of={ofStory} sourceState={sourceState} />,
+    content: (
+      <>
+        <Canvas of={ofStory} sourceState="shown" />
+      </>
+    ),
   }
   const htmlTab = {
     label: 'HTML & CSS',

@@ -32662,16 +32662,16 @@
         {
           "name": "🧩 Component / Segment / Item / PaddingInline",
           "cssVarName": "--ds-segment-item-paddinginline",
-          "value": "{🏷️ Semantic.↔️ Space.SM.Mobile}",
-          "nativeValue": "12",
+          "value": "{🏷️ Semantic.↔️ Space.Base.Mobile}",
+          "nativeValue": "16",
           "inheritance": [
             {
-              "cssVar": "--ds-size-space-12",
-              "figmaName": "Primitive / Size / Space / 12"
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Primitive / Size / Space / 16"
             },
             {
-              "cssVar": "--ds-space-sm-mobile",
-              "figmaName": "Semantic / Space / SM / Mobile"
+              "cssVar": "--ds-space-base-mobile",
+              "figmaName": "Semantic / Space / Base / Mobile"
             },
             {
               "cssVar": "--ds-segment-item-paddinginline",
@@ -34532,6 +34532,76 @@
           "setter": false
         },
         {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"bottom\" | \"right\"",
+          "complexType": {
+            "original": "SpinnerLabelPosition",
+            "resolved": "\"bottom\" | \"right\"",
+            "references": {
+              "SpinnerLabelPosition": {
+                "location": "import",
+                "path": "./spinner.interfaces",
+                "id": "src/components/spinner/spinner.interfaces.ts::SpinnerLabelPosition",
+                "referenceLocation": "SpinnerLabelPosition"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "label-position",
+          "reflectToAttr": false,
+          "docs": "Position of the visible label relative to the spinner animation.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "size",
           "type": "\"\" | \"sm\"",
           "complexType": {
@@ -34679,6 +34749,10 @@
         {
           "name": "inner",
           "docs": "The spinner animation container element."
+        },
+        {
+          "name": "label",
+          "docs": ""
         }
       ],
       "listeners": [],
@@ -40971,6 +41045,35 @@
           "setter": false
         },
         {
+          "name": "dense",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "dense",
+          "reflectToAttr": false,
+          "docs": "If `true`, the toggle is dense and has less size.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -41992,6 +42095,11 @@
     },
     "src/components/spinner/spinner.interfaces.ts::SpinnerSize": {
       "declaration": "\"\" | \"sm\"",
+      "docstring": "",
+      "path": "src/components/spinner/spinner.interfaces.ts"
+    },
+    "src/components/spinner/spinner.interfaces.ts::SpinnerLabelPosition": {
+      "declaration": "\"right\" | \"bottom\"",
       "docstring": "",
       "path": "src/components/spinner/spinner.interfaces.ts"
     },

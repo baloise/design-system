@@ -45,7 +45,7 @@ export const WithBrandIcon = Story({
     closable: true,
   },
   ...withRender(
-    ({ slot, slotAction, ...args }) => `<ds-snackbar svg='${BrandIconCarCrashWithAnimalGreen}'  ${props(args)}>
+    ({ slot, slotAction, ...args }) => `<ds-snackbar svg='${BrandIconCarCrashWithAnimalGreen}' ${props(args)}>
   ${slot}
   <ds-button slot="action">${slotAction}</ds-button>
 </ds-snackbar>`,
