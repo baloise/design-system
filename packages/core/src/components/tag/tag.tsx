@@ -5,8 +5,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -54,50 +55,50 @@ export class Tag implements DsComponentInterface {
    * The theme type of the tag.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly closable: boolean = false
 
   /**
    * The theme type of the tag.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TAG_COLORS)
-  readonly color?: TagColor
+  @ValidateOneOf(...TAG_COLORS)
+  readonly color: TagColor = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * Overwrites the default color to invalid style
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly invalid: boolean = false
 
   /**
    * Choosing left or center the tag is aligned to that side in the ds-card.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TAG_PLACEMENTS)
-  readonly position?: TagPlacement
+  @ValidateOneOf(...TAG_PLACEMENTS)
+  readonly position: TagPlacement = ''
 
   /**
    * The shape of the tag element like square or pill
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TAG_SHAPES)
-  readonly shape?: TagShape
+  @ValidateOneOf(...TAG_SHAPES)
+  readonly shape: TagShape = ''
 
   /**
    * The size of the tag element
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...TAG_SIZES)
-  size?: TagSize
+  @ValidateOneOf(...TAG_SIZES)
+  size: TagSize = ''
   @Watch('size')
   sizeChanged(newValue: TagSize) {
     this.size = normalizeDeprecatedTShirtSize(newValue)
@@ -133,7 +134,15 @@ export class Tag implements DsComponentInterface {
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          [`is-${this.color}`]: this.color! == '',
+          [`is-shape-${this.shape}`]: this.shape! == '',
+          'is-closable': this.closable,
+          'is-disabled': this.disabled,
+          'is-invalid': this.invalid,
+        }}
+      >
         <span part="label">
           <slot />
         </span>

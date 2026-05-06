@@ -1,6 +1,5 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../vars' as vars;
-@use '../../attr' as attr;
 
 /**
  * Variables
@@ -91,7 +90,7 @@
 $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'danger');
 
 @each $color in $colors {
-  @include attr.has('color', $color) {
+  :host(.is-#{$color}) {
     --mod-badge-color-text: var(--ds-badge-color-#{$color}-text);
     --mod-badge-color-background: var(--ds-badge-color-#{$color}-background);
     --mod-badge-pulse-color: var(--ds-badge-color-#{$color}-background);
@@ -102,7 +101,7 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
 //
 // Sizes
 // --------------------------------
-@include attr.has('size', 'sm') {
+:host(.is-sm) {
   --mod-badge-radius: calc(var(--ds-badge-size-sm) / 2);
   --mod-badge-height: var(--ds-badge-size-sm);
   --mod-badge-min-width: var(--ds-badge-size-sm);
@@ -119,7 +118,7 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
   }
 }
 
-@include attr.has('size', 'lg') {
+:host(.is-lg) {
   --mod-badge-min-width: var(--ds-badge-size-lg);
   --mod-badge-height: var(--ds-badge-size-lg);
   --mod-badge-radius: calc(var(--ds-badge-size-lg) / 2);
@@ -133,7 +132,7 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
   * Define here the animations for the component.
   */
 
-@include attr.has('pulse', true) {
+:host(.is-pulse) {
   animation: pulse 2s infinite;
 }
 

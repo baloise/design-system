@@ -9,8 +9,9 @@ import {
   raf,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
@@ -59,35 +60,35 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SNACKBAR_COLORS)
+  @ValidateOneOf(...SNACKBAR_COLORS)
   readonly color: SnackbarColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly heading: string = ''
 
   /**
    * Defines the message of the notification as html content
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly message: string = ''
 
   /**
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
@@ -98,7 +99,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
@@ -109,28 +110,28 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
+  @ValidateOneOf(...BUTTON_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly actionHref: string = ''
 
   /**

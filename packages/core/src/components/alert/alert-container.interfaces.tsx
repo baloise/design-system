@@ -2,7 +2,7 @@ import { ButtonTarget } from '../button/button.interfaces'
 
 export const ALERT_TYPES = ['toast', 'snackbar'] as const
 
-export const ALERT_CONTAINER_SIZES = ['fluid', 'detail-page', 'compact', 'blog-page', 'wide'] as const
+export const ALERT_CONTAINER_SIZES = ['', 'fluid', 'detail-page', 'compact', 'blog-page', 'wide'] as const
 
 export const ALERT_COLORS = [
   'base',

@@ -7,8 +7,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
@@ -56,21 +57,21 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    * Name of the baloise icon.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = ''
 
   /**
    * Svg content.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly svg: string = ''
 
   /**
    * Defines the size of the icon.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrOneOf(...ICON_SIZES)
+  @ValidateOneOf(...ICON_SIZES)
   size: IconSize
   @Watch('size')
   sizeChanged(newValue: IconSize) {
@@ -81,70 +82,70 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    * The theme type of the button.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ICON_COLORS)
+  @ValidateOneOf(...ICON_COLORS)
   readonly color?: IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ICON_SHAPES)
-  readonly shape?: IconShape
+  @ValidateOneOf(...ICON_SHAPES)
+  readonly shape: IconShape = ''
 
   /**
    * If `true` the icon acts as a tile with a background color.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ICON_TILE_COLORS)
+  @ValidateOneOf(...ICON_TILE_COLORS)
   readonly tileColor: IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inline: boolean = false
 
   /**
    * If `true` the icon is inverted
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly turn: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly shadow: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly invalid: boolean = false
 
   /**

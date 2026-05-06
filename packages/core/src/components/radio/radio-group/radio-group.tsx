@@ -17,10 +17,10 @@ import {
   stopEventBubbling,
   hasTagName,
   isDescendant,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
-  setupValidation,
   ValidateType,
+  setupValidation,
 } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
@@ -75,42 +75,42 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    * If `true`, the radios can be deselected.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly allowEmptySelection: boolean = false
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  @ValidateOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * Defines the column size like the grid.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  @ValidateOneOf(...RADIO_GROUP_COLUMNS)
   readonly cols: RadioGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  @ValidateOneOf(...RADIO_GROUP_COLUMNS)
   readonly colsMobile: RadioGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  @ValidateOneOf(...RADIO_GROUP_COLUMNS)
   readonly colsTablet: RadioGroupColumns = 1
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly description: string = ''
 
   /**
@@ -131,35 +131,35 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    * The text to display when the input is in an invalid state.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly invalidText: string = ''
 
   /**
    * The label of the input, which is displayed above the input field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_LABEL_POSITIONS)
+  @ValidateOneOf(...RADIO_LABEL_POSITIONS)
   readonly labelPosition: RadioLabelPosition = 'right'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly loading: boolean = false
 
   /**
    * The name of the radios in the group. Child radios will inherit the name.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = this.inputId
 
   /**
@@ -173,22 +173,22 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly required: boolean = true
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly tile: boolean = false
 
   /**
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_TILE_COLORS)
-  readonly tileColor?: RadioTileColor
+  @ValidateOneOf(...RADIO_TILE_COLORS)
+  readonly tileColor: RadioTileColor = ''
 
   /**
    * The value of the radio group.
@@ -203,7 +203,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    * Displays the radios vertically.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly vertical: boolean = false
 
   /**

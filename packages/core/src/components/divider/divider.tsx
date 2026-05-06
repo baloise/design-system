@@ -4,8 +4,9 @@ import {
   Logger,
   type LogInstance,
   normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
@@ -49,14 +50,14 @@ export class Divider implements DsComponentInterface {
    * are showed verticaly or horizontally. Default is verticaly.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DIVIDER_LAYOUTS)
+  @ValidateOneOf(...DIVIDER_LAYOUTS)
   readonly layout: DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...DIVIDER_SPACES)
+  @ValidateOneOf(...DIVIDER_SPACES)
   space: DividerSpace = 'none'
   @Watch('space')
   spaceChanged(newValue: DividerSpace) {
@@ -67,14 +68,14 @@ export class Divider implements DsComponentInterface {
    * Defines the color of the separator line.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DIVIDER_COLORS)
+  @ValidateOneOf(...DIVIDER_COLORS)
   readonly color: DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly dashed: boolean = false
 
   connectedCallback(): void {

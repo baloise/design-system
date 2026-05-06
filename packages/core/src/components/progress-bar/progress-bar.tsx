@@ -9,8 +9,9 @@ import {
   WindowResizeObserver,
   ListenToWindowResize,
   initialBreakpoints,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
@@ -66,21 +67,21 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
    * The background color
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PROGRESS_BAR_BACKGROUNDS)
+  @ValidateOneOf(...PROGRESS_BAR_BACKGROUNDS)
   readonly background: ProgressBarBackground = 'dark'
 
   /**
    * The progress bar color
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PROGRESS_BAR_COLORS)
+  @ValidateOneOf(...PROGRESS_BAR_COLORS)
   readonly color: ProgressBarColor = 'primary'
 
   /**
    * The value of the bar in percentage. So min is 0 and 100 would be the max value.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('number')
+  @ValidateType('number')
   readonly value: number = 0
 
   /**

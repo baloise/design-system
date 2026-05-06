@@ -4,8 +4,9 @@ import {
   ariaBooleanToString,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
@@ -65,7 +66,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    * If `true` the accordion is open.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   open = false
 
   /**
@@ -73,28 +74,28 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    * close when another accordion in the same group is opened.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly group: string = ''
 
   /**
    * The heading level of the summary
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_SUMMARY_LEVELS)
+  @ValidateOneOf(...ACCORDION_SUMMARY_LEVELS)
   readonly summaryLevel: AccordionSummaryLevel = 'h3'
 
   /**
    * The visual heading level of the summary.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_SUMMARY_LEVELS)
+  @ValidateOneOf(...ACCORDION_SUMMARY_LEVELS)
   readonly summaryVisualLevel: AccordionSummaryLevel = ''
 
   /**
    * If `true` the summary is styled as a title.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly summaryTitle: boolean = false
 
   /**
@@ -103,70 +104,70 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    * a plus icon for closed and a minus icon for open state is used.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_MARKERS)
+  @ValidateOneOf(...ACCORDION_MARKERS)
   readonly marker: AccordionMarker = ''
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_MARKER_POSITIONS)
+  @ValidateOneOf(...ACCORDION_MARKER_POSITIONS)
   readonly markerPosition: AccordionMarkerPosition = ''
 
   /**
    * Displays the summary as a button and hides the default marker.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly button: boolean = false
 
   /**
    * If `true` the button is expanded to full width. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly buttonWide: boolean = false
 
   /**
    * The color of the button. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_BUTTON_COLORS)
+  @ValidateOneOf(...ACCORDION_BUTTON_COLORS)
   readonly buttonColor: AccordionButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_BUTTON_SIZES)
+  @ValidateOneOf(...ACCORDION_BUTTON_SIZES)
   readonly buttonSize: AccordionButtonSize = ''
 
   /**
    * Label of the open trigger button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly buttonLabelOpen: string = ''
 
   /**
    * BalIcon of the open trigger button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly buttonIconOpen: string = ''
 
   /**
    * Label of the close trigger button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly buttonLabelClose: string = ''
 
   /**
    * BalIcon of the close trigger button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly buttonIconClose: string = ''
 
   /**

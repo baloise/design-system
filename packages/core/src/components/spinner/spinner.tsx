@@ -6,8 +6,9 @@ import {
   rOnLoad,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -71,14 +72,14 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * **Deprecated:** Use inverted="true" for white spinner instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SPINNER_COLORS)
+  @ValidateOneOf(...SPINNER_COLORS)
   readonly color: SpinnerColor = 'blue'
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly deactivated: boolean = false
   @Watch('deactivated')
   deactivatedChanged(newValue: boolean, oldValue: boolean) {
@@ -95,21 +96,21 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * If `true` the component can be used on dark background
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inverted: boolean = false
 
   /**
    * Defines the size of the spinner. If `sm` the spinner is smaller.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...SPINNER_SIZES)
+  @ValidateOneOf(...SPINNER_SIZES)
   size: SpinnerSize = ''
 
   /**
    * **Deprecated:** Use size="sm" instead.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly small: boolean = false
   @Watch('small')
   smallChanged(newValue: boolean, oldValue: boolean) {
@@ -122,21 +123,21 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
    * Position of the visible label relative to the spinner animation.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SPINNER_LABEL_POSITIONS)
+  @ValidateOneOf(...SPINNER_LABEL_POSITIONS)
   readonly labelPosition: SpinnerLabelPosition = 'right'
 
   /**
    * Defines the look of the spinner
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SPINNER_VARIATIONS)
+  @ValidateOneOf(...SPINNER_VARIATIONS)
   readonly variation: SpinnerVariation = 'logo'
   @Watch('variation')
   variationChanged(newValue: SpinnerVariation, oldValue: SpinnerVariation) {
@@ -292,6 +293,9 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
         aria-label={ariaLabel}
         class={{
           'is-animated': this.animated,
+          'is-circle': this.variation === 'circle',
+          'is-sm': this.size === 'sm',
+          'is-white': this.color === 'white',
           'is-label-right': !!this.label && this.labelPosition === 'right',
           'is-label-bottom': !!this.label && this.labelPosition === 'bottom',
         }}

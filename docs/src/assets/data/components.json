@@ -35913,10 +35913,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
+          "type": "\"\" | \"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\"",
           "complexType": {
             "original": "TagColor",
-            "resolved": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
+            "resolved": "\"\" | \"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\"",
             "references": {
               "TagColor": {
                 "location": "import",
@@ -35930,8 +35930,17 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "The theme type of the tag.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -36003,12 +36012,9 @@
             {
               "value": "yellow-light",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -36073,10 +36079,10 @@
         },
         {
           "name": "position",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
           "complexType": {
             "original": "TagPlacement",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
             "references": {
               "TagPlacement": {
                 "location": "import",
@@ -36090,8 +36096,17 @@
           "attr": "position",
           "reflectToAttr": false,
           "docs": "Choosing left or center the tag is aligned to that side in the ds-card.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -36103,22 +36118,19 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "shape",
-          "type": "\"pill\" | \"square\" | undefined",
+          "type": "\"\" | \"pill\" | \"square\"",
           "complexType": {
             "original": "TagShape",
-            "resolved": "\"pill\" | \"square\" | undefined",
+            "resolved": "\"\" | \"pill\" | \"square\"",
             "references": {
               "TagShape": {
                 "location": "import",
@@ -36132,8 +36144,17 @@
           "attr": "shape",
           "reflectToAttr": false,
           "docs": "The shape of the tag element like square or pill",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "pill",
               "type": "string"
@@ -36141,22 +36162,19 @@
             {
               "value": "square",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "size",
-          "type": "\"large\" | \"medium\" | \"small\" | undefined",
+          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "TagSize",
-            "resolved": "\"large\" | \"medium\" | \"small\" | undefined",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
             "references": {
               "TagSize": {
                 "location": "import",
@@ -36170,10 +36188,27 @@
           "attr": "size",
           "reflectToAttr": false,
           "docs": "The size of the tag element",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
+              "type": "\"\""
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -36181,14 +36216,15 @@
               "type": "string"
             },
             {
-              "value": "small",
+              "value": "sm",
               "type": "string"
             },
             {
-              "type": "undefined"
+              "value": "small",
+              "type": "string"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -42119,22 +42155,22 @@
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagColor": {
-      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",
+      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagPlacement": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagShape": {
-      "declaration": "\"square\" | \"pill\"",
+      "declaration": "\"\" | \"square\" | \"pill\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagSize": {
-      "declaration": "\"small\" | \"medium\" | \"large\"",
+      "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"medium\" | \"large\" | \"md\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },

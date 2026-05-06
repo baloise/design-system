@@ -4,8 +4,9 @@ import {
   type LogInstance,
   inheritAttributes,
   type Attributes,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -60,21 +61,21 @@ export class Checkbox implements DsComponentInterface {
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = this.inputId
 
   /**
    * Label of the radio item.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
-  readonly label = ''
+  @ValidateType('string')
+  readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CHECKBOX_LABEL_POSITIONS)
+  @ValidateOneOf(...CHECKBOX_LABEL_POSITIONS)
   readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
@@ -83,14 +84,14 @@ export class Checkbox implements DsComponentInterface {
    * submitted with the checkbox's name.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly value: string | number = 'on'
 
   /**
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   checked = false
   private initialValue = false
 
@@ -98,49 +99,49 @@ export class Checkbox implements DsComponentInterface {
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly required: boolean = false
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly invalid: boolean = false
 
   /**
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CHECKBOX_TILE_COLORS)
+  @ValidateOneOf(...CHECKBOX_TILE_COLORS)
   readonly tileColor: CheckboxTileColor = ''
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly tile: boolean = false
 
   /**

@@ -1,6 +1,6 @@
 import { InputInputMode } from '../input/input.interfaces'
 
-export const TEXTAREA_WRAPS = ['hard', 'soft', 'off'] as const
+export const TEXTAREA_WRAPS = ['', 'hard', 'soft', 'off'] as const
 
 export type TextareaWrap = (typeof TEXTAREA_WRAPS)[number]
 export type TextareaInputMode = InputInputMode

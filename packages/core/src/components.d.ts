@@ -165,8 +165,9 @@ export namespace Components {
         "animated": boolean;
         /**
           * Defines the container size constraint for the alert layout.
+          * @default ''
          */
-        "container"?: AlertContainerSize;
+        "container": AlertContainerSize;
         /**
           * Removes the alert with the given ID.
          */
@@ -381,8 +382,9 @@ export namespace Components {
     interface DsButtonGroup {
         /**
           * The value of the button, which is submitted with the form data.
+          * @default ''
          */
-        "align"?: ButtonGroupAlignment;
+        "align": ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
@@ -405,8 +407,9 @@ export namespace Components {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
+          * @default ''
          */
-        "align"?: CardAlignment;
+        "align": CardAlignment;
         /**
           * If `true` the card has a hover effect.
           * @default false
@@ -414,8 +417,9 @@ export namespace Components {
         "clickable": boolean;
         /**
           * Defines the color of the card.
+          * @default ''
          */
-        "color"?: CardColor;
+        "color": CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -433,8 +437,9 @@ export namespace Components {
         "fullheight": boolean;
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
+          * @default ''
          */
-        "imageTeaser"?: CardImageTeaser;
+        "imageTeaser": CardImageTeaser;
         /**
           * If `true` the card background color becomes blue.
           * @default false
@@ -471,8 +476,9 @@ export namespace Components {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
+          * @default ''
          */
-        "align"?: CardActionsAlignment;
+        "align": CardActionsAlignment;
     }
     /**
      * Card content renders the main content area of a card for grouping body text and media.
@@ -568,7 +574,7 @@ export namespace Components {
           * Label of the radio item.
           * @default ''
          */
-        "label": "";
+        "label": string;
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -717,8 +723,9 @@ export namespace Components {
         "button": boolean;
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
+          * @default ''
          */
-        "buttonColor"?: ButtonColor;
+        "buttonColor": ButtonColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
@@ -745,7 +752,10 @@ export namespace Components {
           * @default ''
          */
         "align": ContentAlignment;
-        "alignment"?: StackAlignment;
+        /**
+          * @default ''
+         */
+        "alignment": StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
           * @default ''
@@ -831,8 +841,9 @@ export namespace Components {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
+          * @default ''
          */
-        "autoLevel"?: HeadingVisualLevel;
+        "autoLevel": HeadingVisualLevel;
         /**
           * The theme type of the toast.
           * @default ''
@@ -860,8 +871,9 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Defines at which position the heading has spacing.
+          * @default ''
          */
-        "space"?: HeadingSpace;
+        "space": HeadingSpace;
         /**
           * If `true` the heading gets displayed slimmer.
           * @default false
@@ -869,8 +881,9 @@ export namespace Components {
         "subtitle": boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+          * @default ''
          */
-        "visualLevel"?: HeadingVisualLevel;
+        "visualLevel": HeadingVisualLevel;
     }
     /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
@@ -913,8 +926,9 @@ export namespace Components {
         "shadow": boolean;
         /**
           * If `true` the icon is displayed in a circle with a background color.
+          * @default ''
          */
-        "shape"?: IconShape;
+        "shape": IconShape;
         /**
           * Defines the size of the icon.
          */
@@ -1302,8 +1316,9 @@ export namespace Components {
         "closeHandler": () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default ''
          */
-        "color"?: NotificationColor;
+        "color": NotificationColor;
         /**
           * Defines the heading of the notification.
           * @default ''
@@ -1604,8 +1619,9 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile radio.
+          * @default ''
          */
-        "tileColor"?: RadioTileColor;
+        "tileColor": RadioTileColor;
         "updateState": () => Promise<void>;
         /**
           * A DOMString representing the value of the radio. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the radio's name.
@@ -1700,8 +1716,9 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile checkbox.
+          * @default ''
          */
-        "tileColor"?: RadioTileColor;
+        "tileColor": RadioTileColor;
         /**
           * The value of the radio group.
          */
@@ -1970,9 +1987,13 @@ export namespace Components {
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
+          * @default ''
          */
-        "align"?: StackAlignment;
-        "alignment"?: StackAlignment;
+        "align": StackAlignment;
+        /**
+          * @default ''
+         */
+        "alignment": StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
           * @default 'column'
@@ -1985,8 +2006,9 @@ export namespace Components {
         "fitContent": boolean;
         /**
           * **Deprecated:** Use direction instead.
+          * @default ''
          */
-        "layout"?: StackLayout;
+        "layout": StackLayout;
         /**
           * Defines the padding of the stack element.
          */
@@ -2029,8 +2051,9 @@ export namespace Components {
         "closable": boolean;
         /**
           * The theme type of the tag.
+          * @default ''
          */
-        "color"?: TagColor;
+        "color": TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2043,16 +2066,19 @@ export namespace Components {
         "invalid": boolean;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
+          * @default ''
          */
-        "position"?: TagPlacement;
+        "position": TagPlacement;
         /**
           * The shape of the tag element like square or pill
+          * @default ''
          */
-        "shape"?: TagShape;
+        "shape": TagShape;
         /**
           * The size of the tag element
+          * @default ''
          */
-        "size"?: TagSize;
+        "size": TagSize;
     }
     /**
      * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
@@ -2065,8 +2091,9 @@ export namespace Components {
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
+          * @default ''
          */
-        "align"?: TextAlign;
+        "align": TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -2074,8 +2101,9 @@ export namespace Components {
         "bold": boolean;
         /**
           * Defines the color of the text.
+          * @default ''
          */
-        "color"?: TextColor;
+        "color": TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -2125,8 +2153,9 @@ export namespace Components {
         "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
+          * @default ''
          */
-        "space"?: TextSpace;
+        "space": TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -2188,8 +2217,9 @@ export namespace Components {
         "getInputElement": () => Promise<HTMLTextAreaElement>;
         /**
           * A hint to the browser for which keyboard to display.
+          * @default ''
          */
-        "inputmode"?: TextareaInputMode;
+        "inputmode": TextareaInputMode;
         /**
           * If `true` the component gets an invalid style.
           * @default false
@@ -2252,8 +2282,9 @@ export namespace Components {
         "value": string | null;
         /**
           * Indicates how the control wraps text.
+          * @default ''
          */
-        "wrap"?: TextareaWrap;
+        "wrap": TextareaWrap;
     }
     /**
      * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
@@ -2349,8 +2380,9 @@ export namespace Components {
         "checked": boolean;
         /**
           * Defines the color of the tile toggle.
+          * @default ''
          */
-        "color"?: ToggleTileColor;
+        "color": ToggleTileColor;
         /**
           * @default 1
          */
@@ -3280,6 +3312,7 @@ declare namespace LocalJSX {
         "animated"?: boolean;
         /**
           * Defines the container size constraint for the alert layout.
+          * @default ''
          */
         "container"?: AlertContainerSize;
         /**
@@ -3515,6 +3548,7 @@ declare namespace LocalJSX {
     interface DsButtonGroup {
         /**
           * The value of the button, which is submitted with the form data.
+          * @default ''
          */
         "align"?: ButtonGroupAlignment;
         /**
@@ -3539,6 +3573,7 @@ declare namespace LocalJSX {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
+          * @default ''
          */
         "align"?: CardAlignment;
         /**
@@ -3548,6 +3583,7 @@ declare namespace LocalJSX {
         "clickable"?: boolean;
         /**
           * Defines the color of the card.
+          * @default ''
          */
         "color"?: CardColor;
         /**
@@ -3567,6 +3603,7 @@ declare namespace LocalJSX {
         "fullheight"?: boolean;
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
+          * @default ''
          */
         "imageTeaser"?: CardImageTeaser;
         /**
@@ -3605,6 +3642,7 @@ declare namespace LocalJSX {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
+          * @default ''
          */
         "align"?: CardActionsAlignment;
     }
@@ -3706,7 +3744,7 @@ declare namespace LocalJSX {
           * Label of the radio item.
           * @default ''
          */
-        "label"?: "";
+        "label"?: string;
         /**
           * Defines the position of the label, either before or after the radio input. Default is after.
           * @default 'right'
@@ -3882,6 +3920,7 @@ declare namespace LocalJSX {
         "button"?: boolean;
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
+          * @default ''
          */
         "buttonColor"?: ButtonColor;
         /**
@@ -3909,6 +3948,9 @@ declare namespace LocalJSX {
           * @default ''
          */
         "align"?: ContentAlignment;
+        /**
+          * @default ''
+         */
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
@@ -3995,6 +4037,7 @@ declare namespace LocalJSX {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
+          * @default ''
          */
         "autoLevel"?: HeadingVisualLevel;
         /**
@@ -4024,6 +4067,7 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Defines at which position the heading has spacing.
+          * @default ''
          */
         "space"?: HeadingSpace;
         /**
@@ -4033,6 +4077,7 @@ declare namespace LocalJSX {
         "subtitle"?: boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }
@@ -4076,6 +4121,7 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * If `true` the icon is displayed in a circle with a background color.
+          * @default ''
          */
         "shape"?: IconShape;
         /**
@@ -4490,6 +4536,7 @@ declare namespace LocalJSX {
         "closeHandler"?: () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
+          * @default ''
          */
         "color"?: NotificationColor;
         /**
@@ -4816,6 +4863,7 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile radio.
+          * @default ''
          */
         "tileColor"?: RadioTileColor;
         /**
@@ -4925,6 +4973,7 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile checkbox.
+          * @default ''
          */
         "tileColor"?: RadioTileColor;
         /**
@@ -5228,8 +5277,12 @@ declare namespace LocalJSX {
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
+          * @default ''
          */
         "align"?: StackAlignment;
+        /**
+          * @default ''
+         */
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
@@ -5243,6 +5296,7 @@ declare namespace LocalJSX {
         "fitContent"?: boolean;
         /**
           * **Deprecated:** Use direction instead.
+          * @default ''
          */
         "layout"?: StackLayout;
         /**
@@ -5287,6 +5341,7 @@ declare namespace LocalJSX {
         "closable"?: boolean;
         /**
           * The theme type of the tag.
+          * @default ''
          */
         "color"?: TagColor;
         /**
@@ -5305,14 +5360,17 @@ declare namespace LocalJSX {
         "onDsCloseClick"?: (event: DsTagCustomEvent<TagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
+          * @default ''
          */
         "position"?: TagPlacement;
         /**
           * The shape of the tag element like square or pill
+          * @default ''
          */
         "shape"?: TagShape;
         /**
           * The size of the tag element
+          * @default ''
          */
         "size"?: TagSize;
     }
@@ -5327,6 +5385,7 @@ declare namespace LocalJSX {
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
+          * @default ''
          */
         "align"?: TextAlign;
         /**
@@ -5336,6 +5395,7 @@ declare namespace LocalJSX {
         "bold"?: boolean;
         /**
           * Defines the color of the text.
+          * @default ''
          */
         "color"?: TextColor;
         /**
@@ -5387,6 +5447,7 @@ declare namespace LocalJSX {
         "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
+          * @default ''
          */
         "space"?: TextSpace;
         /**
@@ -5449,6 +5510,7 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * A hint to the browser for which keyboard to display.
+          * @default ''
          */
         "inputmode"?: TextareaInputMode;
         /**
@@ -5529,6 +5591,7 @@ declare namespace LocalJSX {
         "value"?: string | null;
         /**
           * Indicates how the control wraps text.
+          * @default ''
          */
         "wrap"?: TextareaWrap;
     }
@@ -5632,6 +5695,7 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         /**
           * Defines the color of the tile toggle.
+          * @default ''
          */
         "color"?: ToggleTileColor;
         /**

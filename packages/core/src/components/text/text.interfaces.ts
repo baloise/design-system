@@ -1,4 +1,4 @@
-export const TEXT_ALIGNS = ['left', 'right', 'center', 'justify'] as const
+export const TEXT_ALIGNS = ['', 'left', 'right', 'center', 'justify'] as const
 export const TEXT_SIZES = [
   'xs',
   'sm',

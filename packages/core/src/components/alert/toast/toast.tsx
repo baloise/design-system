@@ -5,8 +5,9 @@ import {
   sanitizeSvg,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   ValidateRequiredAndType,
   setupValidation,
 } from '@utils'
@@ -58,14 +59,14 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOAST_COLORS)
+  @ValidateOneOf(...TOAST_COLORS)
   readonly color: ToastColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly closable: boolean = false
 
   /**
@@ -86,7 +87,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
@@ -97,7 +98,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
@@ -108,28 +109,28 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOAST_TARGETS)
+  @ValidateOneOf(...TOAST_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly actionHref: string = ''
 
   /**

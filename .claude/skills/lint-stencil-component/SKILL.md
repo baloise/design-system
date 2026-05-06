@@ -852,6 +852,97 @@ export class Button implements ComponentInterface {}
 
 ---
 
+### 19. SCSS — CSS Classes over Attribute Selectors
+
+**Rule:** SCSS files must always use CSS class selectors (`.is-primary`, `.is-disabled`, `.is-sm`) for styling. Never use attribute selectors (e.g., `[color="primary"]`, `:host([disabled])`, `[size="sm"]`).
+
+**Why:** When a prop is set via JavaScript (`el.color = 'primary'`), the DOM attribute is NOT updated if `reflect: false` (the default for customizable UI props). The rendered attribute will not exist in the HTML. However, CSS host classes added via the component's `render()` `class` binding are always present regardless of how the prop was set.
+
+```scss
+// ❌ — attribute selector: breaks when prop set via JS without reflect
+:host([color="primary"]) { ... }
+:host([disabled]) { ... }
+:host([size="sm"]) { ... }
+div[color="primary"] { ... }
+
+// ✅ — CSS class selector: always works, regardless of how the prop was set
+:host(.is-primary) { ... }
+:host(.is-disabled) { ... }
+:host(.is-sm) { ... }
+div.is-primary { ... }
+```
+
+**How to detect:** Scan `*.style.scss` and `*.host.scss` for any:
+
+- `:host([attr...])` selectors
+- `[attr="value"]` or `[attr]` attribute selectors anywhere in the SCSS rules
+- Note: `:host(:focus)`, `:host(:hover)`, `:host(:disabled)` and other pseudo-class/pseudo-state selectors are fine — only attribute selectors are forbidden
+
+**How to fix:**
+
+1. Replace `[attr="value"]` selectors with the corresponding `.is-<value>` or `.has-<feature>` class
+2. Update the component's `render()` to add the CSS class when the prop matches:
+
+```tsx
+// button.tsx — add host classes based on prop values
+render() {
+  return (
+    <Host
+      class={{
+        'is-primary': this.color === 'primary',
+        'is-secondary': this.color === 'secondary',
+        'is-sm': this.size === 'sm',
+        'is-disabled': this.disabled,
+      }}
+    >
+      ...
+    </Host>
+  )
+}
+```
+
+---
+
+### 20. Enum Props — Use `= ''` Default, Not `?`
+
+**Rule:** Optional enum string props must use `readonly prop: EnumType = ''` (with empty string default) instead of `readonly prop?: EnumType`. The const array for the type must include `''` as the first element. Use `@ValidateEmptyOrOneOf` (not `@ValidateEmptyOrType`).
+
+**Why:** Using `?` makes the type `EnumType | undefined`. With `= ''`, the sentinel value `''` means "not set / use default", keeping the type clean. It also avoids `undefined` spread through render logic.
+
+```ts
+// ❌ — optional with undefined
+@Prop()
+@ValidateEmptyOrOneOf(...BUTTON_COLORS)
+readonly color?: ButtonColor
+
+// ✅ — empty string default
+@Prop()
+@ValidateEmptyOrOneOf(...BUTTON_COLORS)
+readonly color: ButtonColor = ''
+```
+
+The const array **must** include `''` as first element:
+
+```ts
+// ✅
+export const BUTTON_COLORS = ['', 'primary', 'secondary', ...] as const
+export type ButtonColor = (typeof BUTTON_COLORS)[number]
+```
+
+In render logic, check truthiness — `if (this.color)` or `!!this.color` — since `''` is falsy.
+
+**How to detect:** Scan `*.tsx` for `@Prop()` declarations followed by `readonly prop?: EnumType` where `EnumType` is a string union (derived from a const array). Props with types like `number | undefined`, `boolean | undefined`, or `string` accepting arbitrary values (not enum) are exempt.
+
+**How to fix:**
+
+1. Add `''` as first element to the const array in `*.interfaces.ts`
+2. Change `readonly prop?: EnumType` → `readonly prop: EnumType = ''`
+3. Ensure `@ValidateEmptyOrOneOf` is used (replace `@ValidateEmptyOrType('string')` if present)
+4. Update any render logic that uses `!== undefined` checks to use `!!this.prop` (falsy check)
+5. For props passed to native HTML attributes (e.g., `wrap`, `inputMode`), pass `this.prop || undefined` to avoid setting the attribute to empty string
+
+---
+
 | Check | Required form                                  | Example                                                                                         |
 | ----- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | 0     | Import from `@utils` or `@global`              | `import { Loggable, Logger, type LogInstance } from '@utils'`                                   |
@@ -874,6 +965,8 @@ export class Button implements ComponentInterface {}
 | 17    | One-sentence description on the class JSDoc    | `Button provides a clickable element for triggering actions...`                                 |
 | 18    | `@slot` tag for every `<slot>` in render()     | `@slot - Label text and icon children` / `@slot header - Card header content`                   |
 | 18    | `@part` tag for every `part="..."` in render() | `@part native - The native button element` / `@part label - The text wrapper`                   |
+| 19    | CSS classes over attribute selectors in SCSS   | `:host(.is-primary)` not `:host([color="primary"])`                                             |
+| 20    | Enum props use `= ''` default, not `?`         | `readonly color: ButtonColor = ''` not `readonly color?: ButtonColor`                           |
 
 ## Output Format
 

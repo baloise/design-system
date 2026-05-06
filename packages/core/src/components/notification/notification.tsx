@@ -4,8 +4,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -54,14 +55,14 @@ export class Notification implements DsComponentInterface {
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly alert: boolean = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly closable: boolean = false
 
   /**
@@ -74,28 +75,28 @@ export class Notification implements DsComponentInterface {
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...NOTIFICATION_COLORS)
-  readonly color?: NotificationColor
+  @ValidateOneOf(...NOTIFICATION_COLORS)
+  readonly color: NotificationColor = ''
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly heading: string = ''
 
   /**
    * If `true` there will be no icon provided
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly noIcon: boolean = false
 
   /**
    * Defines the size of the notification, small, medium or large.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...NOTIFICATION_SIZES)
+  @ValidateOneOf(...NOTIFICATION_SIZES)
   size?: NotificationSize
   @Watch('size')
   sizeChanged(newValue: NotificationSize) {

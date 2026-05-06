@@ -1,7 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
-@use '../../attr' as attr;
 
 $use-host: false !default;
 $name: heading;
@@ -96,9 +95,11 @@ $host-selector: ('#heading');
   }
 }
 
-@include attr.has(no-wrap) {
-  #heading {
-    @include noWrap();
+@include hybrid.host($use-host) {
+  :host(.has-no-wrap) {
+    #heading {
+      @include noWrap();
+    }
   }
 }
 
@@ -121,8 +122,10 @@ $host-selector: ('#heading');
   }
 }
 
-@include attr.has(shadow) {
-  @include shadow();
+@include hybrid.host($use-host) {
+  :host(.has-shadow) {
+    @include shadow();
+  }
 }
 
 //
@@ -142,7 +145,7 @@ $host-selector: ('#heading');
 }
 
 @include hybrid.host($use-host) {
-  :host([subtitle]) {
+  :host(.is-subtitle) {
     @include subtitle();
   }
 }
@@ -254,22 +257,24 @@ $size-host-aliases: (
   }
 }
 
-@include attr.has(space, 'all') {
-  --heading-mt: var(--_heading-space);
-  --heading-mb: var(--_heading-space);
-}
+@include hybrid.host($use-host) {
+  :host(.has-space-all) {
+    --heading-mt: var(--_heading-space);
+    --heading-mb: var(--_heading-space);
+  }
 
-@include attr.has(space, 'top') {
-  --heading-mt: var(--_heading-space);
-  --heading-mb: 0;
-}
+  :host(.has-space-top) {
+    --heading-mt: var(--_heading-space);
+    --heading-mb: 0;
+  }
 
-@include attr.has(space, 'bottom') {
-  --heading-mt: 0;
-  --heading-mb: var(--_heading-space);
-}
+  :host(.has-space-bottom) {
+    --heading-mt: 0;
+    --heading-mb: var(--_heading-space);
+  }
 
-@include attr.has(space, 'none') {
-  --heading-mt: 0;
-  --heading-mb: 0;
+  :host(.has-space-none) {
+    --heading-mt: 0;
+    --heading-mb: 0;
+  }
 }

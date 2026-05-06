@@ -9,8 +9,9 @@ import {
   debounceEvent,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { ACTION_KEYS, isCtrlOrCommandKey } from '@global'
@@ -82,70 +83,70 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * The value of the input.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   value: string | null = null
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = this.inputId
 
   /**
    * The label of the input, which is displayed above the input field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly description: string = ''
 
   /**
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  @ValidateOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly loading: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly invalid: boolean = false
 
   /**
    * The text to display when the input is in an invalid state.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly invalidText: string = ''
 
   /**
    * Defines the type of the input (text, number, email ...).
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_INPUT_TYPES)
+  @ValidateOneOf(...INPUT_INPUT_TYPES)
   readonly type: InputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly accept: string = ''
 
   /**
@@ -153,35 +154,35 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly autocapitalize = 'off'
 
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_AUTOCOMPLETES)
+  @ValidateOneOf(...INPUT_AUTOCOMPLETES)
   readonly autocomplete: InputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_AUTOCORRECTS)
+  @ValidateOneOf(...INPUT_AUTOCORRECTS)
   readonly autocorrect: InputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly autofocus: boolean = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @ValidateType('number')
   readonly debounce = 0
 
   @Watch('debounce')
@@ -193,91 +194,91 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Instructional text that shows before the input has a value.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly placeholder: string = ''
 
   /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly max: string = ''
 
   /**
    * Defines the max length of the value.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @ValidateType('number')
   readonly maxLength?: number
 
   /**
    * The minimum value, which must not be greater than its maximum (max attribute) value.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly min: string = ''
 
   /**
    * Defines the min length of the value.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @ValidateType('number')
   readonly minLength?: number
 
   /**
    * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly multiple?: boolean
 
   /**
    * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly pattern: string = ''
 
   /**
    * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly allowedKeyPress: string = ''
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly required: boolean = true
 
   /**
    * If `true`, the element will have its spelling and grammar checked.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly spellcheck: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly readonly: boolean = false
 
   /**
    * Adds a suffix the the input-value after blur.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly suffix: string = ''
 
   /**
@@ -286,7 +287,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_INPUT_MODES)
+  @ValidateOneOf(...INPUT_INPUT_MODES)
   readonly inputmode?: InputInputMode
 
   /**
@@ -299,7 +300,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_MASKS)
+  @ValidateOneOf(...INPUT_MASKS)
   readonly mask?: InputMask = undefined
   @Watch('mask')
   protected maskChanged() {

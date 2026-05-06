@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateEmptyOrOneOf, setupValidation } from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateOneOf, setupValidation } from '@utils'
 import { DsComponentInterface } from '@global'
 import { STACK_LAYOUTS, StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
 import {
@@ -41,7 +41,7 @@ export class Content implements DsComponentInterface {
    * **Deprecated:** Use direction instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
+  @ValidateOneOf(...STACK_LAYOUTS)
   readonly layout: StackLayout = ''
   @Watch('layout')
   layoutChanged(newValue?: StackLayout) {
@@ -62,7 +62,7 @@ export class Content implements DsComponentInterface {
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...CONTENT_DIRECTIONS)
+  @ValidateOneOf(...CONTENT_DIRECTIONS)
   direction: StackDirection = ''
 
   /**
@@ -70,7 +70,7 @@ export class Content implements DsComponentInterface {
    * default to start.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CONTENT_ALIGNMENTS)
+  @ValidateOneOf(...CONTENT_ALIGNMENTS)
   readonly align: ContentAlignment = ''
 
   /**
@@ -78,14 +78,14 @@ export class Content implements DsComponentInterface {
    * default to left.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CONTENT_ALIGNMENTS)
+  @ValidateOneOf(...CONTENT_ALIGNMENTS)
   readonly textAlign: ContentTextAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...CONTENT_SPACES)
+  @ValidateOneOf(...CONTENT_SPACES)
   space: ContentSpace = ''
   @Watch('space')
   spaceChanged(newValue: ContentSpace) {
@@ -97,7 +97,7 @@ export class Content implements DsComponentInterface {
    * Please use align instead.
    */
   @Prop()
-  readonly alignment?: StackAlignment
+  readonly alignment: StackAlignment = ''
 
   connectedCallback(): void {
     setupValidation(this)

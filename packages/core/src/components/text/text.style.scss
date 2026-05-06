@@ -1,7 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
-@use '../../attr' as attr;
 @use '../../host' as host;
 
 $use-host: false !default;
@@ -76,16 +75,16 @@ $host-selector: ('#text');
   }
 }
 
-@include attr.has(no-wrap) {
-  :host #text.is-centered {
+@include hybrid.host($use-host) {
+  :host(.has-no-wrap) #text.is-centered {
     --mod-text-align: center;
   }
 
-  :host #text.is-right {
+  :host(.has-no-wrap) #text.is-right {
     --mod-text-align: right;
   }
 
-  :host #text.is-justified {
+  :host(.has-no-wrap) #text.is-justified {
     --mod-text-align: justify;
   }
 }
@@ -105,8 +104,8 @@ $host-selector: ('#text');
   }
 }
 
-@include attr.has(no-wrap) {
-  #text {
+@include hybrid.host($use-host) {
+  :host(.has-no-wrap) #text {
     @include noWrap();
   }
 }
@@ -130,8 +129,10 @@ $weights: ('light', 'regular', 'bold');
   }
 }
 
-@include attr.has(bold) {
-  --mod-text-weight: var(--ds-text-weight-bold);
+@include hybrid.host($use-host) {
+  :host(.is-bold) {
+    --mod-text-weight: var(--ds-text-weight-bold);
+  }
 }
 
 //
@@ -147,8 +148,10 @@ $weights: ('light', 'regular', 'bold');
   }
 }
 
-@include attr.has(shadow) {
-  @include shadow();
+@include hybrid.host($use-host) {
+  :host(.has-shadow) {
+    @include shadow();
+  }
 }
 
 //
@@ -161,8 +164,10 @@ $weights: ('light', 'regular', 'bold');
   }
 }
 
-@include attr.has(inline) {
-  display: inline;
+@include hybrid.host($use-host) {
+  :host(.is-inline) {
+    display: inline;
+  }
 }
 
 //
@@ -243,20 +248,20 @@ $size-aliases: (
 $sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
 @include hybrid.host($use-host) {
   @each $token in $sizes {
-    :host([size='#{$token}']) {
+    :host(.is-#{$token}) {
       @include size($token);
     }
   }
 
-  :host([size='small']) {
+  :host(.is-small) {
     @include size('sm');
   }
 
-  :host([size='lead']) {
+  :host(.is-lead) {
     @include size('lg');
   }
 
-  :host([size='block']) {
+  :host(.is-block) {
     @include size('md');
   }
 }
@@ -279,16 +284,18 @@ $sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
   }
 }
 
-@include attr.has(heading) {
-  --mod-text-family: var(--ds-text-family-heading);
-  --mod-text-weight: var(--ds-text-weight-bold);
-  --mod-text-line-height: var(--ds-text-line-height-heading);
-}
+@include hybrid.host($use-host) {
+  :host(.is-heading) {
+    --mod-text-family: var(--ds-text-family-heading);
+    --mod-text-weight: var(--ds-text-weight-bold);
+    --mod-text-line-height: var(--ds-text-line-height-heading);
+  }
 
-@include attr.has(subtitle) {
-  --mod-text-family: var(--ds-text-family-heading);
-  --mod-text-weight: var(--ds-text-weight-light);
-  --mod-text-line-height: var(--ds-text-line-height-heading);
+  :host(.is-subtitle) {
+    --mod-text-family: var(--ds-text-family-heading);
+    --mod-text-weight: var(--ds-text-weight-light);
+    --mod-text-line-height: var(--ds-text-line-height-heading);
+  }
 }
 
 //
@@ -315,22 +322,24 @@ $sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
   }
 }
 
-@include attr.has(space, 'all') {
-  --text-mt: var(--_text-space);
-  --text-mb: var(--_text-space);
-}
+@include hybrid.host($use-host) {
+  :host(.has-space-all) {
+    --text-mt: var(--_text-space);
+    --text-mb: var(--_text-space);
+  }
 
-@include attr.has(space, 'top') {
-  --text-mt: var(--_text-space);
-  --text-mb: 0;
-}
+  :host(.has-space-top) {
+    --text-mt: var(--_text-space);
+    --text-mb: 0;
+  }
 
-@include attr.has(space, 'bottom') {
-  --text-mt: 0;
-  --text-mb: var(--_text-space);
-}
+  :host(.has-space-bottom) {
+    --text-mt: 0;
+    --text-mb: var(--_text-space);
+  }
 
-@include attr.has(space, 'none') {
-  --text-mt: 0;
-  --text-mb: 0;
+  :host(.has-space-none) {
+    --text-mt: 0;
+    --text-mb: 0;
+  }
 }

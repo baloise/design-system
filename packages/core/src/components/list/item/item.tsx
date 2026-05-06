@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, ValidateOneOf, ValidateEmptyOrType, ValidateType, setupValidation } from '@utils'
 import {
   ACCORDION_MARKERS,
   ACCORDION_MARKER_POSITIONS,
@@ -69,7 +69,7 @@ export class Item implements DsComponentInterface {
    * close when another accordion in the same group is opened.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly accordionGroup: string = ''
 
   /**
@@ -78,42 +78,42 @@ export class Item implements DsComponentInterface {
    * a plus icon for closed and a minus icon for open state is used.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_MARKERS)
+  @ValidateOneOf(...ACCORDION_MARKERS)
   readonly accordionMarker: AccordionMarker = ''
 
   /**
    * The position of the marker. Only applies if `variant` is set to `accordion`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ACCORDION_MARKER_POSITIONS)
+  @ValidateOneOf(...ACCORDION_MARKER_POSITIONS)
   readonly accordionMarkerPosition: AccordionMarkerPosition = ''
 
   /**
    * If `true` the accordion is open.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly accordionOpen: boolean = false
 
   /**
    * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ITEM_ACTION_ICONS)
+  @ValidateOneOf(...ITEM_ACTION_ICONS)
   readonly actionIcon: ItemActionIcon = 'default'
 
   /**
    * The description text displayed below the label.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly description: string = ''
 
   /**
    * If `true`, the user cannot interact with the item.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -123,35 +123,35 @@ export class Item implements DsComponentInterface {
    * (the user can still change the file name if they want).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly download: string = ''
 
   /**
    * Specifies the URL of the page the link goes to.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly href: string = ''
 
   /**
    * The label text displayed as a heading inside the item.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
    * The semantic heading level of the label element.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ITEM_LABEL_LEVELS)
+  @ValidateOneOf(...ITEM_LABEL_LEVELS)
   readonly labelLevel: ItemLabelLevel = 'h5'
 
   /**
    * The visual size of the label. Defaults to `labelLevel` if not set.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ITEM_LABEL_SIZES)
+  @ValidateOneOf(...ITEM_LABEL_SIZES)
   readonly labelSize: ItemLabelSize = ''
 
   /**
@@ -159,7 +159,7 @@ export class Item implements DsComponentInterface {
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly rel: string = ''
 
   /**
@@ -167,14 +167,14 @@ export class Item implements DsComponentInterface {
    * Only applies when an `href` is provided.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
+  @ValidateOneOf(...BUTTON_TARGETS)
   readonly target: ButtonTarget = '_self'
 
   /**
    * The visual and functional variant of the item.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ITEM_VARIANTS)
+  @ValidateOneOf(...ITEM_VARIANTS)
   readonly variant: ItemVariant = 'default'
 
   /**

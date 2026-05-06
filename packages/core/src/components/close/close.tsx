@@ -4,8 +4,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -48,7 +49,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf(...CLOSE_SIZES)
+  @ValidateOneOf(...CLOSE_SIZES)
   size: CloseSize = ''
   @Watch('size')
   sizeChanged(newValue: CloseSize) {
@@ -59,14 +60,14 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * If `true` it supports dark backgrounds.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -74,15 +75,15 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly button: boolean = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
-  readonly buttonColor?: ButtonColor
+  @ValidateOneOf(...BUTTON_COLORS)
+  readonly buttonColor: ButtonColor = ''
 
   /**
    * @internal define config for the component

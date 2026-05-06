@@ -4,9 +4,10 @@ import {
   type LogInstance,
   inheritAttributes,
   type Attributes,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
   setupValidation,
+  ValidateType,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
@@ -63,105 +64,105 @@ export class Toggle implements DsComponentInterface {
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * If `true`, the toggle is selected.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   checked = false
 
   /**
    * If `true`, the toggle is dense and has less size.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
-  dense = false
+  @ValidateType('boolean')
+  readonly dense: boolean = false
 
   /**
    * Defines the color of the tile toggle.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_TILE_COLORS)
-  readonly color?: ToggleTileColor
+  @ValidateOneOf(...TOGGLE_TILE_COLORS)
+  readonly color: ToggleTileColor = ''
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  @ValidateOneOf(...TOGGLE_GROUP_COLUMNS)
   readonly cols: ToggleGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  @ValidateOneOf(...TOGGLE_GROUP_COLUMNS)
   readonly colsMobile: ToggleGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  @ValidateOneOf(...TOGGLE_GROUP_COLUMNS)
   readonly colsTablet: ToggleGroupColumns = 1
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly invalid: boolean = false
 
   /**
    * Label of the toggle item.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the toggle input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_LABEL_POSITIONS)
+  @ValidateOneOf(...TOGGLE_LABEL_POSITIONS)
   readonly labelPosition: ToggleLabelPosition = 'right'
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly required: boolean = false
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly tile: boolean = false
 
   /**

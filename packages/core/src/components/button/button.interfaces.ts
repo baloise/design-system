@@ -1,6 +1,7 @@
-export const BUTTON_GROUP_ALIGNMENTS = ['right', 'center', 'left'] as const
+export const BUTTON_GROUP_ALIGNMENTS = ['right', 'center', 'left', ''] as const
 export const BUTTON_GROUP_DIRECTIONS = ['auto', 'row', 'column'] as const
 export const BUTTON_COLORS = [
+  '',
   'primary',
   'secondary',
   'tertiary',

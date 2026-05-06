@@ -19,7 +19,8 @@ import {
   Logger,
   type LogInstance,
   ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
+  ValidateType,
+  ValidateOneOf,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface, DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
@@ -70,7 +71,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Align the buttons to start, center or end
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PAGINATION_ALIGNMENTS)
+  @ValidateOneOf(...PAGINATION_ALIGNMENTS)
   readonly align: PaginationAlignment = ''
 
   /**
@@ -83,7 +84,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * The label for the navigation landmark
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
@@ -96,7 +97,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Size of the buttons
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PAGINATION_SIZES)
+  @ValidateOneOf(...PAGINATION_SIZES)
   readonly size: PaginationSize = ''
 
   /**
@@ -109,14 +110,14 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * The label for the next page button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly textNext: string = ''
 
   /**
    * The label for the previous page button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly textPrevious: string = ''
 
   /**
@@ -148,7 +149,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Defines the layout of the pagination
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PAGINATION_VARIANTS)
+  @ValidateOneOf(...PAGINATION_VARIANTS)
   readonly variant: PaginationVariant = ''
 
   /**

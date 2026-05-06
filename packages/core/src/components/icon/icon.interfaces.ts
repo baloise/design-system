@@ -1,4 +1,4 @@
-export const ICON_SHAPES = ['triangle', 'circle'] as const
+export const ICON_SHAPES = ['', 'triangle', 'circle'] as const
 export const ICON_COLORS = [
   'auto',
   'blue',

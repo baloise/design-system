@@ -3,7 +3,6 @@
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
 @use '../../host' as host;
-@use '../../attr' as attr;
 @use './button-group/button-group.mixin.scss' as button-group;
 
 $use-host: false !default;
@@ -289,7 +288,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text' 'link');
 
 @each $color in $inverted-colors {
   @include hybrid.host($use-host) {
-    :host([color='#{$color}'][inverted]:not([disabled]):not([loading])) {
+    :host(.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading)) {
       @include color('inverted-#{$color}');
     }
   }
@@ -601,7 +600,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
       --spinner-color: var(--ds-button-color-disabled-base-text);
     }
 
-    & > ds-spinner[variation='circle'] {
+    & > ds-spinner.is-circle {
       --spinner-circle-color-border-background: var(--ds-color-grey-4);
       --spinner-circle-color-border-progress: var(--ds-button-color-disabled-base-text);
     }
@@ -613,7 +612,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
       @include button-disabled();
     }
   }
-  :host([loading]) #button {
+  :host(.is-loading) #button {
     @include button-disabled();
   }
 }

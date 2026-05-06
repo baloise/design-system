@@ -19,8 +19,9 @@ import {
   isDescendant,
   waitAfterIdleCallback,
   stopEventBubbling,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { FOCUS_KEYS } from '../app/app.focus.util'
@@ -84,99 +85,99 @@ export class Radio implements DsComponentInterface {
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   checked = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  @ValidateOneOf(...RADIO_GROUP_COLUMNS)
   readonly cols: RadioGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  @ValidateOneOf(...RADIO_GROUP_COLUMNS)
   readonly colsMobile: RadioGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_GROUP_COLUMNS)
+  @ValidateOneOf(...RADIO_GROUP_COLUMNS)
   readonly colsTablet: RadioGroupColumns = 1
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly invalid: boolean = false
 
   /**
    * Label of the radio item.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_LABEL_POSITIONS)
+  @ValidateOneOf(...RADIO_LABEL_POSITIONS)
   readonly labelPosition: RadioLabelPosition = 'right'
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly required: boolean = false
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly tile: boolean = false
 
   /**
    * Defines the color of the tile radio.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...RADIO_TILE_COLORS)
-  readonly tileColor?: RadioTileColor
+  @ValidateOneOf(...RADIO_TILE_COLORS)
+  readonly tileColor: RadioTileColor = ''
 
   /**
    * A DOMString representing the value of the radio. This is not displayed on the

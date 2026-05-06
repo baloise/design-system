@@ -4,8 +4,9 @@ import {
   Logger,
   type LogInstance,
   normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
@@ -50,40 +51,40 @@ export class Stack implements DsComponentInterface {
    * Defines the text positioning like center, right or default to start.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
-  readonly align?: StackAlignment
+  @ValidateOneOf(...STACK_ALIGNMENTS)
+  readonly align: StackAlignment = ''
 
   /**
    * @internal
    * Please use align instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
-  readonly alignment?: StackAlignment
+  @ValidateOneOf(...STACK_ALIGNMENTS)
+  readonly alignment: StackAlignment = ''
 
   /**
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_DIRECTIONS)
+  @ValidateOneOf(...STACK_DIRECTIONS)
   direction: StackDirection = 'column'
 
   /**
    * Defines the width of the stack to be exactly the width of the content.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly fitContent: boolean = false
 
   /**
    * **Deprecated:** Use direction instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
-  readonly layout?: StackLayout
+  @ValidateOneOf(...STACK_LAYOUTS)
+  readonly layout: StackLayout = ''
   @Watch('layout')
-  layoutChanged(newValue?: StackLayout) {
-    if (newValue !== undefined) {
+  layoutChanged(newValue: StackLayout) {
+    if (newValue !== '') {
       if (newValue === 'horizontal') {
         this.direction = 'row'
       } else if (newValue === 'vertical') {
@@ -100,7 +101,7 @@ export class Stack implements DsComponentInterface {
    * Defines the padding of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  @ValidateOneOf(...STACK_PADDINGS)
   p?: StackPadding
   @Watch('p')
   pChanged(newValue?: StackPadding) {
@@ -111,7 +112,7 @@ export class Stack implements DsComponentInterface {
    * Defines the horizontal padding left and right of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  @ValidateOneOf(...STACK_PADDINGS)
   px?: StackPadding
   @Watch('px')
   pxChanged(newValue?: StackPadding) {
@@ -122,7 +123,7 @@ export class Stack implements DsComponentInterface {
    * Defines the vertical padding top and bottom of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  @ValidateOneOf(...STACK_PADDINGS)
   py?: StackPadding
   @Watch('py')
   pyChanged(newValue?: StackPadding) {
@@ -133,7 +134,7 @@ export class Stack implements DsComponentInterface {
    * Defines the space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  @ValidateOneOf(...STACK_SPACES)
   space: StackSpace = 'base'
   @Watch('space')
   spaceChanged(newValue: StackSpace) {
@@ -144,7 +145,7 @@ export class Stack implements DsComponentInterface {
    * Defines the column space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  @ValidateOneOf(...STACK_SPACES)
   spaceColumn?: StackSpace
   @Watch('spaceColumn')
   spaceColumnChanged(newValue?: StackSpace) {
@@ -155,7 +156,7 @@ export class Stack implements DsComponentInterface {
    * Defines the row space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  @ValidateOneOf(...STACK_SPACES)
   spaceRow?: StackSpace
   @Watch('spaceRow')
   spaceRowChanged(newValue?: StackSpace) {
@@ -166,7 +167,7 @@ export class Stack implements DsComponentInterface {
    * Defines if the child elements will wrap to the next line if there is not enough space left.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly useWrap: boolean = false
 
   /**

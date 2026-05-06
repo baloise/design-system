@@ -1,7 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
-@use '../../attr' as attr;
 @use 'sass:list';
 
 $use-host: false !default;
@@ -73,8 +72,8 @@ $host-selector: ('#label');
   }
 }
 
-@include attr.has(no-wrap) {
-  label {
+@include hybrid.host($use-host) {
+  :host(.has-no-wrap) label {
     @include noWrap();
   }
 }
@@ -105,7 +104,7 @@ $sizes-for-heading: ('lg', 'xl', '2xl', '3xl');
 
 @include hybrid.host($use-host) {
   @each $token in $sizes-for-heading {
-    :host([size='#{$token}']) {
+    :host(.is-#{$token}) {
       @include family();
     }
   }
@@ -141,7 +140,7 @@ $size-aliases: (
 $sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
 @include hybrid.host($use-host) {
   @each $token in $sizes {
-    :host([size='#{$token}']) {
+    :host(.is-#{$token}) {
       @include size($token);
     }
   }
@@ -194,41 +193,15 @@ $sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
     --mod-label-color: var(--ds-label-color-base-active);
   }
 
-  @include attr.has('valid') {
+  :host(.is-valid) {
     --mod-label-color: var(--ds-label-color-success);
   }
 
-  @include attr.has('invalid') {
+  :host(.is-invalid) {
     --mod-label-color: var(--ds-label-color-danger);
   }
 
-  :host(.is-hovered) {
-    --mod-label-color: var(--ds-label-color-base-hover);
-  }
-
-  :host(.is-pressed) {
-    --mod-label-color: var(--ds-label-color-base-active);
-  }
-
-  // @include attr.hasMany(
-  //   (
-  //     'invalid': true,
-  //     'hovered': true,
-  //   )
-  // ) {
-  //   --mod-label-color: var(--ds-label-color-danger-hover);
-  // }
-
-  // @include attr.hasMany(
-  //   (
-  //     'invalid': true,
-  //     'pressed': true,
-  //   )
-  // ) {
-  //   --mod-label-color: var(--ds-label-color-danger-active);
-  // }
-
-  @include attr.has('disabled') {
-    --mod-label-color: var(--ds-label-color-disabled);
+  :host(.is-disabled) {
+    --mod-label-color: var(--ds-label-color-disabled) !important;
   }
 }

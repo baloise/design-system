@@ -4,8 +4,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -57,21 +58,21 @@ export class Card implements DsComponentInterface {
    * If `true` the card loses its shadow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly flat: boolean = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly dense: boolean = false
 
   /**
@@ -79,63 +80,63 @@ export class Card implements DsComponentInterface {
    * it is displayed with a large image.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CARD_IMAGE_TEASERS)
-  readonly imageTeaser?: CardImageTeaser
+  @ValidateOneOf(...CARD_IMAGE_TEASERS)
+  readonly imageTeaser: CardImageTeaser = ''
 
   /**
    * If `true` the card loses its border radius.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly square: boolean = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the card has a hover effect.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly clickable: boolean = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly selected: boolean = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly fullheight: boolean = false
 
   /**
    * Defines the text alignment of the card content.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CARD_ALIGNMENTS)
-  readonly align?: CardAlignment
+  @ValidateOneOf(...CARD_ALIGNMENTS)
+  readonly align: CardAlignment = ''
 
   /**
    * Defines the space of the card content.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...CARD_SPACES)
+  @ValidateOneOf(...CARD_SPACES)
   space?: CardSpace
   @Watch('space')
   spaceChanged(newValue: CardSpace) {
@@ -146,8 +147,8 @@ export class Card implements DsComponentInterface {
    * Defines the color of the card.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CARD_COLORS)
-  readonly color?: CardColor
+  @ValidateOneOf(...CARD_COLORS)
+  readonly color: CardColor = ''
 
   connectedCallback(): void {
     setupValidation(this)
@@ -178,7 +179,7 @@ export class Card implements DsComponentInterface {
 
   render() {
     const hasOutline = !!this.outlined
-    const isImageTeaser = this.imageTeaser !== undefined
+    const isImageTeaser = !!this.imageTeaser
 
     return (
       <Host

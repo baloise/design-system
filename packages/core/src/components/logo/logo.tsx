@@ -10,8 +10,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
@@ -58,7 +59,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    * Defines if the animation should be active
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly animated: boolean = false
   @Watch('animated')
   animatedChanged() {
@@ -71,21 +72,21 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    * Defines the brand of the logo. Default is 'baloise'.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...LOGO_BRANDS)
+  @ValidateOneOf(...LOGO_BRANDS)
   readonly brand: LogoBrand = ''
 
   /**
    * Defines the color of the logo.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...LOGO_COLORS)
+  @ValidateOneOf(...LOGO_COLORS)
   readonly color: LogoColor = 'primary'
 
   /**
    * Size of the logo svg
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...LOGO_SIZES)
+  @ValidateOneOf(...LOGO_SIZES)
   size: LogoSize = ''
   @Watch('size')
   sizeChanged(newValue: LogoSize) {
@@ -219,7 +220,14 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
       )
 
     return (
-      <Host>
+      <Host
+        class={{
+          'is-animated': this.isAnimated,
+          'is-white': this.color === 'white',
+          'is-sm': this.size === 'sm',
+          'is-lg': this.size === 'lg',
+        }}
+      >
         <div
           id="animated"
           part="animated"

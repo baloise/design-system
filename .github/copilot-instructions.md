@@ -146,6 +146,7 @@ This means a component works either as a **web component with Shadow DOM** or as
 - All custom events must use the `ds` prefix (e.g. `dsChange`, `dsCloseClick`)
 - Each component must implement `ComponentInterface` (from `packages/core/src/utils/`) and have a logger via the `Loggable` interface
 - All methods must be private except `lifecycles`, `@Method()`, `@Watch()`, and `render`
+- Optional enum string props must use `readonly prop: EnumType = ''` (empty string default) instead of `readonly prop?: EnumType`. The const array must include `''` as the first element. Use `@ValidateEmptyOrOneOf`. In render, check truthiness (`!!this.prop`) rather than `!== undefined`.
 
 ### CSS variable cascade
 
@@ -317,6 +318,7 @@ Use this checklist when adding a component from scratch:
 - Avoid inline styles; always use CSS classes for styling.
 - Avoid using CSS-in-JS solutions; stick to Sass for styling.
 - Avoid using framework-specific code or libraries like Tailwind, Bootstrap, React, Angular, Vue, etc.
+- Avoid attribute selectors in SCSS (e.g., `[color="primary"]`, `:host([disabled])`). Use CSS classes instead (`.is-primary`, `.is-disabled`). When a prop is set via JavaScript without `reflect: true`, the HTML attribute is never written, but host classes added in `render()` are always present.
 
 **Dependencies**
 

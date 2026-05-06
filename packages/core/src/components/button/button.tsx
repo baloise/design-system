@@ -8,10 +8,10 @@ import {
   Logger,
   type LogInstance,
   type Attributes,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
-  setupValidation,
   ValidateType,
+  setupValidation,
 } from '@utils'
 import {
   BUTTON_COLORS,
@@ -74,28 +74,28 @@ export class Button implements DsComponentInterface {
    * The color to use from your application's color palette.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
+  @ValidateOneOf(...BUTTON_COLORS)
   readonly color: ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...BUTTON_ELEMENT_TYPES)
+  @ValidateOneOf(...BUTTON_ELEMENT_TYPES)
   readonly elementType: ButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly disabled: boolean = false
 
   /**
    * Size of the button
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...BUTTON_SIZES)
+  @ValidateOneOf(...BUTTON_SIZES)
   size: ButtonSize = undefined
   @Watch('size')
   sizeChanged(newValue: ButtonSize) {
@@ -106,7 +106,7 @@ export class Button implements DsComponentInterface {
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly href: string = ''
 
   /**
@@ -114,7 +114,7 @@ export class Button implements DsComponentInterface {
    * Only applies when an `href` is provided.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
+  @ValidateOneOf(...BUTTON_TARGETS)
   readonly target: ButtonTarget = '_self'
 
   /**
@@ -122,7 +122,7 @@ export class Button implements DsComponentInterface {
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly rel: string = ''
 
   /**
@@ -132,63 +132,63 @@ export class Button implements DsComponentInterface {
    * (the user can still change the file name if they want).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly download: string = ''
 
   /**
    * If `true` the button has a dashed border.
    * */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly dashed: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly shadow: boolean = false
 
   /**
    * If `true` the width of the buttons is limited
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly square: boolean = false
 
   /**
    * If `true` the button is circular and width of the buttons is limited
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly circle: boolean = false
 
   /**
    * If `true` the button has a full width
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly wide: boolean = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly flat: boolean = false
 
   /**
    * If `true` the button is outlined
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly outlined: boolean = false
 
   /**
    * If `true` the button is inverted
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inverted: boolean = false
 
   /**
@@ -202,7 +202,7 @@ export class Button implements DsComponentInterface {
    * If `true` the button is rounded.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly rounded: boolean = false
 
   // /**
@@ -214,70 +214,70 @@ export class Button implements DsComponentInterface {
    * Name of the left button icon
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly icon: string = ''
 
   /**
    * If `true` the icon turns
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly iconTurn: boolean = false
 
   /**
    * Name of the right button icon
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly iconRight: string = ''
 
   /**
    * The label of the button will not break
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly noWrap: boolean = false
 
   /**
    * The name of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly name: string = ''
 
   /**
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly value: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly a11yControls: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly a11yTitle: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly a11yLabel: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   a11yHaspopup = ''
 
   /**

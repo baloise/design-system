@@ -5,8 +5,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
+  ValidateOneOf,
   ValidateEmptyOrType,
+  ValidateType,
   setupValidation,
 } from '@utils'
 import {
@@ -44,14 +45,14 @@ export class Badge implements DsComponentInterface {
    * Name of the icon to show. If a icon is present text should be hidden.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @ValidateType('string')
   readonly icon: string = ''
 
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf(...BADGE_SIZES)
+  @ValidateOneOf(...BADGE_SIZES)
   size: BadgeSize = ''
   @Watch('size')
   sizeChanged(newValue: BadgeSize) {
@@ -62,21 +63,21 @@ export class Badge implements DsComponentInterface {
    * Define the color for the badge.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...BADGE_COLORS)
+  @ValidateOneOf(...BADGE_COLORS)
   readonly color: BadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...BADGE_POSITIONS)
+  @ValidateOneOf(...BADGE_POSITIONS)
   readonly position: BadgePosition = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly pulse: boolean = false
 
   connectedCallback(): void {
@@ -86,7 +87,13 @@ export class Badge implements DsComponentInterface {
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          [`is-${this.color}`]: !!this.color,
+          [`is-${this.size}`]: !!this.size,
+          'is-pulse': this.pulse,
+        }}
+      >
         <span id="badge" part="badge">
           <slot></slot>
           {this.size !== 'small' && !!this.icon ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}

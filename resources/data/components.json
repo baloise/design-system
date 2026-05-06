@@ -1075,10 +1075,10 @@
         },
         {
           "name": "container",
-          "type": "\"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\" | undefined",
+          "type": "\"\" | \"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\"",
           "complexType": {
             "original": "AlertContainerSize",
-            "resolved": "\"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\" | undefined",
+            "resolved": "\"\" | \"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\"",
             "references": {
               "AlertContainerSize": {
                 "location": "import",
@@ -1092,8 +1092,17 @@
           "attr": "container",
           "reflectToAttr": false,
           "docs": "Defines the container size constraint for the alert layout.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "blog-page",
               "type": "string"
@@ -1113,12 +1122,9 @@
             {
               "value": "wide",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -2722,10 +2728,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
+          "type": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
             "original": "ButtonColor",
-            "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
+            "resolved": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
             "references": {
               "ButtonColor": {
                 "location": "import",
@@ -2747,6 +2753,9 @@
           ],
           "default": "'primary'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -9567,10 +9576,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
           "complexType": {
             "original": "ButtonGroupAlignment",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
             "references": {
               "ButtonGroupAlignment": {
                 "location": "import",
@@ -9584,8 +9593,17 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -9597,12 +9615,9 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -9759,10 +9774,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
           "complexType": {
             "original": "CardAlignment",
-            "resolved": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
             "references": {
               "CardAlignment": {
                 "location": "import",
@@ -9776,7 +9791,13 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the text alignment of the card content.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -9792,12 +9813,9 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -9833,10 +9851,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
+          "type": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\"",
           "complexType": {
             "original": "CardColor",
-            "resolved": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\" | undefined",
+            "resolved": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\"",
             "references": {
               "CardColor": {
                 "location": "import",
@@ -9850,7 +9868,13 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the card.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -10030,12 +10054,9 @@
             {
               "value": "yellow-light",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -10129,10 +10150,10 @@
         },
         {
           "name": "imageTeaser",
-          "type": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
+          "type": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\"",
           "complexType": {
             "original": "CardImageTeaser",
-            "resolved": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
+            "resolved": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\"",
             "references": {
               "CardImageTeaser": {
                 "location": "import",
@@ -10146,7 +10167,13 @@
           "attr": "image-teaser",
           "reflectToAttr": false,
           "docs": "If `true` the card image is displayed as a teaser, which means\nit is displayed with a large image.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -10162,12 +10189,9 @@
             {
               "value": "wide-right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -12498,10 +12522,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
           "complexType": {
             "original": "CardActionsAlignment",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
             "references": {
               "CardActionsAlignment": {
                 "location": "import",
@@ -12515,8 +12539,17 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -12528,12 +12561,9 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -13220,10 +13250,10 @@
         },
         {
           "name": "label",
-          "type": "\"\"",
+          "type": "string",
           "complexType": {
-            "original": "\"\"",
-            "resolved": "\"\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -13239,7 +13269,7 @@
           "default": "''",
           "values": [
             {
-              "type": "\"\""
+              "type": "string"
             }
           ],
           "optional": false,
@@ -15277,10 +15307,10 @@
         },
         {
           "name": "buttonColor",
-          "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\" | undefined",
+          "type": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
             "original": "ButtonColor",
-            "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\" | undefined",
+            "resolved": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
             "references": {
               "ButtonColor": {
                 "location": "import",
@@ -15294,8 +15324,17 @@
           "attr": "button-color",
           "reflectToAttr": false,
           "docs": "Defines the color of the button variant. Only applicable if `button` is `true`.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -15359,12 +15398,9 @@
             {
               "value": "warning",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -16897,10 +16933,10 @@
       "props": [
         {
           "name": "autoLevel",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
           "complexType": {
             "original": "HeadingVisualLevel",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
             "references": {
               "HeadingVisualLevel": {
                 "location": "import",
@@ -16914,7 +16950,13 @@
           "attr": "auto-level",
           "reflectToAttr": true,
           "docs": "The actual heading level used in the HTML markup.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -16978,12 +17020,9 @@
             {
               "value": "xl",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -17213,10 +17252,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
+          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
           "complexType": {
             "original": "HeadingSpace",
-            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
+            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
             "references": {
               "HeadingSpace": {
                 "location": "import",
@@ -17230,7 +17269,13 @@
           "attr": "space",
           "reflectToAttr": true,
           "docs": "Defines at which position the heading has spacing.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -17250,12 +17295,9 @@
             {
               "value": "top",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -17291,10 +17333,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
           "complexType": {
             "original": "HeadingVisualLevel",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
             "references": {
               "HeadingVisualLevel": {
                 "location": "import",
@@ -17308,7 +17350,13 @@
           "attr": "visual-level",
           "reflectToAttr": true,
           "docs": "Make the visual style mimic a specific heading level.\nThis option allows you to make e.g. h1 visually look like h3,\nbut still keep it h1 in the markup.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -17372,12 +17420,9 @@
             {
               "value": "xl",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -18812,10 +18857,10 @@
         },
         {
           "name": "shape",
-          "type": "\"circle\" | \"triangle\" | undefined",
+          "type": "\"\" | \"circle\" | \"triangle\"",
           "complexType": {
             "original": "IconShape",
-            "resolved": "\"circle\" | \"triangle\" | undefined",
+            "resolved": "\"\" | \"circle\" | \"triangle\"",
             "references": {
               "IconShape": {
                 "location": "import",
@@ -18829,8 +18874,17 @@
           "attr": "shape",
           "reflectToAttr": false,
           "docs": "If `true` the icon is displayed in a circle with a background color.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "circle",
               "type": "string"
@@ -18838,12 +18892,9 @@
             {
               "value": "triangle",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -26064,10 +26115,10 @@
         },
         {
           "name": "color",
-          "type": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
+          "type": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "NotificationColor",
-            "resolved": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
+            "resolved": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
             "references": {
               "NotificationColor": {
                 "location": "import",
@@ -26081,8 +26132,17 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "base",
               "type": "string"
@@ -26122,12 +26182,9 @@
             {
               "value": "warning",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -30010,10 +30067,10 @@
         },
         {
           "name": "tileColor",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
             "original": "RadioTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
               "RadioTileColor": {
                 "location": "import",
@@ -30027,7 +30084,13 @@
           "attr": "tile-color",
           "reflectToAttr": false,
           "docs": "Defines the color of the tile radio.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -30047,12 +30110,9 @@
             {
               "value": "yellow",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -31559,10 +31619,10 @@
         },
         {
           "name": "tileColor",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
             "original": "RadioTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
               "RadioTileColor": {
                 "location": "import",
@@ -31576,7 +31636,13 @@
           "attr": "tile-color",
           "reflectToAttr": false,
           "docs": "Defines the color of the tile checkbox.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -31596,12 +31662,9 @@
             {
               "value": "yellow",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -34963,10 +35026,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
+          "type": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
           "complexType": {
             "original": "StackAlignment",
-            "resolved": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
+            "resolved": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
             "references": {
               "StackAlignment": {
                 "location": "import",
@@ -34980,7 +35043,13 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or default to start.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -35020,12 +35089,9 @@
             {
               "value": "top start",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -35113,10 +35179,10 @@
         },
         {
           "name": "layout",
-          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
+          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
           "complexType": {
             "original": "StackLayout",
-            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
+            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
             "references": {
               "StackLayout": {
                 "location": "import",
@@ -35130,7 +35196,13 @@
           "attr": "layout",
           "reflectToAttr": false,
           "docs": "**Deprecated:** Use direction instead.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -35150,12 +35222,9 @@
             {
               "value": "vertical-reverse",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -35913,10 +35982,10 @@
         },
         {
           "name": "color",
-          "type": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
+          "type": "\"\" | \"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\"",
           "complexType": {
             "original": "TagColor",
-            "resolved": "\"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\" | undefined",
+            "resolved": "\"\" | \"danger\" | \"green\" | \"green-dark\" | \"green-light\" | \"grey\" | \"info\" | \"primary\" | \"purple\" | \"purple-dark\" | \"purple-light\" | \"red\" | \"red-dark\" | \"red-light\" | \"success\" | \"warning\" | \"yellow\" | \"yellow-dark\" | \"yellow-light\"",
             "references": {
               "TagColor": {
                 "location": "import",
@@ -35930,8 +35999,17 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "The theme type of the tag.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "danger",
               "type": "string"
@@ -36003,12 +36081,9 @@
             {
               "value": "yellow-light",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -36073,10 +36148,10 @@
         },
         {
           "name": "position",
-          "type": "\"center\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"left\" | \"right\"",
           "complexType": {
             "original": "TagPlacement",
-            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
             "references": {
               "TagPlacement": {
                 "location": "import",
@@ -36090,8 +36165,17 @@
           "attr": "position",
           "reflectToAttr": false,
           "docs": "Choosing left or center the tag is aligned to that side in the ds-card.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -36103,22 +36187,19 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "shape",
-          "type": "\"pill\" | \"square\" | undefined",
+          "type": "\"\" | \"pill\" | \"square\"",
           "complexType": {
             "original": "TagShape",
-            "resolved": "\"pill\" | \"square\" | undefined",
+            "resolved": "\"\" | \"pill\" | \"square\"",
             "references": {
               "TagShape": {
                 "location": "import",
@@ -36132,8 +36213,17 @@
           "attr": "shape",
           "reflectToAttr": false,
           "docs": "The shape of the tag element like square or pill",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "pill",
               "type": "string"
@@ -36141,22 +36231,19 @@
             {
               "value": "square",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "size",
-          "type": "\"large\" | \"medium\" | \"small\" | undefined",
+          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "TagSize",
-            "resolved": "\"large\" | \"medium\" | \"small\" | undefined",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
             "references": {
               "TagSize": {
                 "location": "import",
@@ -36170,10 +36257,27 @@
           "attr": "size",
           "reflectToAttr": false,
           "docs": "The size of the tag element",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
+              "type": "\"\""
+            },
+            {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
               "type": "string"
             },
             {
@@ -36181,14 +36285,15 @@
               "type": "string"
             },
             {
-              "value": "small",
+              "value": "sm",
               "type": "string"
             },
             {
-              "type": "undefined"
+              "value": "small",
+              "type": "string"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -37890,10 +37995,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"center\" | \"justify\" | \"left\" | \"right\" | undefined",
+          "type": "\"\" | \"center\" | \"justify\" | \"left\" | \"right\"",
           "complexType": {
             "original": "TextAlign",
-            "resolved": "\"center\" | \"justify\" | \"left\" | \"right\" | undefined",
+            "resolved": "\"\" | \"center\" | \"justify\" | \"left\" | \"right\"",
             "references": {
               "TextAlign": {
                 "location": "import",
@@ -37907,8 +38012,17 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "If `true` the component gets a invalid style.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "center",
               "type": "string"
@@ -37924,12 +38038,9 @@
             {
               "value": "right",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -37965,10 +38076,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\" | undefined",
+          "type": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
           "complexType": {
             "original": "TextColor",
-            "resolved": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\" | undefined",
+            "resolved": "\"\" | \"black\" | \"blue\" | \"blue-dark\" | \"blue-light\" | \"danger\" | \"grey\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
             "references": {
               "TextColor": {
                 "location": "import",
@@ -37982,7 +38093,13 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the text.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -38038,12 +38155,9 @@
             {
               "value": "white",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -38338,10 +38452,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
+          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
           "complexType": {
             "original": "TextSpace",
-            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
+            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
             "references": {
               "TextSpace": {
                 "location": "import",
@@ -38355,7 +38469,13 @@
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines at which position the heading has spacing.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -38375,12 +38495,9 @@
             {
               "value": "top",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -39008,10 +39125,10 @@
         },
         {
           "name": "inputmode",
-          "type": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+          "type": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
           "complexType": {
             "original": "TextareaInputMode",
-            "resolved": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+            "resolved": "\"\" | \"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\"",
             "references": {
               "TextareaInputMode": {
                 "location": "import",
@@ -39025,7 +39142,13 @@
           "attr": "inputmode",
           "reflectToAttr": false,
           "docs": "A hint to the browser for which keyboard to display.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -39061,12 +39184,9 @@
             {
               "value": "url",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -39386,10 +39506,10 @@
         },
         {
           "name": "wrap",
-          "type": "\"hard\" | \"off\" | \"soft\" | undefined",
+          "type": "\"\" | \"hard\" | \"off\" | \"soft\"",
           "complexType": {
             "original": "TextareaWrap",
-            "resolved": "\"hard\" | \"off\" | \"soft\" | undefined",
+            "resolved": "\"\" | \"hard\" | \"off\" | \"soft\"",
             "references": {
               "TextareaWrap": {
                 "location": "import",
@@ -39403,8 +39523,17 @@
           "attr": "wrap",
           "reflectToAttr": false,
           "docs": "Indicates how the control wraps text.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "hard",
               "type": "string"
@@ -39416,12 +39545,9 @@
             {
               "value": "soft",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -40997,10 +41123,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
             "original": "ToggleTileColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
               "ToggleTileColor": {
                 "location": "import",
@@ -41014,7 +41140,13 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the tile toggle.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -41034,12 +41166,9 @@
             {
               "value": "yellow",
               "type": "string"
-            },
-            {
-              "type": "undefined"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false,
           "getter": false,
           "setter": false
@@ -41549,7 +41678,7 @@
       "path": "src/global/index.ts"
     },
     "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
-      "declaration": "\"fluid\" | \"detail-page\" | \"compact\" | \"blog-page\" | \"wide\"",
+      "declaration": "\"\" | \"fluid\" | \"detail-page\" | \"compact\" | \"blog-page\" | \"wide\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
@@ -41624,7 +41753,7 @@
       "path": "src/components/badge/badge.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonColor": {
-      "declaration": "\"primary\" | \"secondary\" | \"success\" | \"warning\" | \"danger\" | \"link\" | \"tertiary\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"tertiary-green\" | \"light\" | \"text\" | \"info\" | \"primary-light\" | \"info-light\"",
+      "declaration": "\"\" | \"primary\" | \"secondary\" | \"success\" | \"warning\" | \"danger\" | \"link\" | \"tertiary\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"tertiary-green\" | \"light\" | \"text\" | \"info\" | \"primary-light\" | \"info-light\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -41664,7 +41793,7 @@
       "path": "src/components/button/button.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonGroupAlignment": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -41694,7 +41823,7 @@
       "path": "src/components/card/card.interfaces.ts"
     },
     "src/components/card/card.interfaces.ts::CardActionsAlignment": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/card/card.interfaces.ts"
     },
@@ -41834,7 +41963,7 @@
       "path": "src/components/icon/icon.interfaces.ts"
     },
     "src/components/icon/icon.interfaces.ts::IconShape": {
-      "declaration": "\"circle\" | \"triangle\"",
+      "declaration": "\"\" | \"circle\" | \"triangle\"",
       "docstring": "",
       "path": "src/components/icon/icon.interfaces.ts"
     },
@@ -41939,7 +42068,7 @@
       "path": "src/components/logo/logo.interfaces.ts"
     },
     "src/components/notification/notification.interfaces.ts::NotificationColor": {
-      "declaration": "\"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\"",
+      "declaration": "\"\" | \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\"",
       "docstring": "",
       "path": "src/components/notification/notification.interfaces.ts"
     },
@@ -42119,22 +42248,22 @@
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagColor": {
-      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",
+      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagPlacement": {
-      "declaration": "\"left\" | \"right\" | \"center\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagShape": {
-      "declaration": "\"square\" | \"pill\"",
+      "declaration": "\"\" | \"square\" | \"pill\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagSize": {
-      "declaration": "\"small\" | \"medium\" | \"large\"",
+      "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"medium\" | \"large\" | \"md\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
@@ -42144,7 +42273,7 @@
       "path": "src/components/tag/tag.interfaces.ts"
     },
     "src/components/text/text.interfaces.ts::TextAlign": {
-      "declaration": "\"left\" | \"right\" | \"center\" | \"justify\"",
+      "declaration": "\"\" | \"left\" | \"right\" | \"center\" | \"justify\"",
       "docstring": "",
       "path": "src/components/text/text.interfaces.ts"
     },
@@ -42169,7 +42298,7 @@
       "path": "src/components/textarea/textarea.interfaces.ts"
     },
     "src/components/textarea/textarea.interfaces.ts::TextareaWrap": {
-      "declaration": "\"off\" | \"hard\" | \"soft\"",
+      "declaration": "\"\" | \"off\" | \"hard\" | \"soft\"",
       "docstring": "",
       "path": "src/components/textarea/textarea.interfaces.ts"
     },

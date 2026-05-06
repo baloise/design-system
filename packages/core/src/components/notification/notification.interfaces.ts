@@ -1,5 +1,6 @@
 export const NOTIFICATION_SIZES = ['sm', 'md', 'lg', '', 'small', 'medium', 'large'] as const
 export const NOTIFICATION_COLORS = [
+  '',
   'base',
   'info',
   'success',

@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType } from '@utils'
+import { Logger, LogInstance, ValidateOneOf, ValidateType, ValidateEmptyOrType } from '@utils'
 import { DsComponentInterface } from '@global'
 import { HEADING_VISUAL_LEVELS, HEADING_TAGS, HeadingLevel, HeadingVisualLevel } from '../../heading/heading.interfaces'
 
@@ -29,14 +29,14 @@ export class CardTitle implements DsComponentInterface {
    * If `true` the card text color becomes white.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @ValidateType('boolean')
   readonly inverted: boolean = false
 
   /**
    * The actual heading level used in the HTML markup.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...HEADING_TAGS)
+  @ValidateOneOf(...HEADING_TAGS)
   readonly level: HeadingLevel = 'h3'
 
   /**
@@ -45,7 +45,7 @@ export class CardTitle implements DsComponentInterface {
    * but still keep it h1 in the markup.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
+  @ValidateOneOf(...HEADING_VISUAL_LEVELS)
   readonly visualLevel: HeadingVisualLevel = ''
 
   render() {

@@ -1,7 +1,6 @@
 @use '@baloise/ds-styles/sass/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
-@use '../../attr' as attr;
 @use './tag-group/tag-group.mixin.scss' as tags;
 
 $use-host: false !default;
@@ -133,7 +132,7 @@ $colors: (
   }
 
   @include hybrid.host($use-host) {
-    @include attr.has('color', $color) {
+    :host(.is-#{$color}) {
       @include color($color);
     }
   }
@@ -162,7 +161,7 @@ $close-inverted: (
   }
 
   @include hybrid.host($use-host) {
-    @include attr.has('color', $color) {
+    :host(.is-#{$color}) {
       --close-color-icon: var(--ds-close-color-icon-inverted);
       --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
       --close-color-background-active: var(--ds-close-color-background-inverted-active);
@@ -184,10 +183,10 @@ $close-inverted: (
 }
 
 @include hybrid.host($use-host) {
-  @include attr.has('shape', 'square') {
+  :host(.is-square) {
     --mod-tag-radius: var(--ds-tag-radius-square);
   }
-  @include attr.has('shape', 'pill') {
+  :host(.is-pill) {
     --mod-tag-radius: var(--ds-tag-radius-pill);
   }
 }
@@ -236,13 +235,13 @@ $close-inverted: (
 }
 
 @include hybrid.host($use-host) {
-  @include attr.has('size', 'sm') {
+  :host(.is-sm) {
     @include sizeSmall();
   }
-  @include attr.has('size', 'md') {
+  :host(.is-md) {
     @include sizeMedium();
   }
-  @include attr.has('size', 'lg') {
+  :host(.is-lg) {
     @include sizeLarge();
   }
 }
