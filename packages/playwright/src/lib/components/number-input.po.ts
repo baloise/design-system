@@ -10,6 +10,10 @@ export class DsNumberInput extends PageObject {
     this.nativeInput = el.locator('[part="input"]')
   }
 
+  async clear() {
+    await this.nativeInput.clear()
+  }
+
   async fill(value: string) {
     await this.nativeInput.fill(value)
   }

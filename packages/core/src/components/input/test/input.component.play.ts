@@ -58,12 +58,14 @@ test.describe('form reset', () => {
     const input = new DsInput(page.locator('ds-input'))
     const changeSpy = await input.el.spyOnEvent('dsChange')
 
+    await input.clear()
     await input.fill('Tony Stark')
     await input.blur()
     expect(changeSpy).toHaveReceivedEventTimes(1)
     expect(changeSpy).toHaveReceivedEventDetail('Tony Stark')
 
     await page.getByTestId('reset').click()
+    await page.waitForChanges()
     await input.assertValue('Steve Rogers')
   })
 })

@@ -385,7 +385,6 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
               class={{
                 'is-selected': item.value === this.value,
               }}
-              aria-checked={item.value === this.value}
               aria-invalid={this.invalid ? 'true' : null}
               aria-disabled={this.disabled ? 'true' : null}
               {...(this.iconOnly

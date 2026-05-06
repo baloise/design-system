@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from '@stencil/core'
+import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import {
   Logger,
   type LogInstance,
@@ -14,7 +14,15 @@ import {
   setupValidation,
 } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ListenToConfig, type DsComponentInterface, type DsConfigObserver, type DsConfigState } from '@global'
+import {
+  ListenToConfig,
+  type DsComponentInterface,
+  type DsConfigObserver,
+  type DsConfigState,
+  type DsLanguage,
+  defaultConfig,
+} from '@global'
+import { i18nDsProgressBar } from './progress-bar.i18n'
 import {
   PROGRESS_BAR_BACKGROUNDS,
   PROGRESS_BAR_COLORS,
@@ -42,6 +50,8 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
   }
 
   @Element() el!: HTMLStencilElement
+
+  @State() language: DsLanguage = defaultConfig.language
 
   private animated = true
   private lineEl?: HTMLDivElement
@@ -112,6 +122,7 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
   @ListenToConfig()
   async configChanged(state: DsConfigState) {
     this.animated = state.animated
+    this.language = state.language
   }
 
   /**
@@ -147,6 +158,7 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
     return (
       <Host
         role="progressbar"
+        aria-label={`${i18nDsProgressBar[this.language].progress}: ${this.value}%`}
         aria-valuenow={this.value}
         aria-valuemin="0"
         aria-valuemax="100"

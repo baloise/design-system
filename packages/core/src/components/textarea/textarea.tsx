@@ -365,6 +365,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   render() {
     return (
       <Field
+        inputId={'textarea'}
         disabled={this.disabled}
         color={this.color}
         invalid={this.invalid}

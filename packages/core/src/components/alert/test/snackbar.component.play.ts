@@ -3,7 +3,7 @@ import { DsSnackbar, expect, test } from '@baloise/ds-playwright'
 test.describe('component', () => {
   test.beforeEach('Setup', async ({ page }) => {
     await page.mount(`
-      <ds-snackbar heading="My Snackbar" action="Action">This is a Snackbar content!</ds-tag>
+      <ds-snackbar heading="My Snackbar" action="Action" closable>This is a Snackbar content!</ds-tag>
     `)
   })
 
