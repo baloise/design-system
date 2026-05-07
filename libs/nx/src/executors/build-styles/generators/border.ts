@@ -10,7 +10,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
   const bordersLeft = await generateBorderByColor(options, { placement: 'left' })
 
   const borderWidth = await utils.staticClassByToken({
-    token: '🏷️ Semantic.▭ Border.Width',
+    token: '🔗 Alias.▭ Border.Width',
     property: 'border-width',
     ...options,
   })
@@ -50,7 +50,7 @@ export const generateBorder = async (options: BuildStylesExecutorSchema) => {
     },
   })
 
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔵 Radius', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🔵 Radius', ...options })
   const radius = await generateRadius(tokens)
   const radiusTop = await generateRadius(tokens, 'top', ['top-left', 'top-right'])
   const radiusTopLeft = await generateRadius(tokens, 'top-left', ['top-left'])
@@ -141,7 +141,7 @@ async function generateRadius(tokens, name = undefined, positions: string[] = []
 }
 
 async function generateBorderByColor(options: BuildStylesExecutorSchema, { placement = '' } = {}) {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.▭ Border.Color', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.▭ Border.Color', ...options })
   const formattedPlacement = placement ? `-${placement}` : ''
   const values = {
     ...utils.toProps({
@@ -159,7 +159,7 @@ async function generateBorderByColor(options: BuildStylesExecutorSchema, { place
     important: true,
     states: true,
     additionalValues: {
-      [`border${formattedPlacement}-width`]: 'var(--ds-border-width-normal) !important',
+      [`border${formattedPlacement}-width`]: 'var(--ds-alias-border-width-normal) !important',
       [`border${formattedPlacement}-style`]: 'solid',
     },
   })

@@ -80,6 +80,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/ui": "4.0.8",
     "autoprefixer": "~10.4.17",
+    "baseline-browser-mapping": "2.10.27",
     "compression": "~1.8.1",
     "concurrently": "~8.2.2",
     "cspell": "~8.3.2",

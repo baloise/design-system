@@ -50,10 +50,10 @@ function stripEmoji(s: string): string {
   return s.replace(/[^\p{L}\p{N}\s]/gu, '').trim()
 }
 
-// Convert a reference path like "🏷️ Semantic.🔤 Text.Color.Primary" to both a CSS var and a Figma name
+// Convert a reference path like "🔗 Alias.🔤 Text.Color.Primary" to both a CSS var and a Figma name
 function refPathToEntry(refPath: string): InheritanceEntry {
   const parts = refPath.split('.').map(stripEmoji)
-  // Skip tier for CSS var but include it in the Figma name (e.g. "Semantic / Text / Color / Primary")
+  // Skip tier for CSS var but include it in the Figma name (e.g. "Alias / Text / Color / Primary")
   const pathParts = parts.slice(1)
   return {
     cssVar: `--ds-${pathParts.join('-').toLowerCase().replace(/\s+/g, '-')}`,
@@ -63,7 +63,7 @@ function refPathToEntry(refPath: string): InheritanceEntry {
 
 // Follow token references until a raw value is reached.
 // Returns the native value string and the ordered inheritance chain
-// (from most primitive to the component's own var, inclusive).
+// (from most global to the component's own var, inclusive).
 function resolveTokenChain(
   rawValue: string,
   ownEntry: InheritanceEntry,

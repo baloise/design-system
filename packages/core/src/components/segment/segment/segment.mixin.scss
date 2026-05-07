@@ -166,7 +166,7 @@ $_max-items: 8;
         cursor: pointer;
 
         &:focus-visible {
-          outline: var(--ds-interaction-focus-width, 2px) solid var(--_segment-focus-color);
+          outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--_segment-focus-color);
           outline-offset: 2px;
           border-radius: inherit;
         }

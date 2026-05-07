@@ -3,7 +3,7 @@ import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensBorderRadius = ({ overview }): React.ReactElement => {
-  const list = tokens['🏷️ Semantic']['🔵 Radius']
+  const list = tokens['🔗 Alias']['🔵 Radius']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>

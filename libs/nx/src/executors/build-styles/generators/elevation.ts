@@ -18,7 +18,7 @@ export const generateElevation = async (options: BuildStylesExecutorSchema) => {
 }
 
 const generateZIndex = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🗂️ ZIndex', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🗂️ ZIndex', ...options })
   const values = utils.toProps({ tokens })
   const property = 'z-index'
 
@@ -36,7 +36,7 @@ const generateZIndex = async (options: BuildStylesExecutorSchema) => {
 }
 
 const generateOpacity = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🌫️ Opacity', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🌫️ Opacity', ...options })
   const values = utils.toProps({ tokens })
   const property = 'opacity'
 
@@ -54,7 +54,7 @@ const generateOpacity = async (options: BuildStylesExecutorSchema) => {
 }
 
 const generateShadow = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🌓 Shadow.Box', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🌓 Shadow.Box', ...options })
   const values = utils.toProps({ tokens, replace: 'box-' })
   const property = 'box-shadow'
   const docs = utils.jsonClass({ property, values })
@@ -73,7 +73,7 @@ const generateShadow = async (options: BuildStylesExecutorSchema) => {
 }
 
 const generateTextShadow = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🌓 Shadow', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🌓 Shadow', ...options })
   const values = utils.toProps({ ...tokens.Text })
   const property = 'text-shadow'
 

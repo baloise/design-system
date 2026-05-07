@@ -132,48 +132,48 @@
 
 @include tablet {
   :host(.is-tile.has-cols-2) {
-    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+    flex: 0 0 calc(50% - calc(var(--ds-alias-space-base) * 1 / 2));
   }
   :host(.is-tile.has-cols-3) {
-    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-alias-space-base) * 2 / 3));
   }
   :host(.is-tile.has-cols-4) {
-    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+    flex: 0 0 calc(25% - calc(var(--ds-alias-space-base) * 3 / 4));
   }
 }
 
 @include mobile {
   :host(.is-tile.has-cols-2-mobile) {
-    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+    flex: 0 0 calc(50% - calc(var(--ds-alias-space-base) * 1 / 2));
   }
   :host(.is-tile.has-cols-3-mobile) {
-    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-alias-space-base) * 2 / 3));
   }
   :host(.is-tile.has-cols-4-mobile) {
-    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+    flex: 0 0 calc(25% - calc(var(--ds-alias-space-base) * 3 / 4));
   }
 }
 
 @include tablet {
   :host(.is-tile.has-cols-2-tablet) {
-    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+    flex: 0 0 calc(50% - calc(var(--ds-alias-space-base) * 1 / 2));
   }
   :host(.is-tile.has-cols-3-tablet) {
-    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-alias-space-base) * 2 / 3));
   }
   :host(.is-tile.has-cols-4-tablet) {
-    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+    flex: 0 0 calc(25% - calc(var(--ds-alias-space-base) * 3 / 4));
   }
 }
 
 @include desktop {
   :host(.is-tile.has-cols-2-desktop) {
-    flex: 0 0 calc(50% - calc(var(--ds-space-base) * 1 / 2));
+    flex: 0 0 calc(50% - calc(var(--ds-alias-space-base) * 1 / 2));
   }
   :host(.is-tile.has-cols-3-desktop) {
-    flex: 0 0 calc(33.3333333333% - calc(var(--ds-space-base) * 2 / 3));
+    flex: 0 0 calc(33.3333333333% - calc(var(--ds-alias-space-base) * 2 / 3));
   }
   :host(.is-tile.has-cols-4-desktop) {
-    flex: 0 0 calc(25% - calc(var(--ds-space-base) * 3 / 4));
+    flex: 0 0 calc(25% - calc(var(--ds-alias-space-base) * 3 / 4));
   }
 }

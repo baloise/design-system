@@ -6,7 +6,7 @@ import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
 export const CssLayoutContainer = ({}) => {
   return CssTable({
-    tokens: tokens['🏷️ Semantic']['🗃️ Container'].Width,
+    tokens: tokens['🔗 Alias']['🗃️ Container'].Width,
     css: 'container is',
   })
 }

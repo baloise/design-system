@@ -555,7 +555,7 @@ Before:
 "Tag": {
   "Family": {
     "$type": "string",
-    "$value": "{🏷️ Semantic.🔤 Text.Family.Body}",
+    "$value": "{🔗 Alias.🔤 Text.Family.Body}",
     "$extensions": { "com.figma.variableId": "VariableID:58:2", ... }
   }
 }
@@ -568,7 +568,7 @@ After:
   "Font": {
     "Family": {
       "$type": "string",
-      "$value": "{🏷️ Semantic.🔤 Text.Family.Body}",
+      "$value": "{🔗 Alias.🔤 Text.Family.Body}",
       "$extensions": { "com.figma.variableId": "VariableID:58:2", ... }
     }
   }
@@ -702,7 +702,7 @@ Run `npm run tokens && cd packages/core && npx stencil build` to verify.
 | `--ds-<c>-<scale>-space-y`      | Rule 5: scale first            | `--ds-<c>-space-padding-y-<scale>` |
 | `--ds-<c>-<scale>-space-x`      | Rule 5: scale first            | `--ds-<c>-space-padding-x-<scale>` |
 
-> Only rename tokens **exclusively used by this component**. Semantic tokens belong to the semantic layer and must not be renamed here.
+> Only rename tokens **exclusively used by this component**. Alias tokens belong to the alias layer and must not be renamed here.
 
 ### Part B — Public variable keys (`vars.local()` first argument)
 

@@ -78,7 +78,7 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
     },
   })
 
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.↔️ Space', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.↔️ Space', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop', 'none'] })
 
   const valuesGap = {
@@ -135,9 +135,10 @@ export const generateFlex = async (options: BuildStylesExecutorSchema) => {
     const key = keys[index]
     const oldKey = tshirtSizesMapping[key.toLowerCase()]
 
-    valuesGap[`gap-${key}${oldKey ? `, .gap-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
-    valuesRowGap[`row-gap-${key}${oldKey ? `, .row-gap-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
-    valuesColumnGap[`column-gap-${key}${oldKey ? `, .column-gap-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
+    valuesGap[`gap-${key}${oldKey ? `, .gap-${oldKey}` : ''}`] = `var(--ds-alias-space-${key}-device)`
+    valuesRowGap[`row-gap-${key}${oldKey ? `, .row-gap-${oldKey}` : ''}`] = `var(--ds-alias-space-${key}-device)`
+    valuesColumnGap[`column-gap-${key}${oldKey ? `, .column-gap-${oldKey}` : ''}`] =
+      `var(--ds-alias-space-${key}-device)`
   }
   const rulesFlexGap = utils.styleClass({ property: 'gap', values: valuesGap, important: true })
   const rulesFlexGapDocs = utils.jsonClass({ property: 'gap', values: valuesGap })

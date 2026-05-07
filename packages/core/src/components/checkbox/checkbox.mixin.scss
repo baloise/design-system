@@ -19,13 +19,13 @@
 
     // dimensions
     @include vars.local(checkbox-size, 1.5rem);
-    @include vars.local(checkbox-border-width, var(--ds-border-width-base));
-    @include vars.local(checkbox-radius, var(--ds-radius-base));
+    @include vars.local(checkbox-border-width, var(--ds-alias-border-width-base));
+    @include vars.local(checkbox-radius, var(--ds-alias-radius-base));
 
     // Tile
-    @include vars.local(checkbox-tile-radius, var(--ds-radius-base));
+    @include vars.local(checkbox-tile-radius, var(--ds-alias-radius-base));
     @include vars.local(checkbox-tile-padding, 1rem);
-    @include vars.local(checkbox-tile-border-width, var(--ds-border-width-base));
+    @include vars.local(checkbox-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(checkbox-tile-base-background-color, inherit);
     @include vars.local(checkbox-tile-base-border-color, var(--ds-global-color-grey-3));
@@ -133,7 +133,7 @@
   }
 
   #{$wrapper} input[type='checkbox']:focus-visible {
-    outline: var(--ds-interaction-focus-width, 2px) solid var(--ds-interaction-focus-color-base);
+    outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--ds-alias-interaction-focus-color-base);
     outline-offset: 2px;
     border-radius: var(--_checkbox-radius);
   }
@@ -226,9 +226,9 @@
   --mod-checkbox-label-active-color: var(--ds-global-color-grey-5);
 
   --mod-checkbox-unchecked-base-color-background: var(--ds-global-color-grey-2);
-  --mod-checkbox-unchecked-base-color-border: var(--ds-border-color-disabled);
-  --mod-checkbox-checked-base-color-background: var(--ds-border-color-disabled);
-  --mod-checkbox-checked-base-color-border: var(--ds-border-color-disabled);
+  --mod-checkbox-unchecked-base-color-border: var(--ds-alias-border-color-disabled);
+  --mod-checkbox-checked-base-color-background: var(--ds-alias-border-color-disabled);
+  --mod-checkbox-checked-base-color-border: var(--ds-alias-border-color-disabled);
 }
 
 // Invalid declared first, disabled declared second — disabled wins when both classes are present.

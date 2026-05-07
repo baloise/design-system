@@ -3,7 +3,7 @@ import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensSpacing = ({ overview }): React.ReactElement => {
-  const list = tokens['🏷️ Semantic']['↔️ Space']
+  const list = tokens['🔗 Alias']['↔️ Space']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>

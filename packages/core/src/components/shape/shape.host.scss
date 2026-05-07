@@ -17,7 +17,7 @@
 
 :host {
   @include vars.base(shape);
-  @include vars.local(shape-color, var(--ds-background-color-green-base));
+  @include vars.local(shape-color, var(--ds-alias-background-color-green-base));
   @include vars.local(shape-size, 66px);
   @include vars.local(shape-rotation, 0deg);
 }

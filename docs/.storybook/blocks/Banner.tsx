@@ -130,7 +130,7 @@ export const BannerTabs = ({ of, children, color, label, section, puzzle, tabs }
       {tabs && (
         <div
           style={{
-            borderBottom: `2px solid #ffaca6`,
+            borderBottom: `2px solid var(--ds-global-color-${definedColor}-4)`,
             position: 'sticky',
             top: 0,
             zIndex: 1000,

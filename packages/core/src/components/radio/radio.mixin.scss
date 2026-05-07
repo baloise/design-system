@@ -19,13 +19,13 @@
 
     // dimensions
     @include vars.local(radio-size, 1.5rem);
-    @include vars.local(radio-border-width, var(--ds-border-width-base));
-    @include vars.local(radio-radius, var(--ds-radius-rounded));
+    @include vars.local(radio-border-width, var(--ds-alias-border-width-base));
+    @include vars.local(radio-radius, var(--ds-alias-radius-rounded));
 
     // Tile
-    @include vars.local(radio-tile-radius, var(--ds-radius-base));
+    @include vars.local(radio-tile-radius, var(--ds-alias-radius-base));
     @include vars.local(radio-tile-padding, 1rem);
-    @include vars.local(radio-tile-border-width, var(--ds-border-width-base));
+    @include vars.local(radio-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(radio-tile-base-background-color, inherit);
     @include vars.local(radio-tile-base-border-color, var(--ds-global-color-grey-3));
@@ -138,7 +138,7 @@
   }
 
   #{$wrapper} input[type='radio']:focus-visible {
-    outline: var(--ds-interaction-focus-width, 2px) solid var(--ds-interaction-focus-color-base);
+    outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--ds-alias-interaction-focus-color-base);
     outline-offset: 2px;
     border-radius: var(--_radio-radius);
   }
@@ -234,9 +234,9 @@
   --mod-radio-label-active-color: var(--ds-global-color-grey-5);
 
   --mod-radio-unchecked-base-color-background: var(--ds-global-color-grey-2);
-  --mod-radio-unchecked-base-color-border: var(--ds-border-color-disabled);
-  --mod-radio-checked-base-color-background: var(--ds-border-color-disabled);
-  --mod-radio-checked-base-color-border: var(--ds-border-color-disabled);
+  --mod-radio-unchecked-base-color-border: var(--ds-alias-border-color-disabled);
+  --mod-radio-checked-base-color-background: var(--ds-alias-border-color-disabled);
+  --mod-radio-checked-base-color-border: var(--ds-alias-border-color-disabled);
 }
 
 // Invalid declared first, disabled declared second — disabled wins when both classes are present.

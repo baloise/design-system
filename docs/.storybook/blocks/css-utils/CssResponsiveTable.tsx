@@ -3,7 +3,7 @@ import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
 
 export const CssResponsiveTable = ({ all = false }): React.ReactElement => {
-  const obj = tokens['🏷️ Semantic']['📐 Breakpoint']
+  const obj = tokens['🔗 Alias']['📐 Breakpoint']
 
   const list = [
     {

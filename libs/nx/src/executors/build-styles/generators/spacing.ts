@@ -3,7 +3,7 @@ import * as utils from './utils'
 import { COLON_SEPARATOR } from './utils'
 
 export const generateSpacing = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.↔️ Space', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.↔️ Space', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop'] })
 
   const margin = generateResponsiveSpace({ keys, property: 'margin', prefix: 'm' })
@@ -75,7 +75,7 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
   for (const index in keys) {
     const key = keys[index].toLowerCase()
     const oldKey = tshirtSizesMapping[key]
-    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--ds-space-${key}-device)`
+    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--ds-alias-space-${key}-device)`
   }
   const rules = utils.styleClass({ property, values, breakpoint, important: true })
   return { rules }

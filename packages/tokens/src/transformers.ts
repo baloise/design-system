@@ -54,15 +54,15 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     name: `ds/css/name`,
     transform: (token, _options) => {
       let tokenName = token.name
-      const isPrimitive = token.path.includes('🧱 Primitive')
-      if (isPrimitive) {
-        tokenName = tokenName.replace('-primitive', '-global')
-      }
+      // const isGlobal = token.path.includes('🌐 Global')
+      // if (isGlobal) {
+      //   tokenName = tokenName.replace('-primitive', '-global')
+      // }
 
-      const isSemantic = token.path.includes('🏷️ Semantic')
-      if (isSemantic) {
-        tokenName = tokenName.replace('-semantic', '')
-      }
+      // const isAlias = token.path.includes('🔗 Alias')
+      // if (isAlias) {
+      //   tokenName = tokenName.replace('-semantic', '')
+      // }
 
       const isComponent = token.path.includes('🧩 Component')
       if (isComponent) {
@@ -94,7 +94,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transform: (token, _options) => {
       let tokenName = token.name
       tokenName = tokenName.replace('Primitive', 'Global')
-      tokenName = tokenName.replace('Semantic', '')
+      tokenName = tokenName.replace('Semantic', 'Alias')
 
       return tokenName
     },

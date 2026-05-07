@@ -68,7 +68,7 @@ $host-selector: ('#notification');
   position: relative;
   hyphens: auto;
 
-  border: var(--ds-border-width-base) solid var(--_notification-color-border);
+  border: var(--ds-alias-border-width-base) solid var(--_notification-color-border);
   border-radius: var(--_notification-radius);
   background: var(--_notification-color-background);
   color: var(--_notification-color-text);

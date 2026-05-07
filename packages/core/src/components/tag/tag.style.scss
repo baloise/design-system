@@ -156,7 +156,7 @@ $close-inverted: (
       --close-color-icon: var(--ds-close-color-icon-inverted);
       --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
       --close-color-background-active: var(--ds-close-color-background-inverted-active);
-      --close-color-focus: var(--ds-interaction-focus-color-inverted);
+      --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
     }
   }
 
@@ -165,7 +165,7 @@ $close-inverted: (
       --close-color-icon: var(--ds-close-color-icon-inverted);
       --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
       --close-color-background-active: var(--ds-close-color-background-inverted-active);
-      --close-color-focus: var(--ds-interaction-focus-color-inverted);
+      --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
     }
   }
 }

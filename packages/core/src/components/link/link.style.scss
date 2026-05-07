@@ -17,7 +17,7 @@ a.is-link:not(.button) {
 
   @include vars.local(link-family, var(--ds-link-family));
   @include vars.local(link-weight, var(--ds-link-weight));
-  @include vars.local(link-radius, var(--ds-radius-base));
+  @include vars.local(link-radius, var(--ds-alias-radius-base));
   @include vars.local(link-border-width, var(--ds-link-border-width));
   @include vars.local(link-underline-offset, var(--ds-link-underline-offset, 0.25rem));
 }
@@ -89,6 +89,6 @@ a.is-link:not(.button),
     --mod-link-color: var(--ds-link-color-inverted);
     --mod-link-color-hover: var(--ds-link-color-inverted-hover);
     --mod-link-color-active: var(--ds-link-color-inverted-active);
-    --mod-link-focus: var(--ds-interaction-focus-color-inverted);
+    --mod-link-focus: var(--ds-alias-interaction-focus-color-inverted);
   }
 }

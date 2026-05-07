@@ -73,9 +73,9 @@
   --ds-card-selected-background: var(--ds-global-color-primary-2);
   //
   // radius
-  --ds-card-radius: var(--ds-radius-lg);
+  --ds-card-radius: var(--ds-alias-radius-lg);
   --ds-card-square-radius: 0;
   //
   // border
-  --ds-card-border: var(--ds-border-width-base) dashed var(--ds-global-color-grey);
+  --ds-card-border: var(--ds-alias-border-width-base) dashed var(--ds-global-color-grey);
 }

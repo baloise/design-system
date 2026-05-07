@@ -21,7 +21,7 @@
 
 :host {
   @include vars.base(toast);
-  @include vars.local(toast-shadow, var(--ds-shadow-box-base));
+  @include vars.local(toast-shadow, var(--ds-alias-shadow-box-base));
   @include vars.local(toast-radius, var(--ds-toast-radius));
   @include vars.local(toast-bg, var(--ds-toast-default-color-bg-base));
   @include vars.local(toast-color, var(--ds-toast-default-color-text-base));

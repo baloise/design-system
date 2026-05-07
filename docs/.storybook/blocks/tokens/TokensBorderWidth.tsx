@@ -3,7 +3,7 @@ import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensBorderWidth = ({ overview }): React.ReactElement => {
-  const list = tokens['🏷️ Semantic']['▭ Border'].Width
+  const list = tokens['🔗 Alias']['▭ Border'].Width
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>

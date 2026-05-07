@@ -150,7 +150,11 @@ const removeLeadingTrailingDashes = inputString => {
 export const toProp = ({ property, prefix, replace, replace2 }) => {
   const propPrefix = `${prefix ? prefix + '-' : ''}`
   const propName = removeLeadingTrailingDashes(
-    propPrefix + `${property.name.replace('ds-', '')}`.replace(replace, '').replace(replace2, '').replace('base', ''),
+    propPrefix +
+      `${property.name.replace('ds-', '').replace('alias-', '').replace('global-', '')}`
+        .replace(replace, '')
+        .replace(replace2, '')
+        .replace('base', ''),
   )
   const propValue = toCssVar(property)
   return {

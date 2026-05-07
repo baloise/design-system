@@ -14,7 +14,7 @@ Reads a component's SCSS file, checks every `--ds-*` CSS variable reference
 against the compiled token output, and brings the component and token file
 into sync.
 
-**Core rule: a component must NEVER reference a semantic or primitive `--ds-*` token directly.** Every `--ds-color-*`, `--ds-radius-*`, `--ds-text-*`, `--ds-interaction-*`, etc. used in a component's SCSS must be wrapped in a component-specific token (`--ds-<component>-*`). The component token is what the SCSS references; the semantic/primitive token is what the JSON value points to.
+**Core rule: a component must NEVER reference a alias or global `--ds-*` token directly.** Every `--ds-color-*`, `--ds-radius-*`, `--ds-text-*`, `--ds-interaction-*`, etc. used in a component's SCSS must be wrapped in a component-specific token (`--ds-<component>-*`). The component token is what the SCSS references; the alias/global token is what the JSON value points to.
 
 Works in three directions:
 
@@ -59,18 +59,18 @@ Regex: `vars\.local\([^,]+,\s*var\((--ds-<component>-[^)]+)\)`
 
 Each match yields a `--ds-<component>-*` component token name. Verify it exists in the JSON.
 
-### 2b. vars.local() defaults — direct semantic/primitive reference ✗
+### 2b. vars.local() defaults — direct alias/global reference ✗
 
 ```scss
 @include vars.local(segment-item-selected-color-base, var(--ds-color-primary-4));
-//                                                         ↑ WRONG — semantic/primitive used directly
+//                                                         ↑ WRONG — alias/global used directly
 ```
 
 Regex: `vars\.local\(([^,]+),\s*var\((--ds-(?!<component>)[^)]+)\)`
 
 Each match is a violation. The fix is:
 
-1. Create component token `--ds-<component>-<var-name>` in JSON with the semantic/primitive as its `$value`
+1. Create component token `--ds-<component>-<var-name>` in JSON with the alias/global as its `$value`
 2. Change the `vars.local()` to reference the new component token: `var(--ds-<component>-<var-name>)`
 
 ### 2c. vars.local() defaults — hardcoded literals
@@ -83,7 +83,7 @@ Regex: `vars\.local\(([^,]+),\s*(?!var\()([^)]+)\)`
 
 Each match is a candidate for tokenisation. Present to developer; create `--ds-<component>-<var-name>` token if confirmed.
 
-### 2d. Direct semantic/primitive refs in CSS rules ✗
+### 2d. Direct alias/global refs in CSS rules ✗
 
 ```scss
 font-weight: var(--ds-text-weight-bold); // WRONG
@@ -94,7 +94,7 @@ Regex: `var\((--ds-(?!<component>)[^)]+)\)` — anywhere outside a `vars.local()
 
 Each match is a violation. The fix:
 
-1. Create component token in JSON for the semantic/primitive value
+1. Create component token in JSON for the alias/global value
 2. Add a `vars.local(<component>-<descriptive-name>, var(--ds-<component>-<descriptive-name>))` to the `vars()` mixin
 3. Replace the direct ref in the CSS rule with the private var: `var(--_<component>-<descriptive-name>)`
 
@@ -221,18 +221,18 @@ For each missing `--ds-*` token confirmed by the developer:
 
 ### 7a. Determine type and value
 
-| Token property                   | JSON `$type` | `$value`                                                                  |
-| -------------------------------- | ------------ | ------------------------------------------------------------------------- |
-| Color                            | `"color"`    | Semantic color reference e.g. `{🏷️ Semantic.🎨 Background.Color.Primary}` |
-| Size / spacing / radius          | `"number"`   | Semantic size reference e.g. `{🏷️ Semantic.↔️ Space.LG.Mobile}`           |
-| Font family, font weight         | `"string"`   | Semantic text reference e.g. `{🏷️ Semantic.🔤 Text.Family.Heading}`       |
-| Literal (no good semantic match) | appropriate  | Literal string/number e.g. `"inherit"`, `9999`                            |
+| Token property                | JSON `$type` | `$value`                                                            |
+| ----------------------------- | ------------ | ------------------------------------------------------------------- |
+| Color                         | `"color"`    | Alias color reference e.g. `{🔗 Alias.🎨 Background.Color.Primary}` |
+| Size / spacing / radius       | `"number"`   | Alias size reference e.g. `{🔗 Alias.↔️ Space.LG.Mobile}`           |
+| Font family, font weight      | `"string"`   | Alias text reference e.g. `{🔗 Alias.🔤 Text.Family.Heading}`       |
+| Literal (no good alias match) | appropriate  | Literal string/number e.g. `"inherit"`, `9999`                      |
 
-To find the right semantic reference:
+To find the right alias reference:
 
 1. Read the dist CSS: what is the token's likely resolved value?
-2. Search `Base.tokens.json` under `"🏷️ Semantic"` for a matching semantic token.
-3. Use the semantic token's JSON path as the reference: `{🏷️ Semantic.Section.Key}`.
+2. Search `Base.tokens.json` under `"🔗 Alias"` for a matching alias token.
+3. Use the alias token's JSON path as the reference: `{🔗 Alias.Section.Key}`.
 
 ### 7b. Generate a new VariableID
 
@@ -253,7 +253,7 @@ Note: these IDs are placeholders until synced from Figma, but Figma needs unique
 ```json
 "TokenKey": {
   "$type": "color",
-  "$value": "{🏷️ Semantic.🎨 Background.Color.Primary}",
+  "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
   "$extensions": {
     "com.figma.variableId": "VariableID:369:1",
     "com.figma.scopes": [
@@ -330,16 +330,16 @@ Run `npm run tokens` to rebuild the compiled output.
 
 ## Quick Reference: JSON $value Patterns
 
-| Need                             | Semantic reference                              |
-| -------------------------------- | ----------------------------------------------- |
-| Primary brand color (background) | `{🏷️ Semantic.🎨 Background.Color.Primary}`     |
-| White text                       | `{🏷️ Semantic.🔤 Text.Color.White}`             |
-| Primary border                   | `{🏷️ Semantic.▭ Border.Color.Primary}`          |
-| Base radius                      | `{🏷️ Semantic.🔵 Radius.Base}`                  |
-| Heading font family              | `{🏷️ Semantic.🔤 Text.Family.Heading}`          |
-| Bold weight                      | `{🏷️ Semantic.🔤 Text.Weight.Bold}`             |
-| Base font size (mobile)          | `{🏷️ Semantic.🔤 Text.Size.Base.Mobile}`        |
-| LG spacing (mobile)              | `{🏷️ Semantic.↔️ Space.LG.Mobile}`              |
-| Transparent background           | `{🏷️ Semantic.🎨 Background.Color.Transparent}` |
+| Need                             | Alias reference                              |
+| -------------------------------- | -------------------------------------------- |
+| Primary brand color (background) | `{🔗 Alias.🎨 Background.Color.Primary}`     |
+| White text                       | `{🔗 Alias.🔤 Text.Color.White}`             |
+| Primary border                   | `{🔗 Alias.▭ Border.Color.Primary}`          |
+| Base radius                      | `{🔗 Alias.🔵 Radius.Base}`                  |
+| Heading font family              | `{🔗 Alias.🔤 Text.Family.Heading}`          |
+| Bold weight                      | `{🔗 Alias.🔤 Text.Weight.Bold}`             |
+| Base font size (mobile)          | `{🔗 Alias.🔤 Text.Size.Base.Mobile}`        |
+| LG spacing (mobile)              | `{🔗 Alias.↔️ Space.LG.Mobile}`              |
+| Transparent background           | `{🔗 Alias.🎨 Background.Color.Transparent}` |
 
-For references not in this table, search `Base.tokens.json` under `"🏷️ Semantic"` for the matching semantic token and copy its JSON path.
+For references not in this table, search `Base.tokens.json` under `"🔗 Alias"` for the matching alias token and copy its JSON path.

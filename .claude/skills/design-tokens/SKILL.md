@@ -9,12 +9,12 @@ description: Use when a developer asks what token to use for a component need �
 
 Tokens live in `packages/tokens/tokens/Base.tokens.json` and are processed by Style Dictionary into CSS, SCSS, JS, and JSON outputs.
 
-Three layers — always prefer Semantic for consumer use:
+Three layers — always prefer Alias for consumer use:
 
 | Layer     | JSON key       | Purpose                                 | When to use                                         |
 | --------- | -------------- | --------------------------------------- | --------------------------------------------------- |
-| Primitive | `🧱 Primitive` | Raw values (color scales, sizes, fonts) | Rarely — only when no semantic token fits           |
-| Semantic  | `🏷️ Semantic`  | Meaningful abstractions                 | **Primary layer for component consumers**           |
+| Global    | `🌐 Global`    | Raw values (color scales, sizes, fonts) | Rarely — only when no alias token fits              |
+| Alias     | `🔗 Alias`     | Meaningful abstractions                 | **Primary layer for component consumers**           |
 | Component | `🧩 Component` | Per-component tokens                    | When building or overriding a specific DS component |
 
 ## Naming Convention
@@ -39,7 +39,7 @@ Space tokens have responsive variants. For most uses, reference the base token:
 
 Use `--ds-space-lg` for static use, `--ds-space-lg-device` when you want automatic responsive scaling.
 
-## Key Semantic Categories
+## Key Alias Categories
 
 - **Space:** None, Auto, 2XS, XS, SM, Base, MD, LG, XL, 2XL, 3XL, 4XL
 - **Background Color:** white, transparent, sky, grey, primary, info, success, warning, danger (+ light/dark variants)
@@ -59,7 +59,7 @@ Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId`. T
 
 When a developer asks "what token should I use for X?":
 
-1. **Read** `packages/tokens/tokens/Base.tokens.json` — find the token in the Semantic layer (prefer Semantic; fall back to Primitive or Component only if needed)
+1. **Read** `packages/tokens/tokens/Base.tokens.json` — find the token in the Alias layer (prefer Alias; fall back to Global or Component only if needed)
 2. **Read** `packages/tokens/dist/css/base.tokens.css` — find the exact CSS variable name and its resolved value
 3. **Return** in this format:
 

@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-type TokenCategory = 'all' | 'primitive' | 'semantic' | 'component'
+type TokenCategory = 'all' | 'global' | 'alias' | 'component'
 
 type FlattenedToken = {
   id: string
@@ -30,8 +30,8 @@ const metaKeys = new Set([
 ])
 
 const mapTopKeyToCategory = (key: string): TokenCategory => {
-  if (key.includes('🧱') || /primitive/i.test(key)) return 'primitive'
-  if (key.includes('🏷️') || /semantic/i.test(key)) return 'semantic'
+  if (key.includes('🌐') || /global/i.test(key)) return 'global'
+  if (key.includes('🔗') || /alias/i.test(key)) return 'alias'
   if (key.includes('🧩') || /component/i.test(key)) return 'component'
   return 'all'
 }
@@ -78,7 +78,7 @@ const flattenTokens = (source: unknown): FlattenedToken[] => {
         value: record.$value,
         path: keyPath.join(' / '),
         tokenType,
-        referencePath: category === 'primitive' ? '' : referencePath?.split('.').join(' / '),
+        referencePath: category === 'global' ? '' : referencePath?.split('.').join(' / '),
       })
       return
     }
@@ -163,8 +163,8 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
               onChange={event => setCategoryFilter(event.target.value as TokenCategory)}
             >
               <option value="all">All</option>
-              <option value="primitive">🧱 Primitive</option>
-              <option value="semantic">🏷️ Semantic</option>
+              <option value="global">🌐 Global</option>
+              <option value="alias">🔗 Alias</option>
               <option value="component">🧩 Component</option>
             </select>
           </div>

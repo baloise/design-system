@@ -101,7 +101,7 @@ $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 @include hybrid.component($host-selector, $css-selector, $use-host) {
   @each $space in $spaces {
     &.has-space-#{$space} {
-      --mod-divider-space: var(--ds-space-#{$space}-device);
+      --mod-divider-space: var(--ds-alias-space-#{$space}-device);
     }
   }
 }

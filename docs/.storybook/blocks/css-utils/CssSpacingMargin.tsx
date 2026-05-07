@@ -3,7 +3,7 @@ import { CssPropertyTable } from './helpers/CssPropertyTable'
 import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 
 export const CssSpacingMargin = ({}): React.ReactElement => {
-  const obj = tokens['🏷️ Semantic']['↔️ Space']
+  const obj = tokens['🔗 Alias']['↔️ Space']
   const keys = Object.keys(obj)
 
   const values = keys.map(key => ({

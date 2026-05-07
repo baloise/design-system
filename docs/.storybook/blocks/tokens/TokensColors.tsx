@@ -3,7 +3,7 @@ import React from 'react'
 import { Clipboard } from '../Clipboard'
 
 export const TokensColors = ({ overview }): React.ReactElement => {
-  const list = tokens['🧱 Primitive']['🌈 Color']
+  const list = tokens['🌐 Global']['🌈 Color']
 
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>

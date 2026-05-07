@@ -22,7 +22,7 @@ $host-selector: ('#text');
   @include vars.local(text-weight, var(--ds-body-weight));
   @include vars.local(text-line-height, var(--ds-body-line-height));
   @include vars.local(text-size, var(--ds-text-size-base-device));
-  @include vars.local(text-shadow, var(--ds-shadow-text));
+  @include vars.local(text-shadow, var(--ds-alias-shadow-text));
   @include vars.local(text-space, var(--ds-body-space));
 
   @include vars.local(text-shadow, none); // var(--ds-heading-shadow)

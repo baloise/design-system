@@ -20,8 +20,8 @@
 dl.description-list {
   @include vars.local(description-list-grid-term, 1fr);
   @include vars.local(description-list-grid-detail, 1fr);
-  @include vars.local(description-list-grid-row-gap, var(--ds-space-2xs-device));
-  @include vars.local(description-list-grid-column-gap, var(--ds-space-base-device));
+  @include vars.local(description-list-grid-row-gap, var(--ds-alias-space-2xs-device));
+  @include vars.local(description-list-grid-column-gap, var(--ds-alias-space-base-device));
 
   @include vars.local(description-list-term-color, var(--ds-description-list-term-color));
   @include vars.local(description-list-term-weight, var(--ds-description-list-term-weight));

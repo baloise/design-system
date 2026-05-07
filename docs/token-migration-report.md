@@ -15,12 +15,12 @@ This document summarizes how to migrate from the old token set to the new one. I
 
 ## 1. High‑level changes
 
-- Flattened primitives
-  - New primitives for typography, spacing, elevation, etc. use numeric suffixes:
-    - Font sizes: `--ds-font-size-12/14/16/...` instead of semantic size names.
+- Flattened globals
+  - New globals for typography, spacing, elevation, etc. use numeric suffixes:
+    - Font sizes: `--ds-font-size-12/14/16/...` instead of alias size names.
     - Spacing: `--ds-size-space-0/1/2/.../128` as raw values.
     - Elevation: `--ds-elevation-shadow-*`, `--ds-elevation-opacity-*`, `--ds-elevation-z-index-*`.
-- New semantic layers
+- New alias layers
   - Text: `--ds-text-*` (size, family, weight, line-height, color).
   - Layout: `--ds-space-*` (t‑shirt scale), `--ds-radius-*`, `--ds-container-width-*`, `--ds-breakpoint-*`.
   - Color: `--ds-background-color-*`, `--ds-border-color-*`, `--ds-text-color-*`.
@@ -34,25 +34,25 @@ This document summarizes how to migrate from the old token set to the new one. I
 
 ### 2.1 Palette rename: light‑blue → sky
 
-Old primitive palette:
+Old global palette:
 
 - `--ds-color-light-blue-1` … `--ds-color-light-blue-6`
 
-New primitive palette (same values, new name):
+New global palette (same values, new name):
 
 - `--ds-color-sky-1` … `--ds-color-sky-6`
 
 > **Migration:** wherever possible, replace `--ds-color-light-blue-*` with `--ds-color-sky-*`.
 
-### 2.2 Semantic color prefixes
+### 2.2 Alias color prefixes
 
-Old semantic tokens:
+Old alias tokens:
 
 - Text: `--ds-color-text-*`
 - Borders: `--ds-color-border-*`, `--ds-color-border`
 - Backgrounds: `--ds-color-background-*`
 
-New semantic tokens:
+New alias tokens:
 
 - Text: `--ds-text-color-*`
 - Borders: `--ds-border-color-*`
@@ -111,7 +111,7 @@ Old spacing names (global):
 
 Plus device variants like `--ds-space-large-tablet`, `--ds-space-normal-desktop`, etc.
 
-New spacing tokens use a t‑shirt scale and device variants, built on `--ds-size-space-*` primitives:
+New spacing tokens use a t‑shirt scale and device variants, built on `--ds-size-space-*` globals:
 
 - T‑shirt scale: `none`, `auto`, `2xs`, `xs`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`.
 - Device variants: `--ds-space-<size>-mobile/tablet/desktop`.
@@ -172,7 +172,7 @@ Conceptually, the old names map to the new t‑shirt text sizes like this:
 
 Again, `*` stands for the device suffix (`-mobile/-tablet/-desktop`).
 
-> **Implementation detail:** in `base.tokens.css` these t‑shirt sizes are defined by composing the numeric font primitives (`--ds-font-size-12/14/...`), so the exact rem values remain consistent with the old system.
+> **Implementation detail:** in `base.tokens.css` these t‑shirt sizes are defined by composing the numeric font globals (`--ds-font-size-12/14/...`), so the exact rem values remain consistent with the old system.
 
 ### 4.2 Line height and family/weight
 
@@ -196,11 +196,11 @@ Old radius tokens:
 - `--ds-radius-large`
 - `--ds-radius-rounded`
 
-New primitives:
+New globals:
 
 - `--ds-size-radius-0/1/2/3`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-radius-none` (→ size-radius-0)
 - `--ds-radius-base` (→ size-radius-1)
@@ -211,7 +211,7 @@ New semantic tokens:
 
 - `--ds-radius-normal` → `--ds-radius-base`
 - `--ds-radius-large` → `--ds-radius-lg`
-- `--ds-radius-rounded` → `--ds-radius-rounded` (same name, now via primitives)
+- `--ds-radius-rounded` → `--ds-radius-rounded` (same name, now via globlas)
 
 ### 5.2 Border width
 
@@ -221,11 +221,11 @@ Old tokens:
 - `--ds-border-width-normal`
 - `--ds-border-width-large`
 
-New primitives:
+New globlas:
 
 - `--ds-size-border-0/1/2/3`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-border-width-none` → `--ds-size-border-0`
 - `--ds-border-width-base` → `--ds-size-border-2`
@@ -241,11 +241,11 @@ Old tokens:
 - `--ds-container-size-compact` (896px)
 - `--ds-container-size-detail-page` (744px)
 
-New primitives:
+New globlas:
 
 - `--ds-size-container-1..5`, `--ds-size-container-full`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-container-width-fluid` → `--ds-size-container-full`
 - `--ds-container-width-base` → `--ds-size-container-5`
@@ -269,11 +269,11 @@ Old tokens:
 - `--ds-breakpoint-widescreen` (1440px)
 - `--ds-breakpoint-fullhd` (1920px)
 
-New primitives:
+New globlas:
 
 - `--ds-size-breakpoint-1..5`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-breakpoint-tablet` → size-breakpoint-1
 - `--ds-breakpoint-desktop` → size-breakpoint-2
@@ -303,12 +303,12 @@ Old tokens:
 - `--ds-shadow-large`
 - `--ds-shadow-header`
 
-New primitives:
+New globlas:
 
 - `--ds-font-shadow-0/1`
 - `--ds-elevation-shadow-0..4`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-text-shadow` (→ font-shadow-1)
 - `--ds-shadow-box-none` (→ elevation-shadow-0)
@@ -322,19 +322,19 @@ New semantic tokens:
 - `--ds-shadow-header` → `--ds-shadow-box-header`
 - `--ds-shadow-normal` → `--ds-shadow-box-base`
 - `--ds-shadow-large` → `--ds-shadow-box-elevated`
-- `--ds-shadow-small` → (closest primitive: `--ds-elevation-shadow-1`)
+- `--ds-shadow-small` → (closest global: `--ds-elevation-shadow-1`)
 
 ### 6.2 Opacity
 
-Old primitives:
+Old globlas:
 
 - `--ds-opacity-100/80/60/50/40/30/0`
 
-New primitives:
+New globlas:
 
 - `--ds-elevation-opacity-0/30/40/50/60/80/100`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-opacity-hidden` → elevation-opacity-0
 - `--ds-opacity-half` → elevation-opacity-50
@@ -356,11 +356,11 @@ Old tokens:
 
 - `--ds-z-index-tooltip`, `--ds-z-index-toast`, `--ds-z-index-modal`, `--ds-z-index-popup`, `--ds-z-index-navigation`, `--ds-z-index-sticky`, `--ds-z-index-mask`, `--ds-z-index-masked`, `--ds-z-index-deep`, `--ds-z-index`
 
-New primitives:
+New globlas:
 
 - `--ds-elevation-z-index-...`
 
-New semantic tokens:
+New alias tokens:
 
 - `--ds-z-index-deep`
 - `--ds-z-index-masked`
@@ -390,7 +390,7 @@ These tokens exist in `old.tokens.css` but have **no direct 1:1 counterpart** in
 
 ### 7.2 Border widths
 
-Semantic names no longer exist; only numeric primitives and `border-width-base/none` are present.
+Alias names no longer exist; only numeric globlas and `border-width-base/none` are present.
 
 - `--ds-border-width-small`
 - `--ds-border-width-normal` (covered indirectly by `--ds-border-width-base` → size‑border‑2, but the name itself is gone)
@@ -412,7 +412,7 @@ All specific z‑index roles (tooltip, toast, modal, etc.) still exist; only the
 
 ### 7.6 Numeric opacity aliases
 
-The exact numeric names are gone; use semantic opacity tokens instead.
+The exact numeric names are gone; use alias opacity tokens instead.
 
 - `--ds-opacity-100`
 - `--ds-opacity-80`
@@ -422,7 +422,7 @@ The exact numeric names are gone; use semantic opacity tokens instead.
 - `--ds-opacity-30`
 - `--ds-opacity-0`
 
-### 7.7 Old semantic color aggregates
+### 7.7 Old alias color aggregates
 
 The single‑name aggregate tokens are no longer present; instead, use the more explicit background/border/text tokens.
 
@@ -451,7 +451,7 @@ over a single aggregate color.
 
 ## 8. Open questions / TODOs
 
-- Decide whether to reintroduce semantic border width tokens (small/large) on top of `--ds-size-border-*`.
+- Decide whether to reintroduce alias border width tokens (small/large) on top of `--ds-size-border-*`.
 - Decide whether we still need a generic `--ds-z-index` or if all usages should move to role‑based tokens (`tooltip`, `modal`, etc.).
 - Decide on a replacement for `--ds-container-size-detail-page` (specific layout or reuse of `compact`/`modal`).
 - If we want design‑level control over animation timings, introduce new tokens (e.g. `--ds-animation-duration-base`, `--ds-animation-easing-base`) into `base.tokens.css`.

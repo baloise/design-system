@@ -68,11 +68,11 @@
   --ds-form-field-control-font-family: var(--ds-global-font-family-text);
   --ds-form-field-control-color: var(--ds-global-color-text-primary);
   --ds-form-field-control-placeholder-color: var(--ds-global-color-text-primary-light);
-  --ds-form-field-control-radius: var(--ds-radius-base);
+  --ds-form-field-control-radius: var(--ds-alias-radius-base);
   --ds-form-field-control-background: var(--ds-global-color-white);
   --ds-form-field-control-background-hover: var(--ds-global-color-grey-1);
   --ds-form-field-control-background-active: var(--ds-global-color-grey-1);
-  --ds-form-field-control-border-width: var(--ds-border-width-base);
+  --ds-form-field-control-border-width: var(--ds-alias-border-width-base);
   --ds-form-field-control-border-style: solid;
   --ds-form-field-control-border-color: var(--ds-global-color-border-base);
   --ds-form-field-control-border-color-hover: var(--ds-form-field-control-border-color);

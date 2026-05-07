@@ -46,7 +46,7 @@ export const generateTypography = async (options: BuildStylesExecutorSchema) => 
 
 const generateLineHeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: '🏷️ Semantic.🔤 Text.LineHeight',
+    token: '🔗 Alias.🔤 Text.LineHeight',
     property: 'line-height',
     replace: 'text-',
     responsive: false,
@@ -65,7 +65,7 @@ const generateTextOverflow = async () => {
 }
 
 const generateTextColors = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Color', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🔤 Text.Color', ...options })
   const values = utils.toProps({ tokens, replace: 'color-' })
   const property = 'color'
 
@@ -77,7 +77,7 @@ const generateTextColors = async (options: BuildStylesExecutorSchema) => {
 
 const generateFontFamily = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: '🏷️ Semantic.🔤 Text.Family',
+    token: '🔗 Alias.🔤 Text.Family',
     property: 'font-family',
     replace: 'text-family-',
     prefix: 'font-family',
@@ -107,13 +107,13 @@ const generateFontSizeRule = ({ keys, property, prefix, breakpoint = undefined }
   for (const index in keys) {
     const key = keys[index]
     const oldKey = tshirtSizesMapping[key.toLowerCase().replace('text-size-', '')]
-    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--ds-text-size-${key}-device)`
+    values[`${prefix}-${key}${oldKey ? `, .${prefix}-${oldKey}` : ''}`] = `var(--ds-alias-text-size-${key}-device)`
   }
   return utils.styleClass({ property, values, important: true, breakpoint })
 }
 
 const generateFontSize = async (options: BuildStylesExecutorSchema) => {
-  const tokens = await utils.getTokens({ token: '🏷️ Semantic.🔤 Text.Size', ...options })
+  const tokens = await utils.getTokens({ token: '🔗 Alias.🔤 Text.Size', ...options })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop'] })
   const property = 'font-size'
 
@@ -148,7 +148,7 @@ const generateTextTransform = () => {
 
 const generateFontWeight = async (options: BuildStylesExecutorSchema) => {
   return utils.staticClassByToken({
-    token: '🏷️ Semantic.🔤 Text.Weight',
+    token: '🔗 Alias.🔤 Text.Weight',
     property: 'font-weight',
     replace: 'text-weight-',
     prefix: 'font-weight',

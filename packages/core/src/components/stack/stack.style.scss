@@ -7,21 +7,21 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
   */
 
 @mixin gap($space, $property: gap) {
-  #{$property}: var(--ds-space-#{$space}-device);
+  #{$property}: var(--ds-alias-space-#{$space}-device);
 }
 
 @mixin p($space) {
-  padding: var(--ds-space-#{$space}-device);
+  padding: var(--ds-alias-space-#{$space}-device);
 }
 
 @mixin px($space) {
-  padding-left: var(--ds-space-#{$space}-device);
-  padding-right: var(--ds-space-#{$space}-device);
+  padding-left: var(--ds-alias-space-#{$space}-device);
+  padding-right: var(--ds-alias-space-#{$space}-device);
 }
 
 @mixin py($space) {
-  padding-top: var(--ds-space-#{$space}-device);
-  padding-bottom: var(--ds-space-#{$space}-device);
+  padding-top: var(--ds-alias-space-#{$space}-device);
+  padding-bottom: var(--ds-alias-space-#{$space}-device);
 }
 
 /**

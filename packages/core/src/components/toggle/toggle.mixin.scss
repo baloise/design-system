@@ -20,17 +20,17 @@
     // dimensions
     @include vars.local(toggle-height, 1.5rem);
     @include vars.local(toggle-width, 2.5rem);
-    @include vars.local(toggle-border-width, var(--ds-border-width-base));
-    @include vars.local(toggle-radius, var(--ds-radius-rounded));
+    @include vars.local(toggle-border-width, var(--ds-alias-border-width-base));
+    @include vars.local(toggle-radius, var(--ds-alias-radius-rounded));
 
     // label layout
     @include vars.local(toggle-padding-y, 0.25rem);
     @include vars.local(toggle-min-height, 3rem);
 
     // Tile
-    @include vars.local(toggle-tile-radius, var(--ds-radius-base));
+    @include vars.local(toggle-tile-radius, var(--ds-alias-radius-base));
     @include vars.local(toggle-tile-padding, 1rem);
-    @include vars.local(toggle-tile-border-width, var(--ds-border-width-base));
+    @include vars.local(toggle-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(toggle-tile-base-background-color, inherit);
     @include vars.local(toggle-tile-base-border-color, var(--ds-global-color-grey-3));
@@ -139,7 +139,7 @@
   }
 
   #{$wrapper} input[type='checkbox']:focus-visible {
-    outline: var(--ds-interaction-focus-width, 2px) solid var(--ds-interaction-focus-color-base);
+    outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--ds-alias-interaction-focus-color-base);
     outline-offset: 2px;
     border-radius: var(--_toggle-radius);
   }

@@ -91,7 +91,7 @@ $host-selector: ('#button');
 
   border-radius: var(--_button-radius);
   border-style: var(--_button-border-style);
-  border-width: var(--ds-border-width-base);
+  border-width: var(--ds-alias-border-width-base);
 
   width: var(--_button-width, fit-content);
   min-width: var(--_button-min-width);
@@ -500,23 +500,23 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
 // --------------------------------
 @include hybrid.host($use-host) {
   :host(.has-shadow:not(.is-link):not(.is-text)) {
-    --mod-button-box-shadow: var(--ds-shadow-box-base);
+    --mod-button-box-shadow: var(--ds-alias-shadow-box-base);
   }
 
   :host(.is-text.has-shadow),
   :host(.is-link.has-shadow) {
-    --mod-button-text-shadow: var(--ds-shadow-text);
+    --mod-button-text-shadow: var(--ds-alias-shadow-text);
   }
 }
 
 @include hybrid.styles('button', $use-host) {
   &.has-shadow:not(.is-link, .is-text) {
-    --mod-button-box-shadow: var(--ds-shadow-box-base);
+    --mod-button-box-shadow: var(--ds-alias-shadow-box-base);
   }
 
   &.is-text.has-shadow,
   &.is-link.has-shadow {
-    --mod-button-text-shadow: var(--ds-shadow-text);
+    --mod-button-text-shadow: var(--ds-alias-shadow-text);
   }
 }
 

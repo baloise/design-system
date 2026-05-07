@@ -12,8 +12,8 @@
   <rect x="20" y="28" width="215" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
   <text x="127" y="22" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#334155">📱 Mobile  (default)</text>
   <rect x="30" y="38" width="195" height="24" rx="5" fill="#e2e8f0"/>
-  <text x="127" y="55" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e293b">--ds-text-size-3xl-mobile</text>
-  <text x="127" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">→ var(--ds-font-size-28)  =  1.75rem</text>
+  <text x="127" y="55" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e293b">--ds-alias-font-size-3xl-mobile</text>
+  <text x="127" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">→ var(--ds-global-font-size-28)  =  1.75rem</text>
   <!-- H1 preview at 28px equiv -->
   <text x="127" y="132" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="700" fill="#0f172a">Heading 1</text>
   <text x="127" y="152" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">28px / 1.75rem</text>
@@ -22,8 +22,8 @@
   <rect x="272" y="28" width="215" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
   <text x="379" y="22" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#334155">💻 Tablet  (≥ 769px)</text>
   <rect x="282" y="38" width="195" height="24" rx="5" fill="#e2e8f0"/>
-  <text x="379" y="55" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e293b">--ds-text-size-3xl-tablet</text>
-  <text x="379" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">→ var(--ds-font-size-40)  =  2.5rem</text>
+  <text x="379" y="55" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e293b">--ds-alias-font-size-3xl-tablet</text>
+  <text x="379" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">→ var(--ds-global-font-size-40)  =  2.5rem</text>
   <!-- H1 preview at 40px equiv -->
   <text x="379" y="128" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="700" fill="#0f172a">Heading 1</text>
   <text x="379" y="152" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">40px / 2.5rem</text>
@@ -32,8 +32,8 @@
   <rect x="524" y="28" width="215" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
   <text x="631" y="22" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#334155">🖥️ Desktop  (≥ 1024px)</text>
   <rect x="534" y="38" width="195" height="24" rx="5" fill="#e2e8f0"/>
-  <text x="631" y="55" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e293b">--ds-text-size-3xl-desktop</text>
-  <text x="631" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">→ var(--ds-font-size-40)  =  2.5rem</text>
+  <text x="631" y="55" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e293b">--ds-alias-font-size-3xl-desktop</text>
+  <text x="631" y="75" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">→ var(--ds-global-font-size-40)  =  2.5rem</text>
   <!-- H1 preview at 40px equiv -->
   <text x="631" y="128" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="700" fill="#0f172a">Heading 1</text>
   <text x="631" y="152" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">40px / 2.5rem</text>
@@ -48,7 +48,7 @@
   <text x="380" y="194" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">-device token — auto-responsive (use this in code)</text>
 
   <rect x="32" y="212" width="260" height="24" rx="5" fill="#dbeafe"/>
-  <text x="162" y="229" text-anchor="middle" font-family="monospace" font-size="11" font-weight="600" fill="#1e40af">--ds-text-size-3xl-device</text>
+  <text x="162" y="229" text-anchor="middle" font-family="monospace" font-size="11" font-weight="600" fill="#1e40af">--ds-alias-font-size-3xl-device</text>
 
   <text x="312" y="229" font-family="sans-serif" font-size="10" fill="#3b82f6">= 1.75rem  (mobile default)</text>
   <text x="312" y="248" font-family="sans-serif" font-size="10" fill="#3b82f6">= 2.5rem   at @media (min-width: 769px)</text>

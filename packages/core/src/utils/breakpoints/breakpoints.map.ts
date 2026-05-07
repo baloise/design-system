@@ -1,16 +1,16 @@
 import {
-  DsBreakpointTablet,
-  DsBreakpointDesktop,
-  DsBreakpointDesktopLg,
-  DsBreakpointDesktopXl,
-  DsBreakpointDesktop2Xl,
+  DsAliasBreakpointTablet,
+  DsAliasBreakpointDesktop,
+  DsAliasBreakpointDesktopLg,
+  DsAliasBreakpointDesktopXl,
+  DsAliasBreakpointDesktop2Xl,
 } from '@baloise/ds-tokens'
 
-const breakpointTablet = DsBreakpointTablet
-const breakpointDesktop = DsBreakpointDesktop
-const breakpointDesktopLg = DsBreakpointDesktopLg
-const breakpointDesktopXl = DsBreakpointDesktopXl
-const breakpointDesktop2Xl = DsBreakpointDesktop2Xl
+const breakpointTablet = DsAliasBreakpointTablet
+const breakpointDesktop = DsAliasBreakpointDesktop
+const breakpointDesktopLg = DsAliasBreakpointDesktopLg
+const breakpointDesktopXl = DsAliasBreakpointDesktopXl
+const breakpointDesktop2Xl = DsAliasBreakpointDesktop2Xl
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth

@@ -6,14 +6,14 @@ This document tracks recent token migration work in the SCSS sources of `package
 
 ## 1. Color token migrations (summary)
 
-Legacy primitive color tokens based on the `light-blue` palette were replaced by the new `sky` palette primitives defined in `base.tokens.css`.
+Legacy global color tokens based on the `light-blue` palette were replaced by the new `sky` palette globals defined in `base.tokens.css`.
 
 - Old pattern: `--ds-color-light-blue-[1-6]`
 - New pattern: `--ds-color-sky-[1-6]`
 
 All remaining SCSS usages of `--ds-color-light-blue-*` in `packages/core` and `packages/styles` were migrated to the corresponding `--ds-color-sky-*` tokens in earlier work.
 
-> Note: Many of these usages are still _primitive_ color tokens (e.g. background, border, text). Where appropriate, these can later be refactored to use semantic tokens such as `--ds-background-color-*`, `--ds-border-color-*`, or `--ds-text-color-*` once design decisions are made.
+> Note: Many of these usages are still _global_ color tokens (e.g. background, border, text). Where appropriate, these can later be refactored to use alias tokens such as `--ds-background-color-*`, `--ds-border-color-*`, or `--ds-text-color-*` once design decisions are made.
 
 ---
 
@@ -144,4 +144,4 @@ If you want to fully align naming, these compact theme alias variables can later
 
 - There is no `5xl` spacing token in `base.tokens.css`. The legacy `xxxxx-large` alias is therefore mapped to `4xl` (largest available) in the compact theme.
 - Component-level spacing is now backed by the canonical spacing scale, so future adjustments can be made centrally in `base.tokens.css` without touching component SCSS.
-- Next potential step: audit remaining primitive color usages (now on the `sky` palette) and gradually introduce semantic spacing/space-\* tokens where design semantics are clear.
+- Next potential step: audit remaining global color usages (now on the `sky` palette) and gradually introduce alias spacing/space-\* tokens where design alias are clear.

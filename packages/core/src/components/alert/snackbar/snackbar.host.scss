@@ -21,7 +21,7 @@
 
 :host {
   @include vars.base(snackbar);
-  @include vars.local(snackbar-shadow, var(--ds-shadow-box-base));
+  @include vars.local(snackbar-shadow, var(--ds-alias-shadow-box-base));
   @include vars.local(snackbar-radius, var(--ds-snackbar-radius));
   @include vars.local(snackbar-bg, var(--ds-snackbar-default-color-bg-base));
   @include vars.local(snackbar-color, var(--ds-snackbar-default-color-text-base));

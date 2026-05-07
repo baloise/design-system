@@ -3,57 +3,57 @@
     "z-index": [
       {
         "class": "z-index-deep",
-        "css": "z-index: var(--ds-z-index-deep);",
+        "css": "z-index: var(--ds-alias-z-index-deep);",
         "property": "z-index",
-        "value": "var(--ds-z-index-deep)"
+        "value": "var(--ds-alias-z-index-deep)"
       },
       {
         "class": "z-index-masked",
-        "css": "z-index: var(--ds-z-index-masked);",
+        "css": "z-index: var(--ds-alias-z-index-masked);",
         "property": "z-index",
-        "value": "var(--ds-z-index-masked)"
+        "value": "var(--ds-alias-z-index-masked)"
       },
       {
         "class": "z-index-mask",
-        "css": "z-index: var(--ds-z-index-mask);",
+        "css": "z-index: var(--ds-alias-z-index-mask);",
         "property": "z-index",
-        "value": "var(--ds-z-index-mask)"
+        "value": "var(--ds-alias-z-index-mask)"
       },
       {
         "class": "z-index-sticky",
-        "css": "z-index: var(--ds-z-index-sticky);",
+        "css": "z-index: var(--ds-alias-z-index-sticky);",
         "property": "z-index",
-        "value": "var(--ds-z-index-sticky)"
+        "value": "var(--ds-alias-z-index-sticky)"
       },
       {
         "class": "z-index-navigation",
-        "css": "z-index: var(--ds-z-index-navigation);",
+        "css": "z-index: var(--ds-alias-z-index-navigation);",
         "property": "z-index",
-        "value": "var(--ds-z-index-navigation)"
+        "value": "var(--ds-alias-z-index-navigation)"
       },
       {
         "class": "z-index-popup",
-        "css": "z-index: var(--ds-z-index-popup);",
+        "css": "z-index: var(--ds-alias-z-index-popup);",
         "property": "z-index",
-        "value": "var(--ds-z-index-popup)"
+        "value": "var(--ds-alias-z-index-popup)"
       },
       {
         "class": "z-index-modal",
-        "css": "z-index: var(--ds-z-index-modal);",
+        "css": "z-index: var(--ds-alias-z-index-modal);",
         "property": "z-index",
-        "value": "var(--ds-z-index-modal)"
+        "value": "var(--ds-alias-z-index-modal)"
       },
       {
         "class": "z-index-toast",
-        "css": "z-index: var(--ds-z-index-toast);",
+        "css": "z-index: var(--ds-alias-z-index-toast);",
         "property": "z-index",
-        "value": "var(--ds-z-index-toast)"
+        "value": "var(--ds-alias-z-index-toast)"
       },
       {
         "class": "z-index-tooltip",
-        "css": "z-index: var(--ds-z-index-tooltip);",
+        "css": "z-index: var(--ds-alias-z-index-tooltip);",
         "property": "z-index",
-        "value": "var(--ds-z-index-tooltip)"
+        "value": "var(--ds-alias-z-index-tooltip)"
       }
     ]
   },
@@ -61,33 +61,33 @@
     "opacity": [
       {
         "class": "opacity-hidden",
-        "css": "opacity: var(--ds-opacity-hidden);",
+        "css": "opacity: var(--ds-alias-opacity-hidden);",
         "property": "opacity",
-        "value": "var(--ds-opacity-hidden)"
+        "value": "var(--ds-alias-opacity-hidden)"
       },
       {
         "class": "opacity-half",
-        "css": "opacity: var(--ds-opacity-half);",
+        "css": "opacity: var(--ds-alias-opacity-half);",
         "property": "opacity",
-        "value": "var(--ds-opacity-half)"
+        "value": "var(--ds-alias-opacity-half)"
       },
       {
         "class": "opacity-disabled",
-        "css": "opacity: var(--ds-opacity-disabled);",
+        "css": "opacity: var(--ds-alias-opacity-disabled);",
         "property": "opacity",
-        "value": "var(--ds-opacity-disabled)"
+        "value": "var(--ds-alias-opacity-disabled)"
       },
       {
         "class": "opacity-backdrop",
-        "css": "opacity: var(--ds-opacity-backdrop);",
+        "css": "opacity: var(--ds-alias-opacity-backdrop);",
         "property": "opacity",
-        "value": "var(--ds-opacity-backdrop)"
+        "value": "var(--ds-alias-opacity-backdrop)"
       },
       {
         "class": "opacity-full",
-        "css": "opacity: var(--ds-opacity-full);",
+        "css": "opacity: var(--ds-alias-opacity-full);",
         "property": "opacity",
-        "value": "var(--ds-opacity-full)"
+        "value": "var(--ds-alias-opacity-full)"
       }
     ]
   },
@@ -95,27 +95,27 @@
     "box-shadow": [
       {
         "class": "shadow-none",
-        "css": "box-shadow: var(--ds-shadow-box-none);",
+        "css": "box-shadow: var(--ds-alias-shadow-box-none);",
         "property": "box-shadow",
-        "value": "var(--ds-shadow-box-none)"
+        "value": "var(--ds-alias-shadow-box-none)"
       },
       {
         "class": "shadow-header",
-        "css": "box-shadow: var(--ds-shadow-box-header);",
+        "css": "box-shadow: var(--ds-alias-shadow-box-header);",
         "property": "box-shadow",
-        "value": "var(--ds-shadow-box-header)"
+        "value": "var(--ds-alias-shadow-box-header)"
       },
       {
         "class": "shadow",
-        "css": "box-shadow: var(--ds-shadow-box-base);",
+        "css": "box-shadow: var(--ds-alias-shadow-box-base);",
         "property": "box-shadow",
-        "value": "var(--ds-shadow-box-base)"
+        "value": "var(--ds-alias-shadow-box-base)"
       },
       {
         "class": "shadow-elevated",
-        "css": "box-shadow: var(--ds-shadow-box-elevated);",
+        "css": "box-shadow: var(--ds-alias-shadow-box-elevated);",
         "property": "box-shadow",
-        "value": "var(--ds-shadow-box-elevated)"
+        "value": "var(--ds-alias-shadow-box-elevated)"
       }
     ]
   },

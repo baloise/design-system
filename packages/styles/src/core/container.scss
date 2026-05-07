@@ -5,18 +5,18 @@
   margin: 0 auto;
   position: relative;
   width: auto;
-  padding-left: var(--ds-container-space-device);
-  padding-right: var(--ds-container-space-device);
+  padding-left: var(--ds-alias-container-space-device);
+  padding-right: var(--ds-alias-container-space-device);
 
   @include desktop {
-    max-width: var(--ds-container-width-base);
+    max-width: var(--ds-alias-container-width-base);
   }
 
   &.is-fluid {
-    max-width: var(--ds-container-width-fluid) !important;
+    max-width: var(--ds-alias-container-width-fluid) !important;
   }
 
   &.is-compact {
-    max-width: var(--ds-container-width-compact) !important;
+    max-width: var(--ds-alias-container-width-compact) !important;
   }
 }

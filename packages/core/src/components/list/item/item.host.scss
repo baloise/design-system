@@ -43,7 +43,7 @@
   @include vars.local(list-item-border-width, var(--ds-list-item-border-width, 2px));
   @include vars.local(list-item-border-radius, 12px);
 
-  @include vars.local(list-item-accordion-py, var(--ds-space-base-device));
+  @include vars.local(list-item-accordion-py, var(--ds-alias-space-base-device));
 
   @include vars.local(list-item-action-icon-size, var(--ds-icon-size-xs));
 
@@ -247,7 +247,7 @@ $size-aliases: (
           right: 0;
           bottom: 0;
           z-index: 1;
-          border-radius: var(--ds-radius-base);
+          border-radius: var(--ds-alias-radius-base);
         }
       }
     }
