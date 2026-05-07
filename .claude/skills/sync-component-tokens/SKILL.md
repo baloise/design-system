@@ -118,10 +118,10 @@ After extracting the four sets, classify every item:
 | `vars.local(name, var(--ds-color-*))`          | ✗ Violation (2b)  | Create `--ds-<component>-name` token; update SCSS  |
 | `vars.local(name, var(--ds-radius-*))`         | ✗ Violation (2b)  | Same                                               |
 | `vars.local(name, var(--ds-text-*))`           | ✗ Violation (2b)  | Same                                               |
-| `vars.local(name, 0.5rem)`                     | ⚠ Candidate (2c) | Create `--ds-<component>-name` token if confirmed  |
+| `vars.local(name, 0.5rem)`                     | ⚠ Candidate (2c)  | Create `--ds-<component>-name` token if confirmed  |
 | `var(--ds-color-*)` in CSS rule                | ✗ Violation (2d)  | Add vars.local + component token + use private var |
 | `var(--ds-text-*)` in CSS rule                 | ✗ Violation (2d)  | Same                                               |
-| `--mod-*: var(--ds-*)` overrides               | ℹ Informational  | No action required (transient state overrides)     |
+| `--mod-*: var(--ds-*)` overrides               | ℹ Informational   | No action required (transient state overrides)     |
 
 Check whether component tokens (`--ds-<component>-*`) exist in the compiled CSS:
 

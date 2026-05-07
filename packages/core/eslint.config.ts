@@ -4,7 +4,16 @@ import baseConfig from '../../eslint.config.base'
 import dsPlugin from '@baloise/ds-eslint-plugin'
 
 export default tseslint.config(
-  { ignores: ['**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*', 'loader/**', 'components/**', 'www/**', 'playwright-report/**'] },
+  {
+    ignores: [
+      '**/vite.config.*.timestamp*',
+      '**/vitest.config.*.timestamp*',
+      'loader/**',
+      'components/**',
+      'www/**',
+      'playwright-report/**',
+    ],
+  },
   ...baseConfig,
   {
     files: ['**/*.play.ts'],

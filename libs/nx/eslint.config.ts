@@ -14,7 +14,16 @@ export default tseslint.config(
       '@nx/dependency-checks': [
         'error',
         {
-          ignoredDependencies: ['@nx/devkit', '@nx/vite', 'vite', 'util', 'archiver', 'typescript-eslint', '@nx/eslint-plugin', 'jsonc-eslint-parser'],
+          ignoredDependencies: [
+            '@nx/devkit',
+            '@nx/vite',
+            'vite',
+            'util',
+            'archiver',
+            'typescript-eslint',
+            '@nx/eslint-plugin',
+            'jsonc-eslint-parser',
+          ],
         },
       ],
     },

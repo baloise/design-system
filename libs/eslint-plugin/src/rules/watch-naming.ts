@@ -11,8 +11,7 @@ export const watchNaming = createRule({
     type: 'suggestion',
     docs: { description: '@Watch("propName") methods must be named propNameChanged.' },
     messages: {
-      badWatchName:
-        '@Watch("{{propName}}") method "{{actual}}" must be named "{{expected}}".',
+      badWatchName: '@Watch("{{propName}}") method "{{actual}}" must be named "{{expected}}".',
     },
     schema: [],
   },

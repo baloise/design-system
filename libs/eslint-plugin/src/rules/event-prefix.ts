@@ -11,8 +11,7 @@ export const eventPrefix = createRule({
     type: 'problem',
     docs: { description: '@Event() class fields must start with "ds".' },
     messages: {
-      missingDsPrefix:
-        '@Event() field "{{name}}" must start with "ds" (e.g. "ds{{capitalized}}").',
+      missingDsPrefix: '@Event() field "{{name}}" must start with "ds" (e.g. "ds{{capitalized}}").',
     },
     schema: [],
   },

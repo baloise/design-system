@@ -23,7 +23,10 @@ export const methodPrivate = createRule({
   name: 'method-private',
   meta: {
     type: 'suggestion',
-    docs: { description: 'All class methods must be private unless they are lifecycle hooks or decorated with @Method, @Watch, @Listen, or @Logger.' },
+    docs: {
+      description:
+        'All class methods must be private unless they are lifecycle hooks or decorated with @Method, @Watch, @Listen, or @Logger.',
+    },
     messages: {
       mustBePrivate:
         'Method "{{name}}" must be private. Add the private keyword, or it should be a lifecycle hook / decorated with @Method, @Watch, or @Listen.',

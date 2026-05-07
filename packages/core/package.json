@@ -33,7 +33,7 @@
     "@floating-ui/dom": "^1.7.6",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^4.43.4",
-    "big.js": "^6.2.1",
+    "big.js": "^7.0.1",
     "contactjs": "^2.1.7",
     "filesize.js": "^2.0.0",
     "dompurify": "^3.4.2",

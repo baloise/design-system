@@ -11,8 +11,7 @@ export const listenNaming = createRule({
     type: 'suggestion',
     docs: { description: '@Listen() methods must be named listenTo<Event>.' },
     messages: {
-      badListenName:
-        '@Listen() method "{{name}}" must be named listenTo<Event> (e.g. listenToClick, listenToKeyDown).',
+      badListenName: '@Listen() method "{{name}}" must be named listenTo<Event> (e.g. listenToClick, listenToKeyDown).',
     },
     schema: [],
   },

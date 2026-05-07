@@ -1,9 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/utils'
 
-type DecoratedNode =
-  | TSESTree.ClassDeclaration
-  | TSESTree.MethodDefinition
-  | TSESTree.PropertyDefinition
+type DecoratedNode = TSESTree.ClassDeclaration | TSESTree.MethodDefinition | TSESTree.PropertyDefinition
 
 /** Returns true if the node has a decorator with the given name (e.g. 'Prop', 'Listen'). */
 export function hasDecorator(node: DecoratedNode, name: string): boolean {
@@ -15,11 +12,8 @@ export function getDecorator(node: DecoratedNode, name: string): TSESTree.Decora
   for (const decorator of node.decorators ?? []) {
     const expr = decorator.expression
     if (expr.type === 'Identifier' && expr.name === name) return decorator
-    if (
-      expr.type === 'CallExpression' &&
-      expr.callee.type === 'Identifier' &&
-      expr.callee.name === name
-    ) return decorator
+    if (expr.type === 'CallExpression' && expr.callee.type === 'Identifier' && expr.callee.name === name)
+      return decorator
   }
   return null
 }

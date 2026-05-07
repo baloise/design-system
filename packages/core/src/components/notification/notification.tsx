@@ -5,7 +5,6 @@ import {
   Logger,
   type LogInstance,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'
@@ -152,20 +151,9 @@ export class Notification implements DsComponentInterface {
    */
 
   render() {
-    let a11yAttributes = {}
-    if (this.alert) {
-      a11yAttributes = {
-        'role': 'alert',
-        'aria-live': 'assertive',
-        'aria-atomic': 'true',
-      }
-    } else {
-      a11yAttributes = {
-        'role': 'status',
-        'aria-live': 'polite',
-        'aria-atomic': 'true',
-      }
-    }
+    const a11yAttributes: { [key: string]: string } = this.alert
+      ? { 'role': 'alert', 'aria-live': 'assertive', 'aria-atomic': 'true' }
+      : { 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }
 
     return (
       <Host

@@ -10,7 +10,8 @@ export const noRelativeImports = createRule({
     type: 'problem',
     docs: { description: 'Use @utils and @global path aliases instead of relative paths.' },
     messages: {
-      useAlias: 'Use @utils or @global instead of relative path "{{path}}". Relative imports to ../../utils or ../../global are not allowed.',
+      useAlias:
+        'Use @utils or @global instead of relative path "{{path}}". Relative imports to ../../utils or ../../global are not allowed.',
     },
     schema: [],
   },

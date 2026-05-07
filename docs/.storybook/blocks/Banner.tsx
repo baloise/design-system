@@ -85,34 +85,20 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
   )
 }
 
-export const BannerTabs = ({ of, children, color, label, section, puzzle, tabs }): React.ReactElement => {
-  let title = label
-  let subtitle = section
+export const BannerTabs = ({ of, children, color, tabs }): React.ReactElement => {
   let isDeprecated = false
-  let componentName = ''
 
   if (of) {
     const resolvedOf = useOf(of || 'story', ['meta'])
     const metaTitle = resolvedOf.preparedMeta.title
     const metaTitles = metaTitle.split('/')
     isDeprecated = metaTitles.includes('Deprecated')
-    title = label || metaTitles[metaTitles.length - 1]
-    subtitle = section || metaTitles.slice(0, -1).join(' / ')
-    componentName = title.toLowerCase().replace(/\s+/g, '-')
   }
 
-  const definedColor = (subtitle || '').includes('Components') ? 'red' : color || 'primary'
-  const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
+  const definedColor = color || 'primary'
   const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
   const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
   const className = `sb-unstyled ${background} ${text}`
-
-  const puzzles = {
-    green: PuzzleGreen,
-    purple: PuzzlePurple,
-    yellow: PuzzleYellow,
-    red: PuzzleRed,
-  }
 
   return (
     <div

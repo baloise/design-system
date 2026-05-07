@@ -81,13 +81,13 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
   }
 
   &:not(
-      .as-row,
-      .as-row-reverse,
-      .has-direction-row,
-      .has-direction-row-reverse,
-      .is-horizontal,
-      .is-horizontal-reverse
-    ) {
+    .as-row,
+    .as-row-reverse,
+    .has-direction-row,
+    .has-direction-row-reverse,
+    .is-horizontal,
+    .is-horizontal-reverse
+  ) {
     // TOP ALIGNMENTS
     &.align-top-left,
     &.align-top-start {
