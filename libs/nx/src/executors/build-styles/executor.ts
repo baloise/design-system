@@ -32,15 +32,17 @@ export default async function runExecutor(options: BuildStylesExecutorSchema) {
     // generate css utils
     if (!options.dev) {
       const startTimeUtilities = process.hrtime.bigint()
-      await generateBackgroundColors(options)
-      await generateBorder(options)
-      await generateElevation(options)
-      await generateFlex(options)
-      await generateInteractions(options)
-      await generateLayout(options)
-      await generateSizing(options)
-      await generateSpacing(options)
-      await generateTypography(options)
+      await Promise.all([
+        generateBackgroundColors(options),
+        generateBorder(options),
+        generateElevation(options),
+        generateFlex(options),
+        generateInteractions(options),
+        generateLayout(options),
+        generateSizing(options),
+        generateSpacing(options),
+        generateTypography(options),
+      ])
       console.log(`Generated utilities in ${formatSeconds(startTimeUtilities)}`)
 
       await mkdir(join(options.projectRoot, 'css'))

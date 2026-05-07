@@ -177,11 +177,17 @@ $block-spacing: 0.25rem !default;
 }
 
 @mixin ltr-position($spacing, $right: true) {
-  $normal: if($right, 'right', 'left');
+  $normal: 'right';
+  @if not $right {
+    $normal: 'left';
+  }
   #{$normal}: $spacing;
 }
 
 @mixin ltr-property($property, $spacing, $right: true) {
-  $normal: if($right, 'right', 'left');
+  $normal: 'right';
+  @if not $right {
+    $normal: 'left';
+  }
   #{$property}-#{$normal}: $spacing;
 }

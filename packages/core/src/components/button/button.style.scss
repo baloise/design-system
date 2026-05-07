@@ -284,7 +284,7 @@ $colors: (
 // Inverted Colors
 // --------------------------------
 
-$inverted-colors: ('secondary', 'tertiary', 'text' 'link');
+$inverted-colors: ('secondary', 'tertiary', 'text', 'link');
 
 @each $color in $inverted-colors {
   @include hybrid.host($use-host) {

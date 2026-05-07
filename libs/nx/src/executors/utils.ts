@@ -1,12 +1,14 @@
-import autoprefixer from 'autoprefixer'
 import { execSync } from 'child_process'
-import CleanCSS from 'clean-css'
 import { mkdir, writeFile } from 'fs/promises'
 import { glob } from 'glob'
+import { browserslistToTargets, transform } from 'lightningcss'
+import browserslist from 'browserslist'
 import { basename, dirname, join, relative } from 'path'
-import postcss from 'postcss'
-import { compileAsync } from 'sass'
+import { compileAsync } from 'sass-embedded'
 import ts from 'typescript'
+
+const lcTargets = browserslistToTargets(browserslist('>0.5%, not dead'))
+const IS_RELEASE = process.env['DS_RELEASE'] === 'true'
 
 export const NEWLINE = '\n'
 
@@ -27,29 +29,34 @@ export async function compileSass(file: string, options: { projectRoot: string; 
 
   const sassResult = await compileAsync(file, {
     loadPaths: ['node_modules'],
-    sourceMap: true,
-    sourceMapIncludeSources: true,
+    sourceMap: !IS_RELEASE,
+    sourceMapIncludeSources: !IS_RELEASE,
   })
 
-  const postcssResult = await postcss([autoprefixer({ add: true, grid: true, flexbox: true })])
-    .process(sassResult.css, {
-      from: `${options.projectRoot}/css/*.css`,
-      to: `${options.projectRoot}/css`,
-      map: {
-        inline: false,
-        annotation: join(folderPath, `${fileName}.css.map`),
-      },
-    })
-    .async()
+  const { code: prefixedCode, map: prefixedMap } = transform({
+    filename: `${fileName}.css`,
+    code: Buffer.from(sassResult.css),
+    sourceMap: !IS_RELEASE,
+    targets: lcTargets,
+    errorRecovery: true,
+  })
 
-  const cssContent = postcssResult.toString()
-  const cleanResult = new CleanCSS({ compatibility: '*', level: 2 }).minify(cssContent)
+  const { code: minCode } = transform({
+    filename: `${fileName}.css`,
+    code: prefixedCode,
+    minify: true,
+    targets: lcTargets,
+    errorRecovery: true,
+  })
 
   const outputPath = join('css', folderPath)
   await mkdir(join(options.projectRoot, outputPath), { recursive: true })
-  await writeFile(join(options.projectRoot, outputPath, `${fileName}.css`), cssContent)
-  await writeFile(join(options.projectRoot, outputPath, `${fileName}.css.map`), JSON.stringify(sassResult.sourceMap))
-  await writeFile(join(options.projectRoot, outputPath, `${fileName}.min.css`), cleanResult.styles)
+  await writeFile(join(options.projectRoot, outputPath, `${fileName}.css`), prefixedCode)
+  await writeFile(
+    join(options.projectRoot, outputPath, `${fileName}.css.map`),
+    prefixedMap instanceof Uint8Array ? prefixedMap : '',
+  )
+  await writeFile(join(options.projectRoot, outputPath, `${fileName}.min.css`), minCode)
 }
 
 export async function compileSassToMergedFile(
@@ -84,27 +91,29 @@ export async function compileSassToMergedFile(
     }
   }
 
-  // Apply autoprefixer to the merged CSS
   const folderPath = options.folderPath || ''
-  const postcssResult = await postcss([autoprefixer({ add: true, grid: true, flexbox: true })])
-    .process(mergedCss, {
-      from: `${options.projectRoot}/css/*.css`,
-      to: `${options.projectRoot}/css`,
-      map: {
-        inline: false,
-        annotation: join(folderPath, `${outputFileName}.map`),
-      },
-    })
-    .async()
 
-  const cssContent = postcssResult.toString()
-  const cleanResult = new CleanCSS({ compatibility: '*', level: 2 }).minify(cssContent)
+  const { code: prefixedCode } = transform({
+    filename: outputFileName,
+    code: Buffer.from(mergedCss),
+    sourceMap: false,
+    targets: lcTargets,
+    errorRecovery: true,
+  })
+
+  const { code: minCode } = transform({
+    filename: outputFileName,
+    code: prefixedCode,
+    minify: true,
+    targets: lcTargets,
+    errorRecovery: true,
+  })
 
   const outputPath = join('css', folderPath)
   await mkdir(join(options.projectRoot, outputPath), { recursive: true })
-  await writeFile(join(options.projectRoot, outputPath, outputFileName), cssContent)
+  await writeFile(join(options.projectRoot, outputPath, outputFileName), prefixedCode)
   await writeFile(join(options.projectRoot, outputPath, `${outputFileName}.map`), JSON.stringify(mergedSourceMap))
-  await writeFile(join(options.projectRoot, outputPath, outputFileName.replace('.css', '.min.css')), cleanResult.styles)
+  await writeFile(join(options.projectRoot, outputPath, outputFileName.replace('.css', '.min.css')), minCode)
 }
 
 export const createSourceFile = content => ts.createSourceFile('x.ts', content, ts.ScriptTarget.Latest)
