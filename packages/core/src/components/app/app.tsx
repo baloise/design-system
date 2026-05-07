@@ -35,7 +35,7 @@ export class App implements DsComponentInterface {
   /**
    * @internal Is `true` when DS components are ready to be shown.
    */
-  @Prop({ reflect: true, mutable: true }) ready = false
+  @Prop({ reflect: true, mutable: true }) ready: boolean = false
 
   /**
    * @internal Comma separated list of components to log.

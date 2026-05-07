@@ -138,7 +138,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * The id of the toast, used for internal handling, if not provided a random id will be generated
    */
   @Prop()
-  readonly alertId = crypto.randomUUID() as string
+  readonly alertId: string = crypto.randomUUID() as string
 
   /**
    * @internal

@@ -67,7 +67,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    */
   @Prop({ reflect: true, mutable: true })
   @ValidateType('boolean')
-  open = false
+  open: boolean = false
 
   /**
    * The name of the group the accordion belongs to. Accordions with the same group name will automatically

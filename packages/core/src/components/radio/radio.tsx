@@ -93,7 +93,7 @@ export class Radio implements DsComponentInterface {
    */
   @Prop({ mutable: true, reflect: true })
   @ValidateType('boolean')
-  checked = false
+  checked: boolean = false
 
   /**
    * @internal

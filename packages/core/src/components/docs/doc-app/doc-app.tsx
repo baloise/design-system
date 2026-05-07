@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { DsComponentInterface } from '@global'
-import globalScript from '../../../global/global'
+import { DsComponentInterface, globalScript } from '@global'
 import { dsBrowser, DsLogger } from '@utils'
 // import { Icons } from '@baloise/ds-assets'
 // import { DsIcons, updateDsIcons } from '@global'
@@ -16,19 +15,19 @@ import { dsBrowser, DsLogger } from '@utils'
 export class DocApp {
   @Element() el!: HTMLStencilElement
 
-  @Prop() logComponents = ''
-  @Prop() logLifecycle = true
-  @Prop() logEvents = true
-  @Prop() logRender = true
-  @Prop() logCustom = true
-  @Prop() stickyFooter = false
-  @Prop() region?: string // = 'CH'
-  @Prop() language?: string // = 'de'
+  @Prop() readonly logComponents: string = ''
+  @Prop() readonly logLifecycle: boolean = true
+  @Prop() readonly logEvents: boolean = true
+  @Prop() readonly logRender: boolean = true
+  @Prop() readonly logCustom: boolean = true
+  @Prop() readonly stickyFooter: boolean = false
+  @Prop() readonly region?: string // = 'CH'
+  @Prop() readonly language?: string // = 'de'
 
   /**
    * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
-  @Prop({ reflect: true }) animated = true
+  @Prop({ reflect: true }) readonly animated: boolean = true
 
   connectedCallback() {
     globalScript()

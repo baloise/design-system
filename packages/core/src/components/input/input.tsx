@@ -155,7 +155,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    */
   @Prop()
   @ValidateType('string')
-  readonly autocapitalize = 'off'
+  readonly autocapitalize: string = 'off'
 
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
@@ -183,7 +183,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    */
   @Prop()
   @ValidateType('number')
-  readonly debounce = 0
+  readonly debounce: number = 0
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -415,8 +415,8 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.control.nativeEl as HTMLInputElement)
+  async getInputElement(): Promise<HTMLInputElement> {
+    return this.control.nativeEl as HTMLInputElement
   }
 
   /**

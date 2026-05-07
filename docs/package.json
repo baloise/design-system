@@ -11,20 +11,20 @@
     "@baloise/ds-core": "20.0.0-next.1",
     "@baloise/ds-assets": "20.0.0-next.1",
     "@baloise/ds-styles": "20.0.0-next.1",
-    "@storybook/addon-docs": "^10.0.8",
-    "@storybook/addon-links": "^10.0.8",
-    "@storybook/html-vite": "^10.0.8",
-    "js-beautify": "^1.15.4",
-    "lodash": "~4.17.21",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-syntax-highlighter": "^16.1.0",
-    "storybook": "^10.0.8"
+    "@storybook/addon-docs": "10.3.6",
+    "@storybook/addon-links": "10.3.6",
+    "@storybook/html-vite": "10.3.6",
+    "js-beautify": "1.15.4",
+    "lodash": "4.18.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-syntax-highlighter": "16.1.1",
+    "storybook": "10.3.6"
   },
   "devDependencies": {
-    "@types/react": "19.2.0",
-    "@types/react-dom": "19.2.0",
-    "typescript": "~5.6.2",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.6.3",
     "vite": "7.2.2"
   }
 }

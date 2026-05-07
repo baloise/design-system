@@ -92,7 +92,7 @@ export class Checkbox implements DsComponentInterface {
    */
   @Prop({ mutable: true })
   @ValidateType('boolean')
-  checked = false
+  checked: boolean = false
   private initialValue = false
 
   /**

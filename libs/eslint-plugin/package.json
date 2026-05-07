@@ -1,0 +1,11 @@
+{
+  "name": "@baloise/ds-eslint-plugin",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "./dist/src/index.js",
+  "typings": "./dist/src/index.d.ts",
+  "dependencies": {
+    "@typescript-eslint/utils": "7.16.0"
+  }
+}

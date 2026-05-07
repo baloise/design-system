@@ -9,6 +9,7 @@ export * from './config'
 
 // Initialize
 export { initializeDesignSystem } from './initialize'
+export { default as globalScript } from './global'
 
 // Component Interface
 export * from './component.type'

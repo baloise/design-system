@@ -127,7 +127,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
   readonly top: number = 0
 
   @Watch('top')
-  topValueChanged(newValue: number) {
+  topChanged(newValue: number) {
     if (this.sticky) {
       this.el.style.top = `${newValue}px`
     }
@@ -143,7 +143,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Current selected page
    */
   @Prop({ reflect: true, mutable: true })
-  value = 1
+  value: number = 1
 
   /**
    * Defines the layout of the pagination
@@ -167,7 +167,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
   }
 
   componentWillLoad() {
-    this.topValueChanged(this.top)
+    this.topChanged(this.top)
   }
 
   /**

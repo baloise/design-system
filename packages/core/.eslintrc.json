@@ -24,6 +24,23 @@
       }
     },
     {
+      "files": ["*.tsx"],
+      "plugins": ["@baloise/ds"],
+      "rules": {
+        "@typescript-eslint/no-inferrable-types": ["error", { "ignoreProperties": true }],
+        "@baloise/ds/no-relative-imports": "error",
+        "@baloise/ds/prop-readonly": "error",
+        "@baloise/ds/prop-type-annotation": "error",
+        "@baloise/ds/listen-naming": "error",
+        "@baloise/ds/watch-naming": "error",
+        "@baloise/ds/handler-naming": "warn",
+        "@baloise/ds/event-prefix": "error",
+        "@baloise/ds/method-async": "error",
+        "@baloise/ds/method-private": "warn",
+        "@baloise/ds/component-tag-prefix": "error"
+      }
+    },
+    {
       "files": ["*.js", "*.jsx"],
       "rules": {}
     }

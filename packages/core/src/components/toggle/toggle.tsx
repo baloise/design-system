@@ -72,7 +72,7 @@ export class Toggle implements DsComponentInterface {
    */
   @Prop({ mutable: true, reflect: true })
   @ValidateType('boolean')
-  checked = false
+  checked: boolean = false
 
   /**
    * If `true`, the toggle is dense and has less size.

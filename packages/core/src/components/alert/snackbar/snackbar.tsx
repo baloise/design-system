@@ -138,7 +138,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * @internal
    * The id of the toast, used for internal handling, if not provided a random id will be generated
    */
-  @Prop() readonly alertId = crypto.randomUUID() as string
+  @Prop() readonly alertId: string = crypto.randomUUID() as string
 
   /**
    * @internal

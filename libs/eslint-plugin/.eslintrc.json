@@ -1,0 +1,14 @@
+{
+  "extends": ["../../.eslintrc.base.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@nx/enforce-module-boundaries": "off"
+      }
+    }
+  ]
+}

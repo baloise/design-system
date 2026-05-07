@@ -278,7 +278,7 @@ export class Button implements DsComponentInterface {
    */
   @Prop({ mutable: true })
   @ValidateType('string')
-  a11yHaspopup = ''
+  a11yHaspopup: string = ''
 
   /**
    * Emitted when the link element has clicked.
