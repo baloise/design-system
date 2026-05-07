@@ -19,6 +19,7 @@ export default tseslint.config(
         },
       ],
       '@typescript-eslint/no-empty-interface': 'off',
+      'preserve-caught-error': 'off',
     },
   },
   prettier,

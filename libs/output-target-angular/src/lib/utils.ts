@@ -71,14 +71,14 @@ export async function readPackageJson(rootDir: string) {
   try {
     pkgJson = await readFile(pkgJsonPath, 'utf8')
   } catch (e) {
-    throw new Error(`Missing "package.json" file for distribution: ${pkgJsonPath}`, { cause: e })
+    throw new Error(`Missing "package.json" file for distribution: ${pkgJsonPath}`)
   }
 
   let pkgData: PackageJSON
   try {
     pkgData = JSON.parse(pkgJson)
   } catch (e) {
-    throw new Error(`Error parsing package.json: ${pkgJsonPath}`, { cause: e })
+    throw new Error(`Error parsing package.json: ${pkgJsonPath}`)
   }
 
   return pkgData

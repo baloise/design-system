@@ -977,7 +977,7 @@ export namespace Components {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
           * @default 'off'
          */
-        "autocapitalize": "off";
+        "autocapitalize": string;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -1003,7 +1003,7 @@ export namespace Components {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
          */
-        "debounce": 0;
+        "debounce": number;
         /**
           * The description of the input, which is displayed below the input field.
           * @default ''
@@ -3208,6 +3208,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
+
     /**
      * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
      * Perfect for organizing large amounts of content into logical, expandable groups.
@@ -4172,7 +4174,7 @@ declare namespace LocalJSX {
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
           * @default 'off'
          */
-        "autocapitalize"?: "off";
+        "autocapitalize"?: string;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
           * @default 'off'
@@ -4197,7 +4199,7 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
           * @default 0
          */
-        "debounce"?: 0;
+        "debounce"?: number;
         /**
           * The description of the input, which is displayed below the input field.
           * @default ''
@@ -5777,50 +5779,555 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+
+    interface DsAccordionAttributes {
+        "open": boolean;
+        "group": string;
+        "summaryLevel": AccordionSummaryLevel;
+        "summaryVisualLevel": AccordionSummaryLevel;
+        "summaryTitle": boolean;
+        "marker": AccordionMarker;
+        "markerPosition": AccordionMarkerPosition;
+        "button": boolean;
+        "buttonWide": boolean;
+        "buttonColor": AccordionButtonColor;
+        "buttonSize": AccordionButtonSize;
+        "buttonLabelOpen": string;
+        "buttonIconOpen": string;
+        "buttonLabelClose": string;
+        "buttonIconClose": string;
+    }
+    interface DsAlertContainerAttributes {
+        "animated": boolean;
+        "container": AlertContainerSize;
+        "type": AlertType;
+    }
+    interface DsAppAttributes {
+        "animated": boolean;
+        "ready": boolean;
+        "logger": string;
+    }
+    interface DsBadgeAttributes {
+        "icon": string;
+        "size": BadgeSize;
+        "color": BadgeColor;
+        "position": BadgePosition;
+        "pulse": boolean;
+    }
+    interface DsButtonAttributes {
+        "color": ButtonColor;
+        "elementType": ButtonElementType;
+        "disabled": boolean;
+        "size": ButtonSize;
+        "href": string;
+        "target": ButtonTarget;
+        "rel": string;
+        "download": string;
+        "dashed": boolean;
+        "shadow": boolean;
+        "square": boolean;
+        "circle": boolean;
+        "wide": boolean;
+        "flat": boolean;
+        "outlined": boolean;
+        "inverted": boolean;
+        "loading": boolean;
+        "rounded": boolean;
+        "icon": string;
+        "iconTurn": boolean;
+        "iconRight": string;
+        "noWrap": boolean;
+        "name": string;
+        "value": string;
+        "a11yControls": string;
+        "a11yTitle": string;
+        "a11yLabel": string;
+        "a11yHaspopup": string;
+    }
+    interface DsButtonGroupAttributes {
+        "align": ButtonGroupAlignment;
+        "direction": ButtonGroupDirection;
+        "reverse": boolean;
+        "wide": boolean;
+    }
+    interface DsCardAttributes {
+        "flat": boolean;
+        "tile": boolean;
+        "dense": boolean;
+        "imageTeaser": CardImageTeaser;
+        "square": boolean;
+        "outlined": boolean;
+        "inverted": boolean;
+        "clickable": boolean;
+        "selected": boolean;
+        "fullheight": boolean;
+        "align": CardAlignment;
+        "space": CardSpace;
+        "color": CardColor;
+    }
+    interface DsCardActionsAttributes {
+        "align": CardActionsAlignment;
+    }
+    interface DsCardHeaderAttributes {
+        "direction": CardHeaderDirection;
+    }
+    interface DsCardSubtitleAttributes {
+        "inverted": boolean;
+        "bold": boolean;
+        "color": HeadingColor;
+    }
+    interface DsCardTitleAttributes {
+        "inverted": boolean;
+        "level": HeadingLevel;
+        "visualLevel": HeadingVisualLevel;
+    }
+    interface DsCheckboxAttributes {
+        "name": string;
+        "label": string;
+        "labelPosition": CheckboxLabelPosition;
+        "value": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+        "invalid": boolean;
+        "tileColor": CheckboxTileColor;
+        "tile": boolean;
+        "cols": CheckboxGroupColumns;
+        "colsTablet": CheckboxGroupColumns;
+        "colsMobile": CheckboxGroupColumns;
+    }
+    interface DsCheckboxGroupAttributes {
+        "color": InputColor;
+        "cols": CheckboxGroupColumns;
+        "colsMobile": CheckboxGroupColumns;
+        "colsTablet": CheckboxGroupColumns;
+        "control": boolean;
+        "description": string;
+        "disabled": boolean;
+        "invalid": boolean;
+        "invalidText": string;
+        "label": string;
+        "labelPosition": CheckboxLabelPosition;
+        "loading": boolean;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "tile": boolean;
+        "tileColor": CheckboxTileColor;
+        "vertical": boolean;
+    }
+    interface DsCloseAttributes {
+        "size": CloseSize;
+        "inverted": boolean;
+        "disabled": boolean;
+        "button": boolean;
+        "buttonColor": ButtonColor;
+    }
+    interface DsContentAttributes {
+        "layout": StackLayout;
+        "direction": StackDirection;
+        "align": ContentAlignment;
+        "textAlign": ContentTextAlignment;
+        "space": ContentSpace;
+        "alignment": StackAlignment;
+    }
+    interface DsDividerAttributes {
+        "layout": DividerLayout;
+        "space": DividerSpace;
+        "color": DividerColor;
+        "dashed": boolean;
+    }
+    interface DsDocAppAttributes {
+        "logComponents": string;
+        "logLifecycle": boolean;
+        "logEvents": boolean;
+        "logRender": boolean;
+        "logCustom": boolean;
+        "stickyFooter": boolean;
+        "region": string;
+        "language": string;
+        "animated": boolean;
+    }
+    interface DsHeadingAttributes {
+        "level": HeadingLevel;
+        "visualLevel": HeadingVisualLevel;
+        "autoLevel": HeadingVisualLevel;
+        "noWrap": boolean;
+        "subtitle": boolean;
+        "space": HeadingSpace;
+        "color": HeadingColor;
+        "inverted": boolean;
+        "shadow": boolean;
+    }
+    interface DsIconAttributes {
+        "name": string;
+        "svg": string;
+        "size": IconSize;
+        "color": IconColor;
+        "shape": IconShape;
+        "tile": boolean;
+        "tileColor": IconTileColor;
+        "inline": boolean;
+        "inverted": boolean;
+        "turn": boolean;
+        "shadow": boolean;
+        "disabled": boolean;
+        "invalid": boolean;
+    }
+    interface DsInputAttributes {
+        "value": string | null;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "loading": boolean;
+        "invalid": boolean;
+        "invalidText": string;
+        "type": InputInputType;
+        "accept": string;
+        "autocapitalize": string;
+        "autocomplete": InputAutocomplete;
+        "autocorrect": InputAutocorrect;
+        "autofocus": boolean;
+        "debounce": number;
+        "placeholder": string;
+        "max": string;
+        "maxLength": number;
+        "min": string;
+        "minLength": number;
+        "multiple": boolean;
+        "pattern": string;
+        "allowedKeyPress": string;
+        "required": boolean;
+        "spellcheck": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "suffix": string;
+        "inputmode": InputInputMode;
+        "mask": InputMask;
+        "autoInvalidOff": boolean;
+    }
+    interface DsItemAttributes {
+        "accordionGroup": string;
+        "accordionMarker": AccordionMarker;
+        "accordionMarkerPosition": AccordionMarkerPosition;
+        "accordionOpen": boolean;
+        "actionIcon": ItemActionIcon;
+        "description": string;
+        "disabled": boolean;
+        "download": string;
+        "href": string;
+        "label": string;
+        "labelLevel": ItemLabelLevel;
+        "labelSize": ItemLabelSize;
+        "rel": string;
+        "target": ButtonTarget;
+        "variant": ItemVariant;
+    }
+    interface DsLabelAttributes {
+        "disabled": boolean;
+        "htmlFor": string;
+        "htmlId": string;
+        "hovered": boolean;
+        "invalid": boolean;
+        "noWrap": boolean;
+        "pressed": boolean;
+        "required": boolean;
+        "size": LabelSize;
+        "valid": boolean;
+    }
+    interface DsListAttributes {
+        "ordered": boolean;
+    }
+    interface DsLogoAttributes {
+        "animated": boolean;
+        "brand": LogoBrand;
+        "color": LogoColor;
+        "size": LogoSize;
+    }
+    interface DsNotificationAttributes {
+        "alert": boolean;
+        "closable": boolean;
+        "color": NotificationColor;
+        "heading": string;
+        "noIcon": boolean;
+        "size": NotificationSize;
+    }
+    interface DsNumberInputAttributes {
+        "color": InputColor;
+        "debounce": number;
+        "decimal": number;
+        "description": string;
+        "disabled": boolean;
+        "exactNumber": boolean;
+        "invalid": boolean;
+        "invalidText": string;
+        "label": string;
+        "max": string;
+        "min": string;
+        "name": string;
+        "onlyPositive": boolean;
+        "pattern": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "required": boolean;
+        "suffix": string;
+        "value": number | null;
+    }
+    interface DsPaginationAttributes {
+        "align": PaginationAlignment;
+        "disabled": boolean;
+        "label": string;
+        "pageRange": number;
+        "size": PaginationSize;
+        "sticky": boolean;
+        "textNext": string;
+        "textPrevious": string;
+        "top": number;
+        "totalPages": number;
+        "value": number;
+        "variant": PaginationVariant;
+    }
+    interface DsProgressBarAttributes {
+        "background": ProgressBarBackground;
+        "color": ProgressBarColor;
+        "value": number;
+    }
+    interface DsRadioAttributes {
+        "autoInvalidOff": boolean;
+        "checked": boolean;
+        "cols": RadioGroupColumns;
+        "colsMobile": RadioGroupColumns;
+        "colsTablet": RadioGroupColumns;
+        "disabled": boolean;
+        "invalid": boolean;
+        "label": string;
+        "labelPosition": RadioLabelPosition;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "tile": boolean;
+        "tileColor": RadioTileColor;
+        "value": string;
+    }
+    interface DsRadioGroupAttributes {
+        "allowEmptySelection": boolean;
+        "color": InputColor;
+        "cols": RadioGroupColumns;
+        "colsMobile": RadioGroupColumns;
+        "colsTablet": RadioGroupColumns;
+        "description": string;
+        "disabled": boolean;
+        "invalid": boolean;
+        "invalidText": string;
+        "label": string;
+        "labelPosition": RadioLabelPosition;
+        "loading": boolean;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "tile": boolean;
+        "tileColor": RadioTileColor;
+        "value": string;
+        "vertical": boolean;
+    }
+    interface DsSegmentAttributes {
+        "allowEmptySelection": boolean;
+        "description": string;
+        "disabled": boolean;
+        "iconOnly": boolean;
+        "invalid": boolean;
+        "invalidText": string;
+        "label": string;
+        "loading": boolean;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "value": string;
+        "vertical": boolean;
+        "verticalOnMobile": boolean;
+        "wide": boolean;
+    }
+    interface DsSegmentItemAttributes {
+        "description": string;
+        "icon": string;
+        "label": string;
+        "svg": string;
+        "value": string;
+    }
+    interface DsShapeAttributes {
+        "color": ShapeColor;
+        "rotation": ShapeRotation;
+        "variation": ShapeVariation;
+    }
+    interface DsSnackbarAttributes {
+        "color": SnackbarColor;
+        "closable": boolean;
+        "heading": string;
+        "message": string;
+        "icon": string;
+        "svg": string;
+        "action": string;
+        "actionIcon": string;
+        "actionTarget": ButtonTarget;
+        "actionHref": string;
+        "alertId": string;
+        "visible": boolean;
+    }
+    interface DsSpinnerAttributes {
+        "color": SpinnerColor;
+        "deactivated": boolean;
+        "inverted": boolean;
+        "size": SpinnerSize;
+        "small": boolean;
+        "label": string;
+        "labelPosition": SpinnerLabelPosition;
+        "variation": SpinnerVariation;
+    }
+    interface DsStackAttributes {
+        "align": StackAlignment;
+        "alignment": StackAlignment;
+        "direction": StackDirection;
+        "fitContent": boolean;
+        "layout": StackLayout;
+        "p": StackPadding;
+        "px": StackPadding;
+        "py": StackPadding;
+        "space": StackSpace;
+        "spaceColumn": StackSpace;
+        "spaceRow": StackSpace;
+        "useWrap": boolean;
+    }
+    interface DsTagAttributes {
+        "closable": boolean;
+        "color": TagColor;
+        "disabled": boolean;
+        "invalid": boolean;
+        "position": TagPlacement;
+        "shape": TagShape;
+        "size": TagSize;
+    }
+    interface DsTextAttributes {
+        "align": TextAlign;
+        "bold": boolean;
+        "color": TextColor;
+        "disabled": boolean;
+        "heading": boolean;
+        "hovered": boolean;
+        "inline": boolean;
+        "invalid": boolean;
+        "inverted": boolean;
+        "noWrap": boolean;
+        "pressed": boolean;
+        "shadow": boolean;
+        "size": TextSize;
+        "space": TextSpace;
+        "subtitle": boolean;
+    }
+    interface DsTextareaAttributes {
+        "autocapitalize": string;
+        "autocomplete": InputAutocomplete;
+        "autofocus": boolean;
+        "autoInvalidOff": boolean;
+        "color": InputColor;
+        "cols": number;
+        "debounce": number;
+        "description": string;
+        "disabled": boolean;
+        "inputmode": TextareaInputMode;
+        "invalid": boolean;
+        "invalidText": string;
+        "label": string;
+        "maxLength": number;
+        "minLength": number;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "required": boolean;
+        "rows": number;
+        "value": string | null;
+        "wrap": TextareaWrap;
+    }
+    interface DsToastAttributes {
+        "color": ToastColor;
+        "closable": boolean;
+        "heading": string;
+        "message": string;
+        "icon": string;
+        "svg": string;
+        "action": string;
+        "actionIcon": string;
+        "actionTarget": ButtonTarget;
+        "actionHref": string;
+        "alertId": string;
+        "duration": string;
+        "visible": boolean;
+    }
+    interface DsToggleAttributes {
+        "autoInvalidOff": boolean;
+        "checked": boolean;
+        "dense": boolean;
+        "color": ToggleTileColor;
+        "cols": ToggleGroupColumns;
+        "colsMobile": ToggleGroupColumns;
+        "colsTablet": ToggleGroupColumns;
+        "disabled": boolean;
+        "invalid": boolean;
+        "label": string;
+        "labelPosition": ToggleLabelPosition;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "tile": boolean;
+        "value": string;
+    }
+
     interface IntrinsicElements {
-        "ds-accordion": DsAccordion;
-        "ds-alert-container": DsAlertContainer;
-        "ds-app": DsApp;
-        "ds-badge": DsBadge;
-        "ds-button": DsButton;
-        "ds-button-group": DsButtonGroup;
-        "ds-card": DsCard;
-        "ds-card-actions": DsCardActions;
+        "ds-accordion": Omit<DsAccordion, keyof DsAccordionAttributes> & { [K in keyof DsAccordion & keyof DsAccordionAttributes]?: DsAccordion[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `attr:${K}`]?: DsAccordionAttributes[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `prop:${K}`]?: DsAccordion[K] };
+        "ds-alert-container": Omit<DsAlertContainer, keyof DsAlertContainerAttributes> & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes]?: DsAlertContainer[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `attr:${K}`]?: DsAlertContainerAttributes[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `prop:${K}`]?: DsAlertContainer[K] };
+        "ds-app": Omit<DsApp, keyof DsAppAttributes> & { [K in keyof DsApp & keyof DsAppAttributes]?: DsApp[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `attr:${K}`]?: DsAppAttributes[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `prop:${K}`]?: DsApp[K] };
+        "ds-badge": Omit<DsBadge, keyof DsBadgeAttributes> & { [K in keyof DsBadge & keyof DsBadgeAttributes]?: DsBadge[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `attr:${K}`]?: DsBadgeAttributes[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `prop:${K}`]?: DsBadge[K] };
+        "ds-button": Omit<DsButton, keyof DsButtonAttributes> & { [K in keyof DsButton & keyof DsButtonAttributes]?: DsButton[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `attr:${K}`]?: DsButtonAttributes[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `prop:${K}`]?: DsButton[K] };
+        "ds-button-group": Omit<DsButtonGroup, keyof DsButtonGroupAttributes> & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes]?: DsButtonGroup[K] } & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes as `attr:${K}`]?: DsButtonGroupAttributes[K] } & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes as `prop:${K}`]?: DsButtonGroup[K] };
+        "ds-card": Omit<DsCard, keyof DsCardAttributes> & { [K in keyof DsCard & keyof DsCardAttributes]?: DsCard[K] } & { [K in keyof DsCard & keyof DsCardAttributes as `attr:${K}`]?: DsCardAttributes[K] } & { [K in keyof DsCard & keyof DsCardAttributes as `prop:${K}`]?: DsCard[K] };
+        "ds-card-actions": Omit<DsCardActions, keyof DsCardActionsAttributes> & { [K in keyof DsCardActions & keyof DsCardActionsAttributes]?: DsCardActions[K] } & { [K in keyof DsCardActions & keyof DsCardActionsAttributes as `attr:${K}`]?: DsCardActionsAttributes[K] } & { [K in keyof DsCardActions & keyof DsCardActionsAttributes as `prop:${K}`]?: DsCardActions[K] };
         "ds-card-content": DsCardContent;
-        "ds-card-header": DsCardHeader;
-        "ds-card-subtitle": DsCardSubtitle;
-        "ds-card-title": DsCardTitle;
-        "ds-checkbox": DsCheckbox;
-        "ds-checkbox-group": DsCheckboxGroup;
-        "ds-close": DsClose;
-        "ds-content": DsContent;
-        "ds-divider": DsDivider;
-        "ds-doc-app": DsDocApp;
-        "ds-heading": DsHeading;
-        "ds-icon": DsIcon;
-        "ds-input": DsInput;
-        "ds-item": DsItem;
-        "ds-label": DsLabel;
-        "ds-list": DsList;
-        "ds-logo": DsLogo;
-        "ds-notification": DsNotification;
-        "ds-number-input": DsNumberInput;
-        "ds-pagination": DsPagination;
-        "ds-progress-bar": DsProgressBar;
-        "ds-radio": DsRadio;
-        "ds-radio-group": DsRadioGroup;
-        "ds-segment": DsSegment;
-        "ds-segment-item": DsSegmentItem;
-        "ds-shape": DsShape;
-        "ds-snackbar": DsSnackbar;
-        "ds-spinner": DsSpinner;
-        "ds-stack": DsStack;
-        "ds-tag": DsTag;
+        "ds-card-header": Omit<DsCardHeader, keyof DsCardHeaderAttributes> & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes]?: DsCardHeader[K] } & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes as `attr:${K}`]?: DsCardHeaderAttributes[K] } & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes as `prop:${K}`]?: DsCardHeader[K] };
+        "ds-card-subtitle": Omit<DsCardSubtitle, keyof DsCardSubtitleAttributes> & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes]?: DsCardSubtitle[K] } & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes as `attr:${K}`]?: DsCardSubtitleAttributes[K] } & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes as `prop:${K}`]?: DsCardSubtitle[K] };
+        "ds-card-title": Omit<DsCardTitle, keyof DsCardTitleAttributes> & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes]?: DsCardTitle[K] } & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes as `attr:${K}`]?: DsCardTitleAttributes[K] } & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes as `prop:${K}`]?: DsCardTitle[K] };
+        "ds-checkbox": Omit<DsCheckbox, keyof DsCheckboxAttributes> & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes]?: DsCheckbox[K] } & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes as `attr:${K}`]?: DsCheckboxAttributes[K] } & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes as `prop:${K}`]?: DsCheckbox[K] };
+        "ds-checkbox-group": Omit<DsCheckboxGroup, keyof DsCheckboxGroupAttributes> & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes]?: DsCheckboxGroup[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `attr:${K}`]?: DsCheckboxGroupAttributes[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `prop:${K}`]?: DsCheckboxGroup[K] };
+        "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
+        "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
+        "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
+        "ds-doc-app": Omit<DsDocApp, keyof DsDocAppAttributes> & { [K in keyof DsDocApp & keyof DsDocAppAttributes]?: DsDocApp[K] } & { [K in keyof DsDocApp & keyof DsDocAppAttributes as `attr:${K}`]?: DsDocAppAttributes[K] } & { [K in keyof DsDocApp & keyof DsDocAppAttributes as `prop:${K}`]?: DsDocApp[K] };
+        "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
+        "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
+        "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
+        "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
+        "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
+        "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
+        "ds-logo": Omit<DsLogo, keyof DsLogoAttributes> & { [K in keyof DsLogo & keyof DsLogoAttributes]?: DsLogo[K] } & { [K in keyof DsLogo & keyof DsLogoAttributes as `attr:${K}`]?: DsLogoAttributes[K] } & { [K in keyof DsLogo & keyof DsLogoAttributes as `prop:${K}`]?: DsLogo[K] };
+        "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
+        "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
+        "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
+        "ds-progress-bar": Omit<DsProgressBar, keyof DsProgressBarAttributes> & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes]?: DsProgressBar[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `attr:${K}`]?: DsProgressBarAttributes[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `prop:${K}`]?: DsProgressBar[K] };
+        "ds-radio": Omit<DsRadio, keyof DsRadioAttributes> & { [K in keyof DsRadio & keyof DsRadioAttributes]?: DsRadio[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `attr:${K}`]?: DsRadioAttributes[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `prop:${K}`]?: DsRadio[K] };
+        "ds-radio-group": Omit<DsRadioGroup, keyof DsRadioGroupAttributes> & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes]?: DsRadioGroup[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `attr:${K}`]?: DsRadioGroupAttributes[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `prop:${K}`]?: DsRadioGroup[K] };
+        "ds-segment": Omit<DsSegment, keyof DsSegmentAttributes> & { [K in keyof DsSegment & keyof DsSegmentAttributes]?: DsSegment[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `attr:${K}`]?: DsSegmentAttributes[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `prop:${K}`]?: DsSegment[K] };
+        "ds-segment-item": Omit<DsSegmentItem, keyof DsSegmentItemAttributes> & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes]?: DsSegmentItem[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `attr:${K}`]?: DsSegmentItemAttributes[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `prop:${K}`]?: DsSegmentItem[K] };
+        "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
+        "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
+        "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
+        "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
+        "ds-tag": Omit<DsTag, keyof DsTagAttributes> & { [K in keyof DsTag & keyof DsTagAttributes]?: DsTag[K] } & { [K in keyof DsTag & keyof DsTagAttributes as `attr:${K}`]?: DsTagAttributes[K] } & { [K in keyof DsTag & keyof DsTagAttributes as `prop:${K}`]?: DsTag[K] };
         "ds-tag-group": DsTagGroup;
-        "ds-text": DsText;
-        "ds-textarea": DsTextarea;
-        "ds-toast": DsToast;
-        "ds-toggle": DsToggle;
+        "ds-text": Omit<DsText, keyof DsTextAttributes> & { [K in keyof DsText & keyof DsTextAttributes]?: DsText[K] } & { [K in keyof DsText & keyof DsTextAttributes as `attr:${K}`]?: DsTextAttributes[K] } & { [K in keyof DsText & keyof DsTextAttributes as `prop:${K}`]?: DsText[K] };
+        "ds-textarea": Omit<DsTextarea, keyof DsTextareaAttributes> & { [K in keyof DsTextarea & keyof DsTextareaAttributes]?: DsTextarea[K] } & { [K in keyof DsTextarea & keyof DsTextareaAttributes as `attr:${K}`]?: DsTextareaAttributes[K] } & { [K in keyof DsTextarea & keyof DsTextareaAttributes as `prop:${K}`]?: DsTextarea[K] };
+        "ds-toast": Omit<DsToast, keyof DsToastAttributes> & { [K in keyof DsToast & keyof DsToastAttributes]?: DsToast[K] } & { [K in keyof DsToast & keyof DsToastAttributes as `attr:${K}`]?: DsToastAttributes[K] } & { [K in keyof DsToast & keyof DsToastAttributes as `prop:${K}`]?: DsToast[K] } & OneOf<"heading", DsToast["heading"], DsToastAttributes["heading"]> & OneOf<"message", DsToast["message"], DsToastAttributes["message"]>;
+        "ds-toggle": Omit<DsToggle, keyof DsToggleAttributes> & { [K in keyof DsToggle & keyof DsToggleAttributes]?: DsToggle[K] } & { [K in keyof DsToggle & keyof DsToggleAttributes as `attr:${K}`]?: DsToggleAttributes[K] } & { [K in keyof DsToggle & keyof DsToggleAttributes as `prop:${K}`]?: DsToggle[K] };
     }
 }
 export { LocalJSX as JSX };
@@ -5831,172 +6338,172 @@ declare module "@stencil/core" {
              * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
              * Perfect for organizing large amounts of content into logical, expandable groups.
              */
-            "ds-accordion": LocalJSX.DsAccordion & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
+            "ds-accordion": LocalJSX.IntrinsicElements["ds-accordion"] & JSXBase.HTMLAttributes<HTMLDsAccordionElement>;
             /**
              * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
              */
-            "ds-alert-container": LocalJSX.DsAlertContainer & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
+            "ds-alert-container": LocalJSX.IntrinsicElements["ds-alert-container"] & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
             /**
              * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
              */
-            "ds-app": LocalJSX.DsApp & JSXBase.HTMLAttributes<HTMLDsAppElement>;
+            "ds-app": LocalJSX.IntrinsicElements["ds-app"] & JSXBase.HTMLAttributes<HTMLDsAppElement>;
             /**
              * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
              */
-            "ds-badge": LocalJSX.DsBadge & JSXBase.HTMLAttributes<HTMLDsBadgeElement>;
+            "ds-badge": LocalJSX.IntrinsicElements["ds-badge"] & JSXBase.HTMLAttributes<HTMLDsBadgeElement>;
             /**
              * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
              */
-            "ds-button": LocalJSX.DsButton & JSXBase.HTMLAttributes<HTMLDsButtonElement>;
+            "ds-button": LocalJSX.IntrinsicElements["ds-button"] & JSXBase.HTMLAttributes<HTMLDsButtonElement>;
             /**
              * Button group groups multiple buttons together with layout control for alignment and direction.
              */
-            "ds-button-group": LocalJSX.DsButtonGroup & JSXBase.HTMLAttributes<HTMLDsButtonGroupElement>;
+            "ds-button-group": LocalJSX.IntrinsicElements["ds-button-group"] & JSXBase.HTMLAttributes<HTMLDsButtonGroupElement>;
             /**
              * Card groups related content together in a contained, visually distinct container with optional header and footer.
              */
-            "ds-card": LocalJSX.DsCard & JSXBase.HTMLAttributes<HTMLDsCardElement>;
+            "ds-card": LocalJSX.IntrinsicElements["ds-card"] & JSXBase.HTMLAttributes<HTMLDsCardElement>;
             /**
              * Card actions renders a container for action buttons or controls at the end of a card.
              */
-            "ds-card-actions": LocalJSX.DsCardActions & JSXBase.HTMLAttributes<HTMLDsCardActionsElement>;
+            "ds-card-actions": LocalJSX.IntrinsicElements["ds-card-actions"] & JSXBase.HTMLAttributes<HTMLDsCardActionsElement>;
             /**
              * Card content renders the main content area of a card for grouping body text and media.
              */
-            "ds-card-content": LocalJSX.DsCardContent & JSXBase.HTMLAttributes<HTMLDsCardContentElement>;
+            "ds-card-content": LocalJSX.IntrinsicElements["ds-card-content"] & JSXBase.HTMLAttributes<HTMLDsCardContentElement>;
             /**
              * Card header renders the header section of a card with optional layout direction for title and image/icon.
              */
-            "ds-card-header": LocalJSX.DsCardHeader & JSXBase.HTMLAttributes<HTMLDsCardHeaderElement>;
+            "ds-card-header": LocalJSX.IntrinsicElements["ds-card-header"] & JSXBase.HTMLAttributes<HTMLDsCardHeaderElement>;
             /**
              * Card subtitle renders a subtitle heading for cards with customizable color and styling.
              */
-            "ds-card-subtitle": LocalJSX.DsCardSubtitle & JSXBase.HTMLAttributes<HTMLDsCardSubtitleElement>;
+            "ds-card-subtitle": LocalJSX.IntrinsicElements["ds-card-subtitle"] & JSXBase.HTMLAttributes<HTMLDsCardSubtitleElement>;
             /**
              * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
              */
-            "ds-card-title": LocalJSX.DsCardTitle & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
+            "ds-card-title": LocalJSX.IntrinsicElements["ds-card-title"] & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
             /**
              * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
              */
-            "ds-checkbox": LocalJSX.DsCheckbox & JSXBase.HTMLAttributes<HTMLDsCheckboxElement>;
+            "ds-checkbox": LocalJSX.IntrinsicElements["ds-checkbox"] & JSXBase.HTMLAttributes<HTMLDsCheckboxElement>;
             /**
              * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
              */
-            "ds-checkbox-group": LocalJSX.DsCheckboxGroup & JSXBase.HTMLAttributes<HTMLDsCheckboxGroupElement>;
+            "ds-checkbox-group": LocalJSX.IntrinsicElements["ds-checkbox-group"] & JSXBase.HTMLAttributes<HTMLDsCheckboxGroupElement>;
             /**
              * Close renders a button element for closing or dismissing UI components with customizable size and color.
              */
-            "ds-close": LocalJSX.DsClose & JSXBase.HTMLAttributes<HTMLDsCloseElement>;
+            "ds-close": LocalJSX.IntrinsicElements["ds-close"] & JSXBase.HTMLAttributes<HTMLDsCloseElement>;
             /**
              * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
              */
-            "ds-content": LocalJSX.DsContent & JSXBase.HTMLAttributes<HTMLDsContentElement>;
+            "ds-content": LocalJSX.IntrinsicElements["ds-content"] & JSXBase.HTMLAttributes<HTMLDsContentElement>;
             /**
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */
-            "ds-divider": LocalJSX.DsDivider & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
-            "ds-doc-app": LocalJSX.DsDocApp & JSXBase.HTMLAttributes<HTMLDsDocAppElement>;
+            "ds-divider": LocalJSX.IntrinsicElements["ds-divider"] & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
+            "ds-doc-app": LocalJSX.IntrinsicElements["ds-doc-app"] & JSXBase.HTMLAttributes<HTMLDsDocAppElement>;
             /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */
-            "ds-heading": LocalJSX.DsHeading & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
+            "ds-heading": LocalJSX.IntrinsicElements["ds-heading"] & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
             /**
              * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
              */
-            "ds-icon": LocalJSX.DsIcon & JSXBase.HTMLAttributes<HTMLDsIconElement>;
+            "ds-icon": LocalJSX.IntrinsicElements["ds-icon"] & JSXBase.HTMLAttributes<HTMLDsIconElement>;
             /**
              * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
              */
-            "ds-input": LocalJSX.DsInput & JSXBase.HTMLAttributes<HTMLDsInputElement>;
+            "ds-input": LocalJSX.IntrinsicElements["ds-input"] & JSXBase.HTMLAttributes<HTMLDsInputElement>;
             /**
              * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
              */
-            "ds-item": LocalJSX.DsItem & JSXBase.HTMLAttributes<HTMLDsItemElement>;
+            "ds-item": LocalJSX.IntrinsicElements["ds-item"] & JSXBase.HTMLAttributes<HTMLDsItemElement>;
             /**
              * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
              */
-            "ds-label": LocalJSX.DsLabel & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
+            "ds-label": LocalJSX.IntrinsicElements["ds-label"] & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
             /**
              * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
              */
-            "ds-list": LocalJSX.DsList & JSXBase.HTMLAttributes<HTMLDsListElement>;
+            "ds-list": LocalJSX.IntrinsicElements["ds-list"] & JSXBase.HTMLAttributes<HTMLDsListElement>;
             /**
              * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
              */
-            "ds-logo": LocalJSX.DsLogo & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
+            "ds-logo": LocalJSX.IntrinsicElements["ds-logo"] & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             /**
              * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
              */
-            "ds-notification": LocalJSX.DsNotification & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
+            "ds-notification": LocalJSX.IntrinsicElements["ds-notification"] & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
             /**
              * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
              */
-            "ds-number-input": LocalJSX.DsNumberInput & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
+            "ds-number-input": LocalJSX.IntrinsicElements["ds-number-input"] & JSXBase.HTMLAttributes<HTMLDsNumberInputElement>;
             /**
              * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
              */
-            "ds-pagination": LocalJSX.DsPagination & JSXBase.HTMLAttributes<HTMLDsPaginationElement>;
+            "ds-pagination": LocalJSX.IntrinsicElements["ds-pagination"] & JSXBase.HTMLAttributes<HTMLDsPaginationElement>;
             /**
              * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
              */
-            "ds-progress-bar": LocalJSX.DsProgressBar & JSXBase.HTMLAttributes<HTMLDsProgressBarElement>;
+            "ds-progress-bar": LocalJSX.IntrinsicElements["ds-progress-bar"] & JSXBase.HTMLAttributes<HTMLDsProgressBarElement>;
             /**
              * Radio renders a radio button form control for selecting one option from a group with optional label and help text.
              */
-            "ds-radio": LocalJSX.DsRadio & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
+            "ds-radio": LocalJSX.IntrinsicElements["ds-radio"] & JSXBase.HTMLAttributes<HTMLDsRadioElement>;
             /**
              * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
              */
-            "ds-radio-group": LocalJSX.DsRadioGroup & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
+            "ds-radio-group": LocalJSX.IntrinsicElements["ds-radio-group"] & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
             /**
              * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
              */
-            "ds-segment": LocalJSX.DsSegment & JSXBase.HTMLAttributes<HTMLDsSegmentElement>;
+            "ds-segment": LocalJSX.IntrinsicElements["ds-segment"] & JSXBase.HTMLAttributes<HTMLDsSegmentElement>;
             /**
              * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
              */
-            "ds-segment-item": LocalJSX.DsSegmentItem & JSXBase.HTMLAttributes<HTMLDsSegmentItemElement>;
+            "ds-segment-item": LocalJSX.IntrinsicElements["ds-segment-item"] & JSXBase.HTMLAttributes<HTMLDsSegmentItemElement>;
             /**
              * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
              */
-            "ds-shape": LocalJSX.DsShape & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
+            "ds-shape": LocalJSX.IntrinsicElements["ds-shape"] & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
             /**
              * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
              */
-            "ds-snackbar": LocalJSX.DsSnackbar & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
+            "ds-snackbar": LocalJSX.IntrinsicElements["ds-snackbar"] & JSXBase.HTMLAttributes<HTMLDsSnackbarElement>;
             /**
              * Spinner displays an animated loading indicator with customizable color, size, and variation.
              */
-            "ds-spinner": LocalJSX.DsSpinner & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;
+            "ds-spinner": LocalJSX.IntrinsicElements["ds-spinner"] & JSXBase.HTMLAttributes<HTMLDsSpinnerElement>;
             /**
              * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
              */
-            "ds-stack": LocalJSX.DsStack & JSXBase.HTMLAttributes<HTMLDsStackElement>;
+            "ds-stack": LocalJSX.IntrinsicElements["ds-stack"] & JSXBase.HTMLAttributes<HTMLDsStackElement>;
             /**
              * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
              */
-            "ds-tag": LocalJSX.DsTag & JSXBase.HTMLAttributes<HTMLDsTagElement>;
+            "ds-tag": LocalJSX.IntrinsicElements["ds-tag"] & JSXBase.HTMLAttributes<HTMLDsTagElement>;
             /**
              * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
              */
-            "ds-tag-group": LocalJSX.DsTagGroup & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
+            "ds-tag-group": LocalJSX.IntrinsicElements["ds-tag-group"] & JSXBase.HTMLAttributes<HTMLDsTagGroupElement>;
             /**
              * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
              */
-            "ds-text": LocalJSX.DsText & JSXBase.HTMLAttributes<HTMLDsTextElement>;
+            "ds-text": LocalJSX.IntrinsicElements["ds-text"] & JSXBase.HTMLAttributes<HTMLDsTextElement>;
             /**
              * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
              */
-            "ds-textarea": LocalJSX.DsTextarea & JSXBase.HTMLAttributes<HTMLDsTextareaElement>;
+            "ds-textarea": LocalJSX.IntrinsicElements["ds-textarea"] & JSXBase.HTMLAttributes<HTMLDsTextareaElement>;
             /**
              * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
              */
-            "ds-toast": LocalJSX.DsToast & JSXBase.HTMLAttributes<HTMLDsToastElement>;
+            "ds-toast": LocalJSX.IntrinsicElements["ds-toast"] & JSXBase.HTMLAttributes<HTMLDsToastElement>;
             /**
              * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
              */
-            "ds-toggle": LocalJSX.DsToggle & JSXBase.HTMLAttributes<HTMLDsToggleElement>;
+            "ds-toggle": LocalJSX.IntrinsicElements["ds-toggle"] & JSXBase.HTMLAttributes<HTMLDsToggleElement>;
         }
     }
 }

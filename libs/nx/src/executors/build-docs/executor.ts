@@ -47,11 +47,11 @@ async function archive(fromPath: string, targetPath: string, fileName: string, f
 
 async function copyResources(options: BuildDocsExecutorSchema) {
   async function copyToAsset(from: string, to: string) {
-    await copy(from, join(options.projectRoot, 'src', 'assets', to), { recursive: true, overwrite: true })
+    await copy(from, join(options.projectRoot, 'src', 'assets', to), { overwrite: true })
   }
 
   async function copyToPublic(from: string, to: string) {
-    await copy(from, join(options.projectRoot, 'public', to), { recursive: true, overwrite: true })
+    await copy(from, join(options.projectRoot, 'public', to), { overwrite: true })
   }
 
   const packageRoot = join(options.projectRoot, '..', 'packages')

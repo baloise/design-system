@@ -1,7 +1,7 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.41.3",
+    "version": "4.43.4",
     "typescriptVersion": "5.8.3"
   },
   "components": [
@@ -763,6 +763,7 @@
           "docs": "The summary element that serves as the toggle button."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "dsOpened",
@@ -1285,6 +1286,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -1446,6 +1448,7 @@
           "docs": "The app container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -1774,6 +1777,7 @@
           "docs": "The icon element, if an icon is used."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -3759,6 +3763,7 @@
           "docs": "The loading spinner shown when `loading` is true."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "click",
@@ -9747,6 +9752,7 @@
           "docs": "The container element that wraps the grouped buttons."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -10609,6 +10615,7 @@
           "docs": "The card container element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -12590,6 +12597,7 @@
           "docs": "The card actions container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -12628,6 +12636,7 @@
           "docs": "The card content container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -12708,6 +12717,7 @@
           "docs": "The card header container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -12869,6 +12879,7 @@
           "docs": "The card subtitle element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -13111,6 +13122,7 @@
           "docs": "The card title heading element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -13677,6 +13689,7 @@
           "docs": ""
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "reset",
@@ -15211,6 +15224,7 @@
         }
       ],
       "parts": [],
+      "customStates": [],
       "listeners": [
         {
           "event": "dsBlur",
@@ -15569,6 +15583,7 @@
           "docs": "The close button element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -16171,6 +16186,7 @@
           "docs": "The content container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -16492,6 +16508,7 @@
           "docs": "The divider line element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -17482,6 +17499,7 @@
           "docs": "The native HTML heading element (h1–h6)."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -19174,6 +19192,7 @@
           "docs": ""
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -19988,10 +20007,10 @@
         },
         {
           "name": "autocapitalize",
-          "type": "\"off\"",
+          "type": "string",
           "complexType": {
-            "original": "\"off\"",
-            "resolved": "\"off\"",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
@@ -20007,7 +20026,6 @@
           "default": "'off'",
           "values": [
             {
-              "value": "off",
               "type": "string"
             }
           ],
@@ -20395,10 +20413,10 @@
         },
         {
           "name": "debounce",
-          "type": "0",
+          "type": "number",
           "complexType": {
-            "original": "0",
-            "resolved": "0",
+            "original": "number",
+            "resolved": "number",
             "references": {}
           },
           "mutable": false,
@@ -20414,7 +20432,6 @@
           "default": "0",
           "values": [
             {
-              "value": "0",
               "type": "number"
             }
           ],
@@ -21500,6 +21517,7 @@
           "docs": "The suffix wrapper (if used)."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "click",
@@ -24109,6 +24127,7 @@
           "docs": "The label element, only applicable if the `label` prop is set."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -24445,6 +24464,7 @@
           "docs": "The native HTML `<label>` element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -25464,6 +25484,7 @@
           "docs": "The native HTML list element (ol or ul)."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -26017,6 +26038,7 @@
           "docs": "The animated logo container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -26446,6 +26468,7 @@
           "docs": "The notification container element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -28406,6 +28429,7 @@
           "docs": "The suffix wrapper (if used)."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "click",
@@ -28993,6 +29017,7 @@
           "docs": ""
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -29426,6 +29451,7 @@
           "docs": "The filled progress indicator element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -30314,6 +30340,7 @@
           "docs": "The content slot wrapper."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "click",
@@ -31843,6 +31870,7 @@
         }
       ],
       "parts": [],
+      "customStates": [],
       "listeners": [
         {
           "event": "dsChange",
@@ -32487,6 +32515,7 @@
           "docs": "The segment container element."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "dsWillUpdate",
@@ -33281,6 +33310,7 @@
           "docs": "The segment item container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -33496,6 +33526,7 @@
           "docs": "The SVG shape element container."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -34035,6 +34066,7 @@
           "docs": "The snackbar container element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -35094,6 +35126,7 @@
           "docs": ""
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -36191,6 +36224,7 @@
         }
       ],
       "parts": [],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -36661,6 +36695,7 @@
           "docs": "The tag content element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -38310,6 +38345,7 @@
         }
       ],
       "parts": [],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -38920,6 +38956,7 @@
           "docs": "The text container element."
         }
       ],
+      "customStates": [],
       "listeners": []
     },
     {
@@ -40197,6 +40234,7 @@
           "docs": "The native HTML textarea element."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "click",
@@ -40731,6 +40769,7 @@
           "docs": "The toast container element."
         }
       ],
+      "customStates": [],
       "listeners": [],
       "tokens": [
         {
@@ -42021,6 +42060,7 @@
           "docs": "The content slot wrapper."
         }
       ],
+      "customStates": [],
       "listeners": [
         {
           "event": "reset",
@@ -42368,12 +42408,12 @@
       "path": "src/components/input/input.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputAutocomplete": {
-      "declaration": "\"\" | \"off\" | \"on\" | \"tel\" | \"url\" | \"email\" | \"name\" | \"honorific-prefix\" | \"given-name\" | \"additional-name\" | \"family-name\" | \"honorific-suffix\" | \"nickname\" | \"username\" | \"new-password\" | \"current-password\" | \"one-time-code\" | \"organization-title\" | \"organization\" | \"street-address\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"address-level4\" | \"address-level3\" | \"address-level2\" | \"address-level1\" | \"country\" | \"country-name\" | \"postal-code\" | \"cc-name\" | \"cc-given-name\" | \"cc-additional-name\" | \"cc-family-name\" | \"cc-number\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-csc\" | \"cc-type\" | \"transaction-currency\" | \"transaction-amount\" | \"language\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"sex\" | \"tel-country-code\" | \"tel-national\" | \"tel-area-code\" | \"tel-local\" | \"tel-extension\" | \"impp\" | \"photo\"",
+      "declaration": "\"\" | \"on\" | \"off\" | \"tel\" | \"url\" | \"email\" | \"name\" | \"honorific-prefix\" | \"given-name\" | \"additional-name\" | \"family-name\" | \"honorific-suffix\" | \"nickname\" | \"username\" | \"new-password\" | \"current-password\" | \"one-time-code\" | \"organization-title\" | \"organization\" | \"street-address\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"address-level4\" | \"address-level3\" | \"address-level2\" | \"address-level1\" | \"country\" | \"country-name\" | \"postal-code\" | \"cc-name\" | \"cc-given-name\" | \"cc-additional-name\" | \"cc-family-name\" | \"cc-number\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-csc\" | \"cc-type\" | \"transaction-currency\" | \"transaction-amount\" | \"language\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"sex\" | \"tel-country-code\" | \"tel-national\" | \"tel-area-code\" | \"tel-local\" | \"tel-extension\" | \"impp\" | \"photo\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
     "src/components/input/input.interfaces.ts::InputAutocorrect": {
-      "declaration": "\"\" | \"off\" | \"on\"",
+      "declaration": "\"\" | \"on\" | \"off\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },
