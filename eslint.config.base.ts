@@ -4,6 +4,8 @@ import prettier from 'eslint-config-prettier'
 import * as jsoncParser from 'jsonc-eslint-parser'
 
 export default tseslint.config(
+  { ignores: ['**/dist/**', '**/node_modules/**', '**/eslint.config.ts', 'eslint.config.base.ts'] },
+  ...nxPlugin.configs['flat/base'],
   ...nxPlugin.configs['flat/typescript'],
   ...nxPlugin.configs['flat/javascript'],
   {

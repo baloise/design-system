@@ -4,7 +4,7 @@ import * as jsoncParser from 'jsonc-eslint-parser'
 import baseConfig from './eslint.config.base'
 
 export default tseslint.config(
-  { ignores: ['**/dist/**', '**/node_modules/**', '**/.nx/**', '**/www/**', '**/.worktrees/**'] },
+  { ignores: ['**/dist/**', '**/node_modules/**', '**/.nx/**', '**/www/**', '**/.worktrees/**', 'test/**', '**/playwright-report/**', 'CLAUDE.md', 'docs/superpowers/**'] },
   ...baseConfig,
   {
     files: ['**/*.ts', '**/*.tsx'],

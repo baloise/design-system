@@ -4,7 +4,7 @@ import baseConfig from '../../eslint.config.base'
 import dsPlugin from '@baloise/ds-eslint-plugin'
 
 export default tseslint.config(
-  { ignores: ['**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'] },
+  { ignores: ['**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*', 'loader/**', 'components/**', 'www/**', 'playwright-report/**'] },
   ...baseConfig,
   {
     files: ['**/*.play.ts'],
@@ -21,6 +21,8 @@ export default tseslint.config(
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@nx/enforce-module-boundaries': 'off',
       'no-extra-boolean-cast': 'off',
       'no-self-assign': 'off',

@@ -5,7 +5,7 @@
   "sourceRoot": "packages/tokens/src",
   "targets": {
     "lint": {
-      "command": "eslint --no-eslintrc",
+      "command": "eslint .",
       "outputs": ["{options.outputFile}"]
     },
     "build": {

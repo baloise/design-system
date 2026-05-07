@@ -83,5 +83,6 @@
       "style": "none"
     }
   },
-  "useLegacyCache": false
+  "useLegacyCache": false,
+  "analytics": false
 }

@@ -4,6 +4,7 @@ import * as jsoncParser from 'jsonc-eslint-parser'
 import baseConfig from '../eslint.config.base'
 
 export default tseslint.config(
+  { ignores: ['public/**', 'src/assets/**'] },
   ...baseConfig,
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -23,6 +24,9 @@ export default tseslint.config(
         'error',
         {
           ignoredDependencies: [
+            'typescript-eslint',
+            '@nx/eslint-plugin',
+            'jsonc-eslint-parser',
             '@baloise/ds-assets',
             '@baloise/ds-tokens',
             'react',
