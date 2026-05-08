@@ -1,0 +1,22 @@
+@use '../mixins/_all' as *;
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  padding-left: var(--ds-alias-container-space-device);
+  padding-right: var(--ds-alias-container-space-device);
+
+  @include desktop {
+    max-width: var(--ds-alias-container-width-base);
+  }
+
+  &.is-fluid {
+    max-width: var(--ds-alias-container-width-fluid) !important;
+  }
+
+  &.is-compact {
+    max-width: var(--ds-alias-container-width-compact) !important;
+  }
+}
