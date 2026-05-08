@@ -1,7 +1,7 @@
 import { copy } from 'fs-extra'
 import { mkdir, rm, writeFile } from 'fs/promises'
 import { join } from 'path'
-import { compileSass, compileSassToMergedFile, scan } from '../utils'
+import { compileSass, scan } from '../utils'
 import { generateBackgroundColors } from './generators/background'
 import { generateBorder } from './generators/border'
 import { generateElevation } from './generators/elevation'

@@ -1,6 +1,29 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
 
-export const decorators: Decorator[] = [(Story: any) => `${Story().outerHTML || Story()}`]
+const BRAND_LINK_ID = 'brand-theme-stylesheet'
+
+export const decorators: Decorator[] = [
+  (Story: any, context: any) => {
+    const theme: string = context.globals?.theme ?? ''
+    const story = Story()
+    const html: string = story.outerHTML || story
+
+    let link = document.getElementById(BRAND_LINK_ID) as HTMLLinkElement | null
+    if (theme) {
+      if (!link) {
+        link = document.createElement('link')
+        link.id = BRAND_LINK_ID
+        link.rel = 'stylesheet'
+        document.head.appendChild(link)
+      }
+      link.href = `/assets/tokens/${theme}.tokens.css`
+      return `<div data-theme="${theme}">${html}</div>`
+    } else {
+      link?.remove()
+      return html
+    }
+  },
+]
 
 const preview: Preview = {
   globalTypes: {
@@ -8,6 +31,11 @@ const preview: Preview = {
       name: 'Framework',
       description: 'Integration technology',
       defaultValue: 'Angular',
+    },
+    theme: {
+      name: 'Theme',
+      description: 'Brand theme',
+      defaultValue: '',
     },
   },
   initialGlobals: {

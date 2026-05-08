@@ -10,7 +10,7 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Documentation',
   },
-  staticDirs: ['../public'],
+  staticDirs: ['../public', { from: '../../packages/tokens/dist/css', to: '/assets/tokens' }],
   previewHead: head => `
   ${head}
   <link rel="stylesheet" type="text/css" href="assets/css/font.css" />

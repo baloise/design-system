@@ -77,10 +77,6 @@ packages/devkit/src/**/*.d.ts
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 
-e2e/generated
-e2e/downloads
-e2e/reg.json
-
 resources/data/commands.json
 resources/data/contributors.json
 

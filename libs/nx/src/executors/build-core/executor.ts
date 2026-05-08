@@ -23,7 +23,6 @@ export default async function runExecutor(options: BuildCoreExecutorSchema) {
 
     // post build tasks
     await createTagList()
-    await copyToDocs(options)
     await cleanUp(options)
   } catch (error) {
     console.error(error)
@@ -83,10 +82,6 @@ export async function createTagList() {
   const filePath = join('resources/data/tags.json')
   await mkdir(dirname(filePath), { recursive: true })
   await writeFile(filePath, JSON.stringify(reducedTags, undefined, 2))
-}
-
-async function copyToDocs(options: BuildCoreExecutorSchema) {
-  await copy(join(options.projectRoot, 'www'), join('e2e/generated/www'))
 }
 
 async function cleanUp(options: BuildCoreExecutorSchema) {

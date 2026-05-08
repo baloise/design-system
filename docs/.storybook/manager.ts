@@ -2,6 +2,7 @@ import { DOCS_PREPARED, DOCS_RENDERED, STORY_PREPARED, STORY_RENDERED } from 'st
 import { addons, types } from 'storybook/manager-api'
 import { registerCookie } from './addons/cookie.addon'
 import { registerFramework } from './addons/framework.addon'
+import { registerTheme } from './addons/theme.addon'
 import { SourcePanel } from './addons/source-panel.addon'
 import { registerVersion } from './addons/version.addon'
 import baloiseTheme from './bal.theme'
@@ -24,6 +25,14 @@ addons.register('my/framework', () => {
     title: 'Framework',
     type: types.TOOLEXTRA,
     render: registerFramework as any,
+  })
+})
+
+addons.register('my/theme', () => {
+  addons.add('my-theme-addon/toolbar', {
+    title: 'Brand theme',
+    type: types.TOOL,
+    render: registerTheme as any,
   })
 })
 

@@ -164,4 +164,98 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
       )
     },
   })
+
+  /**
+   * CSS Brand Formatter
+   * ------------------------------------------------------
+   */
+  sd.registerFormat({
+    name: 'ds/css/variables-brand',
+    format: async ({ dictionary, file, options }) => {
+      const { outputReferences } = options
+      const selector = (options.selector as string) ?? '[data-theme="brand"]'
+      const header = await fileHeader({ file })
+
+      // Only emit tokens that come from the brand source file, not from include (base)
+      const sourceTokens = dictionary.allTokens.filter(token => token.isSource)
+      const sourceDictionary = { ...dictionary, allTokens: sourceTokens } as Dictionary
+
+      const baseTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-mobile'))
+      const baseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
+      const deviceBaseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
+
+      baseTokens.forEach(token => {
+        token.name = token.name.replace('-mobile', '')
+      })
+      deviceBaseTokens.forEach(token => {
+        token.name = token.name.replace('-mobile', '-device')
+      })
+
+      const baseDictionary = { ...dictionary, allTokens: baseTokens } as Dictionary
+      const deviceBaseDictionary = { ...dictionary, allTokens: deviceBaseTokens } as Dictionary
+
+      const tabletTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-tablet'))
+      const deviceTabletTokens = JSON.parse(JSON.stringify(tabletTokensOriginal))
+      deviceTabletTokens.forEach(token => {
+        token.name = token.name.replace('-tablet', '-device')
+      })
+      const deviceTabletDictionary = { ...dictionary, allTokens: deviceTabletTokens } as Dictionary
+
+      const desktopTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-desktop'))
+      const deviceDesktopTokens = JSON.parse(JSON.stringify(desktopTokensOriginal))
+      deviceDesktopTokens.forEach(token => {
+        token.name = token.name.replace('-desktop', '-device')
+      })
+      const deviceDesktopDictionary = { ...dictionary, allTokens: deviceDesktopTokens } as Dictionary
+
+      return (
+        header +
+        `${selector} {\n` +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: sourceDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n\n  /* Base tokens */\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: baseDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n\n  /* Device tokens */\n' +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceBaseDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        '\n}\n\n' +
+        '/* Device tokens: Tablet */\n' +
+        `\n@media (min-width: 769px) {\n` +
+        `${selector} {\n` +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceTabletDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        `\n}` +
+        `\n}\n\n` +
+        '/* Device tokens: Desktop */\n' +
+        `\n@media (min-width: 1024px) {\n` +
+        `${selector} {\n` +
+        formattedVariables({
+          format: propertyFormatNames.css,
+          dictionary: deviceDesktopDictionary,
+          outputReferences,
+          usesDtcg: true,
+        }) +
+        `\n}` +
+        `\n}\n` +
+        '\n'
+      )
+    },
+  })
 }
