@@ -74,7 +74,7 @@ Replace the old `@include block(name)` structure with the hybrid four-layer vari
 ### File header
 
 ```scss
-@use '@baloise/ds-styles/sass/mixins' as *;
+@use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
 

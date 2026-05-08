@@ -22,7 +22,7 @@ const config: StorybookConfig = {
   <link rel="stylesheet" type="text/css" href="assets/css/version.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/framework.css" />
 
-  <link rel="stylesheet" type="text/css" href="assets/css/design-system.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/design-system.css" />
 
   <script type="module" src="/build/design-system.esm.js"></script>
   <script nomodule src="/build/design-system.js"></script>

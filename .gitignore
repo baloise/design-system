@@ -45,11 +45,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.nx/cache
-.nx/workspace-data
+.nx
 .stencil
 
-packages/fonts/assets/partners
 packages/core/icons
 packages/core/playwright
 packages/core/components
@@ -57,28 +55,11 @@ packages/core/loader
 packages/core/wwww
 packages/core/config/custom-elements/all.js
 packages/core/config/custom-elements/all.d.ts
-packages/core/**/theming.md
-packages/core/**/testing.md
-packages/core/**/api.md
-packages/css/css
-packages/styles/css
-packages/styles/docs
-packages/styles/src/generated
-
-packages/favicons/CHANGELOG.md
-packages/fonts/CHANGELOG.md
-packages/icons/CHANGELOG.md
-
-packages/devkit/src/**/*.js
-packages/devkit/src/**/*.js.map
-packages/devkit/src/**/*.d.ts
-
 
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 
-resources/data/commands.json
-resources/data/contributors.json
+resources/data
 
 docs/src/contributing/contributors.md
 docs/src/development/00-guides/theming/theming.md
@@ -167,3 +148,5 @@ playwright.visual.config.ts
 .env
 .worktrees
 .claude/settings.local.json
+
+docs/superpowers

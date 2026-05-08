@@ -802,39 +802,6 @@ export namespace Components {
          */
         "space": DividerSpace;
     }
-    interface DsDocApp {
-        /**
-          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
-          * @default true
-         */
-        "animated": boolean;
-        "language"?: string;
-        /**
-          * @default ''
-         */
-        "logComponents": string;
-        /**
-          * @default true
-         */
-        "logCustom": boolean;
-        /**
-          * @default true
-         */
-        "logEvents": boolean;
-        /**
-          * @default true
-         */
-        "logLifecycle": boolean;
-        /**
-          * @default true
-         */
-        "logRender": boolean;
-        "region"?: string;
-        /**
-          * @default false
-         */
-        "stickyFooter": boolean;
-    }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
@@ -2743,12 +2710,6 @@ declare global {
         prototype: HTMLDsDividerElement;
         new (): HTMLDsDividerElement;
     };
-    interface HTMLDsDocAppElement extends Components.DsDocApp, HTMLStencilElement {
-    }
-    var HTMLDsDocAppElement: {
-        prototype: HTMLDsDocAppElement;
-        new (): HTMLDsDocAppElement;
-    };
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
@@ -3179,7 +3140,6 @@ declare global {
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
         "ds-divider": HTMLDsDividerElement;
-        "ds-doc-app": HTMLDsDocAppElement;
         "ds-heading": HTMLDsHeadingElement;
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
@@ -3999,39 +3959,6 @@ declare namespace LocalJSX {
           * @default 'none'
          */
         "space"?: DividerSpace;
-    }
-    interface DsDocApp {
-        /**
-          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
-          * @default true
-         */
-        "animated"?: boolean;
-        "language"?: string;
-        /**
-          * @default ''
-         */
-        "logComponents"?: string;
-        /**
-          * @default true
-         */
-        "logCustom"?: boolean;
-        /**
-          * @default true
-         */
-        "logEvents"?: boolean;
-        /**
-          * @default true
-         */
-        "logLifecycle"?: boolean;
-        /**
-          * @default true
-         */
-        "logRender"?: boolean;
-        "region"?: string;
-        /**
-          * @default false
-         */
-        "stickyFooter"?: boolean;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -5939,17 +5866,6 @@ declare namespace LocalJSX {
         "color": DividerColor;
         "dashed": boolean;
     }
-    interface DsDocAppAttributes {
-        "logComponents": string;
-        "logLifecycle": boolean;
-        "logEvents": boolean;
-        "logRender": boolean;
-        "logCustom": boolean;
-        "stickyFooter": boolean;
-        "region": string;
-        "language": string;
-        "animated": boolean;
-    }
     interface DsHeadingAttributes {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
@@ -6302,7 +6218,6 @@ declare namespace LocalJSX {
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
-        "ds-doc-app": Omit<DsDocApp, keyof DsDocAppAttributes> & { [K in keyof DsDocApp & keyof DsDocAppAttributes]?: DsDocApp[K] } & { [K in keyof DsDocApp & keyof DsDocAppAttributes as `attr:${K}`]?: DsDocAppAttributes[K] } & { [K in keyof DsDocApp & keyof DsDocAppAttributes as `prop:${K}`]?: DsDocApp[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
@@ -6403,7 +6318,6 @@ declare module "@stencil/core" {
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */
             "ds-divider": LocalJSX.IntrinsicElements["ds-divider"] & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
-            "ds-doc-app": LocalJSX.IntrinsicElements["ds-doc-app"] & JSXBase.HTMLAttributes<HTMLDsDocAppElement>;
             /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */

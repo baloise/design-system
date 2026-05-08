@@ -1,0 +1,121 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Select -->
+      <section data-testid="select">
+        <span>Select</span>
+        <div class="select">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Select States -->
+      <section data-testid="select-states">
+        <span>Select States</span>
+        <div class="select is-success">
+          <select>
+            <option>Success</option>
+          </select>
+        </div>
+        <div class="select is-danger">
+          <select>
+            <option>Danger</option>
+          </select>
+        </div>
+        <div class="select is-warning">
+          <select>
+            <option>Warning</option>
+          </select>
+        </div>
+        <div class="select is-disabled">
+          <select disabled>
+            <option>Disabled</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- File Upload -->
+      <section data-testid="file">
+        <span>File Upload</span>
+        <div class="file">
+          <label class="file-label">
+            <input class="file-input" type="file" />
+            <span class="file-cta">
+              <span class="file-icon">
+                <ds-icon name="upload"></ds-icon>
+              </span>
+              <span>Choose a file…</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <!-- File States -->
+      <section data-testid="file-states">
+        <span>File States</span>
+        <div class="file is-success">
+          <label class="file-label">
+            <input class="file-input" type="file" />
+            <span class="file-cta"><span>Success</span></span>
+          </label>
+        </div>
+        <div class="file is-danger">
+          <label class="file-label">
+            <input class="file-input" type="file" />
+            <span class="file-cta"><span>Danger</span></span>
+          </label>
+        </div>
+        <div class="file is-disabled">
+          <label class="file-label">
+            <input class="file-input" type="file" disabled />
+            <span class="file-cta"><span>Disabled</span></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Field Spacing -->
+      <section data-testid="field-spacing">
+        <span>Field Spacing</span>
+        <div class="field">
+          <label>Label 1</label>
+          <div class="select">
+            <select>
+              <option>Option</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Label 2</label>
+          <div class="select">
+            <select>
+              <option>Option</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Label 3</label>
+          <div class="select">
+            <select>
+              <option>Option</option>
+            </select>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+    <style>
+      .container {
+        background: rgba(0, 120, 255, 0.06);
+        outline: 1px dashed rgba(0, 120, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Default -->
+      <section data-testid="default">
+        <span>Default</span>
+        <div class="container">
+          <p>Default container — constrained to <code>--ds-alias-container-width-base</code> on desktop.</p>
+        </div>
+      </section>
+
+      <!-- Fluid -->
+      <section data-testid="fluid">
+        <span>Fluid</span>
+        <div class="container is-fluid">
+          <p>Fluid container — expands to <code>--ds-alias-container-width-fluid</code>.</p>
+        </div>
+      </section>
+
+      <!-- Compact -->
+      <section data-testid="compact">
+        <span>Compact</span>
+        <div class="container is-compact">
+          <p>Compact container — constrained to <code>--ds-alias-container-width-compact</code>.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use '@baloise/ds-styles/sass/mixins' as *;
+@use '@baloise/ds-css/dist/scss/mixins' as *;
 
 .grid {
   flex-basis: 0;

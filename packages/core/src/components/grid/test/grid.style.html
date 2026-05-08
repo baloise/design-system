@@ -1,0 +1,116 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+    <style>
+      .col {
+        background: rgba(0, 120, 255, 0.08);
+        outline: 1px solid rgba(0, 120, 255, 0.25);
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div class="grid">
+          <div class="col">Col 1</div>
+          <div class="col">Col 2</div>
+          <div class="col">Col 3</div>
+        </div>
+      </section>
+
+      <!-- Column Sizes -->
+      <section data-testid="col-sizes">
+        <span>Column Sizes</span>
+        <div class="grid">
+          <div class="col is-half">is-half</div>
+          <div class="col">auto</div>
+          <div class="col">auto</div>
+        </div>
+        <div class="grid">
+          <div class="col is-one-third">is-one-third</div>
+          <div class="col is-two-thirds">is-two-thirds</div>
+        </div>
+        <div class="grid">
+          <div class="col is-one-quarter">is-one-quarter</div>
+          <div class="col is-three-quarters">is-three-quarters</div>
+        </div>
+      </section>
+
+      <!-- Numeric Sizes -->
+      <section data-testid="numeric-sizes">
+        <span>Numeric Sizes</span>
+        <div class="grid">
+          <div class="col is-4">is-4</div>
+          <div class="col is-8">is-8</div>
+        </div>
+        <div class="grid">
+          <div class="col is-3">is-3</div>
+          <div class="col is-9">is-9</div>
+        </div>
+        <div class="grid">
+          <div class="col is-6">is-6</div>
+          <div class="col is-6">is-6</div>
+        </div>
+      </section>
+
+      <!-- Multiline -->
+      <section data-testid="multiline">
+        <span>Multiline</span>
+        <div class="grid is-multiline">
+          <div class="col is-half">1</div>
+          <div class="col is-half">2</div>
+          <div class="col is-half">3</div>
+          <div class="col is-half">4</div>
+        </div>
+      </section>
+
+      <!-- Gapless -->
+      <section data-testid="gapless">
+        <span>Gapless</span>
+        <div class="grid is-gapless">
+          <div class="col">Col 1</div>
+          <div class="col">Col 2</div>
+          <div class="col">Col 3</div>
+        </div>
+      </section>
+
+      <!-- Centered -->
+      <section data-testid="centered">
+        <span>Centered</span>
+        <div class="grid is-centered">
+          <div class="col is-one-third">Centered col</div>
+        </div>
+      </section>
+
+      <!-- Vertical Centered -->
+      <section data-testid="vcentered">
+        <span>Vertical Centered</span>
+        <div class="grid is-vcentered" style="height: 6rem">
+          <div class="col">Short</div>
+          <div class="col">Short</div>
+          <div class="col">Short<br />Taller col</div>
+        </div>
+      </section>
+
+      <!-- Mobile -->
+      <section data-testid="mobile">
+        <span>Mobile (always flex)</span>
+        <div class="grid is-mobile">
+          <div class="col is-half">Half on mobile</div>
+          <div class="col">Auto</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

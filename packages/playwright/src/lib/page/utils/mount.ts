@@ -49,7 +49,7 @@ const template = (html: string) => `
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <link rel="stylesheet" href="/assets/section.css" />
-    <link rel="stylesheet" href="/assets/styles/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>

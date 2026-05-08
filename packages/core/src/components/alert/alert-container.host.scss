@@ -1,8 +1,8 @@
-@use '@baloise/ds-styles/sass/mixins' as *;
+@use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../host' as host;
 
-@forward '../../../../styles/src/core/container.scss';
+@forward '../container/container.style.scss';
 
 :host {
   --alert-container-top: 1rem;

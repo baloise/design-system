@@ -1,53 +1,28 @@
-tsconfig.base.json
+*.png
+*.svg
+*.mdx
 
-packages/assets/icons/svg
-packages/assets/icons/svg.json
-packages/assets/icons/svg.ts
-packages/assets/brand-icons/svg
-packages/assets/brand-icons/svg.json
-packages/assets/brand-icons/svg.ts
-packages/assets/maps/svg
-packages/assets/maps/svg.json
-packages/assets/maps/svg.ts
+tsconfig.base.json
+package-lock.json
 
 packages/tokens/tokens/Base.tokens.json
 packages/core/src/global/constants/icons.constant.ts
 packages/core/src/global/constants/tags.constant.ts
 packages/core/src/components.d.ts
-packages/devkit/src/**/*.js
-packages/devkit/src/**/*.d.ts
 
-packages/assets/src/brand-icons/svg.json
-packages/assets/src/brand-icons/svg.ts
-packages/assets/src/icons/svg.json
-packages/assets/src/icons/svg.ts
-packages/assets/src/maps/svg.json
-packages/assets/src/maps/svg.ts
+packages/assets/**/svg.json
+packages/assets/**/svg.ts
 
-resources/data/tags.json
+resources/data
 
-.changeset/
+.changeset
 CHANGELOG.md
-CHANGELOG_OLD.md
-CHANGELOG_v12.md
 
-/.nx/cache
+.nx
 .angular
 generated
 
 docs/public
 docs/src/assets
-docs/src/components/**/api.md
-docs/src/components/**/testing.md
-docs/src/components/**/theming.md
 
 CLAUDE.md
-docs/superpowers
-
-package-lock.json
-*.png
-*.svg
-*.mdx
-resources/data/components.json
-
-/.nx/workspace-data
