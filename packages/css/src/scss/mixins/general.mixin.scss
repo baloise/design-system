@@ -1,0 +1,193 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:math';
+
+@mixin sr-only {
+  border: none !important;
+  clip: rect(0, 0, 0, 0) !important;
+  height: 0.01em !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 0.01em !important;
+}
+
+@mixin print-hidden {
+  @media print {
+    display: none !important;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin overflow-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin focus-shadow($color: var(--ds-alias-interaction-focus-color-base)) {
+  @include hover {
+    box-shadow:
+      var(--ds-alias-interaction-focus-color-border) 0 0 0 2px,
+      #{$color} 0 0 0 5px !important;
+  }
+}
+
+@mixin focus-inset-shadow {
+  @include hover {
+    box-shadow:
+      inset var(--ds-alias-interaction-focus-color-end) 0 0 0 3px,
+      inset var(--ds-alias-interaction-focus-color-start) 0 0 0 5px !important;
+  }
+}
+
+@mixin focus-inverted-shadow {
+  @include hover {
+    box-shadow:
+      var(--ds-alias-interaction-focus-color-inverted-start) 0 0 0 2px,
+      var(--ds-alias-interaction-focus-color-inverted-end) 0 0 0 5px !important;
+  }
+}
+
+@mixin focus-inverted-inset-shadow {
+  @include hover {
+    box-shadow:
+      inset var(--ds-alias-interaction-focus-color-inverted-end) 0 0 0 3px,
+      inset var(--ds-alias-interaction-focus-color-inverted-start) 0 0 0 5px !important;
+  }
+}
+
+// --------------------------------------------
+
+@mixin font-smoothing {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-user-drag: none; /* Chrome, Safari */
+  user-drag: none; /* Non-standard, limited support */
+}
+
+@mixin disabled {
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+@mixin reset {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin overlay($offset: 0) {
+  bottom: $offset;
+  left: $offset;
+  position: absolute;
+  right: $offset;
+  top: $offset;
+}
+
+@mixin input-cover() {
+  @include position(0, null, null, 0);
+  @include margin(0);
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  appearance: none;
+  outline: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+@mixin visually-hidden() {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+  clip: rect(0 0 0 0);
+
+  opacity: 0;
+  overflow: hidden;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@mixin text-inherit() {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-decoration: inherit;
+  text-indent: inherit;
+  text-overflow: inherit;
+  text-transform: inherit;
+  text-align: inherit;
+  white-space: inherit;
+  color: inherit;
+}
+
+// Blumer mixins
+// --------------------------------------------
+
+$block-spacing: 0.25rem !default;
+@mixin bottomSpacing($spacing: $block-spacing) {
+  &:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+}
+
+@mixin ltr-position($spacing, $right: true) {
+  $normal: 'right';
+  @if not $right {
+    $normal: 'left';
+  }
+  #{$normal}: $spacing;
+}
+
+@mixin ltr-property($property, $spacing, $right: true) {
+  $normal: 'right';
+  @if not $right {
+    $normal: 'left';
+  }
+  #{$property}-#{$normal}: $spacing;
+}
