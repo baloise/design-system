@@ -1,4 +1,29 @@
-@use '../mixins/_all' as *;
+@use '@baloise/ds-styles/sass/mixins' as *;
+
+:root {
+  --ds-table-color: var(--ds-global-color-primary-5);
+  --ds-table-background-color: var(--ds-global-color-white);
+  --ds-table-body-background-color: transparent;
+  --ds-table-cell-border-color: var(--ds-alias-border-color-base);
+  --ds-table-cell-border: 2px solid var(--ds-table-cell-border-color);
+  --ds-table-cell-border-width: 0 0 2px;
+  --ds-table-cell-padding: 0.5em 0.75em;
+  --ds-table-cell-heading-color: var(--ds-global-color-primary-5);
+  --ds-table-head-cell-border-width: 0 0 1px;
+  --ds-table-head-cell-border-color: var(--ds-global-color-primary-5);
+  --ds-table-head-cell-color: var(--ds-global-color-primary-5);
+  --ds-table-head-background-color: transparent;
+  --ds-table-head-font-size: var(--ds-text-size-base);
+  --ds-table-head-font-family: var(--ds-global-font-family-heading);
+  --ds-table-foot-cell-border-width: 0 0 0;
+  --ds-table-foot-cell-color: var(--ds-global-color-primary-5);
+  --ds-table-foot-background-color: transparent;
+  --ds-table-row-background-color-hover: var(--ds-global-color-grey-2);
+  --ds-table-row-background-color-active: var(--ds-global-color-primary-1);
+  --ds-table-row-color-active: var(--ds-global-color-primary-5);
+  --ds-table-striped-row-even-background-color: var(--ds-global-color-grey-1);
+  --ds-table-striped-row-even-background-color-hover: var(--ds-global-color-grey-2);
+}
 
 .table {
   @extend %bottomSpacing;
@@ -10,7 +35,6 @@
     border-width: var(--ds-table-cell-border-width);
     padding: var(--ds-table-cell-padding);
     vertical-align: middle;
-    // Modifiers
     &.is-narrow {
       white-space: nowrap;
       width: 1%;
@@ -68,7 +92,7 @@
         td,
         th {
           border-bottom-width: 0;
-        } // Modifiers
+        }
       }
     }
   }

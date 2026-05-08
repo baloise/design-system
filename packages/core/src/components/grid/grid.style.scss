@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use '../mixins/_all' as *;
+@use '@baloise/ds-styles/sass/mixins' as *;
 
 .grid {
   flex-basis: 0;
@@ -616,7 +616,7 @@
   }
   &:not(:last-child) {
     margin-bottom: calc(1.5rem - #{var(--ds-column-gap)});
-  } // Modifiers
+  }
   &.is-centered {
     justify-content: center;
   }
@@ -643,14 +643,13 @@
   }
   &.is-vcentered {
     align-items: center;
-  } // Responsiveness
+  }
   @include tablet {
     &:not(.is-desktop) {
       display: flex;
     }
   }
   @include desktop {
-    // Modifiers
     &.is-desktop {
       display: flex;
     }
