@@ -22,9 +22,9 @@
       }
     },
     "test-ui": {
-      "executor": "@baloise/ds-nx:test-ui",
+      "command": "npx vitest --ui",
       "options": {
-        "projectRoot": "{projectRoot}"
+        "cwd": "{projectRoot}"
       }
     }
   },

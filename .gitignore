@@ -59,8 +59,6 @@ packages/core/config/custom-elements/all.d.ts
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 
-resources/data
-
 docs/src/contributing/contributors.md
 docs/src/development/00-guides/theming/theming.md
 docs/public/assets/fonts/

@@ -12,6 +12,10 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "type": "module",
+  "main": "dist/src/index.js",
+  "files": [
+    "dist/"
+  ],
   "dependencies": {
     "@playwright/test": "^1.59.1",
     "@axe-core/playwright": "^4.11.3",

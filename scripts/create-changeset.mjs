@@ -1,23 +1,47 @@
+/**
+ * Create changeset — interactive prompt to generate changeset entries
+ *
+ * Run with: node scripts/create-changeset.mjs
+ */
 import prompts from 'prompts'
-import { readFile, rm, writeFile } from 'fs/promises'
-import path, { join } from 'path'
-import { promisify } from 'util'
-import { exec } from 'child_process'
-import { CreateChangesetExecutorSchema } from './schema'
+import { readFile, rm, writeFile } from 'node:fs/promises'
+import path, { join, resolve, dirname } from 'node:path'
+import { execSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
 
-export default async function runExecutor(options: CreateChangesetExecutorSchema) {
-  let cleanUp = () => undefined
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const workspaceRoot = resolve(__dirname, '..')
 
+let cleanUp = () => Promise.resolve()
+
+/**
+ * Execute a command and return stdout
+ */
+function exec(cmd) {
   try {
-    const tagsPath = join(options.workspaceRoot, 'resources/data/tags.json')
+    const stdout = execSync(cmd, { encoding: 'utf-8' })
+    return stdout
+  } catch (err) {
+    throw new Error(`Command failed: ${cmd}\n${err.message}`)
+  }
+}
+
+/**
+ * Main
+ */
+async function main() {
+  try {
+    // Read tags from core dist
+    const tagsPath = join(workspaceRoot, 'packages/core/dist/tags.json')
     const tagsContent = await readFile(tagsPath, 'utf-8')
     const tags = JSON.parse(tagsContent)
 
+    // Prompt for changeset details
     const response = await prompts([
       {
         type: 'select',
         name: 'bumpLevel',
-        message: 'What do type of change is it?',
+        message: 'What type of change is it?',
         choices: [
           {
             title: '\x1B[34mpatch \x1b[90m(bugs, dep-updates)',
@@ -54,12 +78,10 @@ export default async function runExecutor(options: CreateChangesetExecutorSchema
           { title: 'favicons', value: 'favicons' },
           { title: 'deps', value: 'deps' },
           { title: 'a11y', value: 'a11y' },
-          ...tags.map(tag => {
-            return {
-              title: `${tag.replace('ds-', '')}`,
-              value: tag.replace('ds-', ''),
-            }
-          }),
+          ...tags.map(tag => ({
+            title: tag.replace('ds-', ''),
+            value: tag.replace('ds-', ''),
+          })),
         ],
       },
       {
@@ -69,21 +91,23 @@ export default async function runExecutor(options: CreateChangesetExecutorSchema
       },
     ])
 
+    // Validate responses
     if (!response.bumpLevel) {
-      console.error('No bump level was defined!')
-      return { success: false }
+      console.error('✗ No bump level selected')
+      process.exit(1)
     }
 
     if (!response.scope) {
-      console.error('No scope was defined!')
-      return { success: false }
+      console.error('✗ No scope selected')
+      process.exit(1)
     }
 
     if (!response.summary) {
-      console.error('No summary was defined!')
-      return { success: false }
+      console.error('✗ No summary provided')
+      process.exit(1)
     }
 
+    // Prepare changeset content
     const content = `---
 '@baloise/ds-core': ${response.bumpLevel}
 ---
@@ -91,26 +115,29 @@ export default async function runExecutor(options: CreateChangesetExecutorSchema
 **${response.scope}**: ${response.summary}
 `
 
-    // create new changeset file
-    const { stdout } = await promisify(exec)(`npx changeset add --empty`)
+    // Generate filename using changeset CLI
+    const stdout = exec('npx changeset add --empty')
     const triggerWord = '.changeset' + path.sep
     const start = stdout.lastIndexOf(triggerWord) + triggerWord.length
     const end = stdout.lastIndexOf('.md') + '.md'.length
     const filename = stdout.substring(start, end).trim()
-    const filepath = join(options.workspaceRoot, '.changeset', filename)
+    const filepath = join(workspaceRoot, '.changeset', filename)
 
+    // Setup cleanup on error
     cleanUp = async () => rm(filepath, { force: true, recursive: true })
-    await cleanUp()
+
+    // Write changeset file
+    await rm(filepath, { force: true, recursive: true })
     await writeFile(filepath.trim(), content, { encoding: 'utf-8' })
 
-    console.log(``)
-    console.log(`> ${filepath}`)
-    console.log(``)
+    console.log('')
+    console.log(`✔ Changeset created: ${filepath}`)
+    console.log('')
   } catch (error) {
-    console.error(error)
+    console.error('✗ Error creating changeset:', error.message)
     await cleanUp()
-    return { success: false }
+    process.exit(1)
   }
-
-  return { success: true }
 }
+
+await main()

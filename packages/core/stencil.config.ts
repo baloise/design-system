@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
+import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
@@ -101,7 +102,7 @@ export const config: Config = {
       ? [
           docsJsonWithoutTimestamp({
             type: 'docs-json',
-            file: '../../resources/data/components.json',
+            file: 'dist/docs/components.json',
           }),
         ]
       : []),
@@ -110,6 +111,7 @@ export const config: Config = {
           {
             type: 'dist',
             esmLoaderPath: '../loader',
+            copy: [{ src: resolve(__dirname, 'src/global/constants/tags.json'), dest: 'tags.json' }],
           },
         ]
       : []),
@@ -157,7 +159,7 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, '..', 'resources', 'images'),
+          src: join(packagesDir, 'core', 'public', 'images'),
           dest: 'assets/images',
           warn: true,
         },
@@ -192,6 +194,34 @@ export const config: Config = {
           for (const file of templateFiles) {
             this.addWatchFile(file)
           }
+
+          const componentFiles = await fg(resolve(__dirname, './src/components/**/*.tsx'))
+          const allTags = (
+            await Promise.all(
+              componentFiles.map(async f => {
+                const src = await readFile(f, 'utf-8')
+                const m = src.match(/tag:\s*['"]([^'"]+)['"]/)
+                return m ? m[1] : null
+              }),
+            )
+          )
+            .filter((t): t is string => !!t && !t.startsWith('ds-doc'))
+            .sort()
+
+          const reducedTags = allTags.reduce<string[]>((acc, tag) => {
+            if (!acc.some(t => tag.startsWith(t)) && tag !== 'ds-tab-item' && tag !== 'ds-notices') {
+              acc.push(tag)
+            }
+            return acc
+          }, [])
+
+          const constantsDir = resolve(__dirname, 'src/global/constants')
+          await mkdir(constantsDir, { recursive: true })
+          await writeFile(
+            resolve(constantsDir, 'tags.constant.ts'),
+            `export const tags = ${JSON.stringify(allTags, null, 2)}\n`,
+          )
+          await writeFile(resolve(constantsDir, 'tags.json'), JSON.stringify(reducedTags, null, 2))
         },
       },
     ],

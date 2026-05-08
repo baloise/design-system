@@ -1,12 +1,11 @@
 import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
-import json from '../../../../packages/styles/docs/typography.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 import { CssTable } from './helpers/CssTable'
 
 export const CssTypographyColors = (): React.ReactElement => (
   <CssUtilitiesTable
-    list={json}
+    utility="typography"
     search="color"
     example={item => {
       if (item.class.includes('inverted') || item.class.includes('white')) {
@@ -19,21 +18,27 @@ export const CssTypographyColors = (): React.ReactElement => (
 
 export const CssTypographyFamily = (): React.ReactElement => (
   <CssUtilitiesTable
-    list={json}
+    utility="typography"
     search="font-family"
     example={item => <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>}
   />
 )
 
-export const CssTypographyTextAlign = (): React.ReactElement => <CssUtilitiesTable list={json} search="text-align" />
-
-export const CssTypographyTextTransform = (): React.ReactElement => (
-  <CssUtilitiesTable list={json} search="text-transform" />
+export const CssTypographyTextAlign = (): React.ReactElement => (
+  <CssUtilitiesTable utility="typography" search="text-align" />
 )
 
-export const CssTypographyWeight = (): React.ReactElement => <CssUtilitiesTable list={json} search="font-weight" />
+export const CssTypographyTextTransform = (): React.ReactElement => (
+  <CssUtilitiesTable utility="typography" search="text-transform" />
+)
 
-export const CssTypographyWhiteSpace = (): React.ReactElement => <CssUtilitiesTable list={json} search="white-space" />
+export const CssTypographyWeight = (): React.ReactElement => (
+  <CssUtilitiesTable utility="typography" search="font-weight" />
+)
+
+export const CssTypographyWhiteSpace = (): React.ReactElement => (
+  <CssUtilitiesTable utility="typography" search="white-space" />
+)
 
 export const CssTypographySize = (): React.ReactElement => {
   return CssTable({

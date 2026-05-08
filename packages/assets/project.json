@@ -11,16 +11,7 @@
       }
     },
     "optimize": {
-      "executor": "@baloise/ds-nx:build-svg",
-      "options": {
-        "projectName": "{projectName}",
-        "projectRoot": "{projectRoot}",
-        "svgOptimize": true,
-        "jsInlineData": true,
-        "jsOutput": true,
-        "svgReplaceBlack": true,
-        "subPackages": ["maps", "icons", "brand-icons"]
-      }
+      "command": "node scripts/build-svg.mjs"
     },
     "build": {
       "executor": "@nx/rollup:rollup",

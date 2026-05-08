@@ -1,10 +1,9 @@
 import React from 'react'
-import json from '../../../../packages/styles/docs/elevation.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
 export const CssElevationOpacity = () => (
   <CssUtilitiesTable
-    list={json}
+    utility="elevation"
     search="opacity"
     example={item => <div className={`bg-green ${item.class} p-small`}></div>}
   />
@@ -12,7 +11,7 @@ export const CssElevationOpacity = () => (
 
 export const CssElevationShadow = () => (
   <CssUtilitiesTable
-    list={json}
+    utility="elevation"
     search={['box-shadow', 'text-shadow']}
     example={item => {
       if (item.property === 'box-shadow') {
@@ -23,4 +22,4 @@ export const CssElevationShadow = () => (
   />
 )
 
-export const CssElevationZIndex = () => <CssUtilitiesTable list={json} search="z-index" />
+export const CssElevationZIndex = () => <CssUtilitiesTable utility="elevation" search="z-index" />

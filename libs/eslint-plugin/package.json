@@ -1,9 +1,11 @@
 {
   "name": "@baloise/ds-eslint-plugin",
   "version": "0.0.1",
-  "private": true,
   "type": "commonjs",
   "main": "./dist/src/index.js",
+  "files": [
+    "dist/"
+  ],
   "exports": {
     ".": {
       "require": "./dist/src/index.js",

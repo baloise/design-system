@@ -13,8 +13,6 @@ packages/core/src/components.d.ts
 packages/assets/**/svg.json
 packages/assets/**/svg.ts
 
-resources/data
-
 .changeset
 CHANGELOG.md
 

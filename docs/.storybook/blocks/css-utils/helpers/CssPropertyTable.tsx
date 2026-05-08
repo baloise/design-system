@@ -1,10 +1,14 @@
 import React from 'react'
 import { Clipboard } from '../../Clipboard'
+import json from '../../../../../packages/css/dist/docs/design-system.json'
+
+type DesignSystemJson = typeof json
+type UtilityKey = keyof DesignSystemJson
 
 interface CssUtility {
   class: string
   css: string
-  property: string
+  property: string | string[]
   value: string
   responsive?: boolean
   valueMobile?: string
@@ -12,31 +16,26 @@ interface CssUtility {
   valueDesktop?: string
 }
 
+function getValues(utility: UtilityKey, search?: string | string[]): CssUtility[] {
+  const items = json[utility] as CssUtility[]
+  if (!search) return items
+  const terms = Array.isArray(search) ? search : [search]
+  return items.filter(item => {
+    const props = Array.isArray(item.property) ? item.property : [item.property]
+    return props.some(p => terms.includes(p))
+  })
+}
+
 export const CssUtilitiesTable = ({
-  list = [],
-  search = '',
+  utility,
+  search,
   example = undefined,
 }: {
-  list?: any[]
-  search: string | string[]
-  example?: any
+  utility: UtilityKey
+  search?: string | string[]
+  example?: (item: CssUtility) => React.ReactNode
 }): React.ReactElement => {
-  function getValues(list, search) {
-    let results: CssUtility[] = []
-    if (!Array.isArray(search)) {
-      search = [search]
-    }
-    for (let index = 0; index < list.length; index++) {
-      const row: CssUtility = list[index]
-      const key: string = Object.keys(row)[0]
-      if (search.includes(key)) {
-        results = [...results, ...row[key]]
-      }
-    }
-    return results
-  }
-
-  const values: CssUtility[] = getValues(list, search)
+  const values = getValues(utility, search)
 
   return (
     <section
@@ -57,9 +56,6 @@ export const CssUtilitiesTable = ({
             </th>
             <th className="pt-medium">Property</th>
             {example ? <th className="pt-medium"></th> : ''}
-            {/* {responsive ? <th className="pt-medium">Mobile</th> : ''}
-            {responsive ? <th className="pt-medium">Tablet</th> : ''}
-            {responsive ? <th className="pt-medium">Desktop</th> : ''} */}
           </tr>
         </thead>
         <tbody>
@@ -70,15 +66,12 @@ export const CssUtilitiesTable = ({
               </td>
               <td>
                 <pre className="doc-table-pre text-small">
-                  {item.property}
+                  {Array.isArray(item.property) ? item.property.join(', ') : item.property}
                   {item.property && item.value ? ': ' : ''}
                   {item.value}
                 </pre>
               </td>
               {example ? <td>{example(item)}</td> : ''}
-              {/* {responsive ? <td>{item.valueMobile}</td> : ''}
-              {responsive ? <td>{item.valueTablet}</td> : ''}
-              {responsive ? <td>{item.valueDesktop}</td> : ''} */}
             </tr>
           ))}
         </tbody>
@@ -137,11 +130,9 @@ export const CssPropertyTable = ({
               </td>
               <td>
                 <pre className="doc-table-pre text-small">
-                  {/* <code className='bg-grey-2 border-none'> */}
                   {property || item.property}
                   {(property || item.property) && item.value ? ': ' : ''}
                   {item.value}
-                  {/* </code> */}
                 </pre>
               </td>
               {responsive ? <td>{item.valueMobile}</td> : ''}
