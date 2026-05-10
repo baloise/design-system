@@ -32,7 +32,7 @@ function exec(cmd) {
 async function main() {
   try {
     // Read tags from core dist
-    const tagsPath = join(workspaceRoot, 'packages/core/dist/tags.json')
+    const tagsPath = join(workspaceRoot, 'packages/core/docs/tags.json')
     const tagsContent = await readFile(tagsPath, 'utf-8')
     const tags = JSON.parse(tagsContent)
 
@@ -131,7 +131,7 @@ async function main() {
     await writeFile(filepath.trim(), content, { encoding: 'utf-8' })
 
     console.log('')
-    console.log(`✔ Changeset created: ${filepath}`)
+    console.log(`\\x1b[32m✔\\x1b[0m Changeset created: ${filepath}`)
     console.log('')
   } catch (error) {
     console.error('✗ Error creating changeset:', error.message)

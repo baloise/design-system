@@ -2,6 +2,13 @@ import StyleDictionary from 'style-dictionary'
 import { copy, ensureDir, pathExists } from 'fs-extra'
 import { resolve } from 'path'
 
+console.log(`
+\x1b[35m┃\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[1;37m🧩 Helvetia Design System\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[90m🎨 Building Tokens Package\x1b[0m
+\x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
+`)
+
 import { registerCustomTransformers } from './transformers.js'
 import { registerCustomFormatters } from './formatter.js'
 

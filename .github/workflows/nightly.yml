@@ -46,13 +46,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: npx turbo run build
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: node scripts/pre-publish.mjs
 
       - name: Publish
-        run: npx nx release publish --tag=nightly
+        run: npm publish --workspaces --tag=nightly
 
       - name: Git Reset
         run: git reset --hard

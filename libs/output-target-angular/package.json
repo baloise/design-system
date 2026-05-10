@@ -1,7 +1,11 @@
 {
   "name": "@baloise/output-target-angular",
   "version": "0.0.0",
-  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "test": "vitest --run",
+    "lint": "eslint ."
+  },
   "dependencies": {
     "@stencil/core": "4.43.4",
     "tslib": "2.8.1"

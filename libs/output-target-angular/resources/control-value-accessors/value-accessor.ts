@@ -7,6 +7,7 @@ import { DsTokenUserConfig, raf } from '..'
 
 @Directive()
 export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onChange: (value: any) => void = () => {
     /**/
   }
@@ -14,6 +15,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
     /**/
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected lastValue: any
   private statusChanges?: Subscription
 
@@ -22,6 +24,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
     protected elementRef: ElementRef,
   ) {}
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   writeValue(value: any): void {
     this.elementRef.nativeElement.value = this.lastValue = value === null ? '' : value
     this.onStatusChange()
@@ -40,8 +43,10 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
    * @param el The component element.
    * @param value The new value of the control.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleValueChange(ev: CustomEvent<any>): void {
     const el = ev.target as HTMLElement
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const value = ev.detail as any
     if (el === this.elementRef.nativeElement) {
       if (value !== this.lastValue) {
@@ -53,13 +58,16 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
   }
 
   @HostListener('dsBlur', ['$event.target'])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   _handleBlurEvent(el: any): void {
     if (el === this.elementRef.nativeElement) {
       this.onTouched()
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   registerOnChange(fn: (value: any) => void): void {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.onChange = (value: any) => {
       fn(value)
       this.onStatusChange()

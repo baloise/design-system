@@ -63,12 +63,12 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: npx nx run core:build
+        run: npm --workspace @baloise/ds-core run build
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --update-snapshots
+        run: npm --workspace @baloise/ds-core run e2e:ci -- --update-snapshots
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 

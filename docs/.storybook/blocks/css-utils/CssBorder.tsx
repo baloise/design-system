@@ -10,10 +10,7 @@ export const CssBorderColors = () => (
 )
 
 export const CssBorderRadius = () => (
-  <CssUtilitiesTable
-    utility="border"
-    example={item => <div className={`bg-green ${item.class} p-small`}></div>}
-  />
+  <CssUtilitiesTable utility="border" example={item => <div className={`bg-green ${item.class} p-small`}></div>} />
 )
 
 export const CssBorderWidth = () => (

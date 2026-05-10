@@ -18,6 +18,9 @@
     "src/favicons",
     "src/fonts"
   ],
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
     "@types/google.maps": "3.64.0"
   }

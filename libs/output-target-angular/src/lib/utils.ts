@@ -70,14 +70,14 @@ export async function readPackageJson(rootDir: string) {
   let pkgJson: string
   try {
     pkgJson = await readFile(pkgJsonPath, 'utf8')
-  } catch (e) {
+  } catch {
     throw new Error(`Missing "package.json" file for distribution: ${pkgJsonPath}`)
   }
 
   let pkgData: PackageJSON
   try {
     pkgData = JSON.parse(pkgJson)
-  } catch (e) {
+  } catch {
     throw new Error(`Error parsing package.json: ${pkgJsonPath}`)
   }
 
@@ -85,6 +85,5 @@ export async function readPackageJson(rootDir: string) {
 }
 
 const EXTENDED_PATH_REGEX = /^\\\\\?\\/
-// eslint-disable-next-line no-control-regex
 const NON_ASCII_REGEX = /[^\x00-\x80]+/
 const SLASH_REGEX = /\\/g

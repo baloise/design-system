@@ -10,6 +10,13 @@ const camelCase = require('lodash/camelCase')
 const upperFirst = require('lodash/upperFirst')
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+console.log(`
+\x1b[35m┃\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[1;37m🧩 Helvetia Design System\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[90m🎨 Building SVG Package\x1b[0m
+\x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
+`)
 const assetsRoot = resolve(__dirname, '../packages/assets')
 const coreRoot = resolve(__dirname, '../packages/core')
 

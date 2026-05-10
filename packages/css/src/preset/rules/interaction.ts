@@ -21,4 +21,6 @@ export const interactionRules: Rule[] = [
 ]
 
 export const interactionSafelist: string[] = interactionRules.map(r => r[0] as string)
-export const interactionMetadata: RuleMetadata[] = metadataFromRules(interactionRules as Array<[string, Record<string, string>]>)
+export const interactionMetadata: RuleMetadata[] = metadataFromRules(
+  interactionRules as Array<[string, Record<string, string>]>,
+)

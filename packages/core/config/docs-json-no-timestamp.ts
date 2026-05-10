@@ -191,7 +191,7 @@ function extractComponentTokens(tokensFilePath: string): Map<string, TokenValue[
  * This wraps the standard docs-json output and removes the timestamp field and all path-related properties
  * Also enriches components with design tokens from Base.tokens.json
  */
-export function docsJsonWithoutTimestamp(outputTarget: OutputTargetDocsJson): OutputTargetDocsJson {
+export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): OutputTargetDocsJson {
   return {
     ...outputTarget,
     type: 'docs-custom',

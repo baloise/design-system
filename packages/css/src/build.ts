@@ -21,9 +21,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const pkg = JSON.parse(readFileSync(resolve(__dirname, '../package.json'), 'utf8'))
 
+console.log(`
+\x1b[35m┃\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[1;37m🧩 Helvetia Design System\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[90m📦 Building CSS Package\x1b[0m
+\x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
+`)
+
 // --- Clean dist ---------------------------------------------------------------
 rmSync(resolve(__dirname, '../dist'), { recursive: true, force: true })
-console.log('✔ dist/ cleaned')
+console.log('\x1b[32m✔\x1b[0m dist/ cleaned')
 
 function banner(description: string): string {
   const year = new Date().getFullYear()
@@ -161,14 +168,14 @@ const outDir = resolve(__dirname, '../dist/css')
 mkdirSync(outDir, { recursive: true })
 writeFileSync(resolve(outDir, 'utilities.css'), banner('Utilities') + output)
 
-console.log(`✔ dist/css/utilities.css written (${output.length} bytes)`)
+console.log(`\x1b[32m✔\x1b[0m dist/css/utilities.css written (${output.length} bytes)`)
 
 // --- Write metadata JSON for docs ------------------------------------------
 const docsDir = resolve(__dirname, '../dist/docs')
 mkdirSync(docsDir, { recursive: true })
 writeFileSync(resolve(docsDir, 'design-system.json'), JSON.stringify(docsMetadata, null, 2))
 
-console.log(`✔ dist/docs/design-system.json written (${Object.keys(docsMetadata).length} categories)`)
+console.log(`\x1b[32m✔\x1b[0m dist/docs/design-system.json written (${Object.keys(docsMetadata).length} categories)`)
 
 // --- Compile base layer (tokens + normalize + structure) -------------------
 async function compileSass(entry: string, outPath: string, description: string): Promise<void> {
@@ -178,7 +185,7 @@ async function compileSass(entry: string, outPath: string, description: string):
   const content = banner(description) + result.css
   writeFileSync(outPath, content)
   const label = outPath.split('/packages/css/')[1] ?? outPath
-  console.log(`✔ ${label} written (${content.length} bytes)`)
+  console.log(`\x1b[32m✔\x1b[0m ${label} written (${content.length} bytes)`)
 }
 
 const scssOutDir = resolve(__dirname, '../dist/scss')
@@ -186,7 +193,7 @@ mkdirSync(scssOutDir, { recursive: true })
 
 // Copy SCSS source files so consumers can import from dist/scss/
 cpSync(resolve(__dirname, 'scss'), scssOutDir, { recursive: true })
-console.log('✔ dist/scss/ source files copied')
+console.log('\x1b[32m✔\x1b[0m dist/scss/ source files copied')
 
 await compileSass(
   resolve(__dirname, 'scss/base.scss'),
@@ -202,12 +209,12 @@ styleFiles.sort()
 // Build barrel: paths relative to packages/css/src/scss/ (url used by compileStringAsync)
 const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f}';`).join('\n')
 
-// FileImporter: redirect @baloise/ds-styles/sass/* → packages/css/src/scss/*
-// packages/styles symlink is broken in this monorepo; our scss/ is the replacement.
+// FileImporter: redirect @baloise/ds-css/scss/* → packages/css/src/scss/*
+// Handles internal monorepo imports during development
 const dsStylesImporter = {
   findFileUrl(url: string) {
-    if (!url.startsWith('@baloise/ds-styles/sass/')) return null
-    const rel = url.replace('@baloise/ds-styles/sass/', '')
+    if (!url.startsWith('@baloise/ds-css/scss/')) return null
+    const rel = url.replace('@baloise/ds-css/scss/', '')
     return new URL(`file://${resolve(__dirname, `scss/${rel}`)}`)
   },
 }
@@ -220,14 +227,14 @@ const componentResult = await compileStringAsync(barrelContent, {
 const componentCssWithBanner = banner('Components') + componentResult.css
 writeFileSync(resolve(outDir, 'component.css'), componentCssWithBanner)
 console.log(
-  `✔ dist/css/component.css written (${componentCssWithBanner.length} bytes, ${styleFiles.length} components)`,
+  `\x1b[32m✔ dist/css/component.css written (${componentCssWithBanner.length} bytes, ${styleFiles.length} components)`,
 )
 
 // --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
 // UnoCSS output is plain CSS; expose via a forwarding stub for Sass consumers.
 const utilitiesScss = `// Auto-generated — utilities are compiled by UnoCSS, not Sass.\n// Use the CSS directly: @import '@baloise/ds-css/css/utilities.css';\n`
 writeFileSync(resolve(scssOutDir, 'utilities.scss'), utilitiesScss)
-console.log('✔ dist/scss/utilities.scss written')
+console.log('\x1b[32m✔\x1b[0m dist/scss/utilities.scss written')
 
 // --- Build design-system.css (base + component + utilities concatenated) --------------
 const baseCss = readFileSync(resolve(outDir, 'base.css'), 'utf8')
@@ -235,7 +242,7 @@ const componentCssContent = readFileSync(resolve(outDir, 'component.css'), 'utf8
 const allCss =
   banner('Full Bundle (Base + Components + Utilities)') + baseCss + '\n' + componentCssContent + '\n' + output
 writeFileSync(resolve(outDir, 'design-system.css'), allCss)
-console.log(`✔ dist/css/design-system.css written (${allCss.length} bytes)`)
+console.log(`\x1b[32m✔\x1b[0m dist/css/design-system.css written (${allCss.length} bytes)`)
 
 // --- Build design-system.local.css (fonts with dev path + base + component + utilities)
 await compileSass(
@@ -253,15 +260,15 @@ const allLocalCss =
   output
 writeFileSync(resolve(outDir, 'design-system.local.css'), allLocalCss)
 writeFileSync(resolve(outDir, 'design-system.local.min.css'), allLocalCss)
-console.log(`✔ dist/css/design-system.local.css written (${allLocalCss.length} bytes)`)
+console.log(`\x1b[32m✔\x1b[0m dist/css/design-system.local.css written (${allLocalCss.length} bytes)`)
 
 // --- Write dist/scss/design-system.scss (Sass entry that pulls base + component) ------
 const allScss = `@use './base';\n// component styles are compiled from packages/core — use component.css directly\n// utilities are UnoCSS-generated — use utilities.css directly\n`
 writeFileSync(resolve(scssOutDir, 'design-system.scss'), allScss)
-console.log('✔ dist/scss/design-system.scss written')
+console.log('\x1b[32m✔\x1b[0m dist/scss/design-system.scss written')
 
 // --- Copy CSS files to packages/core/www/assets/css/ ------------------------
 const wwwCssDir = resolve(__dirname, '../../core/www/assets/css')
 mkdirSync(wwwCssDir, { recursive: true })
 cpSync(outDir, wwwCssDir, { recursive: true })
-console.log('✔ dist/css/ copied to packages/core/www/assets/css/')
+console.log('\x1b[32m✔\x1b[0m dist/css/ copied to packages/core/www/assets/css/')

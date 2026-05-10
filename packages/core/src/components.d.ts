@@ -211,7 +211,7 @@ export namespace Components {
          */
         "color": BadgeColor;
         /**
-          * Name of the icon to show. If a icon is present text should be hidden.
+          * Name of the icon to show. If an icon is present, text should be hidden.
           * @default ''
          */
         "icon": string;
@@ -3315,7 +3315,7 @@ declare namespace LocalJSX {
          */
         "color"?: BadgeColor;
         /**
-          * Name of the icon to show. If a icon is present text should be hidden.
+          * Name of the icon to show. If an icon is present, text should be hidden.
           * @default ''
          */
         "icon"?: string;

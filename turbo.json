@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "!**/*.spec.*", "!**/*.play.*"],
+      "outputs": ["dist/**"]
+    },
+    "@baloise/ds-core#build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "!**/*.spec.*", "!**/*.play.*"],
+      "outputs": ["dist/**", "components/**", "www/**", "docs/**"]
+    },
+    "test": {
+      "inputs": ["src/**", "test/**"],
+      "outputs": []
+    },
+    "lint": {
+      "inputs": ["src/**", "eslint.config.*"],
+      "outputs": []
+    },
+    "optimize": {
+      "inputs": ["src/**/svg/*.svg"],
+      "outputs": ["src/**/svg.ts", "src/**/svg.json"]
+    }
+  }
+}

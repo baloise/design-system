@@ -1,5 +1,4 @@
 import tseslint from 'typescript-eslint'
-import nxPlugin from '@nx/eslint-plugin'
 import * as jsoncParser from 'jsonc-eslint-parser'
 import baseConfig from '../../eslint.config.base'
 
@@ -16,10 +15,7 @@ export default tseslint.config(
   },
   {
     files: ['**/*.json'],
-    plugins: { '@nx': nxPlugin },
     languageOptions: { parser: jsoncParser },
-    rules: {
-      '@nx/dependency-checks': 'off',
-    },
+    rules: {},
   },
 )

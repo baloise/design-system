@@ -5,50 +5,26 @@ import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
-import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
+import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
 const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
-const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
 const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
-const IS_DS_PUBLISH = process.env.DS_PUBLISH === 'true'
-const IS_DS_TESTING = process.env.DS_TESTING === 'true'
-const IS_DS_PLAYWRIGHT_TESTING = process.env.DS_PLAYWRIGHT_TESTING === 'true'
+
+let message = ''
 
 if (IS_DS_RELEASE) {
-  console.log('')
-  console.log('🚀 Build is set to release 🚀')
-  console.log('')
-}
-
-if (IS_DS_DOCUMENTATION) {
-  console.log('')
-  console.log('📝 Build is set to documentation 📝')
-  console.log('')
+  message = '🚀 Build is set to release 🚀'
 }
 
 if (IS_DS_DEVELOPMENT) {
-  console.log('')
-  console.log('👷 Build is set to development 👷')
-  console.log('')
+  message = '👷 Build is set to development 👷'
 }
 
-if (IS_DS_PUBLISH) {
+if (message) {
   console.log('')
-  console.log('🚀 Build is set to publish 🚀')
-  console.log('')
-}
-
-if (IS_DS_TESTING) {
-  console.log('')
-  console.log('🧪 Build is set to testing 🧪')
-  console.log('')
-}
-
-if (IS_DS_PLAYWRIGHT_TESTING) {
-  console.log('')
-  console.log('🎭 Build is set to testing 🎭')
+  console.log(message)
   console.log('')
 }
 
@@ -59,13 +35,12 @@ const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
 export const config: Config = {
   autoprefixCss: true,
-  sourceMap: false, //IS_DS_TESTING || IS_DS_DEVELOPMENT,
+  sourceMap: false,
   namespace: 'design-system',
   preamble: '(C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
   transformAliasedImportPaths: true,
-  // buildEs5: 'prod',
   globalScript: 'src/global/global.ts',
   globalStyle: 'src/global/global.scss',
   tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
@@ -98,47 +73,54 @@ export const config: Config = {
     experimentalSlotFixes: true,
   },
   outputTargets: [
-    ...(!IS_DS_DEVELOPMENT
-      ? [
-          docsJsonWithoutTimestamp({
-            type: 'docs-json',
-            file: 'dist/docs/components.json',
-          }),
-        ]
-      : []),
-    ...(!IS_DS_PLAYWRIGHT_TESTING
-      ? [
-          {
-            type: 'dist',
-            esmLoaderPath: '../loader',
-            copy: [{ src: resolve(__dirname, 'src/global/constants/tags.json'), dest: 'tags.json' }],
-          },
-        ]
-      : []),
     /**
-     * Use this outputs for documentation and e2e testing
+     * The dist type is to generate the component(s) as a reusable library that can be self-lazy loading, such as Ionic.
+     * When creating a distribution, the project's package.json will also have to be updated. However,
+     * the generated bundle is tree-shakable, ensuring that only imported components will end up in the build.
+     *
+     * {@link https://stenciljs.com/docs/distribution}
      */
-    ...(!IS_DS_DEVELOPMENT && !IS_DS_PLAYWRIGHT_TESTING
-      ? [
-          webOutputTarget({
-            dir: 'components',
-            isTest: false,
-          }),
-          {
-            type: 'dist-custom-elements',
-            dir: 'components',
-            empty: true,
-            includeGlobalScripts: false,
-            generateTypeDeclarations: true,
-            /**
-             * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
-             * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
-             * contains a dynamic import that caused a warning in Angular.
-             */
-            externalRuntime: false,
-          },
-        ]
-      : []),
+    !IS_DS_DEVELOPMENT && {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    /**
+     * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
+     * simple utility functions for easily defining these elements on the Custom Element Registry. This output target
+     * excels in use in frontend frameworks and projects that will handle bundling, lazy-loading,
+     * and custom element registration themselves.
+     *
+     * {@link https://stenciljs.com/docs/custom-elements}
+     */
+    !IS_DS_DEVELOPMENT && {
+      type: 'dist-custom-elements',
+      dir: 'components',
+      includeGlobalScripts: false,
+      generateTypeDeclarations: true,
+      /**
+       * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
+       * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
+       * contains a dynamic import that caused a warning in Angular.
+       */
+      externalRuntime: false,
+    },
+    /**
+     * Custom output target that generates web components as standalone custom elements
+     * that can be used directly without a framework or bundler.
+     *
+     * {@link https://stenciljs.com/docs/custom-elements}
+     */
+    !IS_DS_DEVELOPMENT &&
+      webOutputTarget({
+        dir: 'components',
+      }),
+    /**
+     * The www output target type is oriented for webapps and websites, hosted from an http server, which can benefit
+     * from prerendering and service workers, such as this very site you're reading. If the outputTarget config is not
+     * provided it'll default to having just the www type.
+     *
+     * {@link https://stenciljs.com/docs/www}
+     */
     {
       type: 'www',
       dir: 'www',
@@ -166,25 +148,39 @@ export const config: Config = {
       ],
     },
     /**
-     * Skip those outputs for documentation releases on vercel and for e2e testing
+     * One of the core features of web components is the ability to create custom elements, which
+     * allow developers to reuse custom functionality defined in their components. When Stencil compiles a
+     * project, it generates a custom element for each component in the project. Each of these custom
+     * elements has an associated tag name that allows the custom element to be used in HTML files.
+     *
+     * {@link https://stenciljs.com/docs/docs-vscode#vs-code-documentation}
      */
-    ...(!IS_DS_DEVELOPMENT && !IS_DS_DOCUMENTATION && !IS_DS_PLAYWRIGHT_TESTING
-      ? [
-          {
-            type: 'docs-vscode',
-            file: 'dist/html.html-data.json',
-            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-          },
-          // ReactGenerator(),
-          // AngularGenerator(),
-        ]
-      : []),
-  ],
+    !IS_DS_DEVELOPMENT && {
+      type: 'docs-vscode',
+      file: 'docs/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+    },
+    /**
+     * Custom output target that generates docs JSON without timestamps and file paths.
+     * Enriches components with design tokens from Base.tokens.json and extracts CSS variable docs
+     * from component SCSS files. Produces a clean, reusable docs/components.json for consistent git diffs.
+     *
+     * {@link https://stenciljs.com/docs/docs-json}
+     */
+    !IS_DS_DEVELOPMENT &&
+      enrichComponentDocsJson({
+        type: 'docs-json',
+        file: 'docs/components.json',
+      }),
+  ].filter(Boolean) as any,
   rollupPlugins: {
     before: [
       {
         name: 'watch-external',
         async buildStart() {
+          /**
+           * Add stylesheets (.scss) and template (.html) files to the watcher.
+           */
           const styleFiles = await fg(resolve(__dirname, './src/**/*.scss'))
           for (const file of styleFiles) {
             this.addWatchFile(file)
@@ -195,6 +191,9 @@ export const config: Config = {
             this.addWatchFile(file)
           }
 
+          /**
+           * Generating the tags.json list
+           */
           const componentFiles = await fg(resolve(__dirname, './src/components/**/*.tsx'))
           const allTags = (
             await Promise.all(
@@ -205,23 +204,20 @@ export const config: Config = {
               }),
             )
           )
-            .filter((t): t is string => !!t && !t.startsWith('ds-doc'))
+            .filter((t): t is string => !!t)
             .sort()
 
-          const reducedTags = allTags.reduce<string[]>((acc, tag) => {
-            if (!acc.some(t => tag.startsWith(t)) && tag !== 'ds-tab-item' && tag !== 'ds-notices') {
-              acc.push(tag)
-            }
-            return acc
-          }, [])
-
           const constantsDir = resolve(__dirname, 'src/global/constants')
+          const destDir = resolve(__dirname, 'docs')
+
           await mkdir(constantsDir, { recursive: true })
           await writeFile(
             resolve(constantsDir, 'tags.constant.ts'),
-            `export const tags = ${JSON.stringify(allTags, null, 2)}\n`,
+            `// This file is auto-generated by stencil.config.ts - do not edit manually\n\nexport const tags: string[] = ${JSON.stringify(allTags, null, 2)}\n`,
           )
-          await writeFile(resolve(constantsDir, 'tags.json'), JSON.stringify(reducedTags, null, 2))
+
+          await mkdir(destDir, { recursive: true })
+          await writeFile(resolve(destDir, 'tags.json'), JSON.stringify(allTags, null, 2))
         },
       },
     ],

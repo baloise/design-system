@@ -1,7 +1,10 @@
 import tseslint from 'typescript-eslint'
-import nxPlugin from '@nx/eslint-plugin'
 import * as jsoncParser from 'jsonc-eslint-parser'
 import baseConfig from './eslint.config.base'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default tseslint.config(
   {
@@ -20,11 +23,15 @@ export default tseslint.config(
   ...baseConfig,
   {
     files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+      },
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
-      '@nx/enforce-module-boundaries': 'off',
       'playwright/no-skipped-test': 'off',
     },
   },
@@ -35,8 +42,7 @@ export default tseslint.config(
   },
   {
     files: ['package.json', 'executors.json'],
-    plugins: { '@nx': nxPlugin },
     languageOptions: { parser: jsoncParser },
-    rules: { '@nx/nx-plugin-checks': 'error' },
+    rules: {},
   },
 )

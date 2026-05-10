@@ -1,7 +1,10 @@
 import { matchers } from '@baloise/ds-playwright'
-import { workspaceRoot } from '@nx/devkit'
-import { nxE2EPreset } from '@nx/playwright/preset'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { defineConfig, devices, expect } from '@playwright/test'
+
+// Get workspace root from file location
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4000'
@@ -10,7 +13,7 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4000'
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+// import('dotenv').then(({ config }) => config());
 
 // Add custom Stencil matchers to Playwright assertions
 expect.extend(matchers)
@@ -19,7 +22,6 @@ expect.extend(matchers)
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src' }),
   testMatch: '**/*.play.ts',
   expect: {
     /**
@@ -53,7 +55,7 @@ export default defineConfig({
     command: process.env.CI ? 'node ./packages/core/web-server.js' : 'npm run start',
     url: 'http://localhost:4000',
     reuseExistingServer: false,
-    cwd: workspaceRoot,
+    cwd: __dirname,
   },
   projects: [
     {

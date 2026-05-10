@@ -16,6 +16,11 @@
   "files": [
     "dist/"
   ],
+  "scripts": {
+    "build": "swc src -d dist --config-file .swcrc",
+    "test": "vitest --run",
+    "lint": "eslint ."
+  },
   "dependencies": {
     "@playwright/test": "^1.59.1",
     "@axe-core/playwright": "^4.11.3",

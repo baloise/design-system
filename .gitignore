@@ -46,8 +46,10 @@ testem.log
 Thumbs.db
 
 .nx
+.turbo
 .stencil
 
+packages/core/docs
 packages/core/icons
 packages/core/playwright
 packages/core/components

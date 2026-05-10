@@ -1306,15 +1306,9 @@
         }
       ],
       "encapsulation": "none",
-      "dependents": [
-        "ds-doc-app"
-      ],
+      "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {
-        "ds-doc-app": [
-          "ds-app"
-        ]
-      },
+      "dependencyGraph": {},
       "props": [
         {
           "name": "animated",

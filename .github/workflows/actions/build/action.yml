@@ -17,29 +17,23 @@ runs:
       shell: bash
       run: npm ci
 
-    - name: Define Nx cache
-      uses: nrwl/nx-set-shas@v4
+    - name: Setup Turborepo cache
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
 
     - name: Check format
       shell: bash
-      run: npx nx format:check
+      run: npm run format:check
 
     - name: Check spelling
       shell: bash
       run: npm run spell
 
-    # - name: Lint & Test
-    #   if: inputs.build == 'false'
-    #   shell: bash
-    #   run: npx nx run-many -t lint test
-
-    - name: PWD
-      shell: bash
-      run: pwd
-
     - name: Lint & Test & Build
       shell: bash
-      run: npx nx run-many -t lint test build
+      run: npx turbo run lint test build
 
     # - name: Build
     #   if: inputs.build == 'true'

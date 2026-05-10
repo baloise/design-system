@@ -82,15 +82,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: npx turbo run build
         env:
           DS_RELEASE: true
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: node scripts/pre-publish.mjs
 
       - name: Publish
-        run: npx nx release publish --tag=snapshot
+        run: npm publish --workspaces --tag=snapshot
 
       - name: Create comment
         if: success()
@@ -246,7 +246,7 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: npx nx run core:build
+        run: npm --workspace @baloise/ds-core run build
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
@@ -299,7 +299,7 @@ jobs:
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
+        run: npm --workspace @baloise/ds-core run e2e:ci -- --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9

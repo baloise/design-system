@@ -1,9 +1,12 @@
 import { RuleTester } from 'eslint'
+import * as typescriptParser from '@typescript-eslint/parser'
 import { noRelativeImports } from './no-relative-imports'
 
 const tester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-  parserOptions: { ecmaVersion: 2020, sourceType: 'module' },
+  languageOptions: {
+    parser: typescriptParser,
+    parserOptions: { ecmaVersion: 2020, sourceType: 'module' },
+  },
 })
 
 tester.run('ds/no-relative-imports', noRelativeImports as any, {

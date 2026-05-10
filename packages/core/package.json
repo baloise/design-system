@@ -22,14 +22,22 @@
   "files": [
     "components/",
     "dist/",
+    "docs/",
     "loader/"
   ],
   "scripts": {
-    "test:ui": "vitest --ui"
+    "build": "node ../../scripts/build-core.mjs",
+    "start": "kill-port 4000 2>/dev/null || true && IS_DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4000",
+    "test": "vitest --run",
+    "test:ui": "vitest --ui",
+    "e2e:ui": "NODE_OPTIONS='--disable-warning=DEP0205' npx playwright test --ui",
+    "e2e:update-screenshots": "NODE_OPTIONS='--disable-warning=DEP0205' npx playwright test --update-snapshots",
+    "e2e:ci": "NODE_OPTIONS='--disable-warning=DEP0205' npx playwright test",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@baloise/ds-assets": "20.0.0-next.1",
-    "@baloise/ds-styles": "20.0.0-next.1",
+    "@baloise/ds-css": "20.0.0-next.1",
     "@floating-ui/dom": "^1.7.6",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^4.43.4",

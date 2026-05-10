@@ -4,8 +4,9 @@
   "version": "15.2.51-next.1",
   "type": "module",
   "scripts": {
-    "start": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "node ../scripts/build-docs.mjs",
+    "start": "node ../scripts/build-docs.mjs --serve && storybook dev -p 6006",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@baloise/ds-core": "20.0.0-next.1",

@@ -34,7 +34,6 @@ export const normalizeDeprecatedTShirtSize = <T extends string | undefined | nul
   // Map old verbose sizes like "small", "normal", ... to their new short counterparts.
   const short = verboseToShortEntries[normalized]
   if (short) {
-    // eslint-disable-next-line no-console
     console.warn(`[bal] The t-shirt size "${size}" is deprecated. Please use the short value "${short}" instead.`)
     return short as T
   }

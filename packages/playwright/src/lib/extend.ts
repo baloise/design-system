@@ -77,7 +77,7 @@ async function extendPageFixture(page: DsPage): Promise<DsPage> {
   page.spyOnEvent = (eventName: string) =>
     baseTest.step(`spyOnEvent ${eventName}`, async () => spyOnEvent(page, eventName))
 
-  page.setupVisualTest = async (url: string, hasLCP = 'Component') => {
+  page.setupVisualTest = async (url: string) => {
     // Intercept font requests and serve local fonts for consistent, fast testing
     await baseTest.step('route fonts', async () => {
       await page.route('**/*.woff2', async route => {
@@ -107,16 +107,6 @@ async function extendPageFixture(page: DsPage): Promise<DsPage> {
 
     await baseTest.step('goTo', async () => page.goto(url, { waitUntil: 'networkidle' }))
     await baseTest.step('wait for changes', async () => waitForChanges(page))
-
-    // if (hasLCP === 'Component') {
-    //   await baseTest.step('wait for last content paint', async () => {
-    //     await page.waitForFunction(
-    //       () => !!document.documentElement && document.documentElement.classList.contains('lcp-ready'),
-    //       {},
-    //       { timeout: 5000 },
-    //     )
-    //   })
-    // }
 
     await baseTest.step('wait for images', async () => {
       await page.evaluate(async () => {

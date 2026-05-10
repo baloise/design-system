@@ -1,7 +1,16 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'grid'
-const VARIANTS = ['basic', 'col-sizes', 'numeric-sizes', 'multiline', 'gapless', 'centered', 'vcentered', 'mobile'] as const
+const VARIANTS = [
+  'basic',
+  'col-sizes',
+  'numeric-sizes',
+  'multiline',
+  'gapless',
+  'centered',
+  'vcentered',
+  'mobile',
+] as const
 
 const image = screenshot(TAG)
 

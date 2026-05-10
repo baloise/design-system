@@ -10,8 +10,10 @@ export const mount = async (page: DsPage, content: string, testInfo: TestInfo) =
   const baseUrl = testInfo.project.use.baseURL
 
   if (baseUrl) {
-    await page.route(baseUrl, route => {
-      if (route.request().url() === `${baseUrl}/`) {
+    await page.route(baseUrl + '**', route => {
+      const url = route.request().url()
+      // Match both http://localhost:4000/ and http://localhost:4000# (with or without trailing slash)
+      if (url === `${baseUrl}/` || url === `${baseUrl}/#` || url === `${baseUrl}#` || url === baseUrl) {
         /**
          * Intercepts the empty page request and returns the
          * HTML content that was passed in.
@@ -27,7 +29,7 @@ export const mount = async (page: DsPage, content: string, testInfo: TestInfo) =
       }
     })
 
-    await page.goto(`${baseUrl}#`)
+    await page.goto(`${baseUrl}#`, { waitUntil: 'domcontentloaded' })
 
     await waitForChanges(page)
     // await page.waitForFunction(

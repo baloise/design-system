@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const express = require('express')
 const compression = require('compression')
 const path = require('path')

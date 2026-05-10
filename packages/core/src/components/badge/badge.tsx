@@ -42,7 +42,7 @@ export class Badge implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
-   * Name of the icon to show. If a icon is present text should be hidden.
+   * Name of the icon to show. If an icon is present, text should be hidden.
    */
   @Prop()
   @ValidateType('string')

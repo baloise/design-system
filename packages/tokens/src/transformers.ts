@@ -9,7 +9,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transitive: true,
     name: `ds/color/rgba`,
     filter: token => token.$type === 'color',
-    transform: (token, _options) => {
+    transform: token => {
       const value = token.$value ?? token.value
       // Handle object values with hex and alpha properties
       if (typeof value === 'object' && value !== null && 'hex' in value && 'alpha' in value && value.alpha < 1) {
@@ -35,7 +35,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transitive: true,
     name: `ds/color/hex`,
     filter: token => token.$type === 'color',
-    transform: (token, _options) => {
+    transform: token => {
       const value = token.$value ?? token.value
       // Handle object values with hex and alpha properties
       if (typeof value === 'object' && value !== null && 'hex' in value && 'alpha' in value) {
@@ -52,17 +52,8 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     type: `name`,
     transitive: true,
     name: `ds/css/name`,
-    transform: (token, _options) => {
+    transform: token => {
       let tokenName = token.name
-      // const isGlobal = token.path.includes('🌐 Global')
-      // if (isGlobal) {
-      //   tokenName = tokenName.replace('-primitive', '-global')
-      // }
-
-      // const isAlias = token.path.includes('🔗 Alias')
-      // if (isAlias) {
-      //   tokenName = tokenName.replace('-semantic', '')
-      // }
 
       const isComponent = token.path.includes('🧩 Component')
       if (isComponent) {
@@ -91,7 +82,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     type: `name`,
     transitive: true,
     name: `ds/js/name`,
-    transform: (token, _options) => {
+    transform: token => {
       let tokenName = token.name
       tokenName = tokenName.replace('Primitive', 'Global')
       tokenName = tokenName.replace('Semantic', 'Alias')
@@ -108,13 +99,13 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transitive: true,
     name: `ds/size/rem`,
     filter: token => token.$type === 'number',
-    transform: (token, _options) => {
-      const name = token.name
+    transform: token => {
+      // const name = token.name
       const value = token.$value
-      const originalValue = token.original.$value
+      // const originalValue = token.original.$value
       const path = token.path
-      const isReference =
-        typeof originalValue === 'string' && originalValue.startsWith('{') && originalValue.endsWith('}')
+      // const isReference =
+      //   typeof originalValue === 'string' && originalValue.startsWith('{') && originalValue.endsWith('}')
 
       if (`${value}`.endsWith('px')) {
         return value
@@ -160,12 +151,11 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transitive: true,
     name: `ds/size/round`,
     filter: token => token.$type === 'number',
-    transform: (token, _options) => {
+    transform: token => {
       const value = token.$value ?? token.value
+      const name = token.name
 
-      const tokenName = Array.isArray((token as any).name)
-        ? (token as any).name.join('-')
-        : String((token as any).name ?? '')
+      const tokenName = Array.isArray(name) ? name.join('-') : String(name ?? '')
 
       // if line-height round the value to 1 decimal place
       if (

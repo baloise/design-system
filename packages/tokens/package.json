@@ -15,7 +15,8 @@
   "style": "dist/css/base.tokens.css",
   "scripts": {
     "build": "npx tsc && node dist/out-tsc",
-    "build:clean": "rimraf dist"
+    "build:clean": "rimraf dist",
+    "lint": "eslint ."
   },
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",

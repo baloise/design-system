@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import path, { join, normalize } from 'path'
 import { writeFile, readFile } from 'fs/promises'
 import { copy } from 'fs-extra'
@@ -19,9 +18,7 @@ export async function webProxyOutput(
     await improveComponentsOutput(config, outputTarget, components)
     await adjustInterfacePath(config)
 
-    if (!outputTarget.isTest) {
-      await setVersion(config)
-    }
+    await setVersion(config)
   })
 }
 
@@ -43,10 +40,7 @@ async function improveComponentsOutput(
   const contentCustom = await readFile(join(rootDir, 'config', 'custom-elements', 'custom-elements.d.ts'), 'utf-8')
 
   await saveFile(join(baseDir, 'index.d.ts'), [contentIndex, contentCustom].join(NEWLINE))
-
-  if (!outputTarget.isTest) {
-    await copy(join(rootDir, 'config', 'custom-elements', 'package.json.tmp'), join(baseDir, 'package.json'))
-  }
+  await copy(join(rootDir, 'config', 'custom-elements', 'package.json.tmp'), join(baseDir, 'package.json'))
 }
 
 async function adjustInterfacePath(config: Config) {

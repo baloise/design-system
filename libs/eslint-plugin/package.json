@@ -6,6 +6,11 @@
   "files": [
     "dist/"
   ],
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "test": "vitest --run",
+    "lint": "eslint ."
+  },
   "exports": {
     ".": {
       "require": "./dist/src/index.js",

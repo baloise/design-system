@@ -1,12 +1,15 @@
 import { RuleTester } from 'eslint'
+import * as typescriptParser from '@typescript-eslint/parser'
 import { listenNaming } from './listen-naming'
 
 const tester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: { legacyDecorators: true },
+  languageOptions: {
+    parser: typescriptParser,
+    parserOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      ecmaFeatures: { legacyDecorators: true },
+    },
   },
 })
 

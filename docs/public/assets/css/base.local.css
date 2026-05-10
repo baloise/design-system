@@ -1,0 +1,476 @@
+/*!
+ * Helvetia Design System — Base — Local Dev (Fonts + Tokens + Normalize + Structure)
+ * @package     @baloise/ds-css
+ * @version     20.0.0-next.1
+ * @license     Apache-2.0
+ * @copyright   Copyright © 2026 Helvetia
+ * @homepage    https://baloise-design-system.vercel.app
+ * @repository  https://github.com/baloise/design-system.git
+ */
+@charset "UTF-8";
+@font-face {
+  font-family: BaloiseCreateHeadline;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("BaloiseCreateHeadline"), local("BaloiseCreateHeadline-bold"), url("/assets/fonts/BaloiseCreateHeadline-bold.woff2") format("woff2"), url("/assets/fonts/BaloiseCreateHeadline-bold.woff") format("woff");
+}
+@font-face {
+  font-family: BaloiseCreateHeadline;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("BaloiseCreateHeadline-light"), url("/assets/fonts/BaloiseCreateHeadline-light.woff2") format("woff2"), url("/assets/fonts/BaloiseCreateHeadline-light.woff") format("woff");
+}
+@font-face {
+  font-family: BaloiseCreateText;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("BaloiseCreateText-bold"), url("/assets/fonts/BaloiseCreateText-bold.woff2") format("woff2"), url("/assets/fonts/BaloiseCreateText-bold.woff") format("woff");
+}
+@font-face {
+  font-family: BaloiseCreateText;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("BaloiseCreateText"), local("BaloiseCreateText-regular"), url("/assets/fonts/BaloiseCreateText-regular.woff2") format("woff2"), url("/assets/fonts/BaloiseCreateText-regular.woff") format("woff");
+}
+/* Document
+ * ========================================================================== */
+/**
+ * Fix the numeric font variant inheritance in all browsers (opinionated).
+ * This makes number characters use a fixed-width font, which is typically desirable for
+ * displaying tabular data, such as in a calendar or a stock ticker.
+ */
+* {
+  font-variant-numeric: tabular-nums;
+}
+
+/**
+ * 1. Add border box sizing in all browsers (opinionated).
+ * 2. Backgrounds do not repeat by default (opinionated).
+ * 3. Masks do not repeat by default (opinionated).
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  background-repeat: no-repeat; /* 2 */
+  mask-repeat: no-repeat; /* 3 */
+}
+
+/**
+ * 1. Add text decoration inheritance in all browsers (opinionated).
+ * 2. Add vertical alignment inheritance in all browsers (opinionated).
+ */
+::before,
+::after {
+  text-decoration: inherit; /* 1 */
+  vertical-align: inherit; /* 2 */
+}
+
+/**
+ * 1. Use the default cursor in all browsers (opinionated).
+ * 2. Change the line height in all browsers (opinionated).
+ * 3. Breaks words to prevent overflow in all browsers (opinionated).
+ * 4. Use a 4-space tab width in all browsers (opinionated).
+ * 5. Remove the grey highlight on links in iOS (opinionated).
+ * 6. Prevent adjustments of font size after orientation changes in iOS.
+ */
+:where(:root) {
+  cursor: default; /* 1 */
+  line-height: 1.5; /* 2 */
+  overflow-wrap: break-word; /* 3 */
+  -moz-tab-size: 4; /* 4 */
+  tab-size: 4; /* 4 */
+  -webkit-tap-highlight-color: transparent; /* 5 */
+  -webkit-text-size-adjust: 100%; /* 6 */
+  text-size-adjust: 100%; /* 6 */
+}
+
+/* Sections
+ * ========================================================================== */
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+:where(body) {
+  margin: 0;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Edge, Firefox, and Safari.
+ */
+:where(h1),
+:where(h2),
+:where(h3),
+:where(h4),
+:where(h5) {
+  margin: 0;
+}
+
+/* Grouping content
+ * ========================================================================== */
+/**
+ * Remove the margin on nested lists in Chrome, Edge, and Safari.
+ */
+:where(dl, ol, ul) :where(dl, ol, ul) {
+  margin: 0;
+}
+
+/**
+ * Add the correct box sizing in Firefox.
+ */
+:where(hr) {
+  height: 0;
+}
+
+/**
+ * Remove the list style on navigation lists in all browsers (opinionated).
+ */
+:where(nav) :where(ol, ul) {
+  list-style-type: none;
+  padding: 0;
+}
+
+/**
+ * Prevent VoiceOver from ignoring list semantics in Safari (opinionated).
+ */
+:where(nav li)::before {
+  content: "​";
+  float: left;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ * 3. Prevent overflow of the container in all browsers (opinionated).
+ */
+:where(pre) {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+  overflow: auto; /* 3 */
+  margin: 0;
+}
+
+/* Text-level semantics
+ * ========================================================================== */
+/**
+ * Add the correct text decoration in Safari.
+ */
+:where(abbr[title]) {
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+:where(b, strong) {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+:where(code, kbd, samp) {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+:where(small) {
+  font-size: 80%;
+}
+
+/* Embedded content
+ * ========================================================================== */
+/*
+ * Change the alignment on media elements in all browsers (opinionated).
+ */
+:where(audio, canvas, iframe, img, svg, video) {
+  vertical-align: middle;
+}
+
+/**
+ * Remove the border on iframes in all browsers (opinionated).
+ */
+:where(iframe) {
+  border-style: none;
+}
+
+/**
+ * Change the fill color to match the text color in all browsers (opinionated).
+ */
+:where(svg:not([fill])) {
+  fill: currentColor;
+}
+
+/* Tabular data
+ * ========================================================================== */
+/**
+ * 1. Collapse border spacing in all browsers (opinionated).
+ * 2. Correct table border color in Chrome, Edge, and Safari.
+ * 3. Remove text indentation from table contents in Chrome, Edge, and Safari.
+ */
+:where(table) {
+  border-collapse: collapse; /* 1 */
+  border-color: currentColor; /* 2 */
+  text-indent: 0; /* 3 */
+}
+
+/* Forms
+ * ========================================================================== */
+/**
+ * Remove the margin on controls in Safari.
+ */
+:where(button, input, select) {
+  margin: 0;
+}
+
+/**
+ * Correct the inability to style buttons in iOS and Safari.
+ */
+:where(button, [type=button i], [type=reset i], [type=submit i]) {
+  -webkit-appearance: button;
+}
+
+/**
+ * Change the inconsistent appearance in all browsers (opinionated).
+ */
+:where(fieldset) {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+:where(legend) {
+  padding: 0;
+  float: left;
+  width: 100%;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Edge, and Firefox.
+ */
+:where(progress) {
+  vertical-align: baseline;
+}
+
+/**
+ * 1. Remove the margin in Firefox and Safari.
+ * 3. Change the resize direction in all browsers (opinionated).
+ */
+:where(textarea) {
+  margin: 0; /* 1 */
+  resize: vertical; /* 3 */
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome, Edge, and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+:where([type=search i]) {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Safari.
+ */
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+::-webkit-input-placeholder {
+  color: inherit;
+}
+
+/**
+ * Remove the inner padding in Chrome, Edge, and Safari on macOS.
+ */
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style upload buttons in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+ * ========================================================================== */
+/*
+ * Add the correct styles in Safari.
+ */
+:where(dialog) {
+  background-color: white;
+  border: solid;
+  color: black;
+  height: -moz-fit-content;
+  height: fit-content;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+:where(dialog:not([open])) {
+  display: none;
+}
+
+/*
+ * Add the correct display in Safari.
+ */
+:where(details > summary:first-of-type) {
+  display: list-item;
+}
+
+/* Accessibility
+ * ========================================================================== */
+/**
+ * Change the cursor on busy elements in all browsers (opinionated).
+ */
+:where([aria-busy=true i]) {
+  cursor: progress;
+}
+
+/*
+ * Change the cursor on disabled, not-editable, or otherwise
+ * inoperable elements in all browsers (opinionated).
+ */
+:where([aria-disabled=true i], [disabled]) {
+  cursor: not-allowed;
+}
+
+/*
+ * Change the display on visually hidden accessible elements
+ * in all browsers (opinionated).
+ */
+:where([aria-hidden=false i][hidden]) {
+  display: initial;
+}
+
+:where([aria-hidden=false i][hidden]:not(:focus)) {
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+/**
+  * @deprecated Use desktop with t-shirt size breakpoints instead
+  */
+html {
+  background-color: var(--ds-body-color-background);
+  font-size: var(--ds-body-text-size);
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: auto;
+}
+
+*:focus {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: var(--ds-body-family);
+}
+
+body {
+  color: var(--ds-body-color);
+  font-size: var(--ds-body-size);
+  font-weight: var(--ds-body-weight);
+  line-height: var(--ds-body-line-height);
+  -webkit-overflow-scrolling: auto;
+}
+
+button {
+  color: inherit;
+}
+
+p:not(.text, .title, .subtitle, .heading) {
+  hyphens: auto;
+  margin: 0;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p:not(.text, .title, .subtitle, .heading) strong {
+  color: currentColor;
+}
+
+small {
+  font-size: var(--ds-text-size-sm);
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+b,
+strong {
+  color: inherit;
+  font-weight: var(--ds-text-weight-bold);
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  vertical-align: baseline;
+}
+
+.has-sticky-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.has-sticky-footer main {
+  padding-bottom: 2.5rem;
+}
+.has-sticky-footer ds-footer,
+.has-sticky-footer footer.footer {
+  margin-top: auto;
+}

@@ -2,6 +2,10 @@ import tseslint from 'typescript-eslint'
 import playwright from 'eslint-plugin-playwright'
 import baseConfig from '../../eslint.config.base'
 import dsPlugin from '@baloise/ds-eslint-plugin'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default tseslint.config(
   {
@@ -12,9 +16,19 @@ export default tseslint.config(
       'components/**',
       'www/**',
       'playwright-report/**',
+      '**/components.d.ts',
+      '**/interfaces.d.ts',
     ],
   },
   ...baseConfig,
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+      },
+    },
+  },
   {
     files: ['**/*.play.ts'],
     extends: [playwright.configs['flat/recommended']],
@@ -32,7 +46,6 @@ export default tseslint.config(
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
-      '@nx/enforce-module-boundaries': 'off',
       'no-extra-boolean-cast': 'off',
       'no-self-assign': 'off',
     },

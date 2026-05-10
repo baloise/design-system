@@ -22,6 +22,7 @@ export class BooleanValueAccessor extends ValueAccessor {
     super(injector, el)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   override writeValue(value: any) {
     this.elementRef.nativeElement.checked = this.lastValue = value == null ? false : value
     this.onStatusChange()

@@ -1,7 +1,6 @@
 import StyleDictionary, { Dictionary } from 'style-dictionary'
 import { fileHeader, formattedVariables } from 'style-dictionary/utils'
 import { propertyFormatNames } from 'style-dictionary/enums'
-import path from 'path'
 
 export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
   /**
@@ -67,50 +66,50 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         allTokens: deviceDesktopTokens,
       } as Dictionary
 
-      const mobileCss =
-        ':root {\n' +
-        formattedVariables({
-          format: propertyFormatNames.css,
-          dictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
-        '\n\n' +
-        '  /* Base tokens */\n' +
-        formattedVariables({
-          format: propertyFormatNames.css,
-          dictionary: baseDictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
-        '\n\n' +
-        '  /* Device tokens */\n' +
-        formattedVariables({
-          format: propertyFormatNames.css,
-          dictionary: deviceBaseDictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
-        '\n}\n\n' +
-        '/* Device tokens: Tablet */\n' +
-        `\n@media (min-width: 769px) {\n` +
-        formattedVariables({
-          format: propertyFormatNames.css,
-          dictionary: deviceTabletDictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
-        `\n}\n\n` +
-        '/* Device tokens: Desktop */\n' +
-        `\n@media (min-width: 1024px) {\n` +
-        formattedVariables({
-          format: propertyFormatNames.css,
-          dictionary: deviceDesktopDictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
-        `\n}\n` +
-        '\n'
+      // const mobileCss =
+      //   ':root {\n' +
+      //   formattedVariables({
+      //     format: propertyFormatNames.css,
+      //     dictionary,
+      //     outputReferences,
+      //     usesDtcg: true,
+      //   }) +
+      //   '\n\n' +
+      //   '  /* Base tokens */\n' +
+      //   formattedVariables({
+      //     format: propertyFormatNames.css,
+      //     dictionary: baseDictionary,
+      //     outputReferences,
+      //     usesDtcg: true,
+      //   }) +
+      //   '\n\n' +
+      //   '  /* Device tokens */\n' +
+      //   formattedVariables({
+      //     format: propertyFormatNames.css,
+      //     dictionary: deviceBaseDictionary,
+      //     outputReferences,
+      //     usesDtcg: true,
+      //   }) +
+      //   '\n}\n\n' +
+      //   '/* Device tokens: Tablet */\n' +
+      //   `\n@media (min-width: 769px) {\n` +
+      //   formattedVariables({
+      //     format: propertyFormatNames.css,
+      //     dictionary: deviceTabletDictionary,
+      //     outputReferences,
+      //     usesDtcg: true,
+      //   }) +
+      //   `\n}\n\n` +
+      //   '/* Device tokens: Desktop */\n' +
+      //   `\n@media (min-width: 1024px) {\n` +
+      //   formattedVariables({
+      //     format: propertyFormatNames.css,
+      //     dictionary: deviceDesktopDictionary,
+      //     outputReferences,
+      //     usesDtcg: true,
+      //   }) +
+      //   `\n}\n` +
+      //   '\n'
 
       return (
         header +

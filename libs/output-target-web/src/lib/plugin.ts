@@ -30,9 +30,5 @@ export function normalizeOutputTarget(config: Config, outputTarget: any) {
     throw new Error('dir is required')
   }
 
-  if (outputTarget.isTest !== true) {
-    results.isTest = false
-  }
-
   return results
 }
