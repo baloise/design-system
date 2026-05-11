@@ -97,7 +97,7 @@ describe('generatePaginationControl', () => {
       const controls = generatePaginationControl(-1, 20, 2)
       expect(activeLabel(controls)).toBe('1')
       // value=1 is in near-start range → has leading pages
-      expect(types(controls).at(-2)).toBe('dots')
+      expect(types(controls)[types(controls).length - 2]).toBe('dots')
     })
 
     it('resets value to 1 when value exceeds totalPages', () => {
@@ -108,7 +108,7 @@ describe('generatePaginationControl', () => {
     it('resets totalPages to 10 when totalPages is 0 or negative', () => {
       // totalPages becomes 10, which is > numberOfPages=9 with pageRange=2
       const controls = generatePaginationControl(5, 0, 2)
-      expect(labels(controls).at(-1)).toBe('10')
+      expect(labels(controls)[labels(controls).length - 1]).toBe('10')
     })
 
     it('resets pageRange to 2 when pageRange is negative', () => {

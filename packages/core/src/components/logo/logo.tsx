@@ -104,10 +104,6 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
     this.animatedChanged()
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidUpdate() {
     this.resetAnimation()
   }

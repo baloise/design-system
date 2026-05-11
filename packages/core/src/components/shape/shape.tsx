@@ -68,10 +68,6 @@ export class Shape implements DsComponentInterface {
     setupValidation(this)
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------

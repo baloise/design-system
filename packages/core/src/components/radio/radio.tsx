@@ -227,10 +227,6 @@ export class Radio implements DsComponentInterface {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   disconnectedCallback() {
     if (this.group) {
       this.group.removeEventListener('dsChange', this.updateState)

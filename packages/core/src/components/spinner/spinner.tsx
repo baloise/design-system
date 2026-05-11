@@ -160,10 +160,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
     this.smallChanged(this.small, false)
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidLoad() {
     if (this.variation === 'logo') {
       this.animate()

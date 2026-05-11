@@ -82,10 +82,6 @@ export class AlertContainer implements DsComponentInterface {
     setupValidation(this)
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * PUBLIC METHODS
    * ------------------------------------------------------

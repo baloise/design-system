@@ -9,6 +9,8 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { compileAsync, compileStringAsync } from 'sass'
 import { glob } from 'glob'
+import postcss from 'postcss'
+import autoprefixer from 'autoprefixer'
 import { presetDsUtilities, allSafelist } from './preset/index'
 import { buildBackgroundRules } from './preset/rules/background'
 import { buildBorderRules } from './preset/rules/border'
@@ -27,6 +29,13 @@ console.log(`
 \x1b[35m┃\x1b[0m  \x1b[90m📦 Building CSS Package\x1b[0m
 \x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
 `)
+
+const processor = postcss([autoprefixer])
+
+async function autoprefix(css: string): Promise<string> {
+  const result = await processor.process(css, { from: undefined })
+  return result.css
+}
 
 // --- Clean dist ---------------------------------------------------------------
 rmSync(resolve(__dirname, '../dist'), { recursive: true, force: true })
@@ -152,6 +161,7 @@ const uno = await createGenerator({
 })
 
 const { css } = await uno.generate(new Set(fullSafelist), { preflights: true })
+const prefixedUtilities = await autoprefix(css)
 
 // Prepend base.tokens.css so all --ds-* variables are defined in the bundle
 const tokensPath = resolve(__dirname, '../../tokens/dist/css/base.tokens.css')
@@ -162,7 +172,7 @@ try {
   console.warn('Warning: base.tokens.css not found — run `npm run tokens` first.')
 }
 
-const output = tokensCss ? `${tokensCss}\n${css}` : css
+const output = tokensCss ? `${tokensCss}\n${prefixedUtilities}` : prefixedUtilities
 
 const outDir = resolve(__dirname, '../dist/css')
 mkdirSync(outDir, { recursive: true })
@@ -182,7 +192,8 @@ async function compileSass(entry: string, outPath: string, description: string):
   const result = await compileAsync(entry, {
     loadPaths: [resolve(__dirname, '../../../node_modules'), resolve(__dirname, '../../..')],
   })
-  const content = banner(description) + result.css
+  const prefixed = await autoprefix(result.css)
+  const content = banner(description) + prefixed
   writeFileSync(outPath, content)
   const label = outPath.split('/packages/css/')[1] ?? outPath
   console.log(`\x1b[32m✔\x1b[0m ${label} written (${content.length} bytes)`)
@@ -224,7 +235,8 @@ const componentResult = await compileStringAsync(barrelContent, {
   loadPaths: [resolve(__dirname, '../../../node_modules')],
   importers: [dsStylesImporter],
 })
-const componentCssWithBanner = banner('Components') + componentResult.css
+const prefixedComponentCss = await autoprefix(componentResult.css)
+const componentCssWithBanner = banner('Components') + prefixedComponentCss
 writeFileSync(resolve(outDir, 'component.css'), componentCssWithBanner)
 console.log(
   `\x1b[32m✔ dist/css/component.css written (${componentCssWithBanner.length} bytes, ${styleFiles.length} components)`,

@@ -123,10 +123,6 @@ export class Tag implements DsComponentInterface {
     this.inheritedAttributesClose = inheritAttributes(this.el, ['tabindex'])
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------

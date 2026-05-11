@@ -93,10 +93,6 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
     setupValidation(this)
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidRender(): void {
     this.updateProgress()
   }

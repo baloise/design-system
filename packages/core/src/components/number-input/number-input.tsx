@@ -288,10 +288,6 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
     this.valueChanged(this.value)
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidLoad() {
     this.control.componentDidLoad()
   }

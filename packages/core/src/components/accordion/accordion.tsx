@@ -207,7 +207,8 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
     if (id === this.accordionId) return
 
     // only react if same group (or no group = global)
-    if ((this.group && group !== this.group) || this.group === undefined) return
+    if ((this.group && group !== this.group) || this.group === undefined || this.group === null || this.group === '')
+      return
 
     this.open = false
   }

@@ -122,10 +122,6 @@ export class Notification implements DsComponentInterface {
     this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidLoad(): void {
     this.didLoad = true
     this.dsDidLoad.emit()

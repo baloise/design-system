@@ -163,10 +163,6 @@ export class Text implements DsComponentInterface, ElementStateInfo {
     setupValidation(this)
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------

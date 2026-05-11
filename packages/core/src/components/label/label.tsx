@@ -141,10 +141,6 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
     this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
   }
 
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * PUBLIC LISTENERS
    * ------------------------------------------------------
