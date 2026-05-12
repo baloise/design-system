@@ -31,9 +31,13 @@ runs:
       shell: bash
       run: npm run spell
 
-    - name: Lint & Test & Build
+    - name: Lint & Build
       shell: bash
-      run: npx turbo run lint test build
+      run: npx turbo run lint build
+
+    - name: Test
+      shell: bash
+      run: npx turbo run test
 
     # - name: Build
     #   if: inputs.build == 'true'
