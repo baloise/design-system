@@ -10,7 +10,6 @@ function toClassName(name: string, strip: string): string {
 /**
  * Build background-color rules dynamically from base.tokens.json.
  *
- * Mirrors the logic in libs/nx/src/executors/build-styles/generators/background.ts:
  *  - Alias tokens   (🔗 Alias › 🎨 Background › Color) → primary source
  *  - Global tokens  (🌐 Global › 🌈 Color)             → fills gaps not in alias
  */

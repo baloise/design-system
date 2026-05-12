@@ -77,7 +77,8 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Define version
-        run: npx nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
+        run: |
+          npm version ${{steps.set-version.outputs.version}} --workspaces --allow-same-version --no-git-tag-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

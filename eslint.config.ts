@@ -11,7 +11,6 @@ export default tseslint.config(
     ignores: [
       '**/dist/**',
       '**/node_modules/**',
-      '**/.nx/**',
       '**/www/**',
       '**/.worktrees/**',
       'test/**',

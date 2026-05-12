@@ -186,7 +186,7 @@ If `.host.scss` or `.style.scss` reference old filenames via `@use` or `@forward
 npx tsc --noEmit -p packages/core/tsconfig.json
 
 # Unit tests for this component
-npx nx run core:test --testFile=packages/core/src/components/<name>/test/<name>.spec.ts
+npm run test -- --workspace=core --testFile=packages/core/src/components/<name>/test/<name>.spec.ts
 ```
 
 Fix any remaining `bal-` references or type errors before continuing to the next migration skill.

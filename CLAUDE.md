@@ -19,7 +19,7 @@ npm start                  # Start core components in dev mode (IS_DS_DEVELOPMEN
 npm run docs               # Start Storybook documentation
 
 # Build
-npm run build              # Build all packages (respects Nx cache)
+npm run build              # Build all packages (respects turbo cache)
 npm run tokens             # Build design tokens only
 npm run css                # Build styles only
 
@@ -29,10 +29,10 @@ npm run play               # Open Playwright UI test explorer
 npm run e2e                # Run E2E tests
 
 # Run single Vitest test
-npx nx run <project>:test --testFile=<path>
+npm run test -- --workspace=<project> --testFile=<path>
 
 # Run single Playwright test
-npx nx run <project>:test-ui --grep="<test name>"
+npm run play -- --grep="<test name>"
 
 # Linting & Formatting
 npm run lint               # Lint all packages
@@ -45,7 +45,7 @@ npm run changeset          # Create a changeset entry before publishing
 
 ## Architecture
 
-This is an **Nx monorepo** for the Helvetia Design System — a multi-framework component library built on **Stencil.js** that outputs Angular and React bindings.
+This is a **Turborepo workspace** for the Helvetia Design System — a multi-framework component library built on **Stencil.js** that outputs Angular and React bindings.
 
 ### Workspace layout
 
@@ -67,7 +67,7 @@ packages/
 libs/
   output-target-angular/   # Stencil → Angular bindings generator
   output-target-web/       # Stencil → Web component output target
-  nx/                      # Custom Nx executors (build-core, test-ui, pre-publish, etc.)
+  eslint-plugin/           # ESLint plugin and configuration
 
 docs/          # Storybook documentation (Vite + @storybook/html-vite)
 e2e/           # Playwright E2E tests
@@ -96,9 +96,9 @@ The Stencil config in `packages/core/stencil.config.ts` uses these env vars to s
 
 `tsconfig.base.json` defines path aliases for all packages (e.g. `@baloise/ds-core` → `packages/core/src/index.ts`). These are used in cross-package imports during development but resolve to dist artifacts in production.
 
-### Nx targets
+### Build tasks
 
-Custom executors in `libs/nx/src/executors/` handle specialized build steps (e.g. `build-core` wraps the Stencil CLI, `test-ui` runs Playwright with a running dev server). Use `npx nx run <project>:<target>` to invoke individual targets.
+Build tasks are defined in `turbo.json` and `package.json` scripts. Each package can have specialized build steps (e.g. `packages/core` runs Stencil compiler, `packages/css` runs Sass + UnoCSS with PostCSS). Use `npm run <script>` or `turbo run <task>` to invoke tasks across the workspace.
 
 ## Web components
 

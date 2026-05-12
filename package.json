@@ -28,9 +28,6 @@
     "changeset": "node scripts/create-changeset.mjs",
     "kill:ports": "kill -9 $(lsof -t -i:4000) || true && kill -9 $(lsof -t -i:4001) || true && kill -9 $(lsof -t -i:4002) || true && kill -9 $(lsof -t -i:4003) || true && kill -9 $(lsof -t -i:4004) || true"
   },
-  "nx": {
-    "includedScripts": []
-  },
   "private": true,
   "workspaces": [
     "packages/*",

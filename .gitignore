@@ -45,7 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.nx
 .turbo
 .stencil
 
@@ -106,8 +105,6 @@ vitest.config.*.timestamp*
 *-darwin.png
 test-results
 playwright.visual.config.ts
-.cursor/rules/nx-rules.mdc
-.github/instructions/nx.instructions.md
 
 .env
 .worktrees

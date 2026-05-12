@@ -38,12 +38,12 @@ runs:
     # - name: Build
     #   if: inputs.build == 'true'
     #   shell: bash
-    #   run: npx nx run-many -t build
+    #   run: npm run build
 
     # - name: Releae dry-run
     #   if: inputs.build == 'true'
     #   shell: bash
-    #   run: npx nx release publish -d
+    #   run: npm run release -- --dry-run
 
     - uses: ./.github/workflows/actions/upload-archive
       with:

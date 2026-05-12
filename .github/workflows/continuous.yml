@@ -152,14 +152,14 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: npx nx run core:build
+        run: npm run build -- --workspace=core
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        # run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        # run: npx nx run core:ci-e2e
-        run: npx nx run core:ci-e2e -- --update-snapshots
+        # run: npm run e2e -- --workspace=core -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: npm run e2e -- --workspace=core
+        run: npm run e2e -- --workspace=core -- --update-snapshots
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 

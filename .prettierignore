@@ -16,7 +16,6 @@ packages/assets/**/svg.ts
 .changeset
 CHANGELOG.md
 
-.nx
 .angular
 generated
 
