@@ -90,7 +90,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
   size: LogoSize = ''
   @Watch('size')
   sizeChanged(newValue: LogoSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
@@ -100,7 +100,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
 
   connectedCallback() {
     setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
+    this.size = normalizeDeprecatedTShirtSize(this.size)
     this.animatedChanged()
   }
 

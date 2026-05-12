@@ -5,7 +5,7 @@
 
 export const TOGGLE_DOC_CONFIG = {
   section: 'Components / Forms / Toggle',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-forms-toggle--overview' },
     { label: 'Usage', storyId: 'components-forms-toggle--usage' },

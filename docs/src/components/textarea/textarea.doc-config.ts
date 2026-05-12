@@ -5,7 +5,7 @@
 
 export const TEXTAREA_DOC_CONFIG = {
   section: 'Components / Forms / Textarea',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-forms-textarea--overview' },
     { label: 'Usage', storyId: 'components-forms-textarea--usage' },

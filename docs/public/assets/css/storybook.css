@@ -3,10 +3,6 @@ html {
   font-family: 'BaloiseCreateText';
 }
 
-.sbdocs-wrapper {
-  /* padding: 2rem 20px !important; */
-}
-
 #root > div > div {
   border-right-width: 2px;
 }
@@ -26,6 +22,11 @@ html {
   color: #ffffff !important;
   box-shadow: none !important;
 }
+
+.sidebar-header img {
+  max-width: 80%;
+}
+
 
 /***************************************
  * SEARCH FIELD
@@ -63,17 +64,6 @@ html {
 .sidebar-header img {
   max-width: 100% !important;
 }
-/*
-.sidebar-subheading {
-  margin-top: 16px !important;
-  margin-bottom: 6px !important;
-  font-weight: 700 !important;
-  font-size: 18px !important;
-  line-height: 18px !important;
-  min-height: 18px !important;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
-} */
 
 .sidebar-subheading {
   margin-block: 4px !important;
@@ -87,22 +77,15 @@ html {
   letter-spacing: 0;
   text-transform: none;
   width: 100%;
+  justify-content: flex-start !important;
 }
+
 .sidebar-subheading > button[aria-expanded='true'] {
   background: #e8e8e8 !important;
 }
 
-/* .sidebar-subheading > button > span {
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid;
-  margin-right: 10px !important;
-} */
-
 .sidebar-subheading > button.sidebar-subheading-action {
   display: none !important;
-  /* height: 14px !important; */
-  /* width: 14px !important; */
 }
 
 /***************************************
@@ -117,11 +100,6 @@ html {
   font-weight: 400;
   font-size: 16px !important;
 }
-
-/* .sidebar-item > a {
-  padding-inline: 1rem !important;
-  padding-block: 6px !important;
-} */
 
 .sidebar-item > a > div {
   margin-top: 3px !important;

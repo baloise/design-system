@@ -75,7 +75,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
   size: IconSize
   @Watch('size')
   sizeChanged(newValue: IconSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**

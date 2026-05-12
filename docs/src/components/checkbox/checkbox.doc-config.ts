@@ -5,7 +5,7 @@
 
 export const CHECKBOX_DOC_CONFIG = {
   section: 'Components / Forms / Checkbox',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-forms-checkbox--overview' },
     { label: 'Usage', storyId: 'components-forms-checkbox--usage' },

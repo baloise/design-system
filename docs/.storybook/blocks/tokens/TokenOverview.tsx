@@ -102,6 +102,20 @@ type TokenOverviewProps = {
   component?: string
 }
 
+const filterControlStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '4px',
+}
+
+const labelStyle: React.CSSProperties = {
+  fontSize: '0.75rem',
+  fontWeight: 600,
+  color: 'var(--ds-alias-text-color-grey)',
+  letterSpacing: '0.03em',
+  textTransform: 'uppercase',
+}
+
 export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactElement => {
   const [categoryFilter, setCategoryFilter] = React.useState<TokenCategory>('all')
   const [typeFilter, setTypeFilter] = React.useState<string>('all')
@@ -149,125 +163,148 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
   }, [flattened, categoryFilter, typeFilter, searchQuery])
 
   return (
-    <div className="my-large">
+    <div className="my-lg">
       {!component && (
-        <div className="flex flex-wrap gap-small mb-small align-items-center">
-          <div className="mr-small">
-            <label className="text-small font-weight-bold mr-x-small" htmlFor="token-category-filter">
+        <div
+          className="flex flex-wrap gap-sm mb-sm align-items-end p-sm bg-white radius"
+          style={{ border: '1px solid var(--ds-form-field-control-border-color)' }}
+        >
+          <div style={filterControlStyle}>
+            <label style={labelStyle} htmlFor="token-category-filter">
               Category
             </label>
-            <select
-              id="token-category-filter"
-              className="select is-small"
-              value={categoryFilter}
-              onChange={event => setCategoryFilter(event.target.value as TokenCategory)}
-            >
-              <option value="all">All</option>
-              <option value="global">🌐 Global</option>
-              <option value="alias">🔗 Alias</option>
-              <option value="component">🧩 Component</option>
-            </select>
-          </div>
-          <div className="mr-small">
-            <label className="text-small font-weight-bold mr-x-small" htmlFor="token-type-filter">
-              Type
-            </label>
-            <select
-              id="token-type-filter"
-              className="select is-small"
-              value={typeFilter}
-              onChange={event => setTypeFilter(event.target.value)}
-            >
-              <option value="all">All types</option>
-              {typeOptions.map(type => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+            <div className="select">
+              <select
+                id="token-category-filter"
+                value={categoryFilter}
+                onChange={event => setCategoryFilter(event.target.value as TokenCategory)}
+              >
+                <option value="all">All</option>
+                <option value="global">🌐 Global</option>
+                <option value="alias">🔗 Alias</option>
+                <option value="component">🧩 Component</option>
+              </select>
+            </div>
           </div>
 
-          <div className="flex-grow-1 min-width-0">
-            <label className="text-small font-weight-bold mr-x-small" htmlFor="token-search">
+          <div style={filterControlStyle}>
+            <label style={labelStyle} htmlFor="token-type-filter">
+              Type
+            </label>
+            <div className="select">
+              <select
+                id="token-type-filter"
+                value={typeFilter}
+                onChange={event => setTypeFilter(event.target.value)}
+              >
+                <option value="all">All types</option>
+                {typeOptions.map(type => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div style={{ ...filterControlStyle, flex: '1 1 200px' }}>
+            <label style={labelStyle} htmlFor="token-search">
               Search
             </label>
             <input
               id="token-search"
               type="search"
-              className="input is-small w-100"
-              placeholder="Search by name, variable, value, or path"
+              className="input"
+              style={{ display: 'block', width: '100%' }}
+              placeholder="Name, variable, value…"
               value={searchQuery}
               onChange={event => setSearchQuery(event.target.value)}
             />
           </div>
+
+          <div
+            className="text-sm text-grey"
+            style={{ paddingBottom: '0.75rem', whiteSpace: 'nowrap' }}
+          >
+            {filteredTokens.length} token{filteredTokens.length !== 1 ? 's' : ''}
+          </div>
         </div>
       )}
-      <div className="bg-grey-light radius px-large pb-large" style={{ maxHeight: '680px', overflowY: 'auto' }}>
-        <div
-          className="bg-grey-light"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 1fr) minmax(0, 2fr)',
-            rowGap: '0.5rem',
-            alignItems: 'stretch',
-          }}
-        >
-          <div
-            className="pt-large pb-normal font-weight-bold text-uppercase text-primary border-bottom-primary bg-grey-light title"
-            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--ds-table-head-font-size)' }}
-          >
-            Token
-          </div>
-          <div
-            className="pt-large pb-normal font-weight-bold text-uppercase text-primary border-bottom-primary bg-grey-light title"
-            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--ds-table-head-font-size)' }}
-          >
-            Type
-          </div>
-          <div
-            className="pt-large pb-normal font-weight-bold text-uppercase text-primary border-bottom-primary bg-grey-light title"
-            style={{ position: 'sticky', top: 0, zIndex: 1, fontSize: 'var(--ds-table-head-font-size)' }}
-          >
-            Value
-          </div>
 
-          {filteredTokens.map(token => (
-            <React.Fragment key={token.id}>
-              <div className="py-x-small border-bottom-grey text-small">
-                <Clipboard label={token.cssVarName} value={`var(--${token.cssVarName})`} />
-                <br />
-                <span className="block text-x-small text-grey pt-small">{token.path}</span>
-                {token.referencePath && (
-                  <span className="block text-x-small text-grey pt-small">
-                    ↪ {token.referencePath.replace(/^\.\//, '/')}
-                  </span>
-                )}
-              </div>
-              <div className="py-x-small border-bottom-grey text-small flex gap-small align-items-center justify-content-start">
-                {(component ? token.tokenType : token.typeLabel) || '—'}
-              </div>
-              <div
-                className="py-x-small border-bottom-grey text-small flex gap-small align-items-start justify-content-center flex-direction-column"
-                style={{ wordBreak: 'break-all' }}
-              >
-                <div className="flex gap-small align-items-center justify-content-start">
-                  {token.tokenType === 'color' && (
-                    <div
-                      className="radius"
-                      style={{
-                        width: '24px',
-                        height: '24px',
-                        backgroundColor: `var(--${token.cssVarName})`,
-                        border: '2px solid var(--ds-color-grey-3)',
-                      }}
-                    ></div>
-                  )}
-                  <span className="text-small">{String(token.value)}</span>
-                </div>
-                {/* {token.referencePath && <span className="block text-x-small text-grey">↪ {token.referencePath}</span>} */}
-              </div>
-            </React.Fragment>
-          ))}
+      <div style={{ borderTop: '2px solid var(--ds-alias-border-color-primary)', borderBottom: '2px solid var(--ds-alias-border-color-primary)', overflow: 'hidden' }}>
+        <div style={{ maxHeight: '640px', overflowY: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+            <colgroup>
+              <col style={{ width: '45%' }} />
+              <col style={{ width: '15%' }} />
+              <col style={{ width: '40%' }} />
+            </colgroup>
+            <thead>
+              <tr style={{ position: 'sticky', top: 0, zIndex: 1 }}>
+                {(['Token', 'Type', 'Value'] as const).map(col => (
+                  <th
+                    key={col}
+                    className="text-sm font-weight-bold text-primary bg-white"
+                    style={{
+                      padding: '0.75rem 1rem',
+                      textAlign: 'left',
+                      borderBottom: '2px solid var(--ds-alias-border-color-primary)',
+                      letterSpacing: '0.03em',
+                      textTransform: 'uppercase',
+                      fontSize: '0.7rem',
+                    }}
+                  >
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredTokens.map((token, index) => (
+                <tr
+                  key={token.id}
+                  style={{ backgroundColor: index % 2 === 0 ? 'var(--ds-alias-background-color-white)' : 'var(--ds-alias-background-color-grey-lighter)' }}
+                >
+                  <td style={{ padding: '0.5rem 1rem', borderBottom: '2px solid var(--ds-alias-border-color-grey)', verticalAlign: 'top' }}>
+                    <Clipboard label={`--${token.cssVarName}`} value={`var(--${token.cssVarName})`} />
+                    <div className="text-xs text-grey" style={{ marginTop: '2px' }}>
+                      {token.path}
+                    </div>
+                    {token.referencePath && (
+                      <div className="text-xs text-grey" style={{ marginTop: '2px' }}>
+                        ↪ {token.referencePath.replace(/^\.\//, '/')}
+                      </div>
+                    )}
+                  </td>
+                  <td
+                    className="text-sm text-grey"
+                    style={{ padding: '0.5rem 1rem', borderBottom: '2px solid var(--ds-alias-border-color-grey)', verticalAlign: 'top' }}
+                  >
+                    {(component ? token.tokenType : token.typeLabel) || '—'}
+                  </td>
+                  <td style={{ padding: '0.5rem 1rem', borderBottom: '2px solid var(--ds-alias-border-color-grey)', verticalAlign: 'top', wordBreak: 'break-all' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      {token.tokenType === 'color' && (
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            flexShrink: 0,
+                            width: '20px',
+                            height: '20px',
+                            borderRadius: 'var(--ds-alias-radius-base)',
+                            backgroundColor: `var(--${token.cssVarName})`,
+                            border: '1px solid var(--ds-alias-border-color-grey-light)',
+                            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.06)',
+                          }}
+                        />
+                      )}
+                      <span className="text-sm">{String(token.value)}</span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

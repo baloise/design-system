@@ -10,7 +10,7 @@
   "scripts": {
     "start": "npm --prefix packages/core run start",
     "start:force": "turbo run build --force && npm run start",
-    "docs": "node scripts/build-docs.mjs --serve && storybook dev -p 6006 --config-dir docs/.storybook",
+    "docs": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs --serve && storybook dev -p 6006 --config-dir docs/.storybook",
     "e2e": "npm --prefix packages/core run e2e:ci",
     "play": "npm --prefix packages/core run e2e:ui",
     "build": "turbo run build",
@@ -46,6 +46,7 @@
     "@eslint/js": "10.0.1",
     "@playwright/test": "1.59.1",
     "@stencil/core": "4.43.4",
+    "@swc/cli": "0.8.1",
     "@stencil/react-output-target": "1.5.2",
     "@stencil/sass": "3.2.3",
     "@storybook/addon-docs": "10.3.6",

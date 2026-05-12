@@ -21,7 +21,7 @@
     "./css/all": "./dist/css/all.css",
     "./css/all.local": "./dist/css/all.local.css",
     "./css/base": "./dist/css/base.css",
-    "./css/component": "./dist/css/component.css",
+    "./css/components": "./dist/css/components.css",
     "./css/utilities": "./dist/css/utilities.css",
     "./scss/all": "./dist/scss/all.scss",
     "./scss/base": "./dist/scss/base.scss",

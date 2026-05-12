@@ -16,26 +16,32 @@ interface CssUtility {
   valueDesktop?: string
 }
 
-function getValues(utility: UtilityKey, search?: string | string[]): CssUtility[] {
+function getValues(utility: UtilityKey, search?: string | string[], filter?: (item: CssUtility) => boolean): CssUtility[] {
   const items = json[utility] as CssUtility[]
-  if (!search) return items
-  const terms = Array.isArray(search) ? search : [search]
-  return items.filter(item => {
-    const props = Array.isArray(item.property) ? item.property : [item.property]
-    return props.some(p => terms.includes(p))
-  })
+  let result = items
+  if (search) {
+    const terms = Array.isArray(search) ? search : [search]
+    result = result.filter(item => {
+      const props = Array.isArray(item.property) ? item.property : [item.property]
+      return props.some(p => terms.includes(p))
+    })
+  }
+  if (filter) result = result.filter(filter)
+  return result
 }
 
 export const CssUtilitiesTable = ({
   utility,
   search,
+  filter,
   example = undefined,
 }: {
   utility: UtilityKey
   search?: string | string[]
+  filter?: (item: CssUtility) => boolean
   example?: (item: CssUtility) => React.ReactNode
 }): React.ReactElement => {
-  const values = getValues(utility, search)
+  const values = getValues(utility, search, filter)
 
   return (
     <section

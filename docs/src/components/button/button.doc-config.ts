@@ -5,7 +5,7 @@
 
 export const BUTTON_DOC_CONFIG = {
   section: 'Components / Button',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-button--overview' },
     { label: 'Usage', storyId: 'components-button--usage' },

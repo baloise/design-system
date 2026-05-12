@@ -4,6 +4,7 @@ import { CssPropertyTable } from './helpers/CssPropertyTable'
 
 export const CssResponsiveTable = ({ all = false }): React.ReactElement => {
   const obj = tokens['🔗 Alias']['📐 Breakpoint']
+  console.log(obj)
 
   const list = [
     {
@@ -27,17 +28,17 @@ export const CssResponsiveTable = ({ all = false }): React.ReactElement => {
     all
       ? {
           key: 'high-definition:',
-          value: `from ${obj['High-Definition'].$value}`,
+          value: `from ${obj.DesktopLG.$value}`,
         }
       : false,
     {
       key: 'widescreen:',
-      value: `from ${obj.Widescreen.$value}`,
+      value: `from ${obj.DesktopXL.$value}`,
     },
     all
       ? {
           key: 'fullhd:',
-          value: `from ${obj.Fullhd.$value}`,
+          value: `from ${obj.Desktop2XL.$value}`,
         }
       : false,
   ].filter(item => item)

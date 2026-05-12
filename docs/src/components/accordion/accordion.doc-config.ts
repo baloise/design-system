@@ -5,7 +5,7 @@
 
 export const ACCORDION_DOC_CONFIG = {
   section: 'Components / Accordion',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-accordion--overview' },
     { label: 'Usage', storyId: 'components-accordion--usage' },

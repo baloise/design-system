@@ -121,7 +121,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
   size?: LabelSize
   @Watch('size')
   sizeChanged(newValue: LabelSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
@@ -138,7 +138,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
 
   connectedCallback(): void {
     setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+    this.size = normalizeDeprecatedTShirtSize(this.size)
   }
 
   /**

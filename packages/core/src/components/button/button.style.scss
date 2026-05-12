@@ -257,7 +257,7 @@ $colors: (
     }
   }
 
-  @include hybrid.styles('button', $use-host) {
+  @include hybrid.styles('.button', $use-host) {
     &.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading) {
       @include color($color);
     }
@@ -272,7 +272,7 @@ $colors: (
       }
     }
 
-    @include hybrid.styles('button', $use-host) {
+    @include hybrid.styles('.button', $use-host) {
       &.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading) {
         @include color(inverted);
       }
@@ -293,7 +293,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
     }
   }
 
-  @include hybrid.styles('button', $use-host) {
+  @include hybrid.styles('.button', $use-host) {
     &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
       @include color('inverted-#{$color}');
     }
@@ -316,7 +316,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-sm,
   &.is-small {
     @include size-sm();
@@ -336,7 +336,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-lg,
   &.is-large {
     @include size-lg();
@@ -356,7 +356,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-xl {
     @include size-xl();
   }
@@ -378,7 +378,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-flat {
     @include shape-flat();
   }
@@ -395,7 +395,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-rounded {
     @include shape-rounded();
   }
@@ -421,7 +421,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-square:not(.is-sm),
   &.is-square:not(.is-small) {
     @include shape-square();
@@ -456,7 +456,7 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.is-circle:not(.is-sm),
   &.is-circle:not(.is-small) {
     @include shape-circle();
@@ -509,7 +509,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.has-shadow:not(.is-link, .is-text) {
     --mod-button-box-shadow: var(--ds-alias-shadow-box-base);
   }
@@ -537,7 +537,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
   }
 }
 
-@include hybrid.styles('button', $use-host) {
+@include hybrid.styles('.button', $use-host) {
   &.has-no-wrap {
     display: inline-block;
     text-overflow: ellipsis;

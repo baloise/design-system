@@ -5,7 +5,7 @@
 
 export const RADIO_DOC_CONFIG = {
   section: 'Components / Forms / Radio',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-forms-radio--overview' },
     { label: 'Usage', storyId: 'components-forms-radio--usage' },

@@ -13,7 +13,7 @@ import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 import { presetDsUtilities, allSafelist } from './preset/index'
 import { buildBackgroundRules } from './preset/rules/background'
-import { buildBorderRules } from './preset/rules/border'
+import { buildBorderRules } from './preset/rules/radius'
 import { buildBorderColorRules } from './preset/rules/border-color'
 import { buildElevationRules } from './preset/rules/elevation'
 import { buildTypographyRules } from './preset/rules/typography'
@@ -107,7 +107,7 @@ const fullResponsiveSafelist = breakpointPrefixes.flatMap(bp => responsiveBaseWi
 
 // Shadow pseudo-class variants (derived from elevation safelist)
 const shadowClasses = elevationSafelist.filter(cls => cls.startsWith('shadow'))
-const pseudoSafelistExtra: string[] = ['hover', 'focus', 'active'].flatMap(p => shadowClasses.map(cls => `${p}:${cls}`))
+const pseudoSafelistExtra: string[] = ['active', 'focus', 'hover'].flatMap(p => shadowClasses.map(cls => `${p}:${cls}`))
 
 // Collect metadata for docs
 const docsMetadata: Record<string, any> = {
@@ -123,8 +123,11 @@ const docsMetadata: Record<string, any> = {
   'typography': typographyBuild.metadata,
 }
 
-// State variants for background (hover:bg-*, focus:bg-*, active:bg-*)
-const bgStateSafelist: string[] = ['hover', 'focus', 'active'].flatMap(p => bgSafelist.map(cls => `${p}:${cls}`))
+// State variants for background (active:bg-*, focus:bg-*, hover:bg-* in priority order)
+const bgStateSafelist: string[] = ['active', 'focus', 'hover'].flatMap(p => bgSafelist.map(cls => `${p}:${cls}`))
+
+// State variants for border color (hover:border-*, active:border-*)
+const borderColorStateSafelist: string[] = ['active', 'hover'].flatMap(p => borderColorSafelist.map(cls => `${p}:${cls}`))
 
 const fullSafelist = [
   ...allSafelist(
@@ -138,6 +141,7 @@ const fullSafelist = [
   ...fullResponsiveSafelist,
   ...pseudoSafelistExtra,
   ...bgStateSafelist,
+  ...borderColorStateSafelist,
 ]
 
 // --- Generate CSS ----------------------------------------------------------
@@ -237,9 +241,9 @@ const componentResult = await compileStringAsync(barrelContent, {
 })
 const prefixedComponentCss = await autoprefix(componentResult.css)
 const componentCssWithBanner = banner('Components') + prefixedComponentCss
-writeFileSync(resolve(outDir, 'component.css'), componentCssWithBanner)
+writeFileSync(resolve(outDir, 'components.css'), componentCssWithBanner)
 console.log(
-  `\x1b[32m✔ dist/css/component.css written (${componentCssWithBanner.length} bytes, ${styleFiles.length} components)`,
+  `\x1b[32m✔ \x1b[0m dist/css/components.css written (${componentCssWithBanner.length} bytes, ${styleFiles.length} components)`,
 )
 
 // --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
@@ -250,7 +254,7 @@ console.log('\x1b[32m✔\x1b[0m dist/scss/utilities.scss written')
 
 // --- Build design-system.css (base + component + utilities concatenated) --------------
 const baseCss = readFileSync(resolve(outDir, 'base.css'), 'utf8')
-const componentCssContent = readFileSync(resolve(outDir, 'component.css'), 'utf8')
+const componentCssContent = readFileSync(resolve(outDir, 'components.css'), 'utf8')
 const allCss =
   banner('Full Bundle (Base + Components + Utilities)') + baseCss + '\n' + componentCssContent + '\n' + output
 writeFileSync(resolve(outDir, 'design-system.css'), allCss)
@@ -275,7 +279,7 @@ writeFileSync(resolve(outDir, 'design-system.local.min.css'), allLocalCss)
 console.log(`\x1b[32m✔\x1b[0m dist/css/design-system.local.css written (${allLocalCss.length} bytes)`)
 
 // --- Write dist/scss/design-system.scss (Sass entry that pulls base + component) ------
-const allScss = `@use './base';\n// component styles are compiled from packages/core — use component.css directly\n// utilities are UnoCSS-generated — use utilities.css directly\n`
+const allScss = `@use './base';\n// component styles are compiled from packages/core — use components.css directly\n// utilities are UnoCSS-generated — use utilities.css directly\n`
 writeFileSync(resolve(scssOutDir, 'design-system.scss'), allScss)
 console.log('\x1b[32m✔\x1b[0m dist/scss/design-system.scss written')
 

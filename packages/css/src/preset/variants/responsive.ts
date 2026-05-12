@@ -42,7 +42,7 @@ export const responsiveVariants: VariantObject[] = Object.entries(breakpoints).m
 
 // Pseudo-class variants: hover:, focus:, active:
 export const pseudoVariants: VariantObject[] = [
-  { pseudo: ':hover', prefix: 'hover' },
+  { pseudo: ':hover:not(:active)', prefix: 'hover' },
   { pseudo: ':focus', prefix: 'focus' },
   { pseudo: ':active', prefix: 'active' },
 ].map(({ pseudo, prefix }) => ({

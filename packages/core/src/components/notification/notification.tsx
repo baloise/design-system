@@ -99,7 +99,7 @@ export class Notification implements DsComponentInterface {
   size?: NotificationSize
   @Watch('size')
   sizeChanged(newValue: NotificationSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || undefined
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**
@@ -119,7 +119,7 @@ export class Notification implements DsComponentInterface {
 
   connectedCallback(): void {
     setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || undefined
+    this.size = normalizeDeprecatedTShirtSize(this.size)
   }
 
   componentDidLoad(): void {

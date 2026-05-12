@@ -13,19 +13,19 @@ const config: StorybookConfig = {
   staticDirs: ['../public', { from: '../../packages/tokens/dist/css', to: '/assets/tokens' }],
   previewHead: head => `
   ${head}
-  <link rel="stylesheet" type="text/css" href="assets/css/font.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/avatars.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/swot.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/prism.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/storybook.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/version.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/framework.css" />
+
 
   <link rel="stylesheet" type="text/css" href="assets/css/design-system.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/prism.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/swot.css" />
 
   <script type="module" src="/build/design-system.esm.js"></script>
   <script nomodule src="/build/design-system.js"></script>
   `,
 }
 export default config
+
+// <link rel="stylesheet" type="text/css" href="assets/css/avatars.css" />
+// <link rel="stylesheet" type="text/css" href="assets/css/version.css" />

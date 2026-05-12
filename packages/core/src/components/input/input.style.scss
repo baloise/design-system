@@ -17,10 +17,13 @@ $host-selector: ('#input');
 
 .field {
   @include input.vars-field('input');
-  @include input.vars('input');
-  @include input.vars-container('input');
   @include input.vars-label('input');
+  @include input.vars-container('input');
   @include input.vars-description('input');
+}
+
+.input {
+  @include input.vars('input');
 }
 
 /**
@@ -31,12 +34,12 @@ $host-selector: ('#input');
 
 .field {
   @include input.field-layout('input');
-
-  @include input.style('input', '.input');
-  @include input.container('input', '.control');
   @include input.label('input', '.label');
+  @include input.container('input', '.control');
   @include input.description('input', '.help');
 }
+
+@include input.style('input', '.input');
 
 /**
   * Variants and States

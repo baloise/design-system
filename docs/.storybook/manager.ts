@@ -20,19 +20,19 @@ addons.setConfig({
 
 addons.register('my/cookie', () => registerCookie())
 
+addons.register('my/theme', () => {
+  addons.add('my-theme-addon/toolbar', {
+    title: 'Brand theme',
+    type: types.TOOLEXTRA,
+    render: registerTheme as any,
+  })
+})
+
 addons.register('my/framework', () => {
   addons.add('my-framework-addon/toolbar', {
     title: 'Framework',
     type: types.TOOLEXTRA,
     render: registerFramework as any,
-  })
-})
-
-addons.register('my/theme', () => {
-  addons.add('my-theme-addon/toolbar', {
-    title: 'Brand theme',
-    type: types.TOOL,
-    render: registerTheme as any,
   })
 })
 

@@ -2,10 +2,11 @@ import React from 'react'
 import { useOf } from '@storybook/addon-docs/blocks'
 import { navigate } from '@storybook/addon-links'
 
-import PuzzleGreen from '../../src/assets/images/home/puzzle-green-dark.svg'
-import PuzzlePurple from '../../src/assets/images/home/puzzle-purple-dark.svg'
-import PuzzleRed from '../../src/assets/images/home/puzzle-red-dark.svg'
-import PuzzleYellow from '../../src/assets/images/home/puzzle-yellow-dark.svg'
+// import PuzzleGreen from '../../src/assets/images/home/puzzle-green.svg'
+// import PuzzlePurple from '../../src/assets/images/home/puzzle-purple.svg'
+// import PuzzleRed from '../../src/assets/images/home/puzzle-red.svg'
+// // import PuzzleYellow from '../../src/assets/images/home/puzzle-yellow.svg'
+// import PuzzleYellow from '../../src/assets/images/home/logo-yellow.svg'
 
 export const Banner = ({ of, children, color, label, section, puzzle, tabs }): React.ReactElement => {
   let title = label
@@ -23,18 +24,18 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
     componentName = title.toLowerCase().replace(/\s+/g, '-')
   }
 
-  const definedColor = (subtitle || '').includes('Components') ? 'red' : color || 'primary'
-  const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
-  const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-purple-2' : `bg-${definedColor}-2`
+  const definedColor = (subtitle || '').includes('Components') ? 'purple' : color || 'primary'
+  // const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
+  const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
   const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
   const className = `sb-unstyled pt-lg pb-mb ${background} ${text}`
 
-  const puzzles = {
-    green: PuzzleGreen,
-    purple: PuzzlePurple,
-    yellow: PuzzleYellow,
-    red: PuzzleRed,
-  }
+  // const puzzles = {
+  //   green: PuzzleGreen,
+  //   purple: PuzzlePurple,
+  //   yellow: PuzzleYellow,
+  //   red: PuzzleRed,
+  // }
 
   return (
     <div>
@@ -59,7 +60,7 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
             </h1>
             {children}
           </div>
-          {definedPuzzle ? (
+          {/* {definedPuzzle ? (
             <div
               className="mobile:hidden"
               style={{
@@ -78,7 +79,7 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
             </div>
           ) : (
             ''
-          )}
+          )} */}
         </div>
       </div>
     </div>
@@ -95,7 +96,7 @@ export const BannerTabs = ({ of, children, color, tabs }): React.ReactElement =>
     isDeprecated = metaTitles.includes('Deprecated')
   }
 
-  const definedColor = color || 'primary'
+  const definedColor = color || 'purple'
   const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
   const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
   const className = `sb-unstyled ${background} ${text}`

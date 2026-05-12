@@ -4,8 +4,8 @@ import { FORCE_RE_RENDER } from 'storybook/internal/core-events'
 import { addons, useGlobals } from 'storybook/manager-api'
 
 const themes: { id: string; title: string; color: string }[] = [
-  { id: '', title: 'Default', color: '#000d6e' },
-  { id: 'tcs', title: 'TCS', color: '#E2001A' },
+  { id: '', title: 'Helvetia', color: '#000d6e' },
+  { id: 'tcs', title: 'TCS', color: '#ffeb02' },
 ]
 
 export const registerTheme: React.FC = () => {
@@ -27,7 +27,7 @@ export const registerTheme: React.FC = () => {
       tooltip={({ onHide }) => (
         <TooltipLinkList
           links={themes.map(t => ({
-            id: t.id || 'default',
+            id: t.id || 'Helvetia',
             title: t.title,
             active: t.id === activeTheme,
             onClick: () => {
@@ -51,6 +51,7 @@ export const registerTheme: React.FC = () => {
       )}
     >
       <IconButton key="theme-toolbar" title="Brand theme" active={activeTheme !== ''}>
+        <span style={{ marginRight: 6 }}>Theme:</span>
         <span
           style={{
             display: 'inline-block',
@@ -59,7 +60,7 @@ export const registerTheme: React.FC = () => {
             borderRadius: '50%',
             background: active.color,
             border: '1px solid rgba(0,0,0,.15)',
-            marginRight: 6,
+            marginRight: 2,
           }}
         />
         {active.title}

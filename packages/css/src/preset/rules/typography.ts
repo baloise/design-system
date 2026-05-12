@@ -46,30 +46,32 @@ export function buildTypographyRules(tokensJsonPath: string): {
     addRule(className, { color: `var(--${token.name}) !important` }, token.name)
   }
 
-  // 2. Text size tokens
-  const sizeTokens = flattenTokens((textAlias['Size'] ?? {}) as Record<string, unknown>)
-  for (const token of sizeTokens) {
-    const segment = token.name.replace('ds-alias-text-size-', '')
-    // ds-alias-text-size-none → text-none, ds-alias-text-size-xs → text-xs, text-x-small
-    const className = `text-${segment}`
-    addRule(className, { 'font-size': `var(--${token.name}) !important` }, token.name)
-
-    // Add long-name alias if applicable
-    const aliases: Record<string, string> = {
-      'xs': 'x-small',
-      'sm': 'small',
-      'base': 'normal',
-      'md': 'medium',
-      'lg': 'large',
-      'xl': 'x-large',
-      '2xl': 'xx-large',
-      '3xl': 'xxx-large',
-      '4xl': 'xxxx-large',
-      '5xl': 'xxxxx-large',
-    }
-    if (segment in aliases) {
-      const aliasName = `text-${aliases[segment as keyof typeof aliases]}`
-      rules.push([aliasName, { 'font-size': `var(--${token.name}) !important` }])
+  // 2. Text size tokens — one responsive class per size using the -device token.
+  // Each size group (None, XS, SM…) has Mobile/Tablet/Desktop sub-tokens; we
+  // extract the canonical size name from the Mobile entry and reference the
+  // -device CSS variable so the single class responds to breakpoints automatically.
+  const sizeCategory = (textAlias['Size'] ?? {}) as Record<string, Record<string, { name?: string }>>
+  const sizeAliases: Record<string, string> = {
+    'xs': 'x-small',
+    'sm': 'small',
+    'base': 'normal',
+    'md': 'medium',
+    'lg': 'large',
+    'xl': 'x-large',
+    '2xl': 'xx-large',
+    '3xl': 'xxx-large',
+    '4xl': 'xxxx-large',
+    '5xl': 'xxxxx-large',
+  }
+  for (const sizeGroup of Object.values(sizeCategory)) {
+    const mobileName = sizeGroup['Mobile']?.name
+    if (!mobileName) continue
+    const size = mobileName.replace('ds-alias-text-size-', '').replace('-mobile', '')
+    const tokenName = `ds-alias-text-size-${size}-device`
+    addRule(`text-${size}`, { 'font-size': `var(--${tokenName}) !important` }, tokenName)
+    if (size in sizeAliases) {
+      const aliasName = `text-${sizeAliases[size]}`
+      rules.push([aliasName, { 'font-size': `var(--${tokenName}) !important` }])
       safelist.push(aliasName)
     }
   }

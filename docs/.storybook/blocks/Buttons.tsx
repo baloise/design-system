@@ -116,7 +116,7 @@ export const GridComponent = ({
           className={`flex flex-direction-column gap-normal justify-content-center align-items-center bg-white p-normal h-full radius shadow doc-shadow-large-hover cursor-pointer`}
         >
           <div
-            className={`bg-red-1 radius w-full flex ${flexPosition} ${fullscreen ? '' : 'p-small'}`}
+            className={`bg-purple-1 radius w-full flex ${flexPosition} ${fullscreen ? '' : 'p-small'}`}
             style={{ height: '200px', minHeight: '200px', maxWidth: '200%', overflow: 'hidden', position: 'relative' }}
           >
             <div

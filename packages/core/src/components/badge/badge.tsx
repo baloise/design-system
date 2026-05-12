@@ -56,7 +56,7 @@ export class Badge implements DsComponentInterface {
   size: BadgeSize = ''
   @Watch('size')
   sizeChanged(newValue: BadgeSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue) || ''
+    this.size = normalizeDeprecatedTShirtSize(newValue)
   }
 
   /**

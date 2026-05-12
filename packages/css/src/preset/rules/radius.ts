@@ -6,17 +6,14 @@ import { flattenTokens, type RuleMetadata } from '../utils'
  * Build border-radius rules dynamically from base.tokens.json.
  * Source: 🔗 Alias › 🔵 Radius
  *
- * For each radius token (e.g. ds-alias-radius-base) the following classes
- * are emitted, matching the SCSS output from the styles package:
- *   radius[-<name>]                   — all corners
- *   radius-top[-<name>]               — top-left + top-right
- *   radius-bottom[-<name>]            — bottom-left + bottom-right
- *   radius-top-left[-<name>]          — single corner
- *   radius-top-right[-<name>]         — single corner
- *   radius-bottom-left[-<name>]       — single corner
- *   radius-bottom-right[-<name>]      — single corner
- *
- * The "base" token is the default — it gets no suffix (just `radius`).
+ * For each radius token the following classes are emitted:
+ *   radius[-<name>]             — all corners  (base token → just `radius`)
+ *   radius-top[-<name>]         — top-left + top-right
+ *   radius-bottom[-<name>]      — bottom-left + bottom-right
+ *   radius-top-left[-<name>]    — single corner
+ *   radius-top-right[-<name>]   — single corner
+ *   radius-bottom-left[-<name>] — single corner
+ *   radius-bottom-right[-<name>]— single corner
  */
 export function buildBorderRules(tokensJsonPath: string): {
   rules: Rule[]
@@ -48,6 +45,7 @@ export function buildBorderRules(tokensJsonPath: string): {
     }
 
     add(`radius${suffix}`, { 'border-radius': `${val} !important` })
+
     add(`radius-top${suffix}`, {
       'border-top-left-radius': `${val} !important`,
       'border-top-right-radius': `${val} !important`,

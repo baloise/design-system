@@ -5,7 +5,7 @@
 
 export const INPUT_DOC_CONFIG = {
   section: 'Components / Forms / Input',
-  color: 'blue' as const,
+  color: 'purple' as const,
   tabs: [
     { label: 'Overview', storyId: 'components-forms-input--overview' },
     { label: 'Usage', storyId: 'components-forms-input--usage' },

@@ -3,11 +3,11 @@
  *
  * Run with: node scripts/build-docs.mjs
  */
-import archiver from 'archiver'
+import { ZipArchive } from 'archiver'
 import { execSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
 import { copy } from 'fs-extra'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, writeFile, stat } from 'node:fs/promises'
 import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -58,7 +58,7 @@ async function copyResources() {
   await copyToAsset(join(packagesRoot, 'core/docs/tags.json'), 'data/tags.json')
 
   // CSS files from packages/css build output
-  await copyToPublic(join(packagesRoot, 'css/dist/css'), 'assets/css')
+  await copyToPublic(join(packagesRoot, 'css/dist/css/design-system.css'), 'assets/css/design-system.css')
 
   // Web components build output
   await copyToPublic(join(packagesRoot, 'core/www/build'), 'build')
@@ -76,17 +76,40 @@ async function copyResources() {
 // 2. Fetch and store contributors list
 // ============================================================================
 async function fetchContributors() {
-  console.log('👥 Fetching contributors from GitHub...')
   const outPath = join(docsRoot, 'src/assets/data/contributors.json')
+  const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
-  let contributors = []
   try {
+    // Check if cache exists and is fresh
+    const cacheStats = await stat(outPath).catch(() => null)
+    const now = Date.now()
+    const isCacheFresh = cacheStats && now - cacheStats.mtimeMs < ONE_DAY_MS
+
+    // In serve mode, always use cached data if it exists
+    if (serve) {
+      if (cacheStats) {
+        console.log('📦 Using cached contributors (server mode)')
+        return
+      }
+      console.log('⚠ No cache found, creating empty contributors list (server mode)')
+      await writeFile(outPath, JSON.stringify([], undefined, 2))
+      return
+    }
+
+    // If cache is fresh, use it
+    if (isCacheFresh) {
+      console.log('📦 Using cached contributors (less than 24h old)')
+      return
+    }
+
+    // Fetch fresh data from GitHub
+    console.log('👥 Fetching contributors from GitHub...')
     const res = await fetch('https://api.github.com/repos/baloise/design-system/contributors')
     if (!res.ok) {
       throw new Error(`GitHub API returned ${res.status}`)
     }
     const json = await res.json()
-    contributors = json
+    const contributors = json
       .filter(c => c.type === 'User')
       .map(u => ({
         url: u.html_url,
@@ -94,13 +117,13 @@ async function fetchContributors() {
         avatar: u.avatar_url,
       }))
     console.log(`\x1b[32m✔\x1b[0m ${contributors.length} contributors fetched`)
+    await writeFile(outPath, JSON.stringify(contributors, undefined, 2))
   } catch (err) {
     console.warn('⚠ Could not fetch contributors from GitHub API:', err.message)
-    console.warn('⚠ Using empty contributors list')
+    console.warn('⚠ Using cached contributors list if available')
   }
 
-  await writeFile(outPath, JSON.stringify(contributors, undefined, 2))
-  console.log('\x1b[32m✔\x1b[0m docs/src/assets/data/contributors.json written')
+  console.log('\x1b[32m✔\x1b[0m docs/src/assets/data/contributors.json ready')
 }
 
 // ============================================================================
@@ -118,7 +141,7 @@ async function createArchive(sourcePath, targetPath, fileName, fileScan = '**') 
       reject(err)
     })
 
-    const archive = archiver('zip', { zlib: { level: 9 } })
+    const archive = new ZipArchive({ zlib: { level: 9 } })
     archive.on('error', err => {
       console.error(`✗ Archive error for ${fileName}:`, err.message)
       reject(err)

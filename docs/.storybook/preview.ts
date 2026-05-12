@@ -44,15 +44,6 @@ const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: false },
-    docs: {
-      // toc: {
-      //   contentsSelector: '.sbdocs-content',
-      //   headingSelector: 'h2, h3',
-      //   ignoreSelector: '.docs-story, .title, .subtitle',
-      //   title: '', //'On this page',
-      //   disable: false,
-      // },
-    },
     options: {
       storySort: {
         order: [
