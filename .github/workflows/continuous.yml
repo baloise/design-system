@@ -27,7 +27,7 @@ jobs:
 
   # angular:
   # name: 🧪 Angular Tests
-  # runs-on: ubuntu-22.04
+  # runs-on: ubuntu-24.04
   # timeout-minutes: 30
   # env:
   #   HUSKY: 0
@@ -55,7 +55,7 @@ jobs:
 
   # react:
   # name: 🧪 React Tests
-  # runs-on: ubuntu-22.04
+  # runs-on: ubuntu-24.04
   # timeout-minutes: 30
   # env:
   #   HUSKY: 0
@@ -83,7 +83,7 @@ jobs:
 
   assembleInformation:
     name: 📝 Assemble Information
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       HUSKY: 0
@@ -113,7 +113,7 @@ jobs:
 
   playwright:
     name: 🎭 Playwright
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     needs: [assembleInformation]
     env:
@@ -152,14 +152,14 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: npm run build -- --workspace=core
+        run: turbo run build --filter=core
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        # run: npm run e2e -- --workspace=core -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        # run: npm run e2e -- --workspace=core
-        run: npm run e2e -- --workspace=core -- --update-snapshots
+        # run: turbo run e2e --filter=core -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: turbo run e2e --filter=core
+        run: turbo run e2e --filter=core -- --update-snapshots
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 

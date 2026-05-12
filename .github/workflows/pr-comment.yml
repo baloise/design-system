@@ -18,7 +18,7 @@ jobs:
   snapshot:
     name: 🚚 Create Snapshot
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/snapshot')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Get Action URL
@@ -125,7 +125,7 @@ jobs:
   assembleInformation:
     name: 📝 Assemble Information
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       HUSKY: 0
@@ -194,7 +194,7 @@ jobs:
   updateScreenshots:
     name: 📸 Update Screenshots
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     needs: [assembleInformation]
     env:
@@ -247,7 +247,7 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: npm --workspace @baloise/ds-core run build
+        run: turbo run build --filter=core
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
@@ -300,7 +300,7 @@ jobs:
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: npm --workspace @baloise/ds-core run e2e:ci -- --config=playwright.visual.config.ts --update-snapshots
+        run: turbo run e2e:ci --filter=core -- --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
