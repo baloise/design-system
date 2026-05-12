@@ -3814,7 +3814,7 @@
         },
         "Primary": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Primary.5}",
+          "$value": "{🌐 Global.🌈 Color.Black}",
           "$extensions": {
             "com.figma.variableId": "VariableID:6:1297",
             "com.figma.scopes": ["ALL_SCOPES"],
@@ -4850,7 +4850,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Purple}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Yellow}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:61:38",
                 "com.figma.scopes": ["ALL_SCOPES"],

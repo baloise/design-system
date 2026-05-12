@@ -6,9 +6,10 @@ import { flattenTokens, type RuleMetadata } from '../utils'
  * Build elevation rules (z-index, opacity, shadow) dynamically from base.tokens.json.
  *
  * Sources:
- *  - 🔗 Alias › 🗂️ ZIndex     → z-index-* classes
- *  - 🔗 Alias › 🌫️ Opacity    → opacity-* classes
- *  - 🔗 Alias › 🌓 Shadow › Box → shadow* classes
+ *  - 🔗 Alias › 🗂️ ZIndex      → z-index-* classes
+ *  - 🔗 Alias › 🌫️ Opacity     → opacity-* classes
+ *  - 🔗 Alias › 🌓 Shadow › Box  → shadow* classes
+ *  - 🔗 Alias › 🌓 Shadow › Text → text-shadow, text-shadow-none
  */
 export function buildElevationRules(tokensJsonPath: string): {
   rules: Rule[]
@@ -58,6 +59,13 @@ export function buildElevationRules(tokensJsonPath: string): {
     const className = segment === 'base' ? 'shadow' : `shadow-${segment}`
     addRule(className, { 'box-shadow': `var(--${token.name}) !important` }, token.name)
   }
+
+  // 4. Text shadow token
+  const textShadowToken = alias['🌓 Shadow']?.['Text']
+  if (textShadowToken?.name) {
+    addRule('text-shadow', { 'text-shadow': `var(--${textShadowToken.name}) !important` }, textShadowToken.name)
+  }
+  addRule('text-shadow-none', { 'text-shadow': 'none !important' }, 'static')
 
   return { rules, safelist, metadata }
 }

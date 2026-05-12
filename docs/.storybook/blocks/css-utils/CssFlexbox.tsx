@@ -1,13 +1,13 @@
 import React from 'react'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
-export const CssFlexboxAlignContent = () => <CssUtilitiesTable utility="flex" search="align-content" />
-export const CssFlexboxAlignItems = () => <CssUtilitiesTable utility="flex" search="align-items" />
-export const CssFlexboxAlignSelf = () => <CssUtilitiesTable utility="flex" search="align-self" />
-export const CssFlexboxDirection = () => <CssUtilitiesTable utility="flex" search="flex-direction" />
-export const CssFlexboxFlex = () => <CssUtilitiesTable utility="flex" search="flex" />
-export const CssFlexboxJustifyContent = () => <CssUtilitiesTable utility="flex" search="justify-content" />
-export const CssFlexboxWrap = () => <CssUtilitiesTable utility="flex" search="flex-wrap" />
+export const CssFlexboxAlignContent = () => <CssUtilitiesTable utility="flex" search="align-content" value />
+export const CssFlexboxAlignItems = () => <CssUtilitiesTable utility="flex" search="align-items" value />
+export const CssFlexboxAlignSelf = () => <CssUtilitiesTable utility="flex" search="align-self" value />
+export const CssFlexboxDirection = () => <CssUtilitiesTable utility="flex" search="flex-direction" value />
+export const CssFlexboxFlex = () => <CssUtilitiesTable utility="flex" search="flex" value />
+export const CssFlexboxJustifyContent = () => <CssUtilitiesTable utility="flex" search="justify-content" value />
+export const CssFlexboxWrap = () => <CssUtilitiesTable utility="flex" search="flex-wrap" value />
 
 export const CssFlexboxGap = () => (
   <CssUtilitiesTable

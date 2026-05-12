@@ -22,4 +22,10 @@ export const CssElevationShadow = () => (
   />
 )
 
-export const CssElevationZIndex = () => <CssUtilitiesTable utility="elevation" search="z-index" />
+export const CssElevationZIndex = () => (
+  <CssUtilitiesTable
+    utility="elevation"
+    search="z-index"
+    example={item => <pre className="doc-table-pre text-small">{item.value}</pre>}
+  />
+)

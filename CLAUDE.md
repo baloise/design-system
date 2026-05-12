@@ -21,7 +21,7 @@ npm run docs               # Start Storybook documentation
 # Build
 npm run build              # Build all packages (respects Nx cache)
 npm run tokens             # Build design tokens only
-npm run styles             # Build styles only
+npm run css                # Build styles only
 
 # Testing
 npm test                   # Run all Vitest unit tests (--watch=false)

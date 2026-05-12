@@ -192,11 +192,7 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
               Type
             </label>
             <div className="select">
-              <select
-                id="token-type-filter"
-                value={typeFilter}
-                onChange={event => setTypeFilter(event.target.value)}
-              >
+              <select id="token-type-filter" value={typeFilter} onChange={event => setTypeFilter(event.target.value)}>
                 <option value="all">All types</option>
                 {typeOptions.map(type => (
                   <option key={type} value={type}>
@@ -222,16 +218,19 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
             />
           </div>
 
-          <div
-            className="text-sm text-grey"
-            style={{ paddingBottom: '0.75rem', whiteSpace: 'nowrap' }}
-          >
+          <div className="text-sm text-grey" style={{ paddingBottom: '0.75rem', whiteSpace: 'nowrap' }}>
             {filteredTokens.length} token{filteredTokens.length !== 1 ? 's' : ''}
           </div>
         </div>
       )}
 
-      <div style={{ borderTop: '2px solid var(--ds-alias-border-color-primary)', borderBottom: '2px solid var(--ds-alias-border-color-primary)', overflow: 'hidden' }}>
+      <div
+        style={{
+          borderTop: '2px solid var(--ds-alias-border-color-primary)',
+          borderBottom: '2px solid var(--ds-alias-border-color-primary)',
+          overflow: 'hidden',
+        }}
+      >
         <div style={{ maxHeight: '640px', overflowY: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
             <colgroup>
@@ -263,9 +262,20 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
               {filteredTokens.map((token, index) => (
                 <tr
                   key={token.id}
-                  style={{ backgroundColor: index % 2 === 0 ? 'var(--ds-alias-background-color-white)' : 'var(--ds-alias-background-color-grey-lighter)' }}
+                  style={{
+                    backgroundColor:
+                      index % 2 === 0
+                        ? 'var(--ds-alias-background-color-white)'
+                        : 'var(--ds-alias-background-color-grey-lighter)',
+                  }}
                 >
-                  <td style={{ padding: '0.5rem 1rem', borderBottom: '2px solid var(--ds-alias-border-color-grey)', verticalAlign: 'top' }}>
+                  <td
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderBottom: '2px solid var(--ds-alias-border-color-grey)',
+                      verticalAlign: 'top',
+                    }}
+                  >
                     <Clipboard label={`--${token.cssVarName}`} value={`var(--${token.cssVarName})`} />
                     <div className="text-xs text-grey" style={{ marginTop: '2px' }}>
                       {token.path}
@@ -278,11 +288,22 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
                   </td>
                   <td
                     className="text-sm text-grey"
-                    style={{ padding: '0.5rem 1rem', borderBottom: '2px solid var(--ds-alias-border-color-grey)', verticalAlign: 'top' }}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderBottom: '2px solid var(--ds-alias-border-color-grey)',
+                      verticalAlign: 'top',
+                    }}
                   >
                     {(component ? token.tokenType : token.typeLabel) || '—'}
                   </td>
-                  <td style={{ padding: '0.5rem 1rem', borderBottom: '2px solid var(--ds-alias-border-color-grey)', verticalAlign: 'top', wordBreak: 'break-all' }}>
+                  <td
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderBottom: '2px solid var(--ds-alias-border-color-grey)',
+                      verticalAlign: 'top',
+                      wordBreak: 'break-all',
+                    }}
+                  >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                       {token.tokenType === 'color' && (
                         <span

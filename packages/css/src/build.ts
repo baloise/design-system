@@ -127,7 +127,9 @@ const docsMetadata: Record<string, any> = {
 const bgStateSafelist: string[] = ['active', 'focus', 'hover'].flatMap(p => bgSafelist.map(cls => `${p}:${cls}`))
 
 // State variants for border color (hover:border-*, active:border-*)
-const borderColorStateSafelist: string[] = ['active', 'hover'].flatMap(p => borderColorSafelist.map(cls => `${p}:${cls}`))
+const borderColorStateSafelist: string[] = ['active', 'hover'].flatMap(p =>
+  borderColorSafelist.map(cls => `${p}:${cls}`),
+)
 
 const fullSafelist = [
   ...allSafelist(
@@ -183,6 +185,33 @@ mkdirSync(outDir, { recursive: true })
 writeFileSync(resolve(outDir, 'utilities.css'), banner('Utilities') + output)
 
 console.log(`\x1b[32m✔\x1b[0m dist/css/utilities.css written (${output.length} bytes)`)
+
+// --- Resolve token values into metadata ------------------------------------
+function buildTokenValueMap(obj: unknown, map: Record<string, string> = {}): Record<string, string> {
+  if (obj && typeof obj === 'object') {
+    const record = obj as Record<string, unknown>
+    if ('name' in record && '$value' in record && typeof record.name === 'string') {
+      map[record.name as string] = String(record.$value)
+    }
+    for (const val of Object.values(record)) buildTokenValueMap(val, map)
+  }
+  return map
+}
+const tokenValueMap = buildTokenValueMap(JSON.parse(readFileSync(tokensJsonPath, 'utf-8')))
+
+for (const entries of Object.values(docsMetadata)) {
+  for (const entry of entries as Array<{ token?: string; property?: string | string[]; value?: string }>) {
+    if (!entry.token || !tokenValueMap[entry.token]) continue
+    let value = tokenValueMap[entry.token]
+    // z-index tokens are incorrectly converted to rem by style-dictionary (px→rem transform on numbers).
+    // Reverse the conversion: multiply by 16 and strip the unit.
+    const props = Array.isArray(entry.property) ? entry.property : [entry.property ?? '']
+    if (props.includes('z-index') && value.endsWith('rem')) {
+      value = String(Math.round(parseFloat(value) * 16))
+    }
+    entry.value = value
+  }
+}
 
 // --- Write metadata JSON for docs ------------------------------------------
 const docsDir = resolve(__dirname, '../dist/docs')

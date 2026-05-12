@@ -16,7 +16,11 @@ interface CssUtility {
   valueDesktop?: string
 }
 
-function getValues(utility: UtilityKey, search?: string | string[], filter?: (item: CssUtility) => boolean): CssUtility[] {
+function getValues(
+  utility: UtilityKey,
+  search?: string | string[],
+  filter?: (item: CssUtility) => boolean,
+): CssUtility[] {
   const items = json[utility] as CssUtility[]
   let result = items
   if (search) {
@@ -34,10 +38,12 @@ export const CssUtilitiesTable = ({
   utility,
   search,
   filter,
+  value = false,
   example = undefined,
 }: {
   utility: UtilityKey
   search?: string | string[]
+  value?: boolean
   filter?: (item: CssUtility) => boolean
   example?: (item: CssUtility) => React.ReactNode
 }): React.ReactElement => {
@@ -73,8 +79,8 @@ export const CssUtilitiesTable = ({
               <td>
                 <pre className="doc-table-pre text-small">
                   {Array.isArray(item.property) ? item.property.join(', ') : item.property}
-                  {item.property && item.value ? ': ' : ''}
-                  {item.value}
+                  {value && item.property && item.value ? ': ' : ''}
+                  {value && item.value}
                 </pre>
               </td>
               {example ? <td>{example(item)}</td> : ''}

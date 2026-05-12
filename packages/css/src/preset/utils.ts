@@ -17,6 +17,7 @@ export interface RuleMetadata {
   class: string
   property: string | string[]
   token?: string
+  value?: string
 }
 
 /** Derive metadata from a static rules array. Token is extracted from `var(--…)` values when present. */
@@ -26,6 +27,7 @@ export function metadataFromRules(rules: Array<[string, Record<string, string>]>
     const property = cssProps.length === 1 ? cssProps[0] : cssProps
     const firstVal = Object.values(props)[0] ?? ''
     const tokenMatch = firstVal.match(/var\(--([^)]+)\)/)
-    return { class: cls, property, ...(tokenMatch ? { token: tokenMatch[1] } : {}) }
+    const value = firstVal.replace(/\s*!important\s*$/, '').trim()
+    return { class: cls, property, value, ...(tokenMatch ? { token: tokenMatch[1] } : {}) }
   })
 }

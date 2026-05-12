@@ -1,0 +1,27 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as ErrorPageStories from './error-page.stories'
+
+<Meta title="Templates/ErrorPage" />
+
+<StoryHeading of={ErrorPageStories.Basic} hidden></StoryHeading>
+
+<Banner section={'Templates'} label={'ErrorPage'} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ErrorPageStories.Basic}></StoryHeading>
+
+<Canvas of={ErrorPageStories.Basic} sourceState='shown' />
+
+<Footer />
