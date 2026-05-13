@@ -108,6 +108,7 @@ test.describe('form reset', () => {
     await input.clear()
     await input.fill('999')
     await input.blur()
+    await page.waitForChanges()
     expect(changeSpy).toHaveReceivedEventTimes(1)
     expect(changeSpy).toHaveReceivedEventDetail(999)
 

@@ -30,9 +30,6 @@
     "start": "kill-port 4000 2>/dev/null || true && DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4000",
     "test": "vitest --run",
     "test:ui": "vitest --ui",
-    "e2e:ui": "npx playwright test --ui",
-    "e2e:update-screenshots": "npx playwright test --update-snapshots",
-    "e2e:ci": "npx playwright test",
     "lint": "eslint ."
   },
   "dependencies": {
