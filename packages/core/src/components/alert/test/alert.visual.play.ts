@@ -46,6 +46,7 @@ test.describe('snackbar', () => {
   })
 
   test('closable', async ({ page, isMobile }) => {
+    // eslint-disable-next-line playwright/no-skipped-test
     test.skip(isMobile, 'Runs only on desktop')
     const el = page.getByTestId('snackbar-closable')
     await expectScreenshot(page, image('snackbar-closable-before'))
@@ -57,6 +58,7 @@ test.describe('snackbar', () => {
   })
 
   test('infinite', async ({ page, isMobile }) => {
+    // eslint-disable-next-line playwright/no-skipped-test
     test.skip(isMobile, 'Runs only on desktop')
     const el = page.getByTestId('snackbar-infinite')
     await expectScreenshot(page, image('snackbar-infinite-before'))

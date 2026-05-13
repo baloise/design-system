@@ -17,6 +17,7 @@ VARIANTS.forEach(variant => {
 })
 
 test('mobile only', async ({ page, isMobile }) => {
+  // eslint-disable-next-line playwright/no-skipped-test
   test.skip(!isMobile, 'Runs only on mobile')
 
   const el = page.getByTestId('basic-1')

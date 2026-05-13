@@ -21,5 +21,7 @@ generated
 
 docs/public
 docs/src/assets
+docs/plans
+docs/specs
 
 CLAUDE.md
