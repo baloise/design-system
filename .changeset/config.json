@@ -6,7 +6,7 @@
   "ignore ": [["@baloise/ds-output-target-*", "docs"]],
   "linked": [],
   "access": "public",
-  "baseBranch": "release/v20",
+  "baseBranch": "next",
   "updateInternalDependencies": "patch",
   "ignore": [],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
