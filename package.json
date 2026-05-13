@@ -14,6 +14,7 @@
     "e2e": "npm --prefix packages/core run e2e:ci",
     "play": "npm --prefix packages/core run e2e:ui",
     "build": "turbo run build",
+    "build:docs": "turbo run build && node scripts/build-docs.mjs",
     "build:force": "turbo run build --force",
     "tokens": "turbo run build --filter=@baloise/ds-tokens --force",
     "css": "turbo run build --filter=@baloise/ds-css --force",
