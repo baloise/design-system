@@ -105,14 +105,14 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: turbo run build --filter=core
+        run: npx turbo run build --filter=core
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        # run: turbo run e2e --filter=core -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        # run: turbo run e2e --filter=core
-        run: turbo run e2e --filter=core -- --update-snapshots
+        # run: npx turbo run e2e --filter=core -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: npx turbo run e2e --filter=core
+        run: npx turbo run e2e --filter=core -- --update-snapshots
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
