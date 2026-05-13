@@ -30,7 +30,13 @@
     "start": "kill-port 4000 2>/dev/null || true && DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4000",
     "test": "vitest --run",
     "test:ui": "vitest --ui",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "play": "CI=1 npx playwright test --ui",
+    "play:file": "CI=1 npx playwright test",
+    "play:a11y": "CI=1 npx playwright test --project='♿️ A11Y'",
+    "play:components": "CI=1 npx playwright test --project='⚙️ Component'",
+    "play:visual": "CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome'",
+    "play:update": "CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome' --update-snapshots"
   },
   "dependencies": {
     "@baloise/ds-assets": "20.0.0-next.1",
