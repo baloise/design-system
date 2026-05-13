@@ -9,6 +9,7 @@ www
 generated
 vite.config.ts.**.mjs
 .env
+.secrets
 
 # dependencies
 node_modules
@@ -108,6 +109,7 @@ playwright.visual.config.ts
 
 .env
 .worktrees
+.superpowers
 .claude/settings.local.json
 
 docs/superpowers

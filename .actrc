@@ -1,0 +1,6 @@
+--container-architecture linux/amd64
+-P ubuntu-latest=catthehacker/ubuntu:act-24.04
+-P ubuntu-24.04=catthehacker/ubuntu:act-24.04
+-P ubuntu-22.04=catthehacker/ubuntu:act-22.04
+--cache-server-path /tmp/act-cache
+--secret-file .secrets

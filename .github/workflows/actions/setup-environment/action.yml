@@ -1,0 +1,51 @@
+name: 'Setup Environment'
+description: 'Setup Git identity, Node.js environment, and NPM registry after checkout'
+inputs:
+  token:
+    description: 'GitHub token (for configuring git remote)'
+    required: false
+  branch:
+    description: 'Branch name (for info display)'
+    required: false
+  action:
+    description: 'Action URL (for info display)'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - name: Git Identity
+      if: inputs.token != ''
+      run: |
+        git config --global user.name 'baopso'
+        git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+        git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+
+    - name: Show inputs from previous job
+      if: inputs.branch != ''
+      shell: bash
+      run: |
+        echo "Branch from previous job: ${{ inputs.branch }}"
+        echo "Action: ${{ inputs.action }}"
+
+    - name: Show current branch
+      if: inputs.branch != ''
+      shell: bash
+      run: |
+        echo "🔍 Current branch info:"
+        git rev-parse --abbrev-ref HEAD
+        echo "Full commit info:"
+        git log -1 --oneline
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24
+        cache: 'npm'
+
+    - name: Update NPM registry path
+      continue-on-error: true
+      shell: bash
+      run: npm run registry
