@@ -81,6 +81,7 @@ jobs:
     env:
       HUSKY: 0
       CI: 1
+      DS_PLAYWRIGHT_TESTING: 'true'
     container:
       image: mcr.microsoft.com/playwright:v1.59.1-noble
       options: --user 1001
@@ -106,14 +107,10 @@ jobs:
 
       - name: Build Core
         run: npx turbo run build --filter=@baloise/ds-core
-        env:
-          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        # run: npm run play:ci
-        run: npm run play:ci -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        env:
-          DS_PLAYWRIGHT_TESTING: 'true'
+        working-directory: packages/core
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       # - name: Commit snapshots
       #   if: always()
