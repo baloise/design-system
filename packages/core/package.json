@@ -31,7 +31,7 @@
     "test": "vitest --run",
     "test:ui": "vitest --ui",
     "lint": "eslint .",
-    "play": "CI=1 npx playwright test --ui",
+    "play": "npx playwright test --ui",
     "play:file": "CI=1 npx playwright test",
     "play:a11y": "CI=1 npx playwright test --project='♿️ A11Y'",
     "play:components": "CI=1 npx playwright test --project='⚙️ Component'",
