@@ -3,8 +3,10 @@ description: 'Framework Build'
 inputs:
   framework:
     description: 'Defines the framework to build (e.g., angular, react)'
+    required: true
   app:
     description: 'The specific test application'
+    required: true
 runs:
   using: 'composite'
   steps:

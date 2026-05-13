@@ -4,8 +4,10 @@ inputs:
   build:
     description: 'Build packages'
     default: true
+    required: false
   token:
     description: 'GitHub token'
+    required: false
 runs:
   using: 'composite'
   steps:

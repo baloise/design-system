@@ -3,6 +3,7 @@ description: 'Setup'
 inputs:
   token:
     description: 'GitHub token'
+    required: false
 runs:
   using: 'composite'
   steps:

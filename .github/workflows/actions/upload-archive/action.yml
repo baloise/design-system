@@ -3,10 +3,13 @@ description: 'Compresses and uploads an archive to be reused across jobs'
 inputs:
   paths:
     description: 'Paths to files or directories to archive'
+    required: true
   output:
     description: 'Output file name'
+    required: true
   name:
     description: 'Archive name'
+    required: true
 runs:
   using: 'composite'
   steps:
