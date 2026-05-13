@@ -38,7 +38,7 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
-import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets/dist'
+import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 export const WithBrandIcon = Story({
   args: {
     color: 'base',

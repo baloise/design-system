@@ -12,14 +12,24 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "type": "module",
-  "types": "./dist/index.esm.d.ts",
-  "main": "./dist/index.esm.js",
+  "types": "./dist/src/index.d.ts",
+  "main": "./dist/src/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./dist": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
   "files": [
     "src/favicons",
     "src/fonts"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc -p tsconfig.lib.json"
   },
   "devDependencies": {
     "@types/google.maps": "3.64.0"

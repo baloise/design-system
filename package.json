@@ -85,7 +85,8 @@
     "vitest": "4.1.5"
   },
   "optionalDependencies": {
-    "@oxc-parser/binding-linux-x64-gnu": "0.124.0"
+    "@oxc-parser/binding-linux-x64-gnu": "0.124.0",
+    "@oxc-parser/binding-linux-arm64-gnu": "0.124.0"
   },
   "overrides": {
     "chokidar": "4.0.3",

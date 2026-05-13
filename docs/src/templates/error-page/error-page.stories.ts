@@ -1,7 +1,7 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
-import { BrandIconError404Red } from '@baloise/ds-assets/dist'
+import { BrandIconError404Red } from '@baloise/ds-assets'
 
 type Args = JSX.DsBadge & { slot: string }
 

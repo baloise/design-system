@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { BrandIconCarGreen } from '@baloise/ds-assets/dist'
+import { BrandIconCarGreen } from '@baloise/ds-assets'
 import { lorem1, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 
 type Args = JSX.DsRadioGroup
