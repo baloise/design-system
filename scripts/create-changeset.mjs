@@ -66,16 +66,13 @@ async function main() {
         choices: [
           { title: 'core', value: 'core' },
           { title: 'angular', value: 'angular' },
-          { title: 'styles', value: 'styles' },
+          { title: 'css', value: 'css' },
           { title: 'devkit', value: 'devkit' },
           { title: 'testing', value: 'testing' },
           { title: 'tokens', value: 'tokens' },
           { title: 'react', value: 'react' },
           { title: 'table', value: 'table' },
-          { title: 'font', value: 'font' },
-          { title: 'brand-icons', value: 'brand-icons' },
-          { title: 'maps', value: 'maps' },
-          { title: 'favicons', value: 'favicons' },
+          { title: 'assets', value: 'assets' },
           { title: 'deps', value: 'deps' },
           { title: 'a11y', value: 'a11y' },
           ...tags.map(tag => ({
