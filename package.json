@@ -19,6 +19,7 @@
     "play:components": "npm --prefix packages/core run play:components",
     "play:visual": "npm --prefix packages/core run play:visual",
     "play:update": "npm --prefix packages/core run play:update",
+    "play:ci": "npm --prefix packages/core run play:ci",
     "_build": "==================================================== Build =====================================================",
     "build": "turbo run build",
     "build:docs": "turbo run build && node scripts/build-docs.mjs",
