@@ -115,19 +115,19 @@ jobs:
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
-  # - name: Commit snapshots
-  #   if: always()
-  #   uses: EndBug/add-and-commit@v9
-  #   with:
-  #     message: 'update snapshots'
-  #     add: '*.png'
-  #   env:
-  #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+      # - name: Commit snapshots
+      #   if: always()
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     message: 'update snapshots'
+      #     add: '*.png'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
-  # - name: Upload Playwright HTML report
-  #   if: always()
-  #   uses: actions/upload-artifact@v4
-  #   with:
-  #     name: playwright-report-shard-${{ matrix.shardIndex }}
-  #     path: packages/core/playwright-report
-  #     retention-days: 7
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-shard-${{ matrix.shardIndex }}
+          path: packages/core/playwright-report
+          retention-days: 7
