@@ -11,37 +11,37 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # build:
-  #   name: 🏗️ Lint, Test & Build
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 15
-  #   env:
-  #     HUSKY: 0
-  #   steps:
-  #     - name: Check out code
-  #       uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 2
+  build:
+    name: 🏗️ Lint, Test & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      HUSKY: 0
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-  #     - uses: ./.github/workflows/actions/setup-environment
+      - uses: ./.github/workflows/actions/setup-environment
 
-  #     - name: Install dependencies
-  #       run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-  #     - name: Check format
-  #       run: npm run format:check
+      - name: Check format
+        run: npm run format:check
 
-  #     - name: Check spelling
-  #       run: npm run spell
+      - name: Check spelling
+        run: npm run spell
 
-  #     - name: Lint
-  #       run: npm run lint
+      - name: Lint
+        run: npm run lint
 
-  #     - name: Build
-  #       run: npm run build
+      - name: Build
+        run: npm run build
 
-  #     - name: Test
-  #       run: npm run test
+      - name: Test
+        run: npm run test
 
   assembleInformation:
     name: 📝 Assemble Information
