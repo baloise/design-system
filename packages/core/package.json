@@ -37,8 +37,7 @@
     "play:components": "CI=1 npx playwright test --project='⚙️ Component'",
     "play:visual": "CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome'",
     "play:update": "CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome' --update-snapshots",
-    "play:ci": "CI=1 npx playwright test",
-    "play:ci:update": "CI=1 npx playwright test --update-snapshots"
+    "play:ci": "CI=1 npx playwright test"
   },
   "dependencies": {
     "@baloise/ds-assets": "20.0.0-next.1",
