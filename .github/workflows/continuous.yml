@@ -110,7 +110,7 @@ jobs:
           DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npm exec -- playwright test --config=packages/core/playwright.config.mts --update-snapshots
+        run: cd packages/core && npm exec -- playwright test --update-snapshots
         env:
           DS_PLAYWRIGHT_TESTING: 'true'
 
