@@ -101,6 +101,9 @@ jobs:
           branch: ${{ needs.assembleInformation.outputs.branch }}
           action: ${{ needs.assembleInformation.outputs.action }}
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Build Core
         run: turbo run build --filter=core
         env:
