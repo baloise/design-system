@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Design token primitives:
+  Purple  1:#F9F3FF  2:#E1D9FF  3:#B8B2FF  5:#9F52CC  6:#6C2273
+  Yellow  1:#FFF9E8  2:#FFECBC  3:#FAE052  4:#FFBE19  5:#FA9319  6:#B24A00
+  Red     1:#FFEEF1  2:#FFD7D7  3:#FFACA6  4:#FF596F  5:#D9304C  6:#99172D
+  Green   1:#E9FBF7  2:#CBF2EC  3:#94E3D4  4:#21D9AC  5:#00B28F  6:#1B5951
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect width="880" height="360" fill="#ffffff"/>
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  Host: ds-accordion  (Purple)        ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <rect x="20" y="40" width="840" height="295" rx="8" fill="#F9F3FF" stroke="#B8B2FF" stroke-width="2" filter="url(#shadow)"/>
+  <!-- badge -->
+  <rect x="36" y="27" width="130" height="26" rx="13" fill="#9F52CC"/>
+  <text x="101" y="45" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="600">ds-accordion</text>
+
+  <!-- ┌─────────────────────────────────────┐ -->
+  <!-- │  part="header"  (Yellow)            │ -->
+  <!-- └─────────────────────────────────────┘ -->
+  <rect x="55" y="95" width="770" height="145" rx="6" fill="#FFF9E8" stroke="#FFBE19" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="71" y="82" width="130" height="26" rx="13" fill="#FA9319"/>
+  <text x="136" y="100" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="header"</text>
+
+  <!-- ┌─────────────────────────────────────┐ -->
+  <!-- │  part="summary"  (Red – interactive)│ -->
+  <!-- └─────────────────────────────────────┘ -->
+  <rect x="85" y="130" width="710" height="95" rx="6" fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="101" y="117" width="138" height="26" rx="13" fill="#D9304C"/>
+  <text x="170" y="135" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="summary"</text>
+
+  <!-- ┌────────────────────┐ (right-aligned inside summary) -->
+  <!-- │  part="marker"  ˅  │ -->
+  <!-- └────────────────────┘ -->
+  <rect x="655" y="166" width="125" height="45" rx="6" fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"/>
+  <!-- chevron icon centered in marker -->
+  <polyline points="701,182 717,200 733,182" fill="none" stroke="#D9304C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- badge -->
+  <rect x="671" y="153" width="122" height="26" rx="13" fill="#D9304C"/>
+  <text x="732" y="171" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="marker"</text>
+
+  <!-- ┌─────────────────────────────────────┐ -->
+  <!-- │  part="content"  (Green)            │ -->
+  <!-- └─────────────────────────────────────┘ -->
+  <rect x="55" y="258" width="770" height="60" rx="6" fill="#E9FBF7" stroke="#21D9AC" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="71" y="245" width="130" height="26" rx="13" fill="#00B28F"/>
+  <text x="136" y="263" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="content"</text>
+</svg>

@@ -3,7 +3,7 @@ class BrowserWindow {
    * Returns the width of the window
    */
   public get width(): number {
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       return window.innerWidth
     }
     return 0
@@ -13,7 +13,7 @@ class BrowserWindow {
    * Returns the height of the window
    */
   public get height(): number {
-    if (balBrowser.hasWindow) {
+    if (dsBrowser.hasWindow) {
       return window.innerHeight
     }
     return 0
@@ -62,4 +62,4 @@ class Browser {
   }
 }
 
-export const balBrowser = new Browser()
+export const dsBrowser = new Browser()

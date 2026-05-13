@@ -1,0 +1,39 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ToggleStories from './toggle.stories'
+import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
+
+<Meta title="Components/Forms/Toggle/Variants/Overview" />
+
+<StoryHeading of={ToggleStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
+
+<BannerTabs of={ToggleStories} tabs={getToggleTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToggleStories.Disabled}></StoryHeading>
+
+Use `disabled` attribute to render a non-interactive toggle.
+
+<CanvasTabs of={ToggleStories.Disabled} htmlOf={ToggleStories.DisabledHtml} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToggleStories.Invalid}></StoryHeading>
+
+Use `invalid` attribute to indicate an error state. This is typically used in forms when the toggle's value fails validation.
+
+<CanvasTabs of={ToggleStories.Invalid} htmlOf={ToggleStories.InvalidHtml} sourceState="shown" />
+
+
+
+<Footer />

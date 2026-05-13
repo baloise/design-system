@@ -1,0 +1,26 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
+
+<Meta title="Components/Badge/Overview" />
+
+<Banner label={'Overview'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
+
+<BannerTabs of={BadgeStories} tabs={getBadgeTabs('overview')} />
+
+<ComponentLead component="badge" />
+
+<Canvas of={BadgeStories.Basic} sourceState="shown" />
+
+<Controls of={BadgeStories.Basic} />
+
+<ComponentPublicMethods component="badge" />
+
+<Footer />

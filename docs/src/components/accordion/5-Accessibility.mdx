@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as AccordionStories from './accordion.stories'
+import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
+
+<Meta title="Components/Accordion/Accessibility" />
+
+<Banner label={'Accessibility'} section={ACCORDION_DOC_CONFIG.section} color={ACCORDION_DOC_CONFIG.color} />
+<BannerTabs
+  of={AccordionStories}
+  tabs={getAccordionTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Descriptive Headers',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use clear, specific accordion headers that accurately describe the content within each section. This helps users understand what they will see before expanding.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure accordion headers are keyboard accessible. Users should be able to navigate between sections and toggle them open/closed using the Tab and Enter/Space keys.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Semantic HTML',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use semantic heading levels (h1-h6) in accordion headers to maintain document structure. This helps screen reader users understand content hierarchy.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'State Indication',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always provide visual indicators (arrow, icon, or color change) to show whether sections are expanded or collapsed. Screen readers need ARIA attributes to communicate state.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Hidden Essential Content',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never hide critical information in accordion sections. Users with cognitive disabilities may not discover collapsed content, and some assistive technologies may skip it.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Icon-only Headers',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely solely on icons to indicate accordion state. Always include text labels that clearly describe the section content for all users.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The accordion component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Keyboard Navigation (2.1.1)** — All accordion headers are keyboard accessible
+- **Focus Visible (2.4.7)** — Clear focus indicators on interactive elements
+- **Name, Role, Value (4.1.2)** — Proper ARIA roles and attributes for state management
+- **Heading Structure (1.3.1)** — Maintains semantic heading hierarchy within sections
+
+<Footer />

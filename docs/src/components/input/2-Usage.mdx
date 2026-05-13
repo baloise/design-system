@@ -1,0 +1,107 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as InputStories from './input.stories'
+import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
+
+<Meta title="Components/Forms/Input/Usage" />
+<Banner label={'Usage'} section={INPUT_DOC_CONFIG.section} color={INPUT_DOC_CONFIG.color} />
+<BannerTabs of={InputStories} tabs={getInputTabs('usage')} />
+
+## When to Use
+
+- Collect text input for names, addresses, or other single-line data
+- Accept email addresses with email type validation
+- Accept passwords with secure masking
+- Create search inputs
+- Validate user input with real-time feedback
+- Show required/optional field indicators
+
+## When NOT to Use
+
+- For multi-line text — use textarea component instead
+- For selecting from predefined options — use select, radio, or checkbox
+- For yes/no questions — use checkbox or toggle
+- For date/time selection — use date/time inputs or picker components
+- For collecting large amounts of text
+
+## Do's and Don'ts
+
+### Input Labels
+
+Always pair inputs with associated labels. Never rely on placeholder text alone.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Label with input field',
+      contentIsLeftAligned: true,
+      content: <ds-input label="Email Address" type="email" placeholder="your@email.com"></ds-input>,
+      description: 'Label clearly identifies the field purpose',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No label, only placeholder',
+      contentIsLeftAligned: true,
+      content: <ds-input type="email" placeholder="Email address"></ds-input>,
+      description: 'Placeholder disappears when user types',
+    },
+  ]}
+/>
+
+### Input Validation
+
+Show validation feedback in real-time as users type. Provide clear error messages.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear validation message',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <ds-input
+            type="email"
+            value="invalid"
+            label="Email Address"
+            invalid
+            invalid-text="Please enter a valid email address"
+          ></ds-input>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code
+              noPreview
+              code={'<ds-input \n  type="email" \n  label="Email Address" \n  invalid \n  invalid-text="Please enter a valid email address">\n</ds-input>'}
+            />
+          </div>
+        </>
+      ),
+      description: "Users know exactly what's wrong",
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Vague error feedback',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <ds-input
+            type="email"
+            value="invalid"
+            label="Email Address"
+            invalid
+            invalid-text="Error"
+          ></ds-input>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code
+              noPreview
+              code={'<ds-input \n  type="email" \n  label="Email Address" \n  invalid \n  invalid-text="Error">\n</ds-input>'}
+            />
+          </div>
+        </>
+      ),
+      description: 'Unclear what the error is',
+    },
+  ]}
+/>
+
+<Footer />

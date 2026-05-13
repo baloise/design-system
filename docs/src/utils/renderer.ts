@@ -79,8 +79,8 @@ export const renderer = ({ args, template }) => {
   const root = document.getElementById('storybook-root')
 
   const events = Object.keys(args)
-    .filter(key => key.startsWith('onBal'))
-    .map(key => ({ key, name: 'b' + key.slice(3) }))
+    .filter(key => key.startsWith('onBal') || key.startsWith('onDs'))
+    .map(key => ({ key, name: key.charAt(2).toLowerCase() + key.slice(3) }))
 
   events.forEach(event => {
     root?.addEventListener(event.name as any, args[event.key] as any)
@@ -109,8 +109,8 @@ export const rendererWithTrigger = ({ args, template }) => {
   const root = document.getElementById('storybook-root')
 
   const events = Object.keys(args)
-    .filter(key => key.startsWith('onBal'))
-    .map(key => ({ key, name: 'b' + key.slice(3) }))
+    .filter(key => key.startsWith('onBal') || key.startsWith('onDs'))
+    .map(key => ({ key, name: key.charAt(2).toLowerCase() + key.slice(3) }))
 
   events.forEach(event => {
     root?.addEventListener(event.name as any, args[event.key] as any)

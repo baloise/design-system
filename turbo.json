@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "!**/*.spec.*", "!**/*.play.*"],
+      "outputs": ["dist/**"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "test/**"],
+      "outputs": []
+    },
+    "lint": {
+      "inputs": ["src/**", "eslint.config.*"],
+      "outputs": []
+    },
+    "optimize": {
+      "inputs": ["src/**/svg/*.svg"],
+      "outputs": ["src/**/svg.ts", "src/**/svg.json"]
+    }
+  }
+}

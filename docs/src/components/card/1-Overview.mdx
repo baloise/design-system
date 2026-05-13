@@ -1,0 +1,65 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import * as CardHeaderStories from './card-header/card-header.stories'
+import * as CardTitleStories from './card-title/card-title.stories'
+import * as CardSubtitleStories from './card-subtitle/card-subtitle.stories'
+import * as CardContentStories from './card-content/card-content.stories'
+import * as CardActionsStories from './card-actions/card-actions.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Overview" />
+
+<Banner label={'Overview'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+
+<BannerTabs of={CardStories} tabs={getCardTabs('overview')} />
+
+<ComponentLead component="card" />
+
+<Canvas of={CardStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-card',
+      label: 'Card',
+      content: <Controls of={CardStories.Basic} />,
+    },
+    {
+      id: 'ds-card-header',
+      label: 'Card Header',
+      content: <Controls of={CardHeaderStories.Basic} />,
+    },
+    {
+      id: 'ds-card-title',
+      label: 'Card Title',
+      content: <Controls of={CardTitleStories.Basic} />,
+    },
+    {
+      id: 'ds-card-subtitle',
+      label: 'Card Subtitle',
+      content: <Controls of={CardSubtitleStories.Basic} />,
+    },
+    {
+      id: 'ds-card-content',
+      label: 'Card Content',
+      content: <Controls of={CardContentStories.Basic} />,
+    },
+    {
+      id: 'ds-card-actions',
+      label: 'Card Actions',
+      content: <Controls of={CardActionsStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="card" />
+
+<Footer />

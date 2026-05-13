@@ -1,0 +1,28 @@
+@use '../../hybrid' as hybrid;
+@use './card.style' with (
+  $use-host: true
+);
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --card-color-background: Background color of the card.
+ * @prop --card-color-border: Border color of the card.
+ * @prop --card-border-radius: Border radius of the card.
+ * @prop --card-border-width: Border width of the card.
+ * @prop --card-padding: Padding inside the card.
+ * @prop --card-gap: Gap between card sections.
+ * @prop --card-shadow: Box shadow of the card.
+ * @prop --card-header-background: Background color of the card header.
+ * @prop --card-header-padding: Padding inside the header section.
+ * @prop --card-footer-background: Background color of the card footer.
+ * @prop --card-footer-padding: Padding inside the footer section.
+ */
+
+:host {
+  display: block;
+  width: 100%;
+}

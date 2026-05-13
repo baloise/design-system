@@ -1,0 +1,108 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as AccordionStories from './accordion.stories'
+import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
+
+<Meta title="Components/Accordion/Usage" />
+<Banner label={'Usage'} section={ACCORDION_DOC_CONFIG.section} color={ACCORDION_DOC_CONFIG.color} />
+<BannerTabs of={AccordionStories} tabs={getAccordionTabs('usage')} />
+
+## When to Use
+
+- Group related content into expandable sections
+- Organize FAQs or documentation with collapsible Q&A pairs
+- Hide secondary or detailed information to reduce cognitive load
+- Create step-by-step processes where users expand sections sequentially
+- Manage form fields organized by category
+
+## When NOT to Use
+
+- For content that should always be visible — do not hide essential information in accordion sections
+- When the content is short enough to fit on screen without scrolling — simpler layouts are clearer
+- For critical user warnings or alerts — these should never be hidden
+- As a replacement for proper information hierarchy — structure content logically first, then consider accordion
+
+## Do's and Don'ts
+
+### Accordion Headings
+
+Accordion headers should clearly describe the content within the section. Use specific, descriptive headings.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear descriptive heading',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-accordion>
+          <div slot="summary">Frequently Asked Questions</div>
+          <div slot="content">Content goes here</div>
+        </ds-accordion>
+      ),
+      description: 'Users know exactly what content is in the section',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Vague heading',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-accordion>
+          <div slot="summary">More Info</div>
+          <div slot="content">Content goes here</div>
+        </ds-accordion>
+      ),
+      description: 'Provides no indication of section content',
+    },
+  ]}
+/>
+
+### Single vs. Multiple Accordion Sections
+
+When users should only be able to open one section at a time, use the `group` prop to automatically close other sections.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Related accordion group',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <ds-accordion group="faq">
+            <div slot="summary">What is this?</div>
+            <div slot="content">Answer goes here</div>
+          </ds-accordion>
+          <ds-accordion group="faq">
+            <div slot="summary">How do I use it?</div>
+            <div slot="content">Answer goes here</div>
+          </ds-accordion>
+          <div style={{ textAlign: 'left' }}>
+            <Code noPreview code={'<ds-accordion group="faq">\n  <!-- Only one can be open at a time -->\n</ds-accordion>'} />
+          </div>
+        </>
+      ),
+      description: 'Only one section opens at a time, improving focus',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No group binding',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <ds-accordion>
+            <div slot="summary">Section 1</div>
+            <div slot="content">Content 1</div>
+          </ds-accordion>
+          <ds-accordion>
+            <div slot="summary">Section 2</div>
+            <div slot="content">Content 2</div>
+          </ds-accordion>
+        </>
+      ),
+      description: 'Users can open multiple sections, causing information overload',
+    },
+  ]}
+/>
+
+<Footer />

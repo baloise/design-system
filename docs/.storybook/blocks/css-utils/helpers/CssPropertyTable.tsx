@@ -1,10 +1,14 @@
 import React from 'react'
 import { Clipboard } from '../../Clipboard'
+import json from '../../../../../packages/css/dist/docs/design-system.json'
+
+type DesignSystemJson = typeof json
+type UtilityKey = keyof DesignSystemJson
 
 interface CssUtility {
   class: string
   css: string
-  property: string
+  property: string | string[]
   value: string
   responsive?: boolean
   valueMobile?: string
@@ -12,35 +16,42 @@ interface CssUtility {
   valueDesktop?: string
 }
 
+function getValues(
+  utility: UtilityKey,
+  search?: string | string[],
+  filter?: (item: CssUtility) => boolean,
+): CssUtility[] {
+  const items = json[utility] as CssUtility[]
+  let result = items
+  if (search) {
+    const terms = Array.isArray(search) ? search : [search]
+    result = result.filter(item => {
+      const props = Array.isArray(item.property) ? item.property : [item.property]
+      return props.some(p => terms.includes(p))
+    })
+  }
+  if (filter) result = result.filter(filter)
+  return result
+}
+
 export const CssUtilitiesTable = ({
-  list = [],
-  search = '',
+  utility,
+  search,
+  filter,
+  value = false,
   example = undefined,
 }: {
-  list?: any[]
-  search: string | string[]
-  example?: any
+  utility: UtilityKey
+  search?: string | string[]
+  value?: boolean
+  filter?: (item: CssUtility) => boolean
+  example?: (item: CssUtility) => React.ReactNode
 }): React.ReactElement => {
-  function getValues(list, search) {
-    let results: CssUtility[] = []
-    if (!Array.isArray(search)) {
-      search = [search]
-    }
-    for (let index = 0; index < list.length; index++) {
-      const row: CssUtility = list[index]
-      const key: string = Object.keys(row)[0]
-      if (search.includes(key)) {
-        results = [...results, ...row[key]]
-      }
-    }
-    return results
-  }
-
-  const values: CssUtility[] = getValues(list, search)
+  const values = getValues(utility, search, filter)
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius-normal px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
@@ -57,9 +68,6 @@ export const CssUtilitiesTable = ({
             </th>
             <th className="pt-medium">Property</th>
             {example ? <th className="pt-medium"></th> : ''}
-            {/* {responsive ? <th className="pt-medium">Mobile</th> : ''}
-            {responsive ? <th className="pt-medium">Tablet</th> : ''}
-            {responsive ? <th className="pt-medium">Desktop</th> : ''} */}
           </tr>
         </thead>
         <tbody>
@@ -70,15 +78,12 @@ export const CssUtilitiesTable = ({
               </td>
               <td>
                 <pre className="doc-table-pre text-small">
-                  {item.property}
-                  {item.property && item.value ? ': ' : ''}
-                  {item.value}
+                  {Array.isArray(item.property) ? item.property.join(', ') : item.property}
+                  {value && item.property && item.value ? ': ' : ''}
+                  {value && item.value}
                 </pre>
               </td>
               {example ? <td>{example(item)}</td> : ''}
-              {/* {responsive ? <td>{item.valueMobile}</td> : ''}
-              {responsive ? <td>{item.valueTablet}</td> : ''}
-              {responsive ? <td>{item.valueDesktop}</td> : ''} */}
             </tr>
           ))}
         </tbody>
@@ -108,7 +113,7 @@ export const CssPropertyTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius-normal px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
@@ -137,11 +142,9 @@ export const CssPropertyTable = ({
               </td>
               <td>
                 <pre className="doc-table-pre text-small">
-                  {/* <code className='bg-grey-2 border-none'> */}
                   {property || item.property}
                   {(property || item.property) && item.value ? ': ' : ''}
                   {item.value}
-                  {/* </code> */}
                 </pre>
               </td>
               {responsive ? <td>{item.valueMobile}</td> : ''}

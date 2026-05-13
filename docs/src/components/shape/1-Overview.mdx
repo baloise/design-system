@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ShapeStories from './shape.stories'
+import { SHAPE_DOC_CONFIG, getShapeTabs } from './shape.doc-config'
+
+<Meta title="Components/Shape/Overview" />
+
+<Banner label={'Overview'} section={SHAPE_DOC_CONFIG.section} color={SHAPE_DOC_CONFIG.color} />
+
+<BannerTabs of={ShapeStories} tabs={getShapeTabs('overview')} />
+
+<ComponentLead component="shape" />
+
+<Canvas of={ShapeStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-shape',
+      label: 'Shape',
+      content: <Controls of={ShapeStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="shape" />
+
+<Footer />

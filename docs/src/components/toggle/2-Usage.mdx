@@ -1,0 +1,63 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ToggleStories from './toggle.stories'
+import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
+
+<Meta title="Components/Forms/Toggle/Usage" />
+<Banner label={'Usage'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
+<BannerTabs
+  of={ToggleStories}
+  tabs={getToggleTabs('usage')}
+/>
+
+## When to Use
+
+- Toggle features on/off (e.g., notifications, settings)
+- Enable/disable single options in settings
+- Switch between two mutually exclusive states
+- Binary yes/no form questions
+- Feature flags or preference toggles
+
+## When NOT to Use
+
+- For multiple choice (more than 2 options) — use radio buttons or dropdown
+- For independent selections (multiple options) — use checkboxes
+- For boolean values in tables — consider using badge or status indicators
+- For lengthy explanations — toggle's compact nature may not suit explanation
+- For critical actions — consider a confirmation dialog
+
+## Do's and Don'ts
+
+### Clear Labels
+
+Always pair toggles with descriptive labels. Users need to know what is being toggled.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear label with state indication',
+      content: (
+        <ds-toggle checked={true}>Enable notifications</ds-toggle>
+      ),
+      description: 'Users understand exactly what is being toggled',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No label or vague label',
+      content: (
+        <ds-toggle checked={true}></ds-toggle>
+      ),
+      description: 'Users unsure what the toggle controls',
+    },
+  ]}
+/>
+
+<Footer />

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300">
+  <!-- Background -->
+  <rect width="880" height="300" fill="#fafafa" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Host container (green) -->
+  <rect x="40" y="40" width="800" height="220" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="4"/>
+  <text x="60" y="65" font-size="12" font-weight="bold" fill="#4caf50">host (stack container)</text>
+
+  <!-- Flex container (yellow - main container) -->
+  <rect x="80" y="90" width="720" height="140" fill="#fffde7" stroke="#fbc02d" stroke-width="2" rx="4"/>
+  <text x="100" y="115" font-size="12" font-weight="bold" fill="#f57f17">flex container layout</text>
+
+  <!-- Child items (green - content areas) -->
+  <rect x="120" y="135" width="180" height="60" fill="#c8e6c9" stroke="#4caf50" stroke-width="1" rx="3"/>
+  <text x="135" y="165" font-size="11" font-weight="bold" fill="#2e7d32">Item 1</text>
+
+  <rect x="330" y="135" width="180" height="60" fill="#c8e6c9" stroke="#4caf50" stroke-width="1" rx="3"/>
+  <text x="345" y="165" font-size="11" font-weight="bold" fill="#2e7d32">Item 2</text>
+
+  <rect x="540" y="135" width="180" height="60" fill="#c8e6c9" stroke="#4caf50" stroke-width="1" rx="3"/>
+  <text x="555" y="165" font-size="11" font-weight="bold" fill="#2e7d32">Item 3</text>
+
+  <!-- Spacing indicators -->
+  <line x1="300" y1="150" x2="300" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="510" y1="150" x2="510" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="308" y="168" font-size="9" fill="#999">space</text>
+  <text x="518" y="168" font-size="9" fill="#999">space</text>
+
+  <!-- Part badges -->
+  <g id="stack-badge">
+    <circle cx="680" cy="265" r="35" fill="#fbc02d" stroke="#4caf50" stroke-width="1"/>
+    <text x="680" y="270" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">part="stack"</text>
+  </g>
+</svg>

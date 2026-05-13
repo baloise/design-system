@@ -1,0 +1,90 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as LinkStories from './link.stories'
+import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
+
+<Meta title="Components/Link/Accessibility" />
+<Banner label={'Accessibility'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
+<BannerTabs
+  of={LinkStories}
+  tabs={getLinkTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Descriptive Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use meaningful link text that describes the destination. Screen readers read link text aloud, so users need to understand where the link goes.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Semantic HTML',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use actual <code>&lt;a&gt;</code> elements with <code>href</code> attribute. This ensures proper semantics for screen readers and assistive technology.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Visual Focus',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Links must have visible focus indicators. Users navigating by keyboard need to know which link is focused.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Distinguish from Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use color AND underline or other indicators. Color alone may not distinguish links for colorblind users.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Generic Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use "Click here", "Read more", or "Link" as link text. Screen reader users won't understand the destination.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color-Only Distinction',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't rely on color alone to show links. Colorblind users may not see the distinction from regular text.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The link component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Meaningful Text (1.1.1)** — Descriptive link text explains destination
+- **Semantic Markup (1.3.1)** — Uses proper `<a>` element
+- **Link Purpose (2.4.9)** — Link text explains purpose or destination
+- **Distinguishable (1.4.3)** — Links visually distinguished from surrounding text
+- **Focus Visible (2.4.7)** — Keyboard focus indicator visible
+- **Color Contrast (1.4.3)** — Sufficient contrast for link colors
+
+<Footer />

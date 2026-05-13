@@ -1,0 +1,68 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as LinkStories from './link.stories'
+import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
+
+<Meta title="Components/Link/Usage" />
+<Banner label={'Usage'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
+<BannerTabs
+  of={LinkStories}
+  tabs={getLinkTabs('usage')}
+/>
+
+## When to Use
+
+- Navigate to other pages or sections
+- Link to external resources or documentation
+- Create inline navigation within content
+- Build navigation menus and breadcrumbs
+- Provide "Learn More" or call-to-action links
+- Link to related resources
+
+## When NOT to Use
+
+- For buttons that trigger actions — use button component
+- For anchor links without navigation — use standard HTML
+- For social media sharing — use specific social components
+- For download links — consider button or download component
+- For email mailto links — use semantic HTML mailto
+
+## Do's and Don'ts
+
+### Descriptive Link Text
+
+Always use meaningful link text. Avoid generic "Click here" or "Read more".
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Descriptive link text',
+      content: (
+        <div>
+          <a href="#" className="link">Learn about our accessibility standards</a>
+        </div>
+      ),
+      description: 'Screen readers understand the link destination',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Generic link text',
+      content: (
+        <div>
+          <a href="#" className="link">Click here</a>
+        </div>
+      ),
+      description: 'Screen readers can\'t explain link purpose',
+    },
+  ]}
+/>
+
+<Footer />

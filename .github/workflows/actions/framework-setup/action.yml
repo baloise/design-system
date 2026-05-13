@@ -3,6 +3,7 @@ description: 'Framework Setup'
 inputs:
   app:
     description: 'The specific test application'
+    required: true
 runs:
   using: 'composite'
   steps:

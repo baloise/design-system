@@ -1,0 +1,17 @@
+@use './checkbox.mixin.scss' as checkbox;
+
+/**
+ * CSS-only checkbox / switch toggle: apply .checkbox to the wrapper <label>.
+ *
+ *   Checkbox:
+ *   <label class="checkbox">
+ *     <input type="checkbox">
+ *     Label text
+ *   </label>
+ *
+ */
+
+@include checkbox.vars('.checkbox');
+@include checkbox.layout('.checkbox');
+@include checkbox.style('.checkbox');
+@include checkbox.states('.checkbox');

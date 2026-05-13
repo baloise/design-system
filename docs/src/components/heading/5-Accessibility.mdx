@@ -1,0 +1,79 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as HeadingStories from './heading.stories'
+import { HEADING_DOC_CONFIG, getHeadingTabs } from './heading.doc-config'
+
+<Meta title="Components/Heading/Accessibility" />
+<Banner label={'Accessibility'} section={HEADING_DOC_CONFIG.section} color={HEADING_DOC_CONFIG.color} />
+<BannerTabs
+  of={HeadingStories}
+  tabs={getHeadingTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Maintain Semantic Hierarchy',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use heading levels in order (h1, then h2, then h3, etc.) without skipping levels. This ensures screen readers can construct a proper document outline and users can navigate content efficiently.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'One H1 Per Page',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always include exactly one h1 element per page representing the main page title or heading. Multiple h1 elements confuse both screen readers and users about page structure.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Sufficient Color Contrast',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure heading text meets WCAG 2.2 AA contrast ratios (4.5:1 for normal text). Use the shadow variant on dark or image backgrounds to maintain readability.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use for Content Structure',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Reserve headings for actual structural sections of content. Use the Text component for decorative or styled text that is not part of the document outline.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color Alone for Distinction',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely on color alone to distinguish headings from body text. Combine color changes with size, weight, and spacing to ensure all users can perceive the distinction.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Skip Heading Levels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not jump from h1 directly to h3 or skip intermediate levels. This breaks the document structure and confuses screen reader users about content organization.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+<Footer />

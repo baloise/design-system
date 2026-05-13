@@ -1,0 +1,69 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as HeadingStories from './heading.stories'
+import { HEADING_DOC_CONFIG, getHeadingTabs } from './heading.doc-config'
+
+<Meta title="Components/Heading/Variants/Overview" />
+<StoryHeading of={HeadingStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={HEADING_DOC_CONFIG.section} color={HEADING_DOC_CONFIG.color} />
+<BannerTabs
+  of={HeadingStories}
+  tabs={getHeadingTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Levels}></StoryHeading>
+
+Headings with different levels (H1 to H6) to establish a clear content hierarchy and improve readability.
+
+<Canvas of={HeadingStories.Levels} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Sizes}></StoryHeading>
+
+Headings with different sizes to establish a clear content hierarchy and improve readability.
+
+<Canvas of={HeadingStories.Sizes} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Colors}></StoryHeading>
+
+Headings support multiple colors for visual emphasis and theming. The default color adapts to background context with the `inverted` prop.
+
+<Canvas of={HeadingStories.Colors} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.NoWrap}></StoryHeading>
+
+Headings can be set to not wrap, truncating overflow text with an ellipsis to maintain layout integrity.
+
+<Canvas of={HeadingStories.NoWrap} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Spacing}></StoryHeading>
+
+Headings can have custom spacing to adjust the visual rhythm and layout consistency.
+
+<Canvas of={HeadingStories.Spacing} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.AutoLevel}></StoryHeading>
+
+Headings can automatically adjust their level based on the surrounding context to maintain a consistent hierarchy.
+
+<Canvas of={HeadingStories.AutoLevel} sourceState="hidden" />
+
+<Footer />

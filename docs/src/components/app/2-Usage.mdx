@@ -1,0 +1,44 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as AppStories from './app.stories'
+import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
+
+<Meta title="Components/App/Usage" />
+<Banner label={'Usage'} section={APP_DOC_CONFIG.section} color={APP_DOC_CONFIG.color} />
+<BannerTabs
+  of={AppStories}
+  tabs={getAppTabs('usage')}
+/>
+
+## When to Use
+
+- Wrap entire application for consistent layout and theming
+- Set up global app-level configuration
+- Apply brand colors and design system styles globally
+- Manage top-level navigation structure
+- Provide consistent spacing and grid structure
+- Initialize application-wide state or context
+
+## When NOT to Use
+
+- For individual page sections — use content component
+- For component-level containers — not needed for single components
+- For temporary overlays or modals — use modal component
+- For reusable sub-sections — create smaller layout components
+- For styling only — simpler solutions may exist
+
+## Do's and Don'ts
+
+### Single Root Element
+
+Use app as the root wrapper. Only one per application.
+
+
+<Footer />

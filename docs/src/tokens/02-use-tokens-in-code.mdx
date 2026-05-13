@@ -1,0 +1,178 @@
+import { Meta, Markdown } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, Lead } from '../../.storybook/blocks'
+import { getTokensTabs } from './tokens.doc-config'
+
+<Meta
+  title="Tokens/Use Tokens in Code"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      toc: {
+        disable: false,
+      },
+    },
+  }}
+/>
+
+<Banner label="Tokens" color="green" />
+
+<BannerTabs color="green" tabs={getTokensTabs('code')} />
+
+<Lead>Learn how to use design tokens in your web applications with CSS and JavaScript.</Lead>
+
+## CSS Variables
+
+Tokens are exported as standard CSS custom properties (CSS variables). Use them in any stylesheet.
+
+
+
+### Basic Usage
+
+All tokens follow the `--ds-` prefix pattern with layer indicators. You can use tokens at any layer:
+
+```css
+/* Global tokens (primitives) */
+.primary-color {
+  background-color: var(--ds-global-color-primary-5);
+  color: var(--ds-global-color-white);
+}
+
+/* Alias/Semantic tokens */
+.card {
+  background-color: var(--ds-alias-bg-color-primary);
+  color: var(--ds-alias-text-color-primary);
+  padding: var(--ds-alias-space-16);
+  border-radius: var(--ds-alias-radius-base);
+}
+
+/* Component tokens */
+.button {
+  background-color: var(--ds-button-primary-color-bg-base);
+  color: var(--ds-button-primary-color-text-base);
+  padding: var(--ds-button-py) var(--ds-button-px);
+}
+```
+
+### With Fallback Values
+
+Provide a fallback in case the token isn't available:
+
+```css
+.button {
+  background: var(--ds-button-primary-color-bg-base, #0052cc);
+}
+```
+
+### Inline Styles
+
+For dynamic styling, use CSS variables inline:
+
+```html
+<div style="background-color: var(--ds-alias-bg-color-primary); padding: var(--ds-alias-space-16);"></div>
+```
+
+## JavaScript
+
+You can import tokens directly from the `@baloise/ds-tokens` package. This is useful for accessing specific design values in your JavaScript code:
+
+For common design values like breakpoints, import them directly:
+
+```javascript
+import {
+  DsAliasBreakpointTablet,
+  DsAliasBreakpointDesktop,
+  DsAliasBreakpointDesktopLg,
+  DsAliasBreakpointDesktopXl,
+  DsAliasBreakpointDesktop2Xl,
+} from '@baloise/ds-tokens'
+
+// Use in your responsive logic
+const isMobile = window.innerWidth < DsAliasBreakpointTablet
+const isTablet = window.innerWidth >= DsAliasBreakpointTablet && window.innerWidth < DsAliasBreakpointDesktop
+const isDesktop = window.innerWidth >= DsAliasBreakpointDesktop
+
+if (isDesktop) {
+  // Apply desktop-specific logic
+}
+```
+
+## Common Use Cases
+
+### Creating a Themed Section
+
+```html
+<!-- Default theme -->
+<section class="card">
+  <h2>Default Theme</h2>
+  <p>Uses primary colors from the system</p>
+</section>
+
+<!-- Custom override -->
+<section class="card" style="--ds-alias-bg-color-primary: var(--ds-alias-bg-color-secondary);">
+  <h2>Secondary Theme</h2>
+  <p>Uses secondary colors instead</p>
+</section>
+```
+
+### Responsive Spacing
+
+Always use `-device` tokens for responsive values from the alias layer:
+
+```css
+.container {
+  padding: var(--ds-alias-space-base-device);  /* auto-responsive */
+  font-size: var(--ds-alias-font-size-base-device);  /* auto-responsive */
+}
+```
+
+### Building Component Styles
+
+```css
+/* All three layers with their appropriate prefixes */
+
+/* 1. Global tokens (primitives) */
+.alert-base {
+  background: var(--ds-global-color-info-2);
+  border-color: var(--ds-global-color-info-5);
+}
+
+/* 2. Alias/Semantic tokens */
+.alert {
+  background: var(--ds-alias-bg-color-info-light);
+  border: 1px solid var(--ds-alias-border-color-info);
+  color: var(--ds-alias-text-color-primary);
+  padding: var(--ds-alias-space-12);
+  border-radius: var(--ds-alias-radius-base);
+}
+
+/* 3. Component tokens */
+.alert.is-custom {
+  background: var(--ds-alert-info-color-bg-base);
+  border-color: var(--ds-alert-info-color-border-base);
+  color: var(--ds-alert-info-color-text-base);
+}
+
+.alert.is-warning {
+  background: var(--ds-alias-bg-color-warning-light);
+  border-color: var(--ds-alias-border-color-warning);
+}
+```
+
+## Exported Formats
+
+<Markdown>
+  {`
+Tokens are available in multiple formats for different environments:
+
+| Format         | Location                     | Use Case            |
+| -------------- | ---------------------------- | ------------------- |
+| **CSS**        | \`dist/css/base.tokens.css\`   | Web, CSS-in-JS      |
+| **Sass**       | \`dist/sass/base.tokens.scss\` | Sass projects       |
+| **JSON**       | \`dist/js/base.tokens.js\`     | JavaScript, Node.js |
+| **JSON (Web)** | \`dist/web/base.tokens.json\`  | API consumption     |
+  `}
+</Markdown>
+
+<Footer />

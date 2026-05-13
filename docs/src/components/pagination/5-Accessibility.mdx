@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as PaginationStories from './pagination.stories'
+import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
+
+<Meta title="Components/Pagination/Accessibility" />
+<Banner label={'Accessibility'} section={PAGINATION_DOC_CONFIG.section} color={PAGINATION_DOC_CONFIG.color} />
+<BannerTabs
+  of={PaginationStories}
+  tabs={getPaginationTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use <nav> Element',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Wrap pagination in <code>&lt;nav&gt;</code> element. Use <code>aria-label="Pagination"</code> to identify the navigation purpose.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Announce Current Page',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>aria-current="page"</code> on the active page button. Screen readers need to know the current page.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          All page buttons and nav links must be keyboard accessible. Use <code>Tab</code> to navigate between pages.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Descriptive Page Information',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Display "Page X of Y" or result counts. Users need context about their position.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No Semantic Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use non-semantic divs for pagination buttons. Use actual <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> elements.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Missing Page Information',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't hide page information. Screen reader users need to know current page and total count.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The pagination component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Semantic Navigation (1.3.1)** — Uses nav element with aria-label
+- **Keyboard Accessible (2.1.1)** — Tab navigates between page buttons
+- **Focus Visible (2.4.7)** — Active page button clearly marked
+- **Link Context (2.4.9)** — Page numbers provide clear context
+- **Name, Role, Value (4.1.2)** — Buttons have descriptive labels
+
+<Footer />

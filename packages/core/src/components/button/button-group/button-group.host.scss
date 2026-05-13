@@ -1,0 +1,8 @@
+@use '../../../hybrid' as hybrid;
+@use './button-group.mixin.scss' as button-group;
+
+@include hybrid.host-base(button-group, block);
+
+:host #group {
+  @include button-group.style();
+}

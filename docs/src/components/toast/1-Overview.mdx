@@ -1,0 +1,20 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentLead, ComponentPublicMethods, Footer } from '../../../.storybook/blocks'
+import * as ToastStories from './toast.stories'
+import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
+
+<Meta title="Components/Toast/Overview" />
+
+<Banner label={'Overview'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
+
+<BannerTabs of={ToastStories} tabs={getToastTabs('overview')} />
+
+<ComponentLead component="toast" />
+
+<Canvas of={ToastStories.Basic} sourceState="shown" />
+
+<Controls of={ToastStories.Basic} />
+
+<ComponentPublicMethods component="toast" />
+
+<Footer />

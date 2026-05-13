@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ContentStories from './content.stories'
+import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
+
+<Meta title="Components/Content/Overview" />
+
+<Banner label={'Overview'} section={CONTENT_DOC_CONFIG.section} color={CONTENT_DOC_CONFIG.color} />
+
+<BannerTabs of={ContentStories} tabs={getContentTabs('overview')} />
+
+<ComponentLead component="content" />
+
+<Canvas of={ContentStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-content',
+      label: 'Content',
+      content: <Controls of={ContentStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="content" />
+
+<Footer />

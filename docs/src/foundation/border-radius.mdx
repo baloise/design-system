@@ -8,6 +8,8 @@ import {
   LinkCard,
   LinkCards,
   TokensBorderColors,
+  TokensBorderRadius,
+  TokensBorderWidth,
 } from '../../.storybook/blocks'
 
 <Meta
@@ -19,7 +21,7 @@ import {
   }}
 />
 
-<Banner label="Border & Radius" section="Foundation" color="purple" puzzle />
+<Banner label="Border & Radius" section="Foundation" color="yellow" />
 
 <Lead>Clarification of how borders and border-radius are utilized.</Lead>
 
@@ -31,6 +33,8 @@ For horizontal or vertical border lines the edges should use the rounded radius.
 ### Width
 
 All the borders have the width of 2px.
+
+<TokensBorderWidth overview />
 
 ### Colors
 
@@ -55,6 +59,8 @@ The **Large radius** is used for all elements:
 - used as overlay (e.g. Modal, Toast, Snackbar etc.).
 
 The **Rounded radius** is only used in special cases (e.g. tags)
+
+<TokensBorderRadius overview />
 
 <Footer>
   <LinkCards>

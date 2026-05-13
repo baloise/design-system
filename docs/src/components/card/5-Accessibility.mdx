@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Accessibility" />
+<Banner label={'Accessibility'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+<BannerTabs
+  of={CardStories}
+  tabs={getCardTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Semantic Headings',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use semantic heading elements (h2-h6) for card titles, not just divs with bold text. This helps screen readers understand content hierarchy.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Descriptive Links',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure links within cards have descriptive text. Avoid generic "Click here" or "Read more" without context about what users will access.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          If cards are clickable, ensure the entire card is keyboard accessible. Users should be able to activate cards using keyboard alone.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Image Descriptions',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always provide meaningful alt text for images within cards. Alt text should describe the image content or its relevance to the card.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Images Without Alt Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use images as the only way to convey important information. Screen reader users won't have access unless you provide alt text.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Relying on Color Alone',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not use color alone to distinguish card states or importance. Users with color blindness cannot perceive these differences.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The card component can support patterns that meet WCAG 2.2 Level AA standards:
+
+- **Color Contrast (4.11.1)** — Text and interactive elements meet minimum contrast ratios
+- **Keyboard Navigation (2.1.1)** — All interactive card elements are keyboard accessible
+- **Focus Visible (2.4.7)** — Clear focus indicators for keyboard users
+- **Image Text Alternatives (1.1.1)** — Meaningful alt text for all images
+
+<Footer />

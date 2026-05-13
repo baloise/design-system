@@ -1,7 +1,7 @@
 import type { HostElement } from '@stencil/core/internal'
-import type { BalPage } from '../../types'
+import type { DsPage } from '../../types'
 
-export const waitForChanges = async (page: BalPage, timeoutMs = 300) => {
+export const waitForChanges = async (page: DsPage, timeoutMs = 300) => {
   try {
     if (page.isClosed()) {
       /**

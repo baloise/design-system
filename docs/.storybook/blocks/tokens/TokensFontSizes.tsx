@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
@@ -22,7 +22,7 @@ export const TokensFontSize = ({ overview }): React.ReactElement => {
           <tbody key={key}>
             <tr>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <Clipboard label={`bal-size-${key}`} value={`var(--bal-text-size-${key})`} />
+                <Clipboard label={`ds-size-${key}`} value={`var(--ds-text-size-${key})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
@@ -32,7 +32,7 @@ export const TokensFontSize = ({ overview }): React.ReactElement => {
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className={`font-family-title radius-normal text-primary font-weight-bold flex justify-content-center align-items-center text-${key}`}
+                  className={`font-family-heading radius text-primary font-weight-bold flex justify-content-center align-items-center text-${key}`}
                 >
                   Aa
                 </div>

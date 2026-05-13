@@ -1,4 +1,3 @@
-/* eslint-disable no-control-regex */
 import { relative, basename, dirname } from 'path'
 
 export const toLowerCase = (str: string) => str.toLowerCase()
@@ -69,26 +68,6 @@ export function relativeImport(pathFrom: string, pathTo: string, ext?: string) {
   }
   return normalizePath(`${relativePath}/${basename(pathTo, ext)}`)
 }
-
-// export async function readPackageJson(rootDir: string) {
-//   const pkgJsonPath = join(rootDir, 'package.json')
-
-//   let pkgJson: string
-//   try {
-//     pkgJson = await readFile(pkgJsonPath, 'utf8')
-//   } catch (e) {
-//     throw new Error(`Missing "package.json" file for distribution: ${pkgJsonPath}`)
-//   }
-
-//   let pkgData: PackageJSON
-//   try {
-//     pkgData = JSON.parse(pkgJson)
-//   } catch (e) {
-//     throw new Error(`Error parsing package.json: ${pkgJsonPath}, ${e}`)
-//   }
-
-//   return pkgData
-// }
 
 const EXTENDED_PATH_REGEX = /^\\\\\?\\/
 const NON_ASCII_REGEX = /[^\x00-\x80]+/

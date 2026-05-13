@@ -1,5 +1,5 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { balBrowser } from '../browser'
+import { dsBrowser } from '../browser'
 import { Subject } from './signal'
 
 export type ListenerFn = () => void
@@ -11,7 +11,7 @@ export abstract class ListenerAbstract<TListener = ListenerFn, TData = undefined
     if (el) {
       this.el = el
     } else {
-      if (balBrowser.hasWindow) {
+      if (dsBrowser.hasWindow) {
         this.el = window
       }
     }

@@ -1,0 +1,5 @@
+{
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build:docs",
+  "outputDirectory": "docs/dist"
+}

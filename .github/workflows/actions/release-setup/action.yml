@@ -3,8 +3,10 @@ description: 'Setup Release'
 inputs:
   token:
     description: 'The GitHub token required.'
+    required: true
   npm-token:
     description: 'The NPM authentication token required to publish.'
+    required: true
 runs:
   using: 'composite'
   steps:

@@ -8,7 +8,7 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
-  BAL_PUBLISH_DS: false
+  DS_PUBLISH: false
 
 jobs:
   Release:

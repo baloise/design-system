@@ -6,7 +6,7 @@ on:
 jobs:
   assembleInformation:
     name: 📝 Assemble Information
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       HUSKY: 0
@@ -36,14 +36,14 @@ jobs:
 
   playwright:
     name: 🎭 Playwright
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     needs: [assembleInformation]
     env:
       HUSKY: 0
       CI: 1
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      image: mcr.microsoft.com/playwright:v1.59.1-noble
       options: --user 1001
     steps:
       - name: Show inputs from previous job
@@ -63,14 +63,14 @@ jobs:
         run: npm ci
 
       - name: Build Core
-        run: npx nx run core:build
+        run: turbo run build --filter=core
         env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
+          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --update-snapshots
+        run: turbo run e2e:ci --filter=core -- --update-snapshots
         env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
+          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Commit snapshots
         if: always()

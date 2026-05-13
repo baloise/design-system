@@ -1,12 +1,18 @@
-import { defaultLocale, useBalConfig } from './config'
+import { defaultLocale } from '@global'
 
 const getLocale = (): string => {
-  const config = useBalConfig()
-  // workaround for swiss french locale which uses non standard number formatting
-  if (config && config.locale && config.locale === 'fr-CH') {
-    return 'de-CH'
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { useDsConfig } = require('@global') as typeof import('@global')
+    const config = useDsConfig()
+    // workaround for swiss french locale which uses non standard number formatting
+    if (config && config.locale && config.locale === 'fr-CH') {
+      return 'de-CH'
+    }
+    return (config && config.locale) || defaultLocale
+  } catch (e) {
+    return defaultLocale
   }
-  return (config && config.locale) || defaultLocale
 }
 
 export function getDecimalSeparator(): string {

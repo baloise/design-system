@@ -1,0 +1,79 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TextStories from './text.stories'
+import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
+
+<Meta title="Components/Text/Accessibility" />
+<Banner label={'Accessibility'} section={TEXT_DOC_CONFIG.section} color={TEXT_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextStories}
+  tabs={getTextTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Sufficient Color Contrast',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure text meets WCAG 2.2 AA contrast ratios (4.5:1 for normal text, 3:1 for large text). Use the inverted prop or shadow variant on dark backgrounds to maintain readability.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Readable Font Sizes',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use appropriate text sizes for the content context. Avoid extremely small text; minimum body text should be at least 14px for comfortable reading on screen.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Clear Line Height and Spacing',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Provide sufficient line height (1.5 minimum for body text) and spacing to reduce cognitive load and improve readability for users with dyslexia or vision impairments.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use Semantic HTML',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The text component renders p, span elements based on context. Maintain proper semantic structure in your document for screen reader users.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color Alone for Meaning',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely on color alone to convey information or emphasis. Combine color with text weight, size, or other visual cues so users with color blindness can perceive the distinction.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'All Text Caps Without Pause',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid displaying large blocks of text in all capitals. Text rendered in all caps is harder to read and screen readers may pronounce it as an acronym.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+<Footer />

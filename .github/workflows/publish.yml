@@ -7,7 +7,7 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
-  BAL_DS_RELEASE: true
+  DS_RELEASE: true
 
 jobs:
   Publish:
@@ -26,13 +26,13 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: npx turbo run build
 
       - name: Update changelog file
         run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: node scripts/pre-publish.mjs
 
       - name: get-npm-version
         id: package-version
@@ -59,4 +59,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
-        run: npx nx release publish
+        run: npm publish --workspaces

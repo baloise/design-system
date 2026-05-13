@@ -1,9 +1,10 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
 
 export const CssResponsiveTable = ({ all = false }): React.ReactElement => {
-  const obj = tokens.breakpoint
+  const obj = tokens['🔗 Alias']['📐 Breakpoint']
+  console.log(obj)
 
   const list = [
     {
@@ -12,32 +13,32 @@ export const CssResponsiveTable = ({ all = false }): React.ReactElement => {
     },
     {
       key: 'tablet:',
-      value: `from ${obj.tablet.$value}`,
+      value: `from ${obj.Tablet.$value}`,
     },
     all
       ? {
           key: 'touch:',
-          value: `to ${obj.desktop.$value}`,
+          value: `to ${obj.Desktop.$value}`,
         }
       : false,
     {
       key: 'desktop:',
-      value: `from ${obj.desktop.$value}`,
+      value: `from ${obj.Desktop.$value}`,
     },
     all
       ? {
           key: 'high-definition:',
-          value: `from ${obj['high-definition'].$value}`,
+          value: `from ${obj.DesktopLG.$value}`,
         }
       : false,
     {
       key: 'widescreen:',
-      value: `from ${obj.widescreen.$value}`,
+      value: `from ${obj.DesktopXL.$value}`,
     },
     all
       ? {
           key: 'fullhd:',
-          value: `from ${obj.fullhd.$value}`,
+          value: `from ${obj.Desktop2XL.$value}`,
         }
       : false,
   ].filter(item => item)

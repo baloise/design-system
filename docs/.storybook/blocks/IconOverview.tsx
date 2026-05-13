@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import brandIcons from '../../src/assets/data/brand-icons.json'
 import uiIcons from '../../src/assets/data/icons.json'
+import React from 'react'
 
 const icons = [
   ...uiIcons.sort().map(name => ({ name, collection: 'ui-icons', color: 'primary' })),
@@ -19,7 +20,7 @@ const icons = [
   })),
 ].sort((a, b) => a.name.localeCompare(b.name))
 
-export const IconOverview = ({ children }) => {
+export const IconOverview = ({ children }): React.ReactElement => {
   const [collection, setCollection] = useState('ui-icons')
   const [color, setColor] = useState('primary')
   const [searchItem, setSearchItem] = useState('')
@@ -50,7 +51,7 @@ export const IconOverview = ({ children }) => {
           onClick={_ => handleCollectionClick('ui-icons', 'primary')}
           className={`${
             color === 'primary' ? 'bg-primary text-white' : 'bg-primary-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           UI Icons
         </button>
@@ -58,7 +59,7 @@ export const IconOverview = ({ children }) => {
           onClick={_ => handleCollectionClick('brand-icons', 'purple')}
           className={`${
             color === 'purple' ? 'bg-purple-5 text-white' : 'bg-purple-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Purple
         </button>
@@ -66,7 +67,7 @@ export const IconOverview = ({ children }) => {
           onClick={_ => handleCollectionClick('brand-icons', 'green')}
           className={`${
             color === 'green' ? 'bg-green-5 text-white' : 'bg-green-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Green
         </button>
@@ -74,7 +75,7 @@ export const IconOverview = ({ children }) => {
           onClick={_ => handleCollectionClick('brand-icons', 'red')}
           className={`${
             color === 'red' ? 'bg-red-5 text-white' : 'bg-red-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Red
         </button>
@@ -82,7 +83,7 @@ export const IconOverview = ({ children }) => {
           onClick={_ => handleCollectionClick('brand-icons', 'yellow')}
           className={`${
             color === 'yellow' ? 'bg-yellow-5 text-white' : 'bg-yellow-1'
-          } flex-1 border-none radius-normal font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Yellow
         </button>
@@ -98,22 +99,14 @@ export const IconOverview = ({ children }) => {
           .map(icon => (
             <div
               key={`${icon.collection}__${icon.name}`}
-              className={`bg-${icon.color}-1 radius-normal px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
+              className={`bg-${icon.color}-1 radius px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
               style={{ width: '138px' }}
             >
-              {icon.collection === 'ui-icons' ? (
-                <div
-                  style={{
-                    maskImage: `url(/assets/images/icons/${icon.name}.svg)`,
-                    WebkitMaskImage: `url(/assets/images/icons/${icon.name}.svg)`,
-                    backgroundColor: 'var(--bal-color-primary)',
-                    height: '32px',
-                    width: '32px',
-                  }}
-                ></div>
-              ) : (
-                <img src={`/assets/images/brand-icons/${icon.name}.svg`} alt={icon.name} width={'64px'} />
-              )}
+              <img
+                src={`/assets/images/${icon.collection.replace('ui-icons', 'icons')}/${icon.name}.svg`}
+                alt={icon.name}
+                width={'64px'}
+              />
               <span
                 className="text-x-small font-weight-bold flex justify-content-center align-items-center"
                 style={{ minHeight: '40px' }}

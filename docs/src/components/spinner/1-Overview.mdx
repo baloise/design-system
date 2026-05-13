@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SpinnerStories from './spinner.stories'
+import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
+
+<Meta title="Components/Spinner/Overview" />
+
+<Banner label={'Overview'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
+
+<BannerTabs of={SpinnerStories} tabs={getSpinnerTabs('overview')} />
+
+<ComponentLead component="spinner" />
+
+<Canvas of={SpinnerStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-spinner',
+      label: 'Spinner',
+      content: <Controls of={SpinnerStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="spinner" />
+
+<Footer />

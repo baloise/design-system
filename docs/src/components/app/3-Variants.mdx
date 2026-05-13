@@ -1,0 +1,20 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as AppStories from './app.stories'
+import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
+
+<Meta title="Components/App/Variants/Overview" />
+
+<StoryHeading of={AppStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={APP_DOC_CONFIG.section} color={APP_DOC_CONFIG.color} />
+
+<BannerTabs of={AppStories} tabs={getAppTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+> WIP: App component is still in early stages of development, so variant stories are not yet available.
+> Please check back later for updates on the different variants and their use cases.
+
+<Footer />

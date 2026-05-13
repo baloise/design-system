@@ -25,22 +25,22 @@ import {
 
 ## Form fields
 
-A basic form field has his container element `bal-field` and 3 child elements:
+A basic form field has his container element `ds-field` and 3 child elements:
 
-- `bal-field-label` for adding a label to the form control.
-- `bal-field-control` to contain the control like an input.
-- `bal-field-message` to show validation message or helper messages.
+- `ds-field-label` for adding a label to the form control.
+- `ds-field-control` to contain the control like an input.
+- `ds-field-message` to show validation message or helper messages.
 
 <Code
   language="html"
   code={`
-<bal-field>
-  <bal-field-label>Firstname</bal-field-label>
-  <bal-field-control>
-    <bal-input placeholder="Enter your firstname"></bal-input>
-  </bal-field-control>
-  <bal-field-message color="danger">Required Field</bal-field-message>
-</bal-field>
+<ds-field>
+  <ds-field-label>Firstname</ds-field-label>
+  <ds-field-control>
+    <ds-input placeholder="Enter your firstname"></ds-input>
+  </ds-field-control>
+  <ds-field-message color="danger">Required Field</ds-field-message>
+</ds-field>
 `}
 />
 
@@ -51,34 +51,34 @@ To combine form fields / controls to a bigger form use the [Form Grid component]
 <Code
   language="html"
   code={`
-<bal-form-grid>
-  <bal-form-col>
-    <bal-field>
-      <bal-field-control>
-        <bal-radio-group>
-          <bal-radio name="gender" value="male"> Male </bal-radio>
-          <bal-radio name="gender" value="female"> Female </bal-radio>
-        </bal-radio-group>
-      </bal-field-control>
-    </bal-field>
-  </bal-form-col>
-  <bal-form-col size="half">
-    <bal-field>
-      <bal-field-label>Firstname</bal-field-label>
-      <bal-field-control>
-        <bal-input placeholder="Enter your firstname"></bal-input>
-      </bal-field-control>
-    </bal-field>
-  </bal-form-col>
-  <bal-form-col size="half">
-    <bal-field>
-      <bal-field-label>Lastname</bal-field-label>
-      <bal-field-control>
-        <bal-input placeholder="Enter your lastname"></bal-input>
-      </bal-field-control>
-    </bal-field>
-  </bal-form-col>
-</bal-form-grid>
+<ds-form-grid>
+  <ds-form-col>
+    <ds-field>
+      <ds-field-control>
+        <ds-radio-group>
+          <ds-radio name="gender" value="male"> Male </ds-radio>
+          <ds-radio name="gender" value="female"> Female </ds-radio>
+        </ds-radio-group>
+      </ds-field-control>
+    </ds-field>
+  </ds-form-col>
+  <ds-form-col size="half">
+    <ds-field>
+      <ds-field-label>Firstname</ds-field-label>
+      <ds-field-control>
+        <ds-input placeholder="Enter your firstname"></ds-input>
+      </ds-field-control>
+    </ds-field>
+  </ds-form-col>
+  <ds-form-col size="half">
+    <ds-field>
+      <ds-field-label>Lastname</ds-field-label>
+      <ds-field-control>
+        <ds-input placeholder="Enter your lastname"></ds-input>
+      </ds-field-control>
+    </ds-field>
+  </ds-form-col>
+</ds-form-grid>
 `}
 />
 
@@ -95,36 +95,27 @@ To combine form fields / controls to a bigger form use the [Form Grid component]
 The form elements support [Angular Reactive Forms](https://angular.io/guide/reactive-forms).
 Below is a basic example to use the reactive form together with the Design System.
 
-<InfoQuote>
-
-**Tip**
-
-Check out the repository [baloise/web-app-utils](https://github.com/baloise/web-app-utils/blob/master/packages/validators/README.md) for Baloise
-specific validators.
-
-</InfoQuote>
-
-1. Angular package offers `balAutoFocus` directive which brings focus to the element.
-   Usage can be seen in the following code in bal-field.
-   In order for it to work please import `BalSharedModule` in each Angular module that uses it.
+1. Angular package offers `dsAutoFocus` directive which brings focus to the element.
+   Usage can be seen in the following code in ds-field.
+   In order for it to work please import `DsSharedModule` in each Angular module that uses it.
 
 <Code
   language="html"
   noPreview
   code={`
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid is-multiline mt-none">
-  <bal-field class="col is-full py-none" required>
-    <bal-field-label required>Email</bal-field-label>
-    <bal-field-control>
-      <bal-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></bal-input>
-    </bal-field-control>
-    <bal-field-message>
-      <bal-ng-error controlName="email" error="isRequired">This field is required</bal-ng-error>
-      <bal-ng-error controlName="email" error="isMinLength">Min length is 4</bal-ng-error>
-      <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
-    </bal-field-message>
-  </bal-field>
-  <bal-field class="col is-half py-none">...</bal-field>
+  <ds-field class="col is-full py-none" required>
+    <ds-field-label required>Email</ds-field-label>
+    <ds-field-control>
+      <ds-input name="email" placeholder="Enter your email" formControlName="email" dsAutoFocus></ds-input>
+    </ds-field-control>
+    <ds-field-message>
+      <ds-ng-error controlName="email" error="isRequired">This field is required</ds-ng-error>
+      <ds-ng-error controlName="email" error="isMinLength">Min length is 4</ds-ng-error>
+      <ds-ng-error controlName="email" error="isEmail">Not a valid email</ds-ng-error>
+    </ds-field-message>
+  </ds-field>
+  <ds-field class="col is-half py-none">...</ds-field>
 </form>
 `}
 />

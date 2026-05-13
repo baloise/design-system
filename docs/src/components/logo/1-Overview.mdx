@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as LogoStories from './logo.stories'
+import { LOGO_DOC_CONFIG, getLogoTabs } from './logo.doc-config'
+
+<Meta title="Components/Logo/Overview" />
+
+<Banner label={'Overview'} section={LOGO_DOC_CONFIG.section} color={LOGO_DOC_CONFIG.color} />
+
+<BannerTabs of={LogoStories} tabs={getLogoTabs('overview')} />
+
+<ComponentLead component="logo" />
+
+<Canvas of={LogoStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-logo',
+      label: 'Logo',
+      content: <Controls of={LogoStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="logo" />
+
+<Footer />

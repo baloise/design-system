@@ -9,6 +9,7 @@ www
 generated
 vite.config.ts.**.mjs
 .env
+.secrets
 
 # dependencies
 node_modules
@@ -45,11 +46,10 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.nx/cache
-.nx/workspace-data
+.turbo
 .stencil
 
-packages/fonts/assets/partners
+packages/core/docs
 packages/core/icons
 packages/core/playwright
 packages/core/components
@@ -57,46 +57,19 @@ packages/core/loader
 packages/core/wwww
 packages/core/config/custom-elements/all.js
 packages/core/config/custom-elements/all.d.ts
-packages/core/**/theming.md
-packages/core/**/testing.md
-packages/core/**/api.md
-packages/css/css
-packages/styles/css
-packages/styles/docs
-packages/styles/src/generated
-
-packages/favicons/CHANGELOG.md
-packages/fonts/CHANGELOG.md
-packages/icons/CHANGELOG.md
-
-packages/devkit/src/**/*.js
-packages/devkit/src/**/*.js.map
-packages/devkit/src/**/*.d.ts
-
 
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 
-e2e/generated
-e2e/downloads
-e2e/reg.json
-e2e/cypress/snapshots/actual
-e2e/cypress/snapshots/diff
-e2e/cypress/snapshots/report.html
-e2e/cypress/downloads
-
-resources/data/commands.json
-resources/data/contributors.json
-resources/data/selectors.json
-
 docs/src/contributing/contributors.md
 docs/src/development/00-guides/theming/theming.md
+docs/public/assets/css/design-system.css
 docs/public/assets/fonts/
 docs/public/assets/data/
 docs/public/assets/download/
-docs/public/assets/css/baloise-design-system.min.css
+docs/public/assets/css/design-system.min.css
 docs/public/assets/css/design-system-table.css
-docs/public/assets/css/baloise-design-system.min.css
+docs/public/assets/css/design-system.min.css
 docs/public/build/
 docs/public/assets/images/map-markers
 docs/public/assets/images/brand-icons
@@ -122,64 +95,9 @@ test/react/*
 
 .angular
 
-packages/brand-icons/CHANGELOG.md
-packages/devkit/CHANGELOG.md
-packages/angular/CHANGELOG.md
-packages/react/CHANGELOG.md
-packages/table/CHANGELOG.md
-packages/css/CHANGELOG.md
-packages/styles/CHANGELOG.md
-packages/favicons/CHANGELOG.md
-packages/fonts/CHANGELOG.md
-packages/icons/CHANGELOG.md
-packages/maps/CHANGELOG.md
-packages/testing/CHANGELOG.md
-packages/tokens/CHANGELOG.md
-libs/nx/CHANGELOG.md
-libs/output-targets-angular/CHANGELOG.md
-libs/output-targets-react/CHANGELOG.md
+packages/**/CHANGELOG.md
+libs/**/CHANGELOG.md
 docs/CHANGELOG.md
-e2e/CHANGELOG.md
-
-packages/core/README.md
-packages/brand-icons/README.md
-packages/devkit/README.md
-packages/angular/README.md
-packages/react/README.md
-packages/table/README.md
-packages/css/README.md
-packages/styles/README.md
-packages/favicons/README.md
-packages/fonts/README.md
-packages/icons/README.md
-packages/maps/README.md
-packages/testing/README.md
-packages/tokens/README.md
-libs/nx/README.md
-libs/output-targets-angular/README.md
-libs/output-targets-react/README.md
-docs/README.md
-e2e/README.md
-
-packages/core/LICENSE
-packages/brand-icons/LICENSE
-packages/devkit/LICENSE
-packages/angular/LICENSE
-packages/react/LICENSE
-packages/table/LICENSE
-packages/css/LICENSE
-packages/styles/LICENSE
-packages/favicons/LICENSE
-packages/fonts/LICENSE
-packages/icons/LICENSE
-packages/maps/LICENSE
-packages/testing/LICENSE
-packages/tokens/LICENSE
-libs/nx/LICENSE
-libs/output-targets-angular/LICENSE
-libs/output-targets-react/LICENSE
-docs/LICENSE
-e2e/LICENSE
 
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
@@ -188,7 +106,10 @@ vitest.config.*.timestamp*
 *-darwin.png
 test-results
 playwright.visual.config.ts
-.cursor/rules/nx-rules.mdc
-.github/instructions/nx.instructions.md
 
 .env
+.worktrees
+.superpowers
+.claude/settings.local.json
+
+docs/superpowers

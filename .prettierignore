@@ -1,42 +1,27 @@
+*.png
+*.svg
+*.mdx
+
 tsconfig.base.json
+package-lock.json
 
-packages/brand-icons/src/icons.json
-packages/brand-icons/src/index.ts
-packages/icons/src/index.ts
-packages/icons/src/assets/icons.json
-packages/maps/src/lib/markers.ts
-packages/maps/src/markers.json
-packages/core/icons
-packages/core/src/utils/constants/icons.constant.ts
+packages/tokens/tokens/Base.tokens.json
+packages/core/src/global/constants/icons.constant.ts
+packages/core/src/global/constants/tags.constant.ts
 packages/core/src/components.d.ts
-packages/core/src/tags-all.ts
-packages/devkit/src/**/*.js
-packages/devkit/src/**/*.d.ts
 
-resources/data/tags.json
+packages/assets/**/svg.json
+packages/assets/**/svg.ts
 
-.changeset/
+.changeset
 CHANGELOG.md
-CHANGELOG_OLD.md
-CHANGELOG_v12.md
 
-/.nx/cache
 .angular
 generated
 
 docs/public
 docs/src/assets
-docs/src/components/**/api.md
-docs/src/components/**/testing.md
-docs/src/components/**/theming.md
+docs/plans
+docs/specs
 
-e2e/cypress/snapshots
-e2e/cypress/videos
-e2e/cypress/downloads
-
-package-lock.json
-*.svg
-*.mdx
-resources/data/components.json
-
-/.nx/workspace-data
+CLAUDE.md

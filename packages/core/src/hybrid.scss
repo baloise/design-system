@@ -1,0 +1,204 @@
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:string';
+@use './vars.scss' as vars;
+
+// Always return a proper Sass list (single-item lists need a trailing comma).
+@function _as-list($value) {
+  @if meta.type-of($value) == 'list' {
+    @return $value;
+  }
+  @return ($value);
+}
+
+/**
+  * Mixin sets the selector for host and non-host mode.
+  * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  * The $selector parameter is the selector for non-host mode and can be a single selector or a list of selectors.
+  */
+@mixin modifier($selector, $css-selector, $is-host: false) {
+  @if $is-host {
+    :host(#{$selector}) {
+      @content;
+    }
+  } @else {
+    #{$css-selector}#{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin generates styles for an element of a component for host and non-host mode.
+  * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  * The $selector parameter is the selector for non-host mode and can be a single selector or a list of selectors.
+  */
+@mixin component-element($selector, $css-selector, $is-host: false) {
+  @if $is-host {
+    :host #{$selector} {
+      @content;
+    }
+  } @else {
+    #{$css-selector} {
+      #{$selector} {
+        @content;
+      }
+    }
+  }
+}
+
+/**
+  * Mixin only generates styles for host mode.
+  * The styles are wrapped in a :host selector and only applied if the component is used in host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+@mixin host($is-host: false) {
+  @if $is-host {
+    @content;
+  }
+}
+
+/**
+  * Mixin only generates styles for non-host mode.
+  * The styles are not wrapped in a :host selector and only applied if the component is used in non-host mode.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+@mixin styles-only($is-host: false) {
+  @if not $is-host {
+    @content;
+  }
+}
+
+@mixin styles($selectors, $is-host: false) {
+  $names: _as-list($selectors);
+  $selector: ();
+
+  @each $n in $names {
+    $selector: list.append($selector, string.unquote('#{$n}'), comma);
+  }
+
+  @if not $is-host {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin to support host and non-host mode for hybrid components.
+  * The mixin takes care of the correct selector and allows to write the styles only once.
+  * The $selectors parameter can be a single selector or a list of selectors.
+  * The $is-host parameter determines if the component is in host mode or not.
+  */
+@mixin vars($selectors, $is-host: false) {
+  @if $is-host {
+    :host {
+      @content;
+    }
+  } @else {
+    $names: _as-list($selectors);
+    $selector: ();
+
+    @each $n in $names {
+      $selector: list.append($selector, string.unquote('#{$n}'), comma);
+    }
+
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin to support host and non-host mode for hybrid components.
+  * The mixin takes care of the correct selector and allows to write the styles only once.
+  * The $selectors parameter can be a single selector or a list of selectors.
+  * The $is-host parameter determines if the component is in host mode or not.
+  * The $use-host parameter determines if the component should use the :host selector or not.
+  */
+@mixin component($hostSelector, $coreSelectors, $is-host: false, $use-host: false) {
+  $names: _as-list($coreSelectors);
+
+  @if $is-host {
+    @if $use-host {
+      :host {
+        @content;
+      }
+    } @else {
+      #{$hostSelector} {
+        @content;
+      }
+    }
+  } @else {
+    $selector: ();
+
+    @each $n in $names {
+      $selector: list.append($selector, string.unquote('#{$n}'), comma);
+    }
+
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+  * Mixin to define the host base variables and display property for a component.
+  */
+@mixin host-base($name, $display: inline-block) {
+  :host {
+    @include vars.base($name);
+
+    display: $display;
+
+    @include vars.styles($name);
+  }
+}
+
+@mixin base-vars($name) {
+  @include vars.margin($name);
+  @include vars.position($name);
+}
+
+@mixin position-vars($name) {
+  --#{$name}-position: var(--ds-#{$name}-position, static);
+  --#{$name}-top: var(--ds-#{$name}-top);
+  --#{$name}-right: var(--ds-#{$name}-right);
+  --#{$name}-bottom: var(--ds-#{$name}-bottom);
+  --#{$name}-left: var(--ds-#{$name}-left);
+}
+
+@mixin margin-vars($name) {
+  --#{$name}-m: var(--ds-#{$name}-m, 0);
+  --#{$name}-my: var(--ds-#{$name}-my);
+  --#{$name}-mx: var(--ds-#{$name}-mx);
+  --#{$name}-ml: var(--ds-#{$name}-ml);
+  --#{$name}-mr: var(--ds-#{$name}-mr);
+  --#{$name}-mt: var(--ds-#{$name}-mt);
+  --#{$name}-mb: var(--ds-#{$name}-mb);
+}
+
+@mixin margin-styles($name) {
+  margin: var(--#{$name}-m);
+  margin-inline: var(--#{$name}-mx);
+  margin-block: var(--#{$name}-my);
+  margin-left: var(--#{$name}-ml);
+  margin-right: var(--#{$name}-mr);
+  margin-top: var(--#{$name}-mt);
+  margin-bottom: var(--#{$name}-mb);
+}
+
+@mixin position-styles($name) {
+  position: var(--#{$name}-position);
+  top: var(--#{$name}-top);
+  right: var(--#{$name}-right);
+  bottom: var(--#{$name}-bottom);
+  left: var(--#{$name}-left);
+}
+
+@mixin base-styles($name) {
+  @include margin-styles($name);
+  @include position-styles($name);
+}

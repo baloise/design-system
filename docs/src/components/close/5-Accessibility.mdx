@@ -1,0 +1,88 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
+
+<Meta title="Components/Close/Accessibility" />
+<Banner label={'Accessibility'} section={CLOSE_DOC_CONFIG.section} color={CLOSE_DOC_CONFIG.color} />
+<BannerTabs
+  of={CloseStories}
+  tabs={getCloseTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Provide Accessible Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always use <code>aria-label</code> to provide a text description of what will be dismissed or closed. Examples: "Close dialog", "Remove tag", "Dismiss notification".
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Adequate Click Target',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure the close button is at least 44x44 pixels to accommodate users with motor impairments or using touch screens.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Focus Visibility',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure the close button has a visible focus indicator for keyboard users. Outline or highlight should be clearly visible.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Accessibility',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Close buttons should be keyboard accessible and activatable with Enter or Space keys. Also consider supporting Escape key for common UI patterns like modals.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Icon-only Without Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use an X icon without an aria-label. Screen reader users won't know what the button does.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Hidden or Non-obvious',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't hide close buttons or make them hard to discover. Users should easily find the way to dismiss an element.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The close component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Target Size (2.5.5)** — Button is at least 44x44 pixels
+- **Focus Visible (2.4.7)** — Clear focus indicator on the button
+- **Name, Role, Value (4.1.2)** — Proper ARIA label and button role
+- **Keyboard Accessible (2.1.1)** — All functionality available via keyboard
+
+<Footer />

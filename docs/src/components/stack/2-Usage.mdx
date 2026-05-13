@@ -1,0 +1,65 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as StackStories from './stack.stories'
+import { STACK_DOC_CONFIG, getStackTabs } from './stack.doc-config'
+
+<Meta title="Components/Stack/Usage" />
+<Banner label={'Usage'} section={STACK_DOC_CONFIG.section} color={STACK_DOC_CONFIG.color} />
+<BannerTabs of={StackStories} tabs={getStackTabs('usage')} />
+
+## When to Use
+
+- Create flexible layouts with consistent spacing between elements
+- Build component compositions (cards, form sections, lists)
+- Manage responsive layouts without writing custom CSS
+- Arrange items vertically or horizontally with automatic spacing
+- Align and distribute child elements with flexbox utilities
+
+## When NOT to Use
+
+- For simple single-element layouts — use native HTML without wrapper
+- When performance is critical and minimal DOM nesting is required
+- For table-like data — use proper `<table>` elements with semantic HTML
+- As a replacement for CSS Grid for complex 2D layouts
+- For content that doesn't have a linear flow pattern
+
+## Do's and Don'ts
+
+### Spacing and Direction
+
+Use the stack for layouts with consistent spacing. Choose direction (row/column) based on content flow.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Consistent spacing',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <Code
+            noPreview
+            code={'<ds-stack direction="column" space="base">\n  <div>Item 1</div>\n  <div>Item 2</div>\n</ds-stack>'}
+          />
+        </>
+      ),
+      description: 'Automated consistent spacing between items improves visual harmony',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Manual margin management',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <Code
+            noPreview
+            code={'<div style="margin-bottom: 1rem">Item 1</div>\n<div style="margin-bottom: 1.5rem">Item 2</div>'}
+          />
+        </>
+      ),
+      description: 'Manual margins are error-prone and hard to maintain',
+    },
+  ]}
+/>
+
+<Footer />

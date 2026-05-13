@@ -1,205 +1,188 @@
 import { Controls, Meta, Unstyled } from '@storybook/addon-docs/blocks'
 import { navigate } from '@storybook/addon-links'
-import { Footer, WelcomeGuide } from '../.storybook/blocks'
+import { Footer, WelcomeGuide, Banner } from '../.storybook/blocks'
+import contributors from './assets/data/contributors.json'
 
 <Meta
   title="Welcome"
   parameters={{
-    docs: false
+    docs: false,
   }}
 />
-
-<style>
-  {`
-  .sbdocs-toc--custom {
-    display: none;
-  }
-  `}
-</style>
-
-<Unstyled>
-  <bal-doc-app class="home-stage">
-    <div className="flex gap-large">
-      <div>
-        <bal-logo animated={true} class="mb-small"></bal-logo>
-        <h2 className="subtitle text-xxxxx-large">design system</h2>
-      </div>
-    </div>
-    <bal-text size="lead" class="my-large">
-      The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
-      implementations and design artifacts to build any number of web applications.
-    </bal-text>
-    <div className="flex gap-normal flex-wrap">
-      <a
-        className="button is-primary"
-        style={{ width: 'auto' }}
-        onClick={() => navigate({ title: 'Development/Getting Started' })}
-      >
-        Getting Started
-      </a>
-      <a    className="button is-secondary" href="https://github.com/baloise/design-system" target="_blank">
-        <svg width="24px" height="24px" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M7.02324 3.17e-07C5.35174 -0.000507231 3.7349 0.608474 2.46344 1.71744C1.19199 2.82641 0.349338 4.3626 0.0870178 6.04979C-0.175303 7.73698 0.159915 9.46447 1.03239 10.9216C1.90487 12.3788 3.25737 13.47 4.84669 13.9991H5.01051C5.15997 14.0066 5.30654 13.9552 5.42008 13.8556C5.48839 13.7948 5.5427 13.7193 5.57911 13.6345C5.61553 13.5497 5.63315 13.4578 5.63071 13.3652V13.2397C5.63071 13.138 5.63071 13.0005 5.63071 12.5878C5.62601 12.549 5.61374 12.5116 5.59465 12.4777C5.57556 12.4438 5.55002 12.4141 5.51955 12.3905C5.48624 12.3633 5.44752 12.3438 5.40608 12.3335C5.36464 12.3231 5.32149 12.3222 5.27966 12.3307C3.70575 12.6775 3.37225 11.6729 3.35469 11.6071C3.15678 11.0748 2.80339 10.6175 2.34248 10.2975L2.25472 10.2317C2.3238 10.1976 2.40061 10.1832 2.47705 10.1899C2.62287 10.2123 2.76068 10.2724 2.87741 10.3645C2.99413 10.4566 3.08592 10.5776 3.14406 10.7161C3.3704 11.1189 3.74079 11.4163 4.17729 11.5457C4.61378 11.675 5.08236 11.6263 5.48444 11.4098C5.52789 11.3901 5.56631 11.3604 5.59675 11.3231C5.62718 11.2857 5.64881 11.2417 5.65997 11.1945C5.68369 10.92 5.79943 10.6623 5.98762 10.465C6.03101 10.4267 6.06245 10.3763 6.07805 10.3199C6.09366 10.2636 6.09273 10.2038 6.07539 10.148C6.05941 10.0921 6.0275 10.0424 5.98373 10.0051C5.93996 9.9678 5.88632 9.9447 5.82965 9.93871C4.44297 9.77725 3.02119 9.28092 3.02119 6.83511C3.01109 6.22007 3.23321 5.6247 3.64139 5.17268C3.67828 5.13138 3.70285 5.08016 3.71218 5.02506C3.72151 4.96996 3.71522 4.91328 3.69405 4.86172C3.532 4.39524 3.53407 3.88563 3.6999 3.42054C4.2402 3.51922 4.74736 3.75577 5.17434 4.10824C5.20987 4.13307 5.25051 4.14921 5.29312 4.15544C5.33573 4.16166 5.37917 4.15779 5.42008 4.14412C5.94306 4.00157 6.48198 3.9292 7.02324 3.92884C7.56661 3.92621 8.10785 3.99862 8.63225 4.14412C8.67219 4.15774 8.71471 4.16158 8.75637 4.15535C8.79803 4.14912 8.83769 4.13298 8.87214 4.10824C9.29858 3.75488 9.80597 3.51822 10.3466 3.42054C10.5073 3.88074 10.5073 4.38358 10.3466 4.84378C10.3254 4.89576 10.3197 4.95296 10.3301 5.00825C10.3405 5.06354 10.3666 5.11448 10.4051 5.15474C10.8069 5.60316 11.0266 6.19118 11.0194 6.79923C11.0194 9.25102 9.59766 9.74137 8.20513 9.89685C8.14846 9.90284 8.09481 9.92594 8.05105 9.96322C8.00728 10.0005 7.97537 10.0503 7.95939 10.1062C7.94252 10.1611 7.94185 10.2198 7.95746 10.2751C7.97307 10.3304 8.00426 10.3798 8.04715 10.4171C8.17658 10.5552 8.27543 10.7201 8.33701 10.9007C8.39859 11.0812 8.42146 11.2732 8.40406 11.4636V13.3652C8.40276 13.4582 8.42147 13.5503 8.45888 13.6351C8.4963 13.7198 8.55149 13.7951 8.62055 13.8556C8.70769 13.9235 8.80938 13.9692 8.91723 13.9889C9.02507 14.0087 9.13597 14.0019 9.24075 13.9692C10.8119 13.4228 12.1428 12.3252 12.9974 10.8712C13.8521 9.41726 14.1751 7.70088 13.9094 6.0266C13.6436 4.35231 12.8061 2.82838 11.5455 1.72515C10.285 0.621917 8.68279 0.0107244 7.02324 3.17e-07V3.17e-07Z"/></svg>
-        <span>Follow on GitHub</span>
-      </a>
-      <a
-        className="button is-secondary"
-        style={{ width: 'auto' }}
-        onClick={() => navigate({ title: 'Support' })}
-      >
-        Report an Issue
-      </a>
-    </div>
-
-  </bal-doc-app>
-</Unstyled>
 
 import PuzzleGreen from './assets/images/home/puzzle-green.svg'
 import PuzzlePurple from './assets/images/home/puzzle-purple.svg'
 import PuzzleRed from './assets/images/home/puzzle-red.svg'
 import PuzzleYellow from './assets/images/home/puzzle-yellow.svg'
+import Logo from './assets/images/logo.svg'
 
 <Unstyled>
-  <div className="grid is-multiline mt-x-large" style={{ '--bal-column-gap': '.5rem' }}>
-    <div className="col is-6">
-      <div className="h-full">
-        <a
-          onClick={() => navigate({ title: 'Tokens/Overview' })}
-          className="flex gap-normal justify-content-center align-items-center bg-green-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
-        >
-          <div style={{ minWidth: '80px' }}>
-            <img src={PuzzleGreen} style={{ width: '80px' }} />
-          </div>
-          <div>
-            <h2 className="title text-large mb-xx-small">Tokens</h2>
-            <span>Design tokens serve as the definitive source for naming and storing design choices.</span>
-          </div>
-        </a>
-      </div>
+  <div className="flex gap-lg mt-4xl">
+    <div className="flex flex-1 justify-content-center align-items-center flex-direction-column">
+      <ds-logo animated={true} size="lg"></ds-logo>
+      <h2 className="subtitle text-5xl mt-sm">design system</h2>
     </div>
-    <div className="col is-6">
-      <div className="h-full">
-        <a
-          onClick={() => navigate({ title: 'Foundation' })}
-          className="flex gap-normal justify-content-center align-items-center bg-purple-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
-        >
-          <div style={{ minWidth: '80px' }}>
-            <img src={PuzzlePurple} style={{ width: '80px' }} />
-          </div>
-          <div>
-            <h2 className="title text-large mb-xx-small">Foundations</h2>
-            <span>
-              Foundations encompass the visual elements essential for crafting layouts and seamless end-to-end user
-              experiences.
-            </span>
-          </div>
-        </a>
-      </div>
+  </div>
+  <p className="text-xl text-primary-light mt-base text-align-center" bold>
+    Pieces that fit together.
+  </p>
+</Unstyled>
+
+<Unstyled>
+  <div className="flex gap-base mt-lg">
+    <div className="flex-1 flex flex-direction-column gap-base">
+      <button
+        onClick={() => navigate({ title: 'Tokens/All Tokens' })}
+        className="button is-tertiary-green flex gap-base justify-content-center align-items-center p-base w-full"
+      >
+        <div className="text-align-right">
+          <h2 className="title text-xl mb-xs">Tokens</h2>
+          <span className="text mobile:hidden">Named values that store every visual design decision in one place.</span>
+        </div>
+      </button>
+      <button
+        onClick={() => navigate({ title: 'CSS Utilities' })}
+        className="button is-tertiary-red flex gap-base justify-content-center align-items-center p-base w-full"
+      >
+        <div className="text-align-right">
+          <h2 className="title text-xl mb-xs">CSS Utilities</h2>
+          <span className="text mobile:hidden">Pre-built classes to style elements without writing custom CSS.</span>
+        </div>
+      </button>
     </div>
-    <div className="col is-6">
-      <div className="h-full">
-        <a
-          onClick={() => navigate({ title: 'CSS Utilities' })}
-          className="flex gap-normal justify-content-center align-items-center bg-yellow-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
-        >
-          <div style={{ minWidth: '80px' }}>
-            <img src={PuzzleYellow} style={{ width: '80px' }} />
-          </div>
-          <div>
-            <h2 className="title text-large mb-xx-small">CSS Utilities</h2>
-            <span>
-              CSS utility class streamline component styling with pre-defined styles applied directly to HTML elements.
-            </span>
-          </div>
-        </a>
-      </div>
+    <div className="flex justify-content-center desktop:hidden mobile:hidden">
+      <img src={Logo} style={{ width: '100px' }} />
     </div>
-    <div className="col is-6">
-      <div className="h-full">
-        <a
-          onClick={() => navigate({ title: 'Components' })}
-          className="flex gap-normal justify-content-center align-items-center bg-red-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer"
-        >
-          <div style={{ minWidth: '80px' }}>
-            <img src={PuzzleRed} style={{ width: '80px' }} />
-          </div>
-          <div>
-            <h2 className="title text-large mb-xx-small">Components</h2>
-            <span>Over 50 Components form the intuitive foundation of the Baloise Design System.</span>
-          </div>
-        </a>
-      </div>
+    <div className="flex justify-content-center touch:hidden">
+      <img src={Logo} style={{ width: '180px' }} />
+    </div>
+    <div className="flex-1 flex flex-direction-column gap-base">
+      <button
+        onClick={() => navigate({ title: 'Foundation' })}
+        className="button is-tertiary-yellow flex gap-base justify-content-center align-items-center p-base w-full"
+      >
+        <div className="text-align-left">
+          <h2 className="title text-xl mb-xs">Foundations</h2>
+          <span className="text mobile:hidden">Core visual principles that shape layouts and user experiences.</span>
+        </div>
+      </button>
+      <button
+        onClick={() => navigate({ title: 'Components' })}
+        className="button is-tertiary-purple flex gap-base justify-content-center align-items-center p-base w-full"
+      >
+        <div className="text-align-left">
+          <h2 className="title text-xl mb-xs">Components</h2>
+          <span className="text mobile:hidden">Over 50 accessible, framework-agnostic UI building blocks.</span>
+        </div>
+      </button>
     </div>
   </div>
 </Unstyled>
 
-{/* <hr className="sb-unstyled" /> */}
-
-## Advantages
-
-In this section key advantage of the library are listed which are part of the Baloise Design System.
+<Unstyled>
+  <p className="text-lg mt-xl text-align-center">
+    Built with accessibility and simplicity in mind, the Helvetia Design System provides UI components <br />
+    and a clearly defined visual style for building web applications.
+  </p>
+</Unstyled>
 
 <Unstyled>
-  <div className="grid is-multiline mt-medium" style={{ '--bal-column-gap': '.5rem' }}>
-    <div className="col is-6">
-      <div className="h-full">
-        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
-          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
-            📦
-          </span>
-          <div>
-            <span className="title text-large mb-x-small">Angular or React</span>
-            <span>
-              The Components are just Web Components, so they will work with any major framework—or no framework at all.
-            </span>
-          </div>
+  <div className="flex gap-base flex-wrap mt-xl align-items-center justify-content-center mb-4xl">
+    <a
+      className="button is-primary"
+      style={{ width: 'auto' }}
+      onClick={() => navigate({ title: 'Development/Getting Started' })}
+    >
+      Getting Started
+    </a>
+    <a className="button is-secondary" href="https://github.com/baloise/design-system" target="_blank">
+      <svg
+        width="24px"
+        height="24px"
+        viewBox="0 0 14 14"
+        xmlns="http://www.w3.org/2000/svg"
+        focusable="false"
+        aria-hidden="true"
+        fill="#000d6e"
+      >
+        <path d="M7.02324 3.17e-07C5.35174 -0.000507231 3.7349 0.608474 2.46344 1.71744C1.19199 2.82641 0.349338 4.3626 0.0870178 6.04979C-0.175303 7.73698 0.159915 9.46447 1.03239 10.9216C1.90487 12.3788 3.25737 13.47 4.84669 13.9991H5.01051C5.15997 14.0066 5.30654 13.9552 5.42008 13.8556C5.48839 13.7948 5.5427 13.7193 5.57911 13.6345C5.61553 13.5497 5.63315 13.4578 5.63071 13.3652V13.2397C5.63071 13.138 5.63071 13.0005 5.63071 12.5878C5.62601 12.549 5.61374 12.5116 5.59465 12.4777C5.57556 12.4438 5.55002 12.4141 5.51955 12.3905C5.48624 12.3633 5.44752 12.3438 5.40608 12.3335C5.36464 12.3231 5.32149 12.3222 5.27966 12.3307C3.70575 12.6775 3.37225 11.6729 3.35469 11.6071C3.15678 11.0748 2.80339 10.6175 2.34248 10.2975L2.25472 10.2317C2.3238 10.1976 2.40061 10.1832 2.47705 10.1899C2.62287 10.2123 2.76068 10.2724 2.87741 10.3645C2.99413 10.4566 3.08592 10.5776 3.14406 10.7161C3.3704 11.1189 3.74079 11.4163 4.17729 11.5457C4.61378 11.675 5.08236 11.6263 5.48444 11.4098C5.52789 11.3901 5.56631 11.3604 5.59675 11.3231C5.62718 11.2857 5.64881 11.2417 5.65997 11.1945C5.68369 10.92 5.79943 10.6623 5.98762 10.465C6.03101 10.4267 6.06245 10.3763 6.07805 10.3199C6.09366 10.2636 6.09273 10.2038 6.07539 10.148C6.05941 10.0921 6.0275 10.0424 5.98373 10.0051C5.93996 9.9678 5.88632 9.9447 5.82965 9.93871C4.44297 9.77725 3.02119 9.28092 3.02119 6.83511C3.01109 6.22007 3.23321 5.6247 3.64139 5.17268C3.67828 5.13138 3.70285 5.08016 3.71218 5.02506C3.72151 4.96996 3.71522 4.91328 3.69405 4.86172C3.532 4.39524 3.53407 3.88563 3.6999 3.42054C4.2402 3.51922 4.74736 3.75577 5.17434 4.10824C5.20987 4.13307 5.25051 4.14921 5.29312 4.15544C5.33573 4.16166 5.37917 4.15779 5.42008 4.14412C5.94306 4.00157 6.48198 3.9292 7.02324 3.92884C7.56661 3.92621 8.10785 3.99862 8.63225 4.14412C8.67219 4.15774 8.71471 4.16158 8.75637 4.15535C8.79803 4.14912 8.83769 4.13298 8.87214 4.10824C9.29858 3.75488 9.80597 3.51822 10.3466 3.42054C10.5073 3.88074 10.5073 4.38358 10.3466 4.84378C10.3254 4.89576 10.3197 4.95296 10.3301 5.00825C10.3405 5.06354 10.3666 5.11448 10.4051 5.15474C10.8069 5.60316 11.0266 6.19118 11.0194 6.79923C11.0194 9.25102 9.59766 9.74137 8.20513 9.89685C8.14846 9.90284 8.09481 9.92594 8.05105 9.96322C8.00728 10.0005 7.97537 10.0503 7.95939 10.1062C7.94252 10.1611 7.94185 10.2198 7.95746 10.2751C7.97307 10.3304 8.00426 10.3798 8.04715 10.4171C8.17658 10.5552 8.27543 10.7201 8.33701 10.9007C8.39859 11.0812 8.42146 11.2732 8.40406 11.4636V13.3652C8.40276 13.4582 8.42147 13.5503 8.45888 13.6351C8.4963 13.7198 8.55149 13.7951 8.62055 13.8556C8.70769 13.9235 8.80938 13.9692 8.91723 13.9889C9.02507 14.0087 9.13597 14.0019 9.24075 13.9692C10.8119 13.4228 12.1428 12.3252 12.9974 10.8712C13.8521 9.41726 14.1751 7.70088 13.9094 6.0266C13.6436 4.35231 12.8061 2.82838 11.5455 1.72515C10.285 0.621917 8.68279 0.0107244 7.02324 3.17e-07V3.17e-07Z" />
+      </svg>
+      <span>Follow on GitHub</span>
+    </a>
+    <a className="button is-secondary" style={{ width: 'auto' }} onClick={() => navigate({ title: 'Support' })}>
+      Report an Issue
+    </a>
+  </div>
+</Unstyled>
+
+<Unstyled>
+  <div
+    className="bg-grey-2"
+    style={{
+      marginTop: '6rem',
+      marginLeft: 'calc(-50vw + 50%)',
+      marginRight: 'calc(-50vw + 50%)',
+      paddingLeft: '3rem',
+      paddingRight: '3rem',
+      paddingTop: '6rem',
+      paddingBottom: '6rem',
+    }}
+  >
+    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+      <h2 className="title is-2xl mb-md">Advantages</h2>
+      <p>In this section key advantages of the library are listed which are part of the Helvetia Design System.</p>
+      <div className="grid is-multiline mt-medium" style={{ '--ds-column-gap': '.5rem' }}>
+        <div className="col is-6">
+          <article className="card is-outlined h-full ">
+            <header class="card-header">
+              <h3 class="title">
+                <span style={{ width: '32px', display: 'inline-block' }}>📦</span> Angular or React
+              </h3>
+            </header>
+            <div className="card-content">
+              Built on Web Components, the Design System works with Angular, React, or any other framework — even plain
+              HTML without a framework at all.
+            </div>
+          </article>
         </div>
-      </div>
-    </div>
-    <div className="col is-6">
-      <div className="h-full">
-        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
-          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
-            🎨
-          </span>
-          <div>
-            <span className="title text-large mb-x-small">Theming</span>
-            <span>
-              The Design System is built upon CSS Variables, allowing for crafting new components or easy adjustments to
-              achieve a new theme.
-            </span>
-          </div>
+        <div className="col is-6">
+          <article className="card is-outlined h-full">
+            <header class="card-header">
+              <h3 class="title">
+                <span style={{ width: '32px', display: 'inline-block' }}>🎨</span> Theming
+              </h3>
+            </header>
+            <div className="card-content">
+              Built on CSS Variables, the Design System supports multiple brands out of the box. Switching themes or
+              creating a new one requires no code changes.
+            </div>
+          </article>
         </div>
-      </div>
-    </div>
-    <div className="col is-6">
-      <div className="h-full">
-        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
-          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
-            🔮
-          </span>
-          <div>
-            <span className="title text-large mb-x-small">Future Proof</span>
-            <span>
-              Design System Web Components function in widely-used desktop and mobile browsers. Custom Elements are
-              natively supported in Chrome, Edge, Firefox, and Safari, including iOS!
-            </span>
-          </div>
+        <div className="col is-6">
+          <article className="card is-outlined h-full">
+            <header class="card-header">
+              <h3 class="title">
+                <span style={{ width: '32px', display: 'inline-block' }}>🔮</span> Future Proof
+              </h3>
+            </header>
+            <div className="card-content">
+              All components meet WCAG 2.2 accessibility standards and align with the EU Accessibility Act, keeping your
+              applications compliant and inclusive by default.
+            </div>
+          </article>
         </div>
-      </div>
-    </div>
-    <div className="col is-6">
-      <div className="h-full">
-        <div className="flex flex-direction-row justify-content-center align-items-center gap-normal border-grey radius-normal p-normal h-full">
-          <span className="text-xxxx-large mb-small text-align-center" style={{ height: '64px', minWidth: '80px' }}>
-            🛠️
-          </span>
-          <div>
-            <span className="title text-large mb-x-small">Rich Features</span>
-            <span>
-              CSS utility classNames style elements, Cypress test utilities enhance web app testing, and Sass mixins
-              simplify application stylesheets.
-            </span>
-          </div>
+        <div className="col is-6">
+          <article className="card is-outlined h-full">
+            <header class="card-header">
+              <h3 class="title">
+                <span style={{ width: '32px', display: 'inline-block' }}>🛠️</span> Rich Features
+              </h3>
+            </header>
+            <div className="card-content">
+              From CSS utilities and ready-to-use templates to testing helpers and Sass mixins — everything you need to
+              build and ship faster.
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -212,5 +195,425 @@ Important guides in a design system encompass vital information on its purpose, 
 support channels, and guidelines for contributions, providing a comprehensive resource for both users and contributors.
 
 <WelcomeGuide />
+
+<style>
+  {`
+  .sbdocs-toc--custom {
+    display: none;
+  }
+  .ds-contributor {
+    display: inline-block;
+    line-height: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .ds-contributor:hover {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+  .ds-contributor img {
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+  .ds-tech-icon {
+    font-size: 3rem;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+  }
+  .ds-tech-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  `}
+</style>
+
+## Technologies
+
+Built with modern web standards and frameworks, the Helvetia Design System leverages industry-leading tools for component development, testing, and styling.
+
+<Unstyled>
+  <div className="grid is-multiline mt-lg" style={{ '--ds-column-gap': '.5rem', '--ds-row-gap': '1rem' }}>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://stenciljs.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Stencil.js"
+      >
+        <div className="ds-tech-icon">
+          <img src="https://avatars.githubusercontent.com/u/31999222?s=200&v=4" alt="Stencil.js" />
+        </div>
+        <div className="ds-tech-name">Stencil.js</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://angular.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Angular"
+      >
+        <div className="ds-tech-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 223 236" width="32" class="angular-logo">
+            <g clip-path="url(#a)">
+              <path
+                fill="url(#b)"
+                d="m222.077 39.192-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
+              ></path>
+              <path
+                fill="url(#c)"
+                d="m222.077 39.192-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
+              ></path>
+            </g>
+            <defs>
+              <linearGradient id="b" x1="49.009" x2="225.829" y1="213.75" y2="129.722" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E40035"></stop>
+                <stop offset=".24" stop-color="#F60A48"></stop>
+                <stop offset=".352" stop-color="#F20755"></stop>
+                <stop offset=".494" stop-color="#DC087D"></stop>
+                <stop offset=".745" stop-color="#9717E7"></stop>
+                <stop offset="1" stop-color="#6C00F5"></stop>
+              </linearGradient>
+              <linearGradient id="c" x1="41.025" x2="156.741" y1="28.344" y2="160.344" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF31D9"></stop>
+                <stop offset="1" stop-color="#FF5BE1" stop-opacity="0"></stop>
+              </linearGradient>
+              <clipPath id="a">
+                <path fill="#fff" d="M0 0h223v236H0z"></path>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <div className="ds-tech-name">Angular</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://react.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="React"
+      >
+        <div className="ds-tech-icon">
+          <svg width="100%" height="100%" viewBox="-10.5 -9.45 21 18.9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="0" cy="0" r="2" fill="#58c4dc"></circle>
+            <g stroke="#58c4dc" stroke-width="1" fill="none">
+              <ellipse rx="10" ry="4.5"></ellipse>
+              <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
+              <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
+            </g>
+          </svg>
+        </div>
+        <div className="ds-tech-name">React</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        onClick={() => navigate({ title: 'CSS Utilities' })}
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="UnoCSS"
+      >
+        <div className="ds-tech-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220" fill="none">
+            <path
+              d="M117.444 167.888C117.444 140.273 139.83 117.888 167.444 117.888V117.888C195.058 117.888 217.444 140.273 217.444 167.888V167.888C217.444 195.502 195.058 217.888 167.444 217.888V217.888C139.83 217.888 117.444 195.502 117.444 167.888V167.888Z"
+              fill="#858585"
+            />
+            <path
+              d="M117.444 53C117.444 25.3858 139.83 3 167.444 3V3C195.058 3 217.444 25.3858 217.444 53V98C217.444 100.761 215.205 103 212.444 103H122.444C119.683 103 117.444 100.761 117.444 98V53Z"
+              fill="#CCCCCC"
+            />
+            <path
+              d="M102 167.888C102 195.502 79.6142 217.888 52 217.888V217.888C24.3858 217.888 2 195.502 2 167.888L2.00001 122.888C2.00001 120.126 4.23859 117.888 7.00001 117.888L97 117.888C99.7614 117.888 102 120.126 102 122.888L102 167.888Z"
+              fill="#4D4D4D"
+            />
+          </svg>
+        </div>
+        <div className="ds-tech-name">UnoCSS</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://playwright.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Playwright"
+      >
+        <div className="ds-tech-icon">
+          <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" />
+        </div>
+        <div className="ds-tech-name">Playwright</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://sass-lang.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Sass"
+      >
+        <div className="ds-tech-icon">
+          <img src="https://sass-lang.com/assets/img/logos/logo.svg" alt="Sass" />
+        </div>
+        <div className="ds-tech-name">Sass</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://www.typescriptlang.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="TypeScript"
+      >
+        <div className="ds-tech-icon">
+          <img src="https://www.typescriptlang.org/favicon.ico" alt="TypeScript" />
+        </div>
+        <div className="ds-tech-name">TypeScript</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://turbo.build/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Turborepo"
+      >
+        <div className="ds-tech-icon">
+          <img
+            src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png"
+            alt="Turborepo"
+          />
+        </div>
+        <div className="ds-tech-name">Turborepo</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://github.com/changesets/changesets"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Changesets"
+      >
+        <div className="ds-tech-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+            <rect width="200" height="200" fill="transparent" />
+            <path
+              d="M103.997 99.998C103.997 74.594 83.403 54 57.999 54H35C35 79.404 55.594 99.998 80.998 99.998H103.997Z"
+              fill="url(#paint0_linear)"
+            />
+            <path
+              d="M103.997 99.998C103.997 125.402 83.403 145.996 57.999 145.996H48.7994C48.7994 120.592 69.3934 99.9979 94.7974 99.9979L103.997 99.998Z"
+              fill="url(#paint1_linear)"
+            />
+            <path
+              d="M96.6372 99.998C96.6372 74.594 117.231 54 142.635 54H165.634C165.634 79.404 145.04 99.998 119.636 99.998H96.6372Z"
+              fill="url(#paint2_linear)"
+            />
+            <path
+              d="M96.6372 99.998C96.6372 125.402 117.231 145.996 142.635 145.996H151.835C151.835 120.592 131.241 99.998 105.837 99.998L96.6372 99.998Z"
+              fill="url(#paint3_linear)"
+            />
+            <path
+              d="M100.317 81.9402C102.686 87.4842 103.997 93.5879 103.997 99.9978C103.997 106.408 102.686 112.512 100.317 118.055C97.9483 112.512 96.6372 106.408 96.6372 99.9978C96.6372 93.5879 97.9483 87.4842 100.317 81.9402Z"
+              fill="#0088CC"
+            />
+            <defs>
+              <linearGradient id="paint0_linear" x1="104" y1="146" x2="35" y2="54" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#001B33" />
+                <stop offset="1" stop-color="#006DCC" />
+              </linearGradient>
+              <linearGradient id="paint1_linear" x1="104" y1="146" x2="35" y2="54" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#001B33" />
+                <stop offset="1" stop-color="#006DCC" />
+              </linearGradient>
+              <linearGradient id="paint2_linear" x1="97" y1="146" x2="166" y2="54" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0089D6" />
+                <stop offset="1" stop-color="#66CCFF" />
+              </linearGradient>
+              <linearGradient id="paint3_linear" x1="97" y1="146" x2="166" y2="54" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0089D6" />
+                <stop offset="1" stop-color="#66CCFF" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div className="ds-tech-name">Changesets</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://amzn.github.io/style-dictionary/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Style Dictionary"
+      >
+        <div className="ds-tech-icon">
+          <img src="https://styledictionary.com/_astro/logo._n_OjEMs_2wDFhK.webp" alt="Style Dictionary" />
+        </div>
+        <div className="ds-tech-name">Style Dictionary</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://storybook.js.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Storybook"
+      >
+        <div className="ds-tech-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="52"
+            height="64"
+            version="1.1"
+            viewBox="0 0 52 64"
+          >
+            <defs>
+              <path
+                id="path-1"
+                d="M1.94279175,57.1309472 L0.0022554267,5.95476663 C-0.0618328758,4.26461814 1.24754196,2.83223697 2.95307926,2.72673418 L46.9330824,0.00617628491 C48.6691159,-0.10121296 50.1644074,1.2046298 50.2729096,2.92285771 C50.2769973,2.98759391 50.2790429,3.05244063 50.2790429,3.11730315 L50.2790429,58.8828028 C50.2790429,60.6043831 48.8689636,62 47.1295431,62 C47.0824212,62 47.0353056,61.9989534 46.9882313,61.9968606 L4.94876437,60.1280997 C3.31149338,60.0553189 2.00425692,58.751918 1.94279175,57.1309472 Z"
+              />
+            </defs>
+            <g id="icon-storybook-default" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+              <g id="icon" transform="translate(1.000000, 1.000000)">
+                <path
+                  id="Combined-Shape"
+                  fill="#FF4785"
+                  fill-rule="nonzero"
+                  d="M50.2729096,2.92285771 C50.2769973,2.98759391 50.2790429,3.05244063 50.2790429,3.11730315 L50.2790429,58.8828028 C50.2790429,60.6043831 48.8689636,62 47.1295431,62 C47.0824212,62 47.0353056,61.9989534 46.9882313,61.9968606 L4.94876437,60.1280997 C3.31149338,60.0553189 2.00425692,58.751918 1.94279175,57.1309472 L0.0022554267,5.95476663 C-0.0618328758,4.26461814 1.24754196,2.83223697 2.95307926,2.72673418 L37.427,0.594 L37.1272753,7.62078766 C37.1238721,7.70179664 37.1419373,7.78178731 37.179031,7.85305525 L37.2223772,7.92113026 C37.3791917,8.12573637 37.6738999,8.16578288 37.880626,8.0105767 L37.880626,8.0105767 L40.6382617,5.94019678 L42.9673936,7.75618537 C43.0546693,7.82423279 43.1634862,7.85946584 43.2745216,7.85562813 C43.5338374,7.84666553 43.7367132,7.6313391 43.7276576,7.37468316 L43.7276576,7.37468316 L43.467,0.22 L46.9330824,0.00617628491 C48.6691159,-0.10121296 50.1644074,1.2046298 50.2729096,2.92285771 Z"
+                />
+                <mask id="mask-2" fill="#fff">
+                  <use xlink:href="#path-1" />
+                </mask>
+                <path
+                  id="S"
+                  fill="#FFF"
+                  fill-rule="nonzero"
+                  d="M29.4029796,23.368648 C29.4029796,24.58142 37.6567008,24.00017 38.7646901,23.1482813 C38.7646901,14.8895929 34.2873503,10.5497821 26.0885852,10.5497821 C17.88982,10.5497821 13.2961856,14.9571143 13.2961856,21.5681161 C13.2961856,33.0822778 28.9959487,33.3026444 28.9959487,39.5830962 C28.9959487,41.3460299 28.1237396,42.3927719 26.2048797,42.3927719 C23.7045471,42.3927719 22.7160434,41.1289316 22.832338,36.8317805 C22.832338,35.8995698 13.2961856,35.6089448 13.0054493,36.8317805 C12.2651161,47.2453073 18.8201763,50.248968 26.3211742,50.248968 C33.5895831,50.248968 39.2880157,46.4144645 39.2880157,39.4729126 C39.2880157,27.132376 23.3556634,27.4629261 23.3556634,21.3477494 C23.3556634,18.8686237 25.2163761,18.5380737 26.3211742,18.5380737 C27.4841196,18.5380737 29.5774214,18.7409467 29.4029796,23.368648 Z"
+                  mask="url(#mask-2)"
+                />
+                <path
+                  id="bookmark"
+                  fill="#FFF"
+                  fill-rule="nonzero"
+                  d="M37.1272753,7.62078766 L37.4276823,0.591583333 L43.4674595,0.218291667 L43.7276576,7.37468316 C43.7367132,7.6313391 43.5338374,7.84666553 43.2745216,7.85562813 C43.1634862,7.85946584 43.0546693,7.82423279 42.9673936,7.75618537 L40.6382617,5.94019678 L37.880626,8.0105767 C37.6738999,8.16578288 37.3791917,8.12573637 37.2223772,7.92113026 C37.1563661,7.83500129 37.1227378,7.72879963 37.1272753,7.62078766 Z"
+                  mask="url(#mask-2)"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div className="ds-tech-name">Storybook</div>
+      </a>
+    </div>
+    <div className="col tablet:is-6 desktop:is-3">
+      <a
+        href="https://www.figma.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        title="Figma"
+      >
+        <div className="ds-tech-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={'48px'}
+            fill="none"
+            viewBox="0 0 480 720"
+            aria-label="Homepage"
+          >
+            <path
+              fill="#24CB71"
+              d="M0 600c0-66.274 53.726-120 120-120h120v120c0 66.274-53.726 120-120 120S0 666.274 0 600"
+            ></path>
+            <path fill="#FF7237" d="M240 0v240h120c66.274 0 120-53.726 120-120S426.274 0 360 0z"></path>
+            <circle cx="359" cy="360" r="120" fill="#00B6FF"></circle>
+            <path fill="#FF3737" d="M0 120c0 66.274 53.726 120 120 120h120V0H120C53.726 0 0 53.726 0 120"></path>
+            <path fill="#874FFF" d="M0 360c0 66.274 53.726 120 120 120h120V240H120C53.726 240 0 293.726 0 360"></path>
+          </svg>
+        </div>
+        <div className="ds-tech-name">Figma</div>
+      </a>
+    </div>
+  </div>
+</Unstyled>
+
+## Supported Browsers
+
+We support the **last 2 versions** of all major browsers.
+
+<Unstyled>
+  <div className="flex gap-lg flex-wrap mt-lg">
+    {[
+      {
+        name: 'Chrome & Android',
+        icon: 'https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png',
+      },
+      {
+        name: 'Firefox',
+        icon: 'https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png',
+      },
+      { name: 'Edge', icon: 'https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge_48x48.png' },
+      {
+        name: 'Safari & iOS',
+        icon: 'https://raw.githubusercontent.com/alrra/browser-logos/main/src/safari/safari_48x48.png',
+      },
+      {
+        name: 'Samsung Internet',
+        icon: 'https://raw.githubusercontent.com/alrra/browser-logos/main/src/samsung-internet/samsung-internet_48x48.png',
+      },
+    ].map(({ name, icon }) => (
+      <div
+        key={name}
+        className="card is-outlined flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        style={{ minWidth: '80px' }}
+      >
+        <img src={icon} alt={name} width="48" height="48" />
+        <span className="title text-sm mt-xs">{name}</span>
+        <span className="text-xs text-primary-light">Last 2 versions</span>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+## Contributors
+
+Thank you to everyone who has contributed to the Helvetia Design System.
+
+<Unstyled>
+  <div className="flex flex-wrap gap-sm mt-lg">
+    {contributors.map(({ url, name, avatar }) => (
+      <a
+        key={url}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={name}
+        aria-label={name}
+        className="ds-contributor"
+      >
+        <img src={avatar} alt={name} width="48" height="48" />
+      </a>
+    ))}
+  </div>
+</Unstyled>
 
 <Footer />

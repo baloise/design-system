@@ -1,0 +1,112 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as IconStories from './icon.stories'
+import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
+
+<Meta title="Components/Icon/Usage" />
+<Banner label={'Usage'} section={ICON_DOC_CONFIG.section} color={ICON_DOC_CONFIG.color} />
+<BannerTabs
+  of={IconStories}
+  tabs={getIconTabs('usage')}
+/>
+
+## When to Use
+
+- Enhance button or link labels with visual context
+- Indicate file types or status in lists
+- Show required field markers in forms
+- Provide visual hierarchy and break up text
+- Create icon-only buttons with proper ARIA labels
+- Display status or state indicators
+
+## When NOT to Use
+
+- As the only way to convey meaning — always pair with text for critical information
+- For decorative purposes at high scale — use small, subtle icons for decoration
+- Without proper labels on interactive icon-only elements
+- For essential information that users might not understand at a glance
+- At sizes too small to be recognizable or clickable
+
+## Do's and Don'ts
+
+### Icon + Text Pairing
+
+Icons should reinforce, not replace, text labels. Always provide accompanying text for meaningful content.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Icon reinforces label',
+      content: (
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+          <ds-button icon="download">
+            Download
+          </ds-button>
+          <ds-button icon="trash">
+            Delete
+          </ds-button>
+        </div>
+      ),
+      description: 'Icon provides visual context for the action',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Icon replaces label without context',
+      content: (
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center'   }}>
+          <ds-button square>
+            <ds-icon name="download"></ds-icon>
+          </ds-button>
+          <ds-button square>
+            <ds-icon name="trash"></ds-icon>
+          </ds-button>
+        </div>
+      ),
+      description: 'Users must guess what these buttons do',
+    },
+  ]}
+/>
+
+### Icon Accessibility
+
+Always provide meaningful labels for icon-only interactive elements.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Accessible icon button',
+      content: (
+        <>
+          <ds-button square aria-label="Download file">
+            <ds-icon name="download"></ds-icon>
+          </ds-button>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code noPreview code={'<ds-button square aria-label="Download file">\n  <ds-icon name="download"></ds-icon>\n</ds-button>'} />
+          </div>
+        </>
+      ),
+      description: 'Screen readers announce the button purpose',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No accessible label',
+      content: (
+        <ds-button square>
+          <ds-icon name="download"></ds-icon>
+        </ds-button>
+      ),
+      description: 'Screen reader users won\'t know the button purpose',
+    },
+  ]}
+/>
+
+<Footer />

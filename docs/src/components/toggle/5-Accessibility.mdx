@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ToggleStories from './toggle.stories'
+import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
+
+<Meta title="Components/Forms/Toggle/Accessibility" />
+<Banner label={'Accessibility'} section={TOGGLE_DOC_CONFIG.section} color={TOGGLE_DOC_CONFIG.color} />
+<BannerTabs
+  of={ToggleStories}
+  tabs={getToggleTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use role="switch"',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Toggles should use <code>role="switch"</code> with <code>aria-checked</code> attribute. Screen readers announce it as a switch, not a button.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Associated Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always associate a <code>&lt;label&gt;</code> with the toggle. Use <code>for</code> attribute and label text describing what is being toggled.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Clear State Indication',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use color + symbol/text to show state. Don't rely on color alone for on/off indication.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Accessible',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Toggle must be keyboard accessible. Use <code>Space</code> or <code>Enter</code> to toggle state.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No ARIA Role',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never omit <code>role="switch"</code> and <code>aria-checked</code>. Screen readers need semantic information.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color-Only State',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't rely on color alone to show on/off state. Add text labels like "On" or "Off" for clarity.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The toggle component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Semantics (1.3.1)** — Uses role="switch" and aria-checked
+- **Color Contrast (1.4.3)** — Sufficient contrast between on/off states
+- **Keyboard Navigation (2.1.1)** — Space/Enter toggle the switch
+- **Focus Visible (2.4.7)** — Clear focus indicator
+- **Name, Role, Value (4.1.2)** — ARIA attributes properly identify switch
+
+<Footer />

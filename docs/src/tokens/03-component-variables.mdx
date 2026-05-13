@@ -1,0 +1,243 @@
+import { Meta, Markdown } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, Lead } from '../../.storybook/blocks'
+import { getTokensTabs } from './tokens.doc-config'
+import tokenCssCascade from '../assets/images/tokens/token-css-cascade.svg'
+import tokenChainButton from '../assets/images/tokens/token-chain-button.svg'
+
+<Meta
+  title="Tokens/Component Variables"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      toc: {
+        disable: false,
+      },
+    },
+  }}
+/>
+
+<Banner label="Tokens" color="green" />
+
+<BannerTabs color="green" tabs={getTokensTabs('componentVariables')} />
+
+<Lead>Learn how web components use CSS variables to enable customization while maintaining Shadow DOM encapsulation.</Lead>
+
+## Component CSS Variable Structure
+
+Web components in the Design System use a sophisticated **four-layer CSS cascade** system. This allows flexibility at multiple levels while maintaining encapsulation.
+
+### The Four Layers
+
+Each component token follows this hierarchy:
+
+<img src={tokenCssCascade} alt="Four-layer CSS variable cascade inside a component" style={{ width: '100%', margin: '2rem 0' }} />
+
+<Markdown>
+  {`
+| Layer | Prefix | Owner | Purpose |
+|-------|--------|-------|---------|
+| **Private** | \`--_\` | System (computed) | Internal CSS rule values, never override from outside |
+| **Public** | \`--\` | Consumer | Component instance override, set from outside Shadow DOM |
+| **Modifier** | \`--mod-\` | System (variants) | Set by variant classes like \`.is-primary\`, \`.is-disabled\` |
+| **Design Token** | \`--ds-\` | Design System | Figma default value, only changed via token updates |
+  `}
+</Markdown>
+
+### How It Works
+
+<img src={tokenChainButton} alt="Token chain for primary button background color" style={{ width: '100%', margin: '2rem 0' }} />
+
+When you set a CSS property with `vars.local()`:
+
+```scss
+// In component SCSS:
+@include vars.local(tag-color, var(--ds-alias-text-color-primary));
+
+// Generates:
+// --_tag-color: var(--tag-color, var(--mod-tag-color, var(--ds-alias-text-color-primary)))
+```
+
+When the component renders:
+1. **Private value** (`--_tag-color`) is computed from the cascade
+2. CSS rules use the private variable internally
+3. Modifiers override via `--mod-tag-color` (when `.is-primary` class is set)
+4. Consumers override via `--tag-color` (from outside)
+5. Falls back to design token `--ds-alias-text-color-primary` if nothing is set
+
+---
+
+## Customizing Components
+
+### Override a Single Component Instance
+
+Use the public variable (`--component-prop`) to customize just one instance:
+
+```html
+<!-- Change tag color without modifier classes -->
+<ds-tag style="--tag-color: var(--ds-alias-text-color-danger);">
+  Custom Color
+</ds-tag>
+```
+
+### Override via JavaScript
+
+Dynamically change component styles:
+
+```javascript
+const tag = document.querySelector('ds-tag')
+
+// Set the public variable to override the design token
+tag.style.setProperty(
+  '--tag-color',
+  'var(--ds-alias-text-color-success)'
+)
+
+// Change background
+tag.style.setProperty(
+  '--tag-bg',
+  'var(--ds-alias-bg-color-success-light)'
+)
+```
+
+### Override Multiple Instances
+
+Use CSS class selector to override multiple components:
+
+```css
+/* All tags in a warning context */
+.warning-context ds-tag {
+  --tag-color: var(--ds-alias-text-color-warning);
+  --tag-bg: var(--ds-alias-bg-color-warning-light);
+  --tag-border: var(--ds-alias-border-color-warning);
+}
+```
+
+### Override via Slot Parent
+
+Style components from their parent context:
+
+```html
+<div style="--tag-color: var(--ds-alias-text-color-info); --tag-bg: var(--ds-alias-bg-color-info-light);">
+  <ds-tag>Info Tag</ds-tag>
+  <ds-tag>Also Info</ds-tag>
+</div>
+```
+
+---
+
+## Common Component Variables
+
+Most components expose these variable groups:
+
+### Color Variables
+- `--{component}-color` — text color
+- `--{component}-bg` — background color
+- `--{component}-border` — border color
+
+### Spacing Variables
+- `--{component}-px` — horizontal padding
+- `--{component}-py` — vertical padding
+- `--{component}-m` — margin (sometimes)
+
+### Typography Variables
+- `--{component}-font-size` — text size
+- `--{component}-font-weight` — text weight
+- `--{component}-font-family` — typeface
+
+### Border & Radius
+- `--{component}-radius` — border radius
+- `--{component}-border-width` — border thickness
+
+### State Variants
+
+Components with states have separate variables for each state, controlled by modifier classes:
+
+```javascript
+// When you add a class, modifiers update automatically
+tag.classList.add('is-secondary')
+// Internally sets: --mod-tag-color, --mod-tag-bg, etc.
+```
+
+---
+
+## Shadow DOM Encapsulation
+
+Component CSS variables respect Shadow DOM boundaries:
+
+### Inside Shadow DOM (component author)
+- Uses `--_private` variables in CSS rules
+- Modifiers set `--mod-` variables via `.is-*` classes
+- Design tokens provide `--ds-` defaults
+
+### Outside Shadow DOM (consumer)
+- Can only set public `--` variables on the host element
+- Changes cascade into the component via the public layer
+- Private variables are isolated and cannot be accessed
+
+### Example: Customizing ds-tag
+
+```html
+<style>
+  /* Override tag colors globally */
+  :root {
+    --tag-color: var(--ds-alias-text-color-custom);
+    --tag-bg: var(--ds-alias-bg-color-custom);
+  }
+
+  /* Override for specific context */
+  .error-tags ds-tag {
+    --tag-color: var(--ds-alias-text-color-danger);
+    --tag-bg: var(--ds-alias-bg-color-danger-light);
+    --tag-border: var(--ds-alias-border-color-danger);
+  }
+</style>
+
+<!-- Uses default colors from design tokens -->
+<ds-tag>Default</ds-tag>
+
+<!-- Uses custom context colors -->
+<div class="error-tags">
+  <ds-tag>Error 1</ds-tag>
+  <ds-tag>Error 2</ds-tag>
+</div>
+
+<!-- Inline override for single instance -->
+<ds-tag style="--tag-color: purple; --tag-bg: lavender;">
+  Custom Purple
+</ds-tag>
+
+<!-- Override via JavaScript -->
+<script>
+  const tag = document.querySelector('ds-tag')
+  tag.style.setProperty('--tag-color', 'var(--ds-alias-text-color-info)')
+</script>
+```
+
+---
+
+## Best Practices
+
+**Do:**
+- ✅ Use design token values when overriding (e.g., `--ds-alias-text-color-*`)
+- ✅ Override at the appropriate scope (single element, class, global)
+- ✅ Use `-device` suffix for responsive values
+- ✅ Check component documentation for available variables
+
+**Don't:**
+- ❌ Try to access or set `--_private` variables (they're isolated in Shadow DOM)
+- ❌ Set hardcoded hex colors; use tokens instead
+- ❌ Override `--mod-` variables directly (let classes set them)
+- ❌ Override `--ds-` tokens from outside (only change via design system)
+
+---
+
+## Finding Available Variables
+
+Each component documents its available CSS variables. Look for:
+- Component JSDoc comments listing `@slot`, `@part`
+- Storybook "Styling" tab showing themeable properties
+- Component's `.style.scss` file for `vars.local()` definitions
+
+<Footer />

@@ -1,0 +1,9 @@
+@use './tag-group.mixin.scss' as tags;
+
+/**
+  * Host Style
+  */
+
+:host {
+  @include tags.style();
+}

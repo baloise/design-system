@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Design token primitives:
+  Purple  1:#F9F3FF  2:#E1D9FF  3:#B8B2FF  5:#9F52CC  6:#6C2273
+  Yellow  1:#FFF9E8  2:#FFECBC  3:#FAE052  4:#FFBE19  5:#FA9319  6:#B24A00
+  Red     1:#FFEEF1  2:#FFD7D7  3:#FFACA6  4:#FF596F  5:#D9304C  6:#99172D
+  Green   1:#E9FBF7  2:#CBF2EC  3:#94E3D4  4:#21D9AC  5:#00B28F  6:#1B5951
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="295" viewBox="0 0 880 295">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect width="880" height="295" fill="#ffffff"/>
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║  Host: ds-button  (Purple)           ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <rect x="20" y="40" width="840" height="235" rx="8" fill="#F9F3FF" stroke="#B8B2FF" stroke-width="2" filter="url(#shadow)"/>
+  <!-- badge -->
+  <rect x="36" y="27" width="106" height="26" rx="13" fill="#9F52CC"/>
+  <text x="89" y="45" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="600">ds-button</text>
+
+  <!-- ┌──────────────────────────────────────────────────────────┐ -->
+  <!-- │  part="native"  (Yellow – button or anchor element)      │ -->
+  <!-- └──────────────────────────────────────────────────────────┘ -->
+  <rect x="55" y="95" width="770" height="162" rx="6" fill="#FFF9E8" stroke="#FFBE19" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="71" y="82" width="126" height="26" rx="13" fill="#FA9319"/>
+  <text x="134" y="100" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="native"</text>
+
+  <!-- ┌─────────┐ -->
+  <!-- │ spinner │ -->
+  <!-- └─────────┘ -->
+  <rect x="83" y="135" width="130" height="95" rx="6" fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="99" y="122" width="138" height="26" rx="13" fill="#D9304C"/>
+  <text x="168" y="140" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="spinner"</text>
+  <!-- hint label -->
+  <text x="148" y="193" text-anchor="middle" fill="#D9304C" font-size="11" font-family="system-ui, sans-serif">loading</text>
+
+  <!-- ┌──────┐ -->
+  <!-- │ icon │ -->
+  <!-- └──────┘ -->
+  <rect x="235" y="135" width="120" height="95" rx="6" fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="251" y="122" width="108" height="26" rx="13" fill="#D9304C"/>
+  <text x="305" y="140" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="icon"</text>
+  <!-- hint label -->
+  <text x="295" y="193" text-anchor="middle" fill="#D9304C" font-size="11" font-family="system-ui, sans-serif">left icon</text>
+
+  <!-- ┌───────┐ -->
+  <!-- │ label │ -->
+  <!-- └───────┘ -->
+  <rect x="377" y="135" width="210" height="95" rx="6" fill="#E9FBF7" stroke="#21D9AC" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="393" y="122" width="114" height="26" rx="13" fill="#00B28F"/>
+  <text x="450" y="140" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="label"</text>
+  <!-- hint label -->
+  <text x="482" y="193" text-anchor="middle" fill="#00B28F" font-size="11" font-family="system-ui, sans-serif">slot content</text>
+
+  <!-- ┌───────────┐ -->
+  <!-- │ icon-right│ -->
+  <!-- └───────────┘ -->
+  <rect x="609" y="135" width="200" height="95" rx="6" fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"/>
+  <!-- badge -->
+  <rect x="625" y="122" width="150" height="26" rx="13" fill="#D9304C"/>
+  <text x="700" y="140" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New', Courier, monospace" font-weight="500">part="icon-right"</text>
+  <!-- hint label -->
+  <text x="709" y="193" text-anchor="middle" fill="#D9304C" font-size="11" font-family="system-ui, sans-serif">right icon</text>
+</svg>

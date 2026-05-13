@@ -1,6 +1,29 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
 
-export const decorators: Decorator[] = [(Story: any) => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`]
+const BRAND_LINK_ID = 'brand-theme-stylesheet'
+
+export const decorators: Decorator[] = [
+  (Story: any, context: any) => {
+    const theme: string = context.globals?.theme ?? ''
+    const story = Story()
+    const html: string = story.outerHTML || story
+
+    let link = document.getElementById(BRAND_LINK_ID) as HTMLLinkElement | null
+    if (theme) {
+      if (!link) {
+        link = document.createElement('link')
+        link.id = BRAND_LINK_ID
+        link.rel = 'stylesheet'
+        document.head.appendChild(link)
+      }
+      link.href = `/assets/tokens/${theme}.tokens.css`
+      return `<div data-theme="${theme}">${html}</div>`
+    } else {
+      link?.remove()
+      return html
+    }
+  },
+]
 
 const preview: Preview = {
   globalTypes: {
@@ -9,19 +32,18 @@ const preview: Preview = {
       description: 'Integration technology',
       defaultValue: 'Angular',
     },
+    theme: {
+      name: 'Theme',
+      description: 'Brand theme',
+      defaultValue: '',
+    },
+  },
+  initialGlobals: {
+    backgrounds: { value: 'light' },
   },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    controls: { expanded: true },
-    docs: {
-      toc: {
-        contentsSelector: '.sbdocs-content',
-        headingSelector: 'h2, h3',
-        ignoreSelector: '.docs-story, .title, .subtitle, .bal-heading__text',
-        title: '', //'On this page',
-        disable: false,
-      },
-    },
+    controls: { expanded: false },
     options: {
       storySort: {
         order: [
@@ -43,11 +65,26 @@ const preview: Preview = {
             'Spacing',
             'Typography',
           ],
-          'Development',
           'Tokens',
           'CSS Utilities',
           'Components',
-          ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography'],
+          ['Overview'],
+          'Development',
+          'Contributing',
+          [
+            'Overview',
+            'Setup',
+            'Component Style Guide',
+            'How to fix a Bug',
+            'How to create a Feature',
+            'How to create a Pull Request',
+            'How to work with the Components',
+            'How to test',
+            'How to add Icons',
+            'How to Release',
+            'How to Deploy',
+            'How to work with GitHub Actions',
+          ],
         ],
       },
     },
@@ -99,33 +136,15 @@ const preview: Preview = {
       grid: {
         cellSize: 8,
       },
-      default: 'white',
-      options: [
-        {
-          name: 'white',
-          value: '#fff',
-        },
-        {
-          name: 'blue',
-          value: '#000d6e',
-        },
-        {
-          name: 'green',
-          value: '#94e3d4',
-        },
-        {
-          name: 'purple',
-          value: '#b8b2ff',
-        },
-        {
-          name: 'red',
-          value: '#ffaca6',
-        },
-        {
-          name: 'yellow',
-          value: '#fae052',
-        },
-      ],
+      // default: 'white',
+      options: {
+        light: { name: 'Light', value: '#ffffff' },
+        dark: { name: 'Dark', value: '#000d6e' },
+        green: { name: 'Green', value: '#94e3d4' },
+        purple: { name: 'Purple', value: '#b8b2ff' },
+        red: { name: 'Red', value: '#ffaca6' },
+        yellow: { name: 'Yellow', value: '#fae052' },
+      },
     },
   },
 }

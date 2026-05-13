@@ -1,0 +1,97 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as CheckboxStories from './checkbox.stories'
+import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
+
+<Meta title="Components/Forms/Checkbox/Usage" />
+<Banner label={'Usage'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
+<BannerTabs of={CheckboxStories} tabs={getCheckboxTabs('usage')} />
+
+## When to Use
+
+- Select multiple independent options (preferences, interests, features)
+- Accept terms and conditions or legal agreements
+- Toggle features or permissions on/off
+- Filter content by multiple categories or tags
+- Enable users to select any combination of options
+
+## When NOT to Use
+
+- For mutually exclusive choices — use radio buttons instead
+- When users must select exactly one option — radio buttons are clearer
+- For on/off switching — use toggle component instead
+- When there are only two options — consider using a single checkbox or toggle
+- For non-binary yes/no questions — consider other form controls
+
+## Do's and Don'ts
+
+### Clear Checkbox Labels
+
+Always provide clear, descriptive labels for each checkbox. Never rely on ambiguous labels.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear, descriptive labels',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-checkbox-group vertical>
+          <ds-checkbox label="Send me promotional emails"></ds-checkbox>
+          <ds-checkbox label="I agree to the terms and conditions"></ds-checkbox>
+        </ds-checkbox-group>
+      ),
+      description: 'Users understand what each option controls',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Ambiguous labels',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-checkbox-group vertical>
+          <ds-checkbox>Yes</ds-checkbox>
+          <ds-checkbox>Agree</ds-checkbox>
+        </ds-checkbox-group>
+      ),
+      description: 'Unclear what the checkboxes are for',
+    },
+  ]}
+/>
+
+### Checkbox Groups
+
+Group related checkboxes together for better organization and understanding.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Grouped checkboxes',
+      contentIsLeftAligned:true,
+      content: (
+        <ds-checkbox-group label="Select your interests">
+          <ds-checkbox>Technology</ds-checkbox>
+          <ds-checkbox>Design</ds-checkbox>
+          <ds-checkbox>Business</ds-checkbox>
+        </ds-checkbox-group>
+      ),
+      description: 'Clear group purpose and organized options',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Ungrouped checkboxes',
+      contentIsLeftAligned:true,
+      content: (
+        <ds-checkbox-group>
+          <ds-checkbox>Technology</ds-checkbox>
+          <ds-checkbox>Design</ds-checkbox>
+          <ds-checkbox>Business</ds-checkbox>
+        </ds-checkbox-group>
+      ),
+      description: 'No indication of relationship between options',
+    },
+
+]}
+/>
+
+<Footer />

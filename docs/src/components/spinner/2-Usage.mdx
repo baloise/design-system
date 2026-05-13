@@ -1,0 +1,90 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as SpinnerStories from './spinner.stories'
+import { SPINNER_DOC_CONFIG, getSpinnerTabs } from './spinner.doc-config'
+
+<Meta title="Components/Spinner/Usage" />
+<Banner label={'Usage'} section={SPINNER_DOC_CONFIG.section} color={SPINNER_DOC_CONFIG.color} />
+<BannerTabs of={SpinnerStories} tabs={getSpinnerTabs('usage')} />
+
+## When to Use
+
+- Show loading state while async operations are in progress
+- Indicate data is being fetched from a server
+- Display progress on long-running operations
+- Replace button content while processing form submissions
+- Show loading in skeleton screens or placeholder areas
+
+## When NOT to Use
+
+- For operations that complete instantly — don't show loading for fast operations
+- As a decorative element — spinners should always indicate loading state
+- When you can show actual progress — use progress bar component instead
+- For page loads without context — spinners need accompanying text
+- Without accessible labels or context
+
+## Do's and Don'ts
+
+### Spinner Context and Labels
+
+Always provide context about what is loading. Use accompanying text to explain the operation.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Spinner with context',
+      content: (
+        <div className="flex align-items-center flex-direction-column">
+          <ds-spinner></ds-spinner>
+          <p style={{ margin: '12px 0 0 0' }}>Loading your profile...</p>
+        </div>
+      ),
+      description: 'Users understand what is loading',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Spinner without context',
+      content: (
+        <div className="flex align-items-center flex-direction-column">
+          <ds-spinner></ds-spinner>
+        </div>
+      ),
+      description: "Users don't know what is being loaded",
+    },
+  ]}
+/>
+
+### Spinner in Buttons
+
+When showing loading state in buttons, disable the button and optionally replace the label with a spinner.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Loading button with spinner',
+      content: (
+        <>
+          <ds-button disabled loading>
+            Saving...
+          </ds-button>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code noPreview code={'<ds-button disabled loading>\n  Saving...\n</ds-button>'} />
+          </div>
+        </>
+      ),
+      description: 'Clear that action is in progress',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Spinner without disabled or label',
+      content: (
+        <ds-button loading></ds-button>
+      ),
+      description: 'Users might click multiple times',
+    },
+  ]}
+/>
+
+<Footer />

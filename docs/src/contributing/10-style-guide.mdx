@@ -1,0 +1,439 @@
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead } from '../../.storybook/blocks'
+
+<Meta title="Contributing/Component Style Guide" />
+
+<Banner label="Component Style Guide" section="Contributing" />
+
+<Lead>
+  These rules keep every component in the Design System consistent and easy to maintain. Follow them when writing or
+  reviewing component code.
+</Lead>
+
+## Imports
+
+Always import from the `@utils` and `@global` aliases — never from relative paths. Merge imports from the same source into one line.
+
+```ts
+// ❌ Don't
+import { Loggable, Logger } from '../../utils/log'
+import { inheritAttributes } from '../../utils/attributes'
+import { DsConfigState } from '../../global'
+
+// ✅ Do
+import { Loggable, Logger, type LogInstance, inheritAttributes } from '@utils'
+import { DsConfigState } from '@global'
+```
+
+---
+
+## Component Tag and Class Name
+
+The HTML tag must start with `ds-`. The class name must **not** have a prefix.
+
+```ts
+// ❌ Don't
+@Component({ tag: 'button' }) export class DsButton {}
+
+// ✅ Do
+@Component({ tag: 'ds-button' }) export class Button {}
+```
+
+---
+
+## Interfaces — Const Arrays and Derived Types
+
+Define allowed values as a `const` array in the `.interfaces.ts` file. Then derive the TypeScript type from that array. This keeps values and types in sync automatically.
+
+```ts
+// ✅ In button.interfaces.ts
+namespace DS {
+  export const BUTTON_SIZES = ['', 'sm', 'md', 'lg'] as const
+  export type ButtonSize = (typeof BUTTON_SIZES)[number]
+}
+```
+
+```ts
+// ✅ In button.tsx
+@Prop()
+@ValidateEmptyOrOneOf(...DS.BUTTON_SIZES)
+readonly size: DS.ButtonSize = ''
+```
+
+Never duplicate the values by writing them again in the component file.
+
+---
+
+## Props
+
+### Always use `readonly`
+
+Every `@Prop()` that the component never reassigns must be `readonly`.
+
+```ts
+// ❌ Don't
+@Prop() label: string
+
+// ✅ Do
+@Prop() readonly label: string
+```
+
+### Always add a type annotation
+
+When a prop has a default value, always write the type explicitly.
+
+```ts
+// ❌ Don't
+@Prop() readonly disabled = false
+@Prop() readonly size = 'md'
+
+// ✅ Do
+@Prop() readonly disabled: boolean = false
+@Prop() readonly size: DS.ButtonSize = 'md'
+```
+
+### Use `reflect: true` only for state props
+
+State props (like `disabled`, `value`, `invalid`, `checked`, `open`, `loading`, `readonly`, `active`) must reflect to the HTML attribute. Visual props (like `size`, `color`, `label`, `align`) must not.
+
+```ts
+// ✅ State prop — reflects to HTML attribute
+@Prop({ reflect: true }) readonly disabled: boolean = false
+
+// ✅ Visual prop — does not reflect
+@Prop() readonly size: DS.ButtonSize = 'md'
+```
+
+### Use empty string default for optional enum props
+
+Optional enum props should default to `''` (not `undefined`). The const array must include `''` as the first value. In render logic, check truthiness (`!!this.color`) rather than `!== undefined`.
+
+```ts
+// ❌ Don't
+@Prop() readonly color?: ButtonColor
+
+// ✅ Do
+@Prop() readonly color: ButtonColor = ''
+
+// ✅ In interfaces.ts
+export const BUTTON_COLORS = ['', 'primary', 'secondary'] as const
+```
+
+### Keep `@Prop` and `@Watch` together
+
+If a prop has a watcher, place the `@Watch` directly below the `@Prop`.
+
+```ts
+// ✅
+@Prop({ reflect: true }) readonly value: string = ''
+@Watch('value')
+valueChanged() {
+  // ...
+}
+```
+
+### Order props alphabetically
+
+Sort `@Prop()`, `@State()`, and `@Event()` declarations alphabetically within their group.
+
+```ts
+// ✅
+@Prop() readonly align: string = ''
+@Prop() readonly disabled: boolean = false
+@Prop() readonly label: string = ''
+```
+
+---
+
+## Prop Validation
+
+Every component must have a `private validateProps()` method — even if there are no props. Call it from both `connectedCallback()` and `componentWillUpdate()`.
+
+```ts
+// ✅
+connectedCallback(): void {
+  this.validateProps()
+}
+
+componentWillUpdate() {
+  this.validateProps()
+}
+
+private validateProps() {
+  checkEmptyOrType(this, 'label', 'string')
+  checkEmptyOrOneOf(this, 'size', DS.BUTTON_SIZES)
+}
+```
+
+If the component has no props, add a comment:
+
+```ts
+private validateProps() {
+  // no props to validate
+}
+```
+
+Available checkers from `@utils`:
+
+<Markdown>
+  {`
+| Checker | When to use |
+| --- | --- |
+| \`checkEmptyOrType(this, 'prop', 'string')\` | Optional string, number, or boolean prop |
+| \`checkEmptyOrOneOf(this, 'prop', [...values])\` | Optional enum prop |
+| \`checkRequiredAndType(this, 'prop', 'string')\` | Required string, number, or boolean prop |
+| \`checkRequiredAndOneOf(this, 'prop', [...values])\` | Required enum prop |
+  `}
+</Markdown>
+
+---
+
+## Naming Conventions
+
+### `@Listen()` handlers — `listenTo*`
+
+```ts
+// ❌ Don't
+@Listen('click') onClick() {}
+
+// ✅ Do
+@Listen('click') listenToClick() {}
+```
+
+### `@Watch()` handlers — `*Changed`
+
+```ts
+// ❌ Don't
+@Watch('value') onValueChange() {}
+
+// ✅ Do
+@Watch('value') valueChanged() {}
+```
+
+### DOM event handlers — `handle*` as arrow functions
+
+```ts
+// ❌ Don't
+onClick() {}
+handleClick() {}
+
+// ✅ Do
+handleClick = () => {}
+handleKeyDown = (event: KeyboardEvent) => {}
+```
+
+---
+
+## Events — `ds` Prefix
+
+All custom events must start with `ds`.
+
+```ts
+// ❌ Don't
+@Event() change: EventEmitter<string>
+
+// ✅ Do
+@Event() dsChange: EventEmitter<string>
+@Event() dsCloseClick: EventEmitter<void>
+```
+
+---
+
+## `@Method()` — Always `async`
+
+Public methods must be `async` and return a `Promise`.
+
+```ts
+// ❌ Don't
+@Method()
+open() {}
+
+// ✅ Do
+@Method()
+async open(): Promise<void> {}
+```
+
+---
+
+## Method Visibility — `private`
+
+All methods must be `private` except:
+
+- Stencil lifecycle hooks (`connectedCallback`, `componentWillLoad`, etc.)
+- `@Method()` decorated methods
+- `@Watch()` decorated methods
+- `@Listen()` decorated methods
+- `render()`
+
+```ts
+// ❌ Don't
+computeLabel() { ... }
+
+// ✅ Do
+private computeLabel() { ... }
+```
+
+---
+
+## `ComponentInterface` and `Loggable`
+
+Every component must implement `ComponentInterface` and `Loggable`, and wire up the logger.
+
+```ts
+import { Loggable, Logger, type LogInstance } from '@utils'
+
+export class Button implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('ds-button')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+}
+```
+
+---
+
+## JSDoc Comments
+
+Every `@Prop()`, `@Event()`, and `@Method()` must have a JSDoc comment. These comments are used to generate the API documentation automatically.
+
+```ts
+// ❌ Don't
+@Prop() readonly label: string
+
+// ✅ Do
+/** The visible label text displayed inside the button. */
+@Prop() readonly label: string
+```
+
+---
+
+## Component Description and `@slot` / `@part` Tags
+
+The JSDoc block above `@Component(...)` must have:
+
+1. **One sentence** describing what the component is and what it does.
+2. A `@slot` tag for every `<slot />` used in `render()`.
+3. A `@part` tag for every `part="..."` attribute used in `render()`.
+
+```ts
+/**
+ * Button provides a clickable element for triggering actions, submitting forms, or navigating.
+ *
+ * @slot - Button label text and/or icon children.
+ * @part native - The native `<button>` or `<a>` element.
+ * @part label - The text label wrapper.
+ */
+@Component({ tag: 'ds-button', shadow: true })
+export class Button implements ComponentInterface {}
+```
+
+---
+
+## Section Dividers
+
+Organize the class body with these dividers in this order:
+
+```ts
+/**
+ * PUBLIC PROPERTY API
+ * ------------------------------------------------------
+ */
+
+/**
+ * LIFECYCLE
+ * ------------------------------------------------------
+ */
+
+/**
+ * PROPERTY VALIDATION
+ * ------------------------------------------------------
+ */
+
+/**
+ * PUBLIC LISTENERS
+ * ------------------------------------------------------
+ */
+
+/**
+ * PUBLIC METHODS
+ * ------------------------------------------------------
+ */
+
+/**
+ * EVENT HANDLERS
+ * ------------------------------------------------------
+ */
+
+/**
+ * PRIVATE METHODS
+ * ------------------------------------------------------
+ */
+
+/**
+ * RENDER
+ * ------------------------------------------------------
+ */
+```
+
+---
+
+## SCSS — CSS Classes, Not Attribute Selectors
+
+Always use CSS class selectors for styling. Never use attribute selectors.
+
+When a prop is set via JavaScript, the HTML attribute may not exist. But CSS classes added in `render()` are always present.
+
+```scss
+// ❌ Don't — breaks when prop is set via JavaScript
+:host([color="primary"]) { ... }
+:host([disabled]) { ... }
+
+// ✅ Do — always works
+:host(.is-primary) { ... }
+:host(.is-disabled) { ... }
+```
+
+Add the matching classes in `render()`:
+
+```tsx
+render() {
+  return (
+    <Host
+      class={{
+        'is-primary': this.color === 'primary',
+        'is-disabled': this.disabled,
+      }}
+    >
+      <slot />
+    </Host>
+  )
+}
+```
+
+---
+
+## Quick Reference
+
+<Markdown>
+  {`
+| Rule | What to write |
+| --- | --- |
+| Imports | \`import { ... } from '@utils'\` |
+| Component tag | \`ds-button\` |
+| Class name | \`Button\` (no prefix) |
+| Prop | \`@Prop() readonly label: string = ''\` |
+| State prop | \`@Prop({ reflect: true }) readonly disabled: boolean = false\` |
+| Enum prop | \`readonly color: ButtonColor = ''\` |
+| Listen handler | \`listenToClick()\` |
+| Watch handler | \`valueChanged()\` |
+| DOM handler | \`handleClick = () => {}\` |
+| Event | \`dsChange: EventEmitter<string>\` |
+| Public method | \`async open(): Promise<void>\` |
+| Private method | \`private computeLabel()\` |
+| SCSS selector | \`:host(.is-primary)\` |
+  `}
+</Markdown>
+
+<Footer />

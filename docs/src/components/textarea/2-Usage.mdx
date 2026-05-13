@@ -1,0 +1,87 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as TextareaStories from './textarea.stories'
+import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
+
+<Meta title="Components/Forms/Textarea/Usage" />
+<Banner label={'Usage'} section={TEXTAREA_DOC_CONFIG.section} color={TEXTAREA_DOC_CONFIG.color} />
+<BannerTabs of={TextareaStories} tabs={getTextareaTabs('usage')} />
+
+## When to Use
+
+- Collect user feedback or comments
+- Accept longer text descriptions
+- Create text editors for note-taking
+- Collect detailed messages or reports
+- Allow multi-line input for addresses or special instructions
+
+## When NOT to Use
+
+- For single-line text — use input component instead
+- For predefined options — use select, radio, or checkbox
+- For very short responses — use input field
+- When space is extremely limited — consider collapsible or modal form
+- For code or structured data — use appropriate input types
+
+## Do's and Don'ts
+
+### Textarea Labels and Instructions
+
+Always provide clear labels and help text. Show character limits if applicable.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Label with instructions',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-textarea
+          label="Your Feedback"
+          placeholder="Please share your thoughts..."
+          description="Maximum 500 characters"
+        ></ds-textarea>
+      ),
+      description: 'Clear guidance on what to enter',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No label or instructions',
+      contentIsLeftAligned: true,
+      content: <ds-textarea placeholder="Enter text..."></ds-textarea>,
+      description: 'Users unsure of expected content',
+    },
+  ]}
+/>
+
+### Character Limits and Counters
+
+Show character counts for textareas with limits. Help users understand remaining space.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Character counter',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <ds-textarea label="Your Feedback" maxLength="100" placeholder="Enter message..." description="0 / 100 characters"></ds-textarea>
+          <div style={{ textAlign: 'left', marginTop: '12px' }}>
+            <Code noPreview code={'<ds-textarea \n  label="Your Feedback"\n  maxLength="100"\n  placeholder="Enter message..."\n  description="0 / 100 characters"\n></ds-textarea>'} />
+          </div>
+        </>
+      ),
+      description: 'Users see space remaining',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Hidden character limit',
+      contentIsLeftAligned: true,
+      content: <ds-textarea  label="Your Feedback" maxLength="100" placeholder="Enter message..."></ds-textarea>,
+      description: "Users don't know the limit",
+    },
+  ]}
+/>
+
+<Footer />

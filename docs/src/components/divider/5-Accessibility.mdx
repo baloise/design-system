@@ -1,0 +1,79 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DividerStories from './divider.stories'
+import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
+
+<Meta title="Components/Divider/Accessibility" />
+<Banner label={'Accessibility'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
+<BannerTabs
+  of={DividerStories}
+  tabs={getDividerTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use for Content Organization',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use dividers to visually organize content into meaningful sections. Screen reader users benefit from proper semantic structure, not visual lines alone.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Support Semantic HTML',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Pair dividers with semantic HTML elements like section or article to provide proper document structure for screen readers.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Sufficient Color Contrast',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure divider lines have sufficient contrast against their background. Light grey dividers may not be visible to users with low vision.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use ARIA Landmarks',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use ARIA landmark roles (main, nav, aside) in addition to visual dividers to help screen reader users navigate page structure.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Rely on Dividers Alone',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not use dividers as the only means of communicating content separation. Screen reader users depend on semantic HTML structure, not visual lines.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color Alone for Meaning',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely on divider color alone to communicate meaning. Use additional visual cues or textual labels so users with color blindness understand the distinction.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+<Footer />

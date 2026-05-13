@@ -1,0 +1,22 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
+
+<Meta title="Components/Close/Variants/Overview" />
+<StoryHeading of={CloseStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={CLOSE_DOC_CONFIG.section} color={CLOSE_DOC_CONFIG.color} />
+<BannerTabs
+  of={CloseStories}
+  tabs={getCloseTabs('variants')}
+/>
+
+> WIP - Coming soon
+
+<Footer />

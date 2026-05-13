@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { WithTooltip } from 'storybook/internal/components'
+import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
 import { FORCE_RE_RENDER } from 'storybook/internal/core-events'
 import { addons, useGlobals } from 'storybook/manager-api'
 
@@ -33,21 +33,28 @@ const JavaScriptSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 
 <path d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z"/>
 </svg>`
 
-const SvgIcons = {
+const SvgIcons: Record<string, string> = {
   angular: AngularSVG,
   react: ReactSVG,
   html: JavaScriptSVG,
-} as any
+}
 
-const labels = {
+const labels: Record<string, string> = {
   angular: 'Angular',
   html: 'HTML & JS',
   react: 'React',
-} as any
+}
 
 const frameworks = ['angular', 'html', 'react']
 
-const LOCAL_STORE_ID = 'bal-docs-framework'
+const LOCAL_STORE_ID = 'ds-docs-framework'
+
+const SvgIcon = ({ html, size = 16 }: { html: string; size?: number }) => (
+  <span
+    style={{ display: 'inline-flex', width: size, height: size, flexShrink: 0 }}
+    dangerouslySetInnerHTML={{ __html: html }}
+  />
+)
 
 const usePersisted = (initialValue: string) => {
   const [storedValue, setStoredValue] = useState(() => {
@@ -69,15 +76,14 @@ const usePersisted = (initialValue: string) => {
   return [storedValue, setValue]
 }
 
-export const registerFramework = (): React.FC => {
+export const registerFramework: React.FC = () => {
   const [persistedFramework, updatePersisted] = usePersisted('angular')
   const [globals, updateGlobals] = useGlobals()
-  let { framework } = globals
+  const { framework } = globals
 
   const urlSearchParams = new URLSearchParams(window.location.search)
   const params = Object.fromEntries(urlSearchParams.entries())
   let paramFramework = params.globals?.replace('framework:', '')
-
   paramFramework = frameworks.includes(paramFramework) ? paramFramework : ''
 
   React.useEffect(() => {
@@ -87,72 +93,34 @@ export const registerFramework = (): React.FC => {
     }
   }, [framework, persistedFramework])
 
-  const iframe = document.getElementById('storybook-preview-iframe') as HTMLIFrameElement
-  if (iframe && framework) {
-    const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document
-    if (iframeDocument) {
-      const body = iframeDocument.querySelector('body')
-      if (body) {
-        body.classList.add(`my-framework-${framework}`)
-      }
-    }
-  }
+  const active = framework ?? persistedFramework ?? 'angular'
 
   return (
-    <div className="my-framework">
-      <WithTooltip
-        placement="top"
-        trigger="click"
-        closeOnOutsideClick
-        tooltip={({ onHide }) => {
-          const handleItemClick = value => {
-            framework = value
-            updatePersisted(framework)
-            updateGlobals({ ...globals, framework })
-            onHide()
-          }
-
-          const isActive = f => (f === framework ? ` my-framework__tooltip__item--active` : '')
-
-          return (
-            <div className="my-framework__tooltip">
-              <a
-                id="angular"
-                className={`my-framework__tooltip__item${isActive('angular')}`}
-                onClick={() => handleItemClick('angular')}
-              >
-                <div className="my-framework__button__icon" dangerouslySetInnerHTML={{ __html: AngularSVG }}></div>
-                Angular
-              </a>
-              <a
-                id="html"
-                className={`my-framework__tooltip__item${isActive('html')}`}
-                onClick={() => handleItemClick('html')}
-              >
-                <div className="my-framework__button__icon" dangerouslySetInnerHTML={{ __html: JavaScriptSVG }}></div>
-                HTML &amp; JS
-              </a>
-              <a
-                id="react"
-                className={`my-framework__tooltip__item${isActive('react')}`}
-                onClick={() => handleItemClick('react')}
-              >
-                <div className="my-framework__button__icon" dangerouslySetInnerHTML={{ __html: ReactSVG }}></div>
-                React
-              </a>
-            </div>
-          )
-        }}
-      >
-        <button className="my-framework__button" title="Integration technology">
-          <span className="my-framework__button__label">Framework:</span>
-          <div
-            className="my-framework__button__icon"
-            dangerouslySetInnerHTML={{ __html: SvgIcons[globals.framework] }}
-          ></div>
-          {labels[globals.framework]}
-        </button>
-      </WithTooltip>
-    </div>
+    <WithTooltip
+      placement="top"
+      trigger="click"
+      closeOnOutsideClick
+      tooltip={({ onHide }) => (
+        <TooltipLinkList
+          links={frameworks.map(f => ({
+            id: f,
+            title: labels[f],
+            active: f === active,
+            onClick: () => {
+              updatePersisted(f)
+              updateGlobals({ ...globals, framework: f })
+              addons.getChannel().emit(FORCE_RE_RENDER)
+              onHide()
+            },
+            left: <SvgIcon html={SvgIcons[f]} size={16} />,
+          }))}
+        />
+      )}
+    >
+      <IconButton key="framework-toolbar" title="Integration technology" active={active !== 'angular'}>
+        <SvgIcon html={SvgIcons[active]} size={16} />
+        <span style={{ marginLeft: 6 }}>{labels[active]}</span>
+      </IconButton>
+    </WithTooltip>
   )
 }

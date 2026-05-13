@@ -1,0 +1,22 @@
+@use '../../hybrid' as hybrid;
+
+@use './divider.style' with (
+  $use-host: true
+);
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --divider-color: Color of the divider line.
+ * @prop --divider-width: Width or thickness of the divider line.
+ * @prop --divider-gap: Spacing around the divider.
+ * @prop --divider-font-size: Font size of divider label text if present.
+ * @prop --divider-font-weight: Font weight of divider label text if present.
+ */
+
+:host {
+  display: block;
+}

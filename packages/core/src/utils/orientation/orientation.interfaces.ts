@@ -1,8 +1,8 @@
-export type BalOrientationInfo = {
+export type DsOrientationInfo = {
   portrait: boolean
   landscape: boolean
 }
 
-export interface BalOrientationObserver {
-  orientationListener(info: BalOrientationInfo): void
+export interface DsOrientationObserver {
+  listenToOrientation(info: DsOrientationInfo): void
 }

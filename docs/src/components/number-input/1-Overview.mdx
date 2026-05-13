@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
+
+<Meta title="Components/Forms/Number-input/Overview" />
+
+<Banner label={'Overview'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
+
+<BannerTabs of={NumberInputStories} tabs={getNumberInputTabs('overview')} />
+
+<ComponentLead component="number-input" />
+
+<Canvas of={NumberInputStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-number-input',
+      label: 'Number Input',
+      content: <Controls of={NumberInputStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="number-input" />
+
+<Footer />

@@ -1,0 +1,25 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
+
+<Meta title="Components/Progress-bar/Styling" />
+
+<Banner label={'Styling'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
+
+<BannerTabs of={ProgressBarStories} tabs={getProgressBarTabs('styling')} />
+
+<ComponentParts component="progress-bar" />
+
+<ComponentCssVariables component="progress-bar" />
+
+<ComponentDesignTokens component="progress-bar" />
+
+<Footer />

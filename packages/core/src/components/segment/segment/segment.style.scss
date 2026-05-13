@@ -1,0 +1,24 @@
+@use './segment.mixin.scss' as segment;
+
+/**
+ * CSS-only segment: apply .segment to the container <div>.
+ *
+ *   <fieldset class="field">
+ *     <legend class="label">Label</legend>
+ *     <div class="segment [is-wide] [is-vertical] [is-vertical-on-mobile] [is-danger] [is-disabled]">
+ *       <label>
+ *         <input type="radio" name="group" value="a" />
+ *         <span>Option A</span>
+ *         <span class="description">Optional description</span>
+ *       </label>
+ *       ...
+ *     </div>
+ *     <p class="help">Description text</p>
+ *   </fieldset>
+ */
+
+@include segment.vars('.segment');
+@include segment.style('.segment');
+@include segment.vertical('.segment');
+@include segment.wide('.segment');
+@include segment.states('.segment');

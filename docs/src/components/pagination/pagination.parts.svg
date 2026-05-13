@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Design token primitives used:
+  Purple  1:#F9F3FF  3:#B8B2FF  5:#9F52CC
+  Yellow  1:#FFF9E8  4:#FFBE19  5:#FA9319
+  Red     1:#FFEEF1  4:#FF596F  5:#D9304C
+  Green   1:#E9FBF7  2:#CBF2EC  3:#94E3D4  4:#21D9AC  5:#00B28F  6:#1B5951
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="252" viewBox="0 0 880 252">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="880" height="252" fill="#ffffff"/>
+
+  <!-- ══════════════════════════════════════════════
+       ds-pagination  (host — Purple)
+       ══════════════════════════════════════════════ -->
+  <rect x="80" y="28" width="720" height="200"
+        fill="#F9F3FF" stroke="#B8B2FF" stroke-width="2"
+        stroke-dasharray="8,4" rx="12"/>
+  <rect x="80" y="18" width="110" height="18" fill="#9F52CC" rx="4"/>
+  <text x="135" y="31" text-anchor="middle"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="10" fill="#ffffff" font-weight="600">ds-pagination</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="navigation"  (Yellow)
+       ══════════════════════════════════════════════ -->
+  <rect x="100" y="44" width="680" height="174"
+        fill="#FFF9E8" stroke="#FFBE19" stroke-width="1.5"
+        stroke-dasharray="5,3" rx="8"/>
+  <rect x="100" y="34" width="138" height="18" fill="#FA9319" rx="4"/>
+  <text x="169" y="47" text-anchor="middle"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="10" fill="#ffffff" font-weight="600">part="navigation"</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="list"  (Green)
+       ══════════════════════════════════════════════ -->
+  <rect x="278" y="72" width="344" height="108"
+        fill="#E9FBF7" stroke="#21D9AC" stroke-width="1.5"
+        stroke-dasharray="4,2" rx="6"/>
+  <rect x="278" y="62" width="92" height="18" fill="#00B28F" rx="4"/>
+  <text x="324" y="75" text-anchor="middle"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="10" fill="#ffffff" font-weight="600">part="list"</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="previous"  (Red)
+       ══════════════════════════════════════════════ -->
+  <rect x="116" y="82" width="44" height="44"
+        fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"
+        rx="8" filter="url(#shadow)"/>
+  <text x="138" y="109" text-anchor="middle"
+        font-family="system-ui" font-size="22" fill="#D9304C">‹</text>
+  <rect x="101" y="68" width="116" height="16" fill="#D9304C" rx="4"/>
+  <text x="159" y="80" text-anchor="middle"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="9" fill="#ffffff" font-weight="600">part="previous"</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="page" — inactive  (Green, light)
+       ══════════════════════════════════════════════ -->
+  <rect x="286" y="88" width="40" height="40"
+        fill="#ffffff" stroke="#94E3D4" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="306" y="113" text-anchor="middle"
+        font-family="system-ui" font-size="13" fill="#1B5951">1</text>
+
+  <rect x="334" y="88" width="40" height="40"
+        fill="#ffffff" stroke="#94E3D4" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="354" y="113" text-anchor="middle"
+        font-family="system-ui" font-size="13" fill="#1B5951">2</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="page" — active  (Green, filled)
+       ══════════════════════════════════════════════ -->
+  <rect x="382" y="88" width="40" height="40"
+        fill="#00B28F" stroke="#00B28F" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="402" y="113" text-anchor="middle"
+        font-family="system-ui" font-size="13" font-weight="700" fill="#ffffff">3</text>
+
+  <rect x="430" y="88" width="40" height="40"
+        fill="#ffffff" stroke="#94E3D4" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="450" y="113" text-anchor="middle"
+        font-family="system-ui" font-size="13" fill="#1B5951">4</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="ellipsis"  (Green, muted)
+       ══════════════════════════════════════════════ -->
+  <rect x="478" y="88" width="40" height="40"
+        fill="#E9FBF7" stroke="#CBF2EC" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="498" y="114" text-anchor="middle"
+        font-family="system-ui" font-size="18" fill="#00B28F">…</text>
+
+  <rect x="526" y="88" width="40" height="40"
+        fill="#ffffff" stroke="#94E3D4" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="546" y="113" text-anchor="middle"
+        font-family="system-ui" font-size="11" fill="#1B5951">19</text>
+
+  <rect x="574" y="88" width="40" height="40"
+        fill="#ffffff" stroke="#94E3D4" stroke-width="1.5"
+        rx="6" filter="url(#shadow)"/>
+  <text x="594" y="113" text-anchor="middle"
+        font-family="system-ui" font-size="11" fill="#1B5951">20</text>
+
+  <!-- ══════════════════════════════════════════════
+       part="next"  (Red)
+       ══════════════════════════════════════════════ -->
+  <rect x="720" y="82" width="44" height="44"
+        fill="#FFEEF1" stroke="#FF596F" stroke-width="1.5"
+        rx="8" filter="url(#shadow)"/>
+  <text x="742" y="109" text-anchor="middle"
+        font-family="system-ui" font-size="22" fill="#D9304C">›</text>
+  <rect x="699" y="68" width="86" height="16" fill="#D9304C" rx="4"/>
+  <text x="742" y="80" text-anchor="middle"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="9" fill="#ffffff" font-weight="600">part="next"</text>
+
+  <!-- ══════════════════════════════════════════════
+       Callout lines + pills for page states & ellipsis
+       ══════════════════════════════════════════════ -->
+  <line x1="306" y1="128" x2="306" y2="168" stroke="#94E3D4" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="402" y1="128" x2="402" y2="168" stroke="#00B28F" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="498" y1="128" x2="498" y2="168" stroke="#CBF2EC" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- page inactive pill -->
+  <rect x="228" y="168" width="156" height="20"
+        fill="#ffffff" stroke="#94E3D4" stroke-width="1" rx="4"/>
+  <text x="255" y="182" text-anchor="start"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="9.5" fill="#00B28F" font-weight="700">part="page"</text>
+  <text x="337" y="182" text-anchor="start"
+        font-family="system-ui,-apple-system,sans-serif"
+        font-size="9" fill="#94E3D4"> inactive</text>
+
+  <!-- page active pill -->
+  <rect x="338" y="168" width="128" height="20"
+        fill="#00B28F" stroke="#00B28F" stroke-width="1" rx="4"/>
+  <text x="362" y="182" text-anchor="start"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="9.5" fill="#ffffff" font-weight="700">part="page"</text>
+  <text x="432" y="182" text-anchor="start"
+        font-family="system-ui,-apple-system,sans-serif"
+        font-size="9" fill="#CBF2EC"> active</text>
+
+  <!-- ellipsis pill -->
+  <rect x="434" y="168" width="128" height="20"
+        fill="#E9FBF7" stroke="#CBF2EC" stroke-width="1" rx="4"/>
+  <text x="458" y="182" text-anchor="start"
+        font-family="ui-monospace,Menlo,monospace"
+        font-size="9.5" fill="#00B28F" font-weight="700">part="ellipsis"</text>
+
+</svg>

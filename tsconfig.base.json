@@ -25,47 +25,26 @@
       "dom"
     ],
     "paths": {
-      "@baloise/ds-angular": [
-        "packages/angular/src/index.ts"
+      "@utils": [
+        "packages/core/src/utils/index.ts"
       ],
-      "@baloise/ds-tokens": [
-        "packages/tokens/dist/tokens.js"
-      ],
-      "@baloise/ds-brand-icons": [
-        "packages/brand-icons/src/index.ts"
+      "@global": [
+        "packages/core/src/global/index.ts"
       ],
       "@baloise/ds-core": [
         "packages/core/src/index.ts"
       ],
-      "@baloise/ds-devkit": [
-        "packages/devkit/src/index.ts"
-      ],
-      "@baloise/ds-icons": [
-        "packages/icons/src/index.ts"
-      ],
-      "@baloise/ds-maps": [
-        "packages/maps/src/index.ts"
-      ],
-      "@baloise/ds-nx": [
-        "libs/nx/src/index.ts"
+      "@baloise/ds-tokens": [
+        "packages/tokens/dist/tokens.js"
       ],
       "@baloise/ds-playwright": [
         "packages/playwright/src/index.ts"
       ],
-      "@baloise/ds-react": [
-        "packages/react/src/index.ts"
-      ],
-      "@baloise/ds-table": [
-        "packages/table/src/index.ts"
-      ],
-      "@baloise/ds-testing": [
-        "packages/testing/src/index.ts"
-      ],
       "@baloise/output-target-angular": [
         "libs/output-target-angular/src/index.ts"
       ],
-      "@baloise/output-target-react": [
-        "libs/output-target-react/src/index.ts"
+      "@baloise/output-target-web": [
+        "libs/output-target-web/src/index.ts"
       ]
     }
   },

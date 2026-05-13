@@ -16,7 +16,7 @@ export const Code = ({ code, preview, language, border = false, noPreview = unde
       ></div>
       <div
         style={{ marginTop: noPreview === true ? '0px' : '-24px' }}
-        className={`${noPreview === true ? 'radius-normal' : ''}`}
+        className={`${noPreview === true ? 'radius' : ''}`}
       >
         <Source dark language={language || 'html'} code={code} />
       </div>

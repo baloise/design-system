@@ -1,0 +1,86 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ButtonStories from './button.stories'
+import { BUTTON_DOC_CONFIG, getButtonTabs } from './button.doc-config'
+
+<Meta title="Components/Button/Accessibility" />
+<Banner label={'Accessibility'} section={BUTTON_DOC_CONFIG.section} color={BUTTON_DOC_CONFIG.color} />
+<BannerTabs
+  of={ButtonStories}
+  tabs={getButtonTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Descriptive Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always use specific, action-oriented button labels. Avoid generic labels like "Click here" or "Submit" — write "Save changes" or "Delete account" so users understand the outcome before activating the button.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Icon-only Buttons',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Add <code>aria-label</code> (or the <code>a11yLabel</code> prop on <code>ds-button</code>) to every icon-only square or circle button. Screen readers will announce the label instead of the absent text content.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Button Type',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          For HTML-only usage, always set <code>type="button"</code>, <code>type="submit"</code>, or <code>type="reset"</code> on <code>&lt;button&gt;</code> elements. Omitting the type defaults to submit in some browsers, causing unintended form submissions.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Loading State',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When showing a loading state, ensure the button is also disabled so users cannot trigger multiple submissions. Provide context via <code>aria-busy="true"</code> if you manage this manually in HTML.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color as the Only Cue',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely solely on button color to communicate meaning. A red "danger" button must also carry a descriptive label or surrounding context — color alone is not perceivable for users with color blindness.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Disabled Buttons Without Context',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid using disabled buttons as placeholders without explaining why the action is unavailable. If a button must remain disabled, provide nearby text explaining the condition required to enable it.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: `<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) — Semantics and type attribute usage.
+- [MDN: aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) — Provides an accessible name for elements without visible text.
+- [MDN: aria-disabled](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled) — Communicates disabled state to assistive technology.
+- [WCAG 2.1 — Name, Role, Value (4.1.2)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html) — All interactive controls must have an accessible name.
+
+<Footer />

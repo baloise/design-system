@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as InputStories from './input.stories'
+import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
+
+<Meta title="Components/Forms/Input/Accessibility" />
+<Banner label={'Accessibility'} section={INPUT_DOC_CONFIG.section} color={INPUT_DOC_CONFIG.color} />
+<BannerTabs
+  of={InputStories}
+  tabs={getInputTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Associated Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always associate a <code>&lt;label&gt;</code> with the input using the <code>for</code> attribute matching the input's <code>id</code>. Screen readers need this relationship.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Clear Error Messages',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Provide specific error messages explaining what's wrong and how to fix it. Link error messages to the input with <code>aria-describedby</code>.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Indicate Required Fields',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use the <code>required</code> attribute and visually mark required fields with an asterisk (*) or text label. Screen readers announce required status.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Validation in Real-time',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Provide validation feedback as users type or after they leave the field. Use aria-live regions to announce validation state changes.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Placeholder as Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use placeholder text as the only label. Placeholders disappear when users type, and screen readers don't always announce them.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Color-only Validation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't rely on color alone to show validation state (red for error, green for valid). Include icons, text, or other indicators.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The input component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Labels (1.3.1)** — Inputs have properly associated labels
+- **Identification of Input (3.3.2)** — Input purpose is clearly labeled
+- **Error Identification (3.3.1)** — Errors are identified and described in text
+- **Error Suggestion (3.3.4)** — Helpful suggestions for correcting errors
+- **Focus Visible (2.4.7)** — Clear focus indicator on input fields
+
+<Footer />

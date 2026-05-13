@@ -1,0 +1,35 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
+
+<Meta title="Components/Close/Overview" />
+
+<Banner label={'Overview'} section={CLOSE_DOC_CONFIG.section} color={CLOSE_DOC_CONFIG.color} />
+
+<BannerTabs of={CloseStories} tabs={getCloseTabs('overview')} />
+
+<ComponentLead component="close" />
+
+<Canvas of={CloseStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-close',
+      label: 'Close',
+      content: <Controls of={CloseStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="close" />
+
+<Footer />

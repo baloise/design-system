@@ -1,0 +1,85 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as BadgeStories from './badge.stories'
+import BadgeParts from './badge.parts.svg'
+import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
+
+<Meta title="Components/Badge/Variants/Overview" />
+<StoryHeading of={BadgeStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
+<BannerTabs
+  of={BadgeStories}
+  tabs={getBadgeTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.WithIcon}></StoryHeading>
+
+A badge can optionally include an icon by setting the `icon` prop.
+The icon will only be rendered if the badge size is not `small`, as small badges are designed to be compact and
+may not have enough space to accommodate an icon without compromising readability.
+
+<Canvas of={BadgeStories.WithIcon} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Colors}></StoryHeading>
+
+A badge can be styled with different color variants to indicate various statuses or categories. The available color variants are:
+
+<Canvas of={BadgeStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Sizes}></StoryHeading>
+
+A badge can be rendered in different sizes to accommodate various design requirements. The available sizes are:
+
+<Canvas of={BadgeStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ListBadges}></StoryHeading>
+
+A badge can be used in combination with list items to indicate unread messages, notifications, or other status information.
+When used in a list context, the badge is typically positioned at the end of the list item to provide a clear visual cue.
+
+<Canvas of={BadgeStories.ListBadges} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.CardBadge}></StoryHeading>
+
+A badge can be used in combination with a card component to indicate notifications, status, or other relevant information.
+When used in a card context, the badge is often positioned at the top-right corner of the card to ensure visibility and prominence.
+
+<Canvas of={BadgeStories.CardBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ButtonBadge}></StoryHeading>
+
+With the pulse animation, the badge can draw attention to the button, indicating that there is new information or an action that requires the user's attention.
+
+<Canvas of={BadgeStories.ButtonBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.TabsBadge}></StoryHeading>
+
+WIP
+
+<Canvas of={BadgeStories.TabsBadge} />
+
+<Footer />

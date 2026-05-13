@@ -1,0 +1,52 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as AccordionStories from './accordion.stories'
+import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
+
+<Meta title="Components/Accordion/Variants/Overview" />
+<Banner label={'Variants'} section={ACCORDION_DOC_CONFIG.section} color={ACCORDION_DOC_CONFIG.color} />
+<BannerTabs of={AccordionStories} tabs={getAccordionTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.PlusMarkerAccordion}></StoryHeading>
+
+Customize the marker icon that indicates the open/closed state. Options include the default arrow, plus icon, or plus/minus toggle.
+
+<Canvas of={AccordionStories.PlusMarkerAccordion} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.LeftMarkerAccordion}></StoryHeading>
+
+Position the marker on the left side of the accordion button for a different visual style and improved accessibility.
+
+<Canvas of={AccordionStories.LeftMarkerAccordion} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.StackAccordion}></StoryHeading>
+
+Customize the accordion summary with a stacked layout.
+This is ideal for hiding complex content behind a simple header while still providing a clear visual hierarchy.
+
+<Canvas of={AccordionStories.StackAccordion} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.AccordionGroup}></StoryHeading>
+
+Use the `group` prop to ensure only one accordion in a group can be open at a time. This is useful for FAQs and other exclusive-choice content.
+
+<Canvas of={AccordionStories.AccordionGroup} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.AccordionButton}></StoryHeading>
+
+Use the `button` prop to render the accordion summary as a native button element, improving accessibility and keyboard navigation support.
+
+<Canvas of={AccordionStories.AccordionButton} />
+
+<Footer />

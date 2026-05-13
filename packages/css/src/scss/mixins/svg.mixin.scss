@@ -1,0 +1,17 @@
+@mixin fillSvg($color) {
+  svg,
+  g,
+  path,
+  circle {
+    fill: $color;
+  }
+}
+
+@mixin fillSvgImportant($color) {
+  svg,
+  g,
+  path,
+  circle {
+    fill: $color !important;
+  }
+}

@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
@@ -56,7 +56,7 @@ export const TokensContainersSpace = ({ overview }): React.ReactElement => {
             <tr>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <p className="font-weight-bold m-none">{key}</p>
-                <p className="inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small bg-grey-2 radius-normal font-weight-bold">
+                <p className="inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small bg-grey-2 radius font-weight-bold">
                   var(--{item.name})
                 </p>
               </td>

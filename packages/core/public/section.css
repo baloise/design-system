@@ -43,6 +43,14 @@ main > section > span:first-child {
   width: 100% !important;
 }
 
+.s-w-third {
+  width: 30% !important;
+}
+
+.s-w-half {
+  width: 50% !important;
+}
+
 .s-height-2rem {
   height: 2rem !important;
 }

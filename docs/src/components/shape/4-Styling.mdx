@@ -1,0 +1,25 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ShapeStories from './shape.stories'
+import { SHAPE_DOC_CONFIG, getShapeTabs } from './shape.doc-config'
+
+<Meta title="Components/Shape/Styling" />
+
+<Banner label={'Styling'} section={SHAPE_DOC_CONFIG.section} color={SHAPE_DOC_CONFIG.color} />
+
+<BannerTabs of={ShapeStories} tabs={getShapeTabs('styling')} />
+
+<ComponentParts component="shape" />
+
+<ComponentCssVariables component="shape" />
+
+<ComponentDesignTokens component="shape" />
+
+<Footer />

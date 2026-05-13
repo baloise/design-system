@@ -1,0 +1,60 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ContentStories from './content.stories'
+import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
+
+<Meta title="Components/Content/Accessibility" />
+<Banner label={'Accessibility'} section={CONTENT_DOC_CONFIG.section} color={CONTENT_DOC_CONFIG.color} />
+<BannerTabs
+  of={ContentStories}
+  tabs={getContentTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Proper Heading Hierarchy',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use proper heading levels (h1, h2, h3) within content sections. Don't skip heading levels.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No Semantic Landmarks',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use generic divs without semantic roles. Screen readers need to understand content structure.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Broken Heading Hierarchy',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't skip heading levels or use heading styles for non-headings. Maintains structure for screen readers.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The content component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Semantic Structure (1.3.1)** — Uses proper roles and heading hierarchy
+- **Page Structure (2.4.6)** — Clear organization with headings and sections
+- **Meaningful Sequence (1.3.2)** — Reading order makes sense
+
+<Footer />

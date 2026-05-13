@@ -2,6 +2,7 @@ import { DOCS_PREPARED, DOCS_RENDERED, STORY_PREPARED, STORY_RENDERED } from 'st
 import { addons, types } from 'storybook/manager-api'
 import { registerCookie } from './addons/cookie.addon'
 import { registerFramework } from './addons/framework.addon'
+import { registerTheme } from './addons/theme.addon'
 import { SourcePanel } from './addons/source-panel.addon'
 import { registerVersion } from './addons/version.addon'
 import baloiseTheme from './bal.theme'
@@ -10,11 +11,22 @@ addons.setConfig({
   theme: baloiseTheme,
   sidebar: {
     showRoots: true,
-    collapsedRoots: ['foundation', 'development', 'css-utilities', 'components', 'tokens'],
+    collapsedRoots: ['foundation', 'css-utilities', 'components', 'tokens', 'development', 'contributing'],
+    filters: {
+      cssOnly: item => !item.name.startsWith('🌍'),
+    },
   },
 })
 
 addons.register('my/cookie', () => registerCookie())
+
+addons.register('my/theme', () => {
+  addons.add('my-theme-addon/toolbar', {
+    title: 'Brand theme',
+    type: types.TOOLEXTRA,
+    render: registerTheme as any,
+  })
+})
 
 addons.register('my/framework', () => {
   addons.add('my-framework-addon/toolbar', {
@@ -44,22 +56,22 @@ addons.register('my/title', api => {
   api.on(STORY_PREPARED, () => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
-      document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+      document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
     }
   })
   api.on(STORY_RENDERED, () => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
-      document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+      document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
     }
   })
   api.on(DOCS_PREPARED, () => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
       if (storyData.title === 'Welcome' || storyData.title === 'Design System') {
-        document.title = `Baloise Design System`
+        document.title = `Helvetia Design System`
       } else {
-        document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+        document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
       }
     }
   })
@@ -67,9 +79,9 @@ addons.register('my/title', api => {
     const storyData = api.getCurrentStoryData()
     if (storyData) {
       if (storyData.title === 'Welcome' || storyData.title === 'Design System') {
-        document.title = `Baloise Design System`
+        document.title = `Helvetia Design System`
       } else {
-        document.title = `${storyData.title.split('/').pop()} • Baloise Design System`
+        document.title = `${storyData.title.split('/').pop()} • Helvetia Design System`
       }
     }
   })

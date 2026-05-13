@@ -25,7 +25,7 @@ body:
     id: proposed-solution
     attributes:
       label: Preferred Solution
-      description: Provide a precise and succinct explanation of how you want to add this feature into the Baloise Design System.
+      description: Provide a precise and succinct explanation of how you want to add this feature into the Helvetia Design System.
   - type: textarea
     id: additional-information
     attributes:

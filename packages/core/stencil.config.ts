@@ -1,47 +1,30 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
+import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from '@baloise/output-target-web'
-import { CustomDocumentationGenerator } from './config/doc-output-target'
-import { docsJsonWithoutTimestamp } from './config/docs-json-no-timestamp'
+import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
-const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
-const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
-const IS_BAL_DEVELOPMENT = process.env.BAL_DEVELOPMENT === 'true'
-const IS_BAL_TESTING = process.env.BAL_TESTING === 'true'
-const IS_BAL_PLAYWRIGHT_TESTING = process.env.BAL_PLAYWRIGHT_TESTING === 'true'
+const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
+const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
 
-if (IS_BAL_DS_RELEASE) {
-  console.log('')
-  console.log('🚀 Build is set to release 🚀')
-  console.log('')
+let message = ''
+
+if (IS_DS_RELEASE) {
+  message = '🚀 Build is set to release 🚀'
 }
 
-if (IS_BAL_DOCUMENTATION) {
-  console.log('')
-  console.log('📝 Build is set to documentation 📝')
-  console.log('')
+if (IS_DS_DEVELOPMENT) {
+  message = '👷 Build is set to development 👷'
 }
 
-if (IS_BAL_DEVELOPMENT) {
+if (message) {
   console.log('')
-  console.log('👷 Build is set to development 👷')
-  console.log('')
-}
-
-if (IS_BAL_TESTING) {
-  console.log('')
-  console.log('🧪 Build is set to testing 🧪')
-  console.log('')
-}
-
-if (IS_BAL_PLAYWRIGHT_TESTING) {
-  console.log('')
-  console.log('🎭 Build is set to testing 🎭')
+  console.log(message)
   console.log('')
 }
 
@@ -52,18 +35,20 @@ const nodeModulesWorkspace = join(workspaceDir, 'node_modules')
 
 export const config: Config = {
   autoprefixCss: true,
-  sourceMap: IS_BAL_TESTING || IS_BAL_DEVELOPMENT,
-  namespace: 'baloise-design-system',
+  sourceMap: false,
+  namespace: 'design-system',
+  preamble: '(C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
-  buildEs5: 'prod',
-  globalScript: 'src/global.ts',
-  globalStyle: 'src/global.scss',
-  tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
+  transformAliasedImportPaths: true,
+  globalScript: 'src/global/global.ts',
+  globalStyle: 'src/global/global.scss',
+  tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
   plugins: [
     sass({
       outputStyle: 'compressed',
       includePaths: [nodeModulesWorkspace, nodeModulesProject, 'node_modules'],
+      silenceDeprecations: ['bogus-combinators'],
     }),
   ],
   extras: {
@@ -73,70 +58,77 @@ export const config: Config = {
      * lazily loads components in a way that works with additional bundlers. Setting this flag to `true` will increase
      * the size of the compiled output. Defaults to `false`.
      */
-    enableImportInjection: true,
+    enableImportInjection: !IS_DS_DEVELOPMENT, // true,
     /**
      * When a component is first attached to the DOM, this setting will wait a single tick before
      * rendering. This works around an Angular issue, where Angular attaches the elements before
      * settings their initial state, leading to double renders and unnecessary event dispatches.
      * Defaults to `false`.
      */
-    initializeNextTick: true,
+    initializeNextTick: !IS_DS_DEVELOPMENT, // true,
     /**
-     * `experimentalSlotFixes` is necessary in Stencil v4 until the fixes described in
-     * {@link https://stenciljs.com/docs/config-extras#experimentalslotfixes the Stencil docs for the flag} are the
-     * default behavior (slated for a future Stencil major version).
+     * This option enables all current and future slot-related fixes.
+     * {@link https://stenciljs.com/docs/config-extras#experimentalslotfixes}
      */
-    experimentalSlotFixes: false,
-    /**
-     * `experimentalScopedSlotChanges` is necessary in Stencil v4 until the fixes described in
-     * {@link https://stenciljs.com/docs/config-extras#experimentalscopedslotchanges the Stencil docs for the flag} are
-     * the default behavior (slated for a future Stencil major version).
-     */
-    experimentalScopedSlotChanges: true,
+    experimentalSlotFixes: true,
   },
   outputTargets: [
-    docsJsonWithoutTimestamp({
-      type: 'docs-json',
-      file: '../../resources/data/components.json',
-    }),
-    ...(!IS_BAL_PLAYWRIGHT_TESTING
-      ? [
-          {
-            type: 'dist',
-            esmLoaderPath: '../loader',
-          },
-        ]
-      : []),
     /**
-     * Use this outputs for documentation and e2e testing
+     * The dist type is to generate the component(s) as a reusable library that can be self-lazy loading, such as Ionic.
+     * When creating a distribution, the project's package.json will also have to be updated. However,
+     * the generated bundle is tree-shakable, ensuring that only imported components will end up in the build.
+     *
+     * {@link https://stenciljs.com/docs/distribution}
      */
-    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_PLAYWRIGHT_TESTING
-      ? [
-          CustomDocumentationGenerator,
-          webOutputTarget({
-            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-            isTest: IS_BAL_TESTING,
-          }),
-          {
-            type: 'dist-custom-elements',
-            dir: IS_BAL_TESTING ? '../../e2e/generated/components' : 'components',
-            empty: true,
-            includeGlobalScripts: false,
-            generateTypeDeclarations: true,
-          },
-        ]
-      : []),
+    !IS_DS_DEVELOPMENT && {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    /**
+     * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
+     * simple utility functions for easily defining these elements on the Custom Element Registry. This output target
+     * excels in use in frontend frameworks and projects that will handle bundling, lazy-loading,
+     * and custom element registration themselves.
+     *
+     * {@link https://stenciljs.com/docs/custom-elements}
+     */
+    !IS_DS_DEVELOPMENT && {
+      type: 'dist-custom-elements',
+      dir: 'components',
+      includeGlobalScripts: false,
+      generateTypeDeclarations: true,
+      /**
+       * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
+       * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
+       * contains a dynamic import that caused a warning in Angular.
+       */
+      externalRuntime: false,
+    },
+    /**
+     * Custom output target that generates web components as standalone custom elements
+     * that can be used directly without a framework or bundler.
+     *
+     * {@link https://stenciljs.com/docs/custom-elements}
+     */
+    !IS_DS_DEVELOPMENT &&
+      webOutputTarget({
+        dir: 'components',
+      }),
+    /**
+     * The www output target type is oriented for webapps and websites, hosted from an http server, which can benefit
+     * from prerendering and service workers, such as this very site you're reading. If the outputTarget config is not
+     * provided it'll default to having just the www type.
+     *
+     * {@link https://stenciljs.com/docs/www}
+     */
     {
       type: 'www',
-      dir: IS_BAL_TESTING ? '../../e2e/generated/www' : 'www',
+      dir: 'www',
       serviceWorker: false,
-      empty: true,
+      empty: false,
       copy: [
         {
           src: '**/*.html',
-        },
-        {
-          src: 'components.d.ts',
         },
         {
           src: join(packagesDir, 'core', 'public', 'section.css'),
@@ -144,183 +136,51 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: join(packagesDir, 'core', 'public', 'future-logo.svg'),
-          dest: 'assets/future-logo.svg',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'core', 'public', 'future-logo-red.svg'),
-          dest: 'assets/future-logo-red.svg',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'core', 'public', 'future-logo-black.svg'),
-          dest: 'assets/future-logo-black.svg',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'tcs.css'),
-          dest: 'assets/tcs.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'santander.css'),
-          dest: 'assets/santander.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'future.css'),
-          dest: 'assets/future.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'themes', 'compact.css'),
-          dest: 'assets/compact.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'all.css'),
-          dest: 'assets/all.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'basic.min.css'),
-          dest: 'assets/basic.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'components', 'all.min.css'),
-          dest: 'assets/components.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'styles', 'css', 'utilities', 'all.min.css'),
-          dest: 'assets/utilities.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'tokens', 'dist', 'tokens.css'),
-          dest: 'assets/tokens.css',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'maps', 'dist', 'index.esm.js'),
-          dest: 'assets/maps.js',
-          warn: true,
-        },
-        {
-          src: join(packagesDir, 'fonts', 'assets'),
+          src: join(packagesDir, 'assets', 'src', 'fonts'),
           dest: 'assets/fonts',
           warn: true,
         },
         {
-          src: join(packagesDir, 'brand-icons', 'src', 'assets'),
-          dest: 'assets/images/brand-icons',
+          src: join(packagesDir, 'core', 'public', 'images'),
+          dest: 'assets/images',
           warn: true,
         },
       ],
     },
     /**
-     * Skip those outputs for documentation releases on vercel and for e2e testing
+     * One of the core features of web components is the ability to create custom elements, which
+     * allow developers to reuse custom functionality defined in their components. When Stencil compiles a
+     * project, it generates a custom element for each component in the project. Each of these custom
+     * elements has an associated tag name that allows the custom element to be used in HTML files.
+     *
+     * {@link https://stenciljs.com/docs/docs-vscode#vs-code-documentation}
      */
-    ...(!IS_BAL_DEVELOPMENT && !IS_BAL_DOCUMENTATION && !IS_BAL_TESTING && !IS_BAL_PLAYWRIGHT_TESTING
-      ? [
-          {
-            type: 'docs-vscode',
-            file: 'dist/html.html-data.json',
-            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-          },
-          ReactGenerator(),
-          AngularGenerator(),
-        ]
-      : []),
-  ],
-  bundles: [
-    { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },
-    { components: ['bal-app'] },
-    { components: ['bal-badge'] },
-    { components: ['bal-button', 'bal-button-group'] },
-    {
-      components: [
-        'bal-card',
-        'bal-card-actions',
-        'bal-card-button',
-        'bal-card-content',
-        'bal-card-subtitle',
-        'bal-card-title',
-      ],
+    !IS_DS_DEVELOPMENT && {
+      type: 'docs-vscode',
+      file: 'docs/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
     },
-    { components: ['bal-close'] },
-    { components: ['bal-segment', 'bal-segment-item'] },
-    { components: ['bal-data', 'bal-data-item', 'bal-data-label', 'bal-data-value'] },
-    { components: ['bal-footer'] },
-    { components: ['bal-heading', 'bal-text'] },
-    { components: ['bal-icon'] },
-    { components: ['bal-carousel', 'bal-carousel-item'] },
-    {
-      components: [
-        'bal-list',
-        'bal-list-item',
-        'bal-list-item-accordion-head',
-        'bal-list-item-accordion-body',
-        'bal-list-item-content',
-        'bal-list-item-icon',
-        'bal-list-item-title',
-        'bal-list-item-subtitle',
-      ],
-    },
-    { components: ['bal-logo'] },
-    {
-      components: ['bal-navbar', 'bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
-    },
-    { components: ['bal-pagination'] },
-    { components: ['bal-popover', 'bal-popover-content', 'bal-hint', 'bal-hint-text', 'bal-hint-title'] },
-    { components: ['bal-shape'] },
-    { components: ['bal-spinner'] },
-    {
-      components: [
-        'bal-stage',
-        'bal-stage-back-link',
-        'bal-stage-body',
-        'bal-stage-foot',
-        'bal-stage-head',
-        'bal-stage-image',
-      ],
-    },
-    { components: ['bal-table'] },
-    { components: ['bal-tabs', 'bal-tab-item'] },
-    { components: ['bal-tag', 'bal-tag-group'] },
-    //
-    // form components
-    { components: ['bal-checkbox', 'bal-checkbox-group'] },
-    { components: ['bal-field', 'bal-field-label', 'bal-field-control', 'bal-field-message', 'bal-field-hint'] },
-    { components: ['bal-file-upload'] },
-    { components: ['bal-form'] },
-    { components: ['bal-form-grid', 'bal-form-col'] },
-    { components: ['bal-input'] },
-    { components: ['bal-input-group'] },
-    { components: ['bal-input-slider'] },
-    { components: ['bal-input-stepper'] },
-    { components: ['bal-number-input'] },
-    { components: ['bal-radio', 'bal-radio-group'] },
-    { components: ['bal-select', 'bal-select-option'] },
-    { components: ['bal-textarea'] },
-    { components: ['bal-time-input'] },
-    {
-      components: ['bal-dropdown', 'bal-option-list', 'bal-option'],
-    },
-    //
-    // overlay components
-    { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },
-    { components: ['bal-notices', 'bal-toast', 'bal-snackbar'] },
-    { components: ['bal-notification'] },
-    { components: ['bal-sheet'] },
-  ],
+    /**
+     * Custom output target that generates docs JSON without timestamps and file paths.
+     * Enriches components with design tokens from Base.tokens.json and extracts CSS variable docs
+     * from component SCSS files. Produces a clean, reusable docs/components.json for consistent git diffs.
+     *
+     * {@link https://stenciljs.com/docs/docs-json}
+     */
+    !IS_DS_DEVELOPMENT &&
+      enrichComponentDocsJson({
+        type: 'docs-json',
+        file: 'docs/components.json',
+      }),
+  ].filter(Boolean) as any,
   rollupPlugins: {
     before: [
       {
         name: 'watch-external',
         async buildStart() {
+          /**
+           * Add stylesheets (.scss) and template (.html) files to the watcher.
+           */
           const styleFiles = await fg(resolve(__dirname, './src/**/*.scss'))
           for (const file of styleFiles) {
             this.addWatchFile(file)
@@ -330,6 +190,34 @@ export const config: Config = {
           for (const file of templateFiles) {
             this.addWatchFile(file)
           }
+
+          /**
+           * Generating the tags.json list
+           */
+          const componentFiles = await fg(resolve(__dirname, './src/components/**/*.tsx'))
+          const allTags = (
+            await Promise.all(
+              componentFiles.map(async f => {
+                const src = await readFile(f, 'utf-8')
+                const m = src.match(/tag:\s*['"]([^'"]+)['"]/)
+                return m ? m[1] : null
+              }),
+            )
+          )
+            .filter((t): t is string => !!t)
+            .sort()
+
+          const constantsDir = resolve(__dirname, 'src/global/constants')
+          const destDir = resolve(__dirname, 'docs')
+
+          await mkdir(constantsDir, { recursive: true })
+          await writeFile(
+            resolve(constantsDir, 'tags.constant.ts'),
+            `// This file is auto-generated by stencil.config.ts - do not edit manually\n\nexport const tags: string[] = ${JSON.stringify(allTags, null, 2)}\n`,
+          )
+
+          await mkdir(destDir, { recursive: true })
+          await writeFile(resolve(destDir, 'tags.json'), JSON.stringify(allTags, null, 2))
         },
       },
     ],

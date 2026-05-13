@@ -1,0 +1,79 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as StackStories from './stack.stories'
+import { STACK_DOC_CONFIG, getStackTabs } from './stack.doc-config'
+
+<Meta title="Components/Stack/Accessibility" />
+<Banner label={'Accessibility'} section={STACK_DOC_CONFIG.section} color={STACK_DOC_CONFIG.color} />
+<BannerTabs
+  of={StackStories}
+  tabs={getStackTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Semantic Content Structure',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use stack for layout purposes while maintaining semantic HTML within child elements. Stack itself is a layout utility and does not affect document semantics.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Logical Reading Order',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Arrange items in stack in a logical reading order that matches the visual flow. Screen reader users should encounter content in the same order as visually presented.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Responsive Direction',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using row layouts, ensure content remains readable and usable on small screens. Consider changing direction to column on mobile devices.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Visible Focus Indicators',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          If stack contains interactive elements, ensure they have clear focus indicators. Layout should not obscure or hide focus outlines.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Visual Order Only',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely on CSS order property to meaningfully reorder content for screen readers. Document order in HTML should match the intended reading sequence.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Overcomplicated Nesting',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid excessive stack nesting, which can make DOM navigation difficult for screen reader users and complex for assistive technology to traverse.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+<Footer />

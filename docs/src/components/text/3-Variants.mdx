@@ -1,0 +1,90 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as TextStories from './text.stories'
+import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
+
+<Meta title="Components/Text/Variants/Overview" />
+<StoryHeading of={TextStories.Basic} hidden></StoryHeading>
+<Banner label={'Variants'} section={TEXT_DOC_CONFIG.section} color={TEXT_DOC_CONFIG.color} />
+<BannerTabs
+  of={TextStories}
+  tabs={getTextTabs('variants')}
+/>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.BoldText}></StoryHeading>
+
+Demonstrates the bold text variant for emphasizing important information.
+
+<Canvas of={TextStories.BoldText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.DisabledText}></StoryHeading>
+
+Demonstrates the disabled text variant for indicating non-interactive or unavailable content.
+
+<Canvas of={TextStories.DisabledText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.NestedText}></StoryHeading>
+
+Demonstrates the nested text variant for indicating hierarchical or grouped content.
+
+<Canvas of={TextStories.NestedText} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+
+<StoryHeading of={TextStories.Sizes}></StoryHeading>
+
+Different size variants to represent different levels of emphasis and hierarchy.
+
+<Canvas of={TextStories.Sizes} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Colors}></StoryHeading>
+
+Different color variants to represent different semantic meanings and emphasis levels.
+
+<Canvas of={TextStories.Colors} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.Spacing}></StoryHeading>
+
+Text with different spacing variants to demonstrate various layout and design options.
+
+<Canvas of={TextStories.Spacing} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+
+<StoryHeading of={TextStories.FontFamily}></StoryHeading>
+
+Text with different font family variants to demonstrate various typographic styles.
+
+<Canvas of={TextStories.FontFamily} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+
+<StoryHeading of={TextStories.NoWrap}></StoryHeading>
+
+Use `no-wrap` variant to prevent text from wrapping and ensure it stays on a single line.
+
+<Canvas of={TextStories.NoWrap} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<Footer />

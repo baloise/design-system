@@ -18,7 +18,7 @@ jobs:
   snapshot:
     name: 🚚 Create Snapshot
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/snapshot')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Get Action URL
@@ -77,20 +77,21 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Define version
-        run: npx nx release version --git-commit=false --git-tag=false --preid=snapshot --specifier=${{steps.set-version.outputs.version}}
+        run: |
+          npm version ${{steps.set-version.outputs.version}} --workspaces --allow-same-version --no-git-tag-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: npx nx run-many -t build --projects=tag:scope:release
+        run: npx turbo run build
         env:
-          BAL_DS_RELEASE: true
+          DS_RELEASE: true
 
       - name: Pre-Publish
-        run: npx nx run pre-publish
+        run: node scripts/pre-publish.mjs
 
       - name: Publish
-        run: npx nx release publish --tag=snapshot
+        run: npm publish --workspaces --tag=snapshot
 
       - name: Create comment
         if: success()
@@ -124,7 +125,7 @@ jobs:
   assembleInformation:
     name: 📝 Assemble Information
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       HUSKY: 0
@@ -193,14 +194,14 @@ jobs:
   updateScreenshots:
     name: 📸 Update Screenshots
     if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     needs: [assembleInformation]
     env:
       HUSKY: 0
       CI: true
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      image: mcr.microsoft.com/playwright:v1.59.1-noble
       options: --user 1001
     steps:
       - name: Show inputs from pree job
@@ -237,18 +238,18 @@ jobs:
           echo "Full commit info:"
           git log -1 --oneline
 
-      - name: Show content of packages/core/src/components/bal-accordion/test
-        run: |
-          echo "Listing files in packages/core/src/components/bal-accordion/test"
-          ls -la packages/core/src/components/bal-accordion/test || echo "❌ Folder not found"
+      # - name: Show content of packages/core/src/components/accordion/test
+      #   run: |
+      #     echo "Listing files in packages/core/src/components/accordion/test"
+      #     ls -la packages/core/src/components/accordion/test || echo "❌ Folder not found"
 
       - name: Clean install
         run: npm ci
 
       - name: Build Core
-        run: npx nx run core:build
+        run: turbo run build --filter=core
         env:
-          BAL_PLAYWRIGHT_TESTING: 'true'
+          DS_PLAYWRIGHT_TESTING: 'true'
 
       - name: Write visual config template
         run: |
@@ -292,14 +293,14 @@ jobs:
           })
           TS
 
-      - name: Replace BAL-TAG with provided tag
+      - name: Replace DS-TAG with provided tag
         run: |
           echo "---- file preview ----"
           sed -n '1,160p' packages/core/playwright.visual.config.ts
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: npx nx run core:ci-e2e -- --config=playwright.visual.config.ts --update-snapshots
+        run: turbo run e2e:ci --filter=core -- --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
@@ -333,153 +334,3 @@ jobs:
             Specs: `${{ needs.assembleInformation.outputs.command }}`
 
             [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
-
-  visual:
-    name: 📸 Create Base Image
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/create-base-image')
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Get Action URL
-        id: action-url
-        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
-
-      - name: Check for /create-base-image command
-        uses: actions/github-script@v7
-        id: command
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-encoding: string
-          script: |
-            const comment = context.payload.comment.body.trim();
-            const regex = /\/create-base-image(?:\s+(.*))?/;
-            if (regex.test(comment)) {
-              const match = comment.match(regex);
-              const imageName = match[1] ? match[1].trim() : '';
-              if(imageName !== ''){
-                return imageName
-              }
-              return 'all'
-            }
-            return 'none'
-
-      - name: Filter specs
-        uses: actions/github-script@v7
-        id: specs
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-encoding: string
-          script: |
-            const comment = context.payload.comment.body.trim();
-            const regex = /\/create-base-image(?:\s+(.*))?/;
-            if (regex.test(comment)) {
-              const match = comment.match(regex);
-              const imageName = match[1] ? match[1].trim() : '';
-              if(imageName !== ''){
-                return imageName.split(',').map(v => `cypress/e2e/visual/${v}`);
-              }
-              return 'all'
-            }
-            return 'none'
-
-      - name: Get results
-        run: |
-          echo "${{ steps.command.outputs.result }}"
-          echo "${{ steps.specs.outputs.result }}"
-
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          edit-mode: replace
-          body: |
-            **📸 Create Base Image in Progress...**
-
-            Specs: `${{ steps.command.outputs.result }}`
-
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
-
-      - name: Get Branch Name
-        id: get-branch
-        run: |
-          COMMITS_URL="${{ github.event.issue.pull_request.url }}"
-          BRANCH=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.head.ref')
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
-
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.get-branch.outputs.branch }}
-          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-          fetch-depth: 0
-
-      - uses: ./.github/workflows/actions/e2e-build
-        with:
-          build: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Run All Cypress
-        if: steps.specs.outputs.result == 'all'
-        uses: cypress-io/github-action@v6
-        with:
-          start: node ./web-server.js
-          wait-on: 'http://localhost:3333'
-          working-directory: e2e
-          install: false
-          browser: chrome
-        env:
-          CYPRESS_visualRegressionType: base
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Run Cypress by files
-        if: steps.specs.outputs.result != 'all' && steps.specs.outputs.result != 'none'
-        uses: cypress-io/github-action@v6
-        with:
-          start: node ./web-server.js
-          wait-on: 'http://localhost:3333'
-          working-directory: e2e
-          install: false
-          browser: chrome
-          spec: ${{ steps.specs.outputs.result }}
-        env:
-          CYPRESS_visualRegressionType: base
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload snapshots
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-snapshots
-          path: e2e/cypress/snapshots
-
-      - name: Commit base images
-        if: success()
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'update base images'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-
-      - name: Create comment
-        if: success()
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          edit-mode: replace
-          body: |
-            **📸 Create Base Image finished!**
-
-            Specs: `${{ steps.command.outputs.result }}`
-
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})
-
-      - name: Create comment
-        if: failure()
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          edit-mode: replace
-          body: |
-            **🚨 Create Base Image Failed!**
-
-            Specs: `${{ steps.command.outputs.result }}`
-
-            [Check out the action on GitHub ↗︎](${{ steps.action-url.outputs.url }})

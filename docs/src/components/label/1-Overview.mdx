@@ -1,0 +1,36 @@
+import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as LabelStories from './label.stories'
+import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
+
+<Meta title="Components/Forms/Label/Overview" />
+
+<Banner label={'Overview'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+
+<BannerTabs of={LabelStories} tabs={getLabelTabs('overview')} />
+
+<ComponentLead component="label" />
+
+<CanvasTabs of={LabelStories.Basic} htmlOf={LabelStories.BasicHtml} />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-label',
+      label: 'Label',
+      content: <Controls of={LabelStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="label" />
+
+<Footer />

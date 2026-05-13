@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CheckboxStories from './checkbox.stories'
+import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
+
+<Meta title="Components/Forms/Checkbox/Accessibility" />
+<Banner label={'Accessibility'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
+<BannerTabs
+  of={CheckboxStories}
+  tabs={getCheckboxTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Associated Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always associate a <code>&lt;label&gt;</code> with each checkbox using the <code>for</code> attribute. Screen readers depend on this relationship.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Group Semantics',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Wrap related checkboxes in a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> to establish the group context for screen readers.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Indeterminate State',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          If using the indeterminate state (for "select all" scenarios), communicate this state clearly with ARIA attributes and visual indicators.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Clear Selection Outcome',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Make it clear what happens when a checkbox is selected. Use <code>aria-describedby</code> to link additional context if needed.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never use checkboxes without labels. Screen reader users won't know what each checkbox controls.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Nested Fieldsets',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid excessively nested fieldsets. Keep structure simple and logical for screen reader navigation.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The checkbox component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Grouped Inputs (1.3.1)** — Related checkboxes use fieldset/legend
+- **Labels (1.3.1)** — Checkboxes have associated labels
+- **Focus Visible (2.4.7)** — Clear focus indicator on checkboxes
+- **Name, Role, Value (4.1.2)** — Proper semantics and ARIA support
+- **Keyboard Accessible (2.1.1)** — Full keyboard navigation support
+
+<Footer />

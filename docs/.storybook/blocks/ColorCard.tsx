@@ -1,27 +1,41 @@
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import React from 'react'
 
-export const ColorCard = ({ background, color, small = false }) => {
-  const colors = tokens.color
+export const ColorCard = ({ background, color, small = false }): React.ReactElement => {
+  const colors = tokens
   const colorPath = color.split('.')
-  const colorVariable = colorPath.reduce((acc, val) => acc[val] || {}, colors)
+  const colorVariable = colorPath.reduce((acc, val) => {
+    return acc[val] || {}
+  }, colors)
+
   return (
     <div
-      className="sb-unstyled radius-large bg-white shadow-normal flex-1"
+      className="sb-unstyled radius-lg bg-white shadow flex-1"
       style={{ minWidth: small ? '80px' : '120px', maxWidth: '220px' }}
     >
       <div
-        className={`px-small py-normal text-align-center radius-top-large title text-x-large m-none`}
+        className={`px-small py-normal text-align-center radius-top-lg title text-x-large m-none`}
         style={{
-          minHeight: '64px',
+          minHeight: '32px',
           background: `var(--${colorVariable.name})`,
-          color: ['bal-color-primary'].includes(colorVariable.name) ? 'var(--bal-color-text-white)' : 'current',
+          color: ['ds-color-primary-5', 'ds-text-color-primary', 'ds-background-color-primary'].includes(
+            colorVariable.name,
+          )
+            ? 'var(--ds-color-white)'
+            : 'current',
         }}
       >
         {background ? 'A-a' : ''}
       </div>
-      <div className={`radius-bottom-large p-small text-align-center`}>
-        <div className="title text-normal text-primary">{colorVariable.name.replace('bal-color-', '')}</div>
-        <div className="text-small text-primary">{colorVariable.value}</div>
+      <div className={`radius-bottom-lg p-small text-align-center`}>
+        <div className="title text-normal text-primary">
+          {colorVariable.name
+            .replace('ds-color-', '')
+            .replace('ds-text-color-', '')
+            .replace('ds-background-color-', '')}
+        </div>
+        <div className="text-small text-primary">{colorVariable.$value}</div>
+        {/* <div className="text-small text-primary">{color}</div> */}
       </div>
     </div>
   )

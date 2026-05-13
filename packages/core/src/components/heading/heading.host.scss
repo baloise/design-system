@@ -1,0 +1,25 @@
+@use '../../hybrid' as hybrid;
+
+@use './heading.style' with (
+  $use-host: true
+);
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --heading-color: Text color of the heading.
+ * @prop --heading-family: Font family of the heading.
+ * @prop --heading-weight: Font weight of the heading.
+ * @prop --heading-line-height: Line height of the heading text.
+ * @prop --heading-font-size: Font size of the heading.
+ * @prop --heading-space: Spacing applied to the heading.
+ * @prop --heading-shadow: Text shadow effect applied to the heading.
+ * @prop --heading-text-align: Text alignment of the heading.
+ */
+
+:host {
+  display: block;
+}

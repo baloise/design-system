@@ -1,26 +1,28 @@
 import React from 'react'
 import { CssTable } from './helpers/CssTable'
-import tokens from '@baloise/ds-tokens/dist/tokens.docs.json'
-import json from '../../../../packages/styles/docs/layout.json'
+import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
 export const CssLayoutContainer = ({}) => {
   return CssTable({
-    tokens: tokens.container.size,
+    tokens: tokens['🔗 Alias']['🗃️ Container'].Width,
     css: 'container is',
   })
 }
 
 export const CssLayoutDisplay = () => (
   <CssUtilitiesTable
-    list={json}
+    utility="layout"
     search="display"
     example={item => <div className={`bg-green ${item.class} p-small`}></div>}
   />
 )
 
-export const CssLayoutOverflow = () => <CssUtilitiesTable list={json} search="overflow" />
-export const CssLayoutPosition = () => <CssUtilitiesTable list={json} search="position" />
-export const CssLayoutPlacement = () => <CssUtilitiesTable list={json} search={['top', 'right', 'bottom', 'left']} />
-export const CssLayoutZIndex = () => <CssUtilitiesTable list={json} search="z-index" />
-export const CssLayoutVerticalAlign = () => <CssUtilitiesTable list={json} search="vertical-align" />
+export const CssLayoutOverflow = () => (
+  <CssUtilitiesTable utility="layout" search={['overflow', 'overflow-x', 'overflow-y']} />
+)
+export const CssLayoutPosition = () => <CssUtilitiesTable utility="layout" search="position" />
+export const CssLayoutPlacement = () => (
+  <CssUtilitiesTable utility="layout" search={['top', 'right', 'bottom', 'left']} />
+)
+export const CssLayoutVerticalAlign = () => <CssUtilitiesTable utility="layout" search="vertical-align" />

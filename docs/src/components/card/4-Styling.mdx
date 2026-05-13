@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CardStories from './card.stories'
+import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
+
+<Meta title="Components/Card/Styling" />
+
+<Banner label={'Styling'} section={CARD_DOC_CONFIG.section} color={CARD_DOC_CONFIG.color} />
+
+<BannerTabs of={CardStories} tabs={getCardTabs('styling')} />
+
+<ComponentParts component="card" />
+
+<ComponentCssVariables component="card" />
+
+<ComponentDesignTokens component="card" />
+
+<Footer />

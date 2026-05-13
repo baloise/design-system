@@ -1,0 +1,89 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
+
+<Meta title="Components/Progress-bar/Accessibility" />
+<Banner label={'Accessibility'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
+<BannerTabs
+  of={ProgressBarStories}
+  tabs={getProgressBarTabs('accessibility')}
+/>
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use ARIA Progressbar Role',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>role="progressbar"</code> with <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code> for screen readers.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Meaningful Progress Indication',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Provide descriptive labels and percentages. Screen reader users need to understand progress.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Announce Updates',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>aria-live="polite"</code> to announce progress updates without interrupting other announcements.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Color + Symbol',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't rely on color alone. Combine with percentage text or icons to convey progress status.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'No ARIA Attributes',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never omit ARIA attributes. Screen readers need semantic information about progress value and limits.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Animated-Only Progress',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use animated bars without numeric progress indication. Users can't tell actual progress status.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The progress-bar component supports patterns that meet WCAG 2.2 Level AA standards:
+
+- **Perceptible (1.3.1)** — ARIA role and live regions convey progress
+- **Distinguishable (1.4.3)** — Sufficient contrast for progress fill and background
+- **Operable (2.1)** — No keyboard traps or interaction required
+- **Understandable (3.3.2)** — Percentage labels explain progress status
+- **Robust (4.1.2)** — Proper ARIA roles and attributes
+
+<Footer />

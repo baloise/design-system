@@ -1,6 +1,6 @@
-import { balBrowser } from './browser'
+import { dsBrowser } from './browser'
 
-export class BalScrollHandler {
+export class ScrollHandler {
   static disableSmoothScrolling() {
     this.setScrollBehavior('auto')
   }
@@ -10,7 +10,7 @@ export class BalScrollHandler {
   }
 
   private static setScrollBehavior(behavior: 'auto' | 'smooth') {
-    if (balBrowser.hasDocument) {
+    if (dsBrowser.hasDocument) {
       const doc = document
       const body = document.body
 
@@ -34,7 +34,7 @@ export class BalScrollHandler {
     if (el) {
       this.target = el
     } else {
-      if (balBrowser.hasDocument) {
+      if (dsBrowser.hasDocument) {
         this.target = document
       }
     }
@@ -57,7 +57,7 @@ export class BalScrollHandler {
 
   enable() {
     if (this.target) {
-      if (balBrowser.hasWindow && balBrowser.hasDocument) {
+      if (dsBrowser.hasWindow && dsBrowser.hasDocument) {
         document.documentElement.style.overflow = ''
         document.body.classList.remove('noscroll')
         document.body.style.position = ''
@@ -75,7 +75,7 @@ export class BalScrollHandler {
 
   disable() {
     if (!this.disabled && this.target) {
-      if (balBrowser.hasWindow && balBrowser.hasDocument) {
+      if (dsBrowser.hasWindow && dsBrowser.hasDocument) {
         this.x = window.pageXOffset || document.documentElement.scrollLeft
         this.y = window.pageYOffset || document.documentElement.scrollTop
 

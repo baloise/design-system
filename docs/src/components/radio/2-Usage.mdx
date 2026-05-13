@@ -1,0 +1,61 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
+import * as RadioStories from './radio.stories'
+import { RADIO_DOC_CONFIG, getRadioTabs } from './radio.doc-config'
+
+<Meta title="Components/Forms/Radio/Usage" />
+<Banner label={'Usage'} section={RADIO_DOC_CONFIG.section} color={RADIO_DOC_CONFIG.color} />
+<BannerTabs of={RadioStories} tabs={getRadioTabs('usage')} />
+
+## When to Use
+
+- Select one option from a small set of mutually exclusive choices (2-5 options)
+- Choose a single option that affects the entire form or state
+- Select from predefined categories or types
+- Make a yes/no decision in a clear, visual way
+
+## When NOT to Use
+
+- For multiple selections — use checkbox component instead
+- When there are more than 5-6 options — use select dropdown instead
+- For filtering that allows multiple selections — use checkboxes
+- When space is limited and options are many — consider a select dropdown
+- For dynamic or searchable lists — use appropriate input or select component
+
+## Do's and Don'ts
+
+### Radio Group Labels
+
+Always provide a group label and individual option labels. Never rely on values alone.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Clear group and option labels',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-radio-group name="delivery-speed" label="Delivery Speed" vertical>
+          <ds-radio value="standard">Standard (5-7 business days)</ds-radio>
+          <ds-radio value="express">Express (2-3 business days)</ds-radio>
+        </ds-radio-group>
+      ),
+      description: 'Clear intent and options',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No group label',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-radio-group name="delivery-speed">
+          <ds-radio value="1">Option 1</ds-radio>
+          <ds-radio value="2">Option 2</ds-radio>
+        </ds-radio-group>
+      ),
+      description: 'Unclear what the choice is about',
+    },
+  ]}
+/>
+
+
+<Footer />

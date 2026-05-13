@@ -1,0 +1,31 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, Lead, TokenOverview } from '../../.storybook/blocks'
+import { getTokensTabs } from './tokens.doc-config'
+
+<Meta
+  title="Tokens/All Tokens"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      toc: {
+        disable: false,
+      },
+    },
+  }}
+/>
+
+<Banner label="Tokens" color="green" />
+
+<BannerTabs color="green" tabs={getTokensTabs('allTokens')} />
+
+<Lead>All design tokens organized by category — colors, typography, spacing, radius, and more.</Lead>
+
+## Design System Tokens
+
+Every visual decision in the Helvetia Design System is defined as a reusable token. Tokens ensure consistency, enable fast theming, and serve as the single source of truth for all designers and developers.
+
+<TokenOverview />
+
+<Footer />

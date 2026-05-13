@@ -2,7 +2,7 @@
 '@baloise/ds-core': major
 ---
 
-**angular**: The design system now provides an Angular provider instead of the BaloiseDesignSystemModule.
+**angular**: The design system now provides an Angular provider instead of the DesignSystemModule.
 
 This change simplifies maintenance, ensures the Angular library stays up to date, and removes support for deprecated or optional Angular parts.
 
@@ -10,14 +10,14 @@ The new provider is fully compatible with both Angular module-based applications
 
 **How to migrate**
 
-1. In the app-module.ts replace the `BaloiseDesignSystemModule.forRoot(<config>)` with the provide function `provideBaloiseDesignSystem(<config>)`. `<config>` is the same type as before.
+1. In the app-module.ts replace the `BaloiseDesignSystemModule.forRoot(<config>)` with the provide function `provideDesignSystem(<config>)`. `<config>` is the same type as before.
 
 ```ts
 @NgModule({
   declarations: [App],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideBaloiseDesignSystem()],
+  providers: [provideBrowserGlobalErrorListeners(), provideDesignSystem()],
   bootstrap: [App],
 })
 export class AppModule {}

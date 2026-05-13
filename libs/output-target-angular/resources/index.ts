@@ -1,8 +1,9 @@
 import { InjectionToken } from '@angular/core'
 
-export const BalTokenUserConfig = new InjectionToken<any>('BalTokenUserConfig')
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const DsTokenUserConfig = new InjectionToken<any>('DsTokenUserConfig')
 
-export interface BaloiseDesignSystemAngularConfig {
+export interface DesignSystemAngularConfig {
   defaults?: unknown
   forms?: {
     setInvalid?: boolean
