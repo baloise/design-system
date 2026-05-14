@@ -245,7 +245,7 @@ jobs:
 
       - name: Write visual config template
         run: |
-          cat > packages/core/playwright.visual.config.ts <<TS
+          cat > packages/core/playwright.visual.config.mts <<TS
           /**
           * This configuration is used to run visual tests for a specific
           * component across multiple devices and browsers.
@@ -278,12 +278,12 @@ jobs:
       - name: Replace DS-TAG with provided tag
         run: |
           echo "---- file preview ----"
-          sed -n '1,160p' packages/core/playwright.visual.config.ts
+          sed -n '1,160p' packages/core/playwright.visual.config.mts
           echo "---- end preview ----"
 
       - name: Run Playwright tests
         working-directory: packages/core
-        run: npx playwright test --config=playwright.visual.config.ts --update-snapshots
+        run: npx playwright test --config=playwright.visual.config.mts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
