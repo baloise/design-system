@@ -285,10 +285,10 @@ jobs:
         working-directory: packages/core
         run: npx playwright test --config=playwright.visual.config.mts --update-snapshots
 
-      - name: Commit snapshots
+      - name: Commit screenshots
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'update snapshots'
+          message: 'chore: update screenshots for ${{ needs.assembleInformation.outputs.command }}'
         env:
           GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
