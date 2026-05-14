@@ -200,6 +200,7 @@ jobs:
     env:
       HUSKY: 0
       CI: true
+      DS_PLAYWRIGHT_TESTING: 'true'
     container:
       image: mcr.microsoft.com/playwright:v1.59.1-noble
       options: --user 1001
@@ -223,33 +224,24 @@ jobs:
 
             [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
 
-      - uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v4
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: 2
 
-      - uses: ./.github/workflows/actions/setup
+      - uses: ./.github/workflows/actions/setup-environment
+        with:
+          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          branch: ${{ needs.assembleInformation.outputs.branch }}
+          action: ${{ needs.assembleInformation.outputs.action }}
 
-      - name: Show current branch
-        run: |
-          echo "🔍 Current branch info:"
-          git rev-parse --abbrev-ref HEAD
-          echo "Full commit info:"
-          git log -1 --oneline
-
-      # - name: Show content of packages/core/src/components/accordion/test
-      #   run: |
-      #     echo "Listing files in packages/core/src/components/accordion/test"
-      #     ls -la packages/core/src/components/accordion/test || echo "❌ Folder not found"
-
-      - name: Clean install
+      - name: Install dependencies
         run: npm ci
 
       - name: Build Core
-        run: turbo run build --filter=core
-        env:
-          DS_PLAYWRIGHT_TESTING: 'true'
+        run: npx turbo run build --filter=@baloise/ds-core
 
       - name: Write visual config template
         run: |
@@ -270,24 +262,14 @@ jobs:
             ...baseConfig,
             projects: [
               {
-                name: 'desktop chrome',
+                name: '🖼️ Visual / 💻 Desktop Chrome',
                 testMatch,
                 use: { ...devices['Desktop Chrome'] },
               },
               {
-                name: 'desktop safari',
-                testMatch,
-                use: { ...devices['Desktop Safari'] },
-              },
-              {
-                name: 'mobile chrome',
+                name: '🖼️ Visual / 📱 Mobile Chrome',
                 testMatch,
                 use: { ...devices['Pixel 5'] },
-              },
-              {
-                name: 'mobile safari',
-                testMatch,
-                use: { ...devices['iPhone 12'] },
               },
             ],
           })
@@ -300,7 +282,8 @@ jobs:
           echo "---- end preview ----"
 
       - name: Run Playwright tests
-        run: turbo run e2e:ci --filter=core -- --config=playwright.visual.config.ts --update-snapshots
+        working-directory: packages/core
+        run: npx playwright test --config=playwright.visual.config.ts --update-snapshots
 
       - name: Commit snapshots
         uses: EndBug/add-and-commit@v9
