@@ -3,7 +3,7 @@
   "changelog": ["./my-changelog-config.js", { "repo": "baloise/design-system" }],
   "commit": false,
   "fixed": [["@baloise/ds-*"]],
-  "ignore ": [["@baloise/ds-output-target-*", "docs"]],
+  "ignore ": [["@baloise/ds-output-target-*","@baloise/ds-eslint-plugin", "docs"]],
   "linked": [],
   "access": "public",
   "baseBranch": "next",

@@ -43,6 +43,8 @@ jobs:
       - name: Test
         run: npm run test
 
+      - uses: ./.github/workflows/actions/upload-distribution-archives
+
   assembleInformation:
     name: 📝 Assemble Information
     runs-on: ubuntu-24.04

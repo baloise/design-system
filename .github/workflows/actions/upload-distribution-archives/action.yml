@@ -1,0 +1,86 @@
+name: 'Upload Distribution Archives'
+description: 'Create and upload ZIP archives of all publishable packages for sharing across workflow jobs'
+author: 'Baloise Design System'
+runs:
+  using: 'composite'
+  steps:
+    # Core Package - Multiple archives
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: core-dist
+        output: packages/core/dist.zip
+        paths: packages/core/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: core-components
+        output: packages/core/components.zip
+        paths: packages/core/components
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: core-loader
+        output: packages/core/loader.zip
+        paths: packages/core/loader
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: core-docs
+        output: packages/core/docs.zip
+        paths: packages/core/docs
+
+    # CSS Package
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: css-dist
+        output: packages/css/dist.zip
+        paths: packages/css/src packages/css/css
+
+    # Tokens Package
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: tokens-dist
+        output: packages/tokens/dist.zip
+        paths: packages/tokens/src packages/tokens/dist
+
+    # Assets Package
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: assets-dist
+        output: packages/assets/dist.zip
+        paths: packages/assets/dist
+
+    # Playwright Package
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: playwright-dist
+        output: packages/playwright/dist.zip
+        paths: packages/playwright/src
+
+    # Output Target Angular
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: output-target-angular
+        output: libs/output-target-angular/dist.zip
+        paths: libs/output-target-angular/src
+
+    # Output Target Web
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: output-target-web
+        output: libs/output-target-web/dist.zip
+        paths: libs/output-target-web/src
+
+    # ESLint Plugin
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: eslint-plugin
+        output: libs/eslint-plugin/dist.zip
+        paths: libs/eslint-plugin/src
+
+    # Docs (Storybook)
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: docs
+        output: docs/dist.zip
+        paths: docs/src

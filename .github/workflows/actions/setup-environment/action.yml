@@ -4,6 +4,9 @@ inputs:
   token:
     description: 'GitHub token (for configuring git remote)'
     required: false
+  npm-token:
+    description: 'NPM token (for configuring npm registry access)'
+    required: false
   branch:
     description: 'Branch name (for info display)'
     required: false
@@ -49,3 +52,13 @@ runs:
       continue-on-error: true
       shell: bash
       run: npm run registry
+
+    - name: Create .npmrc
+      if: inputs.npm-token != ''
+      shell: bash
+      run: |
+        cat << EOF > "$HOME/.npmrc"
+          //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
+        EOF
+      env:
+        NPM_PUBLISH_TOKEN: ${{ inputs.npm-token }}

@@ -12,15 +12,16 @@ env:
 jobs:
   Publish:
     name: 🚀 Publish
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main'
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/next'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/release-setup
+
+      - uses: ./.github/workflows/actions/setup-environment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
@@ -34,7 +35,7 @@ jobs:
       - name: Pre-Publish
         run: node scripts/pre-publish.mjs
 
-      - name: get-npm-version
+      - name: Read current version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
         with:

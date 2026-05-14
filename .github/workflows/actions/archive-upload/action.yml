@@ -1,0 +1,28 @@
+name: 'Archive & Upload'
+description: 'Create a ZIP archive and upload as artifact for sharing across workflow jobs'
+inputs:
+  paths:
+    description: 'Paths to files or directories to archive (space-separated)'
+    required: true
+  output:
+    description: 'Output archive file name (e.g., build.zip)'
+    required: true
+  name:
+    description: 'Artifact name for storage'
+    required: true
+  retention-days:
+    description: 'Number of days to retain artifact (default: 5)'
+    required: false
+    default: '5'
+runs:
+  using: 'composite'
+  steps:
+    - name: Create Archive
+      run: zip -q -r ${{ inputs.output }} ${{ inputs.paths }}
+      shell: bash
+    - name: Upload Archive
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.output }}
+        retention-days: ${{ inputs.retention-days }}

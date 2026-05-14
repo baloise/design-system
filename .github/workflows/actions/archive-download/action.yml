@@ -1,0 +1,23 @@
+name: 'Archive & Download'
+description: 'Download and extract a ZIP archive from a previous job in the workflow'
+inputs:
+  path:
+    description: 'Path where the archive will be downloaded'
+    required: true
+  filename:
+    description: 'Archive file name to extract (e.g., build.zip)'
+    required: true
+  name:
+    description: 'Artifact name to download'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Download Archive
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+    - name: Extract Archive
+      run: unzip -q -o ${{ inputs.path }}/${{ inputs.filename }}
+      shell: bash

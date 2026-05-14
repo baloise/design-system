@@ -1,6 +1,7 @@
 {
   "name": "@baloise/output-target-angular",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "build": "tsc -p tsconfig.lib.json",
     "test": "vitest --run",

@@ -49,6 +49,12 @@ Thumbs.db
 .turbo
 .stencil
 
+# Generated in packages and libs by pre-publish script
+packages/*/README.md
+packages/*/LICENSE
+libs/*/README.md
+libs/*/LICENSE
+
 packages/core/docs
 packages/core/icons
 packages/core/playwright
