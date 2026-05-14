@@ -13,7 +13,7 @@ concurrency:
 jobs:
   build:
     name: 🏗️ Lint, Test & Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       HUSKY: 0

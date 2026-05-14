@@ -9,7 +9,7 @@ on:
 jobs:
   createIssueBranch:
     name: 📝 Create Issue Branch
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: robvanderleek/create-issue-branch@1.6.1
         env:
