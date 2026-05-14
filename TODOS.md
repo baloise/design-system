@@ -90,3 +90,5 @@
 6. Create visual.play file for the component that test all data-test id secctions of the html file
 7. Create a simple a11y.play file to test the component
 8. Creeate a PO file and the component.play.ts file to test test the component interactions clickable stuff events and for course the PO
+
+test
