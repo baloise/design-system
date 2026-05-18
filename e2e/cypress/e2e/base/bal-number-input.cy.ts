@@ -33,6 +33,6 @@ describe('bal-number-input', () => {
   })
 
   it('should make sure values with thousand separators are accepted', () => {
-    cy.getByTestId('number-with-char').should('have.value', '42’000')
+    cy.getByTestId('number-with-char').should('have.value', "42'000")
   })
 })
