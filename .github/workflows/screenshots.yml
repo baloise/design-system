@@ -171,7 +171,7 @@ jobs:
         run: npx playwright test --config=playwright.visual.config.mts --update-snapshots
 
       - name: Commit screenshots
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
           message: 'chore: update screenshots for ${{ needs.assembleInformation.outputs.command }}'
         env:
