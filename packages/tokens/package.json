@@ -4,7 +4,7 @@
   "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise/design-system.git"
+    "url": "git+https://github.com/baloise/design-system.git"
   },
   "publishConfig": {
     "access": "public"
