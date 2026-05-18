@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "private": true,
-  "version": "0.0.1-next.0",
+  "version": "0.0.1-next.1",
   "type": "module",
   "scripts": {
     "build": "node ../scripts/build-docs.mjs",
@@ -9,10 +9,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@baloise/ds-core": "20.0.0-next.2",
-    "@baloise/ds-assets": "20.0.0-next.2",
-    "@baloise/ds-css": "20.0.0-next.2",
-    "@baloise/ds-tokens": "20.0.0-next.2",
+    "@baloise/ds-core": "20.0.0-next.3",
+    "@baloise/ds-assets": "20.0.0-next.3",
+    "@baloise/ds-css": "20.0.0-next.3",
+    "@baloise/ds-tokens": "20.0.0-next.3",
     "@storybook/addon-docs": "10.3.6",
     "@storybook/addon-links": "10.3.6",
     "@storybook/html-vite": "10.3.6",

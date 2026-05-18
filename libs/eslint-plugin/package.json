@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-eslint-plugin",
-  "version": "20.0.0-next.2",
+  "version": "20.0.0-next.3",
   "private": true,
   "type": "commonjs",
   "main": "./dist/src/index.js",
