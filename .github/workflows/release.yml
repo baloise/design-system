@@ -88,11 +88,21 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: npx cyclonedx-npm --output-format JSON --output-file sbom.cdx.json
 
+      # Copies the SBOM into each published package directory and adds it to the package's
+      # "files" allowlist so npm includes it in the tarball. This is done at release time
+      # (not in static package.json) because Stencil validates that listed files exist on
+      # disk at build time — the SBOM only exists after it is generated above.
       - name: Bundle SBOM into all published packages
         if: ${{ !inputs.dry-run }}
         run: |
           for pkg in packages/core packages/assets packages/css packages/playwright packages/tokens; do
             cp sbom.cdx.json $pkg/sbom.cdx.json
+            node -e "
+              const fs = require('fs');
+              const p = JSON.parse(fs.readFileSync('$pkg/package.json', 'utf8'));
+              if (!p.files.includes('sbom.cdx.json')) p.files.push('sbom.cdx.json');
+              fs.writeFileSync('$pkg/package.json', JSON.stringify(p, null, 2) + '\n');
+            "
           done
 
       # Submits the SBOM to GitHub's Dependency Submission API so GitHub knows the full

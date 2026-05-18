@@ -26,8 +26,7 @@
   },
   "files": [
     "src/favicons",
-    "src/fonts",
-    "sbom.cdx.json"
+    "src/fonts"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.lib.json"

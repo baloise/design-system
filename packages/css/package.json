@@ -29,8 +29,7 @@
     "./scss/utilities": "./dist/scss/utilities.scss"
   },
   "files": [
-    "dist/",
-    "sbom.cdx.json"
+    "dist/"
   ],
   "scripts": {
     "build": "node --disable-warning=DEP0205 --import tsx/esm src/build.ts"

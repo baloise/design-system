@@ -14,8 +14,7 @@
   "type": "module",
   "main": "dist/src/index.js",
   "files": [
-    "dist/",
-    "sbom.cdx.json"
+    "dist/"
   ],
   "scripts": {
     "build": "swc src -d dist --config-file .swcrc",

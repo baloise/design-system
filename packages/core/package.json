@@ -23,8 +23,7 @@
     "components/",
     "dist/",
     "docs/",
-    "loader/",
-    "sbom.cdx.json"
+    "loader/"
   ],
   "scripts": {
     "build": "node ../../scripts/build-core.mjs",
