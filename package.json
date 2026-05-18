@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
-  "packageManager": "npm@10.0.0",
+  "packageManager": "npm@11.1.0",
   "engines": {
     "node": ">=24 <25"
   },
