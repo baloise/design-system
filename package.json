@@ -51,15 +51,16 @@
     "@changesets/cli": "2.31.0",
     "@changesets/get-github-info": "0.8.0",
     "@changesets/types": "6.1.0",
+    "@cyclonedx/cyclonedx-npm": "4.2.1",
     "@eslint/js": "10.0.1",
     "@playwright/test": "1.59.1",
     "@stencil/core": "4.43.4",
-    "@swc/cli": "0.8.1",
     "@stencil/react-output-target": "1.5.2",
     "@stencil/sass": "3.2.3",
     "@storybook/addon-docs": "10.3.6",
     "@storybook/addon-links": "10.3.6",
     "@storybook/html-vite": "10.3.6",
+    "@swc/cli": "0.8.1",
     "@types/fs-extra": "11.0.4",
     "@types/node": "24.1.0",
     "@typescript-eslint/eslint-plugin": "8.59.2",
@@ -96,8 +97,8 @@
     "vitest": "4.1.5"
   },
   "optionalDependencies": {
-    "@oxc-parser/binding-linux-x64-gnu": "0.124.0",
-    "@oxc-parser/binding-linux-arm64-gnu": "0.124.0"
+    "@oxc-parser/binding-linux-arm64-gnu": "0.124.0",
+    "@oxc-parser/binding-linux-x64-gnu": "0.124.0"
   },
   "overrides": {
     "chokidar": "4.0.3",
