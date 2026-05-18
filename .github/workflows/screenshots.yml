@@ -27,7 +27,7 @@ jobs:
           echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
 
       - name: Check for /update-screenshots command
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         id: command
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -46,7 +46,7 @@ jobs:
             return 'none'
 
       - name: Filter specs
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         id: specs
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
