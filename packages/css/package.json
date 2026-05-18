@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-css",
-  "version": "20.0.0-next.3",
+  "version": "20.0.0-next.4",
   "description": "UnoCSS utility preset and pre-built CSS bundle for the Helvetia Design System.",
   "repository": {
     "type": "git",
@@ -35,8 +35,8 @@
     "build": "node --disable-warning=DEP0205 --import tsx/esm src/build.ts"
   },
   "dependencies": {
-    "@baloise/ds-tokens": "20.0.0-next.3",
-    "@baloise/ds-assets": "20.0.0-next.3"
+    "@baloise/ds-tokens": "20.0.0-next.4",
+    "@baloise/ds-assets": "20.0.0-next.4"
   },
   "devDependencies": {
     "autoprefixer": "10.5.0",
