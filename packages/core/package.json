@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-core",
-  "version": "20.0.0-next.3",
+  "version": "20.0.0-next.4",
   "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
     "play:ci": "CI=1 npx playwright test"
   },
   "dependencies": {
-    "@baloise/ds-assets": "20.0.0-next.3",
-    "@baloise/ds-css": "20.0.0-next.3",
-    "@baloise/ds-tokens": "20.0.0-next.3",
+    "@baloise/ds-assets": "20.0.0-next.4",
+    "@baloise/ds-css": "20.0.0-next.4",
+    "@baloise/ds-tokens": "20.0.0-next.4",
     "@floating-ui/dom": "^1.7.6",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^4.43.4",
@@ -57,7 +57,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@baloise/ds-playwright": "20.0.0-next.3",
+    "@baloise/ds-playwright": "20.0.0-next.4",
     "libs-output-target-angular": "0.0.0",
     "libs-output-target-web": "0.0.0",
     "@playwright/test": "1.59.1",
