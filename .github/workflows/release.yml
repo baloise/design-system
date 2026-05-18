@@ -44,9 +44,6 @@ jobs:
       - name: Build
         run: npx turbo run build
 
-      - name: Update changelog file
-        run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
-
       - name: Pre-Publish
         run: node scripts/pre-publish.mjs
 
@@ -71,7 +68,7 @@ jobs:
           echo "🏷️  Tag: v${{ steps.package-version.outputs.current-version }}"
           echo ""
           echo "📤 NPM Publish (Dry Run):"
-          npm publish --workspaces --dry-run
+          npm publish --workspaces --tag next --dry-run
 
       - name: Commit release
         if: ${{ !inputs.dry-run }}
