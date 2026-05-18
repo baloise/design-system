@@ -85,4 +85,4 @@ jobs:
 
       - name: Publish
         if: ${{ !inputs.dry-run }}
-        run: npm publish --workspaces
+        run: npm publish --workspaces --tag next
