@@ -20,6 +20,6 @@
   },
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "@typescript-eslint/utils": "8.59.2"
+    "@typescript-eslint/utils": "8.59.3"
   }
 }
