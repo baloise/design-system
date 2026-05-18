@@ -1,4 +1,4 @@
-name: 🚀 Release
+name: 🚀 Release (Main LTS)
 
 on:
   pull_request:
@@ -18,10 +18,10 @@ env:
 
 jobs:
   Release:
-    name: 🚀 Release
+    name: 🚀 Release (Main LTS)
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/next')
+      (github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main')
     runs-on: ubuntu-24.04
     permissions:
       id-token: write # Required for OIDC
@@ -42,13 +42,13 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npx turbo run build
+        run: npx nx run-many -t build --projects=tag:scope:release
 
       - name: Update changelog file
         run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
 
       - name: Pre-Publish
-        run: node scripts/pre-publish.mjs
+        run: npx nx run pre-publish
 
       - name: Read current version
         id: package-version
@@ -85,4 +85,7 @@ jobs:
 
       - name: Publish
         if: ${{ !inputs.dry-run }}
-        run: npm publish --workspaces
+        run: npx nx release publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true

@@ -1,0 +1,17 @@
+name: 📝 Create Issue Branch
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  createIssueBranch:
+    name: 📝 Create Issue Branch
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Create Issue Branch
+        uses: robvanderleek/create-issue-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

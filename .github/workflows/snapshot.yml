@@ -1,0 +1,115 @@
+name: 🚚 Create Snapshot
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  snapshot:
+    name: 🚚 Create Snapshot
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/snapshot')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Get Action URL
+        id: action-url
+        run: echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚚 Snapshot Version in Progress...**
+
+            [Check out the release on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Get Branch Name
+        id: get-branch
+        # Use the event payload directly instead of calling the API with jq
+        run: |
+          echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get-branch.outputs.branch }}
+          fetch-depth: 0
+      - uses: ./.github/workflows/actions/setup
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+        with:
+          path: packages/core
+
+      - name: Get Last Commit SHA
+        id: last-commit
+        run: |
+          COMMITS_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.issue.number }}/commits"
+          LAST_COMMIT_SHA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.[-1].sha')
+          echo "sha=$LAST_COMMIT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Shorten Commit Sha
+        id: short-sha
+        run: echo "value=$(git rev-parse --short ${{ steps.last-commit.outputs.sha }})" >> $GITHUB_OUTPUT
+
+      - name: Create version
+        id: set-version
+        run: echo "version=${{ steps.package-version.outputs.current-version}}-snapshot.${{ github.event.issue.number }}-${{ steps.short-sha.outputs.value }}" >> $GITHUB_OUTPUT
+
+      - name: Print version
+        run: echo "${{steps.set-version.outputs.version}}"
+
+      - uses: ./.github/workflows/actions/release-setup
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Define version
+        run: |
+          npm version ${{steps.set-version.outputs.version}} --workspaces --allow-same-version --no-git-tag-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: npx turbo run build
+        env:
+          DS_RELEASE: true
+
+      - name: Pre-Publish
+        run: node scripts/pre-publish.mjs
+
+      - name: Publish
+        run: npm publish --workspaces --tag=snapshot
+
+      - name: Create comment
+        if: success()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚀 Snapshot Version Released!**
+
+            Version: `${{ steps.set-version.outputs.version }}`
+
+            [Check out the release on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Create comment
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: replace
+          body: |
+            **🚨 Snapshot Version Failed!**
+
+            Version: `${{ steps.set-version.outputs.version }}`
+
+            [Check out the release on GitHub ↗︎](${{ steps.action-url.outputs.url }})
+
+      - name: Git Reset
+        run: git reset --hard
