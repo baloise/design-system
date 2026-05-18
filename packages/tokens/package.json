@@ -21,6 +21,7 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "files": [
-    "dist/"
+    "dist/",
+    "sbom.cdx.json"
   ]
 }

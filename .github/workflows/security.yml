@@ -1,0 +1,41 @@
+name: 🔒 CodeQL
+
+# Runs CodeQL static analysis to detect security vulnerabilities in TypeScript/JavaScript source code.
+# Required for EU Cyber Resilience Act (CRA) open source steward obligations.
+# Results appear in the GitHub Security tab under "Code scanning alerts".
+# Runs on every push to next, every pull request, and weekly to catch newly published vulnerability patterns.
+
+on:
+  push:
+    branches:
+      - next
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze (javascript-typescript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: /language:javascript-typescript
