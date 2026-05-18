@@ -8,9 +8,13 @@
     "@baloise/ds-core": "19.8.3",
     "@baloise/ds-playwright": "19.8.3",
     "@baloise/ds-testing": "19.8.3",
-    "@baloise/ds-tokens": "19.8.3"
+    "@baloise/ds-tokens": "19.8.3",
+    "@baloise/ds-eslint-plugin": "0.0.0",
+    "@baloise/ds-assets": "20.0.0-next.1",
+    "@baloise/ds-css": "20.0.0-next.1"
   },
   "changesets": [
+    "fine-numbers-build",
     "popular-dolls-sing",
     "thick-pianos-accept"
   ]
