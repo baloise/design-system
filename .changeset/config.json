@@ -3,7 +3,7 @@
   "changelog": ["./my-changelog-config.js", { "repo": "baloise/design-system" }],
   "commit": false,
   "fixed": [["@baloise/ds-*"]],
-  "ignore": [["libs-*", "docs"]],
+  "ignore": ["libs-*", "docs"],
   "linked": [],
   "access": "public",
   "baseBranch": "next",
