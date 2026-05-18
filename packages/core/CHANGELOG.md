@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.9.5
+
+### Patch Changes
+
+- **checkbox**: defines now the two icon component bal-check and bal-switch ( [#1907](https://github.com/baloise/design-system/pull/1907))
+
 ## 19.9.4
 
 ### Patch Changes
