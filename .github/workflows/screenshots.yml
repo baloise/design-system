@@ -98,7 +98,7 @@ jobs:
           echo "Action: ${{ needs.assembleInformation.outputs.action }}"
 
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ github.event.comment.id }}
           edit-mode: replace
@@ -179,7 +179,7 @@ jobs:
 
       - name: Create comment
         if: success()
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ github.event.comment.id }}
           edit-mode: replace
@@ -192,7 +192,7 @@ jobs:
 
       - name: Create comment
         if: failure()
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ github.event.comment.id }}
           edit-mode: replace
