@@ -62,7 +62,7 @@
     "@storybook/html-vite": "10.3.6",
     "@swc/cli": "0.8.1",
     "@types/fs-extra": "11.0.4",
-    "@types/node": "24.1.0",
+    "@types/node": "25.9.0",
     "@typescript-eslint/eslint-plugin": "8.59.2",
     "@typescript-eslint/parser": "8.59.2",
     "@typescript-eslint/utils": "8.59.2",
