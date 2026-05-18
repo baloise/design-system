@@ -187,7 +187,7 @@ export const configFromLocalStorage = (win: Window): any => {
     }
 
     return {}
-  } catch (e) {
+  } catch {
     return {}
   }
 }

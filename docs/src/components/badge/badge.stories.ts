@@ -71,7 +71,7 @@ export const CardBadge = Story({
     position: 'card',
   },
   ...withRender(
-    ({ ...args }) => `
+    () => `
 <article class="card" aria-labelledby="card-title-1">
   <ds-badge color="green" icon="check"></ds-badge>
   <header class="card-header">
@@ -92,7 +92,7 @@ export const ButtonBadge = Story({
     position: 'button',
   },
   ...withRender(
-    ({ ...args }) => `
+    () => `
 <button class="button">
   <ds-badge pulse>99+</ds-badge>
   Button

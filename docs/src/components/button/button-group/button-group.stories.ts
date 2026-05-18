@@ -1,11 +1,10 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
+import { cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 
 type Args = JSX.DsButtonGroup
 
 const tag = 'ds-button-group'
-const css = createCssMappings(tag)
 
 const meta: Meta<Args> = {
   title: 'Components/Button/ButtonGroup',

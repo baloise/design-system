@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import isNil from 'lodash/isNil'
 import { DsComponentInterface } from '@global'
 import {
@@ -10,7 +10,6 @@ import {
   Logger,
   type LogInstance,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'

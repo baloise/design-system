@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensBorderColors = ({ overview }): React.ReactElement => {
+export const TokensBorderColors = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['▭ Border'].Color
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>

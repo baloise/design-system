@@ -18,7 +18,6 @@ import {
   hasTagName,
   isDescendant,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'

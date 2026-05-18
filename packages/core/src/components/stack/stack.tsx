@@ -5,7 +5,6 @@ import {
   type LogInstance,
   normalizeDeprecatedTShirtSize,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'

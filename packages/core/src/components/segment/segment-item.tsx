@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, debounce, ValidateEmptyOrType, ValidateType, setupValidation } from '@utils'
+import { Logger, type LogInstance, debounce, ValidateType, setupValidation } from '@utils'
 
 /**
  * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.

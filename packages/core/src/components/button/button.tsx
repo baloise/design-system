@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement, Method, Watch } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
 import {
   ariaBooleanToString,
@@ -9,7 +9,6 @@ import {
   type LogInstance,
   type Attributes,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'
@@ -22,19 +21,12 @@ import {
   type ButtonElementType,
   type ButtonSize,
   type ButtonTarget,
-  type ButtonAria,
-  type ButtonBlur,
-  type ButtonFocus,
-  type ButtonClick,
-  type ButtonNavigate,
-  type ButtonDidRender,
   ButtonBlurDetail,
   ButtonClickDetail,
   ButtonDidRenderDetail,
   ButtonFocusDetail,
   ButtonNavigateDetail,
 } from './button.interfaces'
-import { SPINNER_VARIATIONS, SpinnerVariation } from '../spinner/spinner.interfaces'
 
 /**
  * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.

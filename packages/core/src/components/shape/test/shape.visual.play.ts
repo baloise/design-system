@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'shape'
 const VARIANTS = ['basic', 'colors', 'variation-1', 'variation-2', 'variation-3']
