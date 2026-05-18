@@ -4,7 +4,7 @@ import fg from 'fast-glob'
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join, parse, resolve } from 'path'
 
-import { webOutputTarget } from '@baloise/output-target-web'
+import { webOutputTarget } from 'libs-output-target-web'
 import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'

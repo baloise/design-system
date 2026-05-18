@@ -3,12 +3,11 @@
   "changelog": ["./my-changelog-config.js", { "repo": "baloise/design-system" }],
   "commit": false,
   "fixed": [["@baloise/ds-*"]],
-  "ignore ": [["@baloise/ds-output-target-*","@baloise/ds-eslint-plugin", "docs"]],
+  "ignore": [["libs-*", "docs"]],
   "linked": [],
   "access": "public",
   "baseBranch": "next",
   "updateInternalDependencies": "patch",
-  "ignore": [],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   }

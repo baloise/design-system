@@ -1,5 +1,5 @@
 {
-  "name": "@baloise/output-target-angular",
+  "name": "libs-output-target-angular",
   "version": "0.0.0",
   "private": true,
   "scripts": {

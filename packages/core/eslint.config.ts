@@ -1,7 +1,7 @@
 import tseslint from 'typescript-eslint'
 import playwright from 'eslint-plugin-playwright'
 import baseConfig from '../../eslint.config.base'
-import dsPlugin from '@baloise/ds-eslint-plugin'
+import dsPlugin from 'libs-eslint-plugin'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
