@@ -17,7 +17,7 @@ env:
   DS_RELEASE: true
 
 jobs:
-  Release:
+  LtsRelease:
     name: 🛡️🚀 LTS Release (Main)
     if: |
       github.event_name == 'workflow_dispatch' ||
