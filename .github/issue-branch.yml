@@ -6,7 +6,7 @@ autoLinkIssue: true
 autoCloseIssue: true
 branchName: short
 branches:
-  - label: '✅ lts'
+  - label: '🛡️ lts'
     name: 'main'
     prefix: fix/
     skip: false

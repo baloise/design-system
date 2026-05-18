@@ -1,4 +1,4 @@
-name: 📦️ Release (Main LTS)
+name: 🛡️📦️ LTS Prepare Release (Main)
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
 
 jobs:
   PrepareRelease:
-    name: 📦️ Prepare Release
+    name: 🛡️📦️ LTS Prepare Release (Main)
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:

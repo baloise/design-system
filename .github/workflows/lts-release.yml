@@ -1,4 +1,4 @@
-name: 🚀 Release (Main LTS)
+name: 🛡️🚀 LTS Release (Main)
 
 on:
   pull_request:
@@ -18,7 +18,7 @@ env:
 
 jobs:
   Release:
-    name: 🚀 Release (Main LTS)
+    name: 🛡️🚀 LTS Release (Main)
     if: |
       github.event_name == 'workflow_dispatch' ||
       (github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main')
