@@ -123,7 +123,7 @@ describe('bal-number-input', () => {
 
   it('should accept numbers with thousand separator', () => {
     cy.get('bal-number-input').find('input').type("42'000").blur()
-    cy.get('bal-number-input').find('input').should('have.value', '42’000')
+    cy.get('bal-number-input').find('input').should('have.value', "42'000")
   })
 
   it('should not allow negative values when prop only positive is set', () => {

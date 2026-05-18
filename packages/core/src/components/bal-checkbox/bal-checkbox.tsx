@@ -467,7 +467,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
     const id = this.ariaForm.controlId || this.inputId
     const labelId = this.ariaForm.labelId || null
     const LabelTag = hasFormControl ? 'label' : 'span'
-    const Icon = this.interface === 'switch' ? 'bal-switch' : 'bal-check'
 
     return (
       <Host
@@ -537,14 +536,24 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           )}
           {this.interface !== 'tile' ? (
             <div class={{ ...labelIconEl.class() }}>
-              <Icon
-                checked={this.checked}
-                disabled={this.disabled || this.readonly}
-                invalid={this.invalid}
-                inverted={this.interface === 'button' && this.checked}
-                hovered={this.mergedElementState.hovered}
-                pressed={this.mergedElementState.pressed}
-              />
+              {this.interface === 'switch' ? (
+                <bal-switch
+                  checked={this.checked}
+                  disabled={this.disabled || this.readonly}
+                  invalid={this.invalid}
+                  hovered={this.mergedElementState.hovered}
+                  pressed={this.mergedElementState.pressed}
+                ></bal-switch>
+              ) : (
+                <bal-check
+                  checked={this.checked}
+                  disabled={this.disabled || this.readonly}
+                  invalid={this.invalid}
+                  inverted={this.interface === 'button' && this.checked}
+                  hovered={this.mergedElementState.hovered}
+                  pressed={this.mergedElementState.pressed}
+                ></bal-check>
+              )}
             </div>
           ) : (
             ''
