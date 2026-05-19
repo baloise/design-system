@@ -7,7 +7,7 @@ import { ZipArchive } from 'archiver'
 import { execSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
 import { copy } from 'fs-extra'
-import { mkdir, writeFile, stat, open } from 'node:fs/promises'
+import { mkdir, stat, open } from 'node:fs/promises'
 import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
