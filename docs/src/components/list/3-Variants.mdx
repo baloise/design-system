@@ -1,5 +1,6 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs,
+  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as ListStories from './list.stories'
 import { LIST_DOC_CONFIG, getListTabs } from './list.doc-config'
 
@@ -46,7 +47,7 @@ List of downloadable items with associated actions.
 
 List of items that can be expanded or collapsed to show more content.
 
-<Canvas of={ListStories.AccordionList} />
+<CanvasWithCodePen of={ListStories.AccordionList} />
 
 {/* ------------------------------------------------------ */}
 
@@ -54,7 +55,7 @@ List of items that can be expanded or collapsed to show more content.
 
 List of nested items that can be expanded or collapsed to show more content.
 
-<Canvas of={ListStories.AccordionListNested} />
+<CanvasWithCodePen of={ListStories.AccordionListNested} />
 
 {/* ------------------------------------------------------ */}
 
@@ -62,7 +63,7 @@ List of nested items that can be expanded or collapsed to show more content.
 
 List of items in a specific sequence or order.
 
-<Canvas of={ListStories.OrderedList} />
+<CanvasWithCodePen of={ListStories.OrderedList} />
 
 {/* ------------------------------------------------------ */}
 
@@ -70,7 +71,7 @@ List of items in a specific sequence or order.
 
 Native bullet point list for unordered items.
 
-<Canvas of={ListStories.UnorderedListHtml} />
+<CanvasWithCodePen of={ListStories.UnorderedListHtml} />
 
 {/* ------------------------------------------------------ */}
 
@@ -78,7 +79,7 @@ Native bullet point list for unordered items.
 
 Native numbered list for ordered items.
 
-<Canvas of={ListStories.OrderedListHtml} />
+<CanvasWithCodePen of={ListStories.OrderedListHtml} />
 
 {/* ------------------------------------------------------ */}
 
@@ -86,7 +87,7 @@ Native numbered list for ordered items.
 
 Description list for pairs of terms and descriptions.
 
-<Canvas of={ListStories.DescriptionListHtml} />
+<CanvasWithCodePen of={ListStories.DescriptionListHtml} />
 
 {/* ------------------------------------------------------ */}
 

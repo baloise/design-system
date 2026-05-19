@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as FlexboxAlignSelfStories from './flexbox-align-self.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssFlexboxAlignSelf,
   CssResponsiveTable,
   Footer,
@@ -31,76 +32,31 @@ import {
 
 Elements are positioned at the beginning of the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">1</div>
-    <div class="flex align-self-start align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">2</div>
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignSelfStories.Start} />
 
 ## Center
 
 Elements are centered within the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">1</div>
-    <div class="flex align-self-center align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">2</div>
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignSelfStories.Center} />
 
 ## End
 
 Elements are aligned to the end of the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">1</div>
-    <div class="flex align-self-end align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">2</div>
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignSelfStories.End} />
 
 ## Stretch
 
 The elements are expanded to fill the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; height: 50px">1</div>
-    <div class="flex align-self-stretch align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">2</div>
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; height: 50px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignSelfStories.Stretch} />
 
 ## Baseline
 
 Elements are aligned with the baseline of the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-items-stretch flex-wrap gap-normal" style="min-height: 200px">
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">1</div>
-    <div class="flex align-self-baseline align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">2</div>
-    <div class="flex align-items-center justify-content-center bg-green radius" style="min-width: 200px; min-height: 50px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignSelfStories.Baseline} />
 
 ## Responsive
 

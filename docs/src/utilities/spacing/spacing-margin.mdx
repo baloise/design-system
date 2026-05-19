@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as SpacingMarginStories from './spacing-margin.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssResponsiveTable,
   CssSpacingMargin,
   Footer,
@@ -40,55 +41,19 @@ Spacing can be set with **margin** `m*` for all directions:
 
 Margin can be defined for a specific edge.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center gap-large">
-  <div class="bg-red-2">
-      <div class="mt-normal bg-green p-large">mt-normal</div>
-  </div>
-  <div class="bg-red-2">
-      <div class="mr-large bg-green p-large">mr-large</div>
-  </div>
-  <div class="bg-red-2">
-      <div class="mb-small bg-green p-large">mb-small</div>
-  </div>
-  <div class="bg-red-2">
-      <div class="ml-medium bg-green p-large">ml-medium</div>
-  </div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={SpacingMarginStories.SingleSideMargin} />
 
 ## Horizontal Margin
 
 Shorthand classes allow you to define the same margin value for both the left and right sides.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center gap-large">
-    <div class="bg-red-2 radius">
-        <div class="mx-large radius bg-green font-weight-bold p-normal">mx-large</div>
-    </div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={SpacingMarginStories.HorizontalMargin} />
 
 ## Vertical Margin
 
 The same margin value can also be defined at the top and bottom sides using shorthand classes.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center gap-large">
-    <div class="bg-red-2 radius">
-        <div class="my-large radius bg-green font-weight-bold p-normal">my-large</div>
-    </div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={SpacingMarginStories.VerticalMargin} />
 
 ## Responsive
 

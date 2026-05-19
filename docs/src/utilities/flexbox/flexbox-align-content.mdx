@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as FlexboxAlignContentStories from './flexbox-align-content.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssFlexboxAlignContent,
   CssResponsiveTable,
   Footer,
@@ -31,97 +32,37 @@ import {
 
 Elements are aligned to the start of the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-content-start flex-wrap gap-normal" style="min-height: 200px">
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignContentStories.Start} />
 
 ## Center
 
 Elements are centered within the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-content-center flex-wrap gap-normal" style="min-height: 200px">
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignContentStories.Center} />
 
 ## End
 
 Elements are aligned to the end of the container.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-content-end flex-wrap gap-normal" style="min-height: 200px">
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignContentStories.End} />
 
 ## Space Between
 
 Elements are spaced evenly between them.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-content-space-between flex-wrap gap-normal" style="min-height: 200px">
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">4</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">5</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignContentStories.SpaceBetween} />
 
 ## Space Around
 
 Elements are spaced evenly between and around them.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-content-space-around flex-wrap gap-normal" style="min-height: 200px">
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">4</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">5</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignContentStories.SpaceAround} />
 
 ## Space Evenly
 
 Elements are spaced evenly around them.
 
-<Code
-  language="html"
-  code={`
-<div class="flex align-content-space-evenly flex-wrap gap-normal" style="min-height: 200px">
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">4</div>
-    <div class="bg-green radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">5</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxAlignContentStories.SpaceEvenly} />
 
 ## Responsive
 

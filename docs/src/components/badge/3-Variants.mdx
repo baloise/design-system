@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   InfoQuote,
   Lead,
@@ -30,7 +31,7 @@ A badge can optionally include an icon by setting the `icon` prop.
 The icon will only be rendered if the badge size is not `small`, as small badges are designed to be compact and
 may not have enough space to accommodate an icon without compromising readability.
 
-<Canvas of={BadgeStories.WithIcon} />
+<CanvasWithCodePen of={BadgeStories.WithIcon} />
 
 {/* ------------------------------------------------------ */}
 
@@ -38,7 +39,7 @@ may not have enough space to accommodate an icon without compromising readabilit
 
 A badge can be styled with different color variants to indicate various statuses or categories. The available color variants are:
 
-<Canvas of={BadgeStories.Colors} />
+<CanvasWithCodePen of={BadgeStories.Colors} />
 
 {/* ------------------------------------------------------ */}
 
@@ -46,7 +47,7 @@ A badge can be styled with different color variants to indicate various statuses
 
 A badge can be rendered in different sizes to accommodate various design requirements. The available sizes are:
 
-<Canvas of={BadgeStories.Sizes} />
+<CanvasWithCodePen of={BadgeStories.Sizes} />
 
 {/* ------------------------------------------------------ */}
 
@@ -55,7 +56,7 @@ A badge can be rendered in different sizes to accommodate various design require
 A badge can be used in combination with list items to indicate unread messages, notifications, or other status information.
 When used in a list context, the badge is typically positioned at the end of the list item to provide a clear visual cue.
 
-<Canvas of={BadgeStories.ListBadges} />
+<CanvasWithCodePen of={BadgeStories.ListBadges} />
 
 {/* ------------------------------------------------------ */}
 
@@ -64,7 +65,7 @@ When used in a list context, the badge is typically positioned at the end of the
 A badge can be used in combination with a card component to indicate notifications, status, or other relevant information.
 When used in a card context, the badge is often positioned at the top-right corner of the card to ensure visibility and prominence.
 
-<Canvas of={BadgeStories.CardBadge} />
+<CanvasWithCodePen of={BadgeStories.CardBadge} />
 
 {/* ------------------------------------------------------ */}
 
@@ -72,7 +73,7 @@ When used in a card context, the badge is often positioned at the top-right corn
 
 With the pulse animation, the badge can draw attention to the button, indicating that there is new information or an action that requires the user's attention.
 
-<Canvas of={BadgeStories.ButtonBadge} />
+<CanvasWithCodePen of={BadgeStories.ButtonBadge} />
 
 {/* ------------------------------------------------------ */}
 
@@ -80,6 +81,6 @@ With the pulse animation, the badge can draw attention to the button, indicating
 
 WIP
 
-<Canvas of={BadgeStories.TabsBadge} />
+<CanvasWithCodePen of={BadgeStories.TabsBadge} />
 
 <Footer />

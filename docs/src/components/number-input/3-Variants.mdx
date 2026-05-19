@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -24,7 +25,7 @@ import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-
 
 Number inputs with decimal values for more precise numeric input.
 
-<Canvas of={NumberInputStories.Decimal} />
+<CanvasWithCodePen of={NumberInputStories.Decimal} />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,6 +33,6 @@ Number inputs with decimal values for more precise numeric input.
 
 Number inputs with suffixes to indicate units or context for the numeric value.
 
-<Canvas of={NumberInputStories.Suffix} />
+<CanvasWithCodePen of={NumberInputStories.Suffix} />
 
 <Footer />

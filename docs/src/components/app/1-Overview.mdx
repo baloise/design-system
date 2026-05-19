@@ -1,6 +1,7 @@
-import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
@@ -18,7 +19,7 @@ import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
 
 <ComponentLead component="app" />
 
-<Canvas of={AppStories.Basic} sourceState="shown" />
+<CanvasWithCodePen of={AppStories.Basic} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

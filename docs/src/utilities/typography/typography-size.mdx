@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as TypographySizeStories from './typography-size.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssResponsiveTable,
   CssTypographySize,
   Footer,
@@ -33,41 +34,19 @@ The font-size CSS utility classes are inherently **responsive**. This means that
 
 The default size for the `title` class is `text-xxx-large`, which corresponds to the size of a heading 1 element.
 
-<Code
-  language="html"
-  code={`
-<h1 class="title">Heading 1</h1>
-<h2 class="title text-xx-large">Heading 2</h2>
-<h3 class="title text-x-large">Heading 3</h3>
-<h4 class="title text-large">Heading 4</h4>
-<h5 class="title text-normal">Heading 5</h5>
-`}
-/>
+<CanvasWithCodePen of={TypographySizeStories.Headings} />
 
 ## Texts
 
 The default size for the `p` element is `text-normal`.
 
-<Code
-  language="html"
-  code={`
-<p class="text-medium">Medium Paragraph - Lorem ipsum dolor sit.</p>
-<p>Paragraph - Lorem ipsum dolor sit.</p>
-<p class="text-small">Small Paragraph - Lorem ipsum dolor sit.</p>
-`}
-/>
+<CanvasWithCodePen of={TypographySizeStories.Texts} />
 
 ## Display
 
 The two display sizes are designed for large-scale website layouts.
 
-<Code
-  language="html"
-  code={`
-<h1 class="title text-5xl">Display 1</h1>
-<h1 class="subtitle text-xxxx-large">Display 2</h1>
-`}
-/>
+<CanvasWithCodePen of={TypographySizeStories.Display} />
 
 ## Responsive
 

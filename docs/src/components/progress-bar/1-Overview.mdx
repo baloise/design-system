@@ -1,6 +1,7 @@
-import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
@@ -18,7 +19,7 @@ import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-
 
 <ComponentLead component="progress-bar" />
 
-<Canvas of={ProgressBarStories.Basic} sourceState="shown" />
+<CanvasWithCodePen of={ProgressBarStories.Basic} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

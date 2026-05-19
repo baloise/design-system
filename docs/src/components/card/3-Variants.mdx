@@ -1,5 +1,6 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs,
+  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as CardStories from './card.stories'
 import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 
@@ -13,37 +14,37 @@ import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 
 <StoryHeading of={CardStories.Outlined}></StoryHeading>
 
-<Canvas of={CardStories.Outlined} />
+<CanvasWithCodePen of={CardStories.Outlined} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CardStories.CardHeader}></StoryHeading>
 
-<Canvas of={CardStories.CardHeader} />
+<CanvasWithCodePen of={CardStories.CardHeader} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CardStories.TileCard}></StoryHeading>
 
-<Canvas of={CardStories.TileCard} />
+<CanvasWithCodePen of={CardStories.TileCard} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CardStories.TeaserCards}></StoryHeading>
 
-<Canvas of={CardStories.TeaserCards} />
+<CanvasWithCodePen of={CardStories.TeaserCards} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CardStories.CardImages}></StoryHeading>
 
-<Canvas of={CardStories.CardImages} />
+<CanvasWithCodePen of={CardStories.CardImages} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CardStories.ImageTeaser}></StoryHeading>
 
-<Canvas of={CardStories.ImageTeaser} />
+<CanvasWithCodePen of={CardStories.ImageTeaser} />
 
 {/* ------------------------------------------------------ */}
 

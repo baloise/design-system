@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as SpacingPaddingStories from './spacing-padding.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssResponsiveTable,
   CssSpacingPadding,
   Footer,
@@ -40,55 +41,19 @@ Spacing can be set with **padding** `p*` for all directions:
 
 Padding can be defined for a specific edge.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center gap-large">
-  <div class="pt-normal bg-red-2">
-      <div class="bg-green p-large">pt-normal</div>
-  </div>
-  <div class="pr-large bg-red-2">
-      <div class="bg-green p-large">pr-large</div>
-  </div>
-  <div class="pb-small bg-red-2">
-      <div class="bg-green p-large">pb-small</div>
-  </div>
-  <div class="pl-medium bg-red-2">
-      <div class="bg-green p-large">pl-medium</div>
-  </div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={SpacingPaddingStories.SingleSidePadding} />
 
 ## Horizontal Padding
 
 Shorthand classes allow you to define the same padding value for both the left and right sides.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center gap-large">
-    <div class="px-large bg-red-2 radius">
-        <div class="radius bg-green font-weight-bold p-normal">px-large</div>
-    </div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={SpacingPaddingStories.HorizontalPadding} />
 
 ## Vertical Padding
 
 The same padding value can also be defined at the top and bottom sides using shorthand classes.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center gap-large">
-    <div class="py-large bg-red-2 radius">
-        <div class="radius bg-green font-weight-bold p-normal">py-large</div>
-    </div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={SpacingPaddingStories.VerticalPadding} />
 
 ## Responsive
 

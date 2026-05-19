@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as FlexboxGapStories from './flexbox-gap.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssFlexboxGap,
   CssResponsiveTable,
   Footer,
@@ -29,51 +30,15 @@ import {
 
 ## Gap
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap gap-normal mb-normal">
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">1</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">2</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">3</div>
-</div>
-<div class="flex flex-wrap gap-xx-large">
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">1</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">2</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxGapStories.Gap} />
 
 ## Column Gap
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap column-gap-x-small mb-normal bg-red-2">
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">1</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">2</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">3</div>
-</div>
-<div class="flex flex-wrap column-gap-large mb-normal bg-red-2 mt-normal">
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">1</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">2</div>
-  <div class="flex-1 bg-green radius flex justify-content-center align-items-center">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxGapStories.ColumnGap} />
 
 ## Row Gap
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap row-gap-large mb-normal bg-red-2">
-  <div class="min-w-full flex-1 bg-green radius flex justify-content-center align-items-center">1</div>
-  <div class="min-w-full flex-1 bg-green radius flex justify-content-center align-items-center">2</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxGapStories.RowGap} />
 
 ## Responsive
 
