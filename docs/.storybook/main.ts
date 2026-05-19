@@ -33,6 +33,9 @@ const config: StorybookConfig = {
     mergeConfig(config, {
       build: {
         chunkSizeWarningLimit: 2000,
+        rolldownOptions: {
+          checks: { pluginTimings: false },
+        },
         rollupOptions: {
           output: {
             chunkFileNames: ({ name }: { name: string }) => `assets/${toKebabCase(name)}-[hash].js`,
