@@ -1,6 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalEnv": [
+    "BAL_DOCUMENTATION",
+    "DS_DOCUMENTATION",
+    "DS_RELEASE",
+    "DS_DEVELOPMENT",
+    "DS_PLAYWRIGHT_TESTING",
+    "DS_TESTING"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

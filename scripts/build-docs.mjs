@@ -56,16 +56,6 @@ async function copyResources() {
   // CSS files from packages/css build output
   await copyToPublic(join(packagesRoot, 'css/dist/css/design-system.css'), 'assets/css/design-system.css')
 
-  // Log packages/core folder contents
-  const coreFolder = join(packagesRoot, 'core')
-  console.log(`\n📂 Core folder: ${coreFolder}`)
-  try {
-    execSync(`ls -la "${coreFolder}"`, { stdio: 'inherit' })
-  } catch (err) {
-    console.warn(`⚠ Could not list core folder: ${err.message}`)
-  }
-  console.log()
-
   // Web components build output
   await copyToAsset(join(packagesRoot, 'core/docs/components.json'), 'data/components.json')
 
