@@ -7,7 +7,7 @@ import { ZipArchive } from 'archiver'
 import { execSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
 import { copy } from 'fs-extra'
-import { mkdir, stat, open } from 'node:fs/promises'
+import { mkdir, open } from 'node:fs/promises'
 import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -77,22 +77,14 @@ async function copyResources() {
 // ============================================================================
 async function fetchContributors() {
   const outPath = join(docsRoot, 'src/assets/data/contributors.json')
-  const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
-  // Skip in serve mode — contributors.json is already in git
-  if (serve) {
-    console.log('📦 Skipping contributors fetch (server mode)')
+  // Skip in CI or serve mode — contributors.json is already in git
+  if (process.env.CI || serve) {
+    console.log('📦 Skipping contributors fetch (CI or serve mode)')
     return
   }
 
   try {
-    // Production mode: check cache freshness
-    const cacheStats = await stat(outPath).catch(() => null)
-    if (cacheStats && Date.now() - cacheStats.mtimeMs < ONE_DAY_MS) {
-      console.log('📦 Using cached contributors (less than 24h old)')
-      return
-    }
-
     // Fetch fresh data from GitHub
     console.log('👥 Fetching contributors from GitHub...')
     const res = await fetch('https://api.github.com/repos/baloise/design-system/contributors')
