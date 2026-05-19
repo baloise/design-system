@@ -14,7 +14,6 @@ const config: StorybookConfig = {
   previewHead: head => `
   ${head}
 
-
   <link rel="stylesheet" type="text/css" href="assets/css/design-system.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/fonts.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
@@ -26,6 +25,3 @@ const config: StorybookConfig = {
   `,
 }
 export default config
-
-// <link rel="stylesheet" type="text/css" href="assets/css/avatars.css" />
-// <link rel="stylesheet" type="text/css" href="assets/css/version.css" />

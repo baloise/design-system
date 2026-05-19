@@ -11,6 +11,7 @@ import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
 
 const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
 const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
+const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
 
 let message = ''
 
@@ -20,6 +21,10 @@ if (IS_DS_RELEASE) {
 
 if (IS_DS_DEVELOPMENT) {
   message = '👷 Build is set to development 👷'
+}
+
+if (IS_DS_DOCUMENTATION) {
+  message = '📚 Build is set to documentation 📚'
 }
 
 if (message) {
@@ -80,10 +85,11 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/distribution}
      */
-    !IS_DS_DEVELOPMENT && {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'dist',
+        esmLoaderPath: '../loader',
+      },
     /**
      * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
      * simple utility functions for easily defining these elements on the Custom Element Registry. This output target
@@ -92,18 +98,19 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/custom-elements}
      */
-    !IS_DS_DEVELOPMENT && {
-      type: 'dist-custom-elements',
-      dir: 'components',
-      includeGlobalScripts: false,
-      generateTypeDeclarations: true,
-      /**
-       * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
-       * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
-       * contains a dynamic import that caused a warning in Angular.
-       */
-      externalRuntime: false,
-    },
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'dist-custom-elements',
+        dir: 'components',
+        includeGlobalScripts: false,
+        generateTypeDeclarations: true,
+        /**
+         * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
+         * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
+         * contains a dynamic import that caused a warning in Angular.
+         */
+        externalRuntime: false,
+      },
     /**
      * Custom output target that generates web components as standalone custom elements
      * that can be used directly without a framework or bundler.
@@ -111,6 +118,7 @@ export const config: Config = {
      * {@link https://stenciljs.com/docs/custom-elements}
      */
     !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION &&
       webOutputTarget({
         dir: 'components',
       }),
@@ -155,11 +163,12 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/docs-vscode#vs-code-documentation}
      */
-    !IS_DS_DEVELOPMENT && {
-      type: 'docs-vscode',
-      file: 'docs/html.html-data.json',
-      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-    },
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'docs-vscode',
+        file: 'docs/html.html-data.json',
+        sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+      },
     /**
      * Custom output target that generates docs JSON without timestamps and file paths.
      * Enriches components with design tokens from Base.tokens.json and extracts CSS variable docs

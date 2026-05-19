@@ -32,7 +32,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "node --disable-warning=DEP0205 --import tsx/esm src/build.ts"
+    "build": "node --import tsx/esm src/build.ts"
   },
   "dependencies": {
     "@baloise/ds-tokens": "20.0.0-next.4",
