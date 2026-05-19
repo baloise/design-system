@@ -28,7 +28,7 @@ Contributions are not limited to code. We also encourage feedback, documentation
 All you need is a [public GitHub account](https://github.com/) to get started. Most contributions begin with a GitHub issue using one of these templates:
 
 <Unstyled>
-  <div className="flex flex-wrap gap-normal mt-lg">
+  <div className="flex flex-wrap gap-normal mt-lg w-full">
     <ButtonCard
       color="yellow"
       icon="💬"
@@ -92,44 +92,136 @@ Maintainers are members of the community who are committed to the success of ind
 
 ## Workflow
 
-The Helvetia Design System typically use a [fork and pull request workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for contributions.
+The Helvetia Design System typically uses a [fork and pull request workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for contributions.
+
+### Quick Start for Contributors
+
+**New to contributing?** Here's the typical flow:
+
+1. **Start with an issue** — Create or find an issue to work on (see buttons above)
+2. **Fork & branch** — Fork the repo, create a branch (e.g., `feat/button-variant`)
+3. **Make changes** — Follow the contributing guidelines and code standards
+4. **Test & commit** — Write tests, run linting, create changesets
+5. **Open a PR** — Push your branch and open a pull request against `next`
+6. **Address feedback** — Core team reviews and suggests improvements
+7. **Merge & release** — Once approved, your changes are merged and published
+
+See [CONTRIBUTING.md](https://github.com/baloise/design-system/blob/next/CONTRIBUTING.md) for detailed step-by-step instructions.
+
+## Community Guidelines & Code of Conduct
+
+We're committed to providing a welcoming and inclusive environment:
+
+- **[Code of Conduct](https://github.com/baloise/design-system/blob/next/CODE_OF_CONDUCT.md)** — Our community standards and expectations
+- **Contributions welcome in many forms** — code, design feedback, documentation, bug reports, feature ideas, and more
+- **Questions are encouraged** — Post issues to ask questions, discuss ideas, or seek guidance
+- **Be respectful** — Treat all community members with respect
+
+## Response Times & Expectations
+
+Here's what to expect when you contribute:
+
+<Markdown>
+  {`
+| Milestone             | Expectation          |
+| --------------------- | -------------------- |
+| Issue acknowledgement | Within 3-5 business days |
+| PR review             | Within 5-10 business days |
+| Security issues       | Within 72 hours (see [SECURITY.md](https://github.com/baloise/design-system/blob/next/SECURITY.md)) |
+| Merged PR published   | Next scheduled release |
+`}
+</Markdown>
+
+**Note:** Timelines may vary during holidays or high-activity periods. Community PRs are reviewed by maintainers in their available time.
+
+## Pro Tips for Contributors
+
+### Test Your Changes with Snapshots
+
+Before merging, publish a **snapshot version** to test in a real project:
+
+```bash
+# Post this comment in your PR:
+/snapshot
+
+# Then install and test:
+npm install @baloise/ds-core@1.2.3-snapshot.456.abc1234
+```
+
+See [ARCHITECTURE.md — Snapshot Versions](https://github.com/baloise/design-system/blob/next/ARCHITECTURE.md#snapshot-versions-testing-before-merge) for details.
+
+### Use Bot Commands
+
+Post these as PR comments to trigger automation:
+
+- **`/update-screenshots`** — Regenerate visual regression snapshots after intentional changes
+- **`/snapshot`** — Publish a pre-release version for testing
+- **`/cib`** — Create a branch from an issue (post on the issue, not the PR)
+
+See [CONTRIBUTING.md — Bot Commands](https://github.com/baloise/design-system/blob/next/CONTRIBUTING.md#bot-commands) for more.
+
+### Understand Semantic Versioning
+
+When creating a changeset, choose the right version bump:
+
+- **Patch** — bug fixes, non-breaking improvements
+- **Minor** — new features, new components
+- **Major** — breaking changes (prop renames, removed props, behavior changes)
+
+See [ARCHITECTURE.md — Semantic Versioning Policy](https://github.com/baloise/design-system/blob/next/ARCHITECTURE.md#semantic-versioning-policy) for detailed guidance with examples.
+
+## Design Feedback & Ideas First?
+
+**Not sure if your idea is good?** That's okay!
+
+1. **Open a discussion issue** — Use the 💬 "Ask a question" button to discuss your idea first
+2. **Get feedback early** — The core team can provide guidance before you spend time implementing
+3. **Iterate together** — Work through design/technical considerations with the team
+4. **Then implement** — Once approved, you're ready to code with confidence
+
+This saves time and ensures your contribution aligns with the design system's vision.
 
 ## Quick Links
 
 For comprehensive guides, see the main documentation files:
 
 <Unstyled>
-  <div className="flex flex-wrap gap-normal mt-lg">
+  <div className="flex flex-wrap flex-direction-column gap-normal mt-lg">
     <ButtonCard
-      color="blue"
+      wide
+      color="purple"
       icon="📖"
       label="CONTRIBUTING.md"
       description="Git workflow, reporting issues, fixing bugs, creating features, and PR process"
       link="https://github.com/baloise/design-system/blob/next/CONTRIBUTING.md"
     ></ButtonCard>
     <ButtonCard
-      color="blue"
+      wide
+      color="purple"
       icon="🏗️"
       label="ARCHITECTURE.md"
       description="System design, component patterns, testing strategy, CI/CD pipeline, and deployment"
       link="https://github.com/baloise/design-system/blob/next/ARCHITECTURE.md"
     ></ButtonCard>
     <ButtonCard
-      color="blue"
+      wide
+      color="purple"
       icon="⚙️"
       label="DEVELOPMENT.md"
       description="Local setup, dev servers, building, testing commands, and troubleshooting"
       link="https://github.com/baloise/design-system/blob/next/DEVELOPMENT.md"
     ></ButtonCard>
     <ButtonCard
-      color="blue"
+      wide
+      color="purple"
       icon="✨"
       label="STYLE_GUIDE.md"
       description="Code standards, naming conventions, prop patterns, and best practices"
       link="https://github.com/baloise/design-system/blob/next/STYLE_GUIDE.md"
     ></ButtonCard>
     <ButtonCard
-      color="blue"
+      wide
+      color="purple"
       icon="🔒"
       label="SECURITY.md"
       description="Security policy and vulnerability reporting guidelines"
@@ -138,12 +230,4 @@ For comprehensive guides, see the main documentation files:
   </div>
 </Unstyled>
 
-<Footer>
-  <LinkCards>
-    <LinkCard
-      pageTitle={'Contributing'}
-      label={'Back to Contributing'}
-      description={'Main contribution guide'}
-    />
-  </LinkCards>
-</Footer>
+<Footer />
