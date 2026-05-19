@@ -6,16 +6,6 @@ export const WelcomeGuide = ({ _children }) => {
     <div className="sb-unstyled my-welcome-guide my-large">
       <LinkCards>
         <LinkCard
-          pageTitle={'Design System'}
-          label={'What is a Design System?'}
-          description={'Purpose, advantages and architecture'}
-        />
-        <LinkCard
-          pageTitle={'Foundation/Iconography'}
-          label={'Iconography'}
-          description={'Introducing a collection of up to 100 vector graphics'}
-        />
-        <LinkCard
           pageTitle={'Development/Getting Started'}
           label={'Development'}
           description={'Getting Started with HTML, Angular or React'}
@@ -24,7 +14,7 @@ export const WelcomeGuide = ({ _children }) => {
         <LinkCard pageTitle={'Support'} description={'Ask a question, report a bug or request a feature'} />
         <LinkCard
           label={'Contributing'}
-          pageTitle={'Contributing/Overview'}
+          pageTitle={'Contributing'}
           description={'Be part of the Design System Community'}
         />
       </LinkCards>
