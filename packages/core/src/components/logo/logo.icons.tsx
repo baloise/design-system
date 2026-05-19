@@ -1,4 +1,4 @@
-import { FunctionalComponent, h, JSX } from '@stencil/core'
+import { FunctionalComponent, h } from '@stencil/core'
 
 type LogoProps = {
   onlyText?: boolean

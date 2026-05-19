@@ -5,7 +5,6 @@ import {
   type LogInstance,
   normalizeDeprecatedTShirtSize,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'
@@ -18,7 +17,6 @@ import {
   DIVIDER_SPACES,
   DIVIDER_COLORS,
 } from './divider.interfaces'
-import { CONTENT_LAYOUTS } from '../content/content.interfaces'
 
 /**
  * Divider renders a visual separator line for grouping or distinguishing content sections.

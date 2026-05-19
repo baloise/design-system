@@ -45,7 +45,7 @@ export const ColorCards = ({ children }) => {
   return <div className="flex justify-content-center flex-wrap gap-small my-normal">{children}</div>
 }
 
-export const ColorCardRow = ({ children, color }) => {
+export const ColorCardRow = ({ _children, color }) => {
   return (
     <ColorCards>
       <ColorCard color={`${color}.1`} background={false} small />

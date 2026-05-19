@@ -5,29 +5,19 @@ import {
   Logger,
   type LogInstance,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'
 import {
   CARD_ALIGNMENTS,
-  CARD_ACTIONS_ALIGNMENTS,
-  CARD_FOOTER_POSITIONS,
-  CARD_HEADER_DIRECTIONS,
   CARD_IMAGE_TEASERS,
   CARD_SPACES,
   CARD_COLORS,
   type CardAlignment,
   type CardImageTeaser,
-  type CardActionsAlignment,
-  type CardFooterPosition,
-  type CardHeaderDirection,
   type CardSpace,
   type CardColor,
-  type CardButtonElementType,
-  type CardButtonTarget,
 } from './card.interfaces'
-import type { ButtonElementType, ButtonTarget } from '../button/button.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 

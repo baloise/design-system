@@ -9,6 +9,17 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-empty-interface': 'off',
       'preserve-caught-error': 'off',
+      // Catch unused variables and imports. Prefix with _ to intentionally ignore.
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          args: 'after-used',
+          varsIgnorePattern: '^_',
+          argsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
     },
   },
   prettier,

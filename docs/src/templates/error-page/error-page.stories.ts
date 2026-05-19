@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { StoryFactory, withComponentControls, withRender } from '../../utils'
 import { BrandIconError404Red } from '@baloise/ds-assets'
 
 type Args = JSX.DsBadge & { slot: string }
@@ -17,7 +17,7 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    ({ slot, ...args }) => `<div class="container bg-red-light p-large radius flex gap-xl">
+    () => `<div class="container bg-red-light p-large radius flex gap-xl">
     <div class="flex-1">
       <h1 class="title is-2xl">This page could not be found.</h1>
       <p class="subtitle is-2xl">A reasons for this could be a misspelled URL.</p>

@@ -1,7 +1,7 @@
 import { DsComponentInterface } from '@global'
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrType, ValidateType, setupValidation } from '@utils'
+import { Logger, type LogInstance, ValidateType, setupValidation } from '@utils'
 
 /**
  * List renders semantic HTML list elements (ordered or unordered) for grouping related items.

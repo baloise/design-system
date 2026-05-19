@@ -1,7 +1,7 @@
 import React from 'react'
 import { LinkCard, LinkCards } from './Buttons'
 
-export const WelcomeGuide = ({ children }) => {
+export const WelcomeGuide = ({ _children }) => {
   return (
     <div className="sb-unstyled my-welcome-guide my-large">
       <LinkCards>

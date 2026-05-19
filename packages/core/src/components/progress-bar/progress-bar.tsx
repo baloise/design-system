@@ -10,7 +10,6 @@ import {
   ListenToWindowResize,
   initialBreakpoints,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'

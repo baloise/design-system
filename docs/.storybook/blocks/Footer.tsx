@@ -48,7 +48,7 @@ const getGitHubEditUrl = () => {
 
     // Default fallback
     return 'https://github.com/baloise/design-system'
-  } catch (error) {
+  } catch {
     // Fallback if any error occurs
     return 'https://github.com/baloise/design-system'
   }

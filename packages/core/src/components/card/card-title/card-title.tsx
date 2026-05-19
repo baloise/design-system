@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, LogInstance, ValidateOneOf, ValidateType, ValidateEmptyOrType } from '@utils'
+import { Logger, LogInstance, ValidateOneOf, ValidateType } from '@utils'
 import { DsComponentInterface } from '@global'
 import { HEADING_VISUAL_LEVELS, HEADING_TAGS, HeadingLevel, HeadingVisualLevel } from '../../heading/heading.interfaces'
 

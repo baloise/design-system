@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateOneOf, ValidateEmptyOrType, ValidateType, setupValidation } from '@utils'
+import { Logger, type LogInstance, ValidateOneOf, ValidateType, setupValidation } from '@utils'
 import {
   ACCORDION_MARKERS,
   ACCORDION_MARKER_POSITIONS,

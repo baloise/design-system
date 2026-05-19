@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'button-group'
 const VARIANTS = ['basic', 'group', 'long-labels', 'column-group', 'wide', 'two-row-button-group']

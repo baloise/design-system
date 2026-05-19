@@ -343,7 +343,7 @@ TeaserCards.storyName = '🧩 Teaser Cards'
 
 export const TeaserCardsHtml = Story({
   ...withRender(
-    ({ ...args }) => `<div class="grid">
+    () => `<div class="grid">
   <div class="col is-one-third">
     <article class="card is-purple-light is-fullheight">
       <div class="card-content">

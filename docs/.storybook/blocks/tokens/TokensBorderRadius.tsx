@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensBorderRadius = ({ overview }): React.ReactElement => {
+export const TokensBorderRadius = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['🔵 Radius']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
