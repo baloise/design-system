@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "branch=${{ github.event.issue.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: ${{ steps.get-branch.outputs.branch }}
           fetch-depth: 0
