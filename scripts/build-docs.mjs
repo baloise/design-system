@@ -7,7 +7,7 @@ import { ZipArchive } from 'archiver'
 import { execSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
 import { copy } from 'fs-extra'
-import { mkdir, writeFile, stat } from 'node:fs/promises'
+import { mkdir, open } from 'node:fs/promises'
 import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -77,47 +77,76 @@ async function copyResources() {
 // ============================================================================
 async function fetchContributors() {
   const outPath = join(docsRoot, 'src/assets/data/contributors.json')
-  const ONE_DAY_MS = 24 * 60 * 60 * 1000
+
+  // Skip in CI or serve mode — contributors.json is already in git
+  if (process.env.CI || serve) {
+    console.log('📦 Skipping contributors fetch (CI or serve mode)')
+    return
+  }
 
   try {
-    // Check if cache exists and is fresh
-    const cacheStats = await stat(outPath).catch(() => null)
-    const now = Date.now()
-    const isCacheFresh = cacheStats && now - cacheStats.mtimeMs < ONE_DAY_MS
-
-    // In serve mode, always use cached data if it exists
-    if (serve) {
-      if (cacheStats) {
-        console.log('📦 Using cached contributors (server mode)')
-        return
-      }
-      console.log('⚠ No cache found, creating empty contributors list (server mode)')
-      await writeFile(outPath, JSON.stringify([], undefined, 2))
-      return
-    }
-
-    // If cache is fresh, use it
-    if (isCacheFresh) {
-      console.log('📦 Using cached contributors (less than 24h old)')
-      return
-    }
-
     // Fetch fresh data from GitHub
     console.log('👥 Fetching contributors from GitHub...')
     const res = await fetch('https://api.github.com/repos/baloise/design-system/contributors')
     if (!res.ok) {
       throw new Error(`GitHub API returned ${res.status}`)
     }
+
+    const contentType = res.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      throw new Error(`Invalid content-type: ${contentType}`)
+    }
+
     const json = await res.json()
+
+    if (!Array.isArray(json)) {
+      throw new Error('GitHub API response is not an array')
+    }
+
+    // Validate and sanitize contributors
     const contributors = json
-      .filter(c => c.type === 'User')
-      .map(u => ({
-        url: u.html_url,
-        name: u.login,
-        avatar: u.avatar_url,
-      }))
+      .filter(c => {
+        return (
+          typeof c === 'object' &&
+          c !== null &&
+          c.type === 'User' &&
+          typeof c.html_url === 'string' &&
+          typeof c.login === 'string' &&
+          typeof c.avatar_url === 'string'
+        )
+      })
+      .map(u => {
+        try {
+          new URL(u.html_url)
+          new URL(u.avatar_url)
+        } catch (e) {
+          console.warn(`⚠ Skipping contributor with invalid URL: ${u.login}`)
+          return null
+        }
+
+        return {
+          url: u.html_url,
+          name: String(u.login).slice(0, 255),
+          avatar: String(u.avatar_url).slice(0, 2048),
+        }
+      })
+      .filter(c => c !== null)
+
     console.log(`\x1b[32m✔\x1b[0m ${contributors.length} contributors fetched`)
-    await writeFile(outPath, JSON.stringify(contributors, undefined, 2))
+
+    // Write to file atomically
+    try {
+      const fd = await open(outPath, 'wx')
+      try {
+        await fd.writeFile(JSON.stringify(contributors, undefined, 2))
+      } finally {
+        await fd.close()
+      }
+    } catch (e) {
+      if (e.code !== 'EEXIST') {
+        throw e
+      }
+    }
   } catch (err) {
     console.warn('⚠ Could not fetch contributors from GitHub API:', err.message)
     console.warn('⚠ Using cached contributors list if available')
