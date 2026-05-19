@@ -7,7 +7,7 @@ import { ZipArchive } from 'archiver'
 import { execSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
 import { copy } from 'fs-extra'
-import { mkdir, writeFile, stat } from 'node:fs/promises'
+import { mkdir, writeFile, stat, open } from 'node:fs/promises'
 import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -92,7 +92,13 @@ async function fetchContributors() {
         return
       }
       console.log('⚠ No cache found, creating empty contributors list (server mode)')
-      await writeFile(outPath, JSON.stringify([], undefined, 2))
+      // Use atomic write to avoid race condition
+      const fd = await open(outPath, 'w')
+      try {
+        await fd.writeFile(JSON.stringify([], undefined, 2))
+      } finally {
+        await fd.close()
+      }
       return
     }
 
@@ -108,16 +114,60 @@ async function fetchContributors() {
     if (!res.ok) {
       throw new Error(`GitHub API returned ${res.status}`)
     }
+
+    // Validate content-type is JSON
+    const contentType = res.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      throw new Error(`Invalid content-type: ${contentType}`)
+    }
+
     const json = await res.json()
+
+    // Validate response is an array
+    if (!Array.isArray(json)) {
+      throw new Error('GitHub API response is not an array')
+    }
+
+    // Validate and sanitize each contributor
     const contributors = json
-      .filter(c => c.type === 'User')
-      .map(u => ({
-        url: u.html_url,
-        name: u.login,
-        avatar: u.avatar_url,
-      }))
+      .filter(c => {
+        // Validate structure
+        return (
+          typeof c === 'object' &&
+          c !== null &&
+          c.type === 'User' &&
+          typeof c.html_url === 'string' &&
+          typeof c.login === 'string' &&
+          typeof c.avatar_url === 'string'
+        )
+      })
+      .map(u => {
+        // Validate URLs are valid HTTP/HTTPS URLs
+        try {
+          new URL(u.html_url)
+          new URL(u.avatar_url)
+        } catch (e) {
+          console.warn(`⚠ Skipping contributor with invalid URL: ${u.login}`)
+          return null
+        }
+
+        // Sanitize strings to prevent injection
+        return {
+          url: u.html_url,
+          name: String(u.login).slice(0, 255),
+          avatar: String(u.avatar_url).slice(0, 2048),
+        }
+      })
+      .filter(c => c !== null)
+
     console.log(`\x1b[32m✔\x1b[0m ${contributors.length} contributors fetched`)
-    await writeFile(outPath, JSON.stringify(contributors, undefined, 2))
+    // Use atomic write to avoid race condition
+    const fd = await open(outPath, 'w')
+    try {
+      await fd.writeFile(JSON.stringify(contributors, undefined, 2))
+    } finally {
+      await fd.close()
+    }
   } catch (err) {
     console.warn('⚠ Could not fetch contributors from GitHub API:', err.message)
     console.warn('⚠ Using cached contributors list if available')
