@@ -1,7 +1,7 @@
 import React from 'react'
 import { navigate } from '@storybook/addon-links'
 
-export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle }) => {
+export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle, wide }) => {
   let linkObj = {}
   if (link) {
     linkObj = { ...linkObj, href: link, target: target || '_blank' }
@@ -14,6 +14,27 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
         navigate({ title: pageTitle })
       },
     }
+  }
+
+  if (wide) {
+    return (
+      <button
+        {...linkObj}
+        style={{ flex: 1 }}
+        className={`sb-unstyled button mb-none flex flex-1 w-full flex-direction-row gap-lg ${
+          color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-tertiary'
+        } p-normal text-large`}
+      >
+        <span className="w-fit flex justify-content-center text-xx-large text-align-center">
+          {icon}
+          {children}
+        </span>
+        <div className="flex-1 w-full flex flex-direction-column">
+          <span className="block title text-medium text-align-left mb-none">{label}</span>
+          <span className="block text text-small text-align-left">{description}</span>
+        </div>
+      </button>
+    )
   }
 
   return (
