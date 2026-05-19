@@ -31,3 +31,14 @@
   <span> · </span>
   <a href="https://github.com/baloise/design-system/blob/main/CHANGELOG.md">Changelog</a>
 </h3>
+
+---
+
+## Documentation
+
+- **[ARCHITECTURE.md](https://github.com/baloise/design-system/blob/next/ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
+- **[DEVELOPMENT.md](https://github.com/baloise/design-system/blob/next/DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting
+- **[CONTRIBUTING.md](https://github.com/baloise/design-system/blob/next/CONTRIBUTING.md)** — Contribution workflow, PR process, component checklist, accessibility requirements
+- **[STYLE_GUIDE.md](https://github.com/baloise/design-system/blob/next/STYLE_GUIDE.md)** — Code standards, naming conventions, best practices
+- **[SECURITY.md](https://github.com/baloise/design-system/blob/next/SECURITY.md)** — Security policy and guidelines
+- **[CODE_OF_CONDUCT.md](https://github.com/baloise/design-system/blob/next/CODE_OF_CONDUCT.md)** — Community standards
