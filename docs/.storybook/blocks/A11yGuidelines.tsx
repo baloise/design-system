@@ -16,7 +16,6 @@ export const A11yGuidelines = ({ items }: A11yGuidelinesProps): React.ReactEleme
       {items.map((item, index) => {
         const isDo = item.type === 'do'
         const borderColor = isDo ? '#00b28f' : '#d9304c'
-        const icon = isDo ? '✓' : '✗'
 
         return (
           <div

@@ -28,7 +28,7 @@ type StylesQuoteProps = {
   tag: string
 }
 
-export const StylesQuote = ({ tag }: StylesQuoteProps): React.ReactElement => {
+export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
       <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>

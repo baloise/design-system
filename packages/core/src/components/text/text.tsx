@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  ElementStateInfo,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { ElementStateInfo, Logger, type LogInstance, ValidateOneOf, ValidateType, setupValidation } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   TEXT_ALIGNS,

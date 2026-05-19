@@ -42,12 +42,27 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
       'no-extra-boolean-cast': 'off',
       'no-self-assign': 'off',
+    },
+  },
+  {
+    files: ['**/*.tsx'],
+    rules: {
+      // h is Stencil's JSX factory — required in scope for JSX but not explicitly called
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          args: 'after-used',
+          varsIgnorePattern: '^_|^h$',
+          argsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
     },
   },
   {

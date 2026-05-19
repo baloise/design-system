@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { join, dirname } from 'path'
 import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
 import type { OutputTargetAngular, PackageJSON } from './types'

@@ -134,19 +134,6 @@ const generateEvent = (event: ComponentEvent) => {
   }
 }
 
-const generateMehod = (method: ComponentMethod) => {
-  return {
-    [`${method.name}`]: {
-      description: description(method),
-      table: {
-        // defaultValue: { summary: method.signature },
-        category: 'methods',
-        type: { summary: method.signature },
-      },
-    },
-  }
-}
-
 const generateSlot = (slot: ComponentSlot) => {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -164,40 +151,15 @@ const generateSlot = (slot: ComponentSlot) => {
   }
 }
 
-const generatePart = (part: ComponentPart) => {
-  return {
-    [`${part.name}`]: {
-      description: description(part),
-      table: {
-        // defaultValue: { summary: method.signature },
-        category: 'parts',
-        // type: { summary: method.signature },
-      },
-    },
-  }
-}
-
 const generateEvents = (events: ComponentEvent[]) => {
   let args = {}
   events.forEach(event => (args = { ...args, ...generateEvent(event) }))
   return args
 }
 
-const generateMethods = (methods: ComponentMethod[]) => {
-  let args = {}
-  methods.forEach(m => (args = { ...args, ...generateMehod(m) }))
-  return args
-}
-
 const generateSlots = (slots: ComponentSlot[]) => {
   let args = {}
   slots.forEach(s => (args = { ...args, ...generateSlot(s) }))
-  return args
-}
-
-const generateParts = (parts: ComponentPart[]) => {
-  let args = {}
-  parts.forEach(p => (args = { ...args, ...generatePart(p) }))
   return args
 }
 

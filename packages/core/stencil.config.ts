@@ -6,8 +6,8 @@ import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from 'libs-output-target-web'
 import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
-import { AngularGenerator } from './config/stencil.bindings.angular'
-import { ReactGenerator } from './config/stencil.bindings.react'
+// import { AngularGenerator } from './config/stencil.bindings.angular'
+// import { ReactGenerator } from './config/stencil.bindings.react'
 
 const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
 const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'

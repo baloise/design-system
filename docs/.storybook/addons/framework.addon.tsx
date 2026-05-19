@@ -62,7 +62,7 @@ const usePersisted = (initialValue: string) => {
       const item = window.localStorage.getItem(LOCAL_STORE_ID)
       const storedFramework = item ? JSON.parse(item) : initialValue
       return frameworks.includes(storedFramework) ? storedFramework : undefined
-    } catch (error) {
+    } catch {
       return initialValue
     }
   })

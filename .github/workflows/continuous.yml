@@ -19,7 +19,7 @@ jobs:
       HUSKY: 0
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
@@ -97,7 +97,7 @@ jobs:
         shardTotal: [6] # total 6 shards
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 2
@@ -128,7 +128,7 @@ jobs:
 
       - name: Upload Playwright HTML report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-shard-${{ matrix.shardIndex }}
           path: packages/core/playwright-report

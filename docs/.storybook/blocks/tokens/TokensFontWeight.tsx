@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensFontWeight = ({ overview }): React.ReactElement => {
+export const TokensFontWeight = ({ _overview }): React.ReactElement => {
   const list = tokens.font.weight
 
   return (

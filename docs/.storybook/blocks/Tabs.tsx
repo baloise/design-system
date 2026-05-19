@@ -2,7 +2,7 @@ import React, { PropsWithChildren, useState } from 'react'
 
 type Props = PropsWithChildren<{ index?: number; tabs: { label: string; content: React.ReactNode }[] }>
 
-export const Tabs = ({ children, tabs, index }: Props): React.ReactNode => {
+export const Tabs = ({ _children, tabs, index }: Props): React.ReactNode => {
   const [activeIndex, setActiveIndex] = useState(index ?? 0)
 
   return (

@@ -278,7 +278,7 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
           return config._ael(el, eventName, callback, opts)
         }
       }
-    } catch (e) {
+    } catch {
       // Fallback if @global is not yet initialized
     }
   }
@@ -301,7 +301,7 @@ export const removeEventListener = (el: any, eventName: string, callback: any, o
           return config._rel(el, eventName, callback, opts)
         }
       }
-    } catch (e) {
+    } catch {
       // Fallback if @global is not yet initialized
     }
   }
