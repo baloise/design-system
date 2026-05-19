@@ -7,6 +7,11 @@ updates:
       day: monday
       time: '06:00'
       timezone: Europe/Zurich
+    ignore:
+      - dependency-name: '@types/node'
+        versions: ['>=25.0.0']
+      - dependency-name: 'typescript'
+        versions: ['>=5.7.0']
     groups:
       minor-and-patch:
         update-types:
