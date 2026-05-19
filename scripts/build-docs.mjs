@@ -92,12 +92,19 @@ async function fetchContributors() {
         return
       }
       console.log('⚠ No cache found, creating empty contributors list (server mode)')
-      // Use atomic write to avoid race condition
-      const fd = await open(outPath, 'w')
+      // Use atomic exclusive write to avoid race condition
       try {
-        await fd.writeFile(JSON.stringify([], undefined, 2))
-      } finally {
-        await fd.close()
+        const fd = await open(outPath, 'wx')
+        try {
+          await fd.writeFile(JSON.stringify([], undefined, 2))
+        } finally {
+          await fd.close()
+        }
+      } catch (e) {
+        if (e.code !== 'EEXIST') {
+          throw e
+        }
+        // Another process created the file, that's fine
       }
       return
     }
@@ -161,12 +168,19 @@ async function fetchContributors() {
       .filter(c => c !== null)
 
     console.log(`\x1b[32m✔\x1b[0m ${contributors.length} contributors fetched`)
-    // Use atomic write to avoid race condition
-    const fd = await open(outPath, 'w')
+    // Use atomic exclusive write to avoid race condition
     try {
-      await fd.writeFile(JSON.stringify(contributors, undefined, 2))
-    } finally {
-      await fd.close()
+      const fd = await open(outPath, 'wx')
+      try {
+        await fd.writeFile(JSON.stringify(contributors, undefined, 2))
+      } finally {
+        await fd.close()
+      }
+    } catch (e) {
+      if (e.code !== 'EEXIST') {
+        throw e
+      }
+      // Another process created the file, that's fine
     }
   } catch (err) {
     console.warn('⚠ Could not fetch contributors from GitHub API:', err.message)
