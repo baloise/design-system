@@ -17,6 +17,9 @@ updates:
       ## Since we do visual regression testing with Playwright, we need to stay on version 1.59.1 for now.
       - dependency-name: '@playwright/test'
         versions: ['>=1.60.0']
+      ## lottie-web is pinned to 5.8.1 and must not be updated as it breaks functionality.
+      - dependency-name: 'lottie-web'
+        versions: ['!=5.8.1']
     groups:
       minor-and-patch:
         update-types:
