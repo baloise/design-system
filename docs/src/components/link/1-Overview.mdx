@@ -1,6 +1,7 @@
-import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
@@ -18,7 +19,7 @@ import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <ComponentLead component="link" />
 
-<Canvas of={LinkStories.Basic} sourceState="shown" />
+<CanvasWithCodePen of={LinkStories.Basic} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

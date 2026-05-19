@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as FlexboxWrapStories from './flexbox-wrap.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssFlexboxWrap,
   CssResponsiveTable,
   Footer,
@@ -31,46 +32,19 @@ import {
 
 Flexible items will wrap if needed.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap" style="max-width: 500px">
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">1</div>
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">2</div>
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxWrapStories.Wrap} />
 
 ## Wrap-Reverse
 
 Flexible items will wrap if needed, but in reverse order.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap-reverse" style="max-width: 500px">
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">1</div>
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">2</div>
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxWrapStories.WrapReverse} />
 
 ## Nowrap
 
 Flexible items maintain their position without wrapping.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-nowrap" style="max-width: 500px">
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">1</div>
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">2</div>
-  <div class="flex align-items-center justify-content-center bg-green m-normal radius" style="min-width: 200px; min-height: 100px">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxWrapStories.Nowrap} />
 
 ## Responsive
 

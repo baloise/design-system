@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as PointerEventsStories from './pointer-events.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssInteractionsPointerEvents,
   Footer,
   Lead,
@@ -29,15 +30,7 @@ import {
 
 <CssInteractionsPointerEvents />
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-wrap align-items-center justify-content-center">
-  <button class="button m-small pointer-events-auto">Auto</button>
-  <button class="button m-small pointer-events-none">None</button>
-</div>
-`}
-/>
+<CanvasWithCodePen of={PointerEventsStories.Classes} />
 
 <Footer>
   <LinkCards>

@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -22,25 +23,25 @@ import { TEXTAREA_DOC_CONFIG, getTextareaTabs } from './textarea.doc-config'
 
 <StoryHeading of={TextareaStories.Optional}></StoryHeading>
 
-<Canvas of={TextareaStories.Optional} />
+<CanvasWithCodePen of={TextareaStories.Optional} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TextareaStories.Disabled}></StoryHeading>
 
-<Canvas of={TextareaStories.Disabled} />
+<CanvasWithCodePen of={TextareaStories.Disabled} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TextareaStories.Invalid}></StoryHeading>
 
-<Canvas of={TextareaStories.Invalid} />
+<CanvasWithCodePen of={TextareaStories.Invalid} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={TextareaStories.Rows}></StoryHeading>
 
-<Canvas of={TextareaStories.Rows} />
+<CanvasWithCodePen of={TextareaStories.Rows} />
 
 
 <Footer />

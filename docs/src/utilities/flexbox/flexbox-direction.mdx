@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as FlexboxDirectionStories from './flexbox-direction.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssFlexboxDirection,
   CssResponsiveTable,
   Footer,
@@ -31,61 +32,25 @@ import {
 
 Elements are arranged in a horizontal display.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-direction-row gap-normal">
-    <div class="bg-green text-align-center radius p-normal">1</div>
-    <div class="bg-green text-align-center radius p-normal">2</div>
-    <div class="bg-green text-align-center radius p-normal">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxDirectionStories.Row} />
 
 ## Row Reverse
 
 Elements are arranged horizontally, but in the reverse order.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-direction-row-reverse gap-normal">
-    <div class="bg-green text-align-center radius p-normal">1</div>
-    <div class="bg-green text-align-center radius p-normal">2</div>
-    <div class="bg-green text-align-center radius p-normal">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxDirectionStories.RowReverse} />
 
 ## Column
 
 Elements are arranged in a vertical display.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-direction-column gap-normal">
-    <div class="bg-green text-align-center radius p-normal">1</div>
-    <div class="bg-green text-align-center radius p-normal">2</div>
-    <div class="bg-green text-align-center radius p-normal">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxDirectionStories.Column} />
 
 ## Column Reverse
 
 Elements are arranged vertically, but in the reverse order.
 
-<Code
-  language="html"
-  code={`
-<div class="flex flex-direction-column-reverse gap-normal">
-    <div class="bg-green text-align-center radius p-normal">1</div>
-    <div class="bg-green text-align-center radius p-normal">2</div>
-    <div class="bg-green text-align-center radius p-normal">3</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxDirectionStories.ColumnReverse} />
 
 ## Responsive
 

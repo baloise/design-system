@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as BorderRadiusStories from './border-radius.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssBorderRadius,
   CssResponsiveTable,
   Footer,
@@ -29,15 +30,7 @@ import {
 
 ## Examples
 
-<Code
-  language="html"
-  code={`
-<div class="border-primary radius-none p-small mb-small">None</div>
-<div class="border-primary radius p-small mb-small">Normal</div>
-<div class="border-primary radius-lg p-small mb-small">Large</div>
-<div class="border-primary radius-rounded p-small mb-small">Rounded</div>
-`}
-/>
+<CanvasWithCodePen of={BorderRadiusStories.Examples} />
 
 ## Responsive
 

@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import * as FlexboxFlexStories from './flexbox-flex.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssFlexboxFlex,
   CssResponsiveTable,
   Footer,
@@ -31,71 +32,25 @@ import {
 
 The flex-initial setting configures `flex-grow` to 0, `flex-shrink` to 1, and `flex-basis` to auto, which is the default browser behavior.
 
-<Code
-  language="html"
-  code={`
-<div class="flex gap-normal mb-normal">
-    <div class="flex-initial bg-green-2 radius p-normal">Hello</div>
-    <div class="flex-initial bg-green-2 radius p-normal">Hello World</div>
-    <div class="flex-initial bg-green-2 radius p-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxFlexStories.Initial} />
 
 ## Flex 1
 
 Establishes both `grow` and `shrink` factors to 1, enabling automatic expansion and contraction, while maintaining a `flex-basis` of 0.
 
-<Code
-  language="html"
-  code={`
-<div class="flex gap-normal mb-normal">
-    <div class="bg-green-2 radius p-normal">Hello</div>
-    <div class="bg-green-2 radius p-normal">Hello World</div>
-    <div class="bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-</div>
-<div class="flex gap-normal">
-    <div class="flex-1 bg-green-2 radius p-normal">Hello</div>
-    <div class="flex-1 bg-green-2 radius p-normal">Hello World</div>
-    <div class="flex-1 bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxFlexStories.Flex1} />
 
 ## Auto
 
 By setting both `grow` and `shrink` factors to 1, the item will automatically expand and contract, while maintaining a `flex-basis` of auto.
 
-<Code
-  language="html"
-  code={`
-    <div class="flex gap-normal mb-normal">
-        <div class="bg-green-2 radius p-normal">Hello</div>
-        <div class="bg-green-2 radius p-normal">Hello World</div>
-        <div class="bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-    </div>
-    <div class="flex gap-normal">
-        <div class="flex-auto bg-green-2 radius p-normal">Hello</div>
-        <div class="flex-auto bg-green-2 radius p-normal">Hello World</div>
-        <div class="flex-auto bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-    </div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxFlexStories.Auto} />
 
 ## None
 
 Equivalent to `0 0 auto`, indicating that the element neither expands nor contracts.
 
-<Code
-  language="html"
-  code={`
-<div class="flex gap-normal mb-normal">
-  <div class="flex-1 bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-  <div class="flex-none bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-  <div class="flex-1 bg-green-2 radius p-normal">Lorem ipsum dolor sit amet</div>
-</div>
-`}
-/>
+<CanvasWithCodePen of={FlexboxFlexStories.None} />
 
 ## Responsive
 

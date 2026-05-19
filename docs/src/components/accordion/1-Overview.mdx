@@ -1,6 +1,7 @@
-import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
@@ -19,7 +20,7 @@ import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
 
 <ComponentLead component="accordion" />
 
-<Canvas of={AccordionStories.Basic} sourceState="shown" />
+<CanvasWithCodePen of={AccordionStories.Basic} sourceState="shown" />
 
 <Controls of={AccordionStories.Basic} />
 

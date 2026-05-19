@@ -1,6 +1,7 @@
-import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   Footer,
   StoryHeading,
@@ -22,7 +23,7 @@ import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
 
 Display toasts with different configurations: closable option, with action buttons, and various content arrangements.
 
-<Canvas of={ToastStories.Variants} />
+<CanvasWithCodePen of={ToastStories.Variants} />
 
 {/* ------------------------------------------------------ */}
 
@@ -30,6 +31,6 @@ Display toasts with different configurations: closable option, with action butto
 
 Different color variants to convey different notification types and urgency levels.
 
-<Canvas of={ToastStories.Colors} />
+<CanvasWithCodePen of={ToastStories.Colors} />
 
 <Footer />

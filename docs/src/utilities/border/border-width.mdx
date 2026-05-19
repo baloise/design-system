@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/addon-docs/blocks'
+import * as BorderWidthStories from './border-width.stories'
 import {
   Banner,
-  Code,
+  CanvasWithCodePen,
   CssBorderWidth,
   CssResponsiveTable,
   Footer,
@@ -29,15 +30,7 @@ import {
 
 ## Examples
 
-<Code
-  language="html"
-  code={`
-<div class="border-primary border-width-none p-small mb-small">None</div>
-<div class="border-primary border-width-small p-small mb-small">Small</div>
-<div class="border-primary border-width-normal p-small mb-small">Normal</div>
-<div class="border-primary border-width-large p-small mb-small">Large</div>
-`}
-/>
+<CanvasWithCodePen of={BorderWidthStories.Examples} />
 
 ## Responsive
 

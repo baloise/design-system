@@ -1,5 +1,6 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
-import { Banner, Code, CssTypographyTextTransform, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssTypographyTextTransform, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as TypographyTextTransformStories from './typography-text-transform.stories'
 
 <Meta
   title="CSS Utilities/Typography/Text Transform"
@@ -20,14 +21,7 @@ import { Banner, Code, CssTypographyTextTransform, Footer, Lead, LinkCard, LinkC
 
 ## Examples
 
-<Code
-  language="html"
-  code={`
-<p class="capitalize">capitalized - Lorem ipsum dolor sit amet</p>
-<p class="lowercase">lowercase -Lorem ipsum dolor sit amet</p>
-<p class="uppercase">uppercase - Lorem ipsum dolor sit amet</p>
-`}
-/>
+<CanvasWithCodePen of={TypographyTextTransformStories.Examples} />
 
 <Footer>
   <LinkCards>

@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -24,7 +25,7 @@ import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
 
 These icons are already available in the Design System. More can be added through the config.
 
-<Canvas of={IconStories.UiIcons} sourceState="hidden" />
+<CanvasWithCodePen of={IconStories.UiIcons} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,6 +33,6 @@ These icons are already available in the Design System. More can be added throug
 
 Brand icons for popular platforms and services, used to indicate integrations or supported platforms.
 
-<Canvas of={IconStories.BrandIcons} sourceState="hidden" />
+<CanvasWithCodePen of={IconStories.BrandIcons} sourceState="hidden" />
 
 <Footer />

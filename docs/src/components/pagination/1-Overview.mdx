@@ -1,6 +1,7 @@
-import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
@@ -18,7 +19,7 @@ import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-confi
 
 <ComponentLead component="pagination" />
 
-<Canvas of={PaginationStories.Basic} sourceState="shown" />
+<CanvasWithCodePen of={PaginationStories.Basic} sourceState="shown" />
 
 <ComponentTabs
   tabs={[

@@ -1,5 +1,6 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs/blocks'
-import { Banner, Code, CssBackgroundColors, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssBackgroundColors, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as BackgroundColorStories from './background-color.stories'
 
 <Meta
   title="CSS Utilities/Background/Background Colors"
@@ -24,38 +25,19 @@ Every color of the [Design Tokens](?path=/docs/tokens-overview--documentation) c
 
 ## Basic
 
-<Code
-  language="html"
-  code={`
-<div class="bg-green p-normal">Green background</div>
-`}
-/>
+<CanvasWithCodePen of={BackgroundColorStories.Basic} />
 
 ## Inverted Colors
 
 For every color, an inverted variant is defined to ensure optimal readability when combining background and font colors.
 
-<Code
-  language="html"
-  code={`
-<div class="bg-primary p-normal">
-  <p class="text-white">Hello World</p>
-</div>
-`}
-/>
+<CanvasWithCodePen of={BackgroundColorStories.InvertedColors} />
 
 ## Pseudo States
 
 States such as Focus, Hover, and Active can be utilized by applying the respective prefixes: **focus:**, **hover:**, and **active:**.
 
-<Code
-  language="html"
-  code={`
-<div class="bg-green-3 hover:bg-green-4 active:bg-red-3 cursor-pointer">
-  <p class="text-white p-normal">Hover and click me!</p>
-</div>
-`}
-/>
+<CanvasWithCodePen of={BackgroundColorStories.PseudoStates} />
 
 <Footer>
   <LinkCards>

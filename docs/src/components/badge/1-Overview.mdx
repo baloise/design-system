@@ -1,6 +1,7 @@
-import { Canvas, Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
+  CanvasWithCodePen,
   BannerTabs,
   ComponentPublicMethods,
   ComponentLead,
@@ -17,7 +18,7 @@ import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
 
 <ComponentLead component="badge" />
 
-<Canvas of={BadgeStories.Basic} sourceState="shown" />
+<CanvasWithCodePen of={BadgeStories.Basic} sourceState="shown" />
 
 <Controls of={BadgeStories.Basic} />
 

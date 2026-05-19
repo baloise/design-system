@@ -1,5 +1,6 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs,
+  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as NotificationStories from './notification.stories'
 import { NOTIFICATION_DOC_CONFIG, getNotificationTabs } from './notification.doc-config'
 
@@ -19,7 +20,7 @@ import { NOTIFICATION_DOC_CONFIG, getNotificationTabs } from './notification.doc
 With `alert` variant, the notification is styled to indicate an important message that requires user attention.
 It typically uses a more prominent color scheme and may include an icon to signify urgency or importance.
 
-<Canvas of={NotificationStories.Alerts} />
+<CanvasWithCodePen of={NotificationStories.Alerts} />
 
 {/* ------------------------------------------------------ */}
 
@@ -28,6 +29,6 @@ It typically uses a more prominent color scheme and may include an icon to signi
 With `outline` variant, the notification is styled with a border and a less prominent background,
 making it suitable for less urgent messages or secondary information.
 
-<Canvas of={NotificationStories.Outlines} />
+<CanvasWithCodePen of={NotificationStories.Outlines} />
 
 <Footer />
