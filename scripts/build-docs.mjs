@@ -83,16 +83,10 @@ async function fetchContributors() {
     // Check if cache exists and is fresh
     const cacheStats = await stat(outPath).catch(() => null)
     const now = Date.now()
-    const isCacheFresh = cacheStats && now - cacheStats.mtimeMs < ONE_DAY_MS
 
     // In serve mode, always use cached data if it exists
     if (serve) {
-      if (cacheStats) {
-        console.log('📦 Using cached contributors (server mode)')
-        return
-      }
-      console.log('⚠ No cache found, creating empty contributors list (server mode)')
-      // Use atomic exclusive write to avoid race condition
+      // Atomically create empty contributors file without TOCTOU race
       try {
         const fd = await open(outPath, 'wx')
         try {
@@ -100,17 +94,21 @@ async function fetchContributors() {
         } finally {
           await fd.close()
         }
+        console.log('📦 Created empty contributors list (server mode)')
       } catch (e) {
-        if (e.code !== 'EEXIST') {
-          throw e
+        if (e.code === 'EEXIST') {
+          console.log('📦 Using cached contributors (server mode)')
+          return
         }
-        // Another process created the file, that's fine
+        throw e
       }
       return
     }
 
-    // If cache is fresh, use it
-    if (isCacheFresh) {
+    // Check if we should skip fetching based on cache freshness
+    const shouldSkipFetch = cacheStats && now - cacheStats.mtimeMs < ONE_DAY_MS
+
+    if (shouldSkipFetch) {
       console.log('📦 Using cached contributors (less than 24h old)')
       return
     }
