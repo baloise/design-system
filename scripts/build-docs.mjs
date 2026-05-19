@@ -79,36 +79,16 @@ async function fetchContributors() {
   const outPath = join(docsRoot, 'src/assets/data/contributors.json')
   const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
+  // Skip in serve mode — contributors.json is already in git
+  if (serve) {
+    console.log('📦 Skipping contributors fetch (server mode)')
+    return
+  }
+
   try {
-    // Check if cache exists and is fresh
+    // Production mode: check cache freshness
     const cacheStats = await stat(outPath).catch(() => null)
-    const now = Date.now()
-
-    // In serve mode, always use cached data if it exists
-    if (serve) {
-      // Atomically create empty contributors file without TOCTOU race
-      try {
-        const fd = await open(outPath, 'wx')
-        try {
-          await fd.writeFile(JSON.stringify([], undefined, 2))
-        } finally {
-          await fd.close()
-        }
-        console.log('📦 Created empty contributors list (server mode)')
-      } catch (e) {
-        if (e.code === 'EEXIST') {
-          console.log('📦 Using cached contributors (server mode)')
-          return
-        }
-        throw e
-      }
-      return
-    }
-
-    // Check if we should skip fetching based on cache freshness
-    const shouldSkipFetch = cacheStats && now - cacheStats.mtimeMs < ONE_DAY_MS
-
-    if (shouldSkipFetch) {
+    if (cacheStats && Date.now() - cacheStats.mtimeMs < ONE_DAY_MS) {
       console.log('📦 Using cached contributors (less than 24h old)')
       return
     }
@@ -120,7 +100,6 @@ async function fetchContributors() {
       throw new Error(`GitHub API returned ${res.status}`)
     }
 
-    // Validate content-type is JSON
     const contentType = res.headers.get('content-type')
     if (!contentType?.includes('application/json')) {
       throw new Error(`Invalid content-type: ${contentType}`)
@@ -128,15 +107,13 @@ async function fetchContributors() {
 
     const json = await res.json()
 
-    // Validate response is an array
     if (!Array.isArray(json)) {
       throw new Error('GitHub API response is not an array')
     }
 
-    // Validate and sanitize each contributor
+    // Validate and sanitize contributors
     const contributors = json
       .filter(c => {
-        // Validate structure
         return (
           typeof c === 'object' &&
           c !== null &&
@@ -147,7 +124,6 @@ async function fetchContributors() {
         )
       })
       .map(u => {
-        // Validate URLs are valid HTTP/HTTPS URLs
         try {
           new URL(u.html_url)
           new URL(u.avatar_url)
@@ -156,7 +132,6 @@ async function fetchContributors() {
           return null
         }
 
-        // Sanitize strings to prevent injection
         return {
           url: u.html_url,
           name: String(u.login).slice(0, 255),
@@ -166,7 +141,8 @@ async function fetchContributors() {
       .filter(c => c !== null)
 
     console.log(`\x1b[32m✔\x1b[0m ${contributors.length} contributors fetched`)
-    // Use atomic exclusive write to avoid race condition
+
+    // Write to file atomically
     try {
       const fd = await open(outPath, 'wx')
       try {
@@ -178,7 +154,6 @@ async function fetchContributors() {
       if (e.code !== 'EEXIST') {
         throw e
       }
-      // Another process created the file, that's fine
     }
   } catch (err) {
     console.warn('⚠ Could not fetch contributors from GitHub API:', err.message)
