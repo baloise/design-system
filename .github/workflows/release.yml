@@ -72,7 +72,7 @@ jobs:
 
       - name: Commit release
         if: ${{ !inputs.dry-run }}
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
           add: "['package-lock.json', 'CHANGELOG.md']"
           message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
