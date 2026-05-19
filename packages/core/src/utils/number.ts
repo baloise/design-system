@@ -10,7 +10,7 @@ const getLocale = (): string => {
       return 'de-CH'
     }
     return (config && config.locale) || defaultLocale
-  } catch (e) {
+  } catch {
     return defaultLocale
   }
 }

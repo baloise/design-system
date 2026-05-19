@@ -25,7 +25,7 @@ export interface FormControlInterface<Value extends NonNullable<unknown> | null 
 
 type ControlValue = File | string | FormData | null
 
-export class FormControl<Value extends NonNullable<unknown> | null = string | null, ReturnValue = Value> {
+export class FormControl<Value extends NonNullable<unknown> | null = string | null> {
   private resetHandlerTimer?: NodeJS.Timeout
 
   initialValue: Value = null as Value
@@ -102,7 +102,7 @@ export class FormControl<Value extends NonNullable<unknown> | null = string | nu
     }
   }
 
-  onInput = (ev: InputEvent) => {
+  onInput = (_ev: InputEvent) => {
     this.inputValue = (this.nativeEl?.value || null) as Value
     this.component.dsInput.emit(this.inputValue || undefined)
   }

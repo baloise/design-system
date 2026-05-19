@@ -61,7 +61,7 @@ export const BasicHtml = Story({})
 BasicHtml.storyName = '🌍 Basic'
 
 export const Closable = Story({
-  ...withRender(({ slot, ...args }) => `<ds-tag closable>${slot}</ds-tag>`),
+  ...withRender(({ slot }) => `<ds-tag closable>${slot}</ds-tag>`),
 })
 Closable.storyName = '🧩 Closable'
 

@@ -8,11 +8,10 @@ import { navigate } from '@storybook/addon-links'
 // // import PuzzleYellow from '../../src/assets/images/home/puzzle-yellow.svg'
 // import PuzzleYellow from '../../src/assets/images/home/logo-yellow.svg'
 
-export const Banner = ({ of, children, color, label, section, puzzle, tabs }): React.ReactElement => {
+export const Banner = ({ of, children, color, label, section, _puzzle, _tabs }): React.ReactElement => {
   let title = label
   let subtitle = section
   let isDeprecated = false
-  let componentName = ''
 
   if (of) {
     const resolvedOf = useOf(of || 'story', ['meta'])
@@ -21,7 +20,6 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
     isDeprecated = metaTitles.includes('Deprecated')
     title = label || metaTitles[metaTitles.length - 1]
     subtitle = section || metaTitles.slice(0, -1).join(' / ')
-    componentName = title.toLowerCase().replace(/\s+/g, '-')
   }
 
   const definedColor = (subtitle || '').includes('Components') ? 'purple' : color || 'primary'
@@ -86,7 +84,7 @@ export const Banner = ({ of, children, color, label, section, puzzle, tabs }): R
   )
 }
 
-export const BannerTabs = ({ of, children, color, tabs }): React.ReactElement => {
+export const BannerTabs = ({ of, _children, color, tabs }): React.ReactElement => {
   let isDeprecated = false
 
   if (of) {

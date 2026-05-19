@@ -91,7 +91,7 @@ StackAccordion.storyName = '🧩 Stack Accordion'
 export const AccordionGroup = Story({
   args: {},
   ...withRender(
-    ({ slotContent, slotSummary, ...args }) => `
+    ({ slotContent, slotSummary }) => `
 <ds-accordion group="accordion-group">
   <div slot="summary">${slotSummary} 1</div>
   <div slot="content" class="py-base bg-purple-2">${slotContent}</div>

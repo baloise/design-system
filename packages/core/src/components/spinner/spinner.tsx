@@ -1,16 +1,7 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import {
-  raf,
-  rOnLoad,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { raf, rOnLoad, Logger, type LogInstance, ValidateOneOf, ValidateType, setupValidation } from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,

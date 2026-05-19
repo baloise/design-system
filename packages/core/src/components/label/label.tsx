@@ -6,7 +6,6 @@ import {
   Logger,
   type LogInstance,
   ValidateOneOf,
-  ValidateEmptyOrType,
   ValidateType,
   setupValidation,
 } from '@utils'
@@ -20,7 +19,7 @@ import {
   DsComponentInterface,
 } from '@global'
 import { I18nDsLabel } from './label.i18n'
-import { LABEL_SIZES, LABEL_WEIGHTS, type LabelSize, type LabelWeight } from './label.interfaces'
+import { LABEL_SIZES, type LabelSize } from './label.interfaces'
 
 /**
  * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.

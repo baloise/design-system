@@ -38,7 +38,7 @@ export const LinkCards = ({ children }) => {
   return <div className="sb-unstyled doc-link-cards">{children}</div>
 }
 
-export const LinkCard = ({ children, color, icon, label, description, pageTitle }) => {
+export const LinkCard = ({ _children, _color, _icon, label, description, pageTitle }) => {
   return (
     <button
       onClick={() => {
@@ -90,7 +90,7 @@ export const GridComponents = ({ children }) => {
 
 export const GridComponent = ({
   children,
-  color,
+  _color,
   center,
   pageTitle,
   label,
@@ -156,7 +156,7 @@ export const GridCards = ({ children }) => {
   )
 }
 
-export const GridCard = ({ children, color, pageTitle, svg, label, description }) => {
+export const GridCard = ({ _children, color, pageTitle, svg, label, description }) => {
   return (
     <div className="col is-6">
       <div className="h-full">

@@ -12,7 +12,7 @@ export const Block = ({ label = '' }) => (
   </div>
 )
 
-export const Breakpoints = ({ children }) => {
+export const Breakpoints = ({ _children }) => {
   return (
     <table className="sb-unstyled table w-full is-bordered my-large">
       <thead>
