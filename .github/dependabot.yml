@@ -8,10 +8,18 @@ updates:
       time: '06:00'
       timezone: Europe/Zurich
     ignore:
+      ## Since the project engine is Node.Js version 24.
       - dependency-name: '@types/node'
         versions: ['>=25.0.0']
+      ## Due to Angular we need to stay on TypeScript 5.7 for now.
       - dependency-name: 'typescript'
         versions: ['>=5.7.0']
+      ## Since we do visual regression testing with Playwright, we need to stay on version 1.59.1 for now.
+      - dependency-name: '@playwright/test'
+        versions: ['>=1.60.0']
+      ## lottie-web is pinned to 5.8.1 and must not be updated as it breaks functionality.
+      - dependency-name: 'lottie-web'
+        versions: ['!=5.8.1']
     groups:
       minor-and-patch:
         update-types:
