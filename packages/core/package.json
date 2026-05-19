@@ -60,7 +60,7 @@
     "@baloise/ds-playwright": "20.0.0-next.4",
     "libs-output-target-angular": "0.0.0",
     "libs-output-target-web": "0.0.0",
-    "@playwright/test": "1.60.0",
+    "@playwright/test": "1.59.1",
     "@types/luxon": "3.7.1",
     "compression": "1.8.1",
     "express": "5.2.1",
