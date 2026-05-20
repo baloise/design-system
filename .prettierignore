@@ -23,5 +23,6 @@ docs/public
 docs/src/assets
 docs/plans
 docs/specs
+docs/.storybook/story-paths.json
 
 CLAUDE.md

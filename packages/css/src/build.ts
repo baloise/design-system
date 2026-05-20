@@ -3,21 +3,21 @@
  *
  * Run with: node --import tsx/esm src/build.ts
  */
-import { createGenerator } from 'unocss'
-import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync } from 'node:fs'
-import { resolve, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { compileAsync, compileStringAsync } from 'sass'
-import { glob } from 'glob'
-import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import { presetDsUtilities, allSafelist } from './preset/index'
+import { glob } from 'glob'
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import postcss from 'postcss'
+import { compileAsync, compileStringAsync } from 'sass'
+import { createGenerator } from 'unocss'
+import { allSafelist, presetDsUtilities } from './preset/index'
 import { buildBackgroundRules } from './preset/rules/background'
-import { buildBorderRules } from './preset/rules/radius'
 import { buildBorderColorRules } from './preset/rules/border-color'
 import { buildElevationRules } from './preset/rules/elevation'
-import { buildTypographyRules } from './preset/rules/typography'
+import { buildBorderRules } from './preset/rules/radius'
 import { buildSpacingRules } from './preset/rules/spacing'
+import { buildTypographyRules } from './preset/rules/typography'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -73,9 +73,9 @@ const breakpointPrefixes = [
 
 // Derive the per-breakpoint class list from the safelist:
 // only classes that have a responsive counterpart in the SCSS source get prefixed
-import { flexSafelist, flexMetadata } from './preset/rules/flex'
-import { layoutSafelist, layoutMetadata } from './preset/rules/layout'
-import { interactionSafelist, interactionMetadata } from './preset/rules/interaction'
+import { flexMetadata, flexSafelist } from './preset/rules/flex'
+import { interactionMetadata, interactionSafelist } from './preset/rules/interaction'
+import { layoutMetadata, layoutSafelist } from './preset/rules/layout'
 import { sizingMetadata } from './preset/rules/sizing'
 
 const responsiveBase = [...flexSafelist, ...layoutSafelist, ...interactionSafelist]
@@ -251,7 +251,8 @@ const styleFiles = await glob('**/*.style.scss', { cwd: coreRoot, absolute: fals
 styleFiles.sort()
 
 // Build barrel: paths relative to packages/css/src/scss/ (url used by compileStringAsync)
-const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f}';`).join('\n')
+// Normalize paths to forward slashes for Sass compatibility on Windows
+const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f.replace(/\\/g, '/')}';`).join('\n')
 
 // FileImporter: redirect @baloise/ds-css/scss/* → packages/css/src/scss/*
 // Handles internal monorepo imports during development

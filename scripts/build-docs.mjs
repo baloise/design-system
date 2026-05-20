@@ -4,11 +4,11 @@
  * Run with: node scripts/build-docs.mjs
  */
 import { ZipArchive } from 'archiver'
+import { copy } from 'fs-extra'
 import { execSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
-import { copy } from 'fs-extra'
 import { mkdir, open } from 'node:fs/promises'
-import { join, resolve, dirname } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -58,17 +58,22 @@ async function indexMdxFiles() {
       storyPathMap[storyId] = filePath
     }
 
-    // Write mapping file
+    // Write mapping file sorted alphabetically by story ID for consistent cross-platform output
+    const sortedStoryPathMap = Object.fromEntries(
+      Object.keys(storyPathMap)
+        .sort()
+        .map(k => [k, storyPathMap[k]]),
+    )
     const mapPath = join(docsRoot, '.storybook', 'story-paths.json')
     await mkdir(dirname(mapPath), { recursive: true })
     const fd = await open(mapPath, 'w')
     try {
-      await fd.writeFile(JSON.stringify(storyPathMap, null, 2))
+      await fd.writeFile(JSON.stringify(sortedStoryPathMap, null, 2))
     } finally {
       await fd.close()
     }
 
-    console.log(`\x1b[32m✔\x1b[0m ${Object.keys(storyPathMap).length} MDX files indexed`)
+    console.log(`\x1b[32m✔\x1b[0m ${Object.keys(sortedStoryPathMap).length} MDX files indexed`)
   } catch (err) {
     console.error('✗ Failed to index MDX files:', err.message)
     throw err
@@ -302,7 +307,7 @@ function buildStorybook() {
 // ============================================================================
 async function main() {
   try {
-    console.log('🏗 Building docs...\n')
+    console.log('🏗️ Building docs...\n')
 
     await indexMdxFiles()
     console.log()

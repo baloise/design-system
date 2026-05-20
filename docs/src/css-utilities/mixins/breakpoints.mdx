@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta, Source } from '@storybook/addon-docs/blocks'
-import { Banner, Breakpoints, Code, Footer, Lead, LinkCard, LinkCards, ScssSource } from '../../../.storybook/blocks'
+import { Banner, Breakpoints, Code, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Mixins/Breakpoints"
@@ -16,11 +16,13 @@ import { Banner, Breakpoints, Code, Footer, Lead, LinkCard, LinkCards, ScssSourc
 
 Use the scss mixins in your application the following:
 
-<ScssSource code={`@use '@baloise/ds-css/dist/scss/mixins' as *;
+<Code
+  language="scss"
+  code={`@use '@baloise/ds-css/dist/scss/mixins' as *;
 
 @include desktop() {
-// add your custom styles here
-// from the desktop breakpoint on
+  // add your custom styles here
+  // from the desktop breakpoint on
 }
 `} />
 
@@ -38,15 +40,17 @@ The file `design-system-styles/sass/mixins` provides all design tokens as CSS-Va
 `}
 </Markdown>
 
-<ScssSource code={`.my-element {
+<Code
+  language="scss"
+  code={`.my-element {
   color: lime;
 }
 
 @include from(var(--ds-breakpoint-tablet)) {
-${' '}${' '}// add your custom styles here
-${' '}${' '}.my-element {
-${' '}${' '}${' '}${' '}color: blue;
-${' '}${' '}}
+  // add your custom styles here
+  .my-element {
+    color: blue;
+  }
 }
 `}
 />
@@ -61,21 +65,23 @@ The named mixins have the breakpoint already declared on work with the standard.
 
 Always define mobile first and afterwards the style changes for the different breakpoints.
 
-<ScssSource code={`
+<Code
+  language="scss"
+  code={`
 .my-element {
   color: lime;
 }
 
 @include tablet() {
-${' '}${' '}.my-element {
-${' '}${' '}${' '}${' '}color: red;
-${' '}${' '}}
+  .my-element {
+    color: red;
+  }
 }
 
 @include desktop() {
-${' '}${' '}.my-element {
-${' '}${' '}${' '}${' '}color: blue;
-${' '}${' '}}
+  .my-element {
+    color: blue;
+  }
 }
 `}
 />

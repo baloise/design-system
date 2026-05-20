@@ -27,17 +27,17 @@
   ],
   "scripts": {
     "build": "node ../../scripts/build-core.mjs",
-    "start": "kill-port 4000 2>/dev/null || true && DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4000",
+    "start": "node -e \"require('kill-port')(4000).catch(()=>{})\" && cross-env DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4000",
     "test": "vitest --run",
     "test:ui": "vitest --ui",
     "lint": "eslint .",
     "play": "npx playwright test --ui",
-    "play:file": "CI=1 npx playwright test",
-    "play:a11y": "CI=1 npx playwright test --project='♿️ A11Y'",
-    "play:components": "CI=1 npx playwright test --project='⚙️ Component'",
-    "play:visual": "CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome'",
-    "play:update": "CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome' --update-snapshots",
-    "play:ci": "CI=1 npx playwright test"
+    "play:file": "cross-env CI=1 npx playwright test",
+    "play:a11y": "cross-env CI=1 npx playwright test --project='♿️ A11Y'",
+    "play:components": "cross-env CI=1 npx playwright test --project='⚙️ Component'",
+    "play:visual": "cross-env CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome'",
+    "play:update": "cross-env CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome' --update-snapshots",
+    "play:ci": "cross-env CI=1 npx playwright test"
   },
   "dependencies": {
     "@baloise/ds-assets": "20.0.0-next.4",

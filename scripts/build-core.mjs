@@ -22,7 +22,7 @@ console.log(`
 // 1. Run Stencil build
 // ============================================================================
 function buildStencil() {
-  console.log('🏗 Running Stencil build...')
+  console.log('🏗️ Running Stencil build...')
   try {
     execSync('npx stencil build', {
       cwd: coreRoot,
@@ -60,7 +60,7 @@ async function cleanUp() {
 // ============================================================================
 async function main() {
   try {
-    console.log('🏗 Building core...\n')
+    console.log('🏗️ Building core...\n')
 
     buildStencil()
     console.log()
