@@ -1,61 +1,35 @@
 import React, { useMemo } from 'react'
 import { navigate } from '@storybook/addon-links'
-
-const getGitHubEditUrl = () => {
-  try {
-    // Get the story ID from the URL (e.g., "welcome--documentation" or "components-accordion--documentation")
-    const params = new URLSearchParams(window.location.search)
-    const storyId = params.get('id') || ''
-
-    if (!storyId) {
-      return 'https://github.com/baloise/design-system'
-    }
-
-    // Remove the story variant suffix (--documentation, --page, etc.)
-    const cleanId = storyId.replace(/--\w+$/, '')
-
-    // Map for main pages
-    const pageMapping: Record<string, string> = {
-      welcome: 'docs/stories/welcome.stories.mdx',
-      changelog: 'CHANGELOG.md',
-      support: 'docs/stories/support.mdx',
-      why: 'docs/stories/why.mdx',
-    }
-
-    // Check if it's a main page
-    if (pageMapping[cleanId]) {
-      return `https://github.com/baloise/design-system/blob/main/${pageMapping[cleanId]}`
-    }
-
-    // Parse component stories: components-category-component--variant
-    // e.g., "components-accordion" -> docs/stories/components/accordion/accordion.mdx
-    if (cleanId.startsWith('components-')) {
-      const parts = cleanId.replace('components-', '').split('-')
-      if (parts.length >= 2) {
-        const componentName = parts[parts.length - 1]
-        return `https://github.com/baloise/design-system/blob/main/docs/stories/components/${componentName}/${componentName}.mdx`
-      }
-    }
-
-    // Parse other section pages: section-pagename or section-page-name
-    const sections = ['foundation', 'development', 'tokens', 'utilities', 'css']
-    for (const section of sections) {
-      if (cleanId.startsWith(section + '-')) {
-        const pageName = cleanId.replace(section + '-', '')
-        return `https://github.com/baloise/design-system/blob/main/docs/stories/${section}/${pageName}.stories.mdx`
-      }
-    }
-
-    // Default fallback
-    return 'https://github.com/baloise/design-system'
-  } catch {
-    // Fallback if any error occurs
-    return 'https://github.com/baloise/design-system'
-  }
-}
+import storyPathsMap from '../story-paths.json'
 
 export const Footer = ({ children }) => {
-  const githubEditUrl = useMemo(() => getGitHubEditUrl(), [])
+  const githubEditUrl = useMemo(() => {
+    try {
+      // Get the story ID from the URL (e.g., "welcome--documentation" or "foundation-colors--documentation")
+      const params = new URLSearchParams(window.location.search)
+      const storyId = params.get('id') || ''
+
+      if (!storyId) {
+        return 'https://github.com/baloise/design-system'
+      }
+
+      // Remove the story variant suffix (--documentation, --page, etc.)
+      const cleanId = storyId.replace(/--\w+$/, '')
+
+      // Look up the file path from the mapping
+      const sourceFile = storyPathsMap[cleanId]
+
+      if (!sourceFile) {
+        console.warn(`[Footer] Story ID not found in mapping: ${cleanId}`)
+        return 'https://github.com/baloise/design-system'
+      }
+
+      return `https://github.com/baloise/design-system/blob/next/docs/src/${sourceFile}`
+    } catch (err) {
+      console.warn('[Footer] Error generating GitHub URL:', err.message)
+      return 'https://github.com/baloise/design-system'
+    }
+  }, [])
   return (
     <section className="sb-unstyled mt-4xl">
       {children}

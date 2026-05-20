@@ -1,4 +1,4 @@
-# Contributing to Helvetia Design System
+# 📖 Contributing to Helvetia Design System
 
 Thank you for your interest in contributing! This document covers the contribution workflow — git, PRs, and community guidelines.
 

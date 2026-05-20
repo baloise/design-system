@@ -1,0 +1,462 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, ButtonCard, Footer, GridCard, GridCards, InfoQuote, Lead, ScssSource, CanvasWithCodePen } from '../../.storybook/blocks'
+import * as BackgroundColorStories from './background/background-color.stories'
+
+<Meta
+  title="CSS Utilities/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="CSS Utilities" color="red" />
+
+<Lead>Apply pre-defined CSS classes directly to HTML elements for faster, consistent styling.</Lead>
+
+## What are CSS Utilities?
+
+CSS utility classes provide a **utility-first** approach to styling. Instead of writing custom CSS for every component, you apply pre-defined classes directly to your HTML elements. These classes are generated using [UnoCSS](https://unocss.dev) and are based on the [design tokens](?path=/docs/foundation-design-tokens--documentation), ensuring consistent design across your application.
+
+<CanvasWithCodePen of={BackgroundColorStories.Basic} />
+
+This example demonstrates:
+- **Spacing**: `p-base` (padding)
+- **Background**: `bg-green` (background color)
+
+### Why use CSS Utilities?
+
+- **Speed**: Build layouts and components faster without writing CSS
+- **Consistency**: All utilities are tied to design tokens, guaranteeing design system compliance
+- **Maintainability**: Changes to design tokens automatically reflect in utility classes
+- **Flexibility**: Combine utilities to create any design without breaking components
+- **Responsive**: Built-in support for responsive design at multiple breakpoints
+- **Performance**: Generate only the CSS you actually use with UnoCSS
+
+## Available Utility Classes
+
+### Backgrounds
+
+<GridCards>
+  <GridCard
+    label="Background Colors"
+    pageTitle="CSS Utilities/Background/Background Colors"
+    color="red"
+    description="Select from a range of colors for the background of an element."
+  />
+</GridCards>
+
+### Borders
+
+<GridCards>
+  <GridCard
+    label="Border Colors"
+    pageTitle="CSS Utilities/Border/Border Colors"
+    color="red"
+    description="Diverse color palettes available for element borders."
+  />
+  <GridCard
+    label="Border Radius"
+    pageTitle="CSS Utilities/Border/Border Radius"
+    color="red"
+    description="Defines the radius of an element's corners."
+  />
+  <GridCard
+    label="Border Width"
+    pageTitle="CSS Utilities/Border/Border Width"
+    color="red"
+    description="Defines the width of the border."
+  />
+</GridCards>
+
+### Elevation
+
+<GridCards>
+  <GridCard
+    label="Opacity"
+    pageTitle="CSS Utilities/Elevation/Opacity"
+    color="red"
+    description="Specifies the level of transparency for an element."
+  />
+  <GridCard
+    label="Shadow"
+    pageTitle="CSS Utilities/Elevation/Shadow"
+    color="red"
+    description="Determines the box-shadow or text-shadow effect applied to an element."
+  />
+</GridCards>
+
+### Flexbox
+
+<GridCards>
+  <GridCard
+    label="Align Content"
+    pageTitle="CSS Utilities/Flexbox/Align Content"
+    color="red"
+    description="Determines how flex lines are distributed between and around items."
+  />
+  <GridCard
+    label="Align Items"
+    pageTitle="CSS Utilities/Flexbox/Align Items"
+    color="red"
+    description="Specifies alignment along the cross axis."
+  />
+  <GridCard
+    label="Align Self"
+    pageTitle="CSS Utilities/Flexbox/Align Self"
+    color="red"
+    description="Specifies the alignment for a specific element along the cross axis."
+  />
+  <GridCard
+    label="Flex Direction"
+    pageTitle="CSS Utilities/Flexbox/Flex Direction"
+    color="red"
+    description="Determines the direction of flexible items."
+  />
+  <GridCard
+    label="Flex"
+    pageTitle="CSS Utilities/Flexbox/Flex"
+    color="red"
+    description="A shorthand property for setting flex-grow, flex-shrink, and flex-basis simultaneously."
+  />
+  <GridCard
+    label="Gap"
+    pageTitle="CSS Utilities/Flexbox/Gap"
+    color="red"
+    description="Specifies the gap size between rows and grid. It is a shorthand for column-gap and row-gap."
+  />
+  <GridCard
+    label="Justify Content"
+    pageTitle="CSS Utilities/Flexbox/Justify Content"
+    color="red"
+    description="Specifies alignment along the main axis."
+  />
+  <GridCard
+    label="Flex Wrap"
+    pageTitle="CSS Utilities/Flexbox/Flex Wrap"
+    color="red"
+    description="Determines whether flexible items should wrap or not."
+  />
+</GridCards>
+
+### Grid
+
+<GridCards>
+  <GridCard
+    label="Grid System"
+    pageTitle="CSS Utilities/Grid/Grid System"
+    color="red"
+    description="Determines how flex lines are distributed between and around items."
+  />
+</GridCards>
+
+### Interactions
+
+<GridCards>
+  <GridCard
+    label="Cursor"
+    pageTitle="CSS Utilities/Interactions/Cursor"
+    color="red"
+    description="Defines the appearance of the mouse cursor when positioned over an element."
+  />
+  <GridCard
+    label="User Select"
+    pageTitle="CSS Utilities/Interactions/User Select"
+    color="red"
+    description="Manages the ability of the user to highlight and select text."
+  />
+</GridCards>
+
+### Layout
+
+<GridCards>
+  <GridCard
+    label="Container"
+    pageTitle="CSS Utilities/Layout/Container"
+    color="red"
+    description="A straightforward container for horizontally centering your content."
+  />
+  <GridCard
+    label="Display"
+    pageTitle="CSS Utilities/Layout/Display"
+    color="red"
+    description="Specifies the display behavior of an element on a page."
+  />
+  <GridCard
+    label="Position"
+    pageTitle="CSS Utilities/Layout/Position"
+    color="red"
+    description="Position a element on the screen."
+  />
+  <GridCard
+    label="Z-Index"
+    pageTitle="CSS Utilities/Layout/Z-Index"
+    color="red"
+    description="Specifies the display behavior of an element on a page."
+  />
+  <GridCard
+    label="Overflow"
+    pageTitle="CSS Utilities/Layout/Overflow"
+    color="red"
+    description="Specifies the behavior when content exceeds the area of its container."
+  />
+  <GridCard
+    label="Vertical Align"
+    pageTitle="CSS Utilities/Layout/Vertical Align"
+    color="red"
+    description="Establishes the vertical alignment of an inline, inline-block, or table-cell box."
+  />
+  <GridCard
+    label="Placement"
+    pageTitle="CSS Utilities/Layout/Placement"
+    color="red"
+    description="Specifies the vertical and horizontal position of a positioned element."
+  />
+</GridCards>
+
+### Mixins
+
+<GridCards>
+  <GridCard
+    label="Breakpoints"
+    pageTitle="CSS Utilities/Mixins/Breakpoints"
+    color="red"
+    description="To create a responsive layout you can either structure your app with the Sass mixins."
+  />
+</GridCards>
+
+### Sizing
+
+<GridCards>
+  <GridCard
+    label="Max Height"
+    pageTitle="CSS Utilities/Sizing/Max Height"
+    color="red"
+    description="Defines the max height of an element."
+  />
+  <GridCard
+    label="Min Height"
+    pageTitle="CSS Utilities/Sizing/Min Height"
+    color="red"
+    description="Defines the min height of an element."
+  />
+  <GridCard
+    label="Height"
+    pageTitle="CSS Utilities/Sizing/Height"
+    color="red"
+    description="Defines the height of an element."
+  />
+  <GridCard
+    label="Max Width"
+    pageTitle="CSS Utilities/Sizing/Max Width"
+    color="red"
+    description="Defines the max width of an element."
+  />
+  <GridCard
+    label="Min Width"
+    pageTitle="CSS Utilities/Sizing/Min Width"
+    color="red"
+    description="Defines the min width of an element."
+  />
+  <GridCard
+    label="Width"
+    pageTitle="CSS Utilities/Sizing/Width"
+    color="red"
+    description="Defines the width of an element."
+  />
+</GridCards>
+
+### Spacing
+
+<GridCards>
+  <GridCard
+    label="Margin"
+    pageTitle="CSS Utilities/Spacing/Margin"
+    color="red"
+    description="Determines the space around an element."
+  />
+  <GridCard
+    label="Padding"
+    pageTitle="CSS Utilities/Spacing/Padding"
+    color="red"
+    description="Determines the space between the content and its border."
+  />
+</GridCards>
+
+### Typography
+
+<GridCards>
+  <GridCard
+    label="Text Colors"
+    pageTitle="CSS Utilities/Typography/Text Colors"
+    color="red"
+    description="Diverse color palettes available for the text of an element."
+  />
+  <GridCard
+    label="Font Family"
+    pageTitle="CSS Utilities/Typography/Font Family"
+    color="red"
+    description="Specifies font family for headings and paragraphs."
+  />
+  <GridCard
+    label="Font Size"
+    pageTitle="CSS Utilities/Typography/Font Size"
+    color="red"
+    description="Specifies the font size of an element."
+  />
+  <GridCard
+    label="Text Align"
+    pageTitle="CSS Utilities/Typography/Text Align"
+    color="red"
+    description="Determines the alignment of text within an element."
+  />
+  <GridCard
+    label="Text Transform"
+    pageTitle="CSS Utilities/Typography/Text Transform"
+    color="red"
+    description="Determines the transformation applied to text within an element."
+  />
+  <GridCard
+    label="Font Weight"
+    pageTitle="CSS Utilities/Typography/Font Weight"
+    color="red"
+    description="Defines the font weight of an element."
+  />
+  <GridCard
+    label="White Space"
+    pageTitle="CSS Utilities/Typography/White Space"
+    color="red"
+    description="Determines if a word should wrap based on white space or not."
+  />
+</GridCards>
+
+## Installation
+
+The `@baloise/ds-css` package is included when you install `@baloise/ds-core`, so if that is already installed skip the next step.
+
+```bash
+npm add @baloise/ds-css
+```
+
+## Usage
+
+### CSS Only (Web Components)
+
+Import the compiled CSS directly into your HTML or bundler:
+
+```html
+<!-- Full design system (base + components + utilities) -->
+<link rel="stylesheet" href="@baloise/ds-css/dist/css/design-system.css" />
+
+<!-- Or import selectively -->
+<link rel="stylesheet" href="@baloise/ds-css/dist/css/base.css" />
+<link rel="stylesheet" href="@baloise/ds-css/dist/css/components.css" />
+<link rel="stylesheet" href="@baloise/ds-css/dist/css/utilities.css" />
+```
+
+### SCSS/Sass (Monorepo Development)
+
+Use `@use` to import Sass utilities and design tokens:
+
+```scss
+// Design tokens and Sass functions
+@use '@baloise/ds-css/dist/scss/design-system';
+
+// Use CSS custom properties in your styles
+.my-component {
+  background: var(--ds-alias-background-color-primary);
+  padding: var(--ds-alias-space-base-device);
+}
+```
+
+## Using Utilities in Angular
+
+Utility classes can be applied directly to template elements:
+
+```typescript
+// my-component.component.ts
+import { Component } from '@angular/core'
+
+@Component({
+  selector: 'app-my-component',
+  template: `
+    <div class="flex gap-md items-center justify-between px-md py-lg">
+      <h1 class="text-lg font-bold text-primary">Hello</h1>
+      <button class="px-md py-sm bg-primary text-white rounded hover:bg-primary-hover">
+        Click me
+      </button>
+    </div>
+  `,
+})
+export class MyComponent {}
+```
+
+### Optimizing Output with UnoCSS
+
+To generate **only the utility classes you actually use** (reducing CSS file size), configure UnoCSS in your build process:
+
+#### 1. Install UnoCSS
+
+```bash
+npm add -D unocss
+```
+
+#### 2. Configure UnoCSS (in your bundler or build script)
+
+For **Angular** with `@angular-eslint/schematics`, add UnoCSS to your Webpack/esbuild config:
+
+```typescript
+// vite.config.ts or angular.json (if using Vite)
+import { defineConfig } from 'vite'
+import UnoCSS from 'unocss/vite'
+import { presetDsUtilities } from '@baloise/ds-css/preset'
+
+export default defineConfig({
+  plugins: [
+    UnoCSS({
+      presets: [presetDsUtilities()],
+      // Scan these file patterns for class names
+      content: {
+        filesystem: ['src/**/*.{ts,tsx,html}'],
+      },
+    }),
+  ],
+})
+```
+
+#### 3. Extract Used Classes Only
+
+UnoCSS will scan your templates and only generate CSS for classes that are actually present:
+
+```html
+<!-- Input template -->
+<div class="flex gap-md px-lg py-md">Content</div>
+<button class="px-md py-sm bg-primary">Button</button>
+
+<!-- Output: Only these classes are in the final CSS file -->
+.flex { display: flex; }
+.gap-md { gap: var(--ds-spacing-md); }
+.px-lg { padding-left: var(--ds-spacing-lg); padding-right: var(--ds-spacing-lg); }
+.py-md { padding-top: var(--ds-spacing-md); padding-bottom: var(--ds-spacing-md); }
+.px-md { padding-left: var(--ds-spacing-md); padding-right: var(--ds-spacing-md); }
+.py-sm { padding-top: var(--ds-spacing-sm); padding-bottom: var(--ds-spacing-sm); }
+.bg-primary { background: var(--ds-color-primary); }
+```
+
+#### 4. Enable in Your Angular Application
+
+For a full Angular app setup, import the generated CSS in your `main.ts` or global styles:
+
+```typescript
+// main.ts
+import 'uno.css' // Auto-generated by UnoCSS
+import '@baloise/ds-css/dist/css/base.css'
+import '@baloise/ds-css/dist/css/components.css'
+
+bootstrapApplication(AppComponent)
+```
+
+This approach ensures your final CSS bundle contains **only the utilities you use**, keeping your application lightweight.
+
+<Footer />

@@ -1,4 +1,4 @@
-# Architecture — Helvetia Design System
+# 🏗️ Architecture — Helvetia Design System
 
 This document describes the architecture, design patterns, and technical organization of the Helvetia Design System.
 

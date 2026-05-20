@@ -1,4 +1,4 @@
-# Style Guide — Helvetia Design System
+# ✨ Style Guide — Helvetia Design System
 
 This is a quick reference for component code standards. For comprehensive details, see the [Component Style Guide](docs/src/contributing/10-style-guide.mdx) in the documentation.
 

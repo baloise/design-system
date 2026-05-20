@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssBackgroundColors, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as BackgroundColorStories from './background-color.stories'
+
+<Meta
+  title="CSS Utilities/Background/Background Colors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Background Colors" section="CSS Utilities" color="red" />
+
+<Lead>Select from a range of colors for the background of an element.</Lead>
+
+## Classes
+
+Background colors can be set with the CSS class `bg-***` for example `bg-green`.
+
+Every color of the [Design Tokens](?path=/docs/tokens-overview--documentation) can be used like that.
+
+<CssBackgroundColors />
+
+## Basic
+
+<CanvasWithCodePen of={BackgroundColorStories.Basic} />
+
+## Inverted Colors
+
+For every color, an inverted variant is defined to ensure optimal readability when combining background and font colors.
+
+<CanvasWithCodePen of={BackgroundColorStories.InvertedColors} />
+
+## Pseudo States
+
+States such as Focus, Hover, and Active can be utilized by applying the respective prefixes: **focus:**, **hover:**, and **active:**.
+
+<CanvasWithCodePen of={BackgroundColorStories.PseudoStates} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Colors"
+      description="The colors create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Helvetia we are."
+    />
+    <LinkCard
+      pageTitle="Tokens/All Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

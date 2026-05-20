@@ -389,12 +389,14 @@ a.sbdocs-a.text-decoration-none {
   margin-bottom: 2rem;
 }
 
+.doc-link-cards > a,
 .doc-link-cards > button {
   flex: none;
   width: 100%;
 }
 
 @media screen and (min-width: 769px), print {
+  .doc-link-cards > a,
   .doc-link-cards > button {
     width: calc(50% - 0.5rem);
   }

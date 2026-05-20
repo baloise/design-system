@@ -1,0 +1,100 @@
+import { Markdown, Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, InfoQuote, Lead, LinkCard, LinkCards, PackageTable, ButtonCard} from '../.storybook/blocks'
+
+<Meta title="Versions" />
+
+<Banner label="Versions" />
+
+<Lead>
+  Track all notable changes, breaking changes, new features, and bug fixes in each release. We follow **Semantic
+  Versioning** and document deprecations with upgrade paths.
+</Lead>
+
+<a
+  className="button is-primary mt-normal sb-unstyled"
+  href="https://github.com/baloise/design-system/blob/next/CHANGELOG.md"
+  target="_blank"
+>
+  📖 View Full Changelog on GitHub
+</a>
+
+<br />
+
+#### Understanding Version Numbers
+
+The Helvetia Design System uses **Semantic Versioning** (MAJOR.MINOR.PATCH):
+
+<Markdown>
+  {`
+| Type | Format | When | Examples |
+|------|--------|------|----------|
+| **Patch** | X.X.↑ | Bug fixes, accessibility improvements, non-breaking tweaks | 18.0.0 → 18.0.1 |
+| **Minor** | X.↑.0 | New features, new components, new props (backward-compatible) | 18.0.0 → 18.1.0 |
+| **Major** | ↑.0.0 | Breaking changes: removed props, renamed events, API changes | 17.0.0 → 18.0.0 |
+`}
+</Markdown>
+
+**Why this matters:**
+
+- A `patch` update is always safe.
+- A `minor` update adds features safely.
+- A `major` update requires attention and testing.
+
+<br />
+
+#### Version Support Policy
+
+<Markdown>
+  {`
+| Version | Status | Support | Security Fixes |
+|---------|--------|---------|-----------------|
+| **Latest major** (e.g., 19.x) | Supported | ✅ Full support | ✅ Yes |
+| **Older majors** (e.g., 18.x, 17.x) | EOL | ⚠️ Maintenance only | ❌ No |
+`}
+</Markdown>
+
+**What this means:** Only the latest major version receives security patches and bug fixes. Upgrade regularly to stay secure.
+
+<br />
+
+#### Breaking Changes
+
+All **breaking changes** are documented and require a major version bump. Common breaking changes:
+
+- ❌ Prop removal or rename
+- ❌ Event removal or rename
+- ❌ Method signature changes
+- ❌ Component removal
+- ❌ Default value changes that affect behavior
+- ❌ Shadow DOM slot or part changes
+
+When a breaking change is made, the upgrade guide explains the migration path.
+
+<br />
+
+#### Older Documentation
+
+Older versions of the documentation can be changed with the version selector in the top right corner of the
+documentation.
+
+import Versions from './assets/images/versions.png'
+
+<img src={Versions} />
+
+<br />
+
+#### Need Help Upgrading?
+
+<Unstyled>
+  <div className="flex flex-wrap gap-base my-lg">
+    <ButtonCard
+      color="yellow"
+      icon="⬆️"
+      label="Ask for Upgrade Assistance"
+      description="Get help with upgrading to the latest version"
+      link="https://github.com/baloise/design-system/issues/new?template=upgrade_report.yml"
+    ></ButtonCard>
+  </div>
+</Unstyled>
+
+<Footer></Footer>

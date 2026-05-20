@@ -26,6 +26,56 @@ console.log(`
 `)
 
 // ============================================================================
+// 0. Index MDX files and create story path mapping
+// ============================================================================
+async function indexMdxFiles() {
+  console.log('🔍 Indexing MDX files for story mapping...')
+  const glob = (await import('fast-glob')).default
+
+  try {
+    const mdxFiles = await glob(['**/*.mdx'], {
+      cwd: join(docsRoot, 'src'),
+      ignore: ['node_modules/**', '.storybook/**'],
+    })
+
+    const storyPathMap = {}
+
+    for (const filePath of mdxFiles) {
+      // Convert file path to story ID, stripping leading numbers for sorting prefixes
+      // 01-getting-started.mdx -> getting-started
+      // foundation/02-colors.mdx -> foundation-colors
+      // changelog.mdx -> changelog
+      const storyId = filePath
+        .replace(/\.mdx$/, '') // Remove .mdx extension
+        .split('/') // Split by path separator
+        .map(segment => segment.replace(/^\d+-/, '')) // Strip leading digits and dash from each segment
+        .join('-') // Join segments with hyphen
+        .replace(/([A-Z])/g, '-$1') // Add hyphen before capitals
+        .toLowerCase() // Convert to lowercase
+        .replace(/^-/, '') // Remove leading hyphen
+        .replace(/-+/g, '-') // Collapse multiple hyphens
+
+      storyPathMap[storyId] = filePath
+    }
+
+    // Write mapping file
+    const mapPath = join(docsRoot, '.storybook', 'story-paths.json')
+    await mkdir(dirname(mapPath), { recursive: true })
+    const fd = await open(mapPath, 'w')
+    try {
+      await fd.writeFile(JSON.stringify(storyPathMap, null, 2))
+    } finally {
+      await fd.close()
+    }
+
+    console.log(`\x1b[32m✔\x1b[0m ${Object.keys(storyPathMap).length} MDX files indexed`)
+  } catch (err) {
+    console.error('✗ Failed to index MDX files:', err.message)
+    throw err
+  }
+}
+
+// ============================================================================
 // 1. Copy resources and assets
 // ============================================================================
 async function copyResources() {
@@ -253,6 +303,9 @@ function buildStorybook() {
 async function main() {
   try {
     console.log('🏗 Building docs...\n')
+
+    await indexMdxFiles()
+    console.log()
 
     await copyResources()
     console.log()

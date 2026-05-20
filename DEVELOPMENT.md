@@ -1,4 +1,4 @@
-# Development Guide
+# ⚙️ Development Guide
 
 This guide covers local development setup and common workflows for the Helvetia Design System.
 

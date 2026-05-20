@@ -33,40 +33,20 @@ uniform design or appearance.
   <GridComponent
     scale="0.8"
     label="Accordion"
-    pageTitle="Components/Containment/Accordion"
+    pageTitle="Components/Accordion"
     description="Accordions put users in control of showing or hiding content."
   >
-    <ds-accordion active>
-      <ds-accordion-summary>
-        <ds-stack class="bg-white px-x-small radius-top-normal">
-          <ds-content>
-            <ds-label>Apple Pie</ds-label>
-          </ds-content>
-          <ds-accordion-trigger></ds-accordion-trigger>
-        </ds-stack>
-      </ds-accordion-summary>
-      <ds-accordion-details>
-        <span class="block bg-white p-x-small radius-bottom-normal">
-          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-        </span>
-      </ds-accordion-details>
-    </ds-accordion>
-    <ds-accordion class="mt-small">
-      <ds-accordion-summary>
-        <ds-stack class="bg-white px-x-small radius">
-          <ds-content>
-            <ds-label>Mango Cake</ds-label>
-          </ds-content>
-          <ds-accordion-trigger></ds-accordion-trigger>
-        </ds-stack>
-      </ds-accordion-summary>
-      <ds-accordion-details></ds-accordion-details>
+    <ds-accordion open>
+      <div slot="summary">What is Apple Pie?</div>
+      <div slot="content" class="py-base">
+        Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
+      </div>
     </ds-accordion>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Button"
-    pageTitle="Components/Containment/Button"
+    pageTitle="Components/Button"
     description="Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality."
   >
     <ds-stack>
@@ -77,7 +57,7 @@ uniform design or appearance.
   <GridComponent
     scale="0.6"
     label="Card"
-    pageTitle="Components/Containment/Card"
+    pageTitle="Components/Card"
     description="Cards contain content and actions about a single subject and can be combined with other components."
   >
     <ds-card>
@@ -98,7 +78,7 @@ uniform design or appearance.
   <GridComponent
     scale="0.8"
     label="Notification"
-    pageTitle="Components/Containment/Notification"
+    pageTitle="Components/Notification"
     description="Notification is used for alerts or to highlight certain content for the user."
   >
     <ds-notification color="danger">
@@ -111,7 +91,7 @@ uniform design or appearance.
     label="Sheet"
     fullwidth
     fullheight
-    pageTitle="Components/Containment/Sheet"
+    pageTitle="Components/Sheet"
     description="Sheet component is used to show content over the whole page at the bottom. The element is sticky."
   >
     <div class="container">
@@ -147,7 +127,7 @@ These components serve to present data and information in a diverse range of for
   <GridComponent
     scale="2"
     label="Badge"
-    pageTitle="Components/Data Display/Badge"
+    pageTitle="Components/Badge"
     description="Badge indicates a not visited or read action. It can only be used in combination with other components like BalButton, BalCard or BalTabs."
   >
     <ds-stack>
@@ -159,17 +139,13 @@ These components serve to present data and information in a diverse range of for
     scale="0.5"
     label="Carousel"
     fullwidth
-    pageTitle="Components/Data Display/Carousel"
+    pageTitle="Components/Carousel"
     description="The carousel component combines all the slide use cases."
   >
     <ds-card>
       <ds-card-content>
         <ds-carousel controls="large" interface="product" items-per-view="auto" steps="2">
-          <ds-carousel-item
-            color="green"
-            label="Car"
-            src="/assets/images/brand-icons/car-green.svg"
-          ></ds-carousel-item>
+          <ds-carousel-item color="green" label="Car" src="/assets/images/brand-icons/car-green.svg"></ds-carousel-item>
           <ds-carousel-item
             color="yellow"
             label="Home"
@@ -185,11 +161,7 @@ These components serve to present data and information in a diverse range of for
             label="Insurances"
             src="/assets/images/brand-icons/insurances-red.svg"
           ></ds-carousel-item>
-          <ds-carousel-item
-            color="green"
-            label="Car"
-            src="/assets/images/brand-icons/car-green.svg"
-          ></ds-carousel-item>
+          <ds-carousel-item color="green" label="Car" src="/assets/images/brand-icons/car-green.svg"></ds-carousel-item>
           <ds-carousel-item
             color="yellow"
             label="Home"
@@ -213,7 +185,7 @@ These components serve to present data and information in a diverse range of for
     scale="0.8"
     label="Data"
     fullwidth
-    pageTitle="Components/Data Display/Data"
+    pageTitle="Components/Data"
     description="Data component display readonly form data."
   >
     <ds-card>
@@ -236,15 +208,12 @@ These components serve to present data and information in a diverse range of for
     label="Hint"
     fullwidth
     fullheight
-    pageTitle="Components/Data Display/Hint"
+    pageTitle="Components/Hint"
     description="Hint hides content with some additional description and shows it by clicking the icon. It can easily combined with the ds-data or ds-field component."
   >
     <div class="py-normal">
       <ds-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></ds-icon>
-      <div
-        class="bg-grey radius shadow p-normal"
-        style={{ scale: '0.5', position: 'absolute', top: '-10%' }}
-      >
+      <div class="bg-grey radius shadow p-normal" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
         <ds-stack layout="vertical">
           <h4 class="title text-large">Apple pie</h4>
           <span>
@@ -260,7 +229,7 @@ These components serve to present data and information in a diverse range of for
     scale="0.8"
     label="Icon"
     fullwidth
-    pageTitle="Components/Data Display/Icon"
+    pageTitle="Components/Icon"
     description="Icons are used to represent ideas, objects or actions."
   >
     <ds-stack align="center">
@@ -276,7 +245,7 @@ These components serve to present data and information in a diverse range of for
     scale="0.8"
     label="List"
     fullwidth
-    pageTitle="Components/Data Display/List"
+    pageTitle="Components/List"
     description="List present content in a way that makes it easy to identify a specific item in a collection."
   >
     <ds-card>
@@ -309,7 +278,7 @@ These components serve to present data and information in a diverse range of for
     fullheight
     fullwidth
     center
-    pageTitle="Components/Data Display/Popup"
+    pageTitle="Components/Popup"
     description="Tag highlights a label for quick recognition."
   >
     <div class="flex justify-content-center align-items-center">
@@ -325,7 +294,7 @@ These components serve to present data and information in a diverse range of for
     scale="0.6"
     label="Table"
     fullwidth
-    pageTitle="Components/Data Display/Table"
+    pageTitle="Components/Table"
     description="A table is used to organize and present data, in a structured and accessible format for easy reference."
   >
     <ds-card>
@@ -391,7 +360,7 @@ These components serve to present data and information in a diverse range of for
   <GridComponent
     scale="1.2"
     label="Tag"
-    pageTitle="Components/Data Display/Tag"
+    pageTitle="Components/Tag"
     description="Tag highlights a label for quick recognition."
   >
     <ds-stack>
@@ -407,7 +376,7 @@ These components serve to present data and information in a diverse range of for
     fullheight
     fullwidth
     center
-    pageTitle="Components/Data Display/Tooltip"
+    pageTitle="Components/Tooltip"
     description="Tag highlights a label for quick recognition."
   >
     <ds-button color="secondary" id="basic-tooltip">
@@ -428,7 +397,7 @@ These components serve to present data and information in a diverse range of for
     fullwidth
     fullheight
     fullscreen
-    pageTitle="Components/Feedback/Modal"
+    pageTitle="Components/Modal"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <ds-modal demo>
@@ -449,7 +418,7 @@ These components serve to present data and information in a diverse range of for
     fullwidth
     fullscreen
     label="Progessbar"
-    pageTitle="Components/Feedback/Progessbar"
+    pageTitle="Components/Progessbar"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <ds-progress-bar background="grey" value="50"></ds-progress-bar>
@@ -459,7 +428,7 @@ These components serve to present data and information in a diverse range of for
     label="Snackbar"
     fullwidth
     fullheight
-    pageTitle="Components/Feedback/Snackbar"
+    pageTitle="Components/Snackbar"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
@@ -471,7 +440,7 @@ These components serve to present data and information in a diverse range of for
   <GridComponent
     scale="1.5"
     label="Spinner"
-    pageTitle="Components/Feedback/Spinner"
+    pageTitle="Components/Spinner"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <ds-spinner></ds-spinner>
@@ -479,7 +448,7 @@ These components serve to present data and information in a diverse range of for
   <GridComponent
     scale="0.5"
     label="Toast"
-    pageTitle="Components/Feedback/Toast"
+    pageTitle="Components/Toast"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <div style={{ marginTop: '-180px' }}>
@@ -498,7 +467,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Checkbox"
-    pageTitle="Components/Form/Checkbox"
+    pageTitle="Components/Checkbox"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <div class="text-align-center">
@@ -511,7 +480,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Date"
-    pageTitle="Components/Form/Date"
+    pageTitle="Components/Date"
     description="Date Component is a datepicker designed to simplify the process of date selection."
   >
     <div class="text-align-center">
@@ -521,7 +490,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="DropDown"
-    pageTitle="Components/Form/DropDown"
+    pageTitle="Components/DropDown"
     description="Select allows the user to choose one or multiple option from a list."
   >
     <ds-dropdown value="Apple" style={{ width: '227px' }}>
@@ -539,7 +508,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Field"
-    pageTitle="Components/Form/Field"
+    pageTitle="Components/Field"
     description="Field wraps a form field like input. It provides a clear style structure of each control."
   >
     <ds-field>
@@ -553,7 +522,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="File Upload"
-    pageTitle="Components/Form/File Upload"
+    pageTitle="Components/File Upload"
     description="File Upload is all in one component. It supports drag&drop and the normal file upload dialog of the browser."
   >
     <ds-file-upload label="Choose or drop a file..."></ds-file-upload>
@@ -563,7 +532,7 @@ Form components serve as tools for gathering user input through a range of metho
     fullheight
     fullwidth
     label="Form"
-    pageTitle="Components/Form/Form"
+    pageTitle="Components"
     description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
   >
     <div class="bg-purple-2 radius-lg mb-small mt-xx-large" style={{ width: '30%', height: '16px' }}></div>
@@ -578,7 +547,7 @@ Form components serve as tools for gathering user input through a range of metho
     fullwidth
     center
     label="Form Grid"
-    pageTitle="Components/Form/Form Grid"
+    pageTitle="Components Grid"
     description="Form Grid components help to structure form controls in a simple grid. On mobile all controls have the the full width."
   >
     <ds-form-grid>
@@ -617,7 +586,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Input"
-    pageTitle="Components/Form/Input"
+    pageTitle="Components/Input"
     description="Input component is a wrapper to the HTML input element."
   >
     <ds-input placeholder="Placeholder" type="text"></ds-input>
@@ -625,7 +594,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Input Group"
-    pageTitle="Components/Form/Input Group"
+    pageTitle="Components/Input Group"
     description="Input Group can combine various components to one field control."
   >
     <ds-stack layout="vertical">
@@ -659,7 +628,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Input Slider"
-    pageTitle="Components/Form/Input Slider"
+    pageTitle="Components/Input Slider"
     description="Input Slider component lets users select from a range of values by moving the slider thumb."
   >
     <ds-input-slider has-ticks max="100" min="0" step="20" value="20"></ds-input-slider>
@@ -667,7 +636,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Input Stepper"
-    pageTitle="Components/Form/Input Stepper"
+    pageTitle="Components/Input Stepper"
     description="Input Stepper can be used to ask the user an amount of limited amounts like the amount of children."
   >
     <ds-input-stepper></ds-input-stepper>
@@ -675,7 +644,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Number Input"
-    pageTitle="Components/Form/Number Input"
+    pageTitle="Components/Number Input"
     description="Number Input only allows to enter valid numbers."
   >
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
@@ -683,7 +652,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Radio"
-    pageTitle="Components/Form/Radio"
+    pageTitle="Components/Radio"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <div class="text-align-center">
@@ -696,7 +665,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Segment"
-    pageTitle="Components/Form/Segment"
+    pageTitle="Components/Segment"
     description="Segment offers a list of options. The user can only select one option from a number of choices."
   >
     <div class="text-align-center">
@@ -709,7 +678,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Textarea"
-    pageTitle="Components/Form/Textarea"
+    pageTitle="Components/Textarea"
     description="Textarea allows a user to write and edit large texts."
   >
     <ds-textarea placeholder="Enter a comment" style={{ width: '227px' }}></ds-textarea>
@@ -717,7 +686,7 @@ Form components serve as tools for gathering user input through a range of metho
   <GridComponent
     scale="1"
     label="Time Input"
-    pageTitle="Components/Form/Time Input"
+    pageTitle="Components/Time Input"
     description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
   >
     <ds-time-input style={{ width: '227px' }}></ds-time-input>
@@ -735,7 +704,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     fullwidth
     fullheight
     fullscreen
-    pageTitle="Components/Layout/App"
+    pageTitle="Components/App"
     description="App is a container element for an Helvetia Design System application."
   >
     <ds-app
@@ -760,7 +729,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     scale="1"
     label="Content"
     fullwidth
-    pageTitle="Components/Layout/Content"
+    pageTitle="Components/Content"
     description="Content helps to align text nodes inside a section."
   >
     <ds-content>
@@ -772,7 +741,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     scale="4"
     label="Divider"
     fullwidth
-    pageTitle="Components/Layout/Divider"
+    pageTitle="Components/Divider"
     description="A divider is a slender line that serves to group content within stacks and layouts."
   >
     <ds-divider color="primary"></ds-divider>
@@ -781,7 +750,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     scale="0.5"
     label="Footer"
     fullwidth
-    pageTitle="Components/Layout/Footer"
+    pageTitle="Components/Footer"
     description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
   >
     <ds-footer></ds-footer>
@@ -789,7 +758,7 @@ Layout components enable the creation of dynamic and responsive layouts.
   <GridComponent
     scale="1.2"
     label="Logo"
-    pageTitle="Components/Layout/Logo"
+    pageTitle="Components/Logo"
     description="All the Logos of the Helvetia Group are legally protected brands and may not be altered in any way."
   >
     <ds-logo size="large"></ds-logo>
@@ -797,7 +766,7 @@ Layout components enable the creation of dynamic and responsive layouts.
   <GridComponent
     scale="0.8"
     label="Shape"
-    pageTitle="Components/Layout/Shape"
+    pageTitle="Components/Shape"
     description="Helvetia Shape with variable color, size and rotation."
   >
     <ds-shape color="red" rotation="0" variation="1"></ds-shape>
@@ -806,7 +775,7 @@ Layout components enable the creation of dynamic and responsive layouts.
     scale="0.8"
     label="Stack"
     fullwidth
-    pageTitle="Components/Layout/Stack"
+    pageTitle="Components/Stack"
     description="The Stack element is responsible for arranging its direct descendants in a vertical or horizontal direction, while also allowing for the inclusion of optional spacing between each child."
   >
     <ds-stack>
@@ -826,7 +795,7 @@ Navigation components facilitate the movement between various views or pages.
     scale="1"
     label="Close"
     fullwidth
-    pageTitle="Components/Navigation/Close"
+    pageTitle="Components/Close"
     description="Close is used as a close button for modals, toast and other components."
   >
     <div class="bg-purple-2 radius p-normal" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
@@ -844,7 +813,7 @@ Navigation components facilitate the movement between various views or pages.
     label="Nav"
     fullheight
     fullwidth
-    pageTitle="Components/Navigation/Nav"
+    pageTitle="Components/Nav"
     description="Navigation component serves as a central hub for seamless user navigation within the applications."
   >
     <div class="bg-primary mt-small" style={{ width: '100%', height: '24px' }}></div>
@@ -864,7 +833,7 @@ Navigation components facilitate the movement between various views or pages.
     fullheight
     fullwidth
     fullscreen
-    pageTitle="Components/Navigation/Navbar"
+    pageTitle="Components/Navbar"
     description="A responsive horizontal Navbar that can support logos, buttons, and dropdowns."
   >
     <ds-navbar interface="app">
@@ -918,7 +887,7 @@ Navigation components facilitate the movement between various views or pages.
     scale="0.8"
     label="Pagination"
     fullwidth
-    pageTitle="Components/Navigation/Pagination"
+    pageTitle="Components/Pagination"
     description="Pagination allows you to divide large amounts of content into smaller chunks across multiple pages."
   >
     <ds-pagination page-range="1" total-pages="20" value="2"></ds-pagination>
@@ -927,7 +896,7 @@ Navigation components facilitate the movement between various views or pages.
     scale="0.8"
     label="Steps"
     fullwidth
-    pageTitle="Components/Navigation/Steps"
+    pageTitle="Components/Steps"
     description="Steps are used to structure the information in sub section on the same page."
   >
     <ds-steps value="tab-c">
@@ -943,7 +912,7 @@ Navigation components facilitate the movement between various views or pages.
   <GridComponent
     scale="1"
     label="Tabs"
-    pageTitle="Components/Navigation/Tabs"
+    pageTitle="Components/Tabs"
     description="Tabs are used to structure the information in sub section on the same page."
   >
     <ds-tabs border value="tab-b">
@@ -962,7 +931,7 @@ Typography components serve as wrappers for text elements, providing additional 
   <GridComponent
     scale="1"
     label="Heading"
-    pageTitle="Components/Typography/Heading"
+    pageTitle="Components/Heading"
     description="Heading provides some additional helpers."
   >
     <ds-heading level="h1" space="bottom">
@@ -972,7 +941,7 @@ Typography components serve as wrappers for text elements, providing additional 
   <GridComponent
     scale="1"
     label="Label"
-    pageTitle="Components/Typography/Label"
+    pageTitle="Components/Label"
     description="The label component represents a caption for a form control component."
   >
     <ds-label>Label</ds-label>
@@ -981,7 +950,7 @@ Typography components serve as wrappers for text elements, providing additional 
   <GridComponent
     scale="1"
     label="Text"
-    pageTitle="Components/Typography/Text"
+    pageTitle="Components/Text"
     description="Text provides some additional helpers."
   >
     <ds-text>

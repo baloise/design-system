@@ -48,7 +48,7 @@ const preview: Preview = {
       storySort: {
         order: [
           'Welcome',
-          'Changelog',
+          'Versions',
           'Support',
           'Contributing',
           'Foundation',
