@@ -3,7 +3,6 @@ import { addons, types } from 'storybook/manager-api'
 import { registerCookie } from './addons/cookie.addon'
 import { registerFramework } from './addons/framework.addon'
 import { registerTheme } from './addons/theme.addon'
-import { SourcePanel } from './addons/source-panel.addon'
 import { registerVersion } from './addons/version.addon'
 import baloiseTheme from './bal.theme'
 
@@ -41,14 +40,6 @@ addons.register('my/toolbar', () => {
     title: 'Version badge',
     type: types.TOOLEXTRA,
     render: registerVersion as any,
-  })
-})
-
-addons.register('my/source', () => {
-  addons.add('my-source-addon/panel', {
-    type: types.PANEL,
-    title: 'Source',
-    render: SourcePanel as any,
   })
 })
 

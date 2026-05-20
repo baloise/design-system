@@ -190,25 +190,29 @@ export const config: Config = {
           /**
            * Add stylesheets (.scss) and template (.html) files to the watcher.
            */
-          const styleFiles = await fg(resolve(__dirname, './src/**/*.scss'))
+          const styleFiles = await fg('src/**/*.scss', { cwd: __dirname })
           for (const file of styleFiles) {
-            this.addWatchFile(file)
+            this.addWatchFile(resolve(__dirname, file))
           }
 
-          const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
+          const templateFiles = await fg('src/**/*.html', { cwd: __dirname })
           for (const file of templateFiles) {
-            this.addWatchFile(file)
+            this.addWatchFile(resolve(__dirname, file))
           }
 
           /**
            * Generating the tags.json list
            */
-          const componentFiles = await fg(resolve(__dirname, './src/components/**/*.tsx'))
+          // Use cwd + relative pattern to avoid Windows path separator issues with fast-glob
+          const componentFiles = await fg('src/components/**/*.tsx', {
+            cwd: __dirname,
+            ignore: ['**/*.data.tsx', '**/field.util.tsx', '**/*.interfaces.tsx', '**/index.tsx'],
+          })
           const allTags = (
             await Promise.all(
               componentFiles.map(async f => {
-                const src = await readFile(f, 'utf-8')
-                const m = src.match(/tag:\s*['"]([^'"]+)['"]/)
+                const src = await readFile(resolve(__dirname, f), 'utf-8')
+                const m = src.match(/tag:\s*['"`]([^'"`]+)['"`]/)
                 return m ? m[1] : null
               }),
             )

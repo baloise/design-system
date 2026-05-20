@@ -12,7 +12,6 @@ import {
   NotAngularFramework,
   PackageTable,
   ReactFramework,
-  ScssSource,
   WarningQuote,
 } from '../../../.storybook/blocks'
 
@@ -63,18 +62,20 @@ To create a responsive layout you can either structure your app with the Sass mi
 
 Use the scss mixins in your application the following:
 
-<ScssSource code={`// SASS mixins and variables
+<Code
+  language="scss"
+  code={`// SASS mixins and variables
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
 .my-component {
-${' '}${' '}background: var(--ds-global-color-green);
+  background: var(--ds-global-color-green);
 }
 
 @include desktop() {
-${' '}${' '}// add your custom styles here
-${' '}${' '}.my-component {
-${' '}${' '}${' '}${' '}background: var(--ds-global-color-red);
-${' '}${' '}}
+  // add your custom styles here
+  .my-component {
+    background: var(--ds-global-color-red);
+  }
 }
 `} />
 
