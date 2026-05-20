@@ -307,7 +307,7 @@ function buildStorybook() {
 // ============================================================================
 async function main() {
   try {
-    console.log('🏗 Building docs...\n')
+    console.log('🏗️ Building docs...\n')
 
     await indexMdxFiles()
     console.log()

@@ -36,8 +36,7 @@
     "format:check": "npx prettier --check --end-of-line lf .",
     "spell": "cspell --no-progress",
     "registry": "bash registry",
-    "changeset": "node scripts/create-changeset.mjs",
-    "kill:ports": "kill -9 $(lsof -t -i:4000) || true && kill -9 $(lsof -t -i:4001) || true && kill -9 $(lsof -t -i:4002) || true && kill -9 $(lsof -t -i:4003) || true && kill -9 $(lsof -t -i:4004) || true"
+    "changeset": "node scripts/create-changeset.mjs"
   },
   "private": true,
   "workspaces": [
@@ -69,6 +68,7 @@
     "@vitest/ui": "4.1.6",
     "archiver": "^8.0.0",
     "compression": "1.8.1",
+    "cross-env": "7.0.3",
     "cspell": "10.0.0",
     "eslint": "10.4.0",
     "eslint-config-prettier": "10.1.8",

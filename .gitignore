@@ -111,6 +111,7 @@ vitest.config.*.timestamp*
 
 # Local generated screenshots on a MAC
 *-darwin.png
+*-win32.png
 test-results
 playwright.visual.config.ts
 
