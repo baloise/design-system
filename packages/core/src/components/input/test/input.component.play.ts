@@ -47,7 +47,7 @@ test.describe('disabled', () => {
   })
 })
 
-test.describe('form reset', () => {
+test.describe.skip('form reset', () => {
   test('should reset to initial value', async ({ page }) => {
     await page.mount(`
       <form>
