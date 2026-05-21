@@ -108,7 +108,7 @@ Build tasks are defined in `turbo.json` and `package.json` scripts. Each package
 
 - **`packages/core`** — Runs Stencil compiler, generates web components
 - **`packages/tokens`** — Runs Style Dictionary to compile tokens
-- **`packages/styles`** — Runs Sass + PostCSS to generate CSS
+- **`packages/css`** — Runs Sass + PostCSS to generate CSS
 - **`packages/playwright`** — Compiles TypeScript for test utilities
 
 Use `npm run <script>` or `turbo run <task>` to invoke tasks. Turborepo caches task outputs — only changed packages rebuild.
@@ -159,7 +159,6 @@ The **hybrid component model** allows components to work in two modes:
 `*.style.scss` is the single source of CSS truth:
 
 - Imported by `*.host.scss` (with `$use-host: true`) → compiled into Shadow DOM bundle
-- Imported by `packages/styles/src/generated/components.scss` → compiled into global CSS
 
 Both modes share the exact same styling logic:
 
@@ -357,7 +356,6 @@ Use this checklist when creating a component from scratch:
 - [ ] Add `<name>.style.scss` with CSS variable cascade via `vars.local()`
 - [ ] Add `<name>.host.scss` that imports style.scss with `$use-host: true`
 - [ ] Register component in `packages/core/src/index.ts`
-- [ ] Add style.scss import to `packages/styles/src/generated/components.scss`
 - [ ] Add Page Object in `packages/playwright/src/lib/components/<name>.po.ts`
 - [ ] Add `test/<name>.spec.ts` unit tests
 - [ ] Add `test/<name>.component.play.ts` interaction tests

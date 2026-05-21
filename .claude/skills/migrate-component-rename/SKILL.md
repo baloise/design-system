@@ -18,7 +18,7 @@ Before touching any files, ask the user:
 > "Is this component **hybrid** (works as both a web component with Shadow DOM and as CSS-only via the global stylesheet) or **web-component-only** (Shadow DOM, no global CSS fallback)?"
 
 - **Hybrid** → keep `.host.scss` + `.style.scss` + `.mixin.scss`
-- **Web-component-only** → keep only `.host.scss`; delete `.style.scss`, `.mixin.scss`, and remove the component's `@import` from `packages/styles/src/generated/components.scss`
+- **Web-component-only** → keep only `.host.scss`; delete `.style.scss`, `.mixin.scss`
 
 ## Step 2 — Rename Files
 

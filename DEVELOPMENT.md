@@ -193,7 +193,7 @@ Tokens sync to `@baloise/ds-tokens` package and are imported by components.
 
 ### Update Global Styles
 
-Global styles live in `packages/styles/src/`:
+Global styles live in `packages/css/dist/css`:
 
 ```bash
 npm run css        # Rebuild CSS
