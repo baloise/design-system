@@ -61,7 +61,7 @@ export const ComponentDesignTokens = ({ component }: ComponentDesignTokensProps)
         Design tokens define the default appearance of components. Override them on <code>:root</code> to apply a
         consistent theme globally — unlike CSS variables, which only affect individual instances.
       </p>
-      <table className="table w-full mb-large">
+      <table className="table  w-full mb-large">
         <thead>
           <tr>
             <th>CSS Variable</th>
@@ -72,7 +72,7 @@ export const ComponentDesignTokens = ({ component }: ComponentDesignTokensProps)
           const color = isColor(token.nativeValue)
           // Show the inheritance chain up to (not including) the component token itself
           const chain = (token.inheritance || []).slice(0, -1)
-          const bg = index % 2 === 0 ? 'var(--ds-color-white)' : 'var(--ds-color-grey-2)'
+          const bg = index % 2 === 0 ? 'var(--ds-global-color-white)' : 'var(--ds-global-color-grey-2)'
 
           return (
             <tbody key={index}>
@@ -98,7 +98,7 @@ export const ComponentDesignTokens = ({ component }: ComponentDesignTokensProps)
                   </div>
                 </td>
               </tr>
-              <tr style={{ backgroundColor: bg }}>
+              <tr style={{ backgroundColor: bg, borderBottom: '2px solid var(--ds-global-color-grey-3)' }}>
                 <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>
                   {token.name}
                 </td>

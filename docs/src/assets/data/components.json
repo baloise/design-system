@@ -1190,7 +1190,7 @@
             "parameters": [
               {
                 "name": "alert",
-                "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+                "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
                 "docs": ""
               }
             ],
@@ -1218,7 +1218,7 @@
           "parameters": [
             {
               "name": "alert",
-              "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+              "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
               "docs": ""
             }
           ],
@@ -3425,10 +3425,10 @@
         },
         {
           "name": "target",
-          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -3450,6 +3450,9 @@
           ],
           "default": "'_self'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "_blank",
               "type": "string"
@@ -23472,10 +23475,10 @@
         },
         {
           "name": "actionIcon",
-          "type": "\"default\" | \"download\" | \"link\" | \"link-external\"",
+          "type": "\"\" | \"default\" | \"download\" | \"link\" | \"link-external\"",
           "complexType": {
             "original": "ItemActionIcon",
-            "resolved": "\"default\" | \"download\" | \"link\" | \"link-external\"",
+            "resolved": "\"\" | \"default\" | \"download\" | \"link\" | \"link-external\"",
             "references": {
               "ItemActionIcon": {
                 "location": "import",
@@ -23492,11 +23495,14 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'default'"
+              "text": "''"
             }
           ],
-          "default": "'default'",
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "default",
               "type": "string"
@@ -23686,10 +23692,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'h5'"
+              "text": "''"
             }
           ],
-          "default": "'h5'",
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -23827,10 +23833,10 @@
         },
         {
           "name": "target",
-          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -23847,11 +23853,14 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'_self'"
+              "text": "''"
             }
           ],
-          "default": "'_self'",
+          "default": "''",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "_blank",
               "type": "string"
@@ -33660,10 +33669,10 @@
         },
         {
           "name": "actionTarget",
-          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -33685,6 +33694,9 @@
           ],
           "default": "'_blank'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "_blank",
               "type": "string"
@@ -40379,10 +40391,10 @@
         },
         {
           "name": "actionTarget",
-          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -40404,6 +40416,9 @@
           ],
           "default": "'_blank'",
           "values": [
+            {
+              "type": "\"\""
+            },
             {
               "value": "_blank",
               "type": "string"
@@ -42127,7 +42142,7 @@
       "path": "src/components/alert/snackbar/snackbar.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonTarget": {
-      "declaration": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+      "declaration": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -42457,7 +42472,7 @@
       "path": "src/components/label/label.interfaces.ts"
     },
     "src/components/list/item/item.interfaces.ts::ItemActionIcon": {
-      "declaration": "\"link\" | \"default\" | \"link-external\" | \"download\"",
+      "declaration": "\"\" | \"link\" | \"default\" | \"link-external\" | \"download\"",
       "docstring": "",
       "path": "src/components/list/item/item.interfaces.ts"
     },
