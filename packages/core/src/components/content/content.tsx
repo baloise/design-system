@@ -1,6 +1,13 @@
-import { Component, Element, h, Host, Prop, Watch, ComponentWillUpdate } from '@stencil/core'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateEmptyOrOneOf, hasValue, setupValidation } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  normalizeDeprecatedTShirtSize,
+  ValidateEmptyOrOneOf,
+  hasValue,
+  setupValidation,
+} from '@utils'
 import { DsComponentInterface } from '@global'
 import { STACK_ALIGNMENTS, STACK_LAYOUTS, StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
 import {

@@ -6,7 +6,6 @@ import {
   isDescendant,
   ListenToResize,
   ValidateEmptyOrType,
-  ValidateType,
   setupValidation,
 } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'

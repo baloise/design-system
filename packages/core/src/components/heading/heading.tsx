@@ -1,6 +1,15 @@
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser, Logger, type LogInstance, ValidateOneOf, ValidateType, ValidateEmptyOrOneOf, setupValidation, hasValue } from '@utils'
+import {
+  dsBrowser,
+  Logger,
+  type LogInstance,
+  ValidateOneOf,
+  ValidateType,
+  ValidateEmptyOrOneOf,
+  setupValidation,
+  hasValue,
+} from '@utils'
 import {
   HEADING_COLORS,
   HEADING_LEVELS,

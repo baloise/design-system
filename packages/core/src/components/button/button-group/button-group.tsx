@@ -1,5 +1,12 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
-import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, ValidateRequiredAndOneOf, setupValidation } from '@utils'
+import {
+  Logger,
+  LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateRequiredAndOneOf,
+  setupValidation,
+} from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   BUTTON_GROUP_ALIGNMENTS,

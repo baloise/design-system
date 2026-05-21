@@ -1,6 +1,14 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ariaBooleanToString, Logger, type LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation, hasValue } from '@utils'
+import {
+  ariaBooleanToString,
+  Logger,
+  type LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+  hasValue,
+} from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import {
   ACCORDION_SUMMARY_LEVELS,
@@ -203,8 +211,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
     if (id === this.accordionId) return
 
     // only react if same group (or no group = global)
-    if ((this.group && group !== this.group) || !hasValue(this.group))
-      return
+    if ((this.group && group !== this.group) || !hasValue(this.group)) return
 
     this.open = false
   }

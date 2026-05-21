@@ -6,7 +6,6 @@ import {
   Logger,
   type LogInstance,
   ValidateOneOf,
-  ValidateType,
   ValidateRequiredAndType,
   ValidateEmptyOrType,
   hasValue,
