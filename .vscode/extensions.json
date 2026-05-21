@@ -4,7 +4,6 @@
     "esbenp.prettier-vscode",
     "ms-playwright.playwright",
     "unifiedjs.vscode-mdx",
-    "dbaeumer.vscode-eslint",
-    "pHofer94.vscode-taskviewexplorer"
+    "dbaeumer.vscode-eslint"
   ]
 }

@@ -1,15 +1,21 @@
 {
   "version": "2.0.0",
   "tasks": [
-    // ── Development ──────────────────────────────────────────────────────────
     {
       "label": "🚀 Start Dev Server",
       "type": "npm",
       "script": "start",
-      "group": { "kind": "build", "isDefault": true },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "isBackground": true,
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
     },
     {
       "label": "📚 Start Docs (Storybook)",
@@ -17,16 +23,23 @@
       "script": "docs",
       "isBackground": true,
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
     },
-    // ── Build ─────────────────────────────────────────────────────────────────
     {
       "label": "🏗️ Build All",
       "type": "npm",
       "script": "build",
       "group": "build",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🏗️ Build Core",
@@ -34,7 +47,11 @@
       "script": "core",
       "group": "build",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🎨 Build CSS",
@@ -42,7 +59,11 @@
       "script": "css",
       "group": "build",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🪙 Build Tokens",
@@ -50,7 +71,11 @@
       "script": "tokens",
       "group": "build",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🗃️ Build Assets",
@@ -58,16 +83,26 @@
       "script": "assets",
       "group": "build",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
-    // ── Test & Lint ───────────────────────────────────────────────────────────
     {
       "label": "✅ Run Tests",
       "type": "npm",
       "script": "test",
-      "group": { "kind": "test", "isDefault": true },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🔍 Lint",
@@ -75,7 +110,11 @@
       "script": "lint",
       "group": "test",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🎭 Playwright UI",
@@ -83,50 +122,77 @@
       "script": "play",
       "isBackground": true,
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
     },
     {
       "label": "🎭 Playwright Components",
       "type": "npm",
       "script": "play:components",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "♿ Playwright A11Y",
       "type": "npm",
       "script": "play:a11y",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "📸 Playwright Visual",
       "type": "npm",
       "script": "play:visual",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
-    // ── Utilities ─────────────────────────────────────────────────────────────
     {
       "label": "✨ Format Code",
       "type": "npm",
       "script": "format",
       "problemMatcher": [],
-      "presentation": { "reveal": "silent", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "🔤 Spell Check",
       "type": "npm",
       "script": "spell",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     },
     {
       "label": "📝 Create Changeset",
       "type": "npm",
       "script": "changeset",
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
     }
   ]
 }

@@ -40,13 +40,5 @@
       "extensions": ["playwright", "spec", "test"]
     }
   ],
-  "vitest.disableWorkspaceWarning": true,
-  "vscode-taskviewexplorer.tasks.favorites": [
-    ".vscode\\🚀 Start Dev Server",
-    ".vscode\\🎭 Playwright UI",
-    ".vscode\\✨ Format Code",
-    ".vscode\\📚 Start Docs (Storybook)",
-    ".vscode\\🔍 Lint",
-    ".vscode\\📝 Create Changeset"
-  ]
+  "vitest.disableWorkspaceWarning": true
 }
