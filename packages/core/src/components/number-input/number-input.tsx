@@ -26,7 +26,9 @@ import {
   getDecimalSeparator,
   getThousandSeparator,
   ValidateOneOf,
+  ValidateEmptyOrType,
   ValidateType,
+  hasValue,
   setupValidation,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
@@ -121,7 +123,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * The description displayed below the field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly description: string = ''
 
   /**
@@ -149,28 +151,28 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Text shown in the description area when `invalid` is true.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly invalidText: string = ''
 
   /**
    * The label displayed above the field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * The maximum value.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly max: string = ''
 
   /**
    * The minimum value.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly min: string = ''
 
   /**
@@ -191,14 +193,14 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Overrides the auto-generated input validation pattern.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly pattern: string = ''
 
   /**
    * Instructional text shown when the input has no value.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly placeholder: string = ''
 
   /**
@@ -219,7 +221,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Text appended to the formatted value after blur (e.g. `"CHF"`).
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly suffix: string = ''
 
   /**
@@ -285,6 +287,10 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
     this.inputPattern = this.createPattern()
     this.valueChanged(this.value)
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   componentDidLoad() {
@@ -445,10 +451,10 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   }
 
   private createPattern(): string {
-    if (this.pattern) return this.pattern
+    if (hasValue(this.pattern)) return this.pattern
 
     let suffix = this.suffix || ''
-    if (suffix !== '') suffix = ` ${suffix}`
+    if (hasValue(suffix)) suffix = ` ${suffix}`
 
     const thousandSeparator = getThousandSeparator()
     let decimalSeparator = getDecimalSeparator()

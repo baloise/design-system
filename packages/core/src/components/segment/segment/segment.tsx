@@ -5,7 +5,7 @@ import {
   stopEventBubbling,
   isDescendant,
   ListenToResize,
-  ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
@@ -58,77 +58,77 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    * If `true`, the segment items can be deselected.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly allowEmptySelection: boolean = false
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true`, the segment only shows icons without labels.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly iconOnly: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
    * The text to display when the input is in an invalid state.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly invalidText: string = ''
 
   /**
    * The label of the input, which is displayed above the input field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly loading: boolean = false
 
   /**
    * The name of the segment items in the group. Child items will inherit the name.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly required: boolean = true
 
   /**
@@ -140,21 +140,21 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    * Displays the segment items vertically
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly vertical: boolean = false
 
   /**
    * Displays the segment items vertically on mobile
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly verticalOnMobile: boolean = false
 
   /**
    * If `true`, segment items expand to fill the available width equally.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly wide: boolean = false
 
   /**
@@ -198,6 +198,10 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   componentDidRender() {
     this.updatePill()
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   /**

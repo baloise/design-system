@@ -4,8 +4,10 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
   ValidateType,
+  hasValue,
   setupValidation,
 } from '@utils'
 import {
@@ -74,14 +76,14 @@ export class Notification implements DsComponentInterface {
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateOneOf(...NOTIFICATION_COLORS)
+  @ValidateEmptyOrOneOf(...NOTIFICATION_COLORS)
   readonly color: NotificationColor = ''
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly heading: string = ''
 
   /**
@@ -95,7 +97,7 @@ export class Notification implements DsComponentInterface {
    * Defines the size of the notification, small, medium or large.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...NOTIFICATION_SIZES)
+  @ValidateEmptyOrOneOf(...NOTIFICATION_SIZES)
   size?: NotificationSize
   @Watch('size')
   sizeChanged(newValue: NotificationSize) {
@@ -120,6 +122,14 @@ export class Notification implements DsComponentInterface {
   connectedCallback(): void {
     setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size)
+  }
+
+  componentWillLoad(): void {
+    this.size = normalizeDeprecatedTShirtSize(this.size)
+  }
+
+  componentWillUpdate(): void {
+    setupValidation(this)
   }
 
   componentDidLoad(): void {
@@ -156,8 +166,8 @@ export class Notification implements DsComponentInterface {
         {...a11yAttributes}
         class={{
           'has-no-icon': this.noIcon,
-          [`is-${this.color}`]: !!this.color,
-          [`is-${this.size}`]: !!this.size,
+          [`is-${this.color}`]: hasValue(this.color),
+          [`is-${this.size}`]: hasValue(this.size),
         }}
       >
         <section id="notification" part="section">
@@ -170,7 +180,7 @@ export class Notification implements DsComponentInterface {
               }}
             ></ds-close>
           )}
-          {this.heading && <h2 part="heading">{this.heading}</h2>}
+          {hasValue(this.heading) && <h2 part="heading">{this.heading}</h2>}
           <span>
             <slot></slot>
           </span>

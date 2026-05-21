@@ -21,8 +21,9 @@ import {
   isDescendant,
   stopEventBubbling,
   areArraysEqual,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  hasValue,
   setupValidation,
 } from '@utils'
 import { INPUT_COLORS, InputColor } from '../../input/input.interfaces'
@@ -75,119 +76,119 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_COLORS)
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * Defines the column size like the grid.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_GROUP_COLUMNS)
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
   readonly cols: CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_GROUP_COLUMNS)
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
   readonly colsMobile: CheckboxGroupColumns = 1
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_GROUP_COLUMNS)
+  @ValidateEmptyOrOneOf(...CHECKBOX_GROUP_COLUMNS)
   readonly colsTablet: CheckboxGroupColumns = 1
 
   /**
    * If `true` it acts as the main form control
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly control: boolean = false
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
    * The text to display when the input is in an invalid state.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly invalidText: string = ''
 
   /**
    * The label of the input, which is displayed above the input field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the checkbox input. Default is after.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_LABEL_POSITIONS)
+  @ValidateEmptyOrOneOf(...CHECKBOX_LABEL_POSITIONS)
   readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly loading: boolean = false
 
   /**
    * The name of the checkboxes in the group. Child checkboxes will inherit the name.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly required: boolean = true
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly tile: boolean = false
 
   /**
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_TILE_COLORS)
+  @ValidateEmptyOrOneOf(...CHECKBOX_TILE_COLORS)
   readonly tileColor: CheckboxTileColor = ''
 
   /**
@@ -209,7 +210,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    * Displays the checkboxes vertically
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly vertical: boolean = false
 
   /**
@@ -353,13 +354,13 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   private passDownAttributes() {
     this.getCheckboxes().forEach(checkbox => {
       if (this.control) {
-        if (this.disabled !== undefined) {
+        if (hasValue(this.disabled)) {
           checkbox.disabled = this.disabled
         }
-        if (this.readonly !== undefined) {
+        if (hasValue(this.readonly)) {
           checkbox.readonly = this.readonly
         }
-        if (this.invalid !== undefined) {
+        if (hasValue(this.invalid)) {
           checkbox.invalid = this.invalid
         }
       }

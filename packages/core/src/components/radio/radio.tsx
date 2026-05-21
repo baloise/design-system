@@ -20,8 +20,10 @@ import {
   waitAfterIdleCallback,
   stopEventBubbling,
   ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
+  hasValue,
 } from '@utils'
 import { FOCUS_KEYS } from '../app/app.focus.util'
 import {
@@ -175,7 +177,7 @@ export class Radio implements DsComponentInterface {
    * Defines the color of the tile radio.
    */
   @Prop()
-  @ValidateOneOf(...RADIO_TILE_COLORS)
+  @ValidateEmptyOrOneOf(...RADIO_TILE_COLORS)
   readonly tileColor: RadioTileColor = ''
 
   /**
@@ -224,6 +226,10 @@ export class Radio implements DsComponentInterface {
   componentWillLoad() {
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   disconnectedCallback() {
@@ -394,7 +400,7 @@ export class Radio implements DsComponentInterface {
           'is-invalid': this.invalid,
           'is-checked': this.checked,
           'is-tile': this.tile,
-          [`has-tile-${this.tileColor}`]: this.tile && !!this.tileColor,
+          [`has-tile-${this.tileColor}`]: this.tile && hasValue(this.tileColor),
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
           [`has-cols-${this.cols}`]: this.tile && this.cols > 1,

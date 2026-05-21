@@ -18,6 +18,7 @@ import {
   hasTagName,
   isDescendant,
   ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
 } from '@utils'
@@ -186,7 +187,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateOneOf(...RADIO_TILE_COLORS)
+  @ValidateEmptyOrOneOf(...RADIO_TILE_COLORS)
   readonly tileColor: RadioTileColor = ''
 
   /**

@@ -5,7 +5,9 @@ import {
   inheritAttributes,
   type Attributes,
   ValidateOneOf,
+  ValidateEmptyOrOneOf,
   setupValidation,
+  ValidateEmptyOrType,
   ValidateType,
 } from '@utils'
 import { DsComponentInterface } from '@global'
@@ -63,28 +65,28 @@ export class Toggle implements DsComponentInterface {
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * If `true`, the toggle is selected.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   checked: boolean = false
 
   /**
    * If `true`, the toggle is dense and has less size.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly dense: boolean = false
 
   /**
    * Defines the color of the tile toggle.
    */
   @Prop()
-  @ValidateOneOf(...TOGGLE_TILE_COLORS)
+  @ValidateEmptyOrOneOf(...TOGGLE_TILE_COLORS)
   readonly color: ToggleTileColor = ''
 
   /**
@@ -112,14 +114,14 @@ export class Toggle implements DsComponentInterface {
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -147,21 +149,21 @@ export class Toggle implements DsComponentInterface {
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly required: boolean = false
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly tile: boolean = false
 
   /**
@@ -200,6 +202,10 @@ export class Toggle implements DsComponentInterface {
   componentWillLoad() {
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
     this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   /**

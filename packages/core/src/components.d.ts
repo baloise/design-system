@@ -1116,7 +1116,7 @@ export namespace Components {
         "accordionOpen": boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default 'default'
+          * @default ''
          */
         "actionIcon": ItemActionIcon;
         /**
@@ -1146,7 +1146,7 @@ export namespace Components {
         "label": string;
         /**
           * The semantic heading level of the label element.
-          * @default 'h5'
+          * @default ''
          */
         "labelLevel": ItemLabelLevel;
         /**
@@ -1161,7 +1161,7 @@ export namespace Components {
         "rel": string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
+          * @default ''
          */
         "target": ButtonTarget;
         /**
@@ -4288,7 +4288,7 @@ declare namespace LocalJSX {
         "accordionOpen"?: boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default 'default'
+          * @default ''
          */
         "actionIcon"?: ItemActionIcon;
         /**
@@ -4318,7 +4318,7 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * The semantic heading level of the label element.
-          * @default 'h5'
+          * @default ''
          */
         "labelLevel"?: ItemLabelLevel;
         /**
@@ -4349,7 +4349,7 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
+          * @default ''
          */
         "target"?: ButtonTarget;
         /**

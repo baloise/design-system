@@ -19,9 +19,10 @@ import {
   debounceEvent,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
+  ValidateOneOf,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -147,7 +148,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * A hint to the browser for which keyboard to display.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_INPUT_MODES)
+  @ValidateEmptyOrOneOf(...INPUT_INPUT_MODES)
   readonly inputmode: TextareaInputMode = ''
 
   /**
@@ -229,7 +230,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * Indicates how the control wraps text.
    */
   @Prop()
-  @ValidateOneOf(...TEXTAREA_WRAPS)
+  @ValidateEmptyOrOneOf(...TEXTAREA_WRAPS)
   readonly wrap: TextareaWrap = ''
 
   /**
@@ -275,6 +276,10 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   componentDidLoad() {
@@ -394,7 +399,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
           inputMode={this.inputmode}
           cols={this.cols}
           rows={this.rows}
-          wrap={this.wrap || undefined}
+          wrap={this.wrap ? this.wrap : undefined}
           onClick={ev => this.handleClick(ev)}
           onFocus={ev => this.handleFocus(ev)}
           onBlur={ev => this.handleBlur(ev)}

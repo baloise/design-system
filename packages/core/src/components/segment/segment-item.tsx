@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, debounce, ValidateType, setupValidation } from '@utils'
+import { Logger, type LogInstance, debounce, ValidateEmptyOrType, setupValidation } from '@utils'
 
 /**
  * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
@@ -36,28 +36,28 @@ export class SegmentItem implements DsComponentInterface {
    * Description text to display in the segment item.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly description: string = ''
 
   /**
    * Name of the icon to display in the segment item.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly icon: string = ''
 
   /**
    * Label text to display in the segment item.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * Svg content for the icon.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly svg: string = ''
 
   /**
@@ -83,6 +83,7 @@ export class SegmentItem implements DsComponentInterface {
   }
 
   componentWillUpdate() {
+    setupValidation(this)
     this.debouncedWillUpdate?.()
   }
 

@@ -9,9 +9,11 @@ import {
   debounceEvent,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
+  hasValue,
+  ValidateOneOf,
 } from '@utils'
 import { ACTION_KEYS, isCtrlOrCommandKey } from '@global'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
@@ -110,7 +112,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Defines the color of the input. The default value is `primary`.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_COLORS)
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
@@ -160,14 +162,14 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_AUTOCOMPLETES)
+  @ValidateEmptyOrOneOf(...INPUT_AUTOCOMPLETES)
   readonly autocomplete: InputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_AUTOCORRECTS)
+  @ValidateEmptyOrOneOf(...INPUT_AUTOCORRECTS)
   readonly autocorrect: InputAutocorrect = 'off'
 
   /**
@@ -286,7 +288,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_INPUT_MODES)
+  @ValidateEmptyOrOneOf(...INPUT_INPUT_MODES)
   readonly inputmode?: InputInputMode
 
   /**
@@ -299,7 +301,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
   @Prop()
-  @ValidateOneOf(...INPUT_MASKS)
+  @ValidateEmptyOrOneOf(...INPUT_MASKS)
   readonly mask?: InputMask = undefined
   @Watch('mask')
   protected maskChanged() {
@@ -382,6 +384,10 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
   }
 
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   componentDidLoad() {
     this.control.componentDidLoad()
   }
@@ -430,7 +436,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
 
   private getFormattedValue(): string {
     const value = this.getRawValue()
-    const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
+    const suffix = hasValue(this.suffix) && hasValue(value) ? ' ' + this.suffix : ''
     return `${value}${suffix}`
   }
 
@@ -471,14 +477,14 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
 
   render() {
     let value: string | null
-    if (this.mask) {
+    if (hasValue(this.mask)) {
       value = this.maskUtil.format(this.getRawValue()) ?? this.getRawValue()
     } else {
       value = this.focused ? this.getRawValue() : this.getFormattedValue()
     }
 
     let inputProps = {}
-    if (this.pattern) {
+    if (hasValue(this.pattern)) {
       inputProps = { pattern: this.pattern }
     }
 

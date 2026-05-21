@@ -45,6 +45,10 @@ export class List implements DsComponentInterface {
     setupValidation(this)
   }
 
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------

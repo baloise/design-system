@@ -1,7 +1,18 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { raf, rOnLoad, Logger, type LogInstance, ValidateOneOf, ValidateType, setupValidation } from '@utils'
+import {
+  raf,
+  rOnLoad,
+  Logger,
+  type LogInstance,
+  ValidateOneOf,
+  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  hasValue,
+  setupValidation,
+} from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -94,7 +105,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * Defines the size of the spinner. If `sm` the spinner is smaller.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...SPINNER_SIZES)
+  @ValidateEmptyOrOneOf(...SPINNER_SIZES)
   size: SpinnerSize = ''
 
   /**
@@ -114,7 +125,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
@@ -283,14 +294,14 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
           'is-circle': this.variation === 'circle',
           'is-sm': this.size === 'sm',
           'is-white': this.color === 'white',
-          'is-label-right': !!this.label && this.labelPosition === 'right',
-          'is-label-bottom': !!this.label && this.labelPosition === 'bottom',
+          'is-label-right': hasValue(this.label) && this.labelPosition === 'right',
+          'is-label-bottom': hasValue(this.label) && this.labelPosition === 'bottom',
         }}
       >
         <div>
           <div id="inner" part="inner" ref={el => (this.innerEl = el)}></div>
         </div>
-        {this.label && <span part="label">{this.label}</span>}
+        {hasValue(this.label) && <span part="label">{this.label}</span>}
       </Host>
     )
   }

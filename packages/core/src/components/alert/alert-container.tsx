@@ -6,8 +6,9 @@ import {
   Logger,
   type LogInstance,
   PausableTimer,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateRequiredAndOneOf,
   setupValidation,
 } from '@utils'
 import {
@@ -55,21 +56,21 @@ export class AlertContainer implements DsComponentInterface {
    * If `true`, alerts animate in and out.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly animated: boolean = false
 
   /**
    * Defines the container size constraint for the alert layout.
    */
   @Prop()
-  @ValidateOneOf(...ALERT_CONTAINER_SIZES)
+  @ValidateEmptyOrOneOf(...ALERT_CONTAINER_SIZES)
   readonly container: AlertContainerSize = ''
 
   /**
    * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
    */
   @Prop()
-  @ValidateOneOf(...ALERT_TYPES)
+  @ValidateRequiredAndOneOf(...ALERT_TYPES)
   readonly type: AlertType = 'toast'
 
   /**
@@ -78,6 +79,14 @@ export class AlertContainer implements DsComponentInterface {
    */
 
   connectedCallback() {
+    setupValidation(this)
+  }
+
+  componentWillLoad() {
+    // component setup
+  }
+
+  componentWillUpdate() {
     setupValidation(this)
   }
 

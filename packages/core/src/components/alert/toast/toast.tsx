@@ -6,8 +6,9 @@ import {
   Logger,
   type LogInstance,
   ValidateOneOf,
-  ValidateType,
   ValidateRequiredAndType,
+  ValidateEmptyOrType,
+  hasValue,
   setupValidation,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
@@ -65,7 +66,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly closable: boolean = false
 
   /**
@@ -86,7 +87,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
@@ -97,7 +98,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
@@ -108,14 +109,14 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly actionIcon: string = ''
 
   /**
@@ -129,7 +130,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly actionHref: string = ''
 
   /**
@@ -202,6 +203,10 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
     this.generateSvgContent()
   }
 
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   componentDidLoad(): void {
     raf(() => {
       this.didLoad = true
@@ -238,13 +243,13 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    */
 
   private generateSvgContent = () => {
-    if (this.svg !== undefined && this.svg.length > 0) {
+    if (hasValue(this.svg)) {
       this.svgContent = sanitizeSvg(this.svg)
     }
   }
 
   private generateIconName = () => {
-    if (this.icon !== undefined && this.icon.length > 0) {
+    if (hasValue(this.icon)) {
       this.iconName = this.icon
     } else {
       switch (this.color) {
@@ -292,7 +297,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
           [`is-visible`]: this.visible,
           [`has-progress-bar`]: hasProgressBar && this.animated,
           [`is-closable`]: this.closable,
-          [`is-action`]: this.action !== undefined,
+          [`is-action`]: hasValue(this.action),
           [`is-${this.color}`]: this.color !== undefined,
         }}
         style={durationVariable}
@@ -308,7 +313,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
         {/* --------------------------------------*/}
         {/* Icon                                  */}
         {/* --------------------------------------*/}
-        {!this.svgContent && (
+        {!hasValue(this.svgContent) && (
           <ds-icon
             id="icon"
             part="icon"
@@ -334,7 +339,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
             }
           ></ds-icon>
         )}
-        {this.svgContent && <ds-icon id="icon" part="icon" svg={this.svgContent}></ds-icon>}
+        {hasValue(this.svgContent) && <ds-icon id="icon" part="icon" svg={this.svgContent}></ds-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}
@@ -348,7 +353,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
         {/* --------------------------------------*/}
         {/* Action Button                         */}
         {/* --------------------------------------*/}
-        {this.action && (
+        {hasValue(this.action) && (
           <ds-button
             id="action"
             color="primary"

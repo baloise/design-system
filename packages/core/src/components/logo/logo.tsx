@@ -10,9 +10,10 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
+  ValidateOneOf,
 } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
@@ -71,7 +72,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    * Defines the brand of the logo. Default is 'baloise'.
    */
   @Prop()
-  @ValidateOneOf(...LOGO_BRANDS)
+  @ValidateEmptyOrOneOf(...LOGO_BRANDS)
   readonly brand: LogoBrand = ''
 
   /**
@@ -85,7 +86,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    * Size of the logo svg
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...LOGO_SIZES)
+  @ValidateEmptyOrOneOf(...LOGO_SIZES)
   size: LogoSize = ''
   @Watch('size')
   sizeChanged(newValue: LogoSize) {
@@ -101,6 +102,10 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
     setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size)
     this.animatedChanged()
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   componentDidUpdate() {

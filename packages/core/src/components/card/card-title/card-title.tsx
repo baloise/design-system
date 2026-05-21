@@ -1,6 +1,13 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, LogInstance, ValidateOneOf, ValidateType } from '@utils'
+import {
+  Logger,
+  LogInstance,
+  ValidateEmptyOrOneOf,
+  ValidateRequiredAndOneOf,
+  ValidateType,
+  setupValidation,
+} from '@utils'
 import { DsComponentInterface } from '@global'
 import { HEADING_VISUAL_LEVELS, HEADING_TAGS, HeadingLevel, HeadingVisualLevel } from '../../heading/heading.interfaces'
 
@@ -36,7 +43,7 @@ export class CardTitle implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop()
-  @ValidateOneOf(...HEADING_TAGS)
+  @ValidateRequiredAndOneOf(...HEADING_TAGS)
   readonly level: HeadingLevel = 'h3'
 
   /**
@@ -45,8 +52,16 @@ export class CardTitle implements DsComponentInterface {
    * but still keep it h1 in the markup.
    */
   @Prop()
-  @ValidateOneOf(...HEADING_VISUAL_LEVELS)
+  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
   readonly visualLevel: HeadingVisualLevel = ''
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
+
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
 
   render() {
     return (
