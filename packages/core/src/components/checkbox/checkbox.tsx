@@ -9,6 +9,7 @@ import {
   ValidateRequiredAndOneOf,
   hasValue,
   setupValidation,
+  ValidateType,
 } from '@utils'
 import {
   CheckboxLabelPosition,

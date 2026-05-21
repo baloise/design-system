@@ -13,6 +13,7 @@ import {
   ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
+  ValidateOneOf,
 } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
