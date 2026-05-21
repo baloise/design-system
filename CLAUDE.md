@@ -4,6 +4,10 @@ This file guides AI assistants when working with code in this repository.
 
 ## Quick Reference
 
+### General Rules
+
+- **Never commit changes** — always leave changes unstaged for the user to review and commit themselves.
+
 ### Core Principles
 
 The design system prioritizes:

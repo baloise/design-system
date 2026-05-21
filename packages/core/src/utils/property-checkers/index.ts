@@ -13,6 +13,7 @@ export { checkOneOf } from './check-one-of'
 export { checkPattern } from './check-pattern'
 export { checkType } from './check-type'
 export { checkArrayOf } from './check-array-of'
+export { hasValue } from './has-value'
 
 // Type exports
 export type { PropertyType, PrimitiveType, ReferenceType } from './property-types'
