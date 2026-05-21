@@ -1,12 +1,12 @@
 import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
-import isEmpty from 'lodash/isEmpty'
 import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
+  hasValue,
 } from '@utils'
 import {
   CARD_ALIGNMENTS,
@@ -70,7 +70,7 @@ export class Card implements DsComponentInterface {
    * it is displayed with a large image.
    */
   @Prop()
-  @ValidateOneOf(...CARD_IMAGE_TEASERS)
+  @ValidateEmptyOrOneOf(...CARD_IMAGE_TEASERS)
   readonly imageTeaser: CardImageTeaser = ''
 
   /**
@@ -119,14 +119,14 @@ export class Card implements DsComponentInterface {
    * Defines the text alignment of the card content.
    */
   @Prop()
-  @ValidateOneOf(...CARD_ALIGNMENTS)
+  @ValidateEmptyOrOneOf(...CARD_ALIGNMENTS)
   readonly align: CardAlignment = ''
 
   /**
    * Defines the space of the card content.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...CARD_SPACES)
+  @ValidateEmptyOrOneOf(...CARD_SPACES)
   space?: CardSpace
   @Watch('space')
   spaceChanged(newValue: CardSpace) {
@@ -137,7 +137,7 @@ export class Card implements DsComponentInterface {
    * Defines the color of the card.
    */
   @Prop()
-  @ValidateOneOf(...CARD_COLORS)
+  @ValidateEmptyOrOneOf(...CARD_COLORS)
   readonly color: CardColor = ''
 
   connectedCallback(): void {
@@ -145,8 +145,12 @@ export class Card implements DsComponentInterface {
     this.space = normalizeDeprecatedTShirtSize(this.space)
   }
 
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
   private get colorTypeClass(): string {
-    const color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
+    const color = !hasValue(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
 
     const colorMap: Record<string, string> = {
       'blue': 'primary',
@@ -169,17 +173,17 @@ export class Card implements DsComponentInterface {
 
   render() {
     const hasOutline = !!this.outlined
-    const isImageTeaser = !!this.imageTeaser
+    const isImageTeaser = hasValue(this.imageTeaser)
 
     return (
       <Host
         class={{
           [`is-image-teaser`]: isImageTeaser,
-          [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser && !isEmpty(this.imageTeaser),
+          [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser && hasValue(this.imageTeaser),
           [`is-square`]: this.square,
           [`is-dense`]: this.dense,
-          [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
-          [`has-space-${this.space}`]: !isEmpty(this.space),
+          [`is-${this.colorTypeClass}`]: hasValue(this.color) && this.colorTypeClass !== 'white',
+          [`has-space-${this.space}`]: hasValue(this.space),
           [`is-outlined`]: hasOutline,
           [`is-flat`]: hasOutline || !!this.flat,
           [`is-tile`]: !!this.tile,
@@ -190,7 +194,7 @@ export class Card implements DsComponentInterface {
           id="card"
           class={{
             [`is-fullheight`]: this.fullheight,
-            [`align-${this.align}`]: !isEmpty(this.align),
+            [`align-${this.align}`]: hasValue(this.align),
           }}
         >
           <slot></slot>

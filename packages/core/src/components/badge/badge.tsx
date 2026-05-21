@@ -5,8 +5,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  hasValue,
   setupValidation,
 } from '@utils'
 import {
@@ -44,14 +45,14 @@ export class Badge implements DsComponentInterface {
    * Name of the icon to show. If an icon is present, text should be hidden.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly icon: string = ''
 
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateOneOf(...BADGE_SIZES)
+  @ValidateEmptyOrOneOf(...BADGE_SIZES)
   size: BadgeSize = ''
   @Watch('size')
   sizeChanged(newValue: BadgeSize) {
@@ -62,21 +63,21 @@ export class Badge implements DsComponentInterface {
    * Define the color for the badge.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...BADGE_COLORS)
+  @ValidateEmptyOrOneOf(...BADGE_COLORS)
   readonly color: BadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...BADGE_POSITIONS)
+  @ValidateEmptyOrOneOf(...BADGE_POSITIONS)
   readonly position: BadgePosition = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly pulse: boolean = false
 
   connectedCallback(): void {
@@ -84,18 +85,22 @@ export class Badge implements DsComponentInterface {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
   render() {
     return (
       <Host
         class={{
-          [`is-${this.color}`]: !!this.color,
-          [`is-${this.size}`]: !!this.size,
+          [`is-${this.color}`]: hasValue(this.color),
+          [`is-${this.size}`]: hasValue(this.size),
           'is-pulse': this.pulse,
         }}
       >
         <span id="badge" part="badge">
           <slot></slot>
-          {this.size !== 'small' && !!this.icon ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
+          {this.size !== 'small' && hasValue(this.icon) ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
         </span>
       </Host>
     )

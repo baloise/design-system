@@ -4,8 +4,10 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateRequiredAndOneOf,
+  hasValue,
   setupValidation,
 } from '@utils'
 import {
@@ -48,7 +50,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateOneOf(...CLOSE_SIZES)
+  @ValidateEmptyOrOneOf(...CLOSE_SIZES)
   size: CloseSize = ''
   @Watch('size')
   sizeChanged(newValue: CloseSize) {
@@ -59,14 +61,14 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * If `true` it supports dark backgrounds.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -74,14 +76,14 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly button: boolean = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_COLORS)
+  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
   readonly buttonColor: ButtonColor = ''
 
   /**
@@ -95,6 +97,10 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   }
 
   connectedCallback(): void {
+    setupValidation(this)
+  }
+
+  componentWillUpdate(): void {
     setupValidation(this)
   }
 
@@ -121,7 +127,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
     return (
       <Host
         class={{
-          [`is-${this.size}`]: !!this.size,
+          [`is-${this.size}`]: hasValue(this.size),
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
         }}

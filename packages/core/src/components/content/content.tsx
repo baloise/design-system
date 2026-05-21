@@ -1,8 +1,8 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop, Watch, ComponentWillUpdate } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateOneOf, setupValidation } from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, ValidateEmptyOrOneOf, hasValue, setupValidation } from '@utils'
 import { DsComponentInterface } from '@global'
-import { STACK_LAYOUTS, StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
+import { STACK_ALIGNMENTS, STACK_LAYOUTS, StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
 import {
   ContentAlignment,
   ContentTextAlignment,
@@ -41,11 +41,11 @@ export class Content implements DsComponentInterface {
    * **Deprecated:** Use direction instead.
    */
   @Prop()
-  @ValidateOneOf(...STACK_LAYOUTS)
+  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
   readonly layout: StackLayout = ''
   @Watch('layout')
   layoutChanged(newValue?: StackLayout) {
-    if (newValue !== '') {
+    if (hasValue(newValue)) {
       if (newValue === 'horizontal') {
         this.direction = 'row'
       } else if (newValue === 'vertical') {
@@ -62,7 +62,7 @@ export class Content implements DsComponentInterface {
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...CONTENT_DIRECTIONS)
+  @ValidateEmptyOrOneOf(...CONTENT_DIRECTIONS)
   direction: StackDirection = ''
 
   /**
@@ -70,7 +70,7 @@ export class Content implements DsComponentInterface {
    * default to start.
    */
   @Prop()
-  @ValidateOneOf(...CONTENT_ALIGNMENTS)
+  @ValidateEmptyOrOneOf(...CONTENT_ALIGNMENTS)
   readonly align: ContentAlignment = ''
 
   /**
@@ -78,14 +78,14 @@ export class Content implements DsComponentInterface {
    * default to left.
    */
   @Prop()
-  @ValidateOneOf(...CONTENT_ALIGNMENTS)
+  @ValidateEmptyOrOneOf(...CONTENT_ALIGNMENTS)
   readonly textAlign: ContentTextAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...CONTENT_SPACES)
+  @ValidateEmptyOrOneOf(...CONTENT_SPACES)
   space: ContentSpace = ''
   @Watch('space')
   spaceChanged(newValue: ContentSpace) {
@@ -97,6 +97,7 @@ export class Content implements DsComponentInterface {
    * Please use align instead.
    */
   @Prop()
+  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
   readonly alignment: StackAlignment = ''
 
   connectedCallback(): void {
@@ -105,18 +106,22 @@ export class Content implements DsComponentInterface {
     this.spaceChanged(this.space)
   }
 
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
-    const alignment = !!this.alignment
-    const align = !!this.align
-    const space = !!this.space
+    const alignment = hasValue(this.alignment)
+    const align = hasValue(this.align)
+    const space = hasValue(this.space)
 
     let alignValue = this.align?.split(' ').join('-')
-    if (this.alignment) {
+    if (hasValue(this.alignment)) {
       alignValue = this.alignment.split(' ').join('-')
     }
 
@@ -127,7 +132,7 @@ export class Content implements DsComponentInterface {
           'as-row': this.direction === 'row',
           'as-col': this.direction === 'column',
           [`align-${alignValue}`]: align || alignment,
-          [`text-${this.textAlign}`]: this.textAlign !== undefined,
+          [`text-${this.textAlign}`]: hasValue(this.textAlign),
           [`has-space-${this.space}`]: space,
         }}
       >

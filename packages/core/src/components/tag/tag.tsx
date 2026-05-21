@@ -5,7 +5,7 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
   ValidateEmptyOrOneOf,
   hasValue,
@@ -55,7 +55,7 @@ export class Tag implements DsComponentInterface {
    * The theme type of the tag.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly closable: boolean = false
 
   /**
@@ -69,14 +69,14 @@ export class Tag implements DsComponentInterface {
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * Overwrites the default color to invalid style
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**

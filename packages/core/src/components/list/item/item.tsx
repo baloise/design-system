@@ -100,7 +100,7 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @ValidateOneOf(...ITEM_ACTION_ICONS)
-  readonly actionIcon: ItemActionIcon = 'default'
+  readonly actionIcon: ItemActionIcon = ''
 
   /**
    * The description text displayed below the label.
@@ -145,7 +145,7 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @ValidateOneOf(...ITEM_LABEL_LEVELS)
-  readonly labelLevel: ItemLabelLevel = 'h5'
+  readonly labelLevel: ItemLabelLevel = ''
 
   /**
    * The visual size of the label. Defaults to `labelLevel` if not set.
@@ -168,7 +168,7 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @ValidateOneOf(...BUTTON_TARGETS)
-  readonly target: ButtonTarget = '_self'
+  readonly target: ButtonTarget = ''
 
   /**
    * The visual and functional variant of the item.
@@ -206,6 +206,10 @@ export class Item implements DsComponentInterface {
     setupValidation(this)
   }
 
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
   /**
    * EVENT HANDLERS
    * ------------------------------------------------------
@@ -231,17 +235,11 @@ export class Item implements DsComponentInterface {
     if (hasActionIcon) {
       if (this.actionIcon === 'link') {
         actionIconName = 'nav-go-right'
-      }
-
-      if (this.actionIcon === 'link-external') {
+      } else if (this.actionIcon === 'link-external') {
         actionIconName = 'link'
-      }
-
-      if (this.actionIcon === 'download') {
+      } else if (this.actionIcon === 'download') {
         actionIconName = 'download'
-      }
-
-      if (this.actionIcon === 'default') {
+      } else if (this.actionIcon === 'default' || this.actionIcon === '') {
         if (this.variant === 'link' || this.variant === 'button') {
           actionIconName = 'nav-go-right'
         }

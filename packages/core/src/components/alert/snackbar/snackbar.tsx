@@ -11,7 +11,9 @@ import {
   type LogInstance,
   ValidateOneOf,
   ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
+  hasValue,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 import {
@@ -66,28 +68,28 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly heading: string = ''
 
   /**
    * Defines the message of the notification as html content
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly message: string = ''
 
   /**
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
@@ -98,7 +100,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
@@ -109,14 +111,14 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly actionIcon: string = ''
 
   /**
@@ -130,7 +132,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly actionHref: string = ''
 
   /**
@@ -183,6 +185,10 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
     this.generateSvgContent()
   }
 
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   componentDidLoad(): void {
     raf(() => {
       this.didLoad = true
@@ -220,13 +226,13 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    */
 
   private generateSvgContent = () => {
-    if (this.svg !== undefined && this.svg.length > 0) {
+    if (hasValue(this.svg) && this.svg.length > 0) {
       this.svgContent = sanitizeSvg(this.svg)
     }
   }
 
   private generateIconName = () => {
-    if (this.icon !== undefined && this.icon.length > 0) {
+    if (hasValue(this.icon) && this.icon.length > 0) {
       this.iconName = this.icon
     } else {
       switch (this.color) {
@@ -265,7 +271,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
           [`is-closable`]: this.closable,
           [`is-mobile-open`]: this.isMobile && this.mobileOpenState,
           [`is-mobile-closed`]: this.isMobile && !this.mobileOpenState,
-          [`is-${this.color}`]: this.color !== undefined,
+          [`is-${this.color}`]: hasValue(this.color),
         }}
       >
         {/* --------------------------------------*/}

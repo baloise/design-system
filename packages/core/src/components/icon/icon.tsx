@@ -10,6 +10,7 @@ import {
   ValidateOneOf,
   ValidateType,
   setupValidation,
+  hasValue,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
@@ -158,6 +159,10 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
   componentWillRender(): Promise<void> | void {
     this.generateSvgContent(this.name)
   }
@@ -205,15 +210,15 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
   }
 
   private parseColor() {
-    if (!!this.disabled) {
+    if (this.disabled) {
       return 'grey'
     }
 
-    if (!!this.invalid) {
+    if (this.invalid) {
       return 'danger'
     }
 
-    if ((this.color === 'auto' || this.color === '' || this.color === undefined || this.color === null) && !this.svg) {
+    if (!hasValue(this.color) && !this.svg) {
       return 'primary'
     }
 
@@ -233,7 +238,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
         aria-hidden="true"
         class={{
           'is-filled': !this.svg,
-          [`is-${color}`]: !!color,
+          [`is-${color}`]: hasValue(color),
           [`is-${this.size}`]: this.size !== undefined,
           [`turn-${this.name}`]: this.turn,
           'is-inverted': this.inverted,
@@ -243,7 +248,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
           'has-shadow': this.shadow,
           'is-disabled': this.disabled,
           'is-invalid': this.invalid,
-          [`has-shape-${this.shape}`]: !!this.shape,
+          [`has-shape-${this.shape}`]: hasValue(this.shape),
         }}
       >
         <div id="inner" part="inner" innerHTML={this.svgContent}></div>

@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ElementStateInfo, Logger, type LogInstance, ValidateOneOf, ValidateType, setupValidation } from '@utils'
+import { ElementStateInfo, Logger, type LogInstance, ValidateEmptyOrOneOf, ValidateType, hasValue, setupValidation } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   TEXT_ALIGNS,
@@ -43,7 +43,7 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * If `true` the component gets a invalid style.
    */
   @Prop()
-  @ValidateOneOf(...TEXT_ALIGNS)
+  @ValidateEmptyOrOneOf(...TEXT_ALIGNS)
   readonly align: TextAlign = ''
 
   /**
@@ -57,7 +57,7 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * Defines the color of the text.
    */
   @Prop()
-  @ValidateOneOf(...TEXT_COLORS)
+  @ValidateEmptyOrOneOf(...TEXT_COLORS)
   readonly color: TextColor = ''
 
   /**
@@ -136,7 +136,7 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * Defines at which position the heading has spacing.
    */
   @Prop()
-  @ValidateOneOf(...TEXT_SPACES)
+  @ValidateEmptyOrOneOf(...TEXT_SPACES)
   readonly space: TextSpace = ''
 
   /**
@@ -152,6 +152,10 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    */
 
   connectedCallback() {
+    setupValidation(this)
+  }
+
+  componentWillUpdate() {
     setupValidation(this)
   }
 
@@ -201,22 +205,22 @@ export class Text implements DsComponentInterface, ElementStateInfo {
     return (
       <Host
         class={{
-          [`is-${color}`]: !!color,
+          [`is-${color}`]: hasValue(color),
           'is-bold': this.bold,
           'has-shadow': this.shadow,
           'is-inline': this.inline,
           'is-heading': this.heading,
           'is-subtitle': this.subtitle,
           'has-no-wrap': this.noWrap,
-          [`has-space-${this.space}`]: !!this.space,
-          [`is-${this.size}`]: !!this.size,
+          [`has-space-${this.space}`]: hasValue(this.space),
+          [`is-${this.size}`]: hasValue(this.size),
         }}
       >
         <Text
           id="text"
           part="text"
           class={{
-            [`is-${this.align}`]: !!this.align,
+            [`is-${this.align}`]: hasValue(this.align),
           }}
         >
           <slot></slot>

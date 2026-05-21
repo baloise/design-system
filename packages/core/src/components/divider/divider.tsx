@@ -4,9 +4,10 @@ import {
   Logger,
   type LogInstance,
   normalizeDeprecatedTShirtSize,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
   setupValidation,
+  hasValue,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
@@ -48,14 +49,14 @@ export class Divider implements DsComponentInterface {
    * are showed verticaly or horizontally. Default is verticaly.
    */
   @Prop()
-  @ValidateOneOf(...DIVIDER_LAYOUTS)
+  @ValidateEmptyOrOneOf(...DIVIDER_LAYOUTS)
   readonly layout: DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...DIVIDER_SPACES)
+  @ValidateEmptyOrOneOf(...DIVIDER_SPACES)
   space: DividerSpace = 'none'
   @Watch('space')
   spaceChanged(newValue: DividerSpace) {
@@ -66,19 +67,23 @@ export class Divider implements DsComponentInterface {
    * Defines the color of the separator line.
    */
   @Prop()
-  @ValidateOneOf(...DIVIDER_COLORS)
+  @ValidateEmptyOrOneOf(...DIVIDER_COLORS)
   readonly color: DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly dashed: boolean = false
 
   connectedCallback(): void {
     setupValidation(this)
     this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
+  }
+
+  componentWillUpdate(): void {
+    setupValidation(this)
   }
 
   /**
@@ -92,9 +97,9 @@ export class Divider implements DsComponentInterface {
         role="separator"
         class={{
           divider: true,
-          [`is-${this.layout}`]: !!this.layout,
-          [`is-${this.color}`]: !!this.color,
-          [`has-space-${this.space}`]: !!this.space,
+          [`is-${this.layout}`]: hasValue(this.layout),
+          [`is-${this.color}`]: hasValue(this.color),
+          [`has-space-${this.space}`]: hasValue(this.space),
           [`is-dashed`]: this.dashed,
         }}
       ></Host>

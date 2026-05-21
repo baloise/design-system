@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser, Logger, type LogInstance, ValidateOneOf, ValidateType, setupValidation } from '@utils'
+import { dsBrowser, Logger, type LogInstance, ValidateOneOf, ValidateType, ValidateEmptyOrOneOf, setupValidation, hasValue } from '@utils'
 import {
   HEADING_COLORS,
   HEADING_LEVELS,
@@ -69,7 +69,7 @@ export class Heading implements DsComponentInterface {
    * but still keep it h1 in the markup.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_VISUAL_LEVELS)
+  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
   readonly visualLevel: HeadingVisualLevel = ''
 
   @Watch('visualLevel')
@@ -81,7 +81,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_VISUAL_LEVELS)
+  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
   readonly autoLevel: HeadingVisualLevel = ''
 
   @Watch('autoLevel')
@@ -109,14 +109,14 @@ export class Heading implements DsComponentInterface {
    * Defines at which position the heading has spacing.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_SPACES)
+  @ValidateEmptyOrOneOf(...HEADING_SPACES)
   readonly space: HeadingSpace = ''
 
   /**
    * The theme type of the toast.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_COLORS)
+  @ValidateEmptyOrOneOf(...HEADING_COLORS)
   readonly color: HeadingColor = ''
 
   /**
@@ -143,8 +143,12 @@ export class Heading implements DsComponentInterface {
     this.updateAutoFontSize()
   }
 
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
   componentDidRender(): void {
-    if (this.autoLevel && this.autoFontSize) {
+    if (hasValue(this.autoLevel) && this.autoFontSize) {
       const rows = this.rows
       if (rows > 1) {
         const minSize = HEADING_SIZES[this.autoLevel]
@@ -179,7 +183,7 @@ export class Heading implements DsComponentInterface {
     if (this.inverted) {
       return 'white'
     }
-    return HEADING_COLOR_MAP[this.color] as HeadingColor
+    return hasValue(this.color) ? (HEADING_COLOR_MAP[this.color] as HeadingColor) : ''
   }
 
   private get fontSize(): HeadingSize {
@@ -202,11 +206,11 @@ export class Heading implements DsComponentInterface {
       <Host
         class={{
           [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
-          [`is-${this.fontColor}`]: this.fontColor !== undefined,
+          [`is-${this.fontColor}`]: hasValue(this.fontColor),
           'is-subtitle': this.subtitle,
           'has-no-wrap': this.noWrap,
           'has-shadow': this.shadow,
-          [`has-space-${this.space}`]: !!this.space,
+          [`has-space-${this.space}`]: hasValue(this.space),
         }}
       >
         <Heading id="heading" part="heading" ref={(headingEl: any) => (this.headingEl = headingEl)}>

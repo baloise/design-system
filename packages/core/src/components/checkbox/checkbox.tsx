@@ -4,8 +4,10 @@ import {
   type LogInstance,
   inheritAttributes,
   type Attributes,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  ValidateRequiredAndOneOf,
+  hasValue,
   setupValidation,
 } from '@utils'
 import {
@@ -67,14 +69,14 @@ export class Checkbox implements DsComponentInterface {
    * Label of the radio item.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the radio input. Default is after.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_LABEL_POSITIONS)
+  @ValidateRequiredAndOneOf(...CHECKBOX_LABEL_POSITIONS)
   readonly labelPosition: CheckboxLabelPosition = 'right'
 
   /**
@@ -83,14 +85,14 @@ export class Checkbox implements DsComponentInterface {
    * submitted with the checkbox's name.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly value: string | number = 'on'
 
   /**
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   checked: boolean = false
   private initialValue = false
 
@@ -98,49 +100,49 @@ export class Checkbox implements DsComponentInterface {
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly required: boolean = false
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
    * Defines the color of the tile checkbox.
    */
   @Prop()
-  @ValidateOneOf(...CHECKBOX_TILE_COLORS)
+  @ValidateEmptyOrOneOf(...CHECKBOX_TILE_COLORS)
   readonly tileColor: CheckboxTileColor = ''
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly tile: boolean = false
 
   /**
@@ -190,6 +192,10 @@ export class Checkbox implements DsComponentInterface {
   componentWillLoad() {
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
     this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentWillUpdate() {
+    setupValidation(this)
   }
 
   /**
@@ -259,7 +265,7 @@ export class Checkbox implements DsComponentInterface {
           'is-invalid': this.invalid,
           'is-checked': this.checked,
           'is-tile': this.tile,
-          [`has-tile-${this.tileColor}`]: this.tile && !!this.tileColor,
+          [`has-tile-${this.tileColor}`]: this.tile && hasValue(this.tileColor),
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
           [`has-cols-${this.cols}`]: this.tile && this.cols > 1,

@@ -5,7 +5,7 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateType,
   setupValidation,
 } from '@utils'
@@ -116,7 +116,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * with the form fields.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...LABEL_SIZES)
+  @ValidateEmptyOrOneOf(...LABEL_SIZES)
   size?: LabelSize
   @Watch('size')
   sizeChanged(newValue: LabelSize) {
@@ -138,6 +138,10 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
   connectedCallback(): void {
     setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size)
+  }
+
+  componentWillUpdate(): void {
+    setupValidation(this)
   }
 
   /**

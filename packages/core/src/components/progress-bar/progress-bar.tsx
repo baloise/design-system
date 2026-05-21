@@ -11,6 +11,7 @@ import {
   initialBreakpoints,
   ValidateOneOf,
   ValidateType,
+  hasValue,
   setupValidation,
 } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
@@ -88,7 +89,13 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
    * ------------------------------------------------------
    */
 
-  connectedCallback() {
+  connectedCallback(): void {
+    setupValidation(this)
+  }
+
+  componentWillLoad(): void {}
+
+  componentWillUpdate(): void {
     setupValidation(this)
   }
 
@@ -159,13 +166,13 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
         aria-valuemin="0"
         aria-valuemax="100"
         class={{
-          'is-light': this.background === 'light',
-          'is-dark': this.background === 'dark',
-          'is-primary': this.color === 'primary',
-          'is-purple': this.color === 'purple',
-          'is-yellow': this.color === 'yellow',
-          'is-red': this.color === 'red',
-          'is-green': this.color === 'green',
+          'is-light': hasValue(this.background) && this.background === 'light',
+          'is-dark': !hasValue(this.background) || this.background === 'dark',
+          'is-primary': !hasValue(this.color) || this.color === 'primary',
+          'is-purple': hasValue(this.color) && this.color === 'purple',
+          'is-yellow': hasValue(this.color) && this.color === 'yellow',
+          'is-red': hasValue(this.color) && this.color === 'red',
+          'is-green': hasValue(this.color) && this.color === 'green',
         }}
       >
         <div

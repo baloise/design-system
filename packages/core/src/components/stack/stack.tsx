@@ -6,6 +6,8 @@ import {
   normalizeDeprecatedTShirtSize,
   ValidateOneOf,
   ValidateType,
+  ValidateEmptyOrOneOf,
+  hasValue,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
@@ -50,7 +52,7 @@ export class Stack implements DsComponentInterface {
    * Defines the text positioning like center, right or default to start.
    */
   @Prop()
-  @ValidateOneOf(...STACK_ALIGNMENTS)
+  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
   readonly align: StackAlignment = ''
 
   /**
@@ -58,7 +60,7 @@ export class Stack implements DsComponentInterface {
    * Please use align instead.
    */
   @Prop()
-  @ValidateOneOf(...STACK_ALIGNMENTS)
+  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
   readonly alignment: StackAlignment = ''
 
   /**
@@ -79,7 +81,7 @@ export class Stack implements DsComponentInterface {
    * **Deprecated:** Use direction instead.
    */
   @Prop()
-  @ValidateOneOf(...STACK_LAYOUTS)
+  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
   readonly layout: StackLayout = ''
   @Watch('layout')
   layoutChanged(newValue: StackLayout) {
@@ -190,25 +192,25 @@ export class Stack implements DsComponentInterface {
    * ------------------------------------------------------
    */
   render() {
-    const direction = !!this.direction
-    const layout = !!this.layout
-    const align = !!this.align
-    const alignment = !!this.alignment
-    const space = !!this.space
-    const spaceRow = !!this.spaceRow
-    const spaceColumn = !!this.spaceColumn
-    const useWrap = !!this.useWrap
-    const fitContent = !!this.fitContent
-    const px = !!this.px
-    const py = !!this.py
+    const direction = hasValue(this.direction)
+    const layout = hasValue(this.layout)
+    const align = hasValue(this.align)
+    const alignment = hasValue(this.alignment)
+    const space = hasValue(this.space)
+    const spaceRow = hasValue(this.spaceRow)
+    const spaceColumn = hasValue(this.spaceColumn)
+    const useWrap = this.useWrap
+    const fitContent = this.fitContent
+    const px = hasValue(this.px)
+    const py = hasValue(this.py)
 
     let layoutValue = this.layout
     if (direction) {
       layoutValue = this.direction === 'row' ? 'horizontal' : 'vertical'
     }
 
-    let alignValue = this.align?.split(' ').join('-')
-    if (this.alignment) {
+    let alignValue = hasValue(this.align) ? this.align.split(' ').join('-') : undefined
+    if (hasValue(this.alignment)) {
       alignValue = this.alignment.split(' ').join('-')
     }
 
