@@ -5,9 +5,10 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
   ValidateType,
   setupValidation,
+  ValidateEmptyOrOneOf,
+  hasValue,
 } from '@utils'
 import {
   TAG_COLORS,
@@ -61,7 +62,7 @@ export class Tag implements DsComponentInterface {
    * The theme type of the tag.
    */
   @Prop()
-  @ValidateOneOf(...TAG_COLORS)
+  @ValidateEmptyOrOneOf(...TAG_COLORS)
   readonly color: TagColor = ''
 
   /**
@@ -82,21 +83,21 @@ export class Tag implements DsComponentInterface {
    * Choosing left or center the tag is aligned to that side in the ds-card.
    */
   @Prop()
-  @ValidateOneOf(...TAG_PLACEMENTS)
+  @ValidateEmptyOrOneOf(...TAG_PLACEMENTS)
   readonly position: TagPlacement = ''
 
   /**
    * The shape of the tag element like square or pill
    */
   @Prop()
-  @ValidateOneOf(...TAG_SHAPES)
+  @ValidateEmptyOrOneOf(...TAG_SHAPES)
   readonly shape: TagShape = ''
 
   /**
    * The size of the tag element
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...TAG_SIZES)
+  @ValidateEmptyOrOneOf(...TAG_SIZES)
   size: TagSize = ''
   @Watch('size')
   sizeChanged(newValue: TagSize) {
@@ -122,6 +123,10 @@ export class Tag implements DsComponentInterface {
     this.inheritedAttributesClose = inheritAttributes(this.el, ['tabindex'])
   }
 
+  componentWillUpdate() {
+    setupValidation(this)
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -131,8 +136,8 @@ export class Tag implements DsComponentInterface {
     return (
       <Host
         class={{
-          [`is-${this.color}`]: this.color! == '',
-          [`is-shape-${this.shape}`]: this.shape! == '',
+          [`is-${this.color}`]: hasValue(this.color),
+          [`is-shape-${this.shape}`]: hasValue(this.shape),
           'is-closable': this.closable,
           'is-disabled': this.disabled,
           'is-invalid': this.invalid,
