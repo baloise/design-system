@@ -32,7 +32,7 @@ import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/sh
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { DS, StepsChangeDetail } from "./components/steps/steps.interfaces";
-import { TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+import { DS as DS1, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -65,7 +65,7 @@ export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/sh
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { DS, StepsChangeDetail } from "./components/steps/steps.interfaces";
-export { TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+export { DS as DS1, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -2160,6 +2160,11 @@ export namespace Components {
      * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
      */
     interface DsTabs {
+        /**
+          * Accent color applied to the bottom border track and selected indicator.
+          * @default ''
+         */
+        "color": DS1.TabsColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
@@ -5725,6 +5730,11 @@ declare namespace LocalJSX {
      */
     interface DsTabs {
         /**
+          * Accent color applied to the bottom border track and selected indicator.
+          * @default ''
+         */
+        "color"?: DS1.TabsColor;
+        /**
           * If `true`, tab buttons expand to fill the available width equally.
           * @default false
          */
@@ -6651,6 +6661,7 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsTabsAttributes {
+        "color": DS.TabsColor;
         "fullwidth": boolean;
         "inverted": boolean;
         "label": string;

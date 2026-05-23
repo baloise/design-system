@@ -48,8 +48,39 @@
   @include vars.local(tabs-tab-indicator-color-idle, var(--ds-global-color-grey-4));
   @include vars.local(tabs-tab-radius, var(--ds-alias-radius-base));
   @include vars.local(tabs-tab-badge-size, var(--ds-badge-size-sm));
+  @include vars.local(tabs-color-purple, var(--ds-tabs-color-purple));
+  @include vars.local(tabs-color-purple-hover, var(--ds-tabs-color-purple-hover));
+  @include vars.local(tabs-color-green, var(--ds-tabs-color-green));
+  @include vars.local(tabs-color-green-hover, var(--ds-tabs-color-green-hover));
+  @include vars.local(tabs-color-red, var(--ds-tabs-color-red));
+  @include vars.local(tabs-color-red-hover, var(--ds-tabs-color-red-hover));
+  @include vars.local(tabs-color-yellow, var(--ds-tabs-color-yellow));
+  @include vars.local(tabs-color-yellow-hover, var(--ds-tabs-color-yellow-hover));
 
   display: block;
+}
+
+// ─── Color variants ───────────────────────────────────────────────────────────
+// Override the grey border track and selected indicator with a brand color.
+
+:host(.is-purple) {
+  --_tabs-border-color: var(--_tabs-color-purple);
+  --_tabs-tab-indicator-color-idle: var(--_tabs-color-purple-hover);
+}
+
+:host(.is-green) {
+  --_tabs-border-color: var(--_tabs-color-green);
+  --_tabs-tab-indicator-color-idle: var(--_tabs-color-green-hover);
+}
+
+:host(.is-red) {
+  --_tabs-border-color: var(--_tabs-color-red);
+  --_tabs-tab-indicator-color-idle: var(--_tabs-color-red-hover);
+}
+
+:host(.is-yellow) {
+  --_tabs-border-color: var(--_tabs-color-yellow);
+  --_tabs-tab-indicator-color-idle: var(--_tabs-color-yellow-hover);
 }
 
 // ─── Inverted mode ───────────────────────────────────────────────────────────

@@ -5,6 +5,7 @@ const TAG = 'tabs'
 const VARIANTS = [
   'basic',
   'inverted',
+  'colors',
   'no-border',
   'fullwidth-icons',
   'badge',

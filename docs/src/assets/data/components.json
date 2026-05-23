@@ -37818,6 +37818,58 @@
       },
       "props": [
         {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.TabsColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Accent color applied to the bottom border track and selected indicator.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "fullwidth",
           "type": "boolean",
           "complexType": {
@@ -45040,6 +45092,11 @@
       "declaration": "{ value: string }",
       "docstring": "",
       "path": "src/components/steps/steps.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::DS": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
     },
     "src/components/tabs/tabs.interfaces.ts::TabsVerticalColSize": {
       "declaration": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",

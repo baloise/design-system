@@ -17,7 +17,7 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '@global'
-import { TabsChangeDetail, TABS_VERTICAL_COL_SIZES, TabsVerticalColSize } from '../tabs.interfaces'
+import { DS, TabsChangeDetail, TABS_VERTICAL_COL_SIZES, TabsVerticalColSize } from '../tabs.interfaces'
 import { i18nDsTabs } from './tabs.i18n'
 
 /**
@@ -44,6 +44,13 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+
+  /**
+   * Accent color applied to the bottom border track and selected indicator.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(...DS.TABS_COLORS)
+  readonly color: DS.TabsColor = ''
 
   /**
    * If `true`, tab buttons expand to fill the available width equally.
@@ -388,6 +395,10 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-fullwidth': this.fullwidth,
           'is-inverted': this.inverted,
+          'is-purple': this.color === 'purple',
+          'is-green': this.color === 'green',
+          'is-red': this.color === 'red',
+          'is-yellow': this.color === 'yellow',
           'is-vertical': this.vertical,
           [`is-col-${this.verticalColSize}`]: this.vertical,
           'is-navigation': isNav,
