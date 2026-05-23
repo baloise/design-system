@@ -1,0 +1,279 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * @prop --tabs-border-color: Color of the tablist border track. Set to transparent to hide it.
+ * @prop --tabs-indicator-height: Thickness of the selected-tab indicator and border track.
+ * @prop --tabs-gap: Gap between tab buttons.
+ * @prop --tabs-tab-padding: Padding inside each tab button.
+ * @prop --tabs-tab-font-family: Font family of tab button labels.
+ * @prop --tabs-tab-font-size: Font size of tab button labels.
+ * @prop --tabs-tab-font-weight: Font weight of tab button labels.
+ * @prop --tabs-tab-color: Text color of tab buttons.
+ * @prop --tabs-tab-color-hover: Text color of a hovered tab button.
+ * @prop --tabs-tab-color-active: Text color of a pressed tab button.
+ * @prop --tabs-tab-color-selected: Text color of the selected tab button.
+ * @prop --tabs-tab-border-color-selected: Indicator line color of the selected tab.
+ * @prop --tabs-tab-font-weight-selected: Font weight of the selected tab button label.
+ * @prop --tabs-tab-color-focus: Color of the keyboard focus ring on tab buttons.
+ * @prop --tabs-panel-padding: Padding inside the content panel.
+ * @prop --tabs-vertical-gap: Gap between the tablist and the content panel in vertical mode.
+ * @prop --tabs-scroll-fade-bg: Background color for the edge-fade gradient beside the carousel buttons.
+ */
+
+:host {
+  @include vars.local(tabs-border-color, var(--ds-tabs-border-color));
+  @include vars.local(tabs-indicator-height, var(--ds-tabs-indicator-height));
+  @include vars.local(tabs-gap, var(--ds-tabs-gap));
+  @include vars.local(tabs-panel-padding, var(--ds-tabs-panel-padding));
+  @include vars.local(tabs-vertical-gap, var(--ds-tabs-vertical-gap));
+  @include vars.local(tabs-tab-padding, var(--ds-tabs-tab-padding));
+  @include vars.local(tabs-tab-font-family, var(--ds-tabs-tab-font-family));
+  @include vars.local(tabs-tab-font-size, var(--ds-tabs-tab-font-size));
+  @include vars.local(tabs-tab-font-weight, var(--ds-tabs-tab-font-weight));
+  @include vars.local(tabs-tab-color-focus, var(--ds-tabs-tab-color-focus));
+  @include vars.local(tabs-tab-color, var(--ds-tabs-tab-color-base));
+  @include vars.local(tabs-tab-color-hover, var(--ds-tabs-tab-color-hover));
+  @include vars.local(tabs-tab-color-active, var(--ds-tabs-tab-color-active));
+  @include vars.local(tabs-tab-color-selected, var(--ds-tabs-tab-color-selected));
+  @include vars.local(tabs-tab-border-color-selected, var(--ds-tabs-tab-border-color-selected));
+  @include vars.local(tabs-tab-font-weight-selected, var(--ds-tabs-tab-font-weight-selected));
+  @include vars.local(tabs-scroll-fade-bg, var(--ds-tabs-scroll-fade-background));
+  @include vars.local(tabs-scroll-btn-radius, var(--ds-button-radius-base));
+  @include vars.local(tabs-scroll-btn-color-text, var(--ds-button-color-tertiary-base-text));
+  @include vars.local(tabs-scroll-btn-color-hover-background, var(--ds-button-color-tertiary-hover-background));
+  @include vars.local(tabs-scroll-btn-color-hover-text, var(--ds-button-color-tertiary-hover-text));
+  @include vars.local(tabs-scroll-btn-color-active-background, var(--ds-button-color-tertiary-active-background));
+  @include vars.local(tabs-scroll-btn-color-active-text, var(--ds-button-color-tertiary-active-text));
+  @include vars.local(tabs-tab-indicator-color-idle, var(--ds-global-color-grey-4));
+  @include vars.local(tabs-tab-radius, var(--ds-alias-radius-base));
+  @include vars.local(tabs-tab-badge-size, var(--ds-badge-size-sm));
+
+  display: block;
+}
+
+// ─── Carousel outer wrapper ───────────────────────────────────────────────────
+
+:host .tablist-outer {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+// Edge-fade gradients — absolute overlays that appear next to each button
+:host(.has-overflow) .tablist-outer::before,
+:host(.has-overflow) .tablist-outer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: var(--_tabs-indicator-height);
+  width: 2.5rem;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+:host(.has-overflow) .tablist-outer::before {
+  left: calc(2.5rem + 0.25rem);
+  background: linear-gradient(to right, var(--_tabs-scroll-fade-bg), transparent);
+}
+
+:host(.has-overflow) .tablist-outer::after {
+  right: calc(2.5rem + 0.25rem);
+  background: linear-gradient(to left, var(--_tabs-scroll-fade-bg), transparent);
+}
+
+:host(.can-scroll-left) .tablist-outer::before {
+  opacity: 1;
+}
+
+:host(.can-scroll-right) .tablist-outer::after {
+  opacity: 1;
+}
+
+// Scroll arrow buttons — inline flex siblings of #tablist (border stops at their edge)
+:host .scroll-btn {
+  flex-shrink: 0;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--_tabs-scroll-btn-radius);
+  background-color: transparent;
+  color: var(--_tabs-scroll-btn-color-text);
+  --mod-icon-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+  transition:
+    width 120ms ease,
+    min-width 120ms ease,
+    margin 120ms ease,
+    opacity 120ms ease,
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+// Show both buttons at full size whenever any overflow exists (prevents asymmetric jumps)
+:host(.has-overflow) .scroll-btn {
+  width: 2.5rem;
+  min-width: 2.5rem;
+  opacity: 0.3;
+}
+
+:host(.has-overflow) .scroll-btn--prev {
+  margin-right: 0.25rem;
+}
+
+:host(.has-overflow) .scroll-btn--next {
+  margin-left: 0.25rem;
+}
+
+// Active scroll direction — fully interactive
+:host(.can-scroll-left) .scroll-btn--prev,
+:host(.can-scroll-right) .scroll-btn--next {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+
+  @include hover {
+    &:hover {
+      background-color: var(--_tabs-scroll-btn-color-hover-background);
+      color: var(--_tabs-scroll-btn-color-hover-text);
+    }
+  }
+
+  &:active {
+    background-color: var(--_tabs-scroll-btn-color-active-background);
+    color: var(--_tabs-scroll-btn-color-active-text);
+  }
+}
+
+// ─── Tablist container ────────────────────────────────────────────────────────
+
+:host #tablist {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--_tabs-gap);
+  position: relative;
+  padding-bottom: var(--_tabs-indicator-height);
+  background: linear-gradient(var(--_tabs-border-color), var(--_tabs-border-color)) bottom / 100%
+    var(--_tabs-indicator-height) no-repeat;
+  overflow-x: scroll;
+  overflow-y: clip;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Animated selected indicator — positioned + sized via JS, transitions handle the motion
+:host #tablist .indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: var(--_tabs-indicator-height);
+  width: 0;
+  border-radius: 9999px;
+  background-color: var(--_tabs-tab-border-color-selected);
+  pointer-events: none;
+  transition:
+    transform 250ms ease,
+    width 250ms ease;
+}
+
+:host(.is-vertical) #tablist .indicator {
+  top: 0;
+  bottom: auto;
+  left: calc(-1 * var(--_tabs-indicator-height));
+  width: var(--_tabs-indicator-height);
+  height: 0;
+  transition:
+    transform 250ms ease,
+    height 250ms ease;
+}
+
+// Fullwidth
+:host(.is-fullwidth) #tablist {
+  width: 100%;
+}
+
+:host(.is-fullwidth) #tablist ::slotted(ds-tab) {
+  flex: 1;
+}
+
+// Vertical
+:host(.is-vertical) {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--_tabs-vertical-gap);
+
+  @include mobile {
+    gap: 1rem;
+  }
+}
+
+:host(.is-vertical) #tablist {
+  flex: 0 0 auto;
+  flex-direction: column;
+  padding-bottom: 0;
+  background: none;
+  border-left: var(--_tabs-indicator-height) solid var(--_tabs-border-color);
+  overflow: visible;
+  scroll-behavior: auto;
+}
+
+:host(.is-vertical.is-col-full) {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+:host(.is-vertical.is-col-full) #tablist {
+  width: 100%;
+}
+:host(.is-vertical.is-col-half) #tablist {
+  width: 50%;
+}
+:host(.is-vertical.is-col-two-thirds) #tablist {
+  width: 66.6667%;
+}
+:host(.is-vertical.is-col-three-quarters) #tablist {
+  width: 75%;
+}
+:host(.is-vertical.is-col-one-third) #tablist {
+  width: 33.3333%;
+}
+:host(.is-vertical.is-col-one-quarter) #tablist {
+  width: 25%;
+}
+
+:host(.is-vertical) ::slotted(ds-tab-panel) {
+  flex: 1;
+  min-width: 0;
+  min-height: 2.5rem;
+}
+
+:host ::slotted(ds-tab-panel) {
+  --tab-panel-padding: var(--_tabs-panel-padding);
+}
+
+:host(.is-vertical) ::slotted(ds-tab-panel) {
+  --tab-panel-padding: 0.5rem 0 0;
+}
+
+// Navigation mode — <nav> must not create its own block context
+:host(.is-navigation) nav {
+  display: contents;
+}

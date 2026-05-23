@@ -31,6 +31,7 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+import { TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -62,6 +63,7 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+export { TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -2008,6 +2010,78 @@ export namespace Components {
         "useWrap": boolean;
     }
     /**
+     * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+     */
+    interface DsTab {
+        /**
+          * Set by ds-tabs. When true, the tab expands to fill available width.
+          * @default false
+         */
+        "fullwidth": boolean;
+        /**
+          * Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.
+         */
+        "name": string;
+        /**
+          * Set by ds-tabs. When true, renders as a slot wrapper for navigation mode.
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this tab is currently selected. Set by the parent ds-tabs.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Set by ds-tabs. When true, renders in vertical layout.
+          * @default false
+         */
+        "vertical": boolean;
+    }
+    /**
+     * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+     */
+    interface DsTabPanel {
+        /**
+          * Matches the `name` of the ds-tab that controls this panel.
+         */
+        "for": string;
+        /**
+          * If `true`, the panel is visible. Managed by the parent ds-tabs.
+          * @default false
+         */
+        "selected": boolean;
+    }
+    /**
+     * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+     */
+    interface DsTabs {
+        /**
+          * If `true`, tab buttons expand to fill the available width equally.
+          * @default false
+         */
+        "fullwidth": boolean;
+        /**
+          * Accessible label for the navigation landmark (navigation variant only).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The `name` of the currently selected ds-tab (panels variant).
+         */
+        "value"?: string | null;
+        /**
+          * If `true`, the tablist is displayed vertically on the left side.
+          * @default false
+         */
+        "vertical": boolean;
+        /**
+          * The col size of the tablist in vertical mode.
+          * @default 'one-third'
+         */
+        "verticalColSize": TabsVerticalColSize;
+    }
+    /**
      * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
      */
     interface DsTag {
@@ -2473,6 +2547,14 @@ export interface DsSegmentItemCustomEvent<T> extends CustomEvent<T> {
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
+}
+export interface DsTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTabElement;
+}
+export interface DsTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTabsElement;
 }
 export interface DsTagCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3013,6 +3095,55 @@ declare global {
         prototype: HTMLDsStackElement;
         new (): HTMLDsStackElement;
     };
+    interface HTMLDsTabElementEventMap {
+        "dsTabSelect": { name: string };
+    }
+    /**
+     * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+     */
+    interface HTMLDsTabElement extends Components.DsTab, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTabElementEventMap>(type: K, listener: (this: HTMLDsTabElement, ev: DsTabCustomEvent<HTMLDsTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTabElementEventMap>(type: K, listener: (this: HTMLDsTabElement, ev: DsTabCustomEvent<HTMLDsTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTabElement: {
+        prototype: HTMLDsTabElement;
+        new (): HTMLDsTabElement;
+    };
+    /**
+     * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+     */
+    interface HTMLDsTabPanelElement extends Components.DsTabPanel, HTMLStencilElement {
+    }
+    var HTMLDsTabPanelElement: {
+        prototype: HTMLDsTabPanelElement;
+        new (): HTMLDsTabPanelElement;
+    };
+    interface HTMLDsTabsElementEventMap {
+        "dsChange": TabsChangeDetail;
+    }
+    /**
+     * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+     */
+    interface HTMLDsTabsElement extends Components.DsTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTabsElementEventMap>(type: K, listener: (this: HTMLDsTabsElement, ev: DsTabsCustomEvent<HTMLDsTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTabsElementEventMap>(type: K, listener: (this: HTMLDsTabsElement, ev: DsTabsCustomEvent<HTMLDsTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTabsElement: {
+        prototype: HTMLDsTabsElement;
+        new (): HTMLDsTabsElement;
+    };
     interface HTMLDsTagElementEventMap {
         "dsCloseClick": TagCloseClickDetail;
     }
@@ -3159,6 +3290,9 @@ declare global {
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
         "ds-stack": HTMLDsStackElement;
+        "ds-tab": HTMLDsTabElement;
+        "ds-tab-panel": HTMLDsTabPanelElement;
+        "ds-tabs": HTMLDsTabsElement;
         "ds-tag": HTMLDsTagElement;
         "ds-tag-group": HTMLDsTagGroupElement;
         "ds-text": HTMLDsTextElement;
@@ -5260,6 +5394,86 @@ declare namespace LocalJSX {
         "useWrap"?: boolean;
     }
     /**
+     * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+     */
+    interface DsTab {
+        /**
+          * Set by ds-tabs. When true, the tab expands to fill available width.
+          * @default false
+         */
+        "fullwidth"?: boolean;
+        /**
+          * Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.
+         */
+        "name": string;
+        /**
+          * Set by ds-tabs. When true, renders as a slot wrapper for navigation mode.
+          * @default false
+         */
+        "navigation"?: boolean;
+        /**
+          * Emitted when the user clicks this tab (panels mode only).
+         */
+        "onDsTabSelect"?: (event: DsTabCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this tab is currently selected. Set by the parent ds-tabs.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Set by ds-tabs. When true, renders in vertical layout.
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
+    /**
+     * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+     */
+    interface DsTabPanel {
+        /**
+          * Matches the `name` of the ds-tab that controls this panel.
+         */
+        "for": string;
+        /**
+          * If `true`, the panel is visible. Managed by the parent ds-tabs.
+          * @default false
+         */
+        "selected"?: boolean;
+    }
+    /**
+     * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+     */
+    interface DsTabs {
+        /**
+          * If `true`, tab buttons expand to fill the available width equally.
+          * @default false
+         */
+        "fullwidth"?: boolean;
+        /**
+          * Accessible label for the navigation landmark (navigation variant only).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted when the selected tab changes (panels variant only).
+         */
+        "onDsChange"?: (event: DsTabsCustomEvent<TabsChangeDetail>) => void;
+        /**
+          * The `name` of the currently selected ds-tab (panels variant).
+         */
+        "value"?: string | null;
+        /**
+          * If `true`, the tablist is displayed vertically on the left side.
+          * @default false
+         */
+        "vertical"?: boolean;
+        /**
+          * The col size of the tablist in vertical mode.
+          * @default 'one-third'
+         */
+        "verticalColSize"?: TabsVerticalColSize;
+    }
+    /**
      * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
      */
     interface DsTag {
@@ -6116,6 +6330,24 @@ declare namespace LocalJSX {
         "spaceRow": StackSpace;
         "useWrap": boolean;
     }
+    interface DsTabAttributes {
+        "fullwidth": boolean;
+        "name": string;
+        "navigation": boolean;
+        "selected": boolean;
+        "vertical": boolean;
+    }
+    interface DsTabPanelAttributes {
+        "for": string;
+        "selected": boolean;
+    }
+    interface DsTabsAttributes {
+        "fullwidth": boolean;
+        "label": string;
+        "value": string | null;
+        "vertical": boolean;
+        "verticalColSize": TabsVerticalColSize;
+    }
     interface DsTagAttributes {
         "closable": boolean;
         "color": TagColor;
@@ -6237,6 +6469,9 @@ declare namespace LocalJSX {
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
+        "ds-tab": Omit<DsTab, keyof DsTabAttributes> & { [K in keyof DsTab & keyof DsTabAttributes]?: DsTab[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `attr:${K}`]?: DsTabAttributes[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `prop:${K}`]?: DsTab[K] } & OneOf<"name", DsTab["name"], DsTabAttributes["name"]>;
+        "ds-tab-panel": Omit<DsTabPanel, keyof DsTabPanelAttributes> & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes]?: DsTabPanel[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `attr:${K}`]?: DsTabPanelAttributes[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `prop:${K}`]?: DsTabPanel[K] } & OneOf<"for", DsTabPanel["for"], DsTabPanelAttributes["for"]>;
+        "ds-tabs": Omit<DsTabs, keyof DsTabsAttributes> & { [K in keyof DsTabs & keyof DsTabsAttributes]?: DsTabs[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `attr:${K}`]?: DsTabsAttributes[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `prop:${K}`]?: DsTabs[K] };
         "ds-tag": Omit<DsTag, keyof DsTagAttributes> & { [K in keyof DsTag & keyof DsTagAttributes]?: DsTag[K] } & { [K in keyof DsTag & keyof DsTagAttributes as `attr:${K}`]?: DsTagAttributes[K] } & { [K in keyof DsTag & keyof DsTagAttributes as `prop:${K}`]?: DsTag[K] };
         "ds-tag-group": DsTagGroup;
         "ds-text": Omit<DsText, keyof DsTextAttributes> & { [K in keyof DsText & keyof DsTextAttributes]?: DsText[K] } & { [K in keyof DsText & keyof DsTextAttributes as `attr:${K}`]?: DsTextAttributes[K] } & { [K in keyof DsText & keyof DsTextAttributes as `prop:${K}`]?: DsText[K] };
@@ -6394,6 +6629,18 @@ declare module "@stencil/core" {
              * Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.
              */
             "ds-stack": LocalJSX.IntrinsicElements["ds-stack"] & JSXBase.HTMLAttributes<HTMLDsStackElement>;
+            /**
+             * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+             */
+            "ds-tab": LocalJSX.IntrinsicElements["ds-tab"] & JSXBase.HTMLAttributes<HTMLDsTabElement>;
+            /**
+             * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+             */
+            "ds-tab-panel": LocalJSX.IntrinsicElements["ds-tab-panel"] & JSXBase.HTMLAttributes<HTMLDsTabPanelElement>;
+            /**
+             * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+             */
+            "ds-tabs": LocalJSX.IntrinsicElements["ds-tabs"] & JSXBase.HTMLAttributes<HTMLDsTabsElement>;
             /**
              * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
              */

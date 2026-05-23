@@ -9,8 +9,8 @@ import {
   WindowResizeObserver,
   ListenToWindowResize,
   initialBreakpoints,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
   hasValue,
   setupValidation,
 } from '@utils'
@@ -67,21 +67,21 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
    * The background color
    */
   @Prop()
-  @ValidateOneOf(...PROGRESS_BAR_BACKGROUNDS)
+  @ValidateEmptyOrOneOf(...PROGRESS_BAR_BACKGROUNDS)
   readonly background: ProgressBarBackground = 'dark'
 
   /**
    * The progress bar color
    */
   @Prop()
-  @ValidateOneOf(...PROGRESS_BAR_COLORS)
+  @ValidateEmptyOrOneOf(...PROGRESS_BAR_COLORS)
   readonly color: ProgressBarColor = 'primary'
 
   /**
    * The value of the bar in percentage. So min is 0 and 100 would be the max value.
    */
   @Prop({ reflect: true })
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly value: number = 0
 
   /**

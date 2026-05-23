@@ -1,0 +1,177 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+// ─── Panels mode ────────────────────────────────────────────────────────────
+
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+span,
+a {
+  @include unselectable();
+
+  flex: 1;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  gap: 0.5rem;
+  padding: var(--_tabs-tab-padding);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--_tabs-tab-color);
+  font-family: var(--_tabs-tab-font-family);
+  font-size: var(--_tabs-tab-font-size);
+  font-weight: var(--_tabs-tab-font-weight);
+  outline: none;
+  white-space: nowrap;
+  transition: color 120ms ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--_tabs-indicator-height));
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  @include hover {
+    &:hover {
+      color: var(--_tabs-tab-color-hover);
+
+      &::after {
+        background-color: var(--_tabs-tab-indicator-color-idle);
+      }
+    }
+  }
+
+  &:active {
+    color: var(--_tabs-tab-color-active);
+
+    &::after {
+      background-color: var(--_tabs-tab-indicator-color-idle);
+    }
+  }
+}
+
+:host(:focus-visible:not(:active)) {
+  border-radius: var(--_tabs-tab-radius);
+  @include focus-shadow(var(--_tabs-tab-color-focus));
+}
+
+span.is-selected,
+a.is-selected {
+  color: var(--_tabs-tab-color-selected);
+  font-weight: var(--_tabs-tab-font-weight-selected);
+}
+
+// Badge — positioned at top-right of the text area, offset by half its own height
+span ::slotted(ds-badge.is-sm),
+a ::slotted(ds-badge.is-sm) {
+  position: absolute;
+  top: calc(var(--_tabs-tab-badge-size));
+  right: 0;
+  transform: translateY(-50%);
+}
+
+// Icon color follows tab text color in all states.
+// Excludes brand icons (no is-filled) and color="auto" icons (is-auto).
+span ::slotted(ds-icon.is-filled:not(.is-auto)),
+a ::slotted(ds-icon.is-filled:not(.is-auto)) {
+  --mod-icon-color: currentColor;
+}
+
+// Fullwidth — span fills host and centers content
+:host(.is-fullwidth) span {
+  width: 100%;
+  justify-content: center;
+}
+
+// Vertical — allow text to wrap, align left
+:host(.is-vertical) span,
+:host(.is-vertical) a {
+  white-space: normal;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+// Vertical — flip hover/active ::after to left side (selected is handled by centralized indicator)
+:host(.is-vertical) span::after,
+:host(.is-vertical) a::after {
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--_tabs-indicator-height));
+  right: auto;
+  width: var(--_tabs-indicator-height);
+  height: auto;
+}
+
+// ─── Navigation mode ─────────────────────────────────────────────────────────
+// ds-tabs sets [navigation] on the host. The consumer puts an <a> in the slot.
+// ::after for the indicator lives on :host (::slotted can't have pseudo-elements).
+
+:host(.is-navigation) {
+  position: relative;
+  display: inline-flex;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--_tabs-indicator-height));
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: transparent;
+    transition: background-color 120ms ease;
+  }
+}
+
+:host(.is-navigation.is-selected)::after {
+  background-color: var(--_tabs-tab-border-color-selected);
+}
+
+:host(.is-navigation) ::slotted(a) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  gap: 0.5rem;
+  padding: var(--_tabs-tab-padding);
+  color: var(--_tabs-tab-color);
+  font-family: var(--_tabs-tab-font-family);
+  font-size: var(--_tabs-tab-font-size);
+  font-weight: var(--_tabs-tab-font-weight);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 120ms ease;
+  --mod-icon-color: currentColor;
+}
+
+:host(.is-navigation) ::slotted(a:focus-visible:not(:active)) {
+  border-radius: var(--_tabs-tab-radius);
+  @include focus-shadow(var(--_tabs-tab-color-focus));
+}
+
+:host(.is-navigation.is-selected) ::slotted(a),
+:host(.is-navigation) ::slotted([aria-current]) {
+  color: var(--_tabs-tab-color-selected);
+  font-weight: var(--_tabs-tab-font-weight-selected);
+}
+
+// Vertical navigation — flip indicator to left
+:host(.is-navigation.is-vertical)::after {
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--_tabs-indicator-height));
+  right: auto;
+  width: 2px;
+  height: auto;
+}

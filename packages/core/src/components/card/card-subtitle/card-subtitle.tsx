@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
-import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateType, setupValidation, hasValue } from '@utils'
+import { Logger, LogInstance, ValidateEmptyOrOneOf, ValidateEmptyOrType, setupValidation, hasValue } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { HEADING_COLORS, HeadingColor } from '../../heading/heading.interfaces'
 import { DsComponentInterface } from '@global'
@@ -29,14 +29,14 @@ export class CardSubtitle implements DsComponentInterface {
    * If `true` the card text color becomes white.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the card text color is bold.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly bold: boolean = false
 
   /**

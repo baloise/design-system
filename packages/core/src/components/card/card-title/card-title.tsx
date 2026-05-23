@@ -5,7 +5,7 @@ import {
   LogInstance,
   ValidateEmptyOrOneOf,
   ValidateRequiredAndOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
@@ -36,7 +36,7 @@ export class CardTitle implements DsComponentInterface {
    * If `true` the card text color becomes white.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**

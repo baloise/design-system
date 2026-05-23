@@ -6,7 +6,6 @@ import {
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
-  ValidateType,
   hasValue,
   setupValidation,
 } from '@utils'
@@ -56,14 +55,14 @@ export class Notification implements DsComponentInterface {
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly alert: boolean = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly closable: boolean = false
 
   /**
@@ -90,7 +89,7 @@ export class Notification implements DsComponentInterface {
    * If `true` there will be no icon provided
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly noIcon: boolean = false
 
   /**

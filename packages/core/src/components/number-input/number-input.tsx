@@ -25,9 +25,8 @@ import {
   type LogInstance,
   getDecimalSeparator,
   getThousandSeparator,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
-  ValidateType,
   hasValue,
   setupValidation,
 } from '@utils'
@@ -98,14 +97,14 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Defines the color state of the input.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_COLORS)
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * Milliseconds to wait before triggering `dsChange` after each keystroke.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly debounce: number = 0
   @Watch('debounce')
   debounceChanged() {
@@ -116,7 +115,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Number of allowed decimal places. `0` means integers only.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly decimal: number = 0
 
   /**
@@ -130,21 +129,21 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * If `true`, the element is not mutable, focusable, or submitted with the form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * When `true`, displays `0` instead of an empty field when value is null.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly exactNumber: boolean = false
 
   /**
    * If `true` the component gets an invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -179,14 +178,14 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly name: string = this.numberInputId
 
   /**
    * When `true`, only positive numbers are accepted (blocks the minus sign).
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly onlyPositive: boolean = false
 
   /**
@@ -207,14 +206,14 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * If `true`, the element cannot be edited by the user.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly required: boolean = true
 
   /**

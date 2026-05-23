@@ -5,7 +5,7 @@ import {
   sanitizeSvg,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateRequiredAndType,
   ValidateEmptyOrType,
   hasValue,
@@ -59,7 +59,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateOneOf(...TOAST_COLORS)
+  @ValidateEmptyOrOneOf(...TOAST_COLORS)
   readonly color: ToastColor = 'base'
 
   /**
@@ -123,7 +123,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateOneOf(...TOAST_TARGETS)
+  @ValidateEmptyOrOneOf(...TOAST_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**

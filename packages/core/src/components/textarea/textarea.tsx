@@ -19,10 +19,9 @@ import {
   debounceEvent,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -80,49 +79,49 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * Indicates whether and how the text value should be automatically capitalized.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly autocapitalize: string = 'off'
 
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly autocomplete: InputAutocomplete = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly autofocus: boolean = false
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * Defines the color state of the textarea.
    */
   @Prop()
-  @ValidateOneOf(...INPUT_COLORS)
+  @ValidateEmptyOrOneOf(...INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * The visible width of the text control, in average character widths.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly cols?: number
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly debounce: number = 0
 
   @Watch('debounce')
@@ -134,14 +133,14 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * The description displayed below the textarea field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -155,70 +154,70 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * If `true` the component gets an invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
    * Text shown in the description area when `invalid` is true.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly invalidText: string = ''
 
   /**
    * The label displayed above the textarea field.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * Specifies the maximum number of characters that the user can enter.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly maxLength?: number
 
   /**
    * Specifies the minimum number of characters that the user can enter.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly minLength?: number
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly name: string = this.inputId
 
   /**
    * Instructional text that shows before the textarea has a value.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly placeholder: string = ''
 
   /**
    * If `true` the element can not be mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly required: boolean = true
 
   /**
    * The number of visible text lines for the control.
    */
   @Prop()
-  @ValidateType('number')
+  @ValidateEmptyOrType('number')
   readonly rows?: number
 
   /**

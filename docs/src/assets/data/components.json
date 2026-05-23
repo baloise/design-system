@@ -1652,10 +1652,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BadgeSize",
-            "resolved": "\"\" | \"large\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
               "BadgeSize": {
                 "location": "import",
@@ -1682,6 +1682,14 @@
             },
             {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -18623,6 +18631,7 @@
         "ds-radio-group",
         "ds-segment",
         "ds-snackbar",
+        "ds-tabs",
         "ds-textarea",
         "ds-toast"
       ],
@@ -18659,6 +18668,9 @@
           "ds-icon"
         ],
         "ds-snackbar": [
+          "ds-icon"
+        ],
+        "ds-tabs": [
           "ds-icon"
         ],
         "ds-textarea": [
@@ -36234,6 +36246,974 @@
       "listeners": []
     },
     {
+      "fileName": "tab.tsx",
+      "tag": "ds-tab",
+      "overview": "Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.",
+      "usage": {},
+      "docs": "Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The tab label, or an <a> element in navigation mode."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, this tab is currently selected. Set by the parent ds-tabs.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsTabSelect",
+          "detail": "{ name: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "{ name: string }",
+            "resolved": "{ name: string; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the user clicks this tab (panels mode only).",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The tab label, or an <a> element in navigation mode."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "tab-panel.tsx",
+      "tag": "ds-tab-panel",
+      "overview": "Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.",
+      "usage": {},
+      "docs": "Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The panel content."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "for",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "for",
+          "reflectToAttr": true,
+          "docs": "Matches the `name` of the ds-tab that controls this panel.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, the panel is visible. Managed by the parent ds-tabs.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--tab-panel-padding",
+          "docs": "Padding inside the tab panel."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The panel content."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / TabPanel / Padding",
+          "cssVarName": "--ds-tabpanel-padding",
+          "value": "1rem 0",
+          "nativeValue": "1rem 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-tabpanel-padding",
+              "figmaName": "Component / TabPanel / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "TabPanel",
+            "Padding"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "tabs.tsx",
+      "tag": "ds-tabs",
+      "overview": "Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.",
+      "usage": {},
+      "docs": "Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- ds-tab-panel children (panels variant)."
+        },
+        {
+          "name": "slot",
+          "text": "tab - ds-tab children; managed automatically by ds-tabs."
+        },
+        {
+          "name": "part",
+          "text": "tablist - The tablist container."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-tabs": [
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "fullwidth",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "fullwidth",
+          "reflectToAttr": false,
+          "docs": "If `true`, tab buttons expand to fill the available width equally.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the navigation landmark (navigation variant only).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string | undefined",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The `name` of the currently selected ds-tab (panels variant).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "If `true`, the tablist is displayed vertically on the left side.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "verticalColSize",
+          "type": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",
+          "complexType": {
+            "original": "TabsVerticalColSize",
+            "resolved": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",
+            "references": {
+              "TabsVerticalColSize": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::TabsVerticalColSize",
+                "referenceLocation": "TabsVerticalColSize"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "vertical-col-size",
+          "reflectToAttr": false,
+          "docs": "The col size of the tablist in vertical mode.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'one-third'"
+            }
+          ],
+          "default": "'one-third'",
+          "values": [
+            {
+              "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "half",
+              "type": "string"
+            },
+            {
+              "value": "one-quarter",
+              "type": "string"
+            },
+            {
+              "value": "one-third",
+              "type": "string"
+            },
+            {
+              "value": "three-quarters",
+              "type": "string"
+            },
+            {
+              "value": "two-thirds",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsChange",
+          "detail": "{ value: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "TabsChangeDetail",
+            "resolved": "{ value: string; }",
+            "references": {
+              "TabsChangeDetail": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::TabsChangeDetail",
+                "referenceLocation": "TabsChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected tab changes (panels variant only).",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--tabs-border-color",
+          "docs": "Color of the tablist border track. Set to transparent to hide it."
+        },
+        {
+          "name": "--tabs-indicator-height",
+          "docs": "Thickness of the selected-tab indicator and border track."
+        },
+        {
+          "name": "--tabs-gap",
+          "docs": "Gap between tab buttons."
+        },
+        {
+          "name": "--tabs-tab-padding",
+          "docs": "Padding inside each tab button."
+        },
+        {
+          "name": "--tabs-tab-font-family",
+          "docs": "Font family of tab button labels."
+        },
+        {
+          "name": "--tabs-tab-font-size",
+          "docs": "Font size of tab button labels."
+        },
+        {
+          "name": "--tabs-tab-font-weight",
+          "docs": "Font weight of tab button labels."
+        },
+        {
+          "name": "--tabs-tab-color",
+          "docs": "Text color of tab buttons."
+        },
+        {
+          "name": "--tabs-tab-color-hover",
+          "docs": "Text color of a hovered tab button."
+        },
+        {
+          "name": "--tabs-tab-color-active",
+          "docs": "Text color of a pressed tab button."
+        },
+        {
+          "name": "--tabs-tab-color-selected",
+          "docs": "Text color of the selected tab button."
+        },
+        {
+          "name": "--tabs-tab-border-color-selected",
+          "docs": "Indicator line color of the selected tab."
+        },
+        {
+          "name": "--tabs-tab-font-weight-selected",
+          "docs": "Font weight of the selected tab button label."
+        },
+        {
+          "name": "--tabs-tab-color-focus",
+          "docs": "Color of the keyboard focus ring on tab buttons."
+        },
+        {
+          "name": "--tabs-panel-padding",
+          "docs": "Padding inside the content panel."
+        },
+        {
+          "name": "--tabs-vertical-gap",
+          "docs": "Gap between the tablist and the content panel in vertical mode."
+        },
+        {
+          "name": "--tabs-scroll-fade-bg",
+          "docs": "Background color for the edge-fade gradient beside the carousel buttons."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "ds-tab-panel children (panels variant)."
+        },
+        {
+          "name": "tab",
+          "docs": "ds-tab children; managed automatically by ds-tabs."
+        }
+      ],
+      "parts": [
+        {
+          "name": "tablist",
+          "docs": "The tablist container."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "dsTabSelect",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Tabs / Border / Color",
+          "cssVarName": "--ds-tabs-border-color",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-tabs-border-color",
+              "figmaName": "Component / Tabs / Border / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Border",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Indicator / Height",
+          "cssVarName": "--ds-tabs-indicator-height",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-indicator-height",
+              "figmaName": "Component / Tabs / Indicator / Height"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Indicator",
+            "Height"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Gap",
+          "cssVarName": "--ds-tabs-gap",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-gap",
+              "figmaName": "Component / Tabs / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Panel / Padding",
+          "cssVarName": "--ds-tabs-panel-padding",
+          "value": "1rem 0",
+          "nativeValue": "1rem 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-tabs-panel-padding",
+              "figmaName": "Component / Tabs / Panel / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Panel",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Vertical / Gap",
+          "cssVarName": "--ds-tabs-vertical-gap",
+          "value": "{🔗 Alias.↔️ Space.LG.Mobile}",
+          "nativeValue": "24",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-24",
+              "figmaName": "Global / Size / Space / 24"
+            },
+            {
+              "cssVar": "--ds-space-lg-mobile",
+              "figmaName": "Alias / Space / LG / Mobile"
+            },
+            {
+              "cssVar": "--ds-tabs-vertical-gap",
+              "figmaName": "Component / Tabs / Vertical / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Vertical",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Scroll / Fade / Background",
+          "cssVarName": "--ds-tabs-scroll-fade-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-tabs-scroll-fade-background",
+              "figmaName": "Component / Tabs / Scroll / Fade / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Scroll",
+            "Fade",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Padding",
+          "cssVarName": "--ds-tabs-tab-padding",
+          "value": "0.25rem 1rem",
+          "nativeValue": "0.25rem 1rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-tabs-tab-padding",
+              "figmaName": "Component / Tabs / Tab / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / Family",
+          "cssVarName": "--ds-tabs-tab-font-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
+          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-text-family-heading",
+              "figmaName": "Alias / Text / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-family",
+              "figmaName": "Component / Tabs / Tab / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / Size",
+          "cssVarName": "--ds-tabs-tab-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-size",
+              "figmaName": "Component / Tabs / Tab / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / Weight",
+          "cssVarName": "--ds-tabs-tab-font-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-weight",
+              "figmaName": "Component / Tabs / Tab / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / WeightSelected",
+          "cssVarName": "--ds-tabs-tab-font-weightselected",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-weightselected",
+              "figmaName": "Component / Tabs / Tab / Font / WeightSelected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "WeightSelected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Focus",
+          "cssVarName": "--ds-tabs-tab-color-focus",
+          "value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}",
+          "nativeValue": "#6C2273",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-6",
+              "figmaName": "Global / Color / Purple / 6"
+            },
+            {
+              "cssVar": "--ds-interaction-focus-color-base",
+              "figmaName": "Alias / Interaction / Focus / Color / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-focus",
+              "figmaName": "Component / Tabs / Tab / Color / Focus"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Focus"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Base",
+          "cssVarName": "--ds-tabs-tab-color-base",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-base",
+              "figmaName": "Component / Tabs / Tab / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Hover",
+          "cssVarName": "--ds-tabs-tab-color-hover",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryhover",
+              "figmaName": "Alias / Text / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-hover",
+              "figmaName": "Component / Tabs / Tab / Color / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Active",
+          "cssVarName": "--ds-tabs-tab-color-active",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryactive",
+              "figmaName": "Alias / Text / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-active",
+              "figmaName": "Component / Tabs / Tab / Color / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Selected",
+          "cssVarName": "--ds-tabs-tab-color-selected",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-selected",
+              "figmaName": "Component / Tabs / Tab / Color / Selected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Selected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Border / Color / Selected",
+          "cssVarName": "--ds-tabs-tab-border-color-selected",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-border-color-selected",
+              "figmaName": "Component / Tabs / Tab / Border / Color / Selected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Border",
+            "Color",
+            "Selected"
+          ]
+        }
+      ]
+    },
+    {
       "fileName": "tag.tsx",
       "tag": "ds-tag",
       "overview": "Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.",
@@ -42177,7 +43157,7 @@
       "path": "src/components/alert/toast/toast.interfaces.ts"
     },
     "src/components/badge/badge.interfaces.ts::BadgeSize": {
-      "declaration": "\"\" | \"small\" | \"large\"",
+      "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"large\"",
       "docstring": "",
       "path": "src/components/badge/badge.interfaces.ts"
     },
@@ -42685,6 +43665,16 @@
       "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::TabsVerticalColSize": {
+      "declaration": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::TabsChangeDetail": {
+      "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagColor": {
       "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",

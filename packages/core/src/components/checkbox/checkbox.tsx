@@ -5,11 +5,10 @@ import {
   inheritAttributes,
   type Attributes,
   ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
   ValidateRequiredAndOneOf,
   hasValue,
   setupValidation,
-  ValidateType,
+  ValidateEmptyOrType,
 } from '@utils'
 import {
   CheckboxLabelPosition,
@@ -63,7 +62,7 @@ export class Checkbox implements DsComponentInterface {
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly name: string = this.inputId
 
   /**

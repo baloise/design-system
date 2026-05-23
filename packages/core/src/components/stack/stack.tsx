@@ -4,8 +4,7 @@ import {
   Logger,
   type LogInstance,
   normalizeDeprecatedTShirtSize,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   ValidateEmptyOrOneOf,
   hasValue,
   setupValidation,
@@ -67,14 +66,14 @@ export class Stack implements DsComponentInterface {
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_DIRECTIONS)
+  @ValidateEmptyOrOneOf(...STACK_DIRECTIONS)
   direction: StackDirection = 'column'
 
   /**
    * Defines the width of the stack to be exactly the width of the content.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly fitContent: boolean = false
 
   /**
@@ -102,7 +101,7 @@ export class Stack implements DsComponentInterface {
    * Defines the padding of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_PADDINGS)
+  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
   p?: StackPadding
   @Watch('p')
   pChanged(newValue?: StackPadding) {
@@ -113,7 +112,7 @@ export class Stack implements DsComponentInterface {
    * Defines the horizontal padding left and right of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_PADDINGS)
+  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
   px?: StackPadding
   @Watch('px')
   pxChanged(newValue?: StackPadding) {
@@ -124,7 +123,7 @@ export class Stack implements DsComponentInterface {
    * Defines the vertical padding top and bottom of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_PADDINGS)
+  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
   py?: StackPadding
   @Watch('py')
   pyChanged(newValue?: StackPadding) {
@@ -135,7 +134,7 @@ export class Stack implements DsComponentInterface {
    * Defines the space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_SPACES)
+  @ValidateEmptyOrOneOf(...STACK_SPACES)
   space: StackSpace = 'base'
   @Watch('space')
   spaceChanged(newValue: StackSpace) {
@@ -146,7 +145,7 @@ export class Stack implements DsComponentInterface {
    * Defines the column space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_SPACES)
+  @ValidateEmptyOrOneOf(...STACK_SPACES)
   spaceColumn?: StackSpace
   @Watch('spaceColumn')
   spaceColumnChanged(newValue?: StackSpace) {
@@ -157,7 +156,7 @@ export class Stack implements DsComponentInterface {
    * Defines the row space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...STACK_SPACES)
+  @ValidateEmptyOrOneOf(...STACK_SPACES)
   spaceRow?: StackSpace
   @Watch('spaceRow')
   spaceRowChanged(newValue?: StackSpace) {
@@ -168,7 +167,7 @@ export class Stack implements DsComponentInterface {
    * Defines if the child elements will wrap to the next line if there is not enough space left.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly useWrap: boolean = false
 
   /**
