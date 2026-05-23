@@ -25,6 +25,19 @@
         </ds-tabs>
       </section>
 
+      <section data-testid="inverted" class="bg-primary">
+        <span>Inverted</span>
+        <ds-tabs inverted>
+          <ds-tab name="a">Tab A</ds-tab>
+          <ds-tab name="b">Tab B</ds-tab>
+          <ds-tab name="c">Tab C</ds-tab>
+
+          <ds-tab-panel for="a">Content A</ds-tab-panel>
+          <ds-tab-panel for="b">Content B</ds-tab-panel>
+          <ds-tab-panel for="c">Content C</ds-tab-panel>
+        </ds-tabs>
+      </section>
+
       <section data-testid="no-border">
         <span>No Border</span>
         <ds-tabs style="--tabs-border-color: none">

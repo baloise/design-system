@@ -1,4 +1,11 @@
-export const TABS_VERTICAL_COL_SIZES = ['full', 'half', 'one-quarter', 'one-third', 'three-quarters', 'two-thirds'] as const
+export const TABS_VERTICAL_COL_SIZES = [
+  'full',
+  'half',
+  'one-quarter',
+  'one-third',
+  'three-quarters',
+  'two-thirds',
+] as const
 export type TabsVerticalColSize = (typeof TABS_VERTICAL_COL_SIZES)[number]
 
 export interface TabsCustomEvent<T> extends CustomEvent<T> {

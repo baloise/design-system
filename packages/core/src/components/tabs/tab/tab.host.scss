@@ -114,6 +114,16 @@ a ::slotted(ds-icon.is-filled:not(.is-auto)) {
   height: auto;
 }
 
+// ─── Inverted mode ───────────────────────────────────────────────────────────
+// Non-selected tabs use body font + regular weight on dark backgrounds.
+// Selected tab keeps heading font + bold weight but in white.
+
+:host(.is-inverted) span.is-selected,
+:host(.is-inverted) a.is-selected {
+  font-family: var(--ds-alias-text-family-heading);
+  font-weight: var(--_tabs-tab-font-weight-selected);
+}
+
 // ─── Navigation mode ─────────────────────────────────────────────────────────
 // ds-tabs sets [navigation] on the host. The consumer puts an <a> in the slot.
 // ::after for the indicator lives on :host (::slotted can't have pseudo-elements).
@@ -163,6 +173,12 @@ a ::slotted(ds-icon.is-filled:not(.is-auto)) {
 :host(.is-navigation.is-selected) ::slotted(a),
 :host(.is-navigation) ::slotted([aria-current]) {
   color: var(--_tabs-tab-color-selected);
+  font-weight: var(--_tabs-tab-font-weight-selected);
+}
+
+:host(.is-navigation.is-inverted.is-selected) ::slotted(a),
+:host(.is-navigation.is-inverted) ::slotted([aria-current]) {
+  font-family: var(--ds-alias-text-family-heading);
   font-weight: var(--_tabs-tab-font-weight-selected);
 }
 

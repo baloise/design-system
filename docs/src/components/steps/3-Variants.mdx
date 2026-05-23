@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as StepsStories from './steps.stories'
+import { STEPS_DOC_CONFIG, getStepsTabs } from './steps.doc-config'
+
+<Meta title="Components/Steps/Variants/Overview" />
+
+<StoryHeading of={StepsStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={STEPS_DOC_CONFIG.section} color={STEPS_DOC_CONFIG.color} />
+
+<BannerTabs of={StepsStories} tabs={getStepsTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.Basic}></StoryHeading>
+
+The default horizontal steps with numbered circles, connector lines, and a panel for each step. The first non-disabled step is selected automatically.
+
+<CanvasWithCodePen of={StepsStories.Basic} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.States}></StoryHeading>
+
+Steps support four states: `done` (blue circle with checkmark), `invalid` (red circle with exclamation mark), `disabled` (muted, not selectable), and the default active state.
+
+<CanvasWithCodePen of={StepsStories.States} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.Hidden}></StoryHeading>
+
+Setting `hidden` on a `ds-step` removes it from the layout and renumbers the remaining visible steps. The associated panel is also hidden. Useful for conditionally showing steps based on user choices.
+
+<CanvasWithCodePen of={StepsStories.Hidden} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.Vertical}></StoryHeading>
+
+Setting `vertical` on `ds-steps` stacks the circles in a column with labels to the right, connected by a continuous vertical line. The panel content renders below the steplist.
+
+<CanvasWithCodePen of={StepsStories.Vertical} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.Navigation}></StoryHeading>
+
+When `ds-step` children contain anchor links instead of panel references, the component renders a `<nav>` landmark. Pass a descriptive `label` to name the landmark for screen readers. Steps in this mode are not interactive buttons.
+
+<CanvasWithCodePen of={StepsStories.Navigation} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.NavigationVertical}></StoryHeading>
+
+The navigation variant also supports `vertical` layout, placing the anchor links to the right of the circles in a column.
+
+<CanvasWithCodePen of={StepsStories.NavigationVertical} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.ColorVariants}></StoryHeading>
+
+The `color` prop replaces the default grey on inactive circles and connector lines with a brand color tint. Use this when the steps sit within a color-coded context such as a product or status flow.
+
+<CanvasWithCodePen of={StepsStories.ColorVariants} />
+
+<Footer />

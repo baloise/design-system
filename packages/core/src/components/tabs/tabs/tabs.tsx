@@ -1,8 +1,24 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, stopEventBubbling, ValidateEmptyOrType, ValidateEmptyOrOneOf, setupValidation } from '@utils'
-import { DsComponentInterface } from '@global'
+import {
+  Logger,
+  type LogInstance,
+  stopEventBubbling,
+  ValidateEmptyOrType,
+  ValidateEmptyOrOneOf,
+  setupValidation,
+} from '@utils'
+import {
+  DsComponentInterface,
+  DsConfigObserver,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '@global'
 import { TabsChangeDetail, TABS_VERTICAL_COL_SIZES, TabsVerticalColSize } from '../tabs.interfaces'
+import { i18nDsTabs } from './tabs.i18n'
 
 /**
  * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
@@ -16,7 +32,7 @@ import { TabsChangeDetail, TABS_VERTICAL_COL_SIZES, TabsVerticalColSize } from '
   styleUrl: 'tabs.host.scss',
   shadow: true,
 })
-export class Tabs implements DsComponentInterface {
+export class Tabs implements DsComponentInterface, DsConfigObserver {
   log!: LogInstance
 
   @Logger('tabs')
@@ -26,12 +42,22 @@ export class Tabs implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+
   /**
    * If `true`, tab buttons expand to fill the available width equally.
    */
   @Prop()
   @ValidateEmptyOrType('boolean')
   readonly fullwidth: boolean = false
+
+  /**
+   * If `true`, the component adapts for use on a dark (primary) background — all labels and the indicator become white.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
 
   /**
    * Accessible label for the navigation landmark (navigation variant only).
@@ -65,6 +91,16 @@ export class Tabs implements DsComponentInterface {
    * Emitted when the selected tab changes (panels variant only).
    */
   @Event() dsChange!: EventEmitter<TabsChangeDetail>
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
 
   @State() private canScrollLeft = false
   @State() private canScrollRight = false
@@ -178,6 +214,7 @@ export class Tabs implements DsComponentInterface {
     this.getTabs().forEach(tab => {
       tab.navigation = isNav
       tab.fullwidth = this.fullwidth
+      tab.inverted = this.inverted
       tab.selected = isNav ? !!tab.querySelector('[aria-current]') : tab.name === this.value
       tab.vertical = this.vertical
     })
@@ -318,13 +355,15 @@ export class Tabs implements DsComponentInterface {
       </div>
     )
 
+    const i18n = i18nDsTabs[this.language]
+
     const tablistContainer = this.vertical ? (
       tablistDiv
     ) : (
       <div class="tablist-outer">
         <button
           class="scroll-btn scroll-btn--prev"
-          aria-label="Scroll tabs left"
+          aria-label={i18n.scrollLeft}
           aria-hidden="true"
           tabIndex={-1}
           onClick={this.scrollPrev}
@@ -334,7 +373,7 @@ export class Tabs implements DsComponentInterface {
         {tablistDiv}
         <button
           class="scroll-btn scroll-btn--next"
-          aria-label="Scroll tabs right"
+          aria-label={i18n.scrollRight}
           aria-hidden="true"
           tabIndex={-1}
           onClick={this.scrollNext}
@@ -348,6 +387,7 @@ export class Tabs implements DsComponentInterface {
       <Host
         class={{
           'is-fullwidth': this.fullwidth,
+          'is-inverted': this.inverted,
           'is-vertical': this.vertical,
           [`is-col-${this.verticalColSize}`]: this.vertical,
           'is-navigation': isNav,

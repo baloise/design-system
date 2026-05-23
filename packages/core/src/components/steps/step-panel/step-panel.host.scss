@@ -1,0 +1,17 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * @prop --step-panel-padding: Padding inside the step panel.
+ */
+
+:host {
+  @include vars.local(step-panel-padding, var(--ds-step-panel-padding));
+
+  display: none;
+}
+
+:host(.is-selected) {
+  display: block;
+  padding: var(--_step-panel-padding);
+}

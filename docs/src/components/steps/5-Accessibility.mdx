@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as StepsStories from './steps.stories'
+import { STEPS_DOC_CONFIG, getStepsTabs } from './steps.doc-config'
+
+<Meta title="Components/Steps/Accessibility" />
+
+<Banner label={'Accessibility'} section={STEPS_DOC_CONFIG.section} color={STEPS_DOC_CONFIG.color} />
+
+<BannerTabs of={StepsStories} tabs={getStepsTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Provide a label for the navigation variant',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using steps as page navigation, set the <code>label</code> prop to a meaningful name (e.g. "Checkout steps"). This labels the <code>{'<nav>'}</code> landmark so screen reader users can identify and navigate to it.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't rely on color alone to communicate state",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Step states (done, invalid, disabled) are conveyed through both color and icon/symbol changes. Do not override the icon content with CSS in a way that removes the visual distinction for users who perceive color differently.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use aria-current on the active navigation link',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          In the navigation variant, add <code>{'aria-current="step"'}</code> to the <code>{'<a>'}</code> inside the currently active <code>ds-step</code>. This tells assistive technologies which step the user is currently on.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't skip required step labels",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always provide a meaningful <code>label</code> on each <code>ds-step</code>. The numbered circle alone does not give enough context for screen reader users to understand the purpose of each step.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keep step labels short and action-oriented',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use concise, noun-based labels like "Cart", "Shipping", or "Confirmation". These read clearly in the context of the tablist role and are easy to distinguish when navigating by keyboard.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The steps component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **1.3.1 Info and Relationships** — The panels variant uses `role="tablist"`, `role="tab"`, and `role="tabpanel"` with `aria-controls` and `aria-labelledby` linkage. The navigation variant uses a `<nav>` landmark with an `<ol>` list.
+- **1.4.1 Use of Color** — Step states are communicated through both color changes and distinct icon/symbol content (checkmark, exclamation mark), not color alone.
+- **2.1.1 Keyboard** — All steps are reachable and activatable by keyboard. Arrow keys (Left/Right or Up/Down in vertical mode), Home, and End navigate between steps in the panels variant.
+- **2.4.3 Focus Order** — Focus moves to the newly selected step after keyboard activation, maintaining a logical focus sequence.
+- **4.1.2 Name, Role, Value** — Each step exposes `aria-selected` and `aria-disabled` states. The active panel is visible and the inactive panels have `aria-hidden="true"`.
+
+<Footer />

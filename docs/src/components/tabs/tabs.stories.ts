@@ -41,6 +41,23 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
+export const Inverted = Story({
+  ...withRender(
+    () => `
+<div class="bg-primary p-normal">
+  <ds-tabs inverted>
+    <ds-tab name="a">Tab A</ds-tab>
+    <ds-tab name="b">Tab B</ds-tab>
+    <ds-tab name="c">Tab C</ds-tab>
+    <ds-tab-panel for="a">Content A</ds-tab-panel>
+    <ds-tab-panel for="b">Content B</ds-tab-panel>
+    <ds-tab-panel for="c">Content C</ds-tab-panel>
+  </ds-tabs>
+</div>`,
+  ),
+})
+Inverted.storyName = '🧩 Inverted'
+
 export const FullwidthIcons = Story({
   ...withRender(
     () => `

@@ -37,6 +37,14 @@ export class Tab implements DsComponentInterface {
   readonly fullwidth: boolean = false
 
   /**
+   * Set by ds-tabs. When true, the tab renders in inverted (dark background) mode.
+   * @internal
+   */
+  @Prop({ mutable: true })
+  @ValidateEmptyOrType('boolean')
+  readonly inverted: boolean = false
+
+  /**
    * Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.
    */
   @Prop({ reflect: true })
@@ -117,6 +125,7 @@ export class Tab implements DsComponentInterface {
     const hostClass = {
       'is-selected': this.selected,
       'is-fullwidth': this.fullwidth,
+      'is-inverted': this.inverted,
       'is-navigation': this.navigation,
       'is-vertical': this.vertical,
     }

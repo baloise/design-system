@@ -52,6 +52,28 @@
   display: block;
 }
 
+// ─── Inverted mode ───────────────────────────────────────────────────────────
+// Override private vars so all slotted ds-tab children inherit the white palette.
+
+:host(.is-inverted) {
+  --_tabs-tab-color: var(--ds-alias-text-color-white);
+  --_tabs-tab-color-hover: var(--ds-alias-text-color-white);
+  --_tabs-tab-color-active: var(--ds-alias-text-color-white);
+  --_tabs-tab-color-selected: var(--ds-alias-text-color-white);
+  --_tabs-tab-border-color-selected: var(--ds-alias-text-color-white);
+  --_tabs-tab-font-family: var(--ds-alias-text-family-body);
+  --_tabs-tab-font-weight: var(--ds-alias-text-weight-regular);
+  --_tabs-border-color: rgba(255, 255, 255, 0.3);
+  --_tabs-tab-indicator-color-idle: rgba(255, 255, 255, 0.5);
+  --_tabs-tab-color-focus: var(--ds-alias-interaction-focus-color-inverted);
+  --_tabs-scroll-fade-bg: var(--ds-alias-background-color-primary);
+  --_tabs-scroll-btn-color-text: var(--ds-alias-text-color-white);
+  --_tabs-scroll-btn-color-hover-background: rgba(255, 255, 255, 0.12);
+  --_tabs-scroll-btn-color-hover-text: var(--ds-alias-text-color-white);
+  --_tabs-scroll-btn-color-active-background: rgba(255, 255, 255, 0.24);
+  --_tabs-scroll-btn-color-active-text: var(--ds-alias-text-color-white);
+}
+
 // ─── Carousel outer wrapper ───────────────────────────────────────────────────
 
 :host .tablist-outer {
