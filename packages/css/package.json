@@ -40,9 +40,9 @@
   },
   "devDependencies": {
     "autoprefixer": "10.5.0",
-    "postcss": "8.5.14",
-    "sass": "1.99.0",
+    "postcss": "8.5.15",
+    "sass": "1.100.0",
     "tsx": "^4.22.2",
-    "unocss": "^66.0.0"
+    "unocss": "^66.7.0"
   }
 }
