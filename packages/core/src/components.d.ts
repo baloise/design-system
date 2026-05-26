@@ -32,8 +32,8 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { DS as DS1, StepsChangeDetail } from "./components/steps/steps.interfaces";
-import { DS as DS2, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+import { DS, StepsChangeDetail } from "./components/steps/steps.interfaces";
+import { DS as DS1, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -66,8 +66,8 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { DS as DS1, StepsChangeDetail } from "./components/steps/steps.interfaces";
-export { DS as DS2, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+export { DS, StepsChangeDetail } from "./components/steps/steps.interfaces";
+export { DS as DS1, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -2245,7 +2245,7 @@ export namespace Components {
           * Accent color applied to the bottom border track and selected indicator.
           * @default ''
          */
-        "color": DS2.TabsColor;
+        "color": DS1.TabsColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
@@ -5950,7 +5950,7 @@ declare namespace LocalJSX {
           * Accent color applied to the bottom border track and selected indicator.
           * @default ''
          */
-        "color"?: DS2.TabsColor;
+        "color"?: DS1.TabsColor;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
           * @default false
