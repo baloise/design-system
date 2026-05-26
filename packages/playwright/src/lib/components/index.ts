@@ -1,4 +1,5 @@
 export * from './accordion.po'
+export * from './carousel.po'
 export * from './input.po'
 export * from './app.po'
 export * from './badge.po'

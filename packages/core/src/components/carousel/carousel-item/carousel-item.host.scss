@@ -1,0 +1,145 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+// ─── Image variant ───────────────────────────────────────────────────────────
+
+:host(.is-slide) {
+  display: block;
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  overflow: hidden;
+  border-radius: var(--ds-alias-radius-base);
+}
+
+:host(.is-slide) img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+// ─── Product variant ─────────────────────────────────────────────────────────
+
+:host(.is-tile) {
+  position: relative;
+  flex: 0 0 var(--carousel-item-width, auto);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: var(--ds-alias-radius-base);
+  background-color: var(--ds-alias-background-color-grey);
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 120ms ease,
+    box-shadow 120ms ease;
+
+  @include hover {
+    &:hover {
+      background-color: var(--ds-alias-background-color-grey-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--ds-alias-background-color-grey-active);
+  }
+}
+
+:host(.is-tile:focus-visible:not(:active)) {
+  @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+}
+
+:host(.is-tile.is-selected) {
+  background-color: var(--ds-alias-background-color-primary-light);
+}
+
+// ─── Color variants (product) — level 1 (lightest) base ──────────────────────
+
+:host(.is-tile.is-purple) {
+  background-color: var(--ds-alias-background-color-purple-lighter);
+
+  @include hover {
+    &:hover {
+      background-color: var(--ds-alias-background-color-purple-light);
+    }
+  }
+
+  &:active {
+    background-color: var(--ds-alias-background-color-purple);
+  }
+}
+
+:host(.is-tile.is-green) {
+  background-color: var(--ds-alias-background-color-green-lighter);
+
+  @include hover {
+    &:hover {
+      background-color: var(--ds-alias-background-color-green-light);
+    }
+  }
+
+  &:active {
+    background-color: var(--ds-alias-background-color-green);
+  }
+}
+
+:host(.is-tile.is-red) {
+  background-color: var(--ds-alias-background-color-red-lighter);
+
+  @include hover {
+    &:hover {
+      background-color: var(--ds-alias-background-color-red-light);
+    }
+  }
+
+  &:active {
+    background-color: var(--ds-alias-background-color-red);
+  }
+}
+
+:host(.is-tile.is-yellow) {
+  background-color: var(--ds-alias-background-color-yellow-lighter);
+
+  @include hover {
+    &:hover {
+      background-color: var(--ds-alias-background-color-yellow-light);
+    }
+  }
+
+  &:active {
+    background-color: var(--ds-alias-background-color-yellow);
+  }
+}
+
+// ─── Navigation (link) mode ───────────────────────────────────────────────────
+// Consumer owns all tile content inside <a href="...">. The host removes its
+// own padding so the <a> fills edge-to-edge and handles its own padding.
+
+:host(.is-tile.is-navigation) {
+  padding: 0;
+  cursor: default;
+}
+
+:host(.is-tile.is-navigation) ::slotted(a) {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  font-size: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+:host(.is-tile.is-navigation) ::slotted(a:focus-visible) {
+  @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+}

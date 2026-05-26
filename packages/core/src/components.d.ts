@@ -12,6 +12,7 @@ import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.i
 import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+import { CarouselChangeDetail, DS } from "./components/carousel/carousel.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 import { CloseSize } from "./components/close/close.interfaces";
@@ -31,8 +32,8 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { DS, StepsChangeDetail } from "./components/steps/steps.interfaces";
-import { TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+import { DS as DS1, StepsChangeDetail } from "./components/steps/steps.interfaces";
+import { DS as DS2, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -45,6 +46,7 @@ export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.i
 export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+export { CarouselChangeDetail, DS } from "./components/carousel/carousel.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 export { CloseSize } from "./components/close/close.interfaces";
@@ -64,8 +66,8 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { DS, StepsChangeDetail } from "./components/steps/steps.interfaces";
-export { TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+export { DS as DS1, StepsChangeDetail } from "./components/steps/steps.interfaces";
+export { DS as DS2, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -539,6 +541,80 @@ export namespace Components {
         "visualLevel": HeadingVisualLevel;
     }
     /**
+     * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+     */
+    interface DsCarousel {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
+          * @default 'dots'
+         */
+        "controls": DS.CarouselControls;
+        /**
+          * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.
+          * @default 'auto'
+         */
+        "itemsPerView": number | 'auto';
+        /**
+          * Accessible label for the carousel region.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Number of items to advance per arrow click.
+          * @default 1
+         */
+        "steps": number;
+        /**
+          * Name of the currently selected ds-carousel-item.
+         */
+        "value"?: string | null;
+        /**
+          * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
+          * @default 'slide'
+         */
+        "variant": DS.CarouselVariant;
+    }
+    /**
+     * Carousel Item is a single slide or product tile inside a ds-carousel.
+     */
+    interface DsCarouselItem {
+        /**
+          * Set by ds-carousel. The carousel variant this item is part of.
+          * @default 'slide'
+         */
+        "carouselVariant": DS.CarouselVariant;
+        /**
+          * Background color for product tiles.
+          * @default ''
+         */
+        "color": DS.CarouselItemColor;
+        /**
+          * Set by ds-carousel. 1-based position index.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * Unique identifier for this item, matched by the parent ds-carousel `value` prop.
+         */
+        "name": string;
+        /**
+          * When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot, which is stretched to cover the full tile and acts as the interactive element.
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Image URL displayed in image-variant slides, or brand icon source for product tiles.
+          * @default ''
+         */
+        "src": string;
+    }
+    /**
      * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
      */
     interface DsCheckbox {
@@ -904,6 +980,11 @@ export namespace Components {
           * Defines the size of the icon.
          */
         "size": IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src": string;
         /**
           * Svg content.
           * @default ''
@@ -2092,7 +2173,7 @@ export namespace Components {
           * Accent color applied to inactive circles and connector lines.
           * @default ''
          */
-        "color": DS.StepsColor;
+        "color": DS1.StepsColor;
         /**
           * Accessible label for the navigation landmark (navigation variant only).
           * @default ''
@@ -2160,6 +2241,11 @@ export namespace Components {
      * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
      */
     interface DsTabs {
+        /**
+          * Accent color applied to the bottom border track and selected indicator.
+          * @default ''
+         */
+        "color": DS2.TabsColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
@@ -2610,6 +2696,14 @@ export interface DsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsButtonElement;
 }
+export interface DsCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsCarouselElement;
+}
+export interface DsCarouselItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsCarouselItemElement;
+}
 export interface DsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsCheckboxElement;
@@ -2838,6 +2932,46 @@ declare global {
     var HTMLDsCardTitleElement: {
         prototype: HTMLDsCardTitleElement;
         new (): HTMLDsCardTitleElement;
+    };
+    interface HTMLDsCarouselElementEventMap {
+        "dsChange": CarouselChangeDetail;
+    }
+    /**
+     * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+     */
+    interface HTMLDsCarouselElement extends Components.DsCarousel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCarouselElementEventMap>(type: K, listener: (this: HTMLDsCarouselElement, ev: DsCarouselCustomEvent<HTMLDsCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCarouselElementEventMap>(type: K, listener: (this: HTMLDsCarouselElement, ev: DsCarouselCustomEvent<HTMLDsCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCarouselElement: {
+        prototype: HTMLDsCarouselElement;
+        new (): HTMLDsCarouselElement;
+    };
+    interface HTMLDsCarouselItemElementEventMap {
+        "dsCarouselItemSelect": { name: string };
+    }
+    /**
+     * Carousel Item is a single slide or product tile inside a ds-carousel.
+     */
+    interface HTMLDsCarouselItemElement extends Components.DsCarouselItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCarouselItemElementEventMap>(type: K, listener: (this: HTMLDsCarouselItemElement, ev: DsCarouselItemCustomEvent<HTMLDsCarouselItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCarouselItemElementEventMap>(type: K, listener: (this: HTMLDsCarouselItemElement, ev: DsCarouselItemCustomEvent<HTMLDsCarouselItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCarouselItemElement: {
+        prototype: HTMLDsCarouselItemElement;
+        new (): HTMLDsCarouselItemElement;
     };
     interface HTMLDsCheckboxElementEventMap {
         "dsFocus": CheckboxFocusDetail;
@@ -3433,6 +3567,8 @@ declare global {
         "ds-card-header": HTMLDsCardHeaderElement;
         "ds-card-subtitle": HTMLDsCardSubtitleElement;
         "ds-card-title": HTMLDsCardTitleElement;
+        "ds-carousel": HTMLDsCarouselElement;
+        "ds-carousel-item": HTMLDsCarouselItemElement;
         "ds-checkbox": HTMLDsCheckboxElement;
         "ds-checkbox-group": HTMLDsCheckboxGroupElement;
         "ds-close": HTMLDsCloseElement;
@@ -3967,6 +4103,87 @@ declare namespace LocalJSX {
         "visualLevel"?: HeadingVisualLevel;
     }
     /**
+     * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+     */
+    interface DsCarousel {
+        /**
+          * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
+          * @default 'dots'
+         */
+        "controls"?: DS.CarouselControls;
+        /**
+          * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.
+          * @default 'auto'
+         */
+        "itemsPerView"?: number | 'auto';
+        /**
+          * Accessible label for the carousel region.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted when the selected item changes.
+         */
+        "onDsChange"?: (event: DsCarouselCustomEvent<CarouselChangeDetail>) => void;
+        /**
+          * Number of items to advance per arrow click.
+          * @default 1
+         */
+        "steps"?: number;
+        /**
+          * Name of the currently selected ds-carousel-item.
+         */
+        "value"?: string | null;
+        /**
+          * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
+          * @default 'slide'
+         */
+        "variant"?: DS.CarouselVariant;
+    }
+    /**
+     * Carousel Item is a single slide or product tile inside a ds-carousel.
+     */
+    interface DsCarouselItem {
+        /**
+          * Set by ds-carousel. The carousel variant this item is part of.
+          * @default 'slide'
+         */
+        "carouselVariant"?: DS.CarouselVariant;
+        /**
+          * Background color for product tiles.
+          * @default ''
+         */
+        "color"?: DS.CarouselItemColor;
+        /**
+          * Set by ds-carousel. 1-based position index.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * Unique identifier for this item, matched by the parent ds-carousel `value` prop.
+         */
+        "name": string;
+        /**
+          * When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot, which is stretched to cover the full tile and acts as the interactive element.
+          * @default false
+         */
+        "navigation"?: boolean;
+        /**
+          * Emitted when the user clicks this item (product variant).
+         */
+        "onDsCarouselItemSelect"?: (event: DsCarouselItemCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Image URL displayed in image-variant slides, or brand icon source for product tiles.
+          * @default ''
+         */
+        "src"?: string;
+    }
+    /**
      * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
      */
     interface DsCheckbox {
@@ -4361,6 +4578,11 @@ declare namespace LocalJSX {
           * Defines the size of the icon.
          */
         "size"?: IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src"?: string;
         /**
           * Svg content.
           * @default ''
@@ -5648,7 +5870,7 @@ declare namespace LocalJSX {
           * Accent color applied to inactive circles and connector lines.
           * @default ''
          */
-        "color"?: DS.StepsColor;
+        "color"?: DS1.StepsColor;
         /**
           * Accessible label for the navigation landmark (navigation variant only).
           * @default ''
@@ -5724,6 +5946,11 @@ declare namespace LocalJSX {
      * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
      */
     interface DsTabs {
+        /**
+          * Accent color applied to the bottom border track and selected indicator.
+          * @default ''
+         */
+        "color"?: DS2.TabsColor;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
           * @default false
@@ -6307,6 +6534,23 @@ declare namespace LocalJSX {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
     }
+    interface DsCarouselAttributes {
+        "controls": DS.CarouselControls;
+        "variant": DS.CarouselVariant;
+        "itemsPerView": string;
+        "label": string;
+        "steps": number;
+        "value": string | null;
+    }
+    interface DsCarouselItemAttributes {
+        "color": DS.CarouselItemColor;
+        "carouselVariant": DS.CarouselVariant;
+        "navigation": boolean;
+        "index": number;
+        "name": string;
+        "selected": boolean;
+        "src": string;
+    }
     interface DsCheckboxAttributes {
         "name": string;
         "label": string;
@@ -6379,6 +6623,7 @@ declare namespace LocalJSX {
     interface DsIconAttributes {
         "name": string;
         "svg": string;
+        "src": string;
         "size": IconSize;
         "color": IconColor;
         "shape": IconShape;
@@ -6651,6 +6896,7 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsTabsAttributes {
+        "color": DS.TabsColor;
         "fullwidth": boolean;
         "inverted": boolean;
         "label": string;
@@ -6755,6 +7001,8 @@ declare namespace LocalJSX {
         "ds-card-header": Omit<DsCardHeader, keyof DsCardHeaderAttributes> & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes]?: DsCardHeader[K] } & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes as `attr:${K}`]?: DsCardHeaderAttributes[K] } & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes as `prop:${K}`]?: DsCardHeader[K] };
         "ds-card-subtitle": Omit<DsCardSubtitle, keyof DsCardSubtitleAttributes> & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes]?: DsCardSubtitle[K] } & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes as `attr:${K}`]?: DsCardSubtitleAttributes[K] } & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes as `prop:${K}`]?: DsCardSubtitle[K] };
         "ds-card-title": Omit<DsCardTitle, keyof DsCardTitleAttributes> & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes]?: DsCardTitle[K] } & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes as `attr:${K}`]?: DsCardTitleAttributes[K] } & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes as `prop:${K}`]?: DsCardTitle[K] };
+        "ds-carousel": Omit<DsCarousel, keyof DsCarouselAttributes> & { [K in keyof DsCarousel & keyof DsCarouselAttributes]?: DsCarousel[K] } & { [K in keyof DsCarousel & keyof DsCarouselAttributes as `attr:${K}`]?: DsCarouselAttributes[K] } & { [K in keyof DsCarousel & keyof DsCarouselAttributes as `prop:${K}`]?: DsCarousel[K] };
+        "ds-carousel-item": Omit<DsCarouselItem, keyof DsCarouselItemAttributes> & { [K in keyof DsCarouselItem & keyof DsCarouselItemAttributes]?: DsCarouselItem[K] } & { [K in keyof DsCarouselItem & keyof DsCarouselItemAttributes as `attr:${K}`]?: DsCarouselItemAttributes[K] } & { [K in keyof DsCarouselItem & keyof DsCarouselItemAttributes as `prop:${K}`]?: DsCarouselItem[K] } & OneOf<"name", DsCarouselItem["name"], DsCarouselItemAttributes["name"]>;
         "ds-checkbox": Omit<DsCheckbox, keyof DsCheckboxAttributes> & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes]?: DsCheckbox[K] } & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes as `attr:${K}`]?: DsCheckboxAttributes[K] } & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes as `prop:${K}`]?: DsCheckbox[K] };
         "ds-checkbox-group": Omit<DsCheckboxGroup, keyof DsCheckboxGroupAttributes> & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes]?: DsCheckboxGroup[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `attr:${K}`]?: DsCheckboxGroupAttributes[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `prop:${K}`]?: DsCheckboxGroup[K] };
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
@@ -6846,6 +7094,14 @@ declare module "@stencil/core" {
              * Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.
              */
             "ds-card-title": LocalJSX.IntrinsicElements["ds-card-title"] & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
+            /**
+             * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+             */
+            "ds-carousel": LocalJSX.IntrinsicElements["ds-carousel"] & JSXBase.HTMLAttributes<HTMLDsCarouselElement>;
+            /**
+             * Carousel Item is a single slide or product tile inside a ds-carousel.
+             */
+            "ds-carousel-item": LocalJSX.IntrinsicElements["ds-carousel-item"] & JSXBase.HTMLAttributes<HTMLDsCarouselItemElement>;
             /**
              * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
              */

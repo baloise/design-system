@@ -153,6 +153,11 @@ export const config: Config = {
           dest: 'assets/images',
           warn: true,
         },
+        {
+          src: join(packagesDir, 'assets', 'src', 'brand-icons', 'svg'),
+          dest: 'assets/images/brand-icons',
+          warn: true,
+        },
       ],
     },
     /**

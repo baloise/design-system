@@ -41,6 +41,47 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
+export const ColorVariants = Story({
+  ...withRender(
+    () => `
+<ds-stack direction="column" gap="md">
+  <ds-tabs color="purple">
+    <ds-tab name="a">Tab A</ds-tab>
+    <ds-tab name="b">Tab B</ds-tab>
+    <ds-tab name="c">Tab C</ds-tab>
+    <ds-tab-panel for="a">Content A</ds-tab-panel>
+    <ds-tab-panel for="b">Content B</ds-tab-panel>
+    <ds-tab-panel for="c">Content C</ds-tab-panel>
+  </ds-tabs>
+  <ds-tabs color="green">
+    <ds-tab name="a">Tab A</ds-tab>
+    <ds-tab name="b">Tab B</ds-tab>
+    <ds-tab name="c">Tab C</ds-tab>
+    <ds-tab-panel for="a">Content A</ds-tab-panel>
+    <ds-tab-panel for="b">Content B</ds-tab-panel>
+    <ds-tab-panel for="c">Content C</ds-tab-panel>
+  </ds-tabs>
+  <ds-tabs color="red">
+    <ds-tab name="a">Tab A</ds-tab>
+    <ds-tab name="b">Tab B</ds-tab>
+    <ds-tab name="c">Tab C</ds-tab>
+    <ds-tab-panel for="a">Content A</ds-tab-panel>
+    <ds-tab-panel for="b">Content B</ds-tab-panel>
+    <ds-tab-panel for="c">Content C</ds-tab-panel>
+  </ds-tabs>
+  <ds-tabs color="yellow">
+    <ds-tab name="a">Tab A</ds-tab>
+    <ds-tab name="b">Tab B</ds-tab>
+    <ds-tab name="c">Tab C</ds-tab>
+    <ds-tab-panel for="a">Content A</ds-tab-panel>
+    <ds-tab-panel for="b">Content B</ds-tab-panel>
+    <ds-tab-panel for="c">Content C</ds-tab-panel>
+  </ds-tabs>
+</ds-stack>`,
+  ),
+})
+ColorVariants.storyName = '🧩 Color Variants'
+
 export const Inverted = Story({
   ...withRender(
     () => `

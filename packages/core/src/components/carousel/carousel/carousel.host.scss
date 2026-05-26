@@ -1,0 +1,240 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * @prop --carousel-gap: Gap between slides / product items.
+ * @prop --carousel-control-color: Color of the scroll arrow buttons.
+ * @prop --carousel-scroll-fade-bg: Background color for the edge-fade gradient in the product variant.
+ */
+
+:host {
+  @include vars.local(carousel-gap, var(--ds-carousel-gap));
+  @include vars.local(carousel-control-color, var(--ds-carousel-control-color));
+  @include vars.local(carousel-scroll-fade-bg, var(--ds-carousel-scroll-fade-bg));
+  @include vars.local(
+    carousel-scroll-btn-bg-active,
+    var(--ds-carousel-scroll-btn-background-active, var(--ds-alias-background-color-primary))
+  );
+  @include vars.local(
+    carousel-scroll-btn-bg-active-hover,
+    var(--ds-carousel-scroll-btn-background-active-hover, var(--ds-alias-background-color-primary-hover))
+  );
+  @include vars.local(
+    carousel-scroll-btn-bg-active-pressed,
+    var(--ds-carousel-scroll-btn-background-active-pressed, var(--ds-alias-background-color-primary-active))
+  );
+  @include vars.local(
+    carousel-scroll-btn-color-active,
+    var(--ds-carousel-scroll-btn-color-active, var(--ds-alias-text-color-white))
+  );
+
+  display: block;
+}
+
+// ─── Shared track ────────────────────────────────────────────────────────────
+
+:host .carousel-track {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+:host .carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+// ─── Shared outer wrapper ────────────────────────────────────────────────────
+
+:host .carousel-outer {
+  display: flex;
+  align-items: center;
+}
+
+// ─── Slide variant ───────────────────────────────────────────────────────────
+
+:host(.is-slide) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+:host(.is-slide) .carousel-track {
+  scroll-snap-type: x mandatory;
+  gap: 0;
+}
+
+// Pagination (dots variant) — centered below the track
+:host(.is-slide) .pagination {
+  align-self: center;
+}
+
+// Slide large arrows — absolutely positioned inside the image, 1rem from the edges
+:host(.is-slide) .carousel-outer {
+  position: relative;
+  display: block;
+}
+
+:host(.is-slide) .scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  background-color: var(--_carousel-scroll-btn-bg-active);
+  color: var(--_carousel-scroll-btn-color-active);
+  --mod-icon-color: currentColor;
+  --icon-color: var(--_carousel-scroll-btn-color-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+
+  @include hover {
+    &:hover {
+      background-color: var(--_carousel-scroll-btn-bg-active-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--_carousel-scroll-btn-bg-active-pressed);
+  }
+}
+
+:host(.is-slide) .scroll-btn--prev {
+  left: 1rem;
+}
+
+:host(.is-slide) .scroll-btn--next {
+  right: 1rem;
+}
+
+// ─── Tile variant ─────────────────────────────────────────────────────────────
+
+:host(.is-tile) {
+  display: block;
+}
+
+:host(.is-tile) .carousel-outer {
+  position: relative;
+}
+
+:host(.is-tile) .carousel-track {
+  flex: 1;
+  min-width: 0;
+  gap: var(--_carousel-gap);
+  scroll-behavior: smooth;
+}
+
+// Edge-fade — overlays the track edges when overflow exists; fades in on the scrollable side
+:host(.is-tile.has-overflow) .carousel-outer::before,
+:host(.is-tile.has-overflow) .carousel-outer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+:host(.is-tile.has-overflow) .carousel-outer::before {
+  left: calc(2.5rem + 0.25rem);
+  background: linear-gradient(to right, var(--_carousel-scroll-fade-bg), transparent);
+}
+
+:host(.is-tile.has-overflow) .carousel-outer::after {
+  right: calc(2.5rem + 0.25rem);
+  background: linear-gradient(to left, var(--_carousel-scroll-fade-bg), transparent);
+}
+
+// Specificity must match the base rule (two host classes) so opacity:1 wins
+:host(.is-tile.can-scroll-left) .carousel-outer::before {
+  opacity: 1;
+}
+
+:host(.is-tile.can-scroll-right) .carousel-outer::after {
+  opacity: 1;
+}
+
+// Product scroll arrows — 40 × 40 px, hidden until overflow is detected
+:host(.is-tile) .scroll-btn {
+  flex-shrink: 0;
+  width: 0;
+  height: 2.5rem;
+  min-width: 0;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 9999px;
+  background: none;
+  color: var(--_carousel-control-color);
+  --mod-icon-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+  transition:
+    width 120ms ease,
+    min-width 120ms ease,
+    margin 120ms ease,
+    opacity 120ms ease,
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+// Disabled look — visible but muted, not interactive
+:host(.is-tile.has-overflow) .scroll-btn {
+  width: 2.5rem;
+  min-width: 2.5rem;
+  opacity: 0.35;
+}
+
+:host(.is-tile.has-overflow) .scroll-btn--prev {
+  margin-right: 0.25rem;
+}
+
+:host(.is-tile.has-overflow) .scroll-btn--next {
+  margin-left: 0.25rem;
+}
+
+// Active — primary background, white icon, fully interactive
+:host(.is-tile.can-scroll-left) .scroll-btn--prev,
+:host(.is-tile.can-scroll-right) .scroll-btn--next {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: var(--_carousel-scroll-btn-bg-active);
+  color: var(--_carousel-scroll-btn-color-active);
+  --icon-color: var(--_carousel-scroll-btn-color-active);
+
+  @include hover {
+    &:hover {
+      background-color: var(--_carousel-scroll-btn-bg-active-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--_carousel-scroll-btn-bg-active-pressed);
+  }
+}

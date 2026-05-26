@@ -13131,6 +13131,786 @@
       "listeners": []
     },
     {
+      "fileName": "carousel.tsx",
+      "tag": "ds-carousel",
+      "overview": "Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.",
+      "usage": {},
+      "docs": "Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- ds-carousel-item children."
+        },
+        {
+          "name": "part",
+          "text": "track - The scrollable item track."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon",
+        "ds-pagination"
+      ],
+      "dependencyGraph": {
+        "ds-carousel": [
+          "ds-icon",
+          "ds-pagination"
+        ],
+        "ds-pagination": [
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "controls",
+          "type": "\"dots\" | \"large\" | \"none\"",
+          "complexType": {
+            "original": "DS.CarouselControls",
+            "resolved": "\"dots\" | \"large\" | \"none\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "controls",
+          "reflectToAttr": false,
+          "docs": "Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'dots'"
+            }
+          ],
+          "default": "'dots'",
+          "values": [
+            {
+              "value": "dots",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "itemsPerView",
+          "type": "\"auto\" | number",
+          "complexType": {
+            "original": "number | 'auto'",
+            "resolved": "\"auto\" | number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "items-per-view",
+          "reflectToAttr": false,
+          "docs": "Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'auto'"
+            }
+          ],
+          "default": "'auto'",
+          "values": [
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the carousel region.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "steps",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "steps",
+          "reflectToAttr": false,
+          "docs": "Number of items to advance per arrow click.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string | undefined",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Name of the currently selected ds-carousel-item.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "variant",
+          "type": "\"slide\" | \"tile\"",
+          "complexType": {
+            "original": "DS.CarouselVariant",
+            "resolved": "\"slide\" | \"tile\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'slide'"
+            }
+          ],
+          "default": "'slide'",
+          "values": [
+            {
+              "value": "slide",
+              "type": "string"
+            },
+            {
+              "value": "tile",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsChange",
+          "detail": "{ value: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "CarouselChangeDetail",
+            "resolved": "{ value: string; }",
+            "references": {
+              "CarouselChangeDetail": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::CarouselChangeDetail",
+                "referenceLocation": "CarouselChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected item changes.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--carousel-gap",
+          "docs": "Gap between slides / product items."
+        },
+        {
+          "name": "--carousel-control-color",
+          "docs": "Color of the scroll arrow buttons."
+        },
+        {
+          "name": "--carousel-scroll-fade-bg",
+          "docs": "Background color for the edge-fade gradient in the product variant."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "ds-carousel-item children."
+        }
+      ],
+      "parts": [
+        {
+          "name": "track",
+          "docs": "The scrollable item track."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "dsCarouselItemSelect",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Carousel / Gap",
+          "cssVarName": "--ds-carousel-gap",
+          "value": "{🔗 Alias.↔️ Space.SM.Mobile}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-12",
+              "figmaName": "Global / Size / Space / 12"
+            },
+            {
+              "cssVar": "--ds-space-sm-mobile",
+              "figmaName": "Alias / Space / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-carousel-gap",
+              "figmaName": "Component / Carousel / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / Size",
+          "cssVarName": "--ds-carousel-dot-size",
+          "value": "8px",
+          "nativeValue": "8px",
+          "inheritance": [
+            {
+              "cssVar": "--ds-carousel-dot-size",
+              "figmaName": "Component / Carousel / Dot / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / SizeActive",
+          "cssVarName": "--ds-carousel-dot-sizeactive",
+          "value": "10px",
+          "nativeValue": "10px",
+          "inheritance": [
+            {
+              "cssVar": "--ds-carousel-dot-sizeactive",
+              "figmaName": "Component / Carousel / Dot / SizeActive"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "SizeActive"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / Color",
+          "cssVarName": "--ds-carousel-dot-color",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-carousel-dot-color",
+              "figmaName": "Component / Carousel / Dot / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / ColorActive",
+          "cssVarName": "--ds-carousel-dot-coloractive",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-carousel-dot-coloractive",
+              "figmaName": "Component / Carousel / Dot / ColorActive"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "ColorActive"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Control / Color",
+          "cssVarName": "--ds-carousel-control-color",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-carousel-control-color",
+              "figmaName": "Component / Carousel / Control / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Control",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollFadeBg",
+          "cssVarName": "--ds-carousel-scrollfadebg",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollfadebg",
+              "figmaName": "Component / Carousel / ScrollFadeBg"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollFadeBg"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Background / Active",
+          "cssVarName": "--ds-carousel-scrollbtn-background-active",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-background-active",
+              "figmaName": "Component / Carousel / ScrollBtn / Background / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Background",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Background / ActiveHover",
+          "cssVarName": "--ds-carousel-scrollbtn-background-activehover",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryhover",
+              "figmaName": "Alias / Background / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-background-activehover",
+              "figmaName": "Component / Carousel / ScrollBtn / Background / ActiveHover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Background",
+            "ActiveHover"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Background / ActivePressed",
+          "cssVarName": "--ds-carousel-scrollbtn-background-activepressed",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryactive",
+              "figmaName": "Alias / Background / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-background-activepressed",
+              "figmaName": "Component / Carousel / ScrollBtn / Background / ActivePressed"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Background",
+            "ActivePressed"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Color / Active",
+          "cssVarName": "--ds-carousel-scrollbtn-color-active",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-color-active",
+              "figmaName": "Component / Carousel / ScrollBtn / Color / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Color",
+            "Active"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "carousel-item.tsx",
+      "tag": "ds-carousel-item",
+      "overview": "Carousel Item is a single slide or product tile inside a ds-carousel.",
+      "usage": {},
+      "docs": "Carousel Item is a single slide or product tile inside a ds-carousel.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- Slide content (image variant) or label text (product variant)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.CarouselItemColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Background color for product tiles.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "Unique identifier for this item, matched by the parent ds-carousel `value` prop.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "navigation",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "navigation",
+          "reflectToAttr": false,
+          "docs": "When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot,\nwhich is stretched to cover the full tile and acts as the interactive element.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "src",
+          "reflectToAttr": false,
+          "docs": "Image URL displayed in image-variant slides, or brand icon source for product tiles.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsCarouselItemSelect",
+          "detail": "{ name: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "{ name: string }",
+            "resolved": "{ name: string; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the user clicks this item (product variant).",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Slide content (image variant) or label text (product variant)."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
       "fileName": "checkbox.tsx",
       "tag": "ds-checkbox",
       "overview": "Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.",
@@ -18623,6 +19403,7 @@
         "ds-accordion",
         "ds-badge",
         "ds-button",
+        "ds-carousel",
         "ds-checkbox-group",
         "ds-input",
         "ds-item",
@@ -18645,6 +19426,9 @@
           "ds-icon"
         ],
         "ds-button": [
+          "ds-icon"
+        ],
+        "ds-carousel": [
           "ds-icon"
         ],
         "ds-checkbox-group": [
@@ -19014,6 +19798,35 @@
             },
             {
               "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "src",
+          "reflectToAttr": false,
+          "docs": "URL of an SVG file to fetch and display.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -28485,13 +29298,18 @@
         }
       ],
       "encapsulation": "shadow",
-      "dependents": [],
+      "dependents": [
+        "ds-carousel"
+      ],
       "dependencies": [
         "ds-icon"
       ],
       "dependencyGraph": {
         "ds-pagination": [
           "ds-icon"
+        ],
+        "ds-carousel": [
+          "ds-pagination"
         ]
       },
       "props": [
@@ -37818,6 +38636,58 @@
       },
       "props": [
         {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.TabsColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Accent color applied to the bottom border track and selected indicator.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "fullwidth",
           "type": "boolean",
           "complexType": {
@@ -44631,6 +45501,16 @@
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
     },
+    "src/components/carousel/carousel.interfaces.ts::DS": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components/carousel/carousel.interfaces.ts"
+    },
+    "src/components/carousel/carousel.interfaces.ts::CarouselChangeDetail": {
+      "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/carousel/carousel.interfaces.ts"
+    },
     "src/components/checkbox/checkbox.interfaces.ts::CheckboxLabelPosition": {
       "declaration": "\"left\" | \"right\" | \"top\"",
       "docstring": "",
@@ -45040,6 +45920,11 @@
       "declaration": "{ value: string }",
       "docstring": "",
       "path": "src/components/steps/steps.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::DS": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
     },
     "src/components/tabs/tabs.interfaces.ts::TabsVerticalColSize": {
       "declaration": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",

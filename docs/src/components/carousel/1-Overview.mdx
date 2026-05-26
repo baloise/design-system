@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CarouselStories from './carousel.stories'
+import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
+
+<Meta title="Components/Carousel/Overview" />
+
+<Banner label={'Overview'} section={CAROUSEL_DOC_CONFIG.section} color={CAROUSEL_DOC_CONFIG.color} />
+
+<BannerTabs of={CarouselStories} tabs={getCarouselTabs('overview')} />
+
+<ComponentLead component="carousel" />
+
+<CanvasTabs htmlOf={CarouselStories.SlideHtml} of={CarouselStories.Slide} />
+
+<Controls of={CarouselStories.Slide} />
+
+<ComponentPublicMethods component="carousel" subComponents={['carousel-item']} />
+
+<Footer />

@@ -13,6 +13,8 @@ export const tags: string[] = [
   "ds-card-header",
   "ds-card-subtitle",
   "ds-card-title",
+  "ds-carousel",
+  "ds-carousel-item",
   "ds-checkbox",
   "ds-checkbox-group",
   "ds-close",

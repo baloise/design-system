@@ -15144,6 +15144,80 @@
         }
       }
     },
+    "TabsColor": {
+      "Purple": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.Purple}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:19",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "PurpleHover": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Purple.5}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:23",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Green": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.Green}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:20",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "GreenHover": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Green.5}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:24",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Red": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.Red}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:21",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "RedHover": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Red.5}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:25",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Yellow": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.Yellow}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:22",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "YellowHover": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Yellow.5}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:375:26",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      }
+    },
     "Steps": {
       "Connector": {
         "Color": {
@@ -15419,6 +15493,120 @@
           "com.figma.scopes": ["ALL_SCOPES"],
           "com.figma.type": "string",
           "com.figma.isOverride": true
+        }
+      }
+    },
+    "Carousel": {
+      "Gap": {
+        "$type": "string",
+        "$value": "{🔗 Alias.↔️ Space.SM.Mobile}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:377:1",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.type": "string",
+          "com.figma.isOverride": true
+        }
+      },
+      "Dot": {
+        "Size": {
+          "$type": "string",
+          "$value": "8px",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:377:2",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        },
+        "SizeActive": {
+          "$type": "string",
+          "$value": "10px",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:377:3",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        },
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:377:4",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.isOverride": true
+          }
+        },
+        "ColorActive": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:377:5",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "Control": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:377:6",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "ScrollFadeBg": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.White}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:377:7",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "ScrollBtn": {
+        "Background": {
+          "Active": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:377:8",
+              "com.figma.scopes": ["ALL_SCOPES"],
+              "com.figma.isOverride": true
+            }
+          },
+          "ActiveHover": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.PrimaryHover}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:377:9",
+              "com.figma.scopes": ["ALL_SCOPES"],
+              "com.figma.isOverride": true
+            }
+          },
+          "ActivePressed": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:377:10",
+              "com.figma.scopes": ["ALL_SCOPES"],
+              "com.figma.isOverride": true
+            }
+          }
+        },
+        "Color": {
+          "Active": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.White}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:377:11",
+              "com.figma.scopes": ["ALL_SCOPES"],
+              "com.figma.isOverride": true
+            }
+          }
         }
       }
     }

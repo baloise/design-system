@@ -1,21 +1,8 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'tabs'
+const TAG = 'carousel'
 
-const VARIANTS = [
-  'basic',
-  'inverted',
-  'colors',
-  'no-border',
-  'fullwidth-icons',
-  'badge',
-  'brand-icons',
-  'vertical',
-  'vertical-cols',
-  'navigation',
-  'navigation-vertical',
-  'carousel',
-] as const
+const VARIANTS = ['image', 'image-no-controls', 'product', 'product-fixed', 'colors'] as const
 
 const image = screenshot(TAG)
 
