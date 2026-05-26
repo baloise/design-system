@@ -77,7 +77,7 @@ In `<name>.tsx`, update the `@Component` decorator:
 
 ## Step 4 — Fix the Interfaces File
 
-The old structure used two separate namespaces (`BalProps`, `BalEvents`). Merge everything into a single `DS` namespace.
+The old structure used two separate namespaces (`BalProps`, `BalEvents`). Flatten everything into named exports — no namespace wrapper.
 
 **Before:**
 
@@ -97,32 +97,27 @@ namespace BalEvents {
 **After:**
 
 ```ts
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../interfaces.d.ts" />
+// --- Props types (was BalProps) ---
+export const TEXTAREA_WRAPS = ['hard', 'soft', 'off'] as const
+export type TextareaWrap = (typeof TEXTAREA_WRAPS)[number]
 
-namespace DS {
-  // --- Props types (was BalProps) ---
-  export type TextareaWrap = 'hard' | 'soft' | 'off'
-
-  // --- Event types (was BalEvents) ---
-  export interface TextareaCustomEvent<T> extends CustomEvent<T> {
-    detail: T
-    target: HTMLDs<Name>Element   // e.g. HTMLDsTextareaElement
-  }
-
-  export type TextareaChangeDetail = string | null
-  export type TextareaChange = TextareaCustomEvent<TextareaChangeDetail>
-  // ... remaining events
+// --- Event types (was BalEvents) ---
+export interface TextareaCustomEvent<T> extends CustomEvent<T> {
+  detail: T
+  target: HTMLDs<Name>Element   // e.g. HTMLDsTextareaElement
 }
+
+export type TextareaChangeDetail = string | null
+export type TextareaChange = TextareaCustomEvent<TextareaChangeDetail>
 ```
 
 Rules:
 
 - Drop the `Bal` prefix from every exported type name (`BalTextareaWrap` → `TextareaWrap`, `BalTextareaChangeDetail` → `TextareaChangeDetail`).
 - Rename `HTMLBal<Name>Element` → `HTMLDs<Name>Element` in the `CustomEvent` target.
-- One `namespace DS { }` block — no separate `BalProps`/`BalEvents` blocks.
+- Export everything flat — **no `namespace DS { }` or any other namespace block**.
+- Const arrays (`TEXTAREA_WRAPS`, etc.) replace plain union types for all constrained string props.
+- Remove the `/// <reference path="...">` triple-slash reference and any eslint-disable comments that accompanied it.
 
 ## Step 5 — Fix Imports & Type References in the .tsx File
 
@@ -130,28 +125,32 @@ Rules:
 
 Remove all data-testid in the jsx render function.
 
-### Remove old namespace imports
+### Fix namespace imports
 
-Old code typically imported or referenced `BalProps`/`BalEvents` as global declarations or explicit imports. Delete any lines like:
+Old code referenced `BalProps`/`BalEvents` as globals or explicit imports. Delete any lines like:
 
 ```ts
 import { BalProps } from '../../interfaces'
 import { BalEvents } from '../../interfaces'
 ```
 
-The `DS` namespace is declared globally via the triple-slash reference in `<name>.interfaces.ts` — no import needed.
+Import the named exports explicitly from the interfaces file instead:
+
+```ts
+import { TEXTAREA_WRAPS, TextareaWrap, TextareaChangeDetail } from '../textarea.interfaces'
+```
 
 ### Rename type usages
 
 Replace every occurrence in the `.tsx` file:
 
-| Old                               | New                     |
-| --------------------------------- | ----------------------- |
-| `BalProps.<Name>Wrap`             | `DS.<Name>Wrap`         |
-| `BalEvents.Bal<Name>ChangeDetail` | `DS.<Name>ChangeDetail` |
-| `BalEvents.Bal<Name>Change`       | `DS.<Name>Change`       |
-| `HTMLBal<Name>Element`            | `HTMLDs<Name>Element`   |
-| `bal-<name>` (in strings / JSX)   | `ds-<name>`             |
+| Old                               | New                         |
+| --------------------------------- | --------------------------- |
+| `BalProps.<Name>Wrap`             | `<Name>Wrap` (named import) |
+| `BalEvents.Bal<Name>ChangeDetail` | `<Name>ChangeDetail`        |
+| `BalEvents.Bal<Name>Change`       | `<Name>Change`              |
+| `HTMLBal<Name>Element`            | `HTMLDs<Name>Element`       |
+| `bal-<name>` (in strings / JSX)   | `ds-<name>`                 |
 
 ### Fix relative import paths
 

@@ -69,17 +69,15 @@ import { defaultConfig, DsConfigState, ListenToConfig } from '@global'
 ```ts
 /* component.interfaces.ts */
 
-namespace DS {
-  // Define const arrays as the SOURCE OF TRUTH
-  export const BADGE_SIZES = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const
-  export const BADGE_COLORS = ['grey', 'danger', 'warning', 'success', 'red', 'yellow', 'green', 'purple', ''] as const
-  export const BADGE_POSITIONS = ['card', 'button', 'tabs', ''] as const
+// Define const arrays as the SOURCE OF TRUTH — export flat, no namespace
+export const BADGE_SIZES = ['', 'xs', 'sm', 'md', 'lg', 'xl'] as const
+export const BADGE_COLORS = ['grey', 'danger', 'warning', 'success', 'red', 'yellow', 'green', 'purple', ''] as const
+export const BADGE_POSITIONS = ['card', 'button', 'tabs', ''] as const
 
-  // Derive the types from the arrays
-  export type BadgeSize = (typeof BADGE_SIZES)[number]
-  export type BadgeColor = (typeof BADGE_COLORS)[number]
-  export type BadgePosition = (typeof BADGE_POSITIONS)[number]
-}
+// Derive the types from the arrays
+export type BadgeSize = (typeof BADGE_SIZES)[number]
+export type BadgeColor = (typeof BADGE_COLORS)[number]
+export type BadgePosition = (typeof BADGE_POSITIONS)[number]
 ```
 
 **Usage in component:**
@@ -87,19 +85,20 @@ namespace DS {
 ```ts
 /* component.tsx */
 
+import { BADGE_SIZES, BadgeSize, BADGE_COLORS, BadgeColor, BADGE_POSITIONS, BadgePosition } from '../badge.interfaces'
 import { ValidateEmptyOrOneOf } from '@utils'
 
 @Prop({ reflect: true })
-@ValidateEmptyOrOneOf(...DS.BADGE_SIZES)
-readonly size: DS.BadgeSize = ''
+@ValidateEmptyOrOneOf(...BADGE_SIZES)
+readonly size: BadgeSize = ''
 
 @Prop({ reflect: true })
-@ValidateEmptyOrOneOf(...DS.BADGE_COLORS)
-readonly color: DS.BadgeColor = ''
+@ValidateEmptyOrOneOf(...BADGE_COLORS)
+readonly color: BadgeColor = ''
 
 @Prop({ reflect: true })
-@ValidateEmptyOrOneOf(...DS.BADGE_POSITIONS)
-readonly position: DS.BadgePosition = ''
+@ValidateEmptyOrOneOf(...BADGE_POSITIONS)
+readonly position: BadgePosition = ''
 ```
 
 **Benefits:**
@@ -114,14 +113,16 @@ readonly position: DS.BadgePosition = ''
 
 - Type is defined as a union string literal instead of derived from const: `type BadgeSize = 'xs' | 'sm' | 'md'` (not `typeof BADGE_SIZES[number]`)
 - Const array and type definition don't match — array has different values than type union
-- Component uses hardcoded values in `@ValidateEmptyOrOneOf(...)` instead of spreading const array: `@ValidateEmptyOrOneOf('xs', 'sm', 'md')` instead of `@ValidateEmptyOrOneOf(...DS.BADGE_SIZES)`
+- Component uses hardcoded values in `@ValidateEmptyOrOneOf(...)` instead of spreading const array: `@ValidateEmptyOrOneOf('xs', 'sm', 'md')` instead of `@ValidateEmptyOrOneOf(...BADGE_SIZES)`
+- Consts/types are wrapped in a `namespace DS { }` block instead of exported flat
 
 **How to fix:**
 
-1. Create const arrays in interfaces file for all constrained types
+1. Create const arrays in interfaces file for all constrained types, exported flat (no namespace)
 2. Change type definitions to use `typeof` derivation
-3. Update all `@ValidateEmptyOrOneOf(...)` decorators to spread the const array: `@ValidateEmptyOrOneOf(...DS.BADGE_SIZES)`
-4. Verify build passes and types are correct
+3. Import named exports in the component file
+4. Update all `@ValidateEmptyOrOneOf(...)` decorators to spread the const array: `@ValidateEmptyOrOneOf(...BADGE_SIZES)`
+5. Verify build passes and types are correct
 
 ---
 

@@ -17,7 +17,13 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '@global'
-import { DS, CarouselChangeDetail } from '../carousel.interfaces'
+import {
+  CAROUSEL_CONTROLS,
+  CarouselControls,
+  CAROUSEL_VARIANTS,
+  CarouselVariant,
+  CarouselChangeDetail,
+} from '../carousel.interfaces'
 import { i18nDsCarousel } from './carousel.i18n'
 
 /**
@@ -58,15 +64,15 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.CAROUSEL_CONTROLS)
-  readonly controls: DS.CarouselControls = 'dots'
+  @ValidateEmptyOrOneOf(...CAROUSEL_CONTROLS)
+  readonly controls: CarouselControls = 'dots'
 
   /**
    * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.CAROUSEL_VARIANTS)
-  readonly variant: DS.CarouselVariant = 'slide'
+  @ValidateEmptyOrOneOf(...CAROUSEL_VARIANTS)
+  readonly variant: CarouselVariant = 'slide'
 
   /**
    * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.

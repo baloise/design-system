@@ -17,7 +17,13 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '@global'
-import { DS, TabsChangeDetail, TABS_VERTICAL_COL_SIZES, TabsVerticalColSize } from '../tabs.interfaces'
+import {
+  TABS_COLORS,
+  TabsColor,
+  TabsChangeDetail,
+  TABS_VERTICAL_COL_SIZES,
+  TabsVerticalColSize,
+} from '../tabs.interfaces'
 import { i18nDsTabs } from './tabs.i18n'
 
 /**
@@ -49,8 +55,8 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
    * Accent color applied to the bottom border track and selected indicator.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.TABS_COLORS)
-  readonly color: DS.TabsColor = ''
+  @ValidateEmptyOrOneOf(...TABS_COLORS)
+  readonly color: TabsColor = ''
 
   /**
    * If `true`, tab buttons expand to fill the available width equally.

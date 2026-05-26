@@ -9,7 +9,7 @@ import {
   ValidateRequiredAndType,
   setupValidation,
 } from '@utils'
-import { DS } from '../carousel.interfaces'
+import { CAROUSEL_ITEM_COLORS, CarouselItemColor, CAROUSEL_VARIANTS, CarouselVariant } from '../carousel.interfaces'
 
 /**
  * Carousel Item is a single slide or product tile inside a ds-carousel.
@@ -40,16 +40,16 @@ export class CarouselItem implements DsComponentInterface {
    * Background color for product tiles.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.CAROUSEL_ITEM_COLORS)
-  readonly color: DS.CarouselItemColor = ''
+  @ValidateEmptyOrOneOf(...CAROUSEL_ITEM_COLORS)
+  readonly color: CarouselItemColor = ''
 
   /**
    * Set by ds-carousel. The carousel variant this item is part of.
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...DS.CAROUSEL_VARIANTS)
-  readonly carouselVariant: DS.CarouselVariant = 'slide'
+  @ValidateEmptyOrOneOf(...CAROUSEL_VARIANTS)
+  readonly carouselVariant: CarouselVariant = 'slide'
 
   /**
    * When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot,

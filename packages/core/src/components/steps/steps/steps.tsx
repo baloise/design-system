@@ -9,7 +9,7 @@ import {
   setupValidation,
 } from '@utils'
 import { DsComponentInterface } from '@global'
-import { DS, StepsChangeDetail } from '../steps.interfaces'
+import { STEPS_COLORS, StepsColor, StepsChangeDetail } from '../steps.interfaces'
 
 /**
  * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
@@ -42,8 +42,8 @@ export class Steps implements DsComponentInterface {
    * Accent color applied to inactive circles and connector lines.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DS.STEPS_COLORS)
-  readonly color: DS.StepsColor = ''
+  @ValidateEmptyOrOneOf(...STEPS_COLORS)
+  readonly color: StepsColor = ''
 
   /**
    * Accessible label for the navigation landmark (navigation variant only).

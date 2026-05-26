@@ -235,18 +235,20 @@ Define allowed values as a `const` array, then derive the TypeScript type:
 
 ```ts
 // ✅ button.interfaces.ts
-namespace DS {
-  export const BUTTON_SIZES = ['', 'sm', 'md', 'lg'] as const
-  export type ButtonSize = (typeof BUTTON_SIZES)[number]
-}
+export const BUTTON_SIZES = ['', 'sm', 'md', 'lg'] as const
+export type ButtonSize = (typeof BUTTON_SIZES)[number]
 ```
 
 ```ts
 // ✅ button.tsx
+import { BUTTON_SIZES, ButtonSize } from '../button.interfaces'
+
 @Prop()
-@ValidateEmptyOrOneOf(...DS.BUTTON_SIZES)
-readonly size: DS.ButtonSize = ''
+@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+readonly size: ButtonSize = ''
 ```
+
+Do **not** wrap these in a `namespace DS { }` block — export them directly.
 
 ## Prop Validation
 
