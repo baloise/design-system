@@ -33,6 +33,7 @@ test.describe('component', () => {
     })
 
     await page.mount(`<ds-icon src="/missing-icon.svg"></ds-icon>`)
+    // eslint-disable-next-line playwright/no-networkidle
     await page.waitForLoadState('networkidle')
     const inner = page.locator('ds-icon').locator('[part="inner"]')
     await expect(inner).toBeEmpty()

@@ -2,7 +2,13 @@ import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'carousel'
 
-const VARIANTS = ['image', 'image-no-controls', 'product', 'product-fixed', 'colors'] as const
+const VARIANTS = [
+  'slides-with-dots',
+  'slides-with-large-controls',
+  'slides-no-controls',
+  'product',
+  'brand-icons',
+] as const
 
 const image = screenshot(TAG)
 

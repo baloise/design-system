@@ -203,11 +203,15 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     if (!el) return
     if (this.variant === 'slide') {
       el.scrollBy({ left: -(el.clientWidth * this.steps), behavior: 'smooth' })
-    } else {
-      // Use the actual item from the light DOM — el.firstElementChild is <slot> in shadow DOM
-      const itemWidth = this.getItems()[0]?.offsetWidth ?? el.clientWidth
-      el.scrollBy({ left: -(itemWidth * this.steps), behavior: 'smooth' })
+      return
     }
+    const items = this.getItems()
+    const firstVisible = this.getFirstVisibleIndex(items, el)
+    const target = items[Math.max(firstVisible - this.steps, 0)]
+    if (!target) return
+    const fadeWidth = this.getFadeWidthPx()
+    const dx = target.getBoundingClientRect().left - el.getBoundingClientRect().left - fadeWidth
+    el.scrollBy({ left: dx, behavior: 'smooth' })
   }
 
   private scrollNext = () => {
@@ -215,10 +219,29 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     if (!el) return
     if (this.variant === 'slide') {
       el.scrollBy({ left: el.clientWidth * this.steps, behavior: 'smooth' })
-    } else {
-      const itemWidth = this.getItems()[0]?.offsetWidth ?? el.clientWidth
-      el.scrollBy({ left: itemWidth * this.steps, behavior: 'smooth' })
+      return
     }
+    const items = this.getItems()
+    const firstVisible = this.getFirstVisibleIndex(items, el)
+    const target = items[Math.min(firstVisible + this.steps, items.length - 1)]
+    if (!target) return
+    const fadeWidth = this.getFadeWidthPx()
+    const dx = target.getBoundingClientRect().left - el.getBoundingClientRect().left - fadeWidth
+    el.scrollBy({ left: dx, behavior: 'smooth' })
+  }
+
+  private getFirstVisibleIndex(items: HTMLDsCarouselItemElement[], trackEl: HTMLElement): number {
+    const trackLeft = trackEl.getBoundingClientRect().left
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].getBoundingClientRect().left >= trackLeft - 2) return i
+    }
+    return 0
+  }
+
+  private getFadeWidthPx(): number {
+    const outer = this.trackEl?.parentElement
+    if (!outer) return 0
+    return parseFloat(getComputedStyle(outer, '::before').width) || 0
   }
 
   private checkOverflow = () => {
@@ -463,7 +486,3 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     )
   }
 }
-
-let carouselIds = 0
-// suppress unused warning — will be used when auto-ids are needed for a11y
-void carouselIds
