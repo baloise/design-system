@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import path, { join, normalize } from 'path'
 import { writeFile, readFile } from 'fs/promises'
 import { copy } from 'fs-extra'
-import { replaceInFile, replaceInFileSync } from 'replace-in-file'
+import { replaceInFileSync, replaceInFile } from 'replace-in-file'
 import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
 import type { OutputTargetWeb } from './types'
 
@@ -18,7 +19,9 @@ export async function webProxyOutput(
     await improveComponentsOutput(config, outputTarget, components)
     await adjustInterfacePath(config)
 
-    await setVersion(config)
+    if (!outputTarget.isTest) {
+      await setVersion(config)
+    }
   })
 }
 
@@ -40,7 +43,10 @@ async function improveComponentsOutput(
   const contentCustom = await readFile(join(rootDir, 'config', 'custom-elements', 'custom-elements.d.ts'), 'utf-8')
 
   await saveFile(join(baseDir, 'index.d.ts'), [contentIndex, contentCustom].join(NEWLINE))
-  await copy(join(rootDir, 'config', 'custom-elements', 'package.json.tmp'), join(baseDir, 'package.json'))
+
+  if (!outputTarget.isTest) {
+    await copy(join(rootDir, 'config', 'custom-elements', 'package.json.tmp'), join(baseDir, 'package.json'))
+  }
 }
 
 async function adjustInterfacePath(config: Config) {
@@ -61,12 +67,12 @@ async function setVersion(config: Config) {
   const json = JSON.parse(content)
   await replaceInFile({
     files: join(rootDir, 'dist', '**/*.js').replace(/\\/g, '/'),
-    from: /DS_DEV_VERSION/g,
+    from: /BAL_DEV_VERSION/g,
     to: json.version,
   })
   await replaceInFile({
     files: join(rootDir, 'components', '**/*.js').replace(/\\/g, '/'),
-    from: /DS_DEV_VERSION/g,
+    from: /BAL_DEV_VERSION/g,
     to: json.version,
   })
 }
@@ -80,7 +86,7 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[] = []) => {
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
     lines.push(
-      `import { Ds${component.componentClassName}, defineCustomElement as defineDs${component.componentClassName} } from './${component.tagName}'`,
+      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${component.tagName}'`,
     )
   }
 
@@ -88,7 +94,7 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[] = []) => {
 
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
-    lines.push(`export { Ds${component.componentClassName}, defineDs${component.componentClassName} }`)
+    lines.push(`export { Bal${component.componentClassName}, defineBal${component.componentClassName} }`)
   }
 
   lines.push('')
@@ -96,7 +102,7 @@ const generateDefineAllFile = (components: ComponentCompilerMeta[] = []) => {
   lines.push('export const defineAllComponents = () => {')
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
-    lines.push(`  defineDs${component.componentClassName}()`)
+    lines.push(`  defineBal${component.componentClassName}()`)
   }
   lines.push('}')
 
@@ -110,7 +116,7 @@ const generateDefineAllDefinitionFile = (components: ComponentCompilerMeta[] = [
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
     lines.push(
-      `import { Ds${component.componentClassName}, defineCustomElement as defineDs${component.componentClassName} } from './${component.tagName}'`,
+      `import { Bal${component.componentClassName}, defineCustomElement as defineBal${component.componentClassName} } from './${component.tagName}'`,
     )
   }
 
@@ -118,7 +124,7 @@ const generateDefineAllDefinitionFile = (components: ComponentCompilerMeta[] = [
 
   for (let index = 0; index < components.length; index++) {
     const component = components[index]
-    lines.push(`export { Ds${component.componentClassName}, defineDs${component.componentClassName} }`)
+    lines.push(`export { Bal${component.componentClassName}, defineBal${component.componentClassName} }`)
   }
 
   lines.push('')

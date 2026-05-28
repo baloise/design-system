@@ -8,8 +8,6 @@ tmp
 www
 generated
 vite.config.ts.**.mjs
-.env
-.secrets
 
 # dependencies
 node_modules
@@ -41,22 +39,16 @@ yarn-error.log
 testem.log
 /typings
 .npmrc
-debug-storybook.log
 
 # System Files
 .DS_Store
 Thumbs.db
 
-.turbo
+.nx/cache
+.nx/workspace-data
 .stencil
 
-# Generated in packages and libs by pre-publish script
-packages/*/README.md
-packages/*/LICENSE
-libs/*/README.md
-libs/*/LICENSE
-
-packages/core/docs
+packages/fonts/assets/partners
 packages/core/icons
 packages/core/playwright
 packages/core/components
@@ -64,36 +56,59 @@ packages/core/loader
 packages/core/wwww
 packages/core/config/custom-elements/all.js
 packages/core/config/custom-elements/all.d.ts
+packages/core/**/theming.md
+packages/core/**/testing.md
+packages/core/**/api.md
+packages/css/css
+packages/styles/css
+packages/styles/docs
+packages/styles/src/generated
+
+packages/favicons/CHANGELOG.md
+packages/fonts/CHANGELOG.md
+packages/icons/CHANGELOG.md
+
+packages/devkit/src/**/*.js
+packages/devkit/src/**/*.js.map
+packages/devkit/src/**/*.d.ts
+
 
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
 
-docs/src/contributing/contributors.md
-docs/src/development/00-guides/theming/theming.md
-docs/public/assets/css/design-system.css
+e2e/generated
+e2e/downloads
+e2e/reg.json
+e2e/cypress/snapshots/actual
+e2e/cypress/snapshots/diff
+e2e/cypress/snapshots/report.html
+e2e/cypress/downloads
+
+resources/data
+!resources/data/tags.json
+
+docs/stories/contributing/contributors.md
+docs/stories/development/00-guides/theming/theming.md
 docs/public/assets/fonts/
 docs/public/assets/data/
 docs/public/assets/download/
-docs/public/assets/css/design-system.min.css
+docs/public/assets/css/baloise-design-system.min.css
 docs/public/assets/css/design-system-table.css
-docs/public/assets/css/design-system.min.css
+docs/public/assets/css/baloise-design-system.min.css
 docs/public/build/
 docs/public/assets/images/map-markers
 docs/public/assets/images/brand-icons
 docs/public/assets/images/icons
-docs/src/assets/data
-docs/src/components/**/api.md
-docs/src/components/**/theming.md
-docs/src/components/**/testing.md
+docs/stories/assets/data
+docs/stories/components/**/api.md
 docs/dist
-docs.old/
 
 test/angular/*
 !test/angular/base
 !test/angular/build.sh
 !test/angular/start.sh
 playwright-report
-playwright.visual.config.mts
+playwright.visual.config.ts
 
 test/react/*
 !test/react/base
@@ -102,22 +117,78 @@ test/react/*
 
 .angular
 
-packages/**/CHANGELOG.md
-libs/**/CHANGELOG.md
+packages/brand-icons/CHANGELOG.md
+packages/devkit/CHANGELOG.md
+packages/angular-common/CHANGELOG.md
+packages/angular-module/CHANGELOG.md
+packages/angular/CHANGELOG.md
+packages/react/CHANGELOG.md
+packages/table/CHANGELOG.md
+packages/css/CHANGELOG.md
+packages/styles/CHANGELOG.md
+packages/favicons/CHANGELOG.md
+packages/fonts/CHANGELOG.md
+packages/icons/CHANGELOG.md
+packages/maps/CHANGELOG.md
+packages/testing/CHANGELOG.md
+packages/tokens/CHANGELOG.md
+packages/playwright/CHANGELOG.md
+libs/nx/CHANGELOG.md
+libs/output-targets-angular/CHANGELOG.md
+libs/output-targets-react/CHANGELOG.md
 docs/CHANGELOG.md
+e2e/CHANGELOG.md
+
+packages/core/README.md
+packages/brand-icons/README.md
+packages/devkit/README.md
+packages/angular-common/README.md
+packages/angular-module/README.md
+packages/angular/README.md
+packages/react/README.md
+packages/table/README.md
+packages/css/README.md
+packages/styles/README.md
+packages/favicons/README.md
+packages/fonts/README.md
+packages/icons/README.md
+packages/maps/README.md
+packages/testing/README.md
+packages/tokens/README.md
+packages/playwright/README.md
+libs/nx/README.md
+libs/output-targets-angular/README.md
+libs/output-targets-react/README.md
+docs/README.md
+e2e/README.md
+
+packages/core/LICENSE
+packages/brand-icons/LICENSE
+packages/devkit/LICENSE
+packages/angular-common/LICENSE
+packages/playwright/LICENSE
+packages/angular-module/LICENSE
+packages/angular/LICENSE
+packages/react/LICENSE
+packages/table/LICENSE
+packages/css/LICENSE
+packages/styles/LICENSE
+packages/favicons/LICENSE
+packages/fonts/LICENSE
+packages/icons/LICENSE
+packages/maps/LICENSE
+packages/testing/LICENSE
+packages/tokens/LICENSE
+libs/nx/LICENSE
+libs/output-targets-angular/LICENSE
+libs/output-targets-react/LICENSE
+docs/LICENSE
+e2e/LICENSE
 
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
 # Local generated screenshots on a MAC
 *-darwin.png
-*-win32.png
 test-results
 playwright.visual.config.ts
-
-.env
-.worktrees
-.superpowers
-.claude/settings.local.json
-
-docs/superpowers
