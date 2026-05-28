@@ -86,6 +86,90 @@ Use CSS classes, never attribute selectors:
 :host(.is-primary) { ... }
 ```
 
+### Accessibility & SEO for Web Components
+
+Ensure components are accessible to assistive technologies and search engines by exposing semantic content and proper ARIA markup.
+
+#### Light DOM Exposure
+
+Place important content in the light DOM (slots), not shadow DOM, so search engines can crawl and index it:
+
+```tsx
+// ✅ Good: Content in light DOM (slot)
+render() {
+  return (
+    <Host>
+      <div part="container">
+        <slot /> {/* User content is in light DOM */}
+      </div>
+    </Host>
+  )
+}
+
+// ❌ Avoid: Critical content only in shadow DOM
+render() {
+  return (
+    <Host>
+      <div>{this.computedContent}</div> {/* Hidden from search engines */}
+    </Host>
+  )
+}
+```
+
+#### Host Element Semantics
+
+Set appropriate `role` and `aria-*` attributes on the host element:
+
+```tsx
+// ✅ Good: Role and ARIA on Host
+render() {
+  return (
+    <Host
+      role="tablist"
+      aria-orientation={this.vertical ? 'vertical' : 'horizontal'}
+      aria-labelledby="tabs-label"
+    >
+      {/* content */}
+    </Host>
+  )
+}
+```
+
+#### ARIA Attributes
+
+Always include ARIA attributes for interactive components:
+
+```tsx
+// ✅ Good: Complete ARIA attributes
+<button
+  role="tab"
+  aria-selected={this.selected ? 'true' : 'false'}
+  aria-controls={`panel-${this.id}`}
+  aria-disabled={this.disabled ? 'true' : null}
+  aria-label={this.label}
+>
+  {this.label}
+</button>
+
+// ✅ Good: Hidden decorative content
+<span aria-hidden="true" class="icon">→</span>
+```
+
+#### Semantic HTML
+
+Use semantic HTML elements when possible — `<button>`, `<a>`, `<nav>`, etc. — especially for navigation and interactive components:
+
+```tsx
+// ✅ Good: Semantic elements when providing navigation
+item.href ? (
+  <a href={item.href} role="tab">
+    Tab 1
+  </a>
+) : (
+  <button role="tab">Tab 1</button>
+)
+```
+
 ### Component JSDoc
 
 Every component must have a one-sentence description and `@slot` / `@part` tags:
@@ -100,6 +184,37 @@ Every component must have a one-sentence description and `@slot` / `@part` tags:
 @Component({ tag: 'ds-button', shadow: true })
 export class Button {}
 ```
+
+### Element Internals (Form-Associated Components)
+
+This is the standard web component "element internals" pattern. Use it for any component that participates in an HTML `<form>` (inputs, checkboxes, radios, etc.).
+
+Enable `formAssociated: true` in the decorator and declare an `internals` field with `@AttachInternals()`:
+
+```ts
+@Component({
+  tag: 'ds-checkbox',
+  styleUrl: 'checkbox.host.scss',
+  shadow: true,
+  formAssociated: true, // ← enables ElementInternals
+})
+export class Checkbox implements DsComponentInterface {
+  @AttachInternals() internals!: ElementInternals // ← browser-managed internals
+
+  connectedCallback() {
+    this.internals.setFormValue(this.checked ? this.value : null)
+  }
+
+  private handleChange = (ev: Event) => {
+    this.checked = (ev.target as HTMLInputElement).checked
+    this.internals.setFormValue(this.checked ? this.value : null)
+  }
+}
+```
+
+- Call `this.internals.setFormValue(value)` whenever the value changes so the form sees the current value.
+- Pass `null` to unset the field (e.g. unchecked checkbox).
+- `formAssociated: true` also enables the native form-reset lifecycle (`formResetCallback`).
 
 ### Section Dividers
 
@@ -120,18 +235,20 @@ Define allowed values as a `const` array, then derive the TypeScript type:
 
 ```ts
 // ✅ button.interfaces.ts
-namespace DS {
-  export const BUTTON_SIZES = ['', 'sm', 'md', 'lg'] as const
-  export type ButtonSize = (typeof BUTTON_SIZES)[number]
-}
+export const BUTTON_SIZES = ['', 'sm', 'md', 'lg'] as const
+export type ButtonSize = (typeof BUTTON_SIZES)[number]
 ```
 
 ```ts
 // ✅ button.tsx
+import { BUTTON_SIZES, ButtonSize } from '../button.interfaces'
+
 @Prop()
-@ValidateEmptyOrOneOf(...DS.BUTTON_SIZES)
-readonly size: DS.ButtonSize = ''
+@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+readonly size: ButtonSize = ''
 ```
+
+Do **not** wrap these in a `namespace DS { }` block — export them directly.
 
 ## Prop Validation
 

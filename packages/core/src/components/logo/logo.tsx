@@ -10,10 +10,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
 } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { LogoBaloise, LogoHelvetia } from './logo.icons'
@@ -59,7 +58,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    * Defines if the animation should be active
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly animated: boolean = false
   @Watch('animated')
   animatedChanged() {
@@ -79,7 +78,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    * Defines the color of the logo.
    */
   @Prop()
-  @ValidateOneOf(...LOGO_COLORS)
+  @ValidateEmptyOrOneOf(...LOGO_COLORS)
   readonly color: LogoColor = 'primary'
 
   /**

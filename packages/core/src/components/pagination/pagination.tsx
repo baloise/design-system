@@ -304,7 +304,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
     const items = this.isMobile ? this.getItems(1) : this.getItems(this.pageRange)
 
     const isVariantDots = hasValue(this.variant)
-    const buttonColor = isVariantDots ? 'is-link' : 'is-text'
+    const buttonColor = isVariantDots ? 'is-tertiary' : 'is-text'
     const buttonSize = isVariantDots || hasValue(this.size) || this.isMobile ? 'is-sm' : ''
     const flat = isVariantDots
 

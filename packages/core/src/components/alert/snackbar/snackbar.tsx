@@ -9,7 +9,7 @@ import {
   raf,
   Logger,
   type LogInstance,
-  ValidateOneOf,
+  ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   setupValidation,
   hasValue,
@@ -60,7 +60,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateOneOf(...SNACKBAR_COLORS)
+  @ValidateEmptyOrOneOf(...SNACKBAR_COLORS)
   readonly color: SnackbarColor = 'base'
 
   /**
@@ -124,7 +124,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_TARGETS)
+  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**

@@ -38,15 +38,15 @@ digraph gen_tests {
 
 Read `packages/core/src/components/<component>/<component>.tsx` and extract:
 
-| What to extract                                           | Where to use it                        |
-| --------------------------------------------------------- | -------------------------------------- |
-| Component `tag` (e.g. `ds-toggle`)                        | all files                              |
-| All `@Prop()` names, types, defaults                      | a11y variants, component test states   |
-| Enum/union props (`DS.FooColor`, `DS.FooSize`, etc.)      | a11y test — one test per allowed value |
-| `@Event()` emitters + detail type                         | component test event spies             |
-| `@Method()` public methods                                | component test method calls            |
-| Props: `name`, `value`, `checked`, `disabled`, `readonly` | form tests, PO interaction methods     |
-| Shadow-part selectors used in render                      | PO locators                            |
+| What to extract                                              | Where to use it                        |
+| ------------------------------------------------------------ | -------------------------------------- |
+| Component `tag` (e.g. `ds-toggle`)                           | all files                              |
+| All `@Prop()` names, types, defaults                         | a11y variants, component test states   |
+| Enum/union props (`FooColor`, `FooSize`, const arrays, etc.) | a11y test — one test per allowed value |
+| `@Event()` emitters + detail type                            | component test event spies             |
+| `@Method()` public methods                                   | component test method calls            |
+| Props: `name`, `value`, `checked`, `disabled`, `readonly`    | form tests, PO interaction methods     |
+| Shadow-part selectors used in render                         | PO locators                            |
 
 **Is it a form component?** Yes if it has both `name` and `value` props (toggle, checkbox, radio, input, select). Form components need form-reset tests.
 
@@ -189,7 +189,7 @@ test('variant dots', async ({ page, a11y }) => {
 })
 ```
 
-**Audit rule:** Every variant key found in `DS.<Component>Variant`, `DS.<Component>Color`, `DS.<Component>Size` interfaces must have a corresponding a11y test. Check `packages/core/src/components/<component>/<component>.interfaces.ts` for allowed values.
+**Audit rule:** Every variant key found in `<COMPONENT>_VARIANTS`, `<COMPONENT>_COLORS`, `<COMPONENT>_SIZES` const arrays in the interfaces file must have a corresponding a11y test. Check `packages/core/src/components/<component>/<component>.interfaces.ts` for allowed values.
 
 ## Step 6 — Component Interaction Tests
 

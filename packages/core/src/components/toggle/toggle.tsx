@@ -4,11 +4,9 @@ import {
   type LogInstance,
   inheritAttributes,
   type Attributes,
-  ValidateOneOf,
   ValidateEmptyOrOneOf,
   setupValidation,
   ValidateEmptyOrType,
-  ValidateType,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
@@ -93,21 +91,21 @@ export class Toggle implements DsComponentInterface {
    * @internal
    */
   @Prop()
-  @ValidateOneOf(...TOGGLE_GROUP_COLUMNS)
+  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
   readonly cols: ToggleGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateOneOf(...TOGGLE_GROUP_COLUMNS)
+  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
   readonly colsMobile: ToggleGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateOneOf(...TOGGLE_GROUP_COLUMNS)
+  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
   readonly colsTablet: ToggleGroupColumns = 1
 
   /**
@@ -128,21 +126,21 @@ export class Toggle implements DsComponentInterface {
    * Label of the toggle item.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the toggle input. Default is after.
    */
   @Prop()
-  @ValidateOneOf(...TOGGLE_LABEL_POSITIONS)
+  @ValidateEmptyOrOneOf(...TOGGLE_LABEL_POSITIONS)
   readonly labelPosition: ToggleLabelPosition = 'right'
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateType('string')
+  @ValidateEmptyOrType('string')
   readonly name: string = this.inputId
 
   /**

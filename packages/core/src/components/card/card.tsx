@@ -4,7 +4,7 @@ import {
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   setupValidation,
   hasValue,
 } from '@utils'
@@ -48,21 +48,21 @@ export class Card implements DsComponentInterface {
    * If `true` the card loses its shadow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly flat: boolean = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly dense: boolean = false
 
   /**
@@ -77,42 +77,42 @@ export class Card implements DsComponentInterface {
    * If `true` the card loses its border radius.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly square: boolean = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the card has a hover effect.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly clickable: boolean = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly selected: boolean = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly fullheight: boolean = false
 
   /**

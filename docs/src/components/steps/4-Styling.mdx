@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as StepsStories from './steps.stories'
+import { STEPS_DOC_CONFIG, getStepsTabs } from './steps.doc-config'
+
+<Meta title="Components/Steps/Styling" />
+
+<Banner label={'Styling'} section={STEPS_DOC_CONFIG.section} color={STEPS_DOC_CONFIG.color} />
+
+<BannerTabs of={StepsStories} tabs={getStepsTabs('styling')} />
+
+<ComponentParts component="steps" />
+
+<ComponentCssVariables component="steps" />
+
+<ComponentDesignTokens component="steps" />
+
+<Footer />

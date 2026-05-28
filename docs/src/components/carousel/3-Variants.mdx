@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as CarouselStories from './carousel.stories'
+import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
+
+<Meta title="Components/Carousel/Variants/Overview" />
+
+<StoryHeading of={CarouselStories.Slide} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={CAROUSEL_DOC_CONFIG.section} color={CAROUSEL_DOC_CONFIG.color} />
+
+<BannerTabs of={CarouselStories} tabs={getCarouselTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.Slide}></StoryHeading>
+
+One slide visible at a time with scroll-snap. Use `controls="dots"` for dot pagination with prev/next arrows, or `controls="none"` to hide all controls.
+
+<CanvasTabs htmlOf={CarouselStories.SlideHtml} of={CarouselStories.Slide} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.Tile}></StoryHeading>
+
+Multiple items scrollable in a horizontal strip. Set `items-per-view` to a number to divide the container width equally across that many items. Use `controls="large"` to show side-arrow scroll buttons.
+
+<CanvasTabs htmlOf={CarouselStories.TileHtml} of={CarouselStories.Tile} />
+
+<Footer />

@@ -5,10 +5,9 @@ import {
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   hasValue,
   setupValidation,
-  ValidateOneOf,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
@@ -59,7 +58,7 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * If `true` the text is bold
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly bold: boolean = false
 
   /**
@@ -73,42 +72,42 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the text has heading font family
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly heading: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly hovered: boolean = false
 
   /**
    * If `true` the text is shown as a display inline
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inline: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly invalid: boolean = false
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**
@@ -117,28 +116,28 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * as these elements require a width to overflow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly noWrap: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly pressed: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly shadow: boolean = false
 
   /**
    * Defines the size of the paragraph
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...TEXT_SIZES)
+  @ValidateEmptyOrOneOf(...TEXT_SIZES)
   size?: TextSize
 
   /**
@@ -152,7 +151,7 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * If `true` the text has subtitle font family
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly subtitle: boolean = false
 
   /**

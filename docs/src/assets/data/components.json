@@ -1652,10 +1652,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"small\"",
+          "type": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
           "complexType": {
             "original": "BadgeSize",
-            "resolved": "\"\" | \"large\" | \"small\"",
+            "resolved": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
             "references": {
               "BadgeSize": {
                 "location": "import",
@@ -1682,6 +1682,14 @@
             },
             {
               "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "sm",
               "type": "string"
             },
             {
@@ -13123,6 +13131,786 @@
       "listeners": []
     },
     {
+      "fileName": "carousel.tsx",
+      "tag": "ds-carousel",
+      "overview": "Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.",
+      "usage": {},
+      "docs": "Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- ds-carousel-item children."
+        },
+        {
+          "name": "part",
+          "text": "track - The scrollable item track."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon",
+        "ds-pagination"
+      ],
+      "dependencyGraph": {
+        "ds-carousel": [
+          "ds-icon",
+          "ds-pagination"
+        ],
+        "ds-pagination": [
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "controls",
+          "type": "\"dots\" | \"large\" | \"none\"",
+          "complexType": {
+            "original": "DS.CarouselControls",
+            "resolved": "\"dots\" | \"large\" | \"none\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "controls",
+          "reflectToAttr": false,
+          "docs": "Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'dots'"
+            }
+          ],
+          "default": "'dots'",
+          "values": [
+            {
+              "value": "dots",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "itemsPerView",
+          "type": "\"auto\" | number",
+          "complexType": {
+            "original": "number | 'auto'",
+            "resolved": "\"auto\" | number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "items-per-view",
+          "reflectToAttr": false,
+          "docs": "Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'auto'"
+            }
+          ],
+          "default": "'auto'",
+          "values": [
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the carousel region.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "steps",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "steps",
+          "reflectToAttr": false,
+          "docs": "Number of items to advance per arrow click.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string | undefined",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Name of the currently selected ds-carousel-item.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "variant",
+          "type": "\"slide\" | \"tile\"",
+          "complexType": {
+            "original": "DS.CarouselVariant",
+            "resolved": "\"slide\" | \"tile\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'slide'"
+            }
+          ],
+          "default": "'slide'",
+          "values": [
+            {
+              "value": "slide",
+              "type": "string"
+            },
+            {
+              "value": "tile",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsChange",
+          "detail": "{ value: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "CarouselChangeDetail",
+            "resolved": "{ value: string; }",
+            "references": {
+              "CarouselChangeDetail": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::CarouselChangeDetail",
+                "referenceLocation": "CarouselChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected item changes.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--carousel-gap",
+          "docs": "Gap between slides / product items."
+        },
+        {
+          "name": "--carousel-control-color",
+          "docs": "Color of the scroll arrow buttons."
+        },
+        {
+          "name": "--carousel-scroll-fade-bg",
+          "docs": "Background color for the edge-fade gradient in the product variant."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "ds-carousel-item children."
+        }
+      ],
+      "parts": [
+        {
+          "name": "track",
+          "docs": "The scrollable item track."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "dsCarouselItemSelect",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Carousel / Gap",
+          "cssVarName": "--ds-carousel-gap",
+          "value": "{🔗 Alias.↔️ Space.SM.Mobile}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-12",
+              "figmaName": "Global / Size / Space / 12"
+            },
+            {
+              "cssVar": "--ds-space-sm-mobile",
+              "figmaName": "Alias / Space / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-carousel-gap",
+              "figmaName": "Component / Carousel / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / Size",
+          "cssVarName": "--ds-carousel-dot-size",
+          "value": "8px",
+          "nativeValue": "8px",
+          "inheritance": [
+            {
+              "cssVar": "--ds-carousel-dot-size",
+              "figmaName": "Component / Carousel / Dot / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / SizeActive",
+          "cssVarName": "--ds-carousel-dot-sizeactive",
+          "value": "10px",
+          "nativeValue": "10px",
+          "inheritance": [
+            {
+              "cssVar": "--ds-carousel-dot-sizeactive",
+              "figmaName": "Component / Carousel / Dot / SizeActive"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "SizeActive"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / Color",
+          "cssVarName": "--ds-carousel-dot-color",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-carousel-dot-color",
+              "figmaName": "Component / Carousel / Dot / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Dot / ColorActive",
+          "cssVarName": "--ds-carousel-dot-coloractive",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-carousel-dot-coloractive",
+              "figmaName": "Component / Carousel / Dot / ColorActive"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Dot",
+            "ColorActive"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / Control / Color",
+          "cssVarName": "--ds-carousel-control-color",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-carousel-control-color",
+              "figmaName": "Component / Carousel / Control / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Control",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollFadeBg",
+          "cssVarName": "--ds-carousel-scrollfadebg",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollfadebg",
+              "figmaName": "Component / Carousel / ScrollFadeBg"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollFadeBg"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Background / Active",
+          "cssVarName": "--ds-carousel-scrollbtn-background-active",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-background-active",
+              "figmaName": "Component / Carousel / ScrollBtn / Background / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Background",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Background / ActiveHover",
+          "cssVarName": "--ds-carousel-scrollbtn-background-activehover",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryhover",
+              "figmaName": "Alias / Background / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-background-activehover",
+              "figmaName": "Component / Carousel / ScrollBtn / Background / ActiveHover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Background",
+            "ActiveHover"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Background / ActivePressed",
+          "cssVarName": "--ds-carousel-scrollbtn-background-activepressed",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryactive",
+              "figmaName": "Alias / Background / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-background-activepressed",
+              "figmaName": "Component / Carousel / ScrollBtn / Background / ActivePressed"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Background",
+            "ActivePressed"
+          ]
+        },
+        {
+          "name": "🧩 Component / Carousel / ScrollBtn / Color / Active",
+          "cssVarName": "--ds-carousel-scrollbtn-color-active",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-carousel-scrollbtn-color-active",
+              "figmaName": "Component / Carousel / ScrollBtn / Color / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "ScrollBtn",
+            "Color",
+            "Active"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "carousel-item.tsx",
+      "tag": "ds-carousel-item",
+      "overview": "Carousel Item is a single slide or product tile inside a ds-carousel.",
+      "usage": {},
+      "docs": "Carousel Item is a single slide or product tile inside a ds-carousel.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- Slide content (image variant) or label text (product variant)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.CarouselItemColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../carousel.interfaces",
+                "id": "src/components/carousel/carousel.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Background color for product tiles.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "Unique identifier for this item, matched by the parent ds-carousel `value` prop.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "navigation",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "navigation",
+          "reflectToAttr": false,
+          "docs": "When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot,\nwhich is stretched to cover the full tile and acts as the interactive element.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "src",
+          "reflectToAttr": false,
+          "docs": "Image URL displayed in image-variant slides, or brand icon source for product tiles.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsCarouselItemSelect",
+          "detail": "{ name: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "{ name: string }",
+            "resolved": "{ name: string; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the user clicks this item (product variant).",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Slide content (image variant) or label text (product variant)."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
       "fileName": "checkbox.tsx",
       "tag": "ds-checkbox",
       "overview": "Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.",
@@ -18615,6 +19403,7 @@
         "ds-accordion",
         "ds-badge",
         "ds-button",
+        "ds-carousel",
         "ds-checkbox-group",
         "ds-input",
         "ds-item",
@@ -18623,6 +19412,8 @@
         "ds-radio-group",
         "ds-segment",
         "ds-snackbar",
+        "ds-step",
+        "ds-tabs",
         "ds-textarea",
         "ds-toast"
       ],
@@ -18635,6 +19426,9 @@
           "ds-icon"
         ],
         "ds-button": [
+          "ds-icon"
+        ],
+        "ds-carousel": [
           "ds-icon"
         ],
         "ds-checkbox-group": [
@@ -18659,6 +19453,12 @@
           "ds-icon"
         ],
         "ds-snackbar": [
+          "ds-icon"
+        ],
+        "ds-step": [
+          "ds-icon"
+        ],
+        "ds-tabs": [
           "ds-icon"
         ],
         "ds-textarea": [
@@ -18998,6 +19798,35 @@
             },
             {
               "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "src",
+          "reflectToAttr": false,
+          "docs": "URL of an SVG file to fetch and display.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -28469,13 +29298,18 @@
         }
       ],
       "encapsulation": "shadow",
-      "dependents": [],
+      "dependents": [
+        "ds-carousel"
+      ],
       "dependencies": [
         "ds-icon"
       ],
       "dependencyGraph": {
         "ds-pagination": [
           "ds-icon"
+        ],
+        "ds-carousel": [
+          "ds-pagination"
         ]
       },
       "props": [
@@ -36234,6 +37068,2387 @@
       "listeners": []
     },
     {
+      "fileName": "step.tsx",
+      "tag": "ds-step",
+      "overview": "Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.",
+      "usage": {},
+      "docs": "Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- An `<a>` element in navigation mode."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-step": [
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step cannot be selected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "done",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "done",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step is completed. Shows a checkmark icon in the circle.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hidden",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step is hidden from the layout.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step has an error. Shows an exclamation mark in the circle.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Visible text label displayed below the circle.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "Unique name that links this step to a ds-step-panel[for] of the same value.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsStepSelect",
+          "detail": "{ name: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "{ name: string }",
+            "resolved": "{ name: string; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the user clicks this step (panels mode only).",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "An `<a>` element in navigation mode."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "step-panel.tsx",
+      "tag": "ds-step-panel",
+      "overview": "Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.",
+      "usage": {},
+      "docs": "Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The panel content."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "for",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "for",
+          "reflectToAttr": true,
+          "docs": "Matches the `name` of the ds-step that controls this panel.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, the panel is visible. Managed by the parent ds-steps.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--step-panel-padding",
+          "docs": "Padding inside the step panel."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The panel content."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / StepPanel / Padding",
+          "cssVarName": "--ds-steppanel-padding",
+          "value": "1rem 0",
+          "nativeValue": "1rem 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-steppanel-padding",
+              "figmaName": "Component / StepPanel / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "StepPanel",
+            "Padding"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "steps.tsx",
+      "tag": "ds-steps",
+      "overview": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
+      "usage": {},
+      "docs": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- ds-step-panel children (panels variant)."
+        },
+        {
+          "name": "slot",
+          "text": "step - ds-step children; managed automatically by ds-steps."
+        },
+        {
+          "name": "part",
+          "text": "steplist - The steplist container."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.StepsColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../steps.interfaces",
+                "id": "src/components/steps/steps.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Accent color applied to inactive circles and connector lines.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the navigation landmark (navigation variant only).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string | undefined",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The `name` of the currently selected ds-step (panels variant).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "If `true`, the steplist is displayed vertically.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsChange",
+          "detail": "{ value: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "StepsChangeDetail",
+            "resolved": "{ value: string; }",
+            "references": {
+              "StepsChangeDetail": {
+                "location": "import",
+                "path": "../steps.interfaces",
+                "id": "src/components/steps/steps.interfaces.ts::StepsChangeDetail",
+                "referenceLocation": "StepsChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected step changes (panels variant only).",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--steps-connector-color",
+          "docs": "Color of the connector line between steps."
+        },
+        {
+          "name": "--steps-connector-color-filled",
+          "docs": "Color of the connector line for completed steps."
+        },
+        {
+          "name": "--steps-connector-height",
+          "docs": "Thickness of the connector line."
+        },
+        {
+          "name": "--steps-circle-size",
+          "docs": "Diameter of the step circle."
+        },
+        {
+          "name": "--steps-circle-size-sm",
+          "docs": "Diameter of the step circle on mobile."
+        },
+        {
+          "name": "--steps-circle-color-bg",
+          "docs": "Background color of the circle (default state)."
+        },
+        {
+          "name": "--steps-circle-color-bg-selected",
+          "docs": "Background color of the circle (selected state)."
+        },
+        {
+          "name": "--steps-circle-color-bg-done",
+          "docs": "Background color of the circle (done state)."
+        },
+        {
+          "name": "--steps-circle-color-bg-invalid",
+          "docs": "Background color of the circle (invalid state)."
+        },
+        {
+          "name": "--steps-circle-color-bg-disabled",
+          "docs": "Background color of the circle (disabled state)."
+        },
+        {
+          "name": "--steps-circle-color-text",
+          "docs": "Text/icon color inside the circle (default state)."
+        },
+        {
+          "name": "--steps-circle-color-text-selected",
+          "docs": "Text/icon color inside the circle (selected state)."
+        },
+        {
+          "name": "--steps-circle-color-text-done",
+          "docs": "Text/icon color inside the circle (done state)."
+        },
+        {
+          "name": "--steps-circle-color-text-invalid",
+          "docs": "Text/icon color inside the circle (invalid state)."
+        },
+        {
+          "name": "--steps-circle-color-text-disabled",
+          "docs": "Text/icon color inside the circle (disabled state)."
+        },
+        {
+          "name": "--steps-step-font-family",
+          "docs": "Font family for step labels and circle numbers."
+        },
+        {
+          "name": "--steps-step-font-size",
+          "docs": "Font size for step labels and circle numbers."
+        },
+        {
+          "name": "--steps-step-font-size-sm",
+          "docs": "Font size for step labels and circle numbers on mobile."
+        },
+        {
+          "name": "--steps-step-font-weight",
+          "docs": "Font weight for step labels."
+        },
+        {
+          "name": "--steps-step-color",
+          "docs": "Text color for step labels (default state)."
+        },
+        {
+          "name": "--steps-step-color-selected",
+          "docs": "Text color for step labels (selected state)."
+        },
+        {
+          "name": "--steps-step-color-focus",
+          "docs": "Focus ring color for step buttons."
+        },
+        {
+          "name": "--steps-panel-padding",
+          "docs": "Padding inside each step panel."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "ds-step-panel children (panels variant)."
+        },
+        {
+          "name": "step",
+          "docs": "ds-step children; managed automatically by ds-steps."
+        }
+      ],
+      "parts": [
+        {
+          "name": "steplist",
+          "docs": "The steplist container."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "dsStepSelect",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Steps / Connector / Color",
+          "cssVarName": "--ds-steps-connector-color",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-steps-connector-color",
+              "figmaName": "Component / Steps / Connector / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Connector",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Connector / ColorFilled",
+          "cssVarName": "--ds-steps-connector-colorfilled",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-connector-colorfilled",
+              "figmaName": "Component / Steps / Connector / ColorFilled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Connector",
+            "ColorFilled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Connector / Height",
+          "cssVarName": "--ds-steps-connector-height",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-steps-connector-height",
+              "figmaName": "Component / Steps / Connector / Height"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Connector",
+            "Height"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Size",
+          "cssVarName": "--ds-steps-circle-size",
+          "value": "2rem",
+          "nativeValue": "2rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-steps-circle-size",
+              "figmaName": "Component / Steps / Circle / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / SizeSM",
+          "cssVarName": "--ds-steps-circle-sizesm",
+          "value": "1.5rem",
+          "nativeValue": "1.5rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-steps-circle-sizesm",
+              "figmaName": "Component / Steps / Circle / SizeSM"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "SizeSM"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / BG",
+          "cssVarName": "--ds-steps-circle-color-bg",
+          "value": "{🔗 Alias.🎨 Background.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-grey",
+              "figmaName": "Alias / Background / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-bg",
+              "figmaName": "Component / Steps / Circle / Color / BG"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "BG"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / BGSelected",
+          "cssVarName": "--ds-steps-circle-color-bgselected",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-bgselected",
+              "figmaName": "Component / Steps / Circle / Color / BGSelected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "BGSelected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / BGDone",
+          "cssVarName": "--ds-steps-circle-color-bgdone",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-bgdone",
+              "figmaName": "Component / Steps / Circle / Color / BGDone"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "BGDone"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / BGInvalid",
+          "cssVarName": "--ds-steps-circle-color-bginvalid",
+          "value": "{🔗 Alias.🎨 Background.Color.Danger}",
+          "nativeValue": "#F05D4D",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-3",
+              "figmaName": "Global / Color / Danger / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-danger",
+              "figmaName": "Alias / Background / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-bginvalid",
+              "figmaName": "Component / Steps / Circle / Color / BGInvalid"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "BGInvalid"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / BGDisabled",
+          "cssVarName": "--ds-steps-circle-color-bgdisabled",
+          "value": "{🔗 Alias.🎨 Background.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-grey",
+              "figmaName": "Alias / Background / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-bgdisabled",
+              "figmaName": "Component / Steps / Circle / Color / BGDisabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "BGDisabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / Text",
+          "cssVarName": "--ds-steps-circle-color-text",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-text",
+              "figmaName": "Component / Steps / Circle / Color / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / TextSelected",
+          "cssVarName": "--ds-steps-circle-color-textselected",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-textselected",
+              "figmaName": "Component / Steps / Circle / Color / TextSelected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "TextSelected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / TextDone",
+          "cssVarName": "--ds-steps-circle-color-textdone",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-textdone",
+              "figmaName": "Component / Steps / Circle / Color / TextDone"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "TextDone"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / TextInvalid",
+          "cssVarName": "--ds-steps-circle-color-textinvalid",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-textinvalid",
+              "figmaName": "Component / Steps / Circle / Color / TextInvalid"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "TextInvalid"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Circle / Color / TextDisabled",
+          "cssVarName": "--ds-steps-circle-color-textdisabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-circle-color-textdisabled",
+              "figmaName": "Component / Steps / Circle / Color / TextDisabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Circle",
+            "Color",
+            "TextDisabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Font / Family",
+          "cssVarName": "--ds-steps-step-font-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
+          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-text-family-heading",
+              "figmaName": "Alias / Text / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-steps-step-font-family",
+              "figmaName": "Component / Steps / Step / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Font / Size",
+          "cssVarName": "--ds-steps-step-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-steps-step-font-size",
+              "figmaName": "Component / Steps / Step / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Font",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Font / SizeSM",
+          "cssVarName": "--ds-steps-step-font-sizesm",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-mobile",
+              "figmaName": "Alias / Text / Size / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-steps-step-font-sizesm",
+              "figmaName": "Component / Steps / Step / Font / SizeSM"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Font",
+            "SizeSM"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Font / Weight",
+          "cssVarName": "--ds-steps-step-font-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-steps-step-font-weight",
+              "figmaName": "Component / Steps / Step / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Color / Base",
+          "cssVarName": "--ds-steps-step-color-base",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-steps-step-color-base",
+              "figmaName": "Component / Steps / Step / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Color / Selected",
+          "cssVarName": "--ds-steps-step-color-selected",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-step-color-selected",
+              "figmaName": "Component / Steps / Step / Color / Selected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Color",
+            "Selected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Color / Focus",
+          "cssVarName": "--ds-steps-step-color-focus",
+          "value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}",
+          "nativeValue": "#6C2273",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-6",
+              "figmaName": "Global / Color / Purple / 6"
+            },
+            {
+              "cssVar": "--ds-interaction-focus-color-base",
+              "figmaName": "Alias / Interaction / Focus / Color / Base"
+            },
+            {
+              "cssVar": "--ds-steps-step-color-focus",
+              "figmaName": "Component / Steps / Step / Color / Focus"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Color",
+            "Focus"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Panel / Padding",
+          "cssVarName": "--ds-steps-panel-padding",
+          "value": "1rem 0",
+          "nativeValue": "1rem 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-steps-panel-padding",
+              "figmaName": "Component / Steps / Panel / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Panel",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Color / Purple",
+          "cssVarName": "--ds-steps-color-purple",
+          "value": "{🔗 Alias.🎨 Background.Color.Purple}",
+          "nativeValue": "#B8B2FF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-3",
+              "figmaName": "Global / Color / Purple / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-purple",
+              "figmaName": "Alias / Background / Color / Purple"
+            },
+            {
+              "cssVar": "--ds-steps-color-purple",
+              "figmaName": "Component / Steps / Color / Purple"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Color",
+            "Purple"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Color / Green",
+          "cssVarName": "--ds-steps-color-green",
+          "value": "{🔗 Alias.🎨 Background.Color.Green}",
+          "nativeValue": "#94E3D4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-green-3",
+              "figmaName": "Global / Color / Green / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-green",
+              "figmaName": "Alias / Background / Color / Green"
+            },
+            {
+              "cssVar": "--ds-steps-color-green",
+              "figmaName": "Component / Steps / Color / Green"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Color",
+            "Green"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Color / Red",
+          "cssVarName": "--ds-steps-color-red",
+          "value": "{🔗 Alias.🎨 Background.Color.Red}",
+          "nativeValue": "#FFACA6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-red-3",
+              "figmaName": "Global / Color / Red / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-red",
+              "figmaName": "Alias / Background / Color / Red"
+            },
+            {
+              "cssVar": "--ds-steps-color-red",
+              "figmaName": "Component / Steps / Color / Red"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Color",
+            "Red"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Color / Yellow",
+          "cssVarName": "--ds-steps-color-yellow",
+          "value": "{🔗 Alias.🎨 Background.Color.Yellow}",
+          "nativeValue": "#FAE052",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-3",
+              "figmaName": "Global / Color / Yellow / 3"
+            },
+            {
+              "cssVar": "--ds-background-color-yellow",
+              "figmaName": "Alias / Background / Color / Yellow"
+            },
+            {
+              "cssVar": "--ds-steps-color-yellow",
+              "figmaName": "Component / Steps / Color / Yellow"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Color",
+            "Yellow"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "tab.tsx",
+      "tag": "ds-tab",
+      "overview": "Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.",
+      "usage": {},
+      "docs": "Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The tab label, or an <a> element in navigation mode."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, this tab is currently selected. Set by the parent ds-tabs.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsTabSelect",
+          "detail": "{ name: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "{ name: string }",
+            "resolved": "{ name: string; }",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the user clicks this tab (panels mode only).",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The tab label, or an <a> element in navigation mode."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "tab-panel.tsx",
+      "tag": "ds-tab-panel",
+      "overview": "Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.",
+      "usage": {},
+      "docs": "Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The panel content."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "for",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "for",
+          "reflectToAttr": true,
+          "docs": "Matches the `name` of the ds-tab that controls this panel.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "selected",
+          "reflectToAttr": true,
+          "docs": "If `true`, the panel is visible. Managed by the parent ds-tabs.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--tab-panel-padding",
+          "docs": "Padding inside the tab panel."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The panel content."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / TabPanel / Padding",
+          "cssVarName": "--ds-tabpanel-padding",
+          "value": "1rem 0",
+          "nativeValue": "1rem 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-tabpanel-padding",
+              "figmaName": "Component / TabPanel / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "TabPanel",
+            "Padding"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "tabs.tsx",
+      "tag": "ds-tabs",
+      "overview": "Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.",
+      "usage": {},
+      "docs": "Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- ds-tab-panel children (panels variant)."
+        },
+        {
+          "name": "slot",
+          "text": "tab - ds-tab children; managed automatically by ds-tabs."
+        },
+        {
+          "name": "part",
+          "text": "tablist - The tablist container."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-tabs": [
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "DS.TabsColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "DS": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::DS",
+                "referenceLocation": "DS"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Accent color applied to the bottom border track and selected indicator.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "fullwidth",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "fullwidth",
+          "reflectToAttr": false,
+          "docs": "If `true`, tab buttons expand to fill the available width equally.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "inverted",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inverted",
+          "reflectToAttr": false,
+          "docs": "If `true`, the component adapts for use on a dark (primary) background — all labels and the indicator become white.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the navigation landmark (navigation variant only).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string | undefined",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The `name` of the currently selected ds-tab (panels variant).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "If `true`, the tablist is displayed vertically on the left side.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "verticalColSize",
+          "type": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",
+          "complexType": {
+            "original": "TabsVerticalColSize",
+            "resolved": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",
+            "references": {
+              "TabsVerticalColSize": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::TabsVerticalColSize",
+                "referenceLocation": "TabsVerticalColSize"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "vertical-col-size",
+          "reflectToAttr": false,
+          "docs": "The col size of the tablist in vertical mode.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'one-third'"
+            }
+          ],
+          "default": "'one-third'",
+          "values": [
+            {
+              "value": "full",
+              "type": "string"
+            },
+            {
+              "value": "half",
+              "type": "string"
+            },
+            {
+              "value": "one-quarter",
+              "type": "string"
+            },
+            {
+              "value": "one-third",
+              "type": "string"
+            },
+            {
+              "value": "three-quarters",
+              "type": "string"
+            },
+            {
+              "value": "two-thirds",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsChange",
+          "detail": "{ value: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "TabsChangeDetail",
+            "resolved": "{ value: string; }",
+            "references": {
+              "TabsChangeDetail": {
+                "location": "import",
+                "path": "../tabs.interfaces",
+                "id": "src/components/tabs/tabs.interfaces.ts::TabsChangeDetail",
+                "referenceLocation": "TabsChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected tab changes (panels variant only).",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--tabs-border-color",
+          "docs": "Color of the tablist border track. Set to transparent to hide it."
+        },
+        {
+          "name": "--tabs-indicator-height",
+          "docs": "Thickness of the selected-tab indicator and border track."
+        },
+        {
+          "name": "--tabs-gap",
+          "docs": "Gap between tab buttons."
+        },
+        {
+          "name": "--tabs-tab-padding",
+          "docs": "Padding inside each tab button."
+        },
+        {
+          "name": "--tabs-tab-font-family",
+          "docs": "Font family of tab button labels."
+        },
+        {
+          "name": "--tabs-tab-font-size",
+          "docs": "Font size of tab button labels."
+        },
+        {
+          "name": "--tabs-tab-font-weight",
+          "docs": "Font weight of tab button labels."
+        },
+        {
+          "name": "--tabs-tab-color",
+          "docs": "Text color of tab buttons."
+        },
+        {
+          "name": "--tabs-tab-color-hover",
+          "docs": "Text color of a hovered tab button."
+        },
+        {
+          "name": "--tabs-tab-color-active",
+          "docs": "Text color of a pressed tab button."
+        },
+        {
+          "name": "--tabs-tab-color-selected",
+          "docs": "Text color of the selected tab button."
+        },
+        {
+          "name": "--tabs-tab-border-color-selected",
+          "docs": "Indicator line color of the selected tab."
+        },
+        {
+          "name": "--tabs-tab-font-weight-selected",
+          "docs": "Font weight of the selected tab button label."
+        },
+        {
+          "name": "--tabs-tab-color-focus",
+          "docs": "Color of the keyboard focus ring on tab buttons."
+        },
+        {
+          "name": "--tabs-panel-padding",
+          "docs": "Padding inside the content panel."
+        },
+        {
+          "name": "--tabs-vertical-gap",
+          "docs": "Gap between the tablist and the content panel in vertical mode."
+        },
+        {
+          "name": "--tabs-scroll-fade-bg",
+          "docs": "Background color for the edge-fade gradient beside the carousel buttons."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "ds-tab-panel children (panels variant)."
+        },
+        {
+          "name": "tab",
+          "docs": "ds-tab children; managed automatically by ds-tabs."
+        }
+      ],
+      "parts": [
+        {
+          "name": "tablist",
+          "docs": "The tablist container."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "dsTabSelect",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Tabs / Border / Color",
+          "cssVarName": "--ds-tabs-border-color",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-tabs-border-color",
+              "figmaName": "Component / Tabs / Border / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Border",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Indicator / Height",
+          "cssVarName": "--ds-tabs-indicator-height",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-indicator-height",
+              "figmaName": "Component / Tabs / Indicator / Height"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Indicator",
+            "Height"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Gap",
+          "cssVarName": "--ds-tabs-gap",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-gap",
+              "figmaName": "Component / Tabs / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Panel / Padding",
+          "cssVarName": "--ds-tabs-panel-padding",
+          "value": "1rem 0",
+          "nativeValue": "1rem 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-tabs-panel-padding",
+              "figmaName": "Component / Tabs / Panel / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Panel",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Vertical / Gap",
+          "cssVarName": "--ds-tabs-vertical-gap",
+          "value": "{🔗 Alias.↔️ Space.LG.Mobile}",
+          "nativeValue": "24",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-24",
+              "figmaName": "Global / Size / Space / 24"
+            },
+            {
+              "cssVar": "--ds-space-lg-mobile",
+              "figmaName": "Alias / Space / LG / Mobile"
+            },
+            {
+              "cssVar": "--ds-tabs-vertical-gap",
+              "figmaName": "Component / Tabs / Vertical / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Vertical",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Scroll / Fade / Background",
+          "cssVarName": "--ds-tabs-scroll-fade-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-tabs-scroll-fade-background",
+              "figmaName": "Component / Tabs / Scroll / Fade / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Scroll",
+            "Fade",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Padding",
+          "cssVarName": "--ds-tabs-tab-padding",
+          "value": "0.25rem 1rem",
+          "nativeValue": "0.25rem 1rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-tabs-tab-padding",
+              "figmaName": "Component / Tabs / Tab / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / Family",
+          "cssVarName": "--ds-tabs-tab-font-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
+          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-text-family-heading",
+              "figmaName": "Alias / Text / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-family",
+              "figmaName": "Component / Tabs / Tab / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / Size",
+          "cssVarName": "--ds-tabs-tab-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-size",
+              "figmaName": "Component / Tabs / Tab / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / Weight",
+          "cssVarName": "--ds-tabs-tab-font-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-weight",
+              "figmaName": "Component / Tabs / Tab / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Font / WeightSelected",
+          "cssVarName": "--ds-tabs-tab-font-weightselected",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-font-weightselected",
+              "figmaName": "Component / Tabs / Tab / Font / WeightSelected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Font",
+            "WeightSelected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Focus",
+          "cssVarName": "--ds-tabs-tab-color-focus",
+          "value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}",
+          "nativeValue": "#6C2273",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-6",
+              "figmaName": "Global / Color / Purple / 6"
+            },
+            {
+              "cssVar": "--ds-interaction-focus-color-base",
+              "figmaName": "Alias / Interaction / Focus / Color / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-focus",
+              "figmaName": "Component / Tabs / Tab / Color / Focus"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Focus"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Base",
+          "cssVarName": "--ds-tabs-tab-color-base",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-base",
+              "figmaName": "Component / Tabs / Tab / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Hover",
+          "cssVarName": "--ds-tabs-tab-color-hover",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryhover",
+              "figmaName": "Alias / Text / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-hover",
+              "figmaName": "Component / Tabs / Tab / Color / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Active",
+          "cssVarName": "--ds-tabs-tab-color-active",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryactive",
+              "figmaName": "Alias / Text / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-active",
+              "figmaName": "Component / Tabs / Tab / Color / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Color / Selected",
+          "cssVarName": "--ds-tabs-tab-color-selected",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-color-selected",
+              "figmaName": "Component / Tabs / Tab / Color / Selected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Color",
+            "Selected"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tabs / Tab / Border / Color / Selected",
+          "cssVarName": "--ds-tabs-tab-border-color-selected",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-tabs-tab-border-color-selected",
+              "figmaName": "Component / Tabs / Tab / Border / Color / Selected"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Tab",
+            "Border",
+            "Color",
+            "Selected"
+          ]
+        }
+      ]
+    },
+    {
       "fileName": "tag.tsx",
       "tag": "ds-tag",
       "overview": "Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.",
@@ -42177,7 +45392,7 @@
       "path": "src/components/alert/toast/toast.interfaces.ts"
     },
     "src/components/badge/badge.interfaces.ts::BadgeSize": {
-      "declaration": "\"\" | \"small\" | \"large\"",
+      "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"large\"",
       "docstring": "",
       "path": "src/components/badge/badge.interfaces.ts"
     },
@@ -42285,6 +45500,16 @@
       "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | \"base\" | \"md\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"display\" | \"display-2\"",
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
+    },
+    "src/components/carousel/carousel.interfaces.ts::DS": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components/carousel/carousel.interfaces.ts"
+    },
+    "src/components/carousel/carousel.interfaces.ts::CarouselChangeDetail": {
+      "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/carousel/carousel.interfaces.ts"
     },
     "src/components/checkbox/checkbox.interfaces.ts::CheckboxLabelPosition": {
       "declaration": "\"left\" | \"right\" | \"top\"",
@@ -42685,6 +45910,31 @@
       "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
+    },
+    "src/components/steps/steps.interfaces.ts::DS": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components/steps/steps.interfaces.ts"
+    },
+    "src/components/steps/steps.interfaces.ts::StepsChangeDetail": {
+      "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/steps/steps.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::DS": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::TabsVerticalColSize": {
+      "declaration": "\"full\" | \"half\" | \"one-quarter\" | \"one-third\" | \"three-quarters\" | \"two-thirds\"",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
+    },
+    "src/components/tabs/tabs.interfaces.ts::TabsChangeDetail": {
+      "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/tabs/tabs.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagColor": {
       "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",

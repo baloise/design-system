@@ -1,0 +1,19 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * @prop --tab-panel-padding: Padding inside the tab panel.
+ */
+
+:host {
+  @include vars.local(tab-panel-padding, var(--ds-tab-panel-padding));
+
+  display: none;
+}
+
+:host(.is-selected) {
+  display: block;
+  padding: var(--_tab-panel-padding);
+}

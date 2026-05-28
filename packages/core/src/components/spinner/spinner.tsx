@@ -6,8 +6,6 @@ import {
   rOnLoad,
   Logger,
   type LogInstance,
-  ValidateOneOf,
-  ValidateType,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   hasValue,
@@ -74,14 +72,14 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * **Deprecated:** Use inverted="true" for white spinner instead.
    */
   @Prop()
-  @ValidateOneOf(...SPINNER_COLORS)
+  @ValidateEmptyOrOneOf(...SPINNER_COLORS)
   readonly color: SpinnerColor = 'blue'
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly deactivated: boolean = false
   @Watch('deactivated')
   deactivatedChanged(newValue: boolean, oldValue: boolean) {
@@ -98,7 +96,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * If `true` the component can be used on dark background
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**
@@ -112,7 +110,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * **Deprecated:** Use size="sm" instead.
    */
   @Prop()
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly small: boolean = false
   @Watch('small')
   smallChanged(newValue: boolean, oldValue: boolean) {
@@ -132,14 +130,14 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * Position of the visible label relative to the spinner animation.
    */
   @Prop()
-  @ValidateOneOf(...SPINNER_LABEL_POSITIONS)
+  @ValidateEmptyOrOneOf(...SPINNER_LABEL_POSITIONS)
   readonly labelPosition: SpinnerLabelPosition = 'right'
 
   /**
    * Defines the look of the spinner
    */
   @Prop()
-  @ValidateOneOf(...SPINNER_VARIATIONS)
+  @ValidateEmptyOrOneOf(...SPINNER_VARIATIONS)
   readonly variation: SpinnerVariation = 'logo'
   @Watch('variation')
   variationChanged(newValue: SpinnerVariation, oldValue: SpinnerVariation) {

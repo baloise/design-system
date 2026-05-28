@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as TabsStories from './tabs.stories'
+import { TABS_DOC_CONFIG, getTabsTabs } from './tabs.doc-config'
+
+<Meta title="Components/Tabs/Variants/Overview" />
+
+<StoryHeading of={TabsStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={TABS_DOC_CONFIG.section} color={TABS_DOC_CONFIG.color} />
+
+<BannerTabs of={TabsStories} tabs={getTabsTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Basic}></StoryHeading>
+
+The default tabs variant with a horizontal tablist and associated content panels.
+
+<CanvasWithCodePen of={TabsStories.Basic} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.ColorVariants}></StoryHeading>
+
+The `color` prop replaces the default grey border track and selected indicator with a brand color. Use this when tabs sit within a color-coded context such as a product, category, or status view.
+
+<CanvasWithCodePen of={TabsStories.ColorVariants} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Inverted}></StoryHeading>
+
+Set `inverted` when placing tabs on a dark (primary) background. All labels and the indicator turn white; non-selected tabs use the body font at regular weight to preserve the visual hierarchy.
+
+<CanvasWithCodePen of={TabsStories.Inverted} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.FullwidthIcons}></StoryHeading>
+
+When `fullwidth` is set, tab buttons stretch to fill the available width equally. Icons placed inside `ds-tab` complement the label and add visual context.
+
+<CanvasWithCodePen of={TabsStories.FullwidthIcons} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Badge}></StoryHeading>
+
+A `ds-badge` can be placed inside `ds-tab` to surface counts or status indicators alongside the label.
+
+<CanvasWithCodePen of={TabsStories.Badge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.BrandIcons}></StoryHeading>
+
+Brand icons (full-color SVG) can be passed via the `svg` property of `ds-icon` inside `ds-tab`. A subtitle can be added below the label using inline `span` elements.
+
+<CanvasWithCodePen of={TabsStories.BrandIcons} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Vertical}></StoryHeading>
+
+Setting `vertical` places the tablist along the left side and the content panel to the right. Useful for dashboards or settings pages with many sections.
+
+<CanvasWithCodePen of={TabsStories.Vertical} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.VerticalCols}></StoryHeading>
+
+The `verticalColSize` prop controls the width of the tablist column in vertical mode. Supported values: `one-quarter`, `one-third`, `half`, `two-thirds`, `three-quarters`, `full`.
+
+<CanvasWithCodePen of={TabsStories.VerticalCols} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Navigation}></StoryHeading>
+
+When `ds-tab` children contain anchor links instead of panel references, the component renders a `<nav>` landmark for page-section navigation. Pass a descriptive `label` to name the landmark for screen readers.
+
+<CanvasWithCodePen of={TabsStories.Navigation} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Carousel}></StoryHeading>
+
+When tabs overflow the available width, scroll buttons appear automatically. The tablist scrolls smoothly to bring the active or clicked tab into view.
+
+<CanvasWithCodePen of={TabsStories.Carousel} />
+
+<Footer />

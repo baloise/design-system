@@ -4,8 +4,7 @@ import {
   dsBrowser,
   Logger,
   type LogInstance,
-  ValidateOneOf,
-  ValidateType,
+  ValidateEmptyOrType,
   ValidateEmptyOrOneOf,
   setupValidation,
   hasValue,
@@ -64,7 +63,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_LEVELS)
+  @ValidateEmptyOrOneOf(...HEADING_LEVELS)
   readonly level: HeadingLevel = 'h1'
 
   @Watch('level')
@@ -104,14 +103,14 @@ export class Heading implements DsComponentInterface {
    * as these elements require a width to overflow.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly noWrap: boolean = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly subtitle: boolean = false
 
   /**
@@ -132,14 +131,14 @@ export class Heading implements DsComponentInterface {
    * If `true` the color gets inverted for dark backgrounds
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @ValidateEmptyOrType('boolean')
   readonly shadow: boolean = false
 
   /**

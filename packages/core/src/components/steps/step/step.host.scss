@@ -1,0 +1,237 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+// ─── Host layout ─────────────────────────────────────────────────────────────
+// Default: circle top, label below (column). Flex: 1 so all steps share equal width.
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  outline: none;
+}
+
+:host(.is-hidden) {
+  display: none;
+}
+
+// ─── Circle ──────────────────────────────────────────────────────────────────
+
+.circle {
+  @include unselectable();
+
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: var(--_steps-circle-size);
+  height: var(--_steps-circle-size);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--_steps-circle-color-bg);
+  color: var(--_steps-circle-color-text);
+  font-family: var(--_steps-step-font-family);
+  font-size: var(--_steps-step-font-size);
+  font-weight: var(--_steps-step-font-weight);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+  cursor: pointer;
+}
+
+:host(.is-disabled) .circle {
+  cursor: not-allowed;
+}
+
+.step-invalid {
+  color: var(--_steps-circle-color-text-invalid);
+  font-family: var(--_steps-step-font-family);
+  font-size: var(--_steps-step-font-size);
+  font-weight: var(--_steps-step-font-weight);
+  line-height: 1;
+}
+
+// State: selected
+:host(.is-selected) .circle {
+  background-color: var(--_steps-circle-color-bg-selected);
+  color: var(--_steps-circle-color-text-selected);
+}
+
+// State: done
+:host(.is-done) .circle {
+  background-color: var(--_steps-circle-color-bg-done);
+  color: var(--_steps-circle-color-text-done);
+}
+
+// State: invalid
+:host(.is-invalid) .circle {
+  background-color: var(--_steps-circle-color-bg-invalid);
+  color: var(--_steps-circle-color-text-invalid);
+}
+
+// State: disabled — same bg as base, muted via opacity
+:host(.is-disabled) .circle {
+  background-color: var(--_steps-circle-color-bg-disabled);
+  color: var(--_steps-circle-color-text-disabled);
+  opacity: 0.5;
+}
+
+// ─── Label ───────────────────────────────────────────────────────────────────
+
+.step-label {
+  @include unselectable();
+
+  margin-top: 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--_steps-step-color);
+  font-family: var(--_steps-step-font-family);
+  font-size: var(--_steps-step-font-size);
+  font-weight: var(--_steps-step-font-weight);
+  transition: color 180ms ease;
+}
+
+:host(.is-selected) .step-label {
+  color: var(--_steps-step-color-selected);
+}
+
+:host(.is-disabled) .step-label {
+  opacity: 0.4;
+}
+
+// ─── Connector line ──────────────────────────────────────────────────────────
+// Absolutely positioned from center of this step to center of the next step.
+// Works because all steps have equal flex: 1 widths.
+
+.connector {
+  position: absolute;
+  top: calc(var(--_steps-circle-size) / 2);
+  transform: translateY(-50%);
+  left: calc(50% + var(--_steps-circle-size) / 2 + 4px);
+  right: calc(-50% + var(--_steps-circle-size) / 2 + 4px);
+  height: var(--_steps-connector-height);
+  border-radius: 9999px;
+  background-color: var(--_steps-connector-color);
+  z-index: 0;
+  transition: background-color 180ms ease;
+}
+
+:host(.is-filled) .connector {
+  background-color: var(--_steps-connector-color-filled);
+}
+
+// Last step has no connector line to the right
+:host(:last-of-type) .connector {
+  display: none;
+}
+
+// ─── Mobile: smaller circle and font ─────────────────────────────────────────
+
+@include mobile {
+  .circle {
+    width: var(--_steps-circle-size-sm);
+    height: var(--_steps-circle-size-sm);
+    font-size: var(--_steps-step-font-size-sm);
+    --mod-icon-size: var(--ds-icon-size-sm);
+    --mod-icon-inner-size: var(--ds-icon-size-sm);
+  }
+
+  .step-label {
+    display: none;
+  }
+
+  .connector {
+    top: calc(var(--_steps-circle-size-sm) / 2);
+    left: calc(50% + var(--_steps-circle-size-sm) / 2 + 4px);
+    right: calc(-50% + var(--_steps-circle-size-sm) / 2 + 4px);
+  }
+}
+
+// ─── Focus ───────────────────────────────────────────────────────────────────
+
+:host(:focus-visible:not(:active)) .circle {
+  @include focus-shadow(var(--_steps-step-color-focus));
+}
+
+// ─── Vertical mode ───────────────────────────────────────────────────────────
+// Circle left, label right. Connector is handled entirely by the parent ds-steps.
+
+:host(.is-vertical) {
+  flex-direction: row;
+  align-items: center;
+  flex: unset;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+:host(.is-vertical) .circle {
+  flex-shrink: 0;
+}
+
+:host(.is-vertical) .step-label {
+  display: block;
+  margin-top: 0;
+  margin-left: 0.75rem;
+  text-align: left;
+  white-space: normal;
+}
+
+// Hide the horizontal connector — parent draws the vertical line
+:host(.is-vertical) .connector {
+  display: none;
+}
+
+// ─── Navigation mode ─────────────────────────────────────────────────────────
+
+:host(.is-navigation) {
+  cursor: default;
+}
+
+:host(.is-navigation) ::slotted(a) {
+  @include unselectable();
+
+  display: block;
+  margin-top: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--_steps-step-color);
+  font-family: var(--_steps-step-font-family);
+  font-size: var(--_steps-step-font-size);
+  font-weight: var(--_steps-step-font-weight);
+  transition: color 180ms ease;
+  outline: none;
+}
+
+:host(.is-navigation.is-selected) ::slotted(a),
+:host(.is-navigation) ::slotted([aria-current]) {
+  color: var(--_steps-step-color-selected);
+}
+
+:host(.is-navigation) ::slotted(a:focus-visible) {
+  border-radius: var(--ds-alias-radius-base);
+  @include focus-shadow(var(--_steps-step-color-focus));
+}
+
+// Navigation + vertical: label to the right
+:host(.is-navigation.is-vertical) ::slotted(a) {
+  margin-top: 0;
+  margin-left: 0.75rem;
+  text-align: left;
+  white-space: normal;
+}
+
+@include mobile {
+  :host(.is-navigation) ::slotted(a) {
+    font-size: var(--_steps-step-font-size-sm);
+  }
+}
