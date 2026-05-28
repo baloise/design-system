@@ -12,7 +12,7 @@ import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.i
 import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
-import { CarouselChangeDetail, DS } from "./components/carousel/carousel.interfaces";
+import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 import { CloseSize } from "./components/close/close.interfaces";
@@ -32,8 +32,8 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { DS as DS1, StepsChangeDetail } from "./components/steps/steps.interfaces";
-import { DS as DS2, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
+import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -46,7 +46,7 @@ export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.i
 export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
-export { CarouselChangeDetail, DS } from "./components/carousel/carousel.interfaces";
+export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 export { CloseSize } from "./components/close/close.interfaces";
@@ -66,8 +66,8 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { DS as DS1, StepsChangeDetail } from "./components/steps/steps.interfaces";
-export { DS as DS2, TabsChangeDetail, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
+export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
+export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
@@ -549,7 +549,7 @@ export namespace Components {
           * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
           * @default 'dots'
          */
-        "controls": DS.CarouselControls;
+        "controls": CarouselControls;
         /**
           * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.
           * @default 'auto'
@@ -573,7 +573,7 @@ export namespace Components {
           * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
           * @default 'slide'
          */
-        "variant": DS.CarouselVariant;
+        "variant": CarouselVariant;
     }
     /**
      * Carousel Item is a single slide or product tile inside a ds-carousel.
@@ -583,12 +583,12 @@ export namespace Components {
           * Set by ds-carousel. The carousel variant this item is part of.
           * @default 'slide'
          */
-        "carouselVariant": DS.CarouselVariant;
+        "carouselVariant": CarouselVariant;
         /**
           * Background color for product tiles.
           * @default ''
          */
-        "color": DS.CarouselItemColor;
+        "color": CarouselItemColor;
         /**
           * Set by ds-carousel. 1-based position index.
           * @default 0
@@ -2173,7 +2173,7 @@ export namespace Components {
           * Accent color applied to inactive circles and connector lines.
           * @default ''
          */
-        "color": DS1.StepsColor;
+        "color": StepsColor;
         /**
           * Accessible label for the navigation landmark (navigation variant only).
           * @default ''
@@ -2245,7 +2245,7 @@ export namespace Components {
           * Accent color applied to the bottom border track and selected indicator.
           * @default ''
          */
-        "color": DS2.TabsColor;
+        "color": TabsColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
@@ -4110,7 +4110,7 @@ declare namespace LocalJSX {
           * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
           * @default 'dots'
          */
-        "controls"?: DS.CarouselControls;
+        "controls"?: CarouselControls;
         /**
           * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.
           * @default 'auto'
@@ -4138,7 +4138,7 @@ declare namespace LocalJSX {
           * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
           * @default 'slide'
          */
-        "variant"?: DS.CarouselVariant;
+        "variant"?: CarouselVariant;
     }
     /**
      * Carousel Item is a single slide or product tile inside a ds-carousel.
@@ -4148,12 +4148,12 @@ declare namespace LocalJSX {
           * Set by ds-carousel. The carousel variant this item is part of.
           * @default 'slide'
          */
-        "carouselVariant"?: DS.CarouselVariant;
+        "carouselVariant"?: CarouselVariant;
         /**
           * Background color for product tiles.
           * @default ''
          */
-        "color"?: DS.CarouselItemColor;
+        "color"?: CarouselItemColor;
         /**
           * Set by ds-carousel. 1-based position index.
           * @default 0
@@ -5870,7 +5870,7 @@ declare namespace LocalJSX {
           * Accent color applied to inactive circles and connector lines.
           * @default ''
          */
-        "color"?: DS1.StepsColor;
+        "color"?: StepsColor;
         /**
           * Accessible label for the navigation landmark (navigation variant only).
           * @default ''
@@ -5950,7 +5950,7 @@ declare namespace LocalJSX {
           * Accent color applied to the bottom border track and selected indicator.
           * @default ''
          */
-        "color"?: DS2.TabsColor;
+        "color"?: TabsColor;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
           * @default false
@@ -6535,16 +6535,16 @@ declare namespace LocalJSX {
         "visualLevel": HeadingVisualLevel;
     }
     interface DsCarouselAttributes {
-        "controls": DS.CarouselControls;
-        "variant": DS.CarouselVariant;
+        "controls": CarouselControls;
+        "variant": CarouselVariant;
         "itemsPerView": string;
         "label": string;
         "steps": number;
         "value": string | null;
     }
     interface DsCarouselItemAttributes {
-        "color": DS.CarouselItemColor;
-        "carouselVariant": DS.CarouselVariant;
+        "color": CarouselItemColor;
+        "carouselVariant": CarouselVariant;
         "navigation": boolean;
         "index": number;
         "name": string;
@@ -6878,7 +6878,7 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsStepsAttributes {
-        "color": DS.StepsColor;
+        "color": StepsColor;
         "label": string;
         "value": string | null;
         "vertical": boolean;
@@ -6896,7 +6896,7 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsTabsAttributes {
-        "color": DS.TabsColor;
+        "color": TabsColor;
         "fullwidth": boolean;
         "inverted": boolean;
         "label": string;

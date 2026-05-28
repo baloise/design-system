@@ -16,7 +16,7 @@ export class DsSteps extends PageObject {
   }
 
   async selectStep(name: string) {
-    await this.step(name).click()
+    await this.step(name).click({ force: true })
   }
 
   async assertStepSelected(name: string) {

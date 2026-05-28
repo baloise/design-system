@@ -119,6 +119,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   private trackEl?: HTMLElement
   private resizeObserver?: ResizeObserver
   private intersectionObserver?: IntersectionObserver
+  private intersectionInitialized = false
   private momentumAnimId = 0
   private dragStartX = 0
   private dragStartScrollLeft = 0
@@ -265,15 +266,23 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     this.dragStartX = ev.clientX
     this.dragStartScrollLeft = el.scrollLeft
     this.velocityHistory = []
-    // Disable CSS smooth-scroll during drag so track follows pointer exactly
+    // Disable CSS smooth-scroll during drag so track follows pointer exactly.
+    // NOTE: setPointerCapture is intentionally deferred to the first pointermove.
+    // Setting it here causes Chromium to retarget click away from interactive
+    // children (carousel-items) when pointerdown and pointerup targets differ.
     el.style.scrollBehavior = 'auto'
-    el.setPointerCapture(ev.pointerId)
   }
 
   private handlePointerMove = (ev: PointerEvent) => {
     if (!this.dragging || !this.trackEl) return
+    const el = this.trackEl
+    // Capture the pointer on first actual movement so dragging stays smooth
+    // even when the pointer leaves the track — but only after a real drag starts.
+    if (!el.hasPointerCapture(ev.pointerId)) {
+      el.setPointerCapture(ev.pointerId)
+    }
     const dx = ev.clientX - this.dragStartX
-    this.trackEl.scrollLeft = this.dragStartScrollLeft - dx
+    el.scrollLeft = this.dragStartScrollLeft - dx
     this.velocityHistory.push({ x: ev.clientX, t: performance.now() })
     if (this.velocityHistory.length > 5) this.velocityHistory.shift()
   }
@@ -398,10 +407,17 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   private initIntersection() {
     this.intersectionObserver?.disconnect()
+    this.intersectionInitialized = false
     if (this.variant !== 'slide' || !this.trackEl) return
 
     this.intersectionObserver = new IntersectionObserver(
       entries => {
+        // Skip the initial fire (triggered by observe()) so a preset value prop
+        // is not overridden by whichever slide happens to be at scroll position 0.
+        if (!this.intersectionInitialized) {
+          this.intersectionInitialized = true
+          return
+        }
         const visible = entries.find(e => e.isIntersecting && e.intersectionRatio >= 0.5)
         if (!visible) return
         const items = this.getItems()

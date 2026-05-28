@@ -188,6 +188,8 @@ export class Steps implements DsComponentInterface {
 
   private activateStep(name: string) {
     if (name === this.value) return
+    const step = this.getSteps().find(s => s.name === name)
+    if (step?.disabled) return
     this.value = name
     this.dsChange.emit({ value: name })
     this.focusSelectedStep()
@@ -238,39 +240,44 @@ export class Steps implements DsComponentInterface {
   render() {
     const isNav = this.isNavigation()
 
-    const steplistDiv = (
-      <div
-        id="steplist"
-        part="steplist"
-        role={isNav ? undefined : 'tablist'}
-        aria-orientation={!isNav && this.vertical ? 'vertical' : undefined}
-        onKeyDown={this.handleKeyDown}
-        ref={el => {
-          this.steplistEl = el as HTMLElement
-        }}
-      >
-        <slot name="step" onSlotchange={this.handleSlotChange} />
-      </div>
-    )
+    const hostClass = {
+      'is-vertical': this.vertical,
+      'is-navigation': isNav,
+      'is-purple': this.color === 'purple',
+      'is-green': this.color === 'green',
+      'is-red': this.color === 'red',
+      'is-yellow': this.color === 'yellow',
+    }
+
+    const slotRef = (el?: HTMLElement) => {
+      if (el) this.steplistEl = el
+    }
+
+    if (isNav) {
+      return (
+        <Host class={hostClass}>
+          <nav aria-label={this.label || undefined}>
+            <ol id="steplist" part="steplist" ref={slotRef}>
+              <slot name="step" onSlotchange={this.handleSlotChange} />
+            </ol>
+          </nav>
+          <slot onSlotchange={this.handleSlotChange} />
+        </Host>
+      )
+    }
 
     return (
-      <Host
-        class={{
-          'is-vertical': this.vertical,
-          'is-navigation': isNav,
-          'is-purple': this.color === 'purple',
-          'is-green': this.color === 'green',
-          'is-red': this.color === 'red',
-          'is-yellow': this.color === 'yellow',
-        }}
-      >
-        {isNav ? (
-          <nav aria-label={this.label || undefined}>
-            <ol>{steplistDiv}</ol>
-          </nav>
-        ) : (
-          steplistDiv
-        )}
+      <Host class={hostClass}>
+        <div
+          id="steplist"
+          part="steplist"
+          role="tablist"
+          aria-orientation={this.vertical ? 'vertical' : undefined}
+          onKeyDown={this.handleKeyDown}
+          ref={slotRef}
+        >
+          <slot name="step" onSlotchange={this.handleSlotChange} />
+        </div>
         <slot onSlotchange={this.handleSlotChange} />
       </Host>
     )
