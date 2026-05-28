@@ -1,4 +1,3 @@
-import { byTestId } from '../../../packages/testing/src'
 import { Components } from '../support/utils'
 
 describe('bal-number-input', () => {
