@@ -1,0 +1,183 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, Code, UsageExamples } from '../../../.storybook/blocks'
+import * as TableStories from './table.stories'
+import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
+
+<Meta title="Components/Table/Usage" />
+
+<Banner label={'Usage'} section={TABLE_DOC_CONFIG.section} color={TABLE_DOC_CONFIG.color} />
+
+<BannerTabs of={TableStories} tabs={getTableTabs('usage')} />
+
+## When to Use
+
+- Displaying structured relational data with clearly defined rows and columns.
+- Comparing multiple items across the same set of attributes.
+- Listing records that users need to scan, sort, or select.
+
+## When NOT to Use
+
+- Avoid using a table for layout purposes — use flex or grid instead.
+- Do not use a table when the data has no meaningful column relationship.
+- Avoid tables for single-column data; a list is more appropriate.
+
+## Do's and Don'ts
+
+### Width
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      contentIsLeftAligned: true,
+      title: 'Correct: Full width',
+      content: (
+        <table class="table is-wide">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alice</td>
+              <td>Admin</td>
+            </tr>
+          </tbody>
+        </table>
+      ),
+      description: 'Use is-wide to stretch the table to its container width for a consistent layout.',
+    },
+    {
+      type: 'incorrect',
+      contentIsLeftAligned: true,
+      title: 'Incorrect: Unstyled table',
+      content: (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alice</td>
+              <td>Admin</td>
+            </tr>
+          </tbody>
+        </table>
+      ),
+      description: 'A plain <table> without the table class receives no design-system styling.',
+    },
+  ]}
+/>
+
+### Row selection
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Mark a single selected row',
+      contentIsLeftAligned: true,
+      content: (
+           <>
+        <table class="table is-wide">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alice</td>
+              <td>Admin</td>
+            </tr>
+            <tr class="is-selected">
+              <td>Bob</td>
+              <td>Editor</td>
+            </tr>
+          </tbody>
+        </table>
+                  <Code
+            noPreview
+            code={`<table class="table is-wide">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alice</td>
+              <td>Admin</td>
+            </tr>
+            <tr class="is-selected">
+              <td>Bob</td>
+              <td>Editor</td>
+            </tr>
+          </tbody>
+        </table>`}
+          />
+        </>
+      ),
+      description: 'Apply is-selected to the <tr> to visually highlight the active row.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Custom background color on row',
+      contentIsLeftAligned: true,
+      content: (
+        <>
+          <table class="table is-wide">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alice</td>
+                <td>Admin</td>
+              </tr>
+              <tr style={{ background: 'lightblue' }}>
+                <td>Bob</td>
+                <td>Editor</td>
+              </tr>
+            </tbody>
+          </table>
+          <Code
+            noPreview
+            code={`<table class="table is-wide">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice</td>
+      <td>Admin</td>
+    </tr>
+    <tr style={{background: 'lightblue'}}>
+      <td>Bob</td>
+      <td>Editor</td>
+    </tr>
+  </tbody>
+</table>`}
+          />
+        </>
+      ),
+      description:
+        'Do not apply inline styles for selection state — use the is-selected class so the design token cascade applies correctly.',
+    },
+  ]}
+/>
+
+<Footer />

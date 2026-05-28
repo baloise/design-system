@@ -51,7 +51,6 @@
 | input               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | textarea            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | shape               | WC     | ✅     | ✅   | ❓     | ✅   | ✅     | ✅        |
-| stage               | WC     | ❓     | ⬜   | ❓     | ✅   | ✅     | ✅        |
 | input               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | textarea            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | radio               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
@@ -61,9 +60,10 @@
 | number-input        | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | progress-bar        | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | pagination          | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| tabs                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| steps               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| table               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| tabs                | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| steps               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| carousel            | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| table               | Hybrid | ❓     | ✅   | ✅     | ✅   | ✅     | ❓        |
 | modal               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | popover             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | tooltip             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
@@ -71,7 +71,6 @@
 | data                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | time-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | footer              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| carousel            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | date                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | date-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | dropdown            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
@@ -79,6 +78,8 @@
 | option              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | select (deprecated) | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | sheet               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| stage               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| ag-grid             | Lib    | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 
 ### Checklist for each component
 

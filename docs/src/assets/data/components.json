@@ -13166,14 +13166,14 @@
           "name": "controls",
           "type": "\"dots\" | \"large\" | \"none\"",
           "complexType": {
-            "original": "DS.CarouselControls",
+            "original": "CarouselControls",
             "resolved": "\"dots\" | \"large\" | \"none\"",
             "references": {
-              "DS": {
+              "CarouselControls": {
                 "location": "import",
                 "path": "../carousel.interfaces",
-                "id": "src/components/carousel/carousel.interfaces.ts::DS",
-                "referenceLocation": "DS"
+                "id": "src/components/carousel/carousel.interfaces.ts::CarouselControls",
+                "referenceLocation": "CarouselControls"
               }
             }
           },
@@ -13331,14 +13331,14 @@
           "name": "variant",
           "type": "\"slide\" | \"tile\"",
           "complexType": {
-            "original": "DS.CarouselVariant",
+            "original": "CarouselVariant",
             "resolved": "\"slide\" | \"tile\"",
             "references": {
-              "DS": {
+              "CarouselVariant": {
                 "location": "import",
                 "path": "../carousel.interfaces",
-                "id": "src/components/carousel/carousel.interfaces.ts::DS",
-                "referenceLocation": "DS"
+                "id": "src/components/carousel/carousel.interfaces.ts::CarouselVariant",
+                "referenceLocation": "CarouselVariant"
               }
             }
           },
@@ -13723,14 +13723,14 @@
           "name": "color",
           "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
-            "original": "DS.CarouselItemColor",
+            "original": "CarouselItemColor",
             "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
-              "DS": {
+              "CarouselItemColor": {
                 "location": "import",
                 "path": "../carousel.interfaces",
-                "id": "src/components/carousel/carousel.interfaces.ts::DS",
-                "referenceLocation": "DS"
+                "id": "src/components/carousel/carousel.interfaces.ts::CarouselItemColor",
+                "referenceLocation": "CarouselItemColor"
               }
             }
           },
@@ -37423,14 +37423,14 @@
           "name": "color",
           "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
-            "original": "DS.StepsColor",
+            "original": "StepsColor",
             "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
-              "DS": {
+              "StepsColor": {
                 "location": "import",
                 "path": "../steps.interfaces",
-                "id": "src/components/steps/steps.interfaces.ts::DS",
-                "referenceLocation": "DS"
+                "id": "src/components/steps/steps.interfaces.ts::StepsColor",
+                "referenceLocation": "StepsColor"
               }
             }
           },
@@ -38639,14 +38639,14 @@
           "name": "color",
           "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
-            "original": "DS.TabsColor",
+            "original": "TabsColor",
             "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
             "references": {
-              "DS": {
+              "TabsColor": {
                 "location": "import",
                 "path": "../tabs.interfaces",
-                "id": "src/components/tabs/tabs.interfaces.ts::DS",
-                "referenceLocation": "DS"
+                "id": "src/components/tabs/tabs.interfaces.ts::TabsColor",
+                "referenceLocation": "TabsColor"
               }
             }
           },
@@ -45501,13 +45501,23 @@
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
     },
-    "src/components/carousel/carousel.interfaces.ts::DS": {
-      "declaration": "any",
+    "src/components/carousel/carousel.interfaces.ts::CarouselControls": {
+      "declaration": "\"none\" | \"large\" | \"dots\"",
+      "docstring": "",
+      "path": "src/components/carousel/carousel.interfaces.ts"
+    },
+    "src/components/carousel/carousel.interfaces.ts::CarouselVariant": {
+      "declaration": "\"slide\" | \"tile\"",
       "docstring": "",
       "path": "src/components/carousel/carousel.interfaces.ts"
     },
     "src/components/carousel/carousel.interfaces.ts::CarouselChangeDetail": {
       "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/carousel/carousel.interfaces.ts"
+    },
+    "src/components/carousel/carousel.interfaces.ts::CarouselItemColor": {
+      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
       "docstring": "",
       "path": "src/components/carousel/carousel.interfaces.ts"
     },
@@ -45911,8 +45921,8 @@
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
-    "src/components/steps/steps.interfaces.ts::DS": {
-      "declaration": "any",
+    "src/components/steps/steps.interfaces.ts::StepsColor": {
+      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
       "docstring": "",
       "path": "src/components/steps/steps.interfaces.ts"
     },
@@ -45921,8 +45931,8 @@
       "docstring": "",
       "path": "src/components/steps/steps.interfaces.ts"
     },
-    "src/components/tabs/tabs.interfaces.ts::DS": {
-      "declaration": "any",
+    "src/components/tabs/tabs.interfaces.ts::TabsColor": {
+      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
       "docstring": "",
       "path": "src/components/tabs/tabs.interfaces.ts"
     },

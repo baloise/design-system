@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as TableStories from './table.stories'
+import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
+
+<Meta title="Components/Table/Variants/Overview" />
+
+<StoryHeading of={TableStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={TABLE_DOC_CONFIG.section} color={TABLE_DOC_CONFIG.color} />
+
+<BannerTabs of={TableStories} tabs={getTableTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TableStories.Striped}></StoryHeading>
+
+Alternate row backgrounds improve readability on dense tables with many rows.
+
+<CanvasWithCodePen of={TableStories.Striped} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TableStories.Hoverable}></StoryHeading>
+
+Rows highlight on pointer hover, giving users a clear indication of which row they are about to interact with.
+
+<CanvasWithCodePen of={TableStories.Hoverable} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TableStories.Bordered}></StoryHeading>
+
+Full cell borders on all sides make individual cells easier to distinguish in data-heavy tables.
+
+<CanvasWithCodePen of={TableStories.Bordered} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TableStories.Narrow}></StoryHeading>
+
+Compact cell padding reduces vertical rhythm and fits more rows into the viewport without scrolling.
+
+<CanvasWithCodePen of={TableStories.Narrow} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TableStories.SelectedRow}></StoryHeading>
+
+Highlight a specific row to indicate the currently active or selected record.
+
+<CanvasWithCodePen of={TableStories.SelectedRow} />
+
+<Footer />
