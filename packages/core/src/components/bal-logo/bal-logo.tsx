@@ -27,7 +27,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   @Element() el!: HTMLStencilElement
 
-  @State() isTouch = balBreakpoints.isTouch
+  @State() isTouch = balBreakpoints?.isTouch ?? false
   @State() doesConfigAllowAnimation = true
   @State() configBrand: BalProps.BalLogoBrand = 'baloise'
 
