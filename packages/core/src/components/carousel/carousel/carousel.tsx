@@ -462,6 +462,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
         part="track"
         role="region"
         aria-label={this.label || i18n.scrollLeft}
+        tabIndex={0}
         onKeyDown={this.handleKeyDown}
         onPointerDown={this.handlePointerDown}
         onPointerMove={this.handlePointerMove}
