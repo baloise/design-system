@@ -15609,6 +15609,102 @@
           }
         }
       }
+    },
+    "Tooltip": {
+      "Bg": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:1",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Color": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:2",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Radius": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🔵 Radius.Base}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:3",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Shadow": {
+        "$type": "string",
+        "$value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:4",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.type": "string",
+          "com.figma.isOverride": true
+        }
+      },
+      "Font": {
+        "Family": {
+          "$type": "string",
+          "$value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:378:5",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.type": "string",
+            "com.figma.isOverride": true
+          }
+        },
+        "Size": {
+          "$type": "number",
+          "$value": "{🔗 Alias.🔤 Text.Size.SM.Desktop}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:378:6",
+            "com.figma.scopes": ["ALL_SCOPES"],
+            "com.figma.isOverride": true
+          }
+        }
+      },
+      "LineHeight": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:7",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "ZIndex": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🗂️ ZIndex.Tooltip}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:8",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Px": {
+        "$type": "number",
+        "$value": "{🔗 Alias.↔️ Space.SM.Mobile}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:9",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      },
+      "Py": {
+        "$type": "number",
+        "$value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:378:10",
+          "com.figma.scopes": ["ALL_SCOPES"],
+          "com.figma.isOverride": true
+        }
+      }
     }
   },
   "$extensions": {

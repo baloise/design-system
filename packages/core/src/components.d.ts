@@ -39,6 +39,7 @@ import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/tex
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
 import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 export { DsConfigState } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
@@ -73,6 +74,7 @@ export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/tex
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
 export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+export { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export namespace Components {
     /**
      * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
@@ -2683,6 +2685,48 @@ export namespace Components {
          */
         "value": string | number;
     }
+    /**
+     * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+     */
+    interface DsTooltip {
+        /**
+          * Defines the maximum width of the tooltip content in pixels.
+          * @default undefined
+         */
+        "contentWidth": number | undefined;
+        /**
+          * Hides the tooltip and cleans up the position updater.
+         */
+        "dismiss": () => Promise<boolean>;
+        /**
+          * Offset in pixels from the trigger element to the tooltip.
+          * @default 8
+         */
+        "offset": number;
+        /**
+          * When true, the tooltip is shown immediately on load without user interaction.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Preferred placement of the tooltip relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement": TooltipPlacement;
+        /**
+          * Shows the tooltip and positions it relative to the trigger element.
+         */
+        "present": () => Promise<boolean>;
+        /**
+          * Id of the reference element. Defaults to the trigger element.
+          * @default ''
+         */
+        "reference": string;
+        /**
+          * Recomputes the tooltip position using floating-ui.
+         */
+        "update": () => Promise<boolean>;
+    }
 }
 export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2783,6 +2827,10 @@ export interface DsToastCustomEvent<T> extends CustomEvent<T> {
 export interface DsToggleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsToggleElement;
+}
+export interface DsTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTooltipElement;
 }
 declare global {
     interface HTMLDsAccordionElementEventMap {
@@ -3554,6 +3602,27 @@ declare global {
         prototype: HTMLDsToggleElement;
         new (): HTMLDsToggleElement;
     };
+    interface HTMLDsTooltipElementEventMap {
+        "dsWillAnimate": TooltipWillAnimateDetail;
+        "dsDidAnimate": TooltipDidAnimateDetail;
+    }
+    /**
+     * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+     */
+    interface HTMLDsTooltipElement extends Components.DsTooltip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTooltipElementEventMap>(type: K, listener: (this: HTMLDsTooltipElement, ev: DsTooltipCustomEvent<HTMLDsTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTooltipElementEventMap>(type: K, listener: (this: HTMLDsTooltipElement, ev: DsTooltipCustomEvent<HTMLDsTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTooltipElement: {
+        prototype: HTMLDsTooltipElement;
+        new (): HTMLDsTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
@@ -3605,6 +3674,7 @@ declare global {
         "ds-textarea": HTMLDsTextareaElement;
         "ds-toast": HTMLDsToastElement;
         "ds-toggle": HTMLDsToggleElement;
+        "ds-tooltip": HTMLDsTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -6432,6 +6502,44 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+     */
+    interface DsTooltip {
+        /**
+          * Defines the maximum width of the tooltip content in pixels.
+          * @default undefined
+         */
+        "contentWidth"?: number | undefined;
+        /**
+          * Offset in pixels from the trigger element to the tooltip.
+          * @default 8
+         */
+        "offset"?: number;
+        /**
+          * Emitted after the animation has finished.
+         */
+        "onDsDidAnimate"?: (event: DsTooltipCustomEvent<TooltipDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts.
+         */
+        "onDsWillAnimate"?: (event: DsTooltipCustomEvent<TooltipWillAnimateDetail>) => void;
+        /**
+          * When true, the tooltip is shown immediately on load without user interaction.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Preferred placement of the tooltip relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement"?: TooltipPlacement;
+        /**
+          * Id of the reference element. Defaults to the trigger element.
+          * @default ''
+         */
+        "reference"?: string;
+    }
 
     interface DsAccordionAttributes {
         "open": boolean;
@@ -6987,6 +7095,13 @@ declare namespace LocalJSX {
         "tile": boolean;
         "value": string;
     }
+    interface DsTooltipAttributes {
+        "reference": string;
+        "placement": TooltipPlacement;
+        "offset": number;
+        "contentWidth": number | undefined;
+        "open": boolean;
+    }
 
     interface IntrinsicElements {
         "ds-accordion": Omit<DsAccordion, keyof DsAccordionAttributes> & { [K in keyof DsAccordion & keyof DsAccordionAttributes]?: DsAccordion[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `attr:${K}`]?: DsAccordionAttributes[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `prop:${K}`]?: DsAccordion[K] };
@@ -7039,6 +7154,7 @@ declare namespace LocalJSX {
         "ds-textarea": Omit<DsTextarea, keyof DsTextareaAttributes> & { [K in keyof DsTextarea & keyof DsTextareaAttributes]?: DsTextarea[K] } & { [K in keyof DsTextarea & keyof DsTextareaAttributes as `attr:${K}`]?: DsTextareaAttributes[K] } & { [K in keyof DsTextarea & keyof DsTextareaAttributes as `prop:${K}`]?: DsTextarea[K] };
         "ds-toast": Omit<DsToast, keyof DsToastAttributes> & { [K in keyof DsToast & keyof DsToastAttributes]?: DsToast[K] } & { [K in keyof DsToast & keyof DsToastAttributes as `attr:${K}`]?: DsToastAttributes[K] } & { [K in keyof DsToast & keyof DsToastAttributes as `prop:${K}`]?: DsToast[K] } & OneOf<"heading", DsToast["heading"], DsToastAttributes["heading"]> & OneOf<"message", DsToast["message"], DsToastAttributes["message"]>;
         "ds-toggle": Omit<DsToggle, keyof DsToggleAttributes> & { [K in keyof DsToggle & keyof DsToggleAttributes]?: DsToggle[K] } & { [K in keyof DsToggle & keyof DsToggleAttributes as `attr:${K}`]?: DsToggleAttributes[K] } & { [K in keyof DsToggle & keyof DsToggleAttributes as `prop:${K}`]?: DsToggle[K] };
+        "ds-tooltip": Omit<DsTooltip, keyof DsTooltipAttributes> & { [K in keyof DsTooltip & keyof DsTooltipAttributes]?: DsTooltip[K] } & { [K in keyof DsTooltip & keyof DsTooltipAttributes as `attr:${K}`]?: DsTooltipAttributes[K] } & { [K in keyof DsTooltip & keyof DsTooltipAttributes as `prop:${K}`]?: DsTooltip[K] };
     }
 }
 export { LocalJSX as JSX };
@@ -7246,6 +7362,10 @@ declare module "@stencil/core" {
              * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
              */
             "ds-toggle": LocalJSX.IntrinsicElements["ds-toggle"] & JSXBase.HTMLAttributes<HTMLDsToggleElement>;
+            /**
+             * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+             */
+            "ds-tooltip": LocalJSX.IntrinsicElements["ds-tooltip"] & JSXBase.HTMLAttributes<HTMLDsTooltipElement>;
         }
     }
 }

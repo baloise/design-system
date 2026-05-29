@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TooltipStories from './tooltip.stories'
+import { TOOLTIP_DOC_CONFIG, getTooltipTabs } from './tooltip.doc-config'
+
+<Meta title="Components/Tooltip/Overview" />
+
+<Banner label={'Overview'} section={TOOLTIP_DOC_CONFIG.section} color={TOOLTIP_DOC_CONFIG.color} />
+
+<BannerTabs of={TooltipStories} tabs={getTooltipTabs('overview')} />
+
+<ComponentLead component="tooltip" />
+
+<CanvasWithCodePen of={TooltipStories.Basic} />
+
+<Controls of={TooltipStories.Basic} />
+
+<ComponentPublicMethods component="tooltip" />
+
+<Footer />

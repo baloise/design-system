@@ -1,0 +1,123 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * @prop --tooltip-bg: Background color of the tooltip container.
+ * @prop --tooltip-color: Text color of the tooltip content.
+ * @prop --tooltip-max-width: Maximum width of the tooltip container.
+ * @prop --tooltip-radius: Border radius of the tooltip container.
+ * @prop --tooltip-shadow: Box shadow of the tooltip container.
+ * @prop --tooltip-px: Horizontal padding of the tooltip content.
+ * @prop --tooltip-py: Vertical padding of the tooltip content.
+ * @prop --tooltip-font-family: Font family of the tooltip text.
+ * @prop --tooltip-font-size: Font size of the tooltip text.
+ * @prop --tooltip-line-height: Line height of the tooltip text.
+ * @prop --tooltip-z-index: Z-index of the tooltip layer.
+ */
+
+:host {
+  @include vars.base(tooltip);
+  @include vars.local(tooltip-bg, var(--ds-tooltip-bg));
+  @include vars.local(tooltip-color, var(--ds-tooltip-color));
+  @include vars.local(tooltip-max-width, auto);
+  @include vars.local(tooltip-radius, var(--ds-tooltip-radius));
+  @include vars.local(tooltip-shadow, var(--ds-tooltip-shadow));
+  @include vars.local(tooltip-px, var(--ds-tooltip-px));
+  @include vars.local(tooltip-py, var(--ds-tooltip-py));
+  @include vars.local(tooltip-font-family, var(--ds-tooltip-font-family));
+  @include vars.local(tooltip-font-size, var(--ds-tooltip-font-size));
+  @include vars.local(tooltip-line-height, var(--ds-tooltip-line-height));
+  @include vars.local(tooltip-z-index, var(--ds-tooltip-z-index));
+}
+
+/**
+ * Host
+ * --------------------------------
+ */
+
+:host {
+  position: static;
+  display: inline;
+  z-index: var(--_tooltip-z-index);
+}
+
+/**
+ * Container
+ * --------------------------------
+ * Positioned via floating-ui using fixed strategy; hidden by default.
+ */
+
+::slotted(*) {
+  all: initial;
+}
+
+[part='container'] {
+  @include unselectable();
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition:
+    opacity 120ms cubic-bezier(0.4, 0, 1, 1),
+    transform 120ms cubic-bezier(0.4, 0, 1, 1),
+    visibility 0ms linear 120ms;
+  will-change: opacity, transform;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: var(--_tooltip-max-width);
+  background-color: var(--_tooltip-bg);
+  border-radius: var(--_tooltip-radius);
+  box-shadow: var(--_tooltip-shadow);
+  color: var(--_tooltip-color);
+  font-family: var(--_tooltip-font-family);
+  font-size: var(--_tooltip-font-size);
+  line-height: var(--_tooltip-line-height);
+  z-index: var(--_tooltip-z-index);
+}
+
+:host([aria-hidden='false']) [part='container'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(0, 0);
+  transition:
+    opacity 200ms cubic-bezier(0, 0, 0.2, 1),
+    transform 200ms cubic-bezier(0, 0, 0.2, 1),
+    visibility 0ms linear 0ms;
+}
+
+/**
+ * Placement-aware fly-in origins
+ * --------------------------------
+ */
+
+[part='container'][data-placement='top'] {
+  transform: translateY(4px);
+}
+
+[part='container'][data-placement='right'] {
+  transform: translateX(-4px);
+}
+
+[part='container'][data-placement='left'] {
+  transform: translateX(4px);
+}
+
+/**
+ * Content
+ * --------------------------------
+ */
+
+[part='content'] {
+  position: relative;
+  padding-block: var(--_tooltip-py);
+  padding-inline: var(--_tooltip-px);
+  overflow-y: auto;
+  max-height: calc(100svh - 8rem);
+}

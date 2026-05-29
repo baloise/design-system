@@ -50,5 +50,6 @@ export const tags: string[] = [
   "ds-text",
   "ds-textarea",
   "ds-toast",
-  "ds-toggle"
+  "ds-toggle",
+  "ds-tooltip"
 ]
