@@ -6,7 +6,7 @@ export const CAROUSEL_DOC_CONFIG = {
   section: 'Components / Carousel',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-carousel--overview' },
+    { label: 'Overview', storyId: 'components-carousel--carousel' },
     { label: 'Usage', storyId: 'components-carousel--usage' },
     { label: 'Variants', storyId: 'components-carousel--variants-overview' },
     { label: 'Styling', storyId: 'components-carousel--styling' },

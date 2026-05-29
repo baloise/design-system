@@ -1,4 +1,5 @@
-import { Canvas, useOf } from '@storybook/addon-docs/blocks'
+import { Canvas, Source, useOf } from '@storybook/addon-docs/blocks'
+import { global } from '@storybook/global'
 import React, { useMemo } from 'react'
 import { ModuleExport } from 'storybook/internal/types'
 import { openInCodePen } from './codepen'
@@ -21,6 +22,9 @@ export const CanvasWithCodePen = ({
 }: CanvasWithCodePenProps): React.ReactElement => {
   const resolved = useOf(of, ['story'])
   const story = resolved?.story
+
+  const framework = global['__STORYBOOK_PREVIEW__']?.storyStoreValue?.userGlobals?.globals?.framework
+  const language = framework === 'react' ? 'jsx' : 'html'
 
   const source = useMemo(() => {
     return (story?.parameters?.mySource as string) || ''
@@ -49,5 +53,13 @@ export const CanvasWithCodePen = ({
     ]
   }, [source])
 
-  return <Canvas of={of} sourceState={sourceState} className={className} additionalActions={additionalActions} />
+  return (
+    <Canvas
+      of={of}
+      sourceState={sourceState}
+      source={{ language }}
+      className={className}
+      additionalActions={additionalActions}
+    />
+  )
 }

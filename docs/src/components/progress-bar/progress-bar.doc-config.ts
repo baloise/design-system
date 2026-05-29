@@ -7,7 +7,7 @@ export const PROGRESS_BAR_DOC_CONFIG = {
   section: 'Components / Progress-bar',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-progress-bar--overview' },
+    { label: 'Overview', storyId: 'components-progress-bar--progress-bar' },
     { label: 'Usage', storyId: 'components-progress-bar--usage' },
     { label: 'Variants', storyId: 'components-progress-bar--variants-overview' },
     { label: 'Styling', storyId: 'components-progress-bar--styling' },

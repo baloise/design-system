@@ -7,7 +7,7 @@ export const BADGE_DOC_CONFIG = {
   section: 'Components / Badge',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-badge--overview' },
+    { label: 'Overview', storyId: 'components-badge--badge' },
     { label: 'Usage', storyId: 'components-badge--usage' },
     { label: 'Variants', storyId: 'components-badge--variants-overview' },
     { label: 'Styling', storyId: 'components-badge--styling' },

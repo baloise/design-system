@@ -45,17 +45,19 @@ title: 'Components/<ComponentName>/Variants'
 
 | File                  | Meta title pattern                      |
 | --------------------- | --------------------------------------- |
-| `1-Overview.mdx`      | `"Components/<Name>/Overview"`          |
+| `1-Overview.mdx`      | `"Components/<Name>/<Name>"`            |
 | `2-Usage.mdx`         | `"Components/<Name>/Usage"`             |
 | `3-Variants.mdx`      | `"Components/<Name>/Variants/Overview"` |
 | `4-Styling.mdx`       | `"Components/<Name>/Styling"`           |
 | `5-Accessibility.mdx` | `"Components/<Name>/Accessibility"`     |
 
+> **Why `<Name>/<Name>` for Overview?** Storybook uses the last path segment as the sidebar/search label. Using the component name as the last segment makes the search show "Button" (not "Documentation") as the primary result, while keeping the page correctly nested under `Components/<Name>` in the sidebar.
+
 ### doc-config storyIds
 
 ```ts
 tabs: [
-  { label: 'Overview', storyId: 'components-<component>--overview' },
+  { label: 'Overview', storyId: 'components-<component>--<component>' },
   { label: 'Usage', storyId: 'components-<component>--usage' },
   { label: 'Variants', storyId: 'components-<component>--variants-overview' },
   { label: 'Styling', storyId: 'components-<component>--styling' },
@@ -154,7 +156,7 @@ export const <COMPONENT>_DOC_CONFIG = {
   section: 'Components / <ComponentName>',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview',      storyId: 'components-<component>--overview' },
+    { label: 'Overview',      storyId: 'components-<component>--<component>' },
     { label: 'Usage',         storyId: 'components-<component>--usage' },
     { label: 'Variants',      storyId: 'components-<component>--variants-overview' },
     { label: 'Styling',       storyId: 'components-<component>--styling' },
@@ -195,9 +197,9 @@ import {
 import * as <Component>Stories from './<component>.stories'
 import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-config'
 
-<Meta title="Components/<ComponentName>/Overview" />
+<Meta title="Components/<ComponentName>/<ComponentName>" />
 
-<Banner label={'Overview'} section={<COMPONENT>_DOC_CONFIG.section} color={<COMPONENT>_DOC_CONFIG.color} />
+<Banner label={'<ComponentName>'} section={<COMPONENT>_DOC_CONFIG.section} color={<COMPONENT>_DOC_CONFIG.color} />
 
 <BannerTabs of={<Component>Stories} tabs={get<Component>Tabs('overview')} />
 

@@ -6,7 +6,7 @@ export const MODAL_DOC_CONFIG = {
   section: 'Components / Modal',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-modal--overview' },
+    { label: 'Overview', storyId: 'components-modal--modal' },
     { label: 'Usage', storyId: 'components-modal--usage' },
     { label: 'Variants', storyId: 'components-modal--variants-overview' },
     { label: 'Styling', storyId: 'components-modal--styling' },

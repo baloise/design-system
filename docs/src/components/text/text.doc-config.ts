@@ -7,7 +7,7 @@ export const TEXT_DOC_CONFIG = {
   section: 'Components / Text',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-text--overview' },
+    { label: 'Overview', storyId: 'components-text--text' },
     { label: 'Usage', storyId: 'components-text--usage' },
     { label: 'Variants', storyId: 'components-text--variants-overview' },
     { label: 'Styling', storyId: 'components-text--styling' },

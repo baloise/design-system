@@ -7,7 +7,7 @@ export const HEADING_DOC_CONFIG = {
   section: 'Components / Heading',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-heading--overview' },
+    { label: 'Overview', storyId: 'components-heading--heading' },
     { label: 'Usage', storyId: 'components-heading--usage' },
     { label: 'Variants', storyId: 'components-heading--variants-overview' },
     { label: 'Styling', storyId: 'components-heading--styling' },

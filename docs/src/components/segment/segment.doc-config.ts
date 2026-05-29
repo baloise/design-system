@@ -7,7 +7,7 @@ export const SEGMENT_DOC_CONFIG = {
   section: 'Components / Forms / Segment',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-segment--overview' },
+    { label: 'Overview', storyId: 'components-forms-segment--segment' },
     { label: 'Usage', storyId: 'components-forms-segment--usage' },
     { label: 'Variants', storyId: 'components-forms-segment-variants--overview' },
     { label: 'Styling', storyId: 'components-forms-segment--styling' },

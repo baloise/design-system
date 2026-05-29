@@ -7,7 +7,7 @@ export const LABEL_DOC_CONFIG = {
   section: 'Components / Forms / Label',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-label--overview' },
+    { label: 'Overview', storyId: 'components-forms-label--label' },
     { label: 'Usage', storyId: 'components-forms-label--usage' },
     { label: 'Variants', storyId: 'components-forms-label--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-label--styling' },

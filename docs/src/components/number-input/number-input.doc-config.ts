@@ -7,7 +7,7 @@ export const NUMBER_INPUT_DOC_CONFIG = {
   section: 'Components / Forms / Number-input',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-number-input--overview' },
+    { label: 'Overview', storyId: 'components-forms-number-input--number-input' },
     { label: 'Usage', storyId: 'components-forms-number-input--usage' },
     { label: 'Variants', storyId: 'components-forms-number-input--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-number-input--styling' },

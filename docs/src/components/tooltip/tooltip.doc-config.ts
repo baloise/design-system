@@ -6,7 +6,7 @@ export const TOOLTIP_DOC_CONFIG = {
   section: 'Components / Tooltip',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-tooltip--overview' },
+    { label: 'Overview', storyId: 'components-tooltip--tooltip' },
     { label: 'Usage', storyId: 'components-tooltip--usage' },
     { label: 'Variants', storyId: 'components-tooltip--variants-overview' },
     { label: 'Styling', storyId: 'components-tooltip--styling' },

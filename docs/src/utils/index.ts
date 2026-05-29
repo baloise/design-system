@@ -1,5 +1,6 @@
 export * from './attributes'
 export * from './content'
 export * from './controls'
+export * from './jsx'
 export * from './renderer'
 export * from './story'

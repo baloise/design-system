@@ -7,7 +7,7 @@ export const DIVIDER_DOC_CONFIG = {
   section: 'Components / Divider',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-divider--overview' },
+    { label: 'Overview', storyId: 'components-divider--divider' },
     { label: 'Usage', storyId: 'components-divider--usage' },
     { label: 'Variants', storyId: 'components-divider--variants-overview' },
     { label: 'Styling', storyId: 'components-divider--styling' },

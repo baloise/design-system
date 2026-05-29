@@ -27,7 +27,6 @@ html {
   max-width: 80%;
 }
 
-
 /***************************************
  * SEARCH FIELD
  ***************************************/
@@ -51,6 +50,10 @@ html {
 
 .search-field code + svg {
   top: 8px;
+}
+
+.search-result-item--label {
+  font-weight: 700;
 }
 
 /***************************************

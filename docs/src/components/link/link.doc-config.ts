@@ -7,7 +7,7 @@ export const LINK_DOC_CONFIG = {
   section: 'Components / Link',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-link--overview' },
+    { label: 'Overview', storyId: 'components-link--link' },
     { label: 'Usage', storyId: 'components-link--usage' },
     { label: 'Variants', storyId: 'components-link--variants-overview' },
     { label: 'Styling', storyId: 'components-link--styling' },

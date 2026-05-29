@@ -2,7 +2,7 @@ export const TOAST_DOC_CONFIG = {
   section: 'Components / Toast',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-toast--overview' },
+    { label: 'Overview', storyId: 'components-toast--toast' },
     { label: 'Usage', storyId: 'components-toast--usage' },
     { label: 'Variants', storyId: 'components-toast--variants-overview' },
     { label: 'Styling', storyId: 'components-toast--styling' },

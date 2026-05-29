@@ -6,7 +6,7 @@ export const TABLE_DOC_CONFIG = {
   section: 'Components / Table',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-table--overview' },
+    { label: 'Overview', storyId: 'components-table--table' },
     { label: 'Usage', storyId: 'components-table--usage' },
     { label: 'Variants', storyId: 'components-table--variants-overview' },
     { label: 'Styling', storyId: 'components-table--styling' },

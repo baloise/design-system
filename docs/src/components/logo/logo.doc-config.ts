@@ -7,7 +7,7 @@ export const LOGO_DOC_CONFIG = {
   section: 'Components / Logo',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-logo--overview' },
+    { label: 'Overview', storyId: 'components-logo--logo' },
     { label: 'Usage', storyId: 'components-logo--usage' },
     { label: 'Variants', storyId: 'components-logo--variants-overview' },
     { label: 'Styling', storyId: 'components-logo--styling' },

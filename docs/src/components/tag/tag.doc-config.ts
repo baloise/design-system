@@ -7,7 +7,7 @@ export const TAG_DOC_CONFIG = {
   section: 'Components / Tag',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-tag--overview' },
+    { label: 'Overview', storyId: 'components-tag--tag' },
     { label: 'Usage', storyId: 'components-tag--usage' },
     { label: 'Variants', storyId: 'components-tag--variants-overview' },
     { label: 'Styling', storyId: 'components-tag--styling' },

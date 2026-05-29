@@ -2,7 +2,7 @@ export const SNACKBAR_DOC_CONFIG = {
   section: 'Components / Snackbar',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-snackbar--overview' },
+    { label: 'Overview', storyId: 'components-snackbar--snackbar' },
     { label: 'Usage', storyId: 'components-snackbar--usage' },
     { label: 'Variants', storyId: 'components-snackbar--variants-overview' },
     { label: 'Styling', storyId: 'components-snackbar--styling' },
