@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as PopupStories from './popup.stories'
+import { POPUP_DOC_CONFIG, getPopupTabs } from './popup.doc-config'
+
+<Meta title="Components/Popup/Styling" />
+
+<Banner label={'Styling'} section={POPUP_DOC_CONFIG.section} color={POPUP_DOC_CONFIG.color} />
+
+<BannerTabs of={PopupStories} tabs={getPopupTabs('styling')} />
+
+<ComponentParts component="popup" />
+
+<ComponentCssVariables component="popup" />
+
+<ComponentDesignTokens component="popup" />
+
+<Footer />

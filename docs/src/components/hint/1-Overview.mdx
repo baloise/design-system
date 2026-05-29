@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as HintStories from './hint.stories'
+import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
+
+<Meta title="Components/Hint/Hint" />
+
+<Banner label={'Hint'} section={HINT_DOC_CONFIG.section} color={HINT_DOC_CONFIG.color} />
+
+<BannerTabs of={HintStories} tabs={getHintTabs('overview')} />
+
+<ComponentLead component="hint" />
+
+<CanvasTabs of={HintStories.Hint} />
+
+<Controls of={HintStories.Hint} />
+
+<ComponentPublicMethods component="hint" />
+
+<Footer />

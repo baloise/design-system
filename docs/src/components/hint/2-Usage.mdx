@@ -1,0 +1,98 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as HintStories from './hint.stories'
+import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
+
+<Meta title="Components/Hint/Usage" />
+
+<Banner label={'Usage'} section={HINT_DOC_CONFIG.section} color={HINT_DOC_CONFIG.color} />
+
+<BannerTabs of={HintStories} tabs={getHintTabs('usage')} />
+
+## When to Use
+
+- Provide additional context or explanation for form fields or UI elements
+- Offer tips or guidance without disrupting the main workflow
+- Inline help within sentences or paragraphs
+- Contextual information that's optional but valuable
+
+## When NOT to Use
+
+- Critical instructions that users must read — use persistent text or tooltips
+- Essential validation messages — place these inline with the field
+- Long explanations that require scrolling — use a separate help page
+- Information that should always be visible — avoid hiding behind a trigger
+
+## Do's and Don'ts
+
+### Clear and Concise Content
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Brief explanation',
+      content: (
+        <ds-hint>
+          <ds-hint-title>Deductible</ds-hint-title>
+          <ds-hint-text>The amount you pay before insurance coverage starts.</ds-hint-text>
+        </ds-hint>
+      ),
+      description: 'Short, focused explanation that answers a single question.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Long explanation',
+      content: (
+        <ds-hint>
+          <ds-hint-title>Information</ds-hint-title>
+          <ds-hint-text>This is a very long explanation about many different topics that should probably be broken into multiple sections or moved to a dedicated help page because users don\'t want to read all of this when they just need a quick answer.</ds-hint-text>
+        </ds-hint>
+      ),
+      description: 'Avoid lengthy content. Keep hints concise and scannable.',
+    },
+  ]}
+/>
+
+### Contextual Placement
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Inline with related content',
+      content: (
+        <p style={{ lineHeight: '1.6' }}>
+          Your premium depends on your
+          <ds-hint style={{ display: 'inline' }}>
+            <ds-hint-title>Risk profile</ds-hint-title>
+            <ds-hint-text>Age, driving history, and vehicle type.</ds-hint-text>
+          </ds-hint>
+          and coverage.
+        </p>
+      ),
+      description: 'Place hints next to the content they explain.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Misplaced hint',
+      content: (
+        <div>
+          <ds-hint style={{ marginBottom: '2rem' }}>
+            <ds-hint-title>General help</ds-hint-title>
+            <ds-hint-text>Information that should be elsewhere.</ds-hint-text>
+          </ds-hint>
+          <p>Your premium depends on your profile and coverage.</p>
+        </div>
+      ),
+      description: 'Avoid hints that are separated from their context.',
+    },
+  ]}
+/>
+
+<Footer />

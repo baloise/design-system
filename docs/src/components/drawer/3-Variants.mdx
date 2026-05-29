@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as DrawerStories from './drawer.stories'
+import { DRAWER_DOC_CONFIG, getDrawerTabs } from './drawer.doc-config'
+
+<Meta title="Components/Drawer/Variants/Overview" />
+
+<StoryHeading of={DrawerStories.Drawer} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={DRAWER_DOC_CONFIG.section} color={DRAWER_DOC_CONFIG.color} />
+
+<BannerTabs of={DrawerStories} tabs={getDrawerTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.Drawer}></StoryHeading>
+
+The basic drawer with default settings. Can be dismissed via Escape key, backdrop click, or the close button.
+
+<CanvasTabs of={DrawerStories.Drawer} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.NotClosable}></StoryHeading>
+
+A drawer with closable and backdrop-dismiss disabled. Users must explicitly call the `dismiss()` method to close.
+
+<CanvasTabs of={DrawerStories.NotClosable} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.RichContent}></StoryHeading>
+
+A drawer containing form controls and complex content. Useful for filtering, settings, or multi-step workflows.
+
+<CanvasTabs of={DrawerStories.RichContent} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.Scrollable}></StoryHeading>
+
+A drawer with scrollable content. The drawer itself is scrollable when content exceeds the viewport height.
+
+<CanvasTabs of={DrawerStories.Scrollable} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.Container}></StoryHeading>
+
+Control the inner container width with the `container` prop: `'default'`, `'fluid'`, or `'compact'`. Matches `ds-container` sizing variants.
+
+<CanvasTabs of={DrawerStories.Container} />
+
+<Footer />

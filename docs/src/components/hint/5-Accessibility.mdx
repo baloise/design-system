@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as HintStories from './hint.stories'
+import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
+
+<Meta title="Components/Hint/Accessibility" />
+
+<Banner label={'Accessibility'} section={HINT_DOC_CONFIG.section} color={HINT_DOC_CONFIG.color} />
+
+<BannerTabs of={HintStories} tabs={getHintTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Provide a meaningful trigger label',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Set `triggerLabel` to describe what the hint contains. Default is "More information". Screen readers announce this label when focused.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Keep content scannable',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Use short titles and brief explanations. Users scanning hints need to quickly understand the topic and decide if they need the detail.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Test on both mobile and desktop',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Hint opens a drawer on touch (< 1024px) and a popup on desktop. Ensure content is appropriate for both contexts.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Use semantic HTML in content',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Structure hint content with headings, lists, and paragraphs to maintain logical reading order and semantic meaning.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t rely on color alone',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>The hint trigger is an icon button. Ensure it has sufficient contrast and is discoverable without relying on color differentiation.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t hide essential information',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Hints are optional. Never hide critical instructions or validation messages inside a hint. These should be visible by default.</p>,
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The hint component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Button Semantics** — The trigger is a semantic button with `aria-label` and `aria-expanded` to communicate its state and purpose.
+- **Dialog Role** — The hint panel has `role="dialog"` on desktop (popup) and uses the native dialog semantics on touch (drawer).
+- **Focus Management** — Focus is managed automatically: when the hint opens, focus moves into the panel; when closed, focus returns to the trigger.
+- **Keyboard Navigation** — Users can open/close via click or Enter/Space. Escape closes the panel on both desktop and mobile.
+- **Screen Reader Announcements** — The trigger label and panel role are announced, allowing screen reader users to understand the hint's purpose and content.
+- **Icon with Label** — The info-circle icon is marked as `aria-hidden` since the button label provides sufficient context.
+
+<Footer />

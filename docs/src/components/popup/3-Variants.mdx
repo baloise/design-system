@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as PopupStories from './popup.stories'
+import { POPUP_DOC_CONFIG, getPopupTabs } from './popup.doc-config'
+
+<Meta title="Components/Popup/Variants/Overview" />
+
+<StoryHeading of={PopupStories.Popup} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={POPUP_DOC_CONFIG.section} color={POPUP_DOC_CONFIG.color} />
+
+<BannerTabs of={PopupStories} tabs={getPopupTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.Popup}></StoryHeading>
+
+The basic popup with a declarative trigger using the `data-popup` attribute. The popup opens when the trigger is clicked and can be closed with the close button or by pressing Escape.
+
+<CanvasTabs of={PopupStories.Popup} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.PlacementTop}></StoryHeading>
+
+Control where the popup appears relative to the trigger using the `placement` prop. This variant opens above the trigger.
+
+<CanvasTabs of={PopupStories.PlacementTop} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.PlacementRight}></StoryHeading>
+
+The default placement opens to the right of the trigger. This works well when there's sufficient horizontal space available.
+
+<CanvasTabs of={PopupStories.PlacementRight} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.PlacementLeft}></StoryHeading>
+
+The popup can open to the left of the trigger, useful in right-to-left layouts or when right-side space is constrained.
+
+<CanvasTabs of={PopupStories.PlacementLeft} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.BackdropDismiss}></StoryHeading>
+
+When `backdropDismiss` is enabled, users can close the popup by clicking outside the panel. Useful for optional overlays that don't require the user to explicitly dismiss.
+
+<CanvasTabs of={PopupStories.BackdropDismiss} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.BackdropOverlay}></StoryHeading>
+
+Render a full-screen overlay behind the popup with the `backdrop` prop. Combines visual separation and backdrop dismiss for clearer modal-like behavior without blocking page interaction.
+
+<CanvasTabs of={PopupStories.BackdropOverlay} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.RoleListbox}></StoryHeading>
+
+Use `role="listbox"` when the popup contains selectable options. This provides proper ARIA semantics for screen readers and enables keyboard navigation within lists.
+
+<CanvasTabs of={PopupStories.RoleListbox} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.Group}></StoryHeading>
+
+The `group` prop enables mutual exclusion — only one popup in the same group can be open at a time. Opening one automatically closes others in the group.
+
+<CanvasTabs of={PopupStories.Group} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.Programmatic}></StoryHeading>
+
+Control popups programmatically by setting the `trigger` property and calling `present()` / `dismiss()` methods. This allows fine-grained control over open/close behavior.
+
+<CanvasTabs of={PopupStories.Programmatic} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopupStories.FocusTrap}></StoryHeading>
+
+When the popup has `role="dialog"` (default) and contains focusable elements, focus is trapped within the popup. Tab navigates between elements and wraps at the boundaries.
+
+<CanvasTabs of={PopupStories.FocusTrap} />
+
+<Footer />

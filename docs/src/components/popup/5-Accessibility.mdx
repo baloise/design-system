@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as PopupStories from './popup.stories'
+import { POPUP_DOC_CONFIG, getPopupTabs } from './popup.doc-config'
+
+<Meta title="Components/Popup/Accessibility" />
+
+<Banner label={'Accessibility'} section={POPUP_DOC_CONFIG.section} color={POPUP_DOC_CONFIG.color} />
+
+<BannerTabs of={PopupStories} tabs={getPopupTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use appropriate role',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Set `role` to match content: "dialog" for rich content, "listbox" for option lists, "menu" for navigation menus. Screen readers announce the role to provide context.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Provide a label',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Set the `label` prop to describe the popup. This is especially important for popups without visible titles.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Handle keyboard navigation',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Users should be able to open popups with Enter/Space (if the trigger is a button) and close with Escape. Focus trap traps Tab within the popup.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Maintain focus visibility',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Ensure focusable elements in the popup have clear focus indicators. Use CSS focus-visible styling for keyboard navigation.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t trap focus unexpectedly',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Focus trap only applies to `role="dialog"`. For other roles (listbox, menu), focus may move outside the popup. Clarify this behavior in your UI.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t hide critical information',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Popups are overlays. Never hide essential instructions or validation errors inside a popup that covers the main content.</p>,
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The popup component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Dialog Semantics** — The panel uses `role="dialog"` by default, with proper `aria-label` for accessible naming.
+- **Focus Management** — When opening, focus moves into the popup. When closing, focus returns to the trigger (if available). Focus trap (Tab navigation) works within the panel.
+- **Keyboard Navigation** — Escape key closes the popup. Tab navigates focusable elements. For role="listbox", arrow keys can be used with proper ARIA attributes.
+- **Positioned Correctly** — Floating positioning uses `computePosition()` to ensure the popup doesn't get cut off by viewport boundaries.
+- **Contrast** — The close button (part="close") and content have sufficient contrast for visibility.
+- **Touch-friendly** — Backdrop dismiss provides a clear touch target to close the popup when backdrop-dismiss is enabled.
+
+<Footer />

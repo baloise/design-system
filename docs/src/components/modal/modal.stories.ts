@@ -113,3 +113,37 @@ export const Scrollable = Story({
   ),
 })
 Scrollable.storyName = '🧩 Scrollable'
+
+export const Fullscreen = Story({
+  ...withRender(
+    () => `
+<ds-button onclick="document.getElementById('modal-fullscreen').present()">Open Modal</ds-button>
+<ds-modal id="modal-fullscreen" fullscreen>
+  <ds-modal-header>Fullscreen Modal</ds-modal-header>
+  <ds-modal-body>
+    <p>This modal covers the entire viewport. Useful for complex flows or immersive content.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </ds-modal-body>
+  <ds-button color="text" slot="actions" onclick="document.getElementById('modal-fullscreen').dismiss()">Cancel</ds-button>
+  <ds-button color="primary" slot="actions" onclick="document.getElementById('modal-fullscreen').dismiss()">Confirm</ds-button>
+</ds-modal>
+`,
+  ),
+})
+Fullscreen.storyName = '🧩 Fullscreen'
+
+export const FullscreenNotClosable = Story({
+  ...withRender(
+    () => `
+<ds-button onclick="document.getElementById('modal-fullscreen-nc').present()">Open Modal</ds-button>
+<ds-modal id="modal-fullscreen-nc" fullscreen closable="false">
+  <ds-modal-header>Fullscreen — Must Confirm</ds-modal-header>
+  <ds-modal-body>
+    <p>Escape and backdrop click are disabled. The user must use the action button to dismiss.</p>
+  </ds-modal-body>
+  <ds-button color="primary" slot="actions" onclick="document.getElementById('modal-fullscreen-nc').dismiss()">Got it</ds-button>
+</ds-modal>
+`,
+  ),
+})
+FullscreenNotClosable.storyName = '🧩 Fullscreen — Not Closable'
