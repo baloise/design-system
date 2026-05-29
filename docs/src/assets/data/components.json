@@ -45999,6 +45999,631 @@
           "passive": false
         }
       ]
+    },
+    {
+      "fileName": "tooltip.tsx",
+      "tag": "ds-tooltip",
+      "overview": "Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.",
+      "usage": {},
+      "docs": "Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The tooltip content text."
+        },
+        {
+          "name": "part",
+          "text": "container - The floating tooltip container element."
+        },
+        {
+          "name": "part",
+          "text": "content - The inner content wrapper element."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "contentWidth",
+          "type": "number | undefined",
+          "complexType": {
+            "original": "number | undefined",
+            "resolved": "number | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "content-width",
+          "reflectToAttr": false,
+          "docs": "Defines the maximum width of the tooltip content in pixels.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "offset",
+          "reflectToAttr": false,
+          "docs": "Offset in pixels from the trigger element to the tooltip.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "8"
+            }
+          ],
+          "default": "8",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "open",
+          "reflectToAttr": false,
+          "docs": "When true, the tooltip is shown immediately on load without user interaction.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "placement",
+          "type": "\"bottom\" | \"left\" | \"right\" | \"top\"",
+          "complexType": {
+            "original": "TooltipPlacement",
+            "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
+            "references": {
+              "TooltipPlacement": {
+                "location": "import",
+                "path": "./tooltip.interfaces",
+                "id": "src/components/tooltip/tooltip.interfaces.ts::TooltipPlacement",
+                "referenceLocation": "TooltipPlacement"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Preferred placement of the tooltip relative to the trigger.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'bottom'"
+            }
+          ],
+          "default": "'bottom'",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "reference",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "reference",
+          "reflectToAttr": false,
+          "docs": "Id of the reference element. Defaults to the trigger element.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "dismiss",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "dismiss() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Hides the tooltip and cleans up the position updater.",
+          "docsTags": []
+        },
+        {
+          "name": "present",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "present() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Shows the tooltip and positions it relative to the trigger element.",
+          "docsTags": []
+        },
+        {
+          "name": "update",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "update() => Promise<boolean>",
+          "parameters": [],
+          "docs": "Recomputes the tooltip position using floating-ui.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsDidAnimate",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "TooltipDidAnimateDetail",
+            "resolved": "boolean",
+            "references": {
+              "TooltipDidAnimateDetail": {
+                "location": "import",
+                "path": "./tooltip.interfaces",
+                "id": "src/components/tooltip/tooltip.interfaces.ts::TooltipDidAnimateDetail",
+                "referenceLocation": "TooltipDidAnimateDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the animation has finished.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillAnimate",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "TooltipWillAnimateDetail",
+            "resolved": "boolean",
+            "references": {
+              "TooltipWillAnimateDetail": {
+                "location": "import",
+                "path": "./tooltip.interfaces",
+                "id": "src/components/tooltip/tooltip.interfaces.ts::TooltipWillAnimateDetail",
+                "referenceLocation": "TooltipWillAnimateDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the animation starts.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--tooltip-bg",
+          "docs": "Background color of the tooltip container."
+        },
+        {
+          "name": "--tooltip-color",
+          "docs": "Text color of the tooltip content."
+        },
+        {
+          "name": "--tooltip-max-width",
+          "docs": "Maximum width of the tooltip container."
+        },
+        {
+          "name": "--tooltip-radius",
+          "docs": "Border radius of the tooltip container."
+        },
+        {
+          "name": "--tooltip-shadow",
+          "docs": "Box shadow of the tooltip container."
+        },
+        {
+          "name": "--tooltip-px",
+          "docs": "Horizontal padding of the tooltip content."
+        },
+        {
+          "name": "--tooltip-py",
+          "docs": "Vertical padding of the tooltip content."
+        },
+        {
+          "name": "--tooltip-font-family",
+          "docs": "Font family of the tooltip text."
+        },
+        {
+          "name": "--tooltip-font-size",
+          "docs": "Font size of the tooltip text."
+        },
+        {
+          "name": "--tooltip-line-height",
+          "docs": "Line height of the tooltip text."
+        },
+        {
+          "name": "--tooltip-z-index",
+          "docs": "Z-index of the tooltip layer."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The tooltip content text."
+        }
+      ],
+      "parts": [
+        {
+          "name": "container",
+          "docs": "The floating tooltip container element."
+        },
+        {
+          "name": "content",
+          "docs": "The inner content wrapper element."
+        }
+      ],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / Tooltip / Bg",
+          "cssVarName": "--ds-tooltip-bg",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryactive",
+              "figmaName": "Alias / Background / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-tooltip-bg",
+              "figmaName": "Component / Tooltip / Bg"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Bg"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Color",
+          "cssVarName": "--ds-tooltip-color",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-tooltip-color",
+              "figmaName": "Component / Tooltip / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Radius",
+          "cssVarName": "--ds-tooltip-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-tooltip-radius",
+              "figmaName": "Component / Tooltip / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Shadow",
+          "cssVarName": "--ds-tooltip-shadow",
+          "value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+          "nativeValue": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-shadow-3",
+              "figmaName": "Global / Elevation / Shadow / 3"
+            },
+            {
+              "cssVar": "--ds-shadow-box-base",
+              "figmaName": "Alias / Shadow / Box / Base"
+            },
+            {
+              "cssVar": "--ds-tooltip-shadow",
+              "figmaName": "Component / Tooltip / Shadow"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Shadow"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Font / Family",
+          "cssVarName": "--ds-tooltip-font-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-tooltip-font-family",
+              "figmaName": "Component / Tooltip / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Font / Size",
+          "cssVarName": "--ds-tooltip-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Desktop}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-desktop",
+              "figmaName": "Alias / Text / Size / SM / Desktop"
+            },
+            {
+              "cssVar": "--ds-tooltip-font-size",
+              "figmaName": "Component / Tooltip / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Font",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / LineHeight",
+          "cssVarName": "--ds-tooltip-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-tooltip-lineheight",
+              "figmaName": "Component / Tooltip / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / ZIndex",
+          "cssVarName": "--ds-tooltip-zindex",
+          "value": "{🔗 Alias.🗂️ ZIndex.Tooltip}",
+          "nativeValue": "1300",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-zindex-1300",
+              "figmaName": "Global / Elevation / ZIndex / 1300"
+            },
+            {
+              "cssVar": "--ds-zindex-tooltip",
+              "figmaName": "Alias / ZIndex / Tooltip"
+            },
+            {
+              "cssVar": "--ds-tooltip-zindex",
+              "figmaName": "Component / Tooltip / ZIndex"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "ZIndex"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Px",
+          "cssVarName": "--ds-tooltip-px",
+          "value": "{🔗 Alias.↔️ Space.SM.Mobile}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-12",
+              "figmaName": "Global / Size / Space / 12"
+            },
+            {
+              "cssVar": "--ds-space-sm-mobile",
+              "figmaName": "Alias / Space / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-tooltip-px",
+              "figmaName": "Component / Tooltip / Px"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Px"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Py",
+          "cssVarName": "--ds-tooltip-py",
+          "value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-space-xs-mobile",
+              "figmaName": "Alias / Space / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-tooltip-py",
+              "figmaName": "Component / Tooltip / Py"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Py"
+          ]
+        }
+      ]
     }
   ],
   "typeLibrary": {
@@ -46776,6 +47401,21 @@
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/toggle/toggle.interfaces.ts"
+    },
+    "src/components/tooltip/tooltip.interfaces.ts::TooltipPlacement": {
+      "declaration": "\"left\" | \"right\" | \"bottom\" | \"top\"",
+      "docstring": "",
+      "path": "src/components/tooltip/tooltip.interfaces.ts"
+    },
+    "src/components/tooltip/tooltip.interfaces.ts::TooltipWillAnimateDetail": {
+      "declaration": "boolean",
+      "docstring": "",
+      "path": "src/components/tooltip/tooltip.interfaces.ts"
+    },
+    "src/components/tooltip/tooltip.interfaces.ts::TooltipDidAnimateDetail": {
+      "declaration": "boolean",
+      "docstring": "",
+      "path": "src/components/tooltip/tooltip.interfaces.ts"
     }
   }
 }
