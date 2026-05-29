@@ -12,6 +12,7 @@ export const TAG_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-tag--variants-overview' },
     { label: 'Styling', storyId: 'components-tag--styling' },
     { label: 'Accessibility', storyId: 'components-tag--accessibility' },
+    { label: 'Testing', storyId: 'components-tag--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const TAG_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

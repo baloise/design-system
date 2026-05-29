@@ -1,13 +1,13 @@
 ---
 name: write-component-docs
-description: Use when writing or generating Storybook documentation for a Baloise Design System component — creates stories.ts, doc-config.ts, and five MDX subpages (Overview, Usage, Variants, Styling, Accessibility) using reusable Storybook blocks (ComponentLead, ComponentPublicMethods, ComponentParts, CanvasTabs) for dynamic data binding to components.json
+description: Use when writing or generating Storybook documentation for a Baloise Design System component — creates stories.ts, doc-config.ts, and six MDX subpages (Overview, Usage, Variants, Styling, Accessibility, Testing) using reusable Storybook blocks (ComponentLead, ComponentPublicMethods, ComponentParts, CanvasTabs, ComponentPageObject) for dynamic data binding to components.json
 ---
 
 # Write Component Docs
 
 Generates a complete documentation set for a component in `docs/src/components/<component>/`. The canonical reference for structure and style is the **tag** component (`docs/src/components/tag/`).
 
-Each component gets exactly **five MDX files** plus two TypeScript support files:
+Each component gets exactly **six MDX files** plus two TypeScript support files:
 
 | File                        | Purpose                                                                     |
 | --------------------------- | --------------------------------------------------------------------------- |
@@ -16,6 +16,7 @@ Each component gets exactly **five MDX files** plus two TypeScript support files
 | `3-Variants.mdx`            | All story variants with `CanvasTabs`                                        |
 | `4-Styling.mdx`             | ComponentParts + ComponentCssVariables + ComponentDesignTokens              |
 | `5-Accessibility.mdx`       | WCAG guidelines via `A11yGuidelines`                                        |
+| `6-Testing.mdx`             | `ComponentPageObject` — PO API table + example test + install guide         |
 | `<component>.stories.ts`    | Stencil story exports — both `🧩` (web component) and `🌍` (HTML/CSS) pairs |
 | `<component>.doc-config.ts` | Shared section/color/tabs config                                            |
 
@@ -50,6 +51,7 @@ title: 'Components/<ComponentName>/Variants'
 | `3-Variants.mdx`      | `"Components/<Name>/Variants/Overview"` |
 | `4-Styling.mdx`       | `"Components/<Name>/Styling"`           |
 | `5-Accessibility.mdx` | `"Components/<Name>/Accessibility"`     |
+| `6-Testing.mdx`       | `"Components/<Name>/Testing"`           |
 
 > **Why `<Name>/<Name>` for Overview?** Storybook uses the last path segment as the sidebar/search label. Using the component name as the last segment makes the search show "Button" (not "Documentation") as the primary result, while keeping the page correctly nested under `Components/<Name>` in the sidebar.
 
@@ -62,6 +64,7 @@ tabs: [
   { label: 'Variants', storyId: 'components-<component>--variants-overview' },
   { label: 'Styling', storyId: 'components-<component>--styling' },
   { label: 'Accessibility', storyId: 'components-<component>--accessibility' },
+  { label: 'Testing', storyId: 'components-<component>--testing' },
 ]
 ```
 
@@ -161,6 +164,7 @@ export const <COMPONENT>_DOC_CONFIG = {
     { label: 'Variants',      storyId: 'components-<component>--variants-overview' },
     { label: 'Styling',       storyId: 'components-<component>--styling' },
     { label: 'Accessibility', storyId: 'components-<component>--accessibility' },
+    { label: 'Testing',       storyId: 'components-<component>--testing' },
   ],
 }
 
@@ -170,6 +174,7 @@ export const <COMPONENT>_TAB_TITLES = {
   variants:      'Variants',
   styling:       'Styling',
   accessibility: 'Accessibility',
+  testing:       'Testing',
 }
 
 export const get<Component>Tabs = (activeLabel: keyof typeof <COMPONENT>_TAB_TITLES) => {
@@ -422,6 +427,7 @@ The <component> component implements patterns that meet WCAG 2.2 Level AA standa
 | `UsageExamples`          | `../../../.storybook/blocks` | `items: { type, title, content, description }[]` | Correct/Incorrect code pattern comparison        |
 | `StoryHeading`           | `../../../.storybook/blocks` | `of`, `hidden?`                                  | Section title before CanvasTabs                  |
 | `Footer`                 | `../../../.storybook/blocks` | none                                             | End-of-page footer                               |
+| `ComponentPageObject`    | `../../../.storybook/blocks` | `component`                                      | PO API table + example test + install guide      |
 | `Code`                   | `../../../.storybook/blocks` | `code`, `noPreview?`                             | Inline code snippet in UsageExamples             |
 
 ---
@@ -458,6 +464,38 @@ Use `{/* ------------------------------------------------------ */}` before ever
 - `withRender(fn)` — render function override
 - `withComponentControls({ tag })` — argTypes from component JSDoc
 - `StoryFactory<Args>(meta)` — returns the `Story()` helper
+
+---
+
+## `6-Testing.mdx`
+
+```mdx
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as <Component>Stories from './<component>.stories'
+import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-config'
+
+<Meta title="Components/<ComponentName>/Testing" />
+
+<Banner label={'Testing'} section={<COMPONENT>_DOC_CONFIG.section} color={<COMPONENT>_DOC_CONFIG.color} />
+
+<BannerTabs of={<Component>Stories} tabs={get<Component>Tabs('testing')} />
+
+<ComponentPageObject component="<component>" />
+
+<Footer />
+```
+
+**Notes:**
+
+- `ComponentPageObject` reads `pageObject` from `components.json` (populated during `npm run build`).
+- If the component has no `.po.ts` in `packages/playwright`, the block shows "No page object available" + the install guide.
+- If a page object exists, it renders Locators / Actions / Assertions tables, a semi-dynamic example test, and the install guide.
 
 ---
 

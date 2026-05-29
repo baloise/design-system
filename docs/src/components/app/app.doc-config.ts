@@ -12,6 +12,7 @@ export const APP_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-app--variants-overview' },
     { label: 'Styling', storyId: 'components-app--styling' },
     { label: 'Accessibility', storyId: 'components-app--accessibility' },
+    { label: 'Testing', storyId: 'components-app--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const APP_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

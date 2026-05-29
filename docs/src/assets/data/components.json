@@ -1037,7 +1037,52 @@
             "Base"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsAccordion",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "header",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "summary",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "marker",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "content",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickSummary",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeClosed",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "alert-container.tsx",
@@ -1443,7 +1488,25 @@
         }
       ],
       "customStates": [],
-      "listeners": []
+      "listeners": [],
+      "pageObject": {
+        "class": "DsApp",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "badge.tsx",
@@ -2533,7 +2596,25 @@
             "Background"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsBadge",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "button.tsx",
@@ -9557,7 +9638,41 @@
             "Border"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsButton",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "click",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeEnabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "button-group.tsx",
@@ -12509,7 +12624,65 @@
             "Width"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsCard",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "card-actions.tsx",
@@ -13700,7 +13873,56 @@
             "Active"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsCarousel",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "clickDot",
+            "params": [
+              {
+                "name": "index",
+                "type": "number"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "selectItem",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertItemSelected",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertItemNotSelected",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "carousel-item.tsx",
@@ -15194,7 +15416,47 @@
             "Border"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsCheckbox",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "check",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "uncheck",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeChecked",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeUnchecked",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "checkbox-group.tsx",
@@ -16627,7 +16889,20 @@
             "Disabled"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsClose",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "click",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": []
+      }
     },
     {
       "fileName": "content.tsx",
@@ -16976,7 +17251,25 @@
         }
       ],
       "customStates": [],
-      "listeners": []
+      "listeners": [],
+      "pageObject": {
+        "class": "DsContent",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "divider.tsx",
@@ -17714,7 +18007,14 @@
             "White"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsDivider",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": []
+      }
     },
     {
       "fileName": "heading.tsx",
@@ -19388,7 +19688,25 @@
             "Weight"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsHeading",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "icon.tsx",
@@ -20713,7 +21031,20 @@
             "3XL"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsIcon",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "inner",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [],
+        "assertions": []
+      }
     },
     {
       "fileName": "input.tsx",
@@ -24094,7 +24425,57 @@
             "Desktop"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsInput",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clear",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "fill",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "item.tsx",
@@ -26179,7 +26560,25 @@
             "Desktop"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsLabel",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "list.tsx",
@@ -26648,7 +27047,47 @@
             "Color"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsList",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "list",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "item",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "accordionContent",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickItem",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "logo.tsx",
@@ -26875,7 +27314,20 @@
         }
       ],
       "customStates": [],
-      "listeners": []
+      "listeners": [],
+      "pageObject": {
+        "class": "DsLogo",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "animated",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [],
+        "assertions": []
+      }
     },
     {
       "fileName": "modal.tsx",
@@ -27517,7 +27969,57 @@
             "Desktop"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsModal",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "dialog",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "title",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "body",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickClose",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeClosed",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertTitleText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "modal-body.tsx",
@@ -29030,7 +29532,42 @@
             "Icon"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsNotification",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "section",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "heading",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickClose",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "number-input.tsx",
@@ -29981,7 +30518,57 @@
           "capture": true,
           "passive": false
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsNumberInput",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clear",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "fill",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "pagination.tsx",
@@ -30799,7 +31386,72 @@
             "Sticky"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsPagination",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "previousButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "nextButton",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickNext",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "clickPrevious",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "clickPage",
+            "params": [
+              {
+                "name": "pageNumber",
+                "type": "number"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertCurrentPage",
+            "params": [
+              {
+                "name": "pageNumber",
+                "type": "number"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertPreviousToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertNextToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "progress-bar.tsx",
@@ -32603,7 +33255,42 @@
             "Border"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsRadio",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "select",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeChecked",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeUnchecked",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "radio-group.tsx",
@@ -34611,7 +35298,46 @@
             "Gap"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsSegment",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "select",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertSelectedValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertNoSelection",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "segment-item.tsx",
@@ -35070,7 +35796,14 @@
         }
       ],
       "customStates": [],
-      "listeners": []
+      "listeners": [],
+      "pageObject": {
+        "class": "DsShape",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": []
+      }
     },
     {
       "fileName": "snackbar.tsx",
@@ -36300,7 +37033,72 @@
             "Base"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsSnackbar",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "heading",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "expandButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "actions",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickClose",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "clickAction",
+            "params": [
+              {
+                "name": "label",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "expand",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToHaveHeading",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "spinner.tsx",
@@ -36860,7 +37658,20 @@
             "InvertedProgress"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsSpinner",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "inner",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [],
+        "assertions": []
+      }
     },
     {
       "fileName": "stack.tsx",
@@ -37771,7 +38582,25 @@
       ],
       "parts": [],
       "customStates": [],
-      "listeners": []
+      "listeners": [],
+      "pageObject": {
+        "class": "DsStack",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "step.tsx",
@@ -39103,7 +39932,66 @@
             "Yellow"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsSteps",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "selectStep",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertStepSelected",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertStepNotSelected",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertPanelVisible",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertPanelHidden",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "tab.tsx",
@@ -40152,7 +41040,66 @@
             "Selected"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsTabs",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "selectTab",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertTabSelected",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertTabNotSelected",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertPanelVisible",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertPanelHidden",
+            "params": [
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "tag.tsx",
@@ -42243,7 +43190,37 @@
             "Base"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsTag",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "closeButton",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickClose",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "tag-group.tsx",
@@ -42884,7 +43861,25 @@
         }
       ],
       "customStates": [],
-      "listeners": []
+      "listeners": [],
+      "pageObject": {
+        "class": "DsText",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "textarea.tsx",
@@ -44175,7 +45170,52 @@
           "capture": true,
           "passive": false
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsTextarea",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeTextarea",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "fill",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "toast.tsx",
@@ -45387,7 +46427,57 @@
             "Base"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsToast",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "heading",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "action",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickClose",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "clickAction",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToHaveHeading",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "toggle.tsx",
@@ -45998,7 +47088,47 @@
           "capture": true,
           "passive": false
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsToggle",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "check",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "uncheck",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeChecked",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeUnchecked",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
     },
     {
       "fileName": "tooltip.tsx",
@@ -46623,7 +47753,25 @@
             "Py"
           ]
         }
-      ]
+      ],
+      "pageObject": {
+        "class": "DsTooltip",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
     }
   ],
   "typeLibrary": {

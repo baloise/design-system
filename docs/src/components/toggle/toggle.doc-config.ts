@@ -12,6 +12,7 @@ export const TOGGLE_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-toggle--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-toggle--styling' },
     { label: 'Accessibility', storyId: 'components-forms-toggle--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-toggle--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const TOGGLE_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

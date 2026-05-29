@@ -12,6 +12,7 @@ export const HEADING_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-heading--variants-overview' },
     { label: 'Styling', storyId: 'components-heading--styling' },
     { label: 'Accessibility', storyId: 'components-heading--accessibility' },
+    { label: 'Testing', storyId: 'components-heading--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const HEADING_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

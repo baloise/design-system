@@ -11,6 +11,7 @@ export const MODAL_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-modal--variants-overview' },
     { label: 'Styling', storyId: 'components-modal--styling' },
     { label: 'Accessibility', storyId: 'components-modal--accessibility' },
+    { label: 'Testing', storyId: 'components-modal--testing' },
   ],
 }
 
@@ -20,6 +21,7 @@ export const MODAL_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getModalTabs = (activeLabel: keyof typeof MODAL_TAB_TITLES) => {

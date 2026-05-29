@@ -11,6 +11,7 @@ export const CAROUSEL_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-carousel--variants-overview' },
     { label: 'Styling', storyId: 'components-carousel--styling' },
     { label: 'Accessibility', storyId: 'components-carousel--accessibility' },
+    { label: 'Testing', storyId: 'components-carousel--testing' },
   ],
 }
 
@@ -20,6 +21,7 @@ export const CAROUSEL_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getCarouselTabs = (activeLabel: keyof typeof CAROUSEL_TAB_TITLES) => {

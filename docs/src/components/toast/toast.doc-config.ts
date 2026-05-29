@@ -7,6 +7,7 @@ export const TOAST_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-toast--variants-overview' },
     { label: 'Styling', storyId: 'components-toast--styling' },
     { label: 'Accessibility', storyId: 'components-toast--accessibility' },
+    { label: 'Testing', storyId: 'components-toast--testing' },
   ],
 }
 
@@ -16,6 +17,7 @@ export const TOAST_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getToastTabs = (activeLabel: keyof typeof TOAST_TAB_TITLES) => {

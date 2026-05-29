@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './modal.stories'
+import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
+
+<Meta title="Components/Modal/Testing" />
+
+<Banner label={'Testing'} section={MODAL_DOC_CONFIG.section} color={MODAL_DOC_CONFIG.color} />
+
+<BannerTabs of={ModalStories} tabs={getModalTabs('testing')} />
+
+<ComponentPageObject component="modal" />
+
+<Footer />

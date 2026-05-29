@@ -12,6 +12,7 @@ export const PAGINATION_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-pagination--variants-overview' },
     { label: 'Styling', storyId: 'components-pagination--styling' },
     { label: 'Accessibility', storyId: 'components-pagination--accessibility' },
+    { label: 'Testing', storyId: 'components-pagination--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const PAGINATION_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

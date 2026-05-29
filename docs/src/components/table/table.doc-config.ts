@@ -11,6 +11,7 @@ export const TABLE_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-table--variants-overview' },
     { label: 'Styling', storyId: 'components-table--styling' },
     { label: 'Accessibility', storyId: 'components-table--accessibility' },
+    { label: 'Testing', storyId: 'components-table--testing' },
   ],
 }
 
@@ -20,6 +21,7 @@ export const TABLE_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getTableTabs = (activeLabel: keyof typeof TABLE_TAB_TITLES) => {

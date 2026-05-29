@@ -12,6 +12,7 @@ export const BADGE_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-badge--variants-overview' },
     { label: 'Styling', storyId: 'components-badge--styling' },
     { label: 'Accessibility', storyId: 'components-badge--accessibility' },
+    { label: 'Testing', storyId: 'components-badge--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const BADGE_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

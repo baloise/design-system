@@ -12,6 +12,7 @@ export const LABEL_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-label--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-label--styling' },
     { label: 'Accessibility', storyId: 'components-forms-label--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-label--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const LABEL_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

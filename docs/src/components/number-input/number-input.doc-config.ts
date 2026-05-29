@@ -12,6 +12,7 @@ export const NUMBER_INPUT_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-number-input--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-number-input--styling' },
     { label: 'Accessibility', storyId: 'components-forms-number-input--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-number-input--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const NUMBER_INPUT_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

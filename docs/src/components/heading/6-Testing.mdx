@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as HeadingStories from './heading.stories'
+import { HEADING_DOC_CONFIG, getHeadingTabs } from './heading.doc-config'
+
+<Meta title="Components/Heading/Testing" />
+
+<Banner label={'Testing'} section={HEADING_DOC_CONFIG.section} color={HEADING_DOC_CONFIG.color} />
+
+<BannerTabs of={HeadingStories} tabs={getHeadingTabs('testing')} />
+
+<ComponentPageObject component="heading" />
+
+<Footer />
