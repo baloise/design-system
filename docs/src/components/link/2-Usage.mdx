@@ -1,21 +1,13 @@
 import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Code,
-  Footer,
-  Lead,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../.storybook/blocks'
 import * as LinkStories from './link.stories'
 import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <Meta title="Components/Link/Usage" />
+
 <Banner label={'Usage'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
-<BannerTabs
-  of={LinkStories}
-  tabs={getLinkTabs('usage')}
-/>
+
+<BannerTabs of={LinkStories} tabs={getLinkTabs('usage')} />
 
 ## When to Use
 
@@ -47,7 +39,9 @@ Always use meaningful link text. Avoid generic "Click here" or "Read more".
       title: 'Correct: Descriptive link text',
       content: (
         <div>
-          <a href="#" className="link">Learn about our accessibility standards</a>
+          <a href="#" className="link">
+            Learn about our accessibility standards
+          </a>
         </div>
       ),
       description: 'Screen readers understand the link destination',
@@ -57,10 +51,12 @@ Always use meaningful link text. Avoid generic "Click here" or "Read more".
       title: 'Incorrect: Generic link text',
       content: (
         <div>
-          <a href="#" className="link">Click here</a>
+          <a href="#" className="link">
+            Click here
+          </a>
         </div>
       ),
-      description: 'Screen readers can\'t explain link purpose',
+      description: "Screen readers can't explain link purpose",
     },
   ]}
 />

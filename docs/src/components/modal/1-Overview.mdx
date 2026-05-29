@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './modal.stories'
+import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
+
+<Meta title="Components/Modal/Overview" />
+
+<Banner label={'Overview'} section={MODAL_DOC_CONFIG.section} color={MODAL_DOC_CONFIG.color} />
+
+<BannerTabs of={ModalStories} tabs={getModalTabs('overview')} />
+
+<ComponentLead component="modal" />
+
+<CanvasWithCodePen of={ModalStories.Basic} />
+
+<Controls of={ModalStories.Basic} />
+
+<ComponentPublicMethods component="modal" />
+
+<Footer />

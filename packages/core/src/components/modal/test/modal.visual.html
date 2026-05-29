@@ -1,0 +1,159 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <ds-app>
+      <main class="container py-medium">
+        <!-- Basic -->
+        <section data-testid="basic">
+          <span>Basic</span>
+          <ds-button onclick="document.getElementById('modal-basic').present()">Open Modal</ds-button>
+          <ds-modal id="modal-basic">
+            <ds-modal-header>Modal Title</ds-modal-header>
+            <ds-modal-body>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </ds-modal-body>
+            <ds-button color="text" slot="actions" onclick="document.getElementById('modal-basic').dismiss()"
+              >Cancel</ds-button
+            >
+            <ds-button color="primary" slot="actions" onclick="document.getElementById('modal-basic').dismiss()"
+              >Confirm</ds-button
+            >
+          </ds-modal>
+        </section>
+
+        <!-- Not Closable -->
+        <section data-testid="not-closable">
+          <span>Not Closable</span>
+          <ds-button onclick="document.getElementById('modal-not-closable').present()">Open Modal</ds-button>
+          <ds-modal id="modal-not-closable" closable="false">
+            <ds-modal-header>Cannot Be Dismissed</ds-modal-header>
+            <ds-modal-body>
+              <p>Escape key, close button, and backdrop click are all disabled.</p>
+            </ds-modal-body>
+            <ds-button color="primary" slot="actions" onclick="document.getElementById('modal-not-closable').dismiss()"
+              >Got it</ds-button
+            >
+          </ds-modal>
+        </section>
+
+        <!-- Direct Slots -->
+        <section data-testid="direct-slots">
+          <span>Direct Slots</span>
+          <ds-button onclick="document.getElementById('modal-direct').present()">Open Modal</ds-button>
+          <ds-modal id="modal-direct">
+            <span slot="header">Direct Slot Title</span>
+            <div slot="body">
+              <p>Using <code>slot="header"</code> and <code>slot="body"</code> directly, without sub-components.</p>
+            </div>
+          </ds-modal>
+        </section>
+
+        <!-- Narrow Width -->
+        <section data-testid="narrow">
+          <span>Narrow (400px)</span>
+          <ds-button onclick="document.getElementById('modal-narrow').present()">Open Modal</ds-button>
+          <ds-modal id="modal-narrow" modal-width="400">
+            <ds-modal-header>Narrow Modal</ds-modal-header>
+            <ds-modal-body>
+              <p>Modal with <code>modal-width="400"</code>.</p>
+            </ds-modal-body>
+          </ds-modal>
+        </section>
+
+        <!-- Wide Width -->
+        <section data-testid="wide">
+          <span>Wide (900px)</span>
+          <ds-button onclick="document.getElementById('modal-wide').present()">Open Modal</ds-button>
+          <ds-modal id="modal-wide" modal-width="900">
+            <ds-modal-header>Wide Modal</ds-modal-header>
+            <ds-modal-body>
+              <p>Modal with <code>modal-width="900"</code>.</p>
+            </ds-modal-body>
+          </ds-modal>
+        </section>
+
+        <!-- Rich Content -->
+        <section data-testid="rich-content">
+          <span>Rich Content</span>
+          <ds-button onclick="document.getElementById('modal-rich').present()">Open Modal</ds-button>
+          <ds-modal id="modal-rich">
+            <ds-modal-header>Rich Body Content</ds-modal-header>
+            <ds-modal-body>
+              <ds-notification color="info" heading="Information">Please review the details below.</ds-notification>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+              </p>
+            </ds-modal-body>
+            <ds-button color="text" slot="actions" onclick="document.getElementById('modal-rich').dismiss()"
+              >Cancel</ds-button
+            >
+            <ds-button color="primary" slot="actions" onclick="document.getElementById('modal-rich').dismiss()"
+              >Submit</ds-button
+            >
+          </ds-modal>
+        </section>
+
+        <!-- Scrollable Body -->
+        <section data-testid="scrollable">
+          <span>Scrollable Body</span>
+          <ds-button onclick="document.getElementById('modal-scrollable').present()">Open Modal</ds-button>
+          <ds-modal id="modal-scrollable">
+            <ds-modal-header>Long Content</ds-modal-header>
+            <ds-modal-body>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
+              <p>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              </p>
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.
+              </p>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+              <p>
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                dolores.
+              </p>
+              <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+              <p>
+                Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem.
+              </p>
+              <p>
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+              </p>
+              <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                deleniti.
+              </p>
+            </ds-modal-body>
+            <ds-button color="text" slot="actions" onclick="document.getElementById('modal-scrollable').dismiss()"
+              >Cancel</ds-button
+            >
+            <ds-button color="primary" slot="actions" onclick="document.getElementById('modal-scrollable').dismiss()"
+              >Confirm</ds-button
+            >
+          </ds-modal>
+        </section>
+      </main>
+    </ds-app>
+  </body>
+</html>

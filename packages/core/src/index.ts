@@ -13,7 +13,7 @@ export { Components, JSX } from './components'
  */
 // export * from './components/checkbox/checkbox.type'
 // export * from './components/file-upload/file-upload.type'
-// export * from './components/modal/modal.type'
+export * from './components/modal/modal.interfaces'
 // export * from './components/radio/radio.type'
 // export * from './components/select/utils/option.type'
 // export * from './components/steps/step.type'
@@ -78,5 +78,5 @@ export { DsSwipeInfo, DsSwipeObserver, DsSwipeSubject } from './utils/swipe'
 /**
  * Controllers
  */
-// export * from './components/modal/modal.controller'
+export * from './components/modal/modal.controller'
 export * from './components/alert/alert.controller'

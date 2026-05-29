@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TableStories from './table.stories'
+import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
+
+<Meta title="Components/Table/Accessibility" />
+
+<Banner label={'Accessibility'} section={TABLE_DOC_CONFIG.section} color={TABLE_DOC_CONFIG.color} />
+
+<BannerTabs of={TableStories} tabs={getTableTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use <th> for column and row headers',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Always mark header cells with <code>&lt;th&gt;</code> inside <code>&lt;thead&gt;</code>. Screen readers announce the column header before each data cell, giving users context for the value they are hearing.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Add a <caption> to describe the table purpose',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Provide a <code>&lt;caption&gt;</code> as the first child of <code>&lt;table&gt;</code> to give screen reader users an immediate summary of the table's content before they begin navigating it.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Use scope attributes for complex tables',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>For tables with both column and row headers, add <code>scope="col"</code> or <code>scope="row"</code> to each <code>&lt;th&gt;</code> so assistive technologies can unambiguously map each cell to its headers.</p>,
+    },
+    {
+      type: 'dont',
+      title: "Don't use a table for layout",
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Tables carry strong semantic meaning. Using one purely for visual layout confuses assistive technologies and breaks the document structure. Use CSS flex or grid for layout instead.</p>,
+    },
+    {
+      type: 'dont',
+      title: "Don't rely on color alone to communicate row state",
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>The <code>is-selected</code> highlight provides a visual cue, but also convey selection state programmatically — for example, using <code>aria-selected="true"</code> on the row — so users who cannot perceive color differences receive the same information.</p>,
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The table component uses native HTML table semantics that meet WCAG 2.2 Level AA standards:
+
+- **1.3.1 Info and Relationships** — `<th>`, `<thead>`, `<tbody>`, and `<tfoot>` elements expose the data structure to assistive technologies without relying on visual presentation.
+- **1.4.3 Contrast (Minimum)** — all text and border colors defined via `--ds-table-*` tokens meet the 4.5:1 ratio requirement against their respective background colors.
+- **1.4.11 Non-text Contrast** — row borders and the selected-row highlight meet the 3:1 ratio requirement for UI component boundaries.
+
+<Footer />

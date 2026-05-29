@@ -1,0 +1,37 @@
+import { Meta, Controls } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentTabs,
+  CanvasWithCodePen,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TableStories from './table.stories'
+import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
+
+<Meta title="Components/Table/Overview" />
+
+<Banner label={'Overview'} section={TABLE_DOC_CONFIG.section} color={TABLE_DOC_CONFIG.color} />
+
+<BannerTabs of={TableStories} tabs={getTableTabs('overview')} />
+
+The **Table** is a CSS-only component for displaying structured tabular data with support for striped rows, hover effects, borders, compact sizing, and row selection states. It has no JavaScript behaviour — all variants are controlled via modifier CSS classes.
+{/* <ComponentLead component="table" /> */}
+
+<CanvasWithCodePen of={TableStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'table',
+      label: 'Table',
+      content: <Controls of={TableStories.Basic} />,
+    },
+  ]}
+/>
+
+{/* <ComponentPublicMethods component="table" /> */}
+
+<Footer />
