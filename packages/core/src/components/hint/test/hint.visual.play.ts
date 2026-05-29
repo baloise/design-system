@@ -1,4 +1,4 @@
-import { DsHint, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsHint, E2ELocator, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'hint'
 
@@ -22,7 +22,7 @@ test.describe('host', () => {
   VARIANTS.forEach(({ testId }) => {
     test(testId, async ({ page }) => {
       const section = page.getByTestId(testId)
-      const dsHint = new DsHint(section.locator('ds-hint').first())
+      const dsHint = new DsHint(section.locator('ds-hint').first() as E2ELocator)
 
       await dsHint.clickTrigger()
       await dsHint.assertToBeOpen()
