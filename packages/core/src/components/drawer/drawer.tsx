@@ -1,35 +1,39 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation, wait, ScrollHandler } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
-import { ModalPresentDetail, ModalDismissDetail } from './modal.interfaces'
+import {
+  Logger,
+  type LogInstance,
+  ScrollHandler,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+  wait,
+} from '@utils'
+import { DrawerPresentDetail, DrawerDismissDetail, DRAWER_CONTAINERS, DrawerContainer } from './drawer.interfaces'
 
 /**
- * Modal displays content in a dialog overlay using the native dialog element.
- * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
- * direct named slots (slot="header", slot="body").
+ * Drawer displays a panel that slides up from the bottom of the screen.
+ * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+ * and Escape-key handling.
  *
- * @slot header - The modal title content. Used automatically by ds-modal-header.
- * @slot body - The modal body content. Used automatically by ds-modal-body.
- * @slot actions - Action buttons rendered right-aligned at the bottom of the modal.
+ * @slot - The drawer content.
  * @part dialog - The native dialog element.
- * @part close - The close button.
- * @part title - The h2 wrapping the header slot.
- * @part body - The div wrapping the body slot.
- * @part actions - The div wrapping the actions slot.
+ * @part close  - The optional close button (visible when closable).
  */
 @Component({
-  tag: 'ds-modal',
-  styleUrl: 'modal.host.scss',
+  tag: 'ds-drawer',
+  styleUrl: 'drawer.host.scss',
   shadow: true,
 })
-export class Modal implements DsComponentInterface, DsConfigObserver {
+export class Drawer implements DsComponentInterface, DsConfigObserver {
   private dialogEl: HTMLDialogElement | undefined
   private scrollHandler = new ScrollHandler()
+  private transitionQueue: Promise<void> = Promise.resolve()
 
   log!: LogInstance
 
-  @Logger('modal')
+  @Logger('drawer')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -38,7 +42,6 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   @State() animated = true
   @State() isOpen = false
-  private transitionQueue: Promise<void> = Promise.resolve()
 
   /**
    * PUBLIC PROPERTY API
@@ -46,7 +49,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
    */
 
   /**
-   * If `true` the modal is open.
+   * If `true` the drawer is open.
    */
   @Prop({ reflect: true, mutable: true })
   @ValidateEmptyOrType('boolean')
@@ -54,50 +57,53 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   @Watch('open')
   openChanged(newValue: boolean) {
-    if (newValue) {
-      this.runOpen()
-    } else {
-      this.runClose()
-    }
+    newValue ? this.runOpen() : this.runClose()
   }
 
   /**
-   * If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.
+   * If `true`, the drawer can be dismissed via the Escape key and shows a close button.
    */
   @Prop()
   @ValidateEmptyOrType('boolean')
   readonly closable: boolean = true
 
   /**
-   * Width of the modal in pixels.
-   */
-  @Prop()
-  @ValidateEmptyOrType('number')
-  readonly modalWidth: number = 640
-
-  /**
-   * If `true`, the modal covers the full viewport.
+   * If `true`, clicking the backdrop (outside the panel) dismisses the drawer.
    */
   @Prop()
   @ValidateEmptyOrType('boolean')
-  readonly fullscreen: boolean = false
+  readonly backdropDismiss: boolean = true
+
+  /**
+   * Accessible label for the drawer dialog (sets aria-label on the dialog element).
+   */
+  @Prop()
+  readonly label: string = ''
+
+  /**
+   * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`.
+   * Matches the `ds-container` sizing variants.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(DRAWER_CONTAINERS)
+  readonly container: DrawerContainer = 'default'
 
   /**
    * EVENTS
    * ------------------------------------------------------
    */
 
-  /** Emitted before the modal opens. */
-  @Event() dsWillPresent!: EventEmitter<ModalPresentDetail>
+  /** Emitted before the drawer opens. */
+  @Event() dsWillPresent!: EventEmitter<DrawerPresentDetail>
 
-  /** Emitted after the modal is fully open. */
-  @Event() dsDidPresent!: EventEmitter<ModalPresentDetail>
+  /** Emitted after the drawer is fully open. */
+  @Event() dsDidPresent!: EventEmitter<DrawerPresentDetail>
 
-  /** Emitted before the modal closes. */
-  @Event() dsWillDismiss!: EventEmitter<ModalDismissDetail>
+  /** Emitted before the drawer closes. */
+  @Event() dsWillDismiss!: EventEmitter<DrawerDismissDetail>
 
-  /** Emitted after the modal is fully closed. */
-  @Event() dsDidDismiss!: EventEmitter<ModalDismissDetail>
+  /** Emitted after the drawer is fully closed. */
+  @Event() dsDidDismiss!: EventEmitter<DrawerDismissDetail>
 
   /**
    * LIFECYCLE
@@ -132,20 +138,20 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
    * ------------------------------------------------------
    */
 
-  /** Opens the modal. */
+  /** Opens the drawer. */
   @Method()
   async present(): Promise<void> {
     this.open = true
   }
 
-  /** Closes the modal. */
+  /** Closes the drawer. */
   @Method()
   async dismiss(): Promise<void> {
     this.open = false
   }
 
   /**
-   * @internal define config for the component
+   * @internal
    */
   @Method()
   @ListenToConfig()
@@ -172,9 +178,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     this.dialogEl?.showModal()
     this.scrollHandler.disable()
     this.isOpen = true
-    if (this.animated) {
-      await wait(300)
-    }
+    if (this.animated) await wait(300)
     this.dsDidPresent.emit()
   }
 
@@ -182,9 +186,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     if (!this.dialogEl?.open) return
     this.dsWillDismiss.emit()
     this.isOpen = false
-    if (this.animated) {
-      await wait(300)
-    }
+    if (this.animated) await wait(300)
     this.dialogEl?.close()
     this.scrollHandler.enable()
     this.dsDidDismiss.emit()
@@ -198,17 +200,25 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   }
 
   private handleNativeClose = (): void => {
-    // If the browser closed the dialog despite preventDefault (browser quirk),
-    // re-enter the top layer so the backdrop is restored.
+    // Re-enter the top layer if the browser closed the dialog unexpectedly.
     if (this.open) {
       this.dialogEl?.showModal()
     }
   }
 
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
+
   private handleBackdropClick = (ev: MouseEvent): void => {
-    if (this.closable && ev.target === this.dialogEl) {
+    if (this.backdropDismiss && ev.target === this.dialogEl) {
       this.open = false
     }
+  }
+
+  private handleCloseClick = (): void => {
+    this.open = false
   }
 
   /**
@@ -218,30 +228,22 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   render() {
     return (
-      <Host
-        class={{
-          'is-open': this.isOpen,
-          'is-animated': this.animated,
-          'is-fullscreen': this.fullscreen,
-        }}
-        style={{ '--_modal-width': `${this.modalWidth}px` }}
-      >
+      <Host class={{ 'is-open': this.isOpen, 'is-animated': this.animated }}>
         <dialog
           part="dialog"
           ref={el => (this.dialogEl = el as HTMLDialogElement)}
-          aria-labelledby="modal-title"
-          aria-describedby="modal-body"
+          aria-label={this.label || undefined}
           onClick={this.handleBackdropClick}
         >
-          {this.closable && <ds-close part="close" onClick={() => (this.open = false)} />}
-          <h2 id="modal-title" part="title">
-            <slot name="header" />
-          </h2>
-          <div id="modal-body" part="body">
-            <slot name="body" />
-          </div>
-          <div id="modal-actions" part="actions">
-            <slot name="actions" />
+          <div
+            class={{
+              'container': true,
+              'is-fluid': this.container === 'fluid',
+              'is-compact': this.container === 'compact',
+            }}
+          >
+            {this.closable && <ds-close part="close" onClick={this.handleCloseClick} />}
+            <slot />
           </div>
         </dialog>
       </Host>

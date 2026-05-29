@@ -1,0 +1,139 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <ds-app>
+      <main class="container py-medium">
+        <!-- Basic (declarative trigger) -->
+        <section data-testid="basic">
+          <span>Basic</span>
+          <ds-button data-popup="popup-basic">Click me</ds-button>
+          <ds-popup id="popup-basic" label="Popup" closable>
+            <p>Basic popup content.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Placement: top -->
+        <section data-testid="placement-top">
+          <span>Placement top</span>
+          <ds-button data-popup="popup-top">Top</ds-button>
+          <ds-popup id="popup-top" placement="top" label="Popup top" closable>
+            <p>Placed above the trigger.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Placement: right -->
+        <section data-testid="placement-right">
+          <span>Placement right</span>
+          <ds-button data-popup="popup-right">Right</ds-button>
+          <ds-popup id="popup-right" placement="right" label="Popup right" closable>
+            <p>Placed to the right.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Placement: left -->
+        <section data-testid="placement-left">
+          <span>Placement left</span>
+          <ds-button data-popup="popup-left">Left</ds-button>
+          <ds-popup id="popup-left" placement="left" label="Popup left" closable>
+            <p>Placed to the left.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Backdrop dismiss -->
+        <section data-testid="backdrop-dismiss">
+          <span>Backdrop dismiss</span>
+          <ds-button data-popup="popup-backdrop">Open (click outside to close)</ds-button>
+          <ds-popup id="popup-backdrop" label="Backdrop dismiss" backdrop-dismiss>
+            <p>Click anywhere outside to close.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Backdrop overlay -->
+        <section data-testid="backdrop-overlay">
+          <span>Backdrop overlay</span>
+          <ds-button data-popup="popup-overlay">Open with backdrop</ds-button>
+          <ds-popup id="popup-overlay" label="Backdrop overlay" backdrop backdrop-dismiss closable>
+            <p>Full-screen backdrop is visible behind the panel.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Role: listbox -->
+        <section data-testid="role-listbox">
+          <span>Role: listbox</span>
+          <ds-button id="trigger-listbox">Choose option</ds-button>
+          <ds-popup id="popup-listbox" role="listbox" label="Options" backdrop-dismiss>
+            <ul role="group" style="list-style: none; margin: 0; padding: 0.5rem 0; min-width: 10rem">
+              <li role="option" tabindex="0" style="padding: 0.5rem 1rem; cursor: pointer">Option A</li>
+              <li role="option" tabindex="0" style="padding: 0.5rem 1rem; cursor: pointer">Option B</li>
+              <li role="option" tabindex="0" style="padding: 0.5rem 1rem; cursor: pointer">Option C</li>
+            </ul>
+          </ds-popup>
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              const trigger = document.getElementById('trigger-listbox')
+              const popup = document.getElementById('popup-listbox')
+              popup.trigger = trigger
+              trigger.addEventListener('click', () => popup.toggle())
+            })
+          </script>
+        </section>
+
+        <!-- Group: mutual exclusion -->
+        <section data-testid="group">
+          <span>Group (mutual exclusion)</span>
+          <ds-button data-popup="popup-group-a">Open A</ds-button>
+          <ds-button data-popup="popup-group-b">Open B</ds-button>
+          <ds-popup id="popup-group-a" group="nav" label="Group A" closable>
+            <p>Opening B will close this one.</p>
+          </ds-popup>
+          <ds-popup id="popup-group-b" group="nav" label="Group B" closable>
+            <p>Opening A will close this one.</p>
+          </ds-popup>
+        </section>
+
+        <!-- Programmatic API -->
+        <section data-testid="programmatic">
+          <span>Programmatic</span>
+          <ds-button id="trigger-prog">Open</ds-button>
+          <ds-button id="trigger-prog-close">Close</ds-button>
+          <ds-popup id="popup-prog" label="Programmatic" closable>
+            <p>Opened and closed via <code>present()</code> / <code>dismiss()</code>.</p>
+          </ds-popup>
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              const popup = document.getElementById('popup-prog')
+              const trigger = document.getElementById('trigger-prog')
+              popup.trigger = trigger
+              trigger.addEventListener('click', () => popup.present())
+              document.getElementById('trigger-prog-close').addEventListener('click', () => popup.dismiss())
+            })
+          </script>
+        </section>
+
+        <!-- Rich content with focusable elements (focus trap) -->
+        <section data-testid="focus-trap">
+          <span>Focus trap (role=dialog)</span>
+          <ds-button data-popup="popup-focus">Open with form</ds-button>
+          <ds-popup id="popup-focus" label="Form popup" closable backdrop-dismiss>
+            <div style="padding: 0.5rem; display: flex; flex-direction: column; gap: 0.75rem; min-width: 16rem">
+              <ds-input placeholder="First name"></ds-input>
+              <ds-input placeholder="Last name"></ds-input>
+              <ds-button>Submit</ds-button>
+            </div>
+          </ds-popup>
+        </section>
+      </main>
+    </ds-app>
+  </body>
+</html>

@@ -121,11 +121,14 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
         'FontWeight',
         'Opacity',
         '🌫️ Opacity',
+        'ZIndex',
         'Z-Index',
+        '🗂️ ZIndex',
         '🗂️ Z-Index',
         'Interaction',
         '✨ Interaction',
       ]
+      console.log(path)
       if (tokenToBeNumberOnly.some(ignored => path.includes(ignored))) {
         return Math.round(value * 10) / 10
       }

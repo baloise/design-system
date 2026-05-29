@@ -1,0 +1,98 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * @prop --popup-background: Background color of the popup panel.
+ * @prop --popup-radius: Border radius of the popup panel.
+ * @prop --popup-shadow: Box shadow of the popup panel.
+ * @prop --popup-padding: Padding inside the popup panel.
+ * @prop --popup-min-width: Minimum width of the popup panel.
+ * @prop --popup-max-width: Maximum width of the popup panel.
+ * @prop --popup-z-index: Z-index stacking level of the popup layer.
+ * @prop --popup-backdrop-background: Background color of the optional full-screen backdrop.
+ * @prop --popup-backdrop-opacity: Opacity of the optional full-screen backdrop.
+ */
+
+// ─── Variables ────────────────────────────────────────────────────────────────
+
+:host {
+  @include vars.local(popup-background, var(--ds-popup-background));
+  @include vars.local(popup-radius, var(--ds-popup-radius));
+  @include vars.local(popup-shadow, var(--ds-popup-shadow));
+  @include vars.local(popup-padding, var(--ds-popup-padding));
+  @include vars.local(popup-min-width, var(--ds-popup-min-width));
+  @include vars.local(popup-max-width, none);
+  @include vars.local(popup-z-index, var(--ds-popup-z-index));
+  @include vars.local(popup-backdrop-background, var(--ds-popup-backdrop-background));
+  @include vars.local(popup-backdrop-opacity, var(--ds-popup-backdrop-opacity));
+
+  display: contents;
+}
+
+// ─── Backdrop ────────────────────────────────────────────────────────────────
+
+[part='backdrop'] {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--_popup-z-index) - 1);
+  background: var(--_popup-backdrop-background);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+:host(.is-open) [part='backdrop'] {
+  opacity: var(--_popup-backdrop-opacity);
+  pointer-events: auto;
+}
+
+:host(.is-animated) [part='backdrop'] {
+  transition: opacity 200ms ease;
+}
+
+// ─── Panel ────────────────────────────────────────────────────────────────────
+
+[part='panel'] {
+  position: fixed;
+  z-index: var(--_popup-z-index);
+  background: var(--_popup-background);
+  border-radius: var(--_popup-radius);
+  box-shadow: var(--_popup-shadow);
+  padding: var(--_popup-padding);
+  min-width: var(--_popup-min-width);
+  max-width: var(--_popup-max-width);
+
+  // Hidden by default; made visible via is-open class.
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+:host(.is-open) [part='panel'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+:host(.is-animated) [part='panel'] {
+  transition:
+    opacity 200ms ease,
+    visibility 200ms ease;
+}
+
+// ─── Close button ────────────────────────────────────────────────────────────
+
+[part='close'] {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.is-animated) [part='panel'],
+  :host(.is-animated) [part='backdrop'] {
+    transition: none !important;
+  }
+}

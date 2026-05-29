@@ -19,6 +19,8 @@ import { CloseSize } from "./components/close/close.interfaces";
 import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
+import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
@@ -55,6 +57,8 @@ export { CloseSize } from "./components/close/close.interfaces";
 export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
+export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
@@ -887,6 +891,47 @@ export namespace Components {
         "space": DividerSpace;
     }
     /**
+     * Drawer displays a panel that slides up from the bottom of the screen.
+     * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+     * and Escape-key handling.
+     */
+    interface DsDrawer {
+        /**
+          * If `true`, clicking the backdrop (outside the panel) dismisses the drawer.
+          * @default true
+         */
+        "backdropDismiss": boolean;
+        /**
+          * If `true`, the drawer can be dismissed via the Escape key and shows a close button.
+          * @default true
+         */
+        "closable": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default 'default'
+         */
+        "container": DrawerContainer;
+        /**
+          * Closes the drawer.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Accessible label for the drawer dialog (sets aria-label on the dialog element).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * If `true` the drawer is open.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the drawer.
+         */
+        "present": () => Promise<void>;
+    }
+    /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
     interface DsHeading {
@@ -935,6 +980,53 @@ export namespace Components {
           * @default ''
          */
         "visualLevel": HeadingVisualLevel;
+    }
+    /**
+     * Hint displays contextual help via an info-circle trigger button.
+     * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+     * on desktop it opens a ds-popup (floating panel).
+     */
+    interface DsHint {
+        /**
+          * Label for the close button shown in the drawer on touch viewports. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "closeLabel": string | undefined;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Closes the hint panel.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Preferred placement of the popup panel on desktop viewports.
+          * @default 'right'
+         */
+        "placement": PopupPlacement;
+        /**
+          * Opens the hint panel.
+         */
+        "present": () => Promise<void>;
+        /**
+          * Toggles the hint panel open or closed.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Accessible label for the trigger button.
+          * @default 'More information'
+         */
+        "triggerLabel": string;
+    }
+    /**
+     * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Projects into the default slot of ds-hint.
+     */
+    interface DsHintText {
+    }
+    /**
+     * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+     */
+    interface DsHintTitle {
     }
     /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
@@ -1365,6 +1457,11 @@ export namespace Components {
          */
         "dismiss": () => Promise<void>;
         /**
+          * If `true`, the modal covers the full viewport.
+          * @default false
+         */
+        "fullscreen": boolean;
+        /**
           * Width of the modal in pixels.
           * @default 640
          */
@@ -1619,6 +1716,83 @@ export namespace Components {
           * @default ''
          */
         "variant": PaginationVariant;
+    }
+    /**
+     * Popup displays anchored overlay content positioned relative to a trigger element.
+     * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+     * Trigger wiring:
+     *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+     *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+     */
+    interface DsPopup {
+        /**
+          * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
+          * @default false
+         */
+        "backdrop": boolean;
+        /**
+          * If `true`, clicking outside the popup panel dismisses it.
+          * @default false
+         */
+        "backdropDismiss": boolean;
+        /**
+          * If `true`, the popup can be dismissed via the Escape key and shows a close button.
+          * @default false
+         */
+        "closable": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Closes the popup.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Group name for mutual-exclusion. Only one popup within the same group is open at a time.
+          * @default undefined
+         */
+        "group": string | undefined;
+        /**
+          * Accessible label for the popup panel (sets aria-label on the panel element).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Offset in pixels between the trigger element and the popup panel.
+          * @default 8
+         */
+        "offset": number;
+        /**
+          * If `true` the popup is open.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Preferred placement of the popup relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement": PopupPlacement;
+        /**
+          * Opens the popup.
+         */
+        "present": () => Promise<void>;
+        /**
+          * ARIA role applied to the panel. Controls focus-trap behaviour and the aria-haspopup value set on the trigger. Use "dialog" for rich content, "listbox" or "menu" for interactive option lists.
+          * @default 'dialog'
+         */
+        "role": PopupRole;
+        /**
+          * Toggles the popup open or closed.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+          * @default undefined
+         */
+        "trapFocus": boolean | undefined;
+        /**
+          * The trigger element. Setting this wires up aria-haspopup and aria-expanded automatically.
+          * @default undefined
+         */
+        "trigger": HTMLElement | undefined;
     }
     /**
      * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
@@ -2801,6 +2975,10 @@ export interface DsCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsCheckboxGroupElement;
 }
+export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsDrawerElement;
+}
 export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
@@ -2824,6 +3002,10 @@ export interface DsNumberInputCustomEvent<T> extends CustomEvent<T> {
 export interface DsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsPaginationElement;
+}
+export interface DsPopupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsPopupElement;
 }
 export interface DsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3141,6 +3323,31 @@ declare global {
         prototype: HTMLDsDividerElement;
         new (): HTMLDsDividerElement;
     };
+    interface HTMLDsDrawerElementEventMap {
+        "dsWillPresent": DrawerPresentDetail;
+        "dsDidPresent": DrawerPresentDetail;
+        "dsWillDismiss": DrawerDismissDetail;
+        "dsDidDismiss": DrawerDismissDetail;
+    }
+    /**
+     * Drawer displays a panel that slides up from the bottom of the screen.
+     * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+     * and Escape-key handling.
+     */
+    interface HTMLDsDrawerElement extends Components.DsDrawer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsDrawerElementEventMap>(type: K, listener: (this: HTMLDsDrawerElement, ev: DsDrawerCustomEvent<HTMLDsDrawerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsDrawerElementEventMap>(type: K, listener: (this: HTMLDsDrawerElement, ev: DsDrawerCustomEvent<HTMLDsDrawerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsDrawerElement: {
+        prototype: HTMLDsDrawerElement;
+        new (): HTMLDsDrawerElement;
+    };
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
@@ -3149,6 +3356,37 @@ declare global {
     var HTMLDsHeadingElement: {
         prototype: HTMLDsHeadingElement;
         new (): HTMLDsHeadingElement;
+    };
+    /**
+     * Hint displays contextual help via an info-circle trigger button.
+     * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+     * on desktop it opens a ds-popup (floating panel).
+     */
+    interface HTMLDsHintElement extends Components.DsHint, HTMLStencilElement {
+    }
+    var HTMLDsHintElement: {
+        prototype: HTMLDsHintElement;
+        new (): HTMLDsHintElement;
+    };
+    /**
+     * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Projects into the default slot of ds-hint.
+     */
+    interface HTMLDsHintTextElement extends Components.DsHintText, HTMLStencilElement {
+    }
+    var HTMLDsHintTextElement: {
+        prototype: HTMLDsHintTextElement;
+        new (): HTMLDsHintTextElement;
+    };
+    /**
+     * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+     */
+    interface HTMLDsHintTitleElement extends Components.DsHintTitle, HTMLStencilElement {
+    }
+    var HTMLDsHintTitleElement: {
+        prototype: HTMLDsHintTitleElement;
+        new (): HTMLDsHintTitleElement;
     };
     /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
@@ -3344,6 +3582,33 @@ declare global {
     var HTMLDsPaginationElement: {
         prototype: HTMLDsPaginationElement;
         new (): HTMLDsPaginationElement;
+    };
+    interface HTMLDsPopupElementEventMap {
+        "dsWillPresent": PopupPresentDetail;
+        "dsDidPresent": PopupPresentDetail;
+        "dsWillDismiss": PopupDismissDetail;
+        "dsDidDismiss": PopupDismissDetail;
+    }
+    /**
+     * Popup displays anchored overlay content positioned relative to a trigger element.
+     * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+     * Trigger wiring:
+     *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+     *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+     */
+    interface HTMLDsPopupElement extends Components.DsPopup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsPopupElementEventMap>(type: K, listener: (this: HTMLDsPopupElement, ev: DsPopupCustomEvent<HTMLDsPopupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsPopupElementEventMap>(type: K, listener: (this: HTMLDsPopupElement, ev: DsPopupCustomEvent<HTMLDsPopupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsPopupElement: {
+        prototype: HTMLDsPopupElement;
+        new (): HTMLDsPopupElement;
     };
     /**
      * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
@@ -3737,7 +4002,11 @@ declare global {
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
         "ds-divider": HTMLDsDividerElement;
+        "ds-drawer": HTMLDsDrawerElement;
         "ds-heading": HTMLDsHeadingElement;
+        "ds-hint": HTMLDsHintElement;
+        "ds-hint-text": HTMLDsHintTextElement;
+        "ds-hint-title": HTMLDsHintTitleElement;
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
         "ds-item": HTMLDsItemElement;
@@ -3750,6 +4019,7 @@ declare global {
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-pagination": HTMLDsPaginationElement;
+        "ds-popup": HTMLDsPopupElement;
         "ds-progress-bar": HTMLDsProgressBarElement;
         "ds-radio": HTMLDsRadioElement;
         "ds-radio-group": HTMLDsRadioGroupElement;
@@ -4649,6 +4919,54 @@ declare namespace LocalJSX {
         "space"?: DividerSpace;
     }
     /**
+     * Drawer displays a panel that slides up from the bottom of the screen.
+     * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+     * and Escape-key handling.
+     */
+    interface DsDrawer {
+        /**
+          * If `true`, clicking the backdrop (outside the panel) dismisses the drawer.
+          * @default true
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * If `true`, the drawer can be dismissed via the Escape key and shows a close button.
+          * @default true
+         */
+        "closable"?: boolean;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default 'default'
+         */
+        "container"?: DrawerContainer;
+        /**
+          * Accessible label for the drawer dialog (sets aria-label on the dialog element).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted after the drawer is fully closed.
+         */
+        "onDsDidDismiss"?: (event: DsDrawerCustomEvent<DrawerDismissDetail>) => void;
+        /**
+          * Emitted after the drawer is fully open.
+         */
+        "onDsDidPresent"?: (event: DsDrawerCustomEvent<DrawerPresentDetail>) => void;
+        /**
+          * Emitted before the drawer closes.
+         */
+        "onDsWillDismiss"?: (event: DsDrawerCustomEvent<DrawerDismissDetail>) => void;
+        /**
+          * Emitted before the drawer opens.
+         */
+        "onDsWillPresent"?: (event: DsDrawerCustomEvent<DrawerPresentDetail>) => void;
+        /**
+          * If `true` the drawer is open.
+          * @default false
+         */
+        "open"?: boolean;
+    }
+    /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
     interface DsHeading {
@@ -4697,6 +5015,40 @@ declare namespace LocalJSX {
           * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
+    }
+    /**
+     * Hint displays contextual help via an info-circle trigger button.
+     * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+     * on desktop it opens a ds-popup (floating panel).
+     */
+    interface DsHint {
+        /**
+          * Label for the close button shown in the drawer on touch viewports. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "closeLabel"?: string | undefined;
+        /**
+          * Preferred placement of the popup panel on desktop viewports.
+          * @default 'right'
+         */
+        "placement"?: PopupPlacement;
+        /**
+          * Accessible label for the trigger button.
+          * @default 'More information'
+         */
+        "triggerLabel"?: string;
+    }
+    /**
+     * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Projects into the default slot of ds-hint.
+     */
+    interface DsHintText {
+    }
+    /**
+     * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+     */
+    interface DsHintTitle {
     }
     /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
@@ -5150,6 +5502,11 @@ declare namespace LocalJSX {
          */
         "closable"?: boolean;
         /**
+          * If `true`, the modal covers the full viewport.
+          * @default false
+         */
+        "fullscreen"?: boolean;
+        /**
           * Width of the modal in pixels.
           * @default 640
          */
@@ -5430,6 +5787,86 @@ declare namespace LocalJSX {
           * @default ''
          */
         "variant"?: PaginationVariant;
+    }
+    /**
+     * Popup displays anchored overlay content positioned relative to a trigger element.
+     * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+     * Trigger wiring:
+     *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+     *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+     */
+    interface DsPopup {
+        /**
+          * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
+          * @default false
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true`, clicking outside the popup panel dismisses it.
+          * @default false
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * If `true`, the popup can be dismissed via the Escape key and shows a close button.
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * Group name for mutual-exclusion. Only one popup within the same group is open at a time.
+          * @default undefined
+         */
+        "group"?: string | undefined;
+        /**
+          * Accessible label for the popup panel (sets aria-label on the panel element).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Offset in pixels between the trigger element and the popup panel.
+          * @default 8
+         */
+        "offset"?: number;
+        /**
+          * Emitted after the popup is fully closed.
+         */
+        "onDsDidDismiss"?: (event: DsPopupCustomEvent<PopupDismissDetail>) => void;
+        /**
+          * Emitted after the popup is fully open.
+         */
+        "onDsDidPresent"?: (event: DsPopupCustomEvent<PopupPresentDetail>) => void;
+        /**
+          * Emitted before the popup closes.
+         */
+        "onDsWillDismiss"?: (event: DsPopupCustomEvent<PopupDismissDetail>) => void;
+        /**
+          * Emitted before the popup opens.
+         */
+        "onDsWillPresent"?: (event: DsPopupCustomEvent<PopupPresentDetail>) => void;
+        /**
+          * If `true` the popup is open.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Preferred placement of the popup relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement"?: PopupPlacement;
+        /**
+          * ARIA role applied to the panel. Controls focus-trap behaviour and the aria-haspopup value set on the trigger. Use "dialog" for rich content, "listbox" or "menu" for interactive option lists.
+          * @default 'dialog'
+         */
+        "role"?: PopupRole;
+        /**
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+          * @default undefined
+         */
+        "trapFocus"?: boolean | undefined;
+        /**
+          * The trigger element. Setting this wires up aria-haspopup and aria-expanded automatically.
+          * @default undefined
+         */
+        "trigger"?: HTMLElement | undefined;
     }
     /**
      * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
@@ -6864,6 +7301,13 @@ declare namespace LocalJSX {
         "color": DividerColor;
         "dashed": boolean;
     }
+    interface DsDrawerAttributes {
+        "open": boolean;
+        "closable": boolean;
+        "backdropDismiss": boolean;
+        "label": string;
+        "container": DrawerContainer;
+    }
     interface DsHeadingAttributes {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
@@ -6874,6 +7318,11 @@ declare namespace LocalJSX {
         "color": HeadingColor;
         "inverted": boolean;
         "shadow": boolean;
+    }
+    interface DsHintAttributes {
+        "placement": PopupPlacement;
+        "closeLabel": string | undefined;
+        "triggerLabel": string;
     }
     interface DsIconAttributes {
         "name": string;
@@ -6966,6 +7415,7 @@ declare namespace LocalJSX {
         "open": boolean;
         "closable": boolean;
         "modalWidth": number;
+        "fullscreen": boolean;
     }
     interface DsNotificationAttributes {
         "alert": boolean;
@@ -7009,6 +7459,18 @@ declare namespace LocalJSX {
         "totalPages": number;
         "value": number;
         "variant": PaginationVariant;
+    }
+    interface DsPopupAttributes {
+        "open": boolean;
+        "placement": PopupPlacement;
+        "offset": number;
+        "role": PopupRole;
+        "closable": boolean;
+        "backdropDismiss": boolean;
+        "backdrop": boolean;
+        "group": string | undefined;
+        "label": string;
+        "trapFocus": boolean | undefined;
     }
     interface DsProgressBarAttributes {
         "background": ProgressBarBackground;
@@ -7275,7 +7737,11 @@ declare namespace LocalJSX {
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
+        "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
+        "ds-hint": Omit<DsHint, keyof DsHintAttributes> & { [K in keyof DsHint & keyof DsHintAttributes]?: DsHint[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `attr:${K}`]?: DsHintAttributes[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `prop:${K}`]?: DsHint[K] };
+        "ds-hint-text": DsHintText;
+        "ds-hint-title": DsHintTitle;
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
@@ -7288,6 +7754,7 @@ declare namespace LocalJSX {
         "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
         "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
         "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
+        "ds-popup": Omit<DsPopup, keyof DsPopupAttributes> & { [K in keyof DsPopup & keyof DsPopupAttributes]?: DsPopup[K] } & { [K in keyof DsPopup & keyof DsPopupAttributes as `attr:${K}`]?: DsPopupAttributes[K] } & { [K in keyof DsPopup & keyof DsPopupAttributes as `prop:${K}`]?: DsPopup[K] };
         "ds-progress-bar": Omit<DsProgressBar, keyof DsProgressBarAttributes> & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes]?: DsProgressBar[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `attr:${K}`]?: DsProgressBarAttributes[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `prop:${K}`]?: DsProgressBar[K] };
         "ds-radio": Omit<DsRadio, keyof DsRadioAttributes> & { [K in keyof DsRadio & keyof DsRadioAttributes]?: DsRadio[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `attr:${K}`]?: DsRadioAttributes[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `prop:${K}`]?: DsRadio[K] };
         "ds-radio-group": Omit<DsRadioGroup, keyof DsRadioGroupAttributes> & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes]?: DsRadioGroup[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `attr:${K}`]?: DsRadioGroupAttributes[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `prop:${K}`]?: DsRadioGroup[K] };
@@ -7394,9 +7861,31 @@ declare module "@stencil/core" {
              */
             "ds-divider": LocalJSX.IntrinsicElements["ds-divider"] & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
             /**
+             * Drawer displays a panel that slides up from the bottom of the screen.
+             * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+             * and Escape-key handling.
+             */
+            "ds-drawer": LocalJSX.IntrinsicElements["ds-drawer"] & JSXBase.HTMLAttributes<HTMLDsDrawerElement>;
+            /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */
             "ds-heading": LocalJSX.IntrinsicElements["ds-heading"] & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
+            /**
+             * Hint displays contextual help via an info-circle trigger button.
+             * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+             * on desktop it opens a ds-popup (floating panel).
+             */
+            "ds-hint": LocalJSX.IntrinsicElements["ds-hint"] & JSXBase.HTMLAttributes<HTMLDsHintElement>;
+            /**
+             * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+             * Projects into the default slot of ds-hint.
+             */
+            "ds-hint-text": LocalJSX.IntrinsicElements["ds-hint-text"] & JSXBase.HTMLAttributes<HTMLDsHintTextElement>;
+            /**
+             * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+             * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+             */
+            "ds-hint-title": LocalJSX.IntrinsicElements["ds-hint-title"] & JSXBase.HTMLAttributes<HTMLDsHintTitleElement>;
             /**
              * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
              */
@@ -7449,6 +7938,14 @@ declare module "@stencil/core" {
              * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
              */
             "ds-pagination": LocalJSX.IntrinsicElements["ds-pagination"] & JSXBase.HTMLAttributes<HTMLDsPaginationElement>;
+            /**
+             * Popup displays anchored overlay content positioned relative to a trigger element.
+             * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+             * Trigger wiring:
+             *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+             *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+             */
+            "ds-popup": LocalJSX.IntrinsicElements["ds-popup"] & JSXBase.HTMLAttributes<HTMLDsPopupElement>;
             /**
              * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
              */

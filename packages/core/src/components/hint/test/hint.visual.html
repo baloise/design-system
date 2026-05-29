@@ -1,0 +1,106 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <ds-app>
+      <main class="container py-medium">
+        <!-- Basic with sub-components -->
+        <section data-testid="basic">
+          <span>Need more information?</span>
+          <ds-hint>
+            <ds-hint-title>Spider-Man</ds-hint-title>
+            <ds-hint-text>
+              Spider-Man is a superhero in Marvel Comics. He was created by writer Stan Lee and artist Steve Ditko.
+            </ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- With named slots (raw HTML) -->
+        <section data-testid="slots">
+          <span>Using raw slots</span>
+          <ds-hint>
+            <span slot="title">What is a deductible?</span>
+            <p>A deductible is the amount you pay out of pocket before your insurance covers the rest.</p>
+          </ds-hint>
+        </section>
+
+        <!-- Custom trigger label -->
+        <section data-testid="trigger-label">
+          <span>Custom trigger label</span>
+          <ds-hint trigger-label="Learn more about this field">
+            <ds-hint-title>Custom label</ds-hint-title>
+            <ds-hint-text>This trigger button has a custom accessible label.</ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- Placement: top -->
+        <section data-testid="placement-top">
+          <span>Placement top</span>
+          <ds-hint placement="top">
+            <ds-hint-title>Placed above</ds-hint-title>
+            <ds-hint-text>The popup panel opens above the trigger on desktop viewports.</ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- Placement: bottom -->
+        <section data-testid="placement-bottom">
+          <span>Placement bottom</span>
+          <ds-hint placement="bottom">
+            <ds-hint-title>Placed below</ds-hint-title>
+            <ds-hint-text>The popup panel opens below the trigger on desktop viewports.</ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- Placement: left -->
+        <section data-testid="placement-left">
+          <span>Placement left</span>
+          <ds-hint placement="left">
+            <ds-hint-title>Placed left</ds-hint-title>
+            <ds-hint-text>The popup panel opens to the left of the trigger on desktop viewports.</ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- Custom close label -->
+        <section data-testid="close-label">
+          <span>Custom close label</span>
+          <ds-hint close-label="Got it">
+            <ds-hint-title>Custom close</ds-hint-title>
+            <ds-hint-text>The close button inside the drawer shows a custom label.</ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- Without title -->
+        <section data-testid="no-title">
+          <span>Without title</span>
+          <ds-hint>
+            <ds-hint-text>Sometimes a title is not needed — just the explanation text is enough.</ds-hint-text>
+          </ds-hint>
+        </section>
+
+        <!-- Inline with text -->
+        <section data-testid="inline">
+          <p>
+            Your premium is calculated based on your risk profile
+            <ds-hint>
+              <ds-hint-title>Risk profile</ds-hint-title>
+              <ds-hint-text>
+                Your risk profile combines age, driving history, and vehicle type to determine your premium.
+              </ds-hint-text>
+            </ds-hint>
+            and the selected coverage options.
+          </p>
+        </section>
+      </main>
+    </ds-app>
+  </body>
+</html>

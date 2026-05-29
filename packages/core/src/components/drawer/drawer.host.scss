@@ -1,0 +1,104 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * @prop --drawer-background: Background color of the drawer panel.
+ * @prop --drawer-radius: Border radius of the drawer top corners.
+ * @prop --drawer-max-height: Maximum height of the drawer panel.
+ * @prop --drawer-padding: Padding inside the drawer panel.
+ * @prop --drawer-backdrop-background: Background color of the native backdrop.
+ * @prop --drawer-backdrop-opacity: Opacity of the native backdrop.
+ */
+
+// ─── Variables ────────────────────────────────────────────────────────────────
+
+:host {
+  @include vars.local(drawer-background, var(--ds-drawer-background));
+  @include vars.local(drawer-radius, var(--ds-drawer-radius));
+  @include vars.local(drawer-max-height, var(--ds-drawer-max-height));
+  @include vars.local(drawer-padding, var(--ds-drawer-padding));
+  @include vars.local(drawer-backdrop-background, var(--ds-drawer-backdrop-background));
+  @include vars.local(drawer-backdrop-opacity, var(--ds-drawer-backdrop-opacity));
+
+  display: contents;
+}
+
+// ─── Dialog ───────────────────────────────────────────────────────────────────
+
+:host dialog {
+  all: unset;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: var(--_drawer-max-height);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // Animation initial state — must come after all: unset.
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+// ─── Animation ────────────────────────────────────────────────────────────────
+
+:host(.is-open) dialog {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+:host(.is-animated) dialog {
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+// ─── Backdrop ────────────────────────────────────────────────────────────────
+
+:host dialog::backdrop {
+  background: var(--_drawer-backdrop-background);
+  opacity: var(--_drawer-backdrop-opacity);
+}
+
+// ─── Close button ────────────────────────────────────────────────────────────
+
+:host .container ds-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+// ─── Container ───────────────────────────────────────────────────────────────
+
+:host .container {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--ds-alias-container-width-base);
+  background: var(--_drawer-background);
+  border-radius: var(--_drawer-radius) var(--_drawer-radius) 0 0;
+  padding: var(--_drawer-padding);
+  position: relative;
+
+  &.is-fluid {
+    max-width: var(--ds-alias-container-width-fluid);
+  }
+
+  &.is-compact {
+    max-width: var(--ds-alias-container-width-compact);
+  }
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.is-animated) dialog {
+    transition: none !important;
+  }
+}
