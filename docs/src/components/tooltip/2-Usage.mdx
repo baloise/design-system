@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as TooltipStories from './tooltip.stories'
+import { TOOLTIP_DOC_CONFIG, getTooltipTabs } from './tooltip.doc-config'
+
+<Meta title="Components/Tooltip/Usage" />
+<Banner label={'Usage'} section={TOOLTIP_DOC_CONFIG.section} color={TOOLTIP_DOC_CONFIG.color} />
+<BannerTabs of={TooltipStories} tabs={getTooltipTabs('usage')} />
+
+## When to Use
+
+- Provide brief supplementary information about an interactive element, such as a button or icon
+- Explain the purpose of an icon-only control where the action may not be self-evident
+- Surface keyboard shortcuts or additional hints for experienced users
+- Clarify abbreviations or technical terms inline without cluttering the layout
+
+## When NOT to Use
+
+- For critical information that users must read — use inline text or a notification instead
+- To present long-form content, links, or interactive elements — use a popover instead
+- As the sole means of conveying required instructions — content must also be available without hover/focus
+- On touch-only devices where hover is unavailable — use always-visible helper text instead
+
+## Do's and Don'ts
+
+### Trigger Element
+
+Always attach a tooltip to a focusable trigger so keyboard and screen reader users can access it.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Focusable trigger',
+      content: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '2rem' }}>
+          <button id="usage-correct" type="button">Save</button>
+          <ds-tooltip reference="usage-correct" open>Saves your current progress</ds-tooltip>
+        </div>
+      ),
+      description: 'A button is keyboard-focusable, so the tooltip is reachable without a mouse.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Non-focusable trigger',
+      content: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '2rem' }}>
+          <span id="usage-incorrect">Save</span>
+          <ds-tooltip reference="usage-incorrect" open>Saves your current progress</ds-tooltip>
+        </div>
+      ),
+      description: 'A plain <span> cannot receive keyboard focus, so the tooltip is inaccessible.',
+    },
+  ]}
+/>
+
+### Tooltip Content Length
+
+Keep tooltip text short. One concise sentence is ideal.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Brief, informative text',
+      content: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '2rem' }}>
+          <button id="usage-short" type="button">Delete</button>
+          <ds-tooltip reference="usage-short" open>Permanently removes this item</ds-tooltip>
+        </div>
+      ),
+      description: 'Concise and scannable at a glance.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Overly long explanation',
+      content: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '2rem' }}>
+          <button id="usage-long" type="button">Delete</button>
+          <ds-tooltip reference="usage-long" content-width="260" open>Clicking this button will permanently remove this item from the system. This action cannot be undone. Please make sure you want to proceed before clicking.</ds-tooltip>
+        </div>
+      ),
+      description: 'Too verbose — consider an inline description or confirmation dialog instead.',
+    },
+  ]}
+/>
+
+<Footer />
