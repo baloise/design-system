@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './modal.stories'
+import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
+
+<Meta title="Components/Modal/Variants/Overview" />
+
+<StoryHeading of={ModalStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={MODAL_DOC_CONFIG.section} color={MODAL_DOC_CONFIG.color} />
+
+<BannerTabs of={ModalStories} tabs={getModalTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ModalStories.NotClosable}></StoryHeading>
+
+When `closable="false"`, the Escape key, close button, and backdrop click are all disabled. Use this only when the user must complete or explicitly acknowledge the action before proceeding.
+
+<CanvasWithCodePen of={ModalStories.NotClosable} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ModalStories.Narrow}></StoryHeading>
+
+Use `modal-width` to reduce the dialog width for compact confirmations or short messages.
+
+<CanvasWithCodePen of={ModalStories.Narrow} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ModalStories.Wide}></StoryHeading>
+
+Increase `modal-width` to accommodate wider content such as tables or multi-column forms.
+
+<CanvasWithCodePen of={ModalStories.Wide} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ModalStories.Scrollable}></StoryHeading>
+
+When body content exceeds the available viewport height, the body area scrolls independently. The title and action buttons remain fixed and always visible.
+
+<CanvasWithCodePen of={ModalStories.Scrollable} />
+
+<Footer />

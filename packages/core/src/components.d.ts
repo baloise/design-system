@@ -23,6 +23,7 @@ import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
+import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
 import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -57,6 +58,7 @@ export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
+export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
 export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -1343,6 +1345,49 @@ export namespace Components {
           * @default ''
          */
         "size": LogoSize;
+    }
+    /**
+     * Modal displays content in a dialog overlay using the native dialog element.
+     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+     * direct named slots (slot="header", slot="body").
+     */
+    interface DsModal {
+        /**
+          * If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.
+          * @default true
+         */
+        "closable": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Closes the modal.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Width of the modal in pixels.
+          * @default 640
+         */
+        "modalWidth": number;
+        /**
+          * If `true` the modal is open.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the modal.
+         */
+        "present": () => Promise<void>;
+    }
+    /**
+     * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+     */
+    interface DsModalBody {
+    }
+    /**
+     * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+     * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+     * the heading text through the slot chain without crossing shadow boundaries.
+     */
+    interface DsModalHeader {
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -2720,6 +2765,10 @@ export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsItemElement;
 }
+export interface DsModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsModalElement;
+}
 export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsNotificationElement;
@@ -3136,6 +3185,51 @@ declare global {
     var HTMLDsLogoElement: {
         prototype: HTMLDsLogoElement;
         new (): HTMLDsLogoElement;
+    };
+    interface HTMLDsModalElementEventMap {
+        "dsWillPresent": ModalPresentDetail;
+        "dsDidPresent": ModalPresentDetail;
+        "dsWillDismiss": ModalDismissDetail;
+        "dsDidDismiss": ModalDismissDetail;
+    }
+    /**
+     * Modal displays content in a dialog overlay using the native dialog element.
+     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+     * direct named slots (slot="header", slot="body").
+     */
+    interface HTMLDsModalElement extends Components.DsModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsModalElementEventMap>(type: K, listener: (this: HTMLDsModalElement, ev: DsModalCustomEvent<HTMLDsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsModalElementEventMap>(type: K, listener: (this: HTMLDsModalElement, ev: DsModalCustomEvent<HTMLDsModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsModalElement: {
+        prototype: HTMLDsModalElement;
+        new (): HTMLDsModalElement;
+    };
+    /**
+     * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+     */
+    interface HTMLDsModalBodyElement extends Components.DsModalBody, HTMLStencilElement {
+    }
+    var HTMLDsModalBodyElement: {
+        prototype: HTMLDsModalBodyElement;
+        new (): HTMLDsModalBodyElement;
+    };
+    /**
+     * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+     * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+     * the heading text through the slot chain without crossing shadow boundaries.
+     */
+    interface HTMLDsModalHeaderElement extends Components.DsModalHeader, HTMLStencilElement {
+    }
+    var HTMLDsModalHeaderElement: {
+        prototype: HTMLDsModalHeaderElement;
+        new (): HTMLDsModalHeaderElement;
     };
     interface HTMLDsNotificationElementEventMap {
         "dsCloseClick": NotificationCloseClickDetail;
@@ -3581,6 +3675,9 @@ declare global {
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
         "ds-logo": HTMLDsLogoElement;
+        "ds-modal": HTMLDsModalElement;
+        "ds-modal-body": HTMLDsModalBodyElement;
+        "ds-modal-header": HTMLDsModalHeaderElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-pagination": HTMLDsPaginationElement;
@@ -4970,6 +5067,56 @@ declare namespace LocalJSX {
           * @default ''
          */
         "size"?: LogoSize;
+    }
+    /**
+     * Modal displays content in a dialog overlay using the native dialog element.
+     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+     * direct named slots (slot="header", slot="body").
+     */
+    interface DsModal {
+        /**
+          * If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.
+          * @default true
+         */
+        "closable"?: boolean;
+        /**
+          * Width of the modal in pixels.
+          * @default 640
+         */
+        "modalWidth"?: number;
+        /**
+          * Emitted after the modal is fully closed.
+         */
+        "onDsDidDismiss"?: (event: DsModalCustomEvent<ModalDismissDetail>) => void;
+        /**
+          * Emitted after the modal is fully open.
+         */
+        "onDsDidPresent"?: (event: DsModalCustomEvent<ModalPresentDetail>) => void;
+        /**
+          * Emitted before the modal closes.
+         */
+        "onDsWillDismiss"?: (event: DsModalCustomEvent<ModalDismissDetail>) => void;
+        /**
+          * Emitted before the modal opens.
+         */
+        "onDsWillPresent"?: (event: DsModalCustomEvent<ModalPresentDetail>) => void;
+        /**
+          * If `true` the modal is open.
+          * @default false
+         */
+        "open"?: boolean;
+    }
+    /**
+     * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+     */
+    interface DsModalBody {
+    }
+    /**
+     * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+     * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+     * the heading text through the slot chain without crossing shadow boundaries.
+     */
+    interface DsModalHeader {
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -6707,6 +6854,11 @@ declare namespace LocalJSX {
         "color": LogoColor;
         "size": LogoSize;
     }
+    interface DsModalAttributes {
+        "open": boolean;
+        "closable": boolean;
+        "modalWidth": number;
+    }
     interface DsNotificationAttributes {
         "alert": boolean;
         "closable": boolean;
@@ -7015,6 +7167,9 @@ declare namespace LocalJSX {
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
         "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
         "ds-logo": Omit<DsLogo, keyof DsLogoAttributes> & { [K in keyof DsLogo & keyof DsLogoAttributes]?: DsLogo[K] } & { [K in keyof DsLogo & keyof DsLogoAttributes as `attr:${K}`]?: DsLogoAttributes[K] } & { [K in keyof DsLogo & keyof DsLogoAttributes as `prop:${K}`]?: DsLogo[K] };
+        "ds-modal": Omit<DsModal, keyof DsModalAttributes> & { [K in keyof DsModal & keyof DsModalAttributes]?: DsModal[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `attr:${K}`]?: DsModalAttributes[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `prop:${K}`]?: DsModal[K] };
+        "ds-modal-body": DsModalBody;
+        "ds-modal-header": DsModalHeader;
         "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
         "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
         "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
@@ -7150,6 +7305,22 @@ declare module "@stencil/core" {
              * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
              */
             "ds-logo": LocalJSX.IntrinsicElements["ds-logo"] & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
+            /**
+             * Modal displays content in a dialog overlay using the native dialog element.
+             * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+             * direct named slots (slot="header", slot="body").
+             */
+            "ds-modal": LocalJSX.IntrinsicElements["ds-modal"] & JSXBase.HTMLAttributes<HTMLDsModalElement>;
+            /**
+             * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+             */
+            "ds-modal-body": LocalJSX.IntrinsicElements["ds-modal-body"] & JSXBase.HTMLAttributes<HTMLDsModalBodyElement>;
+            /**
+             * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+             * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+             * the heading text through the slot chain without crossing shadow boundaries.
+             */
+            "ds-modal-header": LocalJSX.IntrinsicElements["ds-modal-header"] & JSXBase.HTMLAttributes<HTMLDsModalHeaderElement>;
             /**
              * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
              */

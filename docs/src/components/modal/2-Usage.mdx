@@ -1,0 +1,96 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './modal.stories'
+import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
+
+<Meta title="Components/Modal/Usage" />
+
+<Banner label={'Usage'} section={MODAL_DOC_CONFIG.section} color={MODAL_DOC_CONFIG.color} />
+
+<BannerTabs of={ModalStories} tabs={getModalTabs('usage')} />
+
+## When to Use
+
+- To interrupt the user with a decision or action that must be completed before continuing.
+- To confirm a destructive or irreversible action (e.g. delete, submit).
+- To display a focused form or secondary workflow without navigating away from the current page.
+- To surface critical information that requires acknowledgement.
+
+## When NOT to Use
+
+- For non-critical or informational messages — use a notification or snackbar instead.
+- When the content is too large to fit comfortably in a dialog — consider a dedicated page or side panel.
+- For complex multi-step workflows — break them into separate pages instead.
+- As a substitute for inline validation or contextual help.
+
+## Do's and Don'ts
+
+### Dismissibility
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Always provide a way to close',
+      content: (
+        <ds-modal open>
+          <ds-modal-header>Confirm action</ds-modal-header>
+          <ds-modal-body><p>Are you sure you want to proceed?</p></ds-modal-body>
+          <ds-button color="text" slot="actions">Cancel</ds-button>
+          <ds-button color="primary" slot="actions">Confirm</ds-button>
+        </ds-modal>
+      ),
+      description: 'Give users a clear exit path via a cancel action or the close button.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Blocking without a cancel path',
+      content: (
+        <ds-modal open closable="false">
+          <ds-modal-header>Processing</ds-modal-header>
+          <ds-modal-body><p>Please wait...</p></ds-modal-body>
+        </ds-modal>
+      ),
+      description: 'Only use closable="false" when the action is truly mandatory and the user must complete it.',
+    },
+  ]}
+/>
+
+### Content length
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Concise modal content',
+      content: (
+        <ds-modal open>
+          <ds-modal-header>Delete item</ds-modal-header>
+          <ds-modal-body><p>This action cannot be undone.</p></ds-modal-body>
+          <ds-button color="text" slot="actions">Cancel</ds-button>
+          <ds-button color="danger" slot="actions">Delete</ds-button>
+        </ds-modal>
+      ),
+      description: 'Keep modal content focused. Actions should always be visible without scrolling when possible.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Overloading the modal',
+      content: (
+        <ds-modal open>
+          <ds-modal-header>Terms and Conditions</ds-modal-header>
+          <ds-modal-body><p>Very long legal text spanning many pages...</p></ds-modal-body>
+          <ds-button color="primary" slot="actions">Accept</ds-button>
+        </ds-modal>
+      ),
+      description: 'Avoid putting large amounts of text in a modal. Use a dedicated page for long-form content.',
+    },
+  ]}
+/>
+
+<Footer />

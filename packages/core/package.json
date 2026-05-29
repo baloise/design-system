@@ -28,6 +28,7 @@
   "scripts": {
     "build": "node ../../scripts/build-core.mjs",
     "start": "node -e \"require('kill-port')(4000).catch(()=>{})\" && cross-env DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4000",
+    "start-two": "node -e \"require('kill-port')(4001).catch(()=>{})\" && cross-env DS_DEVELOPMENT=true stencil build --dev --serve --watch --port=4001",
     "test": "vitest --run",
     "test:ui": "vitest --ui",
     "lint": "eslint .",

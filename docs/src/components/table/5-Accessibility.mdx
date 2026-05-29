@@ -40,8 +40,8 @@ import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
     },
     {
       type: 'dont',
-      title: "Don't rely on colour alone to communicate row state",
-      content: <p style={{ margin: '0.5rem 0 0 0' }}>The <code>is-selected</code> highlight provides a visual cue, but also convey selection state programmatically — for example, using <code>aria-selected="true"</code> on the row — so users who cannot perceive colour differences receive the same information.</p>,
+      title: "Don't rely on color alone to communicate row state",
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>The <code>is-selected</code> highlight provides a visual cue, but also convey selection state programmatically — for example, using <code>aria-selected="true"</code> on the row — so users who cannot perceive color differences receive the same information.</p>,
     },
   ]}
 />
@@ -51,7 +51,7 @@ import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
 The table component uses native HTML table semantics that meet WCAG 2.2 Level AA standards:
 
 - **1.3.1 Info and Relationships** — `<th>`, `<thead>`, `<tbody>`, and `<tfoot>` elements expose the data structure to assistive technologies without relying on visual presentation.
-- **1.4.3 Contrast (Minimum)** — all text and border colours defined via `--ds-table-*` tokens meet the 4.5:1 ratio requirement against their respective background colours.
+- **1.4.3 Contrast (Minimum)** — all text and border colors defined via `--ds-table-*` tokens meet the 4.5:1 ratio requirement against their respective background colors.
 - **1.4.11 Non-text Contrast** — row borders and the selected-row highlight meet the 3:1 ratio requirement for UI component boundaries.
 
 <Footer />

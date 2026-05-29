@@ -16051,6 +16051,7 @@
       ],
       "encapsulation": "shadow",
       "dependents": [
+        "ds-modal",
         "ds-notification",
         "ds-snackbar",
         "ds-tag",
@@ -16066,6 +16067,9 @@
         "ds-button": [
           "ds-spinner",
           "ds-icon"
+        ],
+        "ds-modal": [
+          "ds-close"
         ],
         "ds-notification": [
           "ds-close"
@@ -26870,6 +26874,708 @@
           "docs": "The animated logo container element."
         }
       ],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "modal.tsx",
+      "tag": "ds-modal",
+      "overview": "Modal displays content in a dialog overlay using the native dialog element.\nSupports both slot-based sub-components (ds-modal-header, ds-modal-body) and\ndirect named slots (slot=\"header\", slot=\"body\").",
+      "usage": {},
+      "docs": "Modal displays content in a dialog overlay using the native dialog element.\nSupports both slot-based sub-components (ds-modal-header, ds-modal-body) and\ndirect named slots (slot=\"header\", slot=\"body\").",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "header - The modal title content. Used automatically by ds-modal-header."
+        },
+        {
+          "name": "slot",
+          "text": "body - The modal body content. Used automatically by ds-modal-body."
+        },
+        {
+          "name": "slot",
+          "text": "actions - Action buttons rendered right-aligned at the bottom of the modal."
+        },
+        {
+          "name": "part",
+          "text": "dialog - The native dialog element."
+        },
+        {
+          "name": "part",
+          "text": "close - The close button."
+        },
+        {
+          "name": "part",
+          "text": "title - The h2 wrapping the header slot."
+        },
+        {
+          "name": "part",
+          "text": "body - The div wrapping the body slot."
+        },
+        {
+          "name": "part",
+          "text": "actions - The div wrapping the actions slot."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-close"
+      ],
+      "dependencyGraph": {
+        "ds-modal": [
+          "ds-close"
+        ],
+        "ds-close": [
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": false,
+          "docs": "If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "modalWidth",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "modal-width",
+          "reflectToAttr": false,
+          "docs": "Width of the modal in pixels.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "640"
+            }
+          ],
+          "default": "640",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "open",
+          "reflectToAttr": true,
+          "docs": "If `true` the modal is open.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "dismiss",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "dismiss() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes the modal.",
+          "docsTags": []
+        },
+        {
+          "name": "present",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "present() => Promise<void>",
+          "parameters": [],
+          "docs": "Opens the modal.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsDidDismiss",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "ModalDismissDetail",
+            "resolved": "void",
+            "references": {
+              "ModalDismissDetail": {
+                "location": "import",
+                "path": "./modal.interfaces",
+                "id": "src/components/modal/modal.interfaces.ts::ModalDismissDetail",
+                "referenceLocation": "ModalDismissDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the modal is fully closed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsDidPresent",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "ModalPresentDetail",
+            "resolved": "void",
+            "references": {
+              "ModalPresentDetail": {
+                "location": "import",
+                "path": "./modal.interfaces",
+                "id": "src/components/modal/modal.interfaces.ts::ModalPresentDetail",
+                "referenceLocation": "ModalPresentDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the modal is fully open.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillDismiss",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "ModalDismissDetail",
+            "resolved": "void",
+            "references": {
+              "ModalDismissDetail": {
+                "location": "import",
+                "path": "./modal.interfaces",
+                "id": "src/components/modal/modal.interfaces.ts::ModalDismissDetail",
+                "referenceLocation": "ModalDismissDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the modal closes.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillPresent",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "ModalPresentDetail",
+            "resolved": "void",
+            "references": {
+              "ModalPresentDetail": {
+                "location": "import",
+                "path": "./modal.interfaces",
+                "id": "src/components/modal/modal.interfaces.ts::ModalPresentDetail",
+                "referenceLocation": "ModalPresentDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the modal opens.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--modal-background",
+          "docs": "Background color of the modal dialog."
+        },
+        {
+          "name": "--modal-radius",
+          "docs": "Border radius of the modal dialog."
+        },
+        {
+          "name": "--modal-backdrop-background",
+          "docs": "Background color of the backdrop overlay."
+        },
+        {
+          "name": "--modal-backdrop-opacity",
+          "docs": "Opacity of the backdrop overlay."
+        },
+        {
+          "name": "--modal-heading-family",
+          "docs": "Font family of the modal title."
+        },
+        {
+          "name": "--modal-heading-weight",
+          "docs": "Font weight of the modal title."
+        },
+        {
+          "name": "--modal-heading-size",
+          "docs": "Font size of the modal title."
+        },
+        {
+          "name": "--modal-heading-line-height",
+          "docs": "Line height of the modal title."
+        }
+      ],
+      "slots": [
+        {
+          "name": "actions",
+          "docs": "Action buttons rendered right-aligned at the bottom of the modal."
+        },
+        {
+          "name": "body",
+          "docs": "The modal body content. Used automatically by ds-modal-body."
+        },
+        {
+          "name": "header",
+          "docs": "The modal title content. Used automatically by ds-modal-header."
+        }
+      ],
+      "parts": [
+        {
+          "name": "actions",
+          "docs": "The div wrapping the actions slot."
+        },
+        {
+          "name": "body",
+          "docs": "The div wrapping the body slot."
+        },
+        {
+          "name": "close",
+          "docs": "The close button."
+        },
+        {
+          "name": "dialog",
+          "docs": "The native dialog element."
+        },
+        {
+          "name": "title",
+          "docs": "The h2 wrapping the header slot."
+        }
+      ],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / Modal / Color / Base / Background",
+          "cssVarName": "--ds-modal-color-base-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-modal-color-base-background",
+              "figmaName": "Component / Modal / Color / Base / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Color",
+            "Base",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Radius / Base",
+          "cssVarName": "--ds-modal-radius-base",
+          "value": "{🔗 Alias.🔵 Radius.LG}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-2",
+              "figmaName": "Global / Size / Radius / 2"
+            },
+            {
+              "cssVar": "--ds-radius-lg",
+              "figmaName": "Alias / Radius / LG"
+            },
+            {
+              "cssVar": "--ds-modal-radius-base",
+              "figmaName": "Component / Modal / Radius / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Radius",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Width",
+          "cssVarName": "--ds-modal-width",
+          "value": "{🔗 Alias.🗃️ Container.Width.Modal}",
+          "nativeValue": "640",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-container-3",
+              "figmaName": "Global / Size / Container / 3"
+            },
+            {
+              "cssVar": "--ds-container-width-modal",
+              "figmaName": "Alias / Container / Width / Modal"
+            },
+            {
+              "cssVar": "--ds-modal-width",
+              "figmaName": "Component / Modal / Width"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Width"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Backdrop / Background",
+          "cssVarName": "--ds-modal-backdrop-background",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryactive",
+              "figmaName": "Alias / Background / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-modal-backdrop-background",
+              "figmaName": "Component / Modal / Backdrop / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Backdrop",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Backdrop / Opacity",
+          "cssVarName": "--ds-modal-backdrop-opacity",
+          "value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
+          "nativeValue": "0.800000011920929",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-opacity-80",
+              "figmaName": "Global / Elevation / Opacity / 80"
+            },
+            {
+              "cssVar": "--ds-opacity-backdrop",
+              "figmaName": "Alias / Opacity / Backdrop"
+            },
+            {
+              "cssVar": "--ds-modal-backdrop-opacity",
+              "figmaName": "Component / Modal / Backdrop / Opacity"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Backdrop",
+            "Opacity"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Heading / Family",
+          "cssVarName": "--ds-modal-heading-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
+          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-text-family-heading",
+              "figmaName": "Alias / Text / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-modal-heading-family",
+              "figmaName": "Component / Modal / Heading / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Heading",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Heading / Weight",
+          "cssVarName": "--ds-modal-heading-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-modal-heading-weight",
+              "figmaName": "Component / Modal / Heading / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Heading",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Heading / LineHeight",
+          "cssVarName": "--ds-modal-heading-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Heading}",
+          "nativeValue": "1.2999999523162842",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-2",
+              "figmaName": "Global / Font / LineHeight / 2"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-heading",
+              "figmaName": "Alias / Text / LineHeight / Heading"
+            },
+            {
+              "cssVar": "--ds-modal-heading-lineheight",
+              "figmaName": "Component / Modal / Heading / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Heading",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Heading / Size / Mobile",
+          "cssVarName": "--ds-modal-heading-size-mobile",
+          "value": "{🔗 Alias.🔤 Text.Size.2XL.Mobile}",
+          "nativeValue": "24",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-24",
+              "figmaName": "Global / Font / Size / 24"
+            },
+            {
+              "cssVar": "--ds-text-size-2xl-mobile",
+              "figmaName": "Alias / Text / Size / 2XL / Mobile"
+            },
+            {
+              "cssVar": "--ds-modal-heading-size-mobile",
+              "figmaName": "Component / Modal / Heading / Size / Mobile"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Heading",
+            "Size",
+            "Mobile"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Heading / Size / Tablet",
+          "cssVarName": "--ds-modal-heading-size-tablet",
+          "value": "{🔗 Alias.🔤 Text.Size.2XL.Tablet}",
+          "nativeValue": "32",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-32",
+              "figmaName": "Global / Font / Size / 32"
+            },
+            {
+              "cssVar": "--ds-text-size-2xl-tablet",
+              "figmaName": "Alias / Text / Size / 2XL / Tablet"
+            },
+            {
+              "cssVar": "--ds-modal-heading-size-tablet",
+              "figmaName": "Component / Modal / Heading / Size / Tablet"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Heading",
+            "Size",
+            "Tablet"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Heading / Size / Desktop",
+          "cssVarName": "--ds-modal-heading-size-desktop",
+          "value": "{🔗 Alias.🔤 Text.Size.2XL.Desktop}",
+          "nativeValue": "32",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-32",
+              "figmaName": "Global / Font / Size / 32"
+            },
+            {
+              "cssVar": "--ds-text-size-2xl-desktop",
+              "figmaName": "Alias / Text / Size / 2XL / Desktop"
+            },
+            {
+              "cssVar": "--ds-modal-heading-size-desktop",
+              "figmaName": "Component / Modal / Heading / Size / Desktop"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Heading",
+            "Size",
+            "Desktop"
+          ]
+        }
+      ]
+    },
+    {
+      "fileName": "modal-body.tsx",
+      "tag": "ds-modal-body",
+      "overview": "Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.",
+      "usage": {},
+      "docs": "Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The modal body content."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The modal body content."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "modal-header.tsx",
+      "tag": "ds-modal-header",
+      "overview": "Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.\nIntentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve\nthe heading text through the slot chain without crossing shadow boundaries.",
+      "usage": {},
+      "docs": "Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.\nIntentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve\nthe heading text through the slot chain without crossing shadow boundaries.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The modal title text."
+        }
+      ],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The modal title text."
+        }
+      ],
+      "parts": [],
       "customStates": [],
       "listeners": []
     },
@@ -45740,6 +46446,16 @@
       "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"large\"",
       "docstring": "",
       "path": "src/components/logo/logo.interfaces.ts"
+    },
+    "src/components/modal/modal.interfaces.ts::ModalPresentDetail": {
+      "declaration": "void",
+      "docstring": "",
+      "path": "src/components/modal/modal.interfaces.ts"
+    },
+    "src/components/modal/modal.interfaces.ts::ModalDismissDetail": {
+      "declaration": "void",
+      "docstring": "",
+      "path": "src/components/modal/modal.interfaces.ts"
     },
     "src/components/notification/notification.interfaces.ts::NotificationColor": {
       "declaration": "\"\" | \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\"",
