@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as LabelStories from './label.stories'
+import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
+
+<Meta title="Components/Forms/Label/Testing" />
+
+<Banner label={'Testing'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
+
+<BannerTabs of={LabelStories} tabs={getLabelTabs('testing')} />
+
+<ComponentPageObject component="label" />
+
+<Footer />

@@ -12,6 +12,7 @@ export const BUTTON_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-button--variants-overview' },
     { label: 'Styling', storyId: 'components-button--styling' },
     { label: 'Accessibility', storyId: 'components-button--accessibility' },
+    { label: 'Testing', storyId: 'components-button--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const BUTTON_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

@@ -12,6 +12,7 @@ export const RADIO_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-radio--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-radio--styling' },
     { label: 'Accessibility', storyId: 'components-forms-radio--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-radio--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const RADIO_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

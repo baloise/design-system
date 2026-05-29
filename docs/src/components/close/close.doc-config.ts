@@ -12,6 +12,7 @@ export const CLOSE_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-close--variants-overview' },
     { label: 'Styling', storyId: 'components-close--styling' },
     { label: 'Accessibility', storyId: 'components-close--accessibility' },
+    { label: 'Testing', storyId: 'components-close--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const CLOSE_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

@@ -12,6 +12,7 @@ export const CARD_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-card--variants-overview' },
     { label: 'Styling', storyId: 'components-card--styling' },
     { label: 'Accessibility', storyId: 'components-card--accessibility' },
+    { label: 'Testing', storyId: 'components-card--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const CARD_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

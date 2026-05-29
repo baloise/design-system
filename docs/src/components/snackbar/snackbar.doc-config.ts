@@ -7,6 +7,7 @@ export const SNACKBAR_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-snackbar--variants-overview' },
     { label: 'Styling', storyId: 'components-snackbar--styling' },
     { label: 'Accessibility', storyId: 'components-snackbar--accessibility' },
+    { label: 'Testing', storyId: 'components-snackbar--testing' },
   ],
 }
 
@@ -16,6 +17,7 @@ export const SNACKBAR_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getSnackbarTabs = (activeLabel: keyof typeof SNACKBAR_TAB_TITLES) => {

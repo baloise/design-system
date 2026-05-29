@@ -12,6 +12,7 @@ export const SPINNER_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-spinner--variants-overview' },
     { label: 'Styling', storyId: 'components-spinner--styling' },
     { label: 'Accessibility', storyId: 'components-spinner--accessibility' },
+    { label: 'Testing', storyId: 'components-spinner--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const SPINNER_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

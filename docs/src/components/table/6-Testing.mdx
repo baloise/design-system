@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TableStories from './table.stories'
+import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
+
+<Meta title="Components/Table/Testing" />
+
+<Banner label={'Testing'} section={TABLE_DOC_CONFIG.section} color={TABLE_DOC_CONFIG.color} />
+
+<BannerTabs of={TableStories} tabs={getTableTabs('testing')} />
+
+<ComponentPageObject component="table" />
+
+<Footer />

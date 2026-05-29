@@ -11,6 +11,7 @@ export const STEPS_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-steps--variants-overview' },
     { label: 'Styling', storyId: 'components-steps--styling' },
     { label: 'Accessibility', storyId: 'components-steps--accessibility' },
+    { label: 'Testing', storyId: 'components-steps--testing' },
   ],
 }
 
@@ -20,6 +21,7 @@ export const STEPS_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getStepsTabs = (activeLabel: keyof typeof STEPS_TAB_TITLES) => {

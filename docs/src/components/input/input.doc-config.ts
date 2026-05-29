@@ -12,6 +12,7 @@ export const INPUT_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-input--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-input--styling' },
     { label: 'Accessibility', storyId: 'components-forms-input--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-input--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const INPUT_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

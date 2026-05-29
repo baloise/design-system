@@ -12,6 +12,7 @@ export const LINK_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-link--variants-overview' },
     { label: 'Styling', storyId: 'components-link--styling' },
     { label: 'Accessibility', storyId: 'components-link--accessibility' },
+    { label: 'Testing', storyId: 'components-link--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const LINK_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

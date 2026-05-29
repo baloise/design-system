@@ -12,6 +12,7 @@ export const PROGRESS_BAR_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-progress-bar--variants-overview' },
     { label: 'Styling', storyId: 'components-progress-bar--styling' },
     { label: 'Accessibility', storyId: 'components-progress-bar--accessibility' },
+    { label: 'Testing', storyId: 'components-progress-bar--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const PROGRESS_BAR_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

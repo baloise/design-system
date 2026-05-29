@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TooltipStories from './tooltip.stories'
+import { TOOLTIP_DOC_CONFIG, getTooltipTabs } from './tooltip.doc-config'
+
+<Meta title="Components/Tooltip/Testing" />
+
+<Banner label={'Testing'} section={TOOLTIP_DOC_CONFIG.section} color={TOOLTIP_DOC_CONFIG.color} />
+
+<BannerTabs of={TooltipStories} tabs={getTooltipTabs('testing')} />
+
+<ComponentPageObject component="tooltip" />
+
+<Footer />

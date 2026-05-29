@@ -12,6 +12,7 @@ export const ACCORDION_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-accordion--variants-overview' },
     { label: 'Styling', storyId: 'components-accordion--styling' },
     { label: 'Accessibility', storyId: 'components-accordion--accessibility' },
+    { label: 'Testing', storyId: 'components-accordion--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const ACCORDION_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

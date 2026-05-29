@@ -12,6 +12,7 @@ export const SEGMENT_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-segment-variants--overview' },
     { label: 'Styling', storyId: 'components-forms-segment--styling' },
     { label: 'Accessibility', storyId: 'components-forms-segment--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-segment--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const SEGMENT_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

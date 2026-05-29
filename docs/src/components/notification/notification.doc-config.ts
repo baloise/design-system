@@ -12,6 +12,7 @@ export const NOTIFICATION_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-notification--variants-overview' },
     { label: 'Styling', storyId: 'components-notification--styling' },
     { label: 'Accessibility', storyId: 'components-notification--accessibility' },
+    { label: 'Testing', storyId: 'components-notification--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const NOTIFICATION_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

@@ -12,6 +12,7 @@ export const ICON_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-icon--variants-overview' },
     { label: 'Styling', storyId: 'components-icon--styling' },
     { label: 'Accessibility', storyId: 'components-icon--accessibility' },
+    { label: 'Testing', storyId: 'components-icon--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const ICON_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CheckboxStories from './checkbox.stories'
+import { CHECKBOX_DOC_CONFIG, getCheckboxTabs } from './checkbox.doc-config'
+
+<Meta title="Components/Forms/Checkbox/Testing" />
+
+<Banner label={'Testing'} section={CHECKBOX_DOC_CONFIG.section} color={CHECKBOX_DOC_CONFIG.color} />
+
+<BannerTabs of={CheckboxStories} tabs={getCheckboxTabs('testing')} />
+
+<ComponentPageObject component="checkbox" />
+
+<Footer />

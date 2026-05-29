@@ -12,6 +12,7 @@ export const LIST_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-list--variants-overview' },
     { label: 'Styling', storyId: 'components-list--styling' },
     { label: 'Accessibility', storyId: 'components-list--accessibility' },
+    { label: 'Testing', storyId: 'components-list--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const LIST_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

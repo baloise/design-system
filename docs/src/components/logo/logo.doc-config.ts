@@ -12,6 +12,7 @@ export const LOGO_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-logo--variants-overview' },
     { label: 'Styling', storyId: 'components-logo--styling' },
     { label: 'Accessibility', storyId: 'components-logo--accessibility' },
+    { label: 'Testing', storyId: 'components-logo--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const LOGO_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

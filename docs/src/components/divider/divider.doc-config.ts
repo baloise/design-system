@@ -12,6 +12,7 @@ export const DIVIDER_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-divider--variants-overview' },
     { label: 'Styling', storyId: 'components-divider--styling' },
     { label: 'Accessibility', storyId: 'components-divider--accessibility' },
+    { label: 'Testing', storyId: 'components-divider--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const DIVIDER_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

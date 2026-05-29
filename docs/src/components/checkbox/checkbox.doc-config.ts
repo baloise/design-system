@@ -12,6 +12,7 @@ export const CHECKBOX_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-forms-checkbox--variants-overview' },
     { label: 'Styling', storyId: 'components-forms-checkbox--styling' },
     { label: 'Accessibility', storyId: 'components-forms-checkbox--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-checkbox--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const CHECKBOX_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

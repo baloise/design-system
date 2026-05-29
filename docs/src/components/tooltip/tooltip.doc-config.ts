@@ -11,6 +11,7 @@ export const TOOLTIP_DOC_CONFIG = {
     { label: 'Variants', storyId: 'components-tooltip--variants-overview' },
     { label: 'Styling', storyId: 'components-tooltip--styling' },
     { label: 'Accessibility', storyId: 'components-tooltip--accessibility' },
+    { label: 'Testing', storyId: 'components-tooltip--testing' },
   ],
 }
 
@@ -20,6 +21,7 @@ export const TOOLTIP_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 export const getTooltipTabs = (activeLabel: keyof typeof TOOLTIP_TAB_TITLES) => {

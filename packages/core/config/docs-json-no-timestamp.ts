@@ -16,6 +16,103 @@ interface TokenValue {
   path: string[]
 }
 
+export interface POParam {
+  name: string
+  type: string
+}
+
+export interface POMethod {
+  name: string
+  params: POParam[]
+  docs: string
+}
+
+export interface POLocator {
+  name: string
+  type: string
+  docs: string
+}
+
+export interface PageObjectData {
+  class: string
+  import: string
+  locators: POLocator[]
+  actions: POMethod[]
+  assertions: POMethod[]
+}
+
+function extractJsDocBefore(content: string, index: number): string {
+  const before = content.slice(0, index)
+  const match = before.match(/\/\*\*([\s\S]*?)\*\/\s*$/)
+  if (!match) return ''
+  return match[1]
+    .split('\n')
+    .map(line => line.replace(/^\s*\*\s?/, '').trim())
+    .filter(Boolean)
+    .join(' ')
+}
+
+function parseParams(paramStr: string): POParam[] {
+  const trimmed = paramStr.trim()
+  if (!trimmed) return []
+  return trimmed.split(',').map(p => {
+    const colonIdx = p.indexOf(':')
+    if (colonIdx === -1) return { name: p.trim(), type: 'unknown' }
+    return { name: p.slice(0, colonIdx).trim(), type: p.slice(colonIdx + 1).trim() }
+  })
+}
+
+export function parsePOFile(content: string): PageObjectData | null {
+  const classMatch = content.match(/class\s+(Ds\w+)\s+extends\s+PageObject/)
+  if (!classMatch) return null
+  const className = classMatch[1]
+
+  const locators: POLocator[] = []
+  const locatorRegex = /readonly\s+(\w+)\s*:\s*Locator/g
+  let m: RegExpExecArray | null
+  while ((m = locatorRegex.exec(content)) !== null) {
+    locators.push({ name: m[1], type: 'Locator', docs: extractJsDocBefore(content, m.index) })
+  }
+
+  const actions: POMethod[] = []
+  const assertions: POMethod[] = []
+  const methodRegex = /async\s+(\w+)\s*\(([^)]*)\)\s*\{/g
+  while ((m = methodRegex.exec(content)) !== null) {
+    const name = m[1]
+    if (name === 'constructor') continue
+    const method: POMethod = {
+      name,
+      params: parseParams(m[2]),
+      docs: extractJsDocBefore(content, m.index),
+    }
+    if (name.startsWith('assert')) {
+      assertions.push(method)
+    } else {
+      actions.push(method)
+    }
+  }
+
+  return { class: className, import: '@baloise/ds-playwright', locators, actions, assertions }
+}
+
+function extractComponentPageObjects(playwrightDir: string): Map<string, PageObjectData> {
+  const map = new Map<string, PageObjectData>()
+  if (!existsSync(playwrightDir)) return map
+  let files: string[]
+  try {
+    files = readdirSync(playwrightDir).filter(f => f.endsWith('.po.ts'))
+  } catch {
+    return map
+  }
+  for (const file of files) {
+    const componentName = file.replace('.po.ts', '')
+    const content = readFileSync(join(playwrightDir, file), 'utf8')
+    const data = parsePOFile(content)
+    if (data) map.set(componentName, data)
+  }
+  return map
+}
+
 function parseScssStyles(dirPath: string): Array<{ name: string; docs: string }> {
   if (!dirPath || !existsSync(dirPath)) return []
 
@@ -204,6 +301,9 @@ export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): Out
       const tokensFilePath = join(process.cwd(), '..', '..', 'packages', 'tokens', 'tokens', 'Base.tokens.json')
       const componentTokens = extractComponentTokens(tokensFilePath)
 
+      const playwrightDir = join(process.cwd(), '..', '..', 'packages', 'playwright', 'src', 'lib', 'components')
+      const pageObjects = extractComponentPageObjects(playwrightDir)
+
       // Remove path-related properties from components and add tokens
       if (docsWithoutTimestamp.components) {
         docsWithoutTimestamp.components = docsWithoutTimestamp.components.map((component: any) => {
@@ -228,6 +328,12 @@ export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): Out
           // Add tokens array if component has design tokens
           if (tokens && tokens.length > 0) {
             componentWithoutPaths.tokens = tokens
+          }
+
+          const poName = component.tag?.toLowerCase().replace(/^ds-/, '') ?? ''
+          const po = pageObjects.get(poName)
+          if (po) {
+            componentWithoutPaths.pageObject = po
           }
 
           return componentWithoutPaths
