@@ -30,6 +30,10 @@ export class DsModal extends PageObject {
   }
 
   async assertTitleText(text: string) {
-    await expect(this.title).toContainText(text)
+    // The shadow h2[part="title"] contains a <slot name="header"> — slotted text
+    // is in light DOM and not readable via the shadow locator. Query the slotted
+    // element directly (ds-modal-header sets slot="header" on itself; direct usage
+    // also uses slot="header").
+    await expect(this.el.locator('[slot="header"]')).toContainText(text)
   }
 }
