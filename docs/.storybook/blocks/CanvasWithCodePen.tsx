@@ -1,4 +1,4 @@
-import { Canvas, Source, useOf } from '@storybook/addon-docs/blocks'
+import { Canvas, useOf } from '@storybook/addon-docs/blocks'
 import { global } from '@storybook/global'
 import React, { useMemo } from 'react'
 import { ModuleExport } from 'storybook/internal/types'

@@ -10,8 +10,6 @@ const toCamelEventName = (name: string): string => {
   return camel.charAt(0).toLowerCase() + camel.slice(1)
 }
 
-const isCustomElement = (tag: string): boolean => tag.includes('-')
-
 export const htmlToJsx = (html: string): string => {
   let jsx = html
 

@@ -39,3 +39,24 @@ test('open modal with direct slots', async ({ page, a11y }) => {
   `)
   await a11y('ds-modal')
 })
+
+test('open fullscreen modal', async ({ page, a11y }) => {
+  await page.mount(`
+    <ds-modal id="modal" open fullscreen>
+      <ds-modal-header>Fullscreen Modal</ds-modal-header>
+      <ds-modal-body><p>This modal covers the entire viewport.</p></ds-modal-body>
+    </ds-modal>
+  `)
+  await a11y('ds-modal')
+})
+
+test('open fullscreen modal not closable', async ({ page, a11y }) => {
+  await page.mount(`
+    <ds-modal id="modal" open fullscreen closable="false">
+      <ds-modal-header>Fullscreen — Must Confirm</ds-modal-header>
+      <ds-modal-body><p>Escape and backdrop click are disabled.</p></ds-modal-body>
+      <ds-button color="primary" slot="actions">Got it</ds-button>
+    </ds-modal>
+  `)
+  await a11y('ds-modal')
+})
