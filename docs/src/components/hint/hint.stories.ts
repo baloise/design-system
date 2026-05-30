@@ -13,7 +13,7 @@ const meta: Meta<Args> = {
     label: 'Help',
   },
   argTypes: {
-    ...withComponentControls({ tag: 'ds-hint' }),
+    ...withComponentControls({ tag }),
   },
   ...withRender(
     ({ label, ...args }) => `
