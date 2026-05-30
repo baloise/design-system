@@ -14,7 +14,7 @@ const meta: Meta<Args> = {
     backdropDismiss: false,
   },
   argTypes: {
-    ...withComponentControls({ tag: 'ds-popup' }),
+    ...withComponentControls({ tag }),
   },
   ...withRender(
     ({ ...args }) => `
