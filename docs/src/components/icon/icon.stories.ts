@@ -104,3 +104,20 @@ export const BrandIcons = Story({
   ),
 })
 BrandIcons.storyName = '🧩 Brand Icons'
+
+export const Sizes = Story({
+  ...withRender(
+    () =>
+      `<div class="stack">
+      ${['xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl']
+        .map(
+          item => `<div class="stack as-row">
+      <ds-icon name="info-circle" size="${item}"></ds-icon>
+      <span>${item}</span>
+    </div>`,
+        )
+        .join(' ')}
+</div>`,
+  ),
+})
+Sizes.storyName = '🧩 Sizes'

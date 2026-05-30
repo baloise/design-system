@@ -1,4 +1,4 @@
-import { Canvas, Source, useOf } from '@storybook/addon-docs/blocks'
+import { Canvas, useOf } from '@storybook/addon-docs/blocks'
 import { global } from '@storybook/global'
 import React, { useMemo } from 'react'
 import { ModuleExport } from 'storybook/internal/types'
@@ -8,6 +8,7 @@ type CanvasWithCodePenProps = {
   of: ModuleExport
   sourceState?: 'hidden' | 'shown' | 'none'
   className?: string
+  overflowVisible?: boolean
 }
 
 /**
@@ -19,6 +20,7 @@ export const CanvasWithCodePen = ({
   of,
   sourceState = 'shown',
   className,
+  overflowVisible = false,
 }: CanvasWithCodePenProps): React.ReactElement => {
   const resolved = useOf(of, ['story'])
   const story = resolved?.story
@@ -53,12 +55,14 @@ export const CanvasWithCodePen = ({
     ]
   }, [source])
 
+  const finalClassName = overflowVisible ? [className, 'canvas-overflow-visible'].filter(Boolean).join(' ') : className
+
   return (
     <Canvas
       of={of}
       sourceState={sourceState}
       source={{ language }}
-      className={className}
+      className={finalClassName}
       additionalActions={additionalActions}
     />
   )

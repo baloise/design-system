@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as HintStories from './hint.stories'
+import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
+
+<Meta title="Components/Hint/Variants/Overview" />
+
+<StoryHeading of={HintStories.Hint} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={HINT_DOC_CONFIG.section} color={HINT_DOC_CONFIG.color} />
+
+<BannerTabs of={HintStories} tabs={getHintTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.Hint}></StoryHeading>
+
+The basic hint using the `label` prop for the title. On desktop it opens a popup to the right; on touch viewports it opens a drawer from the bottom.
+
+<CanvasWithCodePen of={HintStories.Hint} overflowVisible={true}  />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.WithCustomStyling}></StoryHeading>
+
+Hint content can be provided using raw HTML slots instead of the `label` prop. Use the `title` slot for the heading and the default slot for body content. This approach allows for more custom styling on the content.
+
+<CanvasWithCodePen of={HintStories.WithCustomStyling} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.CustomTriggerLabel}></StoryHeading>
+
+Customize the accessible label on the trigger button with the `triggerLabel` prop. This is important for screen readers and provides context.
+
+<CanvasWithCodePen of={HintStories.CustomTriggerLabel} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.PlacementTop}></StoryHeading>
+
+Control where the popup opens on desktop using the `placement` prop. This variant opens above the trigger.
+
+<CanvasWithCodePen of={HintStories.PlacementTop} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.PlacementBottom}></StoryHeading>
+
+The popup can open below the trigger. Useful when there's more space below the element.
+
+<CanvasWithCodePen of={HintStories.PlacementBottom} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.PlacementLeft}></StoryHeading>
+
+The popup can open to the left of the trigger. Useful in right-aligned layouts or narrow columns.
+
+<CanvasWithCodePen of={HintStories.PlacementLeft} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.CustomCloseLabel}></StoryHeading>
+
+On touch viewports, the drawer shows a close button. Customize its label with the `closeLabel` prop. When omitted, the label is localized based on the app language configuration.
+
+<CanvasWithCodePen of={HintStories.CustomCloseLabel} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.Inline}></StoryHeading>
+
+Hints work well inline within sentences or paragraphs, providing context right where it's needed without breaking the flow.
+
+<CanvasWithCodePen of={HintStories.Inline} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.MigrationSubcomponents}></StoryHeading>
+
+Legacy support: Hint still works with deprecated `ds-hint-title` and `ds-hint-text` sub-components. These will be removed in v2.0. Please migrate to the `label` prop instead.
+
+<CanvasWithCodePen of={HintStories.MigrationSubcomponents} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.MigrationSlots}></StoryHeading>
+
+Legacy support: Hint still works with the `title` slot and `ds-hint-text` sub-component. These will be removed in v2.0. Please migrate to the `label` prop and default slot instead.
+
+<CanvasWithCodePen of={HintStories.MigrationSlots} overflowVisible={true} />
+
+<Footer />

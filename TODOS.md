@@ -64,20 +64,20 @@
 | steps               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | carousel            | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | table               | Hybrid | ❓     | ✅   | ✅     | ✅   | ✅     | ❓        |
-| modal               | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| modal               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| tooltip             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | popover             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| tooltip             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | hint                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | data                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| file-upload         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | time-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| footer              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | date                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | date-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | dropdown            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| file-upload         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | option              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | select (deprecated) | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | sheet               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| footer              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | stage               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | ag-grid             | Lib    | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 

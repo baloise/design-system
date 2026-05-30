@@ -10,6 +10,8 @@ const VARIANTS: { testId: string; modalId: string }[] = [
   { testId: 'wide', modalId: 'modal-wide' },
   { testId: 'rich-content', modalId: 'modal-rich' },
   { testId: 'scrollable', modalId: 'modal-scrollable' },
+  { testId: 'fullscreen', modalId: 'modal-fullscreen' },
+  { testId: 'fullscreen-not-closable', modalId: 'modal-fullscreen-nc' },
 ]
 
 const image = screenshot(TAG)

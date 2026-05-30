@@ -76,6 +76,13 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   readonly modalWidth: number = 640
 
   /**
+   * If `true`, the modal covers the full viewport.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly fullscreen: boolean = false
+
+  /**
    * EVENTS
    * ------------------------------------------------------
    */
@@ -215,6 +222,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-open': this.isOpen,
           'is-animated': this.animated,
+          'is-fullscreen': this.fullscreen,
         }}
         style={{ '--_modal-width': `${this.modalWidth}px` }}
       >

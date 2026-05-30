@@ -1,0 +1,114 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * @prop --hint-color-trigger: Color of the info-circle trigger icon.
+ * @prop --hint-color-trigger-background-hover: Background shown behind the trigger icon on hover.
+ * @prop --hint-color-title: Text color of the hint panel title.
+ * @prop --hint-color-body: Text color of the hint panel body.
+ */
+
+// ─── Variables ────────────────────────────────────────────────────────────────
+
+:host {
+  @include vars.base(hint);
+
+  @include vars.local(hint-color-trigger, var(--ds-alias-text-color-primary));
+  @include vars.local(hint-color-trigger-background-hover, var(--ds-alias-interaction-selection-background));
+  @include vars.local(hint-color-focus, var(--ds-alias-interaction-focus-color-base));
+  @include vars.local(hint-color-title, var(--ds-alias-text-color-primary));
+  @include vars.local(hint-color-body, var(--ds-alias-text-color-primary));
+}
+
+// ─── Host ─────────────────────────────────────────────────────────────────────
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+// ─── Trigger button ───────────────────────────────────────────────────────────
+
+:host {
+  [part='trigger'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--_hint-color-trigger);
+    line-height: 0;
+
+    @include hover {
+      &:hover {
+        background: var(--_hint-color-trigger-background-hover);
+      }
+    }
+
+    &:focus-visible {
+      @include focus-shadow(var(--_hint-color-focus));
+    }
+
+    ds-icon {
+      --icon-size: 20px;
+      --icon-inner-size: 20px;
+    }
+  }
+}
+
+// ─── Popup / Drawer background override ───────────────────────────────────────
+
+:host {
+  ds-popup {
+    --popup-background: var(--ds-alias-background-color-grey-light);
+    --popup-radius: var(--ds-alias-radius-lg);
+    --popup-max-width: 20rem;
+  }
+
+  ds-drawer {
+    --drawer-background: var(--ds-alias-background-color-grey-light);
+    --drawer-radius: var(--ds-alias-radius-lg);
+  }
+}
+
+// ─── Hint panel content ───────────────────────────────────────────────────────
+
+:host {
+  .hint-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-alias-space-sm-mobile);
+  }
+
+  .hint-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--ds-alias-space-sm-mobile);
+  }
+
+  .hint-title {
+    font-family: var(--ds-alias-text-family-heading);
+    font-weight: var(--ds-alias-text-weight-bold);
+    font-size: var(--ds-alias-text-size-xl-mobile);
+    line-height: var(--ds-alias-text-line-height-heading);
+    color: var(--_hint-color-title);
+  }
+
+  .hint-body {
+    font-family: var(--ds-alias-text-family-body);
+    font-size: var(--ds-alias-text-size-base-mobile);
+    line-height: var(--ds-alias-text-line-height-body);
+    color: var(--_hint-color-body);
+  }
+
+  .hint-close-btn {
+    margin-top: var(--ds-alias-space-sm-mobile);
+    width: 100%;
+  }
+}

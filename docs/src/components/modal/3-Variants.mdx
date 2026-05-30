@@ -50,4 +50,20 @@ When body content exceeds the available viewport height, the body area scrolls i
 
 <CanvasWithCodePen of={ModalStories.Scrollable} />
 
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ModalStories.Fullscreen}></StoryHeading>
+
+Set `fullscreen` to make the modal cover the entire viewport. Useful for complex multi-step wizards, immersive forms, or when you need maximum screen real estate.
+
+<CanvasWithCodePen of={ModalStories.Fullscreen} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ModalStories.FullscreenNotClosable}></StoryHeading>
+
+Combine `fullscreen` with `closable="false"` to create a modal that demands completion. Users cannot dismiss via Escape or backdrop click—they must interact with the action buttons.
+
+<CanvasWithCodePen of={ModalStories.FullscreenNotClosable} />
+
 <Footer />

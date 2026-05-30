@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DrawerStories from './drawer.stories'
+import { DRAWER_DOC_CONFIG, getDrawerTabs } from './drawer.doc-config'
+
+<Meta title="Components/Drawer/Accessibility" />
+
+<Banner label={'Accessibility'} section={DRAWER_DOC_CONFIG.section} color={DRAWER_DOC_CONFIG.color} />
+
+<BannerTabs of={DrawerStories} tabs={getDrawerTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always provide a label',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Set the `label` prop to describe the drawer purpose. This is announced to screen readers.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Ensure drawer is escapable',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Keep `closable` enabled unless the drawer is truly blocking (requires explicit action). Users should always have an Escape key exit.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Support keyboard navigation',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Use focusable elements (buttons, inputs, links) as the first items in the drawer. Tab order must be logical.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Manage focus on open/close',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>When the drawer closes, focus returns to the trigger element. Ensure the trigger is in a predictable location.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Avoid trapping users',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Do not create drawers where users cannot escape. Disable closable and backdrop-dismiss only for critical confirmation steps.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t use for critical alerts',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Drawers slide from the bottom and may be missed. Use `ds-modal` for important notifications or confirmations.</p>,
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The drawer component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Dialog Semantics** — Uses the native `<dialog>` element with `aria-label` for accessible role and naming.
+- **Focus Management** — Automatically focuses the drawer content on open and returns focus to the trigger on close.
+- **Keyboard Navigation** — Escape key closes the drawer (when `closable` is enabled). Tab order is trapped within the drawer during use.
+- **Backdrop Dismiss** — When enabled, clicking outside the panel (on the backdrop) dismisses the drawer, providing a clear visual and tactile way to exit.
+- **Contrast & Visibility** — The close button and backdrop have sufficient contrast to be easily visible and distinguished.
+
+<Footer />

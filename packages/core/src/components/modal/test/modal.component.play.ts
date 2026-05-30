@@ -183,4 +183,40 @@ test.describe('component', () => {
     })
     expect(slotValue).toBe('body')
   })
+
+  test('should apply is-fullscreen class when fullscreen=true', async ({ page }) => {
+    await page.mount(`
+      <ds-modal id="modal" fullscreen>
+        <ds-modal-header>Fullscreen</ds-modal-header>
+        <ds-modal-body>Body</ds-modal-body>
+      </ds-modal>
+    `)
+    await page.evaluate(() => (document.querySelector('ds-modal') as any).present())
+    await expect(page.locator('ds-modal')).toHaveClass(/is-fullscreen/)
+  })
+
+  test('should not apply is-fullscreen class when fullscreen=false', async ({ page }) => {
+    await page.mount(`
+      <ds-modal id="modal">
+        <ds-modal-header>Normal</ds-modal-header>
+        <ds-modal-body>Body</ds-modal-body>
+      </ds-modal>
+    `)
+    await expect(page.locator('ds-modal')).not.toHaveClass(/is-fullscreen/)
+  })
+
+  test('fullscreen modal should not close on Escape when closable=false', async ({ page }) => {
+    await page.mount(`
+      <ds-modal id="modal" open fullscreen closable="false">
+        <ds-modal-header>Fullscreen</ds-modal-header>
+        <ds-modal-body>Body</ds-modal-body>
+      </ds-modal>
+    `)
+    const dsModal = new DsModal(page.locator('ds-modal'))
+    await dsModal.assertToBeOpen()
+
+    await page.keyboard.press('Escape')
+
+    await dsModal.assertToBeOpen()
+  })
 })

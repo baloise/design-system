@@ -2651,6 +2651,7 @@
       "encapsulation": "shadow",
       "dependents": [
         "ds-close",
+        "ds-hint",
         "ds-snackbar",
         "ds-toast"
       ],
@@ -2664,6 +2665,9 @@
           "ds-icon"
         ],
         "ds-close": [
+          "ds-button"
+        ],
+        "ds-hint": [
           "ds-button"
         ],
         "ds-snackbar": [
@@ -16313,8 +16317,11 @@
       ],
       "encapsulation": "shadow",
       "dependents": [
+        "ds-drawer",
+        "ds-hint",
         "ds-modal",
         "ds-notification",
+        "ds-popup",
         "ds-snackbar",
         "ds-tag",
         "ds-toast"
@@ -16330,10 +16337,19 @@
           "ds-spinner",
           "ds-icon"
         ],
+        "ds-drawer": [
+          "ds-close"
+        ],
+        "ds-hint": [
+          "ds-close"
+        ],
         "ds-modal": [
           "ds-close"
         ],
         "ds-notification": [
+          "ds-close"
+        ],
+        "ds-popup": [
           "ds-close"
         ],
         "ds-snackbar": [
@@ -18014,6 +18030,558 @@
         "locators": [],
         "actions": [],
         "assertions": []
+      }
+    },
+    {
+      "fileName": "drawer.tsx",
+      "tag": "ds-drawer",
+      "overview": "Drawer displays a panel that slides up from the bottom of the screen.\nUses the native dialog element for accessible top-layer rendering, built-in focus management,\nand Escape-key handling.",
+      "usage": {},
+      "docs": "Drawer displays a panel that slides up from the bottom of the screen.\nUses the native dialog element for accessible top-layer rendering, built-in focus management,\nand Escape-key handling.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The drawer content."
+        },
+        {
+          "name": "part",
+          "text": "dialog - The native dialog element."
+        },
+        {
+          "name": "part",
+          "text": "close  - The optional close button (visible when closable)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [
+        "ds-hint"
+      ],
+      "dependencies": [
+        "ds-close"
+      ],
+      "dependencyGraph": {
+        "ds-drawer": [
+          "ds-close"
+        ],
+        "ds-close": [
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ],
+        "ds-hint": [
+          "ds-drawer"
+        ]
+      },
+      "props": [
+        {
+          "name": "backdropDismiss",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "backdrop-dismiss",
+          "reflectToAttr": false,
+          "docs": "If `true`, clicking the backdrop (outside the panel) dismisses the drawer.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": false,
+          "docs": "If `true`, the drawer can be dismissed via the Escape key and shows a close button.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "container",
+          "type": "\"compact\" | \"default\" | \"fluid\"",
+          "complexType": {
+            "original": "DrawerContainer",
+            "resolved": "\"compact\" | \"default\" | \"fluid\"",
+            "references": {
+              "DrawerContainer": {
+                "location": "import",
+                "path": "./drawer.interfaces",
+                "id": "src/components/drawer/drawer.interfaces.ts::DrawerContainer",
+                "referenceLocation": "DrawerContainer"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "container",
+          "reflectToAttr": false,
+          "docs": "Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`.\nMatches the `ds-container` sizing variants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'default'"
+            }
+          ],
+          "default": "'default'",
+          "values": [
+            {
+              "value": "compact",
+              "type": "string"
+            },
+            {
+              "value": "default",
+              "type": "string"
+            },
+            {
+              "value": "fluid",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the drawer dialog (sets aria-label on the dialog element).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "open",
+          "reflectToAttr": true,
+          "docs": "If `true` the drawer is open.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "dismiss",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "dismiss() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes the drawer.",
+          "docsTags": []
+        },
+        {
+          "name": "present",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "present() => Promise<void>",
+          "parameters": [],
+          "docs": "Opens the drawer.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsDidDismiss",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "DrawerDismissDetail",
+            "resolved": "void",
+            "references": {
+              "DrawerDismissDetail": {
+                "location": "import",
+                "path": "./drawer.interfaces",
+                "id": "src/components/drawer/drawer.interfaces.ts::DrawerDismissDetail",
+                "referenceLocation": "DrawerDismissDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the drawer is fully closed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsDidPresent",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "DrawerPresentDetail",
+            "resolved": "void",
+            "references": {
+              "DrawerPresentDetail": {
+                "location": "import",
+                "path": "./drawer.interfaces",
+                "id": "src/components/drawer/drawer.interfaces.ts::DrawerPresentDetail",
+                "referenceLocation": "DrawerPresentDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the drawer is fully open.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillDismiss",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "DrawerDismissDetail",
+            "resolved": "void",
+            "references": {
+              "DrawerDismissDetail": {
+                "location": "import",
+                "path": "./drawer.interfaces",
+                "id": "src/components/drawer/drawer.interfaces.ts::DrawerDismissDetail",
+                "referenceLocation": "DrawerDismissDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the drawer closes.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillPresent",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "DrawerPresentDetail",
+            "resolved": "void",
+            "references": {
+              "DrawerPresentDetail": {
+                "location": "import",
+                "path": "./drawer.interfaces",
+                "id": "src/components/drawer/drawer.interfaces.ts::DrawerPresentDetail",
+                "referenceLocation": "DrawerPresentDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the drawer opens.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--drawer-background",
+          "docs": "Background color of the drawer panel."
+        },
+        {
+          "name": "--drawer-radius",
+          "docs": "Border radius of the drawer top corners."
+        },
+        {
+          "name": "--drawer-max-height",
+          "docs": "Maximum height of the drawer panel."
+        },
+        {
+          "name": "--drawer-padding",
+          "docs": "Padding inside the drawer panel."
+        },
+        {
+          "name": "--drawer-backdrop-background",
+          "docs": "Background color of the native backdrop."
+        },
+        {
+          "name": "--drawer-backdrop-opacity",
+          "docs": "Opacity of the native backdrop."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The drawer content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "close",
+          "docs": "The optional close button (visible when closable)."
+        },
+        {
+          "name": "dialog",
+          "docs": "The native dialog element."
+        }
+      ],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / Drawer / Background",
+          "cssVarName": "--ds-drawer-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-drawer-background",
+              "figmaName": "Component / Drawer / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Drawer",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Drawer / Radius",
+          "cssVarName": "--ds-drawer-radius",
+          "value": "{🔗 Alias.🔵 Radius.LG}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-2",
+              "figmaName": "Global / Size / Radius / 2"
+            },
+            {
+              "cssVar": "--ds-radius-lg",
+              "figmaName": "Alias / Radius / LG"
+            },
+            {
+              "cssVar": "--ds-drawer-radius",
+              "figmaName": "Component / Drawer / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Drawer",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Drawer / MaxHeight",
+          "cssVarName": "--ds-drawer-maxheight",
+          "value": "85dvh",
+          "nativeValue": "85dvh",
+          "inheritance": [
+            {
+              "cssVar": "--ds-drawer-maxheight",
+              "figmaName": "Component / Drawer / MaxHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Drawer",
+            "MaxHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Drawer / Padding",
+          "cssVarName": "--ds-drawer-padding",
+          "value": "{🔗 Alias.↔️ Space.MD.Mobile}",
+          "nativeValue": "20",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-20",
+              "figmaName": "Global / Size / Space / 20"
+            },
+            {
+              "cssVar": "--ds-space-md-mobile",
+              "figmaName": "Alias / Space / MD / Mobile"
+            },
+            {
+              "cssVar": "--ds-drawer-padding",
+              "figmaName": "Component / Drawer / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Drawer",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Drawer / Backdrop / Background",
+          "cssVarName": "--ds-drawer-backdrop-background",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryactive",
+              "figmaName": "Alias / Background / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-drawer-backdrop-background",
+              "figmaName": "Component / Drawer / Backdrop / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Drawer",
+            "Backdrop",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Drawer / Backdrop / Opacity",
+          "cssVarName": "--ds-drawer-backdrop-opacity",
+          "value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
+          "nativeValue": "0.800000011920929",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-opacity-80",
+              "figmaName": "Global / Elevation / Opacity / 80"
+            },
+            {
+              "cssVar": "--ds-opacity-backdrop",
+              "figmaName": "Alias / Opacity / Backdrop"
+            },
+            {
+              "cssVar": "--ds-drawer-backdrop-opacity",
+              "figmaName": "Component / Drawer / Backdrop / Opacity"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Drawer",
+            "Backdrop",
+            "Opacity"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsDrawer",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "dialog",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToBeOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeClosed",
+            "params": [],
+            "docs": ""
+          }
+        ]
       }
     },
     {
@@ -19709,6 +20277,439 @@
       }
     },
     {
+      "fileName": "hint.tsx",
+      "tag": "ds-hint",
+      "overview": "Hint displays contextual help via an info-circle trigger button.\nOn touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);\non desktop it opens a ds-popup (floating panel).",
+      "usage": {},
+      "docs": "Hint displays contextual help via an info-circle trigger button.\nOn touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);\non desktop it opens a ds-popup (floating panel).",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "title - The hint panel heading."
+        },
+        {
+          "name": "slot",
+          "text": "- The hint body content."
+        },
+        {
+          "name": "part",
+          "text": "trigger - The info-circle trigger button."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon",
+        "ds-drawer",
+        "ds-button",
+        "ds-popup",
+        "ds-close"
+      ],
+      "dependencyGraph": {
+        "ds-hint": [
+          "ds-icon",
+          "ds-drawer",
+          "ds-button",
+          "ds-popup",
+          "ds-close"
+        ],
+        "ds-drawer": [
+          "ds-close"
+        ],
+        "ds-close": [
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ],
+        "ds-popup": [
+          "ds-close"
+        ]
+      },
+      "props": [
+        {
+          "name": "closeLabel",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "close-label",
+          "reflectToAttr": false,
+          "docs": "Label for the close button shown in the drawer on touch viewports.\nWhen omitted the label is localised from the language config.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Title text displayed in the hint panel.\nWhen provided, renders in the title section without needing a named slot.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "placement",
+          "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+          "complexType": {
+            "original": "PopupPlacement",
+            "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+            "references": {
+              "PopupPlacement": {
+                "location": "import",
+                "path": "../popup/popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupPlacement",
+                "referenceLocation": "PopupPlacement"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Preferred placement of the popup panel on desktop viewports.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'right'"
+            }
+          ],
+          "default": "'right'",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "left-end",
+              "type": "string"
+            },
+            {
+              "value": "left-start",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "right-end",
+              "type": "string"
+            },
+            {
+              "value": "right-start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "top-start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "triggerLabel",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "trigger-label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the trigger button.\nWhen omitted the label is localised from the language config.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "dismiss",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "dismiss() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes the hint panel.",
+          "docsTags": []
+        },
+        {
+          "name": "present",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "present() => Promise<void>",
+          "parameters": [],
+          "docs": "Opens the hint panel.",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "Toggles the hint panel open or closed.",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "styles": [
+        {
+          "name": "--hint-color-trigger",
+          "docs": "Color of the info-circle trigger icon."
+        },
+        {
+          "name": "--hint-color-trigger-background-hover",
+          "docs": "Background shown behind the trigger icon on hover."
+        },
+        {
+          "name": "--hint-color-title",
+          "docs": "Text color of the hint panel title."
+        },
+        {
+          "name": "--hint-color-body",
+          "docs": "Text color of the hint panel body."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The hint body content."
+        },
+        {
+          "name": "title",
+          "docs": "The hint panel heading."
+        }
+      ],
+      "parts": [
+        {
+          "name": "trigger",
+          "docs": "The info-circle trigger button."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "keydown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "pageObject": {
+        "class": "DsHint",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "trigger",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "clickTrigger",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeClosed",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
+      "fileName": "hint-text.tsx",
+      "tag": "ds-hint-text",
+      "overview": "Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.\nProjects into the default slot of ds-hint.",
+      "usage": {},
+      "docs": "Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.\nProjects into the default slot of ds-hint.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The hint body text."
+        }
+      ],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The hint body text."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "hint-title.tsx",
+      "tag": "ds-hint-title",
+      "overview": "Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.\nUses light DOM (no shadow) so ds-hint's named slot projects the content correctly.",
+      "usage": {},
+      "docs": "Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.\nUses light DOM (no shadow) so ds-hint's named slot projects the content correctly.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The hint title text."
+        }
+      ],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The hint title text."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
       "fileName": "icon.tsx",
       "tag": "ds-icon",
       "overview": "Icon displays SVG icons with customizable color, size, rotation, and optional tile background.",
@@ -19727,6 +20728,7 @@
         "ds-button",
         "ds-carousel",
         "ds-checkbox-group",
+        "ds-hint",
         "ds-input",
         "ds-item",
         "ds-number-input",
@@ -19754,6 +20756,9 @@
           "ds-icon"
         ],
         "ds-checkbox-group": [
+          "ds-icon"
+        ],
+        "ds-hint": [
           "ds-icon"
         ],
         "ds-input": [
@@ -20044,10 +21049,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
           "complexType": {
             "original": "IconSize",
-            "resolved": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
             "references": {
               "IconSize": {
                 "location": "import",
@@ -20068,6 +21073,10 @@
             },
             {
               "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
               "type": "string"
             },
             {
@@ -27417,6 +28426,35 @@
           "setter": false
         },
         {
+          "name": "fullscreen",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "fullscreen",
+          "reflectToAttr": false,
+          "docs": "If `true`, the modal covers the full viewport.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "modalWidth",
           "type": "number",
           "complexType": {
@@ -31447,6 +32485,910 @@
           },
           {
             "name": "assertNextToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
+      "fileName": "popup.tsx",
+      "tag": "ds-popup",
+      "overview": "Popup displays anchored overlay content positioned relative to a trigger element.\nServes as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.\n\nTrigger wiring:\n  Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.\n  Declarative  — add `data-popup=\"<id>\"` to any trigger element and set matching `id` on popup.",
+      "usage": {},
+      "docs": "Popup displays anchored overlay content positioned relative to a trigger element.\nServes as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.\n\nTrigger wiring:\n  Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.\n  Declarative  — add `data-popup=\"<id>\"` to any trigger element and set matching `id` on popup.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The popup content."
+        },
+        {
+          "name": "part",
+          "text": "panel    - The floating panel container."
+        },
+        {
+          "name": "part",
+          "text": "backdrop - The optional full-screen backdrop overlay."
+        },
+        {
+          "name": "part",
+          "text": "close    - The optional close button (visible when closable)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [
+        "ds-hint"
+      ],
+      "dependencies": [
+        "ds-close"
+      ],
+      "dependencyGraph": {
+        "ds-popup": [
+          "ds-close"
+        ],
+        "ds-close": [
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ],
+        "ds-hint": [
+          "ds-popup"
+        ]
+      },
+      "props": [
+        {
+          "name": "backdrop",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "backdrop",
+          "reflectToAttr": false,
+          "docs": "If `true`, a full-screen backdrop overlay is rendered behind the popup panel.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "backdropDismiss",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "backdrop-dismiss",
+          "reflectToAttr": false,
+          "docs": "If `true`, clicking outside the popup panel dismisses it.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": false,
+          "docs": "If `true`, the popup can be dismissed via the Escape key and shows a close button.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "group",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "group",
+          "reflectToAttr": false,
+          "docs": "Group name for mutual-exclusion. Only one popup within the same group is open at a time.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the popup panel (sets aria-label on the panel element).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "offset",
+          "reflectToAttr": false,
+          "docs": "Offset in pixels between the trigger element and the popup panel.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "8"
+            }
+          ],
+          "default": "8",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "open",
+          "reflectToAttr": true,
+          "docs": "If `true` the popup is open.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "placement",
+          "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+          "complexType": {
+            "original": "PopupPlacement",
+            "resolved": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+            "references": {
+              "PopupPlacement": {
+                "location": "import",
+                "path": "./popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupPlacement",
+                "referenceLocation": "PopupPlacement"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "Preferred placement of the popup relative to the trigger.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'bottom'"
+            }
+          ],
+          "default": "'bottom'",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "left-end",
+              "type": "string"
+            },
+            {
+              "value": "left-start",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "right-end",
+              "type": "string"
+            },
+            {
+              "value": "right-start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "top-start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "role",
+          "type": "\"dialog\" | \"grid\" | \"listbox\" | \"menu\" | \"tree\"",
+          "complexType": {
+            "original": "PopupRole",
+            "resolved": "\"dialog\" | \"grid\" | \"listbox\" | \"menu\" | \"tree\"",
+            "references": {
+              "PopupRole": {
+                "location": "import",
+                "path": "./popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupRole",
+                "referenceLocation": "PopupRole"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "role",
+          "reflectToAttr": false,
+          "docs": "ARIA role applied to the panel.\nControls focus-trap behaviour and the aria-haspopup value set on the trigger.\nUse \"dialog\" for rich content, \"listbox\" or \"menu\" for interactive option lists.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'dialog'"
+            }
+          ],
+          "default": "'dialog'",
+          "values": [
+            {
+              "value": "dialog",
+              "type": "string"
+            },
+            {
+              "value": "grid",
+              "type": "string"
+            },
+            {
+              "value": "listbox",
+              "type": "string"
+            },
+            {
+              "value": "menu",
+              "type": "string"
+            },
+            {
+              "value": "tree",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "trapFocus",
+          "type": "boolean | undefined",
+          "complexType": {
+            "original": "boolean | undefined",
+            "resolved": "boolean | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "trap-focus",
+          "reflectToAttr": false,
+          "docs": "Override the automatic focus-trap behaviour.\nWhen undefined, trapping is enabled for role=\"dialog\" and disabled for all other roles.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "trigger",
+          "type": "HTMLElement | undefined",
+          "complexType": {
+            "original": "HTMLElement | undefined",
+            "resolved": "HTMLElement | undefined",
+            "references": {
+              "HTMLElement": {
+                "location": "global",
+                "id": "global::HTMLElement"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "The trigger element. Setting this wires up aria-haspopup and aria-expanded automatically.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "HTMLElement"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "dismiss",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "dismiss() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes the popup.",
+          "docsTags": []
+        },
+        {
+          "name": "present",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "present() => Promise<void>",
+          "parameters": [],
+          "docs": "Opens the popup.",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "Toggles the popup open or closed.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsDidDismiss",
+          "detail": "{ trigger: HTMLElement | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PopupDismissDetail",
+            "resolved": "{ trigger: HTMLElement | undefined; }",
+            "references": {
+              "PopupDismissDetail": {
+                "location": "import",
+                "path": "./popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupDismissDetail",
+                "referenceLocation": "PopupDismissDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the popup is fully closed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsDidPresent",
+          "detail": "{ trigger: HTMLElement | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PopupPresentDetail",
+            "resolved": "{ trigger: HTMLElement | undefined; }",
+            "references": {
+              "PopupPresentDetail": {
+                "location": "import",
+                "path": "./popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupPresentDetail",
+                "referenceLocation": "PopupPresentDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the popup is fully open.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillDismiss",
+          "detail": "{ trigger: HTMLElement | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PopupDismissDetail",
+            "resolved": "{ trigger: HTMLElement | undefined; }",
+            "references": {
+              "PopupDismissDetail": {
+                "location": "import",
+                "path": "./popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupDismissDetail",
+                "referenceLocation": "PopupDismissDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the popup closes.",
+          "docsTags": []
+        },
+        {
+          "event": "dsWillPresent",
+          "detail": "{ trigger: HTMLElement | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PopupPresentDetail",
+            "resolved": "{ trigger: HTMLElement | undefined; }",
+            "references": {
+              "PopupPresentDetail": {
+                "location": "import",
+                "path": "./popup.interfaces",
+                "id": "src/components/popup/popup.interfaces.ts::PopupPresentDetail",
+                "referenceLocation": "PopupPresentDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the popup opens.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--popup-background",
+          "docs": "Background color of the popup panel."
+        },
+        {
+          "name": "--popup-radius",
+          "docs": "Border radius of the popup panel."
+        },
+        {
+          "name": "--popup-shadow",
+          "docs": "Box shadow of the popup panel."
+        },
+        {
+          "name": "--popup-padding",
+          "docs": "Padding inside the popup panel."
+        },
+        {
+          "name": "--popup-min-width",
+          "docs": "Minimum width of the popup panel."
+        },
+        {
+          "name": "--popup-max-width",
+          "docs": "Maximum width of the popup panel."
+        },
+        {
+          "name": "--popup-z-index",
+          "docs": "Z-index stacking level of the popup layer."
+        },
+        {
+          "name": "--popup-backdrop-background",
+          "docs": "Background color of the optional full-screen backdrop."
+        },
+        {
+          "name": "--popup-backdrop-opacity",
+          "docs": "Opacity of the optional full-screen backdrop."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The popup content."
+        }
+      ],
+      "parts": [
+        {
+          "name": "backdrop",
+          "docs": "The optional full-screen backdrop overlay."
+        },
+        {
+          "name": "close",
+          "docs": "The optional close button (visible when closable)."
+        },
+        {
+          "name": "panel",
+          "docs": "The floating panel container."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "keydown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Popup / Background",
+          "cssVarName": "--ds-popup-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-popup-background",
+              "figmaName": "Component / Popup / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / Radius",
+          "cssVarName": "--ds-popup-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-popup-radius",
+              "figmaName": "Component / Popup / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / Shadow",
+          "cssVarName": "--ds-popup-shadow",
+          "value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+          "nativeValue": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-shadow-3",
+              "figmaName": "Global / Elevation / Shadow / 3"
+            },
+            {
+              "cssVar": "--ds-shadow-box-base",
+              "figmaName": "Alias / Shadow / Box / Base"
+            },
+            {
+              "cssVar": "--ds-popup-shadow",
+              "figmaName": "Component / Popup / Shadow"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "Shadow"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / Padding",
+          "cssVarName": "--ds-popup-padding",
+          "value": "{🔗 Alias.↔️ Space.MD.Mobile}",
+          "nativeValue": "20",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-20",
+              "figmaName": "Global / Size / Space / 20"
+            },
+            {
+              "cssVar": "--ds-space-md-mobile",
+              "figmaName": "Alias / Space / MD / Mobile"
+            },
+            {
+              "cssVar": "--ds-popup-padding",
+              "figmaName": "Component / Popup / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / MinWidth",
+          "cssVarName": "--ds-popup-minwidth",
+          "value": "16rem",
+          "nativeValue": "16rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-popup-minwidth",
+              "figmaName": "Component / Popup / MinWidth"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "MinWidth"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / ZIndex",
+          "cssVarName": "--ds-popup-zindex",
+          "value": "{🔗 Alias.🗂️ ZIndex.Popup}",
+          "nativeValue": "1000",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-zindex-1000",
+              "figmaName": "Global / Elevation / ZIndex / 1000"
+            },
+            {
+              "cssVar": "--ds-zindex-popup",
+              "figmaName": "Alias / ZIndex / Popup"
+            },
+            {
+              "cssVar": "--ds-popup-zindex",
+              "figmaName": "Component / Popup / ZIndex"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "ZIndex"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / Backdrop / Background",
+          "cssVarName": "--ds-popup-backdrop-background",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryactive",
+              "figmaName": "Alias / Background / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-popup-backdrop-background",
+              "figmaName": "Component / Popup / Backdrop / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "Backdrop",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Popup / Backdrop / Opacity",
+          "cssVarName": "--ds-popup-backdrop-opacity",
+          "value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
+          "nativeValue": "0.800000011920929",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-opacity-80",
+              "figmaName": "Global / Elevation / Opacity / 80"
+            },
+            {
+              "cssVar": "--ds-opacity-backdrop",
+              "figmaName": "Alias / Opacity / Backdrop"
+            },
+            {
+              "cssVar": "--ds-popup-backdrop-opacity",
+              "figmaName": "Component / Popup / Backdrop / Opacity"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Popup",
+            "Backdrop",
+            "Opacity"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsPopup",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "panel",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToBeOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeClosed",
             "params": [],
             "docs": ""
           }
@@ -48100,10 +50042,30 @@
       "docstring": "",
       "path": "src/components/divider/divider.interfaces.ts"
     },
+    "src/components/drawer/drawer.interfaces.ts::DrawerContainer": {
+      "declaration": "\"default\" | \"fluid\" | \"compact\"",
+      "docstring": "",
+      "path": "src/components/drawer/drawer.interfaces.ts"
+    },
+    "src/components/drawer/drawer.interfaces.ts::DrawerPresentDetail": {
+      "declaration": "void",
+      "docstring": "",
+      "path": "src/components/drawer/drawer.interfaces.ts"
+    },
+    "src/components/drawer/drawer.interfaces.ts::DrawerDismissDetail": {
+      "declaration": "void",
+      "docstring": "",
+      "path": "src/components/drawer/drawer.interfaces.ts"
+    },
     "src/components/heading/heading.interfaces.ts::HeadingSpace": {
       "declaration": "\"\" | \"none\" | \"bottom\" | \"top\" | \"all\"",
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
+    },
+    "src/components/popup/popup.interfaces.ts::PopupPlacement": {
+      "declaration": "\"left\" | \"right\" | \"bottom\" | \"top\" | \"top-start\" | \"top-end\" | \"right-start\" | \"right-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\"",
+      "docstring": "",
+      "path": "src/components/popup/popup.interfaces.ts"
     },
     "src/components/icon/icon.interfaces.ts::IconSize": {
       "declaration": "export type IconSize = (typeof ICON_SIZES)[number] | undefined",
@@ -48294,6 +50256,21 @@
       "declaration": "number",
       "docstring": "",
       "path": "src/components/pagination/pagination.interfaces.ts"
+    },
+    "src/components/popup/popup.interfaces.ts::PopupRole": {
+      "declaration": "\"dialog\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\"",
+      "docstring": "",
+      "path": "src/components/popup/popup.interfaces.ts"
+    },
+    "src/components/popup/popup.interfaces.ts::PopupPresentDetail": {
+      "declaration": "{ trigger: HTMLElement | undefined }",
+      "docstring": "",
+      "path": "src/components/popup/popup.interfaces.ts"
+    },
+    "src/components/popup/popup.interfaces.ts::PopupDismissDetail": {
+      "declaration": "{ trigger: HTMLElement | undefined }",
+      "docstring": "",
+      "path": "src/components/popup/popup.interfaces.ts"
     },
     "src/components/progress-bar/progress-bar.interfaces.ts::ProgressBarBackground": {
       "declaration": "\"light\" | \"dark\"",
