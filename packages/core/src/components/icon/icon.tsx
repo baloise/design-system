@@ -262,7 +262,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-filled': !this.svg && !this.src,
           [`is-${color}`]: hasValue(color),
-          [`is-${this.size}`]: this.size !== undefined,
+          [`is-${this.size}`]: hasValue(this.size),
           [`turn-${this.name}`]: this.turn,
           'is-inverted': this.inverted,
           'is-inline': this.inline,

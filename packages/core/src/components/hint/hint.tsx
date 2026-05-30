@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
+import { Component, Element, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   DsBreakpointObserver,
@@ -7,10 +7,21 @@ import {
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  isEscapeKey,
   setupValidation,
 } from '@utils'
-import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
+import {
+  DsComponentInterface,
+  DsConfigObserver,
+  DsConfigState,
+  ListenToConfig,
+  defaultConfig,
+  type DsLanguage,
+  type DsRegion,
+} from '@global'
 import { POPUP_PLACEMENTS, type PopupPlacement } from '../popup/popup.interfaces'
+import { i18nDsHint } from './hint.i18n'
 
 /**
  * Hint displays contextual help via an info-circle trigger button.
@@ -44,6 +55,8 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
   @State() isTouch = false
   @State() animated = true
   @State() innerCloseLabel = 'Close'
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
 
   /**
    * PUBLIC PROPERTY API
@@ -58,17 +71,28 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
   readonly placement: PopupPlacement = 'right'
 
   /**
+   * Title text displayed in the hint panel.
+   * When provided, renders in the title section without needing a named slot.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string | undefined = undefined
+
+  /**
    * Label for the close button shown in the drawer on touch viewports.
    * When omitted the label is localised from the language config.
    */
   @Prop()
+  @ValidateEmptyOrType('string')
   readonly closeLabel: string | undefined = undefined
 
   /**
    * Accessible label for the trigger button.
+   * When omitted the label is localised from the language config.
    */
   @Prop()
-  readonly triggerLabel: string = 'More information'
+  @ValidateEmptyOrType('string')
+  readonly triggerLabel: string | undefined = undefined
 
   /**
    * LIFECYCLE
@@ -129,6 +153,8 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
   @ListenToConfig()
   async configChanged(state: DsConfigState): Promise<void> {
     this.animated = state.animated
+    this.language = state.language
+    this.region = state.region
     if (!this.closeLabel) {
       switch (state.language) {
         case 'de':
@@ -169,10 +195,24 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
     }
   }
 
+  private hasTitle(): boolean {
+    const titleSlot = this.el.querySelector('[slot="title"]')
+    return titleSlot !== null && (titleSlot.textContent?.trim().length ?? 0) > 0
+  }
+
   /**
    * EVENT BINDING
    * ------------------------------------------------------
    */
+
+  @Listen('keydown', { target: 'document' })
+  listenToKeyDown(ev: KeyboardEvent): void {
+    if (!this.isOpen || this.isTouch) return
+    if (isEscapeKey(ev)) {
+      ev.stopPropagation()
+      this.dismiss()
+    }
+  }
 
   private handleTriggerClick = (): void => {
     this.toggle()
@@ -197,6 +237,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
 
   render() {
     const closeLabel = this.closeLabel || this.innerCloseLabel
+    const triggerLabel = this.triggerLabel || i18nDsHint[this.language].triggerLabel
 
     return (
       <Host>
@@ -205,7 +246,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
           type="button"
           aria-expanded={String(this.isOpen)}
           aria-haspopup="dialog"
-          aria-label={this.triggerLabel}
+          aria-label={triggerLabel}
           ref={el => (this.triggerButtonEl = el as HTMLButtonElement)}
           onClick={this.handleTriggerClick}
         >
@@ -220,11 +261,11 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
             onDsWillDismiss={this.handleWillDismiss}
           >
             <div class="hint-content">
-              <div class="hint-header">
-                <div class="hint-title">
-                  <slot name="title" />
+              {(this.label || this.hasTitle()) && (
+                <div class="hint-header">
+                  <div class="hint-title">{this.label || <slot name="title" />}</div>
                 </div>
-              </div>
+              )}
               <div class="hint-body">
                 <slot />
               </div>
@@ -236,6 +277,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
         ) : (
           <ds-popup
             ref={el => (this.popupEl = el as HTMLDsPopupElement)}
+            closable={false}
             placement={this.placement}
             backdropDismiss
             role="dialog"
@@ -243,12 +285,12 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
             onDsWillDismiss={this.handleWillDismiss}
           >
             <div class="hint-content">
-              <div class="hint-header">
-                <div class="hint-title">
-                  <slot name="title" />
+              {(this.label || this.hasTitle()) && (
+                <div class="hint-header">
+                  <div class="hint-title">{this.label || <slot name="title" />}</div>
+                  <ds-close onClick={this.handleCloseClick} />
                 </div>
-                <ds-close onClick={this.handleCloseClick} />
-              </div>
+              )}
               <div class="hint-body">
                 <slot />
               </div>

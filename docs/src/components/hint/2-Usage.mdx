@@ -1,10 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Footer,
-  UsageExamples,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
 import * as HintStories from './hint.stories'
 import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
 
@@ -37,10 +32,10 @@ import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
     {
       type: 'correct',
       title: 'Correct: Brief explanation',
+      contentIsLeftAligned: true,
       content: (
-        <ds-hint>
-          <ds-hint-title>Deductible</ds-hint-title>
-          <ds-hint-text>The amount you pay before insurance coverage starts.</ds-hint-text>
+        <ds-hint label="Deductible">
+          The amount you pay before insurance coverage starts.
         </ds-hint>
       ),
       description: 'Short, focused explanation that answers a single question.',
@@ -48,10 +43,12 @@ import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
     {
       type: 'incorrect',
       title: 'Incorrect: Long explanation',
+      contentIsLeftAligned: true,
       content: (
-        <ds-hint>
-          <ds-hint-title>Information</ds-hint-title>
-          <ds-hint-text>This is a very long explanation about many different topics that should probably be broken into multiple sections or moved to a dedicated help page because users don\'t want to read all of this when they just need a quick answer.</ds-hint-text>
+        <ds-hint label="Information">
+          This is a very long explanation about many different topics that should probably be broken into multiple
+          sections or moved to a dedicated help page because users don\'t want to read all of this when they just need
+          a quick answer.
         </ds-hint>
       ),
       description: 'Avoid lengthy content. Keep hints concise and scannable.',
@@ -66,12 +63,12 @@ import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
     {
       type: 'correct',
       title: 'Correct: Inline with related content',
+      contentIsLeftAligned: true,
       content: (
         <p style={{ lineHeight: '1.6' }}>
           Your premium depends on your
-          <ds-hint style={{ display: 'inline' }}>
-            <ds-hint-title>Risk profile</ds-hint-title>
-            <ds-hint-text>Age, driving history, and vehicle type.</ds-hint-text>
+          <ds-hint label="Risk profile">
+            Age, driving history, and vehicle type.
           </ds-hint>
           and coverage.
         </p>
@@ -81,11 +78,11 @@ import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
     {
       type: 'incorrect',
       title: 'Incorrect: Misplaced hint',
+      contentIsLeftAligned: true,
       content: (
         <div>
-          <ds-hint style={{ marginBottom: '2rem' }}>
-            <ds-hint-title>General help</ds-hint-title>
-            <ds-hint-text>Information that should be elsewhere.</ds-hint-text>
+          <ds-hint label="General help" style={{ marginBottom: '2rem' }}>
+            Information that should be elsewhere.
           </ds-hint>
           <p>Your premium depends on your profile and coverage.</p>
         </div>

@@ -53,6 +53,11 @@
     &:focus-visible {
       @include focus-shadow(var(--_hint-color-focus));
     }
+
+    ds-icon {
+      --icon-size: 20px;
+      --icon-inner-size: 20px;
+    }
   }
 }
 

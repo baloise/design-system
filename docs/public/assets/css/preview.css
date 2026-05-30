@@ -427,6 +427,19 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   z-index: 9 !important;
 }
 
+/***************************************
+ * CANVAS OVERFLOW VISIBLE
+ ***************************************/
+
+
+.canvas-overflow-visible,
+.canvas-overflow-visible > div,
+.canvas-overflow-visible .sbdocs-preview,
+.canvas-overflow-visible .sbdocs-preview > div {
+  overflow: visible !important;
+  z-index: 10;
+}
+
 .support {
   display: flex;
   gap: 1rem;

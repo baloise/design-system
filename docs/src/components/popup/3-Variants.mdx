@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -24,7 +24,7 @@ import { POPUP_DOC_CONFIG, getPopupTabs } from './popup.doc-config'
 
 The basic popup with a declarative trigger using the `data-popup` attribute. The popup opens when the trigger is clicked and can be closed with the close button or by pressing Escape.
 
-<CanvasTabs of={PopupStories.Popup} />
+<CanvasWithCodePen of={PopupStories.Popup} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,7 +32,7 @@ The basic popup with a declarative trigger using the `data-popup` attribute. The
 
 Control where the popup appears relative to the trigger using the `placement` prop. This variant opens above the trigger.
 
-<CanvasTabs of={PopupStories.PlacementTop} />
+<CanvasWithCodePen of={PopupStories.PlacementTop} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -40,7 +40,7 @@ Control where the popup appears relative to the trigger using the `placement` pr
 
 The default placement opens to the right of the trigger. This works well when there's sufficient horizontal space available.
 
-<CanvasTabs of={PopupStories.PlacementRight} />
+<CanvasWithCodePen of={PopupStories.PlacementRight} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -48,7 +48,7 @@ The default placement opens to the right of the trigger. This works well when th
 
 The popup can open to the left of the trigger, useful in right-to-left layouts or when right-side space is constrained.
 
-<CanvasTabs of={PopupStories.PlacementLeft} />
+<CanvasWithCodePen of={PopupStories.PlacementLeft} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -56,7 +56,7 @@ The popup can open to the left of the trigger, useful in right-to-left layouts o
 
 When `backdropDismiss` is enabled, users can close the popup by clicking outside the panel. Useful for optional overlays that don't require the user to explicitly dismiss.
 
-<CanvasTabs of={PopupStories.BackdropDismiss} />
+<CanvasWithCodePen of={PopupStories.BackdropDismiss} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -64,7 +64,7 @@ When `backdropDismiss` is enabled, users can close the popup by clicking outside
 
 Render a full-screen overlay behind the popup with the `backdrop` prop. Combines visual separation and backdrop dismiss for clearer modal-like behavior without blocking page interaction.
 
-<CanvasTabs of={PopupStories.BackdropOverlay} />
+<CanvasWithCodePen of={PopupStories.BackdropOverlay} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -72,7 +72,7 @@ Render a full-screen overlay behind the popup with the `backdrop` prop. Combines
 
 Use `role="listbox"` when the popup contains selectable options. This provides proper ARIA semantics for screen readers and enables keyboard navigation within lists.
 
-<CanvasTabs of={PopupStories.RoleListbox} />
+<CanvasWithCodePen of={PopupStories.RoleListbox} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -80,7 +80,7 @@ Use `role="listbox"` when the popup contains selectable options. This provides p
 
 The `group` prop enables mutual exclusion — only one popup in the same group can be open at a time. Opening one automatically closes others in the group.
 
-<CanvasTabs of={PopupStories.Group} />
+<CanvasWithCodePen of={PopupStories.Group} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -88,7 +88,7 @@ The `group` prop enables mutual exclusion — only one popup in the same group c
 
 Control popups programmatically by setting the `trigger` property and calling `present()` / `dismiss()` methods. This allows fine-grained control over open/close behavior.
 
-<CanvasTabs of={PopupStories.Programmatic} />
+<CanvasWithCodePen of={PopupStories.Programmatic} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -96,6 +96,6 @@ Control popups programmatically by setting the `trigger` property and calling `p
 
 When the popup has `role="dialog"` (default) and contains focusable elements, focus is trapped within the popup. Tab navigates between elements and wraps at the boundaries.
 
-<CanvasTabs of={PopupStories.FocusTrap} />
+<CanvasWithCodePen of={PopupStories.FocusTrap} overflowVisible={true} />
 
 <Footer />

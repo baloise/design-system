@@ -14,91 +14,91 @@
   <body>
     <ds-app>
       <main class="container py-medium">
-        <!-- Basic with sub-components -->
-        <section data-testid="basic">
-          <span>Need more information?</span>
-          <ds-hint>
-            <ds-hint-title>Spider-Man</ds-hint-title>
-            <ds-hint-text>
-              Spider-Man is a superhero in Marvel Comics. He was created by writer Stan Lee and artist Steve Ditko.
-            </ds-hint-text>
+        <!-- Basic with label prop (new structure) -->
+        <section data-testid="basic-label">
+          <span>Basic with label prop</span>
+          <ds-hint label="Spider-Man">
+            Spider-Man is a superhero in Marvel Comics. He was created by writer Stan Lee and artist Steve Ditko.
           </ds-hint>
         </section>
 
-        <!-- With named slots (raw HTML) -->
-        <section data-testid="slots">
-          <span>Using raw slots</span>
+        <!-- With custom styling using raw slots -->
+        <section data-testid="custom-styling">
+          <span>Custom styling with slots</span>
           <ds-hint>
-            <span slot="title">What is a deductible?</span>
-            <p>A deductible is the amount you pay out of pocket before your insurance covers the rest.</p>
+            <span slot="title" style="font-weight: bold; color: var(--ds-color-primary)">What is a deductible?</span>
+            <p style="font-size: 0.875rem">
+              A deductible is the amount you pay out of pocket before your insurance covers the rest.
+            </p>
           </ds-hint>
         </section>
 
-        <!-- Custom trigger label -->
+        <!-- Custom trigger label with label prop -->
         <section data-testid="trigger-label">
           <span>Custom trigger label</span>
-          <ds-hint trigger-label="Learn more about this field">
-            <ds-hint-title>Custom label</ds-hint-title>
-            <ds-hint-text>This trigger button has a custom accessible label.</ds-hint-text>
+          <ds-hint label="Custom label" trigger-label="Learn more about this field">
+            This trigger button has a custom accessible label.
           </ds-hint>
         </section>
 
-        <!-- Placement: top -->
+        <!-- Placement: top with label prop -->
         <section data-testid="placement-top">
           <span>Placement top</span>
-          <ds-hint placement="top">
-            <ds-hint-title>Placed above</ds-hint-title>
-            <ds-hint-text>The popup panel opens above the trigger on desktop viewports.</ds-hint-text>
+          <ds-hint label="Placed above" placement="top">
+            The popup panel opens above the trigger on desktop viewports.
           </ds-hint>
         </section>
 
-        <!-- Placement: bottom -->
+        <!-- Placement: bottom with label prop -->
         <section data-testid="placement-bottom">
           <span>Placement bottom</span>
-          <ds-hint placement="bottom">
-            <ds-hint-title>Placed below</ds-hint-title>
-            <ds-hint-text>The popup panel opens below the trigger on desktop viewports.</ds-hint-text>
+          <ds-hint label="Placed below" placement="bottom">
+            The popup panel opens below the trigger on desktop viewports.
           </ds-hint>
         </section>
 
-        <!-- Placement: left -->
+        <!-- Placement: left with label prop -->
         <section data-testid="placement-left">
           <span>Placement left</span>
-          <ds-hint placement="left">
-            <ds-hint-title>Placed left</ds-hint-title>
-            <ds-hint-text>The popup panel opens to the left of the trigger on desktop viewports.</ds-hint-text>
+          <ds-hint label="Placed left" placement="left">
+            The popup panel opens to the left of the trigger on desktop viewports.
           </ds-hint>
         </section>
 
-        <!-- Custom close label -->
+        <!-- Custom close label with label prop -->
         <section data-testid="close-label">
           <span>Custom close label</span>
-          <ds-hint close-label="Got it">
-            <ds-hint-title>Custom close</ds-hint-title>
-            <ds-hint-text>The close button inside the drawer shows a custom label.</ds-hint-text>
+          <ds-hint label="Custom close" close-label="Got it">
+            The close button inside the drawer shows a custom label on touch viewports.
           </ds-hint>
         </section>
 
-        <!-- Without title -->
+        <!-- Without title (content only) -->
         <section data-testid="no-title">
           <span>Without title</span>
-          <ds-hint>
-            <ds-hint-text>Sometimes a title is not needed — just the explanation text is enough.</ds-hint-text>
-          </ds-hint>
+          <ds-hint> Sometimes a title is not needed — just the explanation text is enough. </ds-hint>
         </section>
 
         <!-- Inline with text -->
         <section data-testid="inline">
           <p>
             Your premium is calculated based on your risk profile
-            <ds-hint>
-              <ds-hint-title>Risk profile</ds-hint-title>
-              <ds-hint-text>
-                Your risk profile combines age, driving history, and vehicle type to determine your premium.
-              </ds-hint-text>
+            <ds-hint label="Risk profile">
+              Your risk profile combines age, driving history, and vehicle type to determine your premium.
             </ds-hint>
             and the selected coverage options.
           </p>
+        </section>
+
+        <!-- Migration: Legacy sub-components (for backward compatibility) -->
+        <section data-testid="migration-subcomponents">
+          <span>Legacy sub-components (deprecated)</span>
+          <ds-hint>
+            <ds-hint-title>Spider-Man</ds-hint-title>
+            <ds-hint-text>
+              Spider-Man is a superhero in Marvel Comics. He was created by writer Stan Lee and artist Steve Ditko.
+            </ds-hint-text>
+          </ds-hint>
         </section>
       </main>
     </ds-app>

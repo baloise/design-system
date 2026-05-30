@@ -18,11 +18,12 @@ const meta: Meta<Args> = {
   },
   ...withRender(
     ({ ...args }) => `
-<ds-button data-popup="popup-story">Open Popup</ds-button>
 <ds-popup id="popup-story" ${props(args)}>
   <p>Popup content</p>
 </ds-popup>
-    `,
+
+<!-- Trigger -->
+<ds-button data-popup="popup-story">Open Popup</ds-button>`,
   ),
 }
 
@@ -31,16 +32,15 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Popup = Story({
-  args: {
-    closable: true,
-  },
+  args: {},
   ...withRender(
     ({ ...args }) => `
-<ds-button data-popup="popup-basic">Click me</ds-button>
-<ds-popup id="popup-basic" ${props(args)}>
-  <p>Basic popup content with declarative trigger.</p>
+<ds-popup id="popup-story" ${props(args)}>
+  <p>Popup content</p>
 </ds-popup>
-    `,
+
+<!-- Trigger -->
+<ds-button data-popup="popup-story">Open Popup</ds-button>`,
   ),
 })
 Popup.storyName = '🧩 Basic'
@@ -52,13 +52,12 @@ export const PlacementTop = Story({
   },
   ...withRender(
     ({ placement, ...args }) => `
-<div style="padding: 2rem 0">
-  <ds-button data-popup="popup-top">Top</ds-button>
-  <ds-popup id="popup-top" placement="${placement}" ${props(args)}>
-    <p>Placed above the trigger.</p>
-  </ds-popup>
-</div>
-    `,
+<ds-popup id="popup-top" placement="${placement}" ${props(args)}>
+  <p>Placed above the trigger.</p>
+</ds-popup>
+
+<!-- Trigger -->
+<ds-button data-popup="popup-top">Top</ds-button>`,
   ),
 })
 PlacementTop.storyName = '🧩 Placement: Top'
@@ -70,10 +69,12 @@ export const PlacementRight = Story({
   },
   ...withRender(
     ({ placement, ...args }) => `
-<ds-button data-popup="popup-right">Right</ds-button>
 <ds-popup id="popup-right" placement="${placement}" ${props(args)}>
   <p>Placed to the right.</p>
 </ds-popup>
+
+<!-- Trigger -->
+<ds-button data-popup="popup-right">Right</ds-button>
     `,
   ),
 })
@@ -86,12 +87,12 @@ export const PlacementLeft = Story({
   },
   ...withRender(
     ({ placement, ...args }) => `
-<div style="padding-left: 2rem">
-  <ds-button data-popup="popup-left">Left</ds-button>
-  <ds-popup id="popup-left" placement="${placement}" ${props(args)}>
-    <p>Placed to the left.</p>
-  </ds-popup>
-</div>
+<ds-popup id="popup-left" placement="${placement}" ${props(args)}>
+  <p>Placed to the left.</p>
+</ds-popup>
+
+<!-- Trigger -->
+<ds-button data-popup="popup-left">Left</ds-button>
     `,
   ),
 })
@@ -178,6 +179,7 @@ Group.storyName = '🧩 Group: Mutual Exclusion'
 export const Programmatic = Story({
   args: {
     closable: true,
+    placement: 'bottom',
   },
   ...withRender(
     ({ ...args }) => `

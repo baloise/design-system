@@ -155,12 +155,14 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    * Group name for mutual-exclusion. Only one popup within the same group is open at a time.
    */
   @Prop()
+  @ValidateEmptyOrType('string')
   readonly group: string | undefined = undefined
 
   /**
    * Accessible label for the popup panel (sets aria-label on the panel element).
    */
   @Prop()
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
@@ -168,6 +170,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    * When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
    */
   @Prop()
+  @ValidateEmptyOrType('boolean')
   readonly trapFocus: boolean | undefined = undefined
 
   /**

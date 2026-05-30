@@ -998,6 +998,11 @@ export namespace Components {
          */
         "dismiss": () => Promise<void>;
         /**
+          * Title text displayed in the hint panel. When provided, renders in the title section without needing a named slot.
+          * @default undefined
+         */
+        "label": string | undefined;
+        /**
           * Preferred placement of the popup panel on desktop viewports.
           * @default 'right'
          */
@@ -1011,10 +1016,10 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
-          * Accessible label for the trigger button.
-          * @default 'More information'
+          * Accessible label for the trigger button. When omitted the label is localised from the language config.
+          * @default undefined
          */
-        "triggerLabel": string;
+        "triggerLabel": string | undefined;
     }
     /**
      * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
@@ -5028,15 +5033,20 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string | undefined;
         /**
+          * Title text displayed in the hint panel. When provided, renders in the title section without needing a named slot.
+          * @default undefined
+         */
+        "label"?: string | undefined;
+        /**
           * Preferred placement of the popup panel on desktop viewports.
           * @default 'right'
          */
         "placement"?: PopupPlacement;
         /**
-          * Accessible label for the trigger button.
-          * @default 'More information'
+          * Accessible label for the trigger button. When omitted the label is localised from the language config.
+          * @default undefined
          */
-        "triggerLabel"?: string;
+        "triggerLabel"?: string | undefined;
     }
     /**
      * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
@@ -7321,8 +7331,9 @@ declare namespace LocalJSX {
     }
     interface DsHintAttributes {
         "placement": PopupPlacement;
+        "label": string | undefined;
         "closeLabel": string | undefined;
-        "triggerLabel": string;
+        "triggerLabel": string | undefined;
     }
     interface DsIconAttributes {
         "name": string;

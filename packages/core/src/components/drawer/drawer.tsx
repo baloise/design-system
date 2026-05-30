@@ -78,6 +78,7 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
    * Accessible label for the drawer dialog (sets aria-label on the dialog element).
    */
   @Prop()
+  @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**

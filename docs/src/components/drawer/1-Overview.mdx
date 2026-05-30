@@ -2,7 +2,7 @@ import { Controls, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  CanvasTabs,
+  CanvasWithCodePen,
   ComponentLead,
   ComponentPublicMethods,
   Footer,
@@ -18,7 +18,7 @@ import { DRAWER_DOC_CONFIG, getDrawerTabs } from './drawer.doc-config'
 
 <ComponentLead component="drawer" />
 
-<CanvasTabs of={DrawerStories.Drawer} />
+<CanvasWithCodePen of={DrawerStories.Drawer} overflowVisible={true} />
 
 <Controls of={DrawerStories.Drawer} />
 

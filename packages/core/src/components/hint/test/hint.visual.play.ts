@@ -2,14 +2,22 @@ import { DsHint, E2ELocator, expectScreenshot, screenshot, test } from '@baloise
 
 const TAG = 'hint'
 
-const VARIANTS: { testId: string }[] = [
-  { testId: 'basic' },
-  { testId: 'slots' },
-  { testId: 'placement-top' },
-  { testId: 'placement-bottom' },
-  { testId: 'placement-left' },
-  { testId: 'no-title' },
-  { testId: 'inline' },
+const VARIANTS: { testId: string; description: string }[] = [
+  // New structure with label prop
+  { testId: 'basic-label', description: 'Basic with label prop' },
+  { testId: 'trigger-label', description: 'Custom trigger label' },
+  { testId: 'placement-top', description: 'Placement: top' },
+  { testId: 'placement-bottom', description: 'Placement: bottom' },
+  { testId: 'placement-left', description: 'Placement: left' },
+  { testId: 'close-label', description: 'Custom close label' },
+  { testId: 'no-title', description: 'Without title' },
+  { testId: 'inline', description: 'Inline' },
+
+  // Raw slots structure for custom styling
+  { testId: 'custom-styling', description: 'Custom styling with slots' },
+
+  // Legacy/migration structures
+  { testId: 'migration-subcomponents', description: 'Legacy sub-components' },
 ]
 
 const image = screenshot(TAG)
@@ -19,8 +27,8 @@ test.describe('host', () => {
     await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
   })
 
-  VARIANTS.forEach(({ testId }) => {
-    test(testId, async ({ page }) => {
+  VARIANTS.forEach(({ testId, description }) => {
+    test(description, async ({ page }) => {
       const section = page.getByTestId(testId)
       const dsHint = new DsHint(section.locator('ds-hint').first() as E2ELocator)
 

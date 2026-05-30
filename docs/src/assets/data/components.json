@@ -20361,6 +20361,38 @@
           "setter": false
         },
         {
+          "name": "label",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Title text displayed in the hint panel.\nWhen provided, renders in the title section without needing a named slot.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "placement",
           "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
           "complexType": {
@@ -20443,26 +20475,29 @@
         },
         {
           "name": "triggerLabel",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "string | undefined",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "trigger-label",
           "reflectToAttr": false,
-          "docs": "Accessible label for the trigger button.",
+          "docs": "Accessible label for the trigger button.\nWhen omitted the label is localised from the language config.",
           "docsTags": [
             {
               "name": "default",
-              "text": "'More information'"
+              "text": "undefined"
             }
           ],
-          "default": "'More information'",
+          "default": "undefined",
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -20575,7 +20610,14 @@
         }
       ],
       "customStates": [],
-      "listeners": [],
+      "listeners": [
+        {
+          "event": "keydown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
       "pageObject": {
         "class": "DsHint",
         "import": "@baloise/ds-playwright",
@@ -21007,10 +21049,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
+          "type": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
           "complexType": {
             "original": "IconSize",
-            "resolved": "\"\" | \"2xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
+            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xsmall\" | \"xx-large\" | undefined",
             "references": {
               "IconSize": {
                 "location": "import",
@@ -21031,6 +21073,10 @@
             },
             {
               "value": "2xl",
+              "type": "string"
+            },
+            {
+              "value": "3xl",
               "type": "string"
             },
             {

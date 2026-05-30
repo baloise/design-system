@@ -63,43 +63,5 @@ import { POPUP_DOC_CONFIG, getPopupTabs } from './popup.doc-config'
   ]}
 />
 
-### Content and Placement
-
-<UsageExamples
-  items={[
-    {
-      type: 'correct',
-      title: 'Correct: Appropriate content',
-      content: (
-        <div>
-          <ds-button data-popup="content-popup">Filter</ds-button>
-          <ds-popup id="content-popup" placement="right">
-            <div style={{ padding: '1rem', minWidth: '12rem' }}>
-              <ds-checkbox>Option 1</ds-checkbox>
-              <ds-checkbox>Option 2</ds-checkbox>
-              <ds-checkbox>Option 3</ds-checkbox>
-            </div>
-          </ds-popup>
-        </div>
-      ),
-      description: 'Keep popup content focused and scannable. Choose placement that doesn\'t hide important content.',
-    },
-    {
-      type: 'incorrect',
-      title: 'Incorrect: Overloaded popup',
-      content: (
-        <ds-popup placement="bottom">
-          <div style={{ padding: '1rem' }}>
-            <p>
-              This popup tries to do everything: settings, help, navigation, and more. Too much content makes it hard
-              to scan and understand the popup purpose.
-            </p>
-          </div>
-        </ds-popup>
-      ),
-      description: 'Avoid cramming unrelated features into a single popup. Keep it focused on a single purpose.',
-    },
-  ]}
-/>
 
 <Footer />

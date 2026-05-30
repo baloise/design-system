@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -22,17 +22,17 @@ import { HINT_DOC_CONFIG, getHintTabs } from './hint.doc-config'
 
 <StoryHeading of={HintStories.Hint}></StoryHeading>
 
-The basic hint with title and text using `ds-hint-title` and `ds-hint-text` sub-components. On desktop it opens a popup to the right; on touch viewports it opens a drawer from the bottom.
+The basic hint using the `label` prop for the title. On desktop it opens a popup to the right; on touch viewports it opens a drawer from the bottom.
 
-<CanvasTabs of={HintStories.Hint} />
+<CanvasWithCodePen of={HintStories.Hint} overflowVisible={true}  />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={HintStories.WithSlots}></StoryHeading>
+<StoryHeading of={HintStories.WithCustomStyling}></StoryHeading>
 
-Hint content can be provided using raw HTML slots instead of sub-components. Use the `title` slot for the heading and the default slot for body content.
+Hint content can be provided using raw HTML slots instead of the `label` prop. Use the `title` slot for the heading and the default slot for body content. This approach allows for more custom styling on the content.
 
-<CanvasTabs of={HintStories.WithSlots} />
+<CanvasWithCodePen of={HintStories.WithCustomStyling} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -40,7 +40,7 @@ Hint content can be provided using raw HTML slots instead of sub-components. Use
 
 Customize the accessible label on the trigger button with the `triggerLabel` prop. This is important for screen readers and provides context.
 
-<CanvasTabs of={HintStories.CustomTriggerLabel} />
+<CanvasWithCodePen of={HintStories.CustomTriggerLabel} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -48,7 +48,7 @@ Customize the accessible label on the trigger button with the `triggerLabel` pro
 
 Control where the popup opens on desktop using the `placement` prop. This variant opens above the trigger.
 
-<CanvasTabs of={HintStories.PlacementTop} />
+<CanvasWithCodePen of={HintStories.PlacementTop} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -56,7 +56,7 @@ Control where the popup opens on desktop using the `placement` prop. This varian
 
 The popup can open below the trigger. Useful when there's more space below the element.
 
-<CanvasTabs of={HintStories.PlacementBottom} />
+<CanvasWithCodePen of={HintStories.PlacementBottom} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -64,7 +64,7 @@ The popup can open below the trigger. Useful when there's more space below the e
 
 The popup can open to the left of the trigger. Useful in right-aligned layouts or narrow columns.
 
-<CanvasTabs of={HintStories.PlacementLeft} />
+<CanvasWithCodePen of={HintStories.PlacementLeft} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -72,15 +72,7 @@ The popup can open to the left of the trigger. Useful in right-aligned layouts o
 
 On touch viewports, the drawer shows a close button. Customize its label with the `closeLabel` prop. When omitted, the label is localized based on the app language configuration.
 
-<CanvasTabs of={HintStories.CustomCloseLabel} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={HintStories.NoTitle}></StoryHeading>
-
-A hint can contain just body text without a title. Useful for brief explanations that don't need a heading.
-
-<CanvasTabs of={HintStories.NoTitle} />
+<CanvasWithCodePen of={HintStories.CustomCloseLabel} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -88,6 +80,22 @@ A hint can contain just body text without a title. Useful for brief explanations
 
 Hints work well inline within sentences or paragraphs, providing context right where it's needed without breaking the flow.
 
-<CanvasTabs of={HintStories.Inline} />
+<CanvasWithCodePen of={HintStories.Inline} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.MigrationSubcomponents}></StoryHeading>
+
+Legacy support: Hint still works with deprecated `ds-hint-title` and `ds-hint-text` sub-components. These will be removed in v2.0. Please migrate to the `label` prop instead.
+
+<CanvasWithCodePen of={HintStories.MigrationSubcomponents} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.MigrationSlots}></StoryHeading>
+
+Legacy support: Hint still works with the `title` slot and `ds-hint-text` sub-component. These will be removed in v2.0. Please migrate to the `label` prop and default slot instead.
+
+<CanvasWithCodePen of={HintStories.MigrationSlots} overflowVisible={true} />
 
 <Footer />
