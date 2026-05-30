@@ -4,7 +4,6 @@ import { CssPropertyTable } from './helpers/CssPropertyTable'
 
 export const CssResponsiveTable = ({ all = false }): React.ReactElement => {
   const obj = tokens['🔗 Alias']['📐 Breakpoint']
-  console.log(obj)
 
   const list = [
     {

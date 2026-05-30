@@ -128,7 +128,6 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
         'Interaction',
         '✨ Interaction',
       ]
-      console.log(path)
       if (tokenToBeNumberOnly.some(ignored => path.includes(ignored))) {
         return Math.round(value * 10) / 10
       }
