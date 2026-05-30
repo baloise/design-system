@@ -15,7 +15,7 @@ const meta: Meta<Args> = {
     backdropDismiss: true,
   },
   argTypes: {
-    ...withComponentControls({ tag: 'ds-drawer' }),
+    ...withComponentControls({ tag }),
   },
   ...withRender(({ slot, ...args }) => `<ds-drawer ${props(args)}>${slot}</ds-drawer>`),
 }
