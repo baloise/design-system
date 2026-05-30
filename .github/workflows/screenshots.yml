@@ -1,5 +1,20 @@
 name: 📸 Update Screenshots
 
+# Update visual test screenshots for one or more components.
+#
+# Usage in PR comments:
+#   /update-screenshots              - Update all components
+#   /update-screenshots hint         - Update single component (hint)
+#   /update-screenshots hint,popup   - Update multiple components (comma-separated)
+#   /update-screenshots hint, popup, drawer - Spaces are trimmed automatically
+#
+# The workflow:
+# 1. Extracts component names from the comment
+# 2. Splits comma-separated names and trims whitespace
+# 3. Generates Playwright testMatch patterns for each component
+# 4. Runs visual tests across Desktop Chrome and Mobile Chrome
+# 5. Commits updated screenshots to the branch
+
 on:
   issue_comment:
     types: [created]
@@ -133,13 +148,22 @@ jobs:
           cat > packages/core/playwright.visual.config.mts <<TS
           /**
           * This configuration is used to run visual tests for a specific
-          * component across multiple devices and browsers.
+          * component (or components) across multiple devices and browsers.
+          *
+          * Component selection:
+          *   - If TAG is 'all', matches all components: src/components/*/test/*visual.play.ts
+          *   - If TAG is 'hint,popup,drawer', generates separate patterns:
+          *     * src/components/hint/test/*visual.play.ts
+          *     * src/components/popup/test/*visual.play.ts
+          *     * src/components/drawer/test/*visual.play.ts
+          *   - Whitespace is trimmed from component names automatically
           */
           import { defineConfig, devices } from '@playwright/test'
           import baseConfig from './playwright.config'
 
           const TAG = '${{ needs.assembleInformation.outputs.command }}'
-          const testMatch = ['src/components/' + TAG + '/test/*visual.play.ts']
+          const components = TAG === 'all' ? ['all'] : TAG.split(',').map(t => t.trim())
+          const testMatch = components.map(comp => 'src/components/' + comp + '/test/*visual.play.ts')
 
           console.log('testMatch', testMatch)
 
