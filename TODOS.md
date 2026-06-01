@@ -66,8 +66,8 @@
 | table               | Hybrid | ❓     | ✅   | ✅     | ✅   | ✅     | ❓        |
 | modal               | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | tooltip             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| popover             | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| hint                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| popover             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| hint                | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | data                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | file-upload         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | time-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
