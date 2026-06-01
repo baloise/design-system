@@ -9,6 +9,7 @@ This guide covers local development setup and common workflows for the Helvetia 
 - [Building](#building)
 - [Testing](#testing)
 - [Code Quality](#code-quality)
+- [Claude Code Skills](#claude-code-skills)
 - [Versioning and Publishing](#versioning-and-publishing)
 - [Project Structure](#project-structure)
 - [Style and Best Practices](#style-and-best-practices)
@@ -139,6 +140,16 @@ Always run these before pushing:
 ```bash
 npm run lint && npm run format && npm run spell
 ```
+
+## Claude Code Skills
+
+This repository includes **Claude Code skills** — specialized AI-powered tools for component development. Use these commands in Claude Code to automate common tasks:
+
+```bash
+/ds-sync-visual-tests <component-name>    # Generate visual regression tests
+```
+
+For a complete list of available skills and how to use them, see [SKILLS.md](SKILLS.md).
 
 ## Versioning and Publishing
 

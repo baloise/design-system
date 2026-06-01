@@ -58,6 +58,7 @@ For comprehensive technical information, see the dedicated documentation files:
 - **[STYLE_GUIDE.md](../STYLE_GUIDE.md)** — Code standards, naming conventions, best practices
 - **[SECURITY.md](../SECURITY.md)** — Security policy and guidelines
 - **[CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)** — Community standards
+- **[SKILLS.md](../SKILLS.md)** — Claude Code skills for automating component tasks
 
 ## Key Guidelines
 

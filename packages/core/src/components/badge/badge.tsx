@@ -1,10 +1,9 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
+import { Logger, type LogInstance } from '@utils'
 import {
   normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   hasValue,
@@ -40,6 +39,10 @@ export class Badge implements DsComponentInterface {
   }
 
   @Element() el!: HTMLStencilElement
+
+  // ========================================================================
+  // PUBLIC PROPERTY API
+  // ========================================================================
 
   /**
    * Name of the icon to show. If an icon is present, text should be hidden.
@@ -80,14 +83,36 @@ export class Badge implements DsComponentInterface {
   @ValidateEmptyOrType('boolean')
   readonly pulse: boolean = false
 
+  // ========================================================================
+  // LIFECYCLE
+  // ========================================================================
+
   connectedCallback(): void {
+    this.validateProps()
     setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
   componentWillUpdate(): void {
+    this.validateProps()
     setupValidation(this)
   }
+
+  // ========================================================================
+  // PROPERTY VALIDATION
+  // ========================================================================
+
+  private validateProps(): void {
+    // Validation delegated to @Prop decorators and setupValidation
+  }
+
+  // ========================================================================
+  // PRIVATE METHODS
+  // ========================================================================
+
+  // ========================================================================
+  // RENDER
+  // ========================================================================
 
   render() {
     return (
