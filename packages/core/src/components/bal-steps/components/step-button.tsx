@@ -39,6 +39,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, color, 
         data-index={item.index}
         data-testid="bal-steps-option"
         aria-disabled={`${item.disabled}`}
+        tabIndex={item.disabled ? -1 : undefined}
         href={item.href}
         rel={item.rel}
         target={item.target}
@@ -69,6 +70,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, color, 
       data-index={item.index}
       data-testid="bal-steps-option"
       aria-disabled={`${item.disabled}`}
+      disabled={item.disabled}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
       <StepIcon item={item} isMobile={isMobile}></StepIcon>
