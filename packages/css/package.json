@@ -35,14 +35,14 @@
     "build": "node --import tsx/esm src/build.ts"
   },
   "dependencies": {
-    "@baloise/ds-tokens": "20.0.0-next.4",
-    "@baloise/ds-assets": "20.0.0-next.4"
+    "@baloise/ds-assets": "20.0.0-next.4",
+    "@baloise/ds-tokens": "20.0.0-next.4"
   },
   "devDependencies": {
     "autoprefixer": "10.5.0",
-    "postcss": "8.5.15",
+    "postcss": "^8.5.14",
     "sass": "1.100.0",
-    "tsx": "^4.22.2",
+    "tsx": "^4.22.4",
     "unocss": "^66.7.0"
   }
 }
