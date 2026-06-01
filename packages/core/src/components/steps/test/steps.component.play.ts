@@ -87,6 +87,26 @@ test.describe('panels variant — interaction', () => {
     expect(spy).toHaveReceivedEventTimes(0)
     await steps.assertStepSelected('a')
   })
+
+  test('disabled selected step is skipped in tab order', async ({ page }) => {
+    await page.mount(`
+      <button id="before">Before</button>
+      <ds-steps value="b">
+        <ds-step name="a" label="Cart"></ds-step>
+        <ds-step name="b" label="Shipping" disabled></ds-step>
+        <ds-step-panel for="a">Content A</ds-step-panel>
+        <ds-step-panel for="b">Content B</ds-step-panel>
+      </ds-steps>
+      <button id="after">After</button>
+    `)
+
+    await page.keyboard.press('Tab')
+    await expect(page.locator('#before')).toBeFocused()
+
+    await page.keyboard.press('Tab')
+    await expect(page.locator('#after')).toBeFocused()
+    await expect(page.locator('ds-step[name="b"]')).not.toBeFocused()
+  })
 })
 
 test.describe('panels variant — dsChange event', () => {
