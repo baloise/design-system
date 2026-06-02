@@ -1,0 +1,661 @@
+name: 👷 LTS Continuous
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 🏗️ Lint, Test & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Git Identity
+        run: |
+          git config --global user.name 'baopso'
+          git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry path
+        continue-on-error: true
+        shell: bash
+        run: npm run registry
+
+      - name: Clean install
+        shell: bash
+        run: npm ci
+
+      - name: Define Nx cache
+        uses: nrwl/nx-set-shas@v4
+
+      - name: Build
+        shell: bash
+        run: npx nx run-many -t build
+
+      - name: Create tokens-dist archive
+        run: zip -q -r packages/tokens/TokensDist.zip packages/tokens/dist
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tokens-dist
+          path: packages/tokens/TokensDist.zip
+
+      - name: Create styles-dist archive
+        run: zip -q -r packages/styles/StylesDist.zip packages/styles/css
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: styles-dist
+          path: packages/styles/StylesDist.zip
+
+      - name: Create icons-dist archive
+        run: zip -q -r packages/icons/IconsDist.zip packages/icons/dist
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: icons-dist
+          path: packages/icons/IconsDist.zip
+
+      - name: Create core-dist archive
+        run: zip -q -r packages/core/CoreDist.zip packages/core/dist
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-dist
+          path: packages/core/CoreDist.zip
+
+      - name: Create core-loader archive
+        run: zip -q -r packages/core/CoreLoader.zip packages/core/loader
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-loader
+          path: packages/core/CoreLoader.zip
+
+      - name: Create core-components archive
+        run: zip -q -r packages/core/CoreComponents.zip packages/core/components
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-components
+          path: packages/core/CoreComponents.zip
+
+      - name: Create react archive
+        run: zip -q -r packages/react/src/React.zip packages/react/src/generated
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: react
+          path: packages/react/src/React.zip
+
+      - name: Create angular archive
+        run: zip -q -r packages/angular/src/Angular.zip packages/angular/src/generated
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: angular
+          path: packages/angular/src/Angular.zip
+
+      - name: Create angular-module archive
+        run: zip -q -r packages/angular-module/src/AngularModule.zip packages/angular-module/src/generated
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: angular-module
+          path: packages/angular-module/src/AngularModule.zip
+
+      - name: Create testing-dist archive
+        run: zip -q -r packages/testing/TestingDist.zip packages/testing/dist
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: testing-dist
+          path: packages/testing/TestingDist.zip
+
+      - name: Create e2e-artifacts archive
+        run: zip -q -r e2e/E2eBuildArtifacts.zip e2e/generated
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e2e-artifacts
+          path: e2e/E2eBuildArtifacts.zip
+
+  e2e-components:
+    name: 🧪 Component Tests
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry path
+        continue-on-error: true
+        shell: bash
+        run: npm run registry
+
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: ./e2e
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: ./packages/core
+      - name: Extract CoreDist archive
+        run: unzip -q -o ./packages/core/CoreDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: e2e-artifacts
+          path: ./e2e
+      - name: Extract E2eBuildArtifacts archive
+        run: unzip -q -o ./e2e/E2eBuildArtifacts.zip
+        shell: bash
+
+      - name: Run Cypress components tests 🧪
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: e2e
+          install: false
+          component: true
+          browser: chrome
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-components-snapshots
+          path: e2e/cypress/snapshots
+
+  e2e-visual:
+    name: 🧪 E2E Tests
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+    needs: [build]
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry path
+        continue-on-error: true
+        shell: bash
+        run: npm run registry
+
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: ./e2e
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: ./packages/core
+      - name: Extract CoreDist archive
+        run: unzip -q -o ./packages/core/CoreDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: e2e-artifacts
+          path: ./e2e
+      - name: Extract E2eBuildArtifacts archive
+        run: unzip -q -o ./e2e/E2eBuildArtifacts.zip
+        shell: bash
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          start: node ./web-server.js
+          wait-on: 'http://localhost:3333'
+          working-directory: e2e
+          install: false
+          browser: chrome
+        env:
+          CYPRESS_visualRegressionType: regression
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-visual-snapshots-${{ strategy.job-index }}
+          path: e2e/cypress/snapshots
+
+  angular:
+    name: 🧪 Angular Tests
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+    strategy:
+      fail-fast: false
+      matrix:
+        apps: [v18, v19, v20]
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry path
+        continue-on-error: true
+        shell: bash
+        run: npm run registry
+
+      - name: Install Dependencies
+        run: npm ci
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: tokens-dist
+          path: packages/tokens
+      - name: Extract TokensDist archive
+        run: unzip -q -o packages/tokens/TokensDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: icons-dist
+          path: packages/icons
+      - name: Extract IconsDist archive
+        run: unzip -q -o packages/icons/IconsDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: styles-dist
+          path: packages/styles
+      - name: Extract StylesDist archive
+        run: unzip -q -o packages/styles/StylesDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-loader
+          path: ./packages/core
+      - name: Extract CoreLoader archive
+        run: unzip -q -o ./packages/core/CoreLoader.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: ./core/dist
+      - name: Extract CoreDist archive
+        run: unzip -q -o ./core/dist/CoreDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-components
+          path: ./packages/core
+      - name: Extract CoreComponents archive
+        run: unzip -q -o ./packages/core/CoreComponents.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: react
+          path: ./packages/react/src
+      - name: Extract React archive
+        run: unzip -q -o ./packages/react/src/React.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: angular
+          path: ./packages/angular/src
+      - name: Extract Angular archive
+        run: unzip -q -o ./packages/angular/src/Angular.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: angular-module
+          path: ./packages/angular-module/src
+      - name: Extract AngularModule archive
+        run: unzip -q -o ./packages/angular-module/src/AngularModule.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: testing-dist
+          path: ./packages/testing
+      - name: Extract TestingDist archive
+        run: unzip -q -o ./packages/testing/TestingDist.zip
+        shell: bash
+
+      - name: Create App
+        run: bash build.sh ${{ matrix.apps }}
+        working-directory: ./test/angular
+        shell: bash
+
+      - name: Install Cypress
+        run: npm run cy:install
+        working-directory: ./test/angular/${{ matrix.apps }}
+        shell: bash
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: angular-${{ matrix.apps }}
+          path: test/angular/${{ matrix.apps }}/src
+
+      - name: Build App
+        run: npm run build
+        working-directory: ./test/angular/${{ matrix.apps }}
+        shell: bash
+
+      - name: Run Cypress tests 🧪
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run cy:start
+          wait-on: 'http://localhost:4200'
+          working-directory: test/angular/${{ matrix.apps }}
+          install: false
+          browser: chrome
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: snapshots-angular-${{ matrix.apps }}
+          path: test/angular/${{ matrix.apps }}/cypress/snapshots
+
+  react:
+    name: 🧪 React Tests
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+    strategy:
+      fail-fast: false
+      matrix:
+        apps: [v19]
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry path
+        continue-on-error: true
+        shell: bash
+        run: npm run registry
+
+      - name: Install Dependencies
+        run: npm ci
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: tokens-dist
+          path: packages/tokens
+      - name: Extract TokensDist archive
+        run: unzip -q -o packages/tokens/TokensDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: icons-dist
+          path: packages/icons
+      - name: Extract IconsDist archive
+        run: unzip -q -o packages/icons/IconsDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: styles-dist
+          path: packages/styles
+      - name: Extract StylesDist archive
+        run: unzip -q -o packages/styles/StylesDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-loader
+          path: ./packages/core
+      - name: Extract CoreLoader archive
+        run: unzip -q -o ./packages/core/CoreLoader.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: ./core/dist
+      - name: Extract CoreDist archive
+        run: unzip -q -o ./core/dist/CoreDist.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: core-components
+          path: ./packages/core
+      - name: Extract CoreComponents archive
+        run: unzip -q -o ./packages/core/CoreComponents.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: react
+          path: ./packages/react/src
+      - name: Extract React archive
+        run: unzip -q -o ./packages/react/src/React.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: angular
+          path: ./packages/angular/src
+      - name: Extract Angular archive
+        run: unzip -q -o ./packages/angular/src/Angular.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: angular-module
+          path: ./packages/angular-module/src
+      - name: Extract AngularModule archive
+        run: unzip -q -o ./packages/angular-module/src/AngularModule.zip
+        shell: bash
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: testing-dist
+          path: ./packages/testing
+      - name: Extract TestingDist archive
+        run: unzip -q -o ./packages/testing/TestingDist.zip
+        shell: bash
+
+      - name: Create App
+        run: bash build.sh ${{ matrix.apps }}
+        working-directory: ./test/react
+        shell: bash
+
+      - name: Install Cypress
+        run: npm run cy:install
+        working-directory: ./test/react/${{ matrix.apps }}
+        shell: bash
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: react-${{ matrix.apps }}
+          path: test/react/${{ matrix.apps }}/src
+
+      - name: Build App
+        run: npm run build
+        working-directory: ./test/react/${{ matrix.apps }}
+        shell: bash
+
+      - name: Run Cypress tests 🧪
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run cy:start
+          wait-on: 'http://localhost:4200'
+          working-directory: test/react/${{ matrix.apps }}
+          install: false
+          browser: chrome
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: snapshots-react-${{ matrix.apps }}
+          path: test/react/${{ matrix.apps }}/cypress/snapshots
+
+  assembleInformation:
+    name: 📝 Assemble Information
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      HUSKY: 0
+      CI: true
+    outputs:
+      action: ${{ steps.action.outputs.url }}
+      branch: ${{ steps.branch.outputs.branch }}
+    steps:
+      - name: Get Action URL
+        id: action
+        run: |
+          echo "url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Get Branch Name
+        id: branch
+        # Determine branch reliably from the event payload.
+        # - For pull_request events use github.head_ref (the source branch name)
+        # - For push events parse GITHUB_REF (refs/heads/<branch>)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+          else
+            # strip refs/heads/ prefix
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
+
+  playwright:
+    name: 🎭 Playwright
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    needs: [assembleInformation]
+    env:
+      HUSKY: 0
+      CI: 1
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4, 5, 6] # six parallel jobs
+        shardTotal: [6] # total 6 shards
+    steps:
+      - name: Show inputs from previous job
+        run: |
+          echo "Branch from previous job: ${{ needs.assembleInformation.outputs.branch }}"
+          echo "Action: ${{ needs.assembleInformation.outputs.action }}"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.assembleInformation.outputs.branch }}
+          fetch-depth: 0
+
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry path
+        continue-on-error: true
+        shell: bash
+        run: npm run registry
+
+      - name: Show current branch
+        run: |
+          echo "🔍 Current branch info:"
+          git rev-parse --abbrev-ref HEAD
+          echo "Full commit info:"
+          git log -1 --oneline
+
+      - name: Clean Install
+        run: npm ci
+
+      - name: Build Core
+        run: npx nx run core:build
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Run Playwright tests
+        run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        env:
+          BAL_PLAYWRIGHT_TESTING: 'true'
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-shard-${{ matrix.shardIndex }}
+          path: packages/core/playwright-report
+          retention-days: 7
