@@ -58,7 +58,7 @@ class ComponentLinter {
     this.check3ReflectAttribute()
     this.check4ValidateProps()
     this.check8EventPrefix()
-    this.check9LoggableLoggable()
+    this.check9DsComponentInterfaceLogger()
     this.check11SectionDividers()
     this.check14PropWatch()
     this.check16ComponentTag()
@@ -213,10 +213,10 @@ class ComponentLinter {
   }
 
   // ========================================================================
-  // CHECK 9: ComponentInterface + Loggable
+  // CHECK 9: DsComponentInterface + Logger contract
   // ========================================================================
 
-  check9LoggableLoggable() {
+  check9DsComponentInterfaceLogger() {
     const hasDsComponentInterface = this.componentContent.includes('DsComponentInterface')
     const hasLogger = this.componentContent.includes('@Logger')
     const hasCreateLogger = this.componentContent.includes('createLogger')

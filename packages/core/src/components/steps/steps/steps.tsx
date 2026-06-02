@@ -9,8 +9,8 @@ import { Logger, type LogInstance, ValidateEmptyOrType, ValidateRequiredAndType,
  * @slot - An `<a>` element in navigation mode.
  */
 @Component({
-  tag: 'ds-step',
-  styleUrl: 'step.host.scss',
+  tag: 'ds-steps',
+  styleUrl: 'steps.host.scss',
   shadow: true,
 })
 export class Step implements DsComponentInterface {

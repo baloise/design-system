@@ -18,7 +18,7 @@ Runs 14 design-system-specific checks — focusing on Stencil patterns, validato
 **Check 3:** State props (disabled, value, etc.) have reflect: true  
 **Check 4:** validateProps() method called from lifecycle hooks  
 **Check 8:** @Event() uses ds prefix  
-**Check 9:** ComponentInterface + Loggable implementation  
+**Check 9:** DsComponentInterface + Logger contract  
 **Check 11:** Section dividers organize class body  
 **Check 14:** @Prop() and @Watch() placed together  
 **Check 16:** Component tag has ds- prefix  
@@ -31,7 +31,7 @@ Runs 14 design-system-specific checks — focusing on Stencil patterns, validato
 
 ✅ Import aliases (relative → @utils/@global)  
 ✅ Missing validateProps() method  
-✅ Missing Loggable implementation  
+✅ Missing DsComponentInterface implementation  
 ✅ Missing section dividers  
 ✅ Event naming (add ds prefix)  
 ✅ Component description  
@@ -55,7 +55,7 @@ Runs 14 design-system-specific checks — focusing on Stencil patterns, validato
 
 - Logger (@Logger decorator + createLogger method)
 - validateProps() method (called from connectedCallback + componentWillUpdate)
-- ComponentInterface implementation
+- DsComponentInterface implementation (includes Loggable)
 - Section dividers
 
 **Form components MUST also have:**
@@ -71,14 +71,14 @@ Runs 14 design-system-specific checks — focusing on Stencil patterns, validato
 Violations found (5):
   1. Relative imports from utils (use @utils)
   2. Missing validateProps() method
-  3. Missing Loggable implementation
+  3. Missing DsComponentInterface implementation
   4. Missing section dividers: PUBLIC PROPERTY API, LIFECYCLE
   5. Event 'change' missing ds prefix
 
 Applying fixes...
   ✓ Fixed import aliases
   ✓ Added validateProps() method
-  ✓ Added Loggable implementation
+  ✓ Added DsComponentInterface implementation
   ✓ Added section dividers
   ✓ Fixed event names
 

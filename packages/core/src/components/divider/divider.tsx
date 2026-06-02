@@ -96,7 +96,6 @@ export class Divider implements DsComponentInterface {
       <Host
         role="separator"
         class={{
-          divider: true,
           [`is-${this.layout}`]: hasValue(this.layout),
           [`is-${this.color}`]: hasValue(this.color),
           [`has-space-${this.space}`]: hasValue(this.space),

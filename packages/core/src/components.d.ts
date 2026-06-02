@@ -20,6 +20,7 @@ import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+import { FooterLanguageChangeDetail, FooterLink, FooterSocialLink } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -35,7 +36,6 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
@@ -58,6 +58,7 @@ export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+export { FooterLanguageChangeDetail, FooterLink, FooterSocialLink } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -73,7 +74,6 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
@@ -930,6 +930,53 @@ export namespace Components {
           * Opens the drawer.
          */
         "present": () => Promise<void>;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     */
+    interface DsFooter {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * If `true` the legal links area will be hidden.
+          * @default false
+         */
+        "hideLinks": boolean;
+        /**
+          * Copyright and address text below the divider.
+          * @default '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'
+         */
+        "legalText": string;
+        /**
+          * Link target for the logo.
+          * @default ''
+         */
+        "logoHref": string;
+        /**
+          * Raw svg markup for a custom logo.
+          * @default ''
+         */
+        "logoSvg": string;
+        /**
+          * Optional generated links when no slotted links are provided.
+          * @default undefined
+         */
+        "overrideLinks": FooterLink[] | undefined;
+        /**
+          * If `true` the social links area is shown.
+          * @default false
+         */
+        "showSocialMedia": boolean;
+        /**
+          * Optional generated social links when no slotted social links are provided.
+          * @default undefined
+         */
+        "socialLinks": FooterSocialLink[] | undefined;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -2392,25 +2439,60 @@ export namespace Components {
         "selected": boolean;
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
      */
     interface DsSteps {
         /**
-          * Accent color applied to inactive circles and connector lines.
-          * @default ''
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
          */
-        "color": StepsColor;
+        "activeIndex": number;
         /**
-          * Accessible label for the navigation landmark (navigation variant only).
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done": boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden": boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Visible text label displayed below the circle.
           * @default ''
          */
         "label": string;
         /**
-          * The `name` of the currently selected ds-step (panels variant).
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
          */
-        "value"?: string | null;
+        "name": string;
         /**
-          * If `true`, the steplist is displayed vertically.
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
           * @default false
          */
         "vertical": boolean;
@@ -2984,6 +3066,10 @@ export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsDrawerElement;
 }
+export interface DsFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsFooterElement;
+}
 export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
@@ -3352,6 +3438,27 @@ declare global {
     var HTMLDsDrawerElement: {
         prototype: HTMLDsDrawerElement;
         new (): HTMLDsDrawerElement;
+    };
+    interface HTMLDsFooterElementEventMap {
+        "dsLanguageChange": FooterLanguageChangeDetail;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     */
+    interface HTMLDsFooterElement extends Components.DsFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsFooterElement: {
+        prototype: HTMLDsFooterElement;
+        new (): HTMLDsFooterElement;
     };
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -3789,10 +3896,10 @@ declare global {
         new (): HTMLDsStepPanelElement;
     };
     interface HTMLDsStepsElementEventMap {
-        "dsChange": StepsChangeDetail;
+        "dsStepSelect": { name: string };
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
      */
     interface HTMLDsStepsElement extends Components.DsSteps, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsStepsElementEventMap>(type: K, listener: (this: HTMLDsStepsElement, ev: DsStepsCustomEvent<HTMLDsStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4008,6 +4115,7 @@ declare global {
         "ds-content": HTMLDsContentElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
+        "ds-footer": HTMLDsFooterElement;
         "ds-heading": HTMLDsHeadingElement;
         "ds-hint": HTMLDsHintElement;
         "ds-hint-text": HTMLDsHintTextElement;
@@ -4970,6 +5078,56 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     */
+    interface DsFooter {
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * If `true` the legal links area will be hidden.
+          * @default false
+         */
+        "hideLinks"?: boolean;
+        /**
+          * Copyright and address text below the divider.
+          * @default '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'
+         */
+        "legalText"?: string;
+        /**
+          * Link target for the logo.
+          * @default ''
+         */
+        "logoHref"?: string;
+        /**
+          * Raw svg markup for a custom logo.
+          * @default ''
+         */
+        "logoSvg"?: string;
+        /**
+          * Emitted when the language select value changes.
+         */
+        "onDsLanguageChange"?: (event: DsFooterCustomEvent<FooterLanguageChangeDetail>) => void;
+        /**
+          * Optional generated links when no slotted links are provided.
+          * @default undefined
+         */
+        "overrideLinks"?: FooterLink[] | undefined;
+        /**
+          * If `true` the social links area is shown.
+          * @default false
+         */
+        "showSocialMedia"?: boolean;
+        /**
+          * Optional generated social links when no slotted social links are provided.
+          * @default undefined
+         */
+        "socialLinks"?: FooterSocialLink[] | undefined;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -6527,29 +6685,64 @@ declare namespace LocalJSX {
         "selected"?: boolean;
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
      */
     interface DsSteps {
         /**
-          * Accent color applied to inactive circles and connector lines.
-          * @default ''
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
          */
-        "color"?: StepsColor;
+        "activeIndex"?: number;
         /**
-          * Accessible label for the navigation landmark (navigation variant only).
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done"?: boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden"?: boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Visible text label displayed below the circle.
           * @default ''
          */
         "label"?: string;
         /**
-          * Emitted when the selected step changes (panels variant only).
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
          */
-        "onDsChange"?: (event: DsStepsCustomEvent<StepsChangeDetail>) => void;
+        "name": string;
         /**
-          * The `name` of the currently selected ds-step (panels variant).
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
          */
-        "value"?: string | null;
+        "navigation"?: boolean;
         /**
-          * If `true`, the steplist is displayed vertically.
+          * Emitted when the user clicks this step (panels mode only).
+         */
+        "onDsStepSelect"?: (event: DsStepsCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
           * @default false
          */
         "vertical"?: boolean;
@@ -7318,6 +7511,14 @@ declare namespace LocalJSX {
         "label": string;
         "container": DrawerContainer;
     }
+    interface DsFooterAttributes {
+        "hideLanguageSelection": boolean;
+        "hideLinks": boolean;
+        "logoHref": string;
+        "logoSvg": string;
+        "showSocialMedia": boolean;
+        "legalText": string;
+    }
     interface DsHeadingAttributes {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
@@ -7611,9 +7812,16 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsStepsAttributes {
-        "color": StepsColor;
+        "activeIndex": number;
+        "disabled": boolean;
+        "done": boolean;
+        "hidden": boolean;
+        "index": number;
+        "invalid": boolean;
         "label": string;
-        "value": string | null;
+        "name": string;
+        "navigation": boolean;
+        "selected": boolean;
         "vertical": boolean;
     }
     interface DsTabAttributes {
@@ -7749,6 +7957,7 @@ declare namespace LocalJSX {
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
+        "ds-footer": Omit<DsFooter, keyof DsFooterAttributes> & { [K in keyof DsFooter & keyof DsFooterAttributes]?: DsFooter[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `attr:${K}`]?: DsFooterAttributes[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `prop:${K}`]?: DsFooter[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
         "ds-hint": Omit<DsHint, keyof DsHintAttributes> & { [K in keyof DsHint & keyof DsHintAttributes]?: DsHint[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `attr:${K}`]?: DsHintAttributes[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `prop:${K}`]?: DsHint[K] };
         "ds-hint-text": DsHintText;
@@ -7777,7 +7986,7 @@ declare namespace LocalJSX {
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
         "ds-step": Omit<DsStep, keyof DsStepAttributes> & { [K in keyof DsStep & keyof DsStepAttributes]?: DsStep[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `attr:${K}`]?: DsStepAttributes[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `prop:${K}`]?: DsStep[K] } & OneOf<"name", DsStep["name"], DsStepAttributes["name"]>;
         "ds-step-panel": Omit<DsStepPanel, keyof DsStepPanelAttributes> & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes]?: DsStepPanel[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `attr:${K}`]?: DsStepPanelAttributes[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `prop:${K}`]?: DsStepPanel[K] } & OneOf<"for", DsStepPanel["for"], DsStepPanelAttributes["for"]>;
-        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] };
+        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] } & OneOf<"name", DsSteps["name"], DsStepsAttributes["name"]>;
         "ds-tab": Omit<DsTab, keyof DsTabAttributes> & { [K in keyof DsTab & keyof DsTabAttributes]?: DsTab[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `attr:${K}`]?: DsTabAttributes[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `prop:${K}`]?: DsTab[K] } & OneOf<"name", DsTab["name"], DsTabAttributes["name"]>;
         "ds-tab-panel": Omit<DsTabPanel, keyof DsTabPanelAttributes> & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes]?: DsTabPanel[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `attr:${K}`]?: DsTabPanelAttributes[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `prop:${K}`]?: DsTabPanel[K] } & OneOf<"for", DsTabPanel["for"], DsTabPanelAttributes["for"]>;
         "ds-tabs": Omit<DsTabs, keyof DsTabsAttributes> & { [K in keyof DsTabs & keyof DsTabsAttributes]?: DsTabs[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `attr:${K}`]?: DsTabsAttributes[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `prop:${K}`]?: DsTabs[K] };
@@ -7877,6 +8086,11 @@ declare module "@stencil/core" {
              * and Escape-key handling.
              */
             "ds-drawer": LocalJSX.IntrinsicElements["ds-drawer"] & JSXBase.HTMLAttributes<HTMLDsDrawerElement>;
+            /**
+             * Footer renders application level legal links, language selection, and social links.
+             * Link content is slot first to keep links crawlable and SEO friendly.
+             */
+            "ds-footer": LocalJSX.IntrinsicElements["ds-footer"] & JSXBase.HTMLAttributes<HTMLDsFooterElement>;
             /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */
@@ -8002,7 +8216,7 @@ declare module "@stencil/core" {
              */
             "ds-step-panel": LocalJSX.IntrinsicElements["ds-step-panel"] & JSXBase.HTMLAttributes<HTMLDsStepPanelElement>;
             /**
-             * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+             * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
              */
             "ds-steps": LocalJSX.IntrinsicElements["ds-steps"] & JSXBase.HTMLAttributes<HTMLDsStepsElement>;
             /**

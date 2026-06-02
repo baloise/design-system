@@ -1,0 +1,51 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <main class="container py-medium">
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-footer>
+          <p>Footer Content</p>
+          <a slot="links" href="/impressum">Impressum</a>
+          <a slot="links" href="/legal">Rechtliche Hinweise</a>
+          <a slot="links" href="/privacy">Datenschutz</a>
+          <a slot="links" href="/cookies">Cookie Policy</a>
+          <a slot="links" href="/accessibility">Erklaerung zur Barrierefreiheit</a>
+          <a slot="social-links" href="https://www.facebook.com" aria-label="Facebook">
+            <ds-icon name="facebook"></ds-icon>
+          </a>
+          <a slot="social-links" href="https://www.instagram.com" aria-label="Instagram">
+            <ds-icon name="instagram"></ds-icon>
+          </a>
+          <a slot="social-links" href="https://www.linkedin.com" aria-label="LinkedIn">
+            <ds-icon name="linkedin"></ds-icon>
+          </a>
+          <a slot="social-links" href="https://www.youtube.com" aria-label="YouTube">
+            <ds-icon name="youtube"></ds-icon>
+          </a>
+        </ds-footer>
+      </section>
+
+      <section data-testid="slotted-logo">
+        <span>Custom Logo</span>
+        <ds-footer hide-language-selection show-social-media>
+          <a slot="logo" href="/" aria-label="Home"><strong style="font-size: 1.75rem">baloise</strong></a>
+          <p>Footer Content</p>
+          <a slot="links" href="/imprint">Imprint</a>
+          <a slot="links" href="/privacy">Privacy</a>
+        </ds-footer>
+      </section>
+    </main>
+  </body>
+</html>

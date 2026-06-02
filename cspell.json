@@ -2,9 +2,19 @@
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
   "language": "en",
-  "dictionaries": ["en_us", "softwareTerms", "lorem-ipsum", "typescript", "css", "html"],
+  "dictionaries": [
+    "en_us",
+    "softwareTerms",
+    "lorem-ipsum",
+    "typescript",
+    "css",
+    "html"
+  ],
   "useGitignore": true,
-  "files": ["docs/src/**/*.{md,mdx}", "packages/core/src/**/*.{tsx,ts}"],
+  "files": [
+    "docs/src/**/*.{md,mdx}",
+    "packages/core/src/**/*.{tsx,ts}"
+  ],
   "ignorePaths": [
     "packages/core/src/**/*.i18n.ts",
     "packages/core/src/**/*.data.ts",
@@ -19,6 +29,7 @@
     "accusam",
     "adipiscing",
     "adipisicing",
+    "Aeschengraben",
     "aliqua",
     "aliquyam",
     "amet",
@@ -47,6 +58,7 @@
     "contactjs",
     "Contentful",
     "copyfiles",
+    "crawlable",
     "Datenschutz",
     "datepicker",
     "datestring",

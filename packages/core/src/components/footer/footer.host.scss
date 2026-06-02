@@ -1,0 +1,210 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+:host {
+  /**
+   * Available token groups:
+   * --ds-alias-background-color-*
+   * --ds-alias-text-color-*
+   * --ds-alias-space-*
+   */
+  --footer-background: var(--ds-alias-background-color-primary);
+  --footer-color: var(--ds-alias-text-color-white);
+  --footer-link-color: var(--ds-alias-text-color-white);
+  --footer-link-color-hover: var(--ds-button-color-inverted-link-hover-text);
+  --footer-divider-color: color-mix(in srgb, var(--ds-alias-text-color-white) 24%, transparent);
+  --footer-content-max-width: var(--ds-alias-container-width-base);
+
+  display: block;
+  color: var(--footer-color);
+  background: var(--footer-background);
+}
+
+footer {
+  margin: 0 auto;
+  max-width: var(--footer-content-max-width);
+  padding: 2rem 1rem 1.5rem;
+}
+
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-flex;
+  color: inherit;
+}
+
+.logo-svg {
+  display: inline-flex;
+}
+
+.language-picker {
+  align-items: center;
+  border: 0;
+  color: var(--footer-color);
+  display: inline-flex;
+  gap: 0.5rem;
+  margin: 0 0 0 auto;
+  max-width: 100%;
+  width: auto;
+}
+
+.language-picker ds-icon {
+  --icon-color: currentColor;
+  flex-shrink: 0;
+}
+
+.language-picker select {
+  appearance: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  line-height: 1.3;
+  min-width: auto;
+  padding: 0;
+}
+
+.language-picker select:hover,
+.language-picker select:focus-visible {
+  color: var(--footer-link-color-hover);
+}
+
+.content {
+  padding-top: 1.5rem;
+}
+
+// .divider {
+//   --divider-color: var(--footer-divider-color);
+//   margin: 1.5rem 0 1rem;
+// }
+
+.bottom-row {
+  display: grid;
+  font-size: 0.875rem;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  line-height: 1.5;
+}
+
+.legal {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.links,
+.social {
+  min-width: 0;
+}
+
+.link-list,
+.social-list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.social-list {
+  gap: 0.5rem;
+}
+
+.link-list li,
+.social-list li {
+  list-style: none;
+}
+
+.links a,
+::slotted([slot='links']) {
+  color: var(--footer-link-color);
+  text-decoration: none;
+}
+
+.links a:hover,
+::slotted([slot='links']:hover) {
+  color: var(--footer-link-color-hover);
+  text-decoration: underline;
+}
+
+.social a,
+::slotted([slot='social-links']) {
+  --icon-color: var(--ds-alias-text-color-white);
+  --icon-size: var(--ds-icon-size-sm);
+  align-items: center;
+  border-radius: 999px;
+  color: var(--footer-link-color);
+  display: inline-flex;
+  height: 2rem;
+  justify-content: center;
+  text-decoration: none;
+  width: 2rem;
+}
+
+.social a:hover,
+::slotted([slot='social-links']:hover) {
+  --icon-color: var(--footer-link-color-hover);
+  color: var(--footer-link-color-hover);
+}
+
+::slotted([slot='links']),
+::slotted([slot='social-links']) {
+  margin-right: 1rem;
+}
+
+@include tablet {
+  footer {
+    padding: 2.5rem 2rem 1.75rem;
+  }
+
+  .bottom-row {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .social,
+  .links {
+    justify-self: start;
+  }
+}
+
+@include desktop {
+  .bottom-row {
+    align-items: center;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'legal social'
+      'links links';
+  }
+
+  .legal {
+    align-self: center;
+    grid-area: legal;
+  }
+
+  .social {
+    align-self: center;
+    grid-area: social;
+    justify-self: end;
+  }
+
+  .links {
+    grid-area: links;
+    justify-self: stretch;
+    width: 100%;
+  }
+}

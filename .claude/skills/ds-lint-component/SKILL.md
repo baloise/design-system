@@ -26,14 +26,15 @@ Audit and auto-fix Stencil component files against the design system style guide
    - Check 3: reflect attribute for state props
    - Check 4: validateProps() method
    - Check 8: ds prefix on events
-   - Check 9: ComponentInterface + Loggable
-   - Check 11: Section comment dividers
-   - Check 14: @Prop() + @Watch() together
-   - Check 16: ds- prefix on component tag
-   - Check 17: One-sentence component description
-   - Check 18: @slot and @part JSDoc tags
-   - Check 19: CSS classes over attribute selectors (warn only)
-   - Check 20: Enum props with = '' default
+
+- Check 9: DsComponentInterface + Logger contract
+- Check 11: Section comment dividers
+- Check 14: @Prop() + @Watch() together
+- Check 16: ds- prefix on component tag
+- Check 17: One-sentence component description
+- Check 18: @slot and @part JSDoc tags
+- Check 19: CSS classes over attribute selectors (warn only)
+- Check 20: Enum props with = '' default
 
 3. **Reports violations** before fixing
 4. **Auto-fixes violations** in single Edit passes
@@ -49,12 +50,12 @@ Audit and auto-fix Stencil component files against the design system style guide
 
 ```
 Violations found in button.tsx:
-0. Missing import alias: Loggable imported from '../../utils/log' (use @utils)
+0. Missing import alias: imports from '../../utils/*' (use @utils)
 1. Const arrays in interfaces.ts not exported flat (wrapped in namespace)
 3. State prop 'value' missing reflect: true
 4. Missing validateProps() method
 8. Event 'change' missing ds prefix → dsChange
-9. Missing Loggable implementation
+9. Missing DsComponentInterface implementation
 11. Missing section dividers: PUBLIC PROPERTY API, LIFECYCLE
 17. Missing component description on class JSDoc
 
@@ -63,7 +64,7 @@ Applying fixes...
   ✓ Added validateProps() method
   ✓ Added component description
   ✓ Added section dividers
-  ✓ Added Loggable implementation
+  ✓ Added DsComponentInterface implementation
 
 Summary: 4 files modified, 8 violations fixed.
 No violations in interfaces.ts
@@ -82,7 +83,7 @@ Warning: Check button.host.scss for attribute selectors (CSS class selectors rec
 | 3     | State props (disabled, value, etc.) have reflect: true                   | Yes        | -         |
 | 4     | validateProps() method called from connectedCallback/componentWillUpdate | Yes        | -         |
 | 8     | @Event() declarations use ds prefix                                      | Yes        | -         |
-| 9     | ComponentInterface + Loggable implementation                             | Yes        | -         |
+| 9     | DsComponentInterface implementation + @Logger/createLogger contract      | Yes        | -         |
 | 11    | Section comment dividers organize class body                             | Yes        | -         |
 | 14    | @Prop() and @Watch() declarations placed together                        | Yes        | -         |
 | 16    | Component tag has ds- prefix, class name doesn't                         | Yes        | -         |
@@ -97,7 +98,7 @@ Warning: Check button.host.scss for attribute selectors (CSS class selectors rec
 
 - ✅ Logger (@Logger decorator + createLogger method)
 - ✅ validateProps() method (called from connectedCallback + componentWillUpdate)
-- ✅ ComponentInterface implementation
+- ✅ DsComponentInterface implementation (includes Loggable)
 - ✅ Section dividers organizing class body
 
 **Form components MUST have:**

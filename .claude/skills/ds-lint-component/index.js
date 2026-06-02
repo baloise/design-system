@@ -43,9 +43,17 @@ function analyzeComponent(componentName) {
     violations.push('4. Missing validateProps() method')
   }
 
-  // Check for Loggable
-  if (!content.includes('Loggable') || !content.includes('@Logger')) {
-    violations.push('9. Missing Loggable implementation or @Logger')
+  // Check 9: DsComponentInterface + Logger contract
+  const hasDsComponentInterface = content.includes('DsComponentInterface')
+  const hasLogger = content.includes('@Logger')
+  const hasCreateLogger = content.includes('createLogger')
+
+  if (!hasDsComponentInterface) {
+    violations.push('9. Missing DsComponentInterface implementation')
+  }
+
+  if (!hasLogger || !hasCreateLogger) {
+    violations.push('9. Missing @Logger decorator or createLogger method')
   }
 
   // Check for section dividers
