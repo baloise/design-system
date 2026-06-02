@@ -295,11 +295,7 @@ export class ${this.pascalName} implements DsComponentInterface${needsI18n || ha
 
   generateHostScss() {
     const tokenComments = this.getTokenComments()
-    return `// ═══════════════════════════════════════════════════════════════════════════
-// Design Tokens Available
-// ═══════════════════════════════════════════════════════════════════════════
-
-${tokenComments}
+    return `${tokenComments}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Component Styles
@@ -307,8 +303,12 @@ ${tokenComments}
 
 :host {
   display: inline-block;
-  // TODO: Add component styles
+  // TODO: Add component styles using global tokens above
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Animations & Testing
+// ═══════════════════════════════════════════════════════════════════════════
 
 // Disable animations for visual testing
 :host(.no-animation) * {
@@ -372,36 +372,42 @@ export const i18nDs${this.pascalName}: I18n<I18nDs${this.pascalName}> = {
   }
 
   getTokenComments() {
-    if (!this.tokens || !this.tokens.ds) {
-      return '// Design tokens not loaded'
-    }
-
     const comments = []
 
-    if (this.tokens.ds.color) {
-      const colors = Object.keys(this.tokens.ds.color)
-      comments.push('// Colors:')
-      colors.forEach(color => {
-        comments.push(`//   --ds-color-${color}-{1..10}`)
-      })
-    }
-
-    if (this.tokens.ds.text) {
-      comments.push('// Typography:')
-      comments.push('//   --ds-text-size-{xs,sm,md,lg,xl,2xl}')
-      comments.push('//   --ds-text-weight-{regular,medium,bold}')
-      comments.push('//   --ds-text-line-height-{tight,normal,loose}')
-    }
-
-    if (this.tokens.ds.spacing) {
-      comments.push('// Spacing:')
-      comments.push('//   --ds-spacing-{xs,sm,md,lg,xl,2xl}')
-    }
-
-    if (this.tokens.ds.border) {
-      comments.push('// Borders:')
-      comments.push('//   --ds-border-radius-{xs,sm,md,lg}')
-    }
+    comments.push('// ═══════════════════════════════════════════════════════════════════════════')
+    comments.push('// Design Tokens - ALWAYS use ALIAS tokens first, then GLOBAL tokens')
+    comments.push('// ═══════════════════════════════════════════════════════════════════════════')
+    comments.push('//')
+    comments.push('// 🎨 ALIAS TOKENS (PREFERRED) - Semantic tokens designed for UI:')
+    comments.push('//   Text Colors:')
+    comments.push('//     --ds-alias-text-color-primary (default text)')
+    comments.push('//     --ds-alias-text-color-primary-light (hints, descriptions)')
+    comments.push('//     --ds-alias-text-color-grey (secondary text)')
+    comments.push('//     --ds-alias-text-color-grey-dark (dark grey text)')
+    comments.push('//     --ds-alias-text-color-disabled (disabled state)')
+    comments.push('//     --ds-alias-text-color-white (on dark backgrounds)')
+    comments.push('//     --ds-alias-text-color-danger, -warning, -success, -info')
+    comments.push('//   Text Sizes:')
+    comments.push('//     --ds-alias-text-size-{xs,sm,base,md,lg,xl,2xl,3xl}-{mobile,tablet,desktop}')
+    comments.push('//')
+    comments.push('// 🔧 GLOBAL TOKENS (FALLBACK) - Low-level design values:')
+    comments.push('//   Colors:')
+    comments.push('//     --ds-global-color-{white, black, grey-1..6, primary-1..6, danger-1..6, etc.}')
+    comments.push('//   Typography:')
+    comments.push('//     --ds-global-font-family-{body,heading}')
+    comments.push('//     --ds-global-font-weight-{300,400,700}')
+    comments.push('//     --ds-global-font-size-{12,14,16,18,20,24,28,32,40,48}')
+    comments.push('//     --ds-global-font-line-height-{1,2,3,4}')
+    comments.push('//   Spacing & Sizing:')
+    comments.push('//     --ds-global-size-border-{0,1,2,3}')
+    comments.push('//     --ds-global-size-radius-{0,1,2,3}')
+    comments.push('//')
+    comments.push('// 📋 COMMON PATTERNS:')
+    comments.push('//   color: var(--ds-alias-text-color-primary);')
+    comments.push('//   border: var(--ds-global-size-border-1) solid var(--ds-global-color-grey-3);')
+    comments.push('//   background: var(--ds-global-color-white);')
+    comments.push('//   font-weight: var(--ds-global-font-weight-700);')
+    comments.push('//')
 
     return comments.join('\n')
   }

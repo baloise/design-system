@@ -1,0 +1,188 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- SUB-COMPONENTS PATTERN: Using ds-data-label and ds-data-value slots -->
+      <h2>Sub-Components Pattern (slot-based)</h2>
+
+      <!-- Basic Data List -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-data>
+          <ds-data-item>
+            <ds-data-label slot="label">Label</ds-data-label>
+            <ds-data-value>Value</ds-data-value>
+          </ds-data-item>
+          <ds-data-item>
+            <ds-data-label slot="label">Email</ds-data-label>
+            <ds-data-value>user@example.com</ds-data-value>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- With Border -->
+      <section data-testid="border">
+        <span>With Border</span>
+        <ds-data border="true">
+          <ds-data-item border="true">
+            <ds-data-label slot="label">Name</ds-data-label>
+            <ds-data-value>John Doe</ds-data-value>
+          </ds-data-item>
+          <ds-data-item border="true">
+            <ds-data-label slot="label">Address</ds-data-label>
+            <ds-data-value>123 Main St</ds-data-value>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- Horizontal Layout -->
+      <section data-testid="horizontal">
+        <span>Horizontal Layout</span>
+        <ds-data horizontal="true" border="true">
+          <ds-data-item>
+            <ds-data-label slot="label">Label 1</ds-data-label>
+            <ds-data-value>Value 1</ds-data-value>
+          </ds-data-item>
+          <ds-data-item>
+            <ds-data-label slot="label">Label 2</ds-data-label>
+            <ds-data-value>Value 2</ds-data-value>
+          </ds-data-item>
+          <ds-data-item>
+            <ds-data-label slot="label">Label 3</ds-data-label>
+            <ds-data-value>Value 3</ds-data-value>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- Multiline Values -->
+      <section data-testid="multiline">
+        <span>Multiline Values</span>
+        <ds-data border="true">
+          <ds-data-item border="true" multiline="true">
+            <ds-data-label slot="label">Description</ds-data-label>
+            <ds-data-value>
+              This is a very long value that should wrap to multiple lines to demonstrate the multiline functionality of
+              the data value component.
+            </ds-data-value>
+          </ds-data-item>
+          <ds-data-item border="true" multiline="true">
+            <ds-data-label slot="label">List</ds-data-label>
+            <ds-data-value>
+              <ul class="unordered-list">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+              </ul>
+            </ds-data-value>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- Required Labels -->
+      <section data-testid="required">
+        <span>Required Labels</span>
+        <ds-data border="true">
+          <ds-data-item border="true">
+            <ds-data-label slot="label" required>Name</ds-data-label>
+            <ds-data-value>John Doe</ds-data-value>
+          </ds-data-item>
+          <ds-data-item border="true">
+            <ds-data-label slot="label" required>Email</ds-data-label>
+            <ds-data-value>john@example.com</ds-data-value>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- Disabled State -->
+      <section data-testid="disabled">
+        <span>Disabled State</span>
+        <ds-data border="true">
+          <ds-data-item border="true">
+            <ds-data-label slot="label">Enabled Item</ds-data-label>
+            <ds-data-value>This is enabled</ds-data-value>
+          </ds-data-item>
+          <ds-data-item border="true" disabled="true">
+            <ds-data-label slot="label">Disabled Item</ds-data-label>
+            <ds-data-value>This is disabled</ds-data-value>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- CUSTOM LABEL/INPUT PATTERN: Using native label and form elements -->
+      <h2>Custom Label & Input Pattern (for/id linking)</h2>
+
+      <!-- Form with Custom Labels -->
+      <section data-testid="custom-form">
+        <span>Form with Custom Labels and Inputs</span>
+        <ds-data border="true">
+          <ds-data-item border="true">
+            <label slot="label" for="input-name">Full Name</label>
+            <input id="input-name" slot="value" type="text" placeholder="Enter your name" />
+          </ds-data-item>
+          <ds-data-item border="true">
+            <label slot="label" for="input-email">Email Address</label>
+            <input id="input-email" slot="value" type="email" placeholder="Enter your email" />
+          </ds-data-item>
+          <ds-data-item border="true">
+            <label slot="label" for="input-phone">Phone Number</label>
+            <input id="input-phone" slot="value" type="tel" placeholder="Enter your phone" />
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- Mixed Content Types -->
+      <section data-testid="mixed-content">
+        <span>Mixed Content Types</span>
+        <ds-data border="true">
+          <ds-data-item border="true">
+            <ds-data-label slot="label">Display Value</ds-data-label>
+            <ds-data-value>Static text value</ds-data-value>
+          </ds-data-item>
+          <ds-data-item border="true">
+            <label slot="label" for="textarea-bio">Biography</label>
+            <textarea id="textarea-bio" slot="value" placeholder="Enter biography..."></textarea>
+          </ds-data-item>
+          <ds-data-item border="true">
+            <label slot="label" for="select-country">Country</label>
+            <select id="select-country" slot="value">
+              <option>Select a country...</option>
+              <option>United States</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+            </select>
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+      <!-- Required Custom Inputs -->
+      <section data-testid="custom-required">
+        <span>Required Custom Inputs</span>
+        <ds-data border="true">
+          <ds-data-item border="true">
+            <label slot="label" for="required-field-1">
+              <span>Username <span style="color: red;">*</span></span>
+            </label>
+            <input id="required-field-1" slot="value" type="text" required />
+          </ds-data-item>
+          <ds-data-item border="true">
+            <label slot="label" for="required-field-2">
+              <span>Password <span style="color: red;">*</span></span>
+            </label>
+            <input id="required-field-2" slot="value" type="password" required />
+          </ds-data-item>
+        </ds-data>
+      </section>
+
+    </main>
+  </body>
+</html>

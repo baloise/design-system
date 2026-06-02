@@ -10,6 +10,7 @@ generated
 vite.config.ts.**.mjs
 .env
 .secrets
+.playwright-mcp
 
 # dependencies
 node_modules

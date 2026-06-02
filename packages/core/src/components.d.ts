@@ -35,7 +35,6 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
@@ -73,7 +72,6 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
@@ -864,6 +862,65 @@ export namespace Components {
           * @default ''
          */
         "textAlign": ContentTextAlignment;
+    }
+    /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with optional borders.
+     */
+    interface DsData {
+        /**
+          * If `true` a bottom border is added to the data-items.
+          * @default false
+         */
+        "border": boolean;
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+          * @default false
+         */
+        "horizontal": boolean;
+    }
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface DsDataItem {
+        /**
+          * If `true` a bottom border is added to the data-item.
+          * @default false
+         */
+        "border": boolean;
+        /**
+          * If `true` the item gets a lighter font color.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true` a small button with an edit icon is shown on the right.
+          * @default false
+         */
+        "editable": boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+          * @default false
+         */
+        "multiline": boolean;
+    }
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface DsDataLabel {
+        /**
+          * If `true` an asterisk is added after the label.
+          * @default false
+         */
+        "required": boolean;
+    }
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface DsDataValue {
     }
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -2392,25 +2449,60 @@ export namespace Components {
         "selected": boolean;
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Steps is a container for step indicators, showing progress through a multi-step process.
      */
     interface DsSteps {
         /**
-          * Accent color applied to inactive circles and connector lines.
-          * @default ''
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
          */
-        "color": StepsColor;
+        "activeIndex": number;
         /**
-          * Accessible label for the navigation landmark (navigation variant only).
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done": boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden": boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Visible text label displayed below the circle.
           * @default ''
          */
         "label": string;
         /**
-          * The `name` of the currently selected ds-step (panels variant).
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
          */
-        "value"?: string | null;
+        "name": string;
         /**
-          * If `true`, the steplist is displayed vertically.
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
           * @default false
          */
         "vertical": boolean;
@@ -3320,6 +3412,46 @@ declare global {
         new (): HTMLDsContentElement;
     };
     /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with optional borders.
+     */
+    interface HTMLDsDataElement extends Components.DsData, HTMLStencilElement {
+    }
+    var HTMLDsDataElement: {
+        prototype: HTMLDsDataElement;
+        new (): HTMLDsDataElement;
+    };
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface HTMLDsDataItemElement extends Components.DsDataItem, HTMLStencilElement {
+    }
+    var HTMLDsDataItemElement: {
+        prototype: HTMLDsDataItemElement;
+        new (): HTMLDsDataItemElement;
+    };
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface HTMLDsDataLabelElement extends Components.DsDataLabel, HTMLStencilElement {
+    }
+    var HTMLDsDataLabelElement: {
+        prototype: HTMLDsDataLabelElement;
+        new (): HTMLDsDataLabelElement;
+    };
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface HTMLDsDataValueElement extends Components.DsDataValue, HTMLStencilElement {
+    }
+    var HTMLDsDataValueElement: {
+        prototype: HTMLDsDataValueElement;
+        new (): HTMLDsDataValueElement;
+    };
+    /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
      */
     interface HTMLDsDividerElement extends Components.DsDivider, HTMLStencilElement {
@@ -3789,10 +3921,10 @@ declare global {
         new (): HTMLDsStepPanelElement;
     };
     interface HTMLDsStepsElementEventMap {
-        "dsChange": StepsChangeDetail;
+        "dsStepSelect": { name: string };
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Steps is a container for step indicators, showing progress through a multi-step process.
      */
     interface HTMLDsStepsElement extends Components.DsSteps, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsStepsElementEventMap>(type: K, listener: (this: HTMLDsStepsElement, ev: DsStepsCustomEvent<HTMLDsStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4006,6 +4138,10 @@ declare global {
         "ds-checkbox-group": HTMLDsCheckboxGroupElement;
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
+        "ds-data": HTMLDsDataElement;
+        "ds-data-item": HTMLDsDataItemElement;
+        "ds-data-label": HTMLDsDataLabelElement;
+        "ds-data-value": HTMLDsDataValueElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
         "ds-heading": HTMLDsHeadingElement;
@@ -4897,6 +5033,65 @@ declare namespace LocalJSX {
           * @default ''
          */
         "textAlign"?: ContentTextAlignment;
+    }
+    /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with optional borders.
+     */
+    interface DsData {
+        /**
+          * If `true` a bottom border is added to the data-items.
+          * @default false
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+          * @default false
+         */
+        "horizontal"?: boolean;
+    }
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface DsDataItem {
+        /**
+          * If `true` a bottom border is added to the data-item.
+          * @default false
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the item gets a lighter font color.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` a small button with an edit icon is shown on the right.
+          * @default false
+         */
+        "editable"?: boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+          * @default false
+         */
+        "multiline"?: boolean;
+    }
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface DsDataLabel {
+        /**
+          * If `true` an asterisk is added after the label.
+          * @default false
+         */
+        "required"?: boolean;
+    }
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface DsDataValue {
     }
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -6527,29 +6722,64 @@ declare namespace LocalJSX {
         "selected"?: boolean;
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Steps is a container for step indicators, showing progress through a multi-step process.
      */
     interface DsSteps {
         /**
-          * Accent color applied to inactive circles and connector lines.
-          * @default ''
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
          */
-        "color"?: StepsColor;
+        "activeIndex"?: number;
         /**
-          * Accessible label for the navigation landmark (navigation variant only).
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done"?: boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden"?: boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Visible text label displayed below the circle.
           * @default ''
          */
         "label"?: string;
         /**
-          * Emitted when the selected step changes (panels variant only).
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
          */
-        "onDsChange"?: (event: DsStepsCustomEvent<StepsChangeDetail>) => void;
+        "name": string;
         /**
-          * The `name` of the currently selected ds-step (panels variant).
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
          */
-        "value"?: string | null;
+        "navigation"?: boolean;
         /**
-          * If `true`, the steplist is displayed vertically.
+          * Emitted when the user clicks this step (panels mode only).
+         */
+        "onDsStepSelect"?: (event: DsStepsCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
           * @default false
          */
         "vertical"?: boolean;
@@ -7305,6 +7535,19 @@ declare namespace LocalJSX {
         "space": ContentSpace;
         "alignment": StackAlignment;
     }
+    interface DsDataAttributes {
+        "border": boolean;
+        "horizontal": boolean;
+    }
+    interface DsDataItemAttributes {
+        "border": boolean;
+        "disabled": boolean;
+        "multiline": boolean;
+        "editable": boolean;
+    }
+    interface DsDataLabelAttributes {
+        "required": boolean;
+    }
     interface DsDividerAttributes {
         "layout": DividerLayout;
         "space": DividerSpace;
@@ -7611,9 +7854,16 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsStepsAttributes {
-        "color": StepsColor;
+        "activeIndex": number;
+        "disabled": boolean;
+        "done": boolean;
+        "hidden": boolean;
+        "index": number;
+        "invalid": boolean;
         "label": string;
-        "value": string | null;
+        "name": string;
+        "navigation": boolean;
+        "selected": boolean;
         "vertical": boolean;
     }
     interface DsTabAttributes {
@@ -7747,6 +7997,10 @@ declare namespace LocalJSX {
         "ds-checkbox-group": Omit<DsCheckboxGroup, keyof DsCheckboxGroupAttributes> & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes]?: DsCheckboxGroup[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `attr:${K}`]?: DsCheckboxGroupAttributes[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `prop:${K}`]?: DsCheckboxGroup[K] };
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
+        "ds-data": Omit<DsData, keyof DsDataAttributes> & { [K in keyof DsData & keyof DsDataAttributes]?: DsData[K] } & { [K in keyof DsData & keyof DsDataAttributes as `attr:${K}`]?: DsDataAttributes[K] } & { [K in keyof DsData & keyof DsDataAttributes as `prop:${K}`]?: DsData[K] };
+        "ds-data-item": Omit<DsDataItem, keyof DsDataItemAttributes> & { [K in keyof DsDataItem & keyof DsDataItemAttributes]?: DsDataItem[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `attr:${K}`]?: DsDataItemAttributes[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `prop:${K}`]?: DsDataItem[K] };
+        "ds-data-label": Omit<DsDataLabel, keyof DsDataLabelAttributes> & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes]?: DsDataLabel[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `attr:${K}`]?: DsDataLabelAttributes[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `prop:${K}`]?: DsDataLabel[K] };
+        "ds-data-value": DsDataValue;
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
@@ -7777,7 +8031,7 @@ declare namespace LocalJSX {
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
         "ds-step": Omit<DsStep, keyof DsStepAttributes> & { [K in keyof DsStep & keyof DsStepAttributes]?: DsStep[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `attr:${K}`]?: DsStepAttributes[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `prop:${K}`]?: DsStep[K] } & OneOf<"name", DsStep["name"], DsStepAttributes["name"]>;
         "ds-step-panel": Omit<DsStepPanel, keyof DsStepPanelAttributes> & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes]?: DsStepPanel[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `attr:${K}`]?: DsStepPanelAttributes[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `prop:${K}`]?: DsStepPanel[K] } & OneOf<"for", DsStepPanel["for"], DsStepPanelAttributes["for"]>;
-        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] };
+        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] } & OneOf<"name", DsSteps["name"], DsStepsAttributes["name"]>;
         "ds-tab": Omit<DsTab, keyof DsTabAttributes> & { [K in keyof DsTab & keyof DsTabAttributes]?: DsTab[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `attr:${K}`]?: DsTabAttributes[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `prop:${K}`]?: DsTab[K] } & OneOf<"name", DsTab["name"], DsTabAttributes["name"]>;
         "ds-tab-panel": Omit<DsTabPanel, keyof DsTabPanelAttributes> & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes]?: DsTabPanel[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `attr:${K}`]?: DsTabPanelAttributes[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `prop:${K}`]?: DsTabPanel[K] } & OneOf<"for", DsTabPanel["for"], DsTabPanelAttributes["for"]>;
         "ds-tabs": Omit<DsTabs, keyof DsTabsAttributes> & { [K in keyof DsTabs & keyof DsTabsAttributes]?: DsTabs[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `attr:${K}`]?: DsTabsAttributes[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `prop:${K}`]?: DsTabs[K] };
@@ -7867,6 +8121,26 @@ declare module "@stencil/core" {
              * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
              */
             "ds-content": LocalJSX.IntrinsicElements["ds-content"] & JSXBase.HTMLAttributes<HTMLDsContentElement>;
+            /**
+             * Data displays a list of label-value pairs in a organized, accessible format.
+             * Supports vertical and horizontal layouts with optional borders.
+             */
+            "ds-data": LocalJSX.IntrinsicElements["ds-data"] & JSXBase.HTMLAttributes<HTMLDsDataElement>;
+            /**
+             * DataItem is a container for label-value pairs within ds-data.
+             * Provides separate slots for label and value for semantic linking.
+             */
+            "ds-data-item": LocalJSX.IntrinsicElements["ds-data-item"] & JSXBase.HTMLAttributes<HTMLDsDataItemElement>;
+            /**
+             * DataLabel is a label element for use within ds-data-item.
+             * It displays a label with optional required indicator.
+             */
+            "ds-data-label": LocalJSX.IntrinsicElements["ds-data-label"] & JSXBase.HTMLAttributes<HTMLDsDataLabelElement>;
+            /**
+             * DataValue is a value element for use within ds-data-item.
+             * Pass-through slot container for value content.
+             */
+            "ds-data-value": LocalJSX.IntrinsicElements["ds-data-value"] & JSXBase.HTMLAttributes<HTMLDsDataValueElement>;
             /**
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */
@@ -8002,7 +8276,7 @@ declare module "@stencil/core" {
              */
             "ds-step-panel": LocalJSX.IntrinsicElements["ds-step-panel"] & JSXBase.HTMLAttributes<HTMLDsStepPanelElement>;
             /**
-             * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+             * Steps is a container for step indicators, showing progress through a multi-step process.
              */
             "ds-steps": LocalJSX.IntrinsicElements["ds-steps"] & JSXBase.HTMLAttributes<HTMLDsStepsElement>;
             /**
