@@ -25,15 +25,16 @@ Creates a complete component scaffold with:
 
 Then orchestrates:
 
-- `/ds-sync-component-tests` — Generate component interaction tests
-- `/ds-sync-visual-tests` — Generate visual regression tests
-- `/ds-sync-a11y-tests` — Generate accessibility tests
+- `/ds-test-component` — Generate component tests (visual, a11y, component, unit)
+- `/ds-document-component` — Generate component documentation
+- `/ds-lint-component` — Lint and fix component compliance
+- `/ds-sync-vars` — Sync component variables to design tokens
 
 **Features:**
 
 - Scans `origin/main` for old `bal-*` component API
 - Detects form components, i18n needs, animations automatically
-- Generates component types: wc-only, hybrid, css-html
+- Generates component types: wc-only, hybrid, css-only
 - Parses design tokens and comments available options
 - ElementInternals + form integration for form components
 - Deprecation markers for backwards-compatibility conflicts
@@ -44,162 +45,114 @@ Then orchestrates:
 
 ---
 
-### ds-sync-visual-tests
-
-**Generate and maintain visual regression test files for components.**
-
-```bash
-/ds-sync-visual-tests <component-name>
-```
-
-Analyzes component props and automatically creates `.visual.html`, `.style.html`, and `.visual.play.ts` test files with proper organization and structure.
-
-**Features:**
-
-- Parses component `@Prop()` declarations (skips `@internal`, `@deprecated`)
-- Detects component type (hybrid, web-component, HTML/CSS)
-- Interactive prop and pattern selection
-- Auto-generates trigger buttons for interactive components
-- Merges with existing files intelligently
-- Formats and lints output
-
-[→ Full documentation](./.claude/skills/ds-sync-visual-tests/README.md)
-
----
-
-### ds-sync-a11y-tests
-
-**Generate and maintain WCAG AA accessibility test files for components.**
-
-```bash
-/ds-sync-a11y-tests <component-name>
-```
-
-Analyzes component props and automatically creates `.a11y.play.ts` test files with accessibility audit coverage.
-
-**Features:**
-
-- Extracts enum constants from interfaces (`*_COLORS`, `*_SIZES`, `*_VARIANTS`, etc.)
-- Detects form components automatically
-- Creates describe blocks per enum category
-- Includes form state tests (disabled, invalid, required, readonly, checked)
-- Uses sensible defaults per component type
-- Ensures WCAG 2.2 AA compliance (EAA standards)
-- Formats and lints output
-
-[→ Full documentation](./.claude/skills/ds-sync-a11y-tests/README.md)
-
----
-
-### ds-sync-component-tests
-
-**Generate TDD test infrastructure: Page Objects, component interaction tests, and util unit tests.**
-
-```bash
-/ds-sync-component-tests <component-name>
-```
-
-Analyzes component structure and generates coordinated test files for TDD workflow.
-
-**Generates:**
-
-- **Page Object** (`.po.ts`) — Typed wrapper with action & assertion methods for `@baloise/ds-playwright`
-- **Component Test** (`.component.play.ts`) — Playwright tests for events, state, and methods
-- **Util Test** (`.util.spec.ts`) — Vitest unit tests with full branch coverage (if util file exists)
-
-**Features:**
-
-- Detects all `@Event()`, `@Prop()`, `@Method()` declarations
-- Extracts locators from JSDoc + shadow DOM
-- Generates event spy tests with TODO placeholders for expected values
-- Creates state tests (disabled, readonly, checked, value)
-- Includes form reset test for form components
-- Full branch coverage for util functions
-- Auto-comments TODOs for incomplete coverage
-- Updates `packages/playwright/src/lib/components/index.ts` to export PO
-- TDD-ready: test structure generated, user fills in assertions
-
-**Who uses Page Objects:**
-
-- Internal component tests (Playwright)
-- Published as public API in `@baloise/ds-playwright` for design system customers
-
-[→ Full documentation](./.claude/skills/ds-sync-component-tests/README.md)
-
----
-
 ### ds-lint-component
 
-**Audit and auto-fix Stencil components against the design system style guide.**
+**Lint and fix Helvetia Design System components for style guide compliance.**
 
 ```bash
 /ds-lint-component <component-name>
+/ds-lint-component <component-name> --fix
 ```
 
-Runs 14 design-system-specific checks (no ESLint duplication) and auto-fixes violations.
+Checks and auto-fixes:
 
-**Checks:**
+- **Prop Validation** — Every `@Prop()` has matching `@Validate*` decorator with correct types
+- **Divider Comments** — Section dividers formatted correctly and in proper order
+- **Lifecycle Hooks** — `setupValidation(this)` called in `connectedCallback()` and `componentWillUpdate()`
+- **Documentation** — JSDoc comments for props, events, methods, slots, and parts
 
-- Import aliases (@utils/@global)
-- Type annotations on @Prop()
-- reflect attribute for state props
-- validateProps() method
-- @Event() ds prefix
-- ComponentInterface + Loggable
-- Section dividers
-- @Prop()/@Watch() placement
-- Component tag naming
-- Component description
-- @slot/@part documentation
-- CSS classes over attribute selectors
-- Enum props with = '' default
+**Phases:**
 
-**Features:**
-
-- Reports violations before fixing
-- Auto-fixes 12+ checks
-- Warns on SCSS issues (don't fix)
-- Skips ESLint-covered rules (naming, visibility, async methods)
-- Fast feedback loop for style guide compliance
+- **Check** — Report violations to terminal and context
+- **Fix** — Auto-correct issues and write changes to files
 
 [→ Full documentation](./.claude/skills/ds-lint-component/README.md)
 
 ---
 
-### ds-vars-to-tokens
+### ds-test-component
 
-**Analyze and sync a component's CSS variables with the design token JSON.**
+**Auto-generate all test files for design system components.**
 
 ```bash
-/ds-vars-to-tokens <component-name>
+/ds-test-component <component-name>
 ```
 
-Ensures every `--ds-*` CSS variable reference in SCSS is properly wrapped in a component-specific design token, maintaining the token architecture.
+Generates comprehensive test coverage in one command:
 
-**Analyzes:**
-
-- `<component>.style.scss` — primary component styles (if exists)
-- `<component>.host.scss` — host element styles (if exists)
-- `<component>.mixin.scss` — shared SCSS mixins (if exist)
-
-**Detects & Fixes:**
-
-- ✗ `vars.local()` with direct alias/global refs (e.g., `var(--ds-color-primary-4)`)
-- ✗ Direct alias/global refs in CSS rules (not wrapped in `vars.local()`)
-- ⚠️ Hardcoded `vars.local()` literals (candidates for tokenization)
-- ℹ️ Modifier vars referencing missing design tokens (reported)
+- **Visual Tests** (`button.visual.html`, `button.visual.play.ts`) — Visual regression testing with variant sections
+- **Accessibility Tests** (`button.a11y.play.ts`) — Axe-core checks, semantic validation, contrast verification
+- **Component Tests** (`button.component.play.ts`) — Event emissions, prop changes, state transitions
+- **Page Object** (`button.po.ts`) — Reusable Playwright selectors and assertions
+- **Unit Tests** (`button.util.spec.ts`) — Tests for utility functions
 
 **Features:**
 
-- Parses component SCSS for all CSS variable patterns
-- Validates against `Base.tokens.json` (source of truth)
-- Interactive confirmation before applying changes
-- Auto-derives JSON paths from CSS variable names
-- Creates missing component tokens
-- Updates SCSS to use component tokens
-- Always rebuilds with `npm run tokens` to ensure consistency
+- Auto-detects component props, events, slots, parts, and states
+- Shows checklist for visual props and slot variations
+- Extracts section names from existing visual.html
+- Generates comprehensive accessibility coverage
+- Creates page objects with readonly part locators
+- Generates realistic test assertions, not stubs
 
-[→ Full documentation](./.claude/skills/ds-vars-to-tokens/README.md)
+[→ Full documentation](./.claude/skills/ds-test-component/README.md)
+
+---
+
+### ds-sync-vars
+
+**Sync component CSS variables to design tokens.**
+
+```bash
+/ds-sync-vars <component-name>
+```
+
+Automatically maps CSS variables to design tokens:
+
+- **Parsing** — Extracts variables from `@include vars.local()` calls in SCSS files
+- **Mapping** — Links to existing Alias tokens using semantic rules (font-family → Text.Family, gap → Space, etc.)
+- **Detection** — Identifies hardcoded values, ambiguous mappings, missing tokens
+- **Creation** — Generates component tokens in `Base.tokens.json`
+- **Regeneration** — Runs `npm run tokens` to update all token outputs
+
+**Features:**
+
+- Handles web-component and sub-component variables separately
+- Auto-matches hardcoded pixel values to Space scales (0.5rem → Space.XS)
+- Prefers Alias tokens, warns about new token creation
+- Shows markdown table checklist for review
+- Supports hybrid and CSS-only components
+
+[→ Full documentation](./.claude/skills/ds-sync-vars/README.md)
+
+---
+
+### ds-document-component
+
+**Auto-generate Storybook documentation for design system components.**
+
+```bash
+/ds-document-component <component-name>
+```
+
+Generates comprehensive component documentation:
+
+- **6 MDX Files** — Overview, Usage, Variants, Styling, Accessibility, Testing
+- **Stories** — Interactive Storybook stories from visual test sections
+- **Doc Config** — Component metadata (tag, name, category, subcomponents)
+- **Sub-Components** — Auto-detects and documents sub-components separately
+
+**Features:**
+
+- Detects component type (web-component-only, hybrid, CSS-only)
+- Extracts visual.html sections and shows checklist
+- Generates MDX content from components.json + JSDoc + visual sections
+- Creates interactive stories with full prop controls
+- Handles sub-components with separate documentation directories
+- Web-component-only: Full stories + all 6 MDX files
+- Hybrid/CSS-only: No stories + placeholders for non-applicable docs
+
+[→ Full documentation](./.claude/skills/ds-document-component/README.md)
 
 ---
 

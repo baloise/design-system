@@ -1,167 +1,191 @@
 ---
 name: ds-lint-component
-description: Audit and auto-fix Stencil component files against the design system style guide
+description: Lint and fix Helvetia Design System components for style guide compliance. Checks prop validation coverage, divider comment formatting, and lifecycle hook setup. Use when building or reviewing DS components, or when user asks to lint/check a component.
 ---
 
-# ds-lint-component
+# Lint Component
 
-Audit and auto-fix Stencil component files against the design system style guide. Runs 14 design-system-specific checks (excluding ESLint-covered rules).
+Checks and fixes Helvetia Design System components against the STYLE_GUIDE. Two phases: **Check** (report violations) and **Fix** (auto-correct issues).
 
-## Usage
+## Quick Start
 
-```bash
-/ds-lint-component <component-name>
-```
-
-## What it does
-
-1. **Analyzes component files:**
-   - Primary: `<component>.tsx`
-   - Optional: `<component>.interfaces.ts`, `<component>.host.scss`, `<component>.style.scss`
-
-2. **Runs 14 design-system-specific checks:**
-   - Check 0: Import aliases (@utils/@global)
-   - Check 1: Const arrays with derived types
-   - Check 2: Type annotations on @Prop()
-   - Check 3: reflect attribute for state props
-   - Check 4: validateProps() method
-   - Check 8: ds prefix on events
-
-- Check 9: DsComponentInterface + Logger contract
-- Check 11: Section comment dividers
-- Check 14: @Prop() + @Watch() together
-- Check 16: ds- prefix on component tag
-- Check 17: One-sentence component description
-- Check 18: @slot and @part JSDoc tags
-- Check 19: CSS classes over attribute selectors (warn only)
-- Check 20: Enum props with = '' default
-
-3. **Reports violations** before fixing
-4. **Auto-fixes violations** in single Edit passes
-5. **Confirms what was changed**
-
-## Example
+Check a component for violations:
 
 ```bash
-/ds-lint-component button
+ds-lint-component button
 ```
 
-**Output:**
+Output: Human-readable report of violations (to terminal and Claude context).
 
-```
-Violations found in button.tsx:
-0. Missing import alias: imports from '../../utils/*' (use @utils)
-1. Const arrays in interfaces.ts not exported flat (wrapped in namespace)
-3. State prop 'value' missing reflect: true
-4. Missing validateProps() method
-8. Event 'change' missing ds prefix → dsChange
-9. Missing DsComponentInterface implementation
-11. Missing section dividers: PUBLIC PROPERTY API, LIFECYCLE
-17. Missing component description on class JSDoc
+Fix violations:
 
-Applying fixes...
-  ✓ Fixed import aliases
-  ✓ Added validateProps() method
-  ✓ Added component description
-  ✓ Added section dividers
-  ✓ Added DsComponentInterface implementation
-
-Summary: 4 files modified, 8 violations fixed.
-No violations in interfaces.ts
-Warning: Check button.host.scss for attribute selectors (CSS class selectors recommended)
-
-✅ Style guide audit complete!
+```bash
+ds-lint-component button --fix
 ```
 
-## Checks Performed
+Output: Summary of changes written to files.
 
-| Check | What it validates                                                        | Auto-fixes | SCSS      |
-| ----- | ------------------------------------------------------------------------ | ---------- | --------- |
-| 0     | Import from @utils/@global instead of relative paths                     | Yes        | -         |
-| 1     | Const arrays with derived types in interfaces.ts                         | Yes        | -         |
-| 2     | Type annotations on @Prop() declarations                                 | Yes        | -         |
-| 3     | State props (disabled, value, etc.) have reflect: true                   | Yes        | -         |
-| 4     | validateProps() method called from connectedCallback/componentWillUpdate | Yes        | -         |
-| 8     | @Event() declarations use ds prefix                                      | Yes        | -         |
-| 9     | DsComponentInterface implementation + @Logger/createLogger contract      | Yes        | -         |
-| 11    | Section comment dividers organize class body                             | Yes        | -         |
-| 14    | @Prop() and @Watch() declarations placed together                        | Yes        | -         |
-| 16    | Component tag has ds- prefix, class name doesn't                         | Yes        | -         |
-| 17    | One-sentence description on component class JSDoc                        | Yes        | -         |
-| 18    | @slot and @part tags match render()                                      | Yes        | -         |
-| 19    | CSS classes instead of attribute selectors                               | No         | Warn only |
-| 20    | Enum props use = '' default instead of ?                                 | Yes        | -         |
+## What Gets Checked
 
-## Key Requirements
+**Design Tokens**
 
-**Every component MUST have:**
+- Component styles use `--ds-alias-*` tokens (approved alias tokens)
+- Component styles use `--ds-component-*` tokens (component-specific tokens)
+- Component styles use `--_*` tokens (private/local variables)
+- Global `--ds-*` tokens are only allowed in `vars.local()` setup context as defaults
+- Flags usage of old or non-existent global tokens directly in styles
 
-- ✅ Logger (@Logger decorator + createLogger method)
-- ✅ validateProps() method (called from connectedCallback + componentWillUpdate)
-- ✅ DsComponentInterface implementation (includes Loggable)
-- ✅ Section dividers organizing class body
+**Documentation**
 
-**Form components MUST have:**
+- Every `@Prop` has a JSDoc comment immediately before it
+- Every `@Event` has a JSDoc comment immediately before it
+- Every `@Method` has a JSDoc comment immediately before it
+- Every `@slot` is documented in the component-level JSDoc with a description
+- Every `@part` is documented in the component-level JSDoc with a description
 
-- ✅ FormControlInterface
-- ✅ @AttachInternals() internals!: ElementInternals
+**Divider Comments**
 
-## No Duplication with ESLint
+- Section dividers exist only for sections with content
+- Format: Unicode dashes, correct spacing
+- Sections appear in order: PUBLIC PROPERTY API → LIFECYCLE → PUBLIC LISTENERS → PUBLIC METHODS → EVENT HANDLERS → PRIVATE METHODS → RENDER
 
-This skill focuses only on design-system-specific checks. The following are handled by ESLint and skipped:
+**Prop Validation**
 
-- Naming conventions (listenTo*, propChanged, handle*)
-- private method visibility
-- JSDoc requirements (general)
-- Alphabetical ordering
-- async @Method() declarations
+- Every `@Prop()` has a matching `@Validate*` decorator
+- Validator type matches prop type (string → `ValidateEmptyOrType('string')`, enum → `ValidateEmptyOrOneOf(...)`)
+- `setupValidation(this)` called in both `connectedCallback()` and `componentWillUpdate()`
 
-Run `npm run lint` to check those rules separately.
+**Type Matching Rules**
 
-## Output Format
+- Primitive props → `ValidateEmptyOrType('string'|'number'|'boolean')`
+- Enum props → `ValidateEmptyOrOneOf(...CONST_ARRAY)` via `.interfaces.ts`
+- Complex types (union, object) → Flagged as unable to validate; manual review required
+- `Required*` validators allowed only when prop default is never empty
 
-**Before fixing:**
+## Workflow
 
-```
-Violations found in button.tsx:
-0. Import violation message
-1. Const array violation message
-3. reflect attribute violation message
-...
+### Phase 1: Check (Report)
 
-Applying fixes...
+```bash
+ds-lint-component button
 ```
 
-**After fixing:**
+Scans component and sub-components (e.g., `carousel` scans `carousel/carousel.tsx` and `carousel/carousel-item.tsx`). Reports to terminal:
 
 ```
-✓ Fixed import aliases
-✓ Added validateProps() method
-✓ Added component description
+✓ carousel/carousel.tsx
+  ✓ Documentation: All props, events, methods documented
+  ✓ Dividers: Present sections correctly ordered
+  ✓ Props: All 12 props have validators
+  ✓ setupValidation: Called in connectedCallback() and componentWillUpdate()
 
-Summary: 3 files modified, 5 violations fixed.
+⚠ carousel/carousel-item.tsx
+  ⚠ Missing JSDoc documentation for @Prop "disabled"
+  ⚠ Missing JSDoc documentation for @Event "dsChange"
+  ✗ Dividers: PUBLIC LISTENERS section missing (but @Listen() methods present)
+  ✗ Props: "value" (string) has ValidateEmptyOrType('number') — type mismatch
+  ✗ setupValidation: Missing from componentWillUpdate()
 ```
 
-**No violations:**
+### Phase 2: Fix (Auto-Correct)
+
+```bash
+ds-lint-component button --fix
+```
+
+Auto-corrects issues:
+
+- ✅ Adds missing JSDoc comments for `@Prop`, `@Event`, and `@Method` decorators
+- ✅ Adds/fixes divider comments with correct formatting
+- ✅ Adds missing `@Validate*` decorators (matches types via `.interfaces.ts`)
+- ✅ Adds/fixes `setupValidation(this)` calls
+- ✅ Creates `connectedCallback()` or `componentWillUpdate()` if needed (when component has props)
+- ✅ Writes changes to `.tsx` files
+
+Reports summary of changes:
 
 ```
-✅ No style guide violations found in button.tsx
+✓ carousel/carousel.tsx
+  • Added setupValidation() to componentWillUpdate()
+
+✓ carousel/carousel-item.tsx
+  • Added JSDoc for @Prop "disabled"
+  • Added JSDoc for @Event "dsChange"
+  • Added PUBLIC LISTENERS divider comment
+  • Fixed validator: "value" now ValidateEmptyOrType('string')
+  • Created connectedCallback() with setupValidation()
 ```
 
-## Requirements for Form Components
+## Examples
 
-If the component implements `FormControlInterface`:
+### Example 1: Button Component
 
-```ts
-import { AttachInternals } from '@stencil/core'
+Check button:
 
-export class MyInput implements ComponentInterface, FormControlInterface<string> {
-  @AttachInternals() internals!: ElementInternals
+```bash
+ds-lint-component button
+```
 
-  private validateProps() {
-    // Validation for form control props
+If button is compliant, no violations reported.
+
+### Example 2: Carousel with Sub-Components
+
+Check carousel and carousel-item together:
+
+```bash
+ds-lint-component carousel
+```
+
+Reports violations in both `carousel/carousel.tsx` and `carousel/carousel-item.tsx`.
+
+### Example 3: Fix with Auto-Create Lifecycle Hook
+
+If a component has props but no `connectedCallback()`, `--fix` creates it:
+
+**Before:**
+
+```tsx
+@Component({ tag: 'ds-example', shadow: true })
+export class Example {
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  render() {
+    /* ... */
   }
 }
 ```
 
-The skill checks for this and adds it if missing.
+**After:**
+
+```tsx
+@Component({ tag: 'ds-example', shadow: true })
+export class Example {
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly label: string = ''
+
+  connectedCallback(): void {
+    setupValidation(this)
+  }
+
+  componentWillUpdate(): void {
+    setupValidation(this)
+  }
+
+  render() {
+    /* ... */
+  }
+}
+```
+
+## Warnings & Limitations
+
+- **Complex types:** Unions and object types flagged for manual review; skill cannot auto-validate
+- **Missing `.interfaces.ts`:** Enum validation skipped with warning if interfaces file not found
+- **Validator type inference:** Relies on `.interfaces.ts` naming convention (`ButtonColor` → `BUTTON_COLORS`)
+
+## Related
+
+See [STYLE_GUIDE.md](../../STYLE_GUIDE.md) for component standards.

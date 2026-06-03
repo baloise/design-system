@@ -1,641 +1,524 @@
-# ds-create-component — Reference Guide
+# REFERENCE — ds-create-component Templates & Patterns
 
-Detailed rules, patterns, and implementation details for component generation.
+This file documents the file templates and code patterns the skill generates.
 
 ## Table of Contents
 
-- [File Generation Rules](#file-generation-rules)
-- [Backwards Compatibility API Extraction](#backwards-compatibility-api-extraction)
-- [Component Structure Templates](#component-structure-templates)
-- [Design Token Patterns](#design-token-patterns)
-- [i18n Patterns](#i18n-patterns)
-- [Form Component Integration](#form-component-integration)
-- [Animation Handling](#animation-handling)
-- [Error Handling & Conflicts](#error-handling--conflicts)
+- [Component File Structure](#component-file-structure)
+- [Template: component.tsx](#template-componenttsx)
+- [Template: component.interfaces.ts](#template-componentinterfacests)
+- [Template: component.host.scss](#template-componenthostscss)
+- [Template: component.visual.html](#template-componentvisualhtml)
+- [Token Validation Rules](#token-validation-rules)
+- [Migration from Old Components](#migration-from-old-components)
 
----
+## Component File Structure
 
-## File Generation Rules
+Each component generated follows this structure:
 
-### Priority Order
-
-Files are generated in this order to resolve dependencies:
-
-1. **interfaces.ts** (defines types for everything else)
-2. **component.tsx** (stub, implements types)
-3. **host.scss + style.scss** (use component types in class/part selectors)
-4. **i18n.ts** (if needed)
-5. **Test files** (via orchestrated skills)
-6. **Export** (add to index.ts)
-
-### When to Create Each File
-
-| File                 | Create if                     | Skip if                |
-| -------------------- | ----------------------------- | ---------------------- |
-| `interfaces.ts`      | Component has props/events    | Utility-only component |
-| `component.tsx`      | Not css-html type             | Pure HTML/CSS utility  |
-| `host.scss`          | wc-only or hybrid type        | css-html type          |
-| `style.scss`         | hybrid or css-html type       | wc-only type           |
-| `i18n.ts`            | Has aria-labels, titles, text | No text content        |
-| `.component.play.ts` | Has props/events to test      | Utility component      |
-| `.visual.play.ts`    | Always (unless user skips)    | Never                  |
-| `.a11y.play.ts`      | Always (unless user skips)    | Never                  |
-
----
-
-## Backwards Compatibility API Extraction
-
-### Process
-
-1. **Try to fetch from main branch:**
-
-   ```bash
-   git show origin/main:packages/core/src/components/button/button.tsx
-   ```
-
-2. **Parse for:**
-   - `@Prop()` declarations → prop names, types, defaults
-   - `@Event()` declarations → event names, detail types
-   - `@Method()` declarations → public methods
-   - Interfaces/enums → export as-is (if no conflicts)
-
-3. **Conflict Detection:**
-   - Check if prop violates A11y or SEO best practices
-   - If conflict found, mark as `@deprecated` with migration guide
-
-4. **Fallback:**
-   - If old component not found, ask user: "Have a reference? (file path or skip)"
-   - If user skips, create component with minimal interface
-
-### Example: Extract from bal-button
-
-Old component:
-
-```tsx
-@Prop() readonly color: 'primary' | 'danger' = 'primary'
-@Prop() readonly size: 'sm' | 'md' | 'lg' = 'md'
-@Prop() readonly disabled: boolean = false
-
-@Event() readonly dsClick: EventEmitter<ButtonClickDetail>
-@Event() readonly dsFocus: EventEmitter<ButtonFocusDetail>
+```
+packages/core/src/components/button/
+├── button.tsx              # Stencil component class
+├── button.interfaces.ts    # TypeScript types and enums
+├── button.host.scss        # Shadow DOM styles with tokens
+└── test/
+    ├── button.visual.html  # Visual test file
+    ├── button.spec.ts      # (created by ds-sync-component-tests skill)
+    ├── button.component.play.ts
+    ├── button.visual.play.ts
+    └── button.a11y.play.ts
 ```
 
-Generated interfaces.ts:
+For subcomponents:
 
-```ts
-export const BUTTON_COLORS = ['primary', 'danger'] as const
-export type ButtonColor = (typeof BUTTON_COLORS)[number]
-
-export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const
-export type ButtonSize = (typeof BUTTON_SIZES)[number]
-
-export interface ButtonClickDetail {
-  nativeEvent: MouseEvent
-}
-
-export interface ButtonFocusDetail {
-  nativeEvent: FocusEvent
-}
+```
+packages/core/src/components/tabs/
+├── tabs.tsx
+├── tabs.interfaces.ts
+├── tabs.host.scss
+├── tab/
+│   ├── tab.tsx
+│   ├── tab.interfaces.ts
+│   └── tab.host.scss
+└── test/
+    ├── tabs.visual.html
+    └── (test files)
 ```
 
 ---
 
-## Component Structure Templates
+## Template: component.tsx
 
-### Template: wc-only (Web Component)
+The generated `.tsx` file implements `DsComponentInterface` and `Loggable`:
 
-```tsx
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
+```typescript
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core'
+import { HTMLStencilElement } from '@stencil/core/internal'
+import { Logger, type LogInstance, hasValue } from '@utils'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance } from '@utils'
-import { MY_COMPONENT_COLORS, type MyComponentColor, type MyComponentClickDetail } from './my-component.interfaces'
+import { BUTTON_SIZES, ButtonSize } from './button.interfaces'
 
 /**
- * MyComponent description (one sentence).
+ * Button renders a customizable button element with multiple variants and states.
  *
- * @slot - Default slot content.
- * @part native - The native element wrapper.
+ * @part button - The button element.
  */
 @Component({
-  tag: 'ds-my-component',
-  styleUrl: 'my-component.host.scss',
+  tag: 'ds-button',
+  styleUrl: 'button.host.scss',
   shadow: true,
-  formAssociated: false, // true if form component
 })
-export class MyComponent implements DsComponentInterface {
+export class Button implements DsComponentInterface {
   log!: LogInstance
 
-  @Logger('my-component')
+  @Logger('ds-button')
   createLogger(log: LogInstance) {
     this.log = log
   }
 
   @Element() el!: HTMLStencilElement
 
-  /**
-   * PUBLIC PROPERTY API
-   * ─────────────────────────────────────────────────────
-   */
-
-  @Prop()
-  @ValidateEmptyOrOneOf(...MY_COMPONENT_COLORS)
-  readonly color: MyComponentColor = 'primary'
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PUBLIC PROPERTY API
+  // ═══════════════════════════════════════════════════════════════════════════════
 
   /**
-   * EVENTS
-   * ─────────────────────────────────────────────────────
+   * The text label of the button.
    */
-
-  @Event()
-  readonly dsClick: EventEmitter<MyComponentClickDetail>
+  @Prop() readonly label: string = ''
 
   /**
-   * LIFECYCLE
-   * ─────────────────────────────────────────────────────
+   * The button type (primary, secondary, danger, etc.).
    */
+  @Prop({ reflect: true }) readonly type: ButtonType = 'primary'
 
-  connectedCallback() {
-    // TODO: Wire up validation, listeners
+  /**
+   * The button size (sm, md, lg).
+   */
+  @Prop() readonly size: ButtonSize = ''
+
+  /**
+   * If `true`, the button is disabled.
+   */
+  @Prop({ reflect: true }) readonly disabled: boolean = false
+
+  /**
+   * If `true`, the button is in a loading state.
+   */
+  @Prop({ reflect: true }) readonly loading: boolean = false
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // LIFECYCLE
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PROPERTY VALIDATION
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  @Watch('type')
+  typeChanged(newValue: ButtonType) {
+    if (!hasValue(newValue)) {
+      this.type = 'primary'
+    }
   }
 
-  /**
-   * PROPERTY VALIDATION
-   * ─────────────────────────────────────────────────────
-   */
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PUBLIC LISTENERS
+  // ═══════════════════════════════════════════════════════════════════════════════
 
-  private validateProps() {
-    // TODO: Validate prop combinations
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PUBLIC METHODS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EVENT HANDLERS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  private handleClick = () => {
+    if (this.disabled || this.loading) return
+    // Handle click
   }
 
-  /**
-   * PRIVATE METHODS
-   * ─────────────────────────────────────────────────────
-   */
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PRIVATE METHODS
+  // ═══════════════════════════════════════════════════════════════════════════════
 
-  /**
-   * RENDER
-   * ─────────────────────────────────────────────────────
-   */
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RENDER
+  // ═══════════════════════════════════════════════════════════════════════════════
 
   render() {
     return (
-      <Host>
-        <button>{this.color}</button>
+      <Host
+        class={{
+          'is-disabled': this.disabled,
+          'is-loading': this.loading,
+        }}
+      >
+        <button
+          disabled={this.disabled}
+          class={`is-${this.type}`}
+          onClick={this.handleClick}
+        >
+          <slot></slot>
+        </button>
       </Host>
     )
   }
 }
 ```
 
-### Template: hybrid (Shadow DOM + Light DOM)
+**Key patterns:**
 
-Same as above, but with `formAssociated: false` and both `host.scss` and `style.scss` files.
-
-### Template: Form Component (add to any type)
-
-```tsx
-@Component({
-  tag: 'ds-input',
-  styleUrl: 'input.host.scss',
-  shadow: true,
-  formAssociated: true, // ← Key difference
-})
-export class Input implements DsComponentInterface {
-  @AttachInternals() internals!: ElementInternals
-
-  @Prop() readonly name: string = ''
-
-  @Prop({ mutable: true })
-  @Watch('value')
-  value: string = ''
-  valueChanged(newValue: string) {
-    this.internals.setFormValue(newValue)
-  }
-
-  @Prop() readonly disabled: boolean = false
-  @Prop() readonly required: boolean = false
-  @Prop() readonly invalid: boolean = false
-
-  connectedCallback() {
-    this.internals.setFormValue(this.value)
-    setupValidation(this)
-  }
-
-  private validateProps() {
-    // TODO: Validate based on invalid, required, etc.
-  }
-}
-```
+- ✅ Implements `DsComponentInterface` + logger setup
+- ✅ All props have `@Prop()` with `readonly`
+- ✅ State props use `reflect: true`
+- ✅ Events start with `ds` prefix
+- ✅ Sections organized with dividers (PUBLIC PROPERTY API, LIFECYCLE, etc.)
+- ✅ Render uses `<Host>` and `<slot>` for light DOM content
+- ✅ CSS classes use `.is-<variant>`, never attribute selectors
 
 ---
 
-## Design Token Patterns
+## Template: component.interfaces.ts
 
-### Token File Structure
+The generated interfaces file exports types and enums:
 
-The skill reads `packages/tokens/tokens/Base.tokens.json` and extracts:
+```typescript
+export type ButtonType = 'primary' | 'secondary' | 'danger' | 'ghost'
 
-```json
-{
-  "ds": {
-    "color": {
-      "primary": { "1": "#value", "2": "#value", ... },
-      "danger": { ... }
-    },
-    "text": { ... },
-    "spacing": { ... }
-  }
-}
+export const BUTTON_TYPES: ButtonType[] = ['primary', 'secondary', 'danger', 'ghost']
+
+export type ButtonSize = 'sm' | 'md' | 'lg'
+
+export const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg']
 ```
 
-### SCSS Template with Token Comments
+**Key patterns:**
+
+- ✅ Export union types for props
+- ✅ Export const arrays of valid values (used in prop validation with `ValidateEmptyOrOneOf`)
+- ✅ Use `type` not `interface` for prop types
+- ✅ Naming: `PascalCase` for types (e.g., `ButtonType`), `UPPER_SNAKE_CASE` for arrays (e.g., `BUTTON_TYPES`)
+
+---
+
+## Template: component.host.scss
+
+The generated SCSS file includes token structure, variables, and variants:
 
 ```scss
-// ═══════════════════════════════════════════════════════════════════════════
-// Design Tokens Available
-// ═══════════════════════════════════════════════════════════════════════════
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
 
-// Colors:
-// --ds-color-primary-{1..10}
-// --ds-color-danger-{1..10}
-// --ds-color-text
-// --ds-color-background
+/**
+ * Variables
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * Define CSS custom properties that can be overridden by consumers.
+ *
+ * @prop --button-color-text: Text color of the button
+ * @prop --button-color-background: Background color of the button
+ * @prop --button-border-radius: Border radius of the button
+ */
 
-// Typography:
-// --ds-text-size-{xs,sm,md,lg,xl,2xl}
-// --ds-text-weight-{regular,medium,bold}
-// --ds-text-line-height-{tight,normal,loose}
+:host {
+  @include vars.base(button);
 
-// Spacing:
-// --ds-spacing-{xs,sm,md,lg,xl,2xl}
+  // Use alias tokens (preferred)
+  @include vars.local(button-color-text, var(--ds-alias-interaction-text-default));
+  @include vars.local(button-color-background, var(--ds-button-color-primary-base));
+  @include vars.local(button-border-radius, var(--ds-alias-radius-base));
 
-// ═══════════════════════════════════════════════════════════════════════════
-// Component Styles
-// ═══════════════════════════════════════════════════════════════════════════
+  // Variant: Primary (default)
+  @include vars.local(button-color-background, var(--ds-button-color-primary-base));
+
+  // Variant: Secondary
+  :host(.is-secondary) {
+    @include vars.local(button-color-background, var(--ds-button-color-secondary-base));
+  }
+
+  // Variant: Danger
+  :host(.is-danger) {
+    @include vars.local(button-color-background, var(--ds-alias-color-danger));
+  }
+
+  // State: Disabled
+  :host(.is-disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/**
+ * Component Styles
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
 
 :host {
   display: inline-block;
-}
 
-button {
-  // Spacing
-  padding: var(--ds-spacing-md);
+  button {
+    background-color: var(--_button-color-background);
+    color: var(--_button-color-text);
+    border-radius: var(--_button-border-radius);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 200ms ease-in-out;
 
-  // Colors
-  background-color: var(--ds-color-primary-5);
-  color: var(--ds-color-text);
-  border: 1px solid var(--ds-color-primary-6);
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+    }
 
-  // Typography
-  font-size: var(--ds-text-size-md);
-  font-weight: var(--ds-text-weight-medium);
-  line-height: var(--ds-text-line-height-normal);
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
 
-  // Interaction
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: var(--ds-color-primary-6);
-}
-
-:host(.no-animation) button {
-  transition: none !important;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
 }
 ```
 
-### Warning on Missing Tokens
+**Key patterns:**
 
-If old component references a token that doesn't exist in Base.tokens.json:
-
-```
-⚠️  Token not found: --ds-color-primary-11
-   Referenced in old bal-button
-   Options:
-     - Add token to packages/tokens/tokens/Base.tokens.json
-     - Use closest available: --ds-color-primary-10
-     - Hardcode value (not recommended)
-```
+- ✅ Use `@include vars.local()` mixin to set private CSS variables
+- ✅ Reference tokens via `var(--_button-property)` in CSS rules
+- ✅ Use alias tokens first: `var(--ds-alias-color-primary)`
+- ✅ Use component tokens if available: `var(--ds-button-color-primary-base)`
+- ✅ Variants as `:host(.is-variant)` selectors, never `:host([variant="primary"])`
+- ✅ States also use class selectors: `:host(.is-disabled)`, `:host(.is-hover)`
 
 ---
 
-## i18n Patterns
+## Template: component.visual.html
 
-### Detection
+The generated visual HTML file for testing variants:
 
-The skill checks for:
+```html
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
 
-- `aria-label`, `aria-labelledby`, `aria-describedby`
-- `title` attribute
-- Component prop description mentions "text" or "label"
-- Old component has i18n file
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Primary (default) -->
+      <section data-testid="primary">
+        <span>Primary</span>
+        <ds-button type="primary" label="Click me"></ds-button>
+      </section>
 
-### Generated File Structure
+      <!-- Secondary -->
+      <section data-testid="secondary">
+        <span>Secondary</span>
+        <ds-button type="secondary" label="Secondary button"></ds-button>
+      </section>
 
-```ts
-import { I18n } from '../../interfaces'
+      <!-- Danger -->
+      <section data-testid="danger">
+        <span>Danger</span>
+        <ds-button type="danger" label="Delete"></ds-button>
+      </section>
 
-interface I18nDsMyComponent {
-  close: string
-  labelText: string
-  // ... other strings
-}
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-button disabled label="Disabled"></ds-button>
+      </section>
 
-export const i18nDsMyComponent: I18n<I18nDsMyComponent> = {
-  de: {
-    close: 'Schliessen',
-    labelText: 'Beschriftung',
-  },
-  en: {
-    close: 'Close',
-    labelText: 'Label',
-  },
-  fr: {
-    close: 'Fermer',
-    labelText: 'Étiquette',
-  },
-  // ... populate with old component's i18n if available
-  // Other languages left empty for translation
-}
+      <!-- Loading -->
+      <section data-testid="loading">
+        <span>Loading</span>
+        <ds-button loading label="Loading..."></ds-button>
+      </section>
+
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <div class="stack as-row">
+          <ds-button size="sm" label="Small"></ds-button>
+          <ds-button size="md" label="Medium"></ds-button>
+          <ds-button size="lg" label="Large"></ds-button>
+        </div>
+      </section>
+
+      <!-- Themeing -->
+      <section class="custom-theme" data-testid="themeing">
+        <span>Custom Theme (CSS Variable Override)</span>
+        <style>
+          .custom-theme ds-button {
+            --button-color-background: #ff6600;
+            --button-color-text: #ffffff;
+          }
+        </style>
+        <ds-button label="Custom themed"></ds-button>
+      </section>
+    </main>
+  </body>
+</html>
 ```
 
-### Component Wiring
+**Key patterns:**
 
-```tsx
-import { i18nDsMyComponent } from './my-component.i18n'
-import { DsConfigObserver, ListenToConfig, type DsConfigState, defaultConfig } from '@global'
-
-@Component({...})
-export class MyComponent implements DsComponentInterface, DsConfigObserver {
-  @State() language = defaultConfig.language
-
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState) {
-    this.language = state.language
-  }
-
-  render() {
-    const strings = i18nDsMyComponent[this.language]
-    return (
-      <Host>
-        <button aria-label={strings.close}>{strings.labelText}</button>
-      </Host>
-    )
-  }
-}
-```
+- ✅ `<section data-testid="variant-name">` for each variant
+- ✅ Heading `<span>` inside each section
+- ✅ One section per variant specified in questionnaire
+- ✅ Include a "Themeing" section showing CSS variable override
+- ✅ Include a "Disabled" and "Loading" section if applicable
+- ✅ Use design system utilities (e.g., `class="stack as-row"` for flexbox layouts)
 
 ---
 
-## Form Component Integration
+## Token Validation Rules
 
-### ElementInternals Setup
+The skill validates tokens according to these rules:
 
-```tsx
-@Component({
-  tag: 'ds-input',
-  formAssociated: true, // Enable form association
-})
-export class Input implements DsComponentInterface {
-  @AttachInternals() internals!: ElementInternals
+### ✅ Valid Tokens
 
-  connectedCallback() {
-    // Inform the browser about initial value
-    this.internals.setFormValue(this.value)
-  }
-
-  @Watch('value')
-  valueChanged(newValue: string) {
-    // Keep form system in sync
-    this.internals.setFormValue(newValue)
-  }
-}
-```
-
-### Form Submission/Reset Handling
-
-Test pattern (generated by ds-sync-component-tests):
-
-```ts
-test('form submission includes component value', async ({ page }) => {
-  await page.mount(`
-    <form id="testForm">
-      <ds-input name="username" value="john"></ds-input>
-      <button type="submit">Submit</button>
-    </form>
-  `)
-
-  const formData = new FormData(page.locator('#testForm').element)
-  expect(formData.get('username')).toBe('john')
-})
-
-test('form reset clears component value', async ({ page }) => {
-  await page.mount(`
-    <form id="testForm">
-      <ds-input name="username" value="john"></ds-input>
-      <button type="reset">Reset</button>
-    </form>
-  `)
-
-  const input = new DsInput(page.locator('ds-input'))
-  await input.fill('jane')
-  await page.locator('[type="reset"]').click()
-
-  expect(await input.getValue()).toBe('')
-})
-```
-
----
-
-## Animation Handling
-
-### Detection Algorithm
-
-1. Scan `.host.scss` and `.style.scss` for:
-   - `animation:` property
-   - `transition:` property
-   - `@keyframes` rules
-
-2. If found, mark component as "animated"
-
-3. Auto-generate animation control:
-
-```tsx
-import { DsConfigObserver, ListenToConfig, type DsConfigState, defaultConfig } from '@global'
-
-@Component({...})
-export class MyComponent implements DsComponentInterface, DsConfigObserver {
-  @State() animated = defaultConfig.animated
-
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState) {
-    this.animated = state.animated
-  }
-
-  render() {
-    return <Host class={{ 'no-animation': !this.animated }}>{/* ... */}</Host>
-  }
-}
-```
-
-### SCSS Pattern
+**Alias tokens** — Start with `--ds-alias-`:
 
 ```scss
-:host {
-  button {
-    transition: background-color 0.2s ease;
-  }
+var(--ds-alias-color-primary)
+var(--ds-alias-interaction-focus-color)
+var(--ds-alias-radius-base)
+```
+
+**Component tokens** — Start with `--ds-<component>-`:
+
+```scss
+var(--ds-button-color-primary-base)
+var(--ds-button-border-radius)
+var(--ds-button-padding)
+```
+
+### ⚠️ Warning Tokens
+
+**Global tokens** — Start with `--ds-` but aren't alias or component tokens:
+
+```scss
+var(--ds-color-primary)         // ⚠️ Global token
+var(--ds-space-md)              // ⚠️ Global token
+```
+
+The skill warns and suggests:
+
+```
+⚠️ Global token detected: var(--ds-color-primary)
+   Recommendation: Use alias token var(--ds-alias-color-primary)
+   Or create component token: --ds-button-color-primary
+```
+
+### 🚫 Invalid Values
+
+**Hardcoded values** — No literals, only variables:
+
+```scss
+background-color: #ff0000; // 🚫 Hardcoded hex
+padding: 1rem; // 🚫 Hardcoded size
+color: blue; // 🚫 Hardcoded color name
+```
+
+---
+
+## Migration from Old Components
+
+When migrating from the old design system:
+
+### 1. Auto-Extract Props & Events
+
+The skill fetches the old component from `main` branch and extracts:
+
+```typescript
+// Old component (main branch)
+@Prop() readonly size: 'small' | 'medium' | 'large' = 'medium'
+@Event() closeClick: EventEmitter<void>
+
+// Skill extracts and pre-fills in questionnaire:
+Q: Props?
+A: size: 'small'|'medium'|'large' = 'medium'
+
+Q: Events?
+A: dsCloseClick  // (renamed to ds prefix convention)
+```
+
+### 2. Flag a11y/SEO Breaking Changes
+
+If the old structure conflicts with accessibility:
+
+```typescript
+// Old structure (main branch)
+render() {
+  return <button>{this.label}</button>
 }
 
-// Disable animations for visual testing
-:host(.no-animation) * {
-  animation: none !important;
-  transition: none !important;
+// New structure (accessible)
+render() {
+  return (
+    <Host>
+      <button>
+        <slot></slot>
+      </button>
+    </Host>
+  )
 }
+
+// Skill flags:
+⚠️ BREAKING CHANGE (a11y):
+   Old: <ds-button label="text"></ds-button>
+   New: <ds-button>Click me</ds-button>
+
+   Reason: Light DOM content improves accessibility and SEO.
+   Update consumers to use slot instead of label prop.
 ```
 
-### Visual Test Integration
+### 3. Token Migration Path
 
-The skill passes `animated: false` to `ds-sync-visual-tests` so snapshots are captured with animations disabled.
+If old component used global tokens:
 
----
+```scss
+// Old component
+background-color: var(--ds-color-primary);
 
-## Error Handling & Conflicts
+// New component gets generated with:
+var(--ds-alias-color-primary)  // alias token
 
-### SEO Conflicts
-
-**Problem:** Old component uses non-semantic HTML (e.g., `<div role="button">`)
-
-**Solution:**
-
-```tsx
-/**
- * @deprecated Use semantic HTML elements. Old bal-component used
- * div[role="button"], but ds-component always renders <button>.
- *
- * Migration: Remove this prop, rely on semantic <button> rendering.
- * @see https://[docs]/migration/semantic-html
- */
-@Prop()
-readonly native?: boolean // Accepted but ignored
-```
-
-### A11y Conflicts
-
-**Problem:** Old component lacks ARIA attributes or fails keyboard navigation
-
-**Solution:**
-
-```tsx
-/**
- * @deprecated Keyboard interaction is now built-in. Old prop is ignored.
- *
- * The new component automatically supports:
- * - Tab navigation
- * - Enter/Space for activation
- * - Arrow keys for selection (if applicable)
- *
- * @see https://[docs]/migration/a11y
- */
-@Prop()
-readonly tabindex?: number // Accepted but ignored
-```
-
-### Missing Old Component
-
-If `git show origin/main:...` fails:
-
-1. Check if component name was different (e.g., renamed)
-2. Ask user: "Provide path to old component file? (or skip)"
-3. If user provides file, read from filesystem
-4. If skip, generate minimal interface with TODOs
-
-### Token Not Found
-
-If old component uses a token that doesn't exist:
-
-```
-⚠️  Token not found in Base.tokens.json:
-   --ds-color-primary-11 (referenced in old bal-button)
-
-   Action:
-   1. Add to packages/tokens/tokens/Base.tokens.json, OR
-   2. Update bal-button reference to use --ds-color-primary-10
-   3. Re-run skill
-
-   For now, using comment placeholder.
+// Skill warns:
+⚠️ Token recommendation:
+   Current: var(--ds-alias-color-primary)
+   Consider creating: --ds-button-color-primary in Base.tokens.json
+   Migration plan: Use alias token initially, create component token later.
 ```
 
 ---
 
-## Testing Strategy
+## File Registration
 
-### Red Phase (Stub + Failing Tests)
+After generating, the skill registers the component in `packages/core/src/index.ts`:
 
-Generated component is intentionally **incomplete**:
+```typescript
+// Before
+export { Button } from './components/button/button'
+export type { ButtonSize, ButtonType } from './components/button/button.interfaces'
 
-- Methods are empty stubs
-- Render returns minimal placeholder
-- Tests FAIL
-
-User then implements to make tests pass (green phase).
-
-### Test File Organization
-
-| File                 | Generated by              | Tests                                   |
-| -------------------- | ------------------------- | --------------------------------------- |
-| `.component.play.ts` | `ds-sync-component-tests` | Events, props, methods, form behavior   |
-| `.visual.play.ts`    | `ds-sync-visual-tests`    | Visual variants (sizes, colors, states) |
-| `.a11y.play.ts`      | `ds-sync-a11y-tests`      | WCAG 2.2 AA compliance, keyboard nav    |
-
-### Running Tests
-
-```bash
-# Component interaction tests
-npm run play -- --grep="my-component" --grep="component"
-
-# Visual regression tests
-npm run play -- --grep="my-component" --grep="visual"
-
-# A11y tests
-npm run play -- --grep="my-component" --grep="a11y"
-
-# All tests for component
-npm run play -- --grep="my-component"
+// After
+export { Button, NewComponent } from './components/button/button'
+export { NewSubcomponent } from './components/button/new-subcomponent/new-subcomponent'
+export type { ButtonSize, ButtonType, NewComponentType } from './components/button/button.interfaces'
 ```
 
----
+The skill:
 
-## Skill Orchestration
-
-When `/ds-create-component` finishes:
-
-1. **Files written** (interfaces, tsx, scss, i18n)
-2. **Auto-export added** to index.ts
-3. **Skills called in sequence:**
-   ```
-   ds-sync-component-tests my-component
-   → ds-sync-visual-tests my-component
-   → ds-sync-a11y-tests my-component
-   ```
-
-All tests are generated with files left **unstaged** for review.
-
----
-
-## Glossary
-
-| Term                 | Definition                                                             |
-| -------------------- | ---------------------------------------------------------------------- |
-| **wc-only**          | Web component with shadow DOM only, no light DOM styling               |
-| **hybrid**           | Web component with both shadow DOM + light DOM support                 |
-| **css-html**         | Pure HTML/CSS utility, no web component wrapper                        |
-| **form component**   | Component that integrates with HTML forms (input, select, etc.)        |
-| **i18n**             | Internationalization — multi-language string support                   |
-| **Red phase**        | TDD phase where tests fail (component not yet implemented)             |
-| **ElementInternals** | Browser API for form-associated custom elements                        |
-| **dsConfig**         | Global design system configuration (language, brand, animations, etc.) |
+- ✅ Adds export statements in alphabetical order
+- ✅ Handles subcomponents (nested exports)
+- ✅ Exports both component class and type definitions

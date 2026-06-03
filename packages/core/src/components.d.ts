@@ -866,6 +866,61 @@ export namespace Components {
         "textAlign": ContentTextAlignment;
     }
     /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+     */
+    interface DsData {
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+          * @default false
+         */
+        "horizontal": boolean;
+    }
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface DsDataItem {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * If `true` the item gets a lighter font color.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Label for the edit button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "editLabel": string | undefined;
+        /**
+          * If `true` a small button with an edit icon is shown on the right.
+          * @default false
+         */
+        "editable": boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+          * @default false
+         */
+        "multiline": boolean;
+    }
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface DsDataLabel {
+        /**
+          * If `true` an asterisk is added after the label.
+          * @default false
+         */
+        "required": boolean;
+    }
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface DsDataValue {
+    }
+    /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
      */
     interface DsDivider {
@@ -3406,6 +3461,46 @@ declare global {
         new (): HTMLDsContentElement;
     };
     /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+     */
+    interface HTMLDsDataElement extends Components.DsData, HTMLStencilElement {
+    }
+    var HTMLDsDataElement: {
+        prototype: HTMLDsDataElement;
+        new (): HTMLDsDataElement;
+    };
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface HTMLDsDataItemElement extends Components.DsDataItem, HTMLStencilElement {
+    }
+    var HTMLDsDataItemElement: {
+        prototype: HTMLDsDataItemElement;
+        new (): HTMLDsDataItemElement;
+    };
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface HTMLDsDataLabelElement extends Components.DsDataLabel, HTMLStencilElement {
+    }
+    var HTMLDsDataLabelElement: {
+        prototype: HTMLDsDataLabelElement;
+        new (): HTMLDsDataLabelElement;
+    };
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface HTMLDsDataValueElement extends Components.DsDataValue, HTMLStencilElement {
+    }
+    var HTMLDsDataValueElement: {
+        prototype: HTMLDsDataValueElement;
+        new (): HTMLDsDataValueElement;
+    };
+    /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
      */
     interface HTMLDsDividerElement extends Components.DsDivider, HTMLStencilElement {
@@ -4113,6 +4208,10 @@ declare global {
         "ds-checkbox-group": HTMLDsCheckboxGroupElement;
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
+        "ds-data": HTMLDsDataElement;
+        "ds-data-item": HTMLDsDataItemElement;
+        "ds-data-label": HTMLDsDataLabelElement;
+        "ds-data-value": HTMLDsDataValueElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
         "ds-footer": HTMLDsFooterElement;
@@ -5005,6 +5104,60 @@ declare namespace LocalJSX {
           * @default ''
          */
         "textAlign"?: ContentTextAlignment;
+    }
+    /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+     */
+    interface DsData {
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+          * @default false
+         */
+        "horizontal"?: boolean;
+    }
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface DsDataItem {
+        /**
+          * If `true` the item gets a lighter font color.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Label for the edit button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "editLabel"?: string | undefined;
+        /**
+          * If `true` a small button with an edit icon is shown on the right.
+          * @default false
+         */
+        "editable"?: boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+          * @default false
+         */
+        "multiline"?: boolean;
+    }
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface DsDataLabel {
+        /**
+          * If `true` an asterisk is added after the label.
+          * @default false
+         */
+        "required"?: boolean;
+    }
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface DsDataValue {
     }
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -7498,6 +7651,18 @@ declare namespace LocalJSX {
         "space": ContentSpace;
         "alignment": StackAlignment;
     }
+    interface DsDataAttributes {
+        "horizontal": boolean;
+    }
+    interface DsDataItemAttributes {
+        "disabled": boolean;
+        "multiline": boolean;
+        "editable": boolean;
+        "editLabel": string | undefined;
+    }
+    interface DsDataLabelAttributes {
+        "required": boolean;
+    }
     interface DsDividerAttributes {
         "layout": DividerLayout;
         "space": DividerSpace;
@@ -7955,6 +8120,10 @@ declare namespace LocalJSX {
         "ds-checkbox-group": Omit<DsCheckboxGroup, keyof DsCheckboxGroupAttributes> & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes]?: DsCheckboxGroup[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `attr:${K}`]?: DsCheckboxGroupAttributes[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `prop:${K}`]?: DsCheckboxGroup[K] };
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
+        "ds-data": Omit<DsData, keyof DsDataAttributes> & { [K in keyof DsData & keyof DsDataAttributes]?: DsData[K] } & { [K in keyof DsData & keyof DsDataAttributes as `attr:${K}`]?: DsDataAttributes[K] } & { [K in keyof DsData & keyof DsDataAttributes as `prop:${K}`]?: DsData[K] };
+        "ds-data-item": Omit<DsDataItem, keyof DsDataItemAttributes> & { [K in keyof DsDataItem & keyof DsDataItemAttributes]?: DsDataItem[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `attr:${K}`]?: DsDataItemAttributes[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `prop:${K}`]?: DsDataItem[K] };
+        "ds-data-label": Omit<DsDataLabel, keyof DsDataLabelAttributes> & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes]?: DsDataLabel[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `attr:${K}`]?: DsDataLabelAttributes[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `prop:${K}`]?: DsDataLabel[K] };
+        "ds-data-value": DsDataValue;
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
         "ds-footer": Omit<DsFooter, keyof DsFooterAttributes> & { [K in keyof DsFooter & keyof DsFooterAttributes]?: DsFooter[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `attr:${K}`]?: DsFooterAttributes[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `prop:${K}`]?: DsFooter[K] };
@@ -8076,6 +8245,26 @@ declare module "@stencil/core" {
              * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
              */
             "ds-content": LocalJSX.IntrinsicElements["ds-content"] & JSXBase.HTMLAttributes<HTMLDsContentElement>;
+            /**
+             * Data displays a list of label-value pairs in a organized, accessible format.
+             * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+             */
+            "ds-data": LocalJSX.IntrinsicElements["ds-data"] & JSXBase.HTMLAttributes<HTMLDsDataElement>;
+            /**
+             * DataItem is a container for label-value pairs within ds-data.
+             * Provides separate slots for label and value for semantic linking.
+             */
+            "ds-data-item": LocalJSX.IntrinsicElements["ds-data-item"] & JSXBase.HTMLAttributes<HTMLDsDataItemElement>;
+            /**
+             * DataLabel is a label element for use within ds-data-item.
+             * It displays a label with optional required indicator.
+             */
+            "ds-data-label": LocalJSX.IntrinsicElements["ds-data-label"] & JSXBase.HTMLAttributes<HTMLDsDataLabelElement>;
+            /**
+             * DataValue is a value element for use within ds-data-item.
+             * Pass-through slot container for value content.
+             */
+            "ds-data-value": LocalJSX.IntrinsicElements["ds-data-value"] & JSXBase.HTMLAttributes<HTMLDsDataValueElement>;
             /**
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */

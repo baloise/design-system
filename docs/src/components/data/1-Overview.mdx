@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DataStories from './data.stories'
+import { DATA_DOC_CONFIG, getDataTabs } from './data.doc-config'
+
+<Meta title="Components/Data/Data" />
+
+<Banner label={'Data'} section={DATA_DOC_CONFIG.section} color={DATA_DOC_CONFIG.color} />
+
+<BannerTabs of={DataStories} tabs={getDataTabs('overview')} />
+
+<ComponentLead component="data" />
+
+<CanvasWithCodePen of={DataStories.Basic} sourceState="shown" />
+
+<Controls of={DataStories.Basic} />
+
+<ComponentPublicMethods component="data" />
+
+<Footer />

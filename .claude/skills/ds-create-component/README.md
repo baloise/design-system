@@ -1,180 +1,186 @@
 # ds-create-component Skill
 
-Generate a new design system component with full TDD scaffolding, backwards compatibility, and test infrastructure.
+**Create new web components in the Helvetia Design System.**
 
-## Quick Start
+This repository skill generates complete Stencil components with shadow DOM, TypeScript interfaces, SCSS with design tokens, and visual HTML test files.
 
-```bash
-/ds-create-component button
-```
-
-This generates:
-
-- ✅ Component stub (`button.tsx`)
-- ✅ Interfaces/types (`button.interfaces.ts`)
-- ✅ Styling (`button.host.scss`, `button.style.scss`)
-- ✅ Internationalization (`button.i18n.ts` if needed)
-- ✅ Failing tests (red phase TDD)
-- ✅ Auto-export in `index.ts`
-
-## How It Works
-
-### 1. Component Analysis
-
-- Scans `origin/main` for old `bal-button` component
-- Extracts API (props, events, methods)
-- Detects if form component, has i18n, uses animations
-
-### 2. File Generation
-
-- Generates interfaces first (defines types for everything)
-- Creates component stub (intentionally incomplete for TDD)
-- Creates SCSS with design token comments
-- Creates i18n file if needed
-- Creates test directory
-
-### 3. Test Scaffolding
-
-- Calls `ds-sync-component-tests` to generate interaction tests
-- Calls `ds-sync-visual-tests` to generate visual regression tests
-- Calls `ds-sync-a11y-tests` to generate accessibility tests
-- All tests fail initially (red phase)
-
-### 4. Export
-
-- Automatically adds export to `packages/core/src/index.ts`
-
-## Component Types
-
-### wc-only
-
-Web component with shadow DOM only.
-
-```
-files: component.tsx, component.host.scss
-```
-
-### hybrid
-
-Web component with shadow DOM + light DOM support.
-
-```
-files: component.tsx, component.host.scss, component.style.scss
-```
-
-### css-html
-
-Pure HTML/CSS utility (no web component).
-
-```
-files: component.style.scss only
-```
-
-## Features
-
-### ✅ Backwards Compatibility
-
-- Extracts old `bal-*` component API from main branch
-- Matches prop names, event names, behavior
-- Marks deprecated patterns with migration guides
-- Honors SEO/A11y as hard constraints
-
-### ✅ Design Tokens Integration
-
-- Parses `Base.tokens.json`
-- Generates SCSS with available token comments
-- Warns on missing tokens
-
-### ✅ i18n Support
-
-- Detects if component needs multi-language strings
-- Generates i18n structure with all languages
-- Auto-wires config listener for language changes
-
-### ✅ Form Components
-
-- Detects form components (input, select, etc.)
-- Generates `@AttachInternals()` boilerplate
-- Wires form submission/reset handling
-- Generates form integration tests
-
-### ✅ Animation Handling
-
-- Detects animations in SCSS
-- Auto-wires `dsConfig.animated` listener
-- Generates no-animation class for visual tests
-- Disables animations in test mode
-
-### ✅ TDD-First Approach
-
-- Generates stub component (intentionally incomplete)
-- Tests fail initially (red phase)
-- User implements to make tests pass (green phase)
-- Tests verify behavior
-
-## Examples
-
-### Create a simple button
+## Usage
 
 ```bash
-/ds-create-component button
-# Generates wc-only button component with API matching old bal-button
+/ds-create-component
 ```
 
-### Create a form input
+The skill guides you through an interactive questionnaire, then generates all necessary files in one pass.
 
-```bash
-/ds-create-component input
-# Detects form component, generates ElementInternals boilerplate
-# Generates form submission/reset tests
-```
+## What It Creates
 
-### Create an animated modal
-
-```bash
-/ds-create-component modal
-# Detects animations in SCSS
-# Auto-wires animation config handling
-# Disables animations in visual tests
-```
-
-## File Structure
+For a new component named `button`, the skill generates:
 
 ```
-packages/core/src/components/my-component/
-├── my-component.tsx                    # Component stub
-├── my-component.interfaces.ts          # Props, events, enums
-├── my-component.host.scss              # Shadow DOM styles
-├── my-component.style.scss             # Light DOM styles (optional)
-├── my-component.i18n.ts                # Translations (optional)
+packages/core/src/components/button/
+├── button.tsx              # Stencil component
+├── button.interfaces.ts    # TypeScript types
+├── button.host.scss        # Component styles with tokens
 └── test/
-    ├── my-component.component.play.ts  # Component tests (generated)
-    ├── my-component.visual.play.ts     # Visual tests (generated)
-    ├── my-component.visual.html        # Visual test harness (generated)
-    └── my-component.a11y.play.ts       # A11y tests (generated)
-
-packages/playwright/src/lib/components/
-└── my-component.po.ts                  # Page Object (generated)
+    └── button.visual.html  # Visual test file
 ```
 
-## Related Skills
+For components with subcomponents (e.g., `tabs` with `tab`):
 
-- `/ds-sync-component-tests` — Generate component interaction tests
-- `/ds-sync-visual-tests` — Generate visual regression tests
-- `/ds-sync-a11y-tests` — Generate a11y tests
-- `/ds-lint-component` — Audit component against style guide
+```
+packages/core/src/components/tabs/
+├── tabs.tsx
+├── tabs.interfaces.ts
+├── tabs.host.scss
+├── tab/
+│   ├── tab.tsx
+│   ├── tab.interfaces.ts
+│   └── tab.host.scss
+└── test/
+    └── tabs.visual.html
+```
 
-## Decision Log
+## Key Features
 
-This skill was designed via extensive grilling session documenting:
+✅ **Web-only components** — Stencil + shadow DOM  
+✅ **Accessibility first** — WCAG 2.2 AA compliant structure  
+✅ **Design tokens** — Uses alias tokens, warns about globals  
+✅ **Migration support** — Auto-extract props/events from old components  
+✅ **Subcomponents** — Generate parent + child components together  
+✅ **Visual HTML** — Test file with sections for each variant  
+✅ **Auto-registration** — Adds exports to `packages/core/src/index.ts`
 
-1. **Backwards Compatibility** — Match old API, SEO/A11y as hard constraints
-2. **File Generation** — interfaces → stubs → tests → i18n → export
-3. **Test Strategy** — Red phase TDD (tests fail initially)
-4. **Design Tokens** — Parse and comment available tokens
-5. **i18n** — Extract English, populate other languages
-6. **Form Components** — Full ElementInternals + form integration
-7. **Animations** — Auto-detect, wire config listener
-8. **Orchestration** — Coordinate with test generation skills
+## Questionnaire
 
-See [REFERENCE.md](REFERENCE.md) for detailed rules and patterns.
+The skill asks:
+
+1. **Component name** — e.g., `button`, `card`, `modal`
+2. **Purpose** — What does it do?
+3. **Migration?** — From old design system? (auto-extracts props/events)
+4. **Props** — Define component properties
+5. **Events** — Define custom events
+6. **Subcomponents?** — Child components? (e.g., `tab` inside `tabs`)
+7. **Variants** — Visual variants (e.g., primary, secondary, danger)
+
+## Example: Simple Component
+
+```
+Q: Component name?
+A: badge
+
+Q: Component purpose?
+A: Displays a small label with color variants
+
+Q: Migration?
+A: no
+
+Q: Props?
+A: label: string = '', color: 'primary'|'secondary'|'danger' = 'primary'
+
+Q: Events?
+A: (leave empty)
+
+Q: Subcomponents?
+A: no
+
+Q: Variants?
+A: primary, secondary, danger
+```
+
+Result: Complete `badge` component with variants in visual HTML.
+
+## Example: Component with Subcomponents
+
+```
+Q: Component name?
+A: tabs
+
+Q: Component purpose?
+A: Tab container with keyboard navigation
+
+Q: Migration?
+A: yes
+
+Q: Old component name?
+A: old-tabs
+
+(Skill auto-extracts props/events from old-tabs on main branch)
+
+Q: Subcomponents?
+A: yes
+   List: tab, tab-panel
+
+Q: Variants?
+A: horizontal, vertical
+```
+
+Result: `tabs` component + `tab` and `tab-panel` subcomponents, all with exports registered.
+
+## Token Validation
+
+The skill scans generated SCSS for token usage:
+
+```
+✅ Alias tokens: var(--ds-alias-color-primary)
+✅ Component tokens: var(--ds-button-color-primary)
+⚠️ Global tokens: var(--ds-color-primary) — warns with recommendation
+🚫 Hardcoded values: #ff0000 — flagged as invalid
+```
+
+Example warning:
+
+```
+⚠️ Token Issue: Global token detected
+   File: button.host.scss, line 25
+   Found: var(--ds-color-primary)
+
+   Recommendation:
+   1. Use alias token: var(--ds-alias-color-primary)
+   2. Or create component token: --ds-button-color-primary
+```
+
+## Migration Handling
+
+When migrating from the old design system:
+
+- ✅ Auto-extracts props and events from the old component
+- ✅ Pre-fills questionnaire with old interface
+- ✅ Flags a11y/SEO breaking changes (generates accessible version anyway)
+- ✅ Suggests token migration path
+
+Example:
+
+```
+⚠️ BREAKING CHANGE (a11y):
+   Old: <ds-button label="text"></ds-button>
+   New: <ds-button>Click me</ds-button>
+
+   Reason: Light DOM content improves accessibility and SEO.
+```
+
+## What's NOT Included
+
+This skill only generates components. For other tasks:
+
+- **Tests** — Use `/ds-sync-component-tests`
+- **Storybook stories** — Create separately
+- **Type definitions** — Auto-generated by `npm run build`
+
+## Next Steps
+
+After the skill generates files:
+
+1. Review the generated `.tsx`, `.interfaces.ts`, `.host.scss`, and `.visual.html`
+2. Refine the `render()` method and add component logic
+3. Update SCSS variants and add real styling
+4. Run `npm run play` to see your component
+5. Create tests with `/ds-sync-component-tests`
+
+## References
+
+- [SKILL.md](SKILL.md) — Full skill documentation
+- [REFERENCE.md](REFERENCE.md) — File templates and patterns
+- [STYLE_GUIDE.md](../../STYLE_GUIDE.md) — Code standards
+- [packages/core/CONTEXT.md](../../packages/core/CONTEXT.md) — Component patterns
+- [packages/tokens/CONTEXT.md](../../packages/tokens/CONTEXT.md) — Design tokens
+- [ARCHITECTURE.md](../../ARCHITECTURE.md) — Component structure and CSS cascade

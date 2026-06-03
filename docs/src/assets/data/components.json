@@ -2651,6 +2651,7 @@
       "encapsulation": "shadow",
       "dependents": [
         "ds-close",
+        "ds-data-item",
         "ds-hint",
         "ds-snackbar",
         "ds-toast"
@@ -2665,6 +2666,9 @@
           "ds-icon"
         ],
         "ds-close": [
+          "ds-button"
+        ],
+        "ds-data-item": [
           "ds-button"
         ],
         "ds-hint": [
@@ -17288,6 +17292,592 @@
       }
     },
     {
+      "fileName": "data.tsx",
+      "tag": "ds-data",
+      "overview": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with dividers always shown in vertical layout.",
+      "usage": {},
+      "docs": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with dividers always shown in vertical layout.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The content of the data list (typically ds-data-item elements)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "horizontal",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "horizontal",
+          "reflectToAttr": true,
+          "docs": "If `true` the data list is horizontal instead of vertical.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The content of the data list (typically ds-data-item elements)."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "pageObject": {
+        "class": "DsData",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertItemCount",
+            "params": [
+              {
+                "name": "count",
+                "type": "number"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertIsHorizontal",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertIsNotHorizontal",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertHasBorder",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertNoBorder",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
+      "fileName": "data-item.tsx",
+      "tag": "ds-data-item",
+      "overview": "DataItem is a container for label-value pairs within ds-data.\nProvides separate slots for label and value for semantic linking.",
+      "usage": {},
+      "docs": "DataItem is a container for label-value pairs within ds-data.\nProvides separate slots for label and value for semantic linking.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "label - The label content (ds-data-label or text)."
+        },
+        {
+          "name": "slot",
+          "text": "- The value content (ds-data-value or other elements)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-button"
+      ],
+      "dependencyGraph": {
+        "ds-data-item": [
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If `true` the item gets a lighter font color.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "editLabel",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "edit-label",
+          "reflectToAttr": false,
+          "docs": "Label for the edit button.\nWhen omitted the label is localised from the language config.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "editable",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "editable",
+          "reflectToAttr": true,
+          "docs": "If `true` a small button with an edit icon is shown on the right.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "multiline",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "multiline",
+          "reflectToAttr": true,
+          "docs": "If `true` the text will break and the height of the item increases.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "configChanged",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(state: DsConfigState) => Promise<void>",
+            "parameters": [
+              {
+                "name": "state",
+                "type": "DsConfigState",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "DsConfigState": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsConfigState",
+                "referenceLocation": "DsConfigState"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "configChanged(state: DsConfigState) => Promise<void>",
+          "parameters": [
+            {
+              "name": "state",
+              "type": "DsConfigState",
+              "docs": ""
+            }
+          ],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The value content (ds-data-value or other elements)."
+        },
+        {
+          "name": "label",
+          "docs": "The label content (ds-data-label or text)."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "pageObject": {
+        "class": "DsDataItem",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertLabelText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertValueText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertIsDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertIsNotDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertIsMultiline",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertIsNotMultiline",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertIsEditable",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertIsNotEditable",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertHasRequiredIndicator",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertNoRequiredIndicator",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertLabelLinksToValue",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
+      "fileName": "data-label.tsx",
+      "tag": "ds-data-label",
+      "overview": "DataLabel is a label element for use within ds-data-item.\nIt displays a label with optional required indicator.",
+      "usage": {},
+      "docs": "DataLabel is a label element for use within ds-data-item.\nIt displays a label with optional required indicator.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The label text content."
+        }
+      ],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": true,
+          "docs": "If `true` an asterisk is added after the label.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The label text content."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
+      "fileName": "data-value.tsx",
+      "tag": "ds-data-value",
+      "overview": "DataValue is a value element for use within ds-data-item.\nPass-through slot container for value content.",
+      "usage": {},
+      "docs": "DataValue is a value element for use within ds-data-item.\nPass-through slot container for value content.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The value content (text, HTML, or custom elements)."
+        }
+      ],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The value content (text, HTML, or custom elements)."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": []
+    },
+    {
       "fileName": "divider.tsx",
       "tag": "ds-divider",
       "overview": "Divider renders a visual separator line for grouping or distinguishing content sections.",
@@ -20737,6 +21327,7 @@
         "ds-segment",
         "ds-snackbar",
         "ds-step",
+        "ds-steps",
         "ds-tabs",
         "ds-textarea",
         "ds-toast"
@@ -20783,6 +21374,9 @@
           "ds-icon"
         ],
         "ds-step": [
+          "ds-icon"
+        ],
+        "ds-steps": [
           "ds-icon"
         ],
         "ds-tabs": [
@@ -40874,73 +41468,135 @@
     {
       "fileName": "steps.tsx",
       "tag": "ds-steps",
-      "overview": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
+      "overview": "Steps is a container for step indicators, showing progress through a multi-step process.",
       "usage": {},
-      "docs": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
+      "docs": "Steps is a container for step indicators, showing progress through a multi-step process.",
       "docsTags": [
         {
           "name": "slot",
-          "text": "- ds-step-panel children (panels variant)."
-        },
-        {
-          "name": "slot",
-          "text": "step - ds-step children; managed automatically by ds-steps."
-        },
-        {
-          "name": "part",
-          "text": "steplist - The steplist container."
+          "text": "- The steps content (typically ds-step elements)."
         }
       ],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
+      "dependencies": [
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-steps": [
+          "ds-icon"
+        ]
+      },
       "props": [
         {
-          "name": "color",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "name": "disabled",
+          "type": "boolean",
           "complexType": {
-            "original": "StepsColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
-            "references": {
-              "StepsColor": {
-                "location": "import",
-                "path": "../steps.interfaces",
-                "id": "src/components/steps/steps.interfaces.ts::StepsColor",
-                "referenceLocation": "StepsColor"
-              }
-            }
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
           },
           "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "Accent color applied to inactive circles and connector lines.",
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step cannot be selected.",
           "docsTags": [
             {
               "name": "default",
-              "text": "''"
+              "text": "false"
             }
           ],
-          "default": "''",
+          "default": "false",
           "values": [
             {
-              "type": "\"\""
-            },
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "done",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "done",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step is completed. Shows a checkmark icon in the circle.",
+          "docsTags": [
             {
-              "value": "green",
-              "type": "string"
-            },
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
             {
-              "value": "purple",
-              "type": "string"
-            },
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hidden",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step is hidden from the layout.",
+          "docsTags": [
             {
-              "value": "red",
-              "type": "string"
-            },
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
             {
-              "value": "yellow",
-              "type": "string"
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "If `true`, the step has an error. Shows an exclamation mark in the circle.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
@@ -40959,7 +41615,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "Accessible label for the navigation landmark (navigation variant only).",
+          "docs": "Visible text label displayed below the circle.",
           "docsTags": [
             {
               "name": "default",
@@ -40978,60 +41634,25 @@
           "setter": false
         },
         {
-          "name": "value",
-          "type": "null | string | undefined",
+          "name": "name",
+          "type": "string",
           "complexType": {
-            "original": "string | null",
-            "resolved": "null | string | undefined",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "value",
-          "reflectToAttr": true,
-          "docs": "The `name` of the currently selected ds-step (panels variant).",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "vertical",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
+            "original": "string",
+            "resolved": "string",
             "references": {}
           },
           "mutable": false,
-          "attr": "vertical",
-          "reflectToAttr": false,
-          "docs": "If `true`, the steplist is displayed vertically.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "Unique name that links this step to a ds-step-panel[for] of the same value.",
+          "docsTags": [],
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             }
           ],
           "optional": false,
-          "required": false,
+          "required": true,
           "getter": false,
           "setter": false
         }
@@ -41039,24 +41660,17 @@
       "methods": [],
       "events": [
         {
-          "event": "dsChange",
-          "detail": "{ value: string; }",
+          "event": "dsStepSelect",
+          "detail": "{ name: string; }",
           "bubbles": true,
           "complexType": {
-            "original": "StepsChangeDetail",
-            "resolved": "{ value: string; }",
-            "references": {
-              "StepsChangeDetail": {
-                "location": "import",
-                "path": "../steps.interfaces",
-                "id": "src/components/steps/steps.interfaces.ts::StepsChangeDetail",
-                "referenceLocation": "StepsChangeDetail"
-              }
-            }
+            "original": "{ name: string }",
+            "resolved": "{ name: string; }",
+            "references": {}
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the selected step changes (panels variant only).",
+          "docs": "Emitted when the user clicks this step (panels mode only).",
           "docsTags": []
         }
       ],
@@ -41157,27 +41771,12 @@
       "slots": [
         {
           "name": "",
-          "docs": "ds-step-panel children (panels variant)."
-        },
-        {
-          "name": "step",
-          "docs": "ds-step children; managed automatically by ds-steps."
+          "docs": "The steps content (typically ds-step elements)."
         }
       ],
-      "parts": [
-        {
-          "name": "steplist",
-          "docs": "The steplist container."
-        }
-      ],
+      "parts": [],
       "customStates": [],
-      "listeners": [
-        {
-          "event": "dsStepSelect",
-          "capture": false,
-          "passive": false
-        }
-      ],
+      "listeners": [],
       "tokens": [
         {
           "name": "🧩 Component / Steps / Connector / Color",
@@ -50386,16 +50985,6 @@
       "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
-    },
-    "src/components/steps/steps.interfaces.ts::StepsColor": {
-      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
-      "docstring": "",
-      "path": "src/components/steps/steps.interfaces.ts"
-    },
-    "src/components/steps/steps.interfaces.ts::StepsChangeDetail": {
-      "declaration": "{ value: string }",
-      "docstring": "",
-      "path": "src/components/steps/steps.interfaces.ts"
     },
     "src/components/tabs/tabs.interfaces.ts::TabsColor": {
       "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
