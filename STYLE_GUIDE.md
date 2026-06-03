@@ -218,16 +218,23 @@ export class Checkbox implements DsComponentInterface {
 
 ### Section Dividers
 
-Organize component class with these sections in order:
+Organize component class with these sections in the order shown. **Only include sections that have content** — empty sections should be omitted:
 
-1. PUBLIC PROPERTY API
-2. LIFECYCLE
-3. PROPERTY VALIDATION
-4. PUBLIC LISTENERS
-5. PUBLIC METHODS
-6. EVENT HANDLERS
-7. PRIVATE METHODS
-8. RENDER
+1. PUBLIC PROPERTY API — `@Prop()` and `@Event()` declarations
+2. LIFECYCLE — `connectedCallback()`, `componentWillLoad()`, `componentWillUpdate()`, `componentDidRender()`
+3. PUBLIC LISTENERS — `@Listen()` methods
+4. PUBLIC METHODS — `@Method()` declarations
+5. EVENT HANDLERS — Private event handlers and DOM event handlers
+6. PRIVATE METHODS — Private helper methods
+7. RENDER — `render()` method
+
+Each section should be separated by a comment divider using Unicode dashes:
+```tsx
+/**
+ * PUBLIC PROPERTY API
+ * ─────────────────────────────────────────────────────
+ */
+```
 
 ## Creating Values and Types
 
@@ -252,21 +259,34 @@ Do **not** wrap these in a `namespace DS { }` block — export them directly.
 
 ## Prop Validation
 
-Every component must have a `private validateProps()` method:
+Every `@Prop()` must have a corresponding `@Validate*` decorator that matches its type. Call `setupValidation(this)` in both `connectedCallback()` and `componentWillUpdate()`:
 
 ```ts
-private validateProps() {
-  checkEmptyOrType(this, 'label', 'string')
-  checkEmptyOrOneOf(this, 'size', DS.BUTTON_SIZES)
+// ✅ Define validator decorator on each prop
+@Prop()
+@ValidateEmptyOrType('string')
+readonly label: string = ''
+
+@Prop()
+@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+readonly size: ButtonSize = ''
+
+// ✅ Call setupValidation in lifecycle hooks
+connectedCallback(): void {
+  setupValidation(this)
+}
+
+componentWillUpdate(): void {
+  setupValidation(this)
 }
 ```
 
 Available validators from `@utils`:
 
-- `checkEmptyOrType()` — optional string/number/boolean
-- `checkEmptyOrOneOf()` — optional enum
-- `checkRequiredAndType()` — required string/number/boolean
-- `checkRequiredAndOneOf()` — required enum
+- `@ValidateEmptyOrType('string' | 'number' | 'boolean')` — optional primitive
+- `@ValidateEmptyOrOneOf(...CONST_ARRAY)` — optional enum
+- `@ValidateRequiredAndType(...)` — required primitive (only if default is never empty)
+- `@ValidateRequiredAndOneOf(...)` — required enum (only if default is never empty)
 
 ## Quick Reference Table
 

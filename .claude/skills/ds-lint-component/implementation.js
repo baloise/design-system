@@ -1,505 +1,707 @@
-#!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
+const { globSync } = require('glob');
 
-/**
- * ds-lint-component — Full Implementation
- *
- * Audits Stencil components against 14 design-system-specific style guide checks
- * and auto-fixes violations.
- */
+const REPO_ROOT = path.resolve(__dirname, '../../..');
 
-const fs = require('fs')
-const path = require('path')
-const { execSync } = require('child_process')
+const VALIDATOR_PATTERNS = {
+  'string': 'ValidateEmptyOrType(\'string\')',
+  'number': 'ValidateEmptyOrType(\'number\')',
+  'boolean': 'ValidateEmptyOrType(\'boolean\')',
+};
 
-const PROJECT_ROOT = path.resolve(__dirname, '../../..')
-const COMPONENTS_PATH = path.join(PROJECT_ROOT, 'packages/core/src/components')
+const SECTIONS_ORDER = [
+  'PUBLIC PROPERTY API',
+  'LIFECYCLE',
+  'PUBLIC LISTENERS',
+  'PUBLIC METHODS',
+  'EVENT HANDLERS',
+  'PRIVATE METHODS',
+  'RENDER',
+];
 
-// ============================================================================
-// CHECK DEFINITIONS & DETECTION
-// ============================================================================
+// Documentation keywords that indicate a JSDoc comment
+const DOC_KEYWORDS = ['@internal', '@deprecated', '@private', '@protected', '@public', '@readonly', '@param', '@returns', '@example', '@throws', '@see', '@link', '@todo', '@fixme'];
 
-class ComponentLinter {
-  constructor(componentName) {
-    this.componentName = componentName
-    this.componentDir = path.join(COMPONENTS_PATH, componentName)
-    this.componentFile = path.join(this.componentDir, `${componentName}.tsx`)
-    this.interfacesFile = path.join(this.componentDir, `${componentName}.interfaces.ts`)
-    this.hostScssFile = path.join(this.componentDir, `${componentName}.host.scss`)
-    this.styleScssFile = path.join(this.componentDir, `${componentName}.style.scss`)
+async function lintComponent(componentName, shouldFix = false) {
+  const componentPath = path.join(REPO_ROOT, 'packages/core/src/components', componentName);
 
-    this.violations = []
-    this.fixes = {}
-    this.componentContent = ''
-    this.interfacesContent = ''
+  if (!fs.existsSync(componentPath)) {
+    throw new Error(`Component not found: ${componentName}`);
   }
 
-  /**
-   * Load files
-   */
-  load() {
-    if (!fs.existsSync(this.componentFile)) {
-      throw new Error(`Component file not found: ${this.componentFile}`)
-    }
+  const tsxFiles = globSync(`${componentPath}/**/*.tsx`).filter(f => !f.includes('.spec.'));
+  const scssFiles = globSync(`${componentPath}/**/*.scss`);
 
-    this.componentContent = fs.readFileSync(this.componentFile, 'utf-8')
-
-    if (fs.existsSync(this.interfacesFile)) {
-      this.interfacesContent = fs.readFileSync(this.interfacesFile, 'utf-8')
-    }
+  if (tsxFiles.length === 0) {
+    throw new Error(`No .tsx files found in ${componentName}`);
   }
 
-  /**
-   * Run all checks
-   */
-  runAllChecks() {
-    this.check0ImportAliases()
-    this.check1ConstArrays()
-    this.check2TypeAnnotations()
-    this.check3ReflectAttribute()
-    this.check4ValidateProps()
-    this.check8EventPrefix()
-    this.check9LoggableLoggable()
-    this.check11SectionDividers()
-    this.check14PropWatch()
-    this.check16ComponentTag()
-    this.check17Description()
-    this.check18SlotPart()
-    this.check19CSSSelectors()
-    this.check20EnumDefaults()
-  }
+  const results = [];
+  const fixes = [];
 
-  // ========================================================================
-  // CHECK 0: Import Aliases
-  // ========================================================================
+  // Lint TSX files
+  for (const file of tsxFiles) {
+    const report = await lintFile(file);
+    results.push(report);
 
-  check0ImportAliases() {
-    const relativeImports = [
-      { pattern: /from\s+['"]\.\.\/\.\.\/utils\//g, alias: '@utils' },
-      { pattern: /from\s+['"]\.\.\/\.\.\/global/g, alias: '@global' },
-    ]
-
-    let hasViolation = false
-
-    for (const { pattern, alias } of relativeImports) {
-      if (pattern.test(this.componentContent)) {
-        hasViolation = true
-        this.violations.push(`0. Relative imports (use ${alias} instead)`)
-      }
-    }
-
-    if (hasViolation) {
-      this.fixes.imports = true
-    }
-  }
-
-  // ========================================================================
-  // CHECK 1: Const Arrays with Derived Types
-  // ========================================================================
-
-  check1ConstArrays() {
-    if (!this.interfacesContent) return
-
-    // Check if types are wrapped in namespace
-    if (this.interfacesContent.includes('namespace DS')) {
-      this.violations.push('1. Types wrapped in namespace DS (export flat instead)')
-      this.fixes.interfaces = true
-      return
-    }
-
-    // Check if const arrays exist and are exported
-    if (this.interfacesContent.includes('export const')) {
-      return // Likely correct pattern
-    }
-
-    // Check if types are union literals (bad pattern)
-    if (this.interfacesContent.match(/type\s+\w+\s*=\s*['"][^'"]+['"]\s*\|/)) {
-      this.violations.push('1. Type defined as union literals instead of derived from const array')
-      this.fixes.interfaces = true
-    }
-  }
-
-  // ========================================================================
-  // CHECK 2: Type Annotations on @Prop()
-  // ========================================================================
-
-  check2TypeAnnotations() {
-    // Find @Prop() with default but no type annotation
-    const propWithDefaultNoType = /@Prop\([^)]*\)\s+readonly\s+(\w+)\s*=\s*[^;\n]/g
-    let match
-
-    while ((match = propWithDefaultNoType.exec(this.componentContent)) !== null) {
-      const beforeEquals = this.componentContent.substring(Math.max(0, match.index - 50), match.index + match[0].length)
-
-      if (!beforeEquals.includes(':')) {
-        this.violations.push(`2. @Prop() ${match[1]} missing type annotation`)
-        this.fixes.component = true
+    if (shouldFix && report.violations.length > 0) {
+      const fixed = await fixFile(file, report);
+      if (fixed.changes.length > 0) {
+        fixes.push(fixed);
       }
     }
   }
 
-  // ========================================================================
-  // CHECK 3: reflect Attribute for State Props
-  // ========================================================================
-
-  check3ReflectAttribute() {
-    const stateProps = ['value', 'disabled', 'invalid', 'readonly', 'loading', 'checked', 'open', 'active']
-    const reflectRegex = /@Prop\(\s*{\s*reflect:\s*true\s*}\s*\)\s+readonly\s+(\w+)/g
-
-    const propsWithReflect = new Set()
-    let match
-    while ((match = reflectRegex.exec(this.componentContent)) !== null) {
-      propsWithReflect.add(match[1])
-    }
-
-    // Check state props without reflect
-    for (const stateProp of stateProps) {
-      const propRegex = new RegExp(`@Prop\\(\\)\\s+readonly\\s+${stateProp}\\b`, 'g')
-      if (propRegex.test(this.componentContent) && !propsWithReflect.has(stateProp)) {
-        this.violations.push(`3. State prop '${stateProp}' missing reflect: true`)
-        this.fixes.component = true
-      }
+  // Lint SCSS files for design tokens
+  for (const file of scssFiles) {
+    const report = await lintScssFile(file);
+    if (report.violations.length > 0) {
+      results.push(report);
     }
   }
 
-  // ========================================================================
-  // CHECK 4: validateProps() Method
-  // ========================================================================
+  printReport(componentName, results, shouldFix, fixes);
+}
 
-  check4ValidateProps() {
-    const hasValidateProps = this.componentContent.includes('validateProps()')
-    const hasConnectedCallback = this.componentContent.includes('connectedCallback()')
-    const hasComponentWillUpdate = this.componentContent.includes('componentWillUpdate()')
-    const hasProp = /@Prop\(/.test(this.componentContent)
+async function lintFile(filePath) {
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const relPath = path.relative(REPO_ROOT, filePath);
+  const violations = [];
 
-    if (hasProp && !hasValidateProps) {
-      this.violations.push('4. Missing validateProps() method')
-      this.fixes.component = true
-      return
-    }
+  // Parse the file
+  const props = extractProps(content);
+  const events = extractEvents(content);
+  const listeners = extractListeners(content);
+  const methods = extractMethods(content);
+  const handlers = extractHandlers(content);
+  const privateMethods = extractPrivateMethods(content);
+  const render = extractRender(content);
+  const dividers = extractDividers(content);
+  const setupValidationCalls = extractSetupValidationCalls(content);
+  const componentDocs = extractComponentDocs(content);
+  const propDocs = extractPropDocs(content);
+  const eventDocs = extractEventDocs(content);
+  const methodDocs = extractMethodDocs(content);
+  const tokenViolations = checkDesignTokens(content);
 
-    if (hasValidateProps) {
-      if (
-        !this.componentContent.includes('connectedCallback') ||
-        !this.componentContent.match(/connectedCallback[^{]*{[^}]*validateProps/)
-      ) {
-        this.violations.push('4. validateProps() not called from connectedCallback()')
-        this.fixes.component = true
-      }
-
-      if (
-        !this.componentContent.includes('componentWillUpdate') ||
-        !this.componentContent.match(/componentWillUpdate[^{]*{[^}]*validateProps/)
-      ) {
-        this.violations.push('4. validateProps() not called from componentWillUpdate()')
-        this.fixes.component = true
-      }
-    }
-  }
-
-  // ========================================================================
-  // CHECK 8: Event ds Prefix
-  // ========================================================================
-
-  check8EventPrefix() {
-    const eventRegex = /@Event\(\)\s+(\w+):\s*EventEmitter/g
-    let match
-
-    while ((match = eventRegex.exec(this.componentContent)) !== null) {
-      if (!match[1].startsWith('ds')) {
-        this.violations.push(`8. Event '${match[1]}' missing ds prefix`)
-        this.fixes.component = true
-      }
+  // Check prop validators
+  for (const prop of props) {
+    if (!prop.validator) {
+      violations.push({
+        type: 'missing-validator',
+        severity: 'error',
+        prop: prop.name,
+        message: `Missing @Validate* decorator on prop "${prop.name}"`,
+      });
+    } else if (!prop.validatorMatches) {
+      violations.push({
+        type: 'validator-mismatch',
+        severity: 'error',
+        prop: prop.name,
+        message: `Validator type mismatch for "${prop.name}" (${prop.type})`,
+      });
     }
   }
 
-  // ========================================================================
-  // CHECK 9: ComponentInterface + Loggable
-  // ========================================================================
-
-  check9LoggableLoggable() {
-    const hasDsComponentInterface = this.componentContent.includes('DsComponentInterface')
-    const hasLogger = this.componentContent.includes('@Logger')
-    const hasCreateLogger = this.componentContent.includes('createLogger')
-
-    if (!hasDsComponentInterface) {
-      this.violations.push('9. Missing DsComponentInterface implementation')
-      this.fixes.component = true
+  // Check setupValidation calls
+  if (props.length > 0) {
+    if (!setupValidationCalls.connectedCallback) {
+      violations.push({
+        type: 'missing-setup-validation',
+        severity: 'error',
+        method: 'connectedCallback',
+        message: 'setupValidation(this) missing from connectedCallback()',
+      });
     }
-
-    if (!hasLogger || !hasCreateLogger) {
-      this.violations.push('9. Missing @Logger decorator or createLogger method')
-      this.fixes.component = true
-    }
-  }
-
-  // ========================================================================
-  // CHECK 11: Section Dividers
-  // ========================================================================
-
-  check11SectionDividers() {
-    const requiredSections = ['PUBLIC PROPERTY API', 'LIFECYCLE', 'PROPERTY VALIDATION', 'PRIVATE METHODS', 'RENDER']
-
-    const missingSections = []
-
-    for (const section of requiredSections) {
-      if (!this.componentContent.includes(section)) {
-        missingSections.push(section)
-      }
-    }
-
-    if (missingSections.length > 0) {
-      this.violations.push(`11. Missing section dividers: ${missingSections.join(', ')}`)
-      this.fixes.component = true
+    if (!setupValidationCalls.componentWillUpdate) {
+      violations.push({
+        type: 'missing-setup-validation',
+        severity: 'error',
+        method: 'componentWillUpdate',
+        message: 'setupValidation(this) missing from componentWillUpdate()',
+      });
     }
   }
 
-  // ========================================================================
-  // CHECK 14: @Prop() + @Watch() Together
-  // ========================================================================
+  // Check dividers
+  const dividerViolations = checkDividers(content, {
+    hasProps: props.length > 0 || events.length > 0,
+    hasListeners: listeners.length > 0,
+    hasMethods: methods.length > 0,
+    hasHandlers: handlers.length > 0,
+    hasPrivateMethods: privateMethods.length > 0,
+    hasRender: render !== null,
+  });
 
-  check14PropWatch() {
-    // Find @Watch methods and their corresponding @Prop
-    const watchRegex = /@Watch\('(\w+)'\)\s+(\w+Changed)/g
-    let match
+  violations.push(...dividerViolations);
 
-    while ((match = watchRegex.exec(this.componentContent)) !== null) {
-      const propName = match[1]
-      // Check if @Prop() for this name is nearby
-      const propRegex = new RegExp(`@Prop\\([^)]*\\)\\s+readonly\\s+${propName}\\b`, 'g')
-      const propMatch = propRegex.exec(this.componentContent)
+  // Check documentation for props, events, methods, and listeners
+  const docViolations = checkDocumentation(content, {
+    props,
+    events,
+    methods,
+    listeners,
+    componentDocs,
+    propDocs,
+    eventDocs,
+    methodDocs,
+  });
 
-      if (propMatch) {
-        // Check if they're within 5 lines of each other
-        const propEnd = propMatch.index + propMatch[0].length
-        const watchStart = match.index
-        const distance = Math.abs(watchStart - propEnd)
-        const lines = this.componentContent
-          .substring(Math.min(propEnd, watchStart), Math.max(propEnd, watchStart))
-          .split('\n').length
+  violations.push(...docViolations);
+  violations.push(...tokenViolations);
 
-        if (lines > 5) {
-          this.violations.push(`14. @Prop() '${propName}' and @Watch() not placed together`)
-          this.fixes.component = true
+  return {
+    file: relPath,
+    violations,
+    metadata: {
+      props,
+      events,
+      listeners,
+      methods,
+      handlers,
+      componentDocs,
+    },
+  };
+}
+
+function extractProps(content) {
+  const propPattern = /@Prop\s*\({[^}]*}\)?\s*(?:@(\w+))?\s*readonly\s+(\w+)\s*:\s*([^=\s]+)/g;
+  const props = [];
+  let match;
+
+  while ((match = propPattern.exec(content)) !== null) {
+    const validator = match[1];
+    const name = match[2];
+    const type = match[3];
+
+    props.push({
+      name,
+      type: type.replace(/[<>[\]]/g, ''),
+      validator: validator || null,
+      validatorMatches: validator ? matchesType(validator, type) : false,
+    });
+  }
+
+  return props;
+}
+
+function extractEvents(content) {
+  const eventPattern = /@Event\s*\(\)\s*(\w+)/g;
+  const events = [];
+  let match;
+
+  while ((match = eventPattern.exec(content)) !== null) {
+    events.push(match[1]);
+  }
+
+  return events;
+}
+
+function extractListeners(content) {
+  const listenerPattern = /@Listen\s*\([^)]+\)\s*(\w+)/g;
+  const listeners = [];
+  let match;
+
+  while ((match = listenerPattern.exec(content)) !== null) {
+    listeners.push(match[1]);
+  }
+
+  return listeners;
+}
+
+function extractMethods(content) {
+  const methodPattern = /@Method\s*\(\)\s*async\s+(\w+)/g;
+  const methods = [];
+  let match;
+
+  while ((match = methodPattern.exec(content)) !== null) {
+    methods.push(match[1]);
+  }
+
+  return methods;
+}
+
+function extractHandlers(content) {
+  const handlerPattern = /private\s+handle\w+\s*=/g;
+  return handlerPattern.test(content) ? ['handlers'] : [];
+}
+
+function extractPrivateMethods(content) {
+  const privatePattern = /private\s+\w+\s*\([^)]*\)\s*{/g;
+  return privatePattern.test(content) ? ['private'] : [];
+}
+
+function extractRender(content) {
+  return content.includes('render()') ? 'render' : null;
+}
+
+function extractDividers(content) {
+  const dividerPattern = /\/\*\*\s*\n\s*\*\s*([A-Z\s]+)\s*\n\s*\*\s*(─+)\s*\n\s*\*\//g;
+  const dividers = [];
+  let match;
+
+  while ((match = dividerPattern.exec(content)) !== null) {
+    dividers.push({
+      name: match[1].trim(),
+      dashCount: match[2].length,
+    });
+  }
+
+  return dividers;
+}
+
+function extractSetupValidationCalls(content) {
+  const connectedCallbackMatch = /connectedCallback\s*\(\)[^{]*{([^}]*)setupValidation/;
+  const componentWillUpdateMatch = /componentWillUpdate\s*\(\)[^{]*{([^}]*)setupValidation/;
+
+  return {
+    connectedCallback: connectedCallbackMatch.test(content),
+    componentWillUpdate: componentWillUpdateMatch.test(content),
+  };
+}
+
+async function lintScssFile(filePath) {
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const relPath = path.relative(REPO_ROOT, filePath);
+  const violations = [];
+
+  const tokenViolations = checkDesignTokens(content);
+  violations.push(...tokenViolations);
+
+  return {
+    file: relPath,
+    violations,
+  };
+}
+
+function extractComponentDocs(content) {
+  const match = content.match(/\/\*\*\s*\n([\s\S]*?)\*\/\s*@Component/);
+  if (!match) return { slots: [], parts: [] };
+
+  const docBlock = match[1];
+  const slotPattern = /@slot\s+([^\s-]+)?\s*-?\s*([^\n]*)/g;
+  const partPattern = /@part\s+([^\s-]+)\s*-?\s*([^\n]*)/g;
+
+  const slots = [];
+  const parts = [];
+
+  let slotMatch;
+  while ((slotMatch = slotPattern.exec(docBlock)) !== null) {
+    slots.push({
+      name: slotMatch[1] || 'default',
+      doc: slotMatch[2] || '',
+    });
+  }
+
+  let partMatch;
+  while ((partMatch = partPattern.exec(docBlock)) !== null) {
+    parts.push({
+      name: partMatch[1],
+      doc: partMatch[2] || '',
+    });
+  }
+
+  return { slots, parts };
+}
+
+function findDocBeforeDecorator(content, decoratorName, targetName) {
+  const lines = content.split('\n');
+
+  // Find the line with the decorator and target
+  let targetLine = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes(`@${decoratorName}`) &&
+        (i + 5 > lines.length || lines.slice(i, Math.min(i + 5, lines.length)).some(l => l.includes(targetName)))) {
+      targetLine = i;
+      break;
+    }
+  }
+
+  if (targetLine === -1) return false;
+
+  // Look backwards for a JSDoc comment (/** ... */)
+  for (let i = targetLine - 1; i >= Math.max(0, targetLine - 20); i--) {
+    const line = lines[i].trim();
+
+    // If we find closing */, that's the end of a JSDoc
+    if (line.endsWith('*/')) {
+      // Check if there's actual content in the comment (not just whitespace)
+      let hasContent = false;
+      for (let j = i; j >= Math.max(0, i - 10); j--) {
+        if (lines[j].includes('/**')) {
+          hasContent = true;
+          break;
+        }
+        if (lines[j].trim() && lines[j].trim() !== '*' && !lines[j].trim().startsWith('*/')) {
+          hasContent = true;
         }
       }
+      return hasContent;
+    }
+
+    // Stop if we hit a non-comment, non-whitespace line (except for the decorator itself)
+    if (line && !line.startsWith('*') && !line.includes('@') && !line.startsWith('/**')) {
+      return false;
     }
   }
 
-  // ========================================================================
-  // CHECK 16: Component Tag with ds- Prefix
-  // ========================================================================
+  return false;
+}
 
-  check16ComponentTag() {
-    const tagMatch = this.componentContent.match(/@Component\(\{[^}]*tag:\s*['"]([^'"]+)['"]/)
-    if (tagMatch) {
-      const tag = tagMatch[1]
-      if (!tag.startsWith('ds-')) {
-        this.violations.push(`16. Component tag '${tag}' missing ds- prefix`)
-        this.fixes.component = true
+function extractPropDocs(content) {
+  const props = extractProps(content);
+  return props.map(p => ({
+    name: p.name,
+    documented: findDocBeforeDecorator(content, 'Prop', p.name),
+  }));
+}
+
+function extractEventDocs(content) {
+  const events = extractEvents(content);
+  return events.map(e => ({
+    name: e,
+    documented: findDocBeforeDecorator(content, 'Event', e),
+  }));
+}
+
+function extractMethodDocs(content) {
+  const methods = extractMethods(content);
+  return methods.map(m => ({
+    name: m,
+    documented: findDocBeforeDecorator(content, 'Method', m),
+  }));
+}
+
+function checkDocumentation(content, { props, events, methods, listeners, componentDocs, propDocs, eventDocs, methodDocs }) {
+  const violations = [];
+
+  // Check props have documentation
+  for (const propDoc of propDocs) {
+    if (!propDoc.documented) {
+      violations.push({
+        type: 'missing-documentation',
+        severity: 'warn',
+        target: propDoc.name,
+        kind: 'prop',
+        message: `Missing JSDoc documentation for @Prop "${propDoc.name}"`,
+      });
+    }
+  }
+
+  // Check events have documentation
+  for (const eventDoc of eventDocs) {
+    if (!eventDoc.documented) {
+      violations.push({
+        type: 'missing-documentation',
+        severity: 'warn',
+        target: eventDoc.name,
+        kind: 'event',
+        message: `Missing JSDoc documentation for @Event "${eventDoc.name}"`,
+      });
+    }
+  }
+
+  // Check methods have documentation
+  for (const methodDoc of methodDocs) {
+    if (!methodDoc.documented) {
+      violations.push({
+        type: 'missing-documentation',
+        severity: 'warn',
+        target: methodDoc.name,
+        kind: 'method',
+        message: `Missing JSDoc documentation for @Method "${methodDoc.name}"`,
+      });
+    }
+  }
+
+  // Check slots and parts are documented in component-level JSDoc
+  for (const slot of componentDocs.slots) {
+    if (!slot.doc || slot.doc.trim() === '') {
+      violations.push({
+        type: 'missing-documentation',
+        severity: 'warn',
+        target: slot.name,
+        kind: 'slot',
+        message: `Missing description for @slot "${slot.name}"`,
+      });
+    }
+  }
+
+  for (const part of componentDocs.parts) {
+    if (!part.doc || part.doc.trim() === '') {
+      violations.push({
+        type: 'missing-documentation',
+        severity: 'warn',
+        target: part.name,
+        kind: 'part',
+        message: `Missing description for @part "${part.name}"`,
+      });
+    }
+  }
+
+  return violations;
+}
+
+function checkDesignTokens(content) {
+  const violations = [];
+
+  // Skip .interfaces.ts files
+  if (content.includes('export type') && !content.includes('@Prop')) {
+    return violations;
+  }
+
+  // Patterns for CSS variable usage
+  // Match everything between var( and closing paren/comma, including SCSS interpolation
+  const cssVarPattern = /var\(\s*--([^,)]+)/g;
+  const varsLocalPattern = /vars\.local\s*\([^)]*var\s*\(\s*--([^,)]+)/g;
+  const modifierPattern = /--mod-[\w-]+:\s*var\s*\(\s*--([^,)]+)/g;
+
+  // Find tokens used in vars.local() context (these are allowed to use global tokens)
+  const allowedInVarsLocal = new Set();
+  let match;
+  while ((match = varsLocalPattern.exec(content)) !== null) {
+    const tokenName = match[1].trim().split(/[\s#}]/)[0];
+    if (tokenName && tokenName.startsWith('ds-')) {
+      allowedInVarsLocal.add(tokenName);
+    }
+  }
+
+  // Find tokens used to set modifiers (also allowed - pattern: --mod-* uses global tokens as sources)
+  const allowedInModifiers = new Set();
+  const modifierMatches = content.matchAll(modifierPattern);
+  for (const match of modifierMatches) {
+    let tokenName = match[1].trim();
+    // Extract token name, stopping at space, newline, or SCSS interpolation
+    tokenName = tokenName.split(/[\s#}]/)[0];
+    if (tokenName && tokenName.startsWith('ds-')) {
+      allowedInModifiers.add(tokenName);
+    }
+  }
+
+  // Check all CSS variables
+  const usedTokens = new Set();
+  const cssVarMatches = content.matchAll(cssVarPattern);
+
+  for (const match of cssVarMatches) {
+    let tokenName = match[1].trim();
+
+    // Extract token name, stopping at space, newline, or SCSS interpolation
+    tokenName = tokenName.split(/[\s#}]/)[0];
+
+    // Skip if empty or contains SCSS interpolation syntax
+    if (!tokenName || tokenName.includes('#{')) {
+      continue;
+    }
+
+    // Skip if already processed
+    if (usedTokens.has(tokenName)) continue;
+    usedTokens.add(tokenName);
+
+    // Allowed patterns:
+    // - --_* (private variables)
+    // - --ds-alias-* (alias tokens)
+    // - --ds-component-* (component-specific tokens)
+    // - --mod-* (modifiers)
+    // - In vars.local() context: --ds-* (global tokens as defaults)
+    // - In modifier assignment: --ds-* (global tokens as sources for modifiers)
+
+    const isPrivate = tokenName.startsWith('_');
+    const isAlias = tokenName.startsWith('ds-alias-');
+    const isComponent = tokenName.startsWith('ds-component-');
+    const isModifier = tokenName.startsWith('mod-');
+    const isGlobal = tokenName.startsWith('ds-') && !isAlias && !isComponent;
+    const isInVarsLocal = allowedInVarsLocal.has(tokenName);
+    const isInModifier = allowedInModifiers.has(tokenName);
+
+    // Flag global tokens that aren't in allowed contexts
+    if (isGlobal && !isInVarsLocal && !isInModifier) {
+      violations.push({
+        type: 'invalid-design-token',
+        severity: 'warn',
+        token: tokenName,
+        message: `Use alias (--ds-alias-*) or component (--ds-component-*) tokens instead of global (--${tokenName})`,
+      });
+    }
+  }
+
+  return violations;
+}
+
+function checkDividers(content, sections) {
+  const violations = [];
+  const dividers = extractDividers(content);
+  const dividerNames = dividers.map(d => d.name);
+
+  // Check if required dividers are missing
+  const requiredDividers = [];
+  if (sections.hasProps) requiredDividers.push('PUBLIC PROPERTY API');
+  if (sections.hasListeners) requiredDividers.push('PUBLIC LISTENERS');
+  if (sections.hasMethods) requiredDividers.push('PUBLIC METHODS');
+  if (sections.hasHandlers) requiredDividers.push('EVENT HANDLERS');
+  if (sections.hasPrivateMethods) requiredDividers.push('PRIVATE METHODS');
+  if (sections.hasRender) requiredDividers.push('RENDER');
+
+  for (const required of requiredDividers) {
+    if (!dividerNames.includes(required)) {
+      violations.push({
+        type: 'missing-divider',
+        severity: 'error',
+        section: required,
+        message: `Missing divider comment for ${required}`,
+      });
+    }
+  }
+
+  // Check divider format (dash count)
+  for (const divider of dividers) {
+    if (divider.dashCount < 40 || divider.dashCount > 60) {
+      violations.push({
+        type: 'divider-format',
+        severity: 'warn',
+        section: divider.name,
+        message: `Divider for ${divider.name} has ${divider.dashCount} dashes (expected ~53)`,
+      });
+    }
+  }
+
+  return violations;
+}
+
+function matchesType(validator, type) {
+  const normalizedType = type.replace(/[<>[\]]/g, '');
+
+  if (normalizedType === 'string' && validator === 'ValidateEmptyOrType') return true;
+  if (normalizedType === 'number' && validator === 'ValidateEmptyOrType') return true;
+  if (normalizedType === 'boolean' && validator === 'ValidateEmptyOrType') return true;
+  if (validator === 'ValidateEmptyOrOneOf' || validator === 'ValidateRequiredAndOneOf') return true;
+
+  return false;
+}
+
+async function fixFile(filePath, report) {
+  let content = fs.readFileSync(filePath, 'utf-8');
+  const changes = [];
+
+  // Apply fixes for missing documentation
+  for (const violation of report.violations) {
+    if (violation.type === 'missing-documentation') {
+      const { target, kind } = violation;
+      const updatedContent = addDocumentationComment(content, kind, target);
+      if (updatedContent !== content) {
+        content = updatedContent;
+        changes.push(`Added JSDoc for @${kind.charAt(0).toUpperCase() + kind.slice(1)} "${target}"`);
       }
     }
 
-    const classMatch = this.componentContent.match(/export\s+class\s+(\w+)/)
-    if (classMatch) {
-      const className = classMatch[1]
-      if (className.startsWith('Ds')) {
-        this.violations.push(`16. Component class '${className}' should not have Ds prefix`)
-        this.fixes.component = true
+    if (violation.type === 'missing-validator' && violation.prop) {
+      // Would need more complex logic to find and add validator
+      changes.push(`Would add validator for ${violation.prop}`);
+    }
+
+    if (violation.type === 'missing-setup-validation') {
+      // Would need to find lifecycle method and add call
+      changes.push(`Would add setupValidation() to ${violation.method}`);
+    }
+
+    if (violation.type === 'missing-divider') {
+      // Would need to add divider comment
+      changes.push(`Would add divider for ${violation.section}`);
+    }
+  }
+
+  if (changes.length > 0) {
+    fs.writeFileSync(filePath, content, 'utf-8');
+  }
+
+  return {
+    file: filePath,
+    changes,
+  };
+}
+
+function addDocumentationComment(content, kind, target) {
+  const lines = content.split('\n');
+  let result = [...lines];
+
+  // Find the decorator line
+  let decoratorLine = -1;
+  const decoratorName = kind.charAt(0).toUpperCase() + kind.slice(1);
+
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes(`@${decoratorName}`) &&
+        (i + 5 > lines.length || lines.slice(i, Math.min(i + 5, lines.length)).some(l => l.includes(target)))) {
+      decoratorLine = i;
+      break;
+    }
+  }
+
+  if (decoratorLine === -1) return content;
+
+  // Check if there's already a JSDoc comment
+  if (decoratorLine > 0) {
+    let checkLine = decoratorLine - 1;
+    while (checkLine >= 0 && (lines[checkLine].trim() === '' || lines[checkLine].trim().startsWith('*'))) {
+      if (lines[checkLine].includes('/**')) {
+        return content; // Already has a doc comment
       }
+      checkLine--;
     }
   }
 
-  // ========================================================================
-  // CHECK 17: Component Description
-  // ========================================================================
-
-  check17Description() {
-    // Find the JSDoc before @Component
-    const componentDocRegex = /\/\*\*\s*([\s\S]*?)\*\/\s*@Component/
-    const docMatch = componentDocRegex.exec(this.componentContent)
-
-    if (!docMatch) {
-      this.violations.push('17. Missing component description in class JSDoc')
-      this.fixes.component = true
-      return
-    }
-
-    const doc = docMatch[1]
-
-    // Check if first non-empty line is a description (not a @tag)
-    const lines = doc
-      .split('\n')
-      .map(l => l.trim())
-      .filter(l => l && !l.startsWith('*'))
-
-    if (lines.length === 0 || lines[0].startsWith('@')) {
-      this.violations.push('17. Component missing one-sentence description before @slot/@part tags')
-      this.fixes.component = true
-    }
+  // Generate appropriate comment based on kind
+  let commentText = '';
+  switch (kind) {
+    case 'prop':
+      commentText = `The ${target} property`;
+      break;
+    case 'event':
+      commentText = `Emitted when the ${target} event occurs`;
+      break;
+    case 'method':
+      commentText = `Internal method for ${target}`;
+      break;
+    default:
+      commentText = `Documentation for ${target}`;
   }
 
-  // ========================================================================
-  // CHECK 18: @slot and @part Tags
-  // ========================================================================
+  const docComment = `  /**\n   * ${commentText}\n   */`;
 
-  check18SlotPart() {
-    // Find all <slot and part= in render
-    const renderMatch = this.componentContent.match(/render\(\)[^}]*{[\s\S]*?return[\s\S]*?}/)
-    if (!renderMatch) return
+  result.splice(decoratorLine, 0, docComment);
 
-    const renderMethod = renderMatch[0]
+  return result.join('\n');
+}
 
-    // Find slot names
-    const slotRegex = /<slot[^>]*name=['"]([^'"]+)['"]/g
-    const slots = new Set()
-    let match
+function printReport(componentName, results, shouldFix, fixes = []) {
+  console.log(`\n📋 Linting: ${componentName}\n`);
 
-    while ((match = slotRegex.exec(renderMethod)) !== null) {
-      slots.add(match[1])
-    }
-
-    // Find default slots
-    if (/<slot[^>]*>/.test(renderMethod) || /<slot\s*\/>/.test(renderMethod)) {
-      slots.add('default')
-    }
-
-    // Find parts
-    const partRegex = /part=['"]([^'"]+)['"]/g
-    const parts = new Set()
-
-    while ((match = partRegex.exec(renderMethod)) !== null) {
-      parts.add(match[1])
-    }
-
-    // Check JSDoc tags
-    const docRegex = /\/\*\*\s*([\s\S]*?)\*\/\s*@Component/
-    const docMatch = docRegex.exec(this.componentContent)
-    const docTags = docMatch ? docMatch[1] : ''
-
-    // Verify slots have tags
-    for (const slot of slots) {
-      const tagName = slot === 'default' ? '@slot -' : `@slot ${slot}`
-      if (!docTags.includes(tagName)) {
-        this.violations.push(`18. Missing @slot tag for slot '${slot}'`)
-        this.fixes.component = true
+  for (const result of results) {
+    if (result.violations.length === 0) {
+      console.log(`✓ ${result.file}`);
+      console.log(`  ✓ All checks passed\n`);
+    } else {
+      console.log(`⚠ ${result.file}`);
+      for (const violation of result.violations) {
+        const icon = violation.severity === 'error' ? '✗' : '⚠';
+        console.log(`  ${icon} ${violation.message}`);
       }
+      console.log();
     }
+  }
 
-    // Verify parts have tags
-    for (const part of parts) {
-      if (!docTags.includes(`@part ${part}`)) {
-        this.violations.push(`18. Missing @part tag for part '${part}'`)
-        this.fixes.component = true
+  if (shouldFix && fixes.length > 0) {
+    console.log('\n🔧 Applied Fixes:\n');
+    for (const fix of fixes) {
+      console.log(`✓ ${fix.file}`);
+      for (const change of fix.changes) {
+        console.log(`  • ${change}`);
       }
+      console.log();
     }
-  }
-
-  // ========================================================================
-  // CHECK 19: CSS Classes Over Attribute Selectors
-  // ========================================================================
-
-  check19CSSSelectors() {
-    if (fs.existsSync(this.hostScssFile)) {
-      const content = fs.readFileSync(this.hostScssFile, 'utf-8')
-      if (/:host\(\[/.test(content) || /\[[a-z-]+=['"]/.test(content)) {
-        this.violations.push('19. SCSS uses attribute selectors (use CSS classes instead)')
-        // Don't auto-fix — warn only
-      }
-    }
-
-    if (fs.existsSync(this.styleScssFile)) {
-      const content = fs.readFileSync(this.styleScssFile, 'utf-8')
-      if (/\[[a-z-]+=['"]/.test(content)) {
-        this.violations.push('19. Style SCSS uses attribute selectors (use CSS classes instead)')
-        // Don't auto-fix — warn only
-      }
-    }
-  }
-
-  // ========================================================================
-  // CHECK 20: Enum Props with = '' Default
-  // ========================================================================
-
-  check20EnumDefaults() {
-    // Find @Prop() with ? (optional with undefined)
-    const optionalEnumRegex = /@Prop\([^)]*\)\s+readonly\s+(\w+)\?:\s*(\w+)/g
-    let match
-
-    while ((match = optionalEnumRegex.exec(this.componentContent)) !== null) {
-      this.violations.push(`20. Enum prop '${match[1]}' uses ? (should use = '' default)`)
-      this.fixes.component = true
-    }
-  }
-
-  // ========================================================================
-  // REPORTING
-  // ========================================================================
-
-  report() {
-    if (this.violations.length === 0) {
-      console.log(`\n✅ No style guide violations found in ${this.componentName}.tsx`)
-      return
-    }
-
-    console.log(`\n⚠️  Violations found (${this.violations.length}):`)
-    this.violations.forEach((v, i) => {
-      console.log(`  ${i + 1}. ${v}`)
-    })
-  }
-
-  // ========================================================================
-  // FIXING (PLACEHOLDER)
-  // ========================================================================
-
-  applyFixes() {
-    if (Object.keys(this.fixes).length === 0) {
-      return
-    }
-
-    console.log(`\nApplying fixes...`)
-
-    if (this.fixes.imports) {
-      console.log(`  ✓ Would fix import aliases`)
-    }
-
-    if (this.fixes.component) {
-      console.log(`  ✓ Would fix component violations`)
-    }
-
-    if (this.fixes.interfaces) {
-      console.log(`  ✓ Would fix interfaces.ts`)
-    }
-
-    console.log(`\n✨ Ready to apply fixes (implementation.js needs completion for actual edits)`)
   }
 }
 
-// ============================================================================
-// MAIN
-// ============================================================================
-
-async function main() {
-  const args = process.argv.slice(2)
-
-  if (args.length === 0) {
-    console.error('Usage: ds-lint-component <component-name>')
-    process.exit(1)
-  }
-
-  const componentName = args[0]
-
-  try {
-    console.log(`\n✓ Scanning ds-${componentName}`)
-
-    const linter = new ComponentLinter(componentName)
-    linter.load()
-    linter.runAllChecks()
-    linter.report()
-    linter.applyFixes()
-  } catch (err) {
-    console.error(`\n❌ Error: ${err.message}`)
-    process.exit(1)
-  }
-}
-
-main()
+module.exports = {
+  lintComponent,
+  lintFile,
+};

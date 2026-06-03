@@ -1,41 +1,31 @@
 # 🏗️ Architecture — Helvetia Design System
 
-This document describes the architecture, design patterns, and technical organization of the Helvetia Design System.
+**Implementation reference** for the Helvetia Design System monorepo.
+
+**For domain language, key concepts, and design philosophy**, see:
+- [CONTEXT.md](CONTEXT.md) — Repository-level principles and architecture
+- [CONTEXT-MAP.md](CONTEXT-MAP.md) — Per-package domain guides
 
 ## Table of Contents
 
-- [Core Principles](#core-principles)
 - [Workspace Structure](#workspace-structure)
-- [Component Lifecycle](#component-lifecycle)
 - [Build Environment Flags](#build-environment-flags)
 - [TypeScript and Build System](#typescript-and-build-system)
-- [Design Tokens](#design-tokens)
-- [Web Components](#web-components)
-- [Storybook Documentation](#storybook-documentation)
+- [Component File Structure](#component-file-structure)
+- [Component Class Organization](#component-class-organization)
+- [CSS Variable Cascade](#css-variable-cascade)
+- [Hybrid Component Model](#hybrid-component-model)
 - [Testing Strategy](#testing-strategy)
-- [Accessibility Requirements](#accessibility-requirements)
+- [Test File Requirements](#test-file-requirements)
 - [New Component Checklist](#new-component-checklist)
-- [Release and Versioning](#release-and-versioning)
-- [Code Quality and Standards](#code-quality-and-standards)
-- [CI/CD Pipeline](#cicd-pipeline)
+- [Changesets & Release Process](#changesets--release-process)
+- [CI/CD Workflows](#cicd-workflows)
 - [Deployment](#deployment)
 - [Key Dependencies](#key-dependencies)
-- [Further Reading](#further-reading)
-
-## Core Principles
-
-Every component and design decision in this system must adhere to these principles:
-
-- **Accessibility**: Always prioritize accessibility. Ensure that all components meet WCAG 2.2 AA standards.
-- **Simplicity**: Solve problems with the simplest solution possible. If it can be done with HTML, use HTML. Then try to use CSS. Only use JavaScript when absolutely necessary.
-- **Responsiveness**: Ensure that all components are fully responsive and work seamlessly from 320px to 2560px screen widths.
-- **Standards Compliance**: Always follow W3C web standards best practices. Avoid using framework-specific solutions.
-- **Compatibility**: Only use features that are baseline widely available according to [webstatus.dev](https://webstatus.dev) and [caniuse.com](https://caniuse.com).
-- **Inclusion**: Ensure that components and documentation are usable by people with diverse abilities and technologies.
 
 ## Workspace Structure
 
-This is a **Turborepo monorepo** for the Helvetia Design System — a multi-framework component library built on **Stencil.js** that outputs Angular and React bindings.
+This is a **Turborepo monorepo** organized into packages and internal libraries.
 
 ### Package Layout
 
@@ -60,16 +50,6 @@ libs/
 
 docs/                 # Storybook documentation (Vite + @storybook/html-vite)
 ```
-
-## Component Lifecycle
-
-Components flow through this lifecycle:
-
-1. **Authoring** — Components are authored in **`packages/core/src/components/`** as Stencil components (`.tsx` + `.scss`)
-2. **Build** — Stencil compiler builds to `packages/core/dist/` with multiple output targets
-3. **Angular Binding** — **`libs/output-target-angular/`** generates Angular wrapper components
-4. **React Binding** — React bindings are generated directly by Stencil's React output target
-5. **Documentation** — Storybook stories (`.stories.ts`, `.mdx`) in `docs/` drive component documentation
 
 ## Build Environment Flags
 
@@ -114,132 +94,7 @@ Build tasks are defined in `turbo.json` and `package.json` scripts. Each package
 
 Use `npm run <script>` or `turbo run <task>` to invoke tasks. Turborepo caches task outputs — only changed packages rebuild.
 
-## Design Tokens
-
-Tokens live in `packages/tokens/tokens/Base.tokens.json` and are processed by **Style Dictionary** into CSS, SCSS, JS, and JSON outputs.
-
-### Three-Layer Token Architecture
-
-Always prefer **Alias** tokens for consumer use:
-
-| Layer     | JSON key       | Purpose                                 | When to use                                         |
-| --------- | -------------- | --------------------------------------- | --------------------------------------------------- |
-| Global    | `🌐 Global`    | Raw values (color scales, sizes, fonts) | Rarely — only when no alias token fits              |
-| Alias     | `🔗 Alias`     | Meaningful abstractions                 | **Primary layer for component consumers**           |
-| Component | `🧩 Component` | Per-component tokens                    | When building or overriding a specific DS component |
-
-**Flow:** Components reference design tokens (`--ds-*`) → compiled from Alias/Global → values come from Figma.
-
-### Naming Convention
-
-Follows the [EightShapes naming guide](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676): names move from broad category to specific modifier.
-
-CSS variable pattern: `--ds-[category]-[name]`
-
-| Example need       | Token                      | CSS variable                    |
-| ------------------ | -------------------------- | ------------------------------- |
-| Large spacing      | `space-lg`                 | `--ds-space-lg`                 |
-| Primary background | `background-color-primary` | `--ds-background-color-primary` |
-| Base border radius | `radius-base`              | `--ds-radius-base`              |
-| Base text size     | `text-size-base`           | `--ds-text-size-base`           |
-
-### Responsive Tokens
-
-Space tokens have responsive variants. For most uses, reference the base token:
-
-- `--ds-space-lg` — base value (mobile default)
-- `--ds-space-lg-device` — automatically responsive via `@media` breakpoints
-
-Use `--ds-space-lg` for static use, `--ds-space-lg-device` when you want automatic responsive scaling.
-
-### Key Alias Categories
-
-- **Space:** None, Auto, 2XS, XS, SM, Base, MD, LG, XL, 2XL, 3XL, 4XL
-- **Background Color:** white, transparent, sky, grey, primary, info, success, warning, danger (+ light/dark variants)
-- **Border:** Color, Width
-- **Radius:** None, Base, LG, Rounded
-- **Text:** Size, Color, Family, Weight, LineHeight, Shadow
-- **Shadow:** Text, Box
-- **Z-Index:** Deep, Masked, Mask, Sticky, Navigation, Popup, Modal, Toast, Tooltip
-- **Opacity:** Hidden, Half, Disabled, Backdrop, Full
-- **Breakpoint:** Tablet (769px), Desktop (1024px), DesktopLG, DesktopXL, Desktop2XL
-
-### JSON Structure
-
-Component tokens are nested under `"🧩 Component" > "<ComponentName>"`:
-
-```json
-{
-  "🧩 Component": {
-    "Button": {
-      "Color": {
-        "Primary": {
-          "Base": {
-            "Text": { "$type": "color", "$value": "{🔗 Alias.🔤 Text.Color.White}" }
-          }
-        }
-      },
-      "Gap": { "$type": "number", "$value": "{🔗 Alias.↔️ Space.MD}" }
-    }
-  }
-}
-```
-
-This maps to: `--ds-button-color-primary-base-text` and `--ds-button-gap`
-
-Each token includes `$extensions` with Figma metadata:
-
-```json
-"Text": {
-  "$type": "color",
-  "$value": "{🔗 Alias.🔤 Text.Color.White}",
-  "$extensions": {
-    "com.figma.variableId": "VariableID:369:1",
-    "com.figma.scopes": ["ALL_SCOPES"],
-    "com.figma.isOverride": true
-  }
-}
-```
-
-### Figma Integration
-
-Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId`. The JSON file is the source of truth — tokens are synced to Figma as variables under the same name. When referencing a token by name, it is available as a Figma variable.
-
-### Token Lookup Guide
-
-When a developer asks "what token should I use for X?":
-
-1. **Read** `packages/tokens/tokens/Base.tokens.json` — find the token in the Alias layer (prefer Alias; fall back to Global or Component only if needed)
-2. **Read** `packages/tokens/dist/css/base.tokens.css` — find the exact CSS variable name and its resolved value
-3. **Return** in this format:
-
-> **Token:** `space-lg` > **CSS:** `var(--ds-space-lg)` → `1.5rem` > **Responsive variant:** `var(--ds-space-lg-device)` (scales with breakpoint)
-
-If multiple tokens could fit, list the top 2–3 with a brief note on when to use each.
-
-### Building Tokens
-
-Rebuild compiled token output whenever `Base.tokens.json` changes:
-
-```bash
-npm run tokens
-```
-
-This regenerates:
-
-- `packages/tokens/dist/css/base.tokens.css` — CSS variables
-- `packages/tokens/dist/scss/_tokens.scss` — SCSS functions
-- `packages/tokens/dist/json/tokens.json` — Structured JSON for libraries
-
-## Web Components
-
-### Naming Convention
-
-- Use the `ds-` prefix for all custom elements to avoid naming collisions
-- Use Shadow DOM for encapsulation of styles and markup
-- Follow Stencil best practices for authoring components
-
-### Component File Structure
+## Component File Structure
 
 Each component lives in `packages/core/src/components/<component>/`:
 
@@ -256,9 +111,91 @@ button/
     button.a11y.play.ts         # Accessibility tests
 ```
 
-### Hybrid Component Model
+## Component Class Organization
 
-The **hybrid component model** allows components to work in two modes:
+Every component must implement `ComponentInterface` and `Loggable`:
+
+```ts
+import { Loggable, Logger, type LogInstance } from '@utils'
+
+export class Button implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('ds-button')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+}
+```
+
+Methods must be organized by section with dividers:
+
+1. PUBLIC PROPERTY API
+2. LIFECYCLE
+3. PROPERTY VALIDATION
+4. PUBLIC LISTENERS
+5. PUBLIC METHODS
+6. EVENT HANDLERS
+7. PRIVATE METHODS
+8. RENDER
+
+### Naming Conventions
+
+- `@Prop()` handlers: No special naming (declare with `readonly`)
+- `@Listen()` handlers: `listenTo<Event>` (e.g., `listenToClick`)
+- `@Watch()` handlers: `<Prop>Changed` (e.g., `valueChanged`)
+- DOM event handlers: `handle<Event>` as arrow functions (e.g., `handleClick = () => {}`)
+- Custom events: `ds` prefix (e.g., `dsChange`, `dsCloseClick`)
+- Public methods: `@Method()` decorated, always `async`, return `Promise`
+- Private methods: Must be `private`, all other methods not listed above should be private
+
+### Props
+
+- Always use `readonly` for immutable props
+- Always add type annotations
+- Use `reflect: true` only for state props (disabled, value, checked, open, etc.)
+- Use empty string `''` as default for optional enum props, not `undefined`
+
+## CSS Variable Cascade
+
+Components use a four-layer CSS custom property system for theming:
+
+```
+--_button-color-text          (private — used in CSS rules)
+  └─ var(--button-color-text        (public — consumer override)
+      , var(--mod-button-color-text  (modifier — set by .is-primary, .is-sm)
+          , var(--ds-button-color-primary-base-text)))  (design token default)
+```
+
+| Layer        | Prefix                 | Who Sets It       | Purpose                                        |
+| ------------ | ---------------------- | ----------------- | ---------------------------------------------- |
+| Private      | `--_component-prop`    | (computed only)   | Used inside CSS rules. Never set from outside. |
+| Public       | `--component-prop`     | Consumers/themes  | Override a single component instance           |
+| Modifier     | `--mod-component-prop` | Variant classes   | Applied by `.is-primary`, `.is-sm`, etc.       |
+| Design Token | `--ds-component-prop`  | `packages/tokens` | Default value from Figma                       |
+
+**Private variable generation** via `vars.local()` mixin:
+
+```scss
+// Generates: --_button-color-text: var(--button-color-text, var(--mod-button-color-text, ...))
+@include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
+```
+
+**Modifier variables** set by variant mixins:
+
+```scss
+@mixin color($color) {
+  --mod-button-color-text: var(--ds-button-color-#{$color}-base-text);
+}
+
+:host(.is-secondary) {
+  @include color(secondary);
+}
+```
+
+## Hybrid Component Model
+
+The system supports **two modes** of component usage:
 
 **Mode 1: Web Component (Shadow DOM)**
 
@@ -299,103 +236,6 @@ Both modes share the exact same styling logic:
   $use-host: true
 );
 ```
-
-### Stencil Component Patterns
-
-Follow these naming and code organization patterns:
-
-**Naming:**
-
-- `@Prop()` handlers: No special naming (declare with `readonly`)
-- `@Listen()` handlers: `listenTo<Event>` (e.g., `listenToClick`)
-- `@Watch()` handlers: `<Prop>Changed` (e.g., `valueChanged`)
-- DOM event handlers: `handle<Event>` as arrow functions (e.g., `handleClick = () => {}`)
-- Custom events: `ds` prefix (e.g., `dsChange`, `dsCloseClick`)
-- Public methods: `@Method()` decorated, always `async`, return `Promise`
-- Private methods: Must be `private`, all other methods not listed above should be private
-
-**Props:**
-
-- Always use `readonly` for immutable props
-- Always add type annotations
-- Use `reflect: true` only for state props (disabled, value, checked, open, etc.)
-- Use empty string `''` as default for optional enum props, not `undefined`
-
-**Class Organization:**
-Every component must implement `ComponentInterface` and `Loggable`:
-
-```ts
-import { Loggable, Logger, type LogInstance } from '@utils'
-
-export class Button implements ComponentInterface, Loggable {
-  log!: LogInstance
-
-  @Logger('ds-button')
-  createLogger(log: LogInstance) {
-    this.log = log
-  }
-}
-```
-
-Methods must be organized by section with dividers:
-
-1. PUBLIC PROPERTY API
-2. LIFECYCLE
-3. PROPERTY VALIDATION
-4. PUBLIC LISTENERS
-5. PUBLIC METHODS
-6. EVENT HANDLERS
-7. PRIVATE METHODS
-8. RENDER
-
-### CSS Variable Cascade
-
-Components use a four-layer CSS custom property system for theming:
-
-```
---_button-color-text          (private — used in CSS rules)
-  └─ var(--button-color-text        (public — consumer override)
-      , var(--mod-button-color-text  (modifier — set by .is-primary, .is-sm)
-          , var(--ds-button-color-primary-base-text)))  (design token default)
-```
-
-| Layer        | Prefix                 | Who Sets It       | Purpose                                        |
-| ------------ | ---------------------- | ----------------- | ---------------------------------------------- |
-| Private      | `--_component-prop`    | (computed only)   | Used inside CSS rules. Never set from outside. |
-| Public       | `--component-prop`     | Consumers/themes  | Override a single component instance           |
-| Modifier     | `--mod-component-prop` | Variant classes   | Applied by `.is-primary`, `.is-sm`, etc.       |
-| Design Token | `--ds-component-prop`  | `packages/tokens` | Default value from Figma                       |
-
-**Private variable generation** via `vars.local()` mixin:
-
-```scss
-// Generates: --_button-color-text: var(--button-color-text, var(--mod-button-color-text, ...))
-@include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
-```
-
-**Modifier variables** set by variant mixins:
-
-```scss
-@mixin color($color) {
-  --mod-button-color-text: var(--ds-button-color-#{$color}-base-text);
-}
-
-:host(.is-secondary) {
-  @include color(secondary);
-}
-```
-
-## Storybook Documentation
-
-Each component has documentation under `docs/src/components/<ds-component>/`:
-
-```
-tag/
-  tag.stories.ts   # Story definitions (StoryFactory + helpers)
-  tag.mdx          # MDX documentation page
-```
-
-**Design Token Section** — The `.mdx` file includes a `<TokenOverview component="tag" />` block that reads from design tokens JSON and renders all CSS variables belonging to the component, showing consumers what's themeable.
 
 ## Testing Strategy
 
@@ -443,7 +283,7 @@ export class DsTag extends PageObject {
 
 POs are the **only way** tests interact with components.
 
-### Required Test Files
+## Test File Requirements
 
 | File                               | Required For   |
 | ---------------------------------- | -------------- |
@@ -452,7 +292,7 @@ POs are the **only way** tests interact with components.
 | `*.visual.play.ts`                 | All components |
 | `*.a11y.play.ts`                   | All components |
 
-## Accessibility Requirements
+**WCAG 2.2 AA Compliance Requirements:**
 
 All components **must** meet **WCAG 2.2 AA** compliance:
 
@@ -483,9 +323,7 @@ Use this checklist when creating a component from scratch:
 - [ ] Create changeset entry with `npm run changeset`
 - [ ] Pass all linting checks: `npm run lint && npm run format`
 
-## Release and Versioning
-
-### Changesets
+## Changesets & Release Process
 
 All changes affecting end users must be documented in a changeset:
 
@@ -570,12 +408,6 @@ Use `patch` for backward-compatible fixes and improvements:
 - ✅ Accessibility improvements (e.g., "added missing ARIA label")
 - ✅ Documentation updates (only if meaningful for consumers)
 
-**Example changeset:**
-
-```
-fix: resolve focus state contrast issue on tag component
-```
-
 #### Minor (New Features & Components)
 
 Use `minor` for backward-compatible additions:
@@ -585,13 +417,6 @@ Use `minor` for backward-compatible additions:
 - ✅ New events (e.g., "emit dsHover event")
 - ✅ New CSS variables (e.g., "add --button-border-radius")
 - ✅ New public methods (e.g., "add async focus() method")
-
-**Example changeset:**
-
-```
-feat: add button component with primary and secondary variants
-feat: add size prop to input component
-```
 
 #### Major (Breaking Changes)
 
@@ -608,13 +433,6 @@ Use `major` for incompatible changes. Breaking changes include:
 - ❌ **Default value change** — Changing a prop's default (e.g., from `false` to `true`) may break assumptions
 - ❌ **Behavior change** — Changing how a component behaves (e.g., auto-opening modal on mount instead of requiring explicit call)
 - ❌ **HTML structure change** — Removing/renaming Shadow DOM slots or parts breaks styling
-
-**Example changeset:**
-
-```
-breaking: remove deprecated variant prop from button, use type instead
-breaking: rename dsChange event to dsValueChange
-```
 
 ### Deprecation Policy
 
@@ -654,44 +472,7 @@ This gives consumers 2+ release cycles to migrate before the feature is removed.
 - **LTS branch** (`main`): Parallel releases with same versioning scheme
 - **Prerelease versions**: Snapshot versions (e.g., `1.2.3-snapshot.456.abc1234`) for testing before merge
 
-## Code Quality and Standards
-
-See [STYLE_GUIDE.md](STYLE_GUIDE.md) for detailed code standards and best practices.
-
-### What to Avoid
-
-**JavaScript / HTML:**
-
-- Avoid JavaScript for tasks solvable with HTML/CSS
-- Avoid non-standard HTML elements or attributes
-- Avoid deprecated HTML, CSS, or JavaScript features
-
-**Styling:**
-
-- Avoid inline styles; use CSS classes
-- Avoid CSS-in-JS; stick to Sass
-- Avoid framework-specific code (Tailwind, Bootstrap, React, Angular, Vue)
-- Avoid attribute selectors in SCSS (`:host([disabled])`); use CSS classes (`.is-disabled`)
-
-**Dependencies:**
-
-- Avoid heavy libraries that bloat the project
-- Avoid external CDNs; keep assets self-contained
-- Avoid non-approved fonts or icons
-
-**Components:**
-
-- Avoid rebuilding existing components; check first
-- Avoid creating components in `/packages/angular` or `/packages/react` (auto-generated)
-
-**Security:**
-
-- Follow web security best practices
-- Validate and sanitize external data
-- Avoid TOCTOU (Time-of-Check, Time-of-Use) race conditions
-- Use atomic file operations where applicable
-
-## CI/CD Pipeline
+## CI/CD Workflows
 
 All workflows live in `.github/workflows/`. Here is what runs automatically:
 
@@ -716,16 +497,6 @@ These commands can be posted as a PR comment to trigger workflows:
 | `/update-screenshots` | Runs visual regression tests and commits updated snapshots to the PR branch. Use after intentional visual changes.           |
 | `/snapshot`           | Publishes a snapshot npm version (e.g. `1.2.3-pr123.0`) so you can install and test the PR in a real project before merging. |
 | `/cib`                | Posted on an **issue** — auto-creates a correctly named branch for that issue and posts the branch link as a comment.        |
-
-### Release Flow
-
-```
-PR merged → prepare-release creates "Changeset Release PR"
-                  ↓
-          Release PR reviewed & merged
-                  ↓
-          release.yml publishes to npm
-```
 
 ## Deployment
 
@@ -793,10 +564,3 @@ This allows reviewers to see documentation changes live before merging.
 | **Prettier**                       | Code formatting (enforces LF line endings)           |
 | **cspell**                         | Spell checking across source files and documentation |
 | **Changesets** (`@changesets/cli`) | Semantic versioning and changelog generation         |
-
-## Further Reading
-
-- **[DEVELOPMENT.md](DEVELOPMENT.md)** — Setup, dev servers, testing, common tasks
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** — Contribution workflow and guidelines
-- **[STYLE_GUIDE.md](STYLE_GUIDE.md)** — Code standards and naming conventions
-- **[SECURITY.md](SECURITY.md)** — Security policy and best practices

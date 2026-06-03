@@ -62,6 +62,20 @@ For comprehensive technical information, see the dedicated documentation files:
 - **[SECURITY.md](SECURITY.md)** — Security policy and guidelines
 - **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** — Community standards
 
+## Agent skills
+
+### Issue tracker
+
+Issues tracked in GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context monorepo with separate `CONTEXT.md` for each package. See `docs/agents/domain.md`.
+
 ## Key Guidelines
 
 See [STYLE_GUIDE.md](STYLE_GUIDE.md) for detailed code standards and best practices.
