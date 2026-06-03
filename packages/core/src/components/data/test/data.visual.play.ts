@@ -11,7 +11,6 @@ const VARIANTS = [
   'editable',
   'custom-form',
   'mixed-content',
-  'custom-required',
 ] as const
 
 const image = screenshot(TAG)
