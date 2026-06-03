@@ -11,6 +11,7 @@ import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
 
 const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
 const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
+const IS_DS_SILENT = process.env.DS_SILENT === 'true'
 const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
 
 let message = ''
@@ -49,6 +50,9 @@ export const config: Config = {
   globalScript: 'src/global/global.ts',
   globalStyle: 'src/global/global.scss',
   tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
+  devServer: {
+    openBrowser: IS_DS_DEVELOPMENT && !IS_DS_SILENT,
+  },
   plugins: [
     sass({
       outputStyle: 'compressed',

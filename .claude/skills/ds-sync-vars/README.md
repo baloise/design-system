@@ -7,6 +7,7 @@ This skill automatically syncs component CSS variables to design tokens in the t
 **Invocation:** `ds-sync-vars button`
 
 **What it does:**
+
 1. Parses component SCSS files (`style.scss`, `host.scss`)
 2. Extracts CSS variable definitions from `@include vars.local()` calls
 3. Analyzes each variable and maps to Alias tokens
@@ -25,18 +26,21 @@ This skill automatically syncs component CSS variables to design tokens in the t
 ## Implementation Status
 
 ✅ **Complete:**
+
 - SCSS file parsing (`@include vars.local()` extraction)
 - Variable analysis and semantic mapping
 - Edge case detection (hardcoded values, existing tokens)
 - Checklist reporting as markdown table
 
 🔄 **In Progress:**
+
 - User confirmation flow
 - Component token creation in `Base.tokens.json`
 - Auto-regeneration (`npm run tokens`)
 - Sub-component handling refinement
 
 ❌ **Not Yet:**
+
 - Interactive selection for ambiguous mappings
 - Figma metadata synchronization
 - Git integration
@@ -57,6 +61,7 @@ MAPPINGS = {
 ```
 
 Space scales auto-matched for hardcoded pixel values:
+
 ```javascript
 SPACE_SCALES = {
   '0.5rem': 'Space.XS',

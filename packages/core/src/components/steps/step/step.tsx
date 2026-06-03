@@ -202,7 +202,7 @@ export class Step implements DsComponentInterface {
         class={hostClass}
         aria-selected={String(this.selected)}
         aria-disabled={this.disabled ? 'true' : null}
-        tabIndex={this.selected ? 0 : -1}
+        tabIndex={this.disabled ? -1 : this.selected ? 0 : -1}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
       >

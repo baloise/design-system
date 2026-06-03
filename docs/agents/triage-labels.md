@@ -6,13 +6,13 @@ This file documents the canonical label vocabulary used by the `triage` agent to
 
 The `triage` agent moves issues through five states using these labels:
 
-| Label | Purpose | When Applied |
-| --- | --- | --- |
-| **`needs-triage`** | Issue needs evaluation by a maintainer | When a new issue is opened; agent removes it after triage |
-| **`needs-info`** | Waiting on reporter for additional details | Agent applies when more context is needed; removed when info is provided |
+| Label                 | Purpose                                           | When Applied                                                                 |
+| --------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **`needs-triage`**    | Issue needs evaluation by a maintainer            | When a new issue is opened; agent removes it after triage                    |
+| **`needs-info`**      | Waiting on reporter for additional details        | Agent applies when more context is needed; removed when info is provided     |
 | **`ready-for-agent`** | Fully specified; ready for an AI agent to pick up | Agent applies when issue is complete; AFK-ready with no human context needed |
-| **`ready-for-human`** | Needs human implementation or decision | Agent applies when issue requires human judgment, code review, or execution |
-| **`wontfix`** | Will not be actioned | Applied by maintainer; agent will not process further |
+| **`ready-for-human`** | Needs human implementation or decision            | Agent applies when issue requires human judgment, code review, or execution  |
+| **`wontfix`**         | Will not be actioned                              | Applied by maintainer; agent will not process further                        |
 
 ## Mapping
 
@@ -45,6 +45,7 @@ Once triaged, the agent removes the `needs-triage` label.
 ## Removing Labels
 
 Labels are typically removed when:
+
 - An issue moves to the next state (e.g., `needs-info` → `ready-for-agent`)
 - An issue is closed
 - A maintainer manually resets the triage process

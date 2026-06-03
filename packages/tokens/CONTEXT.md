@@ -14,6 +14,7 @@ This document captures domain language, architectural patterns, and key concepts
 ## Core Concepts
 
 ### Token Definition
+
 A **token** is a named design value that represents a single, reusable design decision. Examples:
 
 - `space-lg` → `1.5rem` (spacing token)
@@ -25,11 +26,11 @@ A **token** is a named design value that represents a single, reusable design de
 
 Tokens are organized into three layers:
 
-| Layer | JSON Key | Purpose | Consumer Access |
-| --- | --- | --- | --- |
-| **Global** | `🌐 Global` | Raw values (color scales, base sizes) | ❌ Rarely; only when no Alias fits |
-| **Alias** | `🔗 Alias` | Meaningful abstractions for consumers | ✅ **Primary layer** for component/app use |
-| **Component** | `🧩 Component` | Per-component token overrides | ✅ When styling a specific DS component |
+| Layer         | JSON Key       | Purpose                               | Consumer Access                            |
+| ------------- | -------------- | ------------------------------------- | ------------------------------------------ |
+| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes) | ❌ Rarely; only when no Alias fits         |
+| **Alias**     | `🔗 Alias`     | Meaningful abstractions for consumers | ✅ **Primary layer** for component/app use |
+| **Component** | `🧩 Component` | Per-component token overrides         | ✅ When styling a specific DS component    |
 
 **Flow:** Components reference Alias tokens → resolved to Global values → values come from Figma
 
@@ -40,6 +41,7 @@ Token names follow the [EightShapes naming guide](https://medium.com/eightshapes
 **CSS variable pattern:** `--ds-[category]-[name]`
 
 Examples:
+
 - `space-lg` → `--ds-space-lg` → `1.5rem`
 - `color-text-primary` → `--ds-color-text-primary` → `#000`
 - `radius-base` → `--ds-radius-base` → `0.25rem`
@@ -51,6 +53,7 @@ Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId`. T
 ## Key Concepts
 
 ### Responsive Tokens
+
 Some tokens have responsive variants (e.g., spacing scales with breakpoints):
 
 - `--ds-space-lg` — base value (mobile default)
@@ -59,6 +62,7 @@ Some tokens have responsive variants (e.g., spacing scales with breakpoints):
 Use the base token for static values; use `-device` variant when automatic scaling is desired.
 
 ### Token Categories
+
 Common categories in the Alias layer:
 
 - **Space** (2XS–4XL, plus responsive variants)
@@ -99,6 +103,7 @@ This maps to CSS variable: `--ds-button-color-primary-base-text`
 ## Notable Patterns
 
 ### Building Tokens
+
 Rebuild compiled outputs whenever `Base.tokens.json` changes:
 
 ```bash
@@ -106,11 +111,13 @@ npm run tokens
 ```
 
 This regenerates:
+
 - `dist/css/base.tokens.css`
 - `dist/scss/_tokens.scss`
 - `dist/json/tokens.json`
 
 ### Token Lookup Guide
+
 When a developer asks "what token should I use for X?":
 
 1. Read `Base.tokens.json` — find the token in the Alias layer (prefer Alias; fall back to Global only if needed)
@@ -127,6 +134,7 @@ When a developer asks "what token should I use for X?":
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/core|packages/core/CONTEXT.md]] — Component consumption of tokens
 - [[packages/css|packages/css/CONTEXT.md]] — Utility class generation from tokens
 - [[root|CONTEXT.md]] — Repository-level concepts

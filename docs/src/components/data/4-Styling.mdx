@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DataStories from './data.stories'
+import { DATA_DOC_CONFIG, getDataTabs } from './data.doc-config'
+
+<Meta title="Components/Data/Styling" />
+
+<Banner label={'Styling'} section={DATA_DOC_CONFIG.section} color={DATA_DOC_CONFIG.color} />
+
+<BannerTabs of={DataStories} tabs={getDataTabs('styling')} />
+
+<ComponentParts component="data" />
+
+<ComponentCssVariables component="data" />
+
+<ComponentDesignTokens component="data" />
+
+<Footer />

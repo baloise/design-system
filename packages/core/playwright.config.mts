@@ -52,7 +52,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? 'node ./web-server.js' : 'npm run start',
+    command: process.env.CI ? 'node ./web-server.js' : 'cross-env DS_SILENT=true npm run start',
     url: 'http://localhost:4000',
     reuseExistingServer: false,
     cwd: __dirname,

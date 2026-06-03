@@ -3,6 +3,7 @@
 **Implementation reference** for the Helvetia Design System monorepo.
 
 **For domain language, key concepts, and design philosophy**, see:
+
 - [CONTEXT.md](CONTEXT.md) — Repository-level principles and architecture
 - [CONTEXT-MAP.md](CONTEXT-MAP.md) — Per-package domain guides
 

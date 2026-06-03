@@ -30,6 +30,7 @@ Utility classes provide single-purpose CSS rules for common styling needs:
 Utilities follow a consistent pattern: `.<property>-<value>`
 
 Examples:
+
 - `.bg-primary` — background color primary (from token `--ds-color-background-primary`)
 - `.text-lg` — text size large (from token `--ds-text-size-lg`)
 - `.p-md` — padding medium (from token `--ds-space-md`)
@@ -39,13 +40,13 @@ Examples:
 
 Breakpoints follow a mobile-first approach:
 
-| Breakpoint | Width | Usage |
-| --- | --- | --- |
-| **Mobile** | `<768px` | Default (no prefix) |
-| **Tablet** | `≥769px` | `.tablet:property` |
-| **Desktop** | `≥1024px` | `.desktop:property` |
-| **Desktop LG** | `≥1408px` | `.desktop-lg:property` |
-| **Desktop XL** | `≥1856px` | `.desktop-xl:property` |
+| Breakpoint      | Width     | Usage                   |
+| --------------- | --------- | ----------------------- |
+| **Mobile**      | `<768px`  | Default (no prefix)     |
+| **Tablet**      | `≥769px`  | `.tablet:property`      |
+| **Desktop**     | `≥1024px` | `.desktop:property`     |
+| **Desktop LG**  | `≥1408px` | `.desktop-lg:property`  |
+| **Desktop XL**  | `≥1856px` | `.desktop-xl:property`  |
 | **Desktop 2XL** | `≥2560px` | `.desktop-2xl:property` |
 
 Example: `.tablet:p-lg` applies padding-lg on tablet and up; base rules apply on mobile.
@@ -63,18 +64,20 @@ When a token value changes, utility classes automatically reflect the new value.
 ## Notable Patterns
 
 ### Global Resets
+
 - Standard CSS resets (margins, paddings, box-sizing)
 - Baseline typography (font family, line height, color)
 - Focus states for keyboard navigation
 - No element styling beyond basics (let components handle their own styles)
 
 ### Theming via CSS Variables
+
 Applications can override token values by setting CSS variables:
 
 ```css
 :root {
-  --ds-color-primary: #FF6600; /* Override primary color */
-  --ds-space-lg: 2rem;         /* Override large spacing */
+  --ds-color-primary: #ff6600; /* Override primary color */
+  --ds-space-lg: 2rem; /* Override large spacing */
 }
 ```
 
@@ -100,6 +103,7 @@ Utilities are generated from `packages/tokens/dist/json/tokens.json` via a build
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Token definitions and values
 - [[packages/core|packages/core/CONTEXT.md]] — Component styles (not utilities)
 - [[root|CONTEXT.md]] — Repository-level concepts

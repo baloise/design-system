@@ -459,6 +459,11 @@
   }
 }
 
+.field {
+  display: block;
+  width: 100%;
+}
+
 .field + .field,
 .ds-field + .ds-field {
   margin-top: 0.5rem;

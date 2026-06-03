@@ -5,8 +5,8 @@
  * It does NOT directly execute but provides the logic for the skill to call.
  */
 
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
 
 /**
  * Main questionnaire flow
@@ -22,20 +22,14 @@ async function createComponent(userResponses) {
     hasSubcomponents,
     subcomponents,
     variants,
-  } = userResponses;
+  } = userResponses
 
   // Validate component name
   if (!componentName || !/^[a-z]+(-[a-z]+)*$/.test(componentName)) {
-    throw new Error(
-      'Invalid component name. Use kebab-case (e.g., "my-button")'
-    );
+    throw new Error('Invalid component name. Use kebab-case (e.g., "my-button")')
   }
 
-  const componentPath = path.join(
-    process.cwd(),
-    'packages/core/src/components',
-    componentName
-  );
+  const componentPath = path.join(process.cwd(), 'packages/core/src/components', componentName)
 
   // Check if component already exists
   if (fs.existsSync(componentPath)) {
@@ -43,46 +37,34 @@ async function createComponent(userResponses) {
       status: 'warn',
       message: `Component "${componentName}" already exists at ${componentPath}. Overwrite?`,
       requiresConfirmation: true,
-    };
+    }
   }
 
   // Generate component files
-  const files = generateComponentFiles(
-    componentName,
-    purpose,
-    props,
-    events,
-    variants
-  );
+  const files = generateComponentFiles(componentName, purpose, props, events, variants)
 
   // If migration, validate and flag breaking changes
-  let tokenWarnings = [];
-  let migrationNotes = [];
+  let tokenWarnings = []
+  let migrationNotes = []
 
   if (isMigration) {
-    migrationNotes = await validateMigration(oldComponentName, props, events);
+    migrationNotes = await validateMigration(oldComponentName, props, events)
   }
 
   // Validate tokens in generated SCSS
-  tokenWarnings = validateTokens(files['scss']);
+  tokenWarnings = validateTokens(files['scss'])
 
   // Generate subcomponents if specified
   if (hasSubcomponents && subcomponents.length > 0) {
-    const subcomponentFiles = {};
+    const subcomponentFiles = {}
     for (const subcomponent of subcomponents) {
-      const subFiles = generateComponentFiles(
-        subcomponent,
-        `Subcomponent of ${componentName}`,
-        [],
-        [],
-        variants
-      );
+      const subFiles = generateComponentFiles(subcomponent, `Subcomponent of ${componentName}`, [], [], variants)
       // Prefix with subcomponent folder
       Object.keys(subFiles).forEach(key => {
-        subcomponentFiles[`${subcomponent}/${key}`] = subFiles[key];
-      });
+        subcomponentFiles[`${subcomponent}/${key}`] = subFiles[key]
+      })
     }
-    Object.assign(files, subcomponentFiles);
+    Object.assign(files, subcomponentFiles)
   }
 
   return {
@@ -92,22 +74,22 @@ async function createComponent(userResponses) {
     tokenWarnings,
     migrationNotes,
     subcomponents: hasSubcomponents ? subcomponents : [],
-  };
+  }
 }
 
 /**
  * Generate individual component files
  */
 function generateComponentFiles(componentName, purpose, props, events, variants) {
-  const PascalName = toPascalCase(componentName);
-  const UPPER_NAME = toUpperSnakeCase(componentName);
+  const PascalName = toPascalCase(componentName)
+  const UPPER_NAME = toUpperSnakeCase(componentName)
 
   return {
     tsx: generateTSX(PascalName, componentName, purpose, props, events),
     interfaces: generateInterfaces(PascalName, props, events, variants),
     scss: generateSCSS(componentName, props, variants),
     html: generateVisualHTML(componentName, props, variants),
-  };
+  }
 }
 
 /**
@@ -116,22 +98,22 @@ function generateComponentFiles(componentName, purpose, props, events, variants)
 function generateTSX(PascalName, componentName, purpose, props, events) {
   const propDefinitions = props
     .map(p => {
-      const type = p.type || 'string';
+      const type = p.type || 'string'
       return `  /**
    * ${p.description || 'Component property'}
    */
-  @Prop() readonly ${p.name}: ${type} = ${p.default || "''"}`;
+  @Prop() readonly ${p.name}: ${type} = ${p.default || "''"}`
     })
-    .join('\n\n');
+    .join('\n\n')
 
   const eventDefinitions = events
     .map(e => {
       return `  /**
    * Emitted when ${e.name.replace(/^ds/, 'the ')} event occurs.
    */
-  @Event() ${e.name}: EventEmitter<void>`;
+  @Event() ${e.name}: EventEmitter<void>`
     })
-    .join('\n\n');
+    .join('\n\n')
 
   return `import { Component, Element, Host, Prop, State, Event, EventEmitter, h } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
@@ -199,7 +181,7 @@ ${propDefinitions || '  // Add props here'}
       </Host>
     )
   }
-}`;
+}`
 }
 
 /**
@@ -209,11 +191,11 @@ function generateInterfaces(PascalName, props, events, variants) {
   const propTypes = props
     .filter(p => p.type && p.type.includes('|'))
     .map(p => {
-      const typeName = `${PascalName}${toPascalCase(p.name)}`;
+      const typeName = `${PascalName}${toPascalCase(p.name)}`
       const values = p.type
         .split('|')
         .map(v => `'${v.trim()}'`)
-        .join(' | ');
+        .join(' | ')
       return `export type ${typeName} = ${values}
 
 export const ${toUpperSnakeCase(p.name)}: ${typeName}[] = [
@@ -221,11 +203,11 @@ export const ${toUpperSnakeCase(p.name)}: ${typeName}[] = [
     .split('|')
     .map(v => `'${v.trim()}'`)
     .join(',\n  ')},
-]`;
+]`
     })
-    .join('\n\n');
+    .join('\n\n')
 
-  return propTypes || `// Add prop types and enums here`;
+  return propTypes || `// Add prop types and enums here`
 }
 
 /**
@@ -236,9 +218,9 @@ function generateSCSS(componentName, props, variants) {
     .map(v => {
       return `:host(.is-${v}) {
   // Add ${v} variant styles here
-}`;
+}`
     })
-    .join('\n\n');
+    .join('\n\n')
 
   return `@use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../vars' as vars;
@@ -290,7 +272,7 @@ ${variantStyles ? `\n${variantStyles}` : ''}
 :host(.is-disabled) {
   opacity: 0.5;
   pointer-events: none;
-}`;
+}`
 }
 
 /**
@@ -303,9 +285,9 @@ function generateVisualHTML(componentName, props, variants) {
       <section data-testid="${v}">
         <span>${toPascalCase(v)}</span>
         <ds-${componentName} class="is-${v}"></ds-${componentName}>
-      </section>`;
+      </section>`
     })
-    .join('\n\n');
+    .join('\n\n')
 
   return `<!doctype html>
 <html dir="ltr" lang="en">
@@ -345,19 +327,19 @@ ${variantSections}
       </section>
     </main>
   </body>
-</html>`;
+</html>`
 }
 
 /**
  * Validate token usage in SCSS
  */
 function validateTokens(scssContent) {
-  const warnings = [];
-  const tokenRegex = /var\(--ds-([^)]+)\)/g;
-  let match;
+  const warnings = []
+  const tokenRegex = /var\(--ds-([^)]+)\)/g
+  let match
 
   while ((match = tokenRegex.exec(scssContent)) !== null) {
-    const token = match[1];
+    const token = match[1]
 
     // Check for global tokens (not alias, not component)
     if (!token.startsWith('alias-') && !token.includes('-color-')) {
@@ -365,11 +347,11 @@ function validateTokens(scssContent) {
         type: 'global-token',
         token: `--ds-${token}`,
         message: `Global token detected. Consider using an alias token or creating a component token.`,
-      });
+      })
     }
   }
 
-  return warnings;
+  return warnings
 }
 
 /**
@@ -383,7 +365,7 @@ async function validateMigration(oldComponentName, newProps, newEvents) {
       type: 'info',
       message: `Migration: Extracting from old "${oldComponentName}" component on main branch`,
     },
-  ];
+  ]
 }
 
 /**
@@ -393,14 +375,14 @@ function toPascalCase(str) {
   return str
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
+    .join('')
 }
 
 /**
  * Helper: Convert to UPPER_SNAKE_CASE
  */
 function toUpperSnakeCase(str) {
-  return str.replace(/-/g, '_').toUpperCase();
+  return str.replace(/-/g, '_').toUpperCase()
 }
 
 module.exports = {
@@ -410,4 +392,4 @@ module.exports = {
   validateMigration,
   toPascalCase,
   toUpperSnakeCase,
-};
+}

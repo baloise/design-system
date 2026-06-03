@@ -37,29 +37,34 @@ The skill generates up to 6 files per component:
 ## Key Generation Rules
 
 ### Visual Tests
+
 - **Basic section** — Auto-detect common props (label, icon, placeholder)
 - **Enum sections** — One section per enum prop showing all values
 - **State sections** — One section per state (disabled, loading, invalid, etc.)
 - **Slot sections** — One section per detected slot with auto-generated demo content
 
 ### A11y Tests
+
 - **Axe-core** — Automated accessibility violation detection
 - **Semantic** — ARIA labels, roles, heading hierarchy, keyboard nav
 - **Contrast** — WCAG AA compliance checks (4.5:1 text, 3:1 large text)
 
 ### Component Tests
+
 - **Events** — Auto-discover @Event decorators, test firing
 - **States** — Auto-discover boolean props, test state assertions
 - **Slots** — Test slot content renders correctly
 - **Value** — Test value prop assertion if present
 
 ### Page Object
+
 - **Part locators** — readonly properties for each @part JSDoc tag
 - **Action methods** — click(), focus(), hover(), etc.
 - **State assertions** — assertToBeDisabled(), assertToBeLoading(), etc.
 - **Value assertion** — hasValue() method if component has value prop
 
 ### Unit Tests
+
 - **Happy paths** — Valid inputs → expected outputs
 - **Edge cases** — undefined, null, empty string, invalid values
 - **Type variations** — Multiple input types handled correctly

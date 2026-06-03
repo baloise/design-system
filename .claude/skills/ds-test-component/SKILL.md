@@ -16,12 +16,14 @@ ds-test-component button
 ```
 
 Process:
+
 1. Parse component props, events, slots, parts, states
 2. Show checklists for visual props and slots
 3. Generate 6 file types (or fewer if not applicable)
 4. Report summary with test counts
 
 Output files:
+
 - `button.visual.html` — Visual test fixture with variant sections
 - `button.visual.play.ts` — Playwright visual regression tests
 - `button.a11y.play.ts` — Comprehensive accessibility tests
@@ -34,19 +36,91 @@ Output files:
 ### 1. Visual Tests
 
 **visual.html** — Test fixture with sections:
+
 - **Basic** — Minimal component demo with auto-detected common props
 - **Enum variants** — All color/size values in one section per enum
 - **State variants** — Separate section per state (disabled, loading, invalid, etc.)
 - **Slot demos** — One section per slot, auto-detected from `render()` JSX
 
 **visual.play.ts** — Playwright tests:
+
 - "style" suite: screenshots from `button.style.html`
 - "host" suite: screenshots from `button.visual.html`
 - One test per variant
 
+#### Data-Driven Test Pattern (VARIANTS constant)
+
+Use a simple string array `VARIANTS` constant to avoid repetitive test code:
+
+**Define VARIANTS with testid strings:**
+
+```ts
+const TAG = 'data'
+
+const VARIANTS = ['basic', 'border', 'horizontal', 'multiline', 'required', 'disabled', 'custom-form'] as const
+
+const image = screenshot(TAG)
+```
+
+**Loop through variants in forEach:**
+
+```ts
+test.describe('host', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(variant))
+    })
+  })
+})
+```
+
+**If component has both style.html and visual.html:**
+
+```ts
+test.describe('style', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(`style-${variant}`))
+    })
+  })
+})
+
+test.describe('host', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(variant))
+    })
+  })
+})
+```
+
+**Benefits:**
+
+- **Simple** — just a string array, no complex objects
+- **DRY** — one forEach covers all variants
+- **Maintainable** — testid is both the test name and selector
+- **Scalable** — works for any number of variants
+- **Consistent** — matches the tag component pattern
+
 ### 2. Accessibility Tests
 
 **a11y.play.ts** — Comprehensive a11y coverage:
+
 - Axe-core checks (auto-detected violations)
 - Semantic checks (ARIA labels, roles, heading hierarchy)
 - Contrast checks (WCAG AA compliance)
@@ -55,6 +129,7 @@ Output files:
 ### 3. Component Tests
 
 **component.play.ts** — Behavior tests:
+
 - **Event tests** — Auto-discovered from `@Event()` decorators
   - Verify each event fires
   - Verify event doesn't fire when expected (e.g., disabled)
@@ -66,6 +141,7 @@ Output files:
 ### 4. Page Object
 
 **button.po.ts** — Page object for testing:
+
 - **Part locators** — `readonly` property for each `@part` JSDoc tag
   - Pattern: `native = this.el.locator('[part="native"]')`
 - **Action methods** — `click()`, `focus()`, etc.
@@ -78,6 +154,7 @@ Located in: `packages/playwright/src/lib/components/button.po.ts`
 ### 5. Unit Tests (if applicable)
 
 **button.util.spec.ts** — Tests for utility functions:
+
 - Auto-detects `button.util.ts` if it exists
 - Generates comprehensive test cases per function
   - Happy paths (valid inputs → expected outputs)
@@ -88,11 +165,13 @@ Located in: `packages/playwright/src/lib/components/button.po.ts`
 ## Workflow
 
 ### Step 1: Invoke
+
 ```bash
 ds-test-component button
 ```
 
 ### Step 2: Confirm Visual Props
+
 ```
 Detected props: color, size, disabled, loading, icon, label
 
@@ -106,6 +185,7 @@ Which are visual props? (deselect unwanted)
 ```
 
 ### Step 3: Confirm Slots
+
 ```
 Detected slots: icon, label, badge
 
@@ -116,6 +196,7 @@ Which to demo? (deselect unwanted)
 ```
 
 ### Step 4: Files Generated
+
 ```
 ✓ button.visual.html (8 variant sections)
 ✓ button.visual.play.ts (16 visual tests)
@@ -130,6 +211,7 @@ Next: Review files, run tests: npm run play, npm test
 ## Example: Button Component
 
 ### Generated visual.html sections:
+
 ```html
 <!-- Basic -->
 <section data-testid="basic">
@@ -159,12 +241,13 @@ Next: Review files, run tests: npm run play, npm test
 ```
 
 ### Generated component test:
+
 ```ts
 test('should fire dsClick event', async ({ page }) => {
   await page.mount(`<ds-button>Click me</ds-button>`)
   const dsButton = new DsButton(page.locator('ds-button'))
   const spy = await dsButton.el.spyOnEvent('dsClick')
-  
+
   await dsButton.click()
   expect(spy).toHaveReceivedEventTimes(1)
 })
@@ -173,29 +256,32 @@ test('should not fire dsClick when disabled', async ({ page }) => {
   await page.mount(`<ds-button disabled>Disabled</ds-button>`)
   const dsButton = new DsButton(page.locator('ds-button'))
   const spy = await dsButton.el.spyOnEvent('dsClick')
-  
+
   await dsButton.assertToBeDisabled()
   expect(spy).toHaveReceivedEventTimes(0)
 })
 ```
 
 ### Generated page object:
+
 ```ts
 export class DsButton extends PageObject {
   readonly native = this.el.locator('[part="native"]')
   readonly spinner = this.el.locator('[part="spinner"]')
   readonly icon = this.el.locator('[part="icon"]')
-  
-  async click() { await this.native.click() }
-  
+
+  async click() {
+    await this.native.click()
+  }
+
   async assertToBeDisabled() {
     await expect(this.el).toHaveAttribute('disabled')
   }
-  
+
   async assertToBeLoading() {
     await expect(this.el).toHaveAttribute('loading')
   }
-  
+
   async hasValue(value: string) {
     await expect(this.el).toHaveValue(value)
   }

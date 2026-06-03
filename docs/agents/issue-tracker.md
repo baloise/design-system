@@ -23,6 +23,7 @@ The `triage` agent uses labels to move issues through a state machine. See `docs
 ## Accessing Issues
 
 **CLI:**
+
 ```bash
 gh issue list                           # List all open issues
 gh issue view <issue-number>            # View issue details
@@ -31,11 +32,13 @@ gh issue close <issue-number>           # Close an issue
 ```
 
 **Web:**
+
 - https://github.com/baloise/design-system/issues
 
 ## Pull Requests
 
 PRs are opened against the `next` branch and require:
+
 - All CI checks passing (lint, test, build)
 - At least one approval
 - A changeset entry (unless docs-only or infrastructure)

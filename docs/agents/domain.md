@@ -15,27 +15,33 @@ The Helvetia Design System is a **multi-context monorepo**. This means:
 Each `CONTEXT.md` should document:
 
 ### 1. **Domain Language**
+
 - Key terms and concepts specific to that package
 - What they mean and how they relate to each other
 - Examples of correct usage
 
 **Example from packages/tokens/CONTEXT.md:**
+
 > "A **token** is a named design value (color, spacing, font size, etc.) that can be referenced throughout the system. Tokens are organized in three layers: Global (raw values), Alias (consumer-facing abstractions), and Component (per-component overrides)."
 
 ### 2. **Architectural Patterns**
+
 - Key decisions and constraints specific to the package
 - How this package interacts with others
 - Dependencies and assumptions
 
 **Example from packages/core/CONTEXT.md:**
+
 > "Components are authored as Stencil.js web components in the Shadow DOM. They output to three targets: Web Components, Angular bindings, and React bindings. The component lifecycle flows through Stencil's authoring → build → binding generation steps."
 
 ### 3. **Notable Conventions**
+
 - Naming conventions unique to this package
 - File structure patterns
 - Code organization rules
 
 **Example from packages/css/CONTEXT.md:**
+
 > "CSS utility classes follow a `.<property>-<value>` pattern (e.g., `.bg-primary`, `.text-lg`). All utilities are generated from design tokens and follow a consistent responsive design breakpoint system."
 
 ## How Agents Use These Files
@@ -48,6 +54,7 @@ Skills like `improve-codebase-architecture`, `diagnose`, and `tdd` read `CONTEXT
 - Know which files and patterns to look for when investigating issues
 
 For example:
+
 - `tdd` skill reads `packages/core/CONTEXT.md` to understand component lifecycle before writing tests
 - `diagnose` skill reads `packages/tokens/CONTEXT.md` to understand token structure when debugging a token-related bug
 - `improve-codebase-architecture` reads multiple `CONTEXT.md` files to understand how packages interact

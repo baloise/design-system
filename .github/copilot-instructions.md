@@ -60,6 +60,24 @@ For comprehensive technical information, see the dedicated documentation files:
 - **[CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)** — Community standards
 - **[SKILLS.md](../SKILLS.md)** — Claude Code skills for automating component tasks
 
+## Domain Documentation
+
+Multi-context monorepo with separate `CONTEXT.md` for each package. Each package maintains its own context file that documents:
+
+- Package purpose and scope
+- Key files and structure
+- Domain-specific patterns and conventions
+- Package-specific testing requirements
+- Dependencies and relationships to other packages
+
+Current packages with CONTEXT.md:
+
+- `packages/core/CONTEXT.md` — Web components implementation
+- `packages/css/CONTEXT.md` — CSS utilities and styling
+- `packages/tokens/CONTEXT.md` — Design token definitions
+- `packages/playwright/CONTEXT.md` — Playwright test utilities
+- `packages/assets/CONTEXT.md` — Asset files and resources
+
 ## Key Guidelines
 
 See [STYLE_GUIDE.md](../STYLE_GUIDE.md) for detailed code standards and best practices.

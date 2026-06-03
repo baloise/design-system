@@ -28,6 +28,7 @@ Output: Summary of changes written to files.
 ## What Gets Checked
 
 **Design Tokens**
+
 - Component styles use `--ds-alias-*` tokens (approved alias tokens)
 - Component styles use `--ds-component-*` tokens (component-specific tokens)
 - Component styles use `--_*` tokens (private/local variables)
@@ -35,6 +36,7 @@ Output: Summary of changes written to files.
 - Flags usage of old or non-existent global tokens directly in styles
 
 **Documentation**
+
 - Every `@Prop` has a JSDoc comment immediately before it
 - Every `@Event` has a JSDoc comment immediately before it
 - Every `@Method` has a JSDoc comment immediately before it
@@ -42,16 +44,19 @@ Output: Summary of changes written to files.
 - Every `@part` is documented in the component-level JSDoc with a description
 
 **Divider Comments**
+
 - Section dividers exist only for sections with content
 - Format: Unicode dashes, correct spacing
 - Sections appear in order: PUBLIC PROPERTY API → LIFECYCLE → PUBLIC LISTENERS → PUBLIC METHODS → EVENT HANDLERS → PRIVATE METHODS → RENDER
 
 **Prop Validation**
+
 - Every `@Prop()` has a matching `@Validate*` decorator
 - Validator type matches prop type (string → `ValidateEmptyOrType('string')`, enum → `ValidateEmptyOrOneOf(...)`)
 - `setupValidation(this)` called in both `connectedCallback()` and `componentWillUpdate()`
 
 **Type Matching Rules**
+
 - Primitive props → `ValidateEmptyOrType('string'|'number'|'boolean')`
 - Enum props → `ValidateEmptyOrOneOf(...CONST_ARRAY)` via `.interfaces.ts`
 - Complex types (union, object) → Flagged as unable to validate; manual review required
@@ -116,6 +121,7 @@ Reports summary of changes:
 ### Example 1: Button Component
 
 Check button:
+
 ```bash
 ds-lint-component button
 ```
@@ -125,6 +131,7 @@ If button is compliant, no violations reported.
 ### Example 2: Carousel with Sub-Components
 
 Check carousel and carousel-item together:
+
 ```bash
 ds-lint-component carousel
 ```
@@ -136,6 +143,7 @@ Reports violations in both `carousel/carousel.tsx` and `carousel/carousel-item.t
 If a component has props but no `connectedCallback()`, `--fix` creates it:
 
 **Before:**
+
 ```tsx
 @Component({ tag: 'ds-example', shadow: true })
 export class Example {
@@ -143,11 +151,14 @@ export class Example {
   @ValidateEmptyOrType('string')
   readonly label: string = ''
 
-  render() { /* ... */ }
+  render() {
+    /* ... */
+  }
 }
 ```
 
 **After:**
+
 ```tsx
 @Component({ tag: 'ds-example', shadow: true })
 export class Example {
@@ -163,7 +174,9 @@ export class Example {
     setupValidation(this)
   }
 
-  render() { /* ... */ }
+  render() {
+    /* ... */
+  }
 }
 ```
 

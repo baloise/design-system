@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DataStories from './data.stories'
+import { DATA_DOC_CONFIG, getDataTabs } from './data.doc-config'
+
+<Meta title="Components/Data/Accessibility" />
+<Banner label={'Accessibility'} section={DATA_DOC_CONFIG.section} color={DATA_DOC_CONFIG.color} />
+<BannerTabs of={DataStories} tabs={getDataTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use semantic subcomponents',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Always use <code>ds-data-label</code> and <code>ds-data-value</code> components to ensure semantic structure and proper screen reader announcements.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Associate custom inputs with labels',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>When using native HTML form elements in the value slot, use proper <code>for</code>/<code>id</code> attributes on labels for keyboard accessibility and screen reader support.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Mark required fields clearly',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Use the <code>required</code> attribute on <code>ds-data-label</code> to visually indicate required fields with color contrast compliant indicators.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Provide sufficient color contrast',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>All text, including labels and values, maintains WCAG 2.2 AA color contrast ratios (4.5:1 for normal text).</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Avoid using color alone to convey meaning',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Do not rely solely on color (e.g., red borders) to indicate state changes. Use additional visual or textual cues.</p>,
+    },
+    {
+      type: 'dont',
+      title: 'Do not skip label associations',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>When including form inputs, always associate them with labels using <code>for</code>/<code>id</code> attributes. Unlabeled inputs fail accessibility requirements.</p>,
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The data component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **1.4.3 Contrast (Minimum)** — All text meets 4.5:1 contrast ratio for normal text and 3:1 for large text
+- **2.4.3 Focus Order** — Focus order is logical and matches visual layout for keyboard navigation
+- **3.2.4 Consistent Identification** — Components and their patterns remain consistent across pages
+- **3.3.2 Labels or Instructions** — Labels clearly identify form inputs and data items
+- **4.1.2 Name, Role, Value** — All interactive elements have accessible names and proper ARIA roles
+
+<Footer />

@@ -48,7 +48,7 @@ packages/core/src/components/tabs/
 ✅ **Migration support** — Auto-extract props/events from old components  
 ✅ **Subcomponents** — Generate parent + child components together  
 ✅ **Visual HTML** — Test file with sections for each variant  
-✅ **Auto-registration** — Adds exports to `packages/core/src/index.ts`  
+✅ **Auto-registration** — Adds exports to `packages/core/src/index.ts`
 
 ## Questionnaire
 
@@ -133,7 +133,7 @@ Example warning:
 ⚠️ Token Issue: Global token detected
    File: button.host.scss, line 25
    Found: var(--ds-color-primary)
-   
+
    Recommendation:
    1. Use alias token: var(--ds-alias-color-primary)
    2. Or create component token: --ds-button-color-primary
@@ -154,7 +154,7 @@ Example:
 ⚠️ BREAKING CHANGE (a11y):
    Old: <ds-button label="text"></ds-button>
    New: <ds-button>Click me</ds-button>
-   
+
    Reason: Light DOM content improves accessibility and SEO.
 ```
 

@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DataStories from './data.stories'
+import { DATA_DOC_CONFIG, getDataTabs } from './data.doc-config'
+
+<Meta title="Components/Data/Testing" />
+
+<Banner label={'Testing'} section={DATA_DOC_CONFIG.section} color={DATA_DOC_CONFIG.color} />
+
+<BannerTabs of={DataStories} tabs={getDataTabs('testing')} />
+
+<ComponentPageObject component="data" />
+
+<Footer />
