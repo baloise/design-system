@@ -865,14 +865,9 @@ export namespace Components {
     }
     /**
      * Data displays a list of label-value pairs in a organized, accessible format.
-     * Supports vertical and horizontal layouts with optional borders.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
      */
     interface DsData {
-        /**
-          * If `true` a bottom border is added to the data-items.
-          * @default false
-         */
-        "border": boolean;
         /**
           * If `true` the data list is horizontal instead of vertical.
           * @default false
@@ -884,16 +879,17 @@ export namespace Components {
      * Provides separate slots for label and value for semantic linking.
      */
     interface DsDataItem {
-        /**
-          * If `true` a bottom border is added to the data-item.
-          * @default false
-         */
-        "border": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the item gets a lighter font color.
           * @default false
          */
         "disabled": boolean;
+        /**
+          * Label for the edit button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "editLabel": string | undefined;
         /**
           * If `true` a small button with an edit icon is shown on the right.
           * @default false
@@ -3413,7 +3409,7 @@ declare global {
     };
     /**
      * Data displays a list of label-value pairs in a organized, accessible format.
-     * Supports vertical and horizontal layouts with optional borders.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
      */
     interface HTMLDsDataElement extends Components.DsData, HTMLStencilElement {
     }
@@ -5036,14 +5032,9 @@ declare namespace LocalJSX {
     }
     /**
      * Data displays a list of label-value pairs in a organized, accessible format.
-     * Supports vertical and horizontal layouts with optional borders.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
      */
     interface DsData {
-        /**
-          * If `true` a bottom border is added to the data-items.
-          * @default false
-         */
-        "border"?: boolean;
         /**
           * If `true` the data list is horizontal instead of vertical.
           * @default false
@@ -5056,15 +5047,15 @@ declare namespace LocalJSX {
      */
     interface DsDataItem {
         /**
-          * If `true` a bottom border is added to the data-item.
-          * @default false
-         */
-        "border"?: boolean;
-        /**
           * If `true` the item gets a lighter font color.
           * @default false
          */
         "disabled"?: boolean;
+        /**
+          * Label for the edit button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "editLabel"?: string | undefined;
         /**
           * If `true` a small button with an edit icon is shown on the right.
           * @default false
@@ -7536,14 +7527,13 @@ declare namespace LocalJSX {
         "alignment": StackAlignment;
     }
     interface DsDataAttributes {
-        "border": boolean;
         "horizontal": boolean;
     }
     interface DsDataItemAttributes {
-        "border": boolean;
         "disabled": boolean;
         "multiline": boolean;
         "editable": boolean;
+        "editLabel": string | undefined;
     }
     interface DsDataLabelAttributes {
         "required": boolean;
@@ -8123,7 +8113,7 @@ declare module "@stencil/core" {
             "ds-content": LocalJSX.IntrinsicElements["ds-content"] & JSXBase.HTMLAttributes<HTMLDsContentElement>;
             /**
              * Data displays a list of label-value pairs in a organized, accessible format.
-             * Supports vertical and horizontal layouts with optional borders.
+             * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
              */
             "ds-data": LocalJSX.IntrinsicElements["ds-data"] & JSXBase.HTMLAttributes<HTMLDsDataElement>;
             /**

@@ -1,8 +1,17 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { DsComponentInterface } from '@global'
+import {
+  DsComponentInterface,
+  DsConfigObserver,
+  DsConfigState,
+  ListenToConfig,
+  defaultConfig,
+  type DsLanguage,
+  type DsRegion,
+} from '@global'
 import { Logger, type LogInstance } from '@utils'
 import { ValidateEmptyOrType, setupValidation } from '@utils'
+import { i18nDsDataItem } from './data-item.i18n'
 
 /**
  * DataItem is a container for label-value pairs within ds-data.
@@ -16,7 +25,7 @@ import { ValidateEmptyOrType, setupValidation } from '@utils'
   styleUrl: 'data-item.host.scss',
   shadow: true,
 })
-export class DataItem implements DsComponentInterface {
+export class DataItem implements DsComponentInterface, DsConfigObserver {
   log!: LogInstance
 
   @Logger('data-item')
@@ -26,16 +35,13 @@ export class DataItem implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
+  @State() innerEditLabel = 'Edit'
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+
   private labelId = `data-item-label-${Math.random().toString(36).slice(2, 9)}`
   private valueId = `data-item-value-${Math.random().toString(36).slice(2, 9)}`
   private hasCustomLabel = false
-
-  /**
-   * If `true` a bottom border is added to the data-item.
-   */
-  @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly border: boolean = false
 
   /**
    * If `true` the item gets a lighter font color.
@@ -58,6 +64,14 @@ export class DataItem implements DsComponentInterface {
   @ValidateEmptyOrType('boolean')
   readonly editable: boolean = false
 
+  /**
+   * Label for the edit button.
+   * When omitted the label is localised from the language config.
+   */
+  @Prop()
+  @ValidateEmptyOrType('string')
+  readonly editLabel: string | undefined = undefined
+
   connectedCallback(): void {
     this.validateProps()
     setupValidation(this)
@@ -67,6 +81,17 @@ export class DataItem implements DsComponentInterface {
   componentWillUpdate(): void {
     this.validateProps()
     setupValidation(this)
+  }
+
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+    if (!this.editLabel) {
+      const label = i18nDsDataItem[state.language]?.editLabel || i18nDsDataItem.en.editLabel
+      this.innerEditLabel = label
+    }
   }
 
   private validateProps(): void {
@@ -98,7 +123,6 @@ export class DataItem implements DsComponentInterface {
     return (
       <Host
         class={{
-          'is-bordered': this.border,
           'is-disabled': this.disabled,
           'is-multiline': this.multiline,
           'is-editable': this.editable,
@@ -114,8 +138,23 @@ export class DataItem implements DsComponentInterface {
               <slot name="label"></slot>
             </label>
           )}
-          <div id={this.valueId} class="value-container" aria-labelledby={this.hasCustomLabel ? undefined : this.labelId}>
+          <div
+            id={this.valueId}
+            class="value-container"
+            aria-labelledby={this.hasCustomLabel ? undefined : this.labelId}
+          >
             <slot></slot>
+            {this.editable && (
+              <ds-button
+                class="edit-button"
+                color="tertiary"
+                size="sm"
+                icon="edit"
+                square
+                a11yLabel={this.editLabel || this.innerEditLabel}
+                a11yTitle={this.editLabel || this.innerEditLabel}
+              ></ds-button>
+            )}
           </div>
         </div>
       </Host>

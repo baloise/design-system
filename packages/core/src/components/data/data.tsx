@@ -6,7 +6,7 @@ import { ValidateEmptyOrType, setupValidation } from '@utils'
 
 /**
  * Data displays a list of label-value pairs in a organized, accessible format.
- * Supports vertical and horizontal layouts with optional borders.
+ * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
  *
  * @slot - The content of the data list (typically ds-data-item elements).
  */
@@ -24,13 +24,6 @@ export class Data implements DsComponentInterface {
   }
 
   @Element() el!: HTMLStencilElement
-
-  /**
-   * If `true` a bottom border is added to the data-items.
-   */
-  @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly border: boolean = false
 
   /**
    * If `true` the data list is horizontal instead of vertical.
@@ -57,7 +50,6 @@ export class Data implements DsComponentInterface {
     return (
       <Host
         class={{
-          'is-bordered': this.border,
           'is-horizontal': this.horizontal,
         }}
       >

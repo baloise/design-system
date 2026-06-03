@@ -47,40 +47,6 @@ test.describe('ds-data', () => {
     })
   })
 
-  test.describe('border prop', () => {
-    test('should add borders to items when border prop is true', async ({ page }) => {
-      await page.mount(`
-        <ds-data border>
-          <ds-data-item>
-            <ds-data-label slot="label">Name</ds-data-label>
-            <ds-data-value>John</ds-data-value>
-          </ds-data-item>
-          <ds-data-item>
-            <ds-data-label slot="label">Email</ds-data-label>
-            <ds-data-value>john@example.com</ds-data-value>
-          </ds-data-item>
-        </ds-data>
-      `)
-
-      const data = new DsData(page.locator('ds-data'))
-      await data.assertHasBorder()
-    })
-
-    test('should not add borders when border prop is false', async ({ page }) => {
-      await page.mount(`
-        <ds-data>
-          <ds-data-item>
-            <ds-data-label slot="label">Name</ds-data-label>
-            <ds-data-value>John</ds-data-value>
-          </ds-data-item>
-        </ds-data>
-      `)
-
-      const data = new DsData(page.locator('ds-data'))
-      await data.assertNoBorder()
-    })
-  })
-
   test.describe('state props', () => {
     test('should apply disabled state to items', async ({ page }) => {
       await page.mount(`

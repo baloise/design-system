@@ -44,6 +44,74 @@ Output files:
 - "host" suite: screenshots from `button.visual.html`
 - One test per variant
 
+#### Data-Driven Test Pattern (VARIANTS constant)
+
+Use a simple string array `VARIANTS` constant to avoid repetitive test code:
+
+**Define VARIANTS with testid strings:**
+
+```ts
+const TAG = 'data'
+
+const VARIANTS = ['basic', 'border', 'horizontal', 'multiline', 'required', 'disabled', 'custom-form'] as const
+
+const image = screenshot(TAG)
+```
+
+**Loop through variants in forEach:**
+
+```ts
+test.describe('host', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(variant))
+    })
+  })
+})
+```
+
+**If component has both style.html and visual.html:**
+
+```ts
+test.describe('style', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(`style-${variant}`))
+    })
+  })
+})
+
+test.describe('host', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(variant))
+    })
+  })
+})
+```
+
+**Benefits:**
+- **Simple** — just a string array, no complex objects
+- **DRY** — one forEach covers all variants
+- **Maintainable** — testid is both the test name and selector
+- **Scalable** — works for any number of variants
+- **Consistent** — matches the tag component pattern
+
 ### 2. Accessibility Tests
 
 **a11y.play.ts** — Comprehensive a11y coverage:

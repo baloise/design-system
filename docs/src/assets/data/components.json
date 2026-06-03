@@ -2651,6 +2651,7 @@
       "encapsulation": "shadow",
       "dependents": [
         "ds-close",
+        "ds-data-item",
         "ds-hint",
         "ds-snackbar",
         "ds-toast"
@@ -2665,6 +2666,9 @@
           "ds-icon"
         ],
         "ds-close": [
+          "ds-button"
+        ],
+        "ds-data-item": [
           "ds-button"
         ],
         "ds-hint": [
@@ -17290,9 +17294,9 @@
     {
       "fileName": "data.tsx",
       "tag": "ds-data",
-      "overview": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with optional borders.",
+      "overview": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with dividers always shown in vertical layout.",
       "usage": {},
-      "docs": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with optional borders.",
+      "docs": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with dividers always shown in vertical layout.",
       "docsTags": [
         {
           "name": "slot",
@@ -17304,35 +17308,6 @@
       "dependencies": [],
       "dependencyGraph": {},
       "props": [
-        {
-          "name": "border",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "border",
-          "reflectToAttr": true,
-          "docs": "If `true` a bottom border is added to the data-items.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
         {
           "name": "horizontal",
           "type": "boolean",
@@ -17365,7 +17340,36 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -17432,38 +17436,19 @@
       ],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
+      "dependencies": [
+        "ds-button"
+      ],
+      "dependencyGraph": {
+        "ds-data-item": [
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
       "props": [
-        {
-          "name": "border",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "border",
-          "reflectToAttr": true,
-          "docs": "If `true` a bottom border is added to the data-item.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
         {
           "name": "disabled",
           "type": "boolean",
@@ -17486,6 +17471,38 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "editLabel",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "edit-label",
+          "reflectToAttr": false,
+          "docs": "Label for the edit button.\nWhen omitted the label is localised from the language config.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -17552,9 +17569,79 @@
           "setter": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "configChanged",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(state: DsConfigState) => Promise<void>",
+            "parameters": [
+              {
+                "name": "state",
+                "type": "DsConfigState",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "DsConfigState": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsConfigState",
+                "referenceLocation": "DsConfigState"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "configChanged(state: DsConfigState) => Promise<void>",
+          "parameters": [
+            {
+              "name": "state",
+              "type": "DsConfigState",
+              "docs": ""
+            }
+          ],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -17592,16 +17679,6 @@
                 "type": "string"
               }
             ],
-            "docs": ""
-          },
-          {
-            "name": "assertHasBorder",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "assertNoBorder",
-            "params": [],
             "docs": ""
           },
           {
@@ -17664,7 +17741,7 @@
           "text": "- The label text content."
         }
       ],
-      "encapsulation": "shadow",
+      "encapsulation": "none",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
@@ -17701,7 +17778,36 @@
       ],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -17724,14 +17830,43 @@
           "text": "- The value content (text, HTML, or custom elements)."
         }
       ],
-      "encapsulation": "shadow",
+      "encapsulation": "none",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
       "props": [],
       "methods": [],
       "events": [],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--data-item-font-weight-label",
+          "docs": "Font weight of the label"
+        },
+        {
+          "name": "--data-item-color-text",
+          "docs": "Text color of the value"
+        },
+        {
+          "name": "--data-item-color-text-label",
+          "docs": "Text color of the label"
+        },
+        {
+          "name": "--data-item-color-text-required",
+          "docs": "Color of the required indicator"
+        },
+        {
+          "name": "--data-item-color-text-disabled",
+          "docs": "Text color when disabled"
+        },
+        {
+          "name": "--data-item-border-width",
+          "docs": "Border width"
+        },
+        {
+          "name": "--data-item-border-color",
+          "docs": "Border color"
+        }
+      ],
       "slots": [
         {
           "name": "",

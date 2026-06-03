@@ -74,7 +74,21 @@ Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `read
 
 ### Domain docs
 
-Multi-context monorepo with separate `CONTEXT.md` for each package. See `docs/agents/domain.md`.
+Multi-context monorepo with separate `CONTEXT.md` for each package. Each package maintains its own context file that documents:
+- Package purpose and scope
+- Key files and structure
+- Domain-specific patterns and conventions
+- Package-specific testing requirements
+- Dependencies and relationships to other packages
+
+Current packages with CONTEXT.md:
+- `packages/core/CONTEXT.md` — Web components implementation
+- `packages/css/CONTEXT.md` — CSS utilities and styling
+- `packages/tokens/CONTEXT.md` — Design token definitions
+- `packages/playwright/CONTEXT.md` — Playwright test utilities
+- `packages/assets/CONTEXT.md` — Asset files and resources
+
+See `docs/agents/domain.md` for detailed guidance on using domain docs.
 
 ## Key Guidelines
 
