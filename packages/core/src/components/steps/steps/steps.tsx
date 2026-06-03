@@ -1,12 +1,22 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
+import {
+  Logger,
+  type LogInstance,
+  stopEventBubbling,
+  ValidateEmptyOrOneOf,
+  ValidateEmptyOrType,
+  setupValidation,
+} from '@utils'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, ValidateEmptyOrType, ValidateRequiredAndType, setupValidation } from '@utils'
+import { STEPS_COLORS, StepsColor, StepsChangeDetail } from '../steps.interfaces'
 
 /**
- * Steps is a container for step indicators, showing progress through a multi-step process.
+ * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
  *
- * @slot - The steps content (typically ds-step elements).
+ * @slot - ds-step-panel children (panels variant).
+ * @slot step - ds-step children; managed automatically by ds-steps.
+ * @part steplist - The steplist container.
  */
 @Component({
   tag: 'ds-steps',
@@ -29,92 +39,39 @@ export class Steps implements DsComponentInterface {
    */
 
   /**
-   * Index of the active step. Used to determine connector fill state.
-   * Set by the parent ds-steps.
-   * @internal
+   * Accent color applied to inactive circles and connector lines.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrType('number')
-  activeIndex: number = 0
+  @Prop()
+  @ValidateEmptyOrOneOf(...STEPS_COLORS)
+  readonly color: StepsColor = ''
 
   /**
-   * If `true`, the step cannot be selected.
-   */
-  @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly disabled: boolean = false
-
-  /**
-   * If `true`, the step is completed. Shows a checkmark icon in the circle.
-   */
-  @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly done: boolean = false
-
-  /**
-   * If `true`, the step is hidden from the layout.
-   */
-  @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly hidden: boolean = false
-
-  /**
-   * 1-based position index. Set by the parent ds-steps.
-   * @internal
-   */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrType('number')
-  index: number = 0
-
-  /**
-   * If `true`, the step has an error. Shows an exclamation mark in the circle.
-   */
-  @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
-  readonly invalid: boolean = false
-
-  /**
-   * Visible text label displayed below the circle.
+   * Accessible label for the navigation landmark (navigation variant only).
    */
   @Prop()
   @ValidateEmptyOrType('string')
   readonly label: string = ''
 
   /**
-   * Unique name that links this step to a ds-step-panel[for] of the same value.
-   */
-  @Prop({ reflect: true })
-  @ValidateRequiredAndType('string')
-  readonly name!: string
-
-  /**
-   * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
-   * @internal
-   */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
-  navigation: boolean = false
-
-  /**
-   * If `true`, this step is currently selected. Set by the parent ds-steps.
-   * @internal
+   * The `name` of the currently selected ds-step (panels variant).
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
-  selected: boolean = false
+  @ValidateEmptyOrType('string')
+  value?: string | null
 
   /**
-   * Set by ds-steps. When true, renders in vertical layout.
-   * @internal
+   * If `true`, the steplist is displayed vertically.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @ValidateEmptyOrType('boolean')
-  vertical: boolean = false
+  readonly vertical: boolean = false
 
   /**
-   * Emitted when the user clicks this step (panels mode only).
+   * Emitted when the selected step changes (panels variant only).
    */
-  @Event() dsStepSelect!: EventEmitter<{ name: string }>
+  @Event() dsChange!: EventEmitter<StepsChangeDetail>
+
+  private steplistEl?: HTMLElement
 
   /**
    * LIFECYCLE
@@ -129,6 +86,14 @@ export class Steps implements DsComponentInterface {
     setupValidation(this)
   }
 
+  componentDidLoad() {
+    this.setup()
+  }
+
+  componentDidUpdate() {
+    this.updateChildren()
+  }
+
   /**
    * PROPERTY VALIDATION
    * ------------------------------------------------------
@@ -137,22 +102,134 @@ export class Steps implements DsComponentInterface {
   // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
+   * PUBLIC LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('dsStepSelect')
+  listenToDsStepSelect(ev: CustomEvent<{ name: string }>) {
+    stopEventBubbling(ev)
+    this.activateStep(ev.detail.name)
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private getSteps(): HTMLDsStepElement[] {
+    return Array.from(this.el.querySelectorAll<HTMLDsStepElement>(':scope > ds-step'))
+  }
+
+  private getPanels(): HTMLDsStepPanelElement[] {
+    return Array.from(this.el.querySelectorAll<HTMLDsStepPanelElement>(':scope > ds-step-panel'))
+  }
+
+  private isNavigation(): boolean {
+    return this.getPanels().length === 0
+  }
+
+  private setup() {
+    const steps = this.getSteps()
+    const panels = this.getPanels()
+    const isNav = this.isNavigation()
+
+    let visibleIndex = 0
+    steps.forEach(step => {
+      step.slot = 'step'
+      step.navigation = isNav
+      step.vertical = this.vertical
+
+      if (!step.hidden) {
+        visibleIndex++
+        step.index = visibleIndex
+      } else {
+        step.index = 0
+      }
+
+      if (!isNav && step.name) {
+        if (!step.id) step.id = `ds-step-${stepIds++}`
+        const panel = panels.find(p => p.for === step.name)
+        if (panel) {
+          if (!panel.id) panel.id = `ds-step-panel-${stepIds++}`
+          step.setAttribute('aria-controls', panel.id)
+          panel.setAttribute('aria-labelledby', step.id)
+        }
+      }
+    })
+
+    if (!isNav && !this.value) {
+      const first = steps.find(s => !s.hidden && !s.disabled)
+      if (first) this.value = first.name
+    }
+
+    this.updateChildren()
+  }
+
+  private updateChildren() {
+    const isNav = this.isNavigation()
+    const steps = this.getSteps()
+    const panels = this.getPanels()
+
+    const activeStep = steps.find(s => s.name === this.value)
+    const activeIndex = activeStep ? activeStep.index : 0
+
+    steps.forEach(step => {
+      step.navigation = isNav
+      step.vertical = this.vertical
+      step.selected = isNav ? !!step.querySelector('[aria-current]') : step.name === this.value
+      step.activeIndex = activeIndex
+    })
+
+    panels.forEach(panel => {
+      panel.selected = panel.for === this.value
+    })
+  }
+
+  private activateStep(name: string) {
+    if (name === this.value) return
+    const step = this.getSteps().find(s => s.name === name)
+    if (step?.disabled) return
+    this.value = name
+    this.dsChange.emit({ value: name })
+    this.focusSelectedStep()
+  }
+
+  private focusSelectedStep() {
+    const selected = this.getSteps().find(s => s.name === this.value)
+    selected?.focus()
+  }
+
+  /**
    * EVENT HANDLERS
    * ------------------------------------------------------
    */
 
-  private handleClick = (ev: MouseEvent) => {
-    if (this.disabled) return
-    ev.preventDefault()
-    this.dsStepSelect.emit({ name: this.name })
+  private handleKeyDown = (ev: KeyboardEvent) => {
+    if (this.isNavigation()) return
+    const focusable = this.getSteps().filter(s => !s.disabled && !s.hidden)
+    const currentIndex = focusable.findIndex(s => s.name === this.value)
+
+    const isForward = this.vertical ? ev.key === 'ArrowDown' : ev.key === 'ArrowRight'
+    const isBackward = this.vertical ? ev.key === 'ArrowUp' : ev.key === 'ArrowLeft'
+
+    if (ev.key === 'Home') {
+      ev.preventDefault()
+      this.activateStep(focusable[0]?.name)
+    } else if (ev.key === 'End') {
+      ev.preventDefault()
+      this.activateStep(focusable[focusable.length - 1]?.name)
+    } else if (isForward) {
+      ev.preventDefault()
+      this.activateStep(focusable[(currentIndex + 1) % focusable.length]?.name)
+    } else if (isBackward) {
+      ev.preventDefault()
+      this.activateStep(focusable[(currentIndex - 1 + focusable.length) % focusable.length]?.name)
+    }
   }
 
-  private handleKeyDown = (ev: KeyboardEvent) => {
-    if (this.disabled) return
-    if (ev.key === 'Enter' || ev.key === ' ') {
-      ev.preventDefault()
-      this.dsStepSelect.emit({ name: this.name })
-    }
+  private handleSlotChange = () => {
+    this.setup()
   }
 
   /**
@@ -161,55 +238,50 @@ export class Steps implements DsComponentInterface {
    */
 
   render() {
+    const isNav = this.isNavigation()
+
     const hostClass = {
-      'is-selected': this.selected,
-      'is-done': this.done,
-      'is-invalid': this.invalid,
-      'is-disabled': this.disabled,
-      'is-hidden': this.hidden,
-      'is-navigation': this.navigation,
       'is-vertical': this.vertical,
-      'is-filled': this.index > 0 && this.index < this.activeIndex,
+      'is-navigation': isNav,
+      'is-purple': this.color === 'purple',
+      'is-green': this.color === 'green',
+      'is-red': this.color === 'red',
+      'is-yellow': this.color === 'yellow',
     }
 
-    const circleContent = this.done ? (
-      <ds-icon name="check" color="white" aria-hidden="true" />
-    ) : this.invalid ? (
-      <span class="step-invalid" aria-hidden="true">
-        !
-      </span>
-    ) : (
-      <span class="step-number" aria-hidden="true">
-        {this.index}
-      </span>
-    )
+    const slotRef = (el?: HTMLElement) => {
+      if (el) this.steplistEl = el
+    }
 
-    if (this.navigation) {
+    if (isNav) {
       return (
-        <Host role="listitem" class={hostClass}>
-          <span class="circle" aria-hidden="true">
-            {circleContent}
-          </span>
-          <slot />
-          <span class="connector" aria-hidden="true" />
+        <Host class={hostClass}>
+          <nav aria-label={this.label || undefined}>
+            <ol id="steplist" part="steplist" ref={slotRef}>
+              <slot name="step" onSlotchange={this.handleSlotChange} />
+            </ol>
+          </nav>
+          <slot onSlotchange={this.handleSlotChange} />
         </Host>
       )
     }
 
     return (
-      <Host
-        role="tab"
-        class={hostClass}
-        aria-selected={String(this.selected)}
-        aria-disabled={this.disabled ? 'true' : null}
-        tabIndex={!this.disabled && this.selected ? 0 : -1}
-        onClick={this.handleClick}
-        onKeyDown={this.handleKeyDown}
-      >
-        <span class="circle">{circleContent}</span>
-        {this.label && <span class="step-label">{this.label}</span>}
-        <span class="connector" aria-hidden="true" />
+      <Host class={hostClass}>
+        <div
+          id="steplist"
+          part="steplist"
+          role="tablist"
+          aria-orientation={this.vertical ? 'vertical' : undefined}
+          onKeyDown={this.handleKeyDown}
+          ref={slotRef}
+        >
+          <slot name="step" onSlotchange={this.handleSlotChange} />
+        </div>
+        <slot onSlotchange={this.handleSlotChange} />
       </Host>
     )
   }
 }
+
+let stepIds = 0
