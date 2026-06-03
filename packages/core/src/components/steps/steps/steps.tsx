@@ -159,7 +159,7 @@ export class Steps implements DsComponentInterface {
     })
 
     if (!isNav && !this.value) {
-      const first = steps.find(s => !s.hidden && !s.disabled)
+      const first = steps.find((s: HTMLDsStepElement) => !s.hidden && !s.disabled)
       if (first) this.value = first.name
     }
 
@@ -171,18 +171,28 @@ export class Steps implements DsComponentInterface {
     const steps = this.getSteps()
     const panels = this.getPanels()
 
-    const activeStep = steps.find(s => s.name === this.value)
+    let effectiveValue = this.value
+
+    // If the selected value is disabled, don't select any step
+    if (!isNav && effectiveValue) {
+      const selectedStep = steps.find((s: HTMLDsStepElement) => s.name === effectiveValue)
+      if (selectedStep && (selectedStep.disabled || selectedStep.hasAttribute('disabled'))) {
+        effectiveValue = undefined
+      }
+    }
+
+    const activeStep = steps.find(s => s.name === effectiveValue)
     const activeIndex = activeStep ? activeStep.index : 0
 
     steps.forEach(step => {
       step.navigation = isNav
       step.vertical = this.vertical
-      step.selected = isNav ? !!step.querySelector('[aria-current]') : step.name === this.value
+      step.selected = isNav ? !!step.querySelector('[aria-current]') : step.name === effectiveValue
       step.activeIndex = activeIndex
     })
 
     panels.forEach(panel => {
-      panel.selected = panel.for === this.value
+      panel.selected = panel.for === effectiveValue
     })
   }
 
