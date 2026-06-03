@@ -151,11 +151,11 @@ jobs:
           * component (or components) across multiple devices and browsers.
           *
           * Component selection:
-          *   - If TAG is 'all', matches all components: src/components/*/test/*visual.play.ts
+          *   - If TAG is 'all', matches all components: src/components/<name>/test/<name>.visual.play.ts
           *   - If TAG is 'hint,popup,drawer', generates separate patterns:
-          *     * src/components/hint/test/*visual.play.ts
-          *     * src/components/popup/test/*visual.play.ts
-          *     * src/components/drawer/test/*visual.play.ts
+          *     * src/components/hint/test/hint.visual.play.ts
+          *     * src/components/popup/test/popup.visual.play.ts
+          *     * src/components/drawer/test/drawer.visual.play.ts
           *   - Whitespace is trimmed from component names automatically
           */
           import { defineConfig, devices } from '@playwright/test'
