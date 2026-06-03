@@ -146,11 +146,12 @@ A: horizontal, vertical
 ```
 
 Result: Generated:
+
 - `tabs.tsx`, `tabs.interfaces.ts`, `tabs.host.scss`, `tabs.visual.html`
 - `tabs/tab/tab.tsx`, `tabs/tab/tab.interfaces.ts`, `tabs/tab/tab.host.scss`
 - `tabs/tab-panel/tab-panel.tsx`, `tabs/tab-panel/tab-panel.interfaces.ts`, `tabs/tab-panel/tab-panel.host.scss`
 
-Plus warnings if old component used global tokens (e.g., *"⚠️ Using global token `--ds-color-primary`. Consider using alias token `--ds-alias-color-primary` or creating component token `--ds-tabs-color-primary`"*)
+Plus warnings if old component used global tokens (e.g., _"⚠️ Using global token `--ds-color-primary`. Consider using alias token `--ds-alias-color-primary` or creating component token `--ds-tabs-color-primary`"_)
 
 ## What's NOT Included
 
@@ -168,12 +169,12 @@ When the skill validates tokens, it prints warnings like:
 ⚠️ Token Issue: Global token used
    File: button.host.scss, line 25
    Found: var(--ds-color-primary)
-   
+
    Recommendation:
    1. Use alias token instead: var(--ds-alias-color-primary)
    2. Or create a component token: --ds-button-color-primary
    3. Add to Base.tokens.json and re-run: npm run tokens
-   
+
    This is a warning only. You can proceed.
    See: docs/agents/domain.md (Design tokens section)
 ```
@@ -183,6 +184,7 @@ When the skill validates tokens, it prints warnings like:
 **Q: "Component already exists" warning**
 
 A: The skill found an existing component. Review whether you should:
+
 - Use the existing component (check `/ds-find-component`)
 - Overwrite it (if intentional)
 - Create a subcomponent instead (nested in a parent)
@@ -190,6 +192,7 @@ A: The skill found an existing component. Review whether you should:
 **Q: "No alias token available" warning**
 
 A: A design token (e.g., `--ds-alias-color-status`) doesn't exist yet. Either:
+
 - Use a different alias token that exists
 - Create a new alias token in `packages/tokens/tokens/Base.tokens.json`
 - Use a global token (with warning) as a temporary solution
@@ -197,6 +200,7 @@ A: A design token (e.g., `--ds-alias-color-status`) doesn't exist yet. Either:
 **Q: How do I refine the generated component?**
 
 A: The generated `.tsx` file has a basic `render()` with `<slot>`. Add:
+
 - Component logic in methods
 - Event handlers
 - State management if needed

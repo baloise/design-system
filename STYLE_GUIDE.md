@@ -229,6 +229,7 @@ Organize component class with these sections in the order shown. **Only include 
 7. RENDER — `render()` method
 
 Each section should be separated by a comment divider using Unicode dashes:
+
 ```tsx
 /**
  * PUBLIC PROPERTY API

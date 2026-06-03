@@ -16,6 +16,7 @@ All component tests in the design system use this library for consistent, mainta
 ## Core Concepts
 
 ### Page Object Pattern
+
 A **Page Object** is a class that encapsulates the interaction logic for a component. Instead of tests directly querying the DOM, they call PO methods:
 
 ```typescript
@@ -28,25 +29,28 @@ export class DsButton extends PageObject {
 
 // Test (calls the PO method)
 test('button fires dsChange event', async ({ page, mount }) => {
-  const button = await mount(DsButton, { /*props*/ })
+  const button = await mount(DsButton, {
+    /*props*/
+  })
   await button.click()
   // assert event was fired
 })
 ```
 
 Benefits:
+
 - **Maintainability** — If component structure changes, only the PO needs updating
 - **Readability** — Tests read like plain English
 - **Reusability** — All tests for a component use the same PO
 
 ### Test Types
 
-| Test Type | File Pattern | Purpose | Assertions |
-| --- | --- | --- | --- |
-| **Unit** | `.spec.ts` | Logic, utilities, edge cases | Vitest assertions |
-| **Interaction** | `.component.play.ts` | User interactions, events | Custom matchers for events |
-| **Visual** | `.visual.play.ts` | Visual regression | Screenshot comparisons |
-| **A11y** | `.a11y.play.ts` | Accessibility compliance | axe-core checks + manual assertions |
+| Test Type       | File Pattern         | Purpose                      | Assertions                          |
+| --------------- | -------------------- | ---------------------------- | ----------------------------------- |
+| **Unit**        | `.spec.ts`           | Logic, utilities, edge cases | Vitest assertions                   |
+| **Interaction** | `.component.play.ts` | User interactions, events    | Custom matchers for events          |
+| **Visual**      | `.visual.play.ts`    | Visual regression            | Screenshot comparisons              |
+| **A11y**        | `.a11y.play.ts`      | Accessibility compliance     | axe-core checks + manual assertions |
 
 ### Test Mounting
 
@@ -56,9 +60,9 @@ Components are mounted in each test using the `mount` fixture:
 test('button renders correctly', async ({ page, mount }) => {
   const button = await mount(DsButton, {
     label: 'Click me',
-    type: 'primary'
+    type: 'primary',
   })
-  
+
   await expect(button.el).toBeVisible()
   await button.click()
 })
@@ -150,5 +154,6 @@ Each component needs test files in `packages/core/src/components/<component>/tes
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/core|packages/core/CONTEXT.md]] — Components being tested
 - [[root|CONTEXT.md]] — Repository-level concepts

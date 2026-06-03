@@ -187,20 +187,11 @@ The generated interfaces file exports types and enums:
 ```typescript
 export type ButtonType = 'primary' | 'secondary' | 'danger' | 'ghost'
 
-export const BUTTON_TYPES: ButtonType[] = [
-  'primary',
-  'secondary',
-  'danger',
-  'ghost',
-]
+export const BUTTON_TYPES: ButtonType[] = ['primary', 'secondary', 'danger', 'ghost']
 
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
-export const BUTTON_SIZES: ButtonSize[] = [
-  'sm',
-  'md',
-  'lg',
-]
+export const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg']
 ```
 
 **Key patterns:**
@@ -234,39 +225,21 @@ The generated SCSS file includes token structure, variables, and variants:
   @include vars.base(button);
 
   // Use alias tokens (preferred)
-  @include vars.local(
-    button-color-text,
-    var(--ds-alias-interaction-text-default)
-  );
-  @include vars.local(
-    button-color-background,
-    var(--ds-button-color-primary-base)
-  );
-  @include vars.local(
-    button-border-radius,
-    var(--ds-alias-radius-base)
-  );
+  @include vars.local(button-color-text, var(--ds-alias-interaction-text-default));
+  @include vars.local(button-color-background, var(--ds-button-color-primary-base));
+  @include vars.local(button-border-radius, var(--ds-alias-radius-base));
 
   // Variant: Primary (default)
-  @include vars.local(
-    button-color-background,
-    var(--ds-button-color-primary-base)
-  );
+  @include vars.local(button-color-background, var(--ds-button-color-primary-base));
 
   // Variant: Secondary
   :host(.is-secondary) {
-    @include vars.local(
-      button-color-background,
-      var(--ds-button-color-secondary-base)
-    );
+    @include vars.local(button-color-background, var(--ds-button-color-secondary-base));
   }
 
   // Variant: Danger
   :host(.is-danger) {
-    @include vars.local(
-      button-color-background,
-      var(--ds-alias-color-danger)
-    );
+    @include vars.local(button-color-background, var(--ds-alias-color-danger));
   }
 
   // State: Disabled
@@ -330,10 +303,7 @@ The generated visual HTML file for testing variants:
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
@@ -417,6 +387,7 @@ The skill validates tokens according to these rules:
 ### ✅ Valid Tokens
 
 **Alias tokens** — Start with `--ds-alias-`:
+
 ```scss
 var(--ds-alias-color-primary)
 var(--ds-alias-interaction-focus-color)
@@ -424,6 +395,7 @@ var(--ds-alias-radius-base)
 ```
 
 **Component tokens** — Start with `--ds-<component>-`:
+
 ```scss
 var(--ds-button-color-primary-base)
 var(--ds-button-border-radius)
@@ -433,12 +405,14 @@ var(--ds-button-padding)
 ### ⚠️ Warning Tokens
 
 **Global tokens** — Start with `--ds-` but aren't alias or component tokens:
+
 ```scss
 var(--ds-color-primary)         // ⚠️ Global token
 var(--ds-space-md)              // ⚠️ Global token
 ```
 
 The skill warns and suggests:
+
 ```
 ⚠️ Global token detected: var(--ds-color-primary)
    Recommendation: Use alias token var(--ds-alias-color-primary)
@@ -448,10 +422,11 @@ The skill warns and suggests:
 ### 🚫 Invalid Values
 
 **Hardcoded values** — No literals, only variables:
+
 ```scss
-background-color: #ff0000;      // 🚫 Hardcoded hex
-padding: 1rem;                  // 🚫 Hardcoded size
-color: blue;                    // 🚫 Hardcoded color name
+background-color: #ff0000; // 🚫 Hardcoded hex
+padding: 1rem; // 🚫 Hardcoded size
+color: blue; // 🚫 Hardcoded color name
 ```
 
 ---
@@ -499,10 +474,10 @@ render() {
 }
 
 // Skill flags:
-⚠️ BREAKING CHANGE (a11y): 
+⚠️ BREAKING CHANGE (a11y):
    Old: <ds-button label="text"></ds-button>
    New: <ds-button>Click me</ds-button>
-   
+
    Reason: Light DOM content improves accessibility and SEO.
    Update consumers to use slot instead of label prop.
 ```
@@ -539,14 +514,11 @@ export type { ButtonSize, ButtonType } from './components/button/button.interfac
 // After
 export { Button, NewComponent } from './components/button/button'
 export { NewSubcomponent } from './components/button/new-subcomponent/new-subcomponent'
-export type {
-  ButtonSize,
-  ButtonType,
-  NewComponentType,
-} from './components/button/button.interfaces'
+export type { ButtonSize, ButtonType, NewComponentType } from './components/button/button.interfaces'
 ```
 
 The skill:
+
 - ✅ Adds export statements in alphabetical order
 - ✅ Handles subcomponents (nested exports)
 - ✅ Exports both component class and type definitions

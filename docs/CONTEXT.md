@@ -17,6 +17,7 @@ The site is built with **Storybook + Vite** and deployed to `design.baloise.dev`
 ## Core Concepts
 
 ### Stories
+
 A **story** is an isolated example of a component in a specific state. Stories are:
 
 - **Interactive** — users can change props and see the component respond in real-time
@@ -35,15 +36,14 @@ const story = new StoryFactory<TagStoryArgs>('ds-tag')
 
 export default story.meta({
   title: 'Components/Tag',
-  description: 'Removable tag component'
+  description: 'Removable tag component',
 })
 
-export const Default = story.story(({ label }) => html`
-  <ds-tag label="${label}"></ds-tag>
-`)
+export const Default = story.story(({ label }) => html` <ds-tag label="${label}"></ds-tag> `)
 ```
 
 ### MDX Documentation
+
 MDX files (`.mdx`) combine Markdown text with live JSX code blocks:
 
 ```mdx
@@ -65,6 +65,7 @@ Tags can display in different states:
 ```
 
 ### Design Token Showcase
+
 Components include a `<TokenOverview>` block that reads from the token JSON and renders:
 
 - All CSS variables belonging to the component
@@ -81,6 +82,7 @@ Components include a `<TokenOverview>` block that reads from the token JSON and 
 This allows consumers to discover all themeable values for a component.
 
 ### Organization Structure
+
 Documentation is organized by type:
 
 ```
@@ -120,14 +122,18 @@ Each story has:
 Stories can show the component at multiple breakpoints:
 
 ```typescript
-export const Responsive = story.story(({ label }) => html`
-  <style>
-    @media (max-width: 768px) {
-      ds-tag { font-size: 0.875rem; }
-    }
-  </style>
-  <ds-tag label="${label}"></ds-tag>
-`)
+export const Responsive = story.story(
+  ({ label }) => html`
+    <style>
+      @media (max-width: 768px) {
+        ds-tag {
+          font-size: 0.875rem;
+        }
+      }
+    </style>
+    <ds-tag label="${label}"></ds-tag>
+  `,
+)
 ```
 
 ## Key Constraints
@@ -141,6 +147,7 @@ export const Responsive = story.story(({ label }) => html`
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/core|packages/core/CONTEXT.md]] — Components being documented
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Token gallery and theming
 - [[root|CONTEXT.md]] — Repository-level concepts

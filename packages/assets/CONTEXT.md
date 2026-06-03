@@ -16,6 +16,7 @@ All assets are self-contained (no external CDNs) and versioned with the design s
 ## Core Concepts
 
 ### Font Assets
+
 - **Brand fonts** — Primary typeface(s) for the Helvetia brand
 - **Font weights** — Regular, bold, and any variants needed by components
 - **Web font formats** — WOFF2 (modern), with fallbacks for older browsers
@@ -24,6 +25,7 @@ All assets are self-contained (no external CDNs) and versioned with the design s
 Fonts are served from the distributed package and referenced via `@font-face` in global CSS.
 
 ### Icon System
+
 - **SVG icons** — All icons are vector-based SVG for crispness at any size
 - **Naming convention** — Icons follow a consistent naming scheme (e.g., `icon-check`, `icon-arrow-right`)
 - **Sizes** — Icons are designed at standard sizes (16px, 24px, 32px, etc.)
@@ -33,7 +35,9 @@ Fonts are served from the distributed package and referenced via `@font-face` in
   - CSS background images
 
 ### Asset Metadata
+
 Each asset type may have:
+
 - **license** — Attribution and usage rights
 - **source** — Where the asset came from (e.g., Figma, designer, external library)
 - **version** — When the asset was updated
@@ -42,6 +46,7 @@ Each asset type may have:
 ## Notable Patterns
 
 ### Font Configuration
+
 Fonts are declared in CSS with metadata:
 
 ```css
@@ -63,6 +68,7 @@ Fonts are declared in CSS with metadata:
 ```
 
 ### Icon Naming
+
 Icons follow a hierarchical naming pattern:
 
 - `icon-<name>` — basic icon (e.g., `icon-check`, `icon-close`)
@@ -70,6 +76,7 @@ Icons follow a hierarchical naming pattern:
 - `icon-<category>-<name>` — categorized (e.g., `icon-social-facebook`)
 
 ### Asset Publishing
+
 Assets are packaged and published as part of the npm release process. Consumers can:
 
 - Import assets directly: `import checkIcon from '@baloise/ds-assets/icons/check.svg'`
@@ -87,5 +94,6 @@ Assets are packaged and published as part of the npm release process. Consumers 
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/core|packages/core/CONTEXT.md]] — Components that consume icons/fonts
 - [[root|CONTEXT.md]] — Repository-level concepts

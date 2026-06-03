@@ -14,11 +14,13 @@ This document captures domain language, architectural patterns, and key concepts
 ## Core Concepts
 
 ### Component Authoring
+
 - **Stencil components** are written as TypeScript classes (`.tsx` + `.scss`) in `packages/core/src/components/`
 - Each component implements `ComponentInterface` and `Loggable` interfaces
 - Components use `@Prop()`, `@Event()`, `@Method()`, `@Listen()`, `@Watch()` decorators from Stencil
 
 ### Component Lifecycle
+
 1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<name>/`
 2. **Compilation** → Stencil compiler transpiles to web components in `dist/`
 3. **Output targets** → Additional targets (Angular, React, Web) generate bindings
@@ -29,6 +31,7 @@ This document captures domain language, architectural patterns, and key concepts
 The system supports **three component architectures**:
 
 #### 1. Web-Component-Only (`ds-*`)
+
 - **Has**: `.host.scss` file (Shadow DOM styles)
 - **No**: `.style.scss` file
 - **Usage**: Custom element with Shadow DOM encapsulation and full JavaScript interactivity
@@ -37,6 +40,7 @@ The system supports **three component architectures**:
 - **Identification**: Check for `.host.scss` only (not `.style.scss`)
 
 #### 2. CSS-Only
+
 - **Has**: `.style.scss` file (global CSS classes)
 - **No**: `.host.scss` file
 - **Usage**: Plain HTML elements with CSS classes, no JavaScript
@@ -45,6 +49,7 @@ The system supports **three component architectures**:
 - **Identification**: Check for `.style.scss` only (not `.host.scss`)
 
 #### 3. Hybrid
+
 - **Has**: Both `.host.scss` (Shadow DOM) and `.style.scss` (global CSS)
 - **Usage**: Supports both web component mode and CSS-only mode
 - **Example**: Works as both `<ds-button>` and `<button class="button">`
@@ -66,19 +71,23 @@ if (hasHostScss && hasStyleScss) return 'hybrid'
 ```
 
 ### Design Tokens Integration
+
 Components reference design tokens (`--ds-*` CSS variables) for:
+
 - Colors, spacing, fonts, shadows, z-index values
 - All theming is token-driven; direct color values should not appear in component CSS
 
 ## Notable Patterns
 
 ### Naming Conventions
+
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
 - **Event naming**: `ds<Name>` (e.g., `dsChange`, `dsCloseClick`)
 - **Handler naming**: `listenTo<Event>` (@Listen), `<Prop>Changed` (@Watch), `handle<Event>` (DOM handlers)
 - **CSS classes**: `.is-<state>` for states (e.g., `.is-disabled`, `.is-primary`), `.mod-<variant>` for modifiers
 
 ### CSS Variable Cascade
+
 Components use a four-layer CSS variable system:
 
 ```
@@ -89,7 +98,9 @@ Components use a four-layer CSS variable system:
 ```
 
 ### Component Organization
+
 Each component directory contains:
+
 - `component.tsx` — component logic and render
 - `component.interfaces.ts` — types, enums, interfaces
 - `component.host.scss` — web component styles (Shadow DOM)
@@ -107,18 +118,19 @@ Each component directory contains:
 
 ## Testing Requirements
 
-| Test Type | File Pattern | Framework | Purpose |
-| --- | --- | --- | --- |
-| Unit | `.spec.ts` | Vitest | Logic, prop validation, utilities |
-| Interaction | `.component.play.ts` | Playwright | User interactions, events |
-| Visual | `.visual.play.ts` | Playwright | Visual regression detection |
-| A11y | `.a11y.play.ts` | Playwright + axe | WCAG 2.2 AA compliance |
+| Test Type   | File Pattern         | Framework        | Purpose                           |
+| ----------- | -------------------- | ---------------- | --------------------------------- |
+| Unit        | `.spec.ts`           | Vitest           | Logic, prop validation, utilities |
+| Interaction | `.component.play.ts` | Playwright       | User interactions, events         |
+| Visual      | `.visual.play.ts`    | Playwright       | Visual regression detection       |
+| A11y        | `.a11y.play.ts`      | Playwright + axe | WCAG 2.2 AA compliance            |
 
 All tests mount via Page Objects from `@baloise/ds-playwright`.
 
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Design tokens reference
 - [[packages/playwright|packages/playwright/CONTEXT.md]] — Testing library
 - [[packages/css|packages/css/CONTEXT.md]] — Global styles

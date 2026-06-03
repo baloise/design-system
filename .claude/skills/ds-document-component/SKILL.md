@@ -184,7 +184,7 @@ export const WithContent = Story({
       <ds-<component> variant="${variant}" ${props(args)}>
         Custom slot content here
       </ds-<component>
-    `
+    `,
   ),
 })
 ```
@@ -534,23 +534,23 @@ The <component> component implements patterns that meet WCAG 2.2 Level AA standa
 
 ## Reusable Block Components
 
-| Block                    | Import                       | Props                                            | Purpose                                          |
-| ------------------------ | ---------------------------- | ------------------------------------------------ | ------------------------------------------------ |
-| `Banner`                 | `../../../.storybook/blocks` | `label`, `section`, `color`                      | Page header with title and accent color          |
-| `BannerTabs`             | `../../../.storybook/blocks` | `of`, `tabs`                                     | Navigation between Overview/Usage/etc            |
+| Block                    | Import                       | Props                                            | Purpose                                                     |
+| ------------------------ | ---------------------------- | ------------------------------------------------ | ----------------------------------------------------------- |
+| `Banner`                 | `../../../.storybook/blocks` | `label`, `section`, `color`                      | Page header with title and accent color                     |
+| `BannerTabs`             | `../../../.storybook/blocks` | `of`, `tabs`                                     | Navigation between Overview/Usage/etc                       |
 | `CanvasTabs`             | `../../../.storybook/blocks` | `of`, `htmlOf?`                                  | Canvas with web component + HTML/CSS tabs (hybrid/CSS-only) |
 | `CanvasWithCodePen`      | `../../../.storybook/blocks` | `of`, `sourceState?`                             | Canvas with CodePen embed for web components (WC only)      |
-| `ComponentLead`          | `../../../.storybook/blocks` | `component`                                      | Auto-pulls description from components.json      |
-| `ComponentPublicMethods` | `../../../.storybook/blocks` | `component`, `subComponents?`, `title?`          | Auto-pulls methods from components.json          |
-| `ComponentParts`         | `../../../.storybook/blocks` | `component`                                      | Auto-pulls Shadow DOM parts from components.json |
-| `ComponentCssVariables`  | `../../../.storybook/blocks` | `component`                                      | CSS custom properties table                      |
-| `ComponentDesignTokens`  | `../../../.storybook/blocks` | `component`                                      | Design tokens table                              |
-| `A11yGuidelines`         | `../../../.storybook/blocks` | `items: { type, title, content }[]`              | Do/Don't accessibility checklist                 |
-| `UsageExamples`          | `../../../.storybook/blocks` | `items: { type, title, content, description }[]` | Correct/Incorrect code pattern comparison        |
-| `StoryHeading`           | `../../../.storybook/blocks` | `of`, `hidden?`                                  | Section title before canvas component            |
-| `Footer`                 | `../../../.storybook/blocks` | none                                             | End-of-page footer                               |
-| `ComponentPageObject`    | `../../../.storybook/blocks` | `component`                                      | PO API table + example test + install guide      |
-| `Code`                   | `../../../.storybook/blocks` | `code`, `noPreview?`                             | Inline code snippet in UsageExamples             |
+| `ComponentLead`          | `../../../.storybook/blocks` | `component`                                      | Auto-pulls description from components.json                 |
+| `ComponentPublicMethods` | `../../../.storybook/blocks` | `component`, `subComponents?`, `title?`          | Auto-pulls methods from components.json                     |
+| `ComponentParts`         | `../../../.storybook/blocks` | `component`                                      | Auto-pulls Shadow DOM parts from components.json            |
+| `ComponentCssVariables`  | `../../../.storybook/blocks` | `component`                                      | CSS custom properties table                                 |
+| `ComponentDesignTokens`  | `../../../.storybook/blocks` | `component`                                      | Design tokens table                                         |
+| `A11yGuidelines`         | `../../../.storybook/blocks` | `items: { type, title, content }[]`              | Do/Don't accessibility checklist                            |
+| `UsageExamples`          | `../../../.storybook/blocks` | `items: { type, title, content, description }[]` | Correct/Incorrect code pattern comparison                   |
+| `StoryHeading`           | `../../../.storybook/blocks` | `of`, `hidden?`                                  | Section title before canvas component                       |
+| `Footer`                 | `../../../.storybook/blocks` | none                                             | End-of-page footer                                          |
+| `ComponentPageObject`    | `../../../.storybook/blocks` | `component`                                      | PO API table + example test + install guide                 |
+| `Code`                   | `../../../.storybook/blocks` | `code`, `noPreview?`                             | Inline code snippet in UsageExamples                        |
 
 ---
 

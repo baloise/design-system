@@ -9,20 +9,24 @@ Detailed generation rules for each test file type.
 ### visual.html Structure
 
 Each `<section data-testid="section-name">` contains:
+
 1. Label: `<span>Section Name</span>`
 2. Demo HTML: component with different prop values
 
 ### Section Types Generated
 
 #### 1. Basic Section
+
 **Always generated** if component has any testable content.
 
 **Auto-detect common props:**
+
 - `label`, `title`, `placeholder` → Include in demo
 - `icon` → Include if prop exists
 - `name`, `href`, `value`, `id` → Exclude (non-visual)
 
 **Example:**
+
 ```html
 <section data-testid="basic">
   <span>Basic</span>
@@ -31,9 +35,11 @@ Each `<section data-testid="section-name">` contains:
 ```
 
 #### 2. Enum Props → Grouped Sections
+
 **One section per enum prop** (user can deselect).
 
 **Pattern:**
+
 ```html
 <section data-testid="colors">
   <span>Colors</span>
@@ -45,17 +51,21 @@ Each `<section data-testid="section-name">` contains:
 ```
 
 **Discovery:**
+
 - Parse component props for types that are enums (e.g., `ButtonColor = 'primary' | 'secondary'`)
 - Group all values in one section
 - Section name: lowercase enum name (e.g., `color` → `colors`)
 
 #### 3. State Props → Separate Sections
+
 **One section per boolean state prop** (user can deselect).
 
 **State props detected:**
+
 - `disabled`, `loading`, `invalid`, `checked`, `selected`, `open`, `readonly`, etc.
 
 **Pattern:**
+
 ```html
 <section data-testid="disabled">
   <span>Disabled</span>
@@ -69,19 +79,23 @@ Each `<section data-testid="section-name">` contains:
 ```
 
 #### 4. Slots → Separate Sections
+
 **One section per detected slot** (user can deselect).
 
 **Discovery:**
+
 - Parse `render()` JSX for `<slot>` elements
 - Extract slot name from `name` attribute or position
 
 **Demo content auto-detection:**
+
 - Slot named `icon` → Show icon usage: `<ds-icon name="plus"></ds-icon>`
 - Slot named `label`, `title`, `text`, `content` → Show text: "Label Text"
 - Slot named `badge` → Show badge: `<ds-badge>5</ds-badge>`
 - Default/unnamed slot → Show generic text: "Slot Content"
 
 **Pattern:**
+
 ```html
 <section data-testid="slot-label">
   <span>Slot: Label</span>
@@ -140,11 +154,13 @@ test.describe('host', () => {
 ### Comprehensive Coverage
 
 #### 1. Axe-Core Checks
+
 - Use `a11y()` function from `@baloise/ds-playwright`
 - Auto-detects accessibility violations
 - Tests all variant combinations
 
 #### 2. Semantic Checks
+
 - Verify interactive elements have ARIA labels
 - Verify `role` attributes are correct
 - Verify heading hierarchy (h1 → h2 → h3)
@@ -152,6 +168,7 @@ test.describe('host', () => {
 - Verify semantic HTML (button vs div, a vs span)
 
 #### 3. Contrast Checks
+
 - Parse component's CSS for colors
 - Verify foreground/background contrast ≥ 4.5:1 (text) or 3:1 (large text)
 - Test against WCAG AA standard
@@ -160,6 +177,7 @@ test.describe('host', () => {
 ### Generation
 
 **Test all combinations:**
+
 - Basic component
 - Each enum variant separately (all colors, all sizes)
 - Each state separately (disabled, loading, invalid)
@@ -167,6 +185,7 @@ test.describe('host', () => {
 - All together (enum + states combined)
 
 **Example structure:**
+
 ```ts
 import { test } from '@baloise/ds-playwright'
 
@@ -190,7 +209,7 @@ test.describe('states', () => {
     await page.mount(`<ds-button disabled>Disabled</ds-button>`)
     await a11y('ds-button')
   })
-  
+
   test('loading', async ({ page, a11y }) => {
     await page.mount(`<ds-button loading>Loading</ds-button>`)
     await a11y('ds-button')
@@ -205,23 +224,26 @@ test.describe('states', () => {
 ### Event Testing
 
 **Discovery:**
+
 - Parse `@Event()` decorators from component class
 - Extract event name and detail type
 
 **Test generation (per event):**
+
 ```ts
 test('should fire dsClick event', async ({ page }) => {
   await page.mount(`<ds-button>Click me</ds-button>`)
   const dsButton = new DsButton(page.locator('ds-button'))
   const spy = await dsButton.el.spyOnEvent('dsClick')
-  
+
   await dsButton.click()
-  
+
   expect(spy).toHaveReceivedEventTimes(1)
 })
 ```
 
 **Additional tests:**
+
 - Event doesn't fire when state prevents it (e.g., disabled → no click)
 - Event fires correct number of times (1, not multiple)
 - Event contains correct detail (if applicable)
@@ -229,25 +251,27 @@ test('should fire dsClick event', async ({ page }) => {
 ### State Testing
 
 **Discovery:**
+
 - Parse boolean props (disabled, loading, invalid, checked, etc.)
 - Parse related event interactions
 
 **Test generation (per state):**
+
 ```ts
 test('should not fire dsClick when disabled', async ({ page }) => {
   await page.mount(`<ds-button disabled>Disabled</ds-button>`)
   const dsButton = new DsButton(page.locator('ds-button'))
   const spy = await dsButton.el.spyOnEvent('dsClick')
-  
+
   await dsButton.assertToBeDisabled()
-  
+
   expect(spy).toHaveReceivedEventTimes(0)
 })
 
 test('should render loading spinner when loading', async ({ page }) => {
   await page.mount(`<ds-button loading>Loading</ds-button>`)
   const dsButton = new DsButton(page.locator('ds-button'))
-  
+
   await dsButton.assertToBeLoading()
   // If page object has part locator:
   await expect(dsButton.spinner).toBeVisible()
@@ -257,11 +281,12 @@ test('should render loading spinner when loading', async ({ page }) => {
 ### Slot Testing
 
 **Test each slot:**
+
 ```ts
 test('should render slot content', async ({ page }) => {
   await page.mount(`<ds-button>Custom Label</ds-button>`)
   const dsButton = new DsButton(page.locator('ds-button'))
-  
+
   await dsButton.assertToContainText('Custom Label')
 })
 ```
@@ -269,11 +294,12 @@ test('should render slot content', async ({ page }) => {
 ### Value Testing
 
 **If component has `value` prop:**
+
 ```ts
 test('should have value set', async ({ page }) => {
   await page.mount(`<ds-input value="test-value"></ds-input>`)
   const dsInput = new DsInput(page.locator('ds-input'))
-  
+
   await dsInput.hasValue('test-value')
 })
 ```
@@ -333,24 +359,29 @@ export class DsButton extends PageObject {
 ### Generation Rules
 
 **Part Locators:**
+
 - Parse `@part` JSDoc tags from component
 - Generate `readonly` property for each
 - Pattern: `readonly partName = this.el.locator('[part="partName"]')`
 
 **Action Methods:**
+
 - Standard actions: `click()`, `focus()`, `hover()`
 - Form actions: `fill()`, `clear()`, `select()` (if applicable)
 - Navigation: `navigate()` (if href-supporting component)
 
 **State Assertion Methods:**
+
 - One `assertToBe*()` method per boolean state prop
 - Pattern: `async assertToBeDisabled() { await expect(this.el).toHaveAttribute('disabled') }`
 
 **Value Assertion:**
+
 - If component has `value` prop: `async hasValue(value: string)`
 - Pattern: `await expect(this.el).toHaveValue(value)`
 
 **Text Assertion:**
+
 - `async assertToContainText(text: string)` (generated for all)
 
 ---
@@ -366,10 +397,12 @@ export class DsButton extends PageObject {
 ### Test Generation Per Function
 
 #### Happy Path Tests
+
 - Valid inputs → expected outputs
 - Common use cases
 
 **Example for `normalizeSize()`:**
+
 ```ts
 describe('normalizeSize', () => {
   it('should normalize deprecated t-shirt sizes', () => {
@@ -386,11 +419,13 @@ describe('normalizeSize', () => {
 ```
 
 #### Edge Case Tests
+
 - Undefined / null / empty string
 - Invalid type inputs
 - Boundary values
 
 **Example:**
+
 ```ts
 describe('normalizeSize', () => {
   it('should handle undefined', () => {
@@ -408,10 +443,12 @@ describe('normalizeSize', () => {
 ```
 
 #### Type Variation Tests
+
 - If function accepts union types, test each
 - If function accepts multiple overloads, test each
 
 **Example for `getValue(prop: string | number)`:**
+
 ```ts
 describe('getValue', () => {
   it('should handle string values', () => {
@@ -432,11 +469,7 @@ describe('getValue', () => {
 
 ```ts
 import { describe, it, expect } from 'vitest'
-import {
-  normalizeSize,
-  getButtonClass,
-  validateColor,
-} from './button.util'
+import { normalizeSize, getButtonClass, validateColor } from './button.util'
 
 describe('normalizeSize', () => {
   // Happy path tests
@@ -487,4 +520,3 @@ npm run play -- --grep "component"
 # Unit tests
 npm run test -- button.util.spec.ts
 ```
-

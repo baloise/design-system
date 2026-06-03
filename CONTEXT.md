@@ -20,11 +20,13 @@ Every decision in this system adheres to these principles (from ARCHITECTURE.md)
 ## Key Concepts
 
 ### Monorepo Architecture
+
 - **Turborepo** orchestrates build tasks and caching across packages
 - **Workspaces** (in `packages/` and `libs/`) are independently versioned and published
 - **Task caching** ensures only changed packages rebuild
 
 ### Release Process
+
 - Changes are merged into `next` branch
 - **Changesets** (`.changeset/*.md` files) document changes as `patch` | `minor` | `major`
 - **Changeset Release PR** aggregates all changesets and bumps version
@@ -32,6 +34,7 @@ Every decision in this system adheres to these principles (from ARCHITECTURE.md)
 - **LTS support** — `main` branch is a parallel long-term support release line
 
 ### CI/CD Workflow
+
 - **Continuous** workflow runs on every push and PR (lint, test, build)
 - **prepare-release** workflow creates/updates Release PR
 - **release** workflow publishes to npm with provenance
@@ -48,6 +51,7 @@ Every decision in this system adheres to these principles (from ARCHITECTURE.md)
 ## Related Contexts
 
 See [CONTEXT-MAP.md](CONTEXT-MAP.md) for package-specific contexts:
+
 - [[packages/core|packages/core/CONTEXT.md]] — Stencil components
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Design tokens
 - [[packages/css|packages/css/CONTEXT.md]] — Global styles

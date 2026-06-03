@@ -1,4 +1,4 @@
-import { test, expect, DsData, DsDataItem } from '@baloise/ds-playwright'
+import { test, DsData, DsDataItem } from '@baloise/ds-playwright'
 
 test.describe('ds-data', () => {
   test.describe('vertical layout (default)', () => {

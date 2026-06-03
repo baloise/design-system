@@ -63,6 +63,7 @@ For comprehensive technical information, see the dedicated documentation files:
 ## Domain Documentation
 
 Multi-context monorepo with separate `CONTEXT.md` for each package. Each package maintains its own context file that documents:
+
 - Package purpose and scope
 - Key files and structure
 - Domain-specific patterns and conventions
@@ -70,6 +71,7 @@ Multi-context monorepo with separate `CONTEXT.md` for each package. Each package
 - Dependencies and relationships to other packages
 
 Current packages with CONTEXT.md:
+
 - `packages/core/CONTEXT.md` — Web components implementation
 - `packages/css/CONTEXT.md` — CSS utilities and styling
 - `packages/tokens/CONTEXT.md` — Design token definitions

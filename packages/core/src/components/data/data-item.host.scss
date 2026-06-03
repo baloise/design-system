@@ -18,34 +18,13 @@
 :host {
   @include vars.base(data-item);
 
-  @include vars.local(
-    data-item-font-weight-label,
-    var(--ds-global-font-weight-700)
-  );
-  @include vars.local(
-    data-item-color-text,
-    var(--ds-alias-text-color-primary)
-  );
-  @include vars.local(
-    data-item-color-text-label,
-    var(--ds-alias-text-color-primary)
-  );
-  @include vars.local(
-    data-item-color-text-required,
-    var(--ds-alias-text-color-danger)
-  );
-  @include vars.local(
-    data-item-color-text-disabled,
-    var(--ds-alias-text-color-disabled)
-  );
-  @include vars.local(
-    data-item-border-width,
-    var(--ds-global-size-border-2)
-  );
-  @include vars.local(
-    data-item-border-color,
-    var(--ds-global-color-grey-3)
-  );
+  @include vars.local(data-item-font-weight-label, var(--ds-global-font-weight-700));
+  @include vars.local(data-item-color-text, var(--ds-alias-text-color-primary));
+  @include vars.local(data-item-color-text-label, var(--ds-alias-text-color-primary));
+  @include vars.local(data-item-color-text-required, var(--ds-alias-text-color-danger));
+  @include vars.local(data-item-color-text-disabled, var(--ds-alias-text-color-disabled));
+  @include vars.local(data-item-border-width, var(--ds-global-size-border-2));
+  @include vars.local(data-item-border-color, var(--ds-global-color-grey-3));
 }
 
 // Variant: Bordered (always applied in vertical layout)

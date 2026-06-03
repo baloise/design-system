@@ -1,49 +1,49 @@
-const fs = require('fs');
-const path = require('path');
-const { globSync } = require('glob');
+const fs = require('fs')
+const path = require('path')
+const { globSync } = require('glob')
 
-const REPO_ROOT = path.resolve(__dirname, '../../..');
+const REPO_ROOT = path.resolve(__dirname, '../../..')
 
 async function testComponent(componentName) {
-  const componentPath = path.join(REPO_ROOT, 'packages/core/src/components', componentName);
+  const componentPath = path.join(REPO_ROOT, 'packages/core/src/components', componentName)
 
   if (!fs.existsSync(componentPath)) {
-    throw new Error(`Component not found: ${componentName}`);
+    throw new Error(`Component not found: ${componentName}`)
   }
 
   const tsxFiles = globSync(`${componentPath}/**/*.tsx`).filter(
-    f => !f.includes('.spec.') && !f.includes('.visual.') && !f.includes('.a11y.')
-  );
+    f => !f.includes('.spec.') && !f.includes('.visual.') && !f.includes('.a11y.'),
+  )
 
   if (tsxFiles.length === 0) {
-    throw new Error(`No .tsx files found in ${componentName}`);
+    throw new Error(`No .tsx files found in ${componentName}`)
   }
 
-  console.log(`\n📋 Preparing to generate tests for: ${componentName}\n`);
+  console.log(`\n📋 Preparing to generate tests for: ${componentName}\n`)
 
   // Parse component
-  const componentInfo = parseComponent(tsxFiles[0]);
+  const componentInfo = parseComponent(tsxFiles[0])
 
   console.log(`Detected:
   • Props: ${componentInfo.props.length} (${componentInfo.enumProps.length} enums, ${componentInfo.stateProps.length} states)
   • Events: ${componentInfo.events.length}
   • Slots: ${componentInfo.slots.length}
   • Parts: ${componentInfo.parts.length}
-  • Utils: ${componentInfo.hasUtils ? 'Yes' : 'No'}\n`);
+  • Utils: ${componentInfo.hasUtils ? 'Yes' : 'No'}\n`)
 
   // Show checklists
-  const visualProps = await promptVisualProps(componentInfo.enumProps, componentInfo.stateProps);
-  const slotsToDemo = await promptSlots(componentInfo.slots);
+  const visualProps = await promptVisualProps(componentInfo.enumProps, componentInfo.stateProps)
+  const slotsToDemo = await promptSlots(componentInfo.slots)
 
   // Generate files
-  const files = generateTestFiles(componentName, componentInfo, visualProps, slotsToDemo);
+  const files = generateTestFiles(componentName, componentInfo, visualProps, slotsToDemo)
 
   // Report
-  reportGeneration(componentName, files);
+  reportGeneration(componentName, files)
 }
 
 function parseComponent(filePath) {
-  const content = fs.readFileSync(filePath, 'utf-8');
+  const content = fs.readFileSync(filePath, 'utf-8')
 
   return {
     path: filePath,
@@ -54,84 +54,84 @@ function parseComponent(filePath) {
     slots: extractSlots(content),
     parts: extractParts(content),
     hasUtils: checkHasUtils(filePath),
-  };
+  }
 }
 
 function extractProps(content) {
-  const propPattern = /@Prop\s*\({[^}]*}\)?\s*readonly\s+(\w+)\s*:\s*([^\s=]+)/g;
-  const props = [];
-  let match;
+  const propPattern = /@Prop\s*\({[^}]*}\)?\s*readonly\s+(\w+)\s*:\s*([^\s=]+)/g
+  const props = []
+  let match
 
   while ((match = propPattern.exec(content)) !== null) {
-    props.push({ name: match[1], type: match[2] });
+    props.push({ name: match[1], type: match[2] })
   }
 
-  return props;
+  return props
 }
 
 function extractEnumProps(content) {
   // Simplified: look for props with pipe-separated values (enums)
-  const props = extractProps(content);
-  return props.filter(p => p.type.includes('|') || p.type !== 'string' && p.type !== 'boolean' && p.type !== 'number');
+  const props = extractProps(content)
+  return props.filter(p => p.type.includes('|') || (p.type !== 'string' && p.type !== 'boolean' && p.type !== 'number'))
 }
 
 function extractStateProps(content) {
-  const stateNames = ['disabled', 'loading', 'invalid', 'checked', 'selected', 'open', 'readonly', 'required'];
-  const props = extractProps(content);
-  return props.filter(p => stateNames.includes(p.name));
+  const stateNames = ['disabled', 'loading', 'invalid', 'checked', 'selected', 'open', 'readonly', 'required']
+  const props = extractProps(content)
+  return props.filter(p => stateNames.includes(p.name))
 }
 
 function extractEvents(content) {
-  const eventPattern = /@Event\s*\(\)\s*(\w+)/g;
-  const events = [];
-  let match;
+  const eventPattern = /@Event\s*\(\)\s*(\w+)/g
+  const events = []
+  let match
 
   while ((match = eventPattern.exec(content)) !== null) {
-    events.push(match[1]);
+    events.push(match[1])
   }
 
-  return events;
+  return events
 }
 
 function extractSlots(content) {
-  const slotPattern = /<slot\s+(?:name="([^"]+)")?\s*\/>/g;
-  const slots = [];
-  let match;
-  const seen = new Set();
+  const slotPattern = /<slot\s+(?:name="([^"]+)")?\s*\/>/g
+  const slots = []
+  let match
+  const seen = new Set()
 
   // Add default slot
   if (/<slot\s*\/>/.test(content)) {
-    slots.push({ name: 'default', type: 'default' });
-    seen.add('default');
+    slots.push({ name: 'default', type: 'default' })
+    seen.add('default')
   }
 
   while ((match = slotPattern.exec(content)) !== null) {
-    const name = match[1] || 'default';
+    const name = match[1] || 'default'
     if (!seen.has(name)) {
-      slots.push({ name, type: 'named' });
-      seen.add(name);
+      slots.push({ name, type: 'named' })
+      seen.add(name)
     }
   }
 
-  return slots;
+  return slots
 }
 
 function extractParts(content) {
-  const partPattern = /@part\s+(\w+)/g;
-  const parts = [];
-  let match;
+  const partPattern = /@part\s+(\w+)/g
+  const parts = []
+  let match
 
   while ((match = partPattern.exec(content)) !== null) {
-    parts.push(match[1]);
+    parts.push(match[1])
   }
 
-  return parts;
+  return parts
 }
 
 function checkHasUtils(filePath) {
-  const dir = path.dirname(filePath);
-  const utilFile = path.join(dir, path.basename(filePath, '.tsx') + '.util.ts');
-  return fs.existsSync(utilFile);
+  const dir = path.dirname(filePath)
+  const utilFile = path.join(dir, path.basename(filePath, '.tsx') + '.util.ts')
+  return fs.existsSync(utilFile)
 }
 
 async function promptVisualProps(enumProps, stateProps) {
@@ -139,60 +139,55 @@ async function promptVisualProps(enumProps, stateProps) {
   return {
     enums: enumProps,
     states: stateProps,
-  };
+  }
 }
 
 async function promptSlots(slots) {
   // For now, return all (interactive prompts would be implemented)
-  return slots;
+  return slots
 }
 
 function generateTestFiles(componentName, componentInfo, visualProps, slotsToDemo) {
-  const testDir = path.join(
-    REPO_ROOT,
-    'packages/core/src/components',
-    componentName,
-    'test'
-  );
+  const testDir = path.join(REPO_ROOT, 'packages/core/src/components', componentName, 'test')
 
-  const poDir = path.join(REPO_ROOT, 'packages/playwright/src/lib/components');
+  const poDir = path.join(REPO_ROOT, 'packages/playwright/src/lib/components')
 
-  const files = [];
+  const files = []
 
   // Generate visual.html
-  const visualHtml = generateVisualHtml(componentName, visualProps, slotsToDemo);
-  const visualHtmlPath = path.join(testDir, `${componentName}.visual.html`);
+  const visualHtml = generateVisualHtml(componentName, visualProps, slotsToDemo)
+  const visualHtmlPath = path.join(testDir, `${componentName}.visual.html`)
   // fs.writeFileSync(visualHtmlPath, visualHtml); // Would write in real implementation
-  files.push({ path: visualHtmlPath, content: visualHtml, type: 'visual' });
+  files.push({ path: visualHtmlPath, content: visualHtml, type: 'visual' })
 
   // Generate visual.play.ts
-  const visualPlayTs = generateVisualPlayTs(componentName, visualProps, slotsToDemo);
-  const visualPlayTsPath = path.join(testDir, `${componentName}.visual.play.ts`);
-  files.push({ path: visualPlayTsPath, content: visualPlayTs, type: 'visual' });
+  const visualPlayTs = generateVisualPlayTs(componentName, visualProps, slotsToDemo)
+  const visualPlayTsPath = path.join(testDir, `${componentName}.visual.play.ts`)
+  files.push({ path: visualPlayTsPath, content: visualPlayTs, type: 'visual' })
 
   // Generate a11y.play.ts
-  const a11yPlayTs = generateA11yPlayTs(componentName, visualProps, slotsToDemo);
-  const a11yPlayTsPath = path.join(testDir, `${componentName}.a11y.play.ts`);
-  files.push({ path: a11yPlayTsPath, content: a11yPlayTs, type: 'a11y' });
+  const a11yPlayTs = generateA11yPlayTs(componentName, visualProps, slotsToDemo)
+  const a11yPlayTsPath = path.join(testDir, `${componentName}.a11y.play.ts`)
+  files.push({ path: a11yPlayTsPath, content: a11yPlayTs, type: 'a11y' })
 
   // Generate component.play.ts
-  const componentPlayTs = generateComponentPlayTs(componentName, componentInfo);
-  const componentPlayTsPath = path.join(testDir, `${componentName}.component.play.ts`);
-  files.push({ path: componentPlayTsPath, content: componentPlayTs, type: 'component' });
+  const componentPlayTs = generateComponentPlayTs(componentName, componentInfo)
+  const componentPlayTsPath = path.join(testDir, `${componentName}.component.play.ts`)
+  files.push({ path: componentPlayTsPath, content: componentPlayTs, type: 'component' })
 
   // Generate page object
-  const poTs = generatePageObject(componentName, componentInfo);
-  const poTsPath = path.join(poDir, `${componentName}.po.ts`);
-  files.push({ path: poTsPath, content: poTs, type: 'page-object' });
+  const poTs = generatePageObject(componentName, componentInfo)
+  const poTsPath = path.join(poDir, `${componentName}.po.ts`)
+  files.push({ path: poTsPath, content: poTs, type: 'page-object' })
 
   // Generate util tests if applicable
   if (componentInfo.hasUtils) {
-    const utilSpecTs = generateUtilSpecTs(componentName);
-    const utilSpecTsPath = path.join(testDir, `${componentName}.util.spec.ts`);
-    files.push({ path: utilSpecTsPath, content: utilSpecTs, type: 'util' });
+    const utilSpecTs = generateUtilSpecTs(componentName)
+    const utilSpecTsPath = path.join(testDir, `${componentName}.util.spec.ts`)
+    files.push({ path: utilSpecTsPath, content: utilSpecTs, type: 'util' })
   }
 
-  return files;
+  return files
 }
 
 function generateVisualHtml(componentName, visualProps, slotsToDemo) {
@@ -219,7 +214,7 @@ function generateVisualHtml(componentName, visualProps, slotsToDemo) {
       <!-- Slots: icon, label, badge, etc. -->
     </main>
   </body>
-</html>`;
+</html>`
 }
 
 function generateVisualPlayTs(componentName, visualProps, slotsToDemo) {
@@ -258,7 +253,7 @@ test.describe('host', () => {
     })
   })
 })
-`;
+`
 }
 
 function generateA11yPlayTs(componentName, visualProps, slotsToDemo) {
@@ -270,18 +265,18 @@ test('basic', async ({ page, a11y }) => {
 })
 
 // Add comprehensive a11y tests for all variants, colors, states
-`;
+`
 }
 
 function generateComponentPlayTs(componentName, componentInfo) {
   let content = `import { Ds${componentName.charAt(0).toUpperCase() + componentName.slice(1)}, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-`;
+`
 
   // Event tests
   if (componentInfo.events.length > 0) {
-    content += `\n  test.describe('events', () => {`;
+    content += `\n  test.describe('events', () => {`
     componentInfo.events.forEach(event => {
       content += `
     test('should fire ${event} event', async ({ page }) => {
@@ -292,14 +287,14 @@ test.describe('component', () => {
       // TODO: trigger action that fires ${event}
 
       expect(spy).toHaveReceivedEventTimes(1)
-    })`;
-    });
-    content += `\n  })\n`;
+    })`
+    })
+    content += `\n  })\n`
   }
 
   // State tests
   if (componentInfo.stateProps.length > 0) {
-    content += `\n  test.describe('states', () => {`;
+    content += `\n  test.describe('states', () => {`
     componentInfo.stateProps.forEach(state => {
       content += `
     test('should handle ${state} state', async ({ page }) => {
@@ -307,19 +302,19 @@ test.describe('component', () => {
       const ds${componentName.charAt(0).toUpperCase() + componentName.slice(1)} = new Ds${componentName.charAt(0).toUpperCase() + componentName.slice(1)}(page.locator('ds-${componentName}'))
 
       // TODO: add assertions for ${state} state
-    })`;
-    });
-    content += `\n  })\n`;
+    })`
+    })
+    content += `\n  })\n`
   }
 
   content += `})
-`;
+`
 
-  return content;
+  return content
 }
 
 function generatePageObject(componentName, componentInfo) {
-  const className = componentName.charAt(0).toUpperCase() + componentName.slice(1);
+  const className = componentName.charAt(0).toUpperCase() + componentName.slice(1)
 
   let content = `import { expect } from '@playwright/test'
 import { PageObject } from './page-object'
@@ -330,14 +325,14 @@ export class Ds${className} extends PageObject {
     super(el)
   }
 
-`;
+`
 
   // Part locators
   if (componentInfo.parts.length > 0) {
     componentInfo.parts.forEach(part => {
-      content += `  readonly ${part} = this.el.locator('[part="${part}"]')\n`;
-    });
-    content += '\n';
+      content += `  readonly ${part} = this.el.locator('[part="${part}"]')\n`
+    })
+    content += '\n'
   }
 
   // Action methods
@@ -345,27 +340,27 @@ export class Ds${className} extends PageObject {
     await this.el.click()
   }
 
-`;
+`
 
   // State assertions
   if (componentInfo.stateProps.length > 0) {
     componentInfo.stateProps.forEach(state => {
-      const methodName = state.charAt(0).toUpperCase() + state.slice(1);
+      const methodName = state.charAt(0).toUpperCase() + state.slice(1)
       content += `  async assertToBe${methodName}() {
     await expect(this.el).toHaveAttribute('${state}')
   }
 
-`;
-    });
+`
+    })
   }
 
   content += `  async assertToContainText(text: string) {
     await expect(this.el).toContainText(text)
   }
 }
-`;
+`
 
-  return content;
+  return content
 }
 
 function generateUtilSpecTs(componentName) {
@@ -376,26 +371,26 @@ describe('${componentName} utils', () => {
   // Add comprehensive unit tests here
   // Include happy paths, edge cases, and type variations
 })
-`;
+`
 }
 
 function reportGeneration(componentName, files) {
-  console.log(`📝 Test files to be generated:\n`);
+  console.log(`📝 Test files to be generated:\n`)
 
   files.forEach(file => {
-    const lines = file.content.split('\n').length;
-    console.log(`  ✓ ${path.basename(file.path)} (${lines} lines, ${file.type})`);
-  });
+    const lines = file.content.split('\n').length
+    console.log(`  ✓ ${path.basename(file.path)} (${lines} lines, ${file.type})`)
+  })
 
-  console.log(`\n✅ Ready to generate ${files.length} test files`);
-  console.log(`\nNext steps:\n`);
-  console.log(`  1. Review the generated files`);
-  console.log(`  2. Fill in event handlers and state assertions`);
-  console.log(`  3. Run visual tests: npm run play -- --grep "${componentName}"`);
-  console.log(`  4. Run a11y tests: npm run play -- --grep "a11y"`);
-  console.log(`  5. Run unit tests: npm run test -- ${componentName}.util.spec.ts\n`);
+  console.log(`\n✅ Ready to generate ${files.length} test files`)
+  console.log(`\nNext steps:\n`)
+  console.log(`  1. Review the generated files`)
+  console.log(`  2. Fill in event handlers and state assertions`)
+  console.log(`  3. Run visual tests: npm run play -- --grep "${componentName}"`)
+  console.log(`  4. Run a11y tests: npm run play -- --grep "a11y"`)
+  console.log(`  5. Run unit tests: npm run test -- ${componentName}.util.spec.ts\n`)
 }
 
 module.exports = {
   testComponent,
-};
+}

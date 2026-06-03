@@ -7,6 +7,7 @@ Detailed rules and patterns for component linting.
 ### Structure
 
 Each section divider is a JSDoc comment with:
+
 1. Opening `/**`
 2. Section name line: `   * SECTION_NAME`
 3. Dash line: `   * ─────────────────────────────────────────────────────` (≈53 Unicode dashes)
@@ -59,17 +60,18 @@ readonly label: string = ''
 
 Match the validator to the prop type:
 
-| Prop Type | Validator | Condition |
-|-----------|-----------|-----------|
-| `string` | `ValidateEmptyOrType('string')` | Always |
-| `number` | `ValidateEmptyOrType('number')` | Always |
-| `boolean` | `ValidateEmptyOrType('boolean')` | Always |
-| `EnumType` | `ValidateEmptyOrOneOf(...ENUM_CONST)` | When optional (default is `''` or `undefined`) |
+| Prop Type  | Validator                                 | Condition                                                |
+| ---------- | ----------------------------------------- | -------------------------------------------------------- |
+| `string`   | `ValidateEmptyOrType('string')`           | Always                                                   |
+| `number`   | `ValidateEmptyOrType('number')`           | Always                                                   |
+| `boolean`  | `ValidateEmptyOrType('boolean')`          | Always                                                   |
+| `EnumType` | `ValidateEmptyOrOneOf(...ENUM_CONST)`     | When optional (default is `''` or `undefined`)           |
 | `EnumType` | `ValidateRequiredAndOneOf(...ENUM_CONST)` | **Only** when default is never empty (e.g., `'primary'`) |
 
 ### Type Matching Examples
 
 **✅ Correct:**
+
 ```tsx
 @Prop()
 @ValidateEmptyOrType('string')
@@ -85,6 +87,7 @@ readonly color: ButtonColor = 'primary'  // default is never empty
 ```
 
 **✗ Incorrect:**
+
 ```tsx
 @Prop()
 @ValidateEmptyOrType('boolean')  // ← type mismatch (prop is string)
@@ -100,6 +103,7 @@ readonly text: string = ''  // ← validator doesn't match type (string, not enu
 For enum props, parse the corresponding `.interfaces.ts` file:
 
 **File:** `button.interfaces.ts`
+
 ```ts
 export const BUTTON_COLORS = ['primary', 'secondary'] as const
 export type ButtonColor = (typeof BUTTON_COLORS)[number]
@@ -112,6 +116,7 @@ export type ButtonColor = (typeof BUTTON_COLORS)[number]
 ### setupValidation() Calls
 
 Every component with `@Prop()` decorators must call `setupValidation(this)` in:
+
 1. `connectedCallback()` — Called when element is attached to DOM
 2. `componentWillUpdate()` — Called before props update
 
@@ -130,6 +135,7 @@ componentWillUpdate(): void {
 ### Auto-Creating Lifecycle Hooks
 
 If a component has `@Prop()` decorators but missing `connectedCallback()` or `componentWillUpdate()`:
+
 - **Auto-create both hooks** with `setupValidation(this)` call
 - Place in correct position (after PRIVATE PROPERTY API section, before other lifecycle methods or methods)
 - Do **not** create if component has zero `@Prop()` declarations
@@ -154,18 +160,21 @@ If a component has `@Prop()` decorators but missing `connectedCallback()` or `co
 ### Edge Cases
 
 **Union types:**
+
 ```tsx
 @Prop()
 readonly value: string | number = ''  // ← Cannot auto-validate
 ```
 
 **Object types:**
+
 ```tsx
 @Prop()
 readonly config: SomeObject = {}  // ← Cannot auto-validate
 ```
 
 **Missing interfaces file:**
+
 ```tsx
 @Prop()
 @ValidateEmptyOrOneOf(...BUTTON_SIZES)
@@ -179,6 +188,7 @@ readonly size: ButtonSize = ''  // ← If BUTTON_SIZES not found in interfaces.t
 ### Divider Comments
 
 **Add missing:**
+
 ```tsx
 // If component has @Listen() but no PUBLIC LISTENERS divider:
 /**
@@ -188,6 +198,7 @@ readonly size: ButtonSize = ''  // ← If BUTTON_SIZES not found in interfaces.t
 ```
 
 **Fix formatting:**
+
 - Correct dash count to ≈53 Unicode dashes
 - Fix spacing/indentation
 - Reorder sections if out of order
@@ -195,6 +206,7 @@ readonly size: ButtonSize = ''  // ← If BUTTON_SIZES not found in interfaces.t
 ### Validators
 
 **Add decorator:**
+
 ```tsx
 // Before
 @Prop()
@@ -207,6 +219,7 @@ readonly label: string = ''
 ```
 
 **Fix type mismatch:**
+
 ```tsx
 // Before
 @Prop()
@@ -222,6 +235,7 @@ readonly size: ButtonSize = ''
 ### setupValidation() Calls
 
 **Add missing calls:**
+
 ```tsx
 // Before
 connectedCallback(): void {
@@ -236,6 +250,7 @@ connectedCallback(): void {
 ```
 
 **Create missing lifecycle hooks:**
+
 ```tsx
 // Before
 @Component({ tag: 'ds-example', shadow: true })
@@ -244,7 +259,9 @@ export class Example {
   @ValidateEmptyOrType('string')
   readonly label: string = ''
 
-  render() { /* ... */ }
+  render() {
+    /* ... */
+  }
 }
 
 // After
@@ -262,13 +279,16 @@ export class Example {
     setupValidation(this)
   }
 
-  render() { /* ... */ }
+  render() {
+    /* ... */
+  }
 }
 ```
 
 ### Imports
 
 When adding validators or `setupValidation`:
+
 - Verify `@utils` import exists
 - Add to existing import if already imported: `import { setupValidation, ValidateEmptyOrType, ... } from '@utils'`
 - Do **not** create new imports; add to existing `@utils` import
@@ -280,12 +300,14 @@ When adding validators or `setupValidation`:
 ### Component Discovery
 
 Given component name (e.g., `button`), scan:
+
 - `packages/core/src/components/<name>/<name>.tsx` — Main component
 - `packages/core/src/components/<name>/**/*.tsx` — Sub-components (e.g., `carousel/carousel.tsx`, `carousel/carousel-item.tsx`)
 
 ### Interfaces File
 
 For each `.tsx` file, look for corresponding `.interfaces.ts`:
+
 - `button.tsx` → `button.interfaces.ts`
 - `carousel/carousel.tsx` → `carousel/carousel.interfaces.ts`
 - `carousel/carousel-item.tsx` → `carousel/carousel-item.interfaces.ts`

@@ -20,7 +20,7 @@ function generateVisualHtmlComplete(componentName, componentInfo, visualProps, s
         <span>Basic</span>
         <ds-${componentName}>Content</ds-${componentName}>
       </section>
-`;
+`
 
   // Add state sections
   visualProps.states.forEach(state => {
@@ -30,28 +30,28 @@ function generateVisualHtmlComplete(componentName, componentInfo, visualProps, s
         <span>${state.charAt(0).toUpperCase() + state.slice(1)}</span>
         <ds-${componentName} ${state}>Content</ds-${componentName}>
       </section>
-`;
-  });
+`
+  })
 
   // Add slot sections
   slotsToDemo.forEach(slot => {
-    const testId = slot.name === 'default' ? 'slot-default' : `slot-${slot.name}`;
-    const slotHtml = getSlotDemoContent(slot.name);
+    const testId = slot.name === 'default' ? 'slot-default' : `slot-${slot.name}`
+    const slotHtml = getSlotDemoContent(slot.name)
     html += `
       <!-- Slot: ${slot.name} -->
       <section data-testid="${testId}">
         <span>Slot: ${slot.name}</span>
         <ds-${componentName}>${slotHtml}</ds-${componentName}>
       </section>
-`;
-  });
+`
+  })
 
   html += `
     </main>
   </body>
-</html>`;
+</html>`
 
-  return html;
+  return html
 }
 
 function getSlotDemoContent(slotName) {
@@ -62,15 +62,14 @@ function getSlotDemoContent(slotName) {
     badge: '<ds-badge>5</ds-badge>',
     content: 'Content Text',
     default: 'Default Content',
-  };
+  }
 
-  return demos[slotName] || `${slotName} Content`;
+  return demos[slotName] || `${slotName} Content`
 }
 
 function generateVisualPlayTsComplete(componentName, variants) {
-  const variantsStr = variants.length > 0
-    ? `[\n    '${variants.join("',\n    '")}'${variants.length > 1 ? ',' : ''}\n  ]`
-    : '[]';
+  const variantsStr =
+    variants.length > 0 ? `[\n    '${variants.join("',\n    '")}'${variants.length > 1 ? ',' : ''}\n  ]` : '[]'
 
   return `import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
@@ -104,7 +103,7 @@ test.describe('host', () => {
     })
   })
 })
-`;
+`
 }
 
 function generateA11yPlayTsComplete(componentName, states) {
@@ -116,7 +115,7 @@ test('basic', async ({ page, a11y }) => {
 })
 
 test.describe('states', () => {
-`;
+`
 
   states.forEach(state => {
     content += `  test('${state}', async ({ page, a11y }) => {
@@ -124,22 +123,22 @@ test.describe('states', () => {
     await a11y('ds-${componentName}')
   })
 
-`;
-  });
+`
+  })
 
   content += `})
-`;
+`
 
-  return content;
+  return content
 }
 
 function generateComponentPlayTsComplete(componentName, componentInfo) {
-  const className = componentName.charAt(0).toUpperCase() + componentName.slice(1);
+  const className = componentName.charAt(0).toUpperCase() + componentName.slice(1)
 
   let content = `import { Ds${className}, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
-`;
+`
 
   // Slot test
   if (componentInfo.slots.length > 0) {
@@ -150,12 +149,12 @@ test.describe('component', () => {
     await component.assertToContainText('Slot Content')
   })
 
-`;
+`
   }
 
   // Event tests
   if (componentInfo.events.length > 0) {
-    content += `  test.describe('events', () => {\n`;
+    content += `  test.describe('events', () => {\n`
 
     componentInfo.events.forEach(event => {
       content += `    test('should fire ${event} event', async ({ page }) => {
@@ -168,15 +167,15 @@ test.describe('component', () => {
       expect(spy).toHaveReceivedEventTimes(1)
     })
 
-`;
-    });
+`
+    })
 
-    content += `  })\n\n`;
+    content += `  })\n\n`
   }
 
   // State tests
   if (componentInfo.stateProps.length > 0) {
-    content += `  test.describe('states', () => {\n`;
+    content += `  test.describe('states', () => {\n`
 
     componentInfo.stateProps.forEach(state => {
       content += `    test('should handle ${state} state', async ({ page }) => {
@@ -186,20 +185,20 @@ test.describe('component', () => {
       await component.assertToBe${state.charAt(0).toUpperCase() + state.slice(1)}()
     })
 
-`;
-    });
+`
+    })
 
-    content += `  })\n`;
+    content += `  })\n`
   }
 
   content += `})
-`;
+`
 
-  return content;
+  return content
 }
 
 function generatePageObjectComplete(componentName, componentInfo) {
-  const className = componentName.charAt(0).toUpperCase() + componentName.slice(1);
+  const className = componentName.charAt(0).toUpperCase() + componentName.slice(1)
 
   let content = `import { expect } from '@playwright/test'
 import { PageObject } from './page-object'
@@ -210,14 +209,14 @@ export class Ds${className} extends PageObject {
     super(el)
   }
 
-`;
+`
 
   // Part locators
   if (componentInfo.parts.length > 0) {
     componentInfo.parts.forEach(part => {
-      content += `  readonly ${part} = this.el.locator('[part="${part}"]')\n`;
-    });
-    content += '\n';
+      content += `  readonly ${part} = this.el.locator('[part="${part}"]')\n`
+    })
+    content += '\n'
   }
 
   // Action methods
@@ -225,26 +224,26 @@ export class Ds${className} extends PageObject {
     await this.el.click()
   }
 
-`;
+`
 
   // State assertions
   componentInfo.stateProps.forEach(state => {
-    const methodName = state.charAt(0).toUpperCase() + state.slice(1);
+    const methodName = state.charAt(0).toUpperCase() + state.slice(1)
     content += `  async assertToBe${methodName}() {
     await expect(this.el).toHaveAttribute('${state}')
   }
 
-`;
-  });
+`
+  })
 
   // Text assertion
   content += `  async assertToContainText(text: string) {
     await expect(this.el).toContainText(text)
   }
 }
-`;
+`
 
-  return content;
+  return content
 }
 
 function generateUtilSpecTsComplete(componentName, utilFunctions) {
@@ -253,7 +252,7 @@ import {
   ${utilFunctions.map(f => f.name).join(',\n  ')},
 } from './${componentName}.util'
 
-`;
+`
 
   utilFunctions.forEach(func => {
     content += `describe('${func.name}', () => {
@@ -270,10 +269,10 @@ import {
   })
 })
 
-`;
-  });
+`
+  })
 
-  return content;
+  return content
 }
 
 module.exports = {
@@ -284,4 +283,4 @@ module.exports = {
   generatePageObjectComplete,
   generateUtilSpecTsComplete,
   getSlotDemoContent,
-};
+}

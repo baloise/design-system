@@ -16,6 +16,7 @@ These libraries support the design system's build process and are not published 
 ## Core Concepts
 
 ### Output Target Pattern
+
 An **output target** is a Stencil compiler plugin that transforms the built components into a different format.
 
 Each output target:
@@ -28,17 +29,20 @@ Each output target:
 ### Output Targets in This System
 
 #### Web Component Output Target (`output-target-web`)
+
 - **Purpose:** Generate standard Web Components
 - **Output:** Custom elements that work in any HTML/framework
 - **Consumed by:** Vanilla JS, frameworks, any web environment
 
 #### Angular Output Target (`output-target-angular`)
+
 - **Purpose:** Generate Angular component wrappers for Stencil components
 - **Pattern:** Each Stencil component gets an Angular wrapper component
 - **Output:** Angular components that accept inputs, emit outputs, expose methods
 - **Consumed by:** Angular applications using the design system
 
 **Example binding flow:**
+
 ```
 Stencil component: <ds-button [label]="label" (dsClick)="onClick()"></ds-button>
         ↓
@@ -56,6 +60,7 @@ The custom ESLint plugin provides:
 - **Auto-fix capability** — Some rules can automatically correct violations
 
 Rules enforce:
+
 - Naming conventions (component names, event names, prop names)
 - Component structure (required interfaces, lifecycle hooks)
 - Import patterns (no circular dependencies, proper workspace imports)
@@ -83,11 +88,11 @@ export const config: Config = {
     angularOutputTarget({
       componentCorePackage: '@baloise/ds-core',
       outputType: 'component',
-      directivesProxyFile: '../angular/src/directives/proxies.ts'
+      directivesProxyFile: '../angular/src/directives/proxies.ts',
     }),
     webOutputTarget(),
     // ... other targets
-  ]
+  ],
 }
 ```
 
@@ -133,5 +138,6 @@ This runs Stencil compiler, which invokes all registered output targets.
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
 - [[packages/core|packages/core/CONTEXT.md]] — Components providing metadata for binding generation
 - [[root|CONTEXT.md]] — Repository-level concepts
