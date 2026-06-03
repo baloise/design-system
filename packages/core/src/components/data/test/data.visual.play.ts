@@ -8,6 +8,7 @@ const VARIANTS = [
   'multiline',
   'required',
   'disabled',
+  'editable',
   'custom-form',
   'mixed-content',
   'custom-required',
@@ -15,15 +16,13 @@ const VARIANTS = [
 
 const image = screenshot(TAG)
 
-test.describe('host', () => {
-  test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
-  })
+test.beforeEach('Setup', async ({ page }) => {
+  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+})
 
-  VARIANTS.forEach(variant => {
-    test(variant, async ({ page }) => {
-      const el = page.getByTestId(variant)
-      await expectScreenshot(el, image(variant))
-    })
+VARIANTS.forEach(variant => {
+  test(variant, async ({ page }) => {
+    const el = page.getByTestId(variant)
+    await expectScreenshot(el, image(variant))
   })
 })
