@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FooterStories from './footer.stories'
+import { FOOTER_DOC_CONFIG, getFooterTabs } from './footer.doc-config'
+
+<Meta title="Components/Footer/Styling" />
+
+<Banner label={'Styling'} section={FOOTER_DOC_CONFIG.section} color={FOOTER_DOC_CONFIG.color} />
+
+<BannerTabs of={FooterStories} tabs={getFooterTabs('styling')} />
+
+<ComponentParts component="footer" />
+
+<ComponentCssVariables component="footer" />
+
+<ComponentDesignTokens component="footer" />
+
+<Footer />

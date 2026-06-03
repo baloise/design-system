@@ -1235,7 +1235,7 @@
             "parameters": [
               {
                 "name": "alert",
-                "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+                "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
                 "docs": ""
               }
             ],
@@ -1263,7 +1263,7 @@
           "parameters": [
             {
               "name": "alert",
-              "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+              "type": "{ color?: \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
               "docs": ""
             }
           ],
@@ -17890,9 +17890,15 @@
         }
       ],
       "encapsulation": "shadow",
-      "dependents": [],
+      "dependents": [
+        "ds-footer"
+      ],
       "dependencies": [],
-      "dependencyGraph": {},
+      "dependencyGraph": {
+        "ds-footer": [
+          "ds-divider"
+        ]
+      },
       "props": [
         {
           "name": "color",
@@ -19169,6 +19175,279 @@
           {
             "name": "assertToBeClosed",
             "params": [],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
+      "fileName": "footer.tsx",
+      "tag": "ds-footer",
+      "overview": "Footer renders application level legal links, language selection, and social links.\nLink content is slot first to keep links crawlable and SEO friendly.\nLinks and social media are shown by default unless disabled.",
+      "usage": {},
+      "docs": "Footer renders application level legal links, language selection, and social links.\nLink content is slot first to keep links crawlable and SEO friendly.\nLinks and social media are shown by default unless disabled.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- Main content area above the divider."
+        },
+        {
+          "name": "slot",
+          "text": "logo - Optional custom logo markup."
+        },
+        {
+          "name": "slot",
+          "text": "social-links - Optional social link anchors (shows if provided or config available)."
+        },
+        {
+          "name": "slot",
+          "text": "links - Optional legal or app links (shows if provided or config available)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-logo",
+        "ds-icon",
+        "ds-divider"
+      ],
+      "dependencyGraph": {
+        "ds-footer": [
+          "ds-logo",
+          "ds-icon",
+          "ds-divider"
+        ]
+      },
+      "props": [
+        {
+          "name": "disableDefaultLinks",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disable-default-links",
+          "reflectToAttr": false,
+          "docs": "If `true` the default legal links from config will not be rendered.\nUser must provide links via the `links` slot.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disableDefaultSocialLinks",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disable-default-social-links",
+          "reflectToAttr": false,
+          "docs": "If `true` the default social links from config will not be rendered.\nUser must provide social links via the `social-links` slot.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLanguageSelection",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-language-selection",
+          "reflectToAttr": false,
+          "docs": "If `true` the language selection will be hidden.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "legalText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "legal-text",
+          "reflectToAttr": false,
+          "docs": "Copyright and address text below the divider.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'"
+            }
+          ],
+          "default": "'© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dsLanguageChange",
+          "detail": "FooterLanguageChangeDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "FooterLanguageChangeDetail",
+            "resolved": "FooterLanguageChangeDetail",
+            "references": {
+              "FooterLanguageChangeDetail": {
+                "location": "import",
+                "path": "./footer.interfaces",
+                "id": "src/components/footer/footer.interfaces.ts::FooterLanguageChangeDetail",
+                "referenceLocation": "FooterLanguageChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the language select value changes.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "Main content area above the divider."
+        },
+        {
+          "name": "links",
+          "docs": "Optional legal or app links (shows if provided or config available)."
+        },
+        {
+          "name": "logo",
+          "docs": "Optional custom logo markup."
+        },
+        {
+          "name": "social-links",
+          "docs": "Optional social link anchors (shows if provided or config available)."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "pageObject": {
+        "class": "DsFooter",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "languageSelect",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "legal",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "selectLanguage",
+            "params": [
+              {
+                "name": "languageCode",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertLanguageSelectVisible",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertLanguageSelectHidden",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertLegalTextContains",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertLinksCount",
+            "params": [
+              {
+                "name": "count",
+                "type": "number"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertSocialLinksCount",
+            "params": [
+              {
+                "name": "count",
+                "type": "number"
+              }
+            ],
             "docs": ""
           }
         ]
@@ -21318,6 +21597,7 @@
         "ds-button",
         "ds-carousel",
         "ds-checkbox-group",
+        "ds-footer",
         "ds-hint",
         "ds-input",
         "ds-item",
@@ -21327,7 +21607,6 @@
         "ds-segment",
         "ds-snackbar",
         "ds-step",
-        "ds-steps",
         "ds-tabs",
         "ds-textarea",
         "ds-toast"
@@ -21347,6 +21626,9 @@
           "ds-icon"
         ],
         "ds-checkbox-group": [
+          "ds-icon"
+        ],
+        "ds-footer": [
           "ds-icon"
         ],
         "ds-hint": [
@@ -21374,9 +21656,6 @@
           "ds-icon"
         ],
         "ds-step": [
-          "ds-icon"
-        ],
-        "ds-steps": [
           "ds-icon"
         ],
         "ds-tabs": [
@@ -28709,9 +28988,15 @@
         }
       ],
       "encapsulation": "shadow",
-      "dependents": [],
+      "dependents": [
+        "ds-footer"
+      ],
       "dependencies": [],
-      "dependencyGraph": {},
+      "dependencyGraph": {
+        "ds-footer": [
+          "ds-logo"
+        ]
+      },
       "props": [
         {
           "name": "animated",
@@ -41468,135 +41753,73 @@
     {
       "fileName": "steps.tsx",
       "tag": "ds-steps",
-      "overview": "Steps is a container for step indicators, showing progress through a multi-step process.",
+      "overview": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
       "usage": {},
-      "docs": "Steps is a container for step indicators, showing progress through a multi-step process.",
+      "docs": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
       "docsTags": [
         {
           "name": "slot",
-          "text": "- The steps content (typically ds-step elements)."
+          "text": "- ds-step-panel children (panels variant)."
+        },
+        {
+          "name": "slot",
+          "text": "step - ds-step children; managed automatically by ds-steps."
+        },
+        {
+          "name": "part",
+          "text": "steplist - The steplist container."
         }
       ],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [
-        "ds-icon"
-      ],
-      "dependencyGraph": {
-        "ds-steps": [
-          "ds-icon"
-        ]
-      },
+      "dependencies": [],
+      "dependencyGraph": {},
       "props": [
         {
-          "name": "disabled",
-          "type": "boolean",
+          "name": "color",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
+            "original": "StepsColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "StepsColor": {
+                "location": "import",
+                "path": "../steps.interfaces",
+                "id": "src/components/steps/steps.interfaces.ts::StepsColor",
+                "referenceLocation": "StepsColor"
+              }
+            }
           },
           "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": true,
-          "docs": "If `true`, the step cannot be selected.",
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Accent color applied to inactive circles and connector lines.",
           "docsTags": [
             {
               "name": "default",
-              "text": "false"
+              "text": "''"
             }
           ],
-          "default": "false",
+          "default": "''",
           "values": [
             {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "done",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "done",
-          "reflectToAttr": true,
-          "docs": "If `true`, the step is completed. Shows a checkmark icon in the circle.",
-          "docsTags": [
+              "type": "\"\""
+            },
             {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
+              "value": "green",
+              "type": "string"
+            },
             {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "hidden",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "hidden",
-          "reflectToAttr": true,
-          "docs": "If `true`, the step is hidden from the layout.",
-          "docsTags": [
+              "value": "purple",
+              "type": "string"
+            },
             {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
+              "value": "red",
+              "type": "string"
+            },
             {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "invalid",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "invalid",
-          "reflectToAttr": true,
-          "docs": "If `true`, the step has an error. Shows an exclamation mark in the circle.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
+              "value": "yellow",
+              "type": "string"
             }
           ],
           "optional": false,
@@ -41615,7 +41838,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "Visible text label displayed below the circle.",
+          "docs": "Accessible label for the navigation landmark (navigation variant only).",
           "docsTags": [
             {
               "name": "default",
@@ -41634,25 +41857,60 @@
           "setter": false
         },
         {
-          "name": "name",
-          "type": "string",
+          "name": "value",
+          "type": "null | string | undefined",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "string | null",
+            "resolved": "null | string | undefined",
             "references": {}
           },
-          "mutable": false,
-          "attr": "name",
+          "mutable": true,
+          "attr": "value",
           "reflectToAttr": true,
-          "docs": "Unique name that links this step to a ds-step-panel[for] of the same value.",
+          "docs": "The `name` of the currently selected ds-step (panels variant).",
           "docsTags": [],
           "values": [
             {
+              "type": "null"
+            },
+            {
               "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "If `true`, the steplist is displayed vertically.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
-          "required": true,
+          "required": false,
           "getter": false,
           "setter": false
         }
@@ -41660,17 +41918,24 @@
       "methods": [],
       "events": [
         {
-          "event": "dsStepSelect",
-          "detail": "{ name: string; }",
+          "event": "dsChange",
+          "detail": "{ value: string; }",
           "bubbles": true,
           "complexType": {
-            "original": "{ name: string }",
-            "resolved": "{ name: string; }",
-            "references": {}
+            "original": "StepsChangeDetail",
+            "resolved": "{ value: string; }",
+            "references": {
+              "StepsChangeDetail": {
+                "location": "import",
+                "path": "../steps.interfaces",
+                "id": "src/components/steps/steps.interfaces.ts::StepsChangeDetail",
+                "referenceLocation": "StepsChangeDetail"
+              }
+            }
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the user clicks this step (panels mode only).",
+          "docs": "Emitted when the selected step changes (panels variant only).",
           "docsTags": []
         }
       ],
@@ -41771,12 +42036,27 @@
       "slots": [
         {
           "name": "",
-          "docs": "The steps content (typically ds-step elements)."
+          "docs": "ds-step-panel children (panels variant)."
+        },
+        {
+          "name": "step",
+          "docs": "ds-step children; managed automatically by ds-steps."
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "steplist",
+          "docs": "The steplist container."
+        }
+      ],
       "customStates": [],
-      "listeners": [],
+      "listeners": [
+        {
+          "event": "dsStepSelect",
+          "capture": false,
+          "passive": false
+        }
+      ],
       "tokens": [
         {
           "name": "🧩 Component / Steps / Connector / Color",
@@ -50377,7 +50657,7 @@
       "path": "src/components/alert/snackbar/snackbar.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonTarget": {
-      "declaration": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+      "declaration": "\"\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -50655,6 +50935,11 @@
       "declaration": "void",
       "docstring": "",
       "path": "src/components/drawer/drawer.interfaces.ts"
+    },
+    "src/components/footer/footer.interfaces.ts::FooterLanguageChangeDetail": {
+      "declaration": "export interface FooterLanguageChangeDetail {\n  language: string\n}",
+      "docstring": "",
+      "path": "src/components/footer/footer.interfaces.ts"
     },
     "src/components/heading/heading.interfaces.ts::HeadingSpace": {
       "declaration": "\"\" | \"none\" | \"bottom\" | \"top\" | \"all\"",
@@ -50985,6 +51270,16 @@
       "declaration": "\"\" | \"none\" | \"sm\" | \"lg\" | \"xl\" | \"base\" | \"small\" | \"auto\" | \"xx-small\" | \"x-small\" | \"normal\" | \"medium\" | \"large\" | \"x-large\" | \"xx-large\" | \"2xs\" | \"xs\" | \"md\" | \"xxl\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
+    },
+    "src/components/steps/steps.interfaces.ts::StepsColor": {
+      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
+      "docstring": "",
+      "path": "src/components/steps/steps.interfaces.ts"
+    },
+    "src/components/steps/steps.interfaces.ts::StepsChangeDetail": {
+      "declaration": "{ value: string }",
+      "docstring": "",
+      "path": "src/components/steps/steps.interfaces.ts"
     },
     "src/components/tabs/tabs.interfaces.ts::TabsColor": {
       "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",

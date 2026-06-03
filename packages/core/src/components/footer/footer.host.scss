@@ -1,34 +1,81 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --footer-background: Background color of the footer.
+ * @prop --footer-color: Text color of the footer.
+ * @prop --footer-link-color: Color of footer links.
+ * @prop --footer-link-color-hover: Hover color of footer links.
+ * @prop --footer-divider-color: Color of the divider line.
+ * @prop --footer-content-max-width: Maximum width of footer content.
+ * @prop --footer-padding: Padding of the footer element.
+ * @prop --footer-padding-tablet: Padding of the footer element on tablet.
+ * @prop --footer-content-padding-top: Top padding of the content area.
+ * @prop --footer-gap-row: Vertical gap in top row.
+ * @prop --footer-gap-column: Horizontal gap in top row.
+ * @prop --footer-language-font-family: Font family for language picker.
+ * @prop --footer-language-font-weight: Font weight for language picker.
+ * @prop --footer-language-gap: Gap between language picker icon and select.
+ * @prop --footer-bottom-gap: Gap in bottom row.
+ * @prop --footer-link-gap: Gap between footer links.
+ * @prop --footer-link-gap-column: Column gap between footer links.
+ * @prop --footer-social-gap: Gap between social links.
+ * @prop --footer-font-size: Font size for footer text.
+ * @prop --footer-line-height: Line height for footer text.
+ * @prop --footer-social-icon-size: Size of social link icons.
+ * @prop --footer-social-icon-gap: Gap between text and social icons.
+ * @prop --footer-social-icon-border-radius: Border radius of social link circles.
+ * @prop --footer-slotted-margin-right: Right margin for slotted elements.
+ */
 
 :host {
-  /**
-   * Available token groups:
-   * --ds-alias-background-color-*
-   * --ds-alias-text-color-*
-   * --ds-alias-space-*
-   */
-  --footer-background: var(--ds-alias-background-color-primary);
-  --footer-color: var(--ds-alias-text-color-white);
-  --footer-link-color: var(--ds-alias-text-color-white);
-  --footer-link-color-hover: var(--ds-button-color-inverted-link-hover-text);
-  --footer-divider-color: color-mix(in srgb, var(--ds-alias-text-color-white) 24%, transparent);
-  --footer-content-max-width: var(--ds-alias-container-width-base);
+  @include vars.base(footer);
+  @include vars.local(footer-background, var(--ds-alias-background-color-primary));
+  @include vars.local(footer-color, var(--ds-alias-text-color-white));
+  @include vars.local(footer-link-color, var(--ds-alias-text-color-white));
+  @include vars.local(footer-link-color-hover, var(--ds-button-color-inverted-link-hover-text));
+  @include vars.local(footer-divider-color, color-mix(in srgb, var(--ds-alias-text-color-white) 24%, transparent));
+  @include vars.local(footer-content-max-width, var(--ds-alias-container-width-base));
+  @include vars.local(footer-padding, 2rem 1rem 1.5rem);
+  @include vars.local(footer-padding-tablet, 2.5rem 2rem 1.75rem);
+  @include vars.local(footer-content-padding-top, 1.5rem);
+  @include vars.local(footer-gap-row, 1rem);
+  @include vars.local(footer-gap-column, 0.5rem 1rem);
+  @include vars.local(footer-language-font-family, 'BaloiseCreateHeadline', 'Arial', 'sans-serif');
+  @include vars.local(footer-language-font-weight, 700);
+  @include vars.local(footer-language-gap, 0.5rem);
+  @include vars.local(footer-bottom-gap, 1rem);
+  @include vars.local(footer-link-gap, 0.5rem 1.5rem);
+  @include vars.local(footer-social-gap, 0.5rem);
+  @include vars.local(footer-font-size, 0.875rem);
+  @include vars.local(footer-line-height, 1.5);
+  @include vars.local(footer-social-icon-size, 2rem);
+  @include vars.local(footer-social-icon-gap, 0.5rem);
+  @include vars.local(footer-social-icon-border-radius, 999px);
+  @include vars.local(footer-slotted-margin-right, 1rem);
+
+  @include vars.styles(footer);
 
   display: block;
-  color: var(--footer-color);
-  background: var(--footer-background);
+  color: var(--_footer-color);
+  background: var(--_footer-background);
 }
 
 footer {
   margin: 0 auto;
-  max-width: var(--footer-content-max-width);
-  padding: 2rem 1rem 1.5rem;
+  max-width: var(--_footer-content-max-width);
+  padding: var(--_footer-padding);
 }
 
 .top-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--_footer-gap-row) var(--_footer-gap-column);
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -50,9 +97,11 @@ footer {
 .language-picker {
   align-items: center;
   border: 0;
-  color: var(--footer-color);
+  color: var(--_footer-color);
   display: inline-flex;
-  gap: 0.5rem;
+  font-family: var(--_footer-language-font-family);
+  font-weight: var(--_footer-language-font-weight);
+  gap: var(--_footer-language-gap);
   margin: 0 0 0 auto;
   max-width: 100%;
   width: auto;
@@ -79,30 +128,25 @@ footer {
 
 .language-picker select:hover,
 .language-picker select:focus-visible {
-  color: var(--footer-link-color-hover);
+  color: var(--_footer-link-color-hover);
 }
 
 .content {
-  padding-top: 1.5rem;
+  padding-top: var(--_footer-content-padding-top);
 }
-
-// .divider {
-//   --divider-color: var(--footer-divider-color);
-//   margin: 1.5rem 0 1rem;
-// }
 
 .bottom-row {
   display: grid;
-  font-size: 0.875rem;
-  gap: 1rem;
+  font-size: var(--_footer-font-size);
+  gap: var(--_footer-bottom-gap);
   grid-template-columns: 1fr;
-  line-height: 1.5;
+  line-height: var(--_footer-line-height);
 }
 
 .legal {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: var(--_footer-font-size);
+  line-height: var(--_footer-line-height);
 }
 
 .links,
@@ -115,13 +159,13 @@ footer {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: var(--_footer-link-gap);
   margin: 0;
   padding: 0;
 }
 
 .social-list {
-  gap: 0.5rem;
+  gap: var(--_footer-social-gap);
 }
 
 .link-list li,
@@ -131,13 +175,13 @@ footer {
 
 .links a,
 ::slotted([slot='links']) {
-  color: var(--footer-link-color);
+  color: var(--_footer-link-color);
   text-decoration: none;
 }
 
 .links a:hover,
 ::slotted([slot='links']:hover) {
-  color: var(--footer-link-color-hover);
+  color: var(--_footer-link-color-hover);
   text-decoration: underline;
 }
 
@@ -146,29 +190,29 @@ footer {
   --icon-color: var(--ds-alias-text-color-white);
   --icon-size: var(--ds-icon-size-sm);
   align-items: center;
-  border-radius: 999px;
-  color: var(--footer-link-color);
+  border-radius: var(--_footer-social-icon-border-radius);
+  color: var(--_footer-link-color);
   display: inline-flex;
-  height: 2rem;
+  height: var(--_footer-social-icon-size);
   justify-content: center;
   text-decoration: none;
-  width: 2rem;
+  width: var(--_footer-social-icon-size);
 }
 
 .social a:hover,
 ::slotted([slot='social-links']:hover) {
-  --icon-color: var(--footer-link-color-hover);
-  color: var(--footer-link-color-hover);
+  --icon-color: var(--_footer-link-color-hover);
+  color: var(--_footer-link-color-hover);
 }
 
 ::slotted([slot='links']),
 ::slotted([slot='social-links']) {
-  margin-right: 1rem;
+  margin-right: var(--_footer-slotted-margin-right);
 }
 
 @include tablet {
   footer {
-    padding: 2.5rem 2rem 1.75rem;
+    padding: var(--_footer-padding-tablet);
   }
 
   .bottom-row {

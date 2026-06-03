@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'footer'
-const VARIANTS = ['basic', 'slotted-logo']
+const VARIANTS = ['basic', 'custom', 'slotted-logo']
 
 const image = screenshot(TAG)
 

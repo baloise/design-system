@@ -97,6 +97,96 @@ export const defaultConfig: DsConfigState = {
   },
   animated: true,
   httpFormSubmit: true,
+  legalLinks: {
+    CH: {
+      de: [
+        { href: 'https://www.baloise.ch/de/ueber-uns/informationen/impressum.html', label: 'Impressum' },
+        {
+          href: 'https://www.baloise.ch/de/ueber-uns/informationen/rechtliche-hinweise.html',
+          label: 'Rechtliche Hinweise',
+        },
+        { href: 'https://www.baloise.ch/de/ueber-uns/informationen/datenschutz.html', label: 'Datenschutz' },
+        { href: 'https://www.baloise.ch/de/ueber-uns/informationen/cookie-policy.html', label: 'Cookie Policy' },
+        {
+          href: 'https://www.baloise.ch/de/ueber-uns/informationen/barrierefreiheitserklaerung.html',
+          label: 'Erklärung zur Barrierefreiheit',
+        },
+        { href: 'https://www.helvetia-baloise.com', label: 'Helvetia Baloise Gruppe' },
+      ],
+      en: [
+        { href: 'https://www.baloise.ch/en/about-us/information/site-notice.html', label: 'Site notice' },
+        { href: 'https://www.baloise.ch/en/about-us/information/legal-notice.html', label: 'Legal notice' },
+        { href: 'https://www.baloise.ch/en/about-us/information/privacy-policy.html', label: 'Privacy policy' },
+        { href: 'https://www.baloise.ch/en/about-us/information/cookie-policy.html', label: 'Cookie policy' },
+        {
+          href: 'https://www.baloise.ch/en/about-us/information/accessibility-statement.html',
+          label: 'Accessibility Statement',
+        },
+        { href: 'https://www.helvetia-baloise.com', label: 'Helvetia Baloise Group' },
+      ],
+      fr: [
+        { href: 'https://www.baloise.ch/fr/notre-societe/informations/impressum.html', label: 'Impressum' },
+        {
+          href: 'https://www.baloise.ch/fr/notre-societe/informations/informations-juridiques-generales.html',
+          label: 'Informations juridiques',
+        },
+        {
+          href: 'https://www.baloise.ch/fr/notre-societe/informations/protection-des-donnees.html',
+          label: 'Protection des données',
+        },
+        { href: 'https://www.baloise.ch/fr/notre-societe/informations/cookie-policy.html', label: 'Cookie Policy' },
+        {
+          href: 'https://www.baloise.ch/fr/notre-societe/informations/declaration-d-accessibilite.html',
+          label: "Déclaration d'accessibilité",
+        },
+        { href: 'https://www.helvetia-baloise.com/fr', label: 'Groupe Helvetia Baloise' },
+      ],
+      it: [
+        { href: 'https://www.baloise.ch/it/chi-siamo/informazioni/colophon.html', label: 'Colophon' },
+        { href: 'https://www.baloise.ch/it/chi-siamo/informazioni/note-legali-generali.html', label: 'Note legali' },
+        {
+          href: 'https://www.baloise.ch/it/chi-siamo/informazioni/protezione-dei-dati.html',
+          label: 'Protezione dei dati',
+        },
+        { href: 'https://www.baloise.ch/it/chi-siamo/informazioni/cookie-policy.html', label: 'Cookie Policy' },
+        {
+          href: 'https://www.baloise.ch/it/chi-siamo/informazioni/dichiarazione-di-accessibilita.html',
+          label: "Dichiarazione sull'accessibilità",
+        },
+        { href: 'https://www.helvetia-baloise.com/', label: 'Grumps Helvetia Baloise' },
+      ],
+    },
+  },
+  legalText: {
+    CH: {
+      de: '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel',
+      fr: '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Bâle',
+      it: '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basilea',
+      en: '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel',
+    },
+  },
+  socialLinks: {
+    CH: [
+      {
+        href: 'https://www.facebook.com/Baloise',
+        label: 'Facebook',
+        icon: 'facebook',
+        ariaLabel: 'Follow us on Facebook',
+      },
+      {
+        href: 'https://www.linkedin.com/company/baloise',
+        label: 'LinkedIn',
+        icon: 'linkedin',
+        ariaLabel: 'Follow us on LinkedIn',
+      },
+      {
+        href: 'https://www.instagram.com/baloise',
+        label: 'Instagram',
+        icon: 'instagram',
+        ariaLabel: 'Follow us on Instagram',
+      },
+    ],
+  },
   _generateHydrateForCustomElementsOutput: false,
 }
 

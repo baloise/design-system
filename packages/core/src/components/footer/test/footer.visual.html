@@ -15,13 +15,14 @@
     <main class="container py-medium">
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-footer>
+        <ds-footer></ds-footer>
+      </section>
+
+      <section data-testid="custom">
+        <span>Custom Links</span>
+        <ds-footer disable-default-links disable-default-social-links legal-text="© 42 Custom">
           <p>Footer Content</p>
-          <a slot="links" href="/impressum">Impressum</a>
-          <a slot="links" href="/legal">Rechtliche Hinweise</a>
-          <a slot="links" href="/privacy">Datenschutz</a>
-          <a slot="links" href="/cookies">Cookie Policy</a>
-          <a slot="links" href="/accessibility">Erklaerung zur Barrierefreiheit</a>
+          <a slot="links" href="/impressum">Gugus</a>
           <a slot="social-links" href="https://www.facebook.com" aria-label="Facebook">
             <ds-icon name="facebook"></ds-icon>
           </a>
@@ -39,11 +40,8 @@
 
       <section data-testid="slotted-logo">
         <span>Custom Logo</span>
-        <ds-footer hide-language-selection show-social-media>
-          <a slot="logo" href="/" aria-label="Home"><strong style="font-size: 1.75rem">baloise</strong></a>
-          <p>Footer Content</p>
-          <a slot="links" href="/imprint">Imprint</a>
-          <a slot="links" href="/privacy">Privacy</a>
+        <ds-footer legal-text="" hide-language-selection>
+          <a slot="logo" href="/" aria-label="Home"><strong class="title text-warning">Gugus</strong></a>
         </ds-footer>
       </section>
     </main>
