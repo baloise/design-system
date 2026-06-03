@@ -35,7 +35,6 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
@@ -73,7 +72,6 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
@@ -2392,25 +2390,60 @@ export namespace Components {
         "selected": boolean;
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Steps is a container for step indicators, showing progress through a multi-step process.
      */
     interface DsSteps {
         /**
-          * Accent color applied to inactive circles and connector lines.
-          * @default ''
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
          */
-        "color": StepsColor;
+        "activeIndex": number;
         /**
-          * Accessible label for the navigation landmark (navigation variant only).
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done": boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden": boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Visible text label displayed below the circle.
           * @default ''
          */
         "label": string;
         /**
-          * The `name` of the currently selected ds-step (panels variant).
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
          */
-        "value"?: string | null;
+        "name": string;
         /**
-          * If `true`, the steplist is displayed vertically.
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
           * @default false
          */
         "vertical": boolean;
@@ -3789,10 +3822,10 @@ declare global {
         new (): HTMLDsStepPanelElement;
     };
     interface HTMLDsStepsElementEventMap {
-        "dsChange": StepsChangeDetail;
+        "dsStepSelect": { name: string };
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Steps is a container for step indicators, showing progress through a multi-step process.
      */
     interface HTMLDsStepsElement extends Components.DsSteps, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsStepsElementEventMap>(type: K, listener: (this: HTMLDsStepsElement, ev: DsStepsCustomEvent<HTMLDsStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6527,29 +6560,64 @@ declare namespace LocalJSX {
         "selected"?: boolean;
     }
     /**
-     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     * Steps is a container for step indicators, showing progress through a multi-step process.
      */
     interface DsSteps {
         /**
-          * Accent color applied to inactive circles and connector lines.
-          * @default ''
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
          */
-        "color"?: StepsColor;
+        "activeIndex"?: number;
         /**
-          * Accessible label for the navigation landmark (navigation variant only).
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done"?: boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden"?: boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Visible text label displayed below the circle.
           * @default ''
          */
         "label"?: string;
         /**
-          * Emitted when the selected step changes (panels variant only).
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
          */
-        "onDsChange"?: (event: DsStepsCustomEvent<StepsChangeDetail>) => void;
+        "name": string;
         /**
-          * The `name` of the currently selected ds-step (panels variant).
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
          */
-        "value"?: string | null;
+        "navigation"?: boolean;
         /**
-          * If `true`, the steplist is displayed vertically.
+          * Emitted when the user clicks this step (panels mode only).
+         */
+        "onDsStepSelect"?: (event: DsStepsCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
           * @default false
          */
         "vertical"?: boolean;
@@ -7611,9 +7679,16 @@ declare namespace LocalJSX {
         "selected": boolean;
     }
     interface DsStepsAttributes {
-        "color": StepsColor;
+        "activeIndex": number;
+        "disabled": boolean;
+        "done": boolean;
+        "hidden": boolean;
+        "index": number;
+        "invalid": boolean;
         "label": string;
-        "value": string | null;
+        "name": string;
+        "navigation": boolean;
+        "selected": boolean;
         "vertical": boolean;
     }
     interface DsTabAttributes {
@@ -7777,7 +7852,7 @@ declare namespace LocalJSX {
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
         "ds-step": Omit<DsStep, keyof DsStepAttributes> & { [K in keyof DsStep & keyof DsStepAttributes]?: DsStep[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `attr:${K}`]?: DsStepAttributes[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `prop:${K}`]?: DsStep[K] } & OneOf<"name", DsStep["name"], DsStepAttributes["name"]>;
         "ds-step-panel": Omit<DsStepPanel, keyof DsStepPanelAttributes> & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes]?: DsStepPanel[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `attr:${K}`]?: DsStepPanelAttributes[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `prop:${K}`]?: DsStepPanel[K] } & OneOf<"for", DsStepPanel["for"], DsStepPanelAttributes["for"]>;
-        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] };
+        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] } & OneOf<"name", DsSteps["name"], DsStepsAttributes["name"]>;
         "ds-tab": Omit<DsTab, keyof DsTabAttributes> & { [K in keyof DsTab & keyof DsTabAttributes]?: DsTab[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `attr:${K}`]?: DsTabAttributes[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `prop:${K}`]?: DsTab[K] } & OneOf<"name", DsTab["name"], DsTabAttributes["name"]>;
         "ds-tab-panel": Omit<DsTabPanel, keyof DsTabPanelAttributes> & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes]?: DsTabPanel[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `attr:${K}`]?: DsTabPanelAttributes[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `prop:${K}`]?: DsTabPanel[K] } & OneOf<"for", DsTabPanel["for"], DsTabPanelAttributes["for"]>;
         "ds-tabs": Omit<DsTabs, keyof DsTabsAttributes> & { [K in keyof DsTabs & keyof DsTabsAttributes]?: DsTabs[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `attr:${K}`]?: DsTabsAttributes[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `prop:${K}`]?: DsTabs[K] };
@@ -8002,7 +8077,7 @@ declare module "@stencil/core" {
              */
             "ds-step-panel": LocalJSX.IntrinsicElements["ds-step-panel"] & JSXBase.HTMLAttributes<HTMLDsStepPanelElement>;
             /**
-             * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+             * Steps is a container for step indicators, showing progress through a multi-step process.
              */
             "ds-steps": LocalJSX.IntrinsicElements["ds-steps"] & JSXBase.HTMLAttributes<HTMLDsStepsElement>;
             /**

@@ -35,7 +35,7 @@ export class Shape implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -61,7 +61,7 @@ export class Shape implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -74,7 +74,7 @@ export class Shape implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

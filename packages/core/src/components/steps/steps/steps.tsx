@@ -4,19 +4,19 @@ import { DsComponentInterface } from '@global'
 import { Logger, type LogInstance, ValidateEmptyOrType, ValidateRequiredAndType, setupValidation } from '@utils'
 
 /**
- * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
+ * Steps is a container for step indicators, showing progress through a multi-step process.
  *
- * @slot - An `<a>` element in navigation mode.
+ * @slot - The steps content (typically ds-step elements).
  */
 @Component({
-  tag: 'ds-step',
-  styleUrl: 'step.host.scss',
+  tag: 'ds-steps',
+  styleUrl: 'steps.host.scss',
   shadow: true,
 })
-export class Step implements DsComponentInterface {
+export class Steps implements DsComponentInterface {
   log!: LogInstance
 
-  @Logger('step')
+  @Logger('steps')
   createLogger(log: LogInstance) {
     this.log = log
   }
