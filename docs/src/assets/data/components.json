@@ -19308,26 +19308,29 @@
         },
         {
           "name": "legalText",
-          "type": "string",
+          "type": "string | undefined",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
+            "original": "string | undefined",
+            "resolved": "string | undefined",
             "references": {}
           },
           "mutable": false,
           "attr": "legal-text",
           "reflectToAttr": false,
-          "docs": "Copyright and address text below the divider.",
+          "docs": "Copyright and address text below the divider.\nIf not provided, uses the text from config based on region and language.",
           "docsTags": [
             {
               "name": "default",
-              "text": "'© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'"
+              "text": "undefined"
             }
           ],
-          "default": "'© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'",
+          "default": "undefined",
           "values": [
             {
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
           "optional": false,
@@ -19360,7 +19363,104 @@
           "docsTags": []
         }
       ],
-      "styles": [],
+      "styles": [
+        {
+          "name": "--footer-background",
+          "docs": "Background color of the footer."
+        },
+        {
+          "name": "--footer-color",
+          "docs": "Text color of the footer."
+        },
+        {
+          "name": "--footer-link-color",
+          "docs": "Color of footer links."
+        },
+        {
+          "name": "--footer-link-color-hover",
+          "docs": "Hover color of footer links."
+        },
+        {
+          "name": "--footer-divider-color",
+          "docs": "Color of the divider line."
+        },
+        {
+          "name": "--footer-content-max-width",
+          "docs": "Maximum width of footer content."
+        },
+        {
+          "name": "--footer-padding",
+          "docs": "Padding of the footer element."
+        },
+        {
+          "name": "--footer-padding-tablet",
+          "docs": "Padding of the footer element on tablet."
+        },
+        {
+          "name": "--footer-content-padding-top",
+          "docs": "Top padding of the content area."
+        },
+        {
+          "name": "--footer-gap-row",
+          "docs": "Vertical gap in top row."
+        },
+        {
+          "name": "--footer-gap-column",
+          "docs": "Horizontal gap in top row."
+        },
+        {
+          "name": "--footer-language-font-family",
+          "docs": "Font family for language picker."
+        },
+        {
+          "name": "--footer-language-font-weight",
+          "docs": "Font weight for language picker."
+        },
+        {
+          "name": "--footer-language-gap",
+          "docs": "Gap between language picker icon and select."
+        },
+        {
+          "name": "--footer-bottom-gap",
+          "docs": "Gap in bottom row."
+        },
+        {
+          "name": "--footer-link-gap",
+          "docs": "Gap between footer links."
+        },
+        {
+          "name": "--footer-link-gap-column",
+          "docs": "Column gap between footer links."
+        },
+        {
+          "name": "--footer-social-gap",
+          "docs": "Gap between social links."
+        },
+        {
+          "name": "--footer-font-size",
+          "docs": "Font size for footer text."
+        },
+        {
+          "name": "--footer-line-height",
+          "docs": "Line height for footer text."
+        },
+        {
+          "name": "--footer-social-icon-size",
+          "docs": "Size of social link icons."
+        },
+        {
+          "name": "--footer-social-icon-gap",
+          "docs": "Gap between text and social icons."
+        },
+        {
+          "name": "--footer-social-icon-border-radius",
+          "docs": "Border radius of social link circles."
+        },
+        {
+          "name": "--footer-slotted-margin-right",
+          "docs": "Right margin for slotted elements."
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -19382,6 +19482,540 @@
       "parts": [],
       "customStates": [],
       "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / Footer / Color / Background",
+          "cssVarName": "--ds-footer-color-background",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-footer-color-background",
+              "figmaName": "Component / Footer / Color / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Color",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Color / Text",
+          "cssVarName": "--ds-footer-color-text",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-footer-color-text",
+              "figmaName": "Component / Footer / Color / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Color",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Color / Link / Base",
+          "cssVarName": "--ds-footer-color-link-base",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-footer-color-link-base",
+              "figmaName": "Component / Footer / Color / Link / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Color",
+            "Link",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Color / Link / Hover",
+          "cssVarName": "--ds-footer-color-link-hover",
+          "value": "{🧩 Component.Button.Color.InvertedLink.Hover.Text}",
+          "nativeValue": "#A7D1FA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-2",
+              "figmaName": "Global / Color / Sky / 2"
+            },
+            {
+              "cssVar": "--ds-text-color-invertedprimaryhover",
+              "figmaName": "Alias / Text / Color / InvertedPrimaryHover"
+            },
+            {
+              "cssVar": "--ds-button-color-invertedlink-hover-text",
+              "figmaName": "Component / Button / Color / InvertedLink / Hover / Text"
+            },
+            {
+              "cssVar": "--ds-footer-color-link-hover",
+              "figmaName": "Component / Footer / Color / Link / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Color",
+            "Link",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Color / Divider",
+          "cssVarName": "--ds-footer-color-divider",
+          "value": "color-mix(in srgb, #FFFFFF 24%, transparent)",
+          "nativeValue": "color-mix(in srgb, #FFFFFF 24%, transparent)",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-color-divider",
+              "figmaName": "Component / Footer / Color / Divider"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Color",
+            "Divider"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / Padding / Base",
+          "cssVarName": "--ds-footer-space-padding-base",
+          "value": "2rem 1rem 1.5rem",
+          "nativeValue": "2rem 1rem 1.5rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-space-padding-base",
+              "figmaName": "Component / Footer / Space / Padding / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "Padding",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / Padding / Tablet",
+          "cssVarName": "--ds-footer-space-padding-tablet",
+          "value": "2.5rem 2rem 1.75rem",
+          "nativeValue": "2.5rem 2rem 1.75rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-space-padding-tablet",
+              "figmaName": "Component / Footer / Space / Padding / Tablet"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "Padding",
+            "Tablet"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / ContentPaddingTop",
+          "cssVarName": "--ds-footer-space-contentpaddingtop",
+          "value": "{🔗 Alias.↔️ Space.MD.Mobile}",
+          "nativeValue": "20",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-20",
+              "figmaName": "Global / Size / Space / 20"
+            },
+            {
+              "cssVar": "--ds-space-md-mobile",
+              "figmaName": "Alias / Space / MD / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-contentpaddingtop",
+              "figmaName": "Component / Footer / Space / ContentPaddingTop"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "ContentPaddingTop"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / GapRow",
+          "cssVarName": "--ds-footer-space-gaprow",
+          "value": "{🔗 Alias.↔️ Space.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Global / Size / Space / 16"
+            },
+            {
+              "cssVar": "--ds-space-base-mobile",
+              "figmaName": "Alias / Space / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-gaprow",
+              "figmaName": "Component / Footer / Space / GapRow"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "GapRow"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / GapColumn",
+          "cssVarName": "--ds-footer-space-gapcolumn",
+          "value": "0.5rem 1rem",
+          "nativeValue": "0.5rem 1rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-space-gapcolumn",
+              "figmaName": "Component / Footer / Space / GapColumn"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "GapColumn"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / LanguageGap",
+          "cssVarName": "--ds-footer-space-languagegap",
+          "value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-space-xs-mobile",
+              "figmaName": "Alias / Space / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-languagegap",
+              "figmaName": "Component / Footer / Space / LanguageGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "LanguageGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / BottomGap",
+          "cssVarName": "--ds-footer-space-bottomgap",
+          "value": "{🔗 Alias.↔️ Space.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Global / Size / Space / 16"
+            },
+            {
+              "cssVar": "--ds-space-base-mobile",
+              "figmaName": "Alias / Space / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-bottomgap",
+              "figmaName": "Component / Footer / Space / BottomGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "BottomGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / LinkGap",
+          "cssVarName": "--ds-footer-space-linkgap",
+          "value": "0.5rem 1.5rem",
+          "nativeValue": "0.5rem 1.5rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-space-linkgap",
+              "figmaName": "Component / Footer / Space / LinkGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "LinkGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / SocialGap",
+          "cssVarName": "--ds-footer-space-socialgap",
+          "value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-space-xs-mobile",
+              "figmaName": "Alias / Space / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-socialgap",
+              "figmaName": "Component / Footer / Space / SocialGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "SocialGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / SocialIconSize",
+          "cssVarName": "--ds-footer-space-socialiconsize",
+          "value": "{🔗 Alias.↔️ Space.LG.Mobile}",
+          "nativeValue": "24",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-24",
+              "figmaName": "Global / Size / Space / 24"
+            },
+            {
+              "cssVar": "--ds-space-lg-mobile",
+              "figmaName": "Alias / Space / LG / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-socialiconsize",
+              "figmaName": "Component / Footer / Space / SocialIconSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "SocialIconSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / SocialIconGap",
+          "cssVarName": "--ds-footer-space-socialicongap",
+          "value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-space-xs-mobile",
+              "figmaName": "Alias / Space / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-socialicongap",
+              "figmaName": "Component / Footer / Space / SocialIconGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "SocialIconGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / SlottedMarginRight",
+          "cssVarName": "--ds-footer-space-slottedmarginright",
+          "value": "{🔗 Alias.↔️ Space.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Global / Size / Space / 16"
+            },
+            {
+              "cssVar": "--ds-space-base-mobile",
+              "figmaName": "Alias / Space / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-space-slottedmarginright",
+              "figmaName": "Component / Footer / Space / SlottedMarginRight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "SlottedMarginRight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Space / ContentMaxWidth",
+          "cssVarName": "--ds-footer-space-contentmaxwidth",
+          "value": "{🔗 Alias.🗃️ Container.Width.Base}",
+          "nativeValue": "1496",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-container-5",
+              "figmaName": "Global / Size / Container / 5"
+            },
+            {
+              "cssVar": "--ds-container-width-base",
+              "figmaName": "Alias / Container / Width / Base"
+            },
+            {
+              "cssVar": "--ds-footer-space-contentmaxwidth",
+              "figmaName": "Component / Footer / Space / ContentMaxWidth"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "ContentMaxWidth"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Typography / FontSize",
+          "cssVarName": "--ds-footer-typography-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-mobile",
+              "figmaName": "Alias / Text / Size / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-footer-typography-fontsize",
+              "figmaName": "Component / Footer / Typography / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Typography",
+            "FontSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Typography / LineHeight",
+          "cssVarName": "--ds-footer-typography-lineheight",
+          "value": "1.5",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-typography-lineheight",
+              "figmaName": "Component / Footer / Typography / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Typography",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Typography / LanguageFamily",
+          "cssVarName": "--ds-footer-typography-languagefamily",
+          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
+          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-text-family-heading",
+              "figmaName": "Alias / Text / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-footer-typography-languagefamily",
+              "figmaName": "Component / Footer / Typography / LanguageFamily"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Typography",
+            "LanguageFamily"
+          ]
+        },
+        {
+          "name": "🧩 Component / Footer / Typography / LanguageWeight",
+          "cssVarName": "--ds-footer-typography-languageweight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-footer-typography-languageweight",
+              "figmaName": "Component / Footer / Typography / LanguageWeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Typography",
+            "LanguageWeight"
+          ]
+        }
+      ],
       "pageObject": {
         "class": "DsFooter",
         "import": "@baloise/ds-playwright",

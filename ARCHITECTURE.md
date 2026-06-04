@@ -15,6 +15,7 @@
 - [Component File Structure](#component-file-structure)
 - [Component Class Organization](#component-class-organization)
 - [CSS Variable Cascade](#css-variable-cascade)
+- [Design Token Naming](#design-token-naming)
 - [Hybrid Component Model](#hybrid-component-model)
 - [Testing Strategy](#testing-strategy)
 - [Test File Requirements](#test-file-requirements)
@@ -175,6 +176,52 @@ Components use a four-layer CSS custom property system for theming:
 | Modifier     | `--mod-component-prop` | Variant classes   | Applied by `.is-primary`, `.is-sm`, etc.       |
 | Design Token | `--ds-component-prop`  | `packages/tokens` | Default value from Figma                       |
 
+### Component Variable Naming
+
+Component variables (public and private layers) use consistent naming:
+
+- **Component-level property**: `--component-<css-property>` → `--tag-background`
+- **Element-level property**: `--component-<element>-<css-property>` → `--button-label-font-family`
+
+Examples:
+
+```scss
+// Component-level
+--tag-background
+--tag-border-radius
+--tag-padding
+
+// Element-level
+--button-label-font-family
+--dropdown-menu-max-height
+--modal-header-border-color
+```
+
+The same naming pattern applies to private (`--_`) and modifier (`--mod-`) variables:
+
+```scss
+--_tag-background              // private component-level
+--_button-label-font-family    // private element-level
+--mod-tag-background           // modifier component-level
+--mod-button-label-font-family // modifier element-level
+```
+
+**Important:** Component variables must always reference **alias tokens** or **component tokens** from `packages/tokens`. Never hard-code values or reference global tokens directly:
+
+```scss
+// ✅ Correct — uses alias token
+@include vars.local(tag-background, var(--ds-alias-background-color-sky));
+
+// ✅ Correct — uses component token
+@include vars.local(button-label-font-family, var(--ds-button-label-font-family));
+
+// ❌ Wrong — hard-coded value
+@include vars.local(tag-background, #0052cc);
+
+// ❌ Wrong — references global token directly
+@include vars.local(tag-background, var(--ds-global-color-primary-4));
+```
+
 **Private variable generation** via `vars.local()` mixin:
 
 ```scss
@@ -193,6 +240,44 @@ Components use a four-layer CSS custom property system for theming:
   @include color(secondary);
 }
 ```
+
+## Design Token Naming
+
+Design tokens are organized in three layers, each with distinct naming patterns. All tokens use the `--ds-` prefix.
+
+### Global Layer
+
+Raw color scales with numbered intensity levels (1–5+). Used as base values for other layers:
+
+- Pattern: `--ds-global-[category]-[name]-[number]`
+- Examples:
+  - `--ds-global-color-primary-1` through `--ds-global-color-primary-5` (lightest to darkest)
+  - `--ds-global-color-danger-1` through `--ds-global-color-danger-4`
+  - `--ds-global-color-grey-1` through `--ds-global-color-grey-5`
+
+Global tokens are rarely used directly by components. Use Alias or Component tokens instead.
+
+### Alias Layer
+
+Semantic abstractions for consumers (colors, spacing, typography, etc.). Primary layer for component/app use:
+
+- Pattern: `--ds-[category]-[subcategory]-[name]`
+- Examples:
+  - `--ds-background-color-sky` (semantic name, resolves to global value)
+  - `--ds-background-color-info`
+  - `--ds-space-lg` → `1.5rem`
+  - `--ds-text-size-base` → `1rem`
+  - `--ds-radius-base` → `0.25rem`
+
+### Component Layer
+
+Per-component token overrides for specific design decisions. Used when styling a particular DS component:
+
+- Pattern: `--ds-[component]-[property]-[modifier]-[state]`
+- Examples:
+  - `--ds-button-color-primary-base-text` (button primary variant text color)
+  - `--ds-button-label-font-family` (button label typography)
+  - `--ds-modal-header-border-color` (modal header styling)
 
 ## Hybrid Component Model
 

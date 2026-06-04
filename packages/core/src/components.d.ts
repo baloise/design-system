@@ -1011,10 +1011,10 @@ export namespace Components {
          */
         "hideLanguageSelection": boolean;
         /**
-          * Copyright and address text below the divider.
-          * @default '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
          */
-        "legalText": string;
+        "legalText": string | undefined;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -5203,10 +5203,10 @@ declare namespace LocalJSX {
          */
         "hideLanguageSelection"?: boolean;
         /**
-          * Copyright and address text below the divider.
-          * @default '© 2026 Helvetia Baloise Holding AG · Aeschengraben 21 · CH-4051 Basel'
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
          */
-        "legalText"?: string;
+        "legalText"?: string | undefined;
         /**
           * Emitted when the language select value changes.
          */
@@ -7575,7 +7575,7 @@ declare namespace LocalJSX {
         "hideLanguageSelection": boolean;
         "disableDefaultLinks": boolean;
         "disableDefaultSocialLinks": boolean;
-        "legalText": string;
+        "legalText": string | undefined;
     }
     interface DsHeadingAttributes {
         "level": HeadingLevel;

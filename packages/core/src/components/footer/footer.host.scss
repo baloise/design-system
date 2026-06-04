@@ -35,29 +35,28 @@
 
 :host {
   @include vars.base(footer);
-  @include vars.local(footer-background, var(--ds-alias-background-color-primary));
-  @include vars.local(footer-color, var(--ds-alias-text-color-white));
-  @include vars.local(footer-link-color, var(--ds-alias-text-color-white));
-  @include vars.local(footer-link-color-hover, var(--ds-button-color-inverted-link-hover-text));
-  @include vars.local(footer-divider-color, color-mix(in srgb, var(--ds-alias-text-color-white) 24%, transparent));
-  @include vars.local(footer-content-max-width, var(--ds-alias-container-width-base));
-  @include vars.local(footer-padding, 2rem 1rem 1.5rem);
-  @include vars.local(footer-padding-tablet, 2.5rem 2rem 1.75rem);
-  @include vars.local(footer-content-padding-top, 1.5rem);
-  @include vars.local(footer-gap-row, 1rem);
-  @include vars.local(footer-gap-column, 0.5rem 1rem);
-  @include vars.local(footer-language-font-family, 'BaloiseCreateHeadline', 'Arial', 'sans-serif');
-  @include vars.local(footer-language-font-weight, 700);
-  @include vars.local(footer-language-gap, 0.5rem);
-  @include vars.local(footer-bottom-gap, 1rem);
-  @include vars.local(footer-link-gap, 0.5rem 1.5rem);
-  @include vars.local(footer-social-gap, 0.5rem);
-  @include vars.local(footer-font-size, 0.875rem);
-  @include vars.local(footer-line-height, 1.5);
-  @include vars.local(footer-social-icon-size, 2rem);
-  @include vars.local(footer-social-icon-gap, 0.5rem);
-  @include vars.local(footer-social-icon-border-radius, 999px);
-  @include vars.local(footer-slotted-margin-right, 1rem);
+  @include vars.local(footer-background, var(--ds-footer-color-background));
+  @include vars.local(footer-color, var(--ds-footer-color-text));
+  @include vars.local(footer-link-color, var(--ds-footer-color-link-base));
+  @include vars.local(footer-link-color-hover, var(--ds-footer-color-link-hover));
+  @include vars.local(footer-divider-color, var(--ds-footer-color-divider));
+  @include vars.local(footer-content-max-width, var(--ds-footer-space-content-max-width));
+  @include vars.local(footer-padding, var(--ds-footer-space-padding-base));
+  @include vars.local(footer-padding-tablet, var(--ds-footer-space-padding-tablet));
+  @include vars.local(footer-content-padding-top, var(--ds-footer-space-content-padding-top));
+  @include vars.local(footer-gap-row, var(--ds-footer-space-gap-row));
+  @include vars.local(footer-gap-column, var(--ds-footer-space-gap-column));
+  @include vars.local(footer-language-font-family, var(--ds-footer-typography-language-family));
+  @include vars.local(footer-language-font-weight, var(--ds-footer-typography-language-weight));
+  @include vars.local(footer-language-gap, var(--ds-footer-space-language-gap));
+  @include vars.local(footer-bottom-gap, var(--ds-footer-space-bottom-gap));
+  @include vars.local(footer-link-gap, var(--ds-footer-space-link-gap));
+  @include vars.local(footer-social-gap, var(--ds-footer-space-social-gap));
+  @include vars.local(footer-font-size, var(--ds-footer-typography-font-size));
+  @include vars.local(footer-line-height, var(--ds-footer-typography-line-height));
+  @include vars.local(footer-social-icon-size, var(--ds-footer-space-social-icon-size));
+  @include vars.local(footer-social-icon-gap, var(--ds-footer-space-social-icon-gap));
+  @include vars.local(footer-slotted-margin-right, var(--ds-footer-space-slotted-margin-right));
 
   @include vars.styles(footer);
 
@@ -190,7 +189,6 @@ footer {
   --icon-color: var(--ds-alias-text-color-white);
   --icon-size: var(--ds-icon-size-sm);
   align-items: center;
-  border-radius: var(--_footer-social-icon-border-radius);
   color: var(--_footer-link-color);
   display: inline-flex;
   height: var(--_footer-social-icon-size);

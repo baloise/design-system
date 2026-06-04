@@ -88,7 +88,7 @@ Components reference design tokens (`--ds-*` CSS variables) for:
 
 ### CSS Variable Cascade
 
-Components use a four-layer CSS variable system:
+Components use a **four-layer CSS variable system** that enables customization while maintaining Shadow DOM encapsulation:
 
 ```
 --_component-prop        (private, computed only)
@@ -96,6 +96,144 @@ Components use a four-layer CSS variable system:
     → --mod-component    (modifier, from .is-* classes)
       → --ds-token       (design token default)
 ```
+
+| Layer            | Prefix   | Owner             | Purpose                                                   |
+| ---------------- | -------- | ----------------- | --------------------------------------------------------- |
+| **Private**      | `--_`    | System (computed) | Internal CSS rule values, never override from outside     |
+| **Public**       | `--`     | Consumer          | Component instance override, set from outside Shadow DOM  |
+| **Modifier**     | `--mod-` | System (variants) | Set by variant classes like `.is-primary`, `.is-disabled` |
+| **Design Token** | `--ds-`  | Design System     | Figma default value, only changed via token updates       |
+
+**How It Works:**
+
+When you set a CSS property with `vars.local()`:
+
+```scss
+// In component SCSS:
+@include vars.local(tag-color, var(--ds-alias-text-color-primary));
+
+// Generates:
+// --_tag-color: var(--tag-color, var(--mod-tag-color, var(--ds-alias-text-color-primary)))
+```
+
+When the component renders:
+
+1. **Private value** (`--_tag-color`) is computed from the cascade
+2. CSS rules use the private variable internally
+3. Modifiers override via `--mod-tag-color` (when `.is-primary` class is set)
+4. Consumers override via `--tag-color` (from outside)
+5. Falls back to design token `--ds-alias-text-color-primary` if nothing is set
+
+### Component Variable Naming
+
+Component variables use consistent naming:
+
+- **Component-level property**: `--component-<css-property>` → `--tag-color`
+- **Element-level property**: `--component-<element>-<css-property>` → `--button-label-font-family`
+
+The same naming pattern applies to private (`--_`) and modifier (`--mod-`) layers:
+
+```scss
+--_tag-color              // private component-level
+--_button-label-font-family    // private element-level
+--mod-tag-color           // modifier component-level
+--mod-button-label-font-family // modifier element-level
+```
+
+**Requirement:** Component variables must always reference **alias tokens** or **component tokens** from `packages/tokens`. Never hard-code values or reference global tokens directly.
+
+### Common Component Variables
+
+Most components expose these variable groups:
+
+**Color Variables:**
+
+- `--{component}-color` — text color
+- `--{component}-bg` — background color
+- `--{component}-border` — border color
+
+**Spacing Variables:**
+
+- `--{component}-px` — horizontal padding
+- `--{component}-py` — vertical padding
+- `--{component}-m` — margin (sometimes)
+
+**Typography Variables:**
+
+- `--{component}-font-size` — text size
+- `--{component}-font-weight` — text weight
+- `--{component}-font-family` — typeface
+
+**Border & Radius:**
+
+- `--{component}-radius` — border radius
+- `--{component}-border-width` — border thickness
+
+### Customizing Components
+
+Components can be customized at multiple levels:
+
+**Override a Single Component Instance:**
+
+```html
+<ds-tag style="--tag-color: var(--ds-alias-text-color-danger);"> Custom Color </ds-tag>
+```
+
+**Override via JavaScript:**
+
+```javascript
+const tag = document.querySelector('ds-tag')
+tag.style.setProperty('--tag-color', 'var(--ds-alias-text-color-success)')
+```
+
+**Override Multiple Instances via CSS:**
+
+```css
+.warning-context ds-tag {
+  --tag-color: var(--ds-alias-text-color-warning);
+  --tag-bg: var(--ds-alias-bg-color-warning-light);
+}
+```
+
+**Override via Slot Parent:**
+
+```html
+<div style="--tag-color: var(--ds-alias-text-color-info);">
+  <ds-tag>Info Tag</ds-tag>
+</div>
+```
+
+### Shadow DOM Encapsulation
+
+Component CSS variables respect Shadow DOM boundaries:
+
+**Inside Shadow DOM (component author):**
+
+- Uses `--_private` variables in CSS rules
+- Modifiers set `--mod-` variables via `.is-*` classes
+- Design tokens provide `--ds-` defaults
+
+**Outside Shadow DOM (consumer):**
+
+- Can only set public `--` variables on the host element
+- Changes cascade into the component via the public layer
+- Private variables are isolated and cannot be accessed
+
+### Best Practices for Component Variables
+
+**Do:**
+
+- ✅ Use design token values when overriding (e.g., `--ds-alias-text-color-*`)
+- ✅ Override at the appropriate scope (single element, class, global)
+- ✅ Use `-device` suffix for responsive values
+- ✅ Check component documentation for available variables
+
+**Don't:**
+
+- ❌ Try to access or set `--_private` variables (they're isolated in Shadow DOM)
+- ❌ Set hardcoded hex colors; use tokens instead
+- ❌ Override `--mod-` variables directly (let classes set them)
+- ❌ Override `--ds-` tokens from outside (only change via design system)
 
 ### Component Organization
 
