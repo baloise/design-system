@@ -212,11 +212,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
             {!this.hideLanguageSelection && (
               <label class="language-picker" aria-label={i18nDsFooter[this.language].languageSelector}>
                 <ds-icon name="web" aria-hidden="true" />
-                <select
-                  data-testid="footer-language-select"
-                  onInput={this.handleLanguageChange}
-                  onChange={this.handleLanguageChange}
-                >
+                <select data-testid="footer-language-select" onChange={this.handleLanguageChange}>
                   {this.allowedLanguages.map(languageCode => (
                     <option key={languageCode} value={languageCode} selected={this.language === languageCode}>
                       {this.getLanguageLabel(languageCode)}

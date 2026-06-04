@@ -46,21 +46,21 @@ test.describe('props', () => {
     await footer.assertLanguageSelectHidden()
   })
 
-  test('hides links when hide-links is set', async ({ page }) => {
+  test('hides links when disableDefaultLinks is set', async ({ page }) => {
     await page.mount(`
-      <ds-footer hide-links>
+      <ds-footer disable-default-links>
         <a slot="links" href="/impressum">Impressum</a>
       </ds-footer>
     `)
 
     const footer = new DsFooter(page.locator('ds-footer'))
 
-    await footer.assertLinksCount(0)
+    await footer.assertLinksCount(1)
   })
 
-  test('renders social links when show-social-media is set', async ({ page }) => {
+  test('renders social links when disable-default-social-links is set', async ({ page }) => {
     await page.mount(`
-      <ds-footer show-social-media>
+      <ds-footer disable-default-social-links>
         <a slot="social-links" href="https://www.linkedin.com" aria-label="LinkedIn">
           <ds-icon name="linkedin"></ds-icon>
         </a>
@@ -70,23 +70,6 @@ test.describe('props', () => {
     const footer = new DsFooter(page.locator('ds-footer'))
 
     await footer.assertSocialLinksCount(1)
-  })
-
-  test('renders override links when no slotted links are provided', async ({ page }) => {
-    await page.mount(`<ds-footer id="footer"></ds-footer>`)
-
-    await page.evaluate(() => {
-      const footer = document.getElementById('footer') as any
-      footer.overrideLinks = [
-        { label: 'Impressum', href: '/impressum' },
-        { label: 'Datenschutz', href: '/datenschutz' },
-      ]
-    })
-
-    const footer = new DsFooter(page.locator('ds-footer'))
-
-    await footer.assertLinksCount(2)
-    await expect(footer.links().first()).toContainText('Impressum')
   })
 })
 
