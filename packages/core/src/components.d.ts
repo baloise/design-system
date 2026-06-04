@@ -20,6 +20,7 @@ import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+import { FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -58,6 +59,7 @@ export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+export { FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -985,6 +987,34 @@ export namespace Components {
           * Opens the drawer.
          */
         "present": () => Promise<void>;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface DsFooter {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
+          * @default false
+         */
+        "disableDefaultLinks": boolean;
+        /**
+          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
+          * @default false
+         */
+        "disableDefaultSocialLinks": boolean;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
+         */
+        "legalText": string | undefined;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -3039,6 +3069,10 @@ export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsDrawerElement;
 }
+export interface DsFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsFooterElement;
+}
 export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
@@ -3447,6 +3481,28 @@ declare global {
     var HTMLDsDrawerElement: {
         prototype: HTMLDsDrawerElement;
         new (): HTMLDsDrawerElement;
+    };
+    interface HTMLDsFooterElementEventMap {
+        "dsLanguageChange": FooterLanguageChangeDetail;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface HTMLDsFooterElement extends Components.DsFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsFooterElement: {
+        prototype: HTMLDsFooterElement;
+        new (): HTMLDsFooterElement;
     };
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -4107,6 +4163,7 @@ declare global {
         "ds-data-value": HTMLDsDataValueElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
+        "ds-footer": HTMLDsFooterElement;
         "ds-heading": HTMLDsHeadingElement;
         "ds-hint": HTMLDsHintElement;
         "ds-hint-text": HTMLDsHintTextElement;
@@ -5123,6 +5180,37 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface DsFooter {
+        /**
+          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
+          * @default false
+         */
+        "disableDefaultLinks"?: boolean;
+        /**
+          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
+          * @default false
+         */
+        "disableDefaultSocialLinks"?: boolean;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
+         */
+        "legalText"?: string | undefined;
+        /**
+          * Emitted when the language select value changes.
+         */
+        "onDsLanguageChange"?: (event: DsFooterCustomEvent<FooterLanguageChangeDetail>) => void;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -7483,6 +7571,12 @@ declare namespace LocalJSX {
         "label": string;
         "container": DrawerContainer;
     }
+    interface DsFooterAttributes {
+        "hideLanguageSelection": boolean;
+        "disableDefaultLinks": boolean;
+        "disableDefaultSocialLinks": boolean;
+        "legalText": string | undefined;
+    }
     interface DsHeadingAttributes {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
@@ -7918,6 +8012,7 @@ declare namespace LocalJSX {
         "ds-data-value": DsDataValue;
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
+        "ds-footer": Omit<DsFooter, keyof DsFooterAttributes> & { [K in keyof DsFooter & keyof DsFooterAttributes]?: DsFooter[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `attr:${K}`]?: DsFooterAttributes[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `prop:${K}`]?: DsFooter[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
         "ds-hint": Omit<DsHint, keyof DsHintAttributes> & { [K in keyof DsHint & keyof DsHintAttributes]?: DsHint[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `attr:${K}`]?: DsHintAttributes[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `prop:${K}`]?: DsHint[K] };
         "ds-hint-text": DsHintText;
@@ -8066,6 +8161,12 @@ declare module "@stencil/core" {
              * and Escape-key handling.
              */
             "ds-drawer": LocalJSX.IntrinsicElements["ds-drawer"] & JSXBase.HTMLAttributes<HTMLDsDrawerElement>;
+            /**
+             * Footer renders application level legal links, language selection, and social links.
+             * Link content is slot first to keep links crawlable and SEO friendly.
+             * Links and social media are shown by default unless disabled.
+             */
+            "ds-footer": LocalJSX.IntrinsicElements["ds-footer"] & JSXBase.HTMLAttributes<HTMLDsFooterElement>;
             /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */

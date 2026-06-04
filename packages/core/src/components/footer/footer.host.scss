@@ -1,0 +1,252 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --footer-background: Background color of the footer.
+ * @prop --footer-color: Text color of the footer.
+ * @prop --footer-link-color: Color of footer links.
+ * @prop --footer-link-color-hover: Hover color of footer links.
+ * @prop --footer-divider-color: Color of the divider line.
+ * @prop --footer-content-max-width: Maximum width of footer content.
+ * @prop --footer-padding: Padding of the footer element.
+ * @prop --footer-padding-tablet: Padding of the footer element on tablet.
+ * @prop --footer-content-padding-top: Top padding of the content area.
+ * @prop --footer-gap-row: Vertical gap in top row.
+ * @prop --footer-gap-column: Horizontal gap in top row.
+ * @prop --footer-language-font-family: Font family for language picker.
+ * @prop --footer-language-font-weight: Font weight for language picker.
+ * @prop --footer-language-gap: Gap between language picker icon and select.
+ * @prop --footer-bottom-gap: Gap in bottom row.
+ * @prop --footer-link-gap: Gap between footer links.
+ * @prop --footer-link-gap-column: Column gap between footer links.
+ * @prop --footer-social-gap: Gap between social links.
+ * @prop --footer-font-size: Font size for footer text.
+ * @prop --footer-line-height: Line height for footer text.
+ * @prop --footer-social-icon-size: Size of social link icons.
+ * @prop --footer-social-icon-gap: Gap between text and social icons.
+ * @prop --footer-social-icon-border-radius: Border radius of social link circles.
+ * @prop --footer-slotted-margin-right: Right margin for slotted elements.
+ */
+
+:host {
+  @include vars.base(footer);
+  @include vars.local(footer-background, var(--ds-footer-color-background));
+  @include vars.local(footer-color, var(--ds-footer-color-text));
+  @include vars.local(footer-link-color, var(--ds-footer-color-link-base));
+  @include vars.local(footer-link-color-hover, var(--ds-footer-color-link-hover));
+  @include vars.local(footer-divider-color, var(--ds-footer-color-divider));
+  @include vars.local(footer-content-max-width, var(--ds-footer-space-content-max-width));
+  @include vars.local(footer-padding, var(--ds-footer-space-padding-base));
+  @include vars.local(footer-padding-tablet, var(--ds-footer-space-padding-tablet));
+  @include vars.local(footer-content-padding-top, var(--ds-footer-space-content-padding-top));
+  @include vars.local(footer-gap-row, var(--ds-footer-space-gap-row));
+  @include vars.local(footer-gap-column, var(--ds-footer-space-gap-column));
+  @include vars.local(footer-language-font-family, var(--ds-footer-typography-language-family));
+  @include vars.local(footer-language-font-weight, var(--ds-footer-typography-language-weight));
+  @include vars.local(footer-language-gap, var(--ds-footer-space-language-gap));
+  @include vars.local(footer-bottom-gap, var(--ds-footer-space-bottom-gap));
+  @include vars.local(footer-link-gap, var(--ds-footer-space-link-gap));
+  @include vars.local(footer-social-gap, var(--ds-footer-space-social-gap));
+  @include vars.local(footer-font-size, var(--ds-footer-typography-font-size));
+  @include vars.local(footer-line-height, var(--ds-footer-typography-line-height));
+  @include vars.local(footer-social-icon-size, var(--ds-footer-space-social-icon-size));
+  @include vars.local(footer-social-icon-gap, var(--ds-footer-space-social-icon-gap));
+  @include vars.local(footer-slotted-margin-right, var(--ds-footer-space-slotted-margin-right));
+
+  @include vars.styles(footer);
+
+  display: block;
+  color: var(--_footer-color);
+  background: var(--_footer-background);
+}
+
+footer {
+  margin: 0 auto;
+  max-width: var(--_footer-content-max-width);
+  padding: var(--_footer-padding);
+}
+
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--_footer-gap-row) var(--_footer-gap-column);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-flex;
+  color: inherit;
+}
+
+.logo-svg {
+  display: inline-flex;
+}
+
+.language-picker {
+  align-items: center;
+  border: 0;
+  color: var(--_footer-color);
+  display: inline-flex;
+  font-family: var(--_footer-language-font-family);
+  font-weight: var(--_footer-language-font-weight);
+  gap: var(--_footer-language-gap);
+  margin: 0 0 0 auto;
+  max-width: 100%;
+  width: auto;
+}
+
+.language-picker ds-icon {
+  --icon-color: currentColor;
+  flex-shrink: 0;
+}
+
+.language-picker select {
+  appearance: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  line-height: 1.3;
+  min-width: auto;
+  padding: 0;
+}
+
+.language-picker select:hover,
+.language-picker select:focus-visible {
+  color: var(--_footer-link-color-hover);
+}
+
+.content {
+  padding-top: var(--_footer-content-padding-top);
+}
+
+.bottom-row {
+  display: grid;
+  font-size: var(--_footer-font-size);
+  gap: var(--_footer-bottom-gap);
+  grid-template-columns: 1fr;
+  line-height: var(--_footer-line-height);
+}
+
+.legal {
+  margin: 0;
+  font-size: var(--_footer-font-size);
+  line-height: var(--_footer-line-height);
+}
+
+.links,
+.social {
+  min-width: 0;
+}
+
+.link-list,
+.social-list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--_footer-link-gap);
+  margin: 0;
+  padding: 0;
+}
+
+.social-list {
+  gap: var(--_footer-social-gap);
+}
+
+.link-list li,
+.social-list li {
+  list-style: none;
+}
+
+.links a,
+::slotted([slot='links']) {
+  color: var(--_footer-link-color);
+  text-decoration: none;
+}
+
+.links a:hover,
+::slotted([slot='links']:hover) {
+  color: var(--_footer-link-color-hover);
+  text-decoration: underline;
+}
+
+.social a,
+::slotted([slot='social-links']) {
+  --icon-color: var(--ds-alias-text-color-white);
+  --icon-size: var(--ds-icon-size-sm);
+  align-items: center;
+  color: var(--_footer-link-color);
+  display: inline-flex;
+  height: var(--_footer-social-icon-size);
+  justify-content: center;
+  text-decoration: none;
+  width: var(--_footer-social-icon-size);
+}
+
+.social a:hover,
+::slotted([slot='social-links']:hover) {
+  --icon-color: var(--_footer-link-color-hover);
+  color: var(--_footer-link-color-hover);
+}
+
+::slotted([slot='links']),
+::slotted([slot='social-links']) {
+  margin-right: var(--_footer-slotted-margin-right);
+}
+
+@include tablet {
+  footer {
+    padding: var(--_footer-padding-tablet);
+  }
+
+  .bottom-row {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .social,
+  .links {
+    justify-self: start;
+  }
+}
+
+@include desktop {
+  .bottom-row {
+    align-items: center;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'legal social'
+      'links links';
+  }
+
+  .legal {
+    align-self: center;
+    grid-area: legal;
+  }
+
+  .social {
+    align-self: center;
+    grid-area: social;
+    justify-self: end;
+  }
+
+  .links {
+    grid-area: links;
+    justify-self: stretch;
+    width: 100%;
+  }
+}

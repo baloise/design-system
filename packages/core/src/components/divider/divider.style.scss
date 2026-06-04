@@ -5,7 +5,6 @@
 $use-host: false !default;
 $name: divider;
 $css-selector: (hr, '.divider');
-$host-selector: ('#divider');
 
 /**
  * Variables
@@ -27,7 +26,7 @@ $host-selector: ('#divider');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component($host-selector, $css-selector, $use-host) {
+@mixin basic() {
   display: block;
   padding: 0;
   margin: 0;
@@ -35,28 +34,15 @@ $host-selector: ('#divider');
   border-radius: var(--_divider-radius);
   height: var(--_divider-width);
   background-color: var(--_divider-color);
+}
 
-  //
-  // horizontal direction
-  &:not(.is-vertical),
-  &.is-horizontal {
-    flex: 1 0 100%;
-    width: 100%;
-    min-height: var(--_divider-width);
-    height: var(--_divider-width);
-    margin-top: var(--_divider-space);
-    margin-bottom: var(--_divider-space);
-  }
+@include hybrid.styles($css-selector, $use-host) {
+  @include basic();
+}
 
-  //
-  // vertical direction
-  &.is-vertical {
-    height: auto;
-    flex-shrink: 0;
-    align-self: stretch;
-    width: var(--_divider-width);
-    margin-left: var(--_divider-space);
-    margin-right: var(--_divider-space);
+@include hybrid.host($use-host) {
+  :host {
+    @include basic();
   }
 }
 
@@ -65,6 +51,50 @@ $host-selector: ('#divider');
   * --------------------------------
   * Define here the variants and states like size or colors for the component.
   */
+
+//
+// Layout
+// --------------------------------
+
+@mixin horizontalLayout() {
+  flex: 1 0 100%;
+  width: 100%;
+  min-height: var(--_divider-width);
+  height: var(--_divider-width);
+  margin-top: var(--_divider-space);
+  margin-bottom: var(--_divider-space);
+}
+
+@mixin verticalLayout() {
+  height: auto;
+  flex-shrink: 0;
+  align-self: stretch;
+  width: var(--_divider-width);
+  margin-left: var(--_divider-space);
+  margin-right: var(--_divider-space);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &:not(.is-vertical),
+  &.is-horizontal {
+    @include horizontalLayout();
+  }
+
+  &.is-vertical {
+    @include verticalLayout();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(:not(.is-vertical)),
+  :host(.is-horizontal) {
+    @include horizontalLayout();
+  }
+
+  :host(.is-vertical) {
+    @include verticalLayout();
+  }
+}
 
 //
 // Colors
@@ -85,10 +115,20 @@ $colors: (
   'light-blue'
 );
 
-@include hybrid.component($host-selector, $css-selector, $use-host) {
-  @each $color in $colors {
+@mixin color($color) {
+  --mod-divider-color: var(--ds-divider-color-#{$color});
+}
+
+@each $color in $colors {
+  @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      --mod-divider-color: var(--ds-divider-color-#{$color});
+      @include color($color);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}) {
+      @include color($color);
     }
   }
 }
@@ -98,10 +138,20 @@ $colors: (
 // --------------------------------
 $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 
-@include hybrid.component($host-selector, $css-selector, $use-host) {
-  @each $space in $spaces {
+@mixin space($space) {
+  --mod-divider-space: var(--ds-alias-space-#{$space}-device);
+}
+
+@each $space in $spaces {
+  @include hybrid.styles($css-selector, $use-host) {
     &.has-space-#{$space} {
-      --mod-divider-space: var(--ds-alias-space-#{$space}-device);
+      @include space($space);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.has-space-#{$space}) {
+      @include space($space);
     }
   }
 }
@@ -110,7 +160,7 @@ $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 // Dashed
 // --------------------------------
 
-@include hybrid.component($host-selector, $css-selector, $use-host) {
+@mixin dashedHorizontal() {
   &.is-dashed:not(.is-vertical) {
     background: repeating-linear-gradient(
       90deg,
@@ -120,7 +170,9 @@ $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
       transparent 16px
     );
   }
+}
 
+@mixin dashedVertical() {
   &.is-dashed.is-vertical {
     background: repeating-linear-gradient(
       180deg,
@@ -129,5 +181,17 @@ $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
       transparent 8px,
       transparent 16px
     );
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  @include dashedHorizontal();
+  @include dashedVertical();
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    @include dashedHorizontal();
+    @include dashedVertical();
   }
 }

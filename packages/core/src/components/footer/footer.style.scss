@@ -1,0 +1,10 @@
+/*
+ * Light DOM utilities for ds-footer.
+ * Keep footer links in normal anchor markup for SEO crawlers.
+ */
+
+.ds-footer-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
