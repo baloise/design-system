@@ -68,7 +68,8 @@
 | tooltip             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | popover             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | hint                | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| data                | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| data                | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| footer              | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | file-upload         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | time-input          | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | date                | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
@@ -77,7 +78,6 @@
 | option              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | select (deprecated) | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | sheet               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| footer              | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | stage               | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | ag-grid             | Lib    | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 
