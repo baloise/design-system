@@ -1,6 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { waitAfterIdleCallback } from './helpers'
+import { debug } from 'console'
 
 /**
  * FORM CONTROL

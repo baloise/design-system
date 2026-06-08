@@ -1,6 +1,6 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../vars' as vars;
-@use './textarea.mixin' as textarea;
+@use './select.mixin' as select;
 
 /**
  * Variables
@@ -8,16 +8,16 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --input-color: Text color inside the textarea field.
+ * @prop --input-color: Text color inside the select field.
  * @prop --input-placeholder: Placeholder text color.
- * @prop --input-family: Font family of the textarea text.
- * @prop --input-weight: Font weight of the textarea text.
- * @prop --input-size: Font size of the textarea text.
- * @prop --input-line-height: Line height of the textarea text.
- * @prop --input-container-background: Background color of the textarea container.
- * @prop --input-container-border-color: Border color of the textarea container.
- * @prop --input-container-border-width: Border width of the textarea container.
- * @prop --input-container-radius: Border radius of the textarea container.
+ * @prop --input-family: Font family of the select text.
+ * @prop --input-weight: Font weight of the select text.
+ * @prop --input-size: Font size of the select text.
+ * @prop --input-line-height: Line height of the select text.
+ * @prop --input-container-background: Background color of the select container.
+ * @prop --input-container-border-color: Border color of the select container.
+ * @prop --input-container-border-width: Border width of the select container.
+ * @prop --input-container-radius: Border radius of the select container.
  * @prop --input-container-hover-background: Container background color on hover.
  * @prop --input-container-active-background: Container background color when active.
  * @prop --input-container-focus-background: Container background color when focused.
@@ -37,11 +37,11 @@
  */
 
 :host {
-  @include textarea.vars-field('input');
-  @include textarea.vars('input');
-  @include textarea.vars-container('input');
-  @include textarea.vars-label('input');
-  @include textarea.vars-description('input');
+  @include select.vars-field('input');
+  @include select.vars('input');
+  @include select.vars-container('input');
+  @include select.vars-label('input');
+  @include select.vars-description('input');
 }
 
 /**
@@ -50,18 +50,18 @@
  */
 
 :host {
-  @include textarea.field-layout('input');
+  @include select.field-layout('input');
 
-  @include textarea.style('input', '#textarea');
-  @include textarea.container('input');
-  @include textarea.label('input');
-  @include textarea.description('input');
+  @include select.style('input', '#select');
+  @include select.container('input');
+  @include select.label('input');
+  @include select.description('input');
 
   #inner {
-    @include textarea.field-layout('input');
+    @include select.field-layout('input');
   }
 
-  @include textarea.specific('#container');
+  @include select.specific('#container');
 }
 
 /**
@@ -106,7 +106,7 @@
   &,
   #label,
   #description,
-  #textarea {
+  #select {
     pointer-events: none;
     cursor: default;
   }

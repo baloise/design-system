@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SelectStories from './select.stories'
+import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
+
+<Meta title="Components/Select/Styling" />
+
+<Banner label={'Select'} section={SELECT_DOC_CONFIG.section} color={SELECT_DOC_CONFIG.color} />
+
+<BannerTabs of={SelectStories} tabs={getSelectTabs('styling')} />
+
+## Parts
+
+The Select component uses the following internal parts:
+
+<ComponentParts component="select" />
+
+## CSS Variables
+
+Customize the Select component using CSS variables. These variables control colors, sizing, spacing, and typography:
+
+<ComponentCssVariables component="select" />
+
+## Design Tokens
+
+The Select component uses the following design tokens for consistent theming:
+
+<ComponentDesignTokens component="select" />
+
+<Footer />

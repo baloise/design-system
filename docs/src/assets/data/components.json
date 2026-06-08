@@ -1,7 +1,7 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.43.4",
+    "version": "4.43.5",
     "typescriptVersion": "5.8.3"
   },
   "components": [
@@ -22239,6 +22239,7 @@
         "ds-pagination",
         "ds-radio-group",
         "ds-segment",
+        "ds-select",
         "ds-snackbar",
         "ds-step",
         "ds-tabs",
@@ -22284,6 +22285,9 @@
           "ds-icon"
         ],
         "ds-segment": [
+          "ds-icon"
+        ],
+        "ds-select": [
           "ds-icon"
         ],
         "ds-snackbar": [
@@ -39038,6 +39042,2243 @@
       "listeners": []
     },
     {
+      "fileName": "select.tsx",
+      "tag": "ds-select",
+      "overview": "Select renders a select dropdown with validation and optional help/error messaging.",
+      "usage": {},
+      "docs": "Select renders a select dropdown with validation and optional help/error messaging.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The select field content and surrounding elements."
+        },
+        {
+          "name": "part",
+          "text": "select - The native HTML select element."
+        },
+        {
+          "name": "part",
+          "text": "prefix - The prefix wrapper (if used)."
+        },
+        {
+          "name": "part",
+          "text": "suffix - The suffix wrapper (if used)."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-select": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": false,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": false,
+          "docs": "This Boolean attribute lets you specify that a form control should have input focus when the page loads.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "InputColor",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "InputColor": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/input/input.interfaces.ts::InputColor",
+                "referenceLocation": "InputColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color state of the select.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "debounce",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "debounce",
+          "reflectToAttr": false,
+          "docs": "Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description displayed below the select field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "If `true` the component gets an invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "Text shown in the description area when `invalid` is true.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label displayed above the select field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "options",
+          "type": "SelectOption[]",
+          "complexType": {
+            "original": "SelectOption[]",
+            "resolved": "SelectOption[]",
+            "references": {
+              "SelectOption": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectOption",
+                "referenceLocation": "SelectOption"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "The options for the select element.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "SelectOption[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": true,
+          "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": true,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The value of the select.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
+          "default": "null",
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInputElement",
+          "returns": {
+            "type": "Promise<HTMLSelectElement>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<HTMLSelectElement>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLSelectElement": {
+                "location": "global",
+                "id": "global::HTMLSelectElement"
+              }
+            },
+            "return": "Promise<HTMLSelectElement>"
+          },
+          "signature": "getInputElement() => Promise<HTMLSelectElement>",
+          "parameters": [],
+          "docs": "Returns the native `<select>` element used under the hood.",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the native `select` element.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "SelectBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "SelectBlurDetail": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectBlurDetail",
+                "referenceLocation": "SelectBlurDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard input occurred.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "null | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "SelectChangeDetail",
+            "resolved": "null | string",
+            "references": {
+              "SelectChangeDetail": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectChangeDetail",
+                "referenceLocation": "SelectChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the select value has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "SelectClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "SelectClickDetail": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectClickDetail",
+                "referenceLocation": "SelectClickDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the select has been clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "SelectFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "SelectFocusDetail": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectFocusDetail",
+                "referenceLocation": "SelectFocusDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the select has focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInput",
+          "detail": "null | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "SelectInputDetail",
+            "resolved": "null | string",
+            "references": {
+              "SelectInputDetail": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectInputDetail",
+                "referenceLocation": "SelectInputDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard input occurred.",
+          "docsTags": []
+        },
+        {
+          "event": "dsKeyPress",
+          "detail": "KeyboardEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "SelectKeyPressDetail",
+            "resolved": "KeyboardEvent",
+            "references": {
+              "SelectKeyPressDetail": {
+                "location": "import",
+                "path": "./select.interfaces",
+                "id": "src/components/select/select.interfaces.ts::SelectKeyPressDetail",
+                "referenceLocation": "SelectKeyPressDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard key has been pressed.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--input-color",
+          "docs": "Text color inside the select field."
+        },
+        {
+          "name": "--input-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--input-family",
+          "docs": "Font family of the select text."
+        },
+        {
+          "name": "--input-weight",
+          "docs": "Font weight of the select text."
+        },
+        {
+          "name": "--input-size",
+          "docs": "Font size of the select text."
+        },
+        {
+          "name": "--input-line-height",
+          "docs": "Line height of the select text."
+        },
+        {
+          "name": "--input-container-background",
+          "docs": "Background color of the select container."
+        },
+        {
+          "name": "--input-container-border-color",
+          "docs": "Border color of the select container."
+        },
+        {
+          "name": "--input-container-border-width",
+          "docs": "Border width of the select container."
+        },
+        {
+          "name": "--input-container-radius",
+          "docs": "Border radius of the select container."
+        },
+        {
+          "name": "--input-container-hover-background",
+          "docs": "Container background color on hover."
+        },
+        {
+          "name": "--input-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--input-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--input-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--input-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--input-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--input-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--input-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--input-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--input-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--input-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
+          "name": "--input-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--input-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--input-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--input-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--input-description-line-height",
+          "docs": "Line height of the description."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The select field content and surrounding elements."
+        }
+      ],
+      "parts": [
+        {
+          "name": "prefix",
+          "docs": "The prefix wrapper (if used)."
+        },
+        {
+          "name": "select",
+          "docs": "The native HTML select element."
+        },
+        {
+          "name": "suffix",
+          "docs": "The suffix wrapper (if used)."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Select / Container / Radius",
+          "cssVarName": "--ds-select-container-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-select-container-radius",
+              "figmaName": "Component / Select / Container / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / BorderWidth",
+          "cssVarName": "--ds-select-container-borderwidth",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-select-container-borderwidth",
+              "figmaName": "Component / Select / Container / BorderWidth"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "BorderWidth"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Base / Background",
+          "cssVarName": "--ds-select-container-color-base-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-select-container-color-base-background",
+              "figmaName": "Component / Select / Container / Color / Base / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Base",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Base / Border",
+          "cssVarName": "--ds-select-container-color-base-border",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-select-container-color-base-border",
+              "figmaName": "Component / Select / Container / Color / Base / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Base",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Hover / Background",
+          "cssVarName": "--ds-select-container-color-hover-background",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+          "nativeValue": "#FAFAFA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylighter",
+              "figmaName": "Alias / Background / Color / GreyLighter"
+            },
+            {
+              "cssVar": "--ds-select-container-color-hover-background",
+              "figmaName": "Component / Select / Container / Color / Hover / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Hover",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Hover / Border",
+          "cssVarName": "--ds-select-container-color-hover-border",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-select-container-color-hover-border",
+              "figmaName": "Component / Select / Container / Color / Hover / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Hover",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Active / Background",
+          "cssVarName": "--ds-select-container-color-active-background",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+          "nativeValue": "#FAFAFA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylighter",
+              "figmaName": "Alias / Background / Color / GreyLighter"
+            },
+            {
+              "cssVar": "--ds-select-container-color-active-background",
+              "figmaName": "Component / Select / Container / Color / Active / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Active",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Active / Border",
+          "cssVarName": "--ds-select-container-color-active-border",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-select-container-color-active-border",
+              "figmaName": "Component / Select / Container / Color / Active / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Active",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Focus / Background",
+          "cssVarName": "--ds-select-container-color-focus-background",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+          "nativeValue": "#FAFAFA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylighter",
+              "figmaName": "Alias / Background / Color / GreyLighter"
+            },
+            {
+              "cssVar": "--ds-select-container-color-focus-background",
+              "figmaName": "Component / Select / Container / Color / Focus / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Focus",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Focus / Border",
+          "cssVarName": "--ds-select-container-color-focus-border",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-select-container-color-focus-border",
+              "figmaName": "Component / Select / Container / Color / Focus / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Focus",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Success / Background",
+          "cssVarName": "--ds-select-container-color-success-background",
+          "value": "{🔗 Alias.🎨 Background.Color.SuccessLighter}",
+          "nativeValue": "#E8F3EC",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-1",
+              "figmaName": "Global / Color / Success / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-successlighter",
+              "figmaName": "Alias / Background / Color / SuccessLighter"
+            },
+            {
+              "cssVar": "--ds-select-container-color-success-background",
+              "figmaName": "Component / Select / Container / Color / Success / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Success",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Success / Border",
+          "cssVarName": "--ds-select-container-color-success-border",
+          "value": "{🔗 Alias.🔤 Text.Color.Success}",
+          "nativeValue": "#168741",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
+            },
+            {
+              "cssVar": "--ds-select-container-color-success-border",
+              "figmaName": "Component / Select / Container / Color / Success / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Success",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Warning / Background",
+          "cssVarName": "--ds-select-container-color-warning-background",
+          "value": "{🔗 Alias.🎨 Background.Color.WarningLighter}",
+          "nativeValue": "#FFF9E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-warning-1",
+              "figmaName": "Global / Color / Warning / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-warninglighter",
+              "figmaName": "Alias / Background / Color / WarningLighter"
+            },
+            {
+              "cssVar": "--ds-select-container-color-warning-background",
+              "figmaName": "Component / Select / Container / Color / Warning / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Warning",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Warning / Border",
+          "cssVarName": "--ds-select-container-color-warning-border",
+          "value": "{🔗 Alias.🔤 Text.Color.Warning}",
+          "nativeValue": "#B24A00",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-warning",
+              "figmaName": "Alias / Text / Color / Warning"
+            },
+            {
+              "cssVar": "--ds-select-container-color-warning-border",
+              "figmaName": "Component / Select / Container / Color / Warning / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Warning",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Danger / Background",
+          "cssVarName": "--ds-select-container-color-danger-background",
+          "value": "{🔗 Alias.🎨 Background.Color.DangerLighter}",
+          "nativeValue": "#FCE8E6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-1",
+              "figmaName": "Global / Color / Danger / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-dangerlighter",
+              "figmaName": "Alias / Background / Color / DangerLighter"
+            },
+            {
+              "cssVar": "--ds-select-container-color-danger-background",
+              "figmaName": "Component / Select / Container / Color / Danger / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Danger",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Danger / Border",
+          "cssVarName": "--ds-select-container-color-danger-border",
+          "value": "{🔗 Alias.🔤 Text.Color.Danger}",
+          "nativeValue": "#EA1800",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-4",
+              "figmaName": "Global / Color / Danger / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-danger",
+              "figmaName": "Alias / Text / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-select-container-color-danger-border",
+              "figmaName": "Component / Select / Container / Color / Danger / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Danger",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Disabled / Background",
+          "cssVarName": "--ds-select-container-color-disabled-background",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-select-container-color-disabled-background",
+              "figmaName": "Component / Select / Container / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Disabled",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Container / Color / Disabled / Border",
+          "cssVarName": "--ds-select-container-color-disabled-border",
+          "value": "{🔗 Alias.▭ Border.Color.Disabled}",
+          "nativeValue": "#B6B6B6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-4",
+              "figmaName": "Global / Color / Grey / 4"
+            },
+            {
+              "cssVar": "--ds-border-color-disabled",
+              "figmaName": "Alias / Border / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-select-container-color-disabled-border",
+              "figmaName": "Component / Select / Container / Color / Disabled / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Container",
+            "Color",
+            "Disabled",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Family",
+          "cssVarName": "--ds-select-label-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-select-label-family",
+              "figmaName": "Component / Select / Label / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Weight",
+          "cssVarName": "--ds-select-label-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-select-label-weight",
+              "figmaName": "Component / Select / Label / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / LineHeight",
+          "cssVarName": "--ds-select-label-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-select-label-lineheight",
+              "figmaName": "Component / Select / Label / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Color / Base",
+          "cssVarName": "--ds-select-label-color-base",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-select-label-color-base",
+              "figmaName": "Component / Select / Label / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Color / Success",
+          "cssVarName": "--ds-select-label-color-success",
+          "value": "{🔗 Alias.🔤 Text.Color.Success}",
+          "nativeValue": "#168741",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
+            },
+            {
+              "cssVar": "--ds-select-label-color-success",
+              "figmaName": "Component / Select / Label / Color / Success"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Color",
+            "Success"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Color / Warning",
+          "cssVarName": "--ds-select-label-color-warning",
+          "value": "{🔗 Alias.🔤 Text.Color.Warning}",
+          "nativeValue": "#B24A00",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-warning",
+              "figmaName": "Alias / Text / Color / Warning"
+            },
+            {
+              "cssVar": "--ds-select-label-color-warning",
+              "figmaName": "Component / Select / Label / Color / Warning"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Color",
+            "Warning"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Color / Danger",
+          "cssVarName": "--ds-select-label-color-danger",
+          "value": "{🔗 Alias.🔤 Text.Color.Danger}",
+          "nativeValue": "#EA1800",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-4",
+              "figmaName": "Global / Color / Danger / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-danger",
+              "figmaName": "Alias / Text / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-select-label-color-danger",
+              "figmaName": "Component / Select / Label / Color / Danger"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Color",
+            "Danger"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Color / Disabled",
+          "cssVarName": "--ds-select-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-select-label-color-disabled",
+              "figmaName": "Component / Select / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Size / Mobile",
+          "cssVarName": "--ds-select-label-size-mobile",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-mobile",
+              "figmaName": "Alias / Text / Size / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-select-label-size-mobile",
+              "figmaName": "Component / Select / Label / Size / Mobile"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Size",
+            "Mobile"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Size / Tablet",
+          "cssVarName": "--ds-select-label-size-tablet",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Tablet}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-tablet",
+              "figmaName": "Alias / Text / Size / SM / Tablet"
+            },
+            {
+              "cssVar": "--ds-select-label-size-tablet",
+              "figmaName": "Component / Select / Label / Size / Tablet"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Size",
+            "Tablet"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Label / Size / Desktop",
+          "cssVarName": "--ds-select-label-size-desktop",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Desktop}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-desktop",
+              "figmaName": "Alias / Text / Size / SM / Desktop"
+            },
+            {
+              "cssVar": "--ds-select-label-size-desktop",
+              "figmaName": "Component / Select / Label / Size / Desktop"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Label",
+            "Size",
+            "Desktop"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / Family",
+          "cssVarName": "--ds-select-control-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-select-control-family",
+              "figmaName": "Component / Select / Control / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / Weight",
+          "cssVarName": "--ds-select-control-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-select-control-weight",
+              "figmaName": "Component / Select / Control / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / LineHeight",
+          "cssVarName": "--ds-select-control-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-select-control-lineheight",
+              "figmaName": "Component / Select / Control / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / FontSize / Mobile",
+          "cssVarName": "--ds-select-control-fontsize-mobile",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-select-control-fontsize-mobile",
+              "figmaName": "Component / Select / Control / FontSize / Mobile"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "FontSize",
+            "Mobile"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / FontSize / Tablet",
+          "cssVarName": "--ds-select-control-fontsize-tablet",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Tablet}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-tablet",
+              "figmaName": "Alias / Text / Size / Base / Tablet"
+            },
+            {
+              "cssVar": "--ds-select-control-fontsize-tablet",
+              "figmaName": "Component / Select / Control / FontSize / Tablet"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "FontSize",
+            "Tablet"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / FontSize / Desktop",
+          "cssVarName": "--ds-select-control-fontsize-desktop",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Desktop}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-desktop",
+              "figmaName": "Alias / Text / Size / Base / Desktop"
+            },
+            {
+              "cssVar": "--ds-select-control-fontsize-desktop",
+              "figmaName": "Component / Select / Control / FontSize / Desktop"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "FontSize",
+            "Desktop"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / Color / Value / Base",
+          "cssVarName": "--ds-select-control-color-value-base",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-select-control-color-value-base",
+              "figmaName": "Component / Select / Control / Color / Value / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "Color",
+            "Value",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / Color / Value / Disabled",
+          "cssVarName": "--ds-select-control-color-value-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-select-control-color-value-disabled",
+              "figmaName": "Component / Select / Control / Color / Value / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "Color",
+            "Value",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / Color / Placeholder / Base",
+          "cssVarName": "--ds-select-control-color-placeholder-base",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-select-control-color-placeholder-base",
+              "figmaName": "Component / Select / Control / Color / Placeholder / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "Color",
+            "Placeholder",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Control / Color / Placeholder / Disabled",
+          "cssVarName": "--ds-select-control-color-placeholder-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-select-control-color-placeholder-disabled",
+              "figmaName": "Component / Select / Control / Color / Placeholder / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Control",
+            "Color",
+            "Placeholder",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Family",
+          "cssVarName": "--ds-select-description-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-select-description-family",
+              "figmaName": "Component / Select / Description / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Weight",
+          "cssVarName": "--ds-select-description-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-select-description-weight",
+              "figmaName": "Component / Select / Description / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / LineHeight",
+          "cssVarName": "--ds-select-description-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-select-description-lineheight",
+              "figmaName": "Component / Select / Description / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Color / Base",
+          "cssVarName": "--ds-select-description-color-base",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-select-description-color-base",
+              "figmaName": "Component / Select / Description / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Color / Success",
+          "cssVarName": "--ds-select-description-color-success",
+          "value": "{🔗 Alias.🔤 Text.Color.Success}",
+          "nativeValue": "#168741",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
+            },
+            {
+              "cssVar": "--ds-select-description-color-success",
+              "figmaName": "Component / Select / Description / Color / Success"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Color",
+            "Success"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Color / Warning",
+          "cssVarName": "--ds-select-description-color-warning",
+          "value": "{🔗 Alias.🔤 Text.Color.Warning}",
+          "nativeValue": "#B24A00",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-warning",
+              "figmaName": "Alias / Text / Color / Warning"
+            },
+            {
+              "cssVar": "--ds-select-description-color-warning",
+              "figmaName": "Component / Select / Description / Color / Warning"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Color",
+            "Warning"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Color / Danger",
+          "cssVarName": "--ds-select-description-color-danger",
+          "value": "{🔗 Alias.🔤 Text.Color.Danger}",
+          "nativeValue": "#EA1800",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-4",
+              "figmaName": "Global / Color / Danger / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-danger",
+              "figmaName": "Alias / Text / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-select-description-color-danger",
+              "figmaName": "Component / Select / Description / Color / Danger"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Color",
+            "Danger"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Color / Disabled",
+          "cssVarName": "--ds-select-description-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-select-description-color-disabled",
+              "figmaName": "Component / Select / Description / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Size / Mobile",
+          "cssVarName": "--ds-select-description-size-mobile",
+          "value": "{🔗 Alias.🔤 Text.Size.XS.Mobile}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-12",
+              "figmaName": "Global / Font / Size / 12"
+            },
+            {
+              "cssVar": "--ds-text-size-xs-mobile",
+              "figmaName": "Alias / Text / Size / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-select-description-size-mobile",
+              "figmaName": "Component / Select / Description / Size / Mobile"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Size",
+            "Mobile"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Size / Tablet",
+          "cssVarName": "--ds-select-description-size-tablet",
+          "value": "{🔗 Alias.🔤 Text.Size.XS.Tablet}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-12",
+              "figmaName": "Global / Font / Size / 12"
+            },
+            {
+              "cssVar": "--ds-text-size-xs-tablet",
+              "figmaName": "Alias / Text / Size / XS / Tablet"
+            },
+            {
+              "cssVar": "--ds-select-description-size-tablet",
+              "figmaName": "Component / Select / Description / Size / Tablet"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Size",
+            "Tablet"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Description / Size / Desktop",
+          "cssVarName": "--ds-select-description-size-desktop",
+          "value": "{🔗 Alias.🔤 Text.Size.XS.Desktop}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-12",
+              "figmaName": "Global / Font / Size / 12"
+            },
+            {
+              "cssVar": "--ds-text-size-xs-desktop",
+              "figmaName": "Alias / Text / Size / XS / Desktop"
+            },
+            {
+              "cssVar": "--ds-select-description-size-desktop",
+              "figmaName": "Component / Select / Description / Size / Desktop"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Description",
+            "Size",
+            "Desktop"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsSelect",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeSelect",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "selectValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "focus",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "click",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeReadonly",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeRequired",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeInvalid",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToHaveColor",
+            "params": [
+              {
+                "name": "color",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
       "fileName": "shape.tsx",
       "tag": "ds-shape",
       "overview": "Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.",
@@ -40575,6 +42816,7 @@
         "ds-number-input",
         "ds-radio-group",
         "ds-segment",
+        "ds-select",
         "ds-textarea"
       ],
       "dependencies": [],
@@ -40595,6 +42837,9 @@
           "ds-spinner"
         ],
         "ds-segment": [
+          "ds-spinner"
+        ],
+        "ds-select": [
           "ds-spinner"
         ],
         "ds-textarea": [
@@ -51859,6 +54104,41 @@
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/segment/segment-item.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectOption": {
+      "declaration": "export interface SelectOption {\n  label: string\n  value: string\n}",
+      "docstring": "",
+      "path": "src/components/select/select.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectBlurDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/select/select.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectChangeDetail": {
+      "declaration": "export type SelectChangeDetail = string | null",
+      "docstring": "",
+      "path": "src/components/select/select.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectClickDetail": {
+      "declaration": "interface MouseEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */\n    readonly altKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */\n    readonly button: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/buttons) */\n    readonly buttons: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientX) */\n    readonly clientX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientY) */\n    readonly clientY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerX) */\n    readonly layerX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerY) */\n    readonly layerY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementX) */\n    readonly movementX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementY) */\n    readonly movementY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetX) */\n    readonly offsetX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetY) */\n    readonly offsetY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageX) */\n    readonly pageX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageY) */\n    readonly pageY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenX) */\n    readonly screenX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenY) */\n    readonly screenY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/x) */\n    readonly x: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/y) */\n    readonly y: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/initMouseEvent)\n     */\n    initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void;\n}",
+      "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+      "path": "src/components/select/select.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/select/select.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectInputDetail": {
+      "declaration": "export type SelectInputDetail = string | null",
+      "docstring": "",
+      "path": "src/components/select/select.interfaces.ts"
+    },
+    "src/components/select/select.interfaces.ts::SelectKeyPressDetail": {
+      "declaration": "interface KeyboardEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */\n    readonly altKey: boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charCode)\n     */\n    readonly charCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code) */\n    readonly code: string;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/isComposing) */\n    readonly isComposing: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/key) */\n    readonly key: string;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keyCode)\n     */\n    readonly keyCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/location) */\n    readonly location: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat) */\n    readonly repeat: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/initKeyboardEvent)\n     */\n    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;\n    readonly DOM_KEY_LOCATION_STANDARD: 0x00;\n    readonly DOM_KEY_LOCATION_LEFT: 0x01;\n    readonly DOM_KEY_LOCATION_RIGHT: 0x02;\n    readonly DOM_KEY_LOCATION_NUMPAD: 0x03;\n}",
+      "docstring": "KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+      "path": "src/components/select/select.interfaces.ts"
     },
     "src/components/shape/shape.interfaces.ts::ShapeColor": {
       "declaration": "\"red\" | \"yellow\" | \"green\" | \"purple\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\"",

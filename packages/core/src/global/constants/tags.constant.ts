@@ -48,6 +48,8 @@ export const tags: string[] = [
   "ds-radio-group",
   "ds-segment",
   "ds-segment-item",
+  "ds-select",
+  "ds-select-option",
   "ds-shape",
   "ds-snackbar",
   "ds-spinner",

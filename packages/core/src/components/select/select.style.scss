@@ -1,6 +1,6 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../vars' as vars;
-@use './textarea.mixin' as textarea;
+@use './select.mixin' as select;
 
 $use-host: false !default;
 
@@ -11,8 +11,8 @@ $use-host: false !default;
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-.textarea {
-  @include textarea.vars('input');
+.select {
+  @include select.vars('input');
 }
 
 /**
@@ -21,7 +21,7 @@ $use-host: false !default;
  */
 
 .field {
-  @include textarea.style('input', '.textarea');
-  @include textarea.container('input', '.control');
-  @include textarea.specific('.control');
+  @include select.style('input', '.select');
+  @include select.container('input', '.control');
+  @include select.specific('.control');
 }

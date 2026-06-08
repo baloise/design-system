@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SelectStories from './select.stories'
+import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
+
+<Meta title="Components/Select/Variants/Overview" />
+
+<Banner label={'Select'} section={SELECT_DOC_CONFIG.section} color={SELECT_DOC_CONFIG.color} />
+
+<BannerTabs of={SelectStories} tabs={getSelectTabs('variants')} />
+
+## Basic
+
+Default select component with label and description.
+
+<CanvasTabs htmlOf={SelectStories.BasicHtml} of={SelectStories.Basic} />
+
+## Disabled
+
+Disabled state prevents user interaction and indicates the field is not editable.
+
+<CanvasTabs htmlOf={SelectStories.DisabledHtml} of={SelectStories.Disabled} />
+
+## Invalid
+
+Invalid state shows validation errors and requires user correction.
+
+<CanvasTabs htmlOf={SelectStories.InvalidHtml} of={SelectStories.Invalid} />
+
+<Footer />

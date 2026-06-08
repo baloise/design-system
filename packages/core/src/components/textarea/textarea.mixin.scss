@@ -3,6 +3,21 @@
 @use '../input/input.mixin' as input;
 
 /**
+ * Field Layout Mixins
+ * --------------------------------
+ */
+
+@mixin vars-field($prefix) {
+  @include vars.local(#{$prefix}-field-gap, 0.25rem);
+}
+
+@mixin field-layout($prefix) {
+  position: relative;
+  display: grid;
+  gap: var(--_#{$prefix}-field-gap);
+}
+
+/**
  * Control Mixins (delegated to input.mixin)
  * --------------------------------
  */
@@ -29,45 +44,48 @@
 }
 
 @mixin container($prefix, $selector: '#container') {
+  @include input.container($prefix, $selector);
+
   #{$selector} {
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
     align-items: flex-start;
     padding-block: 0.5rem;
-    padding-inline: 0.5rem;
-    gap: 0.25rem;
-
-    background: var(--_#{$prefix}-container-background);
-    border: var(--_#{$prefix}-container-border-width) solid var(--_#{$prefix}-container-border-color);
-    border-radius: var(--_#{$prefix}-container-radius);
-
-    @include hover {
-      &:hover,
-      &.is-hovered {
-        background: var(--_#{$prefix}-container-hover-background);
-        border-color: var(--_#{$prefix}-container-hover-border);
-      }
-    }
-
-    &:active,
-    &.is-pressed {
-      background: var(--_#{$prefix}-container-active-background);
-      border-color: var(--_#{$prefix}-container-active-border);
-    }
-
-    &:focus-within,
-    &.is-focused {
-      &:not(:active) {
-        background: var(--_#{$prefix}-container-focus-background);
-        border-color: var(--_#{$prefix}-container-focus-border);
-      }
-    }
-
-    textarea {
-      resize: vertical;
-    }
   }
+
+  // #{$selector} {
+  //   box-sizing: border-box;
+  //   display: flex;
+  //   width: 100%;
+  //   align-items: flex-start;
+  //   padding-block: 0.5rem;
+  //   padding-inline: 0.5rem;
+  //   gap: 0.25rem;
+
+  //   background: var(--_#{$prefix}-container-background);
+  //   border: var(--_#{$prefix}-container-border-width) solid var(--_#{$prefix}-container-border-color);
+  //   border-radius: var(--_#{$prefix}-container-radius);
+
+  //   @include hover {
+  //     &:hover,
+  //     &.is-hovered {
+  //       background: var(--_#{$prefix}-container-hover-background);
+  //       border-color: var(--_#{$prefix}-container-hover-border);
+  //     }
+  //   }
+
+  //   &:active,
+  //   &.is-pressed {
+  //     background: var(--_#{$prefix}-container-active-background);
+  //     border-color: var(--_#{$prefix}-container-active-border);
+  //   }
+
+  //   &:focus-within,
+  //   &.is-focused {
+  //     &:not(:active) {
+  //       background: var(--_#{$prefix}-container-focus-background);
+  //       border-color: var(--_#{$prefix}-container-focus-border);
+  //     }
+  //   }
+  // }
 }
 
 /**
@@ -94,4 +112,17 @@
 
 @mixin description($prefix, $selector: '#description') {
   @include input.description($prefix, $selector);
+}
+
+/**
+ * Select-specific Mixins
+ * --------------------------------
+ */
+
+@mixin specific($selector) {
+  #{$selector} {
+    textarea {
+      resize: vertical;
+    }
+  }
 }

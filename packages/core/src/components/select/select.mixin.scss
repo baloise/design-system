@@ -1,0 +1,125 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../input/input.mixin' as input;
+
+/**
+ * Field Layout Mixins
+ * --------------------------------
+ */
+
+@mixin vars-field($prefix) {
+  @include vars.local(#{$prefix}-field-gap, 0.25rem);
+}
+
+@mixin field-layout($prefix) {
+  position: relative;
+  display: grid;
+  gap: var(--_#{$prefix}-field-gap);
+}
+
+/**
+ * Control Mixins (delegated to input.mixin)
+ * --------------------------------
+ */
+
+@mixin vars($prefix) {
+  @include input.vars($prefix);
+}
+
+@mixin style($prefix, $selector: '#select') {
+  @include input.style($prefix, $selector);
+}
+
+/**
+ * Container Mixins (select-specific)
+ * --------------------------------
+ * Select-specific styling with:
+ * - align-items: center (vertically center the select)
+ * - chevron icon on the right side
+ * - browser default select styling removed
+ */
+
+@mixin vars-container($prefix) {
+  @include input.vars-container($prefix);
+}
+
+@mixin container($prefix, $selector: '#container') {
+  @include input.container($prefix, $selector);
+}
+
+/**
+ * Label Mixins (delegated to input.mixin)
+ * --------------------------------
+ */
+
+@mixin vars-label($prefix) {
+  @include input.vars-label($prefix);
+}
+
+@mixin label($prefix, $selector: 'label') {
+  @include input.label($prefix, $selector);
+}
+
+/**
+ * Description Mixins (delegated to input.mixin)
+ * --------------------------------
+ */
+
+@mixin vars-description($prefix) {
+  @include input.vars-description($prefix);
+}
+
+@mixin description($prefix, $selector: '#description') {
+  @include input.description($prefix, $selector);
+}
+
+/**
+ * Select-specific Mixins
+ * --------------------------------
+ */
+
+@mixin specific($selector) {
+  #{$selector} {
+    select {
+      flex: 1;
+      min-width: 0;
+      outline: none;
+      appearance: none;
+      background: transparent;
+      border: none;
+      height: 1.5rem;
+      padding-inline-end: 1.5rem;
+      font: inherit;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    // Chevron icon (SVG background)
+    &:has(select)::after {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23000D6E" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    // Chevron icon when select is disabled (grey)
+    &:has(select:disabled)::after {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23999999" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>');
+    }
+  }
+}
