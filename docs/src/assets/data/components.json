@@ -1,7 +1,7 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.43.4",
+    "version": "4.43.5",
     "typescriptVersion": "5.8.3"
   },
   "components": [
@@ -2652,6 +2652,7 @@
       "dependents": [
         "ds-close",
         "ds-data-item",
+        "ds-file-upload",
         "ds-hint",
         "ds-snackbar",
         "ds-toast"
@@ -2669,6 +2670,9 @@
           "ds-button"
         ],
         "ds-data-item": [
+          "ds-button"
+        ],
+        "ds-file-upload": [
           "ds-button"
         ],
         "ds-hint": [
@@ -16941,9 +16945,15 @@
         }
       ],
       "encapsulation": "none",
-      "dependents": [],
+      "dependents": [
+        "ds-file-upload"
+      ],
       "dependencies": [],
-      "dependencyGraph": {},
+      "dependencyGraph": {
+        "ds-file-upload": [
+          "ds-content"
+        ]
+      },
       "props": [
         {
           "name": "align",
@@ -19174,6 +19184,1992 @@
           },
           {
             "name": "assertToBeClosed",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      }
+    },
+    {
+      "fileName": "file-upload.tsx",
+      "tag": "ds-file-upload",
+      "overview": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
+      "usage": {},
+      "docs": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
+      "docsTags": [
+        {
+          "name": "part",
+          "text": "drop-zone - The main drop area where users drag files or click to select."
+        },
+        {
+          "name": "part",
+          "text": "file-list - The list of selected files below the drop zone."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon",
+        "ds-spinner",
+        "ds-stack",
+        "ds-content",
+        "ds-button"
+      ],
+      "dependencyGraph": {
+        "ds-file-upload": [
+          "ds-icon",
+          "ds-spinner",
+          "ds-stack",
+          "ds-content",
+          "ds-button"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "accept",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "accept",
+          "reflectToAttr": false,
+          "docs": "Accepted MIME-Types like `image/png,image/jpeg`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "InputColor",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "InputColor": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/input/input.interfaces.ts::InputColor",
+                "referenceLocation": "InputColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the file upload. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the file upload, displayed below the drop zone.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "dropZoneLabel",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "drop-zone-label",
+          "reflectToAttr": false,
+          "docs": "The text displayed inside the drop zone. Defaults to localized \"Drag and drop or choose file(s) to upload\".",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hasFileList",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "has-file-list",
+          "reflectToAttr": false,
+          "docs": "If `true` below the drop-zone area it generates a file list.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets an invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the file upload is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the file upload, displayed in the drop zone area.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'Choose or drop a file...'"
+            }
+          ],
+          "default": "'Choose or drop a file...'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "loading",
+          "reflectToAttr": false,
+          "docs": "If `true` the file upload is disabled and shows a spinner.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "maxBundleSize",
+          "type": "number | undefined",
+          "complexType": {
+            "original": "number",
+            "resolved": "number | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max-bundle-size",
+          "reflectToAttr": false,
+          "docs": "Allowed max bundle size in bytes.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "maxFileSize",
+          "type": "number | undefined",
+          "complexType": {
+            "original": "number",
+            "resolved": "number | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max-file-size",
+          "reflectToAttr": false,
+          "docs": "Allowed max file size in bytes.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "maxFiles",
+          "type": "number | undefined",
+          "complexType": {
+            "original": "number",
+            "resolved": "number | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max-files",
+          "reflectToAttr": false,
+          "docs": "Allowed number of files in the bundle.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": false,
+          "docs": "If `true` multiple file upload is possible.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.fileUploadId"
+            }
+          ],
+          "default": "this.fileUploadId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "File[]",
+          "complexType": {
+            "original": "File[]",
+            "resolved": "File[]",
+            "references": {
+              "File": {
+                "location": "global",
+                "id": "global::File"
+              }
+            }
+          },
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "The value of the file upload (array of selected files).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "File[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "clear",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "clear() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets the file list to an empty list.",
+          "docsTags": []
+        },
+        {
+          "name": "configChanged",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(state: { language: DsLanguage; region: DsRegion; }) => Promise<void>",
+            "parameters": [
+              {
+                "name": "state",
+                "type": "{ language: DsLanguage; region: DsRegion; }",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              },
+              "DsRegion": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsRegion",
+                "referenceLocation": "DsRegion"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "configChanged(state: { language: DsLanguage; region: DsRegion; }) => Promise<void>",
+          "parameters": [
+            {
+              "name": "state",
+              "type": "{ language: DsLanguage; region: DsRegion; }",
+              "docs": ""
+            }
+          ],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the native `input`. Use this method instead of the global `input.focus()`.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "FileUploadBlurDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadBlurDetail",
+                "referenceLocation": "FileUploadBlurDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "File[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadChangeDetail",
+            "resolved": "File[]",
+            "references": {
+              "FileUploadChangeDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadChangeDetail",
+                "referenceLocation": "FileUploadChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggers when a file is added or removed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFilesAdded",
+          "detail": "File[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadFilesAddedDetail",
+            "resolved": "File[]",
+            "references": {
+              "FileUploadFilesAddedDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadFilesAddedDetail",
+                "referenceLocation": "FileUploadFilesAddedDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggers when a file is added.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFilesRemoved",
+          "detail": "File[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadFilesRemovedDetail",
+            "resolved": "File[]",
+            "references": {
+              "FileUploadFilesRemovedDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadFilesRemovedDetail",
+                "referenceLocation": "FileUploadFilesRemovedDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggers when a file is removed.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "FileUploadFocusDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadFocusDetail",
+                "referenceLocation": "FileUploadFocusDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInputClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadInputClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "FileUploadInputClickDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadInputClickDetail",
+                "referenceLocation": "FileUploadInputClickDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "dsRejectedFile",
+          "detail": "FileUploadRejectedFile",
+          "bubbles": true,
+          "complexType": {
+            "original": "FileUploadRejectedFileDetail",
+            "resolved": "FileUploadRejectedFile",
+            "references": {
+              "FileUploadRejectedFileDetail": {
+                "location": "import",
+                "path": "./file-upload.interfaces",
+                "id": "src/components/file-upload/file-upload.interfaces.ts::FileUploadRejectedFileDetail",
+                "referenceLocation": "FileUploadRejectedFileDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggers when a file is rejected due to validation rules.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--file-upload-label-family",
+          "docs": "Font family of the label text."
+        },
+        {
+          "name": "--file-upload-label-weight",
+          "docs": "Font weight of the label text."
+        },
+        {
+          "name": "--file-upload-label-size",
+          "docs": "Font size of the label text."
+        },
+        {
+          "name": "--file-upload-label-line-height",
+          "docs": "Line height of the label text."
+        },
+        {
+          "name": "--file-upload-drop-zone-border-color",
+          "docs": "Border color of the drop zone."
+        },
+        {
+          "name": "--file-upload-drop-zone-background",
+          "docs": "Background color of the drop zone."
+        },
+        {
+          "name": "--file-upload-drop-zone-hover-background",
+          "docs": "Background color on hover."
+        },
+        {
+          "name": "--file-upload-drop-zone-hover-border-color",
+          "docs": "Border color on hover."
+        },
+        {
+          "name": "--file-upload-drop-zone-hover-text-color",
+          "docs": "Text color on hover."
+        },
+        {
+          "name": "--file-upload-drop-zone-active-background",
+          "docs": "Background color when active."
+        },
+        {
+          "name": "--file-upload-drop-zone-active-border-color",
+          "docs": "Border color when active."
+        },
+        {
+          "name": "--file-upload-drop-zone-active-text-color",
+          "docs": "Text color when active."
+        },
+        {
+          "name": "--file-upload-drop-zone-focus-border-color",
+          "docs": "Border color when focused."
+        },
+        {
+          "name": "--file-upload-drop-zone-disabled-background",
+          "docs": "Background color when disabled."
+        },
+        {
+          "name": "--file-upload-drop-zone-disabled-border-color",
+          "docs": "Border color when disabled."
+        },
+        {
+          "name": "--file-upload-drop-zone-disabled-text-color",
+          "docs": "Text color when disabled."
+        },
+        {
+          "name": "--file-upload-file-list-background",
+          "docs": "Background color of file list items."
+        },
+        {
+          "name": "--file-upload-file-name-color",
+          "docs": "Text color of file names."
+        },
+        {
+          "name": "--file-upload-file-size-color",
+          "docs": "Text color of file sizes."
+        },
+        {
+          "name": "--file-upload-disabled-icon-color",
+          "docs": "Icon color when disabled."
+        },
+        {
+          "name": "--file-upload-disabled-text-color",
+          "docs": "Text color when disabled."
+        }
+      ],
+      "slots": [],
+      "parts": [
+        {
+          "name": "drop-zone",
+          "docs": "The main drop area where users drag files or click to select."
+        },
+        {
+          "name": "file-list",
+          "docs": "The list of selected files below the drop zone."
+        },
+        {
+          "name": "input",
+          "docs": ""
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / FileUpload / Label / FontFamily",
+          "cssVarName": "--ds-fileupload-label-fontfamily",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-fileupload-label-fontfamily",
+              "figmaName": "Component / FileUpload / Label / FontFamily"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Label",
+            "FontFamily"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Label / FontWeight",
+          "cssVarName": "--ds-fileupload-label-fontweight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-fileupload-label-fontweight",
+              "figmaName": "Component / FileUpload / Label / FontWeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Label",
+            "FontWeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Label / FontSize",
+          "cssVarName": "--ds-fileupload-label-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-fileupload-label-fontsize",
+              "figmaName": "Component / FileUpload / Label / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Label",
+            "FontSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Label / LineHeight",
+          "cssVarName": "--ds-fileupload-label-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-fileupload-label-lineheight",
+              "figmaName": "Component / FileUpload / Label / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Label",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Label / Color / Text",
+          "cssVarName": "--ds-fileupload-label-color-text",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-label-color-text",
+              "figmaName": "Component / FileUpload / Label / Color / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Label",
+            "Color",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / FontFamily",
+          "cssVarName": "--ds-fileupload-control-fontfamily",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-fontfamily",
+              "figmaName": "Component / FileUpload / Control / FontFamily"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "FontFamily"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / FontWeight",
+          "cssVarName": "--ds-fileupload-control-fontweight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-fontweight",
+              "figmaName": "Component / FileUpload / Control / FontWeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "FontWeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / FontSize",
+          "cssVarName": "--ds-fileupload-control-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-fontsize",
+              "figmaName": "Component / FileUpload / Control / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "FontSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Color / Text",
+          "cssVarName": "--ds-fileupload-control-color-text",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-color-text",
+              "figmaName": "Component / FileUpload / Control / Color / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Color",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Color / Placeholder",
+          "cssVarName": "--ds-fileupload-control-color-placeholder",
+          "value": "{🔗 Alias.🔤 Text.Color.Placeholder}",
+          "nativeValue": "#B3B6D4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-2",
+              "figmaName": "Global / Color / Primary / 2"
+            },
+            {
+              "cssVar": "--ds-text-color-placeholder",
+              "figmaName": "Alias / Text / Color / Placeholder"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-color-placeholder",
+              "figmaName": "Component / FileUpload / Control / Color / Placeholder"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Color",
+            "Placeholder"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Base",
+          "cssVarName": "--ds-fileupload-dropzone-color-background-base",
+          "value": "{🌐 Global.🌈 Color.Neutral}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-neutral",
+              "figmaName": "Global / Color / Neutral"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-background-base",
+              "figmaName": "Component / FileUpload / DropZone / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Hover",
+          "cssVarName": "--ds-fileupload-dropzone-color-background-hover",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+          "nativeValue": "#FAFAFA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylighter",
+              "figmaName": "Alias / Background / Color / GreyLighter"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-background-hover",
+              "figmaName": "Component / FileUpload / DropZone / Color / Background / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Background",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Active",
+          "cssVarName": "--ds-fileupload-dropzone-color-background-active",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-background-active",
+              "figmaName": "Component / FileUpload / DropZone / Color / Background / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Background",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Disabled",
+          "cssVarName": "--ds-fileupload-dropzone-color-background-disabled",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-background-disabled",
+              "figmaName": "Component / FileUpload / DropZone / Color / Background / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Background",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Base",
+          "cssVarName": "--ds-fileupload-dropzone-color-border-base",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-border-base",
+              "figmaName": "Component / FileUpload / DropZone / Color / Border / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Border",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Hover",
+          "cssVarName": "--ds-fileupload-dropzone-color-border-hover",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-border-hover",
+              "figmaName": "Component / FileUpload / DropZone / Color / Border / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Border",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Active",
+          "cssVarName": "--ds-fileupload-dropzone-color-border-active",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-border-active",
+              "figmaName": "Component / FileUpload / DropZone / Color / Border / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Border",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Focus",
+          "cssVarName": "--ds-fileupload-dropzone-color-border-focus",
+          "value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}",
+          "nativeValue": "#6C2273",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-6",
+              "figmaName": "Global / Color / Purple / 6"
+            },
+            {
+              "cssVar": "--ds-interaction-focus-color-base",
+              "figmaName": "Alias / Interaction / Focus / Color / Base"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-border-focus",
+              "figmaName": "Component / FileUpload / DropZone / Color / Border / Focus"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Border",
+            "Focus"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Disabled",
+          "cssVarName": "--ds-fileupload-dropzone-color-border-disabled",
+          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-button-color-disabled-base-text",
+              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-border-disabled",
+              "figmaName": "Component / FileUpload / DropZone / Color / Border / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Border",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Text / Hover",
+          "cssVarName": "--ds-fileupload-dropzone-color-text-hover",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryhover",
+              "figmaName": "Alias / Text / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-text-hover",
+              "figmaName": "Component / FileUpload / DropZone / Color / Text / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Text",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Text / Active",
+          "cssVarName": "--ds-fileupload-dropzone-color-text-active",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryactive",
+              "figmaName": "Alias / Text / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-text-active",
+              "figmaName": "Component / FileUpload / DropZone / Color / Text / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Text",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Color / Text / Disabled",
+          "cssVarName": "--ds-fileupload-dropzone-color-text-disabled",
+          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-button-color-disabled-base-text",
+              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-color-text-disabled",
+              "figmaName": "Component / FileUpload / DropZone / Color / Text / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Color",
+            "Text",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / FileList / Color / Background",
+          "cssVarName": "--ds-fileupload-filelist-color-background",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-filelist-color-background",
+              "figmaName": "Component / FileUpload / FileList / Color / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "FileList",
+            "Color",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / FileItem / Color / Text / Name",
+          "cssVarName": "--ds-fileupload-fileitem-color-text-name",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-fileitem-color-text-name",
+              "figmaName": "Component / FileUpload / FileItem / Color / Text / Name"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "FileItem",
+            "Color",
+            "Text",
+            "Name"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / FileItem / Color / Text / Size",
+          "cssVarName": "--ds-fileupload-fileitem-color-text-size",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-fileitem-color-text-size",
+              "figmaName": "Component / FileUpload / FileItem / Color / Text / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "FileItem",
+            "Color",
+            "Text",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / FontFamily",
+          "cssVarName": "--ds-fileupload-description-fontfamily",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-fontfamily",
+              "figmaName": "Component / FileUpload / Description / FontFamily"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "FontFamily"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / FontWeight",
+          "cssVarName": "--ds-fileupload-description-fontweight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-fontweight",
+              "figmaName": "Component / FileUpload / Description / FontWeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "FontWeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / FontSize",
+          "cssVarName": "--ds-fileupload-description-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-mobile",
+              "figmaName": "Alias / Text / Size / SM / Mobile"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-fontsize",
+              "figmaName": "Component / FileUpload / Description / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "FontSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / LineHeight",
+          "cssVarName": "--ds-fileupload-description-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-lineheight",
+              "figmaName": "Component / FileUpload / Description / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Color / Text / Base",
+          "cssVarName": "--ds-fileupload-description-color-text-base",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-color-text-base",
+              "figmaName": "Component / FileUpload / Description / Color / Text / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Color",
+            "Text",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Color / Text / Success",
+          "cssVarName": "--ds-fileupload-description-color-text-success",
+          "value": "{🔗 Alias.🔤 Text.Color.Success}",
+          "nativeValue": "#168741",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-color-text-success",
+              "figmaName": "Component / FileUpload / Description / Color / Text / Success"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Color",
+            "Text",
+            "Success"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Color / Text / Warning",
+          "cssVarName": "--ds-fileupload-description-color-text-warning",
+          "value": "{🔗 Alias.🔤 Text.Color.Warning}",
+          "nativeValue": "#B24A00",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-warning",
+              "figmaName": "Alias / Text / Color / Warning"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-color-text-warning",
+              "figmaName": "Component / FileUpload / Description / Color / Text / Warning"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Color",
+            "Text",
+            "Warning"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Color / Text / Danger",
+          "cssVarName": "--ds-fileupload-description-color-text-danger",
+          "value": "{🔗 Alias.🔤 Text.Color.Danger}",
+          "nativeValue": "#EA1800",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-4",
+              "figmaName": "Global / Color / Danger / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-danger",
+              "figmaName": "Alias / Text / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-color-text-danger",
+              "figmaName": "Component / FileUpload / Description / Color / Text / Danger"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Color",
+            "Text",
+            "Danger"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Disabled / Color / Icon",
+          "cssVarName": "--ds-fileupload-disabled-color-icon",
+          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-button-color-disabled-base-text",
+              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+            },
+            {
+              "cssVar": "--ds-fileupload-disabled-color-icon",
+              "figmaName": "Component / FileUpload / Disabled / Color / Icon"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Disabled",
+            "Color",
+            "Icon"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Disabled / Color / Text",
+          "cssVarName": "--ds-fileupload-disabled-color-text",
+          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-button-color-disabled-base-text",
+              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+            },
+            {
+              "cssVar": "--ds-fileupload-disabled-color-text",
+              "figmaName": "Component / FileUpload / Disabled / Color / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Disabled",
+            "Color",
+            "Text"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsFileUpload",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [
+          {
+            "name": "click",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "setFocus",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "clear",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeInvalid",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeLoading",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeReadonly",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeRequired",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertHasFileList",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertHasNoFileList",
             "params": [],
             "docs": ""
           }
@@ -22231,6 +24227,7 @@
         "ds-button",
         "ds-carousel",
         "ds-checkbox-group",
+        "ds-file-upload",
         "ds-footer",
         "ds-hint",
         "ds-input",
@@ -22260,6 +24257,9 @@
           "ds-icon"
         ],
         "ds-checkbox-group": [
+          "ds-icon"
+        ],
+        "ds-file-upload": [
           "ds-icon"
         ],
         "ds-footer": [
@@ -40571,6 +42571,7 @@
       "dependents": [
         "ds-button",
         "ds-checkbox-group",
+        "ds-file-upload",
         "ds-input",
         "ds-number-input",
         "ds-radio-group",
@@ -40583,6 +42584,9 @@
           "ds-spinner"
         ],
         "ds-checkbox-group": [
+          "ds-spinner"
+        ],
+        "ds-file-upload": [
           "ds-spinner"
         ],
         "ds-input": [
@@ -41141,9 +43145,15 @@
         }
       ],
       "encapsulation": "none",
-      "dependents": [],
+      "dependents": [
+        "ds-file-upload"
+      ],
       "dependencies": [],
-      "dependencyGraph": {},
+      "dependencyGraph": {
+        "ds-file-upload": [
+          "ds-stack"
+        ]
+      },
       "props": [
         {
           "name": "align",
@@ -51569,6 +53579,51 @@
       "declaration": "void",
       "docstring": "",
       "path": "src/components/drawer/drawer.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadChangeDetail": {
+      "declaration": "interface Array<T> {\n    /**\n     * Gets or sets the length of the array. This is a number one higher than the highest index in the array.\n     */\n    length: number;\n    /**\n     * Returns a string representation of an array.\n     */\n    toString(): string;\n    /**\n     * Returns a string representation of an array. The elements are converted to string using their toLocaleString methods.\n     */\n    toLocaleString(): string;\n    /**\n     * Removes the last element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    pop(): T | undefined;\n    /**\n     * Appends new elements to the end of an array, and returns the new length of the array.\n     * @param items New elements to add to the array.\n     */\n    push(...items: T[]): number;\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: ConcatArray<T>[]): T[];\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: (T | ConcatArray<T>)[]): T[];\n    /**\n     * Adds all the elements of an array into a string, separated by the specified separator string.\n     * @param separator A string used to separate one element of the array from the next in the resulting string. If omitted, the array elements are separated with a comma.\n     */\n    join(separator?: string): string;\n    /**\n     * Reverses the elements in an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     */\n    reverse(): T[];\n    /**\n     * Removes the first element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    shift(): T | undefined;\n    /**\n     * Returns a copy of a section of an array.\n     * For both start and end, a negative index can be used to indicate an offset from the end of the array.\n     * For example, -2 refers to the second to last element of the array.\n     * @param start The beginning index of the specified portion of the array.\n     * If start is undefined, then the slice begins at index 0.\n     * @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.\n     * If end is undefined, then the slice extends to the end of the array.\n     */\n    slice(start?: number, end?: number): T[];\n    /**\n     * Sorts an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     * @param compareFn Function used to determine the order of the elements. It is expected to return\n     * a negative value if the first argument is less than the second argument, zero if they're equal, and a positive\n     * value otherwise. If omitted, the elements are sorted in ascending, UTF-16 code unit order.\n     * ```ts\n     * [11,2,22,1].sort((a, b) => a - b)\n     * ```\n     */\n    sort(compareFn?: (a: T, b: T) => number): this;\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount?: number): T[];\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @param items Elements to insert into the array in place of the deleted elements.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount: number, ...items: T[]): T[];\n    /**\n     * Inserts new elements at the start of an array, and returns the new length of the array.\n     * @param items Elements to insert at the start of the array.\n     */\n    unshift(...items: T[]): number;\n    /**\n     * Returns the index of the first occurrence of a value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.\n     */\n    indexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Returns the index of the last occurrence of a specified value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin searching backward. If fromIndex is omitted, the search starts at the last index in the array.\n     */\n    lastIndexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[];\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Determines whether the specified callback function returns true for any element of an array.\n     * @param predicate A function that accepts up to three arguments. The some method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value true, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Performs the specified action for each element in an array.\n     * @param callbackfn A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;\n    /**\n     * Calls a defined callback function on each element of an array, and returns an array that contains the results.\n     * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[];\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n\n    [n: number]: T;\n}",
+      "docstring": "",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadFilesAddedDetail": {
+      "declaration": "interface Array<T> {\n    /**\n     * Gets or sets the length of the array. This is a number one higher than the highest index in the array.\n     */\n    length: number;\n    /**\n     * Returns a string representation of an array.\n     */\n    toString(): string;\n    /**\n     * Returns a string representation of an array. The elements are converted to string using their toLocaleString methods.\n     */\n    toLocaleString(): string;\n    /**\n     * Removes the last element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    pop(): T | undefined;\n    /**\n     * Appends new elements to the end of an array, and returns the new length of the array.\n     * @param items New elements to add to the array.\n     */\n    push(...items: T[]): number;\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: ConcatArray<T>[]): T[];\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: (T | ConcatArray<T>)[]): T[];\n    /**\n     * Adds all the elements of an array into a string, separated by the specified separator string.\n     * @param separator A string used to separate one element of the array from the next in the resulting string. If omitted, the array elements are separated with a comma.\n     */\n    join(separator?: string): string;\n    /**\n     * Reverses the elements in an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     */\n    reverse(): T[];\n    /**\n     * Removes the first element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    shift(): T | undefined;\n    /**\n     * Returns a copy of a section of an array.\n     * For both start and end, a negative index can be used to indicate an offset from the end of the array.\n     * For example, -2 refers to the second to last element of the array.\n     * @param start The beginning index of the specified portion of the array.\n     * If start is undefined, then the slice begins at index 0.\n     * @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.\n     * If end is undefined, then the slice extends to the end of the array.\n     */\n    slice(start?: number, end?: number): T[];\n    /**\n     * Sorts an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     * @param compareFn Function used to determine the order of the elements. It is expected to return\n     * a negative value if the first argument is less than the second argument, zero if they're equal, and a positive\n     * value otherwise. If omitted, the elements are sorted in ascending, UTF-16 code unit order.\n     * ```ts\n     * [11,2,22,1].sort((a, b) => a - b)\n     * ```\n     */\n    sort(compareFn?: (a: T, b: T) => number): this;\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount?: number): T[];\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @param items Elements to insert into the array in place of the deleted elements.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount: number, ...items: T[]): T[];\n    /**\n     * Inserts new elements at the start of an array, and returns the new length of the array.\n     * @param items Elements to insert at the start of the array.\n     */\n    unshift(...items: T[]): number;\n    /**\n     * Returns the index of the first occurrence of a value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.\n     */\n    indexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Returns the index of the last occurrence of a specified value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin searching backward. If fromIndex is omitted, the search starts at the last index in the array.\n     */\n    lastIndexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[];\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Determines whether the specified callback function returns true for any element of an array.\n     * @param predicate A function that accepts up to three arguments. The some method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value true, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Performs the specified action for each element in an array.\n     * @param callbackfn A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;\n    /**\n     * Calls a defined callback function on each element of an array, and returns an array that contains the results.\n     * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[];\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n\n    [n: number]: T;\n}",
+      "docstring": "",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadFilesRemovedDetail": {
+      "declaration": "interface Array<T> {\n    /**\n     * Gets or sets the length of the array. This is a number one higher than the highest index in the array.\n     */\n    length: number;\n    /**\n     * Returns a string representation of an array.\n     */\n    toString(): string;\n    /**\n     * Returns a string representation of an array. The elements are converted to string using their toLocaleString methods.\n     */\n    toLocaleString(): string;\n    /**\n     * Removes the last element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    pop(): T | undefined;\n    /**\n     * Appends new elements to the end of an array, and returns the new length of the array.\n     * @param items New elements to add to the array.\n     */\n    push(...items: T[]): number;\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: ConcatArray<T>[]): T[];\n    /**\n     * Combines two or more arrays.\n     * This method returns a new array without modifying any existing arrays.\n     * @param items Additional arrays and/or items to add to the end of the array.\n     */\n    concat(...items: (T | ConcatArray<T>)[]): T[];\n    /**\n     * Adds all the elements of an array into a string, separated by the specified separator string.\n     * @param separator A string used to separate one element of the array from the next in the resulting string. If omitted, the array elements are separated with a comma.\n     */\n    join(separator?: string): string;\n    /**\n     * Reverses the elements in an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     */\n    reverse(): T[];\n    /**\n     * Removes the first element from an array and returns it.\n     * If the array is empty, undefined is returned and the array is not modified.\n     */\n    shift(): T | undefined;\n    /**\n     * Returns a copy of a section of an array.\n     * For both start and end, a negative index can be used to indicate an offset from the end of the array.\n     * For example, -2 refers to the second to last element of the array.\n     * @param start The beginning index of the specified portion of the array.\n     * If start is undefined, then the slice begins at index 0.\n     * @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.\n     * If end is undefined, then the slice extends to the end of the array.\n     */\n    slice(start?: number, end?: number): T[];\n    /**\n     * Sorts an array in place.\n     * This method mutates the array and returns a reference to the same array.\n     * @param compareFn Function used to determine the order of the elements. It is expected to return\n     * a negative value if the first argument is less than the second argument, zero if they're equal, and a positive\n     * value otherwise. If omitted, the elements are sorted in ascending, UTF-16 code unit order.\n     * ```ts\n     * [11,2,22,1].sort((a, b) => a - b)\n     * ```\n     */\n    sort(compareFn?: (a: T, b: T) => number): this;\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount?: number): T[];\n    /**\n     * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.\n     * @param start The zero-based location in the array from which to start removing elements.\n     * @param deleteCount The number of elements to remove.\n     * @param items Elements to insert into the array in place of the deleted elements.\n     * @returns An array containing the elements that were deleted.\n     */\n    splice(start: number, deleteCount: number, ...items: T[]): T[];\n    /**\n     * Inserts new elements at the start of an array, and returns the new length of the array.\n     * @param items Elements to insert at the start of the array.\n     */\n    unshift(...items: T[]): number;\n    /**\n     * Returns the index of the first occurrence of a value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.\n     */\n    indexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Returns the index of the last occurrence of a specified value in an array, or -1 if it is not present.\n     * @param searchElement The value to locate in the array.\n     * @param fromIndex The array index at which to begin searching backward. If fromIndex is omitted, the search starts at the last index in the array.\n     */\n    lastIndexOf(searchElement: T, fromIndex?: number): number;\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[];\n    /**\n     * Determines whether all the members of an array satisfy the specified test.\n     * @param predicate A function that accepts up to three arguments. The every method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value false, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Determines whether the specified callback function returns true for any element of an array.\n     * @param predicate A function that accepts up to three arguments. The some method calls\n     * the predicate function for each element in the array until the predicate returns a value\n     * which is coercible to the Boolean value true, or until the end of the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function.\n     * If thisArg is omitted, undefined is used as the this value.\n     */\n    some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;\n    /**\n     * Performs the specified action for each element in an array.\n     * @param callbackfn A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;\n    /**\n     * Calls a defined callback function on each element of an array, and returns an array that contains the results.\n     * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n     */\n    map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];\n    /**\n     * Returns the elements of an array that meet the condition specified in a callback function.\n     * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.\n     * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.\n     */\n    filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[];\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;\n    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;\n    /**\n     * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.\n     * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.\n     * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.\n     */\n    reduceRight<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;\n\n    [n: number]: T;\n}",
+      "docstring": "",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadRejectedFileDetail": {
+      "declaration": "export interface FileUploadRejectedFile {\n  reasons: FileUploadRejectionReason[]\n  file: File\n}",
+      "docstring": "",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadInputClickDetail": {
+      "declaration": "interface MouseEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */\n    readonly altKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */\n    readonly button: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/buttons) */\n    readonly buttons: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientX) */\n    readonly clientX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientY) */\n    readonly clientY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerX) */\n    readonly layerX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerY) */\n    readonly layerY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementX) */\n    readonly movementX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementY) */\n    readonly movementY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetX) */\n    readonly offsetX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetY) */\n    readonly offsetY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageX) */\n    readonly pageX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageY) */\n    readonly pageY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenX) */\n    readonly screenX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenY) */\n    readonly screenY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/x) */\n    readonly x: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/y) */\n    readonly y: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/initMouseEvent)\n     */\n    initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void;\n}",
+      "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadBlurDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/components/file-upload/file-upload.interfaces.ts::FileUploadFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/file-upload/file-upload.interfaces.ts"
+    },
+    "src/global/index.ts::DsLanguage": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsRegion": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/global/index.ts"
     },
     "src/components/footer/footer.interfaces.ts::FooterLanguageChangeDetail": {
       "declaration": "export interface FooterLanguageChangeDetail {\n  language: string\n}",

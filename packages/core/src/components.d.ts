@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-import { DsConfigState } from "./global/index";
+import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
@@ -20,6 +20,7 @@ import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 import { FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
@@ -45,7 +46,7 @@ import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuratio
 import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
 import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-export { DsConfigState } from "./global/index";
+export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
@@ -59,6 +60,7 @@ export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace }
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 export { FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
@@ -987,6 +989,112 @@ export namespace Components {
           * Opens the drawer.
          */
         "present": () => Promise<void>;
+    }
+    /**
+     * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+     */
+    interface DsFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+          * @default ''
+         */
+        "accept": string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Sets the file list to an empty list.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Defines the color of the file upload. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: { language: DsLanguage; region: DsRegion; }) => Promise<void>;
+        /**
+          * The description of the file upload, displayed below the drop zone.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The text displayed inside the drop zone. Defaults to localized "Drag and drop or choose file(s) to upload".
+          * @default ''
+         */
+        "dropZoneLabel": string;
+        /**
+          * If `true` below the drop-zone area it generates a file list.
+          * @default true
+         */
+        "hasFileList": boolean;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the file upload is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the file upload, displayed in the drop zone area.
+          * @default 'Choose or drop a file...'
+         */
+        "label": string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+          * @default true
+         */
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.fileUploadId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the file upload (array of selected files).
+          * @default []
+         */
+        "value": File[];
     }
     /**
      * Footer renders application level legal links, language selection, and social links.
@@ -3069,6 +3177,10 @@ export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsDrawerElement;
 }
+export interface DsFileUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsFileUploadElement;
+}
 export interface DsFooterCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsFooterElement;
@@ -3481,6 +3593,32 @@ declare global {
     var HTMLDsDrawerElement: {
         prototype: HTMLDsDrawerElement;
         new (): HTMLDsDrawerElement;
+    };
+    interface HTMLDsFileUploadElementEventMap {
+        "dsChange": FileUploadChangeDetail;
+        "dsFilesAdded": FileUploadFilesAddedDetail;
+        "dsFilesRemoved": FileUploadFilesRemovedDetail;
+        "dsRejectedFile": FileUploadRejectedFileDetail;
+        "dsInputClick": FileUploadInputClickDetail;
+        "dsBlur": FileUploadBlurDetail;
+        "dsFocus": FileUploadFocusDetail;
+    }
+    /**
+     * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+     */
+    interface HTMLDsFileUploadElement extends Components.DsFileUpload, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsFileUploadElementEventMap>(type: K, listener: (this: HTMLDsFileUploadElement, ev: DsFileUploadCustomEvent<HTMLDsFileUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsFileUploadElementEventMap>(type: K, listener: (this: HTMLDsFileUploadElement, ev: DsFileUploadCustomEvent<HTMLDsFileUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsFileUploadElement: {
+        prototype: HTMLDsFileUploadElement;
+        new (): HTMLDsFileUploadElement;
     };
     interface HTMLDsFooterElementEventMap {
         "dsLanguageChange": FooterLanguageChangeDetail;
@@ -4163,6 +4301,7 @@ declare global {
         "ds-data-value": HTMLDsDataValueElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
+        "ds-file-upload": HTMLDsFileUploadElement;
         "ds-footer": HTMLDsFooterElement;
         "ds-heading": HTMLDsHeadingElement;
         "ds-hint": HTMLDsHintElement;
@@ -5180,6 +5319,131 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+    }
+    /**
+     * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+     */
+    interface DsFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+          * @default ''
+         */
+        "accept"?: string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Defines the color of the file upload. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * The description of the file upload, displayed below the drop zone.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The text displayed inside the drop zone. Defaults to localized "Drag and drop or choose file(s) to upload".
+          * @default ''
+         */
+        "dropZoneLabel"?: string;
+        /**
+          * If `true` below the drop-zone area it generates a file list.
+          * @default true
+         */
+        "hasFileList"?: boolean;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the file upload is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the file upload, displayed in the drop zone area.
+          * @default 'Choose or drop a file...'
+         */
+        "label"?: string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+          * @default true
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.fileUploadId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsFileUploadCustomEvent<FileUploadBlurDetail>) => void;
+        /**
+          * Triggers when a file is added or removed.
+         */
+        "onDsChange"?: (event: DsFileUploadCustomEvent<FileUploadChangeDetail>) => void;
+        /**
+          * Triggers when a file is added.
+         */
+        "onDsFilesAdded"?: (event: DsFileUploadCustomEvent<FileUploadFilesAddedDetail>) => void;
+        /**
+          * Triggers when a file is removed.
+         */
+        "onDsFilesRemoved"?: (event: DsFileUploadCustomEvent<FileUploadFilesRemovedDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsFileUploadCustomEvent<FileUploadFocusDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onDsInputClick"?: (event: DsFileUploadCustomEvent<FileUploadInputClickDetail>) => void;
+        /**
+          * Triggers when a file is rejected due to validation rules.
+         */
+        "onDsRejectedFile"?: (event: DsFileUploadCustomEvent<FileUploadRejectedFileDetail>) => void;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The value of the file upload (array of selected files).
+          * @default []
+         */
+        "value"?: File[];
     }
     /**
      * Footer renders application level legal links, language selection, and social links.
@@ -7571,6 +7835,26 @@ declare namespace LocalJSX {
         "label": string;
         "container": DrawerContainer;
     }
+    interface DsFileUploadAttributes {
+        "name": string;
+        "label": string;
+        "dropZoneLabel": string;
+        "description": string;
+        "invalidText": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "multiple": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "loading": boolean;
+        "required": boolean;
+        "accept": string;
+        "maxFiles": number;
+        "maxFileSize": number;
+        "maxBundleSize": number;
+        "hasFileList": boolean;
+        "autoInvalidOff": boolean;
+    }
     interface DsFooterAttributes {
         "hideLanguageSelection": boolean;
         "disableDefaultLinks": boolean;
@@ -8012,6 +8296,7 @@ declare namespace LocalJSX {
         "ds-data-value": DsDataValue;
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
+        "ds-file-upload": Omit<DsFileUpload, keyof DsFileUploadAttributes> & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes]?: DsFileUpload[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `attr:${K}`]?: DsFileUploadAttributes[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `prop:${K}`]?: DsFileUpload[K] };
         "ds-footer": Omit<DsFooter, keyof DsFooterAttributes> & { [K in keyof DsFooter & keyof DsFooterAttributes]?: DsFooter[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `attr:${K}`]?: DsFooterAttributes[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `prop:${K}`]?: DsFooter[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
         "ds-hint": Omit<DsHint, keyof DsHintAttributes> & { [K in keyof DsHint & keyof DsHintAttributes]?: DsHint[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `attr:${K}`]?: DsHintAttributes[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `prop:${K}`]?: DsHint[K] };
@@ -8161,6 +8446,10 @@ declare module "@stencil/core" {
              * and Escape-key handling.
              */
             "ds-drawer": LocalJSX.IntrinsicElements["ds-drawer"] & JSXBase.HTMLAttributes<HTMLDsDrawerElement>;
+            /**
+             * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+             */
+            "ds-file-upload": LocalJSX.IntrinsicElements["ds-file-upload"] & JSXBase.HTMLAttributes<HTMLDsFileUploadElement>;
             /**
              * Footer renders application level legal links, language selection, and social links.
              * Link content is slot first to keep links crawlable and SEO friendly.

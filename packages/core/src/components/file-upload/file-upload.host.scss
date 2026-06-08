@@ -1,0 +1,211 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../input/input.mixin' as input;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode.
+ *
+ * @prop --file-upload-label-family: Font family of the label text.
+ * @prop --file-upload-label-weight: Font weight of the label text.
+ * @prop --file-upload-label-size: Font size of the label text.
+ * @prop --file-upload-label-line-height: Line height of the label text.
+ * @prop --file-upload-drop-zone-border-color: Border color of the drop zone.
+ * @prop --file-upload-drop-zone-background: Background color of the drop zone.
+ * @prop --file-upload-drop-zone-hover-background: Background color on hover.
+ * @prop --file-upload-drop-zone-hover-border-color: Border color on hover.
+ * @prop --file-upload-drop-zone-hover-text-color: Text color on hover.
+ * @prop --file-upload-drop-zone-active-background: Background color when active.
+ * @prop --file-upload-drop-zone-active-border-color: Border color when active.
+ * @prop --file-upload-drop-zone-active-text-color: Text color when active.
+ * @prop --file-upload-drop-zone-focus-border-color: Border color when focused.
+ * @prop --file-upload-drop-zone-disabled-background: Background color when disabled.
+ * @prop --file-upload-drop-zone-disabled-border-color: Border color when disabled.
+ * @prop --file-upload-drop-zone-disabled-text-color: Text color when disabled.
+ * @prop --file-upload-file-list-background: Background color of file list items.
+ * @prop --file-upload-file-name-color: Text color of file names.
+ * @prop --file-upload-file-size-color: Text color of file sizes.
+ * @prop --file-upload-disabled-icon-color: Icon color when disabled.
+ * @prop --file-upload-disabled-text-color: Text color when disabled.
+ */
+
+:host {
+  @include vars.local(file-upload-label-family, var(--ds-alias-text-family-body));
+  @include vars.local(file-upload-label-weight, var(--ds-alias-text-weight-bold));
+  @include vars.local(file-upload-label-size, var(--ds-alias-text-size-base-device));
+  @include vars.local(file-upload-label-line-height, var(--ds-alias-text-line-height-body));
+  @include vars.local(file-upload-drop-zone-border-color, var(--ds-alias-border-color-grey));
+  @include vars.local(file-upload-drop-zone-background, var(--ds-alias-background-color-transparent));
+  @include vars.local(file-upload-drop-zone-hover-background, var(--ds-alias-background-color-grey-lighter));
+  @include vars.local(file-upload-drop-zone-hover-border-color, var(--ds-alias-border-color-primary));
+  @include vars.local(file-upload-drop-zone-hover-text-color, var(--ds-alias-text-color-primary-hover));
+  @include vars.local(file-upload-drop-zone-active-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-drop-zone-active-border-color, var(--ds-alias-border-color-primary));
+  @include vars.local(file-upload-drop-zone-active-text-color, var(--ds-alias-text-color-primary-active));
+  @include vars.local(file-upload-drop-zone-focus-border-color, var(--ds-alias-border-focus));
+  @include vars.local(file-upload-drop-zone-disabled-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-drop-zone-disabled-border-color, var(--ds-button-color-disabled-base-text));
+  @include vars.local(file-upload-drop-zone-disabled-text-color, var(--ds-button-color-disabled-base-text));
+  @include vars.local(file-upload-file-list-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-file-name-color, var(--ds-alias-text-color-primary));
+  @include vars.local(file-upload-file-size-color, var(--ds-alias-text-color-primary-light));
+  @include vars.local(file-upload-disabled-icon-color, var(--ds-button-color-disabled-base-text));
+  @include vars.local(file-upload-disabled-text-color, var(--ds-button-color-disabled-base-text));
+
+  @include input.vars('file-upload');
+  @include input.vars-label('file-upload');
+  @include input.vars-description('file-upload');
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  @include input.style('file-upload', '#input');
+  @include input.label('file-upload', 'label');
+  @include input.description('file-upload', '#description');
+}
+
+:host input[type='file'],
+:host #drop-zone-status {
+  @include visually-hidden();
+}
+
+:host #drop-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: 2px dashed var(--_file-upload-drop-zone-border-color);
+  border-radius: var(--ds-alias-radius-base);
+  background-color: var(--_file-upload-drop-zone-background);
+
+  @include hover {
+    &:hover:not(.is-disabled) {
+      background-color: var(--_file-upload-drop-zone-hover-background);
+      color: var(--_file-upload-drop-zone-hover-text-color);
+      --icon-color: var(--_file-upload-drop-zone-hover-text-color);
+      cursor: pointer;
+    }
+  }
+
+  &:active:not(.is-disabled) {
+    border-color: var(--_file-upload-drop-zone-active-border-color);
+    background-color: var(--_file-upload-drop-zone-active-background);
+    color: var(--_file-upload-drop-zone-active-text-color);
+    --icon-color: var(--_file-upload-drop-zone-active-text-color);
+  }
+
+  &:focus-within:not(.is-disabled) {
+    &:not(:active) {
+      border-color: var(--_file-upload-drop-zone-focus-border-color);
+    }
+  }
+
+  &.is-disabled {
+    background-color: var(--_file-upload-drop-zone-disabled-background);
+    border-color: var(--_file-upload-drop-zone-disabled-border-color);
+    color: var(--_file-upload-drop-zone-disabled-text-color);
+    --icon-color: var(--_file-upload-drop-zone-disabled-text-color);
+    cursor: default;
+  }
+}
+
+:host #drop-zone-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  font-family: var(--ds-alias-text-family-base);
+  font-weight: var(--ds-alias-text-weight-bold);
+  font-size: var(--ds-alias-text-size-base-device);
+}
+
+:host #file-list {
+  margin-block: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+:host #file-list li {
+  padding: 0.5rem 1rem;
+  border-radius: var(--ds-alias-radius-base);
+  background-color: var(--_file-upload-file-list-background);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .stack {
+    width: 100%;
+  }
+
+  .file-name {
+    color: var(--_file-upload-file-name-color);
+    font-weight: var(--ds-alias-text-weight-bold);
+    font-size: var(--ds-alias-text-size-base-device);
+  }
+
+  .file-size {
+    color: var(--_file-upload-file-size-color);
+    font-size: var(--ds-alias-text-size-xs-device);
+  }
+}
+
+:host #file-list.is-disabled li {
+  --icon-color: var(--_file-upload-disabled-icon-color);
+
+  .file-name {
+    color: var(--_file-upload-disabled-text-color);
+  }
+
+  .file-size {
+    color: var(--_file-upload-disabled-text-color);
+  }
+}
+
+/**
+ * State Styles
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-file-upload-description-color: var(--ds-input-description-color-danger);
+  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-danger-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-danger-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-file-upload-description-color: var(--ds-input-description-color-success);
+  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-success-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-success-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-file-upload-description-color: var(--ds-input-description-color-warning);
+  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-warning-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-warning-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-warning-border);
+}

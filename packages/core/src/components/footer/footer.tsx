@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Method, Prop, State, h, Host } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, type Loggable, ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
