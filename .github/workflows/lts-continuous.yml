@@ -50,7 +50,7 @@ jobs:
         run: npm ci
 
       - name: Define Nx cache
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@v5
 
       - name: Build
         shell: bash
