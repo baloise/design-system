@@ -172,7 +172,7 @@ jobs:
         working-directory: ./e2e
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./packages/core
@@ -180,7 +180,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: e2e-artifacts
           path: ./e2e
@@ -235,7 +235,7 @@ jobs:
         working-directory: ./e2e
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./packages/core
@@ -243,7 +243,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: e2e-artifacts
           path: ./e2e
@@ -302,7 +302,7 @@ jobs:
         run: npm ci
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: tokens-dist
           path: packages/tokens
@@ -310,7 +310,7 @@ jobs:
         run: unzip -q -o packages/tokens/TokensDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: icons-dist
           path: packages/icons
@@ -318,7 +318,7 @@ jobs:
         run: unzip -q -o packages/icons/IconsDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: styles-dist
           path: packages/styles
@@ -326,7 +326,7 @@ jobs:
         run: unzip -q -o packages/styles/StylesDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-loader
           path: ./packages/core
@@ -334,7 +334,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreLoader.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./core/dist
@@ -342,7 +342,7 @@ jobs:
         run: unzip -q -o ./core/dist/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-components
           path: ./packages/core
@@ -350,7 +350,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreComponents.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: react
           path: ./packages/react/src
@@ -358,7 +358,7 @@ jobs:
         run: unzip -q -o ./packages/react/src/React.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular
           path: ./packages/angular/src
@@ -366,7 +366,7 @@ jobs:
         run: unzip -q -o ./packages/angular/src/Angular.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular-module
           path: ./packages/angular-module/src
@@ -374,7 +374,7 @@ jobs:
         run: unzip -q -o ./packages/angular-module/src/AngularModule.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: testing-dist
           path: ./packages/testing
@@ -449,7 +449,7 @@ jobs:
         run: npm ci
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: tokens-dist
           path: packages/tokens
@@ -457,7 +457,7 @@ jobs:
         run: unzip -q -o packages/tokens/TokensDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: icons-dist
           path: packages/icons
@@ -465,7 +465,7 @@ jobs:
         run: unzip -q -o packages/icons/IconsDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: styles-dist
           path: packages/styles
@@ -473,7 +473,7 @@ jobs:
         run: unzip -q -o packages/styles/StylesDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-loader
           path: ./packages/core
@@ -481,7 +481,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreLoader.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./core/dist
@@ -489,7 +489,7 @@ jobs:
         run: unzip -q -o ./core/dist/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-components
           path: ./packages/core
@@ -497,7 +497,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreComponents.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: react
           path: ./packages/react/src
@@ -505,7 +505,7 @@ jobs:
         run: unzip -q -o ./packages/react/src/React.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular
           path: ./packages/angular/src
@@ -513,7 +513,7 @@ jobs:
         run: unzip -q -o ./packages/angular/src/Angular.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular-module
           path: ./packages/angular-module/src
@@ -521,7 +521,7 @@ jobs:
         run: unzip -q -o ./packages/angular-module/src/AngularModule.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: testing-dist
           path: ./packages/testing
