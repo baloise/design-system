@@ -20152,8 +20152,8 @@
       ],
       "tokens": [
         {
-          "name": "🧩 Component / FileUpload / Label / FontFamily",
-          "cssVarName": "--ds-fileupload-label-fontfamily",
+          "name": "🧩 Component / FileUpload / Label / Font / Family",
+          "cssVarName": "--ds-fileupload-label-font-family",
           "value": "{🔗 Alias.🔤 Text.Family.Body}",
           "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
           "inheritance": [
@@ -20166,20 +20166,21 @@
               "figmaName": "Alias / Text / Family / Body"
             },
             {
-              "cssVar": "--ds-fileupload-label-fontfamily",
-              "figmaName": "Component / FileUpload / Label / FontFamily"
+              "cssVar": "--ds-fileupload-label-font-family",
+              "figmaName": "Component / FileUpload / Label / Font / Family"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
             "Label",
-            "FontFamily"
+            "Font",
+            "Family"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Label / FontWeight",
-          "cssVarName": "--ds-fileupload-label-fontweight",
+          "name": "🧩 Component / FileUpload / Label / Font / Weight",
+          "cssVarName": "--ds-fileupload-label-font-weight",
           "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
           "nativeValue": "700",
           "inheritance": [
@@ -20192,20 +20193,21 @@
               "figmaName": "Alias / Text / Weight / Bold"
             },
             {
-              "cssVar": "--ds-fileupload-label-fontweight",
-              "figmaName": "Component / FileUpload / Label / FontWeight"
+              "cssVar": "--ds-fileupload-label-font-weight",
+              "figmaName": "Component / FileUpload / Label / Font / Weight"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
             "Label",
-            "FontWeight"
+            "Font",
+            "Weight"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Label / FontSize",
-          "cssVarName": "--ds-fileupload-label-fontsize",
+          "name": "🧩 Component / FileUpload / Label / Text / Size",
+          "cssVarName": "--ds-fileupload-label-text-size",
           "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
           "nativeValue": "16",
           "inheritance": [
@@ -20218,706 +20220,21 @@
               "figmaName": "Alias / Text / Size / Base / Mobile"
             },
             {
-              "cssVar": "--ds-fileupload-label-fontsize",
-              "figmaName": "Component / FileUpload / Label / FontSize"
+              "cssVar": "--ds-fileupload-label-text-size",
+              "figmaName": "Component / FileUpload / Label / Text / Size"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
             "Label",
-            "FontSize"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Label / LineHeight",
-          "cssVarName": "--ds-fileupload-label-lineheight",
-          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
-          "nativeValue": "1.5",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-lineheight-3",
-              "figmaName": "Global / Font / LineHeight / 3"
-            },
-            {
-              "cssVar": "--ds-text-lineheight-body",
-              "figmaName": "Alias / Text / LineHeight / Body"
-            },
-            {
-              "cssVar": "--ds-fileupload-label-lineheight",
-              "figmaName": "Component / FileUpload / Label / LineHeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Label",
-            "LineHeight"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Label / Color / Text",
-          "cssVarName": "--ds-fileupload-label-color-text",
-          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primary",
-              "figmaName": "Alias / Text / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-fileupload-label-color-text",
-              "figmaName": "Component / FileUpload / Label / Color / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Label",
-            "Color",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Control / FontFamily",
-          "cssVarName": "--ds-fileupload-control-fontfamily",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
-            },
-            {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
-            },
-            {
-              "cssVar": "--ds-fileupload-control-fontfamily",
-              "figmaName": "Component / FileUpload / Control / FontFamily"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Control",
-            "FontFamily"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Control / FontWeight",
-          "cssVarName": "--ds-fileupload-control-fontweight",
-          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
-          "nativeValue": "400",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-weight-400",
-              "figmaName": "Global / Font / Weight / 400"
-            },
-            {
-              "cssVar": "--ds-text-weight-regular",
-              "figmaName": "Alias / Text / Weight / Regular"
-            },
-            {
-              "cssVar": "--ds-fileupload-control-fontweight",
-              "figmaName": "Component / FileUpload / Control / FontWeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Control",
-            "FontWeight"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Control / FontSize",
-          "cssVarName": "--ds-fileupload-control-fontsize",
-          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
-          "nativeValue": "16",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-size-16",
-              "figmaName": "Global / Font / Size / 16"
-            },
-            {
-              "cssVar": "--ds-text-size-base-mobile",
-              "figmaName": "Alias / Text / Size / Base / Mobile"
-            },
-            {
-              "cssVar": "--ds-fileupload-control-fontsize",
-              "figmaName": "Component / FileUpload / Control / FontSize"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Control",
-            "FontSize"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Control / Color / Text",
-          "cssVarName": "--ds-fileupload-control-color-text",
-          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primary",
-              "figmaName": "Alias / Text / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-fileupload-control-color-text",
-              "figmaName": "Component / FileUpload / Control / Color / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Control",
-            "Color",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Control / Color / Placeholder",
-          "cssVarName": "--ds-fileupload-control-color-placeholder",
-          "value": "{🔗 Alias.🔤 Text.Color.Placeholder}",
-          "nativeValue": "#B3B6D4",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-2",
-              "figmaName": "Global / Color / Primary / 2"
-            },
-            {
-              "cssVar": "--ds-text-color-placeholder",
-              "figmaName": "Alias / Text / Color / Placeholder"
-            },
-            {
-              "cssVar": "--ds-fileupload-control-color-placeholder",
-              "figmaName": "Component / FileUpload / Control / Color / Placeholder"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Control",
-            "Color",
-            "Placeholder"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Base",
-          "cssVarName": "--ds-fileupload-dropzone-color-background-base",
-          "value": "{🌐 Global.🌈 Color.Neutral}",
-          "nativeValue": "#FFFFFF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-neutral",
-              "figmaName": "Global / Color / Neutral"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-background-base",
-              "figmaName": "Component / FileUpload / DropZone / Color / Background / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Background",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Hover",
-          "cssVarName": "--ds-fileupload-dropzone-color-background-hover",
-          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
-          "nativeValue": "#FAFAFA",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
-            },
-            {
-              "cssVar": "--ds-background-color-greylighter",
-              "figmaName": "Alias / Background / Color / GreyLighter"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-background-hover",
-              "figmaName": "Component / FileUpload / DropZone / Color / Background / Hover"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Background",
-            "Hover"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Active",
-          "cssVarName": "--ds-fileupload-dropzone-color-background-active",
-          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#F6F6F6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-greylight",
-              "figmaName": "Alias / Background / Color / GreyLight"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-background-active",
-              "figmaName": "Component / FileUpload / DropZone / Color / Background / Active"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Background",
-            "Active"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Background / Disabled",
-          "cssVarName": "--ds-fileupload-dropzone-color-background-disabled",
-          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#F6F6F6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-greylight",
-              "figmaName": "Alias / Background / Color / GreyLight"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-background-disabled",
-              "figmaName": "Component / FileUpload / DropZone / Color / Background / Disabled"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Background",
-            "Disabled"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Base",
-          "cssVarName": "--ds-fileupload-dropzone-color-border-base",
-          "value": "{🔗 Alias.▭ Border.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-border-color-primary",
-              "figmaName": "Alias / Border / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-border-base",
-              "figmaName": "Component / FileUpload / DropZone / Color / Border / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Border",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Hover",
-          "cssVarName": "--ds-fileupload-dropzone-color-border-hover",
-          "value": "{🔗 Alias.▭ Border.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-border-color-primary",
-              "figmaName": "Alias / Border / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-border-hover",
-              "figmaName": "Component / FileUpload / DropZone / Color / Border / Hover"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Border",
-            "Hover"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Active",
-          "cssVarName": "--ds-fileupload-dropzone-color-border-active",
-          "value": "{🔗 Alias.▭ Border.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-border-color-primary",
-              "figmaName": "Alias / Border / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-border-active",
-              "figmaName": "Component / FileUpload / DropZone / Color / Border / Active"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Border",
-            "Active"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Focus",
-          "cssVarName": "--ds-fileupload-dropzone-color-border-focus",
-          "value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}",
-          "nativeValue": "#6C2273",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-6",
-              "figmaName": "Global / Color / Purple / 6"
-            },
-            {
-              "cssVar": "--ds-interaction-focus-color-base",
-              "figmaName": "Alias / Interaction / Focus / Color / Base"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-border-focus",
-              "figmaName": "Component / FileUpload / DropZone / Color / Border / Focus"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Border",
-            "Focus"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Border / Disabled",
-          "cssVarName": "--ds-fileupload-dropzone-color-border-disabled",
-          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
-          "nativeValue": "#747474",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-5",
-              "figmaName": "Global / Color / Grey / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
-            },
-            {
-              "cssVar": "--ds-button-color-disabled-base-text",
-              "figmaName": "Component / Button / Color / Disabled / Base / Text"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-border-disabled",
-              "figmaName": "Component / FileUpload / DropZone / Color / Border / Disabled"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Border",
-            "Disabled"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Text / Hover",
-          "cssVarName": "--ds-fileupload-dropzone-color-text-hover",
-          "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
-          "nativeValue": "#0014AA",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-sky-5",
-              "figmaName": "Global / Color / Sky / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primaryhover",
-              "figmaName": "Alias / Text / Color / PrimaryHover"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-text-hover",
-              "figmaName": "Component / FileUpload / DropZone / Color / Text / Hover"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Text",
-            "Hover"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Text / Active",
-          "cssVarName": "--ds-fileupload-dropzone-color-text-active",
-          "value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
-          "nativeValue": "#000739",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-6",
-              "figmaName": "Global / Color / Primary / 6"
-            },
-            {
-              "cssVar": "--ds-text-color-primaryactive",
-              "figmaName": "Alias / Text / Color / PrimaryActive"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-text-active",
-              "figmaName": "Component / FileUpload / DropZone / Color / Text / Active"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Text",
-            "Active"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / DropZone / Color / Text / Disabled",
-          "cssVarName": "--ds-fileupload-dropzone-color-text-disabled",
-          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
-          "nativeValue": "#747474",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-5",
-              "figmaName": "Global / Color / Grey / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
-            },
-            {
-              "cssVar": "--ds-button-color-disabled-base-text",
-              "figmaName": "Component / Button / Color / Disabled / Base / Text"
-            },
-            {
-              "cssVar": "--ds-fileupload-dropzone-color-text-disabled",
-              "figmaName": "Component / FileUpload / DropZone / Color / Text / Disabled"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "DropZone",
-            "Color",
-            "Text",
-            "Disabled"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / FileList / Color / Background",
-          "cssVarName": "--ds-fileupload-filelist-color-background",
-          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#F6F6F6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-greylight",
-              "figmaName": "Alias / Background / Color / GreyLight"
-            },
-            {
-              "cssVar": "--ds-fileupload-filelist-color-background",
-              "figmaName": "Component / FileUpload / FileList / Color / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "FileList",
-            "Color",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / FileItem / Color / Text / Name",
-          "cssVarName": "--ds-fileupload-fileitem-color-text-name",
-          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primary",
-              "figmaName": "Alias / Text / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-fileupload-fileitem-color-text-name",
-              "figmaName": "Component / FileUpload / FileItem / Color / Text / Name"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "FileItem",
-            "Color",
-            "Text",
-            "Name"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / FileItem / Color / Text / Size",
-          "cssVarName": "--ds-fileupload-fileitem-color-text-size",
-          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
-          "nativeValue": "#656EA8",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-3",
-              "figmaName": "Global / Color / Primary / 3"
-            },
-            {
-              "cssVar": "--ds-text-color-primarylight",
-              "figmaName": "Alias / Text / Color / PrimaryLight"
-            },
-            {
-              "cssVar": "--ds-fileupload-fileitem-color-text-size",
-              "figmaName": "Component / FileUpload / FileItem / Color / Text / Size"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "FileItem",
-            "Color",
             "Text",
             "Size"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Description / FontFamily",
-          "cssVarName": "--ds-fileupload-description-fontfamily",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
-            },
-            {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
-            },
-            {
-              "cssVar": "--ds-fileupload-description-fontfamily",
-              "figmaName": "Component / FileUpload / Description / FontFamily"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Description",
-            "FontFamily"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Description / FontWeight",
-          "cssVarName": "--ds-fileupload-description-fontweight",
-          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
-          "nativeValue": "400",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-weight-400",
-              "figmaName": "Global / Font / Weight / 400"
-            },
-            {
-              "cssVar": "--ds-text-weight-regular",
-              "figmaName": "Alias / Text / Weight / Regular"
-            },
-            {
-              "cssVar": "--ds-fileupload-description-fontweight",
-              "figmaName": "Component / FileUpload / Description / FontWeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Description",
-            "FontWeight"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Description / FontSize",
-          "cssVarName": "--ds-fileupload-description-fontsize",
-          "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
-          "nativeValue": "14",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-size-14",
-              "figmaName": "Global / Font / Size / 14"
-            },
-            {
-              "cssVar": "--ds-text-size-sm-mobile",
-              "figmaName": "Alias / Text / Size / SM / Mobile"
-            },
-            {
-              "cssVar": "--ds-fileupload-description-fontsize",
-              "figmaName": "Component / FileUpload / Description / FontSize"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "FileUpload",
-            "Description",
-            "FontSize"
-          ]
-        },
-        {
-          "name": "🧩 Component / FileUpload / Description / LineHeight",
-          "cssVarName": "--ds-fileupload-description-lineheight",
+          "name": "🧩 Component / FileUpload / Label / Text / LineHeight",
+          "cssVarName": "--ds-fileupload-label-text-lineheight",
           "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
           "nativeValue": "1.5",
           "inheritance": [
@@ -20930,20 +20247,21 @@
               "figmaName": "Alias / Text / LineHeight / Body"
             },
             {
-              "cssVar": "--ds-fileupload-description-lineheight",
-              "figmaName": "Component / FileUpload / Description / LineHeight"
+              "cssVar": "--ds-fileupload-label-text-lineheight",
+              "figmaName": "Component / FileUpload / Label / Text / LineHeight"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
-            "Description",
+            "Label",
+            "Text",
             "LineHeight"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Description / Color / Text / Base",
-          "cssVarName": "--ds-fileupload-description-color-text-base",
+          "name": "🧩 Component / FileUpload / Label / Text / Color",
+          "cssVarName": "--ds-fileupload-label-text-color",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -20956,78 +20274,133 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-fileupload-description-color-text-base",
-              "figmaName": "Component / FileUpload / Description / Color / Text / Base"
+              "cssVar": "--ds-fileupload-label-text-color",
+              "figmaName": "Component / FileUpload / Label / Text / Color"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
-            "Description",
-            "Color",
+            "Label",
             "Text",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Base",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-base",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-border-color-base",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Border",
+            "Color",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Description / Color / Text / Success",
-          "cssVarName": "--ds-fileupload-description-color-text-success",
-          "value": "{🔗 Alias.🔤 Text.Color.Success}",
-          "nativeValue": "#168741",
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Hover",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-hover",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
           "inheritance": [
             {
-              "cssVar": "--ds-color-success-4",
-              "figmaName": "Global / Color / Success / 4"
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-text-color-success",
-              "figmaName": "Alias / Text / Color / Success"
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
             },
             {
-              "cssVar": "--ds-fileupload-description-color-text-success",
-              "figmaName": "Component / FileUpload / Description / Color / Text / Success"
+              "cssVar": "--ds-fileupload-dropzone-border-color-hover",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Hover"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
-            "Description",
+            "DropZone",
+            "Border",
             "Color",
-            "Text",
-            "Success"
+            "Hover"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Description / Color / Text / Warning",
-          "cssVarName": "--ds-fileupload-description-color-text-warning",
-          "value": "{🔗 Alias.🔤 Text.Color.Warning}",
-          "nativeValue": "#B24A00",
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Active",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-active",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
           "inheritance": [
             {
-              "cssVar": "--ds-color-yellow-6",
-              "figmaName": "Global / Color / Yellow / 6"
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-text-color-warning",
-              "figmaName": "Alias / Text / Color / Warning"
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
             },
             {
-              "cssVar": "--ds-fileupload-description-color-text-warning",
-              "figmaName": "Component / FileUpload / Description / Color / Text / Warning"
+              "cssVar": "--ds-fileupload-dropzone-border-color-active",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Active"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
-            "Description",
+            "DropZone",
+            "Border",
             "Color",
-            "Text",
-            "Warning"
+            "Active"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Description / Color / Text / Danger",
-          "cssVarName": "--ds-fileupload-description-color-text-danger",
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Focus",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-focus",
+          "value": "{🔗 Alias.▭ Border.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primary",
+              "figmaName": "Alias / Border / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-border-color-focus",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Focus"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Border",
+            "Color",
+            "Focus"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Danger",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-danger",
           "value": "{🔗 Alias.🔤 Text.Color.Danger}",
           "nativeValue": "#EA1800",
           "inheritance": [
@@ -21040,79 +20413,825 @@
               "figmaName": "Alias / Text / Color / Danger"
             },
             {
-              "cssVar": "--ds-fileupload-description-color-text-danger",
-              "figmaName": "Component / FileUpload / Description / Color / Text / Danger"
+              "cssVar": "--ds-fileupload-dropzone-border-color-danger",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Danger"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Border",
+            "Color",
+            "Danger"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Success",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-success",
+          "value": "{🔗 Alias.🔤 Text.Color.Success}",
+          "nativeValue": "#168741",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-border-color-success",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Success"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Border",
+            "Color",
+            "Success"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Border / Color / Warning",
+          "cssVarName": "--ds-fileupload-dropzone-border-color-warning",
+          "value": "{🔗 Alias.🔤 Text.Color.Warning}",
+          "nativeValue": "#B24A00",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-warning",
+              "figmaName": "Alias / Text / Color / Warning"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-border-color-warning",
+              "figmaName": "Component / FileUpload / DropZone / Border / Color / Warning"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Border",
+            "Color",
+            "Warning"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Background / Color / Base",
+          "cssVarName": "--ds-fileupload-dropzone-background-color-base",
+          "value": "{🔗 Alias.🎨 Background.Color.Transparent}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-neutral",
+              "figmaName": "Global / Color / Neutral"
+            },
+            {
+              "cssVar": "--ds-background-color-transparent",
+              "figmaName": "Alias / Background / Color / Transparent"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-background-color-base",
+              "figmaName": "Component / FileUpload / DropZone / Background / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Background",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Background / Color / Hover",
+          "cssVarName": "--ds-fileupload-dropzone-background-color-hover",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+          "nativeValue": "#FAFAFA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylighter",
+              "figmaName": "Alias / Background / Color / GreyLighter"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-background-color-hover",
+              "figmaName": "Component / FileUpload / DropZone / Background / Color / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Background",
+            "Color",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Background / Color / Active",
+          "cssVarName": "--ds-fileupload-dropzone-background-color-active",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-background-color-active",
+              "figmaName": "Component / FileUpload / DropZone / Background / Color / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Background",
+            "Color",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Background / Color / Disabled",
+          "cssVarName": "--ds-fileupload-dropzone-background-color-disabled",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-background-color-disabled",
+              "figmaName": "Component / FileUpload / DropZone / Background / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Background",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Text / Color / Hover",
+          "cssVarName": "--ds-fileupload-dropzone-text-color-hover",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryhover",
+              "figmaName": "Alias / Text / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-text-color-hover",
+              "figmaName": "Component / FileUpload / DropZone / Text / Color / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Text",
+            "Color",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Text / Color / Active",
+          "cssVarName": "--ds-fileupload-dropzone-text-color-active",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-primaryactive",
+              "figmaName": "Alias / Text / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-text-color-active",
+              "figmaName": "Component / FileUpload / DropZone / Text / Color / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Text",
+            "Color",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / DropZone / Text / Color / Disabled",
+          "cssVarName": "--ds-fileupload-dropzone-text-color-disabled",
+          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-button-color-disabled-base-text",
+              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+            },
+            {
+              "cssVar": "--ds-fileupload-dropzone-text-color-disabled",
+              "figmaName": "Component / FileUpload / DropZone / Text / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "DropZone",
+            "Text",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / FileList / Background / Color",
+          "cssVarName": "--ds-fileupload-filelist-background-color",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F6F6F6",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-filelist-background-color",
+              "figmaName": "Component / FileUpload / FileList / Background / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "FileList",
+            "Background",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / FileName / Text / Color",
+          "cssVarName": "--ds-fileupload-filename-text-color",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-fileupload-filename-text-color",
+              "figmaName": "Component / FileUpload / FileName / Text / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "FileName",
+            "Text",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / FileSize / Text / Color",
+          "cssVarName": "--ds-fileupload-filesize-text-color",
+          "value": "{🔗 Alias.🔤 Text.Color.PrimaryLight}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-fileupload-filesize-text-color",
+              "figmaName": "Component / FileUpload / FileSize / Text / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "FileSize",
+            "Text",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Icon / Color / Disabled",
+          "cssVarName": "--ds-fileupload-icon-color-disabled",
+          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-button-color-disabled-base-text",
+              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+            },
+            {
+              "cssVar": "--ds-fileupload-icon-color-disabled",
+              "figmaName": "Component / FileUpload / Icon / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Icon",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Font / Family",
+          "cssVarName": "--ds-fileupload-control-font-family",
+          "value": "{🧩 Component.Input.Control.Family}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-input-control-family",
+              "figmaName": "Component / Input / Control / Family"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-font-family",
+              "figmaName": "Component / FileUpload / Control / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Font / Weight",
+          "cssVarName": "--ds-fileupload-control-font-weight",
+          "value": "{🧩 Component.Input.Control.Weight}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-input-control-weight",
+              "figmaName": "Component / Input / Control / Weight"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-font-weight",
+              "figmaName": "Component / FileUpload / Control / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Text / Size",
+          "cssVarName": "--ds-fileupload-control-text-size",
+          "value": "{🧩 Component.Input.Control.FontSize.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-input-control-fontsize-mobile",
+              "figmaName": "Component / Input / Control / FontSize / Mobile"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-text-size",
+              "figmaName": "Component / FileUpload / Control / Text / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Text",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Text / LineHeight",
+          "cssVarName": "--ds-fileupload-control-text-lineheight",
+          "value": "{🧩 Component.Input.Control.LineHeight}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-input-control-lineheight",
+              "figmaName": "Component / Input / Control / LineHeight"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-text-lineheight",
+              "figmaName": "Component / FileUpload / Control / Text / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Text",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Text / Color / Base",
+          "cssVarName": "--ds-fileupload-control-text-color-base",
+          "value": "{🧩 Component.Input.Control.Color.Value.Base}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-input-control-color-value-base",
+              "figmaName": "Component / Input / Control / Color / Value / Base"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-text-color-base",
+              "figmaName": "Component / FileUpload / Control / Text / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Text",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Control / Placeholder / Color / Base",
+          "cssVarName": "--ds-fileupload-control-placeholder-color-base",
+          "value": "{🧩 Component.Input.Control.Color.Placeholder.Base}",
+          "nativeValue": "#B3B6D4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-2",
+              "figmaName": "Global / Color / Primary / 2"
+            },
+            {
+              "cssVar": "--ds-text-color-placeholder",
+              "figmaName": "Alias / Text / Color / Placeholder"
+            },
+            {
+              "cssVar": "--ds-input-control-color-placeholder-base",
+              "figmaName": "Component / Input / Control / Color / Placeholder / Base"
+            },
+            {
+              "cssVar": "--ds-fileupload-control-placeholder-color-base",
+              "figmaName": "Component / FileUpload / Control / Placeholder / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Control",
+            "Placeholder",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Font / Family",
+          "cssVarName": "--ds-fileupload-description-font-family",
+          "value": "{🧩 Component.Input.Description.Family}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-input-description-family",
+              "figmaName": "Component / Input / Description / Family"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-font-family",
+              "figmaName": "Component / FileUpload / Description / Font / Family"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
             "Description",
-            "Color",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Font / Weight",
+          "cssVarName": "--ds-fileupload-description-font-weight",
+          "value": "{🧩 Component.Input.Description.Weight}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-input-description-weight",
+              "figmaName": "Component / Input / Description / Weight"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-font-weight",
+              "figmaName": "Component / FileUpload / Description / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Text / Size",
+          "cssVarName": "--ds-fileupload-description-text-size",
+          "value": "{🧩 Component.Input.Description.Size.Mobile}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-12",
+              "figmaName": "Global / Font / Size / 12"
+            },
+            {
+              "cssVar": "--ds-text-size-xs-mobile",
+              "figmaName": "Alias / Text / Size / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-input-description-size-mobile",
+              "figmaName": "Component / Input / Description / Size / Mobile"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-text-size",
+              "figmaName": "Component / FileUpload / Description / Text / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
             "Text",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Text / LineHeight",
+          "cssVarName": "--ds-fileupload-description-text-lineheight",
+          "value": "{🧩 Component.Input.Description.LineHeight}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-input-description-lineheight",
+              "figmaName": "Component / Input / Description / LineHeight"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-text-lineheight",
+              "figmaName": "Component / FileUpload / Description / Text / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Text",
+            "LineHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Text / Color / Base",
+          "cssVarName": "--ds-fileupload-description-text-color-base",
+          "value": "{🧩 Component.Input.Description.Color.Base}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-primarylight",
+              "figmaName": "Alias / Text / Color / PrimaryLight"
+            },
+            {
+              "cssVar": "--ds-input-description-color-base",
+              "figmaName": "Component / Input / Description / Color / Base"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-text-color-base",
+              "figmaName": "Component / FileUpload / Description / Text / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Text",
+            "Color",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / FileUpload / Description / Text / Color / Danger",
+          "cssVarName": "--ds-fileupload-description-text-color-danger",
+          "value": "{🧩 Component.Input.Description.Color.Danger}",
+          "nativeValue": "#EA1800",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-4",
+              "figmaName": "Global / Color / Danger / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-danger",
+              "figmaName": "Alias / Text / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-input-description-color-danger",
+              "figmaName": "Component / Input / Description / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-fileupload-description-text-color-danger",
+              "figmaName": "Component / FileUpload / Description / Text / Color / Danger"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "FileUpload",
+            "Description",
+            "Text",
+            "Color",
             "Danger"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Disabled / Color / Icon",
-          "cssVarName": "--ds-fileupload-disabled-color-icon",
-          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
-          "nativeValue": "#747474",
+          "name": "🧩 Component / FileUpload / Description / Text / Color / Success",
+          "cssVarName": "--ds-fileupload-description-text-color-success",
+          "value": "{🧩 Component.Input.Description.Color.Success}",
+          "nativeValue": "#168741",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-5",
-              "figmaName": "Global / Color / Grey / 5"
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
             },
             {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
             },
             {
-              "cssVar": "--ds-button-color-disabled-base-text",
-              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+              "cssVar": "--ds-input-description-color-success",
+              "figmaName": "Component / Input / Description / Color / Success"
             },
             {
-              "cssVar": "--ds-fileupload-disabled-color-icon",
-              "figmaName": "Component / FileUpload / Disabled / Color / Icon"
+              "cssVar": "--ds-fileupload-description-text-color-success",
+              "figmaName": "Component / FileUpload / Description / Text / Color / Success"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
-            "Disabled",
+            "Description",
+            "Text",
             "Color",
-            "Icon"
+            "Success"
           ]
         },
         {
-          "name": "🧩 Component / FileUpload / Disabled / Color / Text",
-          "cssVarName": "--ds-fileupload-disabled-color-text",
-          "value": "{🧩 Component.Button.Color.Disabled.Base.Text}",
-          "nativeValue": "#747474",
+          "name": "🧩 Component / FileUpload / Description / Text / Color / Warning",
+          "cssVarName": "--ds-fileupload-description-text-color-warning",
+          "value": "{🧩 Component.Input.Description.Color.Warning}",
+          "nativeValue": "#B24A00",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-5",
-              "figmaName": "Global / Color / Grey / 5"
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
             },
             {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
+              "cssVar": "--ds-text-color-warning",
+              "figmaName": "Alias / Text / Color / Warning"
             },
             {
-              "cssVar": "--ds-button-color-disabled-base-text",
-              "figmaName": "Component / Button / Color / Disabled / Base / Text"
+              "cssVar": "--ds-input-description-color-warning",
+              "figmaName": "Component / Input / Description / Color / Warning"
             },
             {
-              "cssVar": "--ds-fileupload-disabled-color-text",
-              "figmaName": "Component / FileUpload / Disabled / Color / Text"
+              "cssVar": "--ds-fileupload-description-text-color-warning",
+              "figmaName": "Component / FileUpload / Description / Text / Color / Warning"
             }
           ],
           "path": [
             "🧩 Component",
             "FileUpload",
-            "Disabled",
+            "Description",
+            "Text",
             "Color",
-            "Text"
+            "Warning"
           ]
         }
       ],
