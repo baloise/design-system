@@ -189,7 +189,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress components tests 🧪
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           working-directory: e2e
           install: false
@@ -252,7 +252,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: node ./web-server.js
           wait-on: 'http://localhost:3333'
@@ -403,7 +403,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress tests 🧪
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: npm run cy:start
           wait-on: 'http://localhost:4200'
@@ -550,7 +550,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress tests 🧪
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: npm run cy:start
           wait-on: 'http://localhost:4200'
