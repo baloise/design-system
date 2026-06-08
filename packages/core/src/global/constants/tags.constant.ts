@@ -25,6 +25,7 @@ export const tags: string[] = [
   "ds-data-value",
   "ds-divider",
   "ds-drawer",
+  "ds-file-upload",
   "ds-footer",
   "ds-heading",
   "ds-hint",

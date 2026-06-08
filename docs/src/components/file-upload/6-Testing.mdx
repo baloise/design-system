@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FileUploadStories from './file-upload.stories'
+import { FILEUPLOAD_DOC_CONFIG, getFileUploadTabs } from './file-upload.doc-config'
+
+<Meta title="Components/FileUpload/Testing" />
+
+<Banner label={'Testing'} section={FILEUPLOAD_DOC_CONFIG.section} color={FILEUPLOAD_DOC_CONFIG.color} />
+
+<BannerTabs of={FileUploadStories} tabs={getFileUploadTabs('testing')} />
+
+<ComponentPageObject component="file-upload" />
+
+<Footer />
