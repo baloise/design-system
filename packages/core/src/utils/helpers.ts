@@ -1,5 +1,5 @@
 import { EventEmitter } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, transformTag } from '@stencil/core/internal'
 import { balBrowser } from './browser'
 import { BalConfig, useBalConfig } from './config'
 import {
@@ -120,7 +120,7 @@ export const debounce = (func: (...args: any[]) => void, wait = 0) => {
 }
 
 export const hasTagName = (element: any, tag: string) => {
-  return element && element.tagName && element.tagName === tag.toUpperCase()
+  return element && element.tagName && element.tagName === transformTag(tag).toUpperCase()
 }
 
 export const isDescendant = (
@@ -140,7 +140,7 @@ export const isDescendant = (
 export const hasParent = (parentTag: string, child: HTMLElement | EventTarget) => {
   let node = (child as any).parentNode
   while (node != null) {
-    if (node.tagName === parentTag.toUpperCase()) {
+    if (node.tagName === transformTag(parentTag).toUpperCase()) {
       return true
     }
     node = node.parentNode

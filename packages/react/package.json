@@ -13,6 +13,16 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/ds-core": "19.9.5",
-    "@stencil/react-output-target": "1.2.0"
+    "@stencil/react-output-target": "1.5.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.esm.d.ts",
+      "import": "./index.esm.js"
+    },
+    "./tag-transformer": {
+      "types": "./tag-transformer.esm.d.ts",
+      "import": "./tag-transformer.esm.js"
+    }
   }
 }

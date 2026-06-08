@@ -43,7 +43,7 @@ import { BalTabOption } from './bal-tab.type'
 import { newBalTabOption } from './bal-tab.util'
 import { TabNav } from './components/tab-nav'
 import { TabSelect } from './components/tab-select'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, transformTag } from '@stencil/core/internal'
 
 @Component({
   tag: 'bal-tabs',
@@ -441,7 +441,7 @@ export class Tabs
   }
 
   private get items(): HTMLBalTabItemElement[] {
-    return Array.from(this.el.querySelectorAll(`#${this.tabsId} > bal-tab-item`))
+    return Array.from(this.el.querySelectorAll(`#${this.tabsId} > ${transformTag("bal-tab-item")}`))
   }
 
   private getOptions = () => {

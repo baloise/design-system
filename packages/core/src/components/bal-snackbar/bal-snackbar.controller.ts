@@ -1,5 +1,6 @@
 import { Components } from '../../components'
 import { BalNoticeController, BalNoticeOptions } from '../../utils/overlays/notice.controller'
+import { transformTag } from '@stencil/core/internal'
 
 export interface BalSnackbarOptions extends BalNoticeOptions {
   icon: string
@@ -11,7 +12,7 @@ export interface BalSnackbarOptions extends BalNoticeOptions {
 export class BalSnackbarController extends BalNoticeController {
   constructor() {
     super({
-      tag: 'bal-snackbar',
+      tag: transformTag('bal-snackbar'),
     })
   }
 

@@ -1,3 +1,5 @@
+export { setTagTransformer } from '@stencil/core';
+
 /**
  * Config
  */

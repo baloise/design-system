@@ -1,4 +1,4 @@
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, transformTag } from '@stencil/core/internal'
 
 export const watchForOptions = <T extends HTMLStencilElement>(
   containerEl: HTMLElement | HTMLStencilElement,
@@ -13,7 +13,7 @@ export const watchForOptions = <T extends HTMLStencilElement>(
   const mutation = new MutationObserver(mutationList => {
     mutationList = mutationList.filter(
       record =>
-        record.target.nodeName === tagName.toUpperCase() || record.target.nodeName === 'bal-select'.toUpperCase(),
+        record.target.nodeName === transformTag(tagName).toUpperCase() || record.target.nodeName === transformTag('bal-select').toUpperCase(),
     )
     if (mutationList.length > 0) {
       onChange(undefined)

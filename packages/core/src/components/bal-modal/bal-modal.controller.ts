@@ -2,11 +2,12 @@ import { balBrowser } from '../../utils/browser'
 import { componentOnReady, getAppRoot } from '../../utils/helpers'
 import { getOverlay, getOverlays } from '../../utils/overlays/overlays'
 import { ModalOptions } from './bal-modal.type'
+import { transformTag } from '@stencil/core/internal'
 
 export * from './bal-modal.type'
 
 export class BalModalController {
-  tag = 'bal-modal'
+  tag = transformTag('bal-modal')
   create(options: ModalOptions): Promise<HTMLBalModalElement> {
     /* tslint:disable-next-line */
     if (typeof customElements !== 'undefined' && balBrowser.hasDocument) {

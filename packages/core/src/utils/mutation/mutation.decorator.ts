@@ -1,8 +1,11 @@
-import { ComponentInterface } from '@stencil/core'
+import { ComponentInterface, transformTag } from '@stencil/core'
 import { BalMutationObserver, MutationObserverOptions } from './mutation.interfaces'
 import { BalMutationSubject } from './mutation.subject'
 
 export function ListenToMutation(options: Partial<MutationObserverOptions>) {
+  if (options.tags) {
+    options = { ...options, tags: options.tags.map(tag => transformTag(tag)) }
+  }
   return function (
     target: ComponentInterface & BalMutationObserver,
     _propertyKey: string,

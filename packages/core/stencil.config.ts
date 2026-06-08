@@ -66,6 +66,7 @@ export const config: Config = {
   ],
   extras: {
     initializeNextTick: true,
+    additionalTagTransformers: true,
   },
   outputTargets: [
     {

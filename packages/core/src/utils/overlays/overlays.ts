@@ -1,4 +1,4 @@
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, transformTag } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
 import { addEventListener, removeEventListener } from '../helpers'
 import { focusableQueryString, focusFirstDescendant, focusLastDescendant, focusVisibleElement } from './focus-trap'
@@ -38,7 +38,7 @@ export const prepareOverlay = (overlay: OverlayInterface) => {
 
 export const getOverlays = (doc: Document, selector?: string): HTMLBalOverlayElement[] => {
   if (selector === undefined) {
-    selector = 'bal-modal,bal-snackbar,bal-toast'
+    selector = `${transformTag('bal-modal')},${transformTag('bal-snackbar')},${transformTag('bal-toast')}`
   }
   return (Array.from(doc.querySelectorAll(selector)) as HTMLBalOverlayElement[]).filter(c => c.overlayIndex > 0)
 }

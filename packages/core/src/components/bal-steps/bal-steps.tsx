@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { HTMLStencilElement, transformTag } from '@stencil/core/internal'
 import { areArraysEqual } from '../../utils/array'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
@@ -151,7 +151,7 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
    */
 
   private get items(): HTMLBalStepItemElement[] {
-    return Array.from(this.el.querySelectorAll(`#${this.stepsId} > bal-step-item`))
+    return Array.from(this.el.querySelectorAll(`#${this.stepsId} > ${transformTag('bal-step-item')}`))
   }
 
   private getStepOptions = () => {

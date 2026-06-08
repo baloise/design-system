@@ -6,4 +6,5 @@ export const ReactGenerator = (): any =>
     outDir: '../react/src/generated',
     excludeComponents: docComponents,
     customElementsDir: 'components',
+    transformTag: true,
   })
