@@ -21,7 +21,7 @@ jobs:
     env:
       HUSKY: 0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Git Identity
@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.JS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: 22
@@ -50,7 +50,7 @@ jobs:
         run: npm ci
 
       - name: Define Nx cache
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@v5
 
       - name: Build
         shell: bash
@@ -152,11 +152,11 @@ jobs:
       HUSKY: 0
     needs: [build]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup Node.JS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: 22
@@ -172,7 +172,7 @@ jobs:
         working-directory: ./e2e
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./packages/core
@@ -180,7 +180,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: e2e-artifacts
           path: ./e2e
@@ -189,7 +189,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress components tests 🧪
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           working-directory: e2e
           install: false
@@ -215,11 +215,11 @@ jobs:
       matrix:
         containers: [1, 2, 3, 4]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup Node.JS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: 22
@@ -235,7 +235,7 @@ jobs:
         working-directory: ./e2e
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./packages/core
@@ -243,7 +243,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: e2e-artifacts
           path: ./e2e
@@ -252,7 +252,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: node ./web-server.js
           wait-on: 'http://localhost:3333'
@@ -283,11 +283,11 @@ jobs:
         apps: [v18, v19, v20]
     needs: [build]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup Node.JS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: 22
@@ -302,7 +302,7 @@ jobs:
         run: npm ci
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: tokens-dist
           path: packages/tokens
@@ -310,7 +310,7 @@ jobs:
         run: unzip -q -o packages/tokens/TokensDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: icons-dist
           path: packages/icons
@@ -318,7 +318,7 @@ jobs:
         run: unzip -q -o packages/icons/IconsDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: styles-dist
           path: packages/styles
@@ -326,7 +326,7 @@ jobs:
         run: unzip -q -o packages/styles/StylesDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-loader
           path: ./packages/core
@@ -334,7 +334,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreLoader.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./core/dist
@@ -342,7 +342,7 @@ jobs:
         run: unzip -q -o ./core/dist/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-components
           path: ./packages/core
@@ -350,7 +350,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreComponents.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: react
           path: ./packages/react/src
@@ -358,7 +358,7 @@ jobs:
         run: unzip -q -o ./packages/react/src/React.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular
           path: ./packages/angular/src
@@ -366,7 +366,7 @@ jobs:
         run: unzip -q -o ./packages/angular/src/Angular.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular-module
           path: ./packages/angular-module/src
@@ -374,7 +374,7 @@ jobs:
         run: unzip -q -o ./packages/angular-module/src/AngularModule.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: testing-dist
           path: ./packages/testing
@@ -403,7 +403,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress tests 🧪
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: npm run cy:start
           wait-on: 'http://localhost:4200'
@@ -430,11 +430,11 @@ jobs:
         apps: [v19]
     needs: [build]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup Node.JS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: 22
@@ -449,7 +449,7 @@ jobs:
         run: npm ci
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: tokens-dist
           path: packages/tokens
@@ -457,7 +457,7 @@ jobs:
         run: unzip -q -o packages/tokens/TokensDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: icons-dist
           path: packages/icons
@@ -465,7 +465,7 @@ jobs:
         run: unzip -q -o packages/icons/IconsDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: styles-dist
           path: packages/styles
@@ -473,7 +473,7 @@ jobs:
         run: unzip -q -o packages/styles/StylesDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-loader
           path: ./packages/core
@@ -481,7 +481,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreLoader.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-dist
           path: ./core/dist
@@ -489,7 +489,7 @@ jobs:
         run: unzip -q -o ./core/dist/CoreDist.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: core-components
           path: ./packages/core
@@ -497,7 +497,7 @@ jobs:
         run: unzip -q -o ./packages/core/CoreComponents.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: react
           path: ./packages/react/src
@@ -505,7 +505,7 @@ jobs:
         run: unzip -q -o ./packages/react/src/React.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular
           path: ./packages/angular/src
@@ -513,7 +513,7 @@ jobs:
         run: unzip -q -o ./packages/angular/src/Angular.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: angular-module
           path: ./packages/angular-module/src
@@ -521,7 +521,7 @@ jobs:
         run: unzip -q -o ./packages/angular-module/src/AngularModule.zip
         shell: bash
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: testing-dist
           path: ./packages/testing
@@ -550,7 +550,7 @@ jobs:
         shell: bash
 
       - name: Run Cypress tests 🧪
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           start: npm run cy:start
           wait-on: 'http://localhost:4200'
@@ -617,13 +617,13 @@ jobs:
           echo "Branch from previous job: ${{ needs.assembleInformation.outputs.branch }}"
           echo "Action: ${{ needs.assembleInformation.outputs.action }}"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 0
 
       - name: Setup Node.JS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: 'npm'
           node-version: 22
