@@ -17467,7 +17467,7 @@
         "Font": {
           "Family": {
             "$type": "string",
-            "$value": "{🧩 Component.Input.Control.Family}",
+            "$value": "{🧩 Component.Form.Control.Family}",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.isOverride": true
@@ -17475,7 +17475,7 @@
           },
           "Weight": {
             "$type": "string",
-            "$value": "{🧩 Component.Input.Control.Weight}",
+            "$value": "{🧩 Component.Form.Control.Weight}",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.isOverride": true
@@ -17485,14 +17485,14 @@
         "Text": {
           "Size": {
             "$type": "number",
-            "$value": "{🧩 Component.Input.Control.FontSize.Mobile}",
+            "$value": "{🧩 Component.Form.Control.FontSize.Mobile}",
             "$extensions": {
               "com.figma.isOverride": true
             }
           },
           "LineHeight": {
             "$type": "number",
-            "$value": "{🧩 Component.Input.Control.LineHeight}",
+            "$value": "{🧩 Component.Form.Control.LineHeight}",
             "$extensions": {
               "com.figma.isOverride": true
             }
@@ -17500,7 +17500,7 @@
           "Color": {
             "Base": {
               "$type": "color",
-              "$value": "{🧩 Component.Input.Control.Color.Value.Base}",
+              "$value": "{🧩 Component.Form.Control.Color.Value.Base}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -17511,7 +17511,7 @@
           "Color": {
             "Base": {
               "$type": "color",
-              "$value": "{🧩 Component.Input.Control.Color.Placeholder.Base}",
+              "$value": "{🧩 Component.Form.Control.Color.Placeholder.Base}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -17523,7 +17523,7 @@
         "Font": {
           "Family": {
             "$type": "string",
-            "$value": "{🧩 Component.Input.Description.Family}",
+            "$value": "{🧩 Component.Form.Description.Family}",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.isOverride": true
@@ -17531,7 +17531,7 @@
           },
           "Weight": {
             "$type": "string",
-            "$value": "{🧩 Component.Input.Description.Weight}",
+            "$value": "{🧩 Component.Form.Description.Weight}",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.isOverride": true
@@ -17541,14 +17541,14 @@
         "Text": {
           "Size": {
             "$type": "number",
-            "$value": "{🧩 Component.Input.Description.Size.Mobile}",
+            "$value": "{🧩 Component.Form.Description.Size.Mobile}",
             "$extensions": {
               "com.figma.isOverride": true
             }
           },
           "LineHeight": {
             "$type": "number",
-            "$value": "{🧩 Component.Input.Description.LineHeight}",
+            "$value": "{🧩 Component.Form.Description.LineHeight}",
             "$extensions": {
               "com.figma.isOverride": true
             }
@@ -17556,28 +17556,28 @@
           "Color": {
             "Base": {
               "$type": "color",
-              "$value": "{🧩 Component.Input.Description.Color.Base}",
+              "$value": "{🧩 Component.Form.Description.Color.Base}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
             },
             "Danger": {
               "$type": "color",
-              "$value": "{🧩 Component.Input.Description.Color.Danger}",
+              "$value": "{🧩 Component.Form.Description.Color.Danger}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
             },
             "Success": {
               "$type": "color",
-              "$value": "{🧩 Component.Input.Description.Color.Success}",
+              "$value": "{🧩 Component.Form.Description.Color.Success}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
             },
             "Warning": {
               "$type": "color",
-              "$value": "{🧩 Component.Input.Description.Color.Warning}",
+              "$value": "{🧩 Component.Form.Description.Color.Warning}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
