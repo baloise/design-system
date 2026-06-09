@@ -26,9 +26,7 @@ type Token = {
 const isColor = (value?: string) => (value ? /^#[0-9a-fA-F]{3,8}$/.test(value.trim()) : false)
 
 // Extract alias tokens for a component by searching for tokens starting with the component name
-function extractAliasTokens(
-  componentName: string,
-): Array<{
+function extractAliasTokens(componentName: string): Array<{
   name: string
   cssVarName: string
   value: string
