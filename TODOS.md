@@ -25,6 +25,7 @@
 | Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px           | ⬜     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                                  | ⬜     |
 | Create Migration Hel                     | Create migration plan for ex-helvetia                                 | ⬜     |
+| Veritcal from fields                     | Add missing variant                                                   | ⬜     |
 
 ## Componentes
 

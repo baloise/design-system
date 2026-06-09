@@ -96,6 +96,11 @@
   background: var(--ds-form-description-color-danger);
 }
 
+// Add space to reserve it for upcoming help text so the user will not have any flickering.
+.field:not(:has(.help)) {
+  margin-bottom: 1.375rem;
+}
+
 //
 // Form + Grid
 // --------------------------------
