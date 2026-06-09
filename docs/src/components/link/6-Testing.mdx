@@ -14,6 +14,57 @@ import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <BannerTabs of={LinkStories} tabs={getLinkTabs('testing')} />
 
-<ComponentPageObject component="link" />
+## Testing the Link Component
+
+The native HTML `<a>` element is styled with design system styling to create the link component.
+
+### Using Playwright to Test Links
+
+To test link interactions with Playwright, use methods like `click()` for interactions and locators for assertions:
+
+```typescript
+import { test, expect } from '@playwright/test'
+
+test('should click and navigate through the link', async ({ page }) => {
+  // Navigate to your component
+  await page.goto('/components/link')
+
+  // Get the link element
+  const linkElement = page.locator('a')
+
+  // Verify the href attribute
+  await expect(linkElement).toHaveAttribute('href', '/target-page')
+
+  // Click the link
+  await linkElement.click()
+
+  // Verify navigation or URL change
+  await expect(page).toHaveURL('/target-page')
+})
+
+test('should verify link accessibility and content', async ({ page }) => {
+  await page.goto('/components/link')
+
+  const linkElement = page.locator('a')
+
+  // Verify the link text
+  await expect(linkElement).toContainText('Click here')
+
+  // Verify the link is visible
+  await expect(linkElement).toBeVisible()
+
+  // Verify it's interactive
+  await expect(linkElement).toBeEnabled()
+})
+```
+
+### Key Points
+
+- Use `toHaveAttribute()` to verify the `href` attribute matches expected values
+- Use `click()` to trigger link navigation
+- Use `toHaveURL()` to verify the page has navigated to the correct URL
+- Test both visual state and content with `toContainText()` and `toBeVisible()`
+- Consider testing keyboard navigation (Tab, Enter) for accessibility
+- Test different link states (default, hover, focus, active)
 
 <Footer />

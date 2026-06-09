@@ -51,6 +51,10 @@ main > section > span:first-child {
   width: 50% !important;
 }
 
+.s-height-1rem {
+  height: 1rem !important;
+}
+
 .s-height-2rem {
   height: 2rem !important;
 }

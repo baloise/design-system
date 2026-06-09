@@ -1,158 +1,76 @@
+/**
+ * Form provides a flexible CSS-only component for building responsive form layouts with a 12-column grid system.
+ * Supports field grouping, responsive sizing variants, and validation state styling.
+ *
+ * @variant is-invalid - Invalid form field state with error indicator icon and danger color.
+ * @variant is-half - Form column width of 50% (6 out of 12 columns).
+ * @variant is-one-third - Form column width of 33.33% (4 out of 12 columns).
+ * @variant is-two-thirds - Form column width of 66.66% (8 out of 12 columns).
+ * @variant is-one-quarter - Form column width of 25% (3 out of 12 columns).
+ * @variant is-three-quarters - Form column width of 75% (9 out of 12 columns).
+ * @variant is-full - Form column width of 100% (full width).
+ * @variant tablet:is-* - Responsive tablet breakpoint sizing variants for form columns.
+ * @variant desktop:is-* - Responsive desktop breakpoint sizing variants for form columns.
+ */
+
 @use '@baloise/ds-css/dist/scss/mixins' as *;
+@use './form.mixin' as form;
 
-:root {
-  --ds-form-field-control-font-size: var(--ds-text-size-base);
-  --ds-form-field-control-font-family: var(--ds-global-font-family-text);
-  --ds-form-field-control-color: var(--ds-global-color-text-primary);
-  --ds-form-field-control-placeholder-color: var(--ds-global-color-text-primary-light);
-  --ds-form-field-control-radius: var(--ds-alias-radius-base);
-  --ds-form-field-control-background: var(--ds-global-color-white);
-  --ds-form-field-control-background-hover: var(--ds-global-color-grey-1);
-  --ds-form-field-control-background-active: var(--ds-global-color-grey-1);
-  --ds-form-field-control-border-width: var(--ds-alias-border-width-base);
-  --ds-form-field-control-border-style: solid;
-  --ds-form-field-control-border-color: var(--ds-global-color-border-base);
-  --ds-form-field-control-border-color-hover: var(--ds-form-field-control-border-color);
-  --ds-form-field-control-border-color-active: var(--ds-global-color-border-primary-base);
-  --ds-form-field-control-success-background: var(--ds-global-color-success-1);
-  --ds-form-field-control-success-background-hover: var(--ds-global-color-success-1);
-  --ds-form-field-control-success-background-active: var(--ds-global-color-success-1);
-  --ds-form-field-control-success-border-color: var(--ds-global-color-border-success-base);
-  --ds-form-field-control-success-border-color-hover: var(--ds-form-field-control-border-color);
-  --ds-form-field-control-success-border-color-active: var(--ds-global-color-border-primary-base);
-  --ds-form-field-control-danger-background: var(--ds-global-color-danger-1);
-  --ds-form-field-control-danger-background-hover: var(--ds-global-color-danger-1);
-  --ds-form-field-control-danger-background-active: var(--ds-global-color-danger-1);
-  --ds-form-field-control-danger-border-color: var(--ds-global-color-border-danger-base);
-  --ds-form-field-control-danger-border-color-hover: var(--ds-form-field-control-border-color);
-  --ds-form-field-control-danger-border-color-active: var(--ds-global-color-border-primary-base);
-  --ds-form-field-control-disabled-color: var(--ds-global-color-text-grey-dark);
-  --ds-form-field-control-disabled-background: var(--ds-global-color-grey-2);
-  --ds-form-field-control-disabled-border-color: var(--ds-global-color-border-grey-dark);
-  --ds-form-field-label-font-size: var(--ds-text-size-sm);
-  --ds-form-field-label-line-height: var(--ds-line-height-small);
-  --ds-form-field-label-font-weight: var(--ds-text-weight-bold);
-  --ds-form-field-label-font-family: var(--ds-global-font-family-text);
-  --ds-form-field-label-margin-bottom: 0.25rem;
-  --ds-form-field-label-color-hover: var(--ds-link-color-text-primary-hover);
-  --ds-form-field-label-color-active: var(--ds-link-color-text-primary-active);
-  --ds-form-field-label-success-color: var(--ds-global-color-text-success);
-  --ds-form-field-label-danger-color: var(--ds-global-color-text-danger);
-  --ds-form-field-label-danger-color-hover: var(--ds-global-color-text-danger-hover);
-  --ds-form-field-label-danger-color-active: var(--ds-global-color-text-danger-active);
-  --ds-form-field-label-disabled-color: var(--ds-global-color-text-grey);
-  --ds-form-field-message-font-size: var(--ds-text-size-xs);
-  --ds-form-field-message-font-weight: var(--ds-text-weight-regular);
-  --ds-form-field-message-color: var(--ds-global-color-text-primary-light);
-  --ds-form-field-message-color-hover: var(--ds-link-color-text-primary-hover);
-  --ds-form-field-message-color-active: var(--ds-link-color-text-primary-active);
-  --ds-form-field-message-success-color: var(--ds-global-color-text-success);
-  --ds-form-field-message-danger-color: var(--ds-global-color-text-danger);
-  --ds-form-field-message-disabled-color: var(--ds-global-color-text-grey);
-  --ds-form-field-icon-color: var(--ds-link-color-text-primary-base);
-  --ds-form-field-icon-color-hover: var(--ds-link-color-text-primary-hover);
-  --ds-form-field-icon-color-active: var(--ds-link-color-text-primary-active);
-  --ds-form-field-icon-success-color: var(--ds-global-color-text-success);
-  --ds-form-field-icon-danger-color: var(--ds-global-color-text-danger);
-  --ds-form-field-icon-disabled-color: var(--ds-global-color-text-grey);
-  --ds-file-label-color: var(--ds-link-color-text-primary-base);
-  --ds-file-label-color-hover: var(--ds-link-color-text-primary-hover);
-  --ds-file-label-color-active: var(--ds-link-color-text-primary-active);
-  --ds-file-border-style: dashed;
-  --ds-file-label-disabled-color: var(--ds-global-color-text-grey-dark);
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --form-field-gap - Gap between form field elements (label, input, help text).
+ *
+ * @prop --form-container-background - Background color of form control container.
+ * @prop --form-container-border-color - Border color of form control container.
+ * @prop --form-container-border-width - Border width of form control container.
+ * @prop --form-container-radius - Border radius of form control container.
+ * @prop --form-container-hover-background - Background color on hover state.
+ * @prop --form-container-active-background - Background color on active state.
+ * @prop --form-container-focus-background - Background color on focus state.
+ * @prop --form-container-hover-border - Border color on hover state.
+ * @prop --form-container-active-border - Border color on active state.
+ * @prop --form-container-focus-border - Border color on focus state.
+ *
+ * @prop --form-label-color - Text color of form label.
+ * @prop --form-label-family - Font family of form label.
+ * @prop --form-label-weight - Font weight of form label.
+ * @prop --form-label-line-height - Line height of form label.
+ * @prop --form-label-size - Font size of form label.
+ *
+ * @prop --form-description-color - Text color of form description/help text.
+ * @prop --form-description-family - Font family of form description.
+ * @prop --form-description-weight - Font weight of form description.
+ * @prop --form-description-line-height - Line height of form description.
+ * @prop --form-description-size - Font size of form description.
+ */
+
+.field {
+  @include form.vars-field();
+  @include form.vars-label();
+  @include form.vars-container();
+  @include form.vars-description();
 }
 
-@mixin placeholder {
-  &::placeholder {
-    @content;
-  }
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
 
-  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input';
-  @each $placeholder in $placeholders {
-    &:#{$placeholder}-placeholder {
-      @content;
-    }
-  }
-}
-
-@mixin control {
-  -moz-appearance: none !important;
-  -webkit-appearance: none !important;
-  align-items: center;
-  border-width: var(--ds-alias-border-width-base);
-  border-color: var(--ds-global-color-border-base);
-  border-radius: var(--ds-alias-radius-base);
-  box-shadow: none;
-  display: inline-flex;
-  font-size: var(--ds-text-size-base);
-  min-height: 3rem;
-  height: 3rem;
-  line-height: 1.5;
-  padding-left: calc(0.75em - var(--ds-alias-border-width-base));
-  padding-right: calc(0.75em - var(--ds-alias-border-width-base));
-  position: relative;
-  vertical-align: top;
-  &:focus,
-  &.is-focused,
-  &:active,
-  &.is-active {
-    outline: none;
-  }
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: default;
-  }
-}
-
-@mixin input {
-  @include control;
-  justify-content: flex-start;
-  background-color: var(--ds-form-field-control-background);
-  border-color: var(--ds-form-field-control-border-color);
-  border-style: var(--ds-form-field-control-border-style);
-  border-radius: var(--ds-form-field-control-radius);
-  color: var(--ds-form-field-control-color);
-  @include placeholder {
-    color: var(--ds-form-field-control-placeholder-color);
-  }
-  @include hover() {
-    &:hover,
-    &.is-hovered {
-      border-color: var(--ds-form-field-control-border-color-hover);
-      background-color: var(--ds-form-field-control-background-hover);
-    }
-  }
-  &.ds-focused,
-  &:focus,
-  &.is-focused,
-  &:active,
-  &.is-active {
-    border-color: var(--ds-form-field-control-border-color-active);
-    background-color: var(--ds-form-field-control-background-active);
-  }
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: var(--ds-form-field-control-disabled-background);
-    border-color: var(--ds-form-field-control-disabled-border-color);
-    box-shadow: none;
-    color: var(--ds-form-field-control-disabled-color);
-    @include placeholder {
-      color: var(--ds-form-field-control-disabled-color);
-    }
-  }
-}
-
-%input {
-  @include input;
-}
-
-%control {
-  @include control;
+.field {
+  @include form.field();
+  @include form.label('.label');
+  @include form.container('.control');
+  @include form.description('.help');
 }
 
 .field {
-  display: block;
   width: 100%;
+  flex: 1;
 }
 
 .field + .field,
@@ -163,4 +81,280 @@
 .field:not(:last-child),
 .ds-field:not(:last-child) {
   margin-bottom: 0.25rem;
+}
+
+.field.is-invalid .help::before {
+  content: '';
+  height: 1rem;
+  width: 0.875rem;
+
+  // Use mask-image to allow background-color to define the icon color
+  mask-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22black%22 viewBox=%220 0 14 14%22><path d=%22M7 0c.69 0 1.25.514 1.25 1.148v5.508c0 .634-.56 1.148-1.25 1.148S5.75 7.29 5.75 6.656V1.148C5.75.514 6.31 0 7 0m0 14c1.104 0 2-.822 2-1.836s-.896-1.836-2-1.836-2 .822-2 1.836S5.895 14 7 14%22/></svg>');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  background: var(--ds-form-description-color-danger);
+}
+
+//
+// Form + Grid
+// --------------------------------
+
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
+  margin-inline: -1rem;
+
+  .form-col {
+    // Default to full width on all breakpoints
+    flex: 0 0 100%;
+    padding-inline: 1rem;
+
+    // Numeric sizing classes (1-12 columns out of 12)
+    // Mobile-first: default full width, override with breakpoint prefixes
+    &.is-1 {
+      flex: 0 0 calc(1 / 12 * 100%);
+    }
+    &.is-2 {
+      flex: 0 0 calc(2 / 12 * 100%);
+    }
+    &.is-3 {
+      flex: 0 0 calc(3 / 12 * 100%);
+    }
+    &.is-4 {
+      flex: 0 0 calc(4 / 12 * 100%);
+    }
+    &.is-5 {
+      flex: 0 0 calc(5 / 12 * 100%);
+    }
+    &.is-6 {
+      flex: 0 0 calc(6 / 12 * 100%);
+    }
+    &.is-7 {
+      flex: 0 0 calc(7 / 12 * 100%);
+    }
+    &.is-8 {
+      flex: 0 0 calc(8 / 12 * 100%);
+    }
+    &.is-9 {
+      flex: 0 0 calc(9 / 12 * 100%);
+    }
+    &.is-10 {
+      flex: 0 0 calc(10 / 12 * 100%);
+    }
+    &.is-11 {
+      flex: 0 0 calc(11 / 12 * 100%);
+    }
+    &.is-12,
+    &.is-full,
+    &.is-fullwidth {
+      flex: 0 0 100%;
+    }
+
+    // Semantic sizing classes
+    &.is-half {
+      flex: 0 0 calc(6 / 12 * 100%);
+    }
+    &.is-one-third {
+      flex: 0 0 calc(4 / 12 * 100%);
+    }
+    &.is-two-thirds {
+      flex: 0 0 calc(8 / 12 * 100%);
+    }
+    &.is-one-quarter {
+      flex: 0 0 calc(3 / 12 * 100%);
+    }
+    &.is-three-quarters {
+      flex: 0 0 calc(9 / 12 * 100%);
+    }
+
+    // Responsive numeric breakpoint variants
+    @include tablet() {
+      &.tablet\:is-1 {
+        flex: 0 0 calc(1 / 12 * 100%);
+      }
+      &.tablet\:is-2 {
+        flex: 0 0 calc(2 / 12 * 100%);
+      }
+      &.tablet\:is-3 {
+        flex: 0 0 calc(3 / 12 * 100%);
+      }
+      &.tablet\:is-4 {
+        flex: 0 0 calc(4 / 12 * 100%);
+      }
+      &.tablet\:is-5 {
+        flex: 0 0 calc(5 / 12 * 100%);
+      }
+      &.tablet\:is-6 {
+        flex: 0 0 calc(6 / 12 * 100%);
+      }
+      &.tablet\:is-7 {
+        flex: 0 0 calc(7 / 12 * 100%);
+      }
+      &.tablet\:is-8 {
+        flex: 0 0 calc(8 / 12 * 100%);
+      }
+      &.tablet\:is-9 {
+        flex: 0 0 calc(9 / 12 * 100%);
+      }
+      &.tablet\:is-10 {
+        flex: 0 0 calc(10 / 12 * 100%);
+      }
+      &.tablet\:is-11 {
+        flex: 0 0 calc(11 / 12 * 100%);
+      }
+      &.tablet\:is-12,
+      &.tablet\:is-full,
+      &.tablet\:is-fullwidth {
+        flex: 0 0 100%;
+      }
+
+      // Responsive semantic breakpoint variants
+      &.tablet\:is-half {
+        flex: 0 0 calc(6 / 12 * 100%);
+      }
+      &.tablet\:is-one-third {
+        flex: 0 0 calc(4 / 12 * 100%);
+      }
+      &.tablet\:is-two-thirds {
+        flex: 0 0 calc(8 / 12 * 100%);
+      }
+      &.tablet\:is-one-quarter {
+        flex: 0 0 calc(3 / 12 * 100%);
+      }
+      &.tablet\:is-three-quarters {
+        flex: 0 0 calc(9 / 12 * 100%);
+      }
+    }
+
+    @include desktop() {
+      &.desktop\:is-1 {
+        flex: 0 0 calc(1 / 12 * 100%);
+      }
+      &.desktop\:is-2 {
+        flex: 0 0 calc(2 / 12 * 100%);
+      }
+      &.desktop\:is-3 {
+        flex: 0 0 calc(3 / 12 * 100%);
+      }
+      &.desktop\:is-4 {
+        flex: 0 0 calc(4 / 12 * 100%);
+      }
+      &.desktop\:is-5 {
+        flex: 0 0 calc(5 / 12 * 100%);
+      }
+      &.desktop\:is-6 {
+        flex: 0 0 calc(6 / 12 * 100%);
+      }
+      &.desktop\:is-7 {
+        flex: 0 0 calc(7 / 12 * 100%);
+      }
+      &.desktop\:is-8 {
+        flex: 0 0 calc(8 / 12 * 100%);
+      }
+      &.desktop\:is-9 {
+        flex: 0 0 calc(9 / 12 * 100%);
+      }
+      &.desktop\:is-10 {
+        flex: 0 0 calc(10 / 12 * 100%);
+      }
+      &.desktop\:is-11 {
+        flex: 0 0 calc(11 / 12 * 100%);
+      }
+      &.desktop\:is-12,
+      &.desktop\:is-full,
+      &.desktop\:is-fullwidth {
+        flex: 0 0 100%;
+      }
+
+      // Responsive semantic breakpoint variants
+      &.desktop\:is-half {
+        flex: 0 0 calc(6 / 12 * 100%);
+      }
+      &.desktop\:is-one-third {
+        flex: 0 0 calc(4 / 12 * 100%);
+      }
+      &.desktop\:is-two-thirds {
+        flex: 0 0 calc(8 / 12 * 100%);
+      }
+      &.desktop\:is-one-quarter {
+        flex: 0 0 calc(3 / 12 * 100%);
+      }
+      &.desktop\:is-three-quarters {
+        flex: 0 0 calc(9 / 12 * 100%);
+      }
+    }
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+.field.is-invalid,
+.field.is-danger {
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+.field.is-valid,
+.field.is-success {
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+.field.is-warning {
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+}
+
+//
+// Disabled
+// --------------------------------
+.field.is-disabled {
+  &,
+  .label,
+  .help,
+  .input,
+  .textarea,
+  .select {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-form-color: var(--ds-form-control-color-value-disabled);
+  --mod-form-placeholder: var(--ds-form-control-color-placeholder-disabled);
+
+  --mod-input-color: var(--ds-form-control-color-value-disabled);
+  --mod-input-placeholder: var(--ds-form-control-color-placeholder-disabled);
+
+  --mod-textarea-color: var(--ds-form-control-color-value-disabled);
+  --mod-textarea-placeholder: var(--ds-form-control-color-placeholder-disabled);
+
+  --mod-select-color: var(--ds-form-control-color-value-disabled);
+  --mod-select-placeholder: var(--ds-form-control-color-placeholder-disabled);
 }

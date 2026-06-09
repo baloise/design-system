@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as ContainerStories from './container.stories'
+import { CONTAINER_DOC_CONFIG, getContainerTabs } from './container.doc-config'
+
+<Meta title="Components/Container/Usage" />
+<Banner label={'Usage'} section={CONTAINER_DOC_CONFIG.section} color={CONTAINER_DOC_CONFIG.color} />
+<BannerTabs of={ContainerStories} tabs={getContainerTabs('usage')} />
+
+## When to Use
+
+- **Page layout wrapper** — Constrains main content to a readable max-width on large screens
+- **Responsive padding** — Automatically adjusts horizontal padding based on device breakpoints
+- **Multiple layout patterns** — Choose between default, fluid, and compact variants depending on content needs
+- **Center content** — Uses flex and margin auto to center and vertically fill the viewport
+
+## When NOT to Use
+
+- **Nested deeply** — Avoid stacking multiple containers (use a single wrapper at the top level)
+- **Sidebar layouts** — Use grid or custom flex layout for multi-column designs
+- **Fixed-width needs** — If you need precise pixel widths, adjust CSS variables directly instead
+
+## Do's and Don'ts
+
+### Sizing Strategy
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Choose variant for content type',
+      content: (
+        <div style={{ fontSize: '0.9rem' }}>
+          <p><strong>Default:</strong> Main editorial content (articles, blog)</p>
+          <p><strong>Fluid:</strong> Data-heavy layouts (dashboards, tables)</p>
+          <p><strong>Compact:</strong> Focused experiences (forms, settings)</p>
+        </div>
+      ),
+      description: 'Match the container width to your content type for optimal readability.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Hardcoding widths in children',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          <code>{'<div style="width: 1200px">content</div>'}</code>
+        </p>
+      ),
+      description: 'Let container handle width constraints; children should be flexible.',
+    },
+  ]}
+/>
+
+### Responsive Padding
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Rely on CSS variable padding',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Container applies <code>--ds-alias-container-space-device</code> for automatic mobile/desktop spacing.
+        </p>
+      ),
+      description: 'The container automatically provides appropriate padding at all breakpoints.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Adding extra padding wrapper',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          <code>{'<div class="container"><div style="padding: 2rem">content</div></div>'}</code>
+        </p>
+      ),
+      description: 'Container already handles padding; extra wrappers cause excessive spacing.',
+    },
+  ]}
+/>
+
+<Footer />

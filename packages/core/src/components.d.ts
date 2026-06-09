@@ -33,7 +33,6 @@ import { PaginationAlignment, PaginationChangeDetail, PaginationSize, Pagination
 import { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
 import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
 import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
-import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectInputDetail, SelectKeyPressDetail, SelectOption } from "./components/select/select.interfaces";
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
@@ -73,7 +72,6 @@ export { PaginationAlignment, PaginationChangeDetail, PaginationSize, Pagination
 export { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
 export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
 export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
-export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectInputDetail, SelectKeyPressDetail, SelectOption } from "./components/select/select.interfaces";
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
@@ -2206,105 +2204,6 @@ export namespace Components {
         "value"?: any | null;
     }
     /**
-     * Select renders a select dropdown with validation and optional help/error messaging.
-     */
-    interface DsSelect {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid.
-          * @default false
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-          * @default false
-         */
-        "autofocus": boolean;
-        /**
-          * Defines the color state of the select.
-          * @default 'primary'
-         */
-        "color": InputColor;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
-          * @default 0
-         */
-        "debounce": number;
-        /**
-          * The description displayed below the select field.
-          * @default ''
-         */
-        "description": string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<select>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLSelectElement>;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid": boolean;
-        /**
-          * Text shown in the description area when `invalid` is true.
-          * @default ''
-         */
-        "invalidText": string;
-        /**
-          * The label displayed above the select field.
-          * @default ''
-         */
-        "label": string;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputId
-         */
-        "name": string;
-        /**
-          * The options for the select element.
-          * @default []
-         */
-        "options": SelectOption[];
-        /**
-          * If `true` the element can not be mutated, meaning the user can not edit the control.
-          * @default false
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default true
-         */
-        "required": boolean;
-        /**
-          * Sets blur on the native `select` element.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on the native `select` element.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The value of the select.
-          * @default null
-         */
-        "value": string | null;
-    }
-    /**
-     * SelectOption is a container component for defining options within a Select component.
-     * It is not visually rendered; instead, the parent Select component extracts the value
-     * and text content to populate its native select element.
-     */
-    interface DsSelectOption {
-        /**
-          * The value that will be returned when this option is selected.
-         */
-        "value": string;
-    }
-    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface DsShape {
@@ -3218,10 +3117,6 @@ export interface DsSegmentItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSegmentItemElement;
 }
-export interface DsSelectCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsSelectElement;
-}
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
@@ -3966,42 +3861,6 @@ declare global {
         prototype: HTMLDsSegmentItemElement;
         new (): HTMLDsSegmentItemElement;
     };
-    interface HTMLDsSelectElementEventMap {
-        "dsBlur": SelectBlurDetail;
-        "dsChange": SelectChangeDetail;
-        "dsClick": SelectClickDetail;
-        "dsFocus": SelectFocusDetail;
-        "dsInput": SelectInputDetail;
-        "dsKeyPress": SelectKeyPressDetail;
-    }
-    /**
-     * Select renders a select dropdown with validation and optional help/error messaging.
-     */
-    interface HTMLDsSelectElement extends Components.DsSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsSelectElementEventMap>(type: K, listener: (this: HTMLDsSelectElement, ev: DsSelectCustomEvent<HTMLDsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsSelectElementEventMap>(type: K, listener: (this: HTMLDsSelectElement, ev: DsSelectCustomEvent<HTMLDsSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsSelectElement: {
-        prototype: HTMLDsSelectElement;
-        new (): HTMLDsSelectElement;
-    };
-    /**
-     * SelectOption is a container component for defining options within a Select component.
-     * It is not visually rendered; instead, the parent Select component extracts the value
-     * and text content to populate its native select element.
-     */
-    interface HTMLDsSelectOptionElement extends Components.DsSelectOption, HTMLStencilElement {
-    }
-    var HTMLDsSelectOptionElement: {
-        prototype: HTMLDsSelectOptionElement;
-        new (): HTMLDsSelectOptionElement;
-    };
     /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
@@ -4327,8 +4186,6 @@ declare global {
         "ds-radio-group": HTMLDsRadioGroupElement;
         "ds-segment": HTMLDsSegmentElement;
         "ds-segment-item": HTMLDsSegmentItemElement;
-        "ds-select": HTMLDsSelectElement;
-        "ds-select-option": HTMLDsSelectOptionElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
@@ -6630,120 +6487,6 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     /**
-     * Select renders a select dropdown with validation and optional help/error messaging.
-     */
-    interface DsSelect {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid.
-          * @default false
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-          * @default false
-         */
-        "autofocus"?: boolean;
-        /**
-          * Defines the color state of the select.
-          * @default 'primary'
-         */
-        "color"?: InputColor;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
-          * @default 0
-         */
-        "debounce"?: number;
-        /**
-          * The description displayed below the select field.
-          * @default ''
-         */
-        "description"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * The `id` of a `<form>` element to associate this element with.
-         */
-        "form"?: string;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid"?: boolean;
-        /**
-          * Text shown in the description area when `invalid` is true.
-          * @default ''
-         */
-        "invalidText"?: string;
-        /**
-          * The label displayed above the select field.
-          * @default ''
-         */
-        "label"?: string;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputId
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onDsBlur"?: (event: DsSelectCustomEvent<SelectBlurDetail>) => void;
-        /**
-          * Emitted when the select value has changed.
-         */
-        "onDsChange"?: (event: DsSelectCustomEvent<SelectChangeDetail>) => void;
-        /**
-          * Emitted when the select has been clicked.
-         */
-        "onDsClick"?: (event: DsSelectCustomEvent<SelectClickDetail>) => void;
-        /**
-          * Emitted when the select has focus.
-         */
-        "onDsFocus"?: (event: DsSelectCustomEvent<SelectFocusDetail>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onDsInput"?: (event: DsSelectCustomEvent<SelectInputDetail>) => void;
-        /**
-          * Emitted when a keyboard key has been pressed.
-         */
-        "onDsKeyPress"?: (event: DsSelectCustomEvent<SelectKeyPressDetail>) => void;
-        /**
-          * The options for the select element.
-          * @default []
-         */
-        "options"?: SelectOption[];
-        /**
-          * If `true` the element can not be mutated, meaning the user can not edit the control.
-          * @default false
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default true
-         */
-        "required"?: boolean;
-        /**
-          * The value of the select.
-          * @default null
-         */
-        "value"?: string | null;
-    }
-    /**
-     * SelectOption is a container component for defining options within a Select component.
-     * It is not visually rendered; instead, the parent Select component extracts the value
-     * and text content to populate its native select element.
-     */
-    interface DsSelectOption {
-        /**
-          * The value that will be returned when this option is selected.
-         */
-        "value": string;
-    }
-    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface DsShape {
@@ -8066,24 +7809,6 @@ declare namespace LocalJSX {
         "svg": string;
         "value": string;
     }
-    interface DsSelectAttributes {
-        "autofocus": boolean;
-        "autoInvalidOff": boolean;
-        "color": InputColor;
-        "debounce": number;
-        "description": string;
-        "disabled": boolean;
-        "invalid": boolean;
-        "invalidText": string;
-        "label": string;
-        "name": string;
-        "readonly": boolean;
-        "required": boolean;
-        "value": string | null;
-    }
-    interface DsSelectOptionAttributes {
-        "value": string;
-    }
     interface DsShapeAttributes {
         "color": ShapeColor;
         "rotation": ShapeRotation;
@@ -8310,8 +8035,6 @@ declare namespace LocalJSX {
         "ds-radio-group": Omit<DsRadioGroup, keyof DsRadioGroupAttributes> & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes]?: DsRadioGroup[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `attr:${K}`]?: DsRadioGroupAttributes[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `prop:${K}`]?: DsRadioGroup[K] };
         "ds-segment": Omit<DsSegment, keyof DsSegmentAttributes> & { [K in keyof DsSegment & keyof DsSegmentAttributes]?: DsSegment[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `attr:${K}`]?: DsSegmentAttributes[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `prop:${K}`]?: DsSegment[K] };
         "ds-segment-item": Omit<DsSegmentItem, keyof DsSegmentItemAttributes> & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes]?: DsSegmentItem[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `attr:${K}`]?: DsSegmentItemAttributes[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `prop:${K}`]?: DsSegmentItem[K] };
-        "ds-select": Omit<DsSelect, keyof DsSelectAttributes> & { [K in keyof DsSelect & keyof DsSelectAttributes]?: DsSelect[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `attr:${K}`]?: DsSelectAttributes[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `prop:${K}`]?: DsSelect[K] };
-        "ds-select-option": Omit<DsSelectOption, keyof DsSelectOptionAttributes> & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes]?: DsSelectOption[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `attr:${K}`]?: DsSelectOptionAttributes[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `prop:${K}`]?: DsSelectOption[K] } & OneOf<"value", DsSelectOption["value"], DsSelectOptionAttributes["value"]>;
         "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
@@ -8544,16 +8267,6 @@ declare module "@stencil/core" {
              * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
              */
             "ds-segment-item": LocalJSX.IntrinsicElements["ds-segment-item"] & JSXBase.HTMLAttributes<HTMLDsSegmentItemElement>;
-            /**
-             * Select renders a select dropdown with validation and optional help/error messaging.
-             */
-            "ds-select": LocalJSX.IntrinsicElements["ds-select"] & JSXBase.HTMLAttributes<HTMLDsSelectElement>;
-            /**
-             * SelectOption is a container component for defining options within a Select component.
-             * It is not visually rendered; instead, the parent Select component extracts the value
-             * and text content to populate its native select element.
-             */
-            "ds-select-option": LocalJSX.IntrinsicElements["ds-select-option"] & JSXBase.HTMLAttributes<HTMLDsSelectOptionElement>;
             /**
              * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
              */

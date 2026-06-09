@@ -10280,7 +10280,7 @@
         }
       }
     },
-    "Input": {
+    "Form": {
       "Container": {
         "Radius": {
           "$type": "number",

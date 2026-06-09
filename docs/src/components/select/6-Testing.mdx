@@ -14,6 +14,44 @@ import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
 <BannerTabs of={SelectStories} tabs={getSelectTabs('testing')} />
 
-<ComponentPageObject component="select" />
+## Testing the Select Component
+
+The native HTML `<select>` element is styled with design system styling to create the select component.
+
+### Using Playwright to Test Select
+
+To test select interactions with Playwright, use the [`selectOption()`](https://playwright.dev/docs/input#select-options) method. This method accepts either:
+
+- **Value**: `await select.selectOption('value')`
+- **Label**: `await select.selectOption({ label: 'Option Label' })`
+- **Index**: `await select.selectOption({ index: 0 })`
+
+### Example Test
+
+```typescript
+import { test, expect } from '@playwright/test'
+
+test('should select an option from the select element', async ({ page }) => {
+  // Navigate to your component
+  await page.goto('/components/select')
+
+  // Get the native select element
+  const selectElement = page.locator('select')
+
+  // Select an option by value
+  await selectElement.selectOption('option-2')
+
+  // Verify the selection
+  const selectedValue = await selectElement.inputValue()
+  expect(selectedValue).toBe('option-2')
+})
+```
+
+### Key Points
+
+- Use `selectOption()` with values that match your option definitions
+- Use `inputValue()` to get the currently selected value
+- Verify the selected option is present in the DOM
+- Test both the value change and any associated change events
 
 <Footer />

@@ -5,6 +5,7 @@ import {
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
+  ComponentCssVariants,
   ComponentLead,
   Footer,
 } from '../../../.storybook/blocks'
@@ -21,16 +22,10 @@ import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <CanvasWithCodePen of={LinkStories.Basic} sourceState="shown" />
 
-<ComponentTabs
-  tabs={[
-    {
-      id: 'link',
-      label: 'Link',
-      content: <Controls of={LinkStories.Basic} />,
-    },
-  ]}
-/>
+<Controls of={LinkStories.Basic} />
 
-<ComponentPublicMethods component="link" />
+{/* <ComponentPublicMethods component="link" /> */}
+
+<ComponentCssVariants component="link" />
 
 <Footer />

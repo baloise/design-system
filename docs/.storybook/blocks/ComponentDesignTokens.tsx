@@ -1,10 +1,12 @@
 import { Source } from '@storybook/addon-docs/blocks'
 import React from 'react'
 import componentsData from '../../src/assets/data/components.json'
+import tokensData from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import { Clipboard } from './Clipboard'
 
 type ComponentDesignTokensProps = {
   component: string
+  tokenType?: 'component' | 'alias'
 }
 
 type InheritanceEntry = {
@@ -21,31 +23,111 @@ type Token = {
   path: string[]
 }
 
-const isColor = (value: string) => /^#[0-9a-fA-F]{3,8}$/.test(value.trim())
+const isColor = (value?: string) => (value ? /^#[0-9a-fA-F]{3,8}$/.test(value.trim()) : false)
 
-export const ComponentDesignTokens = ({ component }: ComponentDesignTokensProps): React.ReactElement => {
-  const componentTag = component.startsWith('ds-') ? component : `ds-${component}`
+// Extract alias tokens for a component by searching for tokens starting with the component name
+function extractAliasTokens(
+  componentName: string,
+): Array<{
+  name: string
+  cssVarName: string
+  value: string
+  nativeValue: string
+  inheritance: InheritanceEntry[]
+  path: string[]
+}> {
+  const aliasLayer = (tokensData as any)?.['🔗 Alias'] ?? {}
 
-  const componentInfo = (componentsData.components as Array<any>).find(
-    comp => comp.tag === componentTag || comp.tag === component,
-  )
+  // Look for category keys that contain the component name
+  const tokens: Array<{
+    name: string
+    cssVarName: string
+    value: string
+    nativeValue: string
+    inheritance: InheritanceEntry[]
+    path: string[]
+  }> = []
 
-  if (!componentInfo) {
-    return (
-      <div className="sb-unstyled my-large p-large bg-orange-2 radius text-orange-dark">
-        Component not found: {component}
-      </div>
-    )
+  // Search through alias categories for matching tokens
+  for (const [categoryKey, categoryValue] of Object.entries(aliasLayer)) {
+    if (typeof categoryValue !== 'object' || !categoryValue) continue
+
+    // Recursively flatten and find tokens with this component name
+    const flattenTokens = (obj: any, path: string[] = []): void => {
+      for (const [key, val] of Object.entries(obj)) {
+        if (typeof val === 'object' && val !== null) {
+          if ('$value' in val) {
+            // Found a token
+            const fullPath = [...path, key]
+            const cssVar = (val as any).name || `ds-alias-${fullPath.join('-').toLowerCase()}`
+            if (cssVar.includes(componentName.toLowerCase())) {
+              const nativeValue = (val as any).$value || ''
+              tokens.push({
+                name: (val as any).name || cssVar,
+                cssVarName: `--${cssVar}`,
+                value: nativeValue,
+                nativeValue: nativeValue,
+                inheritance: [],
+                path: fullPath,
+              })
+            }
+          } else {
+            flattenTokens(val, [...path, key])
+          }
+        }
+      }
+    }
+
+    flattenTokens(categoryValue)
   }
 
-  const tokens = (componentInfo.tokens || []) as Token[]
+  return tokens
+}
+
+export const ComponentDesignTokens = ({
+  component,
+  tokenType = 'component',
+}: ComponentDesignTokensProps): React.ReactElement => {
+  const componentName = component.replace(/^ds-/, '').toLowerCase()
+
+  let tokens: Token[] = []
+  let title = 'Design Tokens'
+  let description =
+    'Design tokens define the default appearance of components. Override them on <code>:root</code> to apply a consistent theme globally — unlike CSS variables, which only affect individual instances.'
+
+  if (tokenType === 'alias') {
+    // Extract alias tokens for this component
+    const aliasTokens = extractAliasTokens(componentName)
+    tokens = aliasTokens as Token[]
+    title = 'Alias Tokens'
+    description =
+      'Alias tokens provide semantic names for design decisions. These are the foundation tokens that this component uses, and changing them cascades to all instances.'
+  } else {
+    // Original component tokens behavior
+    const componentTag = component.startsWith('ds-') ? component : `ds-${component}`
+    const componentInfo = (componentsData.components as Array<any>).find(
+      comp => comp.tag === componentTag || comp.tag === component,
+    )
+
+    if (!componentInfo) {
+      return (
+        <div className="sb-unstyled my-large p-large bg-orange-2 radius text-orange-dark">
+          Component not found: {component}
+        </div>
+      )
+    }
+
+    tokens = (componentInfo.tokens || []) as Token[]
+  }
 
   if (tokens.length === 0) {
     return (
       <div className="sb-unstyled">
-        <h2 className="title text-2xl mb-normal">Design Tokens</h2>
+        <h2 className="title text-2xl mb-normal">{title}</h2>
         <div className="my-large p-large bg-grey-light radius">
-          <p className="text-small">No design tokens defined for this component.</p>
+          <p className="text-small">
+            No {tokenType === 'alias' ? 'alias' : 'component'} tokens defined for this component.
+          </p>
         </div>
       </div>
     )
@@ -56,11 +138,8 @@ export const ComponentDesignTokens = ({ component }: ComponentDesignTokensProps)
 
   return (
     <div className="sb-unstyled my-large">
-      <h2 className="title text-2xl mb-normal">Design Tokens</h2>
-      <p className="text-normal mb-normal">
-        Design tokens define the default appearance of components. Override them on <code>:root</code> to apply a
-        consistent theme globally — unlike CSS variables, which only affect individual instances.
-      </p>
+      <h2 className="title text-2xl mb-normal">{title}</h2>
+      <p className="text-normal mb-normal" dangerouslySetInnerHTML={{ __html: description }} />
       <table className="table  w-full mb-large">
         <thead>
           <tr>
