@@ -2,7 +2,7 @@ import React from 'react'
 import componentsData from '../../src/assets/data/components.json'
 import { Clipboard } from './Clipboard'
 
-type ComponentCSSVariantsProps = {
+type ComponentCssVariantsProps = {
   component: string
   subComponents?: string[]
 }
@@ -53,7 +53,7 @@ const VariantsTable = ({ variants, heading }: { variants: CssVariant[]; heading?
   </div>
 )
 
-export const ComponentCssVariants = ({ component, subComponents }: ComponentCSSVariantsProps): React.ReactElement => {
+export const ComponentCssVariants = ({ component, subComponents }: ComponentCssVariantsProps): React.ReactElement => {
   const componentInfo = findComponent(component)
 
   if (!componentInfo) {
