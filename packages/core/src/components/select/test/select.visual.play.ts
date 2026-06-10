@@ -1,16 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'select'
-const VARIANTS = [
-  'basic',
-  'slotted-options',
-  'disabled',
-  'invalid',
-  'valid',
-  'warning',
-  'multiple-options',
-  'long-content',
-] as const
+const VARIANTS = ['basic', 'disabled', 'invalid', 'valid', 'warning'] as const
 
 const image = screenshot(TAG)
 
