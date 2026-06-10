@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as ContainerStories from './container.stories'
+import { CONTAINER_DOC_CONFIG, getContainerTabs } from './container.doc-config'
+
+<Meta title="Components/Container/Variants/Overview" />
+
+<StoryHeading of={ContainerStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={CONTAINER_DOC_CONFIG.section} color={CONTAINER_DOC_CONFIG.color} />
+
+<BannerTabs of={ContainerStories} tabs={getContainerTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContainerStories.Basic}></StoryHeading>
+
+The default container constrains content to `--ds-alias-container-width-base` on desktop, providing an optimal line length for readability. Responsive padding adjusts for mobile devices.
+
+<CanvasWithCodePen of={ContainerStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContainerStories.Fluid}></StoryHeading>
+
+The fluid variant expands to `--ds-alias-container-width-fluid` on desktop, accommodating wider layouts like data tables and dashboards that benefit from additional horizontal space.
+
+<CanvasWithCodePen of={ContainerStories.Fluid} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContainerStories.Compact}></StoryHeading>
+
+The compact variant constrains content to `--ds-alias-container-width-compact`, providing a narrower max-width for focused experiences like forms, settings, or modal dialogs.
+
+<CanvasWithCodePen of={ContainerStories.Compact} sourceState="shown" />
+
+<Footer />

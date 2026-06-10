@@ -1,7 +1,19 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'form'
-const VARIANTS = ['select', 'select-states', 'file', 'file-states', 'field-spacing'] as const
+const VARIANTS = [
+  'basic',
+  'disabled',
+  'invalid',
+  'numeric-sizes',
+  'numeric-mixed',
+  'semantic-sizes',
+  'responsive-half',
+  'responsive-thirds',
+  'responsive-multi-breakpoint',
+  'semantic-responsive',
+  'complex-layout',
+] as const
 
 const image = screenshot(TAG)
 

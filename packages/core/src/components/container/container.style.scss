@@ -1,3 +1,12 @@
+/**
+ * Container provides a responsive width-constrained wrapper for page content.
+ * Centers content with responsive horizontal padding and supports multiple max-width variants
+ * for different layout needs (base, fluid, compact).
+ *
+ * @variant is-fluid - Fluid container with maximum width set to fluid breakpoint.
+ * @variant is-compact - Compact container with reduced maximum width for narrower layouts.
+ */
+
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
 .container {

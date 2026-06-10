@@ -488,18 +488,25 @@ import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-co
 ## `5-Accessibility.mdx`
 
 ```mdx
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   A11yGuidelines,
   Banner,
   BannerTabs,
+  CanvasTabs,
   Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
 } from '../../../.storybook/blocks'
 import * as <Component>Stories from './<component>.stories'
 import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-config'
 
 <Meta title="Components/<ComponentName>/Accessibility" />
+
 <Banner label={'Accessibility'} section={<COMPONENT>_DOC_CONFIG.section} color={<COMPONENT>_DOC_CONFIG.color} />
+
 <BannerTabs of={<Component>Stories} tabs={get<Component>Tabs('accessibility')} />
 
 ## Guidelines
@@ -508,27 +515,56 @@ import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-co
   items={[
     {
       type: 'do',
-      title: '[Guideline Title]',
-      content: <p style={{ margin: '0.5rem 0 0 0' }}>[Actionable instruction for the component consumer.]</p>,
+      title: '[Guideline Title — actionable requirement]',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          [Clear instruction for component consumers. Reference HTML attributes like <code>aria-label</code>,{' '}
+          <code>aria-describedby</code>, or semantic elements where relevant.]
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: '[Second do example]',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>[Another important practice for this component.]</p>,
     },
     {
       type: 'dont',
-      title: '[Anti-pattern Title]',
-      content: <p style={{ margin: '0.5rem 0 0 0' }}>[What to avoid and why.]</p>,
+      title: '[Anti-pattern Title — what to avoid]',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          [What not to do and why it fails accessibility. Explain the consequence for users.]
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: '[Second dont example]',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>[Another common mistake that breaks accessibility.]</p>,
     },
   ]}
 />
 
-## WCAG 2.2 AA Compliance
+## References
 
-The <component> component implements patterns that meet WCAG 2.2 Level AA standards:
-
-- **[Criterion]** — [description]
+- [MDN Reference 1](https://example.com) - [Brief description of what users will learn]
+- [MDN Reference 2](https://example.com) - [How it relates to this component]
+- [WCAG 2.2 Guideline](https://www.w3.org/WAI/WCAG22/) - [Which success criterion applies]
 
 <Footer />
 ```
 
-**Accessibility content principle:** Document **consumer requirements only**. Do not describe internal implementation details.
+**Accessibility content principle:**
+
+- Document **consumer requirements only** — not internal implementation.
+- Include **4–6 do/don't guidelines** (2–3 dos, 2–3 don'ts) that are **component-specific and actionable**.
+- Add **MDN and WCAG references** at the end to direct users to authoritative resources.
+- Guidelines should match the component's actual usage patterns. For example:
+  - **Form fields** (Select, Input, Checkbox): Focus on labels, `aria-describedby` for error messages, required indication.
+  - **Interactive buttons/links**: Focus on text labels, focus visible, keyboard activation.
+  - **Content containers** (Badge, Card): Focus on semantic structure, color contrast, descriptive context.
+  - **Navigation**: Focus on landmarks, skip links, ARIA roles.
+- Avoid generic guidelines; tailor each item to the component's role and user interactions.
 
 ---
 
@@ -615,9 +651,11 @@ import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-co
 
 **Notes:**
 
+- **Keep this page minimal** — no extra content beyond the components above. Do not add additional sections, guidelines, or explanatory text.
 - `ComponentPageObject` reads `pageObject` from `components.json` (populated during `npm run build`).
 - If the component has no `.po.ts` in `packages/playwright`, the block shows "No page object available" + the install guide.
 - If a page object exists, it renders Locators / Actions / Assertions tables, a semi-dynamic example test, and the install guide.
+- The structure is always: Meta → Banner → BannerTabs → ComponentPageObject → Footer. Nothing more.
 
 ---
 

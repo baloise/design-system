@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentCssVariants,
+  ComponentDesignTokens,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ContainerStories from './container.stories'
+import { CONTAINER_DOC_CONFIG, getContainerTabs } from './container.doc-config'
+
+<Meta title="Components/Container/Styling" />
+
+<Banner label={'Styling'} section={CONTAINER_DOC_CONFIG.section} color={CONTAINER_DOC_CONFIG.color} />
+
+<BannerTabs of={ContainerStories} tabs={getContainerTabs('styling')} />
+
+<ComponentCssVariants component="container" />
+
+<ComponentCssVariables component="container" />
+
+<ComponentDesignTokens component="container" tokenType="alias" />
+
+<Footer />
+

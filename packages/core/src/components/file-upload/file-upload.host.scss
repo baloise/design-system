@@ -1,5 +1,6 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../input/input.mixin' as input;
+@use '../form/form.mixin' as form;
 @use '../../vars' as vars;
 
 /**
@@ -54,8 +55,8 @@
   @include vars.local(file-upload-disabled-text-color, var(--ds-button-color-disabled-base-text));
 
   @include input.vars('file-upload');
-  @include input.vars-label('file-upload');
-  @include input.vars-description('file-upload');
+  @include form.vars-label();
+  @include form.vars-description();
 }
 
 /**
@@ -69,8 +70,8 @@
   width: 100%;
 
   @include input.style('file-upload', '#input');
-  @include input.label('file-upload', 'label');
-  @include input.description('file-upload', '#description');
+  @include form.label('label');
+  @include form.description('#description');
 }
 
 :host input[type='file'],
