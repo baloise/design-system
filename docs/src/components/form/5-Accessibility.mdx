@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FormStories from './form.stories'
+import { FORM_DOC_CONFIG, getFormTabs } from './form.doc-config'
+
+<Meta title="Components/Form/Accessibility" />
+
+<Banner label={'Accessibility'} section={FORM_DOC_CONFIG.section} color={FORM_DOC_CONFIG.color} />
+
+<BannerTabs of={FormStories} tabs={getFormTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Associate labels with form controls using `for` attribute',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          All form fields must have an associated <code>&lt;label&gt;</code> element with a matching{' '}
+          <code>for</code> attribute pointing to the field's <code>id</code>. This ensures screen readers announce
+          the field purpose and makes clicking the label focus the input.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use `aria-describedby` for help text and error messages',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Connect help text and error messages to inputs using <code>aria-describedby</code> pointing to the{' '}
+          <code>id</code> of the helper element. This provides additional context to assistive technology users.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use fieldset and legend for grouped form fields',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          For related fields like radio buttons or checkboxes, wrap them in a <code>&lt;fieldset&gt;</code> with a{' '}
+          <code>&lt;legend&gt;</code> describing the group. This helps screen reader users understand field
+          relationships.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use `aria-invalid` and `aria-required` for form states',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Apply <code>aria-invalid="true"</code> when a field has a validation error and <code>aria-required="true"</code> for
+          required fields. These ARIA attributes communicate field state to assistive technology.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Avoid placeholder text as a label substitute',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never rely on placeholder text alone to label form fields. Placeholders disappear when users start typing,
+          leaving no indication of what the field is for. Always use explicit labels with <code>for</code> attributes.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do not use color alone to indicate errors',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Color-blind users may not perceive error states indicated only by color. Always accompany color changes with
+          text, icons, or the <code>is-invalid</code> class to ensure errors are accessible to all users.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: `<label>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) - Association of labels with form controls
+- [MDN: `<fieldset>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset) - Grouping related form elements
+- [MDN: `aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) - Associating help text with form inputs
+- [WCAG 2.2: Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name) - Requirement that visible labels include programmatic names
+- [WCAG 2.2: Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages) - How to communicate form validation and error states
+
+<Footer />

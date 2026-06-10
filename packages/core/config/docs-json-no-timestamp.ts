@@ -1,6 +1,6 @@
 import { JsonDocs, OutputTargetDocsJson } from '@stencil/core/internal'
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'fs'
-import { join } from 'path'
+import { basename, join } from 'path'
 
 interface InheritanceEntry {
   cssVar: string
@@ -124,7 +124,7 @@ function parseScssStyles(dirPath: string): Array<{ name: string; docs: string }>
   }
 
   const styles: Array<{ name: string; docs: string }> = []
-  const propRegex = /@prop\s+(--[\w-]+)\s*:\s*(.+)/g
+  const propRegex = /@prop\s+(--[\w-]+)\s*-\s*(.+)/g
 
   for (const file of files) {
     const content = readFileSync(join(dirPath, file), 'utf8')
@@ -284,6 +284,59 @@ function extractComponentTokens(tokensFilePath: string): Map<string, TokenValue[
 }
 
 /**
+ * Scans the components directory for CSS-only components.
+ * A CSS-only component has a .style.scss file but no .tsx file.
+ */
+function scanCssOnlyComponents(componentsDir: string): string[] {
+  const cssOnlyComponents: string[] = []
+
+  if (!existsSync(componentsDir)) return cssOnlyComponents
+
+  let dirs: string[]
+  try {
+    dirs = readdirSync(componentsDir)
+  } catch {
+    return cssOnlyComponents
+  }
+
+  for (const dir of dirs) {
+    const dirPath = join(componentsDir, dir)
+
+    // Check for .style.scss file
+    const hasStyleScss = existsSync(join(dirPath, `${dir}.style.scss`))
+
+    // Check for .tsx file
+    const hasTsx = existsSync(join(dirPath, `${dir}.tsx`))
+
+    // CSS-only if it has style.scss but no .tsx
+    if (hasStyleScss && !hasTsx) {
+      cssOnlyComponents.push(dir)
+    }
+  }
+
+  return cssOnlyComponents
+}
+
+/**
+ * Create a CSS-only component entry for the components.json
+ */
+function createCssOnlyComponentEntry(
+  componentName: string,
+  styles: Array<{ name: string; docs: string }>,
+  tokens: TokenValue[] | undefined,
+  docs: string,
+): any {
+  return {
+    tag: componentName,
+    type: 'css-only',
+    docs,
+    styles: styles.length > 0 ? styles : [],
+    tokens: tokens && tokens.length > 0 ? tokens : [],
+    properties: [],
+  }
+}
+
+/**
  * Custom output target that generates docs-json without timestamp and path information
  * This wraps the standard docs-json output and removes the timestamp field and all path-related properties
  * Also enriches components with design tokens from Base.tokens.json
@@ -336,8 +389,30 @@ export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): Out
             componentWithoutPaths.pageObject = po
           }
 
+          // Add type marker for web-component
+          componentWithoutPaths.type = 'web-component'
+
           return componentWithoutPaths
         })
+      }
+
+      // Scan and add CSS-only components
+      const componentsDir = join(process.cwd(), 'src', 'components')
+      const cssOnlyComponentNames = scanCssOnlyComponents(componentsDir)
+
+      for (const componentName of cssOnlyComponentNames) {
+        const componentDir = join(componentsDir, componentName)
+        const styles = parseScssStyles(componentDir)
+        const tokens = componentTokens.get(componentName.toLowerCase())
+        const docs = extractComponentDescription(componentDir)
+        const variants = extractComponentVariants(componentDir)
+
+        const cssOnlyEntry = createCssOnlyComponentEntry(componentName, styles, tokens, docs)
+        // Phase 2: Add variants to entry when needed
+        if (variants.length > 0) {
+          cssOnlyEntry.variants = variants
+        }
+        docsWithoutTimestamp.components.push(cssOnlyEntry)
       }
 
       // Write the file without timestamp and paths
@@ -345,4 +420,83 @@ export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): Out
       writeFileSync(outputTarget.file, content, 'utf8')
     },
   } as any
+}
+
+/**
+ * Extract JSDoc description from SCSS file
+ * Phase 1: Extracts the lead description (everything before first @tag)
+ */
+function extractComponentDescription(componentDir: string): string {
+  const componentName = basename(componentDir)
+  const scssFile = join(componentDir, `${componentName}.style.scss`)
+
+  if (!existsSync(scssFile)) {
+    return ''
+  }
+
+  try {
+    const content = readFileSync(scssFile, 'utf8')
+    const jsDocMatch = content.match(/^\/\*\*([\s\S]*?)\*\//m)
+
+    if (!jsDocMatch) {
+      return ''
+    }
+
+    // Extract lead description (everything before first @tag)
+    const jsDocContent = jsDocMatch[1]
+    const leadMatch = jsDocContent.match(/^([\s\S]*?)(?=\s*@|$)/)
+
+    if (leadMatch) {
+      return leadMatch[1]
+        .split('\n')
+        .map(line => line.replace(/^\s*\*\s?/, '').trim())
+        .filter(Boolean)
+        .join('\n')
+    }
+
+    return ''
+  } catch (error) {
+    console.error(`Error reading component description from ${scssFile}:`, error)
+    return ''
+  }
+}
+
+/**
+ * Phase 2: Extract variant properties from @variant tags
+ * Extracts CSS modifier classes and their descriptions for component variants
+ * Example: @variant is-invalid - Invalid state style
+ */
+function extractComponentVariants(componentDir: string): Array<{ name: string; docs: string }> {
+  const componentName = basename(componentDir)
+  const scssFile = join(componentDir, `${componentName}.style.scss`)
+
+  if (!existsSync(scssFile)) {
+    return []
+  }
+
+  try {
+    const content = readFileSync(scssFile, 'utf8')
+    const jsDocMatch = content.match(/^\/\*\*([\s\S]*?)\*\//m)
+
+    if (!jsDocMatch) {
+      return []
+    }
+
+    const jsDocContent = jsDocMatch[1]
+    const variantRegex = /@variant\s+([\w-]+)\s*-\s*(.+)/g
+    const variants: Array<{ name: string; docs: string }> = []
+
+    let m: RegExpExecArray | null
+    while ((m = variantRegex.exec(jsDocContent)) !== null) {
+      variants.push({
+        name: m[1],
+        docs: m[2].trim(),
+      })
+    }
+
+    return variants
+  } catch (error) {
+    console.error(`Error reading variants from ${scssFile}:`, error)
+    return []
+  }
 }

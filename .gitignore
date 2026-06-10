@@ -11,6 +11,8 @@ vite.config.ts.**.mjs
 .env
 .secrets
 .playwright-mcp
+Base.tokens.json.backup
+debug.js
 
 # dependencies
 node_modules

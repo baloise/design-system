@@ -13,7 +13,7 @@
     "start-two": "npm --prefix packages/core run start-two",
     "start:force": "turbo run build --force && npm run start",
     "docs": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs --serve && storybook dev -p 6006 --config-dir docs/.storybook",
-    "docs:preview": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs && http-server docs/dist -p 6006",
+    "docs:preview": "turbo run build --filter=@baloise/ds-core --force && node scripts/build-docs.mjs && http-server docs/dist -p 6006",
     "_playwright": "=============================================== Playwright =================================================",
     "play": "npm --prefix packages/core run play",
     "play:file": "npm --prefix packages/core run play:file",

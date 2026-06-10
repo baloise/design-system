@@ -1,0 +1,71 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic Style -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-file-upload label="Upload Document" description="All File Types" required></ds-file-upload>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-file-upload label="Upload Document" description="This field is disabled" disabled></ds-file-upload>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <ds-file-upload
+          label="Upload Document"
+          description="This field has an error"
+          invalid
+          invalid-text="File type not allowed"
+        ></ds-file-upload>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid (Success Color)</span>
+        <ds-file-upload
+          label="Upload Document"
+          description="File uploaded successfully"
+          color="success"
+        ></ds-file-upload>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning Color</span>
+        <ds-file-upload label="Upload Document" description="File size is large" color="warning"></ds-file-upload>
+      </section>
+
+      <!-- Loading -->
+      <section data-testid="loading">
+        <span>Loading</span>
+        <ds-file-upload label="Uploading..." loading></ds-file-upload>
+      </section>
+
+      <!-- No File List -->
+      <section data-testid="no-file-list">
+        <span>No File List Display</span>
+        <ds-file-upload
+          label="Upload Document"
+          description="File list is hidden"
+          has-file-list="false"
+        ></ds-file-upload>
+      </section>
+    </main>
+  </body>
+</html>
