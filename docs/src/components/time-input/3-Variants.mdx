@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as TimeInputStories from './time-input.stories'
+import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config'
+
+<Meta title="Components/Time Input/Variants/Overview" />
+
+<StoryHeading of={TimeInputStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={TIME_INPUT_DOC_CONFIG.section} color={TIME_INPUT_DOC_CONFIG.color} />
+
+<BannerTabs of={TimeInputStories} tabs={getTimeInputTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TimeInputStories.Basic}></StoryHeading>
+
+The default time input in an empty state ready for user interaction.
+
+<CanvasWithCodePen of={TimeInputStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TimeInputStories.Disabled}></StoryHeading>
+
+A disabled time input that cannot be interacted with by the user. Use this state when the time selection is not applicable or when the time is pre-determined by the system.
+
+<CanvasWithCodePen of={TimeInputStories.Disabled} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TimeInputStories.Invalid}></StoryHeading>
+
+An invalid time input indicating that the selected time does not meet validation requirements. Pair with error text to guide users on how to correct the selection.
+
+<CanvasWithCodePen of={TimeInputStories.Invalid} sourceState="shown" />
+
+<Footer />

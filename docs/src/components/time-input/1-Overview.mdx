@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentCssVariants,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TimeInputStories from './time-input.stories'
+import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config'
+
+<Meta title="Components/Time Input/Time Input" />
+
+<Banner label={'Time Input'} section={TIME_INPUT_DOC_CONFIG.section} color={TIME_INPUT_DOC_CONFIG.color} />
+
+<BannerTabs of={TimeInputStories} tabs={getTimeInputTabs('overview')} />
+
+<ComponentLead component="time-input" />
+
+<CanvasWithCodePen of={TimeInputStories.Basic} sourceState="shown" />
+
+<Controls of={TimeInputStories.Basic} />
+
+<ComponentCssVariants component="time-input" />
+
+<Footer />

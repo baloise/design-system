@@ -83,6 +83,7 @@
   margin-bottom: 0.25rem;
 }
 
+.field.is-danger .help::before,
 .field.is-invalid .help::before {
   content: '';
   height: 1rem;
