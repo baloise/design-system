@@ -86,6 +86,45 @@ Use CSS classes, never attribute selectors:
 :host(.is-primary) { ... }
 ```
 
+### Responsive Design & Mobile-First Styling
+
+All components must follow a **mobile-first** approach: define styles for mobile/narrow viewports first, then progressively enhance for larger screens using `@media` queries.
+
+```scss
+// ✅ Mobile-first: base styles for small screens (320px+)
+:host {
+  display: block;
+  padding: var(--ds-space-sm);
+  font-size: var(--ds-text-size-sm);
+}
+
+// Then enhance for tablet (≥ tablet breakpoint)
+@include media('>tablet') {
+  padding: var(--ds-space-md);
+  font-size: var(--ds-text-size-base);
+}
+
+// Further enhance for desktop (≥ desktop breakpoint)
+@include media('>desktop') {
+  padding: var(--ds-space-lg);
+}
+```
+
+**Benefits:**
+
+- Smaller CSS payloads on mobile devices
+- Better performance by default
+- Easier to maintain — additions rather than overrides
+- Aligns with browser capability progression (mobile → desktop)
+
+Use the design system breakpoint tokens from `packages/tokens`:
+
+- `--ds-alias-breakpoint-mobile` (default, no media query needed)
+- `--ds-alias-breakpoint-tablet` (≥ 960px)
+- `--ds-alias-breakpoint-desktop` (≥ 1440px)
+
+Reference breakpoints via design tokens, **never hardcoded pixel values**.
+
 ### Accessibility & SEO for Web Components
 
 Ensure components are accessible to assistive technologies and search engines by exposing semantic content and proper ARIA markup.

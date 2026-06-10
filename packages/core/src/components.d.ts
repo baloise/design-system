@@ -1687,6 +1687,30 @@ export namespace Components {
     interface DsModalHeader {
     }
     /**
+     * TODO's:
+     * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
+     * - [ ] Add prop container like we did for footer
+     * - [ ] Add support for colors/themes via CSS variables or props
+     * - [ ] Add focus trap includes the hamburger button when menu is open
+     * - [ ] Add animation for menu open/close
+     * - [ ] add solution for tab item overflow on desktop.
+     * - [ ] add example for calculators like mf
+     * /**
+     * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+     */
+    interface DsNavbar {
+        "closeMenu": () => Promise<void>;
+        /**
+          * @default false
+         */
+        "open": boolean;
+        "openMenu": () => Promise<void>;
+        /**
+          * PUBLIC METHODS ─────────────────────────────────────────────────────
+         */
+        "toggleMenu": () => Promise<void>;
+    }
+    /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
      */
     interface DsNotification {
@@ -3197,6 +3221,10 @@ export interface DsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsModalElement;
 }
+export interface DsNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsNavbarElement;
+}
 export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsNotificationElement;
@@ -3811,6 +3839,38 @@ declare global {
         prototype: HTMLDsModalHeaderElement;
         new (): HTMLDsModalHeaderElement;
     };
+    interface HTMLDsNavbarElementEventMap {
+        "dsMenuOpenStart": void;
+        "dsMenuOpenEnd": void;
+        "dsMenuCloseStart": void;
+        "dsMenuCloseEnd": void;
+    }
+    /**
+     * TODO's:
+     * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
+     * - [ ] Add prop container like we did for footer
+     * - [ ] Add support for colors/themes via CSS variables or props
+     * - [ ] Add focus trap includes the hamburger button when menu is open
+     * - [ ] Add animation for menu open/close
+     * - [ ] add solution for tab item overflow on desktop.
+     * - [ ] add example for calculators like mf
+     * /**
+     * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+     */
+    interface HTMLDsNavbarElement extends Components.DsNavbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsNavbarElement: {
+        prototype: HTMLDsNavbarElement;
+        new (): HTMLDsNavbarElement;
+    };
     interface HTMLDsNotificationElementEventMap {
         "dsCloseClick": NotificationCloseClickDetail;
         "dsDidLoad": void;
@@ -4316,6 +4376,7 @@ declare global {
         "ds-modal": HTMLDsModalElement;
         "ds-modal-body": HTMLDsModalBodyElement;
         "ds-modal-header": HTMLDsModalHeaderElement;
+        "ds-navbar": HTMLDsNavbarElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-pagination": HTMLDsPaginationElement;
@@ -6059,6 +6120,28 @@ declare namespace LocalJSX {
      * the heading text through the slot chain without crossing shadow boundaries.
      */
     interface DsModalHeader {
+    }
+    /**
+     * TODO's:
+     * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
+     * - [ ] Add prop container like we did for footer
+     * - [ ] Add support for colors/themes via CSS variables or props
+     * - [ ] Add focus trap includes the hamburger button when menu is open
+     * - [ ] Add animation for menu open/close
+     * - [ ] add solution for tab item overflow on desktop.
+     * - [ ] add example for calculators like mf
+     * /**
+     * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+     */
+    interface DsNavbar {
+        "onDsMenuCloseEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        "onDsMenuCloseStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        "onDsMenuOpenEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        "onDsMenuOpenStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * @default false
+         */
+        "open"?: boolean;
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -7971,6 +8054,9 @@ declare namespace LocalJSX {
         "modalWidth": number;
         "fullscreen": boolean;
     }
+    interface DsNavbarAttributes {
+        "open": boolean;
+    }
     interface DsNotificationAttributes {
         "alert": boolean;
         "closable": boolean;
@@ -8311,6 +8397,7 @@ declare namespace LocalJSX {
         "ds-modal": Omit<DsModal, keyof DsModalAttributes> & { [K in keyof DsModal & keyof DsModalAttributes]?: DsModal[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `attr:${K}`]?: DsModalAttributes[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `prop:${K}`]?: DsModal[K] };
         "ds-modal-body": DsModalBody;
         "ds-modal-header": DsModalHeader;
+        "ds-navbar": Omit<DsNavbar, keyof DsNavbarAttributes> & { [K in keyof DsNavbar & keyof DsNavbarAttributes]?: DsNavbar[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `attr:${K}`]?: DsNavbarAttributes[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `prop:${K}`]?: DsNavbar[K] };
         "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
         "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
         "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
@@ -8516,6 +8603,19 @@ declare module "@stencil/core" {
              * the heading text through the slot chain without crossing shadow boundaries.
              */
             "ds-modal-header": LocalJSX.IntrinsicElements["ds-modal-header"] & JSXBase.HTMLAttributes<HTMLDsModalHeaderElement>;
+            /**
+             * TODO's:
+             * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
+             * - [ ] Add prop container like we did for footer
+             * - [ ] Add support for colors/themes via CSS variables or props
+             * - [ ] Add focus trap includes the hamburger button when menu is open
+             * - [ ] Add animation for menu open/close
+             * - [ ] add solution for tab item overflow on desktop.
+             * - [ ] add example for calculators like mf
+             * /**
+             * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+             */
+            "ds-navbar": LocalJSX.IntrinsicElements["ds-navbar"] & JSXBase.HTMLAttributes<HTMLDsNavbarElement>;
             /**
              * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
              */

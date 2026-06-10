@@ -1,0 +1,457 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --navbar-background: Background color of the navbar (default: --ds-alias-background-color-primary)
+ * @prop --navbar-padding: Padding of the navbar (default: --ds-global-size-space-16)
+ * @prop --navbar-hamburger-color: Color of the hamburger icon (default: --ds-alias-text-color-inverted-primary)
+ * @prop --navbar-hamburger-size: Size of the hamburger icon (default: 1.5rem)
+ * @prop --navbar-drawer-max-width: Maximum width of the drawer panel (default: 400px)
+ * @prop --navbar-drawer-slide-duration: Animation duration for drawer slide-in/out (default: 300ms)
+ * @prop --navbar-drawer-backdrop-color: Background color of the drawer backdrop overlay
+ * @prop --navbar-drawer-backdrop-opacity: Opacity of the backdrop when drawer is open (default: 0.5)
+ */
+
+:host {
+  @include vars.local(navbar-background, var(--ds-alias-background-color-primary));
+  @include vars.local(navbar-padding, var(--ds-global-size-space-16));
+  @include vars.local(navbar-hamburger-color, var(--ds-alias-text-color-inverted-primary));
+  @include vars.local(navbar-hamburger-size, 1.5rem);
+  @include vars.local(navbar-drawer-max-width, 400px);
+  @include vars.local(navbar-drawer-slide-duration, 300ms);
+  @include vars.local(navbar-drawer-backdrop-color, rgba(0, 0, 0, 1));
+  @include vars.local(navbar-drawer-backdrop-opacity, 0.5);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  display: block;
+  position: relative;
+  z-index: var(--ds-dropdown-z-index, 999);
+}
+
+/**
+ * Navigation Container
+ * ─────────────────────────────────────────────────────
+ */
+
+:host #nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--ds-global-size-space-32);
+  background-color: var(--_navbar-background);
+  padding: var(--_navbar-padding);
+  width: 100%;
+  min-height: 3rem;
+  box-sizing: border-box;
+}
+
+/**
+ * Slot: Brand & Title
+ * ─────────────────────────────────────────────────────
+ * Logo, wordmark, or branding element. Always visible.
+ */
+
+::slotted([slot='brand']) {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--ds-alias-spacing-small);
+}
+
+::slotted([slot='title']) {
+  color: var(--ds-alias-text-color-white);
+  font-family: var(--ds-alias-text-family-heading);
+  font-size: var(--ds-heading-5-size-device);
+  font-weight: var(--ds-alias-text-weight-bold);
+}
+
+/**
+ * Slot: Menu Start & Menu End
+ * ─────────────────────────────────────────────────────
+ * Navigation links and action buttons. Hidden on mobile, inline on desktop.
+ */
+
+:host #menu {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+
+  #menu-start {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  #menu-end {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+::slotted([slot='menu-start']),
+::slotted([slot='menu-end']) {
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    gap: var(--ds-global-size-space-16);
+    align-items: center;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+/**
+ * Slot: Menu Start
+ * Left-aligned navigation links
+ */
+
+::slotted([slot='menu-start']) {
+  @include unselectable();
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--ds-alias-text-color-white);
+  font-size: var(--ds-tabs-tab-font-size);
+  // padding: var(--ds-tabs-tab-padding);
+  text-decoration: none;
+  outline: none;
+  white-space: nowrap;
+  transition: color 120ms ease;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  @include hover {
+    &:hover {
+      color: var(--ds-tabs-tab-color-hover);
+
+      &::after {
+        background-color: var(--ds-tabs-tab-indicator-color-idle);
+      }
+    }
+  }
+
+  &:active {
+    color: var(--ds-tabs-tab-color-active);
+
+    &::after {
+      background-color: var(--ds-tabs-tab-indicator-color-idle);
+    }
+  }
+}
+
+::slotted([slot='menu-start'].is-active),
+::slotted([slot='menu-start'][aria-current='page']) {
+  font-weight: var(--ds-alias-text-weight-bold);
+  &::after {
+    background-color: white;
+  }
+}
+
+/**
+ * Slot: Menu End
+ * Right-aligned navigation links and action buttons
+ */
+
+::slotted([slot='menu-end']) {
+  @include tablet {
+    justify-content: flex-end;
+  }
+}
+
+/**
+ * Hamburger Button (Mobile Only)
+ * ─────────────────────────────────────────────────────
+ * Toggle button for mobile menu. Hidden on desktop.
+ * @part hamburger - The hamburger button element
+ */
+
+.hamburger {
+  display: none;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: var(--ds-global-size-space-8);
+  cursor: pointer;
+  color: var(--_navbar-hamburger-color);
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  transition: opacity 0.2s ease;
+  appearance: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.01s ease;
+  }
+
+  @include touch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include tablet {
+    display: none !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ds-alias-interaction-focus-color-base);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+/**
+ * Hamburger Icon
+ * SVG icon that toggles between menu-bars and close states
+ */
+
+.hamburger__icon {
+  width: var(--_navbar-hamburger-size);
+  height: var(--_navbar-hamburger-size);
+  flex-shrink: 0;
+}
+
+/**
+ * Mobile Menu Drawer (Touch Only)
+ * ─────────────────────────────────────────────────────
+ * Right-side drawer that slides in from the right on mobile/tablet.
+ * Includes backdrop overlay, panel with menu content, and close button.
+ * Hidden on desktop (≥tablet breakpoint).
+ * @part drawer-menu - The drawer aside element
+ */
+
+:host #drawer-menu {
+  display: none;
+
+  @include touch {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--ds-modal-z-index, 2000);
+  }
+
+  @include tablet {
+    display: none !important;
+  }
+}
+
+/**
+ * Drawer Backdrop
+ * Overlay behind the drawer that prevents interaction with page content.
+ * Fades in when drawer opens, respects prefers-reduced-motion.
+ */
+
+.drawer-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--_navbar-drawer-backdrop-color);
+  opacity: 0;
+  transition: opacity var(--_navbar-drawer-slide-duration) ease;
+  cursor: pointer;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.01s ease;
+  }
+
+  :host(.is-open) & {
+    opacity: var(--_navbar-drawer-backdrop-opacity);
+  }
+}
+
+/**
+ * Drawer Panel
+ * The actual drawer container with menu content.
+ * Slides in from the right when opened, respects prefers-reduced-motion.
+ * Max width 400px (customizable via --navbar-drawer-max-width).
+ */
+
+.drawer-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--_navbar-drawer-max-width);
+  height: 100%;
+  background-color: var(--_navbar-background);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform var(--_navbar-drawer-slide-duration) ease;
+  overflow-y: auto;
+  outline: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: transform 0.01s ease;
+  }
+
+  :host(.is-open) & {
+    transform: translateX(0);
+  }
+}
+
+/**
+ * Drawer Header
+ * Contains the title and close button
+ */
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--_navbar-padding);
+  border-bottom: 1px solid var(--ds-alias-border-color-subtle);
+  flex-shrink: 0;
+}
+
+/**
+ * Drawer Title
+ * Heading identifying the drawer content
+ */
+
+.drawer-title {
+  margin: 0;
+  padding: 0;
+  font-size: var(--ds-heading-5-size-device);
+  font-weight: var(--ds-alias-text-weight-bold);
+  color: var(--ds-alias-text-color-inverted-primary);
+}
+
+/**
+ * Drawer Close Button
+ * Button to close the drawer (× symbol).
+ * Respects prefers-reduced-motion for opacity transitions.
+ */
+
+.drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--_navbar-hamburger-color);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+  appearance: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.01s ease;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ds-alias-interaction-focus-color-base);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+/**
+ * Drawer Content
+ * Scrollable container for menu slots
+ */
+
+.drawer-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-global-size-space-16);
+  padding: var(--_navbar-padding);
+  overflow-y: auto;
+}
+
+/**
+ * Drawer Slotted Content
+ * Styling for menu links and content inside drawer
+ */
+
+::slotted([slot='menu-start']),
+::slotted([slot='menu-end']) {
+  @include touch {
+    display: flex !important;
+    flex-direction: column;
+    gap: var(--ds-global-size-space-8);
+  }
+}
+
+::slotted([slot='menu-start'] a),
+::slotted([slot='menu-end'] a) {
+  padding: var(--ds-global-size-space-8) var(--ds-global-size-space-12);
+  border-radius: 4px;
+  transition: background-color 120ms ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: background-color 0.01s ease;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ds-alias-interaction-focus-color-base);
+    outline-offset: -2px;
+  }
+
+  &:hover {
+    background-color: var(--ds-alias-background-color-highlight);
+  }
+}
+
+/**
+ * Drawer Panel Focus Visible
+ * Ensures panel itself has visible focus indicator when needed
+ */
+
+.drawer-panel:focus-visible {
+  outline: 2px solid var(--ds-alias-interaction-focus-color-base);
+  outline-offset: -2px;
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- Desktop Navbar -->
+      <section data-testid="basic-desktop">
+        <span>Basic Navbar (Desktop View)</span>
+        <ds-navbar>
+          <a href="/" slot="brand">
+            <ds-logo color="white"></ds-logo>
+          </a>
+          <h1 slot="title">Desktop Navbar</h1>
+
+          <a href="/components/navbar/test/navbar.visual.html" slot="menu-start" aria-current="page">About</a>
+          <a href="/components/navbar/test/navbar.visual.html" slot="menu-start">Features</a>
+          <a href="/components/navbar/test/navbar.visual.html" slot="menu-start">Pricing</a>
+
+          <button class="button" slot="menu-end">Search</button>
+          <button class="button" slot="menu-end">Sign In</button>
+        </ds-navbar>
+      </section>
+
+      <!-- Mobile Navbar (Test at smaller viewport) -->
+      <!-- <section data-testid="basic-mobile" class="demo-section">
+        <div class="demo-label">Basic Navbar (Resize to Mobile)</div>
+        <div class="demo-content">
+          <ds-navbar>
+            <a href="/" slot="brand">
+              <strong>MyApp</strong>
+            </a>
+            <a href="/about" slot="menu-start">About</a>
+            <a href="/features" slot="menu-start">Features</a>
+            <a href="/pricing" slot="menu-start">Pricing</a>
+            <a href="/blog" slot="menu-end">Blog</a>
+            <button slot="menu-end">Sign In</button>
+          </ds-navbar>
+        </div>
+      </section> -->
+
+      <!-- Navbar with Different Brand -->
+      <!-- <section data-testid="brand-logo" class="demo-section">
+        <div class="demo-label">Navbar with Logo</div>
+        <div class="demo-content">
+          <ds-navbar>
+            <a href="/" slot="brand" style="padding: 0; display: flex; align-items: center">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style="margin-right: 0.5rem"
+              >
+                <rect width="32" height="32" rx="4" fill="var(--ds-alias-color-primary)" />
+                <text x="16" y="22" font-size="18" font-weight="bold" fill="white" text-anchor="middle">A</text>
+              </svg>
+              AppName
+            </a>
+            <a href="/docs" slot="menu-start">Docs</a>
+            <a href="/api" slot="menu-start">API</a>
+            <a href="/community" slot="menu-end">Community</a>
+            <button slot="menu-end">Get Started</button>
+          </ds-navbar>
+        </div>
+      </section> -->
+
+      <!-- Navbar with Menu Actions
+      <section data-testid="with-actions" class="demo-section">
+        <div class="demo-label">Navbar with Multiple Actions</div>
+        <div class="demo-content">
+          <ds-navbar>
+            <a href="/" slot="brand">
+              <strong>Dashboard</strong>
+            </a>
+            <a href="/overview" slot="menu-start">Overview</a>
+            <a href="/analytics" slot="menu-start">Analytics</a>
+            <a href="/settings" slot="menu-start">Settings</a>
+            <a href="/help" slot="menu-end">Help</a>
+            <button slot="menu-end">Profile</button>
+            <button slot="menu-end" style="margin-left: 0.5rem">Logout</button>
+          </ds-navbar>
+        </div>
+      </section> -->
+    </main>
+  </body>
+</html>
