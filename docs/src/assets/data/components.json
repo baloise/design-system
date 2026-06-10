@@ -20066,88 +20066,88 @@
       ],
       "styles": [
         {
-          "name": "--file-upload-label-family",
-          "docs": "Font family of the label text."
+          "name": "--file-upload-label",
+          "docs": "family: Font family of the label text."
         },
         {
-          "name": "--file-upload-label-weight",
-          "docs": "Font weight of the label text."
+          "name": "--file-upload-label",
+          "docs": "weight: Font weight of the label text."
         },
         {
-          "name": "--file-upload-label-size",
-          "docs": "Font size of the label text."
+          "name": "--file-upload-label",
+          "docs": "size: Font size of the label text."
         },
         {
-          "name": "--file-upload-label-line-height",
-          "docs": "Line height of the label text."
+          "name": "--file-upload-label-line",
+          "docs": "height: Line height of the label text."
         },
         {
-          "name": "--file-upload-drop-zone-border-color",
-          "docs": "Border color of the drop zone."
+          "name": "--file-upload-drop-zone-border",
+          "docs": "color: Border color of the drop zone."
         },
         {
-          "name": "--file-upload-drop-zone-background",
-          "docs": "Background color of the drop zone."
+          "name": "--file-upload-drop-zone",
+          "docs": "background: Background color of the drop zone."
         },
         {
-          "name": "--file-upload-drop-zone-hover-background",
-          "docs": "Background color on hover."
+          "name": "--file-upload-drop-zone-hover",
+          "docs": "background: Background color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-hover-border-color",
-          "docs": "Border color on hover."
+          "name": "--file-upload-drop-zone-hover-border",
+          "docs": "color: Border color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-hover-text-color",
-          "docs": "Text color on hover."
+          "name": "--file-upload-drop-zone-hover-text",
+          "docs": "color: Text color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-active-background",
-          "docs": "Background color when active."
+          "name": "--file-upload-drop-zone-active",
+          "docs": "background: Background color when active."
         },
         {
-          "name": "--file-upload-drop-zone-active-border-color",
-          "docs": "Border color when active."
+          "name": "--file-upload-drop-zone-active-border",
+          "docs": "color: Border color when active."
         },
         {
-          "name": "--file-upload-drop-zone-active-text-color",
-          "docs": "Text color when active."
+          "name": "--file-upload-drop-zone-active-text",
+          "docs": "color: Text color when active."
         },
         {
-          "name": "--file-upload-drop-zone-focus-border-color",
-          "docs": "Border color when focused."
+          "name": "--file-upload-drop-zone-focus-border",
+          "docs": "color: Border color when focused."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-background",
-          "docs": "Background color when disabled."
+          "name": "--file-upload-drop-zone-disabled",
+          "docs": "background: Background color when disabled."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-border-color",
-          "docs": "Border color when disabled."
+          "name": "--file-upload-drop-zone-disabled-border",
+          "docs": "color: Border color when disabled."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-text-color",
-          "docs": "Text color when disabled."
+          "name": "--file-upload-drop-zone-disabled-text",
+          "docs": "color: Text color when disabled."
         },
         {
-          "name": "--file-upload-file-list-background",
-          "docs": "Background color of file list items."
+          "name": "--file-upload-file-list",
+          "docs": "background: Background color of file list items."
         },
         {
-          "name": "--file-upload-file-name-color",
-          "docs": "Text color of file names."
+          "name": "--file-upload-file-name",
+          "docs": "color: Text color of file names."
         },
         {
-          "name": "--file-upload-file-size-color",
-          "docs": "Text color of file sizes."
+          "name": "--file-upload-file-size",
+          "docs": "color: Text color of file sizes."
         },
         {
-          "name": "--file-upload-disabled-icon-color",
-          "docs": "Icon color when disabled."
+          "name": "--file-upload-disabled-icon",
+          "docs": "color: Icon color when disabled."
         },
         {
-          "name": "--file-upload-disabled-text-color",
-          "docs": "Text color when disabled."
+          "name": "--file-upload-disabled-text",
+          "docs": "color: Text color when disabled."
         }
       ],
       "slots": [],
@@ -20821,7 +20821,7 @@
         {
           "name": "🧩 Component / FileUpload / Control / Font / Family",
           "cssVarName": "--ds-fileupload-control-font-family",
-          "value": "{🧩 Component.Input.Control.Family}",
+          "value": "{🧩 Component.Form.Control.Family}",
           "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
           "inheritance": [
             {
@@ -20833,8 +20833,8 @@
               "figmaName": "Alias / Text / Family / Body"
             },
             {
-              "cssVar": "--ds-input-control-family",
-              "figmaName": "Component / Input / Control / Family"
+              "cssVar": "--ds-form-control-family",
+              "figmaName": "Component / Form / Control / Family"
             },
             {
               "cssVar": "--ds-fileupload-control-font-family",
@@ -20852,7 +20852,7 @@
         {
           "name": "🧩 Component / FileUpload / Control / Font / Weight",
           "cssVarName": "--ds-fileupload-control-font-weight",
-          "value": "{🧩 Component.Input.Control.Weight}",
+          "value": "{🧩 Component.Form.Control.Weight}",
           "nativeValue": "400",
           "inheritance": [
             {
@@ -20864,8 +20864,8 @@
               "figmaName": "Alias / Text / Weight / Regular"
             },
             {
-              "cssVar": "--ds-input-control-weight",
-              "figmaName": "Component / Input / Control / Weight"
+              "cssVar": "--ds-form-control-weight",
+              "figmaName": "Component / Form / Control / Weight"
             },
             {
               "cssVar": "--ds-fileupload-control-font-weight",
@@ -20883,7 +20883,7 @@
         {
           "name": "🧩 Component / FileUpload / Control / Text / Size",
           "cssVarName": "--ds-fileupload-control-text-size",
-          "value": "{🧩 Component.Input.Control.FontSize.Mobile}",
+          "value": "{🧩 Component.Form.Control.FontSize.Mobile}",
           "nativeValue": "16",
           "inheritance": [
             {
@@ -20895,8 +20895,8 @@
               "figmaName": "Alias / Text / Size / Base / Mobile"
             },
             {
-              "cssVar": "--ds-input-control-fontsize-mobile",
-              "figmaName": "Component / Input / Control / FontSize / Mobile"
+              "cssVar": "--ds-form-control-fontsize-mobile",
+              "figmaName": "Component / Form / Control / FontSize / Mobile"
             },
             {
               "cssVar": "--ds-fileupload-control-text-size",
@@ -20914,7 +20914,7 @@
         {
           "name": "🧩 Component / FileUpload / Control / Text / LineHeight",
           "cssVarName": "--ds-fileupload-control-text-lineheight",
-          "value": "{🧩 Component.Input.Control.LineHeight}",
+          "value": "{🧩 Component.Form.Control.LineHeight}",
           "nativeValue": "1.5",
           "inheritance": [
             {
@@ -20926,8 +20926,8 @@
               "figmaName": "Alias / Text / LineHeight / Body"
             },
             {
-              "cssVar": "--ds-input-control-lineheight",
-              "figmaName": "Component / Input / Control / LineHeight"
+              "cssVar": "--ds-form-control-lineheight",
+              "figmaName": "Component / Form / Control / LineHeight"
             },
             {
               "cssVar": "--ds-fileupload-control-text-lineheight",
@@ -20945,7 +20945,7 @@
         {
           "name": "🧩 Component / FileUpload / Control / Text / Color / Base",
           "cssVarName": "--ds-fileupload-control-text-color-base",
-          "value": "{🧩 Component.Input.Control.Color.Value.Base}",
+          "value": "{🧩 Component.Form.Control.Color.Value.Base}",
           "nativeValue": "#000D6E",
           "inheritance": [
             {
@@ -20957,8 +20957,8 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-input-control-color-value-base",
-              "figmaName": "Component / Input / Control / Color / Value / Base"
+              "cssVar": "--ds-form-control-color-value-base",
+              "figmaName": "Component / Form / Control / Color / Value / Base"
             },
             {
               "cssVar": "--ds-fileupload-control-text-color-base",
@@ -20977,7 +20977,7 @@
         {
           "name": "🧩 Component / FileUpload / Control / Placeholder / Color / Base",
           "cssVarName": "--ds-fileupload-control-placeholder-color-base",
-          "value": "{🧩 Component.Input.Control.Color.Placeholder.Base}",
+          "value": "{🧩 Component.Form.Control.Color.Placeholder.Base}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
             {
@@ -20989,8 +20989,8 @@
               "figmaName": "Alias / Text / Color / Placeholder"
             },
             {
-              "cssVar": "--ds-input-control-color-placeholder-base",
-              "figmaName": "Component / Input / Control / Color / Placeholder / Base"
+              "cssVar": "--ds-form-control-color-placeholder-base",
+              "figmaName": "Component / Form / Control / Color / Placeholder / Base"
             },
             {
               "cssVar": "--ds-fileupload-control-placeholder-color-base",
@@ -21009,7 +21009,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Font / Family",
           "cssVarName": "--ds-fileupload-description-font-family",
-          "value": "{🧩 Component.Input.Description.Family}",
+          "value": "{🧩 Component.Form.Description.Family}",
           "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
           "inheritance": [
             {
@@ -21021,8 +21021,8 @@
               "figmaName": "Alias / Text / Family / Body"
             },
             {
-              "cssVar": "--ds-input-description-family",
-              "figmaName": "Component / Input / Description / Family"
+              "cssVar": "--ds-form-description-family",
+              "figmaName": "Component / Form / Description / Family"
             },
             {
               "cssVar": "--ds-fileupload-description-font-family",
@@ -21040,7 +21040,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Font / Weight",
           "cssVarName": "--ds-fileupload-description-font-weight",
-          "value": "{🧩 Component.Input.Description.Weight}",
+          "value": "{🧩 Component.Form.Description.Weight}",
           "nativeValue": "400",
           "inheritance": [
             {
@@ -21052,8 +21052,8 @@
               "figmaName": "Alias / Text / Weight / Regular"
             },
             {
-              "cssVar": "--ds-input-description-weight",
-              "figmaName": "Component / Input / Description / Weight"
+              "cssVar": "--ds-form-description-weight",
+              "figmaName": "Component / Form / Description / Weight"
             },
             {
               "cssVar": "--ds-fileupload-description-font-weight",
@@ -21071,7 +21071,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Text / Size",
           "cssVarName": "--ds-fileupload-description-text-size",
-          "value": "{🧩 Component.Input.Description.Size.Mobile}",
+          "value": "{🧩 Component.Form.Description.Size.Mobile}",
           "nativeValue": "12",
           "inheritance": [
             {
@@ -21083,8 +21083,8 @@
               "figmaName": "Alias / Text / Size / XS / Mobile"
             },
             {
-              "cssVar": "--ds-input-description-size-mobile",
-              "figmaName": "Component / Input / Description / Size / Mobile"
+              "cssVar": "--ds-form-description-size-mobile",
+              "figmaName": "Component / Form / Description / Size / Mobile"
             },
             {
               "cssVar": "--ds-fileupload-description-text-size",
@@ -21102,7 +21102,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Text / LineHeight",
           "cssVarName": "--ds-fileupload-description-text-lineheight",
-          "value": "{🧩 Component.Input.Description.LineHeight}",
+          "value": "{🧩 Component.Form.Description.LineHeight}",
           "nativeValue": "1.5",
           "inheritance": [
             {
@@ -21114,8 +21114,8 @@
               "figmaName": "Alias / Text / LineHeight / Body"
             },
             {
-              "cssVar": "--ds-input-description-lineheight",
-              "figmaName": "Component / Input / Description / LineHeight"
+              "cssVar": "--ds-form-description-lineheight",
+              "figmaName": "Component / Form / Description / LineHeight"
             },
             {
               "cssVar": "--ds-fileupload-description-text-lineheight",
@@ -21133,7 +21133,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Text / Color / Base",
           "cssVarName": "--ds-fileupload-description-text-color-base",
-          "value": "{🧩 Component.Input.Description.Color.Base}",
+          "value": "{🧩 Component.Form.Description.Color.Base}",
           "nativeValue": "#656EA8",
           "inheritance": [
             {
@@ -21145,8 +21145,8 @@
               "figmaName": "Alias / Text / Color / PrimaryLight"
             },
             {
-              "cssVar": "--ds-input-description-color-base",
-              "figmaName": "Component / Input / Description / Color / Base"
+              "cssVar": "--ds-form-description-color-base",
+              "figmaName": "Component / Form / Description / Color / Base"
             },
             {
               "cssVar": "--ds-fileupload-description-text-color-base",
@@ -21165,7 +21165,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Text / Color / Danger",
           "cssVarName": "--ds-fileupload-description-text-color-danger",
-          "value": "{🧩 Component.Input.Description.Color.Danger}",
+          "value": "{🧩 Component.Form.Description.Color.Danger}",
           "nativeValue": "#EA1800",
           "inheritance": [
             {
@@ -21177,8 +21177,8 @@
               "figmaName": "Alias / Text / Color / Danger"
             },
             {
-              "cssVar": "--ds-input-description-color-danger",
-              "figmaName": "Component / Input / Description / Color / Danger"
+              "cssVar": "--ds-form-description-color-danger",
+              "figmaName": "Component / Form / Description / Color / Danger"
             },
             {
               "cssVar": "--ds-fileupload-description-text-color-danger",
@@ -21197,7 +21197,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Text / Color / Success",
           "cssVarName": "--ds-fileupload-description-text-color-success",
-          "value": "{🧩 Component.Input.Description.Color.Success}",
+          "value": "{🧩 Component.Form.Description.Color.Success}",
           "nativeValue": "#168741",
           "inheritance": [
             {
@@ -21209,8 +21209,8 @@
               "figmaName": "Alias / Text / Color / Success"
             },
             {
-              "cssVar": "--ds-input-description-color-success",
-              "figmaName": "Component / Input / Description / Color / Success"
+              "cssVar": "--ds-form-description-color-success",
+              "figmaName": "Component / Form / Description / Color / Success"
             },
             {
               "cssVar": "--ds-fileupload-description-text-color-success",
@@ -21229,7 +21229,7 @@
         {
           "name": "🧩 Component / FileUpload / Description / Text / Color / Warning",
           "cssVarName": "--ds-fileupload-description-text-color-warning",
-          "value": "{🧩 Component.Input.Description.Color.Warning}",
+          "value": "{🧩 Component.Form.Description.Color.Warning}",
           "nativeValue": "#B24A00",
           "inheritance": [
             {
@@ -21241,8 +21241,8 @@
               "figmaName": "Alias / Text / Color / Warning"
             },
             {
-              "cssVar": "--ds-input-description-color-warning",
-              "figmaName": "Component / Input / Description / Color / Warning"
+              "cssVar": "--ds-form-description-color-warning",
+              "figmaName": "Component / Form / Description / Color / Warning"
             },
             {
               "cssVar": "--ds-fileupload-description-text-color-warning",
@@ -21317,7 +21317,8 @@
             "docs": ""
           }
         ]
-      }
+      },
+      "type": "web-component"
     },
     {
       "fileName": "footer.tsx",
@@ -55813,6 +55814,57 @@
         }
       ],
       "properties": []
+    },
+    {
+      "tag": "time-input",
+      "type": "css-only",
+      "docs": "Time Input provides a native HTML time input element with styled wrapper,\nintegrated form field support, and state styling. Supports disabled and validation states.",
+      "styles": [
+        {
+          "name": "--time-input-family",
+          "docs": "Font family of the time input control."
+        },
+        {
+          "name": "--time-input-weight",
+          "docs": "Font weight of the time input control."
+        },
+        {
+          "name": "--time-input-line-height",
+          "docs": "Line height of the time input control."
+        },
+        {
+          "name": "--time-input-size",
+          "docs": "Font size of the time input control."
+        },
+        {
+          "name": "--time-input-color",
+          "docs": "Text color of the time input control value."
+        },
+        {
+          "name": "--time-input-placeholder",
+          "docs": "Text color of the time input placeholder text."
+        }
+      ],
+      "tokens": [],
+      "properties": [],
+      "variants": [
+        {
+          "name": "is-disabled",
+          "docs": "Disabled time input state with greyed out appearance."
+        },
+        {
+          "name": "is-danger",
+          "docs": "Invalid time input state with red border and error styling."
+        },
+        {
+          "name": "is-success",
+          "docs": "Valid time input state with green border and success styling."
+        },
+        {
+          "name": "is-warning",
+          "docs": "Warning time input state with yellow border and warning styling."
+        }
+      ]
     }
   ],
   "typeLibrary": {

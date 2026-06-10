@@ -1,0 +1,104 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
+import * as TimeInputStories from './time-input.stories'
+import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config'
+
+<Meta title="Components/Time Input/Usage" />
+<Banner label={'Usage'} section={TIME_INPUT_DOC_CONFIG.section} color={TIME_INPUT_DOC_CONFIG.color} />
+<BannerTabs of={TimeInputStories} tabs={getTimeInputTabs('usage')} />
+
+## When to Use
+
+- Selecting a specific time of day (hours and minutes)
+- Scheduling appointments or events with precise time selection
+- Setting departure, arrival, or meeting times
+- Time-dependent form submissions where accuracy matters
+
+## When NOT to Use
+
+- For duration or time intervals — use a duration picker instead
+- For timezone-aware times — consider a more specialized component
+- For only hour selection without minutes — use a simpler number input
+- For very long lists of times — consider a different interaction pattern
+
+## Do's and Don'ts
+
+### Always provide a clear label
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Descriptive label',
+      contentIsLeftAligned: true,
+      content: (
+        <div class="field">
+          <label class="label" for="departure-time">
+            Departure Time
+          </label>
+          <div class="control">
+            <input type="time" id="departure-time" class="time-input" />
+          </div>
+        </div>
+      ),
+      description: 'Users understand the purpose of the field immediately.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Missing or vague label',
+      contentIsLeftAligned: true,
+      content: (
+        <div class="field">
+          <div class="control">
+            <input type="time" class="time-input" />
+          </div>
+        </div>
+      ),
+      description: 'Without a label, users cannot understand what time they should enter.',
+    },
+  ]}
+/>
+
+### Provide helpful context with descriptions
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Supporting text for validation',
+      contentIsLeftAligned: true,
+      content: (
+        <div class="field is-danger">
+          <label class="label" for="meeting-time">
+            Meeting Time
+          </label>
+          <div class="control">
+            <input type="time" id="meeting-time" class="time-input" aria-invalid="true" aria-describedby="help-text" />
+          </div>
+          <p id="help-text" class="help">
+            Meeting must be scheduled during business hours (8 AM - 6 PM)
+          </p>
+        </div>
+      ),
+      description: 'Context helps users correct invalid selections.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Error without guidance',
+      contentIsLeftAligned: true,
+      content: (
+        <div class="field is-danger">
+          <label class="label" for="meeting-time">
+            Meeting Time
+          </label>
+          <div class="control">
+            <input type="time" id="meeting-time" class="time-input" aria-invalid="true" />
+          </div>
+        </div>
+      ),
+      description: 'Without context, users do not know how to fix the error.',
+    },
+  ]}
+/>
+
+<Footer />

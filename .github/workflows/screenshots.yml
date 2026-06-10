@@ -24,7 +24,11 @@ on:
 jobs:
   assembleInformation:
     name: 📝 Assemble Information
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/update-screenshots') &&
+      (github.event.comment.author_association == 'OWNER' ||
+       github.event.comment.author_association == 'COLLABORATOR')
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
@@ -93,7 +97,11 @@ jobs:
 
   updateScreenshots:
     name: 📸 Update Screenshots
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-screenshots')
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/update-screenshots') &&
+      (github.event.comment.author_association == 'OWNER' ||
+       github.event.comment.author_association == 'COLLABORATOR')
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     needs: [assembleInformation]
