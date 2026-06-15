@@ -59,7 +59,7 @@ jobs:
       - name: Create tokens-dist archive
         run: zip -q -r packages/tokens/TokensDist.zip packages/tokens/dist
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: tokens-dist
           path: packages/tokens/TokensDist.zip
@@ -67,7 +67,7 @@ jobs:
       - name: Create styles-dist archive
         run: zip -q -r packages/styles/StylesDist.zip packages/styles/css
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: styles-dist
           path: packages/styles/StylesDist.zip
@@ -75,7 +75,7 @@ jobs:
       - name: Create icons-dist archive
         run: zip -q -r packages/icons/IconsDist.zip packages/icons/dist
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: icons-dist
           path: packages/icons/IconsDist.zip
@@ -83,7 +83,7 @@ jobs:
       - name: Create core-dist archive
         run: zip -q -r packages/core/CoreDist.zip packages/core/dist
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: core-dist
           path: packages/core/CoreDist.zip
@@ -91,7 +91,7 @@ jobs:
       - name: Create core-loader archive
         run: zip -q -r packages/core/CoreLoader.zip packages/core/loader
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: core-loader
           path: packages/core/CoreLoader.zip
@@ -99,7 +99,7 @@ jobs:
       - name: Create core-components archive
         run: zip -q -r packages/core/CoreComponents.zip packages/core/components
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: core-components
           path: packages/core/CoreComponents.zip
@@ -107,7 +107,7 @@ jobs:
       - name: Create react archive
         run: zip -q -r packages/react/src/React.zip packages/react/src/generated
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: react
           path: packages/react/src/React.zip
@@ -115,7 +115,7 @@ jobs:
       - name: Create angular archive
         run: zip -q -r packages/angular/src/Angular.zip packages/angular/src/generated
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: angular
           path: packages/angular/src/Angular.zip
@@ -123,7 +123,7 @@ jobs:
       - name: Create angular-module archive
         run: zip -q -r packages/angular-module/src/AngularModule.zip packages/angular-module/src/generated
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: angular-module
           path: packages/angular-module/src/AngularModule.zip
@@ -131,7 +131,7 @@ jobs:
       - name: Create testing-dist archive
         run: zip -q -r packages/testing/TestingDist.zip packages/testing/dist
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: testing-dist
           path: packages/testing/TestingDist.zip
@@ -139,7 +139,7 @@ jobs:
       - name: Create e2e-artifacts archive
         run: zip -q -r e2e/E2eBuildArtifacts.zip e2e/generated
         shell: bash
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: e2e-artifacts
           path: e2e/E2eBuildArtifacts.zip
@@ -197,7 +197,7 @@ jobs:
           browser: chrome
 
       - name: Upload snapshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: e2e-components-snapshots
@@ -265,7 +265,7 @@ jobs:
           SPLIT_INDEX: ${{ strategy.job-index }}
 
       - name: Upload snapshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: e2e-visual-snapshots-${{ strategy.job-index }}
@@ -392,7 +392,7 @@ jobs:
         working-directory: ./test/angular/${{ matrix.apps }}
         shell: bash
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: angular-${{ matrix.apps }}
           path: test/angular/${{ matrix.apps }}/src
@@ -412,7 +412,7 @@ jobs:
           browser: chrome
 
       - name: Upload snapshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: snapshots-angular-${{ matrix.apps }}
@@ -539,7 +539,7 @@ jobs:
         working-directory: ./test/react/${{ matrix.apps }}
         shell: bash
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: react-${{ matrix.apps }}
           path: test/react/${{ matrix.apps }}/src
@@ -559,7 +559,7 @@ jobs:
           browser: chrome
 
       - name: Upload snapshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: snapshots-react-${{ matrix.apps }}
@@ -656,7 +656,7 @@ jobs:
 
       - name: Upload Playwright HTML report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-shard-${{ matrix.shardIndex }}
           path: packages/core/playwright-report
