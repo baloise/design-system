@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
-import { createFocusTrap, type FocusTrap } from 'focus-trap'
 import {
   DsBreakpointObserver,
   DsBreakpoints,
@@ -8,37 +7,58 @@ import {
   Logger,
   type LogInstance,
   ValidateEmptyOrType,
+  ValidateEmptyOrOneOf,
   setupValidation,
+  ScrollHandler,
+  FocusHandler,
+  ListenToResize,
+  type ResizeObserver,
 } from '@utils'
-import { DsComponentInterface } from '@global'
+import {
+  DsComponentInterface,
+  DsConfigObserver,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
+import { i18nDsNavbar } from './navbar.i18n'
+import { NAVBAR_CONTAINERS, NavbarContainer } from './navbar.interfaces'
 
 /**
- * TODO's:
- * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
- * - [ ] Add prop container like we did for footer
- * - [ ] Add support for colors/themes via CSS variables or props
- * - [ ] Add focus trap includes the hamburger button when menu is open
- * - [ ] Add animation for menu open/close
- * - [ ] add solution for tab item overflow on desktop.
- * - [ ] add example for calculators like mf
-
-/**
- * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+ * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
  *
- * @slot brand - Logo, wordmark, or branding element (always visible)
- * @slot menu-start - Left navigation links (inline on desktop, in drawer on mobile)
- * @slot menu-end - Right navigation links and action buttons (inline on desktop, in drawer on mobile)
+ * @slot brand - Logo or branding element (always visible)
+ * @slot menu-start - Left navigation links (inline on desktop, in sidebar on mobile)
+ * @slot menu-end - Right navigation links and action buttons (inline on desktop, in sidebar on mobile)
  * @part nav - The semantic navigation container
  * @part hamburger - The mobile hamburger button
- * @part drawer-menu - The mobile menu drawer (aside element)
+ * @part sidebar - The mobile menu sidebar (aside element)
  */
 @Component({
   tag: 'ds-navbar',
   styleUrl: 'navbar.host.scss',
   shadow: true,
 })
-export class Navbar implements DsComponentInterface, DsBreakpointObserver {
+export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsConfigObserver, ResizeObserver {
+  private navEl: HTMLElement | null = null
+  private sidebarEl: HTMLElement | null = null
+  private burgerButton: HTMLButtonElement | null = null
+  private containerEl: HTMLDivElement | null = null
+
+  private scrollHandler = new ScrollHandler()
+  private focusHandler = new FocusHandler()
+  private burgerModeThresholdWidth: number | null = null
+
+  @State() language: DsLanguage = defaultConfig.language
+  @State() region: DsRegion = defaultConfig.region
+
+  @State() isTouch = dsBreakpoints.isTouch
+  @State() isSidebarOpen = false
+  @State() isOverflowing = false
+
   /**
    * PUBLIC PROPERTY API
    * ─────────────────────────────────────────────────────
@@ -53,13 +73,46 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
 
   @Element() el!: HTMLStencilElement
 
+  /**
+   * If `true` the navbar will open the sidebar menu.
+   */
   @Prop({ reflect: true })
   @ValidateEmptyOrType('boolean')
   readonly open: boolean = false
 
+  /**
+   * If `true` the navbar will use a light color scheme.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly light: boolean = false
+
+  /**
+   * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`.
+   * Matches the `ds-container` sizing variants.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(NAVBAR_CONTAINERS)
+  readonly container: NavbarContainer = ''
+
+  /**
+   * Emitted when the sidebar menu starts opening
+   */
   @Event() dsMenuOpenStart!: EventEmitter<void>
+
+  /**
+   * Emitted when the sidebar menu finishes opening
+   */
   @Event() dsMenuOpenEnd!: EventEmitter<void>
+
+  /**
+   * Emitted when the sidebar menu starts closing
+   */
   @Event() dsMenuCloseStart!: EventEmitter<void>
+
+  /**
+   * Emitted when the sidebar menu finishes closing
+   */
   @Event() dsMenuCloseEnd!: EventEmitter<void>
 
   /**
@@ -69,18 +122,23 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
 
   connectedCallback(): void {
     setupValidation(this)
+    this.scrollHandler.connect()
+    this.focusHandler.connect()
   }
 
   componentWillUpdate(): void {
     setupValidation(this)
   }
 
+  componentDidLoad(): void {
+    this.checkNavbarOverflow()
+  }
+
   disconnectedCallback(): void {
     this.detachKeyboardListener()
-    this.detachDrawerClickListener()
-    this.deactivateFocusTrap()
-    this.setNavAriaHidden(false)
-    document.body.style.overflow = ''
+    this.detachSidebarClickListener()
+    this.focusHandler.disconnect()
+    this.scrollHandler.disconnect()
   }
 
   /**
@@ -91,18 +149,42 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
   @ListenToBreakpoints()
   listenToBreakpoint(breakpoints: DsBreakpoints): void {
     this.isTouch = breakpoints.touch
-    if (!this.isTouch && this.isMenuOpen) {
-      this.setIsMenuOpen(false)
+    const isSidebarMode = this.isTouch || this.isOverflowing
+    if (!isSidebarMode && this.isSidebarOpen) {
+      this.setIsSidebarOpen(false)
     }
   }
 
+  /**
+   * Handles changes to the `open` prop
+   */
   @Watch('open')
   openChanged(newValue: boolean) {
     if (newValue) {
-      this.openMenu()
+      this.openSidebar()
     } else {
-      this.closeMenu()
+      this.closeSidebar()
     }
+  }
+
+  /**
+   * @internal Listens to config changes and updates language/region state
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
+   * @internal Listens to resize events and checks for content overflow
+   */
+  @Method()
+  @ListenToResize()
+  async listenToResize(): Promise<void> {
+    console.log('Navbar: listenToResize()')
+    this.checkNavbarOverflow()
   }
 
   /**
@@ -110,19 +192,28 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
    * ─────────────────────────────────────────────────────
    */
 
+  /**
+   * Toggles the sidebar menu open/closed state
+   */
   @Method()
-  async toggleMenu(): Promise<void> {
-    await this.setIsMenuOpen(!this.isMenuOpen)
+  async toggleSidebar(): Promise<void> {
+    await this.setIsSidebarOpen(!this.isSidebarOpen)
   }
 
+  /**
+   * Opens the sidebar menu
+   */
   @Method()
-  async openMenu(): Promise<void> {
-    await this.setIsMenuOpen(true)
+  async openSidebar(): Promise<void> {
+    await this.setIsSidebarOpen(true)
   }
 
+  /**
+   * Closes the sidebar menu
+   */
   @Method()
-  async closeMenu(): Promise<void> {
-    await this.setIsMenuOpen(false)
+  async closeSidebar(): Promise<void> {
+    await this.setIsSidebarOpen(false)
   }
 
   /**
@@ -131,15 +222,11 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
    */
 
   private handleHamburgerClick = (): void => {
-    this.toggleMenu()
+    this.toggleSidebar()
   }
 
   private handleBackdropClick = (): void => {
-    this.closeMenu()
-  }
-
-  private handleCloseButtonClick = (): void => {
-    this.closeMenu()
+    this.closeSidebar()
   }
 
   private handleDrawerClickBound = (event: MouseEvent): void => {
@@ -149,14 +236,14 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
   private handleDrawerClick = (event: MouseEvent): void => {
     const target = event.target as HTMLElement
     if (target.tagName === 'A' || target.closest('a')) {
-      this.closeMenu()
+      this.closeSidebar()
     }
   }
 
   private handleDocumentKeyDown = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape' && this.isMenuOpen) {
+    if (event.key === 'Escape' && this.isSidebarOpen) {
       event.preventDefault()
-      this.closeMenu()
+      this.closeSidebar()
     }
   }
 
@@ -164,16 +251,6 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
    * PRIVATE METHODS
    * ─────────────────────────────────────────────────────
    */
-
-  private navEl: HTMLElement | null = null
-  private drawerEl: HTMLElement | null = null
-  private drawerPanel: HTMLElement | null = null
-  private drawerCloseButton: HTMLButtonElement | null = null
-  private burgerButton: HTMLButtonElement | null = null
-  private focusTrap: FocusTrap | null = null
-
-  @State() isTouch = dsBreakpoints.isTouch
-  @State() isMenuOpen = false
 
   private attachKeyboardListener(): void {
     document.addEventListener('keydown', this.handleDocumentKeyDown)
@@ -183,86 +260,68 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
     document.removeEventListener('keydown', this.handleDocumentKeyDown)
   }
 
-  private attachDrawerClickListener(): void {
-    if (this.drawerEl) {
-      this.drawerEl.addEventListener('click', this.handleDrawerClickBound)
+  private attachSidebarClickListener(): void {
+    if (this.sidebarEl) {
+      this.sidebarEl.addEventListener('click', this.handleDrawerClickBound)
     }
   }
 
-  private detachDrawerClickListener(): void {
-    if (this.drawerEl) {
-      this.drawerEl.removeEventListener('click', this.handleDrawerClickBound)
+  private detachSidebarClickListener(): void {
+    if (this.sidebarEl) {
+      this.sidebarEl.removeEventListener('click', this.handleDrawerClickBound)
     }
   }
 
-  private initializeFocusTrap(): void {
-    if (!this.drawerPanel) return
+  private checkNavbarOverflow(): void {
+    if (!this.navEl) return
 
-    this.focusTrap = createFocusTrap(this.drawerPanel, {
-      escapeDeactivates: false,
-      fallbackFocus: this.drawerPanel,
-    })
-    this.focusTrap.activate()
+    if (!this.containerEl) return
 
-    // Move focus to close button after trap is activated
-    if (this.drawerCloseButton) {
-      this.drawerCloseButton.focus()
-    }
-  }
+    const scrollWidth = this.containerEl.scrollWidth
+    const clientWidth = this.containerEl.clientWidth
+    const isOverflowing = scrollWidth > clientWidth
+    const hysteresisMargin = 100
 
-  private deactivateFocusTrap(): void {
-    if (this.focusTrap) {
-      this.focusTrap.deactivate()
-      this.focusTrap = null
-    }
-  }
-
-  private setNavAriaHidden(hidden: boolean): void {
-    if (this.navEl) {
-      if (hidden) {
-        this.navEl.setAttribute('aria-hidden', 'true')
-      } else {
-        this.navEl.removeAttribute('aria-hidden')
+    if (isOverflowing && !this.isOverflowing) {
+      this.burgerModeThresholdWidth = clientWidth
+      this.isOverflowing = true
+      if (this.isSidebarOpen) {
+        this.setIsSidebarOpen(false)
+      }
+    } else if (!isOverflowing && this.isOverflowing && this.burgerModeThresholdWidth) {
+      if (clientWidth > this.burgerModeThresholdWidth + hysteresisMargin) {
+        this.isOverflowing = false
+        this.burgerModeThresholdWidth = null
       }
     }
   }
 
-  private restoreFocus(): void {
-    if (this.burgerButton) {
-      this.burgerButton.focus()
-    }
-  }
+  private async setIsSidebarOpen(value: boolean): Promise<void> {
+    if (value === this.isSidebarOpen) return
 
-  private async setIsMenuOpen(value: boolean): Promise<void> {
-    if (value === this.isMenuOpen) return
+    const isSidebarMode = this.isTouch || this.isOverflowing
 
     if (value) {
       this.dsMenuOpenStart.emit()
-      this.isMenuOpen = true
-      if (this.isTouch && this.drawerEl) {
-        this.burgerButton = this.el.shadowRoot?.querySelector('.hamburger') ?? null
-        this.drawerCloseButton = this.el.shadowRoot?.querySelector('.drawer-close') ?? null
-        this.navEl = this.el.shadowRoot?.querySelector('#nav') ?? null
-        this.drawerEl.classList.add('is-open')
-        this.setNavAriaHidden(true)
+      this.isSidebarOpen = true
+      if (isSidebarMode) {
         this.attachKeyboardListener()
-        this.attachDrawerClickListener()
-        this.initializeFocusTrap()
-        document.body.style.overflow = 'hidden'
+        this.attachSidebarClickListener()
+        this.focusHandler.enable({ target: this.navEl, restoreElement: this.burgerButton })
+        this.burgerButton?.focus()
+        this.scrollHandler.disable()
       }
       this.dsMenuOpenEnd.emit()
     } else {
       this.dsMenuCloseStart.emit()
-      if (this.isTouch && this.drawerEl) {
-        this.drawerEl.classList.remove('is-open')
-        this.setNavAriaHidden(false)
+      if (isSidebarMode) {
         this.detachKeyboardListener()
-        this.detachDrawerClickListener()
-        this.deactivateFocusTrap()
-        document.body.style.overflow = ''
-        this.restoreFocus()
+        this.detachSidebarClickListener()
+        this.focusHandler.disable()
+        this.focusHandler.restoreFocus()
+        this.scrollHandler.enable()
       }
-      this.isMenuOpen = false
+      this.isSidebarOpen = false
       this.dsMenuCloseEnd.emit()
     }
   }
@@ -274,101 +333,101 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver {
 
   render() {
     const isTouch = this.isTouch
-    const isMenuOpen = this.isMenuOpen
+    const isMenuOpen = this.isSidebarOpen
+    const isSidebarMode = isTouch || this.isOverflowing
+    const i18n = i18nDsNavbar[this.language]
 
     return (
-      <Host>
+      <Host
+        class={{
+          'is-open': isMenuOpen,
+          'is-sidebar-mode': isSidebarMode,
+          'is-light': this.light,
+        }}
+      >
         <nav
           ref={el => (this.navEl = el as HTMLElement | null)}
           id="nav"
           role="navigation"
-          aria-label="Main navigation"
+          aria-label={i18n.mainNavigation}
         >
-          {/* ---------------------------------------- */}
-          {/* Brand                                    */}
-          {/* ---------------------------------------- */}
-          <slot name="brand"></slot>
-          <slot name="title"></slot>
-
-          {/* ---------------------------------------- */}
-          {/* Hamburger Menu Button                    */}
-          {/* ---------------------------------------- */}
-          {isTouch && (
-            <button
-              class="hamburger"
-              aria-label="Open navigation menu"
-              aria-expanded={isMenuOpen}
-              aria-controls="drawer-menu"
-              type="button"
-              onClick={this.handleHamburgerClick}
-            >
-              <svg
-                class="hamburger__icon"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                fill="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-                ) : (
-                  <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          <div
+            id="container"
+            class={{
+              'is-fluid': this.container === 'fluid',
+              'is-compact': this.container === 'compact',
+            }}
+            ref={el => (this.containerEl = el as HTMLDivElement | null)}
+          >
+            {/* ---------------------------------------- */}
+            {/* Brand                                    */}
+            {/* ---------------------------------------- */}
+            <slot name="brand"></slot>
+            <slot name="title"></slot>
+            {/* ---------------------------------------- */}
+            {/* Desktop Menu                             */}
+            {/* ---------------------------------------- */}
+            <div id="content">
+              {!isSidebarMode && (
+                <div id="menu">
+                  <div id="menu-start">
+                    <slot name="menu-start"></slot>
+                  </div>
+                  <div id="menu-end">
+                    <slot name="menu-end"></slot>
+                  </div>
+                </div>
+              )}
+              {/* ---------------------------------------- */}
+              {/* Actions                                  */}
+              {/* ---------------------------------------- */}
+              <div id="actions">
+                <slot name="actions"></slot>
+                {/* ---------------------------------------- */}
+                {/* Hamburger Menu Button                    */}
+                {/* ---------------------------------------- */}
+                {isSidebarMode && (
+                  <button
+                    ref={el => (this.burgerButton = el as HTMLButtonElement | null)}
+                    id="hamburger"
+                    type="button"
+                    title={isMenuOpen ? i18n.closeMenu : i18n.openMenu}
+                    aria-label={isMenuOpen ? i18n.closeMenu : i18n.openMenu}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="sidebar"
+                    onClick={() => this.handleHamburgerClick()}
+                  >
+                    <ds-icon name={isMenuOpen ? 'close' : 'menu-bars'} size="" color="white"></ds-icon>
+                  </button>
                 )}
-              </svg>
-            </button>
-          )}
-
+              </div>
+            </div>
+          </div>
           {/* ---------------------------------------- */}
-          {/* Mobile Menu Side Drawer                  */}
+          {/* Sidebar                                  */}
           {/* ---------------------------------------- */}
-          {isTouch && (
+          {isSidebarMode && (
             <aside
-              ref={el => (this.drawerEl = el as HTMLElement | null)}
-              id="drawer-menu"
+              id="sidebar"
               role="dialog"
               aria-modal="true"
-              aria-labelledby="drawer-title"
+              aria-label={i18n.navigationMenu}
               class={{ 'is-open': isMenuOpen }}
+              ref={el => (this.sidebarEl = el as HTMLElement | null)}
             >
-              <div class="drawer-backdrop" onClick={this.handleBackdropClick}></div>
+              <div id="sidebar-backdrop" onClick={this.handleBackdropClick}></div>
 
-              <div ref={el => (this.drawerPanel = el as HTMLElement | null)} class="drawer-panel" tabindex="-1">
-                <div class="drawer-header">
-                  <h2 id="drawer-title" class="drawer-title">
-                    Menu
-                  </h2>
-                  <button
-                    ref={el => (this.drawerCloseButton = el as HTMLButtonElement | null)}
-                    type="button"
-                    class="drawer-close"
-                    aria-label="Close menu"
-                    onClick={this.handleCloseButtonClick}
-                  >
-                    ×
-                  </button>
-                </div>
-
-                <div class="drawer-content">
-                  <slot name="menu-start"></slot>
-                  <slot name="menu-end"></slot>
+              <div id="sidebar-panel" tabindex="-1">
+                <div id="sidebar-content">
+                  <div id="sidebar-start">
+                    <slot name="menu-start"></slot>
+                  </div>
+                  <div id="sidebar-end">
+                    <slot name="menu-end"></slot>
+                  </div>
                 </div>
               </div>
             </aside>
-          )}
-
-          {/* ---------------------------------------- */}
-          {/* Desktop Menu                             */}
-          {/* ---------------------------------------- */}
-          {!isTouch && (
-            <div id="menu">
-              <div id="menu-start">
-                <slot name="menu-start"></slot>
-              </div>
-              <div id="menu-end">
-                <slot name="menu-end"></slot>
-              </div>
-            </div>
           )}
         </nav>
       </Host>

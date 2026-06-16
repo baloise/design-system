@@ -5088,6 +5088,46 @@
     }
   },
   "🧩 Component": {
+    "Backdrop": {
+      "Opacity": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
+        "$extensions": {
+          "com.figma.isOverride": true
+        }
+      },
+      "Background": {
+        "$type": "color",
+        "$value": "{🧩 Component.Backdrop.BackgroundRgba}",
+        "$extensions": {
+          "com.figma.isOverride": true
+        }
+      },
+      "BackgroundHex": {
+        "$type": "color",
+        "$value": "#000739",
+        "$extensions": {
+          "com.figma.type": "color",
+          "com.figma.isOverride": true
+        }
+      },
+      "BackgroundRgba": {
+        "$type": "color",
+        "$value": "rgba(0, 7, 57, 0.5)",
+        "$extensions": {
+          "com.figma.type": "color",
+          "com.figma.isOverride": true
+        }
+      },
+      "Filter": {
+        "$type": "string",
+        "$value": "blur(4px)",
+        "$extensions": {
+          "com.figma.type": "string",
+          "com.figma.isOverride": true
+        }
+      }
+    },
     "Footer": {
       "Color": {
         "Background": {
@@ -12596,7 +12636,7 @@
       "Backdrop": {
         "Background": {
           "$type": "color",
-          "$value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
+          "$value": "{🧩 Component.Backdrop.Background}",
           "$extensions": {
             "com.figma.variableId": "VariableID:379:4",
             "com.figma.scopes": [
@@ -12607,9 +12647,20 @@
         },
         "Opacity": {
           "$type": "number",
-          "$value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
+          "$value": "{🧩 Component.Backdrop.Opacity}",
           "$extensions": {
             "com.figma.variableId": "VariableID:379:5",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Filter": {
+          "$type": "string",
+          "$value": "{🧩 Component.Backdrop.Filter}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:379:9",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],

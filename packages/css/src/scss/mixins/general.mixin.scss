@@ -13,6 +13,11 @@
   width: 0.01em !important;
 }
 
+@mixin backdrop {
+  background-color: rgb(0, 7, 57, 0.5);
+  backdrop-filter: blur(4px);
+}
+
 @mixin print-hidden {
   @media print {
     display: none !important;

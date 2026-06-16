@@ -28,6 +28,7 @@ import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./co
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
+import { NavbarContainer } from "./components/navbar/navbar.interfaces";
 import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -68,6 +69,7 @@ export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./co
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
+export { NavbarContainer } from "./components/navbar/navbar.interfaces";
 export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -1687,28 +1689,38 @@ export namespace Components {
     interface DsModalHeader {
     }
     /**
-     * TODO's:
-     * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
-     * - [ ] Add prop container like we did for footer
-     * - [ ] Add support for colors/themes via CSS variables or props
-     * - [ ] Add focus trap includes the hamburger button when menu is open
-     * - [ ] Add animation for menu open/close
-     * - [ ] add solution for tab item overflow on desktop.
-     * - [ ] add example for calculators like mf
-     * /**
-     * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
      */
     interface DsNavbar {
-        "closeMenu": () => Promise<void>;
         /**
+          * Closes the sidebar menu
+         */
+        "closeSidebar": () => Promise<void>;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container": NavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light": boolean;
+        "listenToResize": () => Promise<void>;
+        /**
+          * If `true` the navbar will open the sidebar menu.
           * @default false
          */
         "open": boolean;
-        "openMenu": () => Promise<void>;
         /**
-          * PUBLIC METHODS ─────────────────────────────────────────────────────
+          * Opens the sidebar menu
          */
-        "toggleMenu": () => Promise<void>;
+        "openSidebar": () => Promise<void>;
+        /**
+          * Toggles the sidebar menu open/closed state
+         */
+        "toggleSidebar": () => Promise<void>;
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -3846,16 +3858,7 @@ declare global {
         "dsMenuCloseEnd": void;
     }
     /**
-     * TODO's:
-     * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
-     * - [ ] Add prop container like we did for footer
-     * - [ ] Add support for colors/themes via CSS variables or props
-     * - [ ] Add focus trap includes the hamburger button when menu is open
-     * - [ ] Add animation for menu open/close
-     * - [ ] add solution for tab item overflow on desktop.
-     * - [ ] add example for calculators like mf
-     * /**
-     * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
      */
     interface HTMLDsNavbarElement extends Components.DsNavbar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6122,23 +6125,37 @@ declare namespace LocalJSX {
     interface DsModalHeader {
     }
     /**
-     * TODO's:
-     * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
-     * - [ ] Add prop container like we did for footer
-     * - [ ] Add support for colors/themes via CSS variables or props
-     * - [ ] Add focus trap includes the hamburger button when menu is open
-     * - [ ] Add animation for menu open/close
-     * - [ ] add solution for tab item overflow on desktop.
-     * - [ ] add example for calculators like mf
-     * /**
-     * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
      */
     interface DsNavbar {
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container"?: NavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light"?: boolean;
+        /**
+          * Emitted when the sidebar menu finishes closing
+         */
         "onDsMenuCloseEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts closing
+         */
         "onDsMenuCloseStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu finishes opening
+         */
         "onDsMenuOpenEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts opening
+         */
         "onDsMenuOpenStart"?: (event: DsNavbarCustomEvent<void>) => void;
         /**
+          * If `true` the navbar will open the sidebar menu.
           * @default false
          */
         "open"?: boolean;
@@ -8056,6 +8073,8 @@ declare namespace LocalJSX {
     }
     interface DsNavbarAttributes {
         "open": boolean;
+        "light": boolean;
+        "container": NavbarContainer;
     }
     interface DsNotificationAttributes {
         "alert": boolean;
@@ -8604,16 +8623,7 @@ declare module "@stencil/core" {
              */
             "ds-modal-header": LocalJSX.IntrinsicElements["ds-modal-header"] & JSXBase.HTMLAttributes<HTMLDsModalHeaderElement>;
             /**
-             * TODO's:
-             * - [ ] Add i18n support for menu title and aria labels (e.g. via props or slots)
-             * - [ ] Add prop container like we did for footer
-             * - [ ] Add support for colors/themes via CSS variables or props
-             * - [ ] Add focus trap includes the hamburger button when menu is open
-             * - [ ] Add animation for menu open/close
-             * - [ ] add solution for tab item overflow on desktop.
-             * - [ ] add example for calculators like mf
-             * /**
-             * Navbar provides semantic navigation with responsive mobile menu drawer and keyboard support.
+             * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
              */
             "ds-navbar": LocalJSX.IntrinsicElements["ds-navbar"] & JSXBase.HTMLAttributes<HTMLDsNavbarElement>;
             /**

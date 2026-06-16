@@ -19017,10 +19017,6 @@
         },
         {
           "name": "--drawer-backdrop",
-          "docs": "background: Background color of the native backdrop."
-        },
-        {
-          "name": "--drawer-backdrop",
           "docs": "opacity: Opacity of the native backdrop."
         }
       ],
@@ -24381,6 +24377,7 @@
         "ds-hint",
         "ds-input",
         "ds-item",
+        "ds-navbar",
         "ds-number-input",
         "ds-pagination",
         "ds-radio-group",
@@ -24421,6 +24418,9 @@
           "ds-icon"
         ],
         "ds-item": [
+          "ds-icon"
+        ],
+        "ds-navbar": [
           "ds-icon"
         ],
         "ds-number-input": [
@@ -30591,10 +30591,6 @@
         },
         {
           "name": "--modal-backdrop",
-          "docs": "background: Background color of the backdrop overlay."
-        },
-        {
-          "name": "--modal-backdrop",
           "docs": "opacity: Opacity of the backdrop overlay."
         },
         {
@@ -30734,16 +30730,16 @@
         {
           "name": "🧩 Component / Modal / Backdrop / Background",
           "cssVarName": "--ds-modal-backdrop-background",
-          "value": "{🔗 Alias.🎨 Background.Color.PrimaryActive}",
-          "nativeValue": "#000739",
+          "value": "{🧩 Component.Backdrop.Background}",
+          "nativeValue": "rgba(0, 7, 57, 0.5)",
           "inheritance": [
             {
-              "cssVar": "--ds-color-primary-6",
-              "figmaName": "Global / Color / Primary / 6"
+              "cssVar": "--ds-backdrop-backgroundrgba",
+              "figmaName": "Component / Backdrop / BackgroundRgba"
             },
             {
-              "cssVar": "--ds-background-color-primaryactive",
-              "figmaName": "Alias / Background / Color / PrimaryActive"
+              "cssVar": "--ds-backdrop-background",
+              "figmaName": "Component / Backdrop / Background"
             },
             {
               "cssVar": "--ds-modal-backdrop-background",
@@ -30760,7 +30756,7 @@
         {
           "name": "🧩 Component / Modal / Backdrop / Opacity",
           "cssVarName": "--ds-modal-backdrop-opacity",
-          "value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
+          "value": "{🧩 Component.Backdrop.Opacity}",
           "nativeValue": "0.800000011920929",
           "inheritance": [
             {
@@ -30772,6 +30768,10 @@
               "figmaName": "Alias / Opacity / Backdrop"
             },
             {
+              "cssVar": "--ds-backdrop-opacity",
+              "figmaName": "Component / Backdrop / Opacity"
+            },
+            {
               "cssVar": "--ds-modal-backdrop-opacity",
               "figmaName": "Component / Modal / Backdrop / Opacity"
             }
@@ -30781,6 +30781,28 @@
             "Modal",
             "Backdrop",
             "Opacity"
+          ]
+        },
+        {
+          "name": "🧩 Component / Modal / Backdrop / Filter",
+          "cssVarName": "--ds-modal-backdrop-filter",
+          "value": "{🧩 Component.Backdrop.Filter}",
+          "nativeValue": "blur(4px)",
+          "inheritance": [
+            {
+              "cssVar": "--ds-backdrop-filter",
+              "figmaName": "Component / Backdrop / Filter"
+            },
+            {
+              "cssVar": "--ds-modal-backdrop-filter",
+              "figmaName": "Component / Modal / Backdrop / Filter"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Backdrop",
+            "Filter"
           ]
         },
         {
@@ -31091,9 +31113,60 @@
       ],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
+      "dependencies": [
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-navbar": [
+          "ds-icon"
+        ]
+      },
       "props": [
+        {
+          "name": "container",
+          "type": "\"compact\" | \"default\" | \"fluid\"",
+          "complexType": {
+            "original": "NavbarContainer",
+            "resolved": "\"compact\" | \"default\" | \"fluid\"",
+            "references": {
+              "NavbarContainer": {
+                "location": "import",
+                "path": "./navbar.interfaces",
+                "id": "src/components/navbar/navbar.interfaces.ts::NavbarContainer",
+                "referenceLocation": "NavbarContainer"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "container",
+          "reflectToAttr": false,
+          "docs": "Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`.\nMatches the `ds-container` sizing variants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'default'"
+            }
+          ],
+          "default": "'default'",
+          "values": [
+            {
+              "value": "compact",
+              "type": "string"
+            },
+            {
+              "value": "default",
+              "type": "string"
+            },
+            {
+              "value": "fluid",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
         {
           "name": "open",
           "type": "boolean",
@@ -35329,10 +35402,6 @@
         {
           "name": "--popup-z",
           "docs": "index: Z-index stacking level of the popup layer."
-        },
-        {
-          "name": "--popup-backdrop",
-          "docs": "background: Background color of the optional full-screen backdrop."
         },
         {
           "name": "--popup-backdrop",
@@ -56600,6 +56669,11 @@
       "declaration": "void",
       "docstring": "",
       "path": "src/components/modal/modal.interfaces.ts"
+    },
+    "src/components/navbar/navbar.interfaces.ts::NavbarContainer": {
+      "declaration": "\"default\" | \"fluid\" | \"compact\"",
+      "docstring": "",
+      "path": "src/components/navbar/navbar.interfaces.ts"
     },
     "src/components/notification/notification.interfaces.ts::NotificationColor": {
       "declaration": "\"\" | \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\"",

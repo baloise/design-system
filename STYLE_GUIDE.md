@@ -86,6 +86,39 @@ Use CSS classes, never attribute selectors:
 :host(.is-primary) { ... }
 ```
 
+### Class Management — Use JSX, Not DOM Mutation
+
+Always manage classes through JSX class binding. Never use `classList.add()`, `classList.remove()`, or `classList.toggle()` unless there's a critical performance reason.
+
+```tsx
+// ❌ Don't — imperative DOM mutation
+this.drawerEl.classList.add('is-open')
+this.drawerEl.classList.remove('is-open')
+
+// ✅ Do — declarative JSX class binding
+<aside class={{ 'is-open': isMenuOpen }}>
+  {/* content */}
+</aside>
+```
+
+JSX class binding automatically applies/removes classes during the render cycle based on state, avoiding manual DOM manipulation and keeping the component model predictable.
+
+### Never Modify External Element Styles
+
+**Never directly modify styles on elements outside the component** (like `body`, `html`, or other global elements). This can interfere with other components and application logic.
+
+```ts
+// ❌ Don't — directly modifying external element styles
+document.body.style.overflow = 'hidden'
+document.body.style.backgroundColor = 'red'
+
+// ✅ Do — use utility helpers designed for this purpose
+ScrollHandler.disable() // Properly manages document scroll
+ScrollHandler.enable() // Restores scroll and cleans up state
+```
+
+Always use the provided utility helpers from `@utils` for managing global state (scroll behavior, focus traps, etc.). These utilities handle cleanup and side-effect management properly.
+
 ### Responsive Design & Mobile-First Styling
 
 All components must follow a **mobile-first** approach: define styles for mobile/narrow viewports first, then progressively enhance for larger screens using `@media` queries.

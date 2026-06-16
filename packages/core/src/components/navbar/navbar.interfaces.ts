@@ -10,3 +10,6 @@ export type DsNavbarMenuOpenStart = DsNavbarCustomEvent<void>
 export type DsNavbarMenuOpenEnd = DsNavbarCustomEvent<void>
 export type DsNavbarMenuCloseStart = DsNavbarCustomEvent<void>
 export type DsNavbarMenuCloseEnd = DsNavbarCustomEvent<void>
+
+export const NAVBAR_CONTAINERS = ['default', 'fluid', 'compact', ''] as const
+export type NavbarContainer = (typeof NAVBAR_CONTAINERS)[number]

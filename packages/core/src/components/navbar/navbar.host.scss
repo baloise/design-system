@@ -9,23 +9,187 @@
  *
  * @prop --navbar-background: Background color of the navbar (default: --ds-alias-background-color-primary)
  * @prop --navbar-padding: Padding of the navbar (default: --ds-global-size-space-16)
- * @prop --navbar-hamburger-color: Color of the hamburger icon (default: --ds-alias-text-color-inverted-primary)
- * @prop --navbar-hamburger-size: Size of the hamburger icon (default: 1.5rem)
- * @prop --navbar-drawer-max-width: Maximum width of the drawer panel (default: 400px)
- * @prop --navbar-drawer-slide-duration: Animation duration for drawer slide-in/out (default: 300ms)
- * @prop --navbar-drawer-backdrop-color: Background color of the drawer backdrop overlay
- * @prop --navbar-drawer-backdrop-opacity: Opacity of the backdrop when drawer is open (default: 0.5)
+ * @prop --navbar-height: Height of the navbar container (default: 5rem)
+ * @prop --navbar-z-index: Stacking context of the navbar (default: --ds-alias-z-index-navigation)
+ * @prop --navbar-host-background: Background color of the host element (default: --ds-global-color-primary-5)
+ *
+ * Brand Slot Variables:
+ * @prop --navbar-brand-gap: Gap between brand elements (default: --ds-alias-spacing-small)
+ * @prop --navbar-brand-focus-radius: Border radius for brand focus indicator (default: --ds-alias-radius-base)
+ *
+ * Title Slot Variables:
+ * @prop --navbar-title-color: Text color of the title (default: --ds-alias-text-color-white)
+ * @prop --navbar-title-font-family: Font family of the title (default: --ds-alias-text-family-heading)
+ * @prop --navbar-title-font-size: Font size of the title (default: --ds-heading-5-size-device)
+ * @prop --navbar-title-font-weight: Font weight of the title (default: --ds-alias-text-weight-bold)
+ *
+ * Hamburger Button Variables (sizing only):
+ * @prop --navbar-hamburger-width: Width of the hamburger button (default: 3rem)
+ * @prop --navbar-hamburger-height: Height of the hamburger button (default: 3rem)
+ * @prop --navbar-hamburger-padding: Padding inside the hamburger button (default: --ds-global-size-space-8)
+ * @prop --navbar-hamburger-radius: Border radius of the hamburger button (default: --ds-button-radius-base)
+ * @prop --navbar-hamburger-transition-duration: Transition duration for hamburger hover/active states (default: 0.2s)
+ *
+ * Note: Hamburger button color styling uses --navbar-button-color-* variables (see Button Component Variables section)
+ *
+ * Sidebar/Drawer Panel Variables:
+ * @prop --navbar-sidebar-max-width: Maximum width of the drawer panel (default: 400px)
+ * @prop --navbar-sidebar-slide-duration: Animation duration for drawer slide-in/out (default: 300ms)
+ * @prop --navbar-sidebar-backdrop-color: Background color of the drawer backdrop overlay (default: rgba(0, 0, 0, 1))
+ * @prop --navbar-sidebar-backdrop-opacity: Opacity of the backdrop when drawer is open (default: 0.5)
+ * @prop --navbar-sidebar-panel-background: Background color of the sidebar panel (default: --ds-alias-background-color-white)
+ * @prop --navbar-sidebar-panel-shadow: Box shadow of the sidebar panel (default: -2px 0 8px rgba(0, 0, 0, 0.15))
+ * @prop --navbar-sidebar-panel-border-top: Top border of the sidebar panel (default: --ds-alias-border-width-base solid var(--ds-global-color-grey-3))
+ * @prop --navbar-sidebar-content-gap: Gap between menu items in sidebar (default: --ds-global-size-space-16)
+ * @prop --navbar-sidebar-padding-inline: Horizontal padding of sidebar content (default: --ds-alias-container-space-device)
+ * @prop --navbar-sidebar-padding-block: Vertical padding of sidebar content (default: calc(--ds-alias-container-space-device / 2))
+ *
+ * Menu Item Variables (Sidebar):
+ * @prop --navbar-sidebar-item-min-height: Minimum height of menu items in sidebar (default: 3rem)
+ * @prop --navbar-sidebar-item-padding-block: Vertical padding of menu items (default: 0.25rem)
+ * @prop --navbar-sidebar-item-padding-inline: Horizontal padding of menu items (default: 0.375rem)
+ * @prop --navbar-sidebar-item-font-size: Font size of menu items in sidebar (default: --ds-alias-text-size-base)
+ * @prop --navbar-sidebar-item-font-weight: Font weight of menu items in sidebar (default: --ds-alias-text-weight-bold)
+ * @prop --navbar-sidebar-item-font-family: Font family of menu items in sidebar (default: --ds-alias-text-family-heading)
+ * @prop --navbar-sidebar-item-color: Text color of menu items in sidebar (default: --ds-alias-text-color-primary)
+ * @prop --navbar-sidebar-item-background-active: Background of active menu items in sidebar (default: --ds-global-color-primary-1)
+ * @prop --navbar-sidebar-item-background-hover: Background of menu items on hover in sidebar (default: --ds-global-color-primary-1)
+ * @prop --navbar-sidebar-item-color-hover: Text color of menu items on hover in sidebar (default: --ds-link-color-base-hover)
+ * @prop --navbar-sidebar-item-color-active: Text color of active menu items in sidebar (default: --ds-link-color-base-active)
+ * @prop --navbar-sidebar-item-divider-color: Color of divider below menu items (default: --ds-divider-color-base)
+ * @prop --navbar-sidebar-item-divider-color-active: Color of divider for active menu items (default: --ds-divider-color-primary)
+ * @prop --navbar-sidebar-item-chevron-size: Size of the chevron indicator (default: 0.875rem)
+ * @prop --navbar-sidebar-item-chevron-color: Color of the chevron indicator (default: --ds-global-color-primary-5)
+ *
+ * Desktop Menu Variables:
+ * @prop --navbar-menu-gap: Gap between menu and actions sections (default: 1rem)
+ * @prop --navbar-menu-start-gap: Gap between menu-start items on desktop (default: 0.5rem)
+ * @prop --navbar-menu-item-color: Text color of menu items on desktop (default: --ds-alias-text-color-white)
+ * @prop --navbar-menu-item-font-size: Font size of menu items on desktop (default: --ds-tabs-tab-font-size)
+ * @prop --navbar-menu-item-padding-block: Vertical padding of desktop menu items (default: 0.25rem)
+ * @prop --navbar-menu-item-padding-inline: Horizontal padding of desktop menu items (default: 0.5rem)
+ * @prop --navbar-menu-item-border-radius: Border radius of desktop menu items (default: --ds-alias-radius-base)
+ * @prop --navbar-menu-item-color-hover: Text color of desktop menu items on hover (default: --ds-link-color-inverted-hover)
+ * @prop --navbar-menu-item-color-selected: Text color of selected desktop menu items (default: --ds-link-color-inverted)
+ * @prop --navbar-menu-item-color-selected-hover: Text color of selected desktop menu items on hover (default: --ds-link-color-inverted-hover)
+ * @prop --navbar-menu-item-color-active: Text color of selected desktop menu items on click (default: --ds-link-color-inverted-active)
+ * @prop --navbar-menu-item-underline-height: Height of the active indicator underline (default: 2px)
+ * @prop --navbar-menu-item-underline-border-radius: Border radius of the underline (default: 9999px)
+ * @prop --navbar-menu-item-transition-duration: Transition duration for menu items (default: 0.2s)
+ * @prop --navbar-menu-end-gap: Gap between menu-end items (default: 0.5rem)
+ *
+ * Content Container Variables:
+ * @prop --navbar-container-gap: Gap between brand and content in nav (default: --ds-global-size-space-32)
+ * @prop --navbar-content-gap: Gap between items in content area (default: --ds-global-size-space-8)
+ *
+ * Button Component Variables:
+ * @prop --navbar-button-color-text: Text color of buttons (default: --ds-global-color-white)
+ * @prop --navbar-button-color-background: Background color of buttons (default: --ds-global-color-primary-4)
+ * @prop --navbar-button-color-border: Border color of buttons (default: --ds-global-color-primary-4)
+ * @prop --navbar-button-color-text-hover: Text color of buttons on hover (default: --ds-global-color-primary-5)
+ * @prop --navbar-button-color-background-hover: Background color of buttons on hover (default: --ds-global-color-sky-2)
+ * @prop --navbar-button-color-border-hover: Border color of buttons on hover (default: --ds-global-color-sky-2)
+ * @prop --navbar-button-color-text-active: Text color of buttons on active (default: --ds-global-color-primary-5)
+ * @prop --navbar-button-color-background-active: Background color of buttons on active (default: --ds-global-color-white)
+ * @prop --navbar-button-color-border-active: Border color of buttons on active (default: --ds-global-color-white)
+ * @prop --navbar-focus-shadow: Focus shadow color for buttons (default: --ds-alias-interaction-focus-color-inverted)
+ *
  */
 
 :host {
+  @include vars.focus(link);
+
+  // Base navbar styles
   @include vars.local(navbar-background, var(--ds-alias-background-color-primary));
   @include vars.local(navbar-padding, var(--ds-global-size-space-16));
-  @include vars.local(navbar-hamburger-color, var(--ds-alias-text-color-inverted-primary));
-  @include vars.local(navbar-hamburger-size, 1.5rem);
-  @include vars.local(navbar-drawer-max-width, 400px);
-  @include vars.local(navbar-drawer-slide-duration, 300ms);
-  @include vars.local(navbar-drawer-backdrop-color, rgba(0, 0, 0, 1));
-  @include vars.local(navbar-drawer-backdrop-opacity, 0.5);
+  @include vars.local(navbar-height, 5rem);
+  @include vars.local(navbar-shadow, var(--ds-alias-shadow-box-header));
+  @include vars.local(navbar-z-index, var(--ds-alias-z-index-navigation));
+
+  // Brand slot
+  @include vars.local(navbar-brand-gap, var(--ds-alias-spacing-small));
+  @include vars.local(navbar-brand-focus-radius, var(--ds-alias-radius-base));
+
+  // Title slot
+  @include vars.local(navbar-title-color, var(--ds-alias-text-color-white));
+  @include vars.local(navbar-title-font-family, var(--ds-alias-text-family-heading));
+  @include vars.local(navbar-title-font-size, var(--ds-heading-5-size-device));
+  @include vars.local(navbar-title-font-weight, var(--ds-alias-text-weight-bold));
+
+  // Hamburger button (sizing only; colors use button variables)
+  @include vars.local(navbar-hamburger-width, 3rem);
+  @include vars.local(navbar-hamburger-height, 3rem);
+  @include vars.local(navbar-hamburger-padding, var(--ds-global-size-space-8));
+  @include vars.local(navbar-hamburger-radius, var(--ds-button-radius-base));
+  @include vars.local(navbar-hamburger-transition-duration, 0.2s);
+
+  // Sidebar
+  @include vars.local(navbar-sidebar-max-width, 400px);
+  @include vars.local(navbar-sidebar-slide-duration, 300ms);
+  @include vars.local(navbar-sidebar-backdrop-color, rgba(0, 0, 0, 1));
+  @include vars.local(navbar-sidebar-backdrop-opacity, 0.5);
+  @include vars.local(navbar-sidebar-panel-background, var(--ds-alias-background-color-white));
+  @include vars.local(navbar-sidebar-panel-shadow, -2px 0 8px rgba(0, 0, 0, 0.15));
+  @include vars.local(
+    navbar-sidebar-panel-border-top,
+    var(--ds-alias-border-width-base) solid var(--ds-global-color-white)
+  );
+  @include vars.local(navbar-sidebar-content-gap, var(--ds-global-size-space-16));
+  @include vars.local(navbar-sidebar-padding-inline, var(--ds-alias-container-space-device));
+  @include vars.local(navbar-sidebar-padding-block, calc(var(--ds-alias-container-space-device) / 2));
+
+  // Sidebar menu items
+  @include vars.local(navbar-sidebar-item-min-height, 3rem);
+  @include vars.local(navbar-sidebar-item-padding-block, 0.25rem);
+  @include vars.local(navbar-sidebar-item-padding-inline, 0.375rem);
+  @include vars.local(navbar-sidebar-item-font-size, var(--ds-alias-text-size-base));
+  @include vars.local(navbar-sidebar-item-font-weight, var(--ds-alias-text-weight-bold));
+  @include vars.local(navbar-sidebar-item-font-family, var(--ds-alias-text-family-heading));
+  @include vars.local(navbar-sidebar-item-color, var(--ds-alias-text-color-primary));
+  @include vars.local(navbar-sidebar-item-background-active, var(--ds-global-color-primary-1));
+  @include vars.local(navbar-sidebar-item-background-hover, var(--ds-global-color-primary-1));
+  @include vars.local(navbar-sidebar-item-color-hover, var(--ds-link-color-base-hover));
+  @include vars.local(navbar-sidebar-item-color-active, var(--ds-link-color-base-active));
+  @include vars.local(navbar-sidebar-item-divider-color, var(--ds-divider-color-base));
+  @include vars.local(navbar-sidebar-item-divider-color-active, var(--ds-divider-color-primary));
+  @include vars.local(navbar-sidebar-item-chevron-size, 0.875rem);
+  @include vars.local(navbar-sidebar-item-chevron-color, var(--ds-global-color-primary-5));
+
+  // Menu (Desktop)
+  @include vars.local(navbar-menu-gap, 1rem);
+  @include vars.local(navbar-menu-start-gap, 0.5rem);
+  @include vars.local(navbar-menu-item-color, var(--ds-alias-text-color-white));
+  @include vars.local(navbar-menu-item-font-size, var(--ds-tabs-tab-font-size));
+  @include vars.local(navbar-menu-item-padding-block, 0.25rem);
+  @include vars.local(navbar-menu-item-padding-inline, 0.5rem);
+  @include vars.local(navbar-menu-item-border-radius, var(--ds-alias-radius-base));
+  @include vars.local(navbar-menu-item-color-hover, var(--ds-link-color-inverted-hover));
+  @include vars.local(navbar-menu-item-color-selected, var(--ds-link-color-inverted));
+  @include vars.local(navbar-menu-item-color-selected-hover, var(--ds-link-color-inverted-hover));
+  @include vars.local(navbar-menu-item-color-active, var(--ds-link-color-inverted-active));
+  @include vars.local(navbar-menu-item-underline-height, 2px);
+  @include vars.local(navbar-menu-item-underline-border-radius, 9999px);
+  @include vars.local(navbar-menu-item-transition-duration, 0.2s);
+  @include vars.local(navbar-menu-end-gap, 0.5rem);
+
+  // Content container
+  @include vars.local(navbar-container-gap, var(--ds-global-size-space-32));
+  @include vars.local(navbar-content-gap, var(--ds-global-size-space-8));
+
+  // Button component
+  @include vars.local(navbar-button-color-text, var(--ds-global-color-white));
+  @include vars.local(navbar-button-color-background, var(--ds-global-color-primary-4));
+  @include vars.local(navbar-button-color-border, var(--ds-global-color-primary-4));
+  @include vars.local(navbar-button-color-text-hover, var(--ds-global-color-primary-5));
+  @include vars.local(navbar-button-color-background-hover, var(--ds-global-color-sky-2));
+  @include vars.local(navbar-button-color-border-hover, var(--ds-global-color-sky-2));
+  @include vars.local(navbar-button-color-text-active, var(--ds-global-color-primary-5));
+  @include vars.local(navbar-button-color-background-active, var(--ds-global-color-white));
+  @include vars.local(navbar-button-color-border-active, var(--ds-global-color-white));
+
+  // Focus colors
+  @include vars.local(navbar-focus-color-start, var(--ds-alias-interaction-focus-color-inverted-start));
+  @include vars.local(navbar-focus-color-end, var(--ds-alias-interaction-focus-color-inverted-end));
 }
 
 /**
@@ -37,7 +201,10 @@
 :host {
   display: block;
   position: relative;
-  z-index: var(--ds-dropdown-z-index, 999);
+  z-index: var(--_navbar-z-index);
+  width: 100%;
+  background-color: var(--_navbar-background);
+  box-shadow: var(--_navbar-shadow);
 }
 
 /**
@@ -45,17 +212,52 @@
  * ─────────────────────────────────────────────────────
  */
 
-:host #nav {
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--_navbar-height);
+  max-height: var(--_navbar-height);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/**
+ * Container Wrapper
+ * ─────────────────────────────────────────────────────
+ * Constrains content width with sizing variants (default, fluid, compact)
+ */
+
+#container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: var(--ds-global-size-space-32);
-  background-color: var(--_navbar-background);
-  padding: var(--_navbar-padding);
-  width: 100%;
-  min-height: 3rem;
   box-sizing: border-box;
+  gap: var(--_navbar-container-gap);
+  padding-left: var(--ds-alias-container-space-device);
+  padding-right: var(--ds-alias-container-space-device);
+  width: 100%;
+  max-width: var(--ds-alias-container-width-base);
+
+  &.is-fluid {
+    max-width: var(--ds-alias-container-width-fluid);
+  }
+
+  &.is-compact {
+    max-width: var(--ds-alias-container-width-compact);
+  }
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  gap: var(--_navbar-content-gap);
 }
 
 /**
@@ -65,122 +267,60 @@
  */
 
 ::slotted([slot='brand']) {
+  position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  gap: var(--ds-alias-spacing-small);
+  gap: var(--_navbar-brand-gap);
 }
 
-::slotted([slot='title']) {
-  color: var(--ds-alias-text-color-white);
-  font-family: var(--ds-alias-text-family-heading);
-  font-size: var(--ds-heading-5-size-device);
-  font-weight: var(--ds-alias-text-weight-bold);
-}
-
-/**
- * Slot: Menu Start & Menu End
- * ─────────────────────────────────────────────────────
- * Navigation links and action buttons. Hidden on mobile, inline on desktop.
- */
-
-:host #menu {
-  flex: 1;
-  display: flex;
-  gap: 1rem;
-
-  #menu-start {
-    display: flex;
-    gap: 1rem;
-    flex: 1;
-  }
-
-  #menu-end {
-    display: flex;
-    gap: 0.5rem;
-  }
-}
-
-::slotted([slot='menu-start']),
-::slotted([slot='menu-end']) {
-  @include tablet {
-    display: flex;
-    flex-direction: row;
-    gap: var(--ds-global-size-space-16);
-    align-items: center;
-  }
-
-  @include mobile {
-    display: none;
-  }
-}
-
-/**
- * Slot: Menu Start
- * Left-aligned navigation links
- */
-
-::slotted([slot='menu-start']) {
-  @include unselectable();
+::slotted(a[slot='brand']) {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  color: var(--ds-alias-text-color-white);
-  font-size: var(--ds-tabs-tab-font-size);
-  // padding: var(--ds-tabs-tab-padding);
-  text-decoration: none;
+  flex-shrink: 0;
+  gap: var(--_navbar-brand-gap);
   outline: none;
-  white-space: nowrap;
-  transition: color 120ms ease;
-  cursor: pointer;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -1rem;
-    left: 0;
-    right: 0;
-    height: 2px;
-    border-radius: 9999px;
+    width: 1px;
+    height: 1px;
+    border-radius: var(--_navbar-brand-focus-radius);
     background-color: transparent;
-    transition: background-color 120ms ease;
-  }
-
-  @include hover {
-    &:hover {
-      color: var(--ds-tabs-tab-color-hover);
-
-      &::after {
-        background-color: var(--ds-tabs-tab-indicator-color-idle);
-      }
-    }
-  }
-
-  &:active {
-    color: var(--ds-tabs-tab-color-active);
-
-    &::after {
-      background-color: var(--ds-tabs-tab-indicator-color-idle);
-    }
+    touch-action: manipulation;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
-::slotted([slot='menu-start'].is-active),
-::slotted([slot='menu-start'][aria-current='page']) {
-  font-weight: var(--ds-alias-text-weight-bold);
+::slotted(a[slot='brand']:focus-visible) {
   &::after {
-    background-color: white;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    box-shadow:
+      var(--_navbar-focus-color-start) 0 0 0 2px,
+      var(--_navbar-focus-color-end) 0 0 0 5px !important;
   }
 }
 
-/**
- * Slot: Menu End
- * Right-aligned navigation links and action buttons
- */
+::slotted([slot='title']) {
+  color: var(--_navbar-title-color);
+  font-family: var(--_navbar-title-font-family);
+  font-size: var(--_navbar-title-font-size);
+  font-weight: var(--_navbar-title-font-weight);
 
-::slotted([slot='menu-end']) {
-  @include tablet {
-    justify-content: flex-end;
+  display: none;
+
+  @include tablet() {
+    display: block;
   }
 }
 
@@ -191,267 +331,465 @@
  * @part hamburger - The hamburger button element
  */
 
-.hamburger {
-  display: none;
+#hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   flex-shrink: 0;
   background: none;
   border: none;
-  padding: var(--ds-global-size-space-8);
-  cursor: pointer;
-  color: var(--_navbar-hamburger-color);
-  width: auto;
-  height: auto;
+  padding: var(--_navbar-hamburger-padding);
+  color: var(--_navbar-button-color-text);
+  background-color: var(--_navbar-button-color-background);
+  width: var(--_navbar-hamburger-width);
+  height: var(--_navbar-hamburger-height);
+  border-radius: var(--_navbar-hamburger-radius);
   margin-left: auto;
-  transition: opacity 0.2s ease;
   appearance: none;
+  cursor: pointer;
+  outline: none;
 
-  @media (prefers-reduced-motion: reduce) {
-    transition: opacity 0.01s ease;
-  }
+  --icon-color: var(--_navbar-button-color-text);
 
-  @include touch {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  touch-action: manipulation;
+  transition-property: translate, color, background-color, border-color, box-shadow, text-shadow;
+  transition-duration: var(--_navbar-hamburger-transition-duration);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 
-  @include tablet {
-    display: none !important;
+  &::-moz-focus-inner {
+    border: 0;
   }
 
   &:focus-visible {
-    outline: 2px solid var(--ds-alias-interaction-focus-color-base);
-    outline-offset: 2px;
-    border-radius: 4px;
+    box-shadow:
+      var(--_navbar-focus-color-start) 0 0 0 2px,
+      var(--_navbar-focus-color-end) 0 0 0 5px !important;
   }
 
   &:hover {
-    opacity: 0.8;
+    color: var(--_navbar-button-color-text-hover);
+    background-color: var(--_navbar-button-color-background-hover);
+    --icon-color: var(--_navbar-button-color-text-hover);
   }
 
   &:active {
-    opacity: 0.6;
+    color: var(--_navbar-button-color-text-active);
+    background-color: var(--_navbar-button-color-background-active);
+    --icon-color: var(--_navbar-button-color-text-active);
+    translate: 0 0.5px;
   }
 }
 
 /**
- * Hamburger Icon
- * SVG icon that toggles between menu-bars and close states
- */
-
-.hamburger__icon {
-  width: var(--_navbar-hamburger-size);
-  height: var(--_navbar-hamburger-size);
-  flex-shrink: 0;
-}
-
-/**
- * Mobile Menu Drawer (Touch Only)
+ * Mobile Menu Sidebar (Touch Only)
  * ─────────────────────────────────────────────────────
- * Right-side drawer that slides in from the right on mobile/tablet.
+ * Right-side sidebar that slides in from the right on mobile/tablet.
  * Includes backdrop overlay, panel with menu content, and close button.
  * Hidden on desktop (≥tablet breakpoint).
- * @part drawer-menu - The drawer aside element
+ * @part sidebar - The sidebar aside element
  */
 
-:host #drawer-menu {
-  display: none;
+#sidebar {
+  visibility: hidden;
+  display: flex;
 
-  @include touch {
-    display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: var(--ds-modal-z-index, 2000);
+  justify-content: flex-end;
+  position: fixed;
+  top: 5rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--ds-alias-z-index-navigation);
+  pointer-events: none;
+
+  transition: visibility var(--_navbar-sidebar-slide-duration) ease;
+
+  &.is-open {
+    pointer-events: auto;
+    visibility: visible;
   }
 
-  @include tablet {
+  :host:not(.is-sidebar-mode) & {
+    pointer-events: none !important;
     display: none !important;
+    visibility: hidden !important;
   }
 }
 
 /**
- * Drawer Backdrop
- * Overlay behind the drawer that prevents interaction with page content.
- * Fades in when drawer opens, respects prefers-reduced-motion.
+ * Sidebar Backdrop
+ * Overlay behind the sidebar that prevents interaction with page content.
+ * Fades in when sidebar opens, respects prefers-reduced-motion.
  */
 
-.drawer-backdrop {
+#sidebar-backdrop {
+  @include backdrop();
+
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--_navbar-drawer-backdrop-color);
   opacity: 0;
-  transition: opacity var(--_navbar-drawer-slide-duration) ease;
   cursor: pointer;
+  transition: opacity var(--_navbar-sidebar-slide-duration) ease;
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    transition: opacity 0.01s ease;
-  }
-
-  :host(.is-open) & {
-    opacity: var(--_navbar-drawer-backdrop-opacity);
-  }
+#sidebar.is-open #sidebar-backdrop {
+  opacity: 1;
 }
 
 /**
- * Drawer Panel
- * The actual drawer container with menu content.
+ * Sidebar Panel
+ * The actual sidebar container with menu content.
  * Slides in from the right when opened, respects prefers-reduced-motion.
- * Max width 400px (customizable via --navbar-drawer-max-width).
+ * Max width 400px (customizable via --navbar-sidebar-max-width).
  */
 
-.drawer-panel {
+#sidebar-panel {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   width: 100%;
-  max-width: var(--_navbar-drawer-max-width);
+  max-width: var(--_navbar-sidebar-max-width);
   height: 100%;
-  background-color: var(--_navbar-background);
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
-  transition: transform var(--_navbar-drawer-slide-duration) ease;
+  background-color: var(--_navbar-sidebar-panel-background);
   overflow-y: auto;
   outline: none;
+  box-shadow: var(--_navbar-shadow);
+  border-top: var(--_navbar-sidebar-panel-border-top);
 
-  @media (prefers-reduced-motion: reduce) {
-    transition: transform 0.01s ease;
-  }
+  transform: translateX(100%);
+  transition: transform var(--_navbar-sidebar-slide-duration) ease;
+}
 
-  :host(.is-open) & {
-    transform: translateX(0);
-  }
+#sidebar.is-open #sidebar-panel {
+  transform: translateX(0);
 }
 
 /**
- * Drawer Header
- * Contains the title and close button
- */
-
-.drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--_navbar-padding);
-  border-bottom: 1px solid var(--ds-alias-border-color-subtle);
-  flex-shrink: 0;
-}
-
-/**
- * Drawer Title
- * Heading identifying the drawer content
- */
-
-.drawer-title {
-  margin: 0;
-  padding: 0;
-  font-size: var(--ds-heading-5-size-device);
-  font-weight: var(--ds-alias-text-weight-bold);
-  color: var(--ds-alias-text-color-inverted-primary);
-}
-
-/**
- * Drawer Close Button
- * Button to close the drawer (× symbol).
- * Respects prefers-reduced-motion for opacity transitions.
- */
-
-.drawer-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  min-width: 2.5rem;
-  min-height: 2.5rem;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--_navbar-hamburger-color);
-  font-size: 1.5rem;
-  line-height: 1;
-  transition: opacity 0.2s ease;
-  appearance: none;
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: opacity 0.01s ease;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--ds-alias-interaction-focus-color-base);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.6;
-  }
-}
-
-/**
- * Drawer Content
+ * Sidebar Content
+ * -----------------------------------------------------
  * Scrollable container for menu slots
  */
 
-.drawer-content {
+#sidebar-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--ds-global-size-space-16);
-  padding: var(--_navbar-padding);
+  gap: var(--_navbar-sidebar-content-gap);
+
+  padding-inline: var(--_navbar-sidebar-padding-inline);
+  padding-block: var(--_navbar-sidebar-padding-block);
   overflow-y: auto;
-}
 
-/**
- * Drawer Slotted Content
- * Styling for menu links and content inside drawer
- */
+  ::slotted(a[slot='menu-start']),
+  ::slotted(.link[slot='menu-start']) {
+    position: relative;
+    color: var(--_navbar-sidebar-item-color);
+    --icon-color: var(--_navbar-sidebar-item-color);
+    font-size: var(--_navbar-sidebar-item-font-size);
+    font-weight: var(--_navbar-sidebar-item-font-weight);
+    font-family: var(--_navbar-sidebar-item-font-family);
+    text-decoration: none;
+    min-height: var(--_navbar-sidebar-item-min-height);
+    padding-block: var(--_navbar-sidebar-item-padding-block);
+    padding-inline: var(--_navbar-sidebar-item-padding-inline);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-::slotted([slot='menu-start']),
-::slotted([slot='menu-end']) {
-  @include touch {
-    display: flex !important;
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    //
+    // Divider indicator
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: var(--ds-divider-width);
+      border-radius: var(--ds-alias-radius-base);
+      background-color: var(--_navbar-sidebar-item-divider-color);
+
+      touch-action: manipulation;
+      transition-property: border-color, box-shadow;
+      transition-duration: 0.2s;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    //
+    // Chevron indicator
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0.375rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--_navbar-sidebar-item-chevron-size);
+      height: var(--_navbar-sidebar-item-chevron-size);
+      background-color: var(--_navbar-sidebar-item-chevron-color);
+      mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22%3E%3Cpath d=%22M7.5,4.1l-4.1-3.9A.75.75,0,1,0,2.36,1.294L6.072,4.819a.249.249,0,0,1,0,.362L2.36,8.706A.75.75,0,0,0,3.393,9.794L7.51,5.884A1.256,1.256,0,0,0,7.5,4.1Z%22/%3E%3C/svg%3E');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
+  }
+
+  ::slotted(.link[slot='menu-start'][aria-current='page']),
+  ::slotted(a[slot='menu-start'][aria-current='page']) {
+    background: var(--_navbar-sidebar-item-background-active);
+    &::before {
+      background-color: var(--_navbar-sidebar-item-divider-color-active);
+    }
+  }
+
+  ::slotted(.link[slot='menu-start']:hover),
+  ::slotted(a[slot='menu-start']:hover) {
+    background: var(--_navbar-sidebar-item-background-hover);
+    color: var(--_navbar-sidebar-item-color-hover);
+    --icon-color: var(--_navbar-sidebar-item-color-hover);
+    &::after {
+      background-color: var(--_navbar-sidebar-item-color-hover);
+    }
+    &::before {
+      background-color: var(--_navbar-sidebar-item-color-hover);
+    }
+  }
+
+  ::slotted(.link[slot='menu-start']:active),
+  ::slotted(a[slot='menu-start']:active) {
+    background: var(--_navbar-sidebar-item-background-active);
+    color: var(--_navbar-sidebar-item-color-active);
+    --icon-color: var(--_navbar-sidebar-item-color-active);
+    &::after {
+      background-color: var(--_navbar-sidebar-item-color-active);
+    }
+    &::before {
+      background-color: var(--_navbar-sidebar-item-color-active);
+    }
+  }
+
+  ::slotted(.link[slot='menu-start']:focus-visible:not(:active)),
+  ::slotted(a[slot='menu-start']:focus-visible:not(:active)) {
+    &::before {
+      border-radius: var(--ds-alias-radius-base);
+      background-color: transparent;
+      height: 100%;
+      width: 100%;
+      box-shadow:
+        var(--_navbar-focus-color-start) 0 0 0 2px,
+        var(--_navbar-focus-color-end) 0 0 0 5px !important;
+    }
+  }
+
+  #sidebar-end {
+    display: flex;
     flex-direction: column;
-    gap: var(--ds-global-size-space-8);
-  }
-}
-
-::slotted([slot='menu-start'] a),
-::slotted([slot='menu-end'] a) {
-  padding: var(--ds-global-size-space-8) var(--ds-global-size-space-12);
-  border-radius: 4px;
-  transition: background-color 120ms ease;
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: background-color 0.01s ease;
+    gap: var(--_navbar-content-gap);
+    margin-top: var(--ds-global-size-space-32);
   }
 
-  &:focus-visible {
-    outline: 2px solid var(--ds-alias-interaction-focus-color-base);
-    outline-offset: -2px;
-  }
-
-  &:hover {
-    background-color: var(--ds-alias-background-color-highlight);
+  ::slotted(ds-button[slot='menu-end']),
+  ::slotted(button[slot='menu-end']),
+  ::slotted(button.button[slot='menu-end']) {
+    width: 100%;
+    --button-width: 100%;
+    --button-min-width: 100%;
   }
 }
 
 /**
- * Drawer Panel Focus Visible
- * Ensures panel itself has visible focus indicator when needed
+ * Slot: Menu Start & Menu End
+ * ─────────────────────────────────────────────────────
+ * Navigation links and action buttons. Hidden on mobile, inline on desktop.
  */
 
-.drawer-panel:focus-visible {
-  outline: 2px solid var(--ds-alias-interaction-focus-color-base);
-  outline-offset: -2px;
+#menu {
+  flex: 1;
+  display: flex;
+  gap: var(--_navbar-menu-gap);
+
+  #menu-start {
+    display: flex;
+    gap: var(--_navbar-menu-start-gap);
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+
+    ::slotted(.link[slot='menu-start']),
+    ::slotted(a[slot='menu-start']) {
+      @include unselectable();
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: var(--_navbar-menu-item-color);
+      font-size: var(--_navbar-menu-item-font-size);
+      border-radius: var(--_navbar-menu-item-border-radius);
+      padding-inline: var(--_navbar-menu-item-padding-inline);
+      padding-block: var(--_navbar-menu-item-padding-block);
+      text-decoration: none;
+      outline: none;
+      white-space: nowrap;
+      transition: color 120ms ease;
+      cursor: pointer;
+
+      touch-action: manipulation;
+      transition-property: box-shadow;
+      transition-duration: var(--_navbar-menu-item-transition-duration);
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        right: 0;
+        height: var(--_navbar-menu-item-underline-height);
+        border-radius: var(--_navbar-menu-item-underline-border-radius);
+        background-color: transparent;
+        transition: background-color 120ms ease;
+      }
+    }
+
+    ::slotted([slot='menu-start'].is-active),
+    ::slotted([slot='menu-start'][aria-current='page']) {
+      font-weight: var(--ds-alias-text-weight-bold);
+      &::after {
+        background-color: var(--_navbar-menu-item-color-selected);
+      }
+    }
+
+    ::slotted(.link[slot='menu-start']:hover),
+    ::slotted(a[slot='menu-start']:hover) {
+      color: var(--_navbar-menu-item-color-hover);
+      --icon-color: var(--_navbar-menu-item-color-hover);
+      &::after {
+        background-color: var(--_navbar-menu-item-color-hover);
+      }
+    }
+
+    ::slotted(.link[slot='menu-start']:active),
+    ::slotted(a[slot='menu-start']:active) {
+      color: var(--_navbar-menu-item-color-active);
+      --icon-color: var(--_navbar-menu-item-color-active);
+      &::after {
+        background-color: var(--_navbar-menu-item-color-active);
+      }
+    }
+
+    //
+    // Focus styles for menu links
+
+    touch-action: manipulation;
+    transition-property: box-shadow;
+    transition-duration: var(--_navbar-menu-item-transition-duration);
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    ::slotted(.link[slot='menu-start']:focus-visible),
+    ::slotted(a[slot='menu-start']:focus-visible) {
+      box-shadow:
+        var(--_navbar-focus-color-start) 0 0 0 2px,
+        var(--_navbar-focus-color-end) 0 0 0 5px !important;
+    }
+  }
+
+  #menu-end {
+    display: flex;
+    gap: var(--_navbar-menu-end-gap);
+    justify-content: flex-end;
+    align-items: center;
+
+    // Link navbar button component variables to button slots
+    ::slotted(ds-button[slot='menu-end']),
+    ::slotted(.button[slot='menu-end']),
+    ::slotted(button[slot='menu-end']) {
+      --button-focus-shadow: var(--_navbar-focus-color-end);
+      --button-color-text: var(--_navbar-button-color-text);
+      --button-color-background: var(--_navbar-button-color-background);
+      --button-color-border: var(--_navbar-button-color-border);
+
+      --button-color-text-hover: var(--_navbar-button-color-text-hover);
+      --button-color-background-hover: var(--_navbar-button-color-background-hover);
+      --button-color-border-hover: var(--_navbar-button-color-border-hover);
+
+      --button-color-text-active: var(--_navbar-button-color-text-active);
+      --button-color-background-active: var(--_navbar-button-color-background-active);
+      --button-color-border-active: var(--_navbar-button-color-border-active);
+    }
+  }
+}
+
+/**
+ * Slot: Actions
+ * ─────────────────────────────────────────────────────
+ * Navigation links and action buttons. Hidden on mobile, inline on desktop.
+ */
+#actions {
+  display: flex;
+  gap: var(--_navbar-menu-end-gap);
+  justify-content: flex-end;
+  align-items: center;
+
+  // Link navbar button component variables to action buttons
+  ::slotted(ds-button[slot='actions']),
+  ::slotted(.button[slot='actions']),
+  ::slotted(button[slot='actions']) {
+    --button-focus-shadow: var(--_navbar-focus-color-end);
+    --button-color-text: var(--_navbar-button-color-text);
+    --button-color-background: var(--_navbar-button-color-background);
+    --button-color-border: var(--_navbar-button-color-border);
+
+    --button-color-text-hover: var(--_navbar-button-color-text-hover);
+    --button-color-background-hover: var(--_navbar-button-color-background-hover);
+    --button-color-border-hover: var(--_navbar-button-color-border-hover);
+
+    --button-color-text-active: var(--_navbar-button-color-text-active);
+    --button-color-background-active: var(--_navbar-button-color-background-active);
+    --button-color-border-active: var(--_navbar-button-color-border-active);
+  }
+}
+
+/**
+ * Light theme
+ * ─────────────────────────────────────────────────────
+ */
+
+:host(.is-light) {
+  --logo-color: var(--ds-alias-text-color-primary);
+  --mod-navbar-background: var(--ds-global-color-white);
+  --mod-navbar-title-color: var(--ds-alias-text-color-primary);
+
+  // Focus color overrides for light theme
+  --_navbar-focus-color-start: var(--ds-alias-interaction-focus-color-start);
+  --_navbar-focus-color-end: var(--ds-alias-interaction-focus-color-end);
+
+  --mod-navbar-menu-item-color: var(--ds-alias-text-color-primary);
+  --mod-navbar-menu-item-color-hover: var(--ds-link-color-base-hover);
+  --mod-navbar-menu-item-color-active: var(--ds-link-color-base-active);
+  --mod-navbar-menu-item-color-selected: var(--ds-link-color-base-active);
+
+  --mod-navbar-sidebar-panel-border-top: var(--ds-alias-border-width-base) solid var(--ds-global-color-grey-3);
+
+  // Button component overrides for light theme (applies to hamburger, action buttons, and menu-end buttons)
+  --mod-navbar-button-color-text: var(--ds-alias-text-color-primary);
+  --mod-navbar-button-color-background: var(--ds-global-color-grey-2);
+  --mod-navbar-button-color-border: var(--ds-global-color-grey-2);
+
+  --mod-navbar-button-color-text-hover: var(--ds-link-color-base-hover);
+  --mod-navbar-button-color-background-hover: var(--ds-global-color-sky-1);
+  --mod-navbar-button-color-border-hover: var(--ds-global-color-sky-1);
+
+  --mod-navbar-button-color-text-active: var(--ds-link-color-base-active);
+  --mod-navbar-button-color-background-active: var(--ds-global-color-sky-1);
+  --mod-navbar-button-color-border-active: var(--ds-global-color-sky-1);
 }
