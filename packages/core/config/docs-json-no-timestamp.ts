@@ -124,7 +124,7 @@ function parseScssStyles(dirPath: string): Array<{ name: string; docs: string }>
   }
 
   const styles: Array<{ name: string; docs: string }> = []
-  const propRegex = /@prop\s+(--[\w-]+)\s*-\s*(.+)/g
+  const propRegex = /@prop\s+(--[\w-]+)\s*:\s*(.+)/g
 
   for (const file of files) {
     const content = readFileSync(join(dirPath, file), 'utf8')
@@ -368,6 +368,7 @@ export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): Out
             ...componentWithoutPaths
           } = component
 
+          // Add styles the component css vairables --component
           const scssStyles = parseScssStyles(_dirPath)
           if (scssStyles.length > 0) {
             componentWithoutPaths.styles = [...(componentWithoutPaths.styles ?? []), ...scssStyles]

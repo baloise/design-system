@@ -31,8 +31,10 @@ import { NAVBAR_CONTAINERS, NavbarContainer } from './navbar.interfaces'
  * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
  *
  * @slot brand - Logo or branding element (always visible)
+ * @slot title - Page title or heading (visible on desktop and larger screens)
  * @slot menu-start - Left navigation links (inline on desktop, in sidebar on mobile)
  * @slot menu-end - Right navigation links and action buttons (inline on desktop, in sidebar on mobile)
+ * @slot actions - Action buttons (always visible, positioned on the right)
  * @part nav - The semantic navigation container
  * @part hamburger - The mobile hamburger button
  * @part sidebar - The mobile menu sidebar (aside element)
@@ -181,7 +183,6 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
   @Method()
   @ListenToResize()
   async listenToResize(): Promise<void> {
-    console.log('Navbar: listenToResize()')
     this.checkNavbarOverflow()
   }
 
@@ -295,7 +296,6 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
   }
 
   private async setIsSidebarOpen(value: boolean): Promise<void> {
-    console.log('setIsSidebarOpen')
     if (value === this.isSidebarOpen) return
 
     const isSidebarMode = this.isTouch || this.isOverflowing
@@ -312,7 +312,6 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
       }
       this.dsMenuOpenEnd.emit()
     } else {
-      console.log('Navbar: setIsSidebarOpen(false)')
       this.dsMenuCloseStart.emit()
       if (isSidebarMode) {
         this.detachKeyboardListener()
@@ -332,7 +331,6 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
    */
 
   render() {
-    console.log('Navbar: render()')
     const isTouch = this.isTouch
     const isMenuOpen = this.isSidebarOpen
     const isSidebarMode = isTouch || this.isOverflowing

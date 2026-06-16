@@ -7,189 +7,192 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --navbar-background: Background color of the navbar (default: --ds-alias-background-color-primary)
- * @prop --navbar-padding: Padding of the navbar (default: --ds-global-size-space-16)
- * @prop --navbar-height: Height of the navbar container (default: 5rem)
- * @prop --navbar-z-index: Stacking context of the navbar (default: --ds-alias-z-index-navigation)
- * @prop --navbar-host-background: Background color of the host element (default: --ds-global-color-primary-5)
+ * @prop --navbar-background: Background color of the navbar
+ * @prop --navbar-padding: Padding of the navbar
+ * @prop --navbar-height: Height of the navbar container
+ * @prop --navbar-z-index: Stacking context of the navbar
+ * @prop --navbar-shadow: Shadow of the navbar
  *
  * Brand Slot Variables:
- * @prop --navbar-brand-gap: Gap between brand elements (default: --ds-alias-spacing-small)
- * @prop --navbar-brand-focus-radius: Border radius for brand focus indicator (default: --ds-alias-radius-base)
+ * @prop --navbar-brand-gap: Gap between brand elements
+ * @prop --navbar-brand-focus-radius: Border radius for brand focus indicator
  *
  * Title Slot Variables:
- * @prop --navbar-title-color: Text color of the title (default: --ds-alias-text-color-white)
- * @prop --navbar-title-font-family: Font family of the title (default: --ds-alias-text-family-heading)
- * @prop --navbar-title-font-size: Font size of the title (default: --ds-heading-5-size-device)
- * @prop --navbar-title-font-weight: Font weight of the title (default: --ds-alias-text-weight-bold)
+ * @prop --navbar-title-color: Text color of the title
+ * @prop --navbar-title-font-family: Font family of the title
+ * @prop --navbar-title-font-size: Font size of the title
+ * @prop --navbar-title-font-weight: Font weight of the title
  *
  * Hamburger Button Variables (sizing only):
- * @prop --navbar-hamburger-width: Width of the hamburger button (default: 3rem)
- * @prop --navbar-hamburger-height: Height of the hamburger button (default: 3rem)
- * @prop --navbar-hamburger-padding: Padding inside the hamburger button (default: --ds-global-size-space-8)
- * @prop --navbar-hamburger-radius: Border radius of the hamburger button (default: --ds-button-radius-base)
- * @prop --navbar-hamburger-transition-duration: Transition duration for hamburger hover/active states (default: 0.2s)
+ * @prop --navbar-hamburger-width: Width of the hamburger button
+ * @prop --navbar-hamburger-height: Height of the hamburger button
+ * @prop --navbar-hamburger-padding: Padding inside the hamburger button
+ * @prop --navbar-hamburger-radius: Border radius of the hamburger button
+ * @prop --navbar-hamburger-transition-duration: Transition duration for hamburger hover/active states
  *
  * Note: Hamburger button color styling uses --navbar-button-color-* variables (see Button Component Variables section)
  *
  * Sidebar/Drawer Panel Variables:
- * @prop --navbar-sidebar-max-width: Maximum width of the drawer panel (default: 400px)
- * @prop --navbar-sidebar-slide-duration: Animation duration for drawer slide-in/out (default: 300ms)
- * @prop --navbar-sidebar-backdrop-color: Background color of the drawer backdrop overlay (default: rgba(0, 0, 0, 1))
- * @prop --navbar-sidebar-backdrop-opacity: Opacity of the backdrop when drawer is open (default: 0.5)
- * @prop --navbar-sidebar-panel-background: Background color of the sidebar panel (default: --ds-alias-background-color-white)
- * @prop --navbar-sidebar-panel-shadow: Box shadow of the sidebar panel (default: -2px 0 8px rgba(0, 0, 0, 0.15))
- * @prop --navbar-sidebar-panel-border-top: Top border of the sidebar panel (default: --ds-alias-border-width-base solid var(--ds-global-color-grey-3))
- * @prop --navbar-sidebar-content-gap: Gap between menu items in sidebar (default: --ds-global-size-space-16)
- * @prop --navbar-sidebar-padding-inline: Horizontal padding of sidebar content (default: --ds-alias-container-space-device)
- * @prop --navbar-sidebar-padding-block: Vertical padding of sidebar content (default: calc(--ds-alias-container-space-device / 2))
+ * @prop --navbar-sidebar-max-width: Maximum width of the drawer panel
+ * @prop --navbar-sidebar-slide-duration: Animation duration for drawer slide-in/out
+ * @prop --navbar-sidebar-backdrop-color: Background color of the drawer backdrop overlay
+ * @prop --navbar-sidebar-backdrop-opacity: Opacity of the backdrop when drawer is open
+ * @prop --navbar-sidebar-panel-background: Background color of the sidebar panel
+ * @prop --navbar-sidebar-panel-shadow: Box shadow of the sidebar panel
+ * @prop --navbar-sidebar-panel-border-top: Top border of the sidebar panel
+ * @prop --navbar-sidebar-content-gap: Gap between menu items in sidebar
+ * @prop --navbar-sidebar-padding-inline: Horizontal padding of sidebar content
+ * @prop --navbar-sidebar-padding-block: Vertical padding of sidebar content
  *
  * Menu Item Variables (Sidebar):
- * @prop --navbar-sidebar-item-min-height: Minimum height of menu items in sidebar (default: 3rem)
- * @prop --navbar-sidebar-item-padding-block: Vertical padding of menu items (default: 0.25rem)
- * @prop --navbar-sidebar-item-padding-inline: Horizontal padding of menu items (default: 0.375rem)
- * @prop --navbar-sidebar-item-font-size: Font size of menu items in sidebar (default: --ds-alias-text-size-base)
- * @prop --navbar-sidebar-item-font-weight: Font weight of menu items in sidebar (default: --ds-alias-text-weight-bold)
- * @prop --navbar-sidebar-item-font-family: Font family of menu items in sidebar (default: --ds-alias-text-family-heading)
- * @prop --navbar-sidebar-item-color: Text color of menu items in sidebar (default: --ds-alias-text-color-primary)
- * @prop --navbar-sidebar-item-background-active: Background of active menu items in sidebar (default: --ds-global-color-primary-1)
- * @prop --navbar-sidebar-item-background-hover: Background of menu items on hover in sidebar (default: --ds-global-color-primary-1)
- * @prop --navbar-sidebar-item-color-hover: Text color of menu items on hover in sidebar (default: --ds-link-color-base-hover)
- * @prop --navbar-sidebar-item-color-active: Text color of active menu items in sidebar (default: --ds-link-color-base-active)
- * @prop --navbar-sidebar-item-divider-color: Color of divider below menu items (default: --ds-divider-color-base)
- * @prop --navbar-sidebar-item-divider-color-active: Color of divider for active menu items (default: --ds-divider-color-primary)
- * @prop --navbar-sidebar-item-chevron-size: Size of the chevron indicator (default: 0.875rem)
- * @prop --navbar-sidebar-item-chevron-color: Color of the chevron indicator (default: --ds-global-color-primary-5)
+ * @prop --navbar-sidebar-item-min-height: Minimum height of menu items in sidebar
+ * @prop --navbar-sidebar-item-padding-block: Vertical padding of menu items
+ * @prop --navbar-sidebar-item-padding-inline: Horizontal padding of menu items
+ * @prop --navbar-sidebar-item-font-size: Font size of menu items in sidebar
+ * @prop --navbar-sidebar-item-font-weight: Font weight of menu items in sidebar
+ * @prop --navbar-sidebar-item-font-family: Font family of menu items in sidebar
+ * @prop --navbar-sidebar-item-color: Text color of menu items in sidebar
+ * @prop --navbar-sidebar-item-background-active: Background of active menu items in sidebar
+ * @prop --navbar-sidebar-item-background-hover: Background of menu items on hover in sidebar
+ * @prop --navbar-sidebar-item-color-hover: Text color of menu items on hover in sidebar
+ * @prop --navbar-sidebar-item-color-active: Text color of active menu items in sidebar
+ * @prop --navbar-sidebar-item-divider-color: Color of divider below menu items
+ * @prop --navbar-sidebar-item-divider-color-active: Color of divider for active menu items
+ * @prop --navbar-sidebar-item-chevron-size: Size of the chevron indicator
+ * @prop --navbar-sidebar-item-chevron-color: Color of the chevron indicator
  *
  * Desktop Menu Variables:
- * @prop --navbar-menu-gap: Gap between menu and actions sections (default: 1rem)
- * @prop --navbar-menu-start-gap: Gap between menu-start items on desktop (default: 0.5rem)
- * @prop --navbar-menu-item-color: Text color of menu items on desktop (default: --ds-alias-text-color-white)
- * @prop --navbar-menu-item-font-size: Font size of menu items on desktop (default: --ds-tabs-tab-font-size)
- * @prop --navbar-menu-item-padding-block: Vertical padding of desktop menu items (default: 0.25rem)
- * @prop --navbar-menu-item-padding-inline: Horizontal padding of desktop menu items (default: 0.5rem)
- * @prop --navbar-menu-item-border-radius: Border radius of desktop menu items (default: --ds-alias-radius-base)
- * @prop --navbar-menu-item-color-hover: Text color of desktop menu items on hover (default: --ds-link-color-inverted-hover)
- * @prop --navbar-menu-item-color-selected: Text color of selected desktop menu items (default: --ds-link-color-inverted)
- * @prop --navbar-menu-item-color-selected-hover: Text color of selected desktop menu items on hover (default: --ds-link-color-inverted-hover)
- * @prop --navbar-menu-item-color-active: Text color of selected desktop menu items on click (default: --ds-link-color-inverted-active)
- * @prop --navbar-menu-item-underline-height: Height of the active indicator underline (default: 2px)
- * @prop --navbar-menu-item-underline-border-radius: Border radius of the underline (default: 9999px)
- * @prop --navbar-menu-item-transition-duration: Transition duration for menu items (default: 0.2s)
- * @prop --navbar-menu-end-gap: Gap between menu-end items (default: 0.5rem)
+ * @prop --navbar-menu-gap: Gap between menu and actions sections
+ * @prop --navbar-menu-start-gap: Gap between menu-start items on desktop
+ * @prop --navbar-menu-item-color: Text color of menu items on desktop
+ * @prop --navbar-menu-item-font-size: Font size of menu items on desktop
+ * @prop --navbar-menu-item-padding-block: Vertical padding of desktop menu items
+ * @prop --navbar-menu-item-padding-inline: Horizontal padding of desktop menu items
+ * @prop --navbar-menu-item-border-radius: Border radius of desktop menu items
+ * @prop --navbar-menu-item-color-hover: Text color of desktop menu items on hover
+ * @prop --navbar-menu-item-color-selected: Text color of selected desktop menu items
+ * @prop --navbar-menu-item-color-selected-hover: Text color of selected desktop menu items on hover
+ * @prop --navbar-menu-item-color-active: Text color of selected desktop menu items on click
+ * @prop --navbar-menu-item-underline-height: Height of the active indicator underline
+ * @prop --navbar-menu-item-underline-border-radius: Border radius of the underline
+ * @prop --navbar-menu-item-transition-duration: Transition duration for menu items
+ * @prop --navbar-menu-end-gap: Gap between menu-end items
  *
  * Content Container Variables:
- * @prop --navbar-container-gap: Gap between brand and content in nav (default: --ds-global-size-space-32)
- * @prop --navbar-content-gap: Gap between items in content area (default: --ds-global-size-space-8)
+ * @prop --navbar-container-gap: Gap between brand and content in nav
+ * @prop --navbar-content-gap: Gap between items in content area
  *
  * Button Component Variables:
- * @prop --navbar-button-color-text: Text color of buttons (default: --ds-global-color-white)
- * @prop --navbar-button-color-background: Background color of buttons (default: --ds-global-color-primary-4)
- * @prop --navbar-button-color-border: Border color of buttons (default: --ds-global-color-primary-4)
- * @prop --navbar-button-color-text-hover: Text color of buttons on hover (default: --ds-global-color-primary-5)
- * @prop --navbar-button-color-background-hover: Background color of buttons on hover (default: --ds-global-color-sky-2)
- * @prop --navbar-button-color-border-hover: Border color of buttons on hover (default: --ds-global-color-sky-2)
- * @prop --navbar-button-color-text-active: Text color of buttons on active (default: --ds-global-color-primary-5)
- * @prop --navbar-button-color-background-active: Background color of buttons on active (default: --ds-global-color-white)
- * @prop --navbar-button-color-border-active: Border color of buttons on active (default: --ds-global-color-white)
- * @prop --navbar-focus-shadow: Focus shadow color for buttons (default: --ds-alias-interaction-focus-color-inverted)
+ * @prop --navbar-button-color-text: Text color of buttons
+ * @prop --navbar-button-color-background: Background color of buttons
+ * @prop --navbar-button-color-border: Border color of buttons
+ * @prop --navbar-button-color-text-hover: Text color of buttons on hover
+ * @prop --navbar-button-color-background-hover: Background color of buttons on hover
+ * @prop --navbar-button-color-border-hover: Border color of buttons on hover
+ * @prop --navbar-button-color-text-active: Text color of buttons on active
+ * @prop --navbar-button-color-background-active: Background color of buttons on active
+ * @prop --navbar-button-color-border-active: Border color of buttons on active
+ *
+ * Focus Variables:
+ * @prop --navbar-focus-color-start: Start color of the focus indicator gradient
+ * @prop --navbar-focus-color-end: End color of the focus indicator gradient
  *
  */
 
 :host {
   @include vars.focus(link);
 
-  // Base navbar styles
-  @include vars.local(navbar-background, var(--ds-alias-background-color-primary));
-  @include vars.local(navbar-padding, var(--ds-global-size-space-16));
-  @include vars.local(navbar-height, 5rem);
-  @include vars.local(navbar-shadow, var(--ds-alias-shadow-box-header));
-  @include vars.local(navbar-z-index, var(--ds-alias-z-index-navigation));
+  // Base theme navbar styles
+  @include vars.local(navbar-background, var(--ds-navbar-base-layout-background));
+  @include vars.local(navbar-padding, var(--ds-navbar-base-layout-padding));
+  @include vars.local(navbar-height, var(--ds-navbar-base-layout-height));
+  @include vars.local(navbar-shadow, var(--ds-navbar-base-layout-shadow));
+  @include vars.local(navbar-z-index, var(--ds-navbar-base-layout-z-index));
 
   // Brand slot
-  @include vars.local(navbar-brand-gap, var(--ds-alias-spacing-small));
-  @include vars.local(navbar-brand-focus-radius, var(--ds-alias-radius-base));
+  @include vars.local(navbar-brand-gap, var(--ds-navbar-base-brand-gap));
+  @include vars.local(navbar-brand-focus-radius, var(--ds-navbar-base-brand-focus-radius));
 
   // Title slot
-  @include vars.local(navbar-title-color, var(--ds-alias-text-color-white));
-  @include vars.local(navbar-title-font-family, var(--ds-alias-text-family-heading));
-  @include vars.local(navbar-title-font-size, var(--ds-heading-5-size-device));
-  @include vars.local(navbar-title-font-weight, var(--ds-alias-text-weight-bold));
+  @include vars.local(navbar-title-color, var(--ds-navbar-base-title-color));
+  @include vars.local(navbar-title-font-family, var(--ds-navbar-base-title-font-family));
+  @include vars.local(navbar-title-font-size, var(--ds-navbar-base-title-font-size));
+  @include vars.local(navbar-title-font-weight, var(--ds-navbar-base-title-font-weight));
 
   // Hamburger button (sizing only; colors use button variables)
-  @include vars.local(navbar-hamburger-width, 3rem);
-  @include vars.local(navbar-hamburger-height, 3rem);
-  @include vars.local(navbar-hamburger-padding, var(--ds-global-size-space-8));
-  @include vars.local(navbar-hamburger-radius, var(--ds-button-radius-base));
-  @include vars.local(navbar-hamburger-transition-duration, 0.2s);
+  @include vars.local(navbar-hamburger-width, var(--ds-navbar-base-hamburger-width));
+  @include vars.local(navbar-hamburger-height, var(--ds-navbar-base-hamburger-height));
+  @include vars.local(navbar-hamburger-padding, var(--ds-navbar-base-hamburger-padding));
+  @include vars.local(navbar-hamburger-radius, var(--ds-navbar-base-hamburger-radius));
+  @include vars.local(navbar-hamburger-transition-duration, var(--ds-navbar-base-hamburger-transition-duration));
 
   // Sidebar
-  @include vars.local(navbar-sidebar-max-width, 400px);
-  @include vars.local(navbar-sidebar-slide-duration, 300ms);
-  @include vars.local(navbar-sidebar-backdrop-color, rgba(0, 0, 0, 1));
-  @include vars.local(navbar-sidebar-backdrop-opacity, 0.5);
-  @include vars.local(navbar-sidebar-panel-background, var(--ds-alias-background-color-white));
-  @include vars.local(navbar-sidebar-panel-shadow, -2px 0 8px rgba(0, 0, 0, 0.15));
-  @include vars.local(
-    navbar-sidebar-panel-border-top,
-    var(--ds-alias-border-width-base) solid var(--ds-global-color-white)
-  );
-  @include vars.local(navbar-sidebar-content-gap, var(--ds-global-size-space-16));
-  @include vars.local(navbar-sidebar-padding-inline, var(--ds-alias-container-space-device));
-  @include vars.local(navbar-sidebar-padding-block, calc(var(--ds-alias-container-space-device) / 2));
+  @include vars.local(navbar-sidebar-max-width, var(--ds-navbar-base-sidebar-max-width));
+  @include vars.local(navbar-sidebar-slide-duration, var(--ds-navbar-base-sidebar-slide-duration));
+  @include vars.local(navbar-sidebar-backdrop-color, var(--ds-navbar-base-sidebar-backdrop-color));
+  @include vars.local(navbar-sidebar-backdrop-opacity, var(--ds-global-elevation-opacity-50));
+  @include vars.local(navbar-sidebar-panel-background, var(--ds-navbar-base-sidebar-panel-background));
+  @include vars.local(navbar-sidebar-panel-shadow, var(--ds-navbar-base-sidebar-panel-shadow));
+  @include vars.local(navbar-sidebar-panel-border-top, var(--ds-navbar-base-sidebar-panel-border-top));
+  @include vars.local(navbar-sidebar-content-gap, var(--ds-navbar-base-sidebar-content-gap));
+  @include vars.local(navbar-sidebar-padding-inline, var(--ds-navbar-base-sidebar-content-padding-inline));
+  @include vars.local(navbar-sidebar-padding-block, var(--ds-navbar-base-sidebar-content-padding-block));
 
   // Sidebar menu items
-  @include vars.local(navbar-sidebar-item-min-height, 3rem);
-  @include vars.local(navbar-sidebar-item-padding-block, 0.25rem);
-  @include vars.local(navbar-sidebar-item-padding-inline, 0.375rem);
-  @include vars.local(navbar-sidebar-item-font-size, var(--ds-alias-text-size-base));
-  @include vars.local(navbar-sidebar-item-font-weight, var(--ds-alias-text-weight-bold));
-  @include vars.local(navbar-sidebar-item-font-family, var(--ds-alias-text-family-heading));
-  @include vars.local(navbar-sidebar-item-color, var(--ds-alias-text-color-primary));
-  @include vars.local(navbar-sidebar-item-background-active, var(--ds-global-color-primary-1));
-  @include vars.local(navbar-sidebar-item-background-hover, var(--ds-global-color-primary-1));
-  @include vars.local(navbar-sidebar-item-color-hover, var(--ds-link-color-base-hover));
-  @include vars.local(navbar-sidebar-item-color-active, var(--ds-link-color-base-active));
-  @include vars.local(navbar-sidebar-item-divider-color, var(--ds-divider-color-base));
-  @include vars.local(navbar-sidebar-item-divider-color-active, var(--ds-divider-color-primary));
-  @include vars.local(navbar-sidebar-item-chevron-size, 0.875rem);
-  @include vars.local(navbar-sidebar-item-chevron-color, var(--ds-global-color-primary-5));
+  @include vars.local(navbar-sidebar-item-min-height, var(--ds-navbar-base-sidebar-item-min-height));
+  @include vars.local(navbar-sidebar-item-padding-block, var(--ds-navbar-base-sidebar-item-padding-block));
+  @include vars.local(navbar-sidebar-item-padding-inline, var(--ds-navbar-base-sidebar-item-padding-inline));
+  @include vars.local(navbar-sidebar-item-font-size, var(--ds-navbar-base-sidebar-item-font-size));
+  @include vars.local(navbar-sidebar-item-font-weight, var(--ds-navbar-base-sidebar-item-font-weight));
+  @include vars.local(navbar-sidebar-item-font-family, var(--ds-navbar-base-sidebar-item-font-family));
+  @include vars.local(navbar-sidebar-item-color, var(--ds-navbar-base-sidebar-item-color-base));
+  @include vars.local(navbar-sidebar-item-background-active, var(--ds-navbar-base-sidebar-item-background-active));
+  @include vars.local(navbar-sidebar-item-background-hover, var(--ds-navbar-base-sidebar-item-background-hover));
+  @include vars.local(navbar-sidebar-item-color-hover, var(--ds-navbar-base-sidebar-item-color-hover));
+  @include vars.local(navbar-sidebar-item-color-active, var(--ds-navbar-base-sidebar-item-color-active));
+  @include vars.local(navbar-sidebar-item-divider-color, var(--ds-navbar-base-sidebar-item-divider-color));
+  @include vars.local(
+    navbar-sidebar-item-divider-color-active,
+    var(--ds-navbar-base-sidebar-item-divider-color-active)
+  );
+  @include vars.local(navbar-sidebar-item-chevron-size, var(--ds-navbar-base-sidebar-item-chevron-size));
+  @include vars.local(navbar-sidebar-item-chevron-color, var(--ds-navbar-base-sidebar-item-chevron-color));
 
   // Menu (Desktop)
-  @include vars.local(navbar-menu-gap, 1rem);
-  @include vars.local(navbar-menu-start-gap, 0.5rem);
-  @include vars.local(navbar-menu-item-color, var(--ds-alias-text-color-white));
-  @include vars.local(navbar-menu-item-font-size, var(--ds-tabs-tab-font-size));
-  @include vars.local(navbar-menu-item-padding-block, 0.25rem);
-  @include vars.local(navbar-menu-item-padding-inline, 0.5rem);
-  @include vars.local(navbar-menu-item-border-radius, var(--ds-alias-radius-base));
-  @include vars.local(navbar-menu-item-color-hover, var(--ds-link-color-inverted-hover));
-  @include vars.local(navbar-menu-item-color-selected, var(--ds-link-color-inverted));
-  @include vars.local(navbar-menu-item-color-selected-hover, var(--ds-link-color-inverted-hover));
-  @include vars.local(navbar-menu-item-color-active, var(--ds-link-color-inverted-active));
-  @include vars.local(navbar-menu-item-underline-height, 2px);
-  @include vars.local(navbar-menu-item-underline-border-radius, 9999px);
-  @include vars.local(navbar-menu-item-transition-duration, 0.2s);
-  @include vars.local(navbar-menu-end-gap, 0.5rem);
+  @include vars.local(navbar-menu-gap, var(--ds-navbar-base-menu-gap));
+  @include vars.local(navbar-menu-start-gap, var(--ds-navbar-base-menu-start-gap));
+  @include vars.local(navbar-menu-item-color, var(--ds-navbar-base-menu-item-color-base));
+  @include vars.local(navbar-menu-item-font-size, var(--ds-navbar-base-menu-item-font-size));
+  @include vars.local(navbar-menu-item-padding-block, var(--ds-navbar-base-menu-item-padding-block));
+  @include vars.local(navbar-menu-item-padding-inline, var(--ds-navbar-base-menu-item-padding-inline));
+  @include vars.local(navbar-menu-item-border-radius, var(--ds-navbar-base-menu-item-border-radius));
+  @include vars.local(navbar-menu-item-color-hover, var(--ds-navbar-base-menu-item-color-hover));
+  @include vars.local(navbar-menu-item-color-selected, var(--ds-navbar-base-menu-item-color-selected));
+  @include vars.local(navbar-menu-item-color-selected-hover, var(--ds-navbar-base-menu-item-color-selected-hover));
+  @include vars.local(navbar-menu-item-color-active, var(--ds-navbar-base-menu-item-color-active));
+  @include vars.local(navbar-menu-item-underline-height, var(--ds-global-size-border-2));
+  @include vars.local(navbar-menu-item-underline-border-radius, var(--ds-alias-radius-rounded));
+  @include vars.local(navbar-menu-item-transition-duration, var(--ds-navbar-base-menu-item-transition-duration));
+  @include vars.local(navbar-menu-end-gap, var(--ds-navbar-base-menu-end-gap));
 
   // Content container
-  @include vars.local(navbar-container-gap, var(--ds-global-size-space-32));
-  @include vars.local(navbar-content-gap, var(--ds-global-size-space-8));
+  @include vars.local(navbar-container-gap, var(--ds-navbar-base-container-gap));
+  @include vars.local(navbar-content-gap, var(--ds-navbar-base-content-gap));
 
   // Button component
-  @include vars.local(navbar-button-color-text, var(--ds-global-color-white));
-  @include vars.local(navbar-button-color-background, var(--ds-global-color-primary-4));
-  @include vars.local(navbar-button-color-border, var(--ds-global-color-primary-4));
-  @include vars.local(navbar-button-color-text-hover, var(--ds-global-color-primary-5));
-  @include vars.local(navbar-button-color-background-hover, var(--ds-global-color-sky-2));
-  @include vars.local(navbar-button-color-border-hover, var(--ds-global-color-sky-2));
-  @include vars.local(navbar-button-color-text-active, var(--ds-global-color-primary-5));
-  @include vars.local(navbar-button-color-background-active, var(--ds-global-color-white));
-  @include vars.local(navbar-button-color-border-active, var(--ds-global-color-white));
+  @include vars.local(navbar-button-color-text, var(--ds-navbar-base-button-color-text-base));
+  @include vars.local(navbar-button-color-background, var(--ds-navbar-base-button-color-background-base));
+  @include vars.local(navbar-button-color-border, var(--ds-navbar-base-button-color-border-base));
+  @include vars.local(navbar-button-color-text-hover, var(--ds-navbar-base-button-color-text-hover));
+  @include vars.local(navbar-button-color-background-hover, var(--ds-navbar-base-button-color-background-hover));
+  @include vars.local(navbar-button-color-border-hover, var(--ds-navbar-base-button-color-border-hover));
+  @include vars.local(navbar-button-color-text-active, var(--ds-navbar-base-button-color-text-active));
+  @include vars.local(navbar-button-color-background-active, var(--ds-navbar-base-button-color-background-active));
+  @include vars.local(navbar-button-color-border-active, var(--ds-navbar-base-button-color-border-active));
 
   // Focus colors
-  @include vars.local(navbar-focus-color-start, var(--ds-alias-interaction-focus-color-inverted-start));
-  @include vars.local(navbar-focus-color-end, var(--ds-alias-interaction-focus-color-inverted-end));
+  @include vars.local(navbar-focus-color-start, var(--ds-navbar-base-focus-color-start));
+  @include vars.local(navbar-focus-color-end, var(--ds-navbar-base-focus-color-end));
 }
 
 /**
@@ -396,7 +399,7 @@
 
   justify-content: flex-end;
   position: fixed;
-  top: 5rem;
+  top: var(--_navbar-height);
   right: 0;
   bottom: 0;
   left: 0;
@@ -762,34 +765,35 @@
 /**
  * Light theme
  * ─────────────────────────────────────────────────────
+ * Applies when light: true prop is set on the component
  */
 
 :host(.is-light) {
-  --logo-color: var(--ds-alias-text-color-primary);
-  --mod-navbar-background: var(--ds-global-color-white);
-  --mod-navbar-title-color: var(--ds-alias-text-color-primary);
+  --logo-color: var(--ds-navbar-light-title-color);
+  --mod-navbar-background: var(--ds-navbar-light-background);
+  --mod-navbar-title-color: var(--ds-navbar-light-title-color);
 
   // Focus color overrides for light theme
-  --_navbar-focus-color-start: var(--ds-alias-interaction-focus-color-start);
-  --_navbar-focus-color-end: var(--ds-alias-interaction-focus-color-end);
+  --_navbar-focus-color-start: var(--ds-navbar-light-focus-color-start);
+  --_navbar-focus-color-end: var(--ds-navbar-light-focus-color-end);
 
-  --mod-navbar-menu-item-color: var(--ds-alias-text-color-primary);
-  --mod-navbar-menu-item-color-hover: var(--ds-link-color-base-hover);
-  --mod-navbar-menu-item-color-active: var(--ds-link-color-base-active);
-  --mod-navbar-menu-item-color-selected: var(--ds-link-color-base-active);
+  --mod-navbar-menu-item-color: var(--ds-navbar-light-menu-item-color-base);
+  --mod-navbar-menu-item-color-hover: var(--ds-navbar-light-menu-item-color-hover);
+  --mod-navbar-menu-item-color-active: var(--ds-navbar-light-menu-item-color-active);
+  --mod-navbar-menu-item-color-selected: var(--ds-navbar-light-menu-item-color-selected);
 
-  --mod-navbar-sidebar-panel-border-top: var(--ds-alias-border-width-base) solid var(--ds-global-color-grey-3);
+  --mod-navbar-sidebar-panel-border-top: var(--ds-navbar-light-sidebar-panel-border-top);
 
   // Button component overrides for light theme (applies to hamburger, action buttons, and menu-end buttons)
-  --mod-navbar-button-color-text: var(--ds-alias-text-color-primary);
-  --mod-navbar-button-color-background: var(--ds-global-color-grey-2);
-  --mod-navbar-button-color-border: var(--ds-global-color-grey-2);
+  --mod-navbar-button-color-text: var(--ds-navbar-light-button-color-text-base);
+  --mod-navbar-button-color-background: var(--ds-navbar-light-button-color-background-base);
+  --mod-navbar-button-color-border: var(--ds-navbar-light-button-color-border-base);
 
-  --mod-navbar-button-color-text-hover: var(--ds-link-color-base-hover);
-  --mod-navbar-button-color-background-hover: var(--ds-global-color-sky-1);
-  --mod-navbar-button-color-border-hover: var(--ds-global-color-sky-1);
+  --mod-navbar-button-color-text-hover: var(--ds-navbar-light-button-color-text-hover);
+  --mod-navbar-button-color-background-hover: var(--ds-navbar-light-button-color-background-hover);
+  --mod-navbar-button-color-border-hover: var(--ds-navbar-light-button-color-border-hover);
 
-  --mod-navbar-button-color-text-active: var(--ds-link-color-base-active);
-  --mod-navbar-button-color-background-active: var(--ds-global-color-sky-1);
-  --mod-navbar-button-color-border-active: var(--ds-global-color-sky-1);
+  --mod-navbar-button-color-text-active: var(--ds-navbar-light-button-color-text-active);
+  --mod-navbar-button-color-background-active: var(--ds-navbar-light-button-color-background-active);
+  --mod-navbar-button-color-border-active: var(--ds-navbar-light-button-color-border-active);
 }
