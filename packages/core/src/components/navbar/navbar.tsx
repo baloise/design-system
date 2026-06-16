@@ -80,6 +80,15 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
   @ValidateEmptyOrType('boolean')
   readonly open: boolean = false
 
+  @Watch('open')
+  openChanged(newValue: boolean) {
+    if (newValue) {
+      this.openSidebar()
+    } else {
+      this.closeSidebar()
+    }
+  }
+
   /**
    * If `true` the navbar will use a light color scheme.
    */
@@ -121,6 +130,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
    */
 
   connectedCallback(): void {
+    this.openChanged(this.open)
     setupValidation(this)
     this.scrollHandler.connect()
     this.focusHandler.connect()
@@ -152,18 +162,6 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
     const isSidebarMode = this.isTouch || this.isOverflowing
     if (!isSidebarMode && this.isSidebarOpen) {
       this.setIsSidebarOpen(false)
-    }
-  }
-
-  /**
-   * Handles changes to the `open` prop
-   */
-  @Watch('open')
-  openChanged(newValue: boolean) {
-    if (newValue) {
-      this.openSidebar()
-    } else {
-      this.closeSidebar()
     }
   }
 
@@ -297,6 +295,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
   }
 
   private async setIsSidebarOpen(value: boolean): Promise<void> {
+    console.log('setIsSidebarOpen')
     if (value === this.isSidebarOpen) return
 
     const isSidebarMode = this.isTouch || this.isOverflowing
@@ -313,6 +312,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
       }
       this.dsMenuOpenEnd.emit()
     } else {
+      console.log('Navbar: setIsSidebarOpen(false)')
       this.dsMenuCloseStart.emit()
       if (isSidebarMode) {
         this.detachKeyboardListener()
@@ -332,6 +332,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
    */
 
   render() {
+    console.log('Navbar: render()')
     const isTouch = this.isTouch
     const isMenuOpen = this.isSidebarOpen
     const isSidebarMode = isTouch || this.isOverflowing
