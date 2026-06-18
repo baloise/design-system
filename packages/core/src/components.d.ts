@@ -28,6 +28,7 @@ import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./co
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
+import { NavbarContainer } from "./components/navbar/navbar.interfaces";
 import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -68,6 +69,7 @@ export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./co
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
+export { NavbarContainer } from "./components/navbar/navbar.interfaces";
 export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -1687,6 +1689,40 @@ export namespace Components {
     interface DsModalHeader {
     }
     /**
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface DsNavbar {
+        /**
+          * Closes the sidebar menu
+         */
+        "closeSidebar": () => Promise<void>;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container": NavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light": boolean;
+        "listenToResize": () => Promise<void>;
+        /**
+          * If `true` the navbar will open the sidebar menu.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the sidebar menu
+         */
+        "openSidebar": () => Promise<void>;
+        /**
+          * Toggles the sidebar menu open/closed state
+         */
+        "toggleSidebar": () => Promise<void>;
+    }
+    /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
      */
     interface DsNotification {
@@ -3197,6 +3233,10 @@ export interface DsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsModalElement;
 }
+export interface DsNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsNavbarElement;
+}
 export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsNotificationElement;
@@ -3811,6 +3851,29 @@ declare global {
         prototype: HTMLDsModalHeaderElement;
         new (): HTMLDsModalHeaderElement;
     };
+    interface HTMLDsNavbarElementEventMap {
+        "dsMenuOpenStart": void;
+        "dsMenuOpenEnd": void;
+        "dsMenuCloseStart": void;
+        "dsMenuCloseEnd": void;
+    }
+    /**
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface HTMLDsNavbarElement extends Components.DsNavbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsNavbarElement: {
+        prototype: HTMLDsNavbarElement;
+        new (): HTMLDsNavbarElement;
+    };
     interface HTMLDsNotificationElementEventMap {
         "dsCloseClick": NotificationCloseClickDetail;
         "dsDidLoad": void;
@@ -4316,6 +4379,7 @@ declare global {
         "ds-modal": HTMLDsModalElement;
         "ds-modal-body": HTMLDsModalBodyElement;
         "ds-modal-header": HTMLDsModalHeaderElement;
+        "ds-navbar": HTMLDsNavbarElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-pagination": HTMLDsPaginationElement;
@@ -6059,6 +6123,42 @@ declare namespace LocalJSX {
      * the heading text through the slot chain without crossing shadow boundaries.
      */
     interface DsModalHeader {
+    }
+    /**
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface DsNavbar {
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container"?: NavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light"?: boolean;
+        /**
+          * Emitted when the sidebar menu finishes closing
+         */
+        "onDsMenuCloseEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts closing
+         */
+        "onDsMenuCloseStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu finishes opening
+         */
+        "onDsMenuOpenEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts opening
+         */
+        "onDsMenuOpenStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * If `true` the navbar will open the sidebar menu.
+          * @default false
+         */
+        "open"?: boolean;
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -7971,6 +8071,11 @@ declare namespace LocalJSX {
         "modalWidth": number;
         "fullscreen": boolean;
     }
+    interface DsNavbarAttributes {
+        "open": boolean;
+        "light": boolean;
+        "container": NavbarContainer;
+    }
     interface DsNotificationAttributes {
         "alert": boolean;
         "closable": boolean;
@@ -8311,6 +8416,7 @@ declare namespace LocalJSX {
         "ds-modal": Omit<DsModal, keyof DsModalAttributes> & { [K in keyof DsModal & keyof DsModalAttributes]?: DsModal[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `attr:${K}`]?: DsModalAttributes[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `prop:${K}`]?: DsModal[K] };
         "ds-modal-body": DsModalBody;
         "ds-modal-header": DsModalHeader;
+        "ds-navbar": Omit<DsNavbar, keyof DsNavbarAttributes> & { [K in keyof DsNavbar & keyof DsNavbarAttributes]?: DsNavbar[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `attr:${K}`]?: DsNavbarAttributes[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `prop:${K}`]?: DsNavbar[K] };
         "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
         "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
         "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
@@ -8516,6 +8622,10 @@ declare module "@stencil/core" {
              * the heading text through the slot chain without crossing shadow boundaries.
              */
             "ds-modal-header": LocalJSX.IntrinsicElements["ds-modal-header"] & JSXBase.HTMLAttributes<HTMLDsModalHeaderElement>;
+            /**
+             * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+             */
+            "ds-navbar": LocalJSX.IntrinsicElements["ds-navbar"] & JSXBase.HTMLAttributes<HTMLDsNavbarElement>;
             /**
              * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
              */

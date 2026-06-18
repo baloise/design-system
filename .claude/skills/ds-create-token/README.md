@@ -135,3 +135,10 @@ Creates:
 - Component must exist in `packages/core/src/components/`
 - Component must have a `.host.scss` file
 - Must be run from design system root directory
+
+## Important Notes
+
+**JSDoc Comments:** When generating or updating JSDoc comments in the SCSS file, do NOT include default values in parentheses. Only include the property name and description. Example:
+
+- ✓ `@prop --button-color: Text color of the button`
+- ✗ `@prop --button-color: Text color of the button (default: --ds-alias-text-color-white)`
