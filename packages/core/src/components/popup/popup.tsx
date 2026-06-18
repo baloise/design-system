@@ -1,15 +1,15 @@
-import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom'
+import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom'
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import {
+  FocusHandler,
   Logger,
   type LogInstance,
   ValidateEmptyOrOneOf,
   ValidateEmptyOrType,
   dsBrowser,
   isEscapeKey,
-  isTabKey,
   setupValidation,
   wait,
 } from '@utils'
@@ -21,15 +21,6 @@ import {
   type PopupPresentDetail,
   type PopupDismissDetail,
 } from './popup.interfaces'
-
-const FOCUSABLE_QUERY = [
-  'button:not([disabled]):not([tabindex^="-"])',
-  'input:not([type=hidden]):not([disabled]):not([tabindex^="-"])',
-  'select:not([disabled]):not([tabindex^="-"])',
-  'textarea:not([disabled]):not([tabindex^="-"])',
-  'a[href]:not([tabindex^="-"])',
-  '[tabindex]:not([tabindex^="-"])',
-].join(', ')
 
 // ─── Group registry ───────────────────────────────────────────────────────────
 // Module-level map so same-group popups can dismiss each other.
@@ -54,8 +45,10 @@ const popupGroups = new Map<string, Set<HTMLDsPopupElement>>()
   shadow: true,
 })
 export class Popup implements DsComponentInterface, DsConfigObserver {
+  private arrowEl: HTMLDivElement | undefined
   private cleanupPositioner?: () => void
   private currentTrigger: HTMLElement | undefined = undefined
+  private focusHandler = new FocusHandler()
   private transitionQueue: Promise<void> = Promise.resolve()
 
   log!: LogInstance
@@ -166,8 +159,15 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
   readonly label: string = ''
 
   /**
+   * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+   */
+  @Prop()
+  @ValidateEmptyOrType('boolean')
+  readonly arrow: boolean = false
+
+  /**
    * Override the automatic focus-trap behaviour.
-   * When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+   * When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
    */
   @Prop()
   @ValidateEmptyOrType('boolean')
@@ -216,6 +216,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   disconnectedCallback(): void {
     this.cleanupPositioner?.()
+    this.focusHandler.disconnect()
     if (this.trigger) {
       this.trigger.removeAttribute('aria-haspopup')
       this.trigger.removeAttribute('aria-expanded')
@@ -291,11 +292,6 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
     if (this.closable && isEscapeKey(ev)) {
       ev.stopPropagation()
       this.dismiss()
-      return
-    }
-
-    if (isTabKey(ev) && this.shouldTrapFocus) {
-      this.handleFocusTrap(ev)
     }
   }
 
@@ -306,7 +302,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   private get shouldTrapFocus(): boolean {
     if (this.trapFocus !== undefined) return this.trapFocus
-    return this.role === 'dialog'
+    return this.backdrop
   }
 
   private runPresent(): void {
@@ -335,7 +331,11 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
     if (this.animated) await wait(300)
 
-    this.focusPanel()
+    if (this.shouldTrapFocus) {
+      this.focusHandler.enable({ target: this.panelEl, restoreElement: trigger ?? null })
+    } else {
+      this.focusPanel()
+    }
     this.dsDidPresent.emit({ trigger })
   }
 
@@ -356,7 +356,12 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
     if (this.animated) await wait(300)
 
-    trigger?.focus()
+    if (this.shouldTrapFocus) {
+      this.focusHandler.disable()
+      this.focusHandler.restoreFocus()
+    } else {
+      trigger?.focus()
+    }
     this.dsDidDismiss.emit({ trigger })
   }
 
@@ -373,62 +378,40 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   private async updatePosition(trigger: HTMLElement): Promise<void> {
     if (!this.panelEl) return
-    const { x, y, placement } = await computePosition(trigger, this.panelEl, {
+    const { x, y, placement, middlewareData } = await computePosition(trigger, this.panelEl, {
       placement: this.placement,
       strategy: 'fixed',
       middleware: [
         dsBrowser.hasWindow && !window.frameElement ? shift() : undefined,
         flip(),
         offset(this.offset),
+        this.arrow && this.arrowEl ? arrow({ element: this.arrowEl }) : undefined,
       ].filter(Boolean) as NonNullable<Parameters<typeof computePosition>[2]>['middleware'],
     })
     Object.assign(this.panelEl.style, { left: `${x}px`, top: `${y}px` })
     this.panelEl.dataset['placement'] = placement.split('-')[0]
+
+    if (this.arrow && this.arrowEl && middlewareData.arrow) {
+      const { x: ax, y: ay } = middlewareData.arrow
+      Object.assign(this.arrowEl.style, {
+        left: ax != null ? `${ax}px` : '',
+        top: ay != null ? `${ay}px` : '',
+      })
+    }
   }
 
   private focusPanel(): void {
     if (!this.panelEl) return
-    const focusable = this.getFocusableElements()
+    const focusable = Array.from(
+      this.panelEl.querySelectorAll<HTMLElement>(
+        'button:not([disabled]):not([tabindex^="-"]),input:not([type=hidden]):not([disabled]):not([tabindex^="-"]),select:not([disabled]):not([tabindex^="-"]),textarea:not([disabled]):not([tabindex^="-"]),a[href]:not([tabindex^="-"]),[tabindex]:not([tabindex^="-"])',
+      ),
+    )
     if (focusable.length > 0) {
       focusable[0].focus({ preventScroll: true })
     } else {
       this.panelEl.focus({ preventScroll: true })
     }
-  }
-
-  private handleFocusTrap(ev: KeyboardEvent): void {
-    const focusable = this.getFocusableElements()
-    if (focusable.length === 0) return
-
-    const first = focusable[0]
-    const last = focusable[focusable.length - 1]
-    const active = this.getDeepActiveElement()
-
-    if (ev.shiftKey) {
-      if (active === first || active === this.panelEl) {
-        ev.preventDefault()
-        last.focus()
-      }
-    } else {
-      if (active === last) {
-        ev.preventDefault()
-        first.focus()
-      }
-    }
-  }
-
-  /** Walks shadow roots to find the truly focused element. */
-  private getDeepActiveElement(): Element | null {
-    let el: Element | null = document.activeElement
-    while (el?.shadowRoot?.activeElement) {
-      el = el.shadowRoot.activeElement
-    }
-    return el
-  }
-
-  private getFocusableElements(): HTMLElement[] {
-    if (!this.panelEl) return []
-    return Array.from(this.panelEl.querySelectorAll<HTMLElement>(FOCUSABLE_QUERY))
   }
 
   private registerGroup(): void {
@@ -469,7 +452,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   render() {
     return (
-      <Host class={{ 'is-open': this.isOpen, 'is-animated': this.animated }}>
+      <Host class={{ 'is-open': this.isOpen, 'is-animated': this.animated, 'is-closable': this.closable }}>
         {this.backdrop && <div part="backdrop" />}
         <div
           part="panel"
@@ -480,6 +463,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
           tabindex="-1"
           data-testid="ds-popup-panel"
         >
+          {this.arrow && <div part="arrow" ref={el => (this.arrowEl = el as HTMLDivElement)} />}
           {this.closable && <ds-close part="close" onClick={this.handleCloseClick} />}
           <slot />
         </div>

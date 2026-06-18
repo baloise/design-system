@@ -1965,6 +1965,11 @@ export namespace Components {
      */
     interface DsPopup {
         /**
+          * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+          * @default false
+         */
+        "arrow": boolean;
+        /**
           * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
           * @default false
          */
@@ -2023,7 +2028,7 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
-          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
           * @default undefined
          */
         "trapFocus": boolean | undefined;
@@ -6422,6 +6427,11 @@ declare namespace LocalJSX {
      */
     interface DsPopup {
         /**
+          * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+          * @default false
+         */
+        "arrow"?: boolean;
+        /**
           * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
           * @default false
          */
@@ -6483,7 +6493,7 @@ declare namespace LocalJSX {
          */
         "role"?: PopupRole;
         /**
-          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
           * @default undefined
          */
         "trapFocus"?: boolean | undefined;
@@ -8140,6 +8150,7 @@ declare namespace LocalJSX {
         "backdrop": boolean;
         "group": string | undefined;
         "label": string;
+        "arrow": boolean;
         "trapFocus": boolean | undefined;
     }
     interface DsProgressBarAttributes {
