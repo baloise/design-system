@@ -49,7 +49,7 @@
     "@stencil/core": "^4.43.5",
     "big.js": "^7.0.1",
     "contactjs": "^2.1.7",
-    "dompurify": "^3.4.8",
+    "dompurify": "3.4.11",
     "filesize.js": "^2.0.0",
     "focus-trap": "^8.2.1",
     "lodash": "^4.18.1",
