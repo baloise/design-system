@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { StoryFactory, withComponentControls, withRender } from '../../utils'
 
 type Args = JSX.DsNavbar & { slot: string }
 
