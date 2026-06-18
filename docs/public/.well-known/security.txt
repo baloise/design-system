@@ -1,0 +1,4 @@
+Contact: https://github.com/baloise/design-system/security/advisories/new
+Policy: https://github.com/baloise/design-system/blob/next/SECURITY.md
+Preferred-Languages: en, de
+Expires: 2027-12-31T00:00:00.000Z
