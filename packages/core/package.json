@@ -32,7 +32,7 @@
     "test": "vitest --run",
     "test:ui": "vitest --ui",
     "lint": "eslint .",
-    "play": "npx playwright test --ui",
+    "play": "node -e \"require('kill-port')(4000).catch(()=>{})\" && npx playwright test --ui",
     "play:file": "cross-env CI=1 npx playwright test",
     "play:a11y": "cross-env CI=1 npx playwright test --project='♿️ A11Y'",
     "play:components": "cross-env CI=1 npx playwright test --project='⚙️ Component'",

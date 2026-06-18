@@ -20062,88 +20062,88 @@
       ],
       "styles": [
         {
-          "name": "--file-upload-label-family",
-          "docs": "Font family of the label text."
+          "name": "--file-upload-label",
+          "docs": "family: Font family of the label text."
         },
         {
-          "name": "--file-upload-label-weight",
-          "docs": "Font weight of the label text."
+          "name": "--file-upload-label",
+          "docs": "weight: Font weight of the label text."
         },
         {
-          "name": "--file-upload-label-size",
-          "docs": "Font size of the label text."
+          "name": "--file-upload-label",
+          "docs": "size: Font size of the label text."
         },
         {
-          "name": "--file-upload-label-line-height",
-          "docs": "Line height of the label text."
+          "name": "--file-upload-label-line",
+          "docs": "height: Line height of the label text."
         },
         {
-          "name": "--file-upload-drop-zone-border-color",
-          "docs": "Border color of the drop zone."
+          "name": "--file-upload-drop-zone-border",
+          "docs": "color: Border color of the drop zone."
         },
         {
-          "name": "--file-upload-drop-zone-background",
-          "docs": "Background color of the drop zone."
+          "name": "--file-upload-drop-zone",
+          "docs": "background: Background color of the drop zone."
         },
         {
-          "name": "--file-upload-drop-zone-hover-background",
-          "docs": "Background color on hover."
+          "name": "--file-upload-drop-zone-hover",
+          "docs": "background: Background color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-hover-border-color",
-          "docs": "Border color on hover."
+          "name": "--file-upload-drop-zone-hover-border",
+          "docs": "color: Border color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-hover-text-color",
-          "docs": "Text color on hover."
+          "name": "--file-upload-drop-zone-hover-text",
+          "docs": "color: Text color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-active-background",
-          "docs": "Background color when active."
+          "name": "--file-upload-drop-zone-active",
+          "docs": "background: Background color when active."
         },
         {
-          "name": "--file-upload-drop-zone-active-border-color",
-          "docs": "Border color when active."
+          "name": "--file-upload-drop-zone-active-border",
+          "docs": "color: Border color when active."
         },
         {
-          "name": "--file-upload-drop-zone-active-text-color",
-          "docs": "Text color when active."
+          "name": "--file-upload-drop-zone-active-text",
+          "docs": "color: Text color when active."
         },
         {
-          "name": "--file-upload-drop-zone-focus-border-color",
-          "docs": "Border color when focused."
+          "name": "--file-upload-drop-zone-focus-border",
+          "docs": "color: Border color when focused."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-background",
-          "docs": "Background color when disabled."
+          "name": "--file-upload-drop-zone-disabled",
+          "docs": "background: Background color when disabled."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-border-color",
-          "docs": "Border color when disabled."
+          "name": "--file-upload-drop-zone-disabled-border",
+          "docs": "color: Border color when disabled."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-text-color",
-          "docs": "Text color when disabled."
+          "name": "--file-upload-drop-zone-disabled-text",
+          "docs": "color: Text color when disabled."
         },
         {
-          "name": "--file-upload-file-list-background",
-          "docs": "Background color of file list items."
+          "name": "--file-upload-file-list",
+          "docs": "background: Background color of file list items."
         },
         {
-          "name": "--file-upload-file-name-color",
-          "docs": "Text color of file names."
+          "name": "--file-upload-file-name",
+          "docs": "color: Text color of file names."
         },
         {
-          "name": "--file-upload-file-size-color",
-          "docs": "Text color of file sizes."
+          "name": "--file-upload-file-size",
+          "docs": "color: Text color of file sizes."
         },
         {
-          "name": "--file-upload-disabled-icon-color",
-          "docs": "Icon color when disabled."
+          "name": "--file-upload-disabled-icon",
+          "docs": "color: Icon color when disabled."
         },
         {
-          "name": "--file-upload-disabled-text-color",
-          "docs": "Text color when disabled."
+          "name": "--file-upload-disabled-text",
+          "docs": "color: Text color when disabled."
         }
       ],
       "slots": [],
@@ -58449,6 +58449,57 @@
         }
       ],
       "properties": []
+    },
+    {
+      "tag": "time-input",
+      "type": "css-only",
+      "docs": "Time Input provides a native HTML time input element with styled wrapper,\nintegrated form field support, and state styling. Supports disabled and validation states.",
+      "styles": [
+        {
+          "name": "--time-input-family",
+          "docs": "Font family of the time input control."
+        },
+        {
+          "name": "--time-input-weight",
+          "docs": "Font weight of the time input control."
+        },
+        {
+          "name": "--time-input-line-height",
+          "docs": "Line height of the time input control."
+        },
+        {
+          "name": "--time-input-size",
+          "docs": "Font size of the time input control."
+        },
+        {
+          "name": "--time-input-color",
+          "docs": "Text color of the time input control value."
+        },
+        {
+          "name": "--time-input-placeholder",
+          "docs": "Text color of the time input placeholder text."
+        }
+      ],
+      "tokens": [],
+      "properties": [],
+      "variants": [
+        {
+          "name": "is-disabled",
+          "docs": "Disabled time input state with greyed out appearance."
+        },
+        {
+          "name": "is-danger",
+          "docs": "Invalid time input state with red border and error styling."
+        },
+        {
+          "name": "is-success",
+          "docs": "Valid time input state with green border and success styling."
+        },
+        {
+          "name": "is-warning",
+          "docs": "Warning time input state with yellow border and warning styling."
+        }
+      ]
     }
   ],
   "typeLibrary": {

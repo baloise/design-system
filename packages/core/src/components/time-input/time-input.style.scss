@@ -1,0 +1,74 @@
+/**
+ * Time Input provides a native HTML time input element with styled wrapper,
+ * integrated form field support, and state styling. Supports disabled and validation states.
+ *
+ * @variant is-disabled - Disabled time input state with greyed out appearance.
+ * @variant is-danger - Invalid time input state with red border and error styling.
+ * @variant is-success - Valid time input state with green border and success styling.
+ * @variant is-warning - Warning time input state with yellow border and warning styling.
+ */
+
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --time-input-family - Font family of the time input control.
+ * @prop --time-input-weight - Font weight of the time input control.
+ * @prop --time-input-line-height - Line height of the time input control.
+ * @prop --time-input-size - Font size of the time input control.
+ * @prop --time-input-color - Text color of the time input control value.
+ * @prop --time-input-placeholder - Text color of the time input placeholder text.
+ */
+
+.time-input {
+  @include input.vars('time-input');
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+.field {
+  @include input.style('time-input', '.time-input');
+
+  .control {
+    input[type='time'] {
+      // Remove browser defaults
+      appearance: none;
+      outline: none;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+
+      // Layout
+      flex: 1;
+      min-width: 0;
+      padding: 0 0.5rem;
+
+      // Typography
+      font: inherit;
+      color: inherit;
+
+      // Interaction
+      cursor: pointer;
+
+      // Focus
+      &:focus {
+        outline: none;
+      }
+
+      // Disabled
+      &:disabled {
+        cursor: default;
+      }
+    }
+  }
+}
