@@ -9,7 +9,6 @@
  * @prop --popup-min-width: Minimum width of the popup panel.
  * @prop --popup-max-width: Maximum width of the popup panel.
  * @prop --popup-z-index: Z-index stacking level of the popup layer.
- * @prop --popup-backdrop-background: Background color of the optional full-screen backdrop.
  * @prop --popup-backdrop-opacity: Opacity of the optional full-screen backdrop.
  */
 
@@ -23,8 +22,7 @@
   @include vars.local(popup-min-width, var(--ds-popup-min-width));
   @include vars.local(popup-max-width, none);
   @include vars.local(popup-z-index, var(--ds-popup-z-index));
-  @include vars.local(popup-backdrop-background, var(--ds-popup-backdrop-background));
-  @include vars.local(popup-backdrop-opacity, var(--ds-popup-backdrop-opacity));
+  @include vars.local(popup-backdrop-opacity, var(--ds-backdrop-opacity));
 
   display: contents;
 }
@@ -32,10 +30,10 @@
 // ─── Backdrop ────────────────────────────────────────────────────────────────
 
 [part='backdrop'] {
+  @include backdrop();
   position: fixed;
   inset: 0;
   z-index: calc(var(--_popup-z-index) - 1);
-  background: var(--_popup-backdrop-background);
   opacity: 0;
   pointer-events: none;
   transition: opacity 200ms ease;

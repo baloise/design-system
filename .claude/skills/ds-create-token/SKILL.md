@@ -76,3 +76,10 @@ Component tokens always follow this structure:
 - Component must exist in `packages/core/src/components/`
 - Component must have a `.host.scss` file with `vars.local()` definitions
 - Design tokens must already be compiled (run `npm run tokens` first if needed)
+
+## Important Notes
+
+**JSDoc Comments:** When generating or updating JSDoc comments in the SCSS file, do NOT include default values in parentheses. Only include the property name and description. Example:
+
+- ✓ `@prop --button-color: Text color of the button`
+- ✗ `@prop --button-color: Text color of the button (default: --ds-alias-text-color-white)`

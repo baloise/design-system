@@ -186,6 +186,13 @@ export class Example {
 - **Missing `.interfaces.ts`:** Enum validation skipped with warning if interfaces file not found
 - **Validator type inference:** Relies on `.interfaces.ts` naming convention (`ButtonColor` → `BUTTON_COLORS`)
 
+## Important Notes
+
+**JSDoc Comments:** When adding or updating JSDoc comments for CSS variable properties in the SCSS file (`@prop`), do NOT include default values in parentheses. Only include the property name and description. Example:
+
+- ✓ `@prop --button-color: Text color of the button`
+- ✗ `@prop --button-color: Text color of the button (default: --ds-alias-text-color-white)`
+
 ## Related
 
 See [STYLE_GUIDE.md](../../STYLE_GUIDE.md) for component standards.
