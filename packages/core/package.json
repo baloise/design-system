@@ -49,7 +49,7 @@
     "@stencil/core": "^4.43.5",
     "big.js": "^7.0.1",
     "contactjs": "^2.1.7",
-    "dompurify": "^3.4.8",
+    "dompurify": "^3.4.9",
     "filesize.js": "^2.0.0",
     "lodash": "^4.18.1",
     "lottie-colorify": "0.8.0",
