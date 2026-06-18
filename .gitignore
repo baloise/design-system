@@ -8,6 +8,7 @@ tmp
 www
 generated
 vite.config.ts.**.mjs
+playwright-report
 
 # dependencies
 node_modules
