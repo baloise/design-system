@@ -24,11 +24,11 @@
 
 Two major versions receive security patches at any given time:
 
-| Branch  | Version       | Support type              | Supported |
-| ------- | ------------- | ------------------------- | --------- |
-| `next`  | Latest major  | Active development + security patches | ✅ |
-| `main`  | Previous major (LTS) | Security patches only | ✅ |
-| —       | Older majors  | No patches                | ❌        |
+| Branch | Version              | Support type                          | Supported |
+| ------ | -------------------- | ------------------------------------- | --------- |
+| `next` | Latest major         | Active development + security patches | ✅        |
+| `main` | Previous major (LTS) | Security patches only                 | ✅        |
+| —      | Older majors         | No patches                            | ❌        |
 
 The previous major enters **Long-Term Support (LTS)** the moment the next major is released and receives security patches for a minimum of **24 months** from that date. After 24 months, EOL is announced at least **6 months in advance** via a GitHub release note and a pinned repository issue before support is dropped.
 
@@ -56,11 +56,11 @@ This project follows the [Coordinated Vulnerability Disclosure](https://www.cisa
 
 When a vulnerability is confirmed as **actively exploited** in the wild, we are additionally required to notify the relevant authority:
 
-| Milestone            | Deadline                          |
-| -------------------- | --------------------------------- |
-| Early warning        | Within 24 hours of becoming aware |
-| Detailed notification | Within 72 hours                  |
-| Final report         | Within 14 days                    |
+| Milestone             | Deadline                          |
+| --------------------- | --------------------------------- |
+| Early warning         | Within 24 hours of becoming aware |
+| Detailed notification | Within 72 hours                   |
+| Final report          | Within 14 days                    |
 
 See [Authority Reporting (Article 14)](#authority-reporting-article-14) for the full process.
 
@@ -86,15 +86,15 @@ Every security fix is released as a new npm version. Subscribe to release notifi
 
 Every published GitHub Security Advisory for this project will include:
 
-| Field | Content |
-| ----- | ------- |
-| CVE ID | Assigned identifier (or "pending" if not yet issued) |
-| Affected versions | Exact semver range of vulnerable releases |
-| Patched version | First version containing the fix |
-| npm packages | All `@baloise/ds-*` packages affected |
-| Severity | CVSS score and vector |
-| Description | What the vulnerability is and what an attacker can do |
-| Workaround | Mitigation steps if available before a patch is released |
+| Field             | Content                                                  |
+| ----------------- | -------------------------------------------------------- |
+| CVE ID            | Assigned identifier (or "pending" if not yet issued)     |
+| Affected versions | Exact semver range of vulnerable releases                |
+| Patched version   | First version containing the fix                         |
+| npm packages      | All `@baloise/ds-*` packages affected                    |
+| Severity          | CVSS score and vector                                    |
+| Description       | What the vulnerability is and what an attacker can do    |
+| Workaround        | Mitigation steps if available before a patch is released |
 
 This information is sufficient to assess impact and plan an upgrade without reading source code.
 
@@ -185,16 +185,16 @@ This project follows practices required by the EU Cyber Resilience Act for mediu
 
 ### Security Measures
 
-| Requirement              | Implementation                                                                     |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| Vulnerability management | Private disclosure via GitHub Security Advisories (72h response)                   |
-| Dependency scanning      | Dependabot with weekly scans and automated patch PRs                               |
-| Code analysis            | CodeQL SAST on every push/PR and weekly schedule                                   |
-| Secure development       | Branch protection, code review, CI/CD gates (lint, test, build)                    |
+| Requirement              | Implementation                                                                                       |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| Vulnerability management | Private disclosure via GitHub Security Advisories (72h response)                                     |
+| Dependency scanning      | Dependabot with weekly scans and automated patch PRs                                                 |
+| Code analysis            | CodeQL SAST on every push/PR and weekly schedule                                                     |
+| Secure development       | Branch protection, code review, CI/CD gates (lint, test, build)                                      |
 | Incident response        | 72h acknowledgement, 90d fix timeline; 24h/72h/14d authority reporting for exploited vulnerabilities |
-| Authority reporting      | ENISA EUVDB (EU consumers) + Swiss NCSC; runbook in `docs/security/incident-response-runbook.md` |
-| Consumer notification    | GitHub Security Advisories with CVE, affected versions, patched version, and workaround |
-| SBOM / Transparency      | CycloneDX JSON SBOM bundled in every published npm package                         |
+| Authority reporting      | ENISA EUVDB (EU consumers) + Swiss NCSC; runbook in `docs/security/incident-response-runbook.md`     |
+| Consumer notification    | GitHub Security Advisories with CVE, affected versions, patched version, and workaround              |
+| SBOM / Transparency      | CycloneDX JSON SBOM bundled in every published npm package                                           |
 
 ### Authority Reporting (Article 14)
 
@@ -204,9 +204,9 @@ CRA Article 14 requires notifying the relevant authority when a vulnerability in
 
 **Which authority to notify:**
 
-| Audience | Authority | Platform |
-| -------- | --------- | -------- |
-| EU consumers | ENISA | [ENISA EUVDB](https://euvdb.europa.eu) |
+| Audience        | Authority  | Platform                                                                                   |
+| --------------- | ---------- | ------------------------------------------------------------------------------------------ |
+| EU consumers    | ENISA      | [ENISA EUVDB](https://euvdb.europa.eu)                                                     |
 | Swiss consumers | Swiss NCSC | [ncsc.admin.ch/report](https://www.ncsc.admin.ch/ncsc/en/home/meldungen/meldung-ncsc.html) |
 
 When in doubt, report to both. Duplicate reports are explicitly allowed under the regulation.
@@ -235,30 +235,30 @@ Fix available:    Yes / No / In progress
 
 ### Version Support Policy
 
-| Aspect                  | Policy                                                                                     |
-| ----------------------- | ------------------------------------------------------------------------------------------ |
-| **Supported versions**  | Latest major (`next` branch) + previous major in LTS (`main` branch)                      |
-| **LTS duration**        | Minimum 24 months of security patches from the date the next major is released             |
-| **Patch frequency**     | Security patches released within 90 days of a confirmed vulnerability                     |
-| **EOL announcement**    | At least 6 months' notice via GitHub release note and pinned repository issue              |
-| **EOL behaviour**       | EOL versions receive no patches, even for critical CVEs — consumers must upgrade           |
-| **Breaking changes**    | Only in new major versions; communicated via CHANGELOG.md and release notes                |
-| **LTS workflow**        | Automated via `.github/workflows/lts-continuous.yml`, `lts-prepare-release.yml`, `lts-release.yml` |
+| Aspect                 | Policy                                                                                             |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| **Supported versions** | Latest major (`next` branch) + previous major in LTS (`main` branch)                               |
+| **LTS duration**       | Minimum 24 months of security patches from the date the next major is released                     |
+| **Patch frequency**    | Security patches released within 90 days of a confirmed vulnerability                              |
+| **EOL announcement**   | At least 6 months' notice via GitHub release note and pinned repository issue                      |
+| **EOL behaviour**      | EOL versions receive no patches, even for critical CVEs — consumers must upgrade                   |
+| **Breaking changes**   | Only in new major versions; communicated via CHANGELOG.md and release notes                        |
+| **LTS workflow**       | Automated via `.github/workflows/lts-continuous.yml`, `lts-prepare-release.yml`, `lts-release.yml` |
 
 ### Security by Default
 
 The Baloise Design System is a client-side component library. Its attack surface and default security posture are as follows:
 
-| Property | State |
-| -------- | ----- |
-| Server-side code | None — pure client-side Web Components |
-| Authentication / authorisation logic | None — components carry no identity or session state |
-| Data persistence | Minimal — one `localStorage` key stores an animation preference boolean (`DS_ANIMATION_KEY`); no PII, no tokens |
-| Default network requests | None at startup — `ds-icon` fetches a SVG only when the consumer explicitly sets a `src` prop |
-| User-supplied HTML rendered as markup | Sanitized via DOMPurify before any `innerHTML` assignment (`src/utils/svg.ts`) |
-| `eval` / `new Function` | Not used anywhere in the component source |
-| Inline event handler attributes | Not used — all listeners are attached via `addEventListener` |
-| CSP compatibility | Compatible with strict `script-src` policies; no `unsafe-eval`, no `unsafe-inline` required |
+| Property                              | State                                                                                                           |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Server-side code                      | None — pure client-side Web Components                                                                          |
+| Authentication / authorisation logic  | None — components carry no identity or session state                                                            |
+| Data persistence                      | Minimal — one `localStorage` key stores an animation preference boolean (`DS_ANIMATION_KEY`); no PII, no tokens |
+| Default network requests              | None at startup — `ds-icon` fetches a SVG only when the consumer explicitly sets a `src` prop                   |
+| User-supplied HTML rendered as markup | Sanitized via DOMPurify before any `innerHTML` assignment (`src/utils/svg.ts`)                                  |
+| `eval` / `new Function`               | Not used anywhere in the component source                                                                       |
+| Inline event handler attributes       | Not used — all listeners are attached via `addEventListener`                                                    |
+| CSP compatibility                     | Compatible with strict `script-src` policies; no `unsafe-eval`, no `unsafe-inline` required                     |
 
 **How these properties are enforced:**
 

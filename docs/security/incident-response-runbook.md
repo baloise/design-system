@@ -8,16 +8,16 @@
 
 ## Quick Reference
 
-| Step | What | Deadline |
-|------|------|----------|
-| 1 | Confirm exploitation and assess severity | Immediately |
-| 2 | Notify team lead and open private advisory | T+1h |
-| 3 | File early warning with authorities | T+24h |
-| 4 | File detailed notification with authorities | T+72h |
-| 5 | Release fix or mitigation | T+90d (target: sooner) |
-| 6 | File final report with authorities | T+14d after fix |
-| 7 | Publish GitHub Security Advisory | After fix is released |
-| 8 | Post-incident review | Within 30 days |
+| Step | What                                        | Deadline               |
+| ---- | ------------------------------------------- | ---------------------- |
+| 1    | Confirm exploitation and assess severity    | Immediately            |
+| 2    | Notify team lead and open private advisory  | T+1h                   |
+| 3    | File early warning with authorities         | T+24h                  |
+| 4    | File detailed notification with authorities | T+72h                  |
+| 5    | Release fix or mitigation                   | T+90d (target: sooner) |
+| 6    | File final report with authorities          | T+14d after fix        |
+| 7    | Publish GitHub Security Advisory            | After fix is released  |
+| 8    | Post-incident review                        | Within 30 days         |
 
 ---
 
@@ -35,6 +35,7 @@ Before any reporting, confirm that the vulnerability is:
 If exploitation is not confirmed, follow the standard [CVD process](../../SECURITY.md#disclosure-policy) instead — authority reporting is only triggered for actively exploited vulnerabilities.
 
 **Assess:**
+
 - Which package(s) and version range(s) are affected?
 - What is the CVSS score and attack vector?
 - Is a fix or workaround already available?
@@ -169,10 +170,10 @@ Timeline:
 
 ## Contacts
 
-| Role | Responsibility |
-|------|---------------|
-| Security lead | Owns the authority report filings and advisory publication |
-| On-call maintainer | First responder — escalates to security lead within 1 hour |
+| Role               | Responsibility                                                                                  |
+| ------------------ | ----------------------------------------------------------------------------------------------- |
+| Security lead      | Owns the authority report filings and advisory publication                                      |
+| On-call maintainer | First responder — escalates to security lead within 1 hour                                      |
 | Legal / compliance | Notified if the vulnerability affects a regulated system or triggers data breach considerations |
 
 For maintainer contact details, see [CONTRIBUTING.md](../../CONTRIBUTING.md).
