@@ -85,7 +85,7 @@ These improvements help our components work seamlessly across all supported fram
 | footer           | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | file-upload      | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | select           | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| navbar           | Hybrid | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| navbar           | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | time-input       | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | date             | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | dropdown         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
