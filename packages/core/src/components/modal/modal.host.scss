@@ -4,7 +4,6 @@
 /**
  * @prop --modal-background: Background color of the modal dialog.
  * @prop --modal-radius: Border radius of the modal dialog.
- * @prop --modal-backdrop-background: Background color of the backdrop overlay.
  * @prop --modal-backdrop-opacity: Opacity of the backdrop overlay.
  * @prop --modal-heading-family: Font family of the modal title.
  * @prop --modal-heading-weight: Font weight of the modal title.
@@ -17,8 +16,7 @@
 :host {
   @include vars.local(modal-background, var(--ds-modal-color-base-background));
   @include vars.local(modal-radius, var(--ds-modal-radius-base));
-  @include vars.local(modal-backdrop-background, var(--ds-modal-backdrop-background));
-  @include vars.local(modal-backdrop-opacity, var(--ds-modal-backdrop-opacity));
+  @include vars.local(modal-backdrop-opacity, var(--ds-backdrop-opacity));
   @include vars.local(modal-heading-family, var(--ds-modal-heading-family));
   @include vars.local(modal-heading-weight, var(--ds-modal-heading-weight));
   @include vars.local(modal-heading-size, var(--ds-modal-heading-size-device));
@@ -84,7 +82,7 @@
 }
 
 :host dialog::backdrop {
-  background: var(--_modal-backdrop-background);
+  @include backdrop();
   opacity: var(--_modal-backdrop-opacity);
 }
 

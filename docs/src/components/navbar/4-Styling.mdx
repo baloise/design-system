@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as NavbarStories from './navbar.stories'
+import { NAVBAR_DOC_CONFIG, getNavbarTabs } from './navbar.doc-config'
+
+<Meta title="Components/Navbar/Styling" />
+
+<Banner label={'Styling'} section={NAVBAR_DOC_CONFIG.section} color={NAVBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={NavbarStories} tabs={getNavbarTabs('styling')} />
+
+<ComponentParts component="navbar" />
+
+<ComponentCssVariables component="navbar" />
+
+<ComponentDesignTokens component="navbar" />
+
+<Footer />
