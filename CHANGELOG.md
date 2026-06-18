@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.10.0
+
+### Minor Changes
+
+- **icon**: add new icons home, filter, bell and dashboard ( [#1976](https://github.com/baloise/design-system/pull/1976))
+
+### Patch Changes
+
+- **steps**: adjust tabindex for disabled steps ( [#1958](https://github.com/baloise/design-system/pull/1958))
+
+- **icon**: do not fill empty paths in svgs. ( [#1947](https://github.com/baloise/design-system/pull/1947))
+
 ## 19.9.5
 
 ### Patch Changes
