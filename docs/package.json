@@ -9,8 +9,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@baloise/ds-core": "20.0.0-next.4",
     "@baloise/ds-assets": "20.0.0-next.4",
+    "@baloise/ds-core": "20.0.0-next.4",
     "@baloise/ds-css": "20.0.0-next.4",
     "@baloise/ds-tokens": "20.0.0-next.4",
     "@storybook/addon-docs": "10.4.6",
@@ -22,7 +22,7 @@
     "storybook": "10.4.6"
   },
   "devDependencies": {
-    "@types/react": "19.2.17",
+    "@types/react": "^19.2.16",
     "@types/react-dom": "19.2.3",
     "typescript": "5.6.3",
     "vite": "8.0.16"
