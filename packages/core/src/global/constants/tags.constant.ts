@@ -40,6 +40,7 @@ export const tags: string[] = [
   "ds-modal",
   "ds-modal-body",
   "ds-modal-header",
+  "ds-navbar",
   "ds-notification",
   "ds-number-input",
   "ds-pagination",

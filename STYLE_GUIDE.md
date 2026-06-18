@@ -86,6 +86,78 @@ Use CSS classes, never attribute selectors:
 :host(.is-primary) { ... }
 ```
 
+### Class Management — Use JSX, Not DOM Mutation
+
+Always manage classes through JSX class binding. Never use `classList.add()`, `classList.remove()`, or `classList.toggle()` unless there's a critical performance reason.
+
+```tsx
+// ❌ Don't — imperative DOM mutation
+this.drawerEl.classList.add('is-open')
+this.drawerEl.classList.remove('is-open')
+
+// ✅ Do — declarative JSX class binding
+<aside class={{ 'is-open': isMenuOpen }}>
+  {/* content */}
+</aside>
+```
+
+JSX class binding automatically applies/removes classes during the render cycle based on state, avoiding manual DOM manipulation and keeping the component model predictable.
+
+### Never Modify External Element Styles
+
+**Never directly modify styles on elements outside the component** (like `body`, `html`, or other global elements). This can interfere with other components and application logic.
+
+```ts
+// ❌ Don't — directly modifying external element styles
+document.body.style.overflow = 'hidden'
+document.body.style.backgroundColor = 'red'
+
+// ✅ Do — use utility helpers designed for this purpose
+ScrollHandler.disable() // Properly manages document scroll
+ScrollHandler.enable() // Restores scroll and cleans up state
+```
+
+Always use the provided utility helpers from `@utils` for managing global state (scroll behavior, focus traps, etc.). These utilities handle cleanup and side-effect management properly.
+
+### Responsive Design & Mobile-First Styling
+
+All components must follow a **mobile-first** approach: define styles for mobile/narrow viewports first, then progressively enhance for larger screens using `@media` queries.
+
+```scss
+// ✅ Mobile-first: base styles for small screens (320px+)
+:host {
+  display: block;
+  padding: var(--ds-space-sm);
+  font-size: var(--ds-text-size-sm);
+}
+
+// Then enhance for tablet (≥ tablet breakpoint)
+@include media('>tablet') {
+  padding: var(--ds-space-md);
+  font-size: var(--ds-text-size-base);
+}
+
+// Further enhance for desktop (≥ desktop breakpoint)
+@include media('>desktop') {
+  padding: var(--ds-space-lg);
+}
+```
+
+**Benefits:**
+
+- Smaller CSS payloads on mobile devices
+- Better performance by default
+- Easier to maintain — additions rather than overrides
+- Aligns with browser capability progression (mobile → desktop)
+
+Use the design system breakpoint tokens from `packages/tokens`:
+
+- `--ds-alias-breakpoint-mobile` (default, no media query needed)
+- `--ds-alias-breakpoint-tablet` (≥ 960px)
+- `--ds-alias-breakpoint-desktop` (≥ 1440px)
+
+Reference breakpoints via design tokens, **never hardcoded pixel values**.
+
 ### Accessibility & SEO for Web Components
 
 Ensure components are accessible to assistive technologies and search engines by exposing semantic content and proper ARIA markup.

@@ -33,6 +33,13 @@ Claude parses the skill definitions and uses the reference documentation to:
 - ✅ REFERENCE.md — Complete validation rules and fix patterns
 - 🔄 implementation.js — Reference implementation (can be enhanced with full AST parsing)
 
+## Important Notes
+
+**JSDoc Comments:** When adding or updating JSDoc comments for CSS variable properties in the SCSS file (`@prop`), do NOT include default values in parentheses. Only include the property name and description. Example:
+
+- ✓ `@prop --button-color: Text color of the button`
+- ✗ `@prop --button-color: Text color of the button (default: --ds-alias-text-color-white)`
+
 ## Extending the Implementation
 
 The `implementation.js` includes basic regex-based pattern matching. For production use, consider:

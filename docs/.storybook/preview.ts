@@ -76,9 +76,9 @@ const preview: Preview = {
     viewport: {
       options: {
         small: {
-          name: 'Small (Mobile) from 320px to 768px',
+          name: 'Small (Mobile) from 420px to 768px',
           styles: {
-            width: '320px',
+            width: '420px',
             height: '667px',
           },
           type: 'mobile',

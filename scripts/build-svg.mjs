@@ -25,47 +25,6 @@ const NEWLINE = '\n'
 const SVG_GROUND_COLOR = '#000D6E'
 const SUB_PACKAGES = ['maps', 'icons', 'brand-icons']
 
-const DS_MIN_SET_ICONS = [
-  'IconBell',
-  'IconInformation',
-  'IconAlert',
-  'IconAlertTriangle',
-  'IconFile',
-  'IconPicture',
-  'IconVideo',
-  'IconAudio',
-  'IconClock',
-  'IconClose',
-  'IconInfoCircle',
-  'IconLink',
-  'IconPlus',
-  'IconMinus',
-  'IconNavGoLeft',
-  'IconNavGoRight',
-  'IconNavGoDown',
-  'IconNavGoUp',
-  'IconCaretUp',
-  'IconCaretRight',
-  'IconCaretDown',
-  'IconCaretLeft',
-  'IconCheck',
-  'IconDate',
-  'IconDocument',
-  'IconDownload',
-  'IconEdit',
-  'IconTrash',
-  'IconUpload',
-  'IconMenuBars',
-  'IconFacebook',
-  'IconInstagram',
-  'IconXing',
-  'IconLinkedin',
-  'IconTwitter',
-  'IconX',
-  'IconYoutube',
-  'IconWeb',
-]
-
 async function scan(pattern) {
   return glob(pattern.replace(/\\/g, '/'))
 }
@@ -113,12 +72,6 @@ async function processSubPackage(subPackage) {
 
   await writeFile(join(subPackageRoot, 'svg.ts'), buildJsOutput(subPackage, svgs))
   await writeFile(join(subPackageRoot, 'svg.json'), JSON.stringify([...svgs.keys()], undefined, 2))
-
-  if (subPackage === 'icons') {
-    const destPath = join(coreRoot, 'src/utils/constants/icons.constant.ts')
-    await mkdir(dirname(destPath), { recursive: true })
-    await writeFile(destPath, buildJsOutput(subPackage, svgs, DS_MIN_SET_ICONS))
-  }
 }
 
 for (const subPackage of SUB_PACKAGES) {

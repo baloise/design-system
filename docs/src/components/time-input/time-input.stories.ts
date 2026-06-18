@@ -1,4 +1,3 @@
-import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { StoryFactory, withRender } from '../../utils'
 

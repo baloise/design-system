@@ -6,7 +6,6 @@
  * @prop --drawer-radius: Border radius of the drawer top corners.
  * @prop --drawer-max-height: Maximum height of the drawer panel.
  * @prop --drawer-padding: Padding inside the drawer panel.
- * @prop --drawer-backdrop-background: Background color of the native backdrop.
  * @prop --drawer-backdrop-opacity: Opacity of the native backdrop.
  */
 
@@ -17,8 +16,7 @@
   @include vars.local(drawer-radius, var(--ds-drawer-radius));
   @include vars.local(drawer-max-height, var(--ds-drawer-max-height));
   @include vars.local(drawer-padding, var(--ds-drawer-padding));
-  @include vars.local(drawer-backdrop-background, var(--ds-drawer-backdrop-background));
-  @include vars.local(drawer-backdrop-opacity, var(--ds-drawer-backdrop-opacity));
+  @include vars.local(drawer-backdrop-opacity, var(--ds-backdrop-opacity));
 
   display: contents;
 }
@@ -62,7 +60,7 @@
 // ─── Backdrop ────────────────────────────────────────────────────────────────
 
 :host dialog::backdrop {
-  background: var(--_drawer-backdrop-background);
+  @include backdrop();
   opacity: var(--_drawer-backdrop-opacity);
 }
 

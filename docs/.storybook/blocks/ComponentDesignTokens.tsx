@@ -47,7 +47,7 @@ function extractAliasTokens(componentName: string): Array<{
   }> = []
 
   // Search through alias categories for matching tokens
-  for (const [categoryKey, categoryValue] of Object.entries(aliasLayer)) {
+  for (const [_categoryKey, categoryValue] of Object.entries(aliasLayer)) {
     if (typeof categoryValue !== 'object' || !categoryValue) continue
 
     // Recursively flatten and find tokens with this component name

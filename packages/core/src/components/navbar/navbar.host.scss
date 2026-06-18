@@ -1,0 +1,799 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --navbar-background: Background color of the navbar
+ * @prop --navbar-padding: Padding of the navbar
+ * @prop --navbar-height: Height of the navbar container
+ * @prop --navbar-z-index: Stacking context of the navbar
+ * @prop --navbar-shadow: Shadow of the navbar
+ *
+ * Brand Slot Variables:
+ * @prop --navbar-brand-gap: Gap between brand elements
+ * @prop --navbar-brand-focus-radius: Border radius for brand focus indicator
+ *
+ * Title Slot Variables:
+ * @prop --navbar-title-color: Text color of the title
+ * @prop --navbar-title-font-family: Font family of the title
+ * @prop --navbar-title-font-size: Font size of the title
+ * @prop --navbar-title-font-weight: Font weight of the title
+ *
+ * Hamburger Button Variables (sizing only):
+ * @prop --navbar-hamburger-width: Width of the hamburger button
+ * @prop --navbar-hamburger-height: Height of the hamburger button
+ * @prop --navbar-hamburger-padding: Padding inside the hamburger button
+ * @prop --navbar-hamburger-radius: Border radius of the hamburger button
+ * @prop --navbar-hamburger-transition-duration: Transition duration for hamburger hover/active states
+ *
+ * Note: Hamburger button color styling uses --navbar-button-color-* variables (see Button Component Variables section)
+ *
+ * Sidebar/Drawer Panel Variables:
+ * @prop --navbar-sidebar-max-width: Maximum width of the drawer panel
+ * @prop --navbar-sidebar-slide-duration: Animation duration for drawer slide-in/out
+ * @prop --navbar-sidebar-backdrop-color: Background color of the drawer backdrop overlay
+ * @prop --navbar-sidebar-backdrop-opacity: Opacity of the backdrop when drawer is open
+ * @prop --navbar-sidebar-panel-background: Background color of the sidebar panel
+ * @prop --navbar-sidebar-panel-shadow: Box shadow of the sidebar panel
+ * @prop --navbar-sidebar-panel-border-top: Top border of the sidebar panel
+ * @prop --navbar-sidebar-content-gap: Gap between menu items in sidebar
+ * @prop --navbar-sidebar-padding-inline: Horizontal padding of sidebar content
+ * @prop --navbar-sidebar-padding-block: Vertical padding of sidebar content
+ *
+ * Menu Item Variables (Sidebar):
+ * @prop --navbar-sidebar-item-min-height: Minimum height of menu items in sidebar
+ * @prop --navbar-sidebar-item-padding-block: Vertical padding of menu items
+ * @prop --navbar-sidebar-item-padding-inline: Horizontal padding of menu items
+ * @prop --navbar-sidebar-item-font-size: Font size of menu items in sidebar
+ * @prop --navbar-sidebar-item-font-weight: Font weight of menu items in sidebar
+ * @prop --navbar-sidebar-item-font-family: Font family of menu items in sidebar
+ * @prop --navbar-sidebar-item-color: Text color of menu items in sidebar
+ * @prop --navbar-sidebar-item-background-active: Background of active menu items in sidebar
+ * @prop --navbar-sidebar-item-background-hover: Background of menu items on hover in sidebar
+ * @prop --navbar-sidebar-item-color-hover: Text color of menu items on hover in sidebar
+ * @prop --navbar-sidebar-item-color-active: Text color of active menu items in sidebar
+ * @prop --navbar-sidebar-item-divider-color: Color of divider below menu items
+ * @prop --navbar-sidebar-item-divider-color-active: Color of divider for active menu items
+ * @prop --navbar-sidebar-item-chevron-size: Size of the chevron indicator
+ * @prop --navbar-sidebar-item-chevron-color: Color of the chevron indicator
+ *
+ * Desktop Menu Variables:
+ * @prop --navbar-menu-gap: Gap between menu and actions sections
+ * @prop --navbar-menu-start-gap: Gap between menu-start items on desktop
+ * @prop --navbar-menu-item-color: Text color of menu items on desktop
+ * @prop --navbar-menu-item-font-size: Font size of menu items on desktop
+ * @prop --navbar-menu-item-padding-block: Vertical padding of desktop menu items
+ * @prop --navbar-menu-item-padding-inline: Horizontal padding of desktop menu items
+ * @prop --navbar-menu-item-border-radius: Border radius of desktop menu items
+ * @prop --navbar-menu-item-color-hover: Text color of desktop menu items on hover
+ * @prop --navbar-menu-item-color-selected: Text color of selected desktop menu items
+ * @prop --navbar-menu-item-color-selected-hover: Text color of selected desktop menu items on hover
+ * @prop --navbar-menu-item-color-active: Text color of selected desktop menu items on click
+ * @prop --navbar-menu-item-underline-height: Height of the active indicator underline
+ * @prop --navbar-menu-item-underline-border-radius: Border radius of the underline
+ * @prop --navbar-menu-item-transition-duration: Transition duration for menu items
+ * @prop --navbar-menu-end-gap: Gap between menu-end items
+ *
+ * Content Container Variables:
+ * @prop --navbar-container-gap: Gap between brand and content in nav
+ * @prop --navbar-content-gap: Gap between items in content area
+ *
+ * Button Component Variables:
+ * @prop --navbar-button-color-text: Text color of buttons
+ * @prop --navbar-button-color-background: Background color of buttons
+ * @prop --navbar-button-color-border: Border color of buttons
+ * @prop --navbar-button-color-text-hover: Text color of buttons on hover
+ * @prop --navbar-button-color-background-hover: Background color of buttons on hover
+ * @prop --navbar-button-color-border-hover: Border color of buttons on hover
+ * @prop --navbar-button-color-text-active: Text color of buttons on active
+ * @prop --navbar-button-color-background-active: Background color of buttons on active
+ * @prop --navbar-button-color-border-active: Border color of buttons on active
+ *
+ * Focus Variables:
+ * @prop --navbar-focus-color-start: Start color of the focus indicator gradient
+ * @prop --navbar-focus-color-end: End color of the focus indicator gradient
+ *
+ */
+
+:host {
+  @include vars.focus(link);
+
+  // Base theme navbar styles
+  @include vars.local(navbar-background, var(--ds-navbar-base-layout-background));
+  @include vars.local(navbar-padding, var(--ds-navbar-base-layout-padding));
+  @include vars.local(navbar-height, var(--ds-navbar-base-layout-height));
+  @include vars.local(navbar-shadow, var(--ds-navbar-base-layout-shadow));
+  @include vars.local(navbar-z-index, var(--ds-navbar-base-layout-z-index));
+
+  // Brand slot
+  @include vars.local(navbar-brand-gap, var(--ds-navbar-base-brand-gap));
+  @include vars.local(navbar-brand-focus-radius, var(--ds-navbar-base-brand-focus-radius));
+
+  // Title slot
+  @include vars.local(navbar-title-color, var(--ds-navbar-base-title-color));
+  @include vars.local(navbar-title-font-family, var(--ds-navbar-base-title-font-family));
+  @include vars.local(navbar-title-font-size, var(--ds-navbar-base-title-font-size));
+  @include vars.local(navbar-title-font-weight, var(--ds-navbar-base-title-font-weight));
+
+  // Hamburger button (sizing only; colors use button variables)
+  @include vars.local(navbar-hamburger-width, var(--ds-navbar-base-hamburger-width));
+  @include vars.local(navbar-hamburger-height, var(--ds-navbar-base-hamburger-height));
+  @include vars.local(navbar-hamburger-padding, var(--ds-navbar-base-hamburger-padding));
+  @include vars.local(navbar-hamburger-radius, var(--ds-navbar-base-hamburger-radius));
+  @include vars.local(navbar-hamburger-transition-duration, var(--ds-navbar-base-hamburger-transition-duration));
+
+  // Sidebar
+  @include vars.local(navbar-sidebar-max-width, var(--ds-navbar-base-sidebar-max-width));
+  @include vars.local(navbar-sidebar-slide-duration, var(--ds-navbar-base-sidebar-slide-duration));
+  @include vars.local(navbar-sidebar-backdrop-color, var(--ds-navbar-base-sidebar-backdrop-color));
+  @include vars.local(navbar-sidebar-backdrop-opacity, var(--ds-global-elevation-opacity-50));
+  @include vars.local(navbar-sidebar-panel-background, var(--ds-navbar-base-sidebar-panel-background));
+  @include vars.local(navbar-sidebar-panel-shadow, var(--ds-navbar-base-sidebar-panel-shadow));
+  @include vars.local(navbar-sidebar-panel-border-top, var(--ds-navbar-base-sidebar-panel-border-top));
+  @include vars.local(navbar-sidebar-content-gap, var(--ds-navbar-base-sidebar-content-gap));
+  @include vars.local(navbar-sidebar-padding-inline, var(--ds-navbar-base-sidebar-content-padding-inline));
+  @include vars.local(navbar-sidebar-padding-block, var(--ds-navbar-base-sidebar-content-padding-block));
+
+  // Sidebar menu items
+  @include vars.local(navbar-sidebar-item-min-height, var(--ds-navbar-base-sidebar-item-min-height));
+  @include vars.local(navbar-sidebar-item-padding-block, var(--ds-navbar-base-sidebar-item-padding-block));
+  @include vars.local(navbar-sidebar-item-padding-inline, var(--ds-navbar-base-sidebar-item-padding-inline));
+  @include vars.local(navbar-sidebar-item-font-size, var(--ds-navbar-base-sidebar-item-font-size));
+  @include vars.local(navbar-sidebar-item-font-weight, var(--ds-navbar-base-sidebar-item-font-weight));
+  @include vars.local(navbar-sidebar-item-font-family, var(--ds-navbar-base-sidebar-item-font-family));
+  @include vars.local(navbar-sidebar-item-color, var(--ds-navbar-base-sidebar-item-color-base));
+  @include vars.local(navbar-sidebar-item-background-active, var(--ds-navbar-base-sidebar-item-background-active));
+  @include vars.local(navbar-sidebar-item-background-hover, var(--ds-navbar-base-sidebar-item-background-hover));
+  @include vars.local(navbar-sidebar-item-color-hover, var(--ds-navbar-base-sidebar-item-color-hover));
+  @include vars.local(navbar-sidebar-item-color-active, var(--ds-navbar-base-sidebar-item-color-active));
+  @include vars.local(navbar-sidebar-item-divider-color, var(--ds-navbar-base-sidebar-item-divider-color));
+  @include vars.local(
+    navbar-sidebar-item-divider-color-active,
+    var(--ds-navbar-base-sidebar-item-divider-color-active)
+  );
+  @include vars.local(navbar-sidebar-item-chevron-size, var(--ds-navbar-base-sidebar-item-chevron-size));
+  @include vars.local(navbar-sidebar-item-chevron-color, var(--ds-navbar-base-sidebar-item-chevron-color));
+
+  // Menu (Desktop)
+  @include vars.local(navbar-menu-gap, var(--ds-navbar-base-menu-gap));
+  @include vars.local(navbar-menu-start-gap, var(--ds-navbar-base-menu-start-gap));
+  @include vars.local(navbar-menu-item-color, var(--ds-navbar-base-menu-item-color-base));
+  @include vars.local(navbar-menu-item-font-size, var(--ds-navbar-base-menu-item-font-size));
+  @include vars.local(navbar-menu-item-padding-block, var(--ds-navbar-base-menu-item-padding-block));
+  @include vars.local(navbar-menu-item-padding-inline, var(--ds-navbar-base-menu-item-padding-inline));
+  @include vars.local(navbar-menu-item-border-radius, var(--ds-navbar-base-menu-item-border-radius));
+  @include vars.local(navbar-menu-item-color-hover, var(--ds-navbar-base-menu-item-color-hover));
+  @include vars.local(navbar-menu-item-color-selected, var(--ds-navbar-base-menu-item-color-selected));
+  @include vars.local(navbar-menu-item-color-selected-hover, var(--ds-navbar-base-menu-item-color-selected-hover));
+  @include vars.local(navbar-menu-item-color-active, var(--ds-navbar-base-menu-item-color-active));
+  @include vars.local(navbar-menu-item-underline-height, var(--ds-global-size-border-2));
+  @include vars.local(navbar-menu-item-underline-border-radius, var(--ds-alias-radius-rounded));
+  @include vars.local(navbar-menu-item-transition-duration, var(--ds-navbar-base-menu-item-transition-duration));
+  @include vars.local(navbar-menu-end-gap, var(--ds-navbar-base-menu-end-gap));
+
+  // Content container
+  @include vars.local(navbar-container-gap, var(--ds-navbar-base-container-gap));
+  @include vars.local(navbar-content-gap, var(--ds-navbar-base-content-gap));
+
+  // Button component
+  @include vars.local(navbar-button-color-text, var(--ds-navbar-base-button-color-text-base));
+  @include vars.local(navbar-button-color-background, var(--ds-navbar-base-button-color-background-base));
+  @include vars.local(navbar-button-color-border, var(--ds-navbar-base-button-color-border-base));
+  @include vars.local(navbar-button-color-text-hover, var(--ds-navbar-base-button-color-text-hover));
+  @include vars.local(navbar-button-color-background-hover, var(--ds-navbar-base-button-color-background-hover));
+  @include vars.local(navbar-button-color-border-hover, var(--ds-navbar-base-button-color-border-hover));
+  @include vars.local(navbar-button-color-text-active, var(--ds-navbar-base-button-color-text-active));
+  @include vars.local(navbar-button-color-background-active, var(--ds-navbar-base-button-color-background-active));
+  @include vars.local(navbar-button-color-border-active, var(--ds-navbar-base-button-color-border-active));
+
+  // Focus colors
+  @include vars.local(navbar-focus-color-start, var(--ds-navbar-base-focus-color-start));
+  @include vars.local(navbar-focus-color-end, var(--ds-navbar-base-focus-color-end));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  display: block;
+  position: relative;
+  z-index: var(--_navbar-z-index);
+  width: 100%;
+  background-color: var(--_navbar-background);
+  box-shadow: var(--_navbar-shadow);
+}
+
+/**
+ * Navigation Container
+ * ─────────────────────────────────────────────────────
+ */
+
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--_navbar-height);
+  max-height: var(--_navbar-height);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/**
+ * Container Wrapper
+ * ─────────────────────────────────────────────────────
+ * Constrains content width with sizing variants (default, fluid, compact)
+ */
+
+#container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  gap: var(--_navbar-container-gap);
+  padding-left: var(--ds-alias-container-space-device);
+  padding-right: var(--ds-alias-container-space-device);
+  width: 100%;
+  max-width: var(--ds-alias-container-width-base);
+
+  &.is-fluid {
+    max-width: var(--ds-alias-container-width-fluid);
+  }
+
+  &.is-compact {
+    max-width: var(--ds-alias-container-width-compact);
+  }
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  gap: var(--_navbar-content-gap);
+}
+
+/**
+ * Slot: Brand & Title
+ * ─────────────────────────────────────────────────────
+ * Logo, wordmark, or branding element. Always visible.
+ */
+
+::slotted([slot='brand']) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--_navbar-brand-gap);
+}
+
+::slotted(a[slot='brand']) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--_navbar-brand-gap);
+  outline: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: var(--_navbar-brand-focus-radius);
+    background-color: transparent;
+    touch-action: manipulation;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+::slotted(a[slot='brand']:focus-visible) {
+  &::after {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    box-shadow:
+      var(--_navbar-focus-color-start) 0 0 0 2px,
+      var(--_navbar-focus-color-end) 0 0 0 5px !important;
+  }
+}
+
+::slotted([slot='title']) {
+  color: var(--_navbar-title-color);
+  font-family: var(--_navbar-title-font-family);
+  font-size: var(--_navbar-title-font-size);
+  font-weight: var(--_navbar-title-font-weight);
+
+  display: none;
+
+  @include tablet() {
+    display: block;
+  }
+}
+
+/**
+ * Hamburger Button (Mobile Only)
+ * ─────────────────────────────────────────────────────
+ * Toggle button for mobile menu. Hidden on desktop.
+ * @part hamburger - The hamburger button element
+ */
+
+#hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: var(--_navbar-hamburger-padding);
+  color: var(--_navbar-button-color-text);
+  background-color: var(--_navbar-button-color-background);
+  width: var(--_navbar-hamburger-width);
+  height: var(--_navbar-hamburger-height);
+  border-radius: var(--_navbar-hamburger-radius);
+  margin-left: auto;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+
+  --icon-color: var(--_navbar-button-color-text);
+
+  touch-action: manipulation;
+  transition-property: translate, color, background-color, border-color, box-shadow, text-shadow;
+  transition-duration: var(--_navbar-hamburger-transition-duration);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      var(--_navbar-focus-color-start) 0 0 0 2px,
+      var(--_navbar-focus-color-end) 0 0 0 5px !important;
+  }
+
+  &:hover {
+    color: var(--_navbar-button-color-text-hover);
+    background-color: var(--_navbar-button-color-background-hover);
+    --icon-color: var(--_navbar-button-color-text-hover);
+  }
+
+  &:active {
+    color: var(--_navbar-button-color-text-active);
+    background-color: var(--_navbar-button-color-background-active);
+    --icon-color: var(--_navbar-button-color-text-active);
+    translate: 0 0.5px;
+  }
+}
+
+/**
+ * Mobile Menu Sidebar (Touch Only)
+ * ─────────────────────────────────────────────────────
+ * Right-side sidebar that slides in from the right on mobile/tablet.
+ * Includes backdrop overlay, panel with menu content, and close button.
+ * Hidden on desktop (≥tablet breakpoint).
+ * @part sidebar - The sidebar aside element
+ */
+
+#sidebar {
+  visibility: hidden;
+  display: flex;
+
+  justify-content: flex-end;
+  position: fixed;
+  top: var(--_navbar-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--ds-alias-z-index-navigation);
+  pointer-events: none;
+
+  transition: visibility var(--_navbar-sidebar-slide-duration) ease;
+
+  &.is-open {
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  :host:not(.is-sidebar-mode) & {
+    pointer-events: none !important;
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/**
+ * Sidebar Backdrop
+ * Overlay behind the sidebar that prevents interaction with page content.
+ * Fades in when sidebar opens, respects prefers-reduced-motion.
+ */
+
+#sidebar-backdrop {
+  @include backdrop();
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity var(--_navbar-sidebar-slide-duration) ease;
+}
+
+#sidebar.is-open #sidebar-backdrop {
+  opacity: 1;
+}
+
+/**
+ * Sidebar Panel
+ * The actual sidebar container with menu content.
+ * Slides in from the right when opened, respects prefers-reduced-motion.
+ * Max width 400px (customizable via --navbar-sidebar-max-width).
+ */
+
+#sidebar-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  max-width: var(--_navbar-sidebar-max-width);
+  height: 100%;
+  background-color: var(--_navbar-sidebar-panel-background);
+  overflow-y: auto;
+  outline: none;
+  box-shadow: var(--_navbar-shadow);
+  border-top: var(--_navbar-sidebar-panel-border-top);
+
+  transform: translateX(100%);
+  transition: transform var(--_navbar-sidebar-slide-duration) ease;
+}
+
+#sidebar.is-open #sidebar-panel {
+  transform: translateX(0);
+}
+
+/**
+ * Sidebar Content
+ * -----------------------------------------------------
+ * Scrollable container for menu slots
+ */
+
+#sidebar-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--_navbar-sidebar-content-gap);
+
+  padding-inline: var(--_navbar-sidebar-padding-inline);
+  padding-block: var(--_navbar-sidebar-padding-block);
+  overflow-y: auto;
+
+  ::slotted(a[slot='menu-start']),
+  ::slotted(.link[slot='menu-start']) {
+    position: relative;
+    color: var(--_navbar-sidebar-item-color);
+    --icon-color: var(--_navbar-sidebar-item-color);
+    font-size: var(--_navbar-sidebar-item-font-size);
+    font-weight: var(--_navbar-sidebar-item-font-weight);
+    font-family: var(--_navbar-sidebar-item-font-family);
+    text-decoration: none;
+    min-height: var(--_navbar-sidebar-item-min-height);
+    padding-block: var(--_navbar-sidebar-item-padding-block);
+    padding-inline: var(--_navbar-sidebar-item-padding-inline);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    //
+    // Divider indicator
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: var(--ds-divider-width);
+      border-radius: var(--ds-alias-radius-base);
+      background-color: var(--_navbar-sidebar-item-divider-color);
+
+      touch-action: manipulation;
+      transition-property: border-color, box-shadow;
+      transition-duration: 0.2s;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    //
+    // Chevron indicator
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0.375rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--_navbar-sidebar-item-chevron-size);
+      height: var(--_navbar-sidebar-item-chevron-size);
+      background-color: var(--_navbar-sidebar-item-chevron-color);
+      mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22%3E%3Cpath d=%22M7.5,4.1l-4.1-3.9A.75.75,0,1,0,2.36,1.294L6.072,4.819a.249.249,0,0,1,0,.362L2.36,8.706A.75.75,0,0,0,3.393,9.794L7.51,5.884A1.256,1.256,0,0,0,7.5,4.1Z%22/%3E%3C/svg%3E');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
+  }
+
+  ::slotted(.link[slot='menu-start'][aria-current='page']),
+  ::slotted(a[slot='menu-start'][aria-current='page']) {
+    background: var(--_navbar-sidebar-item-background-active);
+    &::before {
+      background-color: var(--_navbar-sidebar-item-divider-color-active);
+    }
+  }
+
+  ::slotted(.link[slot='menu-start']:hover),
+  ::slotted(a[slot='menu-start']:hover) {
+    background: var(--_navbar-sidebar-item-background-hover);
+    color: var(--_navbar-sidebar-item-color-hover);
+    --icon-color: var(--_navbar-sidebar-item-color-hover);
+    &::after {
+      background-color: var(--_navbar-sidebar-item-color-hover);
+    }
+    &::before {
+      background-color: var(--_navbar-sidebar-item-color-hover);
+    }
+  }
+
+  ::slotted(.link[slot='menu-start']:active),
+  ::slotted(a[slot='menu-start']:active) {
+    background: var(--_navbar-sidebar-item-background-active);
+    color: var(--_navbar-sidebar-item-color-active);
+    --icon-color: var(--_navbar-sidebar-item-color-active);
+    &::after {
+      background-color: var(--_navbar-sidebar-item-color-active);
+    }
+    &::before {
+      background-color: var(--_navbar-sidebar-item-color-active);
+    }
+  }
+
+  ::slotted(.link[slot='menu-start']:focus-visible:not(:active)),
+  ::slotted(a[slot='menu-start']:focus-visible:not(:active)) {
+    &::before {
+      border-radius: var(--ds-alias-radius-base);
+      background-color: transparent;
+      height: 100%;
+      width: 100%;
+      box-shadow:
+        var(--_navbar-focus-color-start) 0 0 0 2px,
+        var(--_navbar-focus-color-end) 0 0 0 5px !important;
+    }
+  }
+
+  #sidebar-end {
+    display: flex;
+    flex-direction: column;
+    gap: var(--_navbar-content-gap);
+    margin-top: var(--ds-global-size-space-32);
+  }
+
+  ::slotted(ds-button[slot='menu-end']),
+  ::slotted(button[slot='menu-end']),
+  ::slotted(button.button[slot='menu-end']) {
+    width: 100%;
+    --button-width: 100%;
+    --button-min-width: 100%;
+  }
+}
+
+/**
+ * Slot: Menu Start & Menu End
+ * ─────────────────────────────────────────────────────
+ * Navigation links and action buttons. Hidden on mobile, inline on desktop.
+ */
+
+#menu {
+  flex: 1;
+  display: flex;
+  gap: var(--_navbar-menu-gap);
+
+  #menu-start {
+    display: flex;
+    gap: var(--_navbar-menu-start-gap);
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+
+    ::slotted(.link[slot='menu-start']),
+    ::slotted(a[slot='menu-start']) {
+      @include unselectable();
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: var(--_navbar-menu-item-color);
+      font-size: var(--_navbar-menu-item-font-size);
+      border-radius: var(--_navbar-menu-item-border-radius);
+      padding-inline: var(--_navbar-menu-item-padding-inline);
+      padding-block: var(--_navbar-menu-item-padding-block);
+      text-decoration: none;
+      outline: none;
+      white-space: nowrap;
+      transition: color 120ms ease;
+      cursor: pointer;
+
+      touch-action: manipulation;
+      transition-property: box-shadow;
+      transition-duration: var(--_navbar-menu-item-transition-duration);
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        right: 0;
+        height: var(--_navbar-menu-item-underline-height);
+        border-radius: var(--_navbar-menu-item-underline-border-radius);
+        background-color: transparent;
+        transition: background-color 120ms ease;
+      }
+    }
+
+    ::slotted([slot='menu-start'].is-active),
+    ::slotted([slot='menu-start'][aria-current='page']) {
+      font-weight: var(--ds-alias-text-weight-bold);
+      &::after {
+        background-color: var(--_navbar-menu-item-color-selected);
+      }
+    }
+
+    ::slotted(.link[slot='menu-start']:hover),
+    ::slotted(a[slot='menu-start']:hover) {
+      color: var(--_navbar-menu-item-color-hover);
+      --icon-color: var(--_navbar-menu-item-color-hover);
+      &::after {
+        background-color: var(--_navbar-menu-item-color-hover);
+      }
+    }
+
+    ::slotted(.link[slot='menu-start']:active),
+    ::slotted(a[slot='menu-start']:active) {
+      color: var(--_navbar-menu-item-color-active);
+      --icon-color: var(--_navbar-menu-item-color-active);
+      &::after {
+        background-color: var(--_navbar-menu-item-color-active);
+      }
+    }
+
+    //
+    // Focus styles for menu links
+
+    touch-action: manipulation;
+    transition-property: box-shadow;
+    transition-duration: var(--_navbar-menu-item-transition-duration);
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    ::slotted(.link[slot='menu-start']:focus-visible),
+    ::slotted(a[slot='menu-start']:focus-visible) {
+      box-shadow:
+        var(--_navbar-focus-color-start) 0 0 0 2px,
+        var(--_navbar-focus-color-end) 0 0 0 5px !important;
+    }
+  }
+
+  #menu-end {
+    display: flex;
+    gap: var(--_navbar-menu-end-gap);
+    justify-content: flex-end;
+    align-items: center;
+
+    // Link navbar button component variables to button slots
+    ::slotted(ds-button[slot='menu-end']),
+    ::slotted(.button[slot='menu-end']),
+    ::slotted(button[slot='menu-end']) {
+      --button-focus-shadow: var(--_navbar-focus-color-end);
+      --button-color-text: var(--_navbar-button-color-text);
+      --button-color-background: var(--_navbar-button-color-background);
+      --button-color-border: var(--_navbar-button-color-border);
+
+      --button-color-text-hover: var(--_navbar-button-color-text-hover);
+      --button-color-background-hover: var(--_navbar-button-color-background-hover);
+      --button-color-border-hover: var(--_navbar-button-color-border-hover);
+
+      --button-color-text-active: var(--_navbar-button-color-text-active);
+      --button-color-background-active: var(--_navbar-button-color-background-active);
+      --button-color-border-active: var(--_navbar-button-color-border-active);
+    }
+  }
+}
+
+/**
+ * Slot: Actions
+ * ─────────────────────────────────────────────────────
+ * Navigation links and action buttons. Hidden on mobile, inline on desktop.
+ */
+#actions {
+  display: flex;
+  gap: var(--_navbar-menu-end-gap);
+  justify-content: flex-end;
+  align-items: center;
+
+  // Link navbar button component variables to action buttons
+  ::slotted(ds-button[slot='actions']),
+  ::slotted(.button[slot='actions']),
+  ::slotted(button[slot='actions']) {
+    --button-focus-shadow: var(--_navbar-focus-color-end);
+    --button-color-text: var(--_navbar-button-color-text);
+    --button-color-background: var(--_navbar-button-color-background);
+    --button-color-border: var(--_navbar-button-color-border);
+
+    --button-color-text-hover: var(--_navbar-button-color-text-hover);
+    --button-color-background-hover: var(--_navbar-button-color-background-hover);
+    --button-color-border-hover: var(--_navbar-button-color-border-hover);
+
+    --button-color-text-active: var(--_navbar-button-color-text-active);
+    --button-color-background-active: var(--_navbar-button-color-background-active);
+    --button-color-border-active: var(--_navbar-button-color-border-active);
+  }
+}
+
+/**
+ * Light theme
+ * ─────────────────────────────────────────────────────
+ * Applies when light: true prop is set on the component
+ */
+
+:host(.is-light) {
+  --logo-color: var(--ds-navbar-light-title-color);
+  --mod-navbar-background: var(--ds-navbar-light-background);
+  --mod-navbar-title-color: var(--ds-navbar-light-title-color);
+
+  // Focus color overrides for light theme
+  --_navbar-focus-color-start: var(--ds-navbar-light-focus-color-start);
+  --_navbar-focus-color-end: var(--ds-navbar-light-focus-color-end);
+
+  --mod-navbar-menu-item-color: var(--ds-navbar-light-menu-item-color-base);
+  --mod-navbar-menu-item-color-hover: var(--ds-navbar-light-menu-item-color-hover);
+  --mod-navbar-menu-item-color-active: var(--ds-navbar-light-menu-item-color-active);
+  --mod-navbar-menu-item-color-selected: var(--ds-navbar-light-menu-item-color-selected);
+
+  --mod-navbar-sidebar-panel-border-top: var(--ds-navbar-light-sidebar-panel-border-top);
+
+  // Button component overrides for light theme (applies to hamburger, action buttons, and menu-end buttons)
+  --mod-navbar-button-color-text: var(--ds-navbar-light-button-color-text-base);
+  --mod-navbar-button-color-background: var(--ds-navbar-light-button-color-background-base);
+  --mod-navbar-button-color-border: var(--ds-navbar-light-button-color-border-base);
+
+  --mod-navbar-button-color-text-hover: var(--ds-navbar-light-button-color-text-hover);
+  --mod-navbar-button-color-background-hover: var(--ds-navbar-light-button-color-background-hover);
+  --mod-navbar-button-color-border-hover: var(--ds-navbar-light-button-color-border-hover);
+
+  --mod-navbar-button-color-text-active: var(--ds-navbar-light-button-color-text-active);
+  --mod-navbar-button-color-background-active: var(--ds-navbar-light-button-color-background-active);
+  --mod-navbar-button-color-border-active: var(--ds-navbar-light-button-color-border-active);
+}

@@ -49,8 +49,9 @@
     "@stencil/core": "^4.43.5",
     "big.js": "^7.0.1",
     "contactjs": "^2.1.7",
-    "dompurify": "^3.4.8",
+    "dompurify": "3.4.11",
     "filesize.js": "^2.0.0",
+    "focus-trap": "^8.2.1",
     "lodash": "^4.18.1",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
@@ -59,11 +60,11 @@
   },
   "devDependencies": {
     "@baloise/ds-playwright": "20.0.0-next.4",
-    "libs-output-target-angular": "0.0.0",
-    "libs-output-target-web": "0.0.0",
     "@types/luxon": "3.7.1",
     "compression": "1.8.1",
     "express": "5.2.1",
+    "libs-output-target-angular": "0.0.0",
+    "libs-output-target-web": "0.0.0",
     "serve-index": "1.9.2"
   },
   "sideEffects": false
