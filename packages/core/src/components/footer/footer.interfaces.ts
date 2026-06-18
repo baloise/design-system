@@ -1,3 +1,6 @@
+export const FOOTER_CONTAINERS = ['default', 'fluid', 'compact', ''] as const
+export type FooterContainer = (typeof FOOTER_CONTAINERS)[number]
+
 export interface FooterLink {
   label: string
   href: string

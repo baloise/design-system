@@ -42,7 +42,6 @@
   @include vars.local(footer-divider-color, var(--ds-footer-color-divider));
   @include vars.local(footer-content-max-width, var(--ds-footer-space-content-max-width));
   @include vars.local(footer-padding, var(--ds-footer-space-padding-base));
-  @include vars.local(footer-padding-tablet, var(--ds-footer-space-padding-tablet));
   @include vars.local(footer-content-padding-top, var(--ds-footer-space-content-padding-top));
   @include vars.local(footer-gap-row, var(--ds-footer-space-gap-row));
   @include vars.local(footer-gap-column, var(--ds-footer-space-gap-column));
@@ -67,8 +66,18 @@
 
 footer {
   margin: 0 auto;
-  max-width: var(--_footer-content-max-width);
-  padding: var(--_footer-padding);
+  padding-block: var(--_footer-padding);
+  padding-inline: var(--ds-alias-container-space-device);
+  width: 100%;
+  max-width: var(--ds-alias-container-width-base);
+
+  &.is-fluid {
+    max-width: var(--ds-alias-container-width-fluid);
+  }
+
+  &.is-compact {
+    max-width: var(--ds-alias-container-width-compact);
+  }
 }
 
 .top-row {
@@ -209,10 +218,6 @@ footer {
 }
 
 @include tablet {
-  footer {
-    padding: var(--_footer-padding-tablet);
-  }
-
   .bottom-row {
     align-items: start;
     grid-template-columns: 1fr;
