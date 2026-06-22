@@ -21,7 +21,7 @@ jobs:
     env:
       HUSKY: 0
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Git Identity
@@ -152,7 +152,7 @@ jobs:
       HUSKY: 0
     needs: [build]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Setup Node.JS
@@ -215,7 +215,7 @@ jobs:
       matrix:
         containers: [1, 2, 3, 4]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Setup Node.JS
@@ -283,7 +283,7 @@ jobs:
         apps: [v18, v19, v20]
     needs: [build]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Setup Node.JS
@@ -430,7 +430,7 @@ jobs:
         apps: [v19]
     needs: [build]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Setup Node.JS
@@ -617,7 +617,7 @@ jobs:
           echo "Branch from previous job: ${{ needs.assembleInformation.outputs.branch }}"
           echo "Action: ${{ needs.assembleInformation.outputs.action }}"
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 0
