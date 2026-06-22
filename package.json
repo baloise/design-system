@@ -89,7 +89,7 @@
     "sass": "1.101.0",
     "serve-index": "1.9.2",
     "storybook": "10.4.6",
-    "style-dictionary": "5.4.4",
+    "style-dictionary": "5.5.0",
     "svgo": "4.0.1",
     "tsx": "^4.22.4",
     "turbo": "2.9.18",
@@ -99,8 +99,8 @@
     "vitest": "4.1.9"
   },
   "optionalDependencies": {
-    "@oxc-parser/binding-linux-arm64-gnu": "0.136.0",
-    "@oxc-parser/binding-linux-x64-gnu": "0.136.0"
+    "@oxc-parser/binding-linux-arm64-gnu": "0.137.0",
+    "@oxc-parser/binding-linux-x64-gnu": "0.137.0"
   },
   "overrides": {
     "chokidar": "4.0.3",
