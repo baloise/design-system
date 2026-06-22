@@ -24,9 +24,6 @@
     "dist/",
     "loader/"
   ],
-  "scripts": {
-    "test:ui": "vitest --ui"
-  },
   "dependencies": {
     "@baloise/ds-styles": "19.10.0",
     "@baloise/ds-icons": "19.10.0",
