@@ -109,6 +109,21 @@
   @include local(#{$name}-focus, var(--ds-alias-interaction-focus-color-base));
 }
 
+@mixin focus-basic($name) {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border-radius: var(--ds-alias-radius-base);
+  touch-action: manipulation;
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
 @mixin focus-styles($name) {
   box-shadow:
     var(--ds-alias-interaction-focus-color-border) 0 0 0 2px,

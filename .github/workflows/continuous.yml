@@ -46,6 +46,18 @@ jobs:
       - name: Test
         run: npm run test
 
+      - name: Generate SBOM
+        if: github.event_name == 'push'
+        run: npx cyclonedx-npm --output-format JSON --output-file sbom.cdx.json
+
+      - name: Upload SBOM artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v7
+        with:
+          name: sbom
+          path: sbom.cdx.json
+          retention-days: 30
+
       - uses: ./.github/workflows/actions/upload-distribution-archives
 
   assembleInformation:

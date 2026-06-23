@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Method, Prop, State, h, Host } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation, ValidateEmptyOrOneOf } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -11,7 +11,13 @@ import {
   ListenToConfig,
   defaultConfig,
 } from '@global'
-import { FooterLanguageChangeDetail, FooterLink, FooterSocialLink } from './footer.interfaces'
+import {
+  FOOTER_CONTAINERS,
+  FooterContainer,
+  FooterLanguageChangeDetail,
+  FooterLink,
+  FooterSocialLink,
+} from './footer.interfaces'
 import { i18nDsFooter } from './footer.i18n'
 
 /**
@@ -50,6 +56,14 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
   @State() legalLinksConfig: { [key in DsLanguage]?: FooterLink[] } | undefined
   @State() legalTextConfig: string | undefined
   @State() socialLinksConfig: FooterSocialLink[] | undefined
+
+  /**
+   * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`.
+   * Matches the `ds-container` sizing variants.
+   */
+  @Prop()
+  @ValidateEmptyOrOneOf(FOOTER_CONTAINERS)
+  readonly container: FooterContainer = ''
 
   /**
    * If `true` the language selection will be hidden.
@@ -205,7 +219,12 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
 
     return (
       <Host>
-        <footer>
+        <footer
+          class={{
+            'is-fluid': this.container === 'fluid',
+            'is-compact': this.container === 'compact',
+          }}
+        >
           <div class="top-row">
             <div class="logo-area">{this.renderLogo()}</div>
 

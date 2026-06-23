@@ -10,6 +10,7 @@
     "access": "public"
   },
   "homepage": "https://baloise-design-system.vercel.app",
+  "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",
   "type": "module",
   "exports": {

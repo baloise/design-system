@@ -21,7 +21,7 @@ import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./componen
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
 import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
-import { FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
+import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -62,7 +62,7 @@ export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./componen
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
 export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
-export { FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
+export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -1106,6 +1106,11 @@ export namespace Components {
     interface DsFooter {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container": FooterContainer;
+        /**
           * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
           * @default false
          */
@@ -1960,6 +1965,11 @@ export namespace Components {
      */
     interface DsPopup {
         /**
+          * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+          * @default false
+         */
+        "arrow": boolean;
+        /**
           * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
           * @default false
          */
@@ -2018,7 +2028,7 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
-          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
           * @default undefined
          */
         "trapFocus": boolean | undefined;
@@ -5516,6 +5526,11 @@ declare namespace LocalJSX {
      */
     interface DsFooter {
         /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container"?: FooterContainer;
+        /**
           * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
           * @default false
          */
@@ -6412,6 +6427,11 @@ declare namespace LocalJSX {
      */
     interface DsPopup {
         /**
+          * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+          * @default false
+         */
+        "arrow"?: boolean;
+        /**
           * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
           * @default false
          */
@@ -6473,7 +6493,7 @@ declare namespace LocalJSX {
          */
         "role"?: PopupRole;
         /**
-          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled for role="dialog" and disabled for all other roles.
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
           * @default undefined
          */
         "trapFocus"?: boolean | undefined;
@@ -7956,6 +7976,7 @@ declare namespace LocalJSX {
         "autoInvalidOff": boolean;
     }
     interface DsFooterAttributes {
+        "container": FooterContainer;
         "hideLanguageSelection": boolean;
         "disableDefaultLinks": boolean;
         "disableDefaultSocialLinks": boolean;
@@ -8129,6 +8150,7 @@ declare namespace LocalJSX {
         "backdrop": boolean;
         "group": string | undefined;
         "label": string;
+        "arrow": boolean;
         "trapFocus": boolean | undefined;
     }
     interface DsProgressBarAttributes {

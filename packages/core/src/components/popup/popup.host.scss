@@ -10,6 +10,7 @@
  * @prop --popup-max-width: Maximum width of the popup panel.
  * @prop --popup-z-index: Z-index stacking level of the popup layer.
  * @prop --popup-backdrop-opacity: Opacity of the optional full-screen backdrop.
+ * @prop --popup-arrow-size: Size (width and height) of the arrow indicator.
  */
 
 // ─── Variables ────────────────────────────────────────────────────────────────
@@ -23,6 +24,7 @@
   @include vars.local(popup-max-width, none);
   @include vars.local(popup-z-index, var(--ds-popup-z-index));
   @include vars.local(popup-backdrop-opacity, var(--ds-backdrop-opacity));
+  @include vars.local(popup-arrow-size, var(--ds-popup-arrow-size, 8px));
 
   display: contents;
 }
@@ -64,6 +66,11 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+
+  outline: none !important;
+  &::-moz-focus-inner {
+    border: 0;
+  }
 }
 
 :host(.is-open) [part='panel'] {
@@ -84,6 +91,34 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+:host(.is-closable) [part='panel'] {
+  padding-right: calc(var(--_popup-padding) + var(--_popup-padding));
+}
+
+// ─── Arrow ────────────────────────────────────────────────────────────────────
+
+[part='arrow'] {
+  position: absolute;
+  width: var(--_popup-arrow-size);
+  height: var(--_popup-arrow-size);
+  background: var(--_popup-background);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+[part='panel'][data-placement='bottom'] [part='arrow'] {
+  top: calc(var(--_popup-arrow-size) / -2);
+}
+[part='panel'][data-placement='top'] [part='arrow'] {
+  bottom: calc(var(--_popup-arrow-size) / -2);
+}
+[part='panel'][data-placement='right'] [part='arrow'] {
+  left: calc(var(--_popup-arrow-size) / -2);
+}
+[part='panel'][data-placement='left'] [part='arrow'] {
+  right: calc(var(--_popup-arrow-size) / -2);
 }
 
 // ─── Reduced motion ───────────────────────────────────────────────────────────
