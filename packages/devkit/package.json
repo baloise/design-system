@@ -20,6 +20,6 @@
     "@angular-devkit/schematics": "^18.0.0",
     "@schematics/angular": "^18.0.0",
     "typescript": "~5.4.2",
-    "glob": "~10.3.10"
+    "glob": "^10.5.0"
   }
 }

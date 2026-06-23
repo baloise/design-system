@@ -9,7 +9,6 @@
     "packages/core/src/**/*.i18n.ts",
     "packages/core/src/**/*.data.ts",
     "packages/core/src/**/*.spec.ts",
-    "docs/stories/components/bal-select/code-sandbox/*",
     "docs/public/*",
     "docs/assets/*"
   ],
@@ -37,7 +36,6 @@
     "Chainable",
     "Chiudere",
     "clastzoo",
-    "codesandbox",
     "colorify",
     "Combi",
     "commitlint",
