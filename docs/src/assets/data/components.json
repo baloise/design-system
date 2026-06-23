@@ -20062,88 +20062,88 @@
       ],
       "styles": [
         {
-          "name": "--file-upload-label",
-          "docs": "family: Font family of the label text."
+          "name": "--file-upload-label-family",
+          "docs": "Font family of the label text."
         },
         {
-          "name": "--file-upload-label",
-          "docs": "weight: Font weight of the label text."
+          "name": "--file-upload-label-weight",
+          "docs": "Font weight of the label text."
         },
         {
-          "name": "--file-upload-label",
-          "docs": "size: Font size of the label text."
+          "name": "--file-upload-label-size",
+          "docs": "Font size of the label text."
         },
         {
-          "name": "--file-upload-label-line",
-          "docs": "height: Line height of the label text."
+          "name": "--file-upload-label-line-height",
+          "docs": "Line height of the label text."
         },
         {
-          "name": "--file-upload-drop-zone-border",
-          "docs": "color: Border color of the drop zone."
+          "name": "--file-upload-drop-zone-border-color",
+          "docs": "Border color of the drop zone."
         },
         {
-          "name": "--file-upload-drop-zone",
-          "docs": "background: Background color of the drop zone."
+          "name": "--file-upload-drop-zone-background",
+          "docs": "Background color of the drop zone."
         },
         {
-          "name": "--file-upload-drop-zone-hover",
-          "docs": "background: Background color on hover."
+          "name": "--file-upload-drop-zone-hover-background",
+          "docs": "Background color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-hover-border",
-          "docs": "color: Border color on hover."
+          "name": "--file-upload-drop-zone-hover-border-color",
+          "docs": "Border color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-hover-text",
-          "docs": "color: Text color on hover."
+          "name": "--file-upload-drop-zone-hover-text-color",
+          "docs": "Text color on hover."
         },
         {
-          "name": "--file-upload-drop-zone-active",
-          "docs": "background: Background color when active."
+          "name": "--file-upload-drop-zone-active-background",
+          "docs": "Background color when active."
         },
         {
-          "name": "--file-upload-drop-zone-active-border",
-          "docs": "color: Border color when active."
+          "name": "--file-upload-drop-zone-active-border-color",
+          "docs": "Border color when active."
         },
         {
-          "name": "--file-upload-drop-zone-active-text",
-          "docs": "color: Text color when active."
+          "name": "--file-upload-drop-zone-active-text-color",
+          "docs": "Text color when active."
         },
         {
-          "name": "--file-upload-drop-zone-focus-border",
-          "docs": "color: Border color when focused."
+          "name": "--file-upload-drop-zone-focus-border-color",
+          "docs": "Border color when focused."
         },
         {
-          "name": "--file-upload-drop-zone-disabled",
-          "docs": "background: Background color when disabled."
+          "name": "--file-upload-drop-zone-disabled-background",
+          "docs": "Background color when disabled."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-border",
-          "docs": "color: Border color when disabled."
+          "name": "--file-upload-drop-zone-disabled-border-color",
+          "docs": "Border color when disabled."
         },
         {
-          "name": "--file-upload-drop-zone-disabled-text",
-          "docs": "color: Text color when disabled."
+          "name": "--file-upload-drop-zone-disabled-text-color",
+          "docs": "Text color when disabled."
         },
         {
-          "name": "--file-upload-file-list",
-          "docs": "background: Background color of file list items."
+          "name": "--file-upload-file-list-background",
+          "docs": "Background color of file list items."
         },
         {
-          "name": "--file-upload-file-name",
-          "docs": "color: Text color of file names."
+          "name": "--file-upload-file-name-color",
+          "docs": "Text color of file names."
         },
         {
-          "name": "--file-upload-file-size",
-          "docs": "color: Text color of file sizes."
+          "name": "--file-upload-file-size-color",
+          "docs": "Text color of file sizes."
         },
         {
-          "name": "--file-upload-disabled-icon",
-          "docs": "color: Icon color when disabled."
+          "name": "--file-upload-disabled-icon-color",
+          "docs": "Icon color when disabled."
         },
         {
-          "name": "--file-upload-disabled-text",
-          "docs": "color: Text color when disabled."
+          "name": "--file-upload-disabled-text-color",
+          "docs": "Text color when disabled."
         }
       ],
       "slots": [],
@@ -21356,6 +21356,54 @@
       },
       "props": [
         {
+          "name": "container",
+          "type": "\"\" | \"compact\" | \"default\" | \"fluid\"",
+          "complexType": {
+            "original": "FooterContainer",
+            "resolved": "\"\" | \"compact\" | \"default\" | \"fluid\"",
+            "references": {
+              "FooterContainer": {
+                "location": "import",
+                "path": "./footer.interfaces",
+                "id": "src/components/footer/footer.interfaces.ts::FooterContainer",
+                "referenceLocation": "FooterContainer"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "container",
+          "reflectToAttr": false,
+          "docs": "Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`.\nMatches the `ds-container` sizing variants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "compact",
+              "type": "string"
+            },
+            {
+              "value": "default",
+              "type": "string"
+            },
+            {
+              "value": "fluid",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "disableDefaultLinks",
           "type": "boolean",
           "complexType": {
@@ -21750,8 +21798,8 @@
         {
           "name": "🧩 Component / Footer / Space / Padding / Base",
           "cssVarName": "--ds-footer-space-padding-base",
-          "value": "2rem 1rem 1.5rem",
-          "nativeValue": "2rem 1rem 1.5rem",
+          "value": "2rem",
+          "nativeValue": "2rem",
           "inheritance": [
             {
               "cssVar": "--ds-footer-space-padding-base",
@@ -21764,25 +21812,6 @@
             "Space",
             "Padding",
             "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Footer / Space / Padding / Tablet",
-          "cssVarName": "--ds-footer-space-padding-tablet",
-          "value": "2.5rem 2rem 1.75rem",
-          "nativeValue": "2.5rem 2rem 1.75rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-footer-space-padding-tablet",
-              "figmaName": "Component / Footer / Space / Padding / Tablet"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Footer",
-            "Space",
-            "Padding",
-            "Tablet"
           ]
         },
         {
@@ -37266,6 +37295,35 @@
       },
       "props": [
         {
+          "name": "arrow",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "arrow",
+          "reflectToAttr": false,
+          "docs": "If `true`, renders a small arrow indicator pointing from the panel toward the trigger.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "backdrop",
           "type": "boolean",
           "complexType": {
@@ -37616,7 +37674,7 @@
           "mutable": false,
           "attr": "trap-focus",
           "reflectToAttr": false,
-          "docs": "Override the automatic focus-trap behaviour.\nWhen undefined, trapping is enabled for role=\"dialog\" and disabled for all other roles.",
+          "docs": "Override the automatic focus-trap behaviour.\nWhen undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.",
           "docsTags": [
             {
               "name": "default",
@@ -37860,6 +37918,10 @@
         {
           "name": "--popup-backdrop-opacity",
           "docs": "Opacity of the optional full-screen backdrop."
+        },
+        {
+          "name": "--popup-arrow-size",
+          "docs": "Size (width and height) of the arrow indicator."
         }
       ],
       "slots": [
@@ -37869,6 +37931,10 @@
         }
       ],
       "parts": [
+        {
+          "name": "arrow",
+          "docs": ""
+        },
         {
           "name": "backdrop",
           "docs": "The optional full-screen backdrop overlay."
@@ -58454,32 +58520,7 @@
       "tag": "time-input",
       "type": "css-only",
       "docs": "Time Input provides a native HTML time input element with styled wrapper,\nintegrated form field support, and state styling. Supports disabled and validation states.",
-      "styles": [
-        {
-          "name": "--time-input-family",
-          "docs": "Font family of the time input control."
-        },
-        {
-          "name": "--time-input-weight",
-          "docs": "Font weight of the time input control."
-        },
-        {
-          "name": "--time-input-line-height",
-          "docs": "Line height of the time input control."
-        },
-        {
-          "name": "--time-input-size",
-          "docs": "Font size of the time input control."
-        },
-        {
-          "name": "--time-input-color",
-          "docs": "Text color of the time input control value."
-        },
-        {
-          "name": "--time-input-placeholder",
-          "docs": "Text color of the time input placeholder text."
-        }
-      ],
+      "styles": [],
       "tokens": [],
       "properties": [],
       "variants": [
@@ -58539,7 +58580,7 @@
       "path": "src/global/index.ts"
     },
     "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
-      "declaration": "\"\" | \"fluid\" | \"detail-page\" | \"compact\" | \"blog-page\" | \"wide\"",
+      "declaration": "\"\" | \"fluid\" | \"compact\" | \"detail-page\" | \"blog-page\" | \"wide\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
@@ -58887,6 +58928,11 @@
       "declaration": "any",
       "docstring": "",
       "path": "src/global/index.ts"
+    },
+    "src/components/footer/footer.interfaces.ts::FooterContainer": {
+      "declaration": "\"\" | \"default\" | \"fluid\" | \"compact\"",
+      "docstring": "",
+      "path": "src/components/footer/footer.interfaces.ts"
     },
     "src/components/footer/footer.interfaces.ts::FooterLanguageChangeDetail": {
       "declaration": "export interface FooterLanguageChangeDetail {\n  language: string\n}",
