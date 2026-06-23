@@ -5172,15 +5172,7 @@
         "Padding": {
           "Base": {
             "$type": "string",
-            "$value": "2rem 1rem 1.5rem",
-            "$extensions": {
-              "com.figma.type": "string",
-              "com.figma.isOverride": true
-            }
-          },
-          "Tablet": {
-            "$type": "string",
-            "$value": "2.5rem 2rem 1.75rem",
+            "$value": "2rem",
             "$extensions": {
               "com.figma.type": "string",
               "com.figma.isOverride": true

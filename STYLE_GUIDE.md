@@ -9,6 +9,7 @@ This is a quick reference for component code standards. For comprehensive detail
 - [Prop Validation](#prop-validation)
 - [Quick Reference Table](#quick-reference-table)
 - [Full Documentation](#full-documentation)
+- [Security](#security)
 - [Enforcement](#enforcement)
 
 ## Key Rules at a Glance
@@ -386,6 +387,31 @@ For detailed explanations, examples, and comprehensive guidelines, see:
 - **[Component Style Guide](docs/src/contributing/10-style-guide.mdx)** — Full reference with code examples
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** — Contribution workflow and testing requirements
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — System design, component patterns, and testing strategy
+
+## Security
+
+These rules enforce the component library's secure-by-default posture and are verified during code review and CodeQL analysis.
+
+**Never use `innerHTML` with unsanitized input.** Any HTML that originates from outside the component (consumer props, fetched content) must be passed through DOMPurify before rendering. The existing `sanitizeSvg` utility in `src/utils/svg.ts` is the pattern to follow.
+
+```ts
+// ✅ Correct — sanitize before setting innerHTML
+import DOMPurify from 'dompurify'
+element.innerHTML = DOMPurify.sanitize(externalHtml)
+
+// ❌ Wrong — direct assignment from untrusted source
+element.innerHTML = props.htmlContent
+```
+
+**Never use `eval`, `new Function`, or `setTimeout`/`setInterval` with a string argument.** These bypass CSP and open script injection paths. Use typed callbacks instead.
+
+**Never make default network requests.** Components must not initiate `fetch` or `XMLHttpRequest` calls on their own. The only exception is `ds-icon`, which fetches a consumer-provided SVG URL and immediately sanitizes the response with DOMPurify. New network calls require explicit justification and the same sanitization treatment.
+
+**Never write sensitive data to `localStorage` or `sessionStorage`.** The only permitted `localStorage` use is the animation preference flag (`DS_ANIMATION_KEY`), which stores a non-sensitive boolean. Authentication tokens, user identifiers, and PII must never be stored in web storage by design system components.
+
+**Never use inline event handler attributes.** Use `addEventListener` in `connectedCallback` / `disconnectedCallback` pairs. Inline handlers (`onclick="..."`) break CSP `script-src` policies.
+
+**Prefer semantic HTML over ARIA overrides.** A correct element (`<button>`, `<a>`, `<input>`) provides accessibility for free and reduces attack surface compared to a `<div>` with ARIA roles.
 
 ## Enforcement
 
