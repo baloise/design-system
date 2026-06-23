@@ -33,6 +33,6 @@
     "build": "tsc -p tsconfig.lib.json"
   },
   "devDependencies": {
-    "@types/google.maps": "3.65.1"
+    "@types/google.maps": "3.65.2"
   }
 }
