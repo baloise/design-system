@@ -602,7 +602,7 @@ jobs:
       HUSKY: 0
       CI: 1
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.61.0-noble
       options: --user 1001
     strategy:
       fail-fast: false
@@ -649,8 +649,18 @@ jobs:
 
       - name: Run Playwright tests
         run: npx nx run core:ci-e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: npx nx run core:ci-e2e -- --update-snapshots
         env:
           BAL_PLAYWRIGHT_TESTING: 'true'
+
+      # - name: Commit snapshots
+      #   if: always()
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     message: 'update snapshots'
+      #     add: '*.png'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Upload Playwright HTML report
         if: always()

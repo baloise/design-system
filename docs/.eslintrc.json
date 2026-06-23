@@ -34,8 +34,7 @@
               "@storybook/components",
               "@storybook/theming",
               "@storybook/addon-docs",
-              "@storybook/global",
-              "codesandbox"
+              "@storybook/global"
             ]
           }
         ]
