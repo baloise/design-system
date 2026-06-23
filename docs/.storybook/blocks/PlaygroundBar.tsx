@@ -1,7 +1,6 @@
 import React from 'react'
 import { Unstyled, useOf } from '@storybook/blocks'
 import { navigate } from '@storybook/addon-links'
-import { CodeSandbox } from './CodeSandbox'
 
 export const PlaygroundBar = ({ of, children }) => {
   const resolvedOf = useOf(of || 'story', ['story'])
@@ -17,7 +16,6 @@ export const PlaygroundBar = ({ of, children }) => {
         >
           Go to playground
         </a>
-        <CodeSandbox of={of} />
         {children}
       </div>
     </Unstyled>
