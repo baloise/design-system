@@ -135,7 +135,7 @@ jobs:
             [Check out the action on GitHub ↗︎](${{ needs.assembleInformation.outputs.action }})
 
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
