@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.10.1
+
+### Patch Changes
+
+- **core**: update deps ( [#1987](https://github.com/baloise/design-system/pull/1987))
+
 ## 19.10.0
 
 ### Minor Changes
