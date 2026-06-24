@@ -178,7 +178,7 @@ export class Button implements DsComponentInterface {
   /**
    * If `true` the button is inverted
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('boolean')
   readonly inverted: boolean = false
 
@@ -438,8 +438,8 @@ export class Button implements DsComponentInterface {
         onClick={this.handleHostClick}
         class={{
           'is-wide': this.wide,
-          [`is-${this.color}`]: this.color !== undefined,
-          [`is-${size}`]: this.size !== undefined,
+          [`is-${this.color || 'primary'}`]: true,
+          [`is-${size}`]: hasValue(size),
           [`is-inverted`]: this.inverted,
           [`is-disabled`]: this.disabled,
           [`is-loading`]: this.loading,

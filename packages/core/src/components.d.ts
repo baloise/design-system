@@ -2513,7 +2513,7 @@ export namespace Components {
         "alignment": StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default 'column'
+          * @default ''
          */
         "direction": StackDirection;
         /**
@@ -7025,7 +7025,7 @@ declare namespace LocalJSX {
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default 'column'
+          * @default ''
          */
         "direction"?: StackDirection;
         /**

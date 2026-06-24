@@ -59,7 +59,7 @@ export class Stack implements DsComponentInterface {
    */
   @Prop({ mutable: true })
   @OneOf(STACK_DIRECTIONS)
-  direction: StackDirection = 'column'
+  direction: StackDirection = ''
 
   /**
    * Defines the width of the stack to be exactly the width of the content.
@@ -148,8 +148,8 @@ export class Stack implements DsComponentInterface {
           'stack': true,
           'as-row': this.direction === 'row',
           'as-col': this.direction === 'column',
-          'has-wrap': hasValue(this.useWrap),
-          'fit-content': hasValue(this.fitContent),
+          'has-wrap': this.useWrap === true,
+          'fit-content': this.fitContent === true,
           [`align-${alignValue}`]: align || alignment,
           [`has-space-${space}`]: hasValue(this.space),
           [`has-space-row-${spaceRow}`]: hasValue(this.spaceRow),
