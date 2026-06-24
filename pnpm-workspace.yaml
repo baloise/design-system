@@ -4,5 +4,11 @@ packages:
   - 'docs'
 
 linkWorkspacePackages: true
-# onlyBuiltDependencies is populated after the first `pnpm install`
-# (see docs/migrations/npm-to-pnpm.md — Phase 4).
+
+# Dependency lifecycle scripts are blocked by default in pnpm 10.
+# These native-build packages are explicitly allowed to run their scripts.
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - esbuild
+  - libxmljs2

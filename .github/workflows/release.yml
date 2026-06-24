@@ -39,13 +39,13 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Audit dependencies
-        run: npm audit --audit-level=high
+        run: pnpm audit --audit-level high
 
       - name: Build
-        run: npx turbo run build
+        run: pnpm exec turbo run build
 
       - name: Pre-Publish
         run: node scripts/pre-publish.mjs
@@ -71,13 +71,13 @@ jobs:
           echo "🏷️  Tag: v${{ steps.package-version.outputs.current-version }}"
           echo ""
           echo "📤 NPM Publish (Dry Run):"
-          npm publish --workspaces --tag next --dry-run
+          pnpm -r publish --tag next --dry-run --no-git-checks
 
       - name: Commit release
         if: ${{ !inputs.dry-run }}
         uses: EndBug/add-and-commit@v10
         with:
-          add: "['package-lock.json', 'CHANGELOG.md']"
+          add: "['pnpm-lock.yaml', 'CHANGELOG.md']"
           message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
           tag: 'v${{ steps.package-version.outputs.current-version }}'
         env:
@@ -89,7 +89,7 @@ jobs:
       # machine-readable software composition data with each release.
       - name: Generate SBOM
         if: ${{ !inputs.dry-run }}
-        run: npx cyclonedx-npm --output-format JSON --output-file sbom.cdx.json
+        run: pnpm exec cdxgen -t pnpm -o sbom.cdx.json
 
       # Copies the SBOM into each published package directory and adds it to the package's
       # "files" allowlist so npm includes it in the tarball. This is done at release time
@@ -125,4 +125,4 @@ jobs:
 
       - name: Publish
         if: ${{ !inputs.dry-run }}
-        run: npm publish --workspaces --tag next
+        run: pnpm -r publish --tag next --no-git-checks

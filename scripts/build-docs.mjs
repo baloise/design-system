@@ -291,7 +291,7 @@ async function createArchives() {
 function buildStorybook() {
   console.log('📚 Building Storybook...')
   try {
-    execSync('npx storybook build -o ./dist --quiet --disable-telemetry', {
+    execSync('pnpm exec storybook build -o ./dist --quiet --disable-telemetry', {
       cwd: docsRoot,
       stdio: 'inherit',
     })
