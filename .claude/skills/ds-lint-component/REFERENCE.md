@@ -48,11 +48,12 @@ Only include sections that have content:
 
 ### Decorator Pattern
 
-Every `@Prop()` must have a `@Validate*` decorator directly above it:
+Every `@Prop()` should have a validation decorator directly above it. Validation runs automatically
+on load and whenever the prop changes — there is **no** `setupValidation` call and no lifecycle wiring:
 
 ```tsx
 @Prop()
-@ValidateEmptyOrType('string')
+@Type('string')
 readonly label: string = ''
 ```
 
@@ -60,13 +61,17 @@ readonly label: string = ''
 
 Match the validator to the prop type:
 
-| Prop Type  | Validator                                 | Condition                                                |
-| ---------- | ----------------------------------------- | -------------------------------------------------------- |
-| `string`   | `ValidateEmptyOrType('string')`           | Always                                                   |
-| `number`   | `ValidateEmptyOrType('number')`           | Always                                                   |
-| `boolean`  | `ValidateEmptyOrType('boolean')`          | Always                                                   |
-| `EnumType` | `ValidateEmptyOrOneOf(...ENUM_CONST)`     | When optional (default is `''` or `undefined`)           |
-| `EnumType` | `ValidateRequiredAndOneOf(...ENUM_CONST)` | **Only** when default is never empty (e.g., `'primary'`) |
+| Prop Type  | Validator            | Condition |
+| ---------- | -------------------- | --------- |
+| `string`   | `@Type('string')`    | Always    |
+| `number`   | `@Type('number')`    | Always    |
+| `boolean`  | `@Type('boolean')`   | Always    |
+| `EnumType` | `@OneOf(ENUM_CONST)` | Always    |
+
+`@OneOf` takes the const array directly (not spread): `@OneOf(BUTTON_SIZES)`.
+
+For a **required** prop (must never be empty), add `@Required()` above the type/enum check. Empty
+values (`undefined`, `null`, `''`, `NaN`) are skipped by every validator except `@Required()`.
 
 ### Type Matching Examples
 
@@ -74,27 +79,28 @@ Match the validator to the prop type:
 
 ```tsx
 @Prop()
-@ValidateEmptyOrType('string')
+@Type('string')
 readonly name: string = ''
 
 @Prop()
-@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+@OneOf(BUTTON_SIZES)
 readonly size: ButtonSize = ''
 
 @Prop({ reflect: true })
-@ValidateRequiredAndOneOf(...BUTTON_COLORS)
-readonly color: ButtonColor = 'primary'  // default is never empty
+@Required()
+@OneOf(BUTTON_COLORS)
+readonly color: ButtonColor = 'primary'
 ```
 
 **✗ Incorrect:**
 
 ```tsx
 @Prop()
-@ValidateEmptyOrType('boolean')  // ← type mismatch (prop is string)
+@Type('boolean')  // ← type mismatch (prop is string)
 readonly name: string = ''
 
 @Prop()
-@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+@OneOf(BUTTON_SIZES)
 readonly text: string = ''  // ← validator doesn't match type (string, not enum)
 ```
 
@@ -113,43 +119,14 @@ export type ButtonColor = (typeof BUTTON_COLORS)[number]
 
 **Naming convention:** `TypeName` → `TYPE_NAMEs` (capitalized type becomes ALL_CAPS plural const).
 
-### setupValidation() Calls
-
-Every component with `@Prop()` decorators must call `setupValidation(this)` in:
-
-1. `connectedCallback()` — Called when element is attached to DOM
-2. `componentWillUpdate()` — Called before props update
-
-```tsx
-connectedCallback(): void {
-  setupValidation(this)  // ← REQUIRED
-  // other initialization
-}
-
-componentWillUpdate(): void {
-  setupValidation(this)  // ← REQUIRED
-  // other update logic
-}
-```
-
-### Auto-Creating Lifecycle Hooks
-
-If a component has `@Prop()` decorators but missing `connectedCallback()` or `componentWillUpdate()`:
-
-- **Auto-create both hooks** with `setupValidation(this)` call
-- Place in correct position (after PRIVATE PROPERTY API section, before other lifecycle methods or methods)
-- Do **not** create if component has zero `@Prop()` declarations
-
 ---
 
 ## Validation Errors & Warnings
 
 ### Errors (Phase 1 always reports)
 
-- Missing `@Validate*` decorator on `@Prop()`
-- Missing `setupValidation(this)` in `connectedCallback()`
-- Missing `setupValidation(this)` in `componentWillUpdate()`
-- Validator type mismatch (e.g., `ValidateEmptyOrType('boolean')` on a string prop)
+- Missing validation decorator (`@Type`/`@OneOf`) on `@Prop()`
+- Validator type mismatch (e.g., `@Type('boolean')` on a string prop)
 - Divider comment formatting incorrect or misplaced
 
 ### Warnings (Phase 1 reports but Phase 2 may skip)
@@ -177,7 +154,7 @@ readonly config: SomeObject = {}  // ← Cannot auto-validate
 
 ```tsx
 @Prop()
-@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+@OneOf(BUTTON_SIZES)
 readonly size: ButtonSize = ''  // ← If BUTTON_SIZES not found in interfaces.ts, warn
 ```
 
@@ -214,7 +191,7 @@ readonly label: string = ''
 
 // After
 @Prop()
-@ValidateEmptyOrType('string')
+@Type('string')
 readonly label: string = ''
 ```
 
@@ -223,74 +200,21 @@ readonly label: string = ''
 ```tsx
 // Before
 @Prop()
-@ValidateEmptyOrType('number')  // ← wrong type
+@Type('number')  // ← wrong type
 readonly size: ButtonSize = ''
 
 // After
 @Prop()
-@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+@OneOf(BUTTON_SIZES)
 readonly size: ButtonSize = ''
-```
-
-### setupValidation() Calls
-
-**Add missing calls:**
-
-```tsx
-// Before
-connectedCallback(): void {
-  // no setupValidation call
-}
-
-// After
-connectedCallback(): void {
-  setupValidation(this)
-  // other logic
-}
-```
-
-**Create missing lifecycle hooks:**
-
-```tsx
-// Before
-@Component({ tag: 'ds-example', shadow: true })
-export class Example {
-  @Prop()
-  @ValidateEmptyOrType('string')
-  readonly label: string = ''
-
-  render() {
-    /* ... */
-  }
-}
-
-// After
-@Component({ tag: 'ds-example', shadow: true })
-export class Example {
-  @Prop()
-  @ValidateEmptyOrType('string')
-  readonly label: string = ''
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
-
-  render() {
-    /* ... */
-  }
-}
 ```
 
 ### Imports
 
-When adding validators or `setupValidation`:
+When adding validators:
 
 - Verify `@utils` import exists
-- Add to existing import if already imported: `import { setupValidation, ValidateEmptyOrType, ... } from '@utils'`
+- Add to existing import if already imported: `import { Type, OneOf, ... } from '@utils'`
 - Do **not** create new imports; add to existing `@utils` import
 
 ---
@@ -327,11 +251,9 @@ component-name/
 ├─ component.tsx
 │  ✓ Dividers: Present sections correctly ordered
 │  ✓ Props: All N props have validators
-│  ✓ setupValidation: Called in connectedCallback() and componentWillUpdate()
 ├─ sub-component.tsx
 │  ⚠ Dividers: PUBLIC METHODS section missing (but @Method() present)
-│  ✗ Props: "size" (ButtonSize) has ValidateEmptyOrType('string') — type mismatch
-│  ✗ setupValidation: Missing from componentWillUpdate()
+│  ✗ Props: "size" (ButtonSize) has @Type('string') — type mismatch
 ```
 
 ### Phase 2 Output (Fix)
@@ -339,12 +261,8 @@ component-name/
 Summary of changes:
 
 ```
-✓ carousel/carousel.tsx
-  • Added setupValidation() to componentWillUpdate()
-  • Created connectedCallback() with setupValidation()
-
 ✓ carousel/carousel-item.tsx
   • Added PUBLIC LISTENERS divider comment
-  • Fixed validator: "value" now ValidateEmptyOrType('string')
-  • Added @ValidateEmptyOrOneOf(...) to "size" prop
+  • Fixed validator: "value" now @Type('string')
+  • Added @OneOf(BUTTON_SIZES) to "size" prop
 ```

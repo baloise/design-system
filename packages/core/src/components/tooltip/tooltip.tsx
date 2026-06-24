@@ -2,7 +2,7 @@ import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/d
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, ValidateEmptyOrOneOf, dsBrowser, setupValidation } from '@utils'
+import { Logger, type LogInstance, dsBrowser, OneOf } from '@utils'
 import {
   TOOLTIP_PLACEMENTS,
   type TooltipPlacement,
@@ -58,7 +58,7 @@ export class Tooltip implements DsComponentInterface {
    * Preferred placement of the tooltip relative to the trigger.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOOLTIP_PLACEMENTS)
+  @OneOf(TOOLTIP_PLACEMENTS)
   readonly placement: TooltipPlacement = 'bottom'
 
   /**
@@ -97,19 +97,6 @@ export class Tooltip implements DsComponentInterface {
    * Emitted after the animation has finished.
    */
   @Event() dsDidAnimate!: EventEmitter<TooltipDidAnimateDetail>
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth)

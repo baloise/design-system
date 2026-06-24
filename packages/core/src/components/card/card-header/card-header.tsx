@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, LogInstance, ValidateRequiredAndOneOf, setupValidation } from '@utils'
+import { Logger, LogInstance, OneOf, Required } from '@utils'
 import { DsComponentInterface } from '@global'
 import { CARD_HEADER_DIRECTIONS, CardHeaderDirection } from '../card.interfaces'
 
@@ -26,16 +26,9 @@ export class CardHeader implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   @Prop()
-  @ValidateRequiredAndOneOf(...CARD_HEADER_DIRECTIONS)
+  @Required()
+  @OneOf(CARD_HEADER_DIRECTIONS)
   readonly direction: CardHeaderDirection = 'row'
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   render() {
     return (

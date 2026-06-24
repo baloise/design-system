@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   STACK_LAYOUTS,
@@ -51,7 +43,7 @@ export class Stack implements DsComponentInterface {
    * Defines the text positioning like center, right or default to start.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
+  @OneOf(STACK_ALIGNMENTS)
   readonly align: StackAlignment = ''
 
   /**
@@ -59,28 +51,28 @@ export class Stack implements DsComponentInterface {
    * Please use align instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
+  @OneOf(STACK_ALIGNMENTS)
   readonly alignment: StackAlignment = ''
 
   /**
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_DIRECTIONS)
+  @OneOf(STACK_DIRECTIONS)
   direction: StackDirection = 'column'
 
   /**
    * Defines the width of the stack to be exactly the width of the content.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly fitContent: boolean = false
 
   /**
    * **Deprecated:** Use direction instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
+  @OneOf(STACK_LAYOUTS)
   readonly layout: StackLayout = ''
   @Watch('layout')
   layoutChanged(newValue: StackLayout) {
@@ -101,7 +93,7 @@ export class Stack implements DsComponentInterface {
    * Defines the padding of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  @OneOf(STACK_PADDINGS)
   p?: StackPadding
   @Watch('p')
   pChanged(newValue?: StackPadding) {
@@ -112,7 +104,7 @@ export class Stack implements DsComponentInterface {
    * Defines the horizontal padding left and right of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  @OneOf(STACK_PADDINGS)
   px?: StackPadding
   @Watch('px')
   pxChanged(newValue?: StackPadding) {
@@ -123,7 +115,7 @@ export class Stack implements DsComponentInterface {
    * Defines the vertical padding top and bottom of the stack element.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
+  @OneOf(STACK_PADDINGS)
   py?: StackPadding
   @Watch('py')
   pyChanged(newValue?: StackPadding) {
@@ -134,7 +126,7 @@ export class Stack implements DsComponentInterface {
    * Defines the space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  @OneOf(STACK_SPACES)
   space: StackSpace = 'base'
   @Watch('space')
   spaceChanged(newValue: StackSpace) {
@@ -145,7 +137,7 @@ export class Stack implements DsComponentInterface {
    * Defines the column space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  @OneOf(STACK_SPACES)
   spaceColumn?: StackSpace
   @Watch('spaceColumn')
   spaceColumnChanged(newValue?: StackSpace) {
@@ -156,7 +148,7 @@ export class Stack implements DsComponentInterface {
    * Defines the row space between the child elements.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
+  @OneOf(STACK_SPACES)
   spaceRow?: StackSpace
   @Watch('spaceRow')
   spaceRowChanged(newValue?: StackSpace) {
@@ -167,7 +159,7 @@ export class Stack implements DsComponentInterface {
    * Defines if the child elements will wrap to the next line if there is not enough space left.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly useWrap: boolean = false
 
   /**
@@ -176,7 +168,6 @@ export class Stack implements DsComponentInterface {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.layoutChanged(this.layout)
     this.spaceChanged(this.space)
     this.spaceRowChanged(this.spaceRow)

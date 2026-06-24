@@ -1,16 +1,5 @@
 import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State, Watch } from '@stencil/core'
-import {
-  stopEventBubbling,
-  raf,
-  sanitizeSvg,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateRequiredAndType,
-  ValidateEmptyOrType,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { stopEventBubbling, raf, sanitizeSvg, Logger, type LogInstance, hasValue, OneOf, Required, Type } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import {
@@ -59,35 +48,37 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOAST_COLORS)
+  @OneOf(TOAST_COLORS)
   readonly color: ToastColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly heading!: string
 
   /**
    * Defines the message of the notification as html content
    */
   @Prop()
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly message!: string
 
   /**
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
@@ -98,7 +89,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
@@ -109,28 +100,28 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOAST_TARGETS)
+  @OneOf(TOAST_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly actionHref: string = ''
 
   /**
@@ -198,13 +189,8 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.generateIconName()
     this.generateSvgContent()
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   componentDidLoad(): void {

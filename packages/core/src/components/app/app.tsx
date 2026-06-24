@@ -1,16 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  dsBrowser,
-  dsDevice,
-  debounce,
-  rIC,
-  rOnLoad,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
+import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Logger, type LogInstance, Type } from '@utils'
 import { DsComponentInterface, updateDsAnimated, updateDsLogger } from '@global'
 import { startFocusVisible } from './app.focus.util'
 
@@ -41,14 +31,14 @@ export class App implements DsComponentInterface {
    * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly animated: boolean = true
 
   /**
    * @internal Is `true` when DS components are ready to be shown.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   ready: boolean = false
 
   /**
@@ -62,8 +52,6 @@ export class App implements DsComponentInterface {
   @Event() dsAppReady!: EventEmitter<void>
 
   connectedCallback() {
-    setupValidation(this)
-
     if (this.animated === false) {
       updateDsAnimated(this.animated)
     }
@@ -76,10 +64,6 @@ export class App implements DsComponentInterface {
       window.addEventListener('resize', this.debouncedNotify)
       this.debouncedNotify()
     }
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   componentDidLoad() {

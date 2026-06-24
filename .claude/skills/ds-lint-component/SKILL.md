@@ -51,16 +51,15 @@ Output: Summary of changes written to files.
 
 **Prop Validation**
 
-- Every `@Prop()` has a matching `@Validate*` decorator
-- Validator type matches prop type (string → `ValidateEmptyOrType('string')`, enum → `ValidateEmptyOrOneOf(...)`)
-- `setupValidation(this)` called in both `connectedCallback()` and `componentWillUpdate()`
+- Every `@Prop()` has a matching validation decorator (`@Type` / `@OneOf`)
+- Validator type matches prop type (string → `@Type('string')`, enum → `@OneOf(CONST_ARRAY)`)
 
 **Type Matching Rules**
 
-- Primitive props → `ValidateEmptyOrType('string'|'number'|'boolean')`
-- Enum props → `ValidateEmptyOrOneOf(...CONST_ARRAY)` via `.interfaces.ts`
+- Primitive props → `@Type('string'|'number'|'boolean')`
+- Enum props → `@OneOf(CONST_ARRAY)` via `.interfaces.ts`
 - Complex types (union, object) → Flagged as unable to validate; manual review required
-- `Required*` validators allowed only when prop default is never empty
+- Required props → add `@Required()` above the `@Type`/`@OneOf` check
 
 ## Workflow
 
@@ -77,14 +76,12 @@ Scans component and sub-components (e.g., `carousel` scans `carousel/carousel.ts
   ✓ Documentation: All props, events, methods documented
   ✓ Dividers: Present sections correctly ordered
   ✓ Props: All 12 props have validators
-  ✓ setupValidation: Called in connectedCallback() and componentWillUpdate()
 
 ⚠ carousel/carousel-item.tsx
   ⚠ Missing JSDoc documentation for @Prop "disabled"
   ⚠ Missing JSDoc documentation for @Event "dsChange"
   ✗ Dividers: PUBLIC LISTENERS section missing (but @Listen() methods present)
-  ✗ Props: "value" (string) has ValidateEmptyOrType('number') — type mismatch
-  ✗ setupValidation: Missing from componentWillUpdate()
+  ✗ Props: "value" (string) has @Type('number') — type mismatch
 ```
 
 ### Phase 2: Fix (Auto-Correct)
@@ -97,23 +94,17 @@ Auto-corrects issues:
 
 - ✅ Adds missing JSDoc comments for `@Prop`, `@Event`, and `@Method` decorators
 - ✅ Adds/fixes divider comments with correct formatting
-- ✅ Adds missing `@Validate*` decorators (matches types via `.interfaces.ts`)
-- ✅ Adds/fixes `setupValidation(this)` calls
-- ✅ Creates `connectedCallback()` or `componentWillUpdate()` if needed (when component has props)
+- ✅ Adds missing `@Type`/`@OneOf` decorators (matches types via `.interfaces.ts`)
 - ✅ Writes changes to `.tsx` files
 
 Reports summary of changes:
 
 ```
-✓ carousel/carousel.tsx
-  • Added setupValidation() to componentWillUpdate()
-
 ✓ carousel/carousel-item.tsx
   • Added JSDoc for @Prop "disabled"
   • Added JSDoc for @Event "dsChange"
   • Added PUBLIC LISTENERS divider comment
-  • Fixed validator: "value" now ValidateEmptyOrType('string')
-  • Created connectedCallback() with setupValidation()
+  • Fixed validator: "value" now @Type('string')
 ```
 
 ## Examples
@@ -137,48 +128,6 @@ ds-lint-component carousel
 ```
 
 Reports violations in both `carousel/carousel.tsx` and `carousel/carousel-item.tsx`.
-
-### Example 3: Fix with Auto-Create Lifecycle Hook
-
-If a component has props but no `connectedCallback()`, `--fix` creates it:
-
-**Before:**
-
-```tsx
-@Component({ tag: 'ds-example', shadow: true })
-export class Example {
-  @Prop()
-  @ValidateEmptyOrType('string')
-  readonly label: string = ''
-
-  render() {
-    /* ... */
-  }
-}
-```
-
-**After:**
-
-```tsx
-@Component({ tag: 'ds-example', shadow: true })
-export class Example {
-  @Prop()
-  @ValidateEmptyOrType('string')
-  readonly label: string = ''
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
-
-  render() {
-    /* ... */
-  }
-}
-```
 
 ## Warnings & Limitations
 

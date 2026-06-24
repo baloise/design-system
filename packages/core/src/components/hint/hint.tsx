@@ -6,10 +6,9 @@ import {
   ListenToBreakpoints,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
   isEscapeKey,
-  setupValidation,
+  OneOf,
+  Type,
 } from '@utils'
 import {
   DsComponentInterface,
@@ -67,7 +66,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
    * Preferred placement of the popup panel on desktop viewports.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...POPUP_PLACEMENTS)
+  @OneOf(POPUP_PLACEMENTS)
   readonly placement: PopupPlacement = 'right'
 
   /**
@@ -75,7 +74,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
    * When provided, renders in the title section without needing a named slot.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string | undefined = undefined
 
   /**
@@ -83,7 +82,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
    * When omitted the label is localised from the language config.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly closeLabel: string | undefined = undefined
 
   /**
@@ -91,21 +90,8 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
    * When omitted the label is localised from the language config.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly triggerLabel: string | undefined = undefined
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   componentDidLoad(): void {
     this.wirePopupTrigger()

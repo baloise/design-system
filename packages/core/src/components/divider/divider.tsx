@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-  hasValue,
-} from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   DividerLayout,
@@ -49,14 +41,14 @@ export class Divider implements DsComponentInterface {
    * are showed verticaly or horizontally. Default is verticaly.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DIVIDER_LAYOUTS)
+  @OneOf(DIVIDER_LAYOUTS)
   readonly layout: DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...DIVIDER_SPACES)
+  @OneOf(DIVIDER_SPACES)
   space: DividerSpace = 'none'
   @Watch('space')
   spaceChanged(newValue: DividerSpace) {
@@ -67,23 +59,18 @@ export class Divider implements DsComponentInterface {
    * Defines the color of the separator line.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...DIVIDER_COLORS)
+  @OneOf(DIVIDER_COLORS)
   readonly color: DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly dashed: boolean = false
 
   connectedCallback(): void {
-    setupValidation(this)
     this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   /**

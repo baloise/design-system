@@ -8,10 +8,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
   hasValue,
+  OneOf,
+  Type,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
@@ -60,28 +59,28 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    * Name of the baloise icon.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly name: string = ''
 
   /**
    * Svg content.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly svg: string = ''
 
   /**
    * URL of an SVG file to fetch and display.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly src: string = ''
 
   /**
    * Defines the size of the icon.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrOneOf(...ICON_SIZES)
+  @OneOf(ICON_SIZES)
   size: IconSize
   @Watch('size')
   sizeChanged(newValue: IconSize) {
@@ -92,70 +91,70 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    * The theme type of the button.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ICON_COLORS)
+  @OneOf(ICON_COLORS)
   readonly color?: IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ICON_SHAPES)
+  @OneOf(ICON_SHAPES)
   readonly shape: IconShape = ''
 
   /**
    * If `true` the icon acts as a tile with a background color.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ICON_TILE_COLORS)
+  @OneOf(ICON_TILE_COLORS)
   readonly tileColor: IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inline: boolean = false
 
   /**
    * If `true` the icon is inverted
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly turn: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -164,15 +163,10 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    */
 
   connectedCallback() {
-    setupValidation(this)
     // generateSvgContent is async; for src-based icons the first render shows nothing
     // while the fetch is in flight. The @State update triggers a follow-up render.
     this.generateSvgContent(this.name)
     this.size = normalizeDeprecatedTShirtSize(this.size) || ''
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   async componentWillRender(): Promise<void> {

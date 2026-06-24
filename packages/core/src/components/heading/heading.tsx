@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  dsBrowser,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
-  setupValidation,
-  hasValue,
-} from '@utils'
+import { dsBrowser, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   HEADING_COLORS,
   HEADING_LEVELS,
@@ -63,7 +55,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...HEADING_LEVELS)
+  @OneOf(HEADING_LEVELS)
   readonly level: HeadingLevel = 'h1'
 
   @Watch('level')
@@ -77,7 +69,7 @@ export class Heading implements DsComponentInterface {
    * but still keep it h1 in the markup.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
+  @OneOf(HEADING_VISUAL_LEVELS)
   readonly visualLevel: HeadingVisualLevel = ''
 
   @Watch('visualLevel')
@@ -89,7 +81,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...HEADING_VISUAL_LEVELS)
+  @OneOf(HEADING_VISUAL_LEVELS)
   readonly autoLevel: HeadingVisualLevel = ''
 
   @Watch('autoLevel')
@@ -103,42 +95,42 @@ export class Heading implements DsComponentInterface {
    * as these elements require a width to overflow.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly subtitle: boolean = false
 
   /**
    * Defines at which position the heading has spacing.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...HEADING_SPACES)
+  @OneOf(HEADING_SPACES)
   readonly space: HeadingSpace = ''
 
   /**
    * The theme type of the toast.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...HEADING_COLORS)
+  @OneOf(HEADING_COLORS)
   readonly color: HeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
@@ -147,12 +139,7 @@ export class Heading implements DsComponentInterface {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.updateAutoFontSize()
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   componentDidRender(): void {

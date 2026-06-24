@@ -1,14 +1,6 @@
 import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import {
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -49,7 +41,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf(...CLOSE_SIZES)
+  @OneOf(CLOSE_SIZES)
   size: CloseSize = ''
   @Watch('size')
   sizeChanged(newValue: CloseSize) {
@@ -60,14 +52,14 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * If `true` it supports dark backgrounds.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -75,14 +67,14 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly button: boolean = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
+  @OneOf(BUTTON_COLORS)
   readonly buttonColor: ButtonColor = ''
 
   /**
@@ -93,14 +85,6 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   async configChanged(state: DsConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
-  }
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   render() {

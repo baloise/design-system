@@ -1,8 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance } from '@utils'
-import { ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, Type } from '@utils'
 
 /**
  * Data displays a list of label-value pairs in a organized, accessible format.
@@ -29,22 +28,8 @@ export class Data implements DsComponentInterface {
    * If `true` the data list is horizontal instead of vertical.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly horizontal: boolean = false
-
-  connectedCallback(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
-  private validateProps(): void {
-    // Validation delegated to @Prop decorators and setupValidation
-  }
 
   render() {
     return (

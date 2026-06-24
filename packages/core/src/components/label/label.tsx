@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  ElementStateInfo,
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
+import { ElementStateInfo, normalizeDeprecatedTShirtSize, Logger, type LogInstance, OneOf, Type } from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -54,7 +46,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -63,28 +55,28 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * So, any given label element can be associated with only one form control.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly htmlFor: string = ''
 
   /**
    * Define the id of the native label element
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly htmlId: string = `ds-lbl-${labelIds++}`
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly hovered: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -93,14 +85,14 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * as these elements require a width to overflow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly pressed: boolean = false
 
   /**
@@ -108,7 +100,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * `false` an optional label is added to the label..
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = true
 
   /**
@@ -116,7 +108,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * with the form fields.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...LABEL_SIZES)
+  @OneOf(LABEL_SIZES)
   size?: LabelSize
   @Watch('size')
   sizeChanged(newValue: LabelSize) {
@@ -127,7 +119,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * If `true` the component gets a valid green style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly valid: boolean = false
 
   /**
@@ -136,12 +128,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   /**

@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, ValidateEmptyOrType, ValidateRequiredAndType, setupValidation } from '@utils'
+import { Logger, type LogInstance, Required, Type } from '@utils'
 
 /**
  * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
@@ -34,28 +34,28 @@ export class Step implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('number')
+  @Type('number')
   activeIndex: number = 0
 
   /**
    * If `true`, the step cannot be selected.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true`, the step is completed. Shows a checkmark icon in the circle.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly done: boolean = false
 
   /**
    * If `true`, the step is hidden from the layout.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly hidden: boolean = false
 
   /**
@@ -63,28 +63,29 @@ export class Step implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('number')
+  @Type('number')
   index: number = 0
 
   /**
    * If `true`, the step has an error. Shows an exclamation mark in the circle.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * Visible text label displayed below the circle.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * Unique name that links this step to a ds-step-panel[for] of the same value.
    */
   @Prop({ reflect: true })
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly name!: string
 
   /**
@@ -92,7 +93,7 @@ export class Step implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   navigation: boolean = false
 
   /**
@@ -100,7 +101,7 @@ export class Step implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   selected: boolean = false
 
   /**
@@ -108,33 +109,17 @@ export class Step implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   vertical: boolean = false
 
   /**
    * Emitted when the user clicks this step (panels mode only).
    */
   @Event() dsStepSelect!: EventEmitter<{ name: string }>
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * PROPERTY VALIDATION
    * ------------------------------------------------------
    */
-
-  // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
    * EVENT HANDLERS

@@ -1,8 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance } from '@utils'
-import { ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, Type } from '@utils'
 
 /**
  * DataLabel is a label element for use within ds-data-item.
@@ -29,22 +28,8 @@ export class DataLabel implements DsComponentInterface {
    * If `true` an asterisk is added after the label.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = false
-
-  connectedCallback(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
-  private validateProps(): void {
-    // Validation delegated to @Prop decorators and setupValidation
-  }
 
   render() {
     return (

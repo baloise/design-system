@@ -9,10 +9,9 @@ import {
   raf,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
   hasValue,
+  OneOf,
+  Type,
 } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 import {
@@ -60,35 +59,35 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SNACKBAR_COLORS)
+  @OneOf(SNACKBAR_COLORS)
   readonly color: SnackbarColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly heading: string = ''
 
   /**
    * Defines the message of the notification as html content
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly message: string = ''
 
   /**
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly icon: string = ''
   @Watch('icon')
   iconChanged() {
@@ -99,7 +98,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly svg: string = ''
   @Watch('svg')
   svgChanged() {
@@ -110,28 +109,28 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_TARGETS)
+  @OneOf(BUTTON_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly actionHref: string = ''
 
   /**
@@ -179,13 +178,8 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.generateIconName()
     this.generateSvgContent()
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   componentDidLoad(): void {

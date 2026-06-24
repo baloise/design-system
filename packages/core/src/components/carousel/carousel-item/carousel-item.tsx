@@ -1,14 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import {
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  ValidateRequiredAndType,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, OneOf, Required, Type } from '@utils'
 import { CAROUSEL_ITEM_COLORS, CarouselItemColor, CAROUSEL_VARIANTS, CarouselVariant } from '../carousel.interfaces'
 
 /**
@@ -40,7 +33,7 @@ export class CarouselItem implements DsComponentInterface {
    * Background color for product tiles.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CAROUSEL_ITEM_COLORS)
+  @OneOf(CAROUSEL_ITEM_COLORS)
   readonly color: CarouselItemColor = ''
 
   /**
@@ -48,7 +41,7 @@ export class CarouselItem implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...CAROUSEL_VARIANTS)
+  @OneOf(CAROUSEL_VARIANTS)
   readonly carouselVariant: CarouselVariant = 'slide'
 
   /**
@@ -56,7 +49,7 @@ export class CarouselItem implements DsComponentInterface {
    * which is stretched to cover the full tile and acts as the interactive element.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly navigation: boolean = false
 
   /**
@@ -64,54 +57,39 @@ export class CarouselItem implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly index: number = 0
 
   /**
    * Unique identifier for this item, matched by the parent ds-carousel `value` prop.
    */
   @Prop({ reflect: true })
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly name!: string
 
   /**
    * If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly selected: boolean = false
 
   /**
    * Image URL displayed in image-variant slides, or brand icon source for product tiles.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly src: string = ''
 
   /**
    * Emitted when the user clicks this item (product variant).
    */
   @Event() dsCarouselItemSelect!: EventEmitter<{ name: string }>
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * PROPERTY VALIDATION
    * ------------------------------------------------------
    */
-
-  // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
    * EVENT HANDLERS

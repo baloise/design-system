@@ -1,13 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  stopEventBubbling,
-  ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -55,49 +48,49 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
    * Accent color applied to the bottom border track and selected indicator.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TABS_COLORS)
+  @OneOf(TABS_COLORS)
   readonly color: TabsColor = ''
 
   /**
    * If `true`, tab buttons expand to fill the available width equally.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly fullwidth: boolean = false
 
   /**
    * If `true`, the component adapts for use on a dark (primary) background — all labels and the indicator become white.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * Accessible label for the navigation landmark (navigation variant only).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * The `name` of the currently selected ds-tab (panels variant).
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('string')
+  @Type('string')
   value?: string | null
 
   /**
    * If `true`, the tablist is displayed vertically on the left side.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly vertical: boolean = false
 
   /**
    * The col size of the tablist in vertical mode.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TABS_VERTICAL_COL_SIZES)
+  @OneOf(TABS_VERTICAL_COL_SIZES)
   readonly verticalColSize: TabsVerticalColSize = 'one-third'
 
   /**
@@ -122,24 +115,6 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
   private indicatorEl?: HTMLElement
   private resizeObserver?: ResizeObserver
 
-  /**
-   * PUBLIC PROPERTY API — see @Prop() declarations above
-   * ------------------------------------------------------
-   */
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidLoad() {
     this.setup()
     this.initCarousel()
@@ -161,8 +136,6 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
    * PROPERTY VALIDATION
    * ------------------------------------------------------
    */
-
-  // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
    * PUBLIC LISTENERS

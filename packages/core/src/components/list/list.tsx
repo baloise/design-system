@@ -1,7 +1,7 @@
 import { DsComponentInterface } from '@global'
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, Type } from '@utils'
 
 /**
  * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
@@ -33,21 +33,8 @@ export class List implements DsComponentInterface {
    * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly ordered: boolean = false
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   /**
    * RENDER

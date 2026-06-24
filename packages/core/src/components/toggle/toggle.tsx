@@ -1,13 +1,5 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
-import {
-  Logger,
-  type LogInstance,
-  inheritAttributes,
-  type Attributes,
-  ValidateEmptyOrOneOf,
-  setupValidation,
-  ValidateEmptyOrType,
-} from '@utils'
+import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   ToggleTileColor,
@@ -63,105 +55,105 @@ export class Toggle implements DsComponentInterface {
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
    * If `true`, the toggle is selected.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   checked: boolean = false
 
   /**
    * If `true`, the toggle is dense and has less size.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly dense: boolean = false
 
   /**
    * Defines the color of the tile toggle.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_TILE_COLORS)
+  @OneOf(TOGGLE_TILE_COLORS)
   readonly color: ToggleTileColor = ''
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  @OneOf(TOGGLE_GROUP_COLUMNS)
   readonly cols: ToggleGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  @OneOf(TOGGLE_GROUP_COLUMNS)
   readonly colsMobile: ToggleGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_GROUP_COLUMNS)
+  @OneOf(TOGGLE_GROUP_COLUMNS)
   readonly colsTablet: ToggleGroupColumns = 1
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * Label of the toggle item.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * Defines the position of the label, either before or after the toggle input. Default is after.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TOGGLE_LABEL_POSITIONS)
+  @OneOf(TOGGLE_LABEL_POSITIONS)
   readonly labelPosition: ToggleLabelPosition = 'right'
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = false
 
   /**
    * Defines the layout of the input
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly tile: boolean = false
 
   /**
@@ -192,7 +184,6 @@ export class Toggle implements DsComponentInterface {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.initialValue = this.checked
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
   }
@@ -200,10 +191,6 @@ export class Toggle implements DsComponentInterface {
   componentWillLoad() {
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
     this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   /**

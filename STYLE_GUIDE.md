@@ -325,7 +325,7 @@ export type ButtonSize = (typeof BUTTON_SIZES)[number]
 import { BUTTON_SIZES, ButtonSize } from '../button.interfaces'
 
 @Prop()
-@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+@OneOf(BUTTON_SIZES)
 readonly size: ButtonSize = ''
 ```
 
@@ -333,34 +333,33 @@ Do **not** wrap these in a `namespace DS { }` block — export them directly.
 
 ## Prop Validation
 
-Every `@Prop()` must have a corresponding `@Validate*` decorator that matches its type. Call `setupValidation(this)` in both `connectedCallback()` and `componentWillUpdate()`:
+Every `@Prop()` should have a validation decorator that matches its type. Validation runs automatically on load and whenever the prop changes — there is **no** `setupValidation` call and no lifecycle wiring:
 
 ```ts
-// ✅ Define validator decorator on each prop
+// ✅ Define a validator decorator on each prop
 @Prop()
-@ValidateEmptyOrType('string')
+@Type('string')
 readonly label: string = ''
 
 @Prop()
-@ValidateEmptyOrOneOf(...BUTTON_SIZES)
+@OneOf(BUTTON_SIZES)
 readonly size: ButtonSize = ''
 
-// ✅ Call setupValidation in lifecycle hooks
-connectedCallback(): void {
-  setupValidation(this)
-}
-
-componentWillUpdate(): void {
-  setupValidation(this)
-}
+// ✅ Required props: combine @Required() with the type/enum check
+@Prop({ reflect: true })
+@Required()
+@OneOf(BUTTON_ELEMENT_TYPES)
+readonly elementType: ButtonElementType = 'button'
 ```
 
 Available validators from `@utils`:
 
-- `@ValidateEmptyOrType('string' | 'number' | 'boolean')` — optional primitive
-- `@ValidateEmptyOrOneOf(...CONST_ARRAY)` — optional enum
-- `@ValidateRequiredAndType(...)` — required primitive (only if default is never empty)
-- `@ValidateRequiredAndOneOf(...)` — required enum (only if default is never empty)
+- `@Type('string' | 'number' | 'boolean')` — primitive type
+- `@OneOf(CONST_ARRAY)` — enum / allowed values
+- `@Required()` — value must not be empty; combine with `@Type`/`@OneOf` for required props
+- `@Pattern(regex)`, `@Url()`, `@DateValue()`, `@IsoDate()`, `@ArrayOf('type')`, `@GreaterThan(n)`, `@LessThan(n)` — additional checks
+
+Empty values (`undefined`, `null`, `''`, `NaN`) are skipped by every validator except `@Required()`.
 
 ## Quick Reference Table
 
