@@ -18,6 +18,9 @@
     "build:clean": "rimraf dist",
     "lint": "eslint ."
   },
+  "devDependencies": {
+    "typescript": "5.6.3"
+  },
   "homepage": "https://design.baloise.dev",
   "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",

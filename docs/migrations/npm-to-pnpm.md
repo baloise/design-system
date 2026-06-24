@@ -7,21 +7,21 @@ Step-by-step plan to move the `next` branch from npm to pnpm. The LTS line on
 
 ## Decisions (locked in)
 
-| Topic | Decision |
-| --- | --- |
-| Internal deps | Keep **exact pinned versions** (e.g. `@baloise/ds-core: 20.0.0-next.4`); **do not** introduce the `workspace:` protocol. Requires `link-workspace-packages: true`. |
-| pnpm version | Pin **exactly** in root `packageManager`, latest pnpm **10.x** (confirm exact patch when generating the lockfile). |
-| `packageManager` scope | **Root `package.json` only**; sub-packages untouched. |
-| Workspace definition | Create `pnpm-workspace.yaml` mirroring today's globs (`packages/*`, `libs/*`, `docs`); `packages/core/components` stays **out** (unchanged). Remove the `workspaces` field from root `package.json`. |
-| Registry | Generate lockfile against **public `registry.npmjs.org`**; commit a minimal `.npmrc` pinning it. No post-hoc rewrite (the old `registry` script is already removed). |
-| CI install | `pnpm/action-setup@v4` (version from `packageManager`) → `setup-node` with `cache: 'pnpm'` → `pnpm install --frozen-lockfile`. |
-| Workflows converted | `continuous.yml`, `prepare-release.yml`, `release.yml`, `screenshots.yml`, `snapshot.yml`, and the shared `actions/setup-environment`. |
-| LTS workflows | `lts-continuous.yml`, `lts-prepare-release.yml`, `lts-release.yml` stay on **npm** (trigger only on `main`; dormant on `next`). |
-| Script bodies | `npm --prefix <dir> run X` → `pnpm --filter <pkg> X`; `npm run X` → `pnpm X`; `npx <bin>` → `pnpm exec <bin>`. |
-| Docs | Convert **contributor/dev commands** only. **Leave consumer install snippets as npm** (`npm install @baloise/...`, `npx ng add ...`). Include `.claude/skills/*`. |
-| pnpm 10 build scripts | Allowlist legitimate dependency build scripts in `onlyBuiltDependencies` after the first install. |
-| Enforcement | Add root `preinstall: "npx only-allow pnpm"` guard. |
-| Deliverable | This document. Execution is a separate, later step. |
+| Topic                  | Decision                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Internal deps          | Keep **exact pinned versions** (e.g. `@baloise/ds-core: 20.0.0-next.4`); **do not** introduce the `workspace:` protocol. Requires `link-workspace-packages: true`.                                   |
+| pnpm version           | Pin **exactly** in root `packageManager`, latest pnpm **10.x** (confirm exact patch when generating the lockfile).                                                                                   |
+| `packageManager` scope | **Root `package.json` only**; sub-packages untouched.                                                                                                                                                |
+| Workspace definition   | Create `pnpm-workspace.yaml` mirroring today's globs (`packages/*`, `libs/*`, `docs`); `packages/core/components` stays **out** (unchanged). Remove the `workspaces` field from root `package.json`. |
+| Registry               | Generate lockfile against **public `registry.npmjs.org`**; commit a minimal `.npmrc` pinning it. No post-hoc rewrite (the old `registry` script is already removed).                                 |
+| CI install             | `pnpm/action-setup@v4` (version from `packageManager`) → `setup-node` with `cache: 'pnpm'` → `pnpm install --frozen-lockfile`.                                                                       |
+| Workflows converted    | `continuous.yml`, `prepare-release.yml`, `release.yml`, `screenshots.yml`, `snapshot.yml`, and the shared `actions/setup-environment`.                                                               |
+| LTS workflows          | `lts-continuous.yml`, `lts-prepare-release.yml`, `lts-release.yml` stay on **npm** (trigger only on `main`; dormant on `next`).                                                                      |
+| Script bodies          | `npm --prefix <dir> run X` → `pnpm --filter <pkg> X`; `npm run X` → `pnpm X`; `npx <bin>` → `pnpm exec <bin>`.                                                                                       |
+| Docs                   | Convert **contributor/dev commands** only. **Leave consumer install snippets as npm** (`npm install @baloise/...`, `npx ng add ...`). Include `.claude/skills/*`.                                    |
+| pnpm 10 build scripts  | Allowlist legitimate dependency build scripts in `onlyBuiltDependencies` after the first install.                                                                                                    |
+| Enforcement            | Add root `preinstall: "npx only-allow pnpm"` guard.                                                                                                                                                  |
+| Deliverable            | This document. Execution is a separate, later step.                                                                                                                                                  |
 
 ### ⚠️ Shared-action caveat
 
@@ -38,6 +38,7 @@ migrated.
 - [x] In root `package.json`, set `packageManager` to `pnpm@10.34.4` (exact patch).
 - [x] Remove the `workspaces` array from root `package.json`.
 - [x] Create `pnpm-workspace.yaml`:
+
   ```yaml
   packages:
     - 'packages/*'
@@ -47,6 +48,7 @@ migrated.
   linkWorkspacePackages: true
   # onlyBuiltDependencies populated in Phase 4
   ```
+
 - [x] Create root `.npmrc` pinning the public registry:
   ```ini
   registry=https://registry.npmjs.org/
@@ -131,34 +133,66 @@ migrated.
 Convert dev/build/test commands (`npm run …`, `npm ci`, `npm start`, `npm test`) → pnpm.
 **Leave consumer install snippets as npm.**
 
-- [ ] `CLAUDE.md` (Commands section).
-- [ ] `DEVELOPMENT.md`.
-- [ ] `CONTRIBUTING.md`.
-- [ ] `ARCHITECTURE.md`.
-- [ ] `STYLE_GUIDE.md`.
-- [ ] `.github/copilot-instructions.md`.
-- [ ] `docs/src/contributing.mdx` — **dev-workflow commands only**; keep the
-      snapshot consumer-install snippet (`npm install @baloise/ds-core@…`) as npm.
-- [ ] `docs/src/development/00-guides/*.mdx` — dev commands only; **keep**
-      `npm install @baloise/ds-*` / `npm add` / `npx ng add` consumer snippets in
-      `00-getting-started.mdx`, `04-assets.mdx`, `05-styles.mdx`.
-- [ ] `README.md` — keep the consumer `npm install @baloise/ds-core` snippet.
-- [ ] `.claude/skills/*` (`ds-create-component`, `ds-create-token`,
-      `ds-document-component`, `ds-test-component`) — convert repo dev commands to pnpm.
-- [ ] Review `libs/CONTEXT.md`, `packages/tokens/CONTEXT.md`,
-      `packages/core/src/utils/property-decorators/MIGRATION.md`,
-      `docs/security/incident-response-runbook.md`, `SECURITY.md`, `SKILLS.md` and
-      convert only repo dev commands (keep consumer/incident-response references intact).
+- [x] `CLAUDE.md` (Commands section). Single-test example → `pnpm --filter <project> test`.
+- [x] `DEVELOPMENT.md`. Also updated the **pnpm** prerequisite (was `npm >=11`) and the
+      troubleshooting reinstall block (`rm -rf node_modules pnpm-lock.yaml`).
+      `npm run publish` → **`pnpm run publish`** (kept `run` — `pnpm publish` is a built-in).
+- [x] `CONTRIBUTING.md`.
+- [x] `ARCHITECTURE.md`. Consumer snapshot-install line (445) kept as npm.
+- [x] `STYLE_GUIDE.md`.
+- [x] `.github/copilot-instructions.md`.
+- [x] `docs/src/contributing.mdx` & `docs/src/development/00-guides/*.mdx`: verified they
+      contain **no contributor commands** — only consumer `npm install/add @baloise/*`
+      snippets, intentionally **left as npm**.
+- [x] `README.md` — consumer `npm install @baloise/ds-core` snippet kept as npm.
+- [x] `.claude/skills/*` (`ds-create-component`, `ds-create-token`,
+      `ds-document-component`, `ds-test-component`) — repo dev commands converted
+      (incl. `.js`/`README`/`REFERENCE`/`SKILL` files).
+- [x] `libs/CONTEXT.md`, `packages/tokens/CONTEXT.md`,
+      `docs/security/incident-response-runbook.md`, `SECURITY.md`, `SKILLS.md` — dev
+      commands converted; npm-registry prose (publishing, downloads) left intact.
+- [x] **`SECURITY.md`** SBOM section updated to pnpm: `pnpm-lock.yaml`, `pnpm audit`,
+      `pnpm list`, and the `cdxgen` command.
+- [x] `docs/.storybook/blocks/ComponentPageObject.tsx` consumer install **left as npm**.
+- [ ] **Intentionally NOT changed:** `packages/core/src/utils/property-decorators/MIGRATION.md`
+      — it is a **historical completed log** (`[x]` gates recording that `npm run build` was
+      actually run at the time). Rewriting it would falsify the record. Left as-is.
 
 ## Phase 7 — Verify
 
-- [ ] `pnpm install --frozen-lockfile` succeeds (lockfile is in sync).
-- [ ] `pnpm build` succeeds.
-- [ ] `pnpm test` passes.
-- [ ] `pnpm lint` passes.
-- [ ] `pnpm exec playwright …` / `pnpm play:ci` works (confirms build-scripts allowlist).
-- [ ] `npm install` fails fast with the `only-allow pnpm` message.
-- [ ] Push the branch and confirm the converted workflows go green.
+- [x] `pnpm install --frozen-lockfile` succeeds (lockfile is in sync).
+- [x] `pnpm build` succeeds (full turbo build + Storybook/docs — proves esbuild/swc/parcel
+      build-script allowlist works).
+- [x] `pnpm test` passes (11/11 turbo tasks).
+- [x] `pnpm lint` passes (7/7 tasks; 1 pre-existing skipped-test warning, 0 errors).
+- [x] Binaries resolve via `pnpm exec`: `playwright` 1.59.1, `turbo` 2.9.18, `cdxgen`.
+      (Full Playwright visual suite not run locally — needs browsers + dev server; defer to CI.)
+- [x] `npm install` is blocked: exits 1 and creates **no** `package-lock.json`.
+      ⚠️ Note: it fails during npm's own tree-build (npm can't parse the pnpm workspace),
+      *before* reaching the `only-allow pnpm` preinstall, so the failure message is an npm
+      internal error rather than the friendly guard message. Protection holds either way.
+- [ ] Push the branch and confirm the converted workflows go green (CI — not done locally;
+      no commit per instructions).
+
+## Phase 7.1 — pnpm-strictness fix: undeclared `typescript`
+
+pnpm's strict (non-hoisted) `node_modules` exposed a latent bug: several packages run bare
+`tsc` in their build scripts but never declared `typescript`. Under npm's hoisting they
+silently borrowed the root's `tsc`; under pnpm they don't, so `tsc` resolved to whatever
+was on `PATH` (a global/newer TypeScript), which failed with **TS5103 — Invalid value for
+`--ignoreDeprecations`**. (The failure was environment-dependent: machines without a global
+`tsc` fell back to the root 5.6.3 and passed, which is why CI/some devs saw it and others
+didn't.)
+
+- [x] Added `"typescript": "5.6.3"` (matching root) as a `devDependency` to:
+      `libs/output-target-web`, `libs/output-target-angular`, `libs/eslint-plugin`,
+      `packages/tokens`.
+- [x] `pnpm install` → each package now has a deterministic local `node_modules/.bin/tsc` 5.6.3.
+- [x] `pnpm build:force` → **9/9 tasks, 0 cached** (verified the fix without cache masking).
+- ⚠️ **Same latent pattern, not yet fixed:** these packages also run bare `eslint` (and
+      `output-target-angular`/`eslint-plugin` run bare `vitest`) without declaring them.
+      `pnpm lint`/`test` currently pass, but consider declaring `eslint`/`vitest` per-package
+      for the same determinism. Left as a follow-up to keep this fix focused on the breakage.
 
 ## Out of scope / notes
 

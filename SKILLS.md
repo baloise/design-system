@@ -51,7 +51,7 @@ Create design tokens for a component from its CSS variables.
 - Suggests component token paths following naming conventions
 - Optionally uses `ds-find-token` to find alias matches
 - Writes new tokens to `Base.tokens.json`
-- Runs `npm run tokens` to compile outputs
+- Runs `pnpm tokens` to compile outputs
 
 **Workflow:**
 

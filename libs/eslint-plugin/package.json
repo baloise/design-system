@@ -21,5 +21,8 @@
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
     "@typescript-eslint/utils": "8.61.1"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3"
   }
 }

@@ -1,14 +1,12 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
-  STACK_LAYOUTS,
   STACK_SPACES,
   STACK_PADDINGS,
   STACK_ALIGNMENTS,
   STACK_DIRECTIONS,
-  type StackLayout,
   type StackSpace,
   type StackPadding,
   type StackAlignment,

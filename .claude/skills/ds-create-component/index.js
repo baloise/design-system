@@ -54,7 +54,7 @@ async function main() {
     console.log('  1. Review the generated component files')
     console.log('  2. Refine render() logic and add your component-specific code')
     console.log('  3. Update SCSS variants if needed')
-    console.log('  4. Run: npm run play')
+    console.log('  4. Run: pnpm play')
     console.log('  5. Create tests with /ds-sync-component-tests')
   }
 }

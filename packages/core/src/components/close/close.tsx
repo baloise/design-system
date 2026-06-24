@@ -1,5 +1,5 @@
 import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core'
-import { HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { HTMLStencilElement } from '@stencil/core/internal'
 import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,

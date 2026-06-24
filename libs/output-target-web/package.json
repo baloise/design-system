@@ -12,6 +12,9 @@
     "fs-extra": "11.3.5",
     "replace-in-file": "8.4.0"
   },
+  "devDependencies": {
+    "typescript": "5.6.3"
+  },
   "type": "commonjs",
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts"
