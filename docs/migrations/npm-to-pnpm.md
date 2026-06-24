@@ -169,7 +169,7 @@ Convert dev/build/test commands (`npm run …`, `npm ci`, `npm start`, `npm test
       (Full Playwright visual suite not run locally — needs browsers + dev server; defer to CI.)
 - [x] `npm install` is blocked: exits 1 and creates **no** `package-lock.json`.
       ⚠️ Note: it fails during npm's own tree-build (npm can't parse the pnpm workspace),
-      *before* reaching the `only-allow pnpm` preinstall, so the failure message is an npm
+      _before_ reaching the `only-allow pnpm` preinstall, so the failure message is an npm
       internal error rather than the friendly guard message. Protection holds either way.
 - [ ] Push the branch and confirm the converted workflows go green (CI — not done locally;
       no commit per instructions).
@@ -190,9 +190,9 @@ didn't.)
 - [x] `pnpm install` → each package now has a deterministic local `node_modules/.bin/tsc` 5.6.3.
 - [x] `pnpm build:force` → **9/9 tasks, 0 cached** (verified the fix without cache masking).
 - ⚠️ **Same latent pattern, not yet fixed:** these packages also run bare `eslint` (and
-      `output-target-angular`/`eslint-plugin` run bare `vitest`) without declaring them.
-      `pnpm lint`/`test` currently pass, but consider declaring `eslint`/`vitest` per-package
-      for the same determinism. Left as a follow-up to keep this fix focused on the breakage.
+  `output-target-angular`/`eslint-plugin` run bare `vitest`) without declaring them.
+  `pnpm lint`/`test` currently pass, but consider declaring `eslint`/`vitest` per-package
+  for the same determinism. Left as a follow-up to keep this fix focused on the breakage.
 
 ## Out of scope / notes
 
