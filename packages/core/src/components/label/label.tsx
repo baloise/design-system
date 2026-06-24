@@ -1,6 +1,14 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ElementStateInfo, normalizeDeprecatedTShirtSize, Logger, type LogInstance, OneOf, Type } from '@utils'
+import {
+  ElementStateInfo,
+  normalizeDeprecatedTShirtSize,
+  Logger,
+  type LogInstance,
+  OneOf,
+  Type,
+  hasValue,
+} from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -107,13 +115,9 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(LABEL_SIZES)
-  size?: LabelSize
-  @Watch('size')
-  sizeChanged(newValue: LabelSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size?: LabelSize
 
   /**
    * If `true` the component gets a valid green style.
@@ -126,10 +130,6 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
 
   /**
    * PUBLIC LISTENERS
@@ -156,6 +156,8 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
     const id = this.htmlId
     const htmlFor = this.htmlFor
 
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
@@ -165,7 +167,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
           'is-valid': this.valid,
           'is-invalid': this.invalid,
           'has-no-wrap': this.noWrap,
-          [`is-${this.size}`]: !!this.size,
+          [`is-${size}`]: hasValue(this.size),
         }}
       >
         <label id={id} part="label" htmlFor={htmlFor}>

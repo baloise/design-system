@@ -103,12 +103,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   @Prop()
   @Type('boolean')
   readonly small: boolean = false
-  @Watch('small')
-  smallChanged(newValue: boolean, oldValue: boolean) {
-    if (newValue !== oldValue && newValue === true) {
-      this.size = 'sm'
-    }
-  }
 
   /**
    * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
@@ -145,10 +139,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    this.smallChanged(this.small, false)
-  }
 
   componentDidLoad() {
     if (this.variation === 'logo') {
@@ -273,6 +263,11 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   render() {
     const ariaLabel = this.label || i18nDsSpinner[this.language].loading
 
+    let size = this.size
+    if (this.small === true) {
+      size = 'sm'
+    }
+
     return (
       <Host
         role="progressbar"
@@ -280,7 +275,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-animated': this.animated,
           'is-circle': this.variation === 'circle',
-          'is-sm': this.size === 'sm',
+          'is-sm': size === 'sm',
           'is-white': this.color === 'white',
           'is-label-right': hasValue(this.label) && this.labelPosition === 'right',
           'is-label-bottom': hasValue(this.label) && this.labelPosition === 'bottom',

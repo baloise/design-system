@@ -47,13 +47,9 @@ export class Badge implements DsComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true })
+  @Prop({ reflect: true })
   @OneOf(BADGE_SIZES)
-  size: BadgeSize = ''
-  @Watch('size')
-  sizeChanged(newValue: BadgeSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size: BadgeSize = ''
 
   /**
    * Define the color for the badge.
@@ -80,13 +76,10 @@ export class Badge implements DsComponentInterface {
   // LIFECYCLE
   // ========================================================================
 
-  connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
-  }
-
   // ========================================================================
   // PROPERTY VALIDATION
   // ========================================================================
+
   // ========================================================================
   // PRIVATE METHODS
   // ========================================================================
@@ -96,17 +89,19 @@ export class Badge implements DsComponentInterface {
   // ========================================================================
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
           [`is-${this.color}`]: hasValue(this.color),
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
           'is-pulse': this.pulse,
         }}
       >
         <span id="badge" part="badge">
           <slot></slot>
-          {this.size !== 'small' && hasValue(this.icon) ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
+          {size !== 'sm' && hasValue(this.icon) ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
         </span>
       </Host>
     )

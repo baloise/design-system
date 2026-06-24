@@ -194,6 +194,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    * The value of the control.
    */
   @Prop() readonly value: any[] = []
+
   @Watch('value')
   valueChanged() {
     if (this.control) {

@@ -301,6 +301,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   @Prop()
   @OneOf(INPUT_MASKS)
   readonly mask?: InputMask = undefined
+
   @Watch('mask')
   protected maskChanged() {
     this.maskUtil.setFormatter(getMask(this.mask))

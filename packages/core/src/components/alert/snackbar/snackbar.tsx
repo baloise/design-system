@@ -51,9 +51,6 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
   @State() mobileOpenState = false
   @State() didLoad = false
 
-  @State() svgContent?: string
-  @State() iconName?: string
-
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
@@ -89,10 +86,6 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
   @Prop()
   @Type('string')
   readonly icon: string = ''
-  @Watch('icon')
-  iconChanged() {
-    this.generateIconName()
-  }
 
   /**
    * Defines the svg content of the icon
@@ -100,10 +93,6 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
   @Prop()
   @Type('string')
   readonly svg: string = ''
-  @Watch('svg')
-  svgChanged() {
-    this.generateSvgContent()
-  }
 
   /**
    * Defines the icon of the notification, if not provided it will be derived from the color property
@@ -177,11 +166,6 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * ------------------------------------------------------
    */
 
-  connectedCallback(): void {
-    this.generateIconName()
-    this.generateSvgContent()
-  }
-
   componentDidLoad(): void {
     raf(() => {
       this.didLoad = true
@@ -220,29 +204,26 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
 
   private generateSvgContent = () => {
     if (hasValue(this.svg) && this.svg.length > 0) {
-      this.svgContent = sanitizeSvg(this.svg)
+      return sanitizeSvg(this.svg)
     }
+    return undefined
   }
 
   private generateIconName = () => {
     if (hasValue(this.icon) && this.icon.length > 0) {
-      this.iconName = this.icon
+      return this.icon
     } else {
       switch (this.color) {
         case 'info':
-          this.iconName = 'information'
-          break
+          return 'information'
         case 'success':
-          this.iconName = 'check'
-          break
+          return 'check'
         case 'warning':
-          this.iconName = 'alert'
-          break
+          return 'alert'
         case 'danger':
-          this.iconName = 'alert'
-          break
+          return 'alert'
         default:
-          this.iconName = 'bell'
+          return 'bell'
       }
     }
   }
@@ -253,6 +234,9 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    */
 
   render() {
+    const iconName = this.generateIconName()
+    const svgContent = this.generateSvgContent()
+
     return (
       <Host
         role="status"
@@ -275,18 +259,18 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
             id="mobile-button"
             color={this.color === 'base' ? 'primary' : this.color}
             square={true}
-            icon={this.iconName}
+            icon={iconName}
             onClick={() => (this.mobileOpenState = true)}
           ></ds-button>
         )}
         {/* --------------------------------------*/}
         {/* Icon                                  */}
         {/* --------------------------------------*/}
-        {this.iconName && !this.svgContent && (
+        {iconName && !svgContent && (
           <ds-icon
             part="icon"
             id="icon"
-            name={this.iconName}
+            name={iconName}
             color={this.color}
             size={'xl'}
             shape={
@@ -298,7 +282,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
             }
           ></ds-icon>
         )}
-        {this.svgContent && <ds-icon id="icon" part="icon" svg={this.svgContent} size={'xl'}></ds-icon>}
+        {svgContent && <ds-icon id="icon" part="icon" svg={svgContent} size={'xl'}></ds-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}

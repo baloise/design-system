@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
@@ -79,13 +79,9 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
   /**
    * Defines the size of the icon.
    */
-  @Prop({ reflect: true, mutable: true })
+  @Prop({ reflect: true })
   @OneOf(ICON_SIZES)
-  size: IconSize
-  @Watch('size')
-  sizeChanged(newValue: IconSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size: IconSize
 
   /**
    * The theme type of the button.
@@ -166,7 +162,6 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
     // generateSvgContent is async; for src-based icons the first render shows nothing
     // while the fetch is in flight. The @State update triggers a follow-up render.
     this.generateSvgContent(this.name)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
   async componentWillRender(): Promise<void> {
@@ -249,6 +244,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
 
   render() {
     const color = this.parseColor()
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
 
     return (
       <Host
@@ -256,7 +252,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-filled': !this.svg && !this.src,
           [`is-${color}`]: hasValue(color),
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
           [`turn-${this.name}`]: this.turn,
           'is-inverted': this.inverted,
           'is-inline': this.inline,

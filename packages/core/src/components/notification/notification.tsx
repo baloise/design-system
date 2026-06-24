@@ -94,13 +94,9 @@ export class Notification implements DsComponentInterface {
   /**
    * Defines the size of the notification, small, medium or large.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(NOTIFICATION_SIZES)
-  size?: NotificationSize
-  @Watch('size')
-  sizeChanged(newValue: NotificationSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size?: NotificationSize
 
   /**
    * Emitted when the close button got clicked.
@@ -116,14 +112,6 @@ export class Notification implements DsComponentInterface {
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
-  componentWillLoad(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
 
   componentDidLoad(): void {
     this.didLoad = true
@@ -150,6 +138,7 @@ export class Notification implements DsComponentInterface {
    */
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
     const a11yAttributes: { [key: string]: string } = this.alert
       ? { 'role': 'alert', 'aria-live': 'assertive', 'aria-atomic': 'true' }
       : { 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }
@@ -160,7 +149,7 @@ export class Notification implements DsComponentInterface {
         class={{
           'has-no-icon': this.noIcon,
           [`is-${this.color}`]: hasValue(this.color),
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
         }}
       >
         <section id="notification" part="section">

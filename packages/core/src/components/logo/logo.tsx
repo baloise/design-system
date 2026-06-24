@@ -83,13 +83,9 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
   /**
    * Size of the logo svg
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(LOGO_SIZES)
-  size: LogoSize = ''
-  @Watch('size')
-  sizeChanged(newValue: LogoSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size: LogoSize = ''
 
   /**
    * LIFECYCLE
@@ -97,7 +93,6 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    */
 
   connectedCallback() {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
     this.animatedChanged()
   }
 
@@ -205,6 +200,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    */
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
     const LogoElement =
       this.brand === 'helvetia' || (this.brand === '' && this.configBrand === 'helvetia') ? (
         <LogoHelvetia onlyText={this.animated} height={this.getHeight()} />
@@ -217,8 +213,8 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
         class={{
           'is-animated': this.isAnimated,
           'is-white': this.color === 'white',
-          'is-sm': this.size === 'sm',
-          'is-lg': this.size === 'lg',
+          'is-sm': size === 'sm',
+          'is-lg': size === 'lg',
         }}
       >
         <div

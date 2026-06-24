@@ -95,13 +95,9 @@ export class Tag implements DsComponentInterface {
   /**
    * The size of the tag element
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(TAG_SIZES)
-  size: TagSize = ''
-  @Watch('size')
-  sizeChanged(newValue: TagSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size: TagSize = ''
 
   /**
    * Emitted when the input got clicked.
@@ -113,10 +109,6 @@ export class Tag implements DsComponentInterface {
    * ------------------------------------------------------
    */
 
-  connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
   componentWillLoad() {
     this.inheritedAttributesClose = inheritAttributes(this.el, ['tabindex'])
   }
@@ -127,10 +119,13 @@ export class Tag implements DsComponentInterface {
    */
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
           [`is-${this.color}`]: hasValue(this.color),
+          [`is-${size}`]: hasValue(this.size),
           [`is-shape-${this.shape}`]: hasValue(this.shape),
           'is-closable': this.closable,
           'is-disabled': this.disabled,

@@ -40,13 +40,9 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true })
+  @Prop({ reflect: true })
   @OneOf(CLOSE_SIZES)
-  size: CloseSize = ''
-  @Watch('size')
-  sizeChanged(newValue: CloseSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size: CloseSize = ''
 
   /**
    * If `true` it supports dark backgrounds.
@@ -89,6 +85,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
 
   render() {
     const label = i18nDsClose[this.language].close
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
 
     if (this.button) {
       return (
@@ -99,7 +96,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
             disabled={this.disabled}
             inverted={this.inverted}
             color={this.buttonColor}
-            size={this.size === 'sm' ? 'sm' : this.size === 'md' ? 'lg' : ''}
+            size={size === 'sm' ? 'sm' : size === 'md' ? 'lg' : ''}
           >
             {label}
           </ds-button>
@@ -110,7 +107,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
     return (
       <Host
         class={{
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
         }}

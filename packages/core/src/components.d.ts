@@ -2522,11 +2522,6 @@ export namespace Components {
          */
         "fitContent": boolean;
         /**
-          * **Deprecated:** Use direction instead.
-          * @default ''
-         */
-        "layout": StackLayout;
-        /**
           * Defines the padding of the stack element.
          */
         "p"?: StackPadding;
@@ -7039,11 +7034,6 @@ declare namespace LocalJSX {
          */
         "fitContent"?: boolean;
         /**
-          * **Deprecated:** Use direction instead.
-          * @default ''
-         */
-        "layout"?: StackLayout;
-        /**
           * Defines the padding of the stack element.
          */
         "p"?: StackPadding;
@@ -8254,7 +8244,6 @@ declare namespace LocalJSX {
         "alignment": StackAlignment;
         "direction": StackDirection;
         "fitContent": boolean;
-        "layout": StackLayout;
         "p": StackPadding;
         "px": StackPadding;
         "py": StackPadding;

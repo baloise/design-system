@@ -117,13 +117,9 @@ export class Card implements DsComponentInterface {
   /**
    * Defines the space of the card content.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(CARD_SPACES)
-  space?: CardSpace
-  @Watch('space')
-  spaceChanged(newValue: CardSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly space?: CardSpace
 
   /**
    * Defines the color of the card.
@@ -131,10 +127,6 @@ export class Card implements DsComponentInterface {
   @Prop()
   @OneOf(CARD_COLORS)
   readonly color: CardColor = ''
-
-  connectedCallback(): void {
-    this.space = normalizeDeprecatedTShirtSize(this.space)
-  }
 
   private get colorTypeClass(): string {
     const color = !hasValue(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
@@ -161,6 +153,7 @@ export class Card implements DsComponentInterface {
   render() {
     const hasOutline = !!this.outlined
     const isImageTeaser = hasValue(this.imageTeaser)
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     return (
       <Host
@@ -170,7 +163,7 @@ export class Card implements DsComponentInterface {
           [`is-square`]: this.square,
           [`is-dense`]: this.dense,
           [`is-${this.colorTypeClass}`]: hasValue(this.color) && this.colorTypeClass !== 'white',
-          [`has-space-${this.space}`]: hasValue(this.space),
+          [`has-space-${space}`]: hasValue(this.space),
           [`is-outlined`]: hasOutline,
           [`is-flat`]: hasOutline || !!this.flat,
           [`is-tile`]: !!this.tile,

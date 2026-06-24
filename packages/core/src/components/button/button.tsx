@@ -88,13 +88,9 @@ export class Button implements DsComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(BUTTON_SIZES)
-  size: ButtonSize = undefined
-  @Watch('size')
-  sizeChanged(newValue: ButtonSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly size: ButtonSize = undefined
 
   /**
    * Specifies the URL of the page the link goes to
@@ -318,10 +314,6 @@ export class Button implements DsComponentInterface {
    * ─────────────────────────────────────────────────────
    */
 
-  connectedCallback(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -421,6 +413,7 @@ export class Button implements DsComponentInterface {
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
     const TagType = !hasValue(this.href) ? 'button' : 'a'
     const attrs =
       TagType === 'button'
@@ -446,7 +439,7 @@ export class Button implements DsComponentInterface {
         class={{
           'is-wide': this.wide,
           [`is-${this.color}`]: this.color !== undefined,
-          [`is-${this.size}`]: this.size !== undefined,
+          [`is-${size}`]: this.size !== undefined,
           [`is-inverted`]: this.inverted,
           [`is-disabled`]: this.disabled,
           [`is-loading`]: this.loading,
@@ -484,7 +477,7 @@ export class Button implements DsComponentInterface {
               part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
-              size={this.dashed ? 'md' : this.size}
+              size={this.dashed ? 'md' : size}
               shape={this.dashed ? 'circle' : undefined}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
@@ -501,7 +494,7 @@ export class Button implements DsComponentInterface {
               part="icon-right"
               class="icon-right"
               name={this.iconRight}
-              size={'small'}
+              size={'sm'}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />

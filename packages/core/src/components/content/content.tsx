@@ -43,27 +43,13 @@ export class Content implements DsComponentInterface {
   @Prop()
   @OneOf(STACK_LAYOUTS)
   readonly layout: StackLayout = ''
-  @Watch('layout')
-  layoutChanged(newValue?: StackLayout) {
-    if (hasValue(newValue)) {
-      if (newValue === 'horizontal') {
-        this.direction = 'row'
-      } else if (newValue === 'vertical') {
-        this.direction = 'column'
-      } else if (newValue === 'vertical-reverse') {
-        this.direction = 'column-reverse'
-      } else if (newValue === 'horizontal-reverse') {
-        this.direction = 'row-reverse'
-      }
-    }
-  }
 
   /**
    * Defines the direction of the child elements. Default is column.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(CONTENT_DIRECTIONS)
-  direction: StackDirection = ''
+  readonly direction: StackDirection = ''
 
   /**
    * Defines the positioning like center, end or
@@ -84,13 +70,9 @@ export class Content implements DsComponentInterface {
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(CONTENT_SPACES)
-  space: ContentSpace = ''
-  @Watch('space')
-  spaceChanged(newValue: ContentSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue)
-  }
+  readonly space: ContentSpace = ''
 
   /**
    * @internal
@@ -100,11 +82,6 @@ export class Content implements DsComponentInterface {
   @OneOf(STACK_ALIGNMENTS)
   readonly alignment: StackAlignment = ''
 
-  connectedCallback(): void {
-    this.layoutChanged(this.layout)
-    this.spaceChanged(this.space)
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------
@@ -113,22 +90,36 @@ export class Content implements DsComponentInterface {
   render() {
     const alignment = hasValue(this.alignment)
     const align = hasValue(this.align)
-    const space = hasValue(this.space)
+
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     let alignValue = this.align?.split(' ').join('-')
     if (hasValue(this.alignment)) {
       alignValue = this.alignment.split(' ').join('-')
     }
 
+    let direction = this.direction
+    if (hasValue(this.layout)) {
+      if (this.layout === 'horizontal') {
+        direction = 'row'
+      } else if (this.layout === 'vertical') {
+        direction = 'column'
+      } else if (this.layout === 'vertical-reverse') {
+        direction = 'column-reverse'
+      } else if (this.layout === 'horizontal-reverse') {
+        direction = 'row-reverse'
+      }
+    }
+
     return (
       <Host
         class={{
           'stack-content': true,
-          'as-row': this.direction === 'row',
-          'as-col': this.direction === 'column',
+          'as-row': direction === 'row',
+          'as-col': direction === 'column',
           [`align-${alignValue}`]: align || alignment,
           [`text-${this.textAlign}`]: hasValue(this.textAlign),
-          [`has-space-${this.space}`]: space,
+          [`has-space-${space}`]: hasValue(this.space),
         }}
       >
         <slot></slot>

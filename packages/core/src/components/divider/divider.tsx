@@ -47,13 +47,9 @@ export class Divider implements DsComponentInterface {
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop({ mutable: true })
+  @Prop()
   @OneOf(DIVIDER_SPACES)
-  space: DividerSpace = 'none'
-  @Watch('space')
-  spaceChanged(newValue: DividerSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue) || 'none'
-  }
+  readonly space: DividerSpace = 'none'
 
   /**
    * Defines the color of the separator line.
@@ -69,23 +65,21 @@ export class Divider implements DsComponentInterface {
   @Type('boolean')
   readonly dashed: boolean = false
 
-  connectedCallback(): void {
-    this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
+
     return (
       <Host
         role="separator"
         class={{
           [`is-${this.layout}`]: hasValue(this.layout),
           [`is-${this.color}`]: hasValue(this.color),
-          [`has-space-${this.space}`]: hasValue(this.space),
+          [`has-space-${space}`]: hasValue(this.space),
           [`is-dashed`]: this.dashed,
         }}
       ></Host>
