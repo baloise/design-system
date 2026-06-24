@@ -35,9 +35,9 @@ migrated.
 
 ## Phase 1 — Package manager & workspace config
 
-- [ ] In root `package.json`, set `packageManager` to `pnpm@10.<latest>` (exact patch).
-- [ ] Remove the `workspaces` array from root `package.json`.
-- [ ] Create `pnpm-workspace.yaml`:
+- [x] In root `package.json`, set `packageManager` to `pnpm@10.34.4` (exact patch).
+- [x] Remove the `workspaces` array from root `package.json`.
+- [x] Create `pnpm-workspace.yaml`:
   ```yaml
   packages:
     - 'packages/*'
@@ -47,11 +47,11 @@ migrated.
   linkWorkspacePackages: true
   # onlyBuiltDependencies populated in Phase 4
   ```
-- [ ] Create root `.npmrc` pinning the public registry:
+- [x] Create root `.npmrc` pinning the public registry:
   ```ini
   registry=https://registry.npmjs.org/
   ```
-- [ ] Add the enforcement guard to root `package.json` scripts:
+- [x] Add the enforcement guard to root `package.json` scripts:
   ```json
   "preinstall": "npx only-allow pnpm"
   ```

@@ -4,11 +4,12 @@
   "homepage": "https://design.baloise.dev",
   "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",
-  "packageManager": "npm@11.1.0",
+  "packageManager": "pnpm@10.34.4",
   "engines": {
     "node": ">=24 <25"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "_dev": "====================================================== Development ================================================",
     "start": "npm --prefix packages/core run start",
     "start-two": "npm --prefix packages/core run start-two",
@@ -41,11 +42,6 @@
     "changeset": "node scripts/create-changeset.mjs"
   },
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "libs/*",
-    "docs"
-  ],
   "devDependencies": {
     "@axe-core/playwright": "4.11.3",
     "@changesets/changelog-github": "0.7.0",

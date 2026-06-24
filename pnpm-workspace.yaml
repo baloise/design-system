@@ -1,0 +1,8 @@
+packages:
+  - 'packages/*'
+  - 'libs/*'
+  - 'docs'
+
+linkWorkspacePackages: true
+# onlyBuiltDependencies is populated after the first `pnpm install`
+# (see docs/migrations/npm-to-pnpm.md — Phase 4).
