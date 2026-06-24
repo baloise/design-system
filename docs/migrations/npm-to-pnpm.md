@@ -189,10 +189,15 @@ didn't.)
       `packages/tokens`.
 - [x] `pnpm install` → each package now has a deterministic local `node_modules/.bin/tsc` 5.6.3.
 - [x] `pnpm build:force` → **9/9 tasks, 0 cached** (verified the fix without cache masking).
-- ⚠️ **Same latent pattern, not yet fixed:** these packages also run bare `eslint` (and
-  `output-target-angular`/`eslint-plugin` run bare `vitest`) without declaring them.
-  `pnpm lint`/`test` currently pass, but consider declaring `eslint`/`vitest` per-package
-  for the same determinism. Left as a follow-up to keep this fix focused on the breakage.
+- [x] **Closed the same latent pattern for `eslint` and `vitest`** (added with `pnpm add -D -E`,
+      exact versions matching root):
+  - `eslint@10.5.0` → `docs`, `@baloise/ds-core`, `@baloise/ds-playwright`, `@baloise/ds-tokens`,
+    `libs-eslint-plugin`, `libs-output-target-angular`, `libs-output-target-web` (7 packages).
+  - `vitest@4.1.9` → `@baloise/ds-core`, `@baloise/ds-playwright`, `libs-eslint-plugin`,
+    `libs-output-target-angular` (4 packages).
+  - (`packages/css`, `packages/assets` run neither bare — left untouched.)
+- [x] Re-scan confirms **no** package runs bare `eslint`/`vitest`/`tsc` without declaring it.
+- [x] Forced verification (no cache): `lint` 7/7, `test` 11/11, `build` 9/9; `--frozen-lockfile` in sync.
 
 ## Out of scope / notes
 
