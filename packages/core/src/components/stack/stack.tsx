@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   STACK_LAYOUTS,
@@ -51,7 +43,7 @@ export class Stack implements DsComponentInterface {
    * Defines the text positioning like center, right or default to start.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
+  @OneOf(STACK_ALIGNMENTS)
   readonly align: StackAlignment = ''
 
   /**
@@ -59,115 +51,70 @@ export class Stack implements DsComponentInterface {
    * Please use align instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STACK_ALIGNMENTS)
+  @OneOf(STACK_ALIGNMENTS)
   readonly alignment: StackAlignment = ''
 
   /**
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_DIRECTIONS)
-  direction: StackDirection = 'column'
+  @OneOf(STACK_DIRECTIONS)
+  direction: StackDirection = ''
 
   /**
    * Defines the width of the stack to be exactly the width of the content.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly fitContent: boolean = false
-
-  /**
-   * **Deprecated:** Use direction instead.
-   */
-  @Prop()
-  @ValidateEmptyOrOneOf(...STACK_LAYOUTS)
-  readonly layout: StackLayout = ''
-  @Watch('layout')
-  layoutChanged(newValue: StackLayout) {
-    if (newValue !== '') {
-      if (newValue === 'horizontal') {
-        this.direction = 'row'
-      } else if (newValue === 'vertical') {
-        this.direction = 'column'
-      } else if (newValue === 'vertical-reverse') {
-        this.direction = 'column-reverse'
-      } else if (newValue === 'horizontal-reverse') {
-        this.direction = 'row-reverse'
-      }
-    }
-  }
 
   /**
    * Defines the padding of the stack element.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
-  p?: StackPadding
-  @Watch('p')
-  pChanged(newValue?: StackPadding) {
-    this.p = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(STACK_PADDINGS)
+  readonly p?: StackPadding
 
   /**
    * Defines the horizontal padding left and right of the stack element.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
-  px?: StackPadding
-  @Watch('px')
-  pxChanged(newValue?: StackPadding) {
-    this.px = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(STACK_PADDINGS)
+  readonly px?: StackPadding
 
   /**
    * Defines the vertical padding top and bottom of the stack element.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_PADDINGS)
-  py?: StackPadding
-  @Watch('py')
-  pyChanged(newValue?: StackPadding) {
-    this.py = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(STACK_PADDINGS)
+  readonly py?: StackPadding
 
   /**
    * Defines the space between the child elements.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
-  space: StackSpace = 'base'
-  @Watch('space')
-  spaceChanged(newValue: StackSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(STACK_SPACES)
+  readonly space: StackSpace = 'base'
 
   /**
    * Defines the column space between the child elements.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
-  spaceColumn?: StackSpace
-  @Watch('spaceColumn')
-  spaceColumnChanged(newValue?: StackSpace) {
-    this.spaceColumn = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(STACK_SPACES)
+  readonly spaceColumn?: StackSpace
 
   /**
    * Defines the row space between the child elements.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...STACK_SPACES)
-  spaceRow?: StackSpace
-  @Watch('spaceRow')
-  spaceRowChanged(newValue?: StackSpace) {
-    this.spaceRow = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(STACK_SPACES)
+  readonly spaceRow?: StackSpace
 
   /**
    * Defines if the child elements will wrap to the next line if there is not enough space left.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly useWrap: boolean = false
 
   /**
@@ -175,38 +122,20 @@ export class Stack implements DsComponentInterface {
    * ------------------------------------------------------
    */
 
-  connectedCallback(): void {
-    setupValidation(this)
-    this.layoutChanged(this.layout)
-    this.spaceChanged(this.space)
-    this.spaceRowChanged(this.spaceRow)
-    this.spaceColumnChanged(this.spaceColumn)
-    this.pChanged(this.p)
-    this.pxChanged(this.px)
-    this.pyChanged(this.py)
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------
    */
   render() {
-    const direction = hasValue(this.direction)
-    const layout = hasValue(this.layout)
     const align = hasValue(this.align)
     const alignment = hasValue(this.alignment)
-    const space = hasValue(this.space)
-    const spaceRow = hasValue(this.spaceRow)
-    const spaceColumn = hasValue(this.spaceColumn)
-    const useWrap = this.useWrap
-    const fitContent = this.fitContent
-    const px = hasValue(this.px)
-    const py = hasValue(this.py)
 
-    let layoutValue = this.layout
-    if (direction) {
-      layoutValue = this.direction === 'row' ? 'horizontal' : 'vertical'
-    }
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
+    const spaceRow = normalizeDeprecatedTShirtSize(this.spaceRow) || ''
+    const spaceColumn = normalizeDeprecatedTShirtSize(this.spaceColumn) || ''
+    const p = normalizeDeprecatedTShirtSize(this.p) || ''
+    const px = normalizeDeprecatedTShirtSize(this.px) || ''
+    const py = normalizeDeprecatedTShirtSize(this.py) || ''
 
     let alignValue = hasValue(this.align) ? this.align.split(' ').join('-') : undefined
     if (hasValue(this.alignment)) {
@@ -219,16 +148,15 @@ export class Stack implements DsComponentInterface {
           'stack': true,
           'as-row': this.direction === 'row',
           'as-col': this.direction === 'column',
-          'has-wrap': useWrap,
-          'fit-content': fitContent,
-          [`is-${layoutValue}`]: layout || direction,
+          'has-wrap': this.useWrap === true,
+          'fit-content': this.fitContent === true,
           [`align-${alignValue}`]: align || alignment,
-          [`has-space-${this.space}`]: space,
-          [`has-space-row-${this.spaceRow}`]: spaceRow,
-          [`has-space-col-${this.spaceColumn}`]: spaceColumn,
-          [`p-${this.p}`]: !!this.p,
-          [`px-${this.px}`]: px,
-          [`py-${this.py}`]: py,
+          [`has-space-${space}`]: hasValue(this.space),
+          [`has-space-row-${spaceRow}`]: hasValue(this.spaceRow),
+          [`has-space-col-${spaceColumn}`]: hasValue(this.spaceColumn),
+          [`p-${p}`]: hasValue(this.p),
+          [`px-${px}`]: hasValue(this.px),
+          [`py-${py}`]: hasValue(this.py),
         }}
       >
         <slot></slot>

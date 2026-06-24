@@ -1,13 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  stopEventBubbling,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import { STEPS_COLORS, StepsColor, StepsChangeDetail } from '../steps.interfaces'
 
@@ -42,28 +35,28 @@ export class Steps implements DsComponentInterface {
    * Accent color applied to inactive circles and connector lines.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...STEPS_COLORS)
+  @OneOf(STEPS_COLORS)
   readonly color: StepsColor = ''
 
   /**
    * Accessible label for the navigation landmark (navigation variant only).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * The `name` of the currently selected ds-step (panels variant).
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('string')
+  @Type('string')
   value?: string | null
 
   /**
    * If `true`, the steplist is displayed vertically.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly vertical: boolean = false
 
   /**
@@ -72,19 +65,6 @@ export class Steps implements DsComponentInterface {
   @Event() dsChange!: EventEmitter<StepsChangeDetail>
 
   private steplistEl?: HTMLElement
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
 
   componentDidLoad() {
     this.setup()
@@ -98,8 +78,6 @@ export class Steps implements DsComponentInterface {
    * PROPERTY VALIDATION
    * ------------------------------------------------------
    */
-
-  // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
    * PUBLIC LISTENERS

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Method, Prop, State, h, Host } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation, ValidateEmptyOrOneOf } from '@utils'
+import { Logger, type LogInstance, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -62,14 +62,14 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
    * Matches the `ds-container` sizing variants.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(FOOTER_CONTAINERS)
+  @OneOf(FOOTER_CONTAINERS)
   readonly container: FooterContainer = ''
 
   /**
    * If `true` the language selection will be hidden.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly hideLanguageSelection: boolean = false
 
   /**
@@ -77,7 +77,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
    * User must provide links via the `links` slot.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disableDefaultLinks: boolean = false
 
   /**
@@ -85,7 +85,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
    * User must provide social links via the `social-links` slot.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disableDefaultSocialLinks: boolean = false
 
   /**
@@ -93,7 +93,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
    * If not provided, uses the text from config based on region and language.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly legalText: string | undefined = undefined
 
   /**
@@ -104,25 +104,9 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
   // ========================================================================
   // LIFECYCLE
   // ========================================================================
-
-  connectedCallback(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
   // ========================================================================
   // PROPERTY VALIDATION
   // ========================================================================
-
-  private validateProps(): void {
-    // Validation delegated to decorators and setupValidation(this)
-  }
-
   // ========================================================================
   // PUBLIC METHODS
   // ========================================================================

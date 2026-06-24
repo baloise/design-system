@@ -1,14 +1,6 @@
 import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
-import {
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -48,26 +40,22 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf(...CLOSE_SIZES)
-  size: CloseSize = ''
-  @Watch('size')
-  sizeChanged(newValue: CloseSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop({ reflect: true })
+  @OneOf(CLOSE_SIZES)
+  readonly size: CloseSize = ''
 
   /**
    * If `true` it supports dark backgrounds.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the close component will be disabled and not interactive.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -75,14 +63,14 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    * This is useful when you want to use the close component outside of a notification or alert, for example as a standalone button.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly button: boolean = false
 
   /**
    * Defines the color of the button variant. Only applicable if `button` is `true`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...BUTTON_COLORS)
+  @OneOf(BUTTON_COLORS)
   readonly buttonColor: ButtonColor = ''
 
   /**
@@ -95,16 +83,9 @@ export class Close implements DsComponentInterface, DsConfigObserver {
     this.region = state.region
   }
 
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
-
   render() {
     const label = i18nDsClose[this.language].close
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
 
     if (this.button) {
       return (
@@ -115,7 +96,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
             disabled={this.disabled}
             inverted={this.inverted}
             color={this.buttonColor}
-            size={this.size === 'sm' ? 'sm' : this.size === 'md' ? 'lg' : ''}
+            size={size === 'sm' ? 'sm' : size === 'md' ? 'lg' : ''}
           >
             {label}
           </ds-button>
@@ -126,7 +107,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
     return (
       <Host
         class={{
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
         }}

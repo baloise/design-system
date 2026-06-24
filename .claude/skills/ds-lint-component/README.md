@@ -23,7 +23,7 @@ The skill is invoked by Claude via:
 Claude parses the skill definitions and uses the reference documentation to:
 
 1. **Analyze** the component's TypeScript code structure
-2. **Check** for violations (missing validators, incorrect divider formatting, missing setupValidation calls)
+2. **Check** for violations (missing validators, incorrect divider formatting)
 3. **Report** violations to the user in a human-readable format
 4. **Fix** violations using the fix operations documented in REFERENCE.md
 
@@ -45,7 +45,7 @@ Claude parses the skill definitions and uses the reference documentation to:
 The `implementation.js` includes basic regex-based pattern matching. For production use, consider:
 
 1. **TypeScript AST Parsing** — Use `@typescript-eslint/parser` for accurate AST analysis
-2. **Decorator Detection** — Improve `@Validate*` decorator detection and type matching
+2. **Decorator Detection** — Improve `@Type`/`@OneOf`/`@Required` decorator detection and type matching
 3. **File Rewriting** — Enhance the `fixFile()` function to actually apply fixes
 4. **Enum Constant Discovery** — Parse `.interfaces.ts` files to find enum constants
 

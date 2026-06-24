@@ -5,10 +5,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrType,
-  setupValidation,
-  ValidateEmptyOrOneOf,
   hasValue,
+  OneOf,
+  Type,
 } from '@utils'
 import {
   TAG_COLORS,
@@ -55,54 +54,50 @@ export class Tag implements DsComponentInterface {
    * The theme type of the tag.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = false
 
   /**
    * The theme type of the tag.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TAG_COLORS)
+  @OneOf(TAG_COLORS)
   readonly color: TagColor = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * Overwrites the default color to invalid style
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * Choosing left or center the tag is aligned to that side in the ds-card.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TAG_PLACEMENTS)
+  @OneOf(TAG_PLACEMENTS)
   readonly position: TagPlacement = ''
 
   /**
    * The shape of the tag element like square or pill
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TAG_SHAPES)
+  @OneOf(TAG_SHAPES)
   readonly shape: TagShape = ''
 
   /**
    * The size of the tag element
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...TAG_SIZES)
-  size: TagSize = ''
-  @Watch('size')
-  sizeChanged(newValue: TagSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(TAG_SIZES)
+  readonly size: TagSize = ''
 
   /**
    * Emitted when the input got clicked.
@@ -114,17 +109,8 @@ export class Tag implements DsComponentInterface {
    * ------------------------------------------------------
    */
 
-  connectedCallback(): void {
-    setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
   componentWillLoad() {
     this.inheritedAttributesClose = inheritAttributes(this.el, ['tabindex'])
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   /**
@@ -133,10 +119,13 @@ export class Tag implements DsComponentInterface {
    */
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
           [`is-${this.color}`]: hasValue(this.color),
+          [`is-${size}`]: hasValue(this.size),
           [`is-shape-${this.shape}`]: hasValue(this.shape),
           'is-closable': this.closable,
           'is-disabled': this.disabled,

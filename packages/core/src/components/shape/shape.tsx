@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
-import { Logger, type LogInstance, ValidateEmptyOrOneOf, setupValidation } from '@utils'
+import { Logger, type LogInstance, OneOf } from '@utils'
 import {
   SHAPE_COLORS,
   SHAPE_ROTATIONS,
@@ -42,35 +42,22 @@ export class Shape implements DsComponentInterface {
    * The shape color
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SHAPE_COLORS)
+  @OneOf(SHAPE_COLORS)
   readonly color: ShapeColor = 'green'
 
   /**
    * The shape rotation
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SHAPE_ROTATIONS)
+  @OneOf(SHAPE_ROTATIONS)
   readonly rotation: ShapeRotation = '0'
 
   /**
    * The shape variation
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SHAPE_VARIATIONS)
+  @OneOf(SHAPE_VARIATIONS)
   readonly variation: ShapeVariation = '1'
-
-  /**
-   * LIFECYCLE
-   * ─────────────────────────────────────────────────────
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
 
   /**
    * RENDER

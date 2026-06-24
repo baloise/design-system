@@ -1,13 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  stopEventBubbling,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -64,14 +57,14 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CAROUSEL_CONTROLS)
+  @OneOf(CAROUSEL_CONTROLS)
   readonly controls: CarouselControls = 'dots'
 
   /**
    * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CAROUSEL_VARIANTS)
+  @OneOf(CAROUSEL_VARIANTS)
   readonly variant: CarouselVariant = 'slide'
 
   /**
@@ -84,21 +77,21 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    * Accessible label for the carousel region.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * Number of items to advance per arrow click.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly steps: number = 1
 
   /**
    * Name of the currently selected ds-carousel-item.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('string')
+  @Type('string')
   value?: string | null
 
   /**
@@ -125,19 +118,6 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   private dragStartScrollLeft = 0
   private velocityHistory: Array<{ x: number; t: number }> = []
 
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   componentDidLoad() {
     this.setup()
     this.initScroll()
@@ -160,8 +140,6 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    * PROPERTY VALIDATION
    * ------------------------------------------------------
    */
-
-  // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
    * PUBLIC LISTENERS

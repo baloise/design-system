@@ -2513,7 +2513,7 @@ export namespace Components {
         "alignment": StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default 'column'
+          * @default ''
          */
         "direction": StackDirection;
         /**
@@ -2521,11 +2521,6 @@ export namespace Components {
           * @default false
          */
         "fitContent": boolean;
-        /**
-          * **Deprecated:** Use direction instead.
-          * @default ''
-         */
-        "layout": StackLayout;
         /**
           * Defines the padding of the stack element.
          */
@@ -7030,7 +7025,7 @@ declare namespace LocalJSX {
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default 'column'
+          * @default ''
          */
         "direction"?: StackDirection;
         /**
@@ -7038,11 +7033,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "fitContent"?: boolean;
-        /**
-          * **Deprecated:** Use direction instead.
-          * @default ''
-         */
-        "layout"?: StackLayout;
         /**
           * Defines the padding of the stack element.
          */
@@ -8254,7 +8244,6 @@ declare namespace LocalJSX {
         "alignment": StackAlignment;
         "direction": StackDirection;
         "fitContent": boolean;
-        "layout": StackLayout;
         "p": StackPadding;
         "px": StackPadding;
         "py": StackPadding;

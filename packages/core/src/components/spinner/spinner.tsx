@@ -1,16 +1,7 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import {
-  raf,
-  rOnLoad,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { raf, rOnLoad, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -72,14 +63,14 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * **Deprecated:** Use inverted="true" for white spinner instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SPINNER_COLORS)
+  @OneOf(SPINNER_COLORS)
   readonly color: SpinnerColor = 'blue'
 
   /**
    * If `true` the component will not add the spinner animation svg
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly deactivated: boolean = false
   @Watch('deactivated')
   deactivatedChanged(newValue: boolean, oldValue: boolean) {
@@ -96,48 +87,42 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * If `true` the component can be used on dark background
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * Defines the size of the spinner. If `sm` the spinner is smaller.
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...SPINNER_SIZES)
+  @OneOf(SPINNER_SIZES)
   size: SpinnerSize = ''
 
   /**
    * **Deprecated:** Use size="sm" instead.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly small: boolean = false
-  @Watch('small')
-  smallChanged(newValue: boolean, oldValue: boolean) {
-    if (newValue !== oldValue && newValue === true) {
-      this.size = 'sm'
-    }
-  }
 
   /**
    * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * Position of the visible label relative to the spinner animation.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SPINNER_LABEL_POSITIONS)
+  @OneOf(SPINNER_LABEL_POSITIONS)
   readonly labelPosition: SpinnerLabelPosition = 'right'
 
   /**
    * Defines the look of the spinner
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...SPINNER_VARIATIONS)
+  @OneOf(SPINNER_VARIATIONS)
   readonly variation: SpinnerVariation = 'logo'
   @Watch('variation')
   variationChanged(newValue: SpinnerVariation, oldValue: SpinnerVariation) {
@@ -154,11 +139,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    setupValidation(this)
-    this.smallChanged(this.small, false)
-  }
 
   componentDidLoad() {
     if (this.variation === 'logo') {
@@ -283,6 +263,11 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   render() {
     const ariaLabel = this.label || i18nDsSpinner[this.language].loading
 
+    let size = this.size
+    if (this.small === true) {
+      size = 'sm'
+    }
+
     return (
       <Host
         role="progressbar"
@@ -290,7 +275,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-animated': this.animated,
           'is-circle': this.variation === 'circle',
-          'is-sm': this.size === 'sm',
+          'is-sm': size === 'sm',
           'is-white': this.color === 'white',
           'is-label-right': hasValue(this.label) && this.labelPosition === 'right',
           'is-label-bottom': hasValue(this.label) && this.labelPosition === 'bottom',

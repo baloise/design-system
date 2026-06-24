@@ -1,15 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
-import {
-  Logger,
-  type LogInstance,
-  ScrollHandler,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-  wait,
-} from '@utils'
+import { Logger, type LogInstance, ScrollHandler, wait, OneOf, Type } from '@utils'
 import { DrawerPresentDetail, DrawerDismissDetail, DRAWER_CONTAINERS, DrawerContainer } from './drawer.interfaces'
 
 /**
@@ -52,7 +44,7 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
    * If `true` the drawer is open.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   open: boolean = false
 
   @Watch('open')
@@ -64,21 +56,21 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
    * If `true`, the drawer can be dismissed via the Escape key and shows a close button.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = true
 
   /**
    * If `true`, clicking the backdrop (outside the panel) dismisses the drawer.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly backdropDismiss: boolean = true
 
   /**
    * Accessible label for the drawer dialog (sets aria-label on the dialog element).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
@@ -86,7 +78,7 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
    * Matches the `ds-container` sizing variants.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(DRAWER_CONTAINERS)
+  @OneOf(DRAWER_CONTAINERS)
   readonly container: DrawerContainer = 'default'
 
   /**
@@ -112,7 +104,6 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.scrollHandler.connect()
   }
 
@@ -122,10 +113,6 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
     if (this.open) {
       this.runOpen()
     }
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   disconnectedCallback(): void {

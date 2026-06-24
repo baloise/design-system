@@ -6,13 +6,12 @@ import {
   dsBreakpoints,
   Logger,
   type LogInstance,
-  ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
-  setupValidation,
   ScrollHandler,
   FocusHandler,
   ListenToResize,
   type ResizeObserver,
+  OneOf,
+  Type,
 } from '@utils'
 import {
   DsComponentInterface,
@@ -79,7 +78,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
    * If `true` the navbar will open the sidebar menu.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly open: boolean = false
 
   @Watch('open')
@@ -95,7 +94,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
    * If `true` the navbar will use a light color scheme.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly light: boolean = false
 
   /**
@@ -103,7 +102,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
    * Matches the `ds-container` sizing variants.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(NAVBAR_CONTAINERS)
+  @OneOf(NAVBAR_CONTAINERS)
   readonly container: NavbarContainer = ''
 
   /**
@@ -133,13 +132,8 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
 
   connectedCallback(): void {
     this.openChanged(this.open)
-    setupValidation(this)
     this.scrollHandler.connect()
     this.focusHandler.connect()
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   componentDidLoad(): void {

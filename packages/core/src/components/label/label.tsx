@@ -5,9 +5,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
+  OneOf,
+  Type,
+  hasValue,
 } from '@utils'
 import {
   DsConfigObserver,
@@ -54,7 +54,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -63,28 +63,28 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * So, any given label element can be associated with only one form control.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly htmlFor: string = ''
 
   /**
    * Define the id of the native label element
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly htmlId: string = `ds-lbl-${labelIds++}`
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly hovered: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -93,14 +93,14 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * as these elements require a width to overflow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly pressed: boolean = false
 
   /**
@@ -108,41 +108,28 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * `false` an optional label is added to the label..
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = true
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...LABEL_SIZES)
-  size?: LabelSize
-  @Watch('size')
-  sizeChanged(newValue: LabelSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(LABEL_SIZES)
+  readonly size?: LabelSize
 
   /**
    * If `true` the component gets a valid green style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly valid: boolean = false
 
   /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   /**
    * PUBLIC LISTENERS
@@ -169,6 +156,8 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
     const id = this.htmlId
     const htmlFor = this.htmlFor
 
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
@@ -178,7 +167,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
           'is-valid': this.valid,
           'is-invalid': this.invalid,
           'has-no-wrap': this.noWrap,
-          [`is-${this.size}`]: !!this.size,
+          [`is-${size}`]: hasValue(this.size),
         }}
       >
         <label id={id} part="label" htmlFor={htmlFor}>

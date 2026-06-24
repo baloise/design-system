@@ -2,17 +2,7 @@ import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floati
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
-import {
-  FocusHandler,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  dsBrowser,
-  isEscapeKey,
-  setupValidation,
-  wait,
-} from '@utils'
+import { FocusHandler, Logger, type LogInstance, dsBrowser, isEscapeKey, wait, OneOf, Type } from '@utils'
 import {
   POPUP_PLACEMENTS,
   POPUP_ROLES,
@@ -74,7 +64,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    * If `true` the popup is open.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   open: boolean = false
 
   @Watch('open')
@@ -104,14 +94,14 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    * Preferred placement of the popup relative to the trigger.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...POPUP_PLACEMENTS)
+  @OneOf(POPUP_PLACEMENTS)
   readonly placement: PopupPlacement = 'bottom'
 
   /**
    * Offset in pixels between the trigger element and the popup panel.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly offset: number = 8
 
   /**
@@ -120,49 +110,49 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    * Use "dialog" for rich content, "listbox" or "menu" for interactive option lists.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...POPUP_ROLES)
+  @OneOf(POPUP_ROLES)
   readonly role: PopupRole = 'dialog'
 
   /**
    * If `true`, the popup can be dismissed via the Escape key and shows a close button.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = false
 
   /**
    * If `true`, clicking outside the popup panel dismisses it.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly backdropDismiss: boolean = false
 
   /**
    * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly backdrop: boolean = false
 
   /**
    * Group name for mutual-exclusion. Only one popup within the same group is open at a time.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly group: string | undefined = undefined
 
   /**
    * Accessible label for the popup panel (sets aria-label on the panel element).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly arrow: boolean = false
 
   /**
@@ -170,7 +160,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    * When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly trapFocus: boolean | undefined = undefined
 
   /**
@@ -196,7 +186,6 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.registerGroup()
   }
 
@@ -208,10 +197,6 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
     if (this.open) {
       this.runPresent()
     }
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   disconnectedCallback(): void {

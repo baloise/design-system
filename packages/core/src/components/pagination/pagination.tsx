@@ -18,10 +18,9 @@ import {
   dsBreakpoints,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
   hasValue,
-  setupValidation,
+  OneOf,
+  Type,
 } from '@utils'
 import { DsComponentInterface, DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
@@ -71,21 +70,21 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Align the buttons to start, center or end
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PAGINATION_ALIGNMENTS)
+  @OneOf(PAGINATION_ALIGNMENTS)
   readonly align: PaginationAlignment = ''
 
   /**
    * Disables component
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * The label for the navigation landmark
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
@@ -98,28 +97,28 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Size of the buttons
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PAGINATION_SIZES)
+  @OneOf(PAGINATION_SIZES)
   readonly size: PaginationSize = ''
 
   /**
    * If 'true, the pagination will be sticky to the top
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly sticky: boolean = false
 
   /**
    * The label for the next page button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly textNext: string = ''
 
   /**
    * The label for the previous page button
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly textPrevious: string = ''
 
   /**
@@ -151,7 +150,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Defines the layout of the pagination
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...PAGINATION_VARIANTS)
+  @OneOf(PAGINATION_VARIANTS)
   readonly variant: PaginationVariant = ''
 
   /**
@@ -159,21 +158,8 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    */
   @Event({ eventName: 'dsChange' }) dsChangeEventEmitter!: EventEmitter<PaginationChangeDetail>
 
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
   componentWillLoad() {
     this.topChanged(this.top)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   /**

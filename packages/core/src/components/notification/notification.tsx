@@ -4,10 +4,9 @@ import {
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
   hasValue,
-  setupValidation,
+  OneOf,
+  Type,
 } from '@utils'
 import {
   NOTIFICATION_COLORS,
@@ -55,14 +54,14 @@ export class Notification implements DsComponentInterface {
    * If `true` the notification will be displayed as an alert, otherwise as a status message.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly alert: boolean = false
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = false
 
   /**
@@ -75,33 +74,29 @@ export class Notification implements DsComponentInterface {
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...NOTIFICATION_COLORS)
+  @OneOf(NOTIFICATION_COLORS)
   readonly color: NotificationColor = ''
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly heading: string = ''
 
   /**
    * If `true` there will be no icon provided
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly noIcon: boolean = false
 
   /**
    * Defines the size of the notification, small, medium or large.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...NOTIFICATION_SIZES)
-  size?: NotificationSize
-  @Watch('size')
-  sizeChanged(newValue: NotificationSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(NOTIFICATION_SIZES)
+  readonly size?: NotificationSize
 
   /**
    * Emitted when the close button got clicked.
@@ -117,19 +112,6 @@ export class Notification implements DsComponentInterface {
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
-  componentWillLoad(): void {
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   componentDidLoad(): void {
     this.didLoad = true
@@ -156,6 +138,7 @@ export class Notification implements DsComponentInterface {
    */
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
     const a11yAttributes: { [key: string]: string } = this.alert
       ? { 'role': 'alert', 'aria-live': 'assertive', 'aria-atomic': 'true' }
       : { 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }
@@ -166,7 +149,7 @@ export class Notification implements DsComponentInterface {
         class={{
           'has-no-icon': this.noIcon,
           [`is-${this.color}`]: hasValue(this.color),
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
         }}
       >
         <section id="notification" part="section">

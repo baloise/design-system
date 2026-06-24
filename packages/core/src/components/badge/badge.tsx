@@ -1,14 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement, Watch } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance } from '@utils'
-import {
-  normalizeDeprecatedTShirtSize,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf, Type } from '@utils'
 import {
   BADGE_SIZES,
   BADGE_COLORS,
@@ -48,63 +41,44 @@ export class Badge implements DsComponentInterface {
    * Name of the icon to show. If an icon is present, text should be hidden.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly icon: string = ''
 
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrOneOf(...BADGE_SIZES)
-  size: BadgeSize = ''
-  @Watch('size')
-  sizeChanged(newValue: BadgeSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop({ reflect: true })
+  @OneOf(BADGE_SIZES)
+  readonly size: BadgeSize = ''
 
   /**
    * Define the color for the badge.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...BADGE_COLORS)
+  @OneOf(BADGE_COLORS)
   readonly color: BadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrOneOf(...BADGE_POSITIONS)
+  @OneOf(BADGE_POSITIONS)
   readonly position: BadgePosition = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly pulse: boolean = false
 
   // ========================================================================
   // LIFECYCLE
   // ========================================================================
 
-  connectedCallback(): void {
-    this.validateProps()
-    setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
-  }
-
-  componentWillUpdate(): void {
-    this.validateProps()
-    setupValidation(this)
-  }
-
   // ========================================================================
   // PROPERTY VALIDATION
   // ========================================================================
-
-  private validateProps(): void {
-    // Validation delegated to @Prop decorators and setupValidation
-  }
 
   // ========================================================================
   // PRIVATE METHODS
@@ -115,17 +89,19 @@ export class Badge implements DsComponentInterface {
   // ========================================================================
 
   render() {
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
           [`is-${this.color}`]: hasValue(this.color),
-          [`is-${this.size}`]: hasValue(this.size),
+          [`is-${size}`]: hasValue(this.size),
           'is-pulse': this.pulse,
         }}
       >
         <span id="badge" part="badge">
           <slot></slot>
-          {this.size !== 'small' && hasValue(this.icon) ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
+          {size !== 'sm' && hasValue(this.icon) ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
         </span>
       </Host>
     )

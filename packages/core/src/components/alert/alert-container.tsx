@@ -1,16 +1,5 @@
 import { Element, Component, Method, h, Host, Prop, State } from '@stencil/core'
-import {
-  raf,
-  wait,
-  createPausableTimer,
-  Logger,
-  type LogInstance,
-  PausableTimer,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  ValidateRequiredAndOneOf,
-  setupValidation,
-} from '@utils'
+import { raf, wait, createPausableTimer, Logger, type LogInstance, PausableTimer, OneOf, Required, Type } from '@utils'
 import {
   Alert,
   AlertComponent,
@@ -56,39 +45,23 @@ export class AlertContainer implements DsComponentInterface {
    * If `true`, alerts animate in and out.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly animated: boolean = false
 
   /**
    * Defines the container size constraint for the alert layout.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...ALERT_CONTAINER_SIZES)
+  @OneOf(ALERT_CONTAINER_SIZES)
   readonly container: AlertContainerSize = ''
 
   /**
    * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
    */
   @Prop()
-  @ValidateRequiredAndOneOf(...ALERT_TYPES)
+  @Required()
+  @OneOf(ALERT_TYPES)
   readonly type: AlertType = 'toast'
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillLoad() {
-    // component setup
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
 
   /**
    * PUBLIC METHODS

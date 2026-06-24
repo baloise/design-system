@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, ValidateEmptyOrType, ValidateRequiredAndType, setupValidation } from '@utils'
+import { Logger, type LogInstance, Required, Type } from '@utils'
 
 /**
  * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
@@ -33,7 +33,7 @@ export class Tab implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly fullwidth: boolean = false
 
   /**
@@ -41,14 +41,15 @@ export class Tab implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.
    */
   @Prop({ reflect: true })
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly name!: string
 
   /**
@@ -56,14 +57,14 @@ export class Tab implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly navigation: boolean = false
 
   /**
    * If `true`, this tab is currently selected. Set by the parent ds-tabs.
    */
   @Prop({ mutable: true, reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly selected: boolean = false
 
   /**
@@ -71,33 +72,17 @@ export class Tab implements DsComponentInterface {
    * @internal
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly vertical: boolean = false
 
   /**
    * Emitted when the user clicks this tab (panels mode only).
    */
   @Event() dsTabSelect!: EventEmitter<{ name: string }>
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
-
   /**
    * PROPERTY VALIDATION
    * ------------------------------------------------------
    */
-
-  // Validation is handled by @Validate decorators via setupValidation(this)
 
   /**
    * EVENT HANDLERS

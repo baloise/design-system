@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  ElementStateInfo,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  hasValue,
-  setupValidation,
-} from '@utils'
+import { ElementStateInfo, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   TEXT_ALIGNS,
@@ -51,63 +43,63 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * If `true` the component gets a invalid style.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TEXT_ALIGNS)
+  @OneOf(TEXT_ALIGNS)
   readonly align: TextAlign = ''
 
   /**
    * If `true` the text is bold
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly bold: boolean = false
 
   /**
    * Defines the color of the text.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TEXT_COLORS)
+  @OneOf(TEXT_COLORS)
   readonly color: TextColor = ''
 
   /**
    * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the text has heading font family
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly heading: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly hovered: boolean = false
 
   /**
    * If `true` the text is shown as a display inline
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inline: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
@@ -116,56 +108,43 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * as these elements require a width to overflow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly pressed: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
    * Defines the size of the paragraph
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...TEXT_SIZES)
+  @OneOf(TEXT_SIZES)
   size?: TextSize
 
   /**
    * Defines at which position the heading has spacing.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...TEXT_SPACES)
+  @OneOf(TEXT_SPACES)
   readonly space: TextSpace = ''
 
   /**
    * If `true` the text has subtitle font family
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly subtitle: boolean = false
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
-  }
 
   /**
    * PRIVATE METHODS

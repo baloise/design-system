@@ -1,14 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { DsComponentInterface } from '@global'
-import {
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrType,
-  ValidateEmptyOrOneOf,
-  setupValidation,
-  stopEventBubbling,
-  areArraysEqual,
-} from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, areArraysEqual, OneOf, Type } from '@utils'
 import { defaultConfig, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Field, FieldInterface } from '../input/field.util'
@@ -67,7 +59,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
    * The value of the file upload (array of selected files).
    */
   @Prop({ mutable: true })
-  @ValidateEmptyOrType('array')
+  @Type('array')
   value: File[] = []
 
   @Watch('value')
@@ -82,126 +74,126 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly name: string = this.fileUploadId
 
   /**
    * The label of the file upload, displayed in the drop zone area.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = 'Choose or drop a file...'
 
   /**
    * The text displayed inside the drop zone. Defaults to localized "Drag and drop or choose file(s) to upload".
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly dropZoneLabel: string = ''
 
   /**
    * The description of the file upload, displayed below the drop zone.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly description: string = ''
 
   /**
    * The text to display when the file upload is in an invalid state.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly invalidText: string = ''
 
   /**
    * Defines the color of the file upload. The default value is `primary`.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  @OneOf(INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * If `true` the component gets an invalid style.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * If `true` multiple file upload is possible.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly multiple: boolean = true
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the element can not be mutated, meaning the user can not edit the control.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true` the file upload is disabled and shows a spinner.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly loading: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = false
 
   /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly accept: string = ''
 
   /**
    * Allowed number of files in the bundle.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly maxFiles?: number
 
   /**
    * Allowed max file size in bytes.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly maxFileSize?: number
 
   /**
    * Allowed max bundle size in bytes.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly maxBundleSize?: number
 
   /**
    * If `true` below the drop-zone area it generates a file list.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly hasFileList: boolean = true
 
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly autoInvalidOff: boolean = false
 
   /**
@@ -250,10 +242,6 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
 
   connectedCallback() {
     this.initialValue = [...(this.value || [])]
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   componentDidLoad() {

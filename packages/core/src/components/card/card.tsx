@@ -1,13 +1,5 @@
 import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
-import {
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
-  setupValidation,
-  hasValue,
-} from '@utils'
+import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   CARD_ALIGNMENTS,
   CARD_IMAGE_TEASERS,
@@ -48,21 +40,21 @@ export class Card implements DsComponentInterface {
    * If `true` the card loses its shadow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly flat: boolean = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly dense: boolean = false
 
   /**
@@ -70,84 +62,71 @@ export class Card implements DsComponentInterface {
    * it is displayed with a large image.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CARD_IMAGE_TEASERS)
+  @OneOf(CARD_IMAGE_TEASERS)
   readonly imageTeaser: CardImageTeaser = ''
 
   /**
    * If `true` the card loses its border radius.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly square: boolean = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the card has a hover effect.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly clickable: boolean = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly selected: boolean = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly fullheight: boolean = false
 
   /**
    * Defines the text alignment of the card content.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CARD_ALIGNMENTS)
+  @OneOf(CARD_ALIGNMENTS)
   readonly align: CardAlignment = ''
 
   /**
    * Defines the space of the card content.
    */
-  @Prop({ mutable: true })
-  @ValidateEmptyOrOneOf(...CARD_SPACES)
-  space?: CardSpace
-  @Watch('space')
-  spaceChanged(newValue: CardSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(CARD_SPACES)
+  readonly space?: CardSpace
 
   /**
    * Defines the color of the card.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...CARD_COLORS)
+  @OneOf(CARD_COLORS)
   readonly color: CardColor = ''
-
-  connectedCallback(): void {
-    setupValidation(this)
-    this.space = normalizeDeprecatedTShirtSize(this.space)
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
-  }
 
   private get colorTypeClass(): string {
     const color = !hasValue(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
@@ -174,6 +153,7 @@ export class Card implements DsComponentInterface {
   render() {
     const hasOutline = !!this.outlined
     const isImageTeaser = hasValue(this.imageTeaser)
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     return (
       <Host
@@ -183,7 +163,7 @@ export class Card implements DsComponentInterface {
           [`is-square`]: this.square,
           [`is-dense`]: this.dense,
           [`is-${this.colorTypeClass}`]: hasValue(this.color) && this.colorTypeClass !== 'white',
-          [`has-space-${this.space}`]: hasValue(this.space),
+          [`has-space-${space}`]: hasValue(this.space),
           [`is-outlined`]: hasOutline,
           [`is-flat`]: hasOutline || !!this.flat,
           [`is-tile`]: !!this.tile,

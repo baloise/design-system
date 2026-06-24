@@ -9,8 +9,7 @@ import {
   type DsLanguage,
   type DsRegion,
 } from '@global'
-import { Logger, type LogInstance } from '@utils'
-import { ValidateEmptyOrType, setupValidation } from '@utils'
+import { Logger, type LogInstance, Type } from '@utils'
 import { i18nDsDataItem } from './data-item.i18n'
 
 /**
@@ -47,21 +46,21 @@ export class DataItem implements DsComponentInterface, DsConfigObserver {
    * If `true` the item gets a lighter font color.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the text will break and the height of the item increases.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly multiline: boolean = false
 
   /**
    * If `true` a small button with an edit icon is shown on the right.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly editable: boolean = false
 
   /**
@@ -69,18 +68,11 @@ export class DataItem implements DsComponentInterface, DsConfigObserver {
    * When omitted the label is localised from the language config.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly editLabel: string | undefined = undefined
 
   connectedCallback(): void {
-    this.validateProps()
-    setupValidation(this)
     this.assignSlotsToComponents()
-  }
-
-  componentWillUpdate(): void {
-    this.validateProps()
-    setupValidation(this)
   }
 
   @Method()
@@ -92,10 +84,6 @@ export class DataItem implements DsComponentInterface, DsConfigObserver {
       const label = i18nDsDataItem[state.language]?.editLabel || i18nDsDataItem.en.editLabel
       this.innerEditLabel = label
     }
-  }
-
-  private validateProps(): void {
-    // Validation delegated to @Prop decorators and setupValidation
   }
 
   private assignSlotsToComponents(): void {

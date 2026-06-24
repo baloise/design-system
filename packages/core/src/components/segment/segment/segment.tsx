@@ -1,13 +1,5 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State } from '@stencil/core'
-import {
-  Logger,
-  type LogInstance,
-  stopEventBubbling,
-  isDescendant,
-  ListenToResize,
-  ValidateEmptyOrType,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, isDescendant, ListenToResize, Type } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { SegmentItemInterface } from '../segment-item.type'
@@ -58,77 +50,77 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    * If `true`, the segment items can be deselected.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly allowEmptySelection: boolean = false
 
   /**
    * The description of the input, which is displayed below the input field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true`, the segment only shows icons without labels.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly iconOnly: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * The text to display when the input is in an invalid state.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly invalidText: string = ''
 
   /**
    * The label of the input, which is displayed above the input field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * Shows a loading indicator at the end of the input and replaces the end slot content.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly loading: boolean = false
 
   /**
    * The name of the segment items in the group. Child items will inherit the name.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly name: string = this.inputId
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = true
 
   /**
@@ -140,21 +132,21 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    * Displays the segment items vertically
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly vertical: boolean = false
 
   /**
    * Displays the segment items vertically on mobile
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly verticalOnMobile: boolean = false
 
   /**
    * If `true`, segment items expand to fill the available width equally.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly wide: boolean = false
 
   /**
@@ -178,7 +170,6 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    */
 
   connectedCallback() {
-    setupValidation(this)
     this.initialValue = this.value
     this.internals.setFormValue(this.value)
     this.resizeObserver = new ResizeObserver(() => {
@@ -198,10 +189,6 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   componentDidRender() {
     this.updatePill()
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   /**

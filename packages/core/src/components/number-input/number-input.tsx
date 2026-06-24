@@ -25,10 +25,9 @@ import {
   type LogInstance,
   getDecimalSeparator,
   getThousandSeparator,
-  ValidateEmptyOrOneOf,
-  ValidateEmptyOrType,
   hasValue,
-  setupValidation,
+  OneOf,
+  Type,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
@@ -97,14 +96,14 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Defines the color state of the input.
    */
   @Prop()
-  @ValidateEmptyOrOneOf(...INPUT_COLORS)
+  @OneOf(INPUT_COLORS)
   readonly color: InputColor = 'primary'
 
   /**
    * Milliseconds to wait before triggering `dsChange` after each keystroke.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly debounce: number = 0
   @Watch('debounce')
   debounceChanged() {
@@ -115,112 +114,112 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    * Number of allowed decimal places. `0` means integers only.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly decimal: number = 0
 
   /**
    * The description displayed below the field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly description: string = ''
 
   /**
    * If `true`, the element is not mutable, focusable, or submitted with the form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * When `true`, displays `0` instead of an empty field when value is null.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly exactNumber: boolean = false
 
   /**
    * If `true` the component gets an invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * Text shown in the description area when `invalid` is true.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly invalidText: string = ''
 
   /**
    * The label displayed above the field.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * The maximum value.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly max: string = ''
 
   /**
    * The minimum value.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly min: string = ''
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly name: string = this.numberInputId
 
   /**
    * When `true`, only positive numbers are accepted (blocks the minus sign).
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly onlyPositive: boolean = false
 
   /**
    * Overrides the auto-generated input validation pattern.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly pattern: string = ''
 
   /**
    * Instructional text shown when the input has no value.
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly placeholder: string = ''
 
   /**
    * If `true`, the element cannot be edited by the user.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly readonly: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop({ reflect: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly required: boolean = true
 
   /**
    * Text appended to the formatted value after blur (e.g. `"CHF"`).
    */
   @Prop()
-  @ValidateEmptyOrType('string')
+  @Type('string')
   readonly suffix: string = ''
 
   /**
@@ -277,7 +276,6 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    */
 
   connectedCallback() {
-    setupValidation(this)
     this.debounceChanged()
     this.control.connectedCallback()
   }
@@ -286,10 +284,6 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
     this.inputPattern = this.createPattern()
     this.valueChanged(this.value)
-  }
-
-  componentWillUpdate() {
-    setupValidation(this)
   }
 
   componentDidLoad() {

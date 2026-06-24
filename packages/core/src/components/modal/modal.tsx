@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateEmptyOrType, setupValidation, wait, ScrollHandler } from '@utils'
+import { Logger, type LogInstance, wait, ScrollHandler, Type } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import { ModalPresentDetail, ModalDismissDetail } from './modal.interfaces'
 
@@ -49,7 +49,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
    * If `true` the modal is open.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   open: boolean = false
 
   @Watch('open')
@@ -65,21 +65,21 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
    * If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly closable: boolean = true
 
   /**
    * Width of the modal in pixels.
    */
   @Prop()
-  @ValidateEmptyOrType('number')
+  @Type('number')
   readonly modalWidth: number = 640
 
   /**
    * If `true`, the modal covers the full viewport.
    */
   @Prop()
-  @ValidateEmptyOrType('boolean')
+  @Type('boolean')
   readonly fullscreen: boolean = false
 
   /**
@@ -105,7 +105,6 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.scrollHandler.connect()
   }
 
@@ -115,10 +114,6 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     if (this.open) {
       this.runOpen()
     }
-  }
-
-  componentWillUpdate(): void {
-    setupValidation(this)
   }
 
   disconnectedCallback(): void {

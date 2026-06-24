@@ -179,6 +179,17 @@ export const config: Config = {
         sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
       },
     /**
+     * Since Stencil v4.42, Stencil supports automatically generating a Custom Elements Manifest (CEM) file in your project.
+     * The CEM format is a standardized JSON format for describing custom elements and is supported by a variety of tools in the web components ecosystem.
+     *
+     * {@link https://stenciljs.com/docs/docs-custom-elements-manifest}
+     */
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'docs-custom-elements-manifest',
+        file: 'docs/cem.json',
+      },
+    /**
      * Custom output target that generates docs JSON without timestamps and file paths.
      * Enriches components with design tokens from Base.tokens.json and extracts CSS variable docs
      * from component SCSS files. Produces a clean, reusable docs/components.json for consistent git diffs.

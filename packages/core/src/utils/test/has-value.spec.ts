@@ -1,4 +1,4 @@
-import { hasValue } from '../property-checkers'
+import { hasValue } from '../has-value'
 
 describe('hasValue', () => {
   test('returns false for undefined', () => {

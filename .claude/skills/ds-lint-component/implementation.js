@@ -5,9 +5,9 @@ const { globSync } = require('glob')
 const REPO_ROOT = path.resolve(__dirname, '../../..')
 
 const VALIDATOR_PATTERNS = {
-  string: "ValidateEmptyOrType('string')",
-  number: "ValidateEmptyOrType('number')",
-  boolean: "ValidateEmptyOrType('boolean')",
+  string: "Type('string')",
+  number: "Type('number')",
+  boolean: "Type('boolean')",
 }
 
 const SECTIONS_ORDER = [
@@ -93,21 +93,20 @@ async function lintFile(filePath) {
   const privateMethods = extractPrivateMethods(content)
   const render = extractRender(content)
   const dividers = extractDividers(content)
-  const setupValidationCalls = extractSetupValidationCalls(content)
   const componentDocs = extractComponentDocs(content)
   const propDocs = extractPropDocs(content)
   const eventDocs = extractEventDocs(content)
   const methodDocs = extractMethodDocs(content)
   const tokenViolations = checkDesignTokens(content)
 
-  // Check prop validators
+  // Check prop validators (validation runs automatically — no setupValidation needed)
   for (const prop of props) {
     if (!prop.validator) {
       violations.push({
         type: 'missing-validator',
         severity: 'error',
         prop: prop.name,
-        message: `Missing @Validate* decorator on prop "${prop.name}"`,
+        message: `Missing validation decorator (@Type/@OneOf) on prop "${prop.name}"`,
       })
     } else if (!prop.validatorMatches) {
       violations.push({
@@ -115,26 +114,6 @@ async function lintFile(filePath) {
         severity: 'error',
         prop: prop.name,
         message: `Validator type mismatch for "${prop.name}" (${prop.type})`,
-      })
-    }
-  }
-
-  // Check setupValidation calls
-  if (props.length > 0) {
-    if (!setupValidationCalls.connectedCallback) {
-      violations.push({
-        type: 'missing-setup-validation',
-        severity: 'error',
-        method: 'connectedCallback',
-        message: 'setupValidation(this) missing from connectedCallback()',
-      })
-    }
-    if (!setupValidationCalls.componentWillUpdate) {
-      violations.push({
-        type: 'missing-setup-validation',
-        severity: 'error',
-        method: 'componentWillUpdate',
-        message: 'setupValidation(this) missing from componentWillUpdate()',
       })
     }
   }
@@ -180,20 +159,28 @@ async function lintFile(filePath) {
   }
 }
 
+// Validation decorators that act as the prop's type/enum check (excludes @Required).
+const TYPE_VALIDATORS = ['Type', 'OneOf', 'Pattern', 'Url', 'DateValue', 'IsoDate', 'ArrayOf']
+
 function extractProps(content) {
-  const propPattern = /@Prop\s*\({[^}]*}\)?\s*(?:@(\w+))?\s*readonly\s+(\w+)\s*:\s*([^=\s]+)/g
+  // Capture @Prop(...) then any decorators preceding the property declaration.
+  const propPattern = /@Prop\s*\([^)]*\)\s*((?:@\w+\s*\([^)]*\)\s*)*)(?:readonly\s+)?(\w+)\s*:\s*([^=\s;]+)/g
   const props = []
   let match
 
   while ((match = propPattern.exec(content)) !== null) {
-    const validator = match[1]
+    const decoratorBlock = match[1] || ''
     const name = match[2]
     const type = match[3]
+    const decorators = (decoratorBlock.match(/@(\w+)/g) || []).map(d => d.slice(1))
+    const validator = decorators.find(d => TYPE_VALIDATORS.includes(d)) || null
 
     props.push({
       name,
       type: type.replace(/[<>[\]]/g, ''),
-      validator: validator || null,
+      decorators,
+      required: decorators.includes('Required'),
+      validator,
       validatorMatches: validator ? matchesType(validator, type) : false,
     })
   }
@@ -264,16 +251,6 @@ function extractDividers(content) {
   }
 
   return dividers
-}
-
-function extractSetupValidationCalls(content) {
-  const connectedCallbackMatch = /connectedCallback\s*\(\)[^{]*{([^}]*)setupValidation/
-  const componentWillUpdateMatch = /componentWillUpdate\s*\(\)[^{]*{([^}]*)setupValidation/
-
-  return {
-    connectedCallback: connectedCallbackMatch.test(content),
-    componentWillUpdate: componentWillUpdateMatch.test(content),
-  }
 }
 
 async function lintScssFile(filePath) {
@@ -591,12 +568,12 @@ function checkDividers(content, sections) {
 function matchesType(validator, type) {
   const normalizedType = type.replace(/[<>[\]]/g, '')
 
-  if (normalizedType === 'string' && validator === 'ValidateEmptyOrType') return true
-  if (normalizedType === 'number' && validator === 'ValidateEmptyOrType') return true
-  if (normalizedType === 'boolean' && validator === 'ValidateEmptyOrType') return true
-  if (validator === 'ValidateEmptyOrOneOf' || validator === 'ValidateRequiredAndOneOf') return true
-
-  return false
+  // Primitive props use @Type('string'|'number'|'boolean').
+  if (['string', 'number', 'boolean'].includes(normalizedType)) {
+    return validator === 'Type'
+  }
+  // Enum / other props use @OneOf or a more specific check.
+  return ['OneOf', 'Pattern', 'Url', 'DateValue', 'IsoDate', 'ArrayOf'].includes(validator)
 }
 
 async function fixFile(filePath, report) {
@@ -617,11 +594,6 @@ async function fixFile(filePath, report) {
     if (violation.type === 'missing-validator' && violation.prop) {
       // Would need more complex logic to find and add validator
       changes.push(`Would add validator for ${violation.prop}`)
-    }
-
-    if (violation.type === 'missing-setup-validation') {
-      // Would need to find lifecycle method and add call
-      changes.push(`Would add setupValidation() to ${violation.method}`)
     }
 
     if (violation.type === 'missing-divider') {
