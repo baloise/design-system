@@ -38,7 +38,6 @@
     "format": "npx prettier --write --log-level error --end-of-line lf .",
     "format:check": "npx prettier --check --log-level error --end-of-line lf .",
     "spell": "cspell --no-progress",
-    "registry": "bash registry",
     "changeset": "node scripts/create-changeset.mjs"
   },
   "private": true,

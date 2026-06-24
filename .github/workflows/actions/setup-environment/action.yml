@@ -48,11 +48,6 @@ runs:
         node-version: 24
         cache: 'npm'
 
-    - name: Update NPM registry path
-      continue-on-error: true
-      shell: bash
-      run: npm run registry
-
     - name: Create .npmrc
       if: inputs.npm-token != ''
       shell: bash
