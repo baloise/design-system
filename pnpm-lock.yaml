@@ -347,6 +347,9 @@ importers:
       express:
         specifier: 5.2.1
         version: 5.2.1
+      libs-eslint-plugin:
+        specifier: 0.0.0
+        version: link:../../libs/eslint-plugin
       libs-output-target-angular:
         specifier: 0.0.0
         version: link:../../libs/output-target-angular

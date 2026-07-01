@@ -65,6 +65,7 @@
     "compression": "1.8.1",
     "eslint": "10.5.0",
     "express": "5.2.1",
+    "libs-eslint-plugin": "0.0.0",
     "libs-output-target-angular": "0.0.0",
     "libs-output-target-web": "0.0.0",
     "serve-index": "1.9.2",
