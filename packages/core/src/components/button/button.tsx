@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement, Watch } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
 import {
   ariaBooleanToString,

@@ -3,23 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "type": "commonjs",
-  "main": "./dist/src/index.js",
+  "main": "./src/index.ts",
   "files": [
-    "dist/"
+    "src/"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.lib.json",
     "test": "vitest --run",
     "lint": "eslint ."
   },
   "exports": {
-    ".": {
-      "require": "./dist/src/index.js",
-      "default": "./src/index.ts"
-    }
+    ".": "./src/index.ts"
   },
-  "typings": "./dist/src/index.d.ts",
+  "typings": "./src/index.ts",
   "dependencies": {
     "@typescript-eslint/utils": "8.61.1"
+  },
+  "devDependencies": {
+    "eslint": "10.5.0",
+    "typescript": "5.6.3",
+    "vitest": "4.1.9"
   }
 }

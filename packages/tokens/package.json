@@ -14,9 +14,13 @@
   "module": "dist/js/base.tokens.js",
   "style": "dist/css/base.tokens.css",
   "scripts": {
-    "build": "npx tsc && node dist/out-tsc",
+    "build": "pnpm exec tsc && node dist/out-tsc",
     "build:clean": "rimraf dist",
     "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "10.5.0",
+    "typescript": "5.6.3"
   },
   "homepage": "https://design.baloise.dev",
   "security": "https://github.com/baloise/design-system/security/advisories/new",

@@ -386,9 +386,9 @@ function reportGeneration(componentName, files) {
   console.log(`\nNext steps:\n`)
   console.log(`  1. Review the generated files`)
   console.log(`  2. Fill in event handlers and state assertions`)
-  console.log(`  3. Run visual tests: npm run play -- --grep "${componentName}"`)
-  console.log(`  4. Run a11y tests: npm run play -- --grep "a11y"`)
-  console.log(`  5. Run unit tests: npm run test -- ${componentName}.util.spec.ts\n`)
+  console.log(`  3. Run visual tests: pnpm play -- --grep "${componentName}"`)
+  console.log(`  4. Run a11y tests: pnpm play -- --grep "a11y"`)
+  console.log(`  5. Run unit tests: pnpm test -- ${componentName}.util.spec.ts\n`)
 }
 
 module.exports = {

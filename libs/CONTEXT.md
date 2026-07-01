@@ -130,7 +130,7 @@ libs/<library>/
 After modifying an output target, rebuild the system:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 This runs Stencil compiler, which invokes all registered output targets.

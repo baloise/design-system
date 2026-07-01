@@ -137,28 +137,30 @@ We maintain security through automated scanning, dependency management, and secu
 
 ### Software Bill of Materials (SBOM)
 
-**Format:** npm package.json + package-lock.json  
+**Format:** pnpm package.json + pnpm-lock.yaml  
 **Location:** Root repository and each workspace package  
 **Contents:**
 
 - All runtime dependencies with versions (shipped to consumers)
 - Build and development dependencies (build-time only)
-- Locked versions in `package-lock.json` ensure reproducible builds
+- Locked versions in `pnpm-lock.yaml` ensure reproducible builds
 
 **How to generate a manifest:**
 
 ```bash
-npm ls                    # View dependency tree
-npm audit                 # Check for known vulnerabilities
-npm ls --all              # Include transitive dependencies
+pnpm list                 # View dependency tree
+pnpm audit                # Check for known vulnerabilities
+pnpm list --depth Infinity  # Include transitive dependencies
 ```
+
+A CycloneDX SBOM is generated in CI with `cdxgen` (`pnpm exec cdxgen -t pnpm -o sbom.cdx.json`).
 
 ### Secure Supply Chain Practices
 
 **Reproducible Builds:**
 
-- `package-lock.json` locked and committed to ensure identical installs across environments
-- `npm ci` (clean install) used in CI instead of `npm install`
+- `pnpm-lock.yaml` locked and committed to ensure identical installs across environments
+- `pnpm install --frozen-lockfile` (clean install) used in CI instead of `pnpm install`
 - Monorepo managed by Turborepo with deterministic task execution
 
 **Release Provenance:**
@@ -264,13 +266,13 @@ The Baloise Design System is a client-side component library. Its attack surface
 
 - **Code rules** — documented in [STYLE_GUIDE.md — Security](STYLE_GUIDE.md#security); violations are flagged during code review
 - **Static analysis** — CodeQL runs on every push and PR and weekly; catches `innerHTML` misuse, unvalidated network data, and injection patterns
-- **Dependency auditing** — `npm audit --audit-level=high` blocks CI and both release workflows if a high or critical CVE is present in a dependency
+- **Dependency auditing** — `pnpm audit --audit-level high` blocks CI and both release workflows if a high or critical CVE is present in a dependency
 - **DOMPurify** — pinned as a runtime dependency of `@baloise/ds-core`; all external HTML content passes through it before rendering
 
 ### Secure Release Process
 
 1. **Pre-release scanning:** CodeQL and Dependabot checks on all incoming PRs
-2. **Dependency audit:** `npm audit --audit-level=high` blocks the release workflow if high or critical CVEs are present
+2. **Dependency audit:** `pnpm audit --audit-level high` blocks the release workflow if high or critical CVEs are present
 3. **Changeset review:** Core team reviews all proposed version changes
 4. **Build verification:** Automated build, lint, and test suite runs before release
 5. **Release publication:** GitHub Actions publishes with provenance attestation and SBOM
@@ -283,7 +285,7 @@ The Baloise Design System is a client-side component library. Its attack surface
 - [ ] No `eval`, `new Function`, or string-argument `setTimeout`/`setInterval` introduced
 - [ ] No new default network requests added to components
 - [ ] No PII or tokens written to `localStorage`/`sessionStorage`
-- [ ] `npm audit --audit-level=high` passes cleanly (enforced automatically by CI)
+- [ ] `pnpm audit --audit-level high` passes cleanly (enforced automatically by CI)
 - [ ] DOMPurify version is up to date (check Dependabot alerts)
 - [ ] If a new external dependency was added: its license and security posture have been reviewed
 

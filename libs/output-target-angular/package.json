@@ -11,6 +11,11 @@
     "@stencil/core": "4.43.5",
     "tslib": "2.8.1"
   },
+  "devDependencies": {
+    "eslint": "10.5.0",
+    "typescript": "5.6.3",
+    "vitest": "4.1.9"
+  },
   "type": "commonjs",
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts"

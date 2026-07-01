@@ -1,0 +1,14 @@
+packages:
+  - 'packages/*'
+  - 'libs/*'
+  - 'docs'
+
+linkWorkspacePackages: true
+
+# Dependency lifecycle scripts are blocked by default in pnpm 10.
+# These native-build packages are explicitly allowed to run their scripts.
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - esbuild
+  - libxmljs2

@@ -24,7 +24,7 @@ This guide covers local development setup and common workflows for the Helvetia 
 ### Prerequisites
 
 - **Node.js**: >=24 <25 (check with `node --version`)
-- **npm**: >=11.0.0 (check with `npm --version`)
+- **pnpm**: 10.x (pinned via `packageManager`; check with `pnpm --version`)
 - **Git**: for cloning and version control
 
 ### Initial Setup
@@ -35,11 +35,11 @@ git clone https://github.com/baloise/design-system.git
 cd design-system
 
 # Install dependencies (use ci for reproducible builds)
-npm ci
+pnpm install --frozen-lockfile
 
 # Start development
-npm start                # Core components dev server (http://localhost:3333)
-npm run docs             # Storybook documentation (http://localhost:6006)
+pnpm start                # Core components dev server (http://localhost:3333)
+pnpm docs             # Storybook documentation (http://localhost:6006)
 ```
 
 The dev servers support hot reloading — changes to components and styles are reflected immediately.
@@ -49,7 +49,7 @@ The dev servers support hot reloading — changes to components and styles are r
 ### Core Components Dev Server
 
 ```bash
-npm start
+pnpm start
 ```
 
 Starts the Stencil dev server at http://localhost:3333. Useful for:
@@ -63,7 +63,7 @@ The server watches for changes and hot-reloads.
 ### Storybook Documentation
 
 ```bash
-npm run docs
+pnpm docs
 ```
 
 Starts Storybook at http://localhost:6006. Useful for:
@@ -77,15 +77,15 @@ Starts Storybook at http://localhost:6006. Useful for:
 
 ```bash
 # Build everything
-npm run build
+pnpm build
 
 # Build specific packages
-npm run build -- --filter=@baloise/ds-core     # Web components
-npm run build -- --filter=@baloise/ds-tokens   # Design tokens
-npm run build -- --filter=@baloise/ds-css      # Styles
+pnpm build -- --filter=@baloise/ds-core     # Web components
+pnpm build -- --filter=@baloise/ds-tokens   # Design tokens
+pnpm build -- --filter=@baloise/ds-css      # Styles
 
 # Build docs for production
-npm run build:docs
+pnpm build:docs
 ```
 
 Builds are cached by Turborepo — only changed packages rebuild.
@@ -95,9 +95,9 @@ Builds are cached by Turborepo — only changed packages rebuild.
 ### Unit Tests
 
 ```bash
-npm test                           # Run all tests
-npm test -- --watch                # Watch mode
-npm test -- --workspace=<pkg> --testFile=<path>  # Single file
+pnpm test                          # Run all tests
+pnpm test -- --watch               # Watch mode
+pnpm --filter <pkg> test -- --testFile=<path>  # Single file
 ```
 
 Framework: **Vitest** with jsdom environment
@@ -105,9 +105,9 @@ Framework: **Vitest** with jsdom environment
 ### Component Interaction Tests
 
 ```bash
-npm run play                       # Playwright UI explorer
-npm run play -- --grep="button"    # Specific test
-npm run play -- --debug            # Debug mode
+pnpm play                       # Playwright UI explorer
+pnpm play -- --grep="button"    # Specific test
+pnpm play -- --debug            # Debug mode
 ```
 
 Framework: **Playwright** with custom matchers
@@ -115,8 +115,8 @@ Framework: **Playwright** with custom matchers
 ### Visual Regression Tests
 
 ```bash
-npm run play -- --grep="visual"          # Run visual tests
-npm run play -- --update-snapshots       # Update baselines
+pnpm play -- --grep="visual"          # Run visual tests
+pnpm play -- --update-snapshots       # Update baselines
 ```
 
 Snapshots are stored in `e2e/` directory and committed to git.
@@ -124,21 +124,21 @@ Snapshots are stored in `e2e/` directory and committed to git.
 ### All Tests
 
 ```bash
-npm run test:ci    # Run unit + Playwright tests (CI mode)
+pnpm test:ci    # Run unit + Playwright tests (CI mode)
 ```
 
 ## Code Quality
 
 ```bash
-npm run lint       # Check all packages for issues
-npm run format     # Auto-format code (fixes whitespace, line endings, etc.)
-npm run spell      # Spell check with cspell
+pnpm lint       # Check all packages for issues
+pnpm format     # Auto-format code (fixes whitespace, line endings, etc.)
+pnpm spell      # Spell check with cspell
 ```
 
 Always run these before pushing:
 
 ```bash
-npm run lint && npm run format && npm run spell
+pnpm lint && pnpm format && pnpm spell
 ```
 
 ## Claude Code Skills
@@ -158,7 +158,7 @@ For a complete list of available skills and how to use them, see [SKILLS.md](SKI
 Before opening a PR, create a changeset for user-facing changes:
 
 ```bash
-npm run changeset
+pnpm changeset
 ```
 
 Follow the prompts to:
@@ -172,7 +172,7 @@ The changeset is committed to `.changeset/` and reviewed during PR.
 ### Publish (Maintainers Only)
 
 ```bash
-npm run publish     # Publishes all packages with pending changesets
+pnpm run publish    # Publishes all packages with pending changesets
 ```
 
 ## Project Structure
@@ -197,7 +197,7 @@ See [CONTRIBUTING.md#adding-a-new-component](CONTRIBUTING.md#adding-a-new-compon
 Tokens are defined in `packages/tokens/src/` and compiled via Style Dictionary:
 
 ```bash
-npm run tokens     # Rebuild token outputs
+pnpm tokens     # Rebuild token outputs
 ```
 
 Tokens sync to `@baloise/ds-tokens` package and are imported by components.
@@ -207,7 +207,7 @@ Tokens sync to `@baloise/ds-tokens` package and are imported by components.
 Global styles live in `packages/css/dist/css`:
 
 ```bash
-npm run css        # Rebuild CSS
+pnpm css        # Rebuild CSS
 ```
 
 Outputs to `@baloise/ds-css` package.
@@ -217,7 +217,7 @@ Outputs to `@baloise/ds-css` package.
 New components should have `.stories.ts` files in `docs/src/components/<component>/`:
 
 ```bash
-npm run docs       # Start Storybook to preview stories
+pnpm docs       # Start Storybook to preview stories
 ```
 
 See existing stories for patterns and helpers.
@@ -227,16 +227,16 @@ See existing stories for patterns and helpers.
 ### Dependencies won't install
 
 ```bash
-# Clear npm cache and reinstall
-rm -rf node_modules package-lock.json
-npm ci
+# Clear node_modules and reinstall
+rm -rf node_modules
+pnpm install --frozen-lockfile
 ```
 
 ### Dev server not updating
 
 ```bash
 # Restart the dev server
-npm start    # or npm run docs
+pnpm start    # or pnpm docs
 ```
 
 ### Build failures
@@ -244,7 +244,7 @@ npm start    # or npm run docs
 Check for TypeScript errors:
 
 ```bash
-npm run build -- --verbose
+pnpm build -- --verbose
 ```
 
 ### Tests failing locally but passing in CI
@@ -275,7 +275,7 @@ Key environment variables used during development:
 | `DS_RELEASE`            | Production release | `true`                  |
 | `CI`                    | CI environment     | `true` (auto-set in CI) |
 
-These are typically managed by npm scripts and `stencil.config.ts`.
+These are typically managed by package scripts and `stencil.config.ts`.
 
 ## Further Reading
 

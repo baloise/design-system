@@ -24,7 +24,7 @@ console.log(`
 function buildStencil() {
   console.log('🏗️ Running Stencil build...')
   try {
-    execSync('npx stencil build', {
+    execSync('pnpm exec stencil build', {
       cwd: coreRoot,
       stdio: 'inherit',
       encoding: 'utf-8',

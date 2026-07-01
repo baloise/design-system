@@ -175,7 +175,7 @@ let tokensCss = ''
 try {
   tokensCss = readFileSync(tokensPath, 'utf8')
 } catch {
-  console.warn('Warning: base.tokens.css not found — run `npm run tokens` first.')
+  console.warn('Warning: base.tokens.css not found — run `pnpm tokens` first.')
 }
 
 const output = tokensCss ? `${tokensCss}\n${prefixedUtilities}` : prefixedUtilities

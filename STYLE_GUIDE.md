@@ -416,13 +416,13 @@ element.innerHTML = props.htmlContent
 
 Style violations are caught by:
 
-- **ESLint** — `npm run lint` — custom rules defined in `libs/eslint-plugin/` enforce naming conventions, imports, prop patterns, and code organization
+- **ESLint** — `pnpm lint` — custom rules defined in `libs/eslint-plugin/` enforce naming conventions, imports, prop patterns, and code organization
 - **TypeScript** — type checking during build ensures type safety and prop annotations
 - **Code review** — manual review before merge
 
 Always run linting and formatting before opening a PR:
 
 ```bash
-npm run lint      # Check for violations
-npm run format    # Auto-fix formatting issues
+pnpm lint      # Check for violations
+pnpm format    # Auto-fix formatting issues
 ```

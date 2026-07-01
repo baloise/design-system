@@ -33,13 +33,13 @@
     "test": "vitest --run",
     "test:ui": "vitest --ui",
     "lint": "eslint .",
-    "play": "node -e \"require('kill-port')(4000).catch(()=>{})\" && npx playwright test --ui",
-    "play:file": "cross-env CI=1 npx playwright test",
-    "play:a11y": "cross-env CI=1 npx playwright test --project='♿️ A11Y'",
-    "play:components": "cross-env CI=1 npx playwright test --project='⚙️ Component'",
-    "play:visual": "cross-env CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome'",
-    "play:update": "cross-env CI=1 npx playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome' --update-snapshots",
-    "play:ci": "cross-env CI=1 npx playwright test"
+    "play": "node -e \"require('kill-port')(4000).catch(()=>{})\" && pnpm exec playwright test --ui",
+    "play:file": "cross-env CI=1 pnpm exec playwright test",
+    "play:a11y": "cross-env CI=1 pnpm exec playwright test --project='♿️ A11Y'",
+    "play:components": "cross-env CI=1 pnpm exec playwright test --project='⚙️ Component'",
+    "play:visual": "cross-env CI=1 pnpm exec playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome'",
+    "play:update": "cross-env CI=1 pnpm exec playwright test --project='🖼️ Visual / 💻 Desktop Chrome' --project='🖼️ Visual / 📱 Mobile Chrome' --update-snapshots",
+    "play:ci": "cross-env CI=1 pnpm exec playwright test"
   },
   "dependencies": {
     "@baloise/ds-assets": "20.0.0-next.4",
@@ -63,10 +63,13 @@
     "@baloise/ds-playwright": "20.0.0-next.4",
     "@types/luxon": "3.7.2",
     "compression": "1.8.1",
+    "eslint": "10.5.0",
     "express": "5.2.1",
+    "libs-eslint-plugin": "0.0.0",
     "libs-output-target-angular": "0.0.0",
     "libs-output-target-web": "0.0.0",
-    "serve-index": "1.9.2"
+    "serve-index": "1.9.2",
+    "vitest": "4.1.9"
   },
   "sideEffects": false
 }
