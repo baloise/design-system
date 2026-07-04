@@ -335,6 +335,9 @@ importers:
       '@baloise/ds-playwright':
         specifier: 20.0.0-next.4
         version: link:../playwright
+      '@types/lodash':
+        specifier: 4.17.24
+        version: 4.17.24
       '@types/luxon':
         specifier: 3.7.2
         version: 3.7.2
