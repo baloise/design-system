@@ -1,14 +1,6 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  Logger,
-  type LogInstance,
-  normalizeDeprecatedTShirtSize,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   DividerLayout,
@@ -18,7 +10,6 @@ import {
   DIVIDER_SPACES,
   DIVIDER_COLORS,
 } from './divider.interfaces'
-import { CONTENT_LAYOUTS } from '../content/content.interfaces'
 
 /**
  * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -50,38 +41,29 @@ export class Divider implements DsComponentInterface {
    * are showed verticaly or horizontally. Default is verticaly.
    */
   @Prop()
-  @ValidateOneOf(...DIVIDER_LAYOUTS)
+  @OneOf(DIVIDER_LAYOUTS)
   readonly layout: DividerLayout = 'horizontal'
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop({ mutable: true })
-  @ValidateOneOf(...DIVIDER_SPACES)
-  space: DividerSpace = 'none'
-  @Watch('space')
-  spaceChanged(newValue: DividerSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue) || 'none'
-  }
+  @Prop()
+  @OneOf(DIVIDER_SPACES)
+  readonly space: DividerSpace = 'none'
 
   /**
    * Defines the color of the separator line.
    */
   @Prop()
-  @ValidateOneOf(...DIVIDER_COLORS)
+  @OneOf(DIVIDER_COLORS)
   readonly color: DividerColor = 'grey'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly dashed: boolean = false
-
-  connectedCallback(): void {
-    setupValidation(this)
-    this.space = normalizeDeprecatedTShirtSize(this.space) || 'none'
-  }
 
   /**
    * RENDER
@@ -89,14 +71,15 @@ export class Divider implements DsComponentInterface {
    */
 
   render() {
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
+
     return (
       <Host
         role="separator"
         class={{
-          divider: true,
-          [`is-${this.layout}`]: !!this.layout,
-          [`is-${this.color}`]: !!this.color,
-          [`has-space-${this.space}`]: !!this.space,
+          [`is-${this.layout}`]: hasValue(this.layout),
+          [`is-${this.color}`]: hasValue(this.color),
+          [`has-space-${space}`]: hasValue(this.space),
           [`is-dashed`]: this.dashed,
         }}
       ></Host>

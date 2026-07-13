@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as DataStories from './data.stories'
+import { DATA_DOC_CONFIG, getDataTabs } from './data.doc-config'
+
+<Meta title="Components/Data/Variants/Overview" />
+
+<StoryHeading of={DataStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={DATA_DOC_CONFIG.section} color={DATA_DOC_CONFIG.color} />
+
+<BannerTabs of={DataStories} tabs={getDataTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Basic}></StoryHeading>
+
+Basic data list displaying label-value pairs in a vertical layout with borders.
+
+<CanvasWithCodePen of={DataStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Horizontal}></StoryHeading>
+
+Horizontal layout displays multiple label-value pairs as columns on larger screens. Responsive: switches to vertical on mobile.
+
+<CanvasWithCodePen of={DataStories.Horizontal} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Multiline}></StoryHeading>
+
+Support for multiline values that wrap and align with labels. Handles long text and nested content like lists.
+
+<CanvasWithCodePen of={DataStories.Multiline} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Required}></StoryHeading>
+
+Required indicator shown on labels using the `required` attribute on ds-data-label.
+
+<CanvasWithCodePen of={DataStories.Required} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Disabled}></StoryHeading>
+
+Individual items can be marked as disabled using the `disabled` prop on ds-data-item. Appears with reduced opacity.
+
+<CanvasWithCodePen of={DataStories.Disabled} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Editable}></StoryHeading>
+
+Editable items display a small edit button on the right using the `editable` prop on ds-data-item. The button is right-aligned and shows a tertiary icon button. Use the optional `editLabel` prop to customize the button's accessible label.
+
+<CanvasWithCodePen of={DataStories.Editable} sourceState="shown" />
+
+<Footer />

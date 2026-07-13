@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
-import { Logger, LogInstance, ValidateOneOf, ValidateEmptyOrType, ValidateType, setupValidation } from '@utils'
+import { Logger, LogInstance, OneOf, Required, Type } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   BUTTON_GROUP_ALIGNMENTS,
@@ -39,7 +39,7 @@ export class ButtonGroup implements DsComponentInterface {
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_GROUP_ALIGNMENTS)
+  @OneOf(BUTTON_GROUP_ALIGNMENTS)
   readonly align: ButtonGroupAlignment = ''
 
   /**
@@ -47,31 +47,23 @@ export class ButtonGroup implements DsComponentInterface {
    * `row` will force that the buttons are also horizontal on mobile.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_GROUP_DIRECTIONS)
+  @Required()
+  @OneOf(BUTTON_GROUP_DIRECTIONS)
   readonly direction: ButtonGroupDirection = 'auto'
 
   /**
    * If `true` the flex direction is used in reverse on mobile.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly reverse: boolean = false
 
   /**
    * If `true` the buttons will expand to fill the available space on mobile.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly wide: boolean = false
-
-  /**
-   * LIFECYCLE
-   * ─────────────────────────────────────────────────────
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
 
   /**
    * RENDER

@@ -10,6 +10,9 @@ generated
 vite.config.ts.**.mjs
 .env
 .secrets
+.playwright-mcp
+Base.tokens.json.backup
+debug.js
 
 # dependencies
 node_modules
@@ -41,6 +44,7 @@ yarn-error.log
 testem.log
 /typings
 .npmrc
+debug-storybook.log
 
 # System Files
 .DS_Store
@@ -110,6 +114,7 @@ vitest.config.*.timestamp*
 
 # Local generated screenshots on a MAC
 *-darwin.png
+*-win32.png
 test-results
 playwright.visual.config.ts
 

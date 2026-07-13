@@ -18,10 +18,9 @@ import {
   dsBreakpoints,
   Logger,
   type LogInstance,
-  ValidateEmptyOrType,
-  ValidateType,
-  ValidateOneOf,
-  setupValidation,
+  hasValue,
+  OneOf,
+  Type,
 } from '@utils'
 import { DsComponentInterface, DsConfigState, DsLanguage, ListenToConfig, defaultConfig } from '@global'
 import { i18nControlLabel } from './pagination.i18n'
@@ -71,20 +70,21 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Align the buttons to start, center or end
    */
   @Prop()
-  @ValidateOneOf(...PAGINATION_ALIGNMENTS)
+  @OneOf(PAGINATION_ALIGNMENTS)
   readonly align: PaginationAlignment = ''
 
   /**
    * Disables component
    */
   @Prop({ reflect: true })
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * The label for the navigation landmark
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
@@ -97,27 +97,28 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Size of the buttons
    */
   @Prop()
-  @ValidateOneOf(...PAGINATION_SIZES)
+  @OneOf(PAGINATION_SIZES)
   readonly size: PaginationSize = ''
 
   /**
    * If 'true, the pagination will be sticky to the top
    */
   @Prop()
+  @Type('boolean')
   readonly sticky: boolean = false
 
   /**
    * The label for the next page button
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly textNext: string = ''
 
   /**
    * The label for the previous page button
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly textPrevious: string = ''
 
   /**
@@ -149,22 +150,13 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Defines the layout of the pagination
    */
   @Prop()
-  @ValidateOneOf(...PAGINATION_VARIANTS)
+  @OneOf(PAGINATION_VARIANTS)
   readonly variant: PaginationVariant = ''
 
   /**
    * Triggers when a page change happens
    */
   @Event({ eventName: 'dsChange' }) dsChangeEventEmitter!: EventEmitter<PaginationChangeDetail>
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
 
   componentWillLoad() {
     this.topChanged(this.top)
@@ -250,7 +242,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
   private renderPageElement(pageNumber: number) {
     const isActive = this.value === pageNumber
 
-    if (this.variant === 'dots') {
+    if (hasValue(this.variant)) {
       return (
         <li>
           <button
@@ -278,7 +270,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
             'is-primary': isActive,
             'is-text': !isActive,
             'is-disabled': this.disabled,
-            'is-sm': this.isMobile || this.size === 'sm',
+            'is-sm': this.isMobile || hasValue(this.size),
           }}
           aria-current={isActive ? 'true' : undefined}
           onClick={() => this.selectPage(pageNumber)}
@@ -297,16 +289,16 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
   render() {
     const items = this.isMobile ? this.getItems(1) : this.getItems(this.pageRange)
 
-    const isVariantDots = this.variant === 'dots'
-    const buttonColor = isVariantDots ? 'is-link' : 'is-text'
-    const buttonSize = isVariantDots || this.size === 'sm' || this.isMobile ? 'is-sm' : ''
+    const isVariantDots = hasValue(this.variant)
+    const buttonColor = isVariantDots ? 'is-tertiary' : 'is-text'
+    const buttonSize = isVariantDots || hasValue(this.size) || this.isMobile ? 'is-sm' : ''
     const flat = isVariantDots
 
     const labelControlTitle = this.label || i18nControlLabel[this.language].label
     const leftControlTitle = this.textPrevious || i18nControlLabel[this.language].left
     const rightControlTitle = this.textNext || i18nControlLabel[this.language].right
 
-    const hasBasicNavigationButtons = this.variant === '' || (isVariantDots && this.totalPages <= 5)
+    const hasBasicNavigationButtons = !hasValue(this.variant) || (isVariantDots && this.totalPages <= 5)
 
     const DotsWithText: FunctionalComponent = () => (
       <span class="dots">
@@ -321,9 +313,9 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
         class={{
           'is-sticky': this.sticky,
           'is-disabled': this.disabled,
-          [`is-variant-${this.variant}`]: this.variant !== '',
-          [`is-size-${this.size}`]: this.size !== '',
-          [`is-align-${this.align}`]: this.align !== '',
+          [`is-variant-${this.variant}`]: hasValue(this.variant),
+          [`is-size-${this.size}`]: hasValue(this.size),
+          [`is-align-${this.align}`]: hasValue(this.align),
         }}
       >
         <nav class={{}} id="nav" part="navigation" role="navigation" aria-label={labelControlTitle}>
@@ -368,7 +360,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
             </button>
           )}
           {hasBasicNavigationButtons ? (
-            <ul class={{ dots: this.variant === 'dots' }} part="list">
+            <ul class={{ dots: hasValue(this.variant) }} part="list">
               {items}
             </ul>
           ) : (

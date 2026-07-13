@@ -1,5 +1,6 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs,
+  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as AccordionStories from './accordion.stories'
 import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
 
@@ -14,7 +15,7 @@ import { ACCORDION_DOC_CONFIG, getAccordionTabs } from './accordion.doc-config'
 
 Customize the marker icon that indicates the open/closed state. Options include the default arrow, plus icon, or plus/minus toggle.
 
-<Canvas of={AccordionStories.PlusMarkerAccordion} />
+<CanvasWithCodePen of={AccordionStories.PlusMarkerAccordion} />
 
 {/* ------------------------------------------------------ */}
 
@@ -22,7 +23,7 @@ Customize the marker icon that indicates the open/closed state. Options include 
 
 Position the marker on the left side of the accordion button for a different visual style and improved accessibility.
 
-<Canvas of={AccordionStories.LeftMarkerAccordion} />
+<CanvasWithCodePen of={AccordionStories.LeftMarkerAccordion} />
 
 {/* ------------------------------------------------------ */}
 
@@ -31,7 +32,7 @@ Position the marker on the left side of the accordion button for a different vis
 Customize the accordion summary with a stacked layout.
 This is ideal for hiding complex content behind a simple header while still providing a clear visual hierarchy.
 
-<Canvas of={AccordionStories.StackAccordion} />
+<CanvasWithCodePen of={AccordionStories.StackAccordion} />
 
 {/* ------------------------------------------------------ */}
 
@@ -39,7 +40,7 @@ This is ideal for hiding complex content behind a simple header while still prov
 
 Use the `group` prop to ensure only one accordion in a group can be open at a time. This is useful for FAQs and other exclusive-choice content.
 
-<Canvas of={AccordionStories.AccordionGroup} />
+<CanvasWithCodePen of={AccordionStories.AccordionGroup} />
 
 {/* ------------------------------------------------------ */}
 
@@ -47,6 +48,6 @@ Use the `group` prop to ensure only one accordion in a group can be open at a ti
 
 Use the `button` prop to render the accordion summary as a native button element, improving accessibility and keyboard navigation support.
 
-<Canvas of={AccordionStories.AccordionButton} />
+<CanvasWithCodePen of={AccordionStories.AccordionButton} />
 
 <Footer />

@@ -4,13 +4,15 @@ import fg from 'fast-glob'
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join, parse, resolve } from 'path'
 
-import { webOutputTarget } from '@baloise/output-target-web'
+import { webOutputTarget } from 'libs-output-target-web'
 import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
-import { AngularGenerator } from './config/stencil.bindings.angular'
-import { ReactGenerator } from './config/stencil.bindings.react'
+// import { AngularGenerator } from './config/stencil.bindings.angular'
+// import { ReactGenerator } from './config/stencil.bindings.react'
 
 const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
 const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
+const IS_DS_SILENT = process.env.DS_SILENT === 'true'
+const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
 
 let message = ''
 
@@ -20,6 +22,10 @@ if (IS_DS_RELEASE) {
 
 if (IS_DS_DEVELOPMENT) {
   message = '👷 Build is set to development 👷'
+}
+
+if (IS_DS_DOCUMENTATION) {
+  message = '📚 Build is set to documentation 📚'
 }
 
 if (message) {
@@ -44,6 +50,9 @@ export const config: Config = {
   globalScript: 'src/global/global.ts',
   globalStyle: 'src/global/global.scss',
   tsconfig: IS_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.lib.json',
+  devServer: {
+    openBrowser: IS_DS_DEVELOPMENT && !IS_DS_SILENT,
+  },
   plugins: [
     sass({
       outputStyle: 'compressed',
@@ -80,10 +89,11 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/distribution}
      */
-    !IS_DS_DEVELOPMENT && {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'dist',
+        esmLoaderPath: '../loader',
+      },
     /**
      * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
      * simple utility functions for easily defining these elements on the Custom Element Registry. This output target
@@ -92,18 +102,19 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/custom-elements}
      */
-    !IS_DS_DEVELOPMENT && {
-      type: 'dist-custom-elements',
-      dir: 'components',
-      includeGlobalScripts: false,
-      generateTypeDeclarations: true,
-      /**
-       * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
-       * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
-       * contains a dynamic import that caused a warning in Angular.
-       */
-      externalRuntime: false,
-    },
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'dist-custom-elements',
+        dir: 'components',
+        includeGlobalScripts: false,
+        generateTypeDeclarations: true,
+        /**
+         * External Runtime uses default runtime settings instead of this file's definitions. Disabling it enables
+         * `experimentalSlotFixes` to be applied and prevents `@stencil/core/internal/client` from being imported, which
+         * contains a dynamic import that caused a warning in Angular.
+         */
+        externalRuntime: false,
+      },
     /**
      * Custom output target that generates web components as standalone custom elements
      * that can be used directly without a framework or bundler.
@@ -111,6 +122,7 @@ export const config: Config = {
      * {@link https://stenciljs.com/docs/custom-elements}
      */
     !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION &&
       webOutputTarget({
         dir: 'components',
       }),
@@ -145,6 +157,11 @@ export const config: Config = {
           dest: 'assets/images',
           warn: true,
         },
+        {
+          src: join(packagesDir, 'assets', 'src', 'brand-icons', 'svg'),
+          dest: 'assets/images/brand-icons',
+          warn: true,
+        },
       ],
     },
     /**
@@ -155,11 +172,23 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/docs-vscode#vs-code-documentation}
      */
-    !IS_DS_DEVELOPMENT && {
-      type: 'docs-vscode',
-      file: 'docs/html.html-data.json',
-      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-    },
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'docs-vscode',
+        file: 'docs/html.html-data.json',
+        sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+      },
+    /**
+     * Since Stencil v4.42, Stencil supports automatically generating a Custom Elements Manifest (CEM) file in your project.
+     * The CEM format is a standardized JSON format for describing custom elements and is supported by a variety of tools in the web components ecosystem.
+     *
+     * {@link https://stenciljs.com/docs/docs-custom-elements-manifest}
+     */
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'docs-custom-elements-manifest',
+        file: 'docs/cem.json',
+      },
     /**
      * Custom output target that generates docs JSON without timestamps and file paths.
      * Enriches components with design tokens from Base.tokens.json and extracts CSS variable docs
@@ -181,25 +210,29 @@ export const config: Config = {
           /**
            * Add stylesheets (.scss) and template (.html) files to the watcher.
            */
-          const styleFiles = await fg(resolve(__dirname, './src/**/*.scss'))
+          const styleFiles = await fg('src/**/*.scss', { cwd: __dirname })
           for (const file of styleFiles) {
-            this.addWatchFile(file)
+            this.addWatchFile(resolve(__dirname, file))
           }
 
-          const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
+          const templateFiles = await fg('src/**/*.html', { cwd: __dirname })
           for (const file of templateFiles) {
-            this.addWatchFile(file)
+            this.addWatchFile(resolve(__dirname, file))
           }
 
           /**
            * Generating the tags.json list
            */
-          const componentFiles = await fg(resolve(__dirname, './src/components/**/*.tsx'))
+          // Use cwd + relative pattern to avoid Windows path separator issues with fast-glob
+          const componentFiles = await fg('src/components/**/*.tsx', {
+            cwd: __dirname,
+            ignore: ['**/*.data.tsx', '**/field.util.tsx', '**/*.interfaces.tsx', '**/index.tsx'],
+          })
           const allTags = (
             await Promise.all(
               componentFiles.map(async f => {
-                const src = await readFile(f, 'utf-8')
-                const m = src.match(/tag:\s*['"]([^'"]+)['"]/)
+                const src = await readFile(resolve(__dirname, f), 'utf-8')
+                const m = src.match(/tag:\s*['"`]([^'"`]+)['"`]/)
                 return m ? m[1] : null
               }),
             )

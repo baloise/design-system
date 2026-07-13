@@ -1,0 +1,104 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+
+  <body>
+    <ds-app>
+      <main class="container py-medium">
+        <!-- Basic -->
+        <section data-testid="basic">
+          <span>Basic</span>
+          <ds-button onclick="document.getElementById('drawer-basic').present()">Open Drawer</ds-button>
+          <ds-drawer id="drawer-basic" label="Basic drawer">
+            <div style="padding: 1rem">
+              <p>Basic drawer with default settings.</p>
+              <ds-button onclick="document.getElementById('drawer-basic').dismiss()">Close</ds-button>
+            </div>
+          </ds-drawer>
+        </section>
+
+        <!-- Not closable -->
+        <section data-testid="not-closable">
+          <span>Not closable</span>
+          <ds-button onclick="document.getElementById('drawer-not-closable').present()">Open Drawer</ds-button>
+          <ds-drawer id="drawer-not-closable" label="Non-dismissable drawer" closable="false" backdrop-dismiss="false">
+            <div style="padding: 1rem">
+              <p>Escape key and backdrop click are both disabled. Use the button below.</p>
+              <ds-button onclick="document.getElementById('drawer-not-closable').dismiss()">Close manually</ds-button>
+            </div>
+          </ds-drawer>
+        </section>
+
+        <!-- Rich content -->
+        <section data-testid="rich-content">
+          <span>Rich content</span>
+          <ds-button onclick="document.getElementById('drawer-rich').present()">Open Drawer</ds-button>
+          <ds-drawer id="drawer-rich" label="Filter options">
+            <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem">
+              <ds-heading level="h3">Filter options</ds-heading>
+              <ds-checkbox>Category A</ds-checkbox>
+              <ds-checkbox>Category B</ds-checkbox>
+              <ds-checkbox>Category C</ds-checkbox>
+              <div style="display: flex; gap: 0.5rem; justify-content: flex-end">
+                <ds-button color="text" onclick="document.getElementById('drawer-rich').dismiss()">Cancel</ds-button>
+                <ds-button color="primary" onclick="document.getElementById('drawer-rich').dismiss()">Apply</ds-button>
+              </div>
+            </div>
+          </ds-drawer>
+        </section>
+
+        <!-- Scrollable content -->
+        <section data-testid="scrollable">
+          <span>Scrollable content</span>
+          <ds-button onclick="document.getElementById('drawer-scrollable').present()">Open Drawer</ds-button>
+          <ds-drawer id="drawer-scrollable" label="Long list">
+            <div style="padding: 1rem">
+              <ds-heading level="h3">Long list</ds-heading>
+              <ul style="margin: 0; padding: 0; list-style: none">
+                <li style="padding: 0.5rem 0">Item 1</li>
+                <li style="padding: 0.5rem 0">Item 2</li>
+                <li style="padding: 0.5rem 0">Item 3</li>
+                <li style="padding: 0.5rem 0">Item 4</li>
+                <li style="padding: 0.5rem 0">Item 5</li>
+                <li style="padding: 0.5rem 0">Item 6</li>
+                <li style="padding: 0.5rem 0">Item 7</li>
+                <li style="padding: 0.5rem 0">Item 8</li>
+                <li style="padding: 0.5rem 0">Item 9</li>
+                <li style="padding: 0.5rem 0">Item 10</li>
+              </ul>
+              <ds-button onclick="document.getElementById('drawer-scrollable').dismiss()">Close</ds-button>
+            </div>
+          </ds-drawer>
+        </section>
+
+        <!-- Programmatic API -->
+        <section data-testid="programmatic">
+          <span>Programmatic</span>
+          <ds-button id="drawer-prog-open">Open</ds-button>
+          <ds-button id="drawer-prog-close">Close</ds-button>
+          <ds-drawer id="drawer-prog" label="Programmatic drawer">
+            <div style="padding: 1rem">
+              <p>Opened via <code>present()</code>, closed via <code>dismiss()</code>.</p>
+            </div>
+          </ds-drawer>
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              const drawer = document.getElementById('drawer-prog')
+              document.getElementById('drawer-prog-open').addEventListener('click', () => drawer.present())
+              document.getElementById('drawer-prog-close').addEventListener('click', () => drawer.dismiss())
+            })
+          </script>
+        </section>
+      </main>
+    </ds-app>
+  </body>
+</html>

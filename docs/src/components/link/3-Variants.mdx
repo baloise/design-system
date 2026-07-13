@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -20,13 +21,13 @@ import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
 <StoryHeading of={LinkStories.Basic}></StoryHeading>
 
-<Canvas of={LinkStories.Basic} />
+<CanvasWithCodePen of={LinkStories.Basic} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={LinkStories.Inverted}></StoryHeading>
 
-<Canvas of={LinkStories.Inverted} className='bg-primary' />
+<CanvasWithCodePen of={LinkStories.Inverted} className='bg-primary' />
 
 {/* ------------------------------------------------------ */}
 

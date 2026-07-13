@@ -7,11 +7,12 @@ export const LIST_DOC_CONFIG = {
   section: 'Components / List',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-list--overview' },
+    { label: 'Overview', storyId: 'components-list--list' },
     { label: 'Usage', storyId: 'components-list--usage' },
     { label: 'Variants', storyId: 'components-list--variants-overview' },
     { label: 'Styling', storyId: 'components-list--styling' },
     { label: 'Accessibility', storyId: 'components-list--accessibility' },
+    { label: 'Testing', storyId: 'components-list--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const LIST_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

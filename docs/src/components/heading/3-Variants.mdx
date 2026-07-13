@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -24,7 +25,7 @@ import { HEADING_DOC_CONFIG, getHeadingTabs } from './heading.doc-config'
 
 Headings with different levels (H1 to H6) to establish a clear content hierarchy and improve readability.
 
-<Canvas of={HeadingStories.Levels} sourceState="hidden" />
+<CanvasWithCodePen of={HeadingStories.Levels} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,7 +33,7 @@ Headings with different levels (H1 to H6) to establish a clear content hierarchy
 
 Headings with different sizes to establish a clear content hierarchy and improve readability.
 
-<Canvas of={HeadingStories.Sizes} sourceState="hidden" />
+<CanvasWithCodePen of={HeadingStories.Sizes} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
@@ -40,7 +41,7 @@ Headings with different sizes to establish a clear content hierarchy and improve
 
 Headings support multiple colors for visual emphasis and theming. The default color adapts to background context with the `inverted` prop.
 
-<Canvas of={HeadingStories.Colors} sourceState="hidden" />
+<CanvasWithCodePen of={HeadingStories.Colors} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
@@ -48,7 +49,7 @@ Headings support multiple colors for visual emphasis and theming. The default co
 
 Headings can be set to not wrap, truncating overflow text with an ellipsis to maintain layout integrity.
 
-<Canvas of={HeadingStories.NoWrap} sourceState="hidden" />
+<CanvasWithCodePen of={HeadingStories.NoWrap} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
@@ -56,7 +57,7 @@ Headings can be set to not wrap, truncating overflow text with an ellipsis to ma
 
 Headings can have custom spacing to adjust the visual rhythm and layout consistency.
 
-<Canvas of={HeadingStories.Spacing} sourceState="hidden" />
+<CanvasWithCodePen of={HeadingStories.Spacing} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
@@ -64,6 +65,6 @@ Headings can have custom spacing to adjust the visual rhythm and layout consiste
 
 Headings can automatically adjust their level based on the surrounding context to maintain a consistent hierarchy.
 
-<Canvas of={HeadingStories.AutoLevel} sourceState="hidden" />
+<CanvasWithCodePen of={HeadingStories.AutoLevel} sourceState="hidden" />
 
 <Footer />

@@ -7,11 +7,12 @@ export const NOTIFICATION_DOC_CONFIG = {
   section: 'Components / Notification',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-notification--overview' },
+    { label: 'Overview', storyId: 'components-notification--notification' },
     { label: 'Usage', storyId: 'components-notification--usage' },
     { label: 'Variants', storyId: 'components-notification--variants-overview' },
     { label: 'Styling', storyId: 'components-notification--styling' },
     { label: 'Accessibility', storyId: 'components-notification--accessibility' },
+    { label: 'Testing', storyId: 'components-notification--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const NOTIFICATION_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

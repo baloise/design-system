@@ -7,11 +7,12 @@ export const SHAPE_DOC_CONFIG = {
   section: 'Components / Shape',
   color: 'yellow' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-shape--overview' },
+    { label: 'Overview', storyId: 'components-shape--shape' },
     { label: 'Usage', storyId: 'components-shape--usage' },
     { label: 'Variants', storyId: 'components-shape--variants-overview' },
     { label: 'Styling', storyId: 'components-shape--styling' },
     { label: 'Accessibility', storyId: 'components-shape--accessibility' },
+    { label: 'Testing', storyId: 'components-shape--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const SHAPE_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

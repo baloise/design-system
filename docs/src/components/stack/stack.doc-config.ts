@@ -7,11 +7,12 @@ export const STACK_DOC_CONFIG = {
   section: 'Components / Stack',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-stack--overview' },
+    { label: 'Overview', storyId: 'components-stack--stack' },
     { label: 'Usage', storyId: 'components-stack--usage' },
     { label: 'Variants', storyId: 'components-stack--variants-overview' },
     { label: 'Styling', storyId: 'components-stack--styling' },
     { label: 'Accessibility', storyId: 'components-stack--accessibility' },
+    { label: 'Testing', storyId: 'components-stack--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const STACK_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

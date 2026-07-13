@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensContainersSize = ({ overview }): React.ReactElement => {
+export const TokensContainersSize = ({ _overview }): React.ReactElement => {
   const list = tokens.container.size
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
@@ -37,7 +37,7 @@ export const TokensContainersSize = ({ overview }): React.ReactElement => {
     </table>
   )
 }
-export const TokensContainersSpace = ({ overview }): React.ReactElement => {
+export const TokensContainersSpace = ({ _overview }): React.ReactElement => {
   const list = tokens.container.space
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>

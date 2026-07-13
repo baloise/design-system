@@ -1,15 +1,16 @@
 {
   "name": "@baloise/ds-assets",
-  "version": "20.0.0-next.2",
+  "version": "20.0.0-next.4",
   "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise/design-system.git"
+    "url": "git+https://github.com/baloise/design-system.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "homepage": "https://design.baloise.dev",
+  "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./dist/src/index.d.ts",
@@ -32,6 +33,6 @@
     "build": "tsc -p tsconfig.lib.json"
   },
   "devDependencies": {
-    "@types/google.maps": "3.64.0"
+    "@types/google.maps": "3.65.2"
   }
 }

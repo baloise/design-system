@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ProgressBarStories from './progress-bar.stories'
+import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-config'
+
+<Meta title="Components/Progress-bar/Testing" />
+
+<Banner label={'Testing'} section={PROGRESS_BAR_DOC_CONFIG.section} color={PROGRESS_BAR_DOC_CONFIG.color} />
+
+<BannerTabs of={ProgressBarStories} tabs={getProgressBarTabs('testing')} />
+
+<ComponentPageObject component="progress-bar" />
+
+<Footer />

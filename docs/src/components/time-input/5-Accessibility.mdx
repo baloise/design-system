@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TimeInputStories from './time-input.stories'
+import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config'
+
+<Meta title="Components/Time Input/Accessibility" />
+
+<Banner label={'Accessibility'} section={TIME_INPUT_DOC_CONFIG.section} color={TIME_INPUT_DOC_CONFIG.color} />
+
+<BannerTabs of={TimeInputStories} tabs={getTimeInputTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always associate a visible label with the input',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use the <code>&lt;label&gt;</code> element with a <code>for</code> attribute matching the input's <code>id</code>.
+          Labels help screen reader users understand what time they should enter.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use aria-describedby for error messages and help text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Link error messages or additional context using <code>aria-describedby</code> so assistive technology users
+          know how to correct their selection.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Indicate required fields clearly',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          If a time selection is required, add a <code>required</code> attribute and mark the label visually (e.g., with an
+          asterisk). Both techniques help all users understand the field's importance.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do not rely on color alone to indicate invalid state',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always pair the error state styling with the <code>aria-invalid="true"</code> attribute and descriptive error text.
+          Color-blind users must have an alternative way to identify invalid fields.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do not disable a time input without clear context',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          If a field must be disabled, explain why in adjacent text. Disabled fields are often overlooked by users because
+          they appear inactive.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: HTML input type="time"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time) - Native time input behavior and browser support
+- [MDN: aria-invalid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid) - How to properly indicate invalid form fields
+- [WCAG 2.2 - Labels or Instructions (3.3.2)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) - Form field labeling requirements
+- [WCAG 2.2 - Error Messages (3.3.1)](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html) - How to communicate form validation errors
+
+<Footer />

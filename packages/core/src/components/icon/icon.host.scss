@@ -58,7 +58,6 @@
     position: static;
     z-index: 1;
     transition: transform 0.2s ease-in-out;
-    padding: 0.063rem;
     margin-top: var(--_icon-inner-mt);
 
     // Size
@@ -192,7 +191,7 @@ $colors:
 
 //
 // Sizes
-$icon-sizes: ('xs', 'sm', 'md', 'lg', 'xl', '2xl');
+$icon-sizes: ('xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl');
 
 @each $size in $icon-sizes {
   :host(.is-#{$size}:not(.is-tile, .has-shape-circle, .has-shape-triangle)) {

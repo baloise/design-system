@@ -2,7 +2,7 @@ import React from 'react'
 import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import { Clipboard } from '../Clipboard'
 
-export const TokensBorder = ({ overview }): React.ReactElement => {
+export const TokensBorder = ({ _overview }): React.ReactElement => {
   const list = tokens.border.width
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>

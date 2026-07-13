@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PackageTable = ({ children }) => {
+export const PackageTable = ({ _children }) => {
   return (
     <table className="sb-unstyled table w-full is-striped mt-large">
       <thead>

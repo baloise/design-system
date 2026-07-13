@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -89,13 +90,13 @@ Square and circle (rounded) buttons contain only an icon. Always add `aria-label
 
 Use the `.buttons` container to group multiple buttons horizontally. Alignment can be set with `.is-centered` or `.is-right`.
 
-<Canvas of={ButtonStories.ButtonGroup} />
+<CanvasWithCodePen of={ButtonStories.ButtonGroup} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ButtonStories.ButtonGroupAlignment}></StoryHeading>
 
-<Canvas of={ButtonStories.ButtonGroupAlignment} />
+<CanvasWithCodePen of={ButtonStories.ButtonGroupAlignment} />
 
 {/* ------------------------------------------------------ */}
 
@@ -103,7 +104,7 @@ Use the `.buttons` container to group multiple buttons horizontally. Alignment c
 
 Use `.as-row` to place buttons in a space-between row layout — ideal for back/next navigation patterns.
 
-<Canvas of={ButtonStories.ButtonGroupAsRow} />
+<CanvasWithCodePen of={ButtonStories.ButtonGroupAsRow} />
 
 {/* ------------------------------------------------------ */}
 
@@ -111,7 +112,7 @@ Use `.as-row` to place buttons in a space-between row layout — ideal for back/
 
 Use `.as-col` for vertical button stacks. Combine with `.is-left`, `.is-centered`, or `.is-right` for alignment.
 
-<Canvas of={ButtonStories.ButtonGroupAsCol} />
+<CanvasWithCodePen of={ButtonStories.ButtonGroupAsCol} />
 
 {/* ------------------------------------------------------ */}
 
@@ -119,7 +120,7 @@ Use `.as-col` for vertical button stacks. Combine with `.is-left`, `.is-centered
 
 The `.link` class styles an `<a>` element as an inline text link. Use the inverted variant on dark backgrounds.
 
-<Canvas of={ButtonStories.Link} />
+<CanvasWithCodePen of={ButtonStories.Link} />
 
 {/* ------------------------------------------------------ */}
 
@@ -127,6 +128,6 @@ The `.link` class styles an `<a>` element as an inline text link. Use the invert
 
 An `<a>` element styled as a button using the `.button.is-link` class. Use when the action navigates rather than submits.
 
-<Canvas of={ButtonStories.LinkButton} />
+<CanvasWithCodePen of={ButtonStories.LinkButton} />
 
 <Footer />

@@ -1,14 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  ariaBooleanToString,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { ariaBooleanToString, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import {
   ACCORDION_SUMMARY_LEVELS,
@@ -66,7 +58,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    * If `true` the accordion is open.
    */
   @Prop({ reflect: true, mutable: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   open: boolean = false
 
   /**
@@ -74,28 +66,28 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    * close when another accordion in the same group is opened.
    */
   @Prop({ reflect: true })
-  @ValidateType('string')
+  @Type('string')
   readonly group: string = ''
 
   /**
    * The heading level of the summary
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_SUMMARY_LEVELS)
+  @OneOf(ACCORDION_SUMMARY_LEVELS)
   readonly summaryLevel: AccordionSummaryLevel = 'h3'
 
   /**
    * The visual heading level of the summary.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_SUMMARY_LEVELS)
+  @OneOf(ACCORDION_SUMMARY_LEVELS)
   readonly summaryVisualLevel: AccordionSummaryLevel = ''
 
   /**
    * If `true` the summary is styled as a title.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly summaryTitle: boolean = false
 
   /**
@@ -104,70 +96,70 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    * a plus icon for closed and a minus icon for open state is used.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_MARKERS)
+  @OneOf(ACCORDION_MARKERS)
   readonly marker: AccordionMarker = ''
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_MARKER_POSITIONS)
+  @OneOf(ACCORDION_MARKER_POSITIONS)
   readonly markerPosition: AccordionMarkerPosition = ''
 
   /**
    * Displays the summary as a button and hides the default marker.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly button: boolean = false
 
   /**
    * If `true` the button is expanded to full width. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly buttonWide: boolean = false
 
   /**
    * The color of the button. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_BUTTON_COLORS)
+  @OneOf(ACCORDION_BUTTON_COLORS)
   readonly buttonColor: AccordionButtonColor = 'primary'
 
   /**
    * The size of the button. Only applies if `button` is `true`.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_BUTTON_SIZES)
+  @OneOf(ACCORDION_BUTTON_SIZES)
   readonly buttonSize: AccordionButtonSize = ''
 
   /**
    * Label of the open trigger button
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly buttonLabelOpen: string = ''
 
   /**
    * BalIcon of the open trigger button
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly buttonIconOpen: string = ''
 
   /**
    * Label of the close trigger button
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly buttonLabelClose: string = ''
 
   /**
    * BalIcon of the close trigger button
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly buttonIconClose: string = ''
 
   /**
@@ -186,15 +178,6 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
   @Event() dsClosed!: EventEmitter<AccordionToggleDetail>
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
-  /**
    * LISTENERS
    * ------------------------------------------------------
    */
@@ -207,8 +190,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
     if (id === this.accordionId) return
 
     // only react if same group (or no group = global)
-    if ((this.group && group !== this.group) || this.group === undefined || this.group === null || this.group === '')
-      return
+    if ((this.group && group !== this.group) || !hasValue(this.group)) return
 
     this.open = false
   }
@@ -283,7 +265,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
       <Host
         class={{
           'is-button': !!this.buttonIconOpen || !!this.buttonIconClose,
-          'is-title': this.summaryTitle === true || this.summaryVisualLevel !== undefined,
+          'is-title': this.summaryTitle === true || hasValue(this.summaryVisualLevel),
           [`is-${this.summaryVisualLevel}`]: !!this.summaryVisualLevel,
           'is-animated': !!this.animated,
           'is-animating': !!this.animated && this.isAnimating,

@@ -27,7 +27,6 @@ html {
   max-width: 80%;
 }
 
-
 /***************************************
  * SEARCH FIELD
  ***************************************/
@@ -51,6 +50,10 @@ html {
 
 .search-field code + svg {
   top: 8px;
+}
+
+.search-result-item--label {
+  font-weight: 700;
 }
 
 /***************************************
@@ -210,4 +213,16 @@ svg[type='story'] {
   background: #e5f1fe;
   border-color: #000739;
   color: #000739;
+}
+
+/***************************************
+ * CANVAS OVERFLOW VISIBLE
+ ***************************************/
+
+.canvas-overflow-visible,
+.canvas-overflow-visible > div,
+.canvas-overflow-visible .sbdocs-preview,
+.canvas-overflow-visible .sbdocs-preview > div {
+  overflow: visible !important;
+  z-index: 10;
 }

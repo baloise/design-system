@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssTypographyTextTransform, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as TypographyTextTransformStories from './typography-text-transform.stories'
+
+<Meta
+  title="CSS Utilities/Typography/Text Transform"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Text Transform" section="CSS Utilities" color="red" />
+
+<Lead>Determines the transformation applied to text within an element.</Lead>
+
+## Classes
+
+<CssTypographyTextTransform />
+
+## Examples
+
+<CanvasWithCodePen of={TypographyTextTransformStories.Examples} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Tokens/All Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

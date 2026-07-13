@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { shapes } from './shape.data'
-import { Logger, type LogInstance, ValidateOneOf, setupValidation } from '@utils'
+import { Logger, type LogInstance, OneOf } from '@utils'
 import {
   SHAPE_COLORS,
   SHAPE_ROTATIONS,
@@ -35,42 +35,33 @@ export class Shape implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
    * The shape color
    */
   @Prop()
-  @ValidateOneOf(...SHAPE_COLORS)
+  @OneOf(SHAPE_COLORS)
   readonly color: ShapeColor = 'green'
 
   /**
    * The shape rotation
    */
   @Prop()
-  @ValidateOneOf(...SHAPE_ROTATIONS)
+  @OneOf(SHAPE_ROTATIONS)
   readonly rotation: ShapeRotation = '0'
 
   /**
    * The shape variation
    */
   @Prop()
-  @ValidateOneOf(...SHAPE_VARIATIONS)
+  @OneOf(SHAPE_VARIATIONS)
   readonly variation: ShapeVariation = '1'
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
-
-  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

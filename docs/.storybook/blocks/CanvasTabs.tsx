@@ -1,6 +1,6 @@
-import { Canvas } from '@storybook/addon-docs/blocks'
 import React from 'react'
 import { ModuleExport } from 'storybook/internal/types'
+import { CanvasWithCodePen } from './CanvasWithCodePen'
 import { Tabs } from './Tabs'
 
 type CanvasTabsProps = {
@@ -20,13 +20,13 @@ export const CanvasTabs = ({
     label: 'Web Component',
     content: (
       <>
-        <Canvas of={ofStory} sourceState="shown" />
+        <CanvasWithCodePen of={ofStory} sourceState="shown" />
       </>
     ),
   }
   const htmlTab = {
     label: 'HTML & CSS',
-    content: <Canvas of={htmlOf} sourceState={sourceState} />,
+    content: <CanvasWithCodePen of={htmlOf} sourceState={sourceState} />,
   }
 
   return <Tabs tabs={htmlFirst ? [htmlTab, wcTab] : [wcTab, htmlTab]} />

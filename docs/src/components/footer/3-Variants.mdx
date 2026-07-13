@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as FooterStories from './footer.stories'
+import { FOOTER_DOC_CONFIG, getFooterTabs } from './footer.doc-config'
+
+<Meta title="Components/Footer/Variants/Overview" />
+
+<StoryHeading of={FooterStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={FOOTER_DOC_CONFIG.section} color={FOOTER_DOC_CONFIG.color} />
+
+<BannerTabs of={FooterStories} tabs={getFooterTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FooterStories.Basic}></StoryHeading>
+
+The standard footer with default configuration, including language selection, default legal links from config, and the Baloise logo.
+
+<CanvasWithCodePen of={FooterStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FooterStories.CustomLinks}></StoryHeading>
+
+Footer with custom slotted links and social media icons. Use this variant when you need to provide specific legal links or social profiles different from the default config.
+
+<CanvasWithCodePen of={FooterStories.CustomLinks} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FooterStories.CustomLogo}></StoryHeading>
+
+Footer with a custom logo and hidden language selection. The social media area is enabled to showcase social link integration. Useful for branded applications that need a custom logo instead of the default Baloise branding.
+
+<CanvasWithCodePen of={FooterStories.CustomLogo} sourceState="shown" />
+
+<Footer />

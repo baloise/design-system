@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssInteractionsCursor, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as CursorStories from './cursor.stories'
+
+<Meta
+  title="CSS Utilities/Interactions/Cursor"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Cursor" section="CSS Utilities" color="red" />
+
+<Lead>Defines the appearance of the mouse cursor when positioned over an element.</Lead>
+
+## Classes
+
+<CssInteractionsCursor value />
+
+<CanvasWithCodePen of={CursorStories.Classes} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Elevation"
+      description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
+    />
+    <LinkCard
+      pageTitle="Tokens/All Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

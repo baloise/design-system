@@ -39,20 +39,26 @@
   @include vars.local(list-item-content-gap, 1px);
 
   @include vars.local(list-item-color, inherit);
-  @include vars.local(list-item-border-color, var(--ds-list-item-border-color));
+  @include vars.local(list-item-border-color-base, var(--ds-list-item-border-color));
+  @include vars.local(list-item-border-color-hover, var(--ds-link-color-base));
+  @include vars.local(list-item-border-color-active, var(--ds-link-color-base-active));
   @include vars.local(list-item-border-width, var(--ds-list-item-border-width, 2px));
   @include vars.local(list-item-border-radius, 12px);
+
+  @include vars.local(list-item-background-base, transparent);
+  @include vars.local(list-item-background-hover, var(--ds-global-color-primary-1));
+  @include vars.local(list-item-background-active, var(--ds-global-color-primary-1));
 
   @include vars.local(list-item-accordion-py, var(--ds-alias-space-base-device));
 
   @include vars.local(list-item-action-icon-size, var(--ds-icon-size-xs));
 
   @include vars.local(list-item-title-size, var(--ds-heading-5-size-device));
-  @include vars.local(list-item-title-weight, var(--ds-text-weight-bold));
+  @include vars.local(list-item-title-weight, var(--ds-alias-text-weight-bold));
   @include vars.local(list-item-title-family, var(--ds-global-font-family-heading));
 
   @include vars.local(list-item-text-family, var(--ds-global-font-family-body));
-  @include vars.local(list-item-text-weight, var(--ds-text-weight-regular));
+  @include vars.local(list-item-text-weight, var(--ds-alias-text-weight-regular));
   @include vars.local(list-item-text-size, var(--ds-text-size-sm-device));
 }
 
@@ -103,7 +109,7 @@
 
   @include font-smoothing();
   font-family: var(--_list-item-title-family);
-  padding: var(--_list-item-space) 0;
+  padding: var(--_list-item-space) 0.25rem;
   padding-bottom: calc(var(--_list-item-space) + 2px);
   min-height: var(--_list-item-min-height);
 
@@ -149,7 +155,7 @@
   &:after {
     @include border();
     height: var(--_list-item-border-width);
-    background: var(--_list-item-border-color);
+    background: var(--_list-item-border-color-base);
   }
 }
 
@@ -184,6 +190,7 @@ $size-aliases: (
     text-decoration: none;
     outline: none;
     cursor: pointer;
+    background: var(--_list-item-background-base);
 
     &::-moz-focus-inner {
       border: 0;
@@ -201,28 +208,13 @@ $size-aliases: (
     @include hover {
       &:hover,
       &.is-hovered {
-        &:after {
-          background: var(--ds-link-color-base-hover);
-        }
-
-        color: var(--ds-link-color-base-hover);
-        #content {
-          color: var(--ds-link-color-base-hover);
-        }
-        ds-icon,
-        ::slotted(ds-icon),
-        ::slotted(ds-badge) {
-          --icon-color: var(--ds-link-color-base-hover);
-        }
+        background: var(--_list-item-background-hover);
       }
     }
 
     &:active,
     &.is-pressed {
-      &:after {
-        background: var(--ds-link-color-base-active);
-      }
-
+      background: var(--_list-item-background-active);
       color: var(--ds-link-color-base-active);
       #content {
         color: var(--ds-link-color-base-active);
@@ -234,21 +226,38 @@ $size-aliases: (
       }
     }
 
+    &:before {
+      @include vars.focus-basic(list-item);
+    }
+
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
         &:before {
           @include vars.focus-styles(list-item);
-
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 1;
-          border-radius: var(--ds-alias-radius-base);
         }
+      }
+    }
+  }
+}
+
+:host(.is-link),
+:host(.is-button),
+:host(.is-accordion) {
+  #item {
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        &:after {
+          background: var(--_list-item-border-color-hover);
+        }
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      &:after {
+        background: var(--_list-item-border-color-active);
       }
     }
   }
@@ -262,13 +271,33 @@ $size-aliases: (
     padding-block: var(--_list-item-accordion-py);
   }
 
+  ds-accordion {
+    --accordion-summary-color-hover: var(--ds-link-color-base);
+  }
+
+  ds-accordion::part(header) {
+    background: var(--_list-item-background-base);
+  }
+
+  ds-accordion::part(summary) {
+    padding-right: 0.25rem;
+  }
+
+  ds-accordion::part(summary):hover {
+    background: var(--_list-item-background-hover);
+  }
+
+  ds-accordion::part(summary):active {
+    background: var(--_list-item-background-active);
+  }
+
   #accordion-content {
     //
     // Border
     &:after {
       @include border();
       height: var(--_list-item-border-width);
-      background: var(--_list-item-border-color);
+      background: var(--_list-item-border-color-base);
     }
   }
 }

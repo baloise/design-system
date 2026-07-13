@@ -1,5 +1,6 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs,
+  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as SegmentStories from './segment.stories'
 import { SEGMENT_DOC_CONFIG, getSegmentTabs } from './segment.doc-config'
 
@@ -58,7 +59,7 @@ CSS-only invalid variant using the `is-danger` modifier class and `aria-invalid=
 
 Add the `wide` attribute to make each segment item expand equally and fill the full available width.
 
-<Canvas of={SegmentStories.Wide} />
+<CanvasWithCodePen of={SegmentStories.Wide} />
 
 {/* ------------------------------------------------------ */}
 
@@ -66,7 +67,7 @@ Add the `wide` attribute to make each segment item expand equally and fill the f
 
 Add `icon` to each `ds-segment-item` and `icon-only` to the parent to display icon-only items. Accessible labels are applied automatically.
 
-<Canvas of={SegmentStories.Icon} />
+<CanvasWithCodePen of={SegmentStories.Icon} />
 
 {/* ------------------------------------------------------ */}
 

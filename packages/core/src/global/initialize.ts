@@ -4,6 +4,7 @@ import { tags } from './constants/tags.constant'
 import { DsConfig, DsPlatformConfig, setupDsConfig } from './config'
 import { VERSION } from './constants/version.constant'
 import { dsSnackbarController, dsToastController } from '../components/alert/alert.controller'
+import { dsModalController } from '../components/modal/modal.controller'
 import { dsBrowser } from '@utils'
 
 export const initializeDesignSystem = (
@@ -30,6 +31,7 @@ export const initializeDesignSystem = (
 
   win.DesignSystem.toastController = dsToastController
   win.DesignSystem.snackbarController = dsSnackbarController
+  win.DesignSystem.modalController = dsModalController
   win.DesignSystem.initialize = () => setupDsConfig(win.DesignSystem.config, win)
   win.DesignSystem.version = VERSION
 

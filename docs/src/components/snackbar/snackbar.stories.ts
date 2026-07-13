@@ -55,7 +55,7 @@ WithBrandIcon.storyName = '🧩 WithBrandIcon'
 
 export const Colors = Story({
   ...withRender(
-    ({ slot, slotAction, ...args }) => `<div class="flex gap-small flex-direction-column">
+    () => `<div class="flex gap-small flex-direction-column">
   <ds-snackbar heading="Default"> Your changes have been saved. </ds-snackbar>
   <ds-snackbar color="info" heading="Information"> Your changes have been saved. </ds-snackbar>
   <ds-snackbar color="success" heading="Success"> Your changes have been saved. </ds-snackbar>

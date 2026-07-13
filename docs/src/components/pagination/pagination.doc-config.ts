@@ -7,11 +7,12 @@ export const PAGINATION_DOC_CONFIG = {
   section: 'Components / Pagination',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-pagination--overview' },
+    { label: 'Overview', storyId: 'components-pagination--pagination' },
     { label: 'Usage', storyId: 'components-pagination--usage' },
     { label: 'Variants', storyId: 'components-pagination--variants-overview' },
     { label: 'Styling', storyId: 'components-pagination--styling' },
     { label: 'Accessibility', storyId: 'components-pagination--accessibility' },
+    { label: 'Testing', storyId: 'components-pagination--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const PAGINATION_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

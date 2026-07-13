@@ -1,0 +1,99 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as TabsStories from './tabs.stories'
+import { TABS_DOC_CONFIG, getTabsTabs } from './tabs.doc-config'
+
+<Meta title="Components/Tabs/Usage" />
+
+<Banner label={'Usage'} section={TABS_DOC_CONFIG.section} color={TABS_DOC_CONFIG.color} />
+
+<BannerTabs of={TabsStories} tabs={getTabsTabs('usage')} />
+
+## When to Use
+
+- Organising related content into distinct sections within a single page view
+- Allowing users to switch between multiple views without leaving the current context
+- Reducing vertical scroll by grouping content that doesn't need to be visible simultaneously
+- As a navigation aid when linking to page sections via anchor links (navigation variant)
+
+## When NOT to Use
+
+- When content needs to be compared side by side — use a layout instead
+- When there are fewer than two tabs — just show the content directly
+- When tab content is deeply nested or requires its own navigation
+- When the sequence of content matters — use a stepper or accordion instead
+
+## Do's and Don'ts
+
+### Tab Labels
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Short, descriptive labels',
+      content: (
+        <ds-tabs>
+          <ds-tab name="a">Overview</ds-tab>
+          <ds-tab name="b">Details</ds-tab>
+          <ds-tab name="c">History</ds-tab>
+          <ds-tab-panel for="a">Overview content</ds-tab-panel>
+          <ds-tab-panel for="b">Details content</ds-tab-panel>
+          <ds-tab-panel for="c">History content</ds-tab-panel>
+        </ds-tabs>
+      ),
+      description: 'Use concise labels (1–3 words) that clearly describe the panel content.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Lengthy labels',
+      content: (
+        <ds-tabs>
+          <ds-tab name="a">General Overview Information</ds-tab>
+          <ds-tab name="b">Detailed Technical Specifications</ds-tab>
+          <ds-tab-panel for="a">Overview content</ds-tab-panel>
+          <ds-tab-panel for="b">Details content</ds-tab-panel>
+        </ds-tabs>
+      ),
+      description: 'Avoid long labels that cause the tablist to overflow or wrap awkwardly.',
+    },
+  ]}
+/>
+
+### Panels vs. Navigation
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Panels for toggled content',
+      content: (
+        <ds-tabs>
+          <ds-tab name="a">Tab A</ds-tab>
+          <ds-tab name="b">Tab B</ds-tab>
+          <ds-tab-panel for="a">Content A</ds-tab-panel>
+          <ds-tab-panel for="b">Content B</ds-tab-panel>
+        </ds-tabs>
+      ),
+      description: 'Use ds-tab-panel children when the content is managed in place.',
+    },
+    {
+      type: 'correct',
+      title: 'Correct: Navigation for anchor links',
+      content: (
+        <ds-tabs label="Page sections">
+          <ds-tab name="overview"><a href="#overview" aria-current="page">Overview</a></ds-tab>
+          <ds-tab name="details"><a href="#details">Details</a></ds-tab>
+        </ds-tabs>
+      ),
+      description: 'Use anchor link children (without ds-tab-panel) when tabs navigate to page sections.',
+    },
+  ]}
+/>
+
+<Footer />

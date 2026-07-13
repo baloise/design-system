@@ -3,21 +3,21 @@
  *
  * Run with: node --import tsx/esm src/build.ts
  */
-import { createGenerator } from 'unocss'
-import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync } from 'node:fs'
-import { resolve, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { compileAsync, compileStringAsync } from 'sass'
-import { glob } from 'glob'
-import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import { presetDsUtilities, allSafelist } from './preset/index'
+import { glob } from 'glob'
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import postcss from 'postcss'
+import { compileAsync, compileStringAsync } from 'sass'
+import { createGenerator } from 'unocss'
+import { allSafelist, presetDsUtilities } from './preset/index'
 import { buildBackgroundRules } from './preset/rules/background'
-import { buildBorderRules } from './preset/rules/radius'
 import { buildBorderColorRules } from './preset/rules/border-color'
 import { buildElevationRules } from './preset/rules/elevation'
-import { buildTypographyRules } from './preset/rules/typography'
+import { buildBorderRules } from './preset/rules/radius'
 import { buildSpacingRules } from './preset/rules/spacing'
+import { buildTypographyRules } from './preset/rules/typography'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -29,6 +29,17 @@ console.log(`
 \x1b[35m┃\x1b[0m  \x1b[90m📦 Building CSS Package\x1b[0m
 \x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
 `)
+
+// Sass resolves bare package specifiers (e.g. `@baloise/ds-tokens/...`) only via loadPaths.
+// Unlike npm, pnpm does not hoist workspace deps to the repo-root node_modules — the
+// `@baloise/*` symlinks live inside each consuming package's own node_modules. Include those
+// package-local dirs so `@use '@baloise/...'` keeps resolving.
+const sassLoadPaths = [
+  resolve(__dirname, '../node_modules'), // packages/css/node_modules — ds-tokens, ds-assets
+  resolve(__dirname, '../../core/node_modules'), // packages/core/node_modules — ds-css, ds-tokens, ds-assets
+  resolve(__dirname, '../../../node_modules'), // repo-root node_modules (npm hoist / fallback)
+  resolve(__dirname, '../../..'),
+]
 
 const processor = postcss([autoprefixer])
 
@@ -73,9 +84,9 @@ const breakpointPrefixes = [
 
 // Derive the per-breakpoint class list from the safelist:
 // only classes that have a responsive counterpart in the SCSS source get prefixed
-import { flexSafelist, flexMetadata } from './preset/rules/flex'
-import { layoutSafelist, layoutMetadata } from './preset/rules/layout'
-import { interactionSafelist, interactionMetadata } from './preset/rules/interaction'
+import { flexMetadata, flexSafelist } from './preset/rules/flex'
+import { interactionMetadata, interactionSafelist } from './preset/rules/interaction'
+import { layoutMetadata, layoutSafelist } from './preset/rules/layout'
 import { sizingMetadata } from './preset/rules/sizing'
 
 const responsiveBase = [...flexSafelist, ...layoutSafelist, ...interactionSafelist]
@@ -175,7 +186,7 @@ let tokensCss = ''
 try {
   tokensCss = readFileSync(tokensPath, 'utf8')
 } catch {
-  console.warn('Warning: base.tokens.css not found — run `npm run tokens` first.')
+  console.warn('Warning: base.tokens.css not found — run `pnpm tokens` first.')
 }
 
 const output = tokensCss ? `${tokensCss}\n${prefixedUtilities}` : prefixedUtilities
@@ -223,7 +234,7 @@ console.log(`\x1b[32m✔\x1b[0m dist/docs/design-system.json written (${Object.k
 // --- Compile base layer (tokens + normalize + structure) -------------------
 async function compileSass(entry: string, outPath: string, description: string): Promise<void> {
   const result = await compileAsync(entry, {
-    loadPaths: [resolve(__dirname, '../../../node_modules'), resolve(__dirname, '../../..')],
+    loadPaths: sassLoadPaths,
   })
   const prefixed = await autoprefix(result.css)
   const content = banner(description) + prefixed
@@ -251,7 +262,8 @@ const styleFiles = await glob('**/*.style.scss', { cwd: coreRoot, absolute: fals
 styleFiles.sort()
 
 // Build barrel: paths relative to packages/css/src/scss/ (url used by compileStringAsync)
-const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f}';`).join('\n')
+// Normalize paths to forward slashes for Sass compatibility on Windows
+const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f.replace(/\\/g, '/')}';`).join('\n')
 
 // FileImporter: redirect @baloise/ds-css/scss/* → packages/css/src/scss/*
 // Handles internal monorepo imports during development
@@ -265,7 +277,7 @@ const dsStylesImporter = {
 
 const componentResult = await compileStringAsync(barrelContent, {
   url: new URL(`file://${resolve(__dirname, 'scss/_components.scss')}`),
-  loadPaths: [resolve(__dirname, '../../../node_modules')],
+  loadPaths: sassLoadPaths,
   importers: [dsStylesImporter],
 })
 const prefixedComponentCss = await autoprefix(componentResult.css)

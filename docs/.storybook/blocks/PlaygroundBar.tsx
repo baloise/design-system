@@ -1,7 +1,7 @@
 import React from 'react'
-import { Unstyled, useOf } from '@storybook/addon-docs/blocks'
+import { Unstyled } from '@storybook/addon-docs/blocks'
 
-export const PlaygroundBar = ({ of, children }): React.ReactElement => {
+export const PlaygroundBar = ({ _of, _children }): React.ReactElement => {
   // const resolvedOf = useOf(of || 'story', ['story'])
 
   return (

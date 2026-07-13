@@ -1,5 +1,6 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs,
+  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as PaginationStories from './pagination.stories'
 import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-config'
 
@@ -16,7 +17,7 @@ import { PAGINATION_DOC_CONFIG, getPaginationTabs } from './pagination.doc-confi
 With `align` prop, you can align the pagination to the left, center, or right of its container.
 By default, it is aligned to the center.
 
-<Canvas of={PaginationStories.Alignment} />
+<CanvasWithCodePen of={PaginationStories.Alignment} />
 
 {/* ------------------------------------------------------ */}
 
@@ -24,7 +25,7 @@ By default, it is aligned to the center.
 
 With `range` prop, you can control the number of pages displayed in the pagination.
 
-<Canvas of={PaginationStories.Ranges} />
+<CanvasWithCodePen of={PaginationStories.Ranges} />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,7 +33,7 @@ With `range` prop, you can control the number of pages displayed in the paginati
 
 The `disabled` prop can be used to disable the pagination, preventing user interaction and visually indicating that it is inactive.
 
-<Canvas of={PaginationStories.Disabled} />
+<CanvasWithCodePen of={PaginationStories.Disabled} />
 
 {/* ------------------------------------------------------ */}
 
@@ -40,13 +41,13 @@ The `disabled` prop can be used to disable the pagination, preventing user inter
 
 With `size` prop, you can adjust the size of the pagination to fit different design needs and contexts.
 
-<Canvas of={PaginationStories.Sizes} />
+<CanvasWithCodePen of={PaginationStories.Sizes} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={PaginationStories.Dots}></StoryHeading>
 
-<Canvas of={PaginationStories.Dots} />
+<CanvasWithCodePen of={PaginationStories.Dots} />
 
 {/* ------------------------------------------------------ */}
 

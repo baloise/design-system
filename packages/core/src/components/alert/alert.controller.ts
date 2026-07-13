@@ -27,7 +27,7 @@ class AlertControllerImpl implements AlertController {
     await this.container?.removeAll()
   }
 
-  private setupContainer(options: Alert) {
+  private setupContainer(_options: Alert) {
     // Check if there is already a container for the given type, if so reuse it
     const containerId = `ds-${this.type}-container`
     this.container = document.getElementById(containerId) as HTMLDsAlertContainerElement

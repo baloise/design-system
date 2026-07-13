@@ -48,9 +48,9 @@ const preview: Preview = {
       storySort: {
         order: [
           'Welcome',
-          'Design System',
-          'Changelog',
+          'Versions',
           'Support',
+          'Contributing',
           'Foundation',
           [
             'Overview',
@@ -70,30 +70,15 @@ const preview: Preview = {
           'Components',
           ['Overview'],
           'Development',
-          'Contributing',
-          [
-            'Overview',
-            'Setup',
-            'Component Style Guide',
-            'How to fix a Bug',
-            'How to create a Feature',
-            'How to create a Pull Request',
-            'How to work with the Components',
-            'How to test',
-            'How to add Icons',
-            'How to Release',
-            'How to Deploy',
-            'How to work with GitHub Actions',
-          ],
         ],
       },
     },
     viewport: {
       options: {
         small: {
-          name: 'Small (Mobile) from 320px to 768px',
+          name: 'Small (Mobile) from 420px to 768px',
           styles: {
-            width: '320px',
+            width: '420px',
             height: '667px',
           },
           type: 'mobile',

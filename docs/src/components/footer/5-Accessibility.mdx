@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FooterStories from './footer.stories'
+import { FOOTER_DOC_CONFIG, getFooterTabs } from './footer.doc-config'
+
+<Meta title="Components/Footer/Accessibility" />
+
+<Banner label={'Accessibility'} section={FOOTER_DOC_CONFIG.section} color={FOOTER_DOC_CONFIG.color} />
+
+<BannerTabs of={FooterStories} tabs={getFooterTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use real anchor elements for links',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Wrap links in actual `&lt;a&gt;` elements with `href` attributes. This ensures screen readers announce links correctly and users can interact with them using keyboard navigation.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Provide aria-labels for icon-only links',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using social media icons without visible text, include `aria-label` attributes to describe the link destination for screen reader users.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Mark logos as presentational when appropriate',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use `aria-hidden="true"` on decorative logo images, or provide meaningful `aria-label` on logo links if they navigate to the homepage.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Use generic "Click here" link text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid vague link text. Screen reader users often navigate by headings and links alone — describe where the link goes or what it does.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Disable language selection without reason',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Users with language preferences need the ability to change the displayed language. Only hide the selector if your app is single-language.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The footer component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Link Purpose (2.4.9)** — All links have descriptive text or aria-labels
+- **Language of Page (3.1.1)** — Language selection allows users to choose preferred language
+- **Keyboard Navigation (2.1.1)** — All interactive elements are keyboard accessible
+- **Color Contrast (1.4.3)** — Text and links meet minimum contrast ratios
+- **Focus Visible (2.4.7)** — Keyboard focus indicators are clearly visible
+
+<Footer />

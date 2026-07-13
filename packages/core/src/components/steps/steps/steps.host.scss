@@ -1,0 +1,137 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * @prop --steps-connector-color: Color of the connector line between steps.
+ * @prop --steps-connector-color-filled: Color of the connector line for completed steps.
+ * @prop --steps-connector-height: Thickness of the connector line.
+ * @prop --steps-circle-size: Diameter of the step circle.
+ * @prop --steps-circle-size-sm: Diameter of the step circle on mobile.
+ * @prop --steps-circle-color-bg: Background color of the circle (default state).
+ * @prop --steps-circle-color-bg-selected: Background color of the circle (selected state).
+ * @prop --steps-circle-color-bg-done: Background color of the circle (done state).
+ * @prop --steps-circle-color-bg-invalid: Background color of the circle (invalid state).
+ * @prop --steps-circle-color-bg-disabled: Background color of the circle (disabled state).
+ * @prop --steps-circle-color-text: Text/icon color inside the circle (default state).
+ * @prop --steps-circle-color-text-selected: Text/icon color inside the circle (selected state).
+ * @prop --steps-circle-color-text-done: Text/icon color inside the circle (done state).
+ * @prop --steps-circle-color-text-invalid: Text/icon color inside the circle (invalid state).
+ * @prop --steps-circle-color-text-disabled: Text/icon color inside the circle (disabled state).
+ * @prop --steps-step-font-family: Font family for step labels and circle numbers.
+ * @prop --steps-step-font-size: Font size for step labels and circle numbers.
+ * @prop --steps-step-font-size-sm: Font size for step labels and circle numbers on mobile.
+ * @prop --steps-step-font-weight: Font weight for step labels.
+ * @prop --steps-step-color: Text color for step labels (default state).
+ * @prop --steps-step-color-selected: Text color for step labels (selected state).
+ * @prop --steps-step-color-focus: Focus ring color for step buttons.
+ * @prop --steps-panel-padding: Padding inside each step panel.
+ */
+
+:host {
+  @include vars.local(steps-connector-color, var(--ds-steps-connector-color));
+  @include vars.local(steps-connector-color-filled, var(--ds-steps-connector-color-filled));
+  @include vars.local(steps-connector-height, var(--ds-steps-connector-height));
+  @include vars.local(steps-circle-size, var(--ds-steps-circle-size));
+  @include vars.local(steps-circle-size-sm, var(--ds-steps-circle-size-sm));
+  @include vars.local(steps-circle-color-bg, var(--ds-steps-circle-color-bg));
+  @include vars.local(steps-circle-color-bg-selected, var(--ds-steps-circle-color-bg-selected));
+  @include vars.local(steps-circle-color-bg-done, var(--ds-steps-circle-color-bg-done));
+  @include vars.local(steps-circle-color-bg-invalid, var(--ds-steps-circle-color-bg-invalid));
+  @include vars.local(steps-circle-color-bg-disabled, var(--ds-steps-circle-color-bg-disabled));
+  @include vars.local(steps-circle-color-text, var(--ds-steps-circle-color-text));
+  @include vars.local(steps-circle-color-text-selected, var(--ds-steps-circle-color-text-selected));
+  @include vars.local(steps-circle-color-text-done, var(--ds-steps-circle-color-text-done));
+  @include vars.local(steps-circle-color-text-invalid, var(--ds-steps-circle-color-text-invalid));
+  @include vars.local(steps-circle-color-text-disabled, var(--ds-steps-circle-color-text-disabled));
+  @include vars.local(steps-step-font-family, var(--ds-steps-step-font-family));
+  @include vars.local(steps-step-font-size, var(--ds-steps-step-font-size));
+  @include vars.local(steps-step-font-size-sm, var(--ds-steps-step-font-size-sm));
+  @include vars.local(steps-step-font-weight, var(--ds-steps-step-font-weight));
+  @include vars.local(steps-step-color, var(--ds-steps-step-color-base));
+  @include vars.local(steps-step-color-selected, var(--ds-steps-step-color-selected));
+  @include vars.local(steps-step-color-focus, var(--ds-steps-step-color-focus));
+  @include vars.local(steps-panel-padding, var(--ds-steps-panel-padding));
+  @include vars.local(steps-color-purple, var(--ds-steps-color-purple));
+  @include vars.local(steps-color-green, var(--ds-steps-color-green));
+  @include vars.local(steps-color-red, var(--ds-steps-color-red));
+  @include vars.local(steps-color-yellow, var(--ds-steps-color-yellow));
+
+  display: block;
+}
+
+// ─── Color variants ───────────────────────────────────────────────────────────
+// Override the grey connector and inactive circle with a light brand tint.
+
+:host(.is-purple) {
+  --_steps-connector-color: var(--_steps-color-purple);
+  --_steps-circle-color-bg: var(--_steps-color-purple);
+  --_steps-circle-color-bg-disabled: var(--_steps-color-purple);
+}
+
+:host(.is-green) {
+  --_steps-connector-color: var(--_steps-color-green);
+  --_steps-circle-color-bg: var(--_steps-color-green);
+  --_steps-circle-color-bg-disabled: var(--_steps-color-green);
+}
+
+:host(.is-red) {
+  --_steps-connector-color: var(--_steps-color-red);
+  --_steps-circle-color-bg: var(--_steps-color-red);
+  --_steps-circle-color-bg-disabled: var(--_steps-color-red);
+}
+
+:host(.is-yellow) {
+  --_steps-connector-color: var(--_steps-color-yellow);
+  --_steps-circle-color-bg: var(--_steps-color-yellow);
+  --_steps-circle-color-bg-disabled: var(--_steps-color-yellow);
+}
+
+// ─── Steplist container (horizontal) ─────────────────────────────────────────
+
+:host #steplist {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+// Navigation mode: <nav> and <ol> must not create their own block context
+:host(.is-navigation) nav,
+:host(.is-navigation) ol {
+  display: contents;
+}
+
+// ─── Panel padding passthrough ────────────────────────────────────────────────
+
+:host ::slotted(ds-step-panel) {
+  --step-panel-padding: var(--_steps-panel-padding);
+}
+
+// ─── Vertical mode ────────────────────────────────────────────────────────────
+
+:host(.is-vertical) #steplist {
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
+
+// Continuous vertical connector line drawn by the parent (avoids variable-height step issue)
+:host(.is-vertical) #steplist::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--_steps-circle-size) / 2);
+  transform: translateX(-50%);
+  top: calc(var(--_steps-circle-size) / 2);
+  bottom: calc(var(--_steps-circle-size) / 2);
+  width: var(--_steps-connector-height);
+  background-color: var(--_steps-connector-color);
+  z-index: 0;
+}
+
+@include mobile {
+  :host(.is-vertical) #steplist::before {
+    left: calc(var(--_steps-circle-size-sm) / 2);
+    top: calc(var(--_steps-circle-size-sm) / 2);
+    bottom: calc(var(--_steps-circle-size-sm) / 2);
+  }
+}

@@ -1,5 +1,5 @@
 @use './radio-group.mixin.scss' as group;
-@use '../../input/input.mixin' as input;
+@use '../../form/form.mixin' as form;
 
 /**
  * Variables
@@ -20,8 +20,8 @@
  */
 
 :host {
-  @include input.vars-label('radio-group');
-  @include input.vars-description('radio-group');
+  @include form.vars-label();
+  @include form.vars-description();
 }
 
 /**
@@ -39,8 +39,8 @@
     gap: 0.25rem;
   }
 
-  @include input.label('radio-group', 'legend');
-  @include input.description('radio-group');
+  @include form.label('legend');
+  @include form.description();
 
   @include group.style('#container');
 }
@@ -57,7 +57,7 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-radio-group-description-color: var(--ds-input-description-color-danger);
+  --mod-radio-group-description-color: var(--ds-form-description-color-danger);
 }
 
 //
@@ -72,8 +72,8 @@
     cursor: default;
   }
 
-  --mod-radio-group-label-color: var(--ds-input-label-color-disabled);
-  --mod-radio-group-description-color: var(--ds-input-description-color-disabled);
+  --mod-radio-group-label-color: var(--ds-form-label-color-disabled);
+  --mod-radio-group-description-color: var(--ds-form-description-color-disabled);
 }
 
 //

@@ -1,0 +1,135 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div class="field">
+          <label class="label" for="select-basic-1">Label</label>
+          <div class="control">
+            <select id="select-basic-1" class="select" aria-describedby="help-basic-1"></select>
+          </div>
+          <p id="help-basic-1" class="help">Description</p>
+        </div>
+        <div class="field">
+          <label class="label" for="select-basic-2">Label</label>
+          <div class="control">
+            <select id="select-basic-2" class="select" aria-describedby="help-basic-2"></select>
+          </div>
+          <p id="help-basic-2" class="help">Description</p>
+        </div>
+        <div class="field">
+          <label class="label" for="select-basic-3">Label</label>
+          <div class="control">
+            <select id="select-basic-3" class="select" aria-describedby="help-basic-3"></select>
+          </div>
+          <p id="help-basic-3" class="help">Description</p>
+        </div>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <div class="field is-disabled">
+          <label class="label" for="select-disabled-1">Label</label>
+          <div class="control">
+            <select id="select-disabled-1" class="select" disabled aria-describedby="help-disabled-1"></select>
+          </div>
+          <p id="help-disabled-1" class="help">Description</p>
+        </div>
+        <div class="field is-disabled">
+          <label class="label" for="select-disabled-2">Label</label>
+          <div class="control">
+            <select id="select-disabled-2" class="select" disabled aria-describedby="help-disabled-2"></select>
+          </div>
+          <p id="help-disabled-2" class="help">Description</p>
+        </div>
+        <div class="field is-disabled">
+          <label class="label" for="select-disabled-3">Label</label>
+          <div class="control">
+            <select id="select-disabled-3" class="select" disabled aria-describedby="help-disabled-3"></select>
+          </div>
+          <p id="help-disabled-3" class="help">Description</p>
+        </div>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <div class="field is-danger">
+          <label class="label" for="select-invalid-1">Label</label>
+          <div class="control">
+            <select id="select-invalid-1" class="select" aria-invalid="true" aria-describedby="help-invalid-1"></select>
+          </div>
+          <p id="help-invalid-1" class="help">Validation Error</p>
+        </div>
+        <div class="field is-danger">
+          <label class="label" for="select-invalid-2">Label</label>
+          <div class="control">
+            <select id="select-invalid-2" class="select" aria-invalid="true" aria-describedby="help-invalid-2"></select>
+          </div>
+          <p id="help-invalid-2" class="help">Validation Error</p>
+        </div>
+        <div class="field is-danger">
+          <label class="label" for="select-invalid-3">Label</label>
+          <div class="control">
+            <select id="select-invalid-3" class="select" aria-invalid="true" aria-describedby="help-invalid-3"></select>
+          </div>
+          <p id="help-invalid-3" class="help">Validation Error</p>
+        </div>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <div class="field is-success">
+          <label class="label" for="select-valid-1">Label</label>
+          <div class="control">
+            <select id="select-valid-1" class="select" aria-describedby="help-valid-1"></select>
+          </div>
+          <p id="help-valid-1" class="help">Description</p>
+        </div>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <div class="field is-warning">
+          <label class="label" for="select-warning-1">Label</label>
+          <div class="control">
+            <select id="select-warning-1" class="select" aria-describedby="help-warning-1"></select>
+          </div>
+          <p id="help-warning-1" class="help">Description</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const commonOptions = [
+        { label: 'Option 1', value: 'opt1' },
+        { label: 'Option 2', value: 'opt2' },
+        { label: 'Option 3', value: 'opt3' },
+      ]
+
+      // Set options on all select elements
+      document.querySelectorAll('select.select').forEach(selectEl => {
+        commonOptions.forEach(option => {
+          const optElement = document.createElement('option')
+          optElement.value = option.value
+          optElement.textContent = option.label
+          selectEl.appendChild(optElement)
+        })
+      })
+    </script>
+  </body>
+</html>

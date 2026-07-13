@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './modal.stories'
+import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
+
+<Meta title="Components/Modal/Accessibility" />
+
+<Banner label={'Accessibility'} section={MODAL_DOC_CONFIG.section} color={MODAL_DOC_CONFIG.color} />
+
+<BannerTabs of={ModalStories} tabs={getModalTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Provide a meaningful title',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Always use <code>ds-modal-header</code> or <code>slot="header"</code> with a descriptive title. The modal is labelled by this heading via <code>aria-labelledby</code>, which screen readers announce when the dialog opens.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Include a visible close path for closable modals',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>When <code>closable</code> is true (the default), users can dismiss the modal via the close button, the Escape key, or clicking the backdrop. Ensure at least one explicit action button is also present so keyboard and screen reader users have a clear exit.</p>,
+    },
+    {
+      type: 'do',
+      title: 'Limit body scroll to the modal body area',
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Place all scrollable content inside <code>ds-modal-body</code> or <code>slot="body"</code>. The modal title and action buttons remain visible at all times, ensuring keyboard users can always reach the actions without scrolling.</p>,
+    },
+    {
+      type: 'dont',
+      title: "Don't use closable=\"false\" without a mandatory action",
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Non-closable modals trap focus intentionally. Only use this pattern when the user genuinely must complete the action — for example, a required session expiry warning. Always provide at least one action button so users are not stuck.</p>,
+    },
+    {
+      type: 'dont',
+      title: "Don't nest interactive content that opens another dialog",
+      content: <p style={{ margin: '0.5rem 0 0 0' }}>Avoid triggering a second modal from within an open modal. Stacked dialogs create confusing focus management and disorienting experiences for screen reader users.</p>,
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The `ds-modal` component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **1.3.1 Info and Relationships** — The native `<dialog>` element provides semantic role `dialog`, and `aria-labelledby` links the dialog to its heading.
+- **2.1.1 Keyboard** — The modal is fully operable by keyboard: Tab cycles through focusable elements, Escape closes the dialog when `closable` is true.
+- **2.1.2 No Keyboard Trap** — Focus is contained within the open modal (native browser focus trap via `showModal()`), and the user can always leave via Escape or an action button.
+- **2.4.3 Focus Order** — Focus moves into the modal when it opens and returns to the triggering element when it closes.
+- **4.1.2 Name, Role, Value** — The dialog role and accessible name are provided automatically through the native `<dialog>` element and `aria-labelledby`.
+
+<Footer />

@@ -6,22 +6,29 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-import { DsConfigState } from "./global/index";
+import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 import { CloseSize } from "./components/close/close.interfaces";
 import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
+import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
+import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
+import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
+import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
+import { NavbarContainer } from "./components/navbar/navbar.interfaces";
 import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -31,28 +38,38 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
+import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
 import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-export { DsConfigState } from "./global/index";
+export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
+export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
 export { CloseSize } from "./components/close/close.interfaces";
 export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
+export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
+export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
+export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
+export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
+export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
+export { NavbarContainer } from "./components/navbar/navbar.interfaces";
 export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -62,11 +79,14 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
+export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
 export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+export { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export namespace Components {
     /**
      * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
@@ -535,6 +555,80 @@ export namespace Components {
         "visualLevel": HeadingVisualLevel;
     }
     /**
+     * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+     */
+    interface DsCarousel {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
+          * @default 'dots'
+         */
+        "controls": CarouselControls;
+        /**
+          * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.
+          * @default 'auto'
+         */
+        "itemsPerView": number | 'auto';
+        /**
+          * Accessible label for the carousel region.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Number of items to advance per arrow click.
+          * @default 1
+         */
+        "steps": number;
+        /**
+          * Name of the currently selected ds-carousel-item.
+         */
+        "value"?: string | null;
+        /**
+          * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
+          * @default 'slide'
+         */
+        "variant": CarouselVariant;
+    }
+    /**
+     * Carousel Item is a single slide or product tile inside a ds-carousel.
+     */
+    interface DsCarouselItem {
+        /**
+          * Set by ds-carousel. The carousel variant this item is part of.
+          * @default 'slide'
+         */
+        "carouselVariant": CarouselVariant;
+        /**
+          * Background color for product tiles.
+          * @default ''
+         */
+        "color": CarouselItemColor;
+        /**
+          * Set by ds-carousel. 1-based position index.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * Unique identifier for this item, matched by the parent ds-carousel `value` prop.
+         */
+        "name": string;
+        /**
+          * When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot, which is stretched to cover the full tile and acts as the interactive element.
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Image URL displayed in image-variant slides, or brand icon source for product tiles.
+          * @default ''
+         */
+        "src": string;
+    }
+    /**
      * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
      */
     interface DsCheckbox {
@@ -778,6 +872,61 @@ export namespace Components {
         "textAlign": ContentTextAlignment;
     }
     /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+     */
+    interface DsData {
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+          * @default false
+         */
+        "horizontal": boolean;
+    }
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface DsDataItem {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * If `true` the item gets a lighter font color.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Label for the edit button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "editLabel": string | undefined;
+        /**
+          * If `true` a small button with an edit icon is shown on the right.
+          * @default false
+         */
+        "editable": boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+          * @default false
+         */
+        "multiline": boolean;
+    }
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface DsDataLabel {
+        /**
+          * If `true` an asterisk is added after the label.
+          * @default false
+         */
+        "required": boolean;
+    }
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface DsDataValue {
+    }
+    /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
      */
     interface DsDivider {
@@ -801,6 +950,186 @@ export namespace Components {
           * @default 'none'
          */
         "space": DividerSpace;
+    }
+    /**
+     * Drawer displays a panel that slides up from the bottom of the screen.
+     * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+     * and Escape-key handling.
+     */
+    interface DsDrawer {
+        /**
+          * If `true`, clicking the backdrop (outside the panel) dismisses the drawer.
+          * @default true
+         */
+        "backdropDismiss": boolean;
+        /**
+          * If `true`, the drawer can be dismissed via the Escape key and shows a close button.
+          * @default true
+         */
+        "closable": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default 'default'
+         */
+        "container": DrawerContainer;
+        /**
+          * Closes the drawer.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Accessible label for the drawer dialog (sets aria-label on the dialog element).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * If `true` the drawer is open.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the drawer.
+         */
+        "present": () => Promise<void>;
+    }
+    /**
+     * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+     */
+    interface DsFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+          * @default ''
+         */
+        "accept": string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Sets the file list to an empty list.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Defines the color of the file upload. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: { language: DsLanguage; region: DsRegion; }) => Promise<void>;
+        /**
+          * The description of the file upload, displayed below the drop zone.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The text displayed inside the drop zone. Defaults to localized "Drag and drop or choose file(s) to upload".
+          * @default ''
+         */
+        "dropZoneLabel": string;
+        /**
+          * If `true` below the drop-zone area it generates a file list.
+          * @default true
+         */
+        "hasFileList": boolean;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the file upload is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the file upload, displayed in the drop zone area.
+          * @default 'Choose or drop a file...'
+         */
+        "label": string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+          * @default true
+         */
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.fileUploadId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the file upload (array of selected files).
+          * @default []
+         */
+        "value": File[];
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface DsFooter {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container": FooterContainer;
+        /**
+          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
+          * @default false
+         */
+        "disableDefaultLinks": boolean;
+        /**
+          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
+          * @default false
+         */
+        "disableDefaultSocialLinks": boolean;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
+         */
+        "legalText": string | undefined;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -853,6 +1182,58 @@ export namespace Components {
         "visualLevel": HeadingVisualLevel;
     }
     /**
+     * Hint displays contextual help via an info-circle trigger button.
+     * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+     * on desktop it opens a ds-popup (floating panel).
+     */
+    interface DsHint {
+        /**
+          * Label for the close button shown in the drawer on touch viewports. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "closeLabel": string | undefined;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Closes the hint panel.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Title text displayed in the hint panel. When provided, renders in the title section without needing a named slot.
+          * @default undefined
+         */
+        "label": string | undefined;
+        /**
+          * Preferred placement of the popup panel on desktop viewports.
+          * @default 'right'
+         */
+        "placement": PopupPlacement;
+        /**
+          * Opens the hint panel.
+         */
+        "present": () => Promise<void>;
+        /**
+          * Toggles the hint panel open or closed.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Accessible label for the trigger button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "triggerLabel": string | undefined;
+    }
+    /**
+     * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Projects into the default slot of ds-hint.
+     */
+    interface DsHintText {
+    }
+    /**
+     * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+     */
+    interface DsHintTitle {
+    }
+    /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
      */
     interface DsIcon {
@@ -900,6 +1281,11 @@ export namespace Components {
           * Defines the size of the icon.
          */
         "size": IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src": string;
         /**
           * Svg content.
           * @default ''
@@ -1116,7 +1502,7 @@ export namespace Components {
         "accordionOpen": boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default 'default'
+          * @default ''
          */
         "actionIcon": ItemActionIcon;
         /**
@@ -1146,7 +1532,7 @@ export namespace Components {
         "label": string;
         /**
           * The semantic heading level of the label element.
-          * @default 'h5'
+          * @default ''
          */
         "labelLevel": ItemLabelLevel;
         /**
@@ -1161,7 +1547,7 @@ export namespace Components {
         "rel": string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
+          * @default ''
          */
         "target": ButtonTarget;
         /**
@@ -1258,6 +1644,88 @@ export namespace Components {
           * @default ''
          */
         "size": LogoSize;
+    }
+    /**
+     * Modal displays content in a dialog overlay using the native dialog element.
+     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+     * direct named slots (slot="header", slot="body").
+     */
+    interface DsModal {
+        /**
+          * If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.
+          * @default true
+         */
+        "closable": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Closes the modal.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * If `true`, the modal covers the full viewport.
+          * @default false
+         */
+        "fullscreen": boolean;
+        /**
+          * Width of the modal in pixels.
+          * @default 640
+         */
+        "modalWidth": number;
+        /**
+          * If `true` the modal is open.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the modal.
+         */
+        "present": () => Promise<void>;
+    }
+    /**
+     * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+     */
+    interface DsModalBody {
+    }
+    /**
+     * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+     * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+     * the heading text through the slot chain without crossing shadow boundaries.
+     */
+    interface DsModalHeader {
+    }
+    /**
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface DsNavbar {
+        /**
+          * Closes the sidebar menu
+         */
+        "closeSidebar": () => Promise<void>;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container": NavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light": boolean;
+        "listenToResize": () => Promise<void>;
+        /**
+          * If `true` the navbar will open the sidebar menu.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the sidebar menu
+         */
+        "openSidebar": () => Promise<void>;
+        /**
+          * Toggles the sidebar menu open/closed state
+         */
+        "toggleSidebar": () => Promise<void>;
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -1487,6 +1955,88 @@ export namespace Components {
           * @default ''
          */
         "variant": PaginationVariant;
+    }
+    /**
+     * Popup displays anchored overlay content positioned relative to a trigger element.
+     * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+     * Trigger wiring:
+     *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+     *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+     */
+    interface DsPopup {
+        /**
+          * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+          * @default false
+         */
+        "arrow": boolean;
+        /**
+          * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
+          * @default false
+         */
+        "backdrop": boolean;
+        /**
+          * If `true`, clicking outside the popup panel dismisses it.
+          * @default false
+         */
+        "backdropDismiss": boolean;
+        /**
+          * If `true`, the popup can be dismissed via the Escape key and shows a close button.
+          * @default false
+         */
+        "closable": boolean;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Closes the popup.
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Group name for mutual-exclusion. Only one popup within the same group is open at a time.
+          * @default undefined
+         */
+        "group": string | undefined;
+        /**
+          * Accessible label for the popup panel (sets aria-label on the panel element).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Offset in pixels between the trigger element and the popup panel.
+          * @default 8
+         */
+        "offset": number;
+        /**
+          * If `true` the popup is open.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Preferred placement of the popup relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement": PopupPlacement;
+        /**
+          * Opens the popup.
+         */
+        "present": () => Promise<void>;
+        /**
+          * ARIA role applied to the panel. Controls focus-trap behaviour and the aria-haspopup value set on the trigger. Use "dialog" for rich content, "listbox" or "menu" for interactive option lists.
+          * @default 'dialog'
+         */
+        "role": PopupRole;
+        /**
+          * Toggles the popup open or closed.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
+          * @default undefined
+         */
+        "trapFocus": boolean | undefined;
+        /**
+          * The trigger element. Setting this wires up aria-haspopup and aria-expanded automatically.
+          * @default undefined
+         */
+        "trigger": HTMLElement | undefined;
     }
     /**
      * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
@@ -1963,7 +2513,7 @@ export namespace Components {
         "alignment": StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default 'column'
+          * @default ''
          */
         "direction": StackDirection;
         /**
@@ -1971,11 +2521,6 @@ export namespace Components {
           * @default false
          */
         "fitContent": boolean;
-        /**
-          * **Deprecated:** Use direction instead.
-          * @default ''
-         */
-        "layout": StackLayout;
         /**
           * Defines the padding of the stack element.
          */
@@ -2006,6 +2551,191 @@ export namespace Components {
           * @default false
          */
         "useWrap": boolean;
+    }
+    /**
+     * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
+     */
+    interface DsStep {
+        /**
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
+         */
+        "activeIndex": number;
+        /**
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done": boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden": boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Visible text label displayed below the circle.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
+         */
+        "name": string;
+        /**
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
+          * @default false
+         */
+        "vertical": boolean;
+    }
+    /**
+     * Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.
+     */
+    interface DsStepPanel {
+        /**
+          * Matches the `name` of the ds-step that controls this panel.
+         */
+        "for": string;
+        /**
+          * If `true`, the panel is visible. Managed by the parent ds-steps.
+          * @default false
+         */
+        "selected": boolean;
+    }
+    /**
+     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     */
+    interface DsSteps {
+        /**
+          * Accent color applied to inactive circles and connector lines.
+          * @default ''
+         */
+        "color": StepsColor;
+        /**
+          * Accessible label for the navigation landmark (navigation variant only).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The `name` of the currently selected ds-step (panels variant).
+         */
+        "value"?: string | null;
+        /**
+          * If `true`, the steplist is displayed vertically.
+          * @default false
+         */
+        "vertical": boolean;
+    }
+    /**
+     * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+     */
+    interface DsTab {
+        /**
+          * Set by ds-tabs. When true, the tab expands to fill available width.
+          * @default false
+         */
+        "fullwidth": boolean;
+        /**
+          * Set by ds-tabs. When true, the tab renders in inverted (dark background) mode.
+          * @default false
+         */
+        "inverted": boolean;
+        /**
+          * Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.
+         */
+        "name": string;
+        /**
+          * Set by ds-tabs. When true, renders as a slot wrapper for navigation mode.
+          * @default false
+         */
+        "navigation": boolean;
+        /**
+          * If `true`, this tab is currently selected. Set by the parent ds-tabs.
+          * @default false
+         */
+        "selected": boolean;
+        /**
+          * Set by ds-tabs. When true, renders in vertical layout.
+          * @default false
+         */
+        "vertical": boolean;
+    }
+    /**
+     * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+     */
+    interface DsTabPanel {
+        /**
+          * Matches the `name` of the ds-tab that controls this panel.
+         */
+        "for": string;
+        /**
+          * If `true`, the panel is visible. Managed by the parent ds-tabs.
+          * @default false
+         */
+        "selected": boolean;
+    }
+    /**
+     * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+     */
+    interface DsTabs {
+        /**
+          * Accent color applied to the bottom border track and selected indicator.
+          * @default ''
+         */
+        "color": TabsColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * If `true`, tab buttons expand to fill the available width equally.
+          * @default false
+         */
+        "fullwidth": boolean;
+        /**
+          * If `true`, the component adapts for use on a dark (primary) background — all labels and the indicator become white.
+          * @default false
+         */
+        "inverted": boolean;
+        /**
+          * Accessible label for the navigation landmark (navigation variant only).
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The `name` of the currently selected ds-tab (panels variant).
+         */
+        "value"?: string | null;
+        /**
+          * If `true`, the tablist is displayed vertically on the left side.
+          * @default false
+         */
+        "vertical": boolean;
+        /**
+          * The col size of the tablist in vertical mode.
+          * @default 'one-third'
+         */
+        "verticalColSize": TabsVerticalColSize;
     }
     /**
      * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
@@ -2413,6 +3143,48 @@ export namespace Components {
          */
         "value": string | number;
     }
+    /**
+     * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+     */
+    interface DsTooltip {
+        /**
+          * Defines the maximum width of the tooltip content in pixels.
+          * @default undefined
+         */
+        "contentWidth": number | undefined;
+        /**
+          * Hides the tooltip and cleans up the position updater.
+         */
+        "dismiss": () => Promise<boolean>;
+        /**
+          * Offset in pixels from the trigger element to the tooltip.
+          * @default 8
+         */
+        "offset": number;
+        /**
+          * When true, the tooltip is shown immediately on load without user interaction.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Preferred placement of the tooltip relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement": TooltipPlacement;
+        /**
+          * Shows the tooltip and positions it relative to the trigger element.
+         */
+        "present": () => Promise<boolean>;
+        /**
+          * Id of the reference element. Defaults to the trigger element.
+          * @default ''
+         */
+        "reference": string;
+        /**
+          * Recomputes the tooltip position using floating-ui.
+         */
+        "update": () => Promise<boolean>;
+    }
 }
 export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2426,6 +3198,14 @@ export interface DsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsButtonElement;
 }
+export interface DsCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsCarouselElement;
+}
+export interface DsCarouselItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsCarouselItemElement;
+}
 export interface DsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsCheckboxElement;
@@ -2434,6 +3214,18 @@ export interface DsCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsCheckboxGroupElement;
 }
+export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsDrawerElement;
+}
+export interface DsFileUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsFileUploadElement;
+}
+export interface DsFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsFooterElement;
+}
 export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
@@ -2441,6 +3233,14 @@ export interface DsInputCustomEvent<T> extends CustomEvent<T> {
 export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsItemElement;
+}
+export interface DsModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsModalElement;
+}
+export interface DsNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsNavbarElement;
 }
 export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2453,6 +3253,10 @@ export interface DsNumberInputCustomEvent<T> extends CustomEvent<T> {
 export interface DsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsPaginationElement;
+}
+export interface DsPopupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsPopupElement;
 }
 export interface DsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2474,6 +3278,22 @@ export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
 }
+export interface DsStepCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsStepElement;
+}
+export interface DsStepsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsStepsElement;
+}
+export interface DsTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTabElement;
+}
+export interface DsTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTabsElement;
+}
 export interface DsTagCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsTagElement;
@@ -2489,6 +3309,10 @@ export interface DsToastCustomEvent<T> extends CustomEvent<T> {
 export interface DsToggleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsToggleElement;
+}
+export interface DsTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsTooltipElement;
 }
 declare global {
     interface HTMLDsAccordionElementEventMap {
@@ -2639,6 +3463,46 @@ declare global {
         prototype: HTMLDsCardTitleElement;
         new (): HTMLDsCardTitleElement;
     };
+    interface HTMLDsCarouselElementEventMap {
+        "dsChange": CarouselChangeDetail;
+    }
+    /**
+     * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+     */
+    interface HTMLDsCarouselElement extends Components.DsCarousel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCarouselElementEventMap>(type: K, listener: (this: HTMLDsCarouselElement, ev: DsCarouselCustomEvent<HTMLDsCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCarouselElementEventMap>(type: K, listener: (this: HTMLDsCarouselElement, ev: DsCarouselCustomEvent<HTMLDsCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCarouselElement: {
+        prototype: HTMLDsCarouselElement;
+        new (): HTMLDsCarouselElement;
+    };
+    interface HTMLDsCarouselItemElementEventMap {
+        "dsCarouselItemSelect": { name: string };
+    }
+    /**
+     * Carousel Item is a single slide or product tile inside a ds-carousel.
+     */
+    interface HTMLDsCarouselItemElement extends Components.DsCarouselItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCarouselItemElementEventMap>(type: K, listener: (this: HTMLDsCarouselItemElement, ev: DsCarouselItemCustomEvent<HTMLDsCarouselItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCarouselItemElementEventMap>(type: K, listener: (this: HTMLDsCarouselItemElement, ev: DsCarouselItemCustomEvent<HTMLDsCarouselItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCarouselItemElement: {
+        prototype: HTMLDsCarouselItemElement;
+        new (): HTMLDsCarouselItemElement;
+    };
     interface HTMLDsCheckboxElementEventMap {
         "dsFocus": CheckboxFocusDetail;
         "dsBlur": CheckboxBlurDetail;
@@ -2702,6 +3566,46 @@ declare global {
         new (): HTMLDsContentElement;
     };
     /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+     */
+    interface HTMLDsDataElement extends Components.DsData, HTMLStencilElement {
+    }
+    var HTMLDsDataElement: {
+        prototype: HTMLDsDataElement;
+        new (): HTMLDsDataElement;
+    };
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface HTMLDsDataItemElement extends Components.DsDataItem, HTMLStencilElement {
+    }
+    var HTMLDsDataItemElement: {
+        prototype: HTMLDsDataItemElement;
+        new (): HTMLDsDataItemElement;
+    };
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface HTMLDsDataLabelElement extends Components.DsDataLabel, HTMLStencilElement {
+    }
+    var HTMLDsDataLabelElement: {
+        prototype: HTMLDsDataLabelElement;
+        new (): HTMLDsDataLabelElement;
+    };
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface HTMLDsDataValueElement extends Components.DsDataValue, HTMLStencilElement {
+    }
+    var HTMLDsDataValueElement: {
+        prototype: HTMLDsDataValueElement;
+        new (): HTMLDsDataValueElement;
+    };
+    /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
      */
     interface HTMLDsDividerElement extends Components.DsDivider, HTMLStencilElement {
@@ -2709,6 +3613,79 @@ declare global {
     var HTMLDsDividerElement: {
         prototype: HTMLDsDividerElement;
         new (): HTMLDsDividerElement;
+    };
+    interface HTMLDsDrawerElementEventMap {
+        "dsWillPresent": DrawerPresentDetail;
+        "dsDidPresent": DrawerPresentDetail;
+        "dsWillDismiss": DrawerDismissDetail;
+        "dsDidDismiss": DrawerDismissDetail;
+    }
+    /**
+     * Drawer displays a panel that slides up from the bottom of the screen.
+     * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+     * and Escape-key handling.
+     */
+    interface HTMLDsDrawerElement extends Components.DsDrawer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsDrawerElementEventMap>(type: K, listener: (this: HTMLDsDrawerElement, ev: DsDrawerCustomEvent<HTMLDsDrawerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsDrawerElementEventMap>(type: K, listener: (this: HTMLDsDrawerElement, ev: DsDrawerCustomEvent<HTMLDsDrawerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsDrawerElement: {
+        prototype: HTMLDsDrawerElement;
+        new (): HTMLDsDrawerElement;
+    };
+    interface HTMLDsFileUploadElementEventMap {
+        "dsChange": FileUploadChangeDetail;
+        "dsFilesAdded": FileUploadFilesAddedDetail;
+        "dsFilesRemoved": FileUploadFilesRemovedDetail;
+        "dsRejectedFile": FileUploadRejectedFileDetail;
+        "dsInputClick": FileUploadInputClickDetail;
+        "dsBlur": FileUploadBlurDetail;
+        "dsFocus": FileUploadFocusDetail;
+    }
+    /**
+     * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+     */
+    interface HTMLDsFileUploadElement extends Components.DsFileUpload, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsFileUploadElementEventMap>(type: K, listener: (this: HTMLDsFileUploadElement, ev: DsFileUploadCustomEvent<HTMLDsFileUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsFileUploadElementEventMap>(type: K, listener: (this: HTMLDsFileUploadElement, ev: DsFileUploadCustomEvent<HTMLDsFileUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsFileUploadElement: {
+        prototype: HTMLDsFileUploadElement;
+        new (): HTMLDsFileUploadElement;
+    };
+    interface HTMLDsFooterElementEventMap {
+        "dsLanguageChange": FooterLanguageChangeDetail;
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface HTMLDsFooterElement extends Components.DsFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsFooterElement: {
+        prototype: HTMLDsFooterElement;
+        new (): HTMLDsFooterElement;
     };
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -2718,6 +3695,37 @@ declare global {
     var HTMLDsHeadingElement: {
         prototype: HTMLDsHeadingElement;
         new (): HTMLDsHeadingElement;
+    };
+    /**
+     * Hint displays contextual help via an info-circle trigger button.
+     * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+     * on desktop it opens a ds-popup (floating panel).
+     */
+    interface HTMLDsHintElement extends Components.DsHint, HTMLStencilElement {
+    }
+    var HTMLDsHintElement: {
+        prototype: HTMLDsHintElement;
+        new (): HTMLDsHintElement;
+    };
+    /**
+     * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Projects into the default slot of ds-hint.
+     */
+    interface HTMLDsHintTextElement extends Components.DsHintText, HTMLStencilElement {
+    }
+    var HTMLDsHintTextElement: {
+        prototype: HTMLDsHintTextElement;
+        new (): HTMLDsHintTextElement;
+    };
+    /**
+     * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+     */
+    interface HTMLDsHintTitleElement extends Components.DsHintTitle, HTMLStencilElement {
+    }
+    var HTMLDsHintTitleElement: {
+        prototype: HTMLDsHintTitleElement;
+        new (): HTMLDsHintTitleElement;
     };
     /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
@@ -2803,6 +3811,74 @@ declare global {
         prototype: HTMLDsLogoElement;
         new (): HTMLDsLogoElement;
     };
+    interface HTMLDsModalElementEventMap {
+        "dsWillPresent": ModalPresentDetail;
+        "dsDidPresent": ModalPresentDetail;
+        "dsWillDismiss": ModalDismissDetail;
+        "dsDidDismiss": ModalDismissDetail;
+    }
+    /**
+     * Modal displays content in a dialog overlay using the native dialog element.
+     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+     * direct named slots (slot="header", slot="body").
+     */
+    interface HTMLDsModalElement extends Components.DsModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsModalElementEventMap>(type: K, listener: (this: HTMLDsModalElement, ev: DsModalCustomEvent<HTMLDsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsModalElementEventMap>(type: K, listener: (this: HTMLDsModalElement, ev: DsModalCustomEvent<HTMLDsModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsModalElement: {
+        prototype: HTMLDsModalElement;
+        new (): HTMLDsModalElement;
+    };
+    /**
+     * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+     */
+    interface HTMLDsModalBodyElement extends Components.DsModalBody, HTMLStencilElement {
+    }
+    var HTMLDsModalBodyElement: {
+        prototype: HTMLDsModalBodyElement;
+        new (): HTMLDsModalBodyElement;
+    };
+    /**
+     * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+     * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+     * the heading text through the slot chain without crossing shadow boundaries.
+     */
+    interface HTMLDsModalHeaderElement extends Components.DsModalHeader, HTMLStencilElement {
+    }
+    var HTMLDsModalHeaderElement: {
+        prototype: HTMLDsModalHeaderElement;
+        new (): HTMLDsModalHeaderElement;
+    };
+    interface HTMLDsNavbarElementEventMap {
+        "dsMenuOpenStart": void;
+        "dsMenuOpenEnd": void;
+        "dsMenuCloseStart": void;
+        "dsMenuCloseEnd": void;
+    }
+    /**
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface HTMLDsNavbarElement extends Components.DsNavbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsNavbarElement: {
+        prototype: HTMLDsNavbarElement;
+        new (): HTMLDsNavbarElement;
+    };
     interface HTMLDsNotificationElementEventMap {
         "dsCloseClick": NotificationCloseClickDetail;
         "dsDidLoad": void;
@@ -2868,6 +3944,33 @@ declare global {
     var HTMLDsPaginationElement: {
         prototype: HTMLDsPaginationElement;
         new (): HTMLDsPaginationElement;
+    };
+    interface HTMLDsPopupElementEventMap {
+        "dsWillPresent": PopupPresentDetail;
+        "dsDidPresent": PopupPresentDetail;
+        "dsWillDismiss": PopupDismissDetail;
+        "dsDidDismiss": PopupDismissDetail;
+    }
+    /**
+     * Popup displays anchored overlay content positioned relative to a trigger element.
+     * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+     * Trigger wiring:
+     *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+     *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+     */
+    interface HTMLDsPopupElement extends Components.DsPopup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsPopupElementEventMap>(type: K, listener: (this: HTMLDsPopupElement, ev: DsPopupCustomEvent<HTMLDsPopupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsPopupElementEventMap>(type: K, listener: (this: HTMLDsPopupElement, ev: DsPopupCustomEvent<HTMLDsPopupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsPopupElement: {
+        prototype: HTMLDsPopupElement;
+        new (): HTMLDsPopupElement;
     };
     /**
      * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
@@ -3013,6 +4116,104 @@ declare global {
         prototype: HTMLDsStackElement;
         new (): HTMLDsStackElement;
     };
+    interface HTMLDsStepElementEventMap {
+        "dsStepSelect": { name: string };
+    }
+    /**
+     * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
+     */
+    interface HTMLDsStepElement extends Components.DsStep, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsStepElementEventMap>(type: K, listener: (this: HTMLDsStepElement, ev: DsStepCustomEvent<HTMLDsStepElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsStepElementEventMap>(type: K, listener: (this: HTMLDsStepElement, ev: DsStepCustomEvent<HTMLDsStepElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsStepElement: {
+        prototype: HTMLDsStepElement;
+        new (): HTMLDsStepElement;
+    };
+    /**
+     * Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.
+     */
+    interface HTMLDsStepPanelElement extends Components.DsStepPanel, HTMLStencilElement {
+    }
+    var HTMLDsStepPanelElement: {
+        prototype: HTMLDsStepPanelElement;
+        new (): HTMLDsStepPanelElement;
+    };
+    interface HTMLDsStepsElementEventMap {
+        "dsChange": StepsChangeDetail;
+    }
+    /**
+     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     */
+    interface HTMLDsStepsElement extends Components.DsSteps, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsStepsElementEventMap>(type: K, listener: (this: HTMLDsStepsElement, ev: DsStepsCustomEvent<HTMLDsStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsStepsElementEventMap>(type: K, listener: (this: HTMLDsStepsElement, ev: DsStepsCustomEvent<HTMLDsStepsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsStepsElement: {
+        prototype: HTMLDsStepsElement;
+        new (): HTMLDsStepsElement;
+    };
+    interface HTMLDsTabElementEventMap {
+        "dsTabSelect": { name: string };
+    }
+    /**
+     * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+     */
+    interface HTMLDsTabElement extends Components.DsTab, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTabElementEventMap>(type: K, listener: (this: HTMLDsTabElement, ev: DsTabCustomEvent<HTMLDsTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTabElementEventMap>(type: K, listener: (this: HTMLDsTabElement, ev: DsTabCustomEvent<HTMLDsTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTabElement: {
+        prototype: HTMLDsTabElement;
+        new (): HTMLDsTabElement;
+    };
+    /**
+     * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+     */
+    interface HTMLDsTabPanelElement extends Components.DsTabPanel, HTMLStencilElement {
+    }
+    var HTMLDsTabPanelElement: {
+        prototype: HTMLDsTabPanelElement;
+        new (): HTMLDsTabPanelElement;
+    };
+    interface HTMLDsTabsElementEventMap {
+        "dsChange": TabsChangeDetail;
+    }
+    /**
+     * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+     */
+    interface HTMLDsTabsElement extends Components.DsTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTabsElementEventMap>(type: K, listener: (this: HTMLDsTabsElement, ev: DsTabsCustomEvent<HTMLDsTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTabsElementEventMap>(type: K, listener: (this: HTMLDsTabsElement, ev: DsTabsCustomEvent<HTMLDsTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTabsElement: {
+        prototype: HTMLDsTabsElement;
+        new (): HTMLDsTabsElement;
+    };
     interface HTMLDsTagElementEventMap {
         "dsCloseClick": TagCloseClickDetail;
     }
@@ -3122,6 +4323,27 @@ declare global {
         prototype: HTMLDsToggleElement;
         new (): HTMLDsToggleElement;
     };
+    interface HTMLDsTooltipElementEventMap {
+        "dsWillAnimate": TooltipWillAnimateDetail;
+        "dsDidAnimate": TooltipDidAnimateDetail;
+    }
+    /**
+     * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+     */
+    interface HTMLDsTooltipElement extends Components.DsTooltip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsTooltipElementEventMap>(type: K, listener: (this: HTMLDsTooltipElement, ev: DsTooltipCustomEvent<HTMLDsTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsTooltipElementEventMap>(type: K, listener: (this: HTMLDsTooltipElement, ev: DsTooltipCustomEvent<HTMLDsTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsTooltipElement: {
+        prototype: HTMLDsTooltipElement;
+        new (): HTMLDsTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
@@ -3135,21 +4357,38 @@ declare global {
         "ds-card-header": HTMLDsCardHeaderElement;
         "ds-card-subtitle": HTMLDsCardSubtitleElement;
         "ds-card-title": HTMLDsCardTitleElement;
+        "ds-carousel": HTMLDsCarouselElement;
+        "ds-carousel-item": HTMLDsCarouselItemElement;
         "ds-checkbox": HTMLDsCheckboxElement;
         "ds-checkbox-group": HTMLDsCheckboxGroupElement;
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
+        "ds-data": HTMLDsDataElement;
+        "ds-data-item": HTMLDsDataItemElement;
+        "ds-data-label": HTMLDsDataLabelElement;
+        "ds-data-value": HTMLDsDataValueElement;
         "ds-divider": HTMLDsDividerElement;
+        "ds-drawer": HTMLDsDrawerElement;
+        "ds-file-upload": HTMLDsFileUploadElement;
+        "ds-footer": HTMLDsFooterElement;
         "ds-heading": HTMLDsHeadingElement;
+        "ds-hint": HTMLDsHintElement;
+        "ds-hint-text": HTMLDsHintTextElement;
+        "ds-hint-title": HTMLDsHintTitleElement;
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
         "ds-logo": HTMLDsLogoElement;
+        "ds-modal": HTMLDsModalElement;
+        "ds-modal-body": HTMLDsModalBodyElement;
+        "ds-modal-header": HTMLDsModalHeaderElement;
+        "ds-navbar": HTMLDsNavbarElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-pagination": HTMLDsPaginationElement;
+        "ds-popup": HTMLDsPopupElement;
         "ds-progress-bar": HTMLDsProgressBarElement;
         "ds-radio": HTMLDsRadioElement;
         "ds-radio-group": HTMLDsRadioGroupElement;
@@ -3159,12 +4398,19 @@ declare global {
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
         "ds-stack": HTMLDsStackElement;
+        "ds-step": HTMLDsStepElement;
+        "ds-step-panel": HTMLDsStepPanelElement;
+        "ds-steps": HTMLDsStepsElement;
+        "ds-tab": HTMLDsTabElement;
+        "ds-tab-panel": HTMLDsTabPanelElement;
+        "ds-tabs": HTMLDsTabsElement;
         "ds-tag": HTMLDsTagElement;
         "ds-tag-group": HTMLDsTagGroupElement;
         "ds-text": HTMLDsTextElement;
         "ds-textarea": HTMLDsTextareaElement;
         "ds-toast": HTMLDsToastElement;
         "ds-toggle": HTMLDsToggleElement;
+        "ds-tooltip": HTMLDsTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -3663,6 +4909,87 @@ declare namespace LocalJSX {
         "visualLevel"?: HeadingVisualLevel;
     }
     /**
+     * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+     */
+    interface DsCarousel {
+        /**
+          * Control style. `dots` shows dot pagination with prev/next arrows (image variant). `large` shows large side arrows (product variant). `none` hides all controls.
+          * @default 'dots'
+         */
+        "controls"?: CarouselControls;
+        /**
+          * Number of items visible at once. `auto` sizes items by content. A number divides the container width equally.
+          * @default 'auto'
+         */
+        "itemsPerView"?: number | 'auto';
+        /**
+          * Accessible label for the carousel region.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted when the selected item changes.
+         */
+        "onDsChange"?: (event: DsCarouselCustomEvent<CarouselChangeDetail>) => void;
+        /**
+          * Number of items to advance per arrow click.
+          * @default 1
+         */
+        "steps"?: number;
+        /**
+          * Name of the currently selected ds-carousel-item.
+         */
+        "value"?: string | null;
+        /**
+          * Visual variant. `slide` uses scroll-snap and shows one slide at a time. `tile` shows multiple items with free scrolling.
+          * @default 'slide'
+         */
+        "variant"?: CarouselVariant;
+    }
+    /**
+     * Carousel Item is a single slide or product tile inside a ds-carousel.
+     */
+    interface DsCarouselItem {
+        /**
+          * Set by ds-carousel. The carousel variant this item is part of.
+          * @default 'slide'
+         */
+        "carouselVariant"?: CarouselVariant;
+        /**
+          * Background color for product tiles.
+          * @default ''
+         */
+        "color"?: CarouselItemColor;
+        /**
+          * Set by ds-carousel. 1-based position index.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * Unique identifier for this item, matched by the parent ds-carousel `value` prop.
+         */
+        "name": string;
+        /**
+          * When `true`, the item renders in navigation mode: the consumer provides an `<a>` in the slot, which is stretched to cover the full tile and acts as the interactive element.
+          * @default false
+         */
+        "navigation"?: boolean;
+        /**
+          * Emitted when the user clicks this item (product variant).
+         */
+        "onDsCarouselItemSelect"?: (event: DsCarouselItemCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this item is the currently active slide/tile. Set by the parent ds-carousel.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Image URL displayed in image-variant slides, or brand icon source for product tiles.
+          * @default ''
+         */
+        "src"?: string;
+    }
+    /**
      * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
      */
     interface DsCheckbox {
@@ -3936,6 +5263,60 @@ declare namespace LocalJSX {
         "textAlign"?: ContentTextAlignment;
     }
     /**
+     * Data displays a list of label-value pairs in a organized, accessible format.
+     * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+     */
+    interface DsData {
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+          * @default false
+         */
+        "horizontal"?: boolean;
+    }
+    /**
+     * DataItem is a container for label-value pairs within ds-data.
+     * Provides separate slots for label and value for semantic linking.
+     */
+    interface DsDataItem {
+        /**
+          * If `true` the item gets a lighter font color.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Label for the edit button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "editLabel"?: string | undefined;
+        /**
+          * If `true` a small button with an edit icon is shown on the right.
+          * @default false
+         */
+        "editable"?: boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+          * @default false
+         */
+        "multiline"?: boolean;
+    }
+    /**
+     * DataLabel is a label element for use within ds-data-item.
+     * It displays a label with optional required indicator.
+     */
+    interface DsDataLabel {
+        /**
+          * If `true` an asterisk is added after the label.
+          * @default false
+         */
+        "required"?: boolean;
+    }
+    /**
+     * DataValue is a value element for use within ds-data-item.
+     * Pass-through slot container for value content.
+     */
+    interface DsDataValue {
+    }
+    /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
      */
     interface DsDivider {
@@ -3959,6 +5340,215 @@ declare namespace LocalJSX {
           * @default 'none'
          */
         "space"?: DividerSpace;
+    }
+    /**
+     * Drawer displays a panel that slides up from the bottom of the screen.
+     * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+     * and Escape-key handling.
+     */
+    interface DsDrawer {
+        /**
+          * If `true`, clicking the backdrop (outside the panel) dismisses the drawer.
+          * @default true
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * If `true`, the drawer can be dismissed via the Escape key and shows a close button.
+          * @default true
+         */
+        "closable"?: boolean;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default 'default'
+         */
+        "container"?: DrawerContainer;
+        /**
+          * Accessible label for the drawer dialog (sets aria-label on the dialog element).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted after the drawer is fully closed.
+         */
+        "onDsDidDismiss"?: (event: DsDrawerCustomEvent<DrawerDismissDetail>) => void;
+        /**
+          * Emitted after the drawer is fully open.
+         */
+        "onDsDidPresent"?: (event: DsDrawerCustomEvent<DrawerPresentDetail>) => void;
+        /**
+          * Emitted before the drawer closes.
+         */
+        "onDsWillDismiss"?: (event: DsDrawerCustomEvent<DrawerDismissDetail>) => void;
+        /**
+          * Emitted before the drawer opens.
+         */
+        "onDsWillPresent"?: (event: DsDrawerCustomEvent<DrawerPresentDetail>) => void;
+        /**
+          * If `true` the drawer is open.
+          * @default false
+         */
+        "open"?: boolean;
+    }
+    /**
+     * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+     */
+    interface DsFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+          * @default ''
+         */
+        "accept"?: string;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Defines the color of the file upload. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * The description of the file upload, displayed below the drop zone.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The text displayed inside the drop zone. Defaults to localized "Drag and drop or choose file(s) to upload".
+          * @default ''
+         */
+        "dropZoneLabel"?: string;
+        /**
+          * If `true` below the drop-zone area it generates a file list.
+          * @default true
+         */
+        "hasFileList"?: boolean;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the file upload is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the file upload, displayed in the drop zone area.
+          * @default 'Choose or drop a file...'
+         */
+        "label"?: string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+          * @default true
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.fileUploadId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsFileUploadCustomEvent<FileUploadBlurDetail>) => void;
+        /**
+          * Triggers when a file is added or removed.
+         */
+        "onDsChange"?: (event: DsFileUploadCustomEvent<FileUploadChangeDetail>) => void;
+        /**
+          * Triggers when a file is added.
+         */
+        "onDsFilesAdded"?: (event: DsFileUploadCustomEvent<FileUploadFilesAddedDetail>) => void;
+        /**
+          * Triggers when a file is removed.
+         */
+        "onDsFilesRemoved"?: (event: DsFileUploadCustomEvent<FileUploadFilesRemovedDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsFileUploadCustomEvent<FileUploadFocusDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onDsInputClick"?: (event: DsFileUploadCustomEvent<FileUploadInputClickDetail>) => void;
+        /**
+          * Triggers when a file is rejected due to validation rules.
+         */
+        "onDsRejectedFile"?: (event: DsFileUploadCustomEvent<FileUploadRejectedFileDetail>) => void;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * The value of the file upload (array of selected files).
+          * @default []
+         */
+        "value"?: File[];
+    }
+    /**
+     * Footer renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface DsFooter {
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container"?: FooterContainer;
+        /**
+          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
+          * @default false
+         */
+        "disableDefaultLinks"?: boolean;
+        /**
+          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
+          * @default false
+         */
+        "disableDefaultSocialLinks"?: boolean;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
+         */
+        "legalText"?: string | undefined;
+        /**
+          * Emitted when the language select value changes.
+         */
+        "onDsLanguageChange"?: (event: DsFooterCustomEvent<FooterLanguageChangeDetail>) => void;
     }
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
@@ -4011,6 +5601,45 @@ declare namespace LocalJSX {
         "visualLevel"?: HeadingVisualLevel;
     }
     /**
+     * Hint displays contextual help via an info-circle trigger button.
+     * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+     * on desktop it opens a ds-popup (floating panel).
+     */
+    interface DsHint {
+        /**
+          * Label for the close button shown in the drawer on touch viewports. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "closeLabel"?: string | undefined;
+        /**
+          * Title text displayed in the hint panel. When provided, renders in the title section without needing a named slot.
+          * @default undefined
+         */
+        "label"?: string | undefined;
+        /**
+          * Preferred placement of the popup panel on desktop viewports.
+          * @default 'right'
+         */
+        "placement"?: PopupPlacement;
+        /**
+          * Accessible label for the trigger button. When omitted the label is localised from the language config.
+          * @default undefined
+         */
+        "triggerLabel"?: string | undefined;
+    }
+    /**
+     * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Projects into the default slot of ds-hint.
+     */
+    interface DsHintText {
+    }
+    /**
+     * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+     * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+     */
+    interface DsHintTitle {
+    }
+    /**
      * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
      */
     interface DsIcon {
@@ -4057,6 +5686,11 @@ declare namespace LocalJSX {
           * Defines the size of the icon.
          */
         "size"?: IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src"?: string;
         /**
           * Svg content.
           * @default ''
@@ -4288,7 +5922,7 @@ declare namespace LocalJSX {
         "accordionOpen"?: boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default 'default'
+          * @default ''
          */
         "actionIcon"?: ItemActionIcon;
         /**
@@ -4318,7 +5952,7 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * The semantic heading level of the label element.
-          * @default 'h5'
+          * @default ''
          */
         "labelLevel"?: ItemLabelLevel;
         /**
@@ -4349,7 +5983,7 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default '_self'
+          * @default ''
          */
         "target"?: ButtonTarget;
         /**
@@ -4444,6 +6078,97 @@ declare namespace LocalJSX {
           * @default ''
          */
         "size"?: LogoSize;
+    }
+    /**
+     * Modal displays content in a dialog overlay using the native dialog element.
+     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+     * direct named slots (slot="header", slot="body").
+     */
+    interface DsModal {
+        /**
+          * If `true`, the modal can be dismissed via Escape key, close button, and backdrop click.
+          * @default true
+         */
+        "closable"?: boolean;
+        /**
+          * If `true`, the modal covers the full viewport.
+          * @default false
+         */
+        "fullscreen"?: boolean;
+        /**
+          * Width of the modal in pixels.
+          * @default 640
+         */
+        "modalWidth"?: number;
+        /**
+          * Emitted after the modal is fully closed.
+         */
+        "onDsDidDismiss"?: (event: DsModalCustomEvent<ModalDismissDetail>) => void;
+        /**
+          * Emitted after the modal is fully open.
+         */
+        "onDsDidPresent"?: (event: DsModalCustomEvent<ModalPresentDetail>) => void;
+        /**
+          * Emitted before the modal closes.
+         */
+        "onDsWillDismiss"?: (event: DsModalCustomEvent<ModalDismissDetail>) => void;
+        /**
+          * Emitted before the modal opens.
+         */
+        "onDsWillPresent"?: (event: DsModalCustomEvent<ModalPresentDetail>) => void;
+        /**
+          * If `true` the modal is open.
+          * @default false
+         */
+        "open"?: boolean;
+    }
+    /**
+     * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+     */
+    interface DsModalBody {
+    }
+    /**
+     * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+     * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+     * the heading text through the slot chain without crossing shadow boundaries.
+     */
+    interface DsModalHeader {
+    }
+    /**
+     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface DsNavbar {
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+          * @default ''
+         */
+        "container"?: NavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light"?: boolean;
+        /**
+          * Emitted when the sidebar menu finishes closing
+         */
+        "onDsMenuCloseEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts closing
+         */
+        "onDsMenuCloseStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu finishes opening
+         */
+        "onDsMenuOpenEnd"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts opening
+         */
+        "onDsMenuOpenStart"?: (event: DsNavbarCustomEvent<void>) => void;
+        /**
+          * If `true` the navbar will open the sidebar menu.
+          * @default false
+         */
+        "open"?: boolean;
     }
     /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
@@ -4687,6 +6412,91 @@ declare namespace LocalJSX {
           * @default ''
          */
         "variant"?: PaginationVariant;
+    }
+    /**
+     * Popup displays anchored overlay content positioned relative to a trigger element.
+     * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+     * Trigger wiring:
+     *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+     *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+     */
+    interface DsPopup {
+        /**
+          * If `true`, renders a small arrow indicator pointing from the panel toward the trigger.
+          * @default false
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true`, a full-screen backdrop overlay is rendered behind the popup panel.
+          * @default false
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true`, clicking outside the popup panel dismisses it.
+          * @default false
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * If `true`, the popup can be dismissed via the Escape key and shows a close button.
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * Group name for mutual-exclusion. Only one popup within the same group is open at a time.
+          * @default undefined
+         */
+        "group"?: string | undefined;
+        /**
+          * Accessible label for the popup panel (sets aria-label on the panel element).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Offset in pixels between the trigger element and the popup panel.
+          * @default 8
+         */
+        "offset"?: number;
+        /**
+          * Emitted after the popup is fully closed.
+         */
+        "onDsDidDismiss"?: (event: DsPopupCustomEvent<PopupDismissDetail>) => void;
+        /**
+          * Emitted after the popup is fully open.
+         */
+        "onDsDidPresent"?: (event: DsPopupCustomEvent<PopupPresentDetail>) => void;
+        /**
+          * Emitted before the popup closes.
+         */
+        "onDsWillDismiss"?: (event: DsPopupCustomEvent<PopupDismissDetail>) => void;
+        /**
+          * Emitted before the popup opens.
+         */
+        "onDsWillPresent"?: (event: DsPopupCustomEvent<PopupPresentDetail>) => void;
+        /**
+          * If `true` the popup is open.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Preferred placement of the popup relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement"?: PopupPlacement;
+        /**
+          * ARIA role applied to the panel. Controls focus-trap behaviour and the aria-haspopup value set on the trigger. Use "dialog" for rich content, "listbox" or "menu" for interactive option lists.
+          * @default 'dialog'
+         */
+        "role"?: PopupRole;
+        /**
+          * Override the automatic focus-trap behaviour. When undefined, trapping is enabled when `backdrop` is `true` and disabled otherwise.
+          * @default undefined
+         */
+        "trapFocus"?: boolean | undefined;
+        /**
+          * The trigger element. Setting this wires up aria-haspopup and aria-expanded automatically.
+          * @default undefined
+         */
+        "trigger"?: HTMLElement | undefined;
     }
     /**
      * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
@@ -5215,7 +7025,7 @@ declare namespace LocalJSX {
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default 'column'
+          * @default ''
          */
         "direction"?: StackDirection;
         /**
@@ -5223,11 +7033,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "fitContent"?: boolean;
-        /**
-          * **Deprecated:** Use direction instead.
-          * @default ''
-         */
-        "layout"?: StackLayout;
         /**
           * Defines the padding of the stack element.
          */
@@ -5258,6 +7063,206 @@ declare namespace LocalJSX {
           * @default false
          */
         "useWrap"?: boolean;
+    }
+    /**
+     * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
+     */
+    interface DsStep {
+        /**
+          * Index of the active step. Used to determine connector fill state. Set by the parent ds-steps.
+          * @default 0
+         */
+        "activeIndex"?: number;
+        /**
+          * If `true`, the step cannot be selected.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the step is completed. Shows a checkmark icon in the circle.
+          * @default false
+         */
+        "done"?: boolean;
+        /**
+          * If `true`, the step is hidden from the layout.
+          * @default false
+         */
+        "hidden"?: boolean;
+        /**
+          * 1-based position index. Set by the parent ds-steps.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * If `true`, the step has an error. Shows an exclamation mark in the circle.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Visible text label displayed below the circle.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Unique name that links this step to a ds-step-panel[for] of the same value.
+         */
+        "name": string;
+        /**
+          * Set by ds-steps. When true, renders in navigation mode (slotted <a>).
+          * @default false
+         */
+        "navigation"?: boolean;
+        /**
+          * Emitted when the user clicks this step (panels mode only).
+         */
+        "onDsStepSelect"?: (event: DsStepCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this step is currently selected. Set by the parent ds-steps.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Set by ds-steps. When true, renders in vertical layout.
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
+    /**
+     * Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.
+     */
+    interface DsStepPanel {
+        /**
+          * Matches the `name` of the ds-step that controls this panel.
+         */
+        "for": string;
+        /**
+          * If `true`, the panel is visible. Managed by the parent ds-steps.
+          * @default false
+         */
+        "selected"?: boolean;
+    }
+    /**
+     * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+     */
+    interface DsSteps {
+        /**
+          * Accent color applied to inactive circles and connector lines.
+          * @default ''
+         */
+        "color"?: StepsColor;
+        /**
+          * Accessible label for the navigation landmark (navigation variant only).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted when the selected step changes (panels variant only).
+         */
+        "onDsChange"?: (event: DsStepsCustomEvent<StepsChangeDetail>) => void;
+        /**
+          * The `name` of the currently selected ds-step (panels variant).
+         */
+        "value"?: string | null;
+        /**
+          * If `true`, the steplist is displayed vertically.
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
+    /**
+     * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+     */
+    interface DsTab {
+        /**
+          * Set by ds-tabs. When true, the tab expands to fill available width.
+          * @default false
+         */
+        "fullwidth"?: boolean;
+        /**
+          * Set by ds-tabs. When true, the tab renders in inverted (dark background) mode.
+          * @default false
+         */
+        "inverted"?: boolean;
+        /**
+          * Unique name that links this tab to a ds-tab-panel[for] of the same value in panels mode.
+         */
+        "name": string;
+        /**
+          * Set by ds-tabs. When true, renders as a slot wrapper for navigation mode.
+          * @default false
+         */
+        "navigation"?: boolean;
+        /**
+          * Emitted when the user clicks this tab (panels mode only).
+         */
+        "onDsTabSelect"?: (event: DsTabCustomEvent<{ name: string }>) => void;
+        /**
+          * If `true`, this tab is currently selected. Set by the parent ds-tabs.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Set by ds-tabs. When true, renders in vertical layout.
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
+    /**
+     * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+     */
+    interface DsTabPanel {
+        /**
+          * Matches the `name` of the ds-tab that controls this panel.
+         */
+        "for": string;
+        /**
+          * If `true`, the panel is visible. Managed by the parent ds-tabs.
+          * @default false
+         */
+        "selected"?: boolean;
+    }
+    /**
+     * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+     */
+    interface DsTabs {
+        /**
+          * Accent color applied to the bottom border track and selected indicator.
+          * @default ''
+         */
+        "color"?: TabsColor;
+        /**
+          * If `true`, tab buttons expand to fill the available width equally.
+          * @default false
+         */
+        "fullwidth"?: boolean;
+        /**
+          * If `true`, the component adapts for use on a dark (primary) background — all labels and the indicator become white.
+          * @default false
+         */
+        "inverted"?: boolean;
+        /**
+          * Accessible label for the navigation landmark (navigation variant only).
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Emitted when the selected tab changes (panels variant only).
+         */
+        "onDsChange"?: (event: DsTabsCustomEvent<TabsChangeDetail>) => void;
+        /**
+          * The `name` of the currently selected ds-tab (panels variant).
+         */
+        "value"?: string | null;
+        /**
+          * If `true`, the tablist is displayed vertically on the left side.
+          * @default false
+         */
+        "vertical"?: boolean;
+        /**
+          * The col size of the tablist in vertical mode.
+          * @default 'one-third'
+         */
+        "verticalColSize"?: TabsVerticalColSize;
     }
     /**
      * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
@@ -5706,6 +7711,44 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+     */
+    interface DsTooltip {
+        /**
+          * Defines the maximum width of the tooltip content in pixels.
+          * @default undefined
+         */
+        "contentWidth"?: number | undefined;
+        /**
+          * Offset in pixels from the trigger element to the tooltip.
+          * @default 8
+         */
+        "offset"?: number;
+        /**
+          * Emitted after the animation has finished.
+         */
+        "onDsDidAnimate"?: (event: DsTooltipCustomEvent<TooltipDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts.
+         */
+        "onDsWillAnimate"?: (event: DsTooltipCustomEvent<TooltipWillAnimateDetail>) => void;
+        /**
+          * When true, the tooltip is shown immediately on load without user interaction.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Preferred placement of the tooltip relative to the trigger.
+          * @default 'bottom'
+         */
+        "placement"?: TooltipPlacement;
+        /**
+          * Id of the reference element. Defaults to the trigger element.
+          * @default ''
+         */
+        "reference"?: string;
+    }
 
     interface DsAccordionAttributes {
         "open": boolean;
@@ -5808,6 +7851,23 @@ declare namespace LocalJSX {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
     }
+    interface DsCarouselAttributes {
+        "controls": CarouselControls;
+        "variant": CarouselVariant;
+        "itemsPerView": string;
+        "label": string;
+        "steps": number;
+        "value": string | null;
+    }
+    interface DsCarouselItemAttributes {
+        "color": CarouselItemColor;
+        "carouselVariant": CarouselVariant;
+        "navigation": boolean;
+        "index": number;
+        "name": string;
+        "selected": boolean;
+        "src": string;
+    }
     interface DsCheckboxAttributes {
         "name": string;
         "label": string;
@@ -5860,11 +7920,57 @@ declare namespace LocalJSX {
         "space": ContentSpace;
         "alignment": StackAlignment;
     }
+    interface DsDataAttributes {
+        "horizontal": boolean;
+    }
+    interface DsDataItemAttributes {
+        "disabled": boolean;
+        "multiline": boolean;
+        "editable": boolean;
+        "editLabel": string | undefined;
+    }
+    interface DsDataLabelAttributes {
+        "required": boolean;
+    }
     interface DsDividerAttributes {
         "layout": DividerLayout;
         "space": DividerSpace;
         "color": DividerColor;
         "dashed": boolean;
+    }
+    interface DsDrawerAttributes {
+        "open": boolean;
+        "closable": boolean;
+        "backdropDismiss": boolean;
+        "label": string;
+        "container": DrawerContainer;
+    }
+    interface DsFileUploadAttributes {
+        "name": string;
+        "label": string;
+        "dropZoneLabel": string;
+        "description": string;
+        "invalidText": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "multiple": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "loading": boolean;
+        "required": boolean;
+        "accept": string;
+        "maxFiles": number;
+        "maxFileSize": number;
+        "maxBundleSize": number;
+        "hasFileList": boolean;
+        "autoInvalidOff": boolean;
+    }
+    interface DsFooterAttributes {
+        "container": FooterContainer;
+        "hideLanguageSelection": boolean;
+        "disableDefaultLinks": boolean;
+        "disableDefaultSocialLinks": boolean;
+        "legalText": string | undefined;
     }
     interface DsHeadingAttributes {
         "level": HeadingLevel;
@@ -5877,9 +7983,16 @@ declare namespace LocalJSX {
         "inverted": boolean;
         "shadow": boolean;
     }
+    interface DsHintAttributes {
+        "placement": PopupPlacement;
+        "label": string | undefined;
+        "closeLabel": string | undefined;
+        "triggerLabel": string | undefined;
+    }
     interface DsIconAttributes {
         "name": string;
         "svg": string;
+        "src": string;
         "size": IconSize;
         "color": IconColor;
         "shape": IconShape;
@@ -5963,6 +8076,17 @@ declare namespace LocalJSX {
         "color": LogoColor;
         "size": LogoSize;
     }
+    interface DsModalAttributes {
+        "open": boolean;
+        "closable": boolean;
+        "modalWidth": number;
+        "fullscreen": boolean;
+    }
+    interface DsNavbarAttributes {
+        "open": boolean;
+        "light": boolean;
+        "container": NavbarContainer;
+    }
     interface DsNotificationAttributes {
         "alert": boolean;
         "closable": boolean;
@@ -6005,6 +8129,19 @@ declare namespace LocalJSX {
         "totalPages": number;
         "value": number;
         "variant": PaginationVariant;
+    }
+    interface DsPopupAttributes {
+        "open": boolean;
+        "placement": PopupPlacement;
+        "offset": number;
+        "role": PopupRole;
+        "closable": boolean;
+        "backdropDismiss": boolean;
+        "backdrop": boolean;
+        "group": string | undefined;
+        "label": string;
+        "arrow": boolean;
+        "trapFocus": boolean | undefined;
     }
     interface DsProgressBarAttributes {
         "background": ProgressBarBackground;
@@ -6107,7 +8244,6 @@ declare namespace LocalJSX {
         "alignment": StackAlignment;
         "direction": StackDirection;
         "fitContent": boolean;
-        "layout": StackLayout;
         "p": StackPadding;
         "px": StackPadding;
         "py": StackPadding;
@@ -6115,6 +8251,50 @@ declare namespace LocalJSX {
         "spaceColumn": StackSpace;
         "spaceRow": StackSpace;
         "useWrap": boolean;
+    }
+    interface DsStepAttributes {
+        "activeIndex": number;
+        "disabled": boolean;
+        "done": boolean;
+        "hidden": boolean;
+        "index": number;
+        "invalid": boolean;
+        "label": string;
+        "name": string;
+        "navigation": boolean;
+        "selected": boolean;
+        "vertical": boolean;
+    }
+    interface DsStepPanelAttributes {
+        "for": string;
+        "selected": boolean;
+    }
+    interface DsStepsAttributes {
+        "color": StepsColor;
+        "label": string;
+        "value": string | null;
+        "vertical": boolean;
+    }
+    interface DsTabAttributes {
+        "fullwidth": boolean;
+        "inverted": boolean;
+        "name": string;
+        "navigation": boolean;
+        "selected": boolean;
+        "vertical": boolean;
+    }
+    interface DsTabPanelAttributes {
+        "for": string;
+        "selected": boolean;
+    }
+    interface DsTabsAttributes {
+        "color": TabsColor;
+        "fullwidth": boolean;
+        "inverted": boolean;
+        "label": string;
+        "value": string | null;
+        "vertical": boolean;
+        "verticalColSize": TabsVerticalColSize;
     }
     interface DsTagAttributes {
         "closable": boolean;
@@ -6199,6 +8379,13 @@ declare namespace LocalJSX {
         "tile": boolean;
         "value": string;
     }
+    interface DsTooltipAttributes {
+        "reference": string;
+        "placement": TooltipPlacement;
+        "offset": number;
+        "contentWidth": number | undefined;
+        "open": boolean;
+    }
 
     interface IntrinsicElements {
         "ds-accordion": Omit<DsAccordion, keyof DsAccordionAttributes> & { [K in keyof DsAccordion & keyof DsAccordionAttributes]?: DsAccordion[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `attr:${K}`]?: DsAccordionAttributes[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `prop:${K}`]?: DsAccordion[K] };
@@ -6213,21 +8400,38 @@ declare namespace LocalJSX {
         "ds-card-header": Omit<DsCardHeader, keyof DsCardHeaderAttributes> & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes]?: DsCardHeader[K] } & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes as `attr:${K}`]?: DsCardHeaderAttributes[K] } & { [K in keyof DsCardHeader & keyof DsCardHeaderAttributes as `prop:${K}`]?: DsCardHeader[K] };
         "ds-card-subtitle": Omit<DsCardSubtitle, keyof DsCardSubtitleAttributes> & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes]?: DsCardSubtitle[K] } & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes as `attr:${K}`]?: DsCardSubtitleAttributes[K] } & { [K in keyof DsCardSubtitle & keyof DsCardSubtitleAttributes as `prop:${K}`]?: DsCardSubtitle[K] };
         "ds-card-title": Omit<DsCardTitle, keyof DsCardTitleAttributes> & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes]?: DsCardTitle[K] } & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes as `attr:${K}`]?: DsCardTitleAttributes[K] } & { [K in keyof DsCardTitle & keyof DsCardTitleAttributes as `prop:${K}`]?: DsCardTitle[K] };
+        "ds-carousel": Omit<DsCarousel, keyof DsCarouselAttributes> & { [K in keyof DsCarousel & keyof DsCarouselAttributes]?: DsCarousel[K] } & { [K in keyof DsCarousel & keyof DsCarouselAttributes as `attr:${K}`]?: DsCarouselAttributes[K] } & { [K in keyof DsCarousel & keyof DsCarouselAttributes as `prop:${K}`]?: DsCarousel[K] };
+        "ds-carousel-item": Omit<DsCarouselItem, keyof DsCarouselItemAttributes> & { [K in keyof DsCarouselItem & keyof DsCarouselItemAttributes]?: DsCarouselItem[K] } & { [K in keyof DsCarouselItem & keyof DsCarouselItemAttributes as `attr:${K}`]?: DsCarouselItemAttributes[K] } & { [K in keyof DsCarouselItem & keyof DsCarouselItemAttributes as `prop:${K}`]?: DsCarouselItem[K] } & OneOf<"name", DsCarouselItem["name"], DsCarouselItemAttributes["name"]>;
         "ds-checkbox": Omit<DsCheckbox, keyof DsCheckboxAttributes> & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes]?: DsCheckbox[K] } & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes as `attr:${K}`]?: DsCheckboxAttributes[K] } & { [K in keyof DsCheckbox & keyof DsCheckboxAttributes as `prop:${K}`]?: DsCheckbox[K] };
         "ds-checkbox-group": Omit<DsCheckboxGroup, keyof DsCheckboxGroupAttributes> & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes]?: DsCheckboxGroup[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `attr:${K}`]?: DsCheckboxGroupAttributes[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `prop:${K}`]?: DsCheckboxGroup[K] };
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
+        "ds-data": Omit<DsData, keyof DsDataAttributes> & { [K in keyof DsData & keyof DsDataAttributes]?: DsData[K] } & { [K in keyof DsData & keyof DsDataAttributes as `attr:${K}`]?: DsDataAttributes[K] } & { [K in keyof DsData & keyof DsDataAttributes as `prop:${K}`]?: DsData[K] };
+        "ds-data-item": Omit<DsDataItem, keyof DsDataItemAttributes> & { [K in keyof DsDataItem & keyof DsDataItemAttributes]?: DsDataItem[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `attr:${K}`]?: DsDataItemAttributes[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `prop:${K}`]?: DsDataItem[K] };
+        "ds-data-label": Omit<DsDataLabel, keyof DsDataLabelAttributes> & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes]?: DsDataLabel[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `attr:${K}`]?: DsDataLabelAttributes[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `prop:${K}`]?: DsDataLabel[K] };
+        "ds-data-value": DsDataValue;
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
+        "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
+        "ds-file-upload": Omit<DsFileUpload, keyof DsFileUploadAttributes> & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes]?: DsFileUpload[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `attr:${K}`]?: DsFileUploadAttributes[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `prop:${K}`]?: DsFileUpload[K] };
+        "ds-footer": Omit<DsFooter, keyof DsFooterAttributes> & { [K in keyof DsFooter & keyof DsFooterAttributes]?: DsFooter[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `attr:${K}`]?: DsFooterAttributes[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `prop:${K}`]?: DsFooter[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
+        "ds-hint": Omit<DsHint, keyof DsHintAttributes> & { [K in keyof DsHint & keyof DsHintAttributes]?: DsHint[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `attr:${K}`]?: DsHintAttributes[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `prop:${K}`]?: DsHint[K] };
+        "ds-hint-text": DsHintText;
+        "ds-hint-title": DsHintTitle;
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
         "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
         "ds-logo": Omit<DsLogo, keyof DsLogoAttributes> & { [K in keyof DsLogo & keyof DsLogoAttributes]?: DsLogo[K] } & { [K in keyof DsLogo & keyof DsLogoAttributes as `attr:${K}`]?: DsLogoAttributes[K] } & { [K in keyof DsLogo & keyof DsLogoAttributes as `prop:${K}`]?: DsLogo[K] };
+        "ds-modal": Omit<DsModal, keyof DsModalAttributes> & { [K in keyof DsModal & keyof DsModalAttributes]?: DsModal[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `attr:${K}`]?: DsModalAttributes[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `prop:${K}`]?: DsModal[K] };
+        "ds-modal-body": DsModalBody;
+        "ds-modal-header": DsModalHeader;
+        "ds-navbar": Omit<DsNavbar, keyof DsNavbarAttributes> & { [K in keyof DsNavbar & keyof DsNavbarAttributes]?: DsNavbar[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `attr:${K}`]?: DsNavbarAttributes[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `prop:${K}`]?: DsNavbar[K] };
         "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
         "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
         "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
+        "ds-popup": Omit<DsPopup, keyof DsPopupAttributes> & { [K in keyof DsPopup & keyof DsPopupAttributes]?: DsPopup[K] } & { [K in keyof DsPopup & keyof DsPopupAttributes as `attr:${K}`]?: DsPopupAttributes[K] } & { [K in keyof DsPopup & keyof DsPopupAttributes as `prop:${K}`]?: DsPopup[K] };
         "ds-progress-bar": Omit<DsProgressBar, keyof DsProgressBarAttributes> & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes]?: DsProgressBar[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `attr:${K}`]?: DsProgressBarAttributes[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `prop:${K}`]?: DsProgressBar[K] };
         "ds-radio": Omit<DsRadio, keyof DsRadioAttributes> & { [K in keyof DsRadio & keyof DsRadioAttributes]?: DsRadio[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `attr:${K}`]?: DsRadioAttributes[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `prop:${K}`]?: DsRadio[K] };
         "ds-radio-group": Omit<DsRadioGroup, keyof DsRadioGroupAttributes> & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes]?: DsRadioGroup[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `attr:${K}`]?: DsRadioGroupAttributes[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `prop:${K}`]?: DsRadioGroup[K] };
@@ -6237,12 +8441,19 @@ declare namespace LocalJSX {
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
+        "ds-step": Omit<DsStep, keyof DsStepAttributes> & { [K in keyof DsStep & keyof DsStepAttributes]?: DsStep[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `attr:${K}`]?: DsStepAttributes[K] } & { [K in keyof DsStep & keyof DsStepAttributes as `prop:${K}`]?: DsStep[K] } & OneOf<"name", DsStep["name"], DsStepAttributes["name"]>;
+        "ds-step-panel": Omit<DsStepPanel, keyof DsStepPanelAttributes> & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes]?: DsStepPanel[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `attr:${K}`]?: DsStepPanelAttributes[K] } & { [K in keyof DsStepPanel & keyof DsStepPanelAttributes as `prop:${K}`]?: DsStepPanel[K] } & OneOf<"for", DsStepPanel["for"], DsStepPanelAttributes["for"]>;
+        "ds-steps": Omit<DsSteps, keyof DsStepsAttributes> & { [K in keyof DsSteps & keyof DsStepsAttributes]?: DsSteps[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `attr:${K}`]?: DsStepsAttributes[K] } & { [K in keyof DsSteps & keyof DsStepsAttributes as `prop:${K}`]?: DsSteps[K] };
+        "ds-tab": Omit<DsTab, keyof DsTabAttributes> & { [K in keyof DsTab & keyof DsTabAttributes]?: DsTab[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `attr:${K}`]?: DsTabAttributes[K] } & { [K in keyof DsTab & keyof DsTabAttributes as `prop:${K}`]?: DsTab[K] } & OneOf<"name", DsTab["name"], DsTabAttributes["name"]>;
+        "ds-tab-panel": Omit<DsTabPanel, keyof DsTabPanelAttributes> & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes]?: DsTabPanel[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `attr:${K}`]?: DsTabPanelAttributes[K] } & { [K in keyof DsTabPanel & keyof DsTabPanelAttributes as `prop:${K}`]?: DsTabPanel[K] } & OneOf<"for", DsTabPanel["for"], DsTabPanelAttributes["for"]>;
+        "ds-tabs": Omit<DsTabs, keyof DsTabsAttributes> & { [K in keyof DsTabs & keyof DsTabsAttributes]?: DsTabs[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `attr:${K}`]?: DsTabsAttributes[K] } & { [K in keyof DsTabs & keyof DsTabsAttributes as `prop:${K}`]?: DsTabs[K] };
         "ds-tag": Omit<DsTag, keyof DsTagAttributes> & { [K in keyof DsTag & keyof DsTagAttributes]?: DsTag[K] } & { [K in keyof DsTag & keyof DsTagAttributes as `attr:${K}`]?: DsTagAttributes[K] } & { [K in keyof DsTag & keyof DsTagAttributes as `prop:${K}`]?: DsTag[K] };
         "ds-tag-group": DsTagGroup;
         "ds-text": Omit<DsText, keyof DsTextAttributes> & { [K in keyof DsText & keyof DsTextAttributes]?: DsText[K] } & { [K in keyof DsText & keyof DsTextAttributes as `attr:${K}`]?: DsTextAttributes[K] } & { [K in keyof DsText & keyof DsTextAttributes as `prop:${K}`]?: DsText[K] };
         "ds-textarea": Omit<DsTextarea, keyof DsTextareaAttributes> & { [K in keyof DsTextarea & keyof DsTextareaAttributes]?: DsTextarea[K] } & { [K in keyof DsTextarea & keyof DsTextareaAttributes as `attr:${K}`]?: DsTextareaAttributes[K] } & { [K in keyof DsTextarea & keyof DsTextareaAttributes as `prop:${K}`]?: DsTextarea[K] };
         "ds-toast": Omit<DsToast, keyof DsToastAttributes> & { [K in keyof DsToast & keyof DsToastAttributes]?: DsToast[K] } & { [K in keyof DsToast & keyof DsToastAttributes as `attr:${K}`]?: DsToastAttributes[K] } & { [K in keyof DsToast & keyof DsToastAttributes as `prop:${K}`]?: DsToast[K] } & OneOf<"heading", DsToast["heading"], DsToastAttributes["heading"]> & OneOf<"message", DsToast["message"], DsToastAttributes["message"]>;
         "ds-toggle": Omit<DsToggle, keyof DsToggleAttributes> & { [K in keyof DsToggle & keyof DsToggleAttributes]?: DsToggle[K] } & { [K in keyof DsToggle & keyof DsToggleAttributes as `attr:${K}`]?: DsToggleAttributes[K] } & { [K in keyof DsToggle & keyof DsToggleAttributes as `prop:${K}`]?: DsToggle[K] };
+        "ds-tooltip": Omit<DsTooltip, keyof DsTooltipAttributes> & { [K in keyof DsTooltip & keyof DsTooltipAttributes]?: DsTooltip[K] } & { [K in keyof DsTooltip & keyof DsTooltipAttributes as `attr:${K}`]?: DsTooltipAttributes[K] } & { [K in keyof DsTooltip & keyof DsTooltipAttributes as `prop:${K}`]?: DsTooltip[K] };
     }
 }
 export { LocalJSX as JSX };
@@ -6299,6 +8510,14 @@ declare module "@stencil/core" {
              */
             "ds-card-title": LocalJSX.IntrinsicElements["ds-card-title"] & JSXBase.HTMLAttributes<HTMLDsCardTitleElement>;
             /**
+             * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
+             */
+            "ds-carousel": LocalJSX.IntrinsicElements["ds-carousel"] & JSXBase.HTMLAttributes<HTMLDsCarouselElement>;
+            /**
+             * Carousel Item is a single slide or product tile inside a ds-carousel.
+             */
+            "ds-carousel-item": LocalJSX.IntrinsicElements["ds-carousel-item"] & JSXBase.HTMLAttributes<HTMLDsCarouselItemElement>;
+            /**
              * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
              */
             "ds-checkbox": LocalJSX.IntrinsicElements["ds-checkbox"] & JSXBase.HTMLAttributes<HTMLDsCheckboxElement>;
@@ -6315,13 +8534,65 @@ declare module "@stencil/core" {
              */
             "ds-content": LocalJSX.IntrinsicElements["ds-content"] & JSXBase.HTMLAttributes<HTMLDsContentElement>;
             /**
+             * Data displays a list of label-value pairs in a organized, accessible format.
+             * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
+             */
+            "ds-data": LocalJSX.IntrinsicElements["ds-data"] & JSXBase.HTMLAttributes<HTMLDsDataElement>;
+            /**
+             * DataItem is a container for label-value pairs within ds-data.
+             * Provides separate slots for label and value for semantic linking.
+             */
+            "ds-data-item": LocalJSX.IntrinsicElements["ds-data-item"] & JSXBase.HTMLAttributes<HTMLDsDataItemElement>;
+            /**
+             * DataLabel is a label element for use within ds-data-item.
+             * It displays a label with optional required indicator.
+             */
+            "ds-data-label": LocalJSX.IntrinsicElements["ds-data-label"] & JSXBase.HTMLAttributes<HTMLDsDataLabelElement>;
+            /**
+             * DataValue is a value element for use within ds-data-item.
+             * Pass-through slot container for value content.
+             */
+            "ds-data-value": LocalJSX.IntrinsicElements["ds-data-value"] & JSXBase.HTMLAttributes<HTMLDsDataValueElement>;
+            /**
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */
             "ds-divider": LocalJSX.IntrinsicElements["ds-divider"] & JSXBase.HTMLAttributes<HTMLDsDividerElement>;
             /**
+             * Drawer displays a panel that slides up from the bottom of the screen.
+             * Uses the native dialog element for accessible top-layer rendering, built-in focus management,
+             * and Escape-key handling.
+             */
+            "ds-drawer": LocalJSX.IntrinsicElements["ds-drawer"] & JSXBase.HTMLAttributes<HTMLDsDrawerElement>;
+            /**
+             * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
+             */
+            "ds-file-upload": LocalJSX.IntrinsicElements["ds-file-upload"] & JSXBase.HTMLAttributes<HTMLDsFileUploadElement>;
+            /**
+             * Footer renders application level legal links, language selection, and social links.
+             * Link content is slot first to keep links crawlable and SEO friendly.
+             * Links and social media are shown by default unless disabled.
+             */
+            "ds-footer": LocalJSX.IntrinsicElements["ds-footer"] & JSXBase.HTMLAttributes<HTMLDsFooterElement>;
+            /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */
             "ds-heading": LocalJSX.IntrinsicElements["ds-heading"] & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
+            /**
+             * Hint displays contextual help via an info-circle trigger button.
+             * On touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);
+             * on desktop it opens a ds-popup (floating panel).
+             */
+            "ds-hint": LocalJSX.IntrinsicElements["ds-hint"] & JSXBase.HTMLAttributes<HTMLDsHintElement>;
+            /**
+             * Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.
+             * Projects into the default slot of ds-hint.
+             */
+            "ds-hint-text": LocalJSX.IntrinsicElements["ds-hint-text"] & JSXBase.HTMLAttributes<HTMLDsHintTextElement>;
+            /**
+             * Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.
+             * Uses light DOM (no shadow) so ds-hint's named slot projects the content correctly.
+             */
+            "ds-hint-title": LocalJSX.IntrinsicElements["ds-hint-title"] & JSXBase.HTMLAttributes<HTMLDsHintTitleElement>;
             /**
              * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
              */
@@ -6347,6 +8618,26 @@ declare module "@stencil/core" {
              */
             "ds-logo": LocalJSX.IntrinsicElements["ds-logo"] & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             /**
+             * Modal displays content in a dialog overlay using the native dialog element.
+             * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
+             * direct named slots (slot="header", slot="body").
+             */
+            "ds-modal": LocalJSX.IntrinsicElements["ds-modal"] & JSXBase.HTMLAttributes<HTMLDsModalElement>;
+            /**
+             * Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.
+             */
+            "ds-modal-body": LocalJSX.IntrinsicElements["ds-modal-body"] & JSXBase.HTMLAttributes<HTMLDsModalBodyElement>;
+            /**
+             * Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.
+             * Intentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve
+             * the heading text through the slot chain without crossing shadow boundaries.
+             */
+            "ds-modal-header": LocalJSX.IntrinsicElements["ds-modal-header"] & JSXBase.HTMLAttributes<HTMLDsModalHeaderElement>;
+            /**
+             * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
+             */
+            "ds-navbar": LocalJSX.IntrinsicElements["ds-navbar"] & JSXBase.HTMLAttributes<HTMLDsNavbarElement>;
+            /**
              * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
              */
             "ds-notification": LocalJSX.IntrinsicElements["ds-notification"] & JSXBase.HTMLAttributes<HTMLDsNotificationElement>;
@@ -6358,6 +8649,14 @@ declare module "@stencil/core" {
              * Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.
              */
             "ds-pagination": LocalJSX.IntrinsicElements["ds-pagination"] & JSXBase.HTMLAttributes<HTMLDsPaginationElement>;
+            /**
+             * Popup displays anchored overlay content positioned relative to a trigger element.
+             * Serves as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.
+             * Trigger wiring:
+             *   Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.
+             *   Declarative  — add `data-popup="<id>"` to any trigger element and set matching `id` on popup.
+             */
+            "ds-popup": LocalJSX.IntrinsicElements["ds-popup"] & JSXBase.HTMLAttributes<HTMLDsPopupElement>;
             /**
              * Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.
              */
@@ -6395,6 +8694,30 @@ declare module "@stencil/core" {
              */
             "ds-stack": LocalJSX.IntrinsicElements["ds-stack"] & JSXBase.HTMLAttributes<HTMLDsStackElement>;
             /**
+             * Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.
+             */
+            "ds-step": LocalJSX.IntrinsicElements["ds-step"] & JSXBase.HTMLAttributes<HTMLDsStepElement>;
+            /**
+             * Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.
+             */
+            "ds-step-panel": LocalJSX.IntrinsicElements["ds-step-panel"] & JSXBase.HTMLAttributes<HTMLDsStepPanelElement>;
+            /**
+             * Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.
+             */
+            "ds-steps": LocalJSX.IntrinsicElements["ds-steps"] & JSXBase.HTMLAttributes<HTMLDsStepsElement>;
+            /**
+             * Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.
+             */
+            "ds-tab": LocalJSX.IntrinsicElements["ds-tab"] & JSXBase.HTMLAttributes<HTMLDsTabElement>;
+            /**
+             * Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.
+             */
+            "ds-tab-panel": LocalJSX.IntrinsicElements["ds-tab-panel"] & JSXBase.HTMLAttributes<HTMLDsTabPanelElement>;
+            /**
+             * Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.
+             */
+            "ds-tabs": LocalJSX.IntrinsicElements["ds-tabs"] & JSXBase.HTMLAttributes<HTMLDsTabsElement>;
+            /**
              * Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.
              */
             "ds-tag": LocalJSX.IntrinsicElements["ds-tag"] & JSXBase.HTMLAttributes<HTMLDsTagElement>;
@@ -6418,6 +8741,10 @@ declare module "@stencil/core" {
              * Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.
              */
             "ds-toggle": LocalJSX.IntrinsicElements["ds-toggle"] & JSXBase.HTMLAttributes<HTMLDsToggleElement>;
+            /**
+             * Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.
+             */
+            "ds-tooltip": LocalJSX.IntrinsicElements["ds-tooltip"] & JSXBase.HTMLAttributes<HTMLDsTooltipElement>;
         }
     }
 }

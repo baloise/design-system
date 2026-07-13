@@ -4,7 +4,8 @@
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/dmmono/v14/aFTW7PB1QTsUX8KYth-gCKSIQq_0XmBO.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
     U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -14,8 +15,9 @@
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/dmmono/v14/aFTW7PB1QTsUX8KYth-gBqSIQq_0Xg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: 'DM Mono';
@@ -23,7 +25,8 @@
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYthSQBK6PYK3EXw.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
     U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -32,8 +35,9 @@
   font-weight: 400;
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 code {
@@ -185,19 +189,24 @@ pre[class*='language-'] {
 }
 
 .language-html .token.tag.punctuation,
-.language-html .token.punctuation {
+.language-jsx .token.tag.punctuation,
+.language-html .token.punctuation,
+.language-jsx .token.punctuation {
   color: var(--ds-global-color-grey-1) !important;
 }
 
-.language-html .token.tag {
+.language-html .token.tag,
+.language-jsx .token.tag {
   color: var(--ds-global-color-red-3) !important;
 }
 
-.language-html .token.attr-name {
+.language-html .token.attr-name,
+.language-jsx .token.attr-name {
   color: var(--ds-global-color-yellow-2) !important;
 }
 
-.language-html .token.attr-value {
+.language-html .token.attr-value,
+.language-jsx .token.attr-value {
   color: var(--ds-global-color-green-3) !important;
 }
 

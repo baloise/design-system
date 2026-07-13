@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as RadioStories from './radio.stories'
+import { RADIO_DOC_CONFIG, getRadioTabs } from './radio.doc-config'
+
+<Meta title="Components/Forms/Radio/Testing" />
+
+<Banner label={'Testing'} section={RADIO_DOC_CONFIG.section} color={RADIO_DOC_CONFIG.color} />
+
+<BannerTabs of={RadioStories} tabs={getRadioTabs('testing')} />
+
+<ComponentPageObject component="radio" />
+
+<Footer />

@@ -9,10 +9,9 @@ import {
   WindowResizeObserver,
   ListenToWindowResize,
   initialBreakpoints,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
+  hasValue,
+  OneOf,
+  Type,
 } from '@utils'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
@@ -67,31 +66,22 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
    * The background color
    */
   @Prop()
-  @ValidateOneOf(...PROGRESS_BAR_BACKGROUNDS)
+  @OneOf(PROGRESS_BAR_BACKGROUNDS)
   readonly background: ProgressBarBackground = 'dark'
 
   /**
    * The progress bar color
    */
   @Prop()
-  @ValidateOneOf(...PROGRESS_BAR_COLORS)
+  @OneOf(PROGRESS_BAR_COLORS)
   readonly color: ProgressBarColor = 'primary'
 
   /**
    * The value of the bar in percentage. So min is 0 and 100 would be the max value.
    */
   @Prop({ reflect: true })
-  @ValidateType('number')
+  @Type('number')
   readonly value: number = 0
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
 
   componentDidRender(): void {
     this.updateProgress()
@@ -160,13 +150,13 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
         aria-valuemin="0"
         aria-valuemax="100"
         class={{
-          'is-light': this.background === 'light',
-          'is-dark': this.background === 'dark',
-          'is-primary': this.color === 'primary',
-          'is-purple': this.color === 'purple',
-          'is-yellow': this.color === 'yellow',
-          'is-red': this.color === 'red',
-          'is-green': this.color === 'green',
+          'is-light': hasValue(this.background) && this.background === 'light',
+          'is-dark': !hasValue(this.background) || this.background === 'dark',
+          'is-primary': !hasValue(this.color) || this.color === 'primary',
+          'is-purple': hasValue(this.color) && this.color === 'purple',
+          'is-yellow': hasValue(this.color) && this.color === 'yellow',
+          'is-red': hasValue(this.color) && this.color === 'red',
+          'is-green': hasValue(this.color) && this.color === 'green',
         }}
       >
         <div

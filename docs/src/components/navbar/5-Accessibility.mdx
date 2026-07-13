@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as NavbarStories from './navbar.stories'
+import { NAVBAR_DOC_CONFIG, getNavbarTabs } from './navbar.doc-config'
+
+<Meta title="Components/Navbar/Accessibility" />
+
+<Banner label={'Accessibility'} section={NAVBAR_DOC_CONFIG.section} color={NAVBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={NavbarStories} tabs={getNavbarTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use semantic navigation elements',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Place <code>&lt;a&gt;</code> elements in navigation slots and <code>&lt;button&gt;</code> elements for actions. The navbar renders a semantic <code>&lt;nav&gt;</code> element with <code>role="navigation"</code> and <code>aria-label="Main Navigation"</code>.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Indicate the current page',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>aria-current="page"</code> on the link matching the current page. This tells screen reader users which page they are on.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Ensure hamburger menu is keyboard accessible',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The navbar automatically handles keyboard support: press <code>Escape</code> to close the sidebar, and <code>Tab</code> navigates through menu items. Focus is managed and restored properly.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Label action buttons clearly',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use descriptive labels for buttons in the <code>actions</code> slot. If using icon-only buttons, provide <code>aria-label</code> attributes.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Avoid keyboard traps in navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not add custom focus management inside navbar slots. The navbar handles focus containment in the sidebar automatically when the menu is open.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t hide navigation from screen readers',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don\'t use <code>display: none</code> or <code>visibility: hidden</code> on navigation slots. The navbar manages visibility based on responsive behavior and sidebar state.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: Navigation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) - Semantic navigation element
+- [MDN: aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) - Indicating the current page
+- [MDN: aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) - Labeling interactive elements
+- [WCAG 2.2: Navigation Mechanisms](https://www.w3.org/WAI/WCAG22/Understanding/navigation-mechanisms.html) - Best practices for navigational structures
+- [ARIA: Complementary](https://www.w3.org/WAI/ARIA/apg/patterns/complementary/) - Sidebar drawer patterns
+
+<Footer />

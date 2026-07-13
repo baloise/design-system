@@ -27,7 +27,7 @@ const brands = ['Tcs']
 for (const brand of brands) {
   const { config, cleanup } = createBrandConfig(brand)
   try {
-    const sd = new StyleDictionary(config)
+    const sd = new StyleDictionary(config, { verbosity: 'verbose' })
     await sd.buildAllPlatforms()
   } finally {
     cleanup()

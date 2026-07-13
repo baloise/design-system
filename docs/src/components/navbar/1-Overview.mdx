@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as NavbarStories from './navbar.stories'
+import { NAVBAR_DOC_CONFIG, getNavbarTabs } from './navbar.doc-config'
+
+<Meta title="Components/Navbar/Navbar" />
+
+<Banner label={'Navbar'} section={NAVBAR_DOC_CONFIG.section} color={NAVBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={NavbarStories} tabs={getNavbarTabs('overview')} />
+
+<ComponentLead component="navbar" />
+
+<CanvasWithCodePen of={NavbarStories.Basic} sourceState="shown" />
+
+<Controls of={NavbarStories.Basic} />
+
+<ComponentPublicMethods component="navbar" />
+
+<Footer />

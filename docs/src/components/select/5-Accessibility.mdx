@@ -1,0 +1,99 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  Footer,
+  InfoQuote,
+  Lead,
+  StoryHeading,
+  TokenOverview,
+} from '../../../.storybook/blocks'
+import * as SelectStories from './select.stories'
+import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
+
+<Meta title="Components/Select/Accessibility" />
+
+<Banner label={'Accessibility'} section={SELECT_DOC_CONFIG.section} color={SELECT_DOC_CONFIG.color} />
+
+<BannerTabs of={SelectStories} tabs={getSelectTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Associated Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always associate a <code>&lt;label&gt;</code> with the select element using the <code>for</code> attribute matching the select's <code>id</code>. This ensures screen readers announce the purpose of the field.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Required Indication',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use the <code>required</code> prop and include a visual indicator in the label (e.g., an asterisk or "required" text) so all users understand the field is mandatory.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Clear Option Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure each option has descriptive, meaningful text. Avoid placeholder text as a substitute for the label, and provide a placeholder option if no value is pre-selected.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Error Messages',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Display error messages clearly and use <code>aria-describedby</code> to link the select to the error message. This helps screen readers announce the error.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Ensure the select is fully keyboard accessible. Users should be able to open the dropdown with arrow keys, navigate options, and select with Enter.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Placeholder as Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not use placeholder text as a substitute for a proper <code>&lt;label&gt;</code>. Placeholder text disappears when a value is selected and is not reliable for screen readers.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Relying on Color Alone',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not use color alone to indicate errors or required status. Always include text or icons alongside color to ensure the message is clear to all users.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: &lt;label&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) - Associates text labels with form controls for better accessibility.
+- [MDN: aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) - Links elements to descriptions or error messages.
+- [WCAG 2.2: Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html) - Guidelines for form labels and naming.
+- [MDN: Select Element Accessibility](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) - Native select element accessibility features.
+
+<Footer />

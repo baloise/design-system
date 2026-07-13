@@ -1,6 +1,5 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
-@use '../../vars' as vars;
 @use './input.mixin' as input;
 
 $use-host: false !default;
@@ -15,13 +14,6 @@ $host-selector: ('#input');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-.field {
-  @include input.vars-field('input');
-  @include input.vars-label('input');
-  @include input.vars-container('input');
-  @include input.vars-description('input');
-}
-
 .input {
   @include input.vars('input');
 }
@@ -32,70 +24,4 @@ $host-selector: ('#input');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-.field {
-  @include input.field-layout('input');
-  @include input.label('input', '.label');
-  @include input.container('input', '.control');
-  @include input.description('input', '.help');
-}
-
 @include input.style('input', '.input');
-
-/**
-  * Variants and States
-  * --------------------------------
-  * Define here the variants and states like size or colors for the component.
-  */
-
-//
-// Invalid or Color Danger
-// --------------------------------
-.field.is-invalid,
-.field.is-danger {
-  --mod-input-container-border-color: var(--ds-input-container-color-danger-border);
-  --mod-input-description-color: var(--ds-input-description-color-danger);
-  --mod-input-container-hover-border: var(--ds-input-container-color-danger-border);
-  --mod-input-container-active-border: var(--ds-input-container-color-danger-border);
-}
-
-//
-// Valid or Color Success
-// --------------------------------
-.field.is-valid,
-.field.is-success {
-  --mod-input-container-border-color: var(--ds-input-container-color-success-border);
-  --mod-input-description-color: var(--ds-input-description-color-success);
-  --mod-input-container-hover-border: var(--ds-input-container-color-success-border);
-  --mod-input-container-active-border: var(--ds-input-container-color-success-border);
-}
-
-//
-// Color Warning
-// --------------------------------
-.field.is-warning {
-  --mod-input-container-border-color: var(--ds-input-container-color-warning-border);
-  --mod-input-description-color: var(--ds-input-description-color-warning);
-  --mod-input-container-hover-border: var(--ds-input-container-color-warning-border);
-  --mod-input-container-active-border: var(--ds-input-container-color-warning-border);
-}
-
-//
-// Disabled
-// --------------------------------
-.field.is-disabled {
-  &,
-  .label,
-  .help,
-  .input {
-    pointer-events: none;
-    cursor: default;
-  }
-
-  --mod-input-container-background: var(--ds-input-container-color-disabled-background);
-  --mod-input-container-border-color: var(--ds-input-container-color-disabled-border);
-  --mod-input-label-color: var(--ds-input-label-color-disabled);
-  --mod-input-description-color: var(--ds-input-description-color-disabled);
-
-  --mod-input-color: var(--ds-input-control-color-value-disabled);
-  --mod-input-placeholder: var(--ds-input-control-color-placeholder-disabled);
-}

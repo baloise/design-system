@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as TooltipStories from './tooltip.stories'
+import { TOOLTIP_DOC_CONFIG, getTooltipTabs } from './tooltip.doc-config'
+
+<Meta title="Components/Tooltip/Accessibility" />
+<Banner label={'Accessibility'} section={TOOLTIP_DOC_CONFIG.section} color={TOOLTIP_DOC_CONFIG.color} />
+<BannerTabs of={TooltipStories} tabs={getTooltipTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use a Focusable Trigger',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always attach the tooltip to a natively focusable element such as a button, link, or form control. This ensures keyboard users and screen reader users can trigger the tooltip without a mouse.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Supplement, Never Replace, Visible Labels',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use tooltips only to provide supplementary information. The trigger element must have its own accessible name — do not rely on the tooltip as the sole label for an interactive control.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keep Content Concise',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Limit tooltip content to a single short sentence. Screen readers announce the full tooltip text when the trigger is focused, so verbose content creates a poor listening experience.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do Not Put Interactive Content Inside',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never place links, buttons, or any interactive elements inside a tooltip. The tooltip role does not support interactive children and such content cannot be reached by keyboard or assistive technology.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do Not Convey Critical Information Only via Tooltip',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not hide required instructions or error messages inside a tooltip. Touch users, users with motor disabilities, and users in high-contrast or reduced-motion modes may never see hover-triggered content.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do Not Use on Non-Interactive Elements',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid attaching tooltips to non-focusable elements like plain <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> tags. Users who rely on keyboard navigation will be unable to access the tooltip.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The tooltip component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **1.3.1 Info and Relationships** — The trigger element receives `aria-describedby` pointing to the tooltip `id`, making the relationship machine-readable.
+- **1.4.13 Content on Hover or Focus** — The tooltip persists while the pointer is over the trigger and can be dismissed with Escape; it does not disappear on hover alone.
+- **2.1.1 Keyboard** — The tooltip is triggered on both `mouseenter` and `focus`, so it is accessible without a pointing device.
+- **4.1.3 Status Messages** — The tooltip uses `role="tooltip"` and `aria-hidden` to correctly communicate its visibility state to assistive technology without moving focus.
+
+<Footer />

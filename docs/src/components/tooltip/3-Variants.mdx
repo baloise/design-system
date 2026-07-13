@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as TooltipStories from './tooltip.stories'
+import { TOOLTIP_DOC_CONFIG, getTooltipTabs } from './tooltip.doc-config'
+
+<Meta title="Components/Tooltip/Variants/Overview" />
+
+<StoryHeading of={TooltipStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={TOOLTIP_DOC_CONFIG.section} color={TOOLTIP_DOC_CONFIG.color} />
+
+<BannerTabs of={TooltipStories} tabs={getTooltipTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TooltipStories.PlacementTop}></StoryHeading>
+
+Places the tooltip above the trigger element. Use when there is more visual space above the trigger than below.
+
+<CanvasWithCodePen of={TooltipStories.PlacementTop} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TooltipStories.PlacementRight}></StoryHeading>
+
+Places the tooltip to the right of the trigger element. Useful in narrow vertical layouts or sidebars.
+
+<CanvasWithCodePen of={TooltipStories.PlacementRight} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TooltipStories.PlacementBottom}></StoryHeading>
+
+Places the tooltip below the trigger element. This is the default placement.
+
+<CanvasWithCodePen of={TooltipStories.PlacementBottom} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TooltipStories.PlacementLeft}></StoryHeading>
+
+Places the tooltip to the left of the trigger element. Useful when there is limited space on the right side.
+
+<CanvasWithCodePen of={TooltipStories.PlacementLeft} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TooltipStories.ContentWidth}></StoryHeading>
+
+Set a maximum content width in pixels to constrain long tooltip text to a fixed column. Text wraps automatically.
+
+<CanvasWithCodePen of={TooltipStories.ContentWidth} />
+
+<Footer />

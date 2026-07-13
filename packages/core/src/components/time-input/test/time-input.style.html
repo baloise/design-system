@@ -1,0 +1,170 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div class="field">
+          <label class="label" for="time-basic-1">Select a time</label>
+          <div class="control">
+            <input type="time" id="time-basic-1" class="time-input" aria-describedby="help-basic-1" />
+          </div>
+          <p id="help-basic-1" class="help">Select the desired time</p>
+        </div>
+        <div class="field">
+          <label class="label" for="time-basic-2">Departure time</label>
+          <div class="control">
+            <input type="time" id="time-basic-2" class="time-input" value="14:30" aria-describedby="help-basic-2" />
+          </div>
+          <p id="help-basic-2" class="help">Preset to 14:30</p>
+        </div>
+        <div class="field">
+          <label class="label" for="time-basic-3">Meeting time</label>
+          <div class="control">
+            <input type="time" id="time-basic-3" class="time-input" aria-describedby="help-basic-3" />
+          </div>
+          <p id="help-basic-3" class="help">Format: HH:mm</p>
+        </div>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <div class="field is-disabled">
+          <label class="label" for="time-disabled-1">Select a time</label>
+          <div class="control">
+            <input type="time" id="time-disabled-1" class="time-input" disabled aria-describedby="help-disabled-1" />
+          </div>
+          <p id="help-disabled-1" class="help">This field is disabled</p>
+        </div>
+        <div class="field is-disabled">
+          <label class="label" for="time-disabled-2">Locked time</label>
+          <div class="control">
+            <input
+              type="time"
+              id="time-disabled-2"
+              class="time-input"
+              disabled
+              value="09:00"
+              aria-describedby="help-disabled-2"
+            />
+          </div>
+          <p id="help-disabled-2" class="help">Cannot be changed</p>
+        </div>
+        <div class="field is-disabled">
+          <label class="label" for="time-disabled-3">System time</label>
+          <div class="control">
+            <input type="time" id="time-disabled-3" class="time-input" disabled aria-describedby="help-disabled-3" />
+          </div>
+          <p id="help-disabled-3" class="help">Disabled state</p>
+        </div>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <div class="field is-danger">
+          <label class="label" for="time-invalid-1">Select a time</label>
+          <div class="control">
+            <input
+              type="time"
+              id="time-invalid-1"
+              class="time-input"
+              aria-invalid="true"
+              aria-describedby="help-invalid-1"
+            />
+          </div>
+          <p id="help-invalid-1" class="help">Please select a valid time</p>
+        </div>
+        <div class="field is-danger">
+          <label class="label" for="time-invalid-2">Arrival time</label>
+          <div class="control">
+            <input
+              type="time"
+              id="time-invalid-2"
+              class="time-input"
+              aria-invalid="true"
+              aria-describedby="help-invalid-2"
+            />
+          </div>
+          <p id="help-invalid-2" class="help">Time is required</p>
+        </div>
+        <div class="field is-danger">
+          <label class="label" for="time-invalid-3">Departure</label>
+          <div class="control">
+            <input
+              type="time"
+              id="time-invalid-3"
+              class="time-input"
+              aria-invalid="true"
+              aria-describedby="help-invalid-3"
+            />
+          </div>
+          <p id="help-invalid-3" class="help">Invalid time selection</p>
+        </div>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <div class="field is-success">
+          <label class="label" for="time-valid-1">Select a time</label>
+          <div class="control">
+            <input type="time" id="time-valid-1" class="time-input" value="15:30" aria-describedby="help-valid-1" />
+          </div>
+          <p id="help-valid-1" class="help">Time accepted</p>
+        </div>
+        <div class="field is-success">
+          <label class="label" for="time-valid-2">Appointment</label>
+          <div class="control">
+            <input type="time" id="time-valid-2" class="time-input" value="10:00" aria-describedby="help-valid-2" />
+          </div>
+          <p id="help-valid-2" class="help">Confirmed for 10:00 AM</p>
+        </div>
+        <div class="field is-success">
+          <label class="label" for="time-valid-3">Booking</label>
+          <div class="control">
+            <input type="time" id="time-valid-3" class="time-input" value="16:45" aria-describedby="help-valid-3" />
+          </div>
+          <p id="help-valid-3" class="help">Booking confirmed</p>
+        </div>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <div class="field is-warning">
+          <label class="label" for="time-warning-1">Select a time</label>
+          <div class="control">
+            <input type="time" id="time-warning-1" class="time-input" aria-describedby="help-warning-1" />
+          </div>
+          <p id="help-warning-1" class="help">Warning: please review your selection</p>
+        </div>
+        <div class="field is-warning">
+          <label class="label" for="time-warning-2">Schedule</label>
+          <div class="control">
+            <input type="time" id="time-warning-2" class="time-input" value="23:00" aria-describedby="help-warning-2" />
+          </div>
+          <p id="help-warning-2" class="help">Late time selected</p>
+        </div>
+        <div class="field is-warning">
+          <label class="label" for="time-warning-3">Reminder</label>
+          <div class="control">
+            <input type="time" id="time-warning-3" class="time-input" aria-describedby="help-warning-3" />
+          </div>
+          <p id="help-warning-3" class="help">Outside normal business hours</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

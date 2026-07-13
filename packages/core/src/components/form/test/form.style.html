@@ -12,108 +12,537 @@
   </head>
   <body>
     <main class="container">
-      <!-- Select -->
-      <section data-testid="select">
-        <span>Select</span>
-        <div class="select">
-          <select>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-      </section>
+      <!-- Basic-->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <div class="form">
+          <div class="form-col">
+            <fieldset class="field">
+              <legend class="label">Gender</legend>
+              <div class="radio-group">
+                <label class="radio">
+                  <input required type="radio" name="required" aria-describedby="help-gender" />
+                  Male
+                </label>
+                <label class="radio">
+                  <input required type="radio" name="required" aria-describedby="help-gender" checked />
+                  Female
+                </label>
+              </div>
+              <p class="help" id="help-gender">Select your gender</p>
+            </fieldset>
+          </div>
 
-      <!-- Select States -->
-      <section data-testid="select-states">
-        <span>Select States</span>
-        <div class="select is-success">
-          <select>
-            <option>Success</option>
-          </select>
-        </div>
-        <div class="select is-danger">
-          <select>
-            <option>Danger</option>
-          </select>
-        </div>
-        <div class="select is-warning">
-          <select>
-            <option>Warning</option>
-          </select>
-        </div>
-        <div class="select is-disabled">
-          <select disabled>
-            <option>Disabled</option>
-          </select>
-        </div>
-      </section>
+          <div class="form-col tablet:is-6">
+            <div class="field">
+              <label class="label" for="fname">First Name</label>
+              <div class="control">
+                <input id="fname" class="input" aria-describedby="help-fname" value="Jane" />
+              </div>
+            </div>
+          </div>
 
-      <!-- File Upload -->
-      <section data-testid="file">
-        <span>File Upload</span>
-        <div class="file">
-          <label class="file-label">
-            <input class="file-input" type="file" />
-            <span class="file-cta">
-              <span class="file-icon">
-                <ds-icon name="upload"></ds-icon>
-              </span>
-              <span>Choose a file…</span>
-            </span>
-          </label>
-        </div>
-      </section>
+          <div class="form-col tablet:is-6">
+            <div class="field">
+              <label class="label" for="lname">Last Name</label>
+              <div class="control">
+                <input id="lname" class="input" aria-describedby="help-lname" value="Doe" />
+              </div>
+              <p id="help-lname" class="help">Provide the last name</p>
+            </div>
+          </div>
 
-      <!-- File States -->
-      <section data-testid="file-states">
-        <span>File States</span>
-        <div class="file is-success">
-          <label class="file-label">
-            <input class="file-input" type="file" />
-            <span class="file-cta"><span>Success</span></span>
-          </label>
-        </div>
-        <div class="file is-danger">
-          <label class="file-label">
-            <input class="file-input" type="file" />
-            <span class="file-cta"><span>Danger</span></span>
-          </label>
-        </div>
-        <div class="file is-disabled">
-          <label class="file-label">
-            <input class="file-input" type="file" disabled />
-            <span class="file-cta"><span>Disabled</span></span>
-          </label>
-        </div>
-      </section>
+          <div class="form-col tablet:is-3">
+            <div class="field">
+              <label class="label" for="plz">PLZ</label>
+              <div class="control">
+                <input id="plz" class="input" aria-describedby="help-plz" placeholder="4000" />
+              </div>
+              <p id="help-plz" class="help">Provide the postal code</p>
+            </div>
+          </div>
 
-      <!-- Field Spacing -->
-      <section data-testid="field-spacing">
-        <span>Field Spacing</span>
-        <div class="field">
-          <label>Label 1</label>
-          <div class="select">
-            <select>
-              <option>Option</option>
-            </select>
+          <div class="form-col tablet:is-9">
+            <div class="field">
+              <label class="label" for="city">City</label>
+              <div class="control">
+                <input id="city" class="input" aria-describedby="help-city" placeholder="Basel" />
+              </div>
+              <p id="help-city" class="help">Provide the city</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="field">
+              <label class="label" for="country">Country</label>
+              <div class="control">
+                <select id="country" class="select" aria-describedby="help-country">
+                  <option value="">-- Select a country --</option>
+                  <option value="ch">Switzerland</option>
+                  <option value="de">Germany</option>
+                  <option value="at">Austria</option>
+                </select>
+              </div>
+              <p id="help-country" class="help">Provide the country</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <fieldset class="field">
+              <legend class="label">Languages</legend>
+              <div class="checkbox-group">
+                <label class="checkbox">
+                  <input required type="checkbox" aria-describedby="help-lang" checked value="1" name="lang" />
+                  German
+                </label>
+                <label class="checkbox">
+                  <input required type="checkbox" aria-describedby="help-lang" value="2" name="lang" />
+                  English
+                </label>
+              </div>
+              <p class="help" id="help-lang">What language do you speak?</p>
+            </fieldset>
+          </div>
+
+          <div class="form-col">
+            <div class="field">
+              <label class="label" for="comment">Comment</label>
+              <div class="control">
+                <textarea id="comment" class="textarea" aria-describedby="help-comment"></textarea>
+              </div>
+              <p id="help-comment" class="help">Add any additional comments</p>
+            </div>
           </div>
         </div>
-        <div class="field">
-          <label>Label 2</label>
-          <div class="select">
-            <select>
-              <option>Option</option>
-            </select>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <div class="form">
+          <div class="form-col">
+            <fieldset class="field is-disabled">
+              <legend class="label">Gender</legend>
+              <div class="radio-group">
+                <label class="radio is-disabled">
+                  <input
+                    disabled
+                    required
+                    type="radio"
+                    name="required-disabled"
+                    aria-describedby="help-gender-disabled"
+                  />
+                  Male
+                </label>
+                <label class="radio is-disabled">
+                  <input
+                    disabled
+                    required
+                    type="radio"
+                    name="required-disabled"
+                    aria-describedby="help-gender-disabled"
+                    checked
+                  />
+                  Female
+                </label>
+              </div>
+              <p class="help" id="help-gender-disabled">Select your gender</p>
+            </fieldset>
+          </div>
+
+          <div class="form-col tablet:is-6">
+            <div class="field is-disabled">
+              <label class="label" for="fname-disabled">First Name</label>
+              <div class="control">
+                <input disabled id="fname-disabled" class="input" aria-describedby="help-fname-disabled" value="Jane" />
+              </div>
+              <p id="help-fname-disabled" class="help">Provide the first name</p>
+            </div>
+          </div>
+
+          <div class="form-col tablet:is-6">
+            <div class="field is-disabled">
+              <label class="label" for="lname-disabled">Last Name</label>
+              <div class="control">
+                <input disabled id="lname-disabled" class="input" aria-describedby="help-lname-disabled" value="Doe" />
+              </div>
+              <p id="help-lname-disabled" class="help">Provide the last name</p>
+            </div>
+          </div>
+
+          <div class="form-col tablet:is-3">
+            <div class="field is-disabled">
+              <label class="label" for="plz-disabled">PLZ</label>
+              <div class="control">
+                <input
+                  disabled
+                  id="plz-disabled"
+                  class="input"
+                  aria-describedby="help-plz-disabled"
+                  placeholder="4000"
+                />
+              </div>
+              <p id="help-plz-disabled" class="help">Provide the postal code</p>
+            </div>
+          </div>
+
+          <div class="form-col tablet:is-9">
+            <div class="field is-disabled">
+              <label class="label" for="city-disabled">City</label>
+              <div class="control">
+                <input
+                  disabled
+                  id="city-disabled"
+                  class="input"
+                  aria-describedby="help-city-disabled"
+                  placeholder="Basel"
+                />
+              </div>
+              <p id="help-city-disabled" class="help">Provide the city</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="field is-disabled">
+              <label class="label" for="country-disabled">Country</label>
+              <div class="control">
+                <select disabled id="country-disabled" class="select" aria-describedby="help-country-disabled">
+                  <option value="">-- Select a country --</option>
+                  <option value="ch">Switzerland</option>
+                  <option value="de">Germany</option>
+                  <option value="at">Austria</option>
+                </select>
+              </div>
+              <p id="help-country-disabled" class="help">Provide the country</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <fieldset class="field is-disabled">
+              <legend class="label">Languages</legend>
+              <div class="checkbox-group">
+                <label class="checkbox is-disabled">
+                  <input
+                    disabled
+                    required
+                    type="checkbox"
+                    aria-describedby="help-lang-disabled"
+                    checked
+                    value="1"
+                    name="lang-disabled"
+                  />
+                  German
+                </label>
+                <label class="checkbox is-disabled">
+                  <input
+                    disabled
+                    required
+                    type="checkbox"
+                    aria-describedby="help-lang-disabled"
+                    value="2"
+                    name="lang-disabled"
+                  />
+                  English
+                </label>
+              </div>
+              <p class="help" id="help-lang-disabled">What language do you speak?</p>
+            </fieldset>
+          </div>
+
+          <div class="form-col">
+            <div class="field is-disabled">
+              <label class="label" for="comment-disabled">Comment</label>
+              <div class="control">
+                <textarea
+                  disabled
+                  id="comment-disabled"
+                  class="textarea"
+                  aria-describedby="help-comment-disabled"
+                ></textarea>
+              </div>
+              <p id="help-comment-disabled" class="help">Add any additional comments</p>
+            </div>
           </div>
         </div>
-        <div class="field">
-          <label>Label 3</label>
-          <div class="select">
-            <select>
-              <option>Option</option>
-            </select>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <div class="form">
+          <div class="form-col">
+            <fieldset class="field is-invalid">
+              <legend class="label">Gender</legend>
+              <div class="radio-group">
+                <label class="radio is-invalid">
+                  <input
+                    aria-invalid="true"
+                    required
+                    type="radio"
+                    name="required-invalid"
+                    aria-describedby="help-gender-invalid"
+                  />
+                  Male
+                </label>
+                <label class="radio is-invalid">
+                  <input
+                    aria-invalid="true"
+                    required
+                    type="radio"
+                    name="required-invalid"
+                    aria-describedby="help-gender-invalid"
+                    checked
+                  />
+                  Female
+                </label>
+              </div>
+              <p class="help" id="help-gender-invalid">Select your gender</p>
+            </fieldset>
           </div>
+
+          <div class="form-col tablet:is-6">
+            <div class="field is-invalid">
+              <label class="label" for="fname-invalid">First Name</label>
+              <div class="control">
+                <input
+                  aria-invalid="true"
+                  id="fname-invalid"
+                  class="input"
+                  aria-describedby="help-fname-invalid"
+                  value="Jane"
+                />
+              </div>
+              <p id="help-fname-invalid" class="help">Provide the first name</p>
+            </div>
+          </div>
+
+          <div class="form-col tablet:is-6">
+            <div class="field is-invalid">
+              <label class="label" for="lname-invalid">Last Name</label>
+              <div class="control">
+                <input
+                  aria-invalid="true"
+                  id="lname-invalid"
+                  class="input"
+                  aria-describedby="help-lname-invalid"
+                  value="Doe"
+                />
+              </div>
+              <p id="help-lname-invalid" class="help">Provide the last name</p>
+            </div>
+          </div>
+
+          <div class="form-col tablet:is-3">
+            <div class="field is-invalid">
+              <label class="label" for="plz-invalid">PLZ</label>
+              <div class="control">
+                <input
+                  aria-invalid="true"
+                  id="plz-invalid"
+                  class="input"
+                  aria-describedby="help-plz-invalid"
+                  placeholder="4000"
+                />
+              </div>
+              <p id="help-plz-invalid" class="help">Provide the postal code</p>
+            </div>
+          </div>
+
+          <div class="form-col tablet:is-9">
+            <div class="field is-invalid">
+              <label class="label" for="city-invalid">City</label>
+              <div class="control">
+                <input
+                  aria-invalid="true"
+                  id="city-invalid"
+                  class="input"
+                  aria-describedby="help-city-invalid"
+                  placeholder="Basel"
+                />
+              </div>
+              <p id="help-city-invalid" class="help">Provide the city</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="field is-invalid">
+              <label class="label" for="country-invalid">Country</label>
+              <div class="control">
+                <select aria-invalid="true" id="country-invalid" class="select" aria-describedby="help-country-invalid">
+                  <option value="">-- Select a country --</option>
+                  <option value="ch">Switzerland</option>
+                  <option value="de">Germany</option>
+                  <option value="at">Austria</option>
+                </select>
+              </div>
+              <p id="help-country-invalid" class="help">Provide the country</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <fieldset class="field is-invalid">
+              <legend class="label">Languages</legend>
+              <div class="checkbox-group">
+                <label class="checkbox is-invalid">
+                  <input
+                    aria-invalid="true"
+                    required
+                    type="checkbox"
+                    aria-describedby="help-lang-invalid"
+                    checked
+                    value="1"
+                    name="lang-invalid"
+                  />
+                  German
+                </label>
+                <label class="checkbox is-invalid">
+                  <input
+                    aria-invalid="true"
+                    required
+                    type="checkbox"
+                    aria-describedby="help-lang-invalid"
+                    value="2"
+                    name="lang-invalid"
+                  />
+                  English
+                </label>
+              </div>
+              <p class="help" id="help-lang-invalid">What language do you speak?</p>
+            </fieldset>
+          </div>
+
+          <div class="form-col">
+            <div class="field is-invalid">
+              <label class="label" for="comment-invalid">Comment</label>
+              <div class="control">
+                <textarea
+                  aria-invalid="true"
+                  id="comment-invalid"
+                  class="textarea"
+                  aria-describedby="help-comment-invalid"
+                ></textarea>
+              </div>
+              <p id="help-comment-invalid" class="help">Add any additional comments</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Numeric Sizes: Full Grid -->
+      <section data-testid="numeric-sizes">
+        <span>Numeric Sizes (is-1 to is-12)</span>
+        <div class="form">
+          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+        </div>
+      </section>
+
+      <!-- Numeric Sizes: Various Widths -->
+      <section data-testid="numeric-mixed">
+        <span>Numeric Mixed (is-12, is-6, is-4, is-2)</span>
+        <div class="form">
+          <div class="form-col is-12 s-bg-1 p-sm text-align-center">12</div>
+        </div>
+        <div class="form">
+          <div class="form-col is-6 s-bg-2 p-sm text-align-center">6</div>
+          <div class="form-col is-6 s-bg-3 p-sm text-align-center">6</div>
+        </div>
+        <div class="form">
+          <div class="form-col is-4 s-bg-1 p-sm text-align-center">4</div>
+          <div class="form-col is-4 s-bg-2 p-sm text-align-center">4</div>
+          <div class="form-col is-4 s-bg-3 p-sm text-align-center">4</div>
+        </div>
+        <div class="form">
+          <div class="form-col is-2 s-bg-1 p-sm text-align-center">2</div>
+          <div class="form-col is-2 s-bg-2 p-sm text-align-center">2</div>
+          <div class="form-col is-2 s-bg-3 p-sm text-align-center">2</div>
+          <div class="form-col is-2 s-bg-1 p-sm text-align-center">2</div>
+          <div class="form-col is-2 s-bg-2 p-sm text-align-center">2</div>
+          <div class="form-col is-2 s-bg-3 p-sm text-align-center">2</div>
+        </div>
+      </section>
+
+      <!-- Semantic Sizes -->
+      <section data-testid="semantic-sizes">
+        <span>Semantic Sizes</span>
+        <div class="form">
+          <div class="form-col is-full s-bg-1 p-sm text-align-center">full</div>
+        </div>
+        <div class="form">
+          <div class="form-col is-half s-bg-2 p-sm text-align-center">half</div>
+          <div class="form-col is-half s-bg-3 p-sm text-align-center">half</div>
+        </div>
+        <div class="form">
+          <div class="form-col is-one-third s-bg-1 p-sm text-align-center">one-third</div>
+          <div class="form-col is-two-thirds s-bg-2 p-sm text-align-center">two-thirds</div>
+        </div>
+        <div class="form">
+          <div class="form-col is-one-quarter s-bg-3 p-sm text-align-center">one-quarter</div>
+          <div class="form-col is-three-quarters s-bg-1 p-sm text-align-center">three-quarters</div>
+        </div>
+      </section>
+
+      <!-- Responsive: Full Width Mobile, Half Width Desktop -->
+      <section data-testid="responsive-half">
+        <span>Responsive (Full width on mobile, Half width on desktop)</span>
+        <div class="form">
+          <div class="form-col desktop:is-6 s-bg-1 p-sm text-align-center">full / half</div>
+          <div class="form-col desktop:is-6 s-bg-2 p-sm text-align-center">full / half</div>
+        </div>
+      </section>
+
+      <!-- Responsive: Full Width Mobile, Third Width Desktop -->
+      <section data-testid="responsive-thirds">
+        <span>Responsive (Full width on mobile, One-third on desktop)</span>
+        <div class="form">
+          <div class="form-col desktop:is-4 s-bg-1 p-sm text-align-center">full / one-third</div>
+          <div class="form-col desktop:is-4 s-bg-2 p-sm text-align-center">full / one-third</div>
+          <div class="form-col desktop:is-4 s-bg-3 p-sm text-align-center">full / one-third</div>
+        </div>
+      </section>
+
+      <!-- Responsive: Tablet and Desktop -->
+      <section data-testid="responsive-multi-breakpoint">
+        <span>Responsive (Full mobile, Half tablet, Quarter desktop)</span>
+        <div class="form">
+          <div class="form-col tablet:is-6 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / quarter</div>
+          <div class="form-col tablet:is-6 desktop:is-3 s-bg-2 p-sm text-align-center">full / half / quarter</div>
+          <div class="form-col tablet:is-6 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / quarter</div>
+          <div class="form-col tablet:is-6 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / quarter</div>
+        </div>
+      </section>
+
+      <!-- Semantic Responsive -->
+      <section data-testid="semantic-responsive">
+        <span>Semantic Responsive (Full mobile, Half desktop)</span>
+        <div class="form">
+          <div class="form-col desktop:is-half s-bg-2 p-sm text-align-center">full / half</div>
+          <div class="form-col desktop:is-half s-bg-3 p-sm text-align-center">full / half</div>
+        </div>
+      </section>
+
+      <!-- Complex Layout -->
+      <section data-testid="complex-layout">
+        <span>Complex Layout (Full mobile, Half tablet, Various desktop)</span>
+        <div class="form">
+          <div class="form-col tablet:is-6 desktop:is-8 s-bg-1 p-sm text-align-center">full / half / various</div>
+          <div class="form-col tablet:is-6 desktop:is-4 s-bg-2 p-sm text-align-center">full / half / various</div>
+        </div>
+        <div class="form mt-lg">
+          <div class="form-col tablet:is-3 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / various</div>
+          <div class="form-col tablet:is-3 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / various</div>
+          <div class="form-col tablet:is-3 desktop:is-3 s-bg-2 p-sm text-align-center">full / half / various</div>
+          <div class="form-col tablet:is-3 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / various</div>
         </div>
       </section>
     </main>

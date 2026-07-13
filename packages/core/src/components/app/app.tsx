@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Logger, type LogInstance } from '@utils'
+import { dsBrowser, dsDevice, debounce, rIC, rOnLoad, Logger, type LogInstance, Type } from '@utils'
 import { DsComponentInterface, updateDsAnimated, updateDsLogger } from '@global'
 import { startFocusVisible } from './app.focus.util'
 
@@ -30,12 +30,16 @@ export class App implements DsComponentInterface {
   /**
    * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
-  @Prop({ reflect: true }) readonly animated: boolean = true
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly animated: boolean = true
 
   /**
    * @internal Is `true` when DS components are ready to be shown.
    */
-  @Prop({ reflect: true, mutable: true }) ready: boolean = false
+  @Prop({ reflect: true, mutable: true })
+  @Type('boolean')
+  ready: boolean = false
 
   /**
    * @internal Comma separated list of components to log.

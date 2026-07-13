@@ -1,0 +1,155 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Variables
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * Define CSS custom properties that can be overridden by consumers.
+ *
+ * @prop --data-item-font-weight-label: Font weight of the label
+ * @prop --data-item-color-text: Text color of the value
+ * @prop --data-item-color-text-label: Text color of the label
+ * @prop --data-item-color-text-required: Color of the required indicator
+ * @prop --data-item-color-text-disabled: Text color when disabled
+ * @prop --data-item-border-width: Border width
+ * @prop --data-item-border-color: Border color
+ */
+
+:host {
+  @include vars.base(data-item);
+
+  @include vars.local(data-item-font-weight-label, var(--ds-global-font-weight-700));
+  @include vars.local(data-item-color-text, var(--ds-alias-text-color-primary));
+  @include vars.local(data-item-color-text-label, var(--ds-alias-text-color-primary));
+  @include vars.local(data-item-color-text-required, var(--ds-alias-text-color-danger));
+  @include vars.local(data-item-color-text-disabled, var(--ds-alias-text-color-disabled));
+  @include vars.local(data-item-border-width, var(--ds-global-size-border-2));
+  @include vars.local(data-item-border-color, var(--ds-global-color-grey-3));
+}
+
+// Variant: Bordered (always applied in vertical layout)
+:host {
+  border-bottom: var(--_data-item-border-width) solid var(--_data-item-border-color);
+}
+
+:host(:last-child) {
+  border-bottom: none;
+}
+
+// State: Disabled
+:host(.is-disabled) {
+  opacity: 0.6;
+  color: var(--_data-item-color-text-disabled);
+}
+
+/**
+ * Component Styles
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 0.5rem 0;
+  min-height: auto;
+}
+
+.item-container {
+  display: contents;
+}
+
+.label-container {
+  display: flex;
+  gap: 0.25rem;
+  font-weight: var(--_data-item-font-weight-label);
+  color: var(--_data-item-color-text-label);
+  margin: 0;
+  padding: 0;
+  align-self: center;
+
+  > span {
+    color: var(--_data-item-color-text-required);
+  }
+}
+
+.value-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--_data-item-color-text);
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+
+  > :not(.edit-button) {
+    min-width: 0;
+    flex: 1;
+  }
+
+  textarea,
+  select,
+  input {
+    width: 100%;
+  }
+
+  .edit-button {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+}
+
+:host(.is-disabled) .value-container {
+  color: var(--_data-item-color-text-disabled);
+}
+
+:host(.is-multiline) .value-container {
+  align-items: flex-start;
+
+  > :not(.edit-button) {
+    align-self: flex-start;
+  }
+}
+
+// Horizontal layout: stack label above value, no borders
+:host-context(ds-data[horizontal]) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  align-items: flex-start;
+  flex: 1;
+  min-height: 48px;
+
+  .label-container {
+    display: flex;
+    align-self: auto;
+  }
+
+  .value-container {
+    display: flex;
+  }
+}
+
+// Mobile: always use horizontal layout (stack label above value), keep borders if set
+@media (max-width: 767px) {
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .label-container {
+    display: flex;
+    align-self: auto;
+  }
+
+  .value-container {
+    display: flex;
+  }
+}

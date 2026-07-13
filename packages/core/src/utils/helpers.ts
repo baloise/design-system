@@ -2,45 +2,6 @@ import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from './browser'
 import { type DsConfig } from '@global'
-import {
-  IconClock,
-  IconClose,
-  IconInfoCircle,
-  IconPlus,
-  IconMinus,
-  IconEdit,
-  IconTrash,
-  IconNavGoLeft,
-  IconNavGoRight,
-  IconNavGoDown,
-  IconNavGoUp,
-  IconCheck,
-  IconDate,
-  IconDocument,
-  IconUpload,
-  IconMenuBars,
-  IconFacebook,
-  IconInstagram,
-  IconLink,
-  IconLinkedin,
-  IconTwitter,
-  IconX,
-  IconXing,
-  IconYoutube,
-  IconWeb,
-  IconCaretDown,
-  IconCaretLeft,
-  IconCaretRight,
-  IconCaretUp,
-  IconFile,
-  IconPicture,
-  IconVideo,
-  IconAudio,
-  IconDownload,
-  IconAlert,
-  IconBell,
-  IconInformation,
-} from '@global'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
@@ -278,7 +239,7 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
           return config._ael(el, eventName, callback, opts)
         }
       }
-    } catch (e) {
+    } catch {
       // Fallback if @global is not yet initialized
     }
   }
@@ -301,7 +262,7 @@ export const removeEventListener = (el: any, eventName: string, callback: any, o
           return config._rel(el, eventName, callback, opts)
         }
       }
-    } catch (e) {
+    } catch {
       // Fallback if @global is not yet initialized
     }
   }
@@ -358,45 +319,6 @@ export const isChildOfEventTarget = async (
 export const waitForDesignSystem = async (el: any | null, _config?: DsConfig): Promise<void> => {
   const config: any = {
     animated: false,
-    icons: {
-      IconClock,
-      IconClose,
-      IconInfoCircle,
-      IconPlus,
-      IconMinus,
-      IconEdit,
-      IconTrash,
-      IconNavGoLeft,
-      IconNavGoRight,
-      IconNavGoDown,
-      IconNavGoUp,
-      IconCheck,
-      IconDate,
-      IconDocument,
-      IconUpload,
-      IconMenuBars,
-      IconFacebook,
-      IconInstagram,
-      IconLink,
-      IconLinkedin,
-      IconTwitter,
-      IconX,
-      IconXing,
-      IconYoutube,
-      IconWeb,
-      IconCaretDown,
-      IconCaretLeft,
-      IconCaretRight,
-      IconCaretUp,
-      IconFile,
-      IconPicture,
-      IconVideo,
-      IconAudio,
-      IconDownload,
-      IconAlert,
-      IconBell,
-      IconInformation,
-    },
     ..._config,
   }
   const element = el as any

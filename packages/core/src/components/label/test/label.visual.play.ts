@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'label'
 const VARIANTS = ['basic', 'no-wrap', 'sizes', 'required', 'states', 'colors'] as const

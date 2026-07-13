@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as FooterStories from './footer.stories'
+import { FOOTER_DOC_CONFIG, getFooterTabs } from './footer.doc-config'
+
+<Meta title="Components/Footer/Usage" />
+
+<Banner label={'Usage'} section={FOOTER_DOC_CONFIG.section} color={FOOTER_DOC_CONFIG.color} />
+
+<BannerTabs of={FooterStories} tabs={getFooterTabs('usage')} />
+
+## When to Use
+
+- Display application-level legal links, copyright information, and contact details
+- Provide language selection for multilingual applications
+- Include social media links and branding
+- Present navigation options for privacy policies and imprints
+
+## When NOT to Use
+
+- For inline content that doesn't belong at the page bottom
+- As a replacement for main navigation (use header components instead)
+- For temporary or contextual information (use alerts or modals)
+
+<Footer />

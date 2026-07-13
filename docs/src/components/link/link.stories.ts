@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/html-vite'
-import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../utils'
+import { StoryFactory, withRender } from '../../utils'
 
 type Args = { slot: string }
 
@@ -9,7 +9,7 @@ const meta: Meta<Args> = {
     slot: 'Link',
   },
   ...withRender(
-    ({ slot, ...args }) => `
+    ({ slot }) => `
 <a class="link">${slot}</a>
 `,
   ),
@@ -32,7 +32,7 @@ export const Inverted = Story({
     backgrounds: { value: 'dark' },
   },
   ...withRender(
-    ({ slot, ...args }) => `
+    ({ slot }) => `
 <a class="link is-inverted">${slot}</a>
 `,
   ),

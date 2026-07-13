@@ -1,3 +1,14 @@
+/**
+ * Link provides semantic, accessible anchor element styling with interactive states and color variants.
+ * Supports hover, active, and focus states with smooth transitions and inverted color scheme.
+ * Works with inline content and integrates with ds-icon components for icon support.
+ *
+ * @variant is-hovered - Hover state styling with color transition.
+ * @variant is-active - Active/pressed state styling.
+ * @variant is-focused - Focus state with focus ring styling.
+ * @variant is-inverted - Inverted color scheme for use on dark backgrounds.
+ */
+
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
@@ -6,6 +17,16 @@
  * --------------------------------
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --link-color - Base text color of the link.
+ * @prop --link-color-hover - Text color on hover state.
+ * @prop --link-color-active - Text color on active/pressed state.
+ * @prop --link-family - Font family of the link.
+ * @prop --link-weight - Font weight of the link.
+ * @prop --link-radius - Border radius of the link focus ring.
+ * @prop --link-border-width - Text decoration thickness (underline width).
+ * @prop --link-underline-offset - Offset of the underline from text baseline.
+ * @prop --link-focus - Focus ring color.
  */
 a.link:not(.button),
 a.is-link:not(.button) {
@@ -14,7 +35,6 @@ a.is-link:not(.button) {
   @include vars.local(link-color, var(--ds-link-color-base));
   @include vars.local(link-color-hover, var(--ds-link-color-base-hover));
   @include vars.local(link-color-active, var(--ds-link-color-base-active));
-
   @include vars.local(link-family, var(--ds-link-family));
   @include vars.local(link-weight, var(--ds-link-weight));
   @include vars.local(link-radius, var(--ds-alias-radius-base));

@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
-import { AttachInternals, HTMLStencilElement, Method, Watch } from '@stencil/core/internal'
+import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
 import {
   ariaBooleanToString,
@@ -8,10 +8,10 @@ import {
   Logger,
   type LogInstance,
   type Attributes,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
+  hasValue,
+  OneOf,
+  Required,
+  Type,
 } from '@utils'
 import {
   BUTTON_COLORS,
@@ -22,19 +22,12 @@ import {
   type ButtonElementType,
   type ButtonSize,
   type ButtonTarget,
-  type ButtonAria,
-  type ButtonBlur,
-  type ButtonFocus,
-  type ButtonClick,
-  type ButtonNavigate,
-  type ButtonDidRender,
   ButtonBlurDetail,
   ButtonClickDetail,
   ButtonDidRenderDetail,
   ButtonFocusDetail,
   ButtonNavigateDetail,
 } from './button.interfaces'
-import { SPINNER_VARIATIONS, SpinnerVariation } from '../spinner/spinner.interfaces'
 
 /**
  * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
@@ -74,39 +67,36 @@ export class Button implements DsComponentInterface {
    * The color to use from your application's color palette.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_COLORS)
+  @OneOf(BUTTON_COLORS)
   readonly color: ButtonColor = 'primary'
 
   /**
    * The type of button.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...BUTTON_ELEMENT_TYPES)
+  @Required()
+  @OneOf(BUTTON_ELEMENT_TYPES)
   readonly elementType: ButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * Size of the button
    */
-  @Prop({ mutable: true })
-  @ValidateOneOf(...BUTTON_SIZES)
-  size: ButtonSize = undefined
-  @Watch('size')
-  sizeChanged(newValue: ButtonSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(BUTTON_SIZES)
+  readonly size: ButtonSize = undefined
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly href: string = ''
 
   /**
@@ -114,7 +104,8 @@ export class Button implements DsComponentInterface {
    * Only applies when an `href` is provided.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_TARGETS)
+  @Required()
+  @OneOf(BUTTON_TARGETS)
   readonly target: ButtonTarget = '_self'
 
   /**
@@ -122,7 +113,7 @@ export class Button implements DsComponentInterface {
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly rel: string = ''
 
   /**
@@ -132,77 +123,77 @@ export class Button implements DsComponentInterface {
    * (the user can still change the file name if they want).
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly download: string = ''
 
   /**
    * If `true` the button has a dashed border.
    * */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly dashed: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
    * If `true` the width of the buttons is limited
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly square: boolean = false
 
   /**
    * If `true` the button is circular and width of the buttons is limited
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly circle: boolean = false
 
   /**
    * If `true` the button has a full width
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly wide: boolean = false
 
   /**
    * If `true` the button has no padding and a reduced height
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly flat: boolean = false
 
   /**
    * If `true` the button is outlined
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly outlined: boolean = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop()
-  @ValidateType('boolean')
+  @Prop({ reflect: true })
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly loading: boolean = false
 
   /**
    * If `true` the button is rounded.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly rounded: boolean = false
 
   // /**
@@ -214,70 +205,70 @@ export class Button implements DsComponentInterface {
    * Name of the left button icon
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly icon: string = ''
 
   /**
    * If `true` the icon turns
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly iconTurn: boolean = false
 
   /**
    * Name of the right button icon
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly iconRight: string = ''
 
   /**
    * The label of the button will not break
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * The name of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly name: string = ''
 
   /**
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly value: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly a11yControls: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly a11yTitle: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly a11yLabel: string = ''
 
   /**
    * A11y attributes for the native button element.
    */
   @Prop({ mutable: true })
-  @ValidateType('string')
+  @Type('string')
   a11yHaspopup: string = ''
 
   /**
@@ -323,11 +314,6 @@ export class Button implements DsComponentInterface {
    * ─────────────────────────────────────────────────────
    */
 
-  connectedCallback(): void {
-    setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
-
   componentWillLoad() {
     this.inheritAttributes = inheritAttributes(this.el, [
       'title',
@@ -357,7 +343,7 @@ export class Button implements DsComponentInterface {
   }
 
   private get leftIconAttrs() {
-    if (!this.icon || this.loading) {
+    if (!hasValue(this.icon) || this.loading) {
       return {
         style: { display: 'none' },
       }
@@ -366,7 +352,7 @@ export class Button implements DsComponentInterface {
   }
 
   private get leftRightAttrs() {
-    if (!this.iconRight || this.loading) {
+    if (!hasValue(this.iconRight) || this.loading) {
       return {
         style: { display: 'none' },
       }
@@ -409,7 +395,7 @@ export class Button implements DsComponentInterface {
 
       this.dsClick.emit(ev)
 
-      if (this.href !== undefined) {
+      if (hasValue(this.href)) {
         this.dsNavigate.emit(ev)
       }
     }
@@ -427,7 +413,8 @@ export class Button implements DsComponentInterface {
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this
-    const TagType = this.href === undefined || this.href === '' ? 'button' : 'a'
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+    const TagType = !hasValue(this.href) ? 'button' : 'a'
     const attrs =
       TagType === 'button'
         ? { type: elementType, name, value }
@@ -451,8 +438,8 @@ export class Button implements DsComponentInterface {
         onClick={this.handleHostClick}
         class={{
           'is-wide': this.wide,
-          [`is-${this.color}`]: this.color !== undefined,
-          [`is-${this.size}`]: this.size !== undefined,
+          [`is-${this.color || 'primary'}`]: true,
+          [`is-${size}`]: hasValue(size),
           [`is-inverted`]: this.inverted,
           [`is-disabled`]: this.disabled,
           [`is-loading`]: this.loading,
@@ -484,13 +471,13 @@ export class Button implements DsComponentInterface {
           ) : (
             ''
           )}
-          {this.icon ? (
+          {hasValue(this.icon) ? (
             <ds-icon
               {...this.leftIconAttrs}
               part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
-              size={this.dashed ? 'md' : this.size}
+              size={this.dashed ? 'md' : size}
               shape={this.dashed ? 'circle' : undefined}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
@@ -501,13 +488,13 @@ export class Button implements DsComponentInterface {
           <span part="label">
             <slot />
           </span>
-          {this.iconRight ? (
+          {hasValue(this.iconRight) ? (
             <ds-icon
               {...this.leftRightAttrs}
               part="icon-right"
               class="icon-right"
               name={this.iconRight}
-              size={'small'}
+              size={'sm'}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />

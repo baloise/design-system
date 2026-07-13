@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as CarouselStories from './carousel.stories'
+import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
+
+<Meta title="Components/Carousel/Usage" />
+
+<Banner label={'Usage'} section={CAROUSEL_DOC_CONFIG.section} color={CAROUSEL_DOC_CONFIG.color} />
+
+<BannerTabs of={CarouselStories} tabs={getCarouselTabs('usage')} />
+
+## When to Use
+
+- Presenting a sequence of images or media slides with dot pagination navigation.
+- Displaying a horizontal scrollable strip of product tiles or category links.
+- Showcasing multiple items when vertical space is limited and a compact, interactive layout is preferred.
+
+## When NOT to Use
+
+- As a primary navigation pattern — important content should not be hidden behind carousel interactions.
+- When all items can comfortably fit on screen without scrolling.
+- To replace a data table or list where users need to compare items side by side.
+
+<Footer />

@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DividerStories from './divider.stories'
+import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
+
+<Meta title="Components/Divider/Testing" />
+
+<Banner label={'Testing'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={DividerStories} tabs={getDividerTabs('testing')} />
+
+<ComponentPageObject component="divider" />
+
+<Footer />

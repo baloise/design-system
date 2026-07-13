@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -64,13 +65,13 @@ import { INPUT_DOC_CONFIG, getInputTabs } from './input.doc-config'
 
 <StoryHeading of={InputStories.Slots}></StoryHeading>
 
-<Canvas of={InputStories.Slots} sourceState="shown" />
+<CanvasWithCodePen of={InputStories.Slots} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={InputStories.Formatter}></StoryHeading>
 
-<Canvas of={InputStories.Formatter} sourceState="shown" />
+<CanvasWithCodePen of={InputStories.Formatter} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 

@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensZIndex = ({ overview }): React.ReactElement => {
+export const TokensZIndex = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['🗂️ ZIndex']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>

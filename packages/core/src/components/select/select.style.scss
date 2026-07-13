@@ -1,0 +1,87 @@
+/**
+ * Select provides a native HTML select element with styled wrapper, integrated form field support,
+ * and visual indicators (chevron icon) for different states. Supports disabled and validation states.
+ *
+ * @variant is-invalid - Invalid select state with red chevron icon indicator.
+ */
+
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --select-family - Font family of the select control.
+ * @prop --select-weight - Font weight of the select control.
+ * @prop --select-line-height - Line height of the select control.
+ * @prop --select-size - Font size of the select control.
+ * @prop --select-color - Text color of the select control value.
+ * @prop --select-placeholder - Text color of the select placeholder text.
+ */
+
+.select {
+  @include input.vars('select');
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+.field {
+  @include input.style('select', '.select');
+
+  .control {
+    select {
+      flex: 1;
+      min-width: 0;
+      outline: none;
+      appearance: none;
+      background: transparent;
+      border: none;
+      height: 1.5rem;
+      padding-inline-end: 1.5rem;
+      font: inherit;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    // Chevron icon (SVG background)
+    &:has(select)::after {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23000D6E" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    // Chevron icon when select is disabled (grey)
+    &:has(select:disabled)::after {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23999999" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>');
+    }
+
+    // Chevron icon when select is invalid (red)
+    &.is-invalid::after {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23D32F2F" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>');
+    }
+  }
+}

@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensFontColors = ({ overview }): React.ReactElement => {
+export const TokensFontColors = ({ _overview }): React.ReactElement => {
   const list = tokens.color.text
 
   function render(key, item, preKey = '') {

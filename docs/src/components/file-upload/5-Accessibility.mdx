@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FileUploadStories from './file-upload.stories'
+import { FILEUPLOAD_DOC_CONFIG, getFileUploadTabs } from './file-upload.doc-config'
+
+<Meta title="Components/FileUpload/Accessibility" />
+
+<Banner label={'Accessibility'} section={FILEUPLOAD_DOC_CONFIG.section} color={FILEUPLOAD_DOC_CONFIG.color} />
+
+<BannerTabs of={FileUploadStories} tabs={getFileUploadTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always Provide a Clear Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use the <code>label</code> prop to clearly describe what files the user should upload. Example: "Upload Resume (PDF, DOC, or DOCX)".
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Support Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Users should be able to activate the file picker and remove files using only the keyboard (Tab, Enter, Delete).
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Announce State Changes',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use ARIA live regions to announce when files are added, removed, or when validation errors occur.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Provide Clear Error Messages',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use the <code>invalidText</code> prop to provide specific, actionable error messages when file validation fails.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Avoid Color Alone to Convey State',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not rely only on color to indicate error or success states. Always use text labels and icons for clarity.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t Use Placeholder as Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Always provide a dedicated <code>label</code> prop. Placeholders disappear when content is present.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The file-upload component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Form Labels (1.3.1)** — File uploads are associated with labels via the `label` prop
+- **Instructions (3.3.2)** — The `description` prop provides context and requirements
+- **Error Identification (3.3.1)** — Validation errors are announced via `invalidText` and visual indicators
+- **Keyboard Access (2.1.1)** — All functionality is accessible via keyboard navigation
+- **Focus Management (2.4.7)** — Focus is visible and properly managed during interactions
+- **Color Contrast (1.4.11)** — Text colors meet minimum contrast ratios against backgrounds
+
+<Footer />

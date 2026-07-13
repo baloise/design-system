@@ -59,4 +59,21 @@ for (const pkgPath of publishablePackages) {
   }
 }
 
+// Update root CHANGELOG.md from core package (non-failing)
+try {
+  const coreChangelog = path.join(rootDir, 'packages/core/CHANGELOG.md')
+  const rootChangelog = path.join(rootDir, 'CHANGELOG.md')
+
+  if (fs.existsSync(coreChangelog)) {
+    const content = fs.readFileSync(coreChangelog, 'utf-8')
+    const lines = content.split('\n')
+    // Remove first line and prepend "# Changelog" header
+    const updated = ['# Changelog', ...lines.slice(1)].join('\n')
+    fs.writeFileSync(rootChangelog, updated)
+    console.log(`✅ Updated CHANGELOG.md from packages/core/CHANGELOG.md`)
+  }
+} catch (error) {
+  console.warn(`⚠️  Could not update CHANGELOG.md: ${error.message}`)
+}
+
 console.log(`\n✨ Pre-Publish complete! Processed ${publishablePackages.length} packages.`)

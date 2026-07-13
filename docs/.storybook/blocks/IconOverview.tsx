@@ -20,7 +20,7 @@ const icons = [
   })),
 ].sort((a, b) => a.name.localeCompare(b.name))
 
-export const IconOverview = ({ children }): React.ReactElement => {
+export const IconOverview = ({ _children }): React.ReactElement => {
   const [collection, setCollection] = useState('ui-icons')
   const [color, setColor] = useState('primary')
   const [searchItem, setSearchItem] = useState('')

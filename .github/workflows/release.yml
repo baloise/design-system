@@ -25,11 +25,11 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       id-token: write # Required for OIDC
-      contents: write
+      contents: write # Also covers SBOM submission to GitHub dependency graph
     timeout-minutes: 15
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
@@ -39,13 +39,13 @@ jobs:
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: pnpm audit --audit-level high
 
       - name: Build
-        run: npx turbo run build
-
-      - name: Update changelog file
-        run: awk 'NR==1 {print "# Changelog"} NR!=1' packages/core/CHANGELOG.md > CHANGELOG.md
+        run: pnpm exec turbo run build
 
       - name: Pre-Publish
         run: node scripts/pre-publish.mjs
@@ -71,18 +71,58 @@ jobs:
           echo "🏷️  Tag: v${{ steps.package-version.outputs.current-version }}"
           echo ""
           echo "📤 NPM Publish (Dry Run):"
-          npm publish --workspaces --dry-run
+          pnpm -r publish --tag next --dry-run --no-git-checks
 
       - name: Commit release
         if: ${{ !inputs.dry-run }}
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
-          add: "['package-lock.json', 'CHANGELOG.md']"
+          add: "['pnpm-lock.yaml', 'CHANGELOG.md']"
           message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
           tag: 'v${{ steps.package-version.outputs.current-version }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Generates a Software Bill of Materials (SBOM) in CycloneDX JSON format.
+      # Lists every direct and transitive npm dependency with name, version, and license.
+      # Required per EU Cyber Resilience Act (CRA) — open source stewards must provide
+      # machine-readable software composition data with each release.
+      - name: Generate SBOM
+        if: ${{ !inputs.dry-run }}
+        run: pnpm sbom --sbom-format cyclonedx --out sbom.cdx.json
+
+      # Copies the SBOM into each published package directory and adds it to the package's
+      # "files" allowlist so npm includes it in the tarball. This is done at release time
+      # (not in static package.json) because Stencil validates that listed files exist on
+      # disk at build time — the SBOM only exists after it is generated above.
+      - name: Bundle SBOM into all published packages
+        if: ${{ !inputs.dry-run }}
+        run: |
+          for pkg in packages/core packages/assets packages/css packages/playwright packages/tokens; do
+            cp sbom.cdx.json $pkg/sbom.cdx.json
+            node -e "
+              const fs = require('fs');
+              const p = JSON.parse(fs.readFileSync('$pkg/package.json', 'utf8'));
+              if (!p.files.includes('sbom.cdx.json')) p.files.push('sbom.cdx.json');
+              fs.writeFileSync('$pkg/package.json', JSON.stringify(p, null, 2) + '\n');
+            "
+          done
+
+      # Submits the SBOM to GitHub's Dependency Submission API so GitHub knows the full
+      # transitive dependency tree of every published package — not just direct deps.
+      # This is critical for downstream consumers (e.g. Java projects) that use this design
+      # system: if a CVE is published for a transitive JS dependency inside ds-core, GitHub
+      # can trace the vulnerability through to those consuming projects and raise a Dependabot
+      # alert there. Without this step, the Java project has no visibility into what is
+      # bundled inside the npm packages it depends on.
+      - name: Submit SBOM to GitHub dependency graph
+        if: ${{ !inputs.dry-run }}
+        uses: advanced-security/sbom-report-action@v1
+        with:
+          sbom-path: sbom.cdx.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish
         if: ${{ !inputs.dry-run }}
-        run: npm publish --workspaces --tag next
+        run: pnpm -r publish --tag next --no-git-checks

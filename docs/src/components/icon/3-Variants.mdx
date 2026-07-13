@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -22,9 +23,18 @@ import { ICON_DOC_CONFIG, getIconTabs } from './icon.doc-config'
 
 <StoryHeading of={IconStories.UiIcons}></StoryHeading>
 
-These icons are already available in the Design System. More can be added through the config.
+These icons are already available in the Design System. More can be added through the config or as a raw SVG via the `svg` prop.
 
-<Canvas of={IconStories.UiIcons} sourceState="hidden" />
+<CanvasWithCodePen of={IconStories.UiIcons} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={IconStories.Sizes}></StoryHeading>
+
+Icons come in three sizes: small, medium, and large. Choose the size that best fits the context and layout of your application.
+
+<CanvasWithCodePen of={IconStories.Sizes} sourceState="hidden" />
+
 
 {/* ------------------------------------------------------ */}
 
@@ -32,6 +42,6 @@ These icons are already available in the Design System. More can be added throug
 
 Brand icons for popular platforms and services, used to indicate integrations or supported platforms.
 
-<Canvas of={IconStories.BrandIcons} sourceState="hidden" />
+<CanvasWithCodePen of={IconStories.BrandIcons} sourceState="hidden" />
 
 <Footer />

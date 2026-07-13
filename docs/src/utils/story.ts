@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryContext } from '@storybook/html-vite'
 // import type { Meta, StoryObj, StoryContext } from '@storybook/web-components-vite';
+import { htmlToAngular, htmlToJsx } from './jsx'
 
 export const StoryFactory = <TArgs>(meta: Meta<TArgs>) => {
   return (story: StoryObj<TArgs> = {}) => {
@@ -25,7 +26,10 @@ export const StoryFactory = <TArgs>(meta: Meta<TArgs>) => {
             transform: (_: string, ctx: StoryContext<TArgs>) => {
               if (renderer) {
                 const el = renderer({ ...initialArgs, ...ctx.args } as TArgs, {} as any) as any
-                return el?.innerHTML ?? 'No source code available'
+                const html: string = el?.innerHTML ?? 'No source code available'
+                if (ctx.globals?.framework === 'react') return htmlToJsx(html)
+                if (ctx.globals?.framework === 'angular') return htmlToAngular(html)
+                return html
               }
               return 'No source code available'
             },

@@ -44,7 +44,7 @@ Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
   ...withRender(
-    ({ slot, ...args }) => `
+    ({ slot }) => `
 <article class="card">
   <header class="card-header">
     <h3 class="title">Heading</h3>
@@ -102,7 +102,7 @@ CardHeader.storyName = '🧩 Card Header'
 
 export const TileCard = Story({
   ...withRender(
-    ({ ...args }) => `
+    () => `
 <ds-card tile>
   <ds-tag position="right" color="yellow" size="sm">Discount</ds-tag>
   <ds-card-header>
@@ -128,7 +128,7 @@ TileCard.storyName = '🧩 Tile Card'
 
 export const TeaserCards = Story({
   ...withRender(
-    ({ ...args }) => `
+    () => `
 <div class="grid">
   <div class="col is-one-third">
     <ds-card color="purple-lighter" fullheight>

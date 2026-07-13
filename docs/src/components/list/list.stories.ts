@@ -104,7 +104,7 @@ LinkedList.storyName = '🧩 Linked List'
 export const LinkedListHtml = Story({
   args: {},
   ...withRender(
-    ({ ...args }) => `
+    () => `
         <ul class="list">
           <li>
             <a class="item" href="www.helvetia.com" target="_blank">
@@ -165,7 +165,7 @@ DownloadList.storyName = '🧩 Download List'
 export const DownloadListHtml = Story({
   args: {},
   ...withRender(
-    ({ ...args }) => `
+    () => `
       <ul class="list">
           <li>
             <button class="item">

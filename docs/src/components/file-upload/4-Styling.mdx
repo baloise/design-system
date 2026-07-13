@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FileUploadStories from './file-upload.stories'
+import { FILEUPLOAD_DOC_CONFIG, getFileUploadTabs } from './file-upload.doc-config'
+
+<Meta title="Components/FileUpload/Styling" />
+
+<Banner label={'Styling'} section={FILEUPLOAD_DOC_CONFIG.section} color={FILEUPLOAD_DOC_CONFIG.color} />
+
+<BannerTabs of={FileUploadStories} tabs={getFileUploadTabs('styling')} />
+
+<ComponentParts component="file-upload" />
+
+<ComponentCssVariables component="file-upload" />
+
+<ComponentDesignTokens component="file-upload" />
+
+<Footer />

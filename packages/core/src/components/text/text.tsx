@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  ElementStateInfo,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { ElementStateInfo, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   TEXT_ALIGNS,
@@ -51,63 +43,63 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * If `true` the component gets a invalid style.
    */
   @Prop()
-  @ValidateOneOf(...TEXT_ALIGNS)
+  @OneOf(TEXT_ALIGNS)
   readonly align: TextAlign = ''
 
   /**
    * If `true` the text is bold
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly bold: boolean = false
 
   /**
    * Defines the color of the text.
    */
   @Prop()
-  @ValidateOneOf(...TEXT_COLORS)
+  @OneOf(TEXT_COLORS)
   readonly color: TextColor = ''
 
   /**
    * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the text has heading font family
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly heading: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly hovered: boolean = false
 
   /**
    * If `true` the text is shown as a display inline
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly inline: boolean = false
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
@@ -116,52 +108,43 @@ export class Text implements DsComponentInterface, ElementStateInfo {
    * as these elements require a width to overflow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly pressed: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
    * Defines the size of the paragraph
    */
   @Prop({ mutable: true })
-  @ValidateOneOf(...TEXT_SIZES)
+  @OneOf(TEXT_SIZES)
   size?: TextSize
 
   /**
    * Defines at which position the heading has spacing.
    */
   @Prop()
-  @ValidateOneOf(...TEXT_SPACES)
+  @OneOf(TEXT_SPACES)
   readonly space: TextSpace = ''
 
   /**
    * If `true` the text has subtitle font family
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly subtitle: boolean = false
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    setupValidation(this)
-  }
 
   /**
    * PRIVATE METHODS
@@ -209,22 +192,22 @@ export class Text implements DsComponentInterface, ElementStateInfo {
     return (
       <Host
         class={{
-          [`is-${color}`]: !!color,
+          [`is-${color}`]: hasValue(color),
           'is-bold': this.bold,
           'has-shadow': this.shadow,
           'is-inline': this.inline,
           'is-heading': this.heading,
           'is-subtitle': this.subtitle,
           'has-no-wrap': this.noWrap,
-          [`has-space-${this.space}`]: !!this.space,
-          [`is-${this.size}`]: !!this.size,
+          [`has-space-${this.space}`]: hasValue(this.space),
+          [`is-${this.size}`]: hasValue(this.size),
         }}
       >
         <Text
           id="text"
           part="text"
           class={{
-            [`is-${this.align}`]: !!this.align,
+            [`is-${this.align}`]: hasValue(this.align),
           }}
         >
           <slot></slot>

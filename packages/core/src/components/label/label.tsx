@@ -1,14 +1,13 @@
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   ElementStateInfo,
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
+  OneOf,
+  Type,
+  hasValue,
 } from '@utils'
 import {
   DsConfigObserver,
@@ -20,7 +19,7 @@ import {
   DsComponentInterface,
 } from '@global'
 import { I18nDsLabel } from './label.i18n'
-import { LABEL_SIZES, LABEL_WEIGHTS, type LabelSize, type LabelWeight } from './label.interfaces'
+import { LABEL_SIZES, type LabelSize } from './label.interfaces'
 
 /**
  * Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.
@@ -55,7 +54,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -64,28 +63,28 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * So, any given label element can be associated with only one form control.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly htmlFor: string = ''
 
   /**
    * Define the id of the native label element
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly htmlId: string = `ds-lbl-${labelIds++}`
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly hovered: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -94,14 +93,14 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * as these elements require a width to overflow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * @internal
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly pressed: boolean = false
 
   /**
@@ -109,37 +108,28 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
    * `false` an optional label is added to the label..
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly required: boolean = true
 
   /**
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop({ mutable: true })
-  @ValidateOneOf(...LABEL_SIZES)
-  size?: LabelSize
-  @Watch('size')
-  sizeChanged(newValue: LabelSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(LABEL_SIZES)
+  readonly size?: LabelSize
 
   /**
    * If `true` the component gets a valid green style.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly valid: boolean = false
 
   /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
-
-  connectedCallback(): void {
-    setupValidation(this)
-    this.size = normalizeDeprecatedTShirtSize(this.size)
-  }
 
   /**
    * PUBLIC LISTENERS
@@ -166,6 +156,8 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
     const id = this.htmlId
     const htmlFor = this.htmlFor
 
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+
     return (
       <Host
         class={{
@@ -175,7 +167,7 @@ export class Label implements DsComponentInterface, DsConfigObserver, ElementSta
           'is-valid': this.valid,
           'is-invalid': this.invalid,
           'has-no-wrap': this.noWrap,
-          [`is-${this.size}`]: !!this.size,
+          [`is-${size}`]: hasValue(this.size),
         }}
       >
         <label id={id} part="label" htmlFor={htmlFor}>

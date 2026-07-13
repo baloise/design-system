@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as DrawerStories from './drawer.stories'
+import { DRAWER_DOC_CONFIG, getDrawerTabs } from './drawer.doc-config'
+
+<Meta title="Components/Drawer/Variants/Overview" />
+
+<StoryHeading of={DrawerStories.Drawer} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={DRAWER_DOC_CONFIG.section} color={DRAWER_DOC_CONFIG.color} />
+
+<BannerTabs of={DrawerStories} tabs={getDrawerTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.Drawer}></StoryHeading>
+
+The basic drawer with default settings. Can be dismissed via Escape key, backdrop click, or the close button.
+
+<CanvasWithCodePen of={DrawerStories.Drawer} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.RichContent}></StoryHeading>
+
+A drawer containing form controls and complex content. Useful for filtering, settings, or multi-step workflows.
+
+<CanvasWithCodePen of={DrawerStories.RichContent} overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DrawerStories.Container}></StoryHeading>
+
+Control the inner container width with the `container` prop: `'default'`, `'fluid'`, or `'compact'`. Matches `ds-container` sizing variants.
+
+<CanvasWithCodePen of={DrawerStories.Container} overflowVisible={true} />
+
+<Footer />

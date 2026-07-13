@@ -1,16 +1,5 @@
-import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State, Watch } from '@stencil/core'
-import {
-  stopEventBubbling,
-  raf,
-  sanitizeSvg,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  ValidateRequiredAndType,
-  setupValidation,
-} from '@utils'
+import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State } from '@stencil/core'
+import { stopEventBubbling, raf, sanitizeSvg, Logger, type LogInstance, hasValue, OneOf, Required, Type } from '@utils'
 import { AlertComponent } from '../alert-container.interfaces'
 import { DsComponentInterface, DsConfigObserver, DsConfigState, ListenToConfig } from '@global'
 import {
@@ -51,86 +40,77 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
   @State() didLoad = false
   @State() didPause = false
 
-  @State() svgContent?: string
-  @State() iconName?: string
-
   /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
   @Prop()
-  @ValidateOneOf(...TOAST_COLORS)
+  @OneOf(TOAST_COLORS)
   readonly color: ToastColor = 'base'
 
   /**
    * If `true` the notification can be closed by the user.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly closable: boolean = false
 
   /**
    * Defines the heading of the notification.
    */
   @Prop()
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly heading!: string
 
   /**
    * Defines the message of the notification as html content
    */
   @Prop()
-  @ValidateRequiredAndType('string')
+  @Required()
+  @Type('string')
   readonly message!: string
 
   /**
    * Defines the icon of the notification.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly icon: string = ''
-  @Watch('icon')
-  iconChanged() {
-    this.generateIconName()
-  }
 
   /**
    * Defines the svg content of the icon
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly svg: string = ''
-  @Watch('svg')
-  svgChanged() {
-    this.generateSvgContent()
-  }
 
   /**
    * Defines the icon of the notification, if not provided it will be derived from the color property
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly action: string = ''
 
   /**
    * Defines the icon of the action button.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly actionIcon: string = ''
 
   /**
    * Specifies where to open the linked document.
    */
   @Prop()
-  @ValidateOneOf(...TOAST_TARGETS)
+  @OneOf(TOAST_TARGETS)
   readonly actionTarget: ButtonTarget = '_blank'
 
   /**
    * Specifies the URL of the page the link goes to
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly actionHref: string = ''
 
   /**
@@ -197,12 +177,6 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * ------------------------------------------------------
    */
 
-  connectedCallback(): void {
-    setupValidation(this)
-    this.generateIconName()
-    this.generateSvgContent()
-  }
-
   componentDidLoad(): void {
     raf(() => {
       this.didLoad = true
@@ -239,30 +213,27 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    */
 
   private generateSvgContent = () => {
-    if (this.svg !== undefined && this.svg.length > 0) {
-      this.svgContent = sanitizeSvg(this.svg)
+    if (hasValue(this.svg)) {
+      return sanitizeSvg(this.svg)
     }
+    return undefined
   }
 
   private generateIconName = () => {
-    if (this.icon !== undefined && this.icon.length > 0) {
-      this.iconName = this.icon
+    if (hasValue(this.icon)) {
+      return this.icon
     } else {
       switch (this.color) {
         case 'info':
-          this.iconName = 'information'
-          break
+          return 'information'
         case 'success':
-          this.iconName = 'check'
-          break
+          return 'check'
         case 'warning':
-          this.iconName = 'alert'
-          break
+          return 'alert'
         case 'danger':
-          this.iconName = 'alert'
-          break
+          return 'alert'
         default:
-          this.iconName = 'bell'
+          return 'bell'
       }
     }
   }
@@ -273,6 +244,9 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    */
 
   render() {
+    const iconName = this.generateIconName()
+    const svgContent = this.generateSvgContent()
+
     const hasDuration = this.duration !== undefined && this.duration !== 'infinite' && this.duration > 0
     const hasProgressBar = this.visible && this.didLoad && hasDuration
 
@@ -293,7 +267,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
           [`is-visible`]: this.visible,
           [`has-progress-bar`]: hasProgressBar && this.animated,
           [`is-closable`]: this.closable,
-          [`is-action`]: this.action !== undefined,
+          [`is-action`]: hasValue(this.action),
           [`is-${this.color}`]: this.color !== undefined,
         }}
         style={durationVariable}
@@ -309,12 +283,12 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
         {/* --------------------------------------*/}
         {/* Icon                                  */}
         {/* --------------------------------------*/}
-        {!this.svgContent && (
+        {!hasValue(svgContent) && (
           <ds-icon
             id="icon"
             part="icon"
             name={
-              this.iconName || this.color === 'warning'
+              iconName || this.color === 'warning'
                 ? 'alert'
                 : this.color === 'danger'
                   ? 'alert'
@@ -335,7 +309,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
             }
           ></ds-icon>
         )}
-        {this.svgContent && <ds-icon id="icon" part="icon" svg={this.svgContent}></ds-icon>}
+        {hasValue(svgContent) && <ds-icon id="icon" part="icon" svg={svgContent}></ds-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}
@@ -349,7 +323,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
         {/* --------------------------------------*/}
         {/* Action Button                         */}
         {/* --------------------------------------*/}
-        {this.action && (
+        {hasValue(this.action) && (
           <ds-button
             id="action"
             color="primary"

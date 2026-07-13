@@ -7,11 +7,12 @@ export const ACCORDION_DOC_CONFIG = {
   section: 'Components / Accordion',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-accordion--overview' },
+    { label: 'Overview', storyId: 'components-accordion--accordion' },
     { label: 'Usage', storyId: 'components-accordion--usage' },
     { label: 'Variants', storyId: 'components-accordion--variants-overview' },
     { label: 'Styling', storyId: 'components-accordion--styling' },
     { label: 'Accessibility', storyId: 'components-accordion--accessibility' },
+    { label: 'Testing', storyId: 'components-accordion--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const ACCORDION_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

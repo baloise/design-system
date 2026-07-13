@@ -1,4 +1,5 @@
 import { DsLogger } from '@utils'
+import { FooterLink, FooterSocialLink } from '../../components/footer/footer.interfaces'
 
 export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'
 
@@ -28,6 +29,19 @@ export interface DsConfig {
   logger?: DsLogger
   animated?: boolean
   httpFormSubmit?: boolean
+  legalLinks?: {
+    [key in DsRegion]?: {
+      [key in DsLanguage]?: FooterLink[]
+    }
+  }
+  legalText?: {
+    [key in DsRegion]?: {
+      [key in DsLanguage]?: string
+    }
+  }
+  socialLinks?: {
+    [key in DsRegion]?: FooterSocialLink[]
+  }
   _generateHydrateForCustomElementsOutput?: boolean
   _jmp?: (c: any) => any
   _raf?: (c: any) => number
@@ -46,6 +60,19 @@ export interface DsConfigState {
   logger: DsLogger
   animated: boolean
   httpFormSubmit: boolean
+  legalLinks: {
+    [key in DsRegion]?: {
+      [key in DsLanguage]?: FooterLink[]
+    }
+  }
+  legalText: {
+    [key in DsRegion]?: {
+      [key in DsLanguage]?: string
+    }
+  }
+  socialLinks: {
+    [key in DsRegion]?: FooterSocialLink[]
+  }
   _generateHydrateForCustomElementsOutput: boolean
 }
 

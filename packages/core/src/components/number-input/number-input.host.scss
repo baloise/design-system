@@ -1,6 +1,6 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
-@use '../../vars' as vars;
 @use '../input/input.mixin' as input;
+@use '../form/form.mixin' as form;
 
 /**
  * Variables
@@ -14,33 +14,35 @@
  * @prop --input-weight: Font weight of the input text.
  * @prop --input-size: Font size of the input text.
  * @prop --input-line-height: Line height of the input text.
- * @prop --input-container-background: Background color of the input container.
- * @prop --input-container-border-color: Border color of the input container.
- * @prop --input-container-border-width: Border width of the input container.
- * @prop --input-container-radius: Border radius of the input container.
- * @prop --input-container-hover-background: Container background color on hover.
- * @prop --input-container-active-background: Container background color when active.
- * @prop --input-container-focus-background: Container background color when focused.
- * @prop --input-container-hover-border: Container border color on hover.
- * @prop --input-container-active-border: Container border color when active.
- * @prop --input-container-focus-border: Container border color when focused.
- * @prop --input-label-color: Text color of the label.
- * @prop --input-label-family: Font family of the label.
- * @prop --input-label-weight: Font weight of the label.
- * @prop --input-label-size: Font size of the label.
- * @prop --input-label-line-height: Line height of the label.
- * @prop --input-description-color: Text color of the description.
- * @prop --input-description-family: Font family of the description.
- * @prop --input-description-weight: Font weight of the description.
- * @prop --input-description-size: Font size of the description.
- * @prop --input-description-line-height: Line height of the description.
+ * @prop --form-container-background: Background color of the input container.
+ * @prop --form-container-border-color: Border color of the input container.
+ * @prop --form-container-border-width: Border width of the input container.
+ * @prop --form-container-radius: Border radius of the input container.
+ * @prop --form-container-hover-background: Container background color on hover.
+ * @prop --form-container-active-background: Container background color when active.
+ * @prop --form-container-focus-background: Container background color when focused.
+ * @prop --form-container-hover-border: Container border color on hover.
+ * @prop --form-container-active-border: Container border color when active.
+ * @prop --form-container-focus-border: Container border color when focused.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
  */
 
 :host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
   @include input.vars('input');
-  @include input.vars-container('input');
-  @include input.vars-label('input');
-  @include input.vars-description('input');
 }
 
 /**
@@ -49,14 +51,16 @@
  */
 
 :host {
-  position: relative;
-  display: grid;
-  gap: 0.25rem;
+  @include form.field();
+  @include form.container();
+  @include form.label();
+  @include form.description();
 
-  @include input.style('input', '#input');
-  @include input.container('input');
-  @include input.label('input');
-  @include input.description('input');
+  @include input.style('input');
+
+  #inner {
+    @include form.field();
+  }
 }
 
 /**
@@ -68,30 +72,30 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-input-container-border-color: var(--ds-input-container-color-danger-border);
-  --mod-input-description-color: var(--ds-input-description-color-danger);
-  --mod-input-container-hover-border: var(--ds-input-container-color-danger-border);
-  --mod-input-container-active-border: var(--ds-input-container-color-danger-border);
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
 }
 
 //
 // Valid or Color Success
 // --------------------------------
 :host(.is-success) {
-  --mod-input-container-border-color: var(--ds-input-container-color-success-border);
-  --mod-input-description-color: var(--ds-input-description-color-success);
-  --mod-input-container-hover-border: var(--ds-input-container-color-success-border);
-  --mod-input-container-active-border: var(--ds-input-container-color-success-border);
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
 }
 
 //
 // Color Warning
 // --------------------------------
 :host(.is-warning) {
-  --mod-input-container-border-color: var(--ds-input-container-color-warning-border);
-  --mod-input-description-color: var(--ds-input-description-color-warning);
-  --mod-input-container-hover-border: var(--ds-input-container-color-warning-border);
-  --mod-input-container-active-border: var(--ds-input-container-color-warning-border);
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
 }
 
 //
@@ -106,11 +110,11 @@
     cursor: default;
   }
 
-  --mod-input-container-background: var(--ds-input-container-color-disabled-background);
-  --mod-input-container-border-color: var(--ds-input-container-color-disabled-border);
-  --mod-input-label-color: var(--ds-input-label-color-disabled);
-  --mod-input-description-color: var(--ds-input-description-color-disabled);
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
 
-  --mod-input-color: var(--ds-input-control-color-value-disabled);
-  --mod-input-placeholder: var(--ds-input-control-color-placeholder-disabled);
+  --mod-input-color: var(--ds-form-control-color-value-disabled);
+  --mod-input-placeholder: var(--ds-form-control-color-placeholder-disabled);
 }

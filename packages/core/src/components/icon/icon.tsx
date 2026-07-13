@@ -1,16 +1,16 @@
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
 import {
   sanitizeSvg,
+  fetchSvg,
   normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
+  hasValue,
+  OneOf,
+  Type,
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
@@ -45,6 +45,8 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
 
   @Element() el!: HTMLStencilElement
 
+  private _fetchedSrc = ''
+
   @State() icons: DsIcons = defaultConfig.icons
   @State() svgContent = ''
 
@@ -57,95 +59,98 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    * Name of the baloise icon.
    */
   @Prop({ reflect: true })
-  @ValidateType('string')
+  @Type('string')
   readonly name: string = ''
 
   /**
    * Svg content.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly svg: string = ''
+
+  /**
+   * URL of an SVG file to fetch and display.
+   */
+  @Prop()
+  @Type('string')
+  readonly src: string = ''
 
   /**
    * Defines the size of the icon.
    */
-  @Prop({ reflect: true, mutable: true })
-  @ValidateOneOf(...ICON_SIZES)
-  size: IconSize
-  @Watch('size')
-  sizeChanged(newValue: IconSize) {
-    this.size = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop({ reflect: true })
+  @OneOf(ICON_SIZES)
+  readonly size: IconSize
 
   /**
    * The theme type of the button.
    */
   @Prop()
-  @ValidateOneOf(...ICON_COLORS)
+  @OneOf(ICON_COLORS)
   readonly color?: IconColor
 
   /**
    * If `true` the icon is displayed in a circle with a background color.
    */
   @Prop()
-  @ValidateOneOf(...ICON_SHAPES)
+  @OneOf(ICON_SHAPES)
   readonly shape: IconShape = ''
 
   /**
    * If `true` the icon acts as a tile with a background color.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the icon acts as a tile with a background color. Default is purple
    */
   @Prop()
-  @ValidateOneOf(...ICON_TILE_COLORS)
+  @OneOf(ICON_TILE_COLORS)
   readonly tileColor: IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly inline: boolean = false
 
   /**
    * If `true` the icon is inverted
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the icon is rotated 180deg
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly turn: boolean = false
 
   /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
    * If `true` the component gets a invalid red style.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly invalid: boolean = false
 
   /**
@@ -154,13 +159,13 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    */
 
   connectedCallback() {
-    setupValidation(this)
+    // generateSvgContent is async; for src-based icons the first render shows nothing
+    // while the fetch is in flight. The @State update triggers a follow-up render.
     this.generateSvgContent(this.name)
-    this.size = normalizeDeprecatedTShirtSize(this.size) || ''
   }
 
-  componentWillRender(): Promise<void> | void {
-    this.generateSvgContent(this.name)
+  async componentWillRender(): Promise<void> {
+    await this.generateSvgContent(this.name)
   }
 
   /**
@@ -175,7 +180,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
   @ListenToConfig()
   async configChanged(state: DsConfigState): Promise<void> {
     this.icons = state.icons
-    this.generateSvgContent(this.name)
+    await this.generateSvgContent(this.name)
   }
 
   /**
@@ -183,13 +188,15 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    * ------------------------------------------------------
    */
 
-  private generateSvgContent = (iconName: string | undefined) => {
+  private generateSvgContent = async (iconName: string | undefined) => {
     const hasIcons = Object.keys(this.icons).length > 0
 
     if (hasIcons && iconName && iconName.length > 0) {
       const icon: string | undefined = this.icons[`Icon${upperFirst(camelCase(iconName))}`]
       if (icon) {
-        this.svgContent = icon
+        if (icon !== this.svgContent) {
+          this.svgContent = icon
+        }
         return
       } else {
         console.error(
@@ -200,21 +207,30 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
       }
     }
 
+    if (this.src && this.src !== this._fetchedSrc) {
+      this._fetchedSrc = this.src
+      this.svgContent = await fetchSvg(this.src)
+      return
+    }
+
     if (this.svg) {
-      this.svgContent = sanitizeSvg(this.svg)
+      const sanitized = sanitizeSvg(this.svg)
+      if (sanitized !== this.svgContent) {
+        this.svgContent = sanitized
+      }
     }
   }
 
   private parseColor() {
-    if (!!this.disabled) {
+    if (this.disabled) {
       return 'grey'
     }
 
-    if (!!this.invalid) {
+    if (this.invalid) {
       return 'danger'
     }
 
-    if ((this.color === 'auto' || this.color === '' || this.color === undefined || this.color === null) && !this.svg) {
+    if (!hasValue(this.color) && !this.svg && !this.src) {
       return 'primary'
     }
 
@@ -228,14 +244,15 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
 
   render() {
     const color = this.parseColor()
+    const size = normalizeDeprecatedTShirtSize(this.size) || ''
 
     return (
       <Host
         aria-hidden="true"
         class={{
-          'is-filled': !this.svg,
-          [`is-${color}`]: !!color,
-          [`is-${this.size}`]: this.size !== undefined,
+          'is-filled': !this.svg && !this.src,
+          [`is-${color}`]: hasValue(color),
+          [`is-${size}`]: hasValue(this.size),
           [`turn-${this.name}`]: this.turn,
           'is-inverted': this.inverted,
           'is-inline': this.inline,
@@ -244,7 +261,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
           'has-shadow': this.shadow,
           'is-disabled': this.disabled,
           'is-invalid': this.invalid,
-          [`has-shape-${this.shape}`]: !!this.shape,
+          [`has-shape-${this.shape}`]: hasValue(this.shape),
         }}
       >
         <div id="inner" part="inner" innerHTML={this.svgContent}></div>

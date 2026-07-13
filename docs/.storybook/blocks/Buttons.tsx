@@ -1,7 +1,7 @@
 import React from 'react'
 import { navigate } from '@storybook/addon-links'
 
-export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle }) => {
+export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle, wide }) => {
   let linkObj = {}
   if (link) {
     linkObj = { ...linkObj, href: link, target: target || '_blank' }
@@ -16,12 +16,34 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
     }
   }
 
+  const Tag = link ? 'a' : 'button'
+  if (wide) {
+    return (
+      <Tag
+        {...linkObj}
+        style={{ flex: 1 }}
+        className={`sb-unstyled button mb-none flex flex-1 w-full flex-direction-row gap-lg ${
+          color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-secondary'
+        } p-normal text-large`}
+      >
+        <span className="w-fit flex justify-content-center text-xx-large text-align-center">
+          {icon}
+          {children}
+        </span>
+        <div className="flex-1 w-full flex flex-direction-column">
+          <span className="block title text-medium text-align-left mb-none">{label}</span>
+          <span className="block text text-small text-align-left">{description}</span>
+        </div>
+      </Tag>
+    )
+  }
+
   return (
-    <button
+    <Tag
       {...linkObj}
       style={{ flex: 1 }}
       className={`sb-unstyled button mb-none flex flex-1 flex-direction-column ${
-        color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-tertiary'
+        color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-secondary'
       } p-normal text-large`}
     >
       <span className="flex justify-content-center text-xx-large text-align-center">
@@ -30,7 +52,7 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
       </span>
       <span className="block title text-medium text-align-center mb-none">{label}</span>
       <span className="block text text-small text-align-center">{description}</span>
-    </button>
+    </Tag>
   )
 }
 
@@ -38,14 +60,9 @@ export const LinkCards = ({ children }) => {
   return <div className="sb-unstyled doc-link-cards">{children}</div>
 }
 
-export const LinkCard = ({ children, color, icon, label, description, pageTitle }) => {
-  return (
-    <button
-      onClick={() => {
-        navigate({ title: pageTitle })
-      }}
-      className={`sb-unstyled button is-secondary flex py-base`}
-    >
+export const LinkCard = ({ _children, _color, _icon, label, description, pageTitle, link }: Record<string, any>) => {
+  const content = (
+    <>
       <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
         <span className="block title text-normal mb-none">{label || pageTitle}</span>
         <span className="block text text-align-left is-small">{description}</span>
@@ -53,6 +70,25 @@ export const LinkCard = ({ children, color, icon, label, description, pageTitle 
       <span className="flex justify-content-center align-items-center text-xx-large text-align-center">
         <ds-icon name="nav-go-right"></ds-icon>
       </span>
+    </>
+  )
+
+  if (link) {
+    return (
+      <a href={link} target="_blank" className={`sb-unstyled button is-secondary flex py-base`}>
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <button
+      onClick={() => {
+        navigate({ title: pageTitle })
+      }}
+      className={`sb-unstyled button is-secondary flex py-base`}
+    >
+      {content}
     </button>
   )
 }
@@ -90,7 +126,7 @@ export const GridComponents = ({ children }) => {
 
 export const GridComponent = ({
   children,
-  color,
+  _color,
   center,
   pageTitle,
   label,
@@ -156,7 +192,7 @@ export const GridCards = ({ children }) => {
   )
 }
 
-export const GridCard = ({ children, color, pageTitle, svg, label, description }) => {
+export const GridCard = ({ _children, color, pageTitle, svg, label, description }) => {
   return (
     <div className="col is-6">
       <div className="h-full">

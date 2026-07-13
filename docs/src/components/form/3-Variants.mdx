@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as FormStories from './form.stories'
+import { FORM_DOC_CONFIG, getFormTabs } from './form.doc-config'
+
+<Meta title="Components/Form/Variants/Overview" />
+
+<StoryHeading of={FormStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={FORM_DOC_CONFIG.section} color={FORM_DOC_CONFIG.color} />
+
+<BannerTabs of={FormStories} tabs={getFormTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.Basic}></StoryHeading>
+
+A complete form with a variety of field types including text inputs, radio buttons, and help text. Shows the standard layout with full-width fields that can be combined with responsive column classes.
+
+<CanvasWithCodePen of={FormStories.Basic} sourceState="closed"/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.Disabled}></StoryHeading>
+
+Form fields in a disabled state. The `is-disabled` class applied to field containers and input elements creates visual feedback that fields are unavailable while maintaining proper styling and accessibility attributes.
+
+<CanvasWithCodePen of={FormStories.Disabled} sourceState="closed"/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.Invalid}></StoryHeading>
+
+Form fields with validation errors. The `is-invalid` class highlights fields with issues, and error messages are associated via `aria-describedby` for accessibility.
+
+<CanvasWithCodePen of={FormStories.Invalid} sourceState="closed"/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.NumericSizes}></StoryHeading>
+
+Demonstrates numeric grid column sizing: full width (12), half (6), third (4), and quarter (3) columns. Use responsive breakpoint prefixes like `tablet:is-6` to apply different sizes at different screen widths.
+
+<CanvasWithCodePen of={FormStories.NumericSizes} sourceState="closed"/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.NumericMixed}></StoryHeading>
+
+Shows mixed numeric column widths in practical use: a postal code field (3 columns), a city field (9 columns), and a street address split across multiple columns (6-3-3). This creates compact, efficient layouts.
+
+<CanvasWithCodePen of={FormStories.NumericMixed} sourceState="closed"/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.SemanticSizes}></StoryHeading>
+
+Uses semantic sizing classes (`is-full`, `is-half`, `is-one-third`, `is-one-quarter`) instead of numeric values. These are often easier to read and maintain than numeric column counts.
+
+<CanvasWithCodePen of={FormStories.SemanticSizes} sourceState="closed"/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormStories.ResponsiveThirds}></StoryHeading>
+
+Demonstrates multi-breakpoint responsive layouts where columns change width at different screen sizes (e.g., `tablet:is-6 desktop:is-4`). This enables adaptive layouts that look good on all devices.
+
+<CanvasWithCodePen of={FormStories.ResponsiveThirds} sourceState="closed"/>
+
+<Footer />

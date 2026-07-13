@@ -19,29 +19,44 @@ jobs:
       HUSKY: 0
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
       - uses: ./.github/workflows/actions/setup-environment
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Check format
-        run: npm run format:check
+        run: pnpm format:check
 
       - name: Check spelling
-        run: npm run spell
+        run: pnpm spell
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
+
+      - name: Audit dependencies
+        run: pnpm audit --audit-level high
 
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       - name: Test
-        run: npm run test
+        run: pnpm test
+
+      - name: Generate SBOM
+        if: github.event_name == 'push'
+        run: pnpm sbom --sbom-format cyclonedx --out sbom.cdx.json
+
+      - name: Upload SBOM artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v7
+        with:
+          name: sbom
+          path: sbom.cdx.json
+          retention-days: 30
 
       - uses: ./.github/workflows/actions/upload-distribution-archives
 
@@ -94,7 +109,7 @@ jobs:
         shardTotal: [6] # total 6 shards
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 2
@@ -105,14 +120,14 @@ jobs:
           action: ${{ needs.assembleInformation.outputs.action }}
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build Core
-        run: npx turbo run build --filter=@baloise/ds-core
+        run: pnpm exec turbo run build --filter=@baloise/ds-core
 
       - name: Run Playwright tests
         working-directory: packages/core
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: pnpm exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       # - name: Commit snapshots
       #   if: always()
@@ -125,7 +140,7 @@ jobs:
 
       - name: Upload Playwright HTML report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-shard-${{ matrix.shardIndex }}
           path: packages/core/playwright-report

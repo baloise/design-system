@@ -1,5 +1,5 @@
 @use './segment.mixin.scss' as segment;
-@use '../../input/input.mixin' as input;
+@use '../../form/form.mixin' as form;
 
 /**
  * Variables
@@ -30,8 +30,8 @@
 @include segment.vars(':host');
 
 :host {
-  @include input.vars-label('segment');
-  @include input.vars-description('segment');
+  @include form.vars-label();
+  @include form.vars-description();
 }
 
 /**
@@ -47,8 +47,8 @@
     position: relative;
   }
 
-  @include input.label('segment', 'legend');
-  @include input.description('segment');
+  @include form.label('legend');
+  @include form.description();
 }
 
 /**

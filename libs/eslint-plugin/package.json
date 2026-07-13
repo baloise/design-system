@@ -1,25 +1,26 @@
 {
-  "name": "@baloise/ds-eslint-plugin",
-  "version": "20.0.0-next.2",
+  "name": "libs-eslint-plugin",
+  "version": "0.0.0",
   "private": true,
   "type": "commonjs",
-  "main": "./dist/src/index.js",
+  "main": "./src/index.ts",
   "files": [
-    "dist/"
+    "src/"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.lib.json",
     "test": "vitest --run",
     "lint": "eslint ."
   },
   "exports": {
-    ".": {
-      "require": "./dist/src/index.js",
-      "default": "./src/index.ts"
-    }
+    ".": "./src/index.ts"
   },
-  "typings": "./dist/src/index.d.ts",
+  "typings": "./src/index.ts",
   "dependencies": {
-    "@typescript-eslint/utils": "8.59.2"
+    "@typescript-eslint/utils": "catalog:"
+  },
+  "devDependencies": {
+    "eslint": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

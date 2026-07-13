@@ -31,6 +31,7 @@ export const ICON_SIZES = [
   'lg',
   'xl',
   '2xl',
+  '3xl',
   '',
   'xsmall',
   'x-small',

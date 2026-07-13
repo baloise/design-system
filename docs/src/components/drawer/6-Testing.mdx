@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DrawerStories from './drawer.stories'
+import { DRAWER_DOC_CONFIG, getDrawerTabs } from './drawer.doc-config'
+
+<Meta title="Components/Drawer/Testing" />
+
+<Banner label={'Testing'} section={DRAWER_DOC_CONFIG.section} color={DRAWER_DOC_CONFIG.color} />
+
+<BannerTabs of={DrawerStories} tabs={getDrawerTabs('testing')} />
+
+<ComponentPageObject component="drawer" />
+
+<Footer />

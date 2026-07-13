@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CarouselStories from './carousel.stories'
+import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
+
+<Meta title="Components/Carousel/Testing" />
+
+<Banner label={'Testing'} section={CAROUSEL_DOC_CONFIG.section} color={CAROUSEL_DOC_CONFIG.color} />
+
+<BannerTabs of={CarouselStories} tabs={getCarouselTabs('testing')} />
+
+<ComponentPageObject component="carousel" />
+
+<Footer />

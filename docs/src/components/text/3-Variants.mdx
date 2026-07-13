@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -24,7 +25,7 @@ import { TEXT_DOC_CONFIG, getTextTabs } from './text.doc-config'
 
 Demonstrates the bold text variant for emphasizing important information.
 
-<Canvas of={TextStories.BoldText} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.BoldText} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,7 +33,7 @@ Demonstrates the bold text variant for emphasizing important information.
 
 Demonstrates the disabled text variant for indicating non-interactive or unavailable content.
 
-<Canvas of={TextStories.DisabledText} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.DisabledText} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -40,7 +41,7 @@ Demonstrates the disabled text variant for indicating non-interactive or unavail
 
 Demonstrates the nested text variant for indicating hierarchical or grouped content.
 
-<Canvas of={TextStories.NestedText} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.NestedText} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -49,7 +50,7 @@ Demonstrates the nested text variant for indicating hierarchical or grouped cont
 
 Different size variants to represent different levels of emphasis and hierarchy.
 
-<Canvas of={TextStories.Sizes} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.Sizes} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -57,7 +58,7 @@ Different size variants to represent different levels of emphasis and hierarchy.
 
 Different color variants to represent different semantic meanings and emphasis levels.
 
-<Canvas of={TextStories.Colors} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.Colors} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -65,7 +66,7 @@ Different color variants to represent different semantic meanings and emphasis l
 
 Text with different spacing variants to demonstrate various layout and design options.
 
-<Canvas of={TextStories.Spacing} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.Spacing} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -74,7 +75,7 @@ Text with different spacing variants to demonstrate various layout and design op
 
 Text with different font family variants to demonstrate various typographic styles.
 
-<Canvas of={TextStories.FontFamily} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.FontFamily} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -83,7 +84,7 @@ Text with different font family variants to demonstrate various typographic styl
 
 Use `no-wrap` variant to prevent text from wrapping and ensure it stays on a single line.
 
-<Canvas of={TextStories.NoWrap} sourceState="shown" />
+<CanvasWithCodePen of={TextStories.NoWrap} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 

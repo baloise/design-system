@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as NavbarStories from './navbar.stories'
+import { NAVBAR_DOC_CONFIG, getNavbarTabs } from './navbar.doc-config'
+
+<Meta title="Components/Navbar/Variants/Overview" />
+
+<StoryHeading of={NavbarStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={NAVBAR_DOC_CONFIG.section} color={NAVBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={NavbarStories} tabs={getNavbarTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NavbarStories.Basic}></StoryHeading>
+
+Basic navbar with logo, title, navigation links, and action buttons. Automatically adapts to mobile with a sidebar drawer.
+
+Mobile-optimized navbar with simplified branding and navigation. Resize your viewport to see the hamburger menu and sidebar drawer behavior.
+
+<CanvasWithCodePen of={NavbarStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NavbarStories.BrandLogo}></StoryHeading>
+
+Navbar with custom SVG logo in the brand slot. Shows how to structure custom branding elements while maintaining proper layout.
+
+<CanvasWithCodePen of={NavbarStories.BrandLogo} sourceState="shown" />
+
+<Footer />

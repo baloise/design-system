@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SegmentStories from './segment.stories'
+import { SEGMENT_DOC_CONFIG, getSegmentTabs } from './segment.doc-config'
+
+<Meta title="Components/Forms/Segment/Testing" />
+
+<Banner label={'Testing'} section={SEGMENT_DOC_CONFIG.section} color={SEGMENT_DOC_CONFIG.color} />
+
+<BannerTabs of={SegmentStories} tabs={getSegmentTabs('testing')} />
+
+<ComponentPageObject component="segment" />
+
+<Footer />

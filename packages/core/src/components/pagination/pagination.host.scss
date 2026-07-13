@@ -141,6 +141,17 @@
 // Dots Variant
 // --------------------------------
 
+:host(.is-variant-dots) {
+  --_pagination-dots-background: var(--ds-alias-background-color-grey);
+}
+
+:host(.is-variant-dots) #previous.is-disabled,
+:host(.is-variant-dots) #next.is-disabled {
+  background: transparent;
+  border-color: transparent;
+  opacity: 0.35;
+}
+
 :host(.is-variant-dots) .dots {
   order: 2;
   max-width: 88px;

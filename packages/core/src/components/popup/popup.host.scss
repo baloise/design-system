@@ -1,0 +1,131 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * @prop --popup-background: Background color of the popup panel.
+ * @prop --popup-radius: Border radius of the popup panel.
+ * @prop --popup-shadow: Box shadow of the popup panel.
+ * @prop --popup-padding: Padding inside the popup panel.
+ * @prop --popup-min-width: Minimum width of the popup panel.
+ * @prop --popup-max-width: Maximum width of the popup panel.
+ * @prop --popup-z-index: Z-index stacking level of the popup layer.
+ * @prop --popup-backdrop-opacity: Opacity of the optional full-screen backdrop.
+ * @prop --popup-arrow-size: Size (width and height) of the arrow indicator.
+ */
+
+// ─── Variables ────────────────────────────────────────────────────────────────
+
+:host {
+  @include vars.local(popup-background, var(--ds-popup-background));
+  @include vars.local(popup-radius, var(--ds-popup-radius));
+  @include vars.local(popup-shadow, var(--ds-popup-shadow));
+  @include vars.local(popup-padding, var(--ds-popup-padding));
+  @include vars.local(popup-min-width, var(--ds-popup-min-width));
+  @include vars.local(popup-max-width, none);
+  @include vars.local(popup-z-index, var(--ds-popup-z-index));
+  @include vars.local(popup-backdrop-opacity, var(--ds-backdrop-opacity));
+  @include vars.local(popup-arrow-size, var(--ds-popup-arrow-size, 8px));
+
+  display: contents;
+}
+
+// ─── Backdrop ────────────────────────────────────────────────────────────────
+
+[part='backdrop'] {
+  @include backdrop();
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--_popup-z-index) - 1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+:host(.is-open) [part='backdrop'] {
+  opacity: var(--_popup-backdrop-opacity);
+  pointer-events: auto;
+}
+
+:host(.is-animated) [part='backdrop'] {
+  transition: opacity 200ms ease;
+}
+
+// ─── Panel ────────────────────────────────────────────────────────────────────
+
+[part='panel'] {
+  position: fixed;
+  z-index: var(--_popup-z-index);
+  background: var(--_popup-background);
+  border-radius: var(--_popup-radius);
+  box-shadow: var(--_popup-shadow);
+  padding: var(--_popup-padding);
+  min-width: var(--_popup-min-width);
+  max-width: var(--_popup-max-width);
+
+  // Hidden by default; made visible via is-open class.
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  outline: none !important;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+:host(.is-open) [part='panel'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+:host(.is-animated) [part='panel'] {
+  transition:
+    opacity 200ms ease,
+    visibility 200ms ease;
+}
+
+// ─── Close button ────────────────────────────────────────────────────────────
+
+[part='close'] {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+:host(.is-closable) [part='panel'] {
+  padding-right: calc(var(--_popup-padding) + var(--_popup-padding));
+}
+
+// ─── Arrow ────────────────────────────────────────────────────────────────────
+
+[part='arrow'] {
+  position: absolute;
+  width: var(--_popup-arrow-size);
+  height: var(--_popup-arrow-size);
+  background: var(--_popup-background);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+[part='panel'][data-placement='bottom'] [part='arrow'] {
+  top: calc(var(--_popup-arrow-size) / -2);
+}
+[part='panel'][data-placement='top'] [part='arrow'] {
+  bottom: calc(var(--_popup-arrow-size) / -2);
+}
+[part='panel'][data-placement='right'] [part='arrow'] {
+  left: calc(var(--_popup-arrow-size) / -2);
+}
+[part='panel'][data-placement='left'] [part='arrow'] {
+  right: calc(var(--_popup-arrow-size) / -2);
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.is-animated) [part='panel'],
+  :host(.is-animated) [part='backdrop'] {
+    transition: none !important;
+  }
+}

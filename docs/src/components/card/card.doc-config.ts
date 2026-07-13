@@ -7,11 +7,12 @@ export const CARD_DOC_CONFIG = {
   section: 'Components / Card',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-card--overview' },
+    { label: 'Overview', storyId: 'components-card--card' },
     { label: 'Usage', storyId: 'components-card--usage' },
     { label: 'Variants', storyId: 'components-card--variants-overview' },
     { label: 'Styling', storyId: 'components-card--styling' },
     { label: 'Accessibility', storyId: 'components-card--accessibility' },
+    { label: 'Testing', storyId: 'components-card--testing' },
   ],
 }
 
@@ -21,6 +22,7 @@ export const CARD_TAB_TITLES = {
   variants: 'Variants',
   styling: 'Styling',
   accessibility: 'Accessibility',
+  testing: 'Testing',
 }
 
 /**

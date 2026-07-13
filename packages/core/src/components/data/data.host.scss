@@ -1,0 +1,23 @@
+@use '@baloise/ds-css/src/scss/mixins/breakpoint.mixin.scss' as *;
+
+:host {
+  display: block;
+}
+
+.data-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+// Mobile first: single column by default
+:host(.is-horizontal) .data-container {
+  gap: 1rem;
+}
+
+// Tablet and up: horizontal layout with multiple columns
+:host(.is-horizontal) .data-container {
+  @include tablet {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

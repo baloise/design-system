@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as NumberInputStories from './number-input.stories'
+import { NUMBER_INPUT_DOC_CONFIG, getNumberInputTabs } from './number-input.doc-config'
+
+<Meta title="Components/Forms/Number-input/Testing" />
+
+<Banner label={'Testing'} section={NUMBER_INPUT_DOC_CONFIG.section} color={NUMBER_INPUT_DOC_CONFIG.color} />
+
+<BannerTabs of={NumberInputStories} tabs={getNumberInputTabs('testing')} />
+
+<ComponentPageObject component="number-input" />
+
+<Footer />

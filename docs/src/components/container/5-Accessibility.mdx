@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ContainerStories from './container.stories'
+import { CONTAINER_DOC_CONFIG, getContainerTabs } from './container.doc-config'
+
+<Meta title="Components/Container/Accessibility" />
+
+<Banner label={'Accessibility'} section={CONTAINER_DOC_CONFIG.section} color={CONTAINER_DOC_CONFIG.color} />
+
+<BannerTabs of={ContainerStories} tabs={getContainerTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use as top-level layout wrapper',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Apply the container class to a single wrapper element around main page content. This ensures consistent spacing
+          and readability across all screen sizes.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Maintain semantic HTML structure',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use appropriate semantic elements inside the container, such as <code>{'<main>'}</code>, <code>{'<section>'}</code>,
+          and <code>{'<article>'}</code> to provide meaningful structure for assistive technologies.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Consider narrow viewports',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Container automatically provides responsive padding via CSS variables. Ensure content remains readable on mobile
+          devices (320px—480px) without horizontal scrolling.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Nest multiple containers',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Stacking container divs creates excessive nesting and redundant width constraints. Use a single container at the
+          page layout level.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Override container width in children',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid applying conflicting max-width or width properties to direct children. Let the container manage the layout
+          width.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Ignore line length readability',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The default variant is optimized for readability. Avoid removing the container or using the fluid variant for
+          body text-heavy layouts, as lines become too long (80+ characters per line).
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [WCAG 2.2 1.4.8 Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html) — Line length and readability guidelines
+- [MDN: CSS Container Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries) — Understanding container-based sizing
+- [WebAIM: Web Accessibility for Designers](https://webaim.org/articles/design/) — Responsive design and accessibility
+
+<Footer />

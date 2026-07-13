@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CloseStories from './close.stories'
+import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
+
+<Meta title="Components/Close/Testing" />
+
+<Banner label={'Testing'} section={CLOSE_DOC_CONFIG.section} color={CLOSE_DOC_CONFIG.color} />
+
+<BannerTabs of={CloseStories} tabs={getCloseTabs('testing')} />
+
+<ComponentPageObject component="close" />
+
+<Footer />

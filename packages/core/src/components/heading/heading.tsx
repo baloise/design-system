@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  dsBrowser,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { dsBrowser, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   HEADING_COLORS,
   HEADING_LEVELS,
@@ -63,7 +55,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_LEVELS)
+  @OneOf(HEADING_LEVELS)
   readonly level: HeadingLevel = 'h1'
 
   @Watch('level')
@@ -77,7 +69,7 @@ export class Heading implements DsComponentInterface {
    * but still keep it h1 in the markup.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_VISUAL_LEVELS)
+  @OneOf(HEADING_VISUAL_LEVELS)
   readonly visualLevel: HeadingVisualLevel = ''
 
   @Watch('visualLevel')
@@ -89,7 +81,7 @@ export class Heading implements DsComponentInterface {
    * The actual heading level used in the HTML markup.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_VISUAL_LEVELS)
+  @OneOf(HEADING_VISUAL_LEVELS)
   readonly autoLevel: HeadingVisualLevel = ''
 
   @Watch('autoLevel')
@@ -103,42 +95,42 @@ export class Heading implements DsComponentInterface {
    * as these elements require a width to overflow.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly noWrap: boolean = false
 
   /**
    * If `true` the heading gets displayed slimmer.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly subtitle: boolean = false
 
   /**
    * Defines at which position the heading has spacing.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_SPACES)
+  @OneOf(HEADING_SPACES)
   readonly space: HeadingSpace = ''
 
   /**
    * The theme type of the toast.
    */
   @Prop({ reflect: true })
-  @ValidateOneOf(...HEADING_COLORS)
+  @OneOf(HEADING_COLORS)
   readonly color: HeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` adds a text shadow to improve readability on image background
    * */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly shadow: boolean = false
 
   /**
@@ -147,12 +139,11 @@ export class Heading implements DsComponentInterface {
    */
 
   connectedCallback(): void {
-    setupValidation(this)
     this.updateAutoFontSize()
   }
 
   componentDidRender(): void {
-    if (this.autoLevel && this.autoFontSize) {
+    if (hasValue(this.autoLevel) && this.autoFontSize) {
       const rows = this.rows
       if (rows > 1) {
         const minSize = HEADING_SIZES[this.autoLevel]
@@ -187,7 +178,7 @@ export class Heading implements DsComponentInterface {
     if (this.inverted) {
       return 'white'
     }
-    return HEADING_COLOR_MAP[this.color] as HeadingColor
+    return hasValue(this.color) ? (HEADING_COLOR_MAP[this.color] as HeadingColor) : ''
   }
 
   private get fontSize(): HeadingSize {
@@ -210,11 +201,11 @@ export class Heading implements DsComponentInterface {
       <Host
         class={{
           [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
-          [`is-${this.fontColor}`]: this.fontColor !== undefined,
+          [`is-${this.fontColor}`]: hasValue(this.fontColor),
           'is-subtitle': this.subtitle,
           'has-no-wrap': this.noWrap,
           'has-shadow': this.shadow,
-          [`has-space-${this.space}`]: !!this.space,
+          [`has-space-${this.space}`]: hasValue(this.space),
         }}
       >
         <Heading id="heading" part="heading" ref={(headingEl: any) => (this.headingEl = headingEl)}>

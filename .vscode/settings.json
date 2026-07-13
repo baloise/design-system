@@ -40,5 +40,9 @@
       "extensions": ["playwright", "spec", "test"]
     }
   ],
-  "vitest.disableWorkspaceWarning": true
+  "vitest.disableWorkspaceWarning": true,
+  "chat.tools.terminal.autoApprove": {
+    "git ls-tree": true,
+    "npm --prefix packages/core": true
+  }
 }

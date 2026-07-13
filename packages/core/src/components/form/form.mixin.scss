@@ -1,0 +1,163 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * Field Layout Mixins
+ * --------------------------------
+ */
+
+@mixin vars-field() {
+  @include vars.local(form-field-gap, 0.25rem);
+}
+
+@mixin field() {
+  position: relative;
+  display: grid;
+  gap: var(--_form-field-gap);
+}
+
+/**
+ * Container Mixins
+ * --------------------------------
+ */
+
+@mixin vars-container() {
+  @include vars.local(form-container-background, var(--ds-form-container-color-base-background));
+  @include vars.local(form-container-border-color, var(--ds-form-container-color-base-border));
+  @include vars.local(form-container-border-width, var(--ds-form-container-border-width));
+  @include vars.local(form-container-radius, var(--ds-form-container-radius));
+
+  @include vars.local(form-container-hover-background, var(--ds-form-container-color-hover-background));
+  @include vars.local(form-container-active-background, var(--ds-form-container-color-active-background));
+  @include vars.local(form-container-focus-background, var(--ds-form-container-color-focus-background));
+
+  @include vars.local(form-container-hover-border, var(--ds-form-container-color-hover-border));
+  @include vars.local(form-container-active-border, var(--ds-form-container-color-active-border));
+  @include vars.local(form-container-focus-border, var(--ds-form-container-color-focus-border));
+}
+
+@mixin container($selector: '#container') {
+  #{$selector} {
+    box-sizing: border-box;
+    clear: both;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 3rem;
+    gap: 0.25rem;
+    padding-inline: 0.5rem;
+
+    background: var(--_form-container-background);
+    border: var(--_form-container-border-width) solid var(--_form-container-border-color);
+    border-radius: var(--_form-container-radius);
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        background: var(--_form-container-hover-background);
+        border-color: var(--_form-container-hover-border);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      background: var(--_form-container-active-background);
+      border-color: var(--_form-container-active-border);
+    }
+
+    &:focus-within,
+    &.is-focused {
+      &:not(:active) {
+        background: var(--_form-container-focus-background);
+        border-color: var(--_form-container-focus-border);
+      }
+    }
+  }
+}
+
+/**
+ * Label Mixins
+ * --------------------------------
+ */
+
+@mixin vars-label() {
+  @include vars.local(form-label-color, var(--ds-form-label-color-base));
+  @include vars.local(form-label-family, var(--ds-form-label-family));
+  @include vars.local(form-label-weight, var(--ds-form-label-weight));
+  @include vars.local(form-label-line-height, var(--ds-form-label-line-height));
+  @include vars.local(form-label-size, var(--ds-form-label-size-device));
+}
+
+@mixin label($selector: 'label') {
+  :where(fieldset) {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  :where(legend) {
+    padding: 0;
+    float: left;
+    width: 100%;
+  }
+
+  #{$selector} {
+    @include font-smoothing();
+
+    display: block;
+    box-sizing: content-box;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    min-width: 0;
+    // margin-bottom: 0.25rem;
+
+    color: var(--_form-label-color);
+    font-family: var(--_form-label-family);
+    font-weight: var(--_form-label-weight);
+    font-size: var(--_form-label-size);
+    line-height: var(--_form-label-line-height);
+  }
+}
+
+/**
+ * Description Mixins
+ * --------------------------------
+ */
+
+@mixin vars-description() {
+  @include vars.local(form-description-color, var(--ds-form-description-color-base));
+  @include vars.local(form-description-family, var(--ds-form-description-family));
+  @include vars.local(form-description-weight, var(--ds-form-description-weight));
+  @include vars.local(form-description-line-height, var(--ds-form-description-line-height));
+  @include vars.local(form-description-size, var(--ds-form-description-size-device));
+}
+
+@mixin description($selector: '#description') {
+  #{$selector} {
+    @include font-smoothing();
+
+    display: flex;
+    box-sizing: content-box;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    min-width: 0;
+    gap: 0.25rem;
+
+    // this is needed to prevent screen flimmering when the descriptions is only shown on error
+    min-height: 1.125rem;
+
+    color: var(--_form-description-color);
+    font-family: var(--_form-description-family);
+    font-weight: var(--_form-description-weight);
+    font-size: var(--_form-description-size);
+    line-height: var(--_form-description-line-height);
+
+    ds-icon {
+      --icon-color: var(--_form-description-color);
+    }
+  }
+}

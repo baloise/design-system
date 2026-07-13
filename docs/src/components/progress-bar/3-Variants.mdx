@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -22,13 +23,13 @@ import { PROGRESS_BAR_DOC_CONFIG, getProgressBarTabs } from './progress-bar.doc-
 
 <StoryHeading of={ProgressBarStories.DarkVariants}></StoryHeading>
 
-<Canvas of={ProgressBarStories.DarkVariants} />
+<CanvasWithCodePen of={ProgressBarStories.DarkVariants} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ProgressBarStories.LightVariants}></StoryHeading>
 
-<Canvas className='bg-purple-light' of={ProgressBarStories.LightVariants} />
+<CanvasWithCodePen className='bg-purple-light' of={ProgressBarStories.LightVariants} />
 
 <Footer />
 å

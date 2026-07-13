@@ -2,7 +2,7 @@ import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { Clipboard } from '../Clipboard'
 
-export const TokensFontSize = ({ overview }): React.ReactElement => {
+export const TokensFontSize = ({ _overview }): React.ReactElement => {
   const list = tokens.text.size
 
   return (

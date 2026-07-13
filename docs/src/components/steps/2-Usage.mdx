@@ -1,0 +1,107 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as StepsStories from './steps.stories'
+import { STEPS_DOC_CONFIG, getStepsTabs } from './steps.doc-config'
+
+<Meta title="Components/Steps/Usage" />
+
+<Banner label={'Usage'} section={STEPS_DOC_CONFIG.section} color={STEPS_DOC_CONFIG.color} />
+
+<BannerTabs of={StepsStories} tabs={getStepsTabs('usage')} />
+
+## When to Use
+
+- Multi-step processes where the user must complete steps in order, such as checkout, onboarding, or wizards.
+- When progress visibility helps the user understand how far along they are and how many steps remain.
+- When navigating between major sections of a form or flow that each require distinct user input.
+- As a navigation landmark (`navigation` variant) when steps represent separate pages in a linear flow.
+
+## When NOT to Use
+
+- For simple tabbed content with no sequential relationship — use `ds-tabs` instead.
+- When there are fewer than two steps.
+- When all steps are always accessible regardless of completion order — consider `ds-tabs`.
+- When steps have no meaningful labels — the circle index alone is not sufficient for orientation.
+
+## Do's and Don'ts
+
+### Step labels
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Concise, descriptive labels',
+      content: (
+        <ds-steps>
+          <ds-step name="a" label="Cart"></ds-step>
+          <ds-step name="b" label="Shipping"></ds-step>
+          <ds-step name="c" label="Payment"></ds-step>
+          <ds-step-panel for="a">Cart content</ds-step-panel>
+          <ds-step-panel for="b">Shipping content</ds-step-panel>
+          <ds-step-panel for="c">Payment content</ds-step-panel>
+        </ds-steps>
+      ),
+      description: 'Short labels make the purpose of each step immediately clear.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No labels',
+      content: (
+        <ds-steps>
+          <ds-step name="a"></ds-step>
+          <ds-step name="b"></ds-step>
+          <ds-step name="c"></ds-step>
+          <ds-step-panel for="a">Cart content</ds-step-panel>
+          <ds-step-panel for="b">Shipping content</ds-step-panel>
+          <ds-step-panel for="c">Payment content</ds-step-panel>
+        </ds-steps>
+      ),
+      description: 'Steps without labels force users to guess the purpose of each step from context alone.',
+    },
+  ]}
+/>
+
+### Step state
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Reflect completion with done',
+      content: (
+        <ds-steps value="c">
+          <ds-step name="a" label="Cart" done></ds-step>
+          <ds-step name="b" label="Shipping" done></ds-step>
+          <ds-step name="c" label="Payment"></ds-step>
+          <ds-step-panel for="a">Cart</ds-step-panel>
+          <ds-step-panel for="b">Shipping</ds-step-panel>
+          <ds-step-panel for="c">Payment</ds-step-panel>
+        </ds-steps>
+      ),
+      description: 'Mark completed steps as done so users can track their progress at a glance.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: All steps appear equal',
+      content: (
+        <ds-steps value="c">
+          <ds-step name="a" label="Cart"></ds-step>
+          <ds-step name="b" label="Shipping"></ds-step>
+          <ds-step name="c" label="Payment"></ds-step>
+          <ds-step-panel for="a">Cart</ds-step-panel>
+          <ds-step-panel for="b">Shipping</ds-step-panel>
+          <ds-step-panel for="c">Payment</ds-step-panel>
+        </ds-steps>
+      ),
+      description: 'Leaving completed steps without visual feedback removes the sense of progress.',
+    },
+  ]}
+/>
+
+<Footer />

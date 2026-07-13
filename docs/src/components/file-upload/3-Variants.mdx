@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as FileUploadStories from './file-upload.stories'
+import { FILEUPLOAD_DOC_CONFIG, getFileUploadTabs } from './file-upload.doc-config'
+
+<Meta title="Components/FileUpload/Variants/Overview" />
+
+<StoryHeading of={FileUploadStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={FILEUPLOAD_DOC_CONFIG.section} color={FILEUPLOAD_DOC_CONFIG.color} />
+
+<BannerTabs of={FileUploadStories} tabs={getFileUploadTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FileUploadStories.Basic}></StoryHeading>
+
+The basic file upload component with drag-and-drop interaction and file list display.
+
+<CanvasWithCodePen of={FileUploadStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FileUploadStories.Disabled}></StoryHeading>
+
+Disabled state prevents user interaction. Use this when uploads are not currently available.
+
+<CanvasWithCodePen of={FileUploadStories.Disabled} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FileUploadStories.Invalid}></StoryHeading>
+
+Invalid state indicates an error with the file upload. Display a descriptive error message to guide users.
+
+<CanvasWithCodePen of={FileUploadStories.Invalid} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FileUploadStories.Loading}></StoryHeading>
+
+Loading state shows that a file upload is in progress. The component is disabled during this time.
+
+<CanvasWithCodePen of={FileUploadStories.Loading} sourceState="shown" />
+
+<Footer />

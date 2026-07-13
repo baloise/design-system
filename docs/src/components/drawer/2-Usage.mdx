@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as DrawerStories from './drawer.stories'
+import { DRAWER_DOC_CONFIG, getDrawerTabs } from './drawer.doc-config'
+
+<Meta title="Components/Drawer/Usage" />
+
+<Banner label={'Usage'} section={DRAWER_DOC_CONFIG.section} color={DRAWER_DOC_CONFIG.color} />
+
+<BannerTabs of={DrawerStories} tabs={getDrawerTabs('usage')} />
+
+## When to Use
+
+- Side panels for filters, navigation, or secondary forms that slide from the bottom
+- Mobile-optimized overlays that preserve context when opened
+- Collections of related actions or options grouped together
+- Confirmation dialogs or multi-step workflows in a contained space
+
+## When NOT to Use
+
+- Critical alerts that require immediate action — use `ds-modal` instead
+- Short notifications — use a toast or snackbar
+- Simple inline content that fits on the page — avoid extra layers
+- Actions that need permanent visibility — integrate into the main layout
+
+<Footer />

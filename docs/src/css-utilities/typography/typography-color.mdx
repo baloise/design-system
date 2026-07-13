@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssTypographyColors, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as TypographyColorStories from './typography-color.stories'
+
+<Meta
+  title="CSS Utilities/Typography/Text Colors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Text Colors" section="CSS Utilities" color="red" />
+
+<Lead>Diverse color palettes available for the text of an element.</Lead>
+
+## Classes
+
+The classes `text-xxx` defines the font-color. For more colors have a look a the [Font Color Tokens]().
+
+<CssTypographyColors />
+
+## Colors
+
+<CanvasWithCodePen of={TypographyColorStories.Colors} />
+
+## Pseudo States
+
+States such as Focus, Hover, and Active can be utilized by applying the respective prefixes: **focus:**, **hover:**, and **active:**.
+
+<CanvasWithCodePen of={TypographyColorStories.PseudoStates} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Foundation/Colors"
+      description="The colors create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Helvetia we are."
+    />
+    <LinkCard
+      pageTitle="Tokens/All Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices"
+    />
+  </LinkCards>
+</Footer>

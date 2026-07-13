@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test, waitForChanges } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'divider'
 const VARIANTS = ['basic', 'colors', 'dashed', 'dashed-vertical', 'horizontal', 'vertical'] as const

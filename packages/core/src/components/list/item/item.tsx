@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, ValidateOneOf, ValidateEmptyOrType, ValidateType, setupValidation } from '@utils'
+import { Logger, type LogInstance, OneOf, Type } from '@utils'
 import {
   ACCORDION_MARKERS,
   ACCORDION_MARKER_POSITIONS,
@@ -69,7 +69,7 @@ export class Item implements DsComponentInterface {
    * close when another accordion in the same group is opened.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly accordionGroup: string = ''
 
   /**
@@ -78,42 +78,42 @@ export class Item implements DsComponentInterface {
    * a plus icon for closed and a minus icon for open state is used.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_MARKERS)
+  @OneOf(ACCORDION_MARKERS)
   readonly accordionMarker: AccordionMarker = ''
 
   /**
    * The position of the marker. Only applies if `variant` is set to `accordion`.
    */
   @Prop()
-  @ValidateOneOf(...ACCORDION_MARKER_POSITIONS)
+  @OneOf(ACCORDION_MARKER_POSITIONS)
   readonly accordionMarkerPosition: AccordionMarkerPosition = ''
 
   /**
    * If `true` the accordion is open.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly accordionOpen: boolean = false
 
   /**
    * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
    */
   @Prop()
-  @ValidateOneOf(...ITEM_ACTION_ICONS)
-  readonly actionIcon: ItemActionIcon = 'default'
+  @OneOf(ITEM_ACTION_ICONS)
+  readonly actionIcon: ItemActionIcon = ''
 
   /**
    * The description text displayed below the label.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly description: string = ''
 
   /**
    * If `true`, the user cannot interact with the item.
    */
   @Prop({ reflect: true })
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly disabled: boolean = false
 
   /**
@@ -123,35 +123,35 @@ export class Item implements DsComponentInterface {
    * (the user can still change the file name if they want).
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly download: string = ''
 
   /**
    * Specifies the URL of the page the link goes to.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly href: string = ''
 
   /**
    * The label text displayed as a heading inside the item.
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly label: string = ''
 
   /**
    * The semantic heading level of the label element.
    */
   @Prop()
-  @ValidateOneOf(...ITEM_LABEL_LEVELS)
-  readonly labelLevel: ItemLabelLevel = 'h5'
+  @OneOf(ITEM_LABEL_LEVELS)
+  readonly labelLevel: ItemLabelLevel = ''
 
   /**
    * The visual size of the label. Defaults to `labelLevel` if not set.
    */
   @Prop()
-  @ValidateOneOf(...ITEM_LABEL_SIZES)
+  @OneOf(ITEM_LABEL_SIZES)
   readonly labelSize: ItemLabelSize = ''
 
   /**
@@ -159,7 +159,7 @@ export class Item implements DsComponentInterface {
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
   @Prop()
-  @ValidateType('string')
+  @Type('string')
   readonly rel: string = ''
 
   /**
@@ -167,14 +167,14 @@ export class Item implements DsComponentInterface {
    * Only applies when an `href` is provided.
    */
   @Prop()
-  @ValidateOneOf(...BUTTON_TARGETS)
-  readonly target: ButtonTarget = '_self'
+  @OneOf(BUTTON_TARGETS)
+  readonly target: ButtonTarget = ''
 
   /**
    * The visual and functional variant of the item.
    */
   @Prop()
-  @ValidateOneOf(...ITEM_VARIANTS)
+  @OneOf(ITEM_VARIANTS)
   readonly variant: ItemVariant = 'default'
 
   /**
@@ -196,16 +196,6 @@ export class Item implements DsComponentInterface {
    * Emitted when the accordion is closed.
    */
   @Event() dsAccordionClosed!: EventEmitter<AccordionToggleDetail>
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback(): void {
-    setupValidation(this)
-  }
-
   /**
    * EVENT HANDLERS
    * ------------------------------------------------------
@@ -231,17 +221,11 @@ export class Item implements DsComponentInterface {
     if (hasActionIcon) {
       if (this.actionIcon === 'link') {
         actionIconName = 'nav-go-right'
-      }
-
-      if (this.actionIcon === 'link-external') {
+      } else if (this.actionIcon === 'link-external') {
         actionIconName = 'link'
-      }
-
-      if (this.actionIcon === 'download') {
+      } else if (this.actionIcon === 'download') {
         actionIconName = 'download'
-      }
-
-      if (this.actionIcon === 'default') {
+      } else if (this.actionIcon === 'default' || this.actionIcon === '') {
         if (this.variant === 'link' || this.variant === 'button') {
           actionIconName = 'nav-go-right'
         }

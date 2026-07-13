@@ -46,6 +46,7 @@ $host-selector: ('#button');
 
   @include vars.local(button-box-shadow, none);
   @include vars.local(button-text-shadow, none);
+  @include vars.local(button-focus-shadow, var(--ds-alias-interaction-focus-color-base));
 }
 
 /**
@@ -120,7 +121,7 @@ $host-selector: ('#button');
   &:focus-visible,
   &.is-focused {
     &:not(:active) {
-      @include focus-shadow();
+      @include focus-shadow(var(--_button-focus-shadow));
     }
   }
 

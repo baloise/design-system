@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as FormStories from './form.stories'
+import { FORM_DOC_CONFIG, getFormTabs } from './form.doc-config'
+
+<Meta title="Components/Form/Usage" />
+
+<Banner label={'Usage'} section={FORM_DOC_CONFIG.section} color={FORM_DOC_CONFIG.color} />
+
+<BannerTabs of={FormStories} tabs={getFormTabs('usage')} />
+
+## When to Use
+
+- Collecting user input across multiple fields and sections
+- Building multi-step wizards or complex forms
+- Creating responsive layouts that adapt across device sizes
+- Organizing related form fields with consistent styling and spacing
+- Building accessible forms with proper field grouping and labels
+- Creating data entry interfaces with mixed field widths and alignments
+
+## When NOT to Use
+
+- For single input fields — use individual input, textarea, or select components
+- For simple yes/no questions — use a standalone checkbox or toggle
+- When a modal or dialog is more appropriate for the context
+- For display-only content — use table or card components instead
+
+## Do's and Don'ts
+
+### Organize Fields Logically
+
+Group related form fields together and arrange them in a logical reading order that matches the data collection flow.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Grouped related fields',
+      contentIsLeftAligned: true,
+      content: (
+        <div class="form">
+          <div class="form-col tablet:is-6">
+            <div class="field">
+              <label class="label" for="example-fname">First Name</label>
+              <div class="control">
+                <input id="example-fname" class="input" value="Jane" />
+              </div>
+            </div>
+          </div>
+          <div class="form-col tablet:is-6">
+            <div class="field">
+              <label class="label" for="example-lname">Last Name</label>
+              <div class="control">
+                <input id="example-lname" class="input" value="Doe" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      description: 'Related fields like first and last name are grouped side-by-side, making the form easier to scan and complete.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Scattered related fields',
+            contentIsLeftAligned: true,
+      content: (
+        <div class="form">
+          <div class="form-col">
+            <div class="field">
+              <label class="label" for="bad-fname">First Name</label>
+              <div class="control">
+                <input id="bad-fname" class="input" />
+              </div>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="field">
+              <label class="label" for="bad-other">Unrelated Field</label>
+              <div class="control">
+                <input id="bad-other" class="input" />
+              </div>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="field">
+              <label class="label" for="bad-lname">Last Name</label>
+              <div class="control">
+                <input id="bad-lname" class="input" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      description: 'Separating related fields makes the form harder to follow and increases cognitive load.',
+    },
+  ]}
+/>
+
+
+<Footer />

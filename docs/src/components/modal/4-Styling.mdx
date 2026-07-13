@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './modal.stories'
+import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
+
+<Meta title="Components/Modal/Styling" />
+
+<Banner label={'Styling'} section={MODAL_DOC_CONFIG.section} color={MODAL_DOC_CONFIG.color} />
+
+<BannerTabs of={ModalStories} tabs={getModalTabs('styling')} />
+
+<ComponentParts component="modal" />
+
+<ComponentCssVariables component="modal" />
+
+<ComponentDesignTokens component="modal" />
+
+<Footer />

@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as FileUploadStories from './file-upload.stories'
+import { FILEUPLOAD_DOC_CONFIG, getFileUploadTabs } from './file-upload.doc-config'
+
+<Meta title="Components/FileUpload/Usage" />
+
+<Banner label={'Usage'} section={FILEUPLOAD_DOC_CONFIG.section} color={FILEUPLOAD_DOC_CONFIG.color} />
+
+<BannerTabs of={FileUploadStories} tabs={getFileUploadTabs('usage')} />
+
+## When to Use
+
+- Allow users to upload single or multiple files via drag-and-drop
+- Provide file validation based on type, size, or quantity
+- Integrate file upload into forms with optional validation states
+- Display a list of selected files with the ability to remove them
+- Show upload progress or loading state during file processing
+
+## When NOT to Use
+
+- For simple button-based file selection without drag-and-drop interaction
+- When multiple independent uploads need separate handling
+- For file management interfaces that require advanced features like preview, reordering, or editing
+
+<Footer />

@@ -1,8 +1,9 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -39,25 +40,25 @@ import { RADIO_DOC_CONFIG, getRadioTabs } from './radio.doc-config'
 
 <StoryHeading of={RadioGroupStories.TileBasic}></StoryHeading>
 
-<Canvas of={RadioGroupStories.TileBasic}  />
+<CanvasWithCodePen of={RadioGroupStories.TileBasic}  />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={RadioGroupStories.TileColumns}></StoryHeading>
 
-<Canvas of={RadioGroupStories.TileColumns} />
+<CanvasWithCodePen of={RadioGroupStories.TileColumns} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={RadioGroupStories.TileStack}></StoryHeading>
 
-<Canvas of={RadioGroupStories.TileStack} />
+<CanvasWithCodePen of={RadioGroupStories.TileStack} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={RadioGroupStories.TileStackCentered}></StoryHeading>
 
-<Canvas of={RadioGroupStories.TileStackCentered} />
+<CanvasWithCodePen of={RadioGroupStories.TileStackCentered} />
 
 {/* ------------------------------------------------------ */}
 

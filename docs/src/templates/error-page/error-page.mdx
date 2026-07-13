@@ -8,20 +8,21 @@ import {
   Lead,
   StoryHeading,
   TokenOverview,
+  CanvasWithCodePen,
 } from '../../../.storybook/blocks'
 import * as ErrorPageStories from './error-page.stories'
 
-<Meta title="Templates/ErrorPage" />
+<Meta title="Templates/ErrorPages/NotFound" />
 
 <StoryHeading of={ErrorPageStories.Basic} hidden></StoryHeading>
 
-<Banner section={'Templates'} label={'ErrorPage'} />
+<Banner section={'Templates/ErrorPages'} label={'Not Found'} />
 
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
+<Lead>
+  404 Not Found is the most common error page, but the template can be used for any error state (e.g., 500 Internal
+  Server Error, 403 Forbidden) by simply changing the content.
+</Lead>
 
-<StoryHeading of={ErrorPageStories.Basic}></StoryHeading>
-
-<Canvas of={ErrorPageStories.Basic} sourceState='shown' />
+<CanvasWithCodePen of={ErrorPageStories.Basic} sourceState="shown" />
 
 <Footer />

@@ -1,33 +1,15 @@
-import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
-import isEmpty from 'lodash/isEmpty'
-import {
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  ValidateOneOf,
-  ValidateEmptyOrType,
-  ValidateType,
-  setupValidation,
-} from '@utils'
+import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   CARD_ALIGNMENTS,
-  CARD_ACTIONS_ALIGNMENTS,
-  CARD_FOOTER_POSITIONS,
-  CARD_HEADER_DIRECTIONS,
   CARD_IMAGE_TEASERS,
   CARD_SPACES,
   CARD_COLORS,
   type CardAlignment,
   type CardImageTeaser,
-  type CardActionsAlignment,
-  type CardFooterPosition,
-  type CardHeaderDirection,
   type CardSpace,
   type CardColor,
-  type CardButtonElementType,
-  type CardButtonTarget,
 } from './card.interfaces'
-import type { ButtonElementType, ButtonTarget } from '../button/button.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 
@@ -58,21 +40,21 @@ export class Card implements DsComponentInterface {
    * If `true` the card loses its shadow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly flat: boolean = false
 
   /**
    * If `true` the card gets a tile look, it has a brand icon on the left
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly tile: boolean = false
 
   /**
    * If `true` the card gets a smaller padding.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly dense: boolean = false
 
   /**
@@ -80,83 +62,74 @@ export class Card implements DsComponentInterface {
    * it is displayed with a large image.
    */
   @Prop()
-  @ValidateOneOf(...CARD_IMAGE_TEASERS)
+  @OneOf(CARD_IMAGE_TEASERS)
   readonly imageTeaser: CardImageTeaser = ''
 
   /**
    * If `true` the card loses its border radius.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly square: boolean = false
 
   /**
    * If `true` the cards gets a light border and loses its shadow.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly inverted: boolean = false
 
   /**
    * If `true` the card has a hover effect.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly clickable: boolean = false
 
   /**
    * If `true` the card gets a light background to indicate a selection.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly selected: boolean = false
 
   /**
    * If `true` the card uses 100% of the available height.
    */
   @Prop()
-  @ValidateType('boolean')
+  @Type('boolean')
   readonly fullheight: boolean = false
 
   /**
    * Defines the text alignment of the card content.
    */
   @Prop()
-  @ValidateOneOf(...CARD_ALIGNMENTS)
+  @OneOf(CARD_ALIGNMENTS)
   readonly align: CardAlignment = ''
 
   /**
    * Defines the space of the card content.
    */
-  @Prop({ mutable: true })
-  @ValidateOneOf(...CARD_SPACES)
-  space?: CardSpace
-  @Watch('space')
-  spaceChanged(newValue: CardSpace) {
-    this.space = normalizeDeprecatedTShirtSize(newValue)
-  }
+  @Prop()
+  @OneOf(CARD_SPACES)
+  readonly space?: CardSpace
 
   /**
    * Defines the color of the card.
    */
   @Prop()
-  @ValidateOneOf(...CARD_COLORS)
+  @OneOf(CARD_COLORS)
   readonly color: CardColor = ''
 
-  connectedCallback(): void {
-    setupValidation(this)
-    this.space = normalizeDeprecatedTShirtSize(this.space)
-  }
-
   private get colorTypeClass(): string {
-    const color = isEmpty(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
+    const color = !hasValue(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
 
     const colorMap: Record<string, string> = {
       'blue': 'primary',
@@ -179,17 +152,18 @@ export class Card implements DsComponentInterface {
 
   render() {
     const hasOutline = !!this.outlined
-    const isImageTeaser = !!this.imageTeaser
+    const isImageTeaser = hasValue(this.imageTeaser)
+    const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     return (
       <Host
         class={{
           [`is-image-teaser`]: isImageTeaser,
-          [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser && !isEmpty(this.imageTeaser),
+          [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser && hasValue(this.imageTeaser),
           [`is-square`]: this.square,
           [`is-dense`]: this.dense,
-          [`is-${this.colorTypeClass}`]: !isEmpty(this.color) && this.colorTypeClass !== 'white',
-          [`has-space-${this.space}`]: !isEmpty(this.space),
+          [`is-${this.colorTypeClass}`]: hasValue(this.color) && this.colorTypeClass !== 'white',
+          [`has-space-${space}`]: hasValue(this.space),
           [`is-outlined`]: hasOutline,
           [`is-flat`]: hasOutline || !!this.flat,
           [`is-tile`]: !!this.tile,
@@ -200,7 +174,7 @@ export class Card implements DsComponentInterface {
           id="card"
           class={{
             [`is-fullheight`]: this.fullheight,
-            [`align-${this.align}`]: !isEmpty(this.align),
+            [`align-${this.align}`]: hasValue(this.align),
           }}
         >
           <slot></slot>

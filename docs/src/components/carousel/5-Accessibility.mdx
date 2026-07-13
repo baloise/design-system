@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as CarouselStories from './carousel.stories'
+import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
+
+<Meta title="Components/Carousel/Accessibility" />
+
+<Banner label={'Accessibility'} section={CAROUSEL_DOC_CONFIG.section} color={CAROUSEL_DOC_CONFIG.color} />
+
+<BannerTabs of={CarouselStories} tabs={getCarouselTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always provide a label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set the <code>label</code> prop to describe the purpose of the carousel. This gives screen readers an accessible name for the scrollable region.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Give every item a unique name',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Each <code>ds-carousel-item</code> requires a unique <code>name</code> attribute. This is used to track selection state and must be meaningful in your application context.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use keyboard navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The slide variant supports <kbd>ArrowLeft</kbd>, <kbd>ArrowRight</kbd>, <kbd>Home</kbd>, and <kbd>End</kbd> keys to navigate between slides without using a pointer device.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do not rely on auto-play',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The carousel does not auto-advance slides. Do not add auto-play behaviour — moving content that users cannot pause violates WCAG 2.2 Pause, Stop, Hide (2.2.2).
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Do not hide critical content inside tiles',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Tiles that are scrolled out of view are still present in the DOM but may not be visible. Do not place content that every user must see inside a tile-variant carousel without an alternative.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## WCAG 2.2 AA Compliance
+
+The carousel component implements patterns that meet WCAG 2.2 Level AA standards:
+
+- **Name, Role, Value (4.1.2)** — The track region has an accessible name via `label` and is exposed as a `region` landmark.
+- **Keyboard Accessible (2.1.1)** — Slide navigation is fully operable via keyboard arrow keys, Home, and End.
+- **Focus Visible (2.4.7)** — Tile items expose a focus-visible ring when navigated by keyboard.
+- **Pause, Stop, Hide (2.2.2)** — No auto-advancing content; all movement is user-initiated.
+
+<Footer />

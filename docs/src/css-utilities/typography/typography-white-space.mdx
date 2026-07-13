@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, CanvasWithCodePen, CssTypographyWhiteSpace, Footer, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import * as TypographyWhiteSpaceStories from './typography-white-space.stories'
+
+<Meta
+  title="CSS Utilities/Typography/White Space"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="White Space" section="CSS Utilities" color="red" />
+
+<Lead>Determines if a word should wrap based on white space or not.</Lead>
+
+## Classes
+
+<CssTypographyWhiteSpace />
+
+## Examples
+
+<CanvasWithCodePen of={TypographyWhiteSpaceStories.Examples} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Tokens/All Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

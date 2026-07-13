@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as FormStories from './form.stories'
+import { FORM_DOC_CONFIG, getFormTabs } from './form.doc-config'
+
+<Meta title="Components/Form/Testing" />
+
+<Banner label={'Testing'} section={FORM_DOC_CONFIG.section} color={FORM_DOC_CONFIG.color} />
+
+<BannerTabs of={FormStories} tabs={getFormTabs('testing')} />
+
+<ComponentPageObject component="form" />
+
+<Footer />
