@@ -23,6 +23,13 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Check .npmrc for leaked credentials
+        run: |
+          if grep -E '_authToken|_auth|_password|//.*registry.*:' .npmrc; then
+            echo "::error file=.npmrc::Found a registry credential in the tracked .npmrc. Remove it and rotate the token."
+            exit 1
+          fi
+
       - uses: ./.github/workflows/actions/setup-environment
 
       - name: Install dependencies

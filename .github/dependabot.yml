@@ -2,6 +2,9 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: /
+    ## Keep dependencies pinned to exact versions instead of Dependabot
+    ## widening them back into semver ranges.
+    versioning-strategy: increase
     schedule:
       interval: weekly
       day: monday

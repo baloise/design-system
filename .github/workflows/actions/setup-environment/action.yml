@@ -50,13 +50,15 @@ runs:
       with:
         node-version: 24
         cache: 'pnpm'
+        registry-url: 'https://registry.npmjs.org'
+        always-auth: true
 
-    - name: Create .npmrc
+    ## setup-node writes the registry config to a runner-temp .npmrc (not the
+    ## repo checkout or $HOME) and resolves the auth token from NODE_AUTH_TOKEN
+    ## at publish time, so the secret never touches a file we could commit.
+    - name: Export NPM auth token
       if: inputs.npm-token != ''
       shell: bash
-      run: |
-        cat << EOF > "$HOME/.npmrc"
-          //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
-        EOF
+      run: echo "NODE_AUTH_TOKEN=$NPM_PUBLISH_TOKEN" >> "$GITHUB_ENV"
       env:
         NPM_PUBLISH_TOKEN: ${{ inputs.npm-token }}
