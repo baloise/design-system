@@ -30,16 +30,6 @@ export class NavbarBrand {
   @Prop() rel: string | undefined
 
   /**
-   * If `true` the logo is rendered as a button
-   */
-  @Prop() logoClickable = false
-
-  /**
-   * Defines the label of the logo
-   */
-  @Prop() logoLabel?: string
-
-  /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
@@ -60,6 +50,21 @@ export class NavbarBrand {
    * Size of the logo SVG
    */
   @Prop() logoSize: BalProps.BalLogoSize = ''
+
+  /**
+   * If `true` the logo is rendered as a button
+   */
+  @Prop() logoClickable = false
+
+  /**
+   * Defines the brand of the logo. Default is 'baloise'.
+   */
+  @Prop() logoBrand: BalProps.BalLogoBrand = ''
+
+  /**
+   * Defines the label of the logo
+   */
+  @Prop() logoLabel?: string
 
   /**
    * Defines if the logo animation should be active
@@ -175,7 +180,7 @@ export class NavbarBrand {
         alt="Logo"
       />
     ) : (
-      <bal-logo animated={this.animated} color={'white'} size={this.logoSize}></bal-logo>
+      <bal-logo animated={this.animated} color={'white'} size={this.logoSize} brand={this.logoBrand}></bal-logo>
     )
 
     const logoLabel = this.logoLabel ? this.logoLabel : i18nBalNavbarBrand[this.language].logoButtonLabel
