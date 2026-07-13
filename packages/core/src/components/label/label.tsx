@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   ElementStateInfo,

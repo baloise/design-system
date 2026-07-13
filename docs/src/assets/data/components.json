@@ -1731,7 +1731,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Define the size of badge. Small is recommended for tabs.",
@@ -3222,7 +3222,7 @@
           },
           "mutable": false,
           "attr": "inverted",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the button is inverted",
           "docsTags": [
             {
@@ -3459,7 +3459,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Size of the button",
@@ -10448,7 +10448,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space of the card content.",
@@ -16589,7 +16589,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Define the size of badge. Small is recommended for tabs.",
@@ -17035,7 +17035,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
@@ -17139,7 +17139,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
@@ -18105,7 +18105,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
@@ -24747,7 +24747,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Defines the size of the icon.",
@@ -28521,7 +28521,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Defines the size of the font. Default is like a heading 5 and small is used\nwith the form fields.",
@@ -30211,7 +30211,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Size of the logo svg",
@@ -34121,7 +34121,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Defines the size of the notification, small, medium or large.",
@@ -44534,10 +44534,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'column'"
+              "text": "''"
             }
           ],
-          "default": "'column'",
+          "default": "''",
           "values": [
             {
               "type": "\"\""
@@ -44594,58 +44594,6 @@
           "setter": false
         },
         {
-          "name": "layout",
-          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
-          "complexType": {
-            "original": "StackLayout",
-            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
-            "references": {
-              "StackLayout": {
-                "location": "import",
-                "path": "./stack.interfaces",
-                "id": "src/components/stack/stack.interfaces.ts::StackLayout",
-                "referenceLocation": "StackLayout"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "layout",
-          "reflectToAttr": false,
-          "docs": "**Deprecated:** Use direction instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "horizontal",
-              "type": "string"
-            },
-            {
-              "value": "horizontal-reverse",
-              "type": "string"
-            },
-            {
-              "value": "vertical",
-              "type": "string"
-            },
-            {
-              "value": "vertical-reverse",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "p",
           "type": "\"\" | \"2xs\" | \"base\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-large\" | \"x-small\" | \"xl\" | \"xs\" | \"xx-large\" | \"xx-small\" | \"xxl\" | undefined",
           "complexType": {
@@ -44660,7 +44608,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "p",
           "reflectToAttr": false,
           "docs": "Defines the padding of the stack element.",
@@ -44761,7 +44709,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "px",
           "reflectToAttr": false,
           "docs": "Defines the horizontal padding left and right of the stack element.",
@@ -44862,7 +44810,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "py",
           "reflectToAttr": false,
           "docs": "Defines the vertical padding top and bottom of the stack element.",
@@ -44963,7 +44911,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements.",
@@ -45071,7 +45019,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "space-column",
           "reflectToAttr": false,
           "docs": "Defines the column space between the child elements.",
@@ -45176,7 +45124,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "space-row",
           "reflectToAttr": false,
           "docs": "Defines the row space between the child elements.",
@@ -48194,7 +48142,7 @@
               }
             }
           },
-          "mutable": true,
+          "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
           "docs": "The size of the tag element",

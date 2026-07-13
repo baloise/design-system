@@ -3,7 +3,7 @@
 *.mdx
 
 tsconfig.base.json
-package-lock.json
+pnpm-lock.yaml
 
 packages/tokens/tokens/Base.tokens.json
 packages/core/src/global/constants/icons.constant.ts

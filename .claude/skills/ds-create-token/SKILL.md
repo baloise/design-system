@@ -51,7 +51,7 @@ For each variable:
 - **Backs up** `Base.tokens.json`
 - Writes new tokens to `Base.tokens.json`
 - Creates any new Alias tokens needed
-- Runs `npm run tokens` to compile outputs
+- Runs `pnpm tokens` to compile outputs
 - Shows success summary with created tokens
 
 ## Token Path Structure
@@ -75,7 +75,7 @@ Component tokens always follow this structure:
 
 - Component must exist in `packages/core/src/components/`
 - Component must have a `.host.scss` file with `vars.local()` definitions
-- Design tokens must already be compiled (run `npm run tokens` first if needed)
+- Design tokens must already be compiled (run `pnpm tokens` first if needed)
 
 ## Important Notes
 

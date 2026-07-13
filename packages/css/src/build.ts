@@ -30,6 +30,17 @@ console.log(`
 \x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
 `)
 
+// Sass resolves bare package specifiers (e.g. `@baloise/ds-tokens/...`) only via loadPaths.
+// Unlike npm, pnpm does not hoist workspace deps to the repo-root node_modules — the
+// `@baloise/*` symlinks live inside each consuming package's own node_modules. Include those
+// package-local dirs so `@use '@baloise/...'` keeps resolving.
+const sassLoadPaths = [
+  resolve(__dirname, '../node_modules'), // packages/css/node_modules — ds-tokens, ds-assets
+  resolve(__dirname, '../../core/node_modules'), // packages/core/node_modules — ds-css, ds-tokens, ds-assets
+  resolve(__dirname, '../../../node_modules'), // repo-root node_modules (npm hoist / fallback)
+  resolve(__dirname, '../../..'),
+]
+
 const processor = postcss([autoprefixer])
 
 async function autoprefix(css: string): Promise<string> {
@@ -175,7 +186,7 @@ let tokensCss = ''
 try {
   tokensCss = readFileSync(tokensPath, 'utf8')
 } catch {
-  console.warn('Warning: base.tokens.css not found — run `npm run tokens` first.')
+  console.warn('Warning: base.tokens.css not found — run `pnpm tokens` first.')
 }
 
 const output = tokensCss ? `${tokensCss}\n${prefixedUtilities}` : prefixedUtilities
@@ -223,7 +234,7 @@ console.log(`\x1b[32m✔\x1b[0m dist/docs/design-system.json written (${Object.k
 // --- Compile base layer (tokens + normalize + structure) -------------------
 async function compileSass(entry: string, outPath: string, description: string): Promise<void> {
   const result = await compileAsync(entry, {
-    loadPaths: [resolve(__dirname, '../../../node_modules'), resolve(__dirname, '../../..')],
+    loadPaths: sassLoadPaths,
   })
   const prefixed = await autoprefix(result.css)
   const content = banner(description) + prefixed
@@ -266,7 +277,7 @@ const dsStylesImporter = {
 
 const componentResult = await compileStringAsync(barrelContent, {
   url: new URL(`file://${resolve(__dirname, 'scss/_components.scss')}`),
-  loadPaths: [resolve(__dirname, '../../../node_modules')],
+  loadPaths: sassLoadPaths,
   importers: [dsStylesImporter],
 })
 const prefixedComponentCss = await autoprefix(componentResult.css)

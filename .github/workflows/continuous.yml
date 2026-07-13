@@ -26,29 +26,29 @@ jobs:
       - uses: ./.github/workflows/actions/setup-environment
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Check format
-        run: npm run format:check
+        run: pnpm format:check
 
       - name: Check spelling
-        run: npm run spell
+        run: pnpm spell
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: Audit dependencies
-        run: npm audit --audit-level=high
+        run: pnpm audit --audit-level high
 
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       - name: Test
-        run: npm run test
+        run: pnpm test
 
       - name: Generate SBOM
         if: github.event_name == 'push'
-        run: npx cyclonedx-npm --output-format JSON --output-file sbom.cdx.json
+        run: pnpm exec cdxgen -t pnpm -o sbom.cdx.json
 
       - name: Upload SBOM artifact
         if: github.event_name == 'push'
@@ -120,14 +120,14 @@ jobs:
           action: ${{ needs.assembleInformation.outputs.action }}
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build Core
-        run: npx turbo run build --filter=@baloise/ds-core
+        run: pnpm exec turbo run build --filter=@baloise/ds-core
 
       - name: Run Playwright tests
         working-directory: packages/core
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: pnpm exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       # - name: Commit snapshots
       #   if: always()

@@ -113,7 +113,7 @@ async function main() {
 `
 
     // Generate filename using changeset CLI
-    const stdout = exec('npx changeset add --empty')
+    const stdout = exec('pnpm exec changeset add --empty')
     const triggerWord = '.changeset' + path.sep
     const start = stdout.lastIndexOf(triggerWord) + triggerWord.length
     const end = stdout.lastIndexOf('.md') + '.md'.length

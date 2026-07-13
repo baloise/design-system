@@ -40,11 +40,6 @@ jobs:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Update NPM registry path
-        continue-on-error: true
-        shell: bash
-        run: npm run registry
-
       - name: Clean install
         shell: bash
         run: npm ci
@@ -162,11 +157,6 @@ jobs:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Update NPM registry path
-        continue-on-error: true
-        shell: bash
-        run: npm run registry
-
       - name: Install Dependencies
         run: npm ci
         working-directory: ./e2e
@@ -224,11 +214,6 @@ jobs:
           cache: 'npm'
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Update NPM registry path
-        continue-on-error: true
-        shell: bash
-        run: npm run registry
 
       - name: Install Dependencies
         run: npm ci
@@ -292,11 +277,6 @@ jobs:
           cache: 'npm'
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Update NPM registry path
-        continue-on-error: true
-        shell: bash
-        run: npm run registry
 
       - name: Install Dependencies
         run: npm ci
@@ -439,11 +419,6 @@ jobs:
           cache: 'npm'
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Update NPM registry path
-        continue-on-error: true
-        shell: bash
-        run: npm run registry
 
       - name: Install Dependencies
         run: npm ci
@@ -628,11 +603,6 @@ jobs:
           cache: 'npm'
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Update NPM registry path
-        continue-on-error: true
-        shell: bash
-        run: npm run registry
 
       - name: Show current branch
         run: |

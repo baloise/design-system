@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Watch, Element } from '@stencil/core'
+import { Component, h, Host, Prop, Element } from '@stencil/core'
 import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   CARD_ALIGNMENTS,

@@ -1,4 +1,4 @@
-import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State, Watch } from '@stencil/core'
+import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State } from '@stencil/core'
 import {
   stopEventBubbling,
   normalizeDeprecatedTShirtSize,

@@ -36,7 +36,7 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md). We are committ
 ```bash
 git clone https://github.com/baloise/design-system.git
 cd design-system
-npm ci
+pnpm install --frozen-lockfile
 ```
 
 For full setup instructions, troubleshooting, and dev server details, see [DEVELOPMENT.md](DEVELOPMENT.md).
@@ -67,7 +67,7 @@ docs: update contribution guidelines
 1. **Create a changeset** if your changes affect end users:
 
    ```bash
-   npm run changeset
+   pnpm changeset
    ```
 
    - `patch` — bug fixes, non-breaking style tweaks
@@ -79,7 +79,7 @@ docs: update contribution guidelines
 2. **Open a PR against the `next` branch**
    - Include a descriptive title
    - Reference related issues if applicable
-   - Ensure all checks pass (`npm run lint && npm run format`)
+   - Ensure all checks pass (`pnpm lint && pnpm format`)
 
 3. **Address review feedback** before merging
 
@@ -122,13 +122,13 @@ This creates a properly named branch (e.g., `feat/button-hover-state`) and opens
 5. **Add a changeset**:
 
    ```bash
-   npm run changeset
+   pnpm changeset
    ```
 
    - Choose `patch` for this bug fix
 
 6. **Finalize your PR**:
-   - Ensure all checks pass: `npm run lint && npm run format && npm test`
+   - Ensure all checks pass: `pnpm lint && pnpm format && pnpm test`
    - Get approval from a core team member
    - Merge to `next`
 
@@ -149,13 +149,13 @@ This creates a properly named branch (e.g., `feat/button-hover-state`) and opens
 6. **Add a changeset**:
 
    ```bash
-   npm run changeset
+   pnpm changeset
    ```
 
    - Choose `minor` for new features or `major` for breaking changes
 
 7. **Finalize your PR**:
-   - Ensure all checks pass: `npm run lint && npm run format && npm test`
+   - Ensure all checks pass: `pnpm lint && pnpm format && pnpm test`
    - Get approval from a core team member
    - Merge to `next`
 
@@ -193,13 +193,13 @@ Icons are stored in two packages depending on their source and usage:
 3. Optimize SVG files for web:
 
    ```bash
-   npm run optimize
+   pnpm optimize
    ```
 
 4. Create a changeset documenting the icon addition:
 
    ```bash
-   npm run changeset
+   pnpm changeset
    ```
 
 5. Open a PR with a descriptive title (e.g., `feat: add copy and download UI icons`)
@@ -211,9 +211,9 @@ See [STYLE_GUIDE.md](STYLE_GUIDE.md) for naming conventions, prop patterns, CSS 
 Run these before every PR:
 
 ```bash
-npm run lint      # Check for violations
-npm run format    # Auto-fix formatting
-npm run spell     # Spell check
+pnpm lint      # Check for violations
+pnpm format    # Auto-fix formatting
+pnpm spell     # Spell check
 ```
 
 ## Testing
@@ -221,9 +221,9 @@ npm run spell     # Spell check
 See [ARCHITECTURE.md — Testing Strategy](ARCHITECTURE.md#testing-strategy) for required test types, Page Object patterns, and test file locations.
 
 ```bash
-npm test                         # Unit tests
-npm run play                     # Playwright UI explorer
-npm run play -- --grep="<name>"  # Single test
+pnpm test                         # Unit tests
+pnpm play                     # Playwright UI explorer
+pnpm play -- --grep="<name>"  # Single test
 ```
 
 ## Security

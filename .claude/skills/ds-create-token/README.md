@@ -54,7 +54,7 @@ The skill will:
 5. Suggest component token paths
 6. Ask for confirmation
 7. Write approved tokens to `Base.tokens.json`
-8. Run `npm run tokens` to compile outputs
+8. Run `pnpm tokens` to compile outputs
 
 ## Examples
 

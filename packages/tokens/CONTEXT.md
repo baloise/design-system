@@ -209,7 +209,7 @@ Token names are composed of ordered segments that narrow scope:
 Rebuild compiled outputs whenever `Base.tokens.json` changes:
 
 ```bash
-npm run tokens
+pnpm tokens
 ```
 
 This regenerates:

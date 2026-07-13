@@ -509,14 +509,14 @@ packages/playwright/src/lib/components/
 
 ```bash
 # Visual regression tests
-npm run play -- --grep "button"
+pnpm play -- --grep "button"
 
 # A11y tests (part of play)
-npm run play -- --grep "a11y"
+pnpm play -- --grep "a11y"
 
 # Component tests (part of play)
-npm run play -- --grep "component"
+pnpm play -- --grep "component"
 
 # Unit tests
-npm run test -- button.util.spec.ts
+pnpm test -- button.util.spec.ts
 ```

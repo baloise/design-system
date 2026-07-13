@@ -652,7 +652,7 @@ import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-co
 **Notes:**
 
 - **Keep this page minimal** — no extra content beyond the components above. Do not add additional sections, guidelines, or explanatory text.
-- `ComponentPageObject` reads `pageObject` from `components.json` (populated during `npm run build`).
+- `ComponentPageObject` reads `pageObject` from `components.json` (populated during `pnpm build`).
 - If the component has no `.po.ts` in `packages/playwright`, the block shows "No page object available" + the install guide.
 - If a page object exists, it renders Locators / Actions / Assertions tables, a semi-dynamic example test, and the install guide.
 - The structure is always: Meta → Banner → BannerTabs → ComponentPageObject → Footer. Nothing more.

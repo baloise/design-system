@@ -115,9 +115,9 @@ Timeline:
 ## Step 5 — Develop and Release Fix (Target: As Fast As Possible, Hard Limit T+90d)
 
 - [ ] Develop the fix on a private branch (do not push to a public branch until the advisory is ready to publish)
-- [ ] Run the full test suite: `npm test && npm run play`
-- [ ] Run `npm audit --audit-level=high` to confirm no remaining critical/high CVEs
-- [ ] Create a changeset entry: `npm run changeset` — mark as `patch`
+- [ ] Run the full test suite: `pnpm test && pnpm play`
+- [ ] Run `pnpm audit --audit-level high` to confirm no remaining critical/high CVEs
+- [ ] Create a changeset entry: `pnpm changeset` — mark as `patch`
 - [ ] Trigger the release workflow (this generates the SBOM, provenance attestation, and publishes to npm)
 - [ ] For LTS branches: apply the same fix via the `lts-release` workflow
 

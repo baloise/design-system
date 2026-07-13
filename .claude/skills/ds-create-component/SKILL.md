@@ -71,7 +71,7 @@ Next steps:
 1. Review the generated component files
 2. Refine render() logic and add your component-specific code
 3. Update SCSS variants if needed
-4. Run: npm run play
+4. Run: pnpm play
 5. Create tests with /ds-sync-component-tests
 ```
 
@@ -159,7 +159,7 @@ This skill **only generates components**. The following are handled by other ski
 
 - ❌ **Tests** — Use `/ds-sync-component-tests` to create unit, interaction, visual, and a11y tests
 - ❌ **Storybook stories** — Create `.stories.ts` and `.mdx` files separately
-- ❌ **Type definitions** — Auto-generated when you run `npm run build`
+- ❌ **Type definitions** — Auto-generated when you run `pnpm build`
 
 ## Token Warnings
 
@@ -173,7 +173,7 @@ When the skill validates tokens, it prints warnings like:
    Recommendation:
    1. Use alias token instead: var(--ds-alias-color-primary)
    2. Or create a component token: --ds-button-color-primary
-   3. Add to Base.tokens.json and re-run: npm run tokens
+   3. Add to Base.tokens.json and re-run: pnpm tokens
 
    This is a warning only. You can proceed.
    See: docs/agents/domain.md (Design tokens section)

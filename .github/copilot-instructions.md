@@ -21,31 +21,31 @@ For comprehensive architecture and design philosophy, see [ARCHITECTURE.md](../A
 
 ```bash
 # Development
-npm start                  # Start core components in dev mode (IS_DS_DEVELOPMENT=true)
-npm run docs               # Start Storybook documentation
+pnpm start                 # Start core components in dev mode (IS_DS_DEVELOPMENT=true)
+pnpm docs                  # Start Storybook documentation
 
 # Build
-npm run build              # Build all packages (respects turbo cache)
-npm run tokens             # Build design tokens only
-npm run css                # Build styles only
+pnpm build                 # Build all packages (respects turbo cache)
+pnpm tokens                # Build design tokens only
+pnpm css                   # Build styles only
 
 # Testing
-npm test                   # Run all Vitest unit tests (--watch=false)
-npm run play               # Open Playwright UI test explorer
+pnpm test                  # Run all Vitest unit tests (--watch=false)
+pnpm play                  # Open Playwright UI test explorer
 
 # Run single Vitest test
-npm run test -- --workspace=<project> --testFile=<path>
+pnpm --filter <project> test -- --testFile=<path>
 
 # Run single Playwright test
-npm run play -- --grep="<test name>"
+pnpm play -- --grep="<test name>"
 
 # Linting & Formatting
-npm run lint               # Lint all packages
-npm run format             # Auto-format code (enforces LF line endings)
-npm run spell              # Spell check with cspell
+pnpm lint                  # Lint all packages
+pnpm format                # Auto-format code (enforces LF line endings)
+pnpm spell                 # Spell check with cspell
 
 # Version management
-npm run changeset          # Create a changeset entry before publishing
+pnpm changeset             # Create a changeset entry before publishing
 ```
 
 ## Documentation

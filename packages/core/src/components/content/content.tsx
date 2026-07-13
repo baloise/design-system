@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf } from '@utils'
 import { DsComponentInterface } from '@global'

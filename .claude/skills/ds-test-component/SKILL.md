@@ -160,7 +160,7 @@ Located in: `packages/playwright/src/lib/components/button.po.ts`
   - Happy paths (valid inputs → expected outputs)
   - Edge cases (undefined, null, empty string, invalid values)
   - Type variations (if function accepts multiple types)
-- Ready to run with `npm test`
+- Ready to run with `pnpm test`
 
 ## Workflow
 
@@ -205,7 +205,7 @@ Which to demo? (deselect unwanted)
 ✓ button.po.ts (5 parts + 4 assertions)
 ✓ button.util.spec.ts (4 utils, 18 test cases)
 
-Next: Review files, run tests: npm run play, npm test
+Next: Review files, run tests: pnpm play, pnpm test
 ```
 
 ## Example: Button Component

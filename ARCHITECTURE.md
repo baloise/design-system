@@ -94,7 +94,7 @@ Build tasks are defined in `turbo.json` and `package.json` scripts. Each package
 - **`packages/css`** — Runs Sass + PostCSS to generate CSS
 - **`packages/playwright`** — Compiles TypeScript for test utilities
 
-Use `npm run <script>` or `turbo run <task>` to invoke tasks. Turborepo caches task outputs — only changed packages rebuild.
+Use `pnpm <script>` or `turbo run <task>` to invoke tasks. Turborepo caches task outputs — only changed packages rebuild.
 
 ## Component File Structure
 
@@ -406,15 +406,15 @@ Use this checklist when creating a component from scratch:
 - [ ] Add `test/<name>.visual.play.ts` visual regression tests
 - [ ] Add `test/<name>.a11y.play.ts` accessibility tests
 - [ ] Add Storybook entry under `docs/src/components/<name>/` (stories + MDX)
-- [ ] Create changeset entry with `npm run changeset`
-- [ ] Pass all linting checks: `npm run lint && npm run format`
+- [ ] Create changeset entry with `pnpm changeset`
+- [ ] Pass all linting checks: `pnpm lint && pnpm format`
 
 ## Changesets & Release Process
 
 All changes affecting end users must be documented in a changeset:
 
 ```bash
-npm run changeset
+pnpm changeset
 ```
 
 This creates a `.md` file in `.changeset/` describing the changes. Choose version bump:
