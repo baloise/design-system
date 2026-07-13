@@ -4,12 +4,75 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@axe-core/playwright':
+      specifier: 4.11.3
+      version: 4.11.3
+    '@stencil/core':
+      specifier: 4.43.5
+      version: 4.43.5
+    '@storybook/addon-docs':
+      specifier: 10.4.6
+      version: 10.4.6
+    '@storybook/addon-links':
+      specifier: 10.4.6
+      version: 10.4.6
+    '@storybook/html-vite':
+      specifier: 10.4.6
+      version: 10.4.6
+    '@typescript-eslint/utils':
+      specifier: 8.61.1
+      version: 8.61.1
+    compression:
+      specifier: 1.8.1
+      version: 1.8.1
+    eslint:
+      specifier: 10.5.0
+      version: 10.5.0
+    express:
+      specifier: 5.2.1
+      version: 5.2.1
+    fast-deep-equal:
+      specifier: 3.1.3
+      version: 3.1.3
+    fs-extra:
+      specifier: 11.3.5
+      version: 11.3.5
+    lodash:
+      specifier: 4.18.1
+      version: 4.18.1
+    sass:
+      specifier: 1.101.0
+      version: 1.101.0
+    serve-index:
+      specifier: 1.9.2
+      version: 1.9.2
+    storybook:
+      specifier: 10.4.6
+      version: 10.4.6
+    tslib:
+      specifier: 2.8.1
+      version: 2.8.1
+    tsx:
+      specifier: 4.22.4
+      version: 4.22.4
+    typescript:
+      specifier: 5.6.3
+      version: 5.6.3
+    vite:
+      specifier: 8.0.16
+      version: 8.0.16
+    vitest:
+      specifier: 4.1.9
+      version: 4.1.9
+
 importers:
 
   .:
     devDependencies:
       '@axe-core/playwright':
-        specifier: 4.11.3
+        specifier: 'catalog:'
         version: 4.11.3(playwright-core@1.59.1)
       '@changesets/changelog-github':
         specifier: 0.7.0
@@ -33,7 +96,7 @@ importers:
         specifier: 1.59.1
         version: 1.59.1
       '@stencil/core':
-        specifier: 4.43.5
+        specifier: 'catalog:'
         version: 4.43.5
       '@stencil/react-output-target':
         specifier: 1.5.3
@@ -42,13 +105,13 @@ importers:
         specifier: 3.2.3
         version: 3.2.3(@stencil/core@4.43.5)
       '@storybook/addon-docs':
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
       '@storybook/addon-links':
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(@types/react@19.2.17)(react@19.2.7)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       '@storybook/html-vite':
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(esbuild@0.28.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
       '@swc/cli':
         specifier: 0.8.1
@@ -66,7 +129,7 @@ importers:
         specifier: 8.61.1
         version: 8.61.1(eslint@10.5.0(jiti@2.7.0))(typescript@5.6.3)
       '@typescript-eslint/utils':
-        specifier: 8.61.1
+        specifier: 'catalog:'
         version: 8.61.1(eslint@10.5.0(jiti@2.7.0))(typescript@5.6.3)
       '@vitest/ui':
         specifier: 4.1.9
@@ -75,7 +138,7 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0
       compression:
-        specifier: 1.8.1
+        specifier: 'catalog:'
         version: 1.8.1
       cross-env:
         specifier: 7.0.3
@@ -84,7 +147,7 @@ importers:
         specifier: 10.0.1
         version: 10.0.1
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       eslint-config-prettier:
         specifier: 10.1.8
@@ -93,16 +156,16 @@ importers:
         specifier: 2.10.4
         version: 2.10.4(eslint@10.5.0(jiti@2.7.0))
       express:
-        specifier: 5.2.1
+        specifier: 'catalog:'
         version: 5.2.1
       fast-deep-equal:
-        specifier: 3.1.3
+        specifier: 'catalog:'
         version: 3.1.3
       fast-glob:
         specifier: 3.3.3
         version: 3.3.3
       fs-extra:
-        specifier: 11.3.5
+        specifier: 'catalog:'
         version: 11.3.5
       glob:
         specifier: 13.0.6
@@ -117,7 +180,7 @@ importers:
         specifier: 2.0.1
         version: 2.0.1
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
       prettier:
         specifier: 3.8.4
@@ -129,13 +192,13 @@ importers:
         specifier: 6.1.3
         version: 6.1.3
       sass:
-        specifier: 1.101.0
+        specifier: 'catalog:'
         version: 1.101.0
       serve-index:
-        specifier: 1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
       storybook:
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       style-dictionary:
         specifier: 5.5.0
@@ -144,22 +207,22 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
       tsx:
-        specifier: ^4.22.4
+        specifier: 'catalog:'
         version: 4.22.4
       turbo:
         specifier: 2.9.18
         version: 2.9.18
       typescript:
-        specifier: 5.6.3
+        specifier: 'catalog:'
         version: 5.6.3
       typescript-eslint:
         specifier: 8.61.1
         version: 8.61.1(eslint@10.5.0(jiti@2.7.0))(typescript@5.6.3)
       vite:
-        specifier: 8.0.16
+        specifier: 'catalog:'
         version: 8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0)
       vitest:
-        specifier: 4.1.9
+        specifier: 'catalog:'
         version: 4.1.9(@types/node@24.13.2)(@vitest/ui@4.1.9)(jsdom@29.1.1)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
     optionalDependencies:
       '@oxc-parser/binding-linux-arm64-gnu':
@@ -184,16 +247,16 @@ importers:
         specifier: 20.0.0-next.4
         version: link:../packages/tokens
       '@storybook/addon-docs':
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
       '@storybook/addon-links':
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(@types/react@19.2.17)(react@19.2.7)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       '@storybook/html-vite':
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(esbuild@0.28.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
       react:
         specifier: 19.2.7
@@ -202,7 +265,7 @@ importers:
         specifier: 19.2.7
         version: 19.2.7(react@19.2.7)
       storybook:
-        specifier: 10.4.6
+        specifier: 'catalog:'
         version: 10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@types/react':
@@ -212,70 +275,70 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.17)
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       typescript:
-        specifier: 5.6.3
+        specifier: 'catalog:'
         version: 5.6.3
       vite:
-        specifier: 8.0.16
+        specifier: 'catalog:'
         version: 8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0)
 
   libs/eslint-plugin:
     dependencies:
       '@typescript-eslint/utils':
-        specifier: 8.61.1
+        specifier: 'catalog:'
         version: 8.61.1(eslint@10.5.0(jiti@2.7.0))(typescript@5.6.3)
     devDependencies:
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       typescript:
-        specifier: 5.6.3
+        specifier: 'catalog:'
         version: 5.6.3
       vitest:
-        specifier: 4.1.9
+        specifier: 'catalog:'
         version: 4.1.9(@types/node@24.13.2)(@vitest/ui@4.1.9)(jsdom@29.1.1)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
 
   libs/output-target-angular:
     dependencies:
       '@stencil/core':
-        specifier: 4.43.5
+        specifier: 'catalog:'
         version: 4.43.5
       tslib:
-        specifier: 2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       typescript:
-        specifier: 5.6.3
+        specifier: 'catalog:'
         version: 5.6.3
       vitest:
-        specifier: 4.1.9
+        specifier: 'catalog:'
         version: 4.1.9(@types/node@24.13.2)(@vitest/ui@4.1.9)(jsdom@29.1.1)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
 
   libs/output-target-web:
     dependencies:
       '@stencil/core':
-        specifier: 4.43.5
+        specifier: 'catalog:'
         version: 4.43.5
       fs-extra:
-        specifier: 11.3.5
+        specifier: 'catalog:'
         version: 11.3.5
       replace-in-file:
         specifier: 8.4.0
         version: 8.4.0
       tslib:
-        specifier: 2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       typescript:
-        specifier: 5.6.3
+        specifier: 'catalog:'
         version: 5.6.3
 
   packages/assets:
@@ -302,7 +365,7 @@ importers:
         specifier: ^2.11.4
         version: 2.11.8
       '@stencil/core':
-        specifier: ^4.43.5
+        specifier: 'catalog:'
         version: 4.43.5
       big.js:
         specifier: ^7.0.1
@@ -320,7 +383,7 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
       lodash:
-        specifier: ^4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
       lottie-colorify:
         specifier: 0.8.0
@@ -332,7 +395,7 @@ importers:
         specifier: ^3.7.2
         version: 3.7.2
       tslib:
-        specifier: ^2.3.0
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@baloise/ds-playwright':
@@ -345,13 +408,13 @@ importers:
         specifier: 3.7.2
         version: 3.7.2
       compression:
-        specifier: 1.8.1
+        specifier: 'catalog:'
         version: 1.8.1
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       express:
-        specifier: 5.2.1
+        specifier: 'catalog:'
         version: 5.2.1
       libs-eslint-plugin:
         specifier: 0.0.0
@@ -363,10 +426,10 @@ importers:
         specifier: 0.0.0
         version: link:../../libs/output-target-web
       serve-index:
-        specifier: 1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
       vitest:
-        specifier: 4.1.9
+        specifier: 'catalog:'
         version: 4.1.9(@types/node@24.13.2)(@vitest/ui@4.1.9)(jsdom@29.1.1)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
 
   packages/css:
@@ -385,10 +448,10 @@ importers:
         specifier: ^8.5.15
         version: 8.5.15
       sass:
-        specifier: 1.101.0
+        specifier: 'catalog:'
         version: 1.101.0
       tsx:
-        specifier: ^4.22.4
+        specifier: 'catalog:'
         version: 4.22.4
       unocss:
         specifier: 66.7.2
@@ -397,26 +460,26 @@ importers:
   packages/playwright:
     dependencies:
       '@axe-core/playwright':
-        specifier: ^4.11.3
+        specifier: 'catalog:'
         version: 4.11.3(playwright-core@1.59.1)
       fast-deep-equal:
-        specifier: ^3.1.3
+        specifier: 'catalog:'
         version: 3.1.3
     devDependencies:
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       vitest:
-        specifier: 4.1.9
+        specifier: 'catalog:'
         version: 4.1.9(@types/node@24.13.2)(@vitest/ui@4.1.9)(jsdom@29.1.1)(vite@8.0.16(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.101.0)(tsx@4.22.4)(yaml@2.9.0))
 
   packages/tokens:
     devDependencies:
       eslint:
-        specifier: 10.5.0
+        specifier: 'catalog:'
         version: 10.5.0(jiti@2.7.0)
       typescript:
-        specifier: 5.6.3
+        specifier: 'catalog:'
         version: 5.6.3
 
 packages:

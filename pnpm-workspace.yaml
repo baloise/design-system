@@ -5,6 +5,31 @@ packages:
 
 linkWorkspacePackages: true
 
+# Single source of truth for versions shared across multiple workspace
+# packages. Reference an entry from a package.json with "catalog:".
+# pnpm replaces "catalog:" with the resolved version on publish.
+catalog:
+  '@axe-core/playwright': 4.11.3
+  '@stencil/core': 4.43.5
+  '@storybook/addon-docs': 10.4.6
+  '@storybook/addon-links': 10.4.6
+  '@storybook/html-vite': 10.4.6
+  '@typescript-eslint/utils': 8.61.1
+  compression: 1.8.1
+  eslint: 10.5.0
+  express: 5.2.1
+  fast-deep-equal: 3.1.3
+  fs-extra: 11.3.5
+  lodash: 4.18.1
+  sass: 1.101.0
+  serve-index: 1.9.2
+  storybook: 10.4.6
+  tslib: 2.8.1
+  tsx: 4.22.4
+  typescript: 5.6.3
+  vite: 8.0.16
+  vitest: 4.1.9
+
 # Dependency lifecycle scripts are blocked by default in pnpm 10.
 # These native-build packages are explicitly allowed to run their scripts.
 onlyBuiltDependencies:

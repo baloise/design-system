@@ -19,8 +19,8 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "eslint": "10.5.0",
-    "typescript": "5.6.3"
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   },
   "homepage": "https://design.baloise.dev",
   "security": "https://github.com/baloise/design-system/security/advisories/new",
