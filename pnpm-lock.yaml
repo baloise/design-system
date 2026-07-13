@@ -132,7 +132,7 @@ importers:
         specifier: 4.1.9
         version: 4.1.9(vitest@4.1.9)
       archiver:
-        specifier: ^8.0.0
+        specifier: 8.0.0
         version: 8.0.0
       compression:
         specifier: 'catalog:'
@@ -266,7 +266,7 @@ importers:
         version: 10.4.6(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@types/react':
-        specifier: ^19.2.17
+        specifier: 19.2.17
         version: 19.2.17
       '@types/react-dom':
         specifier: 19.2.3
@@ -356,28 +356,28 @@ importers:
         specifier: 20.0.0-next.4
         version: link:../tokens
       '@floating-ui/dom':
-        specifier: ^1.7.6
+        specifier: 1.7.6
         version: 1.7.6
       '@popperjs/core':
-        specifier: ^2.11.4
-        version: 2.11.8
+        specifier: 2.11.4
+        version: 2.11.4
       '@stencil/core':
         specifier: 'catalog:'
         version: 4.43.5
       big.js:
-        specifier: ^7.0.1
+        specifier: 7.0.1
         version: 7.0.1
       contactjs:
-        specifier: ^2.1.7
+        specifier: 2.1.7
         version: 2.1.7
       dompurify:
         specifier: 3.4.11
         version: 3.4.11
       filesize.js:
-        specifier: ^2.0.0
+        specifier: 2.0.0
         version: 2.0.0
       focus-trap:
-        specifier: ^8.2.2
+        specifier: 8.2.2
         version: 8.2.2
       lodash:
         specifier: 'catalog:'
@@ -389,7 +389,7 @@ importers:
         specifier: 5.8.1
         version: 5.8.1
       luxon:
-        specifier: ^3.7.2
+        specifier: 3.7.2
         version: 3.7.2
       tslib:
         specifier: 'catalog:'
@@ -442,7 +442,7 @@ importers:
         specifier: 10.5.0
         version: 10.5.0(postcss@8.5.15)
       postcss:
-        specifier: ^8.5.15
+        specifier: 8.5.15
         version: 8.5.15
       sass:
         specifier: 'catalog:'
@@ -1907,8 +1907,8 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@popperjs/core@2.11.8':
-    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+  '@popperjs/core@2.11.4':
+    resolution: {integrity: sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==}
 
   '@quansync/fs@1.0.0':
     resolution: {integrity: sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ==}
@@ -6592,7 +6592,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@popperjs/core@2.11.8': {}
+  '@popperjs/core@2.11.4': {}
 
   '@quansync/fs@1.0.0':
     dependencies:

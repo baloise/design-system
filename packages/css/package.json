@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "autoprefixer": "10.5.0",
-    "postcss": "^8.5.15",
+    "postcss": "8.5.15",
     "sass": "catalog:",
     "tsx": "catalog:",
     "unocss": "66.7.2"
