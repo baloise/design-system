@@ -46,7 +46,7 @@
     "@baloise/ds-css": "20.0.0-next.4",
     "@baloise/ds-tokens": "20.0.0-next.4",
     "@floating-ui/dom": "1.7.6",
-    "@popperjs/core": "2.11.4",
+    "@popperjs/core": "2.11.8",
     "@stencil/core": "catalog:",
     "big.js": "7.0.1",
     "contactjs": "2.1.7",
