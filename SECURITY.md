@@ -153,7 +153,7 @@ pnpm audit                # Check for known vulnerabilities
 pnpm list --depth Infinity  # Include transitive dependencies
 ```
 
-A CycloneDX SBOM is generated in CI with `cdxgen` (`pnpm exec cdxgen -t pnpm -o sbom.cdx.json`).
+A CycloneDX SBOM is generated in CI with pnpm's native command (`pnpm sbom --sbom-format cyclonedx --out sbom.cdx.json`).
 
 ### Secure Supply Chain Practices
 

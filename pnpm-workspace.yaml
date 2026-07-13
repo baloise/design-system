@@ -30,10 +30,11 @@ catalog:
   vite: 8.0.16
   vitest: 4.1.9
 
-# Dependency lifecycle scripts are blocked by default in pnpm 10.
+# Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
-  - esbuild
-  - libxmljs2
+# pnpm 11 replaced the `onlyBuiltDependencies` list with the `allowBuilds` map.
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  libxmljs2: true

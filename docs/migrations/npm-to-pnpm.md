@@ -119,6 +119,9 @@ migrated.
   `pnpm exec cdxgen -t pnpm -o sbom.cdx.json`. Smoke-tested locally → valid CycloneDX
   (specVersion **1.7**, 1212 components). ⚠️ Verify `advanced-security/sbom-report-action@v1`
   accepts CycloneDX 1.7; pin `--spec-version 1.6` if not.
+  > **Superseded (pnpm 11):** `cdxgen` was later dropped in favour of pnpm's native
+  > `pnpm sbom --sbom-format cyclonedx --out sbom.cdx.json` (added in pnpm 11.0.0). Same
+  > output (CycloneDX 1.7, 1212 components). See [SECURITY.md](../../SECURITY.md#software-bill-of-materials-sbom).
 - **Publish:** `npm publish --workspaces --tag X` → `pnpm -r publish --tag X --no-git-checks`
   (`--no-git-checks` is required because the release flow modifies each `package.json` for
   SBOM bundling before publishing).

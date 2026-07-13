@@ -89,7 +89,7 @@ jobs:
       # machine-readable software composition data with each release.
       - name: Generate SBOM
         if: ${{ !inputs.dry-run }}
-        run: pnpm exec cdxgen -t pnpm -o sbom.cdx.json
+        run: pnpm sbom --sbom-format cyclonedx --out sbom.cdx.json
 
       # Copies the SBOM into each published package directory and adds it to the package's
       # "files" allowlist so npm includes it in the tarball. This is done at release time
