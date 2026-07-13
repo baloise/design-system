@@ -1,5 +1,13 @@
 # Changelog
 
+## 19.10.2
+
+### Patch Changes
+
+- **footer, navbar**: add logo-brand prop to define the logo ( [#2000](https://github.com/baloise/design-system/pull/2000))
+
+- **icon**: adds type defintions. ( [#1996](https://github.com/baloise/design-system/pull/1996))
+
 ## 19.10.1
 
 ### Patch Changes
