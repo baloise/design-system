@@ -18,6 +18,7 @@ import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail
 import { CloseSize } from "./components/close/close.interfaces";
 import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
+import { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
 import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
@@ -59,6 +60,7 @@ export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail
 export { CloseSize } from "./components/close/close.interfaces";
 export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
+export { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
 export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
@@ -925,6 +927,134 @@ export namespace Components {
      * Pass-through slot container for value content.
      */
     interface DsDataValue {
+    }
+    /**
+     * Date renders a masked date input field with an interactive calendar popup for date selection.
+     */
+    interface DsDate {
+        /**
+          * Callback to determine which dates in the calendar are selectable. Receives an ISO date string (YYYY-MM-DD) and should return `true` to allow the date or `false` to disable it. Typed input that resolves to a disallowed date is also rejected.
+          * @default undefined
+         */
+        "allowedDates": ((dateString: string) => boolean) | undefined;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * This Boolean attribute lets you specify that the control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus": boolean;
+        /**
+          * Defines the color of the date input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": DateColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The ISO date string (YYYY-MM-DD) where the calendar opens when no value is set. The date is not selected — only the view navigates to it.
+          * @default undefined
+         */
+        "defaultDate": string | undefined;
+        /**
+          * The description of the date input, which is displayed below the field.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the calendar trigger icon and popup are hidden. The component behaves as a plain masked text input with no date picker UX.
+          * @default false
+         */
+        "freeSolo": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the input is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the date input, which is displayed above the field.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the trigger button.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The maximum ISO date string allowed (YYYY-MM-DD). Dates after this are disabled in the calendar and rejected from typed input.
+          * @default undefined
+         */
+        "max": string | undefined;
+        /**
+          * Latest year available for selection. Takes precedence over `max` when both are set.
+          * @default undefined
+         */
+        "maxYearProp": number | undefined;
+        /**
+          * The minimum ISO date string allowed (YYYY-MM-DD). Dates before this are disabled in the calendar and rejected from typed input.
+          * @default undefined
+         */
+        "min": string | undefined;
+        /**
+          * Earliest year available for selection. Takes precedence over `min` when both are set.
+          * @default undefined
+         */
+        "minYearProp": number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.dateId
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the input has a value.
+          * @default ''
+         */
+        "placeholder": string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input` in `ds-date`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `ds-date`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the date input in ISO format (YYYY-MM-DD).
+          * @default null
+         */
+        "value": string | null;
     }
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -3214,6 +3344,10 @@ export interface DsCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsCheckboxGroupElement;
 }
+export interface DsDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsDateElement;
+}
 export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsDrawerElement;
@@ -3604,6 +3738,31 @@ declare global {
     var HTMLDsDataValueElement: {
         prototype: HTMLDsDataValueElement;
         new (): HTMLDsDataValueElement;
+    };
+    interface HTMLDsDateElementEventMap {
+        "dsBlur": DateBlurDetail;
+        "dsKeyPress": DateKeyPressDetail;
+        "dsFocus": DateFocusDetail;
+        "dsClick": DateClickDetail;
+        "dsInput": DateInputDetail;
+        "dsChange": DateChangeDetail;
+    }
+    /**
+     * Date renders a masked date input field with an interactive calendar popup for date selection.
+     */
+    interface HTMLDsDateElement extends Components.DsDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsDateElementEventMap>(type: K, listener: (this: HTMLDsDateElement, ev: DsDateCustomEvent<HTMLDsDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsDateElementEventMap>(type: K, listener: (this: HTMLDsDateElement, ev: DsDateCustomEvent<HTMLDsDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsDateElement: {
+        prototype: HTMLDsDateElement;
+        new (): HTMLDsDateElement;
     };
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -4367,6 +4526,7 @@ declare global {
         "ds-data-item": HTMLDsDataItemElement;
         "ds-data-label": HTMLDsDataLabelElement;
         "ds-data-value": HTMLDsDataValueElement;
+        "ds-date": HTMLDsDateElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
         "ds-file-upload": HTMLDsFileUploadElement;
@@ -5315,6 +5475,149 @@ declare namespace LocalJSX {
      * Pass-through slot container for value content.
      */
     interface DsDataValue {
+    }
+    /**
+     * Date renders a masked date input field with an interactive calendar popup for date selection.
+     */
+    interface DsDate {
+        /**
+          * Callback to determine which dates in the calendar are selectable. Receives an ISO date string (YYYY-MM-DD) and should return `true` to allow the date or `false` to disable it. Typed input that resolves to a disallowed date is also rejected.
+          * @default undefined
+         */
+        "allowedDates"?: ((dateString: string) => boolean) | undefined;
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * This Boolean attribute lets you specify that the control should have input focus when the page loads.
+          * @default false
+         */
+        "autofocus"?: boolean;
+        /**
+          * Defines the color of the date input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: DateColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The ISO date string (YYYY-MM-DD) where the calendar opens when no value is set. The date is not selected — only the view navigates to it.
+          * @default undefined
+         */
+        "defaultDate"?: string | undefined;
+        /**
+          * The description of the date input, which is displayed below the field.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true`, the calendar trigger icon and popup are hidden. The component behaves as a plain masked text input with no date picker UX.
+          * @default false
+         */
+        "freeSolo"?: boolean;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the input is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the date input, which is displayed above the field.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Shows a loading indicator at the end of the input and replaces the trigger button.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The maximum ISO date string allowed (YYYY-MM-DD). Dates after this are disabled in the calendar and rejected from typed input.
+          * @default undefined
+         */
+        "max"?: string | undefined;
+        /**
+          * Latest year available for selection. Takes precedence over `max` when both are set.
+          * @default undefined
+         */
+        "maxYearProp"?: number | undefined;
+        /**
+          * The minimum ISO date string allowed (YYYY-MM-DD). Dates before this are disabled in the calendar and rejected from typed input.
+          * @default undefined
+         */
+        "min"?: string | undefined;
+        /**
+          * Earliest year available for selection. Takes precedence over `min` when both are set.
+          * @default undefined
+         */
+        "minYearProp"?: number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.dateId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsDateCustomEvent<DateBlurDetail>) => void;
+        /**
+          * Emitted when the date value has changed (ISO value or null).
+         */
+        "onDsChange"?: (event: DsDateCustomEvent<DateChangeDetail>) => void;
+        /**
+          * Emitted when the input is clicked.
+         */
+        "onDsClick"?: (event: DsDateCustomEvent<DateClickDetail>) => void;
+        /**
+          * Emitted when the input receives focus.
+         */
+        "onDsFocus"?: (event: DsDateCustomEvent<DateFocusDetail>) => void;
+        /**
+          * Emitted when a keyboard input occurred (ISO value or null if incomplete).
+         */
+        "onDsInput"?: (event: DsDateCustomEvent<DateInputDetail>) => void;
+        /**
+          * Emitted when a keyboard key has been pressed.
+         */
+        "onDsKeyPress"?: (event: DsDateCustomEvent<DateKeyPressDetail>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The value of the date input in ISO format (YYYY-MM-DD).
+          * @default null
+         */
+        "value"?: string | null;
     }
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -7932,6 +8235,29 @@ declare namespace LocalJSX {
     interface DsDataLabelAttributes {
         "required": boolean;
     }
+    interface DsDateAttributes {
+        "value": string | null;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": DateColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "required": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "placeholder": string;
+        "autofocus": boolean;
+        "debounce": number;
+        "autoInvalidOff": boolean;
+        "loading": boolean;
+        "min": string | undefined;
+        "max": string | undefined;
+        "minYearProp": number | undefined;
+        "maxYearProp": number | undefined;
+        "defaultDate": string | undefined;
+        "freeSolo": boolean;
+    }
     interface DsDividerAttributes {
         "layout": DividerLayout;
         "space": DividerSpace;
@@ -8410,6 +8736,7 @@ declare namespace LocalJSX {
         "ds-data-item": Omit<DsDataItem, keyof DsDataItemAttributes> & { [K in keyof DsDataItem & keyof DsDataItemAttributes]?: DsDataItem[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `attr:${K}`]?: DsDataItemAttributes[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `prop:${K}`]?: DsDataItem[K] };
         "ds-data-label": Omit<DsDataLabel, keyof DsDataLabelAttributes> & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes]?: DsDataLabel[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `attr:${K}`]?: DsDataLabelAttributes[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `prop:${K}`]?: DsDataLabel[K] };
         "ds-data-value": DsDataValue;
+        "ds-date": Omit<DsDate, keyof DsDateAttributes> & { [K in keyof DsDate & keyof DsDateAttributes]?: DsDate[K] } & { [K in keyof DsDate & keyof DsDateAttributes as `attr:${K}`]?: DsDateAttributes[K] } & { [K in keyof DsDate & keyof DsDateAttributes as `prop:${K}`]?: DsDate[K] };
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
         "ds-file-upload": Omit<DsFileUpload, keyof DsFileUploadAttributes> & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes]?: DsFileUpload[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `attr:${K}`]?: DsFileUploadAttributes[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `prop:${K}`]?: DsFileUpload[K] };
@@ -8553,6 +8880,10 @@ declare module "@stencil/core" {
              * Pass-through slot container for value content.
              */
             "ds-data-value": LocalJSX.IntrinsicElements["ds-data-value"] & JSXBase.HTMLAttributes<HTMLDsDataValueElement>;
+            /**
+             * Date renders a masked date input field with an interactive calendar popup for date selection.
+             */
+            "ds-date": LocalJSX.IntrinsicElements["ds-date"] & JSXBase.HTMLAttributes<HTMLDsDateElement>;
             /**
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */

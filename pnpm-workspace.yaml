@@ -36,5 +36,6 @@ catalog:
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
+  core-js-pure: true
   esbuild: true
   libxmljs2: true

@@ -54,6 +54,7 @@ export class FocusHandler {
 
     this.focusTrap = createFocusTrap(this.target, {
       escapeDeactivates: false,
+      initialFocus: false,
       fallbackFocus: this.target,
       tabbableOptions: {
         getShadowRoot: true,

@@ -2,30 +2,31 @@
 
 ## Ongoing Improvements
 
-| Item                                     | Description                                                           | Status |
-| ---------------------------------------- | --------------------------------------------------------------------- | ------ |
-| Accordion                                | Use new native accordion API                                          | ✅     |
-| T-Shirt Sizes                            | Change to 2xl and get rid off normal and use medium instead           | ✅     |
-| Outline Shadow                           | Define it as a variable to overide the color                          | ✅     |
-| Playwright                               | Replace all Cypess test with Playwright                               | ✅     |
-| Default vs Base                          | Use Default for states with hover and active                          | ✅     |
-| UI Icons change base color               | Change base color of svg to primary and not black                     | ✅     |
-| FullWidth,Expanded,Wide                  | Stick with one nameing                                                | ✅     |
-| Modal                                    | Use new native dialog API                                             | ✅     |
-| Popup                                    | Use new native popup API                                              | ✅     |
-| NPM Updates                              | Check Vurnabilites and Renovate                                       | ✅     |
-| Sandbox                                  | Use new sandbox api                                                   | ✅     |
-| Validate Props and make them reflected   | Create utils and skill for that                                       | ✅     |
-| Rename props called interface to variant |                                                                       | ✅     |
-| FIGMA API                                | Pull tokens changes form the figma api instead of the manual proccess | ⬜     |
-| Brand Icons                              | Update brand icons                                                    | ⬜     |
-| Brand Icons API                          | Create a task to automate the update                                  | ⬜     |
-| Gap Analyses Material                    | Check Components use cases                                            | ⬜     |
-| Anuglar React                            | Add frameworks back after migrating too shadow dom                    | ⬜     |
-| Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px           | ⬜     |
-| Create Migration Bal                     | Create migration plan for ex-baloise                                  | ⬜     |
-| Create Migration Hel                     | Create migration plan for ex-helvetia                                 | ⬜     |
-| Veritcal from fields                     | Add missing variant                                                   | ⬜     |
+| Item                                     | Description                                                 | Status |
+| ---------------------------------------- | ----------------------------------------------------------- | ------ |
+| Accordion                                | Use new native accordion API                                | ✅     |
+| T-Shirt Sizes                            | Change to 2xl and get rid off normal and use medium instead | ✅     |
+| Outline Shadow                           | Define it as a variable to overide the color                | ✅     |
+| Playwright                               | Replace all Cypess test with Playwright                     | ✅     |
+| Default vs Base                          | Use Default for states with hover and active                | ✅     |
+| UI Icons change base color               | Change base color of svg to primary and not black           | ✅     |
+| FullWidth,Expanded,Wide                  | Stick with one nameing                                      | ✅     |
+| Modal                                    | Use new native dialog API                                   | ✅     |
+| Popup                                    | Use new native popup API                                    | ✅     |
+| NPM Updates                              | Check Vurnabilites and Renovate                             | ✅     |
+| Sandbox                                  | Use new sandbox api                                         | ✅     |
+| Validate Props and make them reflected   | Create utils and skill for that                             | ✅     |
+| Rename props called interface to variant |                                                             | ✅     |
+| Brand Icons                              | Update brand icons                                          | ⬜     |
+| Brand Icons API                          | Create a task to automate the update                        | ⬜     |
+| Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
+| Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
+| Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px | ⬜     |
+| Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
+| Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
+| Veritcal from fields                     | Add missing variant                                         | ⬜     |
+| Use exact versions                       | Adjust dependenciues to use exact versions                  | ⬜     |
+| Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
 
 ## Componentes
 
