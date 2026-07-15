@@ -192,6 +192,7 @@ export class DatePickerController {
 
         // Update the aria-selected attribute on all cells to reflect the new selection
         this.getCells().forEach(c => {
+          c.setAttribute('role', 'option')
           c.setAttribute('aria-selected', c.classList.contains('-selected-') ? 'true' : 'false')
         })
 
@@ -233,9 +234,11 @@ export class DatePickerController {
     }
     if (!body) return
 
-    body.setAttribute('role', 'grid')
+    body.setAttribute('role', 'listbox')
+    body.setAttribute('aria-label', i18nDsDate[this.config.language].selectDate)
 
     this.getCells().forEach(c => {
+      c.setAttribute('role', 'option')
       c.setAttribute('aria-selected', c.classList.contains('-selected-') ? 'true' : 'false')
       if (c.classList.contains('-current-')) {
         c.setAttribute('aria-current', 'date')
@@ -437,10 +440,10 @@ export class DatePickerController {
 
     const active = e.target as HTMLElement | null
     const activeCell = this.getCells().find(c => c.tabIndex === 0)
-    const isGridCell = active?.getAttribute('role') === 'gridcell'
+    const isGridCell = active?.getAttribute('role') === 'option'
 
-    // Tab cycle (forward): gridcell → titleBtn → prevBtn → nextBtn → gridcell
-    // Years view skips titleBtn:  gridcell → prevBtn → nextBtn → gridcell
+    // Tab cycle (forward): option → titleBtn → prevBtn → nextBtn → option
+    // Years view skips titleBtn:  option → prevBtn → nextBtn → option
     // Tab cycle (backward): reverse of the above
     if (!e.shiftKey) {
       if (isGridCell) {

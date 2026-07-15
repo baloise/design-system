@@ -242,7 +242,7 @@
   --adp-background-color-active: var(--ds-date-calendar-color-day-active-background);
 
   --adp-day-name-color: var(--ds-alias-text-color-primary);
-  --adp-color-current-date: var(--ds-date-calendar-color-current-date);
+  --adp-color-current-date: var(--ds-alias-text-color-primary);
   --adp-cell-background-color-selected: var(--ds-date-calendar-color-day-selected-background);
   --adp-cell-background-color-selected-hover: var(--ds-date-calendar-color-day-selected-hover-background);
 
@@ -352,7 +352,7 @@
   }
 
   .air-datepicker-cell.-day-.-current-:not(.-disabled-) {
-    font-weight: var(--ds-alias-text-weight-bold);
+    border: 2px solid var(--ds-global-color-primary-4);
   }
 
   .air-datepicker-cell.-day-.-selected-:not(.-disabled-) {

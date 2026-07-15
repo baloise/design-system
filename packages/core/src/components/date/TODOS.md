@@ -14,7 +14,6 @@
 | trigger toggle | open and close picker when clicking the tirgger icon                     | ✅     |
 | placeholder    | add placeholder text if given                                            | ✅     |
 | focus trap     | add correct focus color and focus trap                                   | ✅     |
-| animation      | popup needs to fly in                                                    | ⬜     |
 | http form      | verify that we have the iso value and the reset works                    | ✅     |
 | visual         | add visualt tests                                                        | ⬜     |
 | a11y           | add a11y tests                                                           | ⬜     |

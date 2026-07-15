@@ -1,6 +1,7 @@
 import { I18n } from '../../interfaces'
 
 interface I18nDsDate {
+  selectDate: string
   switchToYearView: string
   previousMonth: string
   nextMonth: string
@@ -12,6 +13,7 @@ interface I18nDsDate {
 
 export const i18nDsDate: I18n<I18nDsDate> = {
   de: {
+    selectDate: 'Datum auswählen',
     switchToYearView: 'Zur Jahresansicht wechseln',
     previousMonth: 'Vorheriger Monat',
     nextMonth: 'Nächster Monat',
@@ -21,6 +23,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Nächste Dekade',
   },
   en: {
+    selectDate: 'Select date',
     switchToYearView: 'Switch to year view',
     previousMonth: 'Previous month',
     nextMonth: 'Next month',
@@ -30,6 +33,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Next decade',
   },
   fr: {
+    selectDate: 'Sélectionner une date',
     switchToYearView: 'Passer à la vue annuelle',
     previousMonth: 'Mois précédent',
     nextMonth: 'Mois suivant',
@@ -39,6 +43,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Décennie suivante',
   },
   it: {
+    selectDate: 'Seleziona una data',
     switchToYearView: 'Passa alla vista annuale',
     previousMonth: 'Mese precedente',
     nextMonth: 'Mese successivo',
@@ -48,6 +53,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Decennio successivo',
   },
   nl: {
+    selectDate: 'Selecteer een datum',
     switchToYearView: 'Overschakelen naar jaarweergave',
     previousMonth: 'Vorige maand',
     nextMonth: 'Volgende maand',
@@ -57,6 +63,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Volgend decennium',
   },
   es: {
+    selectDate: 'Seleccionar una fecha',
     switchToYearView: 'Cambiar a vista anual',
     previousMonth: 'Mes anterior',
     nextMonth: 'Mes siguiente',
@@ -66,6 +73,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Década siguiente',
   },
   pl: {
+    selectDate: 'Wybierz datę',
     switchToYearView: 'Przełącz na widok roczny',
     previousMonth: 'Poprzedni miesiąc',
     nextMonth: 'Następny miesiąc',
@@ -75,6 +83,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Następna dekada',
   },
   pt: {
+    selectDate: 'Selecionar uma data',
     switchToYearView: 'Mudar para a vista anual',
     previousMonth: 'Mês anterior',
     nextMonth: 'Mês seguinte',
@@ -84,6 +93,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Década seguinte',
   },
   sv: {
+    selectDate: 'Välj ett datum',
     switchToYearView: 'Byt till årsvy',
     previousMonth: 'Föregående månad',
     nextMonth: 'Nästa månad',
@@ -93,6 +103,7 @@ export const i18nDsDate: I18n<I18nDsDate> = {
     nextDecade: 'Nästa decennium',
   },
   fi: {
+    selectDate: 'Valitse päivämäärä',
     switchToYearView: 'Vaihda vuosinäkymään',
     previousMonth: 'Edellinen kuukausi',
     nextMonth: 'Seuraava kuukausi',
