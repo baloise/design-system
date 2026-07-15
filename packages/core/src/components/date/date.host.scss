@@ -1,0 +1,416 @@
+@use 'air-datepicker/air-datepicker.css';
+
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+@use '../input/clear-button.mixin' as clear-button;
+@use '../button/button.mixin' as button-mx;
+
+/**
+ * Variables
+ * --------------------------------
+ *
+ * @prop --date-color: Text color inside the date input field.
+ * @prop --date-placeholder: Placeholder text color.
+ * @prop --date-family: Font family of the date input text.
+ * @prop --date-weight: Font weight of the date input text.
+ * @prop --date-size: Font size of the date input text.
+ * @prop --date-line-height: Line height of the date input text.
+ * @prop --form-container-background: Background color of the input container.
+ * @prop --form-container-border-color: Border color of the input container.
+ * @prop --form-container-border-width: Border width of the input container.
+ * @prop --form-container-radius: Border radius of the input container.
+ * @prop --form-container-hover-background: Container background color on hover.
+ * @prop --form-container-active-background: Container background color when active.
+ * @prop --form-container-focus-background: Container background color when focused.
+ * @prop --form-container-hover-border: Container border color on hover.
+ * @prop --form-container-active-border: Container border color when active.
+ * @prop --form-container-focus-border: Container border color when focused.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include input.vars('date');
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  @include form.container();
+  @include form.label();
+  @include form.description();
+
+  @include input.style('date');
+
+  #inner {
+    @include form.field();
+  }
+}
+
+/**
+ * Clear and Trigger Buttons
+ * --------------------------------
+ */
+
+:host {
+  #trigger {
+    @include unselectable();
+    @include font-smoothing();
+    @include print-hidden();
+
+    border-radius: var(--ds-alias-radius-base);
+    background: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+
+    appearance: auto;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    word-break: normal;
+    box-shadow: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    user-select: none;
+
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow, text-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    &:disabled {
+      pointer-events: none;
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        --icon-color: var(--ds-alias-text-color-primary-hover);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      --icon-color: var(--ds-alias-text-color-primary-active);
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+      }
+    }
+  }
+
+  @include clear-button.style();
+}
+
+/**
+ * Calendar Popup Host
+ * --------------------------------
+ * Anchored to #container so the calendar appears directly below the field control.
+ * air-datepicker mounts its generated DOM inside this element (Steps 5–7).
+ */
+
+:host {
+  #container {
+    position: relative;
+  }
+
+  #popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--ds-popup-z-index, 100);
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+:host(.is-danger) {
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+}
+
+:host(.is-success) {
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+}
+
+:host(.is-warning) {
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+}
+
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input,
+  #clear,
+  #trigger {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  #trigger {
+    --icon-color: var(--ds-date-trigger-color-disabled);
+  }
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-date-color: var(--ds-form-control-color-value-disabled);
+  --mod-date-placeholder: var(--ds-form-control-color-placeholder-disabled);
+}
+
+/**
+  * air-datepicker Styles
+  * --------------------------------
+  *
+  * air-datepicker is a third-party library that generates its own DOM inside the #popup host.
+  * We import its CSS via SCSS @use at the top of this file, so it is available in the shadow DOM.
+  */
+.air-datepicker {
+  @include unselectable();
+  @include font-smoothing();
+  @include print-hidden();
+
+  --adp-cell-background-color-in-range: unset; // needed because of ardp behavior
+  --adp-hover-color: unset; // needed because of ardp behavior
+  --adp-cell-border-width: 2px;
+  --adp-padding: 0.5rem;
+  --adp-width: 264px;
+
+  --adp-color: var(--ds-alias-text-color-primary);
+  --adp-font-family: var(--ds-alias-text-family-body);
+  --adp-font-size: 16px;
+
+  --adp-border-color-inner: var(--ds-date-calendar-color-inner-border);
+
+  --adp-background-color-hover: var(--ds-date-calendar-color-day-hover-background);
+  --adp-background-color-active: var(--ds-date-calendar-color-day-active-background);
+
+  --adp-day-name-color: var(--ds-alias-text-color-primary);
+  --adp-color-current-date: var(--ds-alias-text-color-primary);
+  --adp-cell-background-color-selected: var(--ds-date-calendar-color-day-selected-background);
+  --adp-cell-background-color-selected-hover: var(--ds-date-calendar-color-day-selected-hover-background);
+
+  --adp-color-other-month: var(--ds-alias-text-color-disabled);
+  --adp-color-other-decade: var(--ds-alias-text-color-disabled);
+  --adp-color-disabled: var(--ds-alias-text-color-disabled);
+
+  font-family: inherit;
+  font-size: var(--ds-alias-text-size-base);
+  border-radius: var(--ds-alias-radius-base);
+  box-shadow: var(--ds-alias-shadow-box-base);
+  font-weight: 700;
+  border: none;
+
+  * {
+    font-family: inherit;
+  }
+
+  &.-inline- {
+    border: none;
+    box-shadow: var(--ds-alias-shadow-box-base);
+  }
+
+  .air-datepicker-nav {
+    border-width: 2px;
+  }
+
+  .air-datepicker-nav--title:not(.-disabled-) button,
+  .air-datepicker-nav--action:not(.-disabled-) button {
+    @include button-mx.reset-button;
+
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    min-width: 2rem;
+    color: var(--ds-alias-text-color-primary);
+    border-radius: var(--ds-alias-radius-base);
+    box-shadow: none;
+    outline: none;
+
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow, text-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        color: var(--ds-alias-text-color-primary-hover);
+        --icon-color: var(--ds-alias-text-color-primary-hover);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      color: var(--ds-alias-text-color-primary-active);
+      --icon-color: var(--ds-alias-text-color-primary-active);
+      translate: 0 0.5px;
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+      }
+    }
+  }
+
+  .air-datepicker-nav--action {
+    margin-left: 0.5rem;
+  }
+
+  .air-datepicker-nav--title {
+    margin-right: auto;
+
+    button {
+      flex: 1 1 auto;
+      justify-content: flex-start;
+    }
+  }
+
+  .air-datepicker-body--cells.-days- {
+    gap: 0.25rem;
+  }
+
+  .air-datepicker-body--day-name {
+    font-weight: var(--ds-alias-text-weight-bold);
+    font-size: 1rem;
+    text-transform: none;
+    font-family: var(--ds-alias-text-family-heading);
+  }
+
+  .air-datepicker-cell.-selected-:not(.-disabled-) {
+    font-weight: var(--ds-alias-text-weight-bold);
+  }
+
+  .air-datepicker-cell.-day- {
+    font-weight: var(--ds-alias-text-weight-regular);
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .air-datepicker-cell.-day-.-current-:not(.-disabled-) {
+    border: 2px solid var(--ds-date-calendar-color-current-date);
+  }
+
+  .air-datepicker-cell.-day-.-selected-:not(.-disabled-) {
+    font-weight: var(--ds-alias-text-weight-bold);
+  }
+
+  .air-datepicker-cell[tabindex='0'] {
+    outline: none;
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow, text-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+      }
+    }
+  }
+
+  .air-datepicker-cell.-disabled- {
+    pointer-events: none;
+  }
+
+  #previous-disabled,
+  #next-disabled {
+    display: none;
+  }
+
+  .air-datepicker-nav--action.-disabled- {
+    pointer-events: none;
+    visibility: visible;
+
+    button {
+      display: none;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #previous-disabled,
+    #next-disabled {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      color: var(--ds-alias-text-color-disabled);
+      --icon-color: var(--ds-alias-text-color-disabled);
+      pointer-events: none;
+
+      ds-icon {
+        pointer-events: none;
+      }
+    }
+  }
+}

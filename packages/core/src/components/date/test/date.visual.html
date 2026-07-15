@@ -1,0 +1,163 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Basic -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-date label="Date of birth" description="Enter your date of birth" required="false"></ds-date>
+      </section>
+
+      <!-- Form -->
+      <section data-testid="form">
+        <span>Form</span>
+        <ds-date label="Label 1" description="Description 1" required="false"></ds-date>
+        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy"></ds-date>
+        <ds-date label="Label 3" description="Description 3" value="2026-07-13"></ds-date>
+      </section>
+
+      <!-- Min & Max -->
+      <section data-testid="min-max">
+        <span>Min & Max</span>
+        <ds-date label="Label 2024" description="2024-01-04 - 2024-12-24" min="2024-01-04" max="2024-12-24"></ds-date>
+        <ds-date label="Label" description="2027 - 2028" min-year="2027" max-year="2028"></ds-date>
+      </section>
+
+      <!-- Free Solo -->
+      <section data-testid="free-solo">
+        <span>Free Solo</span>
+        <ds-date label="Label" description="Without Picker" free-solo></ds-date>
+      </section>
+
+      <!-- defaultDate -->
+      <section data-testid="default-date">
+        <span>Default Date</span>
+        <ds-date label="Label" description="Where to start" default-date="2024-02-20"></ds-date>
+      </section>
+
+      <!-- allowedDates -->
+      <section data-testid="allowed-dates">
+        <span>Allowed Dates</span>
+        <ds-date id="allowed-dates-input" label="Label" description="Only allow round number days"></ds-date>
+        <script>
+          const date = document.querySelector('#allowed-dates-input')
+          date.allowedDates = dateString => {
+            const date = new Date(dateString + 'T00:00')
+            console.log('allowedDates', dateString, date.getDate() % 2 === 0)
+            return date.getDate() % 2 === 0
+          }
+        </script>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-date label="Label 1" description="Description 1" disabled></ds-date>
+        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" disabled></ds-date>
+        <ds-date label="Label 3" description="Description 3" value="2026-07-13" disabled></ds-date>
+      </section>
+
+      <!-- Invalid -->
+      <section data-testid="invalid">
+        <span>Invalid</span>
+        <ds-date label="Label 1" description="Description 1" invalid-text="Validation Error 1" invalid></ds-date>
+        <ds-date
+          label="Label 2"
+          description="Description 2"
+          placeholder="dd.MM.yyyy"
+          invalid-text="Validation Error 2"
+          invalid
+        ></ds-date>
+        <ds-date
+          label="Label 3"
+          description="Description 3"
+          value="2026-07-13"
+          invalid-text="Validation Error 3"
+          invalid
+        ></ds-date>
+      </section>
+
+      <!-- Valid -->
+      <section data-testid="valid">
+        <span>Valid</span>
+        <ds-date label="Label 1" description="Description 1" color="success"></ds-date>
+        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" color="success"></ds-date>
+        <ds-date label="Label 3" description="Description 3" value="2026-07-13" color="success"></ds-date>
+      </section>
+
+      <!-- Warning -->
+      <section data-testid="warning">
+        <span>Warning</span>
+        <ds-date label="Label 1" description="Description 1" color="warning"></ds-date>
+        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" color="warning"></ds-date>
+        <ds-date label="Label 3" description="Description 3" value="2026-07-13" color="warning"></ds-date>
+      </section>
+
+      <!-- Loading -->
+      <section data-testid="loading">
+        <span>Loading</span>
+        <ds-date label="Label 1" loading></ds-date>
+        <ds-date label="Label 2" loading disabled></ds-date>
+        <ds-date label="Label 3" loading invalid></ds-date>
+        <ds-date label="Label 4" loading color="success"></ds-date>
+        <ds-date label="Label 5" loading color="warning"></ds-date>
+      </section>
+
+      <!-- Long Content -->
+      <section data-testid="long-content">
+        <span>Long Content</span>
+        <ds-date
+          label="Label Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+          description="Description Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+          value="2026-07-13"
+        ></ds-date>
+      </section>
+
+      <!-- Slots -->
+      <section data-testid="slots">
+        <span>Slots</span>
+        <ds-date value="2026-07-13">
+          <span slot="label">Slot Label</span>
+          <span slot="description">Slot description</span>
+        </ds-date>
+      </section>
+
+      <!-- Form Reset -->
+      <section data-testid="form-reset">
+        <span>Form Reset</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-date required name="birthday" label="Birthday" value="1988-07-13"></ds-date>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
+      </section>
+
+      <!-- Autocomplete -->
+      <section data-testid="autocomplete">
+        <span>Autocomplete</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-input autocomplete="name"></ds-input>
+          <ds-date label="Label 1" description="Description 1" autocomplete="bday"></ds-date>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

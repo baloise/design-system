@@ -1,0 +1,64 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+@mixin style($selector: '#clear') {
+  #{$selector} {
+    @include unselectable();
+    @include font-smoothing();
+    @include print-hidden();
+
+    border-radius: var(--ds-alias-radius-base);
+    background: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+
+    appearance: auto;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    word-break: normal;
+    box-shadow: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    user-select: none;
+
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow, text-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    &:disabled {
+      pointer-events: none;
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        --icon-color: var(--ds-alias-text-color-primary-hover);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      --icon-color: var(--ds-alias-text-color-primary-active);
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+      }
+    }
+  }
+}

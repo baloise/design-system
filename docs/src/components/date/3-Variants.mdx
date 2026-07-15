@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as DateStories from './date.stories'
+import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
+
+<Meta title="Components/Date/Variants/Overview" />
+
+<StoryHeading of={DateStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={DATE_DOC_CONFIG.section} color={DATE_DOC_CONFIG.color} />
+
+<BannerTabs of={DateStories} tabs={getDateTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.Basic}></StoryHeading>
+
+A masked date input with a calendar popup trigger. The field formats input automatically and validates the date on completion.
+
+<CanvasWithCodePen of={DateStories.Basic} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.MinMax}></StoryHeading>
+
+Use `min` and `max` to constrain the selectable date range. Dates outside the range are disabled in the calendar and rejected when typed.
+
+<CanvasWithCodePen of={DateStories.MinMax} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.FreeSolo}></StoryHeading>
+
+Setting `free-solo` hides the calendar trigger and popup. The component becomes a plain masked text input — useful when the picker is not needed or causes layout conflicts.
+
+<CanvasWithCodePen of={DateStories.FreeSolo} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.DefaultDate}></StoryHeading>
+
+`default-date` sets the month the calendar opens to when no value is selected. The date is not pre-selected — only the initial view is affected.
+
+<CanvasWithCodePen of={DateStories.DefaultDate} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.AllowedDates}></StoryHeading>
+
+The `allowedDates` property accepts a callback `(dateString: string) => boolean`. Return `false` to disable a date in the calendar and reject it from typed input. The callback receives ISO strings (`YYYY-MM-DD`). This example allows only even-numbered days.
+
+<CanvasWithCodePen of={DateStories.AllowedDates} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.Disabled}></StoryHeading>
+
+A disabled date field is not interactive and is excluded from form submission. Use `readonly` instead when the value should still be submitted.
+
+<CanvasWithCodePen of={DateStories.Disabled} sourceState="shown" overflowVisible={true} />
+
+<Footer />

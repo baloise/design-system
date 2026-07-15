@@ -2774,6 +2774,16 @@
             "com.figma.isOverride": true
           }
         },
+        "PrimaryDark": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Primary.4}",
+          "$extensions": {
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
         "GreenLighter": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Green.1}",
@@ -4913,6 +4923,16 @@
           "$value": "{🌐 Global.🌈 Color.Grey.6}",
           "$extensions": {
             "com.figma.variableId": "VariableID:6:1281",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "SkyDark": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Sky.3}",
+          "$extensions": {
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
@@ -9745,6 +9765,94 @@
             "$value": "{🔗 Alias.🔤 Text.Color.Disabled}",
             "$extensions": {
               "com.figma.variableId": "VariableID:301:2",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          }
+        }
+      }
+    },
+    "Date": {
+      "Calendar": {
+        "Color": {
+          "InnerBorder": {
+            "$type": "color",
+            "$value": "{🔗 Alias.▭ Border.Color.Grey}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "DayHover": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.SkyLight}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            }
+          },
+          "DayActive": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Sky}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            }
+          },
+          "DaySelected": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.PrimaryDark}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            }
+          },
+          "DaySelectedHover": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.PrimaryHover}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            }
+          },
+          "CurrentDate": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          }
+        }
+      },
+      "Trigger": {
+        "Color": {
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+            "$extensions": {
               "com.figma.scopes": [
                 "ALL_SCOPES"
               ],

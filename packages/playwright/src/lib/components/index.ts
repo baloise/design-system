@@ -1,4 +1,5 @@
 export * from './accordion.po'
+export * from './date.po'
 export * from './carousel.po'
 export * from './drawer.po'
 export * from './hint.po'

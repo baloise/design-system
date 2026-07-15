@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DateStories from './date.stories'
+import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
+
+<Meta title="Components/Date/Accessibility" />
+
+<Banner label={'Accessibility'} section={DATE_DOC_CONFIG.section} color={DATE_DOC_CONFIG.color} />
+
+<BannerTabs of={DateStories} tabs={getDateTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always provide a label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set the <code>label</code> prop or use the <code>label</code> slot on every <code>ds-date</code> instance.
+          Screen readers announce the label when the input receives focus, which is the primary way users identify the
+          field.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use description to communicate format expectations',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set the <code>description</code> prop to explain the expected date format or any range constraints (e.g.
+          "Between 2024-01-01 and 2024-12-31"). This text is linked to the input via <code>aria-describedby</code>{' '}
+          automatically.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Communicate invalid state with invalidText',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When setting <code>invalid</code>, always also set <code>invalid-text</code> with a message that explains why
+          the value is wrong. The component sets <code>aria-invalid="true"</code> on the input automatically.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't rely on color alone to indicate state",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The <code>color</code> prop (danger, success, warning) changes the visual appearance but does not convey
+          meaning to assistive technology on its own. Pair color changes with <code>invalid</code> /{' '}
+          <code>invalid-text</code> or a visible description so all users receive the same information.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't use placeholder as a substitute for a label",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The <code>placeholder</code> prop (e.g. <code>dd.MM.yyyy</code>) disappears once the user starts typing and
+          is not reliably announced by all screen readers. Use it only as a supplementary hint alongside a proper{' '}
+          <code>label</code>.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't disable the calendar popup without an alternative",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          <code>free-solo</code> removes the calendar trigger. This is acceptable when a keyboard-only flow is
+          intentional, but ensure the masked input alone is sufficient for all users and that the expected format is
+          clearly communicated via <code>description</code> or <code>placeholder</code>.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: `<input type="text">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/text) — The underlying element type used by ds-date
+- [MDN: `aria-invalid`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid) — How invalid state is communicated to assistive technology
+- [MDN: `aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby) — Links description text to the input
+- [WCAG 2.2 — 1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships) — Labels must be programmatically associated with their controls
+- [WCAG 2.2 — 3.3.1 Error Identification](https://www.w3.org/WAI/WCAG22/Understanding/error-identification) — Errors must be described in text
+
+<Footer />

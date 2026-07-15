@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as DateStories from './date.stories'
+import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
+
+<Meta title="Components/Date/Styling" />
+
+<Banner label={'Styling'} section={DATE_DOC_CONFIG.section} color={DATE_DOC_CONFIG.color} />
+
+<BannerTabs of={DateStories} tabs={getDateTabs('styling')} />
+
+<ComponentParts component="date" />
+
+<ComponentCssVariables component="date" />
+
+<ComponentDesignTokens component="date" />
+
+<Footer />

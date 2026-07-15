@@ -1,0 +1,15 @@
+@mixin reset-button {
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  user-select: none;
+  appearance: button;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}

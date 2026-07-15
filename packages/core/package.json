@@ -48,6 +48,8 @@
     "@floating-ui/dom": "1.7.6",
     "@popperjs/core": "2.11.4",
     "@stencil/core": "catalog:",
+    "air-datepicker": "3.6.0",
+    "imask": "7.6.1",
     "big.js": "7.0.1",
     "contactjs": "2.1.7",
     "dompurify": "3.4.11",
