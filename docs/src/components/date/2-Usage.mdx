@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as DateStories from './date.stories'
+import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
+
+<Meta title="Components/Date/Usage" />
+<Banner label={'Usage'} section={DATE_DOC_CONFIG.section} color={DATE_DOC_CONFIG.color} />
+<BannerTabs of={DateStories} tabs={getDateTabs('usage')} />
+
+## When to Use
+
+- When the user must enter a specific calendar date (e.g. date of birth, appointment, contract date).
+- When you need to enforce a valid date format and prevent typos.
+- When the selectable range must be constrained to a minimum or maximum date.
+
+## When NOT to Use
+
+- When the user selects a time or a date-time — use a dedicated date-time input instead.
+- When free-form text is acceptable and no date parsing is required.
+- When the date is purely decorative or derived — display it as text rather than collecting it via input.
+
+## Do's and Don'ts
+
+### Labels and descriptions
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Provide a clear label',
+      contentIsLeftAligned: true,
+      content: (
+        <ds-date label="Date of birth" description="Enter your date of birth" required="false"></ds-date>
+      ),
+      description: 'A descriptive label and helper text guide the user to enter the right value.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Omit the label',
+            contentIsLeftAligned: true,
+      content: (
+        <ds-date></ds-date>
+      ),
+      description: 'Without a label, screen readers and sighted users cannot identify the field purpose.',
+    },
+  ]}
+/>
+
+### Constrain the range when appropriate
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Set min/max for bounded ranges',
+            contentIsLeftAligned: true,
+      content: (
+        <ds-date label="Appointment date" description="Only future dates" min="2026-01-01"></ds-date>
+      ),
+      description: 'Restricting the range prevents the user from selecting dates that would cause validation errors.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Allow any date and validate later',
+            contentIsLeftAligned: true,
+      content: (
+        <ds-date label="Appointment date" description="Only future dates" invalid invalid-text="Date must be in the future"></ds-date>
+      ),
+      description: 'Validating after submission is a worse experience than preventing invalid selection upfront.',
+    },
+  ]}
+/>
+
+<Footer />

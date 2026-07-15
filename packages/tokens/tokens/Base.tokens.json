@@ -9837,7 +9837,7 @@
           },
           "CurrentDate": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.SkyDark}",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
             "$extensions": {
               "com.figma.scopes": [
                 "ALL_SCOPES"

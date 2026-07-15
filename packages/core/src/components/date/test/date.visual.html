@@ -48,9 +48,9 @@
       <!-- allowedDates -->
       <section data-testid="allowed-dates">
         <span>Allowed Dates</span>
-        <ds-date id="allowed-dates" label="Label" description="Only allow round number days"></ds-date>
+        <ds-date id="allowed-dates-input" label="Label" description="Only allow round number days"></ds-date>
         <script>
-          const date = document.querySelector('#allowed-dates')
+          const date = document.querySelector('#allowed-dates-input')
           date.allowedDates = dateString => {
             const date = new Date(dateString + 'T00:00')
             console.log('allowedDates', dateString, date.getDate() % 2 === 0)

@@ -17910,6 +17910,1560 @@
       "type": "web-component"
     },
     {
+      "fileName": "date.tsx",
+      "tag": "ds-date",
+      "overview": "Date renders a masked date input field with an interactive calendar popup for date selection.",
+      "usage": {},
+      "docs": "Date renders a masked date input field with an interactive calendar popup for date selection.",
+      "docsTags": [
+        {
+          "name": "part",
+          "text": "input - The native HTML input element."
+        },
+        {
+          "name": "part",
+          "text": "clear - The clear button that removes the selected date."
+        },
+        {
+          "name": "part",
+          "text": "trigger - The calendar icon button that opens the date picker popup."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-icon",
+        "ds-spinner"
+      ],
+      "dependencyGraph": {
+        "ds-date": [
+          "ds-icon",
+          "ds-spinner"
+        ]
+      },
+      "props": [
+        {
+          "name": "allowedDates",
+          "type": "((dateString: string) => boolean) | undefined",
+          "complexType": {
+            "original": "((dateString: string) => boolean) | undefined",
+            "resolved": "((dateString: string) => boolean) | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Callback to determine which dates in the calendar are selectable.\nReceives an ISO date string (YYYY-MM-DD) and should return `true` to allow the date or `false` to disable it.\nTyped input that resolves to a disallowed date is also rejected.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "((dateString: string) => boolean)"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "autocomplete",
+          "type": "\"\" | \"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
+          "complexType": {
+            "original": "InputAutocomplete",
+            "resolved": "\"\" | \"additional-name\" | \"address-level1\" | \"address-level2\" | \"address-level3\" | \"address-level4\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"cc-additional-name\" | \"cc-csc\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-family-name\" | \"cc-given-name\" | \"cc-name\" | \"cc-number\" | \"cc-type\" | \"country\" | \"country-name\" | \"current-password\" | \"email\" | \"family-name\" | \"given-name\" | \"honorific-prefix\" | \"honorific-suffix\" | \"impp\" | \"language\" | \"name\" | \"new-password\" | \"nickname\" | \"off\" | \"on\" | \"one-time-code\" | \"organization\" | \"organization-title\" | \"photo\" | \"postal-code\" | \"sex\" | \"street-address\" | \"tel\" | \"tel-area-code\" | \"tel-country-code\" | \"tel-extension\" | \"tel-local\" | \"tel-national\" | \"transaction-amount\" | \"transaction-currency\" | \"url\" | \"username\"",
+            "references": {
+              "InputAutocomplete": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/input/input.interfaces.ts::InputAutocomplete",
+                "referenceLocation": "InputAutocomplete"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "autocomplete",
+          "reflectToAttr": false,
+          "docs": "Indicates whether the value of the control can be automatically completed by the browser.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'off'"
+            }
+          ],
+          "default": "'off'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "additional-name",
+              "type": "string"
+            },
+            {
+              "value": "address-level1",
+              "type": "string"
+            },
+            {
+              "value": "address-level2",
+              "type": "string"
+            },
+            {
+              "value": "address-level3",
+              "type": "string"
+            },
+            {
+              "value": "address-level4",
+              "type": "string"
+            },
+            {
+              "value": "address-line1",
+              "type": "string"
+            },
+            {
+              "value": "address-line2",
+              "type": "string"
+            },
+            {
+              "value": "address-line3",
+              "type": "string"
+            },
+            {
+              "value": "bday",
+              "type": "string"
+            },
+            {
+              "value": "bday-day",
+              "type": "string"
+            },
+            {
+              "value": "bday-month",
+              "type": "string"
+            },
+            {
+              "value": "bday-year",
+              "type": "string"
+            },
+            {
+              "value": "cc-additional-name",
+              "type": "string"
+            },
+            {
+              "value": "cc-csc",
+              "type": "string"
+            },
+            {
+              "value": "cc-exp",
+              "type": "string"
+            },
+            {
+              "value": "cc-exp-month",
+              "type": "string"
+            },
+            {
+              "value": "cc-exp-year",
+              "type": "string"
+            },
+            {
+              "value": "cc-family-name",
+              "type": "string"
+            },
+            {
+              "value": "cc-given-name",
+              "type": "string"
+            },
+            {
+              "value": "cc-name",
+              "type": "string"
+            },
+            {
+              "value": "cc-number",
+              "type": "string"
+            },
+            {
+              "value": "cc-type",
+              "type": "string"
+            },
+            {
+              "value": "country",
+              "type": "string"
+            },
+            {
+              "value": "country-name",
+              "type": "string"
+            },
+            {
+              "value": "current-password",
+              "type": "string"
+            },
+            {
+              "value": "email",
+              "type": "string"
+            },
+            {
+              "value": "family-name",
+              "type": "string"
+            },
+            {
+              "value": "given-name",
+              "type": "string"
+            },
+            {
+              "value": "honorific-prefix",
+              "type": "string"
+            },
+            {
+              "value": "honorific-suffix",
+              "type": "string"
+            },
+            {
+              "value": "impp",
+              "type": "string"
+            },
+            {
+              "value": "language",
+              "type": "string"
+            },
+            {
+              "value": "name",
+              "type": "string"
+            },
+            {
+              "value": "new-password",
+              "type": "string"
+            },
+            {
+              "value": "nickname",
+              "type": "string"
+            },
+            {
+              "value": "off",
+              "type": "string"
+            },
+            {
+              "value": "on",
+              "type": "string"
+            },
+            {
+              "value": "one-time-code",
+              "type": "string"
+            },
+            {
+              "value": "organization",
+              "type": "string"
+            },
+            {
+              "value": "organization-title",
+              "type": "string"
+            },
+            {
+              "value": "photo",
+              "type": "string"
+            },
+            {
+              "value": "postal-code",
+              "type": "string"
+            },
+            {
+              "value": "sex",
+              "type": "string"
+            },
+            {
+              "value": "street-address",
+              "type": "string"
+            },
+            {
+              "value": "tel",
+              "type": "string"
+            },
+            {
+              "value": "tel-area-code",
+              "type": "string"
+            },
+            {
+              "value": "tel-country-code",
+              "type": "string"
+            },
+            {
+              "value": "tel-extension",
+              "type": "string"
+            },
+            {
+              "value": "tel-local",
+              "type": "string"
+            },
+            {
+              "value": "tel-national",
+              "type": "string"
+            },
+            {
+              "value": "transaction-amount",
+              "type": "string"
+            },
+            {
+              "value": "transaction-currency",
+              "type": "string"
+            },
+            {
+              "value": "url",
+              "type": "string"
+            },
+            {
+              "value": "username",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": false,
+          "docs": "This Boolean attribute lets you specify that the control should have input focus when the page loads.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "DateColor",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "DateColor": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateColor",
+                "referenceLocation": "DateColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the date input. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "debounce",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "debounce",
+          "reflectToAttr": false,
+          "docs": "Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "defaultDate",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "default-date",
+          "reflectToAttr": false,
+          "docs": "The ISO date string (YYYY-MM-DD) where the calendar opens when no value is set.\nThe date is not selected — only the view navigates to it.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the date input, which is displayed below the field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "freeSolo",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "free-solo",
+          "reflectToAttr": false,
+          "docs": "If `true`, the calendar trigger icon and popup are hidden. The component behaves as a plain masked text input with no date picker UX.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets an invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the date input, which is displayed above the field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "loading",
+          "reflectToAttr": false,
+          "docs": "Shows a loading indicator at the end of the input and replaces the trigger button.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "max",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": false,
+          "docs": "The maximum ISO date string allowed (YYYY-MM-DD). Dates after this are disabled in the calendar and rejected from typed input.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "maxYearProp",
+          "type": "number | undefined",
+          "complexType": {
+            "original": "number | undefined",
+            "resolved": "number | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max-year",
+          "reflectToAttr": false,
+          "docs": "Latest year available for selection. Takes precedence over `max` when both are set.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "min",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string | undefined",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": false,
+          "docs": "The minimum ISO date string allowed (YYYY-MM-DD). Dates before this are disabled in the calendar and rejected from typed input.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "minYearProp",
+          "type": "number | undefined",
+          "complexType": {
+            "original": "number | undefined",
+            "resolved": "number | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "min-year",
+          "reflectToAttr": false,
+          "docs": "Earliest year available for selection. Takes precedence over `min` when both are set.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.dateId"
+            }
+          ],
+          "default": "this.dateId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "Instructional text that shows before the input has a value.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The value of the date input in ISO format (YYYY-MM-DD).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
+          "default": "null",
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInputElement",
+          "returns": {
+            "type": "Promise<HTMLInputElement>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<HTMLInputElement>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLInputElement": {
+                "location": "global",
+                "id": "global::HTMLInputElement"
+              }
+            },
+            "return": "Promise<HTMLInputElement>"
+          },
+          "signature": "getInputElement() => Promise<HTMLInputElement>",
+          "parameters": [],
+          "docs": "Returns the native `<input>` element used under the hood.",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the native `input` in `ds-date`.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DateBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DateBlurDetail": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateBlurDetail",
+                "referenceLocation": "DateBlurDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "null | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "DateChangeDetail",
+            "resolved": "null | string",
+            "references": {
+              "DateChangeDetail": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateChangeDetail",
+                "referenceLocation": "DateChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the date value has changed (ISO value or null).",
+          "docsTags": []
+        },
+        {
+          "event": "dsClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DateClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "DateClickDetail": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateClickDetail",
+                "referenceLocation": "DateClickDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input is clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DateFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "DateFocusDetail": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateFocusDetail",
+                "referenceLocation": "DateFocusDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input receives focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInput",
+          "detail": "null | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "DateInputDetail",
+            "resolved": "null | string",
+            "references": {
+              "DateInputDetail": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateInputDetail",
+                "referenceLocation": "DateInputDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard input occurred (ISO value or null if incomplete).",
+          "docsTags": []
+        },
+        {
+          "event": "dsKeyPress",
+          "detail": "KeyboardEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "DateKeyPressDetail",
+            "resolved": "KeyboardEvent",
+            "references": {
+              "DateKeyPressDetail": {
+                "location": "import",
+                "path": "./date.interfaces",
+                "id": "src/components/date/date.interfaces.ts::DateKeyPressDetail",
+                "referenceLocation": "DateKeyPressDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a keyboard key has been pressed.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--date-color",
+          "docs": "Text color inside the date input field."
+        },
+        {
+          "name": "--date-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--date-family",
+          "docs": "Font family of the date input text."
+        },
+        {
+          "name": "--date-weight",
+          "docs": "Font weight of the date input text."
+        },
+        {
+          "name": "--date-size",
+          "docs": "Font size of the date input text."
+        },
+        {
+          "name": "--date-line-height",
+          "docs": "Line height of the date input text."
+        },
+        {
+          "name": "--form-container-background",
+          "docs": "Background color of the input container."
+        },
+        {
+          "name": "--form-container-border-color",
+          "docs": "Border color of the input container."
+        },
+        {
+          "name": "--form-container-border-width",
+          "docs": "Border width of the input container."
+        },
+        {
+          "name": "--form-container-radius",
+          "docs": "Border radius of the input container."
+        },
+        {
+          "name": "--form-container-hover-background",
+          "docs": "Container background color on hover."
+        },
+        {
+          "name": "--form-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--form-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--form-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--form-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--form-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--form-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--form-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--form-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--form-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--form-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
+          "name": "--form-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--form-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--form-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--form-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--form-description-line-height",
+          "docs": "Line height of the description."
+        }
+      ],
+      "slots": [],
+      "parts": [
+        {
+          "name": "clear",
+          "docs": "The clear button that removes the selected date."
+        },
+        {
+          "name": "input",
+          "docs": "The native HTML input element."
+        },
+        {
+          "name": "trigger",
+          "docs": "The calendar icon button that opens the date picker popup."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "keydown",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / Date / Calendar / Color / InnerBorder",
+          "cssVarName": "--ds-date-calendar-color-innerborder",
+          "value": "{🔗 Alias.▭ Border.Color.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-border-color-grey",
+              "figmaName": "Alias / Border / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-innerborder",
+              "figmaName": "Component / Date / Calendar / Color / InnerBorder"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "InnerBorder"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / DayHover / Background",
+          "cssVarName": "--ds-date-calendar-color-dayhover-background",
+          "value": "{🔗 Alias.🎨 Background.Color.SkyLight}",
+          "nativeValue": "#E5F1FE",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-1",
+              "figmaName": "Global / Color / Sky / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-skylight",
+              "figmaName": "Alias / Background / Color / SkyLight"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-dayhover-background",
+              "figmaName": "Component / Date / Calendar / Color / DayHover / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "DayHover",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / DayActive / Background",
+          "cssVarName": "--ds-date-calendar-color-dayactive-background",
+          "value": "{🔗 Alias.🎨 Background.Color.Sky}",
+          "nativeValue": "#A7D1FA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-2",
+              "figmaName": "Global / Color / Sky / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-sky",
+              "figmaName": "Alias / Background / Color / Sky"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-dayactive-background",
+              "figmaName": "Component / Date / Calendar / Color / DayActive / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "DayActive",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / DaySelected / Background",
+          "cssVarName": "--ds-date-calendar-color-dayselected-background",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryDark}",
+          "nativeValue": "#293485",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-4",
+              "figmaName": "Global / Color / Primary / 4"
+            },
+            {
+              "cssVar": "--ds-background-color-primarydark",
+              "figmaName": "Alias / Background / Color / PrimaryDark"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-dayselected-background",
+              "figmaName": "Component / Date / Calendar / Color / DaySelected / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "DaySelected",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / DaySelectedHover / Background",
+          "cssVarName": "--ds-date-calendar-color-dayselectedhover-background",
+          "value": "{🔗 Alias.🎨 Background.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primaryhover",
+              "figmaName": "Alias / Background / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-dayselectedhover-background",
+              "figmaName": "Component / Date / Calendar / Color / DaySelectedHover / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "DaySelectedHover",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / CurrentDate",
+          "cssVarName": "--ds-date-calendar-color-currentdate",
+          "value": "{🔗 Alias.🔤 Text.Color.SkyDark}",
+          "nativeValue": "#56A7F5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-3",
+              "figmaName": "Global / Color / Sky / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-skydark",
+              "figmaName": "Alias / Text / Color / SkyDark"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-currentdate",
+              "figmaName": "Component / Date / Calendar / Color / CurrentDate"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "CurrentDate"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Trigger / Color / Disabled",
+          "cssVarName": "--ds-date-trigger-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-date-trigger-color-disabled",
+              "figmaName": "Component / Date / Trigger / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Trigger",
+            "Color",
+            "Disabled"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsDate",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "triggerButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "clearButton",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "type",
+            "params": [
+              {
+                "name": "formattedDate",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "pick",
+            "params": [
+              {
+                "name": "isoDate",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "clear",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      },
+      "type": "web-component"
+    },
+    {
       "fileName": "divider.tsx",
       "tag": "ds-divider",
       "overview": "Divider renders a visual separator line for grouping or distinguishing content sections.",
@@ -24401,6 +25955,7 @@
         "ds-button",
         "ds-carousel",
         "ds-checkbox-group",
+        "ds-date",
         "ds-file-upload",
         "ds-footer",
         "ds-hint",
@@ -24432,6 +25987,9 @@
           "ds-icon"
         ],
         "ds-checkbox-group": [
+          "ds-icon"
+        ],
+        "ds-date": [
           "ds-icon"
         ],
         "ds-file-upload": [
@@ -43855,6 +45413,7 @@
       "dependents": [
         "ds-button",
         "ds-checkbox-group",
+        "ds-date",
         "ds-file-upload",
         "ds-input",
         "ds-number-input",
@@ -43868,6 +45427,9 @@
           "ds-spinner"
         ],
         "ds-checkbox-group": [
+          "ds-spinner"
+        ],
+        "ds-date": [
           "ds-spinner"
         ],
         "ds-file-upload": [
@@ -58802,6 +60364,46 @@
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
+    "src/components/date/date.interfaces.ts::DateColor": {
+      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\"",
+      "docstring": "",
+      "path": "src/components/date/date.interfaces.ts"
+    },
+    "src/components/input/input.interfaces.ts::InputAutocomplete": {
+      "declaration": "\"\" | \"on\" | \"off\" | \"tel\" | \"url\" | \"email\" | \"name\" | \"honorific-prefix\" | \"given-name\" | \"additional-name\" | \"family-name\" | \"honorific-suffix\" | \"nickname\" | \"username\" | \"new-password\" | \"current-password\" | \"one-time-code\" | \"organization-title\" | \"organization\" | \"street-address\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"address-level4\" | \"address-level3\" | \"address-level2\" | \"address-level1\" | \"country\" | \"country-name\" | \"postal-code\" | \"cc-name\" | \"cc-given-name\" | \"cc-additional-name\" | \"cc-family-name\" | \"cc-number\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-csc\" | \"cc-type\" | \"transaction-currency\" | \"transaction-amount\" | \"language\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"sex\" | \"tel-country-code\" | \"tel-national\" | \"tel-area-code\" | \"tel-local\" | \"tel-extension\" | \"impp\" | \"photo\"",
+      "docstring": "",
+      "path": "src/components/input/input.interfaces.ts"
+    },
+    "src/components/date/date.interfaces.ts::DateBlurDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/date/date.interfaces.ts"
+    },
+    "src/components/date/date.interfaces.ts::DateKeyPressDetail": {
+      "declaration": "interface KeyboardEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */\n    readonly altKey: boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charCode)\n     */\n    readonly charCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code) */\n    readonly code: string;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/isComposing) */\n    readonly isComposing: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/key) */\n    readonly key: string;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keyCode)\n     */\n    readonly keyCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/location) */\n    readonly location: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat) */\n    readonly repeat: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/initKeyboardEvent)\n     */\n    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;\n    readonly DOM_KEY_LOCATION_STANDARD: 0x00;\n    readonly DOM_KEY_LOCATION_LEFT: 0x01;\n    readonly DOM_KEY_LOCATION_RIGHT: 0x02;\n    readonly DOM_KEY_LOCATION_NUMPAD: 0x03;\n}",
+      "docstring": "KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+      "path": "src/components/date/date.interfaces.ts"
+    },
+    "src/components/date/date.interfaces.ts::DateFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/date/date.interfaces.ts"
+    },
+    "src/components/date/date.interfaces.ts::DateClickDetail": {
+      "declaration": "interface MouseEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */\n    readonly altKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */\n    readonly button: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/buttons) */\n    readonly buttons: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientX) */\n    readonly clientX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientY) */\n    readonly clientY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerX) */\n    readonly layerX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerY) */\n    readonly layerY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementX) */\n    readonly movementX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementY) */\n    readonly movementY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetX) */\n    readonly offsetX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetY) */\n    readonly offsetY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageX) */\n    readonly pageX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageY) */\n    readonly pageY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenX) */\n    readonly screenX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenY) */\n    readonly screenY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/x) */\n    readonly x: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/y) */\n    readonly y: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/initMouseEvent)\n     */\n    initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void;\n}",
+      "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+      "path": "src/components/date/date.interfaces.ts"
+    },
+    "src/components/date/date.interfaces.ts::DateInputDetail": {
+      "declaration": "export type DateInputDetail = string | null",
+      "docstring": "",
+      "path": "src/components/date/date.interfaces.ts"
+    },
+    "src/components/date/date.interfaces.ts::DateChangeDetail": {
+      "declaration": "export type DateChangeDetail = string | null",
+      "docstring": "",
+      "path": "src/components/date/date.interfaces.ts"
+    },
     "src/components/divider/divider.interfaces.ts::DividerLayout": {
       "declaration": "\"\" | \"horizontal\" | \"vertical\"",
       "docstring": "",
@@ -58919,11 +60521,6 @@
     },
     "src/components/input/input.interfaces.ts::InputInputType": {
       "declaration": "\"\" | \"number\" | \"search\" | \"time\" | \"text\" | \"image\" | \"month\" | \"week\" | \"tel\" | \"url\" | \"email\" | \"color\" | \"date\" | \"datetime-local\" | \"file\" | \"password\" | \"range\"",
-      "docstring": "",
-      "path": "src/components/input/input.interfaces.ts"
-    },
-    "src/components/input/input.interfaces.ts::InputAutocomplete": {
-      "declaration": "\"\" | \"on\" | \"off\" | \"tel\" | \"url\" | \"email\" | \"name\" | \"honorific-prefix\" | \"given-name\" | \"additional-name\" | \"family-name\" | \"honorific-suffix\" | \"nickname\" | \"username\" | \"new-password\" | \"current-password\" | \"one-time-code\" | \"organization-title\" | \"organization\" | \"street-address\" | \"address-line1\" | \"address-line2\" | \"address-line3\" | \"address-level4\" | \"address-level3\" | \"address-level2\" | \"address-level1\" | \"country\" | \"country-name\" | \"postal-code\" | \"cc-name\" | \"cc-given-name\" | \"cc-additional-name\" | \"cc-family-name\" | \"cc-number\" | \"cc-exp\" | \"cc-exp-month\" | \"cc-exp-year\" | \"cc-csc\" | \"cc-type\" | \"transaction-currency\" | \"transaction-amount\" | \"language\" | \"bday\" | \"bday-day\" | \"bday-month\" | \"bday-year\" | \"sex\" | \"tel-country-code\" | \"tel-national\" | \"tel-area-code\" | \"tel-local\" | \"tel-extension\" | \"impp\" | \"photo\"",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
     },

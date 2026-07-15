@@ -352,7 +352,7 @@
   }
 
   .air-datepicker-cell.-day-.-current-:not(.-disabled-) {
-    border: 2px solid var(--ds-global-color-primary-4);
+    border: 2px solid var(--ds-date-calendar-color-current-date);
   }
 
   .air-datepicker-cell.-day-.-selected-:not(.-disabled-) {
