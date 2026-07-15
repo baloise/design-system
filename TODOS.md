@@ -93,12 +93,12 @@ These improvements help our components work seamlessly across all supported fram
 | date             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | dropdown/select  | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | autocomplete     | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| sheet            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 
 ### Extended Scope
 
 | Component | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
 | --------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
+| sheet     | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | menu      | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | ag-grid   | Lib  | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 
