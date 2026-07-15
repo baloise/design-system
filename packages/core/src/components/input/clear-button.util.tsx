@@ -10,7 +10,13 @@ export type ClearButtonProps = {
   onClick: () => void
 }
 
-export const ClearButton: FunctionalComponent<ClearButtonProps> = ({ value, disabled, readonly, language, onClick }) => {
+export const ClearButton: FunctionalComponent<ClearButtonProps> = ({
+  value,
+  disabled,
+  readonly,
+  language,
+  onClick,
+}) => {
   if (!value || disabled || readonly) return null
   const label = i18nDsClearButton[language].clear
   return (

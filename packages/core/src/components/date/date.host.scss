@@ -246,6 +246,10 @@
   --adp-cell-background-color-selected: var(--ds-date-calendar-color-day-selected-background);
   --adp-cell-background-color-selected-hover: var(--ds-date-calendar-color-day-selected-hover-background);
 
+  --adp-color-other-month: var(--ds-alias-text-color-disabled);
+  --adp-color-other-decade: var(--ds-alias-text-color-disabled);
+  --adp-color-disabled: var(--ds-alias-text-color-disabled);
+
   font-family: inherit;
   font-size: var(--ds-alias-text-size-base);
   border-radius: var(--ds-alias-radius-base);
@@ -263,12 +267,11 @@
   }
 
   .air-datepicker-nav {
-    // border: none;
     border-width: 2px;
   }
 
-  .air-datepicker-nav--title button,
-  .air-datepicker-nav--action button {
+  .air-datepicker-nav--title:not(.-disabled-) button,
+  .air-datepicker-nav--action:not(.-disabled-) button {
     @include button-mx.reset-button;
 
     display: flex;
@@ -338,7 +341,7 @@
     font-family: var(--ds-alias-text-family-heading);
   }
 
-  .air-datepicker-cell.-selected- {
+  .air-datepicker-cell.-selected-:not(.-disabled-) {
     font-weight: var(--ds-alias-text-weight-bold);
   }
 
@@ -348,11 +351,11 @@
     width: 2rem;
   }
 
-  .air-datepicker-cell.-day-.-current- {
+  .air-datepicker-cell.-day-.-current-:not(.-disabled-) {
     font-weight: var(--ds-alias-text-weight-bold);
   }
 
-  .air-datepicker-cell.-day-.-selected- {
+  .air-datepicker-cell.-day-.-selected-:not(.-disabled-) {
     font-weight: var(--ds-alias-text-weight-bold);
   }
 
@@ -371,6 +374,42 @@
     &.is-focused {
       &:not(:active) {
         @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+      }
+    }
+  }
+
+  .air-datepicker-cell.-disabled- {
+    pointer-events: none;
+  }
+
+  #previous-disabled,
+  #next-disabled {
+    display: none;
+  }
+
+  .air-datepicker-nav--action.-disabled- {
+    pointer-events: none;
+    visibility: visible;
+
+    button {
+      display: none;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #previous-disabled,
+    #next-disabled {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      color: var(--ds-alias-text-color-disabled);
+      --icon-color: var(--ds-alias-text-color-disabled);
+      pointer-events: none;
+
+      ds-icon {
+        pointer-events: none;
       }
     }
   }

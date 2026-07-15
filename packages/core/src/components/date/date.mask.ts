@@ -56,6 +56,23 @@ export function isoToDisplay(isoValue: string | null, format: DateDisplayFormat)
   return dt.isValid ? dt.toFormat(format) : ''
 }
 
+export interface DateMaskConfig {
+  inputEl: HTMLInputElement
+  format: DateDisplayFormat
+  initialValue: string | null
+  onAccept: (iso: string | null) => void
+  onComplete: (iso: string) => void
+}
+
+export function createDateMask(config: DateMaskConfig): DateMask {
+  const mask = new DateMask(config.inputEl, config.format, config.onAccept, config.onComplete)
+  if (config.initialValue) {
+    mask.syncFromISO(config.initialValue)
+    mask.setLazy(false)
+  }
+  return mask
+}
+
 export class DateMask {
   private mask: any
   private format: DateDisplayFormat

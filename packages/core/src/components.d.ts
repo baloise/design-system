@@ -943,6 +943,11 @@ export namespace Components {
          */
         "autoInvalidOff": boolean;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete": InputAutocomplete;
+        /**
           * This Boolean attribute lets you specify that the control should have input focus when the page loads.
           * @default false
          */
@@ -5491,6 +5496,11 @@ declare namespace LocalJSX {
          */
         "autoInvalidOff"?: boolean;
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
+         */
+        "autocomplete"?: InputAutocomplete;
+        /**
           * This Boolean attribute lets you specify that the control should have input focus when the page loads.
           * @default false
          */
@@ -8248,6 +8258,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "placeholder": string;
         "autofocus": boolean;
+        "autocomplete": InputAutocomplete;
         "debounce": number;
         "autoInvalidOff": boolean;
         "loading": boolean;

@@ -21,6 +21,39 @@
         <ds-date label="Label 3" description="Description 3" value="2026-07-13"></ds-date>
       </section>
 
+      <!-- Min & Max -->
+      <section data-testid="min-max">
+        <span>Min & Max</span>
+        <ds-date label="Label 2024" description="2024-01-04 - 2024-12-24" min="2024-01-04" max="2024-12-24"></ds-date>
+        <ds-date label="Label" description="2027 - 2028" min-year="2027" max-year="2028"></ds-date>
+      </section>
+
+      <!-- Free Solo -->
+      <section data-testid="free-solo">
+        <span>Free Solo</span>
+        <ds-date label="Label" description="Without Picker" free-solo></ds-date>
+      </section>
+
+      <!-- defaultDate -->
+      <section data-testid="default-date">
+        <span>Default Date</span>
+        <ds-date label="Label" description="Where to start" default-date="2024-02-20"></ds-date>
+      </section>
+
+      <!-- allowedDates -->
+      <section data-testid="allowed-dates">
+        <span>Allowed Dates</span>
+        <ds-date id="allowed-dates" label="Label" description="Only allow round number days"></ds-date>
+        <script>
+          const date = document.querySelector('#allowed-dates')
+          date.allowedDates = dateString => {
+            const date = new Date(dateString + 'T00:00')
+            console.log('allowedDates', dateString, date.getDate() % 2 === 0)
+            return date.getDate() % 2 === 0
+          }
+        </script>
+      </section>
+
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
@@ -99,6 +132,20 @@
         <span>Form Reset</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
           <ds-date required name="birthday" label="Birthday" value="1988-07-13"></ds-date>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
+      </section>
+
+      <!-- Autocomplete -->
+      <section data-testid="autocomplete">
+        <span>Autocomplete</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-input autocomplete="name"></ds-input>
+          <ds-date label="Label 1" description="Description 1" autocomplete="bday"></ds-date>
 
           <ds-button-group>
             <ds-button element-type="submit" color="primary">Submit</ds-button>
