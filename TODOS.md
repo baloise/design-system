@@ -38,6 +38,8 @@ We are continuously improving our components in several key areas:
 
 These improvements help our components work seamlessly across all supported frameworks and ensure a better experience for all users.
 
+### App Scope
+
 | Component        | Type   | Shadow | Docs | Tokens | A11y | Visual | Component |
 | ---------------- | ------ | ------ | ---- | ------ | ---- | ------ | --------- |
 | heading          | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
@@ -88,10 +90,21 @@ These improvements help our components work seamlessly across all supported fram
 | select           | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | navbar           | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | time-input       | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| date             | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| dropdown         | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| date             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| dropdown/select  | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | autocomplete     | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | sheet            | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| stage            | CSS    | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| ag-grid          | Lib    | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| tabs collapsable | Lib    | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+
+### Extended Scope
+
+| Component | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
+| --------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
+| menu      | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| ag-grid   | Lib  | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+
+### Website Scope
+
+| Component        | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
+| ---------------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
+| stage            | ❓   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| tabs collapsable | ❓   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
