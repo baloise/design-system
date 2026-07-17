@@ -1,9 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  Footer,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
 import * as SelectStories from './select.stories'
 import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
@@ -13,19 +9,63 @@ import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
 <BannerTabs of={SelectStories} tabs={getSelectTabs('usage')} />
 
-## When to use
+## When to Use
 
-- **Multiple options**: When you need to present a list of mutually exclusive options
-- **Limited space**: When you want to conserve vertical space compared to radio buttons
-- **Forms**: Standard form control for selecting a single value
-- **Dependent fields**: When selection determines content of other form fields
-- **Required selection**: When a choice must be made before proceeding
+- Present a list of mutually exclusive options in a form
+- Conserve vertical space compared to radio buttons for longer option lists
+- Let users filter a long list of options with `searchable`
+- Allow selection of several values at once with `multiple`
+- Organize related options under labeled groups with `optionGroups`
 
-## When NOT to use
+## When NOT to Use
 
-- **Few options (2-3)**: Use radio buttons instead for better discoverability
-- **Options always visible**: Use radio buttons or checkboxes if all options should be visible
-- **Complex options**: If options need detailed descriptions or custom rendering, consider a different pattern
-- **Single value**: For a single boolean, use a checkbox or toggle
+- For 2–3 options — use radio buttons instead for better discoverability
+- When all options should always be visible — use radio buttons or checkboxes
+- For a single boolean choice — use a checkbox or toggle
+- For free-text entry — use a regular input
+
+## Do's and Don'ts
+
+### Placeholder Text
+
+Use `placeholder` to hint at the expected selection, but never as a replacement for the `label`.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Label with placeholder hint',
+      content: <ds-select label="Country" placeholder="Select a country"></ds-select>,
+      description: 'The label always identifies the field, even before a value is chosen',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Placeholder used as label',
+      content: <ds-select label="" placeholder="Select a country"></ds-select>,
+      description: 'Screen reader users lose context once a value is selected',
+    },
+  ]}
+/>
+
+### Searchable Long Lists
+
+Enable `searchable` when the option list is long enough that scanning it is slower than typing.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Searchable for long lists',
+      content: <ds-select label="Country" searchable></ds-select>,
+      description: 'Users can quickly filter dozens of countries by typing',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Searchable for a handful of options',
+      content: <ds-select label="Yes or no" searchable></ds-select>,
+      description: 'Adds unnecessary interaction cost for a trivial choice',
+    },
+  ]}
+/>
 
 <Footer />

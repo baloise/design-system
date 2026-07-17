@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, stopEventBubbling, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, OneOf, Type, raf } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -309,10 +309,10 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
       if (Math.abs(v) < 0.5) return
       el.scrollLeft += v
       v *= friction
-      this.momentumAnimId = requestAnimationFrame(step)
+      this.momentumAnimId = raf(step)
     }
 
-    this.momentumAnimId = requestAnimationFrame(step)
+    this.momentumAnimId = raf(step)
   }
 
   private handlePaginationChange = (ev: CustomEvent<number>) => {

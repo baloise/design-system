@@ -46,8 +46,8 @@
   @include vars.local(list-item-border-radius, 12px);
 
   @include vars.local(list-item-background-base, transparent);
-  @include vars.local(list-item-background-hover, var(--ds-global-color-primary-1));
-  @include vars.local(list-item-background-active, var(--ds-global-color-primary-1));
+  @include vars.local(list-item-background-hover, var(--ds-alias-background-color-primary-lighter));
+  @include vars.local(list-item-background-active, var(--ds-alias-background-color-primary-lighter));
 
   @include vars.local(list-item-accordion-py, var(--ds-alias-space-base-device));
 

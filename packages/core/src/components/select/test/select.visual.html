@@ -60,7 +60,13 @@
       <section data-testid="multiple">
         <span>Multiple</span>
         <ds-select id="multi" label="Languages" description="Select all languages you speak" multiple></ds-select>
-        <ds-select id="multi-value" label="Languages" description="Select all languages you speak" multiple></ds-select>
+        <ds-select
+          id="multi-value"
+          label="Languages"
+          description="Select all languages you speak"
+          multiple
+          value="it,ch"
+        ></ds-select>
       </section>
 
       <!-- Grouped options -->
@@ -154,7 +160,6 @@
       document.getElementById('clearable').options = countryOptions
       document.getElementById('clearable-value').options = countryOptions
       document.getElementById('clearable-multiple-value').options = languageOptions
-      document.getElementById('clearable-multiple-value').value = ['de', 'it']
       document.getElementById('multi').options = languageOptions
       document.getElementById('multi-value').options = languageOptions
       document.getElementById('multi-value').value = ['de', 'it']

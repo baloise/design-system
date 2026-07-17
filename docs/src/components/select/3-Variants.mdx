@@ -1,35 +1,55 @@
 import { Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  CanvasWithCodePen,
-  Footer,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, CanvasTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as SelectStories from './select.stories'
 import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
 <Meta title="Components/Select/Variants/Overview" />
 
-<Banner label={'Select'} section={SELECT_DOC_CONFIG.section} color={SELECT_DOC_CONFIG.color} />
+<StoryHeading of={SelectStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={SELECT_DOC_CONFIG.section} color={SELECT_DOC_CONFIG.color} />
 
 <BannerTabs of={SelectStories} tabs={getSelectTabs('variants')} />
 
-## Basic
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
 
-Default select component with label and description.
+<StoryHeading of={SelectStories.Basic}></StoryHeading>
 
-<CanvasWithCodePen of={SelectStories.Basic} sourceState="shown" />
+Default single select with a label and description. The web component enhances a native `<select>` via Slim Select; a plain HTML/CSS equivalent is available when JavaScript enhancement isn't needed.
 
-## Disabled
+<CanvasTabs htmlOf={SelectStories.BasicHtml} of={SelectStories.Basic} />
 
-Disabled state prevents user interaction and indicates the field is not editable.
+{/* ------------------------------------------------------ */}
 
-<CanvasWithCodePen of={SelectStories.Disabled} sourceState="shown" />
+<StoryHeading of={SelectStories.Searchable}></StoryHeading>
 
-## Invalid
+A search input inside the dropdown lets users filter options by typing.
 
-Invalid state shows validation errors and requires user correction.
+<CanvasWithCodePen of={SelectStories.Searchable} sourceState="shown" />
 
-<CanvasWithCodePen of={SelectStories.Invalid} sourceState="shown" />
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.Clearable}></StoryHeading>
+
+A clear button resets the selection back to `null`.
+
+<CanvasWithCodePen of={SelectStories.Clearable} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.Multiple}></StoryHeading>
+
+Multiple selection allows users to pick several values at once.
+
+<CanvasWithCodePen of={SelectStories.Multiple} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.Grouped}></StoryHeading>
+
+Options can be organized under labeled groups with `optionGroups`.
+
+<CanvasWithCodePen of={SelectStories.Grouped} sourceState="shown" />
 
 <Footer />

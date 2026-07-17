@@ -2597,7 +2597,7 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * The current value of the select. In single mode: `string | null`. In multiple mode: `string[]` (array of selected values).
+          * The current value of the select. In single mode: `string | null`. In multiple mode: `string[]` (array of selected values). As an HTML attribute, multiple values can also be passed as a comma-separated string, e.g. `value="it,ch"`.
           * @default null
          */
         "value": string | string[] | null;
@@ -7423,7 +7423,7 @@ declare namespace LocalJSX {
          */
         "searchable"?: boolean;
         /**
-          * The current value of the select. In single mode: `string | null`. In multiple mode: `string[]` (array of selected values).
+          * The current value of the select. In single mode: `string | null`. In multiple mode: `string[]` (array of selected values). As an HTML attribute, multiple values can also be passed as a comma-separated string, e.g. `value="it,ch"`.
           * @default null
          */
         "value"?: string | string[] | null;

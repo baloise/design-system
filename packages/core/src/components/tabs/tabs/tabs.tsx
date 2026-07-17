@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, stopEventBubbling, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, OneOf, Type, raf } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -118,7 +118,7 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
   componentDidLoad() {
     this.setup()
     this.initCarousel()
-    requestAnimationFrame(() => this.moveIndicator(false))
+    raf(() => this.moveIndicator(false))
   }
 
   componentDidUpdate() {

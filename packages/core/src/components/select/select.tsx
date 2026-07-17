@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { DsComponentInterface } from '@global'
-import { inheritAttributes, Logger, type LogInstance, OneOf, Type, stopEventBubbling } from '@utils'
+import { inheritAttributes, Logger, type LogInstance, OneOf, Type, stopEventBubbling, raf } from '@utils'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -13,9 +13,8 @@ import {
   SelectBlurDetail,
   SelectClickDetail,
 } from './select.interfaces'
-import { i18nDsSelect } from './select.i18n'
-import SlimSelect from 'slim-select'
-import type { Option, Optgroup } from 'slim-select/dist/store'
+import { SelectPickerController, buildSlimData } from './select.picker'
+import type { Option } from 'slim-select/dist/store'
 
 /**
  * Select renders an accessible single- or multi-select dropdown backed by Slim Select,
@@ -36,7 +35,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   private inheritedAttributes: { [k: string]: any } = {}
   private selectEl: HTMLSelectElement | undefined
   private popupEl: HTMLDivElement | undefined
-  private slimSelect: SlimSelect | undefined
+  private picker: SelectPickerController | undefined
   private initialValue: string | string[] | null = null
 
   selectId = `ds-select-${SelectIds++}`
@@ -63,22 +62,22 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   /**
    * The current value of the select.
    * In single mode: `string | null`.
-   * In multiple mode: `string[]` (array of selected values).
+   * In multiple mode: `string[]` (array of selected values). As an HTML attribute, multiple
+   * values can also be passed as a comma-separated string, e.g. `value="it,ch"`.
    */
   @Prop({ mutable: true })
   value: string | string[] | null = null
 
   @Watch('value')
   protected valueChanged(newVal: string | string[] | null) {
-    this.syncFormValue(newVal)
-    if (!this.slimSelect) return
-    if (Array.isArray(newVal)) {
-      this.slimSelect.setSelected(newVal)
-    } else if (newVal) {
-      this.slimSelect.setSelected(newVal)
-    } else {
-      this.slimSelect.setSelected([])
+    const normalized = this.normalizeValue(newVal)
+    if (normalized !== newVal) {
+      this.value = normalized
+      return
     }
+    this.syncFormValue(normalized)
+    if (!this.picker) return
+    this.picker.setSelected(normalized ?? [])
   }
 
   /**
@@ -242,6 +241,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
    */
 
   connectedCallback() {
+    this.value = this.normalizeValue(this.value)
     this.initialValue = this.value
     this.syncFormValue(this.value)
   }
@@ -251,48 +251,39 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   }
 
   componentDidLoad() {
-    if (!this.selectEl || !this.popupEl) return
+    if (!this.selectEl || !this.popupEl || !this.el.shadowRoot) return
 
-    this.slimSelect = new SlimSelect({
-      select: this.selectEl,
-      settings: {
-        contentLocation: this.popupEl,
-        contentPosition: 'relative',
-        showSearch: this.searchable,
-        focusSearch: this.searchable,
-        searchPlaceholder: i18nDsSelect[this.language].searchPlaceholder,
-        searchText: i18nDsSelect[this.language].noResults,
-        placeholderText: this.placeholder || ' ',
-        disabled: this.disabled || this.readonly,
-        closeOnSelect: !this.multiple,
-        allowDeselect: this.clearable,
-        modal: 'off',
-      },
+    this.picker = new SelectPickerController({
+      selectEl: this.selectEl,
+      popupEl: this.popupEl,
+      shadowRoot: this.el.shadowRoot,
+      triggerId: this.selectId,
+      language: this.language,
+      placeholder: this.placeholder,
+      searchable: this.searchable,
+      disabled: this.disabled,
+      readonly: this.readonly,
+      multiple: this.multiple,
+      clearable: this.clearable,
       data: this.buildSlimData(),
-      events: {
-        afterChange: (newVal: Option[]) => this.handleAfterChange(newVal),
-        afterOpen: () => {
-          this.focused = true
-          this.dsFocus.emit(new FocusEvent('focus'))
-        },
-        afterClose: () => {
-          this.focused = false
-          this.dsBlur.emit(new FocusEvent('blur'))
-        },
+      onChange: newVal => this.handleAfterChange(newVal),
+      onOpen: () => {
+        this.focused = true
+        this.dsFocus.emit(new FocusEvent('focus'))
+      },
+      onClose: () => {
+        this.focused = false
+        this.dsBlur.emit(new FocusEvent('blur'))
       },
     })
 
     this.syncFormValue(this.value)
     this.initialValue = this.value
-
-    this.connectLabelToTrigger()
-    this.fixSearchListener()
-    this.fixKeyboardOpen()
   }
 
   disconnectedCallback() {
-    this.slimSelect?.destroy()
-    this.slimSelect = undefined
+    this.picker?.destroy()
+    this.picker = undefined
   }
 
   /**
@@ -329,8 +320,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
     this.language = state.language
     this.region = state.region
     if (this.searchable) {
-      const searchInput = this.el.shadowRoot?.querySelector<HTMLInputElement>('.ss-search input')
-      if (searchInput) searchInput.placeholder = i18nDsSelect[state.language].searchPlaceholder
+      this.picker?.updateSearchPlaceholder(state.language)
     }
   }
 
@@ -339,7 +329,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
    */
   @Method()
   async open(): Promise<void> {
-    this.slimSelect?.open()
+    this.picker?.open()
   }
 
   /**
@@ -347,7 +337,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
    */
   @Method()
   async close(): Promise<void> {
-    this.slimSelect?.close()
+    this.picker?.close()
   }
 
   /**
@@ -355,8 +345,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
    */
   @Method()
   async setFocus(): Promise<void> {
-    const trigger = this.el.shadowRoot?.querySelector<HTMLElement>('.ss-main')
-    trigger?.focus()
+    this.picker?.focus()
   }
 
   /**
@@ -364,8 +353,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
    */
   @Method()
   async setBlur(): Promise<void> {
-    const trigger = this.el.shadowRoot?.querySelector<HTMLElement>('.ss-main')
-    trigger?.blur()
+    this.picker?.blur()
   }
 
   /**
@@ -373,38 +361,24 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
    * ------------------------------------------------------
    */
 
-  private refreshSlimData() {
-    if (!this.slimSelect) return
-    this.slimSelect.setData(this.buildSlimData())
+  // Attributes are always strings, so `value="it,ch"` arrives as a single string in
+  // multiple mode. Split it into the `string[]` the rest of the component expects.
+  private normalizeValue(val: string | string[] | null): string | string[] | null {
+    if (this.multiple && typeof val === 'string') {
+      return val
+        .split(',')
+        .map(v => v.trim())
+        .filter(v => v.length > 0)
+    }
+    return val
   }
 
-  private buildSlimData(): (Partial<Option> | Partial<Optgroup>)[] {
-    const selected = Array.isArray(this.value) ? this.value : this.value ? [this.value] : []
-    const data: (Partial<Option> | Partial<Optgroup>)[] = []
-    data.push({ text: this.placeholder || '', placeholder: true } as Partial<Option>)
-    if (this.optionGroups.length > 0) {
-      data.push(
-        ...this.optionGroups.map(group => ({
-          label: group.label,
-          options: group.options.map(opt => ({
-            text: opt.label,
-            value: opt.value,
-            disabled: !!opt.disabled,
-            selected: selected.includes(opt.value),
-          })),
-        })),
-      )
-    } else {
-      data.push(
-        ...this.options.map(opt => ({
-          text: opt.label,
-          value: opt.value,
-          disabled: !!opt.disabled,
-          selected: selected.includes(opt.value),
-        })),
-      )
-    }
-    return data
+  private refreshSlimData() {
+    this.picker?.setData(this.buildSlimData())
+  }
+
+  private buildSlimData() {
+    return buildSlimData(this.options, this.optionGroups, this.placeholder, this.value)
   }
 
   private handleAfterChange(newVal: Option[]) {
@@ -420,6 +394,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
       this.syncFormValue(value)
       this.value = value
       this.dsChange.emit(value)
+      raf(() => this.picker?.close())
     }
   }
 
@@ -434,68 +409,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   }
 
   private syncDisabledState() {
-    if (this.disabled || this.readonly) {
-      this.slimSelect?.disable()
-    } else {
-      this.slimSelect?.enable()
-    }
-  }
-
-  // Shadow DOM event retargeting makes e.target null inside slim-select's keyup handler.
-  // Intercept during capture phase (before slim-select's bubble listener), stop propagation,
-  // and drive the search programmatically from the element reference instead.
-  private fixSearchListener() {
-    if (!this.searchable) return
-    const searchInput = this.el.shadowRoot?.querySelector<HTMLInputElement>('.ss-search input')
-    if (!searchInput) return
-    searchInput.addEventListener(
-      'input',
-      ev => {
-        ev.stopImmediatePropagation()
-        this.slimSelect?.search(searchInput.value ?? '')
-      },
-      { capture: true },
-    )
-  }
-
-  // SlimSelect's Space/Enter listener uses document.activeElement to find its trigger,
-  // but Shadow DOM retargeting returns the host element instead of .ss-main after a
-  // programmatic focus() call — so Space stops working after the first selection.
-  // We intercept keydown on the trigger directly to reopen the dropdown ourselves.
-  private fixKeyboardOpen() {
-    const trigger = this.el.shadowRoot?.querySelector<HTMLElement>('.ss-main')
-    if (!trigger) return
-    trigger.addEventListener('keydown', ev => {
-      const target = ev.target as HTMLElement
-      if (
-        (ev.key === ' ' || ev.key === 'Enter') &&
-        target === trigger &&
-        !target.classList.contains('ss-value-delete') &&
-        !trigger.classList.contains('ss-open')
-      ) {
-        ev.preventDefault()
-        this.slimSelect?.open()
-      }
-    })
-  }
-
-  private connectLabelToTrigger() {
-    const ssMain = this.el.shadowRoot?.querySelector<HTMLElement>('.ss-main')
-    if (ssMain) {
-      ssMain.id = this.selectId
-      ssMain.setAttribute('aria-labelledby', 'label')
-      ssMain.removeAttribute('aria-label')
-    }
-
-    // <label for="..."> only focuses native labelable elements; .ss-main is a div,
-    // so the browser ignores the for/id link. Wire it manually.
-    const label = this.el.shadowRoot?.querySelector<HTMLLabelElement>('label')
-    if (label && ssMain) {
-      label.addEventListener('click', ev => {
-        ev.preventDefault()
-        ssMain.focus()
-      })
-    }
+    this.picker?.setDisabled(this.disabled || this.readonly)
   }
 
   /**
