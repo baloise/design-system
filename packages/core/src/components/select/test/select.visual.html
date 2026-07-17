@@ -1,0 +1,167 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Single select -->
+      <section data-testid="basic">
+        <span>Basic</span>
+        <ds-select id="basic" label="Country" description="Select your country of residence"></ds-select>
+        <ds-select
+          id="basic-value"
+          label="Country"
+          description="Select your country of residence"
+          value="it"
+        ></ds-select>
+      </section>
+
+      <!-- Searchable single select -->
+      <section data-testid="searchable">
+        <span>Searchable</span>
+        <ds-select id="searchable" label="Country" description="Type to filter countries" searchable></ds-select>
+        <ds-select
+          id="searchable-value"
+          label="Country"
+          description="Type to filter countries"
+          searchable
+          value="de"
+        ></ds-select>
+      </section>
+
+      <!-- Clearable single select -->
+      <section data-testid="clearable">
+        <span>Clearable</span>
+        <ds-select id="clearable" label="Country" description="Select your country of residence" clearable></ds-select>
+        <ds-select
+          id="clearable-value"
+          label="Country"
+          description="Select your country of residence"
+          clearable
+          value="it"
+        ></ds-select>
+        <ds-select
+          id="clearable-multiple-value"
+          label="Languages"
+          description="Select all languages you speak"
+          clearable
+          multiple
+        ></ds-select>
+      </section>
+
+      <!-- Multi select -->
+      <section data-testid="multiple">
+        <span>Multiple</span>
+        <ds-select id="multi" label="Languages" description="Select all languages you speak" multiple></ds-select>
+        <ds-select id="multi-value" label="Languages" description="Select all languages you speak" multiple></ds-select>
+      </section>
+
+      <!-- Grouped options -->
+      <section data-testid="grouped">
+        <span>Grouped</span>
+        <ds-select id="grouped" label="Location" description="Select a city"></ds-select>
+        <ds-select id="grouped-value" label="Location" description="Select a city" value="ch-bs"></ds-select>
+      </section>
+
+      <!-- Form Reset -->
+      <section data-testid="form-reset">
+        <span>Form Reset</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-select id="form-reset-select" label="Location" description="Select a city" value="ch-bs"></ds-select>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
+      </section>
+
+      <!-- Autocomplete -->
+      <section data-testid="autocomplete">
+        <span>Autocomplete</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-input label="Name" autocomplete="name"></ds-input>
+          <ds-date label="Birthdate" description="Description 1" autocomplete="bday"></ds-date>
+          <ds-select
+            id="autocomplete-select"
+            label="Location"
+            description="Select a city"
+            autocomplete="address-level2"
+          ></ds-select>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      const countryOptions = [
+        { label: 'Switzerland', value: 'ch' },
+        { label: 'Germany', value: 'de' },
+        { label: 'Austria', value: 'at' },
+        { label: 'France', value: 'fr' },
+        { label: 'Italy', value: 'it' },
+      ]
+
+      const languageOptions = [
+        { label: 'German', value: 'de' },
+        { label: 'French', value: 'fr' },
+        { label: 'Italian', value: 'it' },
+        { label: 'English', value: 'en' },
+        { label: 'Romansh', value: 'rm' },
+      ]
+
+      const cityGroups = [
+        {
+          label: 'Switzerland',
+          options: [
+            { label: 'Zurich', value: 'ch-zh' },
+            { label: 'Basel', value: 'ch-bs' },
+            { label: 'Bern', value: 'ch-be' },
+          ],
+        },
+        {
+          label: 'Germany',
+          options: [
+            { label: 'Berlin', value: 'de-be' },
+            { label: 'Munich', value: 'de-mu' },
+            { label: 'Hamburg', value: 'de-ha' },
+          ],
+        },
+        {
+          label: 'France',
+          options: [
+            { label: 'Paris', value: 'fr-pa' },
+            { label: 'Lyon', value: 'fr-ly' },
+          ],
+        },
+      ]
+
+      document.getElementById('basic').options = countryOptions
+      document.getElementById('basic-value').options = countryOptions
+      document.getElementById('searchable').options = countryOptions
+      document.getElementById('searchable-value').options = countryOptions
+      document.getElementById('clearable').options = countryOptions
+      document.getElementById('clearable-value').options = countryOptions
+      document.getElementById('clearable-multiple-value').options = languageOptions
+      document.getElementById('clearable-multiple-value').value = ['de', 'it']
+      document.getElementById('multi').options = languageOptions
+      document.getElementById('multi-value').options = languageOptions
+      document.getElementById('multi-value').value = ['de', 'it']
+      document.getElementById('grouped').optionGroups = cityGroups
+      document.getElementById('grouped-value').optionGroups = cityGroups
+      document.getElementById('form-reset-select').optionGroups = cityGroups
+      document.getElementById('autocomplete-select').optionGroups = cityGroups
+    </script>
+  </body>
+</html>

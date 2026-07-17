@@ -1,0 +1,436 @@
+@use 'slim-select/src/slim-select/slimselect.scss';
+
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+@use '../input/clear-button.mixin' as clear-button;
+
+/**
+ * Variables
+ * --------------------------------
+ *
+ * @prop --select-color - Text color of the selected value.
+ * @prop --select-placeholder - Text color of the placeholder text.
+ * @prop --select-family - Font family of the select control.
+ * @prop --select-weight - Font weight of the select control.
+ * @prop --select-size - Font size of the select control.
+ * @prop --select-line-height - Line height of the select control.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include input.vars('select');
+
+  // Map slim-select CSS variables to DS tokens so inherited rules pick up DS theming.
+  // Colors
+  --ss-bg-color: transparent;
+  --ss-font-color: var(--ds-alias-text-color-primary);
+  --ss-primary-color: var(--ds-alias-text-color-primary);
+  --ss-placeholder-color: var(--ds-alias-text-color-placeholder);
+  --ss-disabled-color: var(--ds-alias-text-color-disabled);
+  --ss-border-color: var(--ds-alias-border-color-grey-light);
+  --ss-highlight-color: var(--ds-global-color-grey-2);
+  --ss-focus-color: var(--ds-global-color-grey-2);
+  --ss-success-color: var(--ds-alias-text-color-success);
+  --ss-error-color: var(--ds-alias-text-color-danger);
+
+  // Heights
+  --ss-main-height: 40px;
+  --ss-content-height: 300px;
+  --ss-modal-height: 85vh;
+  --ss-modal-width: min(90vw, 400px);
+  --ss-search-height: var(--ss-main-height);
+  --ss-option-height: var(--ss-main-height);
+
+  // Spacing
+  --ss-spacing-l: 8px;
+  --ss-spacing-m: 4px;
+  --ss-spacing-s: 2px;
+
+  // Misc
+  --ss-animation-timing: 0.2s;
+  --ss-border-radius: var(--ds-alias-radius-base);
+  --ss-modal-z-index: 1000001;
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  @include form.container();
+  @include form.label();
+  @include form.description();
+
+  #inner {
+    @include form.field();
+  }
+}
+
+/**
+ * Slim Select Trigger (.ss-main)
+ * --------------------------------
+ * .ss-main lives inside #container from Field.
+ * Strip slim-select's own border/background — the DS Field container provides the visual shell.
+ */
+
+:host {
+  select {
+    display: none;
+  }
+
+  #container {
+    position: relative;
+    padding-inline: 0;
+    cursor: pointer;
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+:host(.is-danger) {
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+}
+
+:host(.is-success) {
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+}
+
+:host(.is-warning) {
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+}
+
+:host(.is-disabled) {
+  pointer-events: none;
+  cursor: default;
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-select-color: var(--ds-form-control-color-value-disabled);
+  --mod-select-placeholder: var(--ds-form-control-color-placeholder-disabled);
+}
+
+/**
+ * Slim Select Dropdown (.ss-content)
+ * --------------------------------
+ * #popup is the contentLocation — slim-select renders .ss-content inside it.
+ * contentPosition: 'relative' makes slim-select add .ss-relative so the
+ * content flows inside #popup, not the viewport.
+ */
+:host {
+  #container {
+    position: relative;
+  }
+
+  #popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+
+  .ss-main {
+    @include unselectable();
+    @include font-smoothing();
+    @include print-hidden();
+
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    font-family: var(--ds-alias-text-family-body);
+    z-index: var(--ds-alias-z-index-popup);
+  }
+
+  .ss-content {
+    background-color: var(--ds-alias-background-color-white);
+    box-shadow: var(--ds-alias-shadow-box-base);
+    border: none;
+    margin: 0 !important;
+  }
+
+  .ss-content:not(.ss-open) {
+    display: none;
+  }
+
+  //
+  // search input
+  .ss-content .ss-search {
+    border-width: 2px;
+    border-color: var(--_form-container-border-color);
+
+    input {
+      color: var(--ds-alias-text-color-primary);
+    }
+
+    /* clears the ‘X’ from Internet Explorer */
+    input[type='search']::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    input[type='search']::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    /* clears the ‘X’ from Chrome */
+    input[type='search']::-webkit-search-decoration,
+    input[type='search']::-webkit-search-cancel-button,
+    input[type='search']::-webkit-search-results-button,
+    input[type='search']::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+
+  //
+  // option
+
+  .ss-content .ss-list .ss-option {
+    color: var(--ds-alias-text-color-primary);
+    border-left: none !important;
+
+    border-bottom: 2px solid var(--ds-alias-border-color-grey-light);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      width: 14px;
+      height: 14px;
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      margin-left: auto;
+    }
+  }
+
+  //
+  // key boardnavigation
+  .ss-content .ss-list .ss-option.ss-selected {
+    font-weight: var(--ds-alias-text-weight-bold);
+
+    &::after {
+      mask-image: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
+      background-color: var(--ds-alias-text-color-primary);
+    }
+  }
+
+  .ss-content .ss-list .ss-option.ss-selected,
+  .ss-content .ss-list .ss-option.ss-highlighted {
+    background-color: var(--ds-global-color-primary-1);
+    color: var(--ds-alias-text-color-primary);
+  }
+
+  .ss-content .ss-list .ss-option:hover:not(.ss-disabled),
+  .ss-content .ss-list .ss-option:active:not(.ss-disabled) {
+    background-color: var(--ds-global-color-primary-1);
+    color: var(--ds-alias-text-color-primary);
+  }
+
+  //
+  // Clearable button / deselect
+  .ss-main {
+    @include clear-button.style('.ss-deselect');
+  }
+
+  .ss-main .ss-deselect {
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-inline: 10px;
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill-rule='evenodd' d='M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-color: var(--ds-alias-text-color-primary);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        &::after {
+          background-color: var(--ds-alias-text-color-primary-hover);
+        }
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      &::after {
+        background-color: var(--ds-alias-text-color-primary-active);
+      }
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  //
+  // Arrow
+  .ss-main .ss-arrow {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin-inline: 10px;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+    background-color: var(--ds-alias-text-color-primary);
+    transition: transform 0.2s ease-in-out;
+
+    path {
+      display: none;
+    }
+  }
+
+  .ss-main.ss-dir-below .ss-arrow {
+    transform: rotate(180deg);
+  }
+
+  //
+  // chip tag design
+  .ss-main .ss-values {
+    padding-inline: 10px;
+
+    .ss-single {
+      padding-inline: 0;
+    }
+  }
+
+  .ss-main .ss-values .ss-value {
+    @include unselectable();
+
+    min-height: 1.5rem;
+    padding-block: var(--ds-tag-space-padding-y-sm);
+    padding-inline: var(--ds-tag-space-padding-x-sm);
+    border-radius: var(--ds-tag-radius-base);
+
+    background-color: var(--ds-tag-default-color-bg-base);
+
+    .ss-value-text {
+      color: var(--ds-tag-default-color-text-base);
+      font-family: var(--ds-tag-font-family);
+      line-height: 1;
+      font-size: var(--ds-tag-font-size-sm);
+      font-weight: var(--ds-tag-font-weight-sm);
+      padding: 0;
+    }
+
+    .ss-value-delete {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      border: none;
+      border-radius: var(--ds-close-radius);
+      background-color: var(--ds-close-color-background-base);
+      appearance: none;
+      outline: none;
+      margin-left: 0.25rem;
+      margin-right: -0.5rem;
+
+      &::after {
+        display: block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        mask-size: 100%;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill-rule='evenodd' d='M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+        background-color: var(--ds-close-color-icon-base);
+      }
+
+      svg {
+        display: none;
+      }
+
+      @include hover {
+        &:hover {
+          background-color: var(--ds-close-color-background-hover);
+        }
+      }
+
+      &:active {
+        background-color: var(--ds-close-color-background-active);
+      }
+
+      &:focus-visible {
+        &:not(:active) {
+          @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+        }
+      }
+    }
+  }
+
+  //
+  // option group label
+  .ss-content .ss-list .ss-optgroup .ss-optgroup-label {
+    background-color: var(--ds-global-color-grey-2);
+    color: var(--ds-alias-text-color-primary);
+    font-weight: var(--ds-alias-text-weight-bold);
+  }
+
+  //
+  // multiple
+  #popup.is-multiple {
+    .ss-content .ss-list .ss-option {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        width: 16px;
+        height: 16px;
+        content: '';
+        border: 2px solid var(--ds-alias-border-color-primary);
+        border-radius: var(--ds-alias-radius-base);
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      &.ss-selected::before {
+        background-color: var(--ds-global-color-primary-5);
+        border-color: var(--ds-global-color-primary-5);
+        background-image: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}

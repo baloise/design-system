@@ -11576,6 +11576,26 @@
             }
           }
         }
+      },
+      "Chip": {
+        "Color": {
+          "Base": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.White}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            }
+          }
+        }
       }
     },
     "Notification": {

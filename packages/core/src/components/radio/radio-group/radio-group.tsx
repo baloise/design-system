@@ -148,7 +148,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
   /**
    * The name of the radios in the group. Child radios will inherit the name.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('string')
   readonly name: string = this.inputId
 

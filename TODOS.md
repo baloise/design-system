@@ -27,6 +27,8 @@
 | Veritcal from fields                     | Add missing variant                                         | ⬜     |
 | Use exact versions                       | Adjust dependenciues to use exact versions                  | ⬜     |
 | Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
+| Check deps of core                       | Do we need all of them                                      | ⬜     |
+| Date use floatin ui                      | Replace native popup soltuibn with the lib                  | ⬜     |
 
 ## Componentes
 

@@ -158,7 +158,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   /**
    * The name of the checkboxes in the group. Child checkboxes will inherit the name.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('string')
   readonly name: string = this.inputId
 

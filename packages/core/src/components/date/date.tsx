@@ -106,7 +106,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('string')
   readonly name: string = this.dateId
 

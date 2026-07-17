@@ -232,7 +232,7 @@ export class Button implements DsComponentInterface {
   /**
    * The name of the button, which is submitted with the form data.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('string')
   readonly name: string = ''
 
