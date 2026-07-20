@@ -18,8 +18,8 @@
 | Validate Props and make them reflected   | Create utils and skill for that                             | ✅     |
 | Rename props called interface to variant |                                                             | ✅     |
 | Use exact versions                       | Adjust dependenciues to use exact versions                  | ✅     |
-| Check deps of core                       | Do we need all of them                                      | ⬜     |
-| Create config as meta                    | Add new possability to add config values via html meta      | ⬜     |
+| Check deps of core                       | Do we need all of them                                      | ✅     |
+| Create config as meta                    | Add new possability to add config values via html meta      | ✅     |
 | Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
 | Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
