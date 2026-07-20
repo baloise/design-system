@@ -594,6 +594,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
             aria-modal="true"
             aria-label={chooseDateLabel}
             aria-hidden={this.isOpen ? 'false' : 'true'}
+            inert={this.isOpen ? undefined : true}
             ref={el => (this.popupHostEl = el as HTMLDivElement)}
           ></div>
         )}

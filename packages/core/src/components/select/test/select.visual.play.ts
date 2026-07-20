@@ -11,6 +11,12 @@ const HOST_VARIANTS: { testId: string; selectId: string; options: string[]; mult
   { testId: 'grouped', selectId: 'grouped', options: ['Basel'] },
 ]
 
+const HTML_OPTIONS_VARIANTS: { testId: string; selectId: string; options: string[] }[] = [
+  { testId: 'flat', selectId: 'flat', options: ['Italy'] },
+  { testId: 'grouped', selectId: 'grouped', options: ['Basel'] },
+  { testId: 'disabled-option', selectId: 'disabled-option', options: ['Basic'] },
+]
+
 const image = screenshot(TAG)
 
 test.describe('style', () => {
@@ -46,6 +52,30 @@ test.describe('host', () => {
         await select.option(option).click()
       }
       await expectScreenshot(page.locator('body'), image(`${testId}-selected`))
+    })
+  })
+})
+
+test.describe('html options', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual-html-options.html`)
+  })
+
+  HTML_OPTIONS_VARIANTS.forEach(({ testId, selectId, options }) => {
+    test(testId, async ({ page }) => {
+      const section = page.getByTestId(testId)
+      await expectScreenshot(section, image(`html-options-${testId}`))
+
+      // The dropdown is absolutely positioned and overflows the section's box,
+      // so it must be captured against the full page rather than the section itself.
+      const select = new DsSelect(page.locator(`ds-select#${selectId}`))
+      await select.open()
+      await expectScreenshot(page.locator('body'), image(`html-options-${testId}-open`))
+
+      for (const option of options) {
+        await select.option(option).click()
+      }
+      await expectScreenshot(page.locator('body'), image(`html-options-${testId}-selected`))
     })
   })
 })

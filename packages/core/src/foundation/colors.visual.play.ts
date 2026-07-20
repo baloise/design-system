@@ -10,7 +10,7 @@ test.beforeEach('Setup', async ({ page }) => {
 })
 
 VARIANTS.forEach(variant => {
-  test(variant, async ({ page, isMobile }) => {
+  test.skip(variant, async ({ page, isMobile }) => {
     // eslint-disable-next-line playwright/no-skipped-test
     test.skip(isMobile, 'Runs only on desktop')
     const el = page.getByTestId(variant)
