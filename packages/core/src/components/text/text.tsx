@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ElementStateInfo, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   TEXT_ALIGNS,
@@ -24,7 +24,7 @@ import {
   styleUrl: 'text.host.scss',
   shadow: true,
 })
-export class Text implements DsComponentInterface, ElementStateInfo {
+export class Text implements DsComponentInterface {
   log!: LogInstance
 
   @Logger('text')

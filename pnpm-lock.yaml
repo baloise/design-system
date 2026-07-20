@@ -358,27 +358,15 @@ importers:
       '@floating-ui/dom':
         specifier: 1.7.6
         version: 1.7.6
-      '@popperjs/core':
-        specifier: 2.11.4
-        version: 2.11.4
       '@stencil/core':
         specifier: 'catalog:'
         version: 4.43.5
       air-datepicker:
         specifier: 3.6.0
         version: 3.6.0
-      big.js:
-        specifier: 7.0.1
-        version: 7.0.1
-      contactjs:
-        specifier: 2.1.7
-        version: 2.1.7
       dompurify:
         specifier: 3.4.11
         version: 3.4.11
-      filesize.js:
-        specifier: 2.0.0
-        version: 2.0.0
       focus-trap:
         specifier: 8.2.2
         version: 8.2.2
@@ -1920,9 +1908,6 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@popperjs/core@2.11.4':
-    resolution: {integrity: sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==}
-
   '@quansync/fs@1.0.0':
     resolution: {integrity: sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ==}
 
@@ -2792,9 +2777,6 @@ packages:
   bidi-js@1.0.3:
     resolution: {integrity: sha512-RKshQI1R3YQ+n9YJz2QQ147P66ELpa1FQEg20Dk8oW9t2KgLbpDLLp9aGZ7y8WHSshDknG0bknqGw5/tyCs5tw==}
 
-  big.js@7.0.1:
-    resolution: {integrity: sha512-iFgV784tD8kq4ccF1xtNMZnXeZzVuXWWM+ERFzKQjv+A5G9HC8CY3DuV45vgzFFcW+u2tIvmF95+AzWgs6BjCg==}
-
   binary-version-check@6.1.0:
     resolution: {integrity: sha512-REKdLKmuViV2WrtWXvNSiPX04KbIjfUV3Cy8batUeOg+FtmowavzJorfFhWq95cVJzINnL/44ixP26TrdJZACA==}
     engines: {node: '>=18'}
@@ -2964,9 +2946,6 @@ packages:
   consola@3.4.2:
     resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
     engines: {node: ^14.18.0 || >=16.10.0}
-
-  contactjs@2.1.7:
-    resolution: {integrity: sha512-o95EUKewmXx+ZoODL1jf6K1yQSvADhyG8BIFyUK7TWc4ToF5MBhb4glVB3aKFJWgXbYyAnrGkbgzATCJSmE9Mg==}
 
   content-disposition@1.1.0:
     resolution: {integrity: sha512-5jRCH9Z/+DRP7rkvY83B+yGIGX96OYdJmzngqnw2SBSxqCFPd0w2km3s5iawpGX8krnwSGmF0FW5Nhr0Hfai3g==}
@@ -3439,9 +3418,6 @@ packages:
   filenamify@7.0.2:
     resolution: {integrity: sha512-fz10TUqSZ1lG7ftW1KnRotJzMD8YRb6kaAQKpZJBLvqXXfFgIEpuazy1w2lK3zhMiBSdH/uF9LFlv5smJ2Jl1w==}
     engines: {node: '>=20'}
-
-  filesize.js@2.0.0:
-    resolution: {integrity: sha512-dOngzfsRfjwTQkG3UPY3GI+OqbBj4mO1UW1FoDYN2SF/p7hACKXHKGjgA62ug4KtORXcXdlEKOXrgfzt+qB2Nw==}
 
   fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -6634,8 +6610,6 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@popperjs/core@2.11.4': {}
-
   '@quansync/fs@1.0.0':
     dependencies:
       quansync: 1.0.0
@@ -7572,8 +7546,6 @@ snapshots:
     dependencies:
       require-from-string: 2.0.2
 
-  big.js@7.0.1: {}
-
   binary-version-check@6.1.0:
     dependencies:
       binary-version: 7.1.0
@@ -7756,8 +7728,6 @@ snapshots:
   confbox@0.1.8: {}
 
   consola@3.4.2: {}
-
-  contactjs@2.1.7: {}
 
   content-disposition@1.1.0: {}
 
@@ -8307,8 +8277,6 @@ snapshots:
   filenamify@7.0.2:
     dependencies:
       filename-reserved-regex: 4.0.0
-
-  filesize.js@2.0.0: {}
 
   fill-range@7.1.1:
     dependencies:

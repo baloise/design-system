@@ -2,8 +2,6 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 
 export type Attributes = { [key: string]: any }
 
-const trackingAttributes = ['data-tracking-style', 'data-tracking-topic', 'data-tracking-context', 'data-tracking-id']
-
 /**
  * Elements inside of web components sometimes need to inherit global attributes
  * set on the host. For example, the inner input in `ds-input` should inherit
@@ -29,19 +27,4 @@ export const inheritAttributes = (el: HTMLElement | HTMLStencilElement, attribut
   })
 
   return attributeObject
-}
-
-/**
- * Returns an array of tracking attributes that should be copied from
- * the host element to a target within the component.
- * @param el The element that the attributes should be copied from.
- * @param ignoreList The list of aria-attributes to ignore reflecting and removing from the host.
- * Use this in instances where we manually specify aria attributes on the `<Host>` element.
- */
-export const inheritTrackingAttributes = (el: HTMLElement | HTMLStencilElement, ignoreList?: string[]) => {
-  let attributesToInherit = trackingAttributes
-  if (ignoreList && ignoreList.length > 0) {
-    attributesToInherit = attributesToInherit.filter(attr => !ignoreList.includes(attr))
-  }
-  return inheritAttributes(el, attributesToInherit)
 }

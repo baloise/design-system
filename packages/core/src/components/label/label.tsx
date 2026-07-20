@@ -1,14 +1,6 @@
 import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  ElementStateInfo,
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  OneOf,
-  Type,
-  hasValue,
-} from '@utils'
+import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, OneOf, Type, hasValue } from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -32,7 +24,7 @@ import { LABEL_SIZES, type LabelSize } from './label.interfaces'
   styleUrl: './label.host.scss',
   shadow: true,
 })
-export class Label implements DsComponentInterface, DsConfigObserver, ElementStateInfo {
+export class Label implements DsComponentInterface, DsConfigObserver {
   log!: LogInstance
 
   @Logger('label')
