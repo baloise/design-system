@@ -20,6 +20,8 @@ import type { Option } from 'slim-select/dist/store'
  * Select renders an accessible single- or multi-select dropdown backed by Slim Select,
  * with full form association and the standard DS field wrapper (label, description, validation).
  *
+ * @slot - Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative
+ * to the options / optionGroups props. Ignored whenever options or optionGroups is non-empty.
  * @part inner - The inner wrapper element containing label, control, and description.
  * @part label - The label element.
  * @part control - The control container wrapping the slim-select trigger.
@@ -51,6 +53,8 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   @State() focused = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+  @State() slottedOptions: SelectOption[] = []
+  @State() slottedOptionGroups: SelectOptionGroup[] = []
 
   @AttachInternals() internals!: ElementInternals
 
@@ -253,6 +257,8 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   componentDidLoad() {
     if (!this.selectEl || !this.popupEl || !this.el.shadowRoot) return
 
+    this.readOptionsFromSlot()
+
     this.picker = new SelectPickerController({
       selectEl: this.selectEl,
       popupEl: this.popupEl,
@@ -378,7 +384,47 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   }
 
   private buildSlimData() {
-    return buildSlimData(this.options, this.optionGroups, this.placeholder, this.value)
+    const options = this.options.length > 0 ? this.options : this.slottedOptions
+    const optionGroups = this.optionGroups.length > 0 ? this.optionGroups : this.slottedOptionGroups
+    return buildSlimData(options, optionGroups, this.placeholder, this.value)
+  }
+
+  private handleSlotChange = () => {
+    this.readOptionsFromSlot()
+    this.refreshSlimData()
+  }
+
+  // Reads ds-select-option / ds-select-optgroup light-DOM children (the HTML-only alternative
+  // to the options / optionGroups props) into the same shape those props use.
+  private readOptionsFromSlot() {
+    const slot = this.el.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])')
+    if (!slot) return
+
+    const assignedElements = slot.assignedElements({ flatten: true })
+    const optgroups = assignedElements.filter(el => el.tagName.toLowerCase() === 'ds-select-optgroup')
+
+    if (optgroups.length > 0) {
+      this.slottedOptionGroups = optgroups.map(el => ({
+        label: (el as HTMLDsSelectOptgroupElement).label,
+        options: this.mapSelectOptionElements(Array.from(el.querySelectorAll('ds-select-option'))),
+      }))
+      this.slottedOptions = []
+    } else {
+      const options = assignedElements.filter(el => el.tagName.toLowerCase() === 'ds-select-option')
+      this.slottedOptions = this.mapSelectOptionElements(options)
+      this.slottedOptionGroups = []
+    }
+  }
+
+  private mapSelectOptionElements(elements: Element[]): SelectOption[] {
+    return elements.map(el => {
+      const option = el as HTMLDsSelectOptionElement
+      return {
+        label: option.textContent?.trim() ?? '',
+        value: option.value,
+        disabled: option.disabled,
+      }
+    })
   }
 
   private handleAfterChange(newVal: Option[]) {
@@ -449,7 +495,10 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
             'is-multiple': this.multiple,
           }}
           ref={el => (this.popupEl = el as HTMLDivElement)}
-        />
+        >
+          {/* Hidden ds-select-option / ds-select-optgroup children — the HTML-only alternative to options/optionGroups */}
+          <slot onSlotchange={this.handleSlotChange}></slot>
+        </div>
       </Field>
     )
   }

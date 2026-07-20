@@ -54,7 +54,7 @@ export default defineConfig({
   webServer: {
     command: process.env.CI ? 'node ./web-server.js' : 'cross-env DS_SILENT=true pnpm start',
     url: 'http://localhost:4000',
-    reuseExistingServer: false,
+    reuseExistingServer: true,
     cwd: __dirname,
   },
   projects: [

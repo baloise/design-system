@@ -52,6 +52,8 @@ export const tags: string[] = [
   "ds-segment",
   "ds-segment-item",
   "ds-select",
+  "ds-select-optgroup",
+  "ds-select-option",
   "ds-shape",
   "ds-snackbar",
   "ds-spinner",

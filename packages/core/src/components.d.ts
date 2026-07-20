@@ -2603,6 +2603,37 @@ export namespace Components {
         "value": string | string[] | null;
     }
     /**
+     * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+     * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+     * `ds-select` reads its `label` and its `ds-select-option` children.
+     */
+    interface DsSelectOptgroup {
+        /**
+          * The label displayed above this group of options.
+          * @default ''
+         */
+        "label": string;
+    }
+    /**
+     * Select option declares a single selectable option as HTML markup, as an alternative to the
+     * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+     * migration, where the consumer would rather render option markup than write JavaScript.
+     * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+     * text content and renders the actual dropdown option itself.
+     */
+    interface DsSelectOption {
+        /**
+          * If `true`, the option cannot be selected.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The value submitted when this option is selected.
+          * @default ''
+         */
+        "value": string;
+    }
+    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface DsShape {
@@ -4370,6 +4401,30 @@ declare global {
         new (): HTMLDsSelectElement;
     };
     /**
+     * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+     * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+     * `ds-select` reads its `label` and its `ds-select-option` children.
+     */
+    interface HTMLDsSelectOptgroupElement extends Components.DsSelectOptgroup, HTMLStencilElement {
+    }
+    var HTMLDsSelectOptgroupElement: {
+        prototype: HTMLDsSelectOptgroupElement;
+        new (): HTMLDsSelectOptgroupElement;
+    };
+    /**
+     * Select option declares a single selectable option as HTML markup, as an alternative to the
+     * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+     * migration, where the consumer would rather render option markup than write JavaScript.
+     * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+     * text content and renders the actual dropdown option itself.
+     */
+    interface HTMLDsSelectOptionElement extends Components.DsSelectOption, HTMLStencilElement {
+    }
+    var HTMLDsSelectOptionElement: {
+        prototype: HTMLDsSelectOptionElement;
+        new (): HTMLDsSelectOptionElement;
+    };
+    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface HTMLDsShapeElement extends Components.DsShape, HTMLStencilElement {
@@ -4698,6 +4753,8 @@ declare global {
         "ds-segment": HTMLDsSegmentElement;
         "ds-segment-item": HTMLDsSegmentItemElement;
         "ds-select": HTMLDsSelectElement;
+        "ds-select-optgroup": HTMLDsSelectOptgroupElement;
+        "ds-select-option": HTMLDsSelectOptionElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
@@ -7429,6 +7486,37 @@ declare namespace LocalJSX {
         "value"?: string | string[] | null;
     }
     /**
+     * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+     * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+     * `ds-select` reads its `label` and its `ds-select-option` children.
+     */
+    interface DsSelectOptgroup {
+        /**
+          * The label displayed above this group of options.
+          * @default ''
+         */
+        "label"?: string;
+    }
+    /**
+     * Select option declares a single selectable option as HTML markup, as an alternative to the
+     * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+     * migration, where the consumer would rather render option markup than write JavaScript.
+     * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+     * text content and renders the actual dropdown option itself.
+     */
+    interface DsSelectOption {
+        /**
+          * If `true`, the option cannot be selected.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The value submitted when this option is selected.
+          * @default ''
+         */
+        "value"?: string;
+    }
+    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface DsShape {
@@ -8814,6 +8902,13 @@ declare namespace LocalJSX {
         "placeholder": string;
         "autoInvalidOff": boolean;
     }
+    interface DsSelectOptgroupAttributes {
+        "label": string;
+    }
+    interface DsSelectOptionAttributes {
+        "value": string;
+        "disabled": boolean;
+    }
     interface DsShapeAttributes {
         "color": ShapeColor;
         "rotation": ShapeRotation;
@@ -9043,6 +9138,8 @@ declare namespace LocalJSX {
         "ds-segment": Omit<DsSegment, keyof DsSegmentAttributes> & { [K in keyof DsSegment & keyof DsSegmentAttributes]?: DsSegment[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `attr:${K}`]?: DsSegmentAttributes[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `prop:${K}`]?: DsSegment[K] };
         "ds-segment-item": Omit<DsSegmentItem, keyof DsSegmentItemAttributes> & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes]?: DsSegmentItem[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `attr:${K}`]?: DsSegmentItemAttributes[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `prop:${K}`]?: DsSegmentItem[K] };
         "ds-select": Omit<DsSelect, keyof DsSelectAttributes> & { [K in keyof DsSelect & keyof DsSelectAttributes]?: DsSelect[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `attr:${K}`]?: DsSelectAttributes[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `prop:${K}`]?: DsSelect[K] };
+        "ds-select-optgroup": Omit<DsSelectOptgroup, keyof DsSelectOptgroupAttributes> & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes]?: DsSelectOptgroup[K] } & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes as `attr:${K}`]?: DsSelectOptgroupAttributes[K] } & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes as `prop:${K}`]?: DsSelectOptgroup[K] };
+        "ds-select-option": Omit<DsSelectOption, keyof DsSelectOptionAttributes> & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes]?: DsSelectOption[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `attr:${K}`]?: DsSelectOptionAttributes[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `prop:${K}`]?: DsSelectOption[K] };
         "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
@@ -9292,6 +9389,20 @@ declare module "@stencil/core" {
              * with full form association and the standard DS field wrapper (label, description, validation).
              */
             "ds-select": LocalJSX.IntrinsicElements["ds-select"] & JSXBase.HTMLAttributes<HTMLDsSelectElement>;
+            /**
+             * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+             * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+             * `ds-select` reads its `label` and its `ds-select-option` children.
+             */
+            "ds-select-optgroup": LocalJSX.IntrinsicElements["ds-select-optgroup"] & JSXBase.HTMLAttributes<HTMLDsSelectOptgroupElement>;
+            /**
+             * Select option declares a single selectable option as HTML markup, as an alternative to the
+             * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+             * migration, where the consumer would rather render option markup than write JavaScript.
+             * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+             * text content and renders the actual dropdown option itself.
+             */
+            "ds-select-option": LocalJSX.IntrinsicElements["ds-select-option"] & JSXBase.HTMLAttributes<HTMLDsSelectOptionElement>;
             /**
              * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
              */

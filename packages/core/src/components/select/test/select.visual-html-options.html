@@ -1,0 +1,56 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <!--
+        HTML-only options: a secondary way to declare ds-select options as markup instead of the
+        options / optionGroups props, for backend-only apps and easier migration. No JavaScript.
+      -->
+
+      <!-- Flat options -->
+      <section data-testid="flat">
+        <span>Flat options</span>
+        <ds-select id="flat" label="Country" description="Select your country of residence">
+          <ds-select-option value="it">Italy</ds-select-option>
+          <ds-select-option value="de">Germany</ds-select-option>
+          <ds-select-option value="fr">France</ds-select-option>
+          <ds-select-option value="ch">Switzerland</ds-select-option>
+        </ds-select>
+      </section>
+
+      <!-- Grouped options -->
+      <section data-testid="grouped">
+        <span>Grouped options</span>
+        <ds-select id="grouped" label="City" description="Select your city of residence">
+          <ds-select-optgroup label="Switzerland">
+            <ds-select-option value="basel">Basel</ds-select-option>
+            <ds-select-option value="bern">Bern</ds-select-option>
+          </ds-select-optgroup>
+          <ds-select-optgroup label="Italy">
+            <ds-select-option value="rome">Rome</ds-select-option>
+            <ds-select-option value="milan">Milan</ds-select-option>
+          </ds-select-optgroup>
+        </ds-select>
+      </section>
+
+      <!-- Disabled option -->
+      <section data-testid="disabled-option">
+        <span>Disabled option</span>
+        <ds-select id="disabled-option" label="Plan" description="Select your subscription plan">
+          <ds-select-option value="basic">Basic</ds-select-option>
+          <ds-select-option value="pro">Pro</ds-select-option>
+          <ds-select-option value="enterprise" disabled>Enterprise (coming soon)</ds-select-option>
+        </ds-select>
+      </section>
+    </main>
+  </body>
+</html>

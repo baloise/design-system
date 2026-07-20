@@ -48,12 +48,15 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
  * @prop --select-content-background-color: Background color of the dropdown content.
  * @prop --select-content-shadow: Box shadow of the dropdown content.
  * @prop --select-search-text-color: Text color of the search input.
- * @prop --select-option-text-color: Text color of a dropdown option.
+ * @prop --select-option-text-color: Text color of a dropdown option in its base state.
+ * @prop --select-option-background-color: Background color of a dropdown option in its base state.
  * @prop --select-option-border-color: Border color between dropdown options.
  * @prop --select-option-selected-weight: Font weight of a selected option.
  * @prop --select-option-selected-icon-color: Color of the selected option checkmark icon.
- * @prop --select-option-highlight-background-color: Background color of a highlighted/selected option.
- * @prop --select-option-highlight-text-color: Text color of a highlighted/selected option.
+ * @prop --select-option-selected-text-color: Text color of a selected option.
+ * @prop --select-option-selected-background-color: Background color of a selected option.
+ * @prop --select-option-highlight-text-color: Text color of a hovered/keyboard-highlighted option.
+ * @prop --select-option-highlight-background-color: Background color of a hovered/keyboard-highlighted option.
  * @prop --select-optgroup-background-color: Background color of an option group label.
  * @prop --select-optgroup-text-color: Text color of an option group label.
  * @prop --select-optgroup-weight: Font weight of an option group label.
@@ -95,11 +98,18 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   @include vars.local(select-search-text-color, var(--ds-select-search-color-text-base));
 
   @include vars.local(select-option-text-color, var(--ds-select-option-color-text-base));
+  @include vars.local(select-option-background-color, var(--ds-select-option-color-background-base));
   @include vars.local(select-option-border-color, var(--ds-select-option-color-border-base));
   @include vars.local(select-option-selected-weight, var(--ds-select-option-weight-selected));
   @include vars.local(select-option-selected-icon-color, var(--ds-select-option-color-icon-selected));
-  @include vars.local(select-option-highlight-background-color, var(--ds-select-option-color-background-highlight));
+  @include vars.local(select-option-selected-text-color, var(--ds-select-option-color-text-selected));
+  @include vars.local(select-option-selected-background-color, var(--ds-select-option-color-background-selected));
+  @include vars.local(select-option-hover-text-color, var(--ds-select-option-color-text-hover));
+  @include vars.local(select-option-hover-background-color, var(--ds-select-option-color-background-hover));
   @include vars.local(select-option-highlight-text-color, var(--ds-select-option-color-text-highlight));
+  @include vars.local(select-option-highlight-background-color, var(--ds-select-option-color-background-highlight));
+  @include vars.local(select-option-disabled-text-color, var(--ds-select-option-color-text-disabled));
+  @include vars.local(select-option-disabled-background-color, var(--ds-select-option-color-background-disabled));
 
   @include vars.local(select-optgroup-background-color, var(--ds-select-optgroup-color-background-base));
   @include vars.local(select-optgroup-text-color, var(--ds-select-optgroup-color-text-base));
@@ -240,10 +250,7 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   }
 
   #popup {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    display: block;
   }
 
   .ss-main {
@@ -264,10 +271,20 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     box-shadow: var(--_select-content-shadow);
     border: none;
     margin: 0 !important;
-  }
 
-  .ss-content:not(.ss-open) {
-    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    min-height: 0;
+    max-height: 300px;
+    height: auto;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+      animation: none !important;
+    }
   }
 }
 
@@ -314,6 +331,7 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
 :host {
   .ss-content .ss-list .ss-option {
     color: var(--_select-option-text-color);
+    background-color: var(--_select-option-background-color);
     border-left: none !important;
 
     border-bottom: 2px solid var(--_select-option-border-color);
@@ -335,9 +353,11 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   }
 
   //
-  // keyboard navigation
+  // selected (persistent, keyboard/mouse independent)
   .ss-content .ss-list .ss-option.ss-selected {
     font-weight: var(--_select-option-selected-weight);
+    background-color: var(--_select-option-selected-background-color);
+    color: var(--_select-option-selected-text-color);
 
     &::after {
       @include mask-icon($select-icon-check);
@@ -345,16 +365,24 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     }
   }
 
-  .ss-content .ss-list .ss-option.ss-selected,
+  //
+  // highlighted (hover / keyboard navigation)
+  .ss-content .ss-list .ss-option:hover:not(.ss-disabled),
+  .ss-content .ss-list .ss-option:active:not(.ss-disabled) {
+    background-color: var(--_select-option-hover-background-color);
+    color: var(--_select-option-hover-text-color);
+  }
+
+  //
+  // highlighted (hover / keyboard navigation)
   .ss-content .ss-list .ss-option.ss-highlighted {
     background-color: var(--_select-option-highlight-background-color);
     color: var(--_select-option-highlight-text-color);
   }
 
-  .ss-content .ss-list .ss-option:hover:not(.ss-disabled),
-  .ss-content .ss-list .ss-option:active:not(.ss-disabled) {
-    background-color: var(--_select-option-highlight-background-color);
-    color: var(--_select-option-highlight-text-color);
+  .ss-content .ss-list .ss-option.ss-disabled {
+    background-color: var(--_select-option-disabled-background-color);
+    color: var(--_select-option-disabled-text-color);
   }
 }
 
@@ -370,10 +398,10 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
       position: absolute;
       content: '';
       display: block;
-      width: 0.8rem;
-      height: 0.8rem;
+      width: 1rem;
+      height: 1rem;
       margin-inline: var(--ss-icon-spacing);
-      @include mask-icon($select-icon-close);
+      @include mask-icon($select-icon-close, 80%);
       background-color: var(--_select-icon-color);
       transition: transform var(--ss-animation-timing) ease-in-out;
     }

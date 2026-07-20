@@ -677,19 +677,19 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.9803921580314636,
-              0.9803921580314636,
-              0.9803921580314636
+              0.9411764740943909,
+              0.9411764740943909,
+              0.9411764740943909
             ],
             "alpha": 1,
-            "hex": "#FAFAFA"
+            "hex": "#F0F0F0"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:6:351",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.isOverride": true
+            "com.figma.isOverride": false
           }
         },
         "2": {
@@ -697,19 +697,19 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.9647058844566345,
-              0.9647058844566345,
-              0.9647058844566345
+              0.8784313725490196,
+              0.8784313725490196,
+              0.8784313725490196
             ],
             "alpha": 1,
-            "hex": "#F6F6F6"
+            "hex": "#E0E0E0"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:6:349",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.isOverride": true
+            "com.figma.isOverride": false
           }
         },
         "3": {
@@ -717,19 +717,19 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.9098039269447327,
-              0.9098039269447327,
-              0.9098039269447327
+              0.8156862745098039,
+              0.8156862745098039,
+              0.8156862745098039
             ],
             "alpha": 1,
-            "hex": "#E8E8E8"
+            "hex": "#D0D0D0"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:6:350",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
-            "com.figma.isOverride": true
+            "com.figma.isOverride": false
           }
         },
         "4": {
@@ -2378,6 +2378,47 @@
             "com.figma.isOverride": true
           }
         },
+        "Selected": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Primary.2}",
+          "$extensions": {
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Hover": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Grey.1}",
+          "$extensions": {
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Highlight": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Primary.1}",
+          "$extensions": {
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
+        "Disabled": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Grey.2}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:6:1217",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.isOverride": true
+          }
+        },
         "Transparent": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Neutral}",
@@ -2416,17 +2457,6 @@
           "$value": "{🌐 Global.🌈 Color.Sky.3}",
           "$extensions": {
             "com.figma.variableId": "VariableID:153:16",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.isOverride": true
-          }
-        },
-        "Disabled": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.3}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:6:1217",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ],
@@ -2966,7 +2996,7 @@
         },
         "Disabled": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.4}",
+          "$value": "{🌐 Global.🌈 Color.Grey.3}",
           "$extensions": {
             "com.figma.variableId": "VariableID:6:987",
             "com.figma.scopes": [
@@ -2988,7 +3018,7 @@
         },
         "GreyLight": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.2}",
+          "$value": "{🌐 Global.🌈 Color.Grey.1}",
           "$extensions": {
             "com.figma.variableId": "VariableID:6:1131",
             "com.figma.scopes": [
@@ -2999,7 +3029,7 @@
         },
         "Grey": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.3}",
+          "$value": "{🌐 Global.🌈 Color.Grey.2}",
           "$extensions": {
             "com.figma.variableId": "VariableID:6:1139",
             "com.figma.scopes": [
@@ -7476,7 +7506,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:76",
                 "com.figma.scopes": [
@@ -7487,7 +7517,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:78",
                 "com.figma.scopes": [
@@ -7511,7 +7541,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:84",
                 "com.figma.scopes": [
@@ -7522,7 +7552,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:85",
                 "com.figma.scopes": [
@@ -7546,7 +7576,7 @@
             },
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:87",
                 "com.figma.scopes": [
@@ -7557,7 +7587,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:70:88",
                 "com.figma.scopes": [
@@ -9801,7 +9831,7 @@
           "DayHover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.SkyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.scopes": [
                   "ALL_SCOPES"
@@ -9855,6 +9885,162 @@
               ],
               "com.figma.isOverride": true
             }
+          },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          }
+        },
+        "Family": {
+          "$type": "string",
+          "$value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "$extensions": {
+            "com.figma.isOverride": true
+          }
+        },
+        "Size": {
+          "Mobile": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+            "$extensions": {
+              "com.figma.isOverride": true
+            }
+          },
+          "Tablet": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔤 Text.Size.Base.Tablet}",
+            "$extensions": {
+              "com.figma.isOverride": true
+            }
+          },
+          "Desktop": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔤 Text.Size.Base.Desktop}",
+            "$extensions": {
+              "com.figma.isOverride": true
+            }
+          }
+        },
+        "Weight": {
+          "$type": "string",
+          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "$extensions": {
+            "com.figma.isOverride": true
+          }
+        },
+        "Radius": {
+          "$type": "number",
+          "$value": "{🔗 Alias.🔵 Radius.Base}",
+          "$extensions": {
+            "com.figma.isOverride": true
+          }
+        },
+        "Shadow": {
+          "$type": "string",
+          "$value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+          "$extensions": {
+            "com.figma.isOverride": true
+          }
+        },
+        "Day": {
+          "Weight": {
+            "Base": {
+              "$type": "string",
+              "$value": "{🔗 Alias.🔤 Text.Weight.Regular}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
+            "Selected": {
+              "$type": "string",
+              "$value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            }
+          }
+        },
+        "DayName": {
+          "Family": {
+            "$type": "string",
+            "$value": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "$extensions": {
+              "com.figma.isOverride": true
+            }
+          },
+          "Weight": {
+            "$type": "string",
+            "$value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "$extensions": {
+              "com.figma.isOverride": true
+            }
+          }
+        },
+        "Nav": {
+          "Color": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            },
+            "Active": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.isOverride": true
+              }
+            }
+          },
+          "Radius": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔵 Radius.Base}",
+            "$extensions": {
+              "com.figma.isOverride": true
+            }
           }
         }
       },
@@ -9869,6 +10055,35 @@
               ],
               "com.figma.isOverride": true
             }
+          },
+          "Hover": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          },
+          "Active": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.PrimaryActive}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.isOverride": true
+            }
+          }
+        }
+      },
+      "Popup": {
+        "Shadow": {
+          "$type": "string",
+          "$value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+          "$extensions": {
+            "com.figma.isOverride": true
           }
         }
       }
@@ -10483,7 +10698,7 @@
           "Hover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:368:2",
                 "com.figma.scopes": [
@@ -10507,7 +10722,7 @@
           "Active": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:368:6",
                 "com.figma.scopes": [
@@ -10531,7 +10746,7 @@
           "Focus": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:368:4",
                 "com.figma.scopes": [
@@ -10627,7 +10842,7 @@
           "Disabled": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:367:73",
                 "com.figma.scopes": [
@@ -11225,7 +11440,7 @@
           "Hover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -11241,7 +11456,7 @@
           "Active": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -11257,7 +11472,7 @@
           "Focus": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -11321,7 +11536,7 @@
           "Disabled": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -11680,7 +11895,7 @@
         "Focus": {
           "Base": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+            "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
             "$extensions": {
               "com.figma.isOverride": true
             }
@@ -11767,9 +11982,23 @@
                 "com.figma.isOverride": true
               }
             },
+            "Selected": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
             "Highlight": {
               "$type": "color",
               "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Disabled}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -11794,9 +12023,37 @@
             }
           },
           "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Transparent}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
+            "Selected": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Selected}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
             "Highlight": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.PrimaryLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Highlight}",
+              "$extensions": {
+                "com.figma.isOverride": true
+              }
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
@@ -13793,7 +14050,7 @@
             "Background": {
               "Base": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Grey.2}",
+                "$value": "{🌐 Global.🌈 Color.Grey.1}",
                 "$extensions": {
                   "com.figma.isOverride": true
                 }
@@ -13816,7 +14073,7 @@
             "Border": {
               "Base": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Grey.2}",
+                "$value": "{🌐 Global.🌈 Color.Grey.1}",
                 "$extensions": {
                   "com.figma.isOverride": true
                 }
@@ -15861,7 +16118,7 @@
           "Hover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:370:8",
                 "com.figma.scopes": [
@@ -15885,7 +16142,7 @@
           "Active": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:370:10",
                 "com.figma.scopes": [
@@ -15926,7 +16183,7 @@
           "Hover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:370:13",
                 "com.figma.scopes": [
@@ -15950,7 +16207,7 @@
           "Active": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:370:15",
                 "com.figma.scopes": [
@@ -16190,7 +16447,7 @@
           "Hover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:371:8",
                 "com.figma.scopes": [
@@ -16214,7 +16471,7 @@
           "Active": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:371:10",
                 "com.figma.scopes": [
@@ -16255,7 +16512,7 @@
           "Hover": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:371:13",
                 "com.figma.scopes": [
@@ -16279,7 +16536,7 @@
           "Active": {
             "Background": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:371:15",
                 "com.figma.scopes": [
@@ -17912,7 +18169,7 @@
           "Color": {
             "Hover": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:378:17",
                 "com.figma.scopes": [
@@ -17923,7 +18180,7 @@
             },
             "Active": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.PrimaryLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Selected}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:378:18",
                 "com.figma.scopes": [
@@ -17955,7 +18212,7 @@
               "Color": {
                 "Base": {
                   "$type": "color",
-                  "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+                  "$value": "{🔗 Alias.🎨 Background.Color.Highlight}",
                   "$extensions": {
                     "com.figma.variableId": "VariableID:378:20",
                     "com.figma.scopes": [
@@ -17966,7 +18223,7 @@
                 },
                 "Hover": {
                   "$type": "color",
-                  "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+                  "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
                   "$extensions": {
                     "com.figma.variableId": "VariableID:378:21",
                     "com.figma.scopes": [
@@ -18253,21 +18510,21 @@
             },
             "Hover": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
             },
             "Active": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
             },
             "Disabled": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.isOverride": true
               }
