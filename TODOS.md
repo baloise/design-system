@@ -18,16 +18,16 @@
 | Validate Props and make them reflected   | Create utils and skill for that                             | ✅     |
 | Rename props called interface to variant |                                                             | ✅     |
 | Use exact versions                       | Adjust dependenciues to use exact versions                  | ✅     |
-| Brand Icons                              | Update brand icons                                          | ⬜     |
-| Brand Icons API                          | Create a task to automate the update                        | ⬜     |
-| Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
-| Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
-| Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px | ⬜     |
-| Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
-| Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
-| Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
 | Check deps of core                       | Do we need all of them                                      | ⬜     |
 | Create config as meta                    | Add new possability to add config values via html meta      | ⬜     |
+| Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
+| Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
+| Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
+| Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
+| Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
+| Brand Icons                              | Update brand icons                                          | ⬜     |
+| Brand Icons API                          | Create a task to automate the update                        | ⬜     |
+| Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px | ⬜     |
 
 ## Componentes
 
