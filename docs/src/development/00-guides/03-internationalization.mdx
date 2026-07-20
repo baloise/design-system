@@ -120,6 +120,42 @@ ${' '}},
 
 </ReactFramework>
 
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML meta tag  ------------------------------------ */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+### HTML `<meta>` tag
+
+For markup-only setups (CMS templates, server-rendered pages) where calling
+`initialize`/`useDesignSystem` isn't practical, a subset of the config can
+instead be declared on a `<meta name="design-system-config">` tag in
+`<head>`. This is read before any framework code runs, so it's also useful
+to avoid a flash of default config (wrong region/language) while the app
+boots.
+
+<Code language="html" code={`
+<meta
+${' '}name="design-system-config"
+${' '}data-brand="helvetia"
+${' '}data-region="CH"
+${' '}data-language="de"
+${' '}data-allowed-languages="de,fr,it,en"
+/>
+`} />
+
+Only `brand`, `region`, `language`, `fallbackLanguage`, `allowedLanguages`
+(comma-separated), and `animated` (`"false"` or anything else, treated as
+a boolean) are read from the tag. Everything else — icons, `httpFormSubmit`,
+`legalLinks`, `legalText`, `socialLinks` — is JS-only config.
+
+<InfoQuote>
+  Precedence, lowest to highest: default config → `<meta>` tag → the
+  `userConfig` object passed to `initialize`/`useDesignSystem`, which always
+  wins.
+</InfoQuote>
+
 {/* ############################################################################################ */}
 {/* Change */}
 {/* ############################################################################################ */}
