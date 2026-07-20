@@ -1,0 +1,570 @@
+@use 'slim-select/src/slim-select/slimselect.scss';
+
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+@use '../input/clear-button.mixin' as clear-button;
+
+// Icons reused by both the single-select checkmark and the multi-select checkbox / deselect buttons,
+// kept as single sources of truth so the two usages of each can't drift apart.
+$select-icon-check: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
+$select-icon-check-white: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
+$select-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill-rule='evenodd' d='M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+$select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+
+// Shared mask-icon plumbing for the SVGs above — only the sizing/position differ per usage.
+@mixin mask-icon($image, $size: 100%) {
+  mask-image: $image;
+  mask-size: $size;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --select-color - Text color of the selected value.
+ * @prop --select-placeholder - Text color of the placeholder text.
+ * @prop --select-family - Font family of the select control.
+ * @prop --select-weight - Font weight of the select control.
+ * @prop --select-size - Font size of the select control.
+ * @prop --select-line-height - Line height of the select control.
+ * @prop --select-background-color: Background color of the select control.
+ * @prop --select-text-color: Text color used by slim-select for values and controls.
+ * @prop --select-primary-color: Accent color used by slim-select for icons and controls.
+ * @prop --select-placeholder-color: Placeholder text color used by slim-select.
+ * @prop --select-disabled-color: Text color used by slim-select in disabled state.
+ * @prop --select-border-color: Border color used by slim-select.
+ * @prop --select-highlight-color: Highlight color used by slim-select.
+ * @prop --select-focus-color: Focus color used by slim-select.
+ * @prop --select-success-color: Text color used by slim-select in success state.
+ * @prop --select-error-color: Text color used by slim-select in error state.
+ * @prop --select-radius: Border radius of the slim-select dropdown and controls.
+ * @prop --select-content-family: Font family of the slim-select dropdown widget.
+ * @prop --select-content-background-color: Background color of the dropdown content.
+ * @prop --select-content-shadow: Box shadow of the dropdown content.
+ * @prop --select-search-text-color: Text color of the search input.
+ * @prop --select-option-text-color: Text color of a dropdown option in its base state.
+ * @prop --select-option-background-color: Background color of a dropdown option in its base state.
+ * @prop --select-option-border-color: Border color between dropdown options.
+ * @prop --select-option-selected-weight: Font weight of a selected option.
+ * @prop --select-option-selected-icon-color: Color of the selected option checkmark icon.
+ * @prop --select-option-selected-text-color: Text color of a selected option.
+ * @prop --select-option-selected-background-color: Background color of a selected option.
+ * @prop --select-option-highlight-text-color: Text color of a hovered/keyboard-highlighted option.
+ * @prop --select-option-highlight-background-color: Background color of a hovered/keyboard-highlighted option.
+ * @prop --select-optgroup-background-color: Background color of an option group label.
+ * @prop --select-optgroup-text-color: Text color of an option group label.
+ * @prop --select-optgroup-weight: Font weight of an option group label.
+ * @prop --select-icon-color: Color of the dropdown arrow icon and deselect icon.
+ * @prop --select-icon-hover-color: Color of the deselect icon on hover state.
+ * @prop --select-icon-active-color: Color of the deselect icon on active state.
+ * @prop --select-tag-background-color: Background color of a selected value tag.
+ * @prop --select-tag-text-color: Text color of a selected value tag.
+ * @prop --select-tag-family: Font family of a selected value tag.
+ * @prop --select-checkbox-border-color: Border color of the multi-select checkbox.
+ * @prop --select-checkbox-selected-background-color: Background color of a checked multi-select checkbox.
+ * @prop --select-checkbox-selected-border-color: Border color of a checked multi-select checkbox.
+ * @prop --select-focus-ring-color: Focus ring color of the deselect button.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include input.vars('select');
+
+  @include vars.local(select-background-color, var(--ds-select-color-background-base));
+  @include vars.local(select-text-color, var(--ds-select-color-text-base));
+  @include vars.local(select-primary-color, var(--ds-select-color-primary-base));
+  @include vars.local(select-placeholder-color, var(--ds-select-color-placeholder-base));
+  @include vars.local(select-disabled-color, var(--ds-select-color-disabled));
+  @include vars.local(select-border-color, var(--ds-select-color-border-base));
+  @include vars.local(select-highlight-color, var(--ds-select-color-highlight-base));
+  @include vars.local(select-focus-color, var(--ds-select-color-focus-base));
+  @include vars.local(select-success-color, var(--ds-select-color-success));
+  @include vars.local(select-error-color, var(--ds-select-color-error));
+  @include vars.local(select-radius, var(--ds-select-radius));
+
+  @include vars.local(select-content-family, var(--ds-select-content-family));
+  @include vars.local(select-content-background-color, var(--ds-select-content-color-background-base));
+  @include vars.local(select-content-shadow, var(--ds-select-content-shadow));
+  @include vars.local(select-search-text-color, var(--ds-select-search-color-text-base));
+
+  @include vars.local(select-option-text-color, var(--ds-select-option-color-text-base));
+  @include vars.local(select-option-background-color, var(--ds-select-option-color-background-base));
+  @include vars.local(select-option-border-color, var(--ds-select-option-color-border-base));
+  @include vars.local(select-option-selected-weight, var(--ds-select-option-weight-selected));
+  @include vars.local(select-option-selected-icon-color, var(--ds-select-option-color-icon-selected));
+  @include vars.local(select-option-selected-text-color, var(--ds-select-option-color-text-selected));
+  @include vars.local(select-option-selected-background-color, var(--ds-select-option-color-background-selected));
+  @include vars.local(select-option-hover-text-color, var(--ds-select-option-color-text-hover));
+  @include vars.local(select-option-hover-background-color, var(--ds-select-option-color-background-hover));
+  @include vars.local(select-option-highlight-text-color, var(--ds-select-option-color-text-highlight));
+  @include vars.local(select-option-highlight-background-color, var(--ds-select-option-color-background-highlight));
+  @include vars.local(select-option-disabled-text-color, var(--ds-select-option-color-text-disabled));
+  @include vars.local(select-option-disabled-background-color, var(--ds-select-option-color-background-disabled));
+
+  @include vars.local(select-optgroup-background-color, var(--ds-select-optgroup-color-background-base));
+  @include vars.local(select-optgroup-text-color, var(--ds-select-optgroup-color-text-base));
+  @include vars.local(select-optgroup-weight, var(--ds-select-optgroup-weight));
+
+  @include vars.local(select-icon-color, var(--ds-select-icon-color-base));
+  @include vars.local(select-icon-hover-color, var(--ds-select-icon-color-hover));
+  @include vars.local(select-icon-active-color, var(--ds-select-icon-color-active));
+
+  @include vars.local(select-tag-background-color, var(--ds-select-chip-color-base-background));
+  @include vars.local(select-tag-text-color, var(--ds-select-chip-color-base-text));
+  @include vars.local(select-tag-family, var(--ds-select-chip-family));
+
+  @include vars.local(select-checkbox-border-color, var(--ds-select-checkbox-color-border-base));
+  @include vars.local(select-checkbox-selected-background-color, var(--ds-select-checkbox-color-background-selected));
+  @include vars.local(select-checkbox-selected-border-color, var(--ds-select-checkbox-color-border-selected));
+
+  @include vars.local(select-focus-ring-color, var(--ds-select-color-focus-ring-base));
+
+  // Map slim-select CSS variables to DS component vars so inherited rules pick up DS theming.
+  // Colors
+  --ss-bg-color: var(--_select-background-color);
+  --ss-font-color: var(--_select-text-color);
+  --ss-primary-color: var(--_select-primary-color);
+  --ss-placeholder-color: var(--_select-placeholder-color);
+  --ss-disabled-color: var(--_select-disabled-color);
+  --ss-border-color: var(--_select-border-color);
+  --ss-highlight-color: var(--_select-highlight-color);
+  --ss-focus-color: var(--_select-focus-color);
+  --ss-success-color: var(--_select-success-color);
+  --ss-error-color: var(--_select-error-color);
+
+  // Heights
+  --ss-main-height: 40px;
+  --ss-content-height: 300px;
+  --ss-modal-height: 85vh;
+  --ss-modal-width: min(90vw, 400px);
+  --ss-search-height: var(--ss-main-height);
+  --ss-option-height: var(--ss-main-height);
+
+  // Spacing
+  --ss-spacing-l: 8px;
+  --ss-spacing-m: 4px;
+  --ss-spacing-s: 2px;
+  --ss-icon-spacing: 10px;
+
+  // Misc
+  --ss-animation-timing: 0.2s;
+  --ss-border-radius: var(--_select-radius);
+  --ss-modal-z-index: 1000001;
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  @include form.container();
+  @include form.label();
+  @include form.description();
+
+  #inner {
+    @include form.field();
+  }
+}
+
+/**
+ * Slim Select Trigger (.ss-main)
+ * --------------------------------
+ * .ss-main lives inside #container from Field.
+ * Strip slim-select's own border/background — the DS Field container provides the visual shell.
+ */
+
+:host {
+  select {
+    display: none;
+  }
+
+  #container {
+    position: relative;
+    padding-inline: 0;
+    cursor: pointer;
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+:host(.is-danger) {
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+}
+
+:host(.is-success) {
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+}
+
+:host(.is-warning) {
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+}
+
+:host(.is-disabled) {
+  pointer-events: none;
+  cursor: default;
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-select-color: var(--ds-form-control-color-value-disabled);
+  --mod-select-placeholder: var(--ds-form-control-color-placeholder-disabled);
+}
+
+/**
+ * Slim Select Dropdown (.ss-content)
+ * --------------------------------
+ * #popup is the contentLocation — slim-select renders .ss-content inside it.
+ * contentPosition: 'relative' makes slim-select add .ss-relative so the
+ * content flows inside #popup, not the viewport.
+ */
+
+:host {
+  #container {
+    position: relative;
+  }
+
+  #popup {
+    display: block;
+  }
+
+  .ss-main {
+    @include unselectable();
+    @include font-smoothing();
+    @include print-hidden();
+
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    font-family: var(--_select-content-family);
+    z-index: var(--ds-alias-z-index-popup);
+  }
+
+  .ss-content {
+    background-color: var(--_select-content-background-color);
+    box-shadow: var(--_select-content-shadow);
+    border: none;
+    margin: 0 !important;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    min-height: 0;
+    max-height: 300px;
+    height: auto;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+//
+// search input
+:host {
+  .ss-content .ss-search {
+    border-width: 2px;
+    border-color: var(--_form-container-border-color);
+
+    input {
+      color: var(--_select-search-text-color);
+    }
+
+    /* clears the ‘X’ from Internet Explorer */
+    input[type='search']::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    input[type='search']::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    /* clears the ‘X’ from Chrome */
+    input[type='search']::-webkit-search-decoration,
+    input[type='search']::-webkit-search-cancel-button,
+    input[type='search']::-webkit-search-results-button,
+    input[type='search']::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+
+  .ss-content .ss-list .ss-option .ss-search-highlight {
+    font-weight: var(--_select-option-selected-weight);
+    color: var(--_select-option-highlight-text-color);
+    border-radius: var(--_select-radius);
+  }
+}
+
+//
+// option
+:host {
+  .ss-content .ss-list .ss-option {
+    color: var(--_select-option-text-color);
+    background-color: var(--_select-option-background-color);
+    border-left: none !important;
+
+    border-bottom: 2px solid var(--_select-option-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      width: 14px;
+      height: 14px;
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      margin-left: auto;
+    }
+  }
+
+  //
+  // selected (persistent, keyboard/mouse independent)
+  .ss-content .ss-list .ss-option.ss-selected {
+    font-weight: var(--_select-option-selected-weight);
+    background-color: var(--_select-option-selected-background-color);
+    color: var(--_select-option-selected-text-color);
+
+    &::after {
+      @include mask-icon($select-icon-check);
+      background-color: var(--_select-option-selected-icon-color);
+    }
+  }
+
+  //
+  // highlighted (hover / keyboard navigation)
+  .ss-content .ss-list .ss-option:hover:not(.ss-disabled),
+  .ss-content .ss-list .ss-option:active:not(.ss-disabled) {
+    background-color: var(--_select-option-hover-background-color);
+    color: var(--_select-option-hover-text-color);
+  }
+
+  //
+  // highlighted (hover / keyboard navigation)
+  .ss-content .ss-list .ss-option.ss-highlighted {
+    background-color: var(--_select-option-highlight-background-color);
+    color: var(--_select-option-highlight-text-color);
+  }
+
+  .ss-content .ss-list .ss-option.ss-disabled {
+    background-color: var(--_select-option-disabled-background-color);
+    color: var(--_select-option-disabled-text-color);
+  }
+}
+
+//
+// Clearable button / deselect
+:host {
+  .ss-main {
+    @include clear-button.style('.ss-deselect');
+  }
+
+  .ss-main .ss-deselect {
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      margin-inline: var(--ss-icon-spacing);
+      @include mask-icon($select-icon-close, 80%);
+      background-color: var(--_select-icon-color);
+      transition: transform var(--ss-animation-timing) ease-in-out;
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        &::after {
+          background-color: var(--_select-icon-hover-color);
+        }
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      &::after {
+        background-color: var(--_select-icon-active-color);
+      }
+    }
+
+    svg {
+      display: none;
+    }
+  }
+}
+
+//
+// Arrow
+:host {
+  .ss-main .ss-arrow {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin-inline: var(--ss-icon-spacing);
+    @include mask-icon($select-icon-arrow);
+    background-color: var(--_select-icon-color);
+    transition: transform var(--ss-animation-timing) ease-in-out;
+
+    path {
+      display: none;
+    }
+  }
+
+  .ss-main.ss-dir-below .ss-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+//
+// chip tag design
+:host {
+  .ss-main .ss-values {
+    padding-inline: var(--ss-icon-spacing);
+
+    .ss-single {
+      padding-inline: 0;
+    }
+  }
+
+  .ss-main .ss-values .ss-value {
+    @include unselectable();
+
+    min-height: 1.5rem;
+    padding-block: var(--ds-tag-space-padding-y-sm);
+    padding-inline: var(--ds-tag-space-padding-x-sm);
+    border-radius: var(--ds-tag-radius-base);
+
+    background-color: var(--_select-tag-background-color);
+
+    .ss-value-text {
+      color: var(--_select-tag-text-color);
+      font-family: var(--_select-tag-family);
+      line-height: 1;
+      font-size: var(--ds-tag-font-size-sm);
+      font-weight: var(--ds-tag-font-weight-sm);
+      padding: 0;
+    }
+
+    .ss-value-delete {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      border: none;
+      border-radius: var(--ds-close-radius);
+      background-color: var(--ds-close-color-background-base);
+      appearance: none;
+      outline: none;
+      margin-left: 0.25rem;
+      margin-right: -0.5rem;
+
+      &::after {
+        display: block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        @include mask-icon($select-icon-close);
+        background-color: var(--ds-close-color-icon-base);
+      }
+
+      svg {
+        display: none;
+      }
+
+      @include hover {
+        &:hover {
+          background-color: var(--ds-close-color-background-hover);
+        }
+      }
+
+      &:active {
+        background-color: var(--ds-close-color-background-active);
+      }
+
+      &:focus-visible {
+        &:not(:active) {
+          @include focus-shadow(var(--_select-focus-ring-color));
+        }
+      }
+    }
+  }
+}
+
+//
+// option group label
+:host {
+  .ss-content .ss-list .ss-optgroup .ss-optgroup-label {
+    background-color: var(--_select-optgroup-background-color);
+    color: var(--_select-optgroup-text-color);
+    font-weight: var(--_select-optgroup-weight);
+  }
+}
+
+//
+// multiple
+:host {
+  #popup.is-multiple {
+    .ss-content .ss-list .ss-option {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        width: 16px;
+        height: 16px;
+        content: '';
+        border: 2px solid var(--_select-checkbox-border-color);
+        border-radius: var(--_select-radius);
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      &.ss-selected::before {
+        background-color: var(--_select-checkbox-selected-background-color);
+        border-color: var(--_select-checkbox-selected-border-color);
+        background-image: $select-icon-check-white;
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}

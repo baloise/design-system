@@ -1,6 +1,7 @@
 @use 'air-datepicker/air-datepicker.css';
 
 @use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
 @use '../form/form.mixin' as form;
 @use '../input/input.mixin' as input;
 @use '../input/clear-button.mixin' as clear-button;
@@ -36,6 +37,33 @@
  * @prop --form-description-weight: Font weight of the description.
  * @prop --form-description-size: Font size of the description.
  * @prop --form-description-line-height: Line height of the description.
+ * @prop --date-trigger-icon-color-hover: Trigger icon color on hover.
+ * @prop --date-trigger-icon-color-active: Trigger icon color when active/pressed.
+ * @prop --date-trigger-icon-color-disabled: Trigger icon color when disabled.
+ * @prop --date-focus-color: Focus ring color for the trigger, calendar nav buttons and day cells.
+ * @prop --date-popup-shadow: Box shadow of the calendar popup.
+ * @prop --date-calendar-text-color: Text color of the calendar (weekdays, current date).
+ * @prop --date-calendar-family: Font family of the calendar.
+ * @prop --date-calendar-size: Font size of the calendar.
+ * @prop --date-calendar-weight: Font weight of the calendar container text.
+ * @prop --date-calendar-radius: Border radius of the calendar.
+ * @prop --date-calendar-shadow: Box shadow of the calendar.
+ * @prop --date-calendar-color-inner-border: Border color of the calendar navigation.
+ * @prop --date-calendar-disabled-color: Text color of dates outside the selectable range.
+ * @prop --date-calendar-day-background-hover: Background color of a day cell on hover.
+ * @prop --date-calendar-day-background-active: Background color of a day cell when active/pressed.
+ * @prop --date-calendar-day-background-selected: Background color of the selected day cell.
+ * @prop --date-calendar-day-background-selected-hover: Background color of the selected day cell on hover.
+ * @prop --date-calendar-color-current-date: Border color used to mark today's date.
+ * @prop --date-calendar-day-weight: Font weight of a regular day cell.
+ * @prop --date-calendar-day-weight-selected: Font weight of the selected day cell.
+ * @prop --date-calendar-day-name-family: Font family of the weekday name row.
+ * @prop --date-calendar-day-name-weight: Font weight of the weekday name row.
+ * @prop --date-calendar-nav-color: Text and icon color of the calendar navigation buttons.
+ * @prop --date-calendar-nav-color-hover: Navigation button color on hover.
+ * @prop --date-calendar-nav-color-active: Navigation button color when active/pressed.
+ * @prop --date-calendar-nav-radius: Border radius of the calendar navigation buttons.
+ * @prop --date-calendar-nav-color-disabled: Navigation button color when disabled.
  */
 
 :host {
@@ -45,6 +73,41 @@
   @include form.vars-description();
 
   @include input.vars('date');
+
+  @include vars.local(date-trigger-icon-color-hover, var(--ds-date-trigger-color-hover));
+  @include vars.local(date-trigger-icon-color-active, var(--ds-date-trigger-color-active));
+  @include vars.local(date-trigger-icon-color-disabled, var(--ds-date-trigger-color-disabled));
+  @include vars.local(date-focus-color, var(--ds-alias-interaction-focus-color-base));
+
+  @include vars.local(date-popup-shadow, var(--ds-date-popup-shadow));
+
+  @include vars.local(date-calendar-text-color, var(--ds-date-calendar-color-text));
+  @include vars.local(date-calendar-family, var(--ds-date-calendar-family));
+  @include vars.local(date-calendar-size, var(--ds-date-calendar-size));
+  @include vars.local(date-calendar-weight, var(--ds-date-calendar-weight));
+  @include vars.local(date-calendar-radius, var(--ds-date-calendar-radius));
+  @include vars.local(date-calendar-shadow, var(--ds-date-calendar-shadow));
+  @include vars.local(date-calendar-color-inner-border, var(--ds-date-calendar-color-inner-border));
+  @include vars.local(date-calendar-disabled-color, var(--ds-date-calendar-color-disabled));
+
+  @include vars.local(date-calendar-day-background-hover, var(--ds-date-calendar-color-day-hover-background));
+  @include vars.local(date-calendar-day-background-active, var(--ds-date-calendar-color-day-active-background));
+  @include vars.local(date-calendar-day-background-selected, var(--ds-date-calendar-color-day-selected-background));
+  @include vars.local(
+    date-calendar-day-background-selected-hover,
+    var(--ds-date-calendar-color-day-selected-hover-background)
+  );
+  @include vars.local(date-calendar-color-current-date, var(--ds-date-calendar-color-current-date));
+  @include vars.local(date-calendar-day-weight, var(--ds-date-calendar-day-weight-base));
+  @include vars.local(date-calendar-day-weight-selected, var(--ds-date-calendar-day-weight-selected));
+  @include vars.local(date-calendar-day-name-family, var(--ds-date-calendar-day-name-family));
+  @include vars.local(date-calendar-day-name-weight, var(--ds-date-calendar-day-name-weight));
+
+  @include vars.local(date-calendar-nav-color, var(--ds-date-calendar-nav-color-base));
+  @include vars.local(date-calendar-nav-color-hover, var(--ds-date-calendar-nav-color-hover));
+  @include vars.local(date-calendar-nav-color-active, var(--ds-date-calendar-nav-color-active));
+  @include vars.local(date-calendar-nav-radius, var(--ds-date-calendar-nav-radius));
+  @include vars.local(date-calendar-nav-color-disabled, var(--ds-date-calendar-nav-color-disabled));
 }
 
 /**
@@ -115,19 +178,19 @@
     @include hover {
       &:hover,
       &.is-hovered {
-        --icon-color: var(--ds-alias-text-color-primary-hover);
+        --icon-color: var(--_date-trigger-icon-color-hover);
       }
     }
 
     &:active,
     &.is-pressed {
-      --icon-color: var(--ds-alias-text-color-primary-active);
+      --icon-color: var(--_date-trigger-icon-color-active);
     }
 
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
-        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+        @include focus-shadow(var(--_date-focus-color));
       }
     }
   }
@@ -149,12 +212,25 @@
 
   #popup {
     position: absolute;
+    display: block;
     top: 100%;
     left: 0;
     z-index: var(--ds-popup-z-index, 100);
+    box-shadow: var(--_date-popup-shadow);
+
+    transition:
+      transform 0.2s,
+      opacity 0.2s,
+      -webkit-transform 0.2s;
+
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center top;
+    overflow: hidden;
 
     &[aria-hidden='true'] {
-      display: none;
+      opacity: 0;
+      transform: scaleY(0);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -202,7 +278,7 @@
   }
 
   #trigger {
-    --icon-color: var(--ds-date-trigger-color-disabled);
+    --icon-color: var(--_date-trigger-icon-color-disabled);
   }
 
   --mod-form-container-background: var(--ds-form-container-color-disabled-background);
@@ -232,29 +308,29 @@
   --adp-padding: 0.5rem;
   --adp-width: 264px;
 
-  --adp-color: var(--ds-alias-text-color-primary);
-  --adp-font-family: var(--ds-alias-text-family-body);
-  --adp-font-size: 16px;
+  --adp-color: var(--_date-calendar-text-color);
+  --adp-font-family: var(--_date-calendar-family);
+  --adp-font-size: var(--_date-calendar-size);
 
-  --adp-border-color-inner: var(--ds-date-calendar-color-inner-border);
+  --adp-border-color-inner: var(--_date-calendar-color-inner-border);
 
-  --adp-background-color-hover: var(--ds-date-calendar-color-day-hover-background);
-  --adp-background-color-active: var(--ds-date-calendar-color-day-active-background);
+  --adp-background-color-hover: var(--_date-calendar-day-background-hover);
+  --adp-background-color-active: var(--_date-calendar-day-background-active);
 
-  --adp-day-name-color: var(--ds-alias-text-color-primary);
-  --adp-color-current-date: var(--ds-alias-text-color-primary);
-  --adp-cell-background-color-selected: var(--ds-date-calendar-color-day-selected-background);
-  --adp-cell-background-color-selected-hover: var(--ds-date-calendar-color-day-selected-hover-background);
+  --adp-day-name-color: var(--_date-calendar-text-color);
+  --adp-color-current-date: var(--_date-calendar-text-color);
+  --adp-cell-background-color-selected: var(--_date-calendar-day-background-selected);
+  --adp-cell-background-color-selected-hover: var(--_date-calendar-day-background-selected-hover);
 
-  --adp-color-other-month: var(--ds-alias-text-color-disabled);
-  --adp-color-other-decade: var(--ds-alias-text-color-disabled);
-  --adp-color-disabled: var(--ds-alias-text-color-disabled);
+  --adp-color-other-month: var(--_date-calendar-disabled-color);
+  --adp-color-other-decade: var(--_date-calendar-disabled-color);
+  --adp-color-disabled: var(--_date-calendar-disabled-color);
 
   font-family: inherit;
-  font-size: var(--ds-alias-text-size-base);
-  border-radius: var(--ds-alias-radius-base);
-  box-shadow: var(--ds-alias-shadow-box-base);
-  font-weight: 700;
+  font-size: var(--_date-calendar-size);
+  border-radius: var(--_date-calendar-radius);
+  box-shadow: var(--_date-calendar-shadow);
+  font-weight: var(--_date-calendar-weight);
   border: none;
 
   * {
@@ -263,7 +339,7 @@
 
   &.-inline- {
     border: none;
-    box-shadow: var(--ds-alias-shadow-box-base);
+    box-shadow: var(--_date-calendar-shadow);
   }
 
   .air-datepicker-nav {
@@ -280,8 +356,8 @@
     justify-content: center;
     height: 2rem;
     min-width: 2rem;
-    color: var(--ds-alias-text-color-primary);
-    border-radius: var(--ds-alias-radius-base);
+    color: var(--_date-calendar-nav-color);
+    border-radius: var(--_date-calendar-nav-radius);
     box-shadow: none;
     outline: none;
 
@@ -297,22 +373,22 @@
     @include hover {
       &:hover,
       &.is-hovered {
-        color: var(--ds-alias-text-color-primary-hover);
-        --icon-color: var(--ds-alias-text-color-primary-hover);
+        color: var(--_date-calendar-nav-color-hover);
+        --icon-color: var(--_date-calendar-nav-color-hover);
       }
     }
 
     &:active,
     &.is-pressed {
-      color: var(--ds-alias-text-color-primary-active);
-      --icon-color: var(--ds-alias-text-color-primary-active);
+      color: var(--_date-calendar-nav-color-active);
+      --icon-color: var(--_date-calendar-nav-color-active);
       translate: 0 0.5px;
     }
 
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
-        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+        @include focus-shadow(var(--_date-focus-color));
       }
     }
   }
@@ -335,28 +411,28 @@
   }
 
   .air-datepicker-body--day-name {
-    font-weight: var(--ds-alias-text-weight-bold);
+    font-weight: var(--_date-calendar-day-name-weight);
     font-size: 1rem;
     text-transform: none;
-    font-family: var(--ds-alias-text-family-heading);
+    font-family: var(--_date-calendar-day-name-family);
   }
 
   .air-datepicker-cell.-selected-:not(.-disabled-) {
-    font-weight: var(--ds-alias-text-weight-bold);
+    font-weight: var(--_date-calendar-day-weight-selected);
   }
 
   .air-datepicker-cell.-day- {
-    font-weight: var(--ds-alias-text-weight-regular);
+    font-weight: var(--_date-calendar-day-weight);
     height: 2rem;
     width: 2rem;
   }
 
   .air-datepicker-cell.-day-.-current-:not(.-disabled-) {
-    border: 2px solid var(--ds-date-calendar-color-current-date);
+    border: 2px solid var(--_date-calendar-color-current-date);
   }
 
   .air-datepicker-cell.-day-.-selected-:not(.-disabled-) {
-    font-weight: var(--ds-alias-text-weight-bold);
+    font-weight: var(--_date-calendar-day-weight-selected);
   }
 
   .air-datepicker-cell[tabindex='0'] {
@@ -373,7 +449,7 @@
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
-        @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
+        @include focus-shadow(var(--_date-focus-color));
       }
     }
   }
@@ -404,8 +480,8 @@
       align-items: center;
       width: 2rem;
       height: 2rem;
-      color: var(--ds-alias-text-color-disabled);
-      --icon-color: var(--ds-alias-text-color-disabled);
+      color: var(--_date-calendar-nav-color-disabled);
+      --icon-color: var(--_date-calendar-nav-color-disabled);
       pointer-events: none;
 
       ds-icon {

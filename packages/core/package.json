@@ -49,6 +49,7 @@
     "@popperjs/core": "2.11.4",
     "@stencil/core": "catalog:",
     "air-datepicker": "3.6.0",
+    "slim-select": "4.0.5",
     "imask": "7.6.1",
     "big.js": "7.0.1",
     "contactjs": "2.1.7",

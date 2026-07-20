@@ -11,6 +11,7 @@ import {
   isEscapeKey,
   OneOf,
   Type,
+  raf,
 } from '@utils'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
@@ -106,7 +107,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('string')
   readonly name: string = this.dateId
 
@@ -325,7 +326,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
       const path = ev.composedPath() as EventTarget[]
       const insideCalendar = path.includes(this.popupHostEl ?? this.el)
       if (!insideCalendar) {
-        requestAnimationFrame(() => {
+        raf(() => {
           this.isOpen = false
         })
       }
@@ -472,7 +473,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
       },
       onComplete: isoValue => {
         if (!checkIsWithinRange(isoValue, this.min, this.max, this.minYearProp, this.maxYearProp, this.allowedDates)) {
-          requestAnimationFrame(() => this.dateMask?.syncFromISO(null))
+          raf(() => this.dateMask?.syncFromISO(null))
           return
         }
         this.updatingFromMask = true
@@ -593,6 +594,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
             aria-modal="true"
             aria-label={chooseDateLabel}
             aria-hidden={this.isOpen ? 'false' : 'true'}
+            inert={this.isOpen ? undefined : true}
             ref={el => (this.popupHostEl = el as HTMLDivElement)}
           ></div>
         )}

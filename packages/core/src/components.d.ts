@@ -36,6 +36,7 @@ import { PaginationAlignment, PaginationChangeDetail, PaginationSize, Pagination
 import { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
 import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
 import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
+import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
@@ -78,6 +79,7 @@ export { PaginationAlignment, PaginationChangeDetail, PaginationSize, Pagination
 export { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
 export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
 export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
+export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
@@ -2493,6 +2495,145 @@ export namespace Components {
         "value"?: any | null;
     }
     /**
+     * Select renders an accessible single- or multi-select dropdown backed by Slim Select,
+     * with full form association and the standard DS field wrapper (label, description, validation).
+     */
+    interface DsSelect {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid automatically.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * If `true`, a clear button is shown inside the trigger that resets the value to `null` (single mode only).
+          * @default false
+         */
+        "clearable": boolean;
+        /**
+          * Closes the select dropdown.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Defines the color state of the select field.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * The description displayed below the select field.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the select is non-interactive and excluded from form submission.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the component renders in an invalid state.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Validation message shown when `invalid` is true.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label displayed above the select field.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * If `true`, the user can select multiple options. The `value` prop and `dsChange` event will carry a `string[]` instead of `string | null`.
+          * @default false
+         */
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.selectId
+         */
+        "name": string;
+        /**
+          * Opens the select dropdown.
+         */
+        "open": () => Promise<void>;
+        /**
+          * The list of option groups. Each group has a `label` and an `options` array. When set, `options` is ignored.
+          * @default []
+         */
+        "optionGroups": SelectOptionGroup[];
+        /**
+          * The list of selectable options (flat). Use `optionGroups` when options should be grouped under a label. If both are set, `optionGroups` takes precedence.
+          * @default []
+         */
+        "options": SelectOption[];
+        /**
+          * Placeholder text shown when no option is selected.
+          * @default ''
+         */
+        "placeholder": string;
+        /**
+          * If `true`, the value cannot be changed by the user.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must select a value before submitting the form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * If `true`, a search input is shown inside the dropdown to filter options.
+          * @default false
+         */
+        "searchable": boolean;
+        /**
+          * Removes focus from the select trigger.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the select trigger.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The current value of the select. In single mode: `string | null`. In multiple mode: `string[]` (array of selected values). As an HTML attribute, multiple values can also be passed as a comma-separated string, e.g. `value="it,ch"`.
+          * @default null
+         */
+        "value": string | string[] | null;
+    }
+    /**
+     * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+     * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+     * `ds-select` reads its `label` and its `ds-select-option` children.
+     */
+    interface DsSelectOptgroup {
+        /**
+          * The label displayed above this group of options.
+          * @default ''
+         */
+        "label": string;
+    }
+    /**
+     * Select option declares a single selectable option as HTML markup, as an alternative to the
+     * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+     * migration, where the consumer would rather render option markup than write JavaScript.
+     * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+     * text content and renders the actual dropdown option itself.
+     */
+    interface DsSelectOption {
+        /**
+          * If `true`, the option cannot be selected.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The value submitted when this option is selected.
+          * @default ''
+         */
+        "value": string;
+    }
+    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface DsShape {
@@ -3413,6 +3554,10 @@ export interface DsSegmentItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSegmentItemElement;
 }
+export interface DsSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsSelectElement;
+}
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSnackbarElement;
@@ -4231,6 +4376,54 @@ declare global {
         prototype: HTMLDsSegmentItemElement;
         new (): HTMLDsSegmentItemElement;
     };
+    interface HTMLDsSelectElementEventMap {
+        "dsChange": SelectChangeDetail;
+        "dsFocus": SelectFocusDetail;
+        "dsBlur": SelectBlurDetail;
+        "dsClick": SelectClickDetail;
+    }
+    /**
+     * Select renders an accessible single- or multi-select dropdown backed by Slim Select,
+     * with full form association and the standard DS field wrapper (label, description, validation).
+     */
+    interface HTMLDsSelectElement extends Components.DsSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsSelectElementEventMap>(type: K, listener: (this: HTMLDsSelectElement, ev: DsSelectCustomEvent<HTMLDsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsSelectElementEventMap>(type: K, listener: (this: HTMLDsSelectElement, ev: DsSelectCustomEvent<HTMLDsSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsSelectElement: {
+        prototype: HTMLDsSelectElement;
+        new (): HTMLDsSelectElement;
+    };
+    /**
+     * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+     * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+     * `ds-select` reads its `label` and its `ds-select-option` children.
+     */
+    interface HTMLDsSelectOptgroupElement extends Components.DsSelectOptgroup, HTMLStencilElement {
+    }
+    var HTMLDsSelectOptgroupElement: {
+        prototype: HTMLDsSelectOptgroupElement;
+        new (): HTMLDsSelectOptgroupElement;
+    };
+    /**
+     * Select option declares a single selectable option as HTML markup, as an alternative to the
+     * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+     * migration, where the consumer would rather render option markup than write JavaScript.
+     * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+     * text content and renders the actual dropdown option itself.
+     */
+    interface HTMLDsSelectOptionElement extends Components.DsSelectOption, HTMLStencilElement {
+    }
+    var HTMLDsSelectOptionElement: {
+        prototype: HTMLDsSelectOptionElement;
+        new (): HTMLDsSelectOptionElement;
+    };
     /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
@@ -4559,6 +4752,9 @@ declare global {
         "ds-radio-group": HTMLDsRadioGroupElement;
         "ds-segment": HTMLDsSegmentElement;
         "ds-segment-item": HTMLDsSegmentItemElement;
+        "ds-select": HTMLDsSelectElement;
+        "ds-select-optgroup": HTMLDsSelectOptgroupElement;
+        "ds-select-option": HTMLDsSelectOptionElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
@@ -7179,6 +7375,148 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     /**
+     * Select renders an accessible single- or multi-select dropdown backed by Slim Select,
+     * with full form association and the standard DS field wrapper (label, description, validation).
+     */
+    interface DsSelect {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid automatically.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * If `true`, a clear button is shown inside the trigger that resets the value to `null` (single mode only).
+          * @default false
+         */
+        "clearable"?: boolean;
+        /**
+          * Defines the color state of the select field.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * The description displayed below the select field.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the select is non-interactive and excluded from form submission.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true`, the component renders in an invalid state.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Validation message shown when `invalid` is true.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label displayed above the select field.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * If `true`, the user can select multiple options. The `value` prop and `dsChange` event will carry a `string[]` instead of `string | null`.
+          * @default false
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.selectId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onDsBlur"?: (event: DsSelectCustomEvent<SelectBlurDetail>) => void;
+        /**
+          * Emitted when the selected value changes. Single mode: `string | null`. Multiple mode: `string[]`.
+         */
+        "onDsChange"?: (event: DsSelectCustomEvent<SelectChangeDetail>) => void;
+        /**
+          * Emitted when the host element is clicked.
+         */
+        "onDsClick"?: (event: DsSelectCustomEvent<SelectClickDetail>) => void;
+        /**
+          * Emitted when the control receives focus.
+         */
+        "onDsFocus"?: (event: DsSelectCustomEvent<SelectFocusDetail>) => void;
+        /**
+          * The list of option groups. Each group has a `label` and an `options` array. When set, `options` is ignored.
+          * @default []
+         */
+        "optionGroups"?: SelectOptionGroup[];
+        /**
+          * The list of selectable options (flat). Use `optionGroups` when options should be grouped under a label. If both are set, `optionGroups` takes precedence.
+          * @default []
+         */
+        "options"?: SelectOption[];
+        /**
+          * Placeholder text shown when no option is selected.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the value cannot be changed by the user.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must select a value before submitting the form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * If `true`, a search input is shown inside the dropdown to filter options.
+          * @default false
+         */
+        "searchable"?: boolean;
+        /**
+          * The current value of the select. In single mode: `string | null`. In multiple mode: `string[]` (array of selected values). As an HTML attribute, multiple values can also be passed as a comma-separated string, e.g. `value="it,ch"`.
+          * @default null
+         */
+        "value"?: string | string[] | null;
+    }
+    /**
+     * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+     * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+     * `ds-select` reads its `label` and its `ds-select-option` children.
+     */
+    interface DsSelectOptgroup {
+        /**
+          * The label displayed above this group of options.
+          * @default ''
+         */
+        "label"?: string;
+    }
+    /**
+     * Select option declares a single selectable option as HTML markup, as an alternative to the
+     * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+     * migration, where the consumer would rather render option markup than write JavaScript.
+     * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+     * text content and renders the actual dropdown option itself.
+     */
+    interface DsSelectOption {
+        /**
+          * If `true`, the option cannot be selected.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The value submitted when this option is selected.
+          * @default ''
+         */
+        "value"?: string;
+    }
+    /**
      * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
      */
     interface DsShape {
@@ -8547,6 +8885,30 @@ declare namespace LocalJSX {
         "svg": string;
         "value": string;
     }
+    interface DsSelectAttributes {
+        "value": string | string[] | null;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "required": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "multiple": boolean;
+        "searchable": boolean;
+        "clearable": boolean;
+        "placeholder": string;
+        "autoInvalidOff": boolean;
+    }
+    interface DsSelectOptgroupAttributes {
+        "label": string;
+    }
+    interface DsSelectOptionAttributes {
+        "value": string;
+        "disabled": boolean;
+    }
     interface DsShapeAttributes {
         "color": ShapeColor;
         "rotation": ShapeRotation;
@@ -8775,6 +9137,9 @@ declare namespace LocalJSX {
         "ds-radio-group": Omit<DsRadioGroup, keyof DsRadioGroupAttributes> & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes]?: DsRadioGroup[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `attr:${K}`]?: DsRadioGroupAttributes[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `prop:${K}`]?: DsRadioGroup[K] };
         "ds-segment": Omit<DsSegment, keyof DsSegmentAttributes> & { [K in keyof DsSegment & keyof DsSegmentAttributes]?: DsSegment[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `attr:${K}`]?: DsSegmentAttributes[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `prop:${K}`]?: DsSegment[K] };
         "ds-segment-item": Omit<DsSegmentItem, keyof DsSegmentItemAttributes> & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes]?: DsSegmentItem[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `attr:${K}`]?: DsSegmentItemAttributes[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `prop:${K}`]?: DsSegmentItem[K] };
+        "ds-select": Omit<DsSelect, keyof DsSelectAttributes> & { [K in keyof DsSelect & keyof DsSelectAttributes]?: DsSelect[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `attr:${K}`]?: DsSelectAttributes[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `prop:${K}`]?: DsSelect[K] };
+        "ds-select-optgroup": Omit<DsSelectOptgroup, keyof DsSelectOptgroupAttributes> & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes]?: DsSelectOptgroup[K] } & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes as `attr:${K}`]?: DsSelectOptgroupAttributes[K] } & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes as `prop:${K}`]?: DsSelectOptgroup[K] };
+        "ds-select-option": Omit<DsSelectOption, keyof DsSelectOptionAttributes> & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes]?: DsSelectOption[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `attr:${K}`]?: DsSelectOptionAttributes[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `prop:${K}`]?: DsSelectOption[K] };
         "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
@@ -9019,6 +9384,25 @@ declare module "@stencil/core" {
              * Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.
              */
             "ds-segment-item": LocalJSX.IntrinsicElements["ds-segment-item"] & JSXBase.HTMLAttributes<HTMLDsSegmentItemElement>;
+            /**
+             * Select renders an accessible single- or multi-select dropdown backed by Slim Select,
+             * with full form association and the standard DS field wrapper (label, description, validation).
+             */
+            "ds-select": LocalJSX.IntrinsicElements["ds-select"] & JSXBase.HTMLAttributes<HTMLDsSelectElement>;
+            /**
+             * Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the
+             * grouped counterpart to `ds-select-option`. The element itself renders nothing visible;
+             * `ds-select` reads its `label` and its `ds-select-option` children.
+             */
+            "ds-select-optgroup": LocalJSX.IntrinsicElements["ds-select-optgroup"] & JSXBase.HTMLAttributes<HTMLDsSelectOptgroupElement>;
+            /**
+             * Select option declares a single selectable option as HTML markup, as an alternative to the
+             * `options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier
+             * migration, where the consumer would rather render option markup than write JavaScript.
+             * The element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and
+             * text content and renders the actual dropdown option itself.
+             */
+            "ds-select-option": LocalJSX.IntrinsicElements["ds-select-option"] & JSXBase.HTMLAttributes<HTMLDsSelectOptionElement>;
             /**
              * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
              */

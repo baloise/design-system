@@ -13,6 +13,7 @@ vite.config.ts.**.mjs
 .playwright-mcp
 Base.tokens.json.backup
 debug.js
+tsconfig.tsbuildinfo
 
 # dependencies
 node_modules

@@ -1,0 +1,5 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+:host {
+  @include visually-hidden();
+}

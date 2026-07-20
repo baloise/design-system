@@ -17,16 +17,17 @@
 | Sandbox                                  | Use new sandbox api                                         | ✅     |
 | Validate Props and make them reflected   | Create utils and skill for that                             | ✅     |
 | Rename props called interface to variant |                                                             | ✅     |
+| Use exact versions                       | Adjust dependenciues to use exact versions                  | ✅     |
+| Check deps of core                       | Do we need all of them                                      | ⬜     |
+| Create config as meta                    | Add new possability to add config values via html meta      | ⬜     |
+| Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
+| Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
+| Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
+| Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
+| Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
 | Brand Icons                              | Update brand icons                                          | ⬜     |
 | Brand Icons API                          | Create a task to automate the update                        | ⬜     |
-| Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
-| Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
 | Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px | ⬜     |
-| Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
-| Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
-| Veritcal from fields                     | Add missing variant                                         | ⬜     |
-| Use exact versions                       | Adjust dependenciues to use exact versions                  | ⬜     |
-| Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
 
 ## Componentes
 
@@ -91,16 +92,18 @@ These improvements help our components work seamlessly across all supported fram
 | navbar           | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | time-input       | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | date             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| dropdown/select  | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| autocomplete     | WC     | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| dropdown/select  | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| autocomplete     | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 
 ### Extended Scope
 
-| Component | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
-| --------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
-| sheet     | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| menu      | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| ag-grid   | Lib  | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| Component           | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
+| ------------------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
+| select/mobile/modal | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| forms/vetticval     | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| sheet               | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| menu                | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| ag-grid             | Lib  | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 
 ### Website Scope
 

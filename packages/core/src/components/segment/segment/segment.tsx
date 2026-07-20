@@ -105,7 +105,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   /**
    * The name of the segment items in the group. Child items will inherit the name.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('string')
   readonly name: string = this.inputId
 

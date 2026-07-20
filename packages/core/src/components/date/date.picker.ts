@@ -13,6 +13,7 @@ import { DateTime } from 'luxon'
 import type { DsLanguage, DsRegion } from '@global'
 import { i18nDsDate } from './date.i18n'
 import { getDisplayFormat } from './date.mask'
+import { raf } from '@utils'
 
 export interface DatePickerConfig {
   popupHostEl: HTMLDivElement
@@ -80,7 +81,7 @@ export class DatePickerController {
   open() {
     this.config.shadowRoot.removeEventListener('keydown', this.handleTab as EventListener, true)
     this.config.shadowRoot.addEventListener('keydown', this.handleTab as EventListener, true)
-    requestAnimationFrame(() => this.enhanceAccessibility(true))
+    raf(() => this.enhanceAccessibility(true))
   }
 
   close() {
@@ -168,7 +169,7 @@ export class DatePickerController {
       dateFormat: getDisplayFormat(region),
       onChangeView: view => {
         this.currentViewType = view
-        requestAnimationFrame(() => {
+        raf(() => {
           this.enhanceAccessibility()
         })
       },
@@ -421,7 +422,7 @@ export class DatePickerController {
     if (monthChanged) {
       this.skipFocusOnNextRender = false
       this.airDatepicker?.setViewDate(newDate)
-      requestAnimationFrame(() => {
+      raf(() => {
         this.setActiveCell(newDate, true)
       })
     } else {
@@ -508,7 +509,7 @@ export class DatePickerController {
   }
 
   private attachTitleBtnListener() {
-    requestAnimationFrame(() => {
+    raf(() => {
       if (!this.titleBtn) return
       this.titleBtn.onclick = null
       this.titleBtn.removeEventListener('click', this.forceTitleClickToYear)
@@ -527,7 +528,7 @@ export class DatePickerController {
     this.gridObserver = new MutationObserver(mutations => {
       const changed = mutations.some(m => m.type === 'childList')
       if (!changed) return
-      requestAnimationFrame(() => {
+      raf(() => {
         this.enhanceAccessibility(!this.skipFocusOnNextRender)
         this.skipFocusOnNextRender = false
       })

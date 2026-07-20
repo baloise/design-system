@@ -6,7 +6,7 @@
     @include font-smoothing();
     @include print-hidden();
 
-    border-radius: var(--ds-alias-radius-base);
+    border-radius: var(--ds-alias-radius-rounded);
     background: transparent;
     width: 1.5rem;
     height: 1.5rem;
@@ -46,12 +46,14 @@
       &:hover,
       &.is-hovered {
         --icon-color: var(--ds-alias-text-color-primary-hover);
+        background: var(--ds-alias-background-color-highlight);
       }
     }
 
     &:active,
     &.is-pressed {
       --icon-color: var(--ds-alias-text-color-primary-active);
+      background: var(--ds-alias-background-color-highlight);
     }
 
     &:focus-visible,

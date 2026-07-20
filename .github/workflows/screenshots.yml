@@ -1,12 +1,13 @@
 name: 📸 Update Screenshots
 
-# Update visual test screenshots for one or more components.
+# Update visual test screenshots for one or more components or foundation tests.
 #
 # Usage in PR comments:
 #   /update-screenshots              - Update all components
 #   /update-screenshots hint         - Update single component (hint)
 #   /update-screenshots hint,popup   - Update multiple components (comma-separated)
 #   /update-screenshots hint, popup, drawer - Spaces are trimmed automatically
+#   /update-screenshots colors       - Update single foundation test (colors)
 #
 # The workflow:
 # 1. Extracts component names from the comment
@@ -158,7 +159,8 @@ jobs:
           cat > packages/core/playwright.visual.config.mts <<TS
           /**
           * This configuration is used to run visual tests for a specific
-          * component (or components) across multiple devices and browsers.
+          * component (or components), as well as foundation-level visual
+          * tests (e.g. colors, typography), across multiple devices and browsers.
           *
           * Component selection:
           *   - If TAG is 'all', matches all components: src/components/<name>/test/<name>.visual.play.ts
@@ -167,13 +169,20 @@ jobs:
           *     * src/components/popup/test/popup.visual.play.ts
           *     * src/components/drawer/test/drawer.visual.play.ts
           *   - Whitespace is trimmed from component names automatically
+          *
+          * Foundation selection:
+          *   - Foundation visual tests live directly under src/foundation (no test subfolder)
+          *   - The same name(s) from TAG are also matched there, e.g. TAG='colors' matches
+          *     src/foundation/colors.visual.play.ts
           */
           import { defineConfig, devices } from '@playwright/test'
           import baseConfig from './playwright.config'
 
           const TAG = '${{ needs.assembleInformation.outputs.command }}'
           const components = TAG === 'all' ? ['all'] : TAG.split(',').map(t => t.trim())
-          const testMatch = components.map(comp => 'src/components/' + comp + '/test/*visual.play.ts')
+          const componentsMatch = components.map(comp => 'src/components/' + comp + '/test/*visual.play.ts')
+          const foundationMatch = components.map(comp => 'src/foundation/' + comp + '.visual.play.ts')
+          const testMatch = [...componentsMatch, ...foundationMatch]
 
           console.log('testMatch', testMatch)
 

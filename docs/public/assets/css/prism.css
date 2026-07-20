@@ -48,7 +48,7 @@ code {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--ds-global-color-grey-1) !important;
+  color: var(--ds-global-color-grey-2) !important;
   background: 0 0;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: 'DM Mono', monospace !important;
@@ -100,7 +100,7 @@ pre[class*='language-'] {
   border-radius: 4px !important;
   background: var(--ds-global-color-primary-6) !important;
   box-shadow: none !important;
-  color: var(--ds-global-color-grey-1) !important;
+  color: var(--ds-global-color-grey-2) !important;
   position: relative;
   overflow: hidden;
   border: 1px solid hsla(203, 50%, 30%, 0.15);
@@ -121,7 +121,7 @@ pre[class*='language-'] {
 .docblock-source > div:last-child button {
   background: var(--ds-global-color-primary-5) !important;
   border-radius: 4px !important;
-  color: var(--ds-global-color-grey-1) !important;
+  color: var(--ds-global-color-grey-2) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   margin-left: -1px;
@@ -135,7 +135,7 @@ pre[class*='language-'] {
 }
 
 .token.punctuation {
-  color: var(--ds-global-color-grey-1) !important;
+  color: var(--ds-global-color-grey-2) !important;
 }
 
 .token.keyword {
@@ -181,7 +181,7 @@ pre[class*='language-'] {
 
 .token.console.class-name,
 .token.dom.variable {
-  color: var(--ds-global-color-grey-1) !important;
+  color: var(--ds-global-color-grey-2) !important;
 }
 
 .token.atrule.rule {
@@ -192,7 +192,7 @@ pre[class*='language-'] {
 .language-jsx .token.tag.punctuation,
 .language-html .token.punctuation,
 .language-jsx .token.punctuation {
-  color: var(--ds-global-color-grey-1) !important;
+  color: var(--ds-global-color-grey-2) !important;
 }
 
 .language-html .token.tag,
