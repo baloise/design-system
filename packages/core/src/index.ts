@@ -59,7 +59,6 @@ export {
   DsOrientationSubject,
 } from './utils/orientation'
 export { ScrollHandler } from './utils/scroll'
-export { DsSwipeInfo, DsSwipeObserver, DsSwipeSubject } from './utils/swipe'
 
 /**
  * Controllers

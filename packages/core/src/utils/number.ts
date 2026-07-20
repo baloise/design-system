@@ -21,14 +21,6 @@ export function getDecimalSeparator(): string {
     .replace(/\p{Number}/gu, '')
 }
 
-export const getDecimalSeparators = (): string[] => {
-  if (getThousandSeparator() !== '.') {
-    return [getDecimalSeparator(), '.']
-  }
-
-  return [getDecimalSeparator()]
-}
-
 export function getThousandSeparator(): string {
   return Intl.NumberFormat(getLocale())
     .format(11111)
@@ -62,12 +54,4 @@ export const parseLocaleNumber = (stringNumber: string): number => {
 
 export const getNegativeSymbol = (): string => {
   return '-'
-}
-
-export const parseFloatString = (value: string): string => {
-  return value.replace(getDecimalSeparator(), '.')
-}
-
-export const formatFloatString = (value: string): string => {
-  return value.replace('.', getDecimalSeparator())
 }

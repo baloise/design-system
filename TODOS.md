@@ -23,6 +23,7 @@
 | Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
 | Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
+| Verify desing tokens                     | Check if the tokens follow our style-guide                  | ⬜     |
 | Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
 | Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
 | Brand Icons                              | Update brand icons                                          | ⬜     |
