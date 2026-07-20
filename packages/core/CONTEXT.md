@@ -423,6 +423,39 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
 Library choices (air-datepicker, imask) and the shadow-root integration are
 recorded in [docs/adr/0001-ds-date-external-datepicker-libraries.md](../../docs/adr/0001-ds-date-external-datepicker-libraries.md).
 
+## Global Configuration (`DesignSystem.config`)
+
+`packages/core/src/global/config/` holds the singleton `config` (a `Config`
+instance, exposed at runtime as `window.DesignSystem.config`) that drives
+brand/region/language/icons/animation/etc. across all components. Consuming
+apps bootstrap it either via JS (`initializeDesignSystem(userConfig)` /
+`setupDsConfig(userConfig)`) or, for markup-only setups, via a `<meta>` tag:
+
+```html
+<meta name="design-system-config" data-brand="helvetia" data-region="CH" data-language="de" />
+```
+
+`setupDsConfig` merges three sources, **lowest to highest precedence**:
+
+1. `defaultConfig` (`config.default.ts`)
+2. `configFromMetaTag(win)` (`config.meta.ts`) — reads the `<meta
+name="design-system-config">` tag's `data-*` attributes, but **only**
+   an explicit allowlist (`DS_CONFIG_META_ATTRIBUTE_MAP` in
+   `config.const.ts`): `brand`, `region`, `language`, `fallbackLanguage`,
+   `allowedLanguages` (comma-separated), `animated` (`"false"` → `false`,
+   anything else → `true`). Never spreads `dataset` wholesale — this
+   keeps the config's shape/type guarantees intact even if a CMS editor
+   or injected markup adds unrelated `data-*` attributes.
+3. the `userConfig` object passed to `initializeDesignSystem`/`setupDsConfig`
+   — always wins; this is how frameworks, Storybook, and tests override
+
+Icons, `httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks` are
+**not** meta-tag-configurable — they're either structured/nested data (not
+representable in a flat `data-*` attribute) or considered JS-only
+behavioral config. See
+[docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
+for the full rationale.
+
 ## Key Constraints
 
 - **Shadow DOM encapsulation** — Styles do not leak in/out
