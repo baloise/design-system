@@ -23,6 +23,10 @@ updates:
       ## lottie-web is pinned to 5.8.1 and must not be updated as it breaks functionality.
       - dependency-name: 'lottie-web'
         versions: ['!=5.8.1']
+      ## @stencil/sass 3.3.0+ dropped CJS support (ESM-only exports), which breaks
+      ## Stencil v4's require()-based config loading. Stay on 3.2.3 until we move to Stencil v5.
+      - dependency-name: '@stencil/sass'
+        versions: ['>=3.3.0']
     groups:
       minor-and-patch:
         update-types:

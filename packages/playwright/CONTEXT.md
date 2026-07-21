@@ -29,9 +29,7 @@ export class DsButton extends PageObject {
 
 // Test (calls the PO method)
 test('button fires dsChange event', async ({ page, mount }) => {
-  const button = await mount(DsButton, {
-    /*props*/
-  })
+  const button = await mount(DsButton, {/*props*/})
   await button.click()
   // assert event was fired
 })

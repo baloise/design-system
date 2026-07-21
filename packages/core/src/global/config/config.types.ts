@@ -11,11 +11,7 @@ export type DsGermanLanguage = 'de'
 export type DsBrand = 'baloise' | 'helvetia'
 
 export type DsLanguage =
-  | DsSwissLanguage
-  | DsLuxembourgLanguage
-  | DsLuxembourgInternationalLanguage
-  | DsBelgiumLanguage
-  | DsGermanLanguage
+  DsSwissLanguage | DsLuxembourgLanguage | DsLuxembourgInternationalLanguage | DsBelgiumLanguage | DsGermanLanguage
 
 export type DsIcons = { [key: string]: string }
 
