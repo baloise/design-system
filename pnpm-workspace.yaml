@@ -31,7 +31,7 @@ catalog:
   vitest: 4.1.10
 
 overrides:
-  brace-expansion: 2.1.2
+  '@swc/cli>minimatch@9>brace-expansion': 2.1.2
 
 # Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
