@@ -30,8 +30,15 @@ catalog:
   vite: 8.1.5
   vitest: 4.1.10
 
+# Kept in sync with package.json's "pnpm.overrides" — pnpm 11 reads
+# overrides from here locally, but Vercel's install only picks up the
+# copy in package.json (frozen-lockfile broke there without it).
+# See docs/adr/0005-duplicate-pnpm-overrides.md
 overrides:
-  '@swc/cli>minimatch@9>brace-expansion': 2.1.2
+  'brace-expansion@>=2.0.0 <2.1.2': 2.1.2
+  'brace-expansion@>=3.0.0 <5.0.7': 5.0.7
+  'js-yaml@>=4.0.0 <4.3.0': 4.3.0
+  'js-yaml@>=3.0.0 <3.15.0': 3.15.0
 
 # Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
