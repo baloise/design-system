@@ -6,6 +6,14 @@ import { type DsConfig } from '@global'
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
+// Reads the live config directly off `window` instead of importing `useDsConfig` from '@global',
+// which would pull in a module cycle that isn't resolved yet when this file's exports are called
+// eagerly at other modules' top level (e.g. breakpoints.subject.ts -> window-resize.listener.ts).
+const getDsConfig = (): DsConfig | undefined => {
+  const win = window as any
+  return win && win.DesignSystem && win.DesignSystem.config
+}
+
 /**
  * Request Largest Contentful Paint (LCP) callback
  */
@@ -226,21 +234,9 @@ const transitionEnd = (
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (dsBrowser.hasWindow) {
-    // Lazy import to break circular dependency: import only when function is called
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { useDsConfig } = require('@global') as typeof import('@global')
-      const config = useDsConfig()
-      if (config) {
-        const ael = config._ael
-        if (ael) {
-          return ael(el, eventName, callback, opts)
-        } else if (config._ael) {
-          return config._ael(el, eventName, callback, opts)
-        }
-      }
-    } catch {
-      // Fallback if @global is not yet initialized
+    const config = getDsConfig()
+    if (config && config._ael) {
+      return config._ael(el, eventName, callback, opts)
     }
   }
 
@@ -249,21 +245,9 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   if (dsBrowser.hasWindow) {
-    // Lazy import to break circular dependency: import only when function is called
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { useDsConfig } = require('@global') as typeof import('@global')
-      const config = useDsConfig()
-      if (config) {
-        const rel = config._rel
-        if (rel) {
-          return rel(el, eventName, callback, opts)
-        } else if (config._rel) {
-          return config._rel(el, eventName, callback, opts)
-        }
-      }
-    } catch {
-      // Fallback if @global is not yet initialized
+    const config = getDsConfig()
+    if (config && config._rel) {
+      return config._rel(el, eventName, callback, opts)
     }
   }
 

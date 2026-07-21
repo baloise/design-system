@@ -4,7 +4,7 @@
   "homepage": "https://design.baloise.dev",
   "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",
-  "packageManager": "pnpm@11.12.0",
+  "packageManager": "pnpm@11.15.1",
   "engines": {
     "node": ">=24 <25"
   },
@@ -16,6 +16,7 @@
     "start:force": "turbo run build --force && pnpm start",
     "docs": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs --serve && storybook dev -p 6006 --config-dir docs/.storybook",
     "docs:preview": "turbo run build --filter=@baloise/ds-core --force && node scripts/build-docs.mjs && http-server docs/dist -p 6006",
+    "react:app": "bash test/react/build.sh v19 && bash test/react/start.sh v19",
     "_playwright": "=============================================== Playwright =================================================",
     "play": "pnpm --filter @baloise/ds-core play",
     "play:file": "pnpm --filter @baloise/ds-core play:file",
@@ -32,7 +33,7 @@
     "assets": "turbo run build --filter=@baloise/ds-assets --force",
     "core": "turbo run build --filter=@baloise/ds-core --force",
     "_test": "===================================================== Test & Lint ===============================================",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint && node scripts/check-overrides.mjs",
     "test": "turbo run test",
     "_utilities": "================================================ Utilities =================================================",
     "kill:ports": "node -e \"require('kill-port')(4000).catch(()=>{})\"",
@@ -75,6 +76,7 @@
     "fast-glob": "3.3.3",
     "fs-extra": "catalog:",
     "glob": "13.0.6",
+    "js-yaml": "4.3.0",
     "jsdom": "29.1.1",
     "jsonc-eslint-parser": "3.1.0",
     "kill-port": "2.0.1",
@@ -99,8 +101,12 @@
     "@oxc-parser/binding-linux-x64-gnu": "0.140.0"
   },
   "pnpm": {
+    "_comment": "overrides below kept in sync with pnpm-workspace.yaml — required for Vercel installs. See docs/adr/0005-duplicate-pnpm-overrides.md",
     "overrides": {
-      "@swc/cli>minimatch@9>brace-expansion": "2.1.2"
+      "brace-expansion@>=2.0.0 <2.1.2": "2.1.2",
+      "brace-expansion@>=3.0.0 <5.0.7": "5.0.7",
+      "js-yaml@>=4.0.0 <4.3.0": "4.3.0",
+      "js-yaml@>=3.0.0 <3.15.0": "3.15.0"
     }
   }
 }

@@ -12,6 +12,7 @@ This file maps the multi-context layout of this monorepo. Each context has its o
 | **CSS & Styles**       | `packages/css/CONTEXT.md`        | Global CSS, utility classes, responsive design, theming, CSS variable conventions       |
 | **Assets**             | `packages/assets/CONTEXT.md`     | Fonts, icons, images, asset management, brand guidelines                                |
 | **Playwright**         | `packages/playwright/CONTEXT.md` | E2E testing library, page objects, accessibility testing, visual regression             |
+| **React Bindings**     | `packages/react/CONTEXT.md`      | Generated React component wrappers, `useDesignSystem()` bootstrapping                   |
 | **Documentation**      | `docs/CONTEXT.md`                | Storybook setup, documentation patterns, MDX authoring, component showcase              |
 | **Internal Libraries** | `libs/CONTEXT.md`                | ESLint plugin, output targets (Angular), shared utilities, code generation              |
 

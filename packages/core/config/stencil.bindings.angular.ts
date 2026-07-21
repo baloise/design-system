@@ -1,5 +1,4 @@
 import { ValueAccessorConfig, angularOutputTarget } from 'libs-output-target-angular'
-import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
@@ -45,7 +44,6 @@ export const AngularGenerator = () =>
     directivesArrayFile: '../angular/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [
-      ...docComponents,
       'ds-segment',
       'ds-checkbox-group',
       'ds-checkbox',
