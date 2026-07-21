@@ -44,13 +44,6 @@ runs:
 
     - name: Setup pnpm
       uses: pnpm/action-setup@v6
-      with:
-        ## Avoids action-setup's npm-based bootstrap self-updating to the
-        ## packageManager-pinned version, which currently hits a pnpm bug
-        ## ("Cannot use 'in' operator to search for 'integrity' in undefined")
-        ## during that internal headless install. standalone installs the
-        ## pinned version directly via @pnpm/exe instead.
-        standalone: true
 
     - name: Setup Node.js environment
       uses: actions/setup-node@v6
