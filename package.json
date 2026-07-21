@@ -97,12 +97,5 @@
   "optionalDependencies": {
     "@oxc-parser/binding-linux-arm64-gnu": "0.140.0",
     "@oxc-parser/binding-linux-x64-gnu": "0.140.0"
-  },
-  "overrides": {
-    "chokidar": "4.0.3",
-    "vite": "8.0.16",
-    "@babel/runtime": "7.27.3",
-    "axios": "1.16.0",
-    "yaml": "2.8.4"
   }
 }
