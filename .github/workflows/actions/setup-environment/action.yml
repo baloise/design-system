@@ -43,7 +43,7 @@ runs:
         git log -1 --oneline
 
     - name: Setup pnpm
-      uses: pnpm/action-setup@v4
+      uses: pnpm/action-setup@v6
 
     - name: Setup Node.js environment
       uses: actions/setup-node@v6
@@ -51,7 +51,6 @@ runs:
         node-version: 24
         cache: 'pnpm'
         registry-url: 'https://registry.npmjs.org'
-        always-auth: true
 
     ## setup-node writes the registry config to a runner-temp .npmrc (not the
     ## repo checkout or $HOME) and resolves the auth token from NODE_AUTH_TOKEN
