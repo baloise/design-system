@@ -4,3 +4,6 @@
 # treating this as part of that workspace. See
 # docs/adr/0004-react-smoke-test-app-outside-workspace.md.
 packages: []
+
+allowBuilds:
+  esbuild: true
