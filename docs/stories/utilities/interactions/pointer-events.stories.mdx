@@ -1,0 +1,53 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssInteractionsPointerEvents,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Interactions/Pointer Events"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Pointer Events" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>
+  The pointer-events CSS property determines the conditions under which a specific graphic element can receive pointer
+  events, if at all.
+</Lead>
+
+## Classes
+
+<CssInteractionsPointerEvents />
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center">
+  <button class="button m-small pointer-events-auto">Auto</button>
+  <button class="button m-small pointer-events-none">None</button>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Elevation"
+      description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
+    />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

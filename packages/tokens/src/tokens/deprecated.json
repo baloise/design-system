@@ -1,0 +1,209 @@
+{
+  "color": {
+    "transparent": {
+      "value": "transparent",
+      "keepFormat": true,
+      "deprecated": true,
+      "noFigmaImport": true
+    },
+    "blue": {
+      "value": "{color.base.blue.5}",
+      "noFigmaImport": true,
+      "deprecated": true
+    },
+    "base": {
+      "blue": {
+        "1": { "value": "#e5e7f0", "noFigmaImport": true, "deprecated": true },
+        "2": { "value": "#b3b6d4", "noFigmaImport": true, "deprecated": true },
+        "3": { "value": "#656ea8", "noFigmaImport": true, "deprecated": true },
+        "4": { "value": "#293485", "noFigmaImport": true, "deprecated": true },
+        "5": { "value": "#000d6e", "noFigmaImport": true, "deprecated": true },
+        "6": { "value": "#000739", "noFigmaImport": true, "deprecated": true }
+      }
+    },
+    "border": {
+      "primary-dark": {
+        "value": "{color.base.primary.6}",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "light-blue": {
+        "value": "{color.base.light-blue.5}",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "danger-dark": {
+        "value": "{color.base.danger.5}",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "danger-darker": {
+        "value": "{color.base.danger.6}",
+        "noFigmaImport": true,
+        "deprecated": true
+      }
+    },
+    "text": {
+      "light-blue": { "value": "{color.base.light-blue.5}", "noFigmaImport": true, "deprecated": true },
+      "light-blue-light": { "value": "{color.base.light-blue.2}", "noFigmaImport": true, "deprecated": true },
+      "info-light": { "value": "{color.base.info.3}", "noFigmaImport": true, "deprecated": true },
+      "primary-dark": { "value": "{color.base.primary.6}", "noFigmaImport": true, "deprecated": true },
+      "danger-light": { "value": "{color.base.danger.5}", "noFigmaImport": true, "deprecated": true },
+      "danger-dark": { "value": "{color.base.danger.6}", "noFigmaImport": true, "deprecated": true }
+    }
+  },
+  "size": {
+    "border": {
+      "width": {
+        "none": {
+          "value": "0",
+          "deprecated": true,
+          "noFigmaImport": true
+        }
+      }
+    },
+    "container": {
+      "max-width": {
+        "value": "{size.container.size.normal}",
+        "keepFormat": true,
+        "deprecated": true,
+        "noFigmaImport": true
+      }
+    },
+    "weight": {
+      "bold": {
+        "value": "{size.font.weight.bold}",
+        "keepFormat": true,
+        "deprecated": true,
+        "noFigmaImport": true
+      },
+      "regular": {
+        "value": "{size.font.weight.regular}",
+        "keepFormat": true,
+        "deprecated": true,
+        "noFigmaImport": true
+      },
+      "light": {
+        "value": "{size.font.weight.light}",
+        "keepFormat": true,
+        "deprecated": true,
+        "noFigmaImport": true
+      }
+    },
+    "size": {
+      "x-small": { "value": "{size.text.size.x-small.mobile}", "deprecated": true, "noFigmaImport": true },
+      "small": { "value": "{size.text.size.small.mobile}", "deprecated": true, "noFigmaImport": true },
+      "normal": { "value": "{size.text.size.normal.mobile}", "deprecated": true, "noFigmaImport": true },
+      "medium": { "value": "{size.text.size.medium.mobile}", "deprecated": true, "noFigmaImport": true },
+      "large": { "value": "{size.text.size.large.mobile}", "deprecated": true, "noFigmaImport": true },
+      "x-large": { "value": "{size.text.size.x-large.mobile}", "deprecated": true, "noFigmaImport": true },
+      "xx-large": { "value": "{size.text.size.xx-large.mobile}", "deprecated": true, "noFigmaImport": true },
+      "xxx-large": { "value": "{size.text.size.xxx-large.mobile}", "deprecated": true, "noFigmaImport": true },
+      "xxxx-large": { "value": "{size.text.size.xxxx-large.mobile}", "deprecated": true, "noFigmaImport": true },
+      "xxxxx-large": { "value": "{size.text.size.xxxxx-large.mobile}", "deprecated": true, "noFigmaImport": true },
+      "tablet": {
+        "x-small": { "value": "{size.text.size.x-small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "{size.text.size.small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "{size.text.size.normal.tablet}", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "{size.text.size.medium.tablet}", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "{size.text.size.large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "{size.text.size.x-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "{size.text.size.xx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "{size.text.size.xxx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "{size.text.size.xxxx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxxxx-large": { "value": "{size.text.size.xxxxx-large.tablet}", "deprecated": true, "noFigmaImport": true }
+      },
+      "desktop": {
+        "x-small": { "value": "{size.text.size.x-small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "{size.text.size.small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "{size.text.size.normal.desktop}", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "{size.text.size.medium.desktop}", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "{size.text.size.large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "{size.text.size.x-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "{size.text.size.xx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "{size.text.size.xxx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "{size.text.size.xxxx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxxxx-large": { "value": "{size.text.size.xxxxx-large.desktop}", "deprecated": true, "noFigmaImport": true }
+      }
+    },
+    "line-height": {
+      "x-small": { "value": "1.125", "deprecated": true, "noFigmaImport": true },
+      "small": { "value": "1.25", "deprecated": true, "noFigmaImport": true },
+      "normal": { "value": "1.5", "deprecated": true, "noFigmaImport": true },
+      "medium": { "value": "1.5", "deprecated": true, "noFigmaImport": true },
+      "large": { "value": "1.5", "deprecated": true, "noFigmaImport": true },
+      "x-large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+      "xx-large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+      "xxx-large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+      "xxxx-large": { "value": "2.5", "deprecated": true, "noFigmaImport": true },
+      "xxxxx-large": { "value": "3.5", "deprecated": true, "noFigmaImport": true },
+      "tablet": {
+        "x-small": { "value": "1.125", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "1.25", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "1.5", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "1.625", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "2.5", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "3", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "3.5", "deprecated": true, "noFigmaImport": true },
+        "xxxxx-large": { "value": "6", "deprecated": true, "noFigmaImport": true }
+      },
+      "desktop": {
+        "x-small": { "value": "1.125", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "1.25", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "1.5", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "1.625", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "2", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "2.5", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "3", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "3.5", "deprecated": true, "noFigmaImport": true },
+        "xxxxx-large": { "value": "6", "deprecated": true, "noFigmaImport": true }
+      }
+    },
+    "space": {
+      "tablet": {
+        "xx-small": { "value": "{size.space.xx-small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "x-small": { "value": "{size.space.x-small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "{size.space.small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "{size.space.normal.tablet}", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "{size.space.medium.tablet}", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "{size.space.large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "{size.space.x-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "{size.space.xx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "{size.space.xxx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "{size.space.xxxx-large.tablet}", "deprecated": true, "noFigmaImport": true }
+      },
+      "desktop": {
+        "xx-small": { "value": "{size.space.xx-small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "x-small": { "value": "{size.space.x-small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "{size.space.small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "{size.space.normal.desktop}", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "{size.space.medium.desktop}", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "{size.space.large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "{size.space.x-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "{size.space.xx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "{size.space.xxx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "{size.space.xxxx-large.desktop}", "deprecated": true, "noFigmaImport": true }
+      }
+    }
+  },
+  "space": {
+    "auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "tablet-auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "desktop-auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "none": { "value": "0", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "tablet-none": { "value": "0", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "desktop-none": { "value": "0", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  },
+  "radius": {
+    "none": { "value": "0", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  },
+  "shadow": {
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  },
+  "text-shadow-": {
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  }
+}

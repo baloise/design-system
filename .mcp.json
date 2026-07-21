@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ds-ai-frontend-generator": {
+      "command": "node",
+      "args": ["--import", "tsx", "packages/design-gen-ai/src/index.ts"]
+    }
+  }
+}

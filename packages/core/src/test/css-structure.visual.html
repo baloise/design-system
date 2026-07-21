@@ -1,0 +1,65 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <section data-testid="basic">
+          <p>Normal</p>
+          <a href="https://www.baloise.ch">Link</a>
+          <hr />
+          <p><small>small</small></p>
+          <p><strong>strong</strong></p>
+          <p><b>bold</b></p>
+        </section>
+        <section data-testid="inheritance">
+          <div class="my-medium">
+            <p>
+              <strong>Strong</strong> <b>Bold</b> ipsum dolor, sit amet consectetur adipisicing elit. Magnam, eum, at
+              libero sunt quas autem, dolor eius reiciendis quis unde repellendus officia voluptatem ullam quasi
+              expedita amet rem delectus accusamus!
+            </p>
+            <a href="https://www.baloise.ch">Link</a>
+            <a class="link" href="https://www.baloise.ch">Link</a>
+            <span>Span</span>
+            <h1>Native Heading 1</h1>
+            <h1 class="title">Native Title 1</h1>
+            <h1 class="subtitle">Native Subtile 1</h1>
+            <bal-heading>Bal Heading</bal-heading>
+            <bal-text>Bal Text</bal-text>
+            <bal-label>Bal Label</bal-label>
+          </div>
+          <div class="text-danger my-medium">
+            <p>
+              <strong>Strong</strong> <b>Bold</b> ipsum dolor, sit amet consectetur adipisicing elit. Magnam, eum, at
+              libero sunt quas autem, dolor eius reiciendis quis unde repellendus officia voluptatem ullam quasi
+              expedita amet rem delectus accusamus!
+            </p>
+            <a href="https://www.baloise.ch">Link</a>
+            <a class="link" href="https://www.baloise.ch">Link</a>
+            <span>Span</span>
+            <h1>Native Heading 1</h1>
+            <h1 class="title">Native Title 1</h1>
+            <h1 class="subtitle">Native Subtile 1</h1>
+            <bal-heading>Bal Heading</bal-heading>
+            <bal-text>Bal Text</bal-text>
+            <bal-label>Bal Label</bal-label>
+          </div>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

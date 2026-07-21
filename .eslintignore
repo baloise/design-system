@@ -1,0 +1,6 @@
+node_modules
+dist
+test
+
+packages/icons/src/index.ts
+packages/core/icons

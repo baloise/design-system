@@ -1,0 +1,32 @@
+{
+  "opacity": {
+    "0": {
+      "value": "0",
+      "noFigmaImport": true
+    },
+    "30": {
+      "value": "0.3",
+      "noFigmaImport": true
+    },
+    "40": {
+      "value": "0.4",
+      "noFigmaImport": true
+    },
+    "50": {
+      "value": "0.5",
+      "noFigmaImport": true
+    },
+    "60": {
+      "value": "0.6",
+      "noFigmaImport": true
+    },
+    "80": {
+      "value": "0.8",
+      "noFigmaImport": true
+    },
+    "100": {
+      "value": "1",
+      "noFigmaImport": true
+    }
+  }
+}

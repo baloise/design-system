@@ -1,0 +1,55 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import * as InputSliderStories from './bal-input-slider.stories'
+
+<Meta of={InputSliderStories} />
+
+<StoryHeading of={InputSliderStories.Basic} hidden></StoryHeading>
+
+<Banner of={InputSliderStories} />
+
+<Lead>**Input Slider** component lets users select from a range of values by moving the slider thumb.</Lead>
+
+<Canvas of={InputSliderStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={InputSliderStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputSliderStories.FieldControl}></StoryHeading>
+
+Combine the component with the `bal-field` components to add a label, validation message and more.
+
+<Canvas of={InputSliderStories.FieldControl} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

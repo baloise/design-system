@@ -1,0 +1,50 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as SpinnerStories from './bal-spinner.stories'
+
+<Meta of={SpinnerStories} />
+
+<StoryHeading of={SpinnerStories.Basic} hidden></StoryHeading>
+
+<Banner of={SpinnerStories} />
+
+<Lead>**Spinner** is a animated graphic that lets the user know content is being loaded.</Lead>
+
+<Canvas of={SpinnerStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={SpinnerStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SpinnerStories.LoadingButton}></StoryHeading>
+
+<Canvas of={SpinnerStories.LoadingButton} sourceState="hidden" />
+
+<StoryHeading of={SpinnerStories.LoadingCard}></StoryHeading>
+
+<Canvas of={SpinnerStories.LoadingCard} sourceState="hidden" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

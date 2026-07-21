@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "Create Test App Executor",
+  "description": "",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

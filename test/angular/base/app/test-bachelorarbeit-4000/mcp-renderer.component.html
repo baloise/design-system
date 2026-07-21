@@ -1,0 +1,131 @@
+<ng-container *ngFor="let node of nodes">
+
+  <!-- Zentrale Switch-Logik -->
+  <ng-container [ngSwitch]="node.type">
+
+    <!-- Page -->
+    <bal-page *ngSwitchCase="'bal-page'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-page>
+
+    <!-- Branding -->
+    <bal-logo
+      *ngSwitchCase="'bal-logo'"
+      [brand]="node.props?.brand">
+    </bal-logo>
+
+    <!-- Grid / Layout -->
+    <bal-grid *ngSwitchCase="'bal-grid'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-grid>
+
+    <bal-grid-column
+      *ngSwitchCase="'bal-grid-column'"
+      [cols]="node.props?.cols"
+      [colsMd]="node.props?.colsMd">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-grid-column>
+
+    <!-- Card -->
+    <bal-card *ngSwitchCase="'bal-card'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-card>
+
+    <bal-card-header *ngSwitchCase="'bal-card-header'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-card-header>
+
+    <bal-card-title *ngSwitchCase="'bal-card-title'">
+      {{ node.props?.text }}
+    </bal-card-title>
+
+    <bal-card-content *ngSwitchCase="'bal-card-content'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-card-content>
+
+    <!-- Text / Headings -->
+    <bal-heading
+      *ngSwitchCase="'bal-heading'"
+      [level]="node.props?.level">
+      {{ node.props?.text }}
+    </bal-heading>
+
+    <bal-text *ngSwitchCase="'bal-text'">
+      {{ node.props?.text }}
+    </bal-text>
+
+    <!-- Form -->
+    <bal-field
+      *ngSwitchCase="'bal-field'"
+      [label]="node.props?.label">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-field>
+
+    <bal-field-label *ngSwitchCase="'bal-field-label'">
+      {{ node.props?.text }}
+    </bal-field-label>
+
+    <bal-field-control *ngSwitchCase="'bal-field-control'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-field-control>
+
+    <bal-input
+      *ngSwitchCase="'bal-input'"
+      [type]="node.props?.type || 'text'"
+      [placeholder]="node.props?.placeholder">
+    </bal-input>
+
+    <bal-textarea
+      *ngSwitchCase="'bal-textarea'"
+      [placeholder]="node.props?.placeholder">
+    </bal-textarea>
+
+    <!-- Button -->
+    <bal-button
+      *ngSwitchCase="'bal-button'"
+      [color]="node.props?.color">
+      {{ node.props?.text }}
+    </bal-button>
+
+    <!-- Footer -->
+    <bal-footer *ngSwitchCase="'bal-footer'">
+      <app-mcp-renderer
+        *ngIf="node.children"
+        [nodes]="node.children">
+      </app-mcp-renderer>
+    </bal-footer>
+
+    <!-- ✅ Governance / Fallback -->
+    <ng-container *ngSwitchDefault>
+      <div class="mcp-error">
+        ❌ Nicht erlaubter oder unbekannter Node-Typ:
+        <strong>{{ node.type }}</strong>
+      </div>
+    </ng-container>
+
+  </ng-container>
+</ng-container>

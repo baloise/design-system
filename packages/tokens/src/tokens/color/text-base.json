@@ -1,0 +1,50 @@
+{
+  "color": {
+    "text": {
+      "primary": {
+        "value": "{color.base.primary.5}",
+        "comment": "Main font color for all headings and paragraphs."
+      },
+      "primary-light": {
+        "value": "{color.base.primary.3}",
+        "comment": "Secondary font color for help messages."
+      },
+      "white": {
+        "value": "{color.base.white}",
+        "comment": "Main font color for all headings and paragraphs on a dark background."
+      },
+
+      "grey-light": {
+        "value": "{color.base.grey.4}",
+        "comment": "Font color for disabled texts"
+      },
+      "grey": {
+        "value": "{color.base.grey.5}",
+        "comment": "Font color for placeholders"
+      },
+      "grey-dark": {
+        "value": "{color.base.grey.6}",
+        "comment": "Font color for disabled elements"
+      },
+
+      "info": { "value": "{color.base.info.4}" },
+      "warning": { "value": "{color.base.warning.5}" },
+      "success": { "value": "{color.base.success.4}" },
+      "danger": { "value": "{color.base.danger.4}" },
+      "black": { "value": "{color.base.black}" },
+
+      "primary-hovered": { "value": "{color.base.light-blue.5}" },
+      "primary-pressed": { "value": "{color.base.primary.6}" },
+
+      "danger-hovered": { "value": "{color.base.danger.5}" },
+      "danger-pressed": { "value": "{color.base.danger.6}" },
+
+      "inverted": {
+        "default": { "value": "{color.base.white}" },
+        "disabled": { "value": "{color.base.primary.3}" },
+        "hovered": { "value": "{color.base.light-blue.2}" },
+        "pressed": { "value": "{color.base.info.3}" }
+      }
+    }
+  }
+}

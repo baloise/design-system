@@ -1,0 +1,52 @@
+[2m> [22mstencil build --dev --serve --watch --port=4000
+
+[2m[59:47.0][22m  [36m@stencil/core[39m
+[2m[59:47.5][22m  [36mv4.38.2[39m
+
+👷 Build is set to development 👷
+
+[2m[59:57.5][22m  build, baloise-design-system, dev mode, started [2m...[22m
+[2m[59:57.6][22m  transpile started [2m...[22m
+[2m[00:14.2][22m  transpile finished [2min 16.62 s[22m
+[2m[00:14.2][22m  generate lazy + source maps started [2m...[22m
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[2m[00:36.1][22m  generate lazy + source maps finished [2min 21.95 s[22m
+[2m[00:36.1][22m  copy started [2m...[22m
+[2m[00:36.3][22m  generating react-output-target started [2m...[22m
+[2m[00:41.1][22m  generating angular-library-standalone started [2m...[22m
+[2m[00:41.1][22m  generating angular-library-module started [2m...[22m
+[2m[00:41.2][22m  generate react-output-target finished [2min 4.96 s[22m
+[2m[00:41.4][22m  generate angular-library-module finished [2min 315 ms[22m
+[2m[00:41.4][22m  generate angular-library-standalone finished [2min 317 ms[22m
+[2m[00:44.3][22m  copy finished (1840 files) [2min 8.17 s[22m
+[2m[00:45.7][22m  [1m[32mbuild finished, watching for changes...[39m[22m [2min
+           48.17 s[22m
+
+[2m[00:45.7][22m  [36mhttp://localhost:4000/[39m

@@ -1,0 +1,698 @@
+[
+  {
+    "height": [
+      {
+        "class": "h-full",
+        "css": "height: 100%;",
+        "property": "height",
+        "value": "100%"
+      },
+      {
+        "class": "h-screen",
+        "css": "height: 100vh;",
+        "property": "height",
+        "value": "100vh"
+      },
+      {
+        "class": "h-auto",
+        "css": "height: auto;",
+        "property": "height",
+        "value": "auto"
+      },
+      {
+        "class": "h-min",
+        "css": "height: min-content;",
+        "property": "height",
+        "value": "min-content"
+      },
+      {
+        "class": "h-max",
+        "css": "height: max-content;",
+        "property": "height",
+        "value": "max-content"
+      },
+      {
+        "class": "h-fit",
+        "css": "height: fit-content;",
+        "property": "height",
+        "value": "fit-content"
+      },
+      {
+        "class": "h-1rem",
+        "css": "height: 1rem;",
+        "property": "height",
+        "value": "1rem"
+      },
+      {
+        "class": "h-2rem",
+        "css": "height: 2rem;",
+        "property": "height",
+        "value": "2rem"
+      },
+      {
+        "class": "h-3rem",
+        "css": "height: 3rem;",
+        "property": "height",
+        "value": "3rem"
+      },
+      {
+        "class": "h-4rem",
+        "css": "height: 4rem;",
+        "property": "height",
+        "value": "4rem"
+      },
+      {
+        "class": "h-5rem",
+        "css": "height: 5rem;",
+        "property": "height",
+        "value": "5rem"
+      },
+      {
+        "class": "h-6rem",
+        "css": "height: 6rem;",
+        "property": "height",
+        "value": "6rem"
+      },
+      {
+        "class": "h-7rem",
+        "css": "height: 7rem;",
+        "property": "height",
+        "value": "7rem"
+      },
+      {
+        "class": "h-8rem",
+        "css": "height: 8rem;",
+        "property": "height",
+        "value": "8rem"
+      },
+      {
+        "class": "h-9rem",
+        "css": "height: 9rem;",
+        "property": "height",
+        "value": "9rem"
+      },
+      {
+        "class": "h-10rem",
+        "css": "height: 10rem;",
+        "property": "height",
+        "value": "10rem"
+      },
+      {
+        "class": "h-11rem",
+        "css": "height: 11rem;",
+        "property": "height",
+        "value": "11rem"
+      },
+      {
+        "class": "h-12rem",
+        "css": "height: 12rem;",
+        "property": "height",
+        "value": "12rem"
+      },
+      {
+        "class": "h-13rem",
+        "css": "height: 13rem;",
+        "property": "height",
+        "value": "13rem"
+      },
+      {
+        "class": "h-14rem",
+        "css": "height: 14rem;",
+        "property": "height",
+        "value": "14rem"
+      },
+      {
+        "class": "h-15rem",
+        "css": "height: 15rem;",
+        "property": "height",
+        "value": "15rem"
+      },
+      {
+        "class": "h-16rem",
+        "css": "height: 16rem;",
+        "property": "height",
+        "value": "16rem"
+      },
+      {
+        "class": "h-17rem",
+        "css": "height: 17rem;",
+        "property": "height",
+        "value": "17rem"
+      },
+      {
+        "class": "h-18rem",
+        "css": "height: 18rem;",
+        "property": "height",
+        "value": "18rem"
+      },
+      {
+        "class": "h-19rem",
+        "css": "height: 19rem;",
+        "property": "height",
+        "value": "19rem"
+      },
+      {
+        "class": "h-20rem",
+        "css": "height: 20rem;",
+        "property": "height",
+        "value": "20rem"
+      },
+      {
+        "class": "h-21rem",
+        "css": "height: 21rem;",
+        "property": "height",
+        "value": "21rem"
+      },
+      {
+        "class": "h-22rem",
+        "css": "height: 22rem;",
+        "property": "height",
+        "value": "22rem"
+      },
+      {
+        "class": "h-23rem",
+        "css": "height: 23rem;",
+        "property": "height",
+        "value": "23rem"
+      },
+      {
+        "class": "h-24rem",
+        "css": "height: 24rem;",
+        "property": "height",
+        "value": "24rem"
+      },
+      {
+        "class": "h-25rem",
+        "css": "height: 25rem;",
+        "property": "height",
+        "value": "25rem"
+      },
+      {
+        "class": "h-26rem",
+        "css": "height: 26rem;",
+        "property": "height",
+        "value": "26rem"
+      },
+      {
+        "class": "h-27rem",
+        "css": "height: 27rem;",
+        "property": "height",
+        "value": "27rem"
+      },
+      {
+        "class": "h-28rem",
+        "css": "height: 28rem;",
+        "property": "height",
+        "value": "28rem"
+      },
+      {
+        "class": "h-29rem",
+        "css": "height: 29rem;",
+        "property": "height",
+        "value": "29rem"
+      },
+      {
+        "class": "h-30rem",
+        "css": "height: 30rem;",
+        "property": "height",
+        "value": "30rem"
+      }
+    ]
+  },
+  {
+    "width": [
+      {
+        "class": "w-full",
+        "css": "width: 100%;",
+        "property": "width",
+        "value": "100%"
+      },
+      {
+        "class": "w-screen",
+        "css": "width: 100vw;",
+        "property": "width",
+        "value": "100vw"
+      },
+      {
+        "class": "w-auto",
+        "css": "width: auto;",
+        "property": "width",
+        "value": "auto"
+      },
+      {
+        "class": "w-min",
+        "css": "width: min-content;",
+        "property": "width",
+        "value": "min-content"
+      },
+      {
+        "class": "w-max",
+        "css": "width: max-content;",
+        "property": "width",
+        "value": "max-content"
+      },
+      {
+        "class": "w-fit",
+        "css": "width: fit-content;",
+        "property": "width",
+        "value": "fit-content"
+      },
+      {
+        "class": "w-1",
+        "css": "width: 8.3333%;",
+        "property": "width",
+        "value": "8.3333%"
+      },
+      {
+        "class": "w-2",
+        "css": "width: 16.6667%;",
+        "property": "width",
+        "value": "16.6667%"
+      },
+      {
+        "class": "w-3",
+        "css": "width: 25%;",
+        "property": "width",
+        "value": "25%"
+      },
+      {
+        "class": "w-4",
+        "css": "width: 33.3333%;",
+        "property": "width",
+        "value": "33.3333%"
+      },
+      {
+        "class": "w-5",
+        "css": "width: 41.6667%;",
+        "property": "width",
+        "value": "41.6667%"
+      },
+      {
+        "class": "w-6",
+        "css": "width: 50%;",
+        "property": "width",
+        "value": "50%"
+      },
+      {
+        "class": "w-7",
+        "css": "width: 58.3333%;",
+        "property": "width",
+        "value": "58.3333%"
+      },
+      {
+        "class": "w-8",
+        "css": "width: 66.6667%;",
+        "property": "width",
+        "value": "66.6667%"
+      },
+      {
+        "class": "w-9",
+        "css": "width: 75%;",
+        "property": "width",
+        "value": "75%"
+      },
+      {
+        "class": "w-10",
+        "css": "width: 83.3333%;",
+        "property": "width",
+        "value": "83.3333%"
+      },
+      {
+        "class": "w-11",
+        "css": "width: 91.6667%;",
+        "property": "width",
+        "value": "91.6667%"
+      },
+      {
+        "class": "w-12",
+        "css": "width: 100%;",
+        "property": "width",
+        "value": "100%"
+      },
+      {
+        "class": "w-1rem",
+        "css": "width: 1rem;",
+        "property": "width",
+        "value": "1rem"
+      },
+      {
+        "class": "w-2rem",
+        "css": "width: 2rem;",
+        "property": "width",
+        "value": "2rem"
+      },
+      {
+        "class": "w-3rem",
+        "css": "width: 3rem;",
+        "property": "width",
+        "value": "3rem"
+      },
+      {
+        "class": "w-4rem",
+        "css": "width: 4rem;",
+        "property": "width",
+        "value": "4rem"
+      },
+      {
+        "class": "w-5rem",
+        "css": "width: 5rem;",
+        "property": "width",
+        "value": "5rem"
+      },
+      {
+        "class": "w-6rem",
+        "css": "width: 6rem;",
+        "property": "width",
+        "value": "6rem"
+      },
+      {
+        "class": "w-7rem",
+        "css": "width: 7rem;",
+        "property": "width",
+        "value": "7rem"
+      },
+      {
+        "class": "w-8rem",
+        "css": "width: 8rem;",
+        "property": "width",
+        "value": "8rem"
+      },
+      {
+        "class": "w-9rem",
+        "css": "width: 9rem;",
+        "property": "width",
+        "value": "9rem"
+      },
+      {
+        "class": "w-10rem",
+        "css": "width: 10rem;",
+        "property": "width",
+        "value": "10rem"
+      },
+      {
+        "class": "w-11rem",
+        "css": "width: 11rem;",
+        "property": "width",
+        "value": "11rem"
+      },
+      {
+        "class": "w-12rem",
+        "css": "width: 12rem;",
+        "property": "width",
+        "value": "12rem"
+      },
+      {
+        "class": "w-13rem",
+        "css": "width: 13rem;",
+        "property": "width",
+        "value": "13rem"
+      },
+      {
+        "class": "w-14rem",
+        "css": "width: 14rem;",
+        "property": "width",
+        "value": "14rem"
+      },
+      {
+        "class": "w-15rem",
+        "css": "width: 15rem;",
+        "property": "width",
+        "value": "15rem"
+      },
+      {
+        "class": "w-16rem",
+        "css": "width: 16rem;",
+        "property": "width",
+        "value": "16rem"
+      },
+      {
+        "class": "w-17rem",
+        "css": "width: 17rem;",
+        "property": "width",
+        "value": "17rem"
+      },
+      {
+        "class": "w-18rem",
+        "css": "width: 18rem;",
+        "property": "width",
+        "value": "18rem"
+      },
+      {
+        "class": "w-19rem",
+        "css": "width: 19rem;",
+        "property": "width",
+        "value": "19rem"
+      },
+      {
+        "class": "w-20rem",
+        "css": "width: 20rem;",
+        "property": "width",
+        "value": "20rem"
+      },
+      {
+        "class": "w-21rem",
+        "css": "width: 21rem;",
+        "property": "width",
+        "value": "21rem"
+      },
+      {
+        "class": "w-22rem",
+        "css": "width: 22rem;",
+        "property": "width",
+        "value": "22rem"
+      },
+      {
+        "class": "w-23rem",
+        "css": "width: 23rem;",
+        "property": "width",
+        "value": "23rem"
+      },
+      {
+        "class": "w-24rem",
+        "css": "width: 24rem;",
+        "property": "width",
+        "value": "24rem"
+      },
+      {
+        "class": "w-25rem",
+        "css": "width: 25rem;",
+        "property": "width",
+        "value": "25rem"
+      },
+      {
+        "class": "w-26rem",
+        "css": "width: 26rem;",
+        "property": "width",
+        "value": "26rem"
+      },
+      {
+        "class": "w-27rem",
+        "css": "width: 27rem;",
+        "property": "width",
+        "value": "27rem"
+      },
+      {
+        "class": "w-28rem",
+        "css": "width: 28rem;",
+        "property": "width",
+        "value": "28rem"
+      },
+      {
+        "class": "w-29rem",
+        "css": "width: 29rem;",
+        "property": "width",
+        "value": "29rem"
+      },
+      {
+        "class": "w-30rem",
+        "css": "width: 30rem;",
+        "property": "width",
+        "value": "30rem"
+      }
+    ]
+  },
+  {
+    "min-height": [
+      {
+        "class": "min-h-auto",
+        "css": "min-height: auto;",
+        "property": "min-height",
+        "value": "auto"
+      },
+      {
+        "class": "min-h-0",
+        "css": "min-height: 0px;",
+        "property": "min-height",
+        "value": "0px"
+      },
+      {
+        "class": "min-h-full",
+        "css": "min-height: 100%;",
+        "property": "min-height",
+        "value": "100%"
+      },
+      {
+        "class": "min-h-screen",
+        "css": "min-height: 100vh;",
+        "property": "min-height",
+        "value": "100vh"
+      },
+      {
+        "class": "min-h-min",
+        "css": "min-height: min-content;",
+        "property": "min-height",
+        "value": "min-content"
+      },
+      {
+        "class": "min-h-max",
+        "css": "min-height: max-content;",
+        "property": "min-height",
+        "value": "max-content"
+      },
+      {
+        "class": "min-h-fit",
+        "css": "min-height: fit-content;",
+        "property": "min-height",
+        "value": "fit-content"
+      }
+    ]
+  },
+  {
+    "min-width": [
+      {
+        "class": "min-w-auto",
+        "css": "min-width: auto;",
+        "property": "min-width",
+        "value": "auto"
+      },
+      {
+        "class": "min-w-0",
+        "css": "min-width: 0px;",
+        "property": "min-width",
+        "value": "0px"
+      },
+      {
+        "class": "min-w-full",
+        "css": "min-width: 100%;",
+        "property": "min-width",
+        "value": "100%"
+      },
+      {
+        "class": "min-w-screen",
+        "css": "min-width: 100vw;",
+        "property": "min-width",
+        "value": "100vw"
+      },
+      {
+        "class": "min-w-min",
+        "css": "min-width: min-content;",
+        "property": "min-width",
+        "value": "min-content"
+      },
+      {
+        "class": "min-w-max",
+        "css": "min-width: max-content;",
+        "property": "min-width",
+        "value": "max-content"
+      },
+      {
+        "class": "min-w-fit",
+        "css": "min-width: fit-content;",
+        "property": "min-width",
+        "value": "fit-content"
+      }
+    ]
+  },
+  {
+    "max-height": [
+      {
+        "class": "max-h-auto",
+        "css": "max-height: auto;",
+        "property": "max-height",
+        "value": "auto"
+      },
+      {
+        "class": "max-h-0",
+        "css": "max-height: 0px;",
+        "property": "max-height",
+        "value": "0px"
+      },
+      {
+        "class": "max-h-full",
+        "css": "max-height: 100%;",
+        "property": "max-height",
+        "value": "100%"
+      },
+      {
+        "class": "max-h-screen",
+        "css": "max-height: 100vh;",
+        "property": "max-height",
+        "value": "100vh"
+      },
+      {
+        "class": "min-h-min",
+        "css": "max-height: min-content;",
+        "property": "max-height",
+        "value": "min-content"
+      },
+      {
+        "class": "min-h-max",
+        "css": "max-height: max-content;",
+        "property": "max-height",
+        "value": "max-content"
+      },
+      {
+        "class": "min-h-fit",
+        "css": "max-height: fit-content;",
+        "property": "max-height",
+        "value": "fit-content"
+      }
+    ]
+  },
+  {
+    "max-width": [
+      {
+        "class": "max-w-auto",
+        "css": "max-width: auto;",
+        "property": "max-width",
+        "value": "auto"
+      },
+      {
+        "class": "max-w-0",
+        "css": "max-width: 0px;",
+        "property": "max-width",
+        "value": "0px"
+      },
+      {
+        "class": "max-w-full",
+        "css": "max-width: 100%;",
+        "property": "max-width",
+        "value": "100%"
+      },
+      {
+        "class": "max-w-screen",
+        "css": "max-width: 100vw;",
+        "property": "max-width",
+        "value": "100vw"
+      },
+      {
+        "class": "max-w-min",
+        "css": "max-width: min-content;",
+        "property": "max-width",
+        "value": "min-content"
+      },
+      {
+        "class": "max-w-max",
+        "css": "max-width: max-content;",
+        "property": "max-width",
+        "value": "max-content"
+      },
+      {
+        "class": "max-w-fit",
+        "css": "max-width: fit-content;",
+        "property": "max-width",
+        "value": "fit-content"
+      }
+    ]
+  }
+]

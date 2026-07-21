@@ -1,0 +1,48 @@
+<!doctype html>
+<html dir="ltr" lang="en" class="bg-green-2">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+    <style>
+      section {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-date-calendarr">
+      <main class="container">
+        <section>
+          <bal-date-calendar data-testid="basic"></bal-date-calendar>
+        </section>
+        <section>
+          <bal-date-calendar data-testid="default-date" default-date="2023-01-01"></bal-date-calendar>
+        </section>
+        <section>
+          <bal-date-calendar data-testid="value" value="2023-02-14"></bal-date-calendar>
+        </section>
+        <section>
+          <bal-date-calendar
+            data-testid="min-and-max"
+            value="2023-03-05"
+            min="2023-03-04"
+            max="2023-03-14"
+          ></bal-date-calendar>
+        </section>
+        <section>
+          <bal-date-calendar
+            data-testid="year"
+            default-date="2023-05-01"
+            min-year="2000"
+            max-year="2024"
+          ></bal-date-calendar>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

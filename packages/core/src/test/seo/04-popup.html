@@ -1,0 +1,64 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+
+    <link rel="preload" href="/assets/basic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/basic.min.css" /></noscript>
+  </head>
+
+  <body>
+    <bal-app>
+      <main class="container py-medium">
+        <div>
+          <bal-button bal-popup="my-popup">Click me</bal-button>
+          <bal-popup id="my-popup" label="Popup Label" backdrop-dismiss="true">Popup content</bal-popup>
+        </div>
+        <h1 class="title">Popup Page</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Test Case</th>
+              <th>Performance</th>
+              <th>First Contentful Paint</th>
+              <th>Largest Contentful Paint</th>
+              <th>Speed Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>041 - Basic</td>
+              <td>92</td>
+              <td>2.1</td>
+              <td>3.1</td>
+              <td>2.1</td>
+            </tr>
+            <tr>
+              <td>042 - Without web app utils</td>
+              <td>96</td>
+              <td>1.9</td>
+              <td>2.6</td>
+              <td>1.9</td>
+            </tr>
+            <tr>
+              <td>043 - Load renderer on click</td>
+              <td>97</td>
+              <td>1.7</td>
+              <td>2.3</td>
+              <td>1.7</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1 class="subtitle">Findings</h1>
+        <li><b>042 - Provider: </b> Do not use web-app-utils!</li>
+        <li><b>043 - Provider: </b> Load renderer on click!</li>
+      </main>
+    </bal-app>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../design-system-main"
+		},
+		{
+			"path": "../../../.."
+		}
+	],
+	"settings": {
+		"vsicons.associations.files": [
+			{
+				"icon": "playwright",
+				"extensions": [
+					"play.ts"
+				],
+				"format": "svg"
+			},
+			{
+				"icon": "registry",
+				"extensions": [
+					"po.ts"
+				],
+				"format": "svg"
+			}
+		]
+	}
+}

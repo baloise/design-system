@@ -1,0 +1,5069 @@
+.table:not(:last-child), .table-container:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.link:not(.button):focus-visible,
+  a.is-link:not(.button):focus-visible, .button:focus-visible:not(:active), .button.is-focused:not(:active) {
+    box-shadow: var(--bal-focus-shadow) !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.link:not(.button).is-inverted:focus-visible,
+  a.is-link:not(.button).is-inverted:focus-visible, a.link:not(.button).is-light:focus-visible,
+  a.is-link:not(.button).is-light:focus-visible, .button.is-light:focus-visible:not(:active), .button.is-light.is-focused:not(:active), .button.is-inverted:focus-visible:not(:active), .button.is-inverted.is-focused:not(:active), .button.is-inverted.is-light:focus-visible:not(:active), .button.is-inverted.is-light.is-focused:not(:active) {
+    box-shadow: var(--bal-focus-shadow-inverted) !important;
+  }
+}
+
+.button.is-disabled.is-inverted, .button.is-disabled, .button.is-disabled:hover, .button.is-disabled:active, .button.is-disabled:focus, .button.is-inverted:disabled, .button:disabled, .file.is-disabled .file-label,
+.file.is-disabled .file-cta {
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+.button, .file {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.button {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*! minireset.css v0.0.7 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+ * ========================================================================== */
+/**
+ * * 1. Correct the line height in all browsers.
+ * * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Sections
+ * ========================================================================== */
+/**
+ * * Remove the margin in all browsers.
+ * */
+body {
+  margin: 0;
+}
+
+/**
+ * * Render the `main` element consistently in IE.
+ * */
+main {
+  display: block;
+}
+
+/* Grouping content
+ * ========================================================================== */
+/**
+ * * 1. Add the correct box sizing in Firefox.
+ * * 2. Show the overflow in Edge and IE.
+ * */
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+/**
+ * * 1. Correct the inheritance and scaling of font size in all browsers.
+ * * 2. Correct the odd `em` font sizing in all browsers.
+ * */
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Text-level semantics
+ * ========================================================================== */
+/**
+ * * Remove the gray background on active links in IE 10.
+ * */
+a {
+  background-color: transparent;
+}
+
+/**
+ * * 1. Remove the bottom border in Chrome 57-
+ * * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ * */
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/**
+ * * Add the correct font weight in Chrome, Edge, and Safari.
+ * */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * * 1. Correct the inheritance and scaling of font size in all browsers.
+ * * 2. Correct the odd `em` font sizing in all browsers.
+ * */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/**
+ * * Add the correct font size in all browsers.
+ * */
+small {
+  font-size: 80%;
+}
+
+/**
+ * * Prevent `sub` and `sup` elements from affecting the line height in
+ * * all browsers.
+ * */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+ * ========================================================================== */
+/**
+ * * Remove the border on images inside links in IE 10.
+ * */
+img {
+  border-style: none;
+}
+
+/* Forms
+ * ========================================================================== */
+/**
+ * * 1. Change the font styles in all browsers.
+ * * 2. Remove the margin in Firefox and Safari.
+ * */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/**
+ * * Show the overflow in IE.
+ * * 1. Show the overflow in Edge.
+ * */
+button,
+input {
+  overflow: visible;
+}
+
+/**
+ * * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * * 1. Remove the inheritance of text transform in Firefox.
+ * */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * * Remove the inner border and padding in Firefox.
+ * */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * * Restore the focus styles unset by the previous rule.
+ * */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * * 1. Correct the text wrapping in Edge and IE.
+ * * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * * 3. Remove the padding so developers are not caught out when they zero out
+ * *    `fieldset` elements in all browsers.
+ * */
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+/**
+ * * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ * */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * * Remove the default vertical scrollbar in IE 10+.
+ * */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * * 1. Add the correct box sizing in IE 10.
+ * * 2. Remove the padding in IE 10.
+ * */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/**
+ * * Correct the cursor style of increment and decrement buttons in Chrome.
+ * */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * * 1. Correct the odd appearance in Chrome and Safari.
+ * * 2. Correct the outline style in Safari.
+ * */
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+/**
+ * * Remove the inner padding in Chrome and Safari on macOS.
+ * */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * * 1. Correct the inability to style clickable types in iOS and Safari.
+ * * 2. Change font properties to `inherit` in Safari.
+ * */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+/* Interactive
+ * ========================================================================== */
+/* * Add the correct display in Edge, IE 10+, and Firefox.
+ * */
+details {
+  display: block;
+}
+
+/* * Add the correct display in all browsers.
+ * */
+summary {
+  display: list-item;
+}
+
+/* Misc
+ * ========================================================================== */
+/**
+ * * Add the correct display in IE 10+.
+ * */
+template {
+  display: none;
+}
+
+html {
+  background-color: var(--bal-body-background);
+  font-size: var(--bal-body-font-size);
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: auto;
+}
+
+*:focus {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  touch-action: manipulation;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: var(--bal-body-font-family);
+}
+
+button {
+  color: var(--bal-body-color);
+}
+
+body {
+  color: var(--bal-body-color);
+  font-size: var(--bal-body-font-size);
+  font-weight: var(--bal-body-font-weight);
+  line-height: var(--bal-body-line-height);
+  -webkit-overflow-scrolling: auto;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  hyphens: auto;
+  margin: 0;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a:-moz-any-link {
+  color: currentColor;
+}
+a strong, a:any-link {
+  color: currentColor;
+}
+a:-moz-any-link:hover {
+  color: var(--bal-link-hover-color);
+}
+a:hover, a:any-link:hover {
+  color: var(--bal-link-hover-color);
+}
+a:-moz-any-link:active {
+  color: var(--bal-link-active-color);
+}
+a:active, a:any-link:active {
+  color: var(--bal-link-active-color);
+}
+
+p {
+  hyphens: auto;
+  margin: 0;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p strong {
+  color: currentColor;
+}
+p:not(:last-child) {
+  margin-bottom: var(--bal-space-normal);
+}
+
+hr {
+  background-color: var(--bal-divider-background);
+  border: none;
+  display: block;
+  height: var(--bal-border-width-normal);
+  margin-top: var(--bal-space-xx-large);
+  margin-bottom: var(--bal-space-xx-large);
+}
+@media screen and (min-width: 769px), print {
+  hr {
+    margin-top: var(--bal-space-xx-large-tablet);
+    margin-bottom: var(--bal-space-xx-large-tablet);
+  }
+}
+@media screen and (min-width: 1024px) {
+  hr {
+    margin-top: var(--bal-space-xx-large-desktop);
+    margin-bottom: var(--bal-space-xx-large-desktop);
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  vertical-align: baseline;
+}
+
+small {
+  font-size: var(--bal-small-font-size);
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+b,
+strong {
+  color: inherit;
+  font-weight: var(--bal-strong-font-weight);
+}
+
+fieldset {
+  border: none;
+}
+
+@font-face {
+  font-family: BaloiseCreateHeadline;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("BaloiseCreateHeadline"), local("BaloiseCreateHeadline-bold"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-bold.woff2") format("woff2"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-bold.woff") format("woff");
+}
+@font-face {
+  font-family: BaloiseCreateHeadline;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("BaloiseCreateHeadline-light"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-light.woff2") format("woff2"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-light.woff") format("woff");
+}
+@font-face {
+  font-family: BaloiseCreateText;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("BaloiseCreateText-bold"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-bold.woff2") format("woff2"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-bold.woff") format("woff");
+}
+@font-face {
+  font-family: BaloiseCreateText;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("BaloiseCreateText"), local("BaloiseCreateText-regular"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-regular.woff2") format("woff2"), url("https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-regular.woff") format("woff");
+}
+/**
+ * Do not edit directly
+ * Generated on Mon, 11 May 2026 11:19:50 GMT
+ */
+:root {
+  --bal-text-shadow-normal: 0px 0px 4px rgba(0, 0, 0, 0.15), 0px 4px 12px rgba(0, 0, 0, 0.25), 0px 0px 80px rgba(0, 0, 0, 0.5); /* Increases readability when used on a image background. */
+  --bal-opacity-100: 1;
+  --bal-opacity-80: 0.8;
+  --bal-opacity-60: 0.6;
+  --bal-opacity-50: 0.5;
+  --bal-opacity-40: 0.4;
+  --bal-opacity-30: 0.3;
+  --bal-opacity-0: 0;
+  --bal-font-family-text: BaloiseCreateText, Arial, sans-serif;
+  --bal-font-family-title: BaloiseCreateHeadline, Arial, sans-serif;
+  --bal-shadow-header: 0 4px 4px 0 rgba(0, 7, 57, 0.15); /* Shadow effect for a header bar */
+  --bal-shadow-large: 0 0 30px 0 rgba(0, 7, 57, 0.15); /* Large shadow are used for hover effects. */
+  --bal-shadow-normal: 0 0 10px 0 rgba(0, 7, 57, 0.15); /* Default shadow size to elevate an element. */
+  --bal-shadow-small: 0px 2px 5px 1px rgba(0, 7, 57, 0.12);
+  --bal-animation-transition-easing: cubic-bezier(0.25, 0.8, 0.5, 1);
+  --bal-animation-transition-duration: 300ms;
+  --bal-z-index-tooltip: 1300; /* Default z-index for tooltips. */
+  --bal-z-index-toast: 1200; /* Default z-index for toast and snackbar messages. */
+  --bal-z-index-modal: 1100; /* Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible. */
+  --bal-z-index-popup: 1000; /* Default z-index for popups that stacks on top of all other elements. */
+  --bal-z-index-navigation: 400; /* Default z-index for navigation. */
+  --bal-z-index-sticky: 300; /* Default z-index for sticky interface elements. */
+  --bal-z-index-mask: 200; /* Default z-index for masking interface elements. */
+  --bal-z-index-masked: 100; /* Default z-index for masked interface elements. */
+  --bal-z-index: 1; /* The default z-index for components and elements inside components. */
+  --bal-z-index-deep: -999999; /* Deep z-index is used to stack something behind everything else. */
+  --bal-text-line-height-text: 1.5; /* Default line height for all text elements. */
+  --bal-text-line-height-title: 1.3; /* Standard line-height for the headings. */
+  --bal-text-size-xxxxx-large-tablet: 5rem;
+  --bal-text-size-xxxxx-large: 3rem; /* Should only be uses to illustrate large stage areas. */
+  --bal-text-size-xxxx-large-tablet: 3rem;
+  --bal-text-size-xxxx-large: 2rem; /* Should only be uses to illustrate large stage areas. */
+  --bal-text-size-xxx-large-tablet: 2.5rem;
+  --bal-text-size-xxx-large: 1.75rem; /* Should only be used for stage titles and headings of level 1. */
+  --bal-text-size-xx-large-tablet: 2rem;
+  --bal-text-size-xx-large: 1.5rem; /* Should only be used for content titles and headings of level 2. */
+  --bal-text-size-x-large-tablet: 1.5rem;
+  --bal-text-size-x-large: 1.25rem; /* Should only be used for form titles, quick link navigation's and headings of level 3. */
+  --bal-text-size-large-tablet: 1.25rem;
+  --bal-text-size-large: 1.125rem; /* Should only be used for standard card titles and headings of level 4 or for lead text/paragraphs after a heading. */
+  --bal-text-size-medium-tablet: 1.125rem;
+  --bal-text-size-medium: 1rem; /* Should only be used in a 2/3 grid column to improve readability. */
+  --bal-text-size-normal: 1rem; /* Should only be used for label texts. */
+  --bal-text-size-small: 0.875rem; /* Should only be used for label texts. */
+  --bal-text-size-x-small: 0.75rem; /* Should only be used for helper texts or validation messages of a form control. */
+  --bal-font-weight-light: 300; /* Can be used for secondary headings. Only available with the font BaloiseCreateHeadline. */
+  --bal-font-weight-regular: 400; /* Default width of paragraphs. Only available with the font BaloiseCreateText. */
+  --bal-font-weight-bold: 700; /* Bold is used for headings, links and buttons. */
+  --bal-space-xxxx-large-desktop: 8rem;
+  --bal-space-xxxx-large-tablet: 6rem;
+  --bal-space-xxxx-large: 4rem; /* Space between sections */
+  --bal-space-xxx-large-desktop: 6rem;
+  --bal-space-xxx-large-tablet: 4.5rem;
+  --bal-space-xxx-large: 3.5rem; /* Footer bottom padding */
+  --bal-space-xx-large-desktop: 4rem;
+  --bal-space-xx-large-tablet: 3.5rem;
+  --bal-space-xx-large: 3rem;
+  --bal-space-x-large-desktop: 3rem;
+  --bal-space-x-large-tablet: 2.5rem;
+  --bal-space-x-large: 2rem; /* Space between heading and card */
+  --bal-space-large-desktop: 2rem;
+  --bal-space-large: 1.5rem; /* Space between cards */
+  --bal-space-medium-desktop: 1.5rem;
+  --bal-space-medium: 1.25rem; /* Inner padding of cards */
+  --bal-space-normal: 1rem; /* Space between large headings and content. */
+  --bal-space-small: 0.75rem;
+  --bal-space-x-small: 0.5rem; /* Space between text and icons or headings and content or clickable elements */
+  --bal-space-xx-small: 0.25rem; /* Minimum space between two elements */
+  --bal-radius-rounded: 9999px; /* The rounded radius token embraces a curvier design language, introducing a high degree of softness and fluidity to your elements. */
+  --bal-radius-large: 0.75rem; /* The large radius token makes a bold visual statement by significantly rounding the corners of elements. */
+  --bal-radius-normal: 0.25rem; /* The normal radius token strikes a balance between softness and structure. */
+  --bal-container-size-fluid: 100%; /* The container for fullscreen application with a large table for example. */
+  --bal-container-size-normal: 1496px; /* The default container size is versatile and suitable for various applications and website pages. */
+  --bal-container-size-compact: 896px; /* Tailored container size designed for form wizard applications or pages. */
+  --bal-container-size-detail-page: 744px; /* Deprecated container size for the website */
+  --bal-breakpoint-fullhd: 1920px; /* Crafted for Full HD displays, this breakpoint strikes a balance between detail and performance. */
+  --bal-breakpoint-widescreen: 1440px; /* Tailored for widescreen monitors, this breakpoint offers a panoramic view that accommodates expansive content layouts. */
+  --bal-breakpoint-high-definition: 1280px; /* Designed for high-definition displays, this breakpoint elevates your interface to a level of visual richness and clarity. */
+  --bal-breakpoint-desktop: 1024px; /* Optimized for desktop screens, this breakpoint provides a spacious canvas for your design, allowing for more intricate layouts and detailed content presentation. */
+  --bal-breakpoint-tablet: 769px; /* Tailored for tablet devices, this breakpoint ensures a seamless and optimized user experience on medium-sized screens. */
+  --bal-border-width-large: 0.25rem; /* The large border size makes a bold statement, creating strong visual contrasts and emphasizing key elements within your interface. */
+  --bal-border-width-normal: 0.125rem; /* The normal border size strikes a harmonious balance, offering a versatile choice for defining boundaries within your design. */
+  --bal-border-width-small: 0.063rem; /* The small border size is crafted for subtle, refined delineation. */
+  --bal-color-danger-6: #a01100;
+  --bal-color-danger-5: #cb1501;
+  --bal-color-danger-4: #ea1800;
+  --bal-color-danger-3: #f05d4d;
+  --bal-color-danger-2: #f7a299;
+  --bal-color-danger-1: #fce8e6;
+  --bal-color-warning-6: #c97612;
+  --bal-color-warning-5: #f99319;
+  --bal-color-warning-4: #ffbe19;
+  --bal-color-warning-3: #ffd25e;
+  --bal-color-warning-2: #ffe5a3;
+  --bal-color-warning-1: #fff9e8;
+  --bal-color-success-6: #0b5227;
+  --bal-color-success-5: #116b34;
+  --bal-color-success-4: #168741;
+  --bal-color-success-3: #5bab7a;
+  --bal-color-success-2: #a1cfb3;
+  --bal-color-success-1: #e8f3ec;
+  --bal-color-info-6: #0e457b;
+  --bal-color-info-5: #155ba3;
+  --bal-color-info-4: #1c77d2;
+  --bal-color-info-3: #60a0e0;
+  --bal-color-info-2: #a4c9ed;
+  --bal-color-info-1: #e8f1fb;
+  --bal-color-light-blue-6: #000a55;
+  --bal-color-light-blue-5: #0014aa;
+  --bal-color-light-blue-4: #6672cc;
+  --bal-color-light-blue-3: #56a7f5;
+  --bal-color-light-blue-2: #a7d1fa;
+  --bal-color-light-blue-1: #e5f1fe;
+  --bal-color-black: #000000;
+  --bal-color-grey-6: #313131;
+  --bal-color-grey-5: #747474;
+  --bal-color-grey-4: #b6b6b6;
+  --bal-color-grey-3: #e8e8e8;
+  --bal-color-grey-2: #f6f6f6;
+  --bal-color-grey-1: #fafafa;
+  --bal-color-red-6: #99172d;
+  --bal-color-red-5: #d9304c;
+  --bal-color-red-4: #ff596f;
+  --bal-color-red-3: #ffaca6;
+  --bal-color-red-2: #ffd7d7;
+  --bal-color-red-1: #ffeef1;
+  --bal-color-yellow-6: #b24a00;
+  --bal-color-yellow-5: #fa9319;
+  --bal-color-yellow-4: #ffbe19;
+  --bal-color-yellow-3: #fae052;
+  --bal-color-yellow-2: #ffecbc;
+  --bal-color-yellow-1: #fff9e8;
+  --bal-color-purple-6: #6c2273;
+  --bal-color-purple-5: #9f52cc;
+  --bal-color-purple-4: #be82fa;
+  --bal-color-purple-3: #b8b2ff;
+  --bal-color-purple-2: #e1d9ff;
+  --bal-color-purple-1: #f9f3ff;
+  --bal-color-green-6: #1b5951;
+  --bal-color-green-5: #00b28f;
+  --bal-color-green-4: #21d9ac;
+  --bal-color-green-3: #94e3d4;
+  --bal-color-green-2: #cbf2ec;
+  --bal-color-green-1: #e9fbf7;
+  --bal-color-white: #ffffff;
+  --bal-color-primary-6: #000739;
+  --bal-color-primary-5: #000d6e;
+  --bal-color-primary-4: #293485;
+  --bal-color-primary-3: #656ea8;
+  --bal-color-primary-2: #b3b6d4;
+  --bal-color-primary-1: #e5e7f0;
+  --bal-text-size-xxxxx-large-desktop: var(--bal-text-size-xxxxx-large-tablet);
+  --bal-text-size-xxxx-large-desktop: var(--bal-text-size-xxxx-large-tablet);
+  --bal-text-size-xxx-large-desktop: var(--bal-text-size-xxx-large-tablet);
+  --bal-text-size-xx-large-desktop: var(--bal-text-size-xx-large-tablet);
+  --bal-text-size-x-large-desktop: var(--bal-text-size-x-large-tablet);
+  --bal-text-size-large-desktop: var(--bal-text-size-large-tablet);
+  --bal-text-size-medium-desktop: var(--bal-text-size-medium-tablet);
+  --bal-text-size-normal-desktop: var(--bal-text-size-normal);
+  --bal-text-size-normal-tablet: var(--bal-text-size-normal);
+  --bal-text-size-small-desktop: var(--bal-text-size-small);
+  --bal-text-size-small-tablet: var(--bal-text-size-small);
+  --bal-text-size-x-small-desktop: var(--bal-text-size-x-small);
+  --bal-text-size-x-small-tablet: var(--bal-text-size-x-small);
+  --bal-space-large-tablet: var(--bal-space-large);
+  --bal-space-medium-tablet: var(--bal-space-medium);
+  --bal-space-normal-desktop: var(--bal-space-normal);
+  --bal-space-normal-tablet: var(--bal-space-normal);
+  --bal-space-small-desktop: var(--bal-space-small);
+  --bal-space-small-tablet: var(--bal-space-small);
+  --bal-space-x-small-desktop: var(--bal-space-x-small);
+  --bal-space-x-small-tablet: var(--bal-space-x-small);
+  --bal-space-xx-small-desktop: var(--bal-space-xx-small);
+  --bal-space-xx-small-tablet: var(--bal-space-xx-small);
+  --bal-column-gap: var(--bal-space-normal);
+  --bal-container-space-desktop: var(--bal-space-x-large-desktop); /* Default space on desktops of a container to left and right side. */
+  --bal-container-space-tablet: var(--bal-space-x-large-tablet); /* Default space on tablets of a container to left and right side. */
+  --bal-container-space: var(--bal-space-normal); /* Default space of a container to left and right side. */
+  --bal-color-text-inverted-pressed: var(--bal-color-info-3);
+  --bal-color-text-inverted-hovered: var(--bal-color-light-blue-2);
+  --bal-color-text-inverted-disabled: var(--bal-color-primary-3);
+  --bal-color-text-inverted: var(--bal-color-white);
+  --bal-color-text-danger-pressed: var(--bal-color-danger-6);
+  --bal-color-text-danger-hovered: var(--bal-color-danger-5);
+  --bal-color-text-primary-pressed: var(--bal-color-primary-6);
+  --bal-color-text-primary-hovered: var(--bal-color-light-blue-5);
+  --bal-color-text-black: var(--bal-color-black);
+  --bal-color-text-danger: var(--bal-color-danger-4);
+  --bal-color-text-success: var(--bal-color-success-4);
+  --bal-color-text-warning: var(--bal-color-warning-5);
+  --bal-color-text-info: var(--bal-color-info-4);
+  --bal-color-text-grey-dark: var(--bal-color-grey-6); /* Font color for disabled elements */
+  --bal-color-text-grey: var(--bal-color-grey-5); /* Font color for placeholders */
+  --bal-color-text-grey-light: var(--bal-color-grey-4); /* Font color for disabled texts */
+  --bal-color-text-white: var(--bal-color-white); /* Main font color for all headings and paragraphs on a dark background. */
+  --bal-color-text-primary-light: var(--bal-color-primary-3); /* Secondary font color for help messages. */
+  --bal-color-text-primary: var(--bal-color-primary-5); /* Main font color for all headings and paragraphs. */
+  --bal-color-shadow-focus-inverted-end: var(--bal-color-yellow-3);
+  --bal-color-shadow-focus-inverted-start: var(--bal-color-white);
+  --bal-color-shadow-focus-end: var(--bal-color-purple-6);
+  --bal-color-shadow-focus-start: var(--bal-color-white);
+  --bal-color-danger: var(--bal-color-danger-3);
+  --bal-color-warning: var(--bal-color-warning-3);
+  --bal-color-success: var(--bal-color-success-3);
+  --bal-color-info: var(--bal-color-info-3);
+  --bal-color-red: var(--bal-color-red-3);
+  --bal-color-yellow: var(--bal-color-yellow-3);
+  --bal-color-green: var(--bal-color-green-3);
+  --bal-color-purple: var(--bal-color-purple-3);
+  --bal-color-light-blue: var(--bal-color-light-blue-1);
+  --bal-color-grey: var(--bal-color-grey-3);
+  --bal-color-primary: var(--bal-color-primary-5);
+  --bal-color-border-inverted-primary-pressed: var(--bal-color-light-blue-4);
+  --bal-color-border-inverted-primary-hovered: var(--bal-color-light-blue-2);
+  --bal-color-border-inverted-primary: var(--bal-color-primary-4);
+  --bal-color-border-inverted-disabled: var(--bal-color-primary-3); /* Disabled. */
+  --bal-color-border-inverted: var(--bal-color-white); /* Default color on dark backgrounds. */
+  --bal-color-border-yellow-pressed: var(--bal-color-yellow-6);
+  --bal-color-border-yellow-hovered: var(--bal-color-yellow-5);
+  --bal-color-border-red-pressed: var(--bal-color-red-6);
+  --bal-color-border-red-hovered: var(--bal-color-red-5);
+  --bal-color-border-purple-pressed: var(--bal-color-purple-6);
+  --bal-color-border-purple-hovered: var(--bal-color-purple-5);
+  --bal-color-border-green-pressed: var(--bal-color-green-6);
+  --bal-color-border-green-hovered: var(--bal-color-green-5);
+  --bal-color-border-danger-pressed: var(--bal-color-danger-6);
+  --bal-color-border-danger-hovered: var(--bal-color-danger-5);
+  --bal-color-border-warning-pressed: var(--bal-color-warning-6);
+  --bal-color-border-warning-hovered: var(--bal-color-warning-5);
+  --bal-color-border-success-pressed: var(--bal-color-success-6);
+  --bal-color-border-success-hovered: var(--bal-color-success-5);
+  --bal-color-border-primary-pressed: var(--bal-color-primary-6);
+  --bal-color-border-primary-hovered: var(--bal-color-light-blue-5);
+  --bal-color-border-info-pressed: var(--bal-color-info-6);
+  --bal-color-border-info-hovered: var(--bal-color-info-5);
+  --bal-color-border-danger: var(--bal-color-danger-4); /* Use for invalid state. */
+  --bal-color-border-warning: var(--bal-color-warning-5); /* Use for warning/hint state. */
+  --bal-color-border-success: var(--bal-color-success-4); /* Use for valid state. */
+  --bal-color-border-info: var(--bal-color-info-4);
+  --bal-color-border-white: var(--bal-color-white); /* Default color on dark backgrounds. */
+  --bal-color-border-grey-dark: var(--bal-color-grey-4); /* Use for disabled state. */
+  --bal-color-border-grey: var(--bal-color-grey-3); /* Default border color */
+  --bal-color-border-grey-light: var(--bal-color-grey-2); /* Default input color or can be use for a divider */
+  --bal-color-border-primary-light: var(--bal-color-primary-3); /* Disabled or secondary color on dark backgrounds */
+  --bal-color-border-primary: var(--bal-color-primary-5); /* Use for focused or selected state. */
+  --bal-color-border: var(--bal-color-grey-3); /* Default border color */
+  --bal-color-background-danger: var(--bal-color-danger-3);
+  --bal-color-background-warning: var(--bal-color-warning-3);
+  --bal-color-background-success: var(--bal-color-success-3);
+  --bal-color-background-info: var(--bal-color-info-3);
+  --bal-color-background-disabled: var(--bal-color-grey-3);
+  --bal-color-background-grey: var(--bal-color-grey-3);
+  --bal-color-background-grey-light: var(--bal-color-grey-2);
+  --bal-color-background-white: var(--bal-color-white);
+  --bal-color-background-red: var(--bal-color-red-3); /* Use this background for call to action sections */
+  --bal-color-background-red-light: var(--bal-color-red-1); /* Default brand background color to use */
+  --bal-color-background-yellow: var(--bal-color-yellow-3); /* Use this background for call to action sections */
+  --bal-color-background-yellow-light: var(--bal-color-yellow-1); /* Default brand background color to use */
+  --bal-color-background-purple: var(--bal-color-purple-3); /* Use this background for call to action sections */
+  --bal-color-background-purple-light: var(--bal-color-purple-1); /* Default brand background color to use */
+  --bal-color-background-green: var(--bal-color-green-3); /* Use this background for call to action sections */
+  --bal-color-background-green-light: var(--bal-color-green-1); /* Default brand background color to use */
+  --bal-color-background-primary: var(--bal-color-primary-5); /* Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue. */
+}
+
+/**
+ * * @prop --bal-body-background: Body background color
+ * * @prop --bal-body-font-family: Body font family
+ * * @prop --bal-body-color: Body text color
+ * * @prop --bal-body-font-weight: Body text weight
+ * * @prop --bal-body-font-size: Body font size
+ * * @prop --bal-body-line-height: Body line height
+ * * @prop --bal-divider-background: Divider background color
+ * * @prop --bal-focus-shadow-start-color: Focus shadow start color
+ * * @prop --bal-focus-shadow-end-color: Focus shadow start end
+ * * @prop --bal-focus-shadow: Focus shadow
+ * * @prop --bal-focus-shadow-inset: Focus shadow inset
+ * * @prop --bal-focus-shadow-inverted-start-color: Focus shadow start color
+ * * @prop --bal-focus-shadow-inverted-end-color: Focus shadow end color
+ * * @prop --bal-focus-shadow-inverted: Focus shadow on a dark background
+ * * @prop --bal-focus-shadow-inverted-inset: Focus shadow on a dark background inset
+ * * @prop --bal-small-font-size: TBD
+ * * @prop --bal-strong-color: TBD
+ * * @prop --bal-strong-font-weight: TBD
+ * */
+:root {
+  --bal-body-background: var(--bal-color-text-white);
+  --bal-body-font-family: var(--bal-font-family-text);
+  --bal-body-color: var(--bal-color-text-primary);
+  --bal-body-font-weight: var(--bal-font-weight-regular);
+  --bal-body-font-size: 16px;
+  --bal-body-line-height: var(--bal-line-height-normal);
+  --bal-small-font-size: var(--bal-text-size-small);
+  --bal-strong-color: var(--bal-color-text-primary);
+  --bal-strong-font-weight: var(--bal-font-weight-bold);
+  --bal-divider-background: var(--bal-color-primary-2);
+  --bal-focus-shadow-start-color: var(--bal-color-white);
+  --bal-focus-shadow-end-color: var(--bal-color-purple-6);
+  --bal-focus-shadow: var(--bal-focus-shadow-start-color) 0 0 0 2px, var(--bal-focus-shadow-end-color) 0 0 0 5px;
+  --bal-focus-shadow-inset: inset var(--bal-focus-shadow-end-color) 0 0 0 3px, inset var(--bal-focus-shadow-start-color) 0 0 0 5px;
+  --bal-focus-shadow-inverted-start-color: var(--bal-color-white);
+  --bal-focus-shadow-inverted-end-color: var(--bal-color-yellow);
+  --bal-focus-shadow-inverted: var(--bal-focus-shadow-inverted-start-color) 0 0 0 2px, var(--bal-focus-shadow-inverted-end-color) 0 0 0 5px;
+  --bal-focus-shadow-inverted-inset: inset var(--bal-focus-shadow-inverted-end-color) 0 0 0 3px, inset var(--bal-focus-shadow-inverted-start-color) 0 0 0 5px;
+}
+
+/**
+ * * @prop --bal-title-font-family: Title font family
+ * * @prop --bal-title-font-weight: Title font weight
+ * * @prop --bal-subtitle-font-family: Subtitle font family
+ * * @prop --bal-subtitle-font-weight: Subtitle font weight
+ * */
+:root {
+  --bal-title-font-family: var(--bal-font-family-title);
+  --bal-title-font-weight: var(--bal-font-weight-bold);
+  --bal-subtitle-font-family: var(--bal-font-family-title);
+  --bal-subtitle-font-weight: var(--bal-font-weight-light);
+}
+
+/**
+ * * @prop --bal-link-color: Default link color
+ * * @prop --bal-link-color-hover: Link color on hover
+ * * @prop --bal-link-color-active: Link color on pressed
+ * * @prop --bal-link-font-weight: Default link font weight
+ * * @prop --bal-link-radius: Default link border radius
+ * * @prop --bal-link-text-decoration: Link text decoration
+ * * @prop --bal-link-text-underline-offset: Link decoration underline-offset 0.25rem
+ * * @prop --bal-link-text-decoration-thickness: Link decoration thickness 2px
+ * * @prop --bal-link-inverted-color: Link color on dark background
+ * * @prop --bal-link-inverted-color-hover: Link color on dark background when hovering
+ * * @prop --bal-link-inverted-color-active: Link color on dark background when pressing
+ * * @prop --bal-link-inverted-light-font-weight: Link font weight on dark background
+ * * @prop --bal-link-inverted-light-text-decoration: Link text-decoration on dark background
+ * */
+:root {
+  --bal-link-color: var(--bal-color-text-primary);
+  --bal-link-color-hover: var(--bal-color-text-primary-hovered);
+  --bal-link-color-active: var(--bal-color-text-primary-pressed);
+  --bal-link-font-weight: var(--bal-font-weight-bold);
+  --bal-link-radius: var(--bal-radius-normal);
+  --bal-link-background: transparent;
+  --bal-link-border-color: transparent;
+  --bal-link-text-decoration: underline;
+  --bal-link-text-underline-offset: 0.25rem;
+  --bal-link-text-decoration-thickness: var(--bal-border-width-normal);
+  --bal-link-inverted-color: var(--bal-color-text-inverted);
+  --bal-link-inverted-color-hover: var(--bal-color-text-inverted-hovered);
+  --bal-link-inverted-color-active: var(--bal-color-text-inverted-pressed);
+  --bal-link-inverted-light-font-weight: var(--bal-font-weight-regular);
+  --bal-link-inverted-light-text-decoration: none;
+}
+
+/**
+ * * @prop --bal-button-font-size: TBD
+ * * @prop --bal-button-line-height: TBD
+ * * @prop --bal-button-font-family: TBD
+ * * @prop --bal-button-font-weight: TBD
+ * * @prop --bal-button-radius: TBD
+ * * @prop --bal-button-border-style: TBD
+ * * @prop --bal-button-border-width: TBD
+ * * @prop --bal-button-border-color: TBD
+ * * @prop --bal-button-border-color-hover: TBD
+ * * @prop --bal-button-border-color-active: TBD
+ * * @prop --bal-button-color: TBD
+ * * @prop --bal-button-color-hover: TBD
+ * * @prop --bal-button-color-active: TBD
+ * * @prop --bal-button-background: TBD
+ * * @prop --bal-button-background-hover: TBD
+ * * @prop --bal-button-background-active: TBD
+ * * @prop --bal-button-small-font-size: TBD
+ * * @prop --bal-button-primary-color: TBD
+ * * @prop --bal-button-primary-color-hover: TBD
+ * * @prop --bal-button-primary-color-active: TBD
+ * * @prop --bal-button-primary-border-color: TBD
+ * * @prop --bal-button-primary-border-color-hover: TBD
+ * * @prop --bal-button-primary-border-color-active: TBD
+ * * @prop --bal-button-primary-background: TBD
+ * * @prop --bal-button-primary-background-hover: TBD
+ * * @prop --bal-button-primary-background-active: TBD
+ * * @prop --bal-button-text-border-color-hover: TBD
+ * * @prop --bal-button-text-border-color-active: TBD
+ * * @prop --bal-button-text-background-hover: TBD
+ * * @prop --bal-button-text-background-active: TBD
+ * * @prop --bal-button-light-color: TBD
+ * * @prop --bal-button-light-color-hover: TBD
+ * * @prop --bal-button-light-color-active: TBD
+ * * @prop --bal-button-light-border-color: TBD
+ * * @prop --bal-button-light-border-color-hover: TBD
+ * * @prop --bal-button-light-border-color-active: TBD
+ * * @prop --bal-button-light-background: TBD
+ * * @prop --bal-button-light-background-hover: TBD
+ * * @prop --bal-button-light-background-active: TBD
+ * * @prop --bal-button-success-color: TBD
+ * * @prop --bal-button-success-color-hover: TBD
+ * * @prop --bal-button-success-color-active: TBD
+ * * @prop --bal-button-success-border-color: TBD
+ * * @prop --bal-button-success-border-color-hover: TBD
+ * * @prop --bal-button-success-border-color-active: TBD
+ * * @prop --bal-button-success-background: TBD
+ * * @prop --bal-button-success-background-hover: TBD
+ * * @prop --bal-button-success-background-active: TBD
+ * * @prop --bal-button-warning-color: TBD
+ * * @prop --bal-button-warning-color-hover: TBD
+ * * @prop --bal-button-warning-color-active: TBD
+ * * @prop --bal-button-warning-border-color: TBD
+ * * @prop --bal-button-warning-border-color-hover: TBD
+ * * @prop --bal-button-warning-border-color-active: TBD
+ * * @prop --bal-button-warning-background: TBD
+ * * @prop --bal-button-warning-background-hover: TBD
+ * * @prop --bal-button-warning-background-active: TBD
+ * * @prop --bal-button-danger-color: TBD
+ * * @prop --bal-button-danger-color-hover: TBD
+ * * @prop --bal-button-danger-color-active: TBD
+ * * @prop --bal-button-danger-border-color: TBD
+ * * @prop --bal-button-danger-border-color-hover: TBD
+ * * @prop --bal-button-danger-border-color-active: TBD
+ * * @prop --bal-button-danger-background: TBD
+ * * @prop --bal-button-danger-background-hover: TBD
+ * * @prop --bal-button-danger-background-active: TBD
+ * * @prop --bal-button-disabled-color: TBD
+ * * @prop --bal-button-disabled-border-color: TBD
+ * * @prop --bal-button-disabled-background: TBD
+ * * @prop --bal-button-inverted-color: TBD
+ * * @prop --bal-button-inverted-color-hover: TBD
+ * * @prop --bal-button-inverted-color-active: TBD
+ * * @prop --bal-button-inverted-border-color: TBD
+ * * @prop --bal-button-inverted-border-color-hover: TBD
+ * * @prop --bal-button-inverted-border-color-active: TBD
+ * * @prop --bal-button-inverted-background: TBD
+ * * @prop --bal-button-inverted-background-hover: TBD
+ * * @prop --bal-button-inverted-background-active: TBD
+ * * @prop --bal-button-inverted-primary-color: TBD
+ * * @prop --bal-button-inverted-primary-color-hover: TBD
+ * * @prop --bal-button-inverted-primary-color-active: TBD
+ * * @prop --bal-button-inverted-primary-border-color: TBD
+ * * @prop --bal-button-inverted-primary-border-color-hover: TBD
+ * * @prop --bal-button-inverted-primary-border-color-active: TBD
+ * * @prop --bal-button-inverted-primary-background: TBD
+ * * @prop --bal-button-inverted-primary-background-hover: TBD
+ * * @prop --bal-button-inverted-primary-background-active: TBD
+ * * @prop --bal-button-inverted-text-color: TBD
+ * * @prop --bal-button-inverted-text-color-hover: TBD
+ * * @prop --bal-button-inverted-text-color-active: TBD
+ * * @prop --bal-button-inverted-text-border-color: TBD
+ * * @prop --bal-button-inverted-text-border-color-hover: TBD
+ * * @prop --bal-button-inverted-text-border-color-active: TBD
+ * * @prop --bal-button-inverted-text-background: TBD
+ * * @prop --bal-button-inverted-text-background-hover: TBD
+ * * @prop --bal-button-inverted-text-background-active: TBD
+ * * @prop --bal-button-inverted-light-color: TBD
+ * * @prop --bal-button-inverted-light-color-hover: TBD
+ * * @prop --bal-button-inverted-light-color-active: TBD
+ * * @prop --bal-button-inverted-light-border-color: TBD
+ * * @prop --bal-button-inverted-light-border-color-hover: TBD
+ * * @prop --bal-button-inverted-light-border-color-active: TBD
+ * * @prop --bal-button-inverted-light-background: TBD
+ * * @prop --bal-button-inverted-light-background-hover: TBD
+ * * @prop --bal-button-inverted-light-background-active: TBD
+ * */
+:root {
+  --bal-button-font-size: var(--bal-text-size-normal);
+  --bal-button-line-height: var(--bal-line-height-normal);
+  --bal-button-font-family: var(--bal-font-family-title);
+  --bal-button-font-weight: var(--bal-font-weight-bold);
+  --bal-button-radius: var(--bal-radius-normal);
+  --bal-button-border-style: solid;
+  --bal-button-border-width: var(--bal-border-width-normal);
+  --bal-button-border-color: var(--bal-color-border-primary);
+  --bal-button-border-color-hover: var(--bal-color-border-primary-hovered);
+  --bal-button-border-color-active: var(--bal-color-border-primary-pressed);
+  --bal-button-color: var(--bal-color-text-primary);
+  --bal-button-color-hover: var(--bal-color-text-primary-hovered);
+  --bal-button-color-active: var(--bal-color-text-primary-pressed);
+  --bal-button-background: transparent;
+  --bal-button-background-hover: var(--bal-color-light-blue);
+  --bal-button-background-active: var(--bal-color-light-blue);
+  --bal-button-small-font-size: var(--bal-text-size-small);
+  --bal-button-primary-color: var(--bal-color-text-white);
+  --bal-button-primary-color-hover: var(--bal-color-text-white);
+  --bal-button-primary-color-active: var(--bal-color-text-white);
+  --bal-button-primary-border-color: var(--bal-color-border-primary);
+  --bal-button-primary-border-color-hover: var(--bal-color-border-primary-hovered);
+  --bal-button-primary-border-color-active: var(--bal-color-border-primary-pressed);
+  --bal-button-primary-background: var(--bal-color-primary);
+  --bal-button-primary-background-hover: var(--bal-color-light-blue-5);
+  --bal-button-primary-background-active: var(--bal-color-primary-6);
+  --bal-button-text-border-color-hover: var(--bal-color-light-blue);
+  --bal-button-text-border-color-active: var(--bal-color-light-blue);
+  --bal-button-text-background-hover: var(--bal-color-light-blue);
+  --bal-button-text-background-active: var(--bal-color-light-blue);
+  --bal-button-light-color: var(--bal-color-text-primary);
+  --bal-button-light-color-hover: var(--bal-color-text-primary);
+  --bal-button-light-color-active: var(--bal-color-text-primary);
+  --bal-button-light-border-color: var(--bal-color-grey-2);
+  --bal-button-light-border-color-hover: var(--bal-color-light-blue-1);
+  --bal-button-light-border-color-active: var(--bal-color-light-blue-2);
+  --bal-button-light-background: var(--bal-color-grey-2);
+  --bal-button-light-background-hover: var(--bal-color-light-blue-1);
+  --bal-button-light-background-active: var(--bal-color-light-blue-2);
+  --bal-button-tertiary-purple-color: var(--bal-color-text-primary);
+  --bal-button-tertiary-purple-color-hover: var(--bal-color-text-primary);
+  --bal-button-tertiary-purple-color-active: var(--bal-color-text-primary-pressed);
+  --bal-button-tertiary-purple-border-color: var(--bal-color-purple-1);
+  --bal-button-tertiary-purple-border-color-hover: var(--bal-color-purple-5);
+  --bal-button-tertiary-purple-border-color-active: var(--bal-color-purple-6);
+  --bal-button-tertiary-purple-background: var(--bal-color-purple-1);
+  --bal-button-tertiary-purple-background-hover: var(--bal-color-purple-1);
+  --bal-button-tertiary-purple-background-active: var(--bal-color-purple-1);
+  --bal-button-tertiary-red-color: var(--bal-color-text-primary);
+  --bal-button-tertiary-red-color-hover: var(--bal-color-text-primary);
+  --bal-button-tertiary-red-color-active: var(--bal-color-text-primary-pressed);
+  --bal-button-tertiary-red-border-color: var(--bal-color-red-1);
+  --bal-button-tertiary-red-border-color-hover: var(--bal-color-red-5);
+  --bal-button-tertiary-red-border-color-active: var(--bal-color-red-6);
+  --bal-button-tertiary-red-background: var(--bal-color-red-1);
+  --bal-button-tertiary-red-background-hover: var(--bal-color-red-1);
+  --bal-button-tertiary-red-background-active: var(--bal-color-red-1);
+  --bal-button-tertiary-yellow-color: var(--bal-color-text-primary);
+  --bal-button-tertiary-yellow-color-hover: var(--bal-color-text-primary);
+  --bal-button-tertiary-yellow-color-active: var(--bal-color-text-primary-pressed);
+  --bal-button-tertiary-yellow-border-color: var(--bal-color-yellow-1);
+  --bal-button-tertiary-yellow-border-color-hover: var(--bal-color-yellow-5);
+  --bal-button-tertiary-yellow-border-color-active: var(--bal-color-yellow-6);
+  --bal-button-tertiary-yellow-background: var(--bal-color-yellow-1);
+  --bal-button-tertiary-yellow-background-hover: var(--bal-color-yellow-1);
+  --bal-button-tertiary-yellow-background-active: var(--bal-color-yellow-1);
+  --bal-button-tertiary-green-color: var(--bal-color-text-primary);
+  --bal-button-tertiary-green-color-hover: var(--bal-color-text-primary);
+  --bal-button-tertiary-green-color-active: var(--bal-color-text-primary-pressed);
+  --bal-button-tertiary-green-border-color: var(--bal-color-green-1);
+  --bal-button-tertiary-green-border-color-hover: var(--bal-color-green-5);
+  --bal-button-tertiary-green-border-color-active: var(--bal-color-green-6);
+  --bal-button-tertiary-green-background: var(--bal-color-green-1);
+  --bal-button-tertiary-green-background-hover: var(--bal-color-green-1);
+  --bal-button-tertiary-green-background-active: var(--bal-color-green-1);
+  --bal-button-success-color: var(--bal-color-text-primary);
+  --bal-button-success-color-hover: var(--bal-color-text-white);
+  --bal-button-success-color-active: var(--bal-color-text-white);
+  --bal-button-success-border-color: var(--bal-color-success-5);
+  --bal-button-success-border-color-hover: var(--bal-color-success-5);
+  --bal-button-success-border-color-active: var(--bal-color-success-6);
+  --bal-button-success-background: var(--bal-color-success-1);
+  --bal-button-success-background-hover: var(--bal-color-success-5);
+  --bal-button-success-background-active: var(--bal-color-success-6);
+  --bal-button-warning-color: var(--bal-color-text-primary);
+  --bal-button-warning-color-hover: var(--bal-color-text-primary);
+  --bal-button-warning-color-active: var(--bal-color-text-primary);
+  --bal-button-warning-border-color: var(--bal-color-warning-5);
+  --bal-button-warning-border-color-hover: var(--bal-color-warning-3);
+  --bal-button-warning-border-color-active: var(--bal-color-warning-4);
+  --bal-button-warning-background: var(--bal-color-warning-1);
+  --bal-button-warning-background-hover: var(--bal-color-warning-3);
+  --bal-button-warning-background-active: var(--bal-color-warning-4);
+  --bal-button-danger-color: var(--bal-color-text-primary);
+  --bal-button-danger-color-hover: var(--bal-color-text-white);
+  --bal-button-danger-color-active: var(--bal-color-text-white);
+  --bal-button-danger-border-color: var(--bal-color-danger-5);
+  --bal-button-danger-border-color-hover: var(--bal-color-danger-5);
+  --bal-button-danger-border-color-active: var(--bal-color-danger-6);
+  --bal-button-danger-background: var(--bal-color-danger-1);
+  --bal-button-danger-background-hover: var(--bal-color-danger-5);
+  --bal-button-danger-background-active: var(--bal-color-danger-6);
+  --bal-button-disabled-color: var(--bal-color-text-grey);
+  --bal-button-disabled-border-color: var(--bal-color-grey);
+  --bal-button-disabled-background: var(--bal-color-grey);
+  --bal-button-inverted-color: var(--bal-color-text-white);
+  --bal-button-inverted-color-hover: var(--bal-color-text-white);
+  --bal-button-inverted-color-active: var(--bal-color-text-white);
+  --bal-button-inverted-border-color: var(--bal-color-border-inverted);
+  --bal-button-inverted-border-color-hover: var(--bal-color-light-blue-3);
+  --bal-button-inverted-border-color-active: var(--bal-color-light-blue-5);
+  --bal-button-inverted-background: transparent;
+  --bal-button-inverted-background-hover: var(--bal-color-primary-3);
+  --bal-button-inverted-background-active: var(--bal-color-primary-3);
+  --bal-button-inverted-primary-color: var(--bal-color-text-primary);
+  --bal-button-inverted-primary-color-hover: var(--bal-color-text-primary);
+  --bal-button-inverted-primary-color-active: var(--bal-color-text-white);
+  --bal-button-inverted-primary-border-color: var(--bal-color-border-inverted);
+  --bal-button-inverted-primary-border-color-hover: var(--bal-color-light-blue-2);
+  --bal-button-inverted-primary-border-color-active: var(--bal-color-light-blue-5);
+  --bal-button-inverted-primary-background: var(--bal-color-white);
+  --bal-button-inverted-primary-background-hover: var(--bal-color-light-blue-2);
+  --bal-button-inverted-primary-background-active: var(--bal-color-light-blue-5);
+  --bal-button-inverted-text-color: var(--bal-color-text-white);
+  --bal-button-inverted-text-color-hover: var(--bal-color-light-blue-2);
+  --bal-button-inverted-text-color-active: var(--bal-color-info-3);
+  --bal-button-inverted-text-border-color: transparent;
+  --bal-button-inverted-text-border-color-hover: transparent;
+  --bal-button-inverted-text-border-color-active: transparent;
+  --bal-button-inverted-text-background: transparent;
+  --bal-button-inverted-text-background-hover: transparent;
+  --bal-button-inverted-text-background-active: transparent;
+  --bal-button-inverted-light-color: var(--bal-color-text-white);
+  --bal-button-inverted-light-color-hover: var(--bal-color-text-primary);
+  --bal-button-inverted-light-color-active: var(--bal-color-text-primary);
+  --bal-button-inverted-light-border-color: var(--bal-color-primary-4);
+  --bal-button-inverted-light-border-color-hover: var(--bal-color-light-blue-2);
+  --bal-button-inverted-light-border-color-active: var(--bal-color-white);
+  --bal-button-inverted-light-background: var(--bal-color-primary-4);
+  --bal-button-inverted-light-background-hover: var(--bal-color-light-blue-2);
+  --bal-button-inverted-light-background-active: var(--bal-color-white);
+}
+
+/**
+ * * @prop --bal-form-field-control-font-size: TBD
+ * * @prop --bal-form-field-control-font-family: TBD
+ * * @prop --bal-form-field-control-color: TBD
+ * * @prop --bal-form-field-control-placeholder-color: TBD
+ * * @prop --bal-form-field-control-radius: TBD
+ * * @prop --bal-form-field-control-background: TBD
+ * * @prop --bal-form-field-control-background-hover: TBD
+ * * @prop --bal-form-field-control-background-active: TBD
+ * * @prop --bal-form-field-control-border-width: TBD
+ * * @prop --bal-form-field-control-border-style: TBD
+ * * @prop --bal-form-field-control-border-color: TBD
+ * * @prop --bal-form-field-control-border-color-hover: TBD
+ * * @prop --bal-form-field-control-border-color-active: TBD
+ * * @prop --bal-form-field-control-success-background: TBD
+ * * @prop --bal-form-field-control-success-background-hover: TBD
+ * * @prop --bal-form-field-control-success-background-active: TBD
+ * * @prop --bal-form-field-control-success-border-color: TBD
+ * * @prop --bal-form-field-control-success-border-color-hover: TBD
+ * * @prop --bal-form-field-control-success-border-color-active: TBD
+ * * @prop --bal-form-field-control-danger-background: TBD
+ * * @prop --bal-form-field-control-danger-background-hover: TBD
+ * * @prop --bal-form-field-control-danger-background-active: TBD
+ * * @prop --bal-form-field-control-danger-border-color: TBD
+ * * @prop --bal-form-field-control-danger-border-color-hover: TBD
+ * * @prop --bal-form-field-control-danger-border-color-active: TBD
+ * * @prop --bal-form-field-control-disabled-color: TBD
+ * * @prop --bal-form-field-control-disabled-background: TBD
+ * * @prop --bal-form-field-control-disabled-border-color: TBD
+ * * @prop --bal-form-field-label-font-size: TBD
+ * * @prop --bal-form-field-label-line-height: TBD
+ * * @prop --bal-form-field-label-font-weight: TBD
+ * * @prop --bal-form-field-label-font-family: TBD
+ * * @prop --bal-form-field-label-margin-bottom: TBD
+ * * @prop --bal-form-field-label-color-hover: TBD
+ * * @prop --bal-form-field-label-color-active: TBD
+ * * @prop --bal-form-field-label-success-color: TBD
+ * * @prop --bal-form-field-label-danger-color: TBD
+ * * @prop --bal-form-field-label-danger-color-hover: TBD
+ * * @prop --bal-form-field-label-danger-color-active: TBD
+ * * @prop --bal-form-field-label-disabled-color TBD
+ * * @prop --bal-form-field-message-font-size: TBD
+ * * @prop --bal-form-field-message-font-weight: TBD
+ * * @prop --bal-form-field-message-color: TBD
+ * * @prop --bal-form-field-message-color-hover: TBD
+ * * @prop --bal-form-field-message-color-active: TBD
+ * * @prop --bal-form-field-message-font-weight: TBD
+ * * @prop --bal-form-field-message-success-color: TBD
+ * * @prop --bal-form-field-message-danger-color: TBD
+ * * @prop --bal-form-field-message-disabled-color: TBD
+ * * @prop --bal-form-field-icon-color: TBD
+ * * @prop --bal-form-field-icon-color-hover: TBD
+ * * @prop --bal-form-field-icon-color-active: TBD
+ * * @prop --bal-form-field-icon-success-color: TBD
+ * * @prop --bal-form-field-icon-danger-color: TBD
+ * * @prop --bal-form-field-icon-disabled-color: TBD
+ * * @prop --bal-file-label-color: TBD
+ * * @prop --bal-file-label-color-hover: TBD
+ * * @prop --bal-file-label-color-active: TBD
+ * * @prop --bal-file-border-style: TBD
+ * * @prop --bal-file-label-disabled-color: TBD
+ * */
+:root {
+  --bal-form-field-control-font-size: var(--bal-text-size-normal);
+  --bal-form-field-control-font-family: var(--bal-font-family-text);
+  --bal-form-field-control-color: var(--bal-color-text-primary);
+  --bal-form-field-control-placeholder-color: var(--bal-color-text-primary-light);
+  --bal-form-field-control-radius: var(--bal-radius-normal);
+  --bal-form-field-control-background: var(--bal-color-white);
+  --bal-form-field-control-background-hover: var(--bal-color-grey-1);
+  --bal-form-field-control-background-active: var(--bal-color-grey-1);
+  --bal-form-field-control-border-width: var(--bal-border-width-normal);
+  --bal-form-field-control-border-style: solid;
+  --bal-form-field-control-border-color: var(--bal-color-border);
+  --bal-form-field-control-border-color-hover: var(--bal-form-field-control-border-color);
+  --bal-form-field-control-border-color-active: var(--bal-color-border-primary);
+  --bal-form-field-control-success-background: var(--bal-color-success-1);
+  --bal-form-field-control-success-background-hover: var(--bal-color-success-1);
+  --bal-form-field-control-success-background-active: var(--bal-color-success-1);
+  --bal-form-field-control-success-border-color: var(--bal-color-border-success);
+  --bal-form-field-control-success-border-color-hover: var(--bal-form-field-control-border-color);
+  --bal-form-field-control-success-border-color-active: var(--bal-color-border-primary);
+  --bal-form-field-control-danger-background: var(--bal-color-danger-1);
+  --bal-form-field-control-danger-background-hover: var(--bal-color-danger-1);
+  --bal-form-field-control-danger-background-active: var(--bal-color-danger-1);
+  --bal-form-field-control-danger-border-color: var(--bal-color-border-danger);
+  --bal-form-field-control-danger-border-color-hover: var(--bal-form-field-control-border-color);
+  --bal-form-field-control-danger-border-color-active: var(--bal-color-border-primary);
+  --bal-form-field-control-disabled-color: var(--bal-color-text-grey-dark);
+  --bal-form-field-control-disabled-background: var(--bal-color-grey-2);
+  --bal-form-field-control-disabled-border-color: var(--bal-color-border-grey-dark);
+  --bal-form-field-label-font-size: var(--bal-text-size-small);
+  --bal-form-field-label-line-height: var(--bal-line-height-small);
+  --bal-form-field-label-font-weight: var(--bal-font-weight-bold);
+  --bal-form-field-label-font-family: var(--bal-font-family-text);
+  --bal-form-field-label-margin-bottom: 0.25rem;
+  --bal-form-field-label-color-hover: var(--bal-link-color-hover);
+  --bal-form-field-label-color-active: var(--bal-link-color-active);
+  --bal-form-field-label-success-color: var(--bal-color-text-success);
+  --bal-form-field-label-danger-color: var(--bal-color-text-danger);
+  --bal-form-field-label-danger-color-hover: var(--bal-color-text-danger-hovered);
+  --bal-form-field-label-danger-color-active: var(--bal-color-text-danger-pressed);
+  --bal-form-field-label-disabled-color: var(--bal-color-text-grey);
+  --bal-form-field-message-font-size: var(--bal-text-size-x-small);
+  --bal-form-field-message-font-weight: var(--bal-font-weight-regular);
+  --bal-form-field-message-color: var(--bal-color-text-primary-light);
+  --bal-form-field-message-color-hover: var(--bal-link-color-hover);
+  --bal-form-field-message-color-active: var(--bal-link-color-active);
+  --bal-form-field-message-font-weight: var(--bal-font-weight-regular);
+  --bal-form-field-message-success-color: var(--bal-color-text-success);
+  --bal-form-field-message-danger-color: var(--bal-color-text-danger);
+  --bal-form-field-message-disabled-color: var(--bal-color-text-grey);
+  --bal-form-field-icon-color: var(--bal-link-color);
+  --bal-form-field-icon-color-hover: var(--bal-link-color-hover);
+  --bal-form-field-icon-color-active: var(--bal-link-color-active);
+  --bal-form-field-icon-success-color: var(--bal-color-text-success);
+  --bal-form-field-icon-danger-color: var(--bal-color-text-danger);
+  --bal-form-field-icon-disabled-color: var(--bal-color-text-grey);
+  --bal-file-label-color: var(--bal-link-color);
+  --bal-file-label-color-hover: var(--bal-link-color-hover);
+  --bal-file-label-color-active: var(--bal-link-color-active);
+  --bal-file-border-style: dashed;
+  --bal-file-label-disabled-color: var(--bal-color-text-grey-dark);
+}
+
+/**
+ * * @prop --bal-list-marker-color: Color of the list marker symbol
+ * * @prop --bal-list-marker-inverted-color: Color of the list marker symbol on a dark background
+ * * @prop --bal-list-bullet-radius: Radius of the custom bullet
+ * * @prop --bal-list-bullet-background: Background color of the custom bullet
+ * * @prop --bal-list-bullet-background-green: Green background color of the custom bullet
+ * * @prop --bal-list-bullet-background-red: Red background color of the custom bullet
+ * * @prop --bal-list-bullet-background-yellow: Yellow background color of the custom bullet
+ * * @prop --bal-list-bullet-background-purple: Purple background color of the custom bullet
+ * */
+:root {
+  --bal-list-marker-color: var(--bal-color-primary);
+  --bal-list-marker-inverted-color: var(--bal-color-white);
+  --bal-list-bullet-radius: var(--bal-radius-rounded);
+  --bal-list-bullet-background: var(--bal-color-green-3);
+  --bal-list-bullet-background-green: var(--bal-color-green-3);
+  --bal-list-bullet-background-red: var(--bal-color-red-3);
+  --bal-list-bullet-background-yellow: var(--bal-color-yellow-3);
+  --bal-list-bullet-background-purple: var(--bal-color-purple-3);
+  --bal-description-list-grid-term: 1fr;
+  --bal-description-list-grid-detail: 1fr;
+  --bal-description-list-row-gap: var(--bal-space-xx-small);
+  --bal-description-list-column-gap: var(--bal-space-normal);
+  --bal-description-list-term-color: var(--bal-color-text-primary-light);
+  --bal-description-list-term-font-weight: var(--bal-font-weight-regular);
+  --bal-description-list-detail-color: var(--bal-color-text-primary);
+  --bal-description-list-detail-font-weight: var(--bal-font-weight-regular);
+}
+
+/**
+ * * @prop --bal-table-color: Tables default font color
+ * * @prop --bal-table-background-color: Tables default background color
+ * * @prop --bal-table-body-background-color: Table body background
+ * * @prop --bal-table-cell-border: Table cell border
+ * * @prop --bal-table-cell-border-width: Table cell border width
+ * * @prop --bal-table-cell-padding: Table cell padding
+ * * @prop --bal-table-cell-heading-color: Table cell heading color
+ * * @prop --bal-table-head-cell-border-width: Table head cell border width
+ * * @prop --bal-table-head-cell-border-color: Table head cell border color
+ * * @prop --bal-table-head-cell-color: Table head cell color
+ * * @prop --bal-table-head-background-color: Table head cell background
+ * * @prop --bal-table-head-font-size:  Table head cell font size backgound
+ * * @prop --bal-table-head-font-family: Table head cell font family
+ * * @prop --bal-table-foot-cell-border-width: Table foot cell border width
+ * * @prop --bal-table-foot-cell-color: Table foot cell color
+ * * @prop --bal-table-foot-background-color: Table foot cell background
+ * * @prop --bal-table-row-background-color-hover: Table row hover background
+ * * @prop --bal-table-row-background-color-active: Table row pressed background
+ * * @prop --bal-table-row-color-active: Table row pressed font color
+ * * @prop --bal-table-striped-row-even-background-color: Table row striped background
+ * * @prop --bal-table-striped-row-even-background-color-hover: Table row striped background on hover
+ * */
+:root {
+  --bal-table-color: var(--bal-color-primary);
+  --bal-table-background-color: var(--bal-color-white);
+  --bal-table-body-background-color: transparent;
+  --bal-table-cell-border-color: var(--bal-color-border);
+  --bal-table-cell-border: 2px solid var(--bal-table-cell-border-color);
+  --bal-table-cell-border-width: 0 0 2px;
+  --bal-table-cell-padding: 0.5em 0.75em;
+  --bal-table-cell-heading-color: var(--bal-color-primary);
+  --bal-table-head-cell-border-width: 0 0 1px;
+  --bal-table-head-cell-border-color: var(--bal-color-primary);
+  --bal-table-head-cell-color: var(--bal-color-primary);
+  --bal-table-head-background-color: transparent;
+  --bal-table-head-font-size: var(--bal-text-size-normal);
+  --bal-table-head-font-family: var(--bal-font-family-text);
+  --bal-table-foot-cell-border-width: 0 0 0;
+  --bal-table-foot-cell-color: var(--bal-color-primary);
+  --bal-table-foot-background-color: transparent;
+  --bal-table-row-background-color-hover: var(--bal-color-grey-2);
+  --bal-table-row-background-color-active: var(--bal-color-primary-1);
+  --bal-table-row-color-active: var(--bal-color-primary);
+  --bal-table-striped-row-even-background-color: var(--bal-color-grey-1);
+  --bal-table-striped-row-even-background-color-hover: var(--bal-color-grey-2);
+}
+
+.select select, .input, .textarea {
+  justify-content: flex-start;
+  background-color: var(--bal-form-field-control-background);
+  border-color: var(--bal-form-field-control-border-color);
+  border-style: var(--bal-form-field-control-border-style);
+  border-radius: var(--bal-form-field-control-radius);
+  color: var(--bal-form-field-control-color);
+}
+.select select::-moz-placeholder, .input::-moz-placeholder, .textarea::-moz-placeholder {
+  color: var(--bal-form-field-control-placeholder-color);
+}
+.select select::-webkit-input-placeholder, .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder {
+  color: var(--bal-form-field-control-placeholder-color);
+}
+.select select:-moz-placeholder, .input:-moz-placeholder, .textarea:-moz-placeholder {
+  color: var(--bal-form-field-control-placeholder-color);
+}
+.select select:-ms-input-placeholder, .input:-ms-input-placeholder, .textarea:-ms-input-placeholder {
+  color: var(--bal-form-field-control-placeholder-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .select select:hover, .input:hover, .textarea:hover, .select select.is-hovered, .is-hovered.input, .is-hovered.textarea {
+    border-color: var(--bal-form-field-control-border-color-hover);
+    background-color: var(--bal-form-field-control-background-hover);
+  }
+}
+.select select.bal-focused, .bal-focused.input, .bal-focused.textarea, .select select:focus, .input:focus, .textarea:focus, .select select.is-focused, .is-focused.input, .is-focused.textarea, .select select:active, .input:active, .textarea:active, .select select.is-active, .is-active.input, .is-active.textarea {
+  border-color: var(--bal-form-field-control-border-color-active);
+  background-color: var(--bal-form-field-control-background-active);
+}
+.select select[disabled], [disabled].input, [disabled].textarea, fieldset[disabled] .select select, .select fieldset[disabled] select, fieldset[disabled] .input, fieldset[disabled] .textarea {
+  background-color: var(--bal-form-field-control-disabled-background);
+  border-color: var(--bal-form-field-control-disabled-border-color);
+  box-shadow: none;
+  color: var(--bal-form-field-control-disabled-color);
+}
+.select select[disabled]::-moz-placeholder, [disabled].input::-moz-placeholder, [disabled].textarea::-moz-placeholder, fieldset[disabled] .select select::-moz-placeholder, .select fieldset[disabled] select::-moz-placeholder, fieldset[disabled] .input::-moz-placeholder, fieldset[disabled] .textarea::-moz-placeholder {
+  color: var(--bal-form-field-control-disabled-color);
+}
+.select select[disabled]::-webkit-input-placeholder, [disabled].input::-webkit-input-placeholder, [disabled].textarea::-webkit-input-placeholder, fieldset[disabled] .select select::-webkit-input-placeholder, .select fieldset[disabled] select::-webkit-input-placeholder, fieldset[disabled] .input::-webkit-input-placeholder, fieldset[disabled] .textarea::-webkit-input-placeholder {
+  color: var(--bal-form-field-control-disabled-color);
+}
+.select select[disabled]:-moz-placeholder, [disabled].input:-moz-placeholder, [disabled].textarea:-moz-placeholder, fieldset[disabled] .select select:-moz-placeholder, .select fieldset[disabled] select:-moz-placeholder, fieldset[disabled] .input:-moz-placeholder, fieldset[disabled] .textarea:-moz-placeholder {
+  color: var(--bal-form-field-control-disabled-color);
+}
+.select select[disabled]:-ms-input-placeholder, [disabled].input:-ms-input-placeholder, [disabled].textarea:-ms-input-placeholder, fieldset[disabled] .select select:-ms-input-placeholder, .select fieldset[disabled] select:-ms-input-placeholder, fieldset[disabled] .input:-ms-input-placeholder, fieldset[disabled] .textarea:-ms-input-placeholder {
+  color: var(--bal-form-field-control-disabled-color);
+}
+
+.file-cta, .select select, .input, .textarea {
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  align-items: center;
+  border-width: var(--bal-border-width-normal);
+  border-color: var(--bal-color-border);
+  border-radius: var(--bal-radius-normal);
+  box-shadow: none;
+  display: inline-flex;
+  font-size: var(--bal-text-size-normal);
+  min-height: 3rem;
+  height: 3rem;
+  line-height: 1.5;
+  padding-left: calc(0.75em - var(--bal-border-width-normal));
+  padding-right: calc(0.75em - var(--bal-border-width-normal));
+  position: relative;
+  vertical-align: top;
+}
+.file-cta:focus, .select select:focus, .input:focus, .textarea:focus, .is-focused.file-cta, .select select.is-focused, .is-focused.input, .is-focused.textarea, .file-cta:active, .select select:active, .input:active, .textarea:active, .is-active.file-cta, .select select.is-active, .is-active.input, .is-active.textarea {
+  outline: none;
+}
+[disabled].file-cta, .select select[disabled], [disabled].input, [disabled].textarea, fieldset[disabled] .file-cta, fieldset[disabled] .select select, .select fieldset[disabled] select, fieldset[disabled] .input, fieldset[disabled] .textarea {
+  cursor: default;
+}
+
+.textarea, .input {
+  max-width: 100%;
+  width: 100%;
+}
+[readonly].textarea, [readonly].input {
+  box-shadow: none;
+}
+.is-fullwidth.textarea, .is-fullwidth.input {
+  display: block;
+  width: 100%;
+}
+.is-inline.textarea, .is-inline.input {
+  display: inline;
+  width: auto;
+}
+
+.textarea {
+  display: block;
+  max-width: 100%;
+  min-width: 100%;
+  resize: vertical;
+  padding: calc(0.75em - 2px);
+}
+.textarea:not([rows]) {
+  max-height: 40em;
+  min-height: 8em;
+}
+.textarea[rows] {
+  height: initial;
+}
+.textarea.has-fixed-size {
+  resize: none;
+}
+
+input.input,
+textarea.textarea {
+  border-width: 2px;
+  border-radius: var(--bal-form-field-control-radius);
+  font-size: var(--bal-form-field-control-font-size);
+  font-family: var(--bal-form-field-control-font-family);
+  color: var(--bal-form-field-control-color);
+  outline: none;
+  box-shadow: none;
+}
+input.input.is-danger,
+textarea.textarea.is-danger {
+  border-color: var(--bal-form-field-control-danger-border-color);
+  background: var(--bal-form-field-control-danger-background);
+}
+input.input.is-danger.bal-focused, input.input.is-danger:focus, input.input.is-danger.is-focused, input.input.is-danger:active, input.input.is-danger.is-active,
+textarea.textarea.is-danger.bal-focused,
+textarea.textarea.is-danger:focus,
+textarea.textarea.is-danger.is-focused,
+textarea.textarea.is-danger:active,
+textarea.textarea.is-danger.is-active {
+  border-color: var(--bal-form-field-control-border-color-active);
+}
+input.input.is-success,
+textarea.textarea.is-success {
+  border-color: var(--bal-form-field-control-success-border-color);
+  background: var(--bal-form-field-control-success-background);
+}
+input.input.is-success.bal-focused, input.input.is-success:focus, input.input.is-success.is-focused, input.input.is-success:active, input.input.is-success.is-active,
+textarea.textarea.is-success.bal-focused,
+textarea.textarea.is-success:focus,
+textarea.textarea.is-success.is-focused,
+textarea.textarea.is-success:active,
+textarea.textarea.is-success.is-active {
+  border-color: var(--bal-form-field-control-border-color-active);
+}
+input.input.is-warning,
+textarea.textarea.is-warning {
+  border-color: var(--bal-color-border-warning);
+  background: var(--bal-color-warning-1);
+}
+input.input.is-warning.bal-focused, input.input.is-warning:focus, input.input.is-warning.is-focused, input.input.is-warning:active, input.input.is-warning.is-active,
+textarea.textarea.is-warning.bal-focused,
+textarea.textarea.is-warning:focus,
+textarea.textarea.is-warning.is-focused,
+textarea.textarea.is-warning:active,
+textarea.textarea.is-warning.is-active {
+  border-color: var(--bal-form-field-control-border-color-active);
+}
+input.input.is-disabled,
+textarea.textarea.is-disabled {
+  color: var(--bal-form-field-control-disabled-color);
+  border-color: var(--bal-form-field-control-disabled-border-color);
+  background: var(--bal-form-field-control-disabled-background);
+}
+
+input.is-grouped {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.select {
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  vertical-align: top;
+}
+.select:not(.is-multiple) {
+  height: 3rem;
+}
+.select:not(.is-multiple):not(.is-loading)::after {
+  border: 3px solid var(--bal-form-field-icon-color);
+  border-radius: 2px;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: 0.625em;
+  margin-top: -0.4rem;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: 0.625em;
+  right: 1.125em;
+  z-index: 4;
+}
+.select select {
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  max-width: 100%;
+  width: 100%;
+  outline: none;
+  border-radius: var(--bal-form-field-control-radius);
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select[disabled]:hover, fieldset[disabled] .select select:hover {
+  border-color: var(--bal-form-field-control-disabled-border-color);
+}
+.select select:not([multiple]) {
+  padding-right: 2.5em;
+}
+.select select[multiple] {
+  height: auto;
+  padding: 0;
+}
+.select select[multiple] option {
+  padding: 0.5em 1em;
+}
+.select:not(.is-multiple):not(.is-loading):hover::after {
+  border-color: var(--bal-form-field-label-color-hover);
+}
+.select:not(.is-multiple):not(.is-loading):active::after {
+  border-color: var(--bal-form-field-label-color-active);
+}
+.select.is-disabled::after {
+  border-color: var(--bal-form-field-control-disabled-border-color) !important;
+}
+.select.is-success select {
+  border-color: var(--bal-form-field-control-success-border-color);
+  background: var(--bal-form-field-control-success-background);
+}
+.select.is-success select.bal-focused, .select.is-success select:focus, .select.is-success select.is-focused, .select.is-success select:active, .select.is-success select.is-active {
+  border-color: var(--bal-form-field-control-success-border-color-active);
+}
+.select.is-success::after {
+  border-color: var(--bal-form-field-control-success-border-color) !important;
+}
+.select.is-success:focus::after, .select.is-success:active::after, .select.is-success:focus-within::after {
+  border-color: var(--bal-form-field-control-success-border-color-active) !important;
+}
+.select.is-danger select {
+  border-color: var(--bal-form-field-control-danger-border-color);
+  background: var(--bal-form-field-control-danger-background);
+}
+.select.is-danger select.bal-focused, .select.is-danger select:focus, .select.is-danger select.is-focused, .select.is-danger select:active, .select.is-danger select.is-active {
+  border-color: var(--bal-form-field-control-danger-border-color-active);
+}
+.select.is-danger::after {
+  border-color: var(--bal-form-field-control-danger-border-color) !important;
+}
+.select.is-danger:focus::after, .select.is-danger:active::after, .select.is-danger:focus-within::after {
+  border-color: var(--bal-form-field-control-danger-border-color-active) !important;
+}
+.select.is-warning select {
+  border-color: var(--bal-color-border-warning);
+  background: var(--bal-color-warning-1);
+}
+.select.is-warning select.bal-focused, .select.is-warning select:focus, .select.is-warning select.is-focused, .select.is-warning select:active, .select.is-warning select.is-active {
+  border-color: var(--bal-color-border-primary);
+}
+.select.is-warning::after {
+  border-color: var(--bal-color-border-warning) !important;
+}
+.select.is-warning:focus::after, .select.is-warning:active::after, .select.is-warning:focus-within::after {
+  border-color: var(--bal-color-border-primary) !important;
+}
+.select.is-fullwidth {
+  width: 100%;
+}
+.select.is-fullwidth select {
+  width: 100%;
+}
+
+.file {
+  align-items: stretch;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  font-size: var(--bal-form-field-control-font-size);
+  justify-content: center;
+}
+.file .file-label {
+  width: 100%;
+  flex-direction: column;
+}
+.file .file-cta {
+  flex-direction: column;
+  height: auto;
+  padding: 1em 3em;
+}
+.file .file-icon {
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.file-label {
+  align-items: stretch;
+  display: flex;
+  cursor: pointer;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: relative;
+  gap: 0.5rem;
+  font-weight: var(--bal-form-field-label-font-weight);
+  color: var(--bal-form-field-label-color);
+  text-align: center;
+  hyphens: auto;
+}
+.file-label:hover .file-cta,
+.file-label:hover .file-label {
+  color: var(--bal-form-field-label-color-hover);
+}
+.file-label:hover .file-cta {
+  background-color: var(--bal-form-field-control-background-hover);
+  border-color: var(--bal-form-field-control-border-color-hover);
+}
+.file-label:active .file-cta,
+.file-label:active .file-label, .file-label:focus-within .file-cta,
+.file-label:focus-within .file-label {
+  color: var(--bal-form-field-label-color-active);
+}
+.file-label:active .file-cta, .file-label:focus-within .file-cta {
+  background-color: var(--bal-form-field-control-background-active);
+  border-color: var(--bal-form-field-control-border-color-active);
+}
+
+.file-input {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.file-cta {
+  justify-content: flex-start;
+  border-style: var(--bal-file-border-style);
+  border-color: var(--bal-form-field-control-border-color);
+  border-radius: var(--bal-form-field-control-radius);
+  background: var(--bal-form-field-control-background);
+  font-size: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  white-space: nowrap;
+  gap: 0.5rem;
+}
+
+.file-cta {
+  background-color: var(--bal-form-field-control-background);
+  color: var(--bal-form-field-control-color);
+}
+
+.file-icon {
+  align-items: center;
+  display: flex;
+  height: 1em;
+  justify-content: center;
+  margin-right: 0.5em;
+  width: 1em;
+}
+
+.file.is-success .file-label,
+.file.is-success .file-cta {
+  color: var(--bal-form-field-label-success-color);
+}
+.file.is-success .file-cta {
+  border-color: var(--bal-form-field-control-success-border-color);
+  background: var(--bal-form-field-control-success-background);
+}
+.file.is-success .file-label:active .file-cta, .file.is-success .file-label:focus-within .file-cta {
+  border-color: var(--bal-form-field-control-border-color-active);
+  color: var(--bal-link-color-active);
+}
+.file.is-success .file-label:active .file-cta .file-label, .file.is-success .file-label:focus-within .file-cta .file-label {
+  color: var(--bal-link-color-active);
+}
+
+.file.is-danger .file-label,
+.file.is-danger .file-cta {
+  color: var(--bal-form-field-label-danger-color);
+}
+.file.is-danger .file-cta {
+  border-color: var(--bal-form-field-control-danger-border-color);
+  background: var(--bal-form-field-control-danger-background);
+}
+.file.is-danger .file-label:active .file-cta, .file.is-danger .file-label:focus-within .file-cta {
+  border-color: var(--bal-form-field-control-border-color-active);
+  color: var(--bal-link-color-active);
+}
+.file.is-danger .file-label:active .file-cta .file-label, .file.is-danger .file-label:focus-within .file-cta .file-label {
+  color: var(--bal-link-color-active);
+}
+
+.file.is-warning .file-label,
+.file.is-warning .file-cta {
+  color: var(--bal-color-text-warning);
+}
+.file.is-warning .file-cta {
+  border-color: var(--bal-color-border-warning);
+  background: var(--bal-color-warning-1);
+}
+.file.is-warning .file-label:active .file-cta, .file.is-warning .file-label:focus-within .file-cta {
+  border-color: var(--bal-form-field-control-border-color-active);
+  color: var(--bal-link-color-active);
+}
+.file.is-warning .file-label:active .file-cta .file-label, .file.is-warning .file-label:focus-within .file-cta .file-label {
+  color: var(--bal-link-color-active);
+}
+
+.file.is-disabled .file-label,
+.file.is-disabled .file-cta {
+  color: var(--bal-file-label-disabled-color);
+}
+.file.is-disabled .file-cta {
+  border-color: var(--bal-form-field-control-disabled-border-color);
+  background: var(--bal-form-field-control-disabled-background);
+}
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.label {
+  display: block;
+  font-size: var(--bal-form-field-label-font-size);
+  line-height: var(--bal-form-field-label-line-height);
+  font-weight: var(--bal-form-field-label-font-weight);
+  font-family: var(--bal-form-field-label-font-family);
+  hyphens: auto;
+}
+.label:not(:last-child) {
+  margin-bottom: var(--bal-form-field-label-margin-bottom);
+}
+.label.is-danger {
+  color: var(--bal-form-field-label-danger-color);
+}
+.label.is-success {
+  color: var(--bal-form-field-label-success-color);
+}
+.label.is-warning {
+  color: var(--bal-color-text-warning);
+}
+.label.is-disabled {
+  color: var(--bal-form-field-label-disabled-color);
+}
+
+.help {
+  display: block;
+  margin-top: -2px;
+  color: var(--bal-form-field-message-color);
+  font-size: var(--bal-form-field-message-font-size);
+  font-weight: var(--bal-form-field-message-font-weight);
+  hyphens: auto;
+}
+.help.is-danger {
+  color: var(--bal-form-field-message-danger-color);
+}
+.help.is-success {
+  color: var(--bal-form-field-message-success-color);
+}
+.help.is-warning {
+  color: var(--bal-color-text-warning);
+}
+.help.is-disabled {
+  color: var(--bal-form-field-message-disabled-color);
+}
+
+.field:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+.field.has-addons {
+  display: flex;
+  justify-content: flex-start;
+}
+.field.has-addons .control:not(:last-child) {
+  margin-right: -1px;
+}
+.field.has-addons .control:not(:first-child):not(:last-child) .button,
+.field.has-addons .control:not(:first-child):not(:last-child) .input,
+.field.has-addons .control:not(:first-child):not(:last-child) .select select {
+  border-radius: 0;
+}
+.field.has-addons .control:first-child:not(:only-child) .button,
+.field.has-addons .control:first-child:not(:only-child) .input,
+.field.has-addons .control:first-child:not(:only-child) .select select {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.field.has-addons .control:last-child:not(:only-child) .button,
+.field.has-addons .control:last-child:not(:only-child) .input,
+.field.has-addons .control:last-child:not(:only-child) .select select {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.field.has-addons .control .button:not([disabled]):hover, .field.has-addons .control .button:not([disabled]).is-hovered,
+.field.has-addons .control .input:not([disabled]):hover,
+.field.has-addons .control .input:not([disabled]).is-hovered,
+.field.has-addons .control .select select:not([disabled]):hover,
+.field.has-addons .control .select select:not([disabled]).is-hovered {
+  z-index: 2;
+}
+.field.has-addons .control .button:not([disabled]):focus, .field.has-addons .control .button:not([disabled]).is-focused, .field.has-addons .control .button:not([disabled]):active, .field.has-addons .control .button:not([disabled]).is-active,
+.field.has-addons .control .input:not([disabled]):focus,
+.field.has-addons .control .input:not([disabled]).is-focused,
+.field.has-addons .control .input:not([disabled]):active,
+.field.has-addons .control .input:not([disabled]).is-active,
+.field.has-addons .control .select select:not([disabled]):focus,
+.field.has-addons .control .select select:not([disabled]).is-focused,
+.field.has-addons .control .select select:not([disabled]):active,
+.field.has-addons .control .select select:not([disabled]).is-active {
+  z-index: 3;
+}
+.field.has-addons .control .button:not([disabled]):focus:hover, .field.has-addons .control .button:not([disabled]).is-focused:hover, .field.has-addons .control .button:not([disabled]):active:hover, .field.has-addons .control .button:not([disabled]).is-active:hover,
+.field.has-addons .control .input:not([disabled]):focus:hover,
+.field.has-addons .control .input:not([disabled]).is-focused:hover,
+.field.has-addons .control .input:not([disabled]):active:hover,
+.field.has-addons .control .input:not([disabled]).is-active:hover,
+.field.has-addons .control .select select:not([disabled]):focus:hover,
+.field.has-addons .control .select select:not([disabled]).is-focused:hover,
+.field.has-addons .control .select select:not([disabled]):active:hover,
+.field.has-addons .control .select select:not([disabled]).is-active:hover {
+  z-index: 4;
+}
+.field.has-addons .control.is-expanded {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.field.has-addons.has-addons-centered {
+  justify-content: center;
+}
+.field.has-addons.has-addons-right {
+  justify-content: flex-end;
+}
+.field.has-addons.has-addons-fullwidth .control {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+.field.is-grouped {
+  display: flex;
+  justify-content: flex-start;
+}
+.field.is-grouped > .control:not(:last-child) {
+  margin-bottom: 0;
+}
+.field.is-grouped > .control.is-expanded {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.field.is-grouped.is-grouped-centered {
+  justify-content: center;
+}
+.field.is-grouped.is-grouped-right {
+  justify-content: flex-end;
+}
+.field.is-grouped.is-grouped-multiline {
+  flex-wrap: wrap;
+}
+.field.is-grouped.is-grouped-multiline > .control:last-child, .field.is-grouped.is-grouped-multiline > .control:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+.field.is-grouped.is-grouped-multiline:last-child {
+  margin-bottom: -0.75rem;
+}
+.field.is-grouped.is-grouped-multiline:not(:last-child) {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 769px), print {
+  .field.is-horizontal {
+    display: flex;
+  }
+}
+
+.field-label .label {
+  font-size: inherit;
+}
+@media screen and (max-width: 768px) {
+  .field-label {
+    margin-bottom: 0.5rem;
+  }
+}
+@media screen and (min-width: 769px), print {
+  .field-label {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+    text-align: right;
+  }
+  .field-label.is-small {
+    font-size: var(--bal-text-size-small);
+    padding-top: 0.375em;
+  }
+  .field-label.is-normal {
+    padding-top: 0.375em;
+  }
+}
+
+.field-body .field .field {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 769px), print {
+  .field-body {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 5;
+    flex-shrink: 1;
+  }
+  .field-body .field {
+    margin-bottom: 0;
+  }
+  .field-body > .field {
+    flex-shrink: 1;
+  }
+  .field-body > .field:not(.is-narrow) {
+    flex-grow: 1;
+  }
+  .field-body > .field:not(:last-child) {
+    margin-right: 0.75rem;
+  }
+}
+
+.control {
+  box-sizing: border-box;
+  clear: both;
+  font-size: var(--bal-form-field-control-font-size);
+  position: relative;
+  text-align: inherit;
+}
+.control.is-loading::after {
+  animation: spinAround 500ms infinite linear;
+  border: 2px solid var(--bal-form-field-control-border-color-active);
+  border-radius: var(--bal-radius-rounded);
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1.125em;
+  width: 1.125em;
+  position: absolute !important;
+  right: 0.875rem;
+  top: 0.875rem;
+  z-index: 4;
+}
+
+.control.has-icons-right::after {
+  right: 2.3rem;
+}
+
+.field.is-grouped {
+  gap: calc(var(--bal-column-gap) / 2);
+}
+
+.field.has-direction-row.is-grouped {
+  flex-direction: row;
+}
+
+.field.has-direction-column.is-grouped {
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.field.has-direction-column.is-grouped .button {
+  width: 100%;
+}
+.field.has-direction-column.is-grouped .bal-button {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .field.has-direction-auto.is-grouped {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+  }
+  .field.has-direction-auto.is-grouped .control {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 100%;
+    margin-right: 0 !important;
+  }
+  .field.has-direction-auto.is-grouped .control .button {
+    min-width: 100%;
+  }
+  .field.has-direction-auto.is-grouped.is-reverse {
+    flex-direction: column-reverse;
+  }
+}
+.button {
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  position: relative;
+  display: inline-flex;
+  border-radius: var(--bal-button-radius);
+  border-style: var(--bal-button-border-style);
+  border-color: var(--bal-button-border-color);
+  border-width: var(--bal-button-border-width);
+  color: var(--bal-button-color);
+  font-family: var(--bal-button-font-family);
+  font-size: var(--bal-button-font-size);
+  line-height: var(--bal-button-line-height);
+  font-weight: var(--bal-button-font-weight);
+  background-color: var(--bal-button-background);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  padding: 0.625rem 1.5rem;
+  min-height: 3rem;
+  height: auto;
+  text-align: left;
+  word-break: normal;
+  box-shadow: none;
+  outline: none;
+  box-sizing: border-box;
+  appearance: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  touch-action: manipulation;
+}
+.button svg,
+.button g,
+.button path,
+.button circle {
+  fill: var(--bal-button-color);
+}
+.button:focus, .button.is-focused, .button:active, .button.is-active {
+  outline: none;
+}
+.button[disabled], fieldset[disabled] .button {
+  cursor: default;
+}
+.button > span, .button > strong {
+  color: inherit;
+  font-family: var(--bal-button-font-family);
+  font-weight: var(--bal-button-font-weight);
+  hyphens: auto;
+  text-align: center;
+}
+.button::-moz-focus-inner {
+  border: 0;
+}
+.button.has-no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.button.is-rounded {
+  border-radius: var(--bal-radius-rounded);
+}
+.button.has-blur-shadow:not(.button.is-link) {
+  box-shadow: var(--bal-text-shadow-normal);
+}
+.button.has-blur-shadow.is-link {
+  text-shadow: var(--bal-text-shadow-normal);
+}
+.button .icon-left,
+.button .icon-right {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+.button .icon-left {
+  margin-right: 0.5rem;
+}
+.button .icon-right {
+  margin-left: 0.5rem;
+}
+.button.is-fullwidth {
+  width: 100%;
+}
+.button.is-square {
+  width: 3rem;
+  padding: 0;
+}
+.button.is-square .icon-left {
+  margin: 0;
+}
+.button.is-flat {
+  padding: 0;
+  min-height: 1.5rem;
+}
+.button.is-small {
+  min-height: 2rem;
+  max-height: 2rem;
+  min-width: 2rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: var(--bal-button-small-font-size);
+  line-height: 1.25rem;
+}
+.button.is-small.is-square {
+  width: 2rem;
+  padding: 0;
+}
+.button.is-large {
+  min-height: 3.5rem;
+}
+.button.is-large.is-square {
+  width: 3.5rem;
+  padding: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover, .button.is-hovered {
+    background: var(--bal-button-background-hover);
+    border-color: var(--bal-button-border-color-hover);
+    color: var(--bal-button-color-hover);
+  }
+  .button:hover svg,
+  .button:hover g,
+  .button:hover path,
+  .button:hover circle, .button.is-hovered svg,
+  .button.is-hovered g,
+  .button.is-hovered path,
+  .button.is-hovered circle {
+    fill: var(--bal-button-color-hover);
+  }
+}
+.button:active, .button.is-active {
+  background: var(--bal-button-background-active);
+  border-color: var(--bal-button-border-color-active);
+  color: var(--bal-button-color-active);
+}
+.button:active svg,
+.button:active g,
+.button:active path,
+.button:active circle, .button.is-active svg,
+.button.is-active g,
+.button.is-active path,
+.button.is-active circle {
+  fill: var(--bal-button-color-active);
+}
+.button.is-primary {
+  background: var(--bal-button-primary-background);
+  border-color: var(--bal-button-primary-border-color);
+  color: var(--bal-button-primary-color);
+}
+.button.is-primary svg,
+.button.is-primary g,
+.button.is-primary path,
+.button.is-primary circle {
+  fill: var(--bal-button-primary-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-primary:hover, .button.is-primary.is-hovered {
+    background: var(--bal-button-primary-background-hover);
+    border-color: var(--bal-button-primary-border-color-hover);
+    color: var(--bal-button-primary-color-hover);
+  }
+  .button.is-primary:hover svg,
+  .button.is-primary:hover g,
+  .button.is-primary:hover path,
+  .button.is-primary:hover circle, .button.is-primary.is-hovered svg,
+  .button.is-primary.is-hovered g,
+  .button.is-primary.is-hovered path,
+  .button.is-primary.is-hovered circle {
+    fill: var(--bal-button-primary-color-hover);
+  }
+}
+.button.is-primary:active, .button.is-primary.is-active {
+  background: var(--bal-button-primary-background-active);
+  border-color: var(--bal-button-primary-border-color-active);
+  color: var(--bal-button-primary-color-active);
+}
+.button.is-primary:active svg,
+.button.is-primary:active g,
+.button.is-primary:active path,
+.button.is-primary:active circle, .button.is-primary.is-active svg,
+.button.is-primary.is-active g,
+.button.is-primary.is-active path,
+.button.is-primary.is-active circle {
+  fill: var(--bal-button-primary-color-active);
+}
+.button.is-tertiary-purple {
+  background: var(--bal-button-tertiary-purple-background);
+  border-color: var(--bal-button-tertiary-purple-border-color);
+  color: var(--bal-button-tertiary-purple-color);
+}
+.button.is-tertiary-purple svg,
+.button.is-tertiary-purple g,
+.button.is-tertiary-purple path,
+.button.is-tertiary-purple circle {
+  fill: var(--bal-button-tertiary-purple-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-tertiary-purple:hover, .button.is-tertiary-purple.is-hovered {
+    background: var(--bal-button-tertiary-purple-background-hover);
+    border-color: var(--bal-button-tertiary-purple-border-color-hover);
+    color: var(--bal-button-tertiary-purple-color-hover);
+  }
+  .button.is-tertiary-purple:hover svg,
+  .button.is-tertiary-purple:hover g,
+  .button.is-tertiary-purple:hover path,
+  .button.is-tertiary-purple:hover circle, .button.is-tertiary-purple.is-hovered svg,
+  .button.is-tertiary-purple.is-hovered g,
+  .button.is-tertiary-purple.is-hovered path,
+  .button.is-tertiary-purple.is-hovered circle {
+    fill: var(--bal-button-tertiary-purple-color-hover);
+  }
+}
+.button.is-tertiary-purple:active, .button.is-tertiary-purple.is-active {
+  background: var(--bal-button-tertiary-purple-background-active);
+  border-color: var(--bal-button-tertiary-purple-border-color-active);
+  color: var(--bal-button-tertiary-purple-color-active);
+}
+.button.is-tertiary-purple:active svg,
+.button.is-tertiary-purple:active g,
+.button.is-tertiary-purple:active path,
+.button.is-tertiary-purple:active circle, .button.is-tertiary-purple.is-active svg,
+.button.is-tertiary-purple.is-active g,
+.button.is-tertiary-purple.is-active path,
+.button.is-tertiary-purple.is-active circle {
+  fill: var(--bal-button-tertiary-purple-color-active);
+}
+.button.is-tertiary-red {
+  background: var(--bal-button-tertiary-red-background);
+  border-color: var(--bal-button-tertiary-red-border-color);
+  color: var(--bal-button-tertiary-red-color);
+}
+.button.is-tertiary-red svg,
+.button.is-tertiary-red g,
+.button.is-tertiary-red path,
+.button.is-tertiary-red circle {
+  fill: var(--bal-button-tertiary-red-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-tertiary-red:hover, .button.is-tertiary-red.is-hovered {
+    background: var(--bal-button-tertiary-red-background-hover);
+    border-color: var(--bal-button-tertiary-red-border-color-hover);
+    color: var(--bal-button--tertiary-red-color-hover);
+  }
+  .button.is-tertiary-red:hover svg,
+  .button.is-tertiary-red:hover g,
+  .button.is-tertiary-red:hover path,
+  .button.is-tertiary-red:hover circle, .button.is-tertiary-red.is-hovered svg,
+  .button.is-tertiary-red.is-hovered g,
+  .button.is-tertiary-red.is-hovered path,
+  .button.is-tertiary-red.is-hovered circle {
+    fill: var(--bal-button-tertiary-red-color-hover);
+  }
+}
+.button.is-tertiary-red:active, .button.is-tertiary-red.is-active {
+  background: var(--bal-button-tertiary-red-background-active);
+  border-color: var(--bal-button-tertiary-red-border-color-active);
+  color: var(--bal-button-tertiary-red-color-active);
+}
+.button.is-tertiary-red:active svg,
+.button.is-tertiary-red:active g,
+.button.is-tertiary-red:active path,
+.button.is-tertiary-red:active circle, .button.is-tertiary-red.is-active svg,
+.button.is-tertiary-red.is-active g,
+.button.is-tertiary-red.is-active path,
+.button.is-tertiary-red.is-active circle {
+  fill: var(--bal-button-tertiary-red-color-active);
+}
+.button.is-tertiary-yellow {
+  background: var(--bal-button-tertiary-yellow-background);
+  border-color: var(--bal-button-tertiary-yellow-border-color);
+  color: var(--bal-button-tertiary-yellow-color);
+}
+.button.is-tertiary-yellow svg,
+.button.is-tertiary-yellow g,
+.button.is-tertiary-yellow path,
+.button.is-tertiary-yellow circle {
+  fill: var(--bal-button-tertiary-yellow-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-tertiary-yellow:hover, .button.is-tertiary-yellow.is-hovered {
+    background: var(--bal-button-tertiary-yellow-background-hover);
+    border-color: var(--bal-button-tertiary-yellow-border-color-hover);
+    color: var(--bal-button--tertiary-yellow-color-hover);
+  }
+  .button.is-tertiary-yellow:hover svg,
+  .button.is-tertiary-yellow:hover g,
+  .button.is-tertiary-yellow:hover path,
+  .button.is-tertiary-yellow:hover circle, .button.is-tertiary-yellow.is-hovered svg,
+  .button.is-tertiary-yellow.is-hovered g,
+  .button.is-tertiary-yellow.is-hovered path,
+  .button.is-tertiary-yellow.is-hovered circle {
+    fill: var(--bal-button-tertiary-yellow-color-hover);
+  }
+}
+.button.is-tertiary-yellow:active, .button.is-tertiary-yellow.is-active {
+  background: var(--bal-button-tertiary-yellow-background-active);
+  border-color: var(--bal-button-tertiary-yellow-border-color-active);
+  color: var(--bal-button-tertiary-yellow-color-active);
+}
+.button.is-tertiary-yellow:active svg,
+.button.is-tertiary-yellow:active g,
+.button.is-tertiary-yellow:active path,
+.button.is-tertiary-yellow:active circle, .button.is-tertiary-yellow.is-active svg,
+.button.is-tertiary-yellow.is-active g,
+.button.is-tertiary-yellow.is-active path,
+.button.is-tertiary-yellow.is-active circle {
+  fill: var(--bal-button-tertiary-yellow-color-active);
+}
+.button.is-tertiary-green {
+  background: var(--bal-button-tertiary-green-background);
+  border-color: var(--bal-button-tertiary-green-border-color);
+  color: var(--bal-button-tertiary-green-color);
+}
+.button.is-tertiary-green svg,
+.button.is-tertiary-green g,
+.button.is-tertiary-green path,
+.button.is-tertiary-green circle {
+  fill: var(--bal-button-tertiary-green-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-tertiary-green:hover, .button.is-tertiary-green.is-hovered {
+    background: var(--bal-button-tertiary-green-background-hover);
+    border-color: var(--bal-button-tertiary-green-border-color-hover);
+    color: var(--bal-button--tertiary-green-color-hover);
+  }
+  .button.is-tertiary-green:hover svg,
+  .button.is-tertiary-green:hover g,
+  .button.is-tertiary-green:hover path,
+  .button.is-tertiary-green:hover circle, .button.is-tertiary-green.is-hovered svg,
+  .button.is-tertiary-green.is-hovered g,
+  .button.is-tertiary-green.is-hovered path,
+  .button.is-tertiary-green.is-hovered circle {
+    fill: var(--bal-button-tertiary-green-color-hover);
+  }
+}
+.button.is-tertiary-green:active, .button.is-tertiary-green.is-active {
+  background: var(--bal-button-tertiary-green-background-active);
+  border-color: var(--bal-button-tertiary-green-border-color-active);
+  color: var(--bal-button-tertiary-green-color-active);
+}
+.button.is-tertiary-green:active svg,
+.button.is-tertiary-green:active g,
+.button.is-tertiary-green:active path,
+.button.is-tertiary-green:active circle, .button.is-tertiary-green.is-active svg,
+.button.is-tertiary-green.is-active g,
+.button.is-tertiary-green.is-active path,
+.button.is-tertiary-green.is-active circle {
+  fill: var(--bal-button-tertiary-green-color-active);
+}
+.button.is-tertiary, .button.is-text, .button.is-link {
+  border-color: var(--bal-link-border-color);
+}
+.button.is-link {
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-link:hover, .button.is-link.is-hovered {
+    -webkit-text-decoration: var(--bal-link-text-decoration);
+            text-decoration: var(--bal-link-text-decoration);
+    text-underline-offset: var(--bal-link-text-underline-offset);
+    text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+    background: var(--bal-link-background);
+    border-color: var(--bal-link-border-color);
+    color: var(--bal-link-color-hover);
+  }
+  .button.is-link:hover svg,
+  .button.is-link:hover g,
+  .button.is-link:hover path,
+  .button.is-link:hover circle, .button.is-link.is-hovered svg,
+  .button.is-link.is-hovered g,
+  .button.is-link.is-hovered path,
+  .button.is-link.is-hovered circle {
+    fill: var(--bal-link-color-hover);
+  }
+}
+.button.is-link:active, .button.is-link.is-active {
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  background: var(--bal-link-background);
+  border-color: var(--bal-link-border-color);
+  color: var(--bal-link-color-active);
+}
+.button.is-link:active svg,
+.button.is-link:active g,
+.button.is-link:active path,
+.button.is-link:active circle, .button.is-link.is-active svg,
+.button.is-link.is-active g,
+.button.is-link.is-active path,
+.button.is-link.is-active circle {
+  fill: var(--bal-link-color-active);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-tertiary:hover, .button.is-tertiary.is-hovered, .button.is-text:hover, .button.is-text.is-hovered {
+    background: var(--bal-button-text-background-hover);
+    border-color: var(--bal-button-text-border-color-hover);
+    color: var(--bal-link-color-hover);
+  }
+  .button.is-tertiary:hover svg,
+  .button.is-tertiary:hover g,
+  .button.is-tertiary:hover path,
+  .button.is-tertiary:hover circle, .button.is-tertiary.is-hovered svg,
+  .button.is-tertiary.is-hovered g,
+  .button.is-tertiary.is-hovered path,
+  .button.is-tertiary.is-hovered circle, .button.is-text:hover svg,
+  .button.is-text:hover g,
+  .button.is-text:hover path,
+  .button.is-text:hover circle, .button.is-text.is-hovered svg,
+  .button.is-text.is-hovered g,
+  .button.is-text.is-hovered path,
+  .button.is-text.is-hovered circle {
+    fill: var(--bal-link-color-hover);
+  }
+}
+.button.is-tertiary:active, .button.is-tertiary.is-active, .button.is-text:active, .button.is-text.is-active {
+  background: var(--bal-button-text-background-active);
+  border-color: var(--bal-button-text-border-color-active);
+  color: var(--bal-link-color-active);
+}
+.button.is-tertiary:active svg,
+.button.is-tertiary:active g,
+.button.is-tertiary:active path,
+.button.is-tertiary:active circle, .button.is-tertiary.is-active svg,
+.button.is-tertiary.is-active g,
+.button.is-tertiary.is-active path,
+.button.is-tertiary.is-active circle, .button.is-text:active svg,
+.button.is-text:active g,
+.button.is-text:active path,
+.button.is-text:active circle, .button.is-text.is-active svg,
+.button.is-text.is-active g,
+.button.is-text.is-active path,
+.button.is-text.is-active circle {
+  fill: var(--bal-link-color-active);
+}
+.button.is-info-light {
+  background: var(--bal-color-info-1);
+  border-color: var(--bal-color-info-5);
+  color: var(--bal-color-primary);
+}
+.button.is-info-light svg,
+.button.is-info-light g,
+.button.is-info-light path,
+.button.is-info-light circle {
+  fill: var(--bal-color-primary);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-info-light:hover, .button.is-info-light.is-hovered {
+    background: var(--bal-color-info-5);
+    border-color: var(--bal-color-info-5);
+    color: var(--bal-color-white);
+  }
+  .button.is-info-light:hover svg,
+  .button.is-info-light:hover g,
+  .button.is-info-light:hover path,
+  .button.is-info-light:hover circle, .button.is-info-light.is-hovered svg,
+  .button.is-info-light.is-hovered g,
+  .button.is-info-light.is-hovered path,
+  .button.is-info-light.is-hovered circle {
+    fill: var(--bal-color-white);
+  }
+}
+.button.is-info-light:active, .button.is-info-light.is-active {
+  background: var(--bal-color-info-6);
+  border-color: var(--bal-color-info-6);
+  color: var(--bal-color-white);
+}
+.button.is-info-light:active svg,
+.button.is-info-light:active g,
+.button.is-info-light:active path,
+.button.is-info-light:active circle, .button.is-info-light.is-active svg,
+.button.is-info-light.is-active g,
+.button.is-info-light.is-active path,
+.button.is-info-light.is-active circle {
+  fill: var(--bal-color-white);
+}
+.button.is-success {
+  background: var(--bal-button-success-background);
+  border-color: var(--bal-button-success-border-color);
+  color: var(--bal-button-success-color);
+}
+.button.is-success svg,
+.button.is-success g,
+.button.is-success path,
+.button.is-success circle {
+  fill: var(--bal-button-success-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-success:hover, .button.is-success.is-hovered {
+    background: var(--bal-button-success-background-hover);
+    border-color: var(--bal-button-success-border-color-hover);
+    color: var(--bal-button-success-color-hover);
+  }
+  .button.is-success:hover svg,
+  .button.is-success:hover g,
+  .button.is-success:hover path,
+  .button.is-success:hover circle, .button.is-success.is-hovered svg,
+  .button.is-success.is-hovered g,
+  .button.is-success.is-hovered path,
+  .button.is-success.is-hovered circle {
+    fill: var(--bal-button-success-color-hover);
+  }
+}
+.button.is-success:active, .button.is-success.is-active {
+  background: var(--bal-button-success-background-active);
+  border-color: var(--bal-button-success-background-active);
+  color: var(--bal-button-success-color-active);
+}
+.button.is-success:active svg,
+.button.is-success:active g,
+.button.is-success:active path,
+.button.is-success:active circle, .button.is-success.is-active svg,
+.button.is-success.is-active g,
+.button.is-success.is-active path,
+.button.is-success.is-active circle {
+  fill: var(--bal-button-success-color-active);
+}
+.button.is-warning {
+  background: var(--bal-button-warning-background);
+  border-color: var(--bal-button-warning-border-color);
+  color: var(--bal-button-warning-color);
+}
+.button.is-warning svg,
+.button.is-warning g,
+.button.is-warning path,
+.button.is-warning circle {
+  fill: var(--bal-button-warning-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-warning:hover, .button.is-warning.is-hovered {
+    background: var(--bal-button-warning-background-hover);
+    border-color: var(--bal-button-warning-border-color-hover);
+    color: var(--bal-button-warning-color-hover);
+  }
+  .button.is-warning:hover svg,
+  .button.is-warning:hover g,
+  .button.is-warning:hover path,
+  .button.is-warning:hover circle, .button.is-warning.is-hovered svg,
+  .button.is-warning.is-hovered g,
+  .button.is-warning.is-hovered path,
+  .button.is-warning.is-hovered circle {
+    fill: var(--bal-button-warning-color-hover);
+  }
+}
+.button.is-warning:active, .button.is-warning.is-active {
+  background: var(--bal-button-warning-background-active);
+  border-color: var(--bal-button-warning-background-active);
+  color: var(--bal-button-warning-color-active);
+}
+.button.is-warning:active svg,
+.button.is-warning:active g,
+.button.is-warning:active path,
+.button.is-warning:active circle, .button.is-warning.is-active svg,
+.button.is-warning.is-active g,
+.button.is-warning.is-active path,
+.button.is-warning.is-active circle {
+  fill: var(--bal-button-warning-color-active);
+}
+.button.is-danger {
+  background: var(--bal-button-danger-background);
+  border-color: var(--bal-button-danger-border-color);
+  color: var(--bal-button-danger-color);
+}
+.button.is-danger svg,
+.button.is-danger g,
+.button.is-danger path,
+.button.is-danger circle {
+  fill: var(--bal-button-danger-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-danger:hover, .button.is-danger.is-hovered {
+    background: var(--bal-button-danger-background-hover);
+    border-color: var(--bal-button-danger-border-color-hover);
+    color: var(--bal-button-danger-color-hover);
+  }
+  .button.is-danger:hover svg,
+  .button.is-danger:hover g,
+  .button.is-danger:hover path,
+  .button.is-danger:hover circle, .button.is-danger.is-hovered svg,
+  .button.is-danger.is-hovered g,
+  .button.is-danger.is-hovered path,
+  .button.is-danger.is-hovered circle {
+    fill: var(--bal-button-danger-color-hover);
+  }
+}
+.button.is-danger:active, .button.is-danger.is-active {
+  background: var(--bal-button-danger-background-active);
+  border-color: var(--bal-button-danger-background-active);
+  color: var(--bal-button-danger-color-active);
+}
+.button.is-danger:active svg,
+.button.is-danger:active g,
+.button.is-danger:active path,
+.button.is-danger:active circle, .button.is-danger.is-active svg,
+.button.is-danger.is-active g,
+.button.is-danger.is-active path,
+.button.is-danger.is-active circle {
+  fill: var(--bal-button-danger-color-active);
+}
+.button.is-light {
+  background: var(--bal-button-light-background);
+  border-color: var(--bal-button-light-border-color);
+  color: var(--bal-button-light-color);
+}
+.button.is-light svg,
+.button.is-light g,
+.button.is-light path,
+.button.is-light circle {
+  fill: var(--bal-button-light-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-light:hover, .button.is-light.is-hovered {
+    background: var(--bal-button-light-background-hover);
+    border-color: var(--bal-button-light-border-color-hover);
+    color: var(--bal-button-light-color-hover);
+  }
+  .button.is-light:hover svg,
+  .button.is-light:hover g,
+  .button.is-light:hover path,
+  .button.is-light:hover circle, .button.is-light.is-hovered svg,
+  .button.is-light.is-hovered g,
+  .button.is-light.is-hovered path,
+  .button.is-light.is-hovered circle {
+    fill: var(--bal-button-light-color-hover);
+  }
+}
+.button.is-light:active, .button.is-light.is-active {
+  background: var(--bal-button-light-background-active);
+  border-color: var(--bal-button-light-border-color-active);
+  color: var(--bal-button-light-color-active);
+}
+.button.is-light:active svg,
+.button.is-light:active g,
+.button.is-light:active path,
+.button.is-light:active circle, .button.is-light.is-active svg,
+.button.is-light.is-active g,
+.button.is-light.is-active path,
+.button.is-light.is-active circle {
+  fill: var(--bal-button-light-color-active);
+}
+.button.is-inverted {
+  background: var(--bal-button-inverted-background);
+  border-color: var(--bal-button-inverted-border-color);
+  color: var(--bal-button-inverted-color);
+}
+.button.is-inverted svg,
+.button.is-inverted g,
+.button.is-inverted path,
+.button.is-inverted circle {
+  fill: var(--bal-button-inverted-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-inverted:hover, .button.is-inverted.is-hovered {
+    background: var(--bal-button-inverted-background-hover);
+    border-color: var(--bal-button-inverted-border-color-hover);
+    color: var(--bal-button-inverted-color-hover);
+  }
+  .button.is-inverted:hover svg,
+  .button.is-inverted:hover g,
+  .button.is-inverted:hover path,
+  .button.is-inverted:hover circle, .button.is-inverted.is-hovered svg,
+  .button.is-inverted.is-hovered g,
+  .button.is-inverted.is-hovered path,
+  .button.is-inverted.is-hovered circle {
+    fill: var(--bal-button-inverted-color-hover);
+  }
+}
+.button.is-inverted:active, .button.is-inverted.is-active {
+  background: var(--bal-button-inverted-background-active);
+  border-color: var(--bal-button-inverted-border-color-active);
+  color: var(--bal-button-inverted-color-active);
+}
+.button.is-inverted:active svg,
+.button.is-inverted:active g,
+.button.is-inverted:active path,
+.button.is-inverted:active circle, .button.is-inverted.is-active svg,
+.button.is-inverted.is-active g,
+.button.is-inverted.is-active path,
+.button.is-inverted.is-active circle {
+  fill: var(--bal-button-inverted-color-active);
+}
+.button.is-inverted.is-primary {
+  background: var(--bal-button-inverted-primary-background);
+  border-color: var(--bal-button-inverted-primary-border-color);
+  color: var(--bal-button-inverted-primary-color);
+}
+.button.is-inverted.is-primary svg,
+.button.is-inverted.is-primary g,
+.button.is-inverted.is-primary path,
+.button.is-inverted.is-primary circle {
+  fill: var(--bal-button-inverted-primary-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-inverted.is-primary:hover, .button.is-inverted.is-primary.is-hovered {
+    background: var(--bal-button-inverted-primary-background-hover);
+    border-color: var(--bal-button-inverted-primary-border-color-hover);
+    color: var(--bal-button-inverted-primary-color-hover);
+  }
+  .button.is-inverted.is-primary:hover svg,
+  .button.is-inverted.is-primary:hover g,
+  .button.is-inverted.is-primary:hover path,
+  .button.is-inverted.is-primary:hover circle, .button.is-inverted.is-primary.is-hovered svg,
+  .button.is-inverted.is-primary.is-hovered g,
+  .button.is-inverted.is-primary.is-hovered path,
+  .button.is-inverted.is-primary.is-hovered circle {
+    fill: var(--bal-button-inverted-primary-color-hover);
+  }
+}
+.button.is-inverted.is-primary:active, .button.is-inverted.is-primary.is-active {
+  background: var(--bal-button-inverted-primary-background-active);
+  border-color: var(--bal-button-inverted-primary-border-color-active);
+  color: var(--bal-button-inverted-primary-color-active);
+}
+.button.is-inverted.is-primary:active svg,
+.button.is-inverted.is-primary:active g,
+.button.is-inverted.is-primary:active path,
+.button.is-inverted.is-primary:active circle, .button.is-inverted.is-primary.is-active svg,
+.button.is-inverted.is-primary.is-active g,
+.button.is-inverted.is-primary.is-active path,
+.button.is-inverted.is-primary.is-active circle {
+  fill: var(--bal-button-inverted-primary-color-active);
+}
+.button.is-inverted.is-tertiary, .button.is-inverted.is-tertiary-purple, .button.is-inverted.is-tertiary-red, .button.is-inverted.is-tertiary-yellow, .button.is-inverted.is-tertiary-green, .button.is-inverted.is-link, .button.is-inverted.is-text {
+  background: var(--bal-button-inverted-text-background);
+  border-color: var(--bal-button-inverted-text-border-color);
+  color: var(--bal-button-inverted-text-color);
+}
+.button.is-inverted.is-tertiary svg,
+.button.is-inverted.is-tertiary g,
+.button.is-inverted.is-tertiary path,
+.button.is-inverted.is-tertiary circle, .button.is-inverted.is-tertiary-purple svg,
+.button.is-inverted.is-tertiary-purple g,
+.button.is-inverted.is-tertiary-purple path,
+.button.is-inverted.is-tertiary-purple circle, .button.is-inverted.is-tertiary-red svg,
+.button.is-inverted.is-tertiary-red g,
+.button.is-inverted.is-tertiary-red path,
+.button.is-inverted.is-tertiary-red circle, .button.is-inverted.is-tertiary-yellow svg,
+.button.is-inverted.is-tertiary-yellow g,
+.button.is-inverted.is-tertiary-yellow path,
+.button.is-inverted.is-tertiary-yellow circle, .button.is-inverted.is-tertiary-green svg,
+.button.is-inverted.is-tertiary-green g,
+.button.is-inverted.is-tertiary-green path,
+.button.is-inverted.is-tertiary-green circle, .button.is-inverted.is-link svg,
+.button.is-inverted.is-link g,
+.button.is-inverted.is-link path,
+.button.is-inverted.is-link circle, .button.is-inverted.is-text svg,
+.button.is-inverted.is-text g,
+.button.is-inverted.is-text path,
+.button.is-inverted.is-text circle {
+  fill: var(--bal-button-inverted-text-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-inverted.is-tertiary:hover, .button.is-inverted.is-tertiary.is-hovered, .button.is-inverted.is-tertiary-purple:hover, .button.is-inverted.is-tertiary-purple.is-hovered, .button.is-inverted.is-tertiary-red:hover, .button.is-inverted.is-tertiary-red.is-hovered, .button.is-inverted.is-tertiary-yellow:hover, .button.is-inverted.is-tertiary-yellow.is-hovered, .button.is-inverted.is-tertiary-green:hover, .button.is-inverted.is-tertiary-green.is-hovered, .button.is-inverted.is-link:hover, .button.is-inverted.is-link.is-hovered, .button.is-inverted.is-text:hover, .button.is-inverted.is-text.is-hovered {
+    background: var(--bal-button-inverted-text-background-hover);
+    border-color: var(--bal-button-inverted-text-border-color-hover);
+    color: var(--bal-button-inverted-text-color-hover);
+  }
+  .button.is-inverted.is-tertiary:hover svg,
+  .button.is-inverted.is-tertiary:hover g,
+  .button.is-inverted.is-tertiary:hover path,
+  .button.is-inverted.is-tertiary:hover circle, .button.is-inverted.is-tertiary.is-hovered svg,
+  .button.is-inverted.is-tertiary.is-hovered g,
+  .button.is-inverted.is-tertiary.is-hovered path,
+  .button.is-inverted.is-tertiary.is-hovered circle, .button.is-inverted.is-tertiary-purple:hover svg,
+  .button.is-inverted.is-tertiary-purple:hover g,
+  .button.is-inverted.is-tertiary-purple:hover path,
+  .button.is-inverted.is-tertiary-purple:hover circle, .button.is-inverted.is-tertiary-purple.is-hovered svg,
+  .button.is-inverted.is-tertiary-purple.is-hovered g,
+  .button.is-inverted.is-tertiary-purple.is-hovered path,
+  .button.is-inverted.is-tertiary-purple.is-hovered circle, .button.is-inverted.is-tertiary-red:hover svg,
+  .button.is-inverted.is-tertiary-red:hover g,
+  .button.is-inverted.is-tertiary-red:hover path,
+  .button.is-inverted.is-tertiary-red:hover circle, .button.is-inverted.is-tertiary-red.is-hovered svg,
+  .button.is-inverted.is-tertiary-red.is-hovered g,
+  .button.is-inverted.is-tertiary-red.is-hovered path,
+  .button.is-inverted.is-tertiary-red.is-hovered circle, .button.is-inverted.is-tertiary-yellow:hover svg,
+  .button.is-inverted.is-tertiary-yellow:hover g,
+  .button.is-inverted.is-tertiary-yellow:hover path,
+  .button.is-inverted.is-tertiary-yellow:hover circle, .button.is-inverted.is-tertiary-yellow.is-hovered svg,
+  .button.is-inverted.is-tertiary-yellow.is-hovered g,
+  .button.is-inverted.is-tertiary-yellow.is-hovered path,
+  .button.is-inverted.is-tertiary-yellow.is-hovered circle, .button.is-inverted.is-tertiary-green:hover svg,
+  .button.is-inverted.is-tertiary-green:hover g,
+  .button.is-inverted.is-tertiary-green:hover path,
+  .button.is-inverted.is-tertiary-green:hover circle, .button.is-inverted.is-tertiary-green.is-hovered svg,
+  .button.is-inverted.is-tertiary-green.is-hovered g,
+  .button.is-inverted.is-tertiary-green.is-hovered path,
+  .button.is-inverted.is-tertiary-green.is-hovered circle, .button.is-inverted.is-link:hover svg,
+  .button.is-inverted.is-link:hover g,
+  .button.is-inverted.is-link:hover path,
+  .button.is-inverted.is-link:hover circle, .button.is-inverted.is-link.is-hovered svg,
+  .button.is-inverted.is-link.is-hovered g,
+  .button.is-inverted.is-link.is-hovered path,
+  .button.is-inverted.is-link.is-hovered circle, .button.is-inverted.is-text:hover svg,
+  .button.is-inverted.is-text:hover g,
+  .button.is-inverted.is-text:hover path,
+  .button.is-inverted.is-text:hover circle, .button.is-inverted.is-text.is-hovered svg,
+  .button.is-inverted.is-text.is-hovered g,
+  .button.is-inverted.is-text.is-hovered path,
+  .button.is-inverted.is-text.is-hovered circle {
+    fill: var(--bal-button-inverted-text-color-hover);
+  }
+}
+.button.is-inverted.is-tertiary:active, .button.is-inverted.is-tertiary.is-active, .button.is-inverted.is-tertiary-purple:active, .button.is-inverted.is-tertiary-purple.is-active, .button.is-inverted.is-tertiary-red:active, .button.is-inverted.is-tertiary-red.is-active, .button.is-inverted.is-tertiary-yellow:active, .button.is-inverted.is-tertiary-yellow.is-active, .button.is-inverted.is-tertiary-green:active, .button.is-inverted.is-tertiary-green.is-active, .button.is-inverted.is-link:active, .button.is-inverted.is-link.is-active, .button.is-inverted.is-text:active, .button.is-inverted.is-text.is-active {
+  background: var(--bal-button-inverted-text-background-active);
+  border-color: var(--bal-button-inverted-text-border-color-active);
+  color: var(--bal-button-inverted-text-color-active);
+}
+.button.is-inverted.is-tertiary:active svg,
+.button.is-inverted.is-tertiary:active g,
+.button.is-inverted.is-tertiary:active path,
+.button.is-inverted.is-tertiary:active circle, .button.is-inverted.is-tertiary.is-active svg,
+.button.is-inverted.is-tertiary.is-active g,
+.button.is-inverted.is-tertiary.is-active path,
+.button.is-inverted.is-tertiary.is-active circle, .button.is-inverted.is-tertiary-purple:active svg,
+.button.is-inverted.is-tertiary-purple:active g,
+.button.is-inverted.is-tertiary-purple:active path,
+.button.is-inverted.is-tertiary-purple:active circle, .button.is-inverted.is-tertiary-purple.is-active svg,
+.button.is-inverted.is-tertiary-purple.is-active g,
+.button.is-inverted.is-tertiary-purple.is-active path,
+.button.is-inverted.is-tertiary-purple.is-active circle, .button.is-inverted.is-tertiary-red:active svg,
+.button.is-inverted.is-tertiary-red:active g,
+.button.is-inverted.is-tertiary-red:active path,
+.button.is-inverted.is-tertiary-red:active circle, .button.is-inverted.is-tertiary-red.is-active svg,
+.button.is-inverted.is-tertiary-red.is-active g,
+.button.is-inverted.is-tertiary-red.is-active path,
+.button.is-inverted.is-tertiary-red.is-active circle, .button.is-inverted.is-tertiary-yellow:active svg,
+.button.is-inverted.is-tertiary-yellow:active g,
+.button.is-inverted.is-tertiary-yellow:active path,
+.button.is-inverted.is-tertiary-yellow:active circle, .button.is-inverted.is-tertiary-yellow.is-active svg,
+.button.is-inverted.is-tertiary-yellow.is-active g,
+.button.is-inverted.is-tertiary-yellow.is-active path,
+.button.is-inverted.is-tertiary-yellow.is-active circle, .button.is-inverted.is-tertiary-green:active svg,
+.button.is-inverted.is-tertiary-green:active g,
+.button.is-inverted.is-tertiary-green:active path,
+.button.is-inverted.is-tertiary-green:active circle, .button.is-inverted.is-tertiary-green.is-active svg,
+.button.is-inverted.is-tertiary-green.is-active g,
+.button.is-inverted.is-tertiary-green.is-active path,
+.button.is-inverted.is-tertiary-green.is-active circle, .button.is-inverted.is-link:active svg,
+.button.is-inverted.is-link:active g,
+.button.is-inverted.is-link:active path,
+.button.is-inverted.is-link:active circle, .button.is-inverted.is-link.is-active svg,
+.button.is-inverted.is-link.is-active g,
+.button.is-inverted.is-link.is-active path,
+.button.is-inverted.is-link.is-active circle, .button.is-inverted.is-text:active svg,
+.button.is-inverted.is-text:active g,
+.button.is-inverted.is-text:active path,
+.button.is-inverted.is-text:active circle, .button.is-inverted.is-text.is-active svg,
+.button.is-inverted.is-text.is-active g,
+.button.is-inverted.is-text.is-active path,
+.button.is-inverted.is-text.is-active circle {
+  fill: var(--bal-button-inverted-text-color-active);
+}
+.button.is-inverted.is-light {
+  background: var(--bal-button-inverted-light-background);
+  border-color: var(--bal-button-inverted-light-border-color);
+  color: var(--bal-button-inverted-light-color);
+}
+.button.is-inverted.is-light svg,
+.button.is-inverted.is-light g,
+.button.is-inverted.is-light path,
+.button.is-inverted.is-light circle {
+  fill: var(--bal-button-inverted-light-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.is-inverted.is-light:hover, .button.is-inverted.is-light.is-hovered {
+    background: var(--bal-button-inverted-light-background-hover);
+    border-color: var(--bal-button-inverted-light-border-color-hover);
+    color: var(--bal-button-inverted-light-color-hover);
+  }
+  .button.is-inverted.is-light:hover svg,
+  .button.is-inverted.is-light:hover g,
+  .button.is-inverted.is-light:hover path,
+  .button.is-inverted.is-light:hover circle, .button.is-inverted.is-light.is-hovered svg,
+  .button.is-inverted.is-light.is-hovered g,
+  .button.is-inverted.is-light.is-hovered path,
+  .button.is-inverted.is-light.is-hovered circle {
+    fill: var(--bal-button-inverted-light-color-hover);
+  }
+}
+.button.is-inverted.is-light:active, .button.is-inverted.is-light.is-active {
+  background: var(--bal-button-inverted-light-background-active);
+  border-color: var(--bal-button-inverted-light-border-color-active);
+  color: var(--bal-button-inverted-light-color-active);
+}
+.button.is-inverted.is-light:active svg,
+.button.is-inverted.is-light:active g,
+.button.is-inverted.is-light:active path,
+.button.is-inverted.is-light:active circle, .button.is-inverted.is-light.is-active svg,
+.button.is-inverted.is-light.is-active g,
+.button.is-inverted.is-light.is-active path,
+.button.is-inverted.is-light.is-active circle {
+  fill: var(--bal-button-inverted-light-color-active);
+}
+.button.is-disabled.is-inverted, .button.is-disabled, .button.is-disabled:hover, .button.is-disabled:active, .button.is-disabled:focus, .button.is-inverted:disabled, .button:disabled {
+  background: var(--bal-button-disabled-background);
+  border-color: var(--bal-button-disabled-border-color);
+  color: var(--bal-button-disabled-color);
+  opacity: 1;
+}
+.button.is-disabled.is-inverted svg,
+.button.is-disabled.is-inverted g,
+.button.is-disabled.is-inverted path,
+.button.is-disabled.is-inverted circle, .button.is-disabled svg,
+.button.is-disabled g,
+.button.is-disabled path,
+.button.is-disabled circle, .button.is-disabled:hover svg,
+.button.is-disabled:hover g,
+.button.is-disabled:hover path,
+.button.is-disabled:hover circle, .button.is-disabled:active svg,
+.button.is-disabled:active g,
+.button.is-disabled:active path,
+.button.is-disabled:active circle, .button.is-disabled:focus svg,
+.button.is-disabled:focus g,
+.button.is-disabled:focus path,
+.button.is-disabled:focus circle, .button.is-inverted:disabled svg,
+.button.is-inverted:disabled g,
+.button.is-inverted:disabled path,
+.button.is-inverted:disabled circle, .button:disabled svg,
+.button:disabled g,
+.button:disabled path,
+.button:disabled circle {
+  fill: var(--bal-button-disabled-color);
+}
+.button.is-disabled.is-inverted > span::after, .button.is-disabled > span::after, .button.is-disabled:hover > span::after, .button.is-disabled:active > span::after, .button.is-disabled:focus > span::after, .button.is-inverted:disabled > span::after, .button:disabled > span::after {
+  display: none;
+  content: none;
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.buttons .button {
+  margin-bottom: 0.5rem;
+}
+.buttons .button:not(:last-child):not(.is-fullwidth) {
+  margin-right: 0.5rem;
+}
+.buttons:last-child {
+  margin-bottom: -0.5rem;
+}
+.buttons:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large):not(.is-rounded) {
+  border-radius: var(--bal-button-radius);
+  font-size: var(--bal-button-small-font-size);
+}
+.buttons.has-addons .button:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.buttons.has-addons .button:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  margin-right: -1px;
+}
+.buttons.has-addons .button:last-child {
+  margin-right: 0;
+}
+.buttons.has-addons .button:hover, .buttons.has-addons .button.is-hovered {
+  z-index: 2;
+}
+.buttons.has-addons .button:focus, .buttons.has-addons .button.is-focused, .buttons.has-addons .button:active, .buttons.has-addons .button.is-active, .buttons.has-addons .button.is-selected {
+  z-index: 3;
+}
+.buttons.has-addons .button:focus:hover, .buttons.has-addons .button.is-focused:hover, .buttons.has-addons .button:active:hover, .buttons.has-addons .button.is-active:hover, .buttons.has-addons .button.is-selected:hover {
+  z-index: 4;
+}
+.buttons.has-addons .button.is-expanded {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.buttons.is-centered {
+  justify-content: center;
+}
+.buttons.is-centered:not(.has-addons) .button:not(.is-fullwidth) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.buttons.is-right {
+  justify-content: flex-end;
+}
+.buttons.is-right:not(.has-addons) .button:not(.is-fullwidth) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  width: 100% !important;
+  padding-left: var(--bal-container-space);
+  padding-right: var(--bal-container-space);
+}
+.container.is-fluid {
+  max-width: var(--bal-container-size-fluid) !important;
+}
+.container.is-detail-page {
+  max-width: var(--bal-container-size-detail-page) !important;
+}
+.container.is-compact {
+  max-width: var(--bal-container-size-compact) !important;
+}
+.container.is-blog-page {
+  max-width: var(--bal-container-size-blog-page) !important;
+}
+@media screen and (min-width: 769px), print {
+  .container {
+    padding-left: var(--bal-container-space-tablet);
+    padding-right: var(--bal-container-space-tablet);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-left: var(--bal-container-space-desktop);
+    padding-right: var(--bal-container-space-desktop);
+    max-width: var(--bal-container-size-normal);
+  }
+}
+
+.grid {
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.col {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: var(--bal-column-gap);
+}
+.grid.is-mobile > .col.is-narrow {
+  flex: none;
+  width: unset;
+}
+.grid.is-mobile > .col.is-full {
+  flex: none;
+  width: 100%;
+}
+.grid.is-mobile > .col.is-three-quarters {
+  flex: none;
+  width: 75%;
+}
+.grid.is-mobile > .col.is-two-thirds {
+  flex: none;
+  width: 66.6666%;
+}
+.grid.is-mobile > .col.is-half {
+  flex: none;
+  width: 50%;
+}
+.grid.is-mobile > .col.is-one-third {
+  flex: none;
+  width: 33.3333%;
+}
+.grid.is-mobile > .col.is-one-quarter {
+  flex: none;
+  width: 25%;
+}
+.grid.is-mobile > .col.is-one-fifth {
+  flex: none;
+  width: 20%;
+}
+.grid.is-mobile > .col.is-two-fifths {
+  flex: none;
+  width: 40%;
+}
+.grid.is-mobile > .col.is-three-fifths {
+  flex: none;
+  width: 60%;
+}
+.grid.is-mobile > .col.is-four-fifths {
+  flex: none;
+  width: 80%;
+}
+.grid.is-mobile > .col.is-offset-three-quarters {
+  margin-left: 75%;
+}
+.grid.is-mobile > .col.is-offset-two-thirds {
+  margin-left: 66.6666%;
+}
+.grid.is-mobile > .col.is-offset-half {
+  margin-left: 50%;
+}
+.grid.is-mobile > .col.is-offset-one-third {
+  margin-left: 33.3333%;
+}
+.grid.is-mobile > .col.is-offset-one-quarter {
+  margin-left: 25%;
+}
+.grid.is-mobile > .col.is-offset-one-fifth {
+  margin-left: 20%;
+}
+.grid.is-mobile > .col.is-offset-two-fifths {
+  margin-left: 40%;
+}
+.grid.is-mobile > .col.is-offset-three-fifths {
+  margin-left: 60%;
+}
+.grid.is-mobile > .col.is-offset-four-fifths {
+  margin-left: 80%;
+}
+.grid.is-mobile > .col.is-0 {
+  flex: none;
+  width: 0%;
+}
+.grid.is-mobile > .col.is-offset-0 {
+  margin-left: 0%;
+}
+.grid.is-mobile > .col.is-1 {
+  flex: none;
+  width: 8.3333333333%;
+}
+.grid.is-mobile > .col.is-offset-1 {
+  margin-left: 8.3333333333%;
+}
+.grid.is-mobile > .col.is-2 {
+  flex: none;
+  width: 16.6666666667%;
+}
+.grid.is-mobile > .col.is-offset-2 {
+  margin-left: 16.6666666667%;
+}
+.grid.is-mobile > .col.is-3 {
+  flex: none;
+  width: 25%;
+}
+.grid.is-mobile > .col.is-offset-3 {
+  margin-left: 25%;
+}
+.grid.is-mobile > .col.is-4 {
+  flex: none;
+  width: 33.3333333333%;
+}
+.grid.is-mobile > .col.is-offset-4 {
+  margin-left: 33.3333333333%;
+}
+.grid.is-mobile > .col.is-5 {
+  flex: none;
+  width: 41.6666666667%;
+}
+.grid.is-mobile > .col.is-offset-5 {
+  margin-left: 41.6666666667%;
+}
+.grid.is-mobile > .col.is-6 {
+  flex: none;
+  width: 50%;
+}
+.grid.is-mobile > .col.is-offset-6 {
+  margin-left: 50%;
+}
+.grid.is-mobile > .col.is-7 {
+  flex: none;
+  width: 58.3333333333%;
+}
+.grid.is-mobile > .col.is-offset-7 {
+  margin-left: 58.3333333333%;
+}
+.grid.is-mobile > .col.is-8 {
+  flex: none;
+  width: 66.6666666667%;
+}
+.grid.is-mobile > .col.is-offset-8 {
+  margin-left: 66.6666666667%;
+}
+.grid.is-mobile > .col.is-9 {
+  flex: none;
+  width: 75%;
+}
+.grid.is-mobile > .col.is-offset-9 {
+  margin-left: 75%;
+}
+.grid.is-mobile > .col.is-10 {
+  flex: none;
+  width: 83.3333333333%;
+}
+.grid.is-mobile > .col.is-offset-10 {
+  margin-left: 83.3333333333%;
+}
+.grid.is-mobile > .col.is-11 {
+  flex: none;
+  width: 91.6666666667%;
+}
+.grid.is-mobile > .col.is-offset-11 {
+  margin-left: 91.6666666667%;
+}
+.grid.is-mobile > .col.is-12 {
+  flex: none;
+  width: 100%;
+}
+.grid.is-mobile > .col.is-offset-12 {
+  margin-left: 100%;
+}
+@media screen and (max-width: 768px) {
+  .col.mobile\:is-narrow {
+    flex: none;
+    width: unset;
+  }
+  .col.mobile\:is-full {
+    flex: none;
+    width: 100%;
+  }
+  .col.mobile\:is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+  .col.mobile\:is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+  .col.mobile\:is-half {
+    flex: none;
+    width: 50%;
+  }
+  .col.mobile\:is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+  .col.mobile\:is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+  .col.mobile\:is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+  .col.mobile\:is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+  .col.mobile\:is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+  .col.mobile\:is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+  .col.mobile\:is-offset-three-quarters {
+    margin-left: 75%;
+  }
+  .col.mobile\:is-offset-two-thirds {
+    margin-left: 66.6666%;
+  }
+  .col.mobile\:is-offset-half {
+    margin-left: 50%;
+  }
+  .col.mobile\:is-offset-one-third {
+    margin-left: 33.3333%;
+  }
+  .col.mobile\:is-offset-one-quarter {
+    margin-left: 25%;
+  }
+  .col.mobile\:is-offset-one-fifth {
+    margin-left: 20%;
+  }
+  .col.mobile\:is-offset-two-fifths {
+    margin-left: 40%;
+  }
+  .col.mobile\:is-offset-three-fifths {
+    margin-left: 60%;
+  }
+  .col.mobile-offset-four-fifths {
+    margin-left: 80%;
+  }
+  .col.mobile\:is-0 {
+    flex: none;
+    width: 0%;
+  }
+  .col.mobile\:is-offset-0 {
+    margin-left: 0%;
+  }
+  .col.mobile\:is-1 {
+    flex: none;
+    width: 8.3333333333%;
+  }
+  .col.mobile\:is-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col.mobile\:is-2 {
+    flex: none;
+    width: 16.6666666667%;
+  }
+  .col.mobile\:is-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col.mobile\:is-3 {
+    flex: none;
+    width: 25%;
+  }
+  .col.mobile\:is-offset-3 {
+    margin-left: 25%;
+  }
+  .col.mobile\:is-4 {
+    flex: none;
+    width: 33.3333333333%;
+  }
+  .col.mobile\:is-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col.mobile\:is-5 {
+    flex: none;
+    width: 41.6666666667%;
+  }
+  .col.mobile\:is-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col.mobile\:is-6 {
+    flex: none;
+    width: 50%;
+  }
+  .col.mobile\:is-offset-6 {
+    margin-left: 50%;
+  }
+  .col.mobile\:is-7 {
+    flex: none;
+    width: 58.3333333333%;
+  }
+  .col.mobile\:is-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col.mobile\:is-8 {
+    flex: none;
+    width: 66.6666666667%;
+  }
+  .col.mobile\:is-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col.mobile\:is-9 {
+    flex: none;
+    width: 75%;
+  }
+  .col.mobile\:is-offset-9 {
+    margin-left: 75%;
+  }
+  .col.mobile\:is-10 {
+    flex: none;
+    width: 83.3333333333%;
+  }
+  .col.mobile\:is-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col.mobile\:is-11 {
+    flex: none;
+    width: 91.6666666667%;
+  }
+  .col.mobile\:is-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col.mobile\:is-12 {
+    flex: none;
+    width: 100%;
+  }
+  .col.mobile\:is-offset-12 {
+    margin-left: 100%;
+  }
+}
+@media screen and (min-width: 769px), print {
+  .col.is-narrow, .col.tablet\:is-narrow {
+    flex: none;
+    width: unset;
+  }
+  .col.is-full, .col.tablet\:is-full {
+    flex: none;
+    width: 100%;
+  }
+  .col.is-three-quarters, .col.tablet\:is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+  .col.is-two-thirds, .col.tablet\:is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+  .col.is-half, .col.tablet\:is-half {
+    flex: none;
+    width: 50%;
+  }
+  .col.is-one-third, .col.tablet\:is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+  .col.is-one-quarter, .col.tablet\:is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+  .col.is-one-fifth, .col.tablet\:is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+  .col.is-two-fifths, .col.tablet\:is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+  .col.is-three-fifths, .col.tablet\:is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+  .col.is-four-fifths, .col.tablet\:is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+  .col.is-offset-three-quarters, .col.tablet\:is-offset-three-quarters {
+    margin-left: 75%;
+  }
+  .col.is-offset-two-thirds, .col.tablet\:is-offset-two-thirds {
+    margin-left: 66.6666%;
+  }
+  .col.is-offset-half, .col.tablet\:is-offset-half {
+    margin-left: 50%;
+  }
+  .col.is-offset-one-third, .col.tablet\:is-offset-one-third {
+    margin-left: 33.3333%;
+  }
+  .col.is-offset-one-quarter, .col.tablet\:is-offset-one-quarter {
+    margin-left: 25%;
+  }
+  .col.is-offset-one-fifth, .col.tablet\:is-offset-one-fifth {
+    margin-left: 20%;
+  }
+  .col.is-offset-two-fifths, .col.tablet\:is-offset-two-fifths {
+    margin-left: 40%;
+  }
+  .col.is-offset-three-fifths, .col.tablet\:is-offset-three-fifths {
+    margin-left: 60%;
+  }
+  .col.is-offset-four-fifths, .col.tablet\:is-offset-four-fifths {
+    margin-left: 80%;
+  }
+  .col.is-0, .col.tablet\:is-0 {
+    flex: none;
+    width: 0%;
+  }
+  .col.is-offset-0, .col.tablet\:is-offset-0 {
+    margin-left: 0%;
+  }
+  .col.is-1, .col.tablet\:is-1 {
+    flex: none;
+    width: 8.3333333333%;
+  }
+  .col.is-offset-1, .col.tablet\:is-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col.is-2, .col.tablet\:is-2 {
+    flex: none;
+    width: 16.6666666667%;
+  }
+  .col.is-offset-2, .col.tablet\:is-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col.is-3, .col.tablet\:is-3 {
+    flex: none;
+    width: 25%;
+  }
+  .col.is-offset-3, .col.tablet\:is-offset-3 {
+    margin-left: 25%;
+  }
+  .col.is-4, .col.tablet\:is-4 {
+    flex: none;
+    width: 33.3333333333%;
+  }
+  .col.is-offset-4, .col.tablet\:is-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col.is-5, .col.tablet\:is-5 {
+    flex: none;
+    width: 41.6666666667%;
+  }
+  .col.is-offset-5, .col.tablet\:is-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col.is-6, .col.tablet\:is-6 {
+    flex: none;
+    width: 50%;
+  }
+  .col.is-offset-6, .col.tablet\:is-offset-6 {
+    margin-left: 50%;
+  }
+  .col.is-7, .col.tablet\:is-7 {
+    flex: none;
+    width: 58.3333333333%;
+  }
+  .col.is-offset-7, .col.tablet\:is-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col.is-8, .col.tablet\:is-8 {
+    flex: none;
+    width: 66.6666666667%;
+  }
+  .col.is-offset-8, .col.tablet\:is-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col.is-9, .col.tablet\:is-9 {
+    flex: none;
+    width: 75%;
+  }
+  .col.is-offset-9, .col.tablet\:is-offset-9 {
+    margin-left: 75%;
+  }
+  .col.is-10, .col.tablet\:is-10 {
+    flex: none;
+    width: 83.3333333333%;
+  }
+  .col.is-offset-10, .col.tablet\:is-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col.is-11, .col.tablet\:is-11 {
+    flex: none;
+    width: 91.6666666667%;
+  }
+  .col.is-offset-11, .col.tablet\:is-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col.is-12, .col.tablet\:is-12 {
+    flex: none;
+    width: 100%;
+  }
+  .col.is-offset-12, .col.tablet\:is-offset-12 {
+    margin-left: 100%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .col.touch\:is-narrow {
+    flex: none;
+    width: unset;
+  }
+  .col.touch\:is-full {
+    flex: none;
+    width: 100%;
+  }
+  .col.touch\:is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+  .col.touch\:is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+  .col.touch\:is-half {
+    flex: none;
+    width: 50%;
+  }
+  .col.touch\:is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+  .col.touch\:is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+  .col.touch\:is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+  .col.touch\:is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+  .col.touch\:is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+  .col.touch\:is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+  .col.touch\:is-offset-three-quarters {
+    margin-left: 75%;
+  }
+  .col.touch\:is-offset-two-thirds {
+    margin-left: 66.6666%;
+  }
+  .col.touch\:is-offset-half {
+    margin-left: 50%;
+  }
+  .col.touch\:is-offset-one-third {
+    margin-left: 33.3333%;
+  }
+  .col.touch\:is-offset-one-quarter {
+    margin-left: 25%;
+  }
+  .col.touch\:is-offset-one-fifth {
+    margin-left: 20%;
+  }
+  .col.touch\:is-offset-two-fifths {
+    margin-left: 40%;
+  }
+  .col.touch\:is-offset-three-fifths {
+    margin-left: 60%;
+  }
+  .col.touch\:is-offset-four-fifths {
+    margin-left: 80%;
+  }
+  .col.touch\:is-0 {
+    flex: none;
+    width: 0%;
+  }
+  .col.touch\:is-offset-0 {
+    margin-left: 0%;
+  }
+  .col.touch\:is-1 {
+    flex: none;
+    width: 8.3333333333%;
+  }
+  .col.touch\:is-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col.touch\:is-2 {
+    flex: none;
+    width: 16.6666666667%;
+  }
+  .col.touch\:is-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col.touch\:is-3 {
+    flex: none;
+    width: 25%;
+  }
+  .col.touch\:is-offset-3 {
+    margin-left: 25%;
+  }
+  .col.touch\:is-4 {
+    flex: none;
+    width: 33.3333333333%;
+  }
+  .col.touch\:is-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col.touch\:is-5 {
+    flex: none;
+    width: 41.6666666667%;
+  }
+  .col.touch\:is-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col.touch\:is-6 {
+    flex: none;
+    width: 50%;
+  }
+  .col.touch\:is-offset-6 {
+    margin-left: 50%;
+  }
+  .col.touch\:is-7 {
+    flex: none;
+    width: 58.3333333333%;
+  }
+  .col.touch\:is-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col.touch\:is-8 {
+    flex: none;
+    width: 66.6666666667%;
+  }
+  .col.touch\:is-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col.touch\:is-9 {
+    flex: none;
+    width: 75%;
+  }
+  .col.touch\:is-offset-9 {
+    margin-left: 75%;
+  }
+  .col.touch\:is-10 {
+    flex: none;
+    width: 83.3333333333%;
+  }
+  .col.touch\:is-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col.touch\:is-11 {
+    flex: none;
+    width: 91.6666666667%;
+  }
+  .col.touch\:is-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col.touch\:is-12 {
+    flex: none;
+    width: 100%;
+  }
+  .col.touch\:is-offset-12 {
+    margin-left: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .col.desktop\:is-narrow {
+    flex: none;
+    width: unset;
+  }
+  .col.desktop\:is-full {
+    flex: none;
+    width: 100%;
+  }
+  .col.desktop\:is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+  .col.desktop\:is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+  .col.desktop\:is-half {
+    flex: none;
+    width: 50%;
+  }
+  .col.desktop\:is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+  .col.desktop\:is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+  .col.desktop\:is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+  .col.desktop\:is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+  .col.desktop\:is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+  .col.desktop\:is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+  .col.desktop\:is-offset-three-quarters {
+    margin-left: 75%;
+  }
+  .col.desktop\:is-offset-two-thirds {
+    margin-left: 66.6666%;
+  }
+  .col.desktop\:is-offset-half {
+    margin-left: 50%;
+  }
+  .col.desktop\:is-offset-one-third {
+    margin-left: 33.3333%;
+  }
+  .col.desktop\:is-offset-one-quarter {
+    margin-left: 25%;
+  }
+  .col.desktop\:is-offset-one-fifth {
+    margin-left: 20%;
+  }
+  .col.desktop\:is-offset-two-fifths {
+    margin-left: 40%;
+  }
+  .col.desktop\:is-offset-three-fifths {
+    margin-left: 60%;
+  }
+  .col.desktop\:is-offset-four-fifths {
+    margin-left: 80%;
+  }
+  .col.desktop\:is-0 {
+    flex: none;
+    width: 0%;
+  }
+  .col.desktop\:is-offset-0 {
+    margin-left: 0%;
+  }
+  .col.desktop\:is-1 {
+    flex: none;
+    width: 8.3333333333%;
+  }
+  .col.desktop\:is-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col.desktop\:is-2 {
+    flex: none;
+    width: 16.6666666667%;
+  }
+  .col.desktop\:is-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col.desktop\:is-3 {
+    flex: none;
+    width: 25%;
+  }
+  .col.desktop\:is-offset-3 {
+    margin-left: 25%;
+  }
+  .col.desktop\:is-4 {
+    flex: none;
+    width: 33.3333333333%;
+  }
+  .col.desktop\:is-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col.desktop\:is-5 {
+    flex: none;
+    width: 41.6666666667%;
+  }
+  .col.desktop\:is-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col.desktop\:is-6 {
+    flex: none;
+    width: 50%;
+  }
+  .col.desktop\:is-offset-6 {
+    margin-left: 50%;
+  }
+  .col.desktop\:is-7 {
+    flex: none;
+    width: 58.3333333333%;
+  }
+  .col.desktop\:is-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col.desktop\:is-8 {
+    flex: none;
+    width: 66.6666666667%;
+  }
+  .col.desktop\:is-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col.desktop\:is-9 {
+    flex: none;
+    width: 75%;
+  }
+  .col.desktop\:is-offset-9 {
+    margin-left: 75%;
+  }
+  .col.desktop\:is-10 {
+    flex: none;
+    width: 83.3333333333%;
+  }
+  .col.desktop\:is-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col.desktop\:is-11 {
+    flex: none;
+    width: 91.6666666667%;
+  }
+  .col.desktop\:is-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col.desktop\:is-12 {
+    flex: none;
+    width: 100%;
+  }
+  .col.desktop\:is-offset-12 {
+    margin-left: 100%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .col.widescreen\:is-narrow {
+    flex: none;
+    width: unset;
+  }
+  .col.widescreen\:is-full {
+    flex: none;
+    width: 100%;
+  }
+  .col.widescreen\:is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+  .col.widescreen\:is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+  .col.widescreen\:is-half {
+    flex: none;
+    width: 50%;
+  }
+  .col.widescreen\:is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+  .col.widescreen\:is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+  .col.widescreen\:is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+  .col.widescreen\:is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+  .col.widescreen\:is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+  .col.widescreen\:is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+  .col.widescreen\:is-offset-three-quarters {
+    margin-left: 75%;
+  }
+  .col.widescreen\:is-offset-two-thirds {
+    margin-left: 66.6666%;
+  }
+  .col.widescreen\:is-offset-half {
+    margin-left: 50%;
+  }
+  .col.widescreen\:is-offset-one-third {
+    margin-left: 33.3333%;
+  }
+  .col.widescreen\:is-offset-one-quarter {
+    margin-left: 25%;
+  }
+  .col.widescreen\:is-offset-one-fifth {
+    margin-left: 20%;
+  }
+  .col.widescreen\:is-offset-two-fifths {
+    margin-left: 40%;
+  }
+  .col.widescreen\:is-offset-three-fifths {
+    margin-left: 60%;
+  }
+  .col.widescreen\:is-offset-four-fifths {
+    margin-left: 80%;
+  }
+  .col.widescreen\:is-0 {
+    flex: none;
+    width: 0%;
+  }
+  .col.widescreen\:is-offset-0 {
+    margin-left: 0%;
+  }
+  .col.widescreen\:is-1 {
+    flex: none;
+    width: 8.3333333333%;
+  }
+  .col.widescreen\:is-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col.widescreen\:is-2 {
+    flex: none;
+    width: 16.6666666667%;
+  }
+  .col.widescreen\:is-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col.widescreen\:is-3 {
+    flex: none;
+    width: 25%;
+  }
+  .col.widescreen\:is-offset-3 {
+    margin-left: 25%;
+  }
+  .col.widescreen\:is-4 {
+    flex: none;
+    width: 33.3333333333%;
+  }
+  .col.widescreen\:is-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col.widescreen\:is-5 {
+    flex: none;
+    width: 41.6666666667%;
+  }
+  .col.widescreen\:is-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col.widescreen\:is-6 {
+    flex: none;
+    width: 50%;
+  }
+  .col.widescreen\:is-offset-6 {
+    margin-left: 50%;
+  }
+  .col.widescreen\:is-7 {
+    flex: none;
+    width: 58.3333333333%;
+  }
+  .col.widescreen\:is-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col.widescreen\:is-8 {
+    flex: none;
+    width: 66.6666666667%;
+  }
+  .col.widescreen\:is-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col.widescreen\:is-9 {
+    flex: none;
+    width: 75%;
+  }
+  .col.widescreen\:is-offset-9 {
+    margin-left: 75%;
+  }
+  .col.widescreen\:is-10 {
+    flex: none;
+    width: 83.3333333333%;
+  }
+  .col.widescreen\:is-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col.widescreen\:is-11 {
+    flex: none;
+    width: 91.6666666667%;
+  }
+  .col.widescreen\:is-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col.widescreen\:is-12 {
+    flex: none;
+    width: 100%;
+  }
+  .col.widescreen\:is-offset-12 {
+    margin-left: 100%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .col.fullhd\:is-narrow {
+    flex: none;
+    width: unset;
+  }
+  .col.fullhd\:is-full {
+    flex: none;
+    width: 100%;
+  }
+  .col.fullhd\:is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+  .col.fullhd\:is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+  .col.fullhd\:is-half {
+    flex: none;
+    width: 50%;
+  }
+  .col.fullhd\:is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+  .col.fullhd\:is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+  .col.fullhd\:is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+  .col.fullhd\:is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+  .col.fullhd\:is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+  .col.fullhd\:is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+  .col.fullhd\:is-offset-three-quarters {
+    margin-left: 75%;
+  }
+  .col.fullhd\:is-offset-two-thirds {
+    margin-left: 66.6666%;
+  }
+  .col.fullhd\:is-offset-half {
+    margin-left: 50%;
+  }
+  .col.fullhd\:is-offset-one-third {
+    margin-left: 33.3333%;
+  }
+  .col.fullhd\:is-offset-one-quarter {
+    margin-left: 25%;
+  }
+  .col.fullhd\:is-offset-one-fifth {
+    margin-left: 20%;
+  }
+  .col.fullhd\:is-offset-two-fifths {
+    margin-left: 40%;
+  }
+  .col.fullhd\:is-offset-three-fifths {
+    margin-left: 60%;
+  }
+  .col.fullhd\:is-offset-four-fifths {
+    margin-left: 80%;
+  }
+  .col.fullhd\:is-0 {
+    flex: none;
+    width: 0%;
+  }
+  .col.fullhd\:is-offset-0 {
+    margin-left: 0%;
+  }
+  .col.fullhd\:is-1 {
+    flex: none;
+    width: 8.3333333333%;
+  }
+  .col.fullhd\:is-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col.fullhd\:is-2 {
+    flex: none;
+    width: 16.6666666667%;
+  }
+  .col.fullhd\:is-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col.fullhd\:is-3 {
+    flex: none;
+    width: 25%;
+  }
+  .col.fullhd\:is-offset-3 {
+    margin-left: 25%;
+  }
+  .col.fullhd\:is-4 {
+    flex: none;
+    width: 33.3333333333%;
+  }
+  .col.fullhd\:is-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col.fullhd\:is-5 {
+    flex: none;
+    width: 41.6666666667%;
+  }
+  .col.fullhd\:is-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col.fullhd\:is-6 {
+    flex: none;
+    width: 50%;
+  }
+  .col.fullhd\:is-offset-6 {
+    margin-left: 50%;
+  }
+  .col.fullhd\:is-7 {
+    flex: none;
+    width: 58.3333333333%;
+  }
+  .col.fullhd\:is-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col.fullhd\:is-8 {
+    flex: none;
+    width: 66.6666666667%;
+  }
+  .col.fullhd\:is-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col.fullhd\:is-9 {
+    flex: none;
+    width: 75%;
+  }
+  .col.fullhd\:is-offset-9 {
+    margin-left: 75%;
+  }
+  .col.fullhd\:is-10 {
+    flex: none;
+    width: 83.3333333333%;
+  }
+  .col.fullhd\:is-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col.fullhd\:is-11 {
+    flex: none;
+    width: 91.6666666667%;
+  }
+  .col.fullhd\:is-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col.fullhd\:is-12 {
+    flex: none;
+    width: 100%;
+  }
+  .col.fullhd\:is-offset-12 {
+    margin-left: 100%;
+  }
+}
+
+.grid {
+  margin-left: calc(var(--bal-column-gap) * -1);
+  margin-right: calc(var(--bal-column-gap) * -1);
+  margin-top: calc(var(--bal-column-gap) * -1);
+}
+.grid:last-child {
+  margin-bottom: calc(var(--bal-column-gap) * -1);
+}
+.grid:not(:last-child) {
+  margin-bottom: calc(1.5rem - var(--bal-column-gap));
+}
+.grid.is-centered {
+  justify-content: center;
+}
+.grid.is-gapless {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
+.grid.is-gapless > .col {
+  margin: 0;
+  padding: 0 !important;
+}
+.grid.is-gapless:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.grid.is-gapless:last-child {
+  margin-bottom: 0;
+}
+.grid.is-mobile {
+  display: flex;
+}
+.grid.is-multiline {
+  flex-wrap: wrap;
+}
+.grid.is-vcentered {
+  align-items: center;
+}
+@media screen and (min-width: 769px), print {
+  .grid:not(.is-desktop) {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .grid.is-desktop {
+    display: flex;
+  }
+}
+
+a.link:not(.button),
+a.is-link:not(.button) {
+  color: var(--bal-link-color);
+  font-weight: var(--bal-link-font-weight);
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  border-radius: var(--bal-link-radius);
+}
+a.link:not(.button) svg,
+a.link:not(.button) g,
+a.link:not(.button) path,
+a.link:not(.button) circle,
+a.is-link:not(.button) svg,
+a.is-link:not(.button) g,
+a.is-link:not(.button) path,
+a.is-link:not(.button) circle {
+  fill: var(--bal-link-color);
+}
+a.link:not(.button):hover,
+a.is-link:not(.button):hover {
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  color: var(--bal-link-color-hover);
+}
+a.link:not(.button):hover svg,
+a.link:not(.button):hover g,
+a.link:not(.button):hover path,
+a.link:not(.button):hover circle,
+a.is-link:not(.button):hover svg,
+a.is-link:not(.button):hover g,
+a.is-link:not(.button):hover path,
+a.is-link:not(.button):hover circle {
+  fill: var(--bal-link-color-hover);
+}
+a.link:not(.button):active,
+a.is-link:not(.button):active {
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  color: var(--bal-link-color-active);
+}
+a.link:not(.button):active svg,
+a.link:not(.button):active g,
+a.link:not(.button):active path,
+a.link:not(.button):active circle,
+a.is-link:not(.button):active svg,
+a.is-link:not(.button):active g,
+a.is-link:not(.button):active path,
+a.is-link:not(.button):active circle {
+  fill: var(--bal-link-color-active);
+}
+a.link:not(.button).is-inverted,
+a.is-link:not(.button).is-inverted {
+  color: var(--bal-link-inverted-color);
+}
+a.link:not(.button).is-inverted svg,
+a.link:not(.button).is-inverted g,
+a.link:not(.button).is-inverted path,
+a.link:not(.button).is-inverted circle,
+a.is-link:not(.button).is-inverted svg,
+a.is-link:not(.button).is-inverted g,
+a.is-link:not(.button).is-inverted path,
+a.is-link:not(.button).is-inverted circle {
+  fill: var(--bal-link-inverted-color);
+}
+a.link:not(.button).is-inverted:hover,
+a.is-link:not(.button).is-inverted:hover {
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  color: var(--bal-link-inverted-color-hover);
+}
+a.link:not(.button).is-inverted:hover svg,
+a.link:not(.button).is-inverted:hover g,
+a.link:not(.button).is-inverted:hover path,
+a.link:not(.button).is-inverted:hover circle,
+a.is-link:not(.button).is-inverted:hover svg,
+a.is-link:not(.button).is-inverted:hover g,
+a.is-link:not(.button).is-inverted:hover path,
+a.is-link:not(.button).is-inverted:hover circle {
+  fill: var(--bal-link-inverted-color-hover);
+}
+a.link:not(.button).is-inverted:active,
+a.is-link:not(.button).is-inverted:active {
+  -webkit-text-decoration: var(--bal-link-text-decoration);
+          text-decoration: var(--bal-link-text-decoration);
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness);
+  text-underline-offset: var(--bal-link-text-underline-offset);
+  color: var(--bal-link-inverted-color-active);
+}
+a.link:not(.button).is-inverted:active svg,
+a.link:not(.button).is-inverted:active g,
+a.link:not(.button).is-inverted:active path,
+a.link:not(.button).is-inverted:active circle,
+a.is-link:not(.button).is-inverted:active svg,
+a.is-link:not(.button).is-inverted:active g,
+a.is-link:not(.button).is-inverted:active path,
+a.is-link:not(.button).is-inverted:active circle {
+  fill: var(--bal-link-inverted-color-active);
+}
+a.link:not(.button).is-light,
+a.is-link:not(.button).is-light {
+  -webkit-text-decoration: var(--bal-link-inverted-light-text-decoration);
+          text-decoration: var(--bal-link-inverted-light-text-decoration);
+  font-weight: var(--bal-link-inverted-light-font-weight);
+  color: var(--bal-link-inverted-color);
+}
+a.link:not(.button).is-light svg,
+a.link:not(.button).is-light g,
+a.link:not(.button).is-light path,
+a.link:not(.button).is-light circle,
+a.is-link:not(.button).is-light svg,
+a.is-link:not(.button).is-light g,
+a.is-link:not(.button).is-light path,
+a.is-link:not(.button).is-light circle {
+  fill: var(--bal-link-inverted-color);
+}
+a.link:not(.button).is-light:hover,
+a.is-link:not(.button).is-light:hover {
+  color: var(--bal-link-inverted-color-hover);
+}
+a.link:not(.button).is-light:hover svg,
+a.link:not(.button).is-light:hover g,
+a.link:not(.button).is-light:hover path,
+a.link:not(.button).is-light:hover circle,
+a.is-link:not(.button).is-light:hover svg,
+a.is-link:not(.button).is-light:hover g,
+a.is-link:not(.button).is-light:hover path,
+a.is-link:not(.button).is-light:hover circle {
+  fill: var(--bal-link-inverted-color-hover);
+}
+a.link:not(.button).is-light:active,
+a.is-link:not(.button).is-light:active {
+  color: var(--bal-link-inverted-color-active);
+}
+a.link:not(.button).is-light:active svg,
+a.link:not(.button).is-light:active g,
+a.link:not(.button).is-light:active path,
+a.link:not(.button).is-light:active circle,
+a.is-link:not(.button).is-light:active svg,
+a.is-link:not(.button).is-light:active g,
+a.is-link:not(.button).is-light:active path,
+a.is-link:not(.button).is-light:active circle {
+  fill: var(--bal-link-inverted-color-active);
+}
+
+ol.list,
+ul.list,
+ol.is-list,
+ul.is-list {
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  ol.list,
+  ul.list,
+  ol.is-list,
+  ul.is-list {
+    margin-bottom: 2rem;
+  }
+}
+ol.list.is-inside,
+ul.list.is-inside,
+ol.is-list.is-inside,
+ul.is-list.is-inside {
+  list-style-position: inside !important;
+  margin-left: 0;
+}
+ol.list.is-inside li,
+ul.list.is-inside li,
+ol.is-list.is-inside li,
+ul.is-list.is-inside li {
+  list-style-position: inside !important;
+}
+ol.list li,
+ul.list li,
+ol.is-list li,
+ul.is-list li {
+  hyphens: auto;
+  margin-bottom: 1rem;
+}
+ol.list li:last-child,
+ul.list li:last-child,
+ol.is-list li:last-child,
+ul.is-list li:last-child {
+  margin-bottom: 0;
+}
+ol.list li::marker,
+ul.list li::marker,
+ol.is-list li::marker,
+ul.is-list li::marker {
+  color: var(--bal-list-marker-color);
+}
+ol.list.has-bullet-circle li::marker,
+ul.list.has-bullet-circle li::marker,
+ol.is-list.has-bullet-circle li::marker,
+ul.is-list.has-bullet-circle li::marker {
+  content: none;
+}
+ol.list.has-bullet-circle li::before,
+ul.list.has-bullet-circle li::before,
+ol.is-list.has-bullet-circle li::before,
+ul.is-list.has-bullet-circle li::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  font-size: 0.75rem;
+  margin-left: -1.25rem;
+  margin-top: 0.313rem;
+  border-radius: var(--bal-list-bullet-radius);
+  background: var(--bal-list-bullet-background);
+}
+ol.list.has-bullet-circle.has-bullet-red li::before,
+ol.list.has-bullet-circle li.has-bullet-red::before,
+ul.list.has-bullet-circle.has-bullet-red li::before,
+ul.list.has-bullet-circle li.has-bullet-red::before,
+ol.is-list.has-bullet-circle.has-bullet-red li::before,
+ol.is-list.has-bullet-circle li.has-bullet-red::before,
+ul.is-list.has-bullet-circle.has-bullet-red li::before,
+ul.is-list.has-bullet-circle li.has-bullet-red::before {
+  background: var(--bal-list-bullet-background-red);
+}
+ol.list.has-bullet-circle.has-bullet-yellow li::before,
+ol.list.has-bullet-circle li.has-bullet-yellow::before,
+ul.list.has-bullet-circle.has-bullet-yellow li::before,
+ul.list.has-bullet-circle li.has-bullet-yellow::before,
+ol.is-list.has-bullet-circle.has-bullet-yellow li::before,
+ol.is-list.has-bullet-circle li.has-bullet-yellow::before,
+ul.is-list.has-bullet-circle.has-bullet-yellow li::before,
+ul.is-list.has-bullet-circle li.has-bullet-yellow::before {
+  background: var(--bal-list-bullet-background-yellow);
+}
+ol.list.has-bullet-circle.has-bullet-green li::before,
+ol.list.has-bullet-circle li.has-bullet-green::before,
+ul.list.has-bullet-circle.has-bullet-green li::before,
+ul.list.has-bullet-circle li.has-bullet-green::before,
+ol.is-list.has-bullet-circle.has-bullet-green li::before,
+ol.is-list.has-bullet-circle li.has-bullet-green::before,
+ul.is-list.has-bullet-circle.has-bullet-green li::before,
+ul.is-list.has-bullet-circle li.has-bullet-green::before {
+  background: var(--bal-list-bullet-background-green);
+}
+ol.list.has-bullet-circle.has-bullet-purple li::before,
+ol.list.has-bullet-circle li.has-bullet-purple::before,
+ul.list.has-bullet-circle.has-bullet-purple li::before,
+ul.list.has-bullet-circle li.has-bullet-purple::before,
+ol.is-list.has-bullet-circle.has-bullet-purple li::before,
+ol.is-list.has-bullet-circle li.has-bullet-purple::before,
+ul.is-list.has-bullet-circle.has-bullet-purple li::before,
+ul.is-list.has-bullet-circle li.has-bullet-purple::before {
+  background: var(--bal-list-bullet-background-purple);
+}
+ol.list.is-compact,
+ul.list.is-compact,
+ol.is-list.is-compact,
+ul.is-list.is-compact {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+ol.list.is-compact li,
+ul.list.is-compact li,
+ol.is-list.is-compact li,
+ul.is-list.is-compact li {
+  margin-bottom: 0.25rem;
+}
+ol.list.has-bullets, ol.list.has-bullet-check, ol.list.has-bullet-arrow-down, ol.list.has-bullet-close, ol.list.has-bullet-check-circle,
+ul.list.has-bullets,
+ul.list.has-bullet-check,
+ul.list.has-bullet-arrow-down,
+ul.list.has-bullet-close,
+ul.list.has-bullet-check-circle,
+ol.is-list.has-bullets,
+ol.is-list.has-bullet-check,
+ol.is-list.has-bullet-arrow-down,
+ol.is-list.has-bullet-close,
+ol.is-list.has-bullet-check-circle,
+ul.is-list.has-bullets,
+ul.is-list.has-bullet-check,
+ul.is-list.has-bullet-arrow-down,
+ul.is-list.has-bullet-close,
+ul.is-list.has-bullet-check-circle {
+  list-style-type: none !important;
+}
+ol.list.has-bullets li, ol.list.has-bullet-check li, ol.list.has-bullet-arrow-down li, ol.list.has-bullet-close li, ol.list.has-bullet-check-circle li,
+ul.list.has-bullets li,
+ul.list.has-bullet-check li,
+ul.list.has-bullet-arrow-down li,
+ul.list.has-bullet-close li,
+ul.list.has-bullet-check-circle li,
+ol.is-list.has-bullets li,
+ol.is-list.has-bullet-check li,
+ol.is-list.has-bullet-arrow-down li,
+ol.is-list.has-bullet-close li,
+ol.is-list.has-bullet-check-circle li,
+ul.is-list.has-bullets li,
+ul.is-list.has-bullet-check li,
+ul.is-list.has-bullet-arrow-down li,
+ul.is-list.has-bullet-close li,
+ul.is-list.has-bullet-check-circle li {
+  list-style-type: none !important;
+}
+ol.list.has-bullets li::marker, ol.list.has-bullet-check li::marker, ol.list.has-bullet-arrow-down li::marker, ol.list.has-bullet-close li::marker, ol.list.has-bullet-check-circle li::marker,
+ul.list.has-bullets li::marker,
+ul.list.has-bullet-check li::marker,
+ul.list.has-bullet-arrow-down li::marker,
+ul.list.has-bullet-close li::marker,
+ul.list.has-bullet-check-circle li::marker,
+ol.is-list.has-bullets li::marker,
+ol.is-list.has-bullet-check li::marker,
+ol.is-list.has-bullet-arrow-down li::marker,
+ol.is-list.has-bullet-close li::marker,
+ol.is-list.has-bullet-check-circle li::marker,
+ul.is-list.has-bullets li::marker,
+ul.is-list.has-bullet-check li::marker,
+ul.is-list.has-bullet-arrow-down li::marker,
+ul.is-list.has-bullet-close li::marker,
+ul.is-list.has-bullet-check-circle li::marker {
+  content: none !important;
+}
+ol.list.has-bullets li::before, ol.list.has-bullet-check li::before, ol.list.has-bullet-arrow-down li::before, ol.list.has-bullet-close li::before, ol.list.has-bullet-check-circle li::before,
+ul.list.has-bullets li::before,
+ul.list.has-bullet-check li::before,
+ul.list.has-bullet-arrow-down li::before,
+ul.list.has-bullet-close li::before,
+ul.list.has-bullet-check-circle li::before,
+ol.is-list.has-bullets li::before,
+ol.is-list.has-bullet-check li::before,
+ol.is-list.has-bullet-arrow-down li::before,
+ol.is-list.has-bullet-close li::before,
+ol.is-list.has-bullet-check-circle li::before,
+ul.is-list.has-bullets li::before,
+ul.is-list.has-bullet-check li::before,
+ul.is-list.has-bullet-arrow-down li::before,
+ul.is-list.has-bullet-close li::before,
+ul.is-list.has-bullet-check-circle li::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  font-size: 0.875rem;
+  margin-left: -1.375rem;
+  margin-top: 0.313rem;
+}
+ol.list.has-bullets.has-bullet-check-circle li::before, ol.list.has-bullets.has-bullet-arrow-down li::before, ol.list.has-bullet-check.has-bullet-check-circle li::before, ol.list.has-bullet-check.has-bullet-arrow-down li::before, ol.list.has-bullet-arrow-down.has-bullet-check-circle li::before, ol.list.has-bullet-arrow-down.has-bullet-arrow-down li::before, ol.list.has-bullet-close.has-bullet-check-circle li::before, ol.list.has-bullet-close.has-bullet-arrow-down li::before, ol.list.has-bullet-check-circle.has-bullet-check-circle li::before, ol.list.has-bullet-check-circle.has-bullet-arrow-down li::before,
+ul.list.has-bullets.has-bullet-check-circle li::before,
+ul.list.has-bullets.has-bullet-arrow-down li::before,
+ul.list.has-bullet-check.has-bullet-check-circle li::before,
+ul.list.has-bullet-check.has-bullet-arrow-down li::before,
+ul.list.has-bullet-arrow-down.has-bullet-check-circle li::before,
+ul.list.has-bullet-arrow-down.has-bullet-arrow-down li::before,
+ul.list.has-bullet-close.has-bullet-check-circle li::before,
+ul.list.has-bullet-close.has-bullet-arrow-down li::before,
+ul.list.has-bullet-check-circle.has-bullet-check-circle li::before,
+ul.list.has-bullet-check-circle.has-bullet-arrow-down li::before,
+ol.is-list.has-bullets.has-bullet-check-circle li::before,
+ol.is-list.has-bullets.has-bullet-arrow-down li::before,
+ol.is-list.has-bullet-check.has-bullet-check-circle li::before,
+ol.is-list.has-bullet-check.has-bullet-arrow-down li::before,
+ol.is-list.has-bullet-arrow-down.has-bullet-check-circle li::before,
+ol.is-list.has-bullet-arrow-down.has-bullet-arrow-down li::before,
+ol.is-list.has-bullet-close.has-bullet-check-circle li::before,
+ol.is-list.has-bullet-close.has-bullet-arrow-down li::before,
+ol.is-list.has-bullet-check-circle.has-bullet-check-circle li::before,
+ol.is-list.has-bullet-check-circle.has-bullet-arrow-down li::before,
+ul.is-list.has-bullets.has-bullet-check-circle li::before,
+ul.is-list.has-bullets.has-bullet-arrow-down li::before,
+ul.is-list.has-bullet-check.has-bullet-check-circle li::before,
+ul.is-list.has-bullet-check.has-bullet-arrow-down li::before,
+ul.is-list.has-bullet-arrow-down.has-bullet-check-circle li::before,
+ul.is-list.has-bullet-arrow-down.has-bullet-arrow-down li::before,
+ul.is-list.has-bullet-close.has-bullet-check-circle li::before,
+ul.is-list.has-bullet-close.has-bullet-arrow-down li::before,
+ul.is-list.has-bullet-check-circle.has-bullet-check-circle li::before,
+ul.is-list.has-bullet-check-circle.has-bullet-arrow-down li::before {
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  margin-left: -1.44rem;
+  margin-top: 0.25rem;
+}
+ol.list.has-bullet-check li::before,
+ol.list li.has-bullet-check::before,
+ul.list.has-bullet-check li::before,
+ul.list li.has-bullet-check::before,
+ol.is-list.has-bullet-check li::before,
+ol.is-list li.has-bullet-check::before,
+ul.is-list.has-bullet-check li::before,
+ul.is-list li.has-bullet-check::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzM4ODU0XzM0MjU0OSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjYzNzEgMS4xOTc5MkMxNC4wNjI4IDEuNTQ5NzQgMTQuMTIyOCAyLjE4MDA2IDEzLjc3MDkgMi42MDU3OUw1LjczMDkgMTIuMzM1TDUuNzI4NDggMTIuMzM3OUM1LjU0NTYgMTIuNTU3NSA1LjMxNjA4IDEyLjczMzYgNS4wNTY2MSAxMi44NTM0QzQuNzk3MTMgMTIuOTczMSA0LjUxNDIzIDEzLjAzMzYgNC4yMjg0OCAxMy4wMzAySDQuMjI3NThDMy45MzcxNSAxMy4wMjY2IDMuNjUxMzEgMTIuOTU3MyAzLjM5MTUyIDEyLjgyNzRDMy4xMzI2IDEyLjY5NzkgMi45MDYyNiAxMi41MTE3IDIuNzI5MzcgMTIuMjgyNkMyLjcyODc3IDEyLjI4MTggMi43MjgxOCAxMi4yODEgMi43Mjc1OCAxMi4yODAyTDAuMjEwNjk0IDkuMDQ0MjZDLTAuMTI4Mzc2IDguNjA4MzEgLTAuMDQ5ODQyIDcuOTgwMDMgMC4zODYxMDUgNy42NDA5NkMwLjgyMjA1MyA3LjMwMTg5IDEuNDUwMzMgNy4zODA0MyAxLjc4OTQgNy44MTYzOEw0LjI1Mjk3IDEwLjk4MzhMMTIuMjI5MiAxLjMzMTc2QzEyLjU4MSAwLjkwNjAzNSAxMy4yMTE0IDAuODQ2MTEzIDEzLjYzNzEgMS4xOTc5MloiIGZpbGw9IiMwMDBENkUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8zODg1NF8zNDI1NDkiPgo8cmVjdCB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==) no-repeat left top;
+}
+ol.list.has-bullet-arrow-down li::before,
+ol.list li.has-bullet-arrow-down::before,
+ul.list.has-bullet-arrow-down li::before,
+ul.list li.has-bullet-arrow-down::before,
+ol.is-list.has-bullet-arrow-down li::before,
+ol.is-list li.has-bullet-arrow-down::before,
+ul.is-list.has-bullet-arrow-down li::before,
+ul.is-list li.has-bullet-arrow-down::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiBmaWxsPSJub25lIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjY0NjQ2IDE0Ljg1MzZDNy44NDE3MiAxNS4wNDg4IDguMTU4MyAxNS4wNDg4IDguMzUzNTYgMTQuODUzNkwxMS44NTM2IDExLjM1MzZDMTEuOTk2NiAxMS4yMTA2IDEyLjAzOTMgMTAuOTk1NSAxMS45NjE5IDEwLjgwODdDMTEuODg0NSAxMC42MjE4IDExLjcwMjIgMTAuNSAxMS41IDEwLjVIOS4wMDAwMVYyQzkuMDAwMDEgMS40NDc3IDguNTUyMjkgMSA4LjAwMDAxIDFDNy40NDc3MiAxIDcuMDAwMDEgMS40NDc3IDcuMDAwMDEgMlYxMC41SDQuNTAwMDFDNC4yOTc3OCAxMC41IDQuMTE1NDYgMTAuNjIxOCA0LjAzODA3IDEwLjgwODdDMy45NjA2OCAxMC45OTU1IDQuMDAzNDYgMTEuMjEwNiA0LjE0NjQ2IDExLjM1MzZMNy42NDY0NiAxNC44NTM2WiIgZmlsbD0iIzAwMEQ2RSIvPgo8L3N2Zz4=) no-repeat left top;
+}
+ol.list.has-bullet-check-circle li::before,
+ol.list li.has-bullet-check-circle::before,
+ul.list.has-bullet-check-circle li::before,
+ul.list li.has-bullet-check-circle::before,
+ol.is-list.has-bullet-check-circle li::before,
+ol.is-list li.has-bullet-check-circle::before,
+ul.is-list.has-bullet-check-circle li::before,
+ul.is-list li.has-bullet-check-circle::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzE3ODdfMTIyNCkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTZDMTIuNDE4MyAxNiAxNiAxMi40MTgzIDE2IDhDMTYgMy41ODE3MiAxMi40MTgzIDAgOCAwQzMuNTgxNzIgMCAwIDMuNTgxNzIgMCA4QzAgMTIuNDE4MyAzLjU4MTcyIDE2IDggMTZaTTYuNzYxNyAxMS43OTQ1QzYuOTgyNTkgMTEuNjk2NSA3LjE3OTI0IDExLjU1MTMgNy4zMzc3MyAxMS4zNjlMMTIuMzczMSA2LjMzMzIxQzEyLjQ2NzcgNi4yMzM5NiAxMi41NDE3IDYuMTE3MDYgMTIuNTkxIDUuOTg5MTVDMTIuNjQwMyA1Ljg2MTI1IDEyLjY2MzkgNS43MjQ4OCAxMi42NjA0IDUuNTg3ODRDMTIuNjU2OSA1LjQ1MDggMTIuNjI2NCA1LjMxNTgxIDEyLjU3MDcgNS4xOTA1OUMxMi41MTQ5IDUuMDY1MzcgMTIuNDM1IDQuOTUyMzkgMTIuMzM1NSA0Ljg1ODA5QzEyLjIzNjEgNC43NjM3OCAxMi4xMTkgNC42ODk5OSAxMS45OTExIDQuNjQwODhDMTEuODYzMiA0LjU5MTc3IDExLjcyNjggNC41NjgzIDExLjU4OTggNC41NzE3OEMxMS40NTI5IDQuNTc1MjYgMTEuMzE3OSA0LjYwNTYyIDExLjE5MjYgNC42NjExN0MxMS4wNjc3IDQuNzE2NTcgMTAuOTU0IDQuNzk2NzQgMTAuODU5NyA0Ljg5NTYxTDYuMTUwNiA5LjU0MjI2QzYuMTAzODUgOS41ODgzOCA2LjAyNzk1IDkuNTg1NzIgNS45ODQ1NSA5LjUzNjQzTDQuOTA2MjEgOC4zMTE3NUw0LjkwMDA1IDguMzA1MzVDNC43MTM1OCA4LjExMTY0IDQuNDU5NTUgNy45OTczOCA0LjE5MDk4IDcuOTg2MTRDMy45MjI0MSA3Ljk3NDg5IDMuNjU5NzEgOC4wNjc1IDMuNDU3NjggOC4yNDQ5QzMuMjU1NjIgOC40MjIzMyAzLjEyOTgyIDguNjcwOTEgMy4xMDY3OSA4LjkzODlDMy4wODM3NSA5LjIwNjkgMy4xNjUzMSA5LjQ3MzMxIDMuMzM0MjMgOS42ODI1N0wzLjMzOTY4IDkuNjg5MzNMNC43NDk3NyAxMS4yODg4QzQuOTAzMDcgMTEuNDg1NCA1LjA5ODMxIDExLjY0NTUgNS4zMjEzMSAxMS43NTc0QzUuNTQ3OTYgMTEuODcxMiA1Ljc5NzQyIDExLjkzMjIgNi4wNTA5OCAxMS45MzZDNi4yOTU0MiAxMS45NDIgNi41MzgxOSAxMS44OTM2IDYuNzYxNyAxMS43OTQ1WiIgZmlsbD0iIzAwMEQ2RSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzE3ODdfMTIyNCI+CjxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K) no-repeat left top;
+}
+ol.list.has-bullet-close li::before,
+ol.list li.has-bullet-close::before,
+ul.list.has-bullet-close li::before,
+ul.list li.has-bullet-close::before,
+ol.is-list.has-bullet-close li::before,
+ol.is-list li.has-bullet-close::before,
+ul.is-list.has-bullet-close li::before,
+ul.is-list li.has-bullet-close::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzM4ODU0XzM0MjU5OSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEuNzA3MTEgMC4yOTI4OTNDMS4zMTY1OCAtMC4wOTc2MzEgMC42ODM0MTcgLTAuMDk3NjMxIDAuMjkyODkzIDAuMjkyODkzQy0wLjA5NzYzMSAwLjY4MzQxNyAtMC4wOTc2MzEgMS4zMTY1OCAwLjI5Mjg5MyAxLjcwNzExTDUuNTg1NzkgN0wwLjI5Mjg5MyAxMi4yOTI5Qy0wLjA5NzYzMSAxMi42ODM0IC0wLjA5NzYzMSAxMy4zMTY2IDAuMjkyODkzIDEzLjcwNzFDMC42ODM0MTcgMTQuMDk3NiAxLjMxNjU4IDE0LjA5NzYgMS43MDcxMSAxMy43MDcxTDcgOC40MTQyMUwxMi4yOTI5IDEzLjcwNzFDMTIuNjgzNCAxNC4wOTc2IDEzLjMxNjYgMTQuMDk3NiAxMy43MDcxIDEzLjcwNzFDMTQuMDk3NiAxMy4zMTY2IDE0LjA5NzYgMTIuNjgzNCAxMy43MDcxIDEyLjI5MjlMOC40MTQyMSA3TDEzLjcwNzEgMS43MDcxMUMxNC4wOTc2IDEuMzE2NTggMTQuMDk3NiAwLjY4MzQxNyAxMy43MDcxIDAuMjkyODkzQzEzLjMxNjYgLTAuMDk3NjMxIDEyLjY4MzQgLTAuMDk3NjMxIDEyLjI5MjkgMC4yOTI4OTNMNyA1LjU4NTc5TDEuNzA3MTEgMC4yOTI4OTNaIiBmaWxsPSIjMDAwRDZFIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMzg4NTRfMzQyNTk5Ij4KPHJlY3Qgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat left top;
+}
+ol.list.has-bullet-check.has-bullet-green li::before,
+ol.list li.has-bullet-check.has-bullet-green::before,
+ul.list.has-bullet-check.has-bullet-green li::before,
+ul.list li.has-bullet-check.has-bullet-green::before,
+ol.is-list.has-bullet-check.has-bullet-green li::before,
+ol.is-list li.has-bullet-check.has-bullet-green::before,
+ul.is-list.has-bullet-check.has-bullet-green li::before,
+ul.is-list li.has-bullet-check.has-bullet-green::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzI1MDdfMTkzNDYxKSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMuNjM3MSAxLjE5NzkyQzE0LjA2MjggMS41NDk3NCAxNC4xMjI4IDIuMTgwMDYgMTMuNzcwOSAyLjYwNTc5TDUuNzMwOSAxMi4zMzVMNS43Mjg0OCAxMi4zMzc5QzUuNTQ1NiAxMi41NTc1IDUuMzE2MDggMTIuNzMzNiA1LjA1NjYxIDEyLjg1MzRDNC43OTcxMyAxMi45NzMxIDQuNTE0MjMgMTMuMDMzNiA0LjIyODQ4IDEzLjAzMDJDMy45MzgwNSAxMy4wMjY2IDMuNjUxMzEgMTIuOTU3MyAzLjM5MTUyIDEyLjgyNzRDMy4xMzI2IDEyLjY5NzkgMi45MDYyNiAxMi41MTE3IDIuNzI5MzcgMTIuMjgyNkMyLjcyODc3IDEyLjI4MTggMi43MjgxOCAxMi4yODEgMi43Mjc1OCAxMi4yODAyTDAuMjEwNjk0IDkuMDQ0MjZDLTAuMTI4Mzc2IDguNjA4MzEgLTAuMDQ5ODQyIDcuOTgwMDMgMC4zODYxMDUgNy42NDA5NkMwLjgyMjA1MyA3LjMwMTg5IDEuNDUwMzMgNy4zODA0MyAxLjc4OTQgNy44MTYzOEw0LjI1Mjk3IDEwLjk4MzhMMTIuMjI5MiAxLjMzMTc2QzEyLjU4MSAwLjkwNjAzNSAxMy4yMTE0IDAuODQ2MTEzIDEzLjYzNzEgMS4xOTc5MloiIGZpbGw9IiMwMEIyOEYiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8yNTA3XzE5MzQ2MSI+CjxyZWN0IHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K) no-repeat left top;
+}
+ol.list.has-bullet-close.has-bullet-red li::before,
+ol.list li.has-bullet-close.has-bullet-red::before,
+ul.list.has-bullet-close.has-bullet-red li::before,
+ul.list li.has-bullet-close.has-bullet-red::before,
+ol.is-list.has-bullet-close.has-bullet-red li::before,
+ol.is-list li.has-bullet-close.has-bullet-red::before,
+ul.is-list.has-bullet-close.has-bullet-red li::before,
+ul.is-list li.has-bullet-close.has-bullet-red::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzI1MDdfMTkzNDY1KSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMS43MDcxMSAwLjI5Mjg5M0MxLjMxNjU4IC0wLjA5NzYzMSAwLjY4MzQxNyAtMC4wOTc2MzEgMC4yOTI4OTMgMC4yOTI4OTNDLTAuMDk3NjMxIDAuNjgzNDE3IC0wLjA5NzYzMSAxLjMxNjU4IDAuMjkyODkzIDEuNzA3MTFMNS41ODU3OSA3TDAuMjkyODkzIDEyLjI5MjlDLTAuMDk3NjMxIDEyLjY4MzQgLTAuMDk3NjMxIDEzLjMxNjYgMC4yOTI4OTMgMTMuNzA3MUMwLjY4MzQxNyAxNC4wOTc2IDEuMzE2NTggMTQuMDk3NiAxLjcwNzExIDEzLjcwNzFMNyA4LjQxNDIxTDEyLjI5MjkgMTMuNzA3MUMxMi42ODM0IDE0LjA5NzYgMTMuMzE2NiAxNC4wOTc2IDEzLjcwNzEgMTMuNzA3MUMxNC4wOTc2IDEzLjMxNjYgMTQuMDk3NiAxMi42ODM0IDEzLjcwNzEgMTIuMjkyOUw4LjQxNDIxIDdMMTMuNzA3MSAxLjcwNzExQzE0LjA5NzYgMS4zMTY1OCAxNC4wOTc2IDAuNjgzNDE3IDEzLjcwNzEgMC4yOTI4OTNDMTMuMzE2NiAtMC4wOTc2MzEgMTIuNjgzNCAtMC4wOTc2MzEgMTIuMjkyOSAwLjI5Mjg5M0w3IDUuNTg1NzlMMS43MDcxMSAwLjI5Mjg5M1oiIGZpbGw9IiNEOTMwNEMiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8yNTA3XzE5MzQ2NSI+CjxyZWN0IHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K) no-repeat left top;
+}
+ol.list.is-inverted li,
+ol.list.is-inverted li::marker,
+ul.list.is-inverted li,
+ul.list.is-inverted li::marker,
+ol.is-list.is-inverted li,
+ol.is-list.is-inverted li::marker,
+ul.is-list.is-inverted li,
+ul.is-list.is-inverted li::marker {
+  color: var(--bal-list-marker-inverted-color);
+}
+ol.list.is-inverted.has-bullet-check li::before,
+ol.list.is-inverted li.has-bullet-check::before,
+ul.list.is-inverted.has-bullet-check li::before,
+ul.list.is-inverted li.has-bullet-check::before,
+ol.is-list.is-inverted.has-bullet-check li::before,
+ol.is-list.is-inverted li.has-bullet-check::before,
+ul.is-list.is-inverted.has-bullet-check li::before,
+ul.is-list.is-inverted li.has-bullet-check::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzM4ODU0XzM0MjU0OSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjYzNzEgMS4xOTc5MkMxNC4wNjI4IDEuNTQ5NzQgMTQuMTIyOCAyLjE4MDA2IDEzLjc3MDkgMi42MDU3OUw1LjczMDkgMTIuMzM1TDUuNzI4NDggMTIuMzM3OUM1LjU0NTYgMTIuNTU3NSA1LjMxNjA4IDEyLjczMzYgNS4wNTY2MSAxMi44NTM0QzQuNzk3MTMgMTIuOTczMSA0LjUxNDIzIDEzLjAzMzYgNC4yMjg0OCAxMy4wMzAySDQuMjI3NThDMy45MzcxNSAxMy4wMjY2IDMuNjUxMzEgMTIuOTU3MyAzLjM5MTUyIDEyLjgyNzRDMy4xMzI2IDEyLjY5NzkgMi45MDYyNiAxMi41MTE3IDIuNzI5MzcgMTIuMjgyNkMyLjcyODc3IDEyLjI4MTggMi43MjgxOCAxMi4yODEgMi43Mjc1OCAxMi4yODAyTDAuMjEwNjk0IDkuMDQ0MjZDLTAuMTI4Mzc2IDguNjA4MzEgLTAuMDQ5ODQyIDcuOTgwMDMgMC4zODYxMDUgNy42NDA5NkMwLjgyMjA1MyA3LjMwMTg5IDEuNDUwMzMgNy4zODA0MyAxLjc4OTQgNy44MTYzOEw0LjI1Mjk3IDEwLjk4MzhMMTIuMjI5MiAxLjMzMTc2QzEyLjU4MSAwLjkwNjAzNSAxMy4yMTE0IDAuODQ2MTEzIDEzLjYzNzEgMS4xOTc5MloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMzg4NTRfMzQyNTQ5Ij4KPHJlY3Qgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=) no-repeat left top;
+}
+ol.list.is-inverted.has-bullet-close li::before,
+ol.list.is-inverted li.has-bullet-close::before,
+ul.list.is-inverted.has-bullet-close li::before,
+ul.list.is-inverted li.has-bullet-close::before,
+ol.is-list.is-inverted.has-bullet-close li::before,
+ol.is-list.is-inverted li.has-bullet-close::before,
+ul.is-list.is-inverted.has-bullet-close li::before,
+ul.is-list.is-inverted li.has-bullet-close::before {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzM4ODU0XzM0MjU5OSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEuNzA3MTEgMC4yOTI4OTNDMS4zMTY1OCAtMC4wOTc2MzEgMC42ODM0MTcgLTAuMDk3NjMxIDAuMjkyODkzIDAuMjkyODkzQy0wLjA5NzYzMSAwLjY4MzQxNyAtMC4wOTc2MzEgMS4zMTY1OCAwLjI5Mjg5MyAxLjcwNzExTDUuNTg1NzkgN0wwLjI5Mjg5MyAxMi4yOTI5Qy0wLjA5NzYzMSAxMi42ODM0IC0wLjA5NzYzMSAxMy4zMTY2IDAuMjkyODkzIDEzLjcwNzFDMC42ODM0MTcgMTQuMDk3NiAxLjMxNjU4IDE0LjA5NzYgMS43MDcxMSAxMy43MDcxTDcgOC40MTQyMUwxMi4yOTI5IDEzLjcwNzFDMTIuNjgzNCAxNC4wOTc2IDEzLjMxNjYgMTQuMDk3NiAxMy43MDcxIDEzLjcwNzFDMTQuMDk3NiAxMy4zMTY2IDE0LjA5NzYgMTIuNjgzNCAxMy43MDcxIDEyLjI5MjlMOC40MTQyMSA3TDEzLjcwNzEgMS43MDcxMUMxNC4wOTc2IDEuMzE2NTggMTQuMDk3NiAwLjY4MzQxNyAxMy43MDcxIDAuMjkyODkzQzEzLjMxNjYgLTAuMDk3NjMxIDEyLjY4MzQgLTAuMDk3NjMxIDEyLjI5MjkgMC4yOTI4OTNMNyA1LjU4NTc5TDEuNzA3MTEgMC4yOTI4OTNaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzM4ODU0XzM0MjU5OSI+CjxyZWN0IHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K) no-repeat left top;
+}
+
+ul.list:not(.has-bullet-circle):not(.has-bullet-check) li,
+ul.is-list:not(.has-bullet-circle):not(.has-bullet-check) li {
+  list-style: disc;
+}
+
+dl.list {
+  display: grid;
+  grid-template-columns: var(--bal-description-list-grid-term) var(--bal-description-list-grid-detail);
+  row-gap: var(--bal-description-list-row-gap);
+  -moz-column-gap: var(--bal-description-list-column-gap);
+       column-gap: var(--bal-description-list-column-gap);
+}
+dl.list dt {
+  color: var(--bal-description-list-term-color);
+  font-weight: var(--bal-description-list-term-font-weight);
+}
+dl.list dd {
+  color: var(--bal-description-list-detail-color);
+  font-weight: var(--bal-description-list-detail-font-weight);
+}
+
+.table {
+  background-color: var(--bal-table-background-color);
+  color: var(--bal-table-color);
+}
+.table td,
+.table th {
+  border: var(--bal-table-cell-border);
+  border-width: var(--bal-table-cell-border-width);
+  padding: var(--bal-table-cell-padding);
+  vertical-align: middle;
+}
+.table td.is-narrow,
+.table th.is-narrow {
+  white-space: nowrap;
+  width: 1%;
+}
+.table td.is-selected,
+.table th.is-selected {
+  background-color: var(--bal-table-row-background-color-active);
+  color: var(--bal-table-row-color-active);
+}
+.table td.is-selected a,
+.table td.is-selected strong,
+.table th.is-selected a,
+.table th.is-selected strong {
+  color: currentColor;
+}
+.table th {
+  color: var(--bal-table-cell-heading-color);
+}
+.table th:not([align]) {
+  text-align: inherit;
+}
+.table tr.is-selected {
+  background-color: var(--bal-table-row-background-color-active);
+  color: var(--bal-table-row-color-active);
+}
+.table tr.is-selected a,
+.table tr.is-selected strong {
+  color: currentColor;
+}
+.table tr.is-selected td,
+.table tr.is-selected th {
+  border-color: var(--bal-table-row-color-active);
+  color: currentColor;
+}
+.table thead {
+  background-color: var(--bal-table-head-background-color);
+}
+.table thead td,
+.table thead th {
+  border-width: var(--bal-table-head-cell-border-width);
+  color: var(--bal-table-head-cell-color);
+}
+.table tfoot {
+  background-color: var(--bal-table-foot-background-color);
+}
+.table tfoot td,
+.table tfoot th {
+  border-width: var(--bal-table-foot-cell-border-width);
+  color: var(--bal-table-foot-cell-color);
+}
+.table tbody {
+  background-color: var(--bal-table-body-background-color);
+}
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
+  border-bottom-width: 0;
+}
+.table.is-bordered th {
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: var(--bal-table-cell-border-color);
+  border-left-color: var(--bal-table-cell-border-color);
+  border-right-color: var(--bal-table-cell-border-color);
+}
+.table.is-bordered td {
+  border-width: 1px;
+}
+.table.is-bordered tr:last-child td {
+  border-bottom-width: 1px;
+}
+.table.is-fullwidth {
+  width: 100%;
+}
+.table.is-hoverable tbody tr:not(.is-selected):hover {
+  background-color: var(--bal-table-row-background-color-hover);
+}
+.table.is-hoverable.is-striped tbody tr:not(.is-selected):hover {
+  background-color: var(--bal-table-row-background-color-hover);
+}
+.table.is-hoverable.is-striped tbody tr:not(.is-selected):hover:nth-child(even) {
+  background-color: var(--bal-table-striped-row-even-background-color-hover);
+}
+.table.is-narrow td,
+.table.is-narrow th {
+  padding: 0.25em 0.5em;
+}
+.table.is-striped tbody tr:not(.is-selected):nth-child(even) {
+  background-color: var(--bal-table-striped-row-even-background-color);
+}
+
+.table-container {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+table.table {
+  display: table !important;
+  border-spacing: 0;
+  margin: 0;
+}
+table.table thead tr {
+  border-top: 0;
+}
+table.table thead th {
+  border-color: var(--bal-table-head-cell-border-color);
+  border-bottom-width: 2px;
+}
+table.table th:not([align]) {
+  text-align: left;
+}
+table.table td,
+table.table th {
+  font-size: var(--bal-table-head-font-size);
+  font-family: var(--bal-table-head-font-family);
+  vertical-align: middle;
+  color: var(--bal-table-color);
+  text-align: left;
+}
+table.table td .bal-checkbox,
+table.table th .bal-checkbox {
+  padding: 0;
+  margin-top: 1px;
+}
+table.table td {
+  color: var(--bal-table-color);
+  hyphens: auto;
+}
+table.table td.has-buttons {
+  padding: 2px;
+}
+table.table td.has-buttons .bal-button {
+  margin-right: 0.25rem;
+}
+table.table td.has-buttons .bal-button:last-child {
+  margin-right: 0px;
+}
+table.table td.has-buttons .buttons {
+  justify-content: flex-end;
+  padding: 3px;
+}
+
+.title,
+.subtitle {
+  hyphens: auto;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--bal-text-size-xxx-large);
+  line-height: var(--bal-line-height-xxx-large);
+}
+@media screen and (min-width: 769px), print {
+  .title,
+  .subtitle {
+    font-size: var(--bal-text-size-xxx-large-tablet);
+    line-height: var(--bal-line-height-tablet-xxx-large);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .title,
+  .subtitle {
+    font-size: var(--bal-text-size-xxx-large-desktop);
+    line-height: var(--bal-line-height-desktop-xxx-large);
+  }
+}
+.title em,
+.title span,
+.subtitle em,
+.subtitle span {
+  font-weight: inherit;
+}
+.title strong,
+.subtitle strong {
+  font-weight: var(--bal-font-weight-bold);
+}
+.title:not(:last-child),
+.subtitle:not(:last-child) {
+  margin-bottom: var(--bal-space-x-small);
+  margin-bottom: var(--bal-space-x-small-desktop);
+}
+@media screen and (min-width: 769px), print {
+  .title:not(:last-child),
+  .subtitle:not(:last-child) {
+    margin-bottom: var(--bal-space-x-small-tablet);
+  }
+}
+.title {
+  font-family: var(--bal-title-font-family);
+  font-weight: var(--bal-title-font-weight);
+}
+
+.subtitle {
+  font-family: var(--bal-subtitle-font-family);
+  font-weight: var(--bal-subtitle-font-weight);
+}
+
+.has-sticky-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.has-sticky-footer main {
+  padding-bottom: 2.5rem;
+}
+.has-sticky-footer .bal-footer,
+.has-sticky-footer footer.footer {
+  margin-top: auto;
+}
+
+:root {
+  --bal-line-height-x-small: 1.125rem;
+  --bal-line-height-small: 1.25rem;
+  --bal-line-height-normal: 1.5rem;
+  --bal-line-height-medium: 1.5rem;
+  --bal-line-height-large: 1.5rem;
+  --bal-line-height-x-large: 2rem;
+  --bal-line-height-xx-large: 2rem;
+  --bal-line-height-xxx-large: 2rem;
+  --bal-line-height-xxxx-large: 2.5rem;
+  --bal-line-height-xxxxx-large: 3.5rem;
+  --bal-line-height-tablet-x-small: 1.125rem;
+  --bal-line-height-tablet-small: 1.25rem;
+  --bal-line-height-tablet-normal: 1.5rem;
+  --bal-line-height-tablet-medium: 1.625rem;
+  --bal-line-height-tablet-large: 2rem;
+  --bal-line-height-tablet-x-large: 2rem;
+  --bal-line-height-tablet-xx-large: 2.5rem;
+  --bal-line-height-tablet-xxx-large: 3rem;
+  --bal-line-height-tablet-xxxx-large: 3.5rem;
+  --bal-line-height-tablet-xxxxx-large: 6rem;
+  --bal-line-height-desktop-x-small: 1.125rem;
+  --bal-line-height-desktop-small: 1.25rem;
+  --bal-line-height-desktop-normal: 1.5rem;
+  --bal-line-height-desktop-medium: 1.625rem;
+  --bal-line-height-desktop-large: 2rem;
+  --bal-line-height-desktop-x-large: 2rem;
+  --bal-line-height-desktop-xx-large: 2.5rem;
+  --bal-line-height-desktop-xxx-large: 3rem;
+  --bal-line-height-desktop-xxxx-large: 3.5rem;
+  --bal-line-height-desktop-xxxxx-large: 6rem;
+}
+/*# sourceMappingURL=basic.css.map */

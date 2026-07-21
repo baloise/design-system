@@ -1,0 +1,109 @@
+{
+  "run": {
+    "command": "nx run core:start",
+    "startTime": "2026-05-11T12:47:44.696Z",
+    "endTime": "2026-05-11T12:47:48.877Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "tokens:build",
+      "target": "build",
+      "projectName": "tokens",
+      "hash": "5892091744033933979",
+      "startTime": "2026-05-11T12:47:44.743Z",
+      "endTime": "2026-05-11T12:47:44.779Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "maps:build",
+      "target": "build",
+      "projectName": "maps",
+      "hash": "1376686740362537405",
+      "startTime": "2026-05-11T12:47:44.743Z",
+      "endTime": "2026-05-11T12:47:44.804Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "brand-icons:build",
+      "target": "build",
+      "projectName": "brand-icons",
+      "hash": "16110356886826469118",
+      "startTime": "2026-05-11T12:47:44.743Z",
+      "endTime": "2026-05-11T12:47:45.398Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "styles:build",
+      "target": "build",
+      "projectName": "styles",
+      "hash": "11472418423721440377",
+      "startTime": "2026-05-11T12:47:45.473Z",
+      "endTime": "2026-05-11T12:47:46.096Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "playwright:build",
+      "target": "build",
+      "projectName": "playwright",
+      "hash": "5277220717864935975",
+      "startTime": "2026-05-11T12:47:45.538Z",
+      "endTime": "2026-05-11T12:47:46.136Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "icons:build",
+      "target": "build",
+      "projectName": "icons",
+      "hash": "14297287769570729386",
+      "startTime": "2026-05-11T12:47:46.048Z",
+      "endTime": "2026-05-11T12:47:46.184Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "output-target-angular:build",
+      "target": "build",
+      "projectName": "output-target-angular",
+      "hash": "6455336738383191315",
+      "startTime": "2026-05-11T12:47:46.218Z",
+      "endTime": "2026-05-11T12:47:46.332Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "output-target-web:build",
+      "target": "build",
+      "projectName": "output-target-web",
+      "hash": "2013605711277770234",
+      "startTime": "2026-05-11T12:47:46.254Z",
+      "endTime": "2026-05-11T12:47:46.365Z",
+      "params": "",
+      "cacheStatus": "local-cache-hit",
+      "status": 0
+    },
+    {
+      "taskId": "core:start",
+      "target": "start",
+      "projectName": "core",
+      "hash": "16887351744331058412",
+      "startTime": "2026-05-11T12:47:46.470Z",
+      "endTime": "2026-05-11T12:47:48.863Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

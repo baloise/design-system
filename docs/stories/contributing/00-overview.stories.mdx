@@ -1,0 +1,130 @@
+import { Meta, Markdown, Unstyled } from '@storybook/addon-docs'
+import { ButtonCard, Banner, Lead, InfoQuote, Footer, LinkCard, LinkCards } from '../../.storybook/blocks'
+
+<Meta
+  title="Contributing/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Contributing" />
+
+<Lead>
+  We gratefully accept contributions to the Baloise Design System, but expect new feature requests and changes to be
+  approved by the Baloise Design System team before creating a [pull
+  request](https://github.com/baloise/design-system/pulls).
+</Lead>
+
+## Introduction
+
+Baloise Design System is free to use for anybody building a Baloise product or website, and the Baloise community is always working to make it better.
+Contributors like you help to make Baloise Design System great, and so we’re glad you’re here.
+
+Contributions are not limited to code. We also encourage feedback, documentation, new designs, and tools.
+
+All you need is a [public GitHub account](https://github.com/) to get started. Most contributions begin with a GitHub issue using one of these templates:
+
+<Unstyled>
+  <div className="flex flex-wrap gap-normal">
+    <ButtonCard
+      color="yellow"
+      icon="💬"
+      label="Ask a question"
+      description="Usage question or discussion about the Baloise Design System"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=💬+question&template=question_report.yml&title=%3Aspeech_balloon%3A+question%28component%29%3A+title"
+    ></ButtonCard>
+    <ButtonCard
+      color="yellow"
+      icon="🐛"
+      label="Report a bug"
+      description="Create a report to help us improve Get started"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=🐛+bug&template=bug_report.yml&title=%3Abug%3A+fix%28component%29%3A+title"
+    ></ButtonCard>
+    <ButtonCard
+      color="yellow"
+      icon="✨"
+      label="Request a feature"
+      description="Suggest an idea for this project"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=✨+feature&template=feature_report.yml&title=%3Asparkles%3A+feat%28component%29%3A+title"
+    ></ButtonCard>
+  </div>
+</Unstyled>
+
+## Community
+
+### Users
+
+Users are members of the community who use Baloise Design System guidelines, assets, and tooling. Anyone can be a user, and we encourage users to participate in the community as much as possible.
+
+### Contributors
+
+Contributors are members of the community who contribute to Baloise Design System in a material way. Anyone can be a contributor. In addition to participating as a user, you can also contribute by:
+
+- Reporting bugs or missing features through GitHub issues
+- Fixing bugs, adding features, and improving documentation
+
+import contributors from './contributors.md?raw'
+
+<Markdown>{contributors}</Markdown>
+
+### Maintainers
+
+Maintainers are members of the community who are committed to the success of individual Baloise Design System projects. In addition to their participation as a contributor, maintainers:
+
+- Label, close, and manage GitHub issues
+- Close and merge GitHub pull requests
+
+<Unstyled>
+  <div className="flex gap-normal">
+    <ButtonCard color="green" label="hirsch88" link="https://github.com/hirsch88">
+      <img src="https://avatars.githubusercontent.com/u/6384499?v=4" alt="hirsch88" />
+    </ButtonCard>
+    <ButtonCard color="green" label="m4rc0z" link="https://github.com/m4rc0z">
+      <img src="https://avatars.githubusercontent.com/u/20516386?v=4" alt="m4rc0z" />
+    </ButtonCard>
+    <ButtonCard color="green" label="yannickholzenkamp" link="https://github.com/yannickholzenkamp">
+      <img src="https://avatars.githubusercontent.com/u/9351023?v=4" alt="yannickholzenkamp" />
+    </ButtonCard>
+    <ButtonCard color="green" label="mmarinkov" link="https://github.com/mmarinkov">
+      <img src="https://avatars.githubusercontent.com/u/161294073?v=4" alt="mmarinkov" />
+    </ButtonCard>
+  </div>
+</Unstyled>
+
+## Workflow
+
+The Baloise Design System typically use a [fork and pull request workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for contributions
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Contributing/Setup'}
+      label={'How to setup the design system for local development'}
+      description={''}
+    />
+    <LinkCard pageTitle={'Contributing/How to fix a Bug'} label={'How to fix a Bug'} description={''} />
+    <LinkCard pageTitle={'Contributing/How to create a Feature'} label={'How to create a Feature'} description={''} />
+    <LinkCard
+      pageTitle={'Contributing/How to create a Pull Request'}
+      label={'How to create a Pull Request'}
+      description={''}
+    />
+    <LinkCard
+      pageTitle={'Contributing/How to work with the Components'}
+      label={'How to work with the Components'}
+      description={''}
+    />
+    <LinkCard pageTitle={'Contributing/How to test'} label={'How to test'} description={''} />
+    <LinkCard pageTitle={'Contributing/How to add Icons'} label={'How to add Icons'} description={''} />
+    <LinkCard pageTitle={'Contributing/How to Release'} label={'How to Release'} description={''} />
+    <LinkCard pageTitle={'Contributing/How to Deploy'} label={'How to Deploy'} description={''} />
+    <LinkCard
+      pageTitle={'Contributing/How to work with GitHub Actions'}
+      label={'How to work with GitHub Actions'}
+      description={''}
+    />
+  </LinkCards>
+</Footer>

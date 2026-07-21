@@ -1,0 +1,638 @@
+[
+  {
+    "color": [
+      {
+        "class": "text-primary",
+        "css": "color: var(--bal-color-text-primary);",
+        "property": "color",
+        "value": "var(--bal-color-text-primary)"
+      },
+      {
+        "class": "text-primary-light",
+        "css": "color: var(--bal-color-text-primary-light);",
+        "property": "color",
+        "value": "var(--bal-color-text-primary-light)"
+      },
+      {
+        "class": "text-white",
+        "css": "color: var(--bal-color-text-white);",
+        "property": "color",
+        "value": "var(--bal-color-text-white)"
+      },
+      {
+        "class": "text-grey-light",
+        "css": "color: var(--bal-color-text-grey-light);",
+        "property": "color",
+        "value": "var(--bal-color-text-grey-light)"
+      },
+      {
+        "class": "text-grey",
+        "css": "color: var(--bal-color-text-grey);",
+        "property": "color",
+        "value": "var(--bal-color-text-grey)"
+      },
+      {
+        "class": "text-grey-dark",
+        "css": "color: var(--bal-color-text-grey-dark);",
+        "property": "color",
+        "value": "var(--bal-color-text-grey-dark)"
+      },
+      {
+        "class": "text-info",
+        "css": "color: var(--bal-color-text-info);",
+        "property": "color",
+        "value": "var(--bal-color-text-info)"
+      },
+      {
+        "class": "text-warning",
+        "css": "color: var(--bal-color-text-warning);",
+        "property": "color",
+        "value": "var(--bal-color-text-warning)"
+      },
+      {
+        "class": "text-success",
+        "css": "color: var(--bal-color-text-success);",
+        "property": "color",
+        "value": "var(--bal-color-text-success)"
+      },
+      {
+        "class": "text-danger",
+        "css": "color: var(--bal-color-text-danger);",
+        "property": "color",
+        "value": "var(--bal-color-text-danger)"
+      },
+      {
+        "class": "text-black",
+        "css": "color: var(--bal-color-text-black);",
+        "property": "color",
+        "value": "var(--bal-color-text-black)"
+      },
+      {
+        "class": "text-primary-hovered",
+        "css": "color: var(--bal-color-text-primary-hovered);",
+        "property": "color",
+        "value": "var(--bal-color-text-primary-hovered)"
+      },
+      {
+        "class": "text-primary-pressed",
+        "css": "color: var(--bal-color-text-primary-pressed);",
+        "property": "color",
+        "value": "var(--bal-color-text-primary-pressed)"
+      },
+      {
+        "class": "text-danger-hovered",
+        "css": "color: var(--bal-color-text-danger-hovered);",
+        "property": "color",
+        "value": "var(--bal-color-text-danger-hovered)"
+      },
+      {
+        "class": "text-danger-pressed",
+        "css": "color: var(--bal-color-text-danger-pressed);",
+        "property": "color",
+        "value": "var(--bal-color-text-danger-pressed)"
+      },
+      {
+        "class": "text-inverted",
+        "css": "color: var(--bal-color-text-inverted);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted)"
+      },
+      {
+        "class": "text-inverted-disabled",
+        "css": "color: var(--bal-color-text-inverted-disabled);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-disabled)"
+      },
+      {
+        "class": "text-inverted-hovered",
+        "css": "color: var(--bal-color-text-inverted-hovered);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-hovered)"
+      },
+      {
+        "class": "text-inverted-pressed",
+        "css": "color: var(--bal-color-text-inverted-pressed);",
+        "property": "color",
+        "value": "var(--bal-color-text-inverted-pressed)"
+      }
+    ]
+  },
+  {
+    "font-family": [
+      {
+        "class": "font-family-title",
+        "css": "font-family: var(--bal-font-family-title);",
+        "property": "font-family",
+        "value": "var(--bal-font-family-title)"
+      },
+      {
+        "class": "font-family-text",
+        "css": "font-family: var(--bal-font-family-text);",
+        "property": "font-family",
+        "value": "var(--bal-font-family-text)"
+      }
+    ]
+  },
+  {
+    "rules": [
+      {
+        "selectors": [
+          ".text-x-small"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-x-small)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-small"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-small)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-normal"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-normal)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-medium"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-medium)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-large"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-large)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-x-large"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-x-large)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-xx-large"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-xx-large)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-xxx-large"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-xxx-large)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-xxxx-large"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-xxxx-large)",
+            "important": true
+          }
+        ]
+      },
+      {
+        "selectors": [
+          ".text-xxxxx-large"
+        ],
+        "values": [
+          {
+            "prop": "font-size",
+            "value": "var(--bal-text-size-xxxxx-large)",
+            "important": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rules": [
+      {
+        "rules": [
+          {
+            "selectors": [
+              ".text-x-small"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-x-small-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-small"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-small-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-normal"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-normal-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-medium"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-medium-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-large-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-x-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-x-large-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xx-large-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xxx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xxx-large-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xxxx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xxxx-large-tablet)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xxxxx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xxxxx-large-tablet)",
+                "important": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "breakpoint": "tablet"
+  },
+  {
+    "rules": [
+      {
+        "rules": [
+          {
+            "selectors": [
+              ".text-x-small"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-x-small-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-small"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-small-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-normal"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-normal-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-medium"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-medium-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-large-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-x-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-x-large-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xx-large-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xxx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xxx-large-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xxxx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xxxx-large-desktop)",
+                "important": true
+              }
+            ]
+          },
+          {
+            "selectors": [
+              ".text-xxxxx-large"
+            ],
+            "values": [
+              {
+                "prop": "font-size",
+                "value": "var(--bal-text-size-xxxxx-large-desktop)",
+                "important": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "breakpoint": "desktop"
+  },
+  {
+    "text-align": [
+      {
+        "class": "text-align-center",
+        "css": "text-align: center;",
+        "property": "text-align",
+        "value": "center"
+      },
+      {
+        "class": "text-align-left",
+        "css": "text-align: left;",
+        "property": "text-align",
+        "value": "left"
+      },
+      {
+        "class": "text-align-right",
+        "css": "text-align: right;",
+        "property": "text-align",
+        "value": "right"
+      },
+      {
+        "class": "text-align-justify",
+        "css": "text-align: justify;",
+        "property": "text-align",
+        "value": "justify"
+      }
+    ]
+  },
+  {
+    "text-transform": [
+      {
+        "class": "lowercase",
+        "css": "text-transform: lowercase;",
+        "property": "text-transform",
+        "value": "lowercase"
+      },
+      {
+        "class": "uppercase",
+        "css": "text-transform: uppercase;",
+        "property": "text-transform",
+        "value": "uppercase"
+      },
+      {
+        "class": "capitalize",
+        "css": "text-transform: capitalize;",
+        "property": "text-transform",
+        "value": "capitalize"
+      }
+    ]
+  },
+  {
+    "font-weight": [
+      {
+        "class": "font-weight-bold",
+        "css": "font-weight: var(--bal-font-weight-bold);",
+        "property": "font-weight",
+        "value": "var(--bal-font-weight-bold)"
+      },
+      {
+        "class": "font-weight-regular",
+        "css": "font-weight: var(--bal-font-weight-regular);",
+        "property": "font-weight",
+        "value": "var(--bal-font-weight-regular)"
+      },
+      {
+        "class": "font-weight-light",
+        "css": "font-weight: var(--bal-font-weight-light);",
+        "property": "font-weight",
+        "value": "var(--bal-font-weight-light)"
+      }
+    ]
+  },
+  {
+    "white-space": [
+      {
+        "class": "white-space-normal",
+        "css": "white-space: normal;",
+        "property": "white-space",
+        "value": "normal"
+      },
+      {
+        "class": "white-space-nowrap",
+        "css": "white-space: nowrap;",
+        "property": "white-space",
+        "value": "nowrap"
+      }
+    ]
+  },
+  {
+    "line-height": [
+      {
+        "class": "line-height-title",
+        "css": "line-height: var(--bal-text-line-height-title);",
+        "property": "line-height",
+        "value": "var(--bal-text-line-height-title)"
+      },
+      {
+        "class": "line-height-text",
+        "css": "line-height: var(--bal-text-line-height-text);",
+        "property": "line-height",
+        "value": "var(--bal-text-line-height-text)"
+      }
+    ]
+  },
+  {
+    "text-overflow": [
+      {
+        "class": "text-overflow-clip",
+        "css": "text-overflow: clip;",
+        "property": "text-overflow",
+        "value": "clip"
+      },
+      {
+        "class": "text-overflow-ellipsis",
+        "css": "text-overflow: ellipsis;",
+        "property": "text-overflow",
+        "value": "ellipsis"
+      }
+    ]
+  }
+]

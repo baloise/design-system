@@ -1,0 +1,23 @@
+{
+  "name": "@baloise/ds-design-gen-ai",
+  "version": "0.1.0",
+  "description": "AI Frontend Generator MCP Server for Helvetia Design System",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "node --import tsx src/index.ts",
+    "start": "node dist/index.js",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.23.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.6.3",
+    "tsx": "^4.7.0"
+  }
+}

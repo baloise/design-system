@@ -1,0 +1,55 @@
+{
+  "name": "docs",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build", "prepare"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx storybook dev -p 6006"
+      }
+    },
+    "prepare": {
+      "executor": "@baloise/ds-nx:build-docs",
+      "dependsOn": ["^build"],
+      "outputs": [
+        "{projectRoot}/public/build",
+        "{projectRoot}/public/assets/download",
+        "{projectRoot}/public/assets/fonts",
+        "{projectRoot}/stories/data",
+        "{projectRoot}/dist"
+      ],
+      "options": {
+        "projectRoot": "{projectRoot}",
+        "fontsAssetPath": "packages/fonts/assets",
+        "iconsAssetPath": "packages/icons/src/assets",
+        "brandIconsAssetPath": "packages/brand-icons/src/assets",
+        "mapMarkersAssetPath": "packages/maps/src/assets",
+        "faviconsAssetPath": "packages/favicons/assets",
+        "figmaTokensAssetPath": "packages/tokens/dist/figma",
+        "serve": true
+      }
+    },
+    "build": {
+      "executor": "@baloise/ds-nx:build-docs",
+      "outputs": [
+        "{projectRoot}/public/build",
+        "{projectRoot}/public/assets/download",
+        "{projectRoot}/public/assets/fonts",
+        "{projectRoot}/stories/data",
+        "{projectRoot}/dist"
+      ],
+      "options": {
+        "projectRoot": "{projectRoot}",
+        "fontsAssetPath": "packages/fonts/assets",
+        "iconsAssetPath": "packages/icons/src/assets",
+        "brandIconsAssetPath": "packages/brand-icons/src/assets",
+        "mapMarkersAssetPath": "packages/maps/src/assets",
+        "faviconsAssetPath": "packages/favicons/assets",
+        "figmaTokensAssetPath": "packages/tokens/dist/figma"
+      }
+    }
+  },
+  "tags": ["scope:docs", "type:docs"]
+}

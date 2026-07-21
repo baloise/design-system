@@ -1,0 +1,310 @@
+[
+  {
+    "align-content": [
+      {
+        "class": "align-content-start",
+        "css": "align-content: flex-start;",
+        "property": "align-content",
+        "value": "flex-start"
+      },
+      {
+        "class": "align-content-end",
+        "css": "align-content: flex-end;",
+        "property": "align-content",
+        "value": "flex-end"
+      },
+      {
+        "class": "align-content-center",
+        "css": "align-content: center;",
+        "property": "align-content",
+        "value": "center"
+      },
+      {
+        "class": "align-content-baseline",
+        "css": "align-content: baseline;",
+        "property": "align-content",
+        "value": "baseline"
+      },
+      {
+        "class": "align-content-space-between",
+        "css": "align-content: space-between;",
+        "property": "align-content",
+        "value": "space-between"
+      },
+      {
+        "class": "align-content-space-around",
+        "css": "align-content: space-around;",
+        "property": "align-content",
+        "value": "space-around"
+      },
+      {
+        "class": "align-content-space-evenly",
+        "css": "align-content: space-evenly;",
+        "property": "align-content",
+        "value": "space-evenly"
+      }
+    ]
+  },
+  {
+    "align-items": [
+      {
+        "class": "align-items-start",
+        "css": "align-items: flex-start;",
+        "property": "align-items",
+        "value": "flex-start"
+      },
+      {
+        "class": "align-items-end",
+        "css": "align-items: flex-end;",
+        "property": "align-items",
+        "value": "flex-end"
+      },
+      {
+        "class": "align-items-center",
+        "css": "align-items: center;",
+        "property": "align-items",
+        "value": "center"
+      },
+      {
+        "class": "align-items-stretch",
+        "css": "align-items: stretch;",
+        "property": "align-items",
+        "value": "stretch"
+      },
+      {
+        "class": "align-items-baseline",
+        "css": "align-items: baseline;",
+        "property": "align-items",
+        "value": "baseline"
+      }
+    ]
+  },
+  {
+    "align-self": [
+      {
+        "class": "align-self-start",
+        "css": "align-self: flex-start;",
+        "property": "align-self",
+        "value": "flex-start"
+      },
+      {
+        "class": "align-self-end",
+        "css": "align-self: flex-end;",
+        "property": "align-self",
+        "value": "flex-end"
+      },
+      {
+        "class": "align-self-center",
+        "css": "align-self: center;",
+        "property": "align-self",
+        "value": "center"
+      },
+      {
+        "class": "align-self-stretch",
+        "css": "align-self: stretch;",
+        "property": "align-self",
+        "value": "stretch"
+      },
+      {
+        "class": "align-self-baseline",
+        "css": "align-self: baseline;",
+        "property": "align-self",
+        "value": "baseline"
+      }
+    ]
+  },
+  {
+    "flex-direction": [
+      {
+        "class": "flex-direction-row",
+        "css": "flex-direction: row;",
+        "property": "flex-direction",
+        "value": "row"
+      },
+      {
+        "class": "flex-direction-row-reverse",
+        "css": "flex-direction: row-reverse;",
+        "property": "flex-direction",
+        "value": "row-reverse"
+      },
+      {
+        "class": "flex-direction-column",
+        "css": "flex-direction: column;",
+        "property": "flex-direction",
+        "value": "column"
+      },
+      {
+        "class": "flex-direction-column-reverse",
+        "css": "flex-direction: column-reverse;",
+        "property": "flex-direction",
+        "value": "column-reverse"
+      }
+    ]
+  },
+  {
+    "flex": [
+      {
+        "class": "flex-1",
+        "css": "flex: 1 1 0%;",
+        "property": "flex",
+        "value": "1 1 0%"
+      },
+      {
+        "class": "flex-auto",
+        "css": "flex: 1 1 auto;",
+        "property": "flex",
+        "value": "1 1 auto"
+      },
+      {
+        "class": "flex-initial",
+        "css": "flex: 0 1 auto;",
+        "property": "flex",
+        "value": "0 1 auto"
+      },
+      {
+        "class": "flex-none",
+        "css": "flex: none;",
+        "property": "flex",
+        "value": "none"
+      }
+    ]
+  },
+  {
+    "justify-content": [
+      {
+        "class": "justify-content-start",
+        "css": "justify-content: flex-start;",
+        "property": "justify-content",
+        "value": "flex-start"
+      },
+      {
+        "class": "justify-content-end",
+        "css": "justify-content: flex-end;",
+        "property": "justify-content",
+        "value": "flex-end"
+      },
+      {
+        "class": "justify-content-center",
+        "css": "justify-content: center;",
+        "property": "justify-content",
+        "value": "center"
+      },
+      {
+        "class": "justify-content-space-between",
+        "css": "justify-content: space-between;",
+        "property": "justify-content",
+        "value": "space-between"
+      },
+      {
+        "class": "justify-content-space-around",
+        "css": "justify-content: space-around;",
+        "property": "justify-content",
+        "value": "space-around"
+      },
+      {
+        "class": "justify-content-space-evenly",
+        "css": "justify-content: space-evenly;",
+        "property": "justify-content",
+        "value": "space-evenly"
+      }
+    ]
+  },
+  {
+    "flex-wrap": [
+      {
+        "class": "flex-nowrap",
+        "css": "flex-wrap: nowrap;",
+        "property": "flex-wrap",
+        "value": "nowrap"
+      },
+      {
+        "class": "flex-wrap",
+        "css": "flex-wrap: wrap;",
+        "property": "flex-wrap",
+        "value": "wrap"
+      },
+      {
+        "class": "flex-wrap-reverse",
+        "css": "flex-wrap: wrap-reverse;",
+        "property": "flex-wrap",
+        "value": "wrap-reverse"
+      }
+    ]
+  },
+  {
+    "gap": [
+      {
+        "class": "gap-none",
+        "css": "gap: 0;",
+        "property": "gap",
+        "value": "0"
+      },
+      {
+        "class": "gap-auto",
+        "css": "gap: auto;",
+        "property": "gap",
+        "value": "auto"
+      },
+      {
+        "class": "gap-xx-small",
+        "css": "gap: var(--bal-space-xx-small);",
+        "property": "gap",
+        "value": "var(--bal-space-xx-small)"
+      },
+      {
+        "class": "gap-x-small",
+        "css": "gap: var(--bal-space-x-small);",
+        "property": "gap",
+        "value": "var(--bal-space-x-small)"
+      },
+      {
+        "class": "gap-small",
+        "css": "gap: var(--bal-space-small);",
+        "property": "gap",
+        "value": "var(--bal-space-small)"
+      },
+      {
+        "class": "gap-normal",
+        "css": "gap: var(--bal-space-normal);",
+        "property": "gap",
+        "value": "var(--bal-space-normal)"
+      },
+      {
+        "class": "gap-medium",
+        "css": "gap: var(--bal-space-medium);",
+        "property": "gap",
+        "value": "var(--bal-space-medium)"
+      },
+      {
+        "class": "gap-large",
+        "css": "gap: var(--bal-space-large);",
+        "property": "gap",
+        "value": "var(--bal-space-large)"
+      },
+      {
+        "class": "gap-x-large",
+        "css": "gap: var(--bal-space-x-large);",
+        "property": "gap",
+        "value": "var(--bal-space-x-large)"
+      },
+      {
+        "class": "gap-xx-large",
+        "css": "gap: var(--bal-space-xx-large);",
+        "property": "gap",
+        "value": "var(--bal-space-xx-large)"
+      },
+      {
+        "class": "gap-xxx-large",
+        "css": "gap: var(--bal-space-xxx-large);",
+        "property": "gap",
+        "value": "var(--bal-space-xxx-large)"
+      },
+      {
+        "class": "gap-xxxx-large",
+        "css": "gap: var(--bal-space-xxxx-large);",
+        "property": "gap",
+        "value": "var(--bal-space-xxxx-large)"
+      }
+    ]
+  }
+]

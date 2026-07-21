@@ -1,0 +1,28 @@
+
+web
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/figma/color.json[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/figma/size.json[39m[22m
+
+css
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.css[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.css.scss[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/deprecated/tokens.css[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/deprecated/tokens.css.scss[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.docs.json[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/deprecated/tokens.docs.json[39m[22m
+
+scss
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.scss[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/deprecated/tokens.scss[39m[22m
+
+less
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.less[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/deprecated/tokens.less[39m[22m
+
+js
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.esm.js[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/types/tokens.d.ts[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.js[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/tokens.json[39m[22m
+[1m[32m✔︎ /Users/Public/Dev/design-system/packages/tokens/dist/deprecated/tokens.json[39m[22m
+✅ Successfully built design tokens

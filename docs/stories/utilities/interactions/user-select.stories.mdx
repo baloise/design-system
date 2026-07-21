@@ -1,0 +1,44 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssInteractionsUserSelect, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Interactions/User Select"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="User Select" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Manages the ability of the user to highlight and select text.</Lead>
+
+## Classes
+
+<CssInteractionsUserSelect />
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center">
+  <div class="select-none bg-green radius-normal p-small m-small flex align-items-center justify-content-center">select-none</div>
+  <div class="select-text bg-green radius-normal p-small m-small flex align-items-center justify-content-center">select-text</div>
+  <div class="select-all bg-green radius-normal p-small m-small flex align-items-center justify-content-center">select-all</div>
+  <div class="select-auto bg-green radius-normal p-small m-small flex align-items-center justify-content-center">select-auto</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Elevation"
+      description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
+    />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

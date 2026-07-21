@@ -1,0 +1,111 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssSpacingPadding,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Spacing/Padding"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Padding" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Determines the space between the content and its border.</Lead>
+
+## Classes
+
+Spacing can be set with **padding** `p*` for all directions:
+
+- `*t` for **top**
+- `*r` for **right**
+- `*b` for **bottom**
+- `*l` for **left**
+- `*x` **horizontally** for both left and right
+- `*y` **vertically** for both top and bottom
+
+<CssSpacingPadding />
+
+## Single Side Padding
+
+Padding can be defined for a specific edge.
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+  <div class="pt-normal bg-red-2">
+      <div class="bg-green p-large">pt-normal</div>
+  </div>
+  <div class="pr-large bg-red-2">
+      <div class="bg-green p-large">pr-large</div>
+  </div>
+  <div class="pb-small bg-red-2">
+      <div class="bg-green p-large">pb-small</div>
+  </div>
+  <div class="pl-medium bg-red-2">
+      <div class="bg-green p-large">pl-medium</div>
+  </div>
+</div>
+`}
+/>
+
+## Horizontal Padding
+
+Shorthand classes allow you to define the same padding value for both the left and right sides.
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+    <div class="px-large bg-red-2 radius-normal">
+        <div class="radius-normal bg-green font-weight-bold p-normal">px-large</div>
+    </div>
+</div>
+`}
+/>
+
+## Vertical Padding
+
+The same padding value can also be defined at the top and bottom sides using shorthand classes.
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center gap-large">
+    <div class="py-large bg-red-2 radius-normal">
+        <div class="radius-normal bg-green font-weight-bold p-normal">py-large</div>
+    </div>
+</div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:p-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Spacing"
+      description="Global spacings help us design experiences that scale with consistency, rhythm, and focus"
+    />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

@@ -1,0 +1,36 @@
+<bal-navbar>
+  <bal-navbar-brand>Helvetia</bal-navbar-brand>
+</bal-navbar>
+
+<bal-content>
+  <bal-stack>
+    <bal-heading level="1">Kontakt</bal-heading>
+    <bal-text>Haben Sie Fragen? Schreiben Sie uns.</bal-text>
+
+    <bal-form>
+      <bal-form-grid>
+        <bal-form-col>
+          <bal-label>Name</bal-label>
+          <bal-input type="text" name="name" required></bal-input>
+        </bal-form-col>
+
+        <bal-form-col>
+          <bal-label>E-Mail</bal-label>
+          <bal-input type="email" name="email" required></bal-input>
+        </bal-form-col>
+
+        <bal-form-col>
+          <bal-label>Nachricht</bal-label>
+          <bal-textarea name="message" required></bal-textarea>
+        </bal-form-col>
+      </bal-form-grid>
+
+      <bal-button-group>
+        <bal-button type="submit">Senden</bal-button>
+        <bal-button type="reset">Zurücksetzen</bal-button>
+      </bal-button-group>
+    </bal-form>
+  </bal-stack>
+</bal-content>
+
+<bal-footer>© 2026 Helvetia Versicherungen</bal-footer>

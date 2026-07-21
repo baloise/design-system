@@ -1,0 +1,26 @@
+{
+  "name": "test-bachelorarbeit",
+  "version": "1.0.0",
+  "description": "Test Bachelorarbeit Website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "tsc -b && vite build"
+  },
+  "dependencies": {
+    "@baloise/ds-core": "19.9.3",
+    "@baloise/ds-react": "19.9.3",
+    "@baloise/ds-styles": "19.9.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "~5.4.2",
+    "vite": "~5.0.12"
+  }
+}

@@ -1,0 +1,52 @@
+.select-none {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
+}
+
+.select-text {
+  -webkit-user-select: text !important;
+     -moz-user-select: text !important;
+          user-select: text !important;
+}
+
+.select-all {
+  -webkit-user-select: all !important;
+     -moz-user-select: all !important;
+          user-select: all !important;
+}
+
+.select-auto {
+  -webkit-user-select: auto !important;
+     -moz-user-select: auto !important;
+          user-select: auto !important;
+}
+
+.cursor-auto {
+  cursor: auto !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-wait {
+  cursor: wait !important;
+}
+
+.cursor-move {
+  cursor: move !important;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
+.pointer-events-auto {
+  pointer-events: auto !important;
+}
+
+.pointer-events-none {
+  pointer-events: none !important;
+}
+/*# sourceMappingURL=\utilities\interaction.css.map */

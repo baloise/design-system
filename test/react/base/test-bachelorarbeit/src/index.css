@@ -1,0 +1,260 @@
+@import '@baloise/ds-styles/css/normalize';
+@import '@baloise/ds-styles/css/structure';
+@import '@baloise/ds-styles/css/font';
+@import '@baloise/ds-styles/css/core';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero {
+  background: linear-gradient(135deg, #004b87 0%, #003d6b 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+.hero p {
+  font-size: 20px;
+  margin: 0 0 40px 0;
+  opacity: 0.95;
+}
+
+.features-section {
+  padding: 80px 20px;
+  background: #f5f5f5;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature-card bal-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+  color: #004b87;
+}
+
+.feature-card h3 {
+  margin: 15px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.offerings-section {
+  padding: 80px 20px;
+}
+
+.offerings-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offerings-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.offering-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.offering-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.offering-card-header {
+  background: #004b87;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.offering-card-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.offering-card-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 16px;
+}
+
+.offering-card-content {
+  padding: 30px 20px;
+}
+
+.offering-card-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.offering-card-content li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.offering-card-content li:before {
+  content: '✓ ';
+  color: #004b87;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #004b87 0%, #003d6b 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  opacity: 0.95;
+}
+
+.contact-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-row {
+  margin-bottom: 30px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.form-row textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+footer {
+  background: #333;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  opacity: 0.8;
+}

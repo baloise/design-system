@@ -1,0 +1,60 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+
+    <link rel="preload" href="/assets/basic.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/basic.min.css" /></noscript>
+  </head>
+
+  <body>
+    <bal-app>
+      <main class="container py-medium">
+        <bal-spinner></bal-spinner>
+        <h1 class="title">Spinner Page</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Test Case</th>
+              <th>Performance</th>
+              <th>First Contentful Paint</th>
+              <th>Largest Contentful Paint</th>
+              <th>Speed Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>041 - Basic</td>
+              <td>92</td>
+              <td>2.1</td>
+              <td>3.1</td>
+              <td>2.1</td>
+            </tr>
+            <tr>
+              <td>042 - Without animation</td>
+              <td>98</td>
+              <td>1.7</td>
+              <td>2.1</td>
+              <td>1.7</td>
+            </tr>
+            <tr>
+              <td>043 - Load animation after LCP</td>
+              <td>98</td>
+              <td>1.7</td>
+              <td>2.1</td>
+              <td>1.7</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1 class="subtitle">Findings</h1>
+        No Findings
+      </main>
+    </bal-app>
+  </body>
+</html>

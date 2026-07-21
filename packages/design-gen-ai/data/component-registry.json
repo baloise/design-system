@@ -1,0 +1,956 @@
+{
+  "version": "1.0.0",
+  "description": "Helvetia Design System Component Registry for AI Frontend Generator",
+  "source": "packages/core/src/tags-all.ts",
+  "generatedAt": "2026-07-09",
+  "totalComponents": 113,
+
+  "pageStructureRules": {
+    "order": ["bal-navbar", "bal-stage", "bal-content", "bal-footer"],
+    "description": "All pages MUST follow this strict top-level hierarchy",
+    "rules": [
+      "bal-navbar must always be FIRST if present",
+      "bal-stage may appear at most ONCE per page and must come after bal-navbar",
+      "All main content must live inside bal-content wrapped in bal-stack",
+      "bal-footer must always be LAST if present"
+    ]
+  },
+
+  "nestingRules": {
+    "bal-navbar": ["bal-navbar-brand", "bal-navbar-menu"],
+    "bal-navbar-menu": ["bal-navbar-menu-start", "bal-navbar-menu-end"],
+    "bal-navbar-menu-start": ["bal-nav-link", "bal-button"],
+    "bal-navbar-menu-end": ["bal-nav-link", "bal-button"],
+    "bal-nav": [
+      "bal-nav-link",
+      "bal-nav-link-grid",
+      "bal-nav-link-group",
+      "bal-nav-menu-bar",
+      "bal-nav-menu-flyout",
+      "bal-nav-meta-bar"
+    ],
+    "bal-nav-link-grid": ["bal-nav-link-grid-col"],
+    "bal-nav-link-grid-col": ["bal-nav-link", "bal-nav-link-group"],
+    "bal-nav-link-group": ["bal-nav-link"],
+    "bal-stage": ["bal-stage-head", "bal-stage-body", "bal-stage-foot", "bal-stage-image", "bal-stage-back-link"],
+    "bal-stage-head": ["bal-heading", "bal-text"],
+    "bal-stage-body": ["bal-heading", "bal-text", "bal-button", "bal-button-group"],
+    "bal-stage-foot": ["bal-button", "bal-button-group"],
+    "bal-content": [
+      "bal-stack",
+      "bal-heading",
+      "bal-text",
+      "bal-form",
+      "bal-card",
+      "bal-list",
+      "bal-accordion",
+      "bal-tabs",
+      "bal-steps",
+      "bal-notification",
+      "bal-divider"
+    ],
+    "bal-stack": [
+      "bal-card",
+      "bal-heading",
+      "bal-text",
+      "bal-button",
+      "bal-button-group",
+      "bal-list",
+      "bal-icon",
+      "bal-badge",
+      "bal-tag-group",
+      "bal-divider",
+      "bal-accordion",
+      "bal-tabs",
+      "bal-steps",
+      "bal-data",
+      "bal-form",
+      "bal-notification",
+      "bal-hint"
+    ],
+    "bal-card": ["bal-card-title", "bal-card-subtitle", "bal-card-content", "bal-card-actions", "bal-card-button"],
+    "bal-card-content": ["bal-text", "bal-heading", "bal-list", "bal-icon", "bal-badge", "bal-data"],
+    "bal-card-actions": ["bal-button", "bal-button-group"],
+    "bal-list": ["bal-list-item"],
+    "bal-list-item": [
+      "bal-list-item-title",
+      "bal-list-item-subtitle",
+      "bal-list-item-icon",
+      "bal-list-item-content",
+      "bal-list-item-accordion-head",
+      "bal-list-item-accordion-body"
+    ],
+    "bal-tag-group": ["bal-tag"],
+    "bal-hint": ["bal-hint-title", "bal-hint-text"],
+    "bal-data": ["bal-data-item"],
+    "bal-data-item": ["bal-data-label", "bal-data-value"],
+    "bal-carousel": ["bal-carousel-item"],
+    "bal-accordion": ["bal-accordion-summary", "bal-accordion-details", "bal-accordion-trigger"],
+    "bal-tabs": ["bal-tab-item"],
+    "bal-steps": ["bal-step-item"],
+    "bal-segment": ["bal-segment-item"],
+    "bal-modal": ["bal-modal-header", "bal-modal-body"],
+    "bal-popover": ["bal-popover-content"],
+    "bal-form": [
+      "bal-form-grid",
+      "bal-field",
+      "bal-button-group",
+      "bal-checkbox-group",
+      "bal-radio-group",
+      "bal-label",
+      "bal-input",
+      "bal-select",
+      "bal-textarea"
+    ],
+    "bal-form-grid": ["bal-form-col"],
+    "bal-form-col": [
+      "bal-label",
+      "bal-input",
+      "bal-input-date",
+      "bal-textarea",
+      "bal-select",
+      "bal-checkbox-group",
+      "bal-radio-group",
+      "bal-number-input",
+      "bal-time-input",
+      "bal-input-slider",
+      "bal-input-stepper",
+      "bal-file-upload",
+      "bal-field",
+      "bal-switch"
+    ],
+    "bal-field": ["bal-field-label", "bal-field-control", "bal-field-hint", "bal-field-message"],
+    "bal-field-control": [
+      "bal-input",
+      "bal-select",
+      "bal-textarea",
+      "bal-checkbox-group",
+      "bal-radio-group",
+      "bal-input-date",
+      "bal-number-input"
+    ],
+    "bal-select": ["bal-select-option"],
+    "bal-option-list": ["bal-option"],
+    "bal-checkbox-group": ["bal-checkbox", "bal-check"],
+    "bal-radio-group": ["bal-radio", "bal-radio-icon"],
+    "bal-input-group": ["bal-input", "bal-button"],
+    "bal-button-group": ["bal-button"],
+    "bal-date": ["bal-date-calendar"],
+    "bal-date-calendar": ["bal-date-calendar-cell"],
+    "bal-notices": ["bal-notification", "bal-snackbar", "bal-toast"]
+  },
+
+  "components": [
+    {
+      "tag": "bal-navbar",
+      "category": "page-structure",
+      "description": "Main top navigation bar — must be first element on page",
+      "pageLevel": true,
+      "allowedChildren": ["bal-navbar-brand", "bal-navbar-menu"]
+    },
+    {
+      "tag": "bal-navbar-brand",
+      "category": "navigation",
+      "description": "Logo and brand name inside navbar",
+      "pageLevel": false,
+      "allowedParents": ["bal-navbar"]
+    },
+    {
+      "tag": "bal-navbar-menu",
+      "category": "navigation",
+      "description": "Menu container inside navbar",
+      "pageLevel": false,
+      "allowedParents": ["bal-navbar"],
+      "allowedChildren": ["bal-navbar-menu-start", "bal-navbar-menu-end"]
+    },
+    {
+      "tag": "bal-navbar-menu-start",
+      "category": "navigation",
+      "description": "Left-aligned menu items in navbar",
+      "pageLevel": false,
+      "allowedParents": ["bal-navbar-menu"]
+    },
+    {
+      "tag": "bal-navbar-menu-end",
+      "category": "navigation",
+      "description": "Right-aligned menu items in navbar",
+      "pageLevel": false,
+      "allowedParents": ["bal-navbar-menu"]
+    },
+    {
+      "tag": "bal-nav",
+      "category": "navigation",
+      "description": "Complex mega menu or side navigation",
+      "pageLevel": false,
+      "allowedChildren": [
+        "bal-nav-link",
+        "bal-nav-link-grid",
+        "bal-nav-link-group",
+        "bal-nav-menu-bar",
+        "bal-nav-menu-flyout",
+        "bal-nav-meta-bar"
+      ]
+    },
+    {
+      "tag": "bal-nav-link",
+      "category": "navigation",
+      "description": "Individual navigation link",
+      "pageLevel": false,
+      "allowedParents": [
+        "bal-nav",
+        "bal-nav-link-grid-col",
+        "bal-nav-link-group",
+        "bal-navbar-menu-start",
+        "bal-navbar-menu-end"
+      ]
+    },
+    {
+      "tag": "bal-nav-link-grid",
+      "category": "navigation",
+      "description": "Grid layout container for navigation links",
+      "pageLevel": false,
+      "allowedParents": ["bal-nav"],
+      "allowedChildren": ["bal-nav-link-grid-col"]
+    },
+    {
+      "tag": "bal-nav-link-grid-col",
+      "category": "navigation",
+      "description": "Column in navigation link grid",
+      "pageLevel": false,
+      "allowedParents": ["bal-nav-link-grid"],
+      "allowedChildren": ["bal-nav-link", "bal-nav-link-group"]
+    },
+    {
+      "tag": "bal-nav-link-group",
+      "category": "navigation",
+      "description": "Group of related navigation links",
+      "pageLevel": false,
+      "allowedParents": ["bal-nav", "bal-nav-link-grid-col"],
+      "allowedChildren": ["bal-nav-link"]
+    },
+    {
+      "tag": "bal-nav-menu-bar",
+      "category": "navigation",
+      "description": "Menu bar in navigation",
+      "pageLevel": false,
+      "allowedParents": ["bal-nav"]
+    },
+    {
+      "tag": "bal-nav-menu-flyout",
+      "category": "navigation",
+      "description": "Flyout submenu in navigation",
+      "pageLevel": false,
+      "allowedParents": ["bal-nav"]
+    },
+    {
+      "tag": "bal-nav-meta-bar",
+      "category": "navigation",
+      "description": "Meta information bar in navigation",
+      "pageLevel": false,
+      "allowedParents": ["bal-nav"]
+    },
+    {
+      "tag": "bal-footer",
+      "category": "page-structure",
+      "description": "Page footer — must be last element on page",
+      "pageLevel": true
+    },
+    {
+      "tag": "bal-stage",
+      "category": "page-structure",
+      "description": "Hero / stage section with image — at most once per page",
+      "pageLevel": true,
+      "maxOccurrences": 1,
+      "allowedChildren": [
+        "bal-stage-head",
+        "bal-stage-body",
+        "bal-stage-foot",
+        "bal-stage-image",
+        "bal-stage-back-link"
+      ]
+    },
+    {
+      "tag": "bal-stage-head",
+      "category": "page-structure",
+      "description": "Header area of stage component",
+      "pageLevel": false,
+      "allowedParents": ["bal-stage"]
+    },
+    {
+      "tag": "bal-stage-body",
+      "category": "page-structure",
+      "description": "Body area of stage component",
+      "pageLevel": false,
+      "allowedParents": ["bal-stage"]
+    },
+    {
+      "tag": "bal-stage-foot",
+      "category": "page-structure",
+      "description": "Footer area of stage component",
+      "pageLevel": false,
+      "allowedParents": ["bal-stage"]
+    },
+    {
+      "tag": "bal-stage-image",
+      "category": "page-structure",
+      "description": "Image in stage component",
+      "pageLevel": false,
+      "allowedParents": ["bal-stage"]
+    },
+    {
+      "tag": "bal-stage-back-link",
+      "category": "page-structure",
+      "description": "Back navigation link in stage",
+      "pageLevel": false,
+      "allowedParents": ["bal-stage"]
+    },
+    {
+      "tag": "bal-content",
+      "category": "layout",
+      "description": "Main content wrapper — wraps all page content between stage and footer",
+      "pageLevel": true
+    },
+    {
+      "tag": "bal-stack",
+      "category": "layout",
+      "description": "Flex layout container (row or column direction)"
+    },
+    {
+      "tag": "bal-form-grid",
+      "category": "layout",
+      "description": "Responsive grid layout for form fields",
+      "allowedChildren": ["bal-form-col"]
+    },
+    {
+      "tag": "bal-form-col",
+      "category": "layout",
+      "description": "Column in form grid",
+      "allowedParents": ["bal-form-grid"]
+    },
+    {
+      "tag": "bal-heading",
+      "category": "content",
+      "description": "Heading element H1–H6 for page structure and hierarchy"
+    },
+    {
+      "tag": "bal-text",
+      "category": "content",
+      "description": "Paragraph and body text element"
+    },
+    {
+      "tag": "bal-card",
+      "category": "content",
+      "description": "Card container for grouped content (products, articles, etc.)",
+      "allowedChildren": [
+        "bal-card-title",
+        "bal-card-subtitle",
+        "bal-card-content",
+        "bal-card-actions",
+        "bal-card-button"
+      ]
+    },
+    {
+      "tag": "bal-card-title",
+      "category": "content",
+      "description": "Title heading inside a card",
+      "allowedParents": ["bal-card"]
+    },
+    {
+      "tag": "bal-card-subtitle",
+      "category": "content",
+      "description": "Subtitle inside a card",
+      "allowedParents": ["bal-card"]
+    },
+    {
+      "tag": "bal-card-content",
+      "category": "content",
+      "description": "Main body content area of a card",
+      "allowedParents": ["bal-card"]
+    },
+    {
+      "tag": "bal-card-actions",
+      "category": "content",
+      "description": "Footer action area of a card",
+      "allowedParents": ["bal-card"],
+      "allowedChildren": ["bal-button", "bal-button-group"]
+    },
+    {
+      "tag": "bal-card-button",
+      "category": "content",
+      "description": "Button variant specific to card layout",
+      "allowedParents": ["bal-card"]
+    },
+    {
+      "tag": "bal-list",
+      "category": "content",
+      "description": "List container for collections of items",
+      "allowedChildren": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-list-item",
+      "category": "content",
+      "description": "Individual item in a list",
+      "allowedParents": ["bal-list"],
+      "allowedChildren": [
+        "bal-list-item-title",
+        "bal-list-item-subtitle",
+        "bal-list-item-icon",
+        "bal-list-item-content",
+        "bal-list-item-accordion-head",
+        "bal-list-item-accordion-body"
+      ]
+    },
+    {
+      "tag": "bal-list-item-title",
+      "category": "content",
+      "description": "Title of a list item",
+      "allowedParents": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-list-item-subtitle",
+      "category": "content",
+      "description": "Subtitle of a list item",
+      "allowedParents": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-list-item-icon",
+      "category": "content",
+      "description": "Icon in a list item",
+      "allowedParents": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-list-item-content",
+      "category": "content",
+      "description": "Content area of a list item",
+      "allowedParents": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-list-item-accordion-head",
+      "category": "content",
+      "description": "Accordion-style header in list item",
+      "allowedParents": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-list-item-accordion-body",
+      "category": "content",
+      "description": "Accordion-style body in list item",
+      "allowedParents": ["bal-list-item"]
+    },
+    {
+      "tag": "bal-icon",
+      "category": "content",
+      "description": "Icon display element for visual indicators"
+    },
+    {
+      "tag": "bal-badge",
+      "category": "content",
+      "description": "Badge or status indicator label"
+    },
+    {
+      "tag": "bal-tag",
+      "category": "content",
+      "description": "Tag or chip element",
+      "allowedParents": ["bal-tag-group"]
+    },
+    {
+      "tag": "bal-tag-group",
+      "category": "content",
+      "description": "Container for multiple tags",
+      "allowedChildren": ["bal-tag"]
+    },
+    {
+      "tag": "bal-divider",
+      "category": "content",
+      "description": "Visual horizontal separator between content sections"
+    },
+    {
+      "tag": "bal-data",
+      "category": "content",
+      "description": "Data display container for key-value pairs",
+      "allowedChildren": ["bal-data-item"]
+    },
+    {
+      "tag": "bal-data-item",
+      "category": "content",
+      "description": "Individual data row",
+      "allowedParents": ["bal-data"],
+      "allowedChildren": ["bal-data-label", "bal-data-value"]
+    },
+    {
+      "tag": "bal-data-label",
+      "category": "content",
+      "description": "Label in a data row",
+      "allowedParents": ["bal-data-item"]
+    },
+    {
+      "tag": "bal-data-value",
+      "category": "content",
+      "description": "Value in a data row",
+      "allowedParents": ["bal-data-item"]
+    },
+    {
+      "tag": "bal-table",
+      "category": "content",
+      "description": "Table component for tabular data"
+    },
+    {
+      "tag": "bal-carousel",
+      "category": "content",
+      "description": "Carousel or slider container",
+      "allowedChildren": ["bal-carousel-item"]
+    },
+    {
+      "tag": "bal-carousel-item",
+      "category": "content",
+      "description": "Individual slide in carousel",
+      "allowedParents": ["bal-carousel"]
+    },
+    {
+      "tag": "bal-shape",
+      "category": "content",
+      "description": "SVG shape or decorative element"
+    },
+    {
+      "tag": "bal-logo",
+      "category": "content",
+      "description": "Logo component for brand identity"
+    },
+    {
+      "tag": "bal-hint",
+      "category": "content",
+      "description": "Hint or info box for helpful information",
+      "allowedChildren": ["bal-hint-title", "bal-hint-text"]
+    },
+    {
+      "tag": "bal-hint-title",
+      "category": "content",
+      "description": "Title of a hint box",
+      "allowedParents": ["bal-hint"]
+    },
+    {
+      "tag": "bal-hint-text",
+      "category": "content",
+      "description": "Text content of a hint box",
+      "allowedParents": ["bal-hint"]
+    },
+    {
+      "tag": "bal-form",
+      "category": "form",
+      "description": "Form wrapper element — must contain all form fields",
+      "allowedChildren": ["bal-form-grid", "bal-field", "bal-button-group", "bal-checkbox-group", "bal-radio-group"]
+    },
+    {
+      "tag": "bal-label",
+      "category": "form",
+      "description": "Form field label — required for every input for accessibility"
+    },
+    {
+      "tag": "bal-input",
+      "category": "form",
+      "description": "Text input field — supports type: text, email, password, tel, url"
+    },
+    {
+      "tag": "bal-input-date",
+      "category": "form",
+      "description": "Date input with integrated date picker"
+    },
+    {
+      "tag": "bal-input-group",
+      "category": "form",
+      "description": "Input group wrapper for combined inputs",
+      "allowedChildren": ["bal-input", "bal-button"]
+    },
+    {
+      "tag": "bal-input-slider",
+      "category": "form",
+      "description": "Range slider control"
+    },
+    {
+      "tag": "bal-input-stepper",
+      "category": "form",
+      "description": "Number stepper with increment/decrement buttons"
+    },
+    {
+      "tag": "bal-textarea",
+      "category": "form",
+      "description": "Multi-line text input for longer content"
+    },
+    {
+      "tag": "bal-select",
+      "category": "form",
+      "description": "Dropdown select for single or multi-selection",
+      "allowedChildren": ["bal-select-option"]
+    },
+    {
+      "tag": "bal-select-option",
+      "category": "form",
+      "description": "Option item inside a select",
+      "allowedParents": ["bal-select"]
+    },
+    {
+      "tag": "bal-option",
+      "category": "form",
+      "description": "Standalone option element",
+      "allowedParents": ["bal-option-list"]
+    },
+    {
+      "tag": "bal-option-list",
+      "category": "form",
+      "description": "List container for options",
+      "allowedChildren": ["bal-option"]
+    },
+    {
+      "tag": "bal-checkbox",
+      "category": "form",
+      "description": "Single checkbox input",
+      "allowedParents": ["bal-checkbox-group"]
+    },
+    {
+      "tag": "bal-checkbox-group",
+      "category": "form",
+      "description": "Container for grouped checkboxes",
+      "allowedChildren": ["bal-checkbox", "bal-check"]
+    },
+    {
+      "tag": "bal-check",
+      "category": "form",
+      "description": "Internal checkbox element",
+      "allowedParents": ["bal-checkbox-group"]
+    },
+    {
+      "tag": "bal-switch",
+      "category": "form",
+      "description": "Toggle switch input"
+    },
+    {
+      "tag": "bal-radio",
+      "category": "form",
+      "description": "Single radio button",
+      "allowedParents": ["bal-radio-group"]
+    },
+    {
+      "tag": "bal-radio-group",
+      "category": "form",
+      "description": "Container for grouped radio buttons — only one can be selected",
+      "allowedChildren": ["bal-radio", "bal-radio-icon"]
+    },
+    {
+      "tag": "bal-radio-icon",
+      "category": "form",
+      "description": "Icon-style radio button variant",
+      "allowedParents": ["bal-radio-group"]
+    },
+    {
+      "tag": "bal-date",
+      "category": "form",
+      "description": "Full date picker with calendar widget",
+      "allowedChildren": ["bal-date-calendar"]
+    },
+    {
+      "tag": "bal-date-calendar",
+      "category": "form",
+      "description": "Calendar display in date picker",
+      "allowedParents": ["bal-date"],
+      "allowedChildren": ["bal-date-calendar-cell"]
+    },
+    {
+      "tag": "bal-date-calendar-cell",
+      "category": "form",
+      "description": "Individual day cell in calendar",
+      "allowedParents": ["bal-date-calendar"]
+    },
+    {
+      "tag": "bal-number-input",
+      "category": "form",
+      "description": "Numeric input with formatting"
+    },
+    {
+      "tag": "bal-time-input",
+      "category": "form",
+      "description": "Time picker input"
+    },
+    {
+      "tag": "bal-file-upload",
+      "category": "form",
+      "description": "File upload input with drag-and-drop support"
+    },
+    {
+      "tag": "bal-dropdown",
+      "category": "form",
+      "description": "Generic dropdown menu"
+    },
+    {
+      "tag": "bal-field",
+      "category": "form",
+      "description": "Form field wrapper combining label, control, hint and message",
+      "allowedChildren": ["bal-field-label", "bal-field-control", "bal-field-hint", "bal-field-message"]
+    },
+    {
+      "tag": "bal-field-label",
+      "category": "form",
+      "description": "Label section of a field",
+      "allowedParents": ["bal-field"]
+    },
+    {
+      "tag": "bal-field-control",
+      "category": "form",
+      "description": "Control section of a field",
+      "allowedParents": ["bal-field"]
+    },
+    {
+      "tag": "bal-field-hint",
+      "category": "form",
+      "description": "Hint text section of a field",
+      "allowedParents": ["bal-field"]
+    },
+    {
+      "tag": "bal-field-message",
+      "category": "form",
+      "description": "Error or success message section of a field",
+      "allowedParents": ["bal-field"]
+    },
+    {
+      "tag": "bal-button",
+      "category": "form",
+      "description": "Action button — supports type: submit, reset, button"
+    },
+    {
+      "tag": "bal-button-group",
+      "category": "form",
+      "description": "Container for related buttons",
+      "allowedChildren": ["bal-button"]
+    },
+    {
+      "tag": "bal-segment",
+      "category": "form",
+      "description": "Segment control for exclusive option selection",
+      "allowedChildren": ["bal-segment-item"]
+    },
+    {
+      "tag": "bal-segment-item",
+      "category": "form",
+      "description": "Individual item in segment control",
+      "allowedParents": ["bal-segment"]
+    },
+    {
+      "tag": "bal-accordion",
+      "category": "structure",
+      "description": "Collapsible accordion for expandable content sections",
+      "allowedChildren": ["bal-accordion-summary", "bal-accordion-details", "bal-accordion-trigger"]
+    },
+    {
+      "tag": "bal-accordion-summary",
+      "category": "structure",
+      "description": "Clickable header of an accordion section",
+      "allowedParents": ["bal-accordion"]
+    },
+    {
+      "tag": "bal-accordion-details",
+      "category": "structure",
+      "description": "Expandable body content of an accordion section",
+      "allowedParents": ["bal-accordion"]
+    },
+    {
+      "tag": "bal-accordion-trigger",
+      "category": "structure",
+      "description": "Custom trigger element for accordion",
+      "allowedParents": ["bal-accordion"]
+    },
+    {
+      "tag": "bal-tabs",
+      "category": "structure",
+      "description": "Tab container for tabbed content organisation",
+      "allowedChildren": ["bal-tab-item"]
+    },
+    {
+      "tag": "bal-tab-item",
+      "category": "structure",
+      "description": "Individual tab panel",
+      "allowedParents": ["bal-tabs"]
+    },
+    {
+      "tag": "bal-steps",
+      "category": "structure",
+      "description": "Step indicator for multi-step processes",
+      "allowedChildren": ["bal-step-item"]
+    },
+    {
+      "tag": "bal-step-item",
+      "category": "structure",
+      "description": "Individual step in a stepper",
+      "allowedParents": ["bal-steps"]
+    },
+    {
+      "tag": "bal-pagination",
+      "category": "structure",
+      "description": "Pagination control for multi-page content navigation"
+    },
+    {
+      "tag": "bal-modal",
+      "category": "overlay",
+      "description": "Modal dialog for focused user interactions",
+      "allowedChildren": ["bal-modal-header", "bal-modal-body"]
+    },
+    {
+      "tag": "bal-modal-header",
+      "category": "overlay",
+      "description": "Header area of a modal dialog",
+      "allowedParents": ["bal-modal"]
+    },
+    {
+      "tag": "bal-modal-body",
+      "category": "overlay",
+      "description": "Body content area of a modal dialog",
+      "allowedParents": ["bal-modal"]
+    },
+    {
+      "tag": "bal-popup",
+      "category": "overlay",
+      "description": "Popup overlay for contextual information"
+    },
+    {
+      "tag": "bal-popover",
+      "category": "overlay",
+      "description": "Popover with positioning relative to trigger",
+      "allowedChildren": ["bal-popover-content"]
+    },
+    {
+      "tag": "bal-popover-content",
+      "category": "overlay",
+      "description": "Content area of a popover",
+      "allowedParents": ["bal-popover"]
+    },
+    {
+      "tag": "bal-notification",
+      "category": "overlay",
+      "description": "In-page notification banner for alerts and messages"
+    },
+    {
+      "tag": "bal-notices",
+      "category": "overlay",
+      "description": "Container for multiple notifications",
+      "allowedChildren": ["bal-notification", "bal-snackbar", "bal-toast"]
+    },
+    {
+      "tag": "bal-snackbar",
+      "category": "overlay",
+      "description": "Snackbar notification at bottom of screen"
+    },
+    {
+      "tag": "bal-toast",
+      "category": "overlay",
+      "description": "Toast notification for temporary feedback"
+    },
+    {
+      "tag": "bal-sheet",
+      "category": "overlay",
+      "description": "Bottom sheet modal overlay"
+    },
+    {
+      "tag": "bal-spinner",
+      "category": "utility",
+      "description": "Loading spinner for asynchronous operations"
+    },
+    {
+      "tag": "bal-progress-bar",
+      "category": "utility",
+      "description": "Progress bar indicator for tracking completion"
+    },
+    {
+      "tag": "bal-close",
+      "category": "utility",
+      "description": "Close button for dismissible elements"
+    },
+    {
+      "tag": "bal-tooltip",
+      "category": "utility",
+      "description": "Hover tooltip for additional context"
+    },
+    {
+      "tag": "bal-app",
+      "category": "utility",
+      "description": "Root application container"
+    }
+  ],
+
+  "testCases": [
+    {
+      "id": "TC-01",
+      "name": "Login-Seite",
+      "input": "Erstelle eine Login-Seite mit Email, Passwort und Login-Button",
+      "expectedComponents": [
+        "bal-navbar",
+        "bal-navbar-brand",
+        "bal-content",
+        "bal-stack",
+        "bal-heading",
+        "bal-form",
+        "bal-form-grid",
+        "bal-form-col",
+        "bal-label",
+        "bal-input",
+        "bal-button-group",
+        "bal-button",
+        "bal-footer"
+      ],
+      "successCriteria": {
+        "minScore": 80,
+        "requiredChecks": ["all-labels-present", "valid-page-order", "no-unknown-components"]
+      }
+    },
+    {
+      "id": "TC-02",
+      "name": "Versicherungsformular",
+      "input": "Erstelle ein Versicherungsformular mit Name, Geburtsdatum, Versicherungstyp (Auswahl), Checkbox für AGB und Absenden-Button",
+      "expectedComponents": [
+        "bal-content",
+        "bal-steps",
+        "bal-step-item",
+        "bal-form",
+        "bal-form-grid",
+        "bal-form-col",
+        "bal-label",
+        "bal-input",
+        "bal-input-date",
+        "bal-select",
+        "bal-select-option",
+        "bal-checkbox-group",
+        "bal-checkbox",
+        "bal-button-group",
+        "bal-button"
+      ],
+      "successCriteria": {
+        "minScore": 80,
+        "requiredChecks": ["all-labels-present", "valid-page-order", "no-unknown-components"]
+      }
+    },
+    {
+      "id": "TC-03",
+      "name": "Dashboard",
+      "input": "Erstelle ein Dashboard mit Hero-Bereich, drei Produkt-Cards und einer FAQ-Sektion",
+      "expectedComponents": [
+        "bal-navbar",
+        "bal-navbar-brand",
+        "bal-stage",
+        "bal-stage-head",
+        "bal-stage-body",
+        "bal-content",
+        "bal-stack",
+        "bal-heading",
+        "bal-card",
+        "bal-card-title",
+        "bal-card-content",
+        "bal-card-actions",
+        "bal-button",
+        "bal-accordion",
+        "bal-accordion-summary",
+        "bal-accordion-details",
+        "bal-footer"
+      ],
+      "successCriteria": {
+        "minScore": 80,
+        "requiredChecks": ["single-stage-only", "valid-page-order", "no-unknown-components"]
+      }
+    }
+  ]
+}

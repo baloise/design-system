@@ -1,0 +1,44 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssInteractionsCursor, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Interactions/Cursor"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Cursor" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Defines the appearance of the mouse cursor when positioned over an element.</Lead>
+
+## Classes
+
+<CssInteractionsCursor />
+
+<Code
+  language="html"
+  code={`
+<div class="flex align-items-center justify-content-center">
+  <div class="cursor-auto flex align-items-center justify-content-center radius-normal bg-green p-small m-small">auto</div>
+  <div class="cursor-pointer flex align-items-center justify-content-center radius-normal bg-green p-small m-small">pointer</div>
+  <div class="cursor-wait flex align-items-center justify-content-center radius-normal bg-green p-small m-small">wait</div>
+  <div class="cursor-move flex align-items-center justify-content-center radius-normal bg-green p-small m-small">move</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Elevation"
+      description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
+    />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

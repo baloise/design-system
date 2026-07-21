@@ -1,0 +1,1302 @@
+[
+  {
+    "border-width": [
+      {
+        "class": "border-none",
+        "css": "border-width: 0;",
+        "property": "border-width",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "border-top-width": [
+      {
+        "class": "border-top-none",
+        "css": "border-top-width: 0;",
+        "property": "border-top-width",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "border-right-width": [
+      {
+        "class": "border-right-none",
+        "css": "border-right-width: 0;",
+        "property": "border-right-width",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "border-bottom-width": [
+      {
+        "class": "border-bottom-none",
+        "css": "border-bottom-width: 0;",
+        "property": "border-bottom-width",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "border-left-width": [
+      {
+        "class": "border-left-none",
+        "css": "border-left-width: 0;",
+        "property": "border-left-width",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "border-color": [
+      {
+        "class": "border",
+        "css": "border-color: var(--bal-color-border);",
+        "property": "border-color",
+        "value": "var(--bal-color-border)"
+      },
+      {
+        "class": "border-primary",
+        "css": "border-color: var(--bal-color-border-primary);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-primary)"
+      },
+      {
+        "class": "border-primary-light",
+        "css": "border-color: var(--bal-color-border-primary-light);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-primary-light)"
+      },
+      {
+        "class": "border-grey-light",
+        "css": "border-color: var(--bal-color-border-grey-light);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-grey-light)"
+      },
+      {
+        "class": "border-grey",
+        "css": "border-color: var(--bal-color-border-grey);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-grey)"
+      },
+      {
+        "class": "border-grey-dark",
+        "css": "border-color: var(--bal-color-border-grey-dark);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-grey-dark)"
+      },
+      {
+        "class": "border-white",
+        "css": "border-color: var(--bal-color-border-white);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-white)"
+      },
+      {
+        "class": "border-info",
+        "css": "border-color: var(--bal-color-border-info);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-info)"
+      },
+      {
+        "class": "border-success",
+        "css": "border-color: var(--bal-color-border-success);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-success)"
+      },
+      {
+        "class": "border-warning",
+        "css": "border-color: var(--bal-color-border-warning);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-warning)"
+      },
+      {
+        "class": "border-danger",
+        "css": "border-color: var(--bal-color-border-danger);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-danger)"
+      },
+      {
+        "class": "border-info-hovered",
+        "css": "border-color: var(--bal-color-border-info-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-info-hovered)"
+      },
+      {
+        "class": "border-info-pressed",
+        "css": "border-color: var(--bal-color-border-info-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-info-pressed)"
+      },
+      {
+        "class": "border-primary-hovered",
+        "css": "border-color: var(--bal-color-border-primary-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-primary-hovered)"
+      },
+      {
+        "class": "border-primary-pressed",
+        "css": "border-color: var(--bal-color-border-primary-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-primary-pressed)"
+      },
+      {
+        "class": "border-success-hovered",
+        "css": "border-color: var(--bal-color-border-success-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-success-hovered)"
+      },
+      {
+        "class": "border-success-pressed",
+        "css": "border-color: var(--bal-color-border-success-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-success-pressed)"
+      },
+      {
+        "class": "border-warning-hovered",
+        "css": "border-color: var(--bal-color-border-warning-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-warning-hovered)"
+      },
+      {
+        "class": "border-warning-pressed",
+        "css": "border-color: var(--bal-color-border-warning-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-warning-pressed)"
+      },
+      {
+        "class": "border-danger-hovered",
+        "css": "border-color: var(--bal-color-border-danger-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-danger-hovered)"
+      },
+      {
+        "class": "border-danger-pressed",
+        "css": "border-color: var(--bal-color-border-danger-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-danger-pressed)"
+      },
+      {
+        "class": "border-green-hovered",
+        "css": "border-color: var(--bal-color-border-green-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-green-hovered)"
+      },
+      {
+        "class": "border-green-pressed",
+        "css": "border-color: var(--bal-color-border-green-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-green-pressed)"
+      },
+      {
+        "class": "border-purple-hovered",
+        "css": "border-color: var(--bal-color-border-purple-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-purple-hovered)"
+      },
+      {
+        "class": "border-purple-pressed",
+        "css": "border-color: var(--bal-color-border-purple-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-purple-pressed)"
+      },
+      {
+        "class": "border-red-hovered",
+        "css": "border-color: var(--bal-color-border-red-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-red-hovered)"
+      },
+      {
+        "class": "border-red-pressed",
+        "css": "border-color: var(--bal-color-border-red-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-red-pressed)"
+      },
+      {
+        "class": "border-yellow-hovered",
+        "css": "border-color: var(--bal-color-border-yellow-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-yellow-hovered)"
+      },
+      {
+        "class": "border-yellow-pressed",
+        "css": "border-color: var(--bal-color-border-yellow-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-yellow-pressed)"
+      },
+      {
+        "class": "border-inverted",
+        "css": "border-color: var(--bal-color-border-inverted);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-inverted)"
+      },
+      {
+        "class": "border-inverted-disabled",
+        "css": "border-color: var(--bal-color-border-inverted-disabled);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-inverted-disabled)"
+      },
+      {
+        "class": "border-inverted-primary",
+        "css": "border-color: var(--bal-color-border-inverted-primary);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-inverted-primary)"
+      },
+      {
+        "class": "border-inverted-primary-hovered",
+        "css": "border-color: var(--bal-color-border-inverted-primary-hovered);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-inverted-primary-hovered)"
+      },
+      {
+        "class": "border-inverted-primary-pressed",
+        "css": "border-color: var(--bal-color-border-inverted-primary-pressed);",
+        "property": "border-color",
+        "value": "var(--bal-color-border-inverted-primary-pressed)"
+      }
+    ]
+  },
+  {
+    "border-top-color": [
+      {
+        "class": "border-top",
+        "css": "border-top-color: var(--bal-color-border);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border)"
+      },
+      {
+        "class": "border-top-primary",
+        "css": "border-top-color: var(--bal-color-border-primary);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-primary)"
+      },
+      {
+        "class": "border-top-primary-light",
+        "css": "border-top-color: var(--bal-color-border-primary-light);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-primary-light)"
+      },
+      {
+        "class": "border-top-grey-light",
+        "css": "border-top-color: var(--bal-color-border-grey-light);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-grey-light)"
+      },
+      {
+        "class": "border-top-grey",
+        "css": "border-top-color: var(--bal-color-border-grey);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-grey)"
+      },
+      {
+        "class": "border-top-grey-dark",
+        "css": "border-top-color: var(--bal-color-border-grey-dark);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-grey-dark)"
+      },
+      {
+        "class": "border-top-white",
+        "css": "border-top-color: var(--bal-color-border-white);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-white)"
+      },
+      {
+        "class": "border-top-info",
+        "css": "border-top-color: var(--bal-color-border-info);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-info)"
+      },
+      {
+        "class": "border-top-success",
+        "css": "border-top-color: var(--bal-color-border-success);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-success)"
+      },
+      {
+        "class": "border-top-warning",
+        "css": "border-top-color: var(--bal-color-border-warning);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-warning)"
+      },
+      {
+        "class": "border-top-danger",
+        "css": "border-top-color: var(--bal-color-border-danger);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-danger)"
+      },
+      {
+        "class": "border-top-info-hovered",
+        "css": "border-top-color: var(--bal-color-border-info-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-info-hovered)"
+      },
+      {
+        "class": "border-top-info-pressed",
+        "css": "border-top-color: var(--bal-color-border-info-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-info-pressed)"
+      },
+      {
+        "class": "border-top-primary-hovered",
+        "css": "border-top-color: var(--bal-color-border-primary-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-primary-hovered)"
+      },
+      {
+        "class": "border-top-primary-pressed",
+        "css": "border-top-color: var(--bal-color-border-primary-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-primary-pressed)"
+      },
+      {
+        "class": "border-top-success-hovered",
+        "css": "border-top-color: var(--bal-color-border-success-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-success-hovered)"
+      },
+      {
+        "class": "border-top-success-pressed",
+        "css": "border-top-color: var(--bal-color-border-success-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-success-pressed)"
+      },
+      {
+        "class": "border-top-warning-hovered",
+        "css": "border-top-color: var(--bal-color-border-warning-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-warning-hovered)"
+      },
+      {
+        "class": "border-top-warning-pressed",
+        "css": "border-top-color: var(--bal-color-border-warning-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-warning-pressed)"
+      },
+      {
+        "class": "border-top-danger-hovered",
+        "css": "border-top-color: var(--bal-color-border-danger-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-danger-hovered)"
+      },
+      {
+        "class": "border-top-danger-pressed",
+        "css": "border-top-color: var(--bal-color-border-danger-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-danger-pressed)"
+      },
+      {
+        "class": "border-top-green-hovered",
+        "css": "border-top-color: var(--bal-color-border-green-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-green-hovered)"
+      },
+      {
+        "class": "border-top-green-pressed",
+        "css": "border-top-color: var(--bal-color-border-green-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-green-pressed)"
+      },
+      {
+        "class": "border-top-purple-hovered",
+        "css": "border-top-color: var(--bal-color-border-purple-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-purple-hovered)"
+      },
+      {
+        "class": "border-top-purple-pressed",
+        "css": "border-top-color: var(--bal-color-border-purple-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-purple-pressed)"
+      },
+      {
+        "class": "border-top-red-hovered",
+        "css": "border-top-color: var(--bal-color-border-red-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-red-hovered)"
+      },
+      {
+        "class": "border-top-red-pressed",
+        "css": "border-top-color: var(--bal-color-border-red-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-red-pressed)"
+      },
+      {
+        "class": "border-top-yellow-hovered",
+        "css": "border-top-color: var(--bal-color-border-yellow-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-yellow-hovered)"
+      },
+      {
+        "class": "border-top-yellow-pressed",
+        "css": "border-top-color: var(--bal-color-border-yellow-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-yellow-pressed)"
+      },
+      {
+        "class": "border-top-inverted",
+        "css": "border-top-color: var(--bal-color-border-inverted);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-inverted)"
+      },
+      {
+        "class": "border-top-inverted-disabled",
+        "css": "border-top-color: var(--bal-color-border-inverted-disabled);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-inverted-disabled)"
+      },
+      {
+        "class": "border-top-inverted-primary",
+        "css": "border-top-color: var(--bal-color-border-inverted-primary);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-inverted-primary)"
+      },
+      {
+        "class": "border-top-inverted-primary-hovered",
+        "css": "border-top-color: var(--bal-color-border-inverted-primary-hovered);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-inverted-primary-hovered)"
+      },
+      {
+        "class": "border-top-inverted-primary-pressed",
+        "css": "border-top-color: var(--bal-color-border-inverted-primary-pressed);",
+        "property": "border-top-color",
+        "value": "var(--bal-color-border-inverted-primary-pressed)"
+      }
+    ]
+  },
+  {
+    "border-right-color": [
+      {
+        "class": "border-right",
+        "css": "border-right-color: var(--bal-color-border);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border)"
+      },
+      {
+        "class": "border-right-primary",
+        "css": "border-right-color: var(--bal-color-border-primary);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-primary)"
+      },
+      {
+        "class": "border-right-primary-light",
+        "css": "border-right-color: var(--bal-color-border-primary-light);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-primary-light)"
+      },
+      {
+        "class": "border-right-grey-light",
+        "css": "border-right-color: var(--bal-color-border-grey-light);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-grey-light)"
+      },
+      {
+        "class": "border-right-grey",
+        "css": "border-right-color: var(--bal-color-border-grey);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-grey)"
+      },
+      {
+        "class": "border-right-grey-dark",
+        "css": "border-right-color: var(--bal-color-border-grey-dark);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-grey-dark)"
+      },
+      {
+        "class": "border-right-white",
+        "css": "border-right-color: var(--bal-color-border-white);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-white)"
+      },
+      {
+        "class": "border-right-info",
+        "css": "border-right-color: var(--bal-color-border-info);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-info)"
+      },
+      {
+        "class": "border-right-success",
+        "css": "border-right-color: var(--bal-color-border-success);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-success)"
+      },
+      {
+        "class": "border-right-warning",
+        "css": "border-right-color: var(--bal-color-border-warning);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-warning)"
+      },
+      {
+        "class": "border-right-danger",
+        "css": "border-right-color: var(--bal-color-border-danger);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-danger)"
+      },
+      {
+        "class": "border-right-info-hovered",
+        "css": "border-right-color: var(--bal-color-border-info-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-info-hovered)"
+      },
+      {
+        "class": "border-right-info-pressed",
+        "css": "border-right-color: var(--bal-color-border-info-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-info-pressed)"
+      },
+      {
+        "class": "border-right-primary-hovered",
+        "css": "border-right-color: var(--bal-color-border-primary-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-primary-hovered)"
+      },
+      {
+        "class": "border-right-primary-pressed",
+        "css": "border-right-color: var(--bal-color-border-primary-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-primary-pressed)"
+      },
+      {
+        "class": "border-right-success-hovered",
+        "css": "border-right-color: var(--bal-color-border-success-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-success-hovered)"
+      },
+      {
+        "class": "border-right-success-pressed",
+        "css": "border-right-color: var(--bal-color-border-success-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-success-pressed)"
+      },
+      {
+        "class": "border-right-warning-hovered",
+        "css": "border-right-color: var(--bal-color-border-warning-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-warning-hovered)"
+      },
+      {
+        "class": "border-right-warning-pressed",
+        "css": "border-right-color: var(--bal-color-border-warning-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-warning-pressed)"
+      },
+      {
+        "class": "border-right-danger-hovered",
+        "css": "border-right-color: var(--bal-color-border-danger-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-danger-hovered)"
+      },
+      {
+        "class": "border-right-danger-pressed",
+        "css": "border-right-color: var(--bal-color-border-danger-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-danger-pressed)"
+      },
+      {
+        "class": "border-right-green-hovered",
+        "css": "border-right-color: var(--bal-color-border-green-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-green-hovered)"
+      },
+      {
+        "class": "border-right-green-pressed",
+        "css": "border-right-color: var(--bal-color-border-green-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-green-pressed)"
+      },
+      {
+        "class": "border-right-purple-hovered",
+        "css": "border-right-color: var(--bal-color-border-purple-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-purple-hovered)"
+      },
+      {
+        "class": "border-right-purple-pressed",
+        "css": "border-right-color: var(--bal-color-border-purple-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-purple-pressed)"
+      },
+      {
+        "class": "border-right-red-hovered",
+        "css": "border-right-color: var(--bal-color-border-red-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-red-hovered)"
+      },
+      {
+        "class": "border-right-red-pressed",
+        "css": "border-right-color: var(--bal-color-border-red-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-red-pressed)"
+      },
+      {
+        "class": "border-right-yellow-hovered",
+        "css": "border-right-color: var(--bal-color-border-yellow-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-yellow-hovered)"
+      },
+      {
+        "class": "border-right-yellow-pressed",
+        "css": "border-right-color: var(--bal-color-border-yellow-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-yellow-pressed)"
+      },
+      {
+        "class": "border-right-inverted",
+        "css": "border-right-color: var(--bal-color-border-inverted);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-inverted)"
+      },
+      {
+        "class": "border-right-inverted-disabled",
+        "css": "border-right-color: var(--bal-color-border-inverted-disabled);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-inverted-disabled)"
+      },
+      {
+        "class": "border-right-inverted-primary",
+        "css": "border-right-color: var(--bal-color-border-inverted-primary);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-inverted-primary)"
+      },
+      {
+        "class": "border-right-inverted-primary-hovered",
+        "css": "border-right-color: var(--bal-color-border-inverted-primary-hovered);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-inverted-primary-hovered)"
+      },
+      {
+        "class": "border-right-inverted-primary-pressed",
+        "css": "border-right-color: var(--bal-color-border-inverted-primary-pressed);",
+        "property": "border-right-color",
+        "value": "var(--bal-color-border-inverted-primary-pressed)"
+      }
+    ]
+  },
+  {
+    "border-bottom-color": [
+      {
+        "class": "border-bottom",
+        "css": "border-bottom-color: var(--bal-color-border);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border)"
+      },
+      {
+        "class": "border-bottom-primary",
+        "css": "border-bottom-color: var(--bal-color-border-primary);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-primary)"
+      },
+      {
+        "class": "border-bottom-primary-light",
+        "css": "border-bottom-color: var(--bal-color-border-primary-light);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-primary-light)"
+      },
+      {
+        "class": "border-bottom-grey-light",
+        "css": "border-bottom-color: var(--bal-color-border-grey-light);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-grey-light)"
+      },
+      {
+        "class": "border-bottom-grey",
+        "css": "border-bottom-color: var(--bal-color-border-grey);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-grey)"
+      },
+      {
+        "class": "border-bottom-grey-dark",
+        "css": "border-bottom-color: var(--bal-color-border-grey-dark);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-grey-dark)"
+      },
+      {
+        "class": "border-bottom-white",
+        "css": "border-bottom-color: var(--bal-color-border-white);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-white)"
+      },
+      {
+        "class": "border-bottom-info",
+        "css": "border-bottom-color: var(--bal-color-border-info);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-info)"
+      },
+      {
+        "class": "border-bottom-success",
+        "css": "border-bottom-color: var(--bal-color-border-success);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-success)"
+      },
+      {
+        "class": "border-bottom-warning",
+        "css": "border-bottom-color: var(--bal-color-border-warning);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-warning)"
+      },
+      {
+        "class": "border-bottom-danger",
+        "css": "border-bottom-color: var(--bal-color-border-danger);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-danger)"
+      },
+      {
+        "class": "border-bottom-info-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-info-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-info-hovered)"
+      },
+      {
+        "class": "border-bottom-info-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-info-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-info-pressed)"
+      },
+      {
+        "class": "border-bottom-primary-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-primary-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-primary-hovered)"
+      },
+      {
+        "class": "border-bottom-primary-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-primary-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-primary-pressed)"
+      },
+      {
+        "class": "border-bottom-success-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-success-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-success-hovered)"
+      },
+      {
+        "class": "border-bottom-success-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-success-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-success-pressed)"
+      },
+      {
+        "class": "border-bottom-warning-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-warning-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-warning-hovered)"
+      },
+      {
+        "class": "border-bottom-warning-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-warning-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-warning-pressed)"
+      },
+      {
+        "class": "border-bottom-danger-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-danger-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-danger-hovered)"
+      },
+      {
+        "class": "border-bottom-danger-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-danger-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-danger-pressed)"
+      },
+      {
+        "class": "border-bottom-green-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-green-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-green-hovered)"
+      },
+      {
+        "class": "border-bottom-green-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-green-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-green-pressed)"
+      },
+      {
+        "class": "border-bottom-purple-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-purple-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-purple-hovered)"
+      },
+      {
+        "class": "border-bottom-purple-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-purple-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-purple-pressed)"
+      },
+      {
+        "class": "border-bottom-red-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-red-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-red-hovered)"
+      },
+      {
+        "class": "border-bottom-red-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-red-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-red-pressed)"
+      },
+      {
+        "class": "border-bottom-yellow-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-yellow-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-yellow-hovered)"
+      },
+      {
+        "class": "border-bottom-yellow-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-yellow-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-yellow-pressed)"
+      },
+      {
+        "class": "border-bottom-inverted",
+        "css": "border-bottom-color: var(--bal-color-border-inverted);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-inverted)"
+      },
+      {
+        "class": "border-bottom-inverted-disabled",
+        "css": "border-bottom-color: var(--bal-color-border-inverted-disabled);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-inverted-disabled)"
+      },
+      {
+        "class": "border-bottom-inverted-primary",
+        "css": "border-bottom-color: var(--bal-color-border-inverted-primary);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-inverted-primary)"
+      },
+      {
+        "class": "border-bottom-inverted-primary-hovered",
+        "css": "border-bottom-color: var(--bal-color-border-inverted-primary-hovered);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-inverted-primary-hovered)"
+      },
+      {
+        "class": "border-bottom-inverted-primary-pressed",
+        "css": "border-bottom-color: var(--bal-color-border-inverted-primary-pressed);",
+        "property": "border-bottom-color",
+        "value": "var(--bal-color-border-inverted-primary-pressed)"
+      }
+    ]
+  },
+  {
+    "border-left-color": [
+      {
+        "class": "border-left",
+        "css": "border-left-color: var(--bal-color-border);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border)"
+      },
+      {
+        "class": "border-left-primary",
+        "css": "border-left-color: var(--bal-color-border-primary);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-primary)"
+      },
+      {
+        "class": "border-left-primary-light",
+        "css": "border-left-color: var(--bal-color-border-primary-light);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-primary-light)"
+      },
+      {
+        "class": "border-left-grey-light",
+        "css": "border-left-color: var(--bal-color-border-grey-light);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-grey-light)"
+      },
+      {
+        "class": "border-left-grey",
+        "css": "border-left-color: var(--bal-color-border-grey);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-grey)"
+      },
+      {
+        "class": "border-left-grey-dark",
+        "css": "border-left-color: var(--bal-color-border-grey-dark);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-grey-dark)"
+      },
+      {
+        "class": "border-left-white",
+        "css": "border-left-color: var(--bal-color-border-white);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-white)"
+      },
+      {
+        "class": "border-left-info",
+        "css": "border-left-color: var(--bal-color-border-info);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-info)"
+      },
+      {
+        "class": "border-left-success",
+        "css": "border-left-color: var(--bal-color-border-success);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-success)"
+      },
+      {
+        "class": "border-left-warning",
+        "css": "border-left-color: var(--bal-color-border-warning);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-warning)"
+      },
+      {
+        "class": "border-left-danger",
+        "css": "border-left-color: var(--bal-color-border-danger);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-danger)"
+      },
+      {
+        "class": "border-left-info-hovered",
+        "css": "border-left-color: var(--bal-color-border-info-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-info-hovered)"
+      },
+      {
+        "class": "border-left-info-pressed",
+        "css": "border-left-color: var(--bal-color-border-info-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-info-pressed)"
+      },
+      {
+        "class": "border-left-primary-hovered",
+        "css": "border-left-color: var(--bal-color-border-primary-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-primary-hovered)"
+      },
+      {
+        "class": "border-left-primary-pressed",
+        "css": "border-left-color: var(--bal-color-border-primary-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-primary-pressed)"
+      },
+      {
+        "class": "border-left-success-hovered",
+        "css": "border-left-color: var(--bal-color-border-success-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-success-hovered)"
+      },
+      {
+        "class": "border-left-success-pressed",
+        "css": "border-left-color: var(--bal-color-border-success-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-success-pressed)"
+      },
+      {
+        "class": "border-left-warning-hovered",
+        "css": "border-left-color: var(--bal-color-border-warning-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-warning-hovered)"
+      },
+      {
+        "class": "border-left-warning-pressed",
+        "css": "border-left-color: var(--bal-color-border-warning-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-warning-pressed)"
+      },
+      {
+        "class": "border-left-danger-hovered",
+        "css": "border-left-color: var(--bal-color-border-danger-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-danger-hovered)"
+      },
+      {
+        "class": "border-left-danger-pressed",
+        "css": "border-left-color: var(--bal-color-border-danger-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-danger-pressed)"
+      },
+      {
+        "class": "border-left-green-hovered",
+        "css": "border-left-color: var(--bal-color-border-green-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-green-hovered)"
+      },
+      {
+        "class": "border-left-green-pressed",
+        "css": "border-left-color: var(--bal-color-border-green-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-green-pressed)"
+      },
+      {
+        "class": "border-left-purple-hovered",
+        "css": "border-left-color: var(--bal-color-border-purple-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-purple-hovered)"
+      },
+      {
+        "class": "border-left-purple-pressed",
+        "css": "border-left-color: var(--bal-color-border-purple-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-purple-pressed)"
+      },
+      {
+        "class": "border-left-red-hovered",
+        "css": "border-left-color: var(--bal-color-border-red-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-red-hovered)"
+      },
+      {
+        "class": "border-left-red-pressed",
+        "css": "border-left-color: var(--bal-color-border-red-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-red-pressed)"
+      },
+      {
+        "class": "border-left-yellow-hovered",
+        "css": "border-left-color: var(--bal-color-border-yellow-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-yellow-hovered)"
+      },
+      {
+        "class": "border-left-yellow-pressed",
+        "css": "border-left-color: var(--bal-color-border-yellow-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-yellow-pressed)"
+      },
+      {
+        "class": "border-left-inverted",
+        "css": "border-left-color: var(--bal-color-border-inverted);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-inverted)"
+      },
+      {
+        "class": "border-left-inverted-disabled",
+        "css": "border-left-color: var(--bal-color-border-inverted-disabled);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-inverted-disabled)"
+      },
+      {
+        "class": "border-left-inverted-primary",
+        "css": "border-left-color: var(--bal-color-border-inverted-primary);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-inverted-primary)"
+      },
+      {
+        "class": "border-left-inverted-primary-hovered",
+        "css": "border-left-color: var(--bal-color-border-inverted-primary-hovered);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-inverted-primary-hovered)"
+      },
+      {
+        "class": "border-left-inverted-primary-pressed",
+        "css": "border-left-color: var(--bal-color-border-inverted-primary-pressed);",
+        "property": "border-left-color",
+        "value": "var(--bal-color-border-inverted-primary-pressed)"
+      }
+    ]
+  },
+  {
+    "border-width": [
+      {
+        "class": "border-width-small",
+        "css": "border-width: var(--bal-border-width-small);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-small)"
+      },
+      {
+        "class": "border-width-normal",
+        "css": "border-width: var(--bal-border-width-normal);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-normal)"
+      },
+      {
+        "class": "border-width-large",
+        "css": "border-width: var(--bal-border-width-large);",
+        "property": "border-width",
+        "value": "var(--bal-border-width-large)"
+      }
+    ]
+  },
+  {
+    "border-radius": [
+      {
+        "class": "radius-none",
+        "css": "border-radius: 0;",
+        "property": "border-radius",
+        "value": "0"
+      },
+      {
+        "class": "radius-normal",
+        "css": "border-radius: var(--bal-radius-normal);",
+        "property": "border-radius",
+        "value": "var(--bal-radius-normal)"
+      },
+      {
+        "class": "radius-large",
+        "css": "border-radius: var(--bal-radius-large);",
+        "property": "border-radius",
+        "value": "var(--bal-radius-large)"
+      },
+      {
+        "class": "radius-rounded",
+        "css": "border-radius: var(--bal-radius-rounded);",
+        "property": "border-radius",
+        "value": "var(--bal-radius-rounded)"
+      }
+    ]
+  },
+  {
+    "border-top-left-radius,border-top-right-radius": [
+      {
+        "class": "radius-top-none",
+        "css": "border-top-left-radius,border-top-right-radius: 0;",
+        "property": [
+          "border-top-left-radius",
+          "border-top-right-radius"
+        ],
+        "value": "0"
+      },
+      {
+        "class": "radius-top-normal",
+        "css": "border-top-left-radius,border-top-right-radius: var(--bal-radius-normal);",
+        "property": [
+          "border-top-left-radius",
+          "border-top-right-radius"
+        ],
+        "value": "var(--bal-radius-normal)"
+      },
+      {
+        "class": "radius-top-large",
+        "css": "border-top-left-radius,border-top-right-radius: var(--bal-radius-large);",
+        "property": [
+          "border-top-left-radius",
+          "border-top-right-radius"
+        ],
+        "value": "var(--bal-radius-large)"
+      },
+      {
+        "class": "radius-top-rounded",
+        "css": "border-top-left-radius,border-top-right-radius: var(--bal-radius-rounded);",
+        "property": [
+          "border-top-left-radius",
+          "border-top-right-radius"
+        ],
+        "value": "var(--bal-radius-rounded)"
+      }
+    ]
+  },
+  {
+    "border-top-left-radius,border-bottom-left-radius": [
+      {
+        "class": "radius-left-none",
+        "css": "border-top-left-radius,border-bottom-left-radius: 0;",
+        "property": [
+          "border-top-left-radius",
+          "border-bottom-left-radius"
+        ],
+        "value": "0"
+      },
+      {
+        "class": "radius-left-normal",
+        "css": "border-top-left-radius,border-bottom-left-radius: var(--bal-radius-normal);",
+        "property": [
+          "border-top-left-radius",
+          "border-bottom-left-radius"
+        ],
+        "value": "var(--bal-radius-normal)"
+      },
+      {
+        "class": "radius-left-large",
+        "css": "border-top-left-radius,border-bottom-left-radius: var(--bal-radius-large);",
+        "property": [
+          "border-top-left-radius",
+          "border-bottom-left-radius"
+        ],
+        "value": "var(--bal-radius-large)"
+      },
+      {
+        "class": "radius-left-rounded",
+        "css": "border-top-left-radius,border-bottom-left-radius: var(--bal-radius-rounded);",
+        "property": [
+          "border-top-left-radius",
+          "border-bottom-left-radius"
+        ],
+        "value": "var(--bal-radius-rounded)"
+      }
+    ]
+  },
+  {
+    "border-top-right-radius,border-bottom-right-radius": [
+      {
+        "class": "radius-right-none",
+        "css": "border-top-right-radius,border-bottom-right-radius: 0;",
+        "property": [
+          "border-top-right-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "0"
+      },
+      {
+        "class": "radius-right-normal",
+        "css": "border-top-right-radius,border-bottom-right-radius: var(--bal-radius-normal);",
+        "property": [
+          "border-top-right-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "var(--bal-radius-normal)"
+      },
+      {
+        "class": "radius-right-large",
+        "css": "border-top-right-radius,border-bottom-right-radius: var(--bal-radius-large);",
+        "property": [
+          "border-top-right-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "var(--bal-radius-large)"
+      },
+      {
+        "class": "radius-right-rounded",
+        "css": "border-top-right-radius,border-bottom-right-radius: var(--bal-radius-rounded);",
+        "property": [
+          "border-top-right-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "var(--bal-radius-rounded)"
+      }
+    ]
+  },
+  {
+    "border-bottom-left-radius,border-bottom-right-radius": [
+      {
+        "class": "radius-bottom-none",
+        "css": "border-bottom-left-radius,border-bottom-right-radius: 0;",
+        "property": [
+          "border-bottom-left-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "0"
+      },
+      {
+        "class": "radius-bottom-normal",
+        "css": "border-bottom-left-radius,border-bottom-right-radius: var(--bal-radius-normal);",
+        "property": [
+          "border-bottom-left-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "var(--bal-radius-normal)"
+      },
+      {
+        "class": "radius-bottom-large",
+        "css": "border-bottom-left-radius,border-bottom-right-radius: var(--bal-radius-large);",
+        "property": [
+          "border-bottom-left-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "var(--bal-radius-large)"
+      },
+      {
+        "class": "radius-bottom-rounded",
+        "css": "border-bottom-left-radius,border-bottom-right-radius: var(--bal-radius-rounded);",
+        "property": [
+          "border-bottom-left-radius",
+          "border-bottom-right-radius"
+        ],
+        "value": "var(--bal-radius-rounded)"
+      }
+    ]
+  }
+]

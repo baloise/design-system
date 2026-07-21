@@ -1,0 +1,30 @@
+name: 📖 Update Docs
+
+on:
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  UpdateDocs:
+    name: 📖 Update Docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/workflows/actions/setup
+      - uses: ./.github/workflows/actions/release-setup
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Merge main -> production
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: production
+          message: ':bookmark: update docs'
+          github_token: ${{ secrets.GITHUB_TOKEN }}

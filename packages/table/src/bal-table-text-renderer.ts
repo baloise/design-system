@@ -1,0 +1,69 @@
+import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
+import { parseValue } from './utils/parsing'
+
+interface BalTableTextRendererOptions {
+  color?: (params: ICellRendererParams) => BalProps.BalTextColor
+  icon?: (params: ICellRendererParams) => string
+  iconColor?: (params: ICellRendererParams) => BalProps.BalIconColor
+  iconRight?: (params: ICellRendererParams) => boolean
+}
+
+export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}): ICellRendererComp {
+  function Renderer() {} // eslint-disable-line
+  Renderer.prototype.params = {}
+  Renderer.prototype.options = options
+
+  Renderer.prototype.init = function (params: ICellRendererParams): void {
+    this.params = params
+    const element: HTMLSpanElement = document.createElement('span')
+    element.className = 'bal-table-cell-text'
+    this.element = element
+
+    this.text = document.createElement('bal-text')
+    this.text.setAttribute('small', 'true')
+    this.text.setAttribute('space', 'none')
+
+    this.icon = document.createElement('bal-icon')
+    this.icon.setAttribute('size', 'small')
+
+    this.update()
+  }
+
+  Renderer.prototype.refresh = function (params: ICellRendererParams) {
+    this.params = params
+    this.update()
+    return true
+  }
+
+  Renderer.prototype.update = function () {
+    this.text.innerHTML = parseValue(this.params.value)
+
+    const color = typeof options.color === 'function' ? options.color(this.params) : ''
+    this.text.setAttribute('color', color)
+
+    const icon = typeof options.icon === 'function' ? options.icon(this.params) : ''
+
+    if (icon.length === 0) {
+      this.element.innerHTML = this.text.outerHTML
+    } else {
+      this.icon.setAttribute('name', icon)
+      const iconColor = typeof options.iconColor !== 'function' ? '' : options.iconColor(this.params)
+      this.icon.setAttribute('color', iconColor)
+
+      const isRight = typeof options.iconRight !== 'function' ? '' : options.iconRight(this.params)
+      if (isRight) {
+        this.element.innerHTML = this.text.outerHTML + this.icon.outerHTML
+      } else {
+        this.element.innerHTML = this.icon.outerHTML + this.text.outerHTML
+      }
+    }
+  }
+
+  Renderer.prototype.getGui = function () {
+    return this.element
+  }
+
+  Renderer.prototype.destroy = function () {} // eslint-disable-line
+
+  return Renderer as any // eslint-disable-line
+}

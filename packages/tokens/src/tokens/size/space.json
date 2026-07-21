@@ -1,0 +1,126 @@
+{
+  "size": {
+    "space": {
+      "xx-small": {
+        "mobile": {
+          "value": "0.25",
+          "comment": "Minimum space between two elements"
+        },
+        "tablet": {
+          "value": "{size.space.xx-small.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.xx-small.mobile}"
+        }
+      },
+      "x-small": {
+        "mobile": {
+          "value": "0.5",
+          "comment": "Space between text and icons or headings and content or clickable elements"
+        },
+        "tablet": {
+          "value": "{size.space.x-small.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.x-small.mobile}"
+        }
+      },
+      "small": {
+        "mobile": {
+          "value": "0.75",
+          "comment": ""
+        },
+        "tablet": {
+          "value": "{size.space.small.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.small.mobile}"
+        }
+      },
+      "normal": {
+        "mobile": {
+          "value": "1",
+          "comment": "Space between large headings and content."
+        },
+        "tablet": {
+          "value": "{size.space.normal.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.normal.mobile}"
+        }
+      },
+      "medium": {
+        "mobile": {
+          "value": "1.25",
+          "comment": "Inner padding of cards"
+        },
+        "tablet": {
+          "value": "{size.space.medium.mobile}"
+        },
+        "desktop": {
+          "value": "1.5"
+        }
+      },
+      "large": {
+        "mobile": {
+          "value": "1.5",
+          "comment": "Space between cards"
+        },
+        "tablet": {
+          "value": "{size.space.large.mobile}"
+        },
+        "desktop": {
+          "value": "2"
+        }
+      },
+      "x-large": {
+        "mobile": {
+          "value": "2",
+          "comment": "Space between heading and card"
+        },
+        "tablet": {
+          "value": "2.5"
+        },
+        "desktop": {
+          "value": "3"
+        }
+      },
+      "xx-large": {
+        "mobile": {
+          "value": "3",
+          "comment": ""
+        },
+        "tablet": {
+          "value": "3.5"
+        },
+        "desktop": {
+          "value": "4"
+        }
+      },
+      "xxx-large": {
+        "mobile": {
+          "value": "3.5",
+          "comment": "Footer bottom padding"
+        },
+        "tablet": {
+          "value": "4.5"
+        },
+        "desktop": {
+          "value": "6"
+        }
+      },
+      "xxxx-large": {
+        "mobile": {
+          "value": "4",
+          "comment": "Space between sections"
+        },
+        "tablet": {
+          "value": "6"
+        },
+        "desktop": {
+          "value": "8"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/baloise-design-system.esm.js"></script>
+    <script nomodule src="/build/baloise-design-system.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-steps, bal-step-item">
+      <main class="container py-medium">
+        <section>
+          <bal-steps data-testid="steps" value="step-c">
+            <bal-step-item value="step-a" label="Done" done>Content of Step A</bal-step-item>
+            <bal-step-item value="step-b" label="Failed" failed>Content of Step B</bal-step-item>
+            <bal-step-item value="step-c" label="Active">Content of Step C</bal-step-item>
+            <bal-step-item value="step-d" label="Default">Content of Step D</bal-step-item>
+            <bal-step-item value="step-e" label="Disabled" disabled>Content of Step E</bal-step-item>
+            <bal-step-item value="step-f" label="Hidden" invisible>Content of Step F</bal-step-item>
+          </bal-steps>
+        </section>
+        <hr />
+        <section>
+          <bal-steps>
+            <bal-step-item value="step-a" label="Lorem ipsum dolor sit amet consectetur adipisicing elit" done
+              >Content of Step A</bal-step-item
+            >
+            <bal-step-item value="step-b" label="Failed" failed>Content of Step B</bal-step-item>
+            <bal-step-item value="step-c" label="Active">Content of Step C</bal-step-item>
+            <bal-step-item value="step-d" label="Default">Content of Step D</bal-step-item>
+            <bal-step-item value="step-e" label="Disabled" disabled>Content of Step E</bal-step-item>
+            <bal-step-item value="step-f" label="Hidden" invisible>Content of Step F</bal-step-item>
+          </bal-steps>
+        </section>
+        <hr />
+        <section>
+          <bal-steps>
+            <bal-step-item value="step-1" label="Step 1"></bal-step-item>
+            <bal-step-item value="step-2" label="Step 2"></bal-step-item>
+            <bal-step-item value="step-3" label="Step 3"></bal-step-item>
+            <bal-step-item value="step-4" label="Step 4"></bal-step-item>
+            <bal-step-item value="step-5" label="Step 5"></bal-step-item>
+            <bal-step-item value="step-6" label="Step 6"></bal-step-item>
+            <bal-step-item value="step-7" label="Step 7"></bal-step-item>
+            <bal-step-item value="step-8" label="Step 8"></bal-step-item>
+            <bal-step-item value="step-9" label="Step 9"></bal-step-item>
+            <bal-step-item value="step-10" label="Step 10"></bal-step-item>
+            <bal-step-item value="step-11" label="Step 11"></bal-step-item>
+            <bal-step-item value="step-12" label="Step 12"></bal-step-item>
+            <bal-step-item value="step-13" label="Step 13"></bal-step-item>
+            <bal-step-item value="step-14" label="Step 14"></bal-step-item>
+            <bal-step-item value="step-15" label="Step 15"></bal-step-item>
+            <bal-step-item value="step-16" label="Step 16"></bal-step-item>
+            <bal-step-item value="step-17" label="Step 17"></bal-step-item>
+            <bal-step-item value="step-18" label="Step 18"></bal-step-item>
+            <bal-step-item value="step-19" label="Step 19"></bal-step-item>
+            <bal-step-item value="step-20" label="Step 20"></bal-step-item>
+          </bal-steps>
+        </section>
+        <hr />
+        <section>
+          <bal-steps id="steps-js"></bal-steps>
+          <script>
+            const stepEl = document.getElementById('steps-js')
+            stepEl.options = [
+              {
+                value: '1',
+                label: 'Label 1',
+                href: '',
+                target: '',
+                active: false,
+                disabled: false,
+                done: true,
+                invisible: false,
+                failed: false,
+                prevent: false,
+              },
+              {
+                value: '2',
+                label: 'Label 2',
+                href: '',
+                target: '',
+                active: false,
+                disabled: false,
+                done: false,
+                invisible: false,
+                failed: false,
+                prevent: false,
+              },
+            ]
+          </script>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
