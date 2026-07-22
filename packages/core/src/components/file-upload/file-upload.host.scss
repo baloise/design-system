@@ -48,7 +48,7 @@
   @include vars.local(file-upload-drop-zone-disabled-background, var(--ds-alias-background-color-grey-light));
   @include vars.local(file-upload-drop-zone-disabled-border-color, var(--ds-button-color-disabled-base-text));
   @include vars.local(file-upload-drop-zone-disabled-text-color, var(--ds-button-color-disabled-base-text));
-  @include vars.local(file-upload-file-list-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-file-list-background, var(--ds-alias-background-color-grey-lighter));
   @include vars.local(file-upload-file-name-color, var(--ds-alias-text-color-primary));
   @include vars.local(file-upload-file-size-color, var(--ds-alias-text-color-primary-light));
   @include vars.local(file-upload-disabled-icon-color, var(--ds-button-color-disabled-base-text));
@@ -185,28 +185,48 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-file-upload-description-color: var(--ds-input-description-color-danger);
-  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-danger-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-danger-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-file-upload-drop-zone-border-color: var(--ds-form-container-color-danger-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-container-color-danger-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-container-color-danger-border);
 }
 
 //
 // Valid or Color Success
 // --------------------------------
 :host(.is-success) {
-  --mod-file-upload-description-color: var(--ds-input-description-color-success);
-  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-success-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-success-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-file-upload-drop-zone-border-color: var(--ds-form-container-color-success-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-container-color-success-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-container-color-success-border);
 }
 
 //
 // Color Warning
 // --------------------------------
 :host(.is-warning) {
-  --mod-file-upload-description-color: var(--ds-input-description-color-warning);
-  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-warning-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-warning-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-file-upload-drop-zone-border-color: var(--ds-form-container-color-warning-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-container-color-warning-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-container-color-warning-border);
+}
+
+//
+// Disabled
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-textarea-color: var(--ds-form-control-color-value-disabled);
+  --mod-textarea-placeholder: var(--ds-form-control-color-placeholder-disabled);
 }

@@ -28,12 +28,12 @@
     @include vars.local(checkbox-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(checkbox-tile-base-background-color, inherit);
-    @include vars.local(checkbox-tile-base-border-color, var(--ds-global-color-grey-3));
+    @include vars.local(checkbox-tile-base-border-color, var(--ds-global-color-grey-2));
 
-    @include vars.local(checkbox-tile-hover-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-tile-hover-background-color, var(--ds-alias-background-color-hover));
     @include vars.local(checkbox-tile-hover-border-color, var(--ds-global-color-sky-5));
 
-    @include vars.local(checkbox-tile-active-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-tile-active-background-color, var(--ds-alias-background-color-hover));
     @include vars.local(checkbox-tile-active-border-color, var(--ds-global-color-primary-6));
 
     // unchecked base
@@ -41,11 +41,11 @@
     @include vars.local(checkbox-unchecked-base-color-border, var(--ds-global-color-primary-5));
 
     // unchecked hover
-    @include vars.local(checkbox-unchecked-hover-color-background, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-unchecked-hover-color-background, var(--ds-global-color-grey-1));
     @include vars.local(checkbox-unchecked-hover-color-border, var(--ds-global-color-sky-5));
 
     // unchecked active/pressed
-    @include vars.local(checkbox-unchecked-active-color-background, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-unchecked-active-color-background, var(--ds-global-color-grey-1));
     @include vars.local(checkbox-unchecked-active-color-border, var(--ds-global-color-primary-6));
 
     // checked base
@@ -205,9 +205,9 @@
 
   --mod-checkbox-unchecked-base-color-background: transparent;
   --mod-checkbox-unchecked-base-color-border: var(--ds-divider-color-danger);
-  --mod-checkbox-unchecked-hover-color-background: var(--ds-global-color-grey-2);
+  --mod-checkbox-unchecked-hover-color-background: var(--ds-global-color-grey-1);
   --mod-checkbox-unchecked-hover-color-border: var(--ds-divider-color-danger-dark);
-  --mod-checkbox-unchecked-active-color-background: var(--ds-global-color-grey-2);
+  --mod-checkbox-unchecked-active-color-background: var(--ds-global-color-grey-1);
   --mod-checkbox-unchecked-active-color-border: var(--ds-divider-color-danger-darker);
 
   --mod-checkbox-checked-base-color-background: var(--ds-divider-color-danger);
@@ -225,7 +225,7 @@
   --mod-checkbox-label-hover-color: var(--ds-global-color-grey-5);
   --mod-checkbox-label-active-color: var(--ds-global-color-grey-5);
 
-  --mod-checkbox-unchecked-base-color-background: var(--ds-global-color-grey-2);
+  --mod-checkbox-unchecked-base-color-background: var(--ds-global-color-grey-1);
   --mod-checkbox-unchecked-base-color-border: var(--ds-alias-border-color-disabled);
   --mod-checkbox-checked-base-color-background: var(--ds-alias-border-color-disabled);
   --mod-checkbox-checked-base-color-border: var(--ds-alias-border-color-disabled);

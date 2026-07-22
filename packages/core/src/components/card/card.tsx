@@ -63,7 +63,7 @@ export class Card implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CARD_IMAGE_TEASERS)
-  readonly imageTeaser: CardImageTeaser = ''
+  readonly imageTeaser?: CardImageTeaser = undefined
 
   /**
    * If `true` the card loses its border radius.
@@ -152,7 +152,7 @@ export class Card implements DsComponentInterface {
 
   render() {
     const hasOutline = !!this.outlined
-    const isImageTeaser = hasValue(this.imageTeaser)
+    const isImageTeaser = this.imageTeaser !== undefined && this.imageTeaser !== null
     const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     return (
@@ -167,13 +167,13 @@ export class Card implements DsComponentInterface {
           [`is-outlined`]: hasOutline,
           [`is-flat`]: hasOutline || !!this.flat,
           [`is-tile`]: !!this.tile,
+          [`is-fullheight`]: this.fullheight,
         }}
       >
         <slot name="picture"></slot>
         <article
           id="card"
           class={{
-            [`is-fullheight`]: this.fullheight,
             [`align-${this.align}`]: hasValue(this.align),
           }}
         >

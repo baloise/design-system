@@ -461,9 +461,9 @@ export namespace Components {
         "fullheight": boolean;
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
-          * @default ''
+          * @default undefined
          */
-        "imageTeaser": CardImageTeaser;
+        "imageTeaser"?: CardImageTeaser;
         /**
           * If `true` the card background color becomes blue.
           * @default false
@@ -5172,7 +5172,7 @@ declare namespace LocalJSX {
         "fullheight"?: boolean;
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
-          * @default ''
+          * @default undefined
          */
         "imageTeaser"?: CardImageTeaser;
         /**

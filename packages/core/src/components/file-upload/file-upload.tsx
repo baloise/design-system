@@ -486,7 +486,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
             <slot>
               <div id="drop-zone-placeholder" class={{ 'is-disabled': isDisabled }}>
                 {!this.loading && <ds-icon name="upload" size="lg"></ds-icon>}
-                {this.loading && <ds-spinner variation="circle"></ds-spinner>}
+                {this.loading && <ds-spinner variation="circle" color="white"></ds-spinner>}
                 <span>{dropZoneLabel}</span>
               </div>
             </slot>

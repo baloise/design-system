@@ -33,24 +33,24 @@
     @include vars.local(toggle-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(toggle-tile-base-background-color, inherit);
-    @include vars.local(toggle-tile-base-border-color, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-tile-base-border-color, var(--ds-global-color-grey-2));
 
-    @include vars.local(toggle-tile-hover-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(toggle-tile-hover-background-color, var(--ds-global-color-grey-1));
     @include vars.local(toggle-tile-hover-border-color, var(--ds-global-color-sky-5));
 
-    @include vars.local(toggle-tile-active-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(toggle-tile-active-background-color, var(--ds-global-color-grey-1));
     @include vars.local(toggle-tile-active-border-color, var(--ds-global-color-primary-6));
 
     // unchecked base
-    @include vars.local(toggle-unchecked-base-color-background, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-unchecked-base-color-background, var(--ds-global-color-grey-2));
     @include vars.local(toggle-unchecked-base-color-tick, var(--ds-global-color-primary-5));
 
     // unchecked hover
-    @include vars.local(toggle-unchecked-hover-color-background, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-unchecked-hover-color-background, var(--ds-global-color-grey-2));
     @include vars.local(toggle-unchecked-hover-color-tick, var(--ds-global-color-sky-5));
 
     // unchecked active/pressed
-    @include vars.local(toggle-unchecked-active-color-background, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-unchecked-active-color-background, var(--ds-global-color-grey-2));
     @include vars.local(toggle-unchecked-active-color-tick, var(--ds-global-color-primary-6));
 
     // checked base
@@ -266,11 +266,11 @@
   --mod-toggle-label-hover-color: var(--ds-global-color-grey-5);
   --mod-toggle-label-active-color: var(--ds-global-color-grey-5);
 
-  --mod-toggle-unchecked-base-color-background: var(--ds-global-color-grey-3);
+  --mod-toggle-unchecked-base-color-background: var(--ds-global-color-grey-2);
   --mod-toggle-unchecked-base-color-tick: var(--ds-global-color-grey-5);
 
   --mod-toggle-checked-base-color-background: var(--ds-global-color-grey-5);
-  --mod-toggle-checked-base-color-tick: var(--ds-global-color-grey-3);
+  --mod-toggle-checked-base-color-tick: var(--ds-global-color-grey-2);
 }
 
 // Invalid declared first, disabled declared second — disabled wins when both classes are present.

@@ -101,7 +101,11 @@ export class Badge implements DsComponentInterface {
       >
         <span id="badge" part="badge">
           <slot></slot>
-          {size !== 'sm' && hasValue(this.icon) ? <ds-icon part="icon" name={this.icon}></ds-icon> : ''}
+          {size !== 'sm' && hasValue(this.icon) ? (
+            <ds-icon part="icon" name={this.icon} size={size !== 'lg' ? 'sm' : ''}></ds-icon>
+          ) : (
+            ''
+          )}
         </span>
       </Host>
     )

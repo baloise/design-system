@@ -31,15 +31,15 @@
   @include vars.local(snackbar-progress-bar-bg, var(--ds-snackbar-default-color-progress-bar-base));
   @include vars.local(snackbar-progress-bg, var(--ds-snackbar-default-color-progress-bg-base));
 
-  @include vars.local(snackbar-heading-font-family, var(--ds-text-family-heading));
-  @include vars.local(snackbar-heading-font-weight, var(--ds-text-weight-bold));
-  @include vars.local(snackbar-heading-font-size, var(--ds-text-size-base-device));
-  @include vars.local(snackbar-heading-line-height, var(--ds-text-line-height-heading));
+  @include vars.local(snackbar-heading-font-family, var(--ds-alias-text-family-heading));
+  @include vars.local(snackbar-heading-font-weight, var(--ds-alias-text-weight-bold));
+  @include vars.local(snackbar-heading-font-size, var(--ds-alias-text-size-base-device));
+  @include vars.local(snackbar-heading-line-height, var(--ds-alias-text-line-height-heading));
 
-  @include vars.local(snackbar-content-font-family, var(--ds-text-family-body));
+  @include vars.local(snackbar-content-font-family, var(--ds-alias-text-family-body));
   @include vars.local(snackbar-content-font-weight, inherit);
-  @include vars.local(snackbar-content-font-size, var(--ds-text-size-sm-device));
-  @include vars.local(snackbar-content-line-height, var(--ds-text-line-height-body));
+  @include vars.local(snackbar-content-font-size, var(--ds-alias-text-size-sm-device));
+  @include vars.local(snackbar-content-line-height, var(--ds-alias-text-line-height-body));
 
   @include vars.local(snackbar-gap, 0.125rem);
   @include vars.local(snackbar-p, 1rem);

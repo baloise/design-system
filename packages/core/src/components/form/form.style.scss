@@ -102,6 +102,12 @@
   margin-bottom: 1.375rem;
 }
 
+ds-data-item .field,
+ds-data-item::slotted(.field),
+ds-data-item .field:not(:has(.help)) {
+  margin-bottom: 0;
+}
+
 //
 // Form + Grid
 // --------------------------------

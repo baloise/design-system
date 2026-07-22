@@ -89,3 +89,58 @@
 #group:has(label:has(input:checked):active) #pill {
   clip-path: inset(2px round var(--_segment-radius));
 }
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+}
+
+//
+// Disabled
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-textarea-color: var(--ds-form-control-color-value-disabled);
+  --mod-textarea-placeholder: var(--ds-form-control-color-placeholder-disabled);
+}

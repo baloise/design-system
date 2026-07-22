@@ -66,13 +66,13 @@
 
 :host {
   ds-popup {
-    --popup-background: var(--ds-alias-background-color-grey-light);
+    --popup-background: var(--ds-alias-background-color-grey-lighter);
     --popup-radius: var(--ds-alias-radius-lg);
     --popup-max-width: 20rem;
   }
 
   ds-drawer {
-    --drawer-background: var(--ds-alias-background-color-grey-light);
+    --drawer-background: var(--ds-alias-background-color-grey-lighter);
     --drawer-radius: var(--ds-alias-radius-lg);
   }
 }

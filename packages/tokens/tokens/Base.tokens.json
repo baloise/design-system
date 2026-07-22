@@ -10853,7 +10853,7 @@
             },
             "Border": {
               "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.Disabled}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Disabled}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:367:74",
                 "com.figma.scopes": [
@@ -12170,7 +12170,7 @@
         "Base": {
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+            "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
             "$extensions": {
               "com.figma.variableId": "VariableID:106:2",
               "com.figma.scopes": [
@@ -12181,7 +12181,7 @@
           },
           "Border": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+            "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
             "$extensions": {
               "com.figma.variableId": "VariableID:107:4",
               "com.figma.scopes": [
@@ -14130,7 +14130,7 @@
           "Bg": {
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:221:10",
                 "com.figma.scopes": [
@@ -14143,7 +14143,7 @@
           "Border": {
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:221:11",
                 "com.figma.scopes": [
@@ -14571,7 +14571,7 @@
           "Bg": {
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:216:11",
                 "com.figma.scopes": [
@@ -14584,7 +14584,7 @@
           "Border": {
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:216:12",
                 "com.figma.scopes": [
@@ -15213,7 +15213,7 @@
           "Bg": {
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyDark}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:58:15",
                 "com.figma.scopes": [
@@ -15723,7 +15723,7 @@
           "Bg": {
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Grey}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:58:11",
                 "com.figma.scopes": [
@@ -15750,7 +15750,7 @@
       },
       "Background": {
         "$type": "color",
-        "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+        "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
         "$extensions": {
           "com.figma.variableId": "VariableID:369:9",
           "com.figma.scopes": [
@@ -17430,7 +17430,7 @@
         "Color": {
           "BG": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.Grey}",
+            "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
             "$extensions": {
               "com.figma.variableId": "VariableID:376:6",
               "com.figma.scopes": [
@@ -18180,7 +18180,7 @@
             },
             "Active": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Selected}",
+              "$value": "{🔗 Alias.🎨 Background.Color.Highlight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:378:18",
                 "com.figma.scopes": [

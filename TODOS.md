@@ -26,13 +26,15 @@ See [MIGRATION-MAPPING-Baloise.md](./MIGRATION-MAPPING-Baloise.md) for the full 
 | Anuglar                                  | Add frameworks back after migrating too shadow dom                                     | ⬜     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                                                   | ⬜     |
 | Add missing regions                      | Austria, Spain, Italy                                                                  | ⬜     |
-| Verify desing tokens                     | Check if the tokens follow our style-guide                                             | ⬜     |
 | Gap Analyses Material                    | Check Components use cases                                                             | ⬜     |
 | Create Migration Hel                     | Create migration plan for ex-helvetia                                                  | ⬜     |
 | Brand Icons                              | Update brand icons                                                                     | ⬜     |
 | Brand Icons API                          | Create a task to automate the update                                                   | ⬜     |
 | Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px                            | ⬜     |
 | Hover                                    | Check all hover states if they have ` @media (hover: hover) and (pointer: fine) {...}` | ⬜     |
+| DesignTokens: Linting                    | Check if the tokens follow our style-guide. no default => base                         | ⬜     |
+| DesignTokens: Component Sync             | No Component is using global                                                           | ⬜     |
+| DesignTokens: Figma Sync                 | How to sync tokens                                                                     | ⬜     |
 
 ## Componentes
 
@@ -102,44 +104,44 @@ These improvements help our components work seamlessly across all supported fram
 
 ### Issues
 
-| Component      | Notes                                                    | Done |
-| -------------- | -------------------------------------------------------- | ---- |
-| Badge          | Icon size do not match the normal size                   | ⬜   |
-| Checkbox/Radio | Background grey is too dark                              | ⬜   |
-| Checkbox/Radio | Tile hover color is wrong                                | ⬜   |
-| Input          | Disabled background is too dark                          | ⬜   |
-| Textarea       | Padding top and bottom is missing                        | ⬜   |
-| Segment        | Background grey is too dark                              | ⬜   |
-| Segment        | Invalid description test is not red                      | ⬜   |
-| Tag            | Background grey is too dark                              | ⬜   |
-| Toggle         | Background grey is too dark                              | ⬜   |
-| Card           | Story tile card is broken                                | ⬜   |
-| Card           | Teaser Cards - card should all have the same height      | ⬜   |
-| Card           | Card Images - missing the space                          | ⬜   |
-| Carousel       | Background pagination grey is too dark                   | ⬜   |
-| Logo           | Missing variant stories in the docs                      | ⬜   |
-| Close          | Missing variant stories in the docs                      | ⬜   |
-| Shape          | Missing variant stories in the docs                      | ⬜   |
-| Data           | Divider is too dark grey                                 | ⬜   |
-| Data           | Disabled state is not gray                               | ⬜   |
-| Date           | Should be a form component in the story change title     | ✅   |
-| FileUpload     | Should be a form component in the story change title     | ✅   |
-| TimeInput      | Should be a form component in the story change title     | ✅   |
-| FileUpload     | File item bg is too dark gray                            | ⬜   |
-| Hint           | BG is too dark grey                                      | ⬜   |
-| Hint           | Migration example title i undefined                      | ⬜   |
-| Navbar         | Stories do not show open state on mobile                 | ⬜   |
-| Notification   | BG grey is too dark                                      | ⬜   |
-| Snackbar       | BG grey is too dark                                      | ⬜   |
-| Toast          | BG grey is too dark                                      | ⬜   |
-| Steps          | BG grey is too dark                                      | ⬜   |
-| Notification   | Heading is not bold                                      | ⬜   |
-| Popup          | Focus trap is not woring                                 | ⬜   |
-| Select         | Story canvas nees overlapping                            | ⬜   |
-| All            | Docs the variants page should start with the basic story | ✅   |
-| All            | All css story should start wiht the emoji                | ✅   |
-| Table          | Striped should be light grey                             | ⬜   |
-| Toast/Shackbar | Check icons                                              | ⬜   |
+| Component       | Notes                                                    | Done |
+| --------------- | -------------------------------------------------------- | ---- |
+| Badge           | Icon size do not match the normal size                   | ✅   |
+| Checkbox/Radio  | Background grey is too dark                              | ✅   |
+| Checkbox/Radio  | Tile hover color is wrong                                | ✅   |
+| Input           | Disabled background is too dark                          | ✅   |
+| Segment         | Background grey is too dark                              | ✅   |
+| Segment         | Invalid description test is not red                      | ✅   |
+| Tag             | Background grey is too dark                              | ✅   |
+| Toggle          | Background grey is too dark                              | ✅   |
+| Card            | Teaser Cards - card should all have the same height      | ✅   |
+| Card            | Card Images - missing the space                          | ✅   |
+| Carousel        | Background pagination grey is too dark                   | ✅   |
+| Data            | Divider is too dark grey                                 | ✅   |
+| Data            | Disabled state is not gray                               | ✅   |
+| Date            | Should be a form component in the story change title     | ✅   |
+| FileUpload      | Should be a form component in the story change title     | ✅   |
+| TimeInput       | Should be a form component in the story change title     | ✅   |
+| FileUpload      | File item bg is too dark gray                            | ✅   |
+| Hint            | BG is too dark grey                                      | ✅   |
+| Notification    | BG grey is too dark                                      | ✅   |
+| Snackbar        | BG grey is too dark                                      | ✅   |
+| Toast           | BG grey is too dark                                      | ✅   |
+| Steps           | BG grey is too dark                                      | ✅   |
+| Notification    | Heading is not bold                                      | ✅   |
+| Popup           | Focus trap is not woring                                 | ✅   |
+| All             | Docs the variants page should start with the basic story | ✅   |
+| All             | All css story should start wiht the emoji                | ✅   |
+| Table           | Striped should be light grey                             | ✅   |
+| Toast/Shackbar  | Check icons                                              | ✅   |
+| Textarea (DOCS) | Padding top and bottom is missing                        | ⬜   |
+| Card (DOCS)     | Story tile card is broken                                | ⬜   |
+| Hint (DOCS)     | Migration example title i undefined                      | ⬜   |
+| Navbar (DOCS)   | Stories do not show open state on mobile                 | ⬜   |
+| Select (DOCS)   | Story canvas nees overlapping                            | ⬜   |
+| Logo (DOCS)     | Missing variant stories in the docs                      | ⬜   |
+| Close (DOCS)    | Missing variant stories in the docs                      | ⬜   |
+| Shape (DOCS)    | Missing variant stories in the docs                      | ⬜   |
 
 ### Extended Scope not MVP
 
