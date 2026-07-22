@@ -38,7 +38,7 @@ export const BasicHtml = Story({
 </label>`,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Disabled = Story({
   args: {
@@ -56,7 +56,7 @@ export const DisabledHtml = Story({
 </label>`,
   ),
 })
-DisabledHtml.storyName = '🌍 Disabled'
+DisabledHtml.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   args: {
@@ -74,7 +74,7 @@ export const InvalidHtml = Story({
 </label>`,
   ),
 })
-InvalidHtml.storyName = '🌍 Invalid'
+InvalidHtml.storyName = '🎨 Invalid'
 
 export const Field = Story({
   ...withRender(
@@ -101,7 +101,7 @@ export const FieldHtml = Story({
 </fieldset>`,
   ),
 })
-FieldHtml.storyName = '🌍 Field'
+FieldHtml.storyName = '🎨 Field'
 
 export const Form = Story({
   ...withRender(
@@ -130,4 +130,4 @@ export const FormHtml = Story({
 </form>`,
   ),
 })
-FormHtml.storyName = '🌍 Form'
+FormHtml.storyName = '🎨 Form'

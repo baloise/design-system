@@ -9,7 +9,7 @@ type Args = {
 }
 
 const meta: Meta<Args> = {
-  title: 'Components/Time Input/Variants',
+  title: 'Components/Forms/Time Input/Variants',
   args: {
     label: 'Select a time',
     description: 'Select the desired time',
@@ -43,7 +43,7 @@ const Story = StoryFactory<Args>(meta)
 // ============================================================================
 
 export const Basic = Story({})
-Basic.storyName = '🌍 Basic'
+Basic.storyName = '🎨 Basic'
 
 // ============================================================================
 // Disabled
@@ -56,7 +56,7 @@ export const Disabled = Story({
     disabled: true,
   },
 })
-Disabled.storyName = '🌍 Disabled'
+Disabled.storyName = '🎨 Disabled'
 
 // ============================================================================
 // Invalid
@@ -69,4 +69,4 @@ export const Invalid = Story({
     invalid: true,
   },
 })
-Invalid.storyName = '🌍 Invalid'
+Invalid.storyName = '🎨 Invalid'

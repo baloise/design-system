@@ -54,7 +54,7 @@ export const Basic = Story({
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({})
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Dashed = Story({
   ...withRender(
@@ -73,7 +73,7 @@ export const DashedHtml = Story({
     dashed: true,
   },
 })
-DashedHtml.storyName = '🌍 Dashed'
+DashedHtml.storyName = '🎨 Dashed'
 
 export const Vertical = Story({
   ...withRender(
@@ -92,4 +92,4 @@ export const VerticalHtml = Story({
     layout: 'vertical',
   },
 })
-VerticalHtml.storyName = '🌍 Vertical'
+VerticalHtml.storyName = '🎨 Vertical'

@@ -37,7 +37,7 @@ const StyleTable = ({
   <div className="mb-large">
     {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
     {styles.length === 0 ? (
-      <div className="my-normal p-large bg-grey-light radius">
+      <div className="my-normal p-large bg-grey-lighter radius">
         <p className="text-small">No CSS variables defined.</p>
       </div>
     ) : (
@@ -94,7 +94,7 @@ export const ComponentCssVariables = ({ component, subComponents }: ComponentCss
       return (
         <div className="sb-unstyled">
           <h2 className="title text-2xl mb-normal">CSS Variables</h2>
-          <div className="my-large p-large bg-grey-light radius">
+          <div className="my-large p-large bg-grey-lighter radius">
             <p className="text-small">No CSS variables defined for this component.</p>
           </div>
         </div>

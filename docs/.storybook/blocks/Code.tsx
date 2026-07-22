@@ -10,7 +10,7 @@ export const Code = ({ code, preview, language, border = false, noPreview = unde
     <section className={`sb-unstyled  ${noPreview === true ? 'doc-code-no-preview' : 'doc-code'}`}>
       <div
         className={`${noPreview === true ? 'hidden ' : ''}p-medium radius-top-normal ${
-          border ? 'border-grey' : 'bg-grey-2'
+          border ? 'border-grey' : 'bg-grey-1'
         }`}
         dangerouslySetInnerHTML={{ __html: preview || code }}
       ></div>

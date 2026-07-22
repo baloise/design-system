@@ -101,20 +101,6 @@ export const ButtonBadge = Story({
 })
 ButtonBadge.storyName = '🧩 Button Badge'
 
-export const TabsBadge = Story({
-  args: {
-    color: 'danger',
-    position: 'tabs',
-  },
-  ...withRender(
-    () => `<ds-tabs  interface="tabs" value="tab-b">
-  <ds-tab-item value="tab-a" label="Tab A">Content of Tab A</ds-tab-item>
-  <ds-tab-item value="tab-b" label="Tab B" bubble>Content of Tab B</ds-tab-item>
-</ds-tabs>`,
-  ),
-})
-TabsBadge.storyName = '🧩 Tabs Badge'
-
 export const ListBadges = Story({
   ...withRender(
     () => `

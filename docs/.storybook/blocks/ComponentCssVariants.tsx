@@ -27,7 +27,7 @@ const VariantsTable = ({ variants, heading }: { variants: CssVariant[]; heading?
   <div className="mb-large">
     {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
     {variants.length === 0 ? (
-      <div className="my-normal p-large bg-grey-light radius">
+      <div className="my-normal p-large bg-grey-lighter radius">
         <p className="text-small">No CSS variants defined.</p>
       </div>
     ) : (
@@ -73,7 +73,7 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
       return (
         <div className="sb-unstyled">
           <h2 className="title text-2xl mb-normal">CSS Variants</h2>
-          <div className="my-large p-large bg-grey-light radius">
+          <div className="my-large p-large bg-grey-lighter radius">
             <p className="text-small">No CSS variants defined for this component.</p>
           </div>
         </div>

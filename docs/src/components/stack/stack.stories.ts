@@ -45,7 +45,7 @@ export const BasicHtml = Story({
 </div>`,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Basic = Story({
   ...withRender(
@@ -99,7 +99,7 @@ export const NestedHtml = Story({
 </div>`,
   ),
 })
-NestedHtml.storyName = '🌍 Nested'
+NestedHtml.storyName = '🎨 Nested'
 
 export const Item = Story({
   ...withRender(
@@ -129,7 +129,7 @@ export const ItemHtml = Story({
 </div>`,
   ),
 })
-ItemHtml.storyName = '🌍 Item'
+ItemHtml.storyName = '🎨 Item'
 
 export const Direction = Story({
   ...withRender(
@@ -161,7 +161,7 @@ export const DirectionHtml = Story({
 </div>`,
   ),
 })
-DirectionHtml.storyName = '🌍 Direction'
+DirectionHtml.storyName = '🎨 Direction'
 
 export const Alignment = Story({
   ...withRender(
@@ -191,7 +191,7 @@ export const AlignmentHtml = Story({
 </div>`,
   ),
 })
-AlignmentHtml.storyName = '🌍 Alignment'
+AlignmentHtml.storyName = '🎨 Alignment'
 
 const spaceBoxWC = (size: string) => `
 <ds-stack direction="row" space="${size}" class="bg-red-2">
@@ -250,7 +250,7 @@ export const SpaceHtml = Story({
 </div>`,
   ),
 })
-SpaceHtml.storyName = '🌍 Space'
+SpaceHtml.storyName = '🎨 Space'
 
 export const Padding = Story({
   ...withRender(
@@ -288,7 +288,7 @@ export const PaddingHtml = Story({
 </div>`,
   ),
 })
-PaddingHtml.storyName = '🌍 Padding'
+PaddingHtml.storyName = '🎨 Padding'
 
 export const TeaserCards = Story({
   ...withRender(
@@ -390,7 +390,7 @@ export const TeaserCardsHtml = Story({
 </div>`,
   ),
 })
-TeaserCardsHtml.storyName = '🌍 Teaser Cards'
+TeaserCardsHtml.storyName = '🎨 Teaser Cards'
 
 export const StackedTabs = Story({
   args: {

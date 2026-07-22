@@ -7,7 +7,7 @@ type Args = JSX.DsFileUpload & { slot: string }
 const tag = 'ds-file-upload'
 
 const meta: Meta<Args> = {
-  title: 'Components/FileUpload/Variants',
+  title: 'Components/Forms/FileUpload/Variants',
   args: {
     label: 'Choose or drop a file...',
     description: 'All File Types',
@@ -27,7 +27,7 @@ export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({})
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Disabled = Story({
   args: {
@@ -43,7 +43,7 @@ export const DisabledHtml = Story({
     description: 'This field is disabled',
   },
 })
-DisabledHtml.storyName = '🌍 Disabled'
+DisabledHtml.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   args: {
@@ -61,7 +61,7 @@ export const InvalidHtml = Story({
     description: 'This field has an error',
   },
 })
-InvalidHtml.storyName = '🌍 Invalid'
+InvalidHtml.storyName = '🎨 Invalid'
 
 export const Loading = Story({
   args: {
@@ -77,4 +77,4 @@ export const LoadingHtml = Story({
     label: 'Uploading...',
   },
 })
-LoadingHtml.storyName = '🌍 Loading'
+LoadingHtml.storyName = '🎨 Loading'

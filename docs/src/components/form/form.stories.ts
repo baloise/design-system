@@ -72,7 +72,7 @@ const Story = StoryFactory<Args>(meta)
  */
 
 export const Basic = Story({})
-Basic.storyName = '🌍 Basic'
+Basic.storyName = '🎨 Basic'
 
 export const Disabled = Story({
   ...withRender(
@@ -118,7 +118,7 @@ export const Disabled = Story({
   `,
   ),
 })
-Disabled.storyName = '🌍 Disabled'
+Disabled.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   ...withRender(
@@ -164,7 +164,7 @@ export const Invalid = Story({
   `,
   ),
 })
-Invalid.storyName = '🌍 Invalid'
+Invalid.storyName = '🎨 Invalid'
 
 export const NumericSizes = Story({
   ...withRender(
@@ -263,7 +263,7 @@ export const NumericSizes = Story({
   `,
   ),
 })
-NumericSizes.storyName = '🌍 Numeric Sizes'
+NumericSizes.storyName = '🎨 Numeric Sizes'
 
 export const NumericMixed = Story({
   ...withRender(
@@ -317,7 +317,7 @@ export const NumericMixed = Story({
   `,
   ),
 })
-NumericMixed.storyName = '🌍 Numeric Mixed'
+NumericMixed.storyName = '🎨 Numeric Mixed'
 
 export const SemanticSizes = Story({
   ...withRender(
@@ -416,7 +416,7 @@ export const SemanticSizes = Story({
   `,
   ),
 })
-SemanticSizes.storyName = '🌍 Semantic Sizes'
+SemanticSizes.storyName = '🎨 Semantic Sizes'
 
 export const ResponsiveThirds = Story({
   ...withRender(
@@ -479,4 +479,4 @@ export const ResponsiveThirds = Story({
   `,
   ),
 })
-ResponsiveThirds.storyName = '🌍 Responsive Thirds'
+ResponsiveThirds.storyName = '🎨 Responsive Thirds'

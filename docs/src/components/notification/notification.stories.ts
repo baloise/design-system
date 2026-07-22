@@ -53,7 +53,7 @@ export const Basic = Story({
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({})
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Alerts = Story({
   args: {

@@ -44,7 +44,7 @@ export const BasicHtml = Story({
 `,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Disabled = Story({
   ...withRender(
@@ -77,7 +77,7 @@ export const DisabledHtml = Story({
 `,
   ),
 })
-DisabledHtml.storyName = '🌍 Disabled'
+DisabledHtml.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   ...withRender(
@@ -101,7 +101,7 @@ export const InvalidHtml = Story({
 `,
   ),
 })
-InvalidHtml.storyName = '🌍 Invalid'
+InvalidHtml.storyName = '🎨 Invalid'
 
 export const Valid = Story({
   ...withRender(
@@ -125,7 +125,7 @@ export const ValidHtml = Story({
 `,
   ),
 })
-ValidHtml.storyName = '🌍 Valid'
+ValidHtml.storyName = '🎨 Valid'
 
 export const Loading = Story({
   ...withRender(
@@ -150,7 +150,7 @@ export const LoadingHtml = Story({
 `,
   ),
 })
-LoadingHtml.storyName = '🌍 Loading'
+LoadingHtml.storyName = '🎨 Loading'
 
 export const Suffix = Story({
   ...withRender(
@@ -181,7 +181,7 @@ export const SuffixHtml = Story({
 `,
   ),
 })
-SuffixHtml.storyName = '🌍 Suffix'
+SuffixHtml.storyName = '🎨 Suffix'
 
 export const NumberType = Story({
   ...withRender(
@@ -204,7 +204,7 @@ export const NumberTypeHtml = Story({
 `,
   ),
 })
-NumberTypeHtml.storyName = '🌍 Number Type'
+NumberTypeHtml.storyName = '🎨 Number Type'
 
 export const Slots = Story({
   ...withRender(
@@ -255,7 +255,7 @@ export const FormResetHtml = Story({
 `,
   ),
 })
-FormResetHtml.storyName = '🌍 Form Reset'
+FormResetHtml.storyName = '🎨 Form Reset'
 
 export const Formatter = Story({
   ...withRender(

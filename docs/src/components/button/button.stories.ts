@@ -51,7 +51,7 @@ export const Basic = Story({
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({})
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Group = Story({
   ...withRender(
@@ -103,7 +103,7 @@ export const VariantsHtml = Story({
 </div>`,
   ),
 })
-VariantsHtml.storyName = '🌍 Variants'
+VariantsHtml.storyName = '🎨 Variants'
 
 export const Sizes = Story({
   ...withRender(
@@ -127,7 +127,7 @@ export const SizesHtml = Story({
 </div>`,
   ),
 })
-SizesHtml.storyName = '🌍 Sizes'
+SizesHtml.storyName = '🎨 Sizes'
 
 export const Inverted = Story({
   ...withRender(
@@ -157,7 +157,7 @@ export const InvertedHtml = Story({
 </div>`,
   ),
 })
-InvertedHtml.storyName = '🌍 Inverted'
+InvertedHtml.storyName = '🎨 Inverted'
 
 export const WithIcon = Story({
   ...withRender(
@@ -178,7 +178,7 @@ export const WithIconHtml = Story({
 </button>`,
   ),
 })
-WithIconHtml.storyName = '🌍 With Icon'
+WithIconHtml.storyName = '🎨 With Icon'
 
 export const States = Story({
   ...withRender(
@@ -206,7 +206,7 @@ export const StatesHtml = Story({
 </div>`,
   ),
 })
-StatesHtml.storyName = '🌍 States'
+StatesHtml.storyName = '🎨 States'
 
 export const Dashed = Story({
   ...withRender(
@@ -262,7 +262,7 @@ export const DashedHtml = Story({
 </div>`,
   ),
 })
-DashedHtml.storyName = '🌍 Dashed'
+DashedHtml.storyName = '🎨 Dashed'
 
 export const AlertButtons = Story({
   ...withRender(
@@ -286,7 +286,7 @@ export const AlertButtonsHtml = Story({
 </div>`,
   ),
 })
-AlertButtonsHtml.storyName = '🌍 Alert Buttons'
+AlertButtonsHtml.storyName = '🎨 Alert Buttons'
 
 export const SquareButtons = Story({
   ...withRender(
@@ -314,7 +314,7 @@ export const SquareButtonsHtml = Story({
 </div>`,
   ),
 })
-SquareButtonsHtml.storyName = '🌍 Square Buttons'
+SquareButtonsHtml.storyName = '🎨 Square Buttons'
 
 export const NoWrap = Story({
   ...withRender(
@@ -325,7 +325,7 @@ export const NoWrap = Story({
 </div>`,
   ),
 })
-NoWrap.storyName = '🌍 No Wrap'
+NoWrap.storyName = '🎨 No Wrap'
 
 /**
  * GROUPS
@@ -341,7 +341,7 @@ export const ButtonGroup = Story({
 </div>`,
   ),
 })
-ButtonGroup.storyName = '🌍 Button Group'
+ButtonGroup.storyName = '🎨 Button Group'
 
 export const ButtonGroupAlignment = Story({
   ...withRender(
@@ -364,7 +364,7 @@ export const ButtonGroupAlignment = Story({
 </div>`,
   ),
 })
-ButtonGroupAlignment.storyName = '🌍 Button Group Alignment'
+ButtonGroupAlignment.storyName = '🎨 Button Group Alignment'
 
 export const ButtonGroupAsRow = Story({
   ...withRender(
@@ -385,7 +385,7 @@ export const ButtonGroupAsRow = Story({
 </div>`,
   ),
 })
-ButtonGroupAsRow.storyName = '🌍 Button Group As Row'
+ButtonGroupAsRow.storyName = '🎨 Button Group As Row'
 
 export const ButtonGroupAsCol = Story({
   ...withRender(
@@ -408,7 +408,7 @@ export const ButtonGroupAsCol = Story({
 </div>`,
   ),
 })
-ButtonGroupAsCol.storyName = '🌍 Button Group As Col'
+ButtonGroupAsCol.storyName = '🎨 Button Group As Col'
 
 /**
  * LINKS
@@ -425,7 +425,7 @@ export const Link = Story({
   </div>`,
   ),
 })
-Link.storyName = '🌍 Link'
+Link.storyName = '🎨 Link'
 
 export const LinkButton = Story({
   ...withRender(
@@ -436,7 +436,7 @@ export const LinkButton = Story({
 </a>`,
   ),
 })
-LinkButton.storyName = '🌍 Link Button'
+LinkButton.storyName = '🎨 Link Button'
 
 export const NativeLink = Story({
   ...withRender(
@@ -450,4 +450,4 @@ export const NativeLink = Story({
 </div>`,
   ),
 })
-NativeLink.storyName = '🌍 Native Link'
+NativeLink.storyName = '🎨 Native Link'

@@ -27,7 +27,7 @@ const Story = StoryFactory<Args>(meta)
  */
 
 export const Basic = Story({})
-Basic.storyName = '🌍 Default'
+Basic.storyName = '🎨 Default'
 
 export const Fluid = Story({
   ...withRender(
@@ -38,7 +38,7 @@ export const Fluid = Story({
     `,
   ),
 })
-Fluid.storyName = '🌍 Fluid'
+Fluid.storyName = '🎨 Fluid'
 
 export const Compact = Story({
   ...withRender(
@@ -49,4 +49,4 @@ export const Compact = Story({
     `,
   ),
 })
-Compact.storyName = '🌍 Compact'
+Compact.storyName = '🎨 Compact'

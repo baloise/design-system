@@ -38,4 +38,4 @@ export const BasicHtml = Story({
   `,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'

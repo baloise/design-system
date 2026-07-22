@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withRender } from '../../ut
 type Args = JSX.DsDate
 
 const meta: Meta<Args> = {
-  title: 'Components/Date/Variants',
+  title: 'Components/Forms/Date/Variants',
   args: {
     label: 'Label',
     description: 'Description',

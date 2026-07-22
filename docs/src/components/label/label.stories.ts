@@ -48,7 +48,7 @@ export const BasicHtml = Story({
     required: undefined,
   },
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Basic = Story({
   args: {
@@ -63,7 +63,7 @@ export const RequiredAndOptional = Story({
     slot: 'Label (optional)',
   },
 })
-RequiredAndOptional.storyName = '🌍 Required And Optional'
+RequiredAndOptional.storyName = '🎨 Required And Optional'
 
 export const States = Story({
   ...withRender(
@@ -73,7 +73,7 @@ export const States = Story({
 `,
   ),
 })
-States.storyName = '🌍 States'
+States.storyName = '🎨 States'
 
 export const Sizes = Story({
   ...withRender(
@@ -84,4 +84,4 @@ export const Sizes = Story({
 `,
   ),
 })
-Sizes.storyName = '🌍 Sizes'
+Sizes.storyName = '🎨 Sizes'

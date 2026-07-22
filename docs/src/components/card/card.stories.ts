@@ -60,7 +60,7 @@ export const BasicHtml = Story({
     `,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Outlined = Story({
   args: {

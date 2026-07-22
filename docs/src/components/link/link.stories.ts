@@ -25,7 +25,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
-Basic.storyName = 'Basic'
+Basic.storyName = '🎨 Basic'
 
 export const Inverted = Story({
   globals: {
@@ -37,4 +37,4 @@ export const Inverted = Story({
 `,
   ),
 })
-Inverted.storyName = 'Inverted'
+Inverted.storyName = '🎨 Inverted'

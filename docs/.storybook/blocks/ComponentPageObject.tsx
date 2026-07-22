@@ -161,7 +161,7 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
           <Source dark language="ts" code={generateExampleTest(tag, po)} />
         </>
       ) : (
-        <div className="my-large p-large bg-grey-light radius">
+        <div className="my-large p-large bg-grey-lighter radius">
           <p className="text-small">No page object available for this component yet.</p>
         </div>
       )}

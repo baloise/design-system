@@ -44,7 +44,7 @@ export const BasicHtml = Story({
 `,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Optional = Story({
   args: { required: false },

@@ -122,7 +122,7 @@ export const ComponentDesignTokens = ({
     return (
       <div className="sb-unstyled">
         <h2 className="title text-2xl mb-normal">{title}</h2>
-        <div className="my-large p-large bg-grey-light radius">
+        <div className="my-large p-large bg-grey-lighter radius">
           <p className="text-small">
             No {tokenType === 'alias' ? 'alias' : 'component'} tokens defined for this component.
           </p>

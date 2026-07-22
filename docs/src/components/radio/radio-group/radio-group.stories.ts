@@ -59,7 +59,7 @@ export const BasicHtml = Story({
 </fieldset>  `,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Disabled = Story({
   args: {
@@ -91,7 +91,7 @@ export const DisabledHtml = Story({
 </fieldset>  `,
   ),
 })
-DisabledHtml.storyName = '🌍 Disabled'
+DisabledHtml.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   args: {
@@ -123,7 +123,7 @@ export const InvalidHtml = Story({
 </fieldset>  `,
   ),
 })
-InvalidHtml.storyName = '🌍 Invalid'
+InvalidHtml.storyName = '🎨 Invalid'
 
 export const FieldVertical = Story({
   args: { vertical: true },
@@ -153,7 +153,7 @@ export const FieldVerticalHtml = Story({
 </fieldset>`,
   ),
 })
-FieldVerticalHtml.storyName = '🌍 Field Vertical'
+FieldVerticalHtml.storyName = '🎨 Field Vertical'
 
 export const TileBasic = Story({
   args: {

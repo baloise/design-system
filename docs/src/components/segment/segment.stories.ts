@@ -62,7 +62,7 @@ export const BasicHtml = Story({
 </fieldset>`,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Vertical = Story({
   ...withRender(
@@ -96,7 +96,7 @@ export const VerticalHtml = Story({
 </fieldset>`,
   ),
 })
-VerticalHtml.storyName = '🌍 Vertical'
+VerticalHtml.storyName = '🎨 Vertical'
 
 export const Disabled = Story({
   ...withRender(
@@ -130,7 +130,7 @@ export const DisabledHtml = Story({
 </fieldset>`,
   ),
 })
-DisabledHtml.storyName = '🌍 Disabled'
+DisabledHtml.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   ...withRender(
@@ -171,7 +171,7 @@ export const InvalidHtml = Story({
 </fieldset>`,
   ),
 })
-InvalidHtml.storyName = '🌍 Invalid'
+InvalidHtml.storyName = '🎨 Invalid'
 
 export const Wide = Story({
   ...withRender(

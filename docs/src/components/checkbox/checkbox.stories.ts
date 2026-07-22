@@ -39,7 +39,7 @@ export const BasicHtml = Story({
 </label>`,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Disabled = Story({
   ...withRender(
@@ -63,7 +63,7 @@ export const DisabledHtml = Story({
 </label>`,
   ),
 })
-DisabledHtml.storyName = '🌍 Disabled'
+DisabledHtml.storyName = '🎨 Disabled'
 
 export const Invalid = Story({
   ...withRender(
@@ -87,7 +87,7 @@ export const InvalidHtml = Story({
 </label>`,
   ),
 })
-InvalidHtml.storyName = '🌍 Invalid'
+InvalidHtml.storyName = '🎨 Invalid'
 
 export const Field = Story({
   ...withRender(
@@ -119,7 +119,7 @@ export const FieldHtml = Story({
 </fieldset>`,
   ),
 })
-FieldHtml.storyName = '🌍 Field'
+FieldHtml.storyName = '🎨 Field'
 
 export const FieldVertical = Story({
   ...withRender(
@@ -156,7 +156,7 @@ export const FieldVerticalHtml = Story({
 </fieldset>`,
   ),
 })
-FieldVerticalHtml.storyName = '🌍 Field Vertical'
+FieldVerticalHtml.storyName = '🎨 Field Vertical'
 
 export const Form = Story({
   ...withRender(
@@ -197,7 +197,7 @@ export const FormHtml = Story({
 </form>`,
   ),
 })
-FormHtml.storyName = '🌍 Form'
+FormHtml.storyName = '🎨 Form'
 
 export const TileBasic = Story({
   ...withRender(

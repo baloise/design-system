@@ -58,7 +58,7 @@ export const Basic = Story({
 Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({})
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const Closable = Story({
   ...withRender(({ slot }) => `<ds-tag closable>${slot}</ds-tag>`),
@@ -70,7 +70,7 @@ export const ClosableHtml = Story({
     closable: true,
   },
 })
-ClosableHtml.storyName = '🌍 Closable'
+ClosableHtml.storyName = '🎨 Closable'
 
 export const TagGroup = Story({
   ...withRender(
@@ -94,7 +94,7 @@ export const TagGroupHtml = Story({
 </div>`,
   ),
 })
-TagGroupHtml.storyName = '🌍 Tag Group'
+TagGroupHtml.storyName = '🎨 Tag Group'
 
 export const Colors = Story({
   ...withRender(
@@ -176,4 +176,4 @@ export const ColorsHtml = Story({
     `,
   ),
 })
-ColorsHtml.storyName = '🌍 Colors'
+ColorsHtml.storyName = '🎨 Colors'

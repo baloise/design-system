@@ -20,15 +20,15 @@ export const CssTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-1 radius px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
       }}
     >
-      <table className="table w-full bg-grey-2">
+      <table className="table w-full bg-grey-1">
         <thead
-          className="doc-table-head bg-grey-2 border-none"
+          className="doc-table-head bg-grey-1 border-none"
           style={{ position: 'sticky', top: '0', left: '0', zIndex: '10' }}
         >
           <tr>

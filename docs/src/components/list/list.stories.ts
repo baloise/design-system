@@ -70,7 +70,7 @@ export const BasicHtml = Story({
   `,
   ),
 })
-BasicHtml.storyName = '🌍 Basic'
+BasicHtml.storyName = '🎨 Basic'
 
 export const LinkedList = Story({
   args: {},
@@ -134,7 +134,7 @@ export const LinkedListHtml = Story({
   `,
   ),
 })
-LinkedListHtml.storyName = '🌍 Linked List'
+LinkedListHtml.storyName = '🎨 Linked List'
 
 export const DownloadList = Story({
   args: {},
@@ -221,7 +221,7 @@ export const DownloadListHtml = Story({
   `,
   ),
 })
-DownloadListHtml.storyName = '🌍 Download List'
+DownloadListHtml.storyName = '🎨 Download List'
 
 export const AccordionList = Story({
   args: {},

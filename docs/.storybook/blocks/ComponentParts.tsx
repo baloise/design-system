@@ -40,7 +40,7 @@ const PartTable = ({
   <div className="mb-large">
     {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
     {parts.length === 0 ? (
-      <div className="my-normal p-large bg-grey-light radius">
+      <div className="my-normal p-large bg-grey-lighter radius">
         <p className="text-small">No shadow parts defined.</p>
       </div>
     ) : (
@@ -97,7 +97,7 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
       return (
         <div className="sb-unstyled">
           <h2 className="title text-2xl mb-normal">CSS Shadow Parts</h2>
-          <div className="my-large p-large bg-grey-light radius">
+          <div className="my-large p-large bg-grey-lighter radius">
             <p className="text-small">No shadow parts defined for this component.</p>
           </div>
         </div>

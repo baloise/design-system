@@ -106,7 +106,7 @@ export const Slide = Story({
 Slide.storyName = '🧩 Slide'
 
 export const SlideHtml = Story({})
-SlideHtml.storyName = '🌍 Slide'
+SlideHtml.storyName = '🎨 Slide'
 
 export const Tile = Story({
   args: {
@@ -134,4 +134,4 @@ export const TileHtml = Story({
 </ds-carousel>`,
   ),
 })
-TileHtml.storyName = '🌍 Tile'
+TileHtml.storyName = '🎨 Tile'
