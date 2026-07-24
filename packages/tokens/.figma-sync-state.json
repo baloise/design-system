@@ -1,0 +1,29 @@
+{
+  "lastSyncedCommit": "9f4e0d8c12f6eda0b17237ec025545f043e3e627",
+  "lastSyncedAt": "2026-07-24T14:00:59.622Z",
+  "entries": {
+    "VariableID:2:3::Base": {
+      "tokenPath": [
+        "🌐 Global",
+        "🌈 Color",
+        "White"
+      ],
+      "brand": "Base",
+      "resolvedValue": {
+        "kind": "literal",
+        "value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 1,
+          "hex": "#FFFFFF"
+        }
+      },
+      "lastModifiedSource": "code",
+      "lastModifiedAt": "2026-07-24T14:00:59.622Z"
+    }
+  }
+}
