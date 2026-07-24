@@ -1,0 +1,68 @@
+{
+  "status": 200,
+  "error": false,
+  "meta": {
+    "variableCollections": {
+      "VariableCollectionId:1:0": {
+        "id": "VariableCollectionId:1:0",
+        "name": "Brand",
+        "defaultModeId": "1:0",
+        "modes": [
+          { "modeId": "1:0", "name": "Base" },
+          { "modeId": "1:1", "name": "Tcs" }
+        ],
+        "variableIds": ["VariableID:1:1", "VariableID:1:2", "VariableID:1:3", "VariableID:1:4"]
+      }
+    },
+    "variables": {
+      "VariableID:1:1": {
+        "id": "VariableID:1:1",
+        "name": "🌐 Global/🌈 Color/White",
+        "resolvedType": "COLOR",
+        "variableCollectionId": "VariableCollectionId:1:0",
+        "scopes": ["ALL_SCOPES"],
+        "description": "",
+        "valuesByMode": {
+          "1:0": { "r": 1, "g": 1, "b": 1, "a": 1 },
+          "1:1": { "r": 0.9, "g": 0.9, "b": 0.9, "a": 1 }
+        }
+      },
+      "VariableID:1:2": {
+        "id": "VariableID:1:2",
+        "name": "🌐 Global/🌈 Color/Black",
+        "resolvedType": "COLOR",
+        "variableCollectionId": "VariableCollectionId:1:0",
+        "scopes": ["ALL_SCOPES"],
+        "description": "",
+        "valuesByMode": {
+          "1:0": { "r": 0, "g": 0, "b": 0, "a": 1 },
+          "1:1": { "r": 0, "g": 0, "b": 0, "a": 1 }
+        }
+      },
+      "VariableID:1:3": {
+        "id": "VariableID:1:3",
+        "name": "🔗 Alias/Color/Text/White",
+        "resolvedType": "COLOR",
+        "variableCollectionId": "VariableCollectionId:1:0",
+        "scopes": ["ALL_SCOPES"],
+        "description": "",
+        "valuesByMode": {
+          "1:0": { "type": "VARIABLE_ALIAS", "id": "VariableID:1:1" },
+          "1:1": { "type": "VARIABLE_ALIAS", "id": "VariableID:1:1" }
+        }
+      },
+      "VariableID:1:4": {
+        "id": "VariableID:1:4",
+        "name": "🌐 Global/📏 Space/Base",
+        "resolvedType": "FLOAT",
+        "variableCollectionId": "VariableCollectionId:1:0",
+        "scopes": ["ALL_SCOPES"],
+        "description": "Base spacing unit in px",
+        "valuesByMode": {
+          "1:0": 16,
+          "1:1": 20
+        }
+      }
+    }
+  }
+}

@@ -16,11 +16,15 @@
   "scripts": {
     "build": "pnpm exec tsc && node dist/out-tsc",
     "build:clean": "rimraf dist",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "vitest --run",
+    "figma:pull": "node --import tsx/esm scripts/figma-sync/pull.ts"
   },
   "devDependencies": {
     "eslint": "catalog:",
-    "typescript": "catalog:"
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "homepage": "https://design.baloise.dev",
   "security": "https://github.com/baloise/design-system/security/advisories/new",

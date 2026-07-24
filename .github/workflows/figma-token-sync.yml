@@ -1,0 +1,47 @@
+name: Figma Token Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: 'Branch to pull Figma variables into (opens/updates a PR against this branch)'
+        required: false
+        default: next
+
+jobs:
+  pull-tokens:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.base_branch }}
+
+      - name: Setup Environment
+        uses: ./.github/workflows/actions/setup-environment
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pull tokens from Figma
+        run: pnpm --filter @baloise/ds-tokens figma:pull
+        env:
+          FIGMA_FILE_KEY: ${{ vars.FIGMA_FILE_KEY }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore: sync tokens from Figma'
+          title: 'chore: sync tokens from Figma'
+          body: |
+            Automated pull from the Figma Variables REST API.
+            Target branch: `${{ inputs.base_branch }}`
+
+            Review the diff in `packages/tokens/tokens/*.tokens.json` before merging.
+          branch: figma-token-sync/${{ inputs.base_branch }}
+          base: ${{ inputs.base_branch }}
+          add-paths: packages/tokens/tokens/*.tokens.json
