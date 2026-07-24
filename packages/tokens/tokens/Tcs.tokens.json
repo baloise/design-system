@@ -1,0 +1,15 @@
+{
+  "🌐 Global": {
+    "🌈 Color": {
+      "White": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [1, 1, 1],
+          "alpha": 1,
+          "hex": "#FFFFFF"
+        }
+      }
+    }
+  }
+}
