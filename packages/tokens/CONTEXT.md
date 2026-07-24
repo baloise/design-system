@@ -261,6 +261,20 @@ Outside Shadow DOM, use tokens directly:
 - **Figma changes are proposals** — A designer editing a Figma Variable does not change the token. It becomes a token change only once pushed through a pull request and merged.
 - **Naming is immutable** — Renaming a token is a breaking change for consumers
 
+## Figma Token Sync (Pull)
+
+A GitHub Actions workflow (`workflow_dispatch`) that reads Figma Variables via the REST API and opens a pull request updating `tokens/*.tokens.json` when they differ from Figma. It never commits directly to any branch. See [ADR 0001](docs/adr/0001-brand-tokens-as-figma-modes.md) and [ADR 0002](docs/adr/0002-variable-id-diffing.md).
+
+**Mode**:
+A Figma Variable Collection concept representing one brand's set of values (e.g. "Base", "Tcs"). One mode maps to exactly one `tokens/<Mode>.tokens.json` file.
+_Avoid_: Brand collection, theme (a mode is not a separate collection or file — see ADR 0001)
+
+**Pull workflow**:
+The one-directional sync that fetches Figma Variables and proposes them as a PR. There is no corresponding push-to-Figma workflow in this MVP; a designer editing a Figma Variable does not change a token until the pull workflow's PR is merged (see the existing "Figma changes are proposals" constraint above).
+
+**Sync PR**:
+The pull request opened by the pull workflow. Scoped per target branch — running the workflow against a feature branch opens/updates a PR into that branch (branch name `figma-token-sync/<target-branch>`), so a developer can pull newly-added Figma variables into their own in-progress branch, not only into `next`.
+
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
