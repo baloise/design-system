@@ -4,7 +4,6 @@
 
 tsconfig.base.json
 pnpm-lock.yaml
-.figma-sync-state.json
 
 packages/tokens/tokens/
 packages/core/src/global/constants/icons.constant.ts
