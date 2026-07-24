@@ -86,7 +86,33 @@ Per-component token overrides for specific use cases:
 
 ### Figma Integration
 
-Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId`. The JSON file is the source of truth — tokens are synced to Figma as variables. When referencing a token by name in Figma, the same name is used in CSS.
+Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId`. **`Base.tokens.json` (and each brand's `*.tokens.json`) in GitHub is the sole source of truth.** Figma Variables are a generated projection of these files, kept in sync by the Figma Token Sync Plugin. A designer changing a variable in Figma has made a _proposal_, not a fact — it only becomes real once it lands in GitHub via a reviewed pull request. Figma itself never holds a value GitHub doesn't know about once sync has run. When referencing a token by name in Figma, the same name is used in CSS.
+
+#### Figma Token Sync Plugin — Language
+
+**Variable identity**:
+The stable key used to match one token to one Figma Variable across syncs: `$extensions.com.figma.variableId` when present, falling back to name/path only for tokens that have never round-tripped through a sync.
+_Avoid_: token name (as identity — names can change; a rename is not a delete+add)
+
+**Pull (from Code)**:
+Synchronization that reads `*.tokens.json` from GitHub and writes matching Figma Variables. Origin is GitHub; destination is Figma.
+_Avoid_: import, download
+
+**Push (to Code)**:
+Synchronization that reads Figma Variables and opens a GitHub pull request with the resulting `*.tokens.json` changes. Origin is Figma; destination is GitHub, always via PR review, never a direct commit to `next`.
+_Avoid_: export, publish, upload
+
+**Sync baseline**:
+The token state as of the last successful sync, committed to `.figma-sync-state.json` and keyed by variable identity. Used to tell a genuine conflict (both sides changed since baseline) apart from a one-sided change.
+_Avoid_: snapshot, cache (it's specifically the last-agreed-state reference point for 3-way diffing, not a performance cache)
+
+**Conflict**:
+A token whose Figma value and GitHub value have both diverged from the sync baseline since the last sync — as opposed to a one-sided change, which is just a pending Pull or pending Push.
+_Avoid_: diff, difference (a diff is any Figma/GitHub mismatch; a conflict is specifically one where the baseline shows both sides moved)
+
+**Brand mode**:
+A Figma Variable Collection mode representing one brand (Base, Tcs, future brands). A brand's token override is a different mode-value on the same variable, not a separate variable.
+_Avoid_: theme, variant (component variants are a distinct concept in this system)
 
 ## Key Concepts
 
@@ -261,9 +287,9 @@ Outside Shadow DOM, use tokens directly:
 ## Key Constraints
 
 - **Alias tokens are primary** — Don't encourage direct Global reference
-- **Figma variables are synchronized** — Token changes must be reflected back to Figma
+- **GitHub is the sole source of truth** — Design decisions flow from `*.tokens.json` → Figma Variables → components. Figma is a synchronized mirror, not an origin.
+- **Figma changes are proposals** — A designer editing a Figma Variable does not change the token. It becomes a token change only once pushed through a pull request and merged.
 - **Naming is immutable** — Renaming a token is a breaking change for consumers
-- **Values are inherited from Figma** — Design decisions flow from Figma → tokens → components
 
 ## Related Contexts
 
