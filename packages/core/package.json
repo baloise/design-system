@@ -48,7 +48,7 @@
     "@floating-ui/dom": "1.8.0",
     "@stencil/core": "catalog:",
     "air-datepicker": "3.6.0",
-    "slim-select": "4.0.6",
+    "slim-select": "4.0.7",
     "imask": "7.6.1",
     "dompurify": "3.4.12",
     "focus-trap": "8.2.2",
