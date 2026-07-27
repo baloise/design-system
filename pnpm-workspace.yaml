@@ -35,10 +35,10 @@ catalog:
 # copy in package.json (frozen-lockfile broke there without it).
 # See docs/adr/0005-duplicate-pnpm-overrides.md
 overrides:
-  'brace-expansion@>=2.0.0 <2.1.2': 2.1.2
-  'brace-expansion@>=3.0.0 <5.0.7': 5.0.7
+  'brace-expansion@<5.0.8': 5.0.8
   'js-yaml@>=4.0.0 <4.3.0': 4.3.0
   'js-yaml@>=3.0.0 <3.15.0': 3.15.0
+  'immutable@>=5.0.0-beta.1 <5.1.8': 5.1.8
 
 # Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
