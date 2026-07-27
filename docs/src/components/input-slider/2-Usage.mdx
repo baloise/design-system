@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, UsageExamples } from '../../../.storybook/blocks'
+import * as InputSliderStories from './input-slider.stories'
+import { INPUTSLIDER_DOC_CONFIG, getInputSliderTabs } from './input-slider.doc-config'
+
+<Meta title="Components/InputSlider/Usage" />
+<Banner label={'Usage'} section={INPUTSLIDER_DOC_CONFIG.section} color={INPUTSLIDER_DOC_CONFIG.color} />
+<BannerTabs of={InputSliderStories} tabs={getInputSliderTabs('usage')} />
+
+## When to Use
+
+- Adjusting a value within a known, bounded numeric range (volume, brightness, percentage)
+- When the relative position of the value matters more than typing an exact number
+- Settings or preferences where a quick drag gesture is faster than entering text
+- Continuous values where snapping to a step (or dragging freely with `step="any"`) is acceptable
+
+## When NOT to Use
+
+- When users need to enter an exact, specific number — use `ds-number-input` instead
+- For a very large or unbounded range, where fine control becomes impractical
+- For simple on/off choices — use `ds-checkbox`
+- When the value has no inherent order or scale (e.g. selecting from a list of options)
+
+## Do's and Don'ts
+
+### Show the Range
+
+Always give users context about the acceptable range via the label or description, since the slider track alone doesn't convey `min`/`max`.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Range in description',
+      content: <ds-input-slider label="Volume" description="0–100" min="0" max="100"></ds-input-slider>,
+      description: 'Users know the bounds before dragging',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No range context',
+      content: <ds-input-slider label="Volume" min="0" max="100"></ds-input-slider>,
+      description: 'Users must guess the minimum and maximum',
+    },
+  ]}
+/>
+
+### Match Step to Precision Needs
+
+Use a `step` that fits how precisely the value should be set. Use `step="any"` only when continuous dragging is genuinely meaningful.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Sensible step size',
+      content: <ds-input-slider label="Volume" min="0" max="100" step="10"></ds-input-slider>,
+      description: 'Values snap to meaningful increments',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Overly fine step for a coarse setting',
+      content: <ds-input-slider label="Volume" min="0" max="100" step="any"></ds-input-slider>,
+      description: 'Users cannot reliably land on round numbers',
+    },
+  ]}
+/>
+
+<Footer />

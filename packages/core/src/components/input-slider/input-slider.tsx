@@ -1,4 +1,16 @@
-import { AttachInternals, Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import isNaN from 'lodash/isNaN'
 import {

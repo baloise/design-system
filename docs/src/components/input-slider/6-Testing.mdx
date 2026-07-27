@@ -1,0 +1,14 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentPageObject, Footer } from '../../../.storybook/blocks'
+import * as InputSliderStories from './input-slider.stories'
+import { INPUTSLIDER_DOC_CONFIG, getInputSliderTabs } from './input-slider.doc-config'
+
+<Meta title="Components/InputSlider/Testing" />
+
+<Banner label={'Testing'} section={INPUTSLIDER_DOC_CONFIG.section} color={INPUTSLIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={InputSliderStories} tabs={getInputSliderTabs('testing')} />
+
+<ComponentPageObject component="input-slider" />
+
+<Footer />

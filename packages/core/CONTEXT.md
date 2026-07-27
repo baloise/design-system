@@ -457,7 +457,7 @@ pattern as `ds-input`/`ds-number-input`. Shared vocabulary:
   migrations: if an old `bal-*` component had a `color` prop meaning brand/
   theme color, it is renamed to `brand-color` on the `ds-*` version, freeing
   up `color` for the `Field`-state semantics (`primary | success | warning |
-  danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
+danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
   no brand `color` prop, so `ds-input-slider` only gets the state `color`.
 - **No tick marks in this MVP** — the old component's `hasTicks` prop (BEM
   `<div>`s per step) is dropped; visuals are out of scope for this pass. A

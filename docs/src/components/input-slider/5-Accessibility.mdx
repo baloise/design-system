@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { A11yGuidelines, Banner, BannerTabs, Footer } from '../../../.storybook/blocks'
+import * as InputSliderStories from './input-slider.stories'
+import { INPUTSLIDER_DOC_CONFIG, getInputSliderTabs } from './input-slider.doc-config'
+
+<Meta title="Components/InputSlider/Accessibility" />
+
+<Banner label={'Accessibility'} section={INPUTSLIDER_DOC_CONFIG.section} color={INPUTSLIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={InputSliderStories} tabs={getInputSliderTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always Provide a Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set a descriptive <code>label</code> so screen reader users know what value they are adjusting. The
+          native range input is announced with its current value automatically.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Communicate the Range',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use <code>description</code> to state the acceptable <code>min</code>/<code>max</code> range, since
+          screen readers don't always announce the bounds alongside the current value.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Rely on Native Keyboard Support',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The underlying <code>&lt;input type="range"&gt;</code> already supports arrow keys, Home/End, and
+          Page Up/Down — don't intercept or override these keyboard behaviors.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Explain Invalid State',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When <code>invalid</code> is set, provide <code>invalidText</code> so assistive technology users
+          understand why the value needs to change.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t Omit the Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never leave <code>label</code> empty. Without it, screen reader users hear only a numeric value with
+          no context for what it represents.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Don\'t Rely on Color Alone',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use <code>color</code> as the only signal for validation state — pair it with{' '}
+          <code>invalidText</code> so the meaning isn't lost for users who can't perceive color differences.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: `<input type="range">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range) - Native keyboard and assistive technology behavior this component builds on
+- [MDN: ARIA `slider` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/slider_role) - How range inputs are exposed to assistive technology
+- [WCAG 2.2 — Name, Role, Value (4.1.2)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) - Applies to the labeled, valued control this component renders
+
+<Footer />
