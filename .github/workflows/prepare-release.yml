@@ -34,6 +34,7 @@ jobs:
         with:
           title: '📦️ Release'
           commit: 'prepare release'
+          version: pnpm exec changeset version && pnpm install --no-frozen-lockfile --lockfile-only
           createGithubReleases: false
           publish: echo "Publish"
         env:
