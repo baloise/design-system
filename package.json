@@ -40,7 +40,8 @@
     "format": "pnpm exec prettier --write --log-level error --end-of-line lf .",
     "format:check": "pnpm exec prettier --check --log-level error --end-of-line lf .",
     "spell": "cspell --no-progress",
-    "changeset": "node scripts/create-changeset.mjs"
+    "changeset": "node scripts/create-changeset.mjs",
+    "changeset:version": "changeset version && pnpm install --no-frozen-lockfile --lockfile-only"
   },
   "private": true,
   "devDependencies": {
