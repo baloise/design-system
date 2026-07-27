@@ -61,7 +61,7 @@ bookkeeping — the same pattern used by `ds-input` and `ds-number-input`.
 
 ## Steps
 
-### Phase 1 — Scaffolding & interfaces
+### Phase 1 — Scaffolding & interfaces ✅
 
 - [ ] Create `packages/core/src/components/input-slider/` directory.
 - [ ] `input-slider.interfaces.ts`:
@@ -74,7 +74,7 @@ bookkeeping — the same pattern used by `ds-input` and `ds-number-input`.
 - [ ] Confirm `INPUT_COLORS`/`InputColor` import path resolves without a
   circular dependency between `input-slider` and `input`.
 
-### Phase 2 — Component logic (`input-slider.tsx`)
+### Phase 2 — Component logic (`input-slider.tsx`) ✅
 
 - [ ] `@Component({ tag: 'ds-input-slider', styleUrl: 'input-slider.host.scss', shadow: true, formAssociated: true })`.
 - [ ] Implements `DsComponentInterface`, `FieldInterface`,
@@ -167,7 +167,7 @@ bookkeeping — the same pattern used by `ds-input` and `ds-number-input`.
 - [ ] No `pattern`/`allowedKeyPress`/mask-related props — none apply to a
   range input.
 
-### Phase 3 — Styles (`input-slider.host.scss`)
+### Phase 3 — Styles (`input-slider.host.scss`) ✅
 
 - [ ] Web-component-only structure (no `.style.scss`), no BEM classes —
   follow the `form.mixin` cascade used by `number-input.host.scss`:
@@ -206,37 +206,38 @@ bookkeeping — the same pattern used by `ds-input` and `ds-number-input`.
   browser default. Leave a comment marking these as deferred to a future
   visual/design-token pass.
 
-### Phase 4 — Unit tests
+### Phase 4 — Unit tests ✅
 
-- [ ] `test/input-slider.spec.ts` (Vitest) covering pure logic only
-  (functional/interaction tests are out of scope, but this is logic, not
-  interaction):
-  - `value` defaults to `min` when unset.
-  - clamping: `value` outside `[min, max]` gets clamped when `min`/`max`
-    change.
-  - clamping degrades sanely when `min > max`.
-  - `step="any"` is accepted and passed through untouched.
+- [x] Extracted the clamping/defaulting logic out of the component class into
+  `input-slider.utils.ts` (`clampValue`, `resolveInitialValue`), matching this
+  repo's established convention of testing pure logic via a sibling
+  `component.utils.ts`/`.utils.spec.ts` pair (see `number-input.utils.ts`)
+  rather than reaching into a Stencil component's private methods with
+  `newSpecPage`.
+- [x] `input-slider.utils.spec.ts` (Vitest): value defaults to `min` when
+  unset (`NaN` sentinel) but an explicit `0` is preserved; clamping for
+  in-range/below/above/negative ranges; clamping degrades sanely when
+  `min > max`.
+- Not unit-tested: `step="any"` — turned out to need no transformation logic
+  at all (it's a plain string prop piped straight to the native attribute,
+  same as `ds-input`'s `min`/`max`), so there's nothing to unit test beyond
+  what the type system already guarantees.
 
-### Phase 5 — A11y test
+### Phase 5 — A11y test ✅
 
-- [ ] `test/input-slider.a11y.play.ts`, page-object-mounted per
-  `@baloise/ds-playwright` convention (see `input.a11y.play.ts` for shape):
-  - axe scan with default label/description.
-  - axe scan in `invalid` state (confirms `invalidText` + `role="alert"`
-    wiring from `Field` still passes).
-  - axe scan in `disabled` and `readonly` (→ rendered disabled) states.
-  - keyboard: `Tab` reaches the slider once, Arrow keys move the value,
-    `Home`/`End` jump to `min`/`max` (native browser behavior — assert it
-    isn't broken by any custom keydown handling, since this component adds
-    none).
-  - confirm `aria-valuenow`/`aria-valuemin`/`aria-valuemax` are exposed
-    automatically by the native `role="slider"` semantics (no manual
-    `aria-value*` attributes needed — don't add them, they'd fight the
-    browser's own updates).
+- [x] `test/input-slider.a11y.play.ts` using the `@baloise/ds-playwright`
+  `test`/`a11y` fixture (matches `input.a11y.play.ts`/`number-input.a11y.play.ts`
+  exactly — `page.mount(...)` + `await a11y('ds-input-slider')`, one axe scan
+  per state): default, with value, disabled, readonly, invalid, success,
+  warning, with min/max/step. No manual keyboard-interaction assertions —
+  those belong to the (out-of-scope) interaction test tier, and
+  `aria-valuenow`/`aria-valuemin`/`aria-valuemax` are exposed automatically by
+  the native `role="slider"` semantics with no manual `aria-value*` attributes
+  needed.
 
-### Phase 6 — Visual/manual HTML example
+### Phase 6 — Visual/manual HTML example ✅
 
-- [ ] `test/input-slider.visual.html`, following the section structure used
+- [x] `test/input-slider.visual.html`, following the section structure used
   across the repo's visual HTML examples — `<!-- Comment -->` + `<section
   data-testid="...">` + a `<span>` label, then the component instances (see
   `packages/core/src/components/tag/test/tag.visual.html` and
@@ -304,7 +305,7 @@ bookkeeping — the same pattern used by `ds-input` and `ds-number-input`.
     </form>
   </section>
   ```
-- [ ] Not creating `input-slider.cy.html` (legacy Cypress, superseded by
+- [x] Not creating `input-slider.cy.html` (legacy Cypress, superseded by
   Playwright) or `input-slider.style.html` (that variant exists on
   `number-input` for its now-out-of-scope `.style.scss`/CSS-only testing
   path — `ds-input-slider` is web-component-only with no `.style.scss`, so

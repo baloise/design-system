@@ -25,6 +25,7 @@ import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetai
 import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+import { InputSliderBlurDetail, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -68,6 +69,7 @@ export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetai
 export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+export { InputSliderBlurDetail, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -1612,6 +1614,99 @@ export namespace Components {
           * @default null
          */
         "value": string | null;
+    }
+    /**
+     * Input slider renders a native range input with validation and label/description messaging.
+     */
+    interface DsInputSlider {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Defines the color of the slider. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the slider, which is displayed below the control.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the slider is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the slider, which is displayed above the control.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The maximum value of the slider. See `min` for why this is numeric.
+          * @default 100
+         */
+        "max": number;
+        /**
+          * The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s `min`, this is numeric because the component's own logic (default value, clamping) depends on it, not just the native attribute pass-through.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputSliderId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated. A native range input has no concept of `readonly` (browsers only honor it on text-like inputs), so this is treated as equivalent to `disabled`.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input` in `ds-input-slider`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `ds-input-slider`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
+          * @default '1'
+         */
+        "step": string;
+        /**
+          * The value of the slider. Unlike a text input, a range input can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * @default NaN
+         */
+        "value": number;
     }
     /**
      * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
@@ -3510,6 +3605,10 @@ export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
 }
+export interface DsInputSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsInputSliderElement;
+}
 export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsItemElement;
@@ -4069,6 +4168,30 @@ declare global {
     var HTMLDsInputElement: {
         prototype: HTMLDsInputElement;
         new (): HTMLDsInputElement;
+    };
+    interface HTMLDsInputSliderElementEventMap {
+        "dsInput": InputSliderInputDetail;
+        "dsFocus": InputSliderFocusDetail;
+        "dsBlur": InputSliderBlurDetail;
+        "dsClick": InputSliderClickDetail;
+        "dsChange": InputSliderChangeDetail;
+    }
+    /**
+     * Input slider renders a native range input with validation and label/description messaging.
+     */
+    interface HTMLDsInputSliderElement extends Components.DsInputSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsInputSliderElement: {
+        prototype: HTMLDsInputSliderElement;
+        new (): HTMLDsInputSliderElement;
     };
     interface HTMLDsItemElementEventMap {
         "dsClick": ButtonClickDetail;
@@ -4735,6 +4858,7 @@ declare global {
         "ds-hint-title": HTMLDsHintTitleElement;
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
+        "ds-input-slider": HTMLDsInputSliderElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
@@ -6404,6 +6528,110 @@ declare namespace LocalJSX {
           * @default null
          */
         "value"?: string | null;
+    }
+    /**
+     * Input slider renders a native range input with validation and label/description messaging.
+     */
+    interface DsInputSlider {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Defines the color of the slider. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the slider, which is displayed below the control.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the slider is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the slider, which is displayed above the control.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The maximum value of the slider. See `min` for why this is numeric.
+          * @default 100
+         */
+        "max"?: number;
+        /**
+          * The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s `min`, this is numeric because the component's own logic (default value, clamping) depends on it, not just the native attribute pass-through.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputSliderId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsInputSliderCustomEvent<InputSliderBlurDetail>) => void;
+        /**
+          * Emitted when the value is committed (native `change`, not `blur` — see ADR-0006). Fires once per discrete drag/step, independent of focus.
+         */
+        "onDsChange"?: (event: DsInputSliderCustomEvent<InputSliderChangeDetail>) => void;
+        /**
+          * Emitted when the input is clicked.
+         */
+        "onDsClick"?: (event: DsInputSliderCustomEvent<InputSliderClickDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsInputSliderCustomEvent<InputSliderFocusDetail>) => void;
+        /**
+          * Emitted on each keyboard/pointer movement, before the value is committed.
+         */
+        "onDsInput"?: (event: DsInputSliderCustomEvent<InputSliderInputDetail>) => void;
+        /**
+          * If `true` the element can not be mutated. A native range input has no concept of `readonly` (browsers only honor it on text-like inputs), so this is treated as equivalent to `disabled`.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
+          * @default '1'
+         */
+        "step"?: string;
+        /**
+          * The value of the slider. Unlike a text input, a range input can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * @default NaN
+         */
+        "value"?: number;
     }
     /**
      * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
@@ -8713,6 +8941,23 @@ declare namespace LocalJSX {
         "mask": InputMask;
         "autoInvalidOff": boolean;
     }
+    interface DsInputSliderAttributes {
+        "value": number;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "min": number;
+        "max": number;
+        "step": string;
+        "debounce": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+    }
     interface DsItemAttributes {
         "accordionGroup": string;
         "accordionMarker": AccordionMarker;
@@ -9120,6 +9365,7 @@ declare namespace LocalJSX {
         "ds-hint-title": DsHintTitle;
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
+        "ds-input-slider": Omit<DsInputSlider, keyof DsInputSliderAttributes> & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes]?: DsInputSlider[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `attr:${K}`]?: DsInputSliderAttributes[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `prop:${K}`]?: DsInputSlider[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
         "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
@@ -9308,6 +9554,10 @@ declare module "@stencil/core" {
              * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
              */
             "ds-input": LocalJSX.IntrinsicElements["ds-input"] & JSXBase.HTMLAttributes<HTMLDsInputElement>;
+            /**
+             * Input slider renders a native range input with validation and label/description messaging.
+             */
+            "ds-input-slider": LocalJSX.IntrinsicElements["ds-input-slider"] & JSXBase.HTMLAttributes<HTMLDsInputSliderElement>;
             /**
              * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
              */

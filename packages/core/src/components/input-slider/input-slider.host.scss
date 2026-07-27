@@ -1,0 +1,116 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-slider-color: Accent color of the native range track/thumb.
+ * @prop --form-container-background: Background color of the slider container.
+ * @prop --form-container-border-color: Border color of the slider container.
+ * @prop --form-container-border-width: Border width of the slider container.
+ * @prop --form-container-radius: Border radius of the slider container.
+ * @prop --form-container-hover-background: Container background color on hover.
+ * @prop --form-container-active-background: Container background color when active.
+ * @prop --form-container-focus-background: Container background color when focused.
+ * @prop --form-container-hover-border: Container border color on hover.
+ * @prop --form-container-active-border: Container border color when active.
+ * @prop --form-container-focus-border: Container border color when focused.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include vars.local(input-slider-color, var(--ds-alias-border-color-primary));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ * Global/alias tokens only for this pass — no dedicated component tokens or
+ * custom track/thumb visuals yet, see docs/plans/ds-input-slider-implementation-plan.md.
+ */
+
+:host {
+  @include form.field();
+  @include form.container();
+  @include form.label();
+  @include form.description();
+
+  #input {
+    width: 100%;
+    accent-color: var(--_input-slider-color);
+    cursor: pointer;
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
+  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+}
+
+//
+// Disabled (also covers `readonly`, treated as equivalent — see CONTEXT.md)
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
+  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-input-slider-color: var(--ds-form-control-color-value-disabled);
+}
