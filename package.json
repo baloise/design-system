@@ -68,6 +68,7 @@
     "compression": "catalog:",
     "cross-env": "7.0.3",
     "cspell": "10.0.1",
+    "dotenv": "8.6.0",
     "eslint": "catalog:",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-playwright": "2.10.5",
