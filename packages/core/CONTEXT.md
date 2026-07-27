@@ -423,6 +423,50 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
 Library choices (air-datepicker, imask) and the shadow-root integration are
 recorded in [docs/adr/0001-ds-date-external-datepicker-libraries.md](../../docs/adr/0001-ds-date-external-datepicker-libraries.md).
 
+## Input Slider (ds-input-slider)
+
+`ds-input-slider` is the web-component-only migration of the old
+`bal-input-slider`: a form control wrapping a native
+`<input type="range">`, using the same `Field` wrapper/`AttachInternals()`
+pattern as `ds-input`/`ds-number-input`. Shared vocabulary:
+
+- **Model value** — `value: number`, always a concrete number, never `null`
+  or `''`. Unlike `ds-number-input`, a range input can never truly be
+  "empty" (the native element always resolves to a real value), so there is
+  no empty/nullable state to represent. When no `value` is supplied it
+  defaults to `min`.
+- **Clamping** — `min`/`max` are typed as `@Type('number')` (not `string`,
+  unlike `ds-input`/`ds-number-input`'s pass-through min/max) because the
+  component's own logic depends on them: `value` is clamped into
+  `[min, max]` via `@Watch('min')`/`@Watch('max')`, so the component's state
+  of truth never drifts from what the native element renders.
+- **Continuous mode** — `step` defaults to `1` (native default). A
+  continuous/free-form slider is expressed via the standard HTML mechanism
+  `step="any"`, not a special `0` sentinel (the old component's `step = 0`
+  convention is dropped — it wasn't actually honored by the browser).
+- **`readonly` behaves as `disabled`** — per the HTML spec, `readonly` has
+  no effect on `<input type="range">` (browsers only honor it on text-like
+  inputs). Rather than hand-rolling a "true readonly" interaction lock,
+  `ds-input-slider` follows the existing `ds-checkbox` convention
+  (`disabled={this.disabled || this.readonly}`) and treats the two as
+  equivalent for this control.
+- **Commit-on-`change`, not blur** — diverges from the shared `FormControl`
+  blur-commit convention; see
+  [ADR-0006](../../docs/adr/0006-ds-input-slider-change-commit.md).
+- **`color` vs. `brand-color`** — general naming convention for bal→ds
+  migrations: if an old `bal-*` component had a `color` prop meaning brand/
+  theme color, it is renamed to `brand-color` on the `ds-*` version, freeing
+  up `color` for the `Field`-state semantics (`primary | success | warning |
+  danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
+  no brand `color` prop, so `ds-input-slider` only gets the state `color`.
+- **No tick marks in this MVP** — the old component's `hasTicks` prop (BEM
+  `<div>`s per step) is dropped; visuals are out of scope for this pass. A
+  future visual pass should use native `<datalist>` + `list` (real tick
+  marks with built-in a11y) rather than resurrecting the old div-based
+  approach.
+- **Dual-thumb (min+max range) is out of scope** — this component is
+  single-thumb only, matching `bal-input-slider`'s original scope exactly.
+
 ## Global Configuration (`DesignSystem.config`)
 
 `packages/core/src/global/config/` holds the singleton `config` (a `Config`
