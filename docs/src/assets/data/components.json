@@ -13626,28 +13626,28 @@
       ],
       "tokens": [
         {
-          "name": "🧩 Component / Carousel / Gap",
-          "cssVarName": "--ds-carousel-gap",
-          "value": "{🔗 Alias.↔️ Space.SM.Mobile}",
-          "nativeValue": "12",
+          "name": "🧩 Component / Carousel / ScrollFadeBg",
+          "cssVarName": "--ds-carousel-scrollfadebg",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
           "inheritance": [
             {
-              "cssVar": "--ds-size-space-12",
-              "figmaName": "Global / Size / Space / 12"
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
             },
             {
-              "cssVar": "--ds-space-sm-mobile",
-              "figmaName": "Alias / Space / SM / Mobile"
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
             },
             {
-              "cssVar": "--ds-carousel-gap",
-              "figmaName": "Component / Carousel / Gap"
+              "cssVar": "--ds-carousel-scrollfadebg",
+              "figmaName": "Component / Carousel / ScrollFadeBg"
             }
           ],
           "path": [
             "🧩 Component",
             "Carousel",
-            "Gap"
+            "ScrollFadeBg"
           ]
         },
         {
@@ -13762,31 +13762,6 @@
             "Carousel",
             "Control",
             "Color"
-          ]
-        },
-        {
-          "name": "🧩 Component / Carousel / ScrollFadeBg",
-          "cssVarName": "--ds-carousel-scrollfadebg",
-          "value": "{🔗 Alias.🎨 Background.Color.White}",
-          "nativeValue": "#FFFFFF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-white",
-              "figmaName": "Global / Color / White"
-            },
-            {
-              "cssVar": "--ds-background-color-white",
-              "figmaName": "Alias / Background / Color / White"
-            },
-            {
-              "cssVar": "--ds-carousel-scrollfadebg",
-              "figmaName": "Component / Carousel / ScrollFadeBg"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Carousel",
-            "ScrollFadeBg"
           ]
         },
         {
@@ -14733,6 +14708,81 @@
       ],
       "tokens": [
         {
+          "name": "🧩 Component / Checkbox / Radius",
+          "cssVarName": "--ds-checkbox-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-checkbox-radius",
+              "figmaName": "Component / Checkbox / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Checkbox / FontFamily",
+          "cssVarName": "--ds-checkbox-fontfamily",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-checkbox-fontfamily",
+              "figmaName": "Component / Checkbox / FontFamily"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "FontFamily"
+          ]
+        },
+        {
+          "name": "🧩 Component / Checkbox / LineHeight",
+          "cssVarName": "--ds-checkbox-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-checkbox-lineheight",
+              "figmaName": "Component / Checkbox / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "LineHeight"
+          ]
+        },
+        {
           "name": "🧩 Component / Checkbox / Label / Color / Hover",
           "cssVarName": "--ds-checkbox-label-color-hover",
           "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
@@ -14810,81 +14860,6 @@
             "Checkbox",
             "Border",
             "Width"
-          ]
-        },
-        {
-          "name": "🧩 Component / Checkbox / Radius",
-          "cssVarName": "--ds-checkbox-radius",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "4",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-radius-1",
-              "figmaName": "Global / Size / Radius / 1"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-checkbox-radius",
-              "figmaName": "Component / Checkbox / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Checkbox",
-            "Radius"
-          ]
-        },
-        {
-          "name": "🧩 Component / Checkbox / FontFamily",
-          "cssVarName": "--ds-checkbox-fontfamily",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
-            },
-            {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
-            },
-            {
-              "cssVar": "--ds-checkbox-fontfamily",
-              "figmaName": "Component / Checkbox / FontFamily"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Checkbox",
-            "FontFamily"
-          ]
-        },
-        {
-          "name": "🧩 Component / Checkbox / LineHeight",
-          "cssVarName": "--ds-checkbox-lineheight",
-          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
-          "nativeValue": "1.5",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-lineheight-3",
-              "figmaName": "Global / Font / LineHeight / 3"
-            },
-            {
-              "cssVar": "--ds-text-lineheight-body",
-              "figmaName": "Alias / Text / LineHeight / Body"
-            },
-            {
-              "cssVar": "--ds-checkbox-lineheight",
-              "figmaName": "Component / Checkbox / LineHeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Checkbox",
-            "LineHeight"
           ]
         },
         {
@@ -19306,6 +19281,110 @@
       ],
       "tokens": [
         {
+          "name": "🧩 Component / Date / Calendar / Family",
+          "cssVarName": "--ds-date-calendar-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-date-calendar-family",
+              "figmaName": "Component / Date / Calendar / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Weight",
+          "cssVarName": "--ds-date-calendar-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-date-calendar-weight",
+              "figmaName": "Component / Date / Calendar / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Radius",
+          "cssVarName": "--ds-date-calendar-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-date-calendar-radius",
+              "figmaName": "Component / Date / Calendar / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Shadow",
+          "cssVarName": "--ds-date-calendar-shadow",
+          "value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+          "nativeValue": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-shadow-3",
+              "figmaName": "Global / Elevation / Shadow / 3"
+            },
+            {
+              "cssVar": "--ds-shadow-box-base",
+              "figmaName": "Alias / Shadow / Box / Base"
+            },
+            {
+              "cssVar": "--ds-date-calendar-shadow",
+              "figmaName": "Component / Date / Calendar / Shadow"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Shadow"
+          ]
+        },
+        {
           "name": "🧩 Component / Date / Calendar / Color / InnerBorder",
           "cssVarName": "--ds-date-calendar-color-innerborder",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
@@ -19330,6 +19409,87 @@
             "Calendar",
             "Color",
             "InnerBorder"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / CurrentDate",
+          "cssVarName": "--ds-date-calendar-color-currentdate",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-currentdate",
+              "figmaName": "Component / Date / Calendar / Color / CurrentDate"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "CurrentDate"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / Text",
+          "cssVarName": "--ds-date-calendar-color-text",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-text",
+              "figmaName": "Component / Date / Calendar / Color / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / Date / Calendar / Color / Disabled",
+          "cssVarName": "--ds-date-calendar-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-date-calendar-color-disabled",
+              "figmaName": "Component / Date / Calendar / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Color",
+            "Disabled"
           ]
         },
         {
@@ -19445,113 +19605,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Date / Calendar / Color / CurrentDate",
-          "cssVarName": "--ds-date-calendar-color-currentdate",
-          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primary",
-              "figmaName": "Alias / Text / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-date-calendar-color-currentdate",
-              "figmaName": "Component / Date / Calendar / Color / CurrentDate"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Color",
-            "CurrentDate"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Color / Text",
-          "cssVarName": "--ds-date-calendar-color-text",
-          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primary",
-              "figmaName": "Alias / Text / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-date-calendar-color-text",
-              "figmaName": "Component / Date / Calendar / Color / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Color",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Color / Disabled",
-          "cssVarName": "--ds-date-calendar-color-disabled",
-          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
-          "nativeValue": "#747474",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-5",
-              "figmaName": "Global / Color / Grey / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
-            },
-            {
-              "cssVar": "--ds-date-calendar-color-disabled",
-              "figmaName": "Component / Date / Calendar / Color / Disabled"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Color",
-            "Disabled"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Family",
-          "cssVarName": "--ds-date-calendar-family",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
-            },
-            {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
-            },
-            {
-              "cssVar": "--ds-date-calendar-family",
-              "figmaName": "Component / Date / Calendar / Family"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Family"
-          ]
-        },
-        {
           "name": "🧩 Component / Date / Calendar / Size / Mobile",
           "cssVarName": "--ds-date-calendar-size-mobile",
           "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
@@ -19630,84 +19683,6 @@
             "Calendar",
             "Size",
             "Desktop"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Weight",
-          "cssVarName": "--ds-date-calendar-weight",
-          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "nativeValue": "700",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-weight-700",
-              "figmaName": "Global / Font / Weight / 700"
-            },
-            {
-              "cssVar": "--ds-text-weight-bold",
-              "figmaName": "Alias / Text / Weight / Bold"
-            },
-            {
-              "cssVar": "--ds-date-calendar-weight",
-              "figmaName": "Component / Date / Calendar / Weight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Weight"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Radius",
-          "cssVarName": "--ds-date-calendar-radius",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "4",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-radius-1",
-              "figmaName": "Global / Size / Radius / 1"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-date-calendar-radius",
-              "figmaName": "Component / Date / Calendar / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Radius"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Shadow",
-          "cssVarName": "--ds-date-calendar-shadow",
-          "value": "{🔗 Alias.🌓 Shadow.Box.Base}",
-          "nativeValue": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
-          "inheritance": [
-            {
-              "cssVar": "--ds-elevation-shadow-3",
-              "figmaName": "Global / Elevation / Shadow / 3"
-            },
-            {
-              "cssVar": "--ds-shadow-box-base",
-              "figmaName": "Alias / Shadow / Box / Base"
-            },
-            {
-              "cssVar": "--ds-date-calendar-shadow",
-              "figmaName": "Component / Date / Calendar / Shadow"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Shadow"
           ]
         },
         {
@@ -19821,6 +19796,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Date / Calendar / Nav / Radius",
+          "cssVarName": "--ds-date-calendar-nav-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-date-calendar-nav-radius",
+              "figmaName": "Component / Date / Calendar / Nav / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Date",
+            "Calendar",
+            "Nav",
+            "Radius"
+          ]
+        },
+        {
           "name": "🧩 Component / Date / Calendar / Nav / Color / Base",
           "cssVarName": "--ds-date-calendar-nav-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -19930,33 +19932,6 @@
             "Nav",
             "Color",
             "Disabled"
-          ]
-        },
-        {
-          "name": "🧩 Component / Date / Calendar / Nav / Radius",
-          "cssVarName": "--ds-date-calendar-nav-radius",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "4",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-radius-1",
-              "figmaName": "Global / Size / Radius / 1"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-date-calendar-nav-radius",
-              "figmaName": "Component / Date / Calendar / Nav / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Date",
-            "Calendar",
-            "Nav",
-            "Radius"
           ]
         },
         {
@@ -24008,43 +23983,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Footer / Color / Divider",
-          "cssVarName": "--ds-footer-color-divider",
-          "value": "color-mix(in srgb, #FFFFFF 24%, transparent)",
-          "nativeValue": "color-mix(in srgb, #FFFFFF 24%, transparent)",
-          "inheritance": [
-            {
-              "cssVar": "--ds-footer-color-divider",
-              "figmaName": "Component / Footer / Color / Divider"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Footer",
-            "Color",
-            "Divider"
-          ]
-        },
-        {
-          "name": "🧩 Component / Footer / Space / Padding / Base",
-          "cssVarName": "--ds-footer-space-padding-base",
-          "value": "2rem",
-          "nativeValue": "2rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-footer-space-padding-base",
-              "figmaName": "Component / Footer / Space / Padding / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Footer",
-            "Space",
-            "Padding",
-            "Base"
-          ]
-        },
-        {
           "name": "🧩 Component / Footer / Space / ContentPaddingTop",
           "cssVarName": "--ds-footer-space-contentpaddingtop",
           "value": "{🔗 Alias.↔️ Space.MD.Mobile}",
@@ -24315,6 +24253,25 @@
           ]
         },
         {
+          "name": "🧩 Component / Footer / Space / Padding / Base",
+          "cssVarName": "--ds-footer-space-padding-base",
+          "value": "2rem",
+          "nativeValue": "2rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-footer-space-padding-base",
+              "figmaName": "Component / Footer / Space / Padding / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Footer",
+            "Space",
+            "Padding",
+            "Base"
+          ]
+        },
+        {
           "name": "🧩 Component / Footer / Typography / FontSize",
           "cssVarName": "--ds-footer-typography-fontsize",
           "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
@@ -24338,24 +24295,6 @@
             "Footer",
             "Typography",
             "FontSize"
-          ]
-        },
-        {
-          "name": "🧩 Component / Footer / Typography / LineHeight",
-          "cssVarName": "--ds-footer-typography-lineheight",
-          "value": "1.5",
-          "nativeValue": "1.5",
-          "inheritance": [
-            {
-              "cssVar": "--ds-footer-typography-lineheight",
-              "figmaName": "Component / Footer / Typography / LineHeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Footer",
-            "Typography",
-            "LineHeight"
           ]
         },
         {
@@ -32917,6 +32856,31 @@
       "listeners": [],
       "tokens": [
         {
+          "name": "🧩 Component / Modal / Width",
+          "cssVarName": "--ds-modal-width",
+          "value": "{🔗 Alias.🗃️ Container.Width.Modal}",
+          "nativeValue": "640",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-container-3",
+              "figmaName": "Global / Size / Container / 3"
+            },
+            {
+              "cssVar": "--ds-container-width-modal",
+              "figmaName": "Alias / Container / Width / Modal"
+            },
+            {
+              "cssVar": "--ds-modal-width",
+              "figmaName": "Component / Modal / Width"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Modal",
+            "Width"
+          ]
+        },
+        {
           "name": "🧩 Component / Modal / Color / Base / Background",
           "cssVarName": "--ds-modal-color-base-background",
           "value": "{🔗 Alias.🎨 Background.Color.White}",
@@ -32967,57 +32931,6 @@
             "Modal",
             "Radius",
             "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Modal / Width",
-          "cssVarName": "--ds-modal-width",
-          "value": "{🔗 Alias.🗃️ Container.Width.Modal}",
-          "nativeValue": "640",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-container-3",
-              "figmaName": "Global / Size / Container / 3"
-            },
-            {
-              "cssVar": "--ds-container-width-modal",
-              "figmaName": "Alias / Container / Width / Modal"
-            },
-            {
-              "cssVar": "--ds-modal-width",
-              "figmaName": "Component / Modal / Width"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Modal",
-            "Width"
-          ]
-        },
-        {
-          "name": "🧩 Component / Modal / Backdrop / Background",
-          "cssVarName": "--ds-modal-backdrop-background",
-          "value": "{🧩 Component.Backdrop.Background}",
-          "nativeValue": "rgba(0, 7, 57, 0.5)",
-          "inheritance": [
-            {
-              "cssVar": "--ds-backdrop-backgroundrgba",
-              "figmaName": "Component / Backdrop / BackgroundRgba"
-            },
-            {
-              "cssVar": "--ds-backdrop-background",
-              "figmaName": "Component / Backdrop / Background"
-            },
-            {
-              "cssVar": "--ds-modal-backdrop-background",
-              "figmaName": "Component / Modal / Backdrop / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Modal",
-            "Backdrop",
-            "Background"
           ]
         },
         {
@@ -33975,25 +33888,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Navbar / Base / Layout / Height",
-          "cssVarName": "--ds-navbar-base-layout-height",
-          "value": "5rem",
-          "nativeValue": "5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-layout-height",
-              "figmaName": "Component / Navbar / Base / Layout / Height"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Layout",
-            "Height"
-          ]
-        },
-        {
           "name": "🧩 Component / Navbar / Base / Layout / Padding",
           "cssVarName": "--ds-navbar-base-layout-padding",
           "value": "{🌐 Global.📏 Size.Space.16}",
@@ -34068,25 +33962,6 @@
             "Base",
             "Layout",
             "ZIndex"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Brand / Gap",
-          "cssVarName": "--ds-navbar-base-brand-gap",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-brand-gap",
-              "figmaName": "Component / Navbar / Base / Brand / Gap"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Brand",
-            "Gap"
           ]
         },
         {
@@ -34171,25 +34046,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Navbar / Base / Title / FontSize",
-          "cssVarName": "--ds-navbar-base-title-fontsize",
-          "value": "1.5rem",
-          "nativeValue": "1.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-title-fontsize",
-              "figmaName": "Component / Navbar / Base / Title / FontSize"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Title",
-            "FontSize"
-          ]
-        },
-        {
           "name": "🧩 Component / Navbar / Base / Title / FontWeight",
           "cssVarName": "--ds-navbar-base-title-fontweight",
           "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
@@ -34217,44 +34073,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Navbar / Base / Hamburger / Width",
-          "cssVarName": "--ds-navbar-base-hamburger-width",
-          "value": "3rem",
-          "nativeValue": "3rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-hamburger-width",
-              "figmaName": "Component / Navbar / Base / Hamburger / Width"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Hamburger",
-            "Width"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Hamburger / Height",
-          "cssVarName": "--ds-navbar-base-hamburger-height",
-          "value": "3rem",
-          "nativeValue": "3rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-hamburger-height",
-              "figmaName": "Component / Navbar / Base / Hamburger / Height"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Hamburger",
-            "Height"
-          ]
-        },
-        {
           "name": "🧩 Component / Navbar / Base / Hamburger / Padding",
           "cssVarName": "--ds-navbar-base-hamburger-padding",
           "value": "{🌐 Global.📏 Size.Space.8}",
@@ -34278,25 +34096,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Navbar / Base / Hamburger / Radius",
-          "cssVarName": "--ds-navbar-base-hamburger-radius",
-          "value": "0.25rem",
-          "nativeValue": "0.25rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-hamburger-radius",
-              "figmaName": "Component / Navbar / Base / Hamburger / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Hamburger",
-            "Radius"
-          ]
-        },
-        {
           "name": "🧩 Component / Navbar / Base / Hamburger / TransitionDuration",
           "cssVarName": "--ds-navbar-base-hamburger-transitionduration",
           "value": "0.2s",
@@ -34313,25 +34112,6 @@
             "Base",
             "Hamburger",
             "TransitionDuration"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / MaxWidth",
-          "cssVarName": "--ds-navbar-base-sidebar-maxwidth",
-          "value": "400px",
-          "nativeValue": "400px",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-maxwidth",
-              "figmaName": "Component / Navbar / Base / Sidebar / MaxWidth"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "MaxWidth"
           ]
         },
         {
@@ -34374,25 +34154,6 @@
             "Base",
             "Sidebar",
             "BackdropColor"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / BackdropOpacity",
-          "cssVarName": "--ds-navbar-base-sidebar-backdropopacity",
-          "value": "0.5",
-          "nativeValue": "0.5",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-backdropopacity",
-              "figmaName": "Component / Navbar / Base / Sidebar / BackdropOpacity"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "BackdropOpacity"
           ]
         },
         {
@@ -34485,126 +34246,6 @@
             "Sidebar",
             "Content",
             "Gap"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Content / PaddingInline",
-          "cssVarName": "--ds-navbar-base-sidebar-content-paddinginline",
-          "value": "1rem",
-          "nativeValue": "1rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-content-paddinginline",
-              "figmaName": "Component / Navbar / Base / Sidebar / Content / PaddingInline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Content",
-            "PaddingInline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Content / PaddingBlock",
-          "cssVarName": "--ds-navbar-base-sidebar-content-paddingblock",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-content-paddingblock",
-              "figmaName": "Component / Navbar / Base / Sidebar / Content / PaddingBlock"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Content",
-            "PaddingBlock"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Item / MinHeight",
-          "cssVarName": "--ds-navbar-base-sidebar-item-minheight",
-          "value": "3rem",
-          "nativeValue": "3rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-item-minheight",
-              "figmaName": "Component / Navbar / Base / Sidebar / Item / MinHeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Item",
-            "MinHeight"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Item / PaddingBlock",
-          "cssVarName": "--ds-navbar-base-sidebar-item-paddingblock",
-          "value": "0.25rem",
-          "nativeValue": "0.25rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-item-paddingblock",
-              "figmaName": "Component / Navbar / Base / Sidebar / Item / PaddingBlock"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Item",
-            "PaddingBlock"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Item / PaddingInline",
-          "cssVarName": "--ds-navbar-base-sidebar-item-paddinginline",
-          "value": "0.375rem",
-          "nativeValue": "0.375rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-item-paddinginline",
-              "figmaName": "Component / Navbar / Base / Sidebar / Item / PaddingInline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Item",
-            "PaddingInline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Item / FontSize",
-          "cssVarName": "--ds-navbar-base-sidebar-item-fontsize",
-          "value": "1rem",
-          "nativeValue": "1rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-item-fontsize",
-              "figmaName": "Component / Navbar / Base / Sidebar / Item / FontSize"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Item",
-            "FontSize"
           ]
         },
         {
@@ -34867,27 +34508,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Navbar / Base / Sidebar / Item / Chevron / Size",
-          "cssVarName": "--ds-navbar-base-sidebar-item-chevron-size",
-          "value": "0.875rem",
-          "nativeValue": "0.875rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-sidebar-item-chevron-size",
-              "figmaName": "Component / Navbar / Base / Sidebar / Item / Chevron / Size"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Sidebar",
-            "Item",
-            "Chevron",
-            "Size"
-          ]
-        },
-        {
           "name": "🧩 Component / Navbar / Base / Sidebar / Item / Chevron / Color",
           "cssVarName": "--ds-navbar-base-sidebar-item-chevron-color",
           "value": "{🌐 Global.🌈 Color.Primary.5}",
@@ -34910,123 +34530,6 @@
             "Item",
             "Chevron",
             "Color"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / Gap",
-          "cssVarName": "--ds-navbar-base-menu-gap",
-          "value": "1rem",
-          "nativeValue": "1rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-gap",
-              "figmaName": "Component / Navbar / Base / Menu / Gap"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "Gap"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / StartGap",
-          "cssVarName": "--ds-navbar-base-menu-startgap",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-startgap",
-              "figmaName": "Component / Navbar / Base / Menu / StartGap"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "StartGap"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / EndGap",
-          "cssVarName": "--ds-navbar-base-menu-endgap",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-endgap",
-              "figmaName": "Component / Navbar / Base / Menu / EndGap"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "EndGap"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / Item / FontSize",
-          "cssVarName": "--ds-navbar-base-menu-item-fontsize",
-          "value": "1rem",
-          "nativeValue": "1rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-item-fontsize",
-              "figmaName": "Component / Navbar / Base / Menu / Item / FontSize"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "Item",
-            "FontSize"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / Item / PaddingBlock",
-          "cssVarName": "--ds-navbar-base-menu-item-paddingblock",
-          "value": "0.25rem",
-          "nativeValue": "0.25rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-item-paddingblock",
-              "figmaName": "Component / Navbar / Base / Menu / Item / PaddingBlock"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "Item",
-            "PaddingBlock"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / Item / PaddingInline",
-          "cssVarName": "--ds-navbar-base-menu-item-paddinginline",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-item-paddinginline",
-              "figmaName": "Component / Navbar / Base / Menu / Item / PaddingInline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "Item",
-            "PaddingInline"
           ]
         },
         {
@@ -35224,48 +34727,6 @@
             "Item",
             "Color",
             "Active"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / Item / Underline / Height",
-          "cssVarName": "--ds-navbar-base-menu-item-underline-height",
-          "value": "2px",
-          "nativeValue": "2px",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-item-underline-height",
-              "figmaName": "Component / Navbar / Base / Menu / Item / Underline / Height"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "Item",
-            "Underline",
-            "Height"
-          ]
-        },
-        {
-          "name": "🧩 Component / Navbar / Base / Menu / Item / Underline / BorderRadius",
-          "cssVarName": "--ds-navbar-base-menu-item-underline-borderradius",
-          "value": "9999px",
-          "nativeValue": "9999px",
-          "inheritance": [
-            {
-              "cssVar": "--ds-navbar-base-menu-item-underline-borderradius",
-              "figmaName": "Component / Navbar / Base / Menu / Item / Underline / BorderRadius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Navbar",
-            "Base",
-            "Menu",
-            "Item",
-            "Underline",
-            "BorderRadius"
           ]
         },
         {
@@ -39190,60 +38651,6 @@
       "listeners": [],
       "tokens": [
         {
-          "name": "🧩 Component / Pagination / Gap / Mobile",
-          "cssVarName": "--ds-pagination-gap-mobile",
-          "value": "0.25rem",
-          "nativeValue": "0.25rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-pagination-gap-mobile",
-              "figmaName": "Component / Pagination / Gap / Mobile"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Pagination",
-            "Gap",
-            "Mobile"
-          ]
-        },
-        {
-          "name": "🧩 Component / Pagination / Gap / Tablet",
-          "cssVarName": "--ds-pagination-gap-tablet",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-pagination-gap-tablet",
-              "figmaName": "Component / Pagination / Gap / Tablet"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Pagination",
-            "Gap",
-            "Tablet"
-          ]
-        },
-        {
-          "name": "🧩 Component / Pagination / Gap / Desktop",
-          "cssVarName": "--ds-pagination-gap-desktop",
-          "value": "0.5rem",
-          "nativeValue": "0.5rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-pagination-gap-desktop",
-              "figmaName": "Component / Pagination / Gap / Desktop"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Pagination",
-            "Gap",
-            "Desktop"
-          ]
-        },
-        {
           "name": "🧩 Component / Pagination / Dots / Background",
           "cssVarName": "--ds-pagination-dots-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
@@ -40911,23 +40318,6 @@
             "Color",
             "Green"
           ]
-        },
-        {
-          "name": "🧩 Component / ProgressBar / Height",
-          "cssVarName": "--ds-progressbar-height",
-          "value": "0.25rem",
-          "nativeValue": "0.25rem",
-          "inheritance": [
-            {
-              "cssVar": "--ds-progressbar-height",
-              "figmaName": "Component / ProgressBar / Height"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "ProgressBar",
-            "Height"
-          ]
         }
       ],
       "type": "web-component"
@@ -41525,6 +40915,81 @@
       ],
       "tokens": [
         {
+          "name": "🧩 Component / Radio / Radius",
+          "cssVarName": "--ds-radio-radius",
+          "value": "{🔗 Alias.🔵 Radius.Rounded}",
+          "nativeValue": "9999",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-3",
+              "figmaName": "Global / Size / Radius / 3"
+            },
+            {
+              "cssVar": "--ds-radius-rounded",
+              "figmaName": "Alias / Radius / Rounded"
+            },
+            {
+              "cssVar": "--ds-radio-radius",
+              "figmaName": "Component / Radio / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Radio / FontFamily",
+          "cssVarName": "--ds-radio-fontfamily",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-radio-fontfamily",
+              "figmaName": "Component / Radio / FontFamily"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "FontFamily"
+          ]
+        },
+        {
+          "name": "🧩 Component / Radio / LineHeight",
+          "cssVarName": "--ds-radio-lineheight",
+          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
+          "nativeValue": "1.5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-lineheight-3",
+              "figmaName": "Global / Font / LineHeight / 3"
+            },
+            {
+              "cssVar": "--ds-text-lineheight-body",
+              "figmaName": "Alias / Text / LineHeight / Body"
+            },
+            {
+              "cssVar": "--ds-radio-lineheight",
+              "figmaName": "Component / Radio / LineHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "LineHeight"
+          ]
+        },
+        {
           "name": "🧩 Component / Radio / Label / Color / Hover",
           "cssVarName": "--ds-radio-label-color-hover",
           "value": "{🔗 Alias.🔤 Text.Color.PrimaryHover}",
@@ -41602,81 +41067,6 @@
             "Radio",
             "Border",
             "Width"
-          ]
-        },
-        {
-          "name": "🧩 Component / Radio / Radius",
-          "cssVarName": "--ds-radio-radius",
-          "value": "{🔗 Alias.🔵 Radius.Rounded}",
-          "nativeValue": "9999",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-radius-3",
-              "figmaName": "Global / Size / Radius / 3"
-            },
-            {
-              "cssVar": "--ds-radius-rounded",
-              "figmaName": "Alias / Radius / Rounded"
-            },
-            {
-              "cssVar": "--ds-radio-radius",
-              "figmaName": "Component / Radio / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Radio",
-            "Radius"
-          ]
-        },
-        {
-          "name": "🧩 Component / Radio / FontFamily",
-          "cssVarName": "--ds-radio-fontfamily",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
-            },
-            {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
-            },
-            {
-              "cssVar": "--ds-radio-fontfamily",
-              "figmaName": "Component / Radio / FontFamily"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Radio",
-            "FontFamily"
-          ]
-        },
-        {
-          "name": "🧩 Component / Radio / LineHeight",
-          "cssVarName": "--ds-radio-lineheight",
-          "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
-          "nativeValue": "1.5",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-lineheight-3",
-              "figmaName": "Global / Font / LineHeight / 3"
-            },
-            {
-              "cssVar": "--ds-text-lineheight-body",
-              "figmaName": "Alias / Text / LineHeight / Body"
-            },
-            {
-              "cssVar": "--ds-radio-lineheight",
-              "figmaName": "Component / Radio / LineHeight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Radio",
-            "LineHeight"
           ]
         },
         {
@@ -44127,6 +43517,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Segment / Item / Selected / Background",
+          "cssVarName": "--ds-segment-item-selected-background",
+          "value": "{🔗 Alias.🎨 Background.Color.PurpleLight}",
+          "nativeValue": "#E1D9FF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-2",
+              "figmaName": "Global / Color / Purple / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-purplelight",
+              "figmaName": "Alias / Background / Color / PurpleLight"
+            },
+            {
+              "cssVar": "--ds-segment-item-selected-background",
+              "figmaName": "Component / Segment / Item / Selected / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Segment",
+            "Item",
+            "Selected",
+            "Background"
+          ]
+        },
+        {
           "name": "🧩 Component / Segment / Item / Selected / Color / Base",
           "cssVarName": "--ds-segment-item-selected-color-base",
           "value": "{🌐 Global.🌈 Color.Primary.4}",
@@ -44204,33 +43621,6 @@
             "Selected",
             "Color",
             "Active"
-          ]
-        },
-        {
-          "name": "🧩 Component / Segment / Item / Selected / Background",
-          "cssVarName": "--ds-segment-item-selected-background",
-          "value": "{🔗 Alias.🎨 Background.Color.PurpleLight}",
-          "nativeValue": "#E1D9FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-2",
-              "figmaName": "Global / Color / Purple / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-purplelight",
-              "figmaName": "Alias / Background / Color / PurpleLight"
-            },
-            {
-              "cssVar": "--ds-segment-item-selected-background",
-              "figmaName": "Component / Segment / Item / Selected / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Segment",
-            "Item",
-            "Selected",
-            "Background"
           ]
         },
         {
@@ -45507,6 +44897,31 @@
         }
       ],
       "tokens": [
+        {
+          "name": "🧩 Component / Select / Radius",
+          "cssVarName": "--ds-select-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-select-radius",
+              "figmaName": "Component / Select / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Radius"
+          ]
+        },
         {
           "name": "🧩 Component / Select / Container / Radius",
           "cssVarName": "--ds-select-container-radius",
@@ -46867,6 +46282,32 @@
           ]
         },
         {
+          "name": "🧩 Component / Select / Chip / Family",
+          "cssVarName": "--ds-select-chip-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-select-chip-family",
+              "figmaName": "Component / Select / Chip / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Chip",
+            "Family"
+          ]
+        },
+        {
           "name": "🧩 Component / Select / Chip / Color / Base / Background",
           "cssVarName": "--ds-select-chip-color-base-background",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
@@ -46923,29 +46364,81 @@
           ]
         },
         {
-          "name": "🧩 Component / Select / Chip / Family",
-          "cssVarName": "--ds-select-chip-family",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "name": "🧩 Component / Select / Color / Disabled",
+          "cssVarName": "--ds-select-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
+          "nativeValue": "#747474",
           "inheritance": [
             {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
             },
             {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
             },
             {
-              "cssVar": "--ds-select-chip-family",
-              "figmaName": "Component / Select / Chip / Family"
+              "cssVar": "--ds-select-color-disabled",
+              "figmaName": "Component / Select / Color / Disabled"
             }
           ],
           "path": [
             "🧩 Component",
             "Select",
-            "Chip",
-            "Family"
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Color / Success",
+          "cssVarName": "--ds-select-color-success",
+          "value": "{🔗 Alias.🔤 Text.Color.Success}",
+          "nativeValue": "#168741",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-4",
+              "figmaName": "Global / Color / Success / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-success",
+              "figmaName": "Alias / Text / Color / Success"
+            },
+            {
+              "cssVar": "--ds-select-color-success",
+              "figmaName": "Component / Select / Color / Success"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Color",
+            "Success"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Color / Error",
+          "cssVarName": "--ds-select-color-error",
+          "value": "{🔗 Alias.🔤 Text.Color.Danger}",
+          "nativeValue": "#EA1800",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-4",
+              "figmaName": "Global / Color / Danger / 4"
+            },
+            {
+              "cssVar": "--ds-text-color-danger",
+              "figmaName": "Alias / Text / Color / Danger"
+            },
+            {
+              "cssVar": "--ds-select-color-error",
+              "figmaName": "Component / Select / Color / Error"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Color",
+            "Error"
           ]
         },
         {
@@ -47057,32 +46550,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Select / Color / Disabled",
-          "cssVarName": "--ds-select-color-disabled",
-          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
-          "nativeValue": "#747474",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-5",
-              "figmaName": "Global / Color / Grey / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
-            },
-            {
-              "cssVar": "--ds-select-color-disabled",
-              "figmaName": "Component / Select / Color / Disabled"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Select",
-            "Color",
-            "Disabled"
-          ]
-        },
-        {
           "name": "🧩 Component / Select / Color / Border / Base",
           "cssVarName": "--ds-select-color-border-base",
           "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
@@ -47164,58 +46631,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Select / Color / Success",
-          "cssVarName": "--ds-select-color-success",
-          "value": "{🔗 Alias.🔤 Text.Color.Success}",
-          "nativeValue": "#168741",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-success-4",
-              "figmaName": "Global / Color / Success / 4"
-            },
-            {
-              "cssVar": "--ds-text-color-success",
-              "figmaName": "Alias / Text / Color / Success"
-            },
-            {
-              "cssVar": "--ds-select-color-success",
-              "figmaName": "Component / Select / Color / Success"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Select",
-            "Color",
-            "Success"
-          ]
-        },
-        {
-          "name": "🧩 Component / Select / Color / Error",
-          "cssVarName": "--ds-select-color-error",
-          "value": "{🔗 Alias.🔤 Text.Color.Danger}",
-          "nativeValue": "#EA1800",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-danger-4",
-              "figmaName": "Global / Color / Danger / 4"
-            },
-            {
-              "cssVar": "--ds-text-color-danger",
-              "figmaName": "Alias / Text / Color / Danger"
-            },
-            {
-              "cssVar": "--ds-select-color-error",
-              "figmaName": "Component / Select / Color / Error"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Select",
-            "Color",
-            "Error"
-          ]
-        },
-        {
           "name": "🧩 Component / Select / Color / FocusRing / Base",
           "cssVarName": "--ds-select-color-focusring-base",
           "value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}",
@@ -47240,31 +46655,6 @@
             "Color",
             "FocusRing",
             "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Select / Radius",
-          "cssVarName": "--ds-select-radius",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "4",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-radius-1",
-              "figmaName": "Global / Size / Radius / 1"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-select-radius",
-              "figmaName": "Component / Select / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Select",
-            "Radius"
           ]
         },
         {
@@ -47711,6 +47101,32 @@
           ]
         },
         {
+          "name": "🧩 Component / Select / Optgroup / Weight",
+          "cssVarName": "--ds-select-optgroup-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-select-optgroup-weight",
+              "figmaName": "Component / Select / Optgroup / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Optgroup",
+            "Weight"
+          ]
+        },
+        {
           "name": "🧩 Component / Select / Optgroup / Color / Background / Base",
           "cssVarName": "--ds-select-optgroup-color-background-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
@@ -47764,32 +47180,6 @@
             "Color",
             "Text",
             "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Select / Optgroup / Weight",
-          "cssVarName": "--ds-select-optgroup-weight",
-          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "nativeValue": "700",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-weight-700",
-              "figmaName": "Global / Font / Weight / 700"
-            },
-            {
-              "cssVar": "--ds-text-weight-bold",
-              "figmaName": "Alias / Text / Weight / Bold"
-            },
-            {
-              "cssVar": "--ds-select-optgroup-weight",
-              "figmaName": "Component / Select / Optgroup / Weight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Select",
-            "Optgroup",
-            "Weight"
           ]
         },
         {
@@ -53511,6 +52901,31 @@
       ],
       "tokens": [
         {
+          "name": "🧩 Component / Tabs / Gap",
+          "cssVarName": "--ds-tabs-gap",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-border-2",
+              "figmaName": "Global / Size / Border / 2"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-tabs-gap",
+              "figmaName": "Component / Tabs / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tabs",
+            "Gap"
+          ]
+        },
+        {
           "name": "🧩 Component / Tabs / Border / Color",
           "cssVarName": "--ds-tabs-border-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
@@ -53560,31 +52975,6 @@
             "Tabs",
             "Indicator",
             "Height"
-          ]
-        },
-        {
-          "name": "🧩 Component / Tabs / Gap",
-          "cssVarName": "--ds-tabs-gap",
-          "value": "{🔗 Alias.▭ Border.Width.Base}",
-          "nativeValue": "2",
-          "inheritance": [
-            {
-              "cssVar": "--ds-size-border-2",
-              "figmaName": "Global / Size / Border / 2"
-            },
-            {
-              "cssVar": "--ds-border-width-base",
-              "figmaName": "Alias / Border / Width / Base"
-            },
-            {
-              "cssVar": "--ds-tabs-gap",
-              "figmaName": "Component / Tabs / Gap"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Tabs",
-            "Gap"
           ]
         },
         {
@@ -60516,58 +59906,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Tooltip / Font / Family",
-          "cssVarName": "--ds-tooltip-font-family",
-          "value": "{🔗 Alias.🔤 Text.Family.Body}",
-          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-body",
-              "figmaName": "Global / Font / Family / Body"
-            },
-            {
-              "cssVar": "--ds-text-family-body",
-              "figmaName": "Alias / Text / Family / Body"
-            },
-            {
-              "cssVar": "--ds-tooltip-font-family",
-              "figmaName": "Component / Tooltip / Font / Family"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Tooltip",
-            "Font",
-            "Family"
-          ]
-        },
-        {
-          "name": "🧩 Component / Tooltip / Font / Size",
-          "cssVarName": "--ds-tooltip-font-size",
-          "value": "{🔗 Alias.🔤 Text.Size.SM.Desktop}",
-          "nativeValue": "14",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-size-14",
-              "figmaName": "Global / Font / Size / 14"
-            },
-            {
-              "cssVar": "--ds-text-size-sm-desktop",
-              "figmaName": "Alias / Text / Size / SM / Desktop"
-            },
-            {
-              "cssVar": "--ds-tooltip-font-size",
-              "figmaName": "Component / Tooltip / Font / Size"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Tooltip",
-            "Font",
-            "Size"
-          ]
-        },
-        {
           "name": "🧩 Component / Tooltip / LineHeight",
           "cssVarName": "--ds-tooltip-lineheight",
           "value": "{🔗 Alias.🔤 Text.LineHeight.Body}",
@@ -60665,6 +60003,58 @@
             "🧩 Component",
             "Tooltip",
             "Py"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Font / Family",
+          "cssVarName": "--ds-tooltip-font-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Body}",
+          "nativeValue": "\"BaloiseCreateText\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-body",
+              "figmaName": "Global / Font / Family / Body"
+            },
+            {
+              "cssVar": "--ds-text-family-body",
+              "figmaName": "Alias / Text / Family / Body"
+            },
+            {
+              "cssVar": "--ds-tooltip-font-family",
+              "figmaName": "Component / Tooltip / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Tooltip / Font / Size",
+          "cssVarName": "--ds-tooltip-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.SM.Desktop}",
+          "nativeValue": "14",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm-desktop",
+              "figmaName": "Alias / Text / Size / SM / Desktop"
+            },
+            {
+              "cssVar": "--ds-tooltip-font-size",
+              "figmaName": "Component / Tooltip / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Tooltip",
+            "Font",
+            "Size"
           ]
         }
       ],
@@ -62831,6 +62221,24 @@
           ]
         },
         {
+          "name": "🧩 Component / Table / Cell / Padding",
+          "cssVarName": "--ds-table-cell-padding",
+          "value": "0.5em 0.75em",
+          "nativeValue": "0.5em 0.75em",
+          "inheritance": [
+            {
+              "cssVar": "--ds-table-cell-padding",
+              "figmaName": "Component / Table / Cell / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Table",
+            "Cell",
+            "Padding"
+          ]
+        },
+        {
           "name": "🧩 Component / Table / Cell / Border / Color",
           "cssVarName": "--ds-table-cell-border-color",
           "value": "{🔗 Alias.▭ Border.Color.Base}",
@@ -62877,24 +62285,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Table / Cell / Padding",
-          "cssVarName": "--ds-table-cell-padding",
-          "value": "0.5em 0.75em",
-          "nativeValue": "0.5em 0.75em",
-          "inheritance": [
-            {
-              "cssVar": "--ds-table-cell-padding",
-              "figmaName": "Component / Table / Cell / Padding"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Table",
-            "Cell",
-            "Padding"
-          ]
-        },
-        {
           "name": "🧩 Component / Table / Cell / Heading / Color",
           "cssVarName": "--ds-table-cell-heading-color",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -62918,6 +62308,33 @@
             "Table",
             "Cell",
             "Heading",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Table / Head / Cell / Color",
+          "cssVarName": "--ds-table-head-cell-color",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-table-head-cell-color",
+              "figmaName": "Component / Table / Head / Cell / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Table",
+            "Head",
+            "Cell",
             "Color"
           ]
         },
@@ -62966,33 +62383,6 @@
             "Head",
             "Cell",
             "Border",
-            "Color"
-          ]
-        },
-        {
-          "name": "🧩 Component / Table / Head / Cell / Color",
-          "cssVarName": "--ds-table-head-cell-color",
-          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-text-color-primary",
-              "figmaName": "Alias / Text / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-table-head-cell-color",
-              "figmaName": "Component / Table / Head / Cell / Color"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Table",
-            "Head",
-            "Cell",
             "Color"
           ]
         },
@@ -63078,26 +62468,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Table / Foot / Cell / Border / Width",
-          "cssVarName": "--ds-table-foot-cell-border-width",
-          "value": "0 0 0",
-          "nativeValue": "0 0 0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-table-foot-cell-border-width",
-              "figmaName": "Component / Table / Foot / Cell / Border / Width"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Table",
-            "Foot",
-            "Cell",
-            "Border",
-            "Width"
-          ]
-        },
-        {
           "name": "🧩 Component / Table / Foot / Cell / Color",
           "cssVarName": "--ds-table-foot-cell-color",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -63122,6 +62492,26 @@
             "Foot",
             "Cell",
             "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Table / Foot / Cell / Border / Width",
+          "cssVarName": "--ds-table-foot-cell-border-width",
+          "value": "0 0 0",
+          "nativeValue": "0 0 0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-table-foot-cell-border-width",
+              "figmaName": "Component / Table / Foot / Cell / Border / Width"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Table",
+            "Foot",
+            "Cell",
+            "Border",
+            "Width"
           ]
         },
         {

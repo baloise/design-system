@@ -20,11 +20,14 @@
 | Use exact versions                       | Adjust dependenciues to use exact versions                  | ✅     |
 | Check deps of core                       | Do we need all of them                                      | ✅     |
 | Create config as meta                    | Add new possability to add config values via html meta      | ✅     |
-| Anuglar React                            | Add frameworks back after migrating too shadow dom          | ⬜     |
+| React                                    | Add frameworks back after migrating too shadow dom          | ✅     |
+| Add missing regions 2.0                  | Austria, Spain, Italy                                       | ⬜     |
+| Anuglar 2.0                              | Add frameworks back after migrating too shadow dom          | ⬜     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
-| Add missing regions                      | Austria, Spain, Italy                                       | ⬜     |
 | Verify desing tokens                     | Check if the tokens follow our style-guide                  | ⬜     |
+| Figma Sync                               | Finish the github actions to sync tokens                    | ⬜     |
 | Gap Analyses Material                    | Check Components use cases                                  | ⬜     |
+| Gap Parttern Lib                         | Check Components use cases                                  | ⬜     |
 | Create Migration Hel                     | Create migration plan for ex-helvetia                       | ⬜     |
 | Brand Icons                              | Update brand icons                                          | ⬜     |
 | Brand Icons API                          | Create a task to automate the update                        | ⬜     |
@@ -96,12 +99,15 @@ These improvements help our components work seamlessly across all supported fram
 | dropdown/select  | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 | autocomplete     | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
 
-### Extended Scope
+### Extended Scope (2.0)
 
 | Component           | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
 | ------------------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
+| input-slider        | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| input-stepper       | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| date/inline         | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | select/mobile/modal | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| forms/vetticval     | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+| forms/vertical      | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | sheet               | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | menu                | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
 | ag-grid             | Lib  | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
