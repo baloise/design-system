@@ -14973,11 +14973,11 @@
           "name": "🧩 Component / Checkbox / Tile / Color / Hover / Background",
           "cssVarName": "--ds-checkbox-tile-color-hover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -15029,11 +15029,11 @@
           "name": "🧩 Component / Checkbox / Tile / Color / Active / Background",
           "cssVarName": "--ds-checkbox-tile-color-active-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -15113,11 +15113,11 @@
           "name": "🧩 Component / Checkbox / Unchecked / Color / Hover / Background",
           "cssVarName": "--ds-checkbox-unchecked-color-hover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -15169,11 +15169,11 @@
           "name": "🧩 Component / Checkbox / Unchecked / Color / Active / Background",
           "cssVarName": "--ds-checkbox-unchecked-color-active-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -19496,11 +19496,11 @@
           "name": "🧩 Component / Date / Calendar / Color / DayHover / Background",
           "cssVarName": "--ds-date-calendar-color-dayhover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -22739,11 +22739,11 @@
           "name": "🧩 Component / FileUpload / DropZone / Background / Color / Hover",
           "cssVarName": "--ds-fileupload-dropzone-background-color-hover",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -22767,11 +22767,11 @@
           "name": "🧩 Component / FileUpload / DropZone / Background / Color / Active",
           "cssVarName": "--ds-fileupload-dropzone-background-color-active",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -34765,6 +34765,25 @@
           ]
         },
         {
+          "name": "🧩 Component / Navbar / Base / Layout / Height",
+          "cssVarName": "--ds-navbar-base-layout-height",
+          "value": "80",
+          "nativeValue": "80",
+          "inheritance": [
+            {
+              "cssVar": "--ds-navbar-base-layout-height",
+              "figmaName": "Component / Navbar / Base / Layout / Height"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Layout",
+            "Height"
+          ]
+        },
+        {
           "name": "🧩 Component / Navbar / Base / Brand / FocusRadius",
           "cssVarName": "--ds-navbar-base-brand-focusradius",
           "value": "{🔗 Alias.🔵 Radius.Base}",
@@ -34789,6 +34808,29 @@
             "Base",
             "Brand",
             "FocusRadius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Brand / Gap",
+          "cssVarName": "--ds-navbar-base-brand-gap",
+          "value": "{🌐 Global.📏 Size.Space.8}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-navbar-base-brand-gap",
+              "figmaName": "Component / Navbar / Base / Brand / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Brand",
+            "Gap"
           ]
         },
         {
@@ -34873,6 +34915,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Navbar / Base / Title / FontSize",
+          "cssVarName": "--ds-navbar-base-title-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.XL.Mobile}",
+          "nativeValue": "20",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-20",
+              "figmaName": "Global / Font / Size / 20"
+            },
+            {
+              "cssVar": "--ds-text-size-xl-mobile",
+              "figmaName": "Alias / Text / Size / XL / Mobile"
+            },
+            {
+              "cssVar": "--ds-navbar-base-title-fontsize",
+              "figmaName": "Component / Navbar / Base / Title / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Title",
+            "FontSize"
+          ]
+        },
+        {
           "name": "🧩 Component / Navbar / Base / Hamburger / Padding",
           "cssVarName": "--ds-navbar-base-hamburger-padding",
           "value": "{🌐 Global.📏 Size.Space.8}",
@@ -34912,6 +34981,98 @@
             "Base",
             "Hamburger",
             "TransitionDuration"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Hamburger / Width",
+          "cssVarName": "--ds-navbar-base-hamburger-width",
+          "value": "{🌐 Global.📏 Size.Space.48}",
+          "nativeValue": "48",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-48",
+              "figmaName": "Global / Size / Space / 48"
+            },
+            {
+              "cssVar": "--ds-navbar-base-hamburger-width",
+              "figmaName": "Component / Navbar / Base / Hamburger / Width"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Hamburger",
+            "Width"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Hamburger / Height",
+          "cssVarName": "--ds-navbar-base-hamburger-height",
+          "value": "{🌐 Global.📏 Size.Space.48}",
+          "nativeValue": "48",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-48",
+              "figmaName": "Global / Size / Space / 48"
+            },
+            {
+              "cssVar": "--ds-navbar-base-hamburger-height",
+              "figmaName": "Component / Navbar / Base / Hamburger / Height"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Hamburger",
+            "Height"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Hamburger / Radius",
+          "cssVarName": "--ds-navbar-base-hamburger-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "4",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-1",
+              "figmaName": "Global / Size / Radius / 1"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-navbar-base-hamburger-radius",
+              "figmaName": "Component / Navbar / Base / Hamburger / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Hamburger",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / MaxWidth",
+          "cssVarName": "--ds-navbar-base-sidebar-maxwidth",
+          "value": "25rem",
+          "nativeValue": "25rem",
+          "inheritance": [
+            {
+              "cssVar": "--ds-navbar-base-sidebar-maxwidth",
+              "figmaName": "Component / Navbar / Base / Sidebar / MaxWidth"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "MaxWidth"
           ]
         },
         {
@@ -35046,6 +35207,154 @@
             "Sidebar",
             "Content",
             "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Content / PaddingInline",
+          "cssVarName": "--ds-navbar-base-sidebar-content-paddinginline",
+          "value": "{🌐 Global.📏 Size.Space.24}",
+          "nativeValue": "24",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-24",
+              "figmaName": "Global / Size / Space / 24"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-content-paddinginline",
+              "figmaName": "Component / Navbar / Base / Sidebar / Content / PaddingInline"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Content",
+            "PaddingInline"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Content / PaddingBlock",
+          "cssVarName": "--ds-navbar-base-sidebar-content-paddingblock",
+          "value": "{🌐 Global.📏 Size.Space.24}",
+          "nativeValue": "24",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-24",
+              "figmaName": "Global / Size / Space / 24"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-content-paddingblock",
+              "figmaName": "Component / Navbar / Base / Sidebar / Content / PaddingBlock"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Content",
+            "PaddingBlock"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Item / MinHeight",
+          "cssVarName": "--ds-navbar-base-sidebar-item-minheight",
+          "value": "{🌐 Global.📏 Size.Space.48}",
+          "nativeValue": "48",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-48",
+              "figmaName": "Global / Size / Space / 48"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-item-minheight",
+              "figmaName": "Component / Navbar / Base / Sidebar / Item / MinHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Item",
+            "MinHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Item / PaddingBlock",
+          "cssVarName": "--ds-navbar-base-sidebar-item-paddingblock",
+          "value": "{🌐 Global.📏 Size.Space.12}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-12",
+              "figmaName": "Global / Size / Space / 12"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-item-paddingblock",
+              "figmaName": "Component / Navbar / Base / Sidebar / Item / PaddingBlock"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Item",
+            "PaddingBlock"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Item / PaddingInline",
+          "cssVarName": "--ds-navbar-base-sidebar-item-paddinginline",
+          "value": "{🌐 Global.📏 Size.Space.8}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-item-paddinginline",
+              "figmaName": "Component / Navbar / Base / Sidebar / Item / PaddingInline"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Item",
+            "PaddingInline"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Item / FontSize",
+          "cssVarName": "--ds-navbar-base-sidebar-item-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-item-fontsize",
+              "figmaName": "Component / Navbar / Base / Sidebar / Item / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Item",
+            "FontSize"
           ]
         },
         {
@@ -35330,6 +35639,176 @@
             "Item",
             "Chevron",
             "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Sidebar / Item / Chevron / Size",
+          "cssVarName": "--ds-navbar-base-sidebar-item-chevron-size",
+          "value": "{🌐 Global.📏 Size.Space.16}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Global / Size / Space / 16"
+            },
+            {
+              "cssVar": "--ds-navbar-base-sidebar-item-chevron-size",
+              "figmaName": "Component / Navbar / Base / Sidebar / Item / Chevron / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Sidebar",
+            "Item",
+            "Chevron",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Menu / Gap",
+          "cssVarName": "--ds-navbar-base-menu-gap",
+          "value": "{🌐 Global.📏 Size.Space.32}",
+          "nativeValue": "32",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-32",
+              "figmaName": "Global / Size / Space / 32"
+            },
+            {
+              "cssVar": "--ds-navbar-base-menu-gap",
+              "figmaName": "Component / Navbar / Base / Menu / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Menu",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Menu / StartGap",
+          "cssVarName": "--ds-navbar-base-menu-startgap",
+          "value": "{🌐 Global.📏 Size.Space.2}",
+          "nativeValue": "2",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-2",
+              "figmaName": "Global / Size / Space / 2"
+            },
+            {
+              "cssVar": "--ds-navbar-base-menu-startgap",
+              "figmaName": "Component / Navbar / Base / Menu / StartGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Menu",
+            "StartGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Menu / EndGap",
+          "cssVarName": "--ds-navbar-base-menu-endgap",
+          "value": "{🌐 Global.📏 Size.Space.8}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-navbar-base-menu-endgap",
+              "figmaName": "Component / Navbar / Base / Menu / EndGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Menu",
+            "EndGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Menu / Item / FontSize",
+          "cssVarName": "--ds-navbar-base-menu-item-fontsize",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-navbar-base-menu-item-fontsize",
+              "figmaName": "Component / Navbar / Base / Menu / Item / FontSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Menu",
+            "Item",
+            "FontSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Menu / Item / PaddingBlock",
+          "cssVarName": "--ds-navbar-base-menu-item-paddingblock",
+          "value": "{🌐 Global.📏 Size.Space.8}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-navbar-base-menu-item-paddingblock",
+              "figmaName": "Component / Navbar / Base / Menu / Item / PaddingBlock"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Menu",
+            "Item",
+            "PaddingBlock"
+          ]
+        },
+        {
+          "name": "🧩 Component / Navbar / Base / Menu / Item / PaddingInline",
+          "cssVarName": "--ds-navbar-base-menu-item-paddinginline",
+          "value": "{🌐 Global.📏 Size.Space.16}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Global / Size / Space / 16"
+            },
+            {
+              "cssVar": "--ds-navbar-base-menu-item-paddinginline",
+              "figmaName": "Component / Navbar / Base / Menu / Item / PaddingInline"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Navbar",
+            "Base",
+            "Menu",
+            "Item",
+            "PaddingInline"
           ]
         },
         {
@@ -41980,11 +42459,11 @@
           "name": "🧩 Component / Radio / Tile / Color / Hover / Background",
           "cssVarName": "--ds-radio-tile-color-hover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -42036,11 +42515,11 @@
           "name": "🧩 Component / Radio / Tile / Color / Active / Background",
           "cssVarName": "--ds-radio-tile-color-active-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -42120,11 +42599,11 @@
           "name": "🧩 Component / Radio / Unchecked / Color / Hover / Background",
           "cssVarName": "--ds-radio-unchecked-color-hover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -42176,11 +42655,11 @@
           "name": "🧩 Component / Radio / Unchecked / Color / Active / Background",
           "cssVarName": "--ds-radio-unchecked-color-active-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -45834,11 +46313,11 @@
           "name": "🧩 Component / Select / Container / Color / Hover / Background",
           "cssVarName": "--ds-select-container-color-hover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -45890,11 +46369,11 @@
           "name": "🧩 Component / Select / Container / Color / Active / Background",
           "cssVarName": "--ds-select-container-color-active-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -45946,11 +46425,11 @@
           "name": "🧩 Component / Select / Container / Color / Focus / Background",
           "cssVarName": "--ds-select-container-color-focus-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -47407,11 +47886,11 @@
           "name": "🧩 Component / Select / Color / Focus / Base",
           "cssVarName": "--ds-select-color-focus-base",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -47793,11 +48272,11 @@
           "name": "🧩 Component / Select / Option / Color / Background / Hover",
           "cssVarName": "--ds-select-option-color-background-hover",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -61018,11 +61497,11 @@
           "name": "🧩 Component / Form / Container / Color / Hover / Background",
           "cssVarName": "--ds-form-container-color-hover-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -61074,11 +61553,11 @@
           "name": "🧩 Component / Form / Container / Color / Active / Background",
           "cssVarName": "--ds-form-container-color-active-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -61130,11 +61609,11 @@
           "name": "🧩 Component / Form / Container / Color / Focus / Background",
           "cssVarName": "--ds-form-container-color-focus-background",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -63349,11 +63828,11 @@
           "name": "🧩 Component / Table / Row / Background / Color / Hover",
           "cssVarName": "--ds-table-row-background-color-hover",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",
@@ -63462,11 +63941,11 @@
           "name": "🧩 Component / Table / Striped / Row / Even / Background / Color / Hover",
           "cssVarName": "--ds-table-striped-row-even-background-color-hover",
           "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
               "cssVar": "--ds-background-color-hover",

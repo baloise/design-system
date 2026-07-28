@@ -13,7 +13,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**", "!**/*.spec.*", "!**/*.play.*"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "www/**", "docs/**", "components/**", "loader/**"]
     },
     "test": {
       "dependsOn": ["^build"],

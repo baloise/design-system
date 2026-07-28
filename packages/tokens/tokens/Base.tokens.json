@@ -639,6 +639,25 @@
         }
       },
       "Grey": {
+        "0": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9803921568627451,
+              0.9803921568627451,
+              0.9803921568627451
+            ],
+            "alpha": 1,
+            "hex": "#FAFAFA"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:2:36",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
         "1": {
           "$type": "color",
           "$value": {
@@ -2237,7 +2256,7 @@
         },
         "Hover": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.1}",
+          "$value": "{🌐 Global.🌈 Color.Grey.0}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:157",
             "com.figma.scopes": [
@@ -12821,6 +12840,10 @@
                 "ALL_SCOPES"
               ]
             }
+          },
+          "Height": {
+            "$type": "number",
+            "$value": 80
           }
         },
         "Brand": {
@@ -12833,6 +12856,10 @@
                 "ALL_SCOPES"
               ]
             }
+          },
+          "Gap": {
+            "$type": "number",
+            "$value": "{🌐 Global.📏 Size.Space.8}"
           }
         },
         "Title": {
@@ -12867,6 +12894,10 @@
               ],
               "com.figma.type": "string"
             }
+          },
+          "FontSize": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔤 Text.Size.XL.Mobile}"
           }
         },
         "Hamburger": {
@@ -12890,9 +12921,25 @@
               ],
               "com.figma.type": "string"
             }
+          },
+          "Width": {
+            "$type": "number",
+            "$value": "{🌐 Global.📏 Size.Space.48}"
+          },
+          "Height": {
+            "$type": "number",
+            "$value": "{🌐 Global.📏 Size.Space.48}"
+          },
+          "Radius": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔵 Radius.Base}"
           }
         },
         "Sidebar": {
+          "MaxWidth": {
+            "$type": "string",
+            "$value": "25rem"
+          },
           "SlideDuration": {
             "$type": "string",
             "$value": "300ms",
@@ -12967,9 +13014,33 @@
                   "ALL_SCOPES"
                 ]
               }
+            },
+            "PaddingInline": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.24}"
+            },
+            "PaddingBlock": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.24}"
             }
           },
           "Item": {
+            "MinHeight": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.48}"
+            },
+            "PaddingBlock": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.12}"
+            },
+            "PaddingInline": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.8}"
+            },
+            "FontSize": {
+              "$type": "number",
+              "$value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}"
+            },
             "FontWeight": {
               "$type": "string",
               "$value": "{🔗 Alias.🔤 Text.Weight.Bold}",
@@ -13078,12 +13149,40 @@
                     "ALL_SCOPES"
                   ]
                 }
+              },
+              "Size": {
+                "$type": "number",
+                "$value": "{🌐 Global.📏 Size.Space.16}"
               }
             }
           }
         },
         "Menu": {
+          "Gap": {
+            "$type": "number",
+            "$value": "{🌐 Global.📏 Size.Space.32}"
+          },
+          "StartGap": {
+            "$type": "number",
+            "$value": "{🌐 Global.📏 Size.Space.2}"
+          },
+          "EndGap": {
+            "$type": "number",
+            "$value": "{🌐 Global.📏 Size.Space.8}"
+          },
           "Item": {
+            "FontSize": {
+              "$type": "number",
+              "$value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}"
+            },
+            "PaddingBlock": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.8}"
+            },
+            "PaddingInline": {
+              "$type": "number",
+              "$value": "{🌐 Global.📏 Size.Space.16}"
+            },
             "BorderRadius": {
               "$type": "number",
               "$value": "{🔗 Alias.🔵 Radius.Base}",

@@ -18,7 +18,7 @@
  */
 
 :host {
-  @include vars.local(progress-bar-height, var(--ds-progress-bar-height));
+  @include vars.local(progress-bar-height, var(--ds-progress-bar-height, 4px));
   @include vars.local(progress-bar-radius, var(--ds-progress-bar-line-radius));
   @include vars.local(progress-bar-background, var(--ds-progress-bar-background-dark));
   @include vars.local(progress-bar-line-color, var(--ds-progress-bar-line-color-primary));
