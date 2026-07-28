@@ -1,0 +1,45 @@
+{
+  "name": "@baloise/ds-angular",
+  "version": "20.0.0-next.6",
+  "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baloise/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://design.baloise.dev",
+  "security": "https://github.com/baloise/design-system/security/advisories/new",
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "main": "dist/fesm2022/baloise-ds-angular.mjs",
+  "module": "dist/fesm2022/baloise-ds-angular.mjs",
+  "types": "dist/types/baloise-ds-angular.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json -c tsconfig.lib.json",
+    "build:clean": "rimraf dist",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "@angular/common": ">=22.0.0",
+    "@angular/core": ">=22.0.0",
+    "rxjs": ">=7.8.0"
+  },
+  "dependencies": {
+    "@baloise/ds-core": "20.0.0-next.6",
+    "tslib": "catalog:"
+  },
+  "devDependencies": {
+    "@angular/common": "22.0.8",
+    "@angular/compiler-cli": "22.0.8",
+    "@angular/core": "22.0.8",
+    "eslint": "catalog:",
+    "ng-packagr": "22.0.2",
+    "rxjs": "7.8.2",
+    "typescript": "6.0.3"
+  }
+}

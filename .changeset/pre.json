@@ -3,7 +3,6 @@
   "tag": "next",
   "initialVersions": {
     "docs": "0.0.0",
-    "libs-output-target-angular": "0.0.0",
     "libs-output-target-web": "0.0.0",
     "@baloise/ds-core": "19.8.3",
     "@baloise/ds-playwright": "19.8.3",

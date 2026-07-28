@@ -6,7 +6,7 @@ import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from 'libs-output-target-web'
 import { enrichComponentDocsJson } from './config/docs-json-no-timestamp'
-// import { AngularGenerator } from './config/stencil.bindings.angular'
+import { AngularGenerator } from './config/stencil.bindings.angular'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
 const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
@@ -133,6 +133,14 @@ export const config: Config = {
      * {@link https://www.npmjs.com/package/@stencil/react-output-target}
      */
     !IS_DS_DEVELOPMENT && !IS_DS_DOCUMENTATION && ReactGenerator(),
+    /**
+     * Generates standalone Angular component wrappers for each Stencil component in
+     * ../angular/src/generated, consumed by the @baloise/ds-angular package. Requires the
+     * dist-custom-elements output target above.
+     *
+     * {@link https://www.npmjs.com/package/@stencil/angular-output-target}
+     */
+    !IS_DS_DEVELOPMENT && !IS_DS_DOCUMENTATION && AngularGenerator(),
     /**
      * The www output target type is oriented for webapps and websites, hosted from an http server, which can benefit
      * from prerendering and service workers, such as this very site you're reading. If the outputTarget config is not

@@ -40,9 +40,6 @@
       "@baloise/ds-playwright": [
         "packages/playwright/src/index.ts"
       ],
-      "libs-output-target-angular": [
-        "libs/output-target-angular/src/index.ts"
-      ],
       "libs-output-target-web": [
         "libs/output-target-web/src/index.ts"
       ]

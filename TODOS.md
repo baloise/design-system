@@ -22,7 +22,8 @@
 | Create config as meta                    | Add new possability to add config values via html meta      | ✅     |
 | React                                    | Add frameworks back after migrating too shadow dom          | ✅     |
 | Add missing regions 2.0                  | Austria, Spain, Italy                                       | ⬜     |
-| Anuglar 2.0                              | Add frameworks back after migrating too shadow dom          | ⬜     |
+| Angular bindings                         | Add frameworks back after migrating too shadow dom          | ✅     |
+| Angular forms integration                | ControlValueAccessor/reactive-forms wiring for form components (deferred by ADR-0006) | ⬜     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                        | ⬜     |
 | Verify desing tokens                     | Check if the tokens follow our style-guide                  | ⬜     |
 | Figma Sync                               | Finish the github actions to sync tokens                    | ⬜     |
