@@ -244,16 +244,16 @@ importers:
   docs:
     dependencies:
       '@baloise/ds-assets':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../packages/assets
       '@baloise/ds-core':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../packages/core
       '@baloise/ds-css':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../packages/css
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../packages/tokens
       '@storybook/addon-docs':
         specifier: 'catalog:'
@@ -359,13 +359,13 @@ importers:
   packages/core:
     dependencies:
       '@baloise/ds-assets':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../assets
       '@baloise/ds-css':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../css
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../tokens
       '@floating-ui/dom':
         specifier: 1.8.0
@@ -405,7 +405,7 @@ importers:
         version: 2.8.1
     devDependencies:
       '@baloise/ds-playwright':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../playwright
       '@stencil/react-output-target':
         specifier: 1.6.1
@@ -444,10 +444,10 @@ importers:
   packages/css:
     dependencies:
       '@baloise/ds-assets':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../assets
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../tokens
     devDependencies:
       autoprefixer:
@@ -485,7 +485,7 @@ importers:
   packages/react:
     dependencies:
       '@baloise/ds-core':
-        specifier: 20.0.0-next.5
+        specifier: 20.0.0-next.6
         version: link:../core
       '@stencil/react-output-target':
         specifier: 1.6.1
