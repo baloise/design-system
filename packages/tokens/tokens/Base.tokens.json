@@ -12843,7 +12843,7 @@
           },
           "Height": {
             "$type": "number",
-            "$value": "{🌐 Global.📏 Size.Space.64}"
+            "$value": 80
           }
         },
         "Brand": {
@@ -12897,7 +12897,7 @@
           },
           "FontSize": {
             "$type": "number",
-            "$value": "{🔗 Alias.🔤 Text.Size.LG.Mobile}"
+            "$value": "{🔗 Alias.🔤 Text.Size.XL.Mobile}"
           }
         },
         "Hamburger": {
@@ -13173,7 +13173,7 @@
           "Item": {
             "FontSize": {
               "$type": "number",
-              "$value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}"
+              "$value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}"
             },
             "PaddingBlock": {
               "$type": "number",
