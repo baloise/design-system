@@ -6,7 +6,7 @@
 import { ZipArchive } from 'archiver'
 import { copy } from 'fs-extra'
 import { execSync } from 'node:child_process'
-import { createWriteStream } from 'node:fs'
+import { createWriteStream, readFileSync, writeFileSync } from 'node:fs'
 import { mkdir, open } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -303,6 +303,26 @@ function buildStorybook() {
 }
 
 // ============================================================================
+// 5. Fix duplicate <title> tag left by Storybook's default manager template
+// ============================================================================
+function fixManagerTitle() {
+  console.log('🏷️ Fixing manager page title...')
+
+  const indexPath = join(docsRoot, 'dist', 'index.html')
+  const html = readFileSync(indexPath, 'utf8')
+
+  // Storybook's built-in template always writes its own `<title>` before injecting
+  // our `managerHead` content (docs/.storybook/manager-head.html), so the page ends
+  // up with two `<title>` tags. Browsers use the first one for `document.title`,
+  // which makes the Storybook default ("storybook - Storybook") win over ours until
+  // manager.ts's JS overwrites it on story render — too late for link previews/crawlers.
+  const fixed = html.replace('<title>storybook - Storybook</title>\n', '')
+
+  writeFileSync(indexPath, fixed)
+  console.log('\x1b[32m✔\x1b[0m Manager page title fixed')
+}
+
+// ============================================================================
 // Main
 // ============================================================================
 async function main() {
@@ -323,6 +343,7 @@ async function main() {
       console.log()
 
       buildStorybook()
+      fixManagerTitle()
     } else {
       console.log('⏭ Skipping archives and Storybook build (--serve mode)')
     }
