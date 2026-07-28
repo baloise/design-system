@@ -10,7 +10,7 @@ This document captures domain language, architectural patterns, and key concepts
 - **eslint-plugin** — Custom ESLint rules and config for the design system
 - **Additional utilities** — Shared helpers, types, and build scripts
 
-Angular and React bindings do *not* have a custom lib here — both are generated
+Angular and React bindings do _not_ have a custom lib here — both are generated
 by calling the stock `@stencil/angular-output-target` / `@stencil/react-output-target`
 packages directly from `packages/core/config/`. See
 [ADR-0006](../docs/adr/0006-ds-angular-uses-stock-output-target.md) for why the
