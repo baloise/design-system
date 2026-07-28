@@ -1,0 +1,7 @@
+node_modules
+dist
+.angular
+.tgz
+*.local
+playwright-report
+test-results

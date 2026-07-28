@@ -57,13 +57,6 @@ runs:
         output: packages/playwright/dist.zip
         paths: packages/playwright/src
 
-    # Output Target Angular
-    - uses: ./.github/workflows/actions/archive-upload
-      with:
-        name: output-target-angular
-        output: libs/output-target-angular/dist.zip
-        paths: libs/output-target-angular/src
-
     # Output Target Web
     - uses: ./.github/workflows/actions/archive-upload
       with:

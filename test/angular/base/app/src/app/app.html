@@ -1,0 +1,12 @@
+<main>
+  <h1>ds-angular smoke test</h1>
+
+  <p data-testid="clicks">Clicks: {{ clicks() }}</p>
+  <ds-button data-testid="button" (dsClick)="onClick()">Click me</ds-button>
+
+  <p data-testid="input-value">Input value: {{ inputValue() }}</p>
+  <ds-input data-testid="input" name="smoke-test-input" [value]="inputValue()" (dsInput)="onInput($event)" />
+
+  <p data-testid="checked">Checked: {{ checked() }}</p>
+  <ds-checkbox data-testid="checkbox" [checked]="checked()" (dsChange)="onChange($event)">Accept</ds-checkbox>
+</main>
