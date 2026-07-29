@@ -163,11 +163,13 @@ jobs:
           * tests (e.g. colors, typography), across multiple devices and browsers.
           *
           * Component selection:
-          *   - If TAG is 'all', matches all components: src/components/<name>/test/<name>.visual.play.ts
-          *   - If TAG is 'hint,popup,drawer', generates separate patterns:
-          *     * src/components/hint/test/hint.visual.play.ts
-          *     * src/components/popup/test/popup.visual.play.ts
-          *     * src/components/drawer/test/drawer.visual.play.ts
+          *   - If TAG is 'all', matches all components: src/components/all/test/*visual.play.ts
+          *   - If TAG is 'hint,popup,drawer', generates separate patterns matched by
+          *     file name anywhere under src/components (handles components nested
+          *     inside a parent folder, e.g. snackbar/toast live under alert/test/):
+          *     * src/components/**/hint.visual.play.ts
+          *     * src/components/**/popup.visual.play.ts
+          *     * src/components/**/drawer.visual.play.ts
           *   - Whitespace is trimmed from component names automatically
           *
           * Foundation selection:
@@ -180,7 +182,7 @@ jobs:
 
           const TAG = '${{ needs.assembleInformation.outputs.command }}'
           const components = TAG === 'all' ? ['all'] : TAG.split(',').map(t => t.trim())
-          const componentsMatch = components.map(comp => 'src/components/' + comp + '/test/*visual.play.ts')
+          const componentsMatch = components.map(comp => comp === 'all' ? 'src/components/all/test/*visual.play.ts' : 'src/components/**/' + comp + '.visual.play.ts')
           const foundationMatch = components.map(comp => 'src/foundation/' + comp + '.visual.play.ts')
           const testMatch = [...componentsMatch, ...foundationMatch]
 
