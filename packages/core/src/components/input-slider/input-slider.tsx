@@ -58,7 +58,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   @Element() el!: HTMLStencilElement
   @AttachInternals() internals!: ElementInternals
 
-  @State() focused = false
+  focused = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
 
@@ -122,7 +122,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   /**
    * If `true` the component gets an invalid style.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('boolean')
   readonly invalid: boolean = false
 
@@ -385,14 +385,14 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   private handleFocus = (ev: FocusEvent) => {
     this.focused = true
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.dsFocus.emit(ev)
     }
   }
 
   private handleBlur = (ev: FocusEvent) => {
     this.focused = false
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.dsBlur.emit(ev)
     }
   }

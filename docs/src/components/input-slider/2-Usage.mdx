@@ -32,12 +32,14 @@ Always give users context about the acceptable range via the label or descriptio
     {
       type: 'correct',
       title: 'Correct: Range in description',
+      contentIsLeftAligned: true,
       content: <ds-input-slider label="Volume" description="0–100" min="0" max="100"></ds-input-slider>,
       description: 'Users know the bounds before dragging',
     },
     {
       type: 'incorrect',
       title: 'Incorrect: No range context',
+      contentIsLeftAligned: true,
       content: <ds-input-slider label="Volume" min="0" max="100"></ds-input-slider>,
       description: 'Users must guess the minimum and maximum',
     },
@@ -53,12 +55,14 @@ Use a `step` that fits how precisely the value should be set. Use `step="any"` o
     {
       type: 'correct',
       title: 'Correct: Sensible step size',
+      contentIsLeftAligned: true,
       content: <ds-input-slider label="Volume" min="0" max="100" step="10"></ds-input-slider>,
       description: 'Values snap to meaningful increments',
     },
     {
       type: 'incorrect',
       title: 'Incorrect: Overly fine step for a coarse setting',
+      contentIsLeftAligned: true,
       content: <ds-input-slider label="Volume" min="0" max="100" step="any"></ds-input-slider>,
       description: 'Users cannot reliably land on round numbers',
     },
