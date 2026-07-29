@@ -2,6 +2,9 @@ import { InputColor } from '../input/input.interfaces'
 
 export type { InputColor }
 
+export const INPUT_SLIDER_BRAND_COLORS = ['yellow', 'purple', 'red', 'green', ''] as const
+export type InputSliderBrandColor = (typeof INPUT_SLIDER_BRAND_COLORS)[number]
+
 export interface InputSliderCustomEvent<T> extends CustomEvent<T> {
   detail: T
   target: HTMLDsInputSliderElement

@@ -67,3 +67,15 @@ export const MinMax = Story({
   },
 })
 MinMax.storyName = '🧩 Min/Max'
+
+export const BrandColor = Story({
+  ...withRender(
+    () => `
+<ds-input-slider label="Yellow" value="50" brand-color="yellow"></ds-input-slider>
+<ds-input-slider label="Purple" value="50" brand-color="purple"></ds-input-slider>
+<ds-input-slider label="Red" value="50" brand-color="red"></ds-input-slider>
+<ds-input-slider label="Green" value="50" brand-color="green"></ds-input-slider>
+`,
+  ),
+})
+BrandColor.storyName = '🧩 Brand Color'

@@ -44,4 +44,15 @@ Use `step` to control granularity — a numeric value snaps to increments, while
 
 <CanvasWithCodePen of={InputSliderStories.MinMax} sourceState="shown" />
 
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputSliderStories.BrandColor}></StoryHeading>
+
+`brand-color` recolors the progress bar (the filled track and its unfilled remainder) with a
+brand color — `yellow`, `purple`, `red`, or `green`. It's independent of `color`, which still
+drives the `invalid`/`success`/`warning` field state; the label, description, and handle are
+unaffected.
+
+<CanvasWithCodePen of={InputSliderStories.BrandColor} sourceState="shown" />
+
 <Footer />

@@ -60,9 +60,10 @@ async function main() {
         instructions: false,
       },
       {
-        type: 'autocomplete',
+        type: 'autocompleteMultiselect',
         name: 'scope',
-        message: 'Pick the scope for this change.',
+        message: 'Pick the scope(s) for this change.',
+        instructions: false,
         choices: [
           { title: 'core', value: 'core' },
           { title: 'angular', value: 'angular' },
@@ -94,7 +95,7 @@ async function main() {
       process.exit(1)
     }
 
-    if (!response.scope) {
+    if (!response.scope || response.scope.length === 0) {
       console.error('✗ No scope selected')
       process.exit(1)
     }
@@ -105,11 +106,13 @@ async function main() {
     }
 
     // Prepare changeset content
+    const label = response.scope.join('/')
+
     const content = `---
 '@baloise/ds-core': ${response.bumpLevel}
 ---
 
-**${response.scope}**: ${response.summary}
+**${label}**: ${response.summary}
 `
 
     // Generate filename using changeset CLI

@@ -29,7 +29,7 @@ test.describe('component', () => {
     const focusSpy = await slider.el.spyOnEvent('dsFocus')
     const blurSpy = await slider.el.spyOnEvent('dsBlur')
 
-    await slider.nativeInput.focus()
+    await slider.handle.focus()
     expect(focusSpy).toHaveReceivedEventTimes(1)
 
     await slider.blur()
@@ -41,7 +41,7 @@ test.describe('component', () => {
     const slider = new DsInputSlider(page.locator('ds-input-slider'))
     const clickSpy = await slider.el.spyOnEvent('dsClick')
 
-    await slider.nativeInput.click()
+    await slider.handle.click()
 
     expect(clickSpy).toHaveReceivedEventTimes(1)
   })
@@ -64,7 +64,7 @@ test.describe('min/max/step', () => {
 })
 
 test.describe('disabled', () => {
-  test('native input should be disabled', async ({ page }) => {
+  test('slider should be disabled', async ({ page }) => {
     await page.mount(`<ds-input-slider label="Label" value="42" disabled></ds-input-slider>`)
     const slider = new DsInputSlider(page.locator('ds-input-slider'))
     const inputSpy = await slider.el.spyOnEvent('dsInput')
@@ -75,7 +75,7 @@ test.describe('disabled', () => {
 })
 
 test.describe('readonly', () => {
-  test('native input should be disabled', async ({ page }) => {
+  test('slider should be disabled', async ({ page }) => {
     await page.mount(`<ds-input-slider label="Label" value="42" readonly></ds-input-slider>`)
     const slider = new DsInputSlider(page.locator('ds-input-slider'))
     const inputSpy = await slider.el.spyOnEvent('dsInput')

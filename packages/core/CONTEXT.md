@@ -426,30 +426,84 @@ recorded in [docs/adr/0001-ds-date-external-datepicker-libraries.md](../../docs/
 ## Input Slider (ds-input-slider)
 
 `ds-input-slider` is the web-component-only migration of the old
-`bal-input-slider`: a form control wrapping a native
-`<input type="range">`, using the same `Field` wrapper/`AttachInternals()`
-pattern as `ds-input`/`ds-number-input`. Shared vocabulary:
+`bal-input-slider`: a form control backed by the **noUiSlider** library
+(rendered on a plain `<div part="slider">`, no native `<input>` anywhere in
+the shadow root), using the same `Field` wrapper/`AttachInternals()` pattern
+as `ds-input`/`ds-number-input`. Shared vocabulary:
 
 - **Model value** — `value: number`, always a concrete number, never `null`
-  or `''`. Unlike `ds-number-input`, a range input can never truly be
-  "empty" (the native element always resolves to a real value), so there is
-  no empty/nullable state to represent. When no `value` is supplied it
-  defaults to `min`.
+  or `''`. A slider can never truly be "empty" (it always resolves to a
+  real value), so there is no empty/nullable state to represent. When no
+  `value` is supplied it defaults to `min`.
+- **Slider** — the noUiSlider-owned `<div id="slider" part="slider">`. It is
+  the single source of interaction (pointer drag, keyboard) and carries
+  noUiSlider's own built-in ARIA (`role="slider"`, `aria-valuemin/max/now`,
+  `tabindex`) on its handle. `ds-input-slider` wires `aria-labelledby`/
+  `aria-describedby` onto the handle to connect it to the `Field`'s label/
+  description, the same way `ds-select`'s `SelectPickerController` wires its
+  trigger — see `connectLabelToTrigger()` in `select.picker.ts` for the
+  precedent.
+- **Picker controller** — `InputSliderPickerController`
+  (`input-slider.picker.ts`) wraps the noUiSlider instance, mirroring
+  `SelectPickerController`'s shape (init in `componentDidLoad`, `destroy()`
+  in `disconnectedCallback`, `setValue()`/`setDisabled()`/`focus()`/
+  `blur()`/`updateRange()` as its public API). `input-slider.utils.ts`
+  stays pure functions only (`clampValue`, `resolveInitialValue`,
+  step/decimals helpers).
+- **No `FormControl`** — unlike `ds-input`/`ds-number-input`, this component
+  does not use the shared `FormControl` helper (`form-control.ts`), because
+  `FormControl` assumes a real `nativeEl: HTMLInputElement |
+HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
+  `internals.setFormValue()`, `initialValue`/reset, and click-passthrough
+  directly in `input-slider.tsx`, the same way `ds-select` does.
+- **Event mapping** — noUiSlider's own event set replaces native
+  `input`/`change`: `update` (fires continuously, incl. every drag/keyboard
+  step) maps to `dsInput`; `set` (fires once per discrete interaction —
+  pointer release, a completed keyboard step, or a programmatic `.set()`
+  call) maps to `dsChange`. `set` was chosen over noUiSlider's `change`
+  event because `change` only fires for real user interaction — a
+  programmatic `.set()` call (used by `picker.setValue()` and by
+  `DsInputSlider`'s `fill()` test helper) never fires it, only `update` +
+  `set`. This preserves
+  [ADR-0006](../../docs/adr/0006-ds-input-slider-change-commit.md)'s
+  commit-on-discrete-interaction semantics with a different event source;
+  see [ADR-0007](../../docs/adr/0007-ds-input-slider-nouislider.md) for why
+  the event source changed at all.
+- **Programmatic sets don't re-emit events** — `InputSliderPickerController`
+  guards `setValue()` with a `suppressEvents` flag so an external `value`
+  prop change (e.g. an Angular `ControlValueAccessor.writeValue()`) does not
+  cascade back into firing `dsInput`/`dsChange`, mirroring how the old
+  native input's JSX-driven attribute updates never dispatched DOM events
+  either. Only real user interaction — or a test calling
+  `target.noUiSlider.set()` directly, bypassing the controller — emits
+  those events.
+- **Value precision** — noUiSlider is configured with a `format: { to, from
+}` pair that rounds to the decimal precision implied by `step` (e.g.
+  `step="0.5"` → 1 decimal, `step="1"` → integers), so emitted values never
+  carry floating-point noise from internal percentage math.
 - **Clamping** — `min`/`max` are typed as `@Type('number')` (not `string`,
   unlike `ds-input`/`ds-number-input`'s pass-through min/max) because the
   component's own logic depends on them: `value` is clamped into
   `[min, max]` via `@Watch('min')`/`@Watch('max')`, so the component's state
-  of truth never drifts from what the native element renders.
-- **Continuous mode** — `step` defaults to `1` (native default). A
-  continuous/free-form slider is expressed via the standard HTML mechanism
-  `step="any"`, not a special `0` sentinel (the old component's `step = 0`
-  convention is dropped — it wasn't actually honored by the browser).
-- **`readonly` behaves as `disabled`** — per the HTML spec, `readonly` has
-  no effect on `<input type="range">` (browsers only honor it on text-like
-  inputs). Rather than hand-rolling a "true readonly" interaction lock,
-  `ds-input-slider` follows the existing `ds-checkbox` convention
-  (`disabled={this.disabled || this.readonly}`) and treats the two as
-  equivalent for this control.
+  of truth never drifts from what noUiSlider renders.
+- **Post-mount prop reactivity** — `@Watch('value')`/`@Watch('min')`/
+  `@Watch('max')`/`@Watch('step')` push changes into the live noUiSlider
+  instance (`picker.setValue()`/`picker.updateRange()`), since noUiSlider
+  (unlike a JSX-rendered native input) does not pick up prop changes for
+  free through Stencil's vdom diff — its config is frozen after `.create()`
+  until explicitly updated.
+- **Continuous mode** — `step` defaults to `1`. A continuous/free-form
+  slider is expressed via the standard HTML-derived convention `step="any"`,
+  which maps to omitting noUiSlider's `step` option entirely (its default is
+  already continuous) — not a special `0` sentinel (the old component's
+  `step = 0` convention is dropped).
+- **`readonly` behaves as `disabled`** — noUiSlider has no native concept of
+  read-only either. `ds-input-slider` follows the existing `ds-checkbox`
+  convention (`disabled={this.disabled || this.readonly}`) and treats the
+  two as equivalent for this control. Disabling is done via noUiSlider's own
+  attribute-based mechanism (`setAttribute('disabled', '')` /
+  `removeAttribute('disabled')` on the slider target — there is no
+  `.disable()`/`.enable()` JS call).
 - **Commit-on-`change`, not blur** — diverges from the shared `FormControl`
   blur-commit convention; see
   [ADR-0006](../../docs/adr/0006-ds-input-slider-change-commit.md).
@@ -458,14 +512,36 @@ pattern as `ds-input`/`ds-number-input`. Shared vocabulary:
   theme color, it is renamed to `brand-color` on the `ds-*` version, freeing
   up `color` for the `Field`-state semantics (`primary | success | warning |
 danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
-  no brand `color` prop, so `ds-input-slider` only gets the state `color`.
+  no brand `color` prop, but `ds-input-slider` gained its own `brand-color`
+  (`yellow | purple | red | green | ''`) — unlike the bal-era meaning, it only
+  recolors the `.noUi-connect` fill (via a `linear-gradient` from the `-4`
+  shade on the left to the `-2` shade on the right), leaving track, thumb,
+  and label/description untouched. It's independent of `color`/`invalid`,
+  which still drive the `Field`-state classes.
 - **No tick marks in this MVP** — the old component's `hasTicks` prop (BEM
   `<div>`s per step) is dropped; visuals are out of scope for this pass. A
-  future visual pass should use native `<datalist>` + `list` (real tick
-  marks with built-in a11y) rather than resurrecting the old div-based
-  approach.
+  future visual pass should evaluate noUiSlider's `pips` feature for tick
+  marks rather than resurrecting the old div-based approach.
 - **Dual-thumb (min+max range) is out of scope** — this component is
-  single-thumb only, matching `bal-input-slider`'s original scope exactly.
+  single-thumb only, matching `bal-input-slider`'s original scope exactly,
+  even though noUiSlider itself supports multi-handle ranges.
+- **Visual design** — `input-slider.host.scss` overrides noUiSlider's stock
+  cosmetic defaults (grey/bordered track, white bordered handle, teal
+  connect) via `.noUi-target`/`.noUi-connect`/`.noUi-handle` selectors, using
+  lightweight `--input-slider-*` SCSS component variables that point
+  directly at **global color tokens** — the same pattern `ds-checkbox`/
+  `ds-radio`/`ds-toggle` use (`--ds-global-color-primary-5` for the
+  checked/active fill, `--ds-global-color-grey-3` for the unchecked/inactive
+  fill), not a dedicated `packages/tokens` entry. `connect: 'lower'` (set in
+  `input-slider.picker.ts`) renders the active/filled track segment via
+  noUiSlider's own `.noUi-connect` element; the remainder shows the plain
+  track background — this is the "progress bar" look, not a second DS
+  concept. The shared `form.container()` mixin (`form.mixin.scss`) gained a
+  `$bordered: false` parameter for this component's unboxed look, reusable
+  by any future no-box control. noUiSlider's own base CSS
+  (`nouislider/dist/nouislider.css`) is still imported for the structural
+  position plumbing pointer-dragging depends on; only its cosmetic layer is
+  overridden.
 
 ## Global Configuration (`DesignSystem.config`)
 

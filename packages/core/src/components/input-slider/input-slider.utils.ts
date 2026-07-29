@@ -16,3 +16,15 @@ export function clampValue(value: number, min: number, max: number): number {
 export function resolveInitialValue(value: number, min: number): number {
   return isNaN(value) ? min : value
 }
+
+/**
+ * Derives the decimal precision implied by a `step` value, so noUiSlider's
+ * `format.to` can round away the floating-point noise its internal
+ * percentage-based math otherwise produces. `"any"` (continuous mode) falls
+ * back to a small fixed precision rather than pretending to be exact.
+ */
+export function decimalsFromStep(step: string): number {
+  if (step === 'any') return 2
+  const [, fraction = ''] = step.split('.')
+  return fraction.length
+}

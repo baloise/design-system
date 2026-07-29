@@ -25,7 +25,7 @@ import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetai
 import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
-import { InputSliderBlurDetail, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
+import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -69,7 +69,7 @@ export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetai
 export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
-export { InputSliderBlurDetail, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
+export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -1616,7 +1616,7 @@ export namespace Components {
         "value": string | null;
     }
     /**
-     * Input slider renders a native range input with validation and label/description messaging.
+     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
      */
     interface DsInputSlider {
         /**
@@ -1624,6 +1624,11 @@ export namespace Components {
           * @default false
          */
         "autoInvalidOff": boolean;
+        /**
+          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
+          * @default ''
+         */
+        "brandColor": InputSliderBrandColor;
         /**
           * Defines the color of the slider. The default value is `primary`.
           * @default 'primary'
@@ -1646,9 +1651,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Returns the native `<input>` element used under the hood.
+          * Returns the noUiSlider handle element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLElement | undefined>;
         /**
           * If `true` the component gets an invalid style.
           * @default false
@@ -1665,12 +1670,12 @@ export namespace Components {
          */
         "label": string;
         /**
-          * The maximum value of the slider. See `min` for why this is numeric.
+          * The maximum value of the slider.
           * @default 100
          */
         "max": number;
         /**
-          * The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s `min`, this is numeric because the component's own logic (default value, clamping) depends on it, not just the native attribute pass-through.
+          * The minimum value of the slider.
           * @default 0
          */
         "min": number;
@@ -1680,7 +1685,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` the element can not be mutated. A native range input has no concept of `readonly` (browsers only honor it on text-like inputs), so this is treated as equivalent to `disabled`.
+          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
           * @default false
          */
         "readonly": boolean;
@@ -1690,11 +1695,11 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Sets blur on the native `input` in `ds-input-slider`. Use this method instead of the global `input.blur()`.
+          * Sets blur on `ds-input-slider`'s slider handle. Use this method instead of the global `element.blur()`.
          */
         "setBlur": () => Promise<void>;
         /**
-          * Sets focus on the native `input` in `ds-input-slider`. Use this method instead of the global `input.focus()`.
+          * Sets focus on `ds-input-slider`'s slider handle. Use this method instead of the global `element.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -1703,7 +1708,7 @@ export namespace Components {
          */
         "step": string;
         /**
-          * The value of the slider. Unlike a text input, a range input can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
           * @default NaN
          */
         "value": number;
@@ -4177,7 +4182,7 @@ declare global {
         "dsChange": InputSliderChangeDetail;
     }
     /**
-     * Input slider renders a native range input with validation and label/description messaging.
+     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
      */
     interface HTMLDsInputSliderElement extends Components.DsInputSlider, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6530,7 +6535,7 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
-     * Input slider renders a native range input with validation and label/description messaging.
+     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
      */
     interface DsInputSlider {
         /**
@@ -6538,6 +6543,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "autoInvalidOff"?: boolean;
+        /**
+          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
+          * @default ''
+         */
+        "brandColor"?: InputSliderBrandColor;
         /**
           * Defines the color of the slider. The default value is `primary`.
           * @default 'primary'
@@ -6578,12 +6588,12 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * The maximum value of the slider. See `min` for why this is numeric.
+          * The maximum value of the slider.
           * @default 100
          */
         "max"?: number;
         /**
-          * The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s `min`, this is numeric because the component's own logic (default value, clamping) depends on it, not just the native attribute pass-through.
+          * The minimum value of the slider.
           * @default 0
          */
         "min"?: number;
@@ -6597,7 +6607,7 @@ declare namespace LocalJSX {
          */
         "onDsBlur"?: (event: DsInputSliderCustomEvent<InputSliderBlurDetail>) => void;
         /**
-          * Emitted when the value is committed (native `change`, not `blur` — see ADR-0006). Fires once per discrete drag/step, independent of focus.
+          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.
          */
         "onDsChange"?: (event: DsInputSliderCustomEvent<InputSliderChangeDetail>) => void;
         /**
@@ -6613,7 +6623,7 @@ declare namespace LocalJSX {
          */
         "onDsInput"?: (event: DsInputSliderCustomEvent<InputSliderInputDetail>) => void;
         /**
-          * If `true` the element can not be mutated. A native range input has no concept of `readonly` (browsers only honor it on text-like inputs), so this is treated as equivalent to `disabled`.
+          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
           * @default false
          */
         "readonly"?: boolean;
@@ -6628,7 +6638,7 @@ declare namespace LocalJSX {
          */
         "step"?: string;
         /**
-          * The value of the slider. Unlike a text input, a range input can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
           * @default NaN
          */
         "value"?: number;
@@ -8947,6 +8957,7 @@ declare namespace LocalJSX {
         "label": string;
         "description": string;
         "color": InputColor;
+        "brandColor": InputSliderBrandColor;
         "invalid": boolean;
         "invalidText": string;
         "min": number;
@@ -9555,7 +9566,7 @@ declare module "@stencil/core" {
              */
             "ds-input": LocalJSX.IntrinsicElements["ds-input"] & JSXBase.HTMLAttributes<HTMLDsInputElement>;
             /**
-             * Input slider renders a native range input with validation and label/description messaging.
+             * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
              */
             "ds-input-slider": LocalJSX.IntrinsicElements["ds-input-slider"] & JSXBase.HTMLAttributes<HTMLDsInputSliderElement>;
             /**

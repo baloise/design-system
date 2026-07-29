@@ -13,20 +13,13 @@ import {
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import isNaN from 'lodash/isNaN'
-import {
-  inheritAttributes,
-  FormControl,
-  FormControlInterface,
-  debounceEvent,
-  Logger,
-  type LogInstance,
-  OneOf,
-  Type,
-} from '@utils'
+import { inheritAttributes, debounceEvent, hasValue, Logger, type LogInstance, OneOf, Type } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
 import {
+  INPUT_SLIDER_BRAND_COLORS,
+  InputSliderBrandColor,
   InputSliderInputDetail,
   InputSliderChangeDetail,
   InputSliderBlurDetail,
@@ -34,11 +27,13 @@ import {
   InputSliderClickDetail,
 } from './input-slider.interfaces'
 import { clampValue, resolveInitialValue } from './input-slider.utils'
+import { InputSliderPickerController } from './input-slider.picker'
+import type { target as NoUiSliderTarget } from 'nouislider'
 
 /**
- * Input slider renders a native range input with validation and label/description messaging.
+ * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
  *
- * @part input - The native HTML range input element.
+ * @part slider - The noUiSlider target element.
  */
 @Component({
   tag: 'ds-input-slider',
@@ -46,9 +41,12 @@ import { clampValue, resolveInitialValue } from './input-slider.utils'
   shadow: true,
   formAssociated: true,
 })
-export class InputSlider implements DsComponentInterface, FieldInterface, FormControlInterface<number> {
+export class InputSlider implements DsComponentInterface, FieldInterface {
   private inheritedAttributes: { [k: string]: any } = {}
-  private control = new FormControl<number>(this)
+  private sliderEl: NoUiSliderTarget | undefined
+  private picker: InputSliderPickerController | undefined
+  private initialValue: number = NaN
+
   inputSliderId = `ds-input-slider-${InputSliderIds++}`
 
   log!: LogInstance
@@ -70,7 +68,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
    */
 
   /**
-   * The value of the slider. Unlike a text input, a range input can never be
+   * The value of the slider. Unlike a text input, a slider can never be
    * empty; when unset it defaults to `min`. Internally starts as `NaN` (this
    * codebase's established "empty number" sentinel, see `isValueEmpty`) until
    * `connectedCallback` resolves it — never actually rendered or emitted.
@@ -78,6 +76,11 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   @Prop({ mutable: true, reflect: true })
   @Type('number')
   value: number = NaN
+
+  @Watch('value')
+  protected valueChanged(newVal: number) {
+    this.picker?.setValue(newVal)
+  }
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -108,11 +111,25 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   readonly color: InputColor = 'primary'
 
   /**
+   * Recolors the connect (the filled progress track) with a brand color instead of the default
+   * grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter
+   * `-2` shade. Empty (default) keeps the current grey/primary look.
+   */
+  @Prop()
+  @OneOf(INPUT_SLIDER_BRAND_COLORS)
+  readonly brandColor: InputSliderBrandColor = ''
+
+  /**
    * If `true` the component gets an invalid style.
    */
   @Prop()
   @Type('boolean')
   readonly invalid: boolean = false
+
+  @Watch('invalid')
+  protected invalidChanged() {
+    this.picker?.setInvalid(this.invalid)
+  }
 
   /**
    * The text to display when the slider is in an invalid state.
@@ -122,16 +139,14 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   readonly invalidText: string = ''
 
   /**
-   * The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s
-   * `min`, this is numeric because the component's own logic (default value,
-   * clamping) depends on it, not just the native attribute pass-through.
+   * The minimum value of the slider.
    */
   @Prop()
   @Type('number')
   readonly min: number = 0
 
   /**
-   * The maximum value of the slider. See `min` for why this is numeric.
+   * The maximum value of the slider.
    */
   @Prop()
   @Type('number')
@@ -143,6 +158,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
     if (!isNaN(this.value)) {
       this.value = clampValue(this.value, this.min, this.max)
     }
+    this.picker?.updateRange(this.min, this.max, this.step)
   }
 
   /**
@@ -153,6 +169,11 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   @Prop()
   @Type('string')
   readonly step: string = '1'
+
+  @Watch('step')
+  protected stepChanged() {
+    this.picker?.updateRange(this.min, this.max, this.step)
+  }
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -173,14 +194,23 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   @Type('boolean')
   readonly disabled: boolean = false
 
+  @Watch('disabled')
+  protected disabledChanged() {
+    this.syncDisabledState()
+  }
+
   /**
-   * If `true` the element can not be mutated. A native range input has no
-   * concept of `readonly` (browsers only honor it on text-like inputs), so
-   * this is treated as equivalent to `disabled`.
+   * If `true` the element can not be mutated. noUiSlider has no native concept of
+   * `readonly`, so this is treated as equivalent to `disabled`.
    */
   @Prop()
   @Type('boolean')
   readonly readonly: boolean = false
+
+  @Watch('readonly')
+  protected readonlyChanged() {
+    this.syncDisabledState()
+  }
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -215,8 +245,8 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   @Event() dsClick!: EventEmitter<InputSliderClickDetail>
 
   /**
-   * Emitted when the value is committed (native `change`, not `blur` — see
-   * ADR-0006). Fires once per discrete drag/step, independent of focus.
+   * Emitted when the value is committed (noUiSlider `change`, not `blur` — see
+   * ADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.
    */
   @Event() dsChange!: EventEmitter<InputSliderChangeDetail>
 
@@ -228,7 +258,8 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   connectedCallback() {
     this.debounceChanged()
     this.value = clampValue(resolveInitialValue(this.value, this.min), this.min, this.max)
-    this.control.connectedCallback()
+    this.initialValue = this.value
+    this.syncFormValue(this.value)
   }
 
   componentWillLoad() {
@@ -236,7 +267,32 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
   }
 
   componentDidLoad() {
-    this.control.componentDidLoad()
+    if (!this.sliderEl) return
+
+    this.picker = new InputSliderPickerController({
+      targetEl: this.sliderEl,
+      labelId: 'label',
+      min: this.min,
+      max: this.max,
+      step: this.step,
+      value: this.value,
+      disabled: this.disabled || this.readonly,
+      invalid: this.invalid,
+      onInput: value => {
+        this.dsInput.emit(value)
+      },
+      onChange: value => {
+        this.setValue(value)
+      },
+    })
+
+    this.picker.handleEl?.addEventListener('focus', this.handleFocus)
+    this.picker.handleEl?.addEventListener('blur', this.handleBlur)
+  }
+
+  disconnectedCallback() {
+    this.picker?.destroy()
+    this.picker = undefined
   }
 
   /**
@@ -246,12 +302,18 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
 
   @Listen('click', { capture: true, target: 'document' })
   listenToClick(ev: UIEvent) {
-    this.control.listenOnClick(ev)
+    if ((this.disabled || this.readonly) && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
   }
 
   @Listen('reset', { capture: true, target: 'document' })
   listenToReset(ev: UIEvent) {
-    this.control.listenOnReset(ev)
+    const form = ev.target as HTMLElement
+    if (form?.contains(this.el)) {
+      this.value = this.initialValue
+    }
   }
 
   /**
@@ -270,30 +332,50 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
    */
 
   /**
-   * Sets focus on the native `input` in `ds-input-slider`. Use this method instead of the global
-   * `input.focus()`.
+   * Sets focus on `ds-input-slider`'s slider handle. Use this method instead of the global
+   * `element.focus()`.
    */
   @Method()
   async setFocus() {
-    return this.control.setFocus()
+    this.picker?.focus()
   }
 
   /**
-   * Sets blur on the native `input` in `ds-input-slider`. Use this method instead of the global
-   * `input.blur()`.
+   * Sets blur on `ds-input-slider`'s slider handle. Use this method instead of the global
+   * `element.blur()`.
    * @internal
    */
   @Method()
   async setBlur() {
-    return this.control.setBlur()
+    this.picker?.blur()
   }
 
   /**
-   * Returns the native `<input>` element used under the hood.
+   * Returns the noUiSlider handle element used under the hood.
    */
   @Method()
-  async getInputElement(): Promise<HTMLInputElement> {
-    return this.control.nativeEl as HTMLInputElement
+  async getInputElement(): Promise<HTMLElement | undefined> {
+    return this.picker?.handleEl
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private setValue(newValue: number) {
+    if (this.value === newValue) return
+    this.value = newValue
+    this.syncFormValue(newValue)
+    this.dsChange.emit(newValue)
+  }
+
+  private syncFormValue(value: number) {
+    this.internals.setFormValue(String(value))
+  }
+
+  private syncDisabledState() {
+    this.picker?.setDisabled(this.disabled || this.readonly)
   }
 
   /**
@@ -301,30 +383,23 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
    * ------------------------------------------------------
    */
 
-  private handleInput = (_ev: Event) => {
-    const nextValue = (this.control.nativeEl as HTMLInputElement | undefined)?.valueAsNumber
-    if (nextValue === undefined || isNaN(nextValue)) return
-
-    this.control.inputValue = nextValue
-    this.dsInput.emit(nextValue)
-  }
-
-  // Value commit lives on the native `change` event, not `blur` — see ADR-0006.
-  private handleChange = (_ev: Event) => {
-    const nextValue = (this.control.nativeEl as HTMLInputElement | undefined)?.valueAsNumber
-    if (nextValue === undefined || isNaN(nextValue)) return
-
-    this.control.setValue(nextValue)
-  }
-
   private handleFocus = (ev: FocusEvent) => {
-    this.control.onFocus(ev)
+    this.focused = true
+    if (!this.disabled) {
+      this.dsFocus.emit(ev)
+    }
   }
 
   private handleBlur = (ev: FocusEvent) => {
     this.focused = false
     if (!this.disabled) {
       this.dsBlur.emit(ev)
+    }
+  }
+
+  private handleClick = (ev: MouseEvent) => {
+    if (!this.disabled && !this.readonly) {
+      this.dsClick.emit(ev)
     }
   }
 
@@ -344,28 +419,21 @@ export class InputSlider implements DsComponentInterface, FieldInterface, FormCo
         invalidText={this.invalidText}
         required={this.required}
         language={this.language}
+        cssClasses={{
+          'is-brand-yellow': hasValue(this.brandColor) && this.brandColor === 'yellow',
+          'is-brand-purple': hasValue(this.brandColor) && this.brandColor === 'purple',
+          'is-brand-red': hasValue(this.brandColor) && this.brandColor === 'red',
+          'is-brand-green': hasValue(this.brandColor) && this.brandColor === 'green',
+        }}
       >
-        <input
-          id="input"
-          part="input"
-          type="range"
-          name={this.name}
-          ref={inputEl => (this.control.nativeEl = inputEl)}
-          aria-describedby="description"
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
-          disabled={this.disabled || this.readonly}
-          required={this.required}
-          min={this.min}
-          max={this.max}
-          step={this.step}
-          value={this.value}
-          onInput={this.handleInput}
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onClick={ev => this.control.onClick(ev)}
+        <div
+          id="slider"
+          part="slider"
+          ref={el => (this.sliderEl = el as NoUiSliderTarget)}
+          onClick={this.handleClick}
           {...this.inheritedAttributes}
         />
+        {/* Submitted with the form via ElementInternals.setFormValue() — see connectedCallback/setValue. */}
       </Field>
     )
   }

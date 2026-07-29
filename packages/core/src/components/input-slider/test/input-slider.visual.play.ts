@@ -1,7 +1,18 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'input-slider'
-const VARIANTS = ['basic', 'disabled', 'readonly', 'invalid', 'valid', 'warning', 'step', 'min-max', 'form-reset']
+const VARIANTS = [
+  'basic',
+  'disabled',
+  'readonly',
+  'invalid',
+  'valid',
+  'warning',
+  'brand-color',
+  'step',
+  'min-max',
+  'form-reset',
+]
 
 const image = screenshot(TAG)
 

@@ -1,4 +1,4 @@
-import { clampValue, resolveInitialValue } from './input-slider.utils'
+import { clampValue, decimalsFromStep, resolveInitialValue } from './input-slider.utils'
 
 describe('ds-input-slider', () => {
   describe('resolveInitialValue', () => {
@@ -39,6 +39,23 @@ describe('ds-input-slider', () => {
       expect(clampValue(50, 100, 0)).toBe(50)
       expect(clampValue(150, 100, 0)).toBe(100)
       expect(clampValue(-10, 100, 0)).toBe(0)
+    })
+  })
+
+  describe('decimalsFromStep', () => {
+    test('returns 0 for an integer step', () => {
+      expect(decimalsFromStep('1')).toBe(0)
+      expect(decimalsFromStep('10')).toBe(0)
+    })
+
+    test('returns the number of decimal digits for a fractional step', () => {
+      expect(decimalsFromStep('0.5')).toBe(1)
+      expect(decimalsFromStep('0.25')).toBe(2)
+      expect(decimalsFromStep('0.001')).toBe(3)
+    })
+
+    test('falls back to a fixed precision for continuous mode ("any")', () => {
+      expect(decimalsFromStep('any')).toBe(2)
     })
   })
 })

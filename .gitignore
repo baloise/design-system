@@ -63,6 +63,7 @@ packages/core/docs
 packages/core/icons
 packages/core/playwright
 packages/core/components
+packages/core/components/**/readme.md
 packages/core/loader
 packages/core/wwww
 packages/core/config/custom-elements/all.js
