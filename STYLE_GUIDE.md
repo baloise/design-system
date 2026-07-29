@@ -128,13 +128,13 @@ All components must follow a **mobile-first** approach: define styles for mobile
 // ✅ Mobile-first: base styles for small screens (320px+)
 :host {
   display: block;
-  padding: var(--ds-space-sm);
+  padding: var(--ds-alias-space-sm);
   font-size: var(--ds-alias-text-size-sm);
 }
 
 // Then enhance for tablet (≥ tablet breakpoint)
 @include media('>tablet') {
-  padding: var(--ds-space-md);
+  padding: var(--ds-alias-space-md);
   font-size: var(--ds-alias-text-size-base);
 }
 
