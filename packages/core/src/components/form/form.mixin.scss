@@ -36,7 +36,10 @@
   @include vars.local(form-container-focus-border, var(--ds-form-container-color-focus-border));
 }
 
-@mixin container($selector: '#container') {
+// $bordered: false drops the background/border/hover/active/focus-within styling entirely,
+// keeping only the structural layout rules — for controls (e.g. ds-input-slider) whose own
+// control already reads as the interactive surface and doesn't need the shared "boxed" look.
+@mixin container($selector: '#container', $bordered: true) {
   #{$selector} {
     box-sizing: border-box;
     clear: both;
@@ -45,31 +48,34 @@
     align-items: center;
     min-height: 3rem;
     gap: 0.25rem;
-    padding-inline: 0.5rem;
 
-    background: var(--_form-container-background);
-    border: var(--_form-container-border-width) solid var(--_form-container-border-color);
-    border-radius: var(--_form-container-radius);
+    @if $bordered {
+      padding-inline: 0.5rem;
 
-    @include hover {
-      &:hover,
-      &.is-hovered {
-        background: var(--_form-container-hover-background);
-        border-color: var(--_form-container-hover-border);
+      background: var(--_form-container-background);
+      border: var(--_form-container-border-width) solid var(--_form-container-border-color);
+      border-radius: var(--_form-container-radius);
+
+      @include hover {
+        &:hover,
+        &.is-hovered {
+          background: var(--_form-container-hover-background);
+          border-color: var(--_form-container-hover-border);
+        }
       }
-    }
 
-    &:active,
-    &.is-pressed {
-      background: var(--_form-container-active-background);
-      border-color: var(--_form-container-active-border);
-    }
+      &:active,
+      &.is-pressed {
+        background: var(--_form-container-active-background);
+        border-color: var(--_form-container-active-border);
+      }
 
-    &:focus-within,
-    &.is-focused {
-      &:not(:active) {
-        background: var(--_form-container-focus-background);
-        border-color: var(--_form-container-focus-border);
+      &:focus-within,
+      &.is-focused {
+        &:not(:active) {
+          background: var(--_form-container-focus-background);
+          border-color: var(--_form-container-focus-border);
+        }
       }
     }
   }

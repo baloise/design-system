@@ -1,0 +1,271 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+
+// nouislider.css ships both functional plumbing (position: relative/absolute offsets pointer/touch
+// dragging depends on) and its own cosmetic defaults (grey track, white handle, teal connect).
+// We keep the former and override the latter below — see ADR-0007.
+@use 'nouislider/dist/nouislider.css';
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-slider-track-height: Height of the slider track.
+ * @prop --input-slider-track-radius: Border radius of the slider track.
+ * @prop --input-slider-track-color: Background color of the inactive (unfilled) track.
+ * @prop --input-slider-connect-color: Background color of the active (filled) track segment.
+ * @prop --input-slider-thumb-size: Diameter of the slider thumb/handle.
+ * @prop --input-slider-thumb-color: Background color of the thumb.
+ * @prop --input-slider-thumb-hover-color: Thumb color on hover.
+ * @prop --input-slider-thumb-active-color: Thumb color while dragging/pressed.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include vars.local(input-slider-track-height, 0.75rem);
+  @include vars.local(input-slider-track-radius, var(--ds-alias-radius-rounded));
+  @include vars.local(input-slider-track-color, var(--ds-global-color-grey-2));
+
+  @include vars.local(input-slider-connect-color, var(--ds-global-color-primary-5));
+
+  // Bigger than the track so the thumb reads as the "grabbable" control — also matches
+  // ds-checkbox/ds-toggle's 1.5rem control size, which satisfies WCAG 2.5.8's 24px minimum
+  // target size.
+  @include vars.local(input-slider-thumb-size, 1.5rem);
+  @include vars.local(input-slider-thumb-radius, var(--ds-alias-radius-rounded));
+  @include vars.local(input-slider-thumb-color, var(--ds-global-color-white));
+  @include vars.local(input-slider-thumb-hover-color, var(--ds-global-color-sky-1));
+  @include vars.local(input-slider-thumb-active-color, var(--ds-global-color-sky-1));
+  @include vars.local(input-slider-thumb-border-color, var(--ds-global-color-primary-5));
+  @include vars.local(input-slider-thumb-border-color-hover, var(--ds-global-color-sky-5));
+  @include vars.local(input-slider-thumb-border-color-active, var(--ds-global-color-primary-6));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  // The slider itself is the control — unlike ds-input/ds-select, it doesn't need the
+  // shared bordered/background "box" (no hover/active/focus-within border either).
+  @include form.container($bordered: false);
+  @include form.label();
+  @include form.description();
+
+  // Half the thumb size, so the thumb doesn't overhang the container's edges at min/max —
+  // the track spans 100% of #slider, but the thumb is centered on that edge, not clipped to it.
+  #container {
+    padding-inline: calc(var(--_input-slider-thumb-size) / 2);
+  }
+
+  #slider {
+    width: 100%;
+    cursor: pointer;
+
+    // .noUi-target — replace noUiSlider's stock grey/bordered track with the DS track.
+    height: var(--_input-slider-track-height);
+    background: var(--_input-slider-track-color);
+    border: none;
+    border-radius: var(--_input-slider-track-radius);
+    box-shadow: none;
+  }
+
+  .noUi-connects {
+    border-radius: var(--_input-slider-track-radius);
+  }
+
+  // Kept a flat color on hover/drag too — only the handle reacts to interaction, the
+  // progress bar itself never changes color.
+  .noUi-connect {
+    background: var(--_input-slider-connect-color);
+  }
+
+  .noUi-handle {
+    width: var(--_input-slider-thumb-size);
+    height: var(--_input-slider-thumb-size);
+    top: calc((var(--_input-slider-track-height) - var(--_input-slider-thumb-size)) / 2);
+    right: calc(var(--_input-slider-thumb-size) / -2);
+
+    background: var(--_input-slider-thumb-color);
+    border: 2px solid var(--_input-slider-thumb-border-color);
+    border-radius: var(--_input-slider-thumb-radius);
+    box-shadow: white 0 0 0 2px;
+    cursor: grab;
+
+    // Drop noUiSlider's decorative handle "stripes" (::before/::after) — not part of the DS look.
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    @include hover {
+      &:hover {
+        background: var(--_input-slider-thumb-hover-color);
+        border-color: var(--_input-slider-thumb-border-color-hover);
+      }
+    }
+
+    &:active,
+    &.noUi-active {
+      background: var(--_input-slider-thumb-active-color);
+      border-color: var(--_input-slider-thumb-border-color-active);
+      cursor: grabbing;
+    }
+
+    // Circular thumb — a square outline reads oddly against a circle, so the shared
+    // focus-shadow ring is used instead of outline.
+    &:focus-visible {
+      outline: none;
+      @include focus-shadow;
+    }
+  }
+
+  // Only show the value tooltip while actively interacting with the handle — pointer drag
+  // (noUiSlider's own .noUi-active class) or keyboard stepping (:focus-visible; .noUi-active
+  // is drag-only, so this covers keyboard users the same way). See noUiSlider's own
+  // "Hiding tooltips" example: https://refreshless.com/nouislider/examples/#section-hiding-tooltips
+  .noUi-tooltip {
+    background: var(--ds-global-color-primary-5);
+    color: var(--ds-global-color-white);
+    font-size: var(--ds-alias-font-size-small);
+    font-weight: var(--ds-alias-text-weight-bold);
+    font-family: var(--ds-alias-text-family-body);
+    border-radius: var(--ds-alias-radius-rounded);
+    line-height: 1;
+    padding: 0.4rem 0.4rem;
+    bottom: 130%;
+
+    // Fly in from the handle, same fade+translate treatment as ds-tooltip — `translate(-50%, …)`
+    // keeps nouislider's own horizontal centering (nouislider.css), only the y-offset animates.
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, 4px);
+    transition:
+      opacity 120ms cubic-bezier(0.4, 0, 1, 1),
+      transform 120ms cubic-bezier(0.4, 0, 1, 1),
+      visibility 0ms linear 120ms;
+    will-change: opacity, transform;
+  }
+
+  .noUi-handle.noUi-active .noUi-tooltip,
+  .noUi-handle:hover .noUi-tooltip,
+  .noUi-handle:active .noUi-tooltip,
+  .noUi-handle:focus-visible .noUi-tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+    transition:
+      opacity 200ms cubic-bezier(0, 0, 0.2, 1),
+      transform 200ms cubic-bezier(0, 0, 0.2, 1),
+      visibility 0ms linear 0ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .noUi-tooltip {
+      transition: none !important;
+    }
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+
+  --mod-input-slider-connect-color: var(--ds-form-container-color-danger-border);
+  --mod-input-slider-thumb-border-color: var(--ds-form-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-form-description-color: var(--ds-form-description-color-success);
+
+  --mod-input-slider-connect-color: var(--ds-form-container-color-success-border);
+  --mod-input-slider-thumb-border-color: var(--ds-form-container-color-success-border);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+
+  --mod-input-slider-connect-color: var(--ds-form-container-color-warning-border);
+  --mod-input-slider-thumb-border-color: var(--ds-form-container-color-warning-border);
+}
+
+//
+// Brand color (recolors the connect only — track, thumb and label/description are untouched)
+// --------------------------------
+:host(.is-brand-yellow) {
+  --mod-input-slider-track-color: var(--ds-global-color-yellow-2);
+  --mod-input-slider-connect-color: var(--ds-global-color-yellow-4);
+}
+
+:host(.is-brand-purple) {
+  --mod-input-slider-track-color: var(--ds-global-color-purple-2);
+  --mod-input-slider-connect-color: var(--ds-global-color-purple-4);
+}
+
+:host(.is-brand-red) {
+  --mod-input-slider-track-color: var(--ds-global-color-red-2);
+  --mod-input-slider-connect-color: var(--ds-global-color-red-4);
+}
+
+:host(.is-brand-green) {
+  --mod-input-slider-track-color: var(--ds-global-color-green-2);
+  --mod-input-slider-connect-color: var(--ds-global-color-green-4);
+}
+
+//
+// Disabled (also covers `readonly`, treated as equivalent — see CONTEXT.md)
+// --------------------------------
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #slider {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+
+  --mod-input-slider-track-color: var(--ds-global-color-grey-1);
+  --mod-input-slider-connect-color: var(--ds-global-color-grey-3);
+  --mod-input-slider-thumb-color: var(--ds-global-color-grey-3);
+  --mod-input-slider-thumb-border-color: var(--ds-global-color-grey-3);
+
+  .noUi-handle {
+    cursor: default;
+  }
+}

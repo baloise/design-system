@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as InputSliderStories from './input-slider.stories'
+import { INPUTSLIDER_DOC_CONFIG, getInputSliderTabs } from './input-slider.doc-config'
+
+<Meta title="Components/InputSlider/Styling" />
+
+<Banner label={'Styling'} section={INPUTSLIDER_DOC_CONFIG.section} color={INPUTSLIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={InputSliderStories} tabs={getInputSliderTabs('styling')} />
+
+<ComponentParts component="input-slider" />
+
+<ComponentCssVariables component="input-slider" />
+
+<ComponentDesignTokens component="input-slider" />
+
+<Footer />

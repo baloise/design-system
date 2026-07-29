@@ -409,6 +409,9 @@ importers:
       luxon:
         specifier: 3.7.2
         version: 3.7.2
+      nouislider:
+        specifier: 15.8.1
+        version: 15.8.1
       slim-select:
         specifier: 4.0.6
         version: 4.0.6(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -4593,6 +4596,9 @@ packages:
   normalize-url@8.1.1:
     resolution: {integrity: sha512-JYc0DPlpGWB40kH5g07gGTrYuMqV653k3uBKY6uITPWds3M0ov3GaWGp9lbE3Bzngx8+XkfzgvASb9vk9JDFXQ==}
     engines: {node: '>=14.16'}
+
+  nouislider@15.8.1:
+    resolution: {integrity: sha512-93TweAi8kqntHJSPiSWQ1o/uZ29VWOmal9YKb6KKGGlCkugaNfAupT7o1qTHqdJvNQ7S0su5rO6qRFCjP8fxtw==}
 
   npm-run-path@5.3.0:
     resolution: {integrity: sha512-ppwTtiJZq0O/ai0z7yfudtBpWIoxM8yE6nHi1X47eFR2EWORqfbu6CnPlNsjeN683eT0qG6H/Pyf9fCcvjnnnQ==}
@@ -9855,6 +9861,8 @@ snapshots:
   normalize-path@3.0.0: {}
 
   normalize-url@8.1.1: {}
+
+  nouislider@15.8.1: {}
 
   npm-run-path@5.3.0:
     dependencies:

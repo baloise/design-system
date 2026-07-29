@@ -26575,6 +26575,7 @@
         "ds-footer",
         "ds-hint",
         "ds-input",
+        "ds-input-slider",
         "ds-item",
         "ds-navbar",
         "ds-number-input",
@@ -26618,6 +26619,9 @@
           "ds-icon"
         ],
         "ds-input": [
+          "ds-icon"
+        ],
+        "ds-input-slider": [
           "ds-icon"
         ],
         "ds-item": [
@@ -29581,6 +29585,802 @@
             "params": [],
             "docs": ""
           },
+          {
+            "name": "fill",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      },
+      "type": "web-component"
+    },
+    {
+      "fileName": "input-slider.tsx",
+      "tag": "ds-input-slider",
+      "overview": "Input slider renders a native range input with validation and label/description messaging.",
+      "usage": {},
+      "docs": "Input slider renders a native range input with validation and label/description messaging.",
+      "docsTags": [
+        {
+          "name": "part",
+          "text": "input - The native HTML range input element."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-input-slider": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "InputColor",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "InputColor": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/input/input.interfaces.ts::InputColor",
+                "referenceLocation": "InputColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the slider. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "debounce",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "debounce",
+          "reflectToAttr": false,
+          "docs": "Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the slider, which is displayed below the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets an invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the slider is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the slider, which is displayed above the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": false,
+          "docs": "The maximum value of the slider. See `min` for why this is numeric.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "100"
+            }
+          ],
+          "default": "100",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": false,
+          "docs": "The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s\n`min`, this is numeric because the component's own logic (default value,\nclamping) depends on it, not just the native attribute pass-through.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputSliderId"
+            }
+          ],
+          "default": "this.inputSliderId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not be mutated. A native range input has no\nconcept of `readonly` (browsers only honor it on text-like inputs), so\nthis is treated as equivalent to `disabled`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "step",
+          "reflectToAttr": false,
+          "docs": "The granularity the value must adhere to, as a string so `\"any\"` (free,\ncontinuous dragging with no step snapping) can be expressed alongside\nnumeric step sizes.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'1'"
+            }
+          ],
+          "default": "'1'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The value of the slider. Unlike a text input, a range input can never be\nempty; when unset it defaults to `min`. Internally starts as `NaN` (this\ncodebase's established \"empty number\" sentinel, see `isValueEmpty`) until\n`connectedCallback` resolves it — never actually rendered or emitted.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "NaN"
+            }
+          ],
+          "default": "NaN",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInputElement",
+          "returns": {
+            "type": "Promise<HTMLInputElement>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<HTMLInputElement>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLInputElement": {
+                "location": "global",
+                "id": "global::HTMLInputElement"
+              }
+            },
+            "return": "Promise<HTMLInputElement>"
+          },
+          "signature": "getInputElement() => Promise<HTMLInputElement>",
+          "parameters": [],
+          "docs": "Returns the native `<input>` element used under the hood.",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the native `input` in `ds-input-slider`. Use this method instead of the global\n`input.focus()`.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputSliderBlurDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "InputSliderBlurDetail": {
+                "location": "import",
+                "path": "./input-slider.interfaces",
+                "id": "src/components/input-slider/input-slider.interfaces.ts::InputSliderBlurDetail",
+                "referenceLocation": "InputSliderBlurDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputSliderChangeDetail",
+            "resolved": "number",
+            "references": {
+              "InputSliderChangeDetail": {
+                "location": "import",
+                "path": "./input-slider.interfaces",
+                "id": "src/components/input-slider/input-slider.interfaces.ts::InputSliderChangeDetail",
+                "referenceLocation": "InputSliderChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the value is committed (native `change`, not `blur` — see\nADR-0006). Fires once per discrete drag/step, independent of focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsClick",
+          "detail": "MouseEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputSliderClickDetail",
+            "resolved": "MouseEvent",
+            "references": {
+              "InputSliderClickDetail": {
+                "location": "import",
+                "path": "./input-slider.interfaces",
+                "id": "src/components/input-slider/input-slider.interfaces.ts::InputSliderClickDetail",
+                "referenceLocation": "InputSliderClickDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input is clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputSliderFocusDetail",
+            "resolved": "FocusEvent",
+            "references": {
+              "InputSliderFocusDetail": {
+                "location": "import",
+                "path": "./input-slider.interfaces",
+                "id": "src/components/input-slider/input-slider.interfaces.ts::InputSliderFocusDetail",
+                "referenceLocation": "InputSliderFocusDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInput",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputSliderInputDetail",
+            "resolved": "number",
+            "references": {
+              "InputSliderInputDetail": {
+                "location": "import",
+                "path": "./input-slider.interfaces",
+                "id": "src/components/input-slider/input-slider.interfaces.ts::InputSliderInputDetail",
+                "referenceLocation": "InputSliderInputDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted on each keyboard/pointer movement, before the value is committed.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--input-slider-color",
+          "docs": "Accent color of the native range track/thumb."
+        },
+        {
+          "name": "--form-container-background",
+          "docs": "Background color of the slider container."
+        },
+        {
+          "name": "--form-container-border-color",
+          "docs": "Border color of the slider container."
+        },
+        {
+          "name": "--form-container-border-width",
+          "docs": "Border width of the slider container."
+        },
+        {
+          "name": "--form-container-radius",
+          "docs": "Border radius of the slider container."
+        },
+        {
+          "name": "--form-container-hover-background",
+          "docs": "Container background color on hover."
+        },
+        {
+          "name": "--form-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--form-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--form-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--form-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--form-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--form-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--form-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--form-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--form-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--form-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
+          "name": "--form-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--form-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--form-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--form-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--form-description-line-height",
+          "docs": "Line height of the description."
+        }
+      ],
+      "slots": [],
+      "parts": [
+        {
+          "name": "input",
+          "docs": "The native HTML range input element."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ],
+      "pageObject": {
+        "class": "DsInputSlider",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
           {
             "name": "fill",
             "params": [
@@ -49922,6 +50722,7 @@
         "ds-date",
         "ds-file-upload",
         "ds-input",
+        "ds-input-slider",
         "ds-number-input",
         "ds-radio-group",
         "ds-segment",
@@ -49943,6 +50744,9 @@
           "ds-spinner"
         ],
         "ds-input": [
+          "ds-spinner"
+        ],
+        "ds-input-slider": [
           "ds-spinner"
         ],
         "ds-number-input": [
@@ -63708,6 +64512,31 @@
       "declaration": "export type InputChangeDetail = string | null",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
+    },
+    "src/components/input-slider/input-slider.interfaces.ts::InputSliderInputDetail": {
+      "declaration": "number",
+      "docstring": "",
+      "path": "src/components/input-slider/input-slider.interfaces.ts"
+    },
+    "src/components/input-slider/input-slider.interfaces.ts::InputSliderFocusDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/input-slider/input-slider.interfaces.ts"
+    },
+    "src/components/input-slider/input-slider.interfaces.ts::InputSliderBlurDetail": {
+      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
+      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "path": "src/components/input-slider/input-slider.interfaces.ts"
+    },
+    "src/components/input-slider/input-slider.interfaces.ts::InputSliderClickDetail": {
+      "declaration": "interface MouseEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */\n    readonly altKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */\n    readonly button: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/buttons) */\n    readonly buttons: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientX) */\n    readonly clientX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/clientY) */\n    readonly clientY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerX) */\n    readonly layerX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/layerY) */\n    readonly layerY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementX) */\n    readonly movementX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/movementY) */\n    readonly movementY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetX) */\n    readonly offsetX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/offsetY) */\n    readonly offsetY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageX) */\n    readonly pageX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/pageY) */\n    readonly pageY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenX) */\n    readonly screenX: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/screenY) */\n    readonly screenY: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/x) */\n    readonly x: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/y) */\n    readonly y: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/initMouseEvent)\n     */\n    initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void;\n}",
+      "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+      "path": "src/components/input-slider/input-slider.interfaces.ts"
+    },
+    "src/components/input-slider/input-slider.interfaces.ts::InputSliderChangeDetail": {
+      "declaration": "number",
+      "docstring": "",
+      "path": "src/components/input-slider/input-slider.interfaces.ts"
     },
     "src/components/label/label.interfaces.ts::LabelSize": {
       "declaration": "\"\" | \"sm\" | \"lg\" | \"xl\" | \"small\" | \"large\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"2xl\" | \"3xl\"",
