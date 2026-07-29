@@ -43,7 +43,8 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['list'], ['html'], ['github']],
+  /* Sharded CI runs emit a 'blob' report so they can be merged into a single HTML report afterwards. */
+  reporter: process.env.CI ? [['blob'], ['github']] : [['list'], ['html']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,

@@ -32,6 +32,9 @@ const HOST_VARIANTS = [
   'tile-disabled',
   'tile-stack',
   'tile-stack-centered',
+  'tile-stack-multicolor-selected',
+  'tile-stack-multicolor-selected-hide-trigger',
+  'tile-stack-multicolor-unselected',
 ]
 
 const image = screenshot(TAG)

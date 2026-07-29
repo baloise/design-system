@@ -145,11 +145,44 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
-      - name: Upload Playwright HTML report
+      - name: Upload Playwright blob report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: playwright-report-shard-${{ matrix.shardIndex }}
+          name: playwright-blob-report-${{ matrix.shardIndex }}
+          path: packages/core/blob-report
+          retention-days: 1
+
+  merge-playwright-reports:
+    name: 🎭 Merge Playwright reports
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    needs: [playwright]
+    if: always()
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+
+      - uses: ./.github/workflows/actions/setup-environment
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download blob reports
+        uses: actions/download-artifact@v4
+        with:
+          path: packages/core/all-blob-reports
+          pattern: playwright-blob-report-*
+          merge-multiple: true
+
+      - name: Merge into a single HTML report
+        working-directory: packages/core
+        run: pnpm exec playwright merge-reports --reporter html ./all-blob-reports
+
+      - name: Upload merged Playwright HTML report
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
           path: packages/core/playwright-report
           retention-days: 7
 

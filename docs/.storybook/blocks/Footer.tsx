@@ -34,7 +34,7 @@ export const Footer = ({ children }) => {
     <section className="sb-unstyled mt-4xl">
       {children}
       <section
-        className="bg-grey-2"
+        className="bg-grey-1"
         style={{
           marginLeft: 'calc(-50vw + 50%)',
           marginRight: 'calc(-50vw + 50%)',

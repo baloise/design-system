@@ -59,7 +59,7 @@
 
   @include vars.local(list-item-text-family, var(--ds-global-font-family-body));
   @include vars.local(list-item-text-weight, var(--ds-alias-text-weight-regular));
-  @include vars.local(list-item-text-size, var(--ds-text-size-sm-device));
+  @include vars.local(list-item-text-size, var(--ds-alias-text-size-sm-device));
 }
 
 /**

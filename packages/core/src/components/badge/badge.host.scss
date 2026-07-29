@@ -34,7 +34,7 @@
   @include vars.local(badge-color-text, var(--ds-badge-color-base-text));
   @include vars.local(badge-pulse-color, var(--ds-badge-color-base-background));
   @include vars.local(badge-font-size, 85%);
-  @include vars.local(badge-icon-size, 0.875rem);
+  @include vars.local(badge-icon-size, 0.75rem);
   @include vars.local(badge-icon-color, var(--ds-badge-color-base-text));
   @include vars.local(badge-gap, 4px);
   @include vars.local(badge-padding-inline, 4px);
@@ -72,8 +72,9 @@
   padding-inline: var(--_badge-padding-inline);
   padding-block: var(--_badge-padding-block);
 
-  & > ds-icon {
+  ds-icon {
     --icon-size: var(--_badge-icon-size);
+    --icon-inner-size: var(--_badge-icon-size);
     --icon-color: var(--_badge-icon-color);
   }
 }
@@ -95,6 +96,7 @@ $colors: ('red', 'green', 'yellow', 'purple', 'grey', 'success', 'warning', 'dan
     --mod-badge-color-background: var(--ds-badge-color-#{$color}-background);
     --mod-badge-pulse-color: var(--ds-badge-color-#{$color}-background);
     --mod-badge-icon-color: var(--ds-badge-color-#{$color}-text);
+    --icon-color: var(--ds-badge-color-#{$color}-text);
   }
 }
 

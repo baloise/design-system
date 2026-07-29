@@ -36,12 +36,12 @@ ol.list li details {
   @include vars.local(list-item-action-icon-size, var(--ds-icon-size-xs));
 
   @include vars.local(list-item-title-size, var(--ds-heading-5-size-device));
-  @include vars.local(list-item-title-weight, var(--ds-text-weight-bold));
+  @include vars.local(list-item-title-weight, var(--ds-alias-text-weight-bold));
   @include vars.local(list-item-title-family, var(--ds-global-font-family-heading));
 
   @include vars.local(list-item-text-family, var(--ds-global-font-family-body));
-  @include vars.local(list-item-text-weight, var(--ds-text-weight-regular));
-  @include vars.local(list-item-text-size, var(--ds-text-size-sm-device));
+  @include vars.local(list-item-text-weight, var(--ds-alias-text-weight-regular));
+  @include vars.local(list-item-text-size, var(--ds-alias-text-size-sm-device));
 }
 
 /**
@@ -171,7 +171,7 @@ ul.list li button.item {
   hyphens: auto;
   overflow-wrap: break-word;
   font-family: var(--_list-item-title-family);
-  font-weight: var(--ds-text-weight-bold);
+  font-weight: var(--ds-alias-text-weight-bold);
   color: var(--ds-link-color-base);
 
   outline: none;
@@ -277,6 +277,6 @@ ol.list li .item.is-disabled {
   */
 
 ds-item [slot='content'] {
-  font-size: var(--ds-text-size-sm);
+  font-size: var(--ds-alias-text-size-sm);
   @include typography.content(false);
 }

@@ -174,6 +174,13 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
   readonly tile: boolean = false
 
   /**
+   * If `true` and `tile` is set, the radio circle is visually hidden on every radio in the group.
+   */
+  @Prop()
+  @Type('boolean')
+  readonly hideTrigger: boolean = false
+
+  /**
    * Defines the color of the tile checkbox.
    */
   @Prop()
@@ -228,6 +235,10 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   componentWillUpdate() {
     this.passDownAttributes()
+  }
+
+  componentDidLoad() {
+    this.handleSlotChange()
   }
 
   /**
@@ -348,6 +359,11 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
     this.setRadioChecked()
   }
 
+  private handleSlotChange = () => {
+    this.passDownAttributes()
+    this.handleValueChange()
+  }
+
   private handleClick = (ev: Event) => {
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
@@ -388,7 +404,8 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
       }
       radio.labelPosition = this.labelPosition
       radio.tile = this.tile
-      radio.tileColor = this.tileColor
+      radio.hideTrigger = this.hideTrigger
+      radio.tileColor = (radio.getAttribute('tile-color') as RadioTileColor) ?? this.tileColor
       radio.cols = this.cols
       radio.colsTablet = this.colsTablet
       radio.colsMobile = this.colsMobile
@@ -452,7 +469,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
         }}
         onClick={this.handleClick}
       >
-        <slot></slot>
+        <slot onSlotchange={this.handleSlotChange}></slot>
       </Field>
     )
   }

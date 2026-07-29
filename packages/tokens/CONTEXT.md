@@ -66,13 +66,13 @@ Raw color scales with numbered intensity levels (1–5+):
 
 Semantic abstractions for consumers (colors, spacing, typography, etc.):
 
-- Pattern: `--ds-[category]-[subcategory]-[name]`
+- Pattern: `--ds-alias-[category]-[subcategory]-[name]`
 - Examples:
-  - `--ds-background-color-sky` (references `--ds-global-color-sky-2`)
-  - `--ds-background-color-info` (references `--ds-global-color-info-3`)
-  - `--ds-space-lg` → `1.5rem`
-  - `--ds-text-size-base` → `1rem`
-  - `--ds-radius-base` → `0.25rem`
+  - `--ds-alias-background-color-sky` (references `--ds-global-color-sky-2`)
+  - `--ds-alias-background-color-info` (references `--ds-global-color-info-3`)
+  - `--ds-alias-space-lg` → `1.5rem`
+  - `--ds-alias-text-size-base` → `1rem`
+  - `--ds-alias-radius-base` → `0.25rem`
 
 #### Component Layer
 

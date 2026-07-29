@@ -8,7 +8,7 @@ type InfoQuoteProps = PropsWithChildren
 
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
-    <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
       <ds-icon color="primary" name="information" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
@@ -30,7 +30,7 @@ type StylesQuoteProps = {
 
 export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
   return (
-    <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
       <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="title">Styles import</h3>
@@ -87,7 +87,7 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
   }
 
   return (
-    <div className="sb-unstyled flex gap-normal bg-grey-2 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
       <ds-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="title">Installation</h3>
