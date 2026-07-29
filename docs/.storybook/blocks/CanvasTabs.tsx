@@ -8,6 +8,7 @@ type CanvasTabsProps = {
   sourceState?: 'hidden' | 'shown' | 'none'
   htmlFirst?: boolean
   htmlOf: ModuleExport
+  overflowVisible?: boolean
 }
 
 export const CanvasTabs = ({
@@ -15,18 +16,19 @@ export const CanvasTabs = ({
   sourceState = 'shown',
   htmlFirst = false,
   htmlOf,
+  overflowVisible = false,
 }: CanvasTabsProps): React.ReactElement => {
   const wcTab = {
     label: 'Web Component',
     content: (
       <>
-        <CanvasWithCodePen of={ofStory} sourceState="shown" />
+        <CanvasWithCodePen of={ofStory} sourceState="shown" overflowVisible={overflowVisible} />
       </>
     ),
   }
   const htmlTab = {
     label: 'HTML & CSS',
-    content: <CanvasWithCodePen of={htmlOf} sourceState={sourceState} />,
+    content: <CanvasWithCodePen of={htmlOf} sourceState={sourceState} overflowVisible={overflowVisible} />,
   }
 
   return <Tabs tabs={htmlFirst ? [htmlTab, wcTab] : [wcTab, htmlTab]} />

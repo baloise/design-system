@@ -80,6 +80,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   @Watch('value')
   protected valueChanged(newVal: number) {
     this.picker?.setValue(newVal)
+    this.syncFormValue(newVal)
   }
 
   /**
@@ -222,7 +223,9 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   /**
    * If `true`, in Angular reactive forms the control will not be set invalid
    */
-  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * Emitted on each keyboard/pointer movement, before the value is committed.
@@ -366,7 +369,6 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   private setValue(newValue: number) {
     if (this.value === newValue) return
     this.value = newValue
-    this.syncFormValue(newValue)
     this.dsChange.emit(newValue)
   }
 

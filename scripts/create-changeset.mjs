@@ -14,6 +14,21 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const workspaceRoot = resolve(__dirname, '..')
 const BUMP_LEVELS = ['patch', 'minor', 'major']
 
+/**
+ * Maps a scope choice to the package it should bump. Scopes without an entry here
+ * (component tags like `input-slider`, or cross-cutting scopes like `a11y`/`deps`/`table`/`devkit`)
+ * fall back to `@baloise/ds-core`, since that's where components/utilities actually live.
+ */
+const SCOPE_PACKAGE_MAP = {
+  core: '@baloise/ds-core',
+  angular: '@baloise/ds-angular',
+  css: '@baloise/ds-css',
+  tokens: '@baloise/ds-tokens',
+  react: '@baloise/ds-react',
+  assets: '@baloise/ds-assets',
+  testing: '@baloise/ds-playwright',
+}
+
 let cleanUp = () => Promise.resolve()
 
 /**
@@ -68,8 +83,10 @@ async function writeChangeset({ bumpLevel, scope, summary }) {
   }
 
   const label = cleanScopes.join('/')
+  const packages = [...new Set(cleanScopes.map(s => SCOPE_PACKAGE_MAP[s] ?? '@baloise/ds-core'))]
+  const frontmatter = packages.map(pkg => `'${pkg}': ${bumpLevel}`).join('\n')
   const content = `---
-'@baloise/ds-core': ${bumpLevel}
+${frontmatter}
 ---
 
 **${label}**: ${summary.trim()}
