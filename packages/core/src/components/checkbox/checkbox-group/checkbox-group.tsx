@@ -184,6 +184,13 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   readonly tile: boolean = false
 
   /**
+   * If `true` and `tile` is set, the checkbox box is visually hidden on every checkbox in the group.
+   */
+  @Prop()
+  @Type('boolean')
+  readonly hideTrigger: boolean = false
+
+  /**
    * Defines the color of the tile checkbox.
    */
   @Prop()
@@ -245,6 +252,10 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   componentWillUpdate() {
     this.passDownAttributes()
+  }
+
+  componentDidLoad() {
+    this.handleSlotChange()
   }
 
   /**
@@ -327,6 +338,11 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
     }
   }
 
+  private handleSlotChange = () => {
+    this.passDownAttributes()
+    this.handleValueChange()
+  }
+
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
@@ -367,7 +383,8 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
       checkbox.name = this.name
       checkbox.labelPosition = this.labelPosition
       checkbox.tile = this.tile
-      checkbox.tileColor = this.tileColor
+      checkbox.hideTrigger = this.hideTrigger
+      checkbox.tileColor = (checkbox.getAttribute('tile-color') as CheckboxTileColor) ?? this.tileColor
       checkbox.cols = this.cols
       checkbox.colsTablet = this.colsTablet
       checkbox.colsMobile = this.colsMobile
@@ -412,7 +429,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
           'is-tile': this.tile,
         }}
       >
-        <slot></slot>
+        <slot onSlotchange={this.handleSlotChange}></slot>
       </Field>
     )
   }

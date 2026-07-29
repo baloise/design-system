@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
-import { BrandIconCarGreen } from '@baloise/ds-assets'
+import { BrandIconCarGreen, BrandIconCarPurple, BrandIconCarRed, BrandIconCarTangerine } from '@baloise/ds-assets'
 import { props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 
 type Args = JSX.DsRadioGroup
@@ -241,3 +241,54 @@ export const TileStackCentered = Story({
   ),
 })
 TileStackCentered.storyName = '🧩 Tile Stack Centered'
+
+export const TileStackMulticolorHideTrigger = Story({
+  args: {
+    label: 'Label',
+    description: 'Description',
+    value: 2,
+    tile: true,
+    hideTrigger: true,
+    name: 'tile-stack-multicolor-hide-trigger',
+    cols: 4,
+    labelPosition: 'top',
+  },
+  ...withRender(
+    ({ ...args }) => `
+<ds-radio-group ${props(args)}>
+  <ds-radio value="1" tile-color="purple">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarPurple}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Purple</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-radio>
+  <ds-radio value="2" tile-color="green">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Green</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-radio>
+  <ds-radio value="3" tile-color="red">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarRed}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Red</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-radio>
+  <ds-radio value="4" tile-color="yellow">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarTangerine}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Yellow</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-radio>
+</ds-radio-group>`,
+  ),
+})
+TileStackMulticolorHideTrigger.storyName = '🧩 Tile Stack Multicolor Hide Trigger'

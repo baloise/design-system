@@ -88,20 +88,44 @@
   --mod-checkbox-tile-base-border-color: var(--_checkbox-checked-base-color-background);
 }
 
+:host(.is-tile.hide-trigger) {
+  label {
+    position: relative;
+  }
+
+  input[type='checkbox'] {
+    @include visually-hidden();
+  }
+}
+
+:host(.is-tile.hide-trigger.is-checked) {
+  --mod-checkbox-tile-base-background-color: var(--ds-global-color-primary-1);
+  --mod-checkbox-tile-hover-background-color: var(--ds-global-color-primary-1);
+  --mod-checkbox-tile-active-background-color: var(--ds-global-color-primary-1);
+}
+
 :host(.is-tile.has-tile-green.is-checked) {
   --mod-checkbox-tile-base-background-color: var(--ds-global-color-green-1);
+  --mod-checkbox-tile-hover-background-color: var(--ds-global-color-green-1);
+  --mod-checkbox-tile-active-background-color: var(--ds-global-color-green-1);
 }
 
 :host(.is-tile.has-tile-red.is-checked) {
   --mod-checkbox-tile-base-background-color: var(--ds-global-color-red-1);
+  --mod-checkbox-tile-hover-background-color: var(--ds-global-color-red-1);
+  --mod-checkbox-tile-active-background-color: var(--ds-global-color-red-1);
 }
 
 :host(.is-tile.has-tile-yellow.is-checked) {
   --mod-checkbox-tile-base-background-color: var(--ds-global-color-yellow-1);
+  --mod-checkbox-tile-hover-background-color: var(--ds-global-color-yellow-1);
+  --mod-checkbox-tile-active-background-color: var(--ds-global-color-yellow-1);
 }
 
 :host(.is-tile.has-tile-purple.is-checked) {
   --mod-checkbox-tile-base-background-color: var(--ds-global-color-purple-1);
+  --mod-checkbox-tile-hover-background-color: var(--ds-global-color-purple-1);
+  --mod-checkbox-tile-active-background-color: var(--ds-global-color-purple-1);
 }
 
 :host(.is-tile.is-disabled) {

@@ -47,7 +47,7 @@ $css-selector: ('.table');
   );
 
   @include vars.local(table-narrow-cell-padding, 0.25em 0.5em);
-  @include vars.local(table-bordered-cell-border-width, 1px);
+  @include vars.local(table-bordered-cell-border-width, 2px);
 }
 
 /**

@@ -261,13 +261,13 @@ Global tokens are rarely used directly by components. Use Alias or Component tok
 
 Semantic abstractions for consumers (colors, spacing, typography, etc.). Primary layer for component/app use:
 
-- Pattern: `--ds-[category]-[subcategory]-[name]`
+- Pattern: `--ds-alias-[category]-[subcategory]-[name]`
 - Examples:
-  - `--ds-background-color-sky` (semantic name, resolves to global value)
-  - `--ds-background-color-info`
-  - `--ds-space-lg` → `1.5rem`
-  - `--ds-text-size-base` → `1rem`
-  - `--ds-radius-base` → `0.25rem`
+  - `--ds-alias-background-color-sky` (semantic name, resolves to global value)
+  - `--ds-alias-background-color-info`
+  - `--ds-alias-space-lg` → `1.5rem`
+  - `--ds-alias-text-size-base` → `1rem`
+  - `--ds-alias-radius-base` → `0.25rem`
 
 ### Component Layer
 

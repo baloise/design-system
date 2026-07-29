@@ -89,7 +89,7 @@ $host-selector: ('#label');
 // --------------------------------
 
 @mixin family() {
-  --mod-label-family: var(--ds-text-family-heading);
+  --mod-label-family: var(--ds-alias-text-family-heading);
 }
 
 $sizes-for-heading: ('lg', 'xl', '2xl', '3xl');

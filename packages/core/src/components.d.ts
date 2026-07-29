@@ -463,9 +463,9 @@ export namespace Components {
         "fullheight": boolean;
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
-          * @default ''
+          * @default undefined
          */
-        "imageTeaser": CardImageTeaser;
+        "imageTeaser"?: CardImageTeaser;
         /**
           * If `true` the card background color becomes blue.
           * @default false
@@ -666,6 +666,11 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` and `tile` is set, the checkbox box is visually hidden. The tile remains fully clickable and keyboard-accessible.
+          * @default false
+         */
+        "hideTrigger": boolean;
+        /**
           * If `true` the component gets a invalid style.
           * @default false
          */
@@ -751,6 +756,11 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
+        /**
+          * If `true` and `tile` is set, the checkbox box is visually hidden on every checkbox in the group.
+          * @default false
+         */
+        "hideTrigger": boolean;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -2328,6 +2338,11 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` and `tile` is set, the radio circle is visually hidden. The tile remains fully clickable and keyboard-accessible.
+          * @default false
+         */
+        "hideTrigger": boolean;
+        /**
           * If `true` the component gets a invalid style.
           * @default false
          */
@@ -2422,6 +2437,11 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
+        /**
+          * If `true` and `tile` is set, the radio circle is visually hidden on every radio in the group.
+          * @default false
+         */
+        "hideTrigger": boolean;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -5301,7 +5321,7 @@ declare namespace LocalJSX {
         "fullheight"?: boolean;
         /**
           * If `true` the card image is displayed as a teaser, which means it is displayed with a large image.
-          * @default ''
+          * @default undefined
          */
         "imageTeaser"?: CardImageTeaser;
         /**
@@ -5515,6 +5535,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * If `true` and `tile` is set, the checkbox box is visually hidden. The tile remains fully clickable and keyboard-accessible.
+          * @default false
+         */
+        "hideTrigger"?: boolean;
+        /**
           * If `true` the component gets a invalid style.
           * @default false
          */
@@ -5615,6 +5640,11 @@ declare namespace LocalJSX {
           * The `id` of a `<form>` element to associate this element with.
          */
         "form"?: string;
+        /**
+          * If `true` and `tile` is set, the checkbox box is visually hidden on every checkbox in the group.
+          * @default false
+         */
+        "hideTrigger"?: boolean;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -7301,6 +7331,11 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * If `true` and `tile` is set, the radio circle is visually hidden. The tile remains fully clickable and keyboard-accessible.
+          * @default false
+         */
+        "hideTrigger"?: boolean;
+        /**
           * If `true` the component gets a invalid style.
           * @default false
          */
@@ -7400,6 +7435,11 @@ declare namespace LocalJSX {
           * The `id` of a `<form>` element to associate this element with.
          */
         "form"?: string;
+        /**
+          * If `true` and `tile` is set, the radio circle is visually hidden on every radio in the group.
+          * @default false
+         */
+        "hideTrigger"?: boolean;
         /**
           * If `true` the component gets a invalid style.
           * @default false
@@ -8770,6 +8810,7 @@ declare namespace LocalJSX {
         "invalid": boolean;
         "tileColor": CheckboxTileColor;
         "tile": boolean;
+        "hideTrigger": boolean;
         "cols": CheckboxGroupColumns;
         "colsTablet": CheckboxGroupColumns;
         "colsMobile": CheckboxGroupColumns;
@@ -8791,6 +8832,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "required": boolean;
         "tile": boolean;
+        "hideTrigger": boolean;
         "tileColor": CheckboxTileColor;
         "vertical": boolean;
     }
@@ -9093,6 +9135,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "required": boolean;
         "tile": boolean;
+        "hideTrigger": boolean;
         "tileColor": RadioTileColor;
         "value": string;
     }
@@ -9113,6 +9156,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "required": boolean;
         "tile": boolean;
+        "hideTrigger": boolean;
         "tileColor": RadioTileColor;
         "value": string;
         "vertical": boolean;

@@ -45,7 +45,7 @@ export const TokensColors = ({ _overview }): React.ReactElement => {
                 <tr>
                   <td colSpan={3} className="border-bottom-grey">
                     <p className="font-weight-bold mb-none">Shades</p>
-                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-2 radius font-weight-bold">
+                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-1 radius font-weight-bold">
                       {item.name}-x
                     </p>
                     <div className="flex gap-normal">

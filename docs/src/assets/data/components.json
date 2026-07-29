@@ -2548,16 +2548,16 @@
         {
           "name": "🧩 Component / Badge / Color / Grey / Text",
           "cssVarName": "--ds-badge-color-grey-text",
-          "value": "{🔗 Alias.🔤 Text.Color.GreyDark}",
-          "nativeValue": "#313131",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-6",
-              "figmaName": "Global / Color / Grey / 6"
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
             },
             {
-              "cssVar": "--ds-text-color-greydark",
-              "figmaName": "Alias / Text / Color / GreyDark"
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
             },
             {
               "cssVar": "--ds-badge-color-grey-text",
@@ -2575,16 +2575,16 @@
         {
           "name": "🧩 Component / Badge / Color / Grey / Background",
           "cssVarName": "--ds-badge-color-grey-background",
-          "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
-              "cssVar": "--ds-background-color-grey",
-              "figmaName": "Alias / Background / Color / Grey"
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
               "cssVar": "--ds-badge-color-grey-background",
@@ -7918,11 +7918,11 @@
           "name": "🧩 Component / Button / Color / InvertedTertiary / Base / Background",
           "cssVarName": "--ds-button-color-invertedtertiary-base-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -7946,11 +7946,11 @@
           "name": "🧩 Component / Button / Color / InvertedTertiary / Base / Border",
           "cssVarName": "--ds-button-color-invertedtertiary-base-border",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -10300,10 +10300,10 @@
         },
         {
           "name": "imageTeaser",
-          "type": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\"",
+          "type": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
           "complexType": {
             "original": "CardImageTeaser",
-            "resolved": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\"",
+            "resolved": "\"\" | \"wide-center\" | \"wide-left\" | \"wide-right\" | undefined",
             "references": {
               "CardImageTeaser": {
                 "location": "import",
@@ -10320,10 +10320,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "''"
+              "text": "undefined"
             }
           ],
-          "default": "''",
+          "default": "undefined",
           "values": [
             {
               "type": "\"\""
@@ -10339,9 +10339,12 @@
             {
               "value": "wide-right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -10936,11 +10939,11 @@
           "name": "🧩 Component / Card / Color / Base / Outline",
           "cssVarName": "--ds-card-color-base-outline",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -11009,11 +11012,11 @@
           "name": "🧩 Component / Card / Color / White / Outline",
           "cssVarName": "--ds-card-color-white-outline",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -11293,11 +11296,11 @@
           "name": "🧩 Component / Card / Color / GreyLight / Background",
           "cssVarName": "--ds-card-color-greylight-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -11366,11 +11369,11 @@
           "name": "🧩 Component / Card / Color / Grey / Background",
           "cssVarName": "--ds-card-color-grey-background",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -13626,6 +13629,31 @@
       ],
       "tokens": [
         {
+          "name": "🧩 Component / Carousel / Gap",
+          "cssVarName": "--ds-carousel-gap",
+          "value": "{🔗 Alias.↔️ Space.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-16",
+              "figmaName": "Global / Size / Space / 16"
+            },
+            {
+              "cssVar": "--ds-space-base-mobile",
+              "figmaName": "Alias / Space / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-carousel-gap",
+              "figmaName": "Component / Carousel / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Carousel",
+            "Gap"
+          ]
+        },
+        {
           "name": "🧩 Component / Carousel / ScrollFadeBg",
           "cssVarName": "--ds-carousel-scrollfadebg",
           "value": "{🔗 Alias.🎨 Background.Color.White}",
@@ -13690,11 +13718,11 @@
           "name": "🧩 Component / Carousel / Dot / Color",
           "cssVarName": "--ds-carousel-dot-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -14228,6 +14256,35 @@
           "attr": "disabled",
           "reflectToAttr": false,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideTrigger",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-trigger",
+          "reflectToAttr": false,
+          "docs": "If `true` and `tile` is set, the checkbox box is visually hidden. The tile remains fully clickable and keyboard-accessible.",
           "docsTags": [
             {
               "name": "default",
@@ -14945,11 +15002,11 @@
           "name": "🧩 Component / Checkbox / Tile / Color / Base / Border",
           "cssVarName": "--ds-checkbox-tile-color-base-border",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -15754,6 +15811,35 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideTrigger",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-trigger",
+          "reflectToAttr": false,
+          "docs": "If `true` and `tile` is set, the checkbox box is visually hidden on every checkbox in the group.",
           "docsTags": [
             {
               "name": "default",
@@ -16800,11 +16886,11 @@
           "name": "🧩 Component / Close / Color / Background / Disabled",
           "cssVarName": "--ds-close-color-background-disabled",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -19388,11 +19474,11 @@
           "name": "🧩 Component / Date / Calendar / Color / InnerBorder",
           "cssVarName": "--ds-date-calendar-color-innerborder",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -20496,11 +20582,11 @@
           "name": "🧩 Component / Divider / Color / Base",
           "cssVarName": "--ds-divider-color-base",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -20626,11 +20712,11 @@
           "name": "🧩 Component / Divider / Color / GreyLight",
           "cssVarName": "--ds-divider-color-greylight",
           "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-border-color-greylight",
@@ -20652,11 +20738,11 @@
           "name": "🧩 Component / Divider / Color / Grey",
           "cssVarName": "--ds-divider-color-grey",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -22515,11 +22601,11 @@
           "name": "🧩 Component / FileUpload / DropZone / Border / Color / Base",
           "cssVarName": "--ds-fileupload-dropzone-border-color-base",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -22911,11 +22997,11 @@
           "name": "🧩 Component / FileUpload / FileList / Background / Color",
           "cssVarName": "--ds-fileupload-filelist-background-color",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -29624,13 +29710,13 @@
     {
       "fileName": "input-slider.tsx",
       "tag": "ds-input-slider",
-      "overview": "Input slider renders a native range input with validation and label/description messaging.",
+      "overview": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
       "usage": {},
-      "docs": "Input slider renders a native range input with validation and label/description messaging.",
+      "docs": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
       "docsTags": [
         {
           "name": "part",
-          "text": "input - The native HTML range input element."
+          "text": "slider - The noUiSlider target element."
         }
       ],
       "encapsulation": "shadow",
@@ -29668,6 +29754,58 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "brandColor",
+          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "InputSliderBrandColor",
+            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {
+              "InputSliderBrandColor": {
+                "location": "import",
+                "path": "./input-slider.interfaces",
+                "id": "src/components/input-slider/input-slider.interfaces.ts::InputSliderBrandColor",
+                "referenceLocation": "InputSliderBrandColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "brand-color",
+          "reflectToAttr": false,
+          "docs": "Recolors the connect (the filled progress track) with a brand color instead of the default\ngrey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter\n`-2` shade. Empty (default) keeps the current grey/primary look.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
             }
           ],
           "optional": false,
@@ -29824,7 +29962,7 @@
           },
           "mutable": false,
           "attr": "invalid",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "If `true` the component gets an invalid style.",
           "docsTags": [
             {
@@ -29912,7 +30050,7 @@
           "mutable": false,
           "attr": "max",
           "reflectToAttr": false,
-          "docs": "The maximum value of the slider. See `min` for why this is numeric.",
+          "docs": "The maximum value of the slider.",
           "docsTags": [
             {
               "name": "default",
@@ -29941,7 +30079,7 @@
           "mutable": false,
           "attr": "min",
           "reflectToAttr": false,
-          "docs": "The minimum value of the slider. Unlike `ds-input`/`ds-number-input`'s\n`min`, this is numeric because the component's own logic (default value,\nclamping) depends on it, not just the native attribute pass-through.",
+          "docs": "The minimum value of the slider.",
           "docsTags": [
             {
               "name": "default",
@@ -29999,7 +30137,7 @@
           "mutable": false,
           "attr": "readonly",
           "reflectToAttr": false,
-          "docs": "If `true` the element can not be mutated. A native range input has no\nconcept of `readonly` (browsers only honor it on text-like inputs), so\nthis is treated as equivalent to `disabled`.",
+          "docs": "If `true` the element can not be mutated. noUiSlider has no native concept of\n`readonly`, so this is treated as equivalent to `disabled`.",
           "docsTags": [
             {
               "name": "default",
@@ -30086,7 +30224,7 @@
           "mutable": true,
           "attr": "value",
           "reflectToAttr": true,
-          "docs": "The value of the slider. Unlike a text input, a range input can never be\nempty; when unset it defaults to `min`. Internally starts as `NaN` (this\ncodebase's established \"empty number\" sentinel, see `isValueEmpty`) until\n`connectedCallback` resolves it — never actually rendered or emitted.",
+          "docs": "The value of the slider. Unlike a text input, a slider can never be\nempty; when unset it defaults to `min`. Internally starts as `NaN` (this\ncodebase's established \"empty number\" sentinel, see `isValueEmpty`) until\n`connectedCallback` resolves it — never actually rendered or emitted.",
           "docsTags": [
             {
               "name": "default",
@@ -30109,27 +30247,27 @@
         {
           "name": "getInputElement",
           "returns": {
-            "type": "Promise<HTMLInputElement>",
+            "type": "Promise<HTMLElement | undefined>",
             "docs": ""
           },
           "complexType": {
-            "signature": "() => Promise<HTMLInputElement>",
+            "signature": "() => Promise<HTMLElement | undefined>",
             "parameters": [],
             "references": {
               "Promise": {
                 "location": "global",
                 "id": "global::Promise"
               },
-              "HTMLInputElement": {
+              "HTMLElement": {
                 "location": "global",
-                "id": "global::HTMLInputElement"
+                "id": "global::HTMLElement"
               }
             },
-            "return": "Promise<HTMLInputElement>"
+            "return": "Promise<HTMLElement | undefined>"
           },
-          "signature": "getInputElement() => Promise<HTMLInputElement>",
+          "signature": "getInputElement() => Promise<HTMLElement | undefined>",
           "parameters": [],
-          "docs": "Returns the native `<input>` element used under the hood.",
+          "docs": "Returns the noUiSlider handle element used under the hood.",
           "docsTags": []
         },
         {
@@ -30151,7 +30289,7 @@
           },
           "signature": "setFocus() => Promise<void>",
           "parameters": [],
-          "docs": "Sets focus on the native `input` in `ds-input-slider`. Use this method instead of the global\n`input.focus()`.",
+          "docs": "Sets focus on `ds-input-slider`'s slider handle. Use this method instead of the global\n`element.focus()`.",
           "docsTags": []
         }
       ],
@@ -30195,7 +30333,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the value is committed (native `change`, not `blur` — see\nADR-0006). Fires once per discrete drag/step, independent of focus.",
+          "docs": "Emitted when the value is committed (noUiSlider `change`, not `blur` — see\nADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.",
           "docsTags": []
         },
         {
@@ -30264,48 +30402,36 @@
       ],
       "styles": [
         {
-          "name": "--input-slider-color",
-          "docs": "Accent color of the native range track/thumb."
+          "name": "--input-slider-track-height",
+          "docs": "Height of the slider track."
         },
         {
-          "name": "--form-container-background",
-          "docs": "Background color of the slider container."
+          "name": "--input-slider-track-radius",
+          "docs": "Border radius of the slider track."
         },
         {
-          "name": "--form-container-border-color",
-          "docs": "Border color of the slider container."
+          "name": "--input-slider-track-color",
+          "docs": "Background color of the inactive (unfilled) track."
         },
         {
-          "name": "--form-container-border-width",
-          "docs": "Border width of the slider container."
+          "name": "--input-slider-connect-color",
+          "docs": "Background color of the active (filled) track segment."
         },
         {
-          "name": "--form-container-radius",
-          "docs": "Border radius of the slider container."
+          "name": "--input-slider-thumb-size",
+          "docs": "Diameter of the slider thumb/handle."
         },
         {
-          "name": "--form-container-hover-background",
-          "docs": "Container background color on hover."
+          "name": "--input-slider-thumb-color",
+          "docs": "Background color of the thumb."
         },
         {
-          "name": "--form-container-active-background",
-          "docs": "Container background color when active."
+          "name": "--input-slider-thumb-hover-color",
+          "docs": "Thumb color on hover."
         },
         {
-          "name": "--form-container-focus-background",
-          "docs": "Container background color when focused."
-        },
-        {
-          "name": "--form-container-hover-border",
-          "docs": "Container border color on hover."
-        },
-        {
-          "name": "--form-container-active-border",
-          "docs": "Container border color when active."
-        },
-        {
-          "name": "--form-container-focus-border",
-          "docs": "Container border color when focused."
+          "name": "--input-slider-thumb-active-color",
+          "docs": "Thumb color while dragging/pressed."
         },
         {
           "name": "--form-label-color",
@@ -30351,8 +30477,8 @@
       "slots": [],
       "parts": [
         {
-          "name": "input",
-          "docs": "The native HTML range input element."
+          "name": "slider",
+          "docs": "The noUiSlider target element."
         }
       ],
       "customStates": [],
@@ -30375,7 +30501,12 @@
         "import": "@baloise/ds-playwright",
         "locators": [
           {
-            "name": "nativeInput",
+            "name": "slider",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "handle",
             "type": "Locator",
             "docs": ""
           }
@@ -30389,7 +30520,7 @@
                 "type": "string"
               }
             ],
-            "docs": ""
+            "docs": "Sets the value the way a \"one-shot\" user commit would: drives noUiSlider's own .set() API directly, which fires a single update + set (see input-slider.picker.ts). Waits out a macrotask tick in-browser so `dsChange`'s debounced (setTimeout(0)) emit has actually run before this resolves — a raw evaluate() round-trip can otherwise return before it fires."
           },
           {
             "name": "blur",
@@ -32966,11 +33097,11 @@
           "name": "🧩 Component / List / Item / Border / Color",
           "cssVarName": "--ds-list-item-border-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -35562,11 +35693,11 @@
           "name": "🧩 Component / Navbar / Base / Sidebar / Item / Divider / Color",
           "cssVarName": "--ds-navbar-base-sidebar-item-divider-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -37317,11 +37448,11 @@
           "name": "🧩 Component / Notification / Color / Base / Background",
           "cssVarName": "--ds-notification-color-base-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -37344,11 +37475,11 @@
           "name": "🧩 Component / Notification / Color / Base / Border",
           "cssVarName": "--ds-notification-color-base-border",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -39933,11 +40064,11 @@
           "name": "🧩 Component / Pagination / Dots / Background",
           "cssVarName": "--ds-pagination-dots-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -41343,11 +41474,11 @@
           "name": "🧩 Component / ProgressBar / Background / Dark",
           "cssVarName": "--ds-progressbar-background-dark",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -41704,6 +41835,35 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideTrigger",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-trigger",
+          "reflectToAttr": false,
+          "docs": "If `true` and `tile` is set, the radio circle is visually hidden. The tile remains fully clickable and keyboard-accessible.",
           "docsTags": [
             {
               "name": "default",
@@ -42431,11 +42591,11 @@
           "name": "🧩 Component / Radio / Tile / Color / Base / Border",
           "cssVarName": "--ds-radio-tile-color-base-border",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -43235,6 +43395,35 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideTrigger",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-trigger",
+          "reflectToAttr": false,
+          "docs": "If `true` and `tile` is set, the radio circle is visually hidden on every radio in the group.",
           "docsTags": [
             {
               "name": "default",
@@ -44440,11 +44629,11 @@
           "name": "🧩 Component / Segment / Background",
           "cssVarName": "--ds-segment-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -44515,11 +44704,11 @@
           "name": "🧩 Component / Segment / Divider / Color",
           "cssVarName": "--ds-segment-divider-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -46285,11 +46474,11 @@
           "name": "🧩 Component / Select / Container / Color / Base / Border",
           "cssVarName": "--ds-select-container-color-base-border",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -46341,11 +46530,11 @@
           "name": "🧩 Component / Select / Container / Color / Hover / Border",
           "cssVarName": "--ds-select-container-color-hover-border",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -47590,11 +47779,11 @@
           "name": "🧩 Component / Select / Chip / Color / Base / Background",
           "cssVarName": "--ds-select-chip-color-base-background",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -47832,11 +48021,11 @@
           "name": "🧩 Component / Select / Color / Border / Base",
           "cssVarName": "--ds-select-color-border-base",
           "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-border-color-greylight",
@@ -48160,11 +48349,11 @@
           "name": "🧩 Component / Select / Option / Color / Border / Base",
           "cssVarName": "--ds-select-option-color-border-base",
           "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
-          "nativeValue": "#F0F0F0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-border-color-greylight",
@@ -48409,11 +48598,11 @@
           "name": "🧩 Component / Select / Optgroup / Color / Background / Base",
           "cssVarName": "--ds-select-optgroup-color-background-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -49979,11 +50168,11 @@
           "name": "🧩 Component / Snackbar / Default / Color / Bg / Base",
           "cssVarName": "--ds-snackbar-default-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -50007,11 +50196,11 @@
           "name": "🧩 Component / Snackbar / Default / Color / Border / Base",
           "cssVarName": "--ds-snackbar-default-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -51173,11 +51362,11 @@
           "name": "🧩 Component / Spinner / Circle / Color / Background",
           "cssVarName": "--ds-spinner-circle-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -52818,11 +53007,11 @@
           "name": "🧩 Component / Steps / Connector / Color",
           "cssVarName": "--ds-steps-connector-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -52932,11 +53121,11 @@
           "name": "🧩 Component / Steps / Circle / Color / BG",
           "cssVarName": "--ds-steps-circle-color-bg",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -53040,11 +53229,11 @@
           "name": "🧩 Component / Steps / Circle / Color / BGDisabled",
           "cssVarName": "--ds-steps-circle-color-bgdisabled",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -54212,11 +54401,11 @@
           "name": "🧩 Component / Tabs / Border / Color",
           "cssVarName": "--ds-tabs-border-color",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -55811,11 +56000,11 @@
           "name": "🧩 Component / Tag / Grey / Color / Bg / Base",
           "cssVarName": "--ds-tag-grey-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyDark}",
-          "nativeValue": "#B6B6B6",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-4",
-              "figmaName": "Global / Color / Grey / 4"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-background-color-greydark",
@@ -56747,11 +56936,11 @@
           "name": "🧩 Component / Tag / Default / Color / Bg / Base",
           "cssVarName": "--ds-tag-default-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
               "cssVar": "--ds-background-color-grey",
@@ -59356,11 +59545,11 @@
           "name": "🧩 Component / Toast / Default / Color / Bg / Base",
           "cssVarName": "--ds-toast-default-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -59384,11 +59573,11 @@
           "name": "🧩 Component / Toast / Default / Color / Border / Base",
           "cssVarName": "--ds-toast-default-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
               "cssVar": "--ds-background-color-greylight",
@@ -61469,11 +61658,11 @@
           "name": "🧩 Component / Form / Container / Color / Base / Border",
           "cssVarName": "--ds-form-container-color-base-border",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -61525,11 +61714,11 @@
           "name": "🧩 Component / Form / Container / Color / Hover / Border",
           "cssVarName": "--ds-form-container-color-hover-border",
           "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#E0E0E0",
+          "nativeValue": "#D0D0D0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
             },
             {
               "cssVar": "--ds-border-color-grey",
@@ -63524,16 +63713,16 @@
         {
           "name": "🧩 Component / Table / Cell / Border / Color",
           "cssVarName": "--ds-table-cell-border-color",
-          "value": "{🔗 Alias.▭ Border.Color.Base}",
-          "nativeValue": "#D0D0D0",
+          "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
+          "nativeValue": "#E0E0E0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
             },
             {
-              "cssVar": "--ds-border-color-base",
-              "figmaName": "Alias / Border / Color / Base"
+              "cssVar": "--ds-border-color-greylight",
+              "figmaName": "Alias / Border / Color / GreyLight"
             },
             {
               "cssVar": "--ds-table-cell-border-color",
@@ -63827,16 +64016,16 @@
         {
           "name": "🧩 Component / Table / Row / Background / Color / Hover",
           "cssVarName": "--ds-table-row-background-color-hover",
-          "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#FAFAFA",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-0",
-              "figmaName": "Global / Color / Grey / 0"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
-              "cssVar": "--ds-background-color-hover",
-              "figmaName": "Alias / Background / Color / Hover"
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
               "cssVar": "--ds-table-row-background-color-hover",
@@ -63855,16 +64044,16 @@
         {
           "name": "🧩 Component / Table / Row / Background / Color / Active",
           "cssVarName": "--ds-table-row-background-color-active",
-          "value": "{🔗 Alias.🎨 Background.Color.Selected}",
-          "nativeValue": "#B3B6D4",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-primary-2",
-              "figmaName": "Global / Color / Primary / 2"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
-              "cssVar": "--ds-background-color-selected",
-              "figmaName": "Alias / Background / Color / Selected"
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
               "cssVar": "--ds-table-row-background-color-active",
@@ -63910,16 +64099,16 @@
         {
           "name": "🧩 Component / Table / Striped / Row / Even / Background / Color / Base",
           "cssVarName": "--ds-table-striped-row-even-background-color-base",
-          "value": "{🔗 Alias.🎨 Background.Color.Highlight}",
-          "nativeValue": "#E5E7F0",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
+          "nativeValue": "#FAFAFA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-primary-1",
-              "figmaName": "Global / Color / Primary / 1"
+              "cssVar": "--ds-color-grey-0",
+              "figmaName": "Global / Color / Grey / 0"
             },
             {
-              "cssVar": "--ds-background-color-highlight",
-              "figmaName": "Alias / Background / Color / Highlight"
+              "cssVar": "--ds-background-color-greylighter",
+              "figmaName": "Alias / Background / Color / GreyLighter"
             },
             {
               "cssVar": "--ds-table-striped-row-even-background-color-base",
@@ -63940,16 +64129,16 @@
         {
           "name": "🧩 Component / Table / Striped / Row / Even / Background / Color / Hover",
           "cssVarName": "--ds-table-striped-row-even-background-color-hover",
-          "value": "{🔗 Alias.🎨 Background.Color.Hover}",
-          "nativeValue": "#FAFAFA",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F0F0F0",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-0",
-              "figmaName": "Global / Color / Grey / 0"
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
             },
             {
-              "cssVar": "--ds-background-color-hover",
-              "figmaName": "Alias / Background / Color / Hover"
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
               "cssVar": "--ds-table-striped-row-even-background-color-hover",
@@ -64512,6 +64701,11 @@
       "declaration": "export type InputChangeDetail = string | null",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
+    },
+    "src/components/input-slider/input-slider.interfaces.ts::InputSliderBrandColor": {
+      "declaration": "\"\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
+      "docstring": "",
+      "path": "src/components/input-slider/input-slider.interfaces.ts"
     },
     "src/components/input-slider/input-slider.interfaces.ts::InputSliderInputDetail": {
       "declaration": "number",

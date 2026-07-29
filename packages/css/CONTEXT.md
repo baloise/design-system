@@ -31,10 +31,10 @@ Utilities follow a consistent pattern: `.<property>-<value>`
 
 Examples:
 
-- `.bg-primary` — background color primary (from token `--ds-color-background-primary`)
-- `.text-lg` — text size large (from token `--ds-text-size-lg`)
-- `.p-md` — padding medium (from token `--ds-space-md`)
-- `.border-2` — border width 2px (from token `--ds-border-width-2`)
+- `.bg-primary` — background color primary (from token `--ds-alias-background-color-primary`)
+- `.text-lg` — text size large (from token `--ds-alias-text-size-lg`)
+- `.p-md` — padding medium (from token `--ds-alias-space-md`)
+- `.border-2` — border width 2px (from token `--ds-alias-border-width-2`)
 
 ### Responsive Breakpoints
 

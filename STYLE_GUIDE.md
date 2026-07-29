@@ -129,18 +129,18 @@ All components must follow a **mobile-first** approach: define styles for mobile
 :host {
   display: block;
   padding: var(--ds-space-sm);
-  font-size: var(--ds-text-size-sm);
+  font-size: var(--ds-alias-text-size-sm);
 }
 
 // Then enhance for tablet (≥ tablet breakpoint)
 @include media('>tablet') {
   padding: var(--ds-space-md);
-  font-size: var(--ds-text-size-base);
+  font-size: var(--ds-alias-text-size-base);
 }
 
 // Further enhance for desktop (≥ desktop breakpoint)
 @include media('>desktop') {
-  padding: var(--ds-space-lg);
+  padding: var(--ds-alias-space-lg);
 }
 ```
 

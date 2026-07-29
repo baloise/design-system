@@ -30,10 +30,10 @@
     @include vars.local(radio-tile-base-background-color, inherit);
     @include vars.local(radio-tile-base-border-color, var(--ds-global-color-grey-3));
 
-    @include vars.local(radio-tile-hover-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(radio-tile-hover-background-color, var(--ds-global-color-grey-0));
     @include vars.local(radio-tile-hover-border-color, var(--ds-global-color-sky-5));
 
-    @include vars.local(radio-tile-active-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(radio-tile-active-background-color, var(--ds-global-color-grey-0));
     @include vars.local(radio-tile-active-border-color, var(--ds-global-color-primary-6));
 
     // unchecked base
@@ -41,7 +41,7 @@
     @include vars.local(radio-unchecked-base-color-border, var(--ds-global-color-primary-5));
 
     // unchecked hover
-    @include vars.local(radio-unchecked-hover-color-background, var(--ds-global-color-grey-2));
+    @include vars.local(radio-unchecked-hover-color-background, var(--ds-global-color-grey-1));
     @include vars.local(radio-unchecked-hover-color-border, var(--ds-global-color-sky-5));
 
     // unchecked active/pressed

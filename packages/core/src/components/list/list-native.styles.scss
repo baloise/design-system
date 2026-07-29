@@ -69,8 +69,8 @@ ol.ordered-list {
     list-style-type: var(--_ordered-list-style-type);
 
     &::marker {
-      font-weight: var(--ds-text-weight-bold);
-      font-family: var(--ds-text-family-heading);
+      font-weight: var(--ds-alias-text-weight-bold);
+      font-family: var(--ds-alias-text-family-heading);
     }
   }
 
@@ -259,8 +259,8 @@ ul.unordered-list > li.has-icon-close {
 // --------------------------------
 ol.ordered-list.is-inverted,
 ul.unordered-list.is-inverted {
-  color: var(--ds-text-color-white);
+  color: var(--ds-alias-text-color-white);
 
-  --mod-ordered-list-marker-color: var(--ds-text-color-white);
-  --mod-unordered-list-marker-color: var(--ds-text-color-white);
+  --mod-ordered-list-marker-color: var(--ds-alias-text-color-white);
+  --mod-unordered-list-marker-color: var(--ds-alias-text-color-white);
 }

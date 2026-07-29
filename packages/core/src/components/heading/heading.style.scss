@@ -7,6 +7,12 @@ $name: heading;
 $css-selector: ('.heading', '.title', '.subtitle');
 $host-selector: ('#heading');
 
+// Only the root `.heading` element declares the css variables, so nested
+// `.title`/`.subtitle` spans inherit the computed values from their parent
+// heading instead of resetting them back to the defaults on themselves.
+$vars-selector: ('.heading');
+$nested-vars-selector: ('.title', '.subtitle');
+
 /**
  * Variables
  * --------------------------------
@@ -14,7 +20,7 @@ $host-selector: ('#heading');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-@include vars.hybrid($name, $css-selector, $use-host) {
+@include vars.hybrid($name, $vars-selector, $use-host) {
   @include vars.local(heading-color, inherit);
   @include vars.local(heading-family, var(--ds-heading-family));
   @include vars.local(heading-weight, var(--ds-heading-weight));
@@ -22,6 +28,26 @@ $host-selector: ('#heading');
   @include vars.local(heading-font-size, var(--ds-heading-1-size-device));
   @include vars.local(heading-space, var(--ds-heading-1-space));
   @include vars.local(heading-shadow, none); // var(--ds-heading-shadow)
+  @include vars.local(heading-text-align, inherit);
+}
+
+// `.title`/`.subtitle` re-declare the same variables. Weight/family/
+// line-height/shadow don't vary by heading level, so they always fall back
+// to the same concrete defaults as `.heading` — this keeps a standalone
+// `<h1 class="title">` (no `.heading` ancestor) bold by default, only
+// overridden by an explicit modifier like `.subtitle` forcing a light
+// weight. Font-size is the exception: it *does* vary by level (`.is-3`,
+// etc.), so it prefers whatever the ancestor `.heading` already resolved
+// to — the `var(--_heading-font-size, ...)` self-reference is invalid at
+// computed-value time when nothing else sets it, which per spec falls back
+// to the inherited value instead of the literal default.
+@include hybrid.vars($nested-vars-selector, $use-host) {
+  @include vars.local(heading-color, inherit);
+  @include vars.local(heading-family, var(--ds-heading-family));
+  @include vars.local(heading-weight, var(--ds-heading-weight));
+  @include vars.local(heading-line-height, var(--ds-heading-line-height));
+  @include vars.local(heading-font-size, var(--_heading-font-size, var(--ds-heading-1-size-device)));
+  @include vars.local(heading-shadow, none);
   @include vars.local(heading-text-align, inherit);
 }
 
@@ -57,12 +83,12 @@ $host-selector: ('#heading');
   b,
   strong,
   .is-bold {
-    font-weight: var(--ds-text-weight-bold);
+    font-weight: var(--ds-alias-text-weight-bold);
   }
 
   @include hybrid.styles-only($use-host) {
     &.is-bold {
-      font-weight: var(--ds-text-weight-bold);
+      font-weight: var(--ds-alias-text-weight-bold);
     }
 
     // alignments

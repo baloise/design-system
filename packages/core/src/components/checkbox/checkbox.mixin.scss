@@ -30,10 +30,10 @@
     @include vars.local(checkbox-tile-base-background-color, inherit);
     @include vars.local(checkbox-tile-base-border-color, var(--ds-global-color-grey-3));
 
-    @include vars.local(checkbox-tile-hover-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-tile-hover-background-color, var(--ds-global-color-grey-0));
     @include vars.local(checkbox-tile-hover-border-color, var(--ds-global-color-sky-5));
 
-    @include vars.local(checkbox-tile-active-background-color, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-tile-active-background-color, var(--ds-global-color-grey-0));
     @include vars.local(checkbox-tile-active-border-color, var(--ds-global-color-primary-6));
 
     // unchecked base
@@ -41,7 +41,7 @@
     @include vars.local(checkbox-unchecked-base-color-border, var(--ds-global-color-primary-5));
 
     // unchecked hover
-    @include vars.local(checkbox-unchecked-hover-color-background, var(--ds-global-color-grey-2));
+    @include vars.local(checkbox-unchecked-hover-color-background, var(--ds-global-color-grey-1));
     @include vars.local(checkbox-unchecked-hover-color-border, var(--ds-global-color-sky-5));
 
     // unchecked active/pressed

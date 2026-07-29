@@ -64,7 +64,7 @@ p:not(.text, .title, .subtitle, .heading) {
 }
 
 small {
-  font-size: var(--ds-text-size-sm);
+  font-size: var(--ds-alias-text-size-sm);
 }
 
 span {
@@ -75,7 +75,7 @@ span {
 b,
 strong {
   color: inherit;
-  font-weight: var(--ds-text-weight-bold);
+  font-weight: var(--ds-alias-text-weight-bold);
 }
 
 img {

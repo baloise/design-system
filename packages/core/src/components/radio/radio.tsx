@@ -172,6 +172,13 @@ export class Radio implements DsComponentInterface {
   readonly tile: boolean = false
 
   /**
+   * If `true` and `tile` is set, the radio circle is visually hidden. The tile remains fully clickable and keyboard-accessible.
+   */
+  @Prop()
+  @Type('boolean')
+  readonly hideTrigger: boolean = false
+
+  /**
    * Defines the color of the tile radio.
    */
   @Prop()
@@ -394,6 +401,7 @@ export class Radio implements DsComponentInterface {
           'is-checked': this.checked,
           'is-tile': this.tile,
           [`has-tile-${this.tileColor}`]: this.tile && hasValue(this.tileColor),
+          'hide-trigger': this.tile && this.hideTrigger,
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
           [`has-cols-${this.cols}`]: this.tile && this.cols > 1,

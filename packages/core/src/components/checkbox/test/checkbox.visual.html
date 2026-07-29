@@ -109,6 +109,15 @@
         </ds-checkbox-group>
       </section>
 
+      <!-- Tile Hide Trigger -->
+      <section data-testid="tile-hide-trigger">
+        <span>Tile Hide Trigger</span>
+        <ds-checkbox-group control label="Label" description="Description" tile hide-trigger value="2">
+          <ds-checkbox name="tile-hide-trigger" value="1">Value 1</ds-checkbox>
+          <ds-checkbox name="tile-hide-trigger" value="2">Value 2</ds-checkbox>
+        </ds-checkbox-group>
+      </section>
+
       <!-- Tile Columns -->
       <section data-testid="tile-columns">
         <span>Tile Columns</span>
@@ -232,6 +241,104 @@
                 <ds-label size="xl">Radio Button 2</ds-label>
               </ds-content>
             </ds-stack>
+          </ds-checkbox>
+        </ds-checkbox-group>
+      </section>
+
+      <!-- Tile Stack Multicolor Selected -->
+      <section data-testid="tile-stack-multicolor-selected">
+        <span>Tile Stack Multicolor Selected</span>
+        <ds-checkbox-group
+          control
+          label-position="top"
+          label="Label"
+          description="Description"
+          tile
+          value="1,2,3,4"
+          cols="4"
+        >
+          <ds-checkbox name="tile-stack-multicolor-selected" value="1" tile-color="purple">
+            <ds-content align="center">
+              <ds-label size="xl">Purple</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-selected" value="2" tile-color="green">
+            <ds-content align="center">
+              <ds-label size="xl">Green</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-selected" value="3" tile-color="red">
+            <ds-content align="center">
+              <ds-label size="xl">Red</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-selected" value="4" tile-color="yellow">
+            <ds-content align="center">
+              <ds-label size="xl">Yellow</ds-label>
+            </ds-content>
+          </ds-checkbox>
+        </ds-checkbox-group>
+      </section>
+
+      <!-- Tile Stack Multicolor Selected Hide Trigger -->
+      <section data-testid="tile-stack-multicolor-selected-hide-trigger">
+        <span>Tile Stack Multicolor Selected Hide Trigger</span>
+        <ds-checkbox-group
+          control
+          label-position="top"
+          label="Label"
+          description="Description"
+          tile
+          hide-trigger
+          value="1,2,3,4"
+          cols="4"
+        >
+          <ds-checkbox name="tile-stack-multicolor-selected-hide-trigger" value="1" tile-color="purple">
+            <ds-content align="center">
+              <ds-label size="xl">Purple</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-selected-hide-trigger" value="2" tile-color="green">
+            <ds-content align="center">
+              <ds-label size="xl">Green</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-selected-hide-trigger" value="3" tile-color="red">
+            <ds-content align="center">
+              <ds-label size="xl">Red</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-selected-hide-trigger" value="4" tile-color="yellow">
+            <ds-content align="center">
+              <ds-label size="xl">Yellow</ds-label>
+            </ds-content>
+          </ds-checkbox>
+        </ds-checkbox-group>
+      </section>
+
+      <!-- Tile Stack Multicolor Unselected -->
+      <section data-testid="tile-stack-multicolor-unselected">
+        <span>Tile Stack Multicolor Unselected</span>
+        <ds-checkbox-group control label-position="top" label="Label" description="Description" tile cols="4">
+          <ds-checkbox name="tile-stack-multicolor-unselected" value="1" tile-color="purple">
+            <ds-content align="center">
+              <ds-label size="xl">Purple</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-unselected" value="2" tile-color="green">
+            <ds-content align="center">
+              <ds-label size="xl">Green</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-unselected" value="3" tile-color="red">
+            <ds-content align="center">
+              <ds-label size="xl">Red</ds-label>
+            </ds-content>
+          </ds-checkbox>
+          <ds-checkbox name="tile-stack-multicolor-unselected" value="4" tile-color="yellow">
+            <ds-content align="center">
+              <ds-label size="xl">Yellow</ds-label>
+            </ds-content>
           </ds-checkbox>
         </ds-checkbox-group>
       </section>

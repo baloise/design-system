@@ -1,4 +1,4 @@
-import { BrandIconCarGreen } from '@baloise/ds-assets'
+import { BrandIconCarGreen, BrandIconCarPurple, BrandIconCarRed, BrandIconCarTangerine } from '@baloise/ds-assets'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
@@ -274,3 +274,44 @@ export const TileStackCentered = Story({
   ),
 })
 TileStackCentered.storyName = '🧩 Tile Stack Centered'
+
+export const TileStackMulticolorHideTrigger = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label-position="top" label="Label" description="Description" tile hide-trigger value="2" cols="4">
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="1" tile-color="purple">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarPurple}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Purple</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="2" tile-color="green">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Green</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="3" tile-color="red">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarRed}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Red</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="4" tile-color="yellow">
+    <ds-stack layout="vertical" align="center">
+      <ds-icon svg='${BrandIconCarTangerine}' size="2xl" color="auto"></ds-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Yellow</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+TileStackMulticolorHideTrigger.storyName = '🧩 Tile Stack Multicolor Hide Trigger'

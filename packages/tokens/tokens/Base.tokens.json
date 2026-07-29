@@ -2556,7 +2556,7 @@
         },
         "GreyLighter": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.1}",
+          "$value": "{🌐 Global.🌈 Color.Grey.0}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:187",
             "com.figma.scopes": [
@@ -2566,7 +2566,7 @@
         },
         "GreyLight": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.2}",
+          "$value": "{🌐 Global.🌈 Color.Grey.1}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:188",
             "com.figma.scopes": [
@@ -2576,7 +2576,7 @@
         },
         "Grey": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.3}",
+          "$value": "{🌐 Global.🌈 Color.Grey.2}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:189",
             "com.figma.scopes": [
@@ -2586,13 +2586,17 @@
         },
         "GreyDark": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.4}",
+          "$value": "{🌐 Global.🌈 Color.Grey.3}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:190",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ]
           }
+        },
+        "GreyDarker": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Grey.4}"
         },
         "PrimaryLighter": {
           "$type": "color",
@@ -2830,7 +2834,7 @@
         },
         "GreyLight": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.1}",
+          "$value": "{🌐 Global.🌈 Color.Grey.2}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:214",
             "com.figma.scopes": [
@@ -2840,7 +2844,7 @@
         },
         "Grey": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.2}",
+          "$value": "{🌐 Global.🌈 Color.Grey.3}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:215",
             "com.figma.scopes": [
@@ -5771,7 +5775,7 @@
         "Grey": {
           "Text": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.GreyDark}",
+            "$value": "{🔗 Alias.🔤 Text.Color.Grey}",
             "$extensions": {
               "com.figma.variableId": "VariableID:2:487",
               "com.figma.scopes": [
@@ -5781,7 +5785,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.Grey}",
+            "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
             "$extensions": {
               "com.figma.variableId": "VariableID:2:488",
               "com.figma.scopes": [
@@ -16881,6 +16885,10 @@
       }
     },
     "Carousel": {
+      "Gap": {
+        "$type": "number",
+        "$value": "{🔗 Alias.↔️ Space.Base.Mobile}"
+      },
       "ScrollFadeBg": {
         "$type": "color",
         "$value": "{🔗 Alias.🎨 Background.Color.White}",
@@ -17152,7 +17160,7 @@
         "Border": {
           "Color": {
             "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Base}",
+            "$value": "{🔗 Alias.▭ Border.Color.GreyLight}",
             "$extensions": {
               "com.figma.variableId": "VariableID:2:1486",
               "com.figma.scopes": [
@@ -17301,7 +17309,7 @@
           "Color": {
             "Hover": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:2:1498",
                 "com.figma.scopes": [
@@ -17311,7 +17319,7 @@
             },
             "Active": {
               "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.Selected}",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
               "$extensions": {
                 "com.figma.variableId": "VariableID:2:1499",
                 "com.figma.scopes": [
@@ -17341,7 +17349,7 @@
               "Color": {
                 "Base": {
                   "$type": "color",
-                  "$value": "{🔗 Alias.🎨 Background.Color.Highlight}",
+                  "$value": "{🔗 Alias.🎨 Background.Color.GreyLighter}",
                   "$extensions": {
                     "com.figma.variableId": "VariableID:2:1501",
                     "com.figma.scopes": [
@@ -17351,7 +17359,7 @@
                 },
                 "Hover": {
                   "$type": "color",
-                  "$value": "{🔗 Alias.🎨 Background.Color.Hover}",
+                  "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
                   "$extensions": {
                     "com.figma.variableId": "VariableID:2:1502",
                     "com.figma.scopes": [
