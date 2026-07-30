@@ -42,7 +42,7 @@
     "format:check": "pnpm exec prettier --check --log-level error --end-of-line lf .",
     "spell": "cspell --no-progress",
     "changeset": "node scripts/create-changeset.mjs",
-    "changeset:version": "changeset version && pnpm install --no-frozen-lockfile --lockfile-only"
+    "changeset:version": "changeset version && node scripts/sync-codepen-version.mjs && pnpm install --no-frozen-lockfile --lockfile-only"
   },
   "private": true,
   "devDependencies": {
