@@ -17,8 +17,8 @@
     "@storybook/addon-links": "catalog:",
     "@storybook/html-vite": "catalog:",
     "lodash": "catalog:",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "storybook": "catalog:"
   },
   "devDependencies": {
