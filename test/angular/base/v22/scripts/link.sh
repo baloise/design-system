@@ -21,7 +21,15 @@ set -euo pipefail
 # pnpm would instead try to fetch them from the npm registry at whatever
 # version is in the packed package.json, which doesn't exist there yet
 # during the version-bump PR window before a release is published. Pack and
-# link them too so resolution stays entirely local.
+# add them too so resolution stays entirely local.
+#
+# Each tarball is added with its own `pnpm add` call, in dependency order
+# (assets/tokens before core/angular/css). Adding them all in a single `pnpm
+# add` command makes pnpm resolve ds-core's declared "@baloise/ds-assets"/
+# "@baloise/ds-tokens" version against the npm registry, ignoring the sibling
+# tarball in the same command - it 404s during the version-bump PR window.
+# Installing one at a time means ds-assets/ds-tokens are already present
+# locally by the time ds-core is added, so pnpm reuses them instead.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/.."
@@ -34,11 +42,10 @@ pnpm pack --pack-destination "$(pwd)/.tgz" --dir ../../../packages/core > /dev/n
 pnpm pack --pack-destination "$(pwd)/.tgz" --dir ../../../packages/angular > /dev/null
 pnpm pack --pack-destination "$(pwd)/.tgz" --dir ../../../packages/css > /dev/null
 
-pnpm add \
-  "file:$(pwd)/.tgz/$(ls .tgz | grep ds-assets)" \
-  "file:$(pwd)/.tgz/$(ls .tgz | grep ds-tokens)" \
-  "file:$(pwd)/.tgz/$(ls .tgz | grep ds-core)" \
-  "file:$(pwd)/.tgz/$(ls .tgz | grep ds-angular)" \
-  "file:$(pwd)/.tgz/$(ls .tgz | grep ds-css)"
+pnpm add "file:$(pwd)/.tgz/$(ls .tgz | grep ds-assets)"
+pnpm add "file:$(pwd)/.tgz/$(ls .tgz | grep ds-tokens)"
+pnpm add "file:$(pwd)/.tgz/$(ls .tgz | grep ds-core)"
+pnpm add "file:$(pwd)/.tgz/$(ls .tgz | grep ds-angular)"
+pnpm add "file:$(pwd)/.tgz/$(ls .tgz | grep ds-css)"
 
 echo "=> Installed @baloise/ds-assets, @baloise/ds-tokens, @baloise/ds-core, @baloise/ds-angular and @baloise/ds-css into $(pwd) from packed tarballs"
