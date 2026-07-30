@@ -162,7 +162,8 @@ async function runInteractive() {
         type: 'autocompleteMultiselect',
         name: 'scope',
         message: 'Pick the scope(s) for this change.',
-        instructions: false,
+        min: 1,
+        instructions: '\x1b[90m(type to filter, space to select, enter to confirm)\x1b[0m',
         choices: [
           { title: 'core', value: 'core' },
           { title: 'angular', value: 'angular' },
