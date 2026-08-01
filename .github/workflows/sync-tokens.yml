@@ -3,11 +3,7 @@ name: 🔄 Sync Tokens from Studio
 on:
   repository_dispatch:
     types: [tokens-release-packaged]
-  workflow_dispatch:
-    inputs:
-      release_id:
-        description: 'Token Studio release ID to sync (optional, defaults to latest)'
-        required: false
+  workflow_dispatch: {}
 
 concurrency: ${{ github.workflow }}
 
@@ -28,28 +24,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Fetch DTCG tokens from Studio
+      - name: Pull tokens from Studio
         id: fetch
         shell: bash
         env:
-          TOKEN_STUDIO_API_TOKEN: ${{ secrets.TOKEN_STUDIO_API_TOKEN }}
-          RELEASE_ID: ${{ github.event.client_payload.release_id || inputs.release_id }}
-        run: |
-          set -euo pipefail
-
-          # Base brand tokens (Design Tokens Format Module, DTCG JSON)
-          curl -sSf \
-            -H "Authorization: Bearer $TOKEN_STUDIO_API_TOKEN" \
-            -H "Accept: application/json" \
-            "https://api.tokens.studio/v1/releases/${RELEASE_ID}/artifacts/Base?format=dtcg" \
-            -o packages/tokens/tokens/Base.tokens.json
-
-          # Tcs brand tokens
-          curl -sSf \
-            -H "Authorization: Bearer $TOKEN_STUDIO_API_TOKEN" \
-            -H "Accept: application/json" \
-            "https://api.tokens.studio/v1/releases/${RELEASE_ID}/artifacts/Tcs?format=dtcg" \
-            -o packages/tokens/tokens/Tcs.tokens.json
+          TOKENS_STUDIO_API_KEY: ${{ secrets.TOKEN_STUDIO_API_TOKEN }}
+        run: npx tokensstudio pull --host graphql.prod.tokens.studio
 
       - name: Check for changes
         id: diff
