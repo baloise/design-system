@@ -1605,7 +1605,7 @@
       "Size": {
         "0": {
           "$type": "number",
-          "$value": 0,
+          "$value": 200,
           "$extensions": {
             "com.figma.variableId": "VariableID:2:95",
             "com.figma.scopes": [
