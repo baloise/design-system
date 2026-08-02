@@ -1,5 +1,7 @@
 # 7. ds-input-slider replaces the native `<input type="range">` with noUiSlider
 
+Package: `packages/core`
+
 Date: 2026-07-28
 
 ## Status
@@ -12,7 +14,7 @@ Accepted
 the shadow root, using the same `FormControl` helper
 (`packages/core/src/utils/form-control.ts`) as `ds-input`/`ds-number-input`,
 with one deliberate divergence documented in
-[ADR-0006](./0006-ds-input-slider-change-commit.md) (commit on native
+[ADR-0010](./0010-ds-input-slider-change-commit.md) (commit on native
 `change`, not blur).
 
 The brief for this pass is to replace the native range input with
@@ -58,7 +60,7 @@ styling out of scope. This is a materially different integration than
    because `change` fires only for real user interaction; a programmatic
    `.set()` call (used by the picker's own `setValue()`, and by test code
    driving the widget directly) fires `update` + `set` but never `change`.
-   This choice is made specifically to preserve ADR-0006's
+   This choice is made specifically to preserve ADR-0010's
    commit-on-discrete-interaction semantics with a new event source, not to
    revisit that decision. A `suppressEvents` guard in
    `InputSliderPickerController.setValue()` additionally ensures an
@@ -89,7 +91,7 @@ styling out of scope. This is a materially different integration than
   "library-backed widget with `ElementInternals`, no native input" — the
   picker-controller pattern is now used by two components instead of one.
 - `dsInput`/`dsChange` semantics stay externally identical to before this
-  change (same ADR-0006 commit model), so this is not a breaking behavior
+  change (same ADR-0010 commit model), so this is not a breaking behavior
   change for consumers, even though the internal event source changed.
 
 **Negative / risks**

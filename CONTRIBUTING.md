@@ -39,7 +39,7 @@ cd design-system
 pnpm install --frozen-lockfile
 ```
 
-For full setup instructions, troubleshooting, and dev server details, see [DEVELOPMENT.md](DEVELOPMENT.md).
+For full setup instructions, troubleshooting, and dev server details, see [DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 ## Git Workflow
 
@@ -74,7 +74,7 @@ docs: update contribution guidelines
    - `minor` — new features, new components
    - `major` — breaking changes (prop renames, removed elements, behavior changes)
 
-   See [ARCHITECTURE.md — Changesets and Versioning](ARCHITECTURE.md#release-and-versioning) for how changesets flow into the release pipeline.
+   See [ARCHITECTURE.md — Changesets and Versioning](docs/ARCHITECTURE.md#release-and-versioning) for how changesets flow into the release pipeline.
 
 2. **Open a PR against the `next` branch**
    - Include a descriptive title
@@ -87,11 +87,11 @@ docs: update contribution guidelines
 
 Post these as a PR comment to trigger automation:
 
-| Command               | Effect                                                                                                                                                                                              |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/update-screenshots` | Regenerates visual regression snapshots and commits them to your branch. Use after intentional visual changes.                                                                                      |
-| `/snapshot`           | Publishes a snapshot npm version from your branch so you can test it in a real project before merging. See [Snapshot Versions](ARCHITECTURE.md#snapshot-versions-testing-before-merge) for details. |
-| `/cib`                | Post on an **issue** to auto-create a correctly named branch for it.                                                                                                                                |
+| Command               | Effect                                                                                                                                                                                                   |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/update-screenshots` | Regenerates visual regression snapshots and commits them to your branch. Use after intentional visual changes.                                                                                           |
+| `/snapshot`           | Publishes a snapshot npm version from your branch so you can test it in a real project before merging. See [Snapshot Versions](docs/ARCHITECTURE.md#snapshot-versions-testing-before-merge) for details. |
+| `/cib`                | Post on an **issue** to auto-create a correctly named branch for it.                                                                                                                                     |
 
 ## Reporting Issues
 
@@ -136,7 +136,7 @@ This creates a properly named branch (e.g., `feat/button-hover-state`) and opens
 
 1. **Create an issue** describing the feature (see [Reporting Issues](#reporting-issues))
 2. **Create a branch** via the `/cib` comment on the issue
-3. **Implement the feature** following [STYLE_GUIDE.md](STYLE_GUIDE.md)
+3. **Implement the feature** following [STYLE_GUIDE.md](docs/STYLE_GUIDE.md)
 4. **Add visual tests**:
    - Identify which parts of the UI your feature affects
    - Create or update visual regression tests in the component's `.visual.play.ts` file
@@ -145,7 +145,7 @@ This creates a properly named branch (e.g., `feat/button-hover-state`) and opens
    - Write tests covering all critical functionality
    - Include both positive scenarios (expected use) and negative scenarios (edge cases, error handling)
    - Use Page Objects for component interactions
-   - See [ARCHITECTURE.md — Testing Strategy](ARCHITECTURE.md#testing-strategy) for patterns
+   - See [ARCHITECTURE.md — Testing Strategy](docs/ARCHITECTURE.md#testing-strategy) for patterns
 6. **Add a changeset**:
 
    ```bash
@@ -161,7 +161,7 @@ This creates a properly named branch (e.g., `feat/button-hover-state`) and opens
 
 ## Adding a New Component
 
-See [ARCHITECTURE.md — New Component Checklist](ARCHITECTURE.md#new-component-checklist) for the full step-by-step checklist.
+See [ARCHITECTURE.md — New Component Checklist](docs/ARCHITECTURE.md#new-component-checklist) for the full step-by-step checklist.
 
 Key requirements:
 
@@ -206,7 +206,7 @@ Icons are stored in two packages depending on their source and usage:
 
 ## Code Standards
 
-See [STYLE_GUIDE.md](STYLE_GUIDE.md) for naming conventions, prop patterns, CSS variable cascade, and what to avoid.
+See [STYLE_GUIDE.md](docs/STYLE_GUIDE.md) for naming conventions, prop patterns, CSS variable cascade, and what to avoid.
 
 Run these before every PR:
 
@@ -218,7 +218,7 @@ pnpm spell     # Spell check
 
 ## Testing
 
-See [ARCHITECTURE.md — Testing Strategy](ARCHITECTURE.md#testing-strategy) for required test types, Page Object patterns, and test file locations.
+See [ARCHITECTURE.md — Testing Strategy](docs/ARCHITECTURE.md#testing-strategy) for required test types, Page Object patterns, and test file locations.
 
 ```bash
 pnpm test                         # Unit tests
@@ -232,9 +232,9 @@ Please review our [Security Policy](SECURITY.md) before reporting vulnerabilitie
 
 ## Further Reading
 
-- **[DEVELOPMENT.md](DEVELOPMENT.md)** — Setup, dev servers, building, testing commands
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — Workspace structure, component patterns, CSS variables, testing strategy
-- **[STYLE_GUIDE.md](STYLE_GUIDE.md)** — Code standards and naming conventions
+- **[DEVELOPMENT.md](docs/DEVELOPMENT.md)** — Setup, dev servers, building, testing commands
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** — Workspace structure, component patterns, CSS variables, testing strategy
+- **[STYLE_GUIDE.md](docs/STYLE_GUIDE.md)** — Code standards and naming conventions
 - **[SECURITY.md](SECURITY.md)** — Security policy and vulnerability reporting
 - **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** — Community standards
 

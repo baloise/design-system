@@ -43,4 +43,4 @@ PRs are opened against the `next` branch and require:
 - At least one approval
 - A changeset entry (unless docs-only or infrastructure)
 
-See [ARCHITECTURE.md](../../ARCHITECTURE.md#release-and-versioning) for release workflow details.
+See [ARCHITECTURE.md](../ARCHITECTURE.md#release-and-versioning) for release workflow details.

@@ -1,5 +1,7 @@
 # 5. Duplicate pnpm `overrides` in both `pnpm-workspace.yaml` and `package.json`
 
+Package: repo-wide
+
 Date: 2026-07-21
 
 ## Status

@@ -21,7 +21,7 @@ Plain `tsc` compile (`tsc -p tsconfig.lib.json`), matching `packages/tokens` and
 
 ### Verifying the package works
 
-The package's real-world behavior (does it actually work when installed by a React app?) is verified separately by the framework smoke-test app in `test/react/`, not by unit tests in this package. See the root `CONTEXT.md` / `docs/adr/0004-react-smoke-test-app-outside-workspace.md` for why that app deliberately lives outside the pnpm workspace.
+The package's real-world behavior (does it actually work when installed by a React app?) is verified separately by the integration app in `apps/integration-react/`, not by unit tests in this package. See `docs/adr/0009-integration-apps-as-workspace-members.md` for why that app is a normal workspace member resolving this package via `workspace:*`.
 
 ## Key Constraints
 

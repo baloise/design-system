@@ -1,5 +1,5 @@
 <a href="https://design.baloise.dev" target="blank">
-    <img src="https://raw.githubusercontent.com/baloise/design-system/next/docs/src/assets/images/banner.svg?sanitize=true" alt="Helvetia Design System" />
+    <img src="https://raw.githubusercontent.com/baloise/design-system/next/apps/storybook/src/assets/images/banner.svg?sanitize=true" alt="Helvetia Design System" />
 </a>
 
 <p>
@@ -79,10 +79,10 @@ Follow our [Code of Conduct](https://github.com/baloise/design-system/blob/next/
 - **[Documentation](https://design.baloise.dev)** — Component library, design tokens, and interactive examples in Storybook
 - **[Quick Start](https://design.baloise.dev/?path=/docs/development-getting-started--documentation)** — Get started with the design system in your project
 - **[CHANGELOG.md](https://github.com/baloise/design-system/blob/next/CHANGELOG.md)** — Release notes, version history, and changes for each version
-- **[ARCHITECTURE.md](https://github.com/baloise/design-system/blob/next/ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
-- **[DEVELOPMENT.md](https://github.com/baloise/design-system/blob/next/DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting
+- **[ARCHITECTURE.md](https://github.com/baloise/design-system/blob/next/docs/ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
+- **[DEVELOPMENT.md](https://github.com/baloise/design-system/blob/next/docs/DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting
 - **[CONTRIBUTING.md](https://github.com/baloise/design-system/blob/next/CONTRIBUTING.md)** — Contribution workflow, PR process, component checklist, accessibility requirements
-- **[STYLE_GUIDE.md](https://github.com/baloise/design-system/blob/next/STYLE_GUIDE.md)** — Code standards, naming conventions, best practices
+- **[STYLE_GUIDE.md](https://github.com/baloise/design-system/blob/next/docs/STYLE_GUIDE.md)** — Code standards, naming conventions, best practices
 - **[SECURITY.md](https://github.com/baloise/design-system/blob/next/SECURITY.md)** — Security policy, vulnerability reporting, and compliance guidelines
 - **[CODE_OF_CONDUCT.md](https://github.com/baloise/design-system/blob/next/CODE_OF_CONDUCT.md)** — Community standards and expectations
 

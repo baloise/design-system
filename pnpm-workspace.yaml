@@ -1,7 +1,7 @@
 packages:
   - 'packages/*'
   - 'libs/*'
-  - 'docs'
+  - 'apps/*'
 
 linkWorkspacePackages: true
 
@@ -49,3 +49,5 @@ allowBuilds:
   core-js-pure: true
   esbuild: true
   libxmljs2: true
+  lmdb: true
+  msgpackr-extract: true
