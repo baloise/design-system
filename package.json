@@ -28,6 +28,7 @@
     "play:ci": "pnpm --filter @baloise/ds-core play:ci",
     "_build": "==================================================== Build =====================================================",
     "build": "turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-angular && node scripts/build-docs.mjs",
+    "build:vercel": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs",
     "build:force": "turbo run build --force",
     "tokens": "turbo run build --filter=@baloise/ds-tokens --force",
     "css": "turbo run build --filter=@baloise/ds-css --force",
