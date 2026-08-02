@@ -214,7 +214,7 @@ Outputs to `@baloise/ds-css` package.
 
 ### Create Storybook Stories
 
-New components should have `.stories.ts` files in `docs/src/components/<component>/`:
+New components should have `.stories.ts` files in `apps/storybook/src/components/<component>/`:
 
 ```bash
 pnpm docs       # Start Storybook to preview stories

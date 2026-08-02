@@ -1,5 +1,5 @@
 <a href="https://design.baloise.dev" target="blank">
-    <img src="https://raw.githubusercontent.com/baloise/design-system/next/docs/src/assets/images/banner.svg?sanitize=true" alt="Helvetia Design System" />
+    <img src="https://raw.githubusercontent.com/baloise/design-system/next/apps/storybook/src/assets/images/banner.svg?sanitize=true" alt="Helvetia Design System" />
 </a>
 
 <p>

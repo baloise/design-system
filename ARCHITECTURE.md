@@ -50,7 +50,10 @@ libs/
   output-target-web/       # Stencil → Web component output target
   eslint-plugin/           # ESLint plugin and configuration
 
-docs/                 # Storybook documentation (Vite + @storybook/html-vite)
+apps/
+  storybook/          # Storybook documentation (Vite + @storybook/html-vite)
+
+docs/                 # Internal engineering docs (ADRs, agent docs, plans, security)
 ```
 
 ## Build Environment Flags
@@ -405,7 +408,7 @@ Use this checklist when creating a component from scratch:
 - [ ] Add `test/<name>.component.play.ts` interaction tests
 - [ ] Add `test/<name>.visual.play.ts` visual regression tests
 - [ ] Add `test/<name>.a11y.play.ts` accessibility tests
-- [ ] Add Storybook entry under `docs/src/components/<name>/` (stories + MDX)
+- [ ] Add Storybook entry under `apps/storybook/src/components/<name>/` (stories + MDX)
 - [ ] Create changeset entry with `pnpm changeset`
 - [ ] Pass all linting checks: `pnpm lint && pnpm format`
 

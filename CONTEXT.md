@@ -57,5 +57,5 @@ See [CONTEXT-MAP.md](CONTEXT-MAP.md) for package-specific contexts:
 - [[packages/css|packages/css/CONTEXT.md]] — Global styles
 - [[packages/assets|packages/assets/CONTEXT.md]] — Fonts & icons
 - [[packages/playwright|packages/playwright/CONTEXT.md]] — E2E testing
-- [[docs|docs/CONTEXT.md]] — Storybook documentation
+- [[apps/storybook|apps/storybook/CONTEXT.md]] — Storybook documentation
 - [[libs|libs/CONTEXT.md]] — Internal utilities

@@ -85,7 +85,7 @@ Generate Storybook documentation for a component.
 
 **What it does:**
 
-- Creates complete documentation set in `docs/src/components/<component>/`
+- Creates complete documentation set in `apps/storybook/src/components/<component>/`
 - Generates 6 MDX files + 2 TypeScript support files
 - Uses reusable Storybook blocks for consistency
 - Dynamically binds to `components.json` data

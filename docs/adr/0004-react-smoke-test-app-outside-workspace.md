@@ -4,7 +4,7 @@ Date: 2026-07-21
 
 ## Status
 
-Accepted
+Superseded by [ADR-0009](0009-integration-apps-as-workspace-members.md)
 
 ## Context
 

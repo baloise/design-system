@@ -1,6 +1,6 @@
 # ✨ Style Guide — Helvetia Design System
 
-This is a quick reference for component code standards. For comprehensive details, see the [Component Style Guide](docs/src/contributing/10-style-guide.mdx) in the documentation.
+This is a quick reference for component code standards. For comprehensive details, see the [Component Style Guide](apps/storybook/src/contributing/10-style-guide.mdx) in the documentation.
 
 ## Table of Contents
 
@@ -383,7 +383,7 @@ Empty values (`undefined`, `null`, `''`, `NaN`) are skipped by every validator e
 
 For detailed explanations, examples, and comprehensive guidelines, see:
 
-- **[Component Style Guide](docs/src/contributing/10-style-guide.mdx)** — Full reference with code examples
+- **[Component Style Guide](apps/storybook/src/contributing/10-style-guide.mdx)** — Full reference with code examples
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** — Contribution workflow and testing requirements
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — System design, component patterns, and testing strategy
 

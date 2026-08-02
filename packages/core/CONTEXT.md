@@ -603,5 +603,5 @@ See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Design tokens reference
 - [[packages/playwright|packages/playwright/CONTEXT.md]] — Testing library
 - [[packages/css|packages/css/CONTEXT.md]] — Global styles
-- [[docs|docs/CONTEXT.md]] — Storybook documentation
+- [[apps/storybook|apps/storybook/CONTEXT.md]] — Storybook documentation
 - [[root|CONTEXT.md]] — Repository-level concepts

@@ -1,0 +1,29 @@
+{
+  "name": "integration-angular",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "lint": "eslint .",
+    "test": "pnpm exec playwright test"
+  },
+  "dependencies": {
+    "@angular/common": "22.0.8",
+    "@angular/compiler": "22.0.8",
+    "@angular/core": "22.0.8",
+    "@angular/platform-browser": "22.0.8",
+    "@baloise/ds-angular": "workspace:*",
+    "@baloise/ds-css": "workspace:*",
+    "rxjs": "7.8.2",
+    "tslib": "catalog:"
+  },
+  "devDependencies": {
+    "@angular/build": "22.0.8",
+    "@angular/cli": "22.0.8",
+    "@angular/compiler-cli": "22.0.8",
+    "eslint": "catalog:",
+    "typescript": "6.0.3"
+  }
+}
