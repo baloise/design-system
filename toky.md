@@ -163,7 +163,7 @@ Smallest useful slice, deliberately read-only — proves the token data pipeline
 
 - **Location:** `apps/toky` — a Next.js app in the monorepo, next to `packages/*` and `libs/*`.
   - Note: `pnpm-workspace.yaml` currently only globs `packages/*`, `libs/*`, `docs` — needs `apps/*` added when this is scaffolded.
-- **Hosting:** a separate Vercel project pointed at this same repo, Root Directory set to `apps/toky`, with its own build settings/env vars/domain. The existing root `vercel.json` (which deploys `docs/dist`, e.g. Storybook) stays untouched — this is not the same deployment.
+- **Hosting:** out of scope for this slice (see below) — for now the app only needs to run locally via `pnpm --filter toky dev`. When it's tackled, the plan is a separate Vercel project pointed at this same repo, Root Directory set to `apps/toky`, with its own build settings/env vars/domain; the existing root `vercel.json` (which deploys `docs/dist`, e.g. Storybook) would stay untouched, since it's not the same deployment.
 - **Data source:** fetch `*.tokens.json` from GitHub via the GitHub API (not read off local disk), authenticated server-side with the bot PAT described in Auth & permissions (or the interim personal token, until the bot user exists) — needed even for reads, since unauthenticated GitHub API calls are rate-limited (60/hour per IP) and unsuitable for a deployed app. This is _not_ the "auth" listed as out of scope below — that refers to end-user auth (who's allowed to use the app), which stays deferred; this is just a server-held read credential.
 - **UI stack:** plain vanilla HTML — no DS components, no DS CSS tokens/variables either. UI/visual polish (including dogfooding the DS) is a deliberate later pass; the MVP's job is to prove the data pipeline works, not to look good. WCAG 2.2 AA still applies even to this plain-HTML version (semantic `<table>`, `<th scope>`, labelled search `<input>`, visible focus states) — skipping the DS is a shortcut on component reuse/branding, not on accessibility.
 - **Testing:** Vitest tests for the token-parsing/flattening logic only (Global/Alias/Component flattening, alias-reference resolution) — that's the part that can silently break. No Playwright/e2e or UI-level tests yet, since the table/search UI will be rebuilt in the later polish pass.
@@ -171,7 +171,7 @@ Smallest useful slice, deliberately read-only — proves the token data pipeline
   - Read all tokens from `packages/tokens` (Global/Alias/Component), parsed into a flat list.
   - Table view: one row per token — name, layer (Global/Alias/Component), value/preview, and reference target if it's an alias.
   - Search/filter the table by name.
-- **Explicitly out of scope for this slice:** editing (create/rename/move/delete), the PR-mediated write flow, Figma sync (REST-only, no plugin — see Direction), graph view, end-user auth, DS component/token usage. Those build on top of this once the read path is proven.
+- **Explicitly out of scope for this slice:** editing (create/rename/move/delete), the PR-mediated write flow, Figma sync (REST-only, no plugin — see Direction), graph view, end-user auth, DS component/token usage, **deployment/hosting** (no Vercel project yet — local dev only). Those build on top of this once the read path is proven.
 
 ## MVP Implementation Plan
 
@@ -202,18 +202,20 @@ Phased so each phase ends in something runnable/verifiable, not a stack of depen
 - Decide client vs. server filtering (client-side filter over the already-fetched flat list is simplest given the dataset size; avoids a second GitHub API round-trip per keystroke).
 - Verify keyboard operability and visible focus states (WCAG 2.2 AA) on both the input and any dynamically shown/hidden rows.
 
-### Phase 4 — Deployment
+### Phase 4 — Deployment (out of scope)
 
-- Create the separate Vercel project pointed at this repo, Root Directory `apps/toky`, its own env vars (bot PAT) and domain — confirm the existing root `vercel.json` (docs/Storybook) is untouched.
+Deliberately not part of this MVP slice — see the "Explicitly out of scope" bullet above. The app runs locally via `pnpm --filter toky dev` for now; deploying it is a separate, later decision. Left here as a placeholder for when it is picked up, so the phase numbering below stays stable:
+
+- Create a separate Vercel project pointed at this repo, Root Directory `apps/toky`, its own env vars (bot PAT) and domain — confirm the existing root `vercel.json` (docs/Storybook) is untouched.
 - Confirm the deployed app can read live GitHub API data (not a local checkout) and respects the unauthenticated rate-limit concern (i.e., the PAT is actually wired up in the Vercel env, not just locally).
 
 ### Phase 5 — Accessibility & hardening pass
 
 - Full manual WCAG 2.2 AA pass on the shipped table + search: semantic structure, focus order, screen-reader labelling of the search input and table.
 - Confirm behavior on pipeline edge cases surfaced in Phase 1 tests actually renders sanely in the UI (e.g., an unresolved alias reference doesn't crash the row, just shows something legible).
-- Explicitly re-confirm out-of-scope items (editing, PR flow, Figma sync, graph, end-user auth, DS usage) are untouched — this phase closes out the MVP, it doesn't creep into them.
+- Explicitly re-confirm out-of-scope items (editing, PR flow, Figma sync, graph, end-user auth, DS usage, deployment) are untouched — this phase closes out the MVP, it doesn't creep into them.
 
-**Sequencing note:** Phases 0–1 could in principle run in parallel with someone else scaffolding Phase 4's Vercel project, but 2 and 3 are strictly sequential on 1, and 5 is strictly last. Phase 5 closes out the read-only MVP — Phases 6+ below build the editing/multi-brand/Figma layers on top of it, each shipped and verifiable on its own rather than as one big-bang release.
+**Sequencing note:** Phases 0–1 have no dependency on Phase 4 now that it's deferred (previously noted as something that could run in parallel with them). 2 and 3 are strictly sequential on 1, and 5 is strictly last and doesn't depend on Phase 4 either — the read-only MVP is verified and closed out via local dev, not a deployment. Phase 5 closes out the read-only MVP — Phases 6+ below build the editing/multi-brand/Figma layers on top of it, each shipped and verifiable on its own rather than as one big-bang release.
 
 ## Post-MVP Implementation Plan
 

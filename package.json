@@ -16,6 +16,7 @@
     "start:force": "turbo run build --force && pnpm start",
     "docs": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs --serve && storybook dev -p 6006 --config-dir docs/.storybook",
     "docs:preview": "turbo run build --filter=@baloise/ds-core --force && node scripts/build-docs.mjs && http-server docs/dist -p 6006",
+    "toky": "pnpm --filter toky dev",
     "react:app": "bash test/react/build.sh v19 && bash test/react/start.sh v19",
     "angular:app": "bash test/angular/build.sh v22 && bash test/angular/start.sh v22",
     "_playwright": "=============================================== Playwright =================================================",

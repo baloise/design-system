@@ -7,6 +7,8 @@ tmp
 /out-tsc
 www
 generated
+.next
+apps/toky/next-env.d.ts
 vite.config.ts.**.mjs
 .env
 .secrets
