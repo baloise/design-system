@@ -359,5 +359,5 @@ Example: `--ds-button-primary-color-base-text`
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — System design and implementation patterns
 - [STYLE_GUIDE.md](STYLE_GUIDE.md) — Code standards and conventions
-- [packages/tokens/CONTEXT.md](packages/tokens/CONTEXT.md) — Design token architecture
-- [packages/core/CONTEXT.md](packages/core/CONTEXT.md) — Component patterns
+- [packages/tokens/CONTEXT.md](../packages/tokens/CONTEXT.md) — Design token architecture
+- [packages/core/CONTEXT.md](../packages/core/CONTEXT.md) — Component patterns

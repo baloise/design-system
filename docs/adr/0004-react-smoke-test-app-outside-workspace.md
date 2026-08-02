@@ -1,5 +1,7 @@
 # 4. React framework smoke-test app lives outside the pnpm workspace, linked via `pnpm link`
 
+Package: `apps/integration-react`
+
 Date: 2026-07-21
 
 ## Status

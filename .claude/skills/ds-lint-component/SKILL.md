@@ -144,4 +144,4 @@ Reports violations in both `carousel/carousel.tsx` and `carousel/carousel-item.t
 
 ## Related
 
-See [STYLE_GUIDE.md](../../STYLE_GUIDE.md) for component standards.
+See [STYLE_GUIDE.md](../../docs/STYLE_GUIDE.md) for component standards.

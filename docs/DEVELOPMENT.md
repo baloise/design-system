@@ -190,7 +190,7 @@ For code standards, naming conventions, and component patterns, see:
 
 ### Add a New Component
 
-See [CONTRIBUTING.md#adding-a-new-component](CONTRIBUTING.md#adding-a-new-component) for the full checklist.
+See [CONTRIBUTING.md#adding-a-new-component](../CONTRIBUTING.md#adding-a-new-component) for the full checklist.
 
 ### Update Design Tokens
 
@@ -280,15 +280,15 @@ These are typically managed by package scripts and `stencil.config.ts`.
 ## Further Reading
 
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — System design, component lifecycle, build system
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** — Contribution workflow, PR process, testing requirements
+- **[CONTRIBUTING.md](../CONTRIBUTING.md)** — Contribution workflow, PR process, testing requirements
 - **[STYLE_GUIDE.md](STYLE_GUIDE.md)** — Code standards and naming conventions
-- **[Security Policy](SECURITY.md)** — Security reporting and best practices
+- **[Security Policy](../SECURITY.md)** — Security reporting and best practices
 
 ## Need Help?
 
 - **Errors during setup?** Check the [troubleshooting section](#troubleshooting) above
 - **Architecture and design?** See [ARCHITECTURE.md](ARCHITECTURE.md)
-- **Contributing guidelines?** See [CONTRIBUTING.md](CONTRIBUTING.md)
+- **Contributing guidelines?** See [CONTRIBUTING.md](../CONTRIBUTING.md)
 - **Issues or discussions?** Open an issue on [GitHub](https://github.com/baloise/design-system)
 
 Happy coding! 🚀

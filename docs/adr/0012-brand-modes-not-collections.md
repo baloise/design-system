@@ -1,4 +1,6 @@
-# 2. Brands map to Figma modes within one Variable Collection, not separate collections
+# 12. Brands map to Figma modes within one Variable Collection, not separate collections
+
+Package: `packages/tokens`
 
 Date: 2026-07-24
 

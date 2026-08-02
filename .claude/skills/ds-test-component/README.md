@@ -71,7 +71,7 @@ The skill generates up to 6 files per component:
 
 ## References
 
-- [STYLE_GUIDE.md](../../STYLE_GUIDE.md) — Component standards
-- [ARCHITECTURE.md](../../ARCHITECTURE.md) — Component patterns
+- [STYLE_GUIDE.md](../../docs/STYLE_GUIDE.md) — Component standards
+- [ARCHITECTURE.md](../../docs/ARCHITECTURE.md) — Component patterns
 - [packages/playwright/CONTEXT.md](../../packages/playwright/CONTEXT.md) — Testing library details
 - Existing button tests — examples at `packages/core/src/components/button/test/`

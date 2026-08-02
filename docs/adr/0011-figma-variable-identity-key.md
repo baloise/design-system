@@ -1,4 +1,6 @@
-# 1. Figma Variable identity is `variableId`, not name/path
+# 11. Figma Variable identity is `variableId`, not name/path
+
+Package: `packages/tokens`
 
 Date: 2026-07-24
 

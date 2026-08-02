@@ -1,4 +1,6 @@
-# 3. Token references become native Figma variable aliases, not resolved literals
+# 13. Token references become native Figma variable aliases, not resolved literals
+
+Package: `packages/tokens`
 
 Date: 2026-07-24
 

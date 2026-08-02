@@ -1,4 +1,6 @@
-# 6. ds-input-slider commits its value on the native `change` event, not on blur
+# 10. ds-input-slider commits its value on the native `change` event, not on blur
+
+Package: `packages/core`
 
 Date: 2026-07-27
 

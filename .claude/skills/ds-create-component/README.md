@@ -180,7 +180,7 @@ After the skill generates files:
 
 - [SKILL.md](SKILL.md) — Full skill documentation
 - [REFERENCE.md](REFERENCE.md) — File templates and patterns
-- [STYLE_GUIDE.md](../../STYLE_GUIDE.md) — Code standards
+- [STYLE_GUIDE.md](../../docs/STYLE_GUIDE.md) — Code standards
 - [packages/core/CONTEXT.md](../../packages/core/CONTEXT.md) — Component patterns
 - [packages/tokens/CONTEXT.md](../../packages/tokens/CONTEXT.md) — Design tokens
-- [ARCHITECTURE.md](../../ARCHITECTURE.md) — Component structure and CSS cascade
+- [ARCHITECTURE.md](../../docs/ARCHITECTURE.md) — Component structure and CSS cascade

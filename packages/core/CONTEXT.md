@@ -465,7 +465,7 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   programmatic `.set()` call (used by `picker.setValue()` and by
   `DsInputSlider`'s `fill()` test helper) never fires it, only `update` +
   `set`. This preserves
-  [ADR-0006](../../docs/adr/0006-ds-input-slider-change-commit.md)'s
+  [ADR-0010](../../docs/adr/0010-ds-input-slider-change-commit.md)'s
   commit-on-discrete-interaction semantics with a different event source;
   see [ADR-0007](../../docs/adr/0007-ds-input-slider-nouislider.md) for why
   the event source changed at all.
@@ -506,7 +506,7 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   `.disable()`/`.enable()` JS call).
 - **Commit-on-`change`, not blur** — diverges from the shared `FormControl`
   blur-commit convention; see
-  [ADR-0006](../../docs/adr/0006-ds-input-slider-change-commit.md).
+  [ADR-0010](../../docs/adr/0010-ds-input-slider-change-commit.md).
 - **`color` vs. `brand-color`** — general naming convention for bal→ds
   migrations: if an old `bal-*` component had a `color` prop meaning brand/
   theme color, it is renamed to `brand-color` on the `ds-*` version, freeing

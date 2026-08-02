@@ -1,4 +1,6 @@
-# Split `docs/` into `apps/storybook` and `docs/`
+# 8. Split `docs/` into `apps/storybook` and `docs/`
+
+Package: `apps/storybook`
 
 `docs/` used to mix two unrelated things: the Storybook app (`.storybook/`, `src/`, `public/`, `dist/`, `package.json`) and internal-only engineering documentation (`adr/`, `agents/`, `plans/`, `security/`, `CONTEXT.md`). We split them: the app moves to `apps/storybook` as a normal workspace package named `storybook`, added via a new `apps/*` glob in `pnpm-workspace.yaml`. `docs/` stays at its current path but becomes a plain (non-package) folder holding only `adr/`, `agents/`, `plans/`, `security/`, and `CONTEXT.md` no longer applies there — `CONTEXT.md` moves with the app to `apps/storybook/CONTEXT.md`.
 

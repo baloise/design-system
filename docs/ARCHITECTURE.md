@@ -4,8 +4,8 @@
 
 **For domain language, key concepts, and design philosophy**, see:
 
-- [CONTEXT.md](CONTEXT.md) — Repository-level principles and architecture
-- [CONTEXT-MAP.md](CONTEXT-MAP.md) — Per-package domain guides
+- [CONTEXT.md](../CONTEXT.md) — Repository-level principles and architecture
+- [CONTEXT-MAP.md](../CONTEXT-MAP.md) — Per-package domain guides
 
 ## Table of Contents
 
@@ -557,7 +557,7 @@ This gives consumers 2+ release cycles to migrate before the feature is removed.
 ### Version Support
 
 - **Latest major version**: Receives patches and minor updates
-- **Older major versions**: No longer receive updates (see [SECURITY.md](SECURITY.md#supported-versions))
+- **Older major versions**: No longer receive updates (see [SECURITY.md](../SECURITY.md#supported-versions))
 - **LTS branch** (`main`): Parallel releases with same versioning scheme
 - **Prerelease versions**: Snapshot versions (e.g., `1.2.3-snapshot.456.abc1234`) for testing before merge
 

@@ -1,5 +1,7 @@
 # 6. `ds-angular` uses the official `@stencil/angular-output-target`, retiring the custom `libs/output-target-angular`
 
+Package: `packages/angular`
+
 Date: 2026-07-28
 
 ## Status

@@ -1,4 +1,6 @@
-# 4. GitHub writes use the Git Data API for atomic multi-file commits
+# 14. GitHub writes use the Git Data API for atomic multi-file commits
+
+Package: `packages/tokens`
 
 Date: 2026-07-24
 
@@ -10,7 +12,7 @@ Accepted
 
 A single Push-to-Code sync can touch multiple files at once: one or more
 token files (`Base.tokens.json`, `Tcs.tokens.json`) and the sync-state
-baseline file (`.figma-sync-state.json`, see ADR-0005). GitHub's Contents
+baseline file (`.figma-sync-state.json`, see ADR-0015). GitHub's Contents
 API (`PUT /repos/{owner}/{repo}/contents/{path}`) writes one file per call,
 which means one commit per file — a failure between calls would leave the
 branch with a token change but no matching baseline update, corrupting the

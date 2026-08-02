@@ -6637,7 +6637,7 @@ declare namespace LocalJSX {
          */
         "onDsBlur"?: (event: DsInputSliderCustomEvent<InputSliderBlurDetail>) => void;
         /**
-          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.
+          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
          */
         "onDsChange"?: (event: DsInputSliderCustomEvent<InputSliderChangeDetail>) => void;
         /**

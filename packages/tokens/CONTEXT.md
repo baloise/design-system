@@ -291,6 +291,16 @@ Outside Shadow DOM, use tokens directly:
 - **Figma changes are proposals** — A designer editing a Figma Variable does not change the token. It becomes a token change only once pushed through a pull request and merged.
 - **Naming is immutable** — Renaming a token is a breaking change for consumers
 
+## Architectural Decisions
+
+Decisions specific to this package (Figma Variable identity, brand modes, sync baseline, Git Data API writes) live alongside every other package's in the repo-wide ADR log at [`docs/adr/`](../../docs/adr/), tagged `Package: packages/tokens`:
+
+- [ADR-0011](../../docs/adr/0011-figma-variable-identity-key.md) — Figma Variable identity is `variableId`, not name/path
+- [ADR-0012](../../docs/adr/0012-brand-modes-not-collections.md) — Brands map to Figma modes, not separate collections
+- [ADR-0013](../../docs/adr/0013-native-variable-aliasing.md) — Token references become native Figma variable aliases
+- [ADR-0014](../../docs/adr/0014-git-data-api-atomic-commits.md) — GitHub writes use the Git Data API for atomic commits
+- [ADR-0015](../../docs/adr/0015-git-committed-sync-baseline.md) — Sync baseline is a git-committed file
+
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:

@@ -1,5 +1,7 @@
 # 1. ds-date uses external libraries (air-datepicker + imask) inside the shadow root
 
+Package: `packages/core`
+
 Date: 2026-07-13
 
 ## Status

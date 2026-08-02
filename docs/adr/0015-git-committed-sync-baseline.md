@@ -1,4 +1,6 @@
-# 5. Sync baseline is a git-committed file, not local Figma clientStorage
+# 15. Sync baseline is a git-committed file, not local Figma clientStorage
+
+Package: `packages/tokens`
 
 Date: 2026-07-24
 
@@ -21,7 +23,7 @@ different designers working from the same Figma file.
 
 The baseline lives in `packages/tokens/.figma-sync-state.json`, committed
 to the repository in the same commit as the token change it accompanies
-(see ADR-0004). It is keyed by `variableId` and records, at minimum, the
+(see ADR-0014). It is keyed by `variableId` and records, at minimum, the
 last-synced value and the last-synced commit SHA per token.
 
 ## Consequences

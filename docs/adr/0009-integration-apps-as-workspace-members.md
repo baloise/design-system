@@ -1,5 +1,7 @@
 # 9. React and Angular integration apps move to `apps/`, become normal workspace members
 
+Package: `apps/integration-react`, `apps/integration-angular`
+
 Date: 2026-08-02
 
 ## Status
