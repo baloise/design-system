@@ -40,8 +40,10 @@ jobs use Cypress and a version matrix unrelated to today's `test/react`/
    - Drop the per-app `pnpm-workspace.yaml` (`packages: []`) — these apps
      are now genuinely part of the root workspace.
    - Delete `scripts/link.sh` from both (no more manual linking needed).
-   - Add a `play` script (Playwright) to each `package.json` so `turbo
-     run test` / `pnpm play` pick these up automatically.
+   - Add a `play:run` script (Playwright) to each `package.json` —
+     deliberately not named `test`, so the generic `turbo run test` (run
+     by every PR's CI job) doesn't try to run it without a prior build.
+     Each app's dedicated CI job builds it, then runs `pnpm run play:run`.
 
 2. **Delete the old structure**
    - Remove `test/react/` and `test/angular/` entirely (`build.sh`,
@@ -79,9 +81,9 @@ jobs use Cypress and a version matrix unrelated to today's `test/react`/
      `@baloise/ds-angular` via the workspace protocol with no manual
      linking.
    - `pnpm app:react` / `pnpm app:angular` — confirm dev servers start.
-   - `pnpm --filter integration-react play` / `pnpm --filter
-     integration-angular play` — confirm e2e suites run and are
-     discoverable via `turbo run test`.
+   - `pnpm --filter integration-react play:run` / `pnpm --filter
+     integration-angular play:run` — confirm e2e suites run (after
+     building the app first).
    - `pnpm build` — confirm `turbo run build` builds these apps in
      dependency order after `@baloise/ds-core`/`ds-react`/`ds-angular`/
      `ds-css`.

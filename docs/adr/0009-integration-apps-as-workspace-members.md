@@ -35,9 +35,12 @@ git-tracked, ordinary workspace packages (named `integration-react` /
 glob as `apps/storybook`. They depend on `@baloise/ds-react` /
 `@baloise/ds-angular` via `workspace:*`, resolved the normal pnpm way —
 no `build.sh`, no `link.sh`, no per-app lockfile. Their Playwright e2e
-suites are wired into each package's `package.json` as a real script
-(`play`/`test`) so `turbo run test` and `pnpm play` pick them up like
-any other workspace package.
+suites are exposed as a `play:run` script in each package's
+`package.json` — deliberately not named `test`, so the generic
+`turbo run test` (run by every PR's CI job) doesn't pick them up.
+Each app's e2e suite is invoked explicitly by its own dedicated CI job
+(`react`/`angular` in `continuous.yml`), which builds the app first,
+then runs `pnpm run play:run`.
 
 ## Consequences
 

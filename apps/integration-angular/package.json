@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "lint": "eslint .",
-    "test": "pnpm exec playwright test"
+    "play:run": "pnpm exec playwright test"
   },
   "dependencies": {
     "@angular/common": "22.0.8",

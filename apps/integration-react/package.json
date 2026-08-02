@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "test": "pnpm exec playwright test"
+    "play:run": "pnpm exec playwright test"
   },
   "dependencies": {
     "@baloise/ds-css": "workspace:*",

@@ -222,7 +222,7 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: apps/integration-react
-        run: pnpm exec playwright test
+        run: pnpm run play:run
 
       - name: Upload Playwright HTML report
         if: always()
@@ -268,7 +268,7 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: apps/integration-angular
-        run: pnpm exec playwright test
+        run: pnpm run play:run
 
       - name: Upload Playwright HTML report
         if: always()
