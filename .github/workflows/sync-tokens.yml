@@ -47,7 +47,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.diff.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
           commit-message: 'chore(tokens): sync tokens from Token Studio release'
