@@ -6,7 +6,7 @@ import { Background, Controls, Handle, Position, ReactFlow, ReactFlowProvider } 
 import type { Edge, Node, NodeProps } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { formatValue, getColorHex } from '@/src/tokens/format'
+import { formatValue, getColorHex, toSlashPath } from '@/src/tokens/format'
 import { buildConsumerTree } from '@/src/tokens/graph'
 import type { GraphNode } from '@/src/tokens/graph'
 import type { FlatToken, TokenLayer } from '@/src/tokens/types'
@@ -55,7 +55,13 @@ function TokenNode({ data }: NodeProps<Node<TokenNodeData>>) {
         {data.rest && <span className="text-xs text-muted-foreground">{data.rest}</span>}
       </div>
       <div className="mt-1 flex items-center gap-1.5 rounded bg-zinc-500/25 px-1.5 py-1 text-[8px] text-foreground">
-        {data.hex && <span aria-hidden="true" className="size-2.5 shrink-0 rounded-sm border" style={{ backgroundColor: data.hex }} />}
+        {data.hex && (
+          <span
+            aria-hidden="true"
+            className="size-2.5 shrink-0 rounded-sm border"
+            style={{ backgroundColor: data.hex }}
+          />
+        )}
         <span className="truncate">{data.valueText}</span>
       </div>
       <Handle type="source" position={Position.Top} style={{ opacity: 0 }} />
@@ -118,7 +124,7 @@ export function TokenGraph({
     const isReference = Boolean(token?.referenceTarget)
     const hex = !isReference && token?.type === 'color' ? getColorHex(token?.resolvedValue) : null
     const valueText = isReference
-      ? (referencedToken?.name ?? token!.referenceTarget!)
+      ? toSlashPath(referencedToken?.name ?? token!.referenceTarget!)
       : formatValue(token?.resolvedValue)
     return {
       id: node.id,
@@ -126,7 +132,7 @@ export function TokenGraph({
       position: positions.get(node.id) ?? { x: 0, y: 0 },
       data: {
         firstName,
-        rest: restParts.join('.'),
+        rest: restParts.join('/'),
         layer: node.layer,
         isRoot: node.id === rootPath,
         valueText,
@@ -154,10 +160,10 @@ export function TokenGraph({
     <Dialog open onOpenChange={open => !open && onClose()}>
       <DialogContent
         aria-label={`Reference graph for ${rootPath}`}
-        className="inset-0 top-0 left-0 flex h-[100vh] max-h-[100vh] w-[100vw] max-w-[100vw] translate-x-0 translate-y-0 flex-col rounded-none sm:max-w-[100vw]"
+        className="inset-6 flex h-[calc(100vh-3rem)] max-h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] max-w-[calc(100vw-3rem)] translate-x-0 translate-y-0 flex-col sm:max-w-[calc(100vw-3rem)]"
       >
         <DialogHeader>
-          <DialogTitle>How does {rootPath} connect?</DialogTitle>
+          <DialogTitle>Relations of {toSlashPath(rootPath)}</DialogTitle>
         </DialogHeader>
 
         {!hasConnections ? (

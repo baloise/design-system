@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { filterTokensByName } from './filter'
+import { filterTokensByName, normalizeSearchText } from './filter'
 import type { FlatToken } from './types'
 
 function makeToken(overrides: Partial<FlatToken>): FlatToken {
@@ -44,5 +44,28 @@ describe('filterTokensByName', () => {
   it('matches against name only, not layer or resolvedValue', () => {
     expect(filterTokensByName(tokens, 'Alias')).toEqual([])
     expect(filterTokensByName(tokens, '#FFFFFF')).toEqual([])
+  })
+
+  it('ignores emoji when matching', () => {
+    expect(filterTokensByName(tokens, '🌈 white')).toEqual([tokens[0], tokens[2]])
+  })
+
+  it('treats "." and "/" as equivalent separators, on both sides', () => {
+    expect(filterTokensByName(tokens, 'Background/Color')).toEqual([tokens[2]])
+    expect(filterTokensByName(tokens, 'Background.Color')).toEqual([tokens[2]])
+  })
+
+  it('matches a multi-segment slash query against a dotted name', () => {
+    expect(filterTokensByName(tokens, 'color/white')).toEqual([tokens[0], tokens[2]])
+  })
+})
+
+describe('normalizeSearchText', () => {
+  it('lowercases, strips emoji, and unifies "." and "/" into spaces', () => {
+    expect(normalizeSearchText('🌈 Color.Danger/1')).toBe('color danger 1')
+  })
+
+  it('collapses repeated whitespace left by stripped separators/emoji', () => {
+    expect(normalizeSearchText('  Color..Danger  ')).toBe('color danger')
   })
 })

@@ -2,6 +2,13 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
+// Token names/paths are stored dot-joined (e.g. "🌈 Color.Neutral") since dots
+// can't appear in a group/leaf segment. Display-only — never feed the result
+// back into anything that parses a path, name, or referenceTarget.
+export function toSlashPath(dotted: string): string {
+  return dotted.split('.').join('/')
+}
+
 export function getColorHex(value: unknown): string | null {
   if (!isPlainObject(value)) return null
   return typeof value.hex === 'string' ? value.hex : null

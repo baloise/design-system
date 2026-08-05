@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatValue, getColorHex, hexToColorValue } from './format'
+import { formatValue, getColorHex, hexToColorValue, toSlashPath } from './format'
 
 const colorValue = { colorSpace: 'srgb', components: [1, 1, 1], alpha: 1, hex: '#FFFFFF' }
 
@@ -58,5 +58,15 @@ describe('formatValue', () => {
 
   it('falls back to JSON.stringify for other object shapes', () => {
     expect(formatValue({ foo: 'bar' })).toBe('{"foo":"bar"}')
+  })
+})
+
+describe('toSlashPath', () => {
+  it('renders a dot-joined path with Figma-style slashes', () => {
+    expect(toSlashPath('🌈 Color.Neutral')).toBe('🌈 Color/Neutral')
+  })
+
+  it('leaves a name with no group segments unchanged', () => {
+    expect(toSlashPath('Neutral')).toBe('Neutral')
   })
 })

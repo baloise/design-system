@@ -10,10 +10,10 @@ const fixture = {
         $extensions: { 'com.figma.variableId': 'VariableID:1:1' },
       },
     },
-    Opacity: {
+    'Opacity': {
       '0': { $type: 'number', $value: 0 },
     },
-    Shadow: {
+    'Shadow': {
       '0': { $type: 'string', $value: '0 1px 2px rgba(0,0,0,0.1)' },
     },
   },
@@ -41,7 +41,7 @@ const fixture = {
       },
     },
   },
-  $extensions: { 'com.figma.modeName': 'Base' },
+  '$extensions': { 'com.figma.modeName': 'Base' },
 }
 
 const cyclicFixture = {

@@ -28,6 +28,7 @@ describe('fetchBaseTokensFile', () => {
     expect(fetchMock).toHaveBeenCalledWith(
       'https://api.github.com/repos/baloise/design-system/contents/packages/tokens/tokens/Base.tokens.json?ref=next',
       {
+        cache: 'no-store',
         headers: {
           Authorization: 'Bearer test-token',
           Accept: 'application/vnd.github.raw+json',
@@ -45,6 +46,16 @@ describe('fetchBaseTokensFile', () => {
 
     const [url] = fetchMock.mock.calls[0] as [string]
     expect(url).toContain('ref=my-branch')
+  })
+
+  it('reads from a caller-supplied ref instead of the default', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response('{}', { status: 200 }))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await fetchBaseTokensFile('toky/update-next')
+
+    const [url] = fetchMock.mock.calls[0] as [string]
+    expect(url).toContain('ref=toky/update-next')
   })
 
   it('throws a descriptive error on a non-OK response', async () => {

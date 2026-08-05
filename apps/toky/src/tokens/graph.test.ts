@@ -68,7 +68,12 @@ describe('buildConsumerTree', () => {
     const tree = buildConsumerTree(tokens, '🌐 Global.Primary5')
 
     expect(tree.nodes).toHaveLength(3)
-    expect(tree.nodes.filter(n => n.depth === 1).map(n => n.id).sort()).toEqual(['🔗 Alias.A', '🔗 Alias.B'])
+    expect(
+      tree.nodes
+        .filter(n => n.depth === 1)
+        .map(n => n.id)
+        .sort(),
+    ).toEqual(['🔗 Alias.A', '🔗 Alias.B'])
     expect(tree.edges).toHaveLength(2)
   })
 
