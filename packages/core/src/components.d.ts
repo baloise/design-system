@@ -1002,6 +1002,11 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * If `true`, the date picker is presented inline and no input field is shown.
+          * @default false
+         */
+        "inline": boolean;
+        /**
           * If `true` the component gets an invalid style.
           * @default false
          */
@@ -5895,6 +5900,11 @@ declare namespace LocalJSX {
          */
         "freeSolo"?: boolean;
         /**
+          * If `true`, the date picker is presented inline and no input field is shown.
+          * @default false
+         */
+        "inline"?: boolean;
+        /**
           * If `true` the component gets an invalid style.
           * @default false
          */
@@ -8879,6 +8889,7 @@ declare namespace LocalJSX {
         "autocomplete": InputAutocomplete;
         "debounce": number;
         "autoInvalidOff": boolean;
+        "inline": boolean;
         "loading": boolean;
         "min": string | undefined;
         "max": string | undefined;
