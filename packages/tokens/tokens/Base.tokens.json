@@ -1365,6 +1365,10 @@
           "alpha": 1,
           "hex": "#1551B2"
         }
+      },
+      "WhitePhase2Clone": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.WhitePhase2Rename}"
       }
     },
     "🗂️ Elevation": {
