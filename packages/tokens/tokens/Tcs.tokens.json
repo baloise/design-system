@@ -5,9 +5,13 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [1, 1, 1],
+          "components": [
+            1,
+            0,
+            0
+          ],
           "alpha": 1,
-          "hex": "#FFFFFF"
+          "hex": "#FF0000"
         }
       }
     }
