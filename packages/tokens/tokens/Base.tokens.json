@@ -1353,7 +1353,7 @@
           }
         }
       },
-      "WhitePhase2": {
+      "WhitePhase2Rename": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
