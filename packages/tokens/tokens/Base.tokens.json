@@ -1352,6 +1352,19 @@
             ]
           }
         }
+      },
+      "Neutral copy": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0,
+          "hex": "#FFFFFF"
+        }
       }
     },
     "🗂️ Elevation": {
