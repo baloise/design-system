@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildConsumerTree, buildConsumerTreeForRoots } from './graph'
+import { buildConsumerTree, buildConsumerTreeForRoots, countDirectReferences } from './graph'
 import type { FlatToken } from './types'
 
 function makeToken(overrides: Partial<FlatToken>): FlatToken {
@@ -208,5 +208,36 @@ describe('buildConsumerTreeForRoots', () => {
 
     expect(tree.nodes).toEqual([{ id: '🌐 Global.Lonely', name: 'Lonely', layer: 'Global', depth: 0 }])
     expect(tree.edges).toEqual([])
+  })
+})
+
+describe('countDirectReferences', () => {
+  it('counts how many tokens reference each target', () => {
+    const tokens: FlatToken[] = [
+      makeToken({ path: ['🌐 Global', 'White'], name: 'White', layer: 'Global' }),
+      makeToken({
+        path: ['🔗 Alias', 'A'],
+        name: 'A',
+        layer: 'Alias',
+        referenceTarget: '🌐 Global.White',
+      }),
+      makeToken({
+        path: ['🔗 Alias', 'B'],
+        name: 'B',
+        layer: 'Alias',
+        referenceTarget: '🌐 Global.White',
+      }),
+    ]
+
+    const counts = countDirectReferences(tokens)
+
+    expect(counts.get('🌐 Global.White')).toBe(2)
+    expect(counts.get('🔗 Alias.A')).toBeUndefined()
+  })
+
+  it('returns an empty map when nothing references anything', () => {
+    const tokens: FlatToken[] = [makeToken({ path: ['🌐 Global', 'Lonely'], name: 'Lonely', layer: 'Global' })]
+
+    expect(countDirectReferences(tokens)).toEqual(new Map())
   })
 })

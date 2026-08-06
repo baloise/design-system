@@ -1,20 +1,29 @@
 # Figma Token Sync Plugin — Implementation Plan
 
-Status: proposed · Owner: packages/tokens · Related: [ADR 0001](adr/0001-figma-variable-identity-key.md), [ADR 0002](adr/0002-brand-modes-not-collections.md), [ADR 0003](adr/0003-native-variable-aliasing.md), [ADR 0004](adr/0004-git-data-api-atomic-commits.md), [ADR 0005](adr/0005-git-committed-sync-baseline.md)
+Status: proposed, scope amended by [ADR 0006](adr/0006-github-action-supersedes-plugin-pull.md) · Owner: packages/tokens · Related: [ADR 0001](adr/0001-figma-variable-identity-key.md), [ADR 0002](adr/0002-brand-modes-not-collections.md), [ADR 0003](adr/0003-native-variable-aliasing.md), [ADR 0004](adr/0004-git-data-api-atomic-commits.md), [ADR 0005](adr/0005-git-committed-sync-baseline.md), [ADR 0006](adr/0006-github-action-supersedes-plugin-pull.md)
+
+> **Scope amendment (2026-08-06):** Pull (from Code) — originally Phase 2
+> below — is no longer part of this plugin. It's owned by the Figma Sync
+> GitHub Action instead; see [ADR 0006](adr/0006-github-action-supersedes-plugin-pull.md).
+> The plugin's scope is now Phase 1 (read-only diff status) and Phase 3
+> (Push, Figma→GitHub) only. Phase 2 is kept below, struck through, for
+> historical context — the data model and diagrams it describes now live
+> in the Action instead.
 
 ## 1. Purpose
 
-Replace the manual Figma import/export round-trip with a plugin that keeps
-Figma Variables and `packages/tokens/tokens/*.tokens.json` in sync,
-bidirectionally, through GitHub Pull Requests — while staying fully
-compatible with the Design Tokens Format Module 2025.10, since Style
-Dictionary and Figma's own token importer both depend on that format.
+Keep Figma Variables and `packages/tokens/tokens/*.tokens.json` in sync
+through GitHub Pull Requests, while staying fully compatible with the
+Design Tokens Format Module 2025.10, since Style Dictionary and Figma's own
+token importer both depend on that format. The plugin itself now covers
+only two of the three sync legs — read-only diff status, and Push
+(Figma→GitHub) — with Pull (GitHub→Figma) handled automatically by a
+separate GitHub Action ([ADR 0006](adr/0006-github-action-supersedes-plugin-pull.md)).
 
-This document is an MVP plan. Naming validation, linting, automatic
-(webhook-driven) synchronization, conflict _resolution_ (only conflict
-_detection and display_ is in scope), token usage analysis, and approval
-workflows beyond GitHub PR review are explicitly out of scope — see
-[§8 Future Extensions](#8-future-extensions).
+This document is an MVP plan. Naming validation, linting, conflict
+_resolution_ (only conflict _detection and display_ is in scope), token
+usage analysis, and approval workflows beyond GitHub PR review are
+explicitly out of scope — see [§8 Future Extensions](#8-future-extensions).
 
 ## 2. Governing decisions
 
@@ -403,7 +412,11 @@ before anything can mutate either side — the single highest-risk piece
 
 ---
 
-### Phase 2 — Pull from Code (GitHub → Figma)
+### ~~Phase 2 — Pull from Code (GitHub → Figma)~~ — removed, see ADR 0006
+
+> Superseded by the Figma Sync GitHub Action
+> ([ADR 0006](adr/0006-github-action-supersedes-plugin-pull.md)). Kept below
+> for historical context only — this is not built as part of the plugin.
 
 **Objectives**: automate what manual Figma import does today, preserving
 IDs and native references.
@@ -583,10 +596,11 @@ conflict at the next sync regardless.
   establishes is the prerequisite for any future auto-merge or
   resolution-assist feature — Phase 5 explicitly stops at _detecting and
   warning about_ conflicts, not resolving them.
-- **Automatic synchronization**: blocked entirely by Figma's lack of
-  Variable-change webhooks; would require a fundamentally different
-  architecture (e.g. a background service polling via the Figma REST API
-  instead of a plugin), out of scope for this plan.
+- ~~**Automatic synchronization**~~: done — see the Figma Sync GitHub Action
+  and [ADR 0006](adr/0006-github-action-supersedes-plugin-pull.md). This
+  bullet originally proposed "a background service polling via the Figma
+  REST API instead of a plugin"; that's exactly what got built, for the
+  Pull direction only.
 - **Richer review workflows**: PR-based review is deliberately the ceiling
   for this MVP; anything beyond it (in-plugin approval states, required
   reviewers per brand) would layer on top of the existing PR without

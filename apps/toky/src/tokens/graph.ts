@@ -19,6 +19,20 @@ export interface ConsumerTree {
 }
 
 /**
+ * Direct reference counts for every token: how many other tokens point at
+ * it via `referenceTarget`, keyed by path. Used for a "used N times" badge —
+ * unlike `buildConsumerTree`, this doesn't walk transitively.
+ */
+export function countDirectReferences(tokens: FlatToken[]): Map<string, number> {
+  const counts = new Map<string, number>()
+  for (const token of tokens) {
+    if (!token.referenceTarget) continue
+    counts.set(token.referenceTarget, (counts.get(token.referenceTarget) ?? 0) + 1)
+  }
+  return counts
+}
+
+/**
  * Everything connected to `rootPath` through references, in both directions:
  * downward, everything that (transitively) references it — depth 0 is the
  * token itself, depth 1 is everything that points directly at it, depth 2 is

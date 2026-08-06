@@ -50,6 +50,7 @@ import type { ChangeStatus, TokenDiffEntry, WorkingToken } from '@/src/tokens/ed
 import { filterTokensByName, normalizeSearchText } from '@/src/tokens/filter'
 import { resolveReferences } from '@/src/tokens/flatten'
 import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
+import { countDirectReferences } from '@/src/tokens/graph'
 import { getNextCell } from '@/src/tokens/keyboard'
 import type { NavigationKey } from '@/src/tokens/keyboard'
 import type { SyncStatus } from '@/src/tokens/github-write'
@@ -426,6 +427,8 @@ export function TokenEditor({
     }
     return counts
   }, [working, matchedTokens])
+
+  const referenceCounts = useMemo(() => countDirectReferences(working.map(w => w.token)), [working])
 
   const visibleGroups = useMemo(() => {
     const groups = filteredWorking.flatMap(w => [outerGroupFor(w.token.name), groupPrefixFor(w.token.name)])
@@ -954,7 +957,7 @@ export function TokenEditor({
     return (
       <TableRow className="hover:bg-transparent">
         <TableCell
-          colSpan={selectedBrand ? 4 : 3}
+          colSpan={4}
           className={cn('bg-muted/50 p-0 font-medium text-muted-foreground', isOuter ? 'text-sm' : 'text-xs')}
           style={{ paddingLeft: depth * 16 }}
         >
@@ -1319,6 +1322,11 @@ export function TokenEditor({
                     {selectedBrand}
                   </TableHead>
                 )}
+                {!selectedBrand && (
+                  <TableHead scope="col" className="sticky top-0 z-20 bg-background shadow-[0_2px_0_0_#ffffff]">
+                    Used
+                  </TableHead>
+                )}
                 <TableHead
                   scope="col"
                   className="sticky top-0 z-20 rounded-tr-[10px] bg-background text-right shadow-[0_2px_0_0_#ffffff]"
@@ -1569,6 +1577,27 @@ export function TokenEditor({
                             </div>
                           )}
                         </TableCell>
+                        {!selectedBrand && (
+                          <TableCell className="p-0 px-1 text-muted-foreground">
+                            {(() => {
+                              const usageCount = referenceCounts.get(token.path.join('.')) ?? 0
+                              return (
+                                usageCount > 0 && (
+                                  <Button
+                                    type="button"
+                                    variant="ghost"
+                                    size="sm"
+                                    className="h-auto gap-1 px-1.5 py-0.5"
+                                    onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
+                                  >
+                                    <NetworkIcon className="size-3.5" />
+                                    {usageCount} {usageCount === 1 ? 'use' : 'uses'}
+                                  </Button>
+                                )
+                              )
+                            })()}
+                          </TableCell>
+                        )}
                         {selectedBrand &&
                           (() => {
                             const brand = selectedBrand
@@ -1800,7 +1829,7 @@ export function TokenEditor({
                     )}
                     {!hidden && cellErrors.length > 0 && (
                       <TableRow className="bg-destructive/10 hover:bg-destructive/15">
-                        <TableCell colSpan={selectedBrand ? 4 : 3} className="p-0">
+                        <TableCell colSpan={4} className="p-0">
                           <Alert
                             variant="destructive"
                             role="alert"
