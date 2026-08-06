@@ -7,7 +7,7 @@ import type { Edge, Node, NodeProps } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { formatValue, getColorHex, toSlashPath } from '@/src/tokens/format'
-import { buildConsumerTree } from '@/src/tokens/graph'
+import { buildConsumerTreeForRoots } from '@/src/tokens/graph'
 import type { GraphNode } from '@/src/tokens/graph'
 import type { FlatToken, TokenLayer } from '@/src/tokens/types'
 
@@ -101,17 +101,23 @@ function layoutNodes(
 
 export function TokenGraph({
   tokens,
-  rootPath,
+  rootPaths,
+  title,
   onClose,
 }: {
   tokens: FlatToken[]
-  rootPath: string
+  // Usually a single token; a group's "show graph" passes every token in it,
+  // so the resulting graph is the union of each one's connections.
+  rootPaths: string[]
+  title: string
   onClose: () => void
 }) {
   const { nodes: graphNodes, edges: graphEdges } = useMemo(
-    () => buildConsumerTree(tokens, rootPath),
-    [tokens, rootPath],
+    () => buildConsumerTreeForRoots(tokens, rootPaths),
+    [tokens, rootPaths],
   )
+
+  const rootPathSet = useMemo(() => new Set(rootPaths), [rootPaths])
 
   const tokenById = useMemo(() => new Map(tokens.map(token => [token.path.join('.'), token])), [tokens])
 
@@ -134,7 +140,7 @@ export function TokenGraph({
         firstName,
         rest: restParts.join('/'),
         layer: node.layer,
-        isRoot: node.id === rootPath,
+        isRoot: rootPathSet.has(node.id),
         valueText,
         hex,
       },
@@ -154,21 +160,23 @@ export function TokenGraph({
     style: { stroke: '#ffffff', strokeWidth: 2.5, strokeDasharray: '6 4' },
   }))
 
-  const hasConnections = graphNodes.length > 1
+  const hasConnections = graphEdges.length > 0
 
   return (
     <Dialog open onOpenChange={open => !open && onClose()}>
       <DialogContent
-        aria-label={`Reference graph for ${rootPath}`}
+        aria-label={`Reference graph for ${title}`}
         className="inset-6 flex h-[calc(100vh-3rem)] max-h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] max-w-[calc(100vw-3rem)] translate-x-0 translate-y-0 flex-col sm:max-w-[calc(100vw-3rem)]"
       >
         <DialogHeader>
-          <DialogTitle>Relations of {toSlashPath(rootPath)}</DialogTitle>
+          <DialogTitle>Relations of {title}</DialogTitle>
         </DialogHeader>
 
         {!hasConnections ? (
           <p className="text-sm text-muted-foreground">
-            This token has no references — it neither points at another token nor is pointed at by one.
+            {rootPaths.length > 1
+              ? 'None of these tokens have any references — they neither point at another token nor are pointed at by one.'
+              : 'This token has no references — it neither points at another token nor is pointed at by one.'}
           </p>
         ) : (
           <div className="min-h-0 flex-1">

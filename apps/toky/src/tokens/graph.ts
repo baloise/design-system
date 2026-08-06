@@ -88,3 +88,26 @@ export function buildConsumerTree(tokens: FlatToken[], rootPath: string): Consum
 
   return { nodes, edges }
 }
+
+/**
+ * The union of `buildConsumerTree` for every path in `rootPaths` — every node
+ * and edge reachable from any of them, deduplicated. Used for a group's graph
+ * (e.g. every token under "Footer/Color/Link"), where several tokens act as
+ * roots at once rather than just one.
+ */
+export function buildConsumerTreeForRoots(tokens: FlatToken[], rootPaths: string[]): ConsumerTree {
+  const nodesById = new Map<string, GraphNode>()
+  const edgesById = new Map<string, GraphEdge>()
+
+  for (const rootPath of rootPaths) {
+    const tree = buildConsumerTree(tokens, rootPath)
+    for (const node of tree.nodes) {
+      if (!nodesById.has(node.id)) nodesById.set(node.id, node)
+    }
+    for (const edge of tree.edges) {
+      if (!edgesById.has(edge.id)) edgesById.set(edge.id, edge)
+    }
+  }
+
+  return { nodes: [...nodesById.values()], edges: [...edgesById.values()] }
+}

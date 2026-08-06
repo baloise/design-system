@@ -5,6 +5,8 @@ import type { ComponentType, PointerEvent as ReactPointerEvent, ReactNode } from
 import { Badge } from '@/components/ui/badge'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
+import type { SyncStatus } from '@/src/tokens/github-write'
+import { SyncStatusBadge } from './header'
 
 export const SIDEBAR_MIN_WIDTH = 240
 export const SIDEBAR_MAX_WIDTH = 640
@@ -34,40 +36,45 @@ export function SidebarActivityBar({
   return (
     <nav
       aria-label="Sidebar views"
-      className="fixed top-16 bottom-0 left-0 z-40 flex flex-col items-center gap-1 bg-background pt-0 pb-2"
+      className="fixed top-0 bottom-0 left-0 z-40 flex flex-col items-center border-r border-border bg-background"
       style={{ width: ACTIVITY_BAR_WIDTH }}
     >
-      {items.map(item => {
-        const Icon = item.icon
-        const isActive = item.id === activeId
-        return (
-          <Tooltip key={item.id}>
-            <TooltipTrigger
-              render={
-                <button
-                  type="button"
-                  aria-label={item.label}
-                  aria-pressed={isActive}
-                  onClick={() => onSelect(item.id)}
-                  className={cn(
-                    'relative flex size-12 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground',
-                    isActive &&
-                      'text-foreground before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:rounded-full before:bg-primary',
-                  )}
-                />
-              }
-            >
-              <Icon className="size-6" />
-              {!!item.badge && (
-                <span className="absolute right-0.5 bottom-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-medium text-primary-foreground">
-                  {item.badge > 99 ? '99+' : item.badge}
-                </span>
-              )}
-            </TooltipTrigger>
-            <TooltipContent side="right">{item.label}</TooltipContent>
-          </Tooltip>
-        )
-      })}
+      <div className="flex h-14 w-full shrink-0 items-center justify-center border-b border-border">
+        <img src="/logo.svg" alt="Design System" className="size-8" />
+      </div>
+      <div className="flex flex-1 flex-col items-center gap-1 pb-2">
+        {items.map(item => {
+          const Icon = item.icon
+          const isActive = item.id === activeId
+          return (
+            <Tooltip key={item.id}>
+              <TooltipTrigger
+                render={
+                  <button
+                    type="button"
+                    aria-label={item.label}
+                    aria-pressed={isActive}
+                    onClick={() => onSelect(item.id)}
+                    className={cn(
+                      'relative flex size-12 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground',
+                      isActive &&
+                        'text-foreground before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:rounded-full before:bg-primary',
+                    )}
+                  />
+                }
+              >
+                <Icon className="size-6" />
+                {!!item.badge && (
+                  <span className="absolute right-0.5 bottom-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-medium text-primary-foreground">
+                    {item.badge > 99 ? '99+' : item.badge}
+                  </span>
+                )}
+              </TooltipTrigger>
+              <TooltipContent side="right">{item.label}</TooltipContent>
+            </Tooltip>
+          )
+        })}
+      </div>
     </nav>
   )
 }
@@ -80,6 +87,7 @@ export function SidebarPanel({
   count,
   width,
   onWidthChange,
+  syncStatus,
   toolbar,
   children,
 }: {
@@ -87,6 +95,10 @@ export function SidebarPanel({
   count: number
   width: number
   onWidthChange: (width: number) => void
+  // Rendered as the panel's top row, in the app header's place — the header
+  // no longer exists as its own bar (see SidebarActivityBar's logo, which
+  // took its other half).
+  syncStatus: SyncStatus
   // Non-scrolling controls pinned between the header and the scrollable list
   // (e.g. staged changes' description/branch/submit form) — optional since
   // most panels (problems, ...) are just a list.
@@ -123,7 +135,7 @@ export function SidebarPanel({
 
   return (
     <aside
-      className="fixed top-16 bottom-0 z-30 flex flex-col border-r-2 border-[color-mix(in_oklch,var(--card),var(--muted)_50%)] bg-card"
+      className="fixed top-0 bottom-0 z-30 flex flex-col border-r-2 border-[color-mix(in_oklch,var(--card),var(--muted)_50%)] bg-background"
       style={{ width, left: ACTIVITY_BAR_WIDTH }}
     >
       <div
@@ -140,17 +152,21 @@ export function SidebarPanel({
           if (e.key === 'ArrowLeft') onWidthChange(Math.max(SIDEBAR_MIN_WIDTH, width - 16))
         }}
         className={cn(
-          'absolute top-0 -right-1.5 z-10 h-full w-3 cursor-col-resize touch-none',
+          'absolute top-0 -right-1.5 z-10 h-full w-2 cursor-col-resize touch-none',
           'after:absolute after:top-0 after:right-1.5 after:h-full after:w-0.5 after:bg-transparent',
           'hover:after:bg-ring focus-visible:after:bg-ring',
         )}
       />
 
-      <div className="flex h-12 items-center justify-between border-b border-border px-4">
-        <h2 className="text-sm font-semibold">{title}</h2>
+      <div className="flex h-14 shrink-0 items-center gap-3 border-b border-border bg-background px-4">
+        <span className="font-heading text-lg font-semibold">Toky</span>
+        <SyncStatusBadge syncStatus={syncStatus} />
+      </div>
+      <div className="flex h-10 items-center justify-between px-4 uppercase">
+        <h2 className="text-sm font-semibold text-muted-foreground">{title}</h2>
         <Badge variant="secondary">{count}</Badge>
       </div>
-      {toolbar && <div className="space-y-2 border-b border-border p-3">{toolbar}</div>}
+      {toolbar && <div className="space-y-2 p-3">{toolbar}</div>}
       <div className="flex-1 overflow-y-auto p-3">{children}</div>
     </aside>
   )

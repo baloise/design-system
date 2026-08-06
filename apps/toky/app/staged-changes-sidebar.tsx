@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import type { TokenDiffEntry, TokenDiffKind } from '@/src/tokens/edit'
+import type { SyncStatus } from '@/src/tokens/github-write'
 import { SidebarPanel } from './sidebar'
 
 export const DIFF_KIND_LABEL: Record<TokenDiffKind, string> = {
@@ -100,6 +101,7 @@ export function StagedChangesSidebar({
   brandDiffs,
   width,
   onWidthChange,
+  syncStatus,
   description,
   onDescriptionChange,
   targetBranch,
@@ -119,6 +121,7 @@ export function StagedChangesSidebar({
   brandDiffs: Record<string, TokenDiffEntry[]>
   width: number
   onWidthChange: (width: number) => void
+  syncStatus: SyncStatus
   description: string
   onDescriptionChange: (value: string) => void
   targetBranch: string
@@ -141,6 +144,7 @@ export function StagedChangesSidebar({
       count={totalCount}
       width={width}
       onWidthChange={onWidthChange}
+      syncStatus={syncStatus}
       toolbar={
         <>
           <Textarea

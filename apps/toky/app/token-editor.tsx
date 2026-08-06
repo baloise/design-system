@@ -8,6 +8,7 @@ import {
   ChevronDownIcon,
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
+  EllipsisIcon,
   GitBranchIcon,
   HexagonIcon,
   Link2Icon,
@@ -35,12 +36,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { computeDiff, describeChangeStatus, effectiveValue, pathFor } from '@/src/tokens/edit'
 import type { ChangeStatus, TokenDiffEntry, WorkingToken } from '@/src/tokens/edit'
@@ -49,6 +52,7 @@ import { resolveReferences } from '@/src/tokens/flatten'
 import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
 import { getNextCell } from '@/src/tokens/keyboard'
 import type { NavigationKey } from '@/src/tokens/keyboard'
+import type { SyncStatus } from '@/src/tokens/github-write'
 import { validateWorkingTokens } from '@/src/tokens/validate'
 import type { FlatToken, TokenLayer } from '@/src/tokens/types'
 import { BrandsSidebar } from './brands-sidebar'
@@ -63,9 +67,6 @@ import { TokenGraph } from './token-graph'
 
 const LAYERS: TokenLayer[] = ['Global', 'Alias', 'Component']
 const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗', Component: '🧩' }
-// Matches the site header's h-16 — the table header sticks right below the
-// subheader, which itself sticks right below the site header.
-const SITE_HEADER_HEIGHT = 64
 // Name, Value — the two columns that participate in arrow-key navigation.
 // The delete/graph buttons are reachable via Tab, same as any other
 // focusable element, but sit outside this grid on purpose (arrow-nav only
@@ -90,6 +91,15 @@ function emptyDraft(layer: TokenLayer = 'Global'): Draft {
 // name (e.g. "Color.Danger.1" groups under "Color.Danger", displayed as leaf "1").
 function groupPrefixFor(name: string): string {
   const idx = name.lastIndexOf('.')
+  return idx === -1 ? '' : name.slice(0, idx)
+}
+
+// The outer wrapper group — everything before the first dot (e.g. "Footer" for
+// "Footer.Color.Link.1") — one level up from `groupPrefixFor`, mirroring
+// Figma's top-level grouping by component name (Component layer) or subject
+// (Global/Alias layers).
+function outerGroupFor(name: string): string {
+  const idx = name.indexOf('.')
   return idx === -1 ? '' : name.slice(0, idx)
 }
 
@@ -243,6 +253,7 @@ export function TokenEditor({
   branches,
   tokenBrands,
   brandTokens,
+  syncStatus,
 }: {
   tokens: FlatToken[]
   defaultBranch: string
@@ -252,6 +263,9 @@ export function TokenEditor({
   // reference-resolved (resolution happens against the live-edited Base
   // tree — see brandMergedResolved below).
   brandTokens: Record<string, FlatToken[]>
+  // Rendered at the top of whichever sidebar panel is open — the site header
+  // that used to show it is gone (see SidebarPanel/SidebarActivityBar).
+  syncStatus: SyncStatus
 }) {
   const router = useRouter()
   const [query, setQuery] = useState('')
@@ -287,7 +301,7 @@ export function TokenEditor({
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
   const [submitMessage, setSubmitMessage] = useState<string | null>(null)
-  const [graphRootId, setGraphRootId] = useState<string | null>(null)
+  const [graphRoot, setGraphRoot] = useState<{ paths: string[]; title: string } | null>(null)
   const [searchExpanded, setSearchExpanded] = useState(false)
   // Set right after Ctrl/Cmd+D inserts a duplicate row — picked up by an effect once
   // the new row has actually rendered (and its cellRef exists) so it can be focused.
@@ -363,22 +377,6 @@ export function TokenEditor({
     setBrandMalformed(new Set())
   }, [tokens, brandTokens])
 
-  // The table header sticks right below the subheader, so it needs the
-  // subheader's actual rendered height (it wraps at narrow widths) rather
-  // than a hardcoded guess.
-  const subheaderRef = useRef<HTMLDivElement>(null)
-  const [tableHeaderTop, setTableHeaderTop] = useState(SITE_HEADER_HEIGHT)
-
-  useEffect(() => {
-    const el = subheaderRef.current
-    if (!el) return
-    const updateOffset = () => setTableHeaderTop(SITE_HEADER_HEIGHT + el.getBoundingClientRect().height)
-    updateOffset()
-    const observer = new ResizeObserver(updateOffset)
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   const matchedTokens = useMemo(
     () =>
       new Set(
@@ -398,19 +396,27 @@ export function TokenEditor({
     // anywhere in the underlying array (e.g. GitHub's JSON stores new object
     // keys in insertion order, appended after existing sibling groups), which
     // would otherwise split its group into two separate header sections.
-    const groupOrder: string[] = []
-    const byGroup = new Map<string, WorkingToken[]>()
-    for (const w of filtered) {
-      const group = groupPrefixFor(w.token.name)
-      let bucket = byGroup.get(group)
-      if (!bucket) {
-        bucket = []
-        byGroup.set(group, bucket)
-        groupOrder.push(group)
+    // Bucketed twice — by outer group, then by inner group within it — so
+    // both nesting levels stay contiguous for the render loop below.
+    function bucketBy(items: WorkingToken[], keyFor: (w: WorkingToken) => string): WorkingToken[][] {
+      const order: string[] = []
+      const byKey = new Map<string, WorkingToken[]>()
+      for (const w of items) {
+        const key = keyFor(w)
+        let bucket = byKey.get(key)
+        if (!bucket) {
+          bucket = []
+          byKey.set(key, bucket)
+          order.push(key)
+        }
+        bucket.push(w)
       }
-      bucket.push(w)
+      return order.map(key => byKey.get(key)!)
     }
-    return groupOrder.flatMap(group => byGroup.get(group)!)
+
+    return bucketBy(filtered, w => outerGroupFor(w.token.name)).flatMap(outerBucket =>
+      bucketBy(outerBucket, w => groupPrefixFor(w.token.name)).flat(),
+    )
   }, [working, matchedTokens, activeLayer])
   const countByLayer = useMemo(() => {
     const counts = new Map<TokenLayer, number>()
@@ -422,8 +428,8 @@ export function TokenEditor({
   }, [working, matchedTokens])
 
   const visibleGroups = useMemo(() => {
-    const groups = filteredWorking.map(w => groupPrefixFor(w.token.name)).filter(group => group !== '')
-    return [...new Set(groups)]
+    const groups = filteredWorking.flatMap(w => [outerGroupFor(w.token.name), groupPrefixFor(w.token.name)])
+    return [...new Set(groups.filter(group => group !== ''))]
   }, [filteredWorking])
   const allGroupsCollapsed = visibleGroups.length > 0 && visibleGroups.every(group => collapsedGroups.has(group))
 
@@ -645,6 +651,13 @@ export function TokenEditor({
     }
   }
 
+  // Every currently-visible row's id that falls under a given group header —
+  // the roots fed into the group's "show reference graph" button.
+  function tokenIdsInGroup(group: string, depth: number): string[] {
+    const matches = depth === 0 ? outerGroupFor : groupPrefixFor
+    return filteredWorking.filter(w => matches(w.token.name) === group).map(w => w.id)
+  }
+
   function toggleGroup(group: string) {
     setCollapsedGroups(prev => {
       const next = new Set(prev)
@@ -677,15 +690,24 @@ export function TokenEditor({
     setEditingGroup(null)
     if (!newGroup || newGroup === group) return
 
+    // A group with no dot is only ever shown as an outer (component-level)
+    // group in the UI — an inner subgroup at that same depth would collapse
+    // into the outer header instead (see the render loop). So renaming it
+    // needs to cascade to every descendant at any depth, not just direct
+    // children, unlike an inner group's rename.
+    const isOuterGroup = !group.includes('.')
+
     setWorking(prev => {
       // Every token in this group moves at once — track old→new path per
       // token so anything referencing one of them (from inside or outside
       // the group) gets cascaded too, same as a single-token rename.
       const renamed = new Map<string, string>()
       const renamedGroup = prev.map(w => {
-        if (groupPrefixFor(w.token.name) !== group) return w
-        const newName = `${newGroup}.${leafNameFor(w.token.name)}`
-        renamed.set(pathFor(w.token.layer, w.token.name).join('.'), pathFor(w.token.layer, newName).join('.'))
+        const name = w.token.name
+        const matches = isOuterGroup ? name === group || name.startsWith(`${group}.`) : groupPrefixFor(name) === group
+        if (!matches) return w
+        const newName = isOuterGroup ? newGroup + name.slice(group.length) : `${newGroup}.${leafNameFor(name)}`
+        renamed.set(pathFor(w.token.layer, name).join('.'), pathFor(w.token.layer, newName).join('.'))
         return { ...w, token: { ...w.token, name: newName } }
       })
 
@@ -920,6 +942,92 @@ export function TokenEditor({
     )
   }
 
+  // A collapsible group header row, shared by both nesting levels — the
+  // outer (component/subject) group and, within it, the existing inner
+  // subgroup — indented one step further per depth.
+  function renderGroupHeaderRow(group: string, depth: number): ReactNode {
+    const isCollapsed = collapsedGroups.has(group)
+    const segments = group.split('.')
+    const lastSegment = segments[segments.length - 1]
+    const leadingLabel = segments.slice(0, -1).join('/')
+    const isOuter = depth === 0
+    return (
+      <TableRow className="hover:bg-transparent">
+        <TableCell
+          colSpan={selectedBrand ? 4 : 3}
+          className={cn('bg-muted/50 p-0 font-medium text-muted-foreground', isOuter ? 'text-sm' : 'text-xs')}
+          style={{ paddingLeft: depth * 16 }}
+        >
+          {editingGroup?.group === group ? (
+            <Input
+              autoFocus
+              aria-label={`Rename group ${segments.join('/')}`}
+              value={editingGroup.text}
+              onChange={e => setEditingGroup({ group, text: e.target.value })}
+              onBlur={commitGroupRename}
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                  commitGroupRename()
+                } else if (e.key === 'Escape') {
+                  e.preventDefault()
+                  cancelGroupRename()
+                }
+              }}
+              className={cn(
+                'rounded-none border-transparent bg-transparent px-2 font-medium text-foreground focus-visible:ring-0',
+                isOuter ? 'h-12 text-sm' : 'h-10 text-xs',
+              )}
+            />
+          ) : (
+            <div className={cn('flex items-center', isOuter ? 'h-12' : 'h-10')}>
+              <button
+                type="button"
+                onClick={() => toggleGroup(group)}
+                aria-expanded={!isCollapsed}
+                className="flex flex-1 items-center gap-1.5 rounded-md px-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <ChevronDownIcon
+                  aria-hidden="true"
+                  className={cn('size-3.5 shrink-0 transition-transform', isCollapsed && '-rotate-90')}
+                />
+                {leadingLabel && <span>{leadingLabel}/</span>}
+                <span className="font-bold text-foreground">{lastSegment}</span>
+              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  render={
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon-sm"
+                      aria-label={`Actions for ${segments.join('/')}`}
+                      className="mr-1 shrink-0 text-foreground hover:bg-white/20"
+                    />
+                  }
+                >
+                  <EllipsisIcon />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem
+                    onClick={() => setGraphRoot({ paths: tokenIdsInGroup(group, depth), title: segments.join('/') })}
+                  >
+                    <NetworkIcon />
+                    Show reference graph
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => startEditingGroup(group)}>
+                    <PencilIcon />
+                    Rename
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          )}
+        </TableCell>
+      </TableRow>
+    )
+  }
+
   // Escape reverts the field to what it showed on focus — nothing's been
   // committed to `working` yet at that point, so this only needs to reset
   // the local draft (and any live invalid-JSON flag) rather than touch it.
@@ -1077,136 +1185,120 @@ export function TokenEditor({
   const draftHex = /^#[0-9a-fA-F]{6}$/.test(draft.value) ? draft.value : null
 
   return (
-    <div className="w-full bg-card">
-      <div
-        ref={subheaderRef}
-        className="sticky z-30 flex h-12 items-center justify-between gap-4 border-b border-[color-mix(in_oklch,var(--card),var(--muted)_50%)]/60 bg-card pr-2"
-        style={{ top: SITE_HEADER_HEIGHT, marginLeft: sidebarInset }}
-      >
-        <div role="tablist" aria-label="Token layer" className="flex h-full items-stretch">
-          {LAYERS.map(layer => {
-            const isActive = activeLayer === layer
-            return (
-              <button
-                key={layer}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveLayer(layer)}
-                className={cn(
-                  'relative flex h-full items-center gap-1.5 px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground',
-                  isActive &&
-                    'text-foreground before:absolute before:inset-x-0 before:bottom-0 before:h-0.5 before:bg-primary',
-                )}
-              >
-                <span aria-hidden="true">{LAYER_EMOJI[layer]}</span> {layer}
-                <Badge variant="secondary">{countByLayer.get(layer) ?? 0}</Badge>
-              </button>
-            )
-          })}
-        </div>
+    <div className="flex h-screen w-full flex-col overflow-hidden">
+      <div className="shrink-0 bg-background p-4" style={{ marginLeft: sidebarInset }}>
+        <div
+          className="flex h-14 items-center justify-between gap-4 rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)] px-4"
+        >
+          <Tabs value={activeLayer} onValueChange={value => setActiveLayer(value as TokenLayer)}>
+            <TabsList aria-label="Token layer">
+              {LAYERS.map(layer => (
+                <TabsTrigger key={layer} value={layer}>
+                  <span aria-hidden="true">{LAYER_EMOJI[layer]}</span> {layer}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
 
-        <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              'relative overflow-hidden transition-[width] duration-200 ease-out',
-              searchExpanded ? 'w-64' : 'w-8',
-            )}
-          >
-            {searchExpanded ? (
-              <>
-                <Label htmlFor="token-search" className="sr-only">
-                  Search tokens by name
-                </Label>
-                <SearchIcon
-                  aria-hidden="true"
-                  className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
-                />
-                <Input
-                  autoFocus
-                  id="token-search"
-                  type="search"
-                  placeholder="Search tokens…"
-                  className="h-8 pl-8"
-                  value={query}
-                  onChange={e => setQuery(e.target.value)}
-                  onBlur={() => {
-                    if (!query) setSearchExpanded(false)
-                  }}
-                  onKeyDown={e => {
-                    if (e.key === 'Escape') {
-                      setQuery('')
-                      setSearchExpanded(false)
-                    }
-                  }}
-                />
-              </>
-            ) : (
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                aria-label="Search tokens"
-                onClick={() => setSearchExpanded(true)}
-              >
-                <SearchIcon />
-              </Button>
-            )}
+          <div className="flex items-center gap-2">
+            <div
+              className={cn(
+                'relative overflow-hidden transition-[width] duration-200 ease-out',
+                searchExpanded ? 'w-64' : 'w-8',
+              )}
+            >
+              {searchExpanded ? (
+                <>
+                  <Label htmlFor="token-search" className="sr-only">
+                    Search tokens by name
+                  </Label>
+                  <SearchIcon
+                    aria-hidden="true"
+                    className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+                  />
+                  <Input
+                    autoFocus
+                    id="token-search"
+                    type="search"
+                    placeholder="Search tokens…"
+                    className="h-8 pl-8"
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    onBlur={() => {
+                      if (!query) setSearchExpanded(false)
+                    }}
+                    onKeyDown={e => {
+                      if (e.key === 'Escape') {
+                        setQuery('')
+                        setSearchExpanded(false)
+                      }
+                    }}
+                  />
+                </>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  aria-label="Search tokens"
+                  onClick={() => setSearchExpanded(true)}
+                >
+                  <SearchIcon />
+                </Button>
+              )}
+            </div>
+
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Undo"
+                    disabled={!workingHistory.canUndo}
+                    onClick={() => workingHistory.undo()}
+                  >
+                    <Undo2Icon />
+                  </Button>
+                }
+              />
+              <TooltipContent>Undo (Ctrl/Cmd+Z)</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Redo"
+                    disabled={!workingHistory.canRedo}
+                    onClick={() => workingHistory.redo()}
+                  >
+                    <Redo2Icon />
+                  </Button>
+                }
+              />
+              <TooltipContent>Redo (Ctrl/Cmd+Shift+Z)</TooltipContent>
+            </Tooltip>
+
+            <Button
+              type="button"
+              onClick={() => {
+                setDraft(emptyDraft(activeLayer))
+                setCreateDialogOpen(true)
+              }}
+            >
+              <PlusIcon />
+              Create
+            </Button>
           </div>
-
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  aria-label="Undo"
-                  disabled={!workingHistory.canUndo}
-                  onClick={() => workingHistory.undo()}
-                >
-                  <Undo2Icon />
-                </Button>
-              }
-            />
-            <TooltipContent>Undo (Ctrl/Cmd+Z)</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  aria-label="Redo"
-                  disabled={!workingHistory.canRedo}
-                  onClick={() => workingHistory.redo()}
-                >
-                  <Redo2Icon />
-                </Button>
-              }
-            />
-            <TooltipContent>Redo (Ctrl/Cmd+Shift+Z)</TooltipContent>
-          </Tooltip>
-
-          <Button
-            type="button"
-            onClick={() => {
-              setDraft(emptyDraft(activeLayer))
-              setCreateDialogOpen(true)
-            }}
-          >
-            <PlusIcon />
-            Create
-          </Button>
         </div>
       </div>
 
-      <div
-        className="min-h-[calc(100vh-7rem)] space-y-6 bg-[color-mix(in_oklch,var(--card),var(--muted)_50%)]"
-        style={{ marginLeft: sidebarInset }}
-      >
-        <div className="space-y-3">
+      <div className="flex-1 overflow-hidden" style={{ marginLeft: sidebarInset }}>
+        <div className="h-full px-4">
           <Table>
             <TableCaption>
               {countByLayer.get(activeLayer) ?? 0} {activeLayer} tokens
@@ -1215,31 +1307,21 @@ export function TokenEditor({
               <TableRow>
                 <TableHead
                   scope="col"
-                  className="sticky z-20 bg-[color-mix(in_oklch,var(--card),var(--muted)_50%)] shadow-[0_2px_0_0_#ffffff]"
-                  style={{ top: tableHeaderTop }}
+                  className="sticky top-0 z-20 rounded-tl-[10px] bg-background shadow-[0_2px_0_0_#ffffff]"
                 >
                   Name
                 </TableHead>
-                <TableHead
-                  scope="col"
-                  className="sticky z-20 bg-[color-mix(in_oklch,var(--card),var(--muted)_50%)] shadow-[0_2px_0_0_#ffffff]"
-                  style={{ top: tableHeaderTop }}
-                >
+                <TableHead scope="col" className="sticky top-0 z-20 bg-background shadow-[0_2px_0_0_#ffffff]">
                   Base
                 </TableHead>
                 {selectedBrand && (
-                  <TableHead
-                    scope="col"
-                    className="sticky z-20 bg-[color-mix(in_oklch,var(--card),var(--muted)_50%)] shadow-[0_2px_0_0_#ffffff]"
-                    style={{ top: tableHeaderTop }}
-                  >
+                  <TableHead scope="col" className="sticky top-0 z-20 bg-background shadow-[0_2px_0_0_#ffffff]">
                     {selectedBrand}
                   </TableHead>
                 )}
                 <TableHead
                   scope="col"
-                  className="sticky z-20 bg-[color-mix(in_oklch,var(--card),var(--muted)_50%)] text-right shadow-[0_2px_0_0_#ffffff]"
-                  style={{ top: tableHeaderTop }}
+                  className="sticky top-0 z-20 rounded-tr-[10px] bg-background text-right shadow-[0_2px_0_0_#ffffff]"
                 >
                   <Button
                     type="button"
@@ -1265,73 +1347,38 @@ export function TokenEditor({
                 const isMalformed = malformed.has(id)
                 const changeStatus = describeChangeStatus(originalById.get(id), token)
 
+                // Two nesting levels: the outer (component/subject) group, and —
+                // when the name goes one dot deeper — an inner subgroup shown
+                // indented within it. When they'd be identical (a 2-segment
+                // name, e.g. "Backdrop.Color") only the outer header renders,
+                // so a group never appears to contain only itself.
+                const outerGroup = outerGroupFor(token.name)
+                const previousOuterGroup = row > 0 ? outerGroupFor(filteredWorking[row - 1].token.name) : null
+                const showOuterHeader = outerGroup !== '' && outerGroup !== previousOuterGroup
+                const isOuterCollapsed = outerGroup !== '' && collapsedGroups.has(outerGroup)
+
                 const group = groupPrefixFor(token.name)
+                const isNestedSubgroup = group !== '' && group !== outerGroup
                 const previousGroup = row > 0 ? groupPrefixFor(filteredWorking[row - 1].token.name) : null
-                const showGroupHeader = group !== '' && group !== previousGroup
+                const showGroupHeader = isNestedSubgroup && group !== previousGroup
                 const isCollapsed = group !== '' && collapsedGroups.has(group)
+                const hidden = isOuterCollapsed || isCollapsed
+                // One indent step deeper than whichever header is the row's
+                // immediate parent, so the name lines up under that header's
+                // own text rather than its chevron.
+                const depth = isNestedSubgroup ? 2 : outerGroup !== '' ? 1 : 0
 
                 return (
                   <Fragment key={id}>
-                    {showGroupHeader && (
-                      <TableRow className="hover:bg-transparent">
-                        <TableCell
-                          colSpan={selectedBrand ? 4 : 3}
-                          className="bg-muted/40 p-0 text-xs font-medium text-muted-foreground"
-                        >
-                          {editingGroup?.group === group ? (
-                            <Input
-                              autoFocus
-                              aria-label={`Rename group ${group.split('.').join('/')}`}
-                              value={editingGroup.text}
-                              onChange={e => setEditingGroup({ group, text: e.target.value })}
-                              onBlur={commitGroupRename}
-                              onKeyDown={e => {
-                                if (e.key === 'Enter') {
-                                  e.preventDefault()
-                                  commitGroupRename()
-                                } else if (e.key === 'Escape') {
-                                  e.preventDefault()
-                                  cancelGroupRename()
-                                }
-                              }}
-                              className="h-8 rounded-none border-transparent bg-transparent px-2 text-xs font-medium text-foreground focus-visible:ring-0"
-                            />
-                          ) : (
-                            <div className="flex items-center">
-                              <button
-                                type="button"
-                                onClick={() => toggleGroup(group)}
-                                aria-expanded={!isCollapsed}
-                                className="flex flex-1 items-center gap-1.5 px-2 py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                              >
-                                <ChevronDownIcon
-                                  aria-hidden="true"
-                                  className={cn('size-3.5 shrink-0 transition-transform', isCollapsed && '-rotate-90')}
-                                />
-                                {group.split('.').join('/')}
-                              </button>
-                              <Button
-                                type="button"
-                                variant="ghost"
-                                size="icon-sm"
-                                aria-label={`Rename group ${group.split('.').join('/')}`}
-                                className="mr-1 shrink-0"
-                                onClick={() => startEditingGroup(group)}
-                              >
-                                <PencilIcon />
-                              </Button>
-                            </div>
-                          )}
-                        </TableCell>
-                      </TableRow>
-                    )}
-                    {!isCollapsed && (
+                    {showOuterHeader && renderGroupHeaderRow(outerGroup, 0)}
+                    {!isOuterCollapsed && showGroupHeader && renderGroupHeaderRow(group, 1)}
+                    {!hidden && (
                       <TableRow
                         data-row-id={id}
                         className={cn(cellErrors.length > 0 && 'bg-destructive/10 hover:bg-destructive/15')}
                       >
                         <TableCell className="p-0 focus-within:relative focus-within:z-40">
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-1" style={{ paddingLeft: depth * 16 }}>
                             <Input
                               ref={el => {
                                 if (el) cellRefs.current.set(`${row}-0`, el)
@@ -1719,44 +1766,39 @@ export function TokenEditor({
                             )
                           })()}
                         <TableCell className="p-1">
-                          <div className="flex items-center justify-end gap-1">
-                            <Tooltip>
-                              <TooltipTrigger
+                          <div className="flex items-center justify-end">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger
                                 render={
                                   <Button
                                     type="button"
-                                    variant="outline"
+                                    variant="ghost"
                                     size="icon-sm"
-                                    aria-label={`Show reference graph for ${token.name || 'token'}`}
-                                    onClick={() => setGraphRootId(id)}
-                                  >
-                                    <NetworkIcon />
-                                  </Button>
+                                    aria-label={`Actions for ${token.name || 'token'}`}
+                                    className="text-foreground hover:bg-white/20"
+                                  />
                                 }
-                              />
-                              <TooltipContent>Show reference graph</TooltipContent>
-                            </Tooltip>
-                            <Tooltip>
-                              <TooltipTrigger
-                                render={
-                                  <Button
-                                    type="button"
-                                    variant="destructive"
-                                    size="icon-sm"
-                                    aria-label={`Delete ${token.name || 'token'}`}
-                                    onClick={() => handleDeleteRow(id, token.name)}
-                                  >
-                                    <Trash2Icon />
-                                  </Button>
-                                }
-                              />
-                              <TooltipContent>Delete token</TooltipContent>
-                            </Tooltip>
+                              >
+                                <EllipsisIcon />
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent>
+                                <DropdownMenuItem
+                                  onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
+                                >
+                                  <NetworkIcon />
+                                  Show reference graph
+                                </DropdownMenuItem>
+                                <DropdownMenuItem variant="destructive" onClick={() => handleDeleteRow(id, token.name)}>
+                                  <Trash2Icon />
+                                  Delete
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
                           </div>
                         </TableCell>
                       </TableRow>
                     )}
-                    {!isCollapsed && cellErrors.length > 0 && (
+                    {!hidden && cellErrors.length > 0 && (
                       <TableRow className="bg-destructive/10 hover:bg-destructive/15">
                         <TableCell colSpan={selectedBrand ? 4 : 3} className="p-0">
                           <Alert
@@ -1966,7 +2008,14 @@ export function TokenEditor({
           </DialogContent>
         </Dialog>
 
-        {graphRootId && <TokenGraph tokens={tokens} rootPath={graphRootId} onClose={() => setGraphRootId(null)} />}
+        {graphRoot && (
+          <TokenGraph
+            tokens={tokens}
+            rootPaths={graphRoot.paths}
+            title={graphRoot.title}
+            onClose={() => setGraphRoot(null)}
+          />
+        )}
       </div>
 
       {!sidebarCollapsed && activeSidebarTab === 'changes' && (
@@ -1977,6 +2026,7 @@ export function TokenEditor({
           brandDiffs={brandDiffs}
           width={sidebarWidth}
           onWidthChange={setSidebarWidth}
+          syncStatus={syncStatus}
           description={description}
           onDescriptionChange={setDescription}
           targetBranch={targetBranch}
@@ -1992,7 +2042,12 @@ export function TokenEditor({
         />
       )}
       {!sidebarCollapsed && activeSidebarTab === 'problems' && (
-        <ProblemsSidebar problems={problems} width={sidebarWidth} onWidthChange={setSidebarWidth} />
+        <ProblemsSidebar
+          problems={problems}
+          width={sidebarWidth}
+          onWidthChange={setSidebarWidth}
+          syncStatus={syncStatus}
+        />
       )}
       {!sidebarCollapsed && activeSidebarTab === 'brands' && (
         <BrandsSidebar
@@ -2003,6 +2058,7 @@ export function TokenEditor({
           onSelectBrand={setSelectedBrand}
           width={sidebarWidth}
           onWidthChange={setSidebarWidth}
+          syncStatus={syncStatus}
         />
       )}
       <SidebarActivityBar items={sidebarItems} activeId={activeSidebarTab} onSelect={selectSidebarTab} />

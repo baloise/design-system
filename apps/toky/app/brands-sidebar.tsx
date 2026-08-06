@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import { BRAND_NAME_ERROR_MESSAGE, validateBrandName } from '@/src/tokens/brand'
+import type { SyncStatus } from '@/src/tokens/github-write'
 import { SidebarPanel } from './sidebar'
 
 export function BrandsSidebar({
@@ -27,6 +28,7 @@ export function BrandsSidebar({
   onSelectBrand,
   width,
   onWidthChange,
+  syncStatus,
 }: {
   // Real (already-on-GitHub) brand files, and anything staged this session
   // but not yet submitted — merged in the list below so creating a brand
@@ -40,6 +42,7 @@ export function BrandsSidebar({
   onSelectBrand: (name: string | null) => void
   width: number
   onWidthChange: (width: number) => void
+  syncStatus: SyncStatus
 }) {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [name, setName] = useState('')
@@ -78,6 +81,7 @@ export function BrandsSidebar({
         count={allKnownBrands.length}
         width={width}
         onWidthChange={onWidthChange}
+        syncStatus={syncStatus}
         toolbar={
           <Button type="button" variant="outline" className="w-full" onClick={openDialog}>
             <PlusIcon />

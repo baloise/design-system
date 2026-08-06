@@ -6,13 +6,14 @@ import { cn } from '@/lib/utils'
 
 function Table({ className, ...props }: React.ComponentProps<'table'>) {
   return (
-    // No overflow-x-auto here: setting overflow-x on this wrapper while
-    // overflow-y stays 'visible' makes the browser compute overflow-y as
-    // 'auto' too (a CSS overflow-spec quirk), turning this div into an
-    // implicit scroll container — which breaks the table header's
-    // position: sticky by resolving its offsets against this div instead
-    // of the page.
-    <div data-slot="table-container" className="relative w-full">
+    // This wrapper is the scroll container: the sticky table header
+    // resolves its offset against it, and because it's a fixed-height box
+    // (not the page) with its own overflow, the border/radius stay pinned
+    // to the viewport instead of scrolling away with the rows.
+    <div
+      data-slot="table-container"
+      className="relative h-full w-full overflow-y-auto rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)]"
+    >
       <table data-slot="table" className={cn('w-full caption-bottom text-sm', className)} {...props} />
     </div>
   )
@@ -38,14 +39,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<'tfoot'>) {
 
 function TableRow({ className, ...props }: React.ComponentProps<'tr'>) {
   return (
-    <tr
-      data-slot="table-row"
-      className={cn(
-        'border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted',
-        className,
-      )}
-      {...props}
-    />
+    <tr data-slot="table-row" className={cn('border-b transition-colors hover:bg-muted/50', className)} {...props} />
   )
 }
 

@@ -1,5 +1,6 @@
 import { TriangleAlertIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import type { SyncStatus } from '@/src/tokens/github-write'
 import { SidebarPanel } from './sidebar'
 
 export interface ProblemItem {
@@ -43,13 +44,21 @@ export function ProblemsSidebar({
   problems,
   width,
   onWidthChange,
+  syncStatus,
 }: {
   problems: ProblemItem[]
   width: number
   onWidthChange: (width: number) => void
+  syncStatus: SyncStatus
 }) {
   return (
-    <SidebarPanel title="Problems" count={problems.length} width={width} onWidthChange={onWidthChange}>
+    <SidebarPanel
+      title="Problems"
+      count={problems.length}
+      width={width}
+      onWidthChange={onWidthChange}
+      syncStatus={syncStatus}
+    >
       <ProblemsList problems={problems} />
     </SidebarPanel>
   )

@@ -3,7 +3,6 @@ import { getBrandTokensFileMeta, listBranches, listTokenBrandFiles, resolveReadR
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { flattenTokenDocument, parseTokenDocument } from '@/src/tokens/flatten'
 import type { FlatToken } from '@/src/tokens/types'
-import { Header } from './header'
 import { TokenEditor } from './token-editor'
 
 // Read on every request — the table must reflect what's on GitHub right now,
@@ -75,7 +74,6 @@ export default async function Home() {
   if (error) {
     return (
       <main>
-        <Header syncStatus={syncStatus} />
         <p role="alert" className="p-6">
           Failed to load tokens: {error}
         </p>
@@ -85,13 +83,13 @@ export default async function Home() {
 
   return (
     <main>
-      <Header syncStatus={syncStatus} />
       <TokenEditor
         tokens={tokens}
         defaultBranch={getGithubRef()}
         branches={branches}
         tokenBrands={tokenBrands}
         brandTokens={brandTokens}
+        syncStatus={syncStatus}
       />
     </main>
   )

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildConsumerTree } from './graph'
+import { buildConsumerTree, buildConsumerTreeForRoots } from './graph'
 import type { FlatToken } from './types'
 
 function makeToken(overrides: Partial<FlatToken>): FlatToken {
@@ -170,5 +170,43 @@ describe('buildConsumerTree', () => {
     // A is depth 0; B references A so it's depth 1; A "references" B too, but A is
     // already visited, so the cycle guard stops it there instead of looping forever.
     expect(tree.nodes.map(n => n.id)).toEqual(['🔗 Alias.A', '🔗 Alias.B'])
+  })
+})
+
+describe('buildConsumerTreeForRoots', () => {
+  it('unions the trees of every root, deduplicating shared nodes and edges', () => {
+    const tokens: FlatToken[] = [
+      makeToken({ path: ['🌐 Global', 'White'], name: 'White', layer: 'Global' }),
+      makeToken({
+        path: ['🔗 Alias', 'A'],
+        name: 'A',
+        layer: 'Alias',
+        referenceTarget: '🌐 Global.White',
+      }),
+      makeToken({
+        path: ['🔗 Alias', 'B'],
+        name: 'B',
+        layer: 'Alias',
+        referenceTarget: '🌐 Global.White',
+      }),
+    ]
+
+    const tree = buildConsumerTreeForRoots(tokens, ['🔗 Alias.A', '🔗 Alias.B'])
+
+    expect(tree.nodes.map(n => n.id).sort()).toEqual(['🌐 Global.White', '🔗 Alias.A', '🔗 Alias.B'])
+    expect(tree.edges).toHaveLength(2)
+  })
+
+  it('returns an empty tree for no roots', () => {
+    expect(buildConsumerTreeForRoots([], [])).toEqual({ nodes: [], edges: [] })
+  })
+
+  it('skips roots that do not resolve to a token', () => {
+    const tokens: FlatToken[] = [makeToken({ path: ['🌐 Global', 'Lonely'], name: 'Lonely', layer: 'Global' })]
+
+    const tree = buildConsumerTreeForRoots(tokens, ['🌐 Global.Lonely', '🌐 Global.DoesNotExist'])
+
+    expect(tree.nodes).toEqual([{ id: '🌐 Global.Lonely', name: 'Lonely', layer: 'Global', depth: 0 }])
+    expect(tree.edges).toEqual([])
   })
 })
