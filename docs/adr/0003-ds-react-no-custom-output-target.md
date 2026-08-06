@@ -1,5 +1,7 @@
 # 3. `ds-react` uses the off-the-shelf Stencil React output target directly, no custom `libs/output-target-react`
 
+Package: `packages/react`
+
 Date: 2026-07-21
 
 ## Status

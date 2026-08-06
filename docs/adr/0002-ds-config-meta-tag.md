@@ -1,5 +1,7 @@
 # 2. Allow bootstrapping `DsConfig` from an HTML `<meta>` tag
 
+Package: `packages/core`
+
 Date: 2026-07-20
 
 ## Status

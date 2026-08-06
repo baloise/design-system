@@ -1,0 +1,4 @@
+/*!
+ * (C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0
+ */
+import{d as t}from"./p-B-v2Wm-V.js";class i{get isPortrait(){return!(!t.hasWindow||!window.matchMedia)&&window.matchMedia("(orientation: portrait)").matches}get isLandscape(){return!t.hasWindow||!window.matchMedia||window.matchMedia("(orientation: landscape)").matches}toObject(){return{landscape:this.isLandscape,portrait:this.isPortrait}}}class r{constructor(){this.orientation=new i}get isMobile(){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(t.userAgent)}get hasTouchScreen(){return!(!t.hasWindow||!t.hasNavigator||!("ontouchstart"in window)&&!navigator.msMaxTouchPoints)}}const n=new r;export{r as D,n as d}

@@ -264,7 +264,7 @@ The Baloise Design System is a client-side component library. Its attack surface
 
 **How these properties are enforced:**
 
-- **Code rules** — documented in [STYLE_GUIDE.md — Security](STYLE_GUIDE.md#security); violations are flagged during code review
+- **Code rules** — documented in [STYLE_GUIDE.md — Security](docs/STYLE_GUIDE.md#security); violations are flagged during code review
 - **Static analysis** — CodeQL runs on every push and PR and weekly; catches `innerHTML` misuse, unvalidated network data, and injection patterns
 - **Dependency auditing** — `pnpm audit --audit-level high` blocks CI and both release workflows if a high or critical CVE is present in a dependency
 - **DOMPurify** — pinned as a runtime dependency of `@baloise/ds-core`; all external HTML content passes through it before rendering
@@ -299,6 +299,6 @@ For more information on secure development in this project:
 
 - **[docs/security/incident-response-runbook.md](docs/security/incident-response-runbook.md)** — Step-by-step runbook for responding to exploited vulnerabilities and filing authority reports
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** — Vulnerability reporting and responsible disclosure
-- **[ARCHITECTURE.md — CI/CD Pipeline](ARCHITECTURE.md#cicd-pipeline)** — Security scanning workflows and automation
-- **[DEVELOPMENT.md](DEVELOPMENT.md)** — Development setup and local testing
-- **[STYLE_GUIDE.md — Security](STYLE_GUIDE.md#what-to-avoid)** — Code patterns that avoid common vulnerabilities
+- **[ARCHITECTURE.md — CI/CD Pipeline](docs/ARCHITECTURE.md#cicd-pipeline)** — Security scanning workflows and automation
+- **[DEVELOPMENT.md](docs/DEVELOPMENT.md)** — Development setup and local testing
+- **[STYLE_GUIDE.md — Security](docs/STYLE_GUIDE.md#what-to-avoid)** — Code patterns that avoid common vulnerabilities

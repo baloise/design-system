@@ -1,0 +1,4 @@
+/*!
+ * (C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0
+ */
+const e=["right","center","left",""],r=["wide-left","wide-center","wide-right",""],l=["right","center","left",""],g=["row","column"],a=["sm","md","lg","","small","medium","large"],i=["white","primary","info","success","warning","danger","","grey","blue","red","yellow","purple","green","primary-light","primary-dark","grey-light","grey-dark","blue-light","red-light","yellow-light","purple-light","purple-lighter","green-light","success-light","success-dark","success-darker","warning-light","warning-dark","warning-darker","danger-light","danger-dark","danger-darker","light-blue","purple-1","purple-2","purple-3","green-1","green-2","green-3","red-1","red-2","red-3","yellow-1","yellow-2","yellow-3"];export{r as C,e as a,a as b,i as c,l as d,g as e}

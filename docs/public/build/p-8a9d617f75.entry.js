@@ -1,0 +1,4 @@
+/*!
+ * (C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0
+ */
+import{B as e,E as t,F as r,G as o}from"./p-B-v2Wm-V.js";import{_ as a,L as s,a as i}from"./p-Y0rKqVvm.js";import{T as n}from"./p-Z0zrglhd.js";import"./p-Dk0GEN2t.js";const p=class{constructor(t){e(this,t),this.label=""}createLogger(e){this.log=e}render(){return t(r,{key:"4df6aaf4a621c79257e59d642d2a07c2a79cfa1c","aria-hidden":"true"},t("slot",{key:"7f9206b4c33676e1f431f2cd3cf9644441a473f8"}))}get el(){return o(this)}};a([s("select-optgroup"),i("design:type",Function),i("design:paramtypes",[Function]),i("design:returntype",void 0)],p.prototype,"createLogger",null),a([n("string"),i("design:type",String)],p.prototype,"label",void 0),p.style=":host{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}";export{p as ds_select_optgroup}

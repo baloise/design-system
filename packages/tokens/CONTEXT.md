@@ -88,7 +88,7 @@ Per-component token overrides for specific use cases:
 
 Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId` (and, once synced at least once, `$extensions.com.figma.scopes`). **`Base.tokens.json` (and each brand's `*.tokens.json`) in GitHub is the sole source of truth.** Figma Variables are a generated projection of these files. A designer changing a variable in Figma has made a _proposal_, not a fact — it only becomes real once it lands in GitHub via a reviewed pull request. Figma itself never holds a value GitHub doesn't know about once sync has run. When referencing a token by name in Figma, the same name is used in CSS.
 
-Two independent implementations keep this projection in sync, sharing the same vocabulary, `variableId` identity rule, and `.figma-sync-state.json` baseline below — see [ADR-0006](docs/adr/0006-github-action-supersedes-plugin-pull.md) for why the direction split this way:
+Two independent implementations keep this projection in sync, sharing the same vocabulary, `variableId` identity rule, and `.figma-sync-state.json` baseline below — see [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md) for why the direction split this way:
 
 - **The Figma Token Sync Plugin** (`packages/tokens/docs/figma-token-sync-plugin-plan.md`) — designer-driven, manual, in-Figma. Handles read-only diff status and Push (to Code) only.
 - **The Figma Sync GitHub Action** (`.github/workflows/figma-sync.yml`, `figma-conflict-check.yml`) — automatic, server-to-server via the Figma REST API. Handles Pull (from Code) only, triggered whenever Toky's `toky/update-next` branch merges into `next`.
@@ -100,7 +100,7 @@ The stable key used to match one token to one Figma Variable across syncs: `$ext
 _Avoid_: token name (as identity — names can change; a rename is not a delete+add)
 
 **Pull (from Code)**:
-Synchronization that reads `*.tokens.json` from GitHub and writes matching Figma Variables. Origin is GitHub; destination is Figma. Performed exclusively by the Figma Sync GitHub Action (see [ADR-0006](docs/adr/0006-github-action-supersedes-plugin-pull.md)). When Pull creates a Figma Variable for a token that had no `variableId` yet, the new id is written back to `next` as a direct bot commit, not a PR — the one deliberate exception to "GitHub writes are always PR-mediated" in this domain (see [ADR-0007](docs/adr/0007-direct-commit-variableid-backfill.md)).
+Synchronization that reads `*.tokens.json` from GitHub and writes matching Figma Variables. Origin is GitHub; destination is Figma. Performed exclusively by the Figma Sync GitHub Action (see [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md)). When Pull creates a Figma Variable for a token that had no `variableId` yet, the new id is written back to `next` as a direct bot commit, not a PR — the one deliberate exception to "GitHub writes are always PR-mediated" in this domain (see [ADR-0017](../../docs/adr/0017-direct-commit-variableid-backfill.md)).
 _Avoid_: import, download, push (a Pull moves data INTO Figma — "push to Figma," though a natural-sounding phrase, names the wrong direction in this glossary)
 
 **Push (to Code)**:
@@ -112,7 +112,7 @@ The token state as of the last successful sync, committed to `.figma-sync-state.
 _Avoid_: snapshot, cache (it's specifically the last-agreed-state reference point for 3-way diffing, not a performance cache)
 
 **Conflict**:
-A token whose Figma value and GitHub value have both diverged from the sync baseline since the last sync — as opposed to a one-sided change, which is just a pending Pull or pending Push. On a Toky PR, a conflict is surfaced as a non-blocking PR comment, not a merge gate — see [ADR-0008](docs/adr/0008-non-blocking-conflict-check.md).
+A token whose Figma value and GitHub value have both diverged from the sync baseline since the last sync — as opposed to a one-sided change, which is just a pending Pull or pending Push. On a Toky PR, a conflict is surfaced as a non-blocking PR comment, not a merge gate — see [ADR-0018](../../docs/adr/0018-non-blocking-conflict-check.md).
 _Avoid_: diff, difference (a diff is any Figma/GitHub mismatch; a conflict is specifically one where the baseline shows both sides moved)
 
 **Brand mode**:
@@ -295,6 +295,21 @@ Outside Shadow DOM, use tokens directly:
 - **GitHub is the sole source of truth** — Design decisions flow from `*.tokens.json` → Figma Variables → components. Figma is a synchronized mirror, not an origin.
 - **Figma changes are proposals** — A designer editing a Figma Variable does not change the token. It becomes a token change only once pushed through a pull request and merged.
 - **Naming is immutable** — Renaming a token is a breaking change for consumers
+
+## Architectural Decisions
+
+Decisions specific to this package (Figma Variable identity, brand modes, sync baseline, Git Data API writes) live alongside every other package's in the repo-wide ADR log at [`docs/adr/`](../../docs/adr/), tagged `Package: packages/tokens`:
+
+- [ADR-0011](../../docs/adr/0011-figma-variable-identity-key.md) — Figma Variable identity is `variableId`, not name/path
+- [ADR-0012](../../docs/adr/0012-brand-modes-not-collections.md) — Brands map to Figma modes, not separate collections
+- [ADR-0013](../../docs/adr/0013-native-variable-aliasing.md) — Token references become native Figma variable aliases
+- [ADR-0014](../../docs/adr/0014-git-data-api-atomic-commits.md) — GitHub writes use the Git Data API for atomic commits
+- [ADR-0015](../../docs/adr/0015-git-committed-sync-baseline.md) — Sync baseline is a git-committed file
+- [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md) — A GitHub Action, not the plugin, owns Pull (from Code)
+- [ADR-0017](../../docs/adr/0017-direct-commit-variableid-backfill.md) — VariableId backfill is a direct commit to `next`, not a PR
+- [ADR-0018](../../docs/adr/0018-non-blocking-conflict-check.md) — Conflict check comments, it doesn't block the merge
+- [ADR-0019](../../docs/adr/0019-pull-auto-deletes-figma-variables.md) — Pull deletes the Figma Variable when a token is removed
+- [ADR-0020](../../docs/adr/0020-figma-sync-action-standalone-script.md) — The Figma Sync Action's code stays standalone, not shared with apps/toky
 
 ## Related Contexts
 

@@ -1,0 +1,4 @@
+/*!
+ * (C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0
+ */
+import{d as s}from"./p-B-v2Wm-V.js";const o=s=>{n({configChanged(o){s(o)}})},t=()=>{if(!s.hasWindow)return;const o=window;return o&&o.DesignSystem&&o.DesignSystem.config},n=s=>{const o=t();o&&o.attach(s)},c=s=>{const o=t();o&&o.detach(s)},a=s=>{const o=t();o&&o.attachComponent(s)},e=s=>{const o=t();o&&o.detachComponent(s)},r=s=>{const o=t();o&&(o.language=s)},i=s=>{const o=t();o&&(o.region=s)},d=s=>{const o=t();o&&(o.allowedLanguages=s)},f=s=>{const o=t();o&&(o.icons=Object.assign(Object.assign({},o.icons),s))},j=s=>{const o=t();o&&(o.animated=s)},b=s=>{const o=t();o&&(o.logger.components=s,o.logger.render=!0,o.logger.custom=!0,o.logger.event=!0,o.logger.lifecycle=!0)};export{n as a,a as b,e as c,c as d,r as e,i as f,d as g,f as h,j as i,b as j,o,t as u}

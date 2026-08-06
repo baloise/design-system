@@ -5,7 +5,7 @@ description: Use when writing or generating Storybook documentation for a Balois
 
 # Write Component Docs
 
-Generates a complete documentation set for a component in `docs/src/components/<component>/`. The canonical reference for structure and style is the **tag** component (`docs/src/components/tag/`).
+Generates a complete documentation set for a component in `apps/storybook/src/components/<component>/`. The canonical reference for structure and style is the **tag** component (`apps/storybook/src/components/tag/`).
 
 Each component gets exactly **six MDX files** plus two TypeScript support files:
 
@@ -664,7 +664,7 @@ import { <COMPONENT>_DOC_CONFIG, get<Component>Tabs } from './<component>.doc-co
 The tag is the canonical example for the current pattern:
 
 ```
-docs/src/components/tag/
+apps/storybook/src/components/tag/
   tag.stories.ts       ← title: 'Components/Tag/Variants', paired 🧩/🌍 stories
   tag.doc-config.ts    ← TAG_DOC_CONFIG (color: 'purple'), getTagTabs()
   1-Overview.mdx       ← CanvasTabs + Controls + ComponentLead + ComponentPublicMethods

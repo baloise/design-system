@@ -1,7 +1,7 @@
 {
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm build",
-  "outputDirectory": "docs/dist",
+  "buildCommand": "pnpm build:vercel",
+  "outputDirectory": "apps/storybook/dist",
   "env": {
     "ENABLE_EXPERIMENTAL_COREPACK": "1"
   }
