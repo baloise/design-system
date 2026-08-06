@@ -31,7 +31,7 @@ involved) and nothing else the Action does.
 - The Action's bot token needs branch-protection bypass rights on `next`
   scoped to this write path — a provisioning dependency, not just a
   permissions checkbox, since most of this repo's automation deliberately
-  does *not* have that right.
+  does _not_ have that right.
 - A future reader of `next`'s commit history will see bot commits with no
   matching PR — worth a comment at the call site pointing back here so it
   doesn't read as an accidental bypass of branch protection.

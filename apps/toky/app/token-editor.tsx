@@ -1190,9 +1190,7 @@ export function TokenEditor({
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
       <div className="shrink-0 bg-background p-4" style={{ marginLeft: sidebarInset }}>
-        <div
-          className="flex h-14 items-center justify-between gap-4 rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)] px-4"
-        >
+        <div className="flex h-14 items-center justify-between gap-4 rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)] px-4">
           <Tabs value={activeLayer} onValueChange={value => setActiveLayer(value as TokenLayer)}>
             <TabsList aria-label="Token layer">
               {LAYERS.map(layer => (

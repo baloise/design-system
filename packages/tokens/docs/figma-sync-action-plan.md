@@ -24,19 +24,19 @@ ADR-0006).
 
 ## 2. Governing decisions
 
-| Decision | Resolution |
-| --- | --- |
-| Trigger | `figma-conflict-check.yml`: `pull_request` events where `head.ref == toky/update-next`. `figma-sync.yml`: `pull_request: closed` where `merged == true` and `head.ref == toky/update-next` — **not** `push` to `next` (this repo only allows squash merges, confirmed via `gh repo view`, so the merge commit has no second parent to walk; the closed-PR event carries `merged`/`head.ref` directly and needs no reconstruction). |
-| Direction | Pull (from Code) only — GitHub → Figma. Push (Figma → GitHub) stays with the plugin. |
-| Brand scope | All brands from day one — Base mode plus every `<Brand>.tokens.json`'s mode, in the same run (ADR-0002). |
-| Metadata location | Inline `$extensions.com.figma.{variableId,scopes}` on the token (existing convention, [ADR-0001](adr/0001-figma-variable-identity-key.md)) — not `.figma-sync-state.json`, which stays sync bookkeeping only ([ADR-0005](adr/0005-git-committed-sync-baseline.md)). |
-| New-variableId write-back | Direct commit to `next`, bundled with the `.figma-sync-state.json` update, one atomic Git Data API commit ([ADR-0004](adr/0004-git-data-api-atomic-commits.md), [ADR-0007](adr/0007-direct-commit-variableid-backfill.md)). |
-| Token deletion | Auto-delete the matching Figma Variable ([ADR-0009](adr/0009-pull-auto-deletes-figma-variables.md)). |
-| Conflict handling | Comment-only, non-blocking ([ADR-0008](adr/0008-non-blocking-conflict-check.md)). |
-| Reference handling | Native Figma variable aliases, not flattened literals ([ADR-0003](adr/0003-native-variable-aliasing.md)) — two-pass write (create all variables, then bind aliases), same ordering constraint the plugin plan identified. |
-| Code location | Standalone script, not shared with `apps/toky` ([ADR-0010](adr/0010-figma-sync-action-standalone-script.md)). |
-| Credentials | `FIGMA_API_TOKEN` (Figma REST token, `file_variables:write` scope), `FIGMA_FILE_KEY` (target file key) — both new secrets, provisioned before this ships. |
-| GitHub write | Same bot credential already used elsewhere in `.github/workflows` (`PRE_RELEASE_GITHUB_TOKEN` or equivalent) — needs branch-protection bypass on `next`, scoped to the id-backfill commit path (ADR-0007). |
+| Decision                  | Resolution                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trigger                   | `figma-conflict-check.yml`: `pull_request` events where `head.ref == toky/update-next`. `figma-sync.yml`: `pull_request: closed` where `merged == true` and `head.ref == toky/update-next` — **not** `push` to `next` (this repo only allows squash merges, confirmed via `gh repo view`, so the merge commit has no second parent to walk; the closed-PR event carries `merged`/`head.ref` directly and needs no reconstruction). |
+| Direction                 | Pull (from Code) only — GitHub → Figma. Push (Figma → GitHub) stays with the plugin.                                                                                                                                                                                                                                                                                                                                               |
+| Brand scope               | All brands from day one — Base mode plus every `<Brand>.tokens.json`'s mode, in the same run (ADR-0002).                                                                                                                                                                                                                                                                                                                           |
+| Metadata location         | Inline `$extensions.com.figma.{variableId,scopes}` on the token (existing convention, [ADR-0001](adr/0001-figma-variable-identity-key.md)) — not `.figma-sync-state.json`, which stays sync bookkeeping only ([ADR-0005](adr/0005-git-committed-sync-baseline.md)).                                                                                                                                                                |
+| New-variableId write-back | Direct commit to `next`, bundled with the `.figma-sync-state.json` update, one atomic Git Data API commit ([ADR-0004](adr/0004-git-data-api-atomic-commits.md), [ADR-0007](adr/0007-direct-commit-variableid-backfill.md)).                                                                                                                                                                                                        |
+| Token deletion            | Auto-delete the matching Figma Variable ([ADR-0009](adr/0009-pull-auto-deletes-figma-variables.md)).                                                                                                                                                                                                                                                                                                                               |
+| Conflict handling         | Comment-only, non-blocking ([ADR-0008](adr/0008-non-blocking-conflict-check.md)).                                                                                                                                                                                                                                                                                                                                                  |
+| Reference handling        | Native Figma variable aliases, not flattened literals ([ADR-0003](adr/0003-native-variable-aliasing.md)) — two-pass write (create all variables, then bind aliases), same ordering constraint the plugin plan identified.                                                                                                                                                                                                          |
+| Code location             | Standalone script, not shared with `apps/toky` ([ADR-0010](adr/0010-figma-sync-action-standalone-script.md)).                                                                                                                                                                                                                                                                                                                      |
+| Credentials               | `FIGMA_API_TOKEN` (Figma REST token, `file_variables:write` scope), `FIGMA_FILE_KEY` (target file key) — both new secrets, provisioned before this ships.                                                                                                                                                                                                                                                                          |
+| GitHub write              | Same bot credential already used elsewhere in `.github/workflows` (`PRE_RELEASE_GITHUB_TOKEN` or equivalent) — needs branch-protection bypass on `next`, scoped to the id-backfill commit path (ADR-0007).                                                                                                                                                                                                                         |
 
 ## 3. Data model
 
@@ -56,12 +56,15 @@ interface Token {
 interface SyncState {
   lastSyncedCommit: string
   lastSyncedAt: string
-  entries: Record<string /* variableId */, {
-    tokenPath: string[]
-    resolvedValue: unknown
-    lastModifiedSource: 'code' | 'figma'
-    lastModifiedAt: string
-  }>
+  entries: Record<
+    string /* variableId */,
+    {
+      tokenPath: string[]
+      resolvedValue: unknown
+      lastModifiedSource: 'code' | 'figma'
+      lastModifiedAt: string
+    }
+  >
 }
 ```
 
@@ -100,7 +103,7 @@ jobs:
 ```
 
 **Conflict definition** (ADR already ratified in CONTEXT.md): a touched
-token whose current Figma value *and* current GitHub value have both
+token whose current Figma value _and_ current GitHub value have both
 diverged from `.figma-sync-state.json`'s recorded baseline for that
 `variableId`. One-sided changes (only Figma moved, only GitHub moved) are
 not conflicts and aren't listed — they're just what Pull is about to
@@ -182,7 +185,7 @@ engine.
   (`GET /v1/files/:key/variables/local`).
 - `lib/tokens.mjs`: load + resolve Base/brand trees.
 - `pull.mjs` runs in a dry-run mode (`workflow_dispatch` only, no writes)
-  that logs the diff it *would* apply — de-risks the resolution/mapping
+  that logs the diff it _would_ apply — de-risks the resolution/mapping
   logic against the real ~1,585-token file before any write path exists.
 - Vitest coverage: brand resolution matches `config.brand.ts`'s
   `computeTokenDiff` output exactly (shared fixture, same rigor the plugin
@@ -221,7 +224,7 @@ engine.
   (ADR-0008 — always passes).
 - Test against a fixture where Figma and GitHub both moved the same
   `variableId` since baseline — confirm it's listed; a fixture where only
-  one side moved — confirm it's *not* listed.
+  one side moved — confirm it's _not_ listed.
 
 ### Phase 6 — Trigger wiring + end-to-end verification
 
