@@ -26,7 +26,7 @@ ADR-0006).
 
 | Decision | Resolution |
 | --- | --- |
-| Trigger | `figma-conflict-check.yml`: `pull_request` events where `head.ref == toky/update-next`. `figma-sync.yml`: `push` to `next` where the merge commit's second parent is `toky/update-next` (a squash-merge loses parents, so use the merged PR's head SHA via the `push` event's commit list / `gh pr list --state merged --head toky/update-next`, not parent-walking — see §4). |
+| Trigger | `figma-conflict-check.yml`: `pull_request` events where `head.ref == toky/update-next`. `figma-sync.yml`: `pull_request: closed` where `merged == true` and `head.ref == toky/update-next` — **not** `push` to `next` (this repo only allows squash merges, confirmed via `gh repo view`, so the merge commit has no second parent to walk; the closed-PR event carries `merged`/`head.ref` directly and needs no reconstruction). |
 | Direction | Pull (from Code) only — GitHub → Figma. Push (Figma → GitHub) stays with the plugin. |
 | Brand scope | All brands from day one — Base mode plus every `<Brand>.tokens.json`'s mode, in the same run (ADR-0002). |
 | Metadata location | Inline `$extensions.com.figma.{variableId,scopes}` on the token (existing convention, [ADR-0001](adr/0001-figma-variable-identity-key.md)) — not `.figma-sync-state.json`, which stays sync bookkeeping only ([ADR-0005](adr/0005-git-committed-sync-baseline.md)). |
@@ -111,26 +111,15 @@ resolve.
 ```yaml
 name: 🔼 Figma Sync (Pull from Code)
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches: [next]
 
 concurrency: ${{ github.workflow }}
 
 jobs:
-  detect:
-    runs-on: ubuntu-24.04
-    outputs:
-      should_sync: ${{ steps.check.outputs.should_sync }}
-    steps:
-      - id: check
-        # True only if this push's merged PR head was toky/update-next —
-        # not every push to next should trigger a Figma sync (e.g. a
-        # release-prep merge that never touched tokens).
-        run: ...
-
   sync:
-    needs: detect
-    if: needs.detect.outputs.should_sync == 'true'
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'toky/update-next'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -236,13 +225,10 @@ engine.
 
 ### Phase 6 — Trigger wiring + end-to-end verification
 
-- Confirm `figma-sync.yml`'s `detect` job correctly identifies a
-  `toky/update-next` merge (vs. an unrelated merge to `next`) under the
-  repo's actual merge strategy (squash vs. merge commit — affects whether
-  parent-walking or PR-lookup is the reliable signal; verify against how
-  this repo's branch protection is actually configured before Phase 6
-  locks in the implementation, since squash-merge discards the second
-  parent `git log --merges` would otherwise rely on).
+- Confirm the `pull_request: closed` + `merged == true` +
+  `head.ref == 'toky/update-next'` guard actually fires exactly once per
+  real Toky merge (squash-only repo setting already confirmed via
+  `gh repo view`, so this is testing the workflow config, not the premise).
 - One real end-to-end run: a test token change on `toky/update-next`,
   merged, confirm it lands in a test Figma file with correct id/scopes,
   correct mode-values across brands, and a correct baseline commit.
@@ -255,6 +241,3 @@ engine.
   after.
 - **Bot branch-protection bypass** (ADR-0007): needs to be granted on
   `next` before Phase 3, scoped as tightly as the platform allows.
-- **Squash vs. merge-commit strategy on `next`**: determines the exact
-  `should_sync` detection logic in §5/Phase 6 — check the repo's actual
-  merge button settings, don't assume.
