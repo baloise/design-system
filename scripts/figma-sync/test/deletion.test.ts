@@ -60,25 +60,53 @@ describe('buildSyncState with removedVariableIds', () => {
     lastSyncedCommit: 'old-sha',
     lastSyncedAt: '2026-01-01T00:00:00Z',
     entries: {
-      v1: { tokenPath: ['A'], resolvedValue: { kind: 'literal', value: 'x' }, lastModifiedSource: 'code', lastModifiedAt: '2026-01-01T00:00:00Z' },
-      v2: { tokenPath: ['B'], resolvedValue: { kind: 'literal', value: 'y' }, lastModifiedSource: 'code', lastModifiedAt: '2026-01-01T00:00:00Z' },
+      v1: {
+        tokenPath: ['A'],
+        resolvedValue: { kind: 'literal', value: 'x' },
+        lastModifiedSource: 'code',
+        lastModifiedAt: '2026-01-01T00:00:00Z',
+      },
+      v2: {
+        tokenPath: ['B'],
+        resolvedValue: { kind: 'literal', value: 'y' },
+        lastModifiedSource: 'code',
+        lastModifiedAt: '2026-01-01T00:00:00Z',
+      },
     },
   }
 
   it('drops entries for removed ids while leaving other entries untouched', () => {
-    const state = buildSyncState({ existingState, baseTokens: [], mergeCommitSha: 'sha2', syncedAt: '2026-08-06T00:00:00Z', removedVariableIds: ['v2'] })
+    const state = buildSyncState({
+      existingState,
+      baseTokens: [],
+      mergeCommitSha: 'sha2',
+      syncedAt: '2026-08-06T00:00:00Z',
+      removedVariableIds: ['v2'],
+    })
     expect(state.entries).toEqual({ v1: existingState.entries.v1 })
   })
 
   it('a deletion-only run (empty baseTokens) still updates lastSyncedCommit/lastSyncedAt', () => {
-    const state = buildSyncState({ existingState, baseTokens: [], mergeCommitSha: 'sha2', syncedAt: '2026-08-06T00:00:00Z', removedVariableIds: ['v2'] })
+    const state = buildSyncState({
+      existingState,
+      baseTokens: [],
+      mergeCommitSha: 'sha2',
+      syncedAt: '2026-08-06T00:00:00Z',
+      removedVariableIds: ['v2'],
+    })
     expect(state.lastSyncedCommit).toBe('sha2')
     expect(state.lastSyncedAt).toBe('2026-08-06T00:00:00Z')
   })
 
   it('removal and re-addition of the same id in one run keeps the new entry, not a dropped one', () => {
     const reAdded = [{ path: ['B'], type: 'string', value: { kind: 'literal', value: 'new' }, variableId: 'v2' }]
-    const state = buildSyncState({ existingState, baseTokens: reAdded, mergeCommitSha: 'sha2', syncedAt: '2026-08-06T00:00:00Z', removedVariableIds: ['v2'] })
+    const state = buildSyncState({
+      existingState,
+      baseTokens: reAdded,
+      mergeCommitSha: 'sha2',
+      syncedAt: '2026-08-06T00:00:00Z',
+      removedVariableIds: ['v2'],
+    })
     expect(state.entries.v2.resolvedValue).toEqual({ kind: 'literal', value: 'new' })
   })
 })

@@ -69,7 +69,9 @@ export function buildSyncState({ existingState, baseTokens, mergeCommitSha, sync
 
   for (const token of baseTokens) {
     if (!token.variableId) {
-      throw new Error(`buildSyncState: token ${pathKey(token.path)} has no variableId — patch ids before building the baseline.`)
+      throw new Error(
+        `buildSyncState: token ${pathKey(token.path)} has no variableId — patch ids before building the baseline.`,
+      )
     }
     entries[token.variableId] = {
       tokenPath: token.path,

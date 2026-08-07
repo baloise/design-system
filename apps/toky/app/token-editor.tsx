@@ -8,6 +8,7 @@ import {
   ChevronDownIcon,
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
+  Code2Icon,
   EllipsisIcon,
   GitBranchIcon,
   HexagonIcon,
@@ -50,6 +51,7 @@ import type { ChangeStatus, TokenDiffEntry, WorkingToken } from '@/src/tokens/ed
 import { filterTokensByName, normalizeSearchText } from '@/src/tokens/filter'
 import { resolveReferences } from '@/src/tokens/flatten'
 import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
+import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
 import { getNextCell } from '@/src/tokens/keyboard'
 import type { NavigationKey } from '@/src/tokens/keyboard'
@@ -139,6 +141,18 @@ const CELL_TRIGGER_CLASS =
 // used everywhere else in the app (e.g. the toolbar's search button) —
 // capped at 28px tall and left-aligning its swatch/text content.
 const CELL_TAG_CLASS = 'h-7 max-h-7 justify-start gap-2 overflow-hidden px-2 font-normal'
+
+interface CodeUsageLocation {
+  package: 'core' | 'css'
+  file: string
+}
+
+interface CodeUsageEntry {
+  count: number
+  locations: CodeUsageLocation[]
+}
+
+const CODE_USAGE = codeUsageData as Record<string, CodeUsageEntry>
 
 const CHANGE_STATUS_LABEL: Record<ChangeStatus, string> = {
   created: 'Created',
@@ -292,6 +306,8 @@ export function TokenEditor({
   const [draftModeOverride, setDraftModeOverride] = useState<'value' | 'reference' | null>(null)
   // Which row's (or 'draft') value/reference popover is open — at most one at a time.
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
+  // Which row's code-usage locations popover is open — independent of openPopoverId.
+  const [openCodeUsageId, setOpenCodeUsageId] = useState<string | null>(null)
   const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set())
   // The group currently being batch-renamed (via its header's edit icon), and the
   // text of the in-progress edit — kept separate from `group` so typing doesn't
@@ -1577,23 +1593,63 @@ export function TokenEditor({
                         </TableCell>
                         {!selectedBrand && (
                           <TableCell className="p-0 px-1 text-muted-foreground">
-                            {(() => {
-                              const usageCount = referenceCounts.get(token.path.join('.')) ?? 0
-                              return (
-                                usageCount > 0 && (
-                                  <Button
-                                    type="button"
-                                    variant="ghost"
-                                    size="sm"
-                                    className="h-auto gap-1 px-1.5 py-0.5"
-                                    onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
-                                  >
-                                    <NetworkIcon className="size-3.5" />
-                                    {usageCount} {usageCount === 1 ? 'use' : 'uses'}
-                                  </Button>
+                            <div className="flex items-center gap-1">
+                              {(() => {
+                                const usageCount = referenceCounts.get(token.path.join('.')) ?? 0
+                                return (
+                                  usageCount > 0 && (
+                                    <Button
+                                      type="button"
+                                      variant="ghost"
+                                      size="sm"
+                                      className="h-auto gap-1 px-1.5 py-0.5"
+                                      onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
+                                    >
+                                      <NetworkIcon className="size-3.5" />
+                                      {usageCount} {usageCount === 1 ? 'use' : 'uses'}
+                                    </Button>
+                                  )
                                 )
-                              )
-                            })()}
+                              })()}
+                              {(() => {
+                                const codeUsage = CODE_USAGE[token.path.join('.')]
+                                if (!codeUsage || codeUsage.count === 0) return null
+                                return (
+                                  <Popover
+                                    open={openCodeUsageId === id}
+                                    onOpenChange={open => setOpenCodeUsageId(open ? id : null)}
+                                  >
+                                    <PopoverTrigger
+                                      render={
+                                        <Button
+                                          type="button"
+                                          variant="ghost"
+                                          size="sm"
+                                          className="h-auto gap-1 px-1.5 py-0.5"
+                                          aria-label={`Code usage for ${token.name || 'token'}`}
+                                        />
+                                      }
+                                    >
+                                      <Code2Icon className="size-3.5" />
+                                      {codeUsage.count} {codeUsage.count === 1 ? 'file' : 'files'}
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-96">
+                                      <p className="mb-2 text-sm font-medium">Used in code</p>
+                                      <ul className="space-y-1 text-sm text-muted-foreground">
+                                        {codeUsage.locations.map(location => (
+                                          <li key={`${location.package}/${location.file}`} className="flex gap-2">
+                                            <Badge variant="outline" className="shrink-0">
+                                              {location.package}
+                                            </Badge>
+                                            <span className="truncate">{location.file}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </PopoverContent>
+                                  </Popover>
+                                )
+                              })()}
+                            </div>
                           </TableCell>
                         )}
                         {selectedBrand &&

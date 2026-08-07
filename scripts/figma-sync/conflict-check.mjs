@@ -10,6 +10,15 @@
  * finding conflicts never does.
  *
  * Run with: node scripts/figma-sync/conflict-check.mjs
+ *
+ * TOKENS_DIR_OVERRIDE (optional, shared with pull.mjs/backfill-commit.mjs):
+ * read tokens/baseline from a local scratch directory instead of
+ * packages/tokens/tokens.
+ *
+ * PR_NUMBER/GITHUB_TOKEN (optional together): if either is unset, skips
+ * GitHub entirely and prints the comment body to stdout instead of
+ * posting/updating it — lets you check the conflict-detection + comment
+ * formatting with only Figma credentials, no PR or GitHub token needed.
  */
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -21,7 +30,9 @@ import { flattenTokens, loadTokenFile } from './lib/tokens.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const workspaceRoot = resolve(__dirname, '../..')
-const TOKENS_DIR = resolve(workspaceRoot, 'packages/tokens/tokens')
+const TOKENS_DIR = process.env.TOKENS_DIR_OVERRIDE
+  ? resolve(process.env.TOKENS_DIR_OVERRIDE)
+  : resolve(workspaceRoot, 'packages/tokens/tokens')
 const SYNC_STATE_FILE = resolve(TOKENS_DIR, '..', '.figma-sync-state.json')
 
 function requireEnv(name) {
@@ -31,10 +42,10 @@ function requireEnv(name) {
 }
 
 async function main() {
-  const prNumber = requireEnv('PR_NUMBER')
-  const githubToken = requireEnv('GITHUB_TOKEN')
   const figmaToken = requireEnv('FIGMA_API_TOKEN')
   const figmaFileKey = requireEnv('FIGMA_FILE_KEY')
+  const prNumber = process.env.PR_NUMBER
+  const githubToken = process.env.GITHUB_TOKEN
 
   const base = loadTokenFile(resolve(TOKENS_DIR, 'Base.tokens.json'))
   const currentBaseTokens = flattenTokens(base)
@@ -51,8 +62,13 @@ async function main() {
   })
 
   console.log(`Found ${conflicts.length} conflict(s).`)
-
   const body = buildCommentBody(conflicts)
+
+  if (!prNumber || !githubToken) {
+    console.log(`\nPR_NUMBER/GITHUB_TOKEN not set — printing comment body instead of posting:\n\n${body}`)
+    return
+  }
+
   const existingComment = await findMarkedComment(prNumber, COMMENT_MARKER, githubToken)
   if (existingComment) {
     await updateIssueComment(existingComment.id, body, githubToken)

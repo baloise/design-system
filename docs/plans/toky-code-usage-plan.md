@@ -18,16 +18,17 @@ easy to spot.
 
 | Decision | Resolution |
 | --- | --- |
-| Code scope | `packages/core/src/**/*.scss` + `packages/css/src/**/*.scss`. No TSX inline styles, no Storybook/docs/test files — only what actually ships. |
+| Code scope | **Compiled CSS, not `.scss` source.** `packages/core/dist/collection/**/*.css` (per-component, mirrors `src`'s structure) + `packages/css/dist/css/{base,components,utilities}.css` (pre-bundled; `design-system(.local)(.min).css` are the same three concatenated, so scanning them too would only duplicate locations). Source-scanning was tried first and undercounted badly — SCSS `@each`/`@for` loops generate variable names via interpolation, so the literal `var(--ds-...)` text often never appears in source at all, only in the compiled output once the loop is expanded. No TSX inline styles, no Storybook/docs/test files — only what actually ships. |
 | Token scope | **Base tokens only** (Global/Alias/Component layers from `Base.tokens.json`), matching the fact that the "Used" column only renders in base (non-brand) view. Brand tokens are out of scope entirely. |
 | Name mapping | Reuse style-dictionary's real transform output — read `packages/tokens/dist/docs/base.tokens.json`, which retains both the original `path` (matches Toky's `FlatToken.path`) and the transformed CSS var `name` per token. Do **not** reimplement the `ds/css/name` transform's edge cases (t-shirt-size fix, `-component` suffix strip, emoji stripping) in Toky. |
-| Freshness | Computed offline, not live. A generator script rebuilds `packages/tokens` itself first (so the dist file is never stale relative to token source), then scans and writes a JSON artifact that's **committed to git**. Toky only ever reads this static file — no filesystem scanning, no build-triggering, at request time. |
+| Freshness | Computed offline, not live. A generator script rebuilds `packages/tokens`, `packages/core`, and `packages/css` itself first (so both the token→name mapping and the compiled CSS being scanned are never stale), then scans and writes a JSON artifact that's **committed to git**. Toky only ever reads this static file — no filesystem scanning, no build-triggering, at request time. |
 | Artifact location | `apps/toky/src/tokens/code-usage.generated.json` — co-located with `graph.ts`/`edit.ts` (Toky's only consumer); `.generated.json` signals "don't hand-edit." |
 | Artifact shape | Flat map keyed by `path.join('.')` (same key convention as `graph.ts`) → `{ count: number, locations: { package: 'core' \| 'css', file: string }[] }`. `count === locations.length` — distinct files the var appears in, not raw occurrence count. |
 | Script location | Repo-root `scripts/generate-token-usage.mjs`, same tier as `scripts/build-docs.mjs`. New root pnpm script: `pnpm tokens:usage`. |
 | Relationship to reference count | Two **separate** signals in the UI, not merged — a token-reference count and a code-usage count answer different questions and combining them would hide the exact "aliased but never shipped" case this feature exists to catch. |
 | Missing data | Not applicable — since scope is Base tokens only and the script always rebuilds before scanning, every Base token in a freshly generated artifact has an entry (possibly `count: 0`). Stale-vs-live drift (a token renamed since the last commit of the artifact) is an accepted, undetected blind spot for now. |
 | Dynamic references | SCSS interpolation (`var(--#{$name})`) is a known blind spot — literal-string matching only. No attempt to resolve computed variable names. |
+| Responsive tokens | Mobile/Tablet/Desktop siblings (e.g. `Alias/Text/Size/3XL/{Mobile,Tablet,Desktop}`) get a custom style-dictionary format (`packages/tokens/src/formatter.ts`, `ds/css/variables-responsive`) that never emits a Tablet or Desktop token's own suffixed name in compiled CSS — it collapses all three into one shared `--ds-...-device` property, overridden per breakpoint. So the generator also searches each responsive token's `-device` variant; a single `-device` reference anywhere marks **all three** siblings as used, since that one variable is fed by all of them depending on viewport. |
 | Out of scope (for now) | No staleness warning/banner, no CI check that the artifact is up to date, no auto-rebuild triggered from Toky's UI or server. |
 
 ## 3. Data model
@@ -39,8 +40,8 @@ easy to spot.
   "🌐 Global.🌈 Color.White": {
     "count": 2,
     "locations": [
-      { "package": "core", "file": "components/button/button.host.scss" },
-      { "package": "css", "file": "utilities/_backgrounds.scss" }
+      { "package": "core", "file": "components/button/button.host.css" },
+      { "package": "css", "file": "utilities.css" }
     ]
   },
   "🔗 Alias.Color.SurfaceDanger": {
@@ -52,17 +53,23 @@ easy to spot.
 
 ## 4. Generator script (`scripts/generate-token-usage.mjs`)
 
-1. Run `pnpm tokens` (spawn, inherit stdio) to rebuild `packages/tokens`,
-   guaranteeing `packages/tokens/dist/docs/base.tokens.json` is current.
+1. Run `pnpm tokens`, `pnpm core`, and `pnpm css` (spawn, inherit stdio) to
+   rebuild all three, guaranteeing `packages/tokens/dist/docs/base.tokens.json`
+   and the compiled CSS being scanned are both current.
 2. Recursively walk that JSON's `🌐 Global` / `🔗 Alias` / `🧩 Component`
-   subtrees, collecting `{ path: string[], name: string }` for every leaf
-   token (`path.join('.')` as the map key, `name` as the CSS var to search
-   for, e.g. `ds-global-color-white` → search for `var(--ds-global-color-white`).
-3. Glob `packages/core/src/**/*.scss` and `packages/css/src/**/*.scss`.
+   subtrees, collecting `{ path: string[], names: string[] }` for every leaf
+   token (`path.join('.')` as the map key). Usually `names` is just the
+   token's own transformed CSS var name (e.g. `ds-global-color-white`); for a
+   token whose name ends `-mobile`/`-tablet`/`-desktop`, `names` also
+   includes the shared `-device` variant (see "Responsive tokens" above).
+3. Glob `packages/core/dist/collection/**/*.css` and
+   `packages/css/dist/css/{base,components,utilities}.css`.
 4. For each token name, scan every file for a literal
    `var(--<name>` occurrence (regex, tolerant of a trailing fallback:
    `,`/`)`); record every distinct file that matches as a `location`
-   (`package` inferred from which glob root matched).
+   (`package` inferred from which glob root matched). Scanning compiled
+   output means `@each`/`@for`-generated variable references are already
+   expanded into literal text, unlike the `.scss` source.
 5. Write the resulting map to
    `apps/toky/src/tokens/code-usage.generated.json` (stable key order,
    2-space indent, trailing newline — consistent with other generated

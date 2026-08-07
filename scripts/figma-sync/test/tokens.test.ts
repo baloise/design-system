@@ -2,7 +2,14 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { computeTokenDiff as realComputeTokenDiff } from '../../../packages/tokens/src/config.brand.ts'
-import { brandFilePath, computeTokenDiff, flattenTokens, listBrandNames, loadTokenFile, mergeBrandTree } from '../lib/tokens.mjs'
+import {
+  brandFilePath,
+  computeTokenDiff,
+  flattenTokens,
+  listBrandNames,
+  loadTokenFile,
+  mergeBrandTree,
+} from '../lib/tokens.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const TOKENS_DIR = resolve(__dirname, '../../../packages/tokens/tokens')

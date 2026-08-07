@@ -5,8 +5,11 @@
  * simpler single-file Contents API for Toky's own PR-writes and doesn't
  * need this (docs/adr/0020-figma-sync-action-standalone-script.md).
  */
-const REPO_OWNER = 'baloise'
-const REPO_NAME = 'design-system'
+// Overridable for local sandbox testing only (e.g. backfill-commit.mjs
+// against a scratch repo instead of the real one) — never set in
+// figma-sync.yml or figma-conflict-check.yml.
+const REPO_OWNER = process.env.GITHUB_REPO_OWNER_OVERRIDE ?? 'baloise'
+const REPO_NAME = process.env.GITHUB_REPO_NAME_OVERRIDE ?? 'design-system'
 const API_ROOT = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`
 
 function authHeaders(token, extra) {

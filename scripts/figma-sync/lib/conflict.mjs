@@ -66,7 +66,10 @@ export function buildCommentBody(conflicts) {
   }
 
   const rows = conflicts
-    .map(c => `| \`${c.tokenPath.join('.')}\` | \`${JSON.stringify(c.baselineValue)}\` | \`${JSON.stringify(c.githubValue)}\` | \`${JSON.stringify(c.figmaValue)}\` |`)
+    .map(
+      c =>
+        `| \`${c.tokenPath.join('.')}\` | \`${JSON.stringify(c.baselineValue)}\` | \`${JSON.stringify(c.githubValue)}\` | \`${JSON.stringify(c.figmaValue)}\` |`,
+    )
     .join('\n')
 
   return (

@@ -20,7 +20,9 @@ export async function getLocalVariables(fileKey, token) {
 
   if (!response.ok) {
     const body = await response.text()
-    throw new Error(`Failed to fetch local variables for file ${fileKey}: ${response.status} ${response.statusText} — ${body}`)
+    throw new Error(
+      `Failed to fetch local variables for file ${fileKey}: ${response.status} ${response.statusText} — ${body}`,
+    )
   }
 
   const json = await response.json()
@@ -42,7 +44,9 @@ export async function postVariables(fileKey, token, payload) {
 
   if (!response.ok) {
     const body = await response.text()
-    throw new Error(`Failed to write variables for file ${fileKey}: ${response.status} ${response.statusText} — ${body}`)
+    throw new Error(
+      `Failed to write variables for file ${fileKey}: ${response.status} ${response.statusText} — ${body}`,
+    )
   }
 
   const json = await response.json()
@@ -81,4 +85,21 @@ export function findCollectionAndModes(meta, brandNames) {
   }
 
   return { collectionId: collection.id, modeIdByBrand }
+}
+
+/**
+ * Figma variable name -> id, scoped to one collection — powers the
+ * path/name fallback match in lib/write.mjs's assignVariableIds
+ * (docs/adr/0001-figma-variable-identity-key.md). Scoped to the
+ * collection, not global, since two different collections could
+ * legitimately reuse the same variable name.
+ */
+export function buildNameIndex(meta, collectionId) {
+  const index = new Map()
+  for (const variable of Object.values(meta.variables)) {
+    if (variable.variableCollectionId === collectionId) {
+      index.set(variable.name, variable.id)
+    }
+  }
+  return index
 }

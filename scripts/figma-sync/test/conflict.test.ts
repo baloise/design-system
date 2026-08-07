@@ -8,7 +8,12 @@ function state(resolvedValue) {
     lastSyncedCommit: 'sha1',
     lastSyncedAt: '2026-01-01T00:00:00Z',
     entries: {
-      'VariableID:1:1': { tokenPath: ['A'], resolvedValue, lastModifiedSource: 'code', lastModifiedAt: '2026-01-01T00:00:00Z' },
+      'VariableID:1:1': {
+        tokenPath: ['A'],
+        resolvedValue,
+        lastModifiedSource: 'code',
+        lastModifiedAt: '2026-01-01T00:00:00Z',
+      },
     },
   }
 }
@@ -21,7 +26,9 @@ function token(value) {
 
 describe('findConflicts', () => {
   it('returns nothing when there is no baseline yet', () => {
-    expect(findConflicts({ existingState: null, currentBaseTokens: [token(24)], figmaVariablesById: {}, modeId })).toEqual([])
+    expect(
+      findConflicts({ existingState: null, currentBaseTokens: [token(24)], figmaVariablesById: {}, modeId }),
+    ).toEqual([])
   })
 
   it('is not a conflict when only GitHub changed (Figma still matches baseline)', () => {
@@ -52,7 +59,13 @@ describe('findConflicts', () => {
       modeId,
     })
     expect(conflicts).toHaveLength(1)
-    expect(conflicts[0]).toMatchObject({ variableId: 'VariableID:1:1', tokenPath: ['A'], baselineValue: 16, githubValue: 24, figmaValue: 32 })
+    expect(conflicts[0]).toMatchObject({
+      variableId: 'VariableID:1:1',
+      tokenPath: ['A'],
+      baselineValue: 16,
+      githubValue: 24,
+      figmaValue: 32,
+    })
   })
 
   it('is not flagged as a conflict if both sides changed to the exact same value', () => {
@@ -67,16 +80,40 @@ describe('findConflicts', () => {
 
   it('skips a token with no variableId (never synced)', () => {
     const unsynced = { path: ['B'], type: 'number', value: { kind: 'literal', value: 1 } }
-    expect(findConflicts({ existingState: state(baselineNumber), currentBaseTokens: [unsynced], figmaVariablesById: {}, modeId })).toEqual([])
+    expect(
+      findConflicts({
+        existingState: state(baselineNumber),
+        currentBaseTokens: [unsynced],
+        figmaVariablesById: {},
+        modeId,
+      }),
+    ).toEqual([])
   })
 
   it('skips a reference-kind token (out of scope for this pass, see module doc)', () => {
-    const ref = { path: ['A'], type: 'color', value: { kind: 'reference', path: ['Global', 'White'] }, variableId: 'VariableID:1:1' }
-    expect(findConflicts({ existingState: state({ kind: 'reference', path: ['x'] }), currentBaseTokens: [ref], figmaVariablesById: {}, modeId })).toEqual([])
+    const ref = {
+      path: ['A'],
+      type: 'color',
+      value: { kind: 'reference', path: ['Global', 'White'] },
+      variableId: 'VariableID:1:1',
+    }
+    expect(
+      findConflicts({
+        existingState: state({ kind: 'reference', path: ['x'] }),
+        currentBaseTokens: [ref],
+        figmaVariablesById: {},
+        modeId,
+      }),
+    ).toEqual([])
   })
 
   it('skips a token whose variableId has no live Figma variable (deleted, or never actually pushed)', () => {
-    const conflicts = findConflicts({ existingState: state(baselineNumber), currentBaseTokens: [token(24)], figmaVariablesById: {}, modeId })
+    const conflicts = findConflicts({
+      existingState: state(baselineNumber),
+      currentBaseTokens: [token(24)],
+      figmaVariablesById: {},
+      modeId,
+    })
     expect(conflicts).toEqual([])
   })
 })
@@ -84,7 +121,9 @@ describe('findConflicts', () => {
 describe('buildCommentBody', () => {
   it('always includes the marker, for find-or-update on re-runs', () => {
     expect(buildCommentBody([])).toContain(COMMENT_MARKER)
-    expect(buildCommentBody([{ tokenPath: ['A'], baselineValue: 1, githubValue: 2, figmaValue: 3 }])).toContain(COMMENT_MARKER)
+    expect(buildCommentBody([{ tokenPath: ['A'], baselineValue: 1, githubValue: 2, figmaValue: 3 }])).toContain(
+      COMMENT_MARKER,
+    )
   })
 
   it('reports "no conflicts" clearly when the list is empty', () => {

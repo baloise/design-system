@@ -15,19 +15,30 @@ export function figmaVariableName(path) {
 
 /**
  * Assigns every Base token the id its Figma payload entries should use:
- * its existing `variableId`, or a fresh temp id for a token that's never
- * been synced. Computed once against Base — a brand override reuses
- * Base's variableId, it never mints its own
- * (docs/adr/0012-brand-modes-not-collections.md) — and reused for every
- * brand's mode-values.
+ * its existing `variableId`; failing that, a Figma variable already
+ * carrying the same computed name (docs/adr/0001-figma-variable-identity-key.md's
+ * documented path/name *fallback* match, for a token that's never
+ * round-tripped an id — e.g. it was already created in Figma under this
+ * exact name by an earlier partial run); failing that, a fresh temp id.
+ * Computed once against Base — a brand override reuses Base's variableId,
+ * it never mints its own (docs/adr/0012-brand-modes-not-collections.md) —
+ * and reused for every brand's mode-values.
+ *
+ * @param {import('./tokens.mjs').Token[]} baseTokens
+ * @param {Map<string, string>} existingNameIndex Figma variable name -> real id, scoped to the target collection
  */
-export function assignVariableIds(baseTokens) {
+export function assignVariableIds(baseTokens, existingNameIndex = new Map()) {
   const idByPath = new Map()
   for (const token of baseTokens) {
     const key = pathKey(token.path)
-    idByPath.set(key, token.variableId ?? `temp-${key}`)
+    const fallbackId = existingNameIndex.get(figmaVariableName(token.path))
+    idByPath.set(key, token.variableId ?? fallbackId ?? `temp-${key}`)
   }
   return idByPath
+}
+
+function isTempId(id) {
+  return id.startsWith('temp-')
 }
 
 /**
@@ -43,10 +54,12 @@ export function buildCreatePassPayload({ baseTokens, brandTokensByName, idByPath
   const seenVariableIds = new Set()
 
   for (const token of baseTokens) {
-    if (token.variableId) continue // already exists in Figma — nothing to CREATE
-
     const key = pathKey(token.path)
     const variableId = idByPath.get(key)
+    // Not a temp id — either the token already carried a variableId, or
+    // assignVariableIds linked it to an existing Figma variable by name.
+    // Either way, nothing to CREATE.
+    if (!isTempId(variableId)) continue
     if (seenVariableIds.has(variableId)) continue
     seenVariableIds.add(variableId)
 
@@ -121,5 +134,7 @@ export function resolveTempIds(idByPath, tempIdToRealId) {
  * real Figma id, never a temp one.
  */
 export function collectNewlyCreatedIds(baseTokens, idByPath) {
-  return baseTokens.filter(token => !token.variableId).map(token => ({ path: token.path, variableId: idByPath.get(pathKey(token.path)) }))
+  return baseTokens
+    .filter(token => !token.variableId)
+    .map(token => ({ path: token.path, variableId: idByPath.get(pathKey(token.path)) }))
 }

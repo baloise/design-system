@@ -22,7 +22,9 @@ const tree = {
 
 describe('applyVariableIdPatch', () => {
   it('sets variableId and a default ALL_SCOPES on a token that had neither', () => {
-    const patched = applyVariableIdPatch(tree, [{ path: ['🌐 Global', '🌈 Color', 'White'], variableId: 'VariableID:9:9' }])
+    const patched = applyVariableIdPatch(tree, [
+      { path: ['🌐 Global', '🌈 Color', 'White'], variableId: 'VariableID:9:9' },
+    ])
     expect(patched['🌐 Global']['🌈 Color'].White.$extensions).toEqual({
       'com.figma.variableId': 'VariableID:9:9',
       'com.figma.scopes': ['ALL_SCOPES'],
@@ -30,7 +32,9 @@ describe('applyVariableIdPatch', () => {
   })
 
   it('does not touch a token outside the patch list', () => {
-    const patched = applyVariableIdPatch(tree, [{ path: ['🌐 Global', '🌈 Color', 'White'], variableId: 'VariableID:9:9' }])
+    const patched = applyVariableIdPatch(tree, [
+      { path: ['🌐 Global', '🌈 Color', 'White'], variableId: 'VariableID:9:9' },
+    ])
     expect(patched['🌐 Global']['🌈 Color'].Black.$extensions.variableId).toBeUndefined()
     expect(patched['🌐 Global']['🌈 Color'].Black.$extensions['com.figma.variableId']).toBe('VariableID:1:1')
   })
@@ -41,7 +45,9 @@ describe('applyVariableIdPatch', () => {
   })
 
   it('throws if the path does not resolve to a token leaf', () => {
-    expect(() => applyVariableIdPatch(tree, [{ path: ['🌐 Global', 'Nonexistent'], variableId: 'x' }])).toThrow(/no token leaf found/)
+    expect(() => applyVariableIdPatch(tree, [{ path: ['🌐 Global', 'Nonexistent'], variableId: 'x' }])).toThrow(
+      /no token leaf found/,
+    )
   })
 
   it('patches correctly against the real Base.tokens.json shape', () => {
@@ -62,7 +68,12 @@ describe('buildSyncState', () => {
   ]
 
   it('builds one entry per token, keyed by variableId', () => {
-    const state = buildSyncState({ existingState: null, baseTokens, mergeCommitSha: 'sha1', syncedAt: '2026-08-06T00:00:00Z' })
+    const state = buildSyncState({
+      existingState: null,
+      baseTokens,
+      mergeCommitSha: 'sha1',
+      syncedAt: '2026-08-06T00:00:00Z',
+    })
 
     expect(state.lastSyncedCommit).toBe('sha1')
     expect(state.entries.v1).toEqual({
@@ -78,12 +89,27 @@ describe('buildSyncState', () => {
       lastSyncedCommit: 'old-sha',
       lastSyncedAt: '2026-01-01T00:00:00Z',
       entries: {
-        v1: { tokenPath: ['A'], resolvedValue: { kind: 'literal', value: 'stale' }, lastModifiedSource: 'figma', lastModifiedAt: '2026-01-01T00:00:00Z' },
-        vUntouched: { tokenPath: ['Z'], resolvedValue: { kind: 'literal', value: 'z' }, lastModifiedSource: 'code', lastModifiedAt: '2026-01-01T00:00:00Z' },
+        v1: {
+          tokenPath: ['A'],
+          resolvedValue: { kind: 'literal', value: 'stale' },
+          lastModifiedSource: 'figma',
+          lastModifiedAt: '2026-01-01T00:00:00Z',
+        },
+        vUntouched: {
+          tokenPath: ['Z'],
+          resolvedValue: { kind: 'literal', value: 'z' },
+          lastModifiedSource: 'code',
+          lastModifiedAt: '2026-01-01T00:00:00Z',
+        },
       },
     }
 
-    const state = buildSyncState({ existingState, baseTokens, mergeCommitSha: 'sha2', syncedAt: '2026-08-06T00:00:00Z' })
+    const state = buildSyncState({
+      existingState,
+      baseTokens,
+      mergeCommitSha: 'sha2',
+      syncedAt: '2026-08-06T00:00:00Z',
+    })
 
     expect(state.entries.v1.resolvedValue).toEqual({ kind: 'literal', value: 'x' })
     expect(state.entries.v1.lastModifiedAt).toBe('2026-08-06T00:00:00Z')
@@ -92,6 +118,8 @@ describe('buildSyncState', () => {
 
   it('throws if a token has no variableId — ids must be patched before the baseline is built', () => {
     const withoutId = [{ path: ['A'], type: 'string', value: { kind: 'literal', value: 'x' } }]
-    expect(() => buildSyncState({ existingState: null, baseTokens: withoutId, mergeCommitSha: 'sha', syncedAt: 'now' })).toThrow(/has no variableId/)
+    expect(() =>
+      buildSyncState({ existingState: null, baseTokens: withoutId, mergeCommitSha: 'sha', syncedAt: 'now' }),
+    ).toThrow(/has no variableId/)
   })
 })

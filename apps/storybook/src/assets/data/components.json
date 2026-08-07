@@ -30197,7 +30197,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Emitted when the value is committed (noUiSlider `change`, not `blur` — see\nADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.",
+          "docs": "Emitted when the value is committed (noUiSlider `change`, not `blur` — see\nADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.",
           "docsTags": []
         },
         {
