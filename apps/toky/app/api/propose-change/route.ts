@@ -69,19 +69,19 @@ function isDiffEntry(value: unknown): value is TokenDiffEntry {
 // state is known, alongside the rest of the conflict checks below.
 function parseBrandDiffs(input: unknown): Record<string, TokenDiffEntry[]> {
   if (typeof input !== 'object' || input === null) return {}
-  const result: Record<string, TokenDiffEntry[]> = {}
+  // `name` is a brand name straight from the request body — collect
+  // [name, entries] pairs and hand them to Object.fromEntries in one shot
+  // at the end, rather than writing each one onto `result` as we go
+  // (`result[trimmed] = entries`), which is a property write keyed by
+  // untrusted input regardless of how it's spelled.
+  const pairs: [string, TokenDiffEntry[]][] = []
   for (const [name, value] of Object.entries(input as Record<string, unknown>)) {
     const trimmed = name.trim()
     if (!trimmed || !Array.isArray(value)) continue
     const entries = value.filter(isDiffEntry)
-    // `trimmed` is a brand name straight from the request body — write it as
-    // an own property via defineProperty (not `result[trimmed] = entries`),
-    // which can't be redirected into Object.prototype by a "__proto__" key.
-    if (entries.length > 0) {
-      Object.defineProperty(result, trimmed, { value: entries, writable: true, enumerable: true, configurable: true })
-    }
+    if (entries.length > 0) pairs.push([trimmed, entries])
   }
-  return result
+  return Object.fromEntries(pairs)
 }
 
 // Format/reserved-word/in-request-duplicate checks only — collision against

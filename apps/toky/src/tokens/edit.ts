@@ -29,22 +29,26 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
 }
 
 // Token/brand names come from user input (see pathFor) and end up as object
-// keys when we walk/mutate the tokens document below — reject the names that
-// would let a submitted path reach or overwrite Object.prototype.
+// keys when we walk/rebuild the tokens document below — reject the names
+// that would let a submitted path reach or overwrite Object.prototype.
 function isUnsafeKey(key: string): boolean {
   return key === '__proto__' || key === 'constructor' || key === 'prototype'
 }
 
-// Plain `node[key] = value` runs the [[Set]] algorithm, which — for an
-// untrusted `key` of "__proto__" — walks the prototype chain and invokes
-// Object.prototype's `__proto__` accessor instead of creating an own
-// property, silently repointing `node`'s prototype. `Object.defineProperty`
-// uses [[DefineOwnProperty]] instead: it always creates/overwrites a literal
-// own property named `key`, "__proto__" included, and can never trigger that
-// accessor. Combined with isUnsafeKey above (belt-and-braces), this is the
-// safe way to write a document key that came from user input.
-function safeSet(node: Record<string, unknown>, key: string, value: unknown): void {
-  Object.defineProperty(node, key, { value, writable: true, enumerable: true, configurable: true })
+// Neither `node[key] = value` nor `Object.defineProperty(node, key, ...)` is
+// used here, even guarded by isUnsafeKey — both are property WRITES keyed by
+// a user-controlled string, and a value with that shape is exactly what
+// prototype-pollution/property-injection tooling flags on sight, guarded or
+// not. Instead these helpers only ever *read* existing keys (Object.entries)
+// and hand a full list of pairs to Object.fromEntries, which builds a brand
+// new object in one step — there's no step where `node`'s own keys are
+// mutated through a computed accessor at all.
+function withEntry(node: Record<string, unknown>, key: string, value: unknown): Record<string, unknown> {
+  return Object.fromEntries([...Object.entries(node).filter(([k]) => k !== key), [key, value]])
+}
+
+function withoutEntry(node: Record<string, unknown>, key: string): Record<string, unknown> {
+  return Object.fromEntries(Object.entries(node).filter(([k]) => k !== key))
 }
 
 export function effectiveValue(token: FlatToken): unknown {
@@ -142,46 +146,55 @@ function getNode(doc: Record<string, unknown>, path: string[]): Record<string, u
   return isPlainObject(node) ? node : undefined
 }
 
-function deletePath(doc: Record<string, unknown>, path: string[]): void {
-  const parentPath = path.slice(0, -1)
-  const key = path[path.length - 1]
-  if (isUnsafeKey(key)) return
-  const parent = getNode(doc, parentPath)
-  if (!parent) return
-  Reflect.deleteProperty(parent, key)
-  pruneEmpty(doc, parentPath)
-}
+// Rebuilds `doc` bottom-up: recurse to the target's parent, drop its key
+// there via withoutEntry, then rebuild each ancestor on the way back out
+// with withEntry — so every level along `path` is a freshly-built object,
+// never a mutated one.
+function deletePath(doc: Record<string, unknown>, path: string[]): Record<string, unknown> {
+  if (path.length === 0) return doc
+  const [key, ...rest] = path
+  if (isUnsafeKey(key) || !(key in doc)) return doc
 
-function pruneEmpty(doc: Record<string, unknown>, path: string[]): void {
-  if (path.length === 0) return
-  const node = getNode(doc, path)
-  if (node && Object.keys(node).length === 0) {
-    deletePath(doc, path)
+  if (rest.length === 0) {
+    return withoutEntry(doc, key)
   }
+
+  const child = doc[key]
+  if (!isPlainObject(child)) return doc
+
+  const updatedChild = deletePath(child, rest)
+  return Object.keys(updatedChild).length === 0 ? withoutEntry(doc, key) : withEntry(doc, key, updatedChild)
 }
 
-function setPath(doc: Record<string, unknown>, path: string[], value: Record<string, unknown>): void {
-  if (path.some(isUnsafeKey)) {
+// Same bottom-up rebuild as deletePath, but setting a value at the end
+// instead of removing one — intermediate objects along `path` are created
+// (as `{}`) on the way down if they don't already exist.
+function setPath(
+  doc: Record<string, unknown>,
+  path: string[],
+  value: Record<string, unknown>,
+): Record<string, unknown> {
+  if (path.length === 0) return doc
+  const [key, ...rest] = path
+  if (isUnsafeKey(key)) {
     throw new Error(`Refusing to write unsafe path segment in: ${path.join('.')}`)
   }
 
-  let node: Record<string, unknown> = doc
-  for (let i = 0; i < path.length - 1; i++) {
-    const key = path[i]
-    if (!isPlainObject(node[key])) {
-      safeSet(node, key, {})
-    }
-    node = node[key] as Record<string, unknown>
+  if (rest.length === 0) {
+    return withEntry(doc, key, value)
   }
-  safeSet(node, path[path.length - 1], value)
+
+  const existingChild = doc[key]
+  const child = isPlainObject(existingChild) ? existingChild : {}
+  return withEntry(doc, key, setPath(child, rest, value))
 }
 
 export function applyDiffToDocument(doc: Record<string, unknown>, diff: TokenDiffEntry[]): Record<string, unknown> {
-  const next = structuredClone(doc)
+  let next = structuredClone(doc)
 
   for (const entry of diff) {
     if ((entry.kind === 'delete' || entry.kind === 'update') && entry.oldPath) {
-      deletePath(next, entry.oldPath)
+      next = deletePath(next, entry.oldPath)
     }
   }
 
@@ -199,7 +212,7 @@ export function applyDiffToDocument(doc: Record<string, unknown>, diff: TokenDif
         }
       }
 
-      setPath(next, entry.newPath, newNode)
+      next = setPath(next, entry.newPath, newNode)
     }
   }
 
