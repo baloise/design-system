@@ -74,7 +74,12 @@ function parseBrandDiffs(input: unknown): Record<string, TokenDiffEntry[]> {
     const trimmed = name.trim()
     if (!trimmed || !Array.isArray(value)) continue
     const entries = value.filter(isDiffEntry)
-    if (entries.length > 0) result[trimmed] = entries
+    // `trimmed` is a brand name straight from the request body — write it as
+    // an own property via defineProperty (not `result[trimmed] = entries`),
+    // which can't be redirected into Object.prototype by a "__proto__" key.
+    if (entries.length > 0) {
+      Object.defineProperty(result, trimmed, { value: entries, writable: true, enumerable: true, configurable: true })
+    }
   }
   return result
 }

@@ -31,10 +31,20 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
 // Token/brand names come from user input (see pathFor) and end up as object
 // keys when we walk/mutate the tokens document below — reject the names that
 // would let a submitted path reach or overwrite Object.prototype.
-const UNSAFE_KEYS = new Set(['__proto__', 'constructor', 'prototype'])
-
 function isUnsafeKey(key: string): boolean {
-  return UNSAFE_KEYS.has(key)
+  return key === '__proto__' || key === 'constructor' || key === 'prototype'
+}
+
+// Plain `node[key] = value` runs the [[Set]] algorithm, which — for an
+// untrusted `key` of "__proto__" — walks the prototype chain and invokes
+// Object.prototype's `__proto__` accessor instead of creating an own
+// property, silently repointing `node`'s prototype. `Object.defineProperty`
+// uses [[DefineOwnProperty]] instead: it always creates/overwrites a literal
+// own property named `key`, "__proto__" included, and can never trigger that
+// accessor. Combined with isUnsafeKey above (belt-and-braces), this is the
+// safe way to write a document key that came from user input.
+function safeSet(node: Record<string, unknown>, key: string, value: unknown): void {
+  Object.defineProperty(node, key, { value, writable: true, enumerable: true, configurable: true })
 }
 
 export function effectiveValue(token: FlatToken): unknown {
@@ -138,7 +148,7 @@ function deletePath(doc: Record<string, unknown>, path: string[]): void {
   if (isUnsafeKey(key)) return
   const parent = getNode(doc, parentPath)
   if (!parent) return
-  delete parent[key]
+  Reflect.deleteProperty(parent, key)
   pruneEmpty(doc, parentPath)
 }
 
@@ -159,11 +169,11 @@ function setPath(doc: Record<string, unknown>, path: string[], value: Record<str
   for (let i = 0; i < path.length - 1; i++) {
     const key = path[i]
     if (!isPlainObject(node[key])) {
-      node[key] = {}
+      safeSet(node, key, {})
     }
     node = node[key] as Record<string, unknown>
   }
-  node[path[path.length - 1]] = value
+  safeSet(node, path[path.length - 1], value)
 }
 
 export function applyDiffToDocument(doc: Record<string, unknown>, diff: TokenDiffEntry[]): Record<string, unknown> {
