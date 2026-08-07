@@ -1,0 +1,35 @@
+name: 🔍 Figma Conflict Check
+
+on:
+  pull_request:
+    branches: [next]
+    paths: ['packages/tokens/tokens/*.tokens.json']
+
+jobs:
+  check:
+    name: 🔍 Figma Conflict Check
+    if: github.head_ref == 'toky/update-next'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: ./.github/workflows/actions/setup-environment
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Comment-only, never blocks merge (docs/adr/0018-non-blocking-conflict-check.md)
+      # — a script error here still fails the job (a real operational
+      # problem), but *finding* a conflict never does.
+      - name: Diff PR tokens against Figma + baseline
+        shell: bash
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIGMA_API_TOKEN: ${{ secrets.FIGMA_API_TOKEN }}
+          FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
+        run: node scripts/figma-sync/conflict-check.mjs

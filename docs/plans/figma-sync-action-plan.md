@@ -20,7 +20,7 @@ Two workflows, two concerns:
 Reuses the sync domain established for the plugin ([figma-token-sync-plugin-plan.md](figma-token-sync-plugin-plan.md)):
 `variableId` identity, brand-mode mapping, native aliasing, and the
 `.figma-sync-state.json` baseline — same data model, different caller (see
-ADR-0006).
+ADR-0016).
 
 ## 2. Governing decisions
 
@@ -149,7 +149,7 @@ jobs:
         run: node scripts/figma-sync/backfill-commit.mjs
         # One atomic Git Data API commit (blob/tree/commit/ref) touching
         # every changed *.tokens.json plus .figma-sync-state.json.
-        # Direct to `next` — see ADR-0007. No PR opened.
+        # Direct to `next` — see ADR-0017. No PR opened.
 ```
 
 ## 6. Script layout
@@ -204,10 +204,10 @@ engine.
 ### Phase 3 — VariableId backfill + baseline write-back
 
 - `backfill-commit.mjs`: Git Data API atomic commit, id-only diffs plus
-  `.figma-sync-state.json` (ADR-0004, ADR-0007).
+  `.figma-sync-state.json` (ADR-0014, ADR-0017).
 - Confirm the bot token's branch-protection bypass actually works against
   `next`'s real protection rules (provisioning dependency called out in
-  ADR-0007 — this is where it gets verified, not assumed).
+  ADR-0017 — this is where it gets verified, not assumed).
 
 ### Phase 4 — Deletion handling
 
@@ -221,7 +221,7 @@ engine.
 
 - `conflict-check.mjs` + `figma-conflict-check.yml`: 3-way diff reusing
   `lib/diff.mjs` from Phase 1/2, comment find-or-update logic
-  (ADR-0008 — always passes).
+  (ADR-0018 — always passes).
 - Test against a fixture where Figma and GitHub both moved the same
   `variableId` since baseline — confirm it's listed; a fixture where only
   one side moved — confirm it's _not_ listed.

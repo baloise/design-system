@@ -38,6 +38,7 @@
     "_test": "===================================================== Test & Lint ===============================================",
     "lint": "turbo run lint && node scripts/check-overrides.mjs",
     "test": "turbo run test",
+    "test:figma-sync": "vitest run --config scripts/figma-sync/vitest.config.ts",
     "_utilities": "================================================ Utilities =================================================",
     "kill:ports": "node -e \"require('kill-port')(4000).catch(()=>{})\"",
     "format": "pnpm exec prettier --write --log-level error --end-of-line lf .",
