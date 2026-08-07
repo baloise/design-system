@@ -1,4 +1,0 @@
-/*!
- * (C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0
- */
-import{B as t,E as e,F as s,G as r}from"./p-B-v2Wm-V.js";import{_ as n,L as a,a as c}from"./p-Y0rKqVvm.js";const i=class{constructor(e){t(this,e)}createLogger(t){this.log=t}connectedCallback(){this.el.slot="title"}render(){return e(s,{key:"fd1b78370d7474d8ec7e514556fdb9444fa12e70",style:{display:"contents"}},e("slot",{key:"d2d14b2c4cfe147042c8c9a93c1d980f2bfd343d"}))}get el(){return r(this)}};n([a("hint-title"),c("design:type",Function),c("design:paramtypes",[Function]),c("design:returntype",void 0)],i.prototype,"createLogger",null);export{i as ds_hint_title}

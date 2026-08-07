@@ -1,4 +1,0 @@
-/*!
- * (C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0
- */
-import{B as s,E as t,F as e,G as r}from"./p-B-v2Wm-V.js";import{_ as a,L as o,a as n}from"./p-Y0rKqVvm.js";import{d as c}from"./p-BlyIAln5.js";import{O as i}from"./p-DypNSUAh.js";import"./p-Dk0GEN2t.js";const d=class{constructor(t){s(this,t),this.align=""}createLogger(s){this.log=s}render(){return t(e,{key:"aecfb23acdf3849da281cc55bddf122f478045c5",role:"contentinfo"},t("ds-button-group",{key:"a446061160145dbee8d7bfc9c3c11514211f179c",class:"m-none",align:this.align},t("slot",{key:"bb4b18651c81df8055a4f0fc3dd198279dd014a8"})))}get el(){return r(this)}};a([o("card-actions"),n("design:type",Function),n("design:paramtypes",[Function]),n("design:returntype",void 0)],d.prototype,"createLogger",null),a([i(c),n("design:type",String)],d.prototype,"align",void 0);export{d as ds_card_actions}

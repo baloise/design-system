@@ -93,7 +93,6 @@ apps/storybook/src/components/**/api.md
 apps/storybook/src/components/**/theming.md
 apps/storybook/src/components/**/testing.md
 apps/storybook/dist
-docs.old/
 
 playwright-report
 playwright.visual.config.mts
