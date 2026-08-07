@@ -8,7 +8,10 @@ const basePxFontSize = 16
  * `$value` differs from the base. Keeps the full hierarchy so Style
  * Dictionary can still resolve references.
  */
-function computeTokenDiff(base: Record<string, unknown>, brand: Record<string, unknown>): Record<string, unknown> {
+export function computeTokenDiff(
+  base: Record<string, unknown>,
+  brand: Record<string, unknown>,
+): Record<string, unknown> {
   const result: Record<string, unknown> = {}
 
   for (const [key, brandVal] of Object.entries(brand)) {

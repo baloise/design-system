@@ -16,6 +16,7 @@
     "start:force": "turbo run build --force && pnpm start",
     "docs": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs --serve && storybook dev -p 6006 --config-dir apps/storybook/.storybook",
     "docs:preview": "turbo run build --filter=@baloise/ds-core --force && node scripts/build-docs.mjs && http-server apps/storybook/dist -p 6006",
+    "toky": "pnpm --filter toky dev",
     "app:react": "turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-css && pnpm --filter integration-react start",
     "app:angular": "turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-angular --filter=@baloise/ds-css && pnpm --filter integration-angular start",
     "_playwright": "=============================================== Playwright =================================================",
@@ -31,12 +32,19 @@
     "build:vercel": "turbo run build --filter=@baloise/ds-core && node scripts/build-docs.mjs",
     "build:force": "turbo run build --force",
     "tokens": "turbo run build --filter=@baloise/ds-tokens --force",
+    "tokens:usage": "node scripts/generate-token-usage.mjs",
     "css": "turbo run build --filter=@baloise/ds-css --force",
     "assets": "turbo run build --filter=@baloise/ds-assets --force",
     "core": "turbo run build --filter=@baloise/ds-core --force",
     "_test": "===================================================== Test & Lint ===============================================",
     "lint": "turbo run lint && node scripts/check-overrides.mjs",
     "test": "turbo run test",
+    "test:figma-sync": "vitest run --config scripts/figma-sync/vitest.config.ts",
+    "figma-sync:dry-run": "node --env-file=.env scripts/figma-sync/pull.mjs",
+    "figma-sync:pull": "cross-env DRY_RUN=false node --env-file=.env scripts/figma-sync/pull.mjs",
+    "figma-sync:backfill:local": "node --env-file=.env scripts/figma-sync/backfill-commit.mjs",
+    "figma-sync:conflict-check:local": "node --env-file=.env scripts/figma-sync/conflict-check.mjs",
+    "test:token-usage": "vitest run --config scripts/token-usage/vitest.config.ts",
     "_utilities": "================================================ Utilities =================================================",
     "kill:ports": "node -e \"require('kill-port')(4000).catch(()=>{})\"",
     "format": "pnpm exec prettier --write --log-level error --end-of-line lf .",
@@ -107,10 +115,16 @@
   "pnpm": {
     "_comment": "overrides below kept in sync with pnpm-workspace.yaml — required for Vercel installs. See docs/adr/0005-duplicate-pnpm-overrides.md",
     "overrides": {
-      "brace-expansion@<5.0.8": "5.0.8",
-      "js-yaml@>=4.0.0 <4.3.0": "4.3.0",
-      "js-yaml@>=3.0.0 <3.15.0": "3.15.0",
-      "immutable@>=5.0.0-beta.1 <5.1.8": "5.1.8"
+      "brace-expansion@<5.0.9": "5.0.9",
+      "js-yaml@>=4.0.0 <4.3.1": "4.3.1",
+      "js-yaml@>=3.0.0 <3.15.1": "3.15.1",
+      "immutable@>=5.0.0-beta.1 <5.1.8": "5.1.8",
+      "sharp@<0.35.0": "0.35.3",
+      "postcss@<8.5.23": "8.5.26",
+      "undici@>=7.0.0 <7.29.0": "7.29.0",
+      "fast-uri@>=3.0.0 <3.1.5": "3.1.5",
+      "@hono/node-server@<2.0.5": "2.1.0",
+      "hono@<4.12.34": "4.13.1"
     }
   }
 }
