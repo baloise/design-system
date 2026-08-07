@@ -85,7 +85,7 @@ function parseBrandDiffs(input: unknown): Record<string, TokenDiffEntry[]> {
 function validateNewBrandNamesFormat(names: string[]): string | null {
   for (const name of names) {
     const err = validateBrandName(name, [])
-    if (err && err !== 'duplicate') return `Invalid brand name "${name}": ${BRAND_NAME_ERROR_MESSAGE[err]}`
+    if (err && err !== 'duplicate') return `Invalid brand name "${name}": ${BRAND_NAME_ERROR_MESSAGE.get(err)}`
   }
   const lowerNames = names.map(name => name.toLowerCase())
   if (new Set(lowerNames).size !== lowerNames.length) {

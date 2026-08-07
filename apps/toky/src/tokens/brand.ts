@@ -5,12 +5,15 @@ const BRAND_NAME_PATTERN = /^[A-Z][A-Za-z0-9]*$/
 
 export type BrandNameError = 'empty' | 'invalid-format' | 'reserved' | 'duplicate'
 
-export const BRAND_NAME_ERROR_MESSAGE: Record<BrandNameError, string> = {
-  'empty': 'Enter a brand name.',
-  'invalid-format': 'Use PascalCase letters and digits only, e.g. "Acme".',
-  'reserved': '"Base" is reserved.',
-  'duplicate': 'A brand with this name already exists.',
-}
+// A Map keyed by the closed BrandNameError union, not a plain object indexed
+// dynamically — the caller-supplied brand name never becomes a property
+// lookup key.
+export const BRAND_NAME_ERROR_MESSAGE: ReadonlyMap<BrandNameError, string> = new Map([
+  ['empty', 'Enter a brand name.'],
+  ['invalid-format', 'Use PascalCase letters and digits only, e.g. "Acme".'],
+  ['reserved', '"Base" is reserved.'],
+  ['duplicate', 'A brand with this name already exists.'],
+])
 
 // `existing` should include both real (already-on-GitHub) brands and any
 // staged-but-not-yet-submitted ones — callers merge those before validating.

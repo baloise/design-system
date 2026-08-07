@@ -5,6 +5,7 @@ import {
   TOKEN_FILE_PATH,
   TOKENS_DIR,
   brandFilePath,
+  encodeGithubUrlSegment,
   getGithubRef,
   requireGithubToken,
 } from './github'
@@ -51,7 +52,7 @@ export interface FileMeta {
 // result yourself (see getBaseTokensFileMeta); for source files like
 // BRANDS_INDEX_PATH, use the text directly.
 export async function getFileMeta(path: string, ref: string = getGithubRef()): Promise<FileMeta> {
-  const url = `${API_ROOT}/contents/${path}?ref=${ref}`
+  const url = `${API_ROOT}/contents/${encodeGithubUrlSegment(path)}?ref=${encodeGithubUrlSegment(ref)}`
 
   const response = await apiFetch(url, { headers: authHeaders() })
   await assertOk(response, `fetch ${path} metadata`)
@@ -80,7 +81,7 @@ export async function getBrandTokensFileMeta(name: string, ref: string = getGith
 // `*.tokens.json` sibling of Base.tokens.json is a brand override file (see
 // packages/tokens/docs/adr/0002-brand-modes-not-collections.md).
 export async function listTokenBrandFiles(ref: string = getGithubRef()): Promise<string[]> {
-  const url = `${API_ROOT}/contents/${TOKENS_DIR}?ref=${ref}`
+  const url = `${API_ROOT}/contents/${encodeGithubUrlSegment(TOKENS_DIR)}?ref=${encodeGithubUrlSegment(ref)}`
 
   const response = await apiFetch(url, { headers: authHeaders() })
   await assertOk(response, `list ${TOKENS_DIR}`)
@@ -122,7 +123,7 @@ export async function listBranches(): Promise<string[]> {
 }
 
 async function getRefSha(ref: string): Promise<string> {
-  const url = `${API_ROOT}/git/ref/heads/${ref}`
+  const url = `${API_ROOT}/git/ref/heads/${encodeGithubUrlSegment(ref)}`
   const response = await apiFetch(url, { headers: authHeaders() })
   await assertOk(response, `read ref heads/${ref}`)
 
@@ -131,7 +132,7 @@ async function getRefSha(ref: string): Promise<string> {
 }
 
 export async function branchExists(branch: string): Promise<boolean> {
-  const url = `${API_ROOT}/git/ref/heads/${branch}`
+  const url = `${API_ROOT}/git/ref/heads/${encodeGithubUrlSegment(branch)}`
   const response = await apiFetch(url, { headers: authHeaders() })
   if (response.status === 404) return false
   await assertOk(response, `check whether branch ${branch} exists`)
@@ -160,7 +161,7 @@ export async function updateFileAtPath(
   sha: string,
   message: string,
 ): Promise<void> {
-  const url = `${API_ROOT}/contents/${path}`
+  const url = `${API_ROOT}/contents/${encodeGithubUrlSegment(path)}`
 
   const response = await apiFetch(url, {
     method: 'PUT',
@@ -187,7 +188,7 @@ export async function createFileOnBranch(
   content: string,
   message: string,
 ): Promise<void> {
-  const url = `${API_ROOT}/contents/${path}`
+  const url = `${API_ROOT}/contents/${encodeGithubUrlSegment(path)}`
 
   const response = await apiFetch(url, {
     method: 'PUT',
@@ -268,7 +269,7 @@ export async function openPullRequest(
 // hasn't been merged/closed yet, so a second submit can reuse it instead of
 // opening a duplicate.
 export async function findOpenPullRequest(branch: string): Promise<OpenedPullRequest | null> {
-  const url = `${API_ROOT}/pulls?head=${REPO_OWNER}:${branch}&state=open`
+  const url = `${API_ROOT}/pulls?head=${REPO_OWNER}:${encodeGithubUrlSegment(branch)}&state=open`
   const response = await apiFetch(url, { headers: authHeaders() })
   await assertOk(response, `look up open pull requests for ${branch}`)
 

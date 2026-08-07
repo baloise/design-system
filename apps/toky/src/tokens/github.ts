@@ -20,9 +20,16 @@ export function getGithubRef(): string {
   return process.env.TOKY_GITHUB_REF ?? 'next'
 }
 
+// Percent-encodes a GitHub content path or ref for safe interpolation into
+// an API URL, without touching '/' — both legitimately contain slashes
+// (nested file paths; branch names like "toky/update-next").
+export function encodeGithubUrlSegment(value: string): string {
+  return value.split('/').map(encodeURIComponent).join('/')
+}
+
 export async function fetchBaseTokensFile(ref: string = getGithubRef()): Promise<string> {
   const token = requireGithubToken()
-  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${TOKEN_FILE_PATH}?ref=${ref}`
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${TOKEN_FILE_PATH}?ref=${encodeGithubUrlSegment(ref)}`
 
   const response = await fetch(url, {
     // Next.js caches server-side fetches by default — this must always hit

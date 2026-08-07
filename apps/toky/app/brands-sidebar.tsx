@@ -138,7 +138,7 @@ export function BrandsSidebar({
               onBlur={() => setTouched(true)}
               aria-invalid={touched && !!error}
             />
-            {touched && error && <p className="text-sm text-destructive">{BRAND_NAME_ERROR_MESSAGE[error]}</p>}
+            {touched && error && <p className="text-sm text-destructive">{BRAND_NAME_ERROR_MESSAGE.get(error)}</p>}
           </div>
 
           <DialogFooter>

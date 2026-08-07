@@ -28,6 +28,15 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
+// Token/brand names come from user input (see pathFor) and end up as object
+// keys when we walk/mutate the tokens document below — reject the names that
+// would let a submitted path reach or overwrite Object.prototype.
+const UNSAFE_KEYS = new Set(['__proto__', 'constructor', 'prototype'])
+
+function isUnsafeKey(key: string): boolean {
+  return UNSAFE_KEYS.has(key)
+}
+
 export function effectiveValue(token: FlatToken): unknown {
   return token.referenceTarget ? `{${token.referenceTarget}}` : token.rawValue
 }
@@ -117,7 +126,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
 function getNode(doc: Record<string, unknown>, path: string[]): Record<string, unknown> | undefined {
   let node: unknown = doc
   for (const key of path) {
-    if (!isPlainObject(node)) return undefined
+    if (!isPlainObject(node) || isUnsafeKey(key)) return undefined
     node = node[key]
   }
   return isPlainObject(node) ? node : undefined
@@ -126,6 +135,7 @@ function getNode(doc: Record<string, unknown>, path: string[]): Record<string, u
 function deletePath(doc: Record<string, unknown>, path: string[]): void {
   const parentPath = path.slice(0, -1)
   const key = path[path.length - 1]
+  if (isUnsafeKey(key)) return
   const parent = getNode(doc, parentPath)
   if (!parent) return
   delete parent[key]
@@ -141,6 +151,10 @@ function pruneEmpty(doc: Record<string, unknown>, path: string[]): void {
 }
 
 function setPath(doc: Record<string, unknown>, path: string[], value: Record<string, unknown>): void {
+  if (path.some(isUnsafeKey)) {
+    throw new Error(`Refusing to write unsafe path segment in: ${path.join('.')}`)
+  }
+
   let node: Record<string, unknown> = doc
   for (let i = 0; i < path.length - 1; i++) {
     const key = path[i]
