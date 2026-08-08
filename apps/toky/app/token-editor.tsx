@@ -104,6 +104,25 @@ function emptyDraft(layer: TokenLayer = 'Global'): Draft {
   return { name: '', layer, type: 'string', value: '', referenceTarget: '' }
 }
 
+// A brand's value/reference text within the Edit-token dialog — kept
+// separate from `brandWorking` until Apply, same reason `editDraft` itself
+// is kept separate from `working`.
+interface EditBrandDraft {
+  value: string
+  referenceTarget: string
+  malformed: boolean
+}
+
+interface EditDraftState {
+  id: string
+  type: string
+  name: string
+  value: string
+  referenceTarget: string
+  malformed: boolean
+  brands: Record<string, EditBrandDraft>
+}
+
 // Tokens are grouped for display by everything but the last dot-segment of their
 // name (e.g. "Color.Danger.1" groups under "Color.Danger", displayed as leaf "1").
 function groupPrefixFor(name: string): string {
@@ -261,6 +280,12 @@ export function TokenEditor({
   // affect which rows are matched as members of the group until it's committed.
   const [editingGroup, setEditingGroup] = useState<{ group: string; text: string } | null>(null)
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
+  // The row currently open in the Edit-token dialog — null when closed.
+  // Nothing in `working`/`brandWorking` changes until Apply; Cancel just
+  // discards this draft (same staged-until-submit pattern as `draft` above).
+  const [editDraft, setEditDraft] = useState<EditDraftState | null>(null)
+  const [editModeOverride, setEditModeOverride] = useState<'value' | 'reference' | null>(null)
+  const [editBrandModeOverride, setEditBrandModeOverride] = useState<Record<string, 'value' | 'reference'>>({})
   const [description, setDescription] = useState('')
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
@@ -637,27 +662,42 @@ export function TokenEditor({
     const text = nameDraftText[id]
     if (text === undefined) return // nothing pending — already committed (or reverted)
 
-    // Renaming a token would otherwise silently break every other token
-    // that references it by its old path — cascade the rename into their
-    // referenceTarget too, in the same update so nothing else re-renders
-    // in between with a dangling reference.
-    setWorking(prev => {
-      const current = prev.find(w => w.id === id)
-      if (!current) return prev
-
+    const current = working.find(w => w.id === id)
+    if (current) {
       const prefix = groupPrefixFor(current.token.name)
       const newName = prefix ? `${prefix}.${text}` : text
-      if (newName === current.token.name) return prev
 
-      const oldPath = pathFor(current.token.layer, current.token.name).join('.')
-      const newPath = pathFor(current.token.layer, newName).join('.')
+      if (newName !== current.token.name) {
+        const oldPath = pathFor(current.token.layer, current.token.name).join('.')
+        const newPath = pathFor(current.token.layer, newName).join('.')
 
-      return prev.map(w => {
-        if (w.id === id) return { ...w, token: { ...w.token, name: newName } }
-        if (w.token.referenceTarget === oldPath) return { ...w, token: { ...w.token, referenceTarget: newPath } }
-        return w
-      })
-    })
+        // Renaming a token would otherwise silently break every other token that references it by
+        // its old path — cascade the rename into their referenceTarget too, in the same update so
+        // nothing else re-renders in between with a dangling reference.
+        setWorking(prev =>
+          prev.map(w => {
+            if (w.id === id) return { ...w, token: { ...w.token, name: newName } }
+            if (w.token.referenceTarget === oldPath) return { ...w, token: { ...w.token, referenceTarget: newPath } }
+            return w
+          }),
+        )
+
+        // A brand override can reference the renamed Base token too (referenceTarget is a path
+        // string, not the stable `id` brand overrides are keyed by) — cascade the same rename
+        // into every brand's working copy, the same reason renaming no longer needs to be
+        // blocked just because a brand happens to be selected.
+        setBrandWorking(prev =>
+          Object.fromEntries(
+            Object.entries(prev).map(([brand, list]) => [
+              brand,
+              list.map(w =>
+                w.token.referenceTarget === oldPath ? { ...w, token: { ...w.token, referenceTarget: newPath } } : w,
+              ),
+            ]),
+          ),
+        )
+      }
+    }
 
     setNameDraftText(prev => {
       const next = { ...prev }
@@ -838,6 +878,177 @@ export function TokenEditor({
       return
     }
     setWorking(prev => prev.filter(w => w.id !== id))
+  }
+
+  function editMode(): 'value' | 'reference' {
+    return editModeOverride ?? (editDraft && editDraft.referenceTarget.trim() !== '' ? 'reference' : 'value')
+  }
+
+  function setEditMode(mode: 'value' | 'reference') {
+    setEditModeOverride(mode)
+  }
+
+  function editBrandMode(brand: string): 'value' | 'reference' {
+    const override = editBrandModeOverride[brand]
+    if (override) return override
+    return editDraft?.brands[brand]?.referenceTarget.trim() ? 'reference' : 'value'
+  }
+
+  function setEditBrandMode(brand: string, mode: 'value' | 'reference') {
+    setEditBrandModeOverride(prev => ({ ...prev, [brand]: mode }))
+  }
+
+  // Opens the Edit-token dialog for `id`, seeding its draft from the current
+  // Base value plus every brand's current value (its own override if staged,
+  // otherwise Base's — same fallback brandTokenFor already uses for the
+  // table's brand column).
+  function openEditDialog(id: string) {
+    const token = working.find(w => w.id === id)?.token
+    if (!token) return
+    const brands: Record<string, EditBrandDraft> = {}
+    for (const brand of tokenBrands) {
+      const brandToken = brandTokenFor(brand, id)
+      brands[brand] = {
+        value: brandToken ? getEditableValueText(brandToken) : '',
+        referenceTarget: brandToken?.referenceTarget ?? '',
+        malformed: false,
+      }
+    }
+    setEditDraft({
+      id,
+      type: token.type,
+      name: toSlashPath(token.name),
+      value: getEditableValueText(token),
+      referenceTarget: token.referenceTarget ?? '',
+      malformed: false,
+      brands,
+    })
+    setEditModeOverride(null)
+    setEditBrandModeOverride({})
+  }
+
+  function closeEditDialog() {
+    setEditDraft(null)
+    setEditModeOverride(null)
+    setEditBrandModeOverride({})
+    setOpenPopoverId(null)
+  }
+
+  // Resets one brand's draft in the dialog back to whatever Base's draft
+  // currently shows — not necessarily brand's *original* value, since Base's
+  // own value may have just been edited earlier in this same dialog session.
+  function resetEditBrandToBase(brand: string) {
+    setEditDraft(prev =>
+      prev
+        ? {
+            ...prev,
+            brands: {
+              ...prev.brands,
+              [brand]: { value: prev.value, referenceTarget: prev.referenceTarget, malformed: false },
+            },
+          }
+        : prev,
+    )
+    setEditBrandModeOverride(prev => ({ ...prev, [brand]: editMode() }))
+  }
+
+  // Commits everything staged in the Edit-token dialog at once: the rename
+  // (cascaded into every reference to it, Base and brand alike — same as
+  // commitName), Base's value/reference, and each brand's value/reference
+  // (via upsertOrRemoveBrandEntry, so a brand edit that now matches Base
+  // again cleanly drops back out of that brand's sparse overrides).
+  function applyEditDialog() {
+    if (!editDraft) return
+    const { id, type } = editDraft
+    const current = working.find(w => w.id === id)?.token
+    if (!current) {
+      closeEditDialog()
+      return
+    }
+
+    const mode = editMode()
+    // The dialog shows/edits the name slash-joined (see toSlashPath) — convert
+    // back to the dot-joined form everything else (paths, referenceTarget) uses.
+    const name = editDraft.name
+      .split('/')
+      .map(segment => segment.trim())
+      .filter(Boolean)
+      .join('.')
+
+    let parsedValue: unknown = current.rawValue
+    if (mode === 'value') {
+      const parsed = parseEditableValue(type, editDraft.value, current.rawValue)
+      if (!parsed.ok) {
+        setEditDraft(prev => (prev ? { ...prev, malformed: true } : prev))
+        return
+      }
+      parsedValue = parsed.value
+    }
+
+    const brandCandidates: Record<string, FlatToken> = {}
+    for (const brand of tokenBrands) {
+      const brandDraft = editDraft.brands[brand]
+      if (!brandDraft) continue
+      const baseForBrand = brandTokenFor(brand, id)
+      if (!baseForBrand) continue
+
+      if (editBrandMode(brand) === 'reference') {
+        brandCandidates[brand] = { ...baseForBrand, referenceTarget: brandDraft.referenceTarget.trim() || null }
+        continue
+      }
+
+      const parsed = parseEditableValue(type, brandDraft.value, baseForBrand.rawValue)
+      if (!parsed.ok) {
+        setEditDraft(prev =>
+          prev ? { ...prev, brands: { ...prev.brands, [brand]: { ...prev.brands[brand], malformed: true } } } : prev,
+        )
+        return
+      }
+      brandCandidates[brand] = { ...baseForBrand, rawValue: parsed.value, referenceTarget: null }
+    }
+
+    if (name && name !== current.name) {
+      const oldPath = pathFor(current.layer, current.name).join('.')
+      const newPath = pathFor(current.layer, name).join('.')
+
+      setWorking(prev =>
+        prev.map(w => {
+          if (w.id === id) return { ...w, token: { ...w.token, name } }
+          if (w.token.referenceTarget === oldPath) return { ...w, token: { ...w.token, referenceTarget: newPath } }
+          return w
+        }),
+      )
+      setBrandWorking(prev =>
+        Object.fromEntries(
+          Object.entries(prev).map(([brand, list]) => [
+            brand,
+            list.map(w =>
+              w.token.referenceTarget === oldPath ? { ...w, token: { ...w.token, referenceTarget: newPath } } : w,
+            ),
+          ]),
+        ),
+      )
+    }
+
+    setWorkingResolved(prev =>
+      prev.map(w =>
+        w.id === id
+          ? {
+              ...w,
+              token:
+                mode === 'value'
+                  ? { ...w.token, rawValue: parsedValue, referenceTarget: null }
+                  : { ...w.token, referenceTarget: editDraft.referenceTarget.trim() || null },
+            }
+          : w,
+      ),
+    )
+
+    for (const [brand, candidate] of Object.entries(brandCandidates)) {
+      upsertOrRemoveBrandEntry(brand, id, candidate)
+    }
+
+    closeEditDialog()
   }
 
   // Inserts a copy of `id`'s token directly below it (same position in `working`,
@@ -1052,6 +1263,158 @@ export function TokenEditor({
         </TooltipTrigger>
         <TooltipContent>Detach alias</TooltipContent>
       </Tooltip>
+    )
+  }
+
+  // Value/reference editor for the Edit-token dialog — one instance for Base,
+  // one per brand. Mirrors the same color-picker/reference-search/detach
+  // affordances the table cells and the Create dialog already use, just
+  // parameterized so it isn't tied to `working`/`brandWorking` directly (the
+  // dialog stages everything in `editDraft` until Apply).
+  function renderEditValueEditor(opts: {
+    popoverKey: string
+    type: string
+    ariaLabel: string
+    mode: 'value' | 'reference'
+    value: string
+    referenceTarget: string
+    malformed: boolean
+    onModeChange: (mode: 'value' | 'reference') => void
+    onValueChange: (value: string) => void
+    onReferenceChange: (value: string) => void
+  }): ReactNode {
+    const {
+      popoverKey,
+      type,
+      ariaLabel,
+      mode,
+      value,
+      referenceTarget,
+      malformed,
+      onModeChange,
+      onValueChange,
+      onReferenceChange,
+    } = opts
+    const hex = type === 'color' && /^#[0-9a-fA-F]{6}$/.test(value) ? value : null
+
+    if (type === 'color') {
+      return (
+        <Popover open={openPopoverId === popoverKey} onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}>
+          <PopoverTrigger
+            render={
+              <button
+                type="button"
+                aria-label={ariaLabel}
+                className="flex h-8 w-full items-center gap-2 rounded-lg border border-input bg-transparent px-2 text-sm outline-none hover:bg-accent/50 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring"
+              />
+            }
+          >
+            <span
+              aria-hidden="true"
+              className="size-5 shrink-0 rounded-sm border"
+              style={hex ? { backgroundColor: hex } : undefined}
+            />
+            <span className="truncate">{referenceTarget || hex || '—'}</span>
+          </PopoverTrigger>
+          <PopoverContent className="w-128">
+            {renderPopoverHeader(
+              [
+                { value: 'value', label: 'Color' },
+                { value: 'reference', label: 'Reference' },
+              ],
+              mode,
+              value => onModeChange(value as 'value' | 'reference'),
+              ariaLabel,
+            )}
+            {mode === 'value' ? (
+              <div className="space-y-2">
+                <input
+                  type="color"
+                  aria-label={`Pick color — ${ariaLabel}`}
+                  className="h-9 w-full cursor-pointer rounded-md border"
+                  value={hex ?? '#000000'}
+                  onChange={e => onValueChange(e.target.value)}
+                />
+                <Input
+                  aria-label={ariaLabel}
+                  placeholder="#RRGGBB"
+                  value={value}
+                  onChange={e => onValueChange(e.target.value)}
+                />
+                {malformed && (
+                  <Alert variant="destructive">
+                    <AlertDescription>Invalid JSON for a color value.</AlertDescription>
+                  </Alert>
+                )}
+              </div>
+            ) : (
+              renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)
+            )}
+          </PopoverContent>
+        </Popover>
+      )
+    }
+
+    if (mode === 'reference') {
+      return (
+        <div className="flex items-center gap-1.5">
+          <div className="flex h-8 flex-1 items-center gap-1.5 overflow-hidden rounded-lg border border-input px-2.5 text-sm text-muted-foreground">
+            <Link2Icon className="size-3.5 shrink-0" />
+            <span className="truncate">{referenceTarget}</span>
+          </div>
+          <Popover
+            open={openPopoverId === popoverKey}
+            onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}
+          >
+            <PopoverTrigger
+              render={<Button type="button" variant="outline" size="icon-sm" aria-label={`Reference — ${ariaLabel}`} />}
+            >
+              <HexagonIcon className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderPopoverHeader([{ value: 'reference', label: 'Reference' }], 'reference', null, ariaLabel)}
+              {renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)}
+            </PopoverContent>
+          </Popover>
+          {renderDetachButton(`Detach — ${ariaLabel}`, () => {
+            onReferenceChange('')
+            onModeChange('value')
+          })}
+        </div>
+      )
+    }
+
+    return (
+      <div className="space-y-2">
+        <div className="flex items-center gap-1.5">
+          <Input
+            aria-label={ariaLabel}
+            aria-invalid={malformed}
+            placeholder="value…"
+            value={value}
+            onChange={e => onValueChange(e.target.value)}
+          />
+          <Popover
+            open={openPopoverId === popoverKey}
+            onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}
+          >
+            <PopoverTrigger
+              render={<Button type="button" variant="outline" size="icon-sm" aria-label={`Reference — ${ariaLabel}`} />}
+            >
+              <HexagonIcon className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderPopoverHeader([{ value: 'reference', label: 'Reference' }], 'reference', null, ariaLabel)}
+              {renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)}
+            </PopoverContent>
+          </Popover>
+        </div>
+        {malformed && (
+          <Alert variant="destructive">
+            <AlertDescription>Invalid value for this type.</AlertDescription>
+          </Alert>
+        )}
+      </div>
     )
   }
 
@@ -1733,8 +2096,6 @@ export function TokenEditor({
                               onBlur={() => commitName(id)}
                               onFocus={e => (focusSnapshot.current = { id, col: 0, value: e.target.value })}
                               onKeyDown={e => handleCellKeyDown(e, row, 0, id)}
-                              readOnly={selectedBrand !== null}
-                              title={selectedBrand !== null ? 'Rename from Base — deselect the brand first' : undefined}
                               className={CELL_FIELD_CLASS}
                             />
                             {changeStatus && (
@@ -2186,6 +2547,10 @@ export function TokenEditor({
                                 <EllipsisIcon />
                               </DropdownMenuTrigger>
                               <DropdownMenuContent>
+                                <DropdownMenuItem onClick={() => openEditDialog(id)}>
+                                  <PencilIcon />
+                                  Edit
+                                </DropdownMenuItem>
                                 <DropdownMenuItem
                                   onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
                                 >
@@ -2412,6 +2777,177 @@ export function TokenEditor({
           </DialogContent>
         </Dialog>
 
+        <Dialog open={editDraft !== null} onOpenChange={open => !open && closeEditDialog()}>
+          <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-2xl">
+            {editDraft &&
+              (() => {
+                const originalToken = working.find(w => w.id === editDraft.id)?.token
+                const tokenPath = originalToken?.path.join('.') ?? editDraft.id
+                const usageCount = referenceCounts.get(tokenPath) ?? 0
+                const codeUsage = CODE_USAGE[tokenPath]
+
+                return (
+                  <>
+                    <DialogHeader>
+                      <DialogTitle>Edit token</DialogTitle>
+                      <DialogDescription>
+                        Nothing happens until you apply, then submit and it&apos;s reviewed and merged.
+                      </DialogDescription>
+                    </DialogHeader>
+
+                    <div className="space-y-4">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="edit-token-name">Full name</Label>
+                        <Input
+                          id="edit-token-name"
+                          value={editDraft.name}
+                          onChange={e => setEditDraft(prev => (prev ? { ...prev, name: e.target.value } : prev))}
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <Label>Base value</Label>
+                        {renderEditValueEditor({
+                          popoverKey: 'edit:base',
+                          type: editDraft.type,
+                          ariaLabel: 'Base value',
+                          mode: editMode(),
+                          value: editDraft.value,
+                          referenceTarget: editDraft.referenceTarget,
+                          malformed: editDraft.malformed,
+                          onModeChange: setEditMode,
+                          onValueChange: text =>
+                            setEditDraft(prev => (prev ? { ...prev, value: text, malformed: false } : prev)),
+                          onReferenceChange: text =>
+                            setEditDraft(prev => (prev ? { ...prev, referenceTarget: text } : prev)),
+                        })}
+                      </div>
+
+                      {tokenBrands.length > 0 && (
+                        <div className="space-y-2">
+                          <Label>Brands</Label>
+                          <div className="space-y-4 rounded-lg border p-3">
+                            {tokenBrands.map(brand => {
+                              const brandDraft = editDraft.brands[brand]
+                              if (!brandDraft) return null
+                              const isOverridden =
+                                brandDraft.referenceTarget.trim() !== editDraft.referenceTarget.trim() ||
+                                brandDraft.value !== editDraft.value
+
+                              return (
+                                <div key={brand} className="space-y-1.5">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <span className="text-sm font-medium">{brand}</span>
+                                    <div className="flex items-center gap-2">
+                                      {isOverridden && <Badge variant="outline">Overridden</Badge>}
+                                      <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        className="h-auto px-1.5 py-0.5 text-xs"
+                                        disabled={!isOverridden}
+                                        onClick={() => resetEditBrandToBase(brand)}
+                                      >
+                                        Reset to base
+                                      </Button>
+                                    </div>
+                                  </div>
+                                  {renderEditValueEditor({
+                                    popoverKey: `edit:brand:${brand}`,
+                                    type: editDraft.type,
+                                    ariaLabel: `${brand} value`,
+                                    mode: editBrandMode(brand),
+                                    value: brandDraft.value,
+                                    referenceTarget: brandDraft.referenceTarget,
+                                    malformed: brandDraft.malformed,
+                                    onModeChange: mode => setEditBrandMode(brand, mode),
+                                    onValueChange: text =>
+                                      setEditDraft(prev =>
+                                        prev
+                                          ? {
+                                              ...prev,
+                                              brands: {
+                                                ...prev.brands,
+                                                [brand]: { ...prev.brands[brand], value: text, malformed: false },
+                                              },
+                                            }
+                                          : prev,
+                                      ),
+                                    onReferenceChange: text =>
+                                      setEditDraft(prev =>
+                                        prev
+                                          ? {
+                                              ...prev,
+                                              brands: {
+                                                ...prev.brands,
+                                                [brand]: { ...prev.brands[brand], referenceTarget: text },
+                                              },
+                                            }
+                                          : prev,
+                                      ),
+                                  })}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="space-y-1.5">
+                        <Label>References</Label>
+                        {usageCount > 0 ? (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              setGraphRoot({
+                                paths: [editDraft.id],
+                                title: toSlashPath(originalToken?.name ?? editDraft.name),
+                              })
+                            }
+                          >
+                            <NetworkIcon />
+                            {usageCount} {usageCount === 1 ? 'reference' : 'references'}
+                          </Button>
+                        ) : (
+                          <p className="text-sm text-muted-foreground">Not referenced by other tokens.</p>
+                        )}
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <Label>Used in code</Label>
+                        {codeUsage && codeUsage.count > 0 ? (
+                          <ul className="space-y-1 rounded-lg border p-2 text-sm text-muted-foreground">
+                            {codeUsage.locations.map(location => (
+                              <li key={`${location.package}/${location.file}`} className="flex gap-2">
+                                <Badge variant="outline" className="shrink-0">
+                                  {location.package}
+                                </Badge>
+                                <span className="truncate">{location.file}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-sm text-muted-foreground">Not used in code.</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <DialogFooter>
+                      <Button type="button" variant="outline" onClick={closeEditDialog}>
+                        Cancel
+                      </Button>
+                      <Button type="button" disabled={!editDraft.name.trim()} onClick={applyEditDialog}>
+                        Apply
+                      </Button>
+                    </DialogFooter>
+                  </>
+                )
+              })()}
+          </DialogContent>
+        </Dialog>
+
         <Dialog open={pullConflictsDialogOpen} onOpenChange={setPullConflictsDialogOpen}>
           <DialogContent>
             <DialogHeader>
@@ -2555,7 +3091,14 @@ export function TokenEditor({
           syncStatus={syncStatus}
         />
       )}
-      <SidebarActivityBar items={sidebarItems} activeId={activeSidebarTab} onSelect={selectSidebarTab} />
+      <SidebarActivityBar
+        items={sidebarItems}
+        activeId={activeSidebarTab}
+        onSelect={selectSidebarTab}
+        // Placeholder until Auth.js sessions land (docs/adr/0003) — replace with the
+        // signed-in GitHub user's login/avatar_url.
+        user={{ name: 'Signed-in user' }}
+      />
     </div>
   )
 }

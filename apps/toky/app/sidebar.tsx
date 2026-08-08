@@ -8,6 +8,13 @@ import { cn } from '@/lib/utils'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { SyncStatusBadge } from './header'
 
+// Placeholder until the signed-in GitHub session lands (see docs/adr/0003) — swap for the
+// user's actual avatar_url/login once Auth.js is wired up.
+export interface SidebarUser {
+  name: string
+  avatarUrl?: string
+}
+
 // 360px floor for every sidebar — below that the staged-changes form/table controls start
 // clipping. No ceiling: a sidebar can be dragged arbitrarily wide.
 export const SIDEBAR_MIN_WIDTH = 360
@@ -30,10 +37,13 @@ export function SidebarActivityBar({
   items,
   activeId,
   onSelect,
+  user,
 }: {
   items: SidebarActivityItem[]
   activeId: string
   onSelect: (id: string) => void
+  // Omit while there's no signed-in user to show (e.g. auth not wired up yet).
+  user?: SidebarUser
 }) {
   return (
     <nav
@@ -77,6 +87,28 @@ export function SidebarActivityBar({
           )
         })}
       </div>
+      {user && (
+        <div className="flex w-full shrink-0 items-center justify-center border-t border-border py-2">
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <button
+                  type="button"
+                  aria-label={user.name}
+                  className="flex size-9 items-center justify-center overflow-hidden rounded-full ring-1 ring-border transition-colors hover:ring-foreground"
+                />
+              }
+            >
+              {user.avatarUrl ? (
+                <img src={user.avatarUrl} alt="" className="size-full object-cover" />
+              ) : (
+                <span className="text-sm font-medium text-muted-foreground">{user.name.slice(0, 1).toUpperCase()}</span>
+              )}
+            </TooltipTrigger>
+            <TooltipContent side="right">{user.name}</TooltipContent>
+          </Tooltip>
+        </div>
+      )}
     </nav>
   )
 }
