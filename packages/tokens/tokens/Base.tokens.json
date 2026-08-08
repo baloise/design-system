@@ -17939,6 +17939,25 @@
           ],
           "alpha": 1,
           "hex": "#930000"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:38:2"
+        }
+      },
+      "DarkFigmaSecond": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5784254670143127,
+            0,
+            0
+          ],
+          "alpha": 1,
+          "hex": "#930000"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:83:3"
         }
       }
     }
