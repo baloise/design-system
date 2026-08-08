@@ -189,6 +189,109 @@ describe('POST /api/propose-change', () => {
     expect(base).toBe('next')
   })
 
+  it('labels an entry as "via Figma pull" in the PR body when its path is in pulledPaths', async () => {
+    await POST(
+      makeRequest({
+        diff: cleanDiff,
+        description: '',
+        pulledPaths: ['🌐 Global.🌈 Color.White'],
+      }),
+    )
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Updated (via Figma pull):**\n- 🌐 Global.🌈 Color.White: #FFFFFF → #EEEEEE')
+    expect(prBody).not.toMatch(/\*\*Updated:\*\*/)
+  })
+
+  it('ignores a pulledPaths entry that does not match any diff path', async () => {
+    await POST(makeRequest({ diff: cleanDiff, description: '', pulledPaths: ['not.a.real.path'] }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Updated:**\n- 🌐 Global.🌈 Color.White: #FFFFFF → #EEEEEE')
+    expect(prBody).not.toMatch(/via Figma pull/)
+  })
+
+  it('shows the new value for a created token', async () => {
+    const createDiff: TokenDiffEntry[] = [
+      {
+        kind: 'create',
+        layer: 'Global',
+        oldPath: null,
+        newPath: ['🌐 Global', '🌈 Color', 'Brand'],
+        type: 'color',
+        value: { hex: '#123456' },
+        before: undefined,
+      },
+    ]
+
+    await POST(makeRequest({ diff: createDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Created:**\n- 🌐 Global.🌈 Color.Brand = #123456')
+  })
+
+  it('notes a figmaId-only update (Pull adoption backfill) without a value change', async () => {
+    const linkOnlyDiff: TokenDiffEntry[] = [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'White'],
+        newPath: ['🌐 Global', '🌈 Color', 'White'],
+        type: 'color',
+        value: { hex: '#FFFFFF' },
+        before: { hex: '#FFFFFF' }, // unchanged — only the figmaId link is new
+        figmaId: 'VariableID:38:2',
+      },
+    ]
+
+    await POST(makeRequest({ diff: linkOnlyDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain(
+      '**Updated:**\n- 🌐 Global.🌈 Color.White (linked to Figma variable VariableID:38:2, value unchanged)',
+    )
+  })
+
+  it('shows a rename combined with a value change', async () => {
+    const renameAndValueDiff: TokenDiffEntry[] = [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'White'],
+        newPath: ['🌐 Global', '🌈 Color', 'OffWhite'],
+        type: 'color',
+        value: { hex: '#EEEEEE' },
+        before: { hex: '#FFFFFF' },
+      },
+    ]
+
+    await POST(makeRequest({ diff: renameAndValueDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain(
+      '**Updated:**\n- 🌐 Global.🌈 Color.White → 🌐 Global.🌈 Color.OffWhite: #FFFFFF → #EEEEEE',
+    )
+  })
+
+  it('shows the removed value for a deleted token', async () => {
+    const deleteDiff: TokenDiffEntry[] = [
+      {
+        kind: 'delete',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'White'],
+        newPath: null,
+        type: 'color',
+        value: undefined,
+        before: fixtureDoc['🌐 Global']['🌈 Color'].White.$value, // matches current value — clean
+      },
+    ]
+
+    await POST(makeRequest({ diff: deleteDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Deleted:**\n- 🌐 Global.🌈 Color.White (was #FFFFFF)')
+  })
+
   it('reuses the existing branch and appends to the open PR body on a second submit', async () => {
     resolveReadRef.mockResolvedValue({
       ref: 'toky/update-next',
@@ -422,7 +525,7 @@ describe('POST /api/propose-change', () => {
       expect(changesetContent).toContain('**Tcs — Overridden:** 🌐 Global/🌈 Color/Black')
 
       const [, , prBody] = openPullRequest.mock.calls[0]
-      expect(prBody).toContain('**Tcs — Overridden:** 🌐 Global.🌈 Color.Black')
+      expect(prBody).toContain('**Tcs — Overridden:**\n- 🌐 Global.🌈 Color.Black: #000000 → #111111')
     })
   })
 })

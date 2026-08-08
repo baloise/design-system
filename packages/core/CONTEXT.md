@@ -576,6 +576,12 @@ behavioral config. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
 
+## Token Preview Listener
+
+`packages/core/src/global/token-preview.ts` (wired into the `globalScript`, `src/global/global.ts`, so it's bundled into every `www` page — playground.html and every `*.visual.html`) listens for `postMessage` from an embedding parent window and applies token changes live via `document.documentElement.style.setProperty`/`removeProperty`. It is a no-op unless the page is actually embedded in an iframe (`window.parent !== window`), so it never activates during normal component consumption or Playwright visual-regression runs. No origin allowlist yet — MVP is localhost-only (toky ↔ core dev-server); see [`docs/plans/toky-live-token-preview-plan.md`](../../docs/plans/toky-live-token-preview-plan.md) for the message contract and the deferred "deployed / other DS websites" phase where real origin validation is planned.
+
+`stencil.config.ts`'s existing `buildStart` hook (the one that already generates `docs/tags.json`) also globs every `*.visual.html` under `src/{blocks,templates,foundation,components}` and writes `docs/visual-pages.json`, copied into `www/visual-pages.json` by the `www` output target's `copy` config. This is the manifest Toky's Live Preview page picker fetches to list selectable pages — `blocks`/`templates` don't exist as directories yet, so they currently contribute nothing, but the glob picks them up automatically once they do.
+
 ## Key Constraints
 
 - **Shadow DOM encapsulation** — Styles do not leak in/out

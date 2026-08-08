@@ -90,8 +90,8 @@ Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId` (a
 
 Two independent implementations keep this projection in sync, sharing the same vocabulary, `variableId` identity rule, and `.figma-sync-state.json` baseline below — see [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md) for why the direction split this way:
 
-- **The Figma Token Sync Plugin** (`packages/tokens/docs/figma-token-sync-plugin-plan.md`) — designer-driven, manual, in-Figma. Handles read-only diff status and Push (to Code) only.
 - **The Figma Sync GitHub Action** (`.github/workflows/figma-sync.yml`, `figma-conflict-check.yml`) — automatic, server-to-server via the Figma REST API. Handles Pull (from Code) only, triggered whenever Toky's `toky/update-next` branch merges into `next`.
+- **Toky** (see [`apps/toky/CONTEXT.md`](../../apps/toky/CONTEXT.md)) — developer-driven, manual, via a button in the Toky web app. Handles Pull (from Figma) only. This direction was originally planned as Phase 3 of a designer-facing Figma plugin ([ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md)); that plugin was never built, and [Toky ADR-0002](../../apps/toky/docs/adr/0002-pull-from-figma-button.md) moved this direction into Toky instead.
 
 #### Figma Sync — Language
 
@@ -103,9 +103,9 @@ _Avoid_: token name (as identity — names can change; a rename is not a delete+
 Synchronization that reads `*.tokens.json` from GitHub and writes matching Figma Variables. Origin is GitHub; destination is Figma. Performed exclusively by the Figma Sync GitHub Action (see [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md)). When Pull creates a Figma Variable for a token that had no `variableId` yet, the new id is written back to `next` as a direct bot commit, not a PR — the one deliberate exception to "GitHub writes are always PR-mediated" in this domain (see [ADR-0017](../../docs/adr/0017-direct-commit-variableid-backfill.md)).
 _Avoid_: import, download, push (a Pull moves data INTO Figma — "push to Figma," though a natural-sounding phrase, names the wrong direction in this glossary)
 
-**Push (to Code)**:
-Synchronization that reads Figma Variables and opens a GitHub pull request with the resulting `*.tokens.json` changes. Origin is Figma; destination is GitHub, always via PR review, never a direct commit to `next`.
-_Avoid_: export, publish, upload
+**Pull (from Figma)**:
+Synchronization that reads Figma Variables and stages the resulting `*.tokens.json` changes as Toky working changes for review, eventually opening a GitHub pull request. Origin is Figma; destination is GitHub, always via PR review, never a direct commit to `next`. Formerly named "Push (to Code)" — renamed for consistency with how Toky itself refers to this direction (see [`apps/toky/CONTEXT.md`](../../apps/toky/CONTEXT.md)); avoid "push" for this direction, same reasoning as the entry above, just mirrored.
+_Avoid_: push (to Code), export, publish, upload
 
 **Sync baseline**:
 The token state as of the last successful sync, committed to `.figma-sync-state.json` and keyed by variable identity. Used to tell a genuine conflict (both sides changed since baseline) apart from a one-sided change.

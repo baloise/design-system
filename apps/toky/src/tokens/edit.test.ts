@@ -118,6 +118,57 @@ describe('computeDiff', () => {
       before: undefined,
     })
   })
+
+  // `id` is what lets a caller (e.g. the Staged Changes sidebar's "discard change" button) map an
+  // entry straight back to the working/original row that produced it.
+  it('sets id to the working token id for create/update, and the removed original path for delete', () => {
+    const original = flattenTokenDocument(fixtureDoc)
+    let working = toWorking(original).map(w =>
+      w.token.name === '🌈 Color.Black'
+        ? { ...w, token: { ...w.token, rawValue: { ...(w.token.rawValue as object), hex: '#111111' } } }
+        : w,
+    )
+    working = working.filter(w => w.id !== '🔗 Alias.Background.White')
+    working.push({
+      id: 'new-1',
+      token: {
+        path: [],
+        name: '🌈 Color.OffWhite',
+        layer: 'Global',
+        type: 'color',
+        rawValue: { colorSpace: 'srgb', components: [0.9, 0.9, 0.9], alpha: 1, hex: '#E5E5E5' },
+        referenceTarget: null,
+        resolvedValue: undefined,
+        resolutionError: null,
+        figmaId: null,
+      },
+    })
+
+    const diff = computeDiff(original, working)
+    const byKind = Object.fromEntries(diff.map(entry => [entry.kind, entry]))
+    expect(byKind.update).toMatchObject({ id: '🌐 Global.🌈 Color.Black' })
+    expect(byKind.delete).toMatchObject({ id: '🔗 Alias.Background.White' })
+    expect(byKind.create).toMatchObject({ id: 'new-1' })
+  })
+
+  // Regression: a figmaId-only change (Pull adopting an already-existing,
+  // unlinked token by path — see figma-pull.ts) previously produced no diff
+  // entry at all, since nothing else about the token changed. Silently
+  // dropped means the backfilled link never actually gets written.
+  it('detects a figmaId-only change as an update, even when the value is unchanged', () => {
+    const original = flattenTokenDocument(fixtureDoc)
+    const working = toWorking(original).map(w =>
+      w.token.name === '🌈 Color.Black' ? { ...w, token: { ...w.token, figmaId: 'VariableID:9:9' } } : w,
+    )
+
+    const diff = computeDiff(original, working)
+    expect(diff).toHaveLength(1)
+    expect(diff[0]).toMatchObject({
+      kind: 'update',
+      oldPath: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:9:9',
+    })
+  })
 })
 
 describe('describeChangeStatus', () => {
@@ -235,6 +286,52 @@ describe('applyDiffToDocument', () => {
     // untouched sibling still there
     const white = node(result, '🔗 Alias', 'Background', 'White')
     expect(white.$value).toBe('{🌐 Global.🌈 Color.White}')
+  })
+
+  // Regression: a Pull (from Figma)-created token's variableId was
+  // previously dropped on write — computeDiff never carried it into
+  // TokenDiffEntry, and this write path only ever copied $extensions
+  // forward on 'update', never wrote them for 'create' at all. The next
+  // pull would then propose the same Figma variable as a duplicate create.
+  it('writes $extensions for a create entry that carries a figmaId', () => {
+    const result = applyDiffToDocument(fixtureDoc, [
+      {
+        kind: 'create',
+        layer: 'Global',
+        oldPath: null,
+        newPath: ['🌐 Global', '🌈 Color', 'DarkFigma'],
+        type: 'color',
+        value: { colorSpace: 'srgb', components: [0.5, 0, 0], alpha: 1, hex: '#930000' },
+        before: undefined,
+        figmaId: 'VariableID:9:9',
+      },
+    ])
+
+    const darkFigma = node(result, '🌐 Global', '🌈 Color', 'DarkFigma')
+    expect(darkFigma.$extensions).toEqual({ 'com.figma.variableId': 'VariableID:9:9' })
+  })
+
+  it('layers a figmaId onto an update while preserving other existing $extensions keys', () => {
+    const docWithScopes = structuredClone(fixtureDoc)
+    ;(docWithScopes['🌐 Global']['🌈 Color'].Black as { $extensions?: unknown }).$extensions = {
+      'com.figma.scopes': ['ALL_SCOPES'],
+    }
+
+    const result = applyDiffToDocument(docWithScopes, [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'Black'],
+        newPath: ['🌐 Global', '🌈 Color', 'Black'],
+        type: 'color',
+        value: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+        before: docWithScopes['🌐 Global']['🌈 Color'].Black.$value,
+        figmaId: 'VariableID:2:2',
+      },
+    ])
+
+    const black = node(result, '🌐 Global', '🌈 Color', 'Black')
+    expect(black.$extensions).toEqual({ 'com.figma.scopes': ['ALL_SCOPES'], 'com.figma.variableId': 'VariableID:2:2' })
   })
 
   it('applies a delete and prunes an emptied parent group', () => {

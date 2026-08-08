@@ -146,6 +146,9 @@ importers:
       archiver:
         specifier: 8.0.0
         version: 8.0.0
+      change-case:
+        specifier: 5.4.4
+        version: 5.4.4
       compression:
         specifier: 'catalog:'
         version: 1.8.1(supports-color@8.1.1)
@@ -387,6 +390,9 @@ importers:
 
   apps/toky:
     dependencies:
+      '@baloise/ds-tokens':
+        specifier: 20.0.0-next.7
+        version: link:../../packages/tokens
       '@base-ui/react':
         specifier: 1.6.0
         version: 1.6.0(@types/react@19.2.18)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)

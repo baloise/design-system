@@ -4,7 +4,6 @@ import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import type { KeyboardEvent, ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import {
-  CheckIcon,
   ChevronDownIcon,
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
@@ -48,8 +47,13 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { computeDiff, describeChangeStatus, effectiveValue, pathFor } from '@/src/tokens/edit'
 import type { ChangeStatus, TokenDiffEntry, WorkingToken } from '@/src/tokens/edit'
-import { filterTokensByName, normalizeSearchText } from '@/src/tokens/filter'
+import { computeBrandPreviewTokens, computePreviewTokens } from '@/src/tokens/css-preview'
+import { filterTokensByName } from '@/src/tokens/filter'
 import { resolveReferences } from '@/src/tokens/flatten'
+import { allPullEntryKeys, buildFigmaPullPlan, filterPlanBySelection } from '@/src/tokens/figma-pull'
+import type { FigmaPullResult, PullConflict, PulledEntry, PullPlan } from '@/src/tokens/figma-pull'
+import { FigmaPullSidebar } from './figma-pull-sidebar'
+import { FigmaIcon } from '@/components/icons/figma-icon'
 import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
 import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
@@ -61,6 +65,8 @@ import type { FlatToken, TokenLayer } from '@/src/tokens/types'
 import { BrandsSidebar } from './brands-sidebar'
 import { ProblemsSidebar } from './problems-sidebar'
 import type { ProblemItem } from './problems-sidebar'
+import { PreviewSidebar, PREVIEW_TAB_ICON } from './preview-sidebar'
+import { SearchSelect } from './search-select'
 import { ACTIVITY_BAR_WIDTH, SIDEBAR_DEFAULT_WIDTH, SidebarActivityBar } from './sidebar'
 import type { SidebarActivityItem } from './sidebar'
 import { StagedChangesSidebar } from './staged-changes-sidebar'
@@ -77,6 +83,14 @@ const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗',
 const COLUMN_COUNT = 2
 
 let draftIdCounter = 0
+
+// A conflict from a brand's plan can share the same tokenId/path as a Base
+// conflict (brand overrides mirror Base's path) — `scope` says which
+// working tree (Base, or which brand) "Use Figma value" should write into.
+interface ScopedPullConflict {
+  scope: 'base' | string
+  conflict: PullConflict
+}
 
 interface Draft {
   name: string
@@ -195,73 +209,6 @@ function parseEditableValue(type: string, text: string, previous?: unknown): Par
   return { ok: true, value: text }
 }
 
-// The reference-picker body shared by the color popover's "Reference" tab and
-// the plain-value types' reference popover — a dedicated search field with an
-// always-visible, independently scrollable results list underneath (rather
-// than a floating combobox dropdown), matching Figma's reference panel. Kept
-// as its own top-level component (not a nested function) so its local filter
-// state — and the search input's focus — survives the parent re-rendering on
-// every keystroke.
-function ReferenceSearch({
-  options,
-  currentValue,
-  onSelect,
-  ariaLabel,
-}: {
-  options: string[]
-  currentValue: string
-  onSelect: (value: string) => void
-  ariaLabel: string
-}) {
-  const [filter, setFilter] = useState('')
-  const filtered = useMemo(() => {
-    const query = normalizeSearchText(filter)
-    if (!query) return options
-    return options.filter(option => normalizeSearchText(option).includes(query))
-  }, [options, filter])
-
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="relative">
-        <SearchIcon
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
-        />
-        <Input
-          aria-label={ariaLabel}
-          placeholder="Search"
-          value={filter}
-          onChange={e => setFilter(e.target.value)}
-          className="pl-8"
-        />
-      </div>
-      <div className="h-64 overflow-y-auto">
-        {filtered.length === 0 ? (
-          <p className="px-2.5 py-2 text-sm text-muted-foreground">No matching tokens.</p>
-        ) : (
-          filtered.map(option => {
-            const isActive = option === currentValue
-            return (
-              <button
-                key={option}
-                type="button"
-                onClick={() => onSelect(option)}
-                className={cn(
-                  'flex w-full items-center gap-1.5 rounded-md px-1.5 py-1 text-left text-sm outline-none',
-                  isActive ? 'bg-primary text-primary-foreground' : 'hover:bg-accent hover:text-accent-foreground',
-                )}
-              >
-                <span className="flex-1 truncate">{toSlashPath(option)}</span>
-                {isActive && <CheckIcon className="size-4 shrink-0" />}
-              </button>
-            )
-          })
-        )}
-      </div>
-    </div>
-  )
-}
-
 export function TokenEditor({
   tokens,
   defaultBranch,
@@ -350,6 +297,24 @@ export function TokenEditor({
   const [brandMalformed, setBrandMalformed] = useState<Set<string>>(new Set())
   // Same explicit-tab-pick tracking as `modeOverride`, for the selected brand's column.
   const [brandModeOverride, setBrandModeOverride] = useState<Map<string, 'value' | 'reference'>>(new Map())
+  // Pull (from Figma) — see docs/adr/0002. `pullPlan` is the pending-review
+  // snapshot shown in the sidebar's "figma" tab (Apply/Discard gate);
+  // nothing in it touches working changes until Apply. `pullConflicts`
+  // persists past Apply until each is explicitly resolved, and blocks
+  // Submit while any remain. `pulledTokenIds` is provenance (Figma vs.
+  // manual), kept outside `working`'s undo history like `pendingBrands`
+  // already is.
+  const [figmaPullLoading, setFigmaPullLoading] = useState(false)
+  const [figmaPullError, setFigmaPullError] = useState<string | null>(null)
+  const [pullPlan, setPullPlan] = useState<FigmaPullResult | null>(null)
+  const [pullConflicts, setPullConflicts] = useState<ScopedPullConflict[]>([])
+  const [pullConflictsDialogOpen, setPullConflictsDialogOpen] = useState(false)
+  const [pulledTokenIds, setPulledTokenIds] = useState<Set<string>>(new Set())
+  // Which pending creates/updates/deletes the user wants to actually apply —
+  // keyed by pullEntryKey(scope, path). Defaults to "everything" on a fresh
+  // pull; conflicts/skipped aren't selectable (conflicts always need
+  // explicit resolution, skipped can't be applied at all).
+  const [pullSelection, setPullSelection] = useState<Set<string>>(new Set())
   // Clicking the rail icon for the panel that's already open collapses it
   // down to just the icon rail (more room for the table); clicking it again
   // (or any other icon) reopens it — same as VS Code's activity bar.
@@ -392,6 +357,10 @@ export function TokenEditor({
     )
     setBrandValueDraftText({})
     setBrandMalformed(new Set())
+    // Provenance and any leftover conflicts are meaningless once `working`
+    // has been rebased onto a fresh server snapshot post-submit.
+    setPulledTokenIds(new Set())
+    setPullConflicts([])
   }, [tokens, brandTokens])
 
   const matchedTokens = useMemo(
@@ -428,6 +397,7 @@ export function TokenEditor({
         }
         bucket.push(w)
       }
+      order.sort((a, b) => a.localeCompare(b))
       return order.map(key => byKey.get(key)!)
     }
 
@@ -461,6 +431,28 @@ export function TokenEditor({
     return [...new Set(paths)].sort()
   }, [working])
 
+  // Swatch preview for the Reference picker — only color-typed tokens get an entry, so
+  // SearchSelect can render a swatch purely by checking whether a path has one.
+  const referenceColorByPath = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const w of working) {
+      if (w.token.type !== 'color' || w.token.name.trim() === '') continue
+      const hex = getColorHex(w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue)
+      if (hex) map.set(pathFor(w.token.layer, w.token.name).join('.'), hex)
+    }
+    return map
+  }, [working])
+
+  const referenceSearchOptions = useMemo(
+    () =>
+      referenceOptions.map(option => ({
+        value: option,
+        label: toSlashPath(option),
+        swatch: referenceColorByPath.get(option),
+      })),
+    [referenceOptions, referenceColorByPath],
+  )
+
   const errors = useMemo(() => validateWorkingTokens(working), [working])
   const blockingErrors = useMemo(() => errors.filter(error => error.severity === 'error'), [errors])
   // Only blocking errors get the cell red-flagged inline — warnings (e.g. a
@@ -493,16 +485,31 @@ export function TokenEditor({
     [brandDiffs],
   )
 
-  // The selected brand's values resolved for display: Base's current
-  // (possibly locally-edited) tree with that brand's overrides layered on
-  // top, then resolved the same way Base itself is — so a reference chain
-  // that passes through an overridden token still resolves correctly.
-  const brandResolvedByPath = useMemo(() => {
-    if (!selectedBrand) return null
+  // The selected brand's values resolved for display: Base's current (possibly locally-edited)
+  // tree with that brand's overrides layered on top, then resolved the same way Base itself is —
+  // so a reference chain that passes through an overridden token still resolves correctly. Kept
+  // both by path (table display) and by id (Live Preview — brandDiffs entries carry `id`, not a
+  // recomputed path, since a brand override never renames anything).
+  const { brandResolvedByPath, brandResolvedById } = useMemo(() => {
+    if (!selectedBrand) return { brandResolvedByPath: null, brandResolvedById: null }
     const overrides = new Map((brandWorking[selectedBrand] ?? []).map(w => [w.id, w.token]))
-    const merged = working.map(w => overrides.get(w.id) ?? w.token)
-    return new Map(resolveReferences(merged).map(t => [t.path.join('.'), t]))
+    const merged = working.map(w => ({ id: w.id, token: overrides.get(w.id) ?? w.token }))
+    const resolved = resolveReferences(merged.map(m => m.token))
+    return {
+      brandResolvedByPath: new Map(resolved.map(t => [t.path.join('.'), t])),
+      brandResolvedById: new Map(merged.map((m, index) => [m.id, resolved[index]])),
+    }
   }, [selectedBrand, working, brandWorking])
+
+  // Live Preview sidebar payload — see apps/toky/CONTEXT.md's "Live Preview" entry and ADR-0021.
+  // Includes the selected brand's own diff too (not just Base's) — otherwise an in-progress brand
+  // edit wouldn't show up in the preview at all until it's actually built into that brand's CSS.
+  const previewTokens = useMemo(() => {
+    const baseTokens = computePreviewTokens(diff, working)
+    if (!selectedBrand || !brandResolvedById) return baseTokens
+    const brandPreviewTokens = computeBrandPreviewTokens(brandDiffs[selectedBrand] ?? [], brandResolvedById)
+    return [...baseTokens, ...brandPreviewTokens]
+  }, [diff, working, selectedBrand, brandDiffs, brandResolvedById])
 
   const problems: ProblemItem[] = useMemo(
     () =>
@@ -518,6 +525,32 @@ export function TokenEditor({
     [errors, working],
   )
 
+  const pullPlanCounts = pullPlan
+    ? [pullPlan.base, ...Object.values(pullPlan.brands)].reduce(
+        (totals, plan) => ({
+          creates: totals.creates + plan.creates.length,
+          updates: totals.updates + plan.updates.length,
+          deletes: totals.deletes + plan.deletes.length,
+          conflicts: totals.conflicts + plan.conflicts.length,
+          skipped: totals.skipped + plan.skipped.length,
+        }),
+        { creates: 0, updates: 0, deletes: 0, conflicts: 0, skipped: 0 },
+      )
+    : null
+  const pullSelectableCount = pullPlanCounts
+    ? pullPlanCounts.creates + pullPlanCounts.updates + pullPlanCounts.deletes
+    : 0
+  // Nothing happens on Apply only if there's neither a selected change nor a
+  // conflict to hand off to the conflicts dialog — conflicts aren't gated by
+  // the checkbox selection (see filterPlanBySelection).
+  const pullHasNothingToApply = pullSelection.size === 0 && (pullPlanCounts?.conflicts ?? 0) === 0
+  // Everything Figma found for this pull, whether or not it's checked —
+  // the rail badge should reflect "how much did the pull find," not
+  // "how much is currently selected."
+  const pullBadgeCount = pullPlanCounts
+    ? pullPlanCounts.creates + pullPlanCounts.updates + pullPlanCounts.deletes + pullPlanCounts.conflicts
+    : 0
+
   const sidebarItems: SidebarActivityItem[] = [
     {
       id: 'changes',
@@ -527,12 +560,72 @@ export function TokenEditor({
     },
     { id: 'problems', label: 'Problems', icon: TriangleAlertIcon, badge: problems.length },
     { id: 'brands', label: 'Brands', icon: SwatchBookIcon },
+    { id: 'figma', label: 'Pull from Figma', icon: FigmaIcon, badge: pullBadgeCount },
+    { id: 'preview', label: 'Preview', icon: PREVIEW_TAB_ICON },
   ]
 
   const sidebarInset = ACTIVITY_BAR_WIDTH + (sidebarCollapsed ? 0 : sidebarWidth)
 
+  // Shared by every `working` mutation that can change what a token resolves to — for itself (a
+  // new referenceTarget/rawValue) or for anything downstream that references it — so
+  // resolvedValue is recomputed for the whole array, not just the touched token, otherwise cells
+  // relying on resolvedValue (e.g. the color swatch) keep showing the value from before the edit.
+  function setWorkingResolved(updater: (prev: WorkingToken[]) => WorkingToken[]) {
+    setWorking(prev => {
+      const updated = updater(prev)
+      const resolved = resolveReferences(updated.map(w => w.token))
+      return updated.map((w, index) => ({ ...w, token: resolved[index] }))
+    })
+  }
+
   function updateToken(id: string, updater: (token: FlatToken) => FlatToken) {
-    setWorking(prev => prev.map(w => (w.id === id ? { ...w, token: updater(w.token) } : w)))
+    setWorkingResolved(prev => prev.map(w => (w.id === id ? { ...w, token: updater(w.token) } : w)))
+  }
+
+  // Reverts a single staged change back to its pre-edit state — the "discard" X next to a row in
+  // the Staged Changes sidebar. A no-op if the entry has no id (only computeDiff-produced entries
+  // do) or its original can't be found (shouldn't happen for a live diff entry, but a stale one
+  // from a since-refreshed baseline shouldn't crash).
+  function discardChange(entry: TokenDiffEntry) {
+    const id = entry.id
+    if (!id) return
+
+    if (entry.kind === 'create') {
+      setWorkingResolved(prev => prev.filter(w => w.id !== id))
+      return
+    }
+
+    const original = originalById.get(id)
+    if (!original) return
+
+    if (entry.kind === 'update') {
+      setWorkingResolved(prev => prev.map(w => (w.id === id ? { ...w, token: original } : w)))
+    } else {
+      // 'delete' — the working row was removed entirely; put it back.
+      setWorkingResolved(prev => [...prev, { id, token: original }])
+    }
+  }
+
+  // Same as discardChange, but against a brand's own sparse override baseline
+  // (brandTokens[brand]) instead of Base's `tokens` — see upsertOrRemoveBrandEntry's sparse
+  // invariant: a brand 'create' entry means "no prior override" (discard = just remove it, same
+  // as discardChange), while 'update'/'delete' need the brand's own original override restored.
+  function discardBrandChange(brand: string, entry: TokenDiffEntry) {
+    const id = entry.id
+    if (!id) return
+
+    if (entry.kind === 'create') {
+      setBrandWorking(prev => ({ ...prev, [brand]: (prev[brand] ?? []).filter(w => w.id !== id) }))
+      return
+    }
+
+    const original = (brandTokens[brand] ?? []).find(w => w.path.join('.') === id)
+    if (!original) return
+
+    setBrandWorking(prev => {
+      const withoutId = (prev[brand] ?? []).filter(w => w.id !== id)
+      return { ...prev, [brand]: [...withoutId, { id, token: original }] }
+    })
   }
 
   // Keystrokes only update the local draft — see commitName, called on blur.
@@ -923,14 +1016,15 @@ export function TokenEditor({
     ariaLabel: string,
   ): ReactNode {
     return (
-      <ReferenceSearch
-        options={referenceOptions}
+      <SearchSelect
+        options={referenceSearchOptions}
         currentValue={currentValue}
         onSelect={value => {
           onSelect(value)
           setOpenPopoverId(null)
         }}
         ariaLabel={ariaLabel}
+        emptyMessage="No matching tokens."
       />
     )
   }
@@ -1161,6 +1255,198 @@ export function TokenEditor({
     setPendingBrands(prev => prev.filter(brand => brand !== name))
   }
 
+  function flatTokenFromPulledEntry(entry: PulledEntry): FlatToken {
+    return {
+      path: entry.path,
+      name: entry.path.slice(1).join('.'),
+      layer: entry.layer,
+      type: entry.type,
+      rawValue: entry.rawValue,
+      referenceTarget: entry.referenceTarget,
+      resolvedValue: undefined,
+      resolutionError: null,
+      figmaId: entry.figmaId,
+    }
+  }
+
+  function togglePullSelection(key: string) {
+    setPullSelection(prev => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
+      return next
+    })
+  }
+
+  function selectAllPullEntries() {
+    if (pullPlan) setPullSelection(allPullEntryKeys(pullPlan))
+  }
+
+  function selectNoPullEntries() {
+    setPullSelection(new Set())
+  }
+
+  async function handlePullFromFigma() {
+    setFigmaPullLoading(true)
+    setFigmaPullError(null)
+    try {
+      const response = await fetch('/api/figma-pull')
+      const json = await response.json()
+      if (!response.ok) {
+        setFigmaPullError(json.error ?? 'Failed to read Figma variables.')
+        return
+      }
+      const plan = buildFigmaPullPlan({
+        original: tokens,
+        working,
+        // Only real (already-synced) brands have a Figma mode to read from —
+        // a not-yet-created pendingBrands entry has no mode yet.
+        brandNames: tokenBrands,
+        brandOriginal: brandTokens,
+        brandWorking,
+        figmaMeta: json,
+      })
+      setPullPlan(plan)
+      setPullSelection(allPullEntryKeys(plan))
+    } catch (err) {
+      setFigmaPullError(err instanceof Error ? err.message : 'Network error.')
+    } finally {
+      setFigmaPullLoading(false)
+    }
+  }
+
+  // One setWorking call = one atomic undo step, regardless of how many
+  // tokens the pull touched (use-undoable-state.ts).
+  function applyBasePlan(plan: PullPlan): Set<string> {
+    const { creates, updates, deletes } = plan
+    const touchedIds = new Set<string>()
+    if (creates.length + updates.length + deletes.length === 0) return touchedIds
+
+    const deleteIds = new Set(deletes.map(e => e.path.join('.')))
+    const updateById = new Map(updates.map(e => [e.path.join('.'), e]))
+    for (const id of deleteIds) touchedIds.add(id)
+    for (const id of updateById.keys()) touchedIds.add(id)
+    for (const entry of creates) touchedIds.add(entry.path.join('.'))
+
+    setWorking(prev => {
+      const next = prev
+        .filter(w => !deleteIds.has(w.id))
+        .map(w => {
+          const update = updateById.get(w.id)
+          return update ? { ...w, token: flatTokenFromPulledEntry(update) } : w
+        })
+      for (const entry of creates) {
+        const token = flatTokenFromPulledEntry(entry)
+        next.push({ id: token.path.join('.'), token })
+      }
+      return next
+    })
+
+    return touchedIds
+  }
+
+  // Brand overrides aren't part of `working`'s undo history (matching how
+  // manual brand edits already behave) — a delete here means "no override",
+  // reverting the brand to inheriting Base, same invariant
+  // upsertOrRemoveBrandEntry already enforces for manual brand edits.
+  function applyBrandPlan(brand: string, plan: PullPlan): Set<string> {
+    const { creates, updates, deletes } = plan
+    const touchedIds = new Set<string>()
+    if (creates.length + updates.length + deletes.length === 0) return touchedIds
+
+    const upserts = [...creates, ...updates]
+    const deleteIds = new Set(deletes.map(e => e.path.join('.')))
+    for (const id of deleteIds) touchedIds.add(id)
+    for (const entry of upserts) touchedIds.add(entry.path.join('.'))
+
+    setBrandWorking(prev => {
+      const list = prev[brand] ?? []
+      const byId = new Map(list.map(w => [w.id, w]))
+      for (const entry of upserts) {
+        const token = flatTokenFromPulledEntry(entry)
+        const id = token.path.join('.')
+        byId.set(id, { id, token })
+      }
+      for (const id of deleteIds) byId.delete(id)
+      return { ...prev, [brand]: [...byId.values()] }
+    })
+
+    return touchedIds
+  }
+
+  function handleApplyPull() {
+    if (!pullPlan) return
+    const touched = applyBasePlan(filterPlanBySelection('base', pullPlan.base, pullSelection))
+    for (const [brand, plan] of Object.entries(pullPlan.brands)) {
+      for (const id of applyBrandPlan(brand, filterPlanBySelection(brand, plan, pullSelection))) touched.add(id)
+    }
+    setPulledTokenIds(prev => new Set([...prev, ...touched]))
+
+    // Conflicts always need explicit resolution regardless of the checkbox
+    // selection above (there's nothing to "apply" for one yet — that's what
+    // the conflicts dialog is for).
+    const allConflicts: ScopedPullConflict[] = [
+      ...pullPlan.base.conflicts.map(conflict => ({ scope: 'base' as const, conflict })),
+      ...Object.entries(pullPlan.brands).flatMap(([brand, plan]) =>
+        plan.conflicts.map(conflict => ({ scope: brand, conflict })),
+      ),
+    ]
+    if (allConflicts.length > 0) {
+      setPullConflicts(prev => [...prev, ...allConflicts])
+    }
+
+    setPullPlan(null)
+    setPullSelection(new Set())
+  }
+
+  function handleCancelPull() {
+    setPullPlan(null)
+    setPullSelection(new Set())
+  }
+
+  function resolveConflictKeepWorking(index: number) {
+    setPullConflicts(prev => prev.filter((_, i) => i !== index))
+  }
+
+  function resolveConflictUseFigma(index: number) {
+    const entry = pullConflicts[index]
+    if (!entry) return
+    const { scope, conflict } = entry
+    const nextToken = (token: FlatToken): FlatToken => ({
+      ...token,
+      type: conflict.figma.type,
+      rawValue: conflict.figma.rawValue,
+      referenceTarget: conflict.figma.referenceTarget,
+    })
+
+    if (scope === 'base') {
+      setWorking(prev => prev.map(w => (w.id === conflict.tokenId ? { ...w, token: nextToken(w.token) } : w)))
+    } else {
+      setBrandWorking(prev => {
+        const list = prev[scope] ?? []
+        return {
+          ...prev,
+          [scope]: list.map(w => (w.id === conflict.tokenId ? { ...w, token: nextToken(w.token) } : w)),
+        }
+      })
+    }
+    setPulledTokenIds(prev => new Set(prev).add(conflict.path.join('.')))
+    setPullConflicts(prev => prev.filter((_, i) => i !== index))
+  }
+
+  function beforeForBase(path: string[]): FlatToken | undefined {
+    return working.find(w => w.id === path.join('.'))?.token
+  }
+
+  function beforeForBrand(brand: string): (path: string[]) => FlatToken | undefined {
+    return path => {
+      const id = path.join('.')
+      // A brand override's "before" is its own working entry if it has one,
+      // otherwise the value it currently inherits from Base.
+      return (brandWorking[brand] ?? []).find(w => w.id === id)?.token ?? working.find(w => w.id === id)?.token
+    }
+  }
+
   async function handleSubmit() {
     setSubmitState('submitting')
     setSubmitMessage(null)
@@ -1168,7 +1454,14 @@ export function TokenEditor({
       const response = await fetch('/api/propose-change', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ diff, description, targetBranch, newBrands: pendingBrands, brandDiffs }),
+        body: JSON.stringify({
+          diff,
+          description,
+          targetBranch,
+          newBrands: pendingBrands,
+          brandDiffs,
+          pulledPaths: [...pulledTokenIds],
+        }),
       })
       const json = await response.json()
 
@@ -1199,23 +1492,44 @@ export function TokenEditor({
   const canSubmit =
     (diff.length > 0 || pendingBrands.length > 0 || totalBrandDiffCount > 0) &&
     blockingErrors.length === 0 &&
+    pullConflicts.length === 0 &&
     targetBranch.trim() !== '' &&
     submitState !== 'submitting'
+
   const draftHex = /^#[0-9a-fA-F]{6}$/.test(draft.value) ? draft.value : null
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
       <div className="shrink-0 bg-background p-4" style={{ marginLeft: sidebarInset }}>
         <div className="flex h-14 items-center justify-between gap-4 rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)] px-4">
-          <Tabs value={activeLayer} onValueChange={value => setActiveLayer(value as TokenLayer)}>
-            <TabsList aria-label="Token layer">
-              {LAYERS.map(layer => (
-                <TabsTrigger key={layer} value={layer}>
-                  <span aria-hidden="true">{LAYER_EMOJI[layer]}</span> {layer}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+          <div className="flex items-center gap-3">
+            <Tabs value={activeLayer} onValueChange={value => setActiveLayer(value as TokenLayer)}>
+              <TabsList aria-label="Token layer">
+                {LAYERS.map(layer => (
+                  <TabsTrigger key={layer} value={layer}>
+                    <span aria-hidden="true">{LAYER_EMOJI[layer]}</span> {layer}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+
+            {selectedBrand && (
+              <Badge
+                variant="default"
+                className="cursor-pointer gap-1 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                render={
+                  <button
+                    type="button"
+                    aria-label={`Editing ${selectedBrand} — open Brands sidebar`}
+                    onClick={() => selectSidebarTab('brands')}
+                  />
+                }
+              >
+                <SwatchBookIcon aria-hidden="true" className="size-3.5" />
+                {selectedBrand}
+              </Badge>
+            )}
+          </div>
 
           <div className="flex items-center gap-2">
             <div
@@ -1299,6 +1613,13 @@ export function TokenEditor({
               />
               <TooltipContent>Redo (Ctrl/Cmd+Shift+Z)</TooltipContent>
             </Tooltip>
+
+            {pullConflicts.length > 0 && (
+              <Button type="button" variant="destructive" onClick={() => setPullConflictsDialogOpen(true)}>
+                <TriangleAlertIcon />
+                {pullConflicts.length} Figma conflict{pullConflicts.length === 1 ? '' : 's'}
+              </Button>
+            )}
 
             <Button
               type="button"
@@ -2091,6 +2412,63 @@ export function TokenEditor({
           </DialogContent>
         </Dialog>
 
+        <Dialog open={pullConflictsDialogOpen} onOpenChange={setPullConflictsDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Figma pull conflicts</DialogTitle>
+              <DialogDescription>
+                These tokens changed both in your working changes and in Figma since your last pull. Submitting is
+                blocked until every conflict is resolved.
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="max-h-96 space-y-3 overflow-y-auto">
+              {pullConflicts.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No conflicts remaining.</p>
+              ) : (
+                pullConflicts.map((entry, index) => (
+                  <div
+                    key={`${entry.scope}-${entry.conflict.tokenId}`}
+                    className="space-y-2 rounded-md border border-border p-3"
+                  >
+                    <p className="truncate text-sm font-medium">
+                      {entry.scope !== 'base' && <span className="text-muted-foreground">{entry.scope} · </span>}
+                      {entry.conflict.path.join('/')}
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div>
+                        <p className="text-muted-foreground">Working</p>
+                        <p className="truncate font-mono">{JSON.stringify(entry.conflict.workingValue)}</p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground">Figma</p>
+                        <p className="truncate font-mono">{JSON.stringify(entry.conflict.figmaValue)}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => resolveConflictKeepWorking(index)}
+                      >
+                        Keep working value
+                      </Button>
+                      <Button type="button" size="sm" onClick={() => resolveConflictUseFigma(index)}>
+                        Use Figma value
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <DialogFooter>
+              <DialogClose render={<Button type="button" variant="outline" />}>Close</DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
         {graphRoot && (
           <TokenGraph
             tokens={tokens}
@@ -2104,9 +2482,12 @@ export function TokenEditor({
       {!sidebarCollapsed && activeSidebarTab === 'changes' && (
         <StagedChangesSidebar
           diff={diff}
+          onDiscardChange={discardChange}
           pendingBrands={pendingBrands}
           onUnstageBrand={unstageBrand}
           brandDiffs={brandDiffs}
+          onDiscardBrandChange={discardBrandChange}
+          pulledIds={pulledTokenIds}
           width={sidebarWidth}
           onWidthChange={setSidebarWidth}
           syncStatus={syncStatus}
@@ -2139,6 +2520,36 @@ export function TokenEditor({
           onStageBrand={stageBrand}
           selectedBrand={selectedBrand}
           onSelectBrand={setSelectedBrand}
+          width={sidebarWidth}
+          onWidthChange={setSidebarWidth}
+          syncStatus={syncStatus}
+        />
+      )}
+      {!sidebarCollapsed && activeSidebarTab === 'figma' && (
+        <FigmaPullSidebar
+          width={sidebarWidth}
+          onWidthChange={setSidebarWidth}
+          syncStatus={syncStatus}
+          loading={figmaPullLoading}
+          error={figmaPullError}
+          plan={pullPlan}
+          selection={pullSelection}
+          selectableCount={pullSelectableCount}
+          hasNothingToApply={pullHasNothingToApply}
+          onPull={handlePullFromFigma}
+          onToggleSelection={togglePullSelection}
+          onSelectAll={selectAllPullEntries}
+          onSelectNone={selectNoPullEntries}
+          onApply={handleApplyPull}
+          onCancel={handleCancelPull}
+          beforeForBase={beforeForBase}
+          beforeForBrand={beforeForBrand}
+        />
+      )}
+      {!sidebarCollapsed && activeSidebarTab === 'preview' && (
+        <PreviewSidebar
+          tokens={previewTokens}
+          brand={selectedBrand}
           width={sidebarWidth}
           onWidthChange={setSidebarWidth}
           syncStatus={syncStatus}

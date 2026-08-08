@@ -15,6 +15,7 @@ This file maps the multi-context layout of this monorepo. Each context has its o
 | **React Bindings**     | `packages/react/CONTEXT.md`      | Generated React component wrappers, `useDesignSystem()` bootstrapping                   |
 | **Angular Bindings**   | `packages/angular/CONTEXT.md`    | Generated standalone Angular component wrappers, `bootstrapDesignSystem()`              |
 | **Documentation**      | `apps/storybook/CONTEXT.md`      | Storybook setup, documentation patterns, MDX authoring, component showcase              |
+| **Toky**               | `apps/toky/CONTEXT.md`           | Token-editing web app, working changes, Submit/PR flow, Pull (from Figma)               |
 | **Internal Libraries** | `libs/CONTEXT.md`                | ESLint plugin, output targets (Angular), shared utilities, code generation              |
 
 ## How to Use This Map

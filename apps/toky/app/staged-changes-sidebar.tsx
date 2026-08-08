@@ -4,9 +4,33 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import type { TokenDiffEntry, TokenDiffKind } from '@/src/tokens/edit'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { SidebarPanel } from './sidebar'
+
+// The hover-only "X" that reverts a single staged change — shared shape for the base diff list,
+// each brand's diff list, and the pending-brand list, so "discard" always looks and behaves the
+// same regardless of which list a row is in.
+function DiscardButton({ onDiscard, label }: { onDiscard: () => void; label: string }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <button
+            type="button"
+            aria-label={label}
+            onClick={onDiscard}
+            className="invisible shrink-0 text-muted-foreground outline-none group-hover:visible hover:text-foreground focus-visible:visible focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        }
+      >
+        <XIcon className="size-3.5" />
+      </TooltipTrigger>
+      <TooltipContent>Discard change</TooltipContent>
+    </Tooltip>
+  )
+}
 
 export const DIFF_KIND_LABEL: Record<TokenDiffKind, string> = {
   create: 'Created',
@@ -26,22 +50,48 @@ export type SubmitState = 'idle' | 'submitting' | 'success' | 'conflict' | 'erro
 // value change, since computeDiff doesn't distinguish the two at the
 // TokenDiffEntry level. `label` prefixes each row (e.g. a brand name) so a
 // brand's overrides read distinctly from Base's own edits in the same list.
-function DiffList({ diff, label }: { diff: TokenDiffEntry[]; label?: string }) {
+// `pulledIds` (dot-joined paths) marks entries that came from a Pull (from
+// Figma) rather than a manual edit — see docs/adr/0002.
+function DiffList({
+  diff,
+  label,
+  pulledIds,
+  onDiscard,
+}: {
+  diff: TokenDiffEntry[]
+  label?: string
+  pulledIds?: Set<string>
+  onDiscard?: (entry: TokenDiffEntry) => void
+}) {
   return (
     <ul className="space-y-1">
-      {diff.map((entry, index) => (
-        <li key={index} className="flex items-center justify-between gap-2 text-sm">
-          <span className="min-w-0 truncate">
-            {label && <span className="text-muted-foreground">{label} · </span>}
-            {(entry.newPath ?? entry.oldPath)?.join('/')}
-          </span>
-          <Badge variant={DIFF_KIND_VARIANT[entry.kind]} className="shrink-0">
-            {label
-              ? { create: 'Overridden', update: 'Overridden', delete: 'Reverted' }[entry.kind]
-              : DIFF_KIND_LABEL[entry.kind]}
-          </Badge>
-        </li>
-      ))}
+      {diff.map((entry, index) => {
+        const path = (entry.newPath ?? entry.oldPath)?.join('.')
+        const name = (entry.newPath ?? entry.oldPath)?.join('/') ?? 'token'
+        return (
+          <li key={index} className="group flex items-center justify-between gap-2 text-sm">
+            <span className="min-w-0 truncate">
+              {label && <span className="text-muted-foreground">{label} · </span>}
+              {name}
+            </span>
+            <span className="flex shrink-0 items-center gap-1">
+              {path && pulledIds?.has(path) && (
+                <Badge variant="outline" className="shrink-0">
+                  Figma
+                </Badge>
+              )}
+              <Badge variant={DIFF_KIND_VARIANT[entry.kind]} className="shrink-0">
+                {label
+                  ? { create: 'Overridden', update: 'Overridden', delete: 'Reverted' }[entry.kind]
+                  : DIFF_KIND_LABEL[entry.kind]}
+              </Badge>
+              {onDiscard && entry.id && (
+                <DiscardButton label={`Discard change to ${name}`} onDiscard={() => onDiscard(entry)} />
+              )}
+            </span>
+          </li>
+        )
+      })}
     </ul>
   )
 }
@@ -50,13 +100,27 @@ function DiffList({ diff, label }: { diff: TokenDiffEntry[]; label?: string }) {
 // near-empty) sparse file, so a 'create' entry there just means "this token
 // wasn't overridden before" — "Overridden" reads better than "Created" for
 // both create and update kinds in that context.
-function BrandDiffLists({ brandDiffs }: { brandDiffs: Record<string, TokenDiffEntry[]> }) {
+function BrandDiffLists({
+  brandDiffs,
+  pulledIds,
+  onDiscard,
+}: {
+  brandDiffs: Record<string, TokenDiffEntry[]>
+  pulledIds?: Set<string>
+  onDiscard?: (brand: string, entry: TokenDiffEntry) => void
+}) {
   const names = Object.keys(brandDiffs).sort((a, b) => a.localeCompare(b))
   if (names.length === 0) return null
   return (
     <div className="space-y-1 border-b border-border pb-1">
       {names.map(name => (
-        <DiffList key={name} diff={brandDiffs[name]} label={name} />
+        <DiffList
+          key={name}
+          diff={brandDiffs[name]}
+          label={name}
+          pulledIds={pulledIds}
+          onDiscard={onDiscard ? entry => onDiscard(name, entry) : undefined}
+        />
       ))}
     </div>
   )
@@ -96,9 +160,12 @@ function PendingBrandList({
 
 export function StagedChangesSidebar({
   diff,
+  onDiscardChange,
   pendingBrands,
   onUnstageBrand,
   brandDiffs,
+  onDiscardBrandChange,
+  pulledIds,
   width,
   onWidthChange,
   syncStatus,
@@ -116,9 +183,12 @@ export function StagedChangesSidebar({
   onSubmit,
 }: {
   diff: TokenDiffEntry[]
+  onDiscardChange?: (entry: TokenDiffEntry) => void
   pendingBrands: string[]
   onUnstageBrand: (name: string) => void
   brandDiffs: Record<string, TokenDiffEntry[]>
+  onDiscardBrandChange?: (brand: string, entry: TokenDiffEntry) => void
+  pulledIds?: Set<string>
   width: number
   onWidthChange: (width: number) => void
   syncStatus: SyncStatus
@@ -210,8 +280,8 @@ export function StagedChangesSidebar({
           {pendingBrands.length > 0 && (
             <PendingBrandList pendingBrands={pendingBrands} onUnstageBrand={onUnstageBrand} />
           )}
-          <BrandDiffLists brandDiffs={brandDiffs} />
-          {diff.length > 0 && <DiffList diff={diff} />}
+          <BrandDiffLists brandDiffs={brandDiffs} pulledIds={pulledIds} onDiscard={onDiscardBrandChange} />
+          {diff.length > 0 && <DiffList diff={diff} pulledIds={pulledIds} onDiscard={onDiscardChange} />}
         </div>
       )}
     </SidebarPanel>
