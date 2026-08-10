@@ -56,6 +56,7 @@ import type { FigmaPullResult, PullConflict, PulledEntry, PullPlan } from '@/src
 import { FigmaPullSidebar } from './figma-pull-sidebar'
 import { FigmaIcon } from '@/components/icons/figma-icon'
 import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
+import { parseTokenPath, sanitizePathInput, sanitizeSegmentInput } from '@/src/tokens/path'
 import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
 import { getNextCell } from '@/src/tokens/keyboard'
@@ -288,6 +289,11 @@ export function TokenEditor({
   const [editDraft, setEditDraft] = useState<EditDraftState | null>(null)
   const [editModeOverride, setEditModeOverride] = useState<'value' | 'reference' | null>(null)
   const [editBrandModeOverride, setEditBrandModeOverride] = useState<Record<string, 'value' | 'reference'>>({})
+  // The row staged for deletion in the Delete-token dialog — null when closed.
+  // Nothing is removed from `working` until the typed confirmation matches
+  // `name` exactly (see confirmDeleteToken).
+  const [deleteDraft, setDeleteDraft] = useState<{ id: string; name: string; figmaLinked: boolean } | null>(null)
+  const [deleteConfirmText, setDeleteConfirmText] = useState('')
   const [description, setDescription] = useState('')
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
@@ -657,7 +663,7 @@ export function TokenEditor({
 
   // Keystrokes only update the local draft — see commitName, called on blur.
   function handleNameInput(id: string, text: string) {
-    setNameDraftText(prev => ({ ...prev, [id]: text }))
+    setNameDraftText(prev => ({ ...prev, [id]: sanitizeSegmentInput(text) }))
   }
 
   function commitName(id: string) {
@@ -771,7 +777,7 @@ export function TokenEditor({
   }
 
   function commitDraftIfReady() {
-    const name = draft.name.trim()
+    const name = parseTokenPath(draft.name).join('.')
     if (!name) return
     const parsed = parseEditableValue(draft.type, draft.value)
     if (!parsed.ok) {
@@ -836,11 +842,7 @@ export function TokenEditor({
   function commitGroupRename() {
     if (!editingGroup) return
     const { group, text } = editingGroup
-    const newGroup = text
-      .split('/')
-      .map(segment => segment.trim())
-      .filter(Boolean)
-      .join('.')
+    const newGroup = parseTokenPath(text).join('.')
     setEditingGroup(null)
     if (!newGroup || newGroup === group) return
 
@@ -872,14 +874,20 @@ export function TokenEditor({
     })
   }
 
-  function handleDeleteRow(id: string, name: string) {
-    if (
-      typeof window !== 'undefined' &&
-      !window.confirm(`Delete "${name}"? Nothing happens until you submit and it's reviewed and merged.`)
-    ) {
-      return
-    }
-    setWorking(prev => prev.filter(w => w.id !== id))
+  function openDeleteDialog(id: string, token: FlatToken) {
+    setDeleteDraft({ id, name: toSlashPath(token.name), figmaLinked: Boolean(token.figmaId) })
+    setDeleteConfirmText('')
+  }
+
+  function closeDeleteDialog() {
+    setDeleteDraft(null)
+    setDeleteConfirmText('')
+  }
+
+  function confirmDeleteToken() {
+    if (!deleteDraft || deleteConfirmText !== deleteDraft.name) return
+    setWorking(prev => prev.filter(w => w.id !== deleteDraft.id))
+    closeDeleteDialog()
   }
 
   function editMode(): 'value' | 'reference' {
@@ -969,13 +977,10 @@ export function TokenEditor({
     }
 
     const mode = editMode()
-    // The dialog shows/edits the name slash-joined (see toSlashPath) — convert
-    // back to the dot-joined form everything else (paths, referenceTarget) uses.
-    const name = editDraft.name
-      .split('/')
-      .map(segment => segment.trim())
-      .filter(Boolean)
-      .join('.')
+    // The dialog shows/edits the name slash-joined (see toSlashPath), but also
+    // accepts '.' as a separator — convert back to the dot-joined form
+    // everything else (paths, referenceTarget) uses.
+    const name = parseTokenPath(editDraft.name).join('.')
 
     let parsedValue: unknown = current.rawValue
     if (mode === 'value') {
@@ -1065,6 +1070,10 @@ export function TokenEditor({
       const duplicateToken: FlatToken = {
         ...source.token,
         name: uniqueCopyName(source.token.layer, source.token.name, prev),
+        // A Figma variableId identifies one specific Figma variable — a
+        // duplicate is a new token, not that variable's second copy, so it
+        // must start unlinked and let a Pull (from Figma) create its own.
+        figmaId: null,
       }
       const next = [...prev]
       next.splice(sourceIndex + 1, 0, { id: newId, token: duplicateToken })
@@ -1441,7 +1450,7 @@ export function TokenEditor({
               autoFocus
               aria-label={`Rename group ${segments.join('/')}`}
               value={editingGroup.text}
-              onChange={e => setEditingGroup({ group, text: e.target.value })}
+              onChange={e => setEditingGroup({ group, text: sanitizePathInput(e.target.value) })}
               onBlur={commitGroupRename}
               onKeyDown={e => {
                 if (e.key === 'Enter') {
@@ -2559,7 +2568,7 @@ export function TokenEditor({
                                   <NetworkIcon />
                                   Show reference graph
                                 </DropdownMenuItem>
-                                <DropdownMenuItem variant="destructive" onClick={() => handleDeleteRow(id, token.name)}>
+                                <DropdownMenuItem variant="destructive" onClick={() => openDeleteDialog(id, token)}>
                                   <Trash2Icon />
                                   Delete
                                 </DropdownMenuItem>
@@ -2624,7 +2633,7 @@ export function TokenEditor({
                   id="new-token-name"
                   placeholder="e.g. Color.Danger.7"
                   value={draft.name}
-                  onChange={e => setDraft(prev => ({ ...prev, name: e.target.value }))}
+                  onChange={e => setDraft(prev => ({ ...prev, name: sanitizePathInput(e.target.value) }))}
                 />
               </div>
 
@@ -2803,7 +2812,9 @@ export function TokenEditor({
                         <Input
                           id="edit-token-name"
                           value={editDraft.name}
-                          onChange={e => setEditDraft(prev => (prev ? { ...prev, name: e.target.value } : prev))}
+                          onChange={e =>
+                            setEditDraft(prev => (prev ? { ...prev, name: sanitizePathInput(e.target.value) } : prev))
+                          }
                         />
                       </div>
 
@@ -2947,6 +2958,54 @@ export function TokenEditor({
                   </>
                 )
               })()}
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={deleteDraft !== null} onOpenChange={open => !open && closeDeleteDialog()}>
+          <DialogContent>
+            {deleteDraft && (
+              <>
+                <DialogHeader>
+                  <DialogTitle>Delete &quot;{deleteDraft.name}&quot;?</DialogTitle>
+                  <DialogDescription>
+                    {deleteDraft.figmaLinked
+                      ? 'This token is linked to Figma — deleting it here also deletes the variable in Figma. '
+                      : ''}
+                    Nothing happens until you submit and it&apos;s reviewed and merged.
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="delete-token-confirm">Type &quot;{deleteDraft.name}&quot; to confirm</Label>
+                  <Input
+                    id="delete-token-confirm"
+                    autoFocus
+                    value={deleteConfirmText}
+                    onChange={e => setDeleteConfirmText(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter' && deleteConfirmText === deleteDraft.name) {
+                        e.preventDefault()
+                        confirmDeleteToken()
+                      }
+                    }}
+                  />
+                </div>
+
+                <DialogFooter>
+                  <Button type="button" variant="outline" onClick={closeDeleteDialog}>
+                    Cancel
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    disabled={deleteConfirmText !== deleteDraft.name}
+                    onClick={confirmDeleteToken}
+                  >
+                    Delete
+                  </Button>
+                </DialogFooter>
+              </>
+            )}
           </DialogContent>
         </Dialog>
 
