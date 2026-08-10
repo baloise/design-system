@@ -95,9 +95,7 @@ export function BrandsSidebar({
           <Tabs
             orientation="vertical"
             value={selectedBrand ?? BASE_TAB_VALUE}
-            onValueChange={value =>
-              onSelectBrand(value === BASE_TAB_VALUE ? null : ((value as string | null) ?? null))
-            }
+            onValueChange={value => onSelectBrand(value === BASE_TAB_VALUE ? null : ((value as string | null) ?? null))}
           >
             <TabsList className="w-full items-stretch gap-1">
               {rows.map(row => (
