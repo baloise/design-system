@@ -10,9 +10,13 @@ import {
 } from './path'
 
 describe('sanitizeSegmentInput', () => {
-  it('strips spaces and dashes', () => {
-    expect(sanitizeSegmentInput('background blue')).toBe('backgroundblue')
+  it('strips dashes', () => {
     expect(sanitizeSegmentInput('background-blue')).toBe('backgroundblue')
+  })
+
+  it('keeps spaces, for multi-word segments and emoji prefixes', () => {
+    expect(sanitizeSegmentInput('Background Blue')).toBe('Background Blue')
+    expect(sanitizeSegmentInput('🌈 Color')).toBe('🌈 Color')
   })
 
   it('strips separators, since a segment must never contain one', () => {
@@ -26,12 +30,16 @@ describe('sanitizeSegmentInput', () => {
 })
 
 describe('sanitizePathInput', () => {
-  it('strips spaces and dashes but keeps separators', () => {
-    expect(sanitizePathInput('background blue/danger-7')).toBe('backgroundblue/danger7')
+  it('strips dashes but keeps spaces and separators', () => {
+    expect(sanitizePathInput('Background Blue/Danger-7')).toBe('Background Blue/Danger7')
   })
 
   it('keeps both . and / as separators', () => {
     expect(sanitizePathInput('Color.Danger/7')).toBe('Color.Danger/7')
+  })
+
+  it('keeps emoji', () => {
+    expect(sanitizePathInput('🌈 Color/Danger')).toBe('🌈 Color/Danger')
   })
 })
 
@@ -56,13 +64,46 @@ describe('isValidSegmentName', () => {
     expect(isValidSegmentName('700')).toBe(true)
   })
 
+  it('accepts an all-uppercase acronym, e.g. a size like "XL"', () => {
+    expect(isValidSegmentName('XL')).toBe(true)
+  })
+
+  it('accepts an uppercase word with leading digits, e.g. a size like "4XL"', () => {
+    expect(isValidSegmentName('4XL')).toBe(true)
+  })
+
+  it('rejects a word that is neither PascalCase nor UPPERCASE', () => {
+    expect(isValidSegmentName('4Xl')).toBe(false)
+    expect(isValidSegmentName('4xl')).toBe(false)
+  })
+
+  it('accepts multiple PascalCase words separated by spaces', () => {
+    expect(isValidSegmentName('Background Blue')).toBe(true)
+  })
+
+  it('accepts an emoji prefix, e.g. a layer or group icon', () => {
+    expect(isValidSegmentName('🌈 Color')).toBe(true)
+    expect(isValidSegmentName('🌐 Global')).toBe(true)
+  })
+
+  it('accepts a plain symbol prefix, e.g. a Figma folder icon like "▭"', () => {
+    expect(isValidSegmentName('▭ Border')).toBe(true)
+  })
+
   it('rejects a lowercase-leading segment', () => {
     expect(isValidSegmentName('backgroundBlue')).toBe(false)
   })
 
-  it('rejects a segment containing a dash or space', () => {
+  it('rejects a dash', () => {
     expect(isValidSegmentName('background-blue')).toBe(false)
+  })
+
+  it('rejects a space-separated word that is not itself PascalCase', () => {
     expect(isValidSegmentName('background blue')).toBe(false)
+  })
+
+  it('rejects an emoji with no word after it', () => {
+    expect(isValidSegmentName('🌈')).toBe(false)
   })
 })
 

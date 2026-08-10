@@ -292,7 +292,12 @@ export function TokenEditor({
   // The row staged for deletion in the Delete-token dialog — null when closed.
   // Nothing is removed from `working` until the typed confirmation matches
   // `name` exactly (see confirmDeleteToken).
-  const [deleteDraft, setDeleteDraft] = useState<{ id: string; name: string; figmaLinked: boolean } | null>(null)
+  const [deleteDraft, setDeleteDraft] = useState<{
+    id: string
+    name: string
+    figmaLinked: boolean
+    usageCount: number
+  } | null>(null)
   const [deleteConfirmText, setDeleteConfirmText] = useState('')
   const [description, setDescription] = useState('')
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
@@ -875,7 +880,12 @@ export function TokenEditor({
   }
 
   function openDeleteDialog(id: string, token: FlatToken) {
-    setDeleteDraft({ id, name: toSlashPath(token.name), figmaLinked: Boolean(token.figmaId) })
+    setDeleteDraft({
+      id,
+      name: toSlashPath(token.name),
+      figmaLinked: Boolean(token.figmaId),
+      usageCount: referenceCounts.get(token.path.join('.')) ?? 0,
+    })
     setDeleteConfirmText('')
   }
 
@@ -885,7 +895,7 @@ export function TokenEditor({
   }
 
   function confirmDeleteToken() {
-    if (!deleteDraft || deleteConfirmText !== deleteDraft.name) return
+    if (!deleteDraft || deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name) return
     setWorking(prev => prev.filter(w => w.id !== deleteDraft.id))
     closeDeleteDialog()
   }
@@ -2975,21 +2985,32 @@ export function TokenEditor({
                   </DialogDescription>
                 </DialogHeader>
 
-                <div className="space-y-1.5">
-                  <Label htmlFor="delete-token-confirm">Type &quot;{deleteDraft.name}&quot; to confirm</Label>
-                  <Input
-                    id="delete-token-confirm"
-                    autoFocus
-                    value={deleteConfirmText}
-                    onChange={e => setDeleteConfirmText(e.target.value)}
-                    onKeyDown={e => {
-                      if (e.key === 'Enter' && deleteConfirmText === deleteDraft.name) {
-                        e.preventDefault()
-                        confirmDeleteToken()
-                      }
-                    }}
-                  />
-                </div>
+                {deleteDraft.usageCount > 0 ? (
+                  <Alert variant="destructive">
+                    <TriangleAlertIcon />
+                    <AlertDescription>
+                      &quot;{deleteDraft.name}&quot; is referenced by {deleteDraft.usageCount}{' '}
+                      {deleteDraft.usageCount === 1 ? 'other token' : 'other tokens'} and can&apos;t be deleted. Remove
+                      those references first.
+                    </AlertDescription>
+                  </Alert>
+                ) : (
+                  <div className="space-y-1.5">
+                    <Label htmlFor="delete-token-confirm">Type &quot;{deleteDraft.name}&quot; to confirm</Label>
+                    <Input
+                      id="delete-token-confirm"
+                      autoFocus
+                      value={deleteConfirmText}
+                      onChange={e => setDeleteConfirmText(e.target.value)}
+                      onKeyDown={e => {
+                        if (e.key === 'Enter' && deleteConfirmText === deleteDraft.name) {
+                          e.preventDefault()
+                          confirmDeleteToken()
+                        }
+                      }}
+                    />
+                  </div>
+                )}
 
                 <DialogFooter>
                   <Button type="button" variant="outline" onClick={closeDeleteDialog}>
@@ -2998,7 +3019,7 @@ export function TokenEditor({
                   <Button
                     type="button"
                     variant="destructive"
-                    disabled={deleteConfirmText !== deleteDraft.name}
+                    disabled={deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name}
                     onClick={confirmDeleteToken}
                   >
                     Delete

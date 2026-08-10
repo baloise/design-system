@@ -11399,7 +11399,7 @@
           ]
         }
       },
-      "Default": {
+      "Primary": {
         "Color": {
           "Bg": {
             "Base": {
@@ -11807,7 +11807,7 @@
           ]
         }
       },
-      "Default": {
+      "Primary": {
         "Color": {
           "Bg": {
             "Base": {
@@ -12859,7 +12859,7 @@
           }
         }
       },
-      "Default": {
+      "Base": {
         "Color": {
           "Text": {
             "Base": {
