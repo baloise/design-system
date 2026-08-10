@@ -23,13 +23,13 @@
   @include vars.base(toast);
   @include vars.local(toast-shadow, var(--ds-alias-shadow-box-base));
   @include vars.local(toast-radius, var(--ds-toast-radius));
-  @include vars.local(toast-bg, var(--ds-toast-default-color-bg-base));
-  @include vars.local(toast-color, var(--ds-toast-default-color-text-base));
-  @include vars.local(toast-icon-color, var(--ds-toast-default-color-icon-base));
+  @include vars.local(toast-bg, var(--ds-toast-primary-color-bg-base));
+  @include vars.local(toast-color, var(--ds-toast-primary-color-text-base));
+  @include vars.local(toast-icon-color, var(--ds-toast-primary-color-icon-base));
 
   @include vars.local(toast-progress-duration, 0);
-  @include vars.local(toast-progress-bar-bg, var(--ds-toast-default-color-progress-bar-base));
-  @include vars.local(toast-progress-bg, var(--ds-toast-default-color-progress-bg-base));
+  @include vars.local(toast-progress-bar-bg, var(--ds-toast-primary-color-progress-bar-base));
+  @include vars.local(toast-progress-bg, var(--ds-toast-primary-color-progress-bg-base));
 
   @include vars.local(toast-heading-font-family, var(--ds-alias-text-family-heading));
   @include vars.local(toast-heading-font-weight, var(--ds-alias-text-weight-bold));

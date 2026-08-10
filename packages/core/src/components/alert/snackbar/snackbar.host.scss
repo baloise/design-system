@@ -23,13 +23,13 @@
   @include vars.base(snackbar);
   @include vars.local(snackbar-shadow, var(--ds-alias-shadow-box-base));
   @include vars.local(snackbar-radius, var(--ds-snackbar-radius));
-  @include vars.local(snackbar-bg, var(--ds-snackbar-default-color-bg-base));
-  @include vars.local(snackbar-color, var(--ds-snackbar-default-color-text-base));
-  @include vars.local(snackbar-icon-color, var(--ds-snackbar-default-color-icon-base));
+  @include vars.local(snackbar-bg, var(--ds-snackbar-primary-color-bg-base));
+  @include vars.local(snackbar-color, var(--ds-snackbar-primary-color-text-base));
+  @include vars.local(snackbar-icon-color, var(--ds-snackbar-primary-color-icon-base));
 
   @include vars.local(snackbar-progress-duration, 0);
-  @include vars.local(snackbar-progress-bar-bg, var(--ds-snackbar-default-color-progress-bar-base));
-  @include vars.local(snackbar-progress-bg, var(--ds-snackbar-default-color-progress-bg-base));
+  @include vars.local(snackbar-progress-bar-bg, var(--ds-snackbar-primary-color-progress-bar-base));
+  @include vars.local(snackbar-progress-bg, var(--ds-snackbar-primary-color-progress-bg-base));
 
   @include vars.local(snackbar-heading-font-family, var(--ds-alias-text-family-heading));
   @include vars.local(snackbar-heading-font-weight, var(--ds-alias-text-weight-bold));

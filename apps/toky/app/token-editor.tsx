@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 import type { KeyboardEvent, ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
@@ -9,6 +9,7 @@ import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
   Code2Icon,
+  CopyIcon,
   EllipsisIcon,
   GitBranchIcon,
   HexagonIcon,
@@ -44,7 +45,6 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { computeDiff, describeChangeStatus, effectiveValue, pathFor } from '@/src/tokens/edit'
 import type { ChangeStatus, TokenDiffEntry, WorkingToken } from '@/src/tokens/edit'
@@ -56,6 +56,7 @@ import type { FigmaPullResult, PullConflict, PulledEntry, PullPlan } from '@/src
 import { FigmaPullSidebar } from './figma-pull-sidebar'
 import { FigmaIcon } from '@/components/icons/figma-icon'
 import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
+import { parseTokenPath, sanitizePathInput } from '@/src/tokens/path'
 import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
 import { getNextCell } from '@/src/tokens/keyboard'
@@ -77,11 +78,30 @@ import { TokenGraph } from './token-graph'
 
 const LAYERS: TokenLayer[] = ['Global', 'Alias', 'Component']
 const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗', Component: '🧩' }
+// Each layer's accordion-head tint at layer depth (0) only — the same
+// amber/sky/emerald used as each layer's node border color in the
+// reference graph (see LAYER_BORDER_COLOR in token-graph.tsx). This row is
+// sticky (see renderGroupHeaderRow), so the tint has to be opaque —
+// color-mix against --background, not a translucent hex-alpha color,
+// otherwise scrolled-past rows show through it while it's pinned (same
+// reason --border-solid exists in globals.css).
+const LAYER_BG_TINT: Record<TokenLayer, string> = {
+  Global:
+    'bg-[color-mix(in_oklch,#f59e0b_15%,var(--background))] hover:bg-[color-mix(in_oklch,#f59e0b_15%,var(--background))]', // amber
+  Alias:
+    'bg-[color-mix(in_oklch,#38bdf8_15%,var(--background))] hover:bg-[color-mix(in_oklch,#38bdf8_15%,var(--background))]', // sky
+  Component:
+    'bg-[color-mix(in_oklch,#34d399_15%,var(--background))] hover:bg-[color-mix(in_oklch,#34d399_15%,var(--background))]', // emerald
+}
 // Name, Value — the two columns that participate in arrow-key navigation.
 // The delete/graph buttons are reachable via Tab, same as any other
 // focusable element, but sit outside this grid on purpose (arrow-nav only
 // makes sense across uniform columns).
 const COLUMN_COUNT = 2
+// Fixed row height (px) of every accordion group header — layer, outer,
+// and inner alike (see renderGroupHeaderRow's h-8/max-h-8) — used to stack
+// their sticky `top` offsets under the column header.
+const HEADER_ROW_HEIGHT = 32
 
 let draftIdCounter = 0
 
@@ -124,32 +144,59 @@ interface EditDraftState {
   brands: Record<string, EditBrandDraft>
 }
 
-// Tokens are grouped for display by everything but the last dot-segment of their
-// name (e.g. "Color.Danger.1" groups under "Color.Danger", displayed as leaf "1").
-function groupPrefixFor(name: string): string {
+// Tokens are grouped for display by every dot-segment but the last — each
+// one gets its own accordion level, however deep a name goes (e.g.
+// "Color.Danger.7" groups under "Color" then "Color.Danger", leaf "7";
+// "Color.Primary.Background.Base" groups under "Color", "Color.Primary",
+// then "Color.Primary.Background", leaf "Base"). No cap: unlike an
+// earlier version of this grouping, nothing gets folded into the leaf —
+// every ancestor segment renders as its own header.
+
+// The dot-segment group at a given depth (1 = outer/component-level group,
+// mirroring Figma's top-level grouping by component name (Component layer)
+// or subject (Global/Alias layers); 2+ = progressively nested within it) —
+// only when the name goes at least one dot deeper than that depth, so a
+// group never appears to contain only itself.
+function groupAtDepth(name: string, depth: number): string {
+  const parts = name.split('.')
+  return parts.length > depth ? parts.slice(0, depth).join('.') : ''
+}
+
+// The group a token's row actually sits under — everything but its last
+// dot-segment, else '' for an ungrouped (single-segment) name. Used to
+// split a full name into "group" + "leaf" and back again (renaming,
+// duplicating).
+function groupOf(name: string): string {
   const idx = name.lastIndexOf('.')
   return idx === -1 ? '' : name.slice(0, idx)
 }
 
-// The outer wrapper group — everything before the first dot (e.g. "Footer" for
-// "Footer.Color.Link.1") — one level up from `groupPrefixFor`, mirroring
-// Figma's top-level grouping by component name (Component layer) or subject
-// (Global/Alias layers).
-function outerGroupFor(name: string): string {
-  const idx = name.indexOf('.')
-  return idx === -1 ? '' : name.slice(0, idx)
-}
-
-function leafNameFor(name: string): string {
+// The row's Name cell content — the name's last dot-segment (its group,
+// however many levels deep, is all rendered as accordion headers instead).
+function leafPathFor(name: string): string {
   const idx = name.lastIndexOf('.')
   return idx === -1 ? name : name.slice(idx + 1)
+}
+
+// Layer is now the outermost accordion level, sitting above the existing
+// outer/inner name-based groups — collapse/rename state for those two
+// still keys off the dotted group path alone, which would collide across
+// layers (e.g. a "Color" group in both Global and Component). These give
+// every group header a layer-scoped key while `group` itself stays the
+// plain dotted path used for display and for matching token names.
+function layerKey(layer: TokenLayer): string {
+  return `layer:${layer}`
+}
+
+function groupKey(layer: TokenLayer, group: string): string {
+  return `${layer}::${group}`
 }
 
 // "White" -> "White copy", or "White copy 2", "White copy 3", ... if that's
 // already taken — keeps the duplicate in the same group as its source.
 function uniqueCopyName(layer: TokenLayer, name: string, working: WorkingToken[]): string {
-  const prefix = groupPrefixFor(name)
-  const leaf = leafNameFor(name)
+  const prefix = groupOf(name)
+  const leaf = leafPathFor(name)
   const taken = new Set(working.filter(w => w.token.layer === layer).map(w => w.token.name))
 
   let suffix = 'copy'
@@ -165,16 +212,26 @@ function uniqueCopyName(layer: TokenLayer, name: string, working: WorkingToken[]
 // Table-cell fields read as plain cell content until interacted with — no
 // border or background of their own — then pick up the normal input chrome
 // on hover/focus so it's clear the cell became editable (Figma-style grid).
+// md:text-xs overrides Input's own md:text-sm default — twMerge can't drop
+// that for us since a bare text-xs and a md:-prefixed text-sm sit in
+// different variant groups, so without it the name/value fields would
+// still render at 14px on any normal (>=768px) desktop viewport.
 const CELL_FIELD_CLASS =
-  'h-8 rounded-none border-transparent bg-transparent shadow-none hover:bg-muted/30 focus-visible:border-input focus-visible:bg-input/30 focus-visible:ring-3 focus-visible:ring-ring dark:bg-transparent dark:hover:bg-muted/30 dark:focus-visible:bg-input/30'
+  'h-8 rounded-none border-transparent bg-transparent text-xs md:text-xs shadow-none hover:bg-muted/30 focus-visible:border-input focus-visible:bg-input/30 focus-visible:ring-3 focus-visible:ring-ring dark:bg-transparent dark:hover:bg-muted/30 dark:focus-visible:bg-input/30'
 
 const CELL_TRIGGER_CLASS =
-  'flex h-8 w-full items-center gap-2 rounded-none border border-transparent bg-transparent px-2 text-sm outline-none hover:bg-muted/30 focus-visible:border-input focus-visible:ring-3 focus-visible:ring-ring aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20'
+  'flex h-8 w-full items-center gap-2 rounded-none border border-transparent bg-transparent px-2 text-xs outline-none hover:bg-muted/30 focus-visible:border-input focus-visible:ring-3 focus-visible:ring-ring aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20'
 
 // Alias/reference tags are just the normal outline Button — the same chip
 // used everywhere else in the app (e.g. the toolbar's search button) —
 // capped at 28px tall and left-aligning its swatch/text content.
-const CELL_TAG_CLASS = 'h-7 max-h-7 justify-start gap-2 overflow-hidden px-2 font-normal'
+const CELL_TAG_CLASS = 'h-7 max-h-7 justify-start gap-2 overflow-hidden px-2 text-xs font-normal'
+
+// Shared "no errors" fallback for a row's cellErrors — a stable reference
+// (unlike a fresh `[]` literal on every lookup) so a row without errors
+// doesn't get a new array identity, and thus a wasted re-render, on every
+// unrelated render of the table.
+const EMPTY_ERRORS: string[] = []
 
 interface CodeUsageLocation {
   package: 'core' | 'css'
@@ -229,6 +286,634 @@ function parseEditableValue(type: string, text: string, previous?: unknown): Par
   return { ok: true, value: text }
 }
 
+// The small unlink control that appears right after an alias tag on
+// hover/focus — breaks the reference and leaves the cell with an empty
+// value, mirroring Figma's "detach alias" affordance. Styled like every
+// other icon button in the table (e.g. the search button in the toolbar).
+// A pure function of its own arguments (no closure over TokenEditor's
+// state) — kept at module scope so it's a stable reference, not recreated
+// every render, since it's called from within the memoized TokenRow.
+function renderDetachButton(label: string, onDetach: () => void): ReactNode {
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button
+            type="button"
+            variant="outline"
+            size="icon-sm"
+            aria-label={label}
+            onClick={onDetach}
+            className="invisible shrink-0 group-hover/tag:visible focus-visible:visible"
+          />
+        }
+      >
+        <Unlink2Icon className="size-3.5" />
+      </TooltipTrigger>
+      <TooltipContent>Detach alias</TooltipContent>
+    </Tooltip>
+  )
+}
+
+interface TokenRowBrandInfo {
+  brand: string
+  token: FlatToken
+  hex: string | null
+  mode: 'value' | 'reference'
+  valueText: string
+  isOverridden: boolean
+  isMalformed: boolean
+  isPopoverOpen: boolean
+}
+
+interface TokenRowHandlers {
+  onNameChange: (id: string, text: string) => void
+  onNameBlur: (id: string) => void
+  onCellKeyDown: (e: KeyboardEvent<HTMLInputElement>, row: number, col: number, id: string) => void
+  onValueChange: (id: string, text: string) => void
+  onValueBlur: (id: string, type: string) => void
+  onColorPick: (id: string, type: string, text: string) => void
+  onReferenceChange: (id: string, text: string) => void
+  onSetMode: (id: string, mode: 'value' | 'reference') => void
+  onPopoverOpenChange: (id: string, open: boolean) => void
+  onCodeUsageOpenChange: (id: string, open: boolean) => void
+  onShowGraph: (id: string, title: string) => void
+  onEdit: (id: string) => void
+  onDuplicate: (id: string) => void
+  onDelete: (id: string, token: FlatToken) => void
+  onBrandValueChange: (id: string, text: string) => void
+  onBrandValueBlur: (brand: string, id: string, type: string) => void
+  onBrandColorPick: (brand: string, id: string, type: string, text: string) => void
+  onBrandReferenceChange: (brand: string, id: string, text: string) => void
+  onSetBrandMode: (id: string, mode: 'value' | 'reference') => void
+  renderPopoverHeader: (
+    tabs: { value: string; label: string }[],
+    activeValue: string,
+    onValueChange: ((value: string) => void) | null,
+    ariaLabel: string,
+  ) => ReactNode
+  renderReferenceSearch: (currentValue: string, onSelect: (value: string) => void, ariaLabel: string) => ReactNode
+}
+
+interface TokenRowProps {
+  id: string
+  token: FlatToken
+  row: number
+  headerNodes: ReactNode[]
+  hidden: boolean
+  anyHeaderShown: boolean
+  depth: number
+  hex: string | null
+  cellErrors: string[]
+  isMalformed: boolean
+  changeStatus: ChangeStatus | null
+  nameText: string
+  valueText: string
+  mode: 'value' | 'reference'
+  isPopoverOpen: boolean
+  isCodeUsageOpen: boolean
+  usageCount: number
+  brandInfo: TokenRowBrandInfo | null
+  cellRefs: { current: Map<string, HTMLInputElement> }
+  focusSnapshot: { current: { id: string; col: number; value: string } | null }
+  handlers: TokenRowHandlers
+}
+
+// One token row (plus whichever group headers immediately precede it) —
+// wrapped in React.memo so a search keystroke that doesn't change this
+// row's own props (see rowEntries/the per-row prop precomputation in
+// TokenEditor) skips re-rendering it entirely, instead of every row in a
+// 1500+ row table re-diffing on every keystroke.
+const TokenRow = memo(function TokenRow({
+  id,
+  token,
+  row,
+  headerNodes,
+  hidden,
+  anyHeaderShown,
+  depth,
+  hex,
+  cellErrors,
+  isMalformed,
+  changeStatus,
+  nameText,
+  valueText,
+  mode,
+  isPopoverOpen,
+  isCodeUsageOpen,
+  usageCount,
+  brandInfo,
+  cellRefs,
+  focusSnapshot,
+  handlers,
+}: TokenRowProps) {
+  const codeUsage = CODE_USAGE[token.path.join('.')]
+
+  return (
+    <>
+      {headerNodes}
+      {!hidden && (
+        <TableRow
+          data-row-id={id}
+          // A plain border-t, not a shadow — this row isn't sticky, so it
+          // doesn't have the stacking/paint-order problems that motivated
+          // the header rows' shadow-based border (see renderGroupHeaderRow).
+          // Only drawn when a header rendered directly above this row (i.e.
+          // it's the first row under that header) — that boundary would
+          // otherwise have no line at all, since the header's own border is
+          // top-edge-only and doesn't cover its bottom.
+          className={cn(
+            anyHeaderShown && 'border-t border-border',
+            cellErrors.length > 0 && 'bg-destructive/10 hover:bg-destructive/15',
+          )}
+        >
+          <TableCell className="max-h-8 p-0 focus-within:relative focus-within:z-40">
+            <div className="flex items-center gap-1" style={{ paddingLeft: depth * 16 }}>
+              <Input
+                ref={el => {
+                  if (el) cellRefs.current.set(`${row}-0`, el)
+                  else cellRefs.current.delete(`${row}-0`)
+                }}
+                aria-label={`Name for ${token.name || 'token'}`}
+                value={nameText}
+                onChange={e => handlers.onNameChange(id, e.target.value)}
+                onBlur={() => handlers.onNameBlur(id)}
+                onFocus={e => (focusSnapshot.current = { id, col: 0, value: e.target.value })}
+                onKeyDown={e => handlers.onCellKeyDown(e, row, 0, id)}
+                className={CELL_FIELD_CLASS}
+              />
+              {changeStatus && (
+                <Badge variant={CHANGE_STATUS_VARIANT[changeStatus]} className="mr-1 shrink-0">
+                  {CHANGE_STATUS_LABEL[changeStatus]}
+                </Badge>
+              )}
+            </div>
+          </TableCell>
+          <TableCell className="max-h-8 p-0 px-1">
+            {token.type === 'color' ? (
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    aria-invalid={isMalformed || cellErrors.length > 0}
+                    render={
+                      token.referenceTarget ? (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TAG_CLASS}
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TRIGGER_CLASS}
+                        />
+                      )
+                    }
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="size-5 shrink-0 rounded-sm border"
+                      style={hex ? { backgroundColor: hex } : undefined}
+                    />
+                    <span className="truncate">
+                      {token.referenceTarget ? toSlashPath(token.referenceTarget) : (hex ?? '—')}
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-128">
+                    {handlers.renderPopoverHeader(
+                      [
+                        { value: 'value', label: 'Color' },
+                        { value: 'reference', label: 'Reference' },
+                      ],
+                      mode,
+                      value => handlers.onSetMode(id, value as 'value' | 'reference'),
+                      `Value mode for ${token.name || 'token'}`,
+                    )}
+
+                    {mode === 'value' ? (
+                      <div className="space-y-2">
+                        <input
+                          type="color"
+                          aria-label={`Pick color for ${token.name || 'token'}`}
+                          className="h-9 w-full cursor-pointer rounded-md border"
+                          defaultValue={hex ?? '#000000'}
+                          // Native `change` (not React's onChange, which is
+                          // bound to the continuous `input` event) — fires
+                          // once when the picker closes, so dragging inside
+                          // it doesn't flood `working` with an update per
+                          // pixel of drag. Uncontrolled (defaultValue) so
+                          // React never fights the swatch's own live
+                          // preview while the picker is open; synced back
+                          // imperatively below if `hex` changes for some
+                          // other reason (undo, detaching a reference).
+                          ref={el => {
+                            if (!el) return
+                            const current = hex ?? '#000000'
+                            if (el.value !== current) el.value = current
+                            el.onchange = e =>
+                              handlers.onColorPick(id, token.type, (e.target as HTMLInputElement).value)
+                          }}
+                        />
+                        <Input
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          aria-invalid={isMalformed || cellErrors.length > 0}
+                          placeholder="#RRGGBB"
+                          value={valueText}
+                          onChange={e => handlers.onValueChange(id, e.target.value)}
+                          onBlur={() => handlers.onValueBlur(id, token.type)}
+                        />
+                        {isMalformed && (
+                          <Alert variant="destructive">
+                            <AlertDescription>Invalid JSON for a color value.</AlertDescription>
+                          </Alert>
+                        )}
+                      </div>
+                    ) : (
+                      handlers.renderReferenceSearch(
+                        token.referenceTarget ?? '',
+                        value => handlers.onReferenceChange(id, value),
+                        `Reference target for ${token.name || 'token'}`,
+                      )
+                    )}
+                  </PopoverContent>
+                </Popover>
+                {token.referenceTarget &&
+                  renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                    handlers.onReferenceChange(id, ''),
+                  )}
+              </div>
+            ) : (
+              <div className="group/tag flex items-center gap-1">
+                {token.referenceTarget ? (
+                  <>
+                    <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                      <PopoverTrigger
+                        aria-label={`Value for ${token.name || 'token'}`}
+                        render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
+                      >
+                        <Link2Icon className="size-3.5 shrink-0" />
+                        <span className="truncate">{toSlashPath(token.referenceTarget)}</span>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-128">
+                        {handlers.renderPopoverHeader(
+                          [{ value: 'reference', label: 'Reference' }],
+                          'reference',
+                          null,
+                          `Value mode for ${token.name || 'token'}`,
+                        )}
+                        {handlers.renderReferenceSearch(
+                          token.referenceTarget ?? '',
+                          value => handlers.onReferenceChange(id, value),
+                          `Reference target for ${token.name || 'token'}`,
+                        )}
+                      </PopoverContent>
+                    </Popover>
+                    {renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                      handlers.onReferenceChange(id, ''),
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <Input
+                      ref={el => {
+                        if (el) cellRefs.current.set(`${row}-1`, el)
+                        else cellRefs.current.delete(`${row}-1`)
+                      }}
+                      aria-label={`Value for ${token.name || 'token'}`}
+                      aria-invalid={cellErrors.length > 0}
+                      value={valueText}
+                      onChange={e => handlers.onValueChange(id, e.target.value)}
+                      onBlur={() => handlers.onValueBlur(id, token.type)}
+                      onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
+                      onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
+                      className={CELL_FIELD_CLASS}
+                    />
+                    <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                      <PopoverTrigger
+                        render={
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="icon-sm"
+                            className="mr-1 shrink-0 rounded-none"
+                            aria-label={`Reference for ${token.name || 'token'}`}
+                          />
+                        }
+                      >
+                        <HexagonIcon className="size-4" />
+                      </PopoverTrigger>
+                      <PopoverContent className="w-128">
+                        {handlers.renderPopoverHeader(
+                          [{ value: 'reference', label: 'Reference' }],
+                          'reference',
+                          null,
+                          `Value mode for ${token.name || 'token'}`,
+                        )}
+                        {handlers.renderReferenceSearch(
+                          token.referenceTarget ?? '',
+                          value => handlers.onReferenceChange(id, value),
+                          `Reference target for ${token.name || 'token'}`,
+                        )}
+                      </PopoverContent>
+                    </Popover>
+                  </>
+                )}
+              </div>
+            )}
+          </TableCell>
+          {!brandInfo && (
+            <TableCell className="max-h-8 p-0 px-1 text-muted-foreground">
+              <div className="flex items-center gap-1">
+                {usageCount > 0 && (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-auto gap-1 px-1.5 py-0.5"
+                    onClick={() => handlers.onShowGraph(id, toSlashPath(token.name))}
+                  >
+                    <NetworkIcon className="size-3.5" />
+                    {usageCount} {usageCount === 1 ? 'use' : 'uses'}
+                  </Button>
+                )}
+                {codeUsage && codeUsage.count > 0 && (
+                  <Popover open={isCodeUsageOpen} onOpenChange={open => handlers.onCodeUsageOpenChange(id, open)}>
+                    <PopoverTrigger
+                      render={
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="h-auto gap-1 px-1.5 py-0.5"
+                          aria-label={`Code usage for ${token.name || 'token'}`}
+                        />
+                      }
+                    >
+                      <Code2Icon className="size-3.5" />
+                      {codeUsage.count} {codeUsage.count === 1 ? 'file' : 'files'}
+                    </PopoverTrigger>
+                    <PopoverContent className="w-96">
+                      <p className="mb-2 text-sm font-medium">Used in code</p>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        {codeUsage.locations.map(location => (
+                          <li key={`${location.package}/${location.file}`} className="flex gap-2">
+                            <Badge variant="outline" className="shrink-0">
+                              {location.package}
+                            </Badge>
+                            <span className="truncate">{location.file}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </PopoverContent>
+                  </Popover>
+                )}
+              </div>
+            </TableCell>
+          )}
+          {brandInfo &&
+            (() => {
+              const { brand, token: brandToken, hex: brandHex, mode: brandMode, valueText: brandValueText } = brandInfo
+              const brandCellId = `brand:${id}`
+              return (
+                <TableCell className="max-h-8 p-0 px-1">
+                  <div className="flex items-center gap-1">
+                    {brandToken.type === 'color' ? (
+                      <div className="group/tag flex items-center gap-1">
+                        <Popover
+                          open={brandInfo.isPopoverOpen}
+                          onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                        >
+                          <PopoverTrigger
+                            aria-invalid={brandInfo.isMalformed}
+                            render={
+                              brandToken.referenceTarget ? (
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TAG_CLASS}
+                                />
+                              ) : (
+                                <button
+                                  type="button"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TRIGGER_CLASS}
+                                />
+                              )
+                            }
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="size-5 shrink-0 rounded-sm border"
+                              style={brandHex ? { backgroundColor: brandHex } : undefined}
+                            />
+                            <span className="truncate">
+                              {brandToken.referenceTarget ? toSlashPath(brandToken.referenceTarget) : (brandHex ?? '—')}
+                            </span>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-128">
+                            {handlers.renderPopoverHeader(
+                              [
+                                { value: 'value', label: 'Color' },
+                                { value: 'reference', label: 'Reference' },
+                              ],
+                              brandMode,
+                              value => handlers.onSetBrandMode(id, value as 'value' | 'reference'),
+                              `${brand} value mode for ${token.name || 'token'}`,
+                            )}
+
+                            {brandMode === 'value' ? (
+                              <div className="space-y-2">
+                                <input
+                                  type="color"
+                                  aria-label={`Pick ${brand} color for ${token.name || 'token'}`}
+                                  className="h-9 w-full cursor-pointer rounded-md border"
+                                  defaultValue={brandHex ?? '#000000'}
+                                  // See the Base color picker above — native
+                                  // `change`, uncontrolled, so a drag inside
+                                  // the picker doesn't flood brandWorking
+                                  // with an update per pixel.
+                                  ref={el => {
+                                    if (!el) return
+                                    const current = brandHex ?? '#000000'
+                                    if (el.value !== current) el.value = current
+                                    el.onchange = e =>
+                                      handlers.onBrandColorPick(
+                                        brand,
+                                        id,
+                                        brandToken.type,
+                                        (e.target as HTMLInputElement).value,
+                                      )
+                                  }}
+                                />
+                                <Input
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  aria-invalid={brandInfo.isMalformed}
+                                  placeholder="#RRGGBB"
+                                  value={brandValueText}
+                                  onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                                  onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                                />
+                                {brandInfo.isMalformed && (
+                                  <Alert variant="destructive">
+                                    <AlertDescription>Invalid JSON for a color value.</AlertDescription>
+                                  </Alert>
+                                )}
+                              </div>
+                            ) : (
+                              handlers.renderReferenceSearch(
+                                brandToken.referenceTarget ?? '',
+                                value => handlers.onBrandReferenceChange(brand, id, value),
+                                `${brand} reference target for ${token.name || 'token'}`,
+                              )
+                            )}
+                          </PopoverContent>
+                        </Popover>
+                        {brandToken.referenceTarget &&
+                          renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
+                            handlers.onBrandReferenceChange(brand, id, ''),
+                          )}
+                      </div>
+                    ) : (
+                      <div className="group/tag flex items-center gap-1">
+                        {brandToken.referenceTarget ? (
+                          <>
+                            <Popover
+                              open={brandInfo.isPopoverOpen}
+                              onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                            >
+                              <PopoverTrigger
+                                aria-label={`${brand} value for ${token.name || 'token'}`}
+                                render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
+                              >
+                                <Link2Icon className="size-3.5 shrink-0" />
+                                <span className="truncate">{toSlashPath(brandToken.referenceTarget)}</span>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-128">
+                                {handlers.renderPopoverHeader(
+                                  [{ value: 'reference', label: 'Reference' }],
+                                  'reference',
+                                  null,
+                                  `${brand} value mode for ${token.name || 'token'}`,
+                                )}
+                                {handlers.renderReferenceSearch(
+                                  brandToken.referenceTarget ?? '',
+                                  value => handlers.onBrandReferenceChange(brand, id, value),
+                                  `${brand} reference target for ${token.name || 'token'}`,
+                                )}
+                              </PopoverContent>
+                            </Popover>
+                            {renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
+                              handlers.onBrandReferenceChange(brand, id, ''),
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <Input
+                              aria-label={`${brand} value for ${token.name || 'token'}`}
+                              value={brandValueText}
+                              onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                              onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                              className={CELL_FIELD_CLASS}
+                            />
+                            <Popover
+                              open={brandInfo.isPopoverOpen}
+                              onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                            >
+                              <PopoverTrigger
+                                render={
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon-sm"
+                                    className="mr-1 shrink-0 rounded-none"
+                                    aria-label={`${brand} reference for ${token.name || 'token'}`}
+                                  />
+                                }
+                              >
+                                <HexagonIcon className="size-4" />
+                              </PopoverTrigger>
+                              <PopoverContent className="w-128">
+                                {handlers.renderPopoverHeader(
+                                  [{ value: 'reference', label: 'Reference' }],
+                                  'reference',
+                                  null,
+                                  `${brand} value mode for ${token.name || 'token'}`,
+                                )}
+                                {handlers.renderReferenceSearch(
+                                  brandToken.referenceTarget ?? '',
+                                  value => handlers.onBrandReferenceChange(brand, id, value),
+                                  `${brand} reference target for ${token.name || 'token'}`,
+                                )}
+                              </PopoverContent>
+                            </Popover>
+                          </>
+                        )}
+                      </div>
+                    )}
+                    {brandInfo.isOverridden && (
+                      <Badge variant="outline" className="mr-1 shrink-0">
+                        Overridden
+                      </Badge>
+                    )}
+                  </div>
+                </TableCell>
+              )
+            })()}
+          <TableCell className="max-h-8 p-1">
+            <div className="flex items-center justify-end">
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  render={
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon-sm"
+                      aria-label={`Actions for ${token.name || 'token'}`}
+                      className="text-foreground hover:bg-white/20"
+                    />
+                  }
+                >
+                  <EllipsisIcon />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => handlers.onEdit(id)}>
+                    <PencilIcon />
+                    Edit
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handlers.onShowGraph(id, toSlashPath(token.name))}>
+                    <NetworkIcon />
+                    Show reference graph
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handlers.onDuplicate(id)}>
+                    <CopyIcon />
+                    Duplicate
+                  </DropdownMenuItem>
+                  <DropdownMenuItem variant="destructive" onClick={() => handlers.onDelete(id, token)}>
+                    <Trash2Icon />
+                    Delete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </TableCell>
+        </TableRow>
+      )}
+      {!hidden && cellErrors.length > 0 && (
+        <TableRow className="bg-destructive/10 hover:bg-destructive/15">
+          <TableCell colSpan={4} className="p-0">
+            <Alert variant="destructive" role="alert" className="rounded-none border-0 border-t bg-transparent">
+              <AlertDescription>{cellErrors.join(' ')}</AlertDescription>
+            </Alert>
+          </TableCell>
+        </TableRow>
+      )}
+    </>
+  )
+})
+
 export function TokenEditor({
   tokens,
   defaultBranch,
@@ -251,8 +936,18 @@ export function TokenEditor({
 }) {
   const router = useRouter()
   const { data: session } = useSession()
-  const [query, setQuery] = useState('')
-  const [activeLayer, setActiveLayer] = useState<TokenLayer>('Global')
+  // searchText is what the input actually shows (updates every keystroke,
+  // so typing stays responsive); query is what the filtering below reacts
+  // to — re-filtering/re-grouping the whole table is the expensive part,
+  // not the input itself. useDeferredValue lets React finish that keystroke's
+  // render first and only pick up the new query once it's not blocking
+  // input — so a heavy regroup pass never makes typing itself feel stuck.
+  // Under 3 characters, the table just isn't searched at all (query stays
+  // '') — a 1-2 character query matches too broadly to be a useful filter
+  // anyway, so there's no point paying for it.
+  const [searchText, setSearchText] = useState('')
+  const deferredSearchText = useDeferredValue(searchText)
+  const query = deferredSearchText.length >= 3 ? deferredSearchText : ''
   const [working, setWorking, workingHistory] = useUndoableState<WorkingToken[]>(() =>
     tokens.map(token => ({ id: token.path.join('.'), token })),
   )
@@ -280,7 +975,7 @@ export function TokenEditor({
   // The group currently being batch-renamed (via its header's edit icon), and the
   // text of the in-progress edit — kept separate from `group` so typing doesn't
   // affect which rows are matched as members of the group until it's committed.
-  const [editingGroup, setEditingGroup] = useState<{ group: string; text: string } | null>(null)
+  const [editingGroup, setEditingGroup] = useState<{ layer: TokenLayer; group: string; text: string } | null>(null)
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
   // The row currently open in the Edit-token dialog — null when closed.
   // Nothing in `working`/`brandWorking` changes until Apply; Cancel just
@@ -288,12 +983,21 @@ export function TokenEditor({
   const [editDraft, setEditDraft] = useState<EditDraftState | null>(null)
   const [editModeOverride, setEditModeOverride] = useState<'value' | 'reference' | null>(null)
   const [editBrandModeOverride, setEditBrandModeOverride] = useState<Record<string, 'value' | 'reference'>>({})
+  // The row staged for deletion in the Delete-token dialog — null when closed.
+  // Nothing is removed from `working` until the typed confirmation matches
+  // `name` exactly (see confirmDeleteToken).
+  const [deleteDraft, setDeleteDraft] = useState<{
+    id: string
+    name: string
+    figmaLinked: boolean
+    usageCount: number
+  } | null>(null)
+  const [deleteConfirmText, setDeleteConfirmText] = useState('')
   const [description, setDescription] = useState('')
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
   const [submitMessage, setSubmitMessage] = useState<string | null>(null)
   const [graphRoot, setGraphRoot] = useState<{ paths: string[]; title: string } | null>(null)
-  const [searchExpanded, setSearchExpanded] = useState(false)
   // Set right after Ctrl/Cmd+D inserts a duplicate row — picked up by an effect once
   // the new row has actually rendered (and its cellRef exists) so it can be focused.
   const [focusPendingId, setFocusPendingId] = useState<string | null>(null)
@@ -364,6 +1068,14 @@ export function TokenEditor({
 
   const cellRefs = useRef(new Map<string, HTMLInputElement>())
   const focusSnapshot = useRef<{ id: string; col: number; value: string } | null>(null)
+  const searchInputRef = useRef<HTMLInputElement | null>(null)
+  // Measured (not assumed) height of the sticky column-header row — the
+  // sticky outer/inner group headers stack directly below it, and its
+  // rendered height doesn't reliably match its h-12 utility class (table
+  // rows only treat `height` as a floor), so a guessed offset leaves a gap
+  // showing scrolled-past content underneath.
+  const tableHeaderRowRef = useRef<HTMLTableRowElement | null>(null)
+  const [tableHeaderHeight, setTableHeaderHeight] = useState(0)
 
   useEffect(() => {
     if (!pendingResyncRef.current) return
@@ -401,7 +1113,7 @@ export function TokenEditor({
     [working, query],
   )
   const filteredWorking = useMemo(() => {
-    const filtered = working.filter(w => matchedTokens.has(w.token) && w.token.layer === activeLayer)
+    const filtered = working.filter(w => matchedTokens.has(w.token))
 
     // Keep every group's tokens contiguous for display, regardless of where
     // they land in `working` — a newly created token (from the Create dialog,
@@ -409,8 +1121,10 @@ export function TokenEditor({
     // anywhere in the underlying array (e.g. GitHub's JSON stores new object
     // keys in insertion order, appended after existing sibling groups), which
     // would otherwise split its group into two separate header sections.
-    // Bucketed twice — by outer group, then by inner group within it — so
-    // both nesting levels stay contiguous for the render loop below.
+    // Bucketed once per name-group depth (1..however deep names actually
+    // go — see maxDepth below), each pass further subdividing every bucket
+    // from the last, so every nesting level stays contiguous for the
+    // render loop below.
     function bucketBy(items: WorkingToken[], keyFor: (w: WorkingToken) => string): WorkingToken[][] {
       const order: string[] = []
       const byKey = new Map<string, WorkingToken[]>()
@@ -428,26 +1142,92 @@ export function TokenEditor({
       return order.map(key => byKey.get(key)!)
     }
 
-    return bucketBy(filtered, w => outerGroupFor(w.token.name)).flatMap(outerBucket =>
-      bucketBy(outerBucket, w => groupPrefixFor(w.token.name)).flat(),
-    )
-  }, [working, matchedTokens, activeLayer])
-  const countByLayer = useMemo(() => {
-    const counts = new Map<TokenLayer, number>()
-    for (const layer of LAYERS) counts.set(layer, 0)
-    for (const w of working) {
-      if (matchedTokens.has(w.token)) counts.set(w.token.layer, (counts.get(w.token.layer) ?? 0) + 1)
-    }
-    return counts
+    // Layer is the outermost level, ahead of the name-group depths — fixed
+    // to LAYERS' order (not alphabetical, unlike the name-based groups) so
+    // Global/Alias/Component always appear in that order. Bucketed as many
+    // times as the deepest name actually goes (no fixed cap — see the
+    // grouping functions above) rather than a fixed depth, so a bucketing
+    // pass over already-fully-subdivided buckets (a no-op once every
+    // group key comes back '') doesn't run any more than it has to.
+    return LAYERS.flatMap(layer => {
+      const layerItems = filtered.filter(w => w.token.layer === layer)
+      const maxDepth = layerItems.reduce((max, w) => Math.max(max, w.token.name.split('.').length - 1), 0)
+      let buckets = [layerItems]
+      for (let depth = 1; depth <= maxDepth; depth++) {
+        buckets = buckets.flatMap(bucket => bucketBy(bucket, w => groupAtDepth(w.token.name, depth)))
+      }
+      return buckets.flatMap(bucket =>
+        [...bucket].sort((a, b) => leafPathFor(a.token.name).localeCompare(leafPathFor(b.token.name))),
+      )
+    })
   }, [working, matchedTokens])
 
   const referenceCounts = useMemo(() => countDirectReferences(working.map(w => w.token)), [working])
 
+  // Every collapsible header's key, at every level — layer plus one per
+  // dot-segment but the last — used to gate "collapse all"/"expand all".
   const visibleGroups = useMemo(() => {
-    const groups = filteredWorking.flatMap(w => [outerGroupFor(w.token.name), groupPrefixFor(w.token.name)])
-    return [...new Set(groups.filter(group => group !== ''))]
+    const keys = new Set<string>()
+    for (const w of filteredWorking) {
+      keys.add(layerKey(w.token.layer))
+      const segmentCount = w.token.name.split('.').length
+      for (let depth = 1; depth < segmentCount; depth++) {
+        keys.add(groupKey(w.token.layer, groupAtDepth(w.token.name, depth)))
+      }
+    }
+    return [...keys]
   }, [filteredWorking])
   const allGroupsCollapsed = visibleGroups.length > 0 && visibleGroups.every(group => collapsedGroups.has(group))
+
+  // Header derivation, layered on top of the bucketing/sorting pass above —
+  // kept as its own memo (rather than folded into filteredWorking, or
+  // computed inline per row at render time by comparing to the previous
+  // row) so each row's header info is a self-contained record a memoized
+  // row component can read without needing its neighbor. Only recomputes
+  // when the grouping, collapse state, or an in-progress group rename
+  // actually changes — never on a search keystroke that doesn't change
+  // filteredWorking (under the 3-char threshold, or when the query still
+  // matches the same set of tokens).
+  const rowEntries = useMemo(() => {
+    return filteredWorking.map((item, row) => {
+      const { token } = item
+      const layer = token.layer
+      const previousLayer = row > 0 ? filteredWorking[row - 1].token.layer : null
+      const showLayerHeader = layer !== previousLayer
+      const isLayerCollapsed = collapsedGroups.has(layerKey(layer))
+
+      const segmentCount = token.name.split('.').length
+      const previousName = row > 0 ? filteredWorking[row - 1].token.name : null
+      let ancestorCollapsed = isLayerCollapsed
+      let anyHeaderShown = showLayerHeader
+      const headerNodes: ReactNode[] = []
+      if (showLayerHeader) headerNodes.push(renderGroupHeaderRow(layer, '', 0))
+      for (let depth = 1; depth < segmentCount; depth++) {
+        const depthGroup = groupAtDepth(token.name, depth)
+        const previousDepthGroup = previousName ? groupAtDepth(previousName, depth) : null
+        const show = depthGroup !== previousDepthGroup || layer !== previousLayer
+        if (!ancestorCollapsed && show) {
+          headerNodes.push(renderGroupHeaderRow(layer, depthGroup, depth))
+          anyHeaderShown = true
+        }
+        if (collapsedGroups.has(groupKey(layer, depthGroup))) ancestorCollapsed = true
+      }
+
+      return {
+        id: item.id,
+        token,
+        row,
+        headerNodes,
+        hidden: ancestorCollapsed,
+        anyHeaderShown,
+        // One indent step deeper than whichever header is the row's
+        // immediate parent, so the name lines up under that header's own
+        // text rather than its chevron. +1 for the layer level every row
+        // sits under, on top of one per name-group depth.
+        depth: segmentCount,
+      }
+    })
+  }, [filteredWorking, collapsedGroups, editingGroup, tableHeaderHeight])
 
   const originalById = useMemo(() => new Map(tokens.map(t => [t.path.join('.'), t])), [tokens])
 
@@ -586,7 +1366,7 @@ export function TokenEditor({
       badge: diff.length + pendingBrands.length + totalBrandDiffCount,
     },
     { id: 'problems', label: 'Problems', icon: TriangleAlertIcon, badge: problems.length },
-    { id: 'brands', label: 'Brands', icon: SwatchBookIcon },
+    { id: 'brands', label: 'Brands', icon: SwatchBookIcon, badge: selectedBrand?.slice(0, 4) },
     { id: 'figma', label: 'Pull from Figma', icon: FigmaIcon, badge: pullBadgeCount },
     { id: 'preview', label: 'Preview', icon: PREVIEW_TAB_ICON },
   ]
@@ -656,8 +1436,12 @@ export function TokenEditor({
   }
 
   // Keystrokes only update the local draft — see commitName, called on blur.
+  // '/' (or '.') is allowed here, unlike a plain group rename — the leaf
+  // can itself be a multi-segment path once the name goes deeper than the
+  // 3-level accordion cap (see leafPathFor), and typing one further only
+  // extends the leaf, never reparents into a different group.
   function handleNameInput(id: string, text: string) {
-    setNameDraftText(prev => ({ ...prev, [id]: text }))
+    setNameDraftText(prev => ({ ...prev, [id]: sanitizePathInput(text) }))
   }
 
   function commitName(id: string) {
@@ -666,8 +1450,9 @@ export function TokenEditor({
 
     const current = working.find(w => w.id === id)
     if (current) {
-      const prefix = groupPrefixFor(current.token.name)
-      const newName = prefix ? `${prefix}.${text}` : text
+      const prefix = groupOf(current.token.name)
+      const leaf = parseTokenPath(text).join('.')
+      const newName = prefix ? `${prefix}.${leaf}` : leaf
 
       if (newName !== current.token.name) {
         const oldPath = pathFor(current.token.layer, current.token.name).join('.')
@@ -709,7 +1494,7 @@ export function TokenEditor({
   }
 
   function nameTextFor(id: string, token: FlatToken): string {
-    return nameDraftText[id] ?? leafNameFor(token.name)
+    return nameDraftText[id] ?? leafPathFor(token.name)
   }
 
   function handleReferenceChange(id: string, text: string) {
@@ -771,7 +1556,7 @@ export function TokenEditor({
   }
 
   function commitDraftIfReady() {
-    const name = draft.name.trim()
+    const name = parseTokenPath(draft.name).join('.')
     if (!name) return
     const parsed = parseEditableValue(draft.type, draft.value)
     if (!parsed.ok) {
@@ -799,24 +1584,27 @@ export function TokenEditor({
   function handleCreateDialogOpenChange(open: boolean) {
     setCreateDialogOpen(open)
     if (!open) {
-      setDraft(emptyDraft(activeLayer))
+      setDraft(emptyDraft())
       setDraftMalformed(false)
       setDraftModeOverride(null)
     }
   }
 
   // Every currently-visible row's id that falls under a given group header —
-  // the roots fed into the group's "show reference graph" button.
-  function tokenIdsInGroup(group: string, depth: number): string[] {
-    const matches = depth === 0 ? outerGroupFor : groupPrefixFor
-    return filteredWorking.filter(w => matches(w.token.name) === group).map(w => w.id)
+  // the roots fed into the group's "show reference graph" button. depth: 0 =
+  // layer, 1 = outer group, 2 = inner group.
+  function tokenIdsInGroup(layer: TokenLayer, group: string, depth: number): string[] {
+    if (depth === 0) return filteredWorking.filter(w => w.token.layer === layer).map(w => w.id)
+    return filteredWorking
+      .filter(w => w.token.layer === layer && groupAtDepth(w.token.name, depth) === group)
+      .map(w => w.id)
   }
 
-  function toggleGroup(group: string) {
+  function toggleGroup(key: string) {
     setCollapsedGroups(prev => {
       const next = new Set(prev)
-      if (next.has(group)) next.delete(group)
-      else next.add(group)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
       return next
     })
   }
@@ -825,8 +1613,8 @@ export function TokenEditor({
     setCollapsedGroups(allGroupsCollapsed ? new Set() : new Set(visibleGroups))
   }
 
-  function startEditingGroup(group: string) {
-    setEditingGroup({ group, text: group.split('.').join('/') })
+  function startEditingGroup(layer: TokenLayer, group: string) {
+    setEditingGroup({ layer, group, text: group.split('.').join('/') })
   }
 
   function cancelGroupRename() {
@@ -835,32 +1623,31 @@ export function TokenEditor({
 
   function commitGroupRename() {
     if (!editingGroup) return
-    const { group, text } = editingGroup
-    const newGroup = text
-      .split('/')
-      .map(segment => segment.trim())
-      .filter(Boolean)
-      .join('.')
+    const { layer, group, text } = editingGroup
+    const newGroup = parseTokenPath(text).join('.')
     setEditingGroup(null)
     if (!newGroup || newGroup === group) return
-
-    // A group with no dot is only ever shown as an outer (component-level)
-    // group in the UI — an inner subgroup at that same depth would collapse
-    // into the outer header instead (see the render loop). So renaming it
-    // needs to cascade to every descendant at any depth, not just direct
-    // children, unlike an inner group's rename.
-    const isOuterGroup = !group.includes('.')
 
     setWorking(prev => {
       // Every token in this group moves at once — track old→new path per
       // token so anything referencing one of them (from inside or outside
-      // the group) gets cascaded too, same as a single-token rename.
+      // the group) gets cascaded too, same as a single-token rename. Scoped
+      // to `layer` too — otherwise a same-named group in another layer
+      // (e.g. "Color" in both Global and Component) would get renamed too.
+      // A group is always a dot-prefix of every name under it, at any
+      // depth, so this same startsWith test cascades the rename to every
+      // descendant regardless of how many more levels it goes.
       const renamed = new Map<string, string>()
       const renamedGroup = prev.map(w => {
+        if (w.token.layer !== layer) return w
         const name = w.token.name
-        const matches = isOuterGroup ? name === group || name.startsWith(`${group}.`) : groupPrefixFor(name) === group
+        const matches = name === group || name.startsWith(`${group}.`)
         if (!matches) return w
-        const newName = isOuterGroup ? newGroup + name.slice(group.length) : `${newGroup}.${leafNameFor(name)}`
+        // Works for both branches: `name` always starts with `group` when
+        // matched, so replacing that prefix with `newGroup` and keeping
+        // everything after it (the leading '.' included) preserves any
+        // depth beyond the renamed group untouched.
+        const newName = newGroup + name.slice(group.length)
         renamed.set(pathFor(w.token.layer, name).join('.'), pathFor(w.token.layer, newName).join('.'))
         return { ...w, token: { ...w.token, name: newName } }
       })
@@ -872,14 +1659,25 @@ export function TokenEditor({
     })
   }
 
-  function handleDeleteRow(id: string, name: string) {
-    if (
-      typeof window !== 'undefined' &&
-      !window.confirm(`Delete "${name}"? Nothing happens until you submit and it's reviewed and merged.`)
-    ) {
-      return
-    }
-    setWorking(prev => prev.filter(w => w.id !== id))
+  function openDeleteDialog(id: string, token: FlatToken) {
+    setDeleteDraft({
+      id,
+      name: toSlashPath(token.name),
+      figmaLinked: Boolean(token.figmaId),
+      usageCount: referenceCounts.get(token.path.join('.')) ?? 0,
+    })
+    setDeleteConfirmText('')
+  }
+
+  function closeDeleteDialog() {
+    setDeleteDraft(null)
+    setDeleteConfirmText('')
+  }
+
+  function confirmDeleteToken() {
+    if (!deleteDraft || deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name) return
+    setWorking(prev => prev.filter(w => w.id !== deleteDraft.id))
+    closeDeleteDialog()
   }
 
   function editMode(): 'value' | 'reference' {
@@ -969,13 +1767,10 @@ export function TokenEditor({
     }
 
     const mode = editMode()
-    // The dialog shows/edits the name slash-joined (see toSlashPath) — convert
-    // back to the dot-joined form everything else (paths, referenceTarget) uses.
-    const name = editDraft.name
-      .split('/')
-      .map(segment => segment.trim())
-      .filter(Boolean)
-      .join('.')
+    // The dialog shows/edits the name slash-joined (see toSlashPath), but also
+    // accepts '.' as a separator — convert back to the dot-joined form
+    // everything else (paths, referenceTarget) uses.
+    const name = parseTokenPath(editDraft.name).join('.')
 
     let parsedValue: unknown = current.rawValue
     if (mode === 'value') {
@@ -1065,6 +1860,10 @@ export function TokenEditor({
       const duplicateToken: FlatToken = {
         ...source.token,
         name: uniqueCopyName(source.token.layer, source.token.name, prev),
+        // A Figma variableId identifies one specific Figma variable — a
+        // duplicate is a new token, not that variable's second copy, so it
+        // must start unlinked and let a Pull (from Figma) create its own.
+        figmaId: null,
       }
       const next = [...prev]
       next.splice(sourceIndex + 1, 0, { id: newId, token: duplicateToken })
@@ -1132,6 +1931,39 @@ export function TokenEditor({
     return () => window.removeEventListener('keydown', handleUndoRedoShortcut)
   }, [])
 
+  // Ctrl/Cmd+F focuses (and selects) the search field, taking over the
+  // browser's native find-in-page the same way Ctrl/Cmd+D already takes
+  // over its default bookmark shortcut.
+  useEffect(() => {
+    function handleSearchShortcut(e: globalThis.KeyboardEvent) {
+      if (e.key.toLowerCase() !== 'f' || !(e.ctrlKey || e.metaKey)) return
+      e.preventDefault()
+      searchInputRef.current?.focus()
+      searchInputRef.current?.select()
+    }
+    window.addEventListener('keydown', handleSearchShortcut)
+    return () => window.removeEventListener('keydown', handleSearchShortcut)
+  }, [])
+
+  // Keeps tableHeaderHeight in sync with the column header row's actual
+  // rendered height (see the ref's declaration) — observed rather than
+  // read once, since it can change (e.g. the layer tabs wrapping at a
+  // narrow width doesn't affect it, but a future header edit might).
+  // Rounded up: getBoundingClientRect can return a fractional height (e.g.
+  // at non-100% browser zoom), and rounding down would leave a sub-pixel
+  // gap under the header for scrolled-past content to peek through —
+  // rounding up instead makes the group header below it start flush or
+  // 1px early, which is invisible against its own opaque background.
+  useEffect(() => {
+    const row = tableHeaderRowRef.current
+    if (!row) return
+    const observer = new ResizeObserver(([entry]) =>
+      setTableHeaderHeight(Math.ceil(entry.target.getBoundingClientRect().height)),
+    )
+    observer.observe(row)
+    return () => observer.disconnect()
+  }, [])
+
   function handleCellKeyDown(e: KeyboardEvent<HTMLInputElement>, row: number, col: number, id: string) {
     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
       e.preventDefault()
@@ -1172,13 +2004,13 @@ export function TokenEditor({
   // underline), plus a close button, then a full-bleed divider. When there's
   // only one mode (plain reference popovers), `onValueChange` is omitted and
   // the single tab renders as a static, non-interactive label.
-  function renderPopoverHeader(
-    tabs: { value: string; label: string }[],
-    activeValue: string,
-    onValueChange: ((value: string) => void) | null,
-    ariaLabel: string,
-  ): ReactNode {
-    return (
+  const renderPopoverHeader = useCallback(
+    (
+      tabs: { value: string; label: string }[],
+      activeValue: string,
+      onValueChange: ((value: string) => void) | null,
+      ariaLabel: string,
+    ): ReactNode => (
       <div className="-mx-3 -mt-3 mb-2">
         <div className="flex h-8 items-stretch justify-between pl-1">
           <div role={onValueChange ? 'tablist' : undefined} aria-label={ariaLabel} className="flex items-stretch">
@@ -1217,18 +2049,15 @@ export function TokenEditor({
         </div>
         <div className="border-b border-border" />
       </div>
-    )
-  }
+    ),
+    [],
+  )
 
   // Renders the reference-search body shared by the color popover's "Reference"
   // tab and the plain-value types' reference popover. Picking an item commits
   // it and closes the popover.
-  function renderReferenceSearch(
-    currentValue: string,
-    onSelect: (value: string) => void,
-    ariaLabel: string,
-  ): ReactNode {
-    return (
+  const renderReferenceSearch = useCallback(
+    (currentValue: string, onSelect: (value: string) => void, ariaLabel: string): ReactNode => (
       <SearchSelect
         options={referenceSearchOptions}
         currentValue={currentValue}
@@ -1239,34 +2068,9 @@ export function TokenEditor({
         ariaLabel={ariaLabel}
         emptyMessage="No matching tokens."
       />
-    )
-  }
-
-  // The small unlink control that appears right after an alias tag on
-  // hover/focus — breaks the reference and leaves the cell with an empty
-  // value, mirroring Figma's "detach alias" affordance. Styled like every
-  // other icon button in the table (e.g. the search button in the toolbar).
-  function renderDetachButton(label: string, onDetach: () => void): ReactNode {
-    return (
-      <Tooltip>
-        <TooltipTrigger
-          render={
-            <Button
-              type="button"
-              variant="outline"
-              size="icon-sm"
-              aria-label={label}
-              onClick={onDetach}
-              className="invisible shrink-0 group-hover/tag:visible focus-visible:visible"
-            />
-          }
-        >
-          <Unlink2Icon className="size-3.5" />
-        </TooltipTrigger>
-        <TooltipContent>Detach alias</TooltipContent>
-      </Tooltip>
-    )
-  }
+    ),
+    [referenceSearchOptions],
+  )
 
   // Value/reference editor for the Edit-token dialog — one instance for Base,
   // one per brand. Mirrors the same color-picker/reference-search/detach
@@ -1420,28 +2224,73 @@ export function TokenEditor({
     )
   }
 
-  // A collapsible group header row, shared by both nesting levels — the
-  // outer (component/subject) group and, within it, the existing inner
-  // subgroup — indented one step further per depth.
-  function renderGroupHeaderRow(group: string, depth: number): ReactNode {
-    const isCollapsed = collapsedGroups.has(group)
-    const segments = group.split('.')
-    const lastSegment = segments[segments.length - 1]
-    const leadingLabel = segments.slice(0, -1).join('/')
-    const isOuter = depth === 0
+  // A collapsible group header row, shared by all three nesting levels —
+  // the layer itself (depth 0), the outer (component/subject) group within
+  // it (depth 1), and the existing inner subgroup within that (depth 2) —
+  // indented one step further per depth. `group` is the dotted name-based
+  // group path and is unused/empty at depth 0, where the layer's own name
+  // is the label instead.
+  function renderGroupHeaderRow(layer: TokenLayer, group: string, depth: number): ReactNode {
+    const key = depth === 0 ? layerKey(layer) : groupKey(layer, group)
+    const isCollapsed = collapsedGroups.has(key)
+    const segments = depth === 0 ? [layer] : group.split('.')
+    const lastSegment = depth === 0 ? `${LAYER_EMOJI[layer]} ${layer}` : segments[segments.length - 1]
+    // Every level's immediate parent header (directly above it) already
+    // shows the rest of the chain, so each level only ever needs its own
+    // last segment — no leading label repeating what's already visible
+    // one row up, no matter how deep the nesting goes.
+    // Text shrinks one step per depth — 16px/14px, then 12px from depth 2
+    // on — even though every level shares the same 32px row height (see
+    // HEADER_ROW_HEIGHT).
+    const textSizeClass = depth === 0 ? 'text-base' : depth === 1 ? 'text-sm' : 'text-xs'
+    const isEditing = depth !== 0 && editingGroup?.layer === layer && editingGroup?.group === group
     return (
-      <TableRow className="hover:bg-transparent">
+      // sticky (and its bg/top) live on the row, not the cell — a sticky
+      // *cell* stays pinned visually, but the <tr> around it doesn't move
+      // with it, so a border on the row would keep rendering at its
+      // static, unstuck position and scroll away instead of following the
+      // cell. Putting sticky on the <tr> itself fixes that half of it.
+      // The other half: TableRow's own border-b is a real `border`, and
+      // real borders on sticky elements are notoriously unreliable —
+      // adjacent content (or, here, the next stuck header stacked right
+      // below it) can clip/cover them during scroll. box-shadow instead
+      // sidesteps that: it isn't part of border-collapse/box layout, just
+      // paint. Only on the *top* edge, and only here — not on the column
+      // header, not as a bottom-edge shadow too: this row always paints
+      // after (i.e. "in front of") whatever's directly above it (thead,
+      // or the header/data row one level up), so its own top edge is the
+      // one guaranteed-visible place to draw this boundary. Uses
+      // --border-solid, not --border — table row/cell painting doesn't
+      // reliably follow simple "later DOM wins" stacking, so two of these
+      // shadows can still end up painted on the very same pixel; --border
+      // itself is semi-transparent (see globals.css), so if that happens
+      // the two translucent lines alpha-composite into a visibly brighter
+      // one, which --border-solid (an opaque, pre-flattened equivalent)
+      // can't. The boundary between the last header in a stack and the
+      // first real data row below it gets a plain border-t there instead
+      // (see the render loop), which doesn't have this problem since it's
+      // not sticky-stacked.
+      <TableRow
+        key={key}
+        className={cn(
+          'sticky z-10 border-b-0 shadow-[0_-1px_0_0_var(--border-solid)]',
+          depth === 0
+            ? LAYER_BG_TINT[layer]
+            : 'bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] hover:bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)]',
+        )}
+        style={{ top: tableHeaderHeight + depth * HEADER_ROW_HEIGHT }}
+      >
         <TableCell
           colSpan={4}
-          className={cn('bg-muted/50 p-0 font-medium text-muted-foreground', isOuter ? 'text-sm' : 'text-xs')}
+          className={cn('p-0 font-medium text-muted-foreground', textSizeClass)}
           style={{ paddingLeft: depth * 16 }}
         >
-          {editingGroup?.group === group ? (
+          {isEditing ? (
             <Input
               autoFocus
               aria-label={`Rename group ${segments.join('/')}`}
               value={editingGroup.text}
-              onChange={e => setEditingGroup({ group, text: e.target.value })}
+              onChange={e => setEditingGroup({ layer, group, text: sanitizePathInput(e.target.value) })}
               onBlur={commitGroupRename}
               onKeyDown={e => {
                 if (e.key === 'Enter') {
@@ -1453,15 +2302,15 @@ export function TokenEditor({
                 }
               }}
               className={cn(
-                'rounded-none border-transparent bg-transparent px-2 font-medium text-foreground focus-visible:ring-0',
-                isOuter ? 'h-12 text-sm' : 'h-10 text-xs',
+                'h-8 max-h-8 rounded-none border-transparent bg-transparent px-2 font-medium text-foreground focus-visible:ring-0',
+                textSizeClass,
               )}
             />
           ) : (
-            <div className={cn('flex items-center', isOuter ? 'h-12' : 'h-10')}>
+            <div className="flex h-8 max-h-8 items-center">
               <button
                 type="button"
-                onClick={() => toggleGroup(group)}
+                onClick={() => toggleGroup(key)}
                 aria-expanded={!isCollapsed}
                 className="flex flex-1 items-center gap-1.5 rounded-md px-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
@@ -1469,7 +2318,6 @@ export function TokenEditor({
                   aria-hidden="true"
                   className={cn('size-3.5 shrink-0 transition-transform', isCollapsed && '-rotate-90')}
                 />
-                {leadingLabel && <span>{leadingLabel}/</span>}
                 <span className="font-bold text-foreground">{lastSegment}</span>
               </button>
               <DropdownMenu>
@@ -1488,15 +2336,19 @@ export function TokenEditor({
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuItem
-                    onClick={() => setGraphRoot({ paths: tokenIdsInGroup(group, depth), title: segments.join('/') })}
+                    onClick={() =>
+                      setGraphRoot({ paths: tokenIdsInGroup(layer, group, depth), title: segments.join('/') })
+                    }
                   >
                     <NetworkIcon />
                     Show reference graph
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => startEditingGroup(group)}>
-                    <PencilIcon />
-                    Rename
-                  </DropdownMenuItem>
+                  {depth !== 0 && (
+                    <DropdownMenuItem onClick={() => startEditingGroup(layer, group)}>
+                      <PencilIcon />
+                      Rename
+                    </DropdownMenuItem>
+                  )}
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -1611,6 +2463,55 @@ export function TokenEditor({
     const token = brandTokenFor(brand, id)
     return token ? getEditableValueText(token) : ''
   }
+
+  function setRowPopoverOpen(id: string, open: boolean) {
+    setOpenPopoverId(open ? id : null)
+  }
+  function setRowCodeUsageOpen(id: string, open: boolean) {
+    setOpenCodeUsageId(open ? id : null)
+  }
+  function showReferenceGraph(id: string, title: string) {
+    setGraphRoot({ paths: [id], title })
+  }
+
+  // Every callback/render-helper a table row needs, bundled behind one
+  // object so TokenRow can take it as a single prop. None of the individual
+  // functions above are themselves referentially stable (they're plain
+  // closures, recreated every render) — so instead of rebuilding this
+  // object every render (which would bust TokenRow's memoization on every
+  // keystroke), the *same* object is mutated in place. Its identity never
+  // changes; only its fields are refreshed each render to point at the
+  // current closures, so every row always calls into current state despite
+  // the bundle prop never looking "different" to React.memo.
+  const rowHandlersRef = useRef<TokenRowHandlers | null>(null)
+  // Created once (mount) and never replaced — only its fields are
+  // overwritten below, every render, so the object's own identity is
+  // permanently stable for the lifetime of this component.
+  if (!rowHandlersRef.current) rowHandlersRef.current = {} as TokenRowHandlers
+  Object.assign(rowHandlersRef.current, {
+    onNameChange: handleNameInput,
+    onNameBlur: commitName,
+    onCellKeyDown: handleCellKeyDown,
+    onValueChange: handleValueInput,
+    onValueBlur: commitValue,
+    onColorPick: commitValueText,
+    onReferenceChange: handleReferenceChange,
+    onSetMode: setRowMode,
+    onPopoverOpenChange: setRowPopoverOpen,
+    onCodeUsageOpenChange: setRowCodeUsageOpen,
+    onShowGraph: showReferenceGraph,
+    onEdit: openEditDialog,
+    onDuplicate: duplicateRow,
+    onDelete: openDeleteDialog,
+    onBrandValueChange: handleBrandValueInput,
+    onBrandValueBlur: commitBrandValue,
+    onBrandColorPick: commitBrandValueText,
+    onBrandReferenceChange: handleBrandReferenceChange,
+    onSetBrandMode: setBrandRowMode,
+    renderPopoverHeader,
+    renderReferenceSearch,
+  } satisfies TokenRowHandlers)
+  const rowHandlers = rowHandlersRef.current
 
   function stageBrand(name: string) {
     setPendingBrands(prev => (prev.includes(name) ? prev : [...prev, name]))
@@ -1866,84 +2767,8 @@ export function TokenEditor({
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
       <div className="shrink-0 bg-background p-4" style={{ marginLeft: sidebarInset }}>
-        <div className="flex h-14 items-center justify-between gap-4 rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)] px-4">
-          <div className="flex items-center gap-3">
-            <Tabs value={activeLayer} onValueChange={value => setActiveLayer(value as TokenLayer)}>
-              <TabsList aria-label="Token layer">
-                {LAYERS.map(layer => (
-                  <TabsTrigger key={layer} value={layer}>
-                    <span aria-hidden="true">{LAYER_EMOJI[layer]}</span> {layer}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-
-            {selectedBrand && (
-              <Badge
-                variant="default"
-                className="cursor-pointer gap-1 outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                render={
-                  <button
-                    type="button"
-                    aria-label={`Editing ${selectedBrand} — open Brands sidebar`}
-                    onClick={() => selectSidebarTab('brands')}
-                  />
-                }
-              >
-                <SwatchBookIcon aria-hidden="true" className="size-3.5" />
-                {selectedBrand}
-              </Badge>
-            )}
-          </div>
-
+        <div className="flex h-14 items-center justify-start gap-4 rounded-[10px] border border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)] px-4">
           <div className="flex items-center gap-2">
-            <div
-              className={cn(
-                'relative overflow-hidden transition-[width] duration-200 ease-out',
-                searchExpanded ? 'w-64' : 'w-8',
-              )}
-            >
-              {searchExpanded ? (
-                <>
-                  <Label htmlFor="token-search" className="sr-only">
-                    Search tokens by name
-                  </Label>
-                  <SearchIcon
-                    aria-hidden="true"
-                    className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
-                  />
-                  <Input
-                    autoFocus
-                    id="token-search"
-                    type="search"
-                    placeholder="Search tokens…"
-                    className="h-8 pl-8"
-                    value={query}
-                    onChange={e => setQuery(e.target.value)}
-                    onBlur={() => {
-                      if (!query) setSearchExpanded(false)
-                    }}
-                    onKeyDown={e => {
-                      if (e.key === 'Escape') {
-                        setQuery('')
-                        setSearchExpanded(false)
-                      }
-                    }}
-                  />
-                </>
-              ) : (
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  aria-label="Search tokens"
-                  onClick={() => setSearchExpanded(true)}
-                >
-                  <SearchIcon />
-                </Button>
-              )}
-            </div>
-
             <Tooltip>
               <TooltipTrigger
                 render={
@@ -1979,6 +2804,43 @@ export function TokenEditor({
               <TooltipContent>Redo (Ctrl/Cmd+Shift+Z)</TooltipContent>
             </Tooltip>
 
+            <div className="relative w-96">
+              <Label htmlFor="token-search" className="sr-only">
+                Search tokens by name
+              </Label>
+              <SearchIcon
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+              />
+              <Input
+                ref={searchInputRef}
+                id="token-search"
+                type="search"
+                placeholder="Search token…"
+                className="h-8 pr-14 pl-8"
+                value={searchText}
+                onChange={e => setSearchText(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Escape') {
+                    setSearchText('')
+                  }
+                }}
+              />
+              {!searchText && (
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 right-2 flex -translate-y-1/2 items-center gap-1"
+                >
+                  <kbd className="rounded border border-input px-1.5 py-0.5 font-sans text-[10px] font-medium text-muted-foreground">
+                    Ctrl
+                  </kbd>
+                  <kbd className="rounded border border-input px-1.5 py-0.5 font-sans text-[10px] font-medium text-muted-foreground">
+                    F
+                  </kbd>
+                </div>
+              )}
+            </div>
+
             {pullConflicts.length > 0 && (
               <Button type="button" variant="destructive" onClick={() => setPullConflictsDialogOpen(true)}>
                 <TriangleAlertIcon />
@@ -1989,7 +2851,7 @@ export function TokenEditor({
             <Button
               type="button"
               onClick={() => {
-                setDraft(emptyDraft(activeLayer))
+                setDraft(emptyDraft())
                 setCreateDialogOpen(true)
               }}
             >
@@ -2004,585 +2866,122 @@ export function TokenEditor({
         <div className="h-full px-4">
           <Table>
             <TableCaption>
-              {countByLayer.get(activeLayer) ?? 0} {activeLayer} tokens
+              {filteredWorking.length} token{filteredWorking.length === 1 ? '' : 's'}
             </TableCaption>
             <TableHeader>
-              <TableRow>
+              <TableRow ref={tableHeaderRowRef} className="h-8 max-h-8">
                 <TableHead
                   scope="col"
-                  className="sticky top-0 z-20 rounded-tl-[10px] bg-background shadow-[0_2px_0_0_#ffffff]"
+                  className="sticky top-0 z-20 rounded-tl-[10px] bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
                 >
-                  Name
+                  <div className="flex items-center justify-between gap-2">
+                    Name
+                    <Tooltip>
+                      <TooltipTrigger
+                        render={
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon-sm"
+                            disabled={visibleGroups.length === 0}
+                            onClick={toggleAllGroups}
+                            aria-label={allGroupsCollapsed ? 'Expand all' : 'Collapse all'}
+                          />
+                        }
+                      >
+                        {allGroupsCollapsed ? <ChevronsUpDownIcon /> : <ChevronsDownUpIcon />}
+                      </TooltipTrigger>
+                      <TooltipContent>{allGroupsCollapsed ? 'Expand all' : 'Collapse all'}</TooltipContent>
+                    </Tooltip>
+                  </div>
                 </TableHead>
-                <TableHead scope="col" className="sticky top-0 z-20 bg-background shadow-[0_2px_0_0_#ffffff]">
+                <TableHead
+                  scope="col"
+                  className="sticky top-0 z-20 bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
+                >
                   Base
                 </TableHead>
                 {selectedBrand && (
-                  <TableHead scope="col" className="sticky top-0 z-20 bg-background shadow-[0_2px_0_0_#ffffff]">
+                  <TableHead
+                    scope="col"
+                    className="sticky top-0 z-20 bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
+                  >
                     {selectedBrand}
                   </TableHead>
                 )}
                 {!selectedBrand && (
-                  <TableHead scope="col" className="sticky top-0 z-20 bg-background shadow-[0_2px_0_0_#ffffff]">
+                  <TableHead
+                    scope="col"
+                    className="sticky top-0 z-20 bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
+                  >
                     Used
                   </TableHead>
                 )}
                 <TableHead
                   scope="col"
-                  className="sticky top-0 z-20 rounded-tr-[10px] bg-background text-right shadow-[0_2px_0_0_#ffffff]"
-                >
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    disabled={visibleGroups.length === 0}
-                    onClick={toggleAllGroups}
-                  >
-                    {allGroupsCollapsed ? <ChevronsUpDownIcon /> : <ChevronsDownUpIcon />}
-                    {allGroupsCollapsed ? 'Expand all' : 'Collapse all'}
-                  </Button>
-                </TableHead>
+                  className="sticky top-0 z-20 w-9 rounded-tr-[10px] bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] p-1"
+                />
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredWorking.map((item, row) => {
-                const { id, token } = item
+              {rowEntries.map(entry => {
+                const { id, token, row, headerNodes, hidden, anyHeaderShown, depth } = entry
                 const hex =
                   token.type === 'color'
                     ? getColorHex(token.referenceTarget ? token.resolvedValue : token.rawValue)
                     : null
-                const cellErrors = errorsById.get(id) ?? []
+                const cellErrors = errorsById.get(id) ?? EMPTY_ERRORS
                 const isMalformed = malformed.has(id)
                 const changeStatus = describeChangeStatus(originalById.get(id), token)
+                const usageCount = referenceCounts.get(token.path.join('.')) ?? 0
 
-                // Two nesting levels: the outer (component/subject) group, and —
-                // when the name goes one dot deeper — an inner subgroup shown
-                // indented within it. When they'd be identical (a 2-segment
-                // name, e.g. "Backdrop.Color") only the outer header renders,
-                // so a group never appears to contain only itself.
-                const outerGroup = outerGroupFor(token.name)
-                const previousOuterGroup = row > 0 ? outerGroupFor(filteredWorking[row - 1].token.name) : null
-                const showOuterHeader = outerGroup !== '' && outerGroup !== previousOuterGroup
-                const isOuterCollapsed = outerGroup !== '' && collapsedGroups.has(outerGroup)
-
-                const group = groupPrefixFor(token.name)
-                const isNestedSubgroup = group !== '' && group !== outerGroup
-                const previousGroup = row > 0 ? groupPrefixFor(filteredWorking[row - 1].token.name) : null
-                const showGroupHeader = isNestedSubgroup && group !== previousGroup
-                const isCollapsed = group !== '' && collapsedGroups.has(group)
-                const hidden = isOuterCollapsed || isCollapsed
-                // One indent step deeper than whichever header is the row's
-                // immediate parent, so the name lines up under that header's
-                // own text rather than its chevron.
-                const depth = isNestedSubgroup ? 2 : outerGroup !== '' ? 1 : 0
+                let brandInfo: TokenRowBrandInfo | null = null
+                if (selectedBrand) {
+                  const brandToken = brandTokenFor(selectedBrand, id)
+                  if (brandToken) {
+                    const brandResolved = brandResolvedByPath?.get(id)
+                    const brandHex =
+                      brandToken.type === 'color'
+                        ? getColorHex(brandToken.referenceTarget ? brandResolved?.resolvedValue : brandToken.rawValue)
+                        : null
+                    brandInfo = {
+                      brand: selectedBrand,
+                      token: brandToken,
+                      hex: brandHex,
+                      mode: brandModeFor(selectedBrand, id),
+                      valueText: brandValueTextFor(selectedBrand, id),
+                      isOverridden: (brandWorking[selectedBrand] ?? []).some(w => w.id === id),
+                      isMalformed: brandMalformed.has(id),
+                      isPopoverOpen: openPopoverId === `brand:${id}`,
+                    }
+                  }
+                }
 
                 return (
-                  <Fragment key={id}>
-                    {showOuterHeader && renderGroupHeaderRow(outerGroup, 0)}
-                    {!isOuterCollapsed && showGroupHeader && renderGroupHeaderRow(group, 1)}
-                    {!hidden && (
-                      <TableRow
-                        data-row-id={id}
-                        className={cn(cellErrors.length > 0 && 'bg-destructive/10 hover:bg-destructive/15')}
-                      >
-                        <TableCell className="p-0 focus-within:relative focus-within:z-40">
-                          <div className="flex items-center gap-1" style={{ paddingLeft: depth * 16 }}>
-                            <Input
-                              ref={el => {
-                                if (el) cellRefs.current.set(`${row}-0`, el)
-                                else cellRefs.current.delete(`${row}-0`)
-                              }}
-                              aria-label={`Name for ${token.name || 'token'}`}
-                              value={nameTextFor(id, token)}
-                              onChange={e => handleNameInput(id, e.target.value)}
-                              onBlur={() => commitName(id)}
-                              onFocus={e => (focusSnapshot.current = { id, col: 0, value: e.target.value })}
-                              onKeyDown={e => handleCellKeyDown(e, row, 0, id)}
-                              className={CELL_FIELD_CLASS}
-                            />
-                            {changeStatus && (
-                              <Badge variant={CHANGE_STATUS_VARIANT[changeStatus]} className="mr-1 shrink-0">
-                                {CHANGE_STATUS_LABEL[changeStatus]}
-                              </Badge>
-                            )}
-                          </div>
-                        </TableCell>
-                        <TableCell className="p-0 px-1">
-                          {token.type === 'color' ? (
-                            <div className="group/tag flex items-center gap-1">
-                              <Popover
-                                open={openPopoverId === id}
-                                onOpenChange={open => setOpenPopoverId(open ? id : null)}
-                              >
-                                <PopoverTrigger
-                                  aria-invalid={isMalformed || cellErrors.length > 0}
-                                  render={
-                                    token.referenceTarget ? (
-                                      <Button
-                                        type="button"
-                                        variant="outline"
-                                        aria-label={`Value for ${token.name || 'token'}`}
-                                        className={CELL_TAG_CLASS}
-                                      />
-                                    ) : (
-                                      <button
-                                        type="button"
-                                        aria-label={`Value for ${token.name || 'token'}`}
-                                        className={CELL_TRIGGER_CLASS}
-                                      />
-                                    )
-                                  }
-                                >
-                                  <span
-                                    aria-hidden="true"
-                                    className="size-5 shrink-0 rounded-sm border"
-                                    style={hex ? { backgroundColor: hex } : undefined}
-                                  />
-                                  <span className="truncate">
-                                    {token.referenceTarget ? toSlashPath(token.referenceTarget) : (hex ?? '—')}
-                                  </span>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-128">
-                                  {renderPopoverHeader(
-                                    [
-                                      { value: 'value', label: 'Color' },
-                                      { value: 'reference', label: 'Reference' },
-                                    ],
-                                    modeFor(id, token),
-                                    value => setRowMode(id, value as 'value' | 'reference'),
-                                    `Value mode for ${token.name || 'token'}`,
-                                  )}
-
-                                  {modeFor(id, token) === 'value' ? (
-                                    <div className="space-y-2">
-                                      <input
-                                        type="color"
-                                        aria-label={`Pick color for ${token.name || 'token'}`}
-                                        className="h-9 w-full cursor-pointer rounded-md border"
-                                        value={hex ?? '#000000'}
-                                        onChange={e => commitValueText(id, token.type, e.target.value)}
-                                      />
-                                      <Input
-                                        aria-label={`Value for ${token.name || 'token'}`}
-                                        aria-invalid={isMalformed || cellErrors.length > 0}
-                                        placeholder="#RRGGBB"
-                                        value={valueTextFor(id, token)}
-                                        onChange={e => handleValueInput(id, e.target.value)}
-                                        onBlur={() => commitValue(id, token.type)}
-                                      />
-                                      {isMalformed && (
-                                        <Alert variant="destructive">
-                                          <AlertDescription>Invalid JSON for a color value.</AlertDescription>
-                                        </Alert>
-                                      )}
-                                    </div>
-                                  ) : (
-                                    renderReferenceSearch(
-                                      token.referenceTarget ?? '',
-                                      value => handleReferenceChange(id, value),
-                                      `Reference target for ${token.name || 'token'}`,
-                                    )
-                                  )}
-                                </PopoverContent>
-                              </Popover>
-                              {token.referenceTarget &&
-                                renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
-                                  handleReferenceChange(id, ''),
-                                )}
-                            </div>
-                          ) : (
-                            <div className="group/tag flex items-center gap-1">
-                              {token.referenceTarget ? (
-                                <>
-                                  <Popover
-                                    open={openPopoverId === id}
-                                    onOpenChange={open => setOpenPopoverId(open ? id : null)}
-                                  >
-                                    <PopoverTrigger
-                                      aria-label={`Value for ${token.name || 'token'}`}
-                                      render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
-                                    >
-                                      <Link2Icon className="size-3.5 shrink-0" />
-                                      <span className="truncate">{toSlashPath(token.referenceTarget)}</span>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-128">
-                                      {renderPopoverHeader(
-                                        [{ value: 'reference', label: 'Reference' }],
-                                        'reference',
-                                        null,
-                                        `Value mode for ${token.name || 'token'}`,
-                                      )}
-                                      {renderReferenceSearch(
-                                        token.referenceTarget ?? '',
-                                        value => handleReferenceChange(id, value),
-                                        `Reference target for ${token.name || 'token'}`,
-                                      )}
-                                    </PopoverContent>
-                                  </Popover>
-                                  {renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
-                                    handleReferenceChange(id, ''),
-                                  )}
-                                </>
-                              ) : (
-                                <>
-                                  <Input
-                                    ref={el => {
-                                      if (el) cellRefs.current.set(`${row}-1`, el)
-                                      else cellRefs.current.delete(`${row}-1`)
-                                    }}
-                                    aria-label={`Value for ${token.name || 'token'}`}
-                                    aria-invalid={cellErrors.length > 0}
-                                    value={valueTextFor(id, token)}
-                                    onChange={e => handleValueInput(id, e.target.value)}
-                                    onBlur={() => commitValue(id, token.type)}
-                                    onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
-                                    onKeyDown={e => handleCellKeyDown(e, row, 1, id)}
-                                    className={CELL_FIELD_CLASS}
-                                  />
-                                  <Popover
-                                    open={openPopoverId === id}
-                                    onOpenChange={open => setOpenPopoverId(open ? id : null)}
-                                  >
-                                    <PopoverTrigger
-                                      render={
-                                        <Button
-                                          type="button"
-                                          variant="outline"
-                                          size="icon-sm"
-                                          className="mr-1 shrink-0 rounded-none"
-                                          aria-label={`Reference for ${token.name || 'token'}`}
-                                        />
-                                      }
-                                    >
-                                      <HexagonIcon className="size-4" />
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-128">
-                                      {renderPopoverHeader(
-                                        [{ value: 'reference', label: 'Reference' }],
-                                        'reference',
-                                        null,
-                                        `Value mode for ${token.name || 'token'}`,
-                                      )}
-                                      {renderReferenceSearch(
-                                        token.referenceTarget ?? '',
-                                        value => handleReferenceChange(id, value),
-                                        `Reference target for ${token.name || 'token'}`,
-                                      )}
-                                    </PopoverContent>
-                                  </Popover>
-                                </>
-                              )}
-                            </div>
-                          )}
-                        </TableCell>
-                        {!selectedBrand && (
-                          <TableCell className="p-0 px-1 text-muted-foreground">
-                            <div className="flex items-center gap-1">
-                              {(() => {
-                                const usageCount = referenceCounts.get(token.path.join('.')) ?? 0
-                                return (
-                                  usageCount > 0 && (
-                                    <Button
-                                      type="button"
-                                      variant="ghost"
-                                      size="sm"
-                                      className="h-auto gap-1 px-1.5 py-0.5"
-                                      onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
-                                    >
-                                      <NetworkIcon className="size-3.5" />
-                                      {usageCount} {usageCount === 1 ? 'use' : 'uses'}
-                                    </Button>
-                                  )
-                                )
-                              })()}
-                              {(() => {
-                                const codeUsage = CODE_USAGE[token.path.join('.')]
-                                if (!codeUsage || codeUsage.count === 0) return null
-                                return (
-                                  <Popover
-                                    open={openCodeUsageId === id}
-                                    onOpenChange={open => setOpenCodeUsageId(open ? id : null)}
-                                  >
-                                    <PopoverTrigger
-                                      render={
-                                        <Button
-                                          type="button"
-                                          variant="ghost"
-                                          size="sm"
-                                          className="h-auto gap-1 px-1.5 py-0.5"
-                                          aria-label={`Code usage for ${token.name || 'token'}`}
-                                        />
-                                      }
-                                    >
-                                      <Code2Icon className="size-3.5" />
-                                      {codeUsage.count} {codeUsage.count === 1 ? 'file' : 'files'}
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-96">
-                                      <p className="mb-2 text-sm font-medium">Used in code</p>
-                                      <ul className="space-y-1 text-sm text-muted-foreground">
-                                        {codeUsage.locations.map(location => (
-                                          <li key={`${location.package}/${location.file}`} className="flex gap-2">
-                                            <Badge variant="outline" className="shrink-0">
-                                              {location.package}
-                                            </Badge>
-                                            <span className="truncate">{location.file}</span>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </PopoverContent>
-                                  </Popover>
-                                )
-                              })()}
-                            </div>
-                          </TableCell>
-                        )}
-                        {selectedBrand &&
-                          (() => {
-                            const brand = selectedBrand
-                            const brandToken = brandTokenFor(brand, id)
-                            if (!brandToken) return <TableCell className="p-0" />
-
-                            const brandResolved = brandResolvedByPath?.get(id)
-                            const brandHex =
-                              brandToken.type === 'color'
-                                ? getColorHex(
-                                    brandToken.referenceTarget ? brandResolved?.resolvedValue : brandToken.rawValue,
-                                  )
-                                : null
-                            const brandCellId = `brand:${id}`
-                            const isOverridden = (brandWorking[brand] ?? []).some(w => w.id === id)
-
-                            return (
-                              <TableCell className="p-0 px-1">
-                                <div className="flex items-center gap-1">
-                                  {brandToken.type === 'color' ? (
-                                    <div className="group/tag flex items-center gap-1">
-                                      <Popover
-                                        open={openPopoverId === brandCellId}
-                                        onOpenChange={open => setOpenPopoverId(open ? brandCellId : null)}
-                                      >
-                                        <PopoverTrigger
-                                          aria-invalid={brandMalformed.has(id)}
-                                          render={
-                                            brandToken.referenceTarget ? (
-                                              <Button
-                                                type="button"
-                                                variant="outline"
-                                                aria-label={`${brand} value for ${token.name || 'token'}`}
-                                                className={CELL_TAG_CLASS}
-                                              />
-                                            ) : (
-                                              <button
-                                                type="button"
-                                                aria-label={`${brand} value for ${token.name || 'token'}`}
-                                                className={CELL_TRIGGER_CLASS}
-                                              />
-                                            )
-                                          }
-                                        >
-                                          <span
-                                            aria-hidden="true"
-                                            className="size-5 shrink-0 rounded-sm border"
-                                            style={brandHex ? { backgroundColor: brandHex } : undefined}
-                                          />
-                                          <span className="truncate">
-                                            {brandToken.referenceTarget
-                                              ? toSlashPath(brandToken.referenceTarget)
-                                              : (brandHex ?? '—')}
-                                          </span>
-                                        </PopoverTrigger>
-                                        <PopoverContent className="w-128">
-                                          {renderPopoverHeader(
-                                            [
-                                              { value: 'value', label: 'Color' },
-                                              { value: 'reference', label: 'Reference' },
-                                            ],
-                                            brandModeFor(brand, id),
-                                            value => setBrandRowMode(id, value as 'value' | 'reference'),
-                                            `${brand} value mode for ${token.name || 'token'}`,
-                                          )}
-
-                                          {brandModeFor(brand, id) === 'value' ? (
-                                            <div className="space-y-2">
-                                              <input
-                                                type="color"
-                                                aria-label={`Pick ${brand} color for ${token.name || 'token'}`}
-                                                className="h-9 w-full cursor-pointer rounded-md border"
-                                                value={brandHex ?? '#000000'}
-                                                onChange={e =>
-                                                  commitBrandValueText(brand, id, brandToken.type, e.target.value)
-                                                }
-                                              />
-                                              <Input
-                                                aria-label={`${brand} value for ${token.name || 'token'}`}
-                                                aria-invalid={brandMalformed.has(id)}
-                                                placeholder="#RRGGBB"
-                                                value={brandValueTextFor(brand, id)}
-                                                onChange={e => handleBrandValueInput(id, e.target.value)}
-                                                onBlur={() => commitBrandValue(brand, id, brandToken.type)}
-                                              />
-                                              {brandMalformed.has(id) && (
-                                                <Alert variant="destructive">
-                                                  <AlertDescription>Invalid JSON for a color value.</AlertDescription>
-                                                </Alert>
-                                              )}
-                                            </div>
-                                          ) : (
-                                            renderReferenceSearch(
-                                              brandToken.referenceTarget ?? '',
-                                              value => handleBrandReferenceChange(brand, id, value),
-                                              `${brand} reference target for ${token.name || 'token'}`,
-                                            )
-                                          )}
-                                        </PopoverContent>
-                                      </Popover>
-                                      {brandToken.referenceTarget &&
-                                        renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
-                                          handleBrandReferenceChange(brand, id, ''),
-                                        )}
-                                    </div>
-                                  ) : (
-                                    <div className="group/tag flex items-center gap-1">
-                                      {brandToken.referenceTarget ? (
-                                        <>
-                                          <Popover
-                                            open={openPopoverId === brandCellId}
-                                            onOpenChange={open => setOpenPopoverId(open ? brandCellId : null)}
-                                          >
-                                            <PopoverTrigger
-                                              aria-label={`${brand} value for ${token.name || 'token'}`}
-                                              render={
-                                                <Button type="button" variant="outline" className={CELL_TAG_CLASS} />
-                                              }
-                                            >
-                                              <Link2Icon className="size-3.5 shrink-0" />
-                                              <span className="truncate">
-                                                {toSlashPath(brandToken.referenceTarget)}
-                                              </span>
-                                            </PopoverTrigger>
-                                            <PopoverContent className="w-128">
-                                              {renderPopoverHeader(
-                                                [{ value: 'reference', label: 'Reference' }],
-                                                'reference',
-                                                null,
-                                                `${brand} value mode for ${token.name || 'token'}`,
-                                              )}
-                                              {renderReferenceSearch(
-                                                brandToken.referenceTarget ?? '',
-                                                value => handleBrandReferenceChange(brand, id, value),
-                                                `${brand} reference target for ${token.name || 'token'}`,
-                                              )}
-                                            </PopoverContent>
-                                          </Popover>
-                                          {renderDetachButton(
-                                            `Detach ${brand} alias for ${token.name || 'token'}`,
-                                            () => handleBrandReferenceChange(brand, id, ''),
-                                          )}
-                                        </>
-                                      ) : (
-                                        <>
-                                          <Input
-                                            aria-label={`${brand} value for ${token.name || 'token'}`}
-                                            value={brandValueTextFor(brand, id)}
-                                            onChange={e => handleBrandValueInput(id, e.target.value)}
-                                            onBlur={() => commitBrandValue(brand, id, brandToken.type)}
-                                            className={CELL_FIELD_CLASS}
-                                          />
-                                          <Popover
-                                            open={openPopoverId === brandCellId}
-                                            onOpenChange={open => setOpenPopoverId(open ? brandCellId : null)}
-                                          >
-                                            <PopoverTrigger
-                                              render={
-                                                <Button
-                                                  type="button"
-                                                  variant="outline"
-                                                  size="icon-sm"
-                                                  className="mr-1 shrink-0 rounded-none"
-                                                  aria-label={`${brand} reference for ${token.name || 'token'}`}
-                                                />
-                                              }
-                                            >
-                                              <HexagonIcon className="size-4" />
-                                            </PopoverTrigger>
-                                            <PopoverContent className="w-128">
-                                              {renderPopoverHeader(
-                                                [{ value: 'reference', label: 'Reference' }],
-                                                'reference',
-                                                null,
-                                                `${brand} value mode for ${token.name || 'token'}`,
-                                              )}
-                                              {renderReferenceSearch(
-                                                brandToken.referenceTarget ?? '',
-                                                value => handleBrandReferenceChange(brand, id, value),
-                                                `${brand} reference target for ${token.name || 'token'}`,
-                                              )}
-                                            </PopoverContent>
-                                          </Popover>
-                                        </>
-                                      )}
-                                    </div>
-                                  )}
-                                  {isOverridden && (
-                                    <Badge variant="outline" className="mr-1 shrink-0">
-                                      Overridden
-                                    </Badge>
-                                  )}
-                                </div>
-                              </TableCell>
-                            )
-                          })()}
-                        <TableCell className="p-1">
-                          <div className="flex items-center justify-end">
-                            <DropdownMenu>
-                              <DropdownMenuTrigger
-                                render={
-                                  <Button
-                                    type="button"
-                                    variant="ghost"
-                                    size="icon-sm"
-                                    aria-label={`Actions for ${token.name || 'token'}`}
-                                    className="text-foreground hover:bg-white/20"
-                                  />
-                                }
-                              >
-                                <EllipsisIcon />
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent>
-                                <DropdownMenuItem onClick={() => openEditDialog(id)}>
-                                  <PencilIcon />
-                                  Edit
-                                </DropdownMenuItem>
-                                <DropdownMenuItem
-                                  onClick={() => setGraphRoot({ paths: [id], title: toSlashPath(token.name) })}
-                                >
-                                  <NetworkIcon />
-                                  Show reference graph
-                                </DropdownMenuItem>
-                                <DropdownMenuItem variant="destructive" onClick={() => handleDeleteRow(id, token.name)}>
-                                  <Trash2Icon />
-                                  Delete
-                                </DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    )}
-                    {!hidden && cellErrors.length > 0 && (
-                      <TableRow className="bg-destructive/10 hover:bg-destructive/15">
-                        <TableCell colSpan={4} className="p-0">
-                          <Alert
-                            variant="destructive"
-                            role="alert"
-                            className="rounded-none border-0 border-t bg-transparent"
-                          >
-                            <AlertDescription>{cellErrors.join(' ')}</AlertDescription>
-                          </Alert>
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </Fragment>
+                  <TokenRow
+                    key={id}
+                    id={id}
+                    token={token}
+                    row={row}
+                    headerNodes={headerNodes}
+                    hidden={hidden}
+                    anyHeaderShown={anyHeaderShown}
+                    depth={depth}
+                    hex={hex}
+                    cellErrors={cellErrors}
+                    isMalformed={isMalformed}
+                    changeStatus={changeStatus}
+                    nameText={nameTextFor(id, token)}
+                    valueText={valueTextFor(id, token)}
+                    mode={modeFor(id, token)}
+                    isPopoverOpen={openPopoverId === id}
+                    isCodeUsageOpen={openCodeUsageId === id}
+                    usageCount={usageCount}
+                    brandInfo={brandInfo}
+                    cellRefs={cellRefs}
+                    focusSnapshot={focusSnapshot}
+                    handlers={rowHandlers}
+                  />
                 )
               })}
             </TableBody>
@@ -2624,7 +3023,7 @@ export function TokenEditor({
                   id="new-token-name"
                   placeholder="e.g. Color.Danger.7"
                   value={draft.name}
-                  onChange={e => setDraft(prev => ({ ...prev, name: e.target.value }))}
+                  onChange={e => setDraft(prev => ({ ...prev, name: sanitizePathInput(e.target.value) }))}
                 />
               </div>
 
@@ -2803,7 +3202,9 @@ export function TokenEditor({
                         <Input
                           id="edit-token-name"
                           value={editDraft.name}
-                          onChange={e => setEditDraft(prev => (prev ? { ...prev, name: e.target.value } : prev))}
+                          onChange={e =>
+                            setEditDraft(prev => (prev ? { ...prev, name: sanitizePathInput(e.target.value) } : prev))
+                          }
                         />
                       </div>
 
@@ -2947,6 +3348,65 @@ export function TokenEditor({
                   </>
                 )
               })()}
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={deleteDraft !== null} onOpenChange={open => !open && closeDeleteDialog()}>
+          <DialogContent>
+            {deleteDraft && (
+              <>
+                <DialogHeader>
+                  <DialogTitle>Delete &quot;{deleteDraft.name}&quot;?</DialogTitle>
+                  <DialogDescription>
+                    {deleteDraft.figmaLinked
+                      ? 'This token is linked to Figma — deleting it here also deletes the variable in Figma. '
+                      : ''}
+                    Nothing happens until you submit and it&apos;s reviewed and merged.
+                  </DialogDescription>
+                </DialogHeader>
+
+                {deleteDraft.usageCount > 0 ? (
+                  <Alert variant="destructive">
+                    <TriangleAlertIcon />
+                    <AlertDescription>
+                      &quot;{deleteDraft.name}&quot; is referenced by {deleteDraft.usageCount}{' '}
+                      {deleteDraft.usageCount === 1 ? 'other token' : 'other tokens'} and can&apos;t be deleted. Remove
+                      those references first.
+                    </AlertDescription>
+                  </Alert>
+                ) : (
+                  <div className="space-y-1.5">
+                    <Label htmlFor="delete-token-confirm">Type &quot;{deleteDraft.name}&quot; to confirm</Label>
+                    <Input
+                      id="delete-token-confirm"
+                      autoFocus
+                      value={deleteConfirmText}
+                      onChange={e => setDeleteConfirmText(e.target.value)}
+                      onKeyDown={e => {
+                        if (e.key === 'Enter' && deleteConfirmText === deleteDraft.name) {
+                          e.preventDefault()
+                          confirmDeleteToken()
+                        }
+                      }}
+                    />
+                  </div>
+                )}
+
+                <DialogFooter>
+                  <Button type="button" variant="outline" onClick={closeDeleteDialog}>
+                    Cancel
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    disabled={deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name}
+                    onClick={confirmDeleteToken}
+                  >
+                    Delete
+                  </Button>
+                </DialogFooter>
+              </>
+            )}
           </DialogContent>
         </Dialog>
 

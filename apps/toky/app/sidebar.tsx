@@ -38,7 +38,9 @@ export interface SidebarActivityItem {
   id: string
   label: string
   icon: ComponentType<{ className?: string }>
-  badge?: number
+  // A number renders as a count (capped at "99+"); a string renders as-is
+  // (e.g. Brands' 4-letter code for the selected brand).
+  badge?: number | string
 }
 
 export function SidebarActivityBar({
@@ -88,7 +90,7 @@ export function SidebarActivityBar({
                 <Icon className="size-6" />
                 {!!item.badge && (
                   <span className="absolute right-0.5 bottom-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-medium text-primary-foreground">
-                    {item.badge > 99 ? '99+' : item.badge}
+                    {typeof item.badge === 'number' ? (item.badge > 99 ? '99+' : item.badge) : item.badge}
                   </span>
                 )}
               </TooltipTrigger>

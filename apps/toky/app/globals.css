@@ -64,6 +64,13 @@
   --accent-foreground: oklch(0.977 0.014 308.299);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
+  /* --border is already fully opaque here, unlike in .dark below — this
+     is just that same color, kept under its own name so consumers that
+     need an opaque border color (e.g. a box-shadow-based border reused
+     across several stacked sticky elements, where two translucent layers
+     landing on the same pixel would alpha-composite into a visibly
+     brighter line) can use one name in both themes. */
+  --border-solid: var(--border);
   --input: oklch(0.922 0 0);
   --ring: var(--primary);
   --chart-1: oklch(0.905 0.182 98.111);
@@ -99,6 +106,10 @@
   --accent-foreground: oklch(0.977 0.014 308.299);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
+  /* Opaque stand-in for --border (see the :root comment) — flattens the
+     10%-alpha white onto --background so it can't compound when two
+     instances of it end up painted on the very same pixel. */
+  --border-solid: color-mix(in oklch, white 10%, var(--background));
   --input: oklch(1 0 0 / 15%);
   --ring: var(--primary);
   --chart-1: oklch(0.905 0.182 98.111);

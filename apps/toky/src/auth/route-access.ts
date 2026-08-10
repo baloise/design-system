@@ -20,3 +20,11 @@ export function isApiPath(pathname: string): boolean {
 export function isBlockedNonProductionDeploy(env: { vercel?: string; vercelEnv?: string }): boolean {
   return !!env.vercel && env.vercelEnv !== 'production'
 }
+
+// Local-only escape hatch for fast manual testing (`pnpm toky` +
+// TOKY_DISABLE_AUTH=true skips GitHub sign-in entirely). Requires `vercel` to
+// be unset so this can never take effect on any real deployment, including
+// preview builds run with production env vars.
+export function isAuthDisabledLocally(env: { vercel?: string; disableAuth?: string }): boolean {
+  return !env.vercel && env.disableAuth === 'true'
+}
