@@ -1,15 +1,23 @@
 'use client'
 
+import { LogOutIcon } from 'lucide-react'
 import { useRef } from 'react'
 import type { ComponentType, PointerEvent as ReactPointerEvent, ReactNode } from 'react'
 import { Badge } from '@/components/ui/badge'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { SyncStatusBadge } from './header'
 
-// Placeholder until the signed-in GitHub session lands (see docs/adr/0003) — swap for the
-// user's actual avatar_url/login once Auth.js is wired up.
+// The signed-in GitHub user (see docs/adr/0003) — login/avatarUrl come from
+// the Auth.js session.
 export interface SidebarUser {
   name: string
   avatarUrl?: string
@@ -38,12 +46,14 @@ export function SidebarActivityBar({
   activeId,
   onSelect,
   user,
+  onSignOut,
 }: {
   items: SidebarActivityItem[]
   activeId: string
   onSelect: (id: string) => void
-  // Omit while there's no signed-in user to show (e.g. auth not wired up yet).
+  // Omit while there's no signed-in user to show (e.g. the session hasn't loaded yet).
   user?: SidebarUser
+  onSignOut?: () => void
 }) {
   return (
     <nav
@@ -89,8 +99,8 @@ export function SidebarActivityBar({
       </div>
       {user && (
         <div className="flex w-full shrink-0 items-center justify-center border-t border-border py-2">
-          <Tooltip>
-            <TooltipTrigger
+          <DropdownMenu>
+            <DropdownMenuTrigger
               render={
                 <button
                   type="button"
@@ -104,9 +114,16 @@ export function SidebarActivityBar({
               ) : (
                 <span className="text-sm font-medium text-muted-foreground">{user.name.slice(0, 1).toUpperCase()}</span>
               )}
-            </TooltipTrigger>
-            <TooltipContent side="right">{user.name}</TooltipContent>
-          </Tooltip>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="right">
+              <div className="px-2 py-1.5 text-sm font-medium text-muted-foreground">{user.name}</div>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={onSignOut}>
+                <LogOutIcon />
+                Sign out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       )}
     </nav>

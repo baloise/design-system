@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import type { KeyboardEvent, ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
 import {
   ChevronDownIcon,
   ChevronsDownUpIcon,
@@ -249,6 +250,7 @@ export function TokenEditor({
   syncStatus: SyncStatus
 }) {
   const router = useRouter()
+  const { data: session } = useSession()
   const [query, setQuery] = useState('')
   const [activeLayer, setActiveLayer] = useState<TokenLayer>('Global')
   const [working, setWorking, workingHistory] = useUndoableState<WorkingToken[]>(() =>
@@ -3095,9 +3097,8 @@ export function TokenEditor({
         items={sidebarItems}
         activeId={activeSidebarTab}
         onSelect={selectSidebarTab}
-        // Placeholder until Auth.js sessions land (docs/adr/0003) — replace with the
-        // signed-in GitHub user's login/avatar_url.
-        user={{ name: 'Signed-in user' }}
+        user={session?.user ? { name: session.user.login, avatarUrl: session.user.image ?? undefined } : undefined}
+        onSignOut={() => signOut({ callbackUrl: '/' })}
       />
     </div>
   )

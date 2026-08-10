@@ -15,6 +15,7 @@ const {
   openPullRequest,
   findOpenPullRequest,
   updatePullRequestBody,
+  auth,
 } = vi.hoisted(() => ({
   getBaseTokensFileMeta: vi.fn(),
   getBrandTokensFileMeta: vi.fn(),
@@ -29,6 +30,7 @@ const {
   openPullRequest: vi.fn(),
   findOpenPullRequest: vi.fn(),
   updatePullRequestBody: vi.fn(),
+  auth: vi.fn(),
 }))
 
 vi.mock('@/src/tokens/github-write', async importOriginal => {
@@ -50,6 +52,8 @@ vi.mock('@/src/tokens/github-write', async importOriginal => {
     updatePullRequestBody,
   }
 })
+
+vi.mock('@/auth', () => ({ auth }))
 
 const { POST } = await import('./route')
 
@@ -90,6 +94,7 @@ const tcsFixtureDoc = {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  auth.mockResolvedValue({ user: { login: 'octocat', isOrgMember: true } })
   getBaseTokensFileMeta.mockResolvedValue({ sha: 'file-sha', content: fixtureDoc })
   getBrandTokensFileMeta.mockResolvedValue({ sha: 'tcs-sha', content: tcsFixtureDoc })
   listTokenBrandFiles.mockResolvedValue(['Tcs'])
@@ -110,6 +115,14 @@ beforeEach(() => {
 })
 
 describe('POST /api/propose-change', () => {
+  it('rejects an unauthenticated request without touching GitHub', async () => {
+    auth.mockResolvedValue(null)
+
+    const response = await POST(makeRequest({ diff: cleanDiff, description: '' }))
+    expect(response.status).toBe(401)
+    expect(resolveReadRef).not.toHaveBeenCalled()
+  })
+
   it('rejects an empty diff without touching GitHub', async () => {
     const response = await POST(makeRequest({ diff: [], description: '' }))
     expect(response.status).toBe(400)
@@ -187,6 +200,33 @@ describe('POST /api/propose-change', () => {
     const [prBranch, , , base] = openPullRequest.mock.calls[0]
     expect(prBranch).toBe('toky/update-next')
     expect(base).toBe('next')
+  })
+
+  it('credits the signed-in user in the initial PR body, not any client-supplied field', async () => {
+    await POST(
+      makeRequest({ diff: cleanDiff, description: 'Lighten white slightly', submitter: 'someone-else' } as never),
+    )
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('Submitted via the Toky web app by @octocat.')
+    expect(prBody).not.toContain('someone-else')
+  })
+
+  it('credits the signed-in user when appending to an already-open PR', async () => {
+    resolveReadRef.mockResolvedValue({
+      ref: 'toky/update-next',
+      status: { state: 'pending', prUrl: 'https://github.com/baloise/design-system/pull/7', prNumber: 7 },
+    })
+    findOpenPullRequest.mockResolvedValue({
+      url: 'https://github.com/baloise/design-system/pull/7',
+      number: 7,
+      body: 'initial body',
+    })
+
+    await POST(makeRequest({ diff: cleanDiff, description: '' }))
+
+    const [, updatedBody] = updatePullRequestBody.mock.calls[0]
+    expect(updatedBody).toContain('Additional changes by @octocat —')
   })
 
   it('labels an entry as "via Figma pull" in the PR body when its path is in pulledPaths', async () => {

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { auth } from '@/auth'
 import { BRAND_NAME_ERROR_MESSAGE, validateBrandName } from '@/src/tokens/brand'
 import { buildChangesetContent } from '@/src/tokens/changeset'
 import { applyDiffToDocument } from '@/src/tokens/edit'
@@ -212,9 +213,10 @@ function buildInitialPrBody(
   newBrands: string[],
   brandDiffs: Record<string, TokenDiffEntry[]>,
   pulledPaths: Set<string>,
+  submitter: string,
 ): string {
   return [
-    "Submitted via the Toky web app — no signed-in identity yet, end-user auth isn't wired up.",
+    `Submitted via the Toky web app by @${submitter}.`,
     '',
     buildChangeSummary(diff, description, newBrands, brandDiffs, pulledPaths),
   ].join('\n')
@@ -230,13 +232,25 @@ function appendPrBodyUpdate(
   newBrands: string[],
   brandDiffs: Record<string, TokenDiffEntry[]>,
   pulledPaths: Set<string>,
+  submitter: string,
 ): string {
   const timestamp = new Date().toISOString()
   const summary = buildChangeSummary(diff, description, newBrands, brandDiffs, pulledPaths)
-  return `${existingBody.trimEnd()}\n\n---\n\n**Additional changes — ${timestamp}**\n\n${summary}`
+  return `${existingBody.trimEnd()}\n\n---\n\n**Additional changes by @${submitter} — ${timestamp}**\n\n${summary}`
 }
 
 export async function POST(request: Request): Promise<Response> {
+  // Identity for PR attribution comes only from the server-side session —
+  // never from the request body — and proxy.ts guarantees every request
+  // reaching this route is already authenticated (see docs/adr/0003). Still
+  // guarded here rather than asserted, since this route can also be hit
+  // directly in tests/local dev without middleware in front of it.
+  const session = await auth()
+  const submitter = session?.user.login
+  if (!submitter) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   let body: ProposeChangeRequest
   try {
     body = (await request.json()) as ProposeChangeRequest
@@ -421,12 +435,12 @@ export async function POST(request: Request): Promise<Response> {
     const pr = existingPr
       ? await updatePullRequestBody(
           existingPr.number,
-          appendPrBodyUpdate(existingPr.body, diff, description, newBrands, brandDiffs, pulledPaths),
+          appendPrBodyUpdate(existingPr.body, diff, description, newBrands, brandDiffs, pulledPaths, submitter),
         ).then(() => existingPr)
       : await openPullRequest(
           branch,
           '🎨 Update design tokens via Toky',
-          buildInitialPrBody(diff, description, newBrands, brandDiffs, pulledPaths),
+          buildInitialPrBody(diff, description, newBrands, brandDiffs, pulledPaths, submitter),
           base,
         )
 

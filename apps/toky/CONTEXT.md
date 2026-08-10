@@ -31,3 +31,6 @@ A sidebar tab (alongside Figma Pull/Brands/Problems/Staged Changes) embedding `p
 _Avoid_: preview (bare — this app has no other "preview" concept yet, but qualify as "Live Preview" to stay consistent with the plan doc)
 
 Requires `packages/core`'s dev-server running locally alongside Toky's own (`pnpm --filter core start`, then `pnpm --filter toky dev`) — the Preview tab shows a "start it with `pnpm --filter core start`" hint if it isn't reachable within a few seconds. `NEXT_PUBLIC_DS_PREVIEW_URL` (see `.env.example`) overrides the default `localhost:4000` URL. Serving a deployed/Vercel-hosted preview instead of the dev-server is a later phase, not yet built.
+
+**Sign-in**: GitHub OAuth via Auth.js, gated on `baloise` org membership — see [ADR-0003](docs/adr/0003-github-oauth-sign-in-bot-pat-writes.md). The signed-in user's identity is read server-side from the session for PR attribution; writes always go through the shared bot PAT (`TOKY_GITHUB_TOKEN`), never the signed-in user's own OAuth token. `proxy.ts` (Next.js's current name for what used to be `middleware.ts`) is the single enforcement point for every UI and API route, including blocking Toky outright on any non-production Vercel deployment.
+_Avoid_: middleware.ts (the file is named `proxy.ts` — Next 16 renamed the convention; "middleware" is still fine as the general term for what it does)
