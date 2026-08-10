@@ -7,7 +7,15 @@
     "DS_RELEASE",
     "DS_DEVELOPMENT",
     "DS_PLAYWRIGHT_TESTING",
-    "DS_TESTING"
+    "DS_TESTING",
+    "TOKY_GITHUB_TOKEN",
+    "TOKY_GITHUB_ORG_TOKEN",
+    "TOKY_GITHUB_REF",
+    "AUTH_GITHUB_ID",
+    "AUTH_GITHUB_SECRET",
+    "AUTH_SECRET",
+    "FIGMA_API_TOKEN",
+    "FIGMA_FILE_KEY"
   ],
   "tasks": {
     "build": {
