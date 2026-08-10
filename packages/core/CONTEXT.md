@@ -543,6 +543,38 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
   position plumbing pointer-dragging depends on; only its cosmetic layer is
   overridden.
 
+## Modal Overlay Pattern (ds-modal)
+
+`ds-modal` (`packages/core/src/components/modal/`) is shadow DOM and slot-based
+(`header`/`body`/`actions` slots, or the `ds-modal-header`/`ds-modal-body`
+sub-components). `ModalController`/`ModalOptions`
+(`modal.interfaces.ts`/`modal.controller.ts`) currently only create a bare
+element and toggle `open` — there is no way to mount a framework component
+inside a modal yet. A planned extension re-adds a **component overlay**
+concept, deliberately modeled on Ionic core's own `ComponentRef`/
+`FrameworkDelegate` pair (which the old, now-deprecated `bal-modal` also
+used) rather than invented fresh:
+
+- **Component ref**: the function/class/tag-name identifying what to mount
+  inside the overlay (`ComponentRef` in the old code). Core never
+  instantiates it directly — that would violate "No framework-specific
+  code" above.
+- **Framework delegate**: the per-framework adapter (`attachViewToDom`/
+  `removeViewFromDom`) that knows how to instantiate a component ref and
+  hand back its root DOM node. Core calls the delegate; it never contains
+  framework code itself. Because `ds-modal` is shadow DOM (unlike the old
+  non-shadow `bal-modal`), a delegate must mount into a light-DOM
+  container slotted into the modal (e.g. `<div slot="body">`), not append
+  directly into the shadow root.
+- **Modal ref**: a handle scoped to one specific presented modal instance,
+  used to dismiss _that_ modal and carry data back to its opener. Replaces
+  the old `bal-modal`/Ionic `OverlayBaseController` pattern of a global
+  top-of-stack `dismiss()`, which dismissed whatever overlay happened to be
+  on top rather than the one the caller meant — a real bug class with
+  nested/concurrent overlays. See
+  [docs/adr/0022-modal-overlay-component-delegate-pattern.md](../../docs/adr/0022-modal-overlay-component-delegate-pattern.md).
+  _Avoid_: global dismiss, top-of-stack dismiss.
+
 ## Global Configuration (`DesignSystem.config`)
 
 `packages/core/src/global/config/` holds the singleton `config` (a `Config`

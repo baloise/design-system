@@ -15,7 +15,8 @@
   "style": "dist/css/base.tokens.css",
   "exports": {
     ".": "./dist/js/base.tokens.js",
-    "./css-preview": "./dist/out-tsc/css-preview.js"
+    "./css-preview": "./dist/out-tsc/css-preview.js",
+    "./dist/docs/base.tokens.json": "./dist/docs/base.tokens.json"
   },
   "scripts": {
     "build": "pnpm exec tsc && node dist/out-tsc",
