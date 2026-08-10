@@ -14,17 +14,17 @@
   "dependencies": {
     "@baloise/ds-css": "workspace:*",
     "@baloise/ds-react": "workspace:*",
-    "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
     "eslint": "catalog:",
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-react-refresh": "0.5.3",
-    "globals": "17.7.0",
+    "globals": "17.9.0",
     "typescript": "catalog:",
     "vite": "catalog:"
   }
