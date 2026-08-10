@@ -17991,6 +17991,22 @@
         "$extensions": {
           "com.figma.variableId": "VariableID:83:3"
         }
+      },
+      "AndreasToToky": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.15444855391979218,
+            0.7529247999191284,
+            0.7956730723381042
+          ],
+          "alpha": 1,
+          "hex": "#27C0CB"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:107:4"
+        }
       }
     }
   }
