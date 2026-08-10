@@ -15,10 +15,14 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { cn } from '@/lib/utils'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { BRAND_NAME_ERROR_MESSAGE, validateBrandName } from '@/src/tokens/brand'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { SidebarPanel } from './sidebar'
+
+// "Base" is a reserved brand name (see validateBrandName), so it's safe to
+// reuse as the Tabs value standing in for `selectedBrand === null`.
+const BASE_TAB_VALUE = 'Base'
 
 export function BrandsSidebar({
   realBrands,
@@ -65,13 +69,10 @@ export function BrandsSidebar({
   }
 
   const rows = [
-    { name: 'Base', status: 'current' as const },
+    { name: 'Base', pending: false },
     ...[...new Set(allKnownBrands)]
       .sort((a, b) => a.localeCompare(b))
-      .map(brand => ({
-        name: brand,
-        status: pendingBrands.includes(brand) ? ('pending' as const) : ('real' as const),
-      })),
+      .map(brand => ({ name: brand, pending: pendingBrands.includes(brand) })),
   ]
 
   return (
@@ -89,32 +90,25 @@ export function BrandsSidebar({
           </Button>
         }
       >
-        <ul className="space-y-1">
-          {rows.map(row => {
-            const value = row.status === 'current' ? null : row.name
-            const isSelected = selectedBrand === value
-            return (
-              <li key={row.name}>
-                <button
-                  type="button"
-                  onClick={() => onSelectBrand(isSelected ? null : value)}
-                  aria-pressed={isSelected}
-                  className={cn(
-                    'flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-sm outline-none hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring',
-                    isSelected && 'bg-accent',
-                  )}
-                >
+        <div className="space-y-1.5">
+          <p className="text-xs font-medium text-muted-foreground">Select brand</p>
+          <Tabs
+            orientation="vertical"
+            value={selectedBrand ?? BASE_TAB_VALUE}
+            onValueChange={value =>
+              onSelectBrand(value === BASE_TAB_VALUE ? null : ((value as string | null) ?? null))
+            }
+          >
+            <TabsList className="w-full items-stretch gap-1">
+              {rows.map(row => (
+                <TabsTrigger key={row.name} value={row.name} className="w-full justify-between">
                   <span className="min-w-0 truncate">{row.name}</span>
-                  <span className="flex shrink-0 items-center gap-1.5">
-                    {row.status === 'current' && <Badge variant="secondary">Current</Badge>}
-                    {row.status === 'pending' && <Badge variant="default">Pending</Badge>}
-                    {isSelected && <Badge variant="outline">Shown</Badge>}
-                  </span>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
+                  {row.pending && <Badge variant="default">Pending</Badge>}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+        </div>
       </SidebarPanel>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

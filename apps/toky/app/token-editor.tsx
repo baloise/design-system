@@ -9,6 +9,7 @@ import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
   Code2Icon,
+  CopyIcon,
   EllipsisIcon,
   GitBranchIcon,
   HexagonIcon,
@@ -597,7 +598,7 @@ export function TokenEditor({
       badge: diff.length + pendingBrands.length + totalBrandDiffCount,
     },
     { id: 'problems', label: 'Problems', icon: TriangleAlertIcon, badge: problems.length },
-    { id: 'brands', label: 'Brands', icon: SwatchBookIcon },
+    { id: 'brands', label: 'Brands', icon: SwatchBookIcon, badge: selectedBrand?.slice(0, 4) },
     { id: 'figma', label: 'Pull from Figma', icon: FigmaIcon, badge: pullBadgeCount },
     { id: 'preview', label: 'Preview', icon: PREVIEW_TAB_ICON },
   ]
@@ -1896,23 +1897,6 @@ export function TokenEditor({
                 ))}
               </TabsList>
             </Tabs>
-
-            {selectedBrand && (
-              <Badge
-                variant="default"
-                className="cursor-pointer gap-1 outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                render={
-                  <button
-                    type="button"
-                    aria-label={`Editing ${selectedBrand} — open Brands sidebar`}
-                    onClick={() => selectSidebarTab('brands')}
-                  />
-                }
-              >
-                <SwatchBookIcon aria-hidden="true" className="size-3.5" />
-                {selectedBrand}
-              </Badge>
-            )}
           </div>
 
           <div className="flex items-center gap-2">
@@ -2577,6 +2561,10 @@ export function TokenEditor({
                                 >
                                   <NetworkIcon />
                                   Show reference graph
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => duplicateRow(id)}>
+                                  <CopyIcon />
+                                  Duplicate
                                 </DropdownMenuItem>
                                 <DropdownMenuItem variant="destructive" onClick={() => openDeleteDialog(id, token)}>
                                   <Trash2Icon />
