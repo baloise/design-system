@@ -17927,6 +17927,22 @@
             "ALL_SCOPES"
           ]
         }
+      },
+      "DarkCopy": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.043137254901960784,
+            0.043137254901960784,
+            0.043137254901960784
+          ],
+          "alpha": 0,
+          "hex": "#0B0B0B"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:39:3"
+        }
       }
     }
   }
