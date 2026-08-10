@@ -18008,6 +18008,10 @@
           "com.figma.variableId": "VariableID:107:4"
         }
       }
+    },
+    "_BaseColorTesting-Andrease": {
+      "$type": "string",
+      "$value": "{🌐 Global.🌈 Color.Grey.4}"
     }
   }
 }
