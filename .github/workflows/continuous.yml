@@ -169,7 +169,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download blob reports
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: packages/core/all-blob-reports
           pattern: playwright-blob-report-*
