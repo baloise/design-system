@@ -35,7 +35,7 @@ jobs:
 
       - uses: ./.github/workflows/actions/setup-environment
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Install dependencies
@@ -81,7 +81,7 @@ jobs:
           message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
           tag: 'v${{ steps.package-version.outputs.current-version }}'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
 
       # Generates a Software Bill of Materials (SBOM) in CycloneDX JSON format.
       # Lists every direct and transitive npm dependency with name, version, and license.
@@ -124,7 +124,7 @@ jobs:
         if: ${{ !inputs.dry-run }}
         uses: advanced-security/spdx-dependency-submission-action@v0.2.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
           filePath: '.'
           filePattern: 'sbom.spdx.json'
 

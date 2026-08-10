@@ -19,7 +19,7 @@ jobs:
         with:
           ref: next
           fetch-depth: 1
-          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          token: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
 
       - uses: ./.github/workflows/actions/setup-environment
 
@@ -45,5 +45,5 @@ jobs:
           NEW_IDS: ${{ steps.sync.outputs.new_ids }}
           REMOVED_IDS: ${{ steps.sync.outputs.removed_ids }}
           MERGE_COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
         run: node scripts/figma-sync/backfill-commit.mjs

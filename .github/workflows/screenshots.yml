@@ -139,12 +139,12 @@ jobs:
         uses: actions/checkout@v7
         with:
           ref: ${{ needs.assembleInformation.outputs.branch }}
-          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          token: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
           fetch-depth: 2
 
       - uses: ./.github/workflows/actions/setup-environment
         with:
-          token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          token: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
           branch: ${{ needs.assembleInformation.outputs.branch }}
           action: ${{ needs.assembleInformation.outputs.action }}
 
@@ -217,7 +217,7 @@ jobs:
         with:
           message: 'chore: update screenshots for ${{ needs.assembleInformation.outputs.command }}'
         env:
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
 
       - name: Create comment
         if: success()
