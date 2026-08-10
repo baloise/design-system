@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server'
+import { auth } from '@/auth'
 import { BRAND_NAME_ERROR_MESSAGE, validateBrandName } from '@/src/tokens/brand'
 import { buildChangesetContent } from '@/src/tokens/changeset'
 import { applyDiffToDocument } from '@/src/tokens/edit'
 import type { TokenDiffEntry } from '@/src/tokens/edit'
 import { flattenTokenDocument } from '@/src/tokens/flatten'
+import { formatValue } from '@/src/tokens/format'
 import { brandFilePath, getGithubRef } from '@/src/tokens/github'
 import {
   addBrandToIndex,
@@ -28,6 +30,15 @@ interface ProposeChangeRequest {
   targetBranch?: string
   newBrands?: string[]
   brandDiffs?: Record<string, TokenDiffEntry[]>
+  // Dot-joined paths of every diff/brandDiffs entry that originated from a
+  // Pull (from Figma) rather than a manual edit — see docs/adr/0002. Purely
+  // cosmetic (labels the PR body), never affects what gets written.
+  pulledPaths?: string[]
+}
+
+function parsePulledPaths(input: unknown): Set<string> {
+  if (!Array.isArray(input)) return new Set()
+  return new Set(input.filter((path): path is string => typeof path === 'string'))
 }
 
 interface ConflictInfo {
@@ -99,29 +110,98 @@ function validateNewBrandNamesFormat(names: string[]): string | null {
   return null
 }
 
+interface SummaryEntry {
+  path: string
+  text: string
+}
+
+// A TokenDiffEntry's `value`/`before` are either a literal DTCG value or,
+// for a reference-kind token, a "{dotted.path}" string (see edit.ts's
+// effectiveValue) — rendered as an arrow to the target instead of the raw
+// braces, everything else falls through to formatValue's hex/number/string
+// handling.
+const REFERENCE_PATTERN = /^\{(.+)\}$/
+
+function formatEntryValue(value: unknown): string {
+  if (typeof value === 'string') {
+    const match = REFERENCE_PATTERN.exec(value)
+    if (match) return `→ ${match[1].split('.').join('/')}`
+  }
+  return formatValue(value)
+}
+
+function describeCreate(entry: TokenDiffEntry): string {
+  return `${entry.newPath!.join('.')} = ${formatEntryValue(entry.value)}`
+}
+
+function describeUpdate(entry: TokenDiffEntry): string {
+  const oldPath = entry.oldPath!.join('.')
+  const newPath = entry.newPath!.join('.')
+  const renamed = oldPath !== newPath
+  const valueChanged = JSON.stringify(entry.value) !== JSON.stringify(entry.before)
+
+  const pathPart = renamed ? `${oldPath} → ${newPath}` : oldPath
+  if (valueChanged) {
+    return `${pathPart}: ${formatEntryValue(entry.before)} → ${formatEntryValue(entry.value)}`
+  }
+  // Value (and path) unchanged but still staged as an update — this is a
+  // Pull (from Figma) adoption backfilling a token's variableId with
+  // nothing else to show for it (see figma-pull.ts's buildBasePullPlan).
+  if (entry.figmaId) {
+    return `${pathPart} (linked to Figma variable ${entry.figmaId}, value unchanged)`
+  }
+  return pathPart
+}
+
+function describeDelete(entry: TokenDiffEntry): string {
+  return `${entry.oldPath!.join('.')} (was ${formatEntryValue(entry.before)})`
+}
+
 function buildChangeSummary(
   diff: TokenDiffEntry[],
   description: string,
   newBrands: string[],
   brandDiffs: Record<string, TokenDiffEntry[]>,
+  pulledPaths: Set<string> = new Set(),
 ): string {
-  const created = diff.filter(e => e.kind === 'create').map(e => e.newPath!.join('.'))
-  const updated = diff.filter(e => e.kind === 'update').map(e => `${e.oldPath!.join('.')} → ${e.newPath!.join('.')}`)
-  const deleted = diff.filter(e => e.kind === 'delete').map(e => e.oldPath!.join('.'))
-
   const lines: string[] = []
   if (description.trim()) lines.push(description.trim(), '')
-  if (created.length) lines.push(`**Created:** ${created.join(', ')}`)
-  if (updated.length) lines.push(`**Updated:** ${updated.join(', ')}`)
-  if (deleted.length) lines.push(`**Deleted:** ${deleted.join(', ')}`)
+
+  // Splits entries into "manual" vs. "via Figma pull" (see docs/adr/0002)
+  // and appends one line per non-empty group, so a pull-heavy submit reads
+  // distinctly from a hand-edited one in the PR body.
+  function pushGroup(label: string, entries: SummaryEntry[]) {
+    const own = entries.filter(e => !pulledPaths.has(e.path)).map(e => e.text)
+    const pulled = entries.filter(e => pulledPaths.has(e.path)).map(e => e.text)
+    if (own.length) lines.push(`**${label}:**\n- ${own.join('\n- ')}`)
+    if (pulled.length) lines.push(`**${label} (via Figma pull):**\n- ${pulled.join('\n- ')}`)
+  }
+
+  const created = diff
+    .filter(e => e.kind === 'create')
+    .map(e => ({ path: e.newPath!.join('.'), text: describeCreate(e) }))
+  const updated = diff
+    .filter(e => e.kind === 'update')
+    .map(e => ({ path: e.oldPath!.join('.'), text: describeUpdate(e) }))
+  const deleted = diff
+    .filter(e => e.kind === 'delete')
+    .map(e => ({ path: e.oldPath!.join('.'), text: describeDelete(e) }))
+
+  pushGroup('Created', created)
+  pushGroup('Updated', updated)
+  pushGroup('Deleted', deleted)
   if (newBrands.length) lines.push(`**Created brand:** ${newBrands.join(', ')}`)
 
   for (const name of Object.keys(brandDiffs).sort((a, b) => a.localeCompare(b))) {
     const entries = brandDiffs[name]
-    const overridden = entries.filter(e => e.kind === 'create' || e.kind === 'update').map(e => e.newPath!.join('.'))
-    const reverted = entries.filter(e => e.kind === 'delete').map(e => e.oldPath!.join('.'))
-    if (overridden.length) lines.push(`**${name} — Overridden:** ${overridden.join(', ')}`)
-    if (reverted.length) lines.push(`**${name} — Reverted:** ${reverted.join(', ')}`)
+    const overridden = entries
+      .filter(e => e.kind === 'create' || e.kind === 'update')
+      .map(e => ({ path: e.newPath!.join('.'), text: e.kind === 'create' ? describeCreate(e) : describeUpdate(e) }))
+    const reverted = entries
+      .filter(e => e.kind === 'delete')
+      .map(e => ({ path: e.oldPath!.join('.'), text: describeDelete(e) }))
+    pushGroup(`${name} — Overridden`, overridden)
+    pushGroup(`${name} — Reverted`, reverted)
   }
 
   return lines.join('\n')
@@ -132,11 +212,13 @@ function buildInitialPrBody(
   description: string,
   newBrands: string[],
   brandDiffs: Record<string, TokenDiffEntry[]>,
+  pulledPaths: Set<string>,
+  submitter: string,
 ): string {
   return [
-    "Submitted via the Toky web app — no signed-in identity yet, end-user auth isn't wired up.",
+    `Submitted via the Toky web app by @${submitter}.`,
     '',
-    buildChangeSummary(diff, description, newBrands, brandDiffs),
+    buildChangeSummary(diff, description, newBrands, brandDiffs, pulledPaths),
   ].join('\n')
 }
 
@@ -149,13 +231,26 @@ function appendPrBodyUpdate(
   description: string,
   newBrands: string[],
   brandDiffs: Record<string, TokenDiffEntry[]>,
+  pulledPaths: Set<string>,
+  submitter: string,
 ): string {
   const timestamp = new Date().toISOString()
-  const summary = buildChangeSummary(diff, description, newBrands, brandDiffs)
-  return `${existingBody.trimEnd()}\n\n---\n\n**Additional changes — ${timestamp}**\n\n${summary}`
+  const summary = buildChangeSummary(diff, description, newBrands, brandDiffs, pulledPaths)
+  return `${existingBody.trimEnd()}\n\n---\n\n**Additional changes by @${submitter} — ${timestamp}**\n\n${summary}`
 }
 
 export async function POST(request: Request): Promise<Response> {
+  // Identity for PR attribution comes only from the server-side session —
+  // never from the request body — and proxy.ts guarantees every request
+  // reaching this route is already authenticated (see docs/adr/0003). Still
+  // guarded here rather than asserted, since this route can also be hit
+  // directly in tests/local dev without middleware in front of it.
+  const session = await auth()
+  const submitter = session?.user.login
+  if (!submitter) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   let body: ProposeChangeRequest
   try {
     body = (await request.json()) as ProposeChangeRequest
@@ -164,6 +259,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const { description, targetBranch } = body
+  const pulledPaths = parsePulledPaths(body.pulledPaths)
   const diff: TokenDiffEntry[] = Array.isArray(body.diff) ? body.diff : []
   const newBrands = parseNewBrandNames(body.newBrands)
   const brandDiffs = parseBrandDiffs(body.brandDiffs)
@@ -339,12 +435,12 @@ export async function POST(request: Request): Promise<Response> {
     const pr = existingPr
       ? await updatePullRequestBody(
           existingPr.number,
-          appendPrBodyUpdate(existingPr.body, diff, description, newBrands, brandDiffs),
+          appendPrBodyUpdate(existingPr.body, diff, description, newBrands, brandDiffs, pulledPaths, submitter),
         ).then(() => existingPr)
       : await openPullRequest(
           branch,
           '🎨 Update design tokens via Toky',
-          buildInitialPrBody(diff, description, newBrands, brandDiffs),
+          buildInitialPrBody(diff, description, newBrands, brandDiffs, pulledPaths, submitter),
           base,
         )
 

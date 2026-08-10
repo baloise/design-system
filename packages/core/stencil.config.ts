@@ -158,6 +158,11 @@ export const config: Config = {
           src: '**/*.html',
         },
         {
+          src: join(__dirname, 'docs', 'visual-pages.json'),
+          dest: 'visual-pages.json',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'core', 'public', 'section.css'),
           dest: 'assets/section.css',
           warn: true,
@@ -266,6 +271,25 @@ export const config: Config = {
 
           await mkdir(destDir, { recursive: true })
           await writeFile(resolve(destDir, 'tags.json'), JSON.stringify(allTags, null, 2))
+
+          /**
+           * Generating the visual-pages.json manifest - every *.visual.html page under the
+           * "browsable" source directories, for Toky's Live Preview sidebar to offer as an
+           * autocomplete (see apps/toky/app/preview-sidebar.tsx). Copied into `www/` below so it's
+           * fetchable from the running dev-server, same as the pages themselves.
+           */
+          const visualHtmlFiles = await fg(
+            [
+              'src/blocks/**/*.visual.html',
+              'src/templates/**/*.visual.html',
+              'src/foundation/**/*.visual.html',
+              'src/components/**/*.visual.html',
+            ],
+            { cwd: __dirname },
+          )
+          const visualPages = visualHtmlFiles.map(f => `/${f.replace(/^src\//, '')}`).sort()
+
+          await writeFile(resolve(destDir, 'visual-pages.json'), JSON.stringify(visualPages, null, 2))
         },
       },
     ],

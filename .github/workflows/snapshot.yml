@@ -1,4 +1,4 @@
-name: 🚚 Create Snapshot
+name: 🚚 Snapshot
 
 on:
   issue_comment:

@@ -15,6 +15,13 @@ export interface WorkingToken {
 export type TokenDiffKind = 'create' | 'update' | 'delete'
 
 export interface TokenDiffEntry {
+  // The WorkingToken/original id this entry came from — create/update entries carry the working
+  // copy's id, delete entries carry the removed original's id (its path, since it never had a
+  // working counterpart). Lets a caller (e.g. "discard this change") map an entry straight back
+  // to the row that produced it without re-deriving a path-based key itself. Optional because
+  // not every TokenDiffEntry producer needs it (only computeDiff sets it today) — a caller
+  // relying on it (e.g. discard) should treat a missing id as "can't be discarded".
+  id?: string
   kind: TokenDiffKind
   layer: TokenLayer
   oldPath: string[] | null
@@ -22,6 +29,11 @@ export interface TokenDiffEntry {
   type: string
   value: unknown
   before: unknown
+  // Carries a Pull (from Figma)-linked token's variableId through to
+  // applyDiffToDocument, which writes it into $extensions — without this,
+  // a freshly created token's Figma link is dropped on write and the next
+  // pull can't recognize it, proposing a duplicate create (see docs/adr/0002).
+  figmaId?: string | null
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -90,6 +102,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
 
     if (!originalToken) {
       entries.push({
+        id,
         kind: 'create',
         layer: token.layer,
         oldPath: null,
@@ -97,6 +110,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         type: token.type,
         value: effectiveValue(token),
         before: undefined,
+        figmaId: token.figmaId ?? undefined,
       })
       continue
     }
@@ -104,10 +118,15 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
     const changed =
       JSON.stringify(newPath) !== JSON.stringify(originalToken.path) ||
       JSON.stringify(effectiveValue(token)) !== JSON.stringify(effectiveValue(originalToken)) ||
-      token.type !== originalToken.type
+      token.type !== originalToken.type ||
+      // A figmaId-only change (e.g. Pull adopting an already-existing,
+      // previously-unlinked token by path) must still produce an update —
+      // otherwise it's invisible to computeDiff and never gets written.
+      (token.figmaId ?? null) !== (originalToken.figmaId ?? null)
 
     if (changed) {
       entries.push({
+        id,
         kind: 'update',
         layer: token.layer,
         oldPath: originalToken.path,
@@ -115,6 +134,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         type: token.type,
         value: effectiveValue(token),
         before: originalToken.rawValue,
+        figmaId: token.figmaId ?? undefined,
       })
     }
   }
@@ -123,6 +143,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
     const id = originalToken.path.join('.')
     if (!workingIds.has(id)) {
       entries.push({
+        id,
         kind: 'delete',
         layer: originalToken.layer,
         oldPath: originalToken.path,
@@ -205,12 +226,17 @@ export function applyDiffToDocument(doc: Record<string, unknown>, diff: TokenDif
         $value: entry.value,
       }
 
-      if (entry.kind === 'update' && entry.oldPath) {
-        const originalLeaf = getNode(doc, entry.oldPath)
-        if (originalLeaf?.$extensions) {
-          newNode.$extensions = originalLeaf.$extensions
-        }
-      }
+      // Preserve whatever $extensions the original leaf already carried
+      // (e.g. figmaScopes) across an update, then layer this entry's own
+      // figmaId on top — for a `create`, there's no original leaf, so this
+      // is the only place a Pull (from Figma)-created token's variableId
+      // ever gets written at all.
+      const originalLeaf = entry.kind === 'update' && entry.oldPath ? getNode(doc, entry.oldPath) : undefined
+      const existingExtensions = isPlainObject(originalLeaf?.$extensions) ? originalLeaf.$extensions : undefined
+      const extensions = entry.figmaId
+        ? { ...existingExtensions, 'com.figma.variableId': entry.figmaId }
+        : existingExtensions
+      if (extensions) newNode.$extensions = extensions
 
       next = setPath(next, entry.newPath, newNode)
     }

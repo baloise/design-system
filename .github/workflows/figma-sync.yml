@@ -1,4 +1,4 @@
-name: 🔼 Figma Sync (Pull from Code)
+name: 🔼 Figma Sync
 
 on:
   pull_request:

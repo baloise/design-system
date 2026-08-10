@@ -15,6 +15,7 @@ const {
   openPullRequest,
   findOpenPullRequest,
   updatePullRequestBody,
+  auth,
 } = vi.hoisted(() => ({
   getBaseTokensFileMeta: vi.fn(),
   getBrandTokensFileMeta: vi.fn(),
@@ -29,6 +30,7 @@ const {
   openPullRequest: vi.fn(),
   findOpenPullRequest: vi.fn(),
   updatePullRequestBody: vi.fn(),
+  auth: vi.fn(),
 }))
 
 vi.mock('@/src/tokens/github-write', async importOriginal => {
@@ -50,6 +52,8 @@ vi.mock('@/src/tokens/github-write', async importOriginal => {
     updatePullRequestBody,
   }
 })
+
+vi.mock('@/auth', () => ({ auth }))
 
 const { POST } = await import('./route')
 
@@ -90,6 +94,7 @@ const tcsFixtureDoc = {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  auth.mockResolvedValue({ user: { login: 'octocat', isOrgMember: true } })
   getBaseTokensFileMeta.mockResolvedValue({ sha: 'file-sha', content: fixtureDoc })
   getBrandTokensFileMeta.mockResolvedValue({ sha: 'tcs-sha', content: tcsFixtureDoc })
   listTokenBrandFiles.mockResolvedValue(['Tcs'])
@@ -110,6 +115,14 @@ beforeEach(() => {
 })
 
 describe('POST /api/propose-change', () => {
+  it('rejects an unauthenticated request without touching GitHub', async () => {
+    auth.mockResolvedValue(null)
+
+    const response = await POST(makeRequest({ diff: cleanDiff, description: '' }))
+    expect(response.status).toBe(401)
+    expect(resolveReadRef).not.toHaveBeenCalled()
+  })
+
   it('rejects an empty diff without touching GitHub', async () => {
     const response = await POST(makeRequest({ diff: [], description: '' }))
     expect(response.status).toBe(400)
@@ -187,6 +200,136 @@ describe('POST /api/propose-change', () => {
     const [prBranch, , , base] = openPullRequest.mock.calls[0]
     expect(prBranch).toBe('toky/update-next')
     expect(base).toBe('next')
+  })
+
+  it('credits the signed-in user in the initial PR body, not any client-supplied field', async () => {
+    await POST(
+      makeRequest({ diff: cleanDiff, description: 'Lighten white slightly', submitter: 'someone-else' } as never),
+    )
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('Submitted via the Toky web app by @octocat.')
+    expect(prBody).not.toContain('someone-else')
+  })
+
+  it('credits the signed-in user when appending to an already-open PR', async () => {
+    resolveReadRef.mockResolvedValue({
+      ref: 'toky/update-next',
+      status: { state: 'pending', prUrl: 'https://github.com/baloise/design-system/pull/7', prNumber: 7 },
+    })
+    findOpenPullRequest.mockResolvedValue({
+      url: 'https://github.com/baloise/design-system/pull/7',
+      number: 7,
+      body: 'initial body',
+    })
+
+    await POST(makeRequest({ diff: cleanDiff, description: '' }))
+
+    const [, updatedBody] = updatePullRequestBody.mock.calls[0]
+    expect(updatedBody).toContain('Additional changes by @octocat —')
+  })
+
+  it('labels an entry as "via Figma pull" in the PR body when its path is in pulledPaths', async () => {
+    await POST(
+      makeRequest({
+        diff: cleanDiff,
+        description: '',
+        pulledPaths: ['🌐 Global.🌈 Color.White'],
+      }),
+    )
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Updated (via Figma pull):**\n- 🌐 Global.🌈 Color.White: #FFFFFF → #EEEEEE')
+    expect(prBody).not.toMatch(/\*\*Updated:\*\*/)
+  })
+
+  it('ignores a pulledPaths entry that does not match any diff path', async () => {
+    await POST(makeRequest({ diff: cleanDiff, description: '', pulledPaths: ['not.a.real.path'] }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Updated:**\n- 🌐 Global.🌈 Color.White: #FFFFFF → #EEEEEE')
+    expect(prBody).not.toMatch(/via Figma pull/)
+  })
+
+  it('shows the new value for a created token', async () => {
+    const createDiff: TokenDiffEntry[] = [
+      {
+        kind: 'create',
+        layer: 'Global',
+        oldPath: null,
+        newPath: ['🌐 Global', '🌈 Color', 'Brand'],
+        type: 'color',
+        value: { hex: '#123456' },
+        before: undefined,
+      },
+    ]
+
+    await POST(makeRequest({ diff: createDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Created:**\n- 🌐 Global.🌈 Color.Brand = #123456')
+  })
+
+  it('notes a figmaId-only update (Pull adoption backfill) without a value change', async () => {
+    const linkOnlyDiff: TokenDiffEntry[] = [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'White'],
+        newPath: ['🌐 Global', '🌈 Color', 'White'],
+        type: 'color',
+        value: { hex: '#FFFFFF' },
+        before: { hex: '#FFFFFF' }, // unchanged — only the figmaId link is new
+        figmaId: 'VariableID:38:2',
+      },
+    ]
+
+    await POST(makeRequest({ diff: linkOnlyDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain(
+      '**Updated:**\n- 🌐 Global.🌈 Color.White (linked to Figma variable VariableID:38:2, value unchanged)',
+    )
+  })
+
+  it('shows a rename combined with a value change', async () => {
+    const renameAndValueDiff: TokenDiffEntry[] = [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'White'],
+        newPath: ['🌐 Global', '🌈 Color', 'OffWhite'],
+        type: 'color',
+        value: { hex: '#EEEEEE' },
+        before: { hex: '#FFFFFF' },
+      },
+    ]
+
+    await POST(makeRequest({ diff: renameAndValueDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain(
+      '**Updated:**\n- 🌐 Global.🌈 Color.White → 🌐 Global.🌈 Color.OffWhite: #FFFFFF → #EEEEEE',
+    )
+  })
+
+  it('shows the removed value for a deleted token', async () => {
+    const deleteDiff: TokenDiffEntry[] = [
+      {
+        kind: 'delete',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'White'],
+        newPath: null,
+        type: 'color',
+        value: undefined,
+        before: fixtureDoc['🌐 Global']['🌈 Color'].White.$value, // matches current value — clean
+      },
+    ]
+
+    await POST(makeRequest({ diff: deleteDiff, description: '' }))
+
+    const [, , prBody] = openPullRequest.mock.calls[0]
+    expect(prBody).toContain('**Deleted:**\n- 🌐 Global.🌈 Color.White (was #FFFFFF)')
   })
 
   it('reuses the existing branch and appends to the open PR body on a second submit', async () => {
@@ -422,7 +565,7 @@ describe('POST /api/propose-change', () => {
       expect(changesetContent).toContain('**Tcs — Overridden:** 🌐 Global/🌈 Color/Black')
 
       const [, , prBody] = openPullRequest.mock.calls[0]
-      expect(prBody).toContain('**Tcs — Overridden:** 🌐 Global.🌈 Color.Black')
+      expect(prBody).toContain('**Tcs — Overridden:**\n- 🌐 Global.🌈 Color.Black: #000000 → #111111')
     })
   })
 })

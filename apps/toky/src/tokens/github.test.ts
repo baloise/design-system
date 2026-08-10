@@ -1,11 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { fetchBaseTokensFile } from './github'
+import { fetchBaseTokensFile, requireGithubOrgToken } from './github'
 
 const originalEnv = { ...process.env }
 
 beforeEach(() => {
   process.env.TOKY_GITHUB_TOKEN = 'test-token'
   delete process.env.TOKY_GITHUB_REF
+  delete process.env.TOKY_GITHUB_ORG_TOKEN
 })
 
 afterEach(() => {
@@ -70,5 +71,21 @@ describe('fetchBaseTokensFile', () => {
     vi.stubGlobal('fetch', fetchMock)
 
     await expect(fetchBaseTokensFile()).resolves.toBe('{"hello":"world"}')
+  })
+})
+
+describe('requireGithubOrgToken', () => {
+  it('prefers TOKY_GITHUB_ORG_TOKEN when set', () => {
+    process.env.TOKY_GITHUB_ORG_TOKEN = 'org-token'
+    expect(requireGithubOrgToken()).toBe('org-token')
+  })
+
+  it('falls back to TOKY_GITHUB_TOKEN when TOKY_GITHUB_ORG_TOKEN is unset', () => {
+    expect(requireGithubOrgToken()).toBe('test-token')
+  })
+
+  it('throws when neither is set', () => {
+    delete process.env.TOKY_GITHUB_TOKEN
+    expect(() => requireGithubOrgToken()).toThrow('Neither TOKY_GITHUB_ORG_TOKEN nor TOKY_GITHUB_TOKEN is set')
   })
 })

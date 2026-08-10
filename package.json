@@ -82,6 +82,7 @@
     "dotenv": "8.6.0",
     "eslint": "catalog:",
     "eslint-config-prettier": "10.1.8",
+    "change-case": "5.4.4",
     "eslint-plugin-playwright": "2.10.5",
     "express": "catalog:",
     "fast-deep-equal": "catalog:",

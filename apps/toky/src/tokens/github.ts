@@ -16,6 +16,19 @@ export function requireGithubToken(): string {
   return token
 }
 
+// Org-member reads use their own fine-grained PAT (narrower than
+// TOKY_GITHUB_TOKEN's repo write access — see docs/adr/0003) when set, and
+// fall back to TOKY_GITHUB_TOKEN otherwise so a single-PAT setup still works.
+export function requireGithubOrgToken(): string {
+  const token = process.env.TOKY_GITHUB_ORG_TOKEN ?? process.env.TOKY_GITHUB_TOKEN
+  if (!token) {
+    throw new Error(
+      'Neither TOKY_GITHUB_ORG_TOKEN nor TOKY_GITHUB_TOKEN is set — a GitHub token is required to check org membership.',
+    )
+  }
+  return token
+}
+
 export function getGithubRef(): string {
   return process.env.TOKY_GITHUB_REF ?? 'next'
 }
