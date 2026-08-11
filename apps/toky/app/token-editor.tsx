@@ -549,7 +549,7 @@ const TokenRow = memo(function TokenRow({
                     }
                   >
                     {renderColorSwatch(hex, swatchAlphaPercent ?? 100)}
-                    <span className="w-20 truncate">
+                    <span className="w-fit">
                       {token.referenceTarget ? toSlashPath(token.referenceTarget) : (hex ?? '—')}
                     </span>
                     {swatchAlphaPercent !== null && swatchAlphaPercent !== 100 && (
@@ -824,7 +824,7 @@ const TokenRow = memo(function TokenRow({
                             }
                           >
                             {renderColorSwatch(brandHex, brandSwatchAlphaPercent ?? 100)}
-                            <span className="w-20 truncate">
+                            <span className="w-fit">
                               {brandToken.referenceTarget ? toSlashPath(brandToken.referenceTarget) : (brandHex ?? '—')}
                             </span>
                             {brandSwatchAlphaPercent !== null && brandSwatchAlphaPercent !== 100 && (
