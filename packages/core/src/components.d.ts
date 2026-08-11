@@ -833,9 +833,8 @@ export namespace Components {
         "button": boolean;
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
-          * @default ''
          */
-        "buttonColor": ButtonColor;
+        "buttonColor"?: ButtonColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
@@ -849,9 +848,8 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
-        "size": CloseSize;
+        "size"?: CloseSize;
     }
     /**
      * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
@@ -5716,7 +5714,6 @@ declare namespace LocalJSX {
         "button"?: boolean;
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
-          * @default ''
          */
         "buttonColor"?: ButtonColor;
         /**
@@ -5731,7 +5728,6 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
         "size"?: CloseSize;
     }
