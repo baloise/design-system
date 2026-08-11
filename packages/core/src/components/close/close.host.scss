@@ -26,7 +26,7 @@
 
   @include vars.local(close-color-focus, var(--ds-alias-interaction-focus-color-base));
 
-  @include vars.local(close-color-icon, var(--ds-close-color-icon-base));
+  @include vars.local(close-color-icon, var(--ds-close-icon-color-base));
   @include vars.local(close-radius, var(--ds-close-radius));
 
   @include vars.local(close-size-icon, 12px);
@@ -59,6 +59,11 @@
     padding: var(--_close-padding);
     appearance: none;
     outline: none;
+
+    touch-action: manipulation;
+    transition-property: color, background-color, border-color, box-shadow, text-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 
     //
     // Mask Icon for Close Button
@@ -126,16 +131,16 @@
 //
 // Inverted Variants
 :host(.is-inverted:not(.is-disabled)) {
-  --mod-close-color-icon: var(--ds-close-color-icon-inverted);
-  --mod-close-color-background-hover: var(--ds-close-color-background-inverted-hover);
-  --mod-close-color-background-active: var(--ds-close-color-background-inverted-active);
+  --mod-close-color-icon: var(--ds-close-inverted-icon-color-base);
+  --mod-close-color-background-hover: var(--ds-close-inverted-color-background-hover);
+  --mod-close-color-background-active: var(--ds-close-inverted-color-background-active);
   --mod-close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
 }
 
 //
 // Disabled Variants
 :host(.is-disabled) {
-  --mod-close-color-icon: var(--ds-close-color-icon-disabled);
+  --mod-close-color-icon: var(--ds-close-icon-color-disabled);
   --mod-close-color-background: var(--ds-close-color-background-disabled);
   --mod-close-color-background-hover: var(--ds-close-color-background-disabled);
   --mod-close-color-background-active: var(--ds-close-color-background-disabled);
