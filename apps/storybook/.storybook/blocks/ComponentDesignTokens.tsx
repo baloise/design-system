@@ -149,7 +149,7 @@ export const ComponentDesignTokens = ({
           const color = isColor(token.nativeValue)
           // Show the inheritance chain up to (not including) the component token itself
           const chain = (token.inheritance || []).slice(0, -1)
-          const bg = index % 2 === 0 ? 'var(--ds-global-color-white)' : 'var(--ds-global-color-grey-2)'
+          const bg = index % 2 === 0 ? 'var(--ds-global-color-white)' : 'var(--ds-global-color-grey-0)'
 
           return (
             <tbody key={index}>
@@ -166,7 +166,7 @@ export const ComponentDesignTokens = ({
                           width: '20px',
                           height: '20px',
                           backgroundColor: token.nativeValue,
-                          border: '1px solid var(--ds-color-grey-3)',
+                          border: '1px solid var(--ds-color-grey-2)',
                         }}
                       />
                     )}
@@ -175,7 +175,7 @@ export const ComponentDesignTokens = ({
                   </div>
                 </td>
               </tr>
-              <tr style={{ backgroundColor: bg, borderBottom: '2px solid var(--ds-global-color-grey-3)' }}>
+              <tr style={{ backgroundColor: bg, borderBottom: '2px solid var(--ds-global-color-grey-2)' }}>
                 <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>
                   {token.name}
                 </td>
