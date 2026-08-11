@@ -16899,10 +16899,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"center\" | \"end\" | \"start\"",
+          "type": "\"center\" | \"end\" | \"start\" | undefined",
           "complexType": {
             "original": "ContentAlignment",
-            "resolved": "\"\" | \"center\" | \"end\" | \"start\"",
+            "resolved": "\"center\" | \"end\" | \"start\" | undefined",
             "references": {
               "ContentAlignment": {
                 "location": "import",
@@ -16916,17 +16916,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the positioning like center, end or\ndefault to start.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
@@ -16938,19 +16929,22 @@
             {
               "value": "start",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "direction",
-          "type": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
           "complexType": {
             "original": "StackDirection",
-            "resolved": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
             "references": {
               "StackDirection": {
                 "location": "import",
@@ -16964,17 +16958,8 @@
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "column",
               "type": "string"
@@ -16990,19 +16975,22 @@
             {
               "value": "row-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "layout",
-          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
+          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
             "original": "StackLayout",
-            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
+            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
               "StackLayout": {
                 "location": "import",
@@ -17016,13 +17004,7 @@
           "attr": "layout",
           "reflectToAttr": false,
           "docs": "**Deprecated:** Use direction instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -17042,19 +17024,22 @@
             {
               "value": "vertical-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "space",
-          "type": "\"\" | \"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\"",
+          "type": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
           "complexType": {
             "original": "ContentSpace",
-            "resolved": "\"\" | \"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\"",
+            "resolved": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
             "references": {
               "ContentSpace": {
                 "location": "import",
@@ -17068,17 +17053,8 @@
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "2xs",
               "type": "string"
@@ -17122,19 +17098,22 @@
             {
               "value": "xxx-small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "textAlign",
-          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "ContentTextAlignment",
-            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "ContentTextAlignment": {
                 "location": "import",
@@ -17148,13 +17127,7 @@
           "attr": "text-align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or\ndefault to left.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -17170,9 +17143,12 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -51371,10 +51347,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
+          "type": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
           "complexType": {
             "original": "StackAlignment",
-            "resolved": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
+            "resolved": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
             "references": {
               "StackAlignment": {
                 "location": "import",
@@ -51388,17 +51364,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or default to start.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "bottom center",
               "type": "string"
@@ -51434,19 +51401,22 @@
             {
               "value": "top start",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "direction",
-          "type": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
           "complexType": {
             "original": "StackDirection",
-            "resolved": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
             "references": {
               "StackDirection": {
                 "location": "import",
@@ -51460,17 +51430,8 @@
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "column",
               "type": "string"
@@ -51486,9 +51447,12 @@
             {
               "value": "row-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -64337,12 +64301,12 @@
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackDirection": {
-      "declaration": "\"\" | \"row\" | \"column\" | \"row-reverse\" | \"column-reverse\"",
+      "declaration": "\"row\" | \"column\" | \"row-reverse\" | \"column-reverse\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentAlignment": {
-      "declaration": "\"\" | \"center\" | \"start\" | \"end\"",
+      "declaration": "\"center\" | \"start\" | \"end\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
@@ -64352,12 +64316,12 @@
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentSpace": {
-      "declaration": "\"\" | \"none\" | \"sm\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"3xs\" | \"2xs\" | \"xs\" | \"xxx-small\"",
+      "declaration": "\"none\" | \"sm\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"3xs\" | \"2xs\" | \"xs\" | \"xxx-small\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackAlignment": {
-      "declaration": "\"\" | \"center\" | \"top start\" | \"top center\" | \"top end\" | \"start\" | \"end\" | \"bottom start\" | \"bottom center\" | \"bottom end\"",
+      "declaration": "\"center\" | \"top start\" | \"top center\" | \"top end\" | \"start\" | \"end\" | \"bottom start\" | \"bottom center\" | \"bottom end\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },

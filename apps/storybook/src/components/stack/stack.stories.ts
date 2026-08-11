@@ -15,7 +15,7 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag: 'ds-stack' }),
   },
   ...withRender(
-    () => `<ds-stack>
+    ({ slot, ...args }) => `<ds-stack ${props(args)}>
   <ds-icon name="date" size="md"></ds-icon>
   <ds-content>
     <ds-label>My Item</ds-label>
@@ -49,8 +49,8 @@ BasicHtml.storyName = '🌍 Basic'
 
 export const Basic = Story({
   ...withRender(
-    () => `
-<ds-stack>
+    ({ slot, ...args }) => `
+<ds-stack ${props(args)}>
   <div class="bg-purple-3 h-2rem w-full"></div>
   <div class="bg-purple-3 h-2rem w-full"></div>
   <div class="bg-purple-3 h-2rem w-full"></div>
