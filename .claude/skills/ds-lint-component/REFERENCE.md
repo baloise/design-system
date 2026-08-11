@@ -121,6 +121,45 @@ export type ButtonColor = (typeof BUTTON_COLORS)[number]
 
 ---
 
+## Empty-String Sentinel Rule
+
+See STYLE_GUIDE.md "Props": optional `@OneOf` enum props must use `undefined` (optional `?:`), never `= ''`, as the "not set" value. The enum's `CONST_ARRAY` must only contain real domain values.
+
+### Detection
+
+A prop is flagged (`empty-string-sentinel`, warn) when it has `@OneOf(...)` and a literal `= ''` or `= ""` default, and is **not** already optional:
+
+```tsx
+@Prop()
+@OneOf(BUTTON_SIZES)
+readonly size: ButtonSize = ''   // ⚠ flagged
+```
+
+Required props (`@Required()`) with a real default (e.g. `= 'primary'`) are never flagged — this rule only applies to the "optional, no value selected" case.
+
+### Fix (`--fix`)
+
+Two mechanical edits, applied together:
+
+1. Rewrite the prop declaration: `size: ButtonSize = ''` → `size?: ButtonSize` (preserves `readonly` if present).
+2. Strip the `''` sentinel out of the matching `CONST_ARRAY` in `.interfaces.ts` (found via the `@OneOf(ARRAY_NAME)` argument, searched across every `*.interfaces.ts` file in the component directory).
+
+The array is only touched if step 1 actually matched — if the prop declaration doesn't match the expected pattern (e.g. a non-standard shape), the fix is skipped for that prop and reported so it isn't half-applied (a stray `= ''` referencing a type that no longer contains `''` is worse than not fixing it).
+
+### Flagged, not fixed
+
+Making a prop optional can break code that assumed it was always a string. These are reported as `empty-string-usage` / `unsafe-optional-access` warnings, for manual follow-up:
+
+- Any line in the same `.tsx` referencing `this.<prop>` alongside a `''`/`""` literal (e.g. `normalizeDeprecatedTShirtSize(this.px) || ''`)
+- Any line calling a method/property directly off the prop (`this.<prop>.split(...)`) — `hasValue()` is a plain `boolean`, not a TS type guard, so this becomes a real `strict: true` type error once the prop is optional
+- `apps/storybook/src/components/<name>/*.stories.ts` and `*.doc-config.ts`
+- `packages/playwright/src/lib/components/<name>*.po.ts`
+- `*.spec.ts` files inside the component directory
+
+After running `--fix` on a component with this rule, always run `tsc --noEmit` before considering the migration done.
+
+---
+
 ## Validation Errors & Warnings
 
 ### Errors (Phase 1 always reports)

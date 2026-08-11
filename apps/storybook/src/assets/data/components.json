@@ -50029,8 +50029,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-default-color-bg-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Bg / Base",
+          "cssVarName": "--ds-snackbar-primary-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -50043,22 +50043,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-bg-base",
-              "figmaName": "Component / Snackbar / Default / Color / Bg / Base"
+              "cssVar": "--ds-snackbar-primary-color-bg-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Bg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "Bg",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / Border / Base",
-          "cssVarName": "--ds-snackbar-default-color-border-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Border / Base",
+          "cssVarName": "--ds-snackbar-primary-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -50071,22 +50071,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-border-base",
-              "figmaName": "Component / Snackbar / Default / Color / Border / Base"
+              "cssVar": "--ds-snackbar-primary-color-border-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Border / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "Border",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / Text / Base",
-          "cssVarName": "--ds-snackbar-default-color-text-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Text / Base",
+          "cssVarName": "--ds-snackbar-primary-color-text-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -50099,22 +50099,22 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-text-base",
-              "figmaName": "Component / Snackbar / Default / Color / Text / Base"
+              "cssVar": "--ds-snackbar-primary-color-text-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Text / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "Text",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / ProgressBar / Base",
-          "cssVarName": "--ds-snackbar-default-color-progressbar-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / ProgressBar / Base",
+          "cssVarName": "--ds-snackbar-primary-color-progressbar-base",
           "value": "{🌐 Global.🌈 Color.Primary.5}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -50123,22 +50123,22 @@
               "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-progressbar-base",
-              "figmaName": "Component / Snackbar / Default / Color / ProgressBar / Base"
+              "cssVar": "--ds-snackbar-primary-color-progressbar-base",
+              "figmaName": "Component / Snackbar / Primary / Color / ProgressBar / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBar",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-default-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / ProgressBg / Base",
+          "cssVarName": "--ds-snackbar-primary-color-progressbg-base",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -50147,14 +50147,14 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Default / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-primary-color-progressbg-base",
+              "figmaName": "Component / Snackbar / Primary / Color / ProgressBg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBg",
             "Base"
@@ -56769,8 +56769,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Tag / Default / Color / Text / Base",
-          "cssVarName": "--ds-tag-default-color-text-base",
+          "name": "🧩 Component / Tag / Base / Color / Text / Base",
+          "cssVarName": "--ds-tag-base-color-text-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -56783,22 +56783,22 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-tag-default-color-text-base",
-              "figmaName": "Component / Tag / Default / Color / Text / Base"
+              "cssVar": "--ds-tag-base-color-text-base",
+              "figmaName": "Component / Tag / Base / Color / Text / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Tag",
-            "Default",
+            "Base",
             "Color",
             "Text",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Tag / Default / Color / Bg / Base",
-          "cssVarName": "--ds-tag-default-color-bg-base",
+          "name": "🧩 Component / Tag / Base / Color / Bg / Base",
+          "cssVarName": "--ds-tag-base-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
           "nativeValue": "#E0E0E0",
           "inheritance": [
@@ -56811,14 +56811,14 @@
               "figmaName": "Alias / Background / Color / Grey"
             },
             {
-              "cssVar": "--ds-tag-default-color-bg-base",
-              "figmaName": "Component / Tag / Default / Color / Bg / Base"
+              "cssVar": "--ds-tag-base-color-bg-base",
+              "figmaName": "Component / Tag / Base / Color / Bg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Tag",
-            "Default",
+            "Base",
             "Color",
             "Bg",
             "Base"
@@ -59406,8 +59406,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / Bg / Base",
-          "cssVarName": "--ds-toast-default-color-bg-base",
+          "name": "🧩 Component / Toast / Primary / Color / Bg / Base",
+          "cssVarName": "--ds-toast-primary-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -59420,22 +59420,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-toast-default-color-bg-base",
-              "figmaName": "Component / Toast / Default / Color / Bg / Base"
+              "cssVar": "--ds-toast-primary-color-bg-base",
+              "figmaName": "Component / Toast / Primary / Color / Bg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "Bg",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / Border / Base",
-          "cssVarName": "--ds-toast-default-color-border-base",
+          "name": "🧩 Component / Toast / Primary / Color / Border / Base",
+          "cssVarName": "--ds-toast-primary-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -59448,22 +59448,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-toast-default-color-border-base",
-              "figmaName": "Component / Toast / Default / Color / Border / Base"
+              "cssVar": "--ds-toast-primary-color-border-base",
+              "figmaName": "Component / Toast / Primary / Color / Border / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "Border",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / Text / Base",
-          "cssVarName": "--ds-toast-default-color-text-base",
+          "name": "🧩 Component / Toast / Primary / Color / Text / Base",
+          "cssVarName": "--ds-toast-primary-color-text-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -59476,22 +59476,22 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-toast-default-color-text-base",
-              "figmaName": "Component / Toast / Default / Color / Text / Base"
+              "cssVar": "--ds-toast-primary-color-text-base",
+              "figmaName": "Component / Toast / Primary / Color / Text / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "Text",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / ProgressBar / Base",
-          "cssVarName": "--ds-toast-default-color-progressbar-base",
+          "name": "🧩 Component / Toast / Primary / Color / ProgressBar / Base",
+          "cssVarName": "--ds-toast-primary-color-progressbar-base",
           "value": "{🌐 Global.🌈 Color.Primary.5}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -59500,22 +59500,22 @@
               "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-toast-default-color-progressbar-base",
-              "figmaName": "Component / Toast / Default / Color / ProgressBar / Base"
+              "cssVar": "--ds-toast-primary-color-progressbar-base",
+              "figmaName": "Component / Toast / Primary / Color / ProgressBar / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBar",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-default-color-progressbg-base",
+          "name": "🧩 Component / Toast / Primary / Color / ProgressBg / Base",
+          "cssVarName": "--ds-toast-primary-color-progressbg-base",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -59524,14 +59524,14 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-toast-default-color-progressbg-base",
-              "figmaName": "Component / Toast / Default / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-primary-color-progressbg-base",
+              "figmaName": "Component / Toast / Primary / Color / ProgressBg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBg",
             "Base"

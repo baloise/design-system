@@ -859,33 +859,25 @@ export namespace Components {
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
-          * @default ''
          */
-        "align": ContentAlignment;
-        /**
-          * @default ''
-         */
-        "alignment": StackAlignment;
+        "align"?: ContentAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
-        "direction": StackDirection;
+        "direction"?: StackDirection;
         /**
           * **Deprecated:** Use direction instead.
-          * @default ''
          */
-        "layout": StackLayout;
+        "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
-          * @default ''
          */
-        "space": ContentSpace;
+        "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
-          * @default ''
          */
-        "textAlign": ContentTextAlignment;
+        "textAlign"?: ContentTextAlignment;
     }
     /**
      * Data displays a list of label-value pairs in a organized, accessible format.
@@ -2900,18 +2892,13 @@ export namespace Components {
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
-          * @default ''
          */
-        "align": StackAlignment;
-        /**
-          * @default ''
-         */
-        "alignment": StackAlignment;
+        "align"?: StackAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
-        "direction": StackDirection;
+        "direction"?: StackDirection;
         /**
           * Defines the width of the stack to be exactly the width of the content.
           * @default false
@@ -5754,31 +5741,23 @@ declare namespace LocalJSX {
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
-          * @default ''
          */
         "align"?: ContentAlignment;
-        /**
-          * @default ''
-         */
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
         "direction"?: StackDirection;
         /**
           * **Deprecated:** Use direction instead.
-          * @default ''
          */
         "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
-          * @default ''
          */
         "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
-          * @default ''
          */
         "textAlign"?: ContentTextAlignment;
     }
@@ -7945,16 +7924,11 @@ declare namespace LocalJSX {
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
-          * @default ''
          */
         "align"?: StackAlignment;
-        /**
-          * @default ''
-         */
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
         "direction"?: StackDirection;
         /**

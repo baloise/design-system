@@ -42,7 +42,7 @@ export class Stack implements DsComponentInterface {
    */
   @Prop()
   @OneOf(STACK_ALIGNMENTS)
-  readonly align: StackAlignment = ''
+  readonly align?: StackAlignment
 
   /**
    * @internal
@@ -50,14 +50,14 @@ export class Stack implements DsComponentInterface {
    */
   @Prop()
   @OneOf(STACK_ALIGNMENTS)
-  readonly alignment: StackAlignment = ''
+  readonly alignment?: StackAlignment
 
   /**
    * Defines the direction of the child elements. Default is column.
    */
   @Prop({ mutable: true })
   @OneOf(STACK_DIRECTIONS)
-  direction: StackDirection = ''
+  direction?: StackDirection
 
   /**
    * Defines the width of the stack to be exactly the width of the content.
@@ -135,8 +135,8 @@ export class Stack implements DsComponentInterface {
     const px = normalizeDeprecatedTShirtSize(this.px) || ''
     const py = normalizeDeprecatedTShirtSize(this.py) || ''
 
-    let alignValue = hasValue(this.align) ? this.align.split(' ').join('-') : undefined
-    if (hasValue(this.alignment)) {
+    let alignValue = this.align ? this.align.split(' ').join('-') : undefined
+    if (this.alignment) {
       alignValue = this.alignment.split(' ').join('-')
     }
 

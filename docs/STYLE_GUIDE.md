@@ -38,12 +38,13 @@ export class Button implements ComponentInterface, Loggable {}
 - Always use `readonly`
 - Always add type annotation when there's a default value
 - Use `reflect: true` only for state props (disabled, value, checked, open, etc.)
-- Use empty string `''` as default for optional enum props
+- Use `undefined` (optional `?:`) for optional enum props — never `''`. Enum arrays (e.g. `BUTTON_SIZES`) must only contain real domain values; "not set" is expressed by omitting the prop, not by a fake empty-string member.
+  - Note: this is a TypeScript-level convention only. Since these props are backed by HTML attributes, plain HTML/JS has no type safety — a consumer can still pass `size=""` regardless of how the prop is typed. That's fine: `@OneOf` and `hasValue()` already treat `undefined`, `null`, and `''` as equivalent "not set" values, so `''` never needs to be listed in the enum array to be handled correctly.
 
 ```ts
 @Prop() readonly label: string = ''                    // ✅ visual prop
 @Prop({ reflect: true }) readonly disabled: boolean = false  // ✅ state prop
-@Prop() readonly size: ButtonSize = ''                 // ✅ optional enum
+@Prop() readonly size?: ButtonSize                     // ✅ optional enum
 ```
 
 ### Event Listeners, Watchers, and Handlers
@@ -316,7 +317,7 @@ Define allowed values as a `const` array, then derive the TypeScript type:
 
 ```ts
 // ✅ button.interfaces.ts
-export const BUTTON_SIZES = ['', 'sm', 'md', 'lg'] as const
+export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const
 export type ButtonSize = (typeof BUTTON_SIZES)[number]
 ```
 
@@ -326,7 +327,7 @@ import { BUTTON_SIZES, ButtonSize } from '../button.interfaces'
 
 @Prop()
 @OneOf(BUTTON_SIZES)
-readonly size: ButtonSize = ''
+readonly size?: ButtonSize
 ```
 
 Do **not** wrap these in a `namespace DS { }` block — export them directly.
@@ -343,7 +344,7 @@ readonly label: string = ''
 
 @Prop()
 @OneOf(BUTTON_SIZES)
-readonly size: ButtonSize = ''
+readonly size?: ButtonSize
 
 // ✅ Required props: combine @Required() with the type/enum check
 @Prop({ reflect: true })

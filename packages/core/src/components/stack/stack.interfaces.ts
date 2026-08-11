@@ -44,7 +44,6 @@ export const STACK_PADDINGS = [
   'xx-large',
 ] as const
 export const STACK_ALIGNMENTS = [
-  '',
   'top start',
   'top center',
   'top end',
@@ -56,7 +55,7 @@ export const STACK_ALIGNMENTS = [
   'bottom end',
 ] as const
 
-export const STACK_DIRECTIONS = ['', 'row', 'column', 'row-reverse', 'column-reverse'] as const
+export const STACK_DIRECTIONS = ['row', 'column', 'row-reverse', 'column-reverse'] as const
 
 export type StackLayout = (typeof STACK_LAYOUTS)[number]
 export type StackSpace = (typeof STACK_SPACES)[number]
