@@ -92,6 +92,8 @@ apps/storybook/src/components/**/theming.md
 apps/storybook/src/components/**/testing.md
 apps/storybook/dist
 docs.old/
+docs/public/
+docs/src/
 
 playwright-report
 playwright.visual.config.mts

@@ -1,0 +1,114 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode.
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-stepper-gap: Space between the buttons and the value display.
+ * @prop --input-stepper-value-min-width: Minimum width of the value display so single- and multi-digit values render at the same widget width.
+ * @prop --input-stepper-value-font-weight: Font weight of the value display.
+ * @prop --input-stepper-value-font-family: Font family of the value display.
+ * @prop --input-stepper-value-color: Text color of the value display.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include vars.local(input-stepper-gap, 0.5rem);
+  @include vars.local(input-stepper-value-min-width, 3rem);
+  @include vars.local(input-stepper-value-font-weight, var(--ds-alias-text-weight-bold));
+  @include vars.local(input-stepper-value-font-family, var(--ds-alias-text-family-body));
+  @include vars.local(input-stepper-value-color, var(--ds-form-label-color-base));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  // The two buttons already read as the interactive surface — no shared bordered box needed.
+  @include form.container($bordered: false);
+  @include form.label();
+  @include form.description();
+
+  display: block;
+
+  #stepper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--_input-stepper-gap);
+  }
+
+  [part='value'] {
+    min-width: var(--_input-stepper-value-min-width);
+    text-align: center;
+    font-weight: var(--_input-stepper-value-font-weight);
+    font-family: var(--_input-stepper-value-font-family);
+    color: var(--_input-stepper-value-color);
+    user-select: none;
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-input-stepper-value-color: var(--ds-form-container-color-danger-border);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-form-description-color: var(--ds-form-description-color-success);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-form-description-color: var(--ds-form-description-color-warning);
+}
+
+//
+// Disabled (also covers `readonly`, treated as equivalent at the field level — see input-stepper.tsx)
+// --------------------------------
+:host(.is-disabled) {
+  --mod-form-label-color: var(--ds-form-label-color-disabled);
+  --mod-form-description-color: var(--ds-form-description-color-disabled);
+  --mod-input-stepper-value-color: var(--ds-form-label-color-disabled);
+
+  &,
+  #label,
+  #description,
+  #stepper,
+  [part='value'] {
+    pointer-events: none;
+    cursor: default;
+  }
+}
