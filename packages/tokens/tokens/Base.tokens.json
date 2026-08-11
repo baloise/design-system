@@ -6699,7 +6699,7 @@
                 0.02659088373184204,
                 0.22499999403953552
               ],
-              "alpha": 0.10000000149011612,
+              "alpha": 0.1,
               "hex": "#000739"
             },
             "$extensions": {
@@ -6718,49 +6718,11 @@
                 0.027450980618596077,
                 0.2235294133424759
               ],
-              "alpha": 0.30000001192092896,
+              "alpha": 0.2,
               "hex": "#000739"
             },
             "$extensions": {
               "com.figma.variableId": "VariableID:5:783",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "InvertedHover": {
-            "$type": "color",
-            "$value": {
-              "colorSpace": "srgb",
-              "components": [
-                1,
-                1,
-                1
-              ],
-              "alpha": 0.30000001192092896,
-              "hex": "#FFFFFF"
-            },
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:784",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "InvertedActive": {
-            "$type": "color",
-            "$value": {
-              "colorSpace": "srgb",
-              "components": [
-                1,
-                1,
-                1
-              ],
-              "alpha": 0.5,
-              "hex": "#FFFFFF"
-            },
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:785",
               "com.figma.scopes": [
                 "ALL_SCOPES"
               ]
@@ -6776,23 +6738,15 @@
               ]
             }
           }
-        },
-        "Icon": {
+        }
+      },
+      "Icon": {
+        "Color": {
           "Base": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
             "$extensions": {
               "com.figma.variableId": "VariableID:5:787",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "Inverted": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:788",
               "com.figma.scopes": [
                 "ALL_SCOPES"
               ]
@@ -6806,6 +6760,64 @@
               "com.figma.scopes": [
                 "ALL_SCOPES"
               ]
+            }
+          }
+        }
+      },
+      "Inverted": {
+        "Color": {
+          "Background": {
+            "Hover": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  1,
+                  1,
+                  1
+                ],
+                "alpha": 0.30000001192092896,
+                "hex": "#FFFFFF"
+              },
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:784",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            },
+            "Active": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  1,
+                  1,
+                  1
+                ],
+                "alpha": 0.5,
+                "hex": "#FFFFFF"
+              },
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:785",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          }
+        },
+        "Icon": {
+          "Color": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.White}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:788",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
             }
           }
         }

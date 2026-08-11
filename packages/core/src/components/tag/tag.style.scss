@@ -153,18 +153,18 @@ $close-inverted: (
 @each $color in $close-inverted {
   @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      --close-color-icon: var(--ds-close-color-icon-inverted);
-      --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
-      --close-color-background-active: var(--ds-close-color-background-inverted-active);
+      --close-color-icon: var(--ds-close-inverted-icon-color-base);
+      --close-color-background-hover: var(--ds-close-inverted-color-background-hover);
+      --close-color-background-active: var(--ds-close-inverted-color-background-active);
       --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.is-#{$color}) {
-      --close-color-icon: var(--ds-close-color-icon-inverted);
-      --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
-      --close-color-background-active: var(--ds-close-color-background-inverted-active);
+      --close-color-icon: var(--ds-close-inverted-icon-color-base);
+      --close-color-background-hover: var(--ds-close-inverted-color-background-hover);
+      --close-color-background-active: var(--ds-close-inverted-color-background-active);
       --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
     }
   }
