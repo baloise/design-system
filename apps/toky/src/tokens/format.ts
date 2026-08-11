@@ -37,6 +37,23 @@ export function hexToColorValue(hex: string, previous?: unknown): ColorValue | n
   return { colorSpace, components, alpha, hex: `#${match[1].toUpperCase()}` }
 }
 
+// DTCG color values are opaque (alpha 1) unless the value object says
+// otherwise — https://www.designtokens.org/tr/drafts/color/#alpha.
+export function getColorAlpha(value: unknown): number {
+  if (!isPlainObject(value)) return 1
+  return typeof value.alpha === 'number' ? value.alpha : 1
+}
+
+// Sets a color value's alpha from a 0-100 percentage, clamping out-of-range
+// input. No-ops on anything that isn't already a color value object (e.g. a
+// reference target, or an empty draft) since there's nothing to attach
+// alpha to yet.
+export function withAlphaPercent(value: unknown, percent: number): unknown {
+  if (!isPlainObject(value)) return value
+  const clamped = Math.min(100, Math.max(0, percent))
+  return { ...value, alpha: clamped / 100 }
+}
+
 export function formatValue(value: unknown): string {
   if (value === undefined || value === null) return '—'
 

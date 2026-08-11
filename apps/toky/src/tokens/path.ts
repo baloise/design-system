@@ -81,3 +81,38 @@ export function isReservedSegmentName(segment: string): boolean {
 export function reservedSegments(name: string): string[] {
   return parseTokenPath(name).filter(isReservedSegmentName)
 }
+
+// Strips a segment's leading icon prefix (e.g. "🌈 " off "🌈 Color") — the
+// icon is decorative (Figma folder styling), not part of the group's
+// identity, so "Color" typed without it should still be recognized as the
+// same group as an existing "🌈 Color".
+const LEADING_ICON_RE = new RegExp(`^(?:${ICON_UNIT} )+`, 'u')
+
+export function stripIconPrefix(segment: string): string {
+  return segment.replace(LEADING_ICON_RE, '')
+}
+
+// Rewrites a typed path's group segments (every segment but the last) to
+// reuse an existing group's exact text — icon and casing included — when
+// the typed segment matches one already in use at the same position, so
+// typing "Color/Hirsch" nests under an existing "🌈 Color" group instead of
+// silently creating a sibling group that's identical but for the icon.
+// The leaf segment is always left as typed. `existingPaths` should already
+// be scoped to the layer the new/renamed path belongs to.
+export function resolveGroupSegments(segments: string[], existingPaths: string[][]): string[] {
+  if (segments.length === 0) return []
+  const resolved: string[] = []
+  for (let i = 0; i < segments.length - 1; i++) {
+    const typed = segments[i]
+    const match = existingPaths.find(parts => {
+      if (parts.length <= i) return false
+      for (let j = 0; j < i; j++) {
+        if (parts[j] !== resolved[j]) return false
+      }
+      return stripIconPrefix(parts[i]).trim().toLowerCase() === stripIconPrefix(typed).trim().toLowerCase()
+    })
+    resolved.push(match ? match[i] : typed)
+  }
+  resolved.push(segments[segments.length - 1])
+  return resolved
+}

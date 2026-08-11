@@ -5,8 +5,10 @@ import {
   isValidSegmentName,
   parseTokenPath,
   reservedSegments,
+  resolveGroupSegments,
   sanitizePathInput,
   sanitizeSegmentInput,
+  stripIconPrefix,
 } from './path'
 
 describe('sanitizeSegmentInput', () => {
@@ -140,5 +142,55 @@ describe('reservedSegments', () => {
 
   it('returns an empty array when no segment is reserved', () => {
     expect(reservedSegments('Color.Danger.700')).toEqual([])
+  })
+})
+
+describe('stripIconPrefix', () => {
+  it('removes a leading icon and its trailing space', () => {
+    expect(stripIconPrefix('🌈 Color')).toBe('Color')
+  })
+
+  it('leaves a segment with no icon prefix unchanged', () => {
+    expect(stripIconPrefix('Color')).toBe('Color')
+  })
+})
+
+describe('resolveGroupSegments', () => {
+  it('reuses an existing group segment that only differs by icon prefix', () => {
+    const existingPaths = [
+      ['🌈 Color', 'White'],
+      ['🌈 Color', 'Black'],
+    ]
+    expect(resolveGroupSegments(['Color', 'Hirsch'], existingPaths)).toEqual(['🌈 Color', 'Hirsch'])
+  })
+
+  it('leaves the leaf segment untouched even if it collides with a group elsewhere', () => {
+    const existingPaths = [['🌈 Color', 'White']]
+    expect(resolveGroupSegments(['Color', 'White'], existingPaths)).toEqual(['🌈 Color', 'White'])
+  })
+
+  it('keeps a typed segment as-is when no existing group matches it', () => {
+    const existingPaths = [['🌈 Color', 'White']]
+    expect(resolveGroupSegments(['Spacing', 'Small'], existingPaths)).toEqual(['Spacing', 'Small'])
+  })
+
+  it('resolves each depth independently against its own ancestor chain', () => {
+    const existingPaths = [
+      ['🌈 Color', '🟢 Success', 'Base'],
+      ['📐 Spacing', 'Small'],
+    ]
+    expect(resolveGroupSegments(['Color', 'Success', 'Hover'], existingPaths)).toEqual([
+      '🌈 Color',
+      '🟢 Success',
+      'Hover',
+    ])
+  })
+
+  it('is a no-op for a single-segment (ungrouped) name', () => {
+    expect(resolveGroupSegments(['Radius'], [['🌈 Color', 'White']])).toEqual(['Radius'])
+  })
+
+  it('returns an empty array for an empty input', () => {
+    expect(resolveGroupSegments([], [['🌈 Color', 'White']])).toEqual([])
   })
 })

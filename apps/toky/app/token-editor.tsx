@@ -1,7 +1,7 @@
 'use client'
 
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
-import type { KeyboardEvent, ReactNode } from 'react'
+import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import {
@@ -12,16 +12,20 @@ import {
   CopyIcon,
   EllipsisIcon,
   GitBranchIcon,
+  HashIcon,
   HexagonIcon,
   Link2Icon,
   NetworkIcon,
+  PaletteIcon,
   PencilIcon,
   PlusIcon,
   Redo2Icon,
   SearchIcon,
   SwatchBookIcon,
+  ToggleLeftIcon,
   Trash2Icon,
   TriangleAlertIcon,
+  TypeIcon,
   Undo2Icon,
   Unlink2Icon,
   XIcon,
@@ -55,8 +59,8 @@ import { allPullEntryKeys, buildFigmaPullPlan, filterPlanBySelection } from '@/s
 import type { FigmaPullResult, PullConflict, PulledEntry, PullPlan } from '@/src/tokens/figma-pull'
 import { FigmaPullSidebar } from './figma-pull-sidebar'
 import { FigmaIcon } from '@/components/icons/figma-icon'
-import { getColorHex, hexToColorValue, toSlashPath } from '@/src/tokens/format'
-import { parseTokenPath, sanitizePathInput } from '@/src/tokens/path'
+import { getColorAlpha, getColorHex, hexToColorValue, toSlashPath, withAlphaPercent } from '@/src/tokens/format'
+import { parseTokenPath, resolveGroupSegments, sanitizePathInput } from '@/src/tokens/path'
 import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
 import { getNextCell } from '@/src/tokens/keyboard'
@@ -118,11 +122,12 @@ interface Draft {
   layer: TokenLayer
   type: string
   value: string
+  alpha: number
   referenceTarget: string
 }
 
 function emptyDraft(layer: TokenLayer = 'Global'): Draft {
-  return { name: '', layer, type: 'string', value: '', referenceTarget: '' }
+  return { name: '', layer, type: 'string', value: '', alpha: 100, referenceTarget: '' }
 }
 
 // A brand's value/reference text within the Edit-token dialog — kept
@@ -130,6 +135,7 @@ function emptyDraft(layer: TokenLayer = 'Global'): Draft {
 // is kept separate from `working`.
 interface EditBrandDraft {
   value: string
+  alpha: number
   referenceTarget: string
   malformed: boolean
 }
@@ -139,6 +145,7 @@ interface EditDraftState {
   type: string
   name: string
   value: string
+  alpha: number
   referenceTarget: string
   malformed: boolean
   brands: Record<string, EditBrandDraft>
@@ -293,6 +300,64 @@ function parseEditableValue(type: string, text: string, previous?: unknown): Par
 // A pure function of its own arguments (no closure over TokenEditor's
 // state) — kept at module scope so it's a stable reference, not recreated
 // every render, since it's called from within the memoized TokenRow.
+// Maps a DTCG $type (e.g. 'color', 'number') to the icon shown before the
+// token name, so the value's type is scannable without opening the row.
+// Falls back to null for types we don't have a dedicated icon for yet.
+const TOKEN_TYPE_ICON: Record<string, typeof PaletteIcon> = {
+  color: PaletteIcon,
+  number: HashIcon,
+  string: TypeIcon,
+  boolean: ToggleLeftIcon,
+}
+
+// Opaque (100%) is the sensible default for anything that isn't yet a real
+// color value object — getColorAlpha already defaults to 1 there, but this
+// also guards against a stray NaN (e.g. mid-edit) rendering as 0%.
+function alphaPercentFor(rawValue: unknown): number {
+  const percent = Math.round(getColorAlpha(rawValue) * 100)
+  return Number.isFinite(percent) ? percent : 100
+}
+
+// Classic two-tone checkerboard used to visualize transparency — tiled
+// small enough to read as a texture, not as individual squares, at the
+// size the swatch renders.
+const CHECKERBOARD_STYLE: CSSProperties = {
+  backgroundImage:
+    'linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)',
+  backgroundSize: '6px 6px',
+  backgroundPosition: '0 0, 0 3px, 3px -3px, -3px 0px',
+  backgroundColor: '#fff',
+}
+
+// Left half: the color at full opacity, so the hue itself is always
+// legible. Right half: the color at its actual alpha over a checkerboard,
+// so transparency is visible without having to open the popover.
+function renderColorSwatch(hex: string | null, alphaPercent: number): ReactNode {
+  return (
+    <span aria-hidden="true" className="relative size-5 shrink-0 overflow-hidden rounded-sm border">
+      <span className="absolute inset-y-0 left-0 w-1/2" style={hex ? { backgroundColor: hex } : undefined} />
+      <span className="absolute inset-y-0 right-0 w-1/2" style={CHECKERBOARD_STYLE} />
+      <span
+        className="absolute inset-y-0 right-0 w-1/2"
+        style={hex ? { backgroundColor: hex, opacity: alphaPercent / 100 } : undefined}
+      />
+    </span>
+  )
+}
+
+function renderTokenTypeIcon(type: string): ReactNode {
+  const Icon = TOKEN_TYPE_ICON[type]
+  if (!Icon) return null
+  return (
+    <Tooltip>
+      <TooltipTrigger render={<span className="flex shrink-0 items-center text-muted-foreground" />}>
+        <Icon className="size-3.5" aria-hidden="true" />
+      </TooltipTrigger>
+      <TooltipContent>{type}</TooltipContent>
+    </Tooltip>
+  )
+}
+
 function renderDetachButton(label: string, onDetach: () => void): ReactNode {
   return (
     <Tooltip>
@@ -321,6 +386,8 @@ interface TokenRowBrandInfo {
   hex: string | null
   mode: 'value' | 'reference'
   valueText: string
+  alphaText: string
+  swatchAlphaPercent: number | null
   isOverridden: boolean
   isMalformed: boolean
   isPopoverOpen: boolean
@@ -333,6 +400,8 @@ interface TokenRowHandlers {
   onValueChange: (id: string, text: string) => void
   onValueBlur: (id: string, type: string) => void
   onColorPick: (id: string, type: string, text: string) => void
+  onAlphaChange: (id: string, text: string) => void
+  onAlphaBlur: (id: string) => void
   onReferenceChange: (id: string, text: string) => void
   onSetMode: (id: string, mode: 'value' | 'reference') => void
   onPopoverOpenChange: (id: string, open: boolean) => void
@@ -344,6 +413,8 @@ interface TokenRowHandlers {
   onBrandValueChange: (id: string, text: string) => void
   onBrandValueBlur: (brand: string, id: string, type: string) => void
   onBrandColorPick: (brand: string, id: string, type: string, text: string) => void
+  onBrandAlphaChange: (brand: string, id: string, text: string) => void
+  onBrandAlphaBlur: (brand: string, id: string) => void
   onBrandReferenceChange: (brand: string, id: string, text: string) => void
   onSetBrandMode: (id: string, mode: 'value' | 'reference') => void
   renderPopoverHeader: (
@@ -369,6 +440,8 @@ interface TokenRowProps {
   changeStatus: ChangeStatus | null
   nameText: string
   valueText: string
+  alphaText: string
+  swatchAlphaPercent: number | null
   mode: 'value' | 'reference'
   isPopoverOpen: boolean
   isCodeUsageOpen: boolean
@@ -398,6 +471,8 @@ const TokenRow = memo(function TokenRow({
   changeStatus,
   nameText,
   valueText,
+  alphaText,
+  swatchAlphaPercent,
   mode,
   isPopoverOpen,
   isCodeUsageOpen,
@@ -429,6 +504,7 @@ const TokenRow = memo(function TokenRow({
         >
           <TableCell className="max-h-8 p-0 focus-within:relative focus-within:z-40">
             <div className="flex items-center gap-1" style={{ paddingLeft: depth * 16 }}>
+              {renderTokenTypeIcon(token.type)}
               <Input
                 ref={el => {
                   if (el) cellRefs.current.set(`${row}-0`, el)
@@ -472,14 +548,16 @@ const TokenRow = memo(function TokenRow({
                       )
                     }
                   >
-                    <span
-                      aria-hidden="true"
-                      className="size-5 shrink-0 rounded-sm border"
-                      style={hex ? { backgroundColor: hex } : undefined}
-                    />
-                    <span className="truncate">
+                    {renderColorSwatch(hex, swatchAlphaPercent ?? 100)}
+                    <span className="w-20 truncate">
                       {token.referenceTarget ? toSlashPath(token.referenceTarget) : (hex ?? '—')}
                     </span>
+                    {swatchAlphaPercent !== null && swatchAlphaPercent !== 100 && (
+                      <span className="flex shrink-0 items-center gap-2 text-xs text-muted-foreground">
+                        <span aria-hidden="true" className="h-4 w-px bg-border" />
+                        {swatchAlphaPercent}%
+                      </span>
+                    )}
                   </PopoverTrigger>
                   <PopoverContent className="w-128">
                     {handlers.renderPopoverHeader(
@@ -516,14 +594,47 @@ const TokenRow = memo(function TokenRow({
                               handlers.onColorPick(id, token.type, (e.target as HTMLInputElement).value)
                           }}
                         />
-                        <Input
-                          aria-label={`Value for ${token.name || 'token'}`}
-                          aria-invalid={isMalformed || cellErrors.length > 0}
-                          placeholder="#RRGGBB"
-                          value={valueText}
-                          onChange={e => handlers.onValueChange(id, e.target.value)}
-                          onBlur={() => handlers.onValueBlur(id, token.type)}
-                        />
+                        <div className="flex gap-2">
+                          <div className="basis-2/3 space-y-1">
+                            <Label htmlFor={`${row}-hex`} className="text-xs text-muted-foreground">
+                              Hex
+                            </Label>
+                            <Input
+                              id={`${row}-hex`}
+                              aria-label={`Value for ${token.name || 'token'}`}
+                              aria-invalid={isMalformed || cellErrors.length > 0}
+                              placeholder="#RRGGBB"
+                              value={valueText}
+                              onChange={e => handlers.onValueChange(id, e.target.value)}
+                              onBlur={() => handlers.onValueBlur(id, token.type)}
+                            />
+                          </div>
+                          <div className="basis-1/3 space-y-1">
+                            <Label htmlFor={`${row}-opacity`} className="text-xs text-muted-foreground">
+                              Opacity
+                            </Label>
+                            <div className="relative">
+                              <Input
+                                id={`${row}-opacity`}
+                                type="number"
+                                min={0}
+                                max={100}
+                                step={1}
+                                aria-label={`Opacity for ${token.name || 'token'}`}
+                                value={alphaText}
+                                onChange={e => handlers.onAlphaChange(id, e.target.value)}
+                                onBlur={() => handlers.onAlphaBlur(id)}
+                                className="pr-6"
+                              />
+                              <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-muted-foreground"
+                              >
+                                %
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                         {isMalformed && (
                           <Alert variant="destructive">
                             <AlertDescription>Invalid JSON for a color value.</AlertDescription>
@@ -674,7 +785,15 @@ const TokenRow = memo(function TokenRow({
           )}
           {brandInfo &&
             (() => {
-              const { brand, token: brandToken, hex: brandHex, mode: brandMode, valueText: brandValueText } = brandInfo
+              const {
+                brand,
+                token: brandToken,
+                hex: brandHex,
+                mode: brandMode,
+                valueText: brandValueText,
+                alphaText: brandAlphaText,
+                swatchAlphaPercent: brandSwatchAlphaPercent,
+              } = brandInfo
               const brandCellId = `brand:${id}`
               return (
                 <TableCell className="max-h-8 p-0 px-1">
@@ -704,14 +823,16 @@ const TokenRow = memo(function TokenRow({
                               )
                             }
                           >
-                            <span
-                              aria-hidden="true"
-                              className="size-5 shrink-0 rounded-sm border"
-                              style={brandHex ? { backgroundColor: brandHex } : undefined}
-                            />
-                            <span className="truncate">
+                            {renderColorSwatch(brandHex, brandSwatchAlphaPercent ?? 100)}
+                            <span className="w-20 truncate">
                               {brandToken.referenceTarget ? toSlashPath(brandToken.referenceTarget) : (brandHex ?? '—')}
                             </span>
+                            {brandSwatchAlphaPercent !== null && brandSwatchAlphaPercent !== 100 && (
+                              <span className="flex shrink-0 items-center gap-2 text-xs text-muted-foreground">
+                                <span aria-hidden="true" className="h-4 w-px bg-border" />
+                                {brandSwatchAlphaPercent}%
+                              </span>
+                            )}
                           </PopoverTrigger>
                           <PopoverContent className="w-128">
                             {handlers.renderPopoverHeader(
@@ -748,14 +869,47 @@ const TokenRow = memo(function TokenRow({
                                       )
                                   }}
                                 />
-                                <Input
-                                  aria-label={`${brand} value for ${token.name || 'token'}`}
-                                  aria-invalid={brandInfo.isMalformed}
-                                  placeholder="#RRGGBB"
-                                  value={brandValueText}
-                                  onChange={e => handlers.onBrandValueChange(id, e.target.value)}
-                                  onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
-                                />
+                                <div className="flex gap-2">
+                                  <div className="basis-2/3 space-y-1">
+                                    <Label htmlFor={`${brandCellId}-hex`} className="text-xs text-muted-foreground">
+                                      Hex
+                                    </Label>
+                                    <Input
+                                      id={`${brandCellId}-hex`}
+                                      aria-label={`${brand} value for ${token.name || 'token'}`}
+                                      aria-invalid={brandInfo.isMalformed}
+                                      placeholder="#RRGGBB"
+                                      value={brandValueText}
+                                      onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                                      onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                                    />
+                                  </div>
+                                  <div className="basis-1/3 space-y-1">
+                                    <Label htmlFor={`${brandCellId}-opacity`} className="text-xs text-muted-foreground">
+                                      Opacity
+                                    </Label>
+                                    <div className="relative">
+                                      <Input
+                                        id={`${brandCellId}-opacity`}
+                                        type="number"
+                                        min={0}
+                                        max={100}
+                                        step={1}
+                                        aria-label={`${brand} opacity for ${token.name || 'token'}`}
+                                        value={brandAlphaText}
+                                        onChange={e => handlers.onBrandAlphaChange(brand, id, e.target.value)}
+                                        onBlur={() => handlers.onBrandAlphaBlur(brand, id)}
+                                        className="pr-6"
+                                      />
+                                      <span
+                                        aria-hidden="true"
+                                        className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-muted-foreground"
+                                      >
+                                        %
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
                                 {brandInfo.isMalformed && (
                                   <Alert variant="destructive">
                                     <AlertDescription>Invalid JSON for a color value.</AlertDescription>
@@ -958,6 +1112,9 @@ export function TokenEditor({
   // table on every keystroke). Committed to `working` on blur instead.
   const [nameDraftText, setNameDraftText] = useState<Record<string, string>>({})
   const [valueDraftText, setValueDraftText] = useState<Record<string, string>>({})
+  // Same reasoning as valueDraftText — the opacity field commits (and
+  // triggers the reference-resolve pass) on blur, not per keystroke.
+  const [alphaDraftText, setAlphaDraftText] = useState<Record<string, string>>({})
   const [draft, setDraft] = useState<Draft>(emptyDraft)
   const [draftMalformed, setDraftMalformed] = useState(false)
   // Explicit Color/Reference tab picks — switching tabs is just a view choice,
@@ -1025,6 +1182,7 @@ export function TokenEditor({
     ),
   )
   const [brandValueDraftText, setBrandValueDraftText] = useState<Record<string, string>>({})
+  const [brandAlphaDraftText, setBrandAlphaDraftText] = useState<Record<string, string>>({})
   const [brandMalformed, setBrandMalformed] = useState<Set<string>>(new Set())
   // Same explicit-tab-pick tracking as `modeOverride`, for the selected brand's column.
   const [brandModeOverride, setBrandModeOverride] = useState<Map<string, 'value' | 'reference'>>(new Map())
@@ -1086,6 +1244,7 @@ export function TokenEditor({
     setMalformed(new Set())
     setNameDraftText({})
     setValueDraftText({})
+    setAlphaDraftText({})
     setBrandWorking(
       Object.fromEntries(
         Object.entries(brandTokens).map(([name, list]) => [
@@ -1095,6 +1254,7 @@ export function TokenEditor({
       ),
     )
     setBrandValueDraftText({})
+    setBrandAlphaDraftText({})
     setBrandMalformed(new Set())
     // Provenance and any leftover conflicts are meaningless once `working`
     // has been rebased onto a fresh server snapshot post-submit.
@@ -1555,20 +1715,45 @@ export function TokenEditor({
     commitValueText(id, type, text)
   }
 
+  // Keystrokes only update the local draft — see commitAlpha, called on
+  // blur. Mirrors handleValueInput/commitValue for the same reason: without
+  // this, every keystroke in the opacity field would run a full
+  // resolveReferences pass over every token.
+  function handleAlphaChange(id: string, text: string) {
+    setAlphaDraftText(prev => ({ ...prev, [id]: text }))
+  }
+
+  function commitAlpha(id: string) {
+    const text = alphaDraftText[id]
+    if (text === undefined) return // nothing pending — already committed (or reverted)
+    const percent = Number(text)
+    if (!Number.isNaN(percent)) {
+      updateToken(id, t => ({ ...t, rawValue: withAlphaPercent(t.rawValue, percent) }))
+    }
+    setAlphaDraftText(prev => {
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
   function commitDraftIfReady() {
-    const name = parseTokenPath(draft.name).join('.')
-    if (!name) return
+    const typedSegments = parseTokenPath(draft.name)
+    if (typedSegments.length === 0) return
+    const existingPaths = working.filter(w => w.token.layer === draft.layer).map(w => w.token.name.split('.'))
+    const name = resolveGroupSegments(typedSegments, existingPaths).join('.')
     const parsed = parseEditableValue(draft.type, draft.value)
     if (!parsed.ok) {
       setDraftMalformed(true)
       return
     }
+    const rawValue = draft.type === 'color' ? withAlphaPercent(parsed.value, draft.alpha) : parsed.value
     const token: FlatToken = {
       path: [],
       name,
       layer: draft.layer,
       type: draft.type,
-      rawValue: parsed.value,
+      rawValue,
       referenceTarget: draft.referenceTarget.trim() || null,
       resolvedValue: undefined,
       resolutionError: null,
@@ -1710,6 +1895,7 @@ export function TokenEditor({
       const brandToken = brandTokenFor(brand, id)
       brands[brand] = {
         value: brandToken ? getEditableValueText(brandToken) : '',
+        alpha: alphaPercentFor(brandToken?.rawValue),
         referenceTarget: brandToken?.referenceTarget ?? '',
         malformed: false,
       }
@@ -1719,6 +1905,7 @@ export function TokenEditor({
       type: token.type,
       name: toSlashPath(token.name),
       value: getEditableValueText(token),
+      alpha: alphaPercentFor(token.rawValue),
       referenceTarget: token.referenceTarget ?? '',
       malformed: false,
       brands,
@@ -1744,7 +1931,12 @@ export function TokenEditor({
             ...prev,
             brands: {
               ...prev.brands,
-              [brand]: { value: prev.value, referenceTarget: prev.referenceTarget, malformed: false },
+              [brand]: {
+                value: prev.value,
+                alpha: prev.alpha,
+                referenceTarget: prev.referenceTarget,
+                malformed: false,
+              },
             },
           }
         : prev,
@@ -1769,8 +1961,15 @@ export function TokenEditor({
     const mode = editMode()
     // The dialog shows/edits the name slash-joined (see toSlashPath), but also
     // accepts '.' as a separator — convert back to the dot-joined form
-    // everything else (paths, referenceTarget) uses.
-    const name = parseTokenPath(editDraft.name).join('.')
+    // everything else (paths, referenceTarget) uses. Group segments are
+    // resolved against existing groups the same way a new token's are (see
+    // commitDraftIfReady) so retyping a group without its icon still lands
+    // in the existing, icon-bearing group instead of splitting off a
+    // duplicate.
+    const existingPaths = working
+      .filter(w => w.id !== id && w.token.layer === current.layer)
+      .map(w => w.token.name.split('.'))
+    const name = resolveGroupSegments(parseTokenPath(editDraft.name), existingPaths).join('.')
 
     let parsedValue: unknown = current.rawValue
     if (mode === 'value') {
@@ -1779,7 +1978,7 @@ export function TokenEditor({
         setEditDraft(prev => (prev ? { ...prev, malformed: true } : prev))
         return
       }
-      parsedValue = parsed.value
+      parsedValue = type === 'color' ? withAlphaPercent(parsed.value, editDraft.alpha) : parsed.value
     }
 
     const brandCandidates: Record<string, FlatToken> = {}
@@ -1801,7 +2000,8 @@ export function TokenEditor({
         )
         return
       }
-      brandCandidates[brand] = { ...baseForBrand, rawValue: parsed.value, referenceTarget: null }
+      const brandRawValue = type === 'color' ? withAlphaPercent(parsed.value, brandDraft.alpha) : parsed.value
+      brandCandidates[brand] = { ...baseForBrand, rawValue: brandRawValue, referenceTarget: null }
     }
 
     if (name && name !== current.name) {
@@ -2083,10 +2283,12 @@ export function TokenEditor({
     ariaLabel: string
     mode: 'value' | 'reference'
     value: string
+    alpha: number
     referenceTarget: string
     malformed: boolean
     onModeChange: (mode: 'value' | 'reference') => void
     onValueChange: (value: string) => void
+    onAlphaChange: (percent: number) => void
     onReferenceChange: (value: string) => void
   }): ReactNode {
     const {
@@ -2095,10 +2297,12 @@ export function TokenEditor({
       ariaLabel,
       mode,
       value,
+      alpha,
       referenceTarget,
       malformed,
       onModeChange,
       onValueChange,
+      onAlphaChange,
       onReferenceChange,
     } = opts
     const hex = type === 'color' && /^#[0-9a-fA-F]{6}$/.test(value) ? value : null
@@ -2115,11 +2319,7 @@ export function TokenEditor({
               />
             }
           >
-            <span
-              aria-hidden="true"
-              className="size-5 shrink-0 rounded-sm border"
-              style={hex ? { backgroundColor: hex } : undefined}
-            />
+            {renderColorSwatch(hex, alpha)}
             <span className="truncate">{referenceTarget || hex || '—'}</span>
           </PopoverTrigger>
           <PopoverContent className="w-128">
@@ -2141,12 +2341,44 @@ export function TokenEditor({
                   value={hex ?? '#000000'}
                   onChange={e => onValueChange(e.target.value)}
                 />
-                <Input
-                  aria-label={ariaLabel}
-                  placeholder="#RRGGBB"
-                  value={value}
-                  onChange={e => onValueChange(e.target.value)}
-                />
+                <div className="flex gap-2">
+                  <div className="basis-2/3 space-y-1">
+                    <Label htmlFor={`${popoverKey}-hex`} className="text-xs text-muted-foreground">
+                      Hex
+                    </Label>
+                    <Input
+                      id={`${popoverKey}-hex`}
+                      aria-label={ariaLabel}
+                      placeholder="#RRGGBB"
+                      value={value}
+                      onChange={e => onValueChange(e.target.value)}
+                    />
+                  </div>
+                  <div className="basis-1/3 space-y-1">
+                    <Label htmlFor={`${popoverKey}-opacity`} className="text-xs text-muted-foreground">
+                      Opacity
+                    </Label>
+                    <div className="relative">
+                      <Input
+                        id={`${popoverKey}-opacity`}
+                        type="number"
+                        min={0}
+                        max={100}
+                        step={1}
+                        aria-label={`Opacity — ${ariaLabel}`}
+                        value={alpha}
+                        onChange={e => onAlphaChange(Number(e.target.value))}
+                        className="pr-6"
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-muted-foreground"
+                      >
+                        %
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 {malformed && (
                   <Alert variant="destructive">
                     <AlertDescription>Invalid JSON for a color value.</AlertDescription>
@@ -2381,6 +2613,10 @@ export function TokenEditor({
     return valueDraftText[id] ?? getEditableValueText(token)
   }
 
+  function alphaTextFor(id: string, token: FlatToken): string {
+    return alphaDraftText[id] ?? String(alphaPercentFor(token.rawValue))
+  }
+
   // The token driving the brand column's editable cell for this row: the
   // brand's own override if one's already staged, otherwise Base's current
   // token (edits start from there, same as Figma showing Base's value until
@@ -2441,6 +2677,25 @@ export function TokenEditor({
     commitBrandValueText(brand, id, type, text)
   }
 
+  function handleBrandAlphaChange(_brand: string, id: string, text: string) {
+    setBrandAlphaDraftText(prev => ({ ...prev, [id]: text }))
+  }
+
+  function commitBrandAlpha(brand: string, id: string) {
+    const text = brandAlphaDraftText[id]
+    if (text === undefined) return
+    const percent = Number(text)
+    const current = brandTokenFor(brand, id)
+    if (current && !Number.isNaN(percent)) {
+      upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue: withAlphaPercent(current.rawValue, percent) })
+    }
+    setBrandAlphaDraftText(prev => {
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
   function handleBrandReferenceChange(brand: string, id: string, text: string) {
     const current = brandTokenFor(brand, id)
     if (!current) return
@@ -2462,6 +2717,12 @@ export function TokenEditor({
     if (brandValueDraftText[id] !== undefined) return brandValueDraftText[id]
     const token = brandTokenFor(brand, id)
     return token ? getEditableValueText(token) : ''
+  }
+
+  function brandAlphaTextFor(brand: string, id: string): string {
+    if (brandAlphaDraftText[id] !== undefined) return brandAlphaDraftText[id]
+    const token = brandTokenFor(brand, id)
+    return String(alphaPercentFor(token?.rawValue))
   }
 
   function setRowPopoverOpen(id: string, open: boolean) {
@@ -2495,6 +2756,8 @@ export function TokenEditor({
     onValueChange: handleValueInput,
     onValueBlur: commitValue,
     onColorPick: commitValueText,
+    onAlphaChange: handleAlphaChange,
+    onAlphaBlur: commitAlpha,
     onReferenceChange: handleReferenceChange,
     onSetMode: setRowMode,
     onPopoverOpenChange: setRowPopoverOpen,
@@ -2506,6 +2769,8 @@ export function TokenEditor({
     onBrandValueChange: handleBrandValueInput,
     onBrandValueBlur: commitBrandValue,
     onBrandColorPick: commitBrandValueText,
+    onBrandAlphaChange: handleBrandAlphaChange,
+    onBrandAlphaBlur: commitBrandAlpha,
     onBrandReferenceChange: handleBrandReferenceChange,
     onSetBrandMode: setBrandRowMode,
     renderPopoverHeader,
@@ -2930,6 +3195,10 @@ export function TokenEditor({
                   token.type === 'color'
                     ? getColorHex(token.referenceTarget ? token.resolvedValue : token.rawValue)
                     : null
+                const swatchAlphaPercent =
+                  token.type === 'color'
+                    ? alphaPercentFor(token.referenceTarget ? token.resolvedValue : token.rawValue)
+                    : null
                 const cellErrors = errorsById.get(id) ?? EMPTY_ERRORS
                 const isMalformed = malformed.has(id)
                 const changeStatus = describeChangeStatus(originalById.get(id), token)
@@ -2944,12 +3213,20 @@ export function TokenEditor({
                       brandToken.type === 'color'
                         ? getColorHex(brandToken.referenceTarget ? brandResolved?.resolvedValue : brandToken.rawValue)
                         : null
+                    const brandSwatchAlphaPercent =
+                      brandToken.type === 'color'
+                        ? alphaPercentFor(
+                            brandToken.referenceTarget ? brandResolved?.resolvedValue : brandToken.rawValue,
+                          )
+                        : null
                     brandInfo = {
                       brand: selectedBrand,
                       token: brandToken,
                       hex: brandHex,
                       mode: brandModeFor(selectedBrand, id),
                       valueText: brandValueTextFor(selectedBrand, id),
+                      alphaText: brandAlphaTextFor(selectedBrand, id),
+                      swatchAlphaPercent: brandSwatchAlphaPercent,
                       isOverridden: (brandWorking[selectedBrand] ?? []).some(w => w.id === id),
                       isMalformed: brandMalformed.has(id),
                       isPopoverOpen: openPopoverId === `brand:${id}`,
@@ -2973,6 +3250,8 @@ export function TokenEditor({
                     changeStatus={changeStatus}
                     nameText={nameTextFor(id, token)}
                     valueText={valueTextFor(id, token)}
+                    alphaText={alphaTextFor(id, token)}
+                    swatchAlphaPercent={swatchAlphaPercent}
                     mode={modeFor(id, token)}
                     isPopoverOpen={openPopoverId === id}
                     isCodeUsageOpen={openCodeUsageId === id}
@@ -3031,7 +3310,18 @@ export function TokenEditor({
                 <Label htmlFor="new-token-type">Type</Label>
                 <Select
                   value={draft.type}
-                  onValueChange={value => setDraft(prev => ({ ...prev, type: value ?? prev.type }))}
+                  onValueChange={value =>
+                    setDraft(prev => {
+                      const type = value ?? prev.type
+                      // Switching to Color starts from white/opaque rather than
+                      // an empty swatch — matches what a fresh color token
+                      // should default to, and avoids the picker defaulting to
+                      // black just because '#000000' happens to be its native
+                      // fallback.
+                      const shouldDefaultColor = type === 'color' && prev.value.trim() === ''
+                      return { ...prev, type, value: shouldDefaultColor ? '#FFFFFF' : prev.value }
+                    })
+                  }
                 >
                   <SelectTrigger id="new-token-type" className="w-full">
                     <SelectValue />
@@ -3061,11 +3351,7 @@ export function TokenEditor({
                         />
                       }
                     >
-                      <span
-                        aria-hidden="true"
-                        className="size-5 shrink-0 rounded-sm border"
-                        style={draftHex ? { backgroundColor: draftHex } : undefined}
-                      />
+                      {renderColorSwatch(draftHex, draft.alpha)}
                       <span className="truncate">{draft.referenceTarget || draftHex || '—'}</span>
                     </PopoverTrigger>
                     <PopoverContent className="w-128">
@@ -3091,15 +3377,47 @@ export function TokenEditor({
                               setDraftMalformed(false)
                             }}
                           />
-                          <Input
-                            aria-label="Value for new token"
-                            placeholder="#RRGGBB"
-                            value={draft.value}
-                            onChange={e => {
-                              setDraft(prev => ({ ...prev, value: e.target.value }))
-                              setDraftMalformed(false)
-                            }}
-                          />
+                          <div className="flex gap-2">
+                            <div className="basis-2/3 space-y-1">
+                              <Label htmlFor="draft-hex" className="text-xs text-muted-foreground">
+                                Hex
+                              </Label>
+                              <Input
+                                id="draft-hex"
+                                aria-label="Value for new token"
+                                placeholder="#RRGGBB"
+                                value={draft.value}
+                                onChange={e => {
+                                  setDraft(prev => ({ ...prev, value: e.target.value }))
+                                  setDraftMalformed(false)
+                                }}
+                              />
+                            </div>
+                            <div className="basis-1/3 space-y-1">
+                              <Label htmlFor="draft-opacity" className="text-xs text-muted-foreground">
+                                Opacity
+                              </Label>
+                              <div className="relative">
+                                <Input
+                                  id="draft-opacity"
+                                  type="number"
+                                  min={0}
+                                  max={100}
+                                  step={1}
+                                  aria-label="Opacity for new token"
+                                  value={draft.alpha}
+                                  onChange={e => setDraft(prev => ({ ...prev, alpha: Number(e.target.value) }))}
+                                  className="pr-6"
+                                />
+                                <span
+                                  aria-hidden="true"
+                                  className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-muted-foreground"
+                                >
+                                  %
+                                </span>
+                              </div>
+                            </div>
+                          </div>
                           {draftMalformed && (
                             <Alert variant="destructive">
                               <AlertDescription>Invalid JSON for a color value.</AlertDescription>
@@ -3216,11 +3534,13 @@ export function TokenEditor({
                           ariaLabel: 'Base value',
                           mode: editMode(),
                           value: editDraft.value,
+                          alpha: editDraft.alpha,
                           referenceTarget: editDraft.referenceTarget,
                           malformed: editDraft.malformed,
                           onModeChange: setEditMode,
                           onValueChange: text =>
                             setEditDraft(prev => (prev ? { ...prev, value: text, malformed: false } : prev)),
+                          onAlphaChange: percent => setEditDraft(prev => (prev ? { ...prev, alpha: percent } : prev)),
                           onReferenceChange: text =>
                             setEditDraft(prev => (prev ? { ...prev, referenceTarget: text } : prev)),
                         })}
@@ -3261,6 +3581,7 @@ export function TokenEditor({
                                     ariaLabel: `${brand} value`,
                                     mode: editBrandMode(brand),
                                     value: brandDraft.value,
+                                    alpha: brandDraft.alpha,
                                     referenceTarget: brandDraft.referenceTarget,
                                     malformed: brandDraft.malformed,
                                     onModeChange: mode => setEditBrandMode(brand, mode),
@@ -3272,6 +3593,18 @@ export function TokenEditor({
                                               brands: {
                                                 ...prev.brands,
                                                 [brand]: { ...prev.brands[brand], value: text, malformed: false },
+                                              },
+                                            }
+                                          : prev,
+                                      ),
+                                    onAlphaChange: percent =>
+                                      setEditDraft(prev =>
+                                        prev
+                                          ? {
+                                              ...prev,
+                                              brands: {
+                                                ...prev.brands,
+                                                [brand]: { ...prev.brands[brand], alpha: percent },
                                               },
                                             }
                                           : prev,
