@@ -1,6 +1,6 @@
 import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import { Banner, BannerTabs, CanvasTabs,
-  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+  Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as ContentStories from './content.stories'
 import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
 
@@ -15,11 +15,17 @@ import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
+<StoryHeading of={ContentStories.Basic}></StoryHeading>
+
+<CanvasTabs htmlOf={ContentStories.BasicHtml} of={ContentStories.Basic} />
+
+{/* ------------------------------------------------------ */}
+
 <StoryHeading of={ContentStories.Alignment}></StoryHeading>
 
 Content area with different text alignments: left, center, and right.
 
-<CanvasWithCodePen of={ContentStories.Alignment} />
+<CanvasTabs htmlOf={ContentStories.AlignmentHtml} of={ContentStories.Alignment} />
 
 {/* ------------------------------------------------------ */}
 
@@ -28,7 +34,7 @@ Content area with different text alignments: left, center, and right.
 Content area with various layout options, including different spacing and
 arrangement of elements to create visually appealing and organized content sections.
 
-<CanvasWithCodePen of={ContentStories.Layout} />
+<CanvasTabs htmlOf={ContentStories.LayoutHtml} of={ContentStories.Layout} />
 
 {/* ------------------------------------------------------ */}
 
@@ -36,6 +42,6 @@ arrangement of elements to create visually appealing and organized content secti
 
 Content area with different spacing options to control the amount of whitespace around and between elements, enhancing readability and visual hierarchy.
 
-<CanvasWithCodePen of={ContentStories.Space} />
+<CanvasTabs htmlOf={ContentStories.SpaceHtml} of={ContentStories.Space} />
 
 <Footer />

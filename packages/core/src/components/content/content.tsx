@@ -42,14 +42,14 @@ export class Content implements DsComponentInterface {
    */
   @Prop()
   @OneOf(STACK_LAYOUTS)
-  readonly layout: StackLayout = ''
+  readonly layout?: StackLayout
 
   /**
    * Defines the direction of the child elements. Default is column.
    */
   @Prop()
   @OneOf(CONTENT_DIRECTIONS)
-  readonly direction: StackDirection = ''
+  readonly direction?: StackDirection
 
   /**
    * Defines the positioning like center, end or
@@ -57,7 +57,7 @@ export class Content implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CONTENT_ALIGNMENTS)
-  readonly align: ContentAlignment = ''
+  readonly align?: ContentAlignment
 
   /**
    * Defines the text positioning like center, right or
@@ -65,14 +65,14 @@ export class Content implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CONTENT_ALIGNMENTS)
-  readonly textAlign: ContentTextAlignment = ''
+  readonly textAlign?: ContentTextAlignment
 
   /**
    * Defines the space between the child elements. Default is xx-small.
    */
   @Prop()
   @OneOf(CONTENT_SPACES)
-  readonly space: ContentSpace = ''
+  readonly space?: ContentSpace
 
   /**
    * @internal
@@ -80,7 +80,7 @@ export class Content implements DsComponentInterface {
    */
   @Prop()
   @OneOf(STACK_ALIGNMENTS)
-  readonly alignment: StackAlignment = ''
+  readonly alignment?: StackAlignment
 
   /**
    * RENDER
@@ -94,7 +94,7 @@ export class Content implements DsComponentInterface {
     const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     let alignValue = this.align?.split(' ').join('-')
-    if (hasValue(this.alignment)) {
+    if (this.alignment) {
       alignValue = this.alignment.split(' ').join('-')
     }
 

@@ -1,7 +1,7 @@
 import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
-  CanvasWithCodePen,
+  CanvasTabs,
   BannerTabs,
   ComponentPublicMethods,
   ComponentTabs,
@@ -19,7 +19,7 @@ import { CONTENT_DOC_CONFIG, getContentTabs } from './content.doc-config'
 
 <ComponentLead component="content" />
 
-<CanvasWithCodePen of={ContentStories.Basic} sourceState="shown" />
+<CanvasTabs htmlOf={ContentStories.BasicHtml} of={ContentStories.Basic} />
 
 <ComponentTabs
   tabs={[
