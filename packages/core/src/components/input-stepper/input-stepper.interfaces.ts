@@ -19,8 +19,8 @@ export type InputStepperIncrease = InputStepperCustomEvent<InputStepperIncreaseD
 export type InputStepperDecreaseDetail = number
 export type InputStepperDecrease = InputStepperCustomEvent<InputStepperDecreaseDetail>
 
-export type InputStepperFocusDetail = FocusEvent
+export type InputStepperFocusDetail = void
 export type InputStepperFocus = InputStepperCustomEvent<InputStepperFocusDetail>
 
-export type InputStepperBlurDetail = FocusEvent
+export type InputStepperBlurDetail = void
 export type InputStepperBlur = InputStepperCustomEvent<InputStepperBlurDetail>

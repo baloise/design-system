@@ -30975,11 +30975,11 @@
       "events": [
         {
           "event": "dsBlur",
-          "detail": "FocusEvent",
+          "detail": "void",
           "bubbles": true,
           "complexType": {
             "original": "InputStepperBlurDetail",
-            "resolved": "FocusEvent",
+            "resolved": "void",
             "references": {
               "InputStepperBlurDetail": {
                 "location": "import",
@@ -31038,11 +31038,11 @@
         },
         {
           "event": "dsFocus",
-          "detail": "FocusEvent",
+          "detail": "void",
           "bubbles": true,
           "complexType": {
             "original": "InputStepperFocusDetail",
-            "resolved": "FocusEvent",
+            "resolved": "void",
             "references": {
               "InputStepperFocusDetail": {
                 "location": "import",
@@ -31196,6 +31196,61 @@
           "passive": false
         }
       ],
+      "pageObject": {
+        "class": "DsInputStepper",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "stepper",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "decreaseButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "increaseButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "valueDisplay",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "increase",
+            "params": [],
+            "docs": "Waits out a macrotask tick so `dsChange`'s debounced (setTimeout(0)) emit has actually run before the returned promise resolves."
+          },
+          {
+            "name": "decrease",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      },
       "type": "web-component"
     },
     {
@@ -65407,13 +65462,13 @@
       "path": "src/components/input-stepper/input-stepper.interfaces.ts"
     },
     "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperFocusDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "declaration": "void",
+      "docstring": "",
       "path": "src/components/input-stepper/input-stepper.interfaces.ts"
     },
     "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperBlurDetail": {
-      "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
-      "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+      "declaration": "void",
+      "docstring": "",
       "path": "src/components/input-stepper/input-stepper.interfaces.ts"
     },
     "src/components/label/label.interfaces.ts::LabelSize": {

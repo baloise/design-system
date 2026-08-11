@@ -12,7 +12,7 @@ import {
   Watch,
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { formatLocaleNumber, inheritAttributes, debounceEvent, Logger, type LogInstance, OneOf, Type } from '@utils'
+import { formatLocaleNumber, inheritAttributes, debounceEvent, rIC, Logger, type LogInstance, OneOf, Type } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
@@ -61,7 +61,9 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   @Element() el!: HTMLStencilElement
   @AttachInternals() internals!: ElementInternals
 
-  focused = false
+  private decreaseHasFocus = false
+  private increaseHasFocus = false
+
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
 
@@ -361,21 +363,40 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
     }
   }
 
-  private handleFocusin = (ev: FocusEvent) => {
-    const stepperEl = this.el.shadowRoot?.getElementById('stepper')
-    if (stepperEl?.contains(ev.relatedTarget as Node)) return
-    this.focused = true
+  private handleFocusDecrease = (ev: CustomEvent<void>) => {
+    this.decreaseHasFocus = true
+    this.handleFocus(ev)
+  }
+
+  private handleFocusIncrease = (ev: CustomEvent<void>) => {
+    this.increaseHasFocus = true
+    this.handleFocus(ev)
+  }
+
+  private handleFocus = (ev: CustomEvent<void>) => {
+    ev.stopPropagation()
     if (!this.disabled && !this.readonly) {
-      this.dsFocus.emit(ev)
+      this.dsFocus.emit()
     }
   }
 
-  private handleFocusout = (ev: FocusEvent) => {
-    const stepperEl = this.el.shadowRoot?.getElementById('stepper')
-    if (stepperEl?.contains(ev.relatedTarget as Node)) return
-    this.focused = false
-    if (!this.disabled && !this.readonly) {
-      this.dsBlur.emit(ev)
+  private handleBlurDecrease = (ev: CustomEvent<void>) => {
+    ev.stopPropagation()
+    this.decreaseHasFocus = false
+    rIC(() => this.handleBlur())
+  }
+
+  private handleBlurIncrease = (ev: CustomEvent<void>) => {
+    ev.stopPropagation()
+    this.increaseHasFocus = false
+    rIC(() => this.handleBlur())
+  }
+
+  private handleBlur = () => {
+    if (!(this.decreaseHasFocus || this.increaseHasFocus)) {
+      if (!this.disabled && !this.readonly) {
+        this.dsBlur.emit()
+      }
     }
   }
 
@@ -404,8 +425,6 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
         <div
           id="stepper"
           part="stepper"
-          onFocusin={this.handleFocusin}
-          onFocusout={this.handleFocusout}
           onKeyDown={this.handleKeyDown}
           {...this.inheritedAttributes}
         >
@@ -421,6 +440,8 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             a11yTitle={decreaseLabel}
             disabled={decreaseDisabled}
             onClick={this.handleDecrease}
+            onDsFocus={this.handleFocusDecrease}
+            onDsBlur={this.handleBlurDecrease}
           ></ds-button>
           <span part="value" data-testid="ds-input-stepper-value">
             {formatLocaleNumber(this.value)}
@@ -437,6 +458,8 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             a11yTitle={increaseLabel}
             disabled={increaseDisabled}
             onClick={this.handleIncrease}
+            onDsFocus={this.handleFocusIncrease}
+            onDsBlur={this.handleBlurIncrease}
           ></ds-button>
         </div>
       </Field>

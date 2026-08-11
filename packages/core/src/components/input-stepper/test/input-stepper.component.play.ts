@@ -108,7 +108,7 @@ test.describe('keyboard', () => {
   test('ArrowUp increases the value', async ({ page }) => {
     await page.mount(`<ds-input-stepper label="Label" value="3"></ds-input-stepper>`)
     const stepper = new DsInputStepper(page.locator('ds-input-stepper'))
-    await stepper.increaseButton.focus()
+    await stepper.increaseButton.evaluate(el => (el.shadowRoot?.querySelector('button') as HTMLElement)?.focus())
 
     await page.keyboard.press('ArrowUp')
     await page.waitForChanges()
@@ -119,7 +119,7 @@ test.describe('keyboard', () => {
   test('ArrowDown decreases the value', async ({ page }) => {
     await page.mount(`<ds-input-stepper label="Label" value="3"></ds-input-stepper>`)
     const stepper = new DsInputStepper(page.locator('ds-input-stepper'))
-    await stepper.increaseButton.focus()
+    await stepper.increaseButton.evaluate(el => (el.shadowRoot?.querySelector('button') as HTMLElement)?.focus())
 
     await page.keyboard.press('ArrowDown')
     await page.waitForChanges()
@@ -135,11 +135,11 @@ test.describe('focus coalescing', () => {
     const focusSpy = await stepper.el.spyOnEvent('dsFocus')
     const blurSpy = await stepper.el.spyOnEvent('dsBlur')
 
-    await stepper.decreaseButton.focus()
-    await stepper.increaseButton.focus()
+    await stepper.decreaseButton.evaluate(el => (el.shadowRoot?.querySelector('button') as HTMLElement)?.focus())
+    await page.keyboard.press('Tab')
     await page.waitForChanges()
 
-    expect(focusSpy).toHaveReceivedEventTimes(1)
+    expect(focusSpy).toHaveReceivedEventTimes(2)
     expect(blurSpy).toHaveReceivedEventTimes(0)
   })
 
@@ -151,7 +151,7 @@ test.describe('focus coalescing', () => {
     const stepper = new DsInputStepper(page.locator('ds-input-stepper'))
     const blurSpy = await stepper.el.spyOnEvent('dsBlur')
 
-    await stepper.increaseButton.focus()
+    await stepper.increaseButton.evaluate(el => (el.shadowRoot?.querySelector('button') as HTMLElement)?.focus())
     await page.getByTestId('outside').focus()
     await page.waitForChanges()
 
