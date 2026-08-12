@@ -47,6 +47,7 @@ async function lintComponent(componentName, shouldFix = false) {
 
   const tsxFiles = globSync(`${componentPath}/**/*.tsx`).filter(f => !f.includes('.spec.'))
   const scssFiles = globSync(`${componentPath}/**/*.scss`)
+  const interfaceFiles = globSync(`${componentPath}/**/*.interfaces.ts`)
 
   if (tsxFiles.length === 0) {
     throw new Error(`No .tsx files found in ${componentName}`)
@@ -58,10 +59,19 @@ async function lintComponent(componentName, shouldFix = false) {
   // Lint TSX files
   for (const file of tsxFiles) {
     const report = await lintFile(file)
+
+    // Flag external usages (render logic, stories, doc-config, page objects) of
+    // empty-string sentinel props — reported as warnings, never auto-fixed.
+    for (const prop of report.metadata.props) {
+      if (prop.emptyStringSentinel) {
+        report.violations.push(...findExternalEmptyStringUsages(componentName, file, prop.name))
+      }
+    }
+
     results.push(report)
 
     if (shouldFix && report.violations.length > 0) {
-      const fixed = await fixFile(file, report)
+      const fixed = await fixFile(file, report, interfaceFiles)
       if (fixed.changes.length > 0) {
         fixes.push(fixed)
       }
@@ -116,6 +126,15 @@ async function lintFile(filePath) {
         message: `Validator type mismatch for "${prop.name}" (${prop.type})`,
       })
     }
+
+    if (prop.emptyStringSentinel) {
+      violations.push({
+        type: 'empty-string-sentinel',
+        severity: 'warn',
+        prop: prop.name,
+        message: `Prop "${prop.name}" uses '' as its "not set" default — use optional (?:) instead so the enum array doesn't need a fake empty-string member (STYLE_GUIDE.md "Props")`,
+      })
+    }
   }
 
   // Check dividers
@@ -163,17 +182,24 @@ async function lintFile(filePath) {
 const TYPE_VALIDATORS = ['Type', 'OneOf', 'Pattern', 'Url', 'DateValue', 'IsoDate', 'ArrayOf']
 
 function extractProps(content) {
-  // Capture @Prop(...) then any decorators preceding the property declaration.
-  const propPattern = /@Prop\s*\([^)]*\)\s*((?:@\w+\s*\([^)]*\)\s*)*)(?:readonly\s+)?(\w+)\s*:\s*([^=\s;]+)/g
+  // Capture @Prop(...) then any decorators preceding the property declaration,
+  // plus the optional marker (?) and default value assignment, if present.
+  const propPattern =
+    /@Prop\s*\([^)]*\)\s*((?:@\w+\s*\([^)]*\)\s*)*)(?:readonly\s+)?(\w+)(\?)?\s*:\s*([^=\s;]+)\s*(?:=\s*([^\n;]+))?/g
   const props = []
   let match
 
   while ((match = propPattern.exec(content)) !== null) {
     const decoratorBlock = match[1] || ''
     const name = match[2]
-    const type = match[3]
+    const optional = Boolean(match[3])
+    const type = match[4]
+    const defaultValueRaw = match[5] ? match[5].trim() : undefined
     const decorators = (decoratorBlock.match(/@(\w+)/g) || []).map(d => d.slice(1))
     const validator = decorators.find(d => TYPE_VALIDATORS.includes(d)) || null
+    const oneOfMatch = decoratorBlock.match(/@OneOf\s*\(\s*(\w+)\s*\)/)
+
+    const isEmptyStringDefault = defaultValueRaw === "''" || defaultValueRaw === '""'
 
     props.push({
       name,
@@ -182,6 +208,12 @@ function extractProps(content) {
       required: decorators.includes('Required'),
       validator,
       validatorMatches: validator ? matchesType(validator, type) : false,
+      optional,
+      defaultValueRaw,
+      oneOfArrayName: oneOfMatch ? oneOfMatch[1] : null,
+      // Optional enum props must use `undefined` (via `?:`), not `''`, as the
+      // "not set" sentinel — see STYLE_GUIDE.md "Props".
+      emptyStringSentinel: validator === 'OneOf' && !optional && isEmptyStringDefault,
     })
   }
 
@@ -251,6 +283,80 @@ function extractDividers(content) {
   }
 
   return dividers
+}
+
+// Flags (but never auto-fixes) places outside the prop declaration itself where
+// an empty-string-sentinel prop is still compared against '' — render logic in
+// the same component, Storybook stories/doc-config, Playwright page objects,
+// and unit tests. These need human/agent judgment to rewrite safely.
+function findExternalEmptyStringUsages(componentName, tsxFilePath, propName) {
+  const violations = []
+  const componentDir = path.dirname(tsxFilePath)
+
+  // Render logic in the same .tsx file referencing `this.<prop>` alongside a '' literal
+  const content = fs.readFileSync(tsxFilePath, 'utf-8')
+  violations.push(...scanLinesForPropEmptyString(tsxFilePath, content, propName, new RegExp(`this\\.${propName}\\b`)))
+
+  // `this.<prop>.method(...)` — a method/property access chained directly off the prop
+  // without a hasValue()/ternary guard narrowing it first. hasValue() returns a plain
+  // boolean, not a type guard, so under `strict: true` this becomes a real type error
+  // once the prop becomes optional (e.g. `this.align.split(' ')`).
+  const relPath = path.relative(REPO_ROOT, tsxFilePath)
+  const chainedAccessPattern = new RegExp(`this\\.${propName}\\.\\w+\\(`)
+  content.split('\n').forEach((line, i) => {
+    if (chainedAccessPattern.test(line)) {
+      violations.push({
+        type: 'unsafe-optional-access',
+        severity: 'warn',
+        prop: propName,
+        message: `${relPath}:${i + 1} — calls a method directly on "${propName}" (e.g. this.${propName}.split(...)); now that it's optional, this needs a type-narrowing guard (not auto-fixed) — run tsc --noEmit to confirm`,
+      })
+    }
+  })
+
+  // Storybook stories / doc-config
+  const storybookDir = path.join(REPO_ROOT, 'apps/storybook/src/components', componentName)
+  for (const file of globSync(`${storybookDir}/*.{stories,doc-config}.ts`)) {
+    violations.push(...scanFileForPropEmptyString(file, propName))
+  }
+
+  // Playwright page objects
+  const poDir = path.join(REPO_ROOT, 'packages/playwright/src/lib/components')
+  for (const file of globSync(`${poDir}/${componentName}*.po.ts`)) {
+    violations.push(...scanFileForPropEmptyString(file, propName))
+  }
+
+  // Unit tests within the component directory
+  for (const file of globSync(`${componentDir}/**/*.spec.ts`)) {
+    violations.push(...scanFileForPropEmptyString(file, propName))
+  }
+
+  return violations
+}
+
+function scanFileForPropEmptyString(filePath, propName) {
+  if (!fs.existsSync(filePath)) return []
+  const content = fs.readFileSync(filePath, 'utf-8')
+  return scanLinesForPropEmptyString(filePath, content, propName, new RegExp(`\\b${propName}\\b`))
+}
+
+function scanLinesForPropEmptyString(filePath, content, propName, propRefPattern) {
+  const relPath = path.relative(REPO_ROOT, filePath)
+  const emptyStringPattern = /(['"])\1/
+  const violations = []
+
+  content.split('\n').forEach((line, i) => {
+    if (propRefPattern.test(line) && emptyStringPattern.test(line)) {
+      violations.push({
+        type: 'empty-string-usage',
+        severity: 'warn',
+        prop: propName,
+        message: `${relPath}:${i + 1} — references "${propName}" alongside '' — review after switching to undefined (not auto-fixed)`,
+      })
+    }
+  })
+
+  return violations
 }
 
 async function lintScssFile(filePath) {
@@ -576,9 +682,10 @@ function matchesType(validator, type) {
   return ['OneOf', 'Pattern', 'Url', 'DateValue', 'IsoDate', 'ArrayOf'].includes(validator)
 }
 
-async function fixFile(filePath, report) {
+async function fixFile(filePath, report, interfaceFiles = []) {
   let content = fs.readFileSync(filePath, 'utf-8')
   const changes = []
+  const interfaceChanges = []
 
   // Apply fixes for missing documentation
   for (const violation of report.violations) {
@@ -600,6 +707,32 @@ async function fixFile(filePath, report) {
       // Would need to add divider comment
       changes.push(`Would add divider for ${violation.section}`)
     }
+
+    if (violation.type === 'empty-string-sentinel') {
+      const prop = report.metadata.props.find(p => p.name === violation.prop)
+      if (!prop) continue
+
+      const updatedContent = fixEmptyStringSentinelProp(content, prop)
+      const propFixed = updatedContent !== content
+      if (propFixed) {
+        content = updatedContent
+        changes.push(`Changed "${prop.name}" from = '' to optional (?:)`)
+      }
+
+      // Only strip the sentinel from the enum array once the prop declaration
+      // itself was fixed — otherwise a leftover `= ''` default would reference
+      // a value no longer in the type (e.g. a prop missing `readonly`).
+      if (propFixed && prop.oneOfArrayName) {
+        const result = stripEmptyStringFromArray(prop.oneOfArrayName, interfaceFiles)
+        if (result) {
+          interfaceChanges.push(`Removed '' from ${prop.oneOfArrayName} (${path.relative(REPO_ROOT, result.file)})`)
+        }
+      } else if (!propFixed) {
+        changes.push(
+          `Skipped "${prop.name}" — declaration didn't match expected pattern (e.g. missing "readonly"); fix manually`,
+        )
+      }
+    }
   }
 
   if (changes.length > 0) {
@@ -608,8 +741,47 @@ async function fixFile(filePath, report) {
 
   return {
     file: filePath,
-    changes,
+    changes: [...changes, ...interfaceChanges],
   }
+}
+
+// Rewrites `[readonly] propName: Type = ''` (or "") to `[readonly] propName?: Type`.
+function fixEmptyStringSentinelProp(content, prop) {
+  const declPattern = new RegExp(
+    `((?:readonly\\s+)?${prop.name})\\s*:\\s*(${escapeRegExp(prop.type)})\\s*=\\s*(['"])\\3`,
+  )
+  return content.replace(declPattern, '$1?: $2')
+}
+
+// Strips a leading '' (or "") sentinel entry out of `export const ARRAY = [...] as const`,
+// searching every candidate .interfaces.ts file until the array is found.
+function stripEmptyStringFromArray(arrayName, interfaceFiles) {
+  for (const file of interfaceFiles) {
+    const content = fs.readFileSync(file, 'utf-8')
+    const arrayPattern = new RegExp(`(export const ${arrayName}\\s*=\\s*\\[)([\\s\\S]*?)(\\]\\s*as const)`)
+    const match = arrayPattern.exec(content)
+    if (!match) continue
+
+    const body = match[2]
+    let newBody = body
+      // multi-line: '' alone on its own line
+      .replace(/\n[ \t]*(['"])\1,?[ \t]*(?=\n)/, '')
+      // single-line: '' as the first inline element
+      .replace(/^\s*(['"])\1\s*,\s*/, '')
+
+    if (newBody === body) continue
+
+    const newContent =
+      content.slice(0, match.index) + match[1] + newBody + match[3] + content.slice(match.index + match[0].length)
+    fs.writeFileSync(file, newContent, 'utf-8')
+    return { file }
+  }
+
+  return null
+}
+
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
 function addDocumentationComment(content, kind, target) {

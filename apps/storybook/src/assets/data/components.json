@@ -16903,10 +16903,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"center\" | \"end\" | \"start\"",
+          "type": "\"center\" | \"end\" | \"start\" | undefined",
           "complexType": {
             "original": "ContentAlignment",
-            "resolved": "\"\" | \"center\" | \"end\" | \"start\"",
+            "resolved": "\"center\" | \"end\" | \"start\" | undefined",
             "references": {
               "ContentAlignment": {
                 "location": "import",
@@ -16920,17 +16920,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the positioning like center, end or\ndefault to start.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
@@ -16942,19 +16933,22 @@
             {
               "value": "start",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "direction",
-          "type": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
           "complexType": {
             "original": "StackDirection",
-            "resolved": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
             "references": {
               "StackDirection": {
                 "location": "import",
@@ -16968,17 +16962,8 @@
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "column",
               "type": "string"
@@ -16994,19 +16979,22 @@
             {
               "value": "row-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "layout",
-          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
+          "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
           "complexType": {
             "original": "StackLayout",
-            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
+            "resolved": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\" | undefined",
             "references": {
               "StackLayout": {
                 "location": "import",
@@ -17020,13 +17008,7 @@
           "attr": "layout",
           "reflectToAttr": false,
           "docs": "**Deprecated:** Use direction instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -17046,19 +17028,22 @@
             {
               "value": "vertical-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "space",
-          "type": "\"\" | \"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\"",
+          "type": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
           "complexType": {
             "original": "ContentSpace",
-            "resolved": "\"\" | \"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\"",
+            "resolved": "\"2xs\" | \"3xs\" | \"base\" | \"none\" | \"normal\" | \"sm\" | \"small\" | \"x-small\" | \"xs\" | \"xx-small\" | \"xxx-small\" | undefined",
             "references": {
               "ContentSpace": {
                 "location": "import",
@@ -17072,17 +17057,8 @@
           "attr": "space",
           "reflectToAttr": false,
           "docs": "Defines the space between the child elements. Default is xx-small.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "2xs",
               "type": "string"
@@ -17126,19 +17102,22 @@
             {
               "value": "xxx-small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "textAlign",
-          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "ContentTextAlignment",
-            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "resolved": "\"\" | \"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "ContentTextAlignment": {
                 "location": "import",
@@ -17152,13 +17131,7 @@
           "attr": "text-align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or\ndefault to left.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
               "type": "\"\""
@@ -17174,9 +17147,12 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -50870,8 +50846,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-default-color-bg-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Bg / Base",
+          "cssVarName": "--ds-snackbar-primary-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -50884,22 +50860,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-bg-base",
-              "figmaName": "Component / Snackbar / Default / Color / Bg / Base"
+              "cssVar": "--ds-snackbar-primary-color-bg-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Bg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "Bg",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / Border / Base",
-          "cssVarName": "--ds-snackbar-default-color-border-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Border / Base",
+          "cssVarName": "--ds-snackbar-primary-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -50912,22 +50888,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-border-base",
-              "figmaName": "Component / Snackbar / Default / Color / Border / Base"
+              "cssVar": "--ds-snackbar-primary-color-border-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Border / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "Border",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / Text / Base",
-          "cssVarName": "--ds-snackbar-default-color-text-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Text / Base",
+          "cssVarName": "--ds-snackbar-primary-color-text-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -50940,22 +50916,22 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-text-base",
-              "figmaName": "Component / Snackbar / Default / Color / Text / Base"
+              "cssVar": "--ds-snackbar-primary-color-text-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Text / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "Text",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / ProgressBar / Base",
-          "cssVarName": "--ds-snackbar-default-color-progressbar-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / ProgressBar / Base",
+          "cssVarName": "--ds-snackbar-primary-color-progressbar-base",
           "value": "{🌐 Global.🌈 Color.Primary.5}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -50964,22 +50940,22 @@
               "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-progressbar-base",
-              "figmaName": "Component / Snackbar / Default / Color / ProgressBar / Base"
+              "cssVar": "--ds-snackbar-primary-color-progressbar-base",
+              "figmaName": "Component / Snackbar / Primary / Color / ProgressBar / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBar",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Default / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-default-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / ProgressBg / Base",
+          "cssVarName": "--ds-snackbar-primary-color-progressbg-base",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -50988,14 +50964,14 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-snackbar-default-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Default / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-primary-color-progressbg-base",
+              "figmaName": "Component / Snackbar / Primary / Color / ProgressBg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Snackbar",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBg",
             "Base"
@@ -52216,10 +52192,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
+          "type": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
           "complexType": {
             "original": "StackAlignment",
-            "resolved": "\"\" | \"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\"",
+            "resolved": "\"bottom center\" | \"bottom end\" | \"bottom start\" | \"center\" | \"end\" | \"start\" | \"top center\" | \"top end\" | \"top start\" | undefined",
             "references": {
               "StackAlignment": {
                 "location": "import",
@@ -52233,17 +52209,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the text positioning like center, right or default to start.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "bottom center",
               "type": "string"
@@ -52279,19 +52246,22 @@
             {
               "value": "top start",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "direction",
-          "type": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+          "type": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
           "complexType": {
             "original": "StackDirection",
-            "resolved": "\"\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\"",
+            "resolved": "\"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | undefined",
             "references": {
               "StackDirection": {
                 "location": "import",
@@ -52305,17 +52275,8 @@
           "attr": "direction",
           "reflectToAttr": false,
           "docs": "Defines the direction of the child elements. Default is column.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "column",
               "type": "string"
@@ -52331,9 +52292,12 @@
             {
               "value": "row-reverse",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -57614,8 +57578,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Tag / Default / Color / Text / Base",
-          "cssVarName": "--ds-tag-default-color-text-base",
+          "name": "🧩 Component / Tag / Base / Color / Text / Base",
+          "cssVarName": "--ds-tag-base-color-text-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -57628,22 +57592,22 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-tag-default-color-text-base",
-              "figmaName": "Component / Tag / Default / Color / Text / Base"
+              "cssVar": "--ds-tag-base-color-text-base",
+              "figmaName": "Component / Tag / Base / Color / Text / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Tag",
-            "Default",
+            "Base",
             "Color",
             "Text",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Tag / Default / Color / Bg / Base",
-          "cssVarName": "--ds-tag-default-color-bg-base",
+          "name": "🧩 Component / Tag / Base / Color / Bg / Base",
+          "cssVarName": "--ds-tag-base-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.Grey}",
           "nativeValue": "#E0E0E0",
           "inheritance": [
@@ -57656,14 +57620,14 @@
               "figmaName": "Alias / Background / Color / Grey"
             },
             {
-              "cssVar": "--ds-tag-default-color-bg-base",
-              "figmaName": "Component / Tag / Default / Color / Bg / Base"
+              "cssVar": "--ds-tag-base-color-bg-base",
+              "figmaName": "Component / Tag / Base / Color / Bg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Tag",
-            "Default",
+            "Base",
             "Color",
             "Bg",
             "Base"
@@ -60251,8 +60215,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / Bg / Base",
-          "cssVarName": "--ds-toast-default-color-bg-base",
+          "name": "🧩 Component / Toast / Primary / Color / Bg / Base",
+          "cssVarName": "--ds-toast-primary-color-bg-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -60265,22 +60229,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-toast-default-color-bg-base",
-              "figmaName": "Component / Toast / Default / Color / Bg / Base"
+              "cssVar": "--ds-toast-primary-color-bg-base",
+              "figmaName": "Component / Toast / Primary / Color / Bg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "Bg",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / Border / Base",
-          "cssVarName": "--ds-toast-default-color-border-base",
+          "name": "🧩 Component / Toast / Primary / Color / Border / Base",
+          "cssVarName": "--ds-toast-primary-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -60293,22 +60257,22 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-toast-default-color-border-base",
-              "figmaName": "Component / Toast / Default / Color / Border / Base"
+              "cssVar": "--ds-toast-primary-color-border-base",
+              "figmaName": "Component / Toast / Primary / Color / Border / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "Border",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / Text / Base",
-          "cssVarName": "--ds-toast-default-color-text-base",
+          "name": "🧩 Component / Toast / Primary / Color / Text / Base",
+          "cssVarName": "--ds-toast-primary-color-text-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -60321,22 +60285,22 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-toast-default-color-text-base",
-              "figmaName": "Component / Toast / Default / Color / Text / Base"
+              "cssVar": "--ds-toast-primary-color-text-base",
+              "figmaName": "Component / Toast / Primary / Color / Text / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "Text",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / ProgressBar / Base",
-          "cssVarName": "--ds-toast-default-color-progressbar-base",
+          "name": "🧩 Component / Toast / Primary / Color / ProgressBar / Base",
+          "cssVarName": "--ds-toast-primary-color-progressbar-base",
           "value": "{🌐 Global.🌈 Color.Primary.5}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -60345,22 +60309,22 @@
               "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-toast-default-color-progressbar-base",
-              "figmaName": "Component / Toast / Default / Color / ProgressBar / Base"
+              "cssVar": "--ds-toast-primary-color-progressbar-base",
+              "figmaName": "Component / Toast / Primary / Color / ProgressBar / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBar",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Toast / Default / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-default-color-progressbg-base",
+          "name": "🧩 Component / Toast / Primary / Color / ProgressBg / Base",
+          "cssVarName": "--ds-toast-primary-color-progressbg-base",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -60369,14 +60333,14 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-toast-default-color-progressbg-base",
-              "figmaName": "Component / Toast / Default / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-primary-color-progressbg-base",
+              "figmaName": "Component / Toast / Primary / Color / ProgressBg / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Toast",
-            "Default",
+            "Primary",
             "Color",
             "ProgressBg",
             "Base"
@@ -65182,12 +65146,12 @@
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackDirection": {
-      "declaration": "\"\" | \"row\" | \"column\" | \"row-reverse\" | \"column-reverse\"",
+      "declaration": "\"row\" | \"column\" | \"row-reverse\" | \"column-reverse\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentAlignment": {
-      "declaration": "\"\" | \"center\" | \"start\" | \"end\"",
+      "declaration": "\"center\" | \"start\" | \"end\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
@@ -65197,12 +65161,12 @@
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/content/content.interfaces.ts::ContentSpace": {
-      "declaration": "\"\" | \"none\" | \"sm\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"3xs\" | \"2xs\" | \"xs\" | \"xxx-small\"",
+      "declaration": "\"none\" | \"sm\" | \"base\" | \"small\" | \"xx-small\" | \"x-small\" | \"normal\" | \"3xs\" | \"2xs\" | \"xs\" | \"xxx-small\"",
       "docstring": "",
       "path": "src/components/content/content.interfaces.ts"
     },
     "src/components/stack/stack.interfaces.ts::StackAlignment": {
-      "declaration": "\"\" | \"center\" | \"top start\" | \"top center\" | \"top end\" | \"start\" | \"end\" | \"bottom start\" | \"bottom center\" | \"bottom end\"",
+      "declaration": "\"center\" | \"top start\" | \"top center\" | \"top end\" | \"start\" | \"end\" | \"bottom start\" | \"bottom center\" | \"bottom end\"",
       "docstring": "",
       "path": "src/components/stack/stack.interfaces.ts"
     },

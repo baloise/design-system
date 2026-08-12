@@ -7,21 +7,29 @@
     "DS_RELEASE",
     "DS_DEVELOPMENT",
     "DS_PLAYWRIGHT_TESTING",
-    "DS_TESTING"
+    "DS_TESTING",
+    "TOKY_GITHUB_TOKEN",
+    "TOKY_GITHUB_ORG_TOKEN",
+    "TOKY_GITHUB_REF",
+    "AUTH_GITHUB_ID",
+    "AUTH_GITHUB_SECRET",
+    "AUTH_SECRET",
+    "FIGMA_API_TOKEN",
+    "FIGMA_FILE_KEY"
   ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "!**/*.spec.*", "!**/*.play.*"],
-      "outputs": ["dist/**", "www/**", "docs/**", "components/**", "loader/**"]
+      "inputs": ["src/**", "app/**", "!**/*.spec.*", "!**/*.play.*"],
+      "outputs": ["dist/**", "www/**", "docs/**", "components/**", "loader/**", ".next/**", "!.next/cache/**"]
     },
     "test": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "test/**"],
+      "inputs": ["src/**", "app/**", "test/**"],
       "outputs": []
     },
     "lint": {
-      "inputs": ["src/**", "eslint.config.*"],
+      "inputs": ["src/**", "app/**", "eslint.config.*"],
       "outputs": []
     },
     "optimize": {

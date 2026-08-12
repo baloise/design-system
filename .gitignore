@@ -7,6 +7,8 @@ tmp
 /out-tsc
 www
 generated
+.next
+apps/toky/next-env.d.ts
 vite.config.ts.**.mjs
 .env
 .secrets
@@ -91,9 +93,6 @@ apps/storybook/src/components/**/api.md
 apps/storybook/src/components/**/theming.md
 apps/storybook/src/components/**/testing.md
 apps/storybook/dist
-docs.old/
-docs/public/
-docs/src/
 
 playwright-report
 playwright.visual.config.mts

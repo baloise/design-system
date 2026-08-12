@@ -11,12 +11,62 @@
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <main class="container">
-      <!-- Playground -->
-      <section data-testid="playground">
-        <span>Playground</span>
-        <ds-tag color="bubu">Tag</ds-tag>
-      </section>
+    <ds-navbar>
+      <a href="/" slot="brand"><ds-logo color="white"></ds-logo></a>
+      <h1 slot="title">Kitchensink</h1>
+      <a href="/" slot="menu-start" aria-current="page">Home</a>
+      <a href="/about" slot="menu-start">About</a>
+      <a href="/contact" slot="menu-start">Contact</a>
+      <ds-button slot="actions" color="secondary">Sign In</ds-button>
+    </ds-navbar>
+
+    <main class="container my-lg">
+      <ds-card>
+        <ds-card-header>
+          <ds-card-title>User Information</ds-card-title>
+          <ds-card-subtitle>Please fill in your personal details</ds-card-subtitle>
+        </ds-card-header>
+        <ds-card-content>
+          <form>
+            <div class="form">
+              <div class="form-col">
+                <ds-select name="gender" label="Gender" description="Select your gender" required>
+                  <ds-select-option value="f">Female</ds-select-option>
+                  <ds-select-option value="m">Male</ds-select-option>
+                  <ds-select-option value="d">Diverse</ds-select-option>
+                </ds-select>
+              </div>
+
+              <div class="form-col tablet:is-6">
+                <ds-input name="firstName" label="First Name" required></ds-input>
+              </div>
+              <div class="form-col tablet:is-6">
+                <ds-input name="lastName" label="Last Name" required></ds-input>
+              </div>
+
+              <div class="form-col tablet:is-6">
+                <ds-date name="birthday" label="Date of Birth" description="DD.MM.YYYY" required></ds-date>
+              </div>
+
+              <div class="form-col tablet:is-9">
+                <ds-input name="street" label="Street" required></ds-input>
+              </div>
+              <div class="form-col tablet:is-3">
+                <ds-input name="zip" label="ZIP" required></ds-input>
+              </div>
+              <div class="form-col">
+                <ds-input name="city" label="City" required></ds-input>
+              </div>
+            </div>
+          </form>
+        </ds-card-content>
+        <ds-card-actions>
+          <ds-button element-type="reset" color="secondary">Reset</ds-button>
+          <ds-button element-type="submit" color="primary">Submit</ds-button>
+        </ds-card-actions>
+      </ds-card>
     </main>
+
+    <ds-footer legal-text="© 2026 Helvetia Versicherungen"></ds-footer>
   </body>
 </html>

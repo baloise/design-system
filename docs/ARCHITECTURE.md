@@ -159,7 +159,7 @@ Methods must be organized by section with dividers:
 - Always use `readonly` for immutable props
 - Always add type annotations
 - Use `reflect: true` only for state props (disabled, value, checked, open, etc.)
-- Use empty string `''` as default for optional enum props, not `undefined`
+- Use `undefined` (optional `?:`) as default for optional enum props, not `''` — enum arrays must only contain real domain values, not a sentinel "not set" member
 
 ## CSS Variable Cascade
 

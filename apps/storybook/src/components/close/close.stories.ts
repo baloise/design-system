@@ -26,3 +26,10 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 Basic.storyName = '🧩 Basic'
+
+export const AsButton = Story({
+  args: {
+    button: true,
+  },
+})
+AsButton.storyName = '🧩 Button'

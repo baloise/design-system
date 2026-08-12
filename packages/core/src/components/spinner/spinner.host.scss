@@ -79,8 +79,8 @@
 }
 
 :host(.is-white) {
-  --mod-spinner-circle-color-border-background: var(--ds-spinner-circle-color-inverted-background);
-  --mod-spinner-circle-color-border-progress: var(--ds-spinner-circle-color-progress-inverted);
+  --mod-spinner-circle-color-border-background: var(--ds-spinner-inverted-circle-color-background);
+  --mod-spinner-circle-color-border-progress: var(--ds-spinner-inverted-circle-color-progress);
 }
 
 /**

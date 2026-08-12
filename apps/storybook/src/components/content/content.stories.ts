@@ -32,6 +32,16 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 Basic.storyName = '🧩 Basic'
 
+export const BasicHtml = Story({
+  ...withRender(
+    () => `<div class="stack-content">
+  <label class="label">The Content Component</label>
+  <span>Content helps to align text nodes inside a section.</span>
+</div>`,
+  ),
+})
+BasicHtml.storyName = '🌍 Basic'
+
 export const Alignment = Story({
   ...withRender(
     ({ ...args }) => `<ds-content ${props(args)}>
@@ -44,6 +54,16 @@ export const Alignment = Story({
   },
 })
 Alignment.storyName = '🧩 Alignment'
+
+export const AlignmentHtml = Story({
+  ...withRender(
+    () => `<div class="stack-content align-center">
+  <label class="label">The Content Component</label>
+  <span>Content helps to align text nodes inside a section.</span>
+</div>`,
+  ),
+})
+AlignmentHtml.storyName = '🌍 Alignment'
 
 export const Layout = Story({
   ...withRender(
@@ -58,6 +78,16 @@ export const Layout = Story({
   },
 })
 Layout.storyName = '🧩 Layout'
+
+export const LayoutHtml = Story({
+  ...withRender(
+    () => `<div class="stack-content as-row has-space-base">
+  <label class="label">The Content Component</label>
+  <span>Content helps to align text nodes inside a section.</span>
+</div>`,
+  ),
+})
+LayoutHtml.storyName = '🌍 Layout'
 
 export const Space = Story({
   ...withRender(
@@ -82,3 +112,27 @@ export const Space = Story({
   ),
 })
 Space.storyName = '🧩 Space'
+
+export const SpaceHtml = Story({
+  ...withRender(
+    () => `<div>
+  <div class="stack-content bg-red-2">
+    <label class="label bg-green-2">Default Space</label>
+    <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
+  </div>
+  <div class="stack-content has-space-xs bg-red-2 mt-medium">
+    <label class="label bg-green-2">X Small Space</label>
+    <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
+  </div>
+  <div class="stack-content has-space-sm bg-red-2 mt-medium">
+    <label class="label bg-green-2">Small Space</label>
+    <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
+  </div>
+  <div class="stack-content has-space-base bg-red-2 mt-medium">
+    <label class="label bg-green-2">Normal Space</label>
+    <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
+  </div>
+</div>`,
+  ),
+})
+SpaceHtml.storyName = '🌍 Space'

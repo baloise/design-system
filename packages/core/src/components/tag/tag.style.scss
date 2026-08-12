@@ -21,8 +21,8 @@ $host-selector: ('#tag');
   @include vars.local(tag-px, var(--ds-tag-space-padding-x-base));
   @include vars.local(tag-py, var(--ds-tag-space-padding-y-base));
   @include vars.local(tag-radius, var(--ds-tag-radius-base));
-  @include vars.local(tag-color, var(--ds-tag-default-color-text-base));
-  @include vars.local(tag-bg, var(--ds-tag-default-color-bg-base));
+  @include vars.local(tag-color, var(--ds-tag-base-color-text-base));
+  @include vars.local(tag-bg, var(--ds-tag-base-color-bg-base));
   @include vars.local(tag-line-height, 1);
   @include vars.local(tag-font-family, var(--ds-tag-font-family));
   @include vars.local(tag-font-size, var(--ds-tag-font-size-base));
@@ -153,18 +153,18 @@ $close-inverted: (
 @each $color in $close-inverted {
   @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      --close-color-icon: var(--ds-close-color-icon-inverted);
-      --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
-      --close-color-background-active: var(--ds-close-color-background-inverted-active);
+      --close-color-icon: var(--ds-close-inverted-icon-color-base);
+      --close-color-background-hover: var(--ds-close-inverted-color-background-hover);
+      --close-color-background-active: var(--ds-close-inverted-color-background-active);
       --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.is-#{$color}) {
-      --close-color-icon: var(--ds-close-color-icon-inverted);
-      --close-color-background-hover: var(--ds-close-color-background-inverted-hover);
-      --close-color-background-active: var(--ds-close-color-background-inverted-active);
+      --close-color-icon: var(--ds-close-inverted-icon-color-base);
+      --close-color-background-hover: var(--ds-close-inverted-color-background-hover);
+      --close-color-background-active: var(--ds-close-inverted-color-background-active);
       --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
     }
   }

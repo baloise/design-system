@@ -1,8 +1,8 @@
-import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
-  CanvasTabs,
+  CanvasWithCodePen,
   Footer,
   StoryHeading,
 } from '../../../.storybook/blocks'
@@ -17,6 +17,21 @@ import { CLOSE_DOC_CONFIG, getCloseTabs } from './close.doc-config'
   tabs={getCloseTabs('variants')}
 />
 
-> WIP - Coming soon
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CloseStories.Basic}></StoryHeading>
+
+The default icon-only close control. Use it inside notifications, alerts, or other dismissible UI where a compact, borderless button is expected.
+
+<CanvasWithCodePen of={CloseStories.Basic} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CloseStories.AsButton}></StoryHeading>
+
+Set the `button` prop to render the close control as a standalone `ds-button`. Use this when the close action needs to stand on its own, for example outside of a notification or alert.
+
+<CanvasWithCodePen of={CloseStories.AsButton} />
 
 <Footer />

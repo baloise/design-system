@@ -38,11 +38,16 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   @State() region: DsRegion = defaultConfig.region
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * Define the size of badge. Small is recommended for tabs.
    */
   @Prop({ reflect: true })
   @OneOf(CLOSE_SIZES)
-  readonly size: CloseSize = ''
+  readonly size?: CloseSize
 
   /**
    * If `true` it supports dark backgrounds.
@@ -71,7 +76,12 @@ export class Close implements DsComponentInterface, DsConfigObserver {
    */
   @Prop()
   @OneOf(BUTTON_COLORS)
-  readonly buttonColor: ButtonColor = ''
+  readonly buttonColor?: ButtonColor
+
+  /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
 
   /**
    * @internal define config for the component
@@ -82,6 +92,11 @@ export class Close implements DsComponentInterface, DsConfigObserver {
     this.language = state.language
     this.region = state.region
   }
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     const label = i18nDsClose[this.language].close
