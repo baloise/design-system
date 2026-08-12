@@ -138,7 +138,7 @@ export class Heading implements DsComponentInterface {
    * ─────────────────────────────────────────────────────
    */
 
-  connectedCallback(): void {
+  componentWillLoad(): void {
     this.updateAutoFontSize()
   }
 
