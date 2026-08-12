@@ -5,7 +5,7 @@ description: Check a component's design tokens in Base.tokens.json against namin
 
 # Token Lint
 
-Checks a component's **Component-layer** design tokens (`🧩 Component > <ComponentName>` in `Base.tokens.json`) against the repo's real, empirically-verified naming convention — not the illustrative examples in STYLE_GUIDE.md's "Token Naming Anatomy" section, which document a segment order (`variant` before `category`) that the actual compiled tokens do not follow. See [REFERENCE.md](REFERENCE.md) for the discrepancy and why the rule checklist below diverges from that doc.
+Checks a component's **Component-layer** design tokens (`🧩 Component > <ComponentName>` in `Base.tokens.json`) against the repo's documented naming convention (`packages/tokens/CONTEXT.md`, "Naming Convention" → "Color order": variant before category). The shipped tokens are currently structured category-first (`Color > Variant > ...`) across every component — that's the drift this skill (and the wider migration it's part of) is fixing component by component, not a doc that's safe to ignore. See [REFERENCE.md](REFERENCE.md) for the full empirical picture, including which STYLE_GUIDE.md rules turned out to be stale rather than real drift.
 
 Two phases: **Check** (report violations) and **Apply** (write approved renames).
 
@@ -31,13 +31,14 @@ Output: summary of renamed tokens and updated files.
 
 Scope is **Component-layer tokens only** — everything under `🧩 Component > <ComponentName>` in `packages/tokens/tokens/Base.tokens.json`. Alias/Global token _usage_ inside a component's SCSS is `ds-lint-component`'s job, not this skill's.
 
-1. **Typography `font-` prefix** — a leaf key of `Family`, `Weight`, `LineHeight`, or `Size` whose value resolves through the Alias `🔤 Text` typography category, but isn't grouped under a `Font` key, is flagged (e.g. `--ds-button-family` → `--ds-button-font-family`). This is real, present drift — some components already use `Font` (e.g. `ds-accordion-summary-font-family`), others don't (`ds-button-family`, `ds-badge-text-family`).
-2. **State vocabulary** — when a group of sibling JSON keys looks like a state group (at least half its members are already `Base`/`Hover`/`Active`/`Disabled`/`Focus`/`Selected`), any sibling that's a close misspelling of one of those (edit distance ≤ 2) is flagged as a likely typo.
-3. **JSON key casing** — every key under the component's token tree must be PascalCase (or a bare acronym/number). camelCase or snake_case keys break Style Dictionary's kebab-case transform in ways that are easy to miss.
+1. **Color variant/category order** — a leaf whose JSON path starts with `Color` (i.e. `Color` is the top-level key directly under the component, followed by a variant like `Base`/`Danger`/`Primary`) is flagged: the convention is variant-before-category, e.g. `--ds-badge-color-base-background` → `--ds-badge-base-color-background`. Only the top-level shape is checked — once a component is fixed, the leaf's first segment is the variant, not `Color`, so re-running the check won't re-flag it or ping-pong the order back.
+2. **Typography `font-` prefix** — a leaf key of `Family`, `Weight`, `LineHeight`, or `Size` whose value resolves through the Alias `🔤 Text` typography category, but isn't grouped under a `Font` key, is flagged (e.g. `--ds-button-family` → `--ds-button-font-family`). This is real, present drift — some components already use `Font` (e.g. `ds-accordion-summary-font-family`), others don't (`ds-button-family`, `ds-badge-text-family`).
+3. **State vocabulary** — when a group of sibling JSON keys looks like a state group (at least half its members are already `Base`/`Hover`/`Active`/`Disabled`/`Focus`/`Selected`), any sibling that's a close misspelling of one of those (edit distance ≤ 2) is flagged as a likely typo.
+4. **JSON key casing** — every key under the component's token tree must be PascalCase (or a bare acronym/number). camelCase or snake_case keys break Style Dictionary's kebab-case transform in ways that are easy to miss.
 
 **Not checked** (deliberately dropped after verifying against real compiled tokens — see REFERENCE.md):
 
-- Absolute segment order (`variant` before `category`, etc.) — the real convention is `component → category → variant → state → property`, driven by JSON nesting, and there's no single canonical order to enforce.
+- Full segment order beyond the variant/category swap above — e.g. whether state should come before or after property (`Base > Text` vs `Text > Base`) is left as-is; the real, consistent convention there is `state` immediately before the leaf property, and CONTEXT.md's own anatomy example doesn't clearly contradict that.
 - A generic "category/property vocabulary" whitelist — element names (`tile`, `sidebar`, `outline`, `upload`, …) are legitimate, open vocabulary, not a fixed set.
 - Whether a color token has a state segment — this is legitimately optional (non-interactive components like `badge` never have one).
 

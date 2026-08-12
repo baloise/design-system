@@ -96,6 +96,38 @@ function deriveCssVar(componentKebab, jsonPath) {
 // Rule checks
 // ---------------------------------------------------------------------------
 
+// Per packages/tokens/CONTEXT.md ("Naming Convention" → "Color order"), variant
+// must come before category: --ds-button-primary-color-text, not
+// --ds-button-color-primary-text. Every component's Color tree is currently
+// structured category-first (Color > Variant > ...), which is the thing this
+// migration is fixing component by component — so we only need to check the
+// top-level shape (jsonPath[0] === 'Color') rather than search every depth.
+// Once fixed, jsonPath[0] becomes the variant and this no longer matches,
+// so re-running the check is idempotent and won't ping-pong the order back.
+function checkColorVariantOrder(componentKebab, leaves) {
+  const violations = []
+
+  for (const leaf of leaves) {
+    if (leaf.jsonPath[0] !== 'Color' || leaf.jsonPath.length < 2) continue
+
+    const variant = leaf.jsonPath[1]
+    const proposedJsonPath = [variant, 'Color', ...leaf.jsonPath.slice(2)]
+    const currentCssVar = deriveCssVar(componentKebab, leaf.jsonPath)
+    const proposedCssVar = deriveCssVar(componentKebab, proposedJsonPath)
+
+    violations.push({
+      type: 'color-variant-order',
+      jsonPath: leaf.jsonPath,
+      proposedJsonPath,
+      currentCssVar,
+      proposedCssVar,
+      message: `Color category precedes variant — naming convention (packages/tokens/CONTEXT.md "Color order") requires variant before category`,
+    })
+  }
+
+  return violations
+}
+
 function checkFontPrefix(componentKebab, leaves) {
   const violations = []
 
@@ -245,6 +277,7 @@ function checkComponent(componentName) {
   collectLeaves(found.node, [], leaves)
 
   const violations = [
+    ...checkColorVariantOrder(componentName, leaves),
     ...checkFontPrefix(componentName, leaves),
     ...checkStateVocabulary(componentName, found.node, []),
     ...checkKeyCasing(componentName, found.node, []),
@@ -328,6 +361,18 @@ function applyFixes(componentName, selectedViolations) {
     ...globSync(`${dsRoot}/packages/css/src/**/*.scss`),
   ]
 
+  // For color-variant-order fixes, some components build the variant segment
+  // dynamically via SCSS interpolation inside an @each loop instead of writing
+  // the fully-resolved var() name (e.g. `--ds-badge-color-#{$color}-text` in a
+  // `@each $color in (...)` block). The literal renameMap below can't match
+  // that — it never contains a literal "--ds-badge-color-danger-text" string —
+  // so it would be silently left pointing at a token that no longer exists.
+  // Handle it structurally instead: swap the literal "color" segment and the
+  // interpolation that immediately follows it, mirroring the JSON path swap.
+  const interpPattern = selectedViolations.some(v => v.type === 'color-variant-order')
+    ? new RegExp(`(--ds-${escapeRegExp(componentName)}-)color-(#\\{[^}]+\\})-`, 'g')
+    : null
+
   const updatedFiles = []
   for (const file of scssFiles) {
     let content = fs.readFileSync(file, 'utf-8')
@@ -338,6 +383,11 @@ function applyFixes(componentName, selectedViolations) {
         content = content.replace(pattern, to)
         changed = true
       }
+    }
+    if (interpPattern && interpPattern.test(content)) {
+      interpPattern.lastIndex = 0
+      content = content.replace(interpPattern, '$1$2-color-')
+      changed = true
     }
     if (changed) {
       fs.writeFileSync(file, content, 'utf-8')
