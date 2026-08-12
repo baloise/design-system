@@ -39,7 +39,7 @@ Option 1 is enough for the 95% case, but leaks in three real edge cases:
 - `String(1e-7) === "1e-7"` — scientific notation contains no `.`, so a
   naive `decimalsOf` returns 0 and the rounding step is skipped entirely.
 - Large-magnitude values combined with small steps (`1e15 + 0.1`) lose
-  precision *before* the rounding step even runs.
+  precision _before_ the rounding step even runs.
 
 None of these are absurd inputs for a general-purpose numeric form
 control.

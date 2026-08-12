@@ -12,7 +12,16 @@ import {
   Watch,
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { formatLocaleNumber, inheritAttributes, debounceEvent, rIC, Logger, type LogInstance, OneOf, Type } from '@utils'
+import {
+  formatLocaleNumber,
+  inheritAttributes,
+  debounceEvent,
+  rIC,
+  Logger,
+  type LogInstance,
+  OneOf,
+  Type,
+} from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
@@ -317,7 +326,9 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   private effectiveStep(): number {
     if (!Number.isFinite(this.step) || this.step <= 0) {
       if (!this.stepWarned) {
-        console.warn(`[ds-input-stepper] \`step\` must be a positive number, got ${this.step}. Falling back to ${STEP_FALLBACK}.`)
+        console.warn(
+          `[ds-input-stepper] \`step\` must be a positive number, got ${this.step}. Falling back to ${STEP_FALLBACK}.`,
+        )
         this.stepWarned = true
       }
       return STEP_FALLBACK
@@ -422,12 +433,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
         required={this.required}
         language={this.language}
       >
-        <div
-          id="stepper"
-          part="stepper"
-          onKeyDown={this.handleKeyDown}
-          {...this.inheritedAttributes}
-        >
+        <div id="stepper" part="stepper" onKeyDown={this.handleKeyDown} {...this.inheritedAttributes}>
           <ds-button
             ref={el => (this.decreaseButtonEl = el as HTMLDsButtonElement)}
             part="decrease"
