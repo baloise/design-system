@@ -150,8 +150,16 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   readonly max: number = 10
 
   @Watch('min')
+  protected minChanged() {
+    this.clampToRange()
+  }
+
   @Watch('max')
-  protected rangeChanged() {
+  protected maxChanged() {
+    this.clampToRange()
+  }
+
+  private clampToRange() {
     const clamped = clampValue(this.value, this.min, this.max)
     if (clamped !== this.value) {
       this.value = clamped
