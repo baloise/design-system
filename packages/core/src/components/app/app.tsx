@@ -28,6 +28,11 @@ export class App implements DsComponentInterface {
   }
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
    */
   @Prop({ reflect: true })
@@ -44,12 +49,19 @@ export class App implements DsComponentInterface {
   /**
    * @internal Comma separated list of components to log.
    */
-  @Prop({ reflect: true }) readonly logger: string = ''
+  @Prop({ reflect: true })
+  @Type('string')
+  readonly logger: string = ''
 
   /**
    * Emitted when app is ready and painted.
    */
   @Event() dsAppReady!: EventEmitter<void>
+
+  /**
+   * LIFECYCLE
+   * ─────────────────────────────────────────────────────
+   */
 
   connectedCallback() {
     if (this.animated === false) {
@@ -87,6 +99,14 @@ export class App implements DsComponentInterface {
     }
   }
 
+  /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
+   * Sets focus on the given elements using the app's focus-visible handling.
+   */
   @Method()
   async setFocus(elements: HTMLElement[]) {
     if (this.focusVisible) {
@@ -94,12 +114,22 @@ export class App implements DsComponentInterface {
     }
   }
 
+  /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
+
   notifyResize = async () => {
     if (dsBrowser.hasDocument && dsBrowser.hasWindow) {
       const doc = document.documentElement
       doc.style.setProperty('--ds-app-height', `${window.innerHeight}px`)
     }
   }
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     return (
