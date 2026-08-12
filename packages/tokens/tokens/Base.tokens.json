@@ -11784,25 +11784,31 @@
                 "ALL_SCOPES"
               ]
             }
-          },
-          "InvertedBackground": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.White}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1241",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "InvertedProgress": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1242",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
+          }
+        }
+      },
+      "Inverted": {
+        "Circle": {
+          "Color": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.White}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1241",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            },
+            "Progress": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1242",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
             }
           }
         }
