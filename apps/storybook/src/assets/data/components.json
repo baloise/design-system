@@ -2837,10 +2837,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
+          "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
           "complexType": {
             "original": "ButtonColor",
-            "resolved": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
+            "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
             "references": {
               "ButtonColor": {
                 "location": "import",
@@ -2862,9 +2862,6 @@
           ],
           "default": "'primary'",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "danger",
               "type": "string"
@@ -3929,7 +3926,7 @@
           "name": "🧩 Component / Button / LineHeight",
           "cssVarName": "--ds-button-lineheight",
           "value": "{🔗 Alias.🔤 Text.LineHeight.Heading}",
-          "nativeValue": "1.2999999523162842",
+          "nativeValue": "1.3",
           "inheritance": [
             {
               "cssVar": "--ds-font-lineheight-2",
@@ -12839,10 +12836,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
+          "type": "\"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\" | undefined",
           "complexType": {
             "original": "HeadingColor",
-            "resolved": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
+            "resolved": "\"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\" | undefined",
             "references": {
               "HeadingColor": {
                 "location": "import",
@@ -12856,17 +12853,8 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "If `true` the card text color becomes white.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "blue",
               "type": "string"
@@ -12894,9 +12882,12 @@
             {
               "value": "white",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -13080,10 +13071,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
             "original": "HeadingVisualLevel",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
               "HeadingVisualLevel": {
                 "location": "import",
@@ -13097,17 +13088,8 @@
           "attr": "visual-level",
           "reflectToAttr": false,
           "docs": "Make the visual style mimic a specific heading level.\nThis option allows you to make e.g. h1 visually look like h3,\nbut still keep it h1 in the markup.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "2xl",
               "type": "string"
@@ -13167,9 +13149,12 @@
             {
               "value": "xl",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -16343,10 +16328,10 @@
         },
         {
           "name": "buttonColor",
-          "type": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
+          "type": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\" | undefined",
           "complexType": {
             "original": "ButtonColor",
-            "resolved": "\"\" | \"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\"",
+            "resolved": "\"danger\" | \"info\" | \"info-light\" | \"light\" | \"link\" | \"primary\" | \"primary-light\" | \"secondary\" | \"success\" | \"tertiary\" | \"tertiary-green\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"text\" | \"warning\" | undefined",
             "references": {
               "ButtonColor": {
                 "location": "import",
@@ -16360,17 +16345,8 @@
           "attr": "button-color",
           "reflectToAttr": false,
           "docs": "Defines the color of the button variant. Only applicable if `button` is `true`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "danger",
               "type": "string"
@@ -16434,9 +16410,12 @@
             {
               "value": "warning",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -16501,10 +16480,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
+          "type": "\"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
             "original": "CloseSize",
-            "resolved": "\"\" | \"md\" | \"medium\" | \"sm\" | \"small\"",
+            "resolved": "\"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
               "CloseSize": {
                 "location": "import",
@@ -16518,17 +16497,8 @@
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Define the size of badge. Small is recommended for tabs.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "md",
               "type": "string"
@@ -16544,9 +16514,12 @@
             {
               "value": "small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -16657,12 +16630,12 @@
         {
           "name": "🧩 Component / Close / Color / Background / Hover",
           "cssVarName": "--ds-close-color-background-hover",
-          "value": "{\"colorSpace\":\"srgb\",\"components\":[0,0.02659088373184204,0.22499999403953552],\"alpha\":0.10000000149011612,\"hex\":\"#000739\"}",
-          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[0,0.02659088373184204,0.22499999403953552],\"alpha\":0.10000000149011612,\"hex\":\"#000739\"}",
+          "value": "{\"colorSpace\":\"srgb\",\"components\":[0,0.02659088373184204,0.22499999403953552],\"alpha\":0.1,\"hex\":\"#000739\"}",
+          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[0,0.02659088373184204,0.22499999403953552],\"alpha\":0.1,\"hex\":\"#000739\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-026590883731842040-22499999403953552alpha0-10000000149011612hex000739",
-              "figmaName": "colorSpacesrgbcomponents00 / 026590883731842040 / 22499999403953552alpha0 / 10000000149011612hex000739"
+              "cssVar": "--ds-026590883731842040-22499999403953552alpha0-1hex000739",
+              "figmaName": "colorSpacesrgbcomponents00 / 026590883731842040 / 22499999403953552alpha0 / 1hex000739"
             },
             {
               "cssVar": "--ds-close-color-background-hover",
@@ -16680,12 +16653,12 @@
         {
           "name": "🧩 Component / Close / Color / Background / Active",
           "cssVarName": "--ds-close-color-background-active",
-          "value": "{\"colorSpace\":\"srgb\",\"components\":[0,0.027450980618596077,0.2235294133424759],\"alpha\":0.30000001192092896,\"hex\":\"#000739\"}",
-          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[0,0.027450980618596077,0.2235294133424759],\"alpha\":0.30000001192092896,\"hex\":\"#000739\"}",
+          "value": "{\"colorSpace\":\"srgb\",\"components\":[0,0.027450980618596077,0.2235294133424759],\"alpha\":0.2,\"hex\":\"#000739\"}",
+          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[0,0.027450980618596077,0.2235294133424759],\"alpha\":0.2,\"hex\":\"#000739\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-0274509806185960770-2235294133424759alpha0-30000001192092896hex000739",
-              "figmaName": "colorSpacesrgbcomponents00 / 0274509806185960770 / 2235294133424759alpha0 / 30000001192092896hex000739"
+              "cssVar": "--ds-0274509806185960770-2235294133424759alpha0-2hex000739",
+              "figmaName": "colorSpacesrgbcomponents00 / 0274509806185960770 / 2235294133424759alpha0 / 2hex000739"
             },
             {
               "cssVar": "--ds-close-color-background-active",
@@ -16698,52 +16671,6 @@
             "Color",
             "Background",
             "Active"
-          ]
-        },
-        {
-          "name": "🧩 Component / Close / Color / Background / InvertedHover",
-          "cssVarName": "--ds-close-color-background-invertedhover",
-          "value": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.30000001192092896,\"hex\":\"#FFFFFF\"}",
-          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.30000001192092896,\"hex\":\"#FFFFFF\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-30000001192092896hexffffff",
-              "figmaName": "colorSpacesrgbcomponents111alpha0 / 30000001192092896hexFFFFFF"
-            },
-            {
-              "cssVar": "--ds-close-color-background-invertedhover",
-              "figmaName": "Component / Close / Color / Background / InvertedHover"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Close",
-            "Color",
-            "Background",
-            "InvertedHover"
-          ]
-        },
-        {
-          "name": "🧩 Component / Close / Color / Background / InvertedActive",
-          "cssVarName": "--ds-close-color-background-invertedactive",
-          "value": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.5,\"hex\":\"#FFFFFF\"}",
-          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.5,\"hex\":\"#FFFFFF\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-5hexffffff",
-              "figmaName": "colorSpacesrgbcomponents111alpha0 / 5hexFFFFFF"
-            },
-            {
-              "cssVar": "--ds-close-color-background-invertedactive",
-              "figmaName": "Component / Close / Color / Background / InvertedActive"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Close",
-            "Color",
-            "Background",
-            "InvertedActive"
           ]
         },
         {
@@ -16774,8 +16701,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Close / Color / Icon / Base",
-          "cssVarName": "--ds-close-color-icon-base",
+          "name": "🧩 Component / Close / Icon / Color / Base",
+          "cssVarName": "--ds-close-icon-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -16788,48 +16715,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-close-color-icon-base",
-              "figmaName": "Component / Close / Color / Icon / Base"
+              "cssVar": "--ds-close-icon-color-base",
+              "figmaName": "Component / Close / Icon / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Close",
-            "Color",
             "Icon",
+            "Color",
             "Base"
           ]
         },
         {
-          "name": "🧩 Component / Close / Color / Icon / Inverted",
-          "cssVarName": "--ds-close-color-icon-inverted",
-          "value": "{🔗 Alias.🔤 Text.Color.White}",
-          "nativeValue": "#FFFFFF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-white",
-              "figmaName": "Global / Color / White"
-            },
-            {
-              "cssVar": "--ds-text-color-white",
-              "figmaName": "Alias / Text / Color / White"
-            },
-            {
-              "cssVar": "--ds-close-color-icon-inverted",
-              "figmaName": "Component / Close / Color / Icon / Inverted"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Close",
-            "Color",
-            "Icon",
-            "Inverted"
-          ]
-        },
-        {
-          "name": "🧩 Component / Close / Color / Icon / Disabled",
-          "cssVarName": "--ds-close-color-icon-disabled",
+          "name": "🧩 Component / Close / Icon / Color / Disabled",
+          "cssVarName": "--ds-close-icon-color-disabled",
           "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
           "nativeValue": "#747474",
           "inheritance": [
@@ -16842,16 +16742,92 @@
               "figmaName": "Alias / Text / Color / Disabled"
             },
             {
-              "cssVar": "--ds-close-color-icon-disabled",
-              "figmaName": "Component / Close / Color / Icon / Disabled"
+              "cssVar": "--ds-close-icon-color-disabled",
+              "figmaName": "Component / Close / Icon / Color / Disabled"
             }
           ],
           "path": [
             "🧩 Component",
             "Close",
-            "Color",
             "Icon",
+            "Color",
             "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Close / Inverted / Color / Background / Hover",
+          "cssVarName": "--ds-close-inverted-color-background-hover",
+          "value": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.30000001192092896,\"hex\":\"#FFFFFF\"}",
+          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.30000001192092896,\"hex\":\"#FFFFFF\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-30000001192092896hexffffff",
+              "figmaName": "colorSpacesrgbcomponents111alpha0 / 30000001192092896hexFFFFFF"
+            },
+            {
+              "cssVar": "--ds-close-inverted-color-background-hover",
+              "figmaName": "Component / Close / Inverted / Color / Background / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Close",
+            "Inverted",
+            "Color",
+            "Background",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / Close / Inverted / Color / Background / Active",
+          "cssVarName": "--ds-close-inverted-color-background-active",
+          "value": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.5,\"hex\":\"#FFFFFF\"}",
+          "nativeValue": "{\"colorSpace\":\"srgb\",\"components\":[1,1,1],\"alpha\":0.5,\"hex\":\"#FFFFFF\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-5hexffffff",
+              "figmaName": "colorSpacesrgbcomponents111alpha0 / 5hexFFFFFF"
+            },
+            {
+              "cssVar": "--ds-close-inverted-color-background-active",
+              "figmaName": "Component / Close / Inverted / Color / Background / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Close",
+            "Inverted",
+            "Color",
+            "Background",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / Close / Inverted / Icon / Color / Base",
+          "cssVarName": "--ds-close-inverted-icon-color-base",
+          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-close-inverted-icon-color-base",
+              "figmaName": "Component / Close / Inverted / Icon / Color / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Close",
+            "Inverted",
+            "Icon",
+            "Color",
+            "Base"
           ]
         }
       ],
@@ -21292,7 +21268,7 @@
           "name": "🧩 Component / Drawer / Backdrop / Opacity",
           "cssVarName": "--ds-drawer-backdrop-opacity",
           "value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
-          "nativeValue": "0.800000011920929",
+          "nativeValue": "0.8",
           "inheritance": [
             {
               "cssVar": "--ds-elevation-opacity-80",
@@ -24377,10 +24353,10 @@
       "props": [
         {
           "name": "autoLevel",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
             "original": "HeadingVisualLevel",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
               "HeadingVisualLevel": {
                 "location": "import",
@@ -24394,17 +24370,8 @@
           "attr": "auto-level",
           "reflectToAttr": true,
           "docs": "The actual heading level used in the HTML markup.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "2xl",
               "type": "string"
@@ -24464,19 +24431,22 @@
             {
               "value": "xl",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
+          "type": "\"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\" | undefined",
           "complexType": {
             "original": "HeadingColor",
-            "resolved": "\"\" | \"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\"",
+            "resolved": "\"blue\" | \"danger\" | \"info\" | \"primary\" | \"success\" | \"warning\" | \"white\" | undefined",
             "references": {
               "HeadingColor": {
                 "location": "import",
@@ -24490,17 +24460,8 @@
           "attr": "color",
           "reflectToAttr": true,
           "docs": "The theme type of the toast.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "blue",
               "type": "string"
@@ -24528,9 +24489,12 @@
             {
               "value": "white",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -24696,10 +24660,10 @@
         },
         {
           "name": "space",
-          "type": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
+          "type": "\"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
           "complexType": {
             "original": "HeadingSpace",
-            "resolved": "\"\" | \"all\" | \"bottom\" | \"none\" | \"top\"",
+            "resolved": "\"all\" | \"bottom\" | \"none\" | \"top\" | undefined",
             "references": {
               "HeadingSpace": {
                 "location": "import",
@@ -24713,17 +24677,8 @@
           "attr": "space",
           "reflectToAttr": true,
           "docs": "Defines at which position the heading has spacing.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "all",
               "type": "string"
@@ -24739,9 +24694,12 @@
             {
               "value": "top",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -24777,10 +24735,10 @@
         },
         {
           "name": "visualLevel",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
+          "type": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
           "complexType": {
             "original": "HeadingVisualLevel",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\"",
+            "resolved": "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"base\" | \"display\" | \"display-2\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"md\" | \"xl\" | undefined",
             "references": {
               "HeadingVisualLevel": {
                 "location": "import",
@@ -24794,17 +24752,8 @@
           "attr": "visual-level",
           "reflectToAttr": true,
           "docs": "Make the visual style mimic a specific heading level.\nThis option allows you to make e.g. h1 visually look like h3,\nbut still keep it h1 in the markup.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "2xl",
               "type": "string"
@@ -24864,9 +24813,12 @@
             {
               "value": "xl",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -25459,8 +25411,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Heading / Family",
-          "cssVarName": "--ds-heading-family",
+          "name": "🧩 Component / Heading / Font Family",
+          "cssVarName": "--ds-heading-font-family",
           "value": "{🔗 Alias.🔤 Text.Family.Heading}",
           "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
           "inheritance": [
@@ -25473,19 +25425,19 @@
               "figmaName": "Alias / Text / Family / Heading"
             },
             {
-              "cssVar": "--ds-heading-family",
-              "figmaName": "Component / Heading / Family"
+              "cssVar": "--ds-heading-font-family",
+              "figmaName": "Component / Heading / Font Family"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Family"
+            "Font Family"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Weight",
-          "cssVarName": "--ds-heading-weight",
+          "name": "🧩 Component / Heading / Font Weight",
+          "cssVarName": "--ds-heading-font-weight",
           "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
           "nativeValue": "700",
           "inheritance": [
@@ -25498,21 +25450,21 @@
               "figmaName": "Alias / Text / Weight / Bold"
             },
             {
-              "cssVar": "--ds-heading-weight",
-              "figmaName": "Component / Heading / Weight"
+              "cssVar": "--ds-heading-font-weight",
+              "figmaName": "Component / Heading / Font Weight"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Weight"
+            "Font Weight"
           ]
         },
         {
           "name": "🧩 Component / Heading / LineHeight",
           "cssVarName": "--ds-heading-lineheight",
           "value": "{🔗 Alias.🔤 Text.LineHeight.Heading}",
-          "nativeValue": "1.2999999523162842",
+          "nativeValue": "1.3",
           "inheritance": [
             {
               "cssVar": "--ds-font-lineheight-2",
@@ -25573,8 +25525,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Heading / Color / Primary",
-          "cssVarName": "--ds-heading-color-primary",
+          "name": "🧩 Component / Heading / Primary / Color / Base",
+          "cssVarName": "--ds-heading-primary-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -25587,20 +25539,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-heading-color-primary",
-              "figmaName": "Component / Heading / Color / Primary"
+              "cssVar": "--ds-heading-primary-color-base",
+              "figmaName": "Component / Heading / Primary / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
+            "Primary",
             "Color",
-            "Primary"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Color / White",
-          "cssVarName": "--ds-heading-color-white",
+          "name": "🧩 Component / Heading / White / Color / Base",
+          "cssVarName": "--ds-heading-white-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.White}",
           "nativeValue": "#FFFFFF",
           "inheritance": [
@@ -25613,20 +25566,21 @@
               "figmaName": "Alias / Text / Color / White"
             },
             {
-              "cssVar": "--ds-heading-color-white",
-              "figmaName": "Component / Heading / Color / White"
+              "cssVar": "--ds-heading-white-color-base",
+              "figmaName": "Component / Heading / White / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
+            "White",
             "Color",
-            "White"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Color / Info",
-          "cssVarName": "--ds-heading-color-info",
+          "name": "🧩 Component / Heading / Info / Color / Base",
+          "cssVarName": "--ds-heading-info-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Info}",
           "nativeValue": "#1C77D2",
           "inheritance": [
@@ -25639,20 +25593,21 @@
               "figmaName": "Alias / Text / Color / Info"
             },
             {
-              "cssVar": "--ds-heading-color-info",
-              "figmaName": "Component / Heading / Color / Info"
+              "cssVar": "--ds-heading-info-color-base",
+              "figmaName": "Component / Heading / Info / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
+            "Info",
             "Color",
-            "Info"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Color / Success",
-          "cssVarName": "--ds-heading-color-success",
+          "name": "🧩 Component / Heading / Success / Color / Base",
+          "cssVarName": "--ds-heading-success-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Success}",
           "nativeValue": "#168741",
           "inheritance": [
@@ -25665,20 +25620,21 @@
               "figmaName": "Alias / Text / Color / Success"
             },
             {
-              "cssVar": "--ds-heading-color-success",
-              "figmaName": "Component / Heading / Color / Success"
+              "cssVar": "--ds-heading-success-color-base",
+              "figmaName": "Component / Heading / Success / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
+            "Success",
             "Color",
-            "Success"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Color / Warning",
-          "cssVarName": "--ds-heading-color-warning",
+          "name": "🧩 Component / Heading / Warning / Color / Base",
+          "cssVarName": "--ds-heading-warning-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Warning}",
           "nativeValue": "#B24A00",
           "inheritance": [
@@ -25691,20 +25647,21 @@
               "figmaName": "Alias / Text / Color / Warning"
             },
             {
-              "cssVar": "--ds-heading-color-warning",
-              "figmaName": "Component / Heading / Color / Warning"
+              "cssVar": "--ds-heading-warning-color-base",
+              "figmaName": "Component / Heading / Warning / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
+            "Warning",
             "Color",
-            "Warning"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Color / Danger",
-          "cssVarName": "--ds-heading-color-danger",
+          "name": "🧩 Component / Heading / Danger / Color / Base",
+          "cssVarName": "--ds-heading-danger-color-base",
           "value": "{🔗 Alias.🔤 Text.Color.Danger}",
           "nativeValue": "#EA1800",
           "inheritance": [
@@ -25717,20 +25674,21 @@
               "figmaName": "Alias / Text / Color / Danger"
             },
             {
-              "cssVar": "--ds-heading-color-danger",
-              "figmaName": "Component / Heading / Color / Danger"
+              "cssVar": "--ds-heading-danger-color-base",
+              "figmaName": "Component / Heading / Danger / Color / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
+            "Danger",
             "Color",
-            "Danger"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display1 / Space",
-          "cssVarName": "--ds-heading-display1-space",
+          "name": "🧩 Component / Heading / Display 1 / Space",
+          "cssVarName": "--ds-heading-display-1-space",
           "value": "{🔗 Alias.↔️ Space.Base.Mobile}",
           "nativeValue": "16",
           "inheritance": [
@@ -25743,20 +25701,20 @@
               "figmaName": "Alias / Space / Base / Mobile"
             },
             {
-              "cssVar": "--ds-heading-display1-space",
-              "figmaName": "Component / Heading / Display1 / Space"
+              "cssVar": "--ds-heading-display-1-space",
+              "figmaName": "Component / Heading / Display 1 / Space"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display1",
+            "Display 1",
             "Space"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display1 / Size / Mobile",
-          "cssVarName": "--ds-heading-display1-size-mobile",
+          "name": "🧩 Component / Heading / Display 1 / Size / Mobile",
+          "cssVarName": "--ds-heading-display-1-size-mobile",
           "value": "{🔗 Alias.🔤 Text.Size.5XL.Mobile}",
           "nativeValue": "48",
           "inheritance": [
@@ -25769,21 +25727,21 @@
               "figmaName": "Alias / Text / Size / 5XL / Mobile"
             },
             {
-              "cssVar": "--ds-heading-display1-size-mobile",
-              "figmaName": "Component / Heading / Display1 / Size / Mobile"
+              "cssVar": "--ds-heading-display-1-size-mobile",
+              "figmaName": "Component / Heading / Display 1 / Size / Mobile"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display1",
+            "Display 1",
             "Size",
             "Mobile"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display1 / Size / Tablet",
-          "cssVarName": "--ds-heading-display1-size-tablet",
+          "name": "🧩 Component / Heading / Display 1 / Size / Tablet",
+          "cssVarName": "--ds-heading-display-1-size-tablet",
           "value": "{🔗 Alias.🔤 Text.Size.5XL.Tablet}",
           "nativeValue": "80",
           "inheritance": [
@@ -25796,21 +25754,21 @@
               "figmaName": "Alias / Text / Size / 5XL / Tablet"
             },
             {
-              "cssVar": "--ds-heading-display1-size-tablet",
-              "figmaName": "Component / Heading / Display1 / Size / Tablet"
+              "cssVar": "--ds-heading-display-1-size-tablet",
+              "figmaName": "Component / Heading / Display 1 / Size / Tablet"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display1",
+            "Display 1",
             "Size",
             "Tablet"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display1 / Size / Desktop",
-          "cssVarName": "--ds-heading-display1-size-desktop",
+          "name": "🧩 Component / Heading / Display 1 / Size / Desktop",
+          "cssVarName": "--ds-heading-display-1-size-desktop",
           "value": "{🔗 Alias.🔤 Text.Size.5XL.Desktop}",
           "nativeValue": "80",
           "inheritance": [
@@ -25823,21 +25781,21 @@
               "figmaName": "Alias / Text / Size / 5XL / Desktop"
             },
             {
-              "cssVar": "--ds-heading-display1-size-desktop",
-              "figmaName": "Component / Heading / Display1 / Size / Desktop"
+              "cssVar": "--ds-heading-display-1-size-desktop",
+              "figmaName": "Component / Heading / Display 1 / Size / Desktop"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display1",
+            "Display 1",
             "Size",
             "Desktop"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display2 / Space",
-          "cssVarName": "--ds-heading-display2-space",
+          "name": "🧩 Component / Heading / Display 2 / Space",
+          "cssVarName": "--ds-heading-display-2-space",
           "value": "{🔗 Alias.↔️ Space.Base.Mobile}",
           "nativeValue": "16",
           "inheritance": [
@@ -25850,20 +25808,20 @@
               "figmaName": "Alias / Space / Base / Mobile"
             },
             {
-              "cssVar": "--ds-heading-display2-space",
-              "figmaName": "Component / Heading / Display2 / Space"
+              "cssVar": "--ds-heading-display-2-space",
+              "figmaName": "Component / Heading / Display 2 / Space"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display2",
+            "Display 2",
             "Space"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display2 / Size / Mobile",
-          "cssVarName": "--ds-heading-display2-size-mobile",
+          "name": "🧩 Component / Heading / Display 2 / Size / Mobile",
+          "cssVarName": "--ds-heading-display-2-size-mobile",
           "value": "{🔗 Alias.🔤 Text.Size.4XL.Mobile}",
           "nativeValue": "32",
           "inheritance": [
@@ -25876,21 +25834,21 @@
               "figmaName": "Alias / Text / Size / 4XL / Mobile"
             },
             {
-              "cssVar": "--ds-heading-display2-size-mobile",
-              "figmaName": "Component / Heading / Display2 / Size / Mobile"
+              "cssVar": "--ds-heading-display-2-size-mobile",
+              "figmaName": "Component / Heading / Display 2 / Size / Mobile"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display2",
+            "Display 2",
             "Size",
             "Mobile"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display2 / Size / Tablet",
-          "cssVarName": "--ds-heading-display2-size-tablet",
+          "name": "🧩 Component / Heading / Display 2 / Size / Tablet",
+          "cssVarName": "--ds-heading-display-2-size-tablet",
           "value": "{🔗 Alias.🔤 Text.Size.4XL.Tablet}",
           "nativeValue": "48",
           "inheritance": [
@@ -25903,21 +25861,21 @@
               "figmaName": "Alias / Text / Size / 4XL / Tablet"
             },
             {
-              "cssVar": "--ds-heading-display2-size-tablet",
-              "figmaName": "Component / Heading / Display2 / Size / Tablet"
+              "cssVar": "--ds-heading-display-2-size-tablet",
+              "figmaName": "Component / Heading / Display 2 / Size / Tablet"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display2",
+            "Display 2",
             "Size",
             "Tablet"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Display2 / Size / Desktop",
-          "cssVarName": "--ds-heading-display2-size-desktop",
+          "name": "🧩 Component / Heading / Display 2 / Size / Desktop",
+          "cssVarName": "--ds-heading-display-2-size-desktop",
           "value": "{🔗 Alias.🔤 Text.Size.4XL.Desktop}",
           "nativeValue": "48",
           "inheritance": [
@@ -25930,21 +25888,21 @@
               "figmaName": "Alias / Text / Size / 4XL / Desktop"
             },
             {
-              "cssVar": "--ds-heading-display2-size-desktop",
-              "figmaName": "Component / Heading / Display2 / Size / Desktop"
+              "cssVar": "--ds-heading-display-2-size-desktop",
+              "figmaName": "Component / Heading / Display 2 / Size / Desktop"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
-            "Display2",
+            "Display 2",
             "Size",
             "Desktop"
           ]
         },
         {
-          "name": "🧩 Component / Heading / Subtitle / Family",
-          "cssVarName": "--ds-heading-subtitle-family",
+          "name": "🧩 Component / Heading / Subtitle / Font Family",
+          "cssVarName": "--ds-heading-subtitle-font-family",
           "value": "{🔗 Alias.🔤 Text.Family.Heading}",
           "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
           "inheritance": [
@@ -25957,22 +25915,22 @@
               "figmaName": "Alias / Text / Family / Heading"
             },
             {
-              "cssVar": "--ds-heading-subtitle-family",
-              "figmaName": "Component / Heading / Subtitle / Family"
+              "cssVar": "--ds-heading-subtitle-font-family",
+              "figmaName": "Component / Heading / Subtitle / Font Family"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
             "Subtitle",
-            "Family"
+            "Font Family"
           ]
         },
         {
           "name": "🧩 Component / Heading / Subtitle / LineHeight",
           "cssVarName": "--ds-heading-subtitle-lineheight",
           "value": "{🔗 Alias.🔤 Text.LineHeight.Heading}",
-          "nativeValue": "1.2999999523162842",
+          "nativeValue": "1.3",
           "inheritance": [
             {
               "cssVar": "--ds-font-lineheight-2",
@@ -25995,8 +25953,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Heading / Subtitle / Weight",
-          "cssVarName": "--ds-heading-subtitle-weight",
+          "name": "🧩 Component / Heading / Subtitle / Font Weight",
+          "cssVarName": "--ds-heading-subtitle-font-weight",
           "value": "{🔗 Alias.🔤 Text.Weight.Light}",
           "nativeValue": "300",
           "inheritance": [
@@ -26009,15 +25967,15 @@
               "figmaName": "Alias / Text / Weight / Light"
             },
             {
-              "cssVar": "--ds-heading-subtitle-weight",
-              "figmaName": "Component / Heading / Subtitle / Weight"
+              "cssVar": "--ds-heading-subtitle-font-weight",
+              "figmaName": "Component / Heading / Subtitle / Font Weight"
             }
           ],
           "path": [
             "🧩 Component",
             "Heading",
             "Subtitle",
-            "Weight"
+            "Font Weight"
           ]
         }
       ],
@@ -33708,7 +33666,7 @@
           "name": "🧩 Component / Modal / Backdrop / Opacity",
           "cssVarName": "--ds-modal-backdrop-opacity",
           "value": "{🧩 Component.Backdrop.Opacity}",
-          "nativeValue": "0.800000011920929",
+          "nativeValue": "0.8",
           "inheritance": [
             {
               "cssVar": "--ds-elevation-opacity-80",
@@ -33812,7 +33770,7 @@
           "name": "🧩 Component / Modal / Heading / LineHeight",
           "cssVarName": "--ds-modal-heading-lineheight",
           "value": "{🔗 Alias.🔤 Text.LineHeight.Heading}",
-          "nativeValue": "1.2999999523162842",
+          "nativeValue": "1.3",
           "inheritance": [
             {
               "cssVar": "--ds-font-lineheight-2",
@@ -41039,7 +40997,7 @@
           "name": "🧩 Component / Popup / Backdrop / Opacity",
           "cssVarName": "--ds-popup-backdrop-opacity",
           "value": "{🔗 Alias.🌫️ Opacity.Backdrop}",
-          "nativeValue": "0.800000011920929",
+          "nativeValue": "0.8",
           "inheritance": [
             {
               "cssVar": "--ds-elevation-opacity-80",
@@ -62198,7 +62156,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Color 2 / Base",
-          "cssVarName": "--ds-form-label-color 2-base",
+          "cssVarName": "--ds-form-label-color-2-base",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -62211,7 +62169,7 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-form-label-color 2-base",
+              "cssVar": "--ds-form-label-color-2-base",
               "figmaName": "Component / Form / Label / Color 2 / Base"
             }
           ],
@@ -62225,7 +62183,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Color 2 / Success",
-          "cssVarName": "--ds-form-label-color 2-success",
+          "cssVarName": "--ds-form-label-color-2-success",
           "value": "{🔗 Alias.🔤 Text.Color.Success}",
           "nativeValue": "#168741",
           "inheritance": [
@@ -62238,7 +62196,7 @@
               "figmaName": "Alias / Text / Color / Success"
             },
             {
-              "cssVar": "--ds-form-label-color 2-success",
+              "cssVar": "--ds-form-label-color-2-success",
               "figmaName": "Component / Form / Label / Color 2 / Success"
             }
           ],
@@ -62252,7 +62210,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Color 2 / Warning",
-          "cssVarName": "--ds-form-label-color 2-warning",
+          "cssVarName": "--ds-form-label-color-2-warning",
           "value": "{🔗 Alias.🔤 Text.Color.Warning}",
           "nativeValue": "#B24A00",
           "inheritance": [
@@ -62265,7 +62223,7 @@
               "figmaName": "Alias / Text / Color / Warning"
             },
             {
-              "cssVar": "--ds-form-label-color 2-warning",
+              "cssVar": "--ds-form-label-color-2-warning",
               "figmaName": "Component / Form / Label / Color 2 / Warning"
             }
           ],
@@ -62279,7 +62237,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Color 2 / Danger",
-          "cssVarName": "--ds-form-label-color 2-danger",
+          "cssVarName": "--ds-form-label-color-2-danger",
           "value": "{🔗 Alias.🔤 Text.Color.Danger}",
           "nativeValue": "#EA1800",
           "inheritance": [
@@ -62292,7 +62250,7 @@
               "figmaName": "Alias / Text / Color / Danger"
             },
             {
-              "cssVar": "--ds-form-label-color 2-danger",
+              "cssVar": "--ds-form-label-color-2-danger",
               "figmaName": "Component / Form / Label / Color 2 / Danger"
             }
           ],
@@ -62306,7 +62264,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Color 2 / Disabled",
-          "cssVarName": "--ds-form-label-color 2-disabled",
+          "cssVarName": "--ds-form-label-color-2-disabled",
           "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
           "nativeValue": "#747474",
           "inheritance": [
@@ -62319,7 +62277,7 @@
               "figmaName": "Alias / Text / Color / Disabled"
             },
             {
-              "cssVar": "--ds-form-label-color 2-disabled",
+              "cssVar": "--ds-form-label-color-2-disabled",
               "figmaName": "Component / Form / Label / Color 2 / Disabled"
             }
           ],
@@ -62333,7 +62291,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Size 2 / Mobile",
-          "cssVarName": "--ds-form-label-size 2-mobile",
+          "cssVarName": "--ds-form-label-size-2-mobile",
           "value": "{🔗 Alias.🔤 Text.Size.SM.Mobile}",
           "nativeValue": "14",
           "inheritance": [
@@ -62346,7 +62304,7 @@
               "figmaName": "Alias / Text / Size / SM / Mobile"
             },
             {
-              "cssVar": "--ds-form-label-size 2-mobile",
+              "cssVar": "--ds-form-label-size-2-mobile",
               "figmaName": "Component / Form / Label / Size 2 / Mobile"
             }
           ],
@@ -62360,7 +62318,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Size 2 / Tablet",
-          "cssVarName": "--ds-form-label-size 2-tablet",
+          "cssVarName": "--ds-form-label-size-2-tablet",
           "value": "{🔗 Alias.🔤 Text.Size.SM.Tablet}",
           "nativeValue": "14",
           "inheritance": [
@@ -62373,7 +62331,7 @@
               "figmaName": "Alias / Text / Size / SM / Tablet"
             },
             {
-              "cssVar": "--ds-form-label-size 2-tablet",
+              "cssVar": "--ds-form-label-size-2-tablet",
               "figmaName": "Component / Form / Label / Size 2 / Tablet"
             }
           ],
@@ -62387,7 +62345,7 @@
         },
         {
           "name": "🧩 Component / Form / Label / Size 2 / Desktop",
-          "cssVarName": "--ds-form-label-size 2-desktop",
+          "cssVarName": "--ds-form-label-size-2-desktop",
           "value": "{🔗 Alias.🔤 Text.Size.SM.Desktop}",
           "nativeValue": "14",
           "inheritance": [
@@ -62400,7 +62358,7 @@
               "figmaName": "Alias / Text / Size / SM / Desktop"
             },
             {
-              "cssVar": "--ds-form-label-size 2-desktop",
+              "cssVar": "--ds-form-label-size-2-desktop",
               "figmaName": "Component / Form / Label / Size 2 / Desktop"
             }
           ],
@@ -64126,7 +64084,7 @@
       "path": "src/components/badge/badge.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonColor": {
-      "declaration": "\"\" | \"primary\" | \"secondary\" | \"success\" | \"warning\" | \"danger\" | \"link\" | \"tertiary\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"tertiary-green\" | \"light\" | \"text\" | \"info\" | \"primary-light\" | \"info-light\"",
+      "declaration": "\"primary\" | \"secondary\" | \"success\" | \"warning\" | \"danger\" | \"link\" | \"tertiary\" | \"tertiary-purple\" | \"tertiary-red\" | \"tertiary-yellow\" | \"tertiary-green\" | \"light\" | \"text\" | \"info\" | \"primary-light\" | \"info-light\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -64206,7 +64164,7 @@
       "path": "src/components/card/card.interfaces.ts"
     },
     "src/components/heading/heading.interfaces.ts::HeadingColor": {
-      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"white\" | \"blue\"",
+      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"white\" | \"blue\"",
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
     },
@@ -64216,7 +64174,7 @@
       "path": "src/components/heading/heading.interfaces.ts"
     },
     "src/components/heading/heading.interfaces.ts::HeadingVisualLevel": {
-      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | \"base\" | \"md\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"display\" | \"display-2\"",
+      "declaration": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | \"base\" | \"md\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"display\" | \"display-2\"",
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
     },
@@ -64291,7 +64249,7 @@
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
     "src/components/close/close.interfaces.ts::CloseSize": {
-      "declaration": "\"\" | \"sm\" | \"small\" | \"medium\" | \"md\"",
+      "declaration": "\"sm\" | \"small\" | \"medium\" | \"md\"",
       "docstring": "",
       "path": "src/components/close/close.interfaces.ts"
     },
@@ -64451,7 +64409,7 @@
       "path": "src/components/footer/footer.interfaces.ts"
     },
     "src/components/heading/heading.interfaces.ts::HeadingSpace": {
-      "declaration": "\"\" | \"none\" | \"bottom\" | \"top\" | \"all\"",
+      "declaration": "\"none\" | \"bottom\" | \"top\" | \"all\"",
       "docstring": "",
       "path": "src/components/heading/heading.interfaces.ts"
     },
