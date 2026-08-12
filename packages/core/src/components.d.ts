@@ -2870,9 +2870,8 @@ export namespace Components {
         "labelPosition": SpinnerLabelPosition;
         /**
           * Defines the size of the spinner. If `sm` the spinner is smaller.
-          * @default ''
          */
-        "size": SpinnerSize;
+        "size"?: SpinnerSize;
         /**
           * **Deprecated:** Use size="sm" instead.
           * @default false
@@ -7900,7 +7899,6 @@ declare namespace LocalJSX {
         "labelPosition"?: SpinnerLabelPosition;
         /**
           * Defines the size of the spinner. If `sm` the spinner is smaller.
-          * @default ''
          */
         "size"?: SpinnerSize;
         /**

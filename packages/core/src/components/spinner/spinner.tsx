@@ -29,6 +29,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
  * Spinner displays an animated loading indicator with customizable color, size, and variation.
  *
  * @part inner - The spinner animation container element.
+ * @part label - The visible label rendered next to the spinner.
  */
 @Component({
   tag: 'ds-spinner',
@@ -56,7 +57,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -95,7 +96,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    */
   @Prop({ mutable: true })
   @OneOf(SPINNER_SIZES)
-  size: SpinnerSize = ''
+  size?: SpinnerSize
 
   /**
    * **Deprecated:** Use size="sm" instead.
@@ -137,7 +138,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   componentDidLoad() {
@@ -155,8 +156,8 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -175,7 +176,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private animate = async () => {
@@ -257,7 +258,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
