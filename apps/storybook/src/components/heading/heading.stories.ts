@@ -31,9 +31,7 @@ const meta: Meta<Args> = {
       },
       args,
       'title',
-    )}>${slot}</h1>
-<p class="subtitle is-xx-large">Subtitle</p>
-`,
+    )}>${slot}</h1>`,
   ),
 }
 
