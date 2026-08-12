@@ -139,7 +139,7 @@ function parseScssStyles(dirPath: string): Array<{ name: string; docs: string }>
 }
 
 function convertTokenPathToCssVar(componentName: string, path: string[]): string {
-  return `--ds-${componentName.toLowerCase()}-${path.join('-').toLowerCase()}`
+  return `--ds-${componentName.toLowerCase()}-${path.join('-').toLowerCase().replace(/\s+/g, '-')}`
 }
 
 // Strip emoji and non-alphanumeric characters (except spaces) from a token path segment

@@ -48,7 +48,7 @@ export class Heading implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -70,7 +70,7 @@ export class Heading implements DsComponentInterface {
    */
   @Prop({ reflect: true })
   @OneOf(HEADING_VISUAL_LEVELS)
-  readonly visualLevel: HeadingVisualLevel = ''
+  readonly visualLevel?: HeadingVisualLevel
 
   @Watch('visualLevel')
   visualLevelChanged() {
@@ -82,7 +82,7 @@ export class Heading implements DsComponentInterface {
    */
   @Prop({ reflect: true })
   @OneOf(HEADING_VISUAL_LEVELS)
-  readonly autoLevel: HeadingVisualLevel = ''
+  readonly autoLevel?: HeadingVisualLevel
 
   @Watch('autoLevel')
   autoLevelChanged() {
@@ -110,14 +110,14 @@ export class Heading implements DsComponentInterface {
    */
   @Prop({ reflect: true })
   @OneOf(HEADING_SPACES)
-  readonly space: HeadingSpace = ''
+  readonly space?: HeadingSpace
 
   /**
    * The theme type of the toast.
    */
   @Prop({ reflect: true })
   @OneOf(HEADING_COLORS)
-  readonly color: HeadingColor = ''
+  readonly color?: HeadingColor
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -135,7 +135,7 @@ export class Heading implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback(): void {
@@ -143,10 +143,11 @@ export class Heading implements DsComponentInterface {
   }
 
   componentDidRender(): void {
-    if (hasValue(this.autoLevel) && this.autoFontSize) {
+    const autoLevel = this.autoLevel
+    if (autoLevel && this.autoFontSize) {
       const rows = this.rows
       if (rows > 1) {
-        const minSize = HEADING_SIZES[this.autoLevel]
+        const minSize = HEADING_SIZES[autoLevel]
         if (minSize !== this.autoFontSize) {
           const nextIndex = HEADING_ORDER.indexOf(this.autoFontSize) + 1
           this.autoFontSize = HEADING_ORDER[nextIndex]
@@ -160,8 +161,8 @@ export class Heading implements DsComponentInterface {
   }
 
   /**
-   * GETTERS
-   * ------------------------------------------------------
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
    */
 
   private get rows() {
@@ -174,11 +175,12 @@ export class Heading implements DsComponentInterface {
     return 1
   }
 
-  private get fontColor(): HeadingColor {
+  private get fontColor(): HeadingColor | undefined {
     if (this.inverted) {
       return 'white'
     }
-    return hasValue(this.color) ? (HEADING_COLOR_MAP[this.color] as HeadingColor) : ''
+    const color = this.color
+    return color ? (HEADING_COLOR_MAP[color] as HeadingColor) : undefined
   }
 
   private get fontSize(): HeadingSize {
@@ -191,7 +193,7 @@ export class Heading implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

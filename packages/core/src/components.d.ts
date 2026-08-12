@@ -531,9 +531,8 @@ export namespace Components {
         "bold": boolean;
         /**
           * If `true` the card text color becomes white.
-          * @default ''
          */
-        "color": HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -556,9 +555,8 @@ export namespace Components {
         "level": HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
-        "visualLevel": HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     /**
      * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
@@ -1276,14 +1274,12 @@ export namespace Components {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
-          * @default ''
          */
-        "autoLevel": HeadingVisualLevel;
+        "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
-          * @default ''
          */
-        "color": HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -1306,9 +1302,8 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
-        "space": HeadingSpace;
+        "space"?: HeadingSpace;
         /**
           * If `true` the heading gets displayed slimmer.
           * @default false
@@ -1316,9 +1311,8 @@ export namespace Components {
         "subtitle": boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
-        "visualLevel": HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     /**
      * Hint displays contextual help via an info-circle trigger button.
@@ -5374,7 +5368,6 @@ declare namespace LocalJSX {
         "bold"?: boolean;
         /**
           * If `true` the card text color becomes white.
-          * @default ''
          */
         "color"?: HeadingColor;
         /**
@@ -5399,7 +5392,6 @@ declare namespace LocalJSX {
         "level"?: HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }
@@ -6199,12 +6191,10 @@ declare namespace LocalJSX {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
-          * @default ''
          */
         "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
-          * @default ''
          */
         "color"?: HeadingColor;
         /**
@@ -6229,7 +6219,6 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
         "space"?: HeadingSpace;
         /**
@@ -6239,7 +6228,6 @@ declare namespace LocalJSX {
         "subtitle"?: boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }

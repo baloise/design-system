@@ -10,7 +10,7 @@ $host-selector: ('#heading');
 // Only the root `.heading` element declares the css variables, so nested
 // `.title`/`.subtitle` spans inherit the computed values from their parent
 // heading instead of resetting them back to the defaults on themselves.
-$vars-selector: ('.heading');
+$vars-selector: ('.heading', '.title', '.subtitle');
 $nested-vars-selector: ('.title', '.subtitle');
 
 /**
@@ -22,32 +22,12 @@ $nested-vars-selector: ('.title', '.subtitle');
 
 @include vars.hybrid($name, $vars-selector, $use-host) {
   @include vars.local(heading-color, inherit);
-  @include vars.local(heading-family, var(--ds-heading-family));
-  @include vars.local(heading-weight, var(--ds-heading-weight));
+  @include vars.local(heading-family, var(--ds-heading-font-family));
+  @include vars.local(heading-weight, var(--ds-heading-font-weight));
   @include vars.local(heading-line-height, var(--ds-heading-line-height));
   @include vars.local(heading-font-size, var(--ds-heading-1-size-device));
   @include vars.local(heading-space, var(--ds-heading-1-space));
   @include vars.local(heading-shadow, none); // var(--ds-heading-shadow)
-  @include vars.local(heading-text-align, inherit);
-}
-
-// `.title`/`.subtitle` re-declare the same variables. Weight/family/
-// line-height/shadow don't vary by heading level, so they always fall back
-// to the same concrete defaults as `.heading` — this keeps a standalone
-// `<h1 class="title">` (no `.heading` ancestor) bold by default, only
-// overridden by an explicit modifier like `.subtitle` forcing a light
-// weight. Font-size is the exception: it *does* vary by level (`.is-3`,
-// etc.), so it prefers whatever the ancestor `.heading` already resolved
-// to — the `var(--_heading-font-size, ...)` self-reference is invalid at
-// computed-value time when nothing else sets it, which per spec falls back
-// to the inherited value instead of the literal default.
-@include hybrid.vars($nested-vars-selector, $use-host) {
-  @include vars.local(heading-color, inherit);
-  @include vars.local(heading-family, var(--ds-heading-family));
-  @include vars.local(heading-weight, var(--ds-heading-weight));
-  @include vars.local(heading-line-height, var(--ds-heading-line-height));
-  @include vars.local(heading-font-size, var(--_heading-font-size, var(--ds-heading-1-size-device)));
-  @include vars.local(heading-shadow, none);
   @include vars.local(heading-text-align, inherit);
 }
 
@@ -158,8 +138,8 @@ $nested-vars-selector: ('.title', '.subtitle');
 // Subtitle
 // --------------------------------
 @mixin subtitle {
-  --mod-heading-family: var(--ds-heading-subtitle-family);
-  --mod-heading-weight: var(--ds-heading-subtitle-weight);
+  --mod-heading-family: var(--ds-heading-subtitle-font-family);
+  --mod-heading-weight: var(--ds-heading-subtitle-font-weight);
   --mod-heading-line-height: var(--ds-heading-subtitle-line-height);
 }
 
@@ -182,7 +162,7 @@ $nested-vars-selector: ('.title', '.subtitle');
 $colors: ('primary', 'success', 'warning', 'danger', 'white', 'black');
 
 @mixin color($color) {
-  --mod-heading-color: var(--ds-heading-color-#{$color});
+  --mod-heading-color: var(--ds-heading-#{$color}-color-base);
 }
 
 @each $color in $colors {
@@ -213,8 +193,8 @@ $size-aliases: (
   (is-3, is-level-3, is-xl): 3,
   (is-4, is-level-4, is-lg): 4,
   (is-5, is-level-5, is-base): 5,
-  (is-display-1, is-5xl): display1,
-  (is-display-2, is-4xl): display2,
+  (is-display-1, is-5xl): display-1,
+  (is-display-2, is-4xl): display-2,
 );
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -246,8 +226,8 @@ $size-host-aliases: (
   is-xl: 3,
   is-lg: 4,
   is-base: 5,
-  is-5xl: display1,
-  is-4xl: display2,
+  is-5xl: display-1,
+  is-4xl: display-2,
 );
 
 @include hybrid.host($use-host) {
