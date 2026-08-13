@@ -10,6 +10,7 @@ const VARIANTS = [
   'allowed-dates',
   'disabled',
   'invalid',
+  'invalid-slot',
   'valid',
   'warning',
   'loading',

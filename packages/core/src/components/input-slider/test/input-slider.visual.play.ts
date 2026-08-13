@@ -6,6 +6,7 @@ const VARIANTS = [
   'disabled',
   'readonly',
   'invalid',
+  'invalid-slot',
   'valid',
   'warning',
   'brand-color',

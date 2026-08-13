@@ -1538,10 +1538,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"\" | \"danger\" | \"green\" | \"grey\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\"",
+          "type": "\"danger\" | \"green\" | \"grey\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\" | undefined",
           "complexType": {
             "original": "BadgeColor",
-            "resolved": "\"\" | \"danger\" | \"green\" | \"grey\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\"",
+            "resolved": "\"danger\" | \"green\" | \"grey\" | \"purple\" | \"red\" | \"success\" | \"warning\" | \"yellow\" | undefined",
             "references": {
               "BadgeColor": {
                 "location": "import",
@@ -1555,17 +1555,8 @@
           "attr": "color",
           "reflectToAttr": true,
           "docs": "Define the color for the badge.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "danger",
               "type": "string"
@@ -1597,9 +1588,12 @@
             {
               "value": "yellow",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1635,10 +1629,10 @@
         },
         {
           "name": "position",
-          "type": "\"\" | \"button\" | \"card\" | \"tabs\"",
+          "type": "\"button\" | \"card\" | \"tabs\" | undefined",
           "complexType": {
             "original": "BadgePosition",
-            "resolved": "\"\" | \"button\" | \"card\" | \"tabs\"",
+            "resolved": "\"button\" | \"card\" | \"tabs\" | undefined",
             "references": {
               "BadgePosition": {
                 "location": "import",
@@ -1651,18 +1645,9 @@
           "mutable": false,
           "attr": "position",
           "reflectToAttr": true,
-          "docs": "If `true` the badge is added to the top right corner of the card.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docs": "Defines where the badge is positioned relative to its host, e.g. the top right corner of a card.",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "button",
               "type": "string"
@@ -1674,9 +1659,12 @@
             {
               "value": "tabs",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1712,10 +1700,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
+          "type": "\"large\" | \"lg\" | \"sm\" | \"small\" | undefined",
           "complexType": {
             "original": "BadgeSize",
-            "resolved": "\"\" | \"large\" | \"lg\" | \"sm\" | \"small\"",
+            "resolved": "\"large\" | \"lg\" | \"sm\" | \"small\" | undefined",
             "references": {
               "BadgeSize": {
                 "location": "import",
@@ -1729,17 +1717,8 @@
           "attr": "size",
           "reflectToAttr": true,
           "docs": "Define the size of badge. Small is recommended for tabs.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "large",
               "type": "string"
@@ -1755,9 +1734,12 @@
             {
               "value": "small",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1843,139 +1825,6 @@
       "listeners": [],
       "tokens": [
         {
-          "name": "🧩 Component / Badge / Text / Family",
-          "cssVarName": "--ds-badge-text-family",
-          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-family-heading",
-              "figmaName": "Global / Font / Family / Heading"
-            },
-            {
-              "cssVar": "--ds-text-family-heading",
-              "figmaName": "Alias / Text / Family / Heading"
-            },
-            {
-              "cssVar": "--ds-badge-text-family",
-              "figmaName": "Component / Badge / Text / Family"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Badge",
-            "Text",
-            "Family"
-          ]
-        },
-        {
-          "name": "🧩 Component / Badge / Text / Weight",
-          "cssVarName": "--ds-badge-text-weight",
-          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "nativeValue": "700",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-weight-700",
-              "figmaName": "Global / Font / Weight / 700"
-            },
-            {
-              "cssVar": "--ds-text-weight-bold",
-              "figmaName": "Alias / Text / Weight / Bold"
-            },
-            {
-              "cssVar": "--ds-badge-text-weight",
-              "figmaName": "Component / Badge / Text / Weight"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Badge",
-            "Text",
-            "Weight"
-          ]
-        },
-        {
-          "name": "🧩 Component / Badge / Text / Size / SM",
-          "cssVarName": "--ds-badge-text-size-sm",
-          "value": "{🔗 Alias.🔤 Text.Size.None.Mobile}",
-          "nativeValue": "0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-size-0",
-              "figmaName": "Global / Font / Size / 0"
-            },
-            {
-              "cssVar": "--ds-text-size-none-mobile",
-              "figmaName": "Alias / Text / Size / None / Mobile"
-            },
-            {
-              "cssVar": "--ds-badge-text-size-sm",
-              "figmaName": "Component / Badge / Text / Size / SM"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Badge",
-            "Text",
-            "Size",
-            "SM"
-          ]
-        },
-        {
-          "name": "🧩 Component / Badge / Text / Size / Base",
-          "cssVarName": "--ds-badge-text-size-base",
-          "value": "{🔗 Alias.🔤 Text.Size.XS.Mobile}",
-          "nativeValue": "12",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-size-12",
-              "figmaName": "Global / Font / Size / 12"
-            },
-            {
-              "cssVar": "--ds-text-size-xs-mobile",
-              "figmaName": "Alias / Text / Size / XS / Mobile"
-            },
-            {
-              "cssVar": "--ds-badge-text-size-base",
-              "figmaName": "Component / Badge / Text / Size / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Badge",
-            "Text",
-            "Size",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Badge / Text / Size / LG",
-          "cssVarName": "--ds-badge-text-size-lg",
-          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
-          "nativeValue": "16",
-          "inheritance": [
-            {
-              "cssVar": "--ds-font-size-16",
-              "figmaName": "Global / Font / Size / 16"
-            },
-            {
-              "cssVar": "--ds-text-size-base-mobile",
-              "figmaName": "Alias / Text / Size / Base / Mobile"
-            },
-            {
-              "cssVar": "--ds-badge-text-size-lg",
-              "figmaName": "Component / Badge / Text / Size / LG"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Badge",
-            "Text",
-            "Size",
-            "LG"
-          ]
-        },
-        {
           "name": "🧩 Component / Badge / Size / SM",
           "cssVarName": "--ds-badge-size-sm",
           "value": "{🔗 Alias.↔️ Space.SM.Mobile}",
@@ -2054,8 +1903,141 @@
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Base / Text",
-          "cssVarName": "--ds-badge-color-base-text",
+          "name": "🧩 Component / Badge / Font / Family",
+          "cssVarName": "--ds-badge-font-family",
+          "value": "{🔗 Alias.🔤 Text.Family.Heading}",
+          "nativeValue": "\"BaloiseCreateHeadline\", \"Arial\", \"sans-serif\"",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-text-family-heading",
+              "figmaName": "Alias / Text / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-badge-font-family",
+              "figmaName": "Component / Badge / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Badge",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / Badge / Font / Weight",
+          "cssVarName": "--ds-badge-font-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-badge-font-weight",
+              "figmaName": "Component / Badge / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Badge",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / Badge / Font / Size / SM",
+          "cssVarName": "--ds-badge-font-size-sm",
+          "value": "{🔗 Alias.🔤 Text.Size.None.Mobile}",
+          "nativeValue": "0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-0",
+              "figmaName": "Global / Font / Size / 0"
+            },
+            {
+              "cssVar": "--ds-text-size-none-mobile",
+              "figmaName": "Alias / Text / Size / None / Mobile"
+            },
+            {
+              "cssVar": "--ds-badge-font-size-sm",
+              "figmaName": "Component / Badge / Font / Size / SM"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Badge",
+            "Font",
+            "Size",
+            "SM"
+          ]
+        },
+        {
+          "name": "🧩 Component / Badge / Font / Size / Base",
+          "cssVarName": "--ds-badge-font-size-base",
+          "value": "{🔗 Alias.🔤 Text.Size.XS.Mobile}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-12",
+              "figmaName": "Global / Font / Size / 12"
+            },
+            {
+              "cssVar": "--ds-text-size-xs-mobile",
+              "figmaName": "Alias / Text / Size / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-badge-font-size-base",
+              "figmaName": "Component / Badge / Font / Size / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Badge",
+            "Font",
+            "Size",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Badge / Font / Size / LG",
+          "cssVarName": "--ds-badge-font-size-lg",
+          "value": "{🔗 Alias.🔤 Text.Size.Base.Mobile}",
+          "nativeValue": "16",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base-mobile",
+              "figmaName": "Alias / Text / Size / Base / Mobile"
+            },
+            {
+              "cssVar": "--ds-badge-font-size-lg",
+              "figmaName": "Component / Badge / Font / Size / LG"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Badge",
+            "Font",
+            "Size",
+            "LG"
+          ]
+        },
+        {
+          "name": "🧩 Component / Badge / Base / Color / Text",
+          "cssVarName": "--ds-badge-base-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2068,21 +2050,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-base-text",
-              "figmaName": "Component / Badge / Color / Base / Text"
+              "cssVar": "--ds-badge-base-color-text",
+              "figmaName": "Component / Badge / Base / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Base",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Base / Background",
-          "cssVarName": "--ds-badge-color-base-background",
+          "name": "🧩 Component / Badge / Base / Color / Background",
+          "cssVarName": "--ds-badge-base-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.Red}",
           "nativeValue": "#FFACA6",
           "inheritance": [
@@ -2095,21 +2077,21 @@
               "figmaName": "Alias / Background / Color / Red"
             },
             {
-              "cssVar": "--ds-badge-color-base-background",
-              "figmaName": "Component / Badge / Color / Base / Background"
+              "cssVar": "--ds-badge-base-color-background",
+              "figmaName": "Component / Badge / Base / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Base",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Info / Text",
-          "cssVarName": "--ds-badge-color-info-text",
+          "name": "🧩 Component / Badge / Info / Color / Text",
+          "cssVarName": "--ds-badge-info-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2122,21 +2104,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-info-text",
-              "figmaName": "Component / Badge / Color / Info / Text"
+              "cssVar": "--ds-badge-info-color-text",
+              "figmaName": "Component / Badge / Info / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Info",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Info / Background",
-          "cssVarName": "--ds-badge-color-info-background",
+          "name": "🧩 Component / Badge / Info / Color / Background",
+          "cssVarName": "--ds-badge-info-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.Purple}",
           "nativeValue": "#B8B2FF",
           "inheritance": [
@@ -2149,21 +2131,21 @@
               "figmaName": "Alias / Background / Color / Purple"
             },
             {
-              "cssVar": "--ds-badge-color-info-background",
-              "figmaName": "Component / Badge / Color / Info / Background"
+              "cssVar": "--ds-badge-info-color-background",
+              "figmaName": "Component / Badge / Info / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Info",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Success / Text",
-          "cssVarName": "--ds-badge-color-success-text",
+          "name": "🧩 Component / Badge / Success / Color / Text",
+          "cssVarName": "--ds-badge-success-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2176,21 +2158,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-success-text",
-              "figmaName": "Component / Badge / Color / Success / Text"
+              "cssVar": "--ds-badge-success-color-text",
+              "figmaName": "Component / Badge / Success / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Success",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Success / Background",
-          "cssVarName": "--ds-badge-color-success-background",
+          "name": "🧩 Component / Badge / Success / Color / Background",
+          "cssVarName": "--ds-badge-success-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.Green}",
           "nativeValue": "#94E3D4",
           "inheritance": [
@@ -2203,21 +2185,21 @@
               "figmaName": "Alias / Background / Color / Green"
             },
             {
-              "cssVar": "--ds-badge-color-success-background",
-              "figmaName": "Component / Badge / Color / Success / Background"
+              "cssVar": "--ds-badge-success-color-background",
+              "figmaName": "Component / Badge / Success / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Success",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Warning / Text",
-          "cssVarName": "--ds-badge-color-warning-text",
+          "name": "🧩 Component / Badge / Warning / Color / Text",
+          "cssVarName": "--ds-badge-warning-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2230,21 +2212,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-warning-text",
-              "figmaName": "Component / Badge / Color / Warning / Text"
+              "cssVar": "--ds-badge-warning-color-text",
+              "figmaName": "Component / Badge / Warning / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Warning",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Warning / Background",
-          "cssVarName": "--ds-badge-color-warning-background",
+          "name": "🧩 Component / Badge / Warning / Color / Background",
+          "cssVarName": "--ds-badge-warning-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.YellowLight}",
           "nativeValue": "#FFECBC",
           "inheritance": [
@@ -2257,21 +2239,21 @@
               "figmaName": "Alias / Background / Color / YellowLight"
             },
             {
-              "cssVar": "--ds-badge-color-warning-background",
-              "figmaName": "Component / Badge / Color / Warning / Background"
+              "cssVar": "--ds-badge-warning-color-background",
+              "figmaName": "Component / Badge / Warning / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Warning",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Danger / Text",
-          "cssVarName": "--ds-badge-color-danger-text",
+          "name": "🧩 Component / Badge / Danger / Color / Text",
+          "cssVarName": "--ds-badge-danger-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2284,21 +2266,21 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-danger-text",
-              "figmaName": "Component / Badge / Color / Danger / Text"
+              "cssVar": "--ds-badge-danger-color-text",
+              "figmaName": "Component / Badge / Danger / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Danger",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Danger / Background",
-          "cssVarName": "--ds-badge-color-danger-background",
+          "name": "🧩 Component / Badge / Danger / Color / Background",
+          "cssVarName": "--ds-badge-danger-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.Red}",
           "nativeValue": "#FFACA6",
           "inheritance": [
@@ -2311,21 +2293,21 @@
               "figmaName": "Alias / Background / Color / Red"
             },
             {
-              "cssVar": "--ds-badge-color-danger-background",
-              "figmaName": "Component / Badge / Color / Danger / Background"
+              "cssVar": "--ds-badge-danger-color-background",
+              "figmaName": "Component / Badge / Danger / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Danger",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Red / Text",
-          "cssVarName": "--ds-badge-color-red-text",
+          "name": "🧩 Component / Badge / Red / Color / Text",
+          "cssVarName": "--ds-badge-red-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2338,48 +2320,48 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-red-text",
-              "figmaName": "Component / Badge / Color / Red / Text"
+              "cssVar": "--ds-badge-red-color-text",
+              "figmaName": "Component / Badge / Red / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Red",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Red / Background",
-          "cssVarName": "--ds-badge-color-red-background",
-          "value": "{🔗 Alias.🎨 Background.Color.RedLight}",
-          "nativeValue": "#FFD7D7",
+          "name": "🧩 Component / Badge / Red / Color / Background",
+          "cssVarName": "--ds-badge-red-color-background",
+          "value": "{🔗 Alias.🎨 Background.Color.Red}",
+          "nativeValue": "#FFACA6",
           "inheritance": [
             {
-              "cssVar": "--ds-color-red-2",
-              "figmaName": "Global / Color / Red / 2"
+              "cssVar": "--ds-color-red-3",
+              "figmaName": "Global / Color / Red / 3"
             },
             {
-              "cssVar": "--ds-background-color-redlight",
-              "figmaName": "Alias / Background / Color / RedLight"
+              "cssVar": "--ds-background-color-red",
+              "figmaName": "Alias / Background / Color / Red"
             },
             {
-              "cssVar": "--ds-badge-color-red-background",
-              "figmaName": "Component / Badge / Color / Red / Background"
+              "cssVar": "--ds-badge-red-color-background",
+              "figmaName": "Component / Badge / Red / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Red",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Purple / Text",
-          "cssVarName": "--ds-badge-color-purple-text",
+          "name": "🧩 Component / Badge / Purple / Color / Text",
+          "cssVarName": "--ds-badge-purple-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2392,48 +2374,48 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-purple-text",
-              "figmaName": "Component / Badge / Color / Purple / Text"
+              "cssVar": "--ds-badge-purple-color-text",
+              "figmaName": "Component / Badge / Purple / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Purple",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Purple / Background",
-          "cssVarName": "--ds-badge-color-purple-background",
-          "value": "{🔗 Alias.🎨 Background.Color.PurpleLight}",
-          "nativeValue": "#E1D9FF",
+          "name": "🧩 Component / Badge / Purple / Color / Background",
+          "cssVarName": "--ds-badge-purple-color-background",
+          "value": "{🔗 Alias.🎨 Background.Color.Purple}",
+          "nativeValue": "#B8B2FF",
           "inheritance": [
             {
-              "cssVar": "--ds-color-purple-2",
-              "figmaName": "Global / Color / Purple / 2"
+              "cssVar": "--ds-color-purple-3",
+              "figmaName": "Global / Color / Purple / 3"
             },
             {
-              "cssVar": "--ds-background-color-purplelight",
-              "figmaName": "Alias / Background / Color / PurpleLight"
+              "cssVar": "--ds-background-color-purple",
+              "figmaName": "Alias / Background / Color / Purple"
             },
             {
-              "cssVar": "--ds-badge-color-purple-background",
-              "figmaName": "Component / Badge / Color / Purple / Background"
+              "cssVar": "--ds-badge-purple-color-background",
+              "figmaName": "Component / Badge / Purple / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Purple",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Green / Text",
-          "cssVarName": "--ds-badge-color-green-text",
+          "name": "🧩 Component / Badge / Green / Color / Text",
+          "cssVarName": "--ds-badge-green-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2446,48 +2428,48 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-green-text",
-              "figmaName": "Component / Badge / Color / Green / Text"
+              "cssVar": "--ds-badge-green-color-text",
+              "figmaName": "Component / Badge / Green / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Green",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Green / Background",
-          "cssVarName": "--ds-badge-color-green-background",
-          "value": "{🔗 Alias.🎨 Background.Color.GreenLight}",
-          "nativeValue": "#CBF2EC",
+          "name": "🧩 Component / Badge / Green / Color / Background",
+          "cssVarName": "--ds-badge-green-color-background",
+          "value": "{🔗 Alias.🎨 Background.Color.Green}",
+          "nativeValue": "#94E3D4",
           "inheritance": [
             {
-              "cssVar": "--ds-color-green-2",
-              "figmaName": "Global / Color / Green / 2"
+              "cssVar": "--ds-color-green-3",
+              "figmaName": "Global / Color / Green / 3"
             },
             {
-              "cssVar": "--ds-background-color-greenlight",
-              "figmaName": "Alias / Background / Color / GreenLight"
+              "cssVar": "--ds-background-color-green",
+              "figmaName": "Alias / Background / Color / Green"
             },
             {
-              "cssVar": "--ds-badge-color-green-background",
-              "figmaName": "Component / Badge / Color / Green / Background"
+              "cssVar": "--ds-badge-green-color-background",
+              "figmaName": "Component / Badge / Green / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Green",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Yellow / Text",
-          "cssVarName": "--ds-badge-color-yellow-text",
+          "name": "🧩 Component / Badge / Yellow / Color / Text",
+          "cssVarName": "--ds-badge-yellow-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -2500,48 +2482,48 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-badge-color-yellow-text",
-              "figmaName": "Component / Badge / Color / Yellow / Text"
+              "cssVar": "--ds-badge-yellow-color-text",
+              "figmaName": "Component / Badge / Yellow / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Yellow",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Yellow / Background",
-          "cssVarName": "--ds-badge-color-yellow-background",
-          "value": "{🔗 Alias.🎨 Background.Color.YellowLighter}",
-          "nativeValue": "#FFF9E8",
+          "name": "🧩 Component / Badge / Yellow / Color / Background",
+          "cssVarName": "--ds-badge-yellow-color-background",
+          "value": "{🔗 Alias.🎨 Background.Color.Yellow}",
+          "nativeValue": "#FAE052",
           "inheritance": [
             {
-              "cssVar": "--ds-color-yellow-1",
-              "figmaName": "Global / Color / Yellow / 1"
+              "cssVar": "--ds-color-yellow-3",
+              "figmaName": "Global / Color / Yellow / 3"
             },
             {
-              "cssVar": "--ds-background-color-yellowlighter",
-              "figmaName": "Alias / Background / Color / YellowLighter"
+              "cssVar": "--ds-background-color-yellow",
+              "figmaName": "Alias / Background / Color / Yellow"
             },
             {
-              "cssVar": "--ds-badge-color-yellow-background",
-              "figmaName": "Component / Badge / Color / Yellow / Background"
+              "cssVar": "--ds-badge-yellow-color-background",
+              "figmaName": "Component / Badge / Yellow / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Yellow",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Grey / Text",
-          "cssVarName": "--ds-badge-color-grey-text",
+          "name": "🧩 Component / Badge / Grey / Color / Text",
+          "cssVarName": "--ds-badge-grey-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Grey}",
           "nativeValue": "#747474",
           "inheritance": [
@@ -2554,21 +2536,21 @@
               "figmaName": "Alias / Text / Color / Grey"
             },
             {
-              "cssVar": "--ds-badge-color-grey-text",
-              "figmaName": "Component / Badge / Color / Grey / Text"
+              "cssVar": "--ds-badge-grey-color-text",
+              "figmaName": "Component / Badge / Grey / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Grey",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Badge / Color / Grey / Background",
-          "cssVarName": "--ds-badge-color-grey-background",
+          "name": "🧩 Component / Badge / Grey / Color / Background",
+          "cssVarName": "--ds-badge-grey-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -2581,15 +2563,15 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-badge-color-grey-background",
-              "figmaName": "Component / Badge / Color / Grey / Background"
+              "cssVar": "--ds-badge-grey-color-background",
+              "figmaName": "Component / Badge / Grey / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Badge",
-            "Color",
             "Grey",
+            "Color",
             "Background"
           ]
         }
@@ -64054,17 +64036,17 @@
       "path": "src/components/alert/toast/toast.interfaces.ts"
     },
     "src/components/badge/badge.interfaces.ts::BadgeSize": {
-      "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"large\"",
+      "declaration": "\"sm\" | \"lg\" | \"small\" | \"large\"",
       "docstring": "",
       "path": "src/components/badge/badge.interfaces.ts"
     },
     "src/components/badge/badge.interfaces.ts::BadgeColor": {
-      "declaration": "\"\" | \"success\" | \"warning\" | \"danger\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
+      "declaration": "\"success\" | \"warning\" | \"danger\" | \"grey\" | \"red\" | \"yellow\" | \"green\" | \"purple\"",
       "docstring": "",
       "path": "src/components/badge/badge.interfaces.ts"
     },
     "src/components/badge/badge.interfaces.ts::BadgePosition": {
-      "declaration": "\"\" | \"button\" | \"card\" | \"tabs\"",
+      "declaration": "\"button\" | \"card\" | \"tabs\"",
       "docstring": "",
       "path": "src/components/badge/badge.interfaces.ts"
     },

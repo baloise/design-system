@@ -8,7 +8,7 @@ Background for how this skill's stance on "what's correct" changed, and how each
 
 ## History: why an earlier version of this skill deferred to shipped tokens instead
 
-STYLE_GUIDE.md documents this anatomy for component tokens:
+Both `STYLE_GUIDE.md`'s "Token Naming Anatomy" section and `packages/tokens/CONTEXT.md`'s "Naming Convention" → "Color order" document the same rule: **variant before category**.
 
 ```
 --ds-button-primary-color-bg-base
@@ -19,7 +19,7 @@ STYLE_GUIDE.md documents this anatomy for component tokens:
        └─ component
 ```
 
-i.e. **variant before category**, with `--ds-button-color-primary-text` marked as the ❌ wrong-order example.
+`--ds-button-color-primary-text` is CONTEXT.md's explicit ❌ wrong-order example.
 
 Checking the actual compiled tokens (`dist/css/base.tokens.css`) against this doc:
 
@@ -31,7 +31,7 @@ Checking the actual compiled tokens (`dist/css/base.tokens.css`) against this do
 --ds-badge-color-danger-text
 ```
 
-The real, shipped order is **category before variant** (`color-primary-...`, not `primary-color-...`), driven directly by `Base.tokens.json`'s JSON nesting (`Button > Color > Primary > Base > Text`) joined straight into kebab-case by Style Dictionary. This is universal across every component checked — not an isolated exception.
+The shipped order is **category before variant** (`color-primary-...`, not `primary-color-...`), driven directly by `Base.tokens.json`'s JSON nesting (`Button > Color > Primary > Base > Text`) joined straight into kebab-case by Style Dictionary — universal across every component checked.
 
 By the literal STYLE_GUIDE.md rule, every existing component token in the library would be "wrong." The earlier version of this skill treated that as proof the doc's anatomy example was stale/aspirational rather than evidence that hundreds of shipped tokens needed fixing, and trusted the real, consistent, shipped convention over the doc as a result.
 
@@ -48,7 +48,15 @@ Not every STYLE_GUIDE.md rule was invalidated — checking against real data fou
 
 ## Rule implementation notes
 
-### Rule 1 — Typography `font-` prefix
+### Rule 1 — Color variant/category order
+
+Detects a leaf whose `jsonPath[0] === 'Color'` — i.e. `Color` is the top-level key directly under the component, with the variant (`Base`, `Danger`, `Primary`, ...) nested one level below it. This only checks the top-level shape, not every depth, for two reasons: every real component's `Color` tree is currently structured this way with `Color` as the direct child of the component, and checking only the top level makes the fix idempotent — after applying, the leaf's first segment is the variant (not `Color`), so a re-run naturally stops matching instead of swapping it back and forth.
+
+Proposed fix: swap the first two path segments — `[Color, Variant, ...rest]` → `[Variant, Color, ...rest]`. Deeper segments (state, property) are left untouched; see "What does still hold up" above for why state/property order isn't part of this rule.
+
+**SCSS interpolation gotcha**: several components build the variant segment of a color var dynamically in an `@each $color in (...)` loop instead of writing a fully-resolved name, e.g. `--ds-badge-color-#{$color}-text` in `badge.host.scss` (same pattern in `button.style.scss`, `card.style.scss`, `toast.host.scss`, `snackbar.host.scss`). The literal `renameMap` replace (`var(--ds-old-name)` → `var(--ds-new-name)`) can never match this — there is no literal `--ds-badge-color-danger-text` string in the file — so `applyFixes` runs a second, structural pass whenever a `color-variant-order` violation is in the batch: it matches `--ds-<component>-color-#{...}-` and swaps to `--ds-<component>-#{...}-color-`, mirroring the JSON path swap instead of a literal string swap. Without this, the rename would silently leave the `@each` block pointing at tokens that no longer exist.
+
+### Rule 2 — Typography `font-` prefix
 
 Detects a leaf token whose key is `Family`, `Weight`, `LineHeight`, or `Size` **and** whose `$value` resolves through the Alias `🔤 Text` typography category (regex match on the `$value` string for `🔤 Text.(Family|Weight|LineHeight|Size)`), and which isn't already nested under a `Font` grouping key.
 
@@ -59,13 +67,15 @@ Proposed fix:
 
 This is a heuristic, not a certainty — always show the proposed JSON restructuring to the user before applying, since a mis-detected wrapper rename could catch an unrelated sibling under the same key.
 
-### Rule 2 — State vocabulary
+### Rule 3 — State vocabulary
 
 A JSON object is treated as a "state group" once at least half of its non-`$`-prefixed children are already exact matches for the closed state set. Within a detected state group, any child that's a close (edit distance ≤ 2) but not exact match to a state word is flagged as a likely typo, with the nearest state word proposed as the fix.
 
 Groups where fewer than half the children look state-like are left alone — that's ordinary component structure (e.g. color variant names), not a typo'd state group.
 
-### Rule 3 — JSON key casing
+Note this set includes `Base`, which is also used as a default/no-variant _name_ (e.g. `Badge > Color > Base`) rather than a runtime state — Rule 1 doesn't consult this set at all, precisely to avoid that ambiguity; it treats whatever immediately follows `Color` as the variant regardless of whether that word happens to also be a state word.
+
+### Rule 4 — JSON key casing
 
 Every non-`$`-prefixed key in the component's token subtree must match `/^[A-Z0-9][A-Za-z0-9]*$/` — PascalCase, or a bare acronym/number. A camelCase or snake_case key would still resolve through Style Dictionary, but the derived kebab-case CSS variable name would likely be wrong or inconsistent with the rest of the token's siblings, so it's flagged early rather than discovered later as a mismatched CSS variable.
 

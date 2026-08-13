@@ -100,6 +100,21 @@
         </ds-checkbox-group>
       </section>
 
+      <!-- Field Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="field-invalid-slot">
+        <span>Field Invalid via slot</span>
+        <ds-checkbox-group control label="Slot with content" description="Description">
+          <ds-checkbox name="field-invalid-slot-1" value="1" required>Radio 1</ds-checkbox>
+          <ds-checkbox name="field-invalid-slot-1" value="2" required>Radio 2</ds-checkbox>
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-checkbox-group>
+        <ds-checkbox-group control label="Empty slot stays valid" description="Description">
+          <ds-checkbox name="field-invalid-slot-2" value="1" required>Radio 1</ds-checkbox>
+          <ds-checkbox name="field-invalid-slot-2" value="2" required>Radio 2</ds-checkbox>
+          <div slot="invalid-text"></div>
+        </ds-checkbox-group>
+      </section>
+
       <!-- Tile Basic -->
       <section data-testid="tile-basic">
         <span>Tile Basic</span>
