@@ -4,7 +4,7 @@
 
 Checks a component's Component-layer design tokens (`🧩 Component > <ComponentName>` in `packages/tokens/tokens/Base.tokens.json`) against the design system's real naming convention, reports violations as a markdown table for review, and — once approved — renames the tokens in `Base.tokens.json`, updates every `var()` reference in SCSS, and recompiles the token outputs.
 
-Built via a `/grilling` session (see git history) that checked the intended rule checklist against the actual compiled tokens before writing any code. That check found STYLE_GUIDE.md's documented segment order (`variant` before `category`) doesn't match what's actually shipped (`category` before `variant`, universally) — see [REFERENCE.md](REFERENCE.md) for the full finding and which rules survived vs. were dropped as a result.
+Built via a `/grilling` session (see git history) that checked the intended rule checklist against the actual compiled tokens before writing any code. That check found STYLE_GUIDE.md's documented segment order (`variant` before `category`) doesn't match what's actually shipped (`category` before `variant`, universally) — the skill originally deferred to the shipped convention as a result. That call was later overturned: `packages/tokens/CONTEXT.md`'s "Token Naming Anatomy" is now treated as canonical, and a segment-order rule (Rule 4) was added to converge shipped tokens toward it, one component per run. See [REFERENCE.md](REFERENCE.md) for the full history and per-rule implementation notes.
 
 ## Files
 

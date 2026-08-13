@@ -191,9 +191,8 @@ export namespace Components {
         "animated": boolean;
         /**
           * Defines the container size constraint for the alert layout.
-          * @default ''
          */
-        "container": AlertContainerSize;
+        "container"?: AlertContainerSize;
         /**
           * Removes the alert with the given ID.
          */
@@ -1982,9 +1981,8 @@ export namespace Components {
         "closeHandler": () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
-        "color": NotificationColor;
+        "color"?: NotificationColor;
         /**
           * Defines the heading of the notification.
           * @default ''
@@ -5008,7 +5006,6 @@ declare namespace LocalJSX {
         "animated"?: boolean;
         /**
           * Defines the container size constraint for the alert layout.
-          * @default ''
          */
         "container"?: AlertContainerSize;
         /**
@@ -6926,7 +6923,6 @@ declare namespace LocalJSX {
         "closeHandler"?: () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
         "color"?: NotificationColor;
         /**

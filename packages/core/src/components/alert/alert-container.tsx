@@ -33,12 +33,11 @@ export class AlertContainer implements DsComponentInterface {
 
   private maxVisibleItems = 5
   private animationDurationMs = 300
-  private containerEl: HTMLDivElement | undefined
   private alertTimers: Record<string, PausableTimer> = {}
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -53,7 +52,7 @@ export class AlertContainer implements DsComponentInterface {
    */
   @Prop()
   @OneOf(ALERT_CONTAINER_SIZES)
-  readonly container: AlertContainerSize = ''
+  readonly container?: AlertContainerSize
 
   /**
    * Defines the display type: `toast` (top-right overlay) or `snackbar` (bottom banner).
@@ -65,7 +64,7 @@ export class AlertContainer implements DsComponentInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -116,7 +115,7 @@ export class AlertContainer implements DsComponentInterface {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private activeTimer(id: string, duration: number | 'infinite') {
@@ -167,7 +166,7 @@ export class AlertContainer implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
