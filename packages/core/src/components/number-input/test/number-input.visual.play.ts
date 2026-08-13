@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'number-input'
-const VARIANTS = ['basic', 'disabled', 'invalid', 'valid', 'warning', 'decimal', 'suffix']
+const VARIANTS = ['basic', 'disabled', 'invalid', 'invalid-slot', 'valid', 'warning', 'decimal', 'suffix']
 
 const image = screenshot(TAG)
 

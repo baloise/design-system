@@ -12,6 +12,7 @@ import {
   hasValue,
   OneOf,
   Type,
+  watchInvalidTextSlot,
 } from '@utils'
 import { ACTION_KEYS, isCtrlOrCommandKey } from '@global'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
@@ -43,6 +44,7 @@ import {
 /**
  * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
  *
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part input - The native HTML input element.
  * @part prefix - The prefix wrapper (if used).
  * @part suffix - The suffix wrapper (if used).
@@ -70,6 +72,9 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   @State() focused = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   @AttachInternals() internals!: ElementInternals
 
@@ -376,6 +381,13 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
     this.debounceChanged()
     this.maskChanged()
     this.control.connectedCallback()
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
+  }
+
+  disconnectedCallback() {
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentWillLoad() {
@@ -482,11 +494,13 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
       inputProps = { pattern: this.pattern }
     }
 
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
+
     return (
       <Field
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={isInvalid}
         loading={this.loading}
         label={this.label}
         description={this.description}
@@ -500,7 +514,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
           name={this.name}
           ref={inputEl => (this.control.nativeEl = inputEl)}
           aria-describedby="description"
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-invalid={isInvalid ? 'true' : 'false'}
           disabled={this.disabled}
           accept={this.accept}
           inputMode={this.inputmode}

@@ -5,6 +5,7 @@ const VARIANTS = [
   'basic',
   'disabled',
   'invalid',
+  'invalid-slot',
   'valid',
   'warning',
   'loading',

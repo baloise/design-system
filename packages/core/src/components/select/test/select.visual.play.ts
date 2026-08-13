@@ -1,7 +1,7 @@
 import { DsSelect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'select'
-const VARIANTS = ['basic', 'disabled', 'invalid', 'valid', 'warning'] as const
+const VARIANTS = ['basic', 'disabled', 'invalid', 'invalid-slot', 'valid', 'warning'] as const
 
 const HOST_VARIANTS: { testId: string; selectId: string; options: string[]; multiple?: boolean }[] = [
   { testId: 'basic', selectId: 'basic', options: ['Italy'] },

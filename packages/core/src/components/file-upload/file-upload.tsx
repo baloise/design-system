@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, stopEventBubbling, areArraysEqual, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, areArraysEqual, OneOf, Type, watchInvalidTextSlot } from '@utils'
 import { defaultConfig, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Field, FieldInterface } from '../input/field.util'
@@ -22,6 +22,7 @@ import { i18nDsFileUpload } from './file-upload.i18n'
 /**
  * FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.
  *
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part drop-zone - The main drop area where users drag files or click to select.
  * @part file-list - The list of selected files below the drop zone.
  */
@@ -49,6 +50,9 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
   @State() isDragOver = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   /**
    * PUBLIC PROPERTY API
@@ -242,6 +246,9 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
 
   connectedCallback() {
     this.initialValue = [...(this.value || [])]
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
   }
 
   componentDidLoad() {
@@ -250,6 +257,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
 
   disconnectedCallback() {
     this.removeDragListeners()
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   /**
@@ -432,12 +440,13 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
     const dropZoneLabel = this.dropZoneLabel || i18nDsFileUpload[this.language].dropZoneLabel
     const selectedFilesLabel = i18nDsFileUpload[this.language].selectedFilesLabel
     const removeFileLabel = i18nDsFileUpload[this.language].removeFileLabel
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
 
     return (
       <Field
         color={this.color}
         disabled={this.disabled}
-        invalid={this.invalid}
+        invalid={isInvalid}
         label={this.label}
         description={this.description}
         invalidText={this.invalidText}
@@ -472,7 +481,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
             disabled={isDisabled}
             required={this.required}
             accept={this.accept || undefined}
-            aria-invalid={this.invalid ? 'true' : 'false'}
+            aria-invalid={isInvalid ? 'true' : 'false'}
             aria-describedby="description"
             onClick={this.handleInputClick}
             onChange={this.handleInputChange}

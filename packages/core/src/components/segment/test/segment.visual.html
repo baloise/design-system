@@ -176,6 +176,31 @@
         </ds-segment>
       </section>
 
+      <!-- Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="invalid-slot">
+        <span>Invalid via slot</span>
+        <ds-segment name="invalid-slot-1" value="apple" label="Slot with content" description="Description">
+          <ds-segment-item icon="web" value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item
+            icon="web"
+            value="strewberry"
+            label="Strewberry"
+            description="A small red fruit"
+          ></ds-segment-item>
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-segment>
+        <ds-segment name="invalid-slot-2" value="apple" label="Empty slot stays valid" description="Description">
+          <ds-segment-item icon="web" value="apple" label="Apple" description="A sweet red fruit"></ds-segment-item>
+          <ds-segment-item
+            icon="web"
+            value="strewberry"
+            label="Strewberry"
+            description="A small red fruit"
+          ></ds-segment-item>
+          <div slot="invalid-text"></div>
+        </ds-segment>
+      </section>
+
       <!-- Invalid + Disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>

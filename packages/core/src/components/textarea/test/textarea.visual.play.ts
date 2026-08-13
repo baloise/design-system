@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'textarea'
-const VARIANTS = ['basic', 'disabled', 'invalid', 'valid', 'warning', 'rows', 'long-content']
+const VARIANTS = ['basic', 'disabled', 'invalid', 'invalid-slot', 'valid', 'warning', 'rows', 'long-content']
 
 const image = screenshot(TAG)
 
