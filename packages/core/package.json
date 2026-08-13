@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-core",
-  "version": "20.0.0-next.7",
+  "version": "20.0.0-next.8",
   "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -42,9 +42,9 @@
     "play:ci": "cross-env CI=1 pnpm exec playwright test"
   },
   "dependencies": {
-    "@baloise/ds-assets": "20.0.0-next.7",
-    "@baloise/ds-css": "20.0.0-next.7",
-    "@baloise/ds-tokens": "20.0.0-next.7",
+    "@baloise/ds-assets": "20.0.0-next.8",
+    "@baloise/ds-css": "20.0.0-next.8",
+    "@baloise/ds-tokens": "20.0.0-next.8",
     "@floating-ui/dom": "1.8.0",
     "@stencil/core": "catalog:",
     "air-datepicker": "3.6.0",
@@ -60,7 +60,7 @@
     "tslib": "catalog:"
   },
   "devDependencies": {
-    "@baloise/ds-playwright": "20.0.0-next.7",
+    "@baloise/ds-playwright": "20.0.0-next.8",
     "@stencil/angular-output-target": "1.4.1",
     "@stencil/react-output-target": "1.6.1",
     "@types/lodash": "4.17.24",
