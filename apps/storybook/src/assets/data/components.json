@@ -15352,6 +15352,10 @@
         {
           "name": "slot",
           "text": "- The checkbox items to display inside the group."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "encapsulation": "shadow",
@@ -16181,6 +16185,10 @@
         {
           "name": "",
           "docs": "The checkbox items to display inside the group."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [],
@@ -17770,6 +17778,10 @@
       "docs": "Date renders a masked date input field with an interactive calendar popup for date selection.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -19121,7 +19133,12 @@
           "docs": "Navigation button color when disabled."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "clear",
@@ -21301,6 +21318,10 @@
       "docs": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "drop-zone - The main drop area where users drag files or click to select."
         },
@@ -22229,7 +22250,12 @@
           "docs": "Text color when disabled."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "drop-zone",
@@ -27790,6 +27816,10 @@
       "docs": "Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -29399,7 +29429,12 @@
           "docs": "Line height of the description."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "input",
@@ -29488,6 +29523,10 @@
       "usage": {},
       "docs": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
       "docsTags": [
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
         {
           "name": "part",
           "text": "slider - The noUiSlider target element."
@@ -30248,7 +30287,12 @@
           "docs": "Line height of the description."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "slider",
@@ -38255,6 +38299,10 @@
           "text": "- The number input field content and surrounding elements."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -39154,6 +39202,10 @@
         {
           "name": "",
           "docs": "The number input field content and surrounding elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -41210,8 +41262,8 @@
       "listeners": [],
       "tokens": [
         {
-          "name": "🧩 Component / ProgressBar / Background / Light",
-          "cssVarName": "--ds-progressbar-background-light",
+          "name": "🧩 Component / ProgressBar / Light / Color / Background",
+          "cssVarName": "--ds-progressbar-light-color-background",
           "value": "{🔗 Alias.🔤 Text.Color.White}",
           "nativeValue": "#FFFFFF",
           "inheritance": [
@@ -41224,20 +41276,21 @@
               "figmaName": "Alias / Text / Color / White"
             },
             {
-              "cssVar": "--ds-progressbar-background-light",
-              "figmaName": "Component / ProgressBar / Background / Light"
+              "cssVar": "--ds-progressbar-light-color-background",
+              "figmaName": "Component / ProgressBar / Light / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "ProgressBar",
-            "Background",
-            "Light"
+            "Light",
+            "Color",
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / ProgressBar / Background / Dark",
-          "cssVarName": "--ds-progressbar-background-dark",
+          "name": "🧩 Component / ProgressBar / Dark / Color / Background",
+          "cssVarName": "--ds-progressbar-dark-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -41250,20 +41303,21 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-progressbar-background-dark",
-              "figmaName": "Component / ProgressBar / Background / Dark"
+              "cssVar": "--ds-progressbar-dark-color-background",
+              "figmaName": "Component / ProgressBar / Dark / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "ProgressBar",
-            "Background",
-            "Dark"
+            "Dark",
+            "Color",
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / ProgressBar / Background / Purple",
-          "cssVarName": "--ds-progressbar-background-purple",
+          "name": "🧩 Component / ProgressBar / Purple / Color / Background",
+          "cssVarName": "--ds-progressbar-purple-color-background",
           "value": "{🌐 Global.🌈 Color.Purple.2}",
           "nativeValue": "#E1D9FF",
           "inheritance": [
@@ -41272,20 +41326,44 @@
               "figmaName": "Global / Color / Purple / 2"
             },
             {
-              "cssVar": "--ds-progressbar-background-purple",
-              "figmaName": "Component / ProgressBar / Background / Purple"
+              "cssVar": "--ds-progressbar-purple-color-background",
+              "figmaName": "Component / ProgressBar / Purple / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "ProgressBar",
-            "Background",
-            "Purple"
+            "Purple",
+            "Color",
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / ProgressBar / Background / Yellow",
-          "cssVarName": "--ds-progressbar-background-yellow",
+          "name": "🧩 Component / ProgressBar / Purple / Color / Line",
+          "cssVarName": "--ds-progressbar-purple-color-line",
+          "value": "{🌐 Global.🌈 Color.Purple.6}",
+          "nativeValue": "#6C2273",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-6",
+              "figmaName": "Global / Color / Purple / 6"
+            },
+            {
+              "cssVar": "--ds-progressbar-purple-color-line",
+              "figmaName": "Component / ProgressBar / Purple / Color / Line"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "ProgressBar",
+            "Purple",
+            "Color",
+            "Line"
+          ]
+        },
+        {
+          "name": "🧩 Component / ProgressBar / Yellow / Color / Background",
+          "cssVarName": "--ds-progressbar-yellow-color-background",
           "value": "{🌐 Global.🌈 Color.Yellow.2}",
           "nativeValue": "#FFECBC",
           "inheritance": [
@@ -41294,20 +41372,44 @@
               "figmaName": "Global / Color / Yellow / 2"
             },
             {
-              "cssVar": "--ds-progressbar-background-yellow",
-              "figmaName": "Component / ProgressBar / Background / Yellow"
+              "cssVar": "--ds-progressbar-yellow-color-background",
+              "figmaName": "Component / ProgressBar / Yellow / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "ProgressBar",
-            "Background",
-            "Yellow"
+            "Yellow",
+            "Color",
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / ProgressBar / Background / Red",
-          "cssVarName": "--ds-progressbar-background-red",
+          "name": "🧩 Component / ProgressBar / Yellow / Color / Line",
+          "cssVarName": "--ds-progressbar-yellow-color-line",
+          "value": "{🌐 Global.🌈 Color.Yellow.6}",
+          "nativeValue": "#B24A00",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-yellow-6",
+              "figmaName": "Global / Color / Yellow / 6"
+            },
+            {
+              "cssVar": "--ds-progressbar-yellow-color-line",
+              "figmaName": "Component / ProgressBar / Yellow / Color / Line"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "ProgressBar",
+            "Yellow",
+            "Color",
+            "Line"
+          ]
+        },
+        {
+          "name": "🧩 Component / ProgressBar / Red / Color / Background",
+          "cssVarName": "--ds-progressbar-red-color-background",
           "value": "{🌐 Global.🌈 Color.Red.2}",
           "nativeValue": "#FFD7D7",
           "inheritance": [
@@ -41316,20 +41418,44 @@
               "figmaName": "Global / Color / Red / 2"
             },
             {
-              "cssVar": "--ds-progressbar-background-red",
-              "figmaName": "Component / ProgressBar / Background / Red"
+              "cssVar": "--ds-progressbar-red-color-background",
+              "figmaName": "Component / ProgressBar / Red / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "ProgressBar",
-            "Background",
-            "Red"
+            "Red",
+            "Color",
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / ProgressBar / Background / Green",
-          "cssVarName": "--ds-progressbar-background-green",
+          "name": "🧩 Component / ProgressBar / Red / Color / Line",
+          "cssVarName": "--ds-progressbar-red-color-line",
+          "value": "{🌐 Global.🌈 Color.Red.6}",
+          "nativeValue": "#99172D",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-red-6",
+              "figmaName": "Global / Color / Red / 6"
+            },
+            {
+              "cssVar": "--ds-progressbar-red-color-line",
+              "figmaName": "Component / ProgressBar / Red / Color / Line"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "ProgressBar",
+            "Red",
+            "Color",
+            "Line"
+          ]
+        },
+        {
+          "name": "🧩 Component / ProgressBar / Green / Color / Background",
+          "cssVarName": "--ds-progressbar-green-color-background",
           "value": "{🌐 Global.🌈 Color.Green.2}",
           "nativeValue": "#CBF2EC",
           "inheritance": [
@@ -41338,15 +41464,66 @@
               "figmaName": "Global / Color / Green / 2"
             },
             {
-              "cssVar": "--ds-progressbar-background-green",
-              "figmaName": "Component / ProgressBar / Background / Green"
+              "cssVar": "--ds-progressbar-green-color-background",
+              "figmaName": "Component / ProgressBar / Green / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "ProgressBar",
-            "Background",
-            "Green"
+            "Green",
+            "Color",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / ProgressBar / Green / Color / Line",
+          "cssVarName": "--ds-progressbar-green-color-line",
+          "value": "{🌐 Global.🌈 Color.Green.6}",
+          "nativeValue": "#1B5951",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-green-6",
+              "figmaName": "Global / Color / Green / 6"
+            },
+            {
+              "cssVar": "--ds-progressbar-green-color-line",
+              "figmaName": "Component / ProgressBar / Green / Color / Line"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "ProgressBar",
+            "Green",
+            "Color",
+            "Line"
+          ]
+        },
+        {
+          "name": "🧩 Component / ProgressBar / Primary / Color / Line",
+          "cssVarName": "--ds-progressbar-primary-color-line",
+          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-background-color-primary",
+              "figmaName": "Alias / Background / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-progressbar-primary-color-line",
+              "figmaName": "Component / ProgressBar / Primary / Color / Line"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "ProgressBar",
+            "Primary",
+            "Color",
+            "Line"
           ]
         },
         {
@@ -41373,125 +41550,6 @@
             "ProgressBar",
             "Line",
             "Radius"
-          ]
-        },
-        {
-          "name": "🧩 Component / ProgressBar / Line / Color / Primary",
-          "cssVarName": "--ds-progressbar-line-color-primary",
-          "value": "{🔗 Alias.🎨 Background.Color.Primary}",
-          "nativeValue": "#000D6E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-5",
-              "figmaName": "Global / Color / Primary / 5"
-            },
-            {
-              "cssVar": "--ds-background-color-primary",
-              "figmaName": "Alias / Background / Color / Primary"
-            },
-            {
-              "cssVar": "--ds-progressbar-line-color-primary",
-              "figmaName": "Component / ProgressBar / Line / Color / Primary"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "ProgressBar",
-            "Line",
-            "Color",
-            "Primary"
-          ]
-        },
-        {
-          "name": "🧩 Component / ProgressBar / Line / Color / Purple",
-          "cssVarName": "--ds-progressbar-line-color-purple",
-          "value": "{🌐 Global.🌈 Color.Purple.6}",
-          "nativeValue": "#6C2273",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-6",
-              "figmaName": "Global / Color / Purple / 6"
-            },
-            {
-              "cssVar": "--ds-progressbar-line-color-purple",
-              "figmaName": "Component / ProgressBar / Line / Color / Purple"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "ProgressBar",
-            "Line",
-            "Color",
-            "Purple"
-          ]
-        },
-        {
-          "name": "🧩 Component / ProgressBar / Line / Color / Yellow",
-          "cssVarName": "--ds-progressbar-line-color-yellow",
-          "value": "{🌐 Global.🌈 Color.Yellow.6}",
-          "nativeValue": "#B24A00",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-yellow-6",
-              "figmaName": "Global / Color / Yellow / 6"
-            },
-            {
-              "cssVar": "--ds-progressbar-line-color-yellow",
-              "figmaName": "Component / ProgressBar / Line / Color / Yellow"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "ProgressBar",
-            "Line",
-            "Color",
-            "Yellow"
-          ]
-        },
-        {
-          "name": "🧩 Component / ProgressBar / Line / Color / Red",
-          "cssVarName": "--ds-progressbar-line-color-red",
-          "value": "{🌐 Global.🌈 Color.Red.6}",
-          "nativeValue": "#99172D",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-6",
-              "figmaName": "Global / Color / Red / 6"
-            },
-            {
-              "cssVar": "--ds-progressbar-line-color-red",
-              "figmaName": "Component / ProgressBar / Line / Color / Red"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "ProgressBar",
-            "Line",
-            "Color",
-            "Red"
-          ]
-        },
-        {
-          "name": "🧩 Component / ProgressBar / Line / Color / Green",
-          "cssVarName": "--ds-progressbar-line-color-green",
-          "value": "{🌐 Global.🌈 Color.Green.6}",
-          "nativeValue": "#1B5951",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-green-6",
-              "figmaName": "Global / Color / Green / 6"
-            },
-            {
-              "cssVar": "--ds-progressbar-line-color-green",
-              "figmaName": "Component / ProgressBar / Line / Color / Green"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "ProgressBar",
-            "Line",
-            "Color",
-            "Green"
           ]
         }
       ],
@@ -42876,6 +42934,10 @@
         {
           "name": "slot",
           "text": "- The radio items to display inside the group."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "encapsulation": "shadow",
@@ -43700,6 +43762,10 @@
         {
           "name": "",
           "docs": "The radio items to display inside the group."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [],
@@ -43748,6 +43814,10 @@
         {
           "name": "slot",
           "text": "- One or more ds-segment-item elements."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         },
         {
           "name": "part",
@@ -44341,6 +44411,10 @@
         {
           "name": "",
           "docs": "One or more ds-segment-item elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -45198,6 +45272,10 @@
         {
           "name": "slot",
           "text": "- Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative\nto the options / optionGroups props. Ignored whenever options or optionGroups is non-empty."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         },
         {
           "name": "part",
@@ -46094,6 +46172,10 @@
         {
           "name": "",
           "docs": "Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative\nto the options / optionGroups props. Ignored whenever options or optionGroups is non-empty."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -57419,6 +57501,10 @@
           "text": "- The textarea field content and surrounding elements."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "textarea - The native HTML textarea element."
         },
@@ -58666,6 +58752,10 @@
         {
           "name": "",
           "docs": "The textarea field content and surrounding elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [

@@ -59,7 +59,7 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -83,13 +83,18 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
   @Type('number')
   readonly value: number = 0
 
+  /**
+   * LIFECYCLE
+   * ─────────────────────────────────────────────────────
+   */
+
   componentDidRender(): void {
     this.updateProgress()
   }
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @ListenToBreakpoints()
@@ -114,7 +119,7 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private updateProgress() {
@@ -138,7 +143,7 @@ export class ProgressBar implements DsComponentInterface, DsConfigObserver, DsBr
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

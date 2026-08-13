@@ -13881,65 +13881,141 @@
       }
     },
     "ProgressBar": {
-      "Background": {
-        "Light": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.White}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:1408",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+      "Light": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.White}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1408",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
-        },
-        "Dark": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:1409",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+        }
+      },
+      "Dark": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1409",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
-        },
-        "Purple": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Purple.2}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:1410",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+        }
+      },
+      "Purple": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Purple.2}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1410",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "Line": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Purple.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1416",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
-        },
-        "Yellow": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Yellow.2}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:1411",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+        }
+      },
+      "Yellow": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Yellow.2}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1411",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "Line": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Yellow.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1417",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
-        },
-        "Red": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Red.2}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:1412",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+        }
+      },
+      "Red": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Red.2}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1412",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "Line": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Red.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1418",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
-        },
-        "Green": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Green.2}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:1413",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+        }
+      },
+      "Green": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Green.2}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1413",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "Line": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Green.6}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1419",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "Primary": {
+        "Color": {
+          "Line": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:1415",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
         }
       },
@@ -13952,58 +14028,6 @@
             "com.figma.scopes": [
               "ALL_SCOPES"
             ]
-          }
-        },
-        "Color": {
-          "Primary": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.Primary}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1415",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "Purple": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Purple.6}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1416",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "Yellow": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Yellow.6}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1417",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "Red": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Red.6}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1418",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "Green": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Green.6}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:5:1419",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
           }
         }
       }
