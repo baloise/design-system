@@ -1,5 +1,13 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, stopEventBubbling, isDescendant, ListenToResize, Type } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  stopEventBubbling,
+  isDescendant,
+  ListenToResize,
+  Type,
+  watchInvalidTextSlot,
+} from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { SegmentItemInterface } from '../segment-item.type'
@@ -10,6 +18,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
  *
  * @slot - One or more ds-segment-item elements.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part segment - The segment container element.
  */
 @Component({
@@ -34,7 +43,9 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   @State() region: DsRegion = defaultConfig.region
   @State() items: SegmentItemInterface[] = []
   @State() autoVertical = false
+  @State() hasInvalidTextSlotContent = false
 
+  private disconnectInvalidTextSlotWatcher?: () => void
   private initialValue?: any | null
   private resizeObserver?: ResizeObserver
   // Natural (horizontal) offsetWidth of #group, stored just before going auto-vertical.
@@ -177,10 +188,14 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
       this.updatePill()
     })
     this.resizeObserver.observe(this.el)
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
   }
 
   disconnectedCallback() {
     this.resizeObserver?.disconnect()
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentDidLoad() {
@@ -347,12 +362,14 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
    */
 
   render() {
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
+
     return (
       <Field
         role="fieldset"
         disabled={this.disabled}
         color={'primary'}
-        invalid={this.invalid}
+        invalid={isInvalid}
         loading={this.loading}
         label={this.label}
         description={this.description}
@@ -375,7 +392,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
               class={{
                 'is-selected': item.value === this.value,
               }}
-              aria-invalid={this.invalid ? 'true' : null}
+              aria-invalid={isInvalid ? 'true' : null}
               aria-disabled={this.disabled ? 'true' : null}
               {...(this.iconOnly
                 ? {
@@ -393,7 +410,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
                 checked={item.value === this.value}
                 onClick={ev => this.handleInputClick(ev, item.value)}
                 onChange={() => this.handleInputChange(item.value)}
-                aria-invalid={this.invalid ? 'true' : null}
+                aria-invalid={isInvalid ? 'true' : null}
               />
               {item.icon && <ds-icon name={item.icon}></ds-icon>}
               {item.svg && <ds-icon svg={item.svg}></ds-icon>}

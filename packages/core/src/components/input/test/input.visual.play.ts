@@ -5,6 +5,7 @@ const VARIANTS = [
   'basic',
   'disabled',
   'invalid',
+  'invalid-slot',
   'valid',
   'warning',
   'loading',
@@ -24,7 +25,7 @@ test.describe('style', () => {
     await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
   })
 
-  VARIANTS.filter(v => !['slots', 'formatter'].includes(v)).forEach(variant => {
+  VARIANTS.filter(v => !['slots', 'formatter', 'invalid-slot'].includes(v)).forEach(variant => {
     test(variant, async ({ page }) => {
       const el = page.getByTestId(variant)
       await expectScreenshot(el, image(`style-${variant}`))

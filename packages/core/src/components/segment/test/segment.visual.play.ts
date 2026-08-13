@@ -21,6 +21,7 @@ const HOST_VARIANTS = [
   'vertical',
   'disabled',
   'invalid',
+  'invalid-slot',
   'invalid-disabled',
   'wide',
   'form',

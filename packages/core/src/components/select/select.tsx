@@ -1,6 +1,15 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import { DsComponentInterface } from '@global'
-import { inheritAttributes, Logger, type LogInstance, OneOf, Type, stopEventBubbling, raf } from '@utils'
+import {
+  inheritAttributes,
+  Logger,
+  type LogInstance,
+  OneOf,
+  Type,
+  stopEventBubbling,
+  raf,
+  watchInvalidTextSlot,
+} from '@utils'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -22,6 +31,7 @@ import type { Option } from 'slim-select/dist/store'
  *
  * @slot - Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative
  * to the options / optionGroups props. Ignored whenever options or optionGroups is non-empty.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part inner - The inner wrapper element containing label, control, and description.
  * @part label - The label element.
  * @part control - The control container wrapping the slim-select trigger.
@@ -54,6 +64,9 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
   @State() slottedOptions: SelectOption[] = []
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
   @State() slottedOptionGroups: SelectOptionGroup[] = []
 
   @AttachInternals() internals!: ElementInternals
@@ -248,6 +261,9 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
     this.value = this.normalizeValue(this.value)
     this.initialValue = this.value
     this.syncFormValue(this.value)
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
   }
 
   componentWillLoad() {
@@ -290,6 +306,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   disconnectedCallback() {
     this.picker?.destroy()
     this.picker = undefined
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   /**
@@ -468,7 +485,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
       <Field
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={this.invalid || this.hasInvalidTextSlotContent}
         label={this.label}
         description={this.description}
         invalidText={this.invalidText}

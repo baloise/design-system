@@ -1,7 +1,7 @@
 import { DsSelect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'select'
-const VARIANTS = ['basic', 'disabled', 'invalid', 'valid', 'warning'] as const
+const VARIANTS = ['basic', 'disabled', 'invalid', 'invalid-slot', 'valid', 'warning'] as const
 
 const HOST_VARIANTS: { testId: string; selectId: string; options: string[]; multiple?: boolean }[] = [
   { testId: 'basic', selectId: 'basic', options: ['Italy'] },
@@ -24,7 +24,7 @@ test.describe('style', () => {
     await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
   })
 
-  VARIANTS.filter(v => !['slotted-options'].includes(v)).forEach(variant => {
+  VARIANTS.filter(v => !['slotted-options', 'invalid-slot'].includes(v)).forEach(variant => {
     test(variant, async ({ page }) => {
       const el = page.getByTestId(variant)
       await expectScreenshot(el, image(`style-${variant}`))

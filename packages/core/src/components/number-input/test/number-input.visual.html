@@ -54,6 +54,17 @@
         ></ds-number-input>
       </section>
 
+      <!-- Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="invalid-slot">
+        <span>Invalid via slot</span>
+        <ds-number-input label="Slot with content" description="Description">
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-number-input>
+        <ds-number-input label="Empty slot stays valid" description="Description">
+          <div slot="invalid-text"></div>
+        </ds-number-input>
+      </section>
+
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid</span>
