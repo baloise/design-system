@@ -47,7 +47,7 @@ export class Notification implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -75,7 +75,7 @@ export class Notification implements DsComponentInterface {
    */
   @Prop()
   @OneOf(NOTIFICATION_COLORS)
-  readonly color: NotificationColor = ''
+  readonly color?: NotificationColor
 
   /**
    * Defines the heading of the notification.
@@ -110,7 +110,7 @@ export class Notification implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   componentDidLoad(): void {
@@ -120,7 +120,7 @@ export class Notification implements DsComponentInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -134,7 +134,7 @@ export class Notification implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

@@ -16,6 +16,20 @@ const STATE_WORDS = new Set(['Base', 'Hover', 'Active', 'Disabled', 'Focus', 'Se
 // category, should live under a "Font" grouping key per STYLE_GUIDE.md.
 const TYPOGRAPHY_LEAF_KEYS = new Set(['Family', 'Weight', 'LineHeight', 'Size'])
 
+// Closed vocabulary for the "category" segment in the canonical anatomy
+// (packages/tokens/CONTEXT.md: component-variant-element-category-property-state).
+// "Font" is deliberately excluded here — Rule 1 owns grouping typography leaves under
+// "Font", and letting Rule 4 also treat "Font" as a category would make the two rules
+// propose conflicting restructurings in the same pass. Run Rule 1's fix first, then
+// re-check with Rule 4 once "Font" grouping has landed.
+const CATEGORY_WORDS = new Set(['Color', 'Space'])
+
+// Disallowed abbreviations in any path segment, keyed by their lowercased word form
+// (as produced by pascalToKebab), mapped to the required full word. Checked against
+// every word of every segment, not just whole-segment matches, so both a standalone
+// "Bg" and a compound like "ProgressBg" are caught.
+const ABBREVIATIONS = { bg: 'background' }
+
 function findDSRoot() {
   let current = process.cwd()
   while (current !== '/') {
@@ -225,6 +239,143 @@ function checkKeyCasing(componentKebab, node, jsonPath, violations = []) {
   return violations
 }
 
+function arraysEqual(a, b) {
+  return a.length === b.length && a.every((v, i) => v === b[i])
+}
+
+// A sibling set only reads as a *variant* group — i.e. positive evidence that a state
+// word among them is being used as a variant name, not a state — once it has at least
+// two members and fewer than half are closed-vocabulary state words. A single-member
+// group (no siblings to compare against) is never treated as evidence either way.
+function looksLikeVariantGroup(siblingKeys) {
+  if (siblingKeys.length < 2) return false
+  const stateLikeCount = siblingKeys.filter(k => STATE_WORDS.has(k)).length
+  return stateLikeCount < Math.ceil(siblingKeys.length / 2)
+}
+
+// Splits a leaf's path segments into the three classifiable buckets of the canonical
+// anatomy. "variant" and "element" aren't separately distinguishable (both are open
+// vocabulary), so they're kept together as `other`, in their original relative order.
+//
+// "Base" (and in principle any state word) is ambiguous on its own — it's both a closed
+// state word (the default/resting state) *and* a common variant name (badge's neutral
+// "base" color, sibling to "info"/"success"/...). It defaults to STATE (its more common,
+// closed-vocabulary meaning — most components only ever have one state, "Base", with no
+// siblings to compare against) and is only demoted to variant/element when its actual
+// JSON siblings supply positive evidence: a multi-member group that's predominantly
+// non-state words, mirroring how its sibling leaves get classified.
+function classifySegments(rootNode, jsonPath) {
+  const state = []
+  const category = []
+  const other = []
+  let cursor = rootNode
+
+  for (const seg of jsonPath) {
+    const siblingKeys = cursor && typeof cursor === 'object' ? Object.keys(cursor).filter(k => !k.startsWith('$')) : []
+    if (STATE_WORDS.has(seg) && !looksLikeVariantGroup(siblingKeys)) state.push(seg)
+    else if (CATEGORY_WORDS.has(seg)) category.push(seg)
+    else other.push(seg)
+    cursor = cursor && typeof cursor === 'object' ? cursor[seg] : undefined
+  }
+
+  return { state, category, other }
+}
+
+// Computes where a leaf's path segments *should* sit under the canonical anatomy
+// (packages/tokens/CONTEXT.md: component-variant-element-category-property-state),
+// or null if the path is already correct or there isn't enough signal to safely reorder.
+//
+// With fewer than two `other` segments, "property" can't be distinguished from
+// "variant"/"element" (e.g. a single `Primary` could be either) — reordering would be a
+// guess, so only the unambiguous part is enforced: a state segment must be terminal.
+//
+// With two or more `other` segments, the one closest to the leaf value is treated as
+// "property" (it's what's actually being colored/sized/spaced) and everything else in
+// `other` is "variant"/"element", which must all precede `category`.
+function computeCanonicalOrder(rootNode, jsonPath) {
+  const { state, category, other } = classifySegments(rootNode, jsonPath)
+
+  if (other.length < 2) {
+    if (state.length === 0) return null
+    const nonState = jsonPath.filter(seg => !state.includes(seg))
+    const required = [...nonState, ...state]
+    return arraysEqual(required, jsonPath) ? null : required
+  }
+
+  const property = other[other.length - 1]
+  const variantElement = other.slice(0, -1)
+  const required = [...variantElement, ...category, property, ...state]
+  return arraysEqual(required, jsonPath) ? null : required
+}
+
+function checkSegmentOrder(componentKebab, rootNode, leaves) {
+  const violations = []
+
+  for (const leaf of leaves) {
+    const proposedJsonPath = computeCanonicalOrder(rootNode, leaf.jsonPath)
+    if (!proposedJsonPath) continue
+
+    violations.push({
+      type: 'segment-order',
+      jsonPath: leaf.jsonPath,
+      proposedJsonPath,
+      currentCssVar: deriveCssVar(componentKebab, leaf.jsonPath),
+      proposedCssVar: deriveCssVar(componentKebab, proposedJsonPath),
+      message:
+        "Segment order doesn't match the canonical anatomy (component → variant → element → category → property → state) in packages/tokens/CONTEXT.md",
+    })
+  }
+
+  return violations
+}
+
+// Expands any disallowed-abbreviation word within a single PascalCase segment (e.g.
+// "Bg" -> "Background", "ProgressBg" -> "ProgressBackground"). Returns null if the
+// segment doesn't contain one, so callers can distinguish "no change" from "changed to
+// itself".
+function expandAbbreviatedSegment(segment) {
+  const words = pascalToKebab(segment).split('-')
+  let changed = false
+
+  const expandedWords = words.map(word => {
+    if (word in ABBREVIATIONS) {
+      changed = true
+      return ABBREVIATIONS[word]
+    }
+    return word
+  })
+
+  if (!changed) return null
+  return expandedWords.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')
+}
+
+function checkAbbreviations(componentKebab, leaves) {
+  const violations = []
+
+  for (const leaf of leaves) {
+    let changed = false
+    const proposedJsonPath = leaf.jsonPath.map(segment => {
+      const expanded = expandAbbreviatedSegment(segment)
+      if (expanded === null) return segment
+      changed = true
+      return expanded
+    })
+
+    if (!changed) continue
+
+    violations.push({
+      type: 'abbreviation',
+      jsonPath: leaf.jsonPath,
+      proposedJsonPath,
+      currentCssVar: deriveCssVar(componentKebab, leaf.jsonPath),
+      proposedCssVar: deriveCssVar(componentKebab, proposedJsonPath),
+      message: `"bg" is a disallowed abbreviation — use the full word "background"`,
+    })
+  }
+
+  return violations
+}
+
 // ---------------------------------------------------------------------------
 // Check phase
 // ---------------------------------------------------------------------------
@@ -248,6 +399,8 @@ function checkComponent(componentName) {
     ...checkFontPrefix(componentName, leaves),
     ...checkStateVocabulary(componentName, found.node, []),
     ...checkKeyCasing(componentName, found.node, []),
+    ...checkSegmentOrder(componentName, found.node, leaves),
+    ...checkAbbreviations(componentName, leaves),
   ]
 
   return { dsRoot, componentName, componentKey: found.key, caseMismatch: found.caseMismatch, leaves, violations }
@@ -303,6 +456,27 @@ function applyFixes(componentName, selectedViolations) {
   const { tokensFile, data } = loadTokens(dsRoot)
   const found = findComponentNode(data, componentName)
   if (!found) throw new Error(`No "${toPascalCase(componentName)}" entry under "${COMPONENT_TOKENS_KEY}".`)
+
+  // Each violation's fix is applied independently against the tree as it stood at check
+  // time — if two violations share the same origin leaf (e.g. Rule 4 and Rule 5 both
+  // firing on one token), the second would try to move a leaf the first already moved
+  // away, and silently no-op (see the `value === undefined` skip below). That's a data
+  // hazard, not just a missed fix, so refuse the whole batch rather than risk a partial,
+  // hard-to-notice apply. This hasn't happened yet against real data — every rule pair
+  // has stayed leaf-disjoint so far — but nothing guarantees it stays that way as rules
+  // are added.
+  const seenPaths = new Map()
+  for (const violation of selectedViolations) {
+    const key = violation.jsonPath.join('/')
+    if (seenPaths.has(key)) {
+      throw new Error(
+        `Multiple violations target the same token (\`${violation.currentCssVar}\`): ` +
+          `"${seenPaths.get(key)}" and "${violation.message}". Applying both in one pass isn't safe — ` +
+          `apply one, re-run the check to confirm it landed cleanly, then apply the other.`,
+      )
+    }
+    seenPaths.set(key, violation.message)
+  }
 
   const renameMap = [] // { from, to }
 

@@ -1,8 +1,12 @@
 # ds-token-lint — Reference
 
-Background for why this skill's rule checklist differs from a literal reading of STYLE_GUIDE.md's "Token Naming Anatomy" section, and how each rule is implemented.
+Background for how this skill's stance on "what's correct" changed, and how each rule is implemented.
 
-## Why the checklist diverges from STYLE_GUIDE.md
+## Current stance: the doc is canonical
+
+`packages/tokens/CONTEXT.md`'s "Token Naming Anatomy" section (`component → variant → element → category → property → state`) is the source of truth this skill enforces. Where a shipped component's tokens disagree with it, the _tokens_ are what's wrong, not the doc — and fixing that, one component at a time, is this skill's job (Rule 4, added after the finding below). This reverses an earlier version of this skill, which took the opposite position; that history is kept below because the underlying empirical finding (what's actually shipped today) is still accurate and still useful context — it's the _conclusion drawn from it_ that changed.
+
+## History: why an earlier version of this skill deferred to shipped tokens instead
 
 STYLE_GUIDE.md documents this anatomy for component tokens:
 
@@ -29,9 +33,9 @@ Checking the actual compiled tokens (`dist/css/base.tokens.css`) against this do
 
 The real, shipped order is **category before variant** (`color-primary-...`, not `primary-color-...`), driven directly by `Base.tokens.json`'s JSON nesting (`Button > Color > Primary > Base > Text`) joined straight into kebab-case by Style Dictionary. This is universal across every component checked — not an isolated exception.
 
-By the literal STYLE_GUIDE.md rule, every existing component token in the library would be "wrong." That's not a useful signal — it means the doc's anatomy example is stale/aspirational, not that hundreds of shipped tokens are all broken. This skill trusts the real, consistent, shipped convention over the doc.
+By the literal STYLE_GUIDE.md rule, every existing component token in the library would be "wrong." The earlier version of this skill treated that as proof the doc's anatomy example was stale/aspirational rather than evidence that hundreds of shipped tokens needed fixing, and trusted the real, consistent, shipped convention over the doc as a result.
 
-**Action item for someone who owns STYLE_GUIDE.md:** the "Token Naming Anatomy" section should be corrected to match reality (`component → category → variant → state → property`) or clearly marked as aspirational for a future format.
+**That conclusion was overturned by explicit project decision**: `packages/tokens/CONTEXT.md`'s anatomy is the truth, full stop — not because the doc happens to already match what's shipped (it doesn't, for most components), but because a single enforced convention is the goal, and the doc is the one place that convention is written down. "Every existing token is wrong" isn't a reason to abandon the rule; it's the punch list Rule 4 exists to work through, one component per run. See "Current stance" above.
 
 ## What does still hold up
 
@@ -39,8 +43,8 @@ Not every STYLE_GUIDE.md rule was invalidated — checking against real data fou
 
 - **`font-` prefix for typography**: genuinely inconsistent in practice today (`ds-accordion-summary-font-family` uses it, `ds-button-family` and `ds-badge-text-family` don't for the same kind of value). STYLE_GUIDE.md's `font-` prefix rule is a reasonable target to converge existing tokens toward — this is real drift, not a stale doc.
 - **State segment vocabulary is closed**: `base`, `hover`, `active`, `disabled`, `focus`, `selected` recur consistently wherever a state segment appears. A typo here (`hoverr`, `actve`) is a real, checkable mistake.
-- **A generic category/property vocabulary check is not viable**: a scan of every segment used across `dist/css/base.tokens.css` (excluding Alias/Global) turned up open-ended, legitimate element names — `item`, `tile`, `sidebar`, `progress`, `outline`, `dashed`, `upload`, `menu`, `circle`, `calendar`, and more. There's no fixed whitelist that wouldn't flag real, correct tokens. This rule was dropped rather than shipped as a source of false positives.
-- **A required "state" segment on every color token is not viable**: `badge`'s colors (`--ds-badge-color-danger-background`) never have a state segment because badges aren't interactive. Requiring one would be wrong for non-interactive components.
+- **A generic category/property/element vocabulary check is not viable**: a scan of every segment used across `dist/css/base.tokens.css` (excluding Alias/Global) turned up open-ended, legitimate element names — `item`, `tile`, `sidebar`, `progress`, `outline`, `dashed`, `upload`, `menu`, `circle`, `calendar`, and more. There's no fixed whitelist that wouldn't flag real, correct tokens. Rule 4 (added later, see below) sidesteps this: it only closes the vocabulary for `category` (`Color`/`Space`) and `state` (the Rule 2 set), and leaves `variant`/`element`/`property` as open, unclassified segments whose _relative order among themselves_ is preserved rather than judged.
+- **A required "state" segment on every color token is not viable**: `badge`'s colors (`--ds-badge-color-danger-background`) never have a state segment because badges aren't interactive. Requiring one would be wrong for non-interactive components. Rule 4 reflects this too — it never requires a `state` segment to exist, only that one is terminal when present.
 
 ## Rule implementation notes
 
@@ -64,6 +68,28 @@ Groups where fewer than half the children look state-like are left alone — tha
 ### Rule 3 — JSON key casing
 
 Every non-`$`-prefixed key in the component's token subtree must match `/^[A-Z0-9][A-Za-z0-9]*$/` — PascalCase, or a bare acronym/number. A camelCase or snake_case key would still resolve through Style Dictionary, but the derived kebab-case CSS variable name would likely be wrong or inconsistent with the rest of the token's siblings, so it's flagged early rather than discovered later as a mismatched CSS variable.
+
+### Rule 4 — Segment order
+
+Checks each leaf's JSON path against the canonical anatomy (`component → variant → element → category → property → state`) from `packages/tokens/CONTEXT.md`. `variant` and `element` are never distinguished from each other — both are open vocabulary, and there's no way to tell "primary" (variant) from "progress-bar" (element) short of a hardcoded per-token list, which is exactly the kind of whitelist ruled out above. They're grouped as a single `other` bucket, order preserved among themselves.
+
+Classification per path segment, walking the path from the component root down:
+
+- **`state`**: a member of the Rule 2 closed set (`Base`/`Hover`/`Active`/`Disabled`/`Focus`/`Selected`) — _unless_ its actual JSON siblings at that point in the tree supply positive evidence it's being used as a variant name instead. That evidence is: at least two siblings, fewer than half of which are state words (e.g. `Base` sibling to `Info`/`Success`/`Warning`/`Danger`/… under Badge's `Color`). A lone `Base` with no siblings to compare against — the common case for a component with only one, un-varied state — defaults to `state`, not variant. Getting this backwards was an actual bug caught while building the rule: an earlier version required _positive_ evidence to trust `Base` as a state, which flipped every single-state component's `Base` into a bogus `property` position. The fix is the version described here — trust the closed vocabulary by default, and only defer to sibling context when there's a real competing signal.
+- **`category`**: a member of `CATEGORY_WORDS = {Color, Space}`. `Font` is deliberately excluded, so Rule 4 doesn't fight Rule 1 over the same leaf's typography grouping in the same pass — run Rule 1's fix first, then re-check.
+- **`other`** (variant/element): everything else.
+
+With the segments classified, the required order is computed as `[...other.slice(0, -1), ...category, other.at(-1), ...state]` — i.e. the segment in `other` closest to the value is treated as `property` (last non-state slot), everything else in `other` must precede `category`, and `state` is always terminal. If `other` has fewer than two members, there's no reliable way to separate "property" from "variant/element" (a single leftover segment could be either), so the full reorder is skipped — only the unambiguous half is still enforced: if a `state` segment exists, it must be last.
+
+This is a heuristic, like Rule 1 — always show the proposed reorder before applying, and expect it to occasionally misjudge which `other` segment is really the property vs. an element when a leaf has three or more open-vocabulary segments (the algorithm always treats the deepest one as property, which won't always be right).
+
+### Rule 5 — Disallowed abbreviations
+
+Splits every path segment into words via `pascalToKebab` (the same word-splitter Rule 4 and the CSS-var derivation use), and checks each word against a closed map, `ABBREVIATIONS` — currently just `{ bg: 'background' }`. A match expands that one word and reassembles the segment in PascalCase, so both a whole-segment abbreviation (`Bg` → `Background`) and a compound one (`ProgressBg` → `ProgressBackground`, `BG` → `Background`) are caught; splitting on word boundaries first means a word that merely _contains_ "bg" as a substring without being its own PascalCase word (there's no real example of this today) would not false-positive.
+
+`bg` was added because it's a real, current pattern — `Toast`, `Snackbar`, `Tag`, `Steps`, `Carousel`, and `Tooltip` all ship `Bg`/`BG`/`ProgressBg` segments today, while `Button` and `Badge` already spell it out as `Background`. Same shape of drift as Rule 1's `font-` prefix finding: one convention shipped inconsistently, closing it is mechanical. Extend the map the same way if another abbreviation turns up (nothing else was found in a scan of the current tree, so the map starts with just this one entry).
+
+**Interaction with Rule 4**: both rules can in principle fire on the same leaf (a `Bg` segment that's also out of canonical order). `applyFixes` refuses to apply two violations that share the same origin leaf in one batch, since each violation's move is computed and applied independently against the pre-fix tree — see the guard in `applyFixes` and the note in SKILL.md. This hasn't happened against real data yet: every `Bg` leaf checked so far was already in canonical order (Rule 4 silent), so only Rule 5 fires.
 
 ## Name derivation
 

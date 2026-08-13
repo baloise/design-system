@@ -1128,10 +1128,10 @@
         },
         {
           "name": "container",
-          "type": "\"\" | \"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\"",
+          "type": "\"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\" | undefined",
           "complexType": {
             "original": "AlertContainerSize",
-            "resolved": "\"\" | \"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\"",
+            "resolved": "\"blog-page\" | \"compact\" | \"detail-page\" | \"fluid\" | \"wide\" | undefined",
             "references": {
               "AlertContainerSize": {
                 "location": "import",
@@ -1145,17 +1145,8 @@
           "attr": "container",
           "reflectToAttr": false,
           "docs": "Defines the container size constraint for the alert layout.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "blog-page",
               "type": "string"
@@ -1175,9 +1166,12 @@
             {
               "value": "wide",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1423,7 +1417,7 @@
               "docs": ""
             }
           ],
-          "docs": "",
+          "docs": "Sets focus on the given elements using the app's focus-visible handling.",
           "docsTags": []
         }
       ],
@@ -36889,10 +36883,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
+          "type": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
           "complexType": {
             "original": "NotificationColor",
-            "resolved": "\"\" | \"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\"",
+            "resolved": "\"base\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-green\" | \"outline-purple\" | \"outline-red\" | \"outline-yellow\" | \"success\" | \"warning\" | undefined",
             "references": {
               "NotificationColor": {
                 "location": "import",
@@ -36906,17 +36900,8 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the element\nColor type primary is deprecated, please use info instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "base",
               "type": "string"
@@ -36956,9 +36941,12 @@
             {
               "value": "warning",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -37023,10 +37011,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
+          "type": "\"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
           "complexType": {
             "original": "NotificationSize",
-            "resolved": "\"\" | \"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
+            "resolved": "\"large\" | \"lg\" | \"md\" | \"medium\" | \"sm\" | \"small\" | undefined",
             "references": {
               "NotificationSize": {
                 "location": "import",
@@ -37042,9 +37030,6 @@
           "docs": "Defines the size of the notification, small, medium or large.",
           "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "large",
               "type": "string"
@@ -37243,8 +37228,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Base / Background",
-          "cssVarName": "--ds-notification-color-base-background",
+          "name": "🧩 Component / Notification / Base / Color / Background",
+          "cssVarName": "--ds-notification-base-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -37257,21 +37242,21 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-notification-color-base-background",
-              "figmaName": "Component / Notification / Color / Base / Background"
+              "cssVar": "--ds-notification-base-color-background",
+              "figmaName": "Component / Notification / Base / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Base",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Base / Border",
-          "cssVarName": "--ds-notification-color-base-border",
+          "name": "🧩 Component / Notification / Base / Color / Border",
+          "cssVarName": "--ds-notification-base-color-border",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
           "nativeValue": "#F0F0F0",
           "inheritance": [
@@ -37284,21 +37269,21 @@
               "figmaName": "Alias / Background / Color / GreyLight"
             },
             {
-              "cssVar": "--ds-notification-color-base-border",
-              "figmaName": "Component / Notification / Color / Base / Border"
+              "cssVar": "--ds-notification-base-color-border",
+              "figmaName": "Component / Notification / Base / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Base",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Base / Text",
-          "cssVarName": "--ds-notification-color-base-text",
+          "name": "🧩 Component / Notification / Base / Color / Text",
+          "cssVarName": "--ds-notification-base-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37311,40 +37296,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-base-text",
-              "figmaName": "Component / Notification / Color / Base / Text"
+              "cssVar": "--ds-notification-base-color-text",
+              "figmaName": "Component / Notification / Base / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Base",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Base / Icon",
-          "cssVarName": "--ds-notification-color-base-icon",
+          "name": "🧩 Component / Notification / Base / Color / Icon",
+          "cssVarName": "--ds-notification-base-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-base-icon",
-              "figmaName": "Component / Notification / Color / Base / Icon"
+              "cssVar": "--ds-notification-base-color-icon",
+              "figmaName": "Component / Notification / Base / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Base",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Info / Background",
-          "cssVarName": "--ds-notification-color-info-background",
+          "name": "🧩 Component / Notification / Info / Color / Background",
+          "cssVarName": "--ds-notification-info-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
           "nativeValue": "#A4C9ED",
           "inheritance": [
@@ -37357,21 +37342,21 @@
               "figmaName": "Alias / Background / Color / InfoLight"
             },
             {
-              "cssVar": "--ds-notification-color-info-background",
-              "figmaName": "Component / Notification / Color / Info / Background"
+              "cssVar": "--ds-notification-info-color-background",
+              "figmaName": "Component / Notification / Info / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Info",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Info / Border",
-          "cssVarName": "--ds-notification-color-info-border",
+          "name": "🧩 Component / Notification / Info / Color / Border",
+          "cssVarName": "--ds-notification-info-color-border",
           "value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
           "nativeValue": "#A4C9ED",
           "inheritance": [
@@ -37384,21 +37369,21 @@
               "figmaName": "Alias / Background / Color / InfoLight"
             },
             {
-              "cssVar": "--ds-notification-color-info-border",
-              "figmaName": "Component / Notification / Color / Info / Border"
+              "cssVar": "--ds-notification-info-color-border",
+              "figmaName": "Component / Notification / Info / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Info",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Info / Text",
-          "cssVarName": "--ds-notification-color-info-text",
+          "name": "🧩 Component / Notification / Info / Color / Text",
+          "cssVarName": "--ds-notification-info-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37411,40 +37396,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-info-text",
-              "figmaName": "Component / Notification / Color / Info / Text"
+              "cssVar": "--ds-notification-info-color-text",
+              "figmaName": "Component / Notification / Info / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Info",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Info / Icon",
-          "cssVarName": "--ds-notification-color-info-icon",
+          "name": "🧩 Component / Notification / Info / Color / Icon",
+          "cssVarName": "--ds-notification-info-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-info-icon",
-              "figmaName": "Component / Notification / Color / Info / Icon"
+              "cssVar": "--ds-notification-info-color-icon",
+              "figmaName": "Component / Notification / Info / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Info",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Success / Background",
-          "cssVarName": "--ds-notification-color-success-background",
+          "name": "🧩 Component / Notification / Success / Color / Background",
+          "cssVarName": "--ds-notification-success-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
           "nativeValue": "#A1CFB3",
           "inheritance": [
@@ -37457,21 +37442,21 @@
               "figmaName": "Alias / Background / Color / SuccessLight"
             },
             {
-              "cssVar": "--ds-notification-color-success-background",
-              "figmaName": "Component / Notification / Color / Success / Background"
+              "cssVar": "--ds-notification-success-color-background",
+              "figmaName": "Component / Notification / Success / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Success",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Success / Border",
-          "cssVarName": "--ds-notification-color-success-border",
+          "name": "🧩 Component / Notification / Success / Color / Border",
+          "cssVarName": "--ds-notification-success-color-border",
           "value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
           "nativeValue": "#A1CFB3",
           "inheritance": [
@@ -37484,21 +37469,21 @@
               "figmaName": "Alias / Background / Color / SuccessLight"
             },
             {
-              "cssVar": "--ds-notification-color-success-border",
-              "figmaName": "Component / Notification / Color / Success / Border"
+              "cssVar": "--ds-notification-success-color-border",
+              "figmaName": "Component / Notification / Success / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Success",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Success / Text",
-          "cssVarName": "--ds-notification-color-success-text",
+          "name": "🧩 Component / Notification / Success / Color / Text",
+          "cssVarName": "--ds-notification-success-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37511,40 +37496,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-success-text",
-              "figmaName": "Component / Notification / Color / Success / Text"
+              "cssVar": "--ds-notification-success-color-text",
+              "figmaName": "Component / Notification / Success / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Success",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Success / Icon",
-          "cssVarName": "--ds-notification-color-success-icon",
+          "name": "🧩 Component / Notification / Success / Color / Icon",
+          "cssVarName": "--ds-notification-success-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-success-icon",
-              "figmaName": "Component / Notification / Color / Success / Icon"
+              "cssVar": "--ds-notification-success-color-icon",
+              "figmaName": "Component / Notification / Success / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Success",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Warning / Background",
-          "cssVarName": "--ds-notification-color-warning-background",
+          "name": "🧩 Component / Notification / Warning / Color / Background",
+          "cssVarName": "--ds-notification-warning-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
           "nativeValue": "#FFE5A3",
           "inheritance": [
@@ -37557,21 +37542,21 @@
               "figmaName": "Alias / Background / Color / WarningLight"
             },
             {
-              "cssVar": "--ds-notification-color-warning-background",
-              "figmaName": "Component / Notification / Color / Warning / Background"
+              "cssVar": "--ds-notification-warning-color-background",
+              "figmaName": "Component / Notification / Warning / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Warning",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Warning / Border",
-          "cssVarName": "--ds-notification-color-warning-border",
+          "name": "🧩 Component / Notification / Warning / Color / Border",
+          "cssVarName": "--ds-notification-warning-color-border",
           "value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
           "nativeValue": "#FFE5A3",
           "inheritance": [
@@ -37584,21 +37569,21 @@
               "figmaName": "Alias / Background / Color / WarningLight"
             },
             {
-              "cssVar": "--ds-notification-color-warning-border",
-              "figmaName": "Component / Notification / Color / Warning / Border"
+              "cssVar": "--ds-notification-warning-color-border",
+              "figmaName": "Component / Notification / Warning / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Warning",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Warning / Text",
-          "cssVarName": "--ds-notification-color-warning-text",
+          "name": "🧩 Component / Notification / Warning / Color / Text",
+          "cssVarName": "--ds-notification-warning-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37611,40 +37596,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-warning-text",
-              "figmaName": "Component / Notification / Color / Warning / Text"
+              "cssVar": "--ds-notification-warning-color-text",
+              "figmaName": "Component / Notification / Warning / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Warning",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Warning / Icon",
-          "cssVarName": "--ds-notification-color-warning-icon",
+          "name": "🧩 Component / Notification / Warning / Color / Icon",
+          "cssVarName": "--ds-notification-warning-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-warning-icon",
-              "figmaName": "Component / Notification / Color / Warning / Icon"
+              "cssVar": "--ds-notification-warning-color-icon",
+              "figmaName": "Component / Notification / Warning / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Warning",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Danger / Background",
-          "cssVarName": "--ds-notification-color-danger-background",
+          "name": "🧩 Component / Notification / Danger / Color / Background",
+          "cssVarName": "--ds-notification-danger-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
           "nativeValue": "#F7A299",
           "inheritance": [
@@ -37657,21 +37642,21 @@
               "figmaName": "Alias / Background / Color / DangerLight"
             },
             {
-              "cssVar": "--ds-notification-color-danger-background",
-              "figmaName": "Component / Notification / Color / Danger / Background"
+              "cssVar": "--ds-notification-danger-color-background",
+              "figmaName": "Component / Notification / Danger / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Danger",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Danger / Border",
-          "cssVarName": "--ds-notification-color-danger-border",
+          "name": "🧩 Component / Notification / Danger / Color / Border",
+          "cssVarName": "--ds-notification-danger-color-border",
           "value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
           "nativeValue": "#F7A299",
           "inheritance": [
@@ -37684,21 +37669,21 @@
               "figmaName": "Alias / Background / Color / DangerLight"
             },
             {
-              "cssVar": "--ds-notification-color-danger-border",
-              "figmaName": "Component / Notification / Color / Danger / Border"
+              "cssVar": "--ds-notification-danger-color-border",
+              "figmaName": "Component / Notification / Danger / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Danger",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Danger / Text",
-          "cssVarName": "--ds-notification-color-danger-text",
+          "name": "🧩 Component / Notification / Danger / Color / Text",
+          "cssVarName": "--ds-notification-danger-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37711,40 +37696,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-danger-text",
-              "figmaName": "Component / Notification / Color / Danger / Text"
+              "cssVar": "--ds-notification-danger-color-text",
+              "figmaName": "Component / Notification / Danger / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Danger",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / Danger / Icon",
-          "cssVarName": "--ds-notification-color-danger-icon",
+          "name": "🧩 Component / Notification / Danger / Color / Icon",
+          "cssVarName": "--ds-notification-danger-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-danger-icon",
-              "figmaName": "Component / Notification / Color / Danger / Icon"
+              "cssVar": "--ds-notification-danger-color-icon",
+              "figmaName": "Component / Notification / Danger / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "Danger",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineBase / Background",
-          "cssVarName": "--ds-notification-color-outlinebase-background",
+          "name": "🧩 Component / Notification / OutlineBase / Color / Background",
+          "cssVarName": "--ds-notification-outlinebase-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.White}",
           "nativeValue": "#FFFFFF",
           "inheritance": [
@@ -37757,21 +37742,21 @@
               "figmaName": "Alias / Background / Color / White"
             },
             {
-              "cssVar": "--ds-notification-color-outlinebase-background",
-              "figmaName": "Component / Notification / Color / OutlineBase / Background"
+              "cssVar": "--ds-notification-outlinebase-color-background",
+              "figmaName": "Component / Notification / OutlineBase / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineBase",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineBase / Border",
-          "cssVarName": "--ds-notification-color-outlinebase-border",
+          "name": "🧩 Component / Notification / OutlineBase / Color / Border",
+          "cssVarName": "--ds-notification-outlinebase-color-border",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -37780,21 +37765,21 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-notification-color-outlinebase-border",
-              "figmaName": "Component / Notification / Color / OutlineBase / Border"
+              "cssVar": "--ds-notification-outlinebase-color-border",
+              "figmaName": "Component / Notification / OutlineBase / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineBase",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineBase / Text",
-          "cssVarName": "--ds-notification-color-outlinebase-text",
+          "name": "🧩 Component / Notification / OutlineBase / Color / Text",
+          "cssVarName": "--ds-notification-outlinebase-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37807,40 +37792,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-outlinebase-text",
-              "figmaName": "Component / Notification / Color / OutlineBase / Text"
+              "cssVar": "--ds-notification-outlinebase-color-text",
+              "figmaName": "Component / Notification / OutlineBase / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineBase",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineBase / Icon",
-          "cssVarName": "--ds-notification-color-outlinebase-icon",
+          "name": "🧩 Component / Notification / OutlineBase / Color / Icon",
+          "cssVarName": "--ds-notification-outlinebase-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-outlinebase-icon",
-              "figmaName": "Component / Notification / Color / OutlineBase / Icon"
+              "cssVar": "--ds-notification-outlinebase-color-icon",
+              "figmaName": "Component / Notification / OutlineBase / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineBase",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlinePurple / Background",
-          "cssVarName": "--ds-notification-color-outlinepurple-background",
+          "name": "🧩 Component / Notification / OutlinePurple / Color / Background",
+          "cssVarName": "--ds-notification-outlinepurple-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.PurpleLighter}",
           "nativeValue": "#F9F3FF",
           "inheritance": [
@@ -37853,21 +37838,21 @@
               "figmaName": "Alias / Background / Color / PurpleLighter"
             },
             {
-              "cssVar": "--ds-notification-color-outlinepurple-background",
-              "figmaName": "Component / Notification / Color / OutlinePurple / Background"
+              "cssVar": "--ds-notification-outlinepurple-color-background",
+              "figmaName": "Component / Notification / OutlinePurple / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlinePurple",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlinePurple / Border",
-          "cssVarName": "--ds-notification-color-outlinepurple-border",
+          "name": "🧩 Component / Notification / OutlinePurple / Color / Border",
+          "cssVarName": "--ds-notification-outlinepurple-color-border",
           "value": "{🔗 Alias.▭ Border.Color.Purple}",
           "nativeValue": "#BE82FA",
           "inheritance": [
@@ -37880,21 +37865,21 @@
               "figmaName": "Alias / Border / Color / Purple"
             },
             {
-              "cssVar": "--ds-notification-color-outlinepurple-border",
-              "figmaName": "Component / Notification / Color / OutlinePurple / Border"
+              "cssVar": "--ds-notification-outlinepurple-color-border",
+              "figmaName": "Component / Notification / OutlinePurple / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlinePurple",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlinePurple / Text",
-          "cssVarName": "--ds-notification-color-outlinepurple-text",
+          "name": "🧩 Component / Notification / OutlinePurple / Color / Text",
+          "cssVarName": "--ds-notification-outlinepurple-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -37907,40 +37892,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-outlinepurple-text",
-              "figmaName": "Component / Notification / Color / OutlinePurple / Text"
+              "cssVar": "--ds-notification-outlinepurple-color-text",
+              "figmaName": "Component / Notification / OutlinePurple / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlinePurple",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlinePurple / Icon",
-          "cssVarName": "--ds-notification-color-outlinepurple-icon",
+          "name": "🧩 Component / Notification / OutlinePurple / Color / Icon",
+          "cssVarName": "--ds-notification-outlinepurple-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-outlinepurple-icon",
-              "figmaName": "Component / Notification / Color / OutlinePurple / Icon"
+              "cssVar": "--ds-notification-outlinepurple-color-icon",
+              "figmaName": "Component / Notification / OutlinePurple / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlinePurple",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineGreen / Background",
-          "cssVarName": "--ds-notification-color-outlinegreen-background",
+          "name": "🧩 Component / Notification / OutlineGreen / Color / Background",
+          "cssVarName": "--ds-notification-outlinegreen-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.GreenLighter}",
           "nativeValue": "#E9FBF7",
           "inheritance": [
@@ -37953,21 +37938,21 @@
               "figmaName": "Alias / Background / Color / GreenLighter"
             },
             {
-              "cssVar": "--ds-notification-color-outlinegreen-background",
-              "figmaName": "Component / Notification / Color / OutlineGreen / Background"
+              "cssVar": "--ds-notification-outlinegreen-color-background",
+              "figmaName": "Component / Notification / OutlineGreen / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineGreen",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineGreen / Border",
-          "cssVarName": "--ds-notification-color-outlinegreen-border",
+          "name": "🧩 Component / Notification / OutlineGreen / Color / Border",
+          "cssVarName": "--ds-notification-outlinegreen-color-border",
           "value": "{🔗 Alias.▭ Border.Color.Green}",
           "nativeValue": "#21D9AC",
           "inheritance": [
@@ -37980,21 +37965,21 @@
               "figmaName": "Alias / Border / Color / Green"
             },
             {
-              "cssVar": "--ds-notification-color-outlinegreen-border",
-              "figmaName": "Component / Notification / Color / OutlineGreen / Border"
+              "cssVar": "--ds-notification-outlinegreen-color-border",
+              "figmaName": "Component / Notification / OutlineGreen / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineGreen",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineGreen / Text",
-          "cssVarName": "--ds-notification-color-outlinegreen-text",
+          "name": "🧩 Component / Notification / OutlineGreen / Color / Text",
+          "cssVarName": "--ds-notification-outlinegreen-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -38007,40 +37992,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-outlinegreen-text",
-              "figmaName": "Component / Notification / Color / OutlineGreen / Text"
+              "cssVar": "--ds-notification-outlinegreen-color-text",
+              "figmaName": "Component / Notification / OutlineGreen / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineGreen",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineGreen / Icon",
-          "cssVarName": "--ds-notification-color-outlinegreen-icon",
+          "name": "🧩 Component / Notification / OutlineGreen / Color / Icon",
+          "cssVarName": "--ds-notification-outlinegreen-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-outlinegreen-icon",
-              "figmaName": "Component / Notification / Color / OutlineGreen / Icon"
+              "cssVar": "--ds-notification-outlinegreen-color-icon",
+              "figmaName": "Component / Notification / OutlineGreen / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineGreen",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineYellow / Background",
-          "cssVarName": "--ds-notification-color-outlineyellow-background",
+          "name": "🧩 Component / Notification / OutlineYellow / Color / Background",
+          "cssVarName": "--ds-notification-outlineyellow-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.YellowLighter}",
           "nativeValue": "#FFF9E8",
           "inheritance": [
@@ -38053,21 +38038,21 @@
               "figmaName": "Alias / Background / Color / YellowLighter"
             },
             {
-              "cssVar": "--ds-notification-color-outlineyellow-background",
-              "figmaName": "Component / Notification / Color / OutlineYellow / Background"
+              "cssVar": "--ds-notification-outlineyellow-color-background",
+              "figmaName": "Component / Notification / OutlineYellow / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineYellow",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineYellow / Border",
-          "cssVarName": "--ds-notification-color-outlineyellow-border",
+          "name": "🧩 Component / Notification / OutlineYellow / Color / Border",
+          "cssVarName": "--ds-notification-outlineyellow-color-border",
           "value": "{🔗 Alias.▭ Border.Color.Yellow}",
           "nativeValue": "#FFBE19",
           "inheritance": [
@@ -38080,21 +38065,21 @@
               "figmaName": "Alias / Border / Color / Yellow"
             },
             {
-              "cssVar": "--ds-notification-color-outlineyellow-border",
-              "figmaName": "Component / Notification / Color / OutlineYellow / Border"
+              "cssVar": "--ds-notification-outlineyellow-color-border",
+              "figmaName": "Component / Notification / OutlineYellow / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineYellow",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineYellow / Text",
-          "cssVarName": "--ds-notification-color-outlineyellow-text",
+          "name": "🧩 Component / Notification / OutlineYellow / Color / Text",
+          "cssVarName": "--ds-notification-outlineyellow-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -38107,40 +38092,40 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-outlineyellow-text",
-              "figmaName": "Component / Notification / Color / OutlineYellow / Text"
+              "cssVar": "--ds-notification-outlineyellow-color-text",
+              "figmaName": "Component / Notification / OutlineYellow / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineYellow",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineYellow / Icon",
-          "cssVarName": "--ds-notification-color-outlineyellow-icon",
+          "name": "🧩 Component / Notification / OutlineYellow / Color / Icon",
+          "cssVarName": "--ds-notification-outlineyellow-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-outlineyellow-icon",
-              "figmaName": "Component / Notification / Color / OutlineYellow / Icon"
+              "cssVar": "--ds-notification-outlineyellow-color-icon",
+              "figmaName": "Component / Notification / OutlineYellow / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineYellow",
+            "Color",
             "Icon"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineRed / Background",
-          "cssVarName": "--ds-notification-color-outlinered-background",
+          "name": "🧩 Component / Notification / OutlineRed / Color / Background",
+          "cssVarName": "--ds-notification-outlinered-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.RedLighter}",
           "nativeValue": "#FFEEF1",
           "inheritance": [
@@ -38153,21 +38138,21 @@
               "figmaName": "Alias / Background / Color / RedLighter"
             },
             {
-              "cssVar": "--ds-notification-color-outlinered-background",
-              "figmaName": "Component / Notification / Color / OutlineRed / Background"
+              "cssVar": "--ds-notification-outlinered-color-background",
+              "figmaName": "Component / Notification / OutlineRed / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineRed",
+            "Color",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineRed / Border",
-          "cssVarName": "--ds-notification-color-outlinered-border",
+          "name": "🧩 Component / Notification / OutlineRed / Color / Border",
+          "cssVarName": "--ds-notification-outlinered-color-border",
           "value": "{🔗 Alias.▭ Border.Color.Red}",
           "nativeValue": "#FF596F",
           "inheritance": [
@@ -38180,21 +38165,21 @@
               "figmaName": "Alias / Border / Color / Red"
             },
             {
-              "cssVar": "--ds-notification-color-outlinered-border",
-              "figmaName": "Component / Notification / Color / OutlineRed / Border"
+              "cssVar": "--ds-notification-outlinered-color-border",
+              "figmaName": "Component / Notification / OutlineRed / Color / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineRed",
+            "Color",
             "Border"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineRed / Text",
-          "cssVarName": "--ds-notification-color-outlinered-text",
+          "name": "🧩 Component / Notification / OutlineRed / Color / Text",
+          "cssVarName": "--ds-notification-outlinered-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -38207,34 +38192,34 @@
               "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-notification-color-outlinered-text",
-              "figmaName": "Component / Notification / Color / OutlineRed / Text"
+              "cssVar": "--ds-notification-outlinered-color-text",
+              "figmaName": "Component / Notification / OutlineRed / Color / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineRed",
+            "Color",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Notification / Color / OutlineRed / Icon",
-          "cssVarName": "--ds-notification-color-outlinered-icon",
+          "name": "🧩 Component / Notification / OutlineRed / Color / Icon",
+          "cssVarName": "--ds-notification-outlinered-color-icon",
           "value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "nativeValue": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')",
           "inheritance": [
             {
-              "cssVar": "--ds-notification-color-outlinered-icon",
-              "figmaName": "Component / Notification / Color / OutlineRed / Icon"
+              "cssVar": "--ds-notification-outlinered-color-icon",
+              "figmaName": "Component / Notification / OutlineRed / Color / Icon"
             }
           ],
           "path": [
             "🧩 Component",
             "Notification",
-            "Color",
             "OutlineRed",
+            "Color",
             "Icon"
           ]
         }
@@ -49963,34 +49948,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Primary / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-primary-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#F0F0F0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
-            },
-            {
-              "cssVar": "--ds-background-color-greylight",
-              "figmaName": "Alias / Background / Color / GreyLight"
-            },
-            {
-              "cssVar": "--ds-snackbar-primary-color-bg-base",
-              "figmaName": "Component / Snackbar / Primary / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Snackbar",
-            "Primary",
-            "Color",
-            "Bg",
-            "Base"
-          ]
-        },
-        {
           "name": "🧩 Component / Snackbar / Primary / Color / Border / Base",
           "cssVarName": "--ds-snackbar-primary-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
@@ -50071,8 +50028,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Primary / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-primary-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Primary / Color / Background / Base",
+          "cssVarName": "--ds-snackbar-primary-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F0F0F0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-snackbar-primary-color-background-base",
+              "figmaName": "Component / Snackbar / Primary / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Snackbar",
+            "Primary",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Snackbar / Primary / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-snackbar-primary-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -50081,8 +50066,8 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-snackbar-primary-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Primary / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-primary-color-progressbackground-base",
+              "figmaName": "Component / Snackbar / Primary / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -50090,35 +50075,7 @@
             "Snackbar",
             "Primary",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Snackbar / Success / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-success-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
-          "nativeValue": "#A1CFB3",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-success-2",
-              "figmaName": "Global / Color / Success / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-successlight",
-              "figmaName": "Alias / Background / Color / SuccessLight"
-            },
-            {
-              "cssVar": "--ds-snackbar-success-color-bg-base",
-              "figmaName": "Component / Snackbar / Success / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Snackbar",
-            "Success",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -50203,8 +50160,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Success / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-success-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Success / Color / Background / Base",
+          "cssVarName": "--ds-snackbar-success-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
+          "nativeValue": "#A1CFB3",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-2",
+              "figmaName": "Global / Color / Success / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-successlight",
+              "figmaName": "Alias / Background / Color / SuccessLight"
+            },
+            {
+              "cssVar": "--ds-snackbar-success-color-background-base",
+              "figmaName": "Component / Snackbar / Success / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Snackbar",
+            "Success",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Snackbar / Success / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-snackbar-success-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Success.3}",
           "nativeValue": "#5BAB7A",
           "inheritance": [
@@ -50213,8 +50198,8 @@
               "figmaName": "Global / Color / Success / 3"
             },
             {
-              "cssVar": "--ds-snackbar-success-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Success / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-success-color-progressbackground-base",
+              "figmaName": "Component / Snackbar / Success / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -50222,35 +50207,7 @@
             "Snackbar",
             "Success",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Snackbar / Info / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-info-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
-          "nativeValue": "#A4C9ED",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-info-2",
-              "figmaName": "Global / Color / Info / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-infolight",
-              "figmaName": "Alias / Background / Color / InfoLight"
-            },
-            {
-              "cssVar": "--ds-snackbar-info-color-bg-base",
-              "figmaName": "Component / Snackbar / Info / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Snackbar",
-            "Info",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -50335,8 +50292,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Info / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-info-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Info / Color / Background / Base",
+          "cssVarName": "--ds-snackbar-info-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
+          "nativeValue": "#A4C9ED",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-info-2",
+              "figmaName": "Global / Color / Info / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-infolight",
+              "figmaName": "Alias / Background / Color / InfoLight"
+            },
+            {
+              "cssVar": "--ds-snackbar-info-color-background-base",
+              "figmaName": "Component / Snackbar / Info / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Snackbar",
+            "Info",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Snackbar / Info / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-snackbar-info-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Info.3}",
           "nativeValue": "#60A0E0",
           "inheritance": [
@@ -50345,8 +50330,8 @@
               "figmaName": "Global / Color / Info / 3"
             },
             {
-              "cssVar": "--ds-snackbar-info-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Info / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-info-color-progressbackground-base",
+              "figmaName": "Component / Snackbar / Info / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -50354,35 +50339,7 @@
             "Snackbar",
             "Info",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Snackbar / Warning / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-warning-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
-          "nativeValue": "#FFE5A3",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-warning-2",
-              "figmaName": "Global / Color / Warning / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-warninglight",
-              "figmaName": "Alias / Background / Color / WarningLight"
-            },
-            {
-              "cssVar": "--ds-snackbar-warning-color-bg-base",
-              "figmaName": "Component / Snackbar / Warning / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Snackbar",
-            "Warning",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -50467,8 +50424,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Warning / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-warning-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Warning / Color / Background / Base",
+          "cssVarName": "--ds-snackbar-warning-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
+          "nativeValue": "#FFE5A3",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-warning-2",
+              "figmaName": "Global / Color / Warning / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-warninglight",
+              "figmaName": "Alias / Background / Color / WarningLight"
+            },
+            {
+              "cssVar": "--ds-snackbar-warning-color-background-base",
+              "figmaName": "Component / Snackbar / Warning / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Snackbar",
+            "Warning",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Snackbar / Warning / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-snackbar-warning-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Warning.3}",
           "nativeValue": "#FFD25E",
           "inheritance": [
@@ -50477,8 +50462,8 @@
               "figmaName": "Global / Color / Warning / 3"
             },
             {
-              "cssVar": "--ds-snackbar-warning-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Warning / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-warning-color-progressbackground-base",
+              "figmaName": "Component / Snackbar / Warning / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -50486,35 +50471,7 @@
             "Snackbar",
             "Warning",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Snackbar / Danger / Color / Bg / Base",
-          "cssVarName": "--ds-snackbar-danger-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
-          "nativeValue": "#F7A299",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-danger-2",
-              "figmaName": "Global / Color / Danger / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-dangerlight",
-              "figmaName": "Alias / Background / Color / DangerLight"
-            },
-            {
-              "cssVar": "--ds-snackbar-danger-color-bg-base",
-              "figmaName": "Component / Snackbar / Danger / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Snackbar",
-            "Danger",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -50599,8 +50556,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Snackbar / Danger / Color / ProgressBg / Base",
-          "cssVarName": "--ds-snackbar-danger-color-progressbg-base",
+          "name": "🧩 Component / Snackbar / Danger / Color / Background / Base",
+          "cssVarName": "--ds-snackbar-danger-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
+          "nativeValue": "#F7A299",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-2",
+              "figmaName": "Global / Color / Danger / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-dangerlight",
+              "figmaName": "Alias / Background / Color / DangerLight"
+            },
+            {
+              "cssVar": "--ds-snackbar-danger-color-background-base",
+              "figmaName": "Component / Snackbar / Danger / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Snackbar",
+            "Danger",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Snackbar / Danger / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-snackbar-danger-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Danger.3}",
           "nativeValue": "#F05D4D",
           "inheritance": [
@@ -50609,8 +50594,8 @@
               "figmaName": "Global / Color / Danger / 3"
             },
             {
-              "cssVar": "--ds-snackbar-danger-color-progressbg-base",
-              "figmaName": "Component / Snackbar / Danger / Color / ProgressBg / Base"
+              "cssVar": "--ds-snackbar-danger-color-progressbackground-base",
+              "figmaName": "Component / Snackbar / Danger / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -50618,7 +50603,7 @@
             "Snackbar",
             "Danger",
             "Color",
-            "ProgressBg",
+            "ProgressBackground",
             "Base"
           ]
         }
@@ -50700,6 +50685,10 @@
         {
           "name": "part",
           "text": "inner - The spinner animation container element."
+        },
+        {
+          "name": "part",
+          "text": "label - The visible label rendered next to the spinner."
         }
       ],
       "encapsulation": "shadow",
@@ -50924,10 +50913,10 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"sm\"",
+          "type": "\"sm\" | undefined",
           "complexType": {
             "original": "SpinnerSize",
-            "resolved": "\"\" | \"sm\"",
+            "resolved": "\"sm\" | undefined",
             "references": {
               "SpinnerSize": {
                 "location": "import",
@@ -50941,23 +50930,17 @@
           "attr": "size",
           "reflectToAttr": false,
           "docs": "Defines the size of the spinner. If `sm` the spinner is smaller.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "sm",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -51073,7 +51056,7 @@
         },
         {
           "name": "label",
-          "docs": ""
+          "docs": "The visible label rendered next to the spinner."
         }
       ],
       "customStates": [],
@@ -51211,8 +51194,8 @@
           ]
         },
         {
-          "name": "🧩 Component / Spinner / Circle / Color / InvertedBackground",
-          "cssVarName": "--ds-spinner-circle-color-invertedbackground",
+          "name": "🧩 Component / Spinner / Inverted / Circle / Color / Background",
+          "cssVarName": "--ds-spinner-inverted-circle-color-background",
           "value": "{🔗 Alias.🎨 Background.Color.White}",
           "nativeValue": "#FFFFFF",
           "inheritance": [
@@ -51225,21 +51208,22 @@
               "figmaName": "Alias / Background / Color / White"
             },
             {
-              "cssVar": "--ds-spinner-circle-color-invertedbackground",
-              "figmaName": "Component / Spinner / Circle / Color / InvertedBackground"
+              "cssVar": "--ds-spinner-inverted-circle-color-background",
+              "figmaName": "Component / Spinner / Inverted / Circle / Color / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Spinner",
+            "Inverted",
             "Circle",
             "Color",
-            "InvertedBackground"
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / Spinner / Circle / Color / InvertedProgress",
-          "cssVarName": "--ds-spinner-circle-color-invertedprogress",
+          "name": "🧩 Component / Spinner / Inverted / Circle / Color / Progress",
+          "cssVarName": "--ds-spinner-inverted-circle-color-progress",
           "value": "{🔗 Alias.🎨 Background.Color.Primary}",
           "nativeValue": "#000D6E",
           "inheritance": [
@@ -51252,16 +51236,17 @@
               "figmaName": "Alias / Background / Color / Primary"
             },
             {
-              "cssVar": "--ds-spinner-circle-color-invertedprogress",
-              "figmaName": "Component / Spinner / Circle / Color / InvertedProgress"
+              "cssVar": "--ds-spinner-inverted-circle-color-progress",
+              "figmaName": "Component / Spinner / Inverted / Circle / Color / Progress"
             }
           ],
           "path": [
             "🧩 Component",
             "Spinner",
+            "Inverted",
             "Circle",
             "Color",
-            "InvertedProgress"
+            "Progress"
           ]
         }
       ],
@@ -59328,34 +59313,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Primary / Color / Bg / Base",
-          "cssVarName": "--ds-toast-primary-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-          "nativeValue": "#F0F0F0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
-            },
-            {
-              "cssVar": "--ds-background-color-greylight",
-              "figmaName": "Alias / Background / Color / GreyLight"
-            },
-            {
-              "cssVar": "--ds-toast-primary-color-bg-base",
-              "figmaName": "Component / Toast / Primary / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Toast",
-            "Primary",
-            "Color",
-            "Bg",
-            "Base"
-          ]
-        },
-        {
           "name": "🧩 Component / Toast / Primary / Color / Border / Base",
           "cssVarName": "--ds-toast-primary-color-border-base",
           "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
@@ -59436,8 +59393,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Primary / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-primary-color-progressbg-base",
+          "name": "🧩 Component / Toast / Primary / Color / Background / Base",
+          "cssVarName": "--ds-toast-primary-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+          "nativeValue": "#F0F0F0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-1",
+              "figmaName": "Global / Color / Grey / 1"
+            },
+            {
+              "cssVar": "--ds-background-color-greylight",
+              "figmaName": "Alias / Background / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-toast-primary-color-background-base",
+              "figmaName": "Component / Toast / Primary / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toast",
+            "Primary",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toast / Primary / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-toast-primary-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Primary.2}",
           "nativeValue": "#B3B6D4",
           "inheritance": [
@@ -59446,8 +59431,8 @@
               "figmaName": "Global / Color / Primary / 2"
             },
             {
-              "cssVar": "--ds-toast-primary-color-progressbg-base",
-              "figmaName": "Component / Toast / Primary / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-primary-color-progressbackground-base",
+              "figmaName": "Component / Toast / Primary / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -59455,35 +59440,7 @@
             "Toast",
             "Primary",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Toast / Success / Color / Bg / Base",
-          "cssVarName": "--ds-toast-success-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
-          "nativeValue": "#A1CFB3",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-success-2",
-              "figmaName": "Global / Color / Success / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-successlight",
-              "figmaName": "Alias / Background / Color / SuccessLight"
-            },
-            {
-              "cssVar": "--ds-toast-success-color-bg-base",
-              "figmaName": "Component / Toast / Success / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Toast",
-            "Success",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -59568,8 +59525,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Success / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-success-color-progressbg-base",
+          "name": "🧩 Component / Toast / Success / Color / Background / Base",
+          "cssVarName": "--ds-toast-success-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
+          "nativeValue": "#A1CFB3",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-success-2",
+              "figmaName": "Global / Color / Success / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-successlight",
+              "figmaName": "Alias / Background / Color / SuccessLight"
+            },
+            {
+              "cssVar": "--ds-toast-success-color-background-base",
+              "figmaName": "Component / Toast / Success / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toast",
+            "Success",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toast / Success / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-toast-success-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Success.3}",
           "nativeValue": "#5BAB7A",
           "inheritance": [
@@ -59578,8 +59563,8 @@
               "figmaName": "Global / Color / Success / 3"
             },
             {
-              "cssVar": "--ds-toast-success-color-progressbg-base",
-              "figmaName": "Component / Toast / Success / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-success-color-progressbackground-base",
+              "figmaName": "Component / Toast / Success / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -59587,35 +59572,7 @@
             "Toast",
             "Success",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Toast / Info / Color / Bg / Base",
-          "cssVarName": "--ds-toast-info-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
-          "nativeValue": "#A4C9ED",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-info-2",
-              "figmaName": "Global / Color / Info / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-infolight",
-              "figmaName": "Alias / Background / Color / InfoLight"
-            },
-            {
-              "cssVar": "--ds-toast-info-color-bg-base",
-              "figmaName": "Component / Toast / Info / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Toast",
-            "Info",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -59700,8 +59657,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Info / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-info-color-progressbg-base",
+          "name": "🧩 Component / Toast / Info / Color / Background / Base",
+          "cssVarName": "--ds-toast-info-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
+          "nativeValue": "#A4C9ED",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-info-2",
+              "figmaName": "Global / Color / Info / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-infolight",
+              "figmaName": "Alias / Background / Color / InfoLight"
+            },
+            {
+              "cssVar": "--ds-toast-info-color-background-base",
+              "figmaName": "Component / Toast / Info / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toast",
+            "Info",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toast / Info / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-toast-info-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Info.3}",
           "nativeValue": "#60A0E0",
           "inheritance": [
@@ -59710,8 +59695,8 @@
               "figmaName": "Global / Color / Info / 3"
             },
             {
-              "cssVar": "--ds-toast-info-color-progressbg-base",
-              "figmaName": "Component / Toast / Info / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-info-color-progressbackground-base",
+              "figmaName": "Component / Toast / Info / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -59719,35 +59704,7 @@
             "Toast",
             "Info",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Toast / Warning / Color / Bg / Base",
-          "cssVarName": "--ds-toast-warning-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
-          "nativeValue": "#FFE5A3",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-warning-2",
-              "figmaName": "Global / Color / Warning / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-warninglight",
-              "figmaName": "Alias / Background / Color / WarningLight"
-            },
-            {
-              "cssVar": "--ds-toast-warning-color-bg-base",
-              "figmaName": "Component / Toast / Warning / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Toast",
-            "Warning",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -59832,8 +59789,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Warning / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-warning-color-progressbg-base",
+          "name": "🧩 Component / Toast / Warning / Color / Background / Base",
+          "cssVarName": "--ds-toast-warning-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
+          "nativeValue": "#FFE5A3",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-warning-2",
+              "figmaName": "Global / Color / Warning / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-warninglight",
+              "figmaName": "Alias / Background / Color / WarningLight"
+            },
+            {
+              "cssVar": "--ds-toast-warning-color-background-base",
+              "figmaName": "Component / Toast / Warning / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toast",
+            "Warning",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toast / Warning / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-toast-warning-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Warning.3}",
           "nativeValue": "#FFD25E",
           "inheritance": [
@@ -59842,8 +59827,8 @@
               "figmaName": "Global / Color / Warning / 3"
             },
             {
-              "cssVar": "--ds-toast-warning-color-progressbg-base",
-              "figmaName": "Component / Toast / Warning / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-warning-color-progressbackground-base",
+              "figmaName": "Component / Toast / Warning / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -59851,35 +59836,7 @@
             "Toast",
             "Warning",
             "Color",
-            "ProgressBg",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Toast / Danger / Color / Bg / Base",
-          "cssVarName": "--ds-toast-danger-color-bg-base",
-          "value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
-          "nativeValue": "#F7A299",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-danger-2",
-              "figmaName": "Global / Color / Danger / 2"
-            },
-            {
-              "cssVar": "--ds-background-color-dangerlight",
-              "figmaName": "Alias / Background / Color / DangerLight"
-            },
-            {
-              "cssVar": "--ds-toast-danger-color-bg-base",
-              "figmaName": "Component / Toast / Danger / Color / Bg / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Toast",
-            "Danger",
-            "Color",
-            "Bg",
+            "ProgressBackground",
             "Base"
           ]
         },
@@ -59964,8 +59921,36 @@
           ]
         },
         {
-          "name": "🧩 Component / Toast / Danger / Color / ProgressBg / Base",
-          "cssVarName": "--ds-toast-danger-color-progressbg-base",
+          "name": "🧩 Component / Toast / Danger / Color / Background / Base",
+          "cssVarName": "--ds-toast-danger-color-background-base",
+          "value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
+          "nativeValue": "#F7A299",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-danger-2",
+              "figmaName": "Global / Color / Danger / 2"
+            },
+            {
+              "cssVar": "--ds-background-color-dangerlight",
+              "figmaName": "Alias / Background / Color / DangerLight"
+            },
+            {
+              "cssVar": "--ds-toast-danger-color-background-base",
+              "figmaName": "Component / Toast / Danger / Color / Background / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toast",
+            "Danger",
+            "Color",
+            "Background",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toast / Danger / Color / ProgressBackground / Base",
+          "cssVarName": "--ds-toast-danger-color-progressbackground-base",
           "value": "{🌐 Global.🌈 Color.Danger.3}",
           "nativeValue": "#F05D4D",
           "inheritance": [
@@ -59974,8 +59959,8 @@
               "figmaName": "Global / Color / Danger / 3"
             },
             {
-              "cssVar": "--ds-toast-danger-color-progressbg-base",
-              "figmaName": "Component / Toast / Danger / Color / ProgressBg / Base"
+              "cssVar": "--ds-toast-danger-color-progressbackground-base",
+              "figmaName": "Component / Toast / Danger / Color / ProgressBackground / Base"
             }
           ],
           "path": [
@@ -59983,7 +59968,7 @@
             "Toast",
             "Danger",
             "Color",
-            "ProgressBg",
+            "ProgressBackground",
             "Base"
           ]
         }
@@ -64009,7 +63994,7 @@
       "path": "src/global/index.ts"
     },
     "src/components/alert/alert-container.interfaces.tsx::AlertContainerSize": {
-      "declaration": "\"\" | \"fluid\" | \"compact\" | \"detail-page\" | \"blog-page\" | \"wide\"",
+      "declaration": "\"fluid\" | \"compact\" | \"detail-page\" | \"blog-page\" | \"wide\"",
       "docstring": "",
       "path": "src/components/alert/alert-container.interfaces.tsx"
     },
@@ -64574,12 +64559,12 @@
       "path": "src/components/navbar/navbar.interfaces.ts"
     },
     "src/components/notification/notification.interfaces.ts::NotificationColor": {
-      "declaration": "\"\" | \"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\"",
+      "declaration": "\"success\" | \"warning\" | \"danger\" | \"base\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\"",
       "docstring": "",
       "path": "src/components/notification/notification.interfaces.ts"
     },
     "src/components/notification/notification.interfaces.ts::NotificationSize": {
-      "declaration": "\"\" | \"sm\" | \"lg\" | \"small\" | \"medium\" | \"large\" | \"md\"",
+      "declaration": "\"sm\" | \"lg\" | \"small\" | \"medium\" | \"large\" | \"md\"",
       "docstring": "",
       "path": "src/components/notification/notification.interfaces.ts"
     },
@@ -64774,7 +64759,7 @@
       "path": "src/components/spinner/spinner.interfaces.ts"
     },
     "src/components/spinner/spinner.interfaces.ts::SpinnerSize": {
-      "declaration": "\"\" | \"sm\"",
+      "declaration": "\"sm\"",
       "docstring": "",
       "path": "src/components/spinner/spinner.interfaces.ts"
     },
