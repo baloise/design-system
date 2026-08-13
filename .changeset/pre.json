@@ -11,18 +11,32 @@
     "@baloise/ds-assets": "20.0.0-next.1",
     "@baloise/ds-css": "20.0.0-next.1",
     "@baloise/ds-react": "20.0.0-next.4",
-    "@baloise/ds-angular": "20.0.0-next.6"
+    "@baloise/ds-angular": "20.0.0-next.6",
+    "integration-angular": "0.0.0",
+    "integration-react": "0.0.0",
+    "storybook": "0.0.0",
+    "toky": "0.1.0"
   },
   "changesets": [
     "dull-crews-ask",
+    "every-teams-rush",
     "fine-numbers-build",
     "forty-impalas-fly",
+    "happy-mails-laugh",
     "new-guests-attend",
     "open-states-teach",
     "popular-dolls-sing",
     "secure-packages-cra",
     "silly-ravens-jump",
     "swipe-util-removal",
-    "tame-hounds-yell"
+    "tame-hounds-yell",
+    "toky-update-next-1786128730907",
+    "toky-update-next-1786361689865",
+    "toky-update-next-1786361722311",
+    "toky-update-next-1786361743161",
+    "toky-update-next-1786364558461",
+    "toky-update-next-1786392789202",
+    "toky-update-next-1786448500243",
+    "toky-update-next-1786448872520"
   ]
 }
