@@ -79,6 +79,12 @@ Components reference design tokens (`--ds-*` CSS variables) for:
 
 ## Notable Patterns
 
+### `components/*.js` Is Guaranteed Dynamic-Import-Free
+
+The `dist-custom-elements`/web output target (`components/*.js`, generated via `libs/output-target-web`) is documented for **static, non-lazy registration** — consumers import it directly (e.g. `@baloise/ds-core/components/ds-input.js`) instead of relying on Stencil's lazy loader. Any real `import()` reachable from those entry points breaks bundlers/build targets that can't code-split (e.g. a single-file IIFE embed for a plain `<script>` tag).
+
+This is enforced automatically, not just by convention: `libs/output-target-web/src/lib/inline-dynamic-imports.ts` runs on every `components/` build and rewrites any `import("./chunk.js")` into a hoisted static import + `Promise.resolve()`, then asserts none remain (build fails otherwise). The lazy-loader build (`dist/`, e.g. `spinner.tsx`'s `import(/* @vite-ignore */ './spinner.animation')` for the Lottie animation payload) is untouched and keeps its dynamic import, since that target is meant to code-split.
+
 ### Naming Conventions
 
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
