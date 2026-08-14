@@ -1,4 +1,4 @@
-import type { FlatToken, TokenLayer } from './types'
+import type { FigmaId, FlatToken, TokenLayer } from './types'
 
 const LAYER_KEYS: Record<string, TokenLayer> = {
   '🌐 Global': 'Global',
@@ -22,11 +22,18 @@ function isLeaf(node: Record<string, unknown>): boolean {
   return '$value' in node
 }
 
-function extractFigmaId(node: Record<string, unknown>): string | null {
+function extractFigmaId(node: Record<string, unknown>): FigmaId | null {
   const extensions = node.$extensions
   if (!isPlainObject(extensions)) return null
   const figmaId = extensions['com.figma.variableId']
-  return typeof figmaId === 'string' ? figmaId : null
+  if (typeof figmaId === 'string') return figmaId
+  // A shadow token's variableId is an object of 5 sub-ids (see
+  // docs/plans/shadow-token-type-plan.md) — pass it through as-is rather
+  // than discarding it the way a truly malformed value would be.
+  if (isPlainObject(figmaId) && Object.values(figmaId).every(v => typeof v === 'string')) {
+    return figmaId as Record<string, string>
+  }
+  return null
 }
 
 function walk(node: Record<string, unknown>, path: string[], layer: TokenLayer, tokens: FlatToken[]): void {

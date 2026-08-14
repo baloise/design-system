@@ -15,18 +15,30 @@ import { KEY_BY_LAYER } from './flatten'
 import type { FigmaVariable, FigmaVariablesMeta } from './figma'
 import {
   dtcgColorFromFigma,
+  dtcgShadowLayerFromFigma,
   dtcgTypeFor,
+  fontWeightNumberFromKeyword,
   isFigmaAlias,
   isLiteralValueEqual,
+  isShadowFigmaId,
   pathFromFigmaVariableName,
+  SHADOW_SUB_PROPERTIES,
 } from './figma-map'
-import type { FlatToken, TokenLayer } from './types'
+import type { ShadowSubProperty } from './figma-map'
+import type { FigmaId, FlatToken, TokenLayer } from './types'
+
+// 1rem = 16px, this repo's fixed base font size (matches
+// packages/tokens/src/config.base.ts's basePxFontSize and
+// scripts/figma-sync/lib/figma-value.mjs's PX_PER_REM).
+const PX_PER_REM = 16
 
 export interface PulledEntry {
   kind: 'create' | 'update' | 'delete'
   layer: TokenLayer
   path: string[]
-  figmaId: string
+  // A shadow entry's figmaId is an object of 5 sub-ids, not 1 string — see
+  // docs/plans/shadow-token-type-plan.md.
+  figmaId: FigmaId
   type: string
   rawValue: unknown
   referenceTarget: string | null
@@ -36,7 +48,7 @@ export interface PullConflict {
   tokenId: string
   path: string[]
   layer: TokenLayer
-  figmaId: string
+  figmaId: FigmaId
   // Display-only effective values for rendering the conflict.
   workingValue: unknown
   figmaValue: unknown
@@ -124,12 +136,37 @@ type DerivedValue =
 // unsupported (unrecognized type, or an alias whose target isn't a token we
 // know about — e.g. it points at a variable this same pull is also
 // creating, a chicken-and-egg case deferred to the next pull).
-function deriveValue(variable: FigmaVariable, modeValue: unknown, baseIndex: Map<string, FlatToken>): DerivedValue {
+//
+// `referenceToken` is the locally-linked token this variable already
+// matches (undefined for a brand-new/unmatched variable) — for a brand
+// pull, that's the brand's own override if one exists, else the inherited
+// Base token (see buildBrandPullPlan). STRING and FLOAT are both
+// non-bijective — 'string'/'fontWeight'/'fontFamily' all project onto
+// STRING, and 'number'/'dimension' both project onto FLOAT (figma-map.ts) —
+// so for a *matched* variable, trusting the local token's own $type resolves
+// the ambiguity instead of guessing from resolvedType, which would
+// otherwise permanently disagree with the local token and show every such
+// token as changed on every pull. `referenceToken`'s *value* additionally
+// feeds fontFamily's merge and dimension's unit conversion (see below).
+function deriveValue(
+  variable: FigmaVariable,
+  modeValue: unknown,
+  baseIndex: Map<string, FlatToken>,
+  referenceToken?: FlatToken,
+): DerivedValue {
   let dtcgType: string
   try {
     dtcgType = dtcgTypeFor(variable.resolvedType)
   } catch {
     return { kind: 'unsupported', reason: `Unsupported Figma type "${variable.resolvedType}" — skipped.` }
+  }
+
+  const expectedType = referenceToken?.type
+  if ((expectedType === 'fontWeight' || expectedType === 'fontFamily') && dtcgType === 'string') {
+    dtcgType = expectedType
+  }
+  if (expectedType === 'dimension' && dtcgType === 'number') {
+    dtcgType = expectedType
   }
 
   if (isFigmaAlias(modeValue)) {
@@ -147,6 +184,44 @@ function deriveValue(variable: FigmaVariable, modeValue: unknown, baseIndex: Map
       rawValue: dtcgColorFromFigma(modeValue as { r: number; g: number; b: number; a: number }),
     }
   }
+
+  if (dtcgType === 'fontWeight') {
+    // Figma holds the keyword string (e.g. "Bold") — convert back to the
+    // DTCG number so it compares/stores like the rest of a fontWeight token.
+    const numeric = fontWeightNumberFromKeyword(modeValue)
+    if (numeric === undefined) {
+      return {
+        kind: 'unsupported',
+        reason: `Font-weight value "${String(modeValue)}" doesn't match a known DTCG keyword — skipped.`,
+      }
+    }
+    return { kind: 'literal', type: dtcgType, rawValue: numeric }
+  }
+
+  if (dtcgType === 'fontFamily') {
+    // Figma only ever holds the primary font as a single string — replace
+    // just index 0 of the local array, preserving the rest of the fallback
+    // stack (Arial, sans-serif, ...) that Figma has no way to see or set.
+    const existing = Array.isArray(referenceToken?.rawValue) ? (referenceToken!.rawValue as unknown[]) : []
+    return { kind: 'literal', type: dtcgType, rawValue: [modeValue, ...existing.slice(1)] }
+  }
+
+  if (dtcgType === 'dimension') {
+    // Figma is always a raw px float — convert back using the matched
+    // token's own unit (rem: /16, px: unchanged), so the pulled value
+    // compares/stores like the rest of a dimension token.
+    const referenceValue = referenceToken?.rawValue as { unit?: unknown } | undefined
+    const unit = referenceValue?.unit
+    const num = typeof modeValue === 'number' ? modeValue : NaN
+    if (Number.isNaN(num) || (unit !== 'px' && unit !== 'rem')) {
+      return {
+        kind: 'unsupported',
+        reason: `Dimension value "${String(modeValue)}" or its local unit is invalid — skipped.`,
+      }
+    }
+    return { kind: 'literal', type: dtcgType, rawValue: { value: unit === 'rem' ? num / PX_PER_REM : num, unit } }
+  }
+
   return { kind: 'literal', type: dtcgType, rawValue: modeValue }
 }
 
@@ -160,7 +235,7 @@ function entryFrom(
   kind: PulledEntry['kind'],
   layer: TokenLayer,
   path: string[],
-  figmaId: string,
+  figmaId: FigmaId,
   snapshot: DtcgSnapshot,
 ): PulledEntry {
   return {
@@ -172,6 +247,163 @@ function entryFrom(
     rawValue: snapshot.referenceTarget ? null : snapshot.rawValue,
     referenceTarget: snapshot.referenceTarget,
   }
+}
+
+// A shadow token's reconstructed value, from its 5 co-located Figma
+// sub-variables — a literal DTCG shadow object, or (when all 5 sub-values
+// are themselves VARIABLE_ALIASes to another shadow token's matching
+// sub-properties) a reference to that token's path.
+type ShadowDerivedValue =
+  | { kind: 'literal'; rawValue: unknown }
+  | { kind: 'alias'; referenceTarget: string }
+  | { kind: 'unsupported'; reason: string }
+
+// Reads all 5 of a shadow token's sub-variables (by its stored figmaId
+// object) and reconstructs one DTCG shadow value from them — the shadow
+// counterpart to deriveValue, but keyed by a 5-id set instead of 1 Figma
+// variable, since Figma has no shadow-object variable type (see
+// docs/plans/shadow-token-type-plan.md). `localUnit` supplies each
+// dimension sub-value's current unit, read from the matched token's own
+// literal value where one exists.
+function deriveShadowValue(
+  idSet: Record<ShadowSubProperty, string>,
+  figmaMeta: FigmaVariablesMeta,
+  modeId: string,
+  shadowSubIndex: Map<string, { token: FlatToken; subProperty: ShadowSubProperty }>,
+  localUnit: (sub: 'offsetX' | 'offsetY' | 'blur' | 'spread') => 'px' | 'rem',
+): ShadowDerivedValue {
+  const modeValues: Partial<Record<ShadowSubProperty, unknown>> = {}
+  for (const sub of SHADOW_SUB_PROPERTIES) {
+    const variable = figmaMeta.variables[idSet[sub]]
+    const modeValue = variable?.valuesByMode[modeId]
+    if (modeValue === undefined) {
+      return { kind: 'unsupported', reason: `Shadow sub-property "${sub}" has no value for this mode — skipped.` }
+    }
+    modeValues[sub] = modeValue
+  }
+
+  const aliasTargets = SHADOW_SUB_PROPERTIES.map(sub => (isFigmaAlias(modeValues[sub]) ? modeValues[sub] : null))
+  const allAliased = aliasTargets.every(target => target !== null)
+  if (allAliased) {
+    // Every sub-value must point at the *same* other token's *matching*
+    // sub-property — anything else isn't a reference this app's own push
+    // side would ever have produced (see write.mjs's buildAliasPassPayload).
+    const targetTokens = SHADOW_SUB_PROPERTIES.map((sub, i) => {
+      const targetId = aliasTargets[i]!.id
+      const entry = shadowSubIndex.get(targetId)
+      return entry && entry.subProperty === sub ? entry.token : null
+    })
+    const firstTarget = targetTokens[0]
+    const consistent = firstTarget && targetTokens.every(t => t === firstTarget)
+    if (consistent) {
+      return { kind: 'alias', referenceTarget: firstTarget.path.join('.') }
+    }
+    return { kind: 'unsupported', reason: 'Shadow sub-properties alias inconsistent targets — skipped.' }
+  }
+
+  if (aliasTargets.some(target => target !== null)) {
+    return { kind: 'unsupported', reason: 'Shadow has a mix of literal and aliased sub-properties — skipped.' }
+  }
+
+  const layer = dtcgShadowLayerFromFigma(modeValues as Record<ShadowSubProperty, unknown>, localUnit)
+  if (!layer) {
+    return { kind: 'unsupported', reason: 'One or more shadow sub-values could not be read — skipped.' }
+  }
+  return { kind: 'literal', rawValue: layer }
+}
+
+function unitForSub(rawValue: unknown, sub: 'offsetX' | 'offsetY' | 'blur' | 'spread'): 'px' | 'rem' {
+  if (typeof rawValue !== 'object' || rawValue === null) return 'rem'
+  const dimension = (rawValue as Record<string, unknown>)[sub]
+  if (typeof dimension !== 'object' || dimension === null) return 'rem'
+  const unit = (dimension as { unit?: unknown }).unit
+  return unit === 'px' ? 'px' : 'rem'
+}
+
+// Base-only (see docs/plans/shadow-token-type-plan.md) — matches every
+// local single-layer shadow token against its 5 Figma sub-variables (by
+// the figmaId object stored on it), producing the same create/update/
+// delete/skipped shapes buildBasePullPlan's generic per-variable loop
+// does, but grouped by token instead of by individual Figma variable —
+// necessary since one shadow token's identity spans 5 separate variables,
+// not 1.
+function deriveShadowPullEntries(params: {
+  original: FlatToken[]
+  working: WorkingToken[]
+  figmaMeta: FigmaVariablesMeta
+  modeId: string
+}): { creates: PulledEntry[]; updates: PulledEntry[]; deletes: PulledEntry[]; skipped: SkippedVariable[] } {
+  const { original, working, figmaMeta, modeId } = params
+  const creates: PulledEntry[] = []
+  const updates: PulledEntry[] = []
+  const deletes: PulledEntry[] = []
+  const skipped: SkippedVariable[] = []
+
+  // Reverse index from a shadow sub-variable's Figma id back to the token +
+  // sub-property it belongs to — needed to resolve a shadow-to-shadow alias
+  // target, since (unlike every other type) a shadow token's figmaId is an
+  // object of 5 ids, not 1, so it can't live in a plain string-keyed index.
+  const shadowSubIndex = new Map<string, { token: FlatToken; subProperty: ShadowSubProperty }>()
+  for (const t of original) {
+    if (!isShadowFigmaId(t.figmaId)) continue
+    for (const sub of SHADOW_SUB_PROPERTIES) {
+      shadowSubIndex.set(t.figmaId[sub], { token: t, subProperty: sub })
+    }
+  }
+  const workingByPath = new Map(working.map(w => [w.token.path.join('.'), w]))
+
+  for (const token of original) {
+    if (!isShadowFigmaId(token.figmaId)) continue
+    const idSet = token.figmaId
+    const path = token.path.join('.')
+
+    // Any one of the 5 sub-variables missing from Figma entirely — treat
+    // the whole shadow as deleted (unless working already dropped it).
+    const missing = SHADOW_SUB_PROPERTIES.some(sub => !figmaMeta.variables[idSet[sub]])
+    if (missing) {
+      if (workingByPath.has(path)) {
+        deletes.push(entryFrom('delete', token.layer, token.path, idSet, snapshotOf(token)))
+      }
+      continue
+    }
+
+    const localUnit = (sub: 'offsetX' | 'offsetY' | 'blur' | 'spread') => unitForSub(token.rawValue, sub)
+    const derived = deriveShadowValue(idSet, figmaMeta, modeId, shadowSubIndex, localUnit)
+    if (derived.kind === 'unsupported') {
+      skipped.push({ variableId: idSet.color, name: `${token.path.join('/')} (shadow)`, reason: derived.reason })
+      continue
+    }
+
+    const figmaSnapshot: DtcgSnapshot =
+      derived.kind === 'alias'
+        ? { type: 'shadow', referenceTarget: derived.referenceTarget, rawValue: undefined }
+        : { type: 'shadow', referenceTarget: null, rawValue: derived.rawValue }
+
+    const originalSnapshot = snapshotOf(token)
+    if (snapshotEqual(figmaSnapshot, originalSnapshot)) continue
+
+    const workingEntry = workingByPath.get(path)
+    const workingSnapshot = workingEntry ? snapshotOf(workingEntry.token) : originalSnapshot
+    const workingHasManualEdit = !snapshotEqual(workingSnapshot, originalSnapshot)
+
+    if (workingHasManualEdit) {
+      if (snapshotEqual(workingSnapshot, figmaSnapshot)) continue // already converged
+      // Shadow conflicts aren't modeled as PullConflict (its figma-side shape assumes a single
+      // resolvable value/reference, which a partially-diverged 5-variable shadow doesn't cleanly
+      // fit) — surfaced as skipped instead, same as any other case this pass can't safely resolve
+      // automatically. A human resolves it directly in Toky.
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (shadow)`,
+        reason: 'Figma and a pending local edit disagree — resolve manually.',
+      })
+      continue
+    }
+
+    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+  }
+
+  return { creates, updates, deletes, skipped }
 }
 
 /**
@@ -196,7 +428,15 @@ export function buildBasePullPlan(params: {
   const { original, working, figmaMeta, baseModeId } = params
   const plan = emptyPlan()
 
-  const baseIndex = new Map(original.filter(t => t.figmaId).map(t => [t.figmaId as string, t]))
+  // Shadow tokens are excluded from both indexes — their figmaId is an
+  // object of 5 sub-ids, not the single string this generic per-variable
+  // loop (and deriveValue's alias-target lookup) is keyed by. They're
+  // matched separately by deriveShadowPullEntries below.
+  const baseIndex = new Map(
+    original
+      .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
+      .map(t => [t.figmaId, t]),
+  )
   const originalByPath = new Map(original.map(t => [t.path.join('.'), t]))
   const workingByPath = new Map(working.map(w => [w.token.path.join('.'), w]))
   // Anything already linked to a Figma variable in `working` but not yet in
@@ -204,20 +444,34 @@ export function buildBasePullPlan(params: {
   // been Applied but not yet Submitted. `original` (and baseIndex) won't
   // reflect it until a submit lands, so without this a not-yet-submitted
   // pull's result gets proposed again on every subsequent pull.
-  const workingFigmaIndex = new Map(working.filter(w => w.token.figmaId).map(w => [w.token.figmaId as string, w]))
+  const workingFigmaIndex = new Map(
+    working
+      .filter(
+        (w): w is WorkingToken & { token: FlatToken & { figmaId: string } } => typeof w.token.figmaId === 'string',
+      )
+      .map(w => [w.token.figmaId, w]),
+  )
+  // Every Figma variable id that belongs to some local shadow token's
+  // 5-sub-id set — skipped by the generic loop below (it would otherwise
+  // see a shadow's bare FLOAT/COLOR sub-variable and misinterpret it as a
+  // stray, unrelated number/color token to create).
+  const shadowSubVariableIds = new Set(
+    original.flatMap(t => (isShadowFigmaId(t.figmaId) ? Object.values(t.figmaId) : [])),
+  )
 
   for (const variable of Object.values(figmaMeta.variables)) {
+    if (shadowSubVariableIds.has(variable.id)) continue
     const modeValue = variable.valuesByMode[baseModeId]
     if (modeValue === undefined) continue
 
-    const derived = deriveValue(variable, modeValue, baseIndex)
+    const matched = baseIndex.get(variable.id)
+
+    const derived = deriveValue(variable, modeValue, baseIndex, matched)
     if (derived.kind === 'unsupported') {
       plan.skipped.push({ variableId: variable.id, name: variable.name, reason: derived.reason })
       continue
     }
     const figmaSnapshot = derivedSnapshot(derived)
-
-    const matched = baseIndex.get(variable.id)
 
     if (!matched) {
       const stagedOnly = workingFigmaIndex.get(variable.id)
@@ -294,11 +548,19 @@ export function buildBasePullPlan(params: {
   }
 
   for (const token of original) {
-    if (!token.figmaId || figmaMeta.variables[token.figmaId]) continue
+    // Shadow deletion is handled by deriveShadowPullEntries below (its
+    // figmaId is 5 sub-ids, not 1 — see docs/plans/shadow-token-type-plan.md).
+    if (typeof token.figmaId !== 'string' || figmaMeta.variables[token.figmaId]) continue
     const path = token.path.join('.')
     if (!workingByPath.has(path)) continue // working already deleted it — nothing new to propose
     plan.deletes.push(entryFrom('delete', token.layer, token.path, token.figmaId, snapshotOf(token)))
   }
+
+  const shadowEntries = deriveShadowPullEntries({ original, working, figmaMeta, modeId: baseModeId })
+  plan.creates.push(...shadowEntries.creates)
+  plan.updates.push(...shadowEntries.updates)
+  plan.deletes.push(...shadowEntries.deletes)
+  plan.skipped.push(...shadowEntries.skipped)
 
   return plan
 }
@@ -327,27 +589,42 @@ export function buildBrandPullPlan(params: {
   const { baseOriginal, brandOriginal, brandWorking, figmaMeta, brandModeId } = params
   const plan = emptyPlan()
 
-  const baseIndex = new Map(baseOriginal.filter(t => t.figmaId).map(t => [t.figmaId as string, t]))
+  // Shadow tokens excluded — see buildBasePullPlan's baseIndex comment.
+  // Shadow sync is Base-only anyway (docs/plans/shadow-token-type-plan.md),
+  // so brand-mode values for a shadow's sub-variables are never read here.
+  const baseIndex = new Map(
+    baseOriginal
+      .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
+      .map(t => [t.figmaId, t]),
+  )
   const baseByPath = new Map(baseOriginal.map(t => [t.path.join('.'), t]))
   const brandOriginalByPath = new Map(brandOriginal.map(t => [t.path.join('.'), t]))
   const brandWorkingByPath = new Map(brandWorking.map(w => [w.token.path.join('.'), w]))
+  const shadowSubVariableIds = new Set(
+    baseOriginal.flatMap(t => (isShadowFigmaId(t.figmaId) ? Object.values(t.figmaId) : [])),
+  )
 
   for (const variable of Object.values(figmaMeta.variables)) {
+    if (shadowSubVariableIds.has(variable.id)) continue
     const modeValue = variable.valuesByMode[brandModeId]
     if (modeValue === undefined) continue
 
     const matched = baseIndex.get(variable.id)
     if (!matched) continue // brand-new variable — Base create only, see doc comment
 
-    const derived = deriveValue(variable, modeValue, baseIndex)
+    const path = matched.path.join('.')
+    const override = brandOriginalByPath.get(path)
+
+    // The reference for type/merge purposes is whatever's currently
+    // effective for this brand — its own override if one exists, else the
+    // inherited Base token. Matters for fontFamily: the array to preserve
+    // fallbacks from should be the brand's own, not always Base's.
+    const derived = deriveValue(variable, modeValue, baseIndex, override ?? matched)
     if (derived.kind === 'unsupported') {
       plan.skipped.push({ variableId: variable.id, name: variable.name, reason: derived.reason })
       continue
     }
     const figmaSnapshot = derivedSnapshot(derived)
-
-    const path = matched.path.join('.')
-    const override = brandOriginalByPath.get(path)
     const inheritedSnapshot = snapshotOf(matched)
     const originalSnapshot = override ? snapshotOf(override) : inheritedSnapshot
 
@@ -391,7 +668,10 @@ export function buildBrandPullPlan(params: {
   for (const token of brandOriginal) {
     const path = token.path.join('.')
     const baseToken = baseByPath.get(path)
-    if (!baseToken?.figmaId || figmaMeta.variables[baseToken.figmaId]) continue
+    // Shadow sync is Base-only (see docs/plans/shadow-token-type-plan.md) —
+    // a shadow token's figmaId is also 5 sub-ids, not 1, so it wouldn't fit
+    // entryFrom's single-id shape here regardless.
+    if (typeof baseToken?.figmaId !== 'string' || figmaMeta.variables[baseToken.figmaId]) continue
     if (!brandWorkingByPath.has(path)) continue // working already deleted it
     plan.deletes.push(entryFrom('delete', token.layer, token.path, baseToken.figmaId, snapshotOf(token)))
   }

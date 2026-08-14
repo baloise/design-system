@@ -65,7 +65,17 @@ export function createBrandConfig(mode: string): { config: Config; cleanup: () =
     source: [tmpFile],
     platforms: {
       css: {
-        transforms: ['name/kebab', 'ds/css/name', 'ds/color/rgba', 'ds/size/round', 'ds/size/rem'],
+        transforms: [
+          'name/kebab',
+          'ds/css/name',
+          'ds/color/rgba',
+          'ds/size/round',
+          'ds/size/rem',
+          'ds/font-weight',
+          'ds/font-family',
+          'ds/dimension',
+          'ds/shadow',
+        ],
         basePxFontSize,
         buildPath: 'dist/',
         prefix: 'ds',

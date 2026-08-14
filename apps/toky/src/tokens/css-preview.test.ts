@@ -37,18 +37,54 @@ describe('resolvedValueToCss', () => {
     expect(resolvedValueToCss(value, 'color', ['🌐 Global', '🌈 Color', 'Overlay'])).toBe('rgba(0, 7, 57, 0.1)')
   })
 
-  it('converts a plain px-scale number to rem, matching ds/size/rem', () => {
-    // 16 -> 1rem is the base conversion; path has no LineHeight/Opacity/Breakpoint/Container marker
-    expect(resolvedValueToCss(16, 'number', ['🌐 Global', '📏 Size', 'Space', '16'])).toBe('1rem')
+  it('passes a plain unitless number through unchanged — number no longer rem/px-converts (dimension does)', () => {
+    // dist/css/base.tokens.css: --ds-global-elevation-zindex-100: 100;
+    expect(resolvedValueToCss(100, 'number', ['🌐 Global', '🗂️ Elevation', 'ZIndex', '100'])).toBe('100')
   })
 
-  it('rounds a line-height number to one decimal, matching ds/size/round + ds/size/rem', () => {
+  it('rounds a line-height number to one decimal, matching ds/size/round', () => {
     // dist/css/base.tokens.css: --ds-global-font-line-height-2: 1.3;
     expect(resolvedValueToCss(1.2999999523162842, 'number', ['🌐 Global', '🔤 Font', 'LineHeight', '2'])).toBe('1.3')
   })
 
   it('passes a string value through unchanged', () => {
     expect(resolvedValueToCss('auto', 'string', ['🔗 Alias', '📏 Size', 'Width', 'Auto'])).toBe('auto')
+  })
+
+  it('renders a fontWeight number as a bare CSS number, not rem/px-converted', () => {
+    // dist/css/base.tokens.css: --ds-global-font-weight-700: 700;
+    expect(resolvedValueToCss(700, 'fontWeight', ['🌐 Global', '🔤 Font', 'Weight', '700'])).toBe('700')
+  })
+
+  it('joins a fontFamily array, leaving simple names and generic keywords unquoted', () => {
+    // dist/css/base.tokens.css: --ds-global-font-family-heading: BaloiseCreateHeadline, Arial, sans-serif;
+    expect(resolvedValueToCss(['BaloiseCreateHeadline', 'Arial', 'sans-serif'], 'fontFamily', [])).toBe(
+      'BaloiseCreateHeadline, Arial, sans-serif',
+    )
+  })
+
+  it('quotes only a fontFamily entry that needs it (contains whitespace)', () => {
+    expect(resolvedValueToCss(['Comic Sans MS', 'cursive'], 'fontFamily', [])).toBe('"Comic Sans MS", cursive')
+  })
+
+  it('renders a single-entry fontFamily keyword bare — not quoted', () => {
+    // dist/css/base.tokens.css: --ds-link-family: inherit;
+    expect(resolvedValueToCss(['inherit'], 'fontFamily', [])).toBe('inherit')
+  })
+
+  it('renders a rem-unit dimension as-is, no further conversion', () => {
+    // dist/css/base.tokens.css: --ds-global-size-space-24: 1.5rem;
+    expect(resolvedValueToCss({ value: 1.5, unit: 'rem' }, 'dimension', [])).toBe('1.5rem')
+  })
+
+  it('renders a px-unit dimension as-is, no rem conversion', () => {
+    // dist/css/base.tokens.css: --ds-global-size-breakpoint-1: 769px;
+    expect(resolvedValueToCss({ value: 769, unit: 'px' }, 'dimension', [])).toBe('769px')
+  })
+
+  it('returns null for a malformed dimension value', () => {
+    expect(resolvedValueToCss({ value: 1.5, unit: 'em' }, 'dimension', [])).toBeNull()
+    expect(resolvedValueToCss(24, 'dimension', [])).toBeNull()
   })
 
   it('returns null for an unresolved/dangling reference', () => {

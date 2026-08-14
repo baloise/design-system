@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   dtcgColorFromFigma,
   dtcgTypeFor,
+  fontWeightNumberFromKeyword,
   isColorEqual,
   isFigmaAlias,
   isLiteralValueEqual,
@@ -18,6 +19,25 @@ describe('dtcgTypeFor', () => {
 
   it('throws loudly on an unrecognized resolvedType', () => {
     expect(() => dtcgTypeFor('EFFECT')).toThrow(/Unsupported Figma resolvedType/)
+  })
+})
+
+describe('fontWeightNumberFromKeyword', () => {
+  it('maps every known DTCG font-weight keyword back to its number', () => {
+    expect(fontWeightNumberFromKeyword('Thin')).toBe(100)
+    expect(fontWeightNumberFromKeyword('Regular')).toBe(400)
+    expect(fontWeightNumberFromKeyword('Bold')).toBe(700)
+    expect(fontWeightNumberFromKeyword('Extra-Black')).toBe(950)
+  })
+
+  it('is exact-case — a differently-cased or -spaced variant does not match', () => {
+    expect(fontWeightNumberFromKeyword('bold')).toBeUndefined()
+    expect(fontWeightNumberFromKeyword('SemiBold')).toBeUndefined()
+  })
+
+  it('returns undefined for an unrecognized string or a non-string value', () => {
+    expect(fontWeightNumberFromKeyword('Not A Weight')).toBeUndefined()
+    expect(fontWeightNumberFromKeyword(700)).toBeUndefined()
   })
 })
 

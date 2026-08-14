@@ -1,5 +1,5 @@
 import { KEY_BY_LAYER } from './flatten'
-import type { FlatToken, TokenLayer } from './types'
+import type { FigmaId, FlatToken, TokenLayer } from './types'
 
 /**
  * Working-copy wrapper used while editing. `id` is the token's *original*
@@ -33,7 +33,7 @@ export interface TokenDiffEntry {
   // applyDiffToDocument, which writes it into $extensions — without this,
   // a freshly created token's Figma link is dropped on write and the next
   // pull can't recognize it, proposing a duplicate create (see docs/adr/0002).
-  figmaId?: string | null
+  figmaId?: FigmaId | null
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {

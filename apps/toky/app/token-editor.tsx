@@ -14,6 +14,7 @@ import {
   GitBranchIcon,
   HashIcon,
   HexagonIcon,
+  LayersIcon,
   Link2Icon,
   NetworkIcon,
   PaletteIcon,
@@ -123,11 +124,12 @@ interface Draft {
   type: string
   value: string
   alpha: number
+  unit: DimensionValue['unit']
   referenceTarget: string
 }
 
 function emptyDraft(layer: TokenLayer = 'Global'): Draft {
-  return { name: '', layer, type: 'string', value: '', alpha: 100, referenceTarget: '' }
+  return { name: '', layer, type: 'string', value: '', alpha: 100, unit: 'rem', referenceTarget: '' }
 }
 
 // A brand's value/reference text within the Edit-token dialog — kept
@@ -136,6 +138,7 @@ function emptyDraft(layer: TokenLayer = 'Global'): Draft {
 interface EditBrandDraft {
   value: string
   alpha: number
+  unit: DimensionValue['unit']
   referenceTarget: string
   malformed: boolean
 }
@@ -146,6 +149,7 @@ interface EditDraftState {
   name: string
   value: string
   alpha: number
+  unit: DimensionValue['unit']
   referenceTarget: string
   malformed: boolean
   brands: Record<string, EditBrandDraft>
@@ -264,16 +268,39 @@ const CHANGE_STATUS_VARIANT: Record<ChangeStatus, 'default' | 'secondary' | 'out
   value: 'outline',
 }
 
+interface DimensionValue {
+  value: number
+  unit: 'px' | 'rem'
+}
+
+function isDimensionValue(value: unknown): value is DimensionValue {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    typeof (value as { value?: unknown }).value === 'number' &&
+    ((value as { unit?: unknown }).unit === 'px' || (value as { unit?: unknown }).unit === 'rem')
+  )
+}
+
 function getEditableValueText(token: FlatToken): string {
   if (token.referenceTarget) return ''
   if (token.type === 'color') return getColorHex(token.rawValue) ?? ''
+  if (token.type === 'fontFamily') return Array.isArray(token.rawValue) ? token.rawValue.join(', ') : ''
+  if (token.type === 'dimension') return isDimensionValue(token.rawValue) ? String(token.rawValue.value) : ''
   return token.rawValue === undefined || token.rawValue === null ? '' : String(token.rawValue)
+}
+
+// The dimension unit backing a row/dialog's value right now — the token's own current unit if it
+// already has one, else 'rem'. The adjacent unit <Select> is always the source of truth for a
+// dimension's unit (not the value text, which is just the bare number — see getEditableValueText).
+function dimensionUnitFor(rawValue: unknown): DimensionValue['unit'] {
+  return isDimensionValue(rawValue) ? rawValue.unit : 'rem'
 }
 
 type ParsedValue = { ok: true; value: unknown } | { ok: false }
 
-// `previous` supplies the color's existing colorSpace/alpha so typing a hex
-// value or picking one doesn't silently reset them.
+// `previous` supplies the color's existing colorSpace/alpha (or the dimension's existing unit)
+// so typing a hex value / a bare number doesn't silently reset them.
 function parseEditableValue(type: string, text: string, previous?: unknown): ParsedValue {
   if (type === 'color') {
     if (text.trim() === '') return { ok: true, value: '' }
@@ -285,12 +312,374 @@ function parseEditableValue(type: string, text: string, previous?: unknown): Par
       return { ok: false }
     }
   }
-  if (type === 'number') {
+  if (type === 'number' || type === 'fontWeight') {
     if (text.trim() === '') return { ok: true, value: '' }
     const n = Number(text)
     return Number.isNaN(n) ? { ok: false } : { ok: true, value: n }
   }
+  if (type === 'fontFamily') {
+    const names = text
+      .split(',')
+      .map(s => s.trim())
+      .filter(s => s.length > 0)
+    return { ok: true, value: names.length > 0 ? names : '' }
+  }
+  if (type === 'dimension') {
+    if (text.trim() === '') return { ok: true, value: '' }
+    const n = Number(text)
+    if (Number.isNaN(n)) return { ok: false }
+    return { ok: true, value: { value: n, unit: dimensionUnitFor(previous) } }
+  }
   return { ok: true, value: text }
+}
+
+// The 2 DTCG-legal dimension units (https://www.designtokens.org/tr/drafts/format/#dimension) —
+// fixed, not derived from anything, since this is the entire universe of valid units, not a set
+// of references to pick from (see docs/plans/dimension-token-type-plan.md).
+const DIMENSION_UNIT_OPTIONS: { value: DimensionValue['unit']; label: string }[] = [
+  { value: 'px', label: 'px' },
+  { value: 'rem', label: 'rem' },
+]
+
+const PX_PER_REM = 16
+
+// Switching a dimension token's unit converts the number to preserve its physical size (a
+// representation change, never a silent resize) — 1.5rem -> 24px, not 1.5rem -> 1.5px.
+function convertDimensionUnit(current: DimensionValue, unit: DimensionValue['unit']): DimensionValue {
+  if (current.unit === unit) return current
+  const value = unit === 'px' ? current.value * PX_PER_REM : current.value / PX_PER_REM
+  return { value, unit }
+}
+
+// The 10 DTCG-legal font-weight values, first-listed keyword synonym per
+// weight (https://www.designtokens.org/tr/drafts/format/#font-weight) —
+// mirrors Global.🔤 Font.Weight in Base.tokens.json. Fixed, not derived from
+// whatever Global tokens happen to exist, since this is the universe of
+// valid values a fontWeight token may hold, not a set of references to pick
+// from (see docs/plans/font-weight-token-type-plan.md).
+const FONT_WEIGHT_OPTIONS: { value: number; label: string }[] = [
+  { value: 100, label: '100 — Thin' },
+  { value: 200, label: '200 — Extra-Light' },
+  { value: 300, label: '300 — Light' },
+  { value: 400, label: '400 — Regular' },
+  { value: 500, label: '500 — Medium' },
+  { value: 600, label: '600 — Semi-Bold' },
+  { value: 700, label: '700 — Bold' },
+  { value: 800, label: '800 — Extra-Bold' },
+  { value: 900, label: '900 — Black' },
+  { value: 950, label: '950 — Extra-Black' },
+]
+
+// A single DTCG shadow layer, as it lives in a shadow token's rawValue —
+// see docs/plans/shadow-token-type-plan.md. `inset` is preserved across
+// edits but has no dedicated control in this editor (not part of the
+// mockup this plan implements against).
+interface ShadowLayerValue {
+  offsetX: DimensionValue
+  offsetY: DimensionValue
+  blur: DimensionValue
+  spread: DimensionValue
+  color: unknown
+  inset?: boolean
+}
+
+function isShadowLayerValue(value: unknown): value is ShadowLayerValue {
+  if (typeof value !== 'object' || value === null) return false
+  const v = value as Record<string, unknown>
+  return (
+    isDimensionValue(v.offsetX) && isDimensionValue(v.offsetY) && isDimensionValue(v.blur) && isDimensionValue(v.spread)
+  )
+}
+
+// A shadow token's rawValue is a bare layer object (single-layer), an array
+// of layers (multi-layer), or `[]` ("none") — see decision #3 in the plan.
+// This always returns a flat list, regardless of which shape is currently
+// stored, so the editor below never has to branch on it.
+function shadowLayersOf(value: unknown): ShadowLayerValue[] {
+  if (Array.isArray(value)) return value.filter(isShadowLayerValue)
+  return isShadowLayerValue(value) ? [value] : []
+}
+
+// The inverse of shadowLayersOf — collapses back to the bare-object/array/[]
+// shape the DTCG data and shadowValueToCss both expect.
+function shadowValueFromLayers(layers: ShadowLayerValue[]): unknown {
+  if (layers.length === 0) return []
+  if (layers.length === 1) return layers[0]
+  return layers
+}
+
+function defaultShadowLayer(): ShadowLayerValue {
+  return {
+    offsetX: { value: 0, unit: 'rem' },
+    offsetY: { value: 0, unit: 'rem' },
+    blur: { value: 0, unit: 'rem' },
+    spread: { value: 0, unit: 'rem' },
+    color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.25, hex: '#000000' },
+  }
+}
+
+function shadowSummaryText(value: unknown): string {
+  const layers = shadowLayersOf(value)
+  if (layers.length === 0) return 'None'
+  return layers.length === 1 ? '1 layer' : `${layers.length} layers`
+}
+
+// One X/Y/Blur/Spread field within a shadow layer — a number + its own
+// px/rem <Select> (decision #6: 4 independent unit pickers per layer, not
+// one shared unit for the whole shadow). Keeps its own draft text, same
+// "commit on blur" discipline as the table's dimension cell (see
+// commitDimensionUnit) — otherwise every keystroke here would push its own
+// undo step (useUndoableState has no debounce/coalescing).
+function ShadowDimensionField({
+  id,
+  label,
+  dimension,
+  onCommit,
+}: {
+  id: string
+  label: string
+  dimension: DimensionValue
+  onCommit: (next: DimensionValue) => void
+}): ReactNode {
+  const [text, setText] = useState(String(dimension.value))
+
+  useEffect(() => {
+    setText(String(dimension.value))
+  }, [dimension.value])
+
+  function commitText() {
+    const n = Number(text)
+    if (Number.isNaN(n)) {
+      setText(String(dimension.value))
+      return
+    }
+    onCommit({ ...dimension, value: n })
+  }
+
+  return (
+    <div className="space-y-1">
+      <Label htmlFor={id} className="text-xs text-muted-foreground">
+        {label}
+      </Label>
+      <div className="flex gap-1">
+        <Input
+          id={id}
+          aria-label={label}
+          value={text}
+          onChange={e => setText(e.target.value)}
+          onBlur={commitText}
+          className="w-full"
+        />
+        <Select
+          value={dimension.unit}
+          onValueChange={unit => (unit === 'px' || unit === 'rem') && onCommit(convertDimensionUnit(dimension, unit))}
+        >
+          <SelectTrigger aria-label={`Unit — ${label}`} className="h-8 w-18 shrink-0">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {DIMENSION_UNIT_OPTIONS.map(option => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  )
+}
+
+// A shadow layer's color field — same hex+opacity-% markup as the color
+// type's own popover (see the `token.type === 'color'` branch below), just
+// reused standalone against one layer's `color` sub-value instead of a
+// whole token's rawValue.
+function ShadowColorField({
+  idPrefix,
+  color,
+  onCommit,
+}: {
+  idPrefix: string
+  color: unknown
+  onCommit: (next: unknown) => void
+}): ReactNode {
+  const [hexText, setHexText] = useState(getColorHex(color) ?? '')
+  const [alphaText, setAlphaText] = useState(String(alphaPercentFor(color)))
+
+  useEffect(() => {
+    setHexText(getColorHex(color) ?? '')
+    setAlphaText(String(alphaPercentFor(color)))
+  }, [color])
+
+  function commitHex() {
+    const next = hexToColorValue(hexText, color)
+    if (!next) {
+      setHexText(getColorHex(color) ?? '')
+      return
+    }
+    onCommit(withAlphaPercent(next, Number(alphaText) || 100))
+  }
+
+  function commitAlpha() {
+    const percent = Number(alphaText)
+    if (Number.isNaN(percent)) {
+      setAlphaText(String(alphaPercentFor(color)))
+      return
+    }
+    onCommit(withAlphaPercent(color, percent))
+  }
+
+  return (
+    <div className="flex gap-2">
+      <div className="basis-2/3 space-y-1">
+        <Label htmlFor={`${idPrefix}-hex`} className="text-xs text-muted-foreground">
+          Color
+        </Label>
+        <Input
+          id={`${idPrefix}-hex`}
+          placeholder="#RRGGBB"
+          value={hexText}
+          onChange={e => setHexText(e.target.value)}
+          onBlur={commitHex}
+        />
+      </div>
+      <div className="basis-1/3 space-y-1">
+        <Label htmlFor={`${idPrefix}-opacity`} className="text-xs text-muted-foreground">
+          Opacity
+        </Label>
+        <div className="relative">
+          <Input
+            id={`${idPrefix}-opacity`}
+            type="number"
+            min={0}
+            max={100}
+            step={1}
+            value={alphaText}
+            onChange={e => setAlphaText(e.target.value)}
+            onBlur={commitAlpha}
+            className="pr-6"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-muted-foreground"
+          >
+            %
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// One layer's full field set (X/Y/Blur/Spread + color), plus its remove
+// button. `onUpdate` always receives the layer's full next state — the
+// parent (ShadowEditor) owns the layer array itself, this only edits one
+// entry in place.
+function ShadowLayerEditor({
+  idPrefix,
+  index,
+  layer,
+  onUpdate,
+  onRemove,
+}: {
+  idPrefix: string
+  index: number
+  layer: ShadowLayerValue
+  onUpdate: (next: ShadowLayerValue) => void
+  onRemove: () => void
+}): ReactNode {
+  return (
+    <div className="space-y-2 rounded-md border p-3">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-medium text-muted-foreground">Layer {index + 1}</span>
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-sm"
+          aria-label={`Remove layer ${index + 1}`}
+          onClick={onRemove}
+        >
+          <Trash2Icon className="size-3.5" />
+        </Button>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <ShadowDimensionField
+          id={`${idPrefix}-x`}
+          label="X"
+          dimension={layer.offsetX}
+          onCommit={offsetX => onUpdate({ ...layer, offsetX })}
+        />
+        <ShadowDimensionField
+          id={`${idPrefix}-y`}
+          label="Y"
+          dimension={layer.offsetY}
+          onCommit={offsetY => onUpdate({ ...layer, offsetY })}
+        />
+        <ShadowDimensionField
+          id={`${idPrefix}-blur`}
+          label="Blur"
+          dimension={layer.blur}
+          onCommit={blur => onUpdate({ ...layer, blur })}
+        />
+        <ShadowDimensionField
+          id={`${idPrefix}-spread`}
+          label="Spread"
+          dimension={layer.spread}
+          onCommit={spread => onUpdate({ ...layer, spread })}
+        />
+      </div>
+      <ShadowColorField
+        idPrefix={`${idPrefix}-color`}
+        color={layer.color}
+        onCommit={color => onUpdate({ ...layer, color })}
+      />
+    </div>
+  )
+}
+
+// The full shadow popup: stacked layers (single-layer shadows show just
+// one), each independently editable, plus add/remove — removing the last
+// layer reaches `$value: []` ("none"), same as Font.Shadow.0/
+// Elevation.Shadow.0 today (decision #2/#6).
+function ShadowEditor({
+  idPrefix,
+  value,
+  onChange,
+}: {
+  idPrefix: string
+  value: unknown
+  onChange: (next: unknown) => void
+}): ReactNode {
+  const layers = shadowLayersOf(value)
+
+  return (
+    <div className="space-y-2">
+      {layers.length === 0 ? (
+        <p className="text-sm text-muted-foreground">No shadow — renders as &quot;none&quot;.</p>
+      ) : (
+        layers.map((layer, index) => (
+          <ShadowLayerEditor
+            key={index}
+            idPrefix={`${idPrefix}-${index}`}
+            index={index}
+            layer={layer}
+            onUpdate={next => onChange(shadowValueFromLayers(layers.map((l, i) => (i === index ? next : l))))}
+            onRemove={() => onChange(shadowValueFromLayers(layers.filter((_, i) => i !== index)))}
+          />
+        ))
+      )}
+      <Button
+        type="button"
+        variant="outline"
+        size="sm"
+        className="gap-1"
+        onClick={() => onChange(shadowValueFromLayers([...layers, defaultShadowLayer()]))}
+      >
+        <PlusIcon className="size-3.5" />
+        Add layer
+      </Button>
+    </div>
+  )
 }
 
 // The small unlink control that appears right after an alias tag on
@@ -308,6 +697,10 @@ const TOKEN_TYPE_ICON: Record<string, typeof PaletteIcon> = {
   number: HashIcon,
   string: TypeIcon,
   boolean: ToggleLeftIcon,
+  fontWeight: HashIcon,
+  fontFamily: TypeIcon,
+  dimension: HashIcon,
+  shadow: LayersIcon,
 }
 
 // Opaque (100%) is the sensible default for anything that isn't yet a real
@@ -400,6 +793,9 @@ interface TokenRowHandlers {
   onValueChange: (id: string, text: string) => void
   onValueBlur: (id: string, type: string) => void
   onColorPick: (id: string, type: string, text: string) => void
+  onLiteralValueSelect: (id: string, type: string, text: string) => void
+  onDimensionUnitChange: (id: string, unit: 'px' | 'rem') => void
+  onShadowChange: (id: string, rawValue: unknown) => void
   onAlphaChange: (id: string, text: string) => void
   onAlphaBlur: (id: string) => void
   onReferenceChange: (id: string, text: string) => void
@@ -413,6 +809,8 @@ interface TokenRowHandlers {
   onBrandValueChange: (id: string, text: string) => void
   onBrandValueBlur: (brand: string, id: string, type: string) => void
   onBrandColorPick: (brand: string, id: string, type: string, text: string) => void
+  onBrandDimensionUnitChange: (brand: string, id: string, unit: 'px' | 'rem') => void
+  onBrandShadowChange: (brand: string, id: string, rawValue: unknown) => void
   onBrandAlphaChange: (brand: string, id: string, text: string) => void
   onBrandAlphaBlur: (brand: string, id: string) => void
   onBrandReferenceChange: (brand: string, id: string, text: string) => void
@@ -655,6 +1053,62 @@ const TokenRow = memo(function TokenRow({
                     handlers.onReferenceChange(id, ''),
                   )}
               </div>
+            ) : token.type === 'shadow' ? (
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    render={
+                      token.referenceTarget ? (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TAG_CLASS}
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TRIGGER_CLASS}
+                        />
+                      )
+                    }
+                  >
+                    <LayersIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                    <span className="w-fit">
+                      {token.referenceTarget ? toSlashPath(token.referenceTarget) : shadowSummaryText(token.rawValue)}
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-128">
+                    {handlers.renderPopoverHeader(
+                      [
+                        { value: 'value', label: 'Shadow' },
+                        { value: 'reference', label: 'Reference' },
+                      ],
+                      mode,
+                      value => handlers.onSetMode(id, value as 'value' | 'reference'),
+                      `Value mode for ${token.name || 'token'}`,
+                    )}
+                    {mode === 'value' ? (
+                      <ShadowEditor
+                        idPrefix={`shadow-${row}`}
+                        value={token.rawValue}
+                        onChange={next => handlers.onShadowChange(id, next)}
+                      />
+                    ) : (
+                      handlers.renderReferenceSearch(
+                        token.referenceTarget ?? '',
+                        value => handlers.onReferenceChange(id, value),
+                        `Reference target for ${token.name || 'token'}`,
+                      )
+                    )}
+                  </PopoverContent>
+                </Popover>
+                {token.referenceTarget &&
+                  renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                    handlers.onReferenceChange(id, ''),
+                  )}
+              </div>
             ) : (
               <div className="group/tag flex items-center gap-1">
                 {token.referenceTarget ? (
@@ -687,20 +1141,76 @@ const TokenRow = memo(function TokenRow({
                   </>
                 ) : (
                   <>
-                    <Input
-                      ref={el => {
-                        if (el) cellRefs.current.set(`${row}-1`, el)
-                        else cellRefs.current.delete(`${row}-1`)
-                      }}
-                      aria-label={`Value for ${token.name || 'token'}`}
-                      aria-invalid={cellErrors.length > 0}
-                      value={valueText}
-                      onChange={e => handlers.onValueChange(id, e.target.value)}
-                      onBlur={() => handlers.onValueBlur(id, token.type)}
-                      onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
-                      onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
-                      className={CELL_FIELD_CLASS}
-                    />
+                    {token.type === 'dimension' ? (
+                      <>
+                        <Input
+                          ref={el => {
+                            if (el) cellRefs.current.set(`${row}-1`, el)
+                            else cellRefs.current.delete(`${row}-1`)
+                          }}
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          aria-invalid={cellErrors.length > 0}
+                          value={valueText}
+                          onChange={e => handlers.onValueChange(id, e.target.value)}
+                          onBlur={() => handlers.onValueBlur(id, token.type)}
+                          onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
+                          onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
+                          className={CELL_FIELD_CLASS}
+                        />
+                        <Select
+                          value={isDimensionValue(token.rawValue) ? token.rawValue.unit : 'rem'}
+                          onValueChange={value =>
+                            (value === 'px' || value === 'rem') && handlers.onDimensionUnitChange(id, value)
+                          }
+                        >
+                          <SelectTrigger aria-label={`Unit for ${token.name || 'token'}`} className="h-8 w-18 shrink-0">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {DIMENSION_UNIT_OPTIONS.map(option => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </>
+                    ) : token.type === 'fontWeight' ? (
+                      <Select
+                        value={valueText}
+                        onValueChange={value => value !== null && handlers.onLiteralValueSelect(id, token.type, value)}
+                      >
+                        <SelectTrigger
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          aria-invalid={cellErrors.length > 0}
+                          className={cn(CELL_FIELD_CLASS, 'h-8')}
+                        >
+                          <SelectValue placeholder="Select a weight" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {FONT_WEIGHT_OPTIONS.map(option => (
+                            <SelectItem key={option.value} value={String(option.value)}>
+                              {option.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    ) : (
+                      <Input
+                        ref={el => {
+                          if (el) cellRefs.current.set(`${row}-1`, el)
+                          else cellRefs.current.delete(`${row}-1`)
+                        }}
+                        aria-label={`Value for ${token.name || 'token'}`}
+                        aria-invalid={cellErrors.length > 0}
+                        value={valueText}
+                        onChange={e => handlers.onValueChange(id, e.target.value)}
+                        onBlur={() => handlers.onValueBlur(id, token.type)}
+                        onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
+                        onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
+                        className={CELL_FIELD_CLASS}
+                      />
+                    )}
                     <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
                       <PopoverTrigger
                         render={
@@ -930,6 +1440,67 @@ const TokenRow = memo(function TokenRow({
                             handlers.onBrandReferenceChange(brand, id, ''),
                           )}
                       </div>
+                    ) : brandToken.type === 'shadow' ? (
+                      <div className="group/tag flex items-center gap-1">
+                        <Popover
+                          open={brandInfo.isPopoverOpen}
+                          onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                        >
+                          <PopoverTrigger
+                            render={
+                              brandToken.referenceTarget ? (
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TAG_CLASS}
+                                />
+                              ) : (
+                                <button
+                                  type="button"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TRIGGER_CLASS}
+                                />
+                              )
+                            }
+                          >
+                            <LayersIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                            <span className="w-fit">
+                              {brandToken.referenceTarget
+                                ? toSlashPath(brandToken.referenceTarget)
+                                : shadowSummaryText(brandToken.rawValue)}
+                            </span>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-128">
+                            {handlers.renderPopoverHeader(
+                              [
+                                { value: 'value', label: 'Shadow' },
+                                { value: 'reference', label: 'Reference' },
+                              ],
+                              brandMode,
+                              value => handlers.onSetBrandMode(id, value as 'value' | 'reference'),
+                              `${brand} value mode for ${token.name || 'token'}`,
+                            )}
+                            {brandMode === 'value' ? (
+                              <ShadowEditor
+                                idPrefix={`shadow-brand-${brand}-${id}`}
+                                value={brandToken.rawValue}
+                                onChange={next => handlers.onBrandShadowChange(brand, id, next)}
+                              />
+                            ) : (
+                              handlers.renderReferenceSearch(
+                                brandToken.referenceTarget ?? '',
+                                value => handlers.onBrandReferenceChange(brand, id, value),
+                                `${brand} reference target for ${token.name || 'token'}`,
+                              )
+                            )}
+                          </PopoverContent>
+                        </Popover>
+                        {brandToken.referenceTarget &&
+                          renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
+                            handlers.onBrandReferenceChange(brand, id, ''),
+                          )}
+                      </div>
                     ) : (
                       <div className="group/tag flex items-center gap-1">
                         {brandToken.referenceTarget ? (
@@ -965,13 +1536,67 @@ const TokenRow = memo(function TokenRow({
                           </>
                         ) : (
                           <>
-                            <Input
-                              aria-label={`${brand} value for ${token.name || 'token'}`}
-                              value={brandValueText}
-                              onChange={e => handlers.onBrandValueChange(id, e.target.value)}
-                              onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
-                              className={CELL_FIELD_CLASS}
-                            />
+                            {brandToken.type === 'dimension' ? (
+                              <>
+                                <Input
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  value={brandValueText}
+                                  onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                                  onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                                  className={CELL_FIELD_CLASS}
+                                />
+                                <Select
+                                  value={isDimensionValue(brandToken.rawValue) ? brandToken.rawValue.unit : 'rem'}
+                                  onValueChange={value =>
+                                    (value === 'px' || value === 'rem') &&
+                                    handlers.onBrandDimensionUnitChange(brand, id, value)
+                                  }
+                                >
+                                  <SelectTrigger
+                                    aria-label={`${brand} unit for ${token.name || 'token'}`}
+                                    className="h-8 w-18 shrink-0"
+                                  >
+                                    <SelectValue />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {DIMENSION_UNIT_OPTIONS.map(option => (
+                                      <SelectItem key={option.value} value={option.value}>
+                                        {option.label}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                              </>
+                            ) : brandToken.type === 'fontWeight' ? (
+                              <Select
+                                value={brandValueText}
+                                onValueChange={value =>
+                                  value !== null && handlers.onBrandColorPick(brand, id, brandToken.type, value)
+                                }
+                              >
+                                <SelectTrigger
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={cn(CELL_FIELD_CLASS, 'h-8')}
+                                >
+                                  <SelectValue placeholder="Select a weight" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {FONT_WEIGHT_OPTIONS.map(option => (
+                                    <SelectItem key={option.value} value={String(option.value)}>
+                                      {option.label}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            ) : (
+                              <Input
+                                aria-label={`${brand} value for ${token.name || 'token'}`}
+                                value={brandValueText}
+                                onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                                onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                                className={CELL_FIELD_CLASS}
+                              />
+                            )}
                             <Popover
                               open={brandInfo.isPopoverOpen}
                               onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
@@ -1715,6 +2340,36 @@ export function TokenEditor({
     commitValueText(id, type, text)
   }
 
+  // Switching a dimension token's unit Select — a discrete pick, not a stream of keystrokes, so
+  // it commits immediately (mirrors onColorPick/onLiteralValueSelect). Reads whatever number is
+  // currently live (an in-progress edit in the input takes precedence over the last-committed
+  // value, so switching units doesn't discard an unblurred keystroke), converts it to preserve
+  // physical size, and commits the whole {value, unit} object directly — bypassing
+  // parseEditableValue/commitValueText, since this isn't text entry.
+  function commitDimensionUnit(id: string, unit: DimensionValue['unit']) {
+    const current = working.find(w => w.id === id)?.token.rawValue
+    if (!isDimensionValue(current)) return
+    const draftText = valueDraftText[id]
+    const draftNumber = draftText !== undefined ? Number(draftText) : NaN
+    const value = draftText !== undefined && !Number.isNaN(draftNumber) ? draftNumber : current.value
+    const converted = convertDimensionUnit({ value, unit: current.unit }, unit)
+    updateToken(id, t => ({ ...t, rawValue: converted, referenceTarget: null }))
+    setValueDraftText(prev => {
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
+  // Shadow bypasses valueDraftText/parseEditableValue entirely — the popup
+  // (ShadowEditor) already commits a fully-formed rawValue per field on its
+  // own blur/select, mirroring commitDimensionUnit's "discrete action,
+  // commit immediately" reasoning above rather than the keystroke-draft
+  // path (see docs/plans/shadow-token-type-plan.md §7).
+  function commitShadowValue(id: string, rawValue: unknown) {
+    updateToken(id, t => ({ ...t, rawValue, referenceTarget: null }))
+  }
+
   // Keystrokes only update the local draft — see commitAlpha, called on
   // blur. Mirrors handleValueInput/commitValue for the same reason: without
   // this, every keystroke in the opacity field would run a full
@@ -1742,7 +2397,8 @@ export function TokenEditor({
     if (typedSegments.length === 0) return
     const existingPaths = working.filter(w => w.token.layer === draft.layer).map(w => w.token.name.split('.'))
     const name = resolveGroupSegments(typedSegments, existingPaths).join('.')
-    const parsed = parseEditableValue(draft.type, draft.value)
+    const previous = draft.type === 'dimension' ? { value: 0, unit: draft.unit } : undefined
+    const parsed = parseEditableValue(draft.type, draft.value, previous)
     if (!parsed.ok) {
       setDraftMalformed(true)
       return
@@ -1896,6 +2552,7 @@ export function TokenEditor({
       brands[brand] = {
         value: brandToken ? getEditableValueText(brandToken) : '',
         alpha: alphaPercentFor(brandToken?.rawValue),
+        unit: dimensionUnitFor(brandToken?.rawValue),
         referenceTarget: brandToken?.referenceTarget ?? '',
         malformed: false,
       }
@@ -1906,6 +2563,7 @@ export function TokenEditor({
       name: toSlashPath(token.name),
       value: getEditableValueText(token),
       alpha: alphaPercentFor(token.rawValue),
+      unit: dimensionUnitFor(token.rawValue),
       referenceTarget: token.referenceTarget ?? '',
       malformed: false,
       brands,
@@ -1934,6 +2592,7 @@ export function TokenEditor({
               [brand]: {
                 value: prev.value,
                 alpha: prev.alpha,
+                unit: prev.unit,
                 referenceTarget: prev.referenceTarget,
                 malformed: false,
               },
@@ -1972,8 +2631,18 @@ export function TokenEditor({
     const name = resolveGroupSegments(parseTokenPath(editDraft.name), existingPaths).join('.')
 
     let parsedValue: unknown = current.rawValue
-    if (mode === 'value') {
-      const parsed = parseEditableValue(type, editDraft.value, current.rawValue)
+    // Shadow's value isn't editable from this dialog at all (see
+    // renderEditValueEditor's 'shadow' branch) — editDraft.value for a
+    // shadow token is only ever the display-only text getEditableValueText
+    // falls back to, never something parseEditableValue should write back
+    // over the real nested value. Skipping this block leaves parsedValue at
+    // current.rawValue, untouched.
+    if (mode === 'value' && type !== 'shadow') {
+      // For dimension, the dialog's own unit Select (editDraft.unit) is the source of truth, not
+      // current.rawValue's unit — the two can disagree if the unit was switched mid-edit without
+      // otherwise touching the token yet.
+      const previous = type === 'dimension' ? { value: 0, unit: editDraft.unit } : current.rawValue
+      const parsed = parseEditableValue(type, editDraft.value, previous)
       if (!parsed.ok) {
         setEditDraft(prev => (prev ? { ...prev, malformed: true } : prev))
         return
@@ -1993,7 +2662,12 @@ export function TokenEditor({
         continue
       }
 
-      const parsed = parseEditableValue(type, brandDraft.value, baseForBrand.rawValue)
+      // Same reasoning as the base value above — shadow isn't editable here, leave this brand
+      // untouched rather than writing back the display-only fallback text.
+      if (type === 'shadow') continue
+
+      const brandPrevious = type === 'dimension' ? { value: 0, unit: brandDraft.unit } : baseForBrand.rawValue
+      const parsed = parseEditableValue(type, brandDraft.value, brandPrevious)
       if (!parsed.ok) {
         setEditDraft(prev =>
           prev ? { ...prev, brands: { ...prev.brands, [brand]: { ...prev.brands[brand], malformed: true } } } : prev,
@@ -2284,11 +2958,13 @@ export function TokenEditor({
     mode: 'value' | 'reference'
     value: string
     alpha: number
+    unit: DimensionValue['unit']
     referenceTarget: string
     malformed: boolean
     onModeChange: (mode: 'value' | 'reference') => void
     onValueChange: (value: string) => void
     onAlphaChange: (percent: number) => void
+    onUnitChange: (unit: DimensionValue['unit']) => void
     onReferenceChange: (value: string) => void
   }): ReactNode {
     const {
@@ -2298,11 +2974,13 @@ export function TokenEditor({
       mode,
       value,
       alpha,
+      unit,
       referenceTarget,
       malformed,
       onModeChange,
       onValueChange,
       onAlphaChange,
+      onUnitChange,
       onReferenceChange,
     } = opts
     const hex = type === 'color' && /^#[0-9a-fA-F]{6}$/.test(value) ? value : null
@@ -2420,6 +3098,101 @@ export function TokenEditor({
           })}
         </div>
       )
+    }
+
+    if (type === 'fontWeight') {
+      return (
+        <div className="flex items-center gap-1.5">
+          <Select value={value} onValueChange={next => next !== null && onValueChange(next)}>
+            <SelectTrigger aria-label={ariaLabel} aria-invalid={malformed} className="h-8 w-full">
+              <SelectValue placeholder="Select a weight" />
+            </SelectTrigger>
+            <SelectContent>
+              {FONT_WEIGHT_OPTIONS.map(option => (
+                <SelectItem key={option.value} value={String(option.value)}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Popover
+            open={openPopoverId === popoverKey}
+            onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}
+          >
+            <PopoverTrigger
+              render={<Button type="button" variant="outline" size="icon-sm" aria-label={`Reference — ${ariaLabel}`} />}
+            >
+              <HexagonIcon className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderPopoverHeader([{ value: 'reference', label: 'Reference' }], 'reference', null, ariaLabel)}
+              {renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)}
+            </PopoverContent>
+          </Popover>
+        </div>
+      )
+    }
+
+    if (type === 'dimension') {
+      return (
+        <div className="flex items-center gap-1.5">
+          <Input
+            aria-label={ariaLabel}
+            aria-invalid={malformed}
+            placeholder="value…"
+            value={value}
+            onChange={e => onValueChange(e.target.value)}
+          />
+          <Select
+            value={unit}
+            onValueChange={newUnit => {
+              if (newUnit !== 'px' && newUnit !== 'rem') return
+              const n = Number(value)
+              if (Number.isNaN(n)) {
+                onUnitChange(newUnit)
+                return
+              }
+              const converted = convertDimensionUnit({ value: n, unit }, newUnit)
+              onValueChange(String(converted.value))
+              onUnitChange(converted.unit)
+            }}
+          >
+            <SelectTrigger aria-label={`Unit — ${ariaLabel}`} className="h-8 w-18 shrink-0">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {DIMENSION_UNIT_OPTIONS.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Popover
+            open={openPopoverId === popoverKey}
+            onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}
+          >
+            <PopoverTrigger
+              render={<Button type="button" variant="outline" size="icon-sm" aria-label={`Reference — ${ariaLabel}`} />}
+            >
+              <HexagonIcon className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderPopoverHeader([{ value: 'reference', label: 'Reference' }], 'reference', null, ariaLabel)}
+              {renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)}
+            </PopoverContent>
+          </Popover>
+        </div>
+      )
+    }
+
+    if (type === 'shadow') {
+      // A shadow's value is nested (layers of X/Y/blur/spread/color) and has no plain-text
+      // representation worth round-tripping through this dialog's flat editDraft.value string —
+      // its dedicated editor only exists on the table's own Value cell (see the ShadowEditor
+      // popup rendered there). applyEditDialog knows to leave the value untouched when type is
+      // 'shadow', so this is purely informational, not a dead-end.
+      return <p className="text-sm text-muted-foreground">Edit this shadow from its Value cell in the table.</p>
     }
 
     return (
@@ -2677,6 +3450,30 @@ export function TokenEditor({
     commitBrandValueText(brand, id, type, text)
   }
 
+  // Brand-scoped mirror of commitDimensionUnit — see its comment for why this
+  // commits immediately and bypasses parseEditableValue.
+  function commitBrandDimensionUnit(brand: string, id: string, unit: DimensionValue['unit']) {
+    const current = brandTokenFor(brand, id)
+    if (!current || !isDimensionValue(current.rawValue)) return
+    const draftText = brandValueDraftText[id]
+    const draftNumber = draftText !== undefined ? Number(draftText) : NaN
+    const value = draftText !== undefined && !Number.isNaN(draftNumber) ? draftNumber : current.rawValue.value
+    const converted = convertDimensionUnit({ value, unit: current.rawValue.unit }, unit)
+    upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue: converted, referenceTarget: null })
+    setBrandValueDraftText(prev => {
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
+  // Brand-scoped mirror of commitShadowValue — see its comment.
+  function commitBrandShadowValue(brand: string, id: string, rawValue: unknown) {
+    const current = brandTokenFor(brand, id)
+    if (!current) return
+    upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue, referenceTarget: null })
+  }
+
   function handleBrandAlphaChange(_brand: string, id: string, text: string) {
     setBrandAlphaDraftText(prev => ({ ...prev, [id]: text }))
   }
@@ -2756,6 +3553,9 @@ export function TokenEditor({
     onValueChange: handleValueInput,
     onValueBlur: commitValue,
     onColorPick: commitValueText,
+    onLiteralValueSelect: commitValueText,
+    onDimensionUnitChange: commitDimensionUnit,
+    onShadowChange: commitShadowValue,
     onAlphaChange: handleAlphaChange,
     onAlphaBlur: commitAlpha,
     onReferenceChange: handleReferenceChange,
@@ -2769,6 +3569,8 @@ export function TokenEditor({
     onBrandValueChange: handleBrandValueInput,
     onBrandValueBlur: commitBrandValue,
     onBrandColorPick: commitBrandValueText,
+    onBrandDimensionUnitChange: commitBrandDimensionUnit,
+    onBrandShadowChange: commitBrandShadowValue,
     onBrandAlphaChange: handleBrandAlphaChange,
     onBrandAlphaBlur: commitBrandAlpha,
     onBrandReferenceChange: handleBrandReferenceChange,
@@ -3330,6 +4132,9 @@ export function TokenEditor({
                     <SelectItem value="string">string</SelectItem>
                     <SelectItem value="number">number</SelectItem>
                     <SelectItem value="color">color</SelectItem>
+                    <SelectItem value="fontWeight">fontWeight</SelectItem>
+                    <SelectItem value="fontFamily">fontFamily</SelectItem>
+                    <SelectItem value="dimension">dimension</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -3337,7 +4142,58 @@ export function TokenEditor({
               <div className="space-y-1.5">
                 <Label>Value</Label>
 
-                {draft.type === 'color' ? (
+                {draft.type === 'fontWeight' ? (
+                  <Select
+                    value={draft.value}
+                    onValueChange={value => value !== null && setDraft(prev => ({ ...prev, value }))}
+                  >
+                    <SelectTrigger id="new-token-value" aria-label="Value for new token" className="h-8 w-full">
+                      <SelectValue placeholder="Select a weight" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {FONT_WEIGHT_OPTIONS.map(option => (
+                        <SelectItem key={option.value} value={String(option.value)}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                ) : draft.type === 'dimension' ? (
+                  <div className="flex items-center gap-1.5">
+                    <Input
+                      aria-label="Value for new token"
+                      placeholder="value…"
+                      value={draft.value}
+                      onChange={e => {
+                        setDraft(prev => ({ ...prev, value: e.target.value }))
+                        setDraftMalformed(false)
+                      }}
+                    />
+                    <Select
+                      value={draft.unit}
+                      onValueChange={unit => {
+                        if (unit !== 'px' && unit !== 'rem') return
+                        setDraft(prev => {
+                          const n = Number(prev.value)
+                          if (Number.isNaN(n)) return { ...prev, unit }
+                          const converted = convertDimensionUnit({ value: n, unit: prev.unit }, unit)
+                          return { ...prev, value: String(converted.value), unit: converted.unit }
+                        })
+                      }}
+                    >
+                      <SelectTrigger aria-label="Unit for new token" className="h-8 w-18 shrink-0">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {DIMENSION_UNIT_OPTIONS.map(option => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                ) : draft.type === 'color' ? (
                   <Popover
                     open={openPopoverId === 'draft'}
                     onOpenChange={open => setOpenPopoverId(open ? 'draft' : null)}
@@ -3535,12 +4391,14 @@ export function TokenEditor({
                           mode: editMode(),
                           value: editDraft.value,
                           alpha: editDraft.alpha,
+                          unit: editDraft.unit,
                           referenceTarget: editDraft.referenceTarget,
                           malformed: editDraft.malformed,
                           onModeChange: setEditMode,
                           onValueChange: text =>
                             setEditDraft(prev => (prev ? { ...prev, value: text, malformed: false } : prev)),
                           onAlphaChange: percent => setEditDraft(prev => (prev ? { ...prev, alpha: percent } : prev)),
+                          onUnitChange: unit => setEditDraft(prev => (prev ? { ...prev, unit } : prev)),
                           onReferenceChange: text =>
                             setEditDraft(prev => (prev ? { ...prev, referenceTarget: text } : prev)),
                         })}
@@ -3582,6 +4440,7 @@ export function TokenEditor({
                                     mode: editBrandMode(brand),
                                     value: brandDraft.value,
                                     alpha: brandDraft.alpha,
+                                    unit: brandDraft.unit,
                                     referenceTarget: brandDraft.referenceTarget,
                                     malformed: brandDraft.malformed,
                                     onModeChange: mode => setEditBrandMode(brand, mode),
@@ -3606,6 +4465,15 @@ export function TokenEditor({
                                                 ...prev.brands,
                                                 [brand]: { ...prev.brands[brand], alpha: percent },
                                               },
+                                            }
+                                          : prev,
+                                      ),
+                                    onUnitChange: unit =>
+                                      setEditDraft(prev =>
+                                        prev
+                                          ? {
+                                              ...prev,
+                                              brands: { ...prev.brands, [brand]: { ...prev.brands[brand], unit } },
                                             }
                                           : prev,
                                       ),

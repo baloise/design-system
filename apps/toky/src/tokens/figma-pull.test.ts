@@ -264,7 +264,11 @@ describe('buildBasePullPlan', () => {
   })
 
   it('is a no-op when the matched variable is unchanged', () => {
-    const v = variable({ id: white.figmaId!, name: 'x', valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } } })
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } },
+    })
     const plan = buildBasePullPlan({
       original: [white],
       working: [working(white)],
@@ -277,7 +281,7 @@ describe('buildBasePullPlan', () => {
 
   it('is a no-op when floating point drift keeps the color within hex tolerance', () => {
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 0.9999999, a: 1 } },
     })
@@ -292,7 +296,7 @@ describe('buildBasePullPlan', () => {
 
   it('proposes a clean update when Figma changed and working matches original', () => {
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
     })
@@ -307,10 +311,208 @@ describe('buildBasePullPlan', () => {
     expect(plan.conflicts).toHaveLength(0)
   })
 
+  it('does not perpetually flag a matched fontWeight token as changed when Figma holds its own current keyword', () => {
+    // Regression: deriveValue used to guess $type purely from Figma's
+    // resolvedType (STRING -> 'string'), which never matched the local
+    // token's 'fontWeight' — so this would show as a false-positive update
+    // on every single pull, forever, even with nothing actually changed.
+    const bold = token({
+      path: ['🌐 Global', '🔤 Font', 'Weight', '700'],
+      type: 'fontWeight',
+      rawValue: 700,
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: bold.figmaId as string,
+      name: 'x',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: 'Bold' },
+    })
+    const plan = buildBasePullPlan({
+      original: [bold],
+      working: [working(bold)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.conflicts).toHaveLength(0)
+  })
+
+  it("converts a matched fontWeight token's new Figma keyword back to its DTCG number on update", () => {
+    const light = token({
+      path: ['🌐 Global', '🔤 Font', 'Weight', '300'],
+      type: 'fontWeight',
+      rawValue: 300,
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: light.figmaId as string,
+      name: 'x',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: 'Bold' },
+    })
+    const plan = buildBasePullPlan({
+      original: [light],
+      working: [working(light)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('fontWeight')
+    expect(plan.updates[0].rawValue).toBe(700)
+  })
+
+  it('skips a matched fontWeight variable whose Figma value is not a known DTCG keyword', () => {
+    const bold = token({
+      path: ['🌐 Global', '🔤 Font', 'Weight', '700'],
+      type: 'fontWeight',
+      rawValue: 700,
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: bold.figmaId as string,
+      name: 'x',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: 'SemiBold' },
+    })
+    const plan = buildBasePullPlan({
+      original: [bold],
+      working: [working(bold)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(1)
+    expect(plan.skipped[0].reason).toMatch(/doesn't match a known DTCG keyword/)
+  })
+
+  it('does not perpetually flag a matched fontFamily token as changed when Figma holds its current primary font', () => {
+    // Same regression shape as fontWeight above: deriveValue must trust the
+    // matched token's own $type instead of guessing 'string' from Figma's
+    // STRING resolvedType.
+    const heading = token({
+      path: ['🌐 Global', '🔤 Font', 'Family', 'Heading'],
+      type: 'fontFamily',
+      rawValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: heading.figmaId as string,
+      name: 'x',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: 'BaloiseCreateHeadline' },
+    })
+    const plan = buildBasePullPlan({
+      original: [heading],
+      working: [working(heading)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.conflicts).toHaveLength(0)
+  })
+
+  it("replaces only index 0 of a matched fontFamily token's array, preserving the rest of the fallback stack", () => {
+    const heading = token({
+      path: ['🌐 Global', '🔤 Font', 'Family', 'Heading'],
+      type: 'fontFamily',
+      rawValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: heading.figmaId as string,
+      name: 'x',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: 'Roboto' },
+    })
+    const plan = buildBasePullPlan({
+      original: [heading],
+      working: [working(heading)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('fontFamily')
+    expect(plan.updates[0].rawValue).toEqual(['Roboto', 'Arial', 'sans-serif'])
+  })
+
+  it('does not perpetually flag a matched rem-unit dimension token as changed when Figma holds the equivalent px', () => {
+    // Same regression shape as fontWeight/fontFamily above: deriveValue must
+    // trust the matched token's own $type instead of guessing 'number' from
+    // Figma's FLOAT resolvedType.
+    const space24 = token({
+      path: ['🌐 Global', '📏 Size', 'Space', '24'],
+      type: 'dimension',
+      rawValue: { value: 1.5, unit: 'rem' },
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: space24.figmaId as string,
+      name: 'x',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 24 },
+    })
+    const plan = buildBasePullPlan({
+      original: [space24],
+      working: [working(space24)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.conflicts).toHaveLength(0)
+  })
+
+  it("converts a matched rem-unit dimension token's new Figma px value back to rem on update", () => {
+    const space24 = token({
+      path: ['🌐 Global', '📏 Size', 'Space', '24'],
+      type: 'dimension',
+      rawValue: { value: 1.5, unit: 'rem' },
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: space24.figmaId as string,
+      name: 'x',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 40 },
+    })
+    const plan = buildBasePullPlan({
+      original: [space24],
+      working: [working(space24)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('dimension')
+    expect(plan.updates[0].rawValue).toEqual({ value: 2.5, unit: 'rem' })
+  })
+
+  it('passes a matched px-unit dimension token through unconverted', () => {
+    const breakpoint = token({
+      path: ['🌐 Global', '📏 Size', 'Breakpoint', '1'],
+      type: 'dimension',
+      rawValue: { value: 769, unit: 'px' },
+      figmaId: 'VariableID:9',
+    })
+    const v = variable({
+      id: breakpoint.figmaId as string,
+      name: 'x',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 800 },
+    })
+    const plan = buildBasePullPlan({
+      original: [breakpoint],
+      working: [working(breakpoint)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toEqual({ value: 800, unit: 'px' })
+  })
+
   it('proposes an update for a changed alias', () => {
     const black = token({ path: ['🌐 Global', '🌈 Color', 'Black'], figmaId: 'VariableID:2' })
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: 'VariableID:2' } },
     })
@@ -330,7 +532,7 @@ describe('buildBasePullPlan', () => {
       rawValue: { colorSpace: 'srgb', components: [0.5, 0.5, 0.5], alpha: 1, hex: '#808080' },
     }
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
     })
@@ -348,7 +550,7 @@ describe('buildBasePullPlan', () => {
   it('is a no-op (not a conflict) when the manual edit already matches Figma', () => {
     const editedWhite = { ...white, rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' } }
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
     })
@@ -379,6 +581,174 @@ describe('buildBasePullPlan', () => {
   })
 })
 
+describe('buildBasePullPlan — shadow', () => {
+  const shadowFigmaId = {
+    offsetX: 'VariableID:shadow:offsetX',
+    offsetY: 'VariableID:shadow:offsetY',
+    blur: 'VariableID:shadow:blur',
+    spread: 'VariableID:shadow:spread',
+    color: 'VariableID:shadow:color',
+  }
+
+  const shadow = token({
+    path: ['🌐 Global', '🌑 Shadow', 'Elevation1'],
+    type: 'shadow',
+    figmaId: shadowFigmaId,
+    rawValue: {
+      offsetX: { value: 0, unit: 'rem' },
+      offsetY: { value: 0.125, unit: 'rem' }, // 2px
+      blur: { value: 0.3125, unit: 'rem' }, // 5px
+      spread: { value: 0.0625, unit: 'rem' }, // 1px
+      color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.12, hex: '#000000' },
+    },
+  })
+
+  function shadowVariables(overrides?: {
+    offsetX?: number
+    offsetY?: number
+    blur?: number
+    spread?: number
+    color?: { r: number; g: number; b: number; a: number }
+  }): FigmaVariable[] {
+    const px = { offsetX: 0, offsetY: 2, blur: 5, spread: 1, ...overrides }
+    const color = overrides?.color ?? { r: 0, g: 0, b: 0, a: 0.12 }
+    return [
+      variable({
+        id: shadowFigmaId.offsetX,
+        name: 'x/offsetX',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: px.offsetX },
+      }),
+      variable({
+        id: shadowFigmaId.offsetY,
+        name: 'x/offsetY',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: px.offsetY },
+      }),
+      variable({
+        id: shadowFigmaId.blur,
+        name: 'x/blur',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: px.blur },
+      }),
+      variable({
+        id: shadowFigmaId.spread,
+        name: 'x/spread',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: px.spread },
+      }),
+      variable({
+        id: shadowFigmaId.color,
+        name: 'x/color',
+        resolvedType: 'COLOR',
+        valuesByMode: { [BASE_MODE]: color },
+      }),
+    ]
+  }
+
+  it('is a no-op when all 5 sub-variables still match the local shadow value', () => {
+    const plan = buildBasePullPlan({
+      original: [shadow],
+      working: [working(shadow)],
+      figmaMeta: meta(shadowVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(0)
+  })
+
+  it('proposes one merged update when a single sub-property changed', () => {
+    const plan = buildBasePullPlan({
+      original: [shadow],
+      working: [working(shadow)],
+      figmaMeta: meta(shadowVariables({ blur: 10 })), // 10px = 0.625rem, was 5px
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('shadow')
+    expect(plan.updates[0].rawValue).toMatchObject({
+      offsetX: { value: 0, unit: 'rem' },
+      offsetY: { value: 0.125, unit: 'rem' },
+      blur: { value: 0.625, unit: 'rem' },
+      spread: { value: 0.0625, unit: 'rem' },
+    })
+  })
+
+  it('does not half-apply an incomplete match — a missing sub-variable proposes a delete, not a partial update', () => {
+    const incomplete = shadowVariables().filter(v => v.id !== shadowFigmaId.spread)
+    const plan = buildBasePullPlan({
+      original: [shadow],
+      working: [working(shadow)],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(1)
+    expect(plan.deletes[0].path).toEqual(shadow.path)
+  })
+
+  it('does not propose deleting a shadow already removed from working', () => {
+    const incomplete = shadowVariables().filter(v => v.id !== shadowFigmaId.spread)
+    const plan = buildBasePullPlan({
+      original: [shadow],
+      working: [],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.deletes).toHaveLength(0)
+  })
+
+  it('resolves a shadow whose 5 sub-values all alias another shadow token’s matching sub-properties', () => {
+    const target = token({
+      path: ['🌐 Global', '🌑 Shadow', 'Elevation2'],
+      type: 'shadow',
+      figmaId: {
+        offsetX: 'VariableID:target:offsetX',
+        offsetY: 'VariableID:target:offsetY',
+        blur: 'VariableID:target:blur',
+        spread: 'VariableID:target:spread',
+        color: 'VariableID:target:color',
+      },
+      rawValue: {
+        offsetX: { value: 0, unit: 'rem' },
+        offsetY: { value: 0, unit: 'rem' },
+        blur: { value: 0, unit: 'rem' },
+        spread: { value: 0, unit: 'rem' },
+        color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+      },
+    })
+    const targetVariables = SHADOW_SUB_PROPERTIES_FOR_TEST.map(sub =>
+      variable({
+        id: (target.figmaId as Record<string, string>)[sub],
+        name: `target/${sub}`,
+        resolvedType: sub === 'color' ? 'COLOR' : 'FLOAT',
+        valuesByMode: { [BASE_MODE]: sub === 'color' ? { r: 0, g: 0, b: 0, a: 1 } : 0 },
+      }),
+    )
+    const aliasingVariables = SHADOW_SUB_PROPERTIES_FOR_TEST.map(sub =>
+      variable({
+        id: shadowFigmaId[sub as keyof typeof shadowFigmaId],
+        name: `x/${sub}`,
+        resolvedType: sub === 'color' ? 'COLOR' : 'FLOAT',
+        valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: (target.figmaId as Record<string, string>)[sub] } },
+      }),
+    )
+    const plan = buildBasePullPlan({
+      original: [shadow, target],
+      working: [working(shadow), working(target)],
+      figmaMeta: meta([...targetVariables, ...aliasingVariables]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(shadow.path)
+    expect(plan.updates[0].referenceTarget).toBe('🌐 Global.🌑 Shadow.Elevation2')
+  })
+})
+
+const SHADOW_SUB_PROPERTIES_FOR_TEST = ['offsetX', 'offsetY', 'blur', 'spread', 'color'] as const
+
 describe('buildBrandPullPlan', () => {
   it('never creates a brand override for a variable with no matching Base token', () => {
     const v = variable({
@@ -398,7 +768,7 @@ describe('buildBrandPullPlan', () => {
 
   it('proposes a new override when the brand mode diverges from the inherited Base value', () => {
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [TCS_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
     })
@@ -418,7 +788,7 @@ describe('buildBrandPullPlan', () => {
       rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
     })
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [TCS_MODE]: { r: 1, g: 1, b: 1, a: 1 } }, // back to white, same as Base
     })
@@ -430,6 +800,36 @@ describe('buildBrandPullPlan', () => {
       brandModeId: TCS_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
+  })
+
+  it("merges a fontFamily update against the brand's own override array, not Base's", () => {
+    const baseHeading = token({
+      path: ['🌐 Global', '🔤 Font', 'Family', 'Heading'],
+      type: 'fontFamily',
+      rawValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+      figmaId: 'VariableID:9',
+    })
+    const override = token({
+      path: baseHeading.path,
+      type: 'fontFamily',
+      rawValue: ['TcsHeadline', 'Helvetica', 'sans-serif'],
+    })
+    const v = variable({
+      id: baseHeading.figmaId as string,
+      name: 'x',
+      resolvedType: 'STRING',
+      valuesByMode: { [TCS_MODE]: 'Roboto' },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal: [baseHeading],
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      figmaMeta: meta([v], ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    // Helvetica/sans-serif (the override's own fallback tail) survive — not Arial/sans-serif from Base.
+    expect(plan.updates[0].rawValue).toEqual(['Roboto', 'Helvetica', 'sans-serif'])
   })
 
   it('cleans up a dangling override when the underlying Base variable is removed', () => {
@@ -451,7 +851,7 @@ describe('buildBrandPullPlan', () => {
 describe('buildFigmaPullPlan', () => {
   it('combines a Base plan with per-brand plans', () => {
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 }, [TCS_MODE]: { r: 1, g: 0, b: 0, a: 1 } },
     })
@@ -471,7 +871,7 @@ describe('buildFigmaPullPlan', () => {
 describe('allPullEntryKeys / filterPlanBySelection', () => {
   it('collects one key per create/update/delete across base and brands, scoped separately', () => {
     const v = variable({
-      id: white.figmaId!,
+      id: white.figmaId as string,
       name: 'x',
       valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 }, [TCS_MODE]: { r: 1, g: 0, b: 0, a: 1 } },
     })
