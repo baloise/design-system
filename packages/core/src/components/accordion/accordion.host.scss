@@ -183,8 +183,7 @@
 /**
  * Animation: smooth open/close
  * --------------------------------
- * - Uses ::details-content when supported (modern browsers)
- * - Falls back to animating element siblings after summary
+ * - Animates the `#content` element inside the shadow DOM
  */
 
 :root {
