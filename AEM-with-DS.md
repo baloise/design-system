@@ -173,11 +173,11 @@ dev a fast version switch without paying the same rebuild cost every time. So th
 environment groups use **different delivery mechanisms**, not just different version
 pins:
 
-| Environment      | Delivery mechanism                              | Version control                         |
-| ----------------- | ------------------------------------------------ | ---------------------------------------- |
-| Dev                | Self-hosted CDN, loaded via `<script>`/`<link>`   | Single shared JCR config node, editable directly by developers |
-| Staging            | Maven build bundles the npm package into the clientlib | `package.json` pin — always the release candidate for the next prod deploy |
-| Prod               | Same Maven/clientlib build as staging             | `package.json` pin — promoted from staging via a second, deliberate PR + deploy |
+| Environment | Delivery mechanism                                     | Version control                                                                 |
+| ----------- | ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| Dev         | Self-hosted CDN, loaded via `<script>`/`<link>`        | Single shared JCR config node, editable directly by developers                  |
+| Staging     | Maven build bundles the npm package into the clientlib | `package.json` pin — always the release candidate for the next prod deploy      |
+| Prod        | Same Maven/clientlib build as staging                  | `package.json` pin — promoted from staging via a second, deliberate PR + deploy |
 
 ### Publishing to the self-hosted CDN
 
@@ -206,8 +206,10 @@ whole library) plus a `<link>` for `ds-css`, with the version segment of both UR
 from a single JCR config node (e.g. `/conf/global/settings/ds-version`) at render time:
 
 ```html
-<sly data-sly-use.dsVersion="${'com.helvetia.aem.core.models.DsVersion' @ path='/conf/global/settings/ds-version'}"></sly>
-<link rel="stylesheet" href="https://cdn.helvetia.example/ds/css/${dsVersion.value}/ds.css">
+<sly
+  data-sly-use.dsVersion="${'com.helvetia.aem.core.models.DsVersion' @ path='/conf/global/settings/ds-version'}"
+></sly>
+<link rel="stylesheet" href="https://cdn.helvetia.example/ds/css/${dsVersion.value}/ds.css" />
 <script type="module" src="https://cdn.helvetia.example/ds/core/${dsVersion.value}/ds-core.esm.js"></script>
 ```
 

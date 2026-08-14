@@ -608,6 +608,27 @@ behavioral config. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
 
+### Dynamic-Import-Free Entry Point (`@baloise/ds-core/initialize`)
+
+The bare `@baloise/ds-core` specifier resolves (via `module`/`es2015`) to the
+ESM bundle that also contains Stencil's `bootstrapLazy`/`loadModule` lazy-
+component-loader machinery — dozens of dynamic `import()` calls, one per
+component. Consumers who can't code-split (single-file/IIFE bundler targets)
+and hand-register components individually via `@baloise/ds-core/components/*.js`
+need `initialize`/`initializeDesignSystem` without pulling that in.
+
+`package.json`'s `exports["./initialize"]` maps to the pre-built CJS entry
+(`dist/cjs/index.cjs.js`), which is `require()`-based end-to-end with zero
+dynamic imports:
+
+```ts
+import { initialize } from '@baloise/ds-core/initialize'
+```
+
+`exports` also declares `"."`, `"./components"`, and `"./loader"` explicitly
+(mirroring their `files`-listed directory-index resolution) plus a `"./*"`
+fallback, so adding this map doesn't drop any previously-working deep import.
+
 ## Token Preview Listener
 
 `packages/core/src/global/token-preview.ts` (wired into the `globalScript`, `src/global/global.ts`, so it's bundled into every `www` page — playground.html and every `*.visual.html`) listens for `postMessage` from an embedding parent window and applies token changes live via `document.documentElement.style.setProperty`/`removeProperty`. It is a no-op unless the page is actually embedded in an iframe (`window.parent !== window`), so it never activates during normal component consumption or Playwright visual-regression runs. No origin allowlist yet — MVP is localhost-only (toky ↔ core dev-server); see [`docs/plans/toky-live-token-preview-plan.md`](../../docs/plans/toky-live-token-preview-plan.md) for the message contract and the deferred "deployed / other DS websites" phase where real origin validation is planned.

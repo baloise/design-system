@@ -269,6 +269,17 @@ Add the `ds-app` to your root element.
 </html>
 ```
 
+<InfoQuote>
+**TIP**
+
+If your bundler can't code-split (e.g. a single-file/IIFE build) and you're hand-registering
+components individually via `@baloise/ds-core/components/*.js`, import `initialize`/
+`initializeDesignSystem` from `@baloise/ds-core/initialize` instead of the bare
+`@baloise/ds-core` specifier — it's a dynamic-import-free entry point that doesn't pull in
+Stencil's lazy-component loader for every component.
+
+</InfoQuote>
+
 ### CDN
 
 As part of Helvetia Design System, (Content Delivery Network) [CDN](https://www.jsdelivr.com/) (Content Delivery Network) is included.
