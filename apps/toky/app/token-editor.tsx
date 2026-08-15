@@ -22,6 +22,7 @@ import {
   PlusIcon,
   Redo2Icon,
   SearchIcon,
+  SquareDashedIcon,
   SwatchBookIcon,
   ToggleLeftIcon,
   Trash2Icon,
@@ -60,7 +61,14 @@ import { allPullEntryKeys, buildFigmaPullPlan, filterPlanBySelection } from '@/s
 import type { FigmaPullResult, PullConflict, PulledEntry, PullPlan } from '@/src/tokens/figma-pull'
 import { FigmaPullSidebar } from './figma-pull-sidebar'
 import { FigmaIcon } from '@/components/icons/figma-icon'
-import { getColorAlpha, getColorHex, hexToColorValue, toSlashPath, withAlphaPercent } from '@/src/tokens/format'
+import {
+  formatValue,
+  getColorAlpha,
+  getColorHex,
+  hexToColorValue,
+  toSlashPath,
+  withAlphaPercent,
+} from '@/src/tokens/format'
 import { parseTokenPath, resolveGroupSegments, sanitizePathInput } from '@/src/tokens/path'
 import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
@@ -682,6 +690,111 @@ function ShadowEditor({
   )
 }
 
+// A border composite token's `$value` — `color`/`width`/`style` are each a `{reference}` string
+// in the raw authored form (docs/plans/border-token-type-plan.md decision 4), never inline
+// literals, unlike shadow's sub-values. `BorderEditor` below displays the *resolved* literal
+// (`token.resolvedValue`, reference-chased by flatten.ts's resolveReferences) so
+// ShadowDimensionField/ShadowColorField have something they know how to render, but writes a
+// literal back for whichever field the user actually edits — editing color/width here detaches
+// that one field from its primitive, same "editing breaks the alias" behavior as every other
+// reference cell in this table. `style` is the exception: its `<Select>` always knows exactly
+// which `Style.*` alias a keyword maps to, so it always writes back a fresh reference, never a
+// literal — the one sub-value decision 4 requires to always stay a reference.
+interface BorderValue {
+  color: unknown
+  width: unknown
+  style: unknown
+}
+
+function isBorderValue(value: unknown): value is BorderValue {
+  if (typeof value !== 'object' || value === null) return false
+  const v = value as Record<string, unknown>
+  return 'color' in v && 'width' in v && 'style' in v
+}
+
+const BORDER_STYLE_KEYWORDS = ['None', 'Solid', 'Dashed', 'Dotted', 'Double', 'Groove', 'Ridge', 'Inset', 'Outset']
+
+function borderStyleReference(keyword: string): string {
+  return `{🔗 Alias.▭ Border.Style.${keyword}}`
+}
+
+function borderSummaryText(resolvedValue: unknown): string {
+  if (!isBorderValue(resolvedValue)) return '—'
+  const width = isDimensionValue(resolvedValue.width) ? `${resolvedValue.width.value}${resolvedValue.width.unit}` : '?'
+  const style = typeof resolvedValue.style === 'string' ? resolvedValue.style : '?'
+  return `${width} ${style}`
+}
+
+// Short human-readable summary of a token's fully-resolved value — used
+// wherever a reference picker lists candidate targets, so each row shows
+// what picking it would actually resolve to (e.g. "1.5rem", "#F05D4D"),
+// not just the target's path. Falls back to the shared color/number/string
+// formatter for anything not one of these known shapes.
+function referenceValueSummary(type: string, resolvedValue: unknown): string {
+  if (type === 'border') return borderSummaryText(resolvedValue)
+  if (isDimensionValue(resolvedValue)) return `${resolvedValue.value}${resolvedValue.unit}`
+  if (Array.isArray(resolvedValue)) return resolvedValue.map(v => formatValue(v)).join(', ')
+  return formatValue(resolvedValue)
+}
+
+function BorderEditor({
+  idPrefix,
+  rawValue,
+  resolvedValue,
+  onChange,
+}: {
+  idPrefix: string
+  rawValue: unknown
+  resolvedValue: unknown
+  onChange: (next: unknown) => void
+}): ReactNode {
+  const base: BorderValue = isBorderValue(rawValue)
+    ? rawValue
+    : { color: undefined, width: undefined, style: undefined }
+  const resolved: BorderValue = isBorderValue(resolvedValue)
+    ? resolvedValue
+    : { color: undefined, width: undefined, style: undefined }
+  const width: DimensionValue = isDimensionValue(resolved.width) ? resolved.width : { value: 0, unit: 'rem' }
+  const styleKeyword = typeof resolved.style === 'string' ? resolved.style : ''
+  const selectedStyle = BORDER_STYLE_KEYWORDS.find(k => k.toLowerCase() === styleKeyword) ?? ''
+
+  return (
+    <div className="space-y-3">
+      <ShadowDimensionField
+        id={`${idPrefix}-width`}
+        label="Width"
+        dimension={width}
+        onCommit={next => onChange({ ...base, width: next })}
+      />
+      <ShadowColorField
+        idPrefix={`${idPrefix}-color`}
+        color={resolved.color}
+        onCommit={next => onChange({ ...base, color: next })}
+      />
+      <div className="space-y-1">
+        <Label htmlFor={`${idPrefix}-style`} className="text-xs text-muted-foreground">
+          Style
+        </Label>
+        <Select
+          value={selectedStyle}
+          onValueChange={keyword => keyword && onChange({ ...base, style: borderStyleReference(keyword) })}
+        >
+          <SelectTrigger id={`${idPrefix}-style`} aria-label="Style" className="w-full">
+            <SelectValue placeholder="Select a style…" />
+          </SelectTrigger>
+          <SelectContent>
+            {BORDER_STYLE_KEYWORDS.map(keyword => (
+              <SelectItem key={keyword} value={keyword}>
+                {keyword}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  )
+}
+
 // The small unlink control that appears right after an alias tag on
 // hover/focus — breaks the reference and leaves the cell with an empty
 // value, mirroring Figma's "detach alias" affordance. Styled like every
@@ -701,6 +814,7 @@ const TOKEN_TYPE_ICON: Record<string, typeof PaletteIcon> = {
   fontFamily: TypeIcon,
   dimension: HashIcon,
   shadow: LayersIcon,
+  border: SquareDashedIcon,
 }
 
 // Opaque (100%) is the sensible default for anything that isn't yet a real
@@ -796,6 +910,7 @@ interface TokenRowHandlers {
   onLiteralValueSelect: (id: string, type: string, text: string) => void
   onDimensionUnitChange: (id: string, unit: 'px' | 'rem') => void
   onShadowChange: (id: string, rawValue: unknown) => void
+  onBorderChange: (id: string, rawValue: unknown) => void
   onAlphaChange: (id: string, text: string) => void
   onAlphaBlur: (id: string) => void
   onReferenceChange: (id: string, text: string) => void
@@ -1108,6 +1223,34 @@ const TokenRow = memo(function TokenRow({
                   renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
                     handlers.onReferenceChange(id, ''),
                   )}
+              </div>
+            ) : token.type === 'border' ? (
+              // Global-only — a border composite token's brand-override cell isn't implemented in
+              // this pass (docs/plans/border-token-type-plan.md decisions 8/11 scope the pilot to
+              // Global, so there's nothing at brand level to edit yet).
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    render={
+                      <button
+                        type="button"
+                        aria-label={`Value for ${token.name || 'token'}`}
+                        className={CELL_TRIGGER_CLASS}
+                      />
+                    }
+                  >
+                    <SquareDashedIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                    <span className="w-fit">{borderSummaryText(token.resolvedValue)}</span>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-96">
+                    <BorderEditor
+                      idPrefix={`border-${row}`}
+                      rawValue={token.rawValue}
+                      resolvedValue={token.resolvedValue}
+                      onChange={next => handlers.onBorderChange(id, next)}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             ) : (
               <div className="group/tag flex items-center gap-1">
@@ -1700,6 +1843,7 @@ export function TokenEditor({
   tokenBrands,
   brandTokens,
   syncStatus,
+  localTokensMode = false,
 }: {
   tokens: FlatToken[]
   defaultBranch: string
@@ -1712,6 +1856,10 @@ export function TokenEditor({
   // Rendered at the top of whichever sidebar panel is open — the site header
   // that used to show it is gone (see SidebarPanel/SidebarActivityBar).
   syncStatus: SyncStatus
+  // TOKY_LOCAL_TOKENS escape hatch (see src/tokens/local.ts) — Submit writes
+  // the base diff straight to Base.tokens.json on disk instead of opening a
+  // GitHub PR. Brand staging isn't supported in this mode.
+  localTokensMode?: boolean
 }) {
   const router = useRouter()
   const { data: session } = useSession()
@@ -1779,6 +1927,9 @@ export function TokenEditor({
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
   const [submitMessage, setSubmitMessage] = useState<string | null>(null)
+  // Distinguishes a local-disk save (see localTokensMode) from a real PR
+  // submission — same 'success' state, different message rendering below.
+  const [submitIsLocal, setSubmitIsLocal] = useState(false)
   const [graphRoot, setGraphRoot] = useState<{ paths: string[]; title: string } | null>(null)
   // Set right after Ctrl/Cmd+D inserts a duplicate row — picked up by an effect once
   // the new row has actually rendered (and its cellRef exists) so it can be focused.
@@ -2035,14 +2186,28 @@ export function TokenEditor({
     return map
   }, [working])
 
+  // Resolved-value summary for the reference picker (e.g. "1.5rem", "#F05D4D")
+  // — shown on the right of each candidate row so picking a target doesn't
+  // require guessing what it resolves to from its name alone.
+  const referenceDetailByPath = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const w of working) {
+      if (w.token.name.trim() === '') continue
+      const resolved = w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), referenceValueSummary(w.token.type, resolved))
+    }
+    return map
+  }, [working])
+
   const referenceSearchOptions = useMemo(
     () =>
       referenceOptions.map(option => ({
         value: option,
         label: toSlashPath(option),
         swatch: referenceColorByPath.get(option),
+        detail: referenceDetailByPath.get(option),
       })),
-    [referenceOptions, referenceColorByPath],
+    [referenceOptions, referenceColorByPath, referenceDetailByPath],
   )
 
   const errors = useMemo(() => validateWorkingTokens(working), [working])
@@ -2370,6 +2535,12 @@ export function TokenEditor({
     updateToken(id, t => ({ ...t, rawValue, referenceTarget: null }))
   }
 
+  // Border bypasses valueDraftText/parseEditableValue the same way shadow does — see
+  // commitShadowValue above. BorderEditor already commits a fully-formed rawValue per field.
+  function commitBorderValue(id: string, rawValue: unknown) {
+    updateToken(id, t => ({ ...t, rawValue, referenceTarget: null }))
+  }
+
   // Keystrokes only update the local draft — see commitAlpha, called on
   // blur. Mirrors handleValueInput/commitValue for the same reason: without
   // this, every keystroke in the opacity field would run a full
@@ -2637,7 +2808,7 @@ export function TokenEditor({
     // falls back to, never something parseEditableValue should write back
     // over the real nested value. Skipping this block leaves parsedValue at
     // current.rawValue, untouched.
-    if (mode === 'value' && type !== 'shadow') {
+    if (mode === 'value' && type !== 'shadow' && type !== 'border') {
       // For dimension, the dialog's own unit Select (editDraft.unit) is the source of truth, not
       // current.rawValue's unit — the two can disagree if the unit was switched mid-edit without
       // otherwise touching the token yet.
@@ -2662,9 +2833,11 @@ export function TokenEditor({
         continue
       }
 
-      // Same reasoning as the base value above — shadow isn't editable here, leave this brand
-      // untouched rather than writing back the display-only fallback text.
-      if (type === 'shadow') continue
+      // Same reasoning as the base value above — shadow/border aren't editable here, leave this
+      // brand untouched rather than writing back the display-only fallback text. Border has no
+      // brand cell at all this pass (decisions 8/11), but this loop only reaches other brands'
+      // drafts, never this token's own — harmless either way.
+      if (type === 'shadow' || type === 'border') continue
 
       const brandPrevious = type === 'dimension' ? { value: 0, unit: brandDraft.unit } : baseForBrand.rawValue
       const parsed = parseEditableValue(type, brandDraft.value, brandPrevious)
@@ -3195,6 +3368,11 @@ export function TokenEditor({
       return <p className="text-sm text-muted-foreground">Edit this shadow from its Value cell in the table.</p>
     }
 
+    if (type === 'border') {
+      // Same reasoning as shadow above — no plain-text representation worth round-tripping.
+      return <p className="text-sm text-muted-foreground">Edit this border from its Value cell in the table.</p>
+    }
+
     return (
       <div className="space-y-2">
         <div className="flex items-center gap-1.5">
@@ -3556,6 +3734,7 @@ export function TokenEditor({
     onLiteralValueSelect: commitValueText,
     onDimensionUnitChange: commitDimensionUnit,
     onShadowChange: commitShadowValue,
+    onBorderChange: commitBorderValue,
     onAlphaChange: handleAlphaChange,
     onAlphaBlur: commitAlpha,
     onReferenceChange: handleReferenceChange,
@@ -3800,13 +3979,15 @@ export function TokenEditor({
 
       if (response.status === 200) {
         setSubmitState('success')
-        setSubmitMessage(json.url)
+        setSubmitIsLocal(Boolean(json.local))
+        setSubmitMessage(json.local ? 'Saved to Base.tokens.json.' : json.url)
         setDescription('')
         setPendingBrands([])
         // The submit just created/updated the branch (and its PR) this base
         // now reads from — re-run the server component so the header's sync
         // status tag, PR link, the token list, and the brand list all pick
-        // that up without a manual reload.
+        // that up without a manual reload. Local writes also need this: it's
+        // the only way the freshly-written file content gets re-read.
         pendingResyncRef.current = true
         router.refresh()
       } else if (response.status === 409) {
@@ -3822,8 +4003,12 @@ export function TokenEditor({
     }
   }
 
+  // Local-disk saves (see localTokensMode) only write Base.tokens.json — no
+  // branch, no PR — so brand creation/overrides can't go through this button
+  // while local mode is on; the server would reject them anyway.
   const canSubmit =
     (diff.length > 0 || pendingBrands.length > 0 || totalBrandDiffCount > 0) &&
+    (!localTokensMode || (pendingBrands.length === 0 && totalBrandDiffCount === 0)) &&
     blockingErrors.length === 0 &&
     pullConflicts.length === 0 &&
     targetBranch.trim() !== '' &&
@@ -4701,6 +4886,8 @@ export function TokenEditor({
           canSubmit={canSubmit}
           submitState={submitState}
           submitMessage={submitMessage}
+          submitIsLocal={submitIsLocal}
+          localTokensMode={localTokensMode}
           onSubmit={handleSubmit}
         />
       )}

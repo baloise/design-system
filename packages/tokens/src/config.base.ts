@@ -26,7 +26,6 @@ const config: Config = {
         'fontFamily/css',
         'cubicBezier/css',
         'strokeStyle/css/shorthand',
-        'border/css/shorthand',
         'typography/css/shorthand',
         'transition/css/shorthand',
         'ds/css/name',
@@ -35,6 +34,7 @@ const config: Config = {
         'ds/size/rem',
         'ds/font-weight',
         'ds/shadow',
+        'ds/border',
       ],
       basePxFontSize,
       buildPath: 'dist/',
@@ -63,7 +63,6 @@ const config: Config = {
         'fontFamily/css',
         'cubicBezier/css',
         'strokeStyle/css/shorthand',
-        'border/css/shorthand',
         'typography/css/shorthand',
         'transition/css/shorthand',
         'ds/css/name',
@@ -72,6 +71,7 @@ const config: Config = {
         'ds/size/rem',
         'ds/font-weight',
         'ds/shadow',
+        'ds/border',
       ],
       basePxFontSize,
       buildPath: 'dist/',
@@ -94,6 +94,15 @@ const config: Config = {
       // other members, kept verbatim so nothing else about this platform's output changes;
       // 'size/px' is dropped in favor of our own 'ds/dimension', which correctly preserves
       // whichever unit the $value carries.
+      //
+      // The built-in 'size/rem' is added (harmlessly redundant with 'ds/dimension' for every
+      // standalone dimension token, since it already preserves an explicitly-provided unit the
+      // same way) because a border composite token's 'width' sub-value is a *reference* to a
+      // separate dimension token (see docs/plans/border-token-type-plan.md decision 4) — Style
+      // Dictionary only resolves that reference to its referenced token's already-transformed
+      // value when a transform *named* 'size/rem'/'color/css' is present, not an arbitrary
+      // custom-named dimension transform. Without it, 'ds/border' would see a null width for
+      // every Composite.* token on this platform.
       transforms: [
         'attribute/cti',
         'name/kebab',
@@ -103,8 +112,10 @@ const config: Config = {
         'ds/size/rem',
         'ds/font-weight',
         'ds/font-family',
+        'size/rem',
         'ds/dimension',
         'ds/shadow',
+        'ds/border',
       ],
       prefix: 'ds',
       buildPath: 'dist/',
@@ -129,8 +140,10 @@ const config: Config = {
         'ds/size/rem',
         'ds/font-weight',
         'ds/font-family',
+        'size/rem',
         'ds/dimension',
         'ds/shadow',
+        'ds/border',
       ],
       prefix: 'ds',
       buildPath: 'dist/',
@@ -146,7 +159,15 @@ const config: Config = {
     },
     javascript: {
       transformGroup: 'js',
-      transforms: ['ds/js/name', 'ds/color/hex', 'ds/size/round', 'ds/font-weight', 'ds/font-family', 'ds/shadow'],
+      transforms: [
+        'ds/js/name',
+        'ds/color/hex',
+        'ds/size/round',
+        'ds/font-weight',
+        'ds/font-family',
+        'ds/shadow',
+        'ds/border',
+      ],
       prefix: 'ds',
       buildPath: 'dist/',
       files: [

@@ -396,6 +396,174 @@
           "$type": "dimension",
           "$value": "{🌐 Global.📏 Size.Border.3}"
         }
+      },
+      "Style": {
+        "None": {
+          "$type": "string",
+          "$value": "none"
+        },
+        "Solid": {
+          "$type": "string",
+          "$value": "solid"
+        },
+        "Dashed": {
+          "$type": "string",
+          "$value": "dashed"
+        },
+        "Dotted": {
+          "$type": "string",
+          "$value": "dotted"
+        },
+        "Double": {
+          "$type": "string",
+          "$value": "double"
+        },
+        "Groove": {
+          "$type": "string",
+          "$value": "groove"
+        },
+        "Ridge": {
+          "$type": "string",
+          "$value": "ridge"
+        },
+        "Inset": {
+          "$type": "string",
+          "$value": "inset"
+        },
+        "Outset": {
+          "$type": "string",
+          "$value": "outset"
+        }
+      },
+      "Composite": {
+        "Grey": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Grey}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "GreyDashed": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Grey}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Dashed}"
+          }
+        },
+        "GreyDark": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.GreyDark}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "GreyDarkDashed": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.GreyDark}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Dashed}"
+          }
+        },
+        "PrimaryLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.PrimaryLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "Primary": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Primary}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "PrimaryHover": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.PrimaryHover}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "PrimaryActive": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.PrimaryActive}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "GreyLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.GreyLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "Warning": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Warning}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "Success": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Success}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "Danger": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Danger}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "DangerHover": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.DangerHover}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "DangerActive": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.DangerActive}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "White": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.White}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "Disabled": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Disabled}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        }
       }
     },
     "📐 Breakpoint": {
@@ -7260,13 +7428,6 @@
           "$type": "dimension",
           "$value": {
             "value": 0,
-            "unit": "rem"
-          }
-        },
-        "1": {
-          "$type": "dimension",
-          "$value": {
-            "value": 0.0625,
             "unit": "rem"
           }
         },

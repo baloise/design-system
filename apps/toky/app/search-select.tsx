@@ -13,6 +13,9 @@ export interface SearchSelectOption {
   // Present only when the option has a color worth previewing (e.g. a color-typed reference
   // target) - absence means "not applicable", not "color unknown".
   swatch?: string
+  // Short resolved-value summary shown right-aligned on the row (e.g. "1.5rem", "#F05D4D") -
+  // absence means "no summary available", not "empty value".
+  detail?: string
 }
 
 // A search field with an always-visible, independently scrollable results list underneath
@@ -130,6 +133,16 @@ export function SearchSelect({
                   />
                 )}
                 <span className="flex-1 truncate">{option.label}</span>
+                {option.detail && (
+                  <span
+                    className={cn(
+                      'shrink-0 truncate text-xs',
+                      isActive ? 'text-primary-foreground/70' : 'text-muted-foreground',
+                    )}
+                  >
+                    {option.detail}
+                  </span>
+                )}
                 {isActive && <CheckIcon className="size-4 shrink-0" />}
               </button>
             )

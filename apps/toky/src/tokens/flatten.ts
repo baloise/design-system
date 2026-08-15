@@ -75,6 +75,61 @@ export function flattenTokenDocument(doc: Record<string, unknown>): FlatToken[] 
   return tokens
 }
 
+/**
+ * Follows a single `{reference}` string (already stripped of braces) through possibly-several
+ * hops of `referenceTarget`-only tokens to the literal `rawValue` it ultimately points at.
+ * Shared by both the top-level whole-`$value` case and `resolveNestedReferences` below — a border
+ * composite token's `color`/`width`/`style` sub-values are each a reference string one level
+ * *inside* `$value`, not the whole-`$value` reference every other type used until now (see
+ * docs/plans/border-token-type-plan.md decision 4), so they need the exact same chain-following,
+ * just starting one level deeper.
+ */
+function resolveChain(
+  startPath: string,
+  byPath: Map<string, FlatToken>,
+): { value: unknown } | { error: 'circular-reference' | 'missing-reference' } {
+  const visited = new Set<string>()
+  let currentPath = startPath
+
+  for (;;) {
+    if (visited.has(currentPath)) return { error: 'circular-reference' }
+    visited.add(currentPath)
+
+    const current = byPath.get(currentPath)
+    if (!current) return { error: 'missing-reference' }
+    if (!current.referenceTarget) return { value: current.rawValue }
+
+    currentPath = current.referenceTarget
+  }
+}
+
+/**
+ * Resolves any `{reference}` string one level inside a composite `$value` object (e.g. a border
+ * token's `color`/`width`/`style`) to its literal value. A no-op for every other type today —
+ * shadow's sub-values are always inline literals, never references — but written generically
+ * rather than border-specific, since nothing else about this function needs to know which
+ * composite type it's looking at. An unresolvable nested reference resolves to `undefined` rather
+ * than failing the whole token — same "best effort, don't block the rest of the value" spirit as
+ * a top-level `missing-reference` surfacing on `resolutionError` instead of throwing.
+ */
+function resolveNestedReferences(value: unknown, byPath: Map<string, FlatToken>): unknown {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) return value
+
+  const result: Record<string, unknown> = {}
+  for (const [key, sub] of Object.entries(value)) {
+    if (typeof sub === 'string') {
+      const match = REFERENCE_PATTERN.exec(sub)
+      if (match) {
+        const resolved = resolveChain(match[1], byPath)
+        result[key] = 'value' in resolved ? resolved.value : undefined
+        continue
+      }
+    }
+    result[key] = sub
+  }
+  return result
+}
+
 export function resolveReferences(tokens: FlatToken[]): FlatToken[] {
   const byPath = new Map<string, FlatToken>()
   for (const token of tokens) {
@@ -83,7 +138,7 @@ export function resolveReferences(tokens: FlatToken[]): FlatToken[] {
 
   return tokens.map(token => {
     if (!token.referenceTarget) {
-      return { ...token, resolvedValue: token.rawValue }
+      return { ...token, resolvedValue: resolveNestedReferences(token.rawValue, byPath) }
     }
 
     const visited = new Set<string>([token.path.join('.')])
@@ -103,7 +158,7 @@ export function resolveReferences(tokens: FlatToken[]): FlatToken[] {
       current = next
     }
 
-    return { ...token, resolvedValue: current.rawValue }
+    return { ...token, resolvedValue: resolveNestedReferences(current.rawValue, byPath) }
   })
 }
 

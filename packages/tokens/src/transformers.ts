@@ -1,6 +1,7 @@
 import StyleDictionary from 'style-dictionary'
 
 import {
+  borderValueToCss,
   colorValueToCss,
   dimensionValueToCss,
   fontFamilyValueToCss,
@@ -141,7 +142,13 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transitive: true,
     name: `ds/dimension`,
     filter: token => token.$type === 'dimension',
-    transform: token => dimensionValueToCss(token.$value ?? token.value),
+    transform: token => {
+      const value = token.$value ?? token.value
+      // Already a string when 'size/rem' ran first (needed on 'web'/'docs' so a border
+      // composite token's referenced Width sub-value resolves correctly — see 'web'/'docs'
+      // platform comment in config.base.ts). Pass through rather than re-parse.
+      return typeof value === 'string' ? value : dimensionValueToCss(value)
+    },
   })
 
   /**
@@ -156,5 +163,19 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     name: `ds/shadow`,
     filter: token => token.$type === 'shadow',
     transform: token => shadowValueToCss(token.$value ?? token.value),
+  })
+
+  /**
+   * Transform border tokens ({color, width, style}) into a CSS-ready border shorthand value. Not
+   * relying on Style Dictionary's own built-in 'border/css/shorthand' — verified it renders each
+   * sub-value as a `var(--ds-*)` reference to its sibling custom property instead of a resolved
+   * literal, diverging from this codebase's convention. See docs/plans/border-token-type-plan.md.
+   */
+  sd.registerTransform({
+    type: `value`,
+    transitive: true,
+    name: `ds/border`,
+    filter: token => token.$type === 'border',
+    transform: token => borderValueToCss(token.$value ?? token.value),
   })
 }

@@ -156,6 +156,37 @@ export const shadowValueToCss = (value: unknown): string | null => {
   return null
 }
 
+interface DtcgBorderValue {
+  color: unknown
+  width: unknown
+  style: unknown
+}
+
+/**
+ * Turns a border token's {color, width, style} into a CSS-ready border shorthand value, e.g.
+ * '0.125rem solid #d8d8d8'. Reuses colorValueToCss/dimensionValueToCss per sub-value rather than
+ * Style Dictionary's own built-in `border/css/shorthand` transform, which renders each sub-value
+ * as a `var(--ds-*)` reference to its sibling custom property instead of a resolved literal —
+ * diverging from this codebase's convention (see shadowValueToCss, and
+ * docs/plans/border-token-type-plan.md decision 6).
+ *
+ * Unlike shadow's sub-values (always inline literals), border's `color`/`width` are references to
+ * separate real `color`/`dimension` tokens. By the time this transform runs in the actual build
+ * (after `color/css`/`size/rem` have processed those referenced tokens), Style Dictionary has
+ * already substituted their *post-transform* string value (e.g. '#d0d0d0', '0.125rem') into this
+ * composite's $value — so color/width may arrive pre-stringified rather than as raw DTCG objects.
+ * Toky's live preview (via resolvedValueToCss), which calls this directly on raw resolved values
+ * with no prior color/dimension transform, still needs the raw-object path.
+ */
+export const borderValueToCss = (value: unknown): string | null => {
+  if (typeof value !== 'object' || value === null) return null
+  const { color, width, style } = value as DtcgBorderValue
+  const cssColor = typeof color === 'string' ? color : colorValueToCss(color)
+  const cssWidth = typeof width === 'string' ? width : dimensionValueToCss(width)
+  if (cssColor === null || cssWidth === null || typeof style !== 'string') return null
+  return `${cssWidth} ${style} ${cssColor}`
+}
+
 /**
  * Turns a resolved DTCG token value into a CSS-ready string, for the live token preview
  * (`apps/toky`) to send as a `--ds-*` custom property value. Mirrors the `ds/color/rgba` /
@@ -183,6 +214,9 @@ export const resolvedValueToCss = (value: unknown, type: string, path: string[])
   }
   if (type === 'shadow') {
     return shadowValueToCss(value)
+  }
+  if (type === 'border') {
+    return borderValueToCss(value)
   }
   if (type === 'string' && typeof value === 'string') {
     return value

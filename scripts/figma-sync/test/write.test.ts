@@ -1,11 +1,19 @@
 import { describe, expect, it } from 'vitest'
+import { buildTokenIndex } from '../lib/alias.mjs'
 import { buildNameIndex, findCollectionAndModes } from '../lib/figma.mjs'
-import { figmaShadowSubValuesFor, figmaValueFor, flattenVariableId, resolvedTypeFor } from '../lib/figma-value.mjs'
+import {
+  figmaBorderSubValuesFor,
+  figmaShadowSubValuesFor,
+  figmaValueFor,
+  flattenVariableId,
+  resolvedTypeFor,
+} from '../lib/figma-value.mjs'
 import {
   assignVariableIds,
   buildAliasPassPayload,
   buildCreatePassPayload,
   collectNewlyCreatedIds,
+  figmaBorderSubVariableName,
   figmaShadowSubVariableName,
   figmaVariableName,
   resolveTempIds,
@@ -133,8 +141,65 @@ describe('flattenVariableId', () => {
     ])
   })
 
+  it('flattens a border variableId object into 3 tagged entries', () => {
+    const id = { color: 'id-c', width: 'id-w', style: 'id-s' }
+    expect(flattenVariableId(id)).toEqual([
+      { id: 'id-c', subProperty: 'color' },
+      { id: 'id-w', subProperty: 'width' },
+      { id: 'id-s', subProperty: 'style' },
+    ])
+  })
+
   it('returns an empty list for a missing/undefined variableId', () => {
     expect(flattenVariableId(undefined)).toEqual([])
+  })
+})
+
+describe('figmaBorderSubValuesFor', () => {
+  // Unlike shadow, a border token's color/width/style are each a {reference} string pointing at
+  // a real primitive token — figmaBorderSubValuesFor needs a tokenIndex to resolve them.
+  const colorToken = {
+    path: ['Alias', 'Border', 'Color', 'Grey'],
+    type: 'color',
+    value: {
+      kind: 'literal',
+      value: { colorSpace: 'srgb', components: [0.816, 0.816, 0.816], alpha: 1, hex: '#D0D0D0' },
+    },
+  }
+  const widthToken = {
+    path: ['Alias', 'Border', 'Width', 'Base'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 0.125, unit: 'rem' } },
+  }
+  const styleToken = {
+    path: ['Alias', 'Border', 'Style', 'Solid'],
+    type: 'string',
+    value: { kind: 'literal', value: 'solid' },
+  }
+  const tokenIndex = buildTokenIndex([colorToken, widthToken, styleToken])
+
+  const borderValue = {
+    color: '{Alias.Border.Color.Grey}',
+    width: '{Alias.Border.Width.Base}',
+    style: '{Alias.Border.Style.Solid}',
+  }
+
+  it('decomposes a border value into 3 Figma-ready sub-values, resolving references and converting width to px', () => {
+    expect(figmaBorderSubValuesFor(borderValue, tokenIndex)).toEqual({
+      color: { r: 0.816, g: 0.816, b: 0.816, a: 1 },
+      width: 2,
+      style: 'solid',
+    })
+  })
+
+  it('returns null for a malformed value (missing sub-value)', () => {
+    expect(figmaBorderSubValuesFor({ color: borderValue.color, width: borderValue.width }, tokenIndex)).toBeNull()
+  })
+
+  it('returns null when style does not resolve to a string', () => {
+    const numericStyleToken = { path: ['Alias', 'Bad'], type: 'number', value: { kind: 'literal', value: 5 } }
+    const badIndex = buildTokenIndex([colorToken, widthToken, numericStyleToken])
+    expect(figmaBorderSubValuesFor({ ...borderValue, style: '{Alias.Bad}' }, badIndex)).toBeNull()
   })
 })
 
@@ -271,6 +336,127 @@ describe('shadow push (two-pass write payload)', () => {
         path: shadowToken.path,
         variableId: { offsetX: 'real-x', offsetY: 'real-y', blur: 'real-b', spread: 'real-s', color: 'real-c' },
       },
+    ])
+  })
+})
+
+describe('border push (two-pass write payload)', () => {
+  const colorPrimitive = {
+    path: ['Alias', 'Border', 'Color', 'Grey'],
+    type: 'color',
+    value: {
+      kind: 'literal',
+      value: { colorSpace: 'srgb', components: [0.816, 0.816, 0.816], alpha: 1, hex: '#D0D0D0' },
+    },
+  }
+  const widthPrimitive = {
+    path: ['Alias', 'Border', 'Width', 'Base'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 0.125, unit: 'rem' } },
+  }
+  const stylePrimitive = {
+    path: ['Alias', 'Border', 'Style', 'Solid'],
+    type: 'string',
+    value: { kind: 'literal', value: 'solid' },
+  }
+  const borderToken = {
+    path: ['Alias', 'Border', 'Composite', 'Grey'],
+    type: 'border',
+    value: {
+      kind: 'literal',
+      value: {
+        color: '{Alias.Border.Color.Grey}',
+        width: '{Alias.Border.Width.Base}',
+        style: '{Alias.Border.Style.Solid}',
+      },
+    },
+  }
+  const borderRefToken = {
+    path: ['Tcs', 'Border', 'Composite', 'Grey'],
+    type: 'border',
+    value: { kind: 'reference', path: ['Alias', 'Border', 'Composite', 'Grey'] },
+  }
+  const borderBaseTokens = [colorPrimitive, widthPrimitive, stylePrimitive, borderToken, borderRefToken]
+
+  it('assigns 3 temp sub-ids to a never-synced border token', () => {
+    const idByPath = assignVariableIds(borderBaseTokens)
+    expect(idByPath.get('Alias.Border.Composite.Grey')).toEqual({
+      color: 'temp-Alias.Border.Composite.Grey-color',
+      width: 'temp-Alias.Border.Composite.Grey-width',
+      style: 'temp-Alias.Border.Composite.Grey-style',
+    })
+  })
+
+  it('pass 1 creates 3 named sub-variables for a temp border token, with the right resolvedType each', () => {
+    const idByPath = assignVariableIds(borderBaseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens: borderBaseTokens,
+      brandTokensByName: { Base: borderBaseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    const borderVariables = variables.filter(v => v.name.startsWith('Alias/Border/Composite/Grey/'))
+    expect(borderVariables.map(v => v.name)).toEqual([
+      'Alias/Border/Composite/Grey/BorderColor',
+      'Alias/Border/Composite/Grey/BorderWidth',
+      'Alias/Border/Composite/Grey/BorderStyle',
+    ])
+    expect(borderVariables.map(v => v.resolvedType)).toEqual(['COLOR', 'FLOAT', 'STRING'])
+    expect(figmaBorderSubVariableName(borderToken.path, 'width')).toBe('Alias/Border/Composite/Grey/BorderWidth')
+  })
+
+  it('pass 1 writes 3 literal mode-values for a border token, resolving its referenced color/width/style', () => {
+    const idByPath = assignVariableIds(borderBaseTokens)
+    const { variableModeValues } = buildCreatePassPayload({
+      baseTokens: borderBaseTokens,
+      brandTokensByName: { Base: borderBaseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
+    expect(byId['temp-Alias.Border.Composite.Grey-color']).toEqual({ r: 0.816, g: 0.816, b: 0.816, a: 1 })
+    expect(byId['temp-Alias.Border.Composite.Grey-width']).toBe(2)
+    expect(byId['temp-Alias.Border.Composite.Grey-style']).toBe('solid')
+  })
+
+  it('pass 2 writes 3 alias mode-values for a border reference, each pointing at the matching sub-property of the target', () => {
+    const idByPath = assignVariableIds(borderBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Alias.Border.Composite.Grey-color': 'real-c',
+      'temp-Alias.Border.Composite.Grey-width': 'real-w',
+      'temp-Alias.Border.Composite.Grey-style': 'real-s',
+      'temp-Tcs.Border.Composite.Grey-color': 'real-alias-c',
+      'temp-Tcs.Border.Composite.Grey-width': 'real-alias-w',
+      'temp-Tcs.Border.Composite.Grey-style': 'real-alias-s',
+    })
+
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: borderBaseTokens,
+      brandTokensByName: { Base: borderBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variableModeValues).toHaveLength(3)
+    const widthAlias = variableModeValues.find(v => v.variableId === 'real-alias-w')
+    expect(widthAlias.value).toEqual({ type: 'VARIABLE_ALIAS', id: 'real-w' })
+  })
+
+  it('collectNewlyCreatedIds returns the whole 3-id object as one entry for a border token', () => {
+    const idByPath = assignVariableIds(borderBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Alias.Border.Composite.Grey-color': 'real-c',
+      'temp-Alias.Border.Composite.Grey-width': 'real-w',
+      'temp-Alias.Border.Composite.Grey-style': 'real-s',
+    })
+
+    const created = collectNewlyCreatedIds([borderToken], idByPath)
+    expect(created).toEqual([
+      { path: borderToken.path, variableId: { color: 'real-c', width: 'real-w', style: 'real-s' } },
     ])
   })
 })

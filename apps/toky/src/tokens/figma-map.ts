@@ -141,6 +141,21 @@ export function isLiteralValueEqual(dtcgType: string, a: unknown, b: unknown): b
       isLiteralValueEqual('dimension', shadowA.spread, shadowB.spread)
     )
   }
+  if (dtcgType === 'border') {
+    // Field-by-field, same reasoning as shadow above. `color`/`width` compare as resolved
+    // literals (color/dimension) — `style` compares as a bare string, since
+    // dtcgBorderFromFigma resolves it back to a `{🔗 Alias.▭ Border.Style.<Keyword>}` reference
+    // string (decision 4), not a literal, so both sides are always already-comparable strings.
+    type BorderLike = { color: unknown; width: unknown; style: unknown }
+    const borderA = a as BorderLike | undefined
+    const borderB = b as BorderLike | undefined
+    if (!borderA || !borderB) return borderA === borderB
+    return (
+      isLiteralValueEqual('color', borderA.color, borderB.color) &&
+      isLiteralValueEqual('dimension', borderA.width, borderB.width) &&
+      borderA.style === borderB.style
+    )
+  }
   return JSON.stringify(a) === JSON.stringify(b)
 }
 
@@ -175,16 +190,36 @@ export function isShadowFigmaId(value: unknown): value is Record<ShadowSubProper
   )
 }
 
+// A border token's Figma identity is 3 variableIds (color, width, style), not 1 — see
+// docs/plans/border-token-type-plan.md. Mirrors
+// scripts/figma-sync/lib/figma-value.mjs's BORDER_SUB_PROPERTIES (reimplemented, not imported —
+// Node-only module, outside apps/toky's boundary, per this file's header).
+export const BORDER_SUB_PROPERTIES = ['color', 'width', 'style'] as const
+export type BorderSubProperty = (typeof BORDER_SUB_PROPERTIES)[number]
+
+export function isBorderFigmaId(value: unknown): value is Record<BorderSubProperty, string> {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    BORDER_SUB_PROPERTIES.every(sub => typeof (value as Record<string, unknown>)[sub] === 'string')
+  )
+}
+
 /**
  * Flattens a token's figmaId into a list of plain string ids, tagged with which sub-property (if
- * any) each one represents — every other type has exactly one untagged id; a shadow token has 5.
- * Mirrors scripts/figma-sync/lib/figma-value.mjs's flattenVariableId.
+ * any) each one represents — every other type has exactly one untagged id; a shadow token has 5,
+ * a border token has 3. Mirrors scripts/figma-sync/lib/figma-value.mjs's flattenVariableId.
+ * Distinguished by shape, not a type tag — see that function's comment.
  */
-export function flattenFigmaId(figmaId: FigmaId | null | undefined): { id: string; subProperty?: ShadowSubProperty }[] {
+export function flattenFigmaId(
+  figmaId: FigmaId | null | undefined,
+): { id: string; subProperty?: ShadowSubProperty | BorderSubProperty }[] {
   if (!figmaId) return []
   if (typeof figmaId === 'string') return [{ id: figmaId }]
   const record = figmaId as Record<string, string>
-  return SHADOW_SUB_PROPERTIES.filter(sub => record[sub]).map(sub => ({ id: record[sub], subProperty: sub }))
+  const subProperties: readonly (ShadowSubProperty | BorderSubProperty)[] =
+    'offsetX' in record ? SHADOW_SUB_PROPERTIES : BORDER_SUB_PROPERTIES
+  return subProperties.filter(sub => record[sub]).map(sub => ({ id: record[sub], subProperty: sub }))
 }
 
 // 1px = 1/16 rem, this repo's fixed base font size (matches
@@ -221,4 +256,59 @@ export function dtcgShadowLayerFromFigma(
   if (offsetX === null || offsetY === null || blur === null || spread === null) return null
 
   return { color: dtcgColor, offsetX, offsetY, blur, spread }
+}
+
+// Mirrors packages/tokens/tokens/Base.tokens.json's 🔗 Alias.▭ Border.Style.* keys — the full set
+// of CSS border-style keywords this codebase defines a token for (docs/plans/border-token-type-plan.md
+// decision 2).
+const BORDER_STYLE_ALIAS_NAME_BY_KEYWORD: Record<string, string> = {
+  none: 'None',
+  solid: 'Solid',
+  dashed: 'Dashed',
+  dotted: 'Dotted',
+  double: 'Double',
+  groove: 'Groove',
+  ridge: 'Ridge',
+  inset: 'Inset',
+  outset: 'Outset',
+}
+
+/**
+ * Resolves a Figma STRING sub-value (e.g. `"dashed"`) back to the `{🔗 Alias.▭ Border.Style.
+ * <Keyword>}` reference it must round-trip to — `style` is always a reference in this codebase,
+ * never a literal (docs/plans/border-token-type-plan.md decision 4), unlike `color`/`width` below
+ * which reconstruct as literals. Returns `undefined` for a value that doesn't match one of the 9
+ * known keywords, exact-case, same "recognize exactly what our own push side generates, don't
+ * guess at a manual Figma edit" policy as `fontWeightNumberFromKeyword`.
+ */
+export function borderStyleReferenceFromKeyword(value: unknown): string | undefined {
+  if (typeof value !== 'string') return undefined
+  const aliasName = BORDER_STYLE_ALIAS_NAME_BY_KEYWORD[value]
+  return aliasName ? `{🔗 Alias.▭ Border.Style.${aliasName}}` : undefined
+}
+
+/**
+ * Reconstructs one DTCG border value from its 3 already-fetched Figma sub-values — the inverse of
+ * scripts/figma-sync/lib/figma-value.mjs's figmaBorderSubValuesFor. `localUnit` supplies the
+ * width sub-value's unit, same convention as dtcgShadowLayerFromFigma above. `color`/`width`
+ * reconstruct as literals (mirroring shadow); `style` reconstructs as a reference string — see
+ * borderStyleReferenceFromKeyword.
+ */
+export function dtcgBorderFromFigma(
+  subValues: Record<BorderSubProperty, unknown>,
+  localUnit: () => 'px' | 'rem',
+): { color: DtcgColorValue; width: unknown; style: string } | null {
+  const color = subValues.color
+  if (typeof color !== 'object' || color === null || !('r' in color)) return null
+  const dtcgColor = dtcgColorFromFigma(color as FigmaColor)
+
+  const rawWidth = subValues.width
+  if (typeof rawWidth !== 'number') return null
+  const unit = localUnit()
+  const width = { value: unit === 'rem' ? rawWidth / PX_PER_REM : rawWidth, unit }
+
+  const style = borderStyleReferenceFromKeyword(subValues.style)
+  if (!style) return null
+
+  return { color: dtcgColor, width, style }
 }

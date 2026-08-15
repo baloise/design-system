@@ -24,6 +24,8 @@
  * docs/plans/shadow-token-type-plan.md).
  */
 
+import { resolveLiteral } from './alias.mjs'
+
 const RESOLVED_TYPE_BY_DTCG_TYPE = {
   color: 'COLOR',
   number: 'FLOAT',
@@ -176,11 +178,65 @@ export function isPushableToken(token) {
 }
 
 /**
+ * `border` doesn't fit figmaValueFor's one-DTCG-value -> one-Figma-value shape either — Figma has
+ * no border-object variable type, so a border token needs 3 separate Figma variables (color,
+ * width, style), one per sub-value. Unlike shadow, there's no unsyncable shape to filter out first
+ * (no multi-layer/array case) — every border composite token is eligible.
+ *
+ * Unlike shadow's sub-values (always inline literals), `color`/`width`/`style` are each a
+ * `{reference}` string (docs/plans/border-token-type-plan.md decision 4), so this needs a
+ * `tokenIndex` to follow them to a literal — see `resolveLiteral` in `./alias.mjs`.
+ *
+ * @param {unknown} literalValue already-resolved (non-reference) `$value` of a border token —
+ *   its `color`/`width`/`style` fields may themselves still be `{reference}` strings
+ * @param {Map<string, import('./tokens.mjs').Token>} tokenIndex
+ * @returns {{ color: { r: number, g: number, b: number, a: number }, width: number, style: string } | null}
+ */
+export function figmaBorderSubValuesFor(literalValue, tokenIndex) {
+  if (typeof literalValue !== 'object' || literalValue === null) return null
+  const { color, width, style } = literalValue
+  const colorLiteral = resolveLiteral(color, tokenIndex)
+  const widthLiteral = resolveLiteral(width, tokenIndex)
+  const styleLiteral = resolveLiteral(style, tokenIndex)
+  if (typeof styleLiteral !== 'string') return null
+  return {
+    color: figmaValueFor('color', colorLiteral),
+    width: figmaValueFor('dimension', widthLiteral),
+    style: styleLiteral,
+  }
+}
+
+// Sub-property suffixes appended to a border token's path to name its 3 decomposed Figma
+// variables, e.g. '🔗 Alias/▭ Border/Composite/Grey/BorderColor'. Order matches
+// figmaBorderSubValuesFor's return shape.
+export const BORDER_SUB_PROPERTIES = ['color', 'width', 'style']
+export const BORDER_SUB_PROPERTY_SUFFIX = {
+  color: 'BorderColor',
+  width: 'BorderWidth',
+  style: 'BorderStyle',
+}
+export const BORDER_SUB_PROPERTY_RESOLVED_TYPE = {
+  color: 'COLOR',
+  width: 'FLOAT',
+  style: 'STRING',
+}
+
+// Every border composite token is eligible for sync — no unsyncable shape to exclude (unlike
+// shadow's multi-layer/empty-array case).
+export function isSyncableBorderToken(token) {
+  return token.type === 'border'
+}
+
+/**
  * Flattens a token's variableId into a list of plain string ids, tagged with which sub-property
  * (if any) each one represents — every other type has exactly one untagged id; a shadow token has
- * 5, one per SHADOW_SUB_PROPERTIES entry. Used anywhere that needs to treat "this token's Figma
- * identity" as a set of ids regardless of whether it's 1 or 5 (baseline bookkeeping, deletion
- * detection) — see docs/plans/shadow-token-type-plan.md.
+ * 5 (one per SHADOW_SUB_PROPERTIES entry), a border token has 3 (one per BORDER_SUB_PROPERTIES
+ * entry). Used anywhere that needs to treat "this token's Figma identity" as a set of ids
+ * regardless of how many it is (baseline bookkeeping, deletion detection) — see
+ * docs/plans/shadow-token-type-plan.md and docs/plans/border-token-type-plan.md.
+ *
+ * Distinguished by shape, not a type tag: a shadow id-set carries 'offsetX' (border never does);
+ * everything else object-shaped is treated as a border id-set.
  *
  * @param {unknown} variableId a token's raw $extensions.com.figma.variableId (string, object, or undefined)
  * @returns {{ id: string, subProperty: string | undefined }[]}
@@ -189,10 +245,13 @@ export function flattenVariableId(variableId) {
   if (!variableId) return []
   if (typeof variableId === 'string') return [{ id: variableId, subProperty: undefined }]
   if (typeof variableId === 'object') {
-    return SHADOW_SUB_PROPERTIES.filter(sub => variableId[sub]).map(sub => ({
-      id: variableId[sub],
-      subProperty: sub,
-    }))
+    const subProperties = 'offsetX' in variableId ? SHADOW_SUB_PROPERTIES : BORDER_SUB_PROPERTIES
+    return subProperties
+      .filter(sub => variableId[sub])
+      .map(sub => ({
+        id: variableId[sub],
+        subProperty: sub,
+      }))
   }
   return []
 }

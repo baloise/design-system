@@ -749,6 +749,179 @@ describe('buildBasePullPlan — shadow', () => {
 
 const SHADOW_SUB_PROPERTIES_FOR_TEST = ['offsetX', 'offsetY', 'blur', 'spread', 'color'] as const
 
+describe('buildBasePullPlan — border', () => {
+  const borderFigmaId = {
+    color: 'VariableID:border:color',
+    width: 'VariableID:border:width',
+    style: 'VariableID:border:style',
+  }
+
+  // rawValue mirrors the real authored shape — color/width/style are each a {reference} string
+  // (docs/plans/border-token-type-plan.md decision 4). resolvedValue is what flatten.ts's
+  // resolveReferences would produce by chasing those references — deriveBorderPullEntries
+  // compares against resolvedValue, never rawValue directly (see its doc comment).
+  const border = token({
+    path: ['🔗 Alias', '▭ Border', 'Composite', 'Grey'],
+    type: 'border',
+    figmaId: borderFigmaId,
+    rawValue: {
+      color: '{🔗 Alias.▭ Border.Color.Grey}',
+      width: '{🔗 Alias.▭ Border.Width.Base}',
+      style: '{🔗 Alias.▭ Border.Style.Solid}',
+    },
+    resolvedValue: {
+      color: { colorSpace: 'srgb', components: [0.816, 0.816, 0.816], alpha: 1, hex: '#D0D0D0' },
+      width: { value: 0.125, unit: 'rem' }, // 2px
+      style: 'solid',
+    },
+  })
+
+  function borderVariables(overrides?: {
+    color?: { r: number; g: number; b: number; a: number }
+    width?: number
+    style?: string
+  }): FigmaVariable[] {
+    const color = overrides?.color ?? { r: 0.816, g: 0.816, b: 0.816, a: 1 }
+    const width = overrides?.width ?? 2
+    const style = overrides?.style ?? 'solid'
+    return [
+      variable({
+        id: borderFigmaId.color,
+        name: 'x/color',
+        resolvedType: 'COLOR',
+        valuesByMode: { [BASE_MODE]: color },
+      }),
+      variable({
+        id: borderFigmaId.width,
+        name: 'x/width',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: width },
+      }),
+      variable({
+        id: borderFigmaId.style,
+        name: 'x/style',
+        resolvedType: 'STRING',
+        valuesByMode: { [BASE_MODE]: style },
+      }),
+    ]
+  }
+
+  it('is a no-op when all 3 sub-variables still match the local resolved border value', () => {
+    const plan = buildBasePullPlan({
+      original: [border],
+      working: [working(border)],
+      figmaMeta: meta(borderVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(0)
+  })
+
+  it("proposes an update preserving color/width's original reference strings when only style changed", () => {
+    const plan = buildBasePullPlan({
+      original: [border],
+      working: [working(border)],
+      figmaMeta: meta(borderVariables({ style: 'dashed' })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('border')
+    expect(plan.updates[0].rawValue).toEqual({
+      color: '{🔗 Alias.▭ Border.Color.Grey}',
+      width: '{🔗 Alias.▭ Border.Width.Base}',
+      style: '{🔗 Alias.▭ Border.Style.Dashed}',
+    })
+  })
+
+  it('skips (does not auto-write a literal) when color or width differs from what the local reference resolves to', () => {
+    const plan = buildBasePullPlan({
+      original: [border],
+      working: [working(border)],
+      figmaMeta: meta(borderVariables({ width: 4 })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.skipped.length).toBeGreaterThan(0)
+    expect(plan.skipped[0].reason).toMatch(/no safe way to auto-write a literal/)
+  })
+
+  it('does not half-apply an incomplete match — a missing sub-variable proposes a delete, not a partial update', () => {
+    const incomplete = borderVariables().filter(v => v.id !== borderFigmaId.style)
+    const plan = buildBasePullPlan({
+      original: [border],
+      working: [working(border)],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(1)
+    expect(plan.deletes[0].path).toEqual(border.path)
+  })
+
+  it('does not propose deleting a border token already removed from working', () => {
+    const incomplete = borderVariables().filter(v => v.id !== borderFigmaId.style)
+    const plan = buildBasePullPlan({
+      original: [border],
+      working: [],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.deletes).toHaveLength(0)
+  })
+
+  it('resolves a border whose 3 sub-values all alias another border token’s matching sub-properties', () => {
+    const target = token({
+      path: ['🔗 Alias', '▭ Border', 'Composite', 'Primary'],
+      type: 'border',
+      figmaId: {
+        color: 'VariableID:target:color',
+        width: 'VariableID:target:width',
+        style: 'VariableID:target:style',
+      },
+      rawValue: {
+        color: '{🔗 Alias.▭ Border.Color.Primary}',
+        width: '{🔗 Alias.▭ Border.Width.Base}',
+        style: '{🔗 Alias.▭ Border.Style.Solid}',
+      },
+      resolvedValue: {
+        color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+        width: { value: 0.125, unit: 'rem' },
+        style: 'solid',
+      },
+    })
+    const BORDER_SUB_PROPERTIES_FOR_TEST = ['color', 'width', 'style'] as const
+    const targetVariables = BORDER_SUB_PROPERTIES_FOR_TEST.map(sub =>
+      variable({
+        id: (target.figmaId as Record<string, string>)[sub],
+        name: `target/${sub}`,
+        resolvedType: sub === 'color' ? 'COLOR' : sub === 'width' ? 'FLOAT' : 'STRING',
+        valuesByMode: {
+          [BASE_MODE]: sub === 'color' ? { r: 0, g: 0, b: 0, a: 1 } : sub === 'width' ? 2 : 'solid',
+        },
+      }),
+    )
+    const aliasingVariables = BORDER_SUB_PROPERTIES_FOR_TEST.map(sub =>
+      variable({
+        id: borderFigmaId[sub],
+        name: `x/${sub}`,
+        resolvedType: sub === 'color' ? 'COLOR' : sub === 'width' ? 'FLOAT' : 'STRING',
+        valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: (target.figmaId as Record<string, string>)[sub] } },
+      }),
+    )
+    const plan = buildBasePullPlan({
+      original: [border, target],
+      working: [working(border), working(target)],
+      figmaMeta: meta([...targetVariables, ...aliasingVariables]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(border.path)
+    expect(plan.updates[0].referenceTarget).toBe('🔗 Alias.▭ Border.Composite.Primary')
+  })
+})
+
 describe('buildBrandPullPlan', () => {
   it('never creates a brand override for a variable with no matching Base token', () => {
     const v = variable({

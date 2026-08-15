@@ -55,8 +55,17 @@ function isUnsafeKey(key: string): boolean {
 // and hand a full list of pairs to Object.fromEntries, which builds a brand
 // new object in one step — there's no step where `node`'s own keys are
 // mutated through a computed accessor at all.
+// Preserves the key's existing position when it's already present — only a
+// brand-new key gets appended at the end. Without this, rebuilding an
+// ancestor whose child changed (see deletePath/setPath below) would move
+// that ancestor's key to the end of *its* parent on every edit, cascading
+// up and reordering unrelated sibling keys the whole way to the document
+// root purely from a single leaf edit or delete.
 function withEntry(node: Record<string, unknown>, key: string, value: unknown): Record<string, unknown> {
-  return Object.fromEntries([...Object.entries(node).filter(([k]) => k !== key), [key, value]])
+  if (key in node) {
+    return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, k === key ? value : v]))
+  }
+  return Object.fromEntries([...Object.entries(node), [key, value]])
 }
 
 function withoutEntry(node: Record<string, unknown>, key: string): Record<string, unknown> {

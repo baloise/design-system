@@ -37,3 +37,40 @@ export function resolveAliasTarget(token, tokenIndex) {
   }
   return target
 }
+
+const REFERENCE_PATTERN = /^\{(.+)\}$/
+
+/**
+ * A border composite token's `color`/`width`/`style` sub-values are each a bare reference
+ * *string* (not a whole-token reference) pointing into the same Base tree — e.g.
+ * `"{🔗 Alias.▭ Border.Color.Grey}"`, itself a reference to `🌐 Global.🌈 Color.Grey.3`
+ * (docs/plans/border-token-type-plan.md decision 4). Unlike shadow's sub-values, which are always
+ * inline literals, these need following through the reference chain to a literal, however many
+ * hops that takes — this is the only place in the pipeline that needs multi-hop resolution.
+ *
+ * @param {unknown} rawValue a border sub-value: either a `{reference}` string or an already-literal value
+ * @param {Map<string, import('./tokens.mjs').Token>} tokenIndex
+ * @returns {unknown} the fully-resolved literal value
+ */
+export function resolveLiteral(rawValue, tokenIndex) {
+  if (typeof rawValue !== 'string') return rawValue
+  const match = REFERENCE_PATTERN.exec(rawValue)
+  if (!match) return rawValue
+
+  const refPath = match[1].split('.')
+  let current = tokenIndex.get(pathKey(refPath))
+  if (!current) {
+    throw new Error(`Reference to ${pathKey(refPath)} does not exist.`)
+  }
+
+  const seen = new Set()
+  while (current.value.kind === 'reference') {
+    const key = pathKey(current.path)
+    if (seen.has(key)) {
+      throw new Error(`Circular reference detected resolving ${pathKey(refPath)} at ${key}.`)
+    }
+    seen.add(key)
+    current = resolveAliasTarget(current, tokenIndex)
+  }
+  return current.value.value
+}

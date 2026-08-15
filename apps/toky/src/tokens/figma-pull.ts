@@ -14,17 +14,20 @@ import type { WorkingToken } from './edit'
 import { KEY_BY_LAYER } from './flatten'
 import type { FigmaVariable, FigmaVariablesMeta } from './figma'
 import {
+  BORDER_SUB_PROPERTIES,
+  borderStyleReferenceFromKeyword,
   dtcgColorFromFigma,
   dtcgShadowLayerFromFigma,
   dtcgTypeFor,
   fontWeightNumberFromKeyword,
+  isBorderFigmaId,
   isFigmaAlias,
   isLiteralValueEqual,
   isShadowFigmaId,
   pathFromFigmaVariableName,
   SHADOW_SUB_PROPERTIES,
 } from './figma-map'
-import type { ShadowSubProperty } from './figma-map'
+import type { BorderSubProperty, ShadowSubProperty } from './figma-map'
 import type { FigmaId, FlatToken, TokenLayer } from './types'
 
 // 1rem = 16px, this repo's fixed base font size (matches
@@ -406,6 +409,223 @@ function deriveShadowPullEntries(params: {
   return { creates, updates, deletes, skipped }
 }
 
+interface LocalBorderValue {
+  color: unknown
+  width: unknown
+  style: unknown
+}
+
+function unitForBorderWidth(token: FlatToken): 'px' | 'rem' {
+  const resolved = token.resolvedValue
+  if (typeof resolved !== 'object' || resolved === null) return 'rem'
+  const width = (resolved as Record<string, unknown>).width
+  if (typeof width !== 'object' || width === null) return 'rem'
+  const unit = (width as { unit?: unknown }).unit
+  return unit === 'px' ? 'px' : 'rem'
+}
+
+/**
+ * Base-only (see docs/plans/border-token-type-plan.md decision 11) — matches every local border
+ * composite token against its 3 Figma sub-variables (by the figmaId object stored on it),
+ * mirroring deriveShadowPullEntries's shape.
+ *
+ * Unlike shadow, `color`/`width` are always references locally (decision 4), never inline
+ * literals — a raw structural comparison against Figma's always-literal sub-variable values would
+ * false-positive on every pull. So comparison uses the local token's already-resolved literal
+ * (`resolvedValue`, fully reference-chased by flatten.ts's resolveReferences) rather than
+ * `rawValue`. When something has genuinely changed: if only `style` differs, the update preserves
+ * `color`/`width`'s original `{reference}` strings untouched and only swaps `style` — never
+ * flattening a working reference into a literal. If `color` or `width` itself differs from what
+ * the local reference currently resolves to, there's no safe reverse-mapping from an arbitrary
+ * Figma literal back to "which primitive token has this value" — surfaced as `skipped` for a
+ * human to resolve, same policy as shadow's unsupported/inconsistent cases.
+ */
+function deriveBorderPullEntries(params: {
+  original: FlatToken[]
+  working: WorkingToken[]
+  figmaMeta: FigmaVariablesMeta
+  modeId: string
+}): { creates: PulledEntry[]; updates: PulledEntry[]; deletes: PulledEntry[]; skipped: SkippedVariable[] } {
+  const { original, working, figmaMeta, modeId } = params
+  const creates: PulledEntry[] = []
+  const updates: PulledEntry[] = []
+  const deletes: PulledEntry[] = []
+  const skipped: SkippedVariable[] = []
+
+  // Reverse index from a border sub-variable's Figma id back to the token + sub-property it
+  // belongs to — needed to resolve a border-to-border alias target, same reasoning as shadow's.
+  const borderSubIndex = new Map<string, { token: FlatToken; subProperty: BorderSubProperty }>()
+  for (const t of original) {
+    if (!isBorderFigmaId(t.figmaId)) continue
+    for (const sub of BORDER_SUB_PROPERTIES) {
+      borderSubIndex.set(t.figmaId[sub], { token: t, subProperty: sub })
+    }
+  }
+  const workingByPath = new Map(working.map(w => [w.token.path.join('.'), w]))
+
+  for (const token of original) {
+    if (!isBorderFigmaId(token.figmaId)) continue
+    const idSet = token.figmaId
+    const path = token.path.join('.')
+
+    // Any one of the 3 sub-variables missing from Figma entirely — treat the whole border token
+    // as deleted (unless working already dropped it).
+    const missing = BORDER_SUB_PROPERTIES.some(sub => !figmaMeta.variables[idSet[sub]])
+    if (missing) {
+      if (workingByPath.has(path)) {
+        deletes.push(entryFrom('delete', token.layer, token.path, idSet, snapshotOf(token)))
+      }
+      continue
+    }
+
+    const modeValues: Partial<Record<BorderSubProperty, unknown>> = {}
+    for (const sub of BORDER_SUB_PROPERTIES) {
+      modeValues[sub] = figmaMeta.variables[idSet[sub]]?.valuesByMode[modeId]
+    }
+    if (BORDER_SUB_PROPERTIES.some(sub => modeValues[sub] === undefined)) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason: 'One or more border sub-properties has no value for this mode — skipped.',
+      })
+      continue
+    }
+
+    const aliasTargets = BORDER_SUB_PROPERTIES.map(sub => (isFigmaAlias(modeValues[sub]) ? modeValues[sub] : null))
+    const allAliased = aliasTargets.every(target => target !== null)
+    if (allAliased) {
+      // Every sub-value must point at the *same* other token's *matching* sub-property — same
+      // "not something our own push side would produce otherwise" policy as shadow's.
+      const targetTokens = BORDER_SUB_PROPERTIES.map((sub, i) => {
+        const targetId = aliasTargets[i]!.id
+        const entry = borderSubIndex.get(targetId)
+        return entry && entry.subProperty === sub ? entry.token : null
+      })
+      const firstTarget = targetTokens[0]
+      const consistent = firstTarget && targetTokens.every(t => t === firstTarget)
+
+      const figmaSnapshot: DtcgSnapshot = consistent
+        ? { type: 'border', referenceTarget: firstTarget.path.join('.'), rawValue: undefined }
+        : { type: 'border', referenceTarget: null, rawValue: undefined }
+      if (!consistent) {
+        skipped.push({
+          variableId: idSet.color,
+          name: `${token.path.join('/')} (border)`,
+          reason: 'Border sub-properties alias inconsistent targets — skipped.',
+        })
+        continue
+      }
+
+      const originalSnapshot = snapshotOf(token)
+      if (snapshotEqual(figmaSnapshot, originalSnapshot)) continue
+
+      const workingEntry = workingByPath.get(path)
+      const workingSnapshot = workingEntry ? snapshotOf(workingEntry.token) : originalSnapshot
+      const workingHasManualEdit = !snapshotEqual(workingSnapshot, originalSnapshot)
+      if (workingHasManualEdit) {
+        if (snapshotEqual(workingSnapshot, figmaSnapshot)) continue
+        skipped.push({
+          variableId: idSet.color,
+          name: `${token.path.join('/')} (border)`,
+          reason: 'Figma and a pending local edit disagree — resolve manually.',
+        })
+        continue
+      }
+
+      updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+      continue
+    }
+
+    if (aliasTargets.some(target => target !== null)) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason: 'Border has a mix of literal and aliased sub-properties — skipped.',
+      })
+      continue
+    }
+
+    // Literal case — compare against the local token's *resolved* value (color/width/style
+    // chased through their reference chains), not its raw un-resolved reference strings.
+    const figmaColor = modeValues.color
+    if (typeof figmaColor !== 'object' || figmaColor === null || !('r' in figmaColor)) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason: 'Border color sub-value could not be read — skipped.',
+      })
+      continue
+    }
+    const figmaColorLiteral = dtcgColorFromFigma(figmaColor as { r: number; g: number; b: number; a: number })
+
+    const rawWidth = modeValues.width
+    if (typeof rawWidth !== 'number') {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason: 'Border width sub-value could not be read — skipped.',
+      })
+      continue
+    }
+    const unit = unitForBorderWidth(token)
+    const figmaWidthLiteral = { value: unit === 'rem' ? rawWidth / PX_PER_REM : rawWidth, unit }
+
+    const figmaStyleKeyword = modeValues.style
+    const local = token.resolvedValue as LocalBorderValue | undefined
+    const colorMatches = local ? isLiteralValueEqual('color', figmaColorLiteral, local.color) : false
+    const widthMatches = local ? isLiteralValueEqual('dimension', figmaWidthLiteral, local.width) : false
+    const styleMatches = local ? figmaStyleKeyword === local.style : false
+
+    if (colorMatches && widthMatches && styleMatches) continue // nothing changed
+
+    if (!colorMatches || !widthMatches) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason:
+          'Border color/width differs from what the local reference resolves to — no safe way to ' +
+          'auto-write a literal without breaking the reference. Resolve manually in Toky.',
+      })
+      continue
+    }
+
+    // Only style differs — preserve color/width's original reference strings untouched.
+    const styleReference = borderStyleReferenceFromKeyword(figmaStyleKeyword)
+    if (!styleReference) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason: `Border style value "${String(figmaStyleKeyword)}" doesn't match a known keyword — skipped.`,
+      })
+      continue
+    }
+    const originalValue = token.rawValue as LocalBorderValue
+    const figmaSnapshot: DtcgSnapshot = {
+      type: 'border',
+      referenceTarget: null,
+      rawValue: { color: originalValue.color, width: originalValue.width, style: styleReference },
+    }
+
+    const originalSnapshot = snapshotOf(token)
+    const workingEntry = workingByPath.get(path)
+    const workingSnapshot = workingEntry ? snapshotOf(workingEntry.token) : originalSnapshot
+    const workingHasManualEdit = !snapshotEqual(workingSnapshot, originalSnapshot)
+    if (workingHasManualEdit) {
+      if (snapshotEqual(workingSnapshot, figmaSnapshot)) continue
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (border)`,
+        reason: 'Figma and a pending local edit disagree — resolve manually.',
+      })
+      continue
+    }
+
+    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+  }
+
+  return { creates, updates, deletes, skipped }
+}
+
 /**
  * Base plan: matches every Figma variable (Base mode) against `original`
  * (the server-loaded Base tokens) by figmaId.
@@ -458,9 +678,14 @@ export function buildBasePullPlan(params: {
   const shadowSubVariableIds = new Set(
     original.flatMap(t => (isShadowFigmaId(t.figmaId) ? Object.values(t.figmaId) : [])),
   )
+  // Same exclusion, for a local border token's 3-sub-id set — see
+  // docs/plans/border-token-type-plan.md. Matched separately by deriveBorderPullEntries below.
+  const borderSubVariableIds = new Set(
+    original.flatMap(t => (isBorderFigmaId(t.figmaId) ? Object.values(t.figmaId) : [])),
+  )
 
   for (const variable of Object.values(figmaMeta.variables)) {
-    if (shadowSubVariableIds.has(variable.id)) continue
+    if (shadowSubVariableIds.has(variable.id) || borderSubVariableIds.has(variable.id)) continue
     const modeValue = variable.valuesByMode[baseModeId]
     if (modeValue === undefined) continue
 
@@ -561,6 +786,12 @@ export function buildBasePullPlan(params: {
   plan.updates.push(...shadowEntries.updates)
   plan.deletes.push(...shadowEntries.deletes)
   plan.skipped.push(...shadowEntries.skipped)
+
+  const borderEntries = deriveBorderPullEntries({ original, working, figmaMeta, modeId: baseModeId })
+  plan.creates.push(...borderEntries.creates)
+  plan.updates.push(...borderEntries.updates)
+  plan.deletes.push(...borderEntries.deletes)
+  plan.skipped.push(...borderEntries.skipped)
 
   return plan
 }

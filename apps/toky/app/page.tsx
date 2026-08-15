@@ -1,9 +1,10 @@
 import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
-import { fetchBaseTokensFile, getGithubRef, TOKENS_DIR } from '@/src/tokens/github'
+import { fetchBaseTokensFile, getGithubRef } from '@/src/tokens/github'
 import { getBrandTokensFileMeta, listBranches, listTokenBrandFiles, resolveReadRef } from '@/src/tokens/github-write'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { flattenTokenDocument, parseTokenDocument } from '@/src/tokens/flatten'
+import { isLocalTokensModeEnabled, localBaseTokensPath, localTokensDir } from '@/src/tokens/local'
 import type { FlatToken } from '@/src/tokens/types'
 import { TokenEditor } from './token-editor'
 
@@ -33,14 +34,10 @@ type LoadedTokens = {
 // a submission to silently target stale or wrong content — it only changes
 // what the *page* initially shows.
 async function loadTokensFromLocalDisk(): Promise<LoadedTokens> {
-  // apps/toky is the Next.js server's cwd — TOKENS_DIR ('packages/tokens/tokens') is relative to
-  // the monorepo root, two levels up.
-  const localTokensDir = path.resolve(process.cwd(), '..', '..', TOKENS_DIR)
-
-  const baseRaw = await readFile(path.join(localTokensDir, 'Base.tokens.json'), 'utf-8')
+  const baseRaw = await readFile(localBaseTokensPath(), 'utf-8')
   const doc = JSON.parse(baseRaw) as Record<string, unknown>
 
-  const entries = await readdir(localTokensDir)
+  const entries = await readdir(localTokensDir())
   const tokenBrands = entries
     .filter(name => name.endsWith('.tokens.json') && name !== 'Base.tokens.json')
     .map(name => name.slice(0, -'.tokens.json'.length))
@@ -48,7 +45,7 @@ async function loadTokensFromLocalDisk(): Promise<LoadedTokens> {
 
   const brandEntries = await Promise.all(
     tokenBrands.map(async name => {
-      const raw = await readFile(path.join(localTokensDir, `${name}.tokens.json`), 'utf-8')
+      const raw = await readFile(path.join(localTokensDir(), `${name}.tokens.json`), 'utf-8')
       return [name, flattenTokenDocument(JSON.parse(raw) as Record<string, unknown>)] as const
     }),
   )
@@ -63,16 +60,8 @@ async function loadTokensFromLocalDisk(): Promise<LoadedTokens> {
   }
 }
 
-// Same safety pattern as isAuthDisabledLocally (src/auth/route-access.ts):
-// requires `VERCEL` to be unset, so this can never take effect on any real
-// deployment (including a preview build run with production env vars),
-// even if TOKY_LOCAL_TOKENS is mistakenly set there.
-function isLocalTokensModeEnabled(env: { vercel?: string; localTokens?: string }): boolean {
-  return !env.vercel && env.localTokens === 'true'
-}
-
 async function loadTokens(): Promise<LoadedTokens> {
-  if (isLocalTokensModeEnabled({ vercel: process.env.VERCEL, localTokens: process.env.TOKY_LOCAL_TOKENS })) {
+  if (isLocalTokensModeEnabled()) {
     try {
       return await loadTokensFromLocalDisk()
     } catch (err) {
@@ -158,6 +147,7 @@ export default async function Home() {
         tokenBrands={tokenBrands}
         brandTokens={brandTokens}
         syncStatus={syncStatus}
+        localTokensMode={isLocalTokensModeEnabled()}
       />
     </main>
   )

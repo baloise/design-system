@@ -8,9 +8,14 @@
  */
 import { buildTokenIndex, pathKey, resolveAliasTarget } from './alias.mjs'
 import {
+  BORDER_SUB_PROPERTIES,
+  BORDER_SUB_PROPERTY_RESOLVED_TYPE,
+  BORDER_SUB_PROPERTY_SUFFIX,
+  figmaBorderSubValuesFor,
   figmaShadowSubValuesFor,
   figmaValueFor,
   isPushableToken,
+  isSyncableBorderToken,
   isSyncableShadowToken,
   resolvedTypeFor,
   SHADOW_SUB_PROPERTIES,
@@ -26,10 +31,14 @@ export function figmaShadowSubVariableName(path, subProperty) {
   return `${figmaVariableName(path)}/${SHADOW_SUB_PROPERTY_SUFFIX[subProperty]}`
 }
 
-// A shadow token's Figma identity is 5 variableIds, not 1 — $extensions.
-// com.figma.variableId is an object ({offsetX, offsetY, blur, spread,
-// color}) instead of the single string every other type uses.
-function isShadowVariableIdSet(id) {
+export function figmaBorderSubVariableName(path, subProperty) {
+  return `${figmaVariableName(path)}/${BORDER_SUB_PROPERTY_SUFFIX[subProperty]}`
+}
+
+// A shadow or border token's Figma identity is several variableIds, not 1 — $extensions.
+// com.figma.variableId is an object ({offsetX, offsetY, blur, spread, color} for shadow;
+// {color, width, style} for border) instead of the single string every other type uses.
+function isCompositeVariableIdSet(id) {
   return typeof id === 'object' && id !== null
 }
 
@@ -54,7 +63,7 @@ export function assignVariableIds(baseTokens, existingNameIndex = new Map()) {
     const key = pathKey(token.path)
 
     if (isSyncableShadowToken(token)) {
-      if (isShadowVariableIdSet(token.variableId)) {
+      if (isCompositeVariableIdSet(token.variableId)) {
         idByPath.set(key, token.variableId)
         continue
       }
@@ -70,6 +79,23 @@ export function assignVariableIds(baseTokens, existingNameIndex = new Map()) {
       idByPath.set(
         key,
         allFound ? bySubProperty : Object.fromEntries(SHADOW_SUB_PROPERTIES.map(sub => [sub, `temp-${key}-${sub}`])),
+      )
+      continue
+    }
+
+    if (isSyncableBorderToken(token)) {
+      if (isCompositeVariableIdSet(token.variableId)) {
+        idByPath.set(key, token.variableId)
+        continue
+      }
+      // Path/name fallback match, per sub-property — same "all-or-nothing" reasoning as shadow's.
+      const bySubProperty = Object.fromEntries(
+        BORDER_SUB_PROPERTIES.map(sub => [sub, existingNameIndex.get(figmaBorderSubVariableName(token.path, sub))]),
+      )
+      const allFound = BORDER_SUB_PROPERTIES.every(sub => bySubProperty[sub])
+      idByPath.set(
+        key,
+        allFound ? bySubProperty : Object.fromEntries(BORDER_SUB_PROPERTIES.map(sub => [sub, `temp-${key}-${sub}`])),
       )
       continue
     }
@@ -118,6 +144,23 @@ export function buildCreatePassPayload({ baseTokens, brandTokensByName, idByPath
       continue
     }
 
+    if (isSyncableBorderToken(token)) {
+      for (const sub of BORDER_SUB_PROPERTIES) {
+        const subId = variableId[sub]
+        if (!isTempId(subId) || seenVariableIds.has(subId)) continue
+        seenVariableIds.add(subId)
+        variables.push({
+          action: 'CREATE',
+          id: subId,
+          name: figmaBorderSubVariableName(token.path, sub),
+          variableCollectionId: collectionId,
+          resolvedType: BORDER_SUB_PROPERTY_RESOLVED_TYPE[sub],
+          scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+        })
+      }
+      continue
+    }
+
     // Not a temp id — either the token already carried a variableId, or
     // assignVariableIds linked it to an existing Figma variable by name.
     // Either way, nothing to CREATE.
@@ -135,6 +178,11 @@ export function buildCreatePassPayload({ baseTokens, brandTokensByName, idByPath
     })
   }
 
+  // Border sub-values are references (docs/plans/border-token-type-plan.md decision 4), so
+  // figmaBorderSubValuesFor needs the full Base token index to follow them to a literal — unlike
+  // shadow's, whose sub-values are always inline literals.
+  const tokenIndex = buildTokenIndex(baseTokens)
+
   const variableModeValues = []
   for (const [brandName, tokens] of Object.entries(brandTokensByName)) {
     const modeId = modeIdByBrand[brandName]
@@ -146,6 +194,15 @@ export function buildCreatePassPayload({ baseTokens, brandTokensByName, idByPath
         const variableId = idByPath.get(pathKey(token.path))
         const subValues = figmaShadowSubValuesFor(token.value.value)
         for (const sub of SHADOW_SUB_PROPERTIES) {
+          variableModeValues.push({ variableId: variableId[sub], modeId, value: subValues[sub] })
+        }
+        continue
+      }
+
+      if (isSyncableBorderToken(token)) {
+        const variableId = idByPath.get(pathKey(token.path))
+        const subValues = figmaBorderSubValuesFor(token.value.value, tokenIndex)
+        for (const sub of BORDER_SUB_PROPERTIES) {
           variableModeValues.push({ variableId: variableId[sub], modeId, value: subValues[sub] })
         }
         continue
@@ -197,6 +254,22 @@ export function buildAliasPassPayload({ baseTokens, brandTokensByName, idByPath,
         continue
       }
 
+      if (isSyncableBorderToken(token)) {
+        // Same "target must itself be syncable" policy as shadow's — border has no unsyncable
+        // shape today, but a future brand-level exception should fail the same safe way.
+        if (!isPushableToken(target)) continue
+        const variableId = idByPath.get(pathKey(token.path))
+        const targetVariableId = idByPath.get(pathKey(target.path))
+        for (const sub of BORDER_SUB_PROPERTIES) {
+          variableModeValues.push({
+            variableId: variableId[sub],
+            modeId,
+            value: { type: 'VARIABLE_ALIAS', id: targetVariableId[sub] },
+          })
+        }
+        continue
+      }
+
       variableModeValues.push({
         variableId: idByPath.get(pathKey(token.path)),
         modeId,
@@ -215,9 +288,10 @@ export function buildAliasPassPayload({ baseTokens, brandTokensByName, idByPath,
  */
 export function resolveTempIds(idByPath, tempIdToRealId) {
   for (const [key, id] of idByPath) {
-    if (isShadowVariableIdSet(id)) {
+    if (isCompositeVariableIdSet(id)) {
+      const subProperties = 'offsetX' in id ? SHADOW_SUB_PROPERTIES : BORDER_SUB_PROPERTIES
       const resolved = Object.fromEntries(
-        SHADOW_SUB_PROPERTIES.map(sub => [sub, id[sub] in tempIdToRealId ? tempIdToRealId[id[sub]] : id[sub]]),
+        subProperties.map(sub => [sub, id[sub] in tempIdToRealId ? tempIdToRealId[id[sub]] : id[sub]]),
       )
       idByPath.set(key, resolved)
       continue

@@ -7,6 +7,7 @@ import type { TokenDiffEntry } from '@/src/tokens/edit'
 import { flattenTokenDocument } from '@/src/tokens/flatten'
 import { formatValue } from '@/src/tokens/format'
 import { brandFilePath, getGithubRef } from '@/src/tokens/github'
+import { isLocalTokensModeEnabled, readLocalBaseTokensDocument, writeLocalBaseTokensDocument } from '@/src/tokens/local'
 import {
   addBrandToIndex,
   createBranch,
@@ -239,6 +240,50 @@ function appendPrBodyUpdate(
   return `${existingBody.trimEnd()}\n\n---\n\n**Additional changes by @${submitter} — ${timestamp}**\n\n${summary}`
 }
 
+// Same conflict shape as the GitHub path's checks below (freshByPath), just
+// read from disk instead of a fetched blob — a stale `before` (someone else
+// edited the file since this diff was staged) is still reported as a 409
+// rather than silently overwritten.
+async function handleLocalSubmit(diff: TokenDiffEntry[]): Promise<Response> {
+  let currentDoc: Record<string, unknown>
+  try {
+    currentDoc = await readLocalBaseTokensDocument()
+  } catch (err) {
+    return NextResponse.json({ error: errorMessage(err) }, { status: 500 })
+  }
+
+  const freshByPath = new Map(flattenTokenDocument(currentDoc).map(t => [t.path.join('.'), t]))
+  const conflicts: ConflictInfo[] = []
+
+  for (const entry of diff) {
+    if (entry.kind === 'create') {
+      if (entry.newPath && freshByPath.has(entry.newPath.join('.'))) {
+        conflicts.push({ path: entry.newPath.join('.'), reason: 'already-exists' })
+      }
+      continue
+    }
+    if (!entry.oldPath) continue
+    const current = freshByPath.get(entry.oldPath.join('.'))
+    const currentValue = current ? current.rawValue : undefined
+    if (JSON.stringify(currentValue) !== JSON.stringify(entry.before)) {
+      conflicts.push({ path: entry.oldPath.join('.'), reason: 'changed' })
+    }
+  }
+
+  if (conflicts.length > 0) {
+    return NextResponse.json({ error: 'conflict', conflicts }, { status: 409 })
+  }
+
+  const nextDoc = applyDiffToDocument(currentDoc, diff)
+  try {
+    await writeLocalBaseTokensDocument(nextDoc)
+  } catch (err) {
+    return NextResponse.json({ error: errorMessage(err) }, { status: 500 })
+  }
+
+  return NextResponse.json({ local: true }, { status: 200 })
+}
+
 export async function POST(request: Request): Promise<Response> {
   // Identity for PR attribution comes only from the server-side session —
   // never from the request body — and proxy.ts guarantees every request
@@ -267,6 +312,24 @@ export async function POST(request: Request): Promise<Response> {
 
   if (diff.length === 0 && newBrands.length === 0 && brandDiffNames.length === 0) {
     return NextResponse.json({ error: 'No changes to submit.' }, { status: 400 })
+  }
+
+  // Local-dev escape hatch (see src/tokens/local.ts): writes the base diff
+  // straight to Base.tokens.json on disk instead of opening/updating a
+  // GitHub PR — no branch, no changeset, no network round-trip. Brand
+  // creation/overrides aren't supported here (they're sparse files living
+  // outside Base.tokens.json), so those still require the real GitHub flow.
+  if (isLocalTokensModeEnabled()) {
+    if (newBrands.length > 0 || brandDiffNames.length > 0) {
+      return NextResponse.json(
+        {
+          error:
+            'Brand changes aren’t supported in local token mode — unstage them and submit brand changes separately.',
+        },
+        { status: 400 },
+      )
+    }
+    return handleLocalSubmit(diff)
   }
 
   const brandFormatError = validateNewBrandNamesFormat(newBrands)
