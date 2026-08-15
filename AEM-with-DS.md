@@ -155,6 +155,92 @@ continues to own authoring (item order, title text, nested components in `conten
 
 ---
 
+## Delivering the DS to server-rendered AEM pages (dev / staging / prod)
+
+Everything above assumes `ds-accordion` / `ds-date` are simply available on the page.
+This section covers how they actually get there — and, specifically, how version
+changes can be fast on dev without making prod's version anything other than fixed.
+
+`@baloise/ds-*` packages are published to the public npm registry and version-locked
+together via changesets (`.changeset/config.json`: `"fixed": [["@baloise/ds-*"]]`) — a
+single version number (e.g. `20.0.0-next.8`) always identifies a matching `ds-core` +
+`ds-css` pair.
+
+AEM's own clientlib pipeline is Maven-built: changing a bundled npm version means a
+frontend rebuild and a full AEM package deploy, on every environment that uses it. That
+model is a fine fit for a fixed, deliberately-promoted prod version — but it can't give
+dev a fast version switch without paying the same rebuild cost every time. So the two
+environment groups use **different delivery mechanisms**, not just different version
+pins:
+
+| Environment | Delivery mechanism                                     | Version control                                                                 |
+| ----------- | ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| Dev         | Self-hosted CDN, loaded via `<script>`/`<link>`        | Single shared JCR config node, editable directly by developers                  |
+| Staging     | Maven build bundles the npm package into the clientlib | `package.json` pin — always the release candidate for the next prod deploy      |
+| Prod        | Same Maven/clientlib build as staging                  | `package.json` pin — promoted from staging via a second, deliberate PR + deploy |
+
+### Publishing to the self-hosted CDN
+
+A CI step, triggered on every npm publish (including `next` prereleases), pushes the
+published package's build output to Helvetia's own CDN/object storage under immutable,
+version-prefixed paths:
+
+```
+https://cdn.helvetia.example/ds/core/{version}/...   ← @baloise/ds-core (Stencil lazy-loader output)
+https://cdn.helvetia.example/ds/css/{version}/...    ← @baloise/ds-css
+```
+
+Only `ds-core` and `ds-css` are synced — `ds-tokens` is a build-time input already
+compiled into `ds-css`'s output and is never served to a browser directly. Paths are
+never overwritten (a new version is a new path), so responses can be cached
+`immutable, max-age=1y` with no invalidation logic. npm remains the source of truth and
+version ledger; the CDN is purely a browser-reachable mirror of what's already
+published. There is deliberately no SRI on these tags — the CDN is Helvetia's own
+infrastructure, not a third party, so the extra hash bookkeeping isn't buying much.
+
+### Dev: fast version switching
+
+Dev pages render a global `<script type="module">` (Stencil's lazy-loader bootstrap —
+lightweight; it code-splits per component, so loading it site-wide doesn't pull in the
+whole library) plus a `<link>` for `ds-css`, with the version segment of both URLs read
+from a single JCR config node (e.g. `/conf/global/settings/ds-version`) at render time:
+
+```html
+<sly
+  data-sly-use.dsVersion="${'com.helvetia.aem.core.models.DsVersion' @ path='/conf/global/settings/ds-version'}"
+></sly>
+<link rel="stylesheet" href="https://cdn.helvetia.example/ds/css/${dsVersion.value}/ds.css" />
+<script type="module" src="https://cdn.helvetia.example/ds/core/${dsVersion.value}/ds-core.esm.js"></script>
+```
+
+Changing dev's DS version is a one-line edit to that node (CRXDE / package, not Cloud
+Manager) — no rebuild, no redeploy. Any developer with repo/CRXDE access can point dev
+at any published version (including one not yet promoted to staging) without an ops
+ticket, and there is exactly one answer to "what version is dev running" at any given
+time — no per-page drift.
+
+Global loading is deliberate: since Stencil's loader only fetches the JS chunk for a
+component actually present on the page, the marginal cost of "always present" is just
+the small bootstrap script, not the whole library — cheaper than building and
+maintaining per-template conditional inclusion logic.
+
+### Staging and prod: Maven-bundled, pinned, promoted
+
+Staging and prod both consume `@baloise/ds-core` / `@baloise/ds-css` the conventional
+way — as an npm dependency of the `ui.frontend` Maven module, pinned by version in
+`package.json`, bundled into the AEM clientlib at build time. Staging is the **release
+gate**: its `package.json` pin is always the exact candidate being validated for the
+next prod release. Promoting to prod is a second, separate PR that bumps prod's pin to
+that same, now-validated version — prod never runs a version staging didn't already run.
+
+There is intentionally no fallback path that lets prod read from the CDN in an
+emergency. A bad prod version is recovered the same way it shipped — revert the pin,
+redeploy through the normal pipeline — because any mechanism that lets prod
+conditionally bypass its Maven pin quietly turns "prod's version is fixed" into "prod's
+version is fixed, except when it isn't."
+
+---
+
 # Adaptive Forms: connecting `ds-date`
 
 **Adaptive Forms Core Components** (`adobe/aem-core-forms-components`) is a different
