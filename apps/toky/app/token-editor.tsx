@@ -718,21 +718,31 @@ function borderStyleReference(keyword: string): string {
   return `{🔗 Alias.▭ Border.Style.${keyword}}`
 }
 
+// A rem value's px equivalent isn't obvious at a glance (unlike px, which is
+// already the "physical" unit) — appended parenthetically wherever a
+// dimension is summarized, e.g. "1.5rem (24px)", so reading the reference
+// list never requires doing the ×16 math by hand.
+function dimensionSummaryText(dimension: DimensionValue): string {
+  if (dimension.unit === 'px') return `${dimension.value}px`
+  const px = convertDimensionUnit(dimension, 'px')
+  return `${dimension.value}rem (${px.value}px)`
+}
+
 function borderSummaryText(resolvedValue: unknown): string {
   if (!isBorderValue(resolvedValue)) return '—'
-  const width = isDimensionValue(resolvedValue.width) ? `${resolvedValue.width.value}${resolvedValue.width.unit}` : '?'
+  const width = isDimensionValue(resolvedValue.width) ? dimensionSummaryText(resolvedValue.width) : '?'
   const style = typeof resolvedValue.style === 'string' ? resolvedValue.style : '?'
   return `${width} ${style}`
 }
 
 // Short human-readable summary of a token's fully-resolved value — used
 // wherever a reference picker lists candidate targets, so each row shows
-// what picking it would actually resolve to (e.g. "1.5rem", "#F05D4D"),
+// what picking it would actually resolve to (e.g. "1.5rem (24px)", "#F05D4D"),
 // not just the target's path. Falls back to the shared color/number/string
 // formatter for anything not one of these known shapes.
 function referenceValueSummary(type: string, resolvedValue: unknown): string {
   if (type === 'border') return borderSummaryText(resolvedValue)
-  if (isDimensionValue(resolvedValue)) return `${resolvedValue.value}${resolvedValue.unit}`
+  if (isDimensionValue(resolvedValue)) return dimensionSummaryText(resolvedValue)
   if (Array.isArray(resolvedValue)) return resolvedValue.map(v => formatValue(v)).join(', ')
   return formatValue(resolvedValue)
 }
@@ -1262,7 +1272,10 @@ const TokenRow = memo(function TokenRow({
                         render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
                       >
                         <Link2Icon className="size-3.5 shrink-0" />
-                        <span className="truncate">{toSlashPath(token.referenceTarget)}</span>
+                        <span className="min-w-0 flex-1 truncate">{toSlashPath(token.referenceTarget)}</span>
+                        <span className="shrink-0 text-muted-foreground">
+                          {referenceValueSummary(token.type, token.resolvedValue)}
+                        </span>
                       </PopoverTrigger>
                       <PopoverContent className="w-128">
                         {handlers.renderPopoverHeader(
@@ -1657,7 +1670,10 @@ const TokenRow = memo(function TokenRow({
                                 render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
                               >
                                 <Link2Icon className="size-3.5 shrink-0" />
-                                <span className="truncate">{toSlashPath(brandToken.referenceTarget)}</span>
+                                <span className="min-w-0 flex-1 truncate">{toSlashPath(brandToken.referenceTarget)}</span>
+                                <span className="shrink-0 text-muted-foreground">
+                                  {referenceValueSummary(brandToken.type, brandToken.resolvedValue)}
+                                </span>
                               </PopoverTrigger>
                               <PopoverContent className="w-128">
                                 {handlers.renderPopoverHeader(
@@ -2074,7 +2090,7 @@ export function TokenEditor({
         }
         bucket.push(w)
       }
-      order.sort((a, b) => a.localeCompare(b))
+      order.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
       return order.map(key => byKey.get(key)!)
     }
 
@@ -2093,7 +2109,9 @@ export function TokenEditor({
         buckets = buckets.flatMap(bucket => bucketBy(bucket, w => groupAtDepth(w.token.name, depth)))
       }
       return buckets.flatMap(bucket =>
-        [...bucket].sort((a, b) => leafPathFor(a.token.name).localeCompare(leafPathFor(b.token.name))),
+        [...bucket].sort((a, b) =>
+          leafPathFor(a.token.name).localeCompare(leafPathFor(b.token.name), undefined, { numeric: true }),
+        ),
       )
     })
   }, [working, matchedTokens])
@@ -2199,6 +2217,21 @@ export function TokenEditor({
     return map
   }, [working])
 
+  // A dimension token's value normalized to px, regardless of its own unit —
+  // enables SearchSelect's exact-value dimension matching, so searching
+  // "4px" or "0.25rem" finds only tokens whose value is exactly that (never
+  // a substring match, which would also hit a displayed "14px").
+  const referenceDimensionPxByPath = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const w of working) {
+      if (w.token.name.trim() === '' || w.token.type !== 'dimension') continue
+      const resolved = w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue
+      if (!isDimensionValue(resolved)) continue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), convertDimensionUnit(resolved, 'px').value)
+    }
+    return map
+  }, [working])
+
   const referenceSearchOptions = useMemo(
     () =>
       referenceOptions.map(option => ({
@@ -2206,8 +2239,9 @@ export function TokenEditor({
         label: toSlashPath(option),
         swatch: referenceColorByPath.get(option),
         detail: referenceDetailByPath.get(option),
+        dimensionPx: referenceDimensionPxByPath.get(option),
       })),
-    [referenceOptions, referenceColorByPath, referenceDetailByPath],
+    [referenceOptions, referenceColorByPath, referenceDetailByPath, referenceDimensionPxByPath],
   )
 
   const errors = useMemo(() => validateWorkingTokens(working), [working])

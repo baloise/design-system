@@ -386,15 +386,15 @@
       "Width": {
         "None": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Border.0}"
+          "$value": "{🌐 Global.📏 Dimension.Border.0}"
         },
         "Base": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Border.2}"
+          "$value": "{🌐 Global.📏 Dimension.Border.2}"
         },
         "MD": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Border.3}"
+          "$value": "{🌐 Global.📏 Dimension.Border.3}"
         }
       },
       "Style": {
@@ -569,25 +569,25 @@
     "📐 Breakpoint": {
       "Tablet": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Breakpoint.1}"
+        "$value": "{🌐 Global.📏 Dimension.Breakpoint.1}"
       },
       "Desktop": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Breakpoint.2}"
+        "$value": "{🌐 Global.📏 Dimension.Breakpoint.2}"
       },
       "DesktopLG": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Breakpoint.3}",
+        "$value": "{🌐 Global.📏 Dimension.Breakpoint.3}",
         "$description": "HighDefinition"
       },
       "DesktopXL": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Breakpoint.4}",
+        "$value": "{🌐 Global.📏 Dimension.Breakpoint.4}",
         "$description": "Widescreen"
       },
       "Desktop2XL": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Breakpoint.5}",
+        "$value": "{🌐 Global.📏 Dimension.Breakpoint.5}",
         "$description": "FullHD"
       }
     },
@@ -595,33 +595,33 @@
       "Space": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.16}"
+          "$value": "{🌐 Global.📏 Dimension.Space.16}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.40}"
+          "$value": "{🌐 Global.📏 Dimension.Space.40}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.48}"
+          "$value": "{🌐 Global.📏 Dimension.Space.48}"
         }
       },
       "Width": {
         "Modal": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Container.3}"
+          "$value": "{🌐 Global.📏 Dimension.Container.3}"
         },
         "Compact": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Container.4}"
+          "$value": "{🌐 Global.📏 Dimension.Container.4}"
         },
         "Base": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Container.5}"
+          "$value": "{🌐 Global.📏 Dimension.Container.5}"
         },
         "Fluid": {
           "$type": "string",
-          "$value": "{🌐 Global.📏 Size.Container.Full}"
+          "$value": "{🌐 Global.📏 Dimension.Container.Full}"
         }
       }
     },
@@ -702,188 +702,188 @@
     "🔵 Radius": {
       "None": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Radius.0}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.0}"
       },
       "Base": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Radius.1}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.1}"
       },
       "LG": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Radius.2}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.2}"
       },
       "Rounded": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Size.Radius.3}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.3}"
       }
     },
     "↔️ Space": {
       "None": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.0}"
+          "$value": "{🌐 Global.📏 Dimension.Space.0}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.0}"
+          "$value": "{🌐 Global.📏 Dimension.Space.0}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.0}"
+          "$value": "{🌐 Global.📏 Dimension.Space.0}"
         }
       },
       "Auto": {
         "Mobile": {
           "$type": "string",
-          "$value": "{🌐 Global.📏 Size.Space.Auto}"
+          "$value": "{🌐 Global.📏 Dimension.Space.Auto}"
         },
         "Tablet": {
           "$type": "string",
-          "$value": "{🌐 Global.📏 Size.Space.Auto}"
+          "$value": "{🌐 Global.📏 Dimension.Space.Auto}"
         },
         "Desktop": {
           "$type": "string",
-          "$value": "{🌐 Global.📏 Size.Space.Auto}"
+          "$value": "{🌐 Global.📏 Dimension.Space.Auto}"
         }
       },
       "2XS": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.4}"
+          "$value": "{🌐 Global.📏 Dimension.Space.4}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.4}"
+          "$value": "{🌐 Global.📏 Dimension.Space.4}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.4}"
+          "$value": "{🌐 Global.📏 Dimension.Space.4}"
         }
       },
       "XS": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.8}"
+          "$value": "{🌐 Global.📏 Dimension.Space.8}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.8}"
+          "$value": "{🌐 Global.📏 Dimension.Space.8}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.8}"
+          "$value": "{🌐 Global.📏 Dimension.Space.8}"
         }
       },
       "SM": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.12}"
+          "$value": "{🌐 Global.📏 Dimension.Space.12}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.12}"
+          "$value": "{🌐 Global.📏 Dimension.Space.12}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.12}"
+          "$value": "{🌐 Global.📏 Dimension.Space.12}"
         }
       },
       "Base": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.16}"
+          "$value": "{🌐 Global.📏 Dimension.Space.16}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.16}"
+          "$value": "{🌐 Global.📏 Dimension.Space.16}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.16}"
+          "$value": "{🌐 Global.📏 Dimension.Space.16}"
         }
       },
       "MD": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.20}"
+          "$value": "{🌐 Global.📏 Dimension.Space.20}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.20}"
+          "$value": "{🌐 Global.📏 Dimension.Space.20}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.24}"
+          "$value": "{🌐 Global.📏 Dimension.Space.24}"
         }
       },
       "LG": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.24}"
+          "$value": "{🌐 Global.📏 Dimension.Space.24}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.24}"
+          "$value": "{🌐 Global.📏 Dimension.Space.24}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.32}"
+          "$value": "{🌐 Global.📏 Dimension.Space.32}"
         }
       },
       "XL": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.32}"
+          "$value": "{🌐 Global.📏 Dimension.Space.32}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.40}"
+          "$value": "{🌐 Global.📏 Dimension.Space.40}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.48}"
+          "$value": "{🌐 Global.📏 Dimension.Space.48}"
         }
       },
       "2XL": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.48}"
+          "$value": "{🌐 Global.📏 Dimension.Space.48}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.56}"
+          "$value": "{🌐 Global.📏 Dimension.Space.56}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.64}"
+          "$value": "{🌐 Global.📏 Dimension.Space.64}"
         }
       },
       "3XL": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.56}"
+          "$value": "{🌐 Global.📏 Dimension.Space.56}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.72}"
+          "$value": "{🌐 Global.📏 Dimension.Space.72}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.96}"
+          "$value": "{🌐 Global.📏 Dimension.Space.96}"
         }
       },
       "4XL": {
         "Mobile": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.64}"
+          "$value": "{🌐 Global.📏 Dimension.Space.64}"
         },
         "Tablet": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.96}"
+          "$value": "{🌐 Global.📏 Dimension.Space.96}"
         },
         "Desktop": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.128}"
+          "$value": "{🌐 Global.📏 Dimension.Space.128}"
         }
       }
     },
@@ -3529,31 +3529,31 @@
           "Base": {
             "Mobile": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.32}"
+              "$value": "{🌐 Global.📏 Dimension.Space.32}"
             },
             "Tablet": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.48}"
+              "$value": "{🌐 Global.📏 Dimension.Space.48}"
             }
           },
           "LG": {
             "Mobile": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.48}"
+              "$value": "{🌐 Global.📏 Dimension.Space.48}"
             },
             "Tablet": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.64}"
+              "$value": "{🌐 Global.📏 Dimension.Space.64}"
             }
           },
           "XL": {
             "Mobile": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.64}"
+              "$value": "{🌐 Global.📏 Dimension.Space.64}"
             },
             "Tablet": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.96}"
+              "$value": "{🌐 Global.📏 Dimension.Space.96}"
             }
           }
         }
@@ -4894,7 +4894,7 @@
           },
           "Padding": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.16}"
+            "$value": "{🌐 Global.📏 Dimension.Space.16}"
           },
           "Shadow": {
             "$type": "shadow",
@@ -4919,7 +4919,7 @@
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.8}"
+            "$value": "{🌐 Global.📏 Dimension.Space.8}"
           }
         },
         "Title": {
@@ -4943,7 +4943,7 @@
         "Hamburger": {
           "Padding": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.8}"
+            "$value": "{🌐 Global.📏 Dimension.Space.8}"
           },
           "TransitionDuration": {
             "$type": "string",
@@ -4951,11 +4951,11 @@
           },
           "Width": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.48}"
+            "$value": "{🌐 Global.📏 Dimension.Space.48}"
           },
           "Height": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.48}"
+            "$value": "{🌐 Global.📏 Dimension.Space.48}"
           },
           "Radius": {
             "$type": "dimension",
@@ -5001,29 +5001,29 @@
           "Content": {
             "Gap": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.16}"
+              "$value": "{🌐 Global.📏 Dimension.Space.16}"
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.24}"
+              "$value": "{🌐 Global.📏 Dimension.Space.24}"
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.24}"
+              "$value": "{🌐 Global.📏 Dimension.Space.24}"
             }
           },
           "Item": {
             "MinHeight": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.48}"
+              "$value": "{🌐 Global.📏 Dimension.Space.48}"
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.12}"
+              "$value": "{🌐 Global.📏 Dimension.Space.12}"
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.8}"
+              "$value": "{🌐 Global.📏 Dimension.Space.8}"
             },
             "FontSize": {
               "$type": "dimension",
@@ -5078,7 +5078,7 @@
               },
               "Size": {
                 "$type": "dimension",
-                "$value": "{🌐 Global.📏 Size.Space.16}"
+                "$value": "{🌐 Global.📏 Dimension.Space.16}"
               }
             }
           }
@@ -5086,15 +5086,15 @@
         "Menu": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.32}"
+            "$value": "{🌐 Global.📏 Dimension.Space.32}"
           },
           "StartGap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.2}"
+            "$value": "{🌐 Global.📏 Dimension.Space.2}"
           },
           "EndGap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.8}"
+            "$value": "{🌐 Global.📏 Dimension.Space.8}"
           },
           "Item": {
             "FontSize": {
@@ -5103,11 +5103,11 @@
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.8}"
+              "$value": "{🌐 Global.📏 Dimension.Space.8}"
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Size.Space.16}"
+              "$value": "{🌐 Global.📏 Dimension.Space.16}"
             },
             "BorderRadius": {
               "$type": "dimension",
@@ -5144,13 +5144,13 @@
         "Container": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.32}"
+            "$value": "{🌐 Global.📏 Dimension.Space.32}"
           }
         },
         "Content": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Size.Space.8}"
+            "$value": "{🌐 Global.📏 Dimension.Space.8}"
           }
         },
         "Button": {
@@ -5486,19 +5486,7 @@
       }
     },
     "Spinner": {
-      "Size": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.2XL.Mobile}"
-      },
       "Circle": {
-        "BorderWidth": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.▭ Border.Width.MD}"
-        },
-        "Size": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.LG.Mobile}"
-        },
         "Color": {
           "Background": {
             "$type": "color",
@@ -5508,6 +5496,14 @@
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.Primary}"
           }
+        },
+        "Size": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.24}"
+        },
+        "Width": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.4}"
         }
       },
       "Inverted": {
@@ -5523,6 +5519,10 @@
             }
           }
         }
+      },
+      "Size": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Size.48}"
       }
     },
     "Toast": {
@@ -6149,7 +6149,7 @@
       "Item": {
         "Height": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Size.Space.40}"
+          "$value": "{🌐 Global.📏 Dimension.Space.40}"
         },
         "PaddingInline": {
           "$type": "dimension",
@@ -7422,7 +7422,7 @@
     }
   },
   "🌐 Global": {
-    "📏 Size": {
+    "📏 Dimension": {
       "Border": {
         "0": {
           "$type": "dimension",
@@ -7684,6 +7684,36 @@
         "Auto": {
           "$type": "string",
           "$value": "auto"
+        }
+      },
+      "Size": {
+        "4": {
+          "$type": "dimension",
+          "$value": {
+            "value": 4,
+            "unit": "px"
+          }
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": {
+            "value": 24,
+            "unit": "px"
+          }
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": {
+            "value": 32,
+            "unit": "px"
+          }
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": {
+            "value": 48,
+            "unit": "px"
+          }
         }
       }
     },
@@ -8634,9 +8664,9 @@
               "color": {
                 "colorSpace": "srgb",
                 "components": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0,
+                  0,
+                  0
                 ],
                 "alpha": 0.15,
                 "hex": "#000000"
@@ -8662,9 +8692,9 @@
               "color": {
                 "colorSpace": "srgb",
                 "components": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0,
+                  0,
+                  0
                 ],
                 "alpha": 0.25,
                 "hex": "#000000"
@@ -8690,9 +8720,9 @@
               "color": {
                 "colorSpace": "srgb",
                 "components": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0,
+                  0,
+                  0
                 ],
                 "alpha": 0.5,
                 "hex": "#000000"
@@ -8901,7 +8931,7 @@
             "color": {
               "colorSpace": "srgb",
               "components": [
-                0.0,
+                0,
                 0.027450980392156862,
                 0.2235294117647059
               ],
@@ -8932,7 +8962,7 @@
             "color": {
               "colorSpace": "srgb",
               "components": [
-                0.0,
+                0,
                 0.027450980392156862,
                 0.2235294117647059
               ],
@@ -8963,7 +8993,7 @@
             "color": {
               "colorSpace": "srgb",
               "components": [
-                0.0,
+                0,
                 0.027450980392156862,
                 0.2235294117647059
               ],
@@ -8994,7 +9024,7 @@
             "color": {
               "colorSpace": "srgb",
               "components": [
-                0.0,
+                0,
                 0.027450980392156862,
                 0.2235294117647059
               ],

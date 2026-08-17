@@ -73,12 +73,12 @@ describe('resolvedValueToCss', () => {
   })
 
   it('renders a rem-unit dimension as-is, no further conversion', () => {
-    // dist/css/base.tokens.css: --ds-global-size-space-24: 1.5rem;
+    // dist/css/base.tokens.css: --ds-global-dimension-space-24: 1.5rem;
     expect(resolvedValueToCss({ value: 1.5, unit: 'rem' }, 'dimension', [])).toBe('1.5rem')
   })
 
   it('renders a px-unit dimension as-is, no rem conversion', () => {
-    // dist/css/base.tokens.css: --ds-global-size-breakpoint-1: 769px;
+    // dist/css/base.tokens.css: --ds-global-dimension-breakpoint-1: 769px;
     expect(resolvedValueToCss({ value: 769, unit: 'px' }, 'dimension', [])).toBe('769px')
   })
 

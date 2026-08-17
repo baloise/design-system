@@ -16,6 +16,24 @@ export interface SearchSelectOption {
   // Short resolved-value summary shown right-aligned on the row (e.g. "1.5rem", "#F05D4D") -
   // absence means "no summary available", not "empty value".
   detail?: string
+  // The option's dimension value normalized to px, for exact-value search (see parseDimensionQuery
+  // below) — lets searching "4px" or "0.25rem" find only tokens whose value is exactly that,
+  // regardless of which unit they're authored in, rather than substring-matching display text
+  // (where "4px" would wrongly match a displayed "14px"). Absent for non-dimension options.
+  dimensionPx?: number
+}
+
+// Recognizes a bare "<number><px|rem>" search query (e.g. "4px", "0.25rem") and normalizes it to
+// px, so it can be compared for exact equality against an option's dimensionPx instead of being
+// treated as substring text — a substring match on "4px" would also hit a displayed "14px".
+const DIMENSION_QUERY_PATTERN = /^(-?\d+(?:\.\d+)?)\s*(px|rem)$/i
+const PX_PER_REM = 16
+
+function parseDimensionQueryPx(text: string): number | null {
+  const match = DIMENSION_QUERY_PATTERN.exec(text.trim())
+  if (!match) return null
+  const value = Number(match[1])
+  return match[2].toLowerCase() === 'px' ? value : value * PX_PER_REM
 }
 
 // A search field with an always-visible, independently scrollable results list underneath
@@ -44,9 +62,20 @@ export function SearchSelect({
 }) {
   const [filter, setFilter] = useState('')
   const filtered = useMemo(() => {
+    // A recognizable dimension query ("4px", "0.25rem") matches by exact px-normalized value only
+    // — never falls back to substring text matching, which would also match a displayed "14px".
+    const dimensionQueryPx = parseDimensionQueryPx(filter)
+    if (dimensionQueryPx !== null) {
+      return options.filter(
+        option => option.dimensionPx !== undefined && Math.abs(option.dimensionPx - dimensionQueryPx) < 1e-6,
+      )
+    }
     const query = normalizeSearchText(filter)
     if (!query) return options
-    return options.filter(option => normalizeSearchText(option.label).includes(query))
+    // Matches on the path (label) as before, or on the resolved-value summary (detail, e.g. "2px").
+    return options.filter(
+      option => normalizeSearchText(option.label).includes(query) || normalizeSearchText(option.detail ?? '').includes(query),
+    )
   }, [options, filter])
 
   const [highlightedIndex, setHighlightedIndex] = useState(0)
@@ -95,6 +124,7 @@ export function SearchSelect({
           onChange={e => setFilter(e.target.value)}
           onKeyDown={handleKeyDown}
           className="pl-8"
+          autoFocus
         />
       </div>
       <div id={listboxId} role="listbox" aria-label={ariaLabel} className="h-64 overflow-y-auto">
