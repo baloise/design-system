@@ -20,6 +20,29 @@
   "collection:main": "dist/collection/index.js",
   "collection": "dist/collection/collection-manifest.json",
   "types": "dist/types/interfaces.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/interfaces.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./initialize": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/cjs/index.cjs.js",
+      "require": "./dist/cjs/index.cjs.js"
+    },
+    "./components": {
+      "types": "./components/index.d.ts",
+      "import": "./components/index.js",
+      "require": "./components/index.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs.js"
+    },
+    "./*": "./*"
+  },
   "files": [
     "components/",
     "dist/",
