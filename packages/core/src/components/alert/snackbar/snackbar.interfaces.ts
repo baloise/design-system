@@ -1,5 +1,5 @@
 export type SnackbarDuration = number | 'infinite'
-export const SNACKBAR_COLORS = ['base', 'info', 'success', 'warning', 'danger'] as const
+export const SNACKBAR_COLORS = ['primary', 'info', 'success', 'warning', 'danger'] as const
 
 export type SnackbarColor = (typeof SNACKBAR_COLORS)[number]
 

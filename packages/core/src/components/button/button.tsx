@@ -90,7 +90,7 @@ export class Button implements DsComponentInterface {
    */
   @Prop()
   @OneOf(BUTTON_SIZES)
-  readonly size: ButtonSize = undefined
+  readonly size?: ButtonSize
 
   /**
    * Specifies the URL of the page the link goes to
@@ -413,7 +413,7 @@ export class Button implements DsComponentInterface {
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+    const size = normalizeDeprecatedTShirtSize(this.size) || undefined
     const TagType = !hasValue(this.href) ? 'button' : 'a'
     const attrs =
       TagType === 'button'
@@ -478,7 +478,6 @@ export class Button implements DsComponentInterface {
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
               size={this.dashed ? 'md' : size}
-              shape={this.dashed ? 'circle' : undefined}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />

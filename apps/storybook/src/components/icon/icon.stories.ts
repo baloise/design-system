@@ -28,7 +28,7 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   args: {
     name: 'info-circle',
-    size: 'large',
+    size: 'lg',
     slot: '',
   },
 })
@@ -37,7 +37,7 @@ Basic.storyName = '🧩 Basic'
 export const UiIcons = Story({
   args: {
     name: 'info-circle',
-    size: 'large',
+    size: 'lg',
     slot: '',
   },
   ...withRender(
@@ -144,23 +144,11 @@ export const UiIcons = Story({
 })
 UiIcons.storyName = '🧩 UI Icons'
 
-export const BrandIcons = Story({
-  args: {
-    size: 'x-large',
-    color: 'auto',
-    slot: '',
-  },
-  ...withRender(
-    ({ slot, ...args }) => `<ds-icon ${props(args)} svg='${BrandIconCarCrashWithAnimalGreen}'>${slot}</ds-icon>`,
-  ),
-})
-BrandIcons.storyName = '🧩 Brand Icons'
-
 export const Sizes = Story({
   ...withRender(
     () =>
       `<div class="stack">
-      ${['xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl']
+      ${['sm', 'base', 'md', 'lg', 'xl']
         .map(
           item => `<div class="stack as-row">
       <ds-icon name="info-circle" size="${item}"></ds-icon>

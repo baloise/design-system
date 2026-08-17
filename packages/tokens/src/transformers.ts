@@ -157,6 +157,26 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
    * color output ('rgb(0% 0% 0% / 0.25)', colorjs.io's default) doesn't match this codebase's
    * '#hex'/'rgba(...)' convention. See docs/plans/shadow-token-type-plan.md.
    */
+  /**
+   * Transform dimension tokens for JS consumption: px stays a bare number (e.g. 769, not "769px")
+   * so it's directly usable in JS logic (media-query math, comparisons); rem stays a string, since
+   * it's only meaningful as a CSS value. Runs after the 'js' transformGroup's built-in 'size/rem',
+   * which has already turned the {value, unit} object into a "769px"/"1rem" string.
+   */
+  sd.registerTransform({
+    type: `value`,
+    transitive: true,
+    name: `ds/dimension/js`,
+    filter: token => token.$type === 'dimension',
+    transform: token => {
+      const value = token.$value ?? token.value
+      if (typeof value === 'string' && value.endsWith('px')) {
+        return Number(value.slice(0, -2))
+      }
+      return value
+    },
+  })
+
   sd.registerTransform({
     type: `value`,
     transitive: true,

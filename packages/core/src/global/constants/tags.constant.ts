@@ -5,6 +5,7 @@ export const tags: string[] = [
   "ds-alert-container",
   "ds-app",
   "ds-badge",
+  "ds-brand-icon",
   "ds-button",
   "ds-button-group",
   "ds-card",

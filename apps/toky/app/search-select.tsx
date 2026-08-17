@@ -74,7 +74,8 @@ export function SearchSelect({
     if (!query) return options
     // Matches on the path (label) as before, or on the resolved-value summary (detail, e.g. "2px").
     return options.filter(
-      option => normalizeSearchText(option.label).includes(query) || normalizeSearchText(option.detail ?? '').includes(query),
+      option =>
+        normalizeSearchText(option.label).includes(query) || normalizeSearchText(option.detail ?? '').includes(query),
     )
   }, [options, filter])
 

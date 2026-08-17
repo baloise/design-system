@@ -62,7 +62,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    */
   @Prop()
   @OneOf(SNACKBAR_COLORS)
-  readonly color: SnackbarColor = 'base'
+  readonly color?: SnackbarColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -265,7 +265,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
         {this.isMobile && !this.mobileOpenState && (
           <ds-button
             id="mobile-button"
-            color={this.color === 'base' ? 'primary' : this.color}
+            color={this.color}
             square={true}
             icon={iconName}
             onClick={() => (this.mobileOpenState = true)}
@@ -275,20 +275,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
         {/* Icon                                  */}
         {/* --------------------------------------*/}
         {iconName && !svgContent && (
-          <ds-icon
-            part="icon"
-            id="icon"
-            name={iconName}
-            color={this.color}
-            size={'xl'}
-            shape={
-              this.color === 'warning'
-                ? 'triangle'
-                : this.color === 'danger' || this.color === 'success' || this.color === 'info'
-                  ? 'circle'
-                  : undefined
-            }
-          ></ds-icon>
+          <ds-icon part="icon" id="icon" name={iconName} color={this.color} size={'xl'}></ds-icon>
         )}
         {svgContent && <ds-icon id="icon" part="icon" svg={svgContent} size={'xl'}></ds-icon>}
         {/* --------------------------------------*/}

@@ -5,6 +5,9 @@ interface ComponentProp {
   type: string
   docs: string
   default: string
+  // Canonical option list recovered for props whose type is widened to `string` in the
+  // generated docs (e.g. `color?: KnownColor | string`). See docs-json-no-timestamp.ts.
+  oneOfValues?: string[]
 }
 
 interface ComponentEvent {
@@ -35,14 +38,14 @@ const description = (prop: ComponentProp | ComponentEvent | ComponentMethod | Co
 const isNumber = (prop: ComponentProp) => prop.type === 'number'
 const isText = (prop: ComponentProp) => prop.type === 'string'
 const isBoolean = (prop: ComponentProp) => prop.type === 'boolean'
-const isEnum = (prop: ComponentProp) => prop.type.includes('|')
 
-const enumOptions = (prop: ComponentProp) =>
-  prop.type
-    .split('|')
-    .map(t => t.trim())
-    .map(t => (t === '""' ? 'default' : t))
-    .map(t => t.replace(/^"(.*)"$/, '$1'))
+// Matches quoted string literals, e.g. `"purple"`, ignoring widened members like
+// `string` or `undefined` that some union types add as an escape hatch.
+const literalOptions = (type: string) => [...type.matchAll(/"([^"]*)"/g)].map(([, value]) => value || 'default')
+
+const isEnum = (prop: ComponentProp) => (prop.oneOfValues?.length ?? 0) > 0 || literalOptions(prop.type).length > 0
+
+const enumOptions = (prop: ComponentProp) => prop.oneOfValues ?? literalOptions(prop.type)
 
 // https://storybook.js.org/docs/html/essentials/controls#choosing-the-control-type
 const generateProp = (prop: ComponentProp) => {

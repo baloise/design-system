@@ -89,6 +89,10 @@ import { useUndoableState } from './use-undoable-state'
 import type { SubmitState } from './staged-changes-sidebar'
 import { TokenGraph } from './token-graph'
 
+// T-shirt size group names, in their intended display order — 'Base' sits
+// between SM and MD (it's the unsuffixed/default size, not the smallest).
+const TSHIRT_SIZE_ORDER = ['XXS', 'XS', 'SM', 'Base', 'MD', 'LG', 'XL', '2XL', '3XL']
+
 const LAYERS: TokenLayer[] = ['Global', 'Alias', 'Component']
 const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗', Component: '🧩' }
 // Each layer's accordion-head tint at layer depth (0) only — the same
@@ -222,6 +226,26 @@ function uniqueCopyName(layer: TokenLayer, name: string, working: WorkingToken[]
   let candidate = prefix ? `${prefix}.${leaf} ${suffix}` : `${leaf} ${suffix}`
   let n = 2
   while (taken.has(candidate)) {
+    suffix = `copy ${n++}`
+    candidate = prefix ? `${prefix}.${leaf} ${suffix}` : `${leaf} ${suffix}`
+  }
+  return candidate
+}
+
+// Same idea as uniqueCopyName, but for a whole group path (e.g. "Green" ->
+// "Green copy") — taken has to check both exact name collisions and
+// collisions with an existing group's prefix, since a group isn't a token
+// itself, just a dot-prefix shared by every token under it.
+function uniqueCopyGroupName(layer: TokenLayer, group: string, working: WorkingToken[]): string {
+  const prefix = groupOf(group)
+  const leaf = leafPathFor(group)
+  const names = working.filter(w => w.token.layer === layer).map(w => w.token.name)
+  const isTaken = (candidate: string) => names.some(name => name === candidate || name.startsWith(`${candidate}.`))
+
+  let suffix = 'copy'
+  let candidate = prefix ? `${prefix}.${leaf} ${suffix}` : `${leaf} ${suffix}`
+  let n = 2
+  while (isTaken(candidate)) {
     suffix = `copy ${n++}`
     candidate = prefix ? `${prefix}.${leaf} ${suffix}` : `${leaf} ${suffix}`
   }
@@ -1670,7 +1694,9 @@ const TokenRow = memo(function TokenRow({
                                 render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
                               >
                                 <Link2Icon className="size-3.5 shrink-0" />
-                                <span className="min-w-0 flex-1 truncate">{toSlashPath(brandToken.referenceTarget)}</span>
+                                <span className="min-w-0 flex-1 truncate">
+                                  {toSlashPath(brandToken.referenceTarget)}
+                                </span>
                                 <span className="shrink-0 text-muted-foreground">
                                   {referenceValueSummary(brandToken.type, brandToken.resolvedValue)}
                                 </span>
@@ -1929,11 +1955,13 @@ export function TokenEditor({
   const [editDraft, setEditDraft] = useState<EditDraftState | null>(null)
   const [editModeOverride, setEditModeOverride] = useState<'value' | 'reference' | null>(null)
   const [editBrandModeOverride, setEditBrandModeOverride] = useState<Record<string, 'value' | 'reference'>>({})
-  // The row staged for deletion in the Delete-token dialog — null when closed.
+  // The row(s) staged for deletion in the Delete dialog — null when closed.
   // Nothing is removed from `working` until the typed confirmation matches
-  // `name` exactly (see confirmDeleteToken).
+  // `name` exactly (see confirmDelete). `ids` holds a single token id for a
+  // row delete, or every member of a group for a group delete — both share
+  // the same dialog and confirmation flow.
   const [deleteDraft, setDeleteDraft] = useState<{
-    id: string
+    ids: string[]
     name: string
     figmaLinked: boolean
     usageCount: number
@@ -2090,7 +2118,12 @@ export function TokenEditor({
         }
         bucket.push(w)
       }
-      order.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      order.sort((a, b) => {
+        const rankA = TSHIRT_SIZE_ORDER.indexOf(a)
+        const rankB = TSHIRT_SIZE_ORDER.indexOf(b)
+        if (rankA !== -1 && rankB !== -1) return rankA - rankB
+        return a.localeCompare(b, undefined, { numeric: true })
+      })
       return order.map(key => byKey.get(key)!)
     }
 
@@ -2109,9 +2142,14 @@ export function TokenEditor({
         buckets = buckets.flatMap(bucket => bucketBy(bucket, w => groupAtDepth(w.token.name, depth)))
       }
       return buckets.flatMap(bucket =>
-        [...bucket].sort((a, b) =>
-          leafPathFor(a.token.name).localeCompare(leafPathFor(b.token.name), undefined, { numeric: true }),
-        ),
+        [...bucket].sort((a, b) => {
+          const leafA = leafPathFor(a.token.name)
+          const leafB = leafPathFor(b.token.name)
+          const rankA = TSHIRT_SIZE_ORDER.indexOf(leafA)
+          const rankB = TSHIRT_SIZE_ORDER.indexOf(leafB)
+          if (rankA !== -1 && rankB !== -1) return rankA - rankB
+          return leafA.localeCompare(leafB, undefined, { numeric: true })
+        }),
       )
     })
   }, [working, matchedTokens])
@@ -2707,10 +2745,36 @@ export function TokenEditor({
 
   function openDeleteDialog(id: string, token: FlatToken) {
     setDeleteDraft({
-      id,
+      ids: [id],
       name: toSlashPath(token.name),
       figmaLinked: Boolean(token.figmaId),
       usageCount: referenceCounts.get(token.path.join('.')) ?? 0,
+    })
+    setDeleteConfirmText('')
+  }
+
+  // Same dialog/confirmation flow as a single-row delete, but for every
+  // token under a group header at once (the same member set its "Show
+  // reference graph" and "Duplicate" actions cover). Usage count only
+  // counts references from *outside* the group — references between
+  // members are removed along with the group, same as duplicateGroup
+  // treats them as internal.
+  function openDeleteGroupDialog(layer: TokenLayer, group: string, depth: number) {
+    const members = working.filter(
+      w => w.token.layer === layer && (w.token.name === group || w.token.name.startsWith(`${group}.`)),
+    )
+    if (members.length === 0) return
+    const memberIds = new Set(members.map(w => w.id))
+    const memberPaths = new Set(members.map(w => w.token.path.join('.')))
+    const usageCount = working.filter(
+      w => !memberIds.has(w.id) && w.token.referenceTarget && memberPaths.has(w.token.referenceTarget),
+    ).length
+
+    setDeleteDraft({
+      ids: members.map(w => w.id),
+      name: (depth === 0 ? [layer] : group.split('.')).join('/'),
+      figmaLinked: members.some(w => Boolean(w.token.figmaId)),
+      usageCount,
     })
     setDeleteConfirmText('')
   }
@@ -2720,9 +2784,10 @@ export function TokenEditor({
     setDeleteConfirmText('')
   }
 
-  function confirmDeleteToken() {
+  function confirmDelete() {
     if (!deleteDraft || deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name) return
-    setWorking(prev => prev.filter(w => w.id !== deleteDraft.id))
+    const ids = new Set(deleteDraft.ids)
+    setWorking(prev => prev.filter(w => !ids.has(w.id)))
     closeDeleteDialog()
   }
 
@@ -2951,6 +3016,43 @@ export function TokenEditor({
       return next
     })
     setFocusPendingId(newId)
+  }
+
+  // Inserts a copy of every token under `group` (the same set the group's
+  // "Show reference graph" button covers) directly after the group's last
+  // member, so the copy lands as its own sibling group right below the
+  // original. References between tokens *within* the group get rewired to
+  // point at their new counterparts, mirroring commitGroupRename's cascade —
+  // a reference from outside the group still points at the original.
+  function duplicateGroup(layer: TokenLayer, group: string) {
+    setWorking(prev => {
+      const members = prev
+        .map((w, index) => ({ w, index }))
+        .filter(({ w }) => w.token.layer === layer && (w.token.name === group || w.token.name.startsWith(`${group}.`)))
+      if (members.length === 0) return prev
+
+      const newGroup = uniqueCopyGroupName(layer, group, prev)
+      const renamed = new Map<string, string>()
+      const duplicates: WorkingToken[] = members.map(({ w }) => {
+        const newName = newGroup + w.token.name.slice(group.length)
+        renamed.set(pathFor(layer, w.token.name).join('.'), pathFor(layer, newName).join('.'))
+        return {
+          id: `new-${draftIdCounter++}`,
+          // Same reasoning as duplicateRow: a Figma variableId identifies one
+          // specific variable, so duplicates start unlinked.
+          token: { ...w.token, name: newName, figmaId: null },
+        }
+      })
+      const rewired = duplicates.map(w => {
+        const mapped = w.token.referenceTarget && renamed.get(w.token.referenceTarget)
+        return mapped ? { ...w, token: { ...w.token, referenceTarget: mapped } } : w
+      })
+
+      const lastIndex = members[members.length - 1].index
+      const next = [...prev]
+      next.splice(lastIndex + 1, 0, ...rewired)
+      return next
+    })
   }
 
   function focusCell(row: number, col: number) {
@@ -3564,6 +3666,21 @@ export function TokenEditor({
                     <DropdownMenuItem onClick={() => startEditingGroup(layer, group)}>
                       <PencilIcon />
                       Rename
+                    </DropdownMenuItem>
+                  )}
+                  {depth !== 0 && (
+                    <DropdownMenuItem onClick={() => duplicateGroup(layer, group)}>
+                      <CopyIcon />
+                      Duplicate
+                    </DropdownMenuItem>
+                  )}
+                  {depth !== 0 && (
+                    <DropdownMenuItem
+                      variant="destructive"
+                      onClick={() => openDeleteGroupDialog(layer, group, depth)}
+                    >
+                      <Trash2Icon />
+                      Delete
                     </DropdownMenuItem>
                   )}
                 </DropdownMenuContent>
@@ -4776,10 +4893,15 @@ export function TokenEditor({
             {deleteDraft && (
               <>
                 <DialogHeader>
-                  <DialogTitle>Delete &quot;{deleteDraft.name}&quot;?</DialogTitle>
+                  <DialogTitle>
+                    Delete &quot;{deleteDraft.name}&quot;{deleteDraft.ids.length > 1 ? ' group' : ''}?
+                  </DialogTitle>
                   <DialogDescription>
+                    {deleteDraft.ids.length > 1
+                      ? `This deletes ${deleteDraft.ids.length} tokens. `
+                      : ''}
                     {deleteDraft.figmaLinked
-                      ? 'This token is linked to Figma — deleting it here also deletes the variable in Figma. '
+                      ? `${deleteDraft.ids.length > 1 ? 'Some of these tokens are' : 'This token is'} linked to Figma — deleting ${deleteDraft.ids.length > 1 ? 'them' : 'it'} here also deletes the variable${deleteDraft.ids.length > 1 ? 's' : ''} in Figma. `
                       : ''}
                     Nothing happens until you submit and it&apos;s reviewed and merged.
                   </DialogDescription>
@@ -4790,8 +4912,9 @@ export function TokenEditor({
                     <TriangleAlertIcon />
                     <AlertDescription>
                       &quot;{deleteDraft.name}&quot; is referenced by {deleteDraft.usageCount}{' '}
-                      {deleteDraft.usageCount === 1 ? 'other token' : 'other tokens'} and can&apos;t be deleted. Remove
-                      those references first.
+                      {deleteDraft.usageCount === 1 ? 'other token' : 'other tokens'} outside{' '}
+                      {deleteDraft.ids.length > 1 ? 'the group' : 'it'} and can&apos;t be deleted. Remove those
+                      references first.
                     </AlertDescription>
                   </Alert>
                 ) : (
@@ -4805,7 +4928,7 @@ export function TokenEditor({
                       onKeyDown={e => {
                         if (e.key === 'Enter' && deleteConfirmText === deleteDraft.name) {
                           e.preventDefault()
-                          confirmDeleteToken()
+                          confirmDelete()
                         }
                       }}
                     />
@@ -4820,7 +4943,7 @@ export function TokenEditor({
                     type="button"
                     variant="destructive"
                     disabled={deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name}
-                    onClick={confirmDeleteToken}
+                    onClick={confirmDelete}
                   >
                     Delete
                   </Button>

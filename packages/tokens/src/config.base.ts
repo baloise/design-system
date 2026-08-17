@@ -163,6 +163,7 @@ const config: Config = {
         'ds/js/name',
         'ds/color/hex',
         'ds/size/round',
+        'ds/dimension/js',
         'ds/font-weight',
         'ds/font-family',
         'ds/shadow',

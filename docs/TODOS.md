@@ -48,76 +48,71 @@ These improvements help our components work seamlessly across all supported fram
 
 ### App Scope
 
-| Component        | Type   | Shadow | Docs | Tokens | A11y | Visual | Component |
-| ---------------- | ------ | ------ | ---- | ------ | ---- | ------ | --------- |
-| heading          | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| text             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| label            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| link             | CSS    | ⛔     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| stack            | Hybrid | ⛔     | ✅   | ⛔     | ✅   | ✅     | ✅        |
-| divider          | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| tag              | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| button           | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| notification     | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| unordered-list   | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| ordered-list     | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| description-list | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| card             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| accordion        | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| list             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| icon             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| spinner          | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| logo             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| close            | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| badge            | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| toast            | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| snackbar         | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| input            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| textarea         | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| shape            | WC     | ✅     | ✅   | ❓     | ✅   | ✅     | ✅        |
-| input            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| textarea         | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| radio            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| checkbox         | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| segment          | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| app              | WC     | ✅     | ⬜   | ✅     | ⬜   | ⬜     | ⬜        |
-| number-input     | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| progress-bar     | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| pagination       | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| tabs             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| steps            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| carousel         | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| table            | Hybrid | ❓     | ✅   | ✅     | ✅   | ✅     | ❓        |
-| modal            | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| tooltip          | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| popover          | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| hint             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| data             | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| footer           | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| file-upload      | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| select           | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| navbar           | Hybrid | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| time-input       | CSS    | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| date             | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| dropdown/select  | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
-| autocomplete     | WC     | ✅     | ✅   | ✅     | ✅   | ✅     | ✅        |
+| Component        | Type     | Shadow | Docs | A11y | Visual | Component | Tokens | Figma |
+| ---------------- | -------- | ------ | ---- | ---- | ------ | --------- | ------ | ----- |
+| app              | WC       | ✅     | ⬜   | ⛔   | ⛔     | ✅        | ⬜     | ⬜    |
+| icon             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| brand-icon       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| heading          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| text             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| label            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| link             | CSS      | ⛔     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ⬜     | ⬜    |
+| container        | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ⬜     | ⬜    |
+| form             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
+| grid             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
+| picture          | CSS      | ❓     | ❓   | ✅   | ✅     | ❓        | ❓     | ⬜    |
+| stack & content  | WC & CSS | ⛔     | ✅   | ✅   | ✅     | ✅        | ⛔     | ⬜    |
+| divider          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| spinner          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| progress-bar     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| shape            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ❓     | ⬜    |
+| close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| accordion        | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| footer           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| notification     | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| snackbar         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| toast            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| pagination       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| carousel         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| tabs             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| steps            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| modal            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| tooltip          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| popover          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| hint             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| sheet            | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| navbar           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| input            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| textarea         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| radio            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| toggle           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| checkbox         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| segment          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| number-input     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| file-upload      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| select           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| time-input       | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| date             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| input-slider     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| input-stepper    | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| data             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| ag-grid          | Lib      | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
 
-### Extended Scope (2.0)
+## Tokens & Figma
 
-| Component           | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
-| ------------------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
-| input-slider        | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| input-stepper       | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| date/inline         | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| select/mobile/modal | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| forms/vertical      | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| sheet               | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| menu                | WC   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| ag-grid             | Lib  | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-
-### Website Scope
-
-| Component        | Type | Shadow | Docs | Tokens | A11y | Visual | Component |
-| ---------------- | ---- | ------ | ---- | ------ | ---- | ------ | --------- |
-| stage            | ❓   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
-| tabs collapsable | ❓   | ⬜     | ⬜   | ⬜     | ⬜   | ⬜     | ⬜        |
+1.  Lint component
+2.  Check Design tokens
+3.  Add missing size tokens
+4.  Use new token types
+5.  Remove unuese styles keep it MVP

@@ -9,6 +9,7 @@ import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMa
 import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
+import { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
 import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
@@ -24,7 +25,7 @@ import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./com
 import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
-import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
@@ -53,6 +54,7 @@ export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMa
 export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
+export { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
 export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
@@ -68,7 +70,7 @@ export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./com
 export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
-export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
@@ -257,6 +259,44 @@ export namespace Components {
         "size"?: BadgeSize;
     }
     /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
+    interface DsBrandIcon {
+        /**
+          * The color variant of the icon.
+         */
+        "color"?: IconColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src": string;
+        /**
+          * Svg content.
+          * @default ''
+         */
+        "svg": string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+          * @default false
+         */
+        "tile": boolean;
+    }
+    /**
      * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
      */
     interface DsButton {
@@ -377,9 +417,8 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Size of the button
-          * @default undefined
          */
-        "size": ButtonSize;
+        "size"?: ButtonSize;
         /**
           * If `true` the width of the buttons is limited
           * @default false
@@ -1372,7 +1411,7 @@ export namespace Components {
         /**
           * The theme type of the button.
          */
-        "color"?: IconColor;
+        "color"?: IconColor1;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -1405,14 +1444,9 @@ export namespace Components {
          */
         "shadow": boolean;
         /**
-          * If `true` the icon is displayed in a circle with a background color.
-          * @default ''
-         */
-        "shape": IconShape;
-        /**
           * Defines the size of the icon.
          */
-        "size": IconSize;
+        "size"?: IconSize1;
         /**
           * URL of an SVG file to fetch and display.
           * @default ''
@@ -1423,16 +1457,6 @@ export namespace Components {
           * @default ''
          */
         "svg": string;
-        /**
-          * If `true` the icon acts as a tile with a background color.
-          * @default false
-         */
-        "tile": boolean;
-        /**
-          * If `true` the icon acts as a tile with a background color. Default is purple
-          * @default 'purple'
-         */
-        "tileColor": IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -2802,9 +2826,8 @@ export namespace Components {
         "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
-        "color": SnackbarColor;
+        "color"?: SnackbarColor;
         /**
           * Defines the heading of the notification.
           * @default ''
@@ -3402,9 +3425,8 @@ export namespace Components {
         "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
-        "color": ToastColor;
+        "color"?: ToastColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * @default 0
@@ -3759,6 +3781,15 @@ declare global {
     var HTMLDsBadgeElement: {
         prototype: HTMLDsBadgeElement;
         new (): HTMLDsBadgeElement;
+    };
+    /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
+    interface HTMLDsBrandIconElement extends Components.DsBrandIcon, HTMLStencilElement {
+    }
+    var HTMLDsBrandIconElement: {
+        prototype: HTMLDsBrandIconElement;
+        new (): HTMLDsBrandIconElement;
     };
     interface HTMLDsButtonElementEventMap {
         "dsClick": ButtonClickDetail;
@@ -4830,6 +4861,7 @@ declare global {
         "ds-alert-container": HTMLDsAlertContainerElement;
         "ds-app": HTMLDsAppElement;
         "ds-badge": HTMLDsBadgeElement;
+        "ds-brand-icon": HTMLDsBrandIconElement;
         "ds-button": HTMLDsButtonElement;
         "ds-button-group": HTMLDsButtonGroupElement;
         "ds-card": HTMLDsCardElement;
@@ -5064,6 +5096,44 @@ declare namespace LocalJSX {
         "size"?: BadgeSize;
     }
     /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
+    interface DsBrandIcon {
+        /**
+          * The color variant of the icon.
+         */
+        "color"?: IconColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src"?: string;
+        /**
+          * Svg content.
+          * @default ''
+         */
+        "svg"?: string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+          * @default false
+         */
+        "tile"?: boolean;
+    }
+    /**
      * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
      */
     interface DsButton {
@@ -5208,7 +5278,6 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Size of the button
-          * @default undefined
          */
         "size"?: ButtonSize;
         /**
@@ -6270,7 +6339,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button.
          */
-        "color"?: IconColor;
+        "color"?: IconColor1;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -6302,14 +6371,9 @@ declare namespace LocalJSX {
          */
         "shadow"?: boolean;
         /**
-          * If `true` the icon is displayed in a circle with a background color.
-          * @default ''
-         */
-        "shape"?: IconShape;
-        /**
           * Defines the size of the icon.
          */
-        "size"?: IconSize;
+        "size"?: IconSize1;
         /**
           * URL of an SVG file to fetch and display.
           * @default ''
@@ -6320,16 +6384,6 @@ declare namespace LocalJSX {
           * @default ''
          */
         "svg"?: string;
-        /**
-          * If `true` the icon acts as a tile with a background color.
-          * @default false
-         */
-        "tile"?: boolean;
-        /**
-          * If `true` the icon acts as a tile with a background color. Default is purple
-          * @default 'purple'
-         */
-        "tileColor"?: IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -7812,7 +7866,6 @@ declare namespace LocalJSX {
         "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
         "color"?: SnackbarColor;
         /**
@@ -8450,7 +8503,6 @@ declare namespace LocalJSX {
         "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
         "color"?: ToastColor;
         /**
@@ -8661,6 +8713,15 @@ declare namespace LocalJSX {
         "color": BadgeColor;
         "position": BadgePosition;
         "pulse": boolean;
+    }
+    interface DsBrandIconAttributes {
+        "svg": string;
+        "src": string;
+        "size": IconSize;
+        "color": IconColor;
+        "tile": boolean;
+        "disabled": boolean;
+        "invalid": boolean;
     }
     interface DsButtonAttributes {
         "color": ButtonColor;
@@ -8899,9 +8960,6 @@ declare namespace LocalJSX {
         "src": string;
         "size": IconSize;
         "color": IconColor;
-        "shape": IconShape;
-        "tile": boolean;
-        "tileColor": IconTileColor;
         "inline": boolean;
         "inverted": boolean;
         "turn": boolean;
@@ -9340,6 +9398,7 @@ declare namespace LocalJSX {
         "ds-alert-container": Omit<DsAlertContainer, keyof DsAlertContainerAttributes> & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes]?: DsAlertContainer[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `attr:${K}`]?: DsAlertContainerAttributes[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `prop:${K}`]?: DsAlertContainer[K] };
         "ds-app": Omit<DsApp, keyof DsAppAttributes> & { [K in keyof DsApp & keyof DsAppAttributes]?: DsApp[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `attr:${K}`]?: DsAppAttributes[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `prop:${K}`]?: DsApp[K] };
         "ds-badge": Omit<DsBadge, keyof DsBadgeAttributes> & { [K in keyof DsBadge & keyof DsBadgeAttributes]?: DsBadge[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `attr:${K}`]?: DsBadgeAttributes[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `prop:${K}`]?: DsBadge[K] };
+        "ds-brand-icon": Omit<DsBrandIcon, keyof DsBrandIconAttributes> & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes]?: DsBrandIcon[K] } & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes as `attr:${K}`]?: DsBrandIconAttributes[K] } & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes as `prop:${K}`]?: DsBrandIcon[K] };
         "ds-button": Omit<DsButton, keyof DsButtonAttributes> & { [K in keyof DsButton & keyof DsButtonAttributes]?: DsButton[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `attr:${K}`]?: DsButtonAttributes[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `prop:${K}`]?: DsButton[K] };
         "ds-button-group": Omit<DsButtonGroup, keyof DsButtonGroupAttributes> & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes]?: DsButtonGroup[K] } & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes as `attr:${K}`]?: DsButtonGroupAttributes[K] } & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes as `prop:${K}`]?: DsButtonGroup[K] };
         "ds-card": Omit<DsCard, keyof DsCardAttributes> & { [K in keyof DsCard & keyof DsCardAttributes]?: DsCard[K] } & { [K in keyof DsCard & keyof DsCardAttributes as `attr:${K}`]?: DsCardAttributes[K] } & { [K in keyof DsCard & keyof DsCardAttributes as `prop:${K}`]?: DsCard[K] };
@@ -9430,6 +9489,10 @@ declare module "@stencil/core" {
              * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
              */
             "ds-badge": LocalJSX.IntrinsicElements["ds-badge"] & JSXBase.HTMLAttributes<HTMLDsBadgeElement>;
+            /**
+             * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+             */
+            "ds-brand-icon": LocalJSX.IntrinsicElements["ds-brand-icon"] & JSXBase.HTMLAttributes<HTMLDsBrandIconElement>;
             /**
              * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
              */

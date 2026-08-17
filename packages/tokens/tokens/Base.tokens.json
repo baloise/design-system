@@ -3485,14 +3485,6 @@
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
         },
-        "Danger": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
-        },
-        "White": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.White}"
-        },
         "Grey": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Grey}"
@@ -3500,30 +3492,44 @@
         "Disabled": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.GreyDark}"
+        },
+        "Invalid": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+        },
+        "Inverted": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.White}"
         }
       },
+      "Size": {
+        "SM": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.14}"
+        },
+        "Base": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.16}"
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.24}"
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.32}"
+        },
+        "XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.40}"
+        }
+      }
+    },
+    "BrandIcon": {
       "Tile": {
         "Radius": {
           "$type": "dimension",
           "$value": "{🔗 Alias.🔵 Radius.Base}"
-        },
-        "Color": {
-          "Purple": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.PurpleLighter}"
-          },
-          "Red": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.RedLighter}"
-          },
-          "Green": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.GreenLighter}"
-          },
-          "Yellow": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.YellowLighter}"
-          }
         },
         "Size": {
           "Base": {
@@ -3559,37 +3565,127 @@
         }
       },
       "Size": {
-        "XS": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.12}"
-        },
         "SM": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.14}"
-        },
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.16}"
-        },
-        "MD": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.24}"
-        },
-        "LG": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.32}"
-        },
-        "XL": {
           "$type": "dimension",
           "$value": "{🌐 Global.🔤 Font.Size.40}"
         },
-        "2XL": {
+        "Base": {
           "$type": "dimension",
           "$value": "{🌐 Global.🔤 Font.Size.80}"
         },
-        "3XL": {
+        "LG": {
           "$type": "dimension",
           "$value": "{🌐 Global.🔤 Font.Size.176}"
+        }
+      },
+      "Color": {
+        "Green": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.GreenLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Green.6}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Green.3}"
+          }
+        },
+        "Invalid": {
+          "Level1": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.DangerLighter}"
+          }
+        },
+        "Disabled": {
+          "Level1": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.GreyDark}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.GreyDark}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.GreyDark}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.Grey}"
+          }
+        },
+        "Purple": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.PurpleLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Purple.6}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Purple.3}"
+          }
+        },
+        "Red": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.RedLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Red.6}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Red.3}"
+          }
+        },
+        "Yellow": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Background.Color.YellowLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Yellow.6}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Yellow.3}"
+          }
         }
       }
     },
@@ -4805,13 +4901,13 @@
           "$type": "color",
           "$value": "{🧩 Component.Icon.Color.Warning}"
         },
-        "Danger": {
-          "$type": "color",
-          "$value": "{🧩 Component.Icon.Color.Danger}"
-        },
         "Radius": {
           "$type": "dimension",
           "$value": "{🔗 Alias.🔵 Radius.Rounded}"
+        },
+        "Danger": {
+          "$type": "color",
+          "$value": "{🧩 Component.Icon.Color.Invalid}"
         }
       },
       "Item": {

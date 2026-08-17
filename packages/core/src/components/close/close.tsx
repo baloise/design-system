@@ -111,7 +111,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
             disabled={this.disabled}
             inverted={this.inverted}
             color={this.buttonColor}
-            size={size === 'sm' ? 'sm' : size === 'md' ? 'lg' : ''}
+            size={size === 'sm' ? 'sm' : size === 'md' ? 'lg' : undefined}
           >
             {label}
           </ds-button>
