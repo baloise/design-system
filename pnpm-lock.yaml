@@ -340,16 +340,16 @@ importers:
   apps/storybook:
     dependencies:
       '@baloise/ds-assets':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../../packages/assets
       '@baloise/ds-core':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../../packages/core
       '@baloise/ds-css':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../../packages/css
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../../packages/tokens
       '@storybook/addon-docs':
         specifier: 'catalog:'
@@ -392,7 +392,7 @@ importers:
   apps/toky:
     dependencies:
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../../packages/tokens
       '@base-ui/react':
         specifier: 1.6.0
@@ -500,7 +500,7 @@ importers:
   packages/angular:
     dependencies:
       '@baloise/ds-core':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../core
       tslib:
         specifier: 'catalog:'
@@ -537,13 +537,13 @@ importers:
   packages/core:
     dependencies:
       '@baloise/ds-assets':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../assets
       '@baloise/ds-css':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../css
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../tokens
       '@floating-ui/dom':
         specifier: 1.8.0
@@ -586,7 +586,7 @@ importers:
         version: 2.8.1
     devDependencies:
       '@baloise/ds-playwright':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../playwright
       '@stencil/angular-output-target':
         specifier: 1.4.1
@@ -625,10 +625,10 @@ importers:
   packages/css:
     dependencies:
       '@baloise/ds-assets':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../assets
       '@baloise/ds-tokens':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../tokens
     devDependencies:
       autoprefixer:
@@ -666,7 +666,7 @@ importers:
   packages/react:
     dependencies:
       '@baloise/ds-core':
-        specifier: 20.0.0-next.8
+        specifier: 20.0.0-next.9
         version: link:../core
       '@stencil/react-output-target':
         specifier: 1.6.1
