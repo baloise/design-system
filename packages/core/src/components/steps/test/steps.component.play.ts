@@ -29,6 +29,30 @@ test.describe('panels variant — initial state', () => {
     await steps.assertPanelVisible('b')
   })
 
+  test('keeps the panel of an explicitly set disabled step visible', async ({ page }) => {
+    // Regression test: a consumer may set `value` to a step whose header
+    // navigation is disabled (e.g. a wizard that only allows Back/Next
+    // buttons, never clicking step headers) while still expecting that
+    // step's own panel content to render. `updateChildren()` must not
+    // null out an explicitly-set value just because its step is disabled —
+    // that guard is unnecessary, since `activateStep()` already refuses to
+    // move `value` onto a disabled step via user interaction, and the
+    // initial auto-select in `setup()` never overrides an explicit value.
+    await page.mount(`
+      <ds-steps value="a">
+        <ds-step name="a" label="Cart" disabled></ds-step>
+        <ds-step name="b" label="Shipping"></ds-step>
+        <ds-step-panel for="a">Content A</ds-step-panel>
+        <ds-step-panel for="b">Content B</ds-step-panel>
+      </ds-steps>
+    `)
+    const steps = new DsSteps(page.locator('ds-steps'))
+
+    await steps.assertStepSelected('a')
+    await steps.assertPanelVisible('a')
+    await steps.assertPanelHidden('b')
+  })
+
   test('skips disabled step when auto-selecting', async ({ page }) => {
     await page.mount(`
       <ds-steps>
@@ -103,9 +127,16 @@ test.describe('panels variant — interaction', () => {
     await page.keyboard.press('Tab')
     await expect(page.locator('#before')).toBeFocused()
 
+    // The disabled step header itself is skipped — but its panel is still
+    // the active/visible one (see the "keeps the panel of an explicitly set
+    // disabled step visible" test above) and, per the ARIA tabpanel pattern,
+    // a visible ds-step-panel carries tabIndex=0 so it remains reachable.
+    await page.keyboard.press('Tab')
+    await expect(page.locator('ds-step[name="b"]')).not.toBeFocused()
+    await expect(page.locator('ds-step-panel[for="b"]')).toBeFocused()
+
     await page.keyboard.press('Tab')
     await expect(page.locator('#after')).toBeFocused()
-    await expect(page.locator('ds-step[name="b"]')).not.toBeFocused()
   })
 })
 
