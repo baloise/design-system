@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
-import type { KeyboardEvent } from 'react'
+import type { CSSProperties, KeyboardEvent } from 'react'
 import { CheckIcon, SearchIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
@@ -14,8 +14,13 @@ export interface SearchSelectOption {
   // target) - absence means "not applicable", not "color unknown".
   swatch?: string
   // Short resolved-value summary shown right-aligned on the row (e.g. "1.5rem", "#F05D4D") -
-  // absence means "no summary available", not "empty value".
+  // absence means "no summary available", not "empty value". Mutually exclusive with
+  // borderPreview below - a row shows one or the other, never both.
   detail?: string
+  // Present only for border-typed reference targets - a little solid/dashed/dotted line segment
+  // right-aligned on the row, colored and styled to match what picking this option would actually
+  // resolve to, so a border's color+style is legible at a glance instead of guessed from its path.
+  borderPreview?: { color: string; cssStyle: string }
   // The option's dimension value normalized to px, for exact-value search (see parseDimensionQuery
   // below) — lets searching "4px" or "0.25rem" find only tokens whose value is exactly that,
   // regardless of which unit they're authored in, rather than substring-matching display text
@@ -164,15 +169,26 @@ export function SearchSelect({
                   />
                 )}
                 <span className="flex-1 truncate">{option.label}</span>
-                {option.detail && (
+                {option.borderPreview ? (
                   <span
-                    className={cn(
-                      'shrink-0 truncate text-xs',
-                      isActive ? 'text-primary-foreground/70' : 'text-muted-foreground',
-                    )}
-                  >
-                    {option.detail}
-                  </span>
+                    aria-hidden="true"
+                    className="h-0 w-7 shrink-0 border-t-2"
+                    style={{
+                      borderTopColor: option.borderPreview.color,
+                      borderTopStyle: option.borderPreview.cssStyle as CSSProperties['borderTopStyle'],
+                    }}
+                  />
+                ) : (
+                  option.detail && (
+                    <span
+                      className={cn(
+                        'shrink-0 truncate text-xs',
+                        isActive ? 'text-primary-foreground/70' : 'text-muted-foreground',
+                      )}
+                    >
+                      {option.detail}
+                    </span>
+                  )
                 )}
                 {isActive && <CheckIcon className="size-4 shrink-0" />}
               </button>

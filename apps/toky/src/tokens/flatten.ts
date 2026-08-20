@@ -1,4 +1,5 @@
-import type { FigmaId, FlatToken, TokenLayer } from './types'
+import { RESPONSIVE_DIMENSION_EXTENSION_KEY } from './types'
+import type { FigmaId, FlatToken, ResponsiveDimensionValue, TokenLayer } from './types'
 
 const LAYER_KEYS: Record<string, TokenLayer> = {
   '🌐 Global': 'Global',
@@ -36,6 +37,21 @@ function extractFigmaId(node: Record<string, unknown>): FigmaId | null {
   return null
 }
 
+// A responsive dimension token's breakpoint values live in $extensions, not
+// $value (decision 2) — only well-formed once all 3 keys are present, no
+// partial responsive tokens (decision 6). A token whose whole $value is a
+// reference can't also be responsive (see FlatToken.responsive), so this
+// isn't checked against referenceMatch here — the mutual exclusivity is
+// enforced by the editor, not by this reader.
+function extractResponsive(node: Record<string, unknown>): ResponsiveDimensionValue | null {
+  const extensions = node.$extensions
+  if (!isPlainObject(extensions)) return null
+  const responsive = extensions[RESPONSIVE_DIMENSION_EXTENSION_KEY]
+  if (!isPlainObject(responsive)) return null
+  if (!('mobile' in responsive) || !('tablet' in responsive) || !('desktop' in responsive)) return null
+  return { mobile: responsive.mobile, tablet: responsive.tablet, desktop: responsive.desktop }
+}
+
 function walk(node: Record<string, unknown>, path: string[], layer: TokenLayer, tokens: FlatToken[]): void {
   if (isLeaf(node)) {
     const rawValue = node.$value
@@ -51,6 +67,8 @@ function walk(node: Record<string, unknown>, path: string[], layer: TokenLayer, 
       resolvedValue: undefined,
       resolutionError: null,
       figmaId: extractFigmaId(node),
+      responsive: node.$type === 'dimension' ? extractResponsive(node) : null,
+      resolvedResponsive: null,
     })
     return
   }
@@ -136,9 +154,16 @@ export function resolveReferences(tokens: FlatToken[]): FlatToken[] {
     byPath.set(token.path.join('.'), token)
   }
 
+  const resolveResponsive = (responsive: ResponsiveDimensionValue | null): ResponsiveDimensionValue | null =>
+    responsive ? (resolveNestedReferences(responsive, byPath) as ResponsiveDimensionValue) : null
+
   return tokens.map(token => {
     if (!token.referenceTarget) {
-      return { ...token, resolvedValue: resolveNestedReferences(token.rawValue, byPath) }
+      return {
+        ...token,
+        resolvedValue: resolveNestedReferences(token.rawValue, byPath),
+        resolvedResponsive: resolveResponsive(token.responsive),
+      }
     }
 
     const visited = new Set<string>([token.path.join('.')])
@@ -158,7 +183,17 @@ export function resolveReferences(tokens: FlatToken[]): FlatToken[] {
       current = next
     }
 
-    return { ...token, resolvedValue: resolveNestedReferences(current.rawValue, byPath) }
+    return {
+      ...token,
+      resolvedValue: resolveNestedReferences(current.rawValue, byPath),
+      // A responsive dimension token's own $value mirrors its `mobile` breakpoint (decision 4 of
+      // docs/plans/responsive-dimension-token-plan.md), so whenever `mobile` is itself a reference,
+      // this token's OWN referenceTarget is non-null too — the whole-token chain-walk above exists
+      // for true aliases (a plain token pointing at another token), not for this case. Breakpoints
+      // must resolve off the token's own `responsive` field when it has one; only a true alias
+      // (token.responsive === null) falls back to whatever the chain-walk landed on.
+      resolvedResponsive: token.responsive ? resolveResponsive(token.responsive) : resolveResponsive(current.responsive),
+    }
   })
 }
 

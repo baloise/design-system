@@ -3,7 +3,9 @@ import { buildTokenIndex } from '../lib/alias.mjs'
 import { buildNameIndex, findCollectionAndModes } from '../lib/figma.mjs'
 import {
   figmaBorderSubValuesFor,
+  figmaResponsiveDimensionSubValuesFor,
   figmaShadowSubValuesFor,
+  figmaTypographySubValuesFor,
   figmaValueFor,
   flattenVariableId,
   resolvedTypeFor,
@@ -14,7 +16,9 @@ import {
   buildCreatePassPayload,
   collectNewlyCreatedIds,
   figmaBorderSubVariableName,
+  figmaResponsiveDimensionSubVariableName,
   figmaShadowSubVariableName,
+  figmaTypographySubVariableName,
   figmaVariableName,
   resolveTempIds,
 } from '../lib/write.mjs'
@@ -150,6 +154,16 @@ describe('flattenVariableId', () => {
     ])
   })
 
+  it('flattens a typography variableId object into 4 tagged entries', () => {
+    const id = { fontFamily: 'id-ff', fontSize: 'id-fs', fontWeight: 'id-fw', lineHeight: 'id-lh' }
+    expect(flattenVariableId(id)).toEqual([
+      { id: 'id-ff', subProperty: 'fontFamily' },
+      { id: 'id-fs', subProperty: 'fontSize' },
+      { id: 'id-fw', subProperty: 'fontWeight' },
+      { id: 'id-lh', subProperty: 'lineHeight' },
+    ])
+  })
+
   it('returns an empty list for a missing/undefined variableId', () => {
     expect(flattenVariableId(undefined)).toEqual([])
   })
@@ -200,6 +214,92 @@ describe('figmaBorderSubValuesFor', () => {
     const numericStyleToken = { path: ['Alias', 'Bad'], type: 'number', value: { kind: 'literal', value: 5 } }
     const badIndex = buildTokenIndex([colorToken, widthToken, numericStyleToken])
     expect(figmaBorderSubValuesFor({ ...borderValue, style: '{Alias.Bad}' }, badIndex)).toBeNull()
+  })
+})
+
+describe('figmaTypographySubValuesFor', () => {
+  // fontFamily/fontWeight are always {reference} strings (docs/plans/typography-token-type-
+  // plan.md decision 4) — figmaTypographySubValuesFor needs a tokenIndex to resolve them.
+  // fontSize/lineHeight are free literal-or-reference; this fixture exercises both shapes (fontSize
+  // a literal, lineHeight a reference) since resolveLiteral is a no-op passthrough for a literal.
+  const familyToken = {
+    path: ['Global', 'Font', 'Family', 'Heading'],
+    type: 'fontFamily',
+    value: { kind: 'literal', value: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'] },
+  }
+  const weightToken = {
+    path: ['Global', 'Font', 'Weight', '700'],
+    type: 'fontWeight',
+    value: { kind: 'literal', value: 700 },
+  }
+  const lineHeightToken = {
+    path: ['Global', 'Font', 'LineHeight', '2'],
+    type: 'number',
+    value: { kind: 'literal', value: 1.3 },
+  }
+  const tokenIndex = buildTokenIndex([familyToken, weightToken, lineHeightToken])
+
+  const typographyValue = {
+    fontFamily: '{Global.Font.Family.Heading}',
+    fontSize: { value: 16, unit: 'px' },
+    fontWeight: '{Global.Font.Weight.700}',
+    lineHeight: '{Global.Font.LineHeight.2}',
+  }
+
+  it('decomposes a typography value into 4 Figma-ready sub-values, resolving references', () => {
+    expect(figmaTypographySubValuesFor(typographyValue, tokenIndex)).toEqual({
+      fontFamily: 'BaloiseCreateHeadline',
+      fontSize: 16,
+      fontWeight: 'Bold',
+      lineHeight: 1.3,
+    })
+  })
+
+  it('returns null for a malformed value (missing sub-value)', () => {
+    expect(
+      figmaTypographySubValuesFor(
+        { fontFamily: typographyValue.fontFamily, fontSize: typographyValue.fontSize },
+        tokenIndex,
+      ),
+    ).toBeNull()
+  })
+
+  it('returns null when lineHeight does not resolve to a number', () => {
+    const stringLineHeightToken = { path: ['Global', 'Bad'], type: 'string', value: { kind: 'literal', value: 'nope' } }
+    const badIndex = buildTokenIndex([familyToken, weightToken, stringLineHeightToken])
+    expect(figmaTypographySubValuesFor({ ...typographyValue, lineHeight: '{Global.Bad}' }, badIndex)).toBeNull()
+  })
+})
+
+describe('figmaResponsiveDimensionSubValuesFor', () => {
+  // mobile/tablet/desktop are each free literal-or-reference (docs/plans/responsive-dimension-
+  // token-plan.md decision 3) — this fixture exercises both shapes (mobile a reference, tablet/
+  // desktop literals), same "resolveLiteral is a no-op passthrough for a literal" reasoning as
+  // typography's fontSize/lineHeight.
+  const space16Token = {
+    path: ['Global', 'Dimension', 'Space', '16'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 1, unit: 'rem' } },
+  }
+  const tokenIndex = buildTokenIndex([space16Token])
+
+  const responsiveValue = {
+    mobile: '{Global.Dimension.Space.16}',
+    tablet: { value: 24, unit: 'px' },
+    desktop: { value: 32, unit: 'px' },
+  }
+
+  it('decomposes a responsive dimension value into 3 Figma-ready px floats, resolving references and rem->px', () => {
+    expect(figmaResponsiveDimensionSubValuesFor(responsiveValue, tokenIndex)).toEqual({
+      mobile: 16,
+      tablet: 24,
+      desktop: 32,
+    })
+  })
+
+  it('returns null for a non-object value', () => {
+    expect(figmaResponsiveDimensionSubValuesFor(null, tokenIndex)).toBeNull()
+    expect(figmaResponsiveDimensionSubValuesFor('nope', tokenIndex)).toBeNull()
   })
 })
 
@@ -457,6 +557,250 @@ describe('border push (two-pass write payload)', () => {
     const created = collectNewlyCreatedIds([borderToken], idByPath)
     expect(created).toEqual([
       { path: borderToken.path, variableId: { color: 'real-c', width: 'real-w', style: 'real-s' } },
+    ])
+  })
+})
+
+describe('typography push (two-pass write payload)', () => {
+  const familyPrimitive = {
+    path: ['Global', 'Font', 'Family', 'Heading'],
+    type: 'fontFamily',
+    value: { kind: 'literal', value: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'] },
+  }
+  const weightPrimitive = {
+    path: ['Global', 'Font', 'Weight', '700'],
+    type: 'fontWeight',
+    value: { kind: 'literal', value: 700 },
+  }
+  const lineHeightPrimitive = {
+    path: ['Global', 'Font', 'LineHeight', '2'],
+    type: 'number',
+    value: { kind: 'literal', value: 1.3 },
+  }
+  const typographyToken = {
+    path: ['Global', 'Font', 'Typography', 'Test'],
+    type: 'typography',
+    value: {
+      kind: 'literal',
+      value: {
+        fontFamily: '{Global.Font.Family.Heading}',
+        fontSize: { value: 16, unit: 'px' },
+        fontWeight: '{Global.Font.Weight.700}',
+        lineHeight: '{Global.Font.LineHeight.2}',
+      },
+    },
+  }
+  const typographyRefToken = {
+    path: ['Tcs', 'Font', 'Typography', 'Test'],
+    type: 'typography',
+    value: { kind: 'reference', path: ['Global', 'Font', 'Typography', 'Test'] },
+  }
+  const typographyBaseTokens = [
+    familyPrimitive,
+    weightPrimitive,
+    lineHeightPrimitive,
+    typographyToken,
+    typographyRefToken,
+  ]
+
+  it('assigns 4 temp sub-ids to a never-synced typography token', () => {
+    const idByPath = assignVariableIds(typographyBaseTokens)
+    expect(idByPath.get('Global.Font.Typography.Test')).toEqual({
+      fontFamily: 'temp-Global.Font.Typography.Test-fontFamily',
+      fontSize: 'temp-Global.Font.Typography.Test-fontSize',
+      fontWeight: 'temp-Global.Font.Typography.Test-fontWeight',
+      lineHeight: 'temp-Global.Font.Typography.Test-lineHeight',
+    })
+  })
+
+  it('pass 1 creates 4 named sub-variables for a temp typography token, with the right resolvedType each', () => {
+    const idByPath = assignVariableIds(typographyBaseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens: typographyBaseTokens,
+      brandTokensByName: { Base: typographyBaseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    const typographyVariables = variables.filter(v => v.name.startsWith('Global/Font/Typography/Test/'))
+    expect(typographyVariables.map(v => v.name)).toEqual([
+      'Global/Font/Typography/Test/FontFamily',
+      'Global/Font/Typography/Test/FontSize',
+      'Global/Font/Typography/Test/FontWeight',
+      'Global/Font/Typography/Test/LineHeight',
+    ])
+    expect(typographyVariables.map(v => v.resolvedType)).toEqual(['STRING', 'FLOAT', 'STRING', 'FLOAT'])
+    expect(figmaTypographySubVariableName(typographyToken.path, 'fontSize')).toBe(
+      'Global/Font/Typography/Test/FontSize',
+    )
+  })
+
+  it('pass 1 writes 4 literal mode-values for a typography token, resolving its referenced fontFamily/fontWeight/lineHeight', () => {
+    const idByPath = assignVariableIds(typographyBaseTokens)
+    const { variableModeValues } = buildCreatePassPayload({
+      baseTokens: typographyBaseTokens,
+      brandTokensByName: { Base: typographyBaseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
+    expect(byId['temp-Global.Font.Typography.Test-fontFamily']).toBe('BaloiseCreateHeadline')
+    expect(byId['temp-Global.Font.Typography.Test-fontSize']).toBe(16)
+    expect(byId['temp-Global.Font.Typography.Test-fontWeight']).toBe('Bold')
+    expect(byId['temp-Global.Font.Typography.Test-lineHeight']).toBe(1.3)
+  })
+
+  it('pass 2 writes 4 alias mode-values for a typography reference, each pointing at the matching sub-property of the target', () => {
+    const idByPath = assignVariableIds(typographyBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Global.Font.Typography.Test-fontFamily': 'real-ff',
+      'temp-Global.Font.Typography.Test-fontSize': 'real-fs',
+      'temp-Global.Font.Typography.Test-fontWeight': 'real-fw',
+      'temp-Global.Font.Typography.Test-lineHeight': 'real-lh',
+      'temp-Tcs.Font.Typography.Test-fontFamily': 'real-alias-ff',
+      'temp-Tcs.Font.Typography.Test-fontSize': 'real-alias-fs',
+      'temp-Tcs.Font.Typography.Test-fontWeight': 'real-alias-fw',
+      'temp-Tcs.Font.Typography.Test-lineHeight': 'real-alias-lh',
+    })
+
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: typographyBaseTokens,
+      brandTokensByName: { Base: typographyBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variableModeValues).toHaveLength(4)
+    const fontSizeAlias = variableModeValues.find(v => v.variableId === 'real-alias-fs')
+    expect(fontSizeAlias.value).toEqual({ type: 'VARIABLE_ALIAS', id: 'real-fs' })
+  })
+
+  it('collectNewlyCreatedIds returns the whole 4-id object as one entry for a typography token', () => {
+    const idByPath = assignVariableIds(typographyBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Global.Font.Typography.Test-fontFamily': 'real-ff',
+      'temp-Global.Font.Typography.Test-fontSize': 'real-fs',
+      'temp-Global.Font.Typography.Test-fontWeight': 'real-fw',
+      'temp-Global.Font.Typography.Test-lineHeight': 'real-lh',
+    })
+
+    const created = collectNewlyCreatedIds([typographyToken], idByPath)
+    expect(created).toEqual([
+      {
+        path: typographyToken.path,
+        variableId: { fontFamily: 'real-ff', fontSize: 'real-fs', fontWeight: 'real-fw', lineHeight: 'real-lh' },
+      },
+    ])
+  })
+})
+
+describe('responsive dimension push (two-pass write payload)', () => {
+  const space16Primitive = {
+    path: ['Global', 'Dimension', 'Space', '16'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 1, unit: 'rem' } },
+  }
+  const responsiveToken = {
+    path: ['Alias', 'Space', 'Lg'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 16, unit: 'px' } },
+    responsive: {
+      mobile: '{Global.Dimension.Space.16}',
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    },
+  }
+  // A plain (non-responsive) dimension token that references the responsive one by whole value —
+  // exercises the buildAliasPassPayload guard: there's no single Figma variable a {mobile, tablet,
+  // desktop} target resolves to, so this alias must be skipped, not miswritten.
+  const dimensionRefToken = {
+    path: ['Tcs', 'Space', 'Lg'],
+    type: 'dimension',
+    value: { kind: 'reference', path: ['Alias', 'Space', 'Lg'] },
+  }
+  const responsiveBaseTokens = [space16Primitive, responsiveToken, dimensionRefToken]
+
+  it('assigns 3 temp sub-ids to a never-synced responsive dimension token', () => {
+    const idByPath = assignVariableIds(responsiveBaseTokens)
+    expect(idByPath.get('Alias.Space.Lg')).toEqual({
+      mobile: 'temp-Alias.Space.Lg-mobile',
+      tablet: 'temp-Alias.Space.Lg-tablet',
+      desktop: 'temp-Alias.Space.Lg-desktop',
+    })
+  })
+
+  it('pass 1 creates 3 named sub-variables for a temp responsive dimension token, all FLOAT', () => {
+    const idByPath = assignVariableIds(responsiveBaseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens: responsiveBaseTokens,
+      brandTokensByName: { Base: responsiveBaseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    const responsiveVariables = variables.filter(v => v.name.startsWith('Alias/Space/Lg/'))
+    expect(responsiveVariables.map(v => v.name)).toEqual([
+      'Alias/Space/Lg/Mobile',
+      'Alias/Space/Lg/Tablet',
+      'Alias/Space/Lg/Desktop',
+    ])
+    expect(responsiveVariables.map(v => v.resolvedType)).toEqual(['FLOAT', 'FLOAT', 'FLOAT'])
+    expect(figmaResponsiveDimensionSubVariableName(responsiveToken.path, 'tablet')).toBe('Alias/Space/Lg/Tablet')
+  })
+
+  it('pass 1 writes 3 literal mode-values for a responsive dimension token, resolving its referenced mobile breakpoint', () => {
+    const idByPath = assignVariableIds(responsiveBaseTokens)
+    const { variableModeValues } = buildCreatePassPayload({
+      baseTokens: responsiveBaseTokens,
+      brandTokensByName: { Base: responsiveBaseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
+    expect(byId['temp-Alias.Space.Lg-mobile']).toBe(16)
+    expect(byId['temp-Alias.Space.Lg-tablet']).toBe(24)
+    expect(byId['temp-Alias.Space.Lg-desktop']).toBe(32)
+  })
+
+  it('pass 2 skips a plain dimension token that references a responsive dimension token by whole value', () => {
+    const idByPath = assignVariableIds(responsiveBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Alias.Space.Lg-mobile': 'real-mobile',
+      'temp-Alias.Space.Lg-tablet': 'real-tablet',
+      'temp-Alias.Space.Lg-desktop': 'real-desktop',
+      'temp-Tcs.Space.Lg': 'real-ref',
+    })
+
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: responsiveBaseTokens,
+      brandTokensByName: { Base: responsiveBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variableModeValues.find(v => v.variableId === 'real-ref')).toBeUndefined()
+  })
+
+  it('collectNewlyCreatedIds returns the whole 3-id object as one entry for a responsive dimension token', () => {
+    const idByPath = assignVariableIds(responsiveBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Alias.Space.Lg-mobile': 'real-mobile',
+      'temp-Alias.Space.Lg-tablet': 'real-tablet',
+      'temp-Alias.Space.Lg-desktop': 'real-desktop',
+    })
+
+    const created = collectNewlyCreatedIds([responsiveToken], idByPath)
+    expect(created).toEqual([
+      {
+        path: responsiveToken.path,
+        variableId: { mobile: 'real-mobile', tablet: 'real-tablet', desktop: 'real-desktop' },
+      },
     ])
   })
 })

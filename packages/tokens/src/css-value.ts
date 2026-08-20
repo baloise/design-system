@@ -187,12 +187,120 @@ export const borderValueToCss = (value: unknown): string | null => {
   return `${cssWidth} ${style} ${cssColor}`
 }
 
+interface DtcgTypographyValue {
+  fontFamily: unknown
+  fontSize: unknown
+  fontWeight: unknown
+  lineHeight: unknown
+}
+
+export interface TypographyCssValue {
+  fontFamily: string
+  fontSize: string
+  fontWeight: string
+  lineHeight: string
+}
+
+// Suffix appended to a typography token's own CSS var name for each of its 4 longhand custom
+// properties, e.g. `--ds-typography-heading-1-font-family` (see
+// docs/plans/typography-token-type-plan.md decision 5 — 4 separate declarations, never a `font`
+// shorthand). Exported so both the real build's format step and Toky's live preview build the
+// exact same 4 names from one token path.
+export const TYPOGRAPHY_CSS_SUFFIXES: Record<keyof TypographyCssValue, string> = {
+  fontFamily: 'font-family',
+  fontSize: 'font-size',
+  fontWeight: 'font-weight',
+  lineHeight: 'line-height',
+}
+
+/**
+ * Turns a typography token's {fontFamily, fontSize, fontWeight, lineHeight} into 4 CSS-ready
+ * strings, one per sub-property. Reuses fontFamilyValueToCss/dimensionValueToCss per sub-value,
+ * same reasoning as shadowValueToCss/borderValueToCss.
+ *
+ * fontFamily/fontWeight are always references in this codebase (docs/plans/typography-token-type-
+ * plan.md decision 4), so by the time this runs in the real build (after `ds/font-family`/
+ * `ds/font-weight` have processed the referenced tokens), Style Dictionary has already substituted
+ * their *post-transform* string value — same "may arrive pre-stringified" duality borderValueToCss
+ * documents. fontSize/lineHeight are free literal-or-reference, so either sub-value may arrive as a
+ * raw DTCG value (literal, untouched by any sibling transform) or an already-transformed string
+ * (referenced a real Font.Size or Font.LineHeight token). Toky's live preview (via
+ * computePreviewTokens) always calls this on raw resolved values, never pre-stringified ones.
+ */
+export const typographyValueToCss = (value: unknown): TypographyCssValue | null => {
+  if (typeof value !== 'object' || value === null) return null
+  const { fontFamily, fontSize, fontWeight, lineHeight } = value as DtcgTypographyValue
+
+  const cssFontFamily =
+    typeof fontFamily === 'string' ? fontFamily : Array.isArray(fontFamily) ? fontFamilyValueToCss(fontFamily) : null
+  const cssFontSize = typeof fontSize === 'string' ? fontSize : dimensionValueToCss(fontSize)
+  const cssFontWeight =
+    typeof fontWeight === 'string' ? fontWeight : typeof fontWeight === 'number' ? `${fontWeight}` : null
+  const cssLineHeight =
+    typeof lineHeight === 'string' ? lineHeight : typeof lineHeight === 'number' ? `${lineHeight}` : null
+
+  if (cssFontFamily === null || cssFontSize === null || cssFontWeight === null || cssLineHeight === null) return null
+
+  return { fontFamily: cssFontFamily, fontSize: cssFontSize, fontWeight: cssFontWeight, lineHeight: cssLineHeight }
+}
+
+// The $extensions key a responsive dimension token's breakpoint values live under — see
+// docs/plans/responsive-dimension-token-plan.md. Duplicated (not shared) from
+// apps/toky/src/tokens/types.ts's identical constant, since the two packages have no common
+// module to import it from — same "two independent implementations agree on a vocabulary" pattern
+// as `com.figma.variableId` (see packages/tokens/CONTEXT.md's Figma Sync section).
+export const RESPONSIVE_DIMENSION_EXTENSION_KEY = 'com.helvetia.responsive'
+
+export interface ResponsiveDimensionCssValue {
+  mobile: string
+  tablet: string
+  desktop: string
+}
+
+// Suffix appended to a responsive dimension token's own CSS var name for each of its 3 breakpoint
+// declarations, e.g. `--ds-space-lg-mobile` — matches the -mobile/-tablet/-desktop convention the
+// pre-existing sibling-token responsive pattern already uses (see formatter.ts's
+// `ds/css/variables-responsive`), so that pattern's existing name-suffix-based -device media-query
+// splitting needs zero changes to also handle these (see docs/plans/responsive-dimension-token-
+// plan.md Phase 2's "key design win").
+export const RESPONSIVE_DIMENSION_CSS_SUFFIXES: Record<keyof ResponsiveDimensionCssValue, string> = {
+  mobile: 'mobile',
+  tablet: 'tablet',
+  desktop: 'desktop',
+}
+
+/**
+ * Turns a responsive dimension token's already-reference-resolved {mobile, tablet, desktop}
+ * breakpoint map into 3 CSS-ready size strings. "Already-resolved" mirrors typographyValueToCss's
+ * own precondition — this doesn't walk $extensions or resolve `{reference}` strings itself;
+ * callers do that first (Toky's flatten.ts via `resolvedResponsive`; formatter.ts's own
+ * dictionary-based lookup for the real build, since Style Dictionary never resolves references
+ * living inside $extensions the way it automatically does for $value — see the plan's "Open
+ * technical question"). Returns null (not a partial object) if any breakpoint is unresolvable,
+ * same "don't half-render" discipline as typographyValueToCss.
+ */
+export const responsiveDimensionValueToCss = (value: unknown): ResponsiveDimensionCssValue | null => {
+  if (typeof value !== 'object' || value === null) return null
+  const { mobile, tablet, desktop } = value as { mobile: unknown; tablet: unknown; desktop: unknown }
+  const cssMobile = dimensionValueToCss(mobile)
+  const cssTablet = dimensionValueToCss(tablet)
+  const cssDesktop = dimensionValueToCss(desktop)
+  if (cssMobile === null || cssTablet === null || cssDesktop === null) return null
+  return { mobile: cssMobile, tablet: cssTablet, desktop: cssDesktop }
+}
+
 /**
  * Turns a resolved DTCG token value into a CSS-ready string, for the live token preview
  * (`apps/toky`) to send as a `--ds-*` custom property value. Mirrors the `ds/color/rgba` /
  * `ds/size/round` / `ds/size/rem` Style Dictionary transforms via the functions above, so the
  * preview never drifts from what the build actually produces (see ADR-0021). Returns `null` for
  * value shapes it doesn't recognize, so the caller can skip that token rather than send garbage.
+ *
+ * No `'typography'` branch: unlike every other type here, one typography token maps to 4 CSS
+ * custom properties, not 1 (decision 5) — this function's single-`string`-or-`null` return shape
+ * can't carry that. Callers needing typography go straight to `typographyValueToCss` instead and
+ * fan the result out to 4 `--ds-*-{font-family,font-size,font-weight,line-height}` names
+ * themselves (see `apps/toky/src/tokens/css-preview.ts` and the `ds/css/variables-*` formatters).
  */
 export const resolvedValueToCss = (value: unknown, type: string, path: string[]): string | null => {
   if (type === 'color') {

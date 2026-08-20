@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'heading'
-const VARIANTS = ['basic', 'colors', 'sizes', 'shadow', 'no-wrap', 'spaces']
+const VARIANTS = ['basic', 'colors', 'display', 'sizes', 'visual-level', 'shadow', 'no-wrap', 'spaces']
 
 const image = screenshot(TAG)
 

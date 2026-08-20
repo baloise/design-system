@@ -81,7 +81,22 @@ export function validateWorkingTokens(working: WorkingToken[]): ValidationError[
       errors.push({ tokenKey: id, message: 'Value cannot be empty.', severity: 'error' })
     }
 
-    if (token.referenceTarget && !validPaths.has(token.referenceTarget)) {
+    // No partial responsive tokens (docs/plans/responsive-dimension-token-plan.md decision 6) —
+    // unlike every other sub-field in this file, this is an explicit hard rule, not left lax.
+    if (token.responsive) {
+      const missing = (['mobile', 'tablet', 'desktop'] as const).filter(bp => isEmptyValue(token.responsive?.[bp]))
+      if (missing.length > 0) {
+        errors.push({
+          tokenKey: id,
+          message: `Responsive value is missing ${missing.join(', ')}.`,
+          severity: 'error',
+        })
+      }
+    }
+
+    if (token.referenceTarget === path) {
+      errors.push({ tokenKey: id, message: 'A token cannot reference itself.', severity: 'error' })
+    } else if (token.referenceTarget && !validPaths.has(token.referenceTarget)) {
       errors.push({
         tokenKey: id,
         message: `"${toSlashPath(token.referenceTarget)}" does not match an existing token.`,

@@ -103,6 +103,8 @@ function flatToken(overrides: Partial<FlatToken>): FlatToken {
     resolvedValue: null,
     resolutionError: null,
     figmaId: null,
+    responsive: null,
+    resolvedResponsive: null,
     ...overrides,
   }
 }
@@ -159,6 +161,77 @@ describe('computePreviewTokens', () => {
     ]
 
     expect(computePreviewTokens(diff, working)).toEqual([])
+  })
+
+  // docs/plans/responsive-dimension-token-plan.md — no -device entry here, unlike the real build:
+  // the live preview posts plain inline overrides, which can't express a media-query switch.
+  it('maps a responsive dimension update entry to its 3 breakpoint-suffixed CSS vars', () => {
+    const path = ['🔗 Alias', 'SpaceLg']
+    const diff: TokenDiffEntry[] = [
+      {
+        kind: 'update',
+        layer: 'Alias',
+        oldPath: path,
+        newPath: path,
+        type: 'dimension',
+        value: { value: 16, unit: 'px' },
+        before: { value: 16, unit: 'px' },
+        responsive: {
+          mobile: { value: 16, unit: 'px' },
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+      },
+    ]
+    const working: WorkingToken[] = [
+      {
+        id: path.join('.'),
+        token: flatToken({
+          path,
+          name: 'SpaceLg',
+          layer: 'Alias',
+          type: 'dimension',
+          responsive: { mobile: { value: 16, unit: 'px' }, tablet: undefined, desktop: undefined },
+          resolvedResponsive: {
+            mobile: { value: 16, unit: 'px' },
+            tablet: { value: 24, unit: 'px' },
+            desktop: { value: 32, unit: 'px' },
+          },
+        }),
+      },
+    ]
+
+    expect(computePreviewTokens(diff, working)).toEqual([
+      { name: '--ds-alias-space-lg-mobile', value: '16px' },
+      { name: '--ds-alias-space-lg-tablet', value: '24px' },
+      { name: '--ds-alias-space-lg-desktop', value: '32px' },
+    ])
+  })
+
+  it('maps a responsive dimension delete entry to 3 null-value removals', () => {
+    const path = ['🔗 Alias', 'SpaceLg']
+    const diff: TokenDiffEntry[] = [
+      {
+        kind: 'delete',
+        layer: 'Alias',
+        oldPath: path,
+        newPath: null,
+        type: 'dimension',
+        value: undefined,
+        before: { value: 16, unit: 'px' },
+        responsive: {
+          mobile: { value: 16, unit: 'px' },
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+      },
+    ]
+
+    expect(computePreviewTokens(diff, [])).toEqual([
+      { name: '--ds-alias-space-lg-mobile', value: null },
+      { name: '--ds-alias-space-lg-tablet', value: null },
+      { name: '--ds-alias-space-lg-desktop', value: null },
+    ])
   })
 })
 

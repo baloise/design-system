@@ -8,6 +8,7 @@ import {
   numberValueToCssSize,
   roundNumberValue,
   shadowValueToCss,
+  typographyValueToCss,
 } from './css-value.js'
 import { tokenNameToCssVar } from './css-naming.js'
 
@@ -197,5 +198,24 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     name: `ds/border`,
     filter: token => token.$type === 'border',
     transform: token => borderValueToCss(token.$value ?? token.value),
+  })
+
+  /**
+   * Transform typography tokens ({fontFamily, fontSize, fontWeight, lineHeight}) into their 4
+   * CSS-ready sub-strings. Unlike every transform above, this doesn't produce the token's final
+   * `.value` directly usable by Style Dictionary's stock `css`/`variables` formatter — a typography
+   * token maps to 4 separate custom properties, not 1 (docs/plans/typography-token-type-plan.md
+   * decision 5). The `ds/css/variables-*` formatters (`formatter.ts`) expand each
+   * `$type: "typography"` token's `{fontFamily, fontSize, fontWeight, lineHeight}` value (the
+   * object this transform produces) into 4 token entries before handing off to
+   * `formattedVariables` — this transform's only job is getting each sub-value from "maybe still a
+   * reference / raw DTCG shape" to "final CSS string" first, same as ds/shadow/ds/border.
+   */
+  sd.registerTransform({
+    type: `value`,
+    transitive: true,
+    name: `ds/typography`,
+    filter: token => token.$type === 'typography',
+    transform: token => typographyValueToCss(token.$value ?? token.value),
   })
 }

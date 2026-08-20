@@ -228,14 +228,130 @@ export function isSyncableBorderToken(token) {
 }
 
 /**
+ * `typography` doesn't fit figmaValueFor's one-DTCG-value -> one-Figma-value shape either — Figma
+ * has no typography-object variable type, so a typography token needs 4 separate Figma variables
+ * (fontFamily, fontSize, fontWeight, lineHeight), one per sub-value. Same "no unsyncable shape"
+ * situation as border — no array/multi-layer case exists for typography either (see
+ * docs/plans/typography-token-type-plan.md decision 5 — a typography token's $value is always a
+ * single flat object).
+ *
+ * fontFamily/fontWeight are always `{reference}` strings (decision 4), same as border's
+ * color/width/style — resolved to a literal via `resolveLiteral` first. fontSize/lineHeight are
+ * free literal-or-reference, so `resolveLiteral` is a no-op passthrough for either shape (it only
+ * follows a `{reference}` string, returning anything else unchanged).
+ *
+ * @param {unknown} literalValue already-resolved (non-reference) `$value` of a typography token —
+ *   its `fontFamily`/`fontSize`/`fontWeight`/`lineHeight` fields may themselves still be
+ *   `{reference}` strings
+ * @param {Map<string, import('./tokens.mjs').Token>} tokenIndex
+ * @returns {{ fontFamily: string, fontSize: number, fontWeight: string, lineHeight: number } | null}
+ */
+export function figmaTypographySubValuesFor(literalValue, tokenIndex) {
+  if (typeof literalValue !== 'object' || literalValue === null) return null
+  const { fontFamily, fontSize, fontWeight, lineHeight } = literalValue
+  const fontFamilyLiteral = resolveLiteral(fontFamily, tokenIndex)
+  const fontSizeLiteral = resolveLiteral(fontSize, tokenIndex)
+  const fontWeightLiteral = resolveLiteral(fontWeight, tokenIndex)
+  const lineHeightLiteral = resolveLiteral(lineHeight, tokenIndex)
+  if (typeof lineHeightLiteral !== 'number') return null
+  return {
+    fontFamily: figmaValueFor('fontFamily', fontFamilyLiteral),
+    fontSize: figmaValueFor('dimension', fontSizeLiteral),
+    fontWeight: figmaValueFor('fontWeight', fontWeightLiteral),
+    lineHeight: lineHeightLiteral,
+  }
+}
+
+// Sub-property suffixes appended to a typography token's path to name its 4 decomposed Figma
+// variables, e.g. '🌐 Global/🔤 Font/Typography/Test/FontFamily'. Order matches
+// figmaTypographySubValuesFor's return shape.
+export const TYPOGRAPHY_SUB_PROPERTIES = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight']
+export const TYPOGRAPHY_SUB_PROPERTY_SUFFIX = {
+  fontFamily: 'FontFamily',
+  fontSize: 'FontSize',
+  fontWeight: 'FontWeight',
+  lineHeight: 'LineHeight',
+}
+export const TYPOGRAPHY_SUB_PROPERTY_RESOLVED_TYPE = {
+  fontFamily: 'STRING',
+  fontSize: 'FLOAT',
+  fontWeight: 'STRING',
+  lineHeight: 'FLOAT',
+}
+
+// Every typography token is eligible for sync — no unsyncable shape to exclude, same as border.
+export function isSyncableTypographyToken(token) {
+  return token.type === 'typography'
+}
+
+/**
+ * A responsive dimension token doesn't fit figmaValueFor's one-DTCG-value -> one-Figma-value shape
+ * either — Figma has no native responsive/breakpoint concept, so a responsive dimension token
+ * needs 3 separate Figma variables (mobile, tablet, desktop), one per breakpoint (see
+ * docs/plans/responsive-dimension-token-plan.md decision 8 — sibling variables, not modes, mirrors
+ * shadow/border/typography's own fan-out rather than the brand-mode mechanism). Unlike shadow (a
+ * distinct `$type`), this lives inside a plain `$type: "dimension"` token's `$extensions` (decision
+ * 2) — `isSyncableResponsiveDimensionToken` below is what actually detects it, not a `$type` check
+ * alone.
+ *
+ * Each breakpoint is free literal-or-reference (decision 3), same as border's width/color —
+ * resolved to a literal via `resolveLiteral` first.
+ *
+ * @param {unknown} literalValue a responsive dimension token's raw `$extensions.com.helvetia.responsive`
+ *   value — its `mobile`/`tablet`/`desktop` fields may themselves still be `{reference}` strings
+ * @param {Map<string, import('./tokens.mjs').Token>} tokenIndex
+ * @returns {{ mobile: number, tablet: number, desktop: number } | null}
+ */
+export function figmaResponsiveDimensionSubValuesFor(literalValue, tokenIndex) {
+  if (typeof literalValue !== 'object' || literalValue === null) return null
+  const { mobile, tablet, desktop } = literalValue
+  return {
+    mobile: figmaValueFor('dimension', resolveLiteral(mobile, tokenIndex)),
+    tablet: figmaValueFor('dimension', resolveLiteral(tablet, tokenIndex)),
+    desktop: figmaValueFor('dimension', resolveLiteral(desktop, tokenIndex)),
+  }
+}
+
+// Sub-property suffixes appended to a responsive dimension token's path to name its 3 decomposed
+// Figma variables, e.g. '🔗 Alias/↔️ Space/Lg/Mobile'. Order matches
+// figmaResponsiveDimensionSubValuesFor's return shape.
+export const RESPONSIVE_DIMENSION_SUB_PROPERTIES = ['mobile', 'tablet', 'desktop']
+export const RESPONSIVE_DIMENSION_SUB_PROPERTY_SUFFIX = {
+  mobile: 'Mobile',
+  tablet: 'Tablet',
+  desktop: 'Desktop',
+}
+export const RESPONSIVE_DIMENSION_SUB_PROPERTY_RESOLVED_TYPE = {
+  mobile: 'FLOAT',
+  tablet: 'FLOAT',
+  desktop: 'FLOAT',
+}
+
+function isRawResponsiveDimensionValue(value) {
+  return typeof value === 'object' && value !== null && 'mobile' in value && 'tablet' in value && 'desktop' in value
+}
+
+// A responsive dimension token is a `dimension` token carrying a well-formed
+// `$extensions.com.helvetia.responsive` — every *other* dimension token (the overwhelming
+// majority) stays on the single-Figma-variable path, so this can't just check `token.type` the
+// way isSyncableBorderToken/isSyncableTypographyToken do.
+export function isSyncableResponsiveDimensionToken(token) {
+  return token.type === 'dimension' && isRawResponsiveDimensionValue(token.responsive)
+}
+
+/**
  * Flattens a token's variableId into a list of plain string ids, tagged with which sub-property
  * (if any) each one represents — every other type has exactly one untagged id; a shadow token has
  * 5 (one per SHADOW_SUB_PROPERTIES entry), a border token has 3 (one per BORDER_SUB_PROPERTIES
- * entry). Used anywhere that needs to treat "this token's Figma identity" as a set of ids
- * regardless of how many it is (baseline bookkeeping, deletion detection) — see
- * docs/plans/shadow-token-type-plan.md and docs/plans/border-token-type-plan.md.
+ * entry), a typography token has 4 (one per TYPOGRAPHY_SUB_PROPERTIES entry), a responsive
+ * dimension token has 3 (one per RESPONSIVE_DIMENSION_SUB_PROPERTIES entry). Used anywhere that
+ * needs to treat "this token's Figma identity" as a set of ids regardless of how many it is
+ * (baseline bookkeeping, deletion detection) — see docs/plans/shadow-token-type-plan.md,
+ * docs/plans/border-token-type-plan.md, docs/plans/typography-token-type-plan.md, and
+ * docs/plans/responsive-dimension-token-plan.md.
  *
- * Distinguished by shape, not a type tag: a shadow id-set carries 'offsetX' (border never does);
+ * Distinguished by shape, not a type tag: a shadow id-set carries 'offsetX' (the others never do),
+ * a typography id-set carries 'fontFamily', a responsive dimension id-set carries 'mobile' —
  * everything else object-shaped is treated as a border id-set.
  *
  * @param {unknown} variableId a token's raw $extensions.com.figma.variableId (string, object, or undefined)
@@ -245,7 +361,7 @@ export function flattenVariableId(variableId) {
   if (!variableId) return []
   if (typeof variableId === 'string') return [{ id: variableId, subProperty: undefined }]
   if (typeof variableId === 'object') {
-    const subProperties = 'offsetX' in variableId ? SHADOW_SUB_PROPERTIES : BORDER_SUB_PROPERTIES
+    const subProperties = subPropertiesForVariableIdShape(variableId)
     return subProperties
       .filter(sub => variableId[sub])
       .map(sub => ({
@@ -254,4 +370,13 @@ export function flattenVariableId(variableId) {
       }))
   }
   return []
+}
+
+// Shared shape-detection used by flattenVariableId and write.mjs's resolveTempIds — kept in one
+// place so a 4th composite type only needs one new branch, not one per caller.
+export function subPropertiesForVariableIdShape(variableId) {
+  if ('offsetX' in variableId) return SHADOW_SUB_PROPERTIES
+  if ('fontFamily' in variableId) return TYPOGRAPHY_SUB_PROPERTIES
+  if ('mobile' in variableId) return RESPONSIVE_DIMENSION_SUB_PROPERTIES
+  return BORDER_SUB_PROPERTIES
 }

@@ -16,16 +16,14 @@ $host-selector: ('#text');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(text-color, inherit);
   @include vars.local(text-align, inherit);
-  @include vars.local(text-family, var(--ds-body-family));
-  @include vars.local(text-weight, var(--ds-body-weight));
+  @include vars.local(text-color, var(--ds-body-color));
+  @include vars.local(text-family, var(--ds-body-font-family));
+  @include vars.local(text-weight, var(--ds-body-font-weight));
   @include vars.local(text-line-height, var(--ds-body-line-height));
-  @include vars.local(text-size, var(--ds-alias-text-size-base-device));
-  @include vars.local(text-shadow, var(--ds-alias-shadow-text));
-  @include vars.local(text-space, var(--ds-body-space));
-
-  @include vars.local(text-shadow, none); // var(--ds-heading-shadow)
+  @include vars.local(text-space, var(--ds-body-font-space));
+  @include vars.local(text-size, var(--ds-body-font-size));
+  @include vars.local(text-shadow, none); // var(--ds-alias-text-shadow-elevated)
 }
 
 /**
@@ -139,7 +137,7 @@ $weights: ('light', 'regular', 'bold');
 // Shadow
 // --------------------------------
 @mixin shadow {
-  --mod-text-shadow: var(--ds-alias-text-shadow);
+  --mod-text-shadow: var(--ds-alias-text-shadow-elevated);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -174,27 +172,17 @@ $weights: ('light', 'regular', 'bold');
 // Colors
 // --------------------------------
 $colors: (
-  'white',
-  'black',
-  'primary',
-  'primary-hover',
-  'primary-active',
-  'inverted-primary',
-  'inverted-primary-hover',
-  'inverted-primary-active',
-  'primary-light',
-  'hint',
-  'grey-light',
-  'grey',
-  'grey-dark',
-  'disabled',
-  'inverted-disabled',
-  'info',
-  'warning',
-  'success',
   'danger',
-  'danger-hover',
-  'danger-active'
+  'disabled',
+  'grey',
+  'hint',
+  // 'placeholder',
+  'primary',
+  'success',
+  'warning',
+  'white',
+  'inverted-primary',
+  'inverted-disabled'
 );
 
 @mixin color($color) {

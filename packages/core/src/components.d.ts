@@ -1821,10 +1821,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * @default false
-         */
-        "hovered": boolean;
-        /**
           * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
           * @default ''
          */
@@ -1844,10 +1840,6 @@ export namespace Components {
           * @default false
          */
         "noWrap": boolean;
-        /**
-          * @default false
-         */
-        "pressed": boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
@@ -3183,9 +3175,8 @@ export namespace Components {
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
-          * @default ''
          */
-        "align": TextAlign;
+        "align"?: TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -3193,9 +3184,8 @@ export namespace Components {
         "bold": boolean;
         /**
           * Defines the color of the text.
-          * @default ''
          */
-        "color": TextColor;
+        "color"?: TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3206,10 +3196,6 @@ export namespace Components {
           * @default false
          */
         "heading": boolean;
-        /**
-          * @default false
-         */
-        "hovered": boolean;
         /**
           * If `true` the text is shown as a display inline
           * @default false
@@ -3231,10 +3217,6 @@ export namespace Components {
          */
         "noWrap": boolean;
         /**
-          * @default false
-         */
-        "pressed": boolean;
-        /**
           * If `true` adds a text shadow to improve readability on image background
           * @default false
          */
@@ -3245,9 +3227,8 @@ export namespace Components {
         "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
-        "space": TextSpace;
+        "space"?: TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -6789,10 +6770,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * @default false
-         */
-        "hovered"?: boolean;
-        /**
           * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
           * @default ''
          */
@@ -6812,10 +6789,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "noWrap"?: boolean;
-        /**
-          * @default false
-         */
-        "pressed"?: boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
@@ -8250,7 +8223,6 @@ declare namespace LocalJSX {
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
-          * @default ''
          */
         "align"?: TextAlign;
         /**
@@ -8260,7 +8232,6 @@ declare namespace LocalJSX {
         "bold"?: boolean;
         /**
           * Defines the color of the text.
-          * @default ''
          */
         "color"?: TextColor;
         /**
@@ -8273,10 +8244,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "heading"?: boolean;
-        /**
-          * @default false
-         */
-        "hovered"?: boolean;
         /**
           * If `true` the text is shown as a display inline
           * @default false
@@ -8298,10 +8265,6 @@ declare namespace LocalJSX {
          */
         "noWrap"?: boolean;
         /**
-          * @default false
-         */
-        "pressed"?: boolean;
-        /**
           * If `true` adds a text shadow to improve readability on image background
           * @default false
          */
@@ -8312,7 +8275,6 @@ declare namespace LocalJSX {
         "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
         "space"?: TextSpace;
         /**
@@ -9039,10 +9001,8 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "htmlFor": string;
         "htmlId": string;
-        "hovered": boolean;
         "invalid": boolean;
         "noWrap": boolean;
-        "pressed": boolean;
         "required": boolean;
         "size": LabelSize;
         "valid": boolean;
@@ -9317,12 +9277,10 @@ declare namespace LocalJSX {
         "color": TextColor;
         "disabled": boolean;
         "heading": boolean;
-        "hovered": boolean;
         "inline": boolean;
         "invalid": boolean;
         "inverted": boolean;
         "noWrap": boolean;
-        "pressed": boolean;
         "shadow": boolean;
         "size": TextSize;
         "space": TextSpace;

@@ -72,6 +72,9 @@ export function flattenTokens(tree, path = []) {
         value: parseValue(node.$value),
         variableId: extensions['com.figma.variableId'] ?? undefined,
         figmaScopes: extensions['com.figma.scopes'] ?? undefined,
+        // A dimension token's breakpoint values (docs/plans/responsive-dimension-token-plan.md) —
+        // undefined for every other type and for a plain (non-responsive) dimension token.
+        responsive: extensions['com.helvetia.responsive'] ?? undefined,
       })
     } else {
       tokens.push(...flattenTokens(node, nextPath))
@@ -92,6 +95,24 @@ export function flattenTokens(tree, path = []) {
  * (see the "Figma id metadata" note carried over from toky.md's
  * multi-brand section, and docs/adr/0012).
  */
+// A brand override's own $extensions.com.helvetia.responsive (if present) replaces Base's
+// wholesale, never merges field-by-field (docs/plans/responsive-dimension-token-plan.md decision
+// 7 — whole-token override only, same model typography's brand override already uses). If the
+// override doesn't carry one at all, the merged leaf gets none either — overriding $value to a
+// new literal is a complete replacement, not a partial edit that should still inherit Base's
+// breakpoints. Every other extension key (today, only com.figma.variableId, which a brand override
+// never carries of its own — see this file's own header comment) passes through from Base
+// untouched either way.
+function mergeLeafExtensions(baseExtensions, overrideExtensions) {
+  const merged = { ...baseExtensions }
+  if (overrideExtensions && 'com.helvetia.responsive' in overrideExtensions) {
+    merged['com.helvetia.responsive'] = overrideExtensions['com.helvetia.responsive']
+  } else {
+    delete merged['com.helvetia.responsive']
+  }
+  return merged
+}
+
 export function mergeBrandTree(base, brandOverride) {
   const result = {}
 
@@ -101,7 +122,13 @@ export function mergeBrandTree(base, brandOverride) {
 
     if (isTokenLeaf(baseNode)) {
       const overridesLeaf = overrideNode && typeof overrideNode === 'object' && '$value' in overrideNode
-      result[key] = overridesLeaf ? { ...baseNode, $value: overrideNode.$value } : baseNode
+      result[key] = overridesLeaf
+        ? {
+            ...baseNode,
+            $value: overrideNode.$value,
+            $extensions: mergeLeafExtensions(baseNode.$extensions, overrideNode.$extensions),
+          }
+        : baseNode
     } else {
       result[key] = mergeBrandTree(baseNode, typeof overrideNode === 'object' ? overrideNode : undefined)
     }

@@ -156,6 +156,41 @@ export function isLiteralValueEqual(dtcgType: string, a: unknown, b: unknown): b
       borderA.style === borderB.style
     )
   }
+  if (dtcgType === 'responsiveDimension') {
+    // Field-by-field, same reasoning as shadow/border/typography above — but unlike those, this
+    // isn't a real DTCG $type (docs/plans/responsive-dimension-token-plan.md decision 2 keeps
+    // responsive dimension tokens as `$type: "dimension"`); it's a synthetic value this function's
+    // callers (figma-pull.ts) pass in explicitly when they already know they're comparing two
+    // {mobile, tablet, desktop} breakpoint maps, not a token's real resolved $type. Each breakpoint
+    // is free literal-or-reference (decision 3) — 'dimension' already compares either shape
+    // correctly via the JSON.stringify fallback below (dimension has no dedicated branch of its
+    // own), same as border's width.
+    type ResponsiveDimensionLike = { mobile: unknown; tablet: unknown; desktop: unknown }
+    const responsiveA = a as ResponsiveDimensionLike | undefined
+    const responsiveB = b as ResponsiveDimensionLike | undefined
+    if (!responsiveA || !responsiveB) return responsiveA === responsiveB
+    return (
+      isLiteralValueEqual('dimension', responsiveA.mobile, responsiveB.mobile) &&
+      isLiteralValueEqual('dimension', responsiveA.tablet, responsiveB.tablet) &&
+      isLiteralValueEqual('dimension', responsiveA.desktop, responsiveB.desktop)
+    )
+  }
+  if (dtcgType === 'typography') {
+    // Field-by-field, same reasoning as shadow/border above. fontFamily/fontWeight compare as bare
+    // strings — both sides are already-resolved reference strings by the time this runs (decision
+    // 4), the same "always a reference, so both sides are already comparable strings" situation as
+    // border's `style`. fontSize/lineHeight compare as resolved literals (dimension/number).
+    type TypographyLike = { fontFamily: unknown; fontSize: unknown; fontWeight: unknown; lineHeight: unknown }
+    const typographyA = a as TypographyLike | undefined
+    const typographyB = b as TypographyLike | undefined
+    if (!typographyA || !typographyB) return typographyA === typographyB
+    return (
+      typographyA.fontFamily === typographyB.fontFamily &&
+      isLiteralValueEqual('dimension', typographyA.fontSize, typographyB.fontSize) &&
+      typographyA.fontWeight === typographyB.fontWeight &&
+      typographyA.lineHeight === typographyB.lineHeight
+    )
+  }
   return JSON.stringify(a) === JSON.stringify(b)
 }
 
@@ -205,20 +240,60 @@ export function isBorderFigmaId(value: unknown): value is Record<BorderSubProper
   )
 }
 
+// A typography token's Figma identity is 4 variableIds (fontFamily, fontSize, fontWeight,
+// lineHeight), not 1 — see docs/plans/typography-token-type-plan.md. Mirrors
+// scripts/figma-sync/lib/figma-value.mjs's TYPOGRAPHY_SUB_PROPERTIES (reimplemented, not imported —
+// Node-only module, outside apps/toky's boundary, per this file's header).
+export const TYPOGRAPHY_SUB_PROPERTIES = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight'] as const
+export type TypographySubProperty = (typeof TYPOGRAPHY_SUB_PROPERTIES)[number]
+
+export function isTypographyFigmaId(value: unknown): value is Record<TypographySubProperty, string> {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    TYPOGRAPHY_SUB_PROPERTIES.every(sub => typeof (value as Record<string, unknown>)[sub] === 'string')
+  )
+}
+
+// A responsive dimension token's Figma identity is 3 variableIds (mobile, tablet, desktop), not 1
+// — see docs/plans/responsive-dimension-token-plan.md decision 8. Mirrors
+// scripts/figma-sync/lib/figma-value.mjs's RESPONSIVE_DIMENSION_SUB_PROPERTIES (reimplemented, not
+// imported — Node-only module, outside apps/toky's boundary, per this file's header).
+export const RESPONSIVE_DIMENSION_SUB_PROPERTIES = ['mobile', 'tablet', 'desktop'] as const
+export type ResponsiveDimensionSubProperty = (typeof RESPONSIVE_DIMENSION_SUB_PROPERTIES)[number]
+
+export function isResponsiveDimensionFigmaId(value: unknown): value is Record<ResponsiveDimensionSubProperty, string> {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    RESPONSIVE_DIMENSION_SUB_PROPERTIES.every(sub => typeof (value as Record<string, unknown>)[sub] === 'string')
+  )
+}
+
 /**
  * Flattens a token's figmaId into a list of plain string ids, tagged with which sub-property (if
  * any) each one represents — every other type has exactly one untagged id; a shadow token has 5,
- * a border token has 3. Mirrors scripts/figma-sync/lib/figma-value.mjs's flattenVariableId.
- * Distinguished by shape, not a type tag — see that function's comment.
+ * a border token has 3, a typography token has 4. Mirrors
+ * scripts/figma-sync/lib/figma-value.mjs's flattenVariableId. Distinguished by shape, not a type
+ * tag — see that function's comment.
  */
-export function flattenFigmaId(
-  figmaId: FigmaId | null | undefined,
-): { id: string; subProperty?: ShadowSubProperty | BorderSubProperty }[] {
+export function flattenFigmaId(figmaId: FigmaId | null | undefined): {
+  id: string
+  subProperty?: ShadowSubProperty | BorderSubProperty | TypographySubProperty | ResponsiveDimensionSubProperty
+}[] {
   if (!figmaId) return []
   if (typeof figmaId === 'string') return [{ id: figmaId }]
   const record = figmaId as Record<string, string>
-  const subProperties: readonly (ShadowSubProperty | BorderSubProperty)[] =
-    'offsetX' in record ? SHADOW_SUB_PROPERTIES : BORDER_SUB_PROPERTIES
+  const subProperties: readonly (
+    ShadowSubProperty | BorderSubProperty | TypographySubProperty | ResponsiveDimensionSubProperty
+  )[] =
+    'offsetX' in record
+      ? SHADOW_SUB_PROPERTIES
+      : 'fontFamily' in record
+        ? TYPOGRAPHY_SUB_PROPERTIES
+        : 'mobile' in record
+          ? RESPONSIVE_DIMENSION_SUB_PROPERTIES
+          : BORDER_SUB_PROPERTIES
   return subProperties.filter(sub => record[sub]).map(sub => ({ id: record[sub], subProperty: sub }))
 }
 
@@ -311,4 +386,32 @@ export function dtcgBorderFromFigma(
   if (!style) return null
 
   return { color: dtcgColor, width, style }
+}
+
+/**
+ * Reconstructs a responsive dimension token's 3 breakpoint values from its 3 already-fetched Figma
+ * sub-values — the inverse of scripts/figma-sync/lib/figma-value.mjs's
+ * figmaResponsiveDimensionSubValuesFor. `localUnit` supplies each breakpoint's own unit, same
+ * per-sub-value convention as dtcgShadowLayerFromFigma. Unlike border's `style` (always
+ * reconstructed as a reference — see borderStyleReferenceFromKeyword), every breakpoint always
+ * reconstructs as a literal, never attempting to match back to a known primitive reference — same
+ * simpler policy border's own free literal-or-reference `width` field already uses on pull.
+ */
+export function dtcgResponsiveDimensionFromFigma(
+  subValues: Record<ResponsiveDimensionSubProperty, unknown>,
+  localUnit: (sub: ResponsiveDimensionSubProperty) => 'px' | 'rem',
+): Record<ResponsiveDimensionSubProperty, { value: number; unit: 'px' | 'rem' }> | null {
+  const dimension = (sub: ResponsiveDimensionSubProperty) => {
+    const raw = subValues[sub]
+    if (typeof raw !== 'number') return null
+    const unit = localUnit(sub)
+    return { value: unit === 'rem' ? raw / PX_PER_REM : raw, unit }
+  }
+
+  const mobile = dimension('mobile')
+  const tablet = dimension('tablet')
+  const desktop = dimension('desktop')
+  if (mobile === null || tablet === null || desktop === null) return null
+
+  return { mobile, tablet, desktop }
 }

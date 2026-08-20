@@ -16,11 +16,11 @@ $host-selector: ('#label');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(label-color, inherit);
-  @include vars.local(label-family, var(--ds-label-family));
-  @include vars.local(label-weight, var(--ds-label-weight));
-  @include vars.local(label-line-height, var(--ds-label-line-height));
-  @include vars.local(label-size, var(--ds-label-size-base-device));
+  @include vars.local(label-color, var(--ds-label-color-base));
+  @include vars.local(label-family, var(--ds-label-base-font-family));
+  @include vars.local(label-weight, var(--ds-label-base-font-weight));
+  @include vars.local(label-line-height, var(--ds-label-base-line-height));
+  @include vars.local(label-size, var(--ds-label-base-font-size));
 }
 
 /**
@@ -85,37 +85,14 @@ $host-selector: ('#label');
   */
 
 //
-// Family
-// --------------------------------
-
-@mixin family() {
-  --mod-label-family: var(--ds-alias-text-family-heading);
-}
-
-$sizes-for-heading: ('lg', 'xl', '2xl', '3xl');
-
-@include hybrid.styles($css-selector, $use-host) {
-  @each $token in $sizes-for-heading {
-    &.is-#{$token} {
-      @include family();
-    }
-  }
-}
-
-@include hybrid.host($use-host) {
-  @each $token in $sizes-for-heading {
-    :host(.is-#{$token}) {
-      @include family();
-    }
-  }
-}
-
-//
 // Sizes
 // --------------------------------
 
 @mixin size($level) {
-  --mod-label-size: var(--ds-label-size-#{$level}-device);
+  --mod-label-size: var(--ds-label-#{$level}-font-size);
+  --mod-label-weight: var(--ds-label-#{$level}-font-weight);
+  --mod-label-family: var(--ds-label-#{$level}-font-family);
+  --mod-label-line-height: var(--ds-label-#{$level}-line-height);
 }
 
 $size-aliases: (
@@ -163,36 +140,12 @@ $sizes: ('sm', 'base', 'lg', 'xl', '2xl', '3xl');
     --mod-label-color: var(--ds-label-color-danger);
   }
 
-  &.is-hovered {
-    --mod-label-color: var(--ds-label-color-base-hover);
-  }
-
-  &.is-pressed {
-    --mod-label-color: var(--ds-label-color-base-active);
-  }
-
-  &.is-danger.is-hovered {
-    --mod-label-color: var(--ds-label-color-danger-hover);
-  }
-
-  &.is-danger.is-pressed {
-    --mod-label-color: var(--ds-label-color-danger-active);
-  }
-
   &.is-disabled {
     --mod-label-color: var(--ds-label-color-disabled) !important;
   }
 }
 
 @include hybrid.host($use-host) {
-  :host(.is-hovered) {
-    --mod-label-color: var(--ds-label-color-base-hover);
-  }
-
-  :host(.is-pressed) {
-    --mod-label-color: var(--ds-label-color-base-active);
-  }
-
   :host(.is-valid) {
     --mod-label-color: var(--ds-label-color-success);
   }

@@ -75,6 +75,7 @@ export function createBrandConfig(mode: string): { config: Config; cleanup: () =
           'ds/font-family',
           'ds/dimension',
           'ds/shadow',
+          'ds/typography',
         ],
         basePxFontSize,
         buildPath: 'dist/',

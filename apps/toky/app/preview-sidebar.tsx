@@ -57,13 +57,16 @@ function getPreviewUrl(): string {
 }
 
 // "/components/badge/test/badge.visual.html" -> "components/badge/badge" - drops the fixed
-// "test/" segment and the ".visual.html" suffix (redundant once every option is a visual page),
-// keeping the label scannable in a narrow sidebar.
+// "test/" segment and the ".visual.html"/".style.html" suffix (redundant once every option is a
+// visual or style page), keeping the label scannable in a narrow sidebar. The suffix is kept as a
+// " (style)" marker for style pages, since a component can offer both variants side by side.
 function labelForPage(page: string): string {
-  return page
+  const isStyle = /\.style\.html$/.test(page)
+  const base = page
     .replace(/^\//, '')
-    .replace(/\.visual\.html$/, '')
+    .replace(/\.(visual|style)\.html$/, '')
     .replace(/\/test\//, '/')
+  return isStyle ? `${base} (style)` : base
 }
 
 export function PreviewSidebar({
@@ -90,9 +93,10 @@ export function PreviewSidebar({
 
   const [page, setPage] = useState(PLAYGROUND_PAGE)
   const [pickerOpen, setPickerOpen] = useState(false)
-  // Every *.visual.html page under packages/core's browsable source dirs (blocks, templates,
-  // foundation, components), fetched from the manifest packages/core's www build generates
-  // (see stencil.config.ts) - "Playground" is always offered even before/without this loading.
+  // Every *.visual.html and *.style.html page under packages/core's browsable source dirs
+  // (blocks, templates, foundation, components), fetched from the manifest packages/core's www
+  // build generates (see stencil.config.ts) - "Playground" is always offered even before/without
+  // this loading.
   const [availablePages, setAvailablePages] = useState<string[]>([])
 
   useEffect(() => {

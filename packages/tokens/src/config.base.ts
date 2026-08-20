@@ -14,7 +14,14 @@ const config: Config = {
       // transformGroup member is kept verbatim (so nothing else about this platform's output
       // changes) — including 'fontFamily/css', which already produces correct output and is why
       // there's no separate 'ds/font-family' transform anywhere — except 'shadow/css/shorthand',
-      // swapped for our own 'ds/shadow'.
+      // swapped for our own 'ds/shadow', and 'typography/css/shorthand', dropped entirely (not
+      // swapped) — it collapses a typography token's $value into a single `font` shorthand
+      // *string* before 'ds/typography' ever sees it, and there's no way to recover the original
+      // {fontFamily, fontSize, fontWeight, lineHeight} object from that string. This codebase wants
+      // 4 separate longhand custom properties per typography token, never a shorthand
+      // (docs/plans/typography-token-type-plan.md decision 5) — verified directly, same as
+      // shadow/border's own built-ins (the shorthand only became visible once a real
+      // $type: "typography" token existed to trigger its filter).
       transforms: [
         'attribute/cti',
         'name/kebab',
@@ -26,7 +33,6 @@ const config: Config = {
         'fontFamily/css',
         'cubicBezier/css',
         'strokeStyle/css/shorthand',
-        'typography/css/shorthand',
         'transition/css/shorthand',
         'ds/css/name',
         'ds/color/rgba',
@@ -35,6 +41,7 @@ const config: Config = {
         'ds/font-weight',
         'ds/shadow',
         'ds/border',
+        'ds/typography',
       ],
       basePxFontSize,
       buildPath: 'dist/',
@@ -43,43 +50,6 @@ const config: Config = {
         {
           format: 'ds/css/variables-responsive',
           destination: `css/${mode.toLowerCase()}.tokens.css`,
-        },
-      ],
-      options: {
-        outputReferences: true,
-      },
-    },
-    scss: {
-      // See the 'css' platform's comment above — 'scss' transformGroup has the exact same built-in
-      // shadow/color mismatch, fixed the same way.
-      transforms: [
-        'attribute/cti',
-        'name/kebab',
-        'time/seconds',
-        'html/icon',
-        'size/rem',
-        'color/css',
-        'asset/url',
-        'fontFamily/css',
-        'cubicBezier/css',
-        'strokeStyle/css/shorthand',
-        'typography/css/shorthand',
-        'transition/css/shorthand',
-        'ds/css/name',
-        'ds/color/rgba',
-        'ds/size/round',
-        'ds/size/rem',
-        'ds/font-weight',
-        'ds/shadow',
-        'ds/border',
-      ],
-      basePxFontSize,
-      buildPath: 'dist/',
-      prefix: 'ds',
-      files: [
-        {
-          format: 'scss/variables',
-          destination: `sass/${mode.toLowerCase()}.tokens.scss`,
         },
       ],
       options: {
@@ -116,12 +86,13 @@ const config: Config = {
         'ds/dimension',
         'ds/shadow',
         'ds/border',
+        'ds/typography',
       ],
       prefix: 'ds',
       buildPath: 'dist/',
       files: [
         {
-          format: 'json/flat',
+          format: 'ds/json/flat',
           destination: `web/${mode.toLowerCase()}.tokens.json`,
         },
       ],
@@ -144,6 +115,7 @@ const config: Config = {
         'ds/dimension',
         'ds/shadow',
         'ds/border',
+        'ds/typography',
       ],
       prefix: 'ds',
       buildPath: 'dist/',
@@ -168,12 +140,13 @@ const config: Config = {
         'ds/font-family',
         'ds/shadow',
         'ds/border',
+        'ds/typography',
       ],
       prefix: 'ds',
       buildPath: 'dist/',
       files: [
         {
-          format: 'javascript/es6',
+          format: 'ds/javascript/es6',
           destination: `js/${mode.toLowerCase()}.tokens.js`,
         },
       ],

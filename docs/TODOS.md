@@ -50,16 +50,16 @@ These improvements help our components work seamlessly across all supported fram
 
 | Component        | Type     | Shadow | Docs | A11y | Visual | Component | Tokens | Figma |
 | ---------------- | -------- | ------ | ---- | ---- | ------ | --------- | ------ | ----- |
-| app              | WC       | ✅     | ⬜   | ⛔   | ⛔     | ✅        | ⬜     | ⬜    |
-| icon             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| brand-icon       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| heading          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| text             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| label            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| link             | CSS      | ⛔     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| app              | WC       | ✅     | ⬜   | ⛔   | ⛔     | ✅        | ⛔     | ⛔    |
+| icon             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| brand-icon       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| heading          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| text             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| label            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| link             | CSS      | ⛔     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ⬜     | ⬜    |
 | container        | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ⬜     | ⬜    |
 | form             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |

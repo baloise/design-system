@@ -9,8 +9,8 @@ html {
 // Shared with :host so these resolve when this stylesheet is adopted into a shadow root
 html,
 :host {
-  background-color: var(--ds-body-color-background);
-  font-size: var(--ds-body-text-size);
+  background-color: var(--ds-body-surface);
+  font-size: var(--ds-body-font-size);
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -42,13 +42,13 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: var(--ds-body-family);
+  font-family: var(--ds-body-font-family);
 }
 
 body {
   color: var(--ds-body-color);
-  font-size: var(--ds-body-size);
-  font-weight: var(--ds-body-weight);
+  font-size: var(--ds-body-font-size);
+  font-weight: var(--ds-body-font-weight);
   line-height: var(--ds-body-line-height);
   -webkit-overflow-scrolling: auto;
 }

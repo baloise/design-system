@@ -1,4 +1,4 @@
-export const TEXT_ALIGNS = ['', 'left', 'right', 'center', 'justify'] as const
+export const TEXT_ALIGNS = ['left', 'right', 'center', 'justify'] as const
 export const TEXT_SIZES = [
   'xs',
   'sm',
@@ -13,26 +13,9 @@ export const TEXT_SIZES = [
   'small',
   'lead',
   'block',
-  '',
 ] as const
-export const TEXT_SPACES = ['none', 'bottom', 'top', 'all', ''] as const
-export const TEXT_COLORS = [
-  'light-blue',
-  'blue-dark',
-  'blue-light',
-  'primary-light',
-  'white',
-  'black',
-  'grey',
-  'primary',
-  'blue',
-  'info',
-  'success',
-  'warning',
-  'danger',
-  // | 'hint' // @deprecated use primary-light
-  '',
-] as const
+export const TEXT_SPACES = ['none', 'bottom', 'top', 'all'] as const
+export const TEXT_COLORS = ['white', 'grey', 'primary', 'hint', 'success', 'warning', 'danger', 'placeholder'] as const
 
 export type TextAlign = (typeof TEXT_ALIGNS)[number]
 export type TextSize = (typeof TEXT_SIZES)[number]

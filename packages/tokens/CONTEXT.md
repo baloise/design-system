@@ -163,7 +163,7 @@ Common categories in the Alias layer:
 - **Space** (2XS–4XL, plus responsive variants)
 - **Color** (backgrounds, borders, text, with light/dark variants)
 - **Border** (width, color, radius, plus a pilot set of `$type: "border"` composite tokens under `▭ Border.Composite.*` — `{color, width, style}`, each sub-value a reference to the existing `Color`/`Width`/new `Style` primitives; see `docs/plans/border-token-type-plan.md`)
-- **Text** (size, color, family, weight, line-height, shadow)
+- **Text** (size, color, family, weight, line-height, shadow, plus a `$type: "typography"` composite type — `{fontFamily, fontSize, fontWeight, lineHeight}` — fully supported in Toky/Style Dictionary/Figma sync, but no actual `Typography.*` tokens exist yet; the responsive-`fontSize` question a real pilot needs is still open. See `docs/plans/typography-token-type-plan.md`.)
 - **Opacity** (hidden, half, disabled, backdrop, full)
 - **Z-Index** (deep, masked, sticky, navigation, popup, modal, toast, tooltip)
 - **Shadow** (box, text)

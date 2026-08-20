@@ -53,6 +53,8 @@ function token(partial: Partial<FlatToken> & Pick<FlatToken, 'path'>): FlatToken
     resolvedValue: undefined,
     resolutionError: null,
     figmaId: null,
+    responsive: null,
+    resolvedResponsive: null,
     ...partial,
   }
 }
@@ -922,6 +924,401 @@ describe('buildBasePullPlan — border', () => {
   })
 })
 
+describe('buildBasePullPlan — typography', () => {
+  const typographyFigmaId = {
+    fontFamily: 'VariableID:typography:fontFamily',
+    fontSize: 'VariableID:typography:fontSize',
+    fontWeight: 'VariableID:typography:fontWeight',
+    lineHeight: 'VariableID:typography:lineHeight',
+  }
+
+  // fontFamily/fontWeight are always {reference} strings (docs/plans/typography-token-type-
+  // plan.md decision 4); fontSize/lineHeight here are literals (decision 4 also allows a
+  // reference for these two, but a literal exercises the "resolvedValue === rawValue" path most
+  // directly). resolvedValue is what flatten.ts's resolveReferences would produce.
+  const familyHeading = token({
+    path: ['🌐 Global', '🔤 Font', 'Family', 'Heading'],
+    type: 'fontFamily',
+    rawValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+    resolvedValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+  })
+  const familyBody = token({
+    path: ['🌐 Global', '🔤 Font', 'Family', 'Body'],
+    type: 'fontFamily',
+    rawValue: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+    resolvedValue: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+  })
+  const weight700 = token({
+    path: ['🌐 Global', '🔤 Font', 'Weight', '700'],
+    type: 'fontWeight',
+    rawValue: 700,
+    resolvedValue: 700,
+  })
+  const weight400 = token({
+    path: ['🌐 Global', '🔤 Font', 'Weight', '400'],
+    type: 'fontWeight',
+    rawValue: 400,
+    resolvedValue: 400,
+  })
+
+  const typography = token({
+    path: ['🌐 Global', '🔤 Font', 'Typography', 'Test'],
+    type: 'typography',
+    figmaId: typographyFigmaId,
+    rawValue: {
+      fontFamily: '{🌐 Global.🔤 Font.Family.Heading}',
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+      lineHeight: 1.3,
+    },
+    resolvedValue: {
+      fontFamily: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: 700,
+      lineHeight: 1.3,
+    },
+  })
+  const typographyPrimitives = [familyHeading, familyBody, weight700, weight400]
+
+  function typographyVariables(overrides?: {
+    fontFamily?: string
+    fontSize?: number
+    fontWeight?: string
+    lineHeight?: number
+  }): FigmaVariable[] {
+    const fontFamily = overrides?.fontFamily ?? 'BaloiseCreateHeadline'
+    const fontSize = overrides?.fontSize ?? 16
+    const fontWeight = overrides?.fontWeight ?? 'Bold'
+    const lineHeight = overrides?.lineHeight ?? 1.3
+    return [
+      variable({
+        id: typographyFigmaId.fontFamily,
+        name: 'x/FontFamily',
+        resolvedType: 'STRING',
+        valuesByMode: { [BASE_MODE]: fontFamily },
+      }),
+      variable({
+        id: typographyFigmaId.fontSize,
+        name: 'x/FontSize',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: fontSize },
+      }),
+      variable({
+        id: typographyFigmaId.fontWeight,
+        name: 'x/FontWeight',
+        resolvedType: 'STRING',
+        valuesByMode: { [BASE_MODE]: fontWeight },
+      }),
+      variable({
+        id: typographyFigmaId.lineHeight,
+        name: 'x/LineHeight',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: lineHeight },
+      }),
+    ]
+  }
+
+  it('is a no-op when all 4 sub-variables still match the local resolved typography value', () => {
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [working(typography)],
+      figmaMeta: meta(typographyVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(0)
+  })
+
+  it('proposes an update preserving fontSize/lineHeight when only fontFamily changed, resolved via the Font.Family primitive index', () => {
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [working(typography)],
+      figmaMeta: meta(typographyVariables({ fontFamily: 'BaloiseCreateText' })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('typography')
+    expect(plan.updates[0].rawValue).toEqual({
+      fontFamily: '{🌐 Global.🔤 Font.Family.Body}',
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+      lineHeight: 1.3,
+    })
+  })
+
+  it('proposes an update preserving the rest when only fontWeight changed, resolved via the Font.Weight primitive index', () => {
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [working(typography)],
+      figmaMeta: meta(typographyVariables({ fontWeight: 'Regular' })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toEqual({
+      fontFamily: '{🌐 Global.🔤 Font.Family.Heading}',
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: '{🌐 Global.🔤 Font.Weight.400}',
+      lineHeight: 1.3,
+    })
+  })
+
+  it('skips (does not auto-write a literal) when fontSize differs from what the local value resolves to', () => {
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [working(typography)],
+      figmaMeta: meta(typographyVariables({ fontSize: 20 })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.skipped.length).toBeGreaterThan(0)
+    expect(plan.skipped[0].reason).toMatch(/no safe way to auto-write a literal/)
+  })
+
+  it('skips when fontFamily does not match any known Font.Family primitive', () => {
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [working(typography)],
+      figmaMeta: meta(typographyVariables({ fontFamily: 'ComicSans' })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.skipped.length).toBeGreaterThan(0)
+    expect(plan.skipped[0].reason).toMatch(/doesn't match a known Font.Family primitive/)
+  })
+
+  it('does not half-apply an incomplete match — a missing sub-variable proposes a delete, not a partial update', () => {
+    const incomplete = typographyVariables().filter(v => v.id !== typographyFigmaId.lineHeight)
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [working(typography)],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(1)
+    expect(plan.deletes[0].path).toEqual(typography.path)
+  })
+
+  it('does not propose deleting a typography token already removed from working', () => {
+    const incomplete = typographyVariables().filter(v => v.id !== typographyFigmaId.lineHeight)
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography],
+      working: [],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.deletes).toHaveLength(0)
+  })
+
+  it('resolves a typography token whose 4 sub-values all alias another typography token’s matching sub-properties', () => {
+    const target = token({
+      path: ['🌐 Global', '🔤 Font', 'Typography', 'Other'],
+      type: 'typography',
+      figmaId: {
+        fontFamily: 'VariableID:target:fontFamily',
+        fontSize: 'VariableID:target:fontSize',
+        fontWeight: 'VariableID:target:fontWeight',
+        lineHeight: 'VariableID:target:lineHeight',
+      },
+      rawValue: {
+        fontFamily: '{🌐 Global.🔤 Font.Family.Body}',
+        fontSize: { value: 1.5, unit: 'rem' },
+        fontWeight: '{🌐 Global.🔤 Font.Weight.400}',
+        lineHeight: 1.5,
+      },
+      resolvedValue: {
+        fontFamily: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+        fontSize: { value: 1.5, unit: 'rem' },
+        fontWeight: 400,
+        lineHeight: 1.5,
+      },
+    })
+    const TYPOGRAPHY_SUB_PROPERTIES_FOR_TEST = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight'] as const
+    const targetVariables = TYPOGRAPHY_SUB_PROPERTIES_FOR_TEST.map(sub =>
+      variable({
+        id: (target.figmaId as Record<string, string>)[sub],
+        name: `target/${sub}`,
+        resolvedType: sub === 'fontSize' || sub === 'lineHeight' ? 'FLOAT' : 'STRING',
+        valuesByMode: {
+          [BASE_MODE]:
+            sub === 'fontFamily'
+              ? 'BaloiseCreateText'
+              : sub === 'fontSize'
+                ? 24
+                : sub === 'fontWeight'
+                  ? 'Regular'
+                  : 1.5,
+        },
+      }),
+    )
+    const aliasingVariables = TYPOGRAPHY_SUB_PROPERTIES_FOR_TEST.map(sub =>
+      variable({
+        id: typographyFigmaId[sub],
+        name: `x/${sub}`,
+        resolvedType: sub === 'fontSize' || sub === 'lineHeight' ? 'FLOAT' : 'STRING',
+        valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: (target.figmaId as Record<string, string>)[sub] } },
+      }),
+    )
+    const plan = buildBasePullPlan({
+      original: [...typographyPrimitives, typography, target],
+      working: [working(typography), working(target)],
+      figmaMeta: meta([...targetVariables, ...aliasingVariables]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(typography.path)
+    expect(plan.updates[0].referenceTarget).toBe('🌐 Global.🔤 Font.Typography.Other')
+  })
+})
+
+describe('buildBasePullPlan — responsive dimension', () => {
+  const responsiveFigmaId = {
+    mobile: 'VariableID:responsive:mobile',
+    tablet: 'VariableID:responsive:tablet',
+    desktop: 'VariableID:responsive:desktop',
+  }
+
+  const space16 = token({
+    path: ['🌐 Global', '📏 Dimension', 'Space', '16'],
+    type: 'dimension',
+    rawValue: { value: 1, unit: 'rem' },
+    resolvedValue: { value: 1, unit: 'rem' },
+  })
+
+  // mobile is a {reference} string (docs/plans/responsive-dimension-token-plan.md decision 3);
+  // tablet/desktop are literals — exercises both shapes, same as border's/typography's own tests.
+  const responsive = token({
+    path: ['🔗 Alias', '↔️ Space', 'Lg'],
+    type: 'dimension',
+    figmaId: responsiveFigmaId,
+    rawValue: { value: 16, unit: 'px' },
+    resolvedValue: { value: 16, unit: 'px' },
+    responsive: {
+      mobile: '{🌐 Global.📏 Dimension.Space.16}',
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    },
+    resolvedResponsive: {
+      mobile: { value: 1, unit: 'rem' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    },
+  })
+  const responsivePrimitives = [space16]
+
+  function responsiveVariables(overrides?: { mobile?: number; tablet?: number; desktop?: number }): FigmaVariable[] {
+    return [
+      variable({
+        id: responsiveFigmaId.mobile,
+        name: 'x/Mobile',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: overrides?.mobile ?? 16 },
+      }),
+      variable({
+        id: responsiveFigmaId.tablet,
+        name: 'x/Tablet',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: overrides?.tablet ?? 24 },
+      }),
+      variable({
+        id: responsiveFigmaId.desktop,
+        name: 'x/Desktop',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: overrides?.desktop ?? 32 },
+      }),
+    ]
+  }
+
+  it('is a no-op when all 3 sub-variables still match the local resolved responsive value', () => {
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive],
+      working: [working(responsive)],
+      figmaMeta: meta(responsiveVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(0)
+  })
+
+  it("proposes an update preserving mobile's reference when only desktop changed", () => {
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive],
+      working: [working(responsive)],
+      figmaMeta: meta(responsiveVariables({ desktop: 40 })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].type).toBe('dimension')
+    expect(plan.updates[0].responsive).toEqual({
+      mobile: '{🌐 Global.📏 Dimension.Space.16}',
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 40, unit: 'px' },
+    })
+    // decision 4: rawValue mirrors mobile, which resolves to 1rem — unaffected by desktop's change.
+    expect(plan.updates[0].rawValue).toEqual('{🌐 Global.📏 Dimension.Space.16}')
+  })
+
+  it('skips (does not auto-write a literal) when the reference-backed mobile breakpoint differs from what it resolves to', () => {
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive],
+      working: [working(responsive)],
+      figmaMeta: meta(responsiveVariables({ mobile: 20 })),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.skipped.length).toBeGreaterThan(0)
+    expect(plan.skipped[0].reason).toMatch(/no safe way/)
+  })
+
+  it('does not half-apply an incomplete match — a missing sub-variable proposes a delete, not a partial update', () => {
+    const incomplete = responsiveVariables().filter(v => v.id !== responsiveFigmaId.desktop)
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive],
+      working: [working(responsive)],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(1)
+    expect(plan.deletes[0].path).toEqual(responsive.path)
+  })
+
+  it('does not propose deleting a responsive dimension token already removed from working', () => {
+    const incomplete = responsiveVariables().filter(v => v.id !== responsiveFigmaId.desktop)
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive],
+      working: [],
+      figmaMeta: meta(incomplete),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.deletes).toHaveLength(0)
+  })
+
+  it("skips a breakpoint that is a Figma alias — not something this app's own push side produces", () => {
+    const aliased = [
+      ...responsiveVariables().filter(v => v.id !== responsiveFigmaId.mobile),
+      variable({
+        id: responsiveFigmaId.mobile,
+        name: 'x/Mobile',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: 'VariableID:something-else' } },
+      }),
+    ]
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive],
+      working: [working(responsive)],
+      figmaMeta: meta(aliased),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.skipped.length).toBeGreaterThan(0)
+  })
+})
+
 describe('buildBrandPullPlan', () => {
   it('never creates a brand override for a variable with no matching Base token', () => {
     const v = variable({
@@ -1012,6 +1409,337 @@ describe('buildBrandPullPlan', () => {
     })
     const plan = buildBrandPullPlan({
       baseOriginal: [white],
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      figmaMeta: meta([], ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.deletes).toHaveLength(1)
+  })
+})
+
+describe('buildBrandPullPlan — typography', () => {
+  const familyHeading = token({
+    path: ['🌐 Global', '🔤 Font', 'Family', 'Heading'],
+    type: 'fontFamily',
+    rawValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+    resolvedValue: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+  })
+  const familyBody = token({
+    path: ['🌐 Global', '🔤 Font', 'Family', 'Body'],
+    type: 'fontFamily',
+    rawValue: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+    resolvedValue: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+  })
+  const familyMono = token({
+    path: ['🌐 Global', '🔤 Font', 'Family', 'Mono'],
+    type: 'fontFamily',
+    rawValue: ['BaloiseCreateMono', 'Courier', 'monospace'],
+    resolvedValue: ['BaloiseCreateMono', 'Courier', 'monospace'],
+  })
+  const weight700 = token({
+    path: ['🌐 Global', '🔤 Font', 'Weight', '700'],
+    type: 'fontWeight',
+    rawValue: 700,
+    resolvedValue: 700,
+  })
+
+  const typographyFigmaId = {
+    fontFamily: 'VariableID:brand-typography:fontFamily',
+    fontSize: 'VariableID:brand-typography:fontSize',
+    fontWeight: 'VariableID:brand-typography:fontWeight',
+    lineHeight: 'VariableID:brand-typography:lineHeight',
+  }
+  const baseTypography = token({
+    path: ['🌐 Global', '🔤 Font', 'Typography', 'Test'],
+    type: 'typography',
+    figmaId: typographyFigmaId,
+    rawValue: {
+      fontFamily: '{🌐 Global.🔤 Font.Family.Heading}',
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+      lineHeight: 1.3,
+    },
+    resolvedValue: {
+      fontFamily: ['BaloiseCreateHeadline', 'Arial', 'sans-serif'],
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: 700,
+      lineHeight: 1.3,
+    },
+  })
+  const baseOriginal = [familyHeading, familyBody, familyMono, weight700, baseTypography]
+
+  function typographyBrandVariables(fontFamily = 'BaloiseCreateHeadline'): FigmaVariable[] {
+    return [
+      variable({
+        id: typographyFigmaId.fontFamily,
+        name: 'x/FontFamily',
+        resolvedType: 'STRING',
+        valuesByMode: { [TCS_MODE]: fontFamily },
+      }),
+      variable({
+        id: typographyFigmaId.fontSize,
+        name: 'x/FontSize',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [TCS_MODE]: 16 },
+      }),
+      variable({
+        id: typographyFigmaId.fontWeight,
+        name: 'x/FontWeight',
+        resolvedType: 'STRING',
+        valuesByMode: { [TCS_MODE]: 'Bold' },
+      }),
+      variable({
+        id: typographyFigmaId.lineHeight,
+        name: 'x/LineHeight',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [TCS_MODE]: 1.3 },
+      }),
+    ]
+  }
+
+  it('proposes a new override when the brand mode diverges from the inherited Base typography value', () => {
+    const plan = buildBrandPullPlan({
+      baseOriginal,
+      brandOriginal: [],
+      brandWorking: [],
+      figmaMeta: meta(typographyBrandVariables('BaloiseCreateText'), ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.creates).toHaveLength(1)
+    expect(plan.creates[0].rawValue).toEqual({
+      fontFamily: '{🌐 Global.🔤 Font.Family.Body}',
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+      lineHeight: 1.3,
+    })
+  })
+
+  it('updates an existing override when the brand mode changes again', () => {
+    const override = token({
+      path: baseTypography.path,
+      type: 'typography',
+      rawValue: {
+        fontFamily: '{🌐 Global.🔤 Font.Family.Body}',
+        fontSize: { value: 1, unit: 'rem' },
+        fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+        lineHeight: 1.3,
+      },
+      resolvedValue: {
+        fontFamily: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+        fontSize: { value: 1, unit: 'rem' },
+        fontWeight: 700,
+        lineHeight: 1.3,
+      },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal,
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      // Neither Base's own family (Heading) nor the override's current one (Body) — exercises the
+      // update path specifically, distinct from the "reconverges with Base" delete path below.
+      figmaMeta: meta(typographyBrandVariables('BaloiseCreateMono'), ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toEqual({
+      fontFamily: '{🌐 Global.🔤 Font.Family.Mono}',
+      fontSize: { value: 1, unit: 'rem' },
+      fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+      lineHeight: 1.3,
+    })
+  })
+
+  it('proposes deleting an override once the brand mode reconverges with the inherited Base value', () => {
+    const override = token({
+      path: baseTypography.path,
+      type: 'typography',
+      rawValue: {
+        fontFamily: '{🌐 Global.🔤 Font.Family.Body}',
+        fontSize: { value: 1, unit: 'rem' },
+        fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+        lineHeight: 1.3,
+      },
+      resolvedValue: {
+        fontFamily: ['BaloiseCreateText', 'Arial', 'sans-serif'],
+        fontSize: { value: 1, unit: 'rem' },
+        fontWeight: 700,
+        lineHeight: 1.3,
+      },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal,
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      figmaMeta: meta(typographyBrandVariables('BaloiseCreateHeadline'), ['Tcs']), // back to Base's own family
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.deletes).toHaveLength(1)
+  })
+
+  it('cleans up a dangling typography override when the underlying Base variables are removed', () => {
+    const override = token({
+      path: baseTypography.path,
+      type: 'typography',
+      rawValue: {
+        fontFamily: '{🌐 Global.🔤 Font.Family.Body}',
+        fontSize: { value: 1, unit: 'rem' },
+        fontWeight: '{🌐 Global.🔤 Font.Weight.700}',
+        lineHeight: 1.3,
+      },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal,
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      figmaMeta: meta([], ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.deletes).toHaveLength(1)
+  })
+})
+
+describe('buildBrandPullPlan — responsive dimension', () => {
+  const responsiveFigmaId = {
+    mobile: 'VariableID:brand-responsive:mobile',
+    tablet: 'VariableID:brand-responsive:tablet',
+    desktop: 'VariableID:brand-responsive:desktop',
+  }
+  const baseResponsive = token({
+    path: ['🔗 Alias', '↔️ Space', 'Lg'],
+    type: 'dimension',
+    figmaId: responsiveFigmaId,
+    rawValue: { value: 16, unit: 'px' },
+    resolvedValue: { value: 16, unit: 'px' },
+    responsive: {
+      mobile: { value: 16, unit: 'px' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    },
+    resolvedResponsive: {
+      mobile: { value: 16, unit: 'px' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    },
+  })
+  const baseOriginalResponsive = [baseResponsive]
+
+  function responsiveBrandVariables(overrides?: {
+    mobile?: number
+    tablet?: number
+    desktop?: number
+  }): FigmaVariable[] {
+    return [
+      variable({
+        id: responsiveFigmaId.mobile,
+        name: 'x/Mobile',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [TCS_MODE]: overrides?.mobile ?? 8 },
+      }),
+      variable({
+        id: responsiveFigmaId.tablet,
+        name: 'x/Tablet',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [TCS_MODE]: overrides?.tablet ?? 12 },
+      }),
+      variable({
+        id: responsiveFigmaId.desktop,
+        name: 'x/Desktop',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [TCS_MODE]: overrides?.desktop ?? 16 },
+      }),
+    ]
+  }
+
+  it('proposes a new override when the brand mode diverges from the inherited Base responsive value', () => {
+    const plan = buildBrandPullPlan({
+      baseOriginal: baseOriginalResponsive,
+      brandOriginal: [],
+      brandWorking: [],
+      figmaMeta: meta(responsiveBrandVariables(), ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.creates).toHaveLength(1)
+    expect(plan.creates[0].responsive).toEqual({
+      mobile: { value: 8, unit: 'px' },
+      tablet: { value: 12, unit: 'px' },
+      desktop: { value: 16, unit: 'px' },
+    })
+  })
+
+  it('updates an existing override when the brand mode changes again', () => {
+    const override = token({
+      path: baseResponsive.path,
+      type: 'dimension',
+      rawValue: { value: 8, unit: 'px' },
+      resolvedValue: { value: 8, unit: 'px' },
+      responsive: {
+        mobile: { value: 8, unit: 'px' },
+        tablet: { value: 12, unit: 'px' },
+        desktop: { value: 16, unit: 'px' },
+      },
+      resolvedResponsive: {
+        mobile: { value: 8, unit: 'px' },
+        tablet: { value: 12, unit: 'px' },
+        desktop: { value: 16, unit: 'px' },
+      },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal: baseOriginalResponsive,
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      figmaMeta: meta(responsiveBrandVariables({ desktop: 20 }), ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].responsive).toEqual({
+      mobile: { value: 8, unit: 'px' },
+      tablet: { value: 12, unit: 'px' },
+      desktop: { value: 20, unit: 'px' },
+    })
+  })
+
+  it('proposes deleting an override once the brand mode reconverges with the inherited Base value', () => {
+    const override = token({
+      path: baseResponsive.path,
+      type: 'dimension',
+      rawValue: { value: 8, unit: 'px' },
+      resolvedValue: { value: 8, unit: 'px' },
+      responsive: {
+        mobile: { value: 8, unit: 'px' },
+        tablet: { value: 12, unit: 'px' },
+        desktop: { value: 16, unit: 'px' },
+      },
+      resolvedResponsive: {
+        mobile: { value: 8, unit: 'px' },
+        tablet: { value: 12, unit: 'px' },
+        desktop: { value: 16, unit: 'px' },
+      },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal: baseOriginalResponsive,
+      brandOriginal: [override],
+      brandWorking: [working(override)],
+      // Back to Base's own values (16/24/32).
+      figmaMeta: meta(responsiveBrandVariables({ mobile: 16, tablet: 24, desktop: 32 }), ['Tcs']),
+      brandModeId: TCS_MODE,
+    })
+    expect(plan.deletes).toHaveLength(1)
+  })
+
+  it('cleans up a dangling responsive dimension override when the underlying Base variables are removed', () => {
+    const override = token({
+      path: baseResponsive.path,
+      type: 'dimension',
+      rawValue: { value: 8, unit: 'px' },
+      responsive: {
+        mobile: { value: 8, unit: 'px' },
+        tablet: { value: 12, unit: 'px' },
+        desktop: { value: 16, unit: 'px' },
+      },
+    })
+    const plan = buildBrandPullPlan({
+      baseOriginal: baseOriginalResponsive,
       brandOriginal: [override],
       brandWorking: [working(override)],
       figmaMeta: meta([], ['Tcs']),
