@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as SheetStories from './sheet.stories'
+import { SHEET_DOC_CONFIG, getSheetTabs } from './sheet.doc-config'
+
+<Meta title="Components/Sheet/Variants/Overview" />
+
+<StoryHeading of={SheetStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={SHEET_DOC_CONFIG.section} color={SHEET_DOC_CONFIG.color} />
+
+<BannerTabs of={SheetStories} tabs={getSheetTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SheetStories.Basic}></StoryHeading>
+
+A fixed panel anchored to the bottom of the viewport, used to surface persistent actions or contextual information alongside the main content.
+
+<CanvasWithCodePen of={SheetStories.Basic} sourceState="shown" overflowVisible={true} />
+
+<Footer />

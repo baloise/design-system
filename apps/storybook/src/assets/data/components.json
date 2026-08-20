@@ -15352,6 +15352,10 @@
         {
           "name": "slot",
           "text": "- The checkbox items to display inside the group."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "encapsulation": "shadow",
@@ -16181,6 +16185,10 @@
         {
           "name": "",
           "docs": "The checkbox items to display inside the group."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [],
@@ -17770,6 +17778,10 @@
       "docs": "Date renders a masked date input field with an interactive calendar popup for date selection.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -19121,7 +19133,12 @@
           "docs": "Navigation button color when disabled."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "clear",
@@ -21301,6 +21318,10 @@
       "docs": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "drop-zone - The main drop area where users drag files or click to select."
         },
@@ -22229,7 +22250,12 @@
           "docs": "Text color when disabled."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "drop-zone",
@@ -27790,6 +27816,10 @@
       "docs": "Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -29399,7 +29429,12 @@
           "docs": "Line height of the description."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "input",
@@ -29488,6 +29523,10 @@
       "usage": {},
       "docs": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
       "docsTags": [
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
         {
           "name": "part",
           "text": "slider - The noUiSlider target element."
@@ -30248,7 +30287,12 @@
           "docs": "Line height of the description."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "slider",
@@ -38255,6 +38299,10 @@
           "text": "- The number input field content and surrounding elements."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -39154,6 +39202,10 @@
         {
           "name": "",
           "docs": "The number input field content and surrounding elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -42876,6 +42928,10 @@
         {
           "name": "slot",
           "text": "- The radio items to display inside the group."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "encapsulation": "shadow",
@@ -43700,6 +43756,10 @@
         {
           "name": "",
           "docs": "The radio items to display inside the group."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [],
@@ -43748,6 +43808,10 @@
         {
           "name": "slot",
           "text": "- One or more ds-segment-item elements."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         },
         {
           "name": "part",
@@ -44341,6 +44405,10 @@
         {
           "name": "",
           "docs": "One or more ds-segment-item elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -45198,6 +45266,10 @@
         {
           "name": "slot",
           "text": "- Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative\nto the options / optionGroups props. Ignored whenever options or optionGroups is non-empty."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         },
         {
           "name": "part",
@@ -46094,6 +46166,10 @@
         {
           "name": "",
           "docs": "Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative\nto the options / optionGroups props. Ignored whenever options or optionGroups is non-empty."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -49358,6 +49434,229 @@
         "locators": [],
         "actions": [],
         "assertions": []
+      },
+      "type": "web-component"
+    },
+    {
+      "fileName": "sheet.tsx",
+      "tag": "ds-sheet",
+      "overview": "Sheet displays a fixed panel anchored to the bottom of the viewport.\nUse it to surface persistent actions or contextual information without\nblocking the main content.",
+      "usage": {},
+      "docs": "Sheet displays a fixed panel anchored to the bottom of the viewport.\nUse it to surface persistent actions or contextual information without\nblocking the main content.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The sheet content."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "containerSize",
+          "type": "\"compact\" | \"fluid\" | undefined",
+          "complexType": {
+            "original": "SheetContainerSize",
+            "resolved": "\"compact\" | \"fluid\" | undefined",
+            "references": {
+              "SheetContainerSize": {
+                "location": "import",
+                "path": "./sheet.interfaces",
+                "id": "src/components/sheet/sheet.interfaces.ts::SheetContainerSize",
+                "referenceLocation": "SheetContainerSize"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "container-size",
+          "reflectToAttr": false,
+          "docs": "Defines the content width of the sheet. Leave unset for the default width,\nor use `'fluid'` for full width, or `'compact'` for a narrow layout.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "compact",
+              "type": "string"
+            },
+            {
+              "value": "fluid",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [
+        {
+          "name": "--sheet-background",
+          "docs": "Background color of the sheet panel (defaults to white)."
+        },
+        {
+          "name": "--sheet-radius",
+          "docs": "Border radius of the sheet panel corners (defaults to large radius)."
+        },
+        {
+          "name": "--sheet-shadow",
+          "docs": "Box shadow of the sheet panel (defaults to base shadow)."
+        },
+        {
+          "name": "--sheet-position-bottom",
+          "docs": "Distance from the bottom of the viewport (defaults to the sheet token value)."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The sheet content."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "tokens": [
+        {
+          "name": "🧩 Component / Sheet / Background",
+          "cssVarName": "--ds-sheet-background",
+          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-background-color-white",
+              "figmaName": "Alias / Background / Color / White"
+            },
+            {
+              "cssVar": "--ds-sheet-background",
+              "figmaName": "Component / Sheet / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Sheet",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Sheet / Radius",
+          "cssVarName": "--ds-sheet-radius",
+          "value": "{🔗 Alias.🔵 Radius.LG}",
+          "nativeValue": "12",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-radius-2",
+              "figmaName": "Global / Size / Radius / 2"
+            },
+            {
+              "cssVar": "--ds-radius-lg",
+              "figmaName": "Alias / Radius / LG"
+            },
+            {
+              "cssVar": "--ds-sheet-radius",
+              "figmaName": "Component / Sheet / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Sheet",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Sheet / Shadow",
+          "cssVarName": "--ds-sheet-shadow",
+          "value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+          "nativeValue": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
+          "inheritance": [
+            {
+              "cssVar": "--ds-elevation-shadow-3",
+              "figmaName": "Global / Elevation / Shadow / 3"
+            },
+            {
+              "cssVar": "--ds-shadow-box-base",
+              "figmaName": "Alias / Shadow / Box / Base"
+            },
+            {
+              "cssVar": "--ds-sheet-shadow",
+              "figmaName": "Component / Sheet / Shadow"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Sheet",
+            "Shadow"
+          ]
+        },
+        {
+          "name": "🧩 Component / Sheet / Position / Bottom",
+          "cssVarName": "--ds-sheet-position-bottom",
+          "value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "nativeValue": "8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-size-space-8",
+              "figmaName": "Global / Size / Space / 8"
+            },
+            {
+              "cssVar": "--ds-space-xs-mobile",
+              "figmaName": "Alias / Space / XS / Mobile"
+            },
+            {
+              "cssVar": "--ds-sheet-position-bottom",
+              "figmaName": "Component / Sheet / Position / Bottom"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Sheet",
+            "Position",
+            "Bottom"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsSheet",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDefaultContainer",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeFluidContainer",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeCompactContainer",
+            "params": [],
+            "docs": ""
+          }
+        ]
       },
       "type": "web-component"
     },
@@ -57419,6 +57718,10 @@
           "text": "- The textarea field content and surrounding elements."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "textarea - The native HTML textarea element."
         },
@@ -58666,6 +58969,10 @@
         {
           "name": "",
           "docs": "The textarea field content and surrounding elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -64734,6 +65041,11 @@
       "declaration": "\"1\" | \"2\" | \"3\"",
       "docstring": "",
       "path": "src/components/shape/shape.interfaces.ts"
+    },
+    "src/components/sheet/sheet.interfaces.ts::SheetContainerSize": {
+      "declaration": "\"fluid\" | \"compact\"",
+      "docstring": "",
+      "path": "src/components/sheet/sheet.interfaces.ts"
     },
     "src/components/spinner/spinner.interfaces.ts::SpinnerColor": {
       "declaration": "\"white\" | \"blue\"",
