@@ -3,12 +3,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    // @baloise/ds-css uses modern CSS (e.g. `::details-content`) that Vite's
-    // default lightningcss minifier doesn't parse yet. esbuild's CSS minifier
-    // is more lenient and handles it fine.
-    cssMinify: 'esbuild',
-  },
   resolve: {
     // @baloise/ds-react is a symlinked workspace package (pnpm workspace
     // protocol), so without deduping, Vite can resolve two separate React

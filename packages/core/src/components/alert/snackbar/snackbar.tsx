@@ -52,6 +52,11 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
   @State() didLoad = false
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
@@ -126,13 +131,16 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    * @internal
    * The id of the toast, used for internal handling, if not provided a random id will be generated
    */
-  @Prop() readonly alertId: string = crypto.randomUUID() as string
+  @Prop()
+  @Type('string')
+  readonly alertId: string = crypto.randomUUID() as string
 
   /**
    * @internal
    * If `true` the notification is visible.
    */
   @Prop({ reflect: true })
+  @Type('boolean')
   readonly visible: boolean = true
 
   /**
@@ -163,7 +171,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   componentDidLoad(): void {
@@ -174,8 +182,8 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
   }
 
   /**
-   * LISTENERS
-   * ------------------------------------------------------
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
    */
 
   @ListenToBreakpoints()
@@ -185,7 +193,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -199,7 +207,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private generateSvgContent = () => {
@@ -230,7 +238,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

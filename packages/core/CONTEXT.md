@@ -79,6 +79,12 @@ Components reference design tokens (`--ds-*` CSS variables) for:
 
 ## Notable Patterns
 
+### `components/*.js` Is Guaranteed Dynamic-Import-Free
+
+The `dist-custom-elements`/web output target (`components/*.js`, generated via `libs/output-target-web`) is documented for **static, non-lazy registration** — consumers import it directly (e.g. `@baloise/ds-core/components/ds-input.js`) instead of relying on Stencil's lazy loader. Any real `import()` reachable from those entry points breaks bundlers/build targets that can't code-split (e.g. a single-file IIFE embed for a plain `<script>` tag).
+
+This is enforced automatically, not just by convention: `libs/output-target-web/src/lib/inline-dynamic-imports.ts` runs on every `components/` build and rewrites any `import("./chunk.js")` into a hoisted static import + `Promise.resolve()`, then asserts none remain (build fails otherwise). The lazy-loader build (`dist/`, e.g. `spinner.tsx`'s `import(/* @vite-ignore */ './spinner.animation')` for the Lottie animation payload) is untouched and keeps its dynamic import, since that target is meant to code-split.
+
 ### Naming Conventions
 
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
@@ -607,6 +613,27 @@ representable in a flat `data-*` attribute) or considered JS-only
 behavioral config. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
+
+### Dynamic-Import-Free Entry Point (`@baloise/ds-core/initialize`)
+
+The bare `@baloise/ds-core` specifier resolves (via `module`/`es2015`) to the
+ESM bundle that also contains Stencil's `bootstrapLazy`/`loadModule` lazy-
+component-loader machinery — dozens of dynamic `import()` calls, one per
+component. Consumers who can't code-split (single-file/IIFE bundler targets)
+and hand-register components individually via `@baloise/ds-core/components/*.js`
+need `initialize`/`initializeDesignSystem` without pulling that in.
+
+`package.json`'s `exports["./initialize"]` maps to the pre-built CJS entry
+(`dist/cjs/index.cjs.js`), which is `require()`-based end-to-end with zero
+dynamic imports:
+
+```ts
+import { initialize } from '@baloise/ds-core/initialize'
+```
+
+`exports` also declares `"."`, `"./components"`, and `"./loader"` explicitly
+(mirroring their `files`-listed directory-index resolution) plus a `"./*"`
+fallback, so adding this map doesn't drop any previously-working deep import.
 
 ## Token Preview Listener
 

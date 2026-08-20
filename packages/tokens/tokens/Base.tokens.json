@@ -2986,7 +2986,7 @@
           }
         }
       },
-      "Family": {
+      "Font Family": {
         "$type": "string",
         "$value": "{🔗 Alias.🔤 Text.Family.Heading}",
         "$extensions": {
@@ -2996,7 +2996,7 @@
           ]
         }
       },
-      "Weight": {
+      "Font Weight": {
         "$type": "string",
         "$value": "{🔗 Alias.🔤 Text.Weight.Bold}",
         "$extensions": {
@@ -3036,69 +3036,93 @@
               "ALL_SCOPES"
             ]
           }
-        },
-        "Primary": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:446",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "White": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.White}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:447",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "Info": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Info}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:448",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "Success": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Success}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:449",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "Warning": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Warning}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:450",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "Danger": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Danger}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:451",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
+        }
+      },
+      "Primary": {
+        "Color": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:446",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
         }
       },
-      "Display1": {
+      "White": {
+        "Color": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.White}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:447",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "Info": {
+        "Color": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Info}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:448",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "Success": {
+        "Color": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Success}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:449",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "Warning": {
+        "Color": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Warning}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:450",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "Danger": {
+        "Color": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:5:451",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "Display 1": {
         "Space": {
           "$type": "number",
           "$value": "{🔗 Alias.↔️ Space.Base.Mobile}",
@@ -3142,7 +3166,7 @@
           }
         }
       },
-      "Display2": {
+      "Display 2": {
         "Space": {
           "$type": "number",
           "$value": "{🔗 Alias.↔️ Space.Base.Mobile}",
@@ -3187,7 +3211,7 @@
         }
       },
       "Subtitle": {
-        "Family": {
+        "Font Family": {
           "$type": "string",
           "$value": "{🔗 Alias.🔤 Text.Family.Heading}",
           "$extensions": {
@@ -3207,7 +3231,7 @@
             ]
           }
         },
-        "Weight": {
+        "Font Weight": {
           "$type": "string",
           "$value": "{🔗 Alias.🔤 Text.Weight.Light}",
           "$extensions": {
@@ -3220,7 +3244,39 @@
       }
     },
     "Badge": {
-      "Text": {
+      "Size": {
+        "SM": {
+          "$type": "number",
+          "$value": "{🔗 Alias.↔️ Space.SM.Mobile}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:5:468",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "Base": {
+          "$type": "number",
+          "$value": "{🔗 Alias.↔️ Space.LG.Mobile}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:5:469",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "LG": {
+          "$type": "number",
+          "$value": "{🔗 Alias.↔️ Space.XL.Mobile}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:5:470",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "Font": {
         "Family": {
           "$type": "string",
           "$value": "{🔗 Alias.🔤 Text.Family.Heading}",
@@ -3274,40 +3330,8 @@
           }
         }
       },
-      "Size": {
-        "SM": {
-          "$type": "number",
-          "$value": "{🔗 Alias.↔️ Space.SM.Mobile}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:468",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "Base": {
-          "$type": "number",
-          "$value": "{🔗 Alias.↔️ Space.LG.Mobile}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:469",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "LG": {
-          "$type": "number",
-          "$value": "{🔗 Alias.↔️ Space.XL.Mobile}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:5:470",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        }
-      },
-      "Color": {
-        "Base": {
+      "Base": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3328,8 +3352,10 @@
               ]
             }
           }
-        },
-        "Info": {
+        }
+      },
+      "Info": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3350,8 +3376,10 @@
               ]
             }
           }
-        },
-        "Success": {
+        }
+      },
+      "Success": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3372,8 +3400,10 @@
               ]
             }
           }
-        },
-        "Warning": {
+        }
+      },
+      "Warning": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3394,8 +3424,10 @@
               ]
             }
           }
-        },
-        "Danger": {
+        }
+      },
+      "Danger": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3416,8 +3448,10 @@
               ]
             }
           }
-        },
-        "Red": {
+        }
+      },
+      "Red": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3430,7 +3464,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.RedLight}",
+            "$value": "{🔗 Alias.🎨 Background.Color.Red}",
             "$extensions": {
               "com.figma.variableId": "VariableID:5:482",
               "com.figma.scopes": [
@@ -3438,8 +3472,10 @@
               ]
             }
           }
-        },
-        "Purple": {
+        }
+      },
+      "Purple": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3452,7 +3488,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.PurpleLight}",
+            "$value": "{🔗 Alias.🎨 Background.Color.Purple}",
             "$extensions": {
               "com.figma.variableId": "VariableID:5:484",
               "com.figma.scopes": [
@@ -3460,8 +3496,10 @@
               ]
             }
           }
-        },
-        "Green": {
+        }
+      },
+      "Green": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3474,7 +3512,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.GreenLight}",
+            "$value": "{🔗 Alias.🎨 Background.Color.Green}",
             "$extensions": {
               "com.figma.variableId": "VariableID:5:486",
               "com.figma.scopes": [
@@ -3482,8 +3520,10 @@
               ]
             }
           }
-        },
-        "Yellow": {
+        }
+      },
+      "Yellow": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -3496,7 +3536,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Background.Color.YellowLighter}",
+            "$value": "{🔗 Alias.🎨 Background.Color.Yellow}",
             "$extensions": {
               "com.figma.variableId": "VariableID:5:488",
               "com.figma.scopes": [
@@ -3504,8 +3544,10 @@
               ]
             }
           }
-        },
-        "Grey": {
+        }
+      },
+      "Grey": {
+        "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Grey}",
@@ -9356,8 +9398,8 @@
           ]
         }
       },
-      "Color": {
-        "Base": {
+      "Base": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
@@ -9398,8 +9440,10 @@
               ]
             }
           }
-        },
-        "Info": {
+        }
+      },
+      "Info": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
@@ -9440,8 +9484,10 @@
               ]
             }
           }
-        },
-        "Success": {
+        }
+      },
+      "Success": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
@@ -9482,8 +9528,10 @@
               ]
             }
           }
-        },
-        "Warning": {
+        }
+      },
+      "Warning": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
@@ -9524,8 +9572,10 @@
               ]
             }
           }
-        },
-        "Danger": {
+        }
+      },
+      "Danger": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
@@ -9566,8 +9616,10 @@
               ]
             }
           }
-        },
-        "OutlineBase": {
+        }
+      },
+      "OutlineBase": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.White}",
@@ -9608,8 +9660,10 @@
               ]
             }
           }
-        },
-        "OutlinePurple": {
+        }
+      },
+      "OutlinePurple": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.PurpleLighter}",
@@ -9650,8 +9704,10 @@
               ]
             }
           }
-        },
-        "OutlineGreen": {
+        }
+      },
+      "OutlineGreen": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.GreenLighter}",
@@ -9692,8 +9748,10 @@
               ]
             }
           }
-        },
-        "OutlineYellow": {
+        }
+      },
+      "OutlineYellow": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.YellowLighter}",
@@ -9734,8 +9792,10 @@
               ]
             }
           }
-        },
-        "OutlineRed": {
+        }
+      },
+      "OutlineRed": {
+        "Color": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Background.Color.RedLighter}",
@@ -11413,18 +11473,6 @@
       },
       "Primary": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1211",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11461,7 +11509,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1211",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Primary.2}",
@@ -11477,18 +11537,6 @@
       },
       "Success": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1216",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11525,7 +11573,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1216",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Success.3}",
@@ -11541,18 +11601,6 @@
       },
       "Info": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1221",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11589,7 +11637,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1221",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Info.3}",
@@ -11605,18 +11665,6 @@
       },
       "Warning": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1226",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11653,7 +11701,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1226",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Warning.3}",
@@ -11669,18 +11729,6 @@
       },
       "Danger": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1231",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11717,7 +11765,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1231",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Danger.3}",
@@ -11827,18 +11887,6 @@
       },
       "Primary": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1244",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11875,7 +11923,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.GreyLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1244",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Primary.2}",
@@ -11891,18 +11951,6 @@
       },
       "Success": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1249",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -11939,7 +11987,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.SuccessLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1249",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Success.3}",
@@ -11955,18 +12015,6 @@
       },
       "Info": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1254",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -12003,7 +12051,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.InfoLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1254",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Info.3}",
@@ -12019,18 +12079,6 @@
       },
       "Warning": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1259",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -12067,7 +12115,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.WarningLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1259",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Warning.3}",
@@ -12083,18 +12143,6 @@
       },
       "Danger": {
         "Color": {
-          "Bg": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
-              "$extensions": {
-                "com.figma.variableId": "VariableID:5:1264",
-                "com.figma.scopes": [
-                  "ALL_SCOPES"
-                ]
-              }
-            }
-          },
           "Border": {
             "Base": {
               "$type": "color",
@@ -12131,7 +12179,19 @@
               }
             }
           },
-          "ProgressBg": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Background.Color.DangerLight}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:5:1264",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "ProgressBackground": {
             "Base": {
               "$type": "color",
               "$value": "{🌐 Global.🌈 Color.Danger.3}",

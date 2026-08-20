@@ -33,9 +33,10 @@ export class Badge implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
-  // ========================================================================
-  // PUBLIC PROPERTY API
-  // ========================================================================
+  /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
 
   /**
    * Name of the icon to show. If an icon is present, text should be hidden.
@@ -49,21 +50,21 @@ export class Badge implements DsComponentInterface {
    */
   @Prop({ reflect: true })
   @OneOf(BADGE_SIZES)
-  readonly size: BadgeSize = ''
+  readonly size?: BadgeSize
 
   /**
    * Define the color for the badge.
    */
   @Prop({ reflect: true })
   @OneOf(BADGE_COLORS)
-  readonly color: BadgeColor = ''
+  readonly color?: BadgeColor
 
   /**
-   * If `true` the badge is added to the top right corner of the card.
+   * Defines where the badge is positioned relative to its host, e.g. the top right corner of a card.
    */
   @Prop({ reflect: true })
   @OneOf(BADGE_POSITIONS)
-  readonly position: BadgePosition = ''
+  readonly position?: BadgePosition
 
   /**
    * If `true` the badge is added to the top right corner of the card.
@@ -72,21 +73,10 @@ export class Badge implements DsComponentInterface {
   @Type('boolean')
   readonly pulse: boolean = false
 
-  // ========================================================================
-  // LIFECYCLE
-  // ========================================================================
-
-  // ========================================================================
-  // PROPERTY VALIDATION
-  // ========================================================================
-
-  // ========================================================================
-  // PRIVATE METHODS
-  // ========================================================================
-
-  // ========================================================================
-  // RENDER
-  // ========================================================================
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     const size = normalizeDeprecatedTShirtSize(this.size) || ''

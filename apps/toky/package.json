@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@base-ui/react": "1.6.0",
-    "@baloise/ds-tokens": "20.0.0-next.7",
+    "@baloise/ds-tokens": "20.0.0-next.9",
     "@dagrejs/dagre": "3.0.0",
     "@xyflow/react": "12.11.2",
     "class-variance-authority": "0.7.1",

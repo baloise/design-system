@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-core",
-  "version": "20.0.0-next.7",
+  "version": "20.0.0-next.9",
   "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -20,6 +20,29 @@
   "collection:main": "dist/collection/index.js",
   "collection": "dist/collection/collection-manifest.json",
   "types": "dist/types/interfaces.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/interfaces.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./initialize": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/cjs/index.cjs.js",
+      "require": "./dist/cjs/index.cjs.js"
+    },
+    "./components": {
+      "types": "./components/index.d.ts",
+      "import": "./components/index.js",
+      "require": "./components/index.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs.js"
+    },
+    "./*": "./*"
+  },
   "files": [
     "components/",
     "dist/",
@@ -42,9 +65,9 @@
     "play:ci": "cross-env CI=1 pnpm exec playwright test"
   },
   "dependencies": {
-    "@baloise/ds-assets": "20.0.0-next.7",
-    "@baloise/ds-css": "20.0.0-next.7",
-    "@baloise/ds-tokens": "20.0.0-next.7",
+    "@baloise/ds-assets": "20.0.0-next.9",
+    "@baloise/ds-css": "20.0.0-next.9",
+    "@baloise/ds-tokens": "20.0.0-next.9",
     "@floating-ui/dom": "1.8.0",
     "@stencil/core": "catalog:",
     "air-datepicker": "3.6.0",
@@ -61,7 +84,7 @@
     "tslib": "catalog:"
   },
   "devDependencies": {
-    "@baloise/ds-playwright": "20.0.0-next.7",
+    "@baloise/ds-playwright": "20.0.0-next.9",
     "@stencil/angular-output-target": "1.4.1",
     "@stencil/react-output-target": "1.6.1",
     "@types/big.js": "^7.0.0",

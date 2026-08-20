@@ -113,7 +113,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
 
       return (
         header +
-        ':root {\n' +
+        ':root, :host {\n' +
         formattedVariables({
           format: propertyFormatNames.css,
           dictionary,
@@ -139,7 +139,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         '\n}\n\n' +
         '/* Device tokens: Tablet */\n' +
         `\n@media (min-width: 769px) {\n` +
-        ':root {\n' +
+        ':root, :host {\n' +
         formattedVariables({
           format: propertyFormatNames.css,
           dictionary: deviceTabletDictionary,
@@ -150,7 +150,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         `\n}\n\n` +
         '/* Device tokens: Desktop */\n' +
         `\n@media (min-width: 1024px) {\n` +
-        ':root {\n' +
+        ':root, :host {\n' +
         formattedVariables({
           format: propertyFormatNames.css,
           dictionary: deviceDesktopDictionary,

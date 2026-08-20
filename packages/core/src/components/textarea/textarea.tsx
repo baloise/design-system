@@ -21,6 +21,7 @@ import {
   type LogInstance,
   OneOf,
   Type,
+  watchInvalidTextSlot,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -41,6 +42,7 @@ import {
  * Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.
  *
  * @slot - The textarea field content and surrounding elements.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part textarea - The native HTML textarea element.
  * @part prefix - The prefix wrapper (if used).
  * @part suffix - The suffix wrapper (if used).
@@ -55,6 +57,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   inputId = `ds-textarea-${TextareaIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   log!: LogInstance
   @Logger('textarea')
@@ -66,6 +69,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
+  @State() hasInvalidTextSlotContent = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
 
@@ -269,6 +273,13 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   connectedCallback() {
     this.debounceChanged()
     this.control.connectedCallback()
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
+  }
+
+  disconnectedCallback() {
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentWillLoad() {
@@ -361,12 +372,14 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    */
 
   render() {
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
+
     return (
       <Field
         inputId={'textarea'}
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={isInvalid}
         label={this.label}
         description={this.description}
         invalidText={this.invalidText}
@@ -379,7 +392,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
           name={this.name}
           ref={el => (this.control.nativeEl = el)}
           aria-describedby="description"
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-invalid={isInvalid ? 'true' : 'false'}
           disabled={this.disabled}
           autoCapitalize={this.autocapitalize}
           autocomplete={this.autocomplete}

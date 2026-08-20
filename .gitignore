@@ -2,6 +2,7 @@
 
 # compiled output
 dist
+blob-report
 tmp
 .tmp
 /out-tsc

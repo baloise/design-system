@@ -193,9 +193,8 @@ export namespace Components {
         "animated": boolean;
         /**
           * Defines the container size constraint for the alert layout.
-          * @default ''
          */
-        "container": AlertContainerSize;
+        "container"?: AlertContainerSize;
         /**
           * Removes the alert with the given ID.
          */
@@ -227,6 +226,9 @@ export namespace Components {
           * @default false
          */
         "ready": boolean;
+        /**
+          * Sets focus on the given elements using the app's focus-visible handling.
+         */
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     /**
@@ -235,19 +237,17 @@ export namespace Components {
     interface DsBadge {
         /**
           * Define the color for the badge.
-          * @default ''
          */
-        "color": BadgeColor;
+        "color"?: BadgeColor;
         /**
           * Name of the icon to show. If an icon is present, text should be hidden.
           * @default ''
          */
         "icon": string;
         /**
-          * If `true` the badge is added to the top right corner of the card.
-          * @default ''
+          * Defines where the badge is positioned relative to its host, e.g. the top right corner of a card.
          */
-        "position": BadgePosition;
+        "position"?: BadgePosition;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default false
@@ -255,9 +255,8 @@ export namespace Components {
         "pulse": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
-        "size": BadgeSize;
+        "size"?: BadgeSize;
     }
     /**
      * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
@@ -533,9 +532,8 @@ export namespace Components {
         "bold": boolean;
         /**
           * If `true` the card text color becomes white.
-          * @default ''
          */
-        "color": HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -558,9 +556,8 @@ export namespace Components {
         "level": HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
-        "visualLevel": HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     /**
      * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
@@ -1278,14 +1275,12 @@ export namespace Components {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
-          * @default ''
          */
-        "autoLevel": HeadingVisualLevel;
+        "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
-          * @default ''
          */
-        "color": HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -1308,9 +1303,8 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
-        "space": HeadingSpace;
+        "space"?: HeadingSpace;
         /**
           * If `true` the heading gets displayed slimmer.
           * @default false
@@ -1318,9 +1312,8 @@ export namespace Components {
         "subtitle": boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
-        "visualLevel": HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     /**
      * Hint displays contextual help via an info-circle trigger button.
@@ -2079,9 +2072,8 @@ export namespace Components {
         "closeHandler": () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
-        "color": NotificationColor;
+        "color"?: NotificationColor;
         /**
           * Defines the heading of the notification.
           * @default ''
@@ -5135,7 +5127,6 @@ declare namespace LocalJSX {
         "animated"?: boolean;
         /**
           * Defines the container size constraint for the alert layout.
-          * @default ''
          */
         "container"?: AlertContainerSize;
         /**
@@ -5172,7 +5163,6 @@ declare namespace LocalJSX {
     interface DsBadge {
         /**
           * Define the color for the badge.
-          * @default ''
          */
         "color"?: BadgeColor;
         /**
@@ -5181,8 +5171,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * If `true` the badge is added to the top right corner of the card.
-          * @default ''
+          * Defines where the badge is positioned relative to its host, e.g. the top right corner of a card.
          */
         "position"?: BadgePosition;
         /**
@@ -5192,7 +5181,6 @@ declare namespace LocalJSX {
         "pulse"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
         "size"?: BadgeSize;
     }
@@ -5494,7 +5482,6 @@ declare namespace LocalJSX {
         "bold"?: boolean;
         /**
           * If `true` the card text color becomes white.
-          * @default ''
          */
         "color"?: HeadingColor;
         /**
@@ -5519,7 +5506,6 @@ declare namespace LocalJSX {
         "level"?: HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }
@@ -6319,12 +6305,10 @@ declare namespace LocalJSX {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
-          * @default ''
          */
         "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
-          * @default ''
          */
         "color"?: HeadingColor;
         /**
@@ -6349,7 +6333,6 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
         "space"?: HeadingSpace;
         /**
@@ -6359,7 +6342,6 @@ declare namespace LocalJSX {
         "subtitle"?: boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }
@@ -7170,7 +7152,6 @@ declare namespace LocalJSX {
         "closeHandler"?: () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
         "color"?: NotificationColor;
         /**

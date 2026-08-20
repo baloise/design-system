@@ -170,8 +170,7 @@ details.accordion {
 /**
  * Animation: smooth open/close
  * --------------------------------
- * - Uses ::details-content when supported (modern browsers)
- * - Falls back to animating element siblings after summary
+ * - Animates the `.content` wrapper element inside `<details>`
  */
 
 :root {
@@ -186,8 +185,6 @@ details.accordion {
 
   // Animation with Safari is limited when closing the details,
   // which is without animation.
-  // @supports selector(::details-content) {
-  details::details-content,
   details > .content {
     display: grid;
     grid-template-rows: 0fr;
@@ -198,23 +195,19 @@ details.accordion {
     transition-behavior: allow-discrete;
   }
 
-  details::details-content > *,
   details > .content > * {
     min-height: 0;
     transition: visibility 0.3s;
     visibility: hidden;
   }
 
-  details[open]::details-content,
   details[open] > .content {
     grid-template-rows: 1fr;
   }
 
-  details[open]::details-content > *,
   details[open] > .content > * {
     visibility: visible;
   }
-  // }
 }
 
 /*
