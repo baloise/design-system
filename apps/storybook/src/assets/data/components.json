@@ -15352,6 +15352,10 @@
         {
           "name": "slot",
           "text": "- The checkbox items to display inside the group."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "encapsulation": "shadow",
@@ -16181,6 +16185,10 @@
         {
           "name": "",
           "docs": "The checkbox items to display inside the group."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [],
@@ -17770,6 +17778,10 @@
       "docs": "Date renders a masked date input field with an interactive calendar popup for date selection.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -19121,7 +19133,12 @@
           "docs": "Navigation button color when disabled."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "clear",
@@ -21301,6 +21318,10 @@
       "docs": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "drop-zone - The main drop area where users drag files or click to select."
         },
@@ -22229,7 +22250,12 @@
           "docs": "Text color when disabled."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "drop-zone",
@@ -27790,6 +27816,10 @@
       "docs": "Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.",
       "docsTags": [
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -29399,7 +29429,12 @@
           "docs": "Line height of the description."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "input",
@@ -29488,6 +29523,10 @@
       "usage": {},
       "docs": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
       "docsTags": [
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
         {
           "name": "part",
           "text": "slider - The noUiSlider target element."
@@ -30248,7 +30287,12 @@
           "docs": "Line height of the description."
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
       "parts": [
         {
           "name": "slider",
@@ -38255,6 +38299,10 @@
           "text": "- The number input field content and surrounding elements."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "input - The native HTML input element."
         },
@@ -39154,6 +39202,10 @@
         {
           "name": "",
           "docs": "The number input field content and surrounding elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -42876,6 +42928,10 @@
         {
           "name": "slot",
           "text": "- The radio items to display inside the group."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "encapsulation": "shadow",
@@ -43700,6 +43756,10 @@
         {
           "name": "",
           "docs": "The radio items to display inside the group."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [],
@@ -43748,6 +43808,10 @@
         {
           "name": "slot",
           "text": "- One or more ds-segment-item elements."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         },
         {
           "name": "part",
@@ -44341,6 +44405,10 @@
         {
           "name": "",
           "docs": "One or more ds-segment-item elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -45198,6 +45266,10 @@
         {
           "name": "slot",
           "text": "- Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative\nto the options / optionGroups props. Ignored whenever options or optionGroups is non-empty."
+        },
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         },
         {
           "name": "part",
@@ -46094,6 +46166,10 @@
         {
           "name": "",
           "docs": "Optional ds-select-option / ds-select-optgroup elements, as an HTML-only alternative\nto the options / optionGroups props. Ignored whenever options or optionGroups is non-empty."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [
@@ -57419,6 +57495,10 @@
           "text": "- The textarea field content and surrounding elements."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "textarea - The native HTML textarea element."
         },
@@ -58666,6 +58746,10 @@
         {
           "name": "",
           "docs": "The textarea field content and surrounding elements."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [

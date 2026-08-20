@@ -1,0 +1,40 @@
+{
+  "name": "@baloise/ds-ag-grid",
+  "version": "20.0.0-next.9",
+  "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baloise/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://design.baloise.dev",
+  "security": "https://github.com/baloise/design-system/security/advisories/new",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "build:clean": "rimraf dist",
+    "lint": "eslint .",
+    "test": "vitest --run"
+  },
+  "peerDependencies": {
+    "ag-grid-community": "^33.0.0"
+  },
+  "dependencies": {
+    "@baloise/ds-tokens": "20.0.0-next.9"
+  },
+  "devDependencies": {
+    "ag-grid-community": "36.1.0",
+    "eslint": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}
