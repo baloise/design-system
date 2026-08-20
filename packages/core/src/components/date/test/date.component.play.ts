@@ -136,7 +136,9 @@ test.describe('inline', () => {
     })
 
     test('should not emit dsChange when clicking an out-of-range date', async ({ page }) => {
-      await page.mount(`<ds-date label="Date" inline min="2026-07-15" max="2026-07-31" default-date="2026-07-15"></ds-date>`)
+      await page.mount(
+        `<ds-date label="Date" inline min="2026-07-15" max="2026-07-31" default-date="2026-07-15"></ds-date>`,
+      )
       const date = new DsDate(page.locator('ds-date'), { inline: true })
       const changeSpy = await date.el.spyOnEvent('dsChange')
 
