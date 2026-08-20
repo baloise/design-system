@@ -14,6 +14,7 @@ export { Components, JSX } from './components'
 // TODO: export all interfaces
 export * from './components/modal/modal.interfaces'
 export * from './components/footer/footer.interfaces'
+export * from './components/sheet/sheet.interfaces'
 
 /**
  * i18n
