@@ -17,9 +17,9 @@ $host-selector: ('#notification');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(notification-radius, var(--ds-notification-radius));
-  @include vars.local(notification-color-background, var(--ds-notification-color-base-background));
-  @include vars.local(notification-color-border, var(--ds-notification-color-base-border));
-  @include vars.local(notification-color-text, var(--ds-notification-color-base-text));
+  @include vars.local(notification-color-background, var(--ds-notification-base-color-background));
+  @include vars.local(notification-color-border, var(--ds-notification-base-color-border));
+  @include vars.local(notification-color-text, var(--ds-notification-base-color-text));
 
   @include vars.local(notification-heading-family, var(--ds-alias-text-family-heading));
   @include vars.local(notification-heading-weight, var(--ds-alias-text-weight-bold));
@@ -31,7 +31,7 @@ $host-selector: ('#notification');
   @include vars.local(notification-content-size, var(--ds-alias-text-size-base-device));
   @include vars.local(notification-content-line-height, var(--ds-alias-text-line-height-body));
 
-  @include vars.local(notification-icon, var(--ds-notification-color-base-icon));
+  @include vars.local(notification-icon, var(--ds-notification-base-color-icon));
   @include vars.local(notification-icon-display, block);
 
   @include vars.local(notification-space, var(--ds-card-space-base-device, 1.5rem));
@@ -190,10 +190,10 @@ $colors: (
 );
 
 @mixin notification-colors($color) {
-  --mod-notification-color-text: var(--ds-notification-color-#{$color}-text);
-  --mod-notification-color-border: var(--ds-notification-color-#{$color}-border);
-  --mod-notification-color-background: var(--ds-notification-color-#{$color}-background);
-  --mod-notification-icon: var(--ds-notification-color-#{$color}-icon);
+  --mod-notification-color-text: var(--ds-notification-#{$color}-color-text);
+  --mod-notification-color-border: var(--ds-notification-#{$color}-color-border);
+  --mod-notification-color-background: var(--ds-notification-#{$color}-color-background);
+  --mod-notification-icon: var(--ds-notification-#{$color}-color-icon);
 }
 
 @include hybrid.styles($css-selector, $use-host) {

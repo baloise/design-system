@@ -47,7 +47,7 @@ export class CardTitle implements DsComponentInterface {
    */
   @Prop()
   @OneOf(HEADING_VISUAL_LEVELS)
-  readonly visualLevel: HeadingVisualLevel = ''
+  readonly visualLevel?: HeadingVisualLevel
 
   render() {
     return (

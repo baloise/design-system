@@ -1,7 +1,7 @@
 packages:
+  - 'apps/*'
   - 'packages/*'
   - 'libs/*'
-  - 'docs'
 
 linkWorkspacePackages: true
 
@@ -35,10 +35,17 @@ catalog:
 # copy in package.json (frozen-lockfile broke there without it).
 # See docs/adr/0005-duplicate-pnpm-overrides.md
 overrides:
-  'brace-expansion@<5.0.8': 5.0.8
-  'js-yaml@>=4.0.0 <4.3.0': 4.3.0
-  'js-yaml@>=3.0.0 <3.15.0': 3.15.0
+  'brace-expansion@<5.0.9': 5.0.9
+  'js-yaml@>=4.0.0 <4.3.1': 4.3.1
+  'js-yaml@>=3.0.0 <3.15.1': 3.15.1
   'immutable@>=5.0.0-beta.1 <5.1.8': 5.1.8
+  'sharp@<0.35.0': 0.35.3
+  'postcss@<8.5.23': 8.5.26
+  'undici@>=7.0.0 <7.29.0': 7.29.0
+  'fast-uri@>=3.0.0 <3.1.5': 3.1.5
+  '@hono/node-server@<2.0.5': 2.1.0
+  'hono@<4.12.34': 4.13.1
+  'nanoid@<3.3.18': 3.3.18
 
 # Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
@@ -49,3 +56,10 @@ allowBuilds:
   core-js-pure: true
   esbuild: true
   libxmljs2: true
+  sharp: true
+  unrs-resolver: true
+  lmdb: true
+  msgpackr-extract: true
+
+minimumReleaseAgeExclude:
+  - hono@4.13.1

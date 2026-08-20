@@ -1,7 +1,6 @@
 export const CONTENT_LAYOUTS = ['', 'horizontal', 'vertical'] as const
-export const CONTENT_DIRECTIONS = ['', 'column', 'row'] as const
+export const CONTENT_DIRECTIONS = ['column', 'row'] as const
 export const CONTENT_SPACES = [
-  '',
   'none',
   '3xs',
   '2xs',
@@ -15,7 +14,7 @@ export const CONTENT_SPACES = [
   'small',
   'normal',
 ] as const
-export const CONTENT_ALIGNMENTS = ['', 'start', 'center', 'end'] as const
+export const CONTENT_ALIGNMENTS = ['start', 'center', 'end'] as const
 export const CONTENT_TEXT_ALIGNMENTS = ['', 'left', 'center', 'right'] as const
 
 export type ContentLayout = (typeof CONTENT_LAYOUTS)[number]

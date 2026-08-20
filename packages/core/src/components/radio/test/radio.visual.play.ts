@@ -26,6 +26,7 @@ const HOST_VARIANTS = [
   'form',
   'field-disabled',
   'field-invalid',
+  'field-invalid-slot',
   'tile-basic',
   'tile-columns',
   'tile-invalid',

@@ -44,7 +44,7 @@ export class CardSubtitle implements DsComponentInterface {
    */
   @Prop()
   @OneOf(HEADING_COLORS)
-  readonly color: HeadingColor = ''
+  readonly color?: HeadingColor
 
   render() {
     return (

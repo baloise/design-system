@@ -98,6 +98,21 @@
         </ds-radio-group>
       </section>
 
+      <!-- Field Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="field-invalid-slot">
+        <span>Field Invalid via slot</span>
+        <ds-radio-group label="Slot with content" description="Description">
+          <ds-radio name="field-invalid-slot-1" value="1" required>Radio 1</ds-radio>
+          <ds-radio name="field-invalid-slot-1" value="2" required>Radio 2</ds-radio>
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-radio-group>
+        <ds-radio-group label="Empty slot stays valid" description="Description">
+          <ds-radio name="field-invalid-slot-2" value="1" required>Radio 1</ds-radio>
+          <ds-radio name="field-invalid-slot-2" value="2" required>Radio 2</ds-radio>
+          <div slot="invalid-text"></div>
+        </ds-radio-group>
+      </section>
+
       <!-- Tile Basic -->
       <section data-testid="tile-basic">
         <span>Tile Basic</span>

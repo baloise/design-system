@@ -28,6 +28,7 @@ import {
   hasValue,
   OneOf,
   Type,
+  watchInvalidTextSlot,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
@@ -53,6 +54,7 @@ import {
  * Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.
  *
  * @slot - The number input field content and surrounding elements.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part input - The native HTML input element.
  * @part prefix - The prefix wrapper (if used).
  * @part suffix - The suffix wrapper (if used).
@@ -70,6 +72,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   private inheritedAttributes: { [k: string]: any } = {}
   private selectTimeout?: NodeJS.Timeout
   private control = new FormControl<number | null>(this)
+  private disconnectInvalidTextSlotWatcher?: () => void
   private lastValue = ''
 
   log!: LogInstance
@@ -82,6 +85,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
+  @State() hasInvalidTextSlotContent = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
   @State() nativeInputValue = ''
@@ -278,6 +282,13 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   connectedCallback() {
     this.debounceChanged()
     this.control.connectedCallback()
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
+  }
+
+  disconnectedCallback() {
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentWillLoad() {
@@ -464,11 +475,13 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
    */
 
   render() {
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
+
     return (
       <Field
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={isInvalid}
         label={this.label}
         description={this.description}
         invalidText={this.invalidText}
@@ -483,7 +496,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
           pattern={this.inputPattern}
           ref={el => (this.control.nativeEl = el)}
           aria-describedby="description"
-          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-invalid={isInvalid ? 'true' : 'false'}
           name={this.name}
           disabled={this.disabled}
           placeholder={this.placeholder || ''}

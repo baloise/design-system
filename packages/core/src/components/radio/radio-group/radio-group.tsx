@@ -11,7 +11,16 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Logger, type LogInstance, stopEventBubbling, hasTagName, isDescendant, OneOf, Type } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  stopEventBubbling,
+  hasTagName,
+  isDescendant,
+  OneOf,
+  Type,
+  watchInvalidTextSlot,
+} from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { INPUT_COLORS, InputColor } from '../../input/input.interfaces'
@@ -32,6 +41,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
  *
  * @slot - The radio items to display inside the group.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  */
 @Component({
   tag: 'ds-radio-group',
@@ -52,6 +62,9 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   inputId = `ds-rg-${radioGroupIds++}`
   private initialValue?: any | null
@@ -226,7 +239,14 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
   connectedCallback() {
     this.initialValue = this.value
     this.internals.setFormValue(this.value)
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
     this.passDownAttributes()
+  }
+
+  disconnectedCallback() {
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentWillLoad() {
@@ -392,6 +412,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    */
 
   private passDownAttributes() {
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
     this.getRadios().forEach(radio => {
       if (this.disabled !== undefined) {
         radio.disabled = this.disabled
@@ -399,9 +420,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
       if (this.readonly !== undefined) {
         radio.readonly = this.readonly
       }
-      if (this.invalid !== undefined) {
-        radio.invalid = this.invalid
-      }
+      radio.invalid = isInvalid
       radio.labelPosition = this.labelPosition
       radio.tile = this.tile
       radio.hideTrigger = this.hideTrigger
@@ -456,7 +475,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
         role="fieldset"
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={this.invalid || this.hasInvalidTextSlotContent}
         loading={this.loading}
         label={this.label}
         description={this.description}

@@ -53,6 +53,7 @@ Output: Summary of changes written to files.
 
 - Every `@Prop()` has a matching validation decorator (`@Type` / `@OneOf`)
 - Validator type matches prop type (string → `@Type('string')`, enum → `@OneOf(CONST_ARRAY)`)
+- Optional `@OneOf` enum props use `undefined` (optional `?:`), never `= ''` as the "not set" sentinel (STYLE_GUIDE.md "Props")
 
 **Type Matching Rules**
 
@@ -95,7 +96,16 @@ Auto-corrects issues:
 - ✅ Adds missing JSDoc comments for `@Prop`, `@Event`, and `@Method` decorators
 - ✅ Adds/fixes divider comments with correct formatting
 - ✅ Adds missing `@Type`/`@OneOf` decorators (matches types via `.interfaces.ts`)
-- ✅ Writes changes to `.tsx` files
+- ✅ Rewrites `x: T = ''` → `x?: T` for optional `@OneOf` props, and strips the now-unneeded `''` sentinel out of the matching `CONST_ARRAY` in `.interfaces.ts`
+- ✅ Writes changes to `.tsx` and `.interfaces.ts` files
+
+**Not auto-fixed** — flagged as warnings for manual review instead, since these require judgment:
+
+- Render logic in the same `.tsx` that compares the prop against `''` (`|| ''`, `=== ''`, ...)
+- A method/property called directly on the prop (`this.prop.split(...)`) — now that the prop is optional, this needs a type-narrowing guard; `hasValue()` is a plain boolean check, not a TS type guard, so under `strict: true` these become real type errors. **Run `tsc --noEmit` after any `--fix` run that touches a prop's optionality.**
+- Storybook `argTypes` defaults (`*.stories.ts` / `*.doc-config.ts`) referencing `''`
+- Playwright page objects (`packages/playwright/src/lib/components/*.po.ts`) referencing `''`
+- Unit tests (`*.spec.ts`) referencing `''`
 
 Reports summary of changes:
 
@@ -144,4 +154,4 @@ Reports violations in both `carousel/carousel.tsx` and `carousel/carousel-item.t
 
 ## Related
 
-See [STYLE_GUIDE.md](../../STYLE_GUIDE.md) for component standards.
+See [STYLE_GUIDE.md](../../docs/STYLE_GUIDE.md) for component standards.

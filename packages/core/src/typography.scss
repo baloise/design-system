@@ -17,7 +17,7 @@
   h6,
   ds-heading {
     font-family: var(--ds-alias-text-family-heading);
-    font-weight: var(--ds-heading-weight);
+    font-weight: var(--ds-heading-font-weight);
   }
 
   @for $i from 1 through 5 {

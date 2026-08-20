@@ -41,6 +41,11 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
   @State() didPause = false
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
@@ -118,6 +123,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * The id of the toast, used for internal handling, if not provided a random id will be generated
    */
   @Prop()
+  @Type('string')
   readonly alertId: string = crypto.randomUUID() as string
 
   /**
@@ -132,6 +138,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    * If `true` the notification is visible.
    */
   @Prop({ reflect: true })
+  @Type('boolean')
   readonly visible: boolean = true
 
   /**
@@ -174,7 +181,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   componentDidLoad(): void {
@@ -186,7 +193,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -209,7 +216,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private generateSvgContent = () => {
@@ -240,7 +247,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

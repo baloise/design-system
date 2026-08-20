@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ds-tokens",
-  "version": "20.0.0-next.7",
+  "version": "20.0.0-next.9",
   "description": "The Helvetia Design System is an open source project for styling awesome web applications that follow the Helvetia corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -13,6 +13,11 @@
   "main": "dist/js/base.tokens.js",
   "module": "dist/js/base.tokens.js",
   "style": "dist/css/base.tokens.css",
+  "exports": {
+    ".": "./dist/js/base.tokens.js",
+    "./css-preview": "./dist/out-tsc/css-preview.js",
+    "./dist/docs/base.tokens.json": "./dist/docs/base.tokens.json"
+  },
   "scripts": {
     "build": "pnpm exec tsc && node dist/out-tsc",
     "build:clean": "rimraf dist",

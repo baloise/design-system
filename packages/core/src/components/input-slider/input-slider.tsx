@@ -13,7 +13,16 @@ import {
 } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import isNaN from 'lodash/isNaN'
-import { inheritAttributes, debounceEvent, hasValue, Logger, type LogInstance, OneOf, Type } from '@utils'
+import {
+  inheritAttributes,
+  debounceEvent,
+  hasValue,
+  Logger,
+  type LogInstance,
+  OneOf,
+  Type,
+  watchInvalidTextSlot,
+} from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
@@ -33,6 +42,7 @@ import type { target as NoUiSliderTarget } from 'nouislider'
 /**
  * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
  *
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part slider - The noUiSlider target element.
  */
 @Component({
@@ -61,6 +71,9 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   focused = false
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   /**
    * PUBLIC PROPERTY API
@@ -129,7 +142,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   @Watch('invalid')
   protected invalidChanged() {
-    this.picker?.setInvalid(this.invalid)
+    this.picker?.setInvalid(this.invalid || this.hasInvalidTextSlotContent)
   }
 
   /**
@@ -249,7 +262,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   /**
    * Emitted when the value is committed (noUiSlider `change`, not `blur` — see
-   * ADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.
+   * ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
    */
   @Event() dsChange!: EventEmitter<InputSliderChangeDetail>
 
@@ -263,6 +276,10 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
     this.value = clampValue(resolveInitialValue(this.value, this.min), this.min, this.max)
     this.initialValue = this.value
     this.syncFormValue(this.value)
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+      this.picker?.setInvalid(this.invalid || hasContent)
+    })
   }
 
   componentWillLoad() {
@@ -280,7 +297,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
       step: this.step,
       value: this.value,
       disabled: this.disabled || this.readonly,
-      invalid: this.invalid,
+      invalid: this.invalid || this.hasInvalidTextSlotContent,
       onInput: value => {
         this.dsInput.emit(value)
       },
@@ -296,6 +313,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   disconnectedCallback() {
     this.picker?.destroy()
     this.picker = undefined
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   /**

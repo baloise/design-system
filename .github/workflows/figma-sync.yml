@@ -1,0 +1,49 @@
+name: 🔼 Figma Sync
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [next]
+
+concurrency: ${{ github.workflow }}
+
+jobs:
+  sync:
+    name: 🔼 Pull tokens to Figma
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'toky/update-next'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+        with:
+          ref: next
+          fetch-depth: 1
+          token: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
+
+      - uses: ./.github/workflows/actions/setup-environment
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pull tokens to Figma
+        id: sync
+        shell: bash
+        env:
+          DRY_RUN: 'false'
+          FIGMA_API_TOKEN: ${{ secrets.FIGMA_API_TOKEN }}
+          FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
+        run: node scripts/figma-sync/pull.mjs
+
+      # Direct commit to `next`, not a PR — the one deliberate exception to
+      # this repo's PR-mediated writes (docs/adr/0017-direct-commit-variableid-backfill.md).
+      # Needs the bot token to have branch-protection bypass rights on `next`.
+      - name: Write back new/removed variableIds + baseline (direct commit)
+        if: steps.sync.outputs.new_ids != '' || steps.sync.outputs.removed_ids != ''
+        shell: bash
+        env:
+          NEW_IDS: ${{ steps.sync.outputs.new_ids }}
+          REMOVED_IDS: ${{ steps.sync.outputs.removed_ids }}
+          MERGE_COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          GITHUB_TOKEN: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
+        run: node scripts/figma-sync/backfill-commit.mjs

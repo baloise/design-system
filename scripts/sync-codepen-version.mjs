@@ -1,5 +1,5 @@
 /**
- * Sync codepen version — updates DESIGN_SYSTEM_VERSION in docs/.storybook/blocks/codepen.ts
+ * Sync codepen version — updates DESIGN_SYSTEM_VERSION in apps/storybook/.storybook/blocks/codepen.ts
  * to match the current @baloise/ds-core package version. Run after `changeset version`.
  */
 import { readFile, writeFile } from 'node:fs/promises'
@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const workspaceRoot = resolve(__dirname, '..')
 
 const corePackagePath = resolve(workspaceRoot, 'packages/core/package.json')
-const codepenPath = resolve(workspaceRoot, 'docs/.storybook/blocks/codepen.ts')
+const codepenPath = resolve(workspaceRoot, 'apps/storybook/.storybook/blocks/codepen.ts')
 
 async function main() {
   const { version } = JSON.parse(await readFile(corePackagePath, 'utf-8'))

@@ -53,6 +53,17 @@
         ></ds-textarea>
       </section>
 
+      <!-- Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="invalid-slot">
+        <span>Invalid via slot</span>
+        <ds-textarea label="Slot with content" description="Description">
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-textarea>
+        <ds-textarea label="Empty slot stays valid" description="Description">
+          <div slot="invalid-text"></div>
+        </ds-textarea>
+      </section>
+
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid</span>

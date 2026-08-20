@@ -30,6 +30,6 @@ If applicable, please add a screenshot or video to illustrate the changes.
 
 ## 📝 Checklist
 
-- ✅ My code follows the style guidelines of this project ([STYLE_GUIDE.md](../STYLE_GUIDE.md))
+- ✅ My code follows the style guidelines of this project ([STYLE_GUIDE.md](../docs/STYLE_GUIDE.md))
 - 🛠️ I have performed a self-review of my own code
 - ⚠️ My changes generate no new warnings or errors

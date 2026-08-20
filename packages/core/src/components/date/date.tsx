@@ -10,8 +10,9 @@ import {
   Logger,
   type LogInstance,
   OneOf,
-  raf,
   Type,
+  raf,
+  watchInvalidTextSlot,
 } from '@utils'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { Field, FieldInterface } from '../input/field.util'
@@ -34,6 +35,7 @@ import { ClearButton } from '../input/clear-button.util'
 /**
  * Date renders a masked date input field with an interactive calendar popup for date selection.
  *
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part input - The native HTML input element.
  * @part clear - The clear button that removes the selected date.
  * @part trigger - The calendar icon button that opens the date picker popup.
@@ -68,6 +70,9 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
   @State() isOpen = false
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   @Watch('isOpen')
   protected isOpenChanged(open: boolean) {
@@ -372,6 +377,9 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   connectedCallback() {
     this.debounceChanged()
     this.control.connectedCallback()
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
   }
 
   componentWillLoad() {
@@ -418,6 +426,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
     this.dateMask = undefined
     this.datePicker?.destroy()
     this.datePicker = undefined
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   /**
@@ -532,13 +541,14 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
     const displayValue = isoToDisplay(this.value, getDisplayFormat(this.region))
     const triggerLabel = i18nDsTriggerButton[this.language].openCalendar
     const chooseDateLabel = i18nDsTriggerButton[this.language].chooseDate
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
 
     return (
       <Field
         cssClasses={{ 'is-inline': this.inline }}
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={isInvalid}
         loading={this.loading}
         label={this.label}
         description={this.description}
@@ -558,7 +568,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
               inputMode="numeric"
               ref={inputEl => (this.control.nativeEl = inputEl)}
               aria-describedby="description"
-              aria-invalid={this.invalid === true ? 'true' : 'false'}
+              aria-invalid={isInvalid ? 'true' : 'false'}
               disabled={this.disabled}
               autofocus={this.autofocus}
               autocomplete={this.autocomplete}

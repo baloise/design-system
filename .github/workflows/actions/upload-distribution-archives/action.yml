@@ -71,9 +71,9 @@ runs:
         output: libs/eslint-plugin/dist.zip
         paths: libs/eslint-plugin/src
 
-    # Docs (Storybook)
+    # Storybook
     - uses: ./.github/workflows/actions/archive-upload
       with:
-        name: docs
-        output: docs/dist.zip
-        paths: docs/src
+        name: storybook
+        output: apps/storybook/dist.zip
+        paths: apps/storybook/src

@@ -210,7 +210,7 @@ See [REFERENCE.md](REFERENCE.md) for template structure and patterns.
 
 ## See Also
 
-- [STYLE_GUIDE.md](../../STYLE_GUIDE.md) — Code standards
+- [STYLE_GUIDE.md](../../docs/STYLE_GUIDE.md) — Code standards
 - [packages/core/CONTEXT.md](../../packages/core/CONTEXT.md) — Component patterns and lifecycle
 - [packages/tokens/CONTEXT.md](../../packages/tokens/CONTEXT.md) — Design tokens and naming
-- [ARCHITECTURE.md](../../ARCHITECTURE.md) — Component file structure and CSS variable cascade
+- [ARCHITECTURE.md](../../docs/ARCHITECTURE.md) — Component file structure and CSS variable cascade

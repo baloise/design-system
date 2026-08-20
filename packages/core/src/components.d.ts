@@ -191,9 +191,8 @@ export namespace Components {
         "animated": boolean;
         /**
           * Defines the container size constraint for the alert layout.
-          * @default ''
          */
-        "container": AlertContainerSize;
+        "container"?: AlertContainerSize;
         /**
           * Removes the alert with the given ID.
          */
@@ -225,6 +224,9 @@ export namespace Components {
           * @default false
          */
         "ready": boolean;
+        /**
+          * Sets focus on the given elements using the app's focus-visible handling.
+         */
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     /**
@@ -233,19 +235,17 @@ export namespace Components {
     interface DsBadge {
         /**
           * Define the color for the badge.
-          * @default ''
          */
-        "color": BadgeColor;
+        "color"?: BadgeColor;
         /**
           * Name of the icon to show. If an icon is present, text should be hidden.
           * @default ''
          */
         "icon": string;
         /**
-          * If `true` the badge is added to the top right corner of the card.
-          * @default ''
+          * Defines where the badge is positioned relative to its host, e.g. the top right corner of a card.
          */
-        "position": BadgePosition;
+        "position"?: BadgePosition;
         /**
           * If `true` the badge is added to the top right corner of the card.
           * @default false
@@ -253,9 +253,8 @@ export namespace Components {
         "pulse": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
-        "size": BadgeSize;
+        "size"?: BadgeSize;
     }
     /**
      * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
@@ -531,9 +530,8 @@ export namespace Components {
         "bold": boolean;
         /**
           * If `true` the card text color becomes white.
-          * @default ''
          */
-        "color": HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the card text color becomes white.
           * @default false
@@ -556,9 +554,8 @@ export namespace Components {
         "level": HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
-        "visualLevel": HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     /**
      * Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.
@@ -833,9 +830,8 @@ export namespace Components {
         "button": boolean;
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
-          * @default ''
          */
-        "buttonColor": ButtonColor;
+        "buttonColor"?: ButtonColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
@@ -849,9 +845,8 @@ export namespace Components {
         "inverted": boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
-        "size": CloseSize;
+        "size"?: CloseSize;
     }
     /**
      * Content arranges content with flexible layout, alignment, and spacing options for structural layouts.
@@ -859,33 +854,25 @@ export namespace Components {
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
-          * @default ''
          */
-        "align": ContentAlignment;
-        /**
-          * @default ''
-         */
-        "alignment": StackAlignment;
+        "align"?: ContentAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
-        "direction": StackDirection;
+        "direction"?: StackDirection;
         /**
           * **Deprecated:** Use direction instead.
-          * @default ''
          */
-        "layout": StackLayout;
+        "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
-          * @default ''
          */
-        "space": ContentSpace;
+        "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
-          * @default ''
          */
-        "textAlign": ContentTextAlignment;
+        "textAlign"?: ContentTextAlignment;
     }
     /**
      * Data displays a list of label-value pairs in a organized, accessible format.
@@ -1291,14 +1278,12 @@ export namespace Components {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
-          * @default ''
          */
-        "autoLevel": HeadingVisualLevel;
+        "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
-          * @default ''
          */
-        "color": HeadingColor;
+        "color"?: HeadingColor;
         /**
           * If `true` the color gets inverted for dark backgrounds
           * @default false
@@ -1321,9 +1306,8 @@ export namespace Components {
         "shadow": boolean;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
-        "space": HeadingSpace;
+        "space"?: HeadingSpace;
         /**
           * If `true` the heading gets displayed slimmer.
           * @default false
@@ -1331,9 +1315,8 @@ export namespace Components {
         "subtitle": boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
-        "visualLevel": HeadingVisualLevel;
+        "visualLevel"?: HeadingVisualLevel;
     }
     /**
      * Hint displays contextual help via an info-circle trigger button.
@@ -2003,9 +1986,8 @@ export namespace Components {
         "closeHandler": () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
-        "color": NotificationColor;
+        "color"?: NotificationColor;
         /**
           * Defines the heading of the notification.
           * @default ''
@@ -2885,9 +2867,8 @@ export namespace Components {
         "labelPosition": SpinnerLabelPosition;
         /**
           * Defines the size of the spinner. If `sm` the spinner is smaller.
-          * @default ''
          */
-        "size": SpinnerSize;
+        "size"?: SpinnerSize;
         /**
           * **Deprecated:** Use size="sm" instead.
           * @default false
@@ -2905,18 +2886,13 @@ export namespace Components {
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
-          * @default ''
          */
-        "align": StackAlignment;
-        /**
-          * @default ''
-         */
-        "alignment": StackAlignment;
+        "align"?: StackAlignment;
+        "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
-        "direction": StackDirection;
+        "direction"?: StackDirection;
         /**
           * Defines the width of the stack to be exactly the width of the content.
           * @default false
@@ -5035,7 +5011,6 @@ declare namespace LocalJSX {
         "animated"?: boolean;
         /**
           * Defines the container size constraint for the alert layout.
-          * @default ''
          */
         "container"?: AlertContainerSize;
         /**
@@ -5072,7 +5047,6 @@ declare namespace LocalJSX {
     interface DsBadge {
         /**
           * Define the color for the badge.
-          * @default ''
          */
         "color"?: BadgeColor;
         /**
@@ -5081,8 +5055,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * If `true` the badge is added to the top right corner of the card.
-          * @default ''
+          * Defines where the badge is positioned relative to its host, e.g. the top right corner of a card.
          */
         "position"?: BadgePosition;
         /**
@@ -5092,7 +5065,6 @@ declare namespace LocalJSX {
         "pulse"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
         "size"?: BadgeSize;
     }
@@ -5394,7 +5366,6 @@ declare namespace LocalJSX {
         "bold"?: boolean;
         /**
           * If `true` the card text color becomes white.
-          * @default ''
          */
         "color"?: HeadingColor;
         /**
@@ -5419,7 +5390,6 @@ declare namespace LocalJSX {
         "level"?: HeadingLevel;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }
@@ -5734,7 +5704,6 @@ declare namespace LocalJSX {
         "button"?: boolean;
         /**
           * Defines the color of the button variant. Only applicable if `button` is `true`.
-          * @default ''
          */
         "buttonColor"?: ButtonColor;
         /**
@@ -5749,7 +5718,6 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
         /**
           * Define the size of badge. Small is recommended for tabs.
-          * @default ''
          */
         "size"?: CloseSize;
     }
@@ -5759,31 +5727,23 @@ declare namespace LocalJSX {
     interface DsContent {
         /**
           * Defines the positioning like center, end or default to start.
-          * @default ''
          */
         "align"?: ContentAlignment;
-        /**
-          * @default ''
-         */
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
         "direction"?: StackDirection;
         /**
           * **Deprecated:** Use direction instead.
-          * @default ''
          */
         "layout"?: StackLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
-          * @default ''
          */
         "space"?: ContentSpace;
         /**
           * Defines the text positioning like center, right or default to left.
-          * @default ''
          */
         "textAlign"?: ContentTextAlignment;
     }
@@ -6234,12 +6194,10 @@ declare namespace LocalJSX {
     interface DsHeading {
         /**
           * The actual heading level used in the HTML markup.
-          * @default ''
          */
         "autoLevel"?: HeadingVisualLevel;
         /**
           * The theme type of the toast.
-          * @default ''
          */
         "color"?: HeadingColor;
         /**
@@ -6264,7 +6222,6 @@ declare namespace LocalJSX {
         "shadow"?: boolean;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
         "space"?: HeadingSpace;
         /**
@@ -6274,7 +6231,6 @@ declare namespace LocalJSX {
         "subtitle"?: boolean;
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
-          * @default ''
          */
         "visualLevel"?: HeadingVisualLevel;
     }
@@ -6647,7 +6603,7 @@ declare namespace LocalJSX {
          */
         "onDsBlur"?: (event: DsInputSliderCustomEvent<InputSliderBlurDetail>) => void;
         /**
-          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0006/ADR-0007). Fires once per discrete drag/step, independent of focus.
+          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
          */
         "onDsChange"?: (event: DsInputSliderCustomEvent<InputSliderChangeDetail>) => void;
         /**
@@ -6977,7 +6933,6 @@ declare namespace LocalJSX {
         "closeHandler"?: () => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default ''
          */
         "color"?: NotificationColor;
         /**
@@ -7935,7 +7890,6 @@ declare namespace LocalJSX {
         "labelPosition"?: SpinnerLabelPosition;
         /**
           * Defines the size of the spinner. If `sm` the spinner is smaller.
-          * @default ''
          */
         "size"?: SpinnerSize;
         /**
@@ -7955,16 +7909,11 @@ declare namespace LocalJSX {
     interface DsStack {
         /**
           * Defines the text positioning like center, right or default to start.
-          * @default ''
          */
         "align"?: StackAlignment;
-        /**
-          * @default ''
-         */
         "alignment"?: StackAlignment;
         /**
           * Defines the direction of the child elements. Default is column.
-          * @default ''
          */
         "direction"?: StackDirection;
         /**

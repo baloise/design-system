@@ -37,6 +37,17 @@
         <ds-input-slider label="Label" value="50" invalid-text="Out of range" invalid></ds-input-slider>
       </section>
 
+      <!-- Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="invalid-slot">
+        <span>Invalid via slot</span>
+        <ds-input-slider label="Slot with content" value="50">
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-input-slider>
+        <ds-input-slider label="Empty slot stays valid" value="50">
+          <div slot="invalid-text"></div>
+        </ds-input-slider>
+      </section>
+
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid</span>

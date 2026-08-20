@@ -1,0 +1,66 @@
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+// Token names/paths are stored dot-joined (e.g. "🌈 Color.Neutral") since dots
+// can't appear in a group/leaf segment. Display-only — never feed the result
+// back into anything that parses a path, name, or referenceTarget.
+export function toSlashPath(dotted: string): string {
+  return dotted.split('.').join('/')
+}
+
+export function getColorHex(value: unknown): string | null {
+  if (!isPlainObject(value)) return null
+  return typeof value.hex === 'string' ? value.hex : null
+}
+
+const HEX_COLOR_RE = /^#([0-9a-fA-F]{6})$/
+
+export interface ColorValue {
+  colorSpace: string
+  components: [number, number, number]
+  alpha: number
+  hex: string
+}
+
+// Builds a full DTCG color object from a hex string, preserving colorSpace/alpha
+// from the token's previous value when available (defaults to srgb / opaque).
+export function hexToColorValue(hex: string, previous?: unknown): ColorValue | null {
+  const match = HEX_COLOR_RE.exec(hex.trim())
+  if (!match) return null
+
+  const int = parseInt(match[1], 16)
+  const components: [number, number, number] = [((int >> 16) & 255) / 255, ((int >> 8) & 255) / 255, (int & 255) / 255]
+  const alpha = isPlainObject(previous) && typeof previous.alpha === 'number' ? previous.alpha : 1
+  const colorSpace = isPlainObject(previous) && typeof previous.colorSpace === 'string' ? previous.colorSpace : 'srgb'
+
+  return { colorSpace, components, alpha, hex: `#${match[1].toUpperCase()}` }
+}
+
+// DTCG color values are opaque (alpha 1) unless the value object says
+// otherwise — https://www.designtokens.org/tr/drafts/color/#alpha.
+export function getColorAlpha(value: unknown): number {
+  if (!isPlainObject(value)) return 1
+  return typeof value.alpha === 'number' ? value.alpha : 1
+}
+
+// Sets a color value's alpha from a 0-100 percentage, clamping out-of-range
+// input. No-ops on anything that isn't already a color value object (e.g. a
+// reference target, or an empty draft) since there's nothing to attach
+// alpha to yet.
+export function withAlphaPercent(value: unknown, percent: number): unknown {
+  if (!isPlainObject(value)) return value
+  const clamped = Math.min(100, Math.max(0, percent))
+  return { ...value, alpha: clamped / 100 }
+}
+
+export function formatValue(value: unknown): string {
+  if (value === undefined || value === null) return '—'
+
+  const hex = getColorHex(value)
+  if (hex) return hex
+
+  if (typeof value === 'number' || typeof value === 'string') return String(value)
+
+  return JSON.stringify(value)
+}

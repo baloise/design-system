@@ -48,6 +48,10 @@ Every decision in this system adheres to these principles (from ARCHITECTURE.md)
 - **Web standards only** — no framework-specific solutions in core
 - **Self-contained assets** — no external CDNs, all assets bundled
 
+## Architectural Decisions
+
+All ADRs — repo-wide and package-specific alike — live in one place: [`docs/adr/`](docs/adr/), numbered sequentially. Each ADR states its `Package:` (a specific package/app path, or `repo-wide`) right under the title, so scope is clear without needing a separate per-package ADR log.
+
 ## Related Contexts
 
 See [CONTEXT-MAP.md](CONTEXT-MAP.md) for package-specific contexts:
@@ -57,5 +61,5 @@ See [CONTEXT-MAP.md](CONTEXT-MAP.md) for package-specific contexts:
 - [[packages/css|packages/css/CONTEXT.md]] — Global styles
 - [[packages/assets|packages/assets/CONTEXT.md]] — Fonts & icons
 - [[packages/playwright|packages/playwright/CONTEXT.md]] — E2E testing
-- [[docs|docs/CONTEXT.md]] — Storybook documentation
+- [[apps/storybook|apps/storybook/CONTEXT.md]] — Storybook documentation
 - [[libs|libs/CONTEXT.md]] — Internal utilities

@@ -1,9 +1,0 @@
-# Marks this generated app as its own pnpm workspace root so `pnpm install`/
-# `pnpm link` here operate on this app's own package.json and lockfile,
-# instead of pnpm walking up to the monorepo's pnpm-workspace.yaml and
-# treating this as part of that workspace. See
-# docs/adr/0004-react-smoke-test-app-outside-workspace.md.
-packages: []
-
-allowBuilds:
-  esbuild: true

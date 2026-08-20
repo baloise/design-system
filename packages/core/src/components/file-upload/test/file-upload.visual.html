@@ -35,6 +35,17 @@
         ></ds-file-upload>
       </section>
 
+      <!-- Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="invalid-slot">
+        <span>Invalid via slot</span>
+        <ds-file-upload label="Slot with content" description="Description">
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-file-upload>
+        <ds-file-upload label="Empty slot stays valid" description="Description">
+          <div slot="invalid-text"></div>
+        </ds-file-upload>
+      </section>
+
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid (Success Color)</span>

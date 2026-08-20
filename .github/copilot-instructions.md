@@ -15,7 +15,7 @@ The design system prioritizes:
 - **Compatibility** (webstatus.dev + caniuse.com)
 - **Inclusion** (diverse abilities and technologies)
 
-For comprehensive architecture and design philosophy, see [ARCHITECTURE.md](../ARCHITECTURE.md).
+For comprehensive architecture and design philosophy, see [ARCHITECTURE.md](../docs/ARCHITECTURE.md).
 
 ## Commands
 
@@ -52,13 +52,13 @@ pnpm changeset             # Create a changeset entry before publishing
 
 For comprehensive technical information, see the dedicated documentation files:
 
-- **[ARCHITECTURE.md](../ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
-- **[DEVELOPMENT.md](../DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting
+- **[ARCHITECTURE.md](../docs/ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
+- **[DEVELOPMENT.md](../docs/DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting
 - **[CONTRIBUTING.md](../CONTRIBUTING.md)** — Contribution workflow, PR process, component checklist, accessibility requirements
-- **[STYLE_GUIDE.md](../STYLE_GUIDE.md)** — Code standards, naming conventions, best practices
+- **[STYLE_GUIDE.md](../docs/STYLE_GUIDE.md)** — Code standards, naming conventions, best practices
 - **[SECURITY.md](../SECURITY.md)** — Security policy and guidelines
 - **[CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)** — Community standards
-- **[SKILLS.md](../SKILLS.md)** — Claude Code skills for automating component tasks
+- **[SKILLS.md](../docs/SKILLS.md)** — Claude Code skills for automating component tasks
 
 ## Domain Documentation
 
@@ -80,7 +80,7 @@ Current packages with CONTEXT.md:
 
 ## Key Guidelines
 
-See [STYLE_GUIDE.md](../STYLE_GUIDE.md) for detailed code standards and best practices.
+See [STYLE_GUIDE.md](../docs/STYLE_GUIDE.md) for detailed code standards and best practices.
 
 **Quick Rules:**
 
@@ -93,7 +93,7 @@ See [STYLE_GUIDE.md](../STYLE_GUIDE.md) for detailed code standards and best pra
 - Use CSS variable cascade: private (`--_`), public (`--`), modifier (`--mod-`), token (`--ds-`)
 - Always avoid security issues; follow best practices for web development
 
-See [ARCHITECTURE.md](../ARCHITECTURE.md) for comprehensive coverage of:
+See [ARCHITECTURE.md](../docs/ARCHITECTURE.md) for comprehensive coverage of:
 
 - Component file structure
 - Hybrid component model

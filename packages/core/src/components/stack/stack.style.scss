@@ -247,15 +247,15 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
   }
 
   &.text-left {
-    text-align: left;
+    text-align: left !important;
   }
 
   &.text-center {
-    text-align: center;
+    text-align: center !important;
   }
 
   &.text-right {
-    text-align: right;
+    text-align: right !important;
   }
 }
 

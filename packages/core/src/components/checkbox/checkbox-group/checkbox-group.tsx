@@ -24,6 +24,7 @@ import {
   hasValue,
   OneOf,
   Type,
+  watchInvalidTextSlot,
 } from '@utils'
 import { INPUT_COLORS, InputColor } from '../../input/input.interfaces'
 import {
@@ -43,6 +44,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
  *
  * @slot - The checkbox items to display inside the group.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  */
 @Component({
   tag: 'ds-checkbox-group',
@@ -65,6 +67,9 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
   @State() private internalValue: any[] = []
+  @State() hasInvalidTextSlotContent = false
+
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   /**
    * PUBLIC PROPERTY API
@@ -242,8 +247,15 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   connectedCallback() {
     this.valueChanged()
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
     this.passDownAttributes()
     this.internals.setFormValue(this.internalValue.join(','))
+  }
+
+  disconnectedCallback() {
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentWillLoad() {
@@ -367,6 +379,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   }
 
   private passDownAttributes() {
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
     this.getCheckboxes().forEach(checkbox => {
       if (this.control) {
         if (hasValue(this.disabled)) {
@@ -375,9 +388,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
         if (hasValue(this.readonly)) {
           checkbox.readonly = this.readonly
         }
-        if (hasValue(this.invalid)) {
-          checkbox.invalid = this.invalid
-        }
+        checkbox.invalid = isInvalid
       }
 
       checkbox.name = this.name
@@ -417,7 +428,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
         role="fieldset"
         disabled={this.disabled}
         color={this.color}
-        invalid={this.invalid}
+        invalid={this.invalid || this.hasInvalidTextSlotContent}
         loading={this.loading}
         label={this.label}
         description={this.description}

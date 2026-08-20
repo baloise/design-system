@@ -1,11 +1,16 @@
 @use './mixins/_all' as *;
 
 html {
-  background-color: var(--ds-body-color-background);
-  font-size: var(--ds-body-text-size);
   min-width: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+// Shared with :host so these resolve when this stylesheet is adopted into a shadow root
+html,
+:host {
+  background-color: var(--ds-body-color-background);
+  font-size: var(--ds-body-text-size);
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;

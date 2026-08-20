@@ -12,7 +12,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const docsRoot = resolve(__dirname, '../docs')
+const docsRoot = resolve(__dirname, '../apps/storybook')
 const packagesRoot = resolve(__dirname, '../packages')
 
 const args = process.argv.slice(2)
@@ -207,7 +207,7 @@ async function fetchContributors() {
     console.warn('⚠ Using cached contributors list if available')
   }
 
-  console.log('\x1b[32m✔\x1b[0m docs/src/assets/data/contributors.json ready')
+  console.log('\x1b[32m✔\x1b[0m apps/storybook/src/assets/data/contributors.json ready')
 }
 
 // ============================================================================
@@ -312,7 +312,7 @@ function fixManagerTitle() {
   const html = readFileSync(indexPath, 'utf8')
 
   // Storybook's built-in template always writes its own `<title>` before injecting
-  // our `managerHead` content (docs/.storybook/manager-head.html), so the page ends
+  // our `managerHead` content (apps/storybook/.storybook/manager-head.html), so the page ends
   // up with two `<title>` tags. Browsers use the first one for `document.title`,
   // which makes the Storybook default ("storybook - Storybook") win over ours until
   // manager.ts's JS overwrites it on story render — too late for link previews/crawlers.

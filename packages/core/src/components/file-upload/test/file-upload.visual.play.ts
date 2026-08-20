@@ -2,7 +2,16 @@ import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'file-upload'
 
-const VARIANTS = ['basic', 'disabled', 'invalid', 'valid', 'warning', 'loading', 'no-file-list'] as const
+const VARIANTS = [
+  'basic',
+  'disabled',
+  'invalid',
+  'invalid-slot',
+  'valid',
+  'warning',
+  'loading',
+  'no-file-list',
+] as const
 
 const image = screenshot(TAG)
 

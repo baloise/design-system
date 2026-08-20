@@ -118,7 +118,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v7
         with:
-          ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 2
 
       - uses: ./.github/workflows/actions/setup-environment
@@ -169,7 +168,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download blob reports
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: packages/core/all-blob-reports
           pattern: playwright-blob-report-*
@@ -194,15 +193,10 @@ jobs:
     env:
       HUSKY: 0
       CI: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v19]
     steps:
       - name: Check out code
         uses: actions/checkout@v7
         with:
-          ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 2
 
       - uses: ./.github/workflows/actions/setup-environment
@@ -213,27 +207,27 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Scaffold and link the ${{ matrix.apps }} smoke-test app
-        run: bash test/react/build.sh ${{ matrix.apps }}
+      - name: Build @baloise/ds-core, @baloise/ds-react and @baloise/ds-css
+        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-css
 
       - name: Install Playwright browsers
-        working-directory: test/react/${{ matrix.apps }}
+        working-directory: apps/integration-react
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Build app
-        working-directory: test/react/${{ matrix.apps }}
+        working-directory: apps/integration-react
         run: pnpm run build
 
       - name: Run Playwright tests
-        working-directory: test/react/${{ matrix.apps }}
-        run: pnpm exec playwright test
+        working-directory: apps/integration-react
+        run: pnpm run play:run
 
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: react-playwright-report-${{ matrix.apps }}
-          path: test/react/${{ matrix.apps }}/playwright-report
+          name: react-playwright-report
+          path: apps/integration-react/playwright-report
           retention-days: 7
 
   angular:
@@ -244,15 +238,10 @@ jobs:
     env:
       HUSKY: 0
       CI: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        apps: [v22]
     steps:
       - name: Check out code
         uses: actions/checkout@v7
         with:
-          ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 2
 
       - uses: ./.github/workflows/actions/setup-environment
@@ -263,25 +252,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Scaffold and link the ${{ matrix.apps }} smoke-test app
-        run: bash test/angular/build.sh ${{ matrix.apps }}
+      - name: Build @baloise/ds-core, @baloise/ds-angular and @baloise/ds-css
+        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-angular --filter=@baloise/ds-css
 
       - name: Install Playwright browsers
-        working-directory: test/angular/${{ matrix.apps }}
+        working-directory: apps/integration-angular
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Build app
-        working-directory: test/angular/${{ matrix.apps }}
+        working-directory: apps/integration-angular
         run: pnpm run build
 
       - name: Run Playwright tests
-        working-directory: test/angular/${{ matrix.apps }}
-        run: pnpm exec playwright test
+        working-directory: apps/integration-angular
+        run: pnpm run play:run
 
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: angular-playwright-report-${{ matrix.apps }}
-          path: test/angular/${{ matrix.apps }}/playwright-report
+          name: angular-playwright-report
+          path: apps/integration-angular/playwright-report
           retention-days: 7

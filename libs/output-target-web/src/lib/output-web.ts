@@ -4,6 +4,7 @@ import { copy } from 'fs-extra'
 import { replaceInFile, replaceInFileSync } from 'replace-in-file'
 import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
 import type { OutputTargetWeb } from './types'
+import { assertNoDynamicImports, inlineDynamicImports } from './inline-dynamic-imports'
 
 export const NEWLINE = '\n'
 
@@ -19,6 +20,12 @@ export async function webProxyOutput(
     await adjustInterfacePath(config)
 
     await setVersion(config)
+
+    const rootDir = path.normalize(config.rootDir || '')
+    const componentsDir = path.join(rootDir, outputTarget.dir)
+
+    await inlineDynamicImports(componentsDir)
+    await assertNoDynamicImports(componentsDir)
   })
 }
 

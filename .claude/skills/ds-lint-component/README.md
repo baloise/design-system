@@ -51,6 +51,6 @@ The `implementation.js` includes basic regex-based pattern matching. For product
 
 ## References
 
-- [STYLE_GUIDE.md](../../STYLE_GUIDE.md) — Component standards
-- [ARCHITECTURE.md](../../ARCHITECTURE.md) — Component patterns and validation strategy
+- [STYLE_GUIDE.md](../../docs/STYLE_GUIDE.md) — Component standards
+- [ARCHITECTURE.md](../../docs/ARCHITECTURE.md) — Component patterns and validation strategy
 - [packages/core/CONTEXT.md](../../packages/core/CONTEXT.md) — Component architecture details

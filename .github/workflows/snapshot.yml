@@ -1,4 +1,4 @@
-name: 🚚 Create Snapshot
+name: 🚚 Snapshot
 
 on:
   issue_comment:
@@ -49,7 +49,7 @@ jobs:
         id: last-commit
         run: |
           COMMITS_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.issue.number }}/commits"
-          LAST_COMMIT_SHA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $COMMITS_URL | jq -r '.[-1].sha')
+          LAST_COMMIT_SHA=$(curl -s -H "Authorization: token ${{ secrets.DS_BOT_RELEASE_TOKEN }}" $COMMITS_URL | jq -r '.[-1].sha')
           echo "sha=$LAST_COMMIT_SHA" >> $GITHUB_OUTPUT
 
       - name: Shorten Commit Sha
@@ -65,14 +65,14 @@ jobs:
 
       - uses: ./.github/workflows/actions/release-setup
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
           npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Define version
         run: |
           npm version ${{steps.set-version.outputs.version}} --workspaces --allow-same-version --no-git-tag-version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
 
       - name: Build
         run: npx turbo run build
