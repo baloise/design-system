@@ -31,7 +31,7 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   ...withRender(
-    ({ slot, ...args }) => `<div style="display:flex;align-items:center;justify-content:center;margin:12px;">
+    ({ slot, ...args }) => `<div style="display:flex;align-items:center;justify-content:center;margin:15px 0 0;">
   <ds-sheet style="position:relative" ${props(args)}>${slot}</ds-sheet>
 </div>`,
   ),
