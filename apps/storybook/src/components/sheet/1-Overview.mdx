@@ -1,0 +1,38 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SheetStories from './sheet.stories'
+import { SHEET_DOC_CONFIG, getSheetTabs } from './sheet.doc-config'
+
+<Meta title="Components/Sheet/Sheet" />
+
+<Banner label={'Sheet'} section={SHEET_DOC_CONFIG.section} color={SHEET_DOC_CONFIG.color} />
+
+<BannerTabs of={SheetStories} tabs={getSheetTabs('overview')} />
+
+<ComponentLead component="sheet" />
+
+<CanvasWithCodePen of={SheetStories.Basic} sourceState="shown" overflowVisible={true} />
+
+<Controls of={SheetStories.Basic} />
+
+<ComponentPublicMethods component="sheet" />
+
+{/* Live, unwrapped instance (not in a Canvas) — intentional, to demonstrate the sheet's
+   position: fixed "sticky" behavior against real page content while scrolling this doc. */}
+  <ds-sheet container-size="compact">
+    <ds-heading level="h4" space="bottom">BaloiseCombi</ds-heading>
+    <p className="text-normal mb-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <ds-button-group direction="auto" align="right">
+      <ds-button>Main Action</ds-button>
+      <ds-button color="secondary">Secondary Action</ds-button>
+    </ds-button-group>
+</ds-sheet>
+
+<Footer />

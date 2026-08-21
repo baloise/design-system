@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SheetStories from './sheet.stories'
+import { SHEET_DOC_CONFIG, getSheetTabs } from './sheet.doc-config'
+
+<Meta title="Components/Sheet/Styling" />
+
+<Banner label={'Styling'} section={SHEET_DOC_CONFIG.section} color={SHEET_DOC_CONFIG.color} />
+
+<BannerTabs of={SheetStories} tabs={getSheetTabs('styling')} />
+
+<ComponentParts component="sheet" />
+
+<ComponentCssVariables component="sheet" />
+
+<ComponentDesignTokens component="sheet" />
+
+<Footer />
