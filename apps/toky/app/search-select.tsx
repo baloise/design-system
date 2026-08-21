@@ -172,7 +172,7 @@ export function SearchSelect({
                 {option.borderPreview ? (
                   <span
                     aria-hidden="true"
-                    className="h-0 w-7 shrink-0 border-t-2"
+                    className="h-0 w-8 shrink-0 border-t-2"
                     style={{
                       borderTopColor: option.borderPreview.color,
                       borderTopStyle: option.borderPreview.cssStyle as CSSProperties['borderTopStyle'],

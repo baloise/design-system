@@ -1088,6 +1088,7 @@ function cssBorderStyleFor(style: unknown): string {
 // formatter for anything not one of these known shapes.
 function referenceValueSummary(type: string, resolvedValue: unknown): string {
   if (type === 'border') return borderSummaryText(resolvedValue)
+  if (type === 'typography') return typographySummaryText(resolvedValue)
   if (isDimensionValue(resolvedValue)) return dimensionSummaryText(resolvedValue)
   if (Array.isArray(resolvedValue)) return resolvedValue.map(v => formatValue(v)).join(', ')
   return formatValue(resolvedValue)
@@ -3448,11 +3449,18 @@ export function TokenEditor({
     const map = new Map<string, { color: string; cssStyle: string }>()
     for (const w of working) {
       if (w.token.type !== 'border' || w.token.name.trim() === '') continue
-      const resolved = w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue
-      if (!isBorderValue(resolved)) continue
-      const hex = getColorHex(resolved.color)
+      // Always the fully resolved value, never rawValue — a border whose own color/style
+      // sub-fields are references (not the whole token) has an unresolved reference string
+      // in rawValue.color, which getColorHex can't turn into a swatch. resolvedValue chases
+      // those sub-field references too (flatten.ts's resolveNestedReferences), so it's the
+      // only shape guaranteed to hold a literal color here.
+      if (!isBorderValue(w.token.resolvedValue)) continue
+      const hex = getColorHex(w.token.resolvedValue.color)
       if (!hex) continue
-      map.set(pathFor(w.token.layer, w.token.name).join('.'), { color: hex, cssStyle: cssBorderStyleFor(resolved.style) })
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), {
+        color: hex,
+        cssStyle: cssBorderStyleFor(w.token.resolvedValue.style),
+      })
     }
     return map
   }, [working])
@@ -3466,8 +3474,10 @@ export function TokenEditor({
       // A shadow's resolved value is an array of layer objects — formatted as raw JSON
       // by referenceValueSummary, which floods the row and pushes neighboring rows out
       // of view. Shadow rows show only their name/path, same as borderPreview replacing
-      // detail for border rows below.
-      if (w.token.name.trim() === '' || w.token.type === 'shadow') continue
+      // detail for border rows below. Typography's summary is two reference chips
+      // (size · family) rather than a short literal, which is just as wide and crowds
+      // out the name/path label the same way — typography rows show only name/path too.
+      if (w.token.name.trim() === '' || w.token.type === 'shadow' || w.token.type === 'typography') continue
       const resolved = w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue
       map.set(pathFor(w.token.layer, w.token.name).join('.'), referenceValueSummary(w.token.type, resolved))
     }

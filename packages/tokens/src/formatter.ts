@@ -4,7 +4,6 @@ import { propertyFormatNames } from 'style-dictionary/enums'
 import type { TransformedToken } from 'style-dictionary/types'
 import {
   RESPONSIVE_DIMENSION_EXTENSION_KEY,
-  TYPOGRAPHY_CSS_SUFFIXES,
   dimensionValueToCss,
   type TypographyCssValue,
 } from './css-value.js'
@@ -15,23 +14,18 @@ import { tokenNameToCssVar } from './css-naming.js'
  * token in `dictionary.allTokens`, using that token's own `.value` as the declaration's value. A
  * typography token's `.value` (post `ds/typography` transform) is a `{fontFamily, fontSize,
  * fontWeight, lineHeight}` object, not a CSS-ready string — printed as-is it would render as
- * `[object Object]`. This expands every `$type: "typography"` token into 4 clones (one per
- * sub-property, name-suffixed per TYPOGRAPHY_CSS_SUFFIXES) *before* the token list reaches
- * `formattedVariables`, and drops the original composite entry — mirrors this same formatter's
- * existing `-mobile`/`-tablet`/`-desktop` token-splitting technique just below, applied to `$type`
- * instead of a name suffix. A typography token whose transform produced `null` (malformed) is
- * dropped silently rather than emitting 4 declarations with a blank value.
+ * `[object Object]`. This collapses every `$type: "typography"` token's value into a single CSS
+ * `font` shorthand string (`<weight> <size>/<line-height> <family>`) *before* the token list
+ * reaches `formattedVariables`, in place — unlike border/shadow (also composites), a typography
+ * token keeps its own bare name; no suffixing/expansion needed since it now produces exactly one
+ * declaration, same as any other composite. A typography token whose transform produced `null`
+ * (malformed) is dropped silently rather than emitting a declaration with a blank value.
  *
- * Each clone also gets its own narrowed `original.$value` — just that one sub-property's raw
- * (possibly-reference) value, not the whole composite object. This matters because
- * `createPropertyFormatter`'s `outputReferences` logic keys its `var(--...)` substitution off
- * `token.original.$value`: when that's still an object (as the untouched composite `original`
- * would be, shared unmodified across all 4 clones), the formatter does *one* whole-object textual
- * substitution per token rather than a per-field one — with all 4 clones sharing the identical
- * (still-composite) original, their declarations get cross-wired (verified directly: fontSize
- * came out holding lineHeight's reference). Narrowing `original.$value` to one field's own raw
- * value makes each clone look like an ordinary single-value token again, which
- * createPropertyFormatter already handles correctly.
+ * Each field is resolved independently rather than trusting Style Dictionary's own
+ * `outputReferences` (which only rewrites a token's *entire* value against another token's, and
+ * can't rewrite one field inside a hand-built shorthand string). A field whose raw (pre-transform)
+ * value is a `{reference}` gets rendered as a `var(--...)`/`$...` reference via `wrapReference`;
+ * everything else falls back to its already-resolved literal from `css`.
  *
  * A field (in practice: `fontSize`) that references a *responsive* dimension token (one carrying
  * `$extensions[RESPONSIVE_DIMENSION_EXTENSION_KEY]`, e.g. `Alias.Text.Size.3XL`) is special-cased
@@ -41,9 +35,9 @@ import { tokenNameToCssVar } from './css-naming.js'
  * value (decision 4 in docs/plans/responsive-dimension-token-plan.md) and never changes at wider
  * breakpoints. The `-device` var, by contrast, gets redefined inside this same formatter's
  * `@media` blocks (see `ds/css/variables-responsive`/`-brand` below), so referencing it is what
- * makes a typography token like `--ds-heading-bold-level1-font-size` responsive without itself
- * needing a per-breakpoint redeclaration. CSS-only (`referenceSyntax === 'css'`): the SCSS platform
- * never emits `-device` vars (no media queries there), so its bare reference is left untouched.
+ * makes a typography token like `--ds-heading-bold-level1` responsive without itself needing a
+ * per-breakpoint redeclaration. CSS-only (`referenceSyntax === 'css'`): the SCSS platform never
+ * emits `-device` vars (no media queries there), so its bare reference is left untouched.
  */
 function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: ReferenceSyntax): TransformedToken[] {
   const responsiveDimensionPaths = new Set<string>()
@@ -52,6 +46,20 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
     if (token.$type === 'dimension' && isRawResponsiveDimensionValue(extensions?.[RESPONSIVE_DIMENSION_EXTENSION_KEY])) {
       responsiveDimensionPaths.add(token.path.join('.'))
     }
+  }
+
+  const resolveField = (
+    css: TypographyCssValue,
+    field: keyof TypographyCssValue,
+    originalValue: Partial<Record<keyof TypographyCssValue, unknown>> | undefined,
+  ): string => {
+    const rawField = originalValue?.[field]
+    const refMatch = typeof rawField === 'string' ? /^\{(.+)\}$/.exec(rawField) : null
+    if (!referenceSyntax || !refMatch) return css[field]
+    if (referenceSyntax === 'css' && responsiveDimensionPaths.has(refMatch[1])) {
+      return `var(--${tokenNameToCssVar(refMatch[1].split('.'))}-device)`
+    }
+    return wrapReference(refMatch[1], referenceSyntax)
   }
 
   const expanded: TransformedToken[] = []
@@ -66,22 +74,19 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
     const css = (token.$value ?? token.value) as TypographyCssValue | null | undefined
     if (!css) continue
     const originalValue = token.original?.$value as Partial<Record<keyof TypographyCssValue, unknown>> | undefined
-    for (const [field, suffix] of Object.entries(TYPOGRAPHY_CSS_SUFFIXES) as [keyof TypographyCssValue, string][]) {
-      const rawField = originalValue?.[field]
-      const refMatch = typeof rawField === 'string' ? /^\{(.+)\}$/.exec(rawField) : null
-      const deviceRef =
-        referenceSyntax === 'css' && refMatch && responsiveDimensionPaths.has(refMatch[1])
-          ? `var(--${tokenNameToCssVar(refMatch[1].split('.'))}-device)`
-          : null
 
-      expanded.push({
-        ...token,
-        name: `${token.name}-${suffix}`,
-        value: deviceRef ?? css[field],
-        $value: deviceRef ?? css[field],
-        original: { ...token.original, $value: deviceRef ? undefined : rawField },
-      })
-    }
+    const fontWeight = resolveField(css, 'fontWeight', originalValue)
+    const fontSize = resolveField(css, 'fontSize', originalValue)
+    const lineHeight = resolveField(css, 'lineHeight', originalValue)
+    const fontFamily = resolveField(css, 'fontFamily', originalValue)
+    const shorthand = `${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`
+
+    expanded.push({
+      ...token,
+      value: shorthand,
+      $value: shorthand,
+      original: { ...token.original, $value: shorthand },
+    })
   }
   return expanded
 }

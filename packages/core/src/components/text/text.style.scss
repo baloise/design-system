@@ -18,12 +18,16 @@ $host-selector: ('#text');
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(text-align, inherit);
   @include vars.local(text-color, var(--ds-body-color));
-  @include vars.local(text-family, var(--ds-body-font-family));
-  @include vars.local(text-weight, var(--ds-body-font-weight));
-  @include vars.local(text-line-height, var(--ds-body-line-height));
-  @include vars.local(text-space, var(--ds-body-font-space));
-  @include vars.local(text-size, var(--ds-body-font-size));
-  @include vars.local(text-shadow, none); // var(--ds-alias-text-shadow-elevated)
+
+  @include vars.local(text-font, var(--ds-text-paragraph));
+
+  // @include vars.local(text-family, var(--ds-body-font-family));
+  // @include vars.local(text-weight, var(--ds-body-font-weight));
+  // @include vars.local(text-line-height, var(--ds-body-line-height));
+  // @include vars.local(text-size, var(--ds-body-font-size));
+
+  @include vars.local(text-space, var(--ds-text-space));
+  @include vars.local(text-shadow, none); // var(--ds-text-shadow)
 }
 
 /**
@@ -42,11 +46,8 @@ $host-selector: ('#text');
   text-wrap: balance;
   text-align: var(--_text-align);
 
+  font: var(--_text-font);
   color: var(--_text-color);
-  font-family: var(--_text-family);
-  font-weight: var(--_text-weight);
-  line-height: var(--_text-line-height);
-  font-size: var(--_text-size);
   text-shadow: var(--_text-shadow);
 
   b,
@@ -137,7 +138,7 @@ $weights: ('light', 'regular', 'bold');
 // Shadow
 // --------------------------------
 @mixin shadow {
-  --mod-text-shadow: var(--ds-alias-text-shadow-elevated);
+  --mod-text-shadow: var(--ds-text-shadow);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -176,7 +177,7 @@ $colors: (
   'disabled',
   'grey',
   'hint',
-  // 'placeholder',
+  'placeholder',
   'primary',
   'success',
   'warning',

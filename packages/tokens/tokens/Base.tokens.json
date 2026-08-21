@@ -3007,36 +3007,13 @@
         "$type": "color",
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
-      "LineHeight": {
-        "$type": "number",
-        "$value": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-      },
-      "FontWeight": {
-        "$type": "fontWeight",
-        "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
-      },
-      "FontFamily": {
-        "$type": "fontFamily",
-        "$value": "{🔗 Alias.🔤 Text.Family.Text}"
-      },
       "Surface": {
         "$type": "color",
         "$value": "{🔗 Alias.🎨 Surface.White}"
       },
-      "FontSpace": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.Base}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🔗 Alias.↔️ Space.Base}",
-            "tablet": "{🔗 Alias.↔️ Space.Base}",
-            "desktop": "{🔗 Alias.↔️ Space.Base}"
-          }
-        }
-      },
-      "FontSize": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.🔤 Text.Size.SM}"
+      "Font": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Text.Paragraph}"
       }
     },
     "Card": {
@@ -7272,132 +7249,48 @@
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Cell": {
-        "Padding": {
-          "$type": "string",
-          "$value": "0.5em 0.75em"
-        },
         "Border": {
-          "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
-          },
-          "Width": {
-            "$type": "string",
-            "$value": "0 0 2px"
-          }
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
         },
-        "Heading": {
-          "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
+        "PaddingX": {
+          "$type": "string",
+          "$value": "0.75em"
+        },
+        "PaddingY": {
+          "$type": "string",
+          "$value": "0.5em"
         }
       },
       "Head": {
-        "Cell": {
-          "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Border": {
-            "Width": {
-              "$type": "string",
-              "$value": "0 0 1px"
-            },
-            "Color": {
-              "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.Primary}"
-            }
-          }
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Primary}"
         },
         "Font": {
-          "Family": {
-            "$type": "fontFamily",
-            "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-          },
-          "Size": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Mobile}"
-          }
-        },
-        "Background": {
-          "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Transparent}"
-          }
-        }
-      },
-      "Foot": {
-        "Cell": {
-          "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Border": {
-            "Width": {
-              "$type": "string",
-              "$value": "0 0 0"
-            }
-          }
-        },
-        "Background": {
-          "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Transparent}"
-          }
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.BoldLevel5}"
         }
       },
       "Row": {
-        "Color": {
+        "Background": {
           "Active": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
-        },
-        "Background": {
-          "Color": {
-            "Active": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-            },
-            "Hover": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Sky.1}"
-            }
-          }
-        }
-      },
-      "Background": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.White}"
-        }
-      },
-      "Body": {
-        "Background": {
-          "Color": {
+            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+          },
+          "Hover": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Transparent}"
+            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+          },
+          "Striped": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.GreyLighter}"
           }
         }
       },
-      "Striped": {
-        "Row": {
-          "Even": {
-            "Background": {
-              "Color": {
-                "Base": {
-                  "$type": "color",
-                  "$value": "{🔗 Alias.🎨 Surface.GreyLighter}"
-                },
-                "Hover": {
-                  "$type": "color",
-                  "$value": "{🌐 Global.🌈 Color.Primary.2}"
-                }
-              }
-            }
-          }
-        }
+      "Font": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Text.Paragraph}"
       }
     },
     "Popup": {
@@ -7813,6 +7706,17 @@
         "Color": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+        }
+      },
+      "Space": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.Base}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🔗 Alias.↔️ Space.Base}",
+            "tablet": "{🔗 Alias.↔️ Space.Base}",
+            "desktop": "{🔗 Alias.↔️ Space.Base}"
+          }
         }
       }
     }
