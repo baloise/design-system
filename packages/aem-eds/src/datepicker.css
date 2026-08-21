@@ -1,0 +1,4 @@
+/* ds-date is a Shadow DOM component and styles itself — this is just the block's own layout spacing. */
+.datepicker-wrapper {
+  max-width: 20rem;
+}

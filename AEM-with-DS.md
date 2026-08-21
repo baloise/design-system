@@ -519,7 +519,7 @@ export async function getCards() {
 // components/Card.tsx — Server Component, zero client JS
 export function Card({ title, subtitle, description, image, ctaLabel, ctaHref }: CardProps) {
   return (
-    <article className="ds-card is-dense has-space-sm">
+    <article className="card is-dense has-space-sm">
       <picture>
         <img src={image._path} alt="" />
       </picture>
@@ -557,7 +557,7 @@ export default async function Page() {
 }
 ```
 
-Same `.ds-card` / `.card-content` / `.card-actions` / `.title` markup as the EDS block
+Same `.card` / `.card-content` / `.card-actions` / `.title` markup as the EDS block
 adoption pattern — the CSS-only mode is the one piece of the DS that's identical across
 every AEM delivery model.
 

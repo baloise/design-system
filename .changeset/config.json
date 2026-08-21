@@ -3,7 +3,15 @@
   "changelog": ["./my-changelog-config.js", { "repo": "baloise/design-system" }],
   "commit": false,
   "fixed": [["@baloise/ds-*"]],
-  "ignore": ["libs-*", "storybook", "toky", "integration-react", "integration-angular"],
+  "ignore": [
+    "libs-*",
+    "storybook",
+    "toky",
+    "integration-react",
+    "integration-angular",
+    "integration-aem",
+    "@baloise/ds-aem-eds"
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "next",

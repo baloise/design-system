@@ -9,6 +9,7 @@ linkWorkspacePackages: true
 # packages. Reference an entry from a package.json with "catalog:".
 # pnpm replaces "catalog:" with the resolved version on publish.
 catalog:
+  '@adobe/aem-cli': 16.21.10
   '@axe-core/playwright': 4.12.1
   '@stencil/core': 4.43.5
   '@storybook/addon-docs': 10.5.2
@@ -16,11 +17,14 @@ catalog:
   '@storybook/html-vite': 10.5.2
   '@typescript-eslint/utils': 8.64.0
   compression: 1.8.1
+  concurrently: 10.0.5
   eslint: 10.7.0
   express: 5.2.1
   fast-deep-equal: 3.1.3
   fs-extra: 11.3.6
   lodash: 4.18.1
+  merge-json-cli: 1.0.4
+  npm-run-all: 4.1.5
   sass: 1.101.0
   serve-index: 1.9.2
   storybook: 10.5.2

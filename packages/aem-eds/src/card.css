@@ -1,0 +1,4 @@
+/* ds-css already styles .card — this is just the block's own layout spacing. */
+.card-wrapper {
+  max-width: 22rem;
+}

@@ -98,6 +98,9 @@ apps/storybook/dist
 playwright-report
 playwright.visual.config.mts
 
+# Local-only sanity-check repo aem-cli requires — see apps/integration-aem/CONTEXT.md
+apps/integration-aem/.git
+
 .angular
 
 packages/**/CHANGELOG.md
