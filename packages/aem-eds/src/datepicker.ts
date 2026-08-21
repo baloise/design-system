@@ -15,11 +15,21 @@ function moveInstrumentation(from: Element, to: Element): void {
   }
 }
 
+interface DsDateModule {
+  defineCustomElement(): void
+}
+
 /**
  * `datepicker` block — the one block backed by a real DS Shadow DOM custom element,
- * `<ds-date>` (`packages/core/src/components/date`). `ds-core`'s lazy-loader script must
- * already be loaded globally on the page for this element to register. Universal Editor
- * model: `blocks/datepicker/_datepicker.json` (`apps/integration-aem`).
+ * `<ds-date>` (`packages/core/src/components/date`). Universal Editor model:
+ * `blocks/datepicker/_datepicker.json` (`apps/integration-aem`).
+ *
+ * Self-registers `ds-date` from `ds-core`'s `dist-custom-elements` output
+ * (`packages/core/components/ds-date.js`, copied to `/libs/ds/components/`) instead of
+ * relying on a global Stencil lazy-loader `<script>` — so only pages that actually use
+ * this block pay any `ds-core` cost at all. `defineCustomElement()` is idempotent
+ * (`customElements.get(...) || customElements.define(...)` internally), so calling it on
+ * every `decorate()` is safe even with multiple datepicker blocks on one page.
  *
  * Authoring contract (row 0): label, name (optional), required (optional, `"true"`/`"false"`).
  *
@@ -27,12 +37,18 @@ function moveInstrumentation(from: Element, to: Element): void {
  * listening for native DOM events needs the bridge below — the same adapter pattern
  * documented in `AEM-with-DS.md`'s Adaptive Forms `ds-date` section.
  */
-export default function decorate(block: HTMLElement): void {
+export default async function decorate(block: HTMLElement): Promise<void> {
   const row = block.children[0]
   const cells = row?.children
   const label = cells?.[0]?.textContent?.trim() ?? ''
   const name = cells?.[1]?.textContent?.trim() ?? ''
   const required = (cells?.[2]?.textContent?.trim() ?? '').toLowerCase() === 'true'
+
+  // A non-literal specifier keeps tsc from trying (and failing) to resolve this as a
+  // workspace module — it's a runtime browser URL, not an import from this package.
+  const dsDateUrl = '/libs/ds/components/ds-date.js'
+  const dsDateModule = (await import(dsDateUrl)) as unknown as DsDateModule
+  dsDateModule.defineCustomElement()
 
   const dsDate = document.createElement('ds-date')
   if (label) dsDate.setAttribute('label', label)

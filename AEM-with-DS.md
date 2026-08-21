@@ -640,3 +640,8 @@ for your installed version before wiring this up for real. The other field types
 (`ds-input`, `ds-select`, …) follow the identical `DsXField` wrapper pattern: one thin
 client component per field, binding `useRuleEngine`'s `[state, handlers]` to the matching
 DS React prop names.
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+![alt text](image-2.png)
