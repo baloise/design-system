@@ -27914,7 +27914,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",

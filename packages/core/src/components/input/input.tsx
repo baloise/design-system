@@ -1,44 +1,51 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
 import isNil from 'lodash/isNil'
-import { DsComponentInterface } from '@global'
 import {
-  inheritAttributes,
-  FormControlInterface,
-  FormControl,
-  stopEventBubbling,
+  ACTION_KEYS,
+  defaultConfig,
+  DsComponentInterface,
+  DsConfigState,
+  DsLanguage,
+  DsRegion,
+  isCtrlOrCommandKey,
+  ListenToConfig,
+} from '@global'
+import {
   debounceEvent,
+  FormControl,
+  FormControlInterface,
+  hasValue,
+  inheritAttributes,
   Logger,
   type LogInstance,
-  hasValue,
   OneOf,
+  stopEventBubbling,
   Type,
   watchInvalidTextSlot,
 } from '@utils'
-import { ACTION_KEYS, isCtrlOrCommandKey } from '@global'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { InputMaskUtil } from './input.mask'
 import { getMask } from './masks'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from './field.util'
 import {
-  INPUT_COLORS,
+  INPUT_AUTOCOMPLETES,
   INPUT_AUTOCORRECTS,
+  INPUT_COLORS,
   INPUT_INPUT_MODES,
   INPUT_INPUT_TYPES,
   INPUT_MASKS,
-  INPUT_AUTOCOMPLETES,
-  InputColor,
-  InputInputType,
   InputAutocomplete,
   InputAutocorrect,
-  InputInputMode,
-  InputMask,
   InputBlurDetail,
-  InputKeyPressDetail,
-  InputFocusDetail,
-  InputClickDetail,
-  InputInputDetail,
   InputChangeDetail,
+  InputClickDetail,
+  InputColor,
+  InputFocusDetail,
+  InputInputDetail,
+  InputInputMode,
+  InputInputType,
+  InputKeyPressDetail,
+  InputMask,
 } from './input.interfaces'
 
 /**
@@ -313,7 +320,9 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   }
 
   /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
    */
   @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
 
@@ -436,8 +445,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    */
 
   private getRawValue(): string {
-    const value = (this.value || '').toString()
-    return value
+    return (this.value || '').toString()
   }
 
   private getFormattedValue(): string {
