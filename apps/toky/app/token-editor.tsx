@@ -371,6 +371,18 @@ type RenderReferenceSearch = (
   layerFilter?: TokenLayer[],
 ) => ReactNode
 
+// Shared tab-row header (see `renderPopoverHeader`'s definition) — every value/reference
+// popover in this file threads this down the same way it threads RenderReferenceSearch above.
+// `onClose` overrides the header's close button, for popovers (like BorderColorField's) that
+// aren't tracked by the row-level `openPopoverId` and so can't just default to clearing it.
+type RenderPopoverHeader = (
+  tabs: { value: string; label: string }[],
+  activeValue: string,
+  onValueChange: ((value: string) => void) | null,
+  ariaLabel: string,
+  onClose?: () => void,
+) => ReactNode
+
 // Shared "no errors" fallback for a row's cellErrors — a stable reference
 // (unlike a fresh `[]` literal on every lookup) so a row without errors
 // doesn't get a new array identity, and thus a wasted re-render, on every
@@ -752,18 +764,19 @@ function ShadowColorField({
 }
 
 // Border composite's `color` sub-field — literal-or-reference, laid out as a horizontal
-// label-column row (matching Figma's own Border-color/Width/Style rows) with two independent
-// affordances at the end of the input: the swatch+value trigger itself opens a small popover
-// with a live preview and ShadowColorField's hex/opacity editor (literal case), while a
-// trailing reference-toggle button (same TypographyReferenceToggle/renderDetachButton pair
-// fontSize/lineHeight use) switches the field to/from an alias. Detaching a reference falls
-// back to opaque black, same "sane literal default" reasoning as fontSize's
-// `{ value: 16, unit: 'px' }`/lineHeight's `1`.
+// label-column row (matching Figma's own Border-color/Width/Style rows). The popover mirrors
+// the top-level color cell's own picker (see `renderEditValueEditor`'s `type === 'color'`
+// branch): one swatch+value trigger opens a popover with a "Color"/"Reference" tab row
+// (`renderPopoverHeader`) instead of the toggle-button/detach-button pair BorderWidthField
+// still uses — a reference is just another tab here, not a different trigger shape. Switching
+// to the Reference tab doesn't commit anything by itself (mirrors the top-level picker); only
+// picking a search result or editing the literal fields does.
 function BorderColorField({
   idPrefix,
   color,
   previewColor,
   onChange,
+  renderPopoverHeader,
   renderReferenceSearch,
 }: {
   idPrefix: string
@@ -773,30 +786,37 @@ function BorderColorField({
   // yet), in which case the swatch just shows empty/checkerboard.
   previewColor?: unknown
   onChange: (next: unknown) => void
+  renderPopoverHeader: RenderPopoverHeader
   renderReferenceSearch: RenderReferenceSearch
 }): ReactNode {
   const [open, setOpen] = useState(false)
+  const [modeOverride, setModeOverride] = useState<'value' | 'reference' | null>(null)
   const isReference = typeof color === 'string'
+  const mode = modeOverride ?? (isReference ? 'reference' : 'value')
   const hex = isReference ? getColorHex(previewColor) : getColorHex(color)
   const swatchAlphaPercent = isReference ? alphaPercentFor(previewColor) : alphaPercentFor(color)
+  // Literal draft to hand ShadowColorField when the Color tab is open on top of a reference
+  // value — falls back to the resolved preview (or opaque black) rather than editing `color`
+  // itself, since `color` is still the reference string until the user actually commits a hex.
+  const literalColor = isReference ? (previewColor ?? hexToColorValue('#000000')) : color
 
   return (
     <div className="flex items-center gap-3">
       <Label htmlFor={`${idPrefix}-trigger`} className="w-14 shrink-0 text-xs text-muted-foreground">
         Color
       </Label>
-      <div className="group/tag flex min-w-0 flex-1 items-center gap-1">
-        <Popover open={open} onOpenChange={setOpen}>
+      <div className="min-w-0 flex-1">
+        <Popover
+          open={open}
+          onOpenChange={next => {
+            setOpen(next)
+            if (!next) setModeOverride(null)
+          }}
+        >
           <PopoverTrigger
             id={`${idPrefix}-trigger`}
             aria-label="Color"
-            render={
-              isReference ? (
-                <Button type="button" variant="outline" className={BORDER_FIELD_TRIGGER_CLASS} />
-              ) : (
-                <button type="button" className={BORDER_FIELD_TRIGGER_CLASS} />
-              )
-            }
+            render={<button type="button" className={BORDER_FIELD_TRIGGER_CLASS} />}
           >
             {renderColorSwatch(hex, swatchAlphaPercent)}
             <span className="min-w-0 flex-1 truncate">
@@ -804,35 +824,34 @@ function BorderColorField({
             </span>
           </PopoverTrigger>
           <PopoverContent className="w-72">
-            {isReference ? (
+            {renderPopoverHeader(
+              [
+                { value: 'value', label: 'Color' },
+                { value: 'reference', label: 'Reference' },
+              ],
+              mode,
+              value => setModeOverride(value as 'value' | 'reference'),
+              'Color',
+              () => setOpen(false),
+            )}
+            {mode === 'value' ? (
+              <ShadowColorField idPrefix={idPrefix} color={literalColor} onCommit={onChange} />
+            ) : (
               renderReferenceSearch(
-                bareReferenceText(color),
+                isReference ? bareReferenceText(color) : '',
                 next => {
                   onChange(bracedReference(next))
                   setOpen(false)
+                  setModeOverride(null)
                 },
                 'Color reference',
                 false,
                 ['color'],
                 ['Global'],
               )
-            ) : (
-              <ShadowColorField idPrefix={idPrefix} color={color} onCommit={onChange} />
             )}
           </PopoverContent>
         </Popover>
-        {isReference ? (
-          renderDetachButton('Detach color alias', () => onChange(hexToColorValue('#000000')), 'icon', true)
-        ) : (
-          <TypographyReferenceToggle
-            ariaLabel="Color reference"
-            onSelect={next => onChange(bracedReference(next))}
-            renderReferenceSearch={renderReferenceSearch}
-            typeFilter={['color']}
-            layerFilter={['Global']}
-            size="icon"
-          />
-        )}
       </div>
     </div>
   )
@@ -1099,12 +1118,14 @@ function BorderEditor({
   rawValue,
   resolvedValue,
   onChange,
+  renderPopoverHeader,
   renderReferenceSearch,
 }: {
   idPrefix: string
   rawValue: unknown
   resolvedValue: unknown
   onChange: (next: unknown) => void
+  renderPopoverHeader: RenderPopoverHeader
   renderReferenceSearch: RenderReferenceSearch
 }): ReactNode {
   const base: BorderValue = isBorderValue(rawValue)
@@ -1131,6 +1152,7 @@ function BorderEditor({
         color={typeof base.color === 'string' ? base.color : resolved.color}
         previewColor={resolved.color}
         onChange={next => onChange({ ...base, color: next })}
+        renderPopoverHeader={renderPopoverHeader}
         renderReferenceSearch={renderReferenceSearch}
       />
       <div className="flex items-center gap-3">
@@ -1171,11 +1193,13 @@ function DraftBorderEditor({
   idPrefix,
   value,
   onChange,
+  renderPopoverHeader,
   renderReferenceSearch,
 }: {
   idPrefix: string
   value: BorderValue
   onChange: (next: BorderValue) => void
+  renderPopoverHeader: RenderPopoverHeader
   renderReferenceSearch: RenderReferenceSearch
 }): ReactNode {
   const width: DimensionValue = isDimensionValue(value.width) ? value.width : { value: 0, unit: 'rem' }
@@ -1194,6 +1218,7 @@ function DraftBorderEditor({
         idPrefix={`${idPrefix}-color`}
         color={value.color}
         onChange={next => onChange({ ...value, color: next })}
+        renderPopoverHeader={renderPopoverHeader}
         renderReferenceSearch={renderReferenceSearch}
       />
       <div className="flex items-center gap-3">
@@ -1802,6 +1827,23 @@ function renderColorSwatch(hex: string | null, alphaPercent: number): ReactNode 
   )
 }
 
+// Line preview for a border-composite reference cell — same "little solid/dashed/dotted line
+// in the resolved color/style" idiom as the reference picker's own borderPreview rows (see
+// referenceBorderPreviewByPath/SearchSelect), reused here so a whole-token border reference
+// reads at a glance instead of falling back to the "1.5rem solid" literal summary.
+function renderBorderLinePreview(color: string | null, cssStyle: string): ReactNode {
+  return (
+    <span
+      aria-hidden="true"
+      className="h-0 w-5 shrink-0 border-t-2"
+      style={{
+        borderTopColor: color ?? undefined,
+        borderTopStyle: cssStyle as CSSProperties['borderTopStyle'],
+      }}
+    />
+  )
+}
+
 // TOKEN_TYPE_ICON's keys are the raw DTCG $type ("fontWeight", "fontFamily") — fine for a lookup
 // key, unreadable as tooltip copy, so this splits the camelCase into "Font Weight" the same way
 // a person would say it.
@@ -1904,12 +1946,7 @@ interface TokenRowHandlers {
   onBrandAlphaBlur: (brand: string, id: string) => void
   onBrandReferenceChange: (brand: string, id: string, text: string) => void
   onSetBrandMode: (id: string, mode: 'value' | 'reference') => void
-  renderPopoverHeader: (
-    tabs: { value: string; label: string }[],
-    activeValue: string,
-    onValueChange: ((value: string) => void) | null,
-    ariaLabel: string,
-  ) => ReactNode
+  renderPopoverHeader: RenderPopoverHeader
   renderReferenceSearch: RenderReferenceSearch
 }
 
@@ -2210,29 +2247,74 @@ const TokenRow = memo(function TokenRow({
                 <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
                   <PopoverTrigger
                     render={
-                      <button
-                        type="button"
-                        aria-label={`Value for ${token.name || 'token'}`}
-                        className={CELL_TRIGGER_CLASS}
-                      />
+                      token.referenceTarget ? (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TAG_CLASS}
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TRIGGER_CLASS}
+                        />
+                      )
                     }
                   >
-                    {renderColorSwatch(
-                      getColorHex(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
-                      alphaPercentFor(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                    {token.referenceTarget ? (
+                      <>
+                        {renderBorderLinePreview(
+                          getColorHex(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                          cssBorderStyleFor(isBorderValue(token.resolvedValue) ? token.resolvedValue.style : undefined),
+                        )}
+                        <span className="w-fit">{toSlashPath(token.referenceTarget)}</span>
+                      </>
+                    ) : (
+                      <>
+                        {renderColorSwatch(
+                          getColorHex(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                          alphaPercentFor(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                        )}
+                        <span className="w-fit">{borderSummaryText(token.resolvedValue)}</span>
+                      </>
                     )}
-                    <span className="w-fit">{borderSummaryText(token.resolvedValue)}</span>
                   </PopoverTrigger>
                   <PopoverContent className="w-96">
-                    <BorderEditor
-                      idPrefix={`border-${row}`}
-                      rawValue={token.rawValue}
-                      resolvedValue={token.resolvedValue}
-                      onChange={next => handlers.onBorderChange(id, next)}
-                      renderReferenceSearch={handlers.renderReferenceSearch}
-                    />
+                    {handlers.renderPopoverHeader(
+                      [
+                        { value: 'value', label: 'Border' },
+                        { value: 'reference', label: 'Reference' },
+                      ],
+                      mode,
+                      value => handlers.onSetMode(id, value as 'value' | 'reference'),
+                      `Value mode for ${token.name || 'token'}`,
+                    )}
+                    {mode === 'value' ? (
+                      <BorderEditor
+                        idPrefix={`border-${row}`}
+                        rawValue={token.rawValue}
+                        resolvedValue={token.resolvedValue}
+                        onChange={next => handlers.onBorderChange(id, next)}
+                        renderPopoverHeader={handlers.renderPopoverHeader}
+                        renderReferenceSearch={handlers.renderReferenceSearch}
+                      />
+                    ) : (
+                      handlers.renderReferenceSearch(
+                        token.referenceTarget ?? '',
+                        value => handlers.onReferenceChange(id, value),
+                        `Reference target for ${token.name || 'token'}`,
+                        true,
+                        ['border'],
+                      )
+                    )}
                   </PopoverContent>
                 </Popover>
+                {token.referenceTarget &&
+                  renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                    handlers.onReferenceChange(id, ''),
+                  )}
               </div>
             ) : token.type === 'typography' ? (
               <div className="group/tag flex items-center gap-1">
@@ -4509,13 +4591,8 @@ export function TokenEditor({
   // underline), plus a close button, then a full-bleed divider. When there's
   // only one mode (plain reference popovers), `onValueChange` is omitted and
   // the single tab renders as a static, non-interactive label.
-  const renderPopoverHeader = useCallback(
-    (
-      tabs: { value: string; label: string }[],
-      activeValue: string,
-      onValueChange: ((value: string) => void) | null,
-      ariaLabel: string,
-    ): ReactNode => (
+  const renderPopoverHeader: RenderPopoverHeader = useCallback(
+    (tabs, activeValue, onValueChange, ariaLabel, onClose): ReactNode => (
       <div className="-mx-3 -mt-3 mb-2">
         <div className="flex h-8 items-stretch justify-between pl-1">
           <div role={onValueChange ? 'tablist' : undefined} aria-label={ariaLabel} className="flex items-stretch">
@@ -4547,7 +4624,7 @@ export function TokenEditor({
             size="icon-xs"
             aria-label="Close"
             className="my-1 mr-1"
-            onClick={() => setOpenPopoverId(null)}
+            onClick={onClose ?? (() => setOpenPopoverId(null))}
           >
             <XIcon />
           </Button>
@@ -5993,6 +6070,7 @@ export function TokenEditor({
                       idPrefix="draft-border"
                       value={draft.borderValue}
                       onChange={next => setDraft(prev => ({ ...prev, borderValue: next }))}
+                      renderPopoverHeader={renderPopoverHeader}
                       renderReferenceSearch={renderReferenceSearch}
                     />
                   )

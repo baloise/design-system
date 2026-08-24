@@ -60,13 +60,13 @@ These improvements help our components work seamlessly across all supported fram
 | unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ⬜     | ⬜    |
-| container        | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ⬜     | ⬜    |
+| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
+| container        | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
 | form             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
 | grid             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
 | picture          | CSS      | ❓     | ❓   | ✅   | ✅     | ❓        | ❓     | ⬜    |
 | stack & content  | WC & CSS | ⛔     | ✅   | ✅   | ✅     | ✅        | ⛔     | ⬜    |
-| divider          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| divider          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | spinner          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | progress-bar     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |

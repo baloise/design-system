@@ -339,6 +339,22 @@
             "width": "{🔗 Alias.▭ Border.Width.Base}",
             "style": "{🔗 Alias.▭ Border.Style.Solid}"
           }
+        },
+        "WhiteDashed": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.White}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Dashed}"
+          }
+        },
+        "PrimaryDashed": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.Primary}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Dashed}"
+          }
         }
       }
     },
@@ -1685,148 +1701,124 @@
         "$type": "shadow",
         "$value": "{🌐 Global.🔤 Font.Shadow.1}"
       },
-      "Primary": {
-        "Color": {
+      "Color": {
+        "Primary": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-        }
-      },
-      "White": {
-        "Color": {
+        },
+        "Inverted": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.White}"
         }
       },
-      "Success": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Success}"
-        }
-      },
-      "Warning": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
-        }
-      },
-      "Danger": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
-        }
-      },
-      "BoldLevel1": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "BoldLevel3": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "BoldLevel4": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "BoldLevel5": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "LightLevel1": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "LightLevel3": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "BoldDisplay2": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.4XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "BoldDisplay1": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.5XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "LightDisplay2": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.4XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "LightDisplay1": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.5XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "BoldLevel2": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "LightLevel2": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        }
-      },
-      "Info": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+      "Level": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "3": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "4": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "5": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Light1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Light3": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Display2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.4XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Display1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.5XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "LightDisplay2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.4XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "LightDisplay1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.5XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Light2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
         }
       }
     },
@@ -3013,7 +3005,7 @@
       },
       "Font": {
         "$type": "typography",
-        "$value": "{🧩 Component.Text.Paragraph}"
+        "$value": "{🧩 Component.Text.Typo.Paragraph}"
       }
     },
     "Card": {
@@ -3649,67 +3641,27 @@
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.Rounded}"
       },
-      "Width": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.▭ Border.Width.Base}"
-      },
       "Color": {
-        "Base": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-        },
-        "PrimaryLight": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.PrimaryLight}"
-        },
         "Primary": {
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.Primary}"
         },
-        "LightBlue": {
+        "Secondary": {
           "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.PrimaryHover}"
+          "$value": "{🔗 Alias.▭ Border.Color.PrimaryLight}"
         },
-        "PrimaryDark": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.PrimaryActive}"
-        },
-        "GreyLight": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
-        },
-        "Grey": {
+        "Base": {
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.Grey}"
         },
-        "GreyDark": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.GreyDark}"
-        },
-        "Warning": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Warning}"
-        },
-        "Success": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Success}"
-        },
-        "Danger": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Danger}"
-        },
-        "DangerDark": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.DangerHover}"
-        },
-        "DangerDarker": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.DangerActive}"
-        },
-        "White": {
+        "Inverted": {
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.White}"
         }
+      },
+      "Size": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.▭ Border.Width.Base}"
       }
     },
     "Icon": {
@@ -3745,6 +3697,10 @@
         "Info": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+        },
+        "InvertedDisabled": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.InvertedDisabled}"
         }
       },
       "Size": {
@@ -4028,15 +3984,7 @@
         }
       },
       "Label": {
-        "Weight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-        },
         "Color": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Success": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Success}"
@@ -4052,33 +4000,11 @@
           "Disabled": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
-          }
-        },
-        "Color 2": {
-          "Base": {
+          },
+          "Primary": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Success": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Success}"
-          },
-          "Warning": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
           }
-        },
-        "Family": {
-          "$type": "fontFamily",
-          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
         },
         "LineHeight": {
           "$type": "number",
@@ -4098,19 +4024,13 @@
             "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Desktop}"
           }
         },
-        "Size 2": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Tablet}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Desktop}"
-          }
+        "FontWeight": {
+          "$type": "fontWeight",
+          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
+        },
+        "FontFamily": {
+          "$type": "fontFamily",
+          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
         }
       },
       "Control": {
@@ -4920,10 +4840,6 @@
     },
     "Label": {
       "Color": {
-        "Base": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-        },
         "Disabled": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
@@ -4939,60 +4855,66 @@
         "Danger": {
           "$type": "color",
           "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+        },
+        "Primary": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
         }
       },
-      "Base": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "MD": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "3XL": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "2XL": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "LG": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "XL": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+      "Typo": {
+        "Base": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "MD": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "3XL": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "2XL": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "LG": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "XL": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
         }
       }
     },
@@ -5714,40 +5636,68 @@
     },
     "Spinner": {
       "Circle": {
-        "Size": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Size.24}"
-        },
-        "Width": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Size.4}"
-        },
-        "Color": {
+        "Primary": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Grey}"
           },
           "Progress": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+          }
+        },
+        "Inverted": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
+          },
+          "Progress": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+          }
+        },
+        "Size": {
+          "SM": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.16}"
+          },
+          "MD": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.24}"
+          }
+        },
+        "Thickness": {
+          "SM": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.2}"
+          },
+          "MD": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.4}"
           }
         }
       },
-      "Size": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Size.48}"
-      },
-      "Inverted": {
-        "Circle": {
+      "Logo": {
+        "Size": {
+          "MD": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.64}"
+          },
+          "SM": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.32}"
+          }
+        },
+        "Inverted": {
           "Color": {
-            "Background": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.White}"
-            },
-            "Progress": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.Primary}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.InvertedPrimary}"
+          }
+        },
+        "Primary": {
+          "Color": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
         }
       }
@@ -7269,7 +7219,7 @@
         },
         "Font": {
           "$type": "typography",
-          "$value": "{🧩 Component.Heading.BoldLevel5}"
+          "$value": "{🧩 Component.Heading.Level.5}"
         }
       },
       "Row": {
@@ -7290,7 +7240,7 @@
       },
       "Font": {
         "$type": "typography",
-        "$value": "{🧩 Component.Text.Paragraph}"
+        "$value": "{🧩 Component.Text.Typo.Paragraph}"
       }
     },
     "Popup": {
@@ -7608,105 +7558,9 @@
       }
     },
     "Text": {
-      "Paragraph": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "Small": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "Lead": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "Block": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.MD}",
-          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
-          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-        }
-      },
-      "Primary": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-        }
-      },
-      "Disabled": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
-        }
-      },
-      "Grey": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Grey}"
-        }
-      },
-      "Success": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Success}"
-        }
-      },
-      "Warning": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
-        }
-      },
-      "White": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.White}"
-        }
-      },
-      "InvertedDisabled": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.InvertedDisabled}"
-        }
-      },
-      "InvertedPrimary": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.InvertedPrimary}"
-        }
-      },
       "Shadow": {
         "$type": "shadow",
         "$value": "{🔗 Alias.🔤 Text.Shadow.Elevated}"
-      },
-      "Hint": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
-        }
-      },
-      "Danger": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
-        }
       },
       "Space": {
         "$type": "dimension",
@@ -7716,6 +7570,86 @@
             "mobile": "{🔗 Alias.↔️ Space.Base}",
             "tablet": "{🔗 Alias.↔️ Space.Base}",
             "desktop": "{🔗 Alias.↔️ Space.Base}"
+          }
+        }
+      },
+      "Color": {
+        "Primary": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        },
+        "Disabled": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
+        },
+        "Grey": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Grey}"
+        },
+        "Success": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Success}"
+        },
+        "Warning": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
+        },
+        "InvertedDisabled": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.InvertedDisabled}"
+        },
+        "Danger": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+        },
+        "Inverted": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.White}"
+        },
+        "Info": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+        },
+        "Placeholder": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
+        }
+      },
+      "Typo": {
+        "Paragraph": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "Small": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "Lead": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        },
+        "Block": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.MD}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
         }
       }
@@ -7987,10 +7921,24 @@
         }
       },
       "Size": {
+        "2": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2,
+            "unit": "px"
+          }
+        },
         "4": {
           "$type": "dimension",
           "$value": {
             "value": 4,
+            "unit": "px"
+          }
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": {
+            "value": 16,
             "unit": "px"
           }
         },
@@ -8012,6 +7960,13 @@
           "$type": "dimension",
           "$value": {
             "value": 48,
+            "unit": "px"
+          }
+        },
+        "64": {
+          "$type": "dimension",
+          "$value": {
+            "value": 64,
             "unit": "px"
           }
         }

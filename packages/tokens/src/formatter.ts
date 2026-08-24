@@ -4,6 +4,7 @@ import { propertyFormatNames } from 'style-dictionary/enums'
 import type { TransformedToken } from 'style-dictionary/types'
 import {
   RESPONSIVE_DIMENSION_EXTENSION_KEY,
+  TYPOGRAPHY_CSS_SUFFIXES,
   dimensionValueToCss,
   type TypographyCssValue,
 } from './css-value.js'
@@ -14,12 +15,14 @@ import { tokenNameToCssVar } from './css-naming.js'
  * token in `dictionary.allTokens`, using that token's own `.value` as the declaration's value. A
  * typography token's `.value` (post `ds/typography` transform) is a `{fontFamily, fontSize,
  * fontWeight, lineHeight}` object, not a CSS-ready string — printed as-is it would render as
- * `[object Object]`. This collapses every `$type: "typography"` token's value into a single CSS
- * `font` shorthand string (`<weight> <size>/<line-height> <family>`) *before* the token list
- * reaches `formattedVariables`, in place — unlike border/shadow (also composites), a typography
- * token keeps its own bare name; no suffixing/expansion needed since it now produces exactly one
- * declaration, same as any other composite. A typography token whose transform produced `null`
- * (malformed) is dropped silently rather than emitting a declaration with a blank value.
+ * `[object Object]`. This fans every `$type: "typography"` token out into 4 sibling tokens *before*
+ * the token list reaches `formattedVariables`, one per `TYPOGRAPHY_CSS_SUFFIXES` entry (e.g.
+ * `--ds-label-font-lg-font-family`, `-font-size`, `-font-weight`, `-line-height`) — matching the 4
+ * longhand custom properties decision 5 in docs/plans/typography-token-type-plan.md calls for, and
+ * the same split Toky's live preview already produces (`apps/toky/src/tokens/css-preview.ts`'s
+ * `pushTypographyPreviewTokens`), so the built CSS and the preview never disagree. A typography
+ * token whose transform produced `null` (malformed) is dropped silently rather than emitting a
+ * declaration with a blank value.
  *
  * Each field is resolved independently rather than trusting Style Dictionary's own
  * `outputReferences` (which only rewrites a token's *entire* value against another token's, and
@@ -75,18 +78,16 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
     if (!css) continue
     const originalValue = token.original?.$value as Partial<Record<keyof TypographyCssValue, unknown>> | undefined
 
-    const fontWeight = resolveField(css, 'fontWeight', originalValue)
-    const fontSize = resolveField(css, 'fontSize', originalValue)
-    const lineHeight = resolveField(css, 'lineHeight', originalValue)
-    const fontFamily = resolveField(css, 'fontFamily', originalValue)
-    const shorthand = `${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`
-
-    expanded.push({
-      ...token,
-      value: shorthand,
-      $value: shorthand,
-      original: { ...token.original, $value: shorthand },
-    })
+    for (const [field, suffix] of Object.entries(TYPOGRAPHY_CSS_SUFFIXES) as [keyof TypographyCssValue, string][]) {
+      const fieldValue = resolveField(css, field, originalValue)
+      expanded.push({
+        ...token,
+        name: `${token.name}-${suffix}`,
+        value: fieldValue,
+        $value: fieldValue,
+        original: { ...token.original, $value: fieldValue },
+      })
+    }
   }
   return expanded
 }

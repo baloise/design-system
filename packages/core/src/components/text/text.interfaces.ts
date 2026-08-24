@@ -15,7 +15,7 @@ export const TEXT_SIZES = [
   'block',
 ] as const
 export const TEXT_SPACES = ['none', 'bottom', 'top', 'all'] as const
-export const TEXT_COLORS = ['white', 'grey', 'primary', 'hint', 'success', 'warning', 'danger', 'placeholder'] as const
+export const TEXT_COLORS = ['grey', 'primary', 'hint', 'success', 'warning', 'danger', 'placeholder'] as const
 
 export type TextAlign = (typeof TEXT_ALIGNS)[number]
 export type TextSize = (typeof TEXT_SIZES)[number]

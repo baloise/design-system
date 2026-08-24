@@ -230,7 +230,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
             <slot />
           </div>
 
-          <ds-divider space="sm" color="primary-light"></ds-divider>
+          <ds-divider space="sm" color="secondary"></ds-divider>
 
           <div class="bottom-row">
             {textToDisplay && <p class="legal">{textToDisplay}</p>}

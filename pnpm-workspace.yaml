@@ -2,6 +2,7 @@ packages:
   - 'apps/*'
   - 'packages/*'
   - 'libs/*'
+  - '!apps/integration-aem'
 
 linkWorkspacePackages: true
 

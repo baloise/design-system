@@ -1,3 +1,4 @@
+@use 'sass:string';
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
@@ -21,11 +22,12 @@ $nested-vars-selector: ('.title', '.subtitle');
  */
 
 @include vars.hybrid($name, $vars-selector, $use-host) {
-  @include vars.local(heading-color, inherit);
-  @include vars.local(heading-font-family, var(--ds-heading-bold-level1-font-family));
-  @include vars.local(heading-font-weight, var(--ds-heading-bold-level1-font-weight));
-  @include vars.local(heading-line-height, var(--ds-heading-bold-level1-line-height));
-  @include vars.local(heading-font-size, var(--ds-heading-bold-level1-font-size));
+  @include vars.local(heading-family, var(--ds-heading-level-1-font-family));
+  @include vars.local(heading-weight, var(--ds-heading-level-1-font-weight));
+  @include vars.local(heading-line-height, var(--ds-heading-level-1-line-height));
+  @include vars.local(heading-size, var(--ds-heading-level-1-font-size));
+
+  @include vars.local(heading-color, var(--ds-heading-color-primary));
   @include vars.local(heading-space, var(--ds-alias-space-xs-device));
   @include vars.local(heading-shadow, none);
   @include vars.local(heading-text-align, inherit);
@@ -48,9 +50,9 @@ $nested-vars-selector: ('.title', '.subtitle');
   text-wrap: balance;
 
   color: var(--_heading-color);
-  font-family: var(--_heading-font-family);
-  font-weight: var(--_heading-font-weight);
-  font-size: var(--_heading-font-size);
+  font-family: var(--_heading-family);
+  font-weight: var(--_heading-weight);
+  font-size: var(--_heading-size);
   line-height: var(--_heading-line-height);
   text-align: var(--_heading-text-align);
   text-shadow: var(--_heading-shadow);
@@ -137,10 +139,10 @@ $nested-vars-selector: ('.title', '.subtitle');
 //
 // Colors
 // --------------------------------
-$colors: ('primary', 'info', 'success', 'warning', 'danger', 'white');
+$colors: ('primary', 'inverted');
 
 @mixin color($color) {
-  --mod-heading-color: var(--ds-heading-#{$color}-color);
+  --mod-heading-color: var(--ds-heading-color-#{$color});
 }
 
 @each $color in $colors {
@@ -161,18 +163,30 @@ $colors: ('primary', 'info', 'success', 'warning', 'danger', 'white');
 // Sizes
 // --------------------------------
 @mixin size($level) {
-  --mod-heading-font-family: var(--ds-heading-#{$level}-font-family);
-  --mod-heading-font-size: var(--ds-heading-#{$level}-font-size);
-  --mod-heading-font-weight: var(--ds-heading-#{$level}-font-weight);
-  --mod-heading-line-height: var(--ds-heading-#{$level}-line-height);
+  --mod-heading-family: var(--ds-heading-level-#{$level}-font-family);
+  --mod-heading-weight: var(--ds-heading-level-#{$level}-font-weight);
+  --mod-heading-line-height: var(--ds-heading-level-#{$level}-line-height);
+  --mod-heading-size: var(--ds-heading-level-#{$level}-font-size);
+}
+
+// Display levels (e.g. `display1`) use a hyphenated light token
+// (`light-display1`), while numeric levels don't (`light1`).
+@function light-level($level) {
+  $level: '#{$level}';
+
+  @if string.index($level, 'display') {
+    @return string.unquote('light-' + $level);
+  }
+
+  @return string.unquote('light' + $level);
 }
 
 $size-aliases: (
-  (is-1, is-level-1, is-3xl): level1,
-  (is-2, is-level-2, is-2xl): level2,
-  (is-3, is-level-3, is-xl): level3,
-  (is-4, is-level-4, is-lg): level4,
-  (is-5, is-level-5, is-base): level5,
+  (is-1, is-level-1, is-3xl): 1,
+  (is-2, is-level-2, is-2xl): 2,
+  (is-3, is-level-3, is-xl): 3,
+  (is-4, is-level-4, is-lg): 4,
+  (is-5, is-level-5, is-base): 5,
   (is-display-1, is-5xl): display1,
   (is-display-2, is-4xl): display2,
 );
@@ -181,10 +195,10 @@ $size-aliases: (
   @each $class-group, $token in $size-aliases {
     @each $class in $class-group {
       &.#{$class}:not(.is-subtitle) {
-        @include size('bold-' + $token);
+        @include size($token);
       }
       &.#{$class}.is-subtitle {
-        @include size('light-' + $token);
+        @include size(light-level($token));
       }
     }
   }
@@ -201,10 +215,10 @@ $size-aliases: (
     [role='heading'][aria-level='#{$i}'].heading,
     [role='heading'][aria-level='#{$i}'] .heading {
       &:not(.is-subtitle) {
-        @include size('bold-level' + $i);
+        @include size($i);
       }
       &.is-subtitle {
-        @include size('light-level' + $i);
+        @include size('light' + $i);
       }
     }
   }
@@ -214,7 +228,7 @@ $size-aliases: (
     h#{$i} .subtitle,
     [role='heading'][aria-level='#{$i}'].subtitle,
     [role='heading'][aria-level='#{$i}'] .subtitle {
-      @include size('light-level' + $i);
+      @include size('light' + $i);
     }
   }
 }
@@ -222,20 +236,20 @@ $size-aliases: (
 $size-host-aliases: (
   is-5xl: display1,
   is-4xl: display2,
-  is-3xl: level1,
-  is-2xl: level2,
-  is-xl: level3,
-  is-lg: level4,
-  is-base: level5,
+  is-3xl: 1,
+  is-2xl: 2,
+  is-xl: 3,
+  is-lg: 4,
+  is-base: 5,
 );
 
 @include hybrid.host($use-host) {
   @each $class, $token in $size-host-aliases {
     :host(.#{$class}:not(.is-subtitle)) {
-      @include size('bold-' + $token);
+      @include size($token);
     }
     :host(.#{$class}.is-subtitle) {
-      @include size('light-' + $token);
+      @include size(light-level($token));
     }
   }
 }

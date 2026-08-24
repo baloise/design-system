@@ -17,10 +17,10 @@ $host-selector: ('#label');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(label-color, var(--ds-label-color-base));
-  @include vars.local(label-family, var(--ds-label-base-font-family));
-  @include vars.local(label-weight, var(--ds-label-base-font-weight));
-  @include vars.local(label-line-height, var(--ds-label-base-line-height));
-  @include vars.local(label-size, var(--ds-label-base-font-size));
+  @include vars.local(label-family, var(--ds-label-typo-base-font-family));
+  @include vars.local(label-weight, var(--ds-label-typo-base-font-weight));
+  @include vars.local(label-line-height, var(--ds-label-typo-base-line-height));
+  @include vars.local(label-size, var(--ds-label-typo-base-font-size));
 }
 
 /**
@@ -89,10 +89,10 @@ $host-selector: ('#label');
 // --------------------------------
 
 @mixin size($level) {
-  --mod-label-size: var(--ds-label-#{$level}-font-size);
-  --mod-label-weight: var(--ds-label-#{$level}-font-weight);
-  --mod-label-family: var(--ds-label-#{$level}-font-family);
-  --mod-label-line-height: var(--ds-label-#{$level}-line-height);
+  --mod-label-size: var(--ds-label-typo-#{$level}-font-size);
+  --mod-label-weight: var(--ds-label-typo-#{$level}-font-weight);
+  --mod-label-family: var(--ds-label-typo-#{$level}-font-family);
+  --mod-label-line-height: var(--ds-label-typo-#{$level}-line-height);
 }
 
 $size-aliases: (

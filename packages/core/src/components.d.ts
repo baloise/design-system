@@ -1107,7 +1107,7 @@ export namespace Components {
     interface DsDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'grey'
+          * @default 'base'
          */
         "color": DividerColor;
         /**
@@ -2851,7 +2851,7 @@ export namespace Components {
     interface DsSpinner {
         /**
           * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'blue'
+          * @default 'primary'
          */
         "color": SpinnerColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
@@ -6000,7 +6000,7 @@ declare namespace LocalJSX {
     interface DsDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'grey'
+          * @default 'base'
          */
         "color"?: DividerColor;
         /**
@@ -7881,7 +7881,7 @@ declare namespace LocalJSX {
     interface DsSpinner {
         /**
           * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'blue'
+          * @default 'primary'
          */
         "color"?: SpinnerColor;
         /**

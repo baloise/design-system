@@ -212,18 +212,18 @@
   --mod-radio-label-active-color: var(--ds-global-color-danger-6);
 
   --mod-radio-unchecked-base-color-background: transparent;
-  --mod-radio-unchecked-base-color-border: var(--ds-divider-color-danger);
+  --mod-radio-unchecked-base-color-border: var(--ds-alias-border-color-danger);
   --mod-radio-unchecked-hover-color-background: var(--ds-global-color-danger-1);
-  --mod-radio-unchecked-hover-color-border: var(--ds-divider-color-danger-dark);
+  --mod-radio-unchecked-hover-color-border: var(--ds-alias-border-color-danger-hover);
   --mod-radio-unchecked-active-color-background: var(--ds-global-color-danger-1);
-  --mod-radio-unchecked-active-color-border: var(--ds-divider-color-danger-darker);
+  --mod-radio-unchecked-active-color-border: var(--ds-alias-border-color-danger-active);
 
-  --mod-radio-checked-base-color-background: var(--ds-divider-color-danger);
-  --mod-radio-checked-base-color-border: var(--ds-divider-color-danger);
-  --mod-radio-checked-hover-color-background: var(--ds-divider-color-danger-dark);
-  --mod-radio-checked-hover-color-border: var(--ds-divider-color-danger-dark);
-  --mod-radio-checked-active-color-background: var(--ds-divider-color-danger-darker);
-  --mod-radio-checked-active-color-border: var(--ds-divider-color-danger-darker);
+  --mod-radio-checked-base-color-background: var(--ds-alias-border-color-danger);
+  --mod-radio-checked-base-color-border: var(--ds-alias-border-color-danger);
+  --mod-radio-checked-hover-color-background: var(--ds-alias-border-color-danger-hover);
+  --mod-radio-checked-hover-color-border: var(--ds-alias-border-color-danger-hover);
+  --mod-radio-checked-active-color-background: var(--ds-alias-border-color-danger-active);
+  --mod-radio-checked-active-color-border: var(--ds-alias-border-color-danger-active);
 }
 
 @mixin _disabled-vars() {
