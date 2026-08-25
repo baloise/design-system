@@ -73,7 +73,7 @@ These improvements help our components work seamlessly across all supported fram
 | shape            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ❓     | ⬜    |
 | close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |

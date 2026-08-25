@@ -41,8 +41,12 @@ $css-selector: ('.table');
   display: table !important;
   border-spacing: 0;
   margin: 0;
-  font: var(--_table-font);
+  font-family: var(--ds-table-font-font-family);
+  font-size: var(--ds-table-font-font-size);
+  font-weight: var(--ds-table-font-font-weight);
+  line-height: var(--ds-table-font-line-height);
   color: var(--_table-color);
+
   td,
   th {
     border: 0;
@@ -89,7 +93,10 @@ $css-selector: ('.table');
       border-bottom: var(--_table-head-border);
     }
     th {
-      font: var(--_table-head-font);
+      font-family: var(--ds-table-font-font-family);
+      font-size: var(--ds-table-font-font-size);
+      font-weight: var(--ds-table-font-font-weight);
+      line-height: var(--ds-table-font-line-height);
     }
   }
   tbody {

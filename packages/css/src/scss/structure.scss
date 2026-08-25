@@ -10,7 +10,11 @@ html {
 html,
 :host {
   background-color: var(--ds-body-surface);
-  font: var(--ds-body-font);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
+
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -42,12 +46,18 @@ input,
 optgroup,
 select,
 textarea {
-  font: var(--ds-body-font);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
 }
 
 body {
   color: var(--ds-body-color);
-  font: var(--ds-body-font);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
   -webkit-overflow-scrolling: auto;
 }
 
