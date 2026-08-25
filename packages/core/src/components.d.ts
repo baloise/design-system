@@ -16,7 +16,7 @@ import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./
 import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
-import { CloseSize } from "./components/close/close.interfaces";
+import { CloseButtonSize, CloseSize } from "./components/close/close.interfaces";
 import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
@@ -61,7 +61,7 @@ export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./
 export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
-export { CloseSize } from "./components/close/close.interfaces";
+export { CloseButtonSize, CloseSize } from "./components/close/close.interfaces";
 export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
@@ -871,6 +871,10 @@ export namespace Components {
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
         "buttonColor"?: ButtonColor;
+        /**
+          * Define the size of the button variant. Only applicable if `button` is `true`.
+         */
+        "buttonSize"?: CloseButtonSize;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
@@ -1876,9 +1880,8 @@ export namespace Components {
         "animated": boolean;
         /**
           * Defines the brand of the logo. Default is 'baloise'.
-          * @default ''
          */
-        "brand": LogoBrand;
+        "brand"?: LogoBrand;
         /**
           * Defines the color of the logo.
           * @default 'primary'
@@ -1887,9 +1890,8 @@ export namespace Components {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Size of the logo svg
-          * @default ''
          */
-        "size": LogoSize;
+        "size"?: LogoSize;
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
@@ -5752,6 +5754,10 @@ declare namespace LocalJSX {
          */
         "buttonColor"?: ButtonColor;
         /**
+          * Define the size of the button variant. Only applicable if `button` is `true`.
+         */
+        "buttonSize"?: CloseButtonSize;
+        /**
           * If `true` the close component will be disabled and not interactive.
           * @default false
          */
@@ -6825,7 +6831,6 @@ declare namespace LocalJSX {
         "animated"?: boolean;
         /**
           * Defines the brand of the logo. Default is 'baloise'.
-          * @default ''
          */
         "brand"?: LogoBrand;
         /**
@@ -6835,7 +6840,6 @@ declare namespace LocalJSX {
         "color"?: LogoColor;
         /**
           * Size of the logo svg
-          * @default ''
          */
         "size"?: LogoSize;
     }
@@ -8814,6 +8818,7 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "button": boolean;
         "buttonColor": ButtonColor;
+        "buttonSize": CloseButtonSize;
     }
     interface DsContentAttributes {
         "layout": StackLayout;

@@ -520,7 +520,7 @@ const FONT_WEIGHT_OPTIONS: { value: number; label: string }[] = [
 // on its own), so every fontWeight cell's SelectValue needs this to show "700 — Bold" instead of
 // a bare "700".
 function fontWeightLabel(value: string | null): string {
-  return FONT_WEIGHT_OPTIONS.find(option => String(option.value) === value)?.label ?? (value ?? '')
+  return FONT_WEIGHT_OPTIONS.find(option => String(option.value) === value)?.label ?? value ?? ''
 }
 
 // A single DTCG shadow layer, as it lives in a shadow token's rawValue —
@@ -1441,7 +1441,13 @@ function TypographySubFieldReferenceChip({
           <PopoverTrigger
             id={id}
             aria-label={label}
-            render={<Button type="button" variant="outline" className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')} />}
+            render={
+              <Button
+                type="button"
+                variant="outline"
+                className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')}
+              />
+            }
           >
             <Link2Icon className="size-3.5 shrink-0" />
             <span className="min-w-0 flex-1 truncate">{toSlashPath(bareReferenceText(reference))}</span>
@@ -1499,7 +1505,13 @@ function TypographyEditor({
             <PopoverTrigger
               id={`${idPrefix}-family`}
               aria-label="Font family reference"
-              render={<Button type="button" variant="outline" className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')} />}
+              render={
+                <Button
+                  type="button"
+                  variant="outline"
+                  className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')}
+                />
+              }
             >
               <Link2Icon className="size-3.5 shrink-0" />
               <span className="min-w-0 flex-1 truncate">
@@ -1521,11 +1533,7 @@ function TypographyEditor({
           </Popover>
           {typeof value.fontFamily === 'string' &&
             value.fontFamily.trim() !== '' &&
-            renderDetachButton(
-              'Detach font family alias',
-              () => onChange({ ...value, fontFamily: undefined }),
-              'icon',
-            )}
+            renderDetachButton('Detach font family alias', () => onChange({ ...value, fontFamily: undefined }), 'icon')}
         </div>
       </div>
 
@@ -1566,7 +1574,13 @@ function TypographyEditor({
             <PopoverTrigger
               id={`${idPrefix}-weight`}
               aria-label="Font weight reference"
-              render={<Button type="button" variant="outline" className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')} />}
+              render={
+                <Button
+                  type="button"
+                  variant="outline"
+                  className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')}
+                />
+              }
             >
               <Link2Icon className="size-3.5 shrink-0" />
               <span className="min-w-0 flex-1 truncate">
@@ -1588,11 +1602,7 @@ function TypographyEditor({
           </Popover>
           {typeof value.fontWeight === 'string' &&
             value.fontWeight.trim() !== '' &&
-            renderDetachButton(
-              'Detach font weight alias',
-              () => onChange({ ...value, fontWeight: undefined }),
-              'icon',
-            )}
+            renderDetachButton('Detach font weight alias', () => onChange({ ...value, fontWeight: undefined }), 'icon')}
         </div>
       </div>
 
@@ -1723,11 +1733,22 @@ function ResponsiveBreakpointField({
         </Popover>
       ) : (
         <div className="min-w-0 flex-1">
-          <ShadowDimensionField id={`${idPrefix}-trigger`} label={label} dimension={dimension} onCommit={onChange} hideLabel />
+          <ShadowDimensionField
+            id={`${idPrefix}-trigger`}
+            label={label}
+            dimension={dimension}
+            onCommit={onChange}
+            hideLabel
+          />
         </div>
       )}
       {isReference ? (
-        renderDetachButton(`Detach ${label.toLowerCase()} alias`, () => onChange({ value: 16, unit: 'px' }), 'icon', true)
+        renderDetachButton(
+          `Detach ${label.toLowerCase()} alias`,
+          () => onChange({ value: 16, unit: 'px' }),
+          'icon',
+          true,
+        )
       ) : (
         <TypographyReferenceToggle
           ariaLabel={`${label} reference`}
@@ -3405,9 +3426,7 @@ export function TokenEditor({
         buckets = buckets.flatMap(bucket => bucketBy(bucket, w => groupAtDepth(w.token.name, depth)))
       }
       return buckets.flatMap(bucket =>
-        [...bucket].sort((a, b) =>
-          compareTshirtSize(leafPathFor(a.token.name), leafPathFor(b.token.name)),
-        ),
+        [...bucket].sort((a, b) => compareTshirtSize(leafPathFor(a.token.name), leafPathFor(b.token.name))),
       )
     })
   }, [working, matchedTokens])

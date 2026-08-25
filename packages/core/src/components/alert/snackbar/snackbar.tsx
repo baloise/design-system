@@ -318,7 +318,6 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
               button
               button-color="secondary"
               part="close"
-              size="sm"
               onClick={ev => {
                 stopEventBubbling(ev)
                 this.close()

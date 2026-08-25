@@ -1823,30 +1823,6 @@
       }
     },
     "Badge": {
-      "Font": {
-        "Family": {
-          "$type": "fontFamily",
-          "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-        },
-        "Weight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-        },
-        "Size": {
-          "SM": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.None.Mobile}"
-          },
-          "Base": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.XS.Mobile}"
-          },
-          "LG": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Mobile}"
-          }
-        }
-      },
       "Base": {
         "Color": {
           "Text": {
@@ -1907,55 +1883,7 @@
           }
         }
       },
-      "Red": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          }
-        }
-      },
-      "Purple": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        }
-      },
-      "Green": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
-          }
-        }
-      },
-      "Yellow": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
-          }
-        }
-      },
-      "Grey": {
+      "Disabled": {
         "Color": {
           "Text": {
             "$type": "color",
@@ -1969,16 +1897,84 @@
       },
       "Size": {
         "SM": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.SM.Mobile}"
+          "Height": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
+          },
+          "Font": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.🔤 Font.Size.0}"
+          },
+          "Radius": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔵 Radius.Rounded}"
+          },
+          "Icon": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.None}"
+          },
+          "Space": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.2XS}"
+          }
         },
         "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
+          "Height": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
+          },
+          "Font": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
+          },
+          "Radius": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔵 Radius.Rounded}"
+          },
+          "Icon": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.🔤 Font.Size.14}"
+          },
+          "Space": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.2XS}"
+          }
         },
         "LG": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}"
+          "Height": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
+          },
+          "Font": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+          },
+          "Radius": {
+            "$type": "number",
+            "$value": "{🔗 Alias.🔵 Radius.Rounded}"
+          },
+          "Icon": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
+          },
+          "Space": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.2XS}"
+          }
+        }
+      },
+      "Typo": {
+        "FontFamily": {
+          "$type": "fontFamily",
+          "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
+        },
+        "FontWeight": {
+          "$type": "fontWeight",
+          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
+        },
+        "LineHeight": {
+          "$type": "number",
+          "$value": "{🔗 Alias.🔤 Text.LineHeight.Single}"
         }
       }
     },
@@ -3379,56 +3375,6 @@
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.Rounded}"
       },
-      "Color": {
-        "Background": {
-          "Hover": {
-            "$type": "color",
-            "$value": {
-              "colorSpace": "srgb",
-              "components": [
-                0,
-                0.02659088373184204,
-                0.22499999403953552
-              ],
-              "alpha": 0.1,
-              "hex": "#000739"
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": {
-              "colorSpace": "srgb",
-              "components": [
-                0,
-                0.027450980618596077,
-                0.2235294133424759
-              ],
-              "alpha": 0.2,
-              "hex": "#000739"
-            }
-          },
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Transparent}"
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Grey}"
-          }
-        }
-      },
-      "Icon": {
-        "Color": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
-          }
-        }
-      },
       "Inverted": {
         "Color": {
           "Background": {
@@ -3457,15 +3403,101 @@
                 "alpha": 0.5,
                 "hex": "#FFFFFF"
               }
+            },
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Transparent}"
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Disabled}"
             }
-          }
-        },
-        "Icon": {
-          "Color": {
+          },
+          "Icon": {
             "Base": {
               "$type": "color",
               "$value": "{🔗 Alias.🔤 Text.Color.White}"
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
             }
+          }
+        }
+      },
+      "Primary": {
+        "Color": {
+          "Background": {
+            "Hover": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0,
+                  0.02659088373184204,
+                  0.22499999403953552
+                ],
+                "alpha": 0.1,
+                "hex": "#000739"
+              }
+            },
+            "Active": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0,
+                  0.027450980618596077,
+                  0.2235294133424759
+                ],
+                "alpha": 0.2,
+                "hex": "#000739"
+              }
+            },
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Transparent}"
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Disabled}"
+            }
+          },
+          "Icon": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
+            }
+          }
+        }
+      },
+      "Size": {
+        "Base": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.24}"
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.32}"
+        }
+      },
+      "Space": {
+        "Base": {
+          "$type": "dimension",
+          "$value": {
+            "value": 10,
+            "unit": "px"
+          }
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": {
+            "value": 14,
+            "unit": "px"
           }
         }
       }
@@ -7684,6 +7716,53 @@
             "fontSize": "{🔗 Alias.🔤 Text.Size.MD}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
+        }
+      }
+    },
+    "Logo": {
+      "Color": {
+        "Primary": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.Primary}"
+        },
+        "Inverted": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.White}"
+        }
+      },
+      "Size": {
+        "Base": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.24}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Size.24}",
+              "tablet": "{🌐 Global.📏 Dimension.Size.24}",
+              "desktop": "{🌐 Global.📏 Dimension.Size.32}"
+            }
+          }
+        },
+        "SM": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.24}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Size.24}",
+              "tablet": "{🌐 Global.📏 Dimension.Size.24}",
+              "desktop": "{🌐 Global.📏 Dimension.Size.24}"
+            }
+          }
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.32}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Size.32}",
+              "tablet": "{🌐 Global.📏 Dimension.Size.32}",
+              "desktop": "{🌐 Global.📏 Dimension.Size.48}"
+            }
           }
         }
       }

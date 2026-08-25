@@ -71,8 +71,9 @@ These improvements help our components work seamlessly across all supported fram
 | progress-bar     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | shape            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ❓     | ⬜    |
-| close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |

@@ -192,7 +192,9 @@ export function resolveReferences(tokens: FlatToken[]): FlatToken[] {
       // for true aliases (a plain token pointing at another token), not for this case. Breakpoints
       // must resolve off the token's own `responsive` field when it has one; only a true alias
       // (token.responsive === null) falls back to whatever the chain-walk landed on.
-      resolvedResponsive: token.responsive ? resolveResponsive(token.responsive) : resolveResponsive(current.responsive),
+      resolvedResponsive: token.responsive
+        ? resolveResponsive(token.responsive)
+        : resolveResponsive(current.responsive),
     }
   })
 }

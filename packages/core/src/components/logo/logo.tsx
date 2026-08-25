@@ -2,12 +2,23 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { HTMLStencilElement } from '@stencil/core/internal'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import {
+  DsComponentLogoColorInverted,
+  DsComponentLogoColorPrimary,
+  DsComponentLogoSizeBaseDesktop,
+  DsComponentLogoSizeBaseMobile,
+  DsComponentLogoSizeLgDesktop,
+  DsComponentLogoSizeLgMobile,
+  DsComponentLogoSizeSmDesktop,
+  DsComponentLogoSizeSmMobile,
+} from '@baloise/ds-tokens'
+import {
   DsBreakpointObserver,
   DsBreakpoints,
   dsBreakpoints,
   ListenToBreakpoints,
   rOnLoad,
   normalizeDeprecatedTShirtSize,
+  hasValue,
   Logger,
   type LogInstance,
   OneOf,
@@ -50,7 +61,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -71,7 +82,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    */
   @Prop()
   @OneOf(LOGO_BRANDS)
-  readonly brand: LogoBrand = ''
+  readonly brand?: LogoBrand
 
   /**
    * Defines the color of the logo.
@@ -85,11 +96,11 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    */
   @Prop()
   @OneOf(LOGO_SIZES)
-  readonly size: LogoSize = ''
+  readonly size?: LogoSize
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -112,13 +123,18 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @ListenToBreakpoints()
   listenToBreakpoint(breakpoints: DsBreakpoints): void {
     this.isTouch = breakpoints.touch
   }
+
+  /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
 
   /**
    * @internal define config for the component
@@ -132,7 +148,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private get isAnimated() {
@@ -179,30 +195,30 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
   }
 
   private getColor() {
-    return this.color === 'white' ? '#ffffff' : '#151f6d'
+    return this.color === 'inverted' ? DsComponentLogoColorInverted : DsComponentLogoColorPrimary
   }
 
   private getHeight() {
     if (this.size === 'sm') {
-      return 22
+      return this.isTouch ? DsComponentLogoSizeSmMobile : DsComponentLogoSizeSmDesktop
     }
 
     if (this.size === 'lg') {
-      return this.isTouch ? 32 : 48
+      return this.isTouch ? DsComponentLogoSizeLgMobile : DsComponentLogoSizeLgDesktop
     }
 
-    return this.isTouch ? 22 : 32
+    return this.isTouch ? DsComponentLogoSizeBaseMobile : DsComponentLogoSizeBaseDesktop
   }
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
     const size = normalizeDeprecatedTShirtSize(this.size) || ''
     const LogoElement =
-      this.brand === 'helvetia' || (this.brand === '' && this.configBrand === 'helvetia') ? (
+      this.brand === 'helvetia' || (!hasValue(this.brand) && this.configBrand === 'helvetia') ? (
         <LogoHelvetia onlyText={this.animated} height={this.getHeight()} />
       ) : (
         <LogoBaloise onlyText={this.animated} height={this.getHeight()} />
@@ -212,7 +228,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
       <Host
         class={{
           'is-animated': this.isAnimated,
-          'is-white': this.color === 'white',
+          'is-inverted': this.color === 'inverted',
           'is-sm': size === 'sm',
           'is-lg': size === 'lg',
         }}

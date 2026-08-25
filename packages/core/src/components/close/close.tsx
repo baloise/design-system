@@ -12,7 +12,7 @@ import {
 } from '@global'
 import { i18nDsClose } from './close.i18n'
 import { BUTTON_COLORS, ButtonColor } from '../button/button.interfaces'
-import { CLOSE_SIZES, CloseSize } from './close.interfaces'
+import { CLOSE_BUTTON_SIZES, CLOSE_SIZES, CloseButtonSize, CloseSize } from './close.interfaces'
 
 /**
  * Close renders a button element for closing or dismissing UI components with customizable size and color.
@@ -79,6 +79,13 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   readonly buttonColor?: ButtonColor
 
   /**
+   * Define the size of the button variant. Only applicable if `button` is `true`.
+   */
+  @Prop({ reflect: true })
+  @OneOf(CLOSE_BUTTON_SIZES)
+  readonly buttonSize?: CloseButtonSize
+
+  /**
    * PUBLIC METHODS
    * ─────────────────────────────────────────────────────
    */
@@ -111,7 +118,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
             disabled={this.disabled}
             inverted={this.inverted}
             color={this.buttonColor}
-            size={size === 'sm' ? 'sm' : size === 'md' ? 'lg' : undefined}
+            size={this.buttonSize}
           >
             {label}
           </ds-button>

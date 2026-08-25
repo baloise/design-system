@@ -46,7 +46,10 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
   const responsiveDimensionPaths = new Set<string>()
   for (const token of tokens) {
     const extensions = token.original?.$extensions as Record<string, unknown> | undefined
-    if (token.$type === 'dimension' && isRawResponsiveDimensionValue(extensions?.[RESPONSIVE_DIMENSION_EXTENSION_KEY])) {
+    if (
+      token.$type === 'dimension' &&
+      isRawResponsiveDimensionValue(extensions?.[RESPONSIVE_DIMENSION_EXTENSION_KEY])
+    ) {
       responsiveDimensionPaths.add(token.path.join('.'))
     }
   }
@@ -116,8 +119,11 @@ const wrapReference = (path: string, syntax: 'css' | 'sass'): string => {
 }
 
 /**
- * Resolves one breakpoint value to a CSS/SCSS-ready string. A literal {value, unit} converts
- * directly (dimensionValueToCss); a `{reference}` string can't be resolved by Style Dictionary's
+ * Resolves one breakpoint value to a CSS/SCSS-ready string, or — on the javascript platform
+ * (`referenceSyntax === false`) — the referenced token's own already-transformed value as-is
+ * (a raw number for a unitless dimension like a Component size token, matching how that same
+ * token's non-responsive sibling is emitted). A literal {value, unit} converts directly
+ * (dimensionValueToCss); a `{reference}` string can't be resolved by Style Dictionary's
  * own reference resolver — that only ever walks $value, never $extensions (see
  * docs/plans/responsive-dimension-token-plan.md's "Open technical question") — so it's looked up
  * here instead, against every other dimension token's own already-transformed (post `ds/dimension`)
@@ -133,9 +139,9 @@ const wrapReference = (path: string, syntax: 'css' | 'sass'): string => {
  */
 function resolveResponsiveBreakpointCss(
   raw: unknown,
-  cssByPath: Map<string, string>,
+  cssByPath: Map<string, string | number>,
   referenceSyntax: ReferenceSyntax,
-): string | null {
+): string | number | null {
   if (typeof raw === 'string') {
     const match = /^\{(.+)\}$/.exec(raw)
     if (!match) return null
@@ -160,10 +166,10 @@ function expandResponsiveDimensionTokens(
   tokens: TransformedToken[],
   referenceSyntax: ReferenceSyntax,
 ): TransformedToken[] {
-  const cssByPath = new Map<string, string>()
+  const cssByPath = new Map<string, string | number>()
   for (const token of tokens) {
     const value = token.$value ?? token.value
-    if (token.$type === 'dimension' && typeof value === 'string') {
+    if (token.$type === 'dimension' && (typeof value === 'string' || typeof value === 'number')) {
       cssByPath.set(token.path.join('.'), value)
     }
   }
