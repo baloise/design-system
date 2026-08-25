@@ -67,9 +67,9 @@ These improvements help our components work seamlessly across all supported fram
 | picture          | CSS      | ❓     | ❓   | ✅   | ✅     | ❓        | ❓     | ⬜    |
 | stack & content  | WC & CSS | ⛔     | ✅   | ✅   | ✅     | ✅        | ⛔     | ⬜    |
 | divider          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| spinner          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| progress-bar     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| spinner          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| progress-bar     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | shape            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ❓     | ⬜    |
 | close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
