@@ -126,6 +126,10 @@
 
 //
 // Size Variants
+:host(.is-sm) {
+  --mod-close-padding: var(--ds-close-space-sm);
+  --mod-close-size-icon: var(--ds-close-size-sm);
+}
 
 :host(.is-md) {
   --mod-close-padding: var(--ds-close-space-md);

@@ -44,7 +44,7 @@ import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } fr
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
-import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
+import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
@@ -89,7 +89,7 @@ export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } fr
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
-export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
+export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
@@ -321,20 +321,10 @@ export namespace Components {
          */
         "a11yTitle": string;
         /**
-          * If `true` the button is circular and width of the buttons is limited
-          * @default false
-         */
-        "circle": boolean;
-        /**
           * The color to use from your application's color palette.
           * @default 'primary'
          */
         "color": ButtonColor;
-        /**
-          * If `true` the button has a dashed border.
-          * @default false
-         */
-        "dashed": boolean;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -405,11 +395,6 @@ export namespace Components {
           * @default ''
          */
         "rel": string;
-        /**
-          * If `true` the button is rounded.
-          * @default false
-         */
-        "rounded": boolean;
         /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
@@ -3137,9 +3122,8 @@ export namespace Components {
         "closable": boolean;
         /**
           * The theme type of the tag.
-          * @default ''
          */
-        "color": TagColor;
+        "color"?: TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3152,19 +3136,12 @@ export namespace Components {
         "invalid": boolean;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
-          * @default ''
          */
-        "position": TagPlacement;
-        /**
-          * The shape of the tag element like square or pill
-          * @default ''
-         */
-        "shape": TagShape;
+        "position"?: TagPlacement;
         /**
           * The size of the tag element
-          * @default ''
          */
-        "size": TagSize;
+        "size"?: TagSize;
     }
     /**
      * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
@@ -5141,20 +5118,10 @@ declare namespace LocalJSX {
          */
         "a11yTitle"?: string;
         /**
-          * If `true` the button is circular and width of the buttons is limited
-          * @default false
-         */
-        "circle"?: boolean;
-        /**
           * The color to use from your application's color palette.
           * @default 'primary'
          */
         "color"?: ButtonColor;
-        /**
-          * If `true` the button has a dashed border.
-          * @default false
-         */
-        "dashed"?: boolean;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -5249,11 +5216,6 @@ declare namespace LocalJSX {
           * @default ''
          */
         "rel"?: string;
-        /**
-          * If `true` the button is rounded.
-          * @default false
-         */
-        "rounded"?: boolean;
         /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
@@ -8183,7 +8145,6 @@ declare namespace LocalJSX {
         "closable"?: boolean;
         /**
           * The theme type of the tag.
-          * @default ''
          */
         "color"?: TagColor;
         /**
@@ -8202,17 +8163,10 @@ declare namespace LocalJSX {
         "onDsCloseClick"?: (event: DsTagCustomEvent<TagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
-          * @default ''
          */
         "position"?: TagPlacement;
         /**
-          * The shape of the tag element like square or pill
-          * @default ''
-         */
-        "shape"?: TagShape;
-        /**
           * The size of the tag element
-          * @default ''
          */
         "size"?: TagSize;
     }
@@ -8698,16 +8652,13 @@ declare namespace LocalJSX {
         "target": ButtonTarget;
         "rel": string;
         "download": string;
-        "dashed": boolean;
         "shadow": boolean;
         "square": boolean;
-        "circle": boolean;
         "wide": boolean;
         "flat": boolean;
         "outlined": boolean;
         "inverted": boolean;
         "loading": boolean;
-        "rounded": boolean;
         "icon": string;
         "iconTurn": boolean;
         "iconRight": string;
@@ -9273,7 +9224,6 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "invalid": boolean;
         "position": TagPlacement;
-        "shape": TagShape;
         "size": TagSize;
     }
     interface DsTextAttributes {

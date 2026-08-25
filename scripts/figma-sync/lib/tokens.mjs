@@ -53,10 +53,16 @@ function parseValue(rawValue) {
  * per `$value` leaf, in the domain shape from
  * docs/plans/figma-sync-action-plan.md §3 (path/type/value/variableId/figmaScopes).
  * Group nodes (no `$value`) are recursed into, not emitted.
+ *
+ * At each level, leaves are emitted before subgroups are recursed into —
+ * variables are created in Figma in this same order, and Figma's panel
+ * lists a group's direct values above its nested subgroups regardless of
+ * JSON key order, so this keeps the two in sync.
  */
 export function flattenTokens(tree, path = []) {
   /** @type {import('./tokens.d.ts').Token[]} */
   const tokens = []
+  const groupEntries = []
 
   for (const [key, node] of Object.entries(tree)) {
     if (typeof node !== 'object' || node === null) continue
@@ -77,8 +83,12 @@ export function flattenTokens(tree, path = []) {
         responsive: extensions['com.helvetia.responsive'] ?? undefined,
       })
     } else {
-      tokens.push(...flattenTokens(node, nextPath))
+      groupEntries.push([node, nextPath])
     }
+  }
+
+  for (const [node, nextPath] of groupEntries) {
+    tokens.push(...flattenTokens(node, nextPath))
   }
 
   return tokens

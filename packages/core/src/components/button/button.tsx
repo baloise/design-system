@@ -127,13 +127,6 @@ export class Button implements DsComponentInterface {
   readonly download: string = ''
 
   /**
-   * If `true` the button has a dashed border.
-   * */
-  @Prop()
-  @Type('boolean')
-  readonly dashed: boolean = false
-
-  /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
@@ -146,13 +139,6 @@ export class Button implements DsComponentInterface {
   @Prop()
   @Type('boolean')
   readonly square: boolean = false
-
-  /**
-   * If `true` the button is circular and width of the buttons is limited
-   */
-  @Prop()
-  @Type('boolean')
-  readonly circle: boolean = false
 
   /**
    * If `true` the button has a full width
@@ -188,13 +174,6 @@ export class Button implements DsComponentInterface {
   @Prop({ reflect: true })
   @Type('boolean')
   readonly loading: boolean = false
-
-  /**
-   * If `true` the button is rounded.
-   */
-  @Prop()
-  @Type('boolean')
-  readonly rounded: boolean = false
 
   // /**
   //  * If `true` the button is a popup.
@@ -444,10 +423,7 @@ export class Button implements DsComponentInterface {
           [`is-disabled`]: this.disabled,
           [`is-loading`]: this.loading,
           [`is-flat`]: this.flat,
-          [`is-rounded`]: this.rounded,
           [`is-square`]: this.square,
-          [`is-circle`]: this.circle,
-          [`is-dashed`]: this.dashed,
           [`has-shadow`]: this.shadow,
           [`has-no-wrap`]: this.noWrap,
         }}
@@ -477,7 +453,7 @@ export class Button implements DsComponentInterface {
               part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
-              size={this.dashed ? 'md' : size}
+              size={size}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />

@@ -52,6 +52,10 @@ function extractResponsive(node: Record<string, unknown>): ResponsiveDimensionVa
   return { mobile: responsive.mobile, tablet: responsive.tablet, desktop: responsive.desktop }
 }
 
+// A group's direct-value children (leaves) are walked before its subgroups, regardless of JSON
+// key order — the table lists a group's own values above its nested groups (mirrors
+// scripts/figma-sync/lib/tokens.mjs's flattenTokens, which orders Figma variable creation the
+// same way so the two stay in sync).
 function walk(node: Record<string, unknown>, path: string[], layer: TokenLayer, tokens: FlatToken[]): void {
   if (isLeaf(node)) {
     const rawValue = node.$value
@@ -73,9 +77,19 @@ function walk(node: Record<string, unknown>, path: string[], layer: TokenLayer, 
     return
   }
 
+  const groupEntries: [string, Record<string, unknown>][] = []
+
   for (const [key, value] of Object.entries(node)) {
     if (key === '$extensions') continue
     if (!isPlainObject(value)) continue
+    if (isLeaf(value)) {
+      walk(value, [...path, key], layer, tokens)
+    } else {
+      groupEntries.push([key, value])
+    }
+  }
+
+  for (const [key, value] of groupEntries) {
     walk(value, [...path, key], layer, tokens)
   }
 }

@@ -253,13 +253,13 @@ $colors: (
 
 @each $color in $colors {
   @include hybrid.host($use-host) {
-    :host(.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading)) {
+    :host(.is-#{$color}:not(.is-inverted):not(.is-disabled):not(.is-loading)) {
       @include color($color);
     }
   }
 
   @include hybrid.styles('.button', $use-host) {
-    &.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading) {
+    &.is-#{$color}:not(.is-inverted):not(.is-disabled):not(.is-loading) {
       @include color($color);
     }
   }
@@ -268,13 +268,13 @@ $colors: (
 @each $color in $colors {
   @if ($color != 'secondary' and $color != 'tertiary' and $color != 'link' and $color != 'text') {
     @include hybrid.host($use-host) {
-      :host(.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading)) {
+      :host(.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading)) {
         @include color(inverted);
       }
     }
 
     @include hybrid.styles('.button', $use-host) {
-      &.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading) {
+      &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
         @include color(inverted);
       }
     }
@@ -385,23 +385,6 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-// Rounded
-@mixin shape-rounded() {
-  --mod-button-radius: var(--ds-button-radius-rounded);
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-rounded) {
-    @include shape-rounded();
-  }
-}
-
-@include hybrid.styles('.button', $use-host) {
-  &.is-rounded {
-    @include shape-rounded();
-  }
-}
-
 // Square
 @mixin shape-square($size: 3rem) {
   --mod-button-padding-inline: 0;
@@ -433,66 +416,6 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   &.is-square.is-small {
     @include shape-square(2rem);
     --icon-size: var(--ds-icon-size-sm);
-  }
-}
-
-// Circle
-@mixin shape-circle($size: 3rem) {
-  --mod-button-radius: var(--ds-button-radius-rounded);
-  --mod-button-padding-inline: 0;
-  --mod-button-gap: 0;
-  --mod-button-min-height: #{$size};
-  --mod-button-min-width: #{$size};
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-circle:not(.is-sm)) {
-    @include shape-circle();
-    --icon-size: 1.5rem;
-  }
-
-  :host(.is-circle.is-sm) {
-    @include shape-circle(2rem);
-    --icon-size: var(--ds-icon-size-sm);
-  }
-}
-
-@include hybrid.styles('.button', $use-host) {
-  &.is-circle:not(.is-sm),
-  &.is-circle:not(.is-small) {
-    @include shape-circle();
-    --icon-size: 1.5rem;
-  }
-
-  &.is-circle.is-small,
-  &.is-circle.is-sm {
-    @include shape-circle(2rem);
-    --icon-size: var(--ds-icon-size-sm);
-  }
-}
-
-//
-// Dashed Variants
-// --------------------------------
-$dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-yellow');
-
-@each $color in $dashed-colors {
-  @include hybrid.host($use-host) {
-    :host(.is-#{$color}.is-dashed) {
-      --mod-button-border-style: dashed;
-      --icon-shape: var(--_button-color-border);
-
-      @include color('#{$color}-dashed');
-    }
-  }
-
-  @include hybrid.styles($css-selector, $use-host) {
-    &.is-#{$color}.is-dashed {
-      --mod-button-border-style: dashed;
-      --icon-shape: var(--_button-color-border);
-
-      @include color('#{$color}-dashed');
-    }
   }
 }
 

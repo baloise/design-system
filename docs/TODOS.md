@@ -74,26 +74,30 @@ These improvements help our components work seamlessly across all supported fram
 | close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | accordion        | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| footer           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| carousel         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| -- ALERTS --     | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | notification     | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | snackbar         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | toast            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| pagination       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| carousel         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| tabs             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| steps            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| -- OVERLAY --    | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | modal            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | tooltip          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | popover          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
 | hint             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| sheet            | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| -- NAVIGATION -- | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | navbar           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| tabs             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| steps            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| pagination       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| footer           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| sheet            | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | input            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | textarea         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | radio            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |

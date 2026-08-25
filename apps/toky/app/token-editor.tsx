@@ -3407,7 +3407,15 @@ export function TokenEditor({
         }
         bucket.push(w)
       }
-      order.sort(compareTshirtSize)
+      // '' is the bucket of this level's own direct values (groupAtDepth returns '' once a name
+      // doesn't extend past the current depth) — it must sort ahead of every subgroup unconditionally,
+      // not through compareTshirtSize: that comparator matches on a bare leaf name like "Base", but a
+      // subgroup's key here is a full dotted path (e.g. "Tag.Base"), and "Tag.Base".endsWith('Base')
+      // trips the state-suffix rule, ranking the subgroup as the resting state ahead of ''.
+      order.sort((a, b) => {
+        if (a === '' || b === '') return a === b ? 0 : a === '' ? -1 : 1
+        return compareTshirtSize(leafPathFor(a), leafPathFor(b))
+      })
       return order.map(key => byKey.get(key)!)
     }
 
