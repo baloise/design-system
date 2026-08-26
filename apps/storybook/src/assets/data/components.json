@@ -13090,8 +13090,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -15618,8 +15618,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -15696,8 +15696,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -21697,8 +21697,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -41956,8 +41956,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -42034,8 +42034,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -45968,8 +45968,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -52867,8 +52867,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -54210,8 +54210,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -54261,8 +54261,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -61825,8 +61825,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",
@@ -63403,8 +63403,8 @@
           "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-2",
-              "figmaName": "Global / Dimension / Border / 2"
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
             },
             {
               "cssVar": "--ds-border-width-base",

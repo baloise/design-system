@@ -310,7 +310,6 @@
   "css-utilities-background-background-color": "css-utilities/background/background-color.mdx",
   "css-utilities-border-border-color": "css-utilities/border/border-color.mdx",
   "css-utilities-border-border-radius": "css-utilities/border/border-radius.mdx",
-  "css-utilities-border-border-width": "css-utilities/border/border-width.mdx",
   "css-utilities-elevation-elevation-opacity": "css-utilities/elevation/elevation-opacity.mdx",
   "css-utilities-elevation-elevation-shadow": "css-utilities/elevation/elevation-shadow.mdx",
   "css-utilities-elevation-z-index": "css-utilities/elevation/z-index.mdx",
