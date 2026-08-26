@@ -6673,7 +6673,7 @@
     "Sheet": {
       "Background": {
         "$type": "color",
-        "$value": "{🔗 Alias.🎨 Background.Color.White}",
+        "$value": "{🔗 Alias.🎨 Surface.White}",
         "$extensions": {
           "com.figma.variableId": "VariableID:2:1554",
           "com.figma.scopes": [
@@ -6705,7 +6705,7 @@
       "Position": {
         "Bottom": {
           "$type": "number",
-          "$value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "$value": "{🔗 Alias.↔️ Space.XS}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:1557",
             "com.figma.scopes": [
