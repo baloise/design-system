@@ -49215,7 +49215,11 @@
           "optional": true,
           "required": false,
           "getter": false,
-          "setter": false
+          "setter": false,
+          "oneOfValues": [
+            "fluid",
+            "compact"
+          ]
         }
       ],
       "methods": [],
@@ -49251,7 +49255,7 @@
         {
           "name": "🧩 Component / Sheet / Background",
           "cssVarName": "--ds-sheet-background",
-          "value": "{🔗 Alias.🎨 Background.Color.White}",
+          "value": "{🔗 Alias.🎨 Surface.White}",
           "nativeValue": "#FFFFFF",
           "inheritance": [
             {
@@ -49259,8 +49263,8 @@
               "figmaName": "Global / Color / White"
             },
             {
-              "cssVar": "--ds-background-color-white",
-              "figmaName": "Alias / Background / Color / White"
+              "cssVar": "--ds-surface-white",
+              "figmaName": "Alias / Surface / White"
             },
             {
               "cssVar": "--ds-sheet-background",
@@ -49277,11 +49281,11 @@
           "name": "🧩 Component / Sheet / Radius",
           "cssVarName": "--ds-sheet-radius",
           "value": "{🔗 Alias.🔵 Radius.LG}",
-          "nativeValue": "12",
+          "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-size-radius-2",
-              "figmaName": "Global / Size / Radius / 2"
+              "cssVar": "--ds-dimension-radius-2",
+              "figmaName": "Global / Dimension / Radius / 2"
             },
             {
               "cssVar": "--ds-radius-lg",
@@ -49302,7 +49306,7 @@
           "name": "🧩 Component / Sheet / Shadow",
           "cssVarName": "--ds-sheet-shadow",
           "value": "{🔗 Alias.🌓 Shadow.Box.Base}",
-          "nativeValue": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
+          "nativeValue": "{\"color\":{\"colorSpace\":\"srgb\",\"components\":[0,0.027450980392156862,0.2235294117647059],\"alpha\":0.15,\"hex\":\"#000739\"},\"offsetX\":{\"value\":0,\"unit\":\"rem\"},\"offsetY\":{\"value\":0,\"unit\":\"rem\"},\"blur\":{\"value\":0.625,\"unit\":\"rem\"},\"spread\":{\"value\":0,\"unit\":\"rem\"}}",
           "inheritance": [
             {
               "cssVar": "--ds-elevation-shadow-3",
@@ -49326,16 +49330,16 @@
         {
           "name": "🧩 Component / Sheet / Position / Bottom",
           "cssVarName": "--ds-sheet-position-bottom",
-          "value": "{🔗 Alias.↔️ Space.XS.Mobile}",
-          "nativeValue": "8",
+          "value": "{🔗 Alias.↔️ Space.XS}",
+          "nativeValue": "{\"value\":0.5,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-size-space-8",
-              "figmaName": "Global / Size / Space / 8"
+              "cssVar": "--ds-dimension-space-8",
+              "figmaName": "Global / Dimension / Space / 8"
             },
             {
-              "cssVar": "--ds-space-xs-mobile",
-              "figmaName": "Alias / Space / XS / Mobile"
+              "cssVar": "--ds-space-xs",
+              "figmaName": "Alias / Space / XS"
             },
             {
               "cssVar": "--ds-sheet-position-bottom",

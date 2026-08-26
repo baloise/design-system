@@ -56,6 +56,46 @@ const config: Config = {
         outputReferences: true,
       },
     },
+    sass: {
+      // CSS custom properties can't appear inside an `@media` condition (`@media (min-width:
+      // var(--x))` is invalid per spec, not just unsupported) — so
+      // packages/css/src/scss/mixins/breakpoint.mixin.scss needs real Sass variables, resolved at
+      // compile time, for its `@media` conditions and `- 1px` arithmetic. This platform exists
+      // solely to feed that: filtered to breakpoint tokens only (Global.Dimension.Breakpoint.* and
+      // Alias.Breakpoint.*, the latter referencing the former — both must ship together for the
+      // Sass `$var: $other-var` reference to resolve) — everything else in this design system is
+      // CSS-only. Transforms mirror the 'web' platform's (not 'css' platform's, which forces
+      // 'size/rem'): breakpoint tokens are defined with an explicit "px" unit, and 'ds/dimension'
+      // (unlike the stock 'size/rem') preserves that unit rather than converting it, which is what
+      // the mixin's px-based media queries need.
+      transforms: [
+        'attribute/cti',
+        'name/kebab',
+        'color/css',
+        'ds/css/name',
+        'ds/color/hex',
+        'ds/size/rem',
+        'ds/font-weight',
+        'ds/font-family',
+        'size/rem',
+        'ds/dimension',
+        'ds/shadow',
+        'ds/border',
+        'ds/typography',
+      ],
+      prefix: 'ds',
+      buildPath: 'dist/',
+      files: [
+        {
+          format: 'ds/scss/variables',
+          destination: `sass/${mode.toLowerCase()}.tokens.scss`,
+          filter: token => token.path.some(segment => segment.includes('Breakpoint')),
+        },
+      ],
+      options: {
+        outputReferences: true,
+      },
+    },
     web: {
       // No transformGroup — the 'web' transformGroup's built-in 'size/px' unconditionally forces
       // a "px" suffix without converting the number, which is wrong for a rem-unit dimension
