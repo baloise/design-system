@@ -111,9 +111,9 @@ jobs:
       options: --user 1001
     strategy:
       fail-fast: false
-      matrix:
-        shardIndex: [1, 2, 3, 4, 5, 6] # six parallel jobs
-        shardTotal: [6] # total 6 shards
+      # matrix:
+      #   shardIndex: [1, 2, 3, 4, 5, 6] # six parallel jobs
+      #   shardTotal: [6] # total 6 shards
     steps:
       - name: Check out code
         uses: actions/checkout@v7
@@ -133,16 +133,17 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: packages/core
-        run: pnpm exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: pnpm exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: pnpm exec playwright test --update-snapshots
 
-      # - name: Commit snapshots
-      #   if: always()
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     message: 'update snapshots'
-      #     add: '*.png'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+      - name: Commit snapshots
+        if: always()
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'update snapshots'
+          add: '*.png'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Upload Playwright blob report
         if: always()
