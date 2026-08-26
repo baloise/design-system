@@ -24,7 +24,7 @@
  * docs/plans/shadow-token-type-plan.md).
  */
 
-import { resolveLiteral } from './alias.mjs'
+import { parseReferencePath, resolveLiteral } from './alias.mjs'
 
 const RESOLVED_TYPE_BY_DTCG_TYPE = {
   color: 'COLOR',
@@ -119,22 +119,37 @@ export function figmaValueFor(dtcgType, literalValue) {
   }
 }
 
+// The DTCG literal a "no shadow" empty-array token (e.g. Alias.Shadow.Box.None) decomposes to —
+// an explicit all-zero, fully transparent single layer, rather than leaving the token unsynced
+// (see isSyncableShadowToken below). Visually equivalent to no shadow at all in Figma.
+const ZERO_TRANSPARENT_SHADOW_LAYER = {
+  color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0, hex: '#000000' },
+  offsetX: { value: 0, unit: 'px' },
+  offsetY: { value: 0, unit: 'px' },
+  blur: { value: 0, unit: 'px' },
+  spread: { value: 0, unit: 'px' },
+}
+
 /**
  * `shadow` doesn't fit figmaValueFor's one-DTCG-value -> one-Figma-value shape — Figma has no
  * shadow-object variable type, so a shadow token needs 5 separate Figma variables (offsetX,
- * offsetY, blur, spread as FLOAT; color as COLOR), one per sub-value. Single-layer shadows only
- * (see docs/plans/shadow-token-type-plan.md) — a multi-layer shadow (an array) or the empty-array
- * "none" shadow isn't synced to Figma at all; this returns null for either case rather than
- * guessing which layer to push.
+ * offsetY, blur, spread as FLOAT; color as COLOR), one per sub-value. Figma also has no
+ * multi-layer-shadow variable concept, so an array `$value` is lossy either way it's handled: an
+ * empty array ("no shadow") decomposes to `ZERO_TRANSPARENT_SHADOW_LAYER` above; a non-empty
+ * (multi-layer) array decomposes its first (closest/most prominent) layer only — an approximation,
+ * not a guess, since there's no single-layer Figma equivalent for the rest until Figma adds
+ * multi-layer shadow variable support.
  *
- * @param {unknown} literalValue already-resolved (non-reference) `$value` of a shadow token
+ * @param {unknown} literalValue already-resolved (non-reference) `$value` of a shadow token —
+ *   either a single-layer object or an array of layers (possibly empty)
  * @returns {{ offsetX: number, offsetY: number, blur: number, spread: number, color: { r: number, g: number, b: number, a: number } } | null}
  */
 export function figmaShadowSubValuesFor(literalValue) {
-  if (Array.isArray(literalValue) || typeof literalValue !== 'object' || literalValue === null) {
-    return null
-  }
-  const { color, offsetX, offsetY, blur, spread } = literalValue
+  const layer = Array.isArray(literalValue) ? (literalValue[0] ?? ZERO_TRANSPARENT_SHADOW_LAYER) : literalValue
+
+  if (typeof layer !== 'object' || layer === null) return null
+
+  const { color, offsetX, offsetY, blur, spread } = layer
   return {
     offsetX: figmaValueFor('dimension', offsetX),
     offsetY: figmaValueFor('dimension', offsetY),
@@ -163,16 +178,15 @@ export const SHADOW_SUB_PROPERTY_RESOLVED_TYPE = {
   color: 'COLOR',
 }
 
-// Single-layer-only (docs/plans/shadow-token-type-plan.md) — a multi-layer shadow (an array) or
-// the empty-array "none" shadow isn't decomposed into Figma variables at all; it's simply not
-// eligible for Figma sync, same as any other unsupported shape.
+// Every shadow token is eligible for sync — reference, single-layer object, multi-layer array, or
+// empty array all decompose via figmaShadowSubValuesFor above (which handles the array cases'
+// lossy-but-visible fallback), so there's no unsyncable shadow shape left to exclude here.
 export function isSyncableShadowToken(token) {
-  return token.type === 'shadow' && (token.value.kind === 'reference' || !Array.isArray(token.value.value))
+  return token.type === 'shadow'
 }
 
-// Whether this token can have a Figma identity at all — every type otherwise handled here, plus a
-// single-layer shadow. A multi-layer or empty-array ("none") shadow is quietly skipped everywhere
-// this is checked, not an error — it was never eligible for sync to begin with.
+// Whether this token can have a Figma identity at all — every type otherwise handled here, plus
+// every shadow shape (isSyncableShadowToken is now unconditional for `shadow`).
 export function isPushableToken(token) {
   return token.type !== 'shadow' || isSyncableShadowToken(token)
 }
@@ -294,22 +308,33 @@ export function isSyncableTypographyToken(token) {
  * 2) — `isSyncableResponsiveDimensionToken` below is what actually detects it, not a `$type` check
  * alone.
  *
- * Each breakpoint is free literal-or-reference (decision 3), same as border's width/color —
- * resolved to a literal via `resolveLiteral` first.
+ * Each breakpoint is free literal-or-reference (decision 3), same as border's width/color — but
+ * unlike border/typography's sub-values (always flattened to a literal via `resolveLiteral`,
+ * however many reference hops that takes), a breakpoint that's a *direct* `{reference}` string
+ * stays a reference here: Figma has a real variable for the thing it points at (a `Global`/`Alias`
+ * dimension primitive), so it's bound with a `VARIABLE_ALIAS` rather than flattened to a number —
+ * the whole point being that the value shown in Figma stays a live link to that primitive, not a
+ * copy of it. A multi-hop reference (a reference to a reference) still isn't supported here — only
+ * one hop is checked; write.mjs falls back to treating an unresolvable case as ineligible, same
+ * "not eligible" policy as elsewhere in this file, rather than guessing.
  *
  * @param {unknown} literalValue a responsive dimension token's raw `$extensions.com.helvetia.responsive`
  *   value — its `mobile`/`tablet`/`desktop` fields may themselves still be `{reference}` strings
- * @param {Map<string, import('./tokens.mjs').Token>} tokenIndex
- * @returns {{ mobile: number, tablet: number, desktop: number } | null}
+ * @returns {{
+ *   mobile: { kind: 'literal', value: number } | { kind: 'reference', path: string[] },
+ *   tablet: { kind: 'literal', value: number } | { kind: 'reference', path: string[] },
+ *   desktop: { kind: 'literal', value: number } | { kind: 'reference', path: string[] },
+ * } | null}
  */
-export function figmaResponsiveDimensionSubValuesFor(literalValue, tokenIndex) {
+export function figmaResponsiveDimensionSubEntriesFor(literalValue) {
   if (typeof literalValue !== 'object' || literalValue === null) return null
   const { mobile, tablet, desktop } = literalValue
-  return {
-    mobile: figmaValueFor('dimension', resolveLiteral(mobile, tokenIndex)),
-    tablet: figmaValueFor('dimension', resolveLiteral(tablet, tokenIndex)),
-    desktop: figmaValueFor('dimension', resolveLiteral(desktop, tokenIndex)),
+  const entryFor = raw => {
+    const refPath = parseReferencePath(raw)
+    if (refPath) return { kind: 'reference', path: refPath }
+    return { kind: 'literal', value: figmaValueFor('dimension', raw) }
   }
+  return { mobile: entryFor(mobile), tablet: entryFor(tablet), desktop: entryFor(desktop) }
 }
 
 // Sub-property suffixes appended to a responsive dimension token's path to name its 3 decomposed
@@ -337,6 +362,42 @@ function isRawResponsiveDimensionValue(value) {
 // way isSyncableBorderToken/isSyncableTypographyToken do.
 export function isSyncableResponsiveDimensionToken(token) {
   return token.type === 'dimension' && isRawResponsiveDimensionValue(token.responsive)
+}
+
+// MVP scope for the "Design Responsive Tokens" collection — the collection replaces nothing; it
+// *adds* one Device variable per in-scope token, whose 3 breakpoint modes each alias the matching
+// Mobile/Tablet/Desktop sibling variable already written into "Design Tokens". Hardcoded rather than
+// a new `$extensions` marker — deliberately provisional, expected to grow (e.g. to Component-level
+// responsive tokens like `Component.Text.Space`/`Component.Logo.Size.*`, which already carry the
+// responsive extension today but aren't in this list) by editing this array, not by touching token
+// JSON schema.
+const DEVICE_ELIGIBLE_PATH_PREFIXES = [
+  ['🔗 Alias', '🔤 Text', 'Size'],
+  ['🔗 Alias', '↔️ Space'],
+  ['🔗 Alias', '🗃️ Container', 'Space'],
+]
+
+function pathStartsWith(path, prefix) {
+  return prefix.every((segment, i) => path[i] === segment)
+}
+
+/**
+ * Whether a responsive dimension token is in the "Design Responsive Tokens" collection's MVP scope
+ * — i.e. whether it gets a 4th `device` id and a Device variable, on top of its 3 Mobile/Tablet/
+ * Desktop siblings which every responsive dimension token already gets regardless of this. Callers
+ * must check `isSyncableResponsiveDimensionToken` first; this doesn't re-check the shape.
+ */
+export function isDeviceEligibleResponsiveDimensionToken(token) {
+  return DEVICE_ELIGIBLE_PATH_PREFIXES.some(prefix => pathStartsWith(token.path, prefix))
+}
+
+// The Device variable's name mirrors the existing CSS `-mobile/-tablet/-desktop` -> `-device`
+// convention (packages/tokens/src/formatter.ts) — same path as the sibling variables, `Device`
+// appended, e.g. '🔗 Alias/↔️ Space/Lg/Device'. Lives in the "Design Responsive Tokens" collection,
+// not alongside its siblings, so the shared name isn't a collision (different collection = different
+// id namespace).
+export function figmaResponsiveDimensionDeviceVariableName(path) {
+  return `${path.join('/')}/Device`
 }
 
 /**
@@ -377,6 +438,10 @@ export function flattenVariableId(variableId) {
 export function subPropertiesForVariableIdShape(variableId) {
   if ('offsetX' in variableId) return SHADOW_SUB_PROPERTIES
   if ('fontFamily' in variableId) return TYPOGRAPHY_SUB_PROPERTIES
-  if ('mobile' in variableId) return RESPONSIVE_DIMENSION_SUB_PROPERTIES
+  // 'device' is a 4th id alongside mobile/tablet/desktop, present only for a Device-eligible
+  // responsive dimension token (isDeviceEligibleResponsiveDimensionToken) — the filter in
+  // flattenVariableId drops it for every other (still 3-key) responsive dimension token, so
+  // listing it unconditionally here is safe.
+  if ('mobile' in variableId) return [...RESPONSIVE_DIMENSION_SUB_PROPERTIES, 'device']
   return BORDER_SUB_PROPERTIES
 }

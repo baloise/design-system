@@ -69,9 +69,6 @@ export function buildSyncState({ existingState, baseTokens, mergeCommitSha, sync
   }
 
   for (const token of baseTokens) {
-    // A multi-layer/empty-array shadow is never pushed (see
-    // isPushableToken) — it will never have a variableId, and that's
-    // expected, not a problem to patch first.
     if (!isPushableToken(token)) continue
     if (!token.variableId) {
       throw new Error(

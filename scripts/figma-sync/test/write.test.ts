@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { buildTokenIndex } from '../lib/alias.mjs'
-import { buildNameIndex, findCollectionAndModes } from '../lib/figma.mjs'
+import { buildNameIndex, findCollectionAndModes, findResponsiveCollectionAndModes } from '../lib/figma.mjs'
 import {
   figmaBorderSubValuesFor,
-  figmaResponsiveDimensionSubValuesFor,
+  figmaResponsiveDimensionSubEntriesFor,
   figmaShadowSubValuesFor,
   figmaTypographySubValuesFor,
   figmaValueFor,
@@ -120,12 +120,25 @@ describe('figmaShadowSubValuesFor', () => {
     })
   })
 
-  it('returns null for a multi-layer (array) shadow — not synced', () => {
-    expect(figmaShadowSubValuesFor([singleLayer, singleLayer])).toBeNull()
+  it('decomposes a multi-layer (array) shadow using its first layer only — a lossy approximation, not a null', () => {
+    const secondLayer = { ...singleLayer, offsetY: { value: 1, unit: 'rem' } }
+    expect(figmaShadowSubValuesFor([singleLayer, secondLayer])).toEqual({
+      offsetX: 0,
+      offsetY: 4,
+      blur: 12,
+      spread: 0,
+      color: { r: 0, g: 0, b: 0, a: 0.15 },
+    })
   })
 
-  it('returns null for the empty-array "none" shadow — not synced', () => {
-    expect(figmaShadowSubValuesFor([])).toBeNull()
+  it('decomposes the empty-array "none" shadow into an all-zero, fully transparent layer', () => {
+    expect(figmaShadowSubValuesFor([])).toEqual({
+      offsetX: 0,
+      offsetY: 0,
+      blur: 0,
+      spread: 0,
+      color: { r: 0, g: 0, b: 0, a: 0 },
+    })
   })
 })
 
@@ -271,35 +284,29 @@ describe('figmaTypographySubValuesFor', () => {
   })
 })
 
-describe('figmaResponsiveDimensionSubValuesFor', () => {
+describe('figmaResponsiveDimensionSubEntriesFor', () => {
   // mobile/tablet/desktop are each free literal-or-reference (docs/plans/responsive-dimension-
   // token-plan.md decision 3) — this fixture exercises both shapes (mobile a reference, tablet/
-  // desktop literals), same "resolveLiteral is a no-op passthrough for a literal" reasoning as
-  // typography's fontSize/lineHeight.
-  const space16Token = {
-    path: ['Global', 'Dimension', 'Space', '16'],
-    type: 'dimension',
-    value: { kind: 'literal', value: { value: 1, unit: 'rem' } },
-  }
-  const tokenIndex = buildTokenIndex([space16Token])
-
+  // desktop literals). Unlike border/typography's sub-values, a direct reference here stays a
+  // reference (bound as a Figma VARIABLE_ALIAS to the target's own variable) rather than being
+  // flattened through to a copy of its value.
   const responsiveValue = {
     mobile: '{Global.Dimension.Space.16}',
     tablet: { value: 24, unit: 'px' },
     desktop: { value: 32, unit: 'px' },
   }
 
-  it('decomposes a responsive dimension value into 3 Figma-ready px floats, resolving references and rem->px', () => {
-    expect(figmaResponsiveDimensionSubValuesFor(responsiveValue, tokenIndex)).toEqual({
-      mobile: 16,
-      tablet: 24,
-      desktop: 32,
+  it('splits a responsive dimension value into per-breakpoint reference/literal entries, converting literal rem->px', () => {
+    expect(figmaResponsiveDimensionSubEntriesFor(responsiveValue)).toEqual({
+      mobile: { kind: 'reference', path: ['Global', 'Dimension', 'Space', '16'] },
+      tablet: { kind: 'literal', value: 24 },
+      desktop: { kind: 'literal', value: 32 },
     })
   })
 
   it('returns null for a non-object value', () => {
-    expect(figmaResponsiveDimensionSubValuesFor(null, tokenIndex)).toBeNull()
-    expect(figmaResponsiveDimensionSubValuesFor('nope', tokenIndex)).toBeNull()
+    expect(figmaResponsiveDimensionSubEntriesFor(null)).toBeNull()
+    expect(figmaResponsiveDimensionSubEntriesFor('nope')).toBeNull()
   })
 })
 
@@ -344,10 +351,22 @@ describe('shadow push (two-pass write payload)', () => {
     })
   })
 
-  it('assigns no id at all to a multi-layer or empty-array shadow token — not eligible for sync', () => {
+  it('assigns 5 temp sub-ids to a multi-layer or empty-array shadow token too — every shadow shape is now eligible for sync', () => {
     const idByPath = assignVariableIds(shadowBaseTokens)
-    expect(idByPath.has('Global.Shadow.Stacked')).toBe(false)
-    expect(idByPath.has('Global.Shadow.None')).toBe(false)
+    expect(idByPath.get('Global.Shadow.Stacked')).toEqual({
+      offsetX: 'temp-Global.Shadow.Stacked-offsetX',
+      offsetY: 'temp-Global.Shadow.Stacked-offsetY',
+      blur: 'temp-Global.Shadow.Stacked-blur',
+      spread: 'temp-Global.Shadow.Stacked-spread',
+      color: 'temp-Global.Shadow.Stacked-color',
+    })
+    expect(idByPath.get('Global.Shadow.None')).toEqual({
+      offsetX: 'temp-Global.Shadow.None-offsetX',
+      offsetY: 'temp-Global.Shadow.None-offsetY',
+      blur: 'temp-Global.Shadow.None-blur',
+      spread: 'temp-Global.Shadow.None-spread',
+      color: 'temp-Global.Shadow.None-color',
+    })
   })
 
   it('pass 1 creates 5 named sub-variables for a temp single-layer shadow token, with the right resolvedType each', () => {
@@ -360,11 +379,11 @@ describe('shadow push (two-pass write payload)', () => {
       modeIdByBrand: { Base: 'm-base' },
     })
 
-    // 10, not 5 — the reference token (Alias.Shadow.Base) is itself a temp
-    // shadow token too and gets its own 5 variables created, same as any
-    // other reference type (they alias to the target in pass 2, but still
-    // need their own variables to exist first).
-    expect(variables).toHaveLength(10)
+    // 20, not 5 — the reference token (Alias.Shadow.Base), the multi-layer token, and the
+    // empty-array token are each their own temp shadow token too and get their own 5 variables
+    // created, same as any other reference/array type (a reference aliases to the target in pass
+    // 2, but still needs its own variables to exist first; the array shapes are now syncable too).
+    expect(variables).toHaveLength(20)
     const literalVariables = variables.filter(v => v.name.startsWith('Global/Shadow/Base/'))
     expect(literalVariables.map(v => v.name)).toEqual([
       'Global/Shadow/Base/OffsetX',
@@ -377,7 +396,7 @@ describe('shadow push (two-pass write payload)', () => {
     expect(figmaShadowSubVariableName(shadowToken.path, 'color')).toBe('Global/Shadow/Base/Color')
   })
 
-  it('pass 1 writes 5 literal mode-values for a single-layer shadow token, none for its reference or the excluded ones', () => {
+  it('pass 1 writes 5 literal mode-values each for the single-layer, multi-layer, and empty-array shadow tokens, none for the reference', () => {
     const idByPath = assignVariableIds(shadowBaseTokens)
     const { variableModeValues } = buildCreatePassPayload({
       baseTokens: shadowBaseTokens,
@@ -387,10 +406,16 @@ describe('shadow push (two-pass write payload)', () => {
       modeIdByBrand: { Base: 'm-base' },
     })
 
-    expect(variableModeValues).toHaveLength(5)
+    expect(variableModeValues).toHaveLength(15)
     const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
     expect(byId['temp-Global.Shadow.Base-offsetY']).toBe(4)
     expect(byId['temp-Global.Shadow.Base-color']).toEqual({ r: 0, g: 0, b: 0, a: 0.15 })
+    // Stacked (multi-layer) decomposes its first layer only, same values as Base's single layer.
+    expect(byId['temp-Global.Shadow.Stacked-offsetY']).toBe(4)
+    expect(byId['temp-Global.Shadow.Stacked-color']).toEqual({ r: 0, g: 0, b: 0, a: 0.15 })
+    // None (empty array) decomposes to an all-zero, fully transparent layer.
+    expect(byId['temp-Global.Shadow.None-offsetY']).toBe(0)
+    expect(byId['temp-Global.Shadow.None-color']).toEqual({ r: 0, g: 0, b: 0, a: 0 })
   })
 
   it('pass 2 writes 5 alias mode-values for a shadow reference, each pointing at the matching sub-property of the target', () => {
@@ -420,7 +445,7 @@ describe('shadow push (two-pass write payload)', () => {
     expect(colorAlias.value).toEqual({ type: 'VARIABLE_ALIAS', id: 'real-c' })
   })
 
-  it('collectNewlyCreatedIds returns the whole 5-id object as one entry for a shadow token, and skips the excluded ones', () => {
+  it('collectNewlyCreatedIds returns the whole 5-id object as one entry for each shadow token, including the multi-layer and empty-array ones', () => {
     const idByPath = assignVariableIds(shadowBaseTokens)
     resolveTempIds(idByPath, {
       'temp-Global.Shadow.Base-offsetX': 'real-x',
@@ -428,6 +453,16 @@ describe('shadow push (two-pass write payload)', () => {
       'temp-Global.Shadow.Base-blur': 'real-b',
       'temp-Global.Shadow.Base-spread': 'real-s',
       'temp-Global.Shadow.Base-color': 'real-c',
+      'temp-Global.Shadow.Stacked-offsetX': 'real-stacked-x',
+      'temp-Global.Shadow.Stacked-offsetY': 'real-stacked-y',
+      'temp-Global.Shadow.Stacked-blur': 'real-stacked-b',
+      'temp-Global.Shadow.Stacked-spread': 'real-stacked-s',
+      'temp-Global.Shadow.Stacked-color': 'real-stacked-c',
+      'temp-Global.Shadow.None-offsetX': 'real-none-x',
+      'temp-Global.Shadow.None-offsetY': 'real-none-y',
+      'temp-Global.Shadow.None-blur': 'real-none-b',
+      'temp-Global.Shadow.None-spread': 'real-none-s',
+      'temp-Global.Shadow.None-color': 'real-none-c',
     })
 
     const created = collectNewlyCreatedIds([shadowToken, multiLayerToken, noneToken], idByPath)
@@ -435,6 +470,26 @@ describe('shadow push (two-pass write payload)', () => {
       {
         path: shadowToken.path,
         variableId: { offsetX: 'real-x', offsetY: 'real-y', blur: 'real-b', spread: 'real-s', color: 'real-c' },
+      },
+      {
+        path: multiLayerToken.path,
+        variableId: {
+          offsetX: 'real-stacked-x',
+          offsetY: 'real-stacked-y',
+          blur: 'real-stacked-b',
+          spread: 'real-stacked-s',
+          color: 'real-stacked-c',
+        },
+      },
+      {
+        path: noneToken.path,
+        variableId: {
+          offsetX: 'real-none-x',
+          offsetY: 'real-none-y',
+          blur: 'real-none-b',
+          spread: 'real-none-s',
+          color: 'real-none-c',
+        },
       },
     ])
   })
@@ -752,7 +807,7 @@ describe('responsive dimension push (two-pass write payload)', () => {
     expect(figmaResponsiveDimensionSubVariableName(responsiveToken.path, 'tablet')).toBe('Alias/Space/Lg/Tablet')
   })
 
-  it('pass 1 writes 3 literal mode-values for a responsive dimension token, resolving its referenced mobile breakpoint', () => {
+  it('pass 1 writes literal mode-values only for the tablet/desktop breakpoints, leaving the referenced mobile breakpoint for pass 2', () => {
     const idByPath = assignVariableIds(responsiveBaseTokens)
     const { variableModeValues } = buildCreatePassPayload({
       baseTokens: responsiveBaseTokens,
@@ -763,14 +818,37 @@ describe('responsive dimension push (two-pass write payload)', () => {
     })
 
     const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
-    expect(byId['temp-Alias.Space.Lg-mobile']).toBe(16)
+    expect(byId['temp-Alias.Space.Lg-mobile']).toBeUndefined()
     expect(byId['temp-Alias.Space.Lg-tablet']).toBe(24)
     expect(byId['temp-Alias.Space.Lg-desktop']).toBe(32)
+  })
+
+  it('pass 2 binds a referenced breakpoint as a VARIABLE_ALIAS to its target primitive, not a flattened copy', () => {
+    const idByPath = assignVariableIds(responsiveBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-Global.Dimension.Space.16': 'real-space-16',
+      'temp-Alias.Space.Lg-mobile': 'real-mobile',
+      'temp-Alias.Space.Lg-tablet': 'real-tablet',
+      'temp-Alias.Space.Lg-desktop': 'real-desktop',
+      'temp-Tcs.Space.Lg': 'real-ref',
+    })
+
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: responsiveBaseTokens,
+      brandTokensByName: { Base: responsiveBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variableModeValues).toEqual([
+      { variableId: 'real-mobile', modeId: 'm-base', value: { type: 'VARIABLE_ALIAS', id: 'real-space-16' } },
+    ])
   })
 
   it('pass 2 skips a plain dimension token that references a responsive dimension token by whole value', () => {
     const idByPath = assignVariableIds(responsiveBaseTokens)
     resolveTempIds(idByPath, {
+      'temp-Global.Dimension.Space.16': 'real-space-16',
       'temp-Alias.Space.Lg-mobile': 'real-mobile',
       'temp-Alias.Space.Lg-tablet': 'real-tablet',
       'temp-Alias.Space.Lg-desktop': 'real-desktop',
@@ -805,12 +883,169 @@ describe('responsive dimension push (two-pass write payload)', () => {
   })
 })
 
+describe('Device variable (responsive collection) push — MVP scope', () => {
+  // Real emoji path segments, matching DEVICE_ELIGIBLE_PATH_PREFIXES in figma-value.mjs
+  // (['🔗 Alias', '↔️ Space'] etc.) — unlike the plain-ASCII fixtures above (which deliberately stay
+  // out of MVP scope and double as the "not eligible" regression check), these need the real
+  // prefixes to exercise isDeviceEligibleResponsiveDimensionToken at all.
+  const space16Primitive = {
+    path: ['🌐 Global', '📏 Dimension', 'Space', '16'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 16, unit: 'px' } },
+  }
+  const space40Primitive = {
+    path: ['🌐 Global', '📏 Dimension', 'Space', '40'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 40, unit: 'px' } },
+  }
+  const deviceEligibleToken = {
+    path: ['🔗 Alias', '↔️ Space', 'Lg'],
+    type: 'dimension',
+    value: { kind: 'literal', value: { value: 16, unit: 'px' } },
+    responsive: {
+      mobile: '{🌐 Global.📏 Dimension.Space.16}',
+      tablet: '{🌐 Global.📏 Dimension.Space.40}',
+      desktop: { value: 48, unit: 'px' },
+    },
+  }
+  // The real bug from the reported issue: a Component token (e.g. Component.Badge.Size.Base.Height)
+  // referencing a responsive Alias token by whole value — previously silently skipped because the
+  // target's variableId was a {mobile,tablet,desktop} object with no single id to alias to.
+  const componentRefToken = {
+    path: ['🧩 Component', 'Badge', 'Size', 'Base', 'Height'],
+    type: 'dimension',
+    value: { kind: 'reference', path: ['🔗 Alias', '↔️ Space', 'Lg'] },
+  }
+  const deviceBaseTokens = [space16Primitive, space40Primitive, deviceEligibleToken, componentRefToken]
+
+  it('assignVariableIds assigns a 4th temp "device" id, alongside the 3 breakpoint sub-ids, for an in-scope token', () => {
+    const idByPath = assignVariableIds(deviceBaseTokens)
+    expect(idByPath.get('🔗 Alias.↔️ Space.Lg')).toEqual({
+      mobile: 'temp-🔗 Alias.↔️ Space.Lg-mobile',
+      tablet: 'temp-🔗 Alias.↔️ Space.Lg-tablet',
+      desktop: 'temp-🔗 Alias.↔️ Space.Lg-desktop',
+      device: 'temp-🔗 Alias.↔️ Space.Lg-device',
+    })
+  })
+
+  it('pass 1 creates the Device variable in the responsive collection, FLOAT, named with a /Device suffix', () => {
+    const idByPath = assignVariableIds(deviceBaseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens: deviceBaseTokens,
+      brandTokensByName: { Base: deviceBaseTokens },
+      idByPath,
+      collectionId: 'coll-brand',
+      modeIdByBrand: { Base: 'm-base' },
+      responsiveCollectionId: 'coll-responsive',
+    })
+
+    const deviceVariable = variables.find(v => v.name === '🔗 Alias/↔️ Space/Lg/Device')
+    expect(deviceVariable).toMatchObject({ variableCollectionId: 'coll-responsive', resolvedType: 'FLOAT' })
+  })
+
+  it('pass 1 writes no mode-value for the Device variable — it is alias-only, deferred entirely to pass 2', () => {
+    const idByPath = assignVariableIds(deviceBaseTokens)
+    const { variableModeValues } = buildCreatePassPayload({
+      baseTokens: deviceBaseTokens,
+      brandTokensByName: { Base: deviceBaseTokens },
+      idByPath,
+      collectionId: 'coll-brand',
+      modeIdByBrand: { Base: 'm-base' },
+      responsiveCollectionId: 'coll-responsive',
+    })
+
+    const deviceId = idByPath.get('🔗 Alias.↔️ Space.Lg').device
+    expect(variableModeValues.find(v => v.variableId === deviceId)).toBeUndefined()
+  })
+
+  const resolvedIdByPath = () => {
+    const idByPath = assignVariableIds(deviceBaseTokens)
+    resolveTempIds(idByPath, {
+      'temp-🌐 Global.📏 Dimension.Space.16': 'real-g16',
+      'temp-🌐 Global.📏 Dimension.Space.40': 'real-g40',
+      'temp-🔗 Alias.↔️ Space.Lg-mobile': 'real-mobile',
+      'temp-🔗 Alias.↔️ Space.Lg-tablet': 'real-tablet',
+      'temp-🔗 Alias.↔️ Space.Lg-desktop': 'real-desktop',
+      'temp-🔗 Alias.↔️ Space.Lg-device': 'real-device',
+      'temp-🧩 Component.Badge.Size.Base.Height': 'real-height',
+    })
+    return idByPath
+  }
+
+  it('pass 2 writes 3 breakpoint-mode aliases for the Device variable, each pointing at the matching sibling', () => {
+    const idByPath = resolvedIdByPath()
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: deviceBaseTokens,
+      brandTokensByName: { Base: deviceBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base' },
+      modeIdByBreakpoint: { Mobile: 'm-mobile', Tablet: 'm-tablet', Desktop: 'm-desktop' },
+    })
+
+    const deviceAliases = variableModeValues.filter(v => v.variableId === 'real-device')
+    expect(deviceAliases).toEqual([
+      { variableId: 'real-device', modeId: 'm-mobile', value: { type: 'VARIABLE_ALIAS', id: 'real-mobile' } },
+      { variableId: 'real-device', modeId: 'm-tablet', value: { type: 'VARIABLE_ALIAS', id: 'real-tablet' } },
+      { variableId: 'real-device', modeId: 'm-desktop', value: { type: 'VARIABLE_ALIAS', id: 'real-desktop' } },
+    ])
+  })
+
+  it('pass 2 writes the Device aliases once, not once per brand', () => {
+    const idByPath = resolvedIdByPath()
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: deviceBaseTokens,
+      brandTokensByName: { Base: deviceBaseTokens, Tcs: deviceBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base', Tcs: 'm-tcs' },
+      modeIdByBreakpoint: { Mobile: 'm-mobile', Tablet: 'm-tablet', Desktop: 'm-desktop' },
+    })
+
+    expect(variableModeValues.filter(v => v.variableId === 'real-device')).toHaveLength(3)
+  })
+
+  it('pass 2 aliases a Component token referencing a Device-eligible responsive token to its Device id — the fix for the reported "0 values" bug', () => {
+    const idByPath = resolvedIdByPath()
+    const { variableModeValues } = buildAliasPassPayload({
+      baseTokens: deviceBaseTokens,
+      brandTokensByName: { Base: deviceBaseTokens },
+      idByPath,
+      modeIdByBrand: { Base: 'm-base' },
+      modeIdByBreakpoint: { Mobile: 'm-mobile', Tablet: 'm-tablet', Desktop: 'm-desktop' },
+    })
+
+    expect(variableModeValues.find(v => v.variableId === 'real-height')).toEqual({
+      variableId: 'real-height',
+      modeId: 'm-base',
+      value: { type: 'VARIABLE_ALIAS', id: 'real-device' },
+    })
+  })
+
+  it('does not assign a "device" id for a responsive dimension token outside MVP scope', () => {
+    const outOfScopeToken = {
+      path: ['🧩 Component', 'Text', 'Space'],
+      type: 'dimension',
+      value: { kind: 'literal', value: { value: 16, unit: 'px' } },
+      responsive: {
+        mobile: { value: 16, unit: 'px' },
+        tablet: { value: 16, unit: 'px' },
+        desktop: { value: 16, unit: 'px' },
+      },
+    }
+    const idByPath = assignVariableIds([outOfScopeToken])
+    expect(idByPath.get('🧩 Component.Text.Space')).toEqual({
+      mobile: 'temp-🧩 Component.Text.Space-mobile',
+      tablet: 'temp-🧩 Component.Text.Space-tablet',
+      desktop: 'temp-🧩 Component.Text.Space-desktop',
+    })
+  })
+})
+
 describe('findCollectionAndModes', () => {
   const meta = {
     variableCollections: {
       'VariableCollectionId:1': {
         id: 'VariableCollectionId:1',
-        name: 'Tokens',
+        name: 'Design Tokens',
         modes: [
           { modeId: 'm1', name: 'Base' },
           { modeId: 'm2', name: 'Tcs' },
@@ -829,8 +1064,75 @@ describe('findCollectionAndModes', () => {
     expect(() => findCollectionAndModes(meta, ['Unknown'])).toThrow(/No Figma mode named "Unknown"/)
   })
 
-  it('throws if the file does not have exactly one variable collection', () => {
-    expect(() => findCollectionAndModes({ variableCollections: {} }, [])).toThrow(/found 0/)
+  it('throws if no collection is named "Design Tokens" (the default)', () => {
+    expect(() => findCollectionAndModes({ variableCollections: {} }, [])).toThrow(
+      /No Figma variable collection named "Design Tokens"/,
+    )
+  })
+
+  it('resolves a collection by a custom name, ignoring other collections in the file', () => {
+    const multiCollectionMeta = {
+      variableCollections: {
+        ...meta.variableCollections,
+        'VariableCollectionId:2': {
+          id: 'VariableCollectionId:2',
+          name: 'Design Responsive Tokens',
+          modes: [{ modeId: 'm3', name: 'Mobile' }],
+        },
+      },
+    }
+    const { collectionId, modeIdByBrand } = findCollectionAndModes(multiCollectionMeta, ['Tcs'], 'Design Tokens')
+    expect(collectionId).toBe('VariableCollectionId:1')
+    expect(modeIdByBrand).toEqual({ Base: 'm1', Tcs: 'm2' })
+  })
+})
+
+describe('findResponsiveCollectionAndModes', () => {
+  const meta = {
+    variableCollections: {
+      'VariableCollectionId:1': {
+        id: 'VariableCollectionId:1',
+        name: 'Design Tokens',
+        modes: [{ modeId: 'm1', name: 'Base' }],
+      },
+      'VariableCollectionId:2': {
+        id: 'VariableCollectionId:2',
+        name: 'Design Responsive Tokens',
+        modes: [
+          { modeId: 'm3', name: 'Mobile' },
+          { modeId: 'm4', name: 'Tablet' },
+          { modeId: 'm5', name: 'Desktop' },
+        ],
+      },
+    },
+  }
+
+  it('maps each breakpoint name to its mode id by exact name match, ignoring the brand collection', () => {
+    const { collectionId, modeIdByBreakpoint } = findResponsiveCollectionAndModes(meta)
+    expect(collectionId).toBe('VariableCollectionId:2')
+    expect(modeIdByBreakpoint).toEqual({ Mobile: 'm3', Tablet: 'm4', Desktop: 'm5' })
+  })
+
+  it('throws if no collection is named "Design Responsive Tokens" (the default)', () => {
+    expect(() => findResponsiveCollectionAndModes({ variableCollections: {} })).toThrow(
+      /No Figma variable collection named "Design Responsive Tokens"/,
+    )
+  })
+
+  it('throws if a required breakpoint mode is missing', () => {
+    const missingDesktop = {
+      variableCollections: {
+        'VariableCollectionId:2': {
+          id: 'VariableCollectionId:2',
+          name: 'Design Responsive Tokens',
+          modes: [
+            { modeId: 'm3', name: 'Mobile' },
+            { modeId: 'm4', name: 'Tablet' },
+          ],
+        },
+      },
+    }
+    expect(() => findResponsiveCollectionAndModes(missingDesktop)).toThrow(/No Figma mode named "Desktop"/)
   })
 })
 

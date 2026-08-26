@@ -170,11 +170,7 @@
         },
         "Base": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Border.2}"
-        },
-        "MD": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Border.3}"
+          "$value": "{🌐 Global.📏 Dimension.Border.1}"
         }
       },
       "Style": {
@@ -8896,17 +8892,10 @@
             "unit": "rem"
           }
         },
-        "2": {
+        "1": {
           "$type": "dimension",
           "$value": {
             "value": 0.125,
-            "unit": "rem"
-          }
-        },
-        "3": {
-          "$type": "dimension",
-          "$value": {
-            "value": 0.25,
             "unit": "rem"
           }
         }

@@ -151,7 +151,7 @@ describe('buildSyncState', () => {
     })
   })
 
-  it('does not throw for a multi-layer shadow token with no variableId — it was never eligible for sync', () => {
+  it('throws for a multi-layer shadow token with no variableId, same as any other never-synced token — every shadow shape is now eligible for sync', () => {
     const multiLayerToken = {
       path: ['Global', 'Shadow', 'Stacked'],
       type: 'shadow',
@@ -159,6 +159,22 @@ describe('buildSyncState', () => {
     }
     expect(() =>
       buildSyncState({ existingState: null, baseTokens: [multiLayerToken], mergeCommitSha: 'sha', syncedAt: 'now' }),
-    ).not.toThrow()
+    ).toThrow('has no variableId')
+  })
+
+  it('builds baseline entries for a multi-layer shadow token once it has a variableId, one per sub-property', () => {
+    const multiLayerToken = {
+      path: ['Global', 'Shadow', 'Stacked'],
+      type: 'shadow',
+      value: { kind: 'literal', value: [{}, {}] },
+      variableId: { offsetX: 'id-x', offsetY: 'id-y', blur: 'id-b', spread: 'id-s', color: 'id-c' },
+    }
+    const state = buildSyncState({
+      existingState: null,
+      baseTokens: [multiLayerToken],
+      mergeCommitSha: 'sha',
+      syncedAt: 'now',
+    })
+    expect(Object.keys(state.entries).sort()).toEqual(['id-b', 'id-c', 'id-s', 'id-x', 'id-y'])
   })
 })

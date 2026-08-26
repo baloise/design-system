@@ -41,6 +41,22 @@ export function resolveAliasTarget(token, tokenIndex) {
 const REFERENCE_PATTERN = /^\{(.+)\}$/
 
 /**
+ * Parses a bare `{reference}` string into its path segments, without following it — unlike
+ * `resolveLiteral`, which follows a reference through as many hops as it takes to a literal, this
+ * is for callers (responsive dimension breakpoints) that need to know *whether* a raw sub-value is
+ * a reference at all, and if so bind directly to that one target's own Figma variable rather than
+ * flattening through it to a literal.
+ *
+ * @param {unknown} rawValue
+ * @returns {string[] | null} the reference's path segments, or null if `rawValue` isn't a `{reference}` string
+ */
+export function parseReferencePath(rawValue) {
+  if (typeof rawValue !== 'string') return null
+  const match = REFERENCE_PATTERN.exec(rawValue)
+  return match ? match[1].split('.') : null
+}
+
+/**
  * A border composite token's `color`/`width`/`style` sub-values are each a bare reference
  * *string* (not a whole-token reference) pointing into the same Base tree — e.g.
  * `"{🔗 Alias.▭ Border.Color.Grey}"`, itself a reference to `🌐 Global.🌈 Color.Grey.3`
