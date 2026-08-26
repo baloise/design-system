@@ -1,4 +1,4 @@
-import { DsIcon, expect, test } from '@baloise/ds-playwright'
+import { DsBrandIcon, expect, test } from '@baloise/ds-playwright'
 
 test.describe('component', () => {
   test('renders SVG fetched from src URL', async ({ page }) => {
@@ -9,12 +9,10 @@ test.describe('component', () => {
     })
 
     await page.mount(`<ds-brand-icon src="/test-brand-icon.svg"></ds-brand-icon>`)
-    const dsIcon = new DsIcon(page.locator('ds-icon'))
-    await dsIcon.assertToBeVisible()
-    await expect(page.locator('ds-icon')).not.toHaveClass(/is-filled/)
+    const dsBrandIcon = new DsBrandIcon(page.locator('ds-brand-icon'))
+    await dsBrandIcon.assertToBeVisible()
 
-    const inner = page.locator('ds-icon').locator('[part="inner"]')
-    await expect(inner.locator('circle')).toBeVisible()
+    await expect(dsBrandIcon.inner.locator('circle')).toBeVisible()
   })
 
   test('renders nothing when src fetch fails', async ({ page }) => {
@@ -25,7 +23,7 @@ test.describe('component', () => {
     await page.mount(`<ds-brand-icon src="/missing-icon.svg"></ds-brand-icon>`)
     // eslint-disable-next-line playwright/no-networkidle
     await page.waitForLoadState('networkidle')
-    const inner = page.locator('ds-icon').locator('[part="inner"]')
-    await expect(inner).toBeEmpty()
+    const dsBrandIcon = new DsBrandIcon(page.locator('ds-brand-icon'))
+    await expect(dsBrandIcon.inner).toBeEmpty()
   })
 })
