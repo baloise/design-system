@@ -1325,21 +1325,41 @@
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.White}"
       },
+      "OnWhite": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Selected": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.2}"
+      },
+      "OnSelected": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Hover": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.0}"
       },
+      "OnHover": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Highlight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.1}"
       },
+      "OnHighlight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Disabled": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.2}"
+      },
+      "OnDisabled": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Transparent": {
         "$type": "color",
@@ -1349,197 +1369,393 @@
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Sky.1}"
       },
+      "OnSkyLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Sky": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Sky.2}"
+      },
+      "OnSky": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "SkyDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Sky.3}"
       },
+      "OnSkyDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Info": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Info.3}"
+      },
+      "OnInfo": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "InfoLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Info.2}"
       },
+      "OnInfoLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "InfoDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Info.4}"
+      },
+      "OnInfoDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "InfoDarker": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Info.5}"
       },
+      "OnInfoDarker": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
       "InfoDarkest": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Info.6}"
+      },
+      "OnInfoDarkest": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "Success": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Success.3}"
       },
+      "OnSuccess": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "SuccessLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Success.1}"
+      },
+      "OnSuccessLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "SuccessLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Success.2}"
       },
+      "OnSuccessLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "SuccessDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Success.4}"
+      },
+      "OnSuccessDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "SuccessDarker": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Success.5}"
       },
+      "OnSuccessDarker": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
       "SuccessDarkest": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Success.6}"
+      },
+      "OnSuccessDarkest": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "WarningLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Warning.1}"
       },
+      "OnWarningLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "WarningLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Warning.2}"
+      },
+      "OnWarningLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Warning": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Warning.3}"
       },
+      "OnWarning": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "WarningDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Warning.4}"
+      },
+      "OnWarningDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "WarningDarker": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Warning.5}"
       },
+      "OnWarningDarker": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "WarningDarkest": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Warning.6}"
+      },
+      "OnWarningDarkest": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "DangerLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Danger.1}"
       },
+      "OnDangerLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "DangerLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Danger.2}"
+      },
+      "OnDangerLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Danger": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Danger.3}"
       },
+      "OnDanger": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "DangerDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Danger.4}"
+      },
+      "OnDangerDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "DangerDarker": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Danger.5}"
       },
+      "OnDangerDarker": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
       "DangerDarkest": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Danger.6}"
+      },
+      "OnDangerDarkest": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "GreyLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.0}"
       },
+      "OnGreyLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "GreyLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.1}"
+      },
+      "OnGreyLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Grey": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.2}"
       },
+      "OnGrey": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "GreyDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.3}"
+      },
+      "OnGreyDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "GreyDarker": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Grey.4}"
       },
+      "OnGreyDarker": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "PrimaryLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.1}"
+      },
+      "OnPrimaryLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "PrimaryLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.3}"
       },
+      "OnPrimaryLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
       "Primary": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.5}"
+      },
+      "OnPrimary": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "PrimaryHover": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Sky.5}"
       },
+      "OnPrimaryHover": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
       "PrimaryActive": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.6}"
+      },
+      "OnPrimaryActive": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
       },
       "PrimaryDark": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.4}"
       },
+      "OnPrimaryDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
       "GreenLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Green.1}"
+      },
+      "OnGreenLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "GreenLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Green.2}"
       },
+      "OnGreenLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Green": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Green.3}"
+      },
+      "OnGreen": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "PurpleLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Purple.1}"
       },
+      "OnPurpleLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "PurpleLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Purple.2}"
+      },
+      "OnPurpleLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Purple": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Purple.3}"
       },
+      "OnPurple": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "RedLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Red.1}"
+      },
+      "OnRedLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "RedLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Red.2}"
       },
+      "OnRedLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Red": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Red.3}"
+      },
+      "OnRed": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "YellowLighter": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Yellow.1}"
       },
+      "OnYellowLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "YellowLight": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Yellow.2}"
       },
+      "OnYellowLight": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
       "Yellow": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Yellow.3}"
+      },
+      "OnYellow": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       }
     },
     "🎬 Action": {

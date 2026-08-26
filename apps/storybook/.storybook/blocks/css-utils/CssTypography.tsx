@@ -40,50 +40,36 @@ export const CssTypographyWhiteSpace = (): React.ReactElement => (
   <CssUtilitiesTable utility="typography" search="white-space" />
 )
 
+// Some responsive dimension entries are style-dictionary objects ({ value, unit })
+// instead of pre-formatted strings — normalize both shapes for display.
+function formatSizeValue(value: unknown): string | undefined {
+  if (value && typeof value === 'object') {
+    const { value: num, unit } = value as { value: number; unit: string }
+    return `${num}${unit}`
+  }
+  return value as string | undefined
+}
+
 export const CssTypographySize = (): React.ReactElement => {
+  const sizeCategory = tokens['🔗 Alias']['🔤 Text'].Size
+
+  const sizeTokens = Object.fromEntries(
+    Object.keys(sizeCategory).map(key => {
+      const size = key.toLowerCase()
+      const item = sizeCategory[key]
+      const responsive = item.$extensions?.['com.helvetia.responsive']
+      return [
+        size,
+        {
+          name: `ds-alias-text-size-${size}-device`,
+          $value: formatSizeValue(responsive?.mobile) ?? item.$value,
+        },
+      ]
+    }),
+  )
+
   return CssTable({
-    tokens: {
-      'x-small': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['x-small'].Mobile,
-        name: 'ds-text-size-x-small-device',
-      },
-      'small': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['small'].Mobile,
-        name: 'ds-text-size-small-device',
-      },
-      'normal': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['normal'].Mobile,
-        name: 'ds-text-size-normal-device',
-      },
-      'medium': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['medium'].Mobile,
-        name: 'ds-text-size-medium-device',
-      },
-      'large': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['large'].Mobile,
-        name: 'ds-text-size-large-device',
-      },
-      'x-large': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['x-large'].Mobile,
-        name: 'ds-text-size-x-large-device',
-      },
-      'xx-large': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['xx-large'].Mobile,
-        name: 'ds-text-size-xx-large-device',
-      },
-      'xxx-large': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['xxx-large'].Mobile,
-        name: 'ds-text-size-xxx-large-device',
-      },
-      'xxxx-large': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['xxxx-large'].Mobile,
-        name: 'ds-text-size-xxxx-large-device',
-      },
-      'xxxxx-large': {
-        ...tokens['🔗 Alias']['🔤 Text'].Size['xxxxx-large'].Mobile,
-        name: 'ds-text-size-xxxxx-large-device',
-      },
-    },
+    tokens: sizeTokens,
     css: 'text',
     example: item => <div className={`text-${item.key} font-weight-bold text-align-center p-xx-small`}>Aa</div>,
   })

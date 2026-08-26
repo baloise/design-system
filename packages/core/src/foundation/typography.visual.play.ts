@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'colors'
-const VARIANTS = ['primary', 'grey', 'sky', 'purple', 'green', 'red', 'yellow', 'info', 'success', 'warning', 'danger']
+const TAG = 'typography'
+const VARIANTS = ['size', 'color', 'family', 'weight', 'line-height']
 
 const image = screenshot(TAG)
 
