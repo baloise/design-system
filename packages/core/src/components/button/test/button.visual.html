@@ -15,14 +15,81 @@
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-button icon="plus"> Button </ds-button>
+        <ds-button> Button </ds-button>
+      </section>
+
+      <!-- Colors -->
+      <section data-testid="colors">
+        <span>Colors</span>
+        <ds-button color="primary">Primary</ds-button>
+        <ds-button color="secondary">Secondary</ds-button>
+        <ds-button color="tertiary">Tertiary</ds-button>
+        <ds-button color="ghost">Ghost</ds-button>
+
+        <br />
+        <br />
+
+        <ds-button color="brand-purple">Brand Purple</ds-button>
+        <ds-button color="brand-red">Brand Red</ds-button>
+        <ds-button color="brand-yellow">Brand Yellow</ds-button>
+        <ds-button color="brand-green">Brand Green</ds-button>
+
+        <br />
+        <br />
+        <ds-button color="info">Info</ds-button>
+        <ds-button color="success">Success</ds-button>
+        <ds-button color="warning">Warning</ds-button>
+        <ds-button color="danger">Danger</ds-button>
+      </section>
+
+      <!-- Inverted -->
+      <section data-testid="inverted" class="s-bg-inverted">
+        <span>Inverted</span>
+        <ds-button color="primary" inverted>Primary</ds-button>
+        <ds-button color="secondary" inverted>Secondary</ds-button>
+        <ds-button color="tertiary" inverted>Tertiary</ds-button>
+        <ds-button color="ghost" inverted>Ghost</ds-button>
+
+        <br />
+        <br />
+
+        <ds-button color="brand-purple" inverted>Brand Purple</ds-button>
+        <ds-button color="brand-red" inverted>Brand Red</ds-button>
+        <ds-button color="brand-yellow" inverted>Brand Yellow</ds-button>
+        <ds-button color="brand-green" inverted>Brand Green</ds-button>
+
+        <br />
+        <br />
+        <ds-button color="info" inverted>Info</ds-button>
+        <ds-button color="success" inverted>Success</ds-button>
+        <ds-button color="warning" inverted>Warning</ds-button>
+        <ds-button color="danger" inverted>Danger</ds-button>
+      </section>
+
+      <!-- Brand Icons -->
+      <section data-testid="brand-icons">
+        <span>Brand Icons</span>
+        <div class="stack as-row">
+          <ds-button color="brand-purple" brand-icon="/assets/images/brand-icons/electric-car-ins-purple.svg">
+            Elektrische autoverzekering
+          </ds-button>
+          <ds-button color="brand-yellow" brand-icon="/assets/images/brand-icons/car-tangerine.svg">
+            Autoverzekering
+          </ds-button>
+          <ds-button color="brand-red" brand-icon="/assets/images/brand-icons/motorbike-red.svg">
+            Motorverzekering
+          </ds-button>
+          <ds-button color="brand-green" brand-icon="/assets/images/brand-icons/camper-green.svg">
+            Verzekering mobilhome
+          </ds-button>
+        </div>
       </section>
 
       <!-- Shadow -->
-      <section data-testid="shadow">
+      <section data-testid="shadow" class="s-bg-2">
         <span>Shadow</span>
-        <ds-button icon="plus" shadow> Button </ds-button>
-        <ds-button icon="plus" color="link" shadow> Button </ds-button>
+        <ds-button shadow> Button </ds-button>
+        <ds-button color="link" shadow> Button </ds-button>
       </section>
 
       <!-- Badge -->
@@ -45,59 +112,12 @@
         </div>
       </section>
 
-      <!-- Colors -->
-      <section data-testid="colors">
-        <span>Colors</span>
-        <ds-button color="primary">Primary</ds-button>
-        <ds-button color="secondary">Secondary</ds-button>
-        <ds-button color="tertiary">Tertiary</ds-button>
-
-        <br />
-        <br />
-
-        <ds-button color="tertiary-purple">Tertiary Purple</ds-button>
-        <ds-button color="tertiary-red">Tertiary Red</ds-button>
-        <ds-button color="tertiary-yellow">Tertiary Yellow</ds-button>
-        <ds-button color="tertiary-green">Tertiary Green</ds-button>
-
-        <br />
-        <br />
-        <ds-button color="info">Info</ds-button>
-        <ds-button color="success">Success</ds-button>
-        <ds-button color="warning">Warning</ds-button>
-        <ds-button color="danger">Danger</ds-button>
-      </section>
-
-      <!-- Inverted -->
-      <section data-testid="inverted" class="s-bg-inverted">
-        <span>Inverted</span>
-        <ds-button color="primary" inverted>Primary</ds-button>
-        <ds-button color="secondary" inverted>Secondary</ds-button>
-        <ds-button color="tertiary" inverted>Tertiary</ds-button>
-
-        <br />
-        <br />
-
-        <ds-button color="tertiary-purple" inverted>Tertiary Purple</ds-button>
-        <ds-button color="tertiary-red" inverted>Tertiary Red</ds-button>
-        <ds-button color="tertiary-yellow" inverted>Tertiary Yellow</ds-button>
-        <ds-button color="tertiary-green" inverted>Tertiary Green</ds-button>
-
-        <br />
-        <br />
-        <ds-button color="info" inverted>Info</ds-button>
-        <ds-button color="success" inverted>Success</ds-button>
-        <ds-button color="warning" inverted>Warning</ds-button>
-        <ds-button color="danger" inverted>Danger</ds-button>
-      </section>
-
       <!-- Sizes -->
       <section data-testid="sizes">
         <span>Sizes</span>
         <ds-button size="sm">Small</ds-button>
         <ds-button>Normal</ds-button>
         <ds-button size="lg">Large</ds-button>
-        <ds-button size="xl">X-Large</ds-button>
       </section>
 
       <!-- Wide -->
@@ -149,7 +169,7 @@
       <section data-testid="icon">
         <span>Icon</span>
         <ds-button icon="plus"> Button </ds-button>
-        <ds-button color="secondary" icon="plus"> Button </ds-button>
+        <ds-button color="secondary" icon-right="plus"> Button </ds-button>
       </section>
 
       <!-- Loading -->
@@ -171,10 +191,11 @@
         <div class="buttons">
           <ds-button square loading="circle" color="secondary"> </ds-button>
           <ds-button square loading="circle" color="tertiary"> </ds-button>
-          <ds-button square loading="circle" color="tertiary-purple"> </ds-button>
-          <ds-button square loading="circle" color="tertiary-green"> </ds-button>
-          <ds-button square loading="circle" color="tertiary-red"> </ds-button>
-          <ds-button square loading="circle" color="tertiary-yellow"> </ds-button>
+          <ds-button square loading="circle" color="ghost"> </ds-button>
+          <ds-button square loading="circle" color="brand-purple"> </ds-button>
+          <ds-button square loading="circle" color="brand-green"> </ds-button>
+          <ds-button square loading="circle" color="brand-red"> </ds-button>
+          <ds-button square loading="circle" color="brand-yellow"> </ds-button>
           <ds-button square loading="circle" color="info"> </ds-button>
           <ds-button square loading="circle" color="success"> </ds-button>
           <ds-button square loading="circle" color="warning"> </ds-button>

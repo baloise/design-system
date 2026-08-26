@@ -130,6 +130,12 @@ export function PreviewSidebar({
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [ready, setReady] = useState(false)
   const [timedOut, setTimedOut] = useState(false)
+  // Names of the CSS custom properties last posted with a non-null value, so the set-tokens
+  // effect below can tell which ones dropped out of the current `tokens` diff (e.g. a token was
+  // edited back toward its original value) and needs an explicit null to clear the stale
+  // override - see applyTokens in packages/core/src/global/token-preview.ts, which only ever
+  // adds/overwrites the properties it's given and never removes ones it isn't told about.
+  const appliedTokenNamesRef = useRef<Set<string>>(new Set())
 
   // Re-runs on every page change too, since changing `src` reloads the iframe - a fresh load
   // needs its own ready handshake and timeout, same as the tab-remount case.
@@ -141,6 +147,9 @@ export function PreviewSidebar({
 
     setReady(false)
     setTimedOut(false)
+    // A fresh iframe load starts with a blank documentElement.style - nothing from a previous
+    // load is still applied, so the tracked set shouldn't carry over either.
+    appliedTokenNamesRef.current = new Set()
 
     const timeoutId = window.setTimeout(() => setTimedOut(true), READY_TIMEOUT_MS)
 
@@ -162,13 +171,23 @@ export function PreviewSidebar({
   // `diff` (and therefore `tokens`) is always the full comparison against the original baseline,
   // not an incremental delta - so re-posting it here on every change (including the first, once
   // `ready` flips) already keeps the preview in sync without a separate "initial sync" path.
+  // A name that was applied last time but is absent from this snapshot (e.g. an edit was undone
+  // back to its original value, dropping it out of the diff) needs an explicit null so the
+  // listener clears the stale override instead of leaving it in place.
   useEffect(() => {
     if (!ready || !previewOrigin) return
     const win = iframeRef.current?.contentWindow
     if (!win) return
 
+    const currentNames = new Set(tokens.map(token => token.name))
+    const cleared: PreviewToken[] = []
+    for (const name of appliedTokenNamesRef.current) {
+      if (!currentNames.has(name)) cleared.push({ name, value: null })
+    }
+    appliedTokenNamesRef.current = currentNames
+
     win.postMessage({ source: 'ds-token-preview', type: 'set-brand', brand }, previewOrigin)
-    win.postMessage({ source: 'ds-token-preview', type: 'set-tokens', tokens }, previewOrigin)
+    win.postMessage({ source: 'ds-token-preview', type: 'set-tokens', tokens: [...cleared, ...tokens] }, previewOrigin)
   }, [ready, tokens, brand, previewOrigin])
 
   // Sets the sidebar's own (resizable) width to the breakpoint, rather than a fixed width on the

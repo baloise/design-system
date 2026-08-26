@@ -14,10 +14,12 @@ import {
   Type,
 } from '@utils'
 import {
+  BUTTON_BRAND_SIZES,
   BUTTON_COLORS,
   BUTTON_ELEMENT_TYPES,
   BUTTON_SIZES,
   BUTTON_TARGETS,
+  type ButtonBrandSize,
   type ButtonColor,
   type ButtonElementType,
   type ButtonSize,
@@ -28,6 +30,7 @@ import {
   ButtonFocusDetail,
   ButtonNavigateDetail,
 } from './button.interfaces'
+import { type IconColor } from '../brand-icon/brand-icon.interfaces'
 
 /**
  * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
@@ -35,7 +38,7 @@ import {
  * @slot - Button label text and/or icon children. Rendered inside a `<span part="label">` wrapper.
  * @part native - The native `<button>` or `<a>` element.
  * @part spinner - The loading spinner shown when `loading` is true.
- * @part icon - The leading icon wrapper.
+ * @part icon - The leading icon wrapper (or the brand icon wrapper when `brandIcon` is set).
  * @part label - The text label wrapper (`<span>`).
  * @part icon-right - The trailing icon wrapper.
  */
@@ -202,6 +205,22 @@ export class Button implements DsComponentInterface {
   readonly iconRight: string = ''
 
   /**
+   * A brand icon shown above the label instead of the regular leading/trailing icons.
+   * Accepts either a URL to an SVG file or raw `<svg>` markup.
+   * When set, `icon` and `iconRight` are ignored.
+   */
+  @Prop()
+  @Type('string')
+  readonly brandIcon: string = ''
+
+  /**
+   * Size of the brand icon.
+   */
+  @Prop()
+  @OneOf(BUTTON_BRAND_SIZES)
+  readonly brandSize: ButtonBrandSize = 'md'
+
+  /**
    * The label of the button will not break
    */
   @Prop()
@@ -276,19 +295,6 @@ export class Button implements DsComponentInterface {
   @Event() dsDidRender!: EventEmitter<ButtonDidRenderDetail>
 
   /**
-   * PUBLIC LISTENERS
-   * ─────────────────────────────────────────────────────
-   */
-
-  @Listen('click', { capture: true, target: 'document' })
-  listenToClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
-    }
-  }
-
-  /**
    * LIFECYCLE
    * ─────────────────────────────────────────────────────
    */
@@ -313,12 +319,38 @@ export class Button implements DsComponentInterface {
   }
 
   /**
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenToClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
+  /**
    * EVENT HANDLERS
    * ─────────────────────────────────────────────────────
    */
 
   private get isIconInverted() {
     return this.inverted
+  }
+
+  private get hasBrandIcon() {
+    return hasValue(this.brandIcon)
+  }
+
+  private get isBrandIconSvg() {
+    return this.brandIcon.trim().startsWith('<')
+  }
+
+  private get brandIconColor(): IconColor {
+    const match = this.color.match(/^brand-(purple|red|yellow|green)$/)
+    return match ? (match[1] as IconColor) : undefined
   }
 
   private get leftIconAttrs() {
@@ -381,11 +413,6 @@ export class Button implements DsComponentInterface {
   }
 
   /**
-   * PRIVATE METHODS
-   * ─────────────────────────────────────────────────────
-   */
-
-  /**
    * RENDER
    * ─────────────────────────────────────────────────────
    */
@@ -426,6 +453,7 @@ export class Button implements DsComponentInterface {
           [`is-square`]: this.square,
           [`has-shadow`]: this.shadow,
           [`has-no-wrap`]: this.noWrap,
+          [`has-brand-icon`]: this.hasBrandIcon,
         }}
       >
         <TagType
@@ -447,7 +475,15 @@ export class Button implements DsComponentInterface {
           ) : (
             ''
           )}
-          {hasValue(this.icon) ? (
+          {this.hasBrandIcon ? (
+            <ds-brand-icon
+              part="icon"
+              svg={this.isBrandIconSvg ? this.brandIcon : ''}
+              src={this.isBrandIconSvg ? '' : this.brandIcon}
+              size={this.brandSize}
+              color={this.brandIconColor}
+            />
+          ) : hasValue(this.icon) ? (
             <ds-icon
               {...this.leftIconAttrs}
               part="icon"
@@ -463,7 +499,7 @@ export class Button implements DsComponentInterface {
           <span part="label">
             <slot />
           </span>
-          {hasValue(this.iconRight) ? (
+          {!this.hasBrandIcon && hasValue(this.iconRight) ? (
             <ds-icon
               {...this.leftRightAttrs}
               part="icon-right"

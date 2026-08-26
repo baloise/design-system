@@ -10,7 +10,7 @@ import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 import { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
-import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
+import { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
@@ -55,7 +55,7 @@ export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 export { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
-export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
+export { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
@@ -321,6 +321,16 @@ export namespace Components {
          */
         "a11yTitle": string;
         /**
+          * A brand icon shown above the label instead of the regular leading/trailing icons. Accepts either a URL to an SVG file or raw `<svg>` markup. When set, `icon` and `iconRight` are ignored.
+          * @default ''
+         */
+        "brandIcon": string;
+        /**
+          * Size of the brand icon.
+          * @default 'md'
+         */
+        "brandSize": ButtonBrandSize;
+        /**
           * The color to use from your application's color palette.
           * @default 'primary'
          */
@@ -430,10 +440,9 @@ export namespace Components {
      */
     interface DsButtonGroup {
         /**
-          * The value of the button, which is submitted with the form data.
-          * @default ''
+          * Horizontal alignment of the grouped buttons.
          */
-        "align": ButtonGroupAlignment;
+        "align"?: ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
@@ -5118,6 +5127,16 @@ declare namespace LocalJSX {
          */
         "a11yTitle"?: string;
         /**
+          * A brand icon shown above the label instead of the regular leading/trailing icons. Accepts either a URL to an SVG file or raw `<svg>` markup. When set, `icon` and `iconRight` are ignored.
+          * @default ''
+         */
+        "brandIcon"?: string;
+        /**
+          * Size of the brand icon.
+          * @default 'md'
+         */
+        "brandSize"?: ButtonBrandSize;
+        /**
           * The color to use from your application's color palette.
           * @default 'primary'
          */
@@ -5251,8 +5270,7 @@ declare namespace LocalJSX {
      */
     interface DsButtonGroup {
         /**
-          * The value of the button, which is submitted with the form data.
-          * @default ''
+          * Horizontal alignment of the grouped buttons.
          */
         "align"?: ButtonGroupAlignment;
         /**
@@ -8662,6 +8680,8 @@ declare namespace LocalJSX {
         "icon": string;
         "iconTurn": boolean;
         "iconRight": string;
+        "brandIcon": string;
+        "brandSize": ButtonBrandSize;
         "noWrap": boolean;
         "name": string;
         "value": string;

@@ -51,16 +51,13 @@ These improvements help our components work seamlessly across all supported fram
 | Component        | Type     | Shadow | Docs | A11y | Visual | Component | Tokens | Figma |
 | ---------------- | -------- | ------ | ---- | ---- | ------ | --------- | ------ | ----- |
 | app              | WC       | ✅     | ⬜   | ⛔   | ⛔     | ✅        | ⛔     | ⛔    |
+| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | icon             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | brand-icon       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | heading          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | text             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | label            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | link             | CSS      | ⛔     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
 | container        | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
 | form             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
 | grid             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
@@ -72,10 +69,14 @@ These improvements help our components work seamlessly across all supported fram
 | logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | shape            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ❓     | ⬜    |
 | close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| -- DATA --       | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
+| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
 | card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | accordion        | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
