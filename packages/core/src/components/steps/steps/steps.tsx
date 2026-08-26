@@ -149,15 +149,7 @@ export class Steps implements DsComponentInterface {
     const steps = this.getSteps()
     const panels = this.getPanels()
 
-    let effectiveValue = this.value
-
-    // If the selected value is disabled, don't select any step
-    if (!isNav && effectiveValue) {
-      const selectedStep = steps.find((s: HTMLDsStepElement) => s.name === effectiveValue)
-      if (selectedStep && (selectedStep.disabled || selectedStep.hasAttribute('disabled'))) {
-        effectiveValue = undefined
-      }
-    }
+    const effectiveValue = this.value
 
     const activeStep = steps.find(s => s.name === effectiveValue)
     const activeIndex = activeStep ? activeStep.index : 0

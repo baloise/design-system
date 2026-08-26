@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  A11yGuidelines,
+  Banner,
+  BannerTabs,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as SheetStories from './sheet.stories'
+import { SHEET_DOC_CONFIG, getSheetTabs } from './sheet.doc-config'
+
+<Meta title="Components/Sheet/Accessibility" />
+
+<Banner label={'Accessibility'} section={SHEET_DOC_CONFIG.section} color={SHEET_DOC_CONFIG.color} />
+
+<BannerTabs of={SheetStories} tabs={getSheetTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Ensure all interactive controls inside the sheet are keyboard accessible',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Buttons and links placed in the sheet must be reachable via <code>Tab</code> and activatable with{' '}
+          <code>Enter</code> or <code>Space</code>. Users who navigate by keyboard must be able to reach sheet actions
+          without using a mouse.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Provide meaningful labels for all actions in the sheet',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Each button or interactive element inside the sheet must have a descriptive text label or{' '}
+          <code>aria-label</code>. Avoid icon-only buttons without accessible labels, as screen reader users will not
+          understand the action.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Maintain sufficient color contrast for sheet content',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          All text and interactive elements inside the sheet must meet WCAG 2.2 AA contrast ratios (4.5:1 for normal
+          text, 3:1 for large text and UI components). This applies especially when customizing{' '}
+          <code>--sheet-background</code>.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't trap keyboard focus inside the sheet",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The sheet is a persistent, non-modal panel. Do not implement a focus trap — users must be able to Tab freely
+          between the sheet and the rest of the page content. Focus traps are appropriate only for modal dialogs.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't rely on the sheet's position alone to convey meaning",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Screen reader users are not aware that the sheet is anchored to the bottom of the viewport. Use clear,
+          descriptive text within the sheet rather than relying on its visual placement to communicate context or
+          urgency.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: ARIA landmark roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) — Understanding when to apply landmark roles to persistent UI regions
+- [MDN: Using the button role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role) — Guidance for accessible button labels and keyboard interaction
+- [WCAG 2.2 — Success Criterion 1.4.3: Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) — Contrast requirements for text and UI components
+- [WCAG 2.2 — Success Criterion 2.1.1: Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard) — All functionality must be operable via keyboard
+
+<Footer />

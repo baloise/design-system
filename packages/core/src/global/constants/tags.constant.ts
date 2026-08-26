@@ -57,6 +57,7 @@ export const tags: string[] = [
   "ds-select-optgroup",
   "ds-select-option",
   "ds-shape",
+  "ds-sheet",
   "ds-snackbar",
   "ds-spinner",
   "ds-stack",

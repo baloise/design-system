@@ -40,6 +40,7 @@ import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDet
 import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
 import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
+import { SheetContainerSize } from "./components/sheet/sheet.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
@@ -85,6 +86,7 @@ export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDet
 export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
 export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
+export { SheetContainerSize } from "./components/sheet/sheet.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
@@ -2768,6 +2770,17 @@ export namespace Components {
         "variation": ShapeVariation;
     }
     /**
+     * Sheet displays a fixed panel anchored to the bottom of the viewport.
+     * Use it to surface persistent actions or contextual information without
+     * blocking the main content.
+     */
+    interface DsSheet {
+        /**
+          * Defines the content width of the sheet. Leave unset for the default width, or use `'fluid'` for full width, or `'compact'` for a narrow layout.
+         */
+        "containerSize"?: SheetContainerSize;
+    }
+    /**
      * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
      */
     interface DsSnackbar {
@@ -4557,6 +4570,17 @@ declare global {
         prototype: HTMLDsShapeElement;
         new (): HTMLDsShapeElement;
     };
+    /**
+     * Sheet displays a fixed panel anchored to the bottom of the viewport.
+     * Use it to surface persistent actions or contextual information without
+     * blocking the main content.
+     */
+    interface HTMLDsSheetElement extends Components.DsSheet, HTMLStencilElement {
+    }
+    var HTMLDsSheetElement: {
+        prototype: HTMLDsSheetElement;
+        new (): HTMLDsSheetElement;
+    };
     interface HTMLDsSnackbarElementEventMap {
         "dsCloseClick": SnackbarCloseClickDetail;
         "dsActionClick": SnackbarActionClickDetail;
@@ -4882,6 +4906,7 @@ declare global {
         "ds-select-optgroup": HTMLDsSelectOptgroupElement;
         "ds-select-option": HTMLDsSelectOptionElement;
         "ds-shape": HTMLDsShapeElement;
+        "ds-sheet": HTMLDsSheetElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
         "ds-stack": HTMLDsStackElement;
@@ -7781,6 +7806,17 @@ declare namespace LocalJSX {
         "variation"?: ShapeVariation;
     }
     /**
+     * Sheet displays a fixed panel anchored to the bottom of the viewport.
+     * Use it to surface persistent actions or contextual information without
+     * blocking the main content.
+     */
+    interface DsSheet {
+        /**
+          * Defines the content width of the sheet. Leave unset for the default width, or use `'fluid'` for full width, or `'compact'` for a narrow layout.
+         */
+        "containerSize"?: SheetContainerSize;
+    }
+    /**
      * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
      */
     interface DsSnackbar {
@@ -9157,6 +9193,9 @@ declare namespace LocalJSX {
         "rotation": ShapeRotation;
         "variation": ShapeVariation;
     }
+    interface DsSheetAttributes {
+        "containerSize": SheetContainerSize;
+    }
     interface DsSnackbarAttributes {
         "color": SnackbarColor;
         "closable": boolean;
@@ -9383,6 +9422,7 @@ declare namespace LocalJSX {
         "ds-select-optgroup": Omit<DsSelectOptgroup, keyof DsSelectOptgroupAttributes> & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes]?: DsSelectOptgroup[K] } & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes as `attr:${K}`]?: DsSelectOptgroupAttributes[K] } & { [K in keyof DsSelectOptgroup & keyof DsSelectOptgroupAttributes as `prop:${K}`]?: DsSelectOptgroup[K] };
         "ds-select-option": Omit<DsSelectOption, keyof DsSelectOptionAttributes> & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes]?: DsSelectOption[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `attr:${K}`]?: DsSelectOptionAttributes[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `prop:${K}`]?: DsSelectOption[K] };
         "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
+        "ds-sheet": Omit<DsSheet, keyof DsSheetAttributes> & { [K in keyof DsSheet & keyof DsSheetAttributes]?: DsSheet[K] } & { [K in keyof DsSheet & keyof DsSheetAttributes as `attr:${K}`]?: DsSheetAttributes[K] } & { [K in keyof DsSheet & keyof DsSheetAttributes as `prop:${K}`]?: DsSheet[K] };
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
@@ -9657,6 +9697,12 @@ declare module "@stencil/core" {
              * Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.
              */
             "ds-shape": LocalJSX.IntrinsicElements["ds-shape"] & JSXBase.HTMLAttributes<HTMLDsShapeElement>;
+            /**
+             * Sheet displays a fixed panel anchored to the bottom of the viewport.
+             * Use it to surface persistent actions or contextual information without
+             * blocking the main content.
+             */
+            "ds-sheet": LocalJSX.IntrinsicElements["ds-sheet"] & JSXBase.HTMLAttributes<HTMLDsSheetElement>;
             /**
              * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
              */

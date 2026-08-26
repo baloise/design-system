@@ -6670,6 +6670,51 @@
         }
       }
     },
+    "Sheet": {
+      "Background": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🎨 Background.Color.White}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:2:1554",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "Radius": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🔵 Radius.LG}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:2:1555",
+          "com.figma.scopes": [
+            "CORNER_RADIUS"
+          ]
+        }
+      },
+      "Shadow": {
+        "$type": "string",
+        "$value": "{🔗 Alias.🌓 Shadow.Box.Base}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:2:1556",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.type": "string"
+        }
+      },
+      "Position": {
+        "Bottom": {
+          "$type": "number",
+          "$value": "{🔗 Alias.↔️ Space.XS.Mobile}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:2:1557",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      }
+    },
     "Snackbar": {
       "Radius": {
         "$type": "dimension",
