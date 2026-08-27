@@ -1,4 +1,4 @@
-export const SPINNER_COLORS = ['blue', 'white'] as const
+export const SPINNER_COLORS = ['primary', 'inverted'] as const
 export const SPINNER_VARIATIONS = ['logo', 'circle'] as const
 export const SPINNER_SIZES = ['sm'] as const
 export const SPINNER_LABEL_POSITIONS = ['right', 'bottom'] as const

@@ -14,6 +14,8 @@ function makeToken(overrides: Partial<FlatToken>): FlatToken {
     resolvedValue: undefined,
     resolutionError: null,
     figmaId: null,
+    responsive: null,
+    resolvedResponsive: null,
     ...overrides,
   }
 }
@@ -143,6 +145,12 @@ describe('validateWorkingTokens', () => {
     })
   })
 
+  it('flags a token whose reference target points at itself', () => {
+    const items = [working('a', { name: 'Foo', layer: 'Global', referenceTarget: '🌐 Global.Foo' })]
+    const errors = validateWorkingTokens(items)
+    expect(errors).toContainEqual({ tokenKey: 'a', message: 'A token cannot reference itself.', severity: 'error' })
+  })
+
   it('accepts a reference target that matches another working token', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),
@@ -176,6 +184,40 @@ describe('validateWorkingTokens', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),
       working('b', { name: 'Foo', layer: 'Alias', referenceTarget: '🌐 Global.Color.White' }),
+    ]
+    expect(validateWorkingTokens(items)).toEqual([])
+  })
+
+  // docs/plans/responsive-dimension-token-plan.md decision 6 — no partial responsive tokens.
+  it('flags a responsive dimension token missing one or more breakpoints', () => {
+    const items = [
+      working('a', {
+        name: 'SpaceLg',
+        type: 'dimension',
+        rawValue: { value: 16, unit: 'px' },
+        responsive: { mobile: { value: 16, unit: 'px' }, tablet: undefined, desktop: { value: 32, unit: 'px' } },
+      }),
+    ]
+    const errors = validateWorkingTokens(items)
+    expect(errors).toContainEqual({
+      tokenKey: 'a',
+      message: 'Responsive value is missing tablet.',
+      severity: 'error',
+    })
+  })
+
+  it('passes a responsive dimension token with all 3 breakpoints filled', () => {
+    const items = [
+      working('a', {
+        name: 'SpaceLg',
+        type: 'dimension',
+        rawValue: { value: 16, unit: 'px' },
+        responsive: {
+          mobile: { value: 16, unit: 'px' },
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+      }),
     ]
     expect(validateWorkingTokens(items)).toEqual([])
   })

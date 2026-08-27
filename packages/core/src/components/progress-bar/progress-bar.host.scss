@@ -18,10 +18,10 @@
  */
 
 :host {
-  @include vars.local(progress-bar-height, var(--ds-progress-bar-height, 4px));
-  @include vars.local(progress-bar-radius, var(--ds-progress-bar-line-radius));
-  @include vars.local(progress-bar-background, var(--ds-progress-bar-background-dark));
-  @include vars.local(progress-bar-line-color, var(--ds-progress-bar-line-color-primary));
+  @include vars.local(progress-bar-height, var(--ds-progress-bar-height));
+  @include vars.local(progress-bar-radius, var(--ds-progress-bar-radius));
+  @include vars.local(progress-bar-background, var(--ds-progress-bar-primary-background-dark));
+  @include vars.local(progress-bar-line-color, var(--ds-progress-bar-primary-line));
 }
 
 /**
@@ -62,37 +62,37 @@
 
 // Background colors
 :host(.is-light) {
-  --mod-progress-bar-background: var(--ds-progress-bar-background-light);
+  --mod-progress-bar-background: var(--ds-progress-bar-primary-background-light);
 }
 
 // Color variants
 :host(.is-primary) {
-  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-primary);
+  --mod-progress-bar-line-color: var(--ds-progress-bar-primary-line);
 }
 :host(.is-primary.is-dark) {
-  --mod-progress-bar-background: var(--ds-progress-bar-background-dark);
+  --mod-progress-bar-background: var(--ds-progress-bar-primary-background-dark);
 }
 :host(.is-purple) {
-  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-purple);
+  --mod-progress-bar-line-color: var(--ds-progress-bar-purple-line);
 }
 :host(.is-purple.is-dark) {
-  --mod-progress-bar-background: var(--ds-progress-bar-background-purple);
+  --mod-progress-bar-background: var(--ds-progress-bar-purple-background-dark);
 }
 :host(.is-yellow) {
-  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-yellow);
+  --mod-progress-bar-line-color: var(--ds-progress-bar-yellow-line);
 }
 :host(.is-yellow.is-dark) {
-  --mod-progress-bar-background: var(--ds-progress-bar-background-yellow);
+  --mod-progress-bar-background: var(--ds-progress-bar-yellow-background-dark);
 }
 :host(.is-red) {
-  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-red);
+  --mod-progress-bar-line-color: var(--ds-progress-bar-red-line);
 }
 :host(.is-red.is-dark) {
-  --mod-progress-bar-background: var(--ds-progress-bar-background-red);
+  --mod-progress-bar-background: var(--ds-progress-bar-red-background-dark);
 }
 :host(.is-green) {
-  --mod-progress-bar-line-color: var(--ds-progress-bar-line-color-green);
+  --mod-progress-bar-line-color: var(--ds-progress-bar-green-line);
 }
 :host(.is-green.is-dark) {
-  --mod-progress-bar-background: var(--ds-progress-bar-background-green);
+  --mod-progress-bar-background: var(--ds-progress-bar-green-background-dark);
 }

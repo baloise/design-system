@@ -9,6 +9,7 @@
  * them. Only a variableId this run's baseline previously recorded, and
  * that the current token tree no longer has, is safe to auto-delete.
  */
+import { flattenVariableId } from './figma-value.mjs'
 
 /**
  * @param {import('./baseline.mjs').SyncState | null} existingState
@@ -18,7 +19,10 @@
 export function findRemovedVariableIds(existingState, currentBaseTokens) {
   if (!existingState) return []
 
-  const currentIds = new Set(currentBaseTokens.filter(t => t.variableId).map(t => t.variableId))
+  // flattenVariableId turns a shadow token's 5-sub-id object into 5 plain
+  // ids (and a normal token's single string into a 1-element list) — see
+  // docs/plans/shadow-token-type-plan.md.
+  const currentIds = new Set(currentBaseTokens.flatMap(t => flattenVariableId(t.variableId).map(({ id }) => id)))
   return Object.keys(existingState.entries).filter(id => !currentIds.has(id))
 }
 

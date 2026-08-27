@@ -1,24 +1,81 @@
+import { readFile, readdir } from 'node:fs/promises'
+import path from 'node:path'
 import { fetchBaseTokensFile, getGithubRef } from '@/src/tokens/github'
 import { getBrandTokensFileMeta, listBranches, listTokenBrandFiles, resolveReadRef } from '@/src/tokens/github-write'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { flattenTokenDocument, parseTokenDocument } from '@/src/tokens/flatten'
+import { isLocalTokensModeEnabled, localBaseTokensPath, localTokensDir } from '@/src/tokens/local'
 import type { FlatToken } from '@/src/tokens/types'
 import { TokenEditor } from './token-editor'
 
 // Read on every request — the table must reflect what's on GitHub right now,
-// not a snapshot frozen at the last build/deploy.
+// not a snapshot frozen at the last build/deploy. (Unless TOKY_LOCAL_TOKENS
+// is set — see loadTokensFromLocalDisk.)
 export const dynamic = 'force-dynamic'
 
 const DEFAULT_SYNC_STATUS: SyncStatus = { state: 'synced', prUrl: null, prNumber: null }
 
-async function loadTokens(): Promise<{
+type LoadedTokens = {
   tokens: FlatToken[]
   error: string | null
   syncStatus: SyncStatus
   branches: string[]
   tokenBrands: string[]
   brandTokens: Record<string, FlatToken[]>
-}> {
+}
+
+// Opt-in local-dev escape hatch (unset by default, including in every other
+// local `pnpm dev` session) — reads Base.tokens.json and every sibling
+// `*.tokens.json` brand file straight off disk instead of fetching from
+// GitHub, so uncommitted token edits show up in the editor without a
+// commit+push+PR round-trip. Read-only: the "Submit" flow (app/api/
+// propose-change/route.ts) always independently re-fetches the current file
+// from GitHub at submit time and diffs against that, so this can never cause
+// a submission to silently target stale or wrong content — it only changes
+// what the *page* initially shows.
+async function loadTokensFromLocalDisk(): Promise<LoadedTokens> {
+  const baseRaw = await readFile(localBaseTokensPath(), 'utf-8')
+  const doc = JSON.parse(baseRaw) as Record<string, unknown>
+
+  const entries = await readdir(localTokensDir())
+  const tokenBrands = entries
+    .filter(name => name.endsWith('.tokens.json') && name !== 'Base.tokens.json')
+    .map(name => name.slice(0, -'.tokens.json'.length))
+    .sort((a, b) => a.localeCompare(b))
+
+  const brandEntries = await Promise.all(
+    tokenBrands.map(async name => {
+      const raw = await readFile(path.join(localTokensDir(), `${name}.tokens.json`), 'utf-8')
+      return [name, flattenTokenDocument(JSON.parse(raw) as Record<string, unknown>)] as const
+    }),
+  )
+
+  return {
+    tokens: parseTokenDocument(doc),
+    error: null,
+    syncStatus: DEFAULT_SYNC_STATUS,
+    branches: [getGithubRef()],
+    tokenBrands,
+    brandTokens: Object.fromEntries(brandEntries),
+  }
+}
+
+async function loadTokens(): Promise<LoadedTokens> {
+  if (isLocalTokensModeEnabled()) {
+    try {
+      return await loadTokensFromLocalDisk()
+    } catch (err) {
+      return {
+        tokens: [],
+        error: err instanceof Error ? err.message : 'Unknown error reading local token files',
+        syncStatus: DEFAULT_SYNC_STATUS,
+        branches: [getGithubRef()],
+        tokenBrands: [],
+        brandTokens: {},
+      }
+    }
+  }
+
   const base = getGithubRef()
   try {
     // If an earlier submit's PR for this base is still open, its branch
@@ -90,6 +147,7 @@ export default async function Home() {
         tokenBrands={tokenBrands}
         brandTokens={brandTokens}
         syncStatus={syncStatus}
+        localTokensMode={isLocalTokensModeEnabled()}
       />
     </main>
   )

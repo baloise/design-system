@@ -47,10 +47,10 @@ export function buildTypographyRules(tokensJsonPath: string): {
   }
 
   // 2. Text size tokens — one responsive class per size using the -device token.
-  // Each size group (None, XS, SM…) has Mobile/Tablet/Desktop sub-tokens; we
-  // extract the canonical size name from the Mobile entry and reference the
-  // -device CSS variable so the single class responds to breakpoints automatically.
-  const sizeCategory = (textAlias['Size'] ?? {}) as Record<string, Record<string, { name?: string }>>
+  // Each size group (None, XS, SM…) carries a $extensions.com.helvetia.responsive
+  // block directly; we derive the canonical size name from the JSON key and
+  // reference the -device CSS variable so the class responds to breakpoints automatically.
+  const sizeCategory = (textAlias['Size'] ?? {}) as Record<string, unknown>
   const sizeAliases: Record<string, string> = {
     'xs': 'x-small',
     'sm': 'small',
@@ -63,10 +63,8 @@ export function buildTypographyRules(tokensJsonPath: string): {
     '4xl': 'xxxx-large',
     '5xl': 'xxxxx-large',
   }
-  for (const sizeGroup of Object.values(sizeCategory)) {
-    const mobileName = sizeGroup['Mobile']?.name
-    if (!mobileName) continue
-    const size = mobileName.replace('ds-alias-text-size-', '').replace('-mobile', '')
+  for (const key of Object.keys(sizeCategory)) {
+    const size = key.toLowerCase()
     const tokenName = `ds-alias-text-size-${size}-device`
     addRule(`text-${size}`, { 'font-size': `var(--${tokenName}) !important` }, tokenName)
     if (size in sizeAliases) {
@@ -114,8 +112,9 @@ export function buildTypographyRules(tokensJsonPath: string): {
     ['white-space-nowrap', { 'white-space': 'nowrap !important' }],
     ['white-space-normal', { 'white-space': 'normal !important' }],
   ]
-  rules.push(...staticRules)
-  safelist.push(...staticRules.map(r => r[0] as string))
+  for (const [className, props] of staticRules) {
+    addRule(className, props as Record<string, string>, 'static')
+  }
 
   // Raw CSS for pseudo-class text color variants
   const colorClassNames = colorTokens.map(t => t.name.replace('ds-alias-text-color-', ''))

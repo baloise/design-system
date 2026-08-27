@@ -13,8 +13,8 @@ const Story = StoryFactory(meta)
 export const BoxShadow = Story({
   ...withRender(
     () => `<div class="flex align-items-center justify-content-center gap-xx-large">
-    <div class="shadow flex align-items-center justify-content-center bg-green radius p-normal">shadow</div>
-    <div class="shadow-elevated flex align-items-center justify-content-center bg-green radius p-normal">shadow-elevated</div>
+    <div class="shadow flex align-items-center justify-content-center bg-red radius p-normal">shadow</div>
+    <div class="shadow-elevated flex align-items-center justify-content-center bg-red radius p-normal">shadow-elevated</div>
 </div>`,
   ),
 })
@@ -26,7 +26,7 @@ export const TextShadow = Story({
 })
 export const PseudoStates = Story({
   ...withRender(
-    () => `<div class="bg-green-3 hover:shadow active:shadow-large cursor-pointer">
+    () => `<div class="bg-red-3 hover:shadow active:shadow-large cursor-pointer">
   <p class="p-normal">Hover and click me!</p>
 </div>`,
   ),

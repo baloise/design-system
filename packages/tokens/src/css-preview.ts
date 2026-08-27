@@ -5,4 +5,11 @@
  * See ADR-0021.
  */
 export { tokenNameToCssVar } from './css-naming.js'
-export { resolvedValueToCss } from './css-value.js'
+export {
+  resolvedValueToCss,
+  typographyValueToCss,
+  TYPOGRAPHY_CSS_SUFFIXES,
+  responsiveDimensionValueToCss,
+  RESPONSIVE_DIMENSION_CSS_SUFFIXES,
+} from './css-value.js'
+export type { TypographyCssValue, ResponsiveDimensionCssValue } from './css-value.js'

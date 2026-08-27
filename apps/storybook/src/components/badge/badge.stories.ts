@@ -41,14 +41,11 @@ WithIcon.storyName = '🧩 With Icon'
 export const Colors = Story({
   ...withRender(
     () => `<div class="stack">
-  <ds-badge color="red">R</ds-badge>
-  <ds-badge color="green">G</ds-badge>
-  <ds-badge color="yellow">Y</ds-badge>
-  <ds-badge color="purple">P</ds-badge>
-  <ds-badge color="grey">G</ds-badge>
-  <ds-badge color="success">S</ds-badge>
-  <ds-badge color="warning">W</ds-badge>
-  <ds-badge color="danger">D</ds-badge>
+    <ds-badge color="danger">D</ds-badge>
+    <ds-badge color="warning">W</ds-badge>
+    <ds-badge color="success">S</ds-badge>
+    <ds-badge color="info">I</ds-badge>
+    <ds-badge color="grey">G</ds-badge>
 </div>`,
   ),
 })
@@ -73,7 +70,7 @@ export const CardBadge = Story({
   ...withRender(
     () => `
 <article class="card" aria-labelledby="card-title-1">
-  <ds-badge color="green" icon="check"></ds-badge>
+  <ds-badge color="success" icon="check"></ds-badge>
   <header class="card-header">
     <h3 class="title" id="card-title-1">Header</h3>
   </header>
@@ -106,7 +103,7 @@ export const ListBadges = Story({
     () => `
 <ds-list>
   <ds-item variant="link" href="www.helvetia.com" target="_blank">
-    <ds-badge color="green" size="lg" slot="icon">
+    <ds-badge color="success" size="lg" slot="icon">
       <ds-icon name="check"></ds-icon>
     </ds-badge>
     <div slot="content">
@@ -116,17 +113,17 @@ export const ListBadges = Story({
   </ds-item>
 
   <ds-item label="Item 2" description="This is a description for item">
-    <ds-badge color="purple" size="lg" slot="icon">2</ds-badge>
+    <ds-badge color="info" size="lg" slot="icon">2</ds-badge>
   </ds-item>
 
   <ds-item label="Item 3" description="This is a description for item">
-    <ds-badge color="purple" size="lg" slot="icon">
+    <ds-badge color="info" size="lg" slot="icon">
       <ds-icon name="document"></ds-icon>
     </ds-badge>
   </ds-item>
 
   <ds-item label="Item 4" description="This is a description for item" disabled>
-    <ds-badge color="purple" size="lg" slot="icon">4</ds-badge>
+    <ds-badge color="disabled" size="lg" slot="icon">4</ds-badge>
   </ds-item>
 </ds-list>`,
   ),

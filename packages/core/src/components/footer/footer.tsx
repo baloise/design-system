@@ -150,7 +150,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
     if (this.hasNamedSlot('logo')) {
       return <slot name="logo" />
     }
-    return <ds-logo brand={this.brand} color="white" />
+    return <ds-logo brand={this.brand} color="inverted" />
   }
 
   private renderLinkList(links: FooterLink[], className: string) {
@@ -230,7 +230,7 @@ export class Footer implements DsComponentInterface, DsConfigObserver {
             <slot />
           </div>
 
-          <ds-divider space="sm" color="primary-light"></ds-divider>
+          <ds-divider space="sm" color="secondary"></ds-divider>
 
           <div class="bottom-row">
             {textToDisplay && <p class="legal">{textToDisplay}</p>}

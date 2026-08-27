@@ -62,14 +62,6 @@ Buttons support `disabled` and `loading` states. When loading, the label is repl
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.Dashed}></StoryHeading>
-
-Dashed buttons use a dashed border and are available in the four tertiary branding colors. Pair with a circular icon for an "add" affordance.
-
-<CanvasTabs htmlOf={ButtonStories.DashedHtml} of={ButtonStories.Dashed} />
-
-{/* ------------------------------------------------------ */}
-
 <StoryHeading of={ButtonStories.AlertButtons}></StoryHeading>
 
 Alert color variants — `info`, `success`, `warning`, and `danger` — are used in response or notification contexts to communicate the severity of an action.
@@ -80,7 +72,7 @@ Alert color variants — `info`, `success`, `warning`, and `danger` — are used
 
 <StoryHeading of={ButtonStories.SquareButtons}></StoryHeading>
 
-Square and circle (rounded) buttons contain only an icon. Always add `aria-label` to describe the action. Use square for grid/toolbar contexts and circle for floating actions.
+Square buttons contain only an icon. Always add `aria-label` to describe the action. Use square buttons for grid/toolbar contexts.
 
 <CanvasTabs htmlOf={ButtonStories.SquareButtonsHtml} of={ButtonStories.SquareButtons} />
 

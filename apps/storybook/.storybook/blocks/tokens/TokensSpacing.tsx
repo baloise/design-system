@@ -15,13 +15,12 @@ export const TokensSpacing = ({ _overview }): React.ReactElement => {
       </thead>
 
       {Object.keys(list)
-        .filter(key => list[key].Mobile.$value)
+        .filter(key => list[key].$extensions?.['com.helvetia.responsive'])
         .map(key => {
-          const item = list[key].Mobile
-          const itemTablet = list[key].Tablet
-          const itemDesktop = list[key].Desktop
+          const item = list[key]
+          const responsive = item.$extensions['com.helvetia.responsive']
+          const name = `${item.name}-device`
 
-          const name = item.name.replace('-mobile', '-device')
           return (
             <tbody key={key}>
               <tr className="border-bottom-grey">
@@ -30,25 +29,19 @@ export const TokensSpacing = ({ _overview }): React.ReactElement => {
                 </td>
                 <td>
                   <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
-                    {item.$value} / {itemTablet?.$value || '0rem'} / {itemDesktop?.$value || '0rem'}
+                    {responsive.mobile} / {responsive.tablet} / {responsive.desktop}
                   </p>
                 </td>
                 <td className="flex justify-content-center">
                   <div
-                    className="radius"
+                    className="radius bg-yellow-4"
                     style={{
-                      background: 'var(--ds-color-purple-4)',
-                      width: `var(--${item.name})`,
-                      height: `var(--${item.name})`,
+                      width: `var(--${name})`,
+                      height: `var(--${name})`,
                     }}
                   ></div>
                 </td>
               </tr>
-              {/* <tr>
-                <td colSpan={3} className="border-bottom-grey">
-                  <p className="m-none text-small mb-small">{item.comment}</p>
-                </td>
-              </tr> */}
             </tbody>
           )
         })}

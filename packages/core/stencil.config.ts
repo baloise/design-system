@@ -273,17 +273,21 @@ export const config: Config = {
           await writeFile(resolve(destDir, 'tags.json'), JSON.stringify(allTags, null, 2))
 
           /**
-           * Generating the visual-pages.json manifest - every *.visual.html page under the
-           * "browsable" source directories, for Toky's Live Preview sidebar to offer as an
-           * autocomplete (see apps/toky/app/preview-sidebar.tsx). Copied into `www/` below so it's
-           * fetchable from the running dev-server, same as the pages themselves.
+           * Generating the visual-pages.json manifest - every *.visual.html and *.style.html page
+           * under the "browsable" source directories, for Toky's Live Preview sidebar to offer as
+           * an autocomplete (see apps/toky/app/preview-sidebar.tsx). Copied into `www/` below so
+           * it's fetchable from the running dev-server, same as the pages themselves.
            */
           const visualHtmlFiles = await fg(
             [
               'src/blocks/**/*.visual.html',
+              'src/blocks/**/*.style.html',
               'src/templates/**/*.visual.html',
+              'src/templates/**/*.style.html',
               'src/foundation/**/*.visual.html',
+              'src/foundation/**/*.style.html',
               'src/components/**/*.visual.html',
+              'src/components/**/*.style.html',
             ],
             { cwd: __dirname },
           )

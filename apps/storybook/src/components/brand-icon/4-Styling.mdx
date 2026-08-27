@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentCssVariables, ComponentDesignTokens, ComponentParts, Footer } from '../../../.storybook/blocks'
+import * as BrandIconStories from './brand-icon.stories'
+import { BRAND_ICON_DOC_CONFIG, getBrandIconTabs } from './brand-icon.doc-config'
+
+<Meta title="Components/BrandIcon/Styling" />
+
+<Banner label={'Styling'} section={BRAND_ICON_DOC_CONFIG.section} color={BRAND_ICON_DOC_CONFIG.color} />
+
+<BannerTabs of={BrandIconStories} tabs={getBrandIconTabs('styling')} />
+
+<ComponentParts component="brand-icon" />
+
+<ComponentCssVariables component="brand-icon" />
+
+<ComponentDesignTokens component="brand-icon" />
+
+<Footer />

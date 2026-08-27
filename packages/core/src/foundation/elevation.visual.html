@@ -1,0 +1,59 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section data-testid="z-index">
+        <span>Z-index</span>
+        <div class="flex gap-sm">
+          <div class="z-index-deep bg-grey-1 p-sm"><span>deep</span></div>
+          <div class="z-index-masked bg-grey-1 p-sm"><span>masked</span></div>
+          <div class="z-index-mask bg-grey-1 p-sm"><span>mask</span></div>
+          <div class="z-index-sticky bg-grey-1 p-sm"><span>sticky</span></div>
+          <div class="z-index-navigation bg-grey-1 p-sm"><span>navigation</span></div>
+          <div class="z-index-popup bg-grey-1 p-sm"><span>popup</span></div>
+          <div class="z-index-modal bg-grey-1 p-sm"><span>modal</span></div>
+          <div class="z-index-toast bg-grey-1 p-sm"><span>toast</span></div>
+          <div class="z-index-tooltip bg-grey-1 p-sm"><span>tooltip</span></div>
+        </div>
+      </section>
+
+      <section data-testid="opacity">
+        <span>Opacity</span>
+        <div class="flex gap-sm">
+          <div class="opacity-hidden bg-primary-6 text-white p-sm"><span>hidden</span></div>
+          <div class="opacity-half bg-primary-6 text-white p-sm"><span>half</span></div>
+          <div class="opacity-disabled bg-primary-6 text-white p-sm"><span>disabled</span></div>
+          <div class="opacity-backdrop bg-primary-6 text-white p-sm"><span>backdrop</span></div>
+          <div class="opacity-full bg-primary-6 text-white p-sm"><span>full</span></div>
+        </div>
+      </section>
+
+      <section data-testid="shadow">
+        <span>Shadow</span>
+        <div class="flex gap-lg">
+          <div class="shadow-none bg-grey-1 p-sm"><span>none</span></div>
+          <div class="shadow bg-grey-1 p-sm"><span>base</span></div>
+          <div class="shadow-elevated bg-grey-1 p-sm"><span>elevated</span></div>
+          <div class="shadow-header bg-grey-1 p-sm"><span>header</span></div>
+        </div>
+      </section>
+
+      <section data-testid="text-shadow">
+        <span>Text shadow</span>
+        <div class="flex gap-sm">
+          <div class="text-shadow-none"><span>none</span></div>
+          <div class="text-shadow"><span>base</span></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

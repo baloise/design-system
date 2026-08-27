@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as BrandIconStories from './brand-icon.stories'
+import { BRAND_ICON_DOC_CONFIG, getBrandIconTabs } from './brand-icon.doc-config'
+
+<Meta title="Components/BrandIcon/Variants/Overview" />
+
+<StoryHeading of={BrandIconStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={BRAND_ICON_DOC_CONFIG.section} color={BRAND_ICON_DOC_CONFIG.color} />
+
+<BannerTabs of={BrandIconStories} tabs={getBrandIconTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BrandIconStories.Basic}></StoryHeading>
+
+<CanvasWithCodePen of={BrandIconStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BrandIconStories.States}></StoryHeading>
+
+The icon can be shown in an invalid or disabled state, both as a plain icon and as a tile.
+
+<CanvasWithCodePen of={BrandIconStories.States} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BrandIconStories.Sizes}></StoryHeading>
+
+Icons come in small, default, and large sizes. Choose the size that best fits the layout.
+
+<CanvasWithCodePen of={BrandIconStories.Sizes} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BrandIconStories.Tile}></StoryHeading>
+
+With `tile` set, the icon gets a colored background matching its `color`, at small, default, and large sizes.
+
+<CanvasWithCodePen of={BrandIconStories.Tile} sourceState="shown" />
+
+<Footer />

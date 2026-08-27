@@ -170,7 +170,7 @@
   @include vars.local(navbar-menu-item-color-selected, var(--ds-navbar-base-menu-item-color-selected));
   @include vars.local(navbar-menu-item-color-selected-hover, var(--ds-navbar-base-menu-item-color-selected-hover));
   @include vars.local(navbar-menu-item-color-active, var(--ds-navbar-base-menu-item-color-active));
-  @include vars.local(navbar-menu-item-underline-height, var(--ds-global-size-border-2));
+  @include vars.local(navbar-menu-item-underline-height, var(--ds-global-dimension-border-2));
   @include vars.local(navbar-menu-item-underline-border-radius, var(--ds-alias-radius-rounded));
   @include vars.local(navbar-menu-item-transition-duration, var(--ds-navbar-base-menu-item-transition-duration));
   @include vars.local(navbar-menu-end-gap, var(--ds-navbar-base-menu-end-gap));
@@ -599,7 +599,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--_navbar-content-gap);
-    margin-top: var(--ds-global-size-space-32);
+    margin-top: var(--ds-global-dimension-space-32);
   }
 
   ::slotted(ds-button[slot='menu-end']),

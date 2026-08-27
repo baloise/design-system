@@ -2,6 +2,7 @@ import { pathFor } from './edit'
 import type { WorkingToken } from './edit'
 import { KEY_BY_LAYER } from './flatten'
 import { toSlashPath } from './format'
+import { flattenFigmaId } from './figma-map'
 import { invalidSegments, reservedSegments } from './path'
 
 export interface ValidationError {
@@ -27,10 +28,16 @@ export function validateWorkingTokens(working: WorkingToken[]): ValidationError[
 
   const validPaths = new Set(pathCounts.keys())
 
+  // A shadow token's figmaId is 5 sub-ids, not 1 (see
+  // docs/plans/shadow-token-type-plan.md) — flattenFigmaId turns either
+  // shape into a uniform list so a collision on *any* single sub-id (even
+  // if the other 4 differ) still gets caught, same as every other type's
+  // single id.
   const figmaIdCounts = new Map<string, number>()
   for (const { token } of working) {
-    if (!token.figmaId) continue
-    figmaIdCounts.set(token.figmaId, (figmaIdCounts.get(token.figmaId) ?? 0) + 1)
+    for (const { id } of flattenFigmaId(token.figmaId)) {
+      figmaIdCounts.set(id, (figmaIdCounts.get(id) ?? 0) + 1)
+    }
   }
 
   for (const { id, token } of working) {
@@ -61,10 +68,11 @@ export function validateWorkingTokens(working: WorkingToken[]): ValidationError[
     // Two tokens can never legitimately share a Figma variableId — Pull
     // indexes tokens by figmaId (see figma-pull.ts), so a collision here
     // means one of the two would silently shadow the other on the next Pull.
-    if (token.figmaId && (figmaIdCounts.get(token.figmaId) ?? 0) > 1) {
+    const collidingSubIds = flattenFigmaId(token.figmaId).filter(({ id: subId }) => (figmaIdCounts.get(subId) ?? 0) > 1)
+    if (collidingSubIds.length > 0) {
       errors.push({
         tokenKey: id,
-        message: `Another token already uses the same Figma variable (${token.figmaId}).`,
+        message: `Another token already uses the same Figma variable (${collidingSubIds.map(s => s.id).join(', ')}).`,
         severity: 'error',
       })
     }
@@ -73,7 +81,22 @@ export function validateWorkingTokens(working: WorkingToken[]): ValidationError[
       errors.push({ tokenKey: id, message: 'Value cannot be empty.', severity: 'error' })
     }
 
-    if (token.referenceTarget && !validPaths.has(token.referenceTarget)) {
+    // No partial responsive tokens (docs/plans/responsive-dimension-token-plan.md decision 6) —
+    // unlike every other sub-field in this file, this is an explicit hard rule, not left lax.
+    if (token.responsive) {
+      const missing = (['mobile', 'tablet', 'desktop'] as const).filter(bp => isEmptyValue(token.responsive?.[bp]))
+      if (missing.length > 0) {
+        errors.push({
+          tokenKey: id,
+          message: `Responsive value is missing ${missing.join(', ')}.`,
+          severity: 'error',
+        })
+      }
+    }
+
+    if (token.referenceTarget === path) {
+      errors.push({ tokenKey: id, message: 'A token cannot reference itself.', severity: 'error' })
+    } else if (token.referenceTarget && !validPaths.has(token.referenceTarget)) {
       errors.push({
         tokenKey: id,
         message: `"${toSlashPath(token.referenceTarget)}" does not match an existing token.`,

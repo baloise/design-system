@@ -18,20 +18,88 @@
         <button class="button">Button</button>
       </section>
 
+      <!-- Colors -->
+      <section data-testid="colors">
+        <span>Colors</span>
+        <button class="button is-primary">Primary</button>
+        <button class="button is-secondary">Secondary</button>
+        <button class="button is-tertiary">Tertiary</button>
+        <button class="button is-ghost">Ghost</button>
+
+        <br />
+        <br />
+
+        <button class="button is-brand-purple">Brand Purple</button>
+        <button class="button is-brand-red">Brand Red</button>
+        <button class="button is-brand-yellow">Brand Yellow</button>
+        <button class="button is-brand-green">Brand Green</button>
+
+        <br />
+        <br />
+        <button class="button is-info">Info</button>
+        <button class="button is-success">Success</button>
+        <button class="button is-warning">Warning</button>
+        <button class="button is-danger">Danger</button>
+      </section>
+
+      <!-- Inverted -->
+      <section data-testid="inverted" class="s-bg-inverted">
+        <span>Inverted</span>
+        <button class="button is-inverted is-primary">Primary</button>
+        <button class="button is-inverted is-secondary">Secondary</button>
+        <button class="button is-inverted is-tertiary">Tertiary</button>
+        <button class="button is-inverted is-ghost">Ghost</button>
+
+        <br />
+        <br />
+
+        <button class="button is-inverted is-brand-purple">Brand Purple</button>
+        <button class="button is-inverted is-brand-red">Brand Red</button>
+        <button class="button is-inverted is-brand-yellow">Brand Yellow</button>
+        <button class="button is-inverted is-brand-green">Brand Green</button>
+
+        <br />
+        <br />
+        <button class="button is-inverted is-info">Info</button>
+        <button class="button is-inverted is-success">Success</button>
+        <button class="button is-inverted is-warning">Warning</button>
+        <button class="button is-inverted is-danger">Danger</button>
+      </section>
+
+      <!-- Brand Icons -->
+      <section data-testid="brand-icons">
+        <span>Brand Icons</span>
+        <div class="stack as-row">
+          <button class="button is-brand-purple has-brand-icon">
+            <ds-brand-icon src="/assets/images/brand-icons/electric-car-ins-purple.svg" color="purple" size="md">
+            </ds-brand-icon>
+            Elektrische autoverzekering
+          </button>
+          <button class="button is-brand-yellow has-brand-icon">
+            <ds-brand-icon src="/assets/images/brand-icons/car-tangerine.svg" color="yellow" size="md"></ds-brand-icon>
+            Autoverzekering
+          </button>
+          <button class="button is-brand-red has-brand-icon">
+            <ds-brand-icon src="/assets/images/brand-icons/motorbike-red.svg" color="red" size="md"></ds-brand-icon>
+            Motorverzekering
+          </button>
+          <button class="button is-brand-green has-brand-icon">
+            <ds-brand-icon src="/assets/images/brand-icons/camper-green.svg" color="green" size="md"></ds-brand-icon>
+            Verzekering mobilhome
+          </button>
+        </div>
+      </section>
+
       <!-- Shadow -->
-      <section data-testid="shadow">
+      <section data-testid="shadow" class="s-bg-2">
         <span>Shadow</span>
         <button class="button has-shadow">Button</button>
-        <a class="link has-shadow" href="">Link Button</a>
+        <a class="button is-link has-shadow" href="">Link Button</a>
       </section>
 
       <!-- Badge Style -->
       <section data-testid="badge">
         <span>Badge</span>
-        <button class="button">
-          <span class="badge">42</span>
-          Button
-        </button>
         <button class="button">
           <ds-badge>42</ds-badge>
           Button
@@ -51,87 +119,12 @@
         </div>
       </section>
 
-      <!-- Colors -->
-      <section data-testid="colors">
-        <span>Colors</span>
-        <button class="button is-primary">Primary</button>
-        <button class="button is-secondary">Secondary</button>
-        <button class="button is-tertiary">Tertiary</button>
-
-        <br />
-        <br />
-
-        <button class="button is-tertiary-purple">Tertiary Purple</button>
-        <button class="button is-tertiary-red">Tertiary Red</button>
-        <button class="button is-tertiary-yellow">Tertiary Yellow</button>
-        <button class="button is-tertiary-green">Tertiary Green</button>
-
-        <br />
-        <br />
-        <button class="button is-info">Info</button>
-        <button class="button is-success">Success</button>
-        <button class="button is-warning">Warning</button>
-        <button class="button is-danger">Danger</button>
-      </section>
-
-      <!-- Dashed -->
-      <section data-testid="dashed">
-        <span>Dashed</span>
-        <button class="button is-tertiary-purple is-dashed">Tertiary Purple</button>
-        <button class="button is-tertiary-red is-dashed">Tertiary Red</button>
-        <button class="button is-tertiary-yellow is-dashed">Tertiary Yellow</button>
-        <button class="button is-tertiary-green is-dashed">Tertiary Green</button>
-
-        <br />
-        <br />
-        <button class="button is-tertiary-purple is-large is-dashed">
-          <ds-icon name="plus" class="is-circle"></ds-icon>
-          Purple
-        </button>
-        <button class="button is-tertiary-red is-large is-dashed">
-          <ds-icon name="plus" class="is-circle"></ds-icon>
-          Red
-        </button>
-        <button class="button is-tertiary-yellow is-large is-dashed">
-          <ds-icon name="plus" class="is-circle"></ds-icon>
-          Yellow
-        </button>
-        <button class="button is-tertiary-green is-large is-dashed">
-          <ds-icon name="plus" class="is-circle"></ds-icon>
-          Green
-        </button>
-      </section>
-
-      <!-- Inverted -->
-      <section data-testid="inverted" class="s-bg-inverted">
-        <span>Inverted</span>
-        <button class="button is-inverted is-primary">Primary</button>
-        <button class="button is-inverted is-secondary">Secondary</button>
-        <button class="button is-inverted is-tertiary">Tertiary</button>
-
-        <br />
-        <br />
-
-        <button class="button is-inverted is-tertiary-purple">Tertiary Purple</button>
-        <button class="button is-inverted is-tertiary-red">Tertiary Red</button>
-        <button class="button is-inverted is-tertiary-yellow">Tertiary Yellow</button>
-        <button class="button is-inverted is-tertiary-green">Tertiary Green</button>
-
-        <br />
-        <br />
-        <button class="button is-inverted is-info">Info</button>
-        <button class="button is-inverted is-success">Success</button>
-        <button class="button is-inverted is-warning">Warning</button>
-        <button class="button is-inverted is-danger">Danger</button>
-      </section>
-
       <!-- Sizes -->
       <section data-testid="sizes">
         <span>Sizes</span>
         <button class="button is-small">Small</button>
         <button class="button">Normal</button>
         <button class="button is-large">Large</button>
-        <button class="button is-xl">X-Large</button>
       </section>
 
       <!-- Wide -->
@@ -165,12 +158,6 @@
         <button class="button is-flat">Flat Button</button>
       </section>
 
-      <!-- Rounded -->
-      <section data-testid="rounded">
-        <span>Rounded</span>
-        <button class="button is-rounded">Rounded Button</button>
-      </section>
-
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
@@ -194,22 +181,16 @@
         </form>
       </section>
 
-      <!-- Square & Circle -->
-      <section data-testid="square-circle">
-        <span>Square & Circle</span>
+      <!-- Square -->
+      <section data-testid="square">
+        <span>Square</span>
         <button class="button is-square">
-          <ds-icon name="check"></ds-icon>
-        </button>
-        <button class="button is-circle">
           <ds-icon name="check"></ds-icon>
         </button>
 
         <br />
         <br />
         <button class="button is-square is-small">
-          <ds-icon name="check"></ds-icon>
-        </button>
-        <button class="button is-circle is-small">
           <ds-icon name="check"></ds-icon>
         </button>
       </section>
@@ -239,10 +220,10 @@
             loading...
           </button>
           <button class="button is-square is-loading is-primary">
-            <ds-spinner variation="circle"></ds-spinner>
+            <ds-spinner></ds-spinner>
           </button>
           <button class="button is-loading">
-            <ds-spinner variation="circle"></ds-spinner>
+            <ds-spinner></ds-spinner>
             loading...
           </button>
         </div>
@@ -256,24 +237,33 @@
           </button>
 
           <button class="button is-square is-loading" disabled>
-            <ds-spinner variation="circle"></ds-spinner>
+            <ds-spinner></ds-spinner>
           </button>
           <button class="button is-secondary is-loading" disabled>
-            <ds-spinner variation="circle"></ds-spinner>
+            <ds-spinner></ds-spinner>
             loading...
           </button>
         </div>
         <div class="buttons">
-          <button class="button is-square is-loading is-tertiary-purple">
+          <button class="button is-square is-loading inset-ring-secondary">
             <ds-spinner></ds-spinner>
           </button>
-          <button class="button is-square is-loading is-tertiary-green">
+          <button class="button is-square is-loading is-tertiary">
             <ds-spinner></ds-spinner>
           </button>
-          <button class="button is-square is-loading is-tertiary-red">
+          <button class="button is-square is-loading is-ghost">
             <ds-spinner></ds-spinner>
           </button>
-          <button class="button is-square is-loading is-tertiary-yellow">
+          <button class="button is-square is-loading is-brand-purple">
+            <ds-spinner></ds-spinner>
+          </button>
+          <button class="button is-square is-loading is-brand-green">
+            <ds-spinner></ds-spinner>
+          </button>
+          <button class="button is-square is-loading is-brand-red">
+            <ds-spinner></ds-spinner>
+          </button>
+          <button class="button is-square is-loading is-brand-yellow">
             <ds-spinner></ds-spinner>
           </button>
           <button class="button is-square is-loading is-info">

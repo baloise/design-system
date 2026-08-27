@@ -1,10 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import {
   dtcgColorFromFigma,
+  dtcgResponsiveDimensionFromFigma,
   dtcgTypeFor,
+  flattenFigmaId,
+  fontWeightNumberFromKeyword,
   isColorEqual,
   isFigmaAlias,
   isLiteralValueEqual,
+  isResponsiveDimensionFigmaId,
   pathFromFigmaVariableName,
 } from './figma-map'
 
@@ -18,6 +22,25 @@ describe('dtcgTypeFor', () => {
 
   it('throws loudly on an unrecognized resolvedType', () => {
     expect(() => dtcgTypeFor('EFFECT')).toThrow(/Unsupported Figma resolvedType/)
+  })
+})
+
+describe('fontWeightNumberFromKeyword', () => {
+  it('maps every known DTCG font-weight keyword back to its number', () => {
+    expect(fontWeightNumberFromKeyword('Thin')).toBe(100)
+    expect(fontWeightNumberFromKeyword('Regular')).toBe(400)
+    expect(fontWeightNumberFromKeyword('Bold')).toBe(700)
+    expect(fontWeightNumberFromKeyword('Extra-Black')).toBe(950)
+  })
+
+  it('is exact-case — a differently-cased or -spaced variant does not match', () => {
+    expect(fontWeightNumberFromKeyword('bold')).toBeUndefined()
+    expect(fontWeightNumberFromKeyword('SemiBold')).toBeUndefined()
+  })
+
+  it('returns undefined for an unrecognized string or a non-string value', () => {
+    expect(fontWeightNumberFromKeyword('Not A Weight')).toBeUndefined()
+    expect(fontWeightNumberFromKeyword(700)).toBeUndefined()
   })
 })
 
@@ -99,6 +122,41 @@ describe('isLiteralValueEqual', () => {
     expect(isLiteralValueEqual('string', 'a', 'a')).toBe(true)
     expect(isLiteralValueEqual('boolean', true, false)).toBe(false)
   })
+
+  // docs/plans/responsive-dimension-token-plan.md — a synthetic dtcgType this codebase's real
+  // $type never uses (responsive dimension tokens stay $type: "dimension"), passed explicitly by
+  // figma-pull.ts when it already knows it's comparing two {mobile, tablet, desktop} maps.
+  it('compares a responsive dimension value field-by-field, literal or reference either side', () => {
+    expect(
+      isLiteralValueEqual(
+        'responsiveDimension',
+        { mobile: { value: 16, unit: 'px' }, tablet: { value: 24, unit: 'px' }, desktop: { value: 32, unit: 'px' } },
+        { mobile: { value: 16, unit: 'px' }, tablet: { value: 24, unit: 'px' }, desktop: { value: 32, unit: 'px' } },
+      ),
+    ).toBe(true)
+    expect(
+      isLiteralValueEqual(
+        'responsiveDimension',
+        { mobile: { value: 16, unit: 'px' }, tablet: { value: 24, unit: 'px' }, desktop: { value: 32, unit: 'px' } },
+        { mobile: { value: 16, unit: 'px' }, tablet: { value: 24, unit: 'px' }, desktop: { value: 40, unit: 'px' } },
+      ),
+    ).toBe(false)
+    expect(
+      isLiteralValueEqual(
+        'responsiveDimension',
+        {
+          mobile: '{🌐 Global.📏 Dimension.Space.16}',
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+        {
+          mobile: '{🌐 Global.📏 Dimension.Space.16}',
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+      ),
+    ).toBe(true)
+  })
 })
 
 describe('pathFromFigmaVariableName', () => {
@@ -116,5 +174,53 @@ describe('isFigmaAlias', () => {
     expect(isFigmaAlias({ r: 1, g: 1, b: 1, a: 1 })).toBe(false)
     expect(isFigmaAlias('white')).toBe(false)
     expect(isFigmaAlias(4)).toBe(false)
+  })
+})
+
+describe('isResponsiveDimensionFigmaId', () => {
+  it('recognizes a {mobile, tablet, desktop} id set', () => {
+    expect(isResponsiveDimensionFigmaId({ mobile: 'v1', tablet: 'v2', desktop: 'v3' })).toBe(true)
+  })
+
+  it('rejects a plain string id, and a differently-shaped composite id', () => {
+    expect(isResponsiveDimensionFigmaId('VariableID:1:1')).toBe(false)
+    expect(isResponsiveDimensionFigmaId({ color: 'v1', width: 'v2', style: 'v3' })).toBe(false)
+    expect(isResponsiveDimensionFigmaId({ mobile: 'v1', tablet: 'v2' })).toBe(false)
+  })
+})
+
+describe('flattenFigmaId', () => {
+  it('flattens a responsive dimension figmaId object into 3 tagged entries', () => {
+    expect(flattenFigmaId({ mobile: 'v1', tablet: 'v2', desktop: 'v3' })).toEqual([
+      { id: 'v1', subProperty: 'mobile' },
+      { id: 'v2', subProperty: 'tablet' },
+      { id: 'v3', subProperty: 'desktop' },
+    ])
+  })
+
+  it('still distinguishes a border id set (no mobile key) from a responsive dimension one', () => {
+    expect(flattenFigmaId({ color: 'v1', width: 'v2', style: 'v3' })).toEqual([
+      { id: 'v1', subProperty: 'color' },
+      { id: 'v2', subProperty: 'width' },
+      { id: 'v3', subProperty: 'style' },
+    ])
+  })
+})
+
+describe('dtcgResponsiveDimensionFromFigma', () => {
+  it('reconstructs 3 breakpoint literals, converting each back to its own local unit', () => {
+    expect(
+      dtcgResponsiveDimensionFromFigma({ mobile: 16, tablet: 24, desktop: 384 }, sub =>
+        sub === 'desktop' ? 'rem' : 'px',
+      ),
+    ).toEqual({
+      mobile: { value: 16, unit: 'px' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 24, unit: 'rem' }, // 384px / 16 = 24rem
+    })
+  })
+
+  it('returns null when any breakpoint value is not a number', () => {
+    expect(dtcgResponsiveDimensionFromFigma({ mobile: 16, tablet: 24, desktop: 'nope' }, () => 'px')).toBeNull()
   })
 })
