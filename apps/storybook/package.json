@@ -9,10 +9,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@baloise/ds-assets": "20.0.0-next.9",
-    "@baloise/ds-core": "20.0.0-next.9",
-    "@baloise/ds-css": "20.0.0-next.9",
-    "@baloise/ds-tokens": "20.0.0-next.9",
+    "@baloise/ds-assets": "20.0.0-next.10",
+    "@baloise/ds-core": "20.0.0-next.10",
+    "@baloise/ds-css": "20.0.0-next.10",
+    "@baloise/ds-tokens": "20.0.0-next.10",
     "@storybook/addon-docs": "catalog:",
     "@storybook/addon-links": "catalog:",
     "@storybook/html-vite": "catalog:",
