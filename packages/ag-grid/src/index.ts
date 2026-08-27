@@ -26,7 +26,7 @@ export const helvetiaGridThemeParams = {
   headerFontFamily: 'var(--ds-alias-text-family-heading)',
   headerFontWeight: 'var(--ds-alias-text-weight-bold)',
   headerFontSize: 'var(--ds-table-head-font-size)',
-  cellFontFamily: 'var(--ds-alias-text-family-body)',
+  fontFamily: 'var(--ds-alias-text-family-body)',
   fontSize: 'var(--ds-alias-text-size-base-mobile)',
   rowHoverColor: 'var(--ds-table-row-background-color-hover)',
   selectedRowBackgroundColor: 'var(--ds-table-row-background-color-active)',

@@ -2,7 +2,7 @@ import type { ICellRendererParams } from 'ag-grid-community'
 import { type CellValueOrFn, createCellWrapper, isEmptyValue, resolve } from './cell-renderer-utils'
 
 export interface TagCellRendererOptions<TData = unknown, TValue = unknown> {
-  /** `ds-tag` `size` attribute. Defaults to the `ds-tag` default (base) size, matching the Tag documentation. */
+  /** `ds-tag` `size` attribute. Defaults to `'sm'`. */
   readonly size?: string
   /** `ds-tag` `color` attribute, or a function deriving it from the cell's params. */
   readonly color?: CellValueOrFn<TData, TValue, string>
@@ -33,9 +33,7 @@ export function createTagCellRenderer<TData = unknown, TValue = unknown>(
 
     const tag = document.createElement('ds-tag')
     tag.textContent = String(params.value)
-    if (options.size) {
-      tag.setAttribute('size', options.size)
-    }
+    tag.setAttribute('size', options.size ?? 'sm')
 
     const color = resolve(options.color, params)
     if (color) {

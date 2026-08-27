@@ -5,13 +5,13 @@ import { createTagCellRenderer } from './tag-cell-renderer'
 const params = (value: unknown) => ({ value }) as ICellRendererParams
 
 describe('createTagCellRenderer', () => {
-  it('renders the value inside a ds-tag without forcing a size, matching the ds-tag default', () => {
+  it('renders the value inside a ds-tag with the default sm size', () => {
     const renderer = createTagCellRenderer()
     const cell = renderer(params('Active'))
 
     const tag = cell.querySelector('ds-tag')
     expect(tag?.textContent).toBe('Active')
-    expect(tag?.hasAttribute('size')).toBe(false)
+    expect(tag?.getAttribute('size')).toBe('sm')
     expect(tag?.hasAttribute('color')).toBe(false)
   })
 

@@ -6,8 +6,8 @@ describe('helvetiaGridTheme', () => {
     expect(helvetiaGridThemeParams.accentColor).toBe('var(--ds-alias-background-color-primary)')
   })
 
-  it('binds cellFontFamily to the Helvetia body text font token', () => {
-    expect(helvetiaGridThemeParams.cellFontFamily).toBe('var(--ds-alias-text-family-body)')
+  it('binds fontFamily to the Helvetia body text font token', () => {
+    expect(helvetiaGridThemeParams.fontFamily).toBe('var(--ds-alias-text-family-body)')
   })
 
   it('binds headerFontFamily to the Helvetia heading text font token', () => {

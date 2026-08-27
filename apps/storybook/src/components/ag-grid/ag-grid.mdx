@@ -142,7 +142,7 @@ import { createTagCellRenderer } from '@baloise/ds-ag-grid'
 
 ```typescript
 interface TagCellRendererOptions<TData = unknown, TValue = unknown> {
-  /** `ds-tag` `size` attribute. Defaults to the `ds-tag` default (base) size. */
+  /** `ds-tag` `size` attribute. Defaults to `'sm'`. */
   size?: string
   /** `ds-tag` `color` attribute, or a function deriving it from the cell's params. */
   color?: string | ((params: ICellRendererParams<TData, TValue>) => string)

@@ -37,7 +37,7 @@ export function createTextCellRenderer<TData = unknown, TValue = unknown>(
   options: TextCellRendererOptions<TData, TValue> = {},
 ) {
   return (params: ICellRendererParams<TData, TValue>): HTMLElement => {
-    const wrapper = createCellWrapper('0.25rem')
+    const wrapper = createCellWrapper('0.5rem')
 
     if (isEmptyValue(params.value)) {
       return wrapper
