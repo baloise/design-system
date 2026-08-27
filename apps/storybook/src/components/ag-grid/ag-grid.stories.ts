@@ -150,9 +150,11 @@ const columnDefs: GridOptions<Policy>['columnDefs'] = [
 ]
 
 const renderGrid = (container: HTMLElement) => {
-  container.style.position = 'fixed'
-  container.style.inset = '0'
+  // `position: fixed` would pull the container out of normal flow, collapsing the Docs
+  // `<Canvas>` iframe (and its measured height) to 0 — use a normal-flow, explicitly
+  // sized container instead so the grid renders inside both Canvas and the standalone story.
   container.style.boxSizing = 'border-box'
+  container.style.height = '510px'
   container.style.padding = '1rem'
 
   const gridDiv = document.createElement('div')
@@ -182,9 +184,6 @@ const renderGrid = (container: HTMLElement) => {
 
 const meta: Meta = {
   title: 'Components/AG Grid/Theme',
-  parameters: {
-    layout: 'fullscreen',
-  },
 }
 
 export default meta

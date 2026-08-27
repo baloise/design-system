@@ -5,6 +5,7 @@
   "components-accordion-testing": "components/accordion/6-Testing.mdx",
   "components-accordion-usage": "components/accordion/2-Usage.mdx",
   "components-accordion-variants": "components/accordion/3-Variants.mdx",
+  "components-ag-grid-ag-grid": "components/ag-grid/ag-grid.mdx",
   "components-app-accessibility": "components/app/5-Accessibility.mdx",
   "components-app-overview": "components/app/1-Overview.mdx",
   "components-app-styling": "components/app/4-Styling.mdx",
