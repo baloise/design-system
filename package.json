@@ -79,7 +79,7 @@
     "compression": "catalog:",
     "cross-env": "7.0.3",
     "cspell": "10.0.1",
-    "dotenv": "8.6.0",
+    "dotenv": "17.4.2",
     "eslint": "catalog:",
     "eslint-config-prettier": "10.1.8",
     "change-case": "5.4.4",
