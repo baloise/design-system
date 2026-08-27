@@ -14,7 +14,7 @@ This file maps the multi-context layout of this monorepo. Each context has its o
 | **Playwright**         | `packages/playwright/CONTEXT.md` | E2E testing library, page objects, accessibility testing, visual regression             |
 | **React Bindings**     | `packages/react/CONTEXT.md`      | Generated React component wrappers, `useDesignSystem()` bootstrapping                   |
 | **Angular Bindings**   | `packages/angular/CONTEXT.md`    | Generated standalone Angular component wrappers, `bootstrapDesignSystem()`              |
-| **AG Grid Theme**      | `packages/ag-grid/CONTEXT.md`    | Baloise-branded AG Grid Theming API theme, `var(--ds-alias-*)` param binding            |
+| **AG Grid Theme**      | `packages/ag-grid/CONTEXT.md`    | Token-bound AG Grid Theming API theme, `var(--ds-alias-*)` param binding            |
 | **Documentation**      | `apps/storybook/CONTEXT.md`      | Storybook setup, documentation patterns, MDX authoring, component showcase              |
 | **Toky**               | `apps/toky/CONTEXT.md`           | Token-editing web app, working changes, Submit/PR flow, Pull (from Figma)               |
 | **Internal Libraries** | `libs/CONTEXT.md`                | ESLint plugin, output targets (Angular), shared utilities, code generation              |

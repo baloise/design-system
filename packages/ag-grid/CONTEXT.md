@@ -4,7 +4,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 ## Overview
 
-**packages/ag-grid** (`@baloise/ds-ag-grid`) is a thin, published binding layer that exposes `helvetiaGridTheme`, a Baloise-branded theme for [AG Grid](https://www.ag-grid.com/)'s v33+ [Theming API](https://www.ag-grid.com/javascript-data-grid/theming/). It is not a Stencil web component — there is no markup, no Shadow DOM, and no `ComponentInterface`/`Loggable` contract. It is a plain TypeScript config-object package, structurally closest to [[packages/react|packages/react/CONTEXT.md]] (thin wrapper, `tsc`-only build).
+**packages/ag-grid** (`@baloise/ds-ag-grid`) is a thin, published binding layer that exposes `helvetiaGridTheme`, a token-bound theme for [AG Grid](https://www.ag-grid.com/)'s v33+ [Theming API](https://www.ag-grid.com/javascript-data-grid/theming/). It is not a Stencil web component — there is no markup, no Shadow DOM, and no `ComponentInterface`/`Loggable` contract. It is a plain TypeScript config-object package, structurally closest to [[packages/react|packages/react/CONTEXT.md]] (thin wrapper, `tsc`-only build).
 
 ## Core Concepts
 
