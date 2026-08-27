@@ -6,9 +6,11 @@ export class DsDate extends PageObject {
   readonly nativeInput: Locator
   readonly triggerButton: Locator
   readonly clearButton: Locator
+  private readonly inline: boolean
 
-  constructor(el: E2ELocator) {
+  constructor(el: E2ELocator, options?: { inline?: boolean }) {
     super(el)
+    this.inline = options?.inline ?? false
     this.nativeInput = el.locator('[part="input"]')
     this.triggerButton = el.locator('[part="trigger"]')
     this.clearButton = el.locator('[part="clear"]')
@@ -25,7 +27,9 @@ export class DsDate extends PageObject {
     const month = parseInt(monthStr, 10) - 1 // air-datepicker uses 0-indexed months
     const day = parseInt(dayStr, 10)
 
-    await this.triggerButton.click()
+    if (!this.inline) {
+      await this.triggerButton.click()
+    }
 
     const targetCell = this.el.locator(
       `.air-datepicker-cell.-day-[data-year="${year}"][data-month="${month}"][data-date="${day}"]`,
@@ -59,11 +63,17 @@ export class DsDate extends PageObject {
   }
 
   async blur() {
-    await this.nativeInput.blur()
+    if (!this.inline) {
+      await this.nativeInput.blur()
+    }
   }
 
   async assertValue(value: string) {
-    await expect(this.nativeInput).toHaveValue(value)
+    if (this.inline) {
+      await expect(this.el).toHaveAttribute('value', value)
+    } else {
+      await expect(this.nativeInput).toHaveValue(value)
+    }
   }
 
   async assertToBeDisabled() {

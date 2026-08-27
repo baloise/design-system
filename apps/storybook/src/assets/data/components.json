@@ -19576,6 +19576,35 @@
           "setter": false
         },
         {
+          "name": "inline",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inline",
+          "reflectToAttr": false,
+          "docs": "If `true`, the date picker is presented inline and no input field is shown.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "invalid",
           "type": "boolean",
           "complexType": {
