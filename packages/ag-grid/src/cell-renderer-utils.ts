@@ -1,9 +1,7 @@
 import type { ICellRendererParams } from 'ag-grid-community'
 
 /** A static value, or a function deriving it from the cell's params. */
-export type CellValueOrFn<TData, TValue, TResult> =
-  | TResult
-  | ((params: ICellRendererParams<TData, TValue>) => TResult)
+export type CellValueOrFn<TData, TValue, TResult> = TResult | ((params: ICellRendererParams<TData, TValue>) => TResult)
 
 /** Resolves a {@link CellValueOrFn} to its static value for the given cell's params. */
 export const resolve = <TData, TValue, TResult>(
