@@ -559,15 +559,15 @@
       },
       "Base": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Radius.1}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.4}"
       },
       "LG": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Radius.2}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.12}"
       },
       "Rounded": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Radius.3}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.9999}"
       }
     },
     "🔤 Text": {
@@ -4171,16 +4171,6 @@
       }
     },
     "Card": {
-      "Radius": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.LG}"
-        },
-        "Square": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.Base}"
-        }
-      },
       "Shadow": {
         "Flat": {
           "$type": "shadow",
@@ -4196,344 +4186,268 @@
         }
       },
       "Color": {
-        "Base": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.White}"
-          }
-        },
-        "White": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.White}"
-          }
-        },
         "Primary": {
           "Text": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
+            "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
-          }
-        },
-        "Info": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
           },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Info}"
-          }
-        },
-        "Success": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Success}"
-          }
-        },
-        "Warning": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Warning}"
-          }
-        },
-        "Danger": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Danger}"
-          }
-        },
-        "GreyLight": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.GreyDark}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Primary}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
         "Grey": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
             "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.GreyDark}"
+            "$value": "{🔗 Alias.🎨 Surface.OnGrey}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Grey}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         },
-        "RedLighter": {
+        "GreenDark": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnGreen}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
+            "$value": "{🔗 Alias.🎨 Surface.Green}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Green}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "RedLight": {
+        "Green": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.RedLight}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          }
-        },
-        "Red": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          }
-        },
-        "PurpleLighter": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        },
-        "PurpleLight": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.PurpleLight}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        },
-        "Purple": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        },
-        "GreenLighter": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$value": "{🔗 Alias.🎨 Surface.OnGreenLighter}"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreenLighter}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.GreenLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "GreenLight": {
+        "YellowDark": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnYellow}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreenLight}"
+            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Yellow}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "Green": {
+        "Yellow": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
-          }
-        },
-        "YellowLighter": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$value": "{🔗 Alias.🎨 Surface.OnYellowLighter}"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.YellowLighter}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.YellowLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "YellowLight": {
+        "RedDark": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnRed}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.YellowLight}"
+            "$value": "{🔗 Alias.🎨 Surface.Red}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Red}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "Yellow": {
+        "Red": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnRedLighter}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+            "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.RedLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
-        }
-      },
-      "Outline": {
-        "Width": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.▭ Border.Width.Base}"
+        },
+        "PurpleDark": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPurple}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Purple}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Purple}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
+          }
+        },
+        "Purple": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPurpleLighter}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.PurpleLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
+          }
+        },
+        "Dashed": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": "{🔗 Alias.▭ Border.Composite.GreyDashed}"
+          }
+        },
+        "Base": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.White}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
+          }
         }
       },
       "Space": {
         "SM": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.16}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.16}"
+            }
           }
         },
         "Base": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.24}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.24}"
+            }
           }
         },
         "MD": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.24}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.32}"
+            }
           }
         },
         "LG": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.2XL.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.32}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.48}"
+            }
           }
         }
+      },
+      "Radius": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.LG}"
       }
     },
     "Close": {
@@ -8953,21 +8867,21 @@
             "unit": "rem"
           }
         },
-        "1": {
+        "4": {
           "$type": "dimension",
           "$value": {
             "value": 0.25,
             "unit": "rem"
           }
         },
-        "2": {
+        "12": {
           "$type": "dimension",
           "$value": {
             "value": 0.75,
             "unit": "rem"
           }
         },
-        "3": {
+        "9999": {
           "$type": "dimension",
           "$value": {
             "value": 9999,

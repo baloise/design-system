@@ -467,9 +467,8 @@ export namespace Components {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
-          * @default ''
          */
-        "align": CardAlignment;
+        "align"?: CardAlignment;
         /**
           * If `true` the card has a hover effect.
           * @default false
@@ -477,9 +476,8 @@ export namespace Components {
         "clickable": boolean;
         /**
           * Defines the color of the card.
-          * @default ''
          */
-        "color": CardColor;
+        "color"?: CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -506,11 +504,6 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the cards gets a light border and loses its shadow.
-          * @default false
-         */
-        "outlined": boolean;
-        /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
          */
@@ -519,11 +512,6 @@ export namespace Components {
           * Defines the space of the card content.
          */
         "space"?: CardSpace;
-        /**
-          * If `true` the card loses its border radius.
-          * @default false
-         */
-        "square": boolean;
         /**
           * If `true` the card gets a tile look, it has a brand icon on the left
           * @default false
@@ -536,9 +524,8 @@ export namespace Components {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
-        "align": CardActionsAlignment;
+        "align"?: CardActionsAlignment;
     }
     /**
      * Card content renders the main content area of a card for grouping body text and media.
@@ -550,6 +537,7 @@ export namespace Components {
      */
     interface DsCardHeader {
         /**
+          * Defines the layout direction of the header content (title, icon, image).
           * @default 'row'
          */
         "direction": CardHeaderDirection;
@@ -5320,7 +5308,6 @@ declare namespace LocalJSX {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
-          * @default ''
          */
         "align"?: CardAlignment;
         /**
@@ -5330,7 +5317,6 @@ declare namespace LocalJSX {
         "clickable"?: boolean;
         /**
           * Defines the color of the card.
-          * @default ''
          */
         "color"?: CardColor;
         /**
@@ -5359,11 +5345,6 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the cards gets a light border and loses its shadow.
-          * @default false
-         */
-        "outlined"?: boolean;
-        /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
          */
@@ -5372,11 +5353,6 @@ declare namespace LocalJSX {
           * Defines the space of the card content.
          */
         "space"?: CardSpace;
-        /**
-          * If `true` the card loses its border radius.
-          * @default false
-         */
-        "square"?: boolean;
         /**
           * If `true` the card gets a tile look, it has a brand icon on the left
           * @default false
@@ -5389,7 +5365,6 @@ declare namespace LocalJSX {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "align"?: CardActionsAlignment;
     }
@@ -5403,6 +5378,7 @@ declare namespace LocalJSX {
      */
     interface DsCardHeader {
         /**
+          * Defines the layout direction of the header content (title, icon, image).
           * @default 'row'
          */
         "direction"?: CardHeaderDirection;
@@ -8737,8 +8713,6 @@ declare namespace LocalJSX {
         "tile": boolean;
         "dense": boolean;
         "imageTeaser": CardImageTeaser;
-        "square": boolean;
-        "outlined": boolean;
         "inverted": boolean;
         "clickable": boolean;
         "selected": boolean;
