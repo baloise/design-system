@@ -43,7 +43,9 @@ describe('helvetiaGridTheme', () => {
     expect(helvetiaGridThemeParams.checkboxCheckedBackgroundColor).toBe('var(--ds-alias-background-color-primary)')
     expect(helvetiaGridThemeParams.checkboxCheckedBorderColor).toBe('var(--ds-alias-border-color-primary)')
     expect(helvetiaGridThemeParams.checkboxCheckedShapeColor).toBe('var(--ds-alias-text-color-white)')
-    expect(helvetiaGridThemeParams.checkboxIndeterminateBackgroundColor).toBe('var(--ds-alias-background-color-primary)')
+    expect(helvetiaGridThemeParams.checkboxIndeterminateBackgroundColor).toBe(
+      'var(--ds-alias-background-color-primary)',
+    )
     expect(helvetiaGridThemeParams.checkboxIndeterminateBorderColor).toBe('var(--ds-alias-border-color-primary)')
     expect(helvetiaGridThemeParams.checkboxIndeterminateShapeColor).toBe('var(--ds-alias-text-color-white)')
   })

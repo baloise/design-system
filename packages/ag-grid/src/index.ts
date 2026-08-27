@@ -1,5 +1,14 @@
 import { themeQuartz } from 'ag-grid-community'
 
+export { createBadgeCellRenderer } from './badge-cell-renderer'
+export type { BadgeCellRendererOptions } from './badge-cell-renderer'
+export { createButtonCellRenderer } from './button-cell-renderer'
+export type { ButtonCellRendererAction } from './button-cell-renderer'
+export { createTagCellRenderer } from './tag-cell-renderer'
+export type { TagCellRendererOptions } from './tag-cell-renderer'
+export { createTextCellRenderer } from './text-cell-renderer'
+export type { TextCellRendererOptions } from './text-cell-renderer'
+
 export const helvetiaGridThemeParams = {
   accentColor: 'var(--ds-alias-background-color-primary)',
   backgroundColor: 'var(--ds-table-background-color)',
