@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as InputStepperStories from './input-stepper.stories'
+import { INPUTSTEPPER_DOC_CONFIG, getInputStepperTabs } from './input-stepper.doc-config'
+
+<Meta title="Components/InputStepper/Variants/Overview" />
+
+<StoryHeading of={InputStepperStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={INPUTSTEPPER_DOC_CONFIG.section} color={INPUTSTEPPER_DOC_CONFIG.color} />
+
+<BannerTabs of={InputStepperStories} tabs={getInputStepperTabs('variants')} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStepperStories.Invalid}></StoryHeading>
+
+An invalid stepper shows validation styling and displays `invalidText` below the control.
+
+<CanvasWithCodePen of={InputStepperStories.Invalid} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStepperStories.Disabled}></StoryHeading>
+
+A disabled stepper cannot be focused or interacted with. Both buttons are inert and the value is not submitted.
+
+<CanvasWithCodePen of={InputStepperStories.Disabled} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStepperStories.Readonly}></StoryHeading>
+
+A readonly stepper displays the current value but prevents changes. Unlike `disabled`, the value is still submitted with the form.
+
+<CanvasWithCodePen of={InputStepperStories.Readonly} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStepperStories.DecimalStep}></StoryHeading>
+
+`step` accepts decimal values. The component uses precise decimal arithmetic internally to prevent floating-point drift across repeated clicks (e.g. `0 + 0.1 + 0.1 + 0.1 = 0.3`, not `0.30000000000000004`).
+
+<CanvasWithCodePen of={InputStepperStories.DecimalStep} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStepperStories.MinMax}></StoryHeading>
+
+`min` and `max` clamp the value on connect and disable the corresponding button at the boundary. Ranges do not need to start at zero.
+
+<CanvasWithCodePen of={InputStepperStories.MinMax} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputStepperStories.WithDescription}></StoryHeading>
+
+Use `description` to communicate the acceptable range or any constraint the user should know before interacting.
+
+<CanvasWithCodePen of={InputStepperStories.WithDescription} sourceState="shown" overflowVisible={true} />
+
+<Footer />

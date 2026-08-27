@@ -36,6 +36,7 @@ export const tags: string[] = [
   "ds-icon",
   "ds-input",
   "ds-input-slider",
+  "ds-input-stepper",
   "ds-item",
   "ds-label",
   "ds-list",
