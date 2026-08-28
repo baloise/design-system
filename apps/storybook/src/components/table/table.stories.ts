@@ -49,7 +49,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({})
-Basic.storyName = 'Basic'
+Basic.storyName = '🧩 Basic'
 
 export const Striped = Story({
   ...withRender(
@@ -88,7 +88,7 @@ export const Striped = Story({
 `,
   ),
 })
-Striped.storyName = 'Striped'
+Striped.storyName = '🧩 Striped'
 
 export const Hoverable = Story({
   ...withRender(
@@ -122,7 +122,7 @@ export const Hoverable = Story({
 `,
   ),
 })
-Hoverable.storyName = 'Hoverable'
+Hoverable.storyName = '🧩 Hoverable'
 
 export const Bordered = Story({
   ...withRender(
@@ -151,7 +151,7 @@ export const Bordered = Story({
 `,
   ),
 })
-Bordered.storyName = 'Bordered'
+Bordered.storyName = '🧩 Bordered'
 
 export const Narrow = Story({
   ...withRender(
@@ -181,7 +181,7 @@ export const Narrow = Story({
 `,
   ),
 })
-Narrow.storyName = 'Narrow'
+Narrow.storyName = '🧩 Narrow'
 
 export const SelectedRow = Story({
   ...withRender(
@@ -215,4 +215,4 @@ export const SelectedRow = Story({
 `,
   ),
 })
-SelectedRow.storyName = 'Selected Row'
+SelectedRow.storyName = '🧩 Selected Row'

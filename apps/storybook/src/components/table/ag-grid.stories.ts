@@ -183,23 +183,23 @@ const renderGrid = (container: HTMLElement) => {
 }
 
 const meta: Meta = {
-  title: 'Components/AG Grid/Theme',
+  title: 'Components/Table/Variants',
 }
 
 export default meta
 
 /**
- * `` themes AG Grid's headers and cells using
+ * `helvetiaGridTheme` themes AG Grid's headers and cells using
  * `var(--ds-alias-*)` params, which re-resolve automatically against
  * whichever brand's token cascade is active. Use the "Theme" toggle in the
  * toolbar above to switch between Helvetia and TCS — TCS tokens aren't
  * populated yet, so no visible color/font change is expected there.
  */
-export const Basic: StoryObj = {
+export const AgGrid: StoryObj = {
   render: () => {
     const container = document.createElement('div')
     renderGrid(container)
     return container
   },
 }
-Basic.storyName = '🧩 Basic'
+AgGrid.storyName = '🧩 AG Grid'
