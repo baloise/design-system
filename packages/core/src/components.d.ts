@@ -137,9 +137,8 @@ export namespace Components {
         "buttonLabelOpen": string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
-        "buttonSize": AccordionButtonSize;
+        "buttonSize"?: AccordionButtonSize;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -153,14 +152,12 @@ export namespace Components {
         "group": string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
-        "marker": AccordionMarker;
+        "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
-          * @default ''
          */
-        "markerPosition": AccordionMarkerPosition;
+        "markerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -178,9 +175,8 @@ export namespace Components {
         "summaryTitle": boolean;
         /**
           * The visual heading level of the summary.
-          * @default ''
          */
-        "summaryVisualLevel": AccordionSummaryLevel;
+        "summaryVisualLevel"?: AccordionSummaryLevel;
     }
     /**
      * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
@@ -628,9 +624,8 @@ export namespace Components {
         "carouselVariant": CarouselVariant;
         /**
           * Background color for product tiles.
-          * @default ''
          */
-        "color": CarouselItemColor;
+        "color"?: CarouselItemColor;
         /**
           * Set by ds-carousel. 1-based position index.
           * @default 0
@@ -1825,14 +1820,12 @@ export namespace Components {
         "accordionGroup": string;
         /**
           * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
-        "accordionMarker": AccordionMarker;
+        "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `variant` is set to `accordion`.
-          * @default ''
          */
-        "accordionMarkerPosition": AccordionMarkerPosition;
+        "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -1840,9 +1833,8 @@ export namespace Components {
         "accordionOpen": boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default ''
          */
-        "actionIcon": ItemActionIcon;
+        "actionIcon"?: ItemActionIcon;
         /**
           * The description text displayed below the label.
           * @default ''
@@ -1870,14 +1862,12 @@ export namespace Components {
         "label": string;
         /**
           * The semantic heading level of the label element.
-          * @default ''
          */
-        "labelLevel": ItemLabelLevel;
+        "labelLevel"?: ItemLabelLevel;
         /**
           * The visual size of the label. Defaults to `labelLevel` if not set.
-          * @default ''
          */
-        "labelSize": ItemLabelSize;
+        "labelSize"?: ItemLabelSize;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
           * @default ''
@@ -1885,9 +1875,8 @@ export namespace Components {
         "rel": string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default ''
          */
-        "target": ButtonTarget;
+        "target"?: ButtonTarget;
         /**
           * The visual and functional variant of the item.
           * @default 'default'
@@ -5079,7 +5068,6 @@ declare namespace LocalJSX {
         "buttonLabelOpen"?: string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
         "buttonSize"?: AccordionButtonSize;
         /**
@@ -5094,12 +5082,10 @@ declare namespace LocalJSX {
         "group"?: string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
         "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
-          * @default ''
          */
         "markerPosition"?: AccordionMarkerPosition;
         /**
@@ -5131,7 +5117,6 @@ declare namespace LocalJSX {
         "summaryTitle"?: boolean;
         /**
           * The visual heading level of the summary.
-          * @default ''
          */
         "summaryVisualLevel"?: AccordionSummaryLevel;
     }
@@ -5596,7 +5581,6 @@ declare namespace LocalJSX {
         "carouselVariant"?: CarouselVariant;
         /**
           * Background color for product tiles.
-          * @default ''
          */
         "color"?: CarouselItemColor;
         /**
@@ -6901,12 +6885,10 @@ declare namespace LocalJSX {
         "accordionGroup"?: string;
         /**
           * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
         "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `variant` is set to `accordion`.
-          * @default ''
          */
         "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
@@ -6916,7 +6898,6 @@ declare namespace LocalJSX {
         "accordionOpen"?: boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default ''
          */
         "actionIcon"?: ItemActionIcon;
         /**
@@ -6946,12 +6927,10 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * The semantic heading level of the label element.
-          * @default ''
          */
         "labelLevel"?: ItemLabelLevel;
         /**
           * The visual size of the label. Defaults to `labelLevel` if not set.
-          * @default ''
          */
         "labelSize"?: ItemLabelSize;
         /**
@@ -6977,7 +6956,6 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default ''
          */
         "target"?: ButtonTarget;
         /**

@@ -26,7 +26,7 @@ export class List implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -38,7 +38,7 @@ export class List implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

@@ -447,7 +447,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             part="decrease"
             data-testid="ds-input-stepper-decrease"
             color="secondary"
-            size="small"
+            size="sm"
             square
             icon="minus"
             a11yLabel={decreaseLabel}
@@ -465,7 +465,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             part="increase"
             data-testid="ds-input-stepper-increase"
             color="secondary"
-            size="small"
+            size="sm"
             square
             icon="plus"
             a11yLabel={increaseLabel}

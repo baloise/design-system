@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   ACCORDION_MARKERS,
   ACCORDION_MARKER_POSITIONS,
@@ -61,7 +61,7 @@ export class Item implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -79,14 +79,14 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @OneOf(ACCORDION_MARKERS)
-  readonly accordionMarker: AccordionMarker = ''
+  readonly accordionMarker?: AccordionMarker
 
   /**
    * The position of the marker. Only applies if `variant` is set to `accordion`.
    */
   @Prop()
   @OneOf(ACCORDION_MARKER_POSITIONS)
-  readonly accordionMarkerPosition: AccordionMarkerPosition = ''
+  readonly accordionMarkerPosition?: AccordionMarkerPosition
 
   /**
    * If `true` the accordion is open.
@@ -100,7 +100,7 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @OneOf(ITEM_ACTION_ICONS)
-  readonly actionIcon: ItemActionIcon = ''
+  readonly actionIcon?: ItemActionIcon
 
   /**
    * The description text displayed below the label.
@@ -145,14 +145,14 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @OneOf(ITEM_LABEL_LEVELS)
-  readonly labelLevel: ItemLabelLevel = ''
+  readonly labelLevel?: ItemLabelLevel
 
   /**
    * The visual size of the label. Defaults to `labelLevel` if not set.
    */
   @Prop()
   @OneOf(ITEM_LABEL_SIZES)
-  readonly labelSize: ItemLabelSize = ''
+  readonly labelSize?: ItemLabelSize
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -168,7 +168,7 @@ export class Item implements DsComponentInterface {
    */
   @Prop()
   @OneOf(BUTTON_TARGETS)
-  readonly target: ButtonTarget = ''
+  readonly target?: ButtonTarget
 
   /**
    * The visual and functional variant of the item.
@@ -196,9 +196,10 @@ export class Item implements DsComponentInterface {
    * Emitted when the accordion is closed.
    */
   @Event() dsAccordionClosed!: EventEmitter<AccordionToggleDetail>
+
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   handleClick = (ev: MouseEvent) => {
@@ -207,7 +208,7 @@ export class Item implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -225,7 +226,7 @@ export class Item implements DsComponentInterface {
         actionIconName = 'link'
       } else if (this.actionIcon === 'download') {
         actionIconName = 'download'
-      } else if (this.actionIcon === 'default' || this.actionIcon === '') {
+      } else if (this.actionIcon === 'default' || !hasValue(this.actionIcon)) {
         if (this.variant === 'link' || this.variant === 'button') {
           actionIconName = 'nav-go-right'
         }

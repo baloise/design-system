@@ -50,7 +50,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -99,16 +99,6 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    */
   @Event() dsChange!: EventEmitter<CarouselChangeDetail>
 
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-  }
-
   private trackEl?: HTMLElement
   private resizeObserver?: ResizeObserver
   private intersectionObserver?: IntersectionObserver
@@ -117,6 +107,11 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   private dragStartX = 0
   private dragStartScrollLeft = 0
   private velocityHistory: Array<{ x: number; t: number }> = []
+
+  /**
+   * LIFECYCLE
+   * ─────────────────────────────────────────────────────
+   */
 
   componentDidLoad() {
     this.setup()
@@ -137,13 +132,8 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * PROPERTY VALIDATION
-   * ------------------------------------------------------
-   */
-
-  /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsCarouselItemSelect')
@@ -153,8 +143,23 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleKeyDown = (ev: KeyboardEvent) => {
@@ -324,7 +329,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private getItems(): HTMLDsCarouselItemElement[] {
@@ -413,7 +418,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
