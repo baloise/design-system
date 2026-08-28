@@ -3887,6 +3887,7 @@
         "ds-data-item",
         "ds-file-upload",
         "ds-hint",
+        "ds-input-stepper",
         "ds-snackbar",
         "ds-toast"
       ],
@@ -3911,6 +3912,9 @@
           "ds-button"
         ],
         "ds-hint": [
+          "ds-button"
+        ],
+        "ds-input-stepper": [
           "ds-button"
         ],
         "ds-snackbar": [
@@ -19576,6 +19580,35 @@
           "setter": false
         },
         {
+          "name": "inline",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inline",
+          "reflectToAttr": false,
+          "docs": "If `true`, the date picker is presented inline and no input field is shown.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "invalid",
           "type": "boolean",
           "complexType": {
@@ -26718,6 +26751,7 @@
         "ds-hint",
         "ds-input",
         "ds-input-slider",
+        "ds-input-stepper",
         "ds-item",
         "ds-navbar",
         "ds-number-input",
@@ -26764,6 +26798,9 @@
           "ds-icon"
         ],
         "ds-input-slider": [
+          "ds-icon"
+        ],
+        "ds-input-stepper": [
           "ds-icon"
         ],
         "ds-item": [
@@ -30249,6 +30286,839 @@
           },
           {
             "name": "blur",
+            "params": [],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          }
+        ]
+      },
+      "type": "web-component"
+    },
+    {
+      "fileName": "input-stepper.tsx",
+      "tag": "ds-input-stepper",
+      "overview": "Input stepper renders a numeric value flanked by decrease and increase buttons.",
+      "usage": {},
+      "docs": "Input stepper renders a numeric value flanked by decrease and increase buttons.",
+      "docsTags": [
+        {
+          "name": "part",
+          "text": "stepper - The container element holding the buttons and value."
+        },
+        {
+          "name": "part",
+          "text": "value - The span rendering the current value."
+        },
+        {
+          "name": "part",
+          "text": "decrease - The decrease (`-`) button."
+        },
+        {
+          "name": "part",
+          "text": "increase - The increase (`+`) button."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-button",
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-input-stepper": [
+          "ds-button",
+          "ds-spinner",
+          "ds-icon"
+        ],
+        "ds-button": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "InputColor",
+            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "InputColor": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/input/input.interfaces.ts::InputColor",
+                "referenceLocation": "InputColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the stepper. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "debounce",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "debounce",
+          "reflectToAttr": false,
+          "docs": "Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the stepper, which is displayed below the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": true,
+          "docs": "If `true` the component gets an invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the stepper is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the stepper, which is displayed above the control.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": false,
+          "docs": "The maximum value the stepper can take.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "10"
+            }
+          ],
+          "default": "10",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": false,
+          "docs": "The minimum value the stepper can take.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputStepperId"
+            }
+          ],
+          "default": "this.inputStepperId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not be mutated. Both buttons are disabled while\nthe form value continues to be submitted.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must have a value before submitting a form. Because\nthe stepper always has a numeric value, this only affects the \"optional\"\nsuffix on the label.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "step",
+          "reflectToAttr": false,
+          "docs": "The granularity by which the value increases or decreases per click. Must\nbe a positive number (integer or decimal). If a non-positive value is\nprovided, a warning is logged and `1` is used at click time.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "1"
+            }
+          ],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The current numeric value of the stepper. Clamped to `[min, max]` on connect.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "0"
+            }
+          ],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInputElement",
+          "returns": {
+            "type": "Promise<HTMLElement | undefined>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<HTMLElement | undefined>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLElement": {
+                "location": "global",
+                "id": "global::HTMLElement"
+              }
+            },
+            "return": "Promise<HTMLElement | undefined>"
+          },
+          "signature": "getInputElement() => Promise<HTMLElement | undefined>",
+          "parameters": [],
+          "docs": "Returns the underlying interactive element used under the hood. Returns\nthe increase button (or decrease, if increase is disabled).",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the stepper. Prefers the increase button; falls back to\ndecrease if the increase is disabled (value at max).",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputStepperBlurDetail",
+            "resolved": "void",
+            "references": {
+              "InputStepperBlurDetail": {
+                "location": "import",
+                "path": "./input-stepper.interfaces",
+                "id": "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperBlurDetail",
+                "referenceLocation": "InputStepperBlurDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when focus leaves the widget entirely. Tabbing between the two\nbuttons does not emit — see `handleFocusout`.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputStepperChangeDetail",
+            "resolved": "number",
+            "references": {
+              "InputStepperChangeDetail": {
+                "location": "import",
+                "path": "./input-stepper.interfaces",
+                "id": "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperChangeDetail",
+                "referenceLocation": "InputStepperChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted once per successful step. Debounceable via the `debounce` prop.",
+          "docsTags": []
+        },
+        {
+          "event": "dsDecrease",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputStepperDecreaseDetail",
+            "resolved": "number",
+            "references": {
+              "InputStepperDecreaseDetail": {
+                "location": "import",
+                "path": "./input-stepper.interfaces",
+                "id": "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperDecreaseDetail",
+                "referenceLocation": "InputStepperDecreaseDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after a successful decrease step, in addition to `dsChange`/`dsInput`.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputStepperFocusDetail",
+            "resolved": "void",
+            "references": {
+              "InputStepperFocusDetail": {
+                "location": "import",
+                "path": "./input-stepper.interfaces",
+                "id": "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperFocusDetail",
+                "referenceLocation": "InputStepperFocusDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when focus enters the widget (either button).",
+          "docsTags": []
+        },
+        {
+          "event": "dsIncrease",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputStepperIncreaseDetail",
+            "resolved": "number",
+            "references": {
+              "InputStepperIncreaseDetail": {
+                "location": "import",
+                "path": "./input-stepper.interfaces",
+                "id": "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperIncreaseDetail",
+                "referenceLocation": "InputStepperIncreaseDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after a successful increase step, in addition to `dsChange`/`dsInput`.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInput",
+          "detail": "number",
+          "bubbles": true,
+          "complexType": {
+            "original": "InputStepperInputDetail",
+            "resolved": "number",
+            "references": {
+              "InputStepperInputDetail": {
+                "location": "import",
+                "path": "./input-stepper.interfaces",
+                "id": "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperInputDetail",
+                "referenceLocation": "InputStepperInputDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted whenever the value changes via a step. Fires alongside `dsChange`.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--input-stepper-gap",
+          "docs": "Space between the buttons and the value display."
+        },
+        {
+          "name": "--input-stepper-value-min-width",
+          "docs": "Minimum width of the value display so single- and multi-digit values render at the same widget width."
+        },
+        {
+          "name": "--input-stepper-value-font-weight",
+          "docs": "Font weight of the value display."
+        },
+        {
+          "name": "--input-stepper-value-font-family",
+          "docs": "Font family of the value display."
+        },
+        {
+          "name": "--input-stepper-value-color",
+          "docs": "Text color of the value display."
+        },
+        {
+          "name": "--form-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--form-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--form-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--form-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--form-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
+          "name": "--form-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--form-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--form-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--form-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--form-description-line-height",
+          "docs": "Line height of the description."
+        }
+      ],
+      "slots": [],
+      "parts": [
+        {
+          "name": "decrease",
+          "docs": "The decrease (`-`) button."
+        },
+        {
+          "name": "increase",
+          "docs": "The increase (`+`) button."
+        },
+        {
+          "name": "stepper",
+          "docs": "The container element holding the buttons and value."
+        },
+        {
+          "name": "value",
+          "docs": "The span rendering the current value."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        }
+      ],
+      "pageObject": {
+        "class": "DsInputStepper",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "stepper",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "decreaseButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "increaseButton",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "valueDisplay",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "increase",
+            "params": [],
+            "docs": "Waits out a macrotask tick so `dsChange`'s debounced (setTimeout(0)) emit has actually run before the returned promise resolves."
+          },
+          {
+            "name": "decrease",
             "params": [],
             "docs": ""
           }
@@ -50714,6 +51584,7 @@
         "ds-file-upload",
         "ds-input",
         "ds-input-slider",
+        "ds-input-stepper",
         "ds-number-input",
         "ds-radio-group",
         "ds-segment",
@@ -50738,6 +51609,9 @@
           "ds-spinner"
         ],
         "ds-input-slider": [
+          "ds-spinner"
+        ],
+        "ds-input-stepper": [
           "ds-spinner"
         ],
         "ds-number-input": [
@@ -64653,6 +65527,36 @@
       "declaration": "number",
       "docstring": "",
       "path": "src/components/input-slider/input-slider.interfaces.ts"
+    },
+    "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperInputDetail": {
+      "declaration": "number",
+      "docstring": "",
+      "path": "src/components/input-stepper/input-stepper.interfaces.ts"
+    },
+    "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperChangeDetail": {
+      "declaration": "number",
+      "docstring": "",
+      "path": "src/components/input-stepper/input-stepper.interfaces.ts"
+    },
+    "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperIncreaseDetail": {
+      "declaration": "number",
+      "docstring": "",
+      "path": "src/components/input-stepper/input-stepper.interfaces.ts"
+    },
+    "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperDecreaseDetail": {
+      "declaration": "number",
+      "docstring": "",
+      "path": "src/components/input-stepper/input-stepper.interfaces.ts"
+    },
+    "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperFocusDetail": {
+      "declaration": "void",
+      "docstring": "",
+      "path": "src/components/input-stepper/input-stepper.interfaces.ts"
+    },
+    "src/components/input-stepper/input-stepper.interfaces.ts::InputStepperBlurDetail": {
+      "declaration": "void",
+      "docstring": "",
+      "path": "src/components/input-stepper/input-stepper.interfaces.ts"
     },
     "src/components/label/label.interfaces.ts::LabelSize": {
       "declaration": "\"sm\" | \"lg\" | \"xl\" | \"small\" | \"large\" | \"x-large\" | \"xx-large\" | \"xxx-large\" | \"2xl\" | \"3xl\"",

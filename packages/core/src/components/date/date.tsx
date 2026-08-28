@@ -1,37 +1,36 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
-import { DsComponentInterface } from '@global'
+import { Component, Element, Event, EventEmitter, Fragment, h, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import {
-  inheritAttributes,
-  FormControlInterface,
-  FormControl,
-  FocusHandler,
   debounceEvent,
+  FocusHandler,
+  FormControl,
+  FormControlInterface,
+  inheritAttributes,
+  isEscapeKey,
   Logger,
   type LogInstance,
-  isEscapeKey,
   OneOf,
   Type,
   raf,
   watchInvalidTextSlot,
 } from '@utils'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
-import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
-import { ClearButton } from '../input/clear-button.util'
 import { INPUT_AUTOCOMPLETES, InputAutocomplete } from '../input/input.interfaces'
 import {
   DATE_COLORS,
-  DateColor,
   DateBlurDetail,
-  DateKeyPressDetail,
-  DateFocusDetail,
-  DateClickDetail,
-  DateInputDetail,
   DateChangeDetail,
+  DateClickDetail,
+  DateColor,
+  DateFocusDetail,
+  DateInputDetail,
+  DateKeyPressDetail,
 } from './date.interfaces'
 import { createDateMask, DateMask, getDisplayFormat, isoToDisplay } from './date.mask'
 import { checkIsWithinRange, DatePickerController } from './date.picker'
 import { i18nDsTriggerButton } from '../input/trigger-button.i18n'
+import { ClearButton } from '../input/clear-button.util'
 
 /**
  * Date renders a masked date input field with an interactive calendar popup for date selection.
@@ -211,6 +210,13 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   @Prop({ reflect: true })
   @Type('boolean')
   readonly autoInvalidOff: boolean = false
+
+  /**
+   * If `true`, the date picker is presented inline and no input field is shown.
+   */
+  @Prop()
+  @Type('boolean')
+  readonly inline: boolean = false
 
   /**
    * Shows a loading indicator at the end of the input and replaces the trigger button.
@@ -402,6 +408,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
           this.control.inputValue = iso
           this.dateMask?.syncFromISO(iso)
           this.dsChange.emit(iso)
+          if (this.inline) this.dsBlur.emit(new FocusEvent('blur'))
           this.updatingFromMask = false
           this.isOpen = false
           this.triggerEl?.focus()
@@ -538,6 +545,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
 
     return (
       <Field
+        cssClasses={{ 'is-inline': this.inline }}
         disabled={this.disabled}
         color={this.color}
         invalid={isInvalid}
@@ -549,64 +557,69 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
         language={this.language}
         inputId="input"
       >
-        <input
-          id="input"
-          part="input"
-          name={this.name}
-          type="text"
-          inputMode="numeric"
-          ref={inputEl => (this.control.nativeEl = inputEl)}
-          aria-describedby="description"
-          aria-invalid={isInvalid ? 'true' : 'false'}
-          disabled={this.disabled}
-          autofocus={this.autofocus}
-          autocomplete={this.autocomplete}
-          placeholder={this.placeholder || ''}
-          readonly={this.readonly}
-          required={this.required}
-          value={displayValue}
-          onClick={ev => this.handleClick(ev)}
-          onFocus={ev => this.handleFocus(ev)}
-          onBlur={ev => this.handleBlur(ev)}
-          onKeyPress={ev => this.dsKeyPress.emit(ev)}
-          {...this.inheritedAttributes}
-        />
-        <ClearButton
-          value={this.value}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          language={this.language}
-          onClick={this.handleClearClick}
-        />
-        {!this.freeSolo && !this.disabled && !this.readonly && (
-          <button
-            id="trigger"
-            part="trigger"
-            type="button"
-            ref={el => (this.triggerEl = el as HTMLButtonElement)}
-            aria-label={triggerLabel}
-            title={triggerLabel}
-            aria-haspopup="dialog"
-            aria-expanded={this.isOpen ? 'true' : 'false'}
-            aria-controls="popup"
-            onClick={this.handleTriggerClick}
-          >
-            <ds-icon name="date"></ds-icon>
-          </button>
-        )}
-        {/* ---------------------------------------- */}
-        {/* Calendar popup host                      */}
-        {/* ---------------------------------------- */}
-        {!this.freeSolo && (
-          <div
-            id="popup"
-            role="dialog"
-            aria-modal="true"
-            aria-label={chooseDateLabel}
-            aria-hidden={this.isOpen ? 'false' : 'true'}
-            inert={this.isOpen ? undefined : true}
-            ref={el => (this.popupHostEl = el as HTMLDivElement)}
-          ></div>
+        {this.inline && <div id="inline" ref={el => (this.popupHostEl = el as HTMLDivElement)}></div>}
+        {!this.inline && (
+          <>
+            <input
+              id="input"
+              part="input"
+              name={this.name}
+              type="text"
+              inputMode="numeric"
+              ref={inputEl => (this.control.nativeEl = inputEl)}
+              aria-describedby="description"
+              aria-invalid={isInvalid ? 'true' : 'false'}
+              disabled={this.disabled}
+              autofocus={this.autofocus}
+              autocomplete={this.autocomplete}
+              placeholder={this.placeholder || ''}
+              readonly={this.readonly}
+              required={this.required}
+              value={displayValue}
+              onClick={ev => this.handleClick(ev)}
+              onFocus={ev => this.handleFocus(ev)}
+              onBlur={ev => this.handleBlur(ev)}
+              onKeyPress={ev => this.dsKeyPress.emit(ev)}
+              {...this.inheritedAttributes}
+            />
+            <ClearButton
+              value={this.value}
+              disabled={this.disabled}
+              readonly={this.readonly}
+              language={this.language}
+              onClick={this.handleClearClick}
+            />
+            {!this.freeSolo && !this.disabled && !this.readonly && (
+              <button
+                id="trigger"
+                part="trigger"
+                type="button"
+                ref={el => (this.triggerEl = el as HTMLButtonElement)}
+                aria-label={triggerLabel}
+                title={triggerLabel}
+                aria-haspopup="dialog"
+                aria-expanded={this.isOpen ? 'true' : 'false'}
+                aria-controls="popup"
+                onClick={this.handleTriggerClick}
+              >
+                <ds-icon name="date"></ds-icon>
+              </button>
+            )}
+            {/* ---------------------------------------- */}
+            {/* Calendar popup host                      */}
+            {/* ---------------------------------------- */}
+            {!this.freeSolo && (
+              <div
+                id="popup"
+                role="dialog"
+                aria-modal="true"
+                aria-label={chooseDateLabel}
+                aria-hidden={this.isOpen ? 'false' : 'true'}
+                inert={this.isOpen ? undefined : true}
+                ref={el => (this.popupHostEl = el as HTMLDivElement)}
+              ></div>
+            )}
+          </>
         )}
       </Field>
     )

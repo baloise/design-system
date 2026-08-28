@@ -27,6 +27,7 @@ import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
+import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -73,6 +74,7 @@ export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
+export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -1016,6 +1018,11 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * If `true`, the date picker is presented inline and no input field is shown.
+          * @default false
+         */
+        "inline": boolean;
+        /**
           * If `true` the component gets an invalid style.
           * @default false
          */
@@ -1715,6 +1722,95 @@ export namespace Components {
         /**
           * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
           * @default NaN
+         */
+        "value": number;
+    }
+    /**
+     * Input stepper renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface DsInputStepper {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Defines the color of the stepper. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the stepper, which is displayed below the control.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the underlying interactive element used under the hood. Returns the increase button (or decrease, if increase is disabled).
+         */
+        "getInputElement": () => Promise<HTMLElement | undefined>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the stepper is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the stepper, which is displayed above the control.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The maximum value the stepper can take.
+          * @default 10
+         */
+        "max": number;
+        /**
+          * The minimum value the stepper can take.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputStepperId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must have a value before submitting a form. Because the stepper always has a numeric value, this only affects the "optional" suffix on the label.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the stepper. Prefers the increase button; falls back to decrease if the increase is disabled (value at max).
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
+          * @default 1
+         */
+        "step": number;
+        /**
+          * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+          * @default 0
          */
         "value": number;
     }
@@ -3602,6 +3698,10 @@ export interface DsInputSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputSliderElement;
 }
+export interface DsInputStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsInputStepperElement;
+}
 export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsItemElement;
@@ -4194,6 +4294,31 @@ declare global {
     var HTMLDsInputSliderElement: {
         prototype: HTMLDsInputSliderElement;
         new (): HTMLDsInputSliderElement;
+    };
+    interface HTMLDsInputStepperElementEventMap {
+        "dsInput": InputStepperInputDetail;
+        "dsChange": InputStepperChangeDetail;
+        "dsIncrease": InputStepperIncreaseDetail;
+        "dsDecrease": InputStepperDecreaseDetail;
+        "dsFocus": InputStepperFocusDetail;
+        "dsBlur": InputStepperBlurDetail;
+    }
+    /**
+     * Input stepper renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface HTMLDsInputStepperElement extends Components.DsInputStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsInputStepperElementEventMap>(type: K, listener: (this: HTMLDsInputStepperElement, ev: DsInputStepperCustomEvent<HTMLDsInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsInputStepperElementEventMap>(type: K, listener: (this: HTMLDsInputStepperElement, ev: DsInputStepperCustomEvent<HTMLDsInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsInputStepperElement: {
+        prototype: HTMLDsInputStepperElement;
+        new (): HTMLDsInputStepperElement;
     };
     interface HTMLDsItemElementEventMap {
         "dsClick": ButtonClickDetail;
@@ -4873,6 +4998,7 @@ declare global {
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
         "ds-input-slider": HTMLDsInputSliderElement;
+        "ds-input-stepper": HTMLDsInputStepperElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
@@ -5892,6 +6018,11 @@ declare namespace LocalJSX {
          */
         "freeSolo"?: boolean;
         /**
+          * If `true`, the date picker is presented inline and no input field is shown.
+          * @default false
+         */
+        "inline"?: boolean;
+        /**
           * If `true` the component gets an invalid style.
           * @default false
          */
@@ -6648,6 +6779,114 @@ declare namespace LocalJSX {
         /**
           * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
           * @default NaN
+         */
+        "value"?: number;
+    }
+    /**
+     * Input stepper renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface DsInputStepper {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Defines the color of the stepper. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the stepper, which is displayed below the control.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the stepper is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the stepper, which is displayed above the control.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The maximum value the stepper can take.
+          * @default 10
+         */
+        "max"?: number;
+        /**
+          * The minimum value the stepper can take.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputStepperId
+         */
+        "name"?: string;
+        /**
+          * Emitted when focus leaves the widget entirely. Tabbing between the two buttons does not emit — see `handleFocusout`.
+         */
+        "onDsBlur"?: (event: DsInputStepperCustomEvent<InputStepperBlurDetail>) => void;
+        /**
+          * Emitted once per successful step. Debounceable via the `debounce` prop.
+         */
+        "onDsChange"?: (event: DsInputStepperCustomEvent<InputStepperChangeDetail>) => void;
+        /**
+          * Emitted after a successful decrease step, in addition to `dsChange`/`dsInput`.
+         */
+        "onDsDecrease"?: (event: DsInputStepperCustomEvent<InputStepperDecreaseDetail>) => void;
+        /**
+          * Emitted when focus enters the widget (either button).
+         */
+        "onDsFocus"?: (event: DsInputStepperCustomEvent<InputStepperFocusDetail>) => void;
+        /**
+          * Emitted after a successful increase step, in addition to `dsChange`/`dsInput`.
+         */
+        "onDsIncrease"?: (event: DsInputStepperCustomEvent<InputStepperIncreaseDetail>) => void;
+        /**
+          * Emitted whenever the value changes via a step. Fires alongside `dsChange`.
+         */
+        "onDsInput"?: (event: DsInputStepperCustomEvent<InputStepperInputDetail>) => void;
+        /**
+          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must have a value before submitting a form. Because the stepper always has a numeric value, this only affects the "optional" suffix on the label.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
+          * @default 1
+         */
+        "step"?: number;
+        /**
+          * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+          * @default 0
          */
         "value"?: number;
     }
@@ -8837,6 +9076,7 @@ declare namespace LocalJSX {
         "autocomplete": InputAutocomplete;
         "debounce": number;
         "autoInvalidOff": boolean;
+        "inline": boolean;
         "loading": boolean;
         "min": string | undefined;
         "max": string | undefined;
@@ -8960,6 +9200,23 @@ declare namespace LocalJSX {
         "min": number;
         "max": number;
         "step": string;
+        "debounce": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+    }
+    interface DsInputStepperAttributes {
+        "value": number;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "min": number;
+        "max": number;
+        "step": number;
         "debounce": number;
         "disabled": boolean;
         "readonly": boolean;
@@ -9375,6 +9632,7 @@ declare namespace LocalJSX {
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
         "ds-input-slider": Omit<DsInputSlider, keyof DsInputSliderAttributes> & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes]?: DsInputSlider[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `attr:${K}`]?: DsInputSliderAttributes[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `prop:${K}`]?: DsInputSlider[K] };
+        "ds-input-stepper": Omit<DsInputStepper, keyof DsInputStepperAttributes> & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes]?: DsInputStepper[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `attr:${K}`]?: DsInputStepperAttributes[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `prop:${K}`]?: DsInputStepper[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
         "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
@@ -9572,6 +9830,10 @@ declare module "@stencil/core" {
              * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
              */
             "ds-input-slider": LocalJSX.IntrinsicElements["ds-input-slider"] & JSXBase.HTMLAttributes<HTMLDsInputSliderElement>;
+            /**
+             * Input stepper renders a numeric value flanked by decrease and increase buttons.
+             */
+            "ds-input-stepper": LocalJSX.IntrinsicElements["ds-input-stepper"] & JSXBase.HTMLAttributes<HTMLDsInputStepperElement>;
             /**
              * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
              */

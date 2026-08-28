@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { A11yGuidelines, Banner, BannerTabs, Footer } from '../../../.storybook/blocks'
+import * as InputStepperStories from './input-stepper.stories'
+import { INPUTSTEPPER_DOC_CONFIG, getInputStepperTabs } from './input-stepper.doc-config'
+
+<Meta title="Components/InputStepper/Accessibility" />
+
+<Banner label={'Accessibility'} section={INPUTSTEPPER_DOC_CONFIG.section} color={INPUTSTEPPER_DOC_CONFIG.color} />
+
+<BannerTabs of={InputStepperStories} tabs={getInputStepperTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always Provide a Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set a descriptive <code>label</code> so screen reader users understand what value they are
+          adjusting. Each button announces its accessible label (e.g. "increase") alongside the widget label.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use description to Explain Bounds',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Screen readers don't automatically announce <code>min</code>/<code>max</code> for button-based
+          steppers. Use <code>description</code> to state the acceptable range so users know when they will
+          reach a limit.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Rely on Keyboard Navigation',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The decrease and increase buttons are standard <code>&lt;button&gt;</code> elements. Users can Tab
+          between them and activate with Space or Enter. Arrow keys (Up/Down) also adjust the value when
+          either button is focused.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Pair invalid with invalidText',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When <code>invalid</code> is set, always provide <code>invalidText</code> so assistive technology
+          users receive a clear explanation of why the value needs to change.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't Omit the Label",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never leave <code>label</code> empty. Without it, screen reader users hear only a number with no
+          context for what it represents or how to change it.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't Rely on Color Alone for State",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't use <code>color</code> as the sole signal for validation — always pair it with{' '}
+          <code>invalidText</code> so users who cannot perceive color differences still receive the message.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [WCAG 2.2 — Name, Role, Value (4.1.2)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) — The labeled buttons and live-region value display fulfil this criterion
+- [WCAG 2.2 — Keyboard (2.1.1)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html) — All functionality is reachable and operable via keyboard alone
+
+<Footer />

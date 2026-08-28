@@ -18,6 +18,7 @@ const VARIANTS = [
   'slots',
   'form-reset',
   'autocomplete',
+  'inline',
 ]
 
 const VARIANTS_WITH_PICKER = ['basic', 'min-max', 'default-date', 'allowed-dates']
