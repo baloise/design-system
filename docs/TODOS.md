@@ -81,22 +81,23 @@ These improvements help our components work seamlessly across all supported fram
 | list             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- ALERTS --     | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| notification     | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| toast            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| notification     | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| toast            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- OVERLAY --    | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | modal            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | tooltip          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | popover          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | hint             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- NAVIGATION -- | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
+| pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | navbar           | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
 | tabs             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | steps            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | footer           | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
 | sheet            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | input            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
@@ -105,14 +106,13 @@ These improvements help our components work seamlessly across all supported fram
 | toggle           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | checkbox         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | segment          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| number-input     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| file-upload      | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | select           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| time-input       | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | date             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| time-input       | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| number-input     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | input-slider     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | input-stepper    | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| file-upload      | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | ag-grid          | Lib      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 
 ## Tokens & Figma

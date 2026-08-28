@@ -2101,7 +2101,7 @@ export namespace Components {
          */
         "noIcon": boolean;
         /**
-          * Defines the size of the notification, small, medium or large.
+          * Defines the size of the notification, sm or md.
          */
         "size"?: NotificationSize;
     }
@@ -7212,7 +7212,7 @@ declare namespace LocalJSX {
          */
         "onDsDidLoad"?: (event: DsNotificationCustomEvent<void>) => void;
         /**
-          * Defines the size of the notification, small, medium or large.
+          * Defines the size of the notification, sm or md.
          */
         "size"?: NotificationSize;
     }
