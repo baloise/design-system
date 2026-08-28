@@ -18,7 +18,11 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The toast message content.
  * @slot action - The action button (if used).
- * @part toast - The toast container element.
+ * @part icon - The icon element.
+ * @part content - The content wrapper containing the heading and message.
+ * @part heading - The toast heading.
+ * @part message - The toast message element.
+ * @part button - The action button element.
  * @part close - The close button element.
  */
 @Component({

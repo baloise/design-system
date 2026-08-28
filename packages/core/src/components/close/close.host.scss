@@ -89,24 +89,18 @@
 
       // Default color (blue/primary)
       background: var(--_close-color-icon);
+
+      // Rotation animation, restarted by JS toggling `.is-rotating` on the button (see close.tsx)
+      transform: rotate(var(--_close-icon-rotation, 0deg));
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: cubic-bezier(0.4, 0.6, 1, 0.7);
     }
 
     //
     // Pseudo States
     &:not(:disabled) {
       cursor: pointer;
-
-      @include hover {
-        &:hover,
-        &.is-hovered {
-          background: var(--_close-color-background-hover);
-        }
-      }
-
-      &:active,
-      &.is-pressed {
-        background: var(--_close-color-background-active);
-      }
 
       &:focus-visible,
       &.is-focused {
