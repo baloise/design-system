@@ -40,6 +40,7 @@ export const helvetiaGridThemeParams = {
   checkboxIndeterminateBackgroundColor: 'var(--ds-alias-background-color-primary)',
   checkboxIndeterminateBorderColor: 'var(--ds-alias-border-color-primary)',
   checkboxIndeterminateShapeColor: 'var(--ds-alias-text-color-white)',
+  focusShadow: 'none',
 }
 
 export const helvetiaGridTheme = themeQuartz.withParams(helvetiaGridThemeParams)
