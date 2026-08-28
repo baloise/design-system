@@ -63,7 +63,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -71,7 +71,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    */
   @Prop()
   @OneOf(PAGINATION_ALIGNMENTS)
-  readonly align: PaginationAlignment = ''
+  readonly align?: PaginationAlignment
 
   /**
    * Disables component
@@ -91,6 +91,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * Specify the max visible pages before and after the selected page
    */
   @Prop()
+  @Type('number')
   readonly pageRange: number = 2
 
   /**
@@ -98,7 +99,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    */
   @Prop()
   @OneOf(PAGINATION_SIZES)
-  readonly size: PaginationSize = ''
+  readonly size?: PaginationSize
 
   /**
    * If 'true, the pagination will be sticky to the top
@@ -125,6 +126,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * If sticky, the top position will be determined by this value
    */
   @Prop()
+  @Type('number')
   readonly top: number = 0
 
   @Watch('top')
@@ -138,12 +140,14 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    * The total amount of pages
    */
   @Prop()
+  @Type('number')
   readonly totalPages: number = 1
 
   /**
    * Current selected page
    */
   @Prop({ reflect: true, mutable: true })
+  @Type('number')
   value: number = 1
 
   /**
@@ -151,7 +155,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
    */
   @Prop()
   @OneOf(PAGINATION_VARIANTS)
-  readonly variant: PaginationVariant = ''
+  readonly variant?: PaginationVariant
 
   /**
    * Triggers when a page change happens
@@ -164,7 +168,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @ListenToBreakpoints()
@@ -174,7 +178,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -210,7 +214,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private selectPage(pageNumber: number) {
@@ -268,7 +272,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
             'button': true,
             'is-square': true,
             'is-primary': isActive,
-            'is-text': !isActive,
+            'is-ghost': !isActive,
             'is-disabled': this.disabled,
             'is-sm': this.isMobile || hasValue(this.size),
           }}
@@ -283,16 +287,15 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
     const items = this.isMobile ? this.getItems(1) : this.getItems(this.pageRange)
 
     const isVariantDots = hasValue(this.variant)
-    const buttonColor = isVariantDots ? 'is-tertiary' : 'is-text'
+    const buttonColor = isVariantDots ? 'is-ghost' : 'is-ghost'
     const buttonSize = isVariantDots || hasValue(this.size) || this.isMobile ? 'is-sm' : ''
-    const flat = isVariantDots
 
     const labelControlTitle = this.label || i18nControlLabel[this.language].label
     const leftControlTitle = this.textPrevious || i18nControlLabel[this.language].left
@@ -329,8 +332,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
                 'button': true,
                 'is-square': true,
                 'is-disabled': this.value < 2,
-                'is-flat': flat,
-                [buttonColor]: true,
+                [buttonColor]: !(this.value < 2),
                 [buttonSize]: true,
               }}
               disabled={this.value < 2}
@@ -349,7 +351,6 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
                 'button': true,
                 'is-square': true,
                 'is-disabled': this.value === this.totalPages,
-                'is-flat': flat,
                 [buttonColor]: true,
                 [buttonSize]: true,
               }}

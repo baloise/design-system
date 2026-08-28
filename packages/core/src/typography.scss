@@ -1,7 +1,7 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
 @mixin content($margin: true) {
-  font-family: var(--ds-alias-text-family-body);
+  font-family: var(--ds-alias-text-family-text);
   font-weight: var(--ds-alias-text-weight-regular);
 
   strong,
@@ -17,13 +17,18 @@
   h6,
   ds-heading {
     font-family: var(--ds-alias-text-family-heading);
-    font-weight: var(--ds-heading-font-weight);
+    font-weight: var(--ds-alias-text-weight-bold);
+
+    &.subtitle {
+      font-weight: var(--ds-alias-text-weight-light);
+    }
   }
 
   @for $i from 1 through 5 {
     h#{$i},
     [role='heading'][aria-level='#{$i}'] {
-      font-size: var(--ds-heading-#{$i}-size-device);
+      font-size: var(--ds-heading-level-#{$i}-font-size);
+      line-height: var(--ds-heading-level-#{$i}-line-height);
     }
   }
 

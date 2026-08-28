@@ -223,6 +223,76 @@ export const DownloadListHtml = Story({
 })
 DownloadListHtml.storyName = '🌍 Download List'
 
+export const Inverted = Story({
+  args: {
+    inverted: true,
+  },
+  ...withRender(
+    ({ ...args }) => `
+<div class="bg-primary p-normal">
+  <ds-list ${props(args)}>
+    <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
+    <ds-item
+      variant="link"
+      action-icon="link-external"
+      label="External Link"
+      description="Description"
+      href="www.helvetia.com"
+      target="_blank"
+    ></ds-item>
+    <ds-item
+      disabled
+      variant="link"
+      action-icon="link-external"
+      label="Disabled Link"
+      description="Description"
+      href="www.helvetia.com"
+      target="_blank"
+    ></ds-item>
+  </ds-list>
+</div>
+  `,
+  ),
+})
+Inverted.storyName = '🧩 Inverted'
+
+export const InvertedHtml = Story({
+  args: {},
+  ...withRender(
+    () => `
+<div class="bg-primary p-normal">
+  <ul class="list is-inverted">
+    <li>
+      <a class="item" href="www.helvetia.com" target="_blank">
+        <span class="item-content">Internal Link</span>
+        <ds-icon name="nav-go-right"></ds-icon>
+      </a>
+    </li>
+    <li>
+      <a class="item" href="www.helvetia.com" target="_blank">
+        <span class="item-content">
+          <span class="item-title">External Link</span>
+          <span class="item-text">Description</span>
+        </span>
+        <ds-icon name="link"></ds-icon>
+      </a>
+    </li>
+    <li>
+      <a class="item is-disabled" aria-disabled="true" tabindex="-1">
+        <span class="item-content">
+          <span class="item-title">Disabled Link</span>
+          <span class="item-text">Description</span>
+        </span>
+        <ds-icon name="link" disabled></ds-icon>
+      </a>
+    </li>
+  </ul>
+</div>
+  `,
+  ),
+})
+InvertedHtml.storyName = '🌍 Inverted'
+
 export const AccordionList = Story({
   args: {},
   ...withRender(

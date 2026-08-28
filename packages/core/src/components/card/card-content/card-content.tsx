@@ -24,6 +24,11 @@ export class CardContent implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
+
   render() {
     return (
       <Host>
