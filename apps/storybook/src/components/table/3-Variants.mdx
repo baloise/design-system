@@ -82,16 +82,16 @@ npm install --save @baloise/ds-ag-grid ag-grid-community
 
 ### Theming
 
-`helvetiaGridTheme` is a Theming API theme built with AG Grid's own `themeQuartz.withParams(...)`. Its params are
+`designSystemGridTheme` is a Theming API theme built with AG Grid's own `themeQuartz.withParams(...)`. Its params are
 `var(--ds-alias-*)` strings pointing at the live `@baloise/ds-tokens` cascade, so the grid re-themes itself whenever
 the token cascade changes (brand override, dark mode) — no rebuild, no new package version.
 
 ```typescript
-import { helvetiaGridTheme } from '@baloise/ds-ag-grid'
+import { designSystemGridTheme } from '@baloise/ds-ag-grid'
 import { createGrid } from 'ag-grid-community'
 
 createGrid(gridDiv, {
-  theme: helvetiaGridTheme,
+  theme: designSystemGridTheme,
   columnDefs,
   rowData,
 })

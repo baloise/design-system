@@ -9,7 +9,7 @@ export type { TagCellRendererOptions } from './tag-cell-renderer'
 export { createTextCellRenderer } from './text-cell-renderer'
 export type { TextCellRendererOptions } from './text-cell-renderer'
 
-export const helvetiaGridThemeParams = {
+export const designSystemGridThemeParams = {
   accentColor: 'var(--ds-alias-background-color-primary)',
   backgroundColor: 'var(--ds-table-background-color)',
   foregroundColor: 'var(--ds-table-color)',
@@ -43,4 +43,4 @@ export const helvetiaGridThemeParams = {
   focusShadow: 'none',
 }
 
-export const helvetiaGridTheme = themeQuartz.withParams(helvetiaGridThemeParams)
+export const designSystemGridTheme = themeQuartz.withParams(designSystemGridThemeParams)

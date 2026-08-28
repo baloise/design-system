@@ -3,7 +3,7 @@ import {
   createButtonCellRenderer,
   createTagCellRenderer,
   createTextCellRenderer,
-  helvetiaGridTheme,
+  designSystemGridTheme,
 } from '@baloise/ds-ag-grid'
 import { AllCommunityModule, createGrid, ModuleRegistry, type GridOptions } from 'ag-grid-community'
 import type { Meta, StoryObj } from '@storybook/html-vite'
@@ -161,7 +161,7 @@ const renderGrid = (container: HTMLElement) => {
   gridDiv.style.height = '100%'
   container.appendChild(gridDiv)
   createGrid(gridDiv, {
-    theme: helvetiaGridTheme,
+    theme: designSystemGridTheme,
     columnDefs,
     rowData,
     rowSelection: { mode: 'multiRow' },
@@ -189,7 +189,7 @@ const meta: Meta = {
 export default meta
 
 /**
- * `helvetiaGridTheme` themes AG Grid's headers and cells using
+ * `designSystemGridTheme` themes AG Grid's headers and cells using
  * `var(--ds-alias-*)` params, which re-resolve automatically against
  * whichever brand's token cascade is active. Use the "Theme" toggle in the
  * toolbar above to switch between Helvetia and TCS — TCS tokens aren't

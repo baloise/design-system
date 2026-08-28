@@ -4,7 +4,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 ## Overview
 
-**packages/ag-grid** (`@baloise/ds-ag-grid`) is a thin, published binding layer that exposes `helvetiaGridTheme`, a token-bound theme for [AG Grid](https://www.ag-grid.com/)'s v33+ [Theming API](https://www.ag-grid.com/javascript-data-grid/theming/). It is not a Stencil web component — there is no markup, no Shadow DOM, and no `ComponentInterface`/`Loggable` contract. It is a plain TypeScript config-object package, structurally closest to [[packages/react|packages/react/CONTEXT.md]] (thin wrapper, `tsc`-only build).
+**packages/ag-grid** (`@baloise/ds-ag-grid`) is a thin, published binding layer that exposes `designSystemGridTheme`, a token-bound theme for [AG Grid](https://www.ag-grid.com/)'s v33+ [Theming API](https://www.ag-grid.com/javascript-data-grid/theming/). It is not a Stencil web component — there is no markup, no Shadow DOM, and no `ComponentInterface`/`Loggable` contract. It is a plain TypeScript config-object package, structurally closest to [[packages/react|packages/react/CONTEXT.md]] (thin wrapper, `tsc`-only build).
 
 ## Core Concepts
 
@@ -12,16 +12,16 @@ This document captures domain language, architectural patterns, and key concepts
 
 AG Grid's Theming API builds a `Theme` object from a base theme (`themeQuartz`) plus a set of **params** — named style properties (`accentColor`, `cellFontFamily`, `headerFontFamily`, etc.) that AG Grid resolves into CSS internally. This package's params are not static values (e.g. `'#005EFF'`); they are `var(--ds-alias-*)` **strings** referencing the live `@baloise/ds-tokens` CSS custom property cascade. This is the entire point of the package: the grid re-themes itself whenever the cascade changes (brand override, dark mode, `data-theme="tcs"`) — no theme rebuild, no new package version needed.
 
-### `helvetiaGridThemeParams` vs. `helvetiaGridTheme`
+### `designSystemGridThemeParams` vs. `designSystemGridTheme`
 
 `src/index.ts` exports both:
 
-- `helvetiaGridThemeParams` — the plain object of `var(...)` strings passed to `withParams()`. Exported specifically so the unit test can assert against it directly, without reaching into AG Grid's internal (and explicitly unstable — see below) theme-resolution APIs.
-- `helvetiaGridTheme` — `themeQuartz.withParams(helvetiaGridThemeParams)`, the actual theme object consumers pass to `createGrid()`.
+- `designSystemGridThemeParams` — the plain object of `var(...)` strings passed to `withParams()`. Exported specifically so the unit test can assert against it directly, without reaching into AG Grid's internal (and explicitly unstable — see below) theme-resolution APIs.
+- `designSystemGridTheme` — `themeQuartz.withParams(designSystemGridThemeParams)`, the actual theme object consumers pass to `createGrid()`.
 
 ### Why not test AG Grid's resolved theme output
 
-AG Grid's public `Theme<TParams>` type (from the `ag-stack` dependency) only exposes `withPart`/`withoutPart`/`withParams` — no public getter for resolved param values. The only param-inspection surface (`ThemeImpl._getModeParams()`/`_getParamsCss()`) is marked `@internal AG_GRID_INTERNAL — Not for public use. Can change / be removed at any time.` Testing against that surface would couple this package's test suite to an API AG Grid explicitly reserves the right to break. Testing `helvetiaGridThemeParams` (our own input, not AG Grid's internal output) verifies the same binding correctness without that coupling.
+AG Grid's public `Theme<TParams>` type (from the `ag-stack` dependency) only exposes `withPart`/`withoutPart`/`withParams` — no public getter for resolved param values. The only param-inspection surface (`ThemeImpl._getModeParams()`/`_getParamsCss()`) is marked `@internal AG_GRID_INTERNAL — Not for public use. Can change / be removed at any time.` Testing against that surface would couple this package's test suite to an API AG Grid explicitly reserves the right to break. Testing `designSystemGridThemeParams` (our own input, not AG Grid's internal output) verifies the same binding correctness without that coupling.
 
 ## Key Constraints
 
