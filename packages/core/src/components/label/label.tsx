@@ -66,13 +66,6 @@ export class Label implements DsComponentInterface, DsConfigObserver {
   readonly htmlId: string = `ds-lbl-${labelIds++}`
 
   /**
-   * @internal
-   */
-  @Prop()
-  @Type('boolean')
-  readonly hovered: boolean = false
-
-  /**
    * If `true` the component gets a invalid red style.
    */
   @Prop({ reflect: true })
@@ -87,13 +80,6 @@ export class Label implements DsComponentInterface, DsConfigObserver {
   @Prop()
   @Type('boolean')
   readonly noWrap: boolean = false
-
-  /**
-   * @internal
-   */
-  @Prop()
-  @Type('boolean')
-  readonly pressed: boolean = false
 
   /**
    * If `true` the form control needs to be filled. If it is set to
@@ -117,11 +103,6 @@ export class Label implements DsComponentInterface, DsConfigObserver {
   @Prop({ reflect: true })
   @Type('boolean')
   readonly valid: boolean = false
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
 
   /**
    * PUBLIC LISTENERS
@@ -153,8 +134,6 @@ export class Label implements DsComponentInterface, DsConfigObserver {
     return (
       <Host
         class={{
-          'is-hovered': this.hovered,
-          'is-pressed': this.pressed,
           'is-disabled': this.disabled,
           'is-valid': this.valid,
           'is-invalid': this.invalid,

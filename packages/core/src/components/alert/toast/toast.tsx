@@ -51,7 +51,7 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
    */
   @Prop()
   @OneOf(TOAST_COLORS)
-  readonly color: ToastColor = 'base'
+  readonly color?: ToastColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -307,13 +307,6 @@ export class Toast implements DsComponentInterface, AlertComponent, DsConfigObse
             }
             color={this.color}
             size="md"
-            shape={
-              this.color === 'warning'
-                ? 'triangle'
-                : this.color === 'danger' || this.color === 'success' || this.color === 'info'
-                  ? 'circle'
-                  : undefined
-            }
           ></ds-icon>
         )}
         {hasValue(svgContent) && <ds-icon id="icon" part="icon" svg={svgContent}></ds-icon>}

@@ -24,10 +24,8 @@ const meta: Meta<Args> = {
         disabled: 'is-disabled',
         wide: 'is-wide',
         inverted: 'is-inverted',
-        dashed: 'is-dashed',
         square: 'is-square',
         loading: 'is-loading',
-        rounded: 'is-rounded',
       },
       args,
       'button',
@@ -73,12 +71,6 @@ export const Variants = Story({
   <ds-button color="tertiary">Tertiary</ds-button>
 </ds-button-group>
 <ds-button-group class="mt-normal">
-  <ds-button color="tertiary-purple">Tertiary Purple</ds-button>
-  <ds-button color="tertiary-red">Tertiary Red</ds-button>
-  <ds-button color="tertiary-yellow">Tertiary Yellow</ds-button>
-  <ds-button color="tertiary-green">Tertiary Green</ds-button>
-</ds-button-group>
-<ds-button-group class="mt-normal">
   <ds-button color="link">Link</ds-button>
 </ds-button-group>`,
   ),
@@ -91,12 +83,6 @@ export const VariantsHtml = Story({
   <button class="button is-primary">Primary</button>
   <button class="button is-secondary">Secondary</button>
   <button class="button is-tertiary">Tertiary</button>
-</div>
-<div class="buttons mt-normal">
-  <button class="button is-tertiary-purple">Tertiary Purple</button>
-  <button class="button is-tertiary-red">Tertiary Red</button>
-  <button class="button is-tertiary-yellow">Tertiary Yellow</button>
-  <button class="button is-tertiary-green">Tertiary Green</button>
 </div>
 <div class="buttons mt-normal">
   <button class="button is-link">Link</button>
@@ -208,62 +194,6 @@ export const StatesHtml = Story({
 })
 StatesHtml.storyName = '🌍 States'
 
-export const Dashed = Story({
-  ...withRender(
-    () => `<ds-button-group>
-  <ds-button color="tertiary-purple" dashed>Tertiary Purple</ds-button>
-  <ds-button color="tertiary-red" dashed>Tertiary Red</ds-button>
-  <ds-button color="tertiary-yellow" dashed>Tertiary Yellow</ds-button>
-  <ds-button color="tertiary-green" dashed>Tertiary Green</ds-button>
-</ds-button-group>
-<ds-button-group class="mt-lg">
-  <ds-button color="tertiary-purple" size="lg" dashed icon="plus"> Purple </ds-button>
-  <ds-button color="tertiary-red" size="lg" dashed icon="plus"> Red </ds-button>
-  <ds-button color="tertiary-yellow" size="lg" dashed icon="plus"> Yellow </ds-button>
-  <ds-button color="tertiary-green" size="lg" dashed icon="plus"> Green </ds-button>
-</ds-button-group>`,
-  ),
-})
-Dashed.storyName = '🧩 Dashed'
-
-export const DashedHtml = Story({
-  ...withRender(
-    () => `<div class="buttons">
-  <button class="button is-tertiary-purple is-dashed">
-    Tertiary Purple
-  </button>
-  <button class="button is-tertiary-red is-dashed">
-    Tertiary Red
-  </button>
-  <button class="button is-tertiary-yellow is-dashed">
-    Tertiary Yellow
-  </button>
-  <button class="button is-tertiary-green is-dashed">
-    Tertiary Green
-  </button>
-</div>
-<div class="buttons mt-lg">
-  <button class="button is-tertiary-purple is-dashed is-lg">
-    <ds-icon name="plus" filled shape="circle" size="md"></ds-icon>
-    Purple
-  </button>
-  <button class="button is-tertiary-red is-dashed is-lg">
-    <ds-icon name="plus" filled shape="circle" size="md"></ds-icon>
-    Red
-  </button>
-  <button class="button is-tertiary-yellow is-dashed is-lg">
-    <ds-icon name="plus" filled shape="circle" size="md"></ds-icon>
-    Yellow
-  </button>
-  <button class="button is-tertiary-green is-dashed is-lg">
-    <ds-icon name="plus" filled shape="circle" size="md"></ds-icon>
-    Green
-  </button>
-</div>`,
-  ),
-})
-DashedHtml.storyName = '🌍 Dashed'
-
 export const AlertButtons = Story({
   ...withRender(
     () => `<ds-button-group>
@@ -293,7 +223,7 @@ export const SquareButtons = Story({
     () => `<ds-button-group>
   <ds-button square icon="plus"></ds-button>
   <ds-button square color="secondary" icon="plus"></ds-button>
-  <ds-button circle color="tertiary-purple" icon="plus"></ds-button>
+  <ds-button square color="tertiary" icon="plus"></ds-button>
 </ds-button-group>`,
   ),
 })
@@ -308,7 +238,7 @@ export const SquareButtonsHtml = Story({
   <button class="button is-square is-secondary">
     <ds-icon name="plus"></ds-icon>
   </button>
-  <button class="button is-circle is-tertiary-purple">
+  <button class="button is-square is-tertiary">
     <ds-icon name="plus"></ds-icon>
   </button>
 </div>`,
@@ -319,7 +249,7 @@ SquareButtonsHtml.storyName = '🌍 Square Buttons'
 export const NoWrap = Story({
   ...withRender(
     () => `<div class="buttons">
-  <button class="button has-no-wrap is-tertiary-purple">
+  <button class="button has-no-wrap is-tertiary">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis vulputate lorem.
   </button>
 </div>`,

@@ -138,7 +138,7 @@
     ds-button,
     .button {
       --button-mt: 1rem;
-      --button-font-size: var(--ds-button-size-sm);
+      --button-font-size: var(--ds-button-size-sm-font-size);
       --button-min-height: 2rem;
       --button-min-width: 2rem;
       --button-padding-inline: 0.75rem;
@@ -149,7 +149,7 @@
   ::slotted(ds-close),
   ::slotted(ds-button-group) {
     --button-mt: 1rem;
-    --button-font-size: var(--ds-button-size-sm);
+    --button-font-size: var(--ds-button-size-sm-font-size);
     --button-min-height: 2rem;
     --button-min-width: 2rem;
     --button-padding-inline: 0.75rem;

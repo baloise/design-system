@@ -44,7 +44,7 @@ export class Text implements DsComponentInterface {
    */
   @Prop()
   @OneOf(TEXT_ALIGNS)
-  readonly align: TextAlign = ''
+  readonly align?: TextAlign
 
   /**
    * If `true` the text is bold
@@ -58,7 +58,7 @@ export class Text implements DsComponentInterface {
    */
   @Prop()
   @OneOf(TEXT_COLORS)
-  readonly color: TextColor = ''
+  readonly color?: TextColor
 
   /**
    * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -73,13 +73,6 @@ export class Text implements DsComponentInterface {
   @Prop()
   @Type('boolean')
   readonly heading: boolean = false
-
-  /**
-   * @internal
-   */
-  @Prop()
-  @Type('boolean')
-  readonly hovered: boolean = false
 
   /**
    * If `true` the text is shown as a display inline
@@ -112,13 +105,6 @@ export class Text implements DsComponentInterface {
   readonly noWrap: boolean = false
 
   /**
-   * @internal
-   */
-  @Prop()
-  @Type('boolean')
-  readonly pressed: boolean = false
-
-  /**
    * If `true` adds a text shadow to improve readability on image background
    */
   @Prop()
@@ -137,7 +123,7 @@ export class Text implements DsComponentInterface {
    */
   @Prop()
   @OneOf(TEXT_SPACES)
-  readonly space: TextSpace = ''
+  readonly space?: TextSpace
 
   /**
    * If `true` the text has subtitle font family
@@ -147,52 +133,19 @@ export class Text implements DsComponentInterface {
   readonly subtitle: boolean = false
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private parseColor() {
-    if (this.disabled) {
-      return 'grey'
-    }
-
-    if (this.invalid) {
-      if (this.pressed) {
-        return 'danger-darker'
-      }
-
-      if (this.hovered) {
-        return 'danger-dark'
-      }
-      return 'danger'
-    }
-
-    const color = this.inverted ? 'white' : this.color === 'info' ? 'primary' : this.color
-
-    if (this.pressed) {
-      return 'primary-dark'
-    }
-
-    if (this.hovered) {
-      return 'light-blue'
-    }
-
-    return color
-  }
-
-  /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
     const Text = this.inline ? 'span' : 'p'
-    const color = this.parseColor()
 
     return (
       <Host
         class={{
-          [`is-${color}`]: hasValue(color),
+          [`is-${this.color}`]: hasValue(this.color),
+          'is-invalid': this.invalid,
+          'is-disabled': this.disabled,
           'is-bold': this.bold,
           'has-shadow': this.shadow,
           'is-inline': this.inline,

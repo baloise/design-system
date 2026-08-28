@@ -106,6 +106,8 @@ describe('computeDiff', () => {
         resolvedValue: undefined,
         resolutionError: null,
         figmaId: null,
+        responsive: null,
+        resolvedResponsive: null,
       },
     })
 
@@ -141,6 +143,8 @@ describe('computeDiff', () => {
         resolvedValue: undefined,
         resolutionError: null,
         figmaId: null,
+        responsive: null,
+        resolvedResponsive: null,
       },
     })
 
@@ -370,5 +374,83 @@ describe('applyDiffToDocument', () => {
     expect(colorGroup.Black).toBeUndefined()
     const white = node(result, '🌐 Global', '🌈 Color', 'White')
     expect((white.$value as { hex: string }).hex).toBe('#FFFFFF')
+  })
+})
+
+// docs/plans/responsive-dimension-token-plan.md
+describe('responsive dimension extension', () => {
+  const dimensionDoc = {
+    '🔗 Alias': {
+      SpaceLg: { $type: 'dimension', $value: { value: 16, unit: 'px' } },
+    },
+  }
+
+  const responsiveValue = {
+    mobile: { value: 16, unit: 'px' },
+    tablet: { value: 24, unit: 'px' },
+    desktop: { value: 32, unit: 'px' },
+  }
+
+  it('writes $extensions.com.helvetia.responsive when an update entry carries a responsive value', () => {
+    const result = applyDiffToDocument(dimensionDoc, [
+      {
+        kind: 'update',
+        layer: 'Alias',
+        oldPath: ['🔗 Alias', 'SpaceLg'],
+        newPath: ['🔗 Alias', 'SpaceLg'],
+        type: 'dimension',
+        value: { value: 16, unit: 'px' },
+        before: dimensionDoc['🔗 Alias'].SpaceLg.$value,
+        responsive: responsiveValue,
+      },
+    ])
+
+    const spaceLg = node(result, '🔗 Alias', 'SpaceLg')
+    expect(spaceLg.$extensions).toEqual({ 'com.helvetia.responsive': responsiveValue })
+  })
+
+  it('removes $extensions.com.helvetia.responsive when a token is toggled back to fixed', () => {
+    const responsiveDoc = {
+      '🔗 Alias': {
+        SpaceLg: {
+          $type: 'dimension',
+          $value: { value: 16, unit: 'px' },
+          $extensions: { 'com.helvetia.responsive': responsiveValue },
+        },
+      },
+    }
+
+    const result = applyDiffToDocument(responsiveDoc, [
+      {
+        kind: 'update',
+        layer: 'Alias',
+        oldPath: ['🔗 Alias', 'SpaceLg'],
+        newPath: ['🔗 Alias', 'SpaceLg'],
+        type: 'dimension',
+        value: { value: 16, unit: 'px' },
+        before: responsiveDoc['🔗 Alias'].SpaceLg.$value,
+        responsive: null,
+      },
+    ])
+
+    const spaceLg = node(result, '🔗 Alias', 'SpaceLg')
+    expect(spaceLg.$extensions).toBeUndefined()
+  })
+
+  it('detects a tablet/desktop-only edit as a change even though effectiveValue (mobile-mirrored) is unchanged', () => {
+    const original = flattenTokenDocument(dimensionDoc).map(t =>
+      t.name === 'SpaceLg' ? { ...t, responsive: responsiveValue } : t,
+    )
+    const working = toWorking(original).map(w =>
+      w.token.name === 'SpaceLg'
+        ? { ...w, token: { ...w.token, responsive: { ...responsiveValue, desktop: { value: 40, unit: 'px' } } } }
+        : w,
+    )
+
+    expect(describeChangeStatus(original[0], working[0].token)).toBe('value')
+
+    const diff = computeDiff(original, working)
+    expect(diff).toHaveLength(1)
+    expect(diff[0]).toMatchObject({ kind: 'update' })
   })
 })

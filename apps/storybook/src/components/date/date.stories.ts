@@ -85,3 +85,12 @@ export const Disabled = Story({
   },
 })
 Disabled.storyName = '🧩 Disabled'
+
+export const Inline = Story({
+  args: {
+    label: 'Date',
+    description: 'Description',
+    inline: true,
+  },
+})
+Inline.storyName = '🧩 Inline'

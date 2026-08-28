@@ -1,0 +1,87 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <script type="module" src="/build/design-system.esm.js"></script>
+    <script nomodule src="/build/design-system.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section data-testid="size">
+        <span>Size</span>
+        <div class="flex gap-sm">
+          <div class="text-none">none</div>
+          <div class="text-xs">xs</div>
+          <div class="text-sm">sm</div>
+          <div class="text-base">base</div>
+          <div class="text-md">md</div>
+          <div class="text-lg">lg</div>
+          <div class="text-xl">xl</div>
+          <div class="text-2xl">2xl</div>
+          <div class="text-3xl">3xl</div>
+          <div class="text-4xl">4xl</div>
+          <div class="text-5xl">5xl</div>
+        </div>
+      </section>
+
+      <section data-testid="color">
+        <span>Color</span>
+        <div class="flex gap-sm">
+          <div class="text-primary">primary</div>
+          <div class="text-grey">grey</div>
+          <div class="text-hint">hint</div>
+          <div class="text-disabled">disabled</div>
+          <div class="text-placeholder">placeholder</div>
+          <div class="text-warning">warning</div>
+          <div class="text-success">success</div>
+          <div class="text-danger">danger</div>
+          <div class="bg-primary-6 text-white">white</div>
+          <div class="bg-primary-6 text-inverted-primary">inverted-primary</div>
+          <div class="bg-primary-6 text-inverted-disabled">inverted-disabled</div>
+        </div>
+      </section>
+
+      <section data-testid="family">
+        <span>Family</span>
+        <div class="flex gap-sm">
+          <div class="font-family-heading">heading</div>
+          <div class="font-family-heading font-weight-regular">regular</div>
+          <div class="font-family-heading font-weight-light">light</div>
+          <div class="font-family-heading font-weight-bold">bold</div>
+        </div>
+        <div class="flex gap-sm">
+          <div class="font-family-text">text</div>
+          <div class="font-family-text font-weight-light">light</div>
+          <div class="font-family-text font-weight-regular">regular</div>
+          <div class="font-family-text font-weight-bold">bold</div>
+        </div>
+      </section>
+
+      <section data-testid="weight">
+        <span>Weight</span>
+        <div class="flex gap-sm">
+          <div class="font-family-heading font-weight-light">light</div>
+          <div class="font-family-heading font-weight-bold">bold</div>
+        </div>
+        <div class="flex gap-sm">
+          <div class="font-family-text">regular</div>
+          <div class="font-family-text font-weight-bold">bold</div>
+        </div>
+      </section>
+
+      <section data-testid="line-height">
+        <span>Line height</span>
+        <div class="flex gap-sm">
+          <div class="line-height-single">single line of text</div>
+          <div class="line-height-heading" style="width: 4rem">heading line height wraps across several lines</div>
+          <div class="line-height-double" style="width: 4rem">double line height wraps across several lines</div>
+          <div class="line-height-text" style="width: 4rem">text line height wraps across several lines</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

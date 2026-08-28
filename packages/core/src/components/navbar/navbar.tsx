@@ -390,7 +390,7 @@ export class Navbar implements DsComponentInterface, DsBreakpointObserver, DsCon
                     aria-controls="sidebar"
                     onClick={() => this.handleHamburgerClick()}
                   >
-                    <ds-icon name={isMenuOpen ? 'close' : 'menu-bars'} size="" color="white"></ds-icon>
+                    <ds-icon name={isMenuOpen ? 'close' : 'menu-bars'} inverted></ds-icon>
                   </button>
                 )}
               </div>

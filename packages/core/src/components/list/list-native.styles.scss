@@ -26,7 +26,7 @@ ol.ordered-list {
 }
 
 ol.ordered-list li {
-  @include vars.local(ordered-list-marker-color, var(--ds-list-marker-base));
+  @include vars.local(ordered-list-marker-color, var(--ds-list-marker-color-primary));
 }
 
 ul.unordered-list {
@@ -36,7 +36,7 @@ ul.unordered-list {
 }
 
 ul.unordered-list li {
-  @include vars.local(unordered-list-marker-color, var(--ds-list-marker-base));
+  @include vars.local(unordered-list-marker-color, var(--ds-list-marker-color-primary));
   @include vars.local(unordered-list-marker-radius, var(--ds-list-marker-radius));
   @include vars.local(
     unordered-list-marker-icon,
@@ -212,14 +212,14 @@ $color-variants: ('purple', 'red', 'yellow', 'green');
   &.is-#{$color} > li,
   & > li.is-#{$color},
   & > li.has-bullet-#{$color} {
-    --mod-unordered-list-marker-color: var(--ds-list-marker-#{$color});
+    --mod-unordered-list-marker-color: var(--ds-list-marker-color-#{$color});
   }
 }
 
 // Default color is green
 ul.unordered-list.has-bullet-circle > li,
 ul.unordered-list > li.has-bullet-circle {
-  --mod-unordered-list-marker-color: var(--ds-list-marker-green);
+  --mod-unordered-list-marker-color: var(--ds-list-marker-color-green);
 }
 
 @each $color in $color-variants {
@@ -233,15 +233,15 @@ $icon-variants: ('success', 'warning', 'danger');
 ul.unordered-list {
   &.is-success > li,
   & > li.is-success {
-    --mod-unordered-list-marker-color: var(--ds-list-marker-success);
+    --mod-unordered-list-marker-color: var(--ds-list-marker-color-success);
   }
   &.is-warning > li,
   & > li.is-warning {
-    --mod-unordered-list-marker-color: var(--ds-list-marker-warning);
+    --mod-unordered-list-marker-color: var(--ds-list-marker-color-warning);
   }
   &.is-danger > li,
   & > li.is-danger {
-    --mod-unordered-list-marker-color: var(--ds-list-marker-danger);
+    --mod-unordered-list-marker-color: var(--ds-list-marker-color-danger);
   }
 }
 
@@ -261,6 +261,6 @@ ol.ordered-list.is-inverted,
 ul.unordered-list.is-inverted {
   color: var(--ds-alias-text-color-white);
 
-  --mod-ordered-list-marker-color: var(--ds-alias-text-color-white);
-  --mod-unordered-list-marker-color: var(--ds-alias-text-color-white);
+  --mod-ordered-list-marker-color: var(--ds-list-marker-color-inverted);
+  --mod-unordered-list-marker-color: var(--ds-list-marker-color-inverted);
 }

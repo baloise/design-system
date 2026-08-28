@@ -122,4 +122,59 @@ describe('buildSyncState', () => {
       buildSyncState({ existingState: null, baseTokens: withoutId, mergeCommitSha: 'sha', syncedAt: 'now' }),
     ).toThrow(/has no variableId/)
   })
+
+  it("fans a shadow token's 5-id variableId out into 5 tagged baseline entries", () => {
+    const shadowValue = { kind: 'literal', value: { color: {}, offsetX: {}, offsetY: {}, blur: {}, spread: {} } }
+    const shadowTokens = [
+      {
+        path: ['Global', 'Shadow', 'Base'],
+        type: 'shadow',
+        value: shadowValue,
+        variableId: { offsetX: 'id-x', offsetY: 'id-y', blur: 'id-b', spread: 'id-s', color: 'id-c' },
+      },
+    ]
+
+    const state = buildSyncState({
+      existingState: null,
+      baseTokens: shadowTokens,
+      mergeCommitSha: 'sha',
+      syncedAt: 'now',
+    })
+
+    expect(Object.keys(state.entries).sort()).toEqual(['id-b', 'id-c', 'id-s', 'id-x', 'id-y'])
+    expect(state.entries['id-c']).toEqual({
+      tokenPath: ['Global', 'Shadow', 'Base'],
+      subProperty: 'color',
+      resolvedValue: shadowValue,
+      lastModifiedSource: 'code',
+      lastModifiedAt: 'now',
+    })
+  })
+
+  it('throws for a multi-layer shadow token with no variableId, same as any other never-synced token — every shadow shape is now eligible for sync', () => {
+    const multiLayerToken = {
+      path: ['Global', 'Shadow', 'Stacked'],
+      type: 'shadow',
+      value: { kind: 'literal', value: [{}, {}] },
+    }
+    expect(() =>
+      buildSyncState({ existingState: null, baseTokens: [multiLayerToken], mergeCommitSha: 'sha', syncedAt: 'now' }),
+    ).toThrow('has no variableId')
+  })
+
+  it('builds baseline entries for a multi-layer shadow token once it has a variableId, one per sub-property', () => {
+    const multiLayerToken = {
+      path: ['Global', 'Shadow', 'Stacked'],
+      type: 'shadow',
+      value: { kind: 'literal', value: [{}, {}] },
+      variableId: { offsetX: 'id-x', offsetY: 'id-y', blur: 'id-b', spread: 'id-s', color: 'id-c' },
+    }
+    const state = buildSyncState({
+      existingState: null,
+      baseTokens: [multiLayerToken],
+      mergeCommitSha: 'sha',
+      syncedAt: 'now',
+    })
+    expect(Object.keys(state.entries).sort()).toEqual(['id-b', 'id-c', 'id-s', 'id-x', 'id-y'])
+  })
 })

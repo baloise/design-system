@@ -14,10 +14,12 @@ import {
   Type,
 } from '@utils'
 import {
+  BUTTON_BRAND_SIZES,
   BUTTON_COLORS,
   BUTTON_ELEMENT_TYPES,
   BUTTON_SIZES,
   BUTTON_TARGETS,
+  type ButtonBrandSize,
   type ButtonColor,
   type ButtonElementType,
   type ButtonSize,
@@ -28,6 +30,7 @@ import {
   ButtonFocusDetail,
   ButtonNavigateDetail,
 } from './button.interfaces'
+import { type IconColor } from '../brand-icon/brand-icon.interfaces'
 
 /**
  * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
@@ -35,7 +38,7 @@ import {
  * @slot - Button label text and/or icon children. Rendered inside a `<span part="label">` wrapper.
  * @part native - The native `<button>` or `<a>` element.
  * @part spinner - The loading spinner shown when `loading` is true.
- * @part icon - The leading icon wrapper.
+ * @part icon - The leading icon wrapper (or the brand icon wrapper when `brandIcon` is set).
  * @part label - The text label wrapper (`<span>`).
  * @part icon-right - The trailing icon wrapper.
  */
@@ -90,7 +93,7 @@ export class Button implements DsComponentInterface {
    */
   @Prop()
   @OneOf(BUTTON_SIZES)
-  readonly size: ButtonSize = undefined
+  readonly size?: ButtonSize
 
   /**
    * Specifies the URL of the page the link goes to
@@ -127,13 +130,6 @@ export class Button implements DsComponentInterface {
   readonly download: string = ''
 
   /**
-   * If `true` the button has a dashed border.
-   * */
-  @Prop()
-  @Type('boolean')
-  readonly dashed: boolean = false
-
-  /**
    * If `true` adds a box shadow to improve readability on image background
    * */
   @Prop()
@@ -146,13 +142,6 @@ export class Button implements DsComponentInterface {
   @Prop()
   @Type('boolean')
   readonly square: boolean = false
-
-  /**
-   * If `true` the button is circular and width of the buttons is limited
-   */
-  @Prop()
-  @Type('boolean')
-  readonly circle: boolean = false
 
   /**
    * If `true` the button has a full width
@@ -189,13 +178,6 @@ export class Button implements DsComponentInterface {
   @Type('boolean')
   readonly loading: boolean = false
 
-  /**
-   * If `true` the button is rounded.
-   */
-  @Prop()
-  @Type('boolean')
-  readonly rounded: boolean = false
-
   // /**
   //  * If `true` the button is a popup.
   //  */
@@ -221,6 +203,22 @@ export class Button implements DsComponentInterface {
   @Prop()
   @Type('string')
   readonly iconRight: string = ''
+
+  /**
+   * A brand icon shown above the label instead of the regular leading/trailing icons.
+   * Accepts either a URL to an SVG file or raw `<svg>` markup.
+   * When set, `icon` and `iconRight` are ignored.
+   */
+  @Prop()
+  @Type('string')
+  readonly brandIcon: string = ''
+
+  /**
+   * Size of the brand icon.
+   */
+  @Prop()
+  @OneOf(BUTTON_BRAND_SIZES)
+  readonly brandSize: ButtonBrandSize = 'md'
 
   /**
    * The label of the button will not break
@@ -297,19 +295,6 @@ export class Button implements DsComponentInterface {
   @Event() dsDidRender!: EventEmitter<ButtonDidRenderDetail>
 
   /**
-   * PUBLIC LISTENERS
-   * ─────────────────────────────────────────────────────
-   */
-
-  @Listen('click', { capture: true, target: 'document' })
-  listenToClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
-    }
-  }
-
-  /**
    * LIFECYCLE
    * ─────────────────────────────────────────────────────
    */
@@ -334,12 +319,38 @@ export class Button implements DsComponentInterface {
   }
 
   /**
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenToClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
+  /**
    * EVENT HANDLERS
    * ─────────────────────────────────────────────────────
    */
 
   private get isIconInverted() {
     return this.inverted
+  }
+
+  private get hasBrandIcon() {
+    return hasValue(this.brandIcon)
+  }
+
+  private get isBrandIconSvg() {
+    return this.brandIcon.trim().startsWith('<')
+  }
+
+  private get brandIconColor(): IconColor {
+    const match = this.color.match(/^brand-(purple|red|yellow|green)$/)
+    return match ? (match[1] as IconColor) : undefined
   }
 
   private get leftIconAttrs() {
@@ -402,18 +413,13 @@ export class Button implements DsComponentInterface {
   }
 
   /**
-   * PRIVATE METHODS
-   * ─────────────────────────────────────────────────────
-   */
-
-  /**
    * RENDER
    * ─────────────────────────────────────────────────────
    */
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+    const size = normalizeDeprecatedTShirtSize(this.size) || undefined
     const TagType = !hasValue(this.href) ? 'button' : 'a'
     const attrs =
       TagType === 'button'
@@ -444,12 +450,10 @@ export class Button implements DsComponentInterface {
           [`is-disabled`]: this.disabled,
           [`is-loading`]: this.loading,
           [`is-flat`]: this.flat,
-          [`is-rounded`]: this.rounded,
           [`is-square`]: this.square,
-          [`is-circle`]: this.circle,
-          [`is-dashed`]: this.dashed,
           [`has-shadow`]: this.shadow,
           [`has-no-wrap`]: this.noWrap,
+          [`has-brand-icon`]: this.hasBrandIcon,
         }}
       >
         <TagType
@@ -471,14 +475,21 @@ export class Button implements DsComponentInterface {
           ) : (
             ''
           )}
-          {hasValue(this.icon) ? (
+          {this.hasBrandIcon ? (
+            <ds-brand-icon
+              part="icon"
+              svg={this.isBrandIconSvg ? this.brandIcon : ''}
+              src={this.isBrandIconSvg ? '' : this.brandIcon}
+              size={this.brandSize}
+              color={this.brandIconColor}
+            />
+          ) : hasValue(this.icon) ? (
             <ds-icon
               {...this.leftIconAttrs}
               part="icon"
               class={this.square ? '' : 'icon-left'}
               name={this.icon}
-              size={this.dashed ? 'md' : size}
-              shape={this.dashed ? 'circle' : undefined}
+              size={size}
               turn={this.iconTurn}
               inverted={this.isIconInverted}
             />
@@ -488,7 +499,7 @@ export class Button implements DsComponentInterface {
           <span part="label">
             <slot />
           </span>
-          {hasValue(this.iconRight) ? (
+          {!this.hasBrandIcon && hasValue(this.iconRight) ? (
             <ds-icon
               {...this.leftRightAttrs}
               part="icon-right"

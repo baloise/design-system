@@ -1,6 +1,5 @@
 export const LABEL_WEIGHTS = ['bold', 'regular'] as const
 export const LABEL_SIZES = [
-  '',
   'sm',
   'lg',
   'xl',

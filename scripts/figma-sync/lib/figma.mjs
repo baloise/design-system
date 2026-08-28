@@ -54,37 +54,59 @@ export async function postVariables(fileKey, token, payload) {
 }
 
 /**
- * Resolves the single Variable Collection this sync writes to, and a
- * brand-name -> modeId map — one Figma mode per brand, matched by exact
- * name (docs/adr/0012-brand-modes-not-collections.md). A brand with no
- * matching mode fails loudly: mode auto-creation isn't implemented yet
- * (docs/plans/figma-sync-action-plan.md §8), so a missing mode needs a
- * human to create it in Figma first, same as adding a brand does today.
+ * Resolves one named Variable Collection and a name -> modeId map for the
+ * given required mode names, matched by exact name. A file can hold more
+ * than one collection (the brand collection and the responsive/breakpoint
+ * collection are two independent ones — see findCollectionAndModes/
+ * findResponsiveCollectionAndModes below); this resolves whichever one
+ * `collectionName` names, ignoring the rest. A missing collection or mode
+ * fails loudly rather than auto-creating one: mode/collection
+ * auto-creation for an *existing* file isn't implemented (bootstrap.mjs
+ * only handles the one-time no-collections-at-all case), so a human needs
+ * to create it in Figma first, same as adding a brand does today.
  */
-export function findCollectionAndModes(meta, brandNames) {
-  const collections = Object.values(meta.variableCollections)
-  if (collections.length !== 1) {
+function findNamedCollectionAndModes(meta, collectionName, requiredModeNames) {
+  const collection = Object.values(meta.variableCollections).find(c => c.name === collectionName)
+  if (!collection) {
     throw new Error(
-      `Expected exactly one Figma variable collection in this file, found ${collections.length} — ` +
-        `multi-collection files aren't supported yet.`,
+      `No Figma variable collection named "${collectionName}" found in this file — ` +
+        `run bootstrap (Pull with no existing collections) or create it in Figma first.`,
     )
   }
 
-  const collection = collections[0]
   const modeIdByName = Object.fromEntries(collection.modes.map(mode => [mode.name, mode.modeId]))
 
-  const modeIdByBrand = {}
-  for (const brand of ['Base', ...brandNames]) {
-    const modeId = modeIdByName[brand]
+  const modeIds = {}
+  for (const name of requiredModeNames) {
+    const modeId = modeIdByName[name]
     if (!modeId) {
       throw new Error(
-        `No Figma mode named "${brand}" found in collection "${collection.name}" — create it in Figma before running Pull.`,
+        `No Figma mode named "${name}" found in collection "${collection.name}" — create it in Figma before running Pull.`,
       )
     }
-    modeIdByBrand[brand] = modeId
+    modeIds[name] = modeId
   }
 
-  return { collectionId: collection.id, modeIdByBrand }
+  return { collectionId: collection.id, modeIds }
+}
+
+/**
+ * Resolves the brand collection and a brand-name -> modeId map — one Figma
+ * mode per brand (docs/adr/0012-brand-modes-not-collections.md).
+ */
+export function findCollectionAndModes(meta, brandNames, collectionName = 'Design Tokens') {
+  const { collectionId, modeIds } = findNamedCollectionAndModes(meta, collectionName, ['Base', ...brandNames])
+  return { collectionId, modeIdByBrand: modeIds }
+}
+
+/**
+ * Resolves the responsive/breakpoint collection (docs — MVP scope: Alias
+ * Text.Size/Space/Container.Space Device variables, see lib/figma-value.mjs's
+ * DEVICE_ELIGIBLE_PATH_PREFIXES) and a breakpoint-name -> modeId map.
+ */
+export function findResponsiveCollectionAndModes(meta, collectionName = 'Design Responsive Tokens') {
+  const { collectionId, modeIds } = findNamedCollectionAndModes(meta, collectionName, ['Mobile', 'Tablet', 'Desktop'])
+  return { collectionId, modeIdByBreakpoint: modeIds }
 }
 
 /**

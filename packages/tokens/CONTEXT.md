@@ -13,7 +13,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 ## What are Design Tokens?
 
-Design tokens are **named, reusable design decisions** stored as data rather than hard-coded values. Instead of writing `background-color: #005EFF` in your CSS, you write `background-color: var(--ds-button-primary-color-bg-base)`.
+Design tokens are **named, reusable design decisions** stored as data rather than hard-coded values. Instead of writing `background-color: #005EFF` in your CSS, you write `background-color: var(--ds-button-primary-color-background-base)`.
 
 This approach provides:
 
@@ -162,8 +162,8 @@ Common categories in the Alias layer:
 
 - **Space** (2XS–4XL, plus responsive variants)
 - **Color** (backgrounds, borders, text, with light/dark variants)
-- **Border** (width, color, radius)
-- **Text** (size, color, family, weight, line-height, shadow)
+- **Border** (width, color, radius, plus a pilot set of `$type: "border"` composite tokens under `▭ Border.Composite.*` — `{color, width, style}`, each sub-value a reference to the existing `Color`/`Width`/new `Style` primitives; see `docs/plans/border-token-type-plan.md`)
+- **Text** (size, color, family, weight, line-height, shadow, plus a `$type: "typography"` composite type — `{fontFamily, fontSize, fontWeight, lineHeight}` — fully supported in Toky/Style Dictionary/Figma sync, but no actual `Typography.*` tokens exist yet; the responsive-`fontSize` question a real pilot needs is still open. See `docs/plans/typography-token-type-plan.md`.)
 - **Opacity** (hidden, half, disabled, backdrop, full)
 - **Z-Index** (deep, masked, sticky, navigation, popup, modal, toast, tooltip)
 - **Shadow** (box, text)
@@ -206,15 +206,61 @@ Token names are composed of ordered segments that narrow scope:
 **Example: Button Primary Color**
 
 ```
---ds-button-primary-color-bg-base
-  │    │       │       │     │  │
-  │    │       │       │     │  └─ state (base, hover, active, disabled)
-  │    │       │       │     └─ property (bg = background, text = color, border)
+--ds-button-primary-color-background-base
+  │    │       │       │     │        │
+  │    │       │       │     │        └─ state (base, hover, active, disabled) * only if we have more than base!
+  │    │       │       │     └─ property (background, color, border)
   │    │       │       └─ category (color, font, space)
   │    │       └─ variant (primary, secondary, ghost)
   │    └─ component (button, input, tag)
   └─ namespace (--ds)
 ```
+
+### Naming Order Exceptions
+
+The base anatomy above is the default. Two component shapes don't fit it cleanly, so they break the order deliberately rather than forcing every token into the same eight slots.
+
+#### Exception 1: Sub-Variants
+
+Some components have a variant that itself splits into sub-variants (e.g. the spinner has variants `circle`/`logo`, each with its own `primary`/`inverted` sub-variant). Insert `sub-variant` right after `variant`:
+
+```
+--ds  -  component  -  variant  -  sub-variant  -  category  -  property  -  state
+```
+
+**Example: Spinner Circle Primary Color**
+
+```
+--ds-spinner-circle-primary-color-background
+  │    │       │      │       │      │
+  │    │       │      │       │      └─ property (background, text = color, border)
+  │    │       │      │       └─ category (color, font, space)
+  │    │       │      └─ sub-variant (primary, inverted)
+  │    │       └─ variant (circle, logo)
+  │    └─ component (spinner, input, tag)
+  └─ namespace (--ds)
+```
+
+#### Exception 2: Category-First Modifiers
+
+Some components have no `variant`/`element` structure at all — only a flat set of modifiers per category (e.g. heading only varies by `size` and `color`). In that case, drop straight from `component` to `category`, then the modifier:
+
+```
+--ds  -  component  -  category  -  sub-variant
+```
+
+**Example: Heading Color**
+
+```
+--ds-heading-color-primary
+  │    │       │      │
+  │    │       │      └─ sub-variant (primary, inverted)
+  │    │       └─ category (color, font, space)
+  │    └─ component (heading, spinner, tag)
+  └─ namespace (--ds)
+```
+
+The same pattern applies to `--ds-heading-size-lg` (category `size`, sub-variant `lg`). When a modifier combines two concepts — e.g. weight and display size in `--ds-heading-bold-display1-font-family` — treat the combined string (`bold-display1`) as a single variant segment rather than splitting it further.
 
 ### Naming Rules
 
@@ -230,8 +276,8 @@ Token names are composed of ordered segments that narrow scope:
 
 **State is required** for colors:
 
-- ✅ `--ds-button-primary-color-bg-base`
-- ❌ `--ds-button-primary-color-bg` (missing state)
+- ✅ `--ds-button-primary-color-background-base`
+- ❌ `--ds-button-primary-color-background` (missing state)
 
 ## Notable Patterns
 

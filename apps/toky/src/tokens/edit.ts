@@ -1,5 +1,6 @@
 import { KEY_BY_LAYER } from './flatten'
-import type { FlatToken, TokenLayer } from './types'
+import { RESPONSIVE_DIMENSION_EXTENSION_KEY } from './types'
+import type { FigmaId, FlatToken, ResponsiveDimensionValue, TokenLayer } from './types'
 
 /**
  * Working-copy wrapper used while editing. `id` is the token's *original*
@@ -33,7 +34,14 @@ export interface TokenDiffEntry {
   // applyDiffToDocument, which writes it into $extensions — without this,
   // a freshly created token's Figma link is dropped on write and the next
   // pull can't recognize it, proposing a duplicate create (see docs/adr/0002).
-  figmaId?: string | null
+  figmaId?: FigmaId | null
+  // A responsive dimension token's breakpoint values (see
+  // docs/plans/responsive-dimension-token-plan.md) — always the working
+  // token's current value (null if it isn't/no-longer responsive), never
+  // "unknown, don't touch", so applyDiffToDocument can tell "clear the
+  // extension" apart from "nothing to write" the same way it already can
+  // for figmaId.
+  responsive?: ResponsiveDimensionValue | null
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -55,8 +63,17 @@ function isUnsafeKey(key: string): boolean {
 // and hand a full list of pairs to Object.fromEntries, which builds a brand
 // new object in one step — there's no step where `node`'s own keys are
 // mutated through a computed accessor at all.
+// Preserves the key's existing position when it's already present — only a
+// brand-new key gets appended at the end. Without this, rebuilding an
+// ancestor whose child changed (see deletePath/setPath below) would move
+// that ancestor's key to the end of *its* parent on every edit, cascading
+// up and reordering unrelated sibling keys the whole way to the document
+// root purely from a single leaf edit or delete.
 function withEntry(node: Record<string, unknown>, key: string, value: unknown): Record<string, unknown> {
-  return Object.fromEntries([...Object.entries(node).filter(([k]) => k !== key), [key, value]])
+  if (key in node) {
+    return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, k === key ? value : v]))
+  }
+  return Object.fromEntries([...Object.entries(node), [key, value]])
 }
 
 function withoutEntry(node: Record<string, unknown>, key: string): Record<string, unknown> {
@@ -83,7 +100,12 @@ export function describeChangeStatus(originalToken: FlatToken | undefined, token
 
   if (
     JSON.stringify(effectiveValue(token)) !== JSON.stringify(effectiveValue(originalToken)) ||
-    token.type !== originalToken.type
+    token.type !== originalToken.type ||
+    // effectiveValue only covers $value/referenceTarget — a responsive
+    // dimension token's tablet/desktop breakpoints live in $extensions, so
+    // an edit to just those (mobile unchanged) wouldn't otherwise change
+    // effectiveValue at all and would go undetected.
+    JSON.stringify(token.responsive ?? null) !== JSON.stringify(originalToken.responsive ?? null)
   ) {
     return 'value'
   }
@@ -111,6 +133,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         value: effectiveValue(token),
         before: undefined,
         figmaId: token.figmaId ?? undefined,
+        responsive: token.responsive,
       })
       continue
     }
@@ -122,7 +145,10 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
       // A figmaId-only change (e.g. Pull adopting an already-existing,
       // previously-unlinked token by path) must still produce an update —
       // otherwise it's invisible to computeDiff and never gets written.
-      (token.figmaId ?? null) !== (originalToken.figmaId ?? null)
+      (token.figmaId ?? null) !== (originalToken.figmaId ?? null) ||
+      // Same reasoning as describeChangeStatus above — a tablet/desktop-only
+      // edit doesn't touch effectiveValue.
+      JSON.stringify(token.responsive ?? null) !== JSON.stringify(originalToken.responsive ?? null)
 
     if (changed) {
       entries.push({
@@ -135,6 +161,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         value: effectiveValue(token),
         before: originalToken.rawValue,
         figmaId: token.figmaId ?? undefined,
+        responsive: token.responsive,
       })
     }
   }
@@ -151,6 +178,9 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         type: originalToken.type,
         value: undefined,
         before: originalToken.rawValue,
+        // Lets a consumer (e.g. Toky's live preview) tell a responsive dimension token's delete
+        // apart from a plain one's, so it clears the right set of breakpoint-suffixed CSS vars.
+        responsive: originalToken.responsive,
       })
     }
   }
@@ -233,10 +263,20 @@ export function applyDiffToDocument(doc: Record<string, unknown>, diff: TokenDif
       // ever gets written at all.
       const originalLeaf = entry.kind === 'update' && entry.oldPath ? getNode(doc, entry.oldPath) : undefined
       const existingExtensions = isPlainObject(originalLeaf?.$extensions) ? originalLeaf.$extensions : undefined
-      const extensions = entry.figmaId
+      const extensions: Record<string, unknown> = entry.figmaId
         ? { ...existingExtensions, 'com.figma.variableId': entry.figmaId }
-        : existingExtensions
-      if (extensions) newNode.$extensions = extensions
+        : { ...existingExtensions }
+      // Unlike figmaId (which the editor never intentionally clears), a
+      // responsive dimension token's extension has to actually disappear
+      // when the user toggles it back to a plain dimension (decision 5) —
+      // `entry.responsive` is always the working token's current state, so
+      // `null`/`undefined` unambiguously means "not responsive right now".
+      if (entry.responsive) {
+        extensions[RESPONSIVE_DIMENSION_EXTENSION_KEY] = entry.responsive
+      } else {
+        delete extensions[RESPONSIVE_DIMENSION_EXTENSION_KEY]
+      }
+      if (Object.keys(extensions).length > 0) newNode.$extensions = extensions
 
       next = setPath(next, entry.newPath, newNode)
     }

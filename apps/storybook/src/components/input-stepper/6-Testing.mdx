@@ -1,0 +1,14 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentPageObject, Footer } from '../../../.storybook/blocks'
+import * as InputStepperStories from './input-stepper.stories'
+import { INPUTSTEPPER_DOC_CONFIG, getInputStepperTabs } from './input-stepper.doc-config'
+
+<Meta title="Components/InputStepper/Testing" />
+
+<Banner label={'Testing'} section={INPUTSTEPPER_DOC_CONFIG.section} color={INPUTSTEPPER_DOC_CONFIG.color} />
+
+<BannerTabs of={InputStepperStories} tabs={getInputStepperTabs('testing')} />
+
+<ComponentPageObject component="input-stepper" />
+
+<Footer />

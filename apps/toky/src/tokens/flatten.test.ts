@@ -134,3 +134,91 @@ describe('parseTokenDocument (flatten + resolve)', () => {
     expect(b?.resolutionError).toBe('circular-reference')
   })
 })
+
+// docs/plans/responsive-dimension-token-plan.md — a dimension token's breakpoint values live in
+// $extensions.com.helvetia.responsive, not $value (decision 2).
+const responsiveFixture = {
+  '🌐 Global': {
+    '📏 Dimension': {
+      Space16: { $type: 'dimension', $value: { value: 1, unit: 'rem' } },
+    },
+  },
+  '🔗 Alias': {
+    SpaceLg: {
+      $type: 'dimension',
+      $value: { value: 16, unit: 'px' },
+      $extensions: {
+        'com.helvetia.responsive': {
+          mobile: '{🌐 Global.📏 Dimension.Space16}',
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+      },
+    },
+    Plain: { $type: 'dimension', $value: { value: 8, unit: 'px' } },
+  },
+}
+
+describe('responsive dimension extension', () => {
+  it('extracts the 3 breakpoint values from $extensions for a responsive dimension token', () => {
+    const tokens = flattenTokenDocument(responsiveFixture)
+    const spaceLg = tokens.find(t => t.path.join('.') === '🔗 Alias.SpaceLg')
+    expect(spaceLg?.responsive).toEqual({
+      mobile: '{🌐 Global.📏 Dimension.Space16}',
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    })
+  })
+
+  it('leaves a non-responsive dimension token with responsive: null', () => {
+    const tokens = flattenTokenDocument(responsiveFixture)
+    const plain = tokens.find(t => t.path.join('.') === '🔗 Alias.Plain')
+    expect(plain?.responsive).toBeNull()
+  })
+
+  it('resolves a reference breakpoint value to its literal in resolvedResponsive', () => {
+    const tokens = parseTokenDocument(responsiveFixture)
+    const spaceLg = tokens.find(t => t.path.join('.') === '🔗 Alias.SpaceLg')
+    expect(spaceLg?.resolvedResponsive).toEqual({
+      mobile: { value: 1, unit: 'rem' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    })
+  })
+
+  // decision 4 of the plan keeps a responsive dimension token's own $value mirroring `mobile` —
+  // so whenever mobile is a reference, the token's OWN referenceTarget is non-null too, same shape
+  // as a real token in Base.tokens.json (e.g. Alias.Space.Base, Text.Size.Base). This must resolve
+  // breakpoints off the token's own `responsive` field, not off whatever the whole-token reference
+  // chain-walk (built for true aliases) happens to land on.
+  it('resolves breakpoints from its own responsive field when $value itself mirrors a reference mobile', () => {
+    const mirroredFixture = {
+      '🌐 Global': {
+        '📏 Dimension': {
+          Space16: { $type: 'dimension', $value: { value: 1, unit: 'rem' } },
+        },
+      },
+      '🔗 Alias': {
+        SpaceMirrored: {
+          $type: 'dimension',
+          $value: '{🌐 Global.📏 Dimension.Space16}',
+          $extensions: {
+            'com.helvetia.responsive': {
+              mobile: '{🌐 Global.📏 Dimension.Space16}',
+              tablet: { value: 24, unit: 'px' },
+              desktop: { value: 32, unit: 'px' },
+            },
+          },
+        },
+      },
+    }
+    const tokens = parseTokenDocument(mirroredFixture)
+    const token = tokens.find(t => t.path.join('.') === '🔗 Alias.SpaceMirrored')
+    expect(token?.resolutionError).toBeNull()
+    expect(token?.resolvedResponsive).toEqual({
+      mobile: { value: 1, unit: 'rem' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    })
+  })
+})

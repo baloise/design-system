@@ -14,16 +14,7 @@ import {
 } from '@utils'
 import { DsComponentInterface } from '@global'
 import { DsConfigObserver, DsConfigState, DsIcons, defaultConfig, ListenToConfig } from '@global'
-import {
-  ICON_SHAPES,
-  ICON_COLORS,
-  ICON_TILE_COLORS,
-  ICON_SIZES,
-  type IconShape,
-  type IconColor,
-  type IconTileColor,
-  type IconSize,
-} from './icon.interfaces'
+import { ICON_COLORS, ICON_SIZES, type IconColor, type IconSize } from './icon.interfaces'
 
 /**
  * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
@@ -81,7 +72,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
    */
   @Prop({ reflect: true })
   @OneOf(ICON_SIZES)
-  readonly size: IconSize
+  readonly size?: IconSize
 
   /**
    * The theme type of the button.
@@ -89,27 +80,6 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
   @Prop()
   @OneOf(ICON_COLORS)
   readonly color?: IconColor
-
-  /**
-   * If `true` the icon is displayed in a circle with a background color.
-   */
-  @Prop()
-  @OneOf(ICON_SHAPES)
-  readonly shape: IconShape = ''
-
-  /**
-   * If `true` the icon acts as a tile with a background color.
-   */
-  @Prop()
-  @Type('boolean')
-  readonly tile: boolean = false
-
-  /**
-   * If `true` the icon acts as a tile with a background color. Default is purple
-   */
-  @Prop()
-  @OneOf(ICON_TILE_COLORS)
-  readonly tileColor: IconTileColor = 'purple'
 
   /**
    * If `true` the icon has display inline style
@@ -221,29 +191,12 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
     }
   }
 
-  private parseColor() {
-    if (this.disabled) {
-      return 'grey'
-    }
-
-    if (this.invalid) {
-      return 'danger'
-    }
-
-    if (!hasValue(this.color) && !this.svg && !this.src) {
-      return 'primary'
-    }
-
-    return this.color
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
-    const color = this.parseColor()
     const size = normalizeDeprecatedTShirtSize(this.size) || ''
 
     return (
@@ -251,17 +204,14 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
         aria-hidden="true"
         class={{
           'is-filled': !this.svg && !this.src,
-          [`is-${color}`]: hasValue(color),
+          [`is-${this.color}`]: hasValue(this.color),
           [`is-${size}`]: hasValue(this.size),
           [`turn-${this.name}`]: this.turn,
           'is-inverted': this.inverted,
           'is-inline': this.inline,
-          'is-tile': this.tile,
-          [`is-tile-${this.tileColor}`]: this.tile,
           'has-shadow': this.shadow,
           'is-disabled': this.disabled,
           'is-invalid': this.invalid,
-          [`has-shape-${this.shape}`]: hasValue(this.shape),
         }}
       >
         <div id="inner" part="inner" innerHTML={this.svgContent}></div>

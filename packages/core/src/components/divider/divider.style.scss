@@ -14,8 +14,8 @@ $css-selector: (hr, '.divider');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(divider-color, var(--ds-divider-color-base));
-  @include vars.local(divider-width, var(--ds-divider-width));
+  @include vars.local(divider-color, var(--ds-divider-color-grey));
+  @include vars.local(divider-size, var(--ds-divider-size));
   @include vars.local(divider-radius, var(--ds-divider-radius));
   @include vars.local(divider-space, 0);
 }
@@ -32,7 +32,7 @@ $css-selector: (hr, '.divider');
   margin: 0;
   border: none;
   border-radius: var(--_divider-radius);
-  height: var(--_divider-width);
+  height: var(--_divider-size);
   background-color: var(--_divider-color);
 }
 
@@ -59,8 +59,8 @@ $css-selector: (hr, '.divider');
 @mixin horizontalLayout() {
   flex: 1 0 100%;
   width: 100%;
-  min-height: var(--_divider-width);
-  height: var(--_divider-width);
+  min-height: var(--_divider-size);
+  height: var(--_divider-size);
   margin-top: var(--_divider-space);
   margin-bottom: var(--_divider-space);
 }
@@ -69,7 +69,7 @@ $css-selector: (hr, '.divider');
   height: auto;
   flex-shrink: 0;
   align-self: stretch;
-  width: var(--_divider-width);
+  width: var(--_divider-size);
   margin-left: var(--_divider-space);
   margin-right: var(--_divider-space);
 }
@@ -99,21 +99,7 @@ $css-selector: (hr, '.divider');
 //
 // Colors
 // --------------------------------
-$colors: (
-  'primary',
-  'primary-light',
-  'primary-dark',
-  'grey-light',
-  'grey',
-  'grey-dark',
-  'warning',
-  'success',
-  'danger',
-  'danger-dark',
-  'danger-darker',
-  'white',
-  'light-blue'
-);
+$colors: ('primary', 'secondary', 'base', 'inverted');
 
 @mixin color($color) {
   --mod-divider-color: var(--ds-divider-color-#{$color});

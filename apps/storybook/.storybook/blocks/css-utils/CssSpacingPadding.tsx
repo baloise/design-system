@@ -6,12 +6,16 @@ export const CssSpacingPadding = ({}): React.ReactElement => {
   const obj = tokens['🔗 Alias']['↔️ Space']
   const keys = Object.keys(obj)
 
-  const values = keys.map(key => ({
-    key,
-    valueMobile: obj[key].Mobile.$value,
-    valueTablet: obj[key].Tablet.$value,
-    valueDesktop: obj[key].Desktop.$value,
-  }))
+  const values = keys.map(key => {
+    const item = obj[key]
+    const responsive = item.$extensions?.['com.helvetia.responsive']
+    return {
+      key: key.toLowerCase(),
+      valueMobile: responsive?.mobile ?? item.$value,
+      valueTablet: responsive?.tablet ?? item.$value,
+      valueDesktop: responsive?.desktop ?? item.$value,
+    }
+  })
 
   const list = [
     ...values.map(({ key, valueMobile, valueTablet, valueDesktop }) => ({

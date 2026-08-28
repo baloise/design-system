@@ -14,7 +14,7 @@ export const CssLayoutDisplay = () => (
   <CssUtilitiesTable
     utility="layout"
     search="display"
-    example={item => <div className={`bg-green ${item.class} p-small`}></div>}
+    example={item => <div className={`bg-red ${item.class} p-small`}></div>}
   />
 )
 

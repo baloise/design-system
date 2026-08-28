@@ -16,17 +16,16 @@ $host-selector: ('#tag');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(tag-min-height, 2rem);
-  @include vars.local(tag-gap, 0.25rem);
-  @include vars.local(tag-px, var(--ds-tag-space-padding-x-base));
-  @include vars.local(tag-py, var(--ds-tag-space-padding-y-base));
-  @include vars.local(tag-radius, var(--ds-tag-radius-base));
-  @include vars.local(tag-color, var(--ds-tag-base-color-text-base));
-  @include vars.local(tag-bg, var(--ds-tag-base-color-bg-base));
-  @include vars.local(tag-line-height, 1);
+  @include vars.local(tag-gap, var(--ds-tag-size-base-space-gap));
+  @include vars.local(tag-px, var(--ds-tag-size-base-space-x));
+  @include vars.local(tag-py, var(--ds-tag-size-base-space-y));
+  @include vars.local(tag-radius, var(--ds-tag-radius));
+  @include vars.local(tag-color, var(--ds-tag-base-color-text));
+  @include vars.local(tag-bg, var(--ds-tag-base-color-background));
+  @include vars.local(tag-line-height, var(--ds-tag-line-height));
   @include vars.local(tag-font-family, var(--ds-tag-font-family));
-  @include vars.local(tag-font-size, var(--ds-tag-font-size-base));
-  @include vars.local(tag-font-weight, var(--ds-tag-font-weight-base));
+  @include vars.local(tag-font-size, var(--ds-tag-size-base-font-size));
+  @include vars.local(tag-font-weight, var(--ds-tag-size-base-font-weight));
   @include vars.local(tag-close-mr, calc(0.25rem * -1));
 }
 
@@ -47,7 +46,6 @@ $host-selector: ('#tag');
   gap: var(--_tag-gap);
   width: fit-content;
 
-  min-height: var(--_tag-min-height);
   padding-block: var(--_tag-py);
   padding-inline: var(--_tag-px);
   border-radius: var(--_tag-radius);
@@ -63,10 +61,6 @@ $host-selector: ('#tag');
   > .close,
   > ds-close {
     --close-mr: var(--_tag-close-mr);
-  }
-
-  > ds-icon {
-    --icon-size: 0.875rem;
   }
 }
 
@@ -99,7 +93,7 @@ $host-selector: ('#tag');
 // --------------------------------
 $colors: (
   'primary',
-  'grey',
+  'disabled',
   'success',
   'info',
   'warning',
@@ -119,9 +113,10 @@ $colors: (
 );
 
 @mixin color($color) {
-  --icon-color: var(--ds-tag-#{$color}-color-text-base);
-  --mod-tag-color: var(--ds-tag-#{$color}-color-text-base);
-  --mod-tag-bg: var(--ds-tag-#{$color}-color-bg-base);
+  --icon-color: var(--ds-tag-#{$color}-color-text);
+  --mod-tag-color: var(--ds-tag-#{$color}-color-text);
+  --mod-tag-bg: var(--ds-tag-#{$color}-color-background);
+  --close-color-icon: var(--ds-tag-#{$color}-color-text);
 }
 
 @each $color in $colors {
@@ -138,22 +133,11 @@ $colors: (
   }
 }
 
-$close-inverted: (
-  'primary',
-  'grey',
-  'info',
-  'success',
-  'danger',
-  'purple-dark',
-  'red-dark',
-  'yellow-dark',
-  'green-dark'
-);
+$close-inverted: ('primary', 'disabled', 'purple-dark', 'red-dark', 'yellow-dark', 'green-dark');
 
 @each $color in $close-inverted {
   @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
-      --close-color-icon: var(--ds-close-inverted-icon-color-base);
       --close-color-background-hover: var(--ds-close-inverted-color-background-hover);
       --close-color-background-active: var(--ds-close-inverted-color-background-active);
       --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
@@ -162,7 +146,6 @@ $close-inverted: (
 
   @include hybrid.host($use-host) {
     :host(.is-#{$color}) {
-      --close-color-icon: var(--ds-close-inverted-icon-color-base);
       --close-color-background-hover: var(--ds-close-inverted-color-background-hover);
       --close-color-background-active: var(--ds-close-inverted-color-background-active);
       --close-color-focus: var(--ds-alias-interaction-focus-color-inverted);
@@ -171,58 +154,37 @@ $close-inverted: (
 }
 
 //
-// Shapes
-// --------------------------------
-@include hybrid.styles($css-selector, $use-host) {
-  &.is-square {
-    --mod-tag-radius: var(--ds-tag-radius-square);
-  }
-  &.is-pill {
-    --mod-tag-radius: var(--ds-tag-radius-pill);
-  }
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-square) {
-    --mod-tag-radius: var(--ds-tag-radius-square);
-  }
-  :host(.is-pill) {
-    --mod-tag-radius: var(--ds-tag-radius-pill);
-  }
-}
-
-//
 // Sizes
 // --------------------------------
 
 @mixin sizeSmall() {
-  --mod-tag-min-height: 1.5rem;
-  --mod-tag-py: var(--ds-tag-space-padding-y-sm);
-  --mod-tag-px: var(--ds-tag-space-padding-x-sm);
-  --mod-tag-font-size: var(--ds-tag-font-size-sm);
-  --mod-tag-font-weight: var(--ds-tag-font-weight-sm);
+  --mod-tag-gap: var(--ds-tag-size-sm-space-gap);
+  --mod-tag-py: var(--ds-tag-size-sm-space-y);
+  --mod-tag-px: var(--ds-tag-size-sm-space-x);
+  --mod-tag-font-size: var(--ds-tag-size-sm-font-size);
+  --mod-tag-font-weight: var(--ds-tag-size-sm-font-weight);
 
   > .close,
   > ds-close {
-    --close-padding: 0.25rem;
-    --close-size-icon: 10px;
+    --close-padding: var(--ds-close-space-sm);
+    --close-size-icon: var(--ds-close-size-sm);
   }
 }
 
 @mixin sizeMedium() {
-  --mod-tag-min-height: 2.5rem;
-  --mod-tag-py: var(--ds-tag-space-padding-y-md);
-  --mod-tag-px: var(--ds-tag-space-padding-x-md);
-  --mod-tag-font-size: var(--ds-tag-font-size-md);
-  --mod-tag-font-weight: var(--ds-tag-font-weight-md);
+  --mod-tag-gap: var(--ds-tag-size-md-space-gap);
+  --mod-tag-py: var(--ds-tag-size-md-space-y);
+  --mod-tag-px: var(--ds-tag-size-md-space-x);
+  --mod-tag-font-size: var(--ds-tag-size-md-font-size);
+  --mod-tag-font-weight: var(--ds-tag-size-md-font-weight);
 }
 
 @mixin sizeLarge() {
-  --mod-tag-min-height: 3rem;
-  --mod-tag-py: var(--ds-tag-space-padding-y-lg);
-  --mod-tag-px: var(--ds-tag-space-padding-x-lg);
-  --mod-tag-font-size: var(--ds-tag-font-size-lg);
-  --mod-tag-font-weight: var(--ds-tag-font-weight-lg);
+  --mod-tag-gap: var(--ds-tag-size-lg-space-gap);
+  --mod-tag-py: var(--ds-tag-size-lg-space-y);
+  --mod-tag-px: var(--ds-tag-size-lg-space-x);
+  --mod-tag-font-size: var(--ds-tag-size-lg-font-size);
+  --mod-tag-font-weight: var(--ds-tag-size-lg-font-weight);
 }
 
 @include hybrid.styles($css-selector, $use-host) {

@@ -54,7 +54,7 @@ Basic.storyName = '🧩 Basic'
 export const Striped = Story({
   ...withRender(
     () => `
-<table class="table is-wide is-striped">
+<table class="table is-wide is-striped is-hoverable">
   <thead>
     <tr>
       <th>Name</th>
@@ -89,69 +89,6 @@ export const Striped = Story({
   ),
 })
 Striped.storyName = '🧩 Striped'
-
-export const Hoverable = Story({
-  ...withRender(
-    () => `
-<table class="table is-wide is-hoverable">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Role</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>Admin</td>
-      <td>Active</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>Editor</td>
-      <td>Inactive</td>
-    </tr>
-    <tr>
-      <td>Carol</td>
-      <td>Viewer</td>
-      <td>Active</td>
-    </tr>
-  </tbody>
-</table>
-`,
-  ),
-})
-Hoverable.storyName = '🧩 Hoverable'
-
-export const Bordered = Story({
-  ...withRender(
-    () => `
-<table class="table is-wide is-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Role</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>Admin</td>
-      <td>Active</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>Editor</td>
-      <td>Inactive</td>
-    </tr>
-  </tbody>
-</table>
-`,
-  ),
-})
-Bordered.storyName = '🧩 Bordered'
 
 export const Narrow = Story({
   ...withRender(
