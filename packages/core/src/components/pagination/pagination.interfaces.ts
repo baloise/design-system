@@ -1,7 +1,7 @@
 // --- Props types ---
-export const PAGINATION_SIZES = ['', 'sm'] as const
-export const PAGINATION_VARIANTS = ['', 'dots'] as const
-export const PAGINATION_ALIGNMENTS = ['', 'end', 'start'] as const
+export const PAGINATION_SIZES = ['sm'] as const
+export const PAGINATION_VARIANTS = ['dots'] as const
+export const PAGINATION_ALIGNMENTS = ['end', 'start'] as const
 
 export type PaginationSize = (typeof PAGINATION_SIZES)[number]
 export type PaginationVariant = (typeof PAGINATION_VARIANTS)[number]

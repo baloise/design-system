@@ -268,10 +268,10 @@
         },
         {
           "name": "buttonSize",
-          "type": "\"\" | \"lg\" | \"sm\" | \"xl\"",
+          "type": "\"lg\" | \"sm\" | \"xl\" | undefined",
           "complexType": {
             "original": "AccordionButtonSize",
-            "resolved": "\"\" | \"lg\" | \"sm\" | \"xl\"",
+            "resolved": "\"lg\" | \"sm\" | \"xl\" | undefined",
             "references": {
               "AccordionButtonSize": {
                 "location": "import",
@@ -285,17 +285,8 @@
           "attr": "button-size",
           "reflectToAttr": false,
           "docs": "The size of the button. Only applies if `button` is `true`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "lg",
               "type": "string"
@@ -307,17 +298,19 @@
             {
               "value": "xl",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
             "sm",
             "lg",
-            "xl",
-            ""
+            "xl"
           ]
         },
         {
@@ -380,10 +373,10 @@
         },
         {
           "name": "marker",
-          "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\"",
+          "type": "\"none\" | \"plus\" | \"plus-minus\" | undefined",
           "complexType": {
             "original": "AccordionMarker",
-            "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\"",
+            "resolved": "\"none\" | \"plus\" | \"plus-minus\" | undefined",
             "references": {
               "AccordionMarker": {
                 "location": "import",
@@ -397,17 +390,8 @@
           "attr": "marker",
           "reflectToAttr": false,
           "docs": "The marker variant. Only applies if `button` is `false`.\nIf `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`\na plus icon for closed and a minus icon for open state is used.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "none",
               "type": "string"
@@ -419,14 +403,16 @@
             {
               "value": "plus-minus",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "",
             "plus",
             "plus-minus",
             "none"
@@ -434,10 +420,10 @@
         },
         {
           "name": "markerPosition",
-          "type": "\"\" | \"left\" | \"right\"",
+          "type": "\"left\" | \"right\" | undefined",
           "complexType": {
             "original": "AccordionMarkerPosition",
-            "resolved": "\"\" | \"left\" | \"right\"",
+            "resolved": "\"left\" | \"right\" | undefined",
             "references": {
               "AccordionMarkerPosition": {
                 "location": "import",
@@ -451,17 +437,8 @@
           "attr": "marker-position",
           "reflectToAttr": false,
           "docs": "The position of the marker. Only applies if `button` is `false`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "left",
               "type": "string"
@@ -469,14 +446,16 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "",
             "left",
             "right"
           ]
@@ -512,10 +491,10 @@
         },
         {
           "name": "summaryLevel",
-          "type": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
           "complexType": {
             "original": "AccordionSummaryLevel",
-            "resolved": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
             "references": {
               "AccordionSummaryLevel": {
                 "location": "import",
@@ -537,9 +516,6 @@
           ],
           "default": "'h3'",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "h1",
               "type": "string"
@@ -570,8 +546,7 @@
             "h2",
             "h3",
             "h4",
-            "h5",
-            ""
+            "h5"
           ]
         },
         {
@@ -605,10 +580,10 @@
         },
         {
           "name": "summaryVisualLevel",
-          "type": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
           "complexType": {
             "original": "AccordionSummaryLevel",
-            "resolved": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
             "references": {
               "AccordionSummaryLevel": {
                 "location": "import",
@@ -622,17 +597,8 @@
           "attr": "summary-visual-level",
           "reflectToAttr": false,
           "docs": "The visual heading level of the summary.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "h1",
               "type": "string"
@@ -652,9 +618,12 @@
             {
               "value": "h5",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
@@ -663,8 +632,7 @@
             "h2",
             "h3",
             "h4",
-            "h5",
-            ""
+            "h5"
           ]
         }
       ],
@@ -1059,8 +1027,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -1282,7 +1250,7 @@
             "parameters": [
               {
                 "name": "alert",
-                "type": "{ color?: \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+                "type": "{ color?: \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
                 "docs": ""
               }
             ],
@@ -1310,7 +1278,7 @@
           "parameters": [
             {
               "name": "alert",
-              "type": "{ color?: \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
+              "type": "{ color?: \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"outline-base\" | \"outline-purple\" | \"outline-green\" | \"outline-yellow\" | \"outline-red\" | undefined; heading: string; message: string; duration?: number | \"infinite\" | undefined; closable: boolean; closeHandler: (id: string) => void; action?: string | undefined; actionIcon?: string | undefined; actionTarget?: \"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined; actionHref?: string | undefined; actionHandler: (id: string) => void; }",
               "docs": ""
             }
           ],
@@ -2224,8 +2192,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -2359,8 +2327,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -2490,8 +2458,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -3004,8 +2972,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -4763,10 +4731,10 @@
         },
         {
           "name": "target",
-          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -4788,9 +4756,6 @@
           ],
           "default": "'_self'",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "_blank",
               "type": "string"
@@ -4816,8 +4781,7 @@
             "_blank",
             "_parent",
             "_self",
-            "_top",
-            ""
+            "_top"
           ]
         },
         {
@@ -9876,8 +9840,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -10111,8 +10075,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -10346,8 +10310,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -10784,10 +10748,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"center\" | \"left\" | undefined",
           "complexType": {
             "original": "CardAlignment",
-            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "resolved": "\"center\" | \"left\" | undefined",
             "references": {
               "CardAlignment": {
                 "location": "import",
@@ -10801,17 +10765,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "Defines the text alignment of the card content.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
@@ -10821,19 +10776,16 @@
               "type": "string"
             },
             {
-              "value": "right",
-              "type": "string"
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "right",
             "center",
-            "left",
-            ""
+            "left"
           ]
         },
         {
@@ -10867,10 +10819,10 @@
         },
         {
           "name": "color",
-          "type": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\"",
+          "type": "\"dashed\" | \"green\" | \"green-dark\" | \"grey\" | \"primary\" | \"purple\" | \"purple-dark\" | \"red\" | \"red-dark\" | \"yellow\" | \"yellow-dark\" | undefined",
           "complexType": {
             "original": "CardColor",
-            "resolved": "\"\" | \"blue\" | \"blue-light\" | \"danger\" | \"danger-dark\" | \"danger-darker\" | \"danger-light\" | \"green\" | \"green-1\" | \"green-2\" | \"green-3\" | \"green-light\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"info\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"purple\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"purple-light\" | \"purple-lighter\" | \"red\" | \"red-1\" | \"red-2\" | \"red-3\" | \"red-light\" | \"success\" | \"success-dark\" | \"success-darker\" | \"success-light\" | \"warning\" | \"warning-dark\" | \"warning-darker\" | \"warning-light\" | \"white\" | \"yellow\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\" | \"yellow-light\"",
+            "resolved": "\"dashed\" | \"green\" | \"green-dark\" | \"grey\" | \"primary\" | \"purple\" | \"purple-dark\" | \"red\" | \"red-dark\" | \"yellow\" | \"yellow-dark\" | undefined",
             "references": {
               "CardColor": {
                 "location": "import",
@@ -10884,39 +10836,10 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Defines the color of the card.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
             {
-              "type": "\"\""
-            },
-            {
-              "value": "blue",
-              "type": "string"
-            },
-            {
-              "value": "blue-light",
-              "type": "string"
-            },
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "danger-dark",
-              "type": "string"
-            },
-            {
-              "value": "danger-darker",
-              "type": "string"
-            },
-            {
-              "value": "danger-light",
+              "value": "dashed",
               "type": "string"
             },
             {
@@ -10924,19 +10847,7 @@
               "type": "string"
             },
             {
-              "value": "green-1",
-              "type": "string"
-            },
-            {
-              "value": "green-2",
-              "type": "string"
-            },
-            {
-              "value": "green-3",
-              "type": "string"
-            },
-            {
-              "value": "green-light",
+              "value": "green-dark",
               "type": "string"
             },
             {
@@ -10944,31 +10855,7 @@
               "type": "string"
             },
             {
-              "value": "grey-dark",
-              "type": "string"
-            },
-            {
-              "value": "grey-light",
-              "type": "string"
-            },
-            {
-              "value": "info",
-              "type": "string"
-            },
-            {
-              "value": "light-blue",
-              "type": "string"
-            },
-            {
               "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "primary-dark",
-              "type": "string"
-            },
-            {
-              "value": "primary-light",
               "type": "string"
             },
             {
@@ -10976,23 +10863,7 @@
               "type": "string"
             },
             {
-              "value": "purple-1",
-              "type": "string"
-            },
-            {
-              "value": "purple-2",
-              "type": "string"
-            },
-            {
-              "value": "purple-3",
-              "type": "string"
-            },
-            {
-              "value": "purple-light",
-              "type": "string"
-            },
-            {
-              "value": "purple-lighter",
+              "value": "purple-dark",
               "type": "string"
             },
             {
@@ -11000,55 +10871,7 @@
               "type": "string"
             },
             {
-              "value": "red-1",
-              "type": "string"
-            },
-            {
-              "value": "red-2",
-              "type": "string"
-            },
-            {
-              "value": "red-3",
-              "type": "string"
-            },
-            {
-              "value": "red-light",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "success-dark",
-              "type": "string"
-            },
-            {
-              "value": "success-darker",
-              "type": "string"
-            },
-            {
-              "value": "success-light",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            },
-            {
-              "value": "warning-dark",
-              "type": "string"
-            },
-            {
-              "value": "warning-darker",
-              "type": "string"
-            },
-            {
-              "value": "warning-light",
-              "type": "string"
-            },
-            {
-              "value": "white",
+              "value": "red-dark",
               "type": "string"
             },
             {
@@ -11056,72 +10879,29 @@
               "type": "string"
             },
             {
-              "value": "yellow-1",
+              "value": "yellow-dark",
               "type": "string"
             },
             {
-              "value": "yellow-2",
-              "type": "string"
-            },
-            {
-              "value": "yellow-3",
-              "type": "string"
-            },
-            {
-              "value": "yellow-light",
-              "type": "string"
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "white",
             "primary",
-            "info",
-            "success",
-            "warning",
-            "danger",
-            "",
             "grey",
-            "blue",
+            "dashed",
             "red",
             "yellow",
             "purple",
             "green",
-            "primary-light",
-            "primary-dark",
-            "grey-light",
-            "grey-dark",
-            "blue-light",
-            "red-light",
-            "yellow-light",
-            "purple-light",
-            "purple-lighter",
-            "green-light",
-            "success-light",
-            "success-dark",
-            "success-darker",
-            "warning-light",
-            "warning-dark",
-            "warning-darker",
-            "danger-light",
-            "danger-dark",
-            "danger-darker",
-            "light-blue",
-            "purple-1",
-            "purple-2",
-            "purple-3",
-            "green-1",
-            "green-2",
-            "green-3",
-            "red-1",
-            "red-2",
-            "red-3",
-            "yellow-1",
-            "yellow-2",
-            "yellow-3"
+            "red-dark",
+            "yellow-dark",
+            "purple-dark",
+            "green-dark"
           ]
         },
         {
@@ -11298,35 +11078,6 @@
           "setter": false
         },
         {
-          "name": "outlined",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "outlined",
-          "reflectToAttr": false,
-          "docs": "If `true` the cards gets a light border and loses its shadow.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "selected",
           "type": "boolean",
           "complexType": {
@@ -11422,35 +11173,6 @@
           ]
         },
         {
-          "name": "square",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "square",
-          "reflectToAttr": false,
-          "docs": "If `true` the card loses its border radius.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
           "name": "tile",
           "type": "boolean",
           "complexType": {
@@ -11489,15 +11211,11 @@
         },
         {
           "name": "--card-color-border",
-          "docs": "Border color of the card."
+          "docs": "Border (width, style and color) of the card."
         },
         {
-          "name": "--card-border-radius",
+          "name": "--card-radius",
           "docs": "Border radius of the card."
-        },
-        {
-          "name": "--card-border-width",
-          "docs": "Border width of the card."
         },
         {
           "name": "--card-padding",
@@ -11551,58 +11269,6 @@
       "customStates": [],
       "listeners": [],
       "tokens": [
-        {
-          "name": "🧩 Component / Card / Radius / Base",
-          "cssVarName": "--ds-card-radius-base",
-          "value": "{🔗 Alias.🔵 Radius.LG}",
-          "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-2",
-              "figmaName": "Global / Dimension / Radius / 2"
-            },
-            {
-              "cssVar": "--ds-radius-lg",
-              "figmaName": "Alias / Radius / LG"
-            },
-            {
-              "cssVar": "--ds-card-radius-base",
-              "figmaName": "Component / Card / Radius / Base"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Radius",
-            "Base"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Radius / Square",
-          "cssVarName": "--ds-card-radius-square",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-card-radius-square",
-              "figmaName": "Component / Card / Radius / Square"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Radius",
-            "Square"
-          ]
-        },
         {
           "name": "🧩 Component / Card / Shadow / Flat",
           "cssVarName": "--ds-card-shadow-flat",
@@ -11682,155 +11348,9 @@
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / Base / Text",
-          "cssVarName": "--ds-card-color-base-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-base-text",
-              "figmaName": "Component / Card / Color / Base / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Base",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Base / Outline",
-          "cssVarName": "--ds-card-color-base-outline",
-          "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#D0D0D0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
-            },
-            {
-              "cssVar": "--ds-border-color-grey",
-              "figmaName": "Alias / Border / Color / Grey"
-            },
-            {
-              "cssVar": "--ds-card-color-base-outline",
-              "figmaName": "Component / Card / Color / Base / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Base",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Base / Background",
-          "cssVarName": "--ds-card-color-base-background",
-          "value": "{🔗 Alias.🎨 Surface.White}",
-          "nativeValue": "#FFFFFF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-white",
-              "figmaName": "Global / Color / White"
-            },
-            {
-              "cssVar": "--ds-surface-white",
-              "figmaName": "Alias / Surface / White"
-            },
-            {
-              "cssVar": "--ds-card-color-base-background",
-              "figmaName": "Component / Card / Color / Base / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Base",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / White / Text",
-          "cssVarName": "--ds-card-color-white-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-white-text",
-              "figmaName": "Component / Card / Color / White / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "White",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / White / Outline",
-          "cssVarName": "--ds-card-color-white-outline",
-          "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#D0D0D0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
-            },
-            {
-              "cssVar": "--ds-border-color-grey",
-              "figmaName": "Alias / Border / Color / Grey"
-            },
-            {
-              "cssVar": "--ds-card-color-white-outline",
-              "figmaName": "Component / Card / Color / White / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "White",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / White / Background",
-          "cssVarName": "--ds-card-color-white-background",
-          "value": "{🔗 Alias.🎨 Surface.White}",
-          "nativeValue": "#FFFFFF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-white",
-              "figmaName": "Global / Color / White"
-            },
-            {
-              "cssVar": "--ds-surface-white",
-              "figmaName": "Alias / Surface / White"
-            },
-            {
-              "cssVar": "--ds-card-color-white-background",
-              "figmaName": "Component / Card / Color / White / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "White",
-            "Background"
-          ]
-        },
-        {
           "name": "🧩 Component / Card / Color / Primary / Text",
           "cssVarName": "--ds-card-color-primary-text",
-          "value": "{🔗 Alias.🔤 Text.Color.White}",
+          "value": "{🔗 Alias.🎨 Surface.OnPrimary}",
           "nativeValue": "#FFFFFF",
           "inheritance": [
             {
@@ -11840,6 +11360,10 @@
             {
               "cssVar": "--ds-text-color-white",
               "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-surface-onprimary",
+              "figmaName": "Alias / Surface / OnPrimary"
             },
             {
               "cssVar": "--ds-card-color-primary-text",
@@ -11882,268 +11406,46 @@
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / Info / Text",
-          "cssVarName": "--ds-card-color-info-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
+          "name": "🧩 Component / Card / Color / Primary / Border",
+          "cssVarName": "--ds-card-color-primary-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.Primary}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.Primary}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-card-color-info-text",
-              "figmaName": "Component / Card / Color / Info / Text"
+              "cssVar": "--ds-surface-primarywidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Primarywidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
+            },
+            {
+              "cssVar": "--ds-card-color-primary-border",
+              "figmaName": "Component / Card / Color / Primary / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "Info",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Info / Background",
-          "cssVarName": "--ds-card-color-info-background",
-          "value": "{🔗 Alias.🎨 Surface.Info}",
-          "nativeValue": "#60A0E0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-info-3",
-              "figmaName": "Global / Color / Info / 3"
-            },
-            {
-              "cssVar": "--ds-surface-info",
-              "figmaName": "Alias / Surface / Info"
-            },
-            {
-              "cssVar": "--ds-card-color-info-background",
-              "figmaName": "Component / Card / Color / Info / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Info",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Success / Text",
-          "cssVarName": "--ds-card-color-success-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-success-text",
-              "figmaName": "Component / Card / Color / Success / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Success",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Success / Background",
-          "cssVarName": "--ds-card-color-success-background",
-          "value": "{🔗 Alias.🎨 Surface.Success}",
-          "nativeValue": "#5BAB7A",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-success-3",
-              "figmaName": "Global / Color / Success / 3"
-            },
-            {
-              "cssVar": "--ds-surface-success",
-              "figmaName": "Alias / Surface / Success"
-            },
-            {
-              "cssVar": "--ds-card-color-success-background",
-              "figmaName": "Component / Card / Color / Success / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Success",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Warning / Text",
-          "cssVarName": "--ds-card-color-warning-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-warning-text",
-              "figmaName": "Component / Card / Color / Warning / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Warning",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Warning / Background",
-          "cssVarName": "--ds-card-color-warning-background",
-          "value": "{🔗 Alias.🎨 Surface.Warning}",
-          "nativeValue": "#FFD25E",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-warning-3",
-              "figmaName": "Global / Color / Warning / 3"
-            },
-            {
-              "cssVar": "--ds-surface-warning",
-              "figmaName": "Alias / Surface / Warning"
-            },
-            {
-              "cssVar": "--ds-card-color-warning-background",
-              "figmaName": "Component / Card / Color / Warning / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Warning",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Danger / Text",
-          "cssVarName": "--ds-card-color-danger-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-danger-text",
-              "figmaName": "Component / Card / Color / Danger / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Danger",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Danger / Background",
-          "cssVarName": "--ds-card-color-danger-background",
-          "value": "{🔗 Alias.🎨 Surface.Danger}",
-          "nativeValue": "#F05D4D",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-danger-3",
-              "figmaName": "Global / Color / Danger / 3"
-            },
-            {
-              "cssVar": "--ds-surface-danger",
-              "figmaName": "Alias / Surface / Danger"
-            },
-            {
-              "cssVar": "--ds-card-color-danger-background",
-              "figmaName": "Component / Card / Color / Danger / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Danger",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreyLight / Text",
-          "cssVarName": "--ds-card-color-greylight-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-greylight-text",
-              "figmaName": "Component / Card / Color / GreyLight / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreyLight",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreyLight / Outline",
-          "cssVarName": "--ds-card-color-greylight-outline",
-          "value": "{🔗 Alias.▭ Border.Color.GreyDark}",
-          "nativeValue": "#B6B6B6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-4",
-              "figmaName": "Global / Color / Grey / 4"
-            },
-            {
-              "cssVar": "--ds-border-color-greydark",
-              "figmaName": "Alias / Border / Color / GreyDark"
-            },
-            {
-              "cssVar": "--ds-card-color-greylight-outline",
-              "figmaName": "Component / Card / Color / GreyLight / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreyLight",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreyLight / Background",
-          "cssVarName": "--ds-card-color-greylight-background",
-          "value": "{🔗 Alias.🎨 Surface.GreyLight}",
-          "nativeValue": "#F6F6F6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-1",
-              "figmaName": "Global / Color / Grey / 1"
-            },
-            {
-              "cssVar": "--ds-surface-greylight",
-              "figmaName": "Alias / Surface / GreyLight"
-            },
-            {
-              "cssVar": "--ds-card-color-greylight-background",
-              "figmaName": "Component / Card / Color / GreyLight / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreyLight",
-            "Background"
+            "Primary",
+            "Border"
           ]
         },
         {
           "name": "🧩 Component / Card / Color / Grey / Text",
           "cssVarName": "--ds-card-color-grey-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
+          "value": "{🔗 Alias.🎨 Surface.OnGrey}",
+          "nativeValue": "#000D6E",
           "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-ongrey",
+              "figmaName": "Alias / Surface / OnGrey"
+            },
             {
               "cssVar": "--ds-card-color-grey-text",
               "figmaName": "Component / Card / Color / Grey / Text"
@@ -12158,22 +11460,18 @@
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / Grey / Outline",
-          "cssVarName": "--ds-card-color-grey-outline",
-          "value": "{🔗 Alias.▭ Border.Color.GreyDark}",
-          "nativeValue": "#B6B6B6",
+          "name": "🧩 Component / Card / Color / Grey / Border",
+          "cssVarName": "--ds-card-color-grey-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.Grey}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.Grey}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-4",
-              "figmaName": "Global / Color / Grey / 4"
+              "cssVar": "--ds-surface-greywidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Greywidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-border-color-greydark",
-              "figmaName": "Alias / Border / Color / GreyDark"
-            },
-            {
-              "cssVar": "--ds-card-color-grey-outline",
-              "figmaName": "Component / Card / Color / Grey / Outline"
+              "cssVar": "--ds-card-color-grey-border",
+              "figmaName": "Component / Card / Color / Grey / Border"
             }
           ],
           "path": [
@@ -12181,7 +11479,7 @@
             "Card",
             "Color",
             "Grey",
-            "Outline"
+            "Border"
           ]
         },
         {
@@ -12212,492 +11510,39 @@
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / RedLighter / Text",
-          "cssVarName": "--ds-card-color-redlighter-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
+          "name": "🧩 Component / Card / Color / GreenDark / Text",
+          "cssVarName": "--ds-card-color-greendark-text",
+          "value": "{🔗 Alias.🎨 Surface.OnGreen}",
+          "nativeValue": "#000D6E",
           "inheritance": [
             {
-              "cssVar": "--ds-card-color-redlighter-text",
-              "figmaName": "Component / Card / Color / RedLighter / Text"
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-ongreen",
+              "figmaName": "Alias / Surface / OnGreen"
+            },
+            {
+              "cssVar": "--ds-card-color-greendark-text",
+              "figmaName": "Component / Card / Color / GreenDark / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "RedLighter",
+            "GreenDark",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / RedLighter / Background",
-          "cssVarName": "--ds-card-color-redlighter-background",
-          "value": "{🔗 Alias.🎨 Surface.RedLighter}",
-          "nativeValue": "#FFEEF1",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-1",
-              "figmaName": "Global / Color / Red / 1"
-            },
-            {
-              "cssVar": "--ds-surface-redlighter",
-              "figmaName": "Alias / Surface / RedLighter"
-            },
-            {
-              "cssVar": "--ds-card-color-redlighter-background",
-              "figmaName": "Component / Card / Color / RedLighter / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "RedLighter",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / RedLighter / Outline",
-          "cssVarName": "--ds-card-color-redlighter-outline",
-          "value": "{🔗 Alias.🎨 Surface.Red}",
-          "nativeValue": "#FFACA6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-3",
-              "figmaName": "Global / Color / Red / 3"
-            },
-            {
-              "cssVar": "--ds-surface-red",
-              "figmaName": "Alias / Surface / Red"
-            },
-            {
-              "cssVar": "--ds-card-color-redlighter-outline",
-              "figmaName": "Component / Card / Color / RedLighter / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "RedLighter",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / RedLight / Text",
-          "cssVarName": "--ds-card-color-redlight-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-redlight-text",
-              "figmaName": "Component / Card / Color / RedLight / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "RedLight",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / RedLight / Background",
-          "cssVarName": "--ds-card-color-redlight-background",
-          "value": "{🔗 Alias.🎨 Surface.RedLight}",
-          "nativeValue": "#FFD7D7",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-2",
-              "figmaName": "Global / Color / Red / 2"
-            },
-            {
-              "cssVar": "--ds-surface-redlight",
-              "figmaName": "Alias / Surface / RedLight"
-            },
-            {
-              "cssVar": "--ds-card-color-redlight-background",
-              "figmaName": "Component / Card / Color / RedLight / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "RedLight",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / RedLight / Outline",
-          "cssVarName": "--ds-card-color-redlight-outline",
-          "value": "{🔗 Alias.🎨 Surface.Red}",
-          "nativeValue": "#FFACA6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-3",
-              "figmaName": "Global / Color / Red / 3"
-            },
-            {
-              "cssVar": "--ds-surface-red",
-              "figmaName": "Alias / Surface / Red"
-            },
-            {
-              "cssVar": "--ds-card-color-redlight-outline",
-              "figmaName": "Component / Card / Color / RedLight / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "RedLight",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Red / Text",
-          "cssVarName": "--ds-card-color-red-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-red-text",
-              "figmaName": "Component / Card / Color / Red / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Red",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Red / Background",
-          "cssVarName": "--ds-card-color-red-background",
-          "value": "{🔗 Alias.🎨 Surface.Red}",
-          "nativeValue": "#FFACA6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-3",
-              "figmaName": "Global / Color / Red / 3"
-            },
-            {
-              "cssVar": "--ds-surface-red",
-              "figmaName": "Alias / Surface / Red"
-            },
-            {
-              "cssVar": "--ds-card-color-red-background",
-              "figmaName": "Component / Card / Color / Red / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Red",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Red / Outline",
-          "cssVarName": "--ds-card-color-red-outline",
-          "value": "{🔗 Alias.🎨 Surface.Red}",
-          "nativeValue": "#FFACA6",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-red-3",
-              "figmaName": "Global / Color / Red / 3"
-            },
-            {
-              "cssVar": "--ds-surface-red",
-              "figmaName": "Alias / Surface / Red"
-            },
-            {
-              "cssVar": "--ds-card-color-red-outline",
-              "figmaName": "Component / Card / Color / Red / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Red",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / PurpleLighter / Text",
-          "cssVarName": "--ds-card-color-purplelighter-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-purplelighter-text",
-              "figmaName": "Component / Card / Color / PurpleLighter / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "PurpleLighter",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / PurpleLighter / Background",
-          "cssVarName": "--ds-card-color-purplelighter-background",
-          "value": "{🔗 Alias.🎨 Surface.PurpleLighter}",
-          "nativeValue": "#F9F3FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-1",
-              "figmaName": "Global / Color / Purple / 1"
-            },
-            {
-              "cssVar": "--ds-surface-purplelighter",
-              "figmaName": "Alias / Surface / PurpleLighter"
-            },
-            {
-              "cssVar": "--ds-card-color-purplelighter-background",
-              "figmaName": "Component / Card / Color / PurpleLighter / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "PurpleLighter",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / PurpleLighter / Outline",
-          "cssVarName": "--ds-card-color-purplelighter-outline",
-          "value": "{🔗 Alias.🎨 Surface.Purple}",
-          "nativeValue": "#B8B2FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-3",
-              "figmaName": "Global / Color / Purple / 3"
-            },
-            {
-              "cssVar": "--ds-surface-purple",
-              "figmaName": "Alias / Surface / Purple"
-            },
-            {
-              "cssVar": "--ds-card-color-purplelighter-outline",
-              "figmaName": "Component / Card / Color / PurpleLighter / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "PurpleLighter",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / PurpleLight / Text",
-          "cssVarName": "--ds-card-color-purplelight-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-purplelight-text",
-              "figmaName": "Component / Card / Color / PurpleLight / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "PurpleLight",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / PurpleLight / Background",
-          "cssVarName": "--ds-card-color-purplelight-background",
-          "value": "{🔗 Alias.🎨 Surface.PurpleLight}",
-          "nativeValue": "#E1D9FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-2",
-              "figmaName": "Global / Color / Purple / 2"
-            },
-            {
-              "cssVar": "--ds-surface-purplelight",
-              "figmaName": "Alias / Surface / PurpleLight"
-            },
-            {
-              "cssVar": "--ds-card-color-purplelight-background",
-              "figmaName": "Component / Card / Color / PurpleLight / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "PurpleLight",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / PurpleLight / Outline",
-          "cssVarName": "--ds-card-color-purplelight-outline",
-          "value": "{🔗 Alias.🎨 Surface.Purple}",
-          "nativeValue": "#B8B2FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-3",
-              "figmaName": "Global / Color / Purple / 3"
-            },
-            {
-              "cssVar": "--ds-surface-purple",
-              "figmaName": "Alias / Surface / Purple"
-            },
-            {
-              "cssVar": "--ds-card-color-purplelight-outline",
-              "figmaName": "Component / Card / Color / PurpleLight / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "PurpleLight",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Purple / Text",
-          "cssVarName": "--ds-card-color-purple-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-purple-text",
-              "figmaName": "Component / Card / Color / Purple / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Purple",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Purple / Background",
-          "cssVarName": "--ds-card-color-purple-background",
-          "value": "{🔗 Alias.🎨 Surface.Purple}",
-          "nativeValue": "#B8B2FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-3",
-              "figmaName": "Global / Color / Purple / 3"
-            },
-            {
-              "cssVar": "--ds-surface-purple",
-              "figmaName": "Alias / Surface / Purple"
-            },
-            {
-              "cssVar": "--ds-card-color-purple-background",
-              "figmaName": "Component / Card / Color / Purple / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Purple",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / Purple / Outline",
-          "cssVarName": "--ds-card-color-purple-outline",
-          "value": "{🔗 Alias.🎨 Surface.Purple}",
-          "nativeValue": "#B8B2FF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-purple-3",
-              "figmaName": "Global / Color / Purple / 3"
-            },
-            {
-              "cssVar": "--ds-surface-purple",
-              "figmaName": "Alias / Surface / Purple"
-            },
-            {
-              "cssVar": "--ds-card-color-purple-outline",
-              "figmaName": "Component / Card / Color / Purple / Outline"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "Purple",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreenLighter / Text",
-          "cssVarName": "--ds-card-color-greenlighter-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-greenlighter-text",
-              "figmaName": "Component / Card / Color / GreenLighter / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreenLighter",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreenLighter / Background",
-          "cssVarName": "--ds-card-color-greenlighter-background",
-          "value": "{🔗 Alias.🎨 Surface.GreenLighter}",
-          "nativeValue": "#E9FBF7",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-green-1",
-              "figmaName": "Global / Color / Green / 1"
-            },
-            {
-              "cssVar": "--ds-surface-greenlighter",
-              "figmaName": "Alias / Surface / GreenLighter"
-            },
-            {
-              "cssVar": "--ds-card-color-greenlighter-background",
-              "figmaName": "Component / Card / Color / GreenLighter / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreenLighter",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreenLighter / Outline",
-          "cssVarName": "--ds-card-color-greenlighter-outline",
+          "name": "🧩 Component / Card / Color / GreenDark / Background",
+          "cssVarName": "--ds-card-color-greendark-background",
           "value": "{🔗 Alias.🎨 Surface.Green}",
           "nativeValue": "#94E3D4",
           "inheritance": [
@@ -12710,97 +11555,59 @@
               "figmaName": "Alias / Surface / Green"
             },
             {
-              "cssVar": "--ds-card-color-greenlighter-outline",
-              "figmaName": "Component / Card / Color / GreenLighter / Outline"
+              "cssVar": "--ds-card-color-greendark-background",
+              "figmaName": "Component / Card / Color / GreenDark / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "GreenLighter",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreenLight / Text",
-          "cssVarName": "--ds-card-color-greenlight-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-greenlight-text",
-              "figmaName": "Component / Card / Color / GreenLight / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreenLight",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / GreenLight / Background",
-          "cssVarName": "--ds-card-color-greenlight-background",
-          "value": "{🔗 Alias.🎨 Surface.GreenLight}",
-          "nativeValue": "#CBF2EC",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-green-2",
-              "figmaName": "Global / Color / Green / 2"
-            },
-            {
-              "cssVar": "--ds-surface-greenlight",
-              "figmaName": "Alias / Surface / GreenLight"
-            },
-            {
-              "cssVar": "--ds-card-color-greenlight-background",
-              "figmaName": "Component / Card / Color / GreenLight / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "GreenLight",
+            "GreenDark",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / GreenLight / Outline",
-          "cssVarName": "--ds-card-color-greenlight-outline",
-          "value": "{🔗 Alias.🎨 Surface.Green}",
-          "nativeValue": "#94E3D4",
+          "name": "🧩 Component / Card / Color / GreenDark / Border",
+          "cssVarName": "--ds-card-color-greendark-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.Green}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.Green}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-color-green-3",
-              "figmaName": "Global / Color / Green / 3"
+              "cssVar": "--ds-surface-greenwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Greenwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-surface-green",
-              "figmaName": "Alias / Surface / Green"
-            },
-            {
-              "cssVar": "--ds-card-color-greenlight-outline",
-              "figmaName": "Component / Card / Color / GreenLight / Outline"
+              "cssVar": "--ds-card-color-greendark-border",
+              "figmaName": "Component / Card / Color / GreenDark / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "GreenLight",
-            "Outline"
+            "GreenDark",
+            "Border"
           ]
         },
         {
           "name": "🧩 Component / Card / Color / Green / Text",
           "cssVarName": "--ds-card-color-green-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
+          "value": "{🔗 Alias.🎨 Surface.OnGreenLighter}",
+          "nativeValue": "#000D6E",
           "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-ongreenlighter",
+              "figmaName": "Alias / Surface / OnGreenLighter"
+            },
             {
               "cssVar": "--ds-card-color-green-text",
               "figmaName": "Component / Card / Color / Green / Text"
@@ -12817,16 +11624,16 @@
         {
           "name": "🧩 Component / Card / Color / Green / Background",
           "cssVarName": "--ds-card-color-green-background",
-          "value": "{🔗 Alias.🎨 Surface.Green}",
-          "nativeValue": "#94E3D4",
+          "value": "{🔗 Alias.🎨 Surface.GreenLighter}",
+          "nativeValue": "#E9FBF7",
           "inheritance": [
             {
-              "cssVar": "--ds-color-green-3",
-              "figmaName": "Global / Color / Green / 3"
+              "cssVar": "--ds-color-green-1",
+              "figmaName": "Global / Color / Green / 1"
             },
             {
-              "cssVar": "--ds-surface-green",
-              "figmaName": "Alias / Surface / Green"
+              "cssVar": "--ds-surface-greenlighter",
+              "figmaName": "Alias / Surface / GreenLighter"
             },
             {
               "cssVar": "--ds-card-color-green-background",
@@ -12842,22 +11649,18 @@
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / Green / Outline",
-          "cssVarName": "--ds-card-color-green-outline",
-          "value": "{🔗 Alias.🎨 Surface.Green}",
-          "nativeValue": "#94E3D4",
+          "name": "🧩 Component / Card / Color / Green / Border",
+          "cssVarName": "--ds-card-color-green-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.GreenLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.GreenLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-color-green-3",
-              "figmaName": "Global / Color / Green / 3"
+              "cssVar": "--ds-surface-greenlighterwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / GreenLighterwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-surface-green",
-              "figmaName": "Alias / Surface / Green"
-            },
-            {
-              "cssVar": "--ds-card-color-green-outline",
-              "figmaName": "Component / Card / Color / Green / Outline"
+              "cssVar": "--ds-card-color-green-border",
+              "figmaName": "Component / Card / Color / Green / Border"
             }
           ],
           "path": [
@@ -12865,58 +11668,43 @@
             "Card",
             "Color",
             "Green",
-            "Outline"
+            "Border"
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / YellowLighter / Text",
-          "cssVarName": "--ds-card-color-yellowlighter-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
+          "name": "🧩 Component / Card / Color / YellowDark / Text",
+          "cssVarName": "--ds-card-color-yellowdark-text",
+          "value": "{🔗 Alias.🎨 Surface.OnYellow}",
+          "nativeValue": "#000D6E",
           "inheritance": [
             {
-              "cssVar": "--ds-card-color-yellowlighter-text",
-              "figmaName": "Component / Card / Color / YellowLighter / Text"
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-onyellow",
+              "figmaName": "Alias / Surface / OnYellow"
+            },
+            {
+              "cssVar": "--ds-card-color-yellowdark-text",
+              "figmaName": "Component / Card / Color / YellowDark / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "YellowLighter",
+            "YellowDark",
             "Text"
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / YellowLighter / Background",
-          "cssVarName": "--ds-card-color-yellowlighter-background",
-          "value": "{🔗 Alias.🎨 Surface.YellowLighter}",
-          "nativeValue": "#FFF9E8",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-yellow-1",
-              "figmaName": "Global / Color / Yellow / 1"
-            },
-            {
-              "cssVar": "--ds-surface-yellowlighter",
-              "figmaName": "Alias / Surface / YellowLighter"
-            },
-            {
-              "cssVar": "--ds-card-color-yellowlighter-background",
-              "figmaName": "Component / Card / Color / YellowLighter / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "YellowLighter",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / YellowLighter / Outline",
-          "cssVarName": "--ds-card-color-yellowlighter-outline",
+          "name": "🧩 Component / Card / Color / YellowDark / Background",
+          "cssVarName": "--ds-card-color-yellowdark-background",
           "value": "{🔗 Alias.🎨 Surface.Yellow}",
           "nativeValue": "#FAE052",
           "inheritance": [
@@ -12929,97 +11717,59 @@
               "figmaName": "Alias / Surface / Yellow"
             },
             {
-              "cssVar": "--ds-card-color-yellowlighter-outline",
-              "figmaName": "Component / Card / Color / YellowLighter / Outline"
+              "cssVar": "--ds-card-color-yellowdark-background",
+              "figmaName": "Component / Card / Color / YellowDark / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "YellowLighter",
-            "Outline"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / YellowLight / Text",
-          "cssVarName": "--ds-card-color-yellowlight-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
-          "inheritance": [
-            {
-              "cssVar": "--ds-card-color-yellowlight-text",
-              "figmaName": "Component / Card / Color / YellowLight / Text"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "YellowLight",
-            "Text"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Color / YellowLight / Background",
-          "cssVarName": "--ds-card-color-yellowlight-background",
-          "value": "{🔗 Alias.🎨 Surface.YellowLight}",
-          "nativeValue": "#FFECBC",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-yellow-2",
-              "figmaName": "Global / Color / Yellow / 2"
-            },
-            {
-              "cssVar": "--ds-surface-yellowlight",
-              "figmaName": "Alias / Surface / YellowLight"
-            },
-            {
-              "cssVar": "--ds-card-color-yellowlight-background",
-              "figmaName": "Component / Card / Color / YellowLight / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Color",
-            "YellowLight",
+            "YellowDark",
             "Background"
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / YellowLight / Outline",
-          "cssVarName": "--ds-card-color-yellowlight-outline",
-          "value": "{🔗 Alias.🎨 Surface.Yellow}",
-          "nativeValue": "#FAE052",
+          "name": "🧩 Component / Card / Color / YellowDark / Border",
+          "cssVarName": "--ds-card-color-yellowdark-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.Yellow}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.Yellow}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-color-yellow-3",
-              "figmaName": "Global / Color / Yellow / 3"
+              "cssVar": "--ds-surface-yellowwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Yellowwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-surface-yellow",
-              "figmaName": "Alias / Surface / Yellow"
-            },
-            {
-              "cssVar": "--ds-card-color-yellowlight-outline",
-              "figmaName": "Component / Card / Color / YellowLight / Outline"
+              "cssVar": "--ds-card-color-yellowdark-border",
+              "figmaName": "Component / Card / Color / YellowDark / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Color",
-            "YellowLight",
-            "Outline"
+            "YellowDark",
+            "Border"
           ]
         },
         {
           "name": "🧩 Component / Card / Color / Yellow / Text",
           "cssVarName": "--ds-card-color-yellow-text",
-          "value": "inherit",
-          "nativeValue": "inherit",
+          "value": "{🔗 Alias.🎨 Surface.OnYellowLighter}",
+          "nativeValue": "#000D6E",
           "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-onyellowlighter",
+              "figmaName": "Alias / Surface / OnYellowLighter"
+            },
             {
               "cssVar": "--ds-card-color-yellow-text",
               "figmaName": "Component / Card / Color / Yellow / Text"
@@ -13036,16 +11786,16 @@
         {
           "name": "🧩 Component / Card / Color / Yellow / Background",
           "cssVarName": "--ds-card-color-yellow-background",
-          "value": "{🔗 Alias.🎨 Surface.Yellow}",
-          "nativeValue": "#FAE052",
+          "value": "{🔗 Alias.🎨 Surface.YellowLighter}",
+          "nativeValue": "#FFF9E8",
           "inheritance": [
             {
-              "cssVar": "--ds-color-yellow-3",
-              "figmaName": "Global / Color / Yellow / 3"
+              "cssVar": "--ds-color-yellow-1",
+              "figmaName": "Global / Color / Yellow / 1"
             },
             {
-              "cssVar": "--ds-surface-yellow",
-              "figmaName": "Alias / Surface / Yellow"
+              "cssVar": "--ds-surface-yellowlighter",
+              "figmaName": "Alias / Surface / YellowLighter"
             },
             {
               "cssVar": "--ds-card-color-yellow-background",
@@ -13061,22 +11811,18 @@
           ]
         },
         {
-          "name": "🧩 Component / Card / Color / Yellow / Outline",
-          "cssVarName": "--ds-card-color-yellow-outline",
-          "value": "{🔗 Alias.🎨 Surface.Yellow}",
-          "nativeValue": "#FAE052",
+          "name": "🧩 Component / Card / Color / Yellow / Border",
+          "cssVarName": "--ds-card-color-yellow-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.YellowLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.YellowLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-color-yellow-3",
-              "figmaName": "Global / Color / Yellow / 3"
+              "cssVar": "--ds-surface-yellowlighterwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / YellowLighterwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-surface-yellow",
-              "figmaName": "Alias / Surface / Yellow"
-            },
-            {
-              "cssVar": "--ds-card-color-yellow-outline",
-              "figmaName": "Component / Card / Color / Yellow / Outline"
+              "cssVar": "--ds-card-color-yellow-border",
+              "figmaName": "Component / Card / Color / Yellow / Border"
             }
           ],
           "path": [
@@ -13084,201 +11830,499 @@
             "Card",
             "Color",
             "Yellow",
-            "Outline"
+            "Border"
           ]
         },
         {
-          "name": "🧩 Component / Card / Outline / Width",
-          "cssVarName": "--ds-card-outline-width",
-          "value": "{🔗 Alias.▭ Border.Width.Base}",
-          "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / RedDark / Text",
+          "cssVarName": "--ds-card-color-reddark-text",
+          "value": "{🔗 Alias.🎨 Surface.OnRed}",
+          "nativeValue": "#000D6E",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-border-1",
-              "figmaName": "Global / Dimension / Border / 1"
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-border-width-base",
-              "figmaName": "Alias / Border / Width / Base"
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-card-outline-width",
-              "figmaName": "Component / Card / Outline / Width"
+              "cssVar": "--ds-surface-onred",
+              "figmaName": "Alias / Surface / OnRed"
+            },
+            {
+              "cssVar": "--ds-card-color-reddark-text",
+              "figmaName": "Component / Card / Color / RedDark / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Outline",
-            "Width"
+            "Color",
+            "RedDark",
+            "Text"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / SM / Mobile",
-          "cssVarName": "--ds-card-space-sm-mobile",
-          "value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}",
-          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / RedDark / Background",
+          "cssVarName": "--ds-card-color-reddark-background",
+          "value": "{🔗 Alias.🎨 Surface.Red}",
+          "nativeValue": "#FFACA6",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-16",
-              "figmaName": "Global / Dimension / Space / 16"
+              "cssVar": "--ds-color-red-3",
+              "figmaName": "Global / Color / Red / 3"
             },
             {
-              "cssVar": "--ds-spaceold-base-mobile",
-              "figmaName": "Alias / SpaceOld / Base / Mobile"
+              "cssVar": "--ds-surface-red",
+              "figmaName": "Alias / Surface / Red"
             },
             {
-              "cssVar": "--ds-card-space-sm-mobile",
-              "figmaName": "Component / Card / Space / SM / Mobile"
+              "cssVar": "--ds-card-color-reddark-background",
+              "figmaName": "Component / Card / Color / RedDark / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Space",
-            "SM",
-            "Mobile"
+            "Color",
+            "RedDark",
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / SM / Tablet",
-          "cssVarName": "--ds-card-space-sm-tablet",
-          "value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}",
-          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / RedDark / Border",
+          "cssVarName": "--ds-card-color-reddark-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.Red}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.Red}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-16",
-              "figmaName": "Global / Dimension / Space / 16"
+              "cssVar": "--ds-surface-redwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Redwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-spaceold-base-mobile",
-              "figmaName": "Alias / SpaceOld / Base / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-sm-tablet",
-              "figmaName": "Component / Card / Space / SM / Tablet"
+              "cssVar": "--ds-card-color-reddark-border",
+              "figmaName": "Component / Card / Color / RedDark / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Space",
-            "SM",
-            "Tablet"
+            "Color",
+            "RedDark",
+            "Border"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / SM / Desktop",
-          "cssVarName": "--ds-card-space-sm-desktop",
-          "value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}",
-          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / Red / Text",
+          "cssVarName": "--ds-card-color-red-text",
+          "value": "{🔗 Alias.🎨 Surface.OnRedLighter}",
+          "nativeValue": "#000D6E",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-16",
-              "figmaName": "Global / Dimension / Space / 16"
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
             },
             {
-              "cssVar": "--ds-spaceold-base-mobile",
-              "figmaName": "Alias / SpaceOld / Base / Mobile"
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
             },
             {
-              "cssVar": "--ds-card-space-sm-desktop",
-              "figmaName": "Component / Card / Space / SM / Desktop"
+              "cssVar": "--ds-surface-onredlighter",
+              "figmaName": "Alias / Surface / OnRedLighter"
+            },
+            {
+              "cssVar": "--ds-card-color-red-text",
+              "figmaName": "Component / Card / Color / Red / Text"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Space",
-            "SM",
-            "Desktop"
+            "Color",
+            "Red",
+            "Text"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / Base / Mobile",
-          "cssVarName": "--ds-card-space-base-mobile",
-          "value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}",
-          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / Red / Background",
+          "cssVarName": "--ds-card-color-red-background",
+          "value": "{🔗 Alias.🎨 Surface.RedLighter}",
+          "nativeValue": "#FFEEF1",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-16",
-              "figmaName": "Global / Dimension / Space / 16"
+              "cssVar": "--ds-color-red-1",
+              "figmaName": "Global / Color / Red / 1"
             },
             {
-              "cssVar": "--ds-spaceold-base-mobile",
-              "figmaName": "Alias / SpaceOld / Base / Mobile"
+              "cssVar": "--ds-surface-redlighter",
+              "figmaName": "Alias / Surface / RedLighter"
             },
             {
-              "cssVar": "--ds-card-space-base-mobile",
-              "figmaName": "Component / Card / Space / Base / Mobile"
+              "cssVar": "--ds-card-color-red-background",
+              "figmaName": "Component / Card / Color / Red / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Space",
+            "Color",
+            "Red",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Red / Border",
+          "cssVarName": "--ds-card-color-red-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.RedLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.RedLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-surface-redlighterwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / RedLighterwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
+            },
+            {
+              "cssVar": "--ds-card-color-red-border",
+              "figmaName": "Component / Card / Color / Red / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Red",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / PurpleDark / Text",
+          "cssVarName": "--ds-card-color-purpledark-text",
+          "value": "{🔗 Alias.🎨 Surface.OnPurple}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-onpurple",
+              "figmaName": "Alias / Surface / OnPurple"
+            },
+            {
+              "cssVar": "--ds-card-color-purpledark-text",
+              "figmaName": "Component / Card / Color / PurpleDark / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "PurpleDark",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / PurpleDark / Background",
+          "cssVarName": "--ds-card-color-purpledark-background",
+          "value": "{🔗 Alias.🎨 Surface.Purple}",
+          "nativeValue": "#B8B2FF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-3",
+              "figmaName": "Global / Color / Purple / 3"
+            },
+            {
+              "cssVar": "--ds-surface-purple",
+              "figmaName": "Alias / Surface / Purple"
+            },
+            {
+              "cssVar": "--ds-card-color-purpledark-background",
+              "figmaName": "Component / Card / Color / PurpleDark / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "PurpleDark",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / PurpleDark / Border",
+          "cssVarName": "--ds-card-color-purpledark-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.Purple}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.Purple}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-surface-purplewidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Purplewidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
+            },
+            {
+              "cssVar": "--ds-card-color-purpledark-border",
+              "figmaName": "Component / Card / Color / PurpleDark / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "PurpleDark",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Purple / Text",
+          "cssVarName": "--ds-card-color-purple-text",
+          "value": "{🔗 Alias.🎨 Surface.OnPurpleLighter}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-onpurplelighter",
+              "figmaName": "Alias / Surface / OnPurpleLighter"
+            },
+            {
+              "cssVar": "--ds-card-color-purple-text",
+              "figmaName": "Component / Card / Color / Purple / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Purple",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Purple / Background",
+          "cssVarName": "--ds-card-color-purple-background",
+          "value": "{🔗 Alias.🎨 Surface.PurpleLighter}",
+          "nativeValue": "#F9F3FF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-purple-1",
+              "figmaName": "Global / Color / Purple / 1"
+            },
+            {
+              "cssVar": "--ds-surface-purplelighter",
+              "figmaName": "Alias / Surface / PurpleLighter"
+            },
+            {
+              "cssVar": "--ds-card-color-purple-background",
+              "figmaName": "Component / Card / Color / Purple / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Purple",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Purple / Border",
+          "cssVarName": "--ds-card-color-purple-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.PurpleLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.PurpleLighter}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-surface-purplelighterwidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / PurpleLighterwidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
+            },
+            {
+              "cssVar": "--ds-card-color-purple-border",
+              "figmaName": "Component / Card / Color / Purple / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Purple",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Dashed / Text",
+          "cssVarName": "--ds-card-color-dashed-text",
+          "value": "{🔗 Alias.🎨 Surface.OnWhite}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-onwhite",
+              "figmaName": "Alias / Surface / OnWhite"
+            },
+            {
+              "cssVar": "--ds-card-color-dashed-text",
+              "figmaName": "Component / Card / Color / Dashed / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Dashed",
+            "Text"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Dashed / Background",
+          "cssVarName": "--ds-card-color-dashed-background",
+          "value": "{🔗 Alias.🎨 Surface.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-surface-white",
+              "figmaName": "Alias / Surface / White"
+            },
+            {
+              "cssVar": "--ds-card-color-dashed-background",
+              "figmaName": "Component / Card / Color / Dashed / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Dashed",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Dashed / Border",
+          "cssVarName": "--ds-card-color-dashed-border",
+          "value": "{🔗 Alias.▭ Border.Composite.GreyDashed}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.▭ Border.Color.Grey}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Dashed}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-border-composite-greydashed",
+              "figmaName": "Alias / Border / Composite / GreyDashed"
+            },
+            {
+              "cssVar": "--ds-card-color-dashed-border",
+              "figmaName": "Component / Card / Color / Dashed / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
+            "Dashed",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Color / Base / Text",
+          "cssVarName": "--ds-card-color-base-text",
+          "value": "{🔗 Alias.🎨 Surface.OnWhite}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-surface-onwhite",
+              "figmaName": "Alias / Surface / OnWhite"
+            },
+            {
+              "cssVar": "--ds-card-color-base-text",
+              "figmaName": "Component / Card / Color / Base / Text"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Color",
             "Base",
-            "Mobile"
+            "Text"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / Base / Tablet",
-          "cssVarName": "--ds-card-space-base-tablet",
-          "value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}",
-          "nativeValue": "{\"value\":1.5,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / Base / Background",
+          "cssVarName": "--ds-card-color-base-background",
+          "value": "{🔗 Alias.🎨 Surface.White}",
+          "nativeValue": "#FFFFFF",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-24",
-              "figmaName": "Global / Dimension / Space / 24"
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
             },
             {
-              "cssVar": "--ds-spaceold-lg-mobile",
-              "figmaName": "Alias / SpaceOld / LG / Mobile"
+              "cssVar": "--ds-surface-white",
+              "figmaName": "Alias / Surface / White"
             },
             {
-              "cssVar": "--ds-card-space-base-tablet",
-              "figmaName": "Component / Card / Space / Base / Tablet"
+              "cssVar": "--ds-card-color-base-background",
+              "figmaName": "Component / Card / Color / Base / Background"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Space",
+            "Color",
             "Base",
-            "Tablet"
+            "Background"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / Base / Desktop",
-          "cssVarName": "--ds-card-space-base-desktop",
-          "value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}",
-          "nativeValue": "{\"value\":1.5,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Color / Base / Border",
+          "cssVarName": "--ds-card-color-base-border",
+          "value": "{\"color\":\"{🔗 Alias.🎨 Surface.White}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.🎨 Surface.White}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-24",
-              "figmaName": "Global / Dimension / Space / 24"
+              "cssVar": "--ds-surface-whitewidth-alias-border-width-basestyle-alias-border-style-solid",
+              "figmaName": "color Alias / Surface / Whitewidth Alias / Border / Width / Basestyle Alias / Border / Style / Solid"
             },
             {
-              "cssVar": "--ds-spaceold-lg-mobile",
-              "figmaName": "Alias / SpaceOld / LG / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-base-desktop",
-              "figmaName": "Component / Card / Space / Base / Desktop"
+              "cssVar": "--ds-card-color-base-border",
+              "figmaName": "Component / Card / Color / Base / Border"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
-            "Space",
+            "Color",
             "Base",
-            "Desktop"
+            "Border"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / MD / Mobile",
-          "cssVarName": "--ds-card-space-md-mobile",
-          "value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}",
+          "name": "🧩 Component / Card / Space / SM",
+          "cssVarName": "--ds-card-space-sm",
+          "value": "{🌐 Global.📏 Dimension.Space.16}",
           "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
           "inheritance": [
             {
@@ -13286,80 +12330,21 @@
               "figmaName": "Global / Dimension / Space / 16"
             },
             {
-              "cssVar": "--ds-spaceold-base-mobile",
-              "figmaName": "Alias / SpaceOld / Base / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-md-mobile",
-              "figmaName": "Component / Card / Space / MD / Mobile"
+              "cssVar": "--ds-card-space-sm",
+              "figmaName": "Component / Card / Space / SM"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Space",
-            "MD",
-            "Mobile"
+            "SM"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / MD / Tablet",
-          "cssVarName": "--ds-card-space-md-tablet",
-          "value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}",
-          "nativeValue": "{\"value\":1.5,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-space-24",
-              "figmaName": "Global / Dimension / Space / 24"
-            },
-            {
-              "cssVar": "--ds-spaceold-lg-mobile",
-              "figmaName": "Alias / SpaceOld / LG / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-md-tablet",
-              "figmaName": "Component / Card / Space / MD / Tablet"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Space",
-            "MD",
-            "Tablet"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Space / MD / Desktop",
-          "cssVarName": "--ds-card-space-md-desktop",
-          "value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}",
-          "nativeValue": "{\"value\":2,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-space-32",
-              "figmaName": "Global / Dimension / Space / 32"
-            },
-            {
-              "cssVar": "--ds-spaceold-xl-mobile",
-              "figmaName": "Alias / SpaceOld / XL / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-md-desktop",
-              "figmaName": "Component / Card / Space / MD / Desktop"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Card",
-            "Space",
-            "MD",
-            "Desktop"
-          ]
-        },
-        {
-          "name": "🧩 Component / Card / Space / LG / Mobile",
-          "cssVarName": "--ds-card-space-lg-mobile",
-          "value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}",
+          "name": "🧩 Component / Card / Space / Base",
+          "cssVarName": "--ds-card-space-base",
+          "value": "{🌐 Global.📏 Dimension.Space.16}",
           "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
           "inheritance": [
             {
@@ -13367,74 +12352,84 @@
               "figmaName": "Global / Dimension / Space / 16"
             },
             {
-              "cssVar": "--ds-spaceold-base-mobile",
-              "figmaName": "Alias / SpaceOld / Base / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-lg-mobile",
-              "figmaName": "Component / Card / Space / LG / Mobile"
+              "cssVar": "--ds-card-space-base",
+              "figmaName": "Component / Card / Space / Base"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Space",
-            "LG",
-            "Mobile"
+            "Base"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / LG / Tablet",
-          "cssVarName": "--ds-card-space-lg-tablet",
-          "value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}",
-          "nativeValue": "{\"value\":2,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Space / MD",
+          "cssVarName": "--ds-card-space-md",
+          "value": "{🌐 Global.📏 Dimension.Space.16}",
+          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-32",
-              "figmaName": "Global / Dimension / Space / 32"
+              "cssVar": "--ds-dimension-space-16",
+              "figmaName": "Global / Dimension / Space / 16"
             },
             {
-              "cssVar": "--ds-spaceold-xl-mobile",
-              "figmaName": "Alias / SpaceOld / XL / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-lg-tablet",
-              "figmaName": "Component / Card / Space / LG / Tablet"
+              "cssVar": "--ds-card-space-md",
+              "figmaName": "Component / Card / Space / MD"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Space",
-            "LG",
-            "Tablet"
+            "MD"
           ]
         },
         {
-          "name": "🧩 Component / Card / Space / LG / Desktop",
-          "cssVarName": "--ds-card-space-lg-desktop",
-          "value": "{🔗 Alias.↔️ SpaceOld.2XL.Mobile}",
-          "nativeValue": "{\"value\":3,\"unit\":\"rem\"}",
+          "name": "🧩 Component / Card / Space / LG",
+          "cssVarName": "--ds-card-space-lg",
+          "value": "{🌐 Global.📏 Dimension.Space.16}",
+          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-space-48",
-              "figmaName": "Global / Dimension / Space / 48"
+              "cssVar": "--ds-dimension-space-16",
+              "figmaName": "Global / Dimension / Space / 16"
             },
             {
-              "cssVar": "--ds-spaceold-2xl-mobile",
-              "figmaName": "Alias / SpaceOld / 2XL / Mobile"
-            },
-            {
-              "cssVar": "--ds-card-space-lg-desktop",
-              "figmaName": "Component / Card / Space / LG / Desktop"
+              "cssVar": "--ds-card-space-lg",
+              "figmaName": "Component / Card / Space / LG"
             }
           ],
           "path": [
             "🧩 Component",
             "Card",
             "Space",
-            "LG",
-            "Desktop"
+            "LG"
+          ]
+        },
+        {
+          "name": "🧩 Component / Card / Radius",
+          "cssVarName": "--ds-card-radius",
+          "value": "{🔗 Alias.🔵 Radius.LG}",
+          "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-12",
+              "figmaName": "Global / Dimension / Radius / 12"
+            },
+            {
+              "cssVar": "--ds-radius-lg",
+              "figmaName": "Alias / Radius / LG"
+            },
+            {
+              "cssVar": "--ds-card-radius",
+              "figmaName": "Component / Card / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Card",
+            "Radius"
           ]
         }
       ],
@@ -13527,10 +12522,10 @@
       "props": [
         {
           "name": "align",
-          "type": "\"\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"center\" | \"left\" | \"right\" | undefined",
           "complexType": {
             "original": "CardActionsAlignment",
-            "resolved": "\"\" | \"center\" | \"left\" | \"right\"",
+            "resolved": "\"center\" | \"left\" | \"right\" | undefined",
             "references": {
               "CardActionsAlignment": {
                 "location": "import",
@@ -13544,17 +12539,8 @@
           "attr": "align",
           "reflectToAttr": false,
           "docs": "The value of the button, which is submitted with the form data.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "center",
               "type": "string"
@@ -13566,9 +12552,12 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -13672,7 +12661,7 @@
           "mutable": false,
           "attr": "direction",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "Defines the layout direction of the header content (title, icon, image).",
           "docsTags": [
             {
               "name": "default",
@@ -14731,10 +13720,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "type": "\"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
           "complexType": {
             "original": "CarouselItemColor",
-            "resolved": "\"\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "resolved": "\"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
             "references": {
               "CarouselItemColor": {
                 "location": "import",
@@ -14748,17 +13737,8 @@
           "attr": "color",
           "reflectToAttr": false,
           "docs": "Background color for product tiles.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "green",
               "type": "string"
@@ -14774,9 +13754,12 @@
             {
               "value": "yellow",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -15543,8 +14526,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -15674,8 +14657,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -17540,8 +16523,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -20468,8 +19451,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -20850,8 +19833,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -21601,8 +20584,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -22149,8 +21132,8 @@
           "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-2",
-              "figmaName": "Global / Dimension / Radius / 2"
+              "cssVar": "--ds-dimension-radius-12",
+              "figmaName": "Global / Dimension / Radius / 12"
             },
             {
               "cssVar": "--ds-radius-lg",
@@ -30349,6 +29332,7 @@
         ],
         "ds-button": [
           "ds-spinner",
+          "ds-brand-icon",
           "ds-icon"
         ]
       },
@@ -31234,10 +30218,10 @@
         },
         {
           "name": "accordionMarker",
-          "type": "\"\" | \"none\" | \"plus\" | \"plus-minus\"",
+          "type": "\"none\" | \"plus\" | \"plus-minus\" | undefined",
           "complexType": {
             "original": "AccordionMarker",
-            "resolved": "\"\" | \"none\" | \"plus\" | \"plus-minus\"",
+            "resolved": "\"none\" | \"plus\" | \"plus-minus\" | undefined",
             "references": {
               "AccordionMarker": {
                 "location": "import",
@@ -31251,17 +30235,8 @@
           "attr": "accordion-marker",
           "reflectToAttr": false,
           "docs": "The marker variant. Only applies if `variant` is set to `accordion`.\nIf `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus`\na plus icon for closed and a minus icon for open state is used.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "none",
               "type": "string"
@@ -31273,19 +30248,22 @@
             {
               "value": "plus-minus",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
         },
         {
           "name": "accordionMarkerPosition",
-          "type": "\"\" | \"left\" | \"right\"",
+          "type": "\"left\" | \"right\" | undefined",
           "complexType": {
             "original": "AccordionMarkerPosition",
-            "resolved": "\"\" | \"left\" | \"right\"",
+            "resolved": "\"left\" | \"right\" | undefined",
             "references": {
               "AccordionMarkerPosition": {
                 "location": "import",
@@ -31299,17 +30277,8 @@
           "attr": "accordion-marker-position",
           "reflectToAttr": false,
           "docs": "The position of the marker. Only applies if `variant` is set to `accordion`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "left",
               "type": "string"
@@ -31317,9 +30286,12 @@
             {
               "value": "right",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -31355,10 +30327,10 @@
         },
         {
           "name": "actionIcon",
-          "type": "\"\" | \"default\" | \"download\" | \"link\" | \"link-external\"",
+          "type": "\"default\" | \"download\" | \"link\" | \"link-external\" | undefined",
           "complexType": {
             "original": "ItemActionIcon",
-            "resolved": "\"\" | \"default\" | \"download\" | \"link\" | \"link-external\"",
+            "resolved": "\"default\" | \"download\" | \"link\" | \"link-external\" | undefined",
             "references": {
               "ItemActionIcon": {
                 "location": "import",
@@ -31372,17 +30344,8 @@
           "attr": "action-icon",
           "reflectToAttr": false,
           "docs": "The action icon variant. Controls which icon is displayed for `link` and `button` variants.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "default",
               "type": "string"
@@ -31398,14 +30361,16 @@
             {
               "value": "link-external",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "",
             "default",
             "link",
             "link-external",
@@ -31529,6 +30494,35 @@
           "setter": false
         },
         {
+          "name": "inverted",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inverted",
+          "reflectToAttr": false,
+          "docs": "If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "label",
           "type": "string",
           "complexType": {
@@ -31559,10 +30553,10 @@
         },
         {
           "name": "labelLevel",
-          "type": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+          "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
           "complexType": {
             "original": "ItemLabelLevel",
-            "resolved": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+            "resolved": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | undefined",
             "references": {
               "ItemLabelLevel": {
                 "location": "import",
@@ -31576,17 +30570,8 @@
           "attr": "label-level",
           "reflectToAttr": false,
           "docs": "The semantic heading level of the label element.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "h1",
               "type": "string"
@@ -31606,14 +30591,16 @@
             {
               "value": "h5",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "",
             "h1",
             "h2",
             "h3",
@@ -31623,10 +30610,10 @@
         },
         {
           "name": "labelSize",
-          "type": "\"\" | \"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\"",
+          "type": "\"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | undefined",
           "complexType": {
             "original": "ItemLabelSize",
-            "resolved": "\"\" | \"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\"",
+            "resolved": "\"2xl\" | \"3xl\" | \"base\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | undefined",
             "references": {
               "ItemLabelSize": {
                 "location": "import",
@@ -31640,17 +30627,8 @@
           "attr": "label-size",
           "reflectToAttr": false,
           "docs": "The visual size of the label. Defaults to `labelLevel` if not set.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "2xl",
               "type": "string"
@@ -31690,14 +30668,16 @@
             {
               "value": "xl",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false,
           "oneOfValues": [
-            "",
             "h1",
             "h2",
             "h3",
@@ -31740,11 +30720,48 @@
           "setter": false
         },
         {
+          "name": "size",
+          "type": "\"lg\" | undefined",
+          "complexType": {
+            "original": "ItemSize",
+            "resolved": "\"lg\" | undefined",
+            "references": {
+              "ItemSize": {
+                "location": "import",
+                "path": "./item.interfaces",
+                "id": "src/components/list/item/item.interfaces.ts::ItemSize",
+                "referenceLocation": "ItemSize"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "The size of the item. If not set, the default (base) size is used.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false,
+          "oneOfValues": [
+            "lg"
+          ]
+        },
+        {
           "name": "target",
-          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\" | undefined",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -31758,17 +30775,8 @@
           "attr": "target",
           "reflectToAttr": false,
           "docs": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
+          "docsTags": [],
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "_blank",
               "type": "string"
@@ -31784,9 +30792,12 @@
             {
               "value": "_top",
               "type": "string"
+            },
+            {
+              "type": "undefined"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -31958,6 +30969,18 @@
         {
           "name": "--list-item-color",
           "docs": "Text color of the list item."
+        },
+        {
+          "name": "--list-item-color-hover",
+          "docs": "Text color of a clickable (link or button) list item on hover."
+        },
+        {
+          "name": "--list-item-color-active",
+          "docs": "Text color of a clickable (link or button) list item when active."
+        },
+        {
+          "name": "--list-item-color-disabled",
+          "docs": "Text color of a disabled list item."
         },
         {
           "name": "--list-item-border-color",
@@ -32691,6 +31714,14 @@
         {
           "name": "part",
           "text": "list - The native HTML list element (ol or ul)."
+        },
+        {
+          "name": "variant",
+          "text": "is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements."
+        },
+        {
+          "name": "variant",
+          "text": "is-lg - Large size, increasing the minimum row height of descendant ds-item elements."
         }
       ],
       "encapsulation": "shadow",
@@ -32698,6 +31729,35 @@
       "dependencies": [],
       "dependencyGraph": {},
       "props": [
+        {
+          "name": "inverted",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inverted",
+          "reflectToAttr": false,
+          "docs": "If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface.\nCascades to descendant `ds-item` elements.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
         {
           "name": "ordered",
           "type": "boolean",
@@ -32723,6 +31783,40 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "size",
+          "type": "\"lg\" | undefined",
+          "complexType": {
+            "original": "ItemSize",
+            "resolved": "\"lg\" | undefined",
+            "references": {
+              "ItemSize": {
+                "location": "import",
+                "path": "./item/item.interfaces",
+                "id": "src/components/list/item/item.interfaces.ts::ItemSize",
+                "referenceLocation": "ItemSize"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "The size of the list items. If not set, the default (base) size is used.\nCascades to descendant `ds-item` elements.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -32756,12 +31850,20 @@
           "docs": "Defines the font weight for the term (dt) element."
         },
         {
+          "name": "--description-list-term-family",
+          "docs": "Defines the font family for the term (dt) element."
+        },
+        {
           "name": "--description-list-detail-color",
           "docs": "Defines the text color for the detail (dd) element."
         },
         {
           "name": "--description-list-detail-weight",
           "docs": "Defines the font weight for the detail (dd) element."
+        },
+        {
+          "name": "--description-list-detail-family",
+          "docs": "Defines the font family for the detail (dd) element."
         },
         {
           "name": "--ordered-list-mb",
@@ -32826,8 +31928,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -33109,56 +32211,802 @@
           ]
         },
         {
-          "name": "🧩 Component / List / Item / Disabled",
-          "cssVarName": "--ds-list-item-disabled",
-          "value": "{🔗 Alias.🔤 Text.Color.Disabled}",
-          "nativeValue": "#313131",
+          "name": "🧩 Component / List / Item / Size / Base / Space",
+          "cssVarName": "--ds-list-item-size-base-space",
+          "value": "{🔗 Alias.↔️ Space.XS}",
+          "nativeValue": "{\"value\":0.5,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-6",
-              "figmaName": "Global / Color / Grey / 6"
+              "cssVar": "--ds-dimension-space-8",
+              "figmaName": "Global / Dimension / Space / 8"
             },
             {
-              "cssVar": "--ds-text-color-disabled",
-              "figmaName": "Alias / Text / Color / Disabled"
+              "cssVar": "--ds-space-xs",
+              "figmaName": "Alias / Space / XS"
             },
             {
-              "cssVar": "--ds-list-item-disabled",
-              "figmaName": "Component / List / Item / Disabled"
+              "cssVar": "--ds-list-item-size-base-space",
+              "figmaName": "Component / List / Item / Size / Base / Space"
             }
           ],
           "path": [
             "🧩 Component",
             "List",
             "Item",
+            "Size",
+            "Base",
+            "Space"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Size / Base / MinHeight",
+          "cssVarName": "--ds-list-item-size-base-minheight",
+          "value": "{🌐 Global.📏 Dimension.Size.56}",
+          "nativeValue": "{\"value\":56,\"unit\":\"px\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-size-56",
+              "figmaName": "Global / Dimension / Size / 56"
+            },
+            {
+              "cssVar": "--ds-list-item-size-base-minheight",
+              "figmaName": "Component / List / Item / Size / Base / MinHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Size",
+            "Base",
+            "MinHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Size / LG / Space",
+          "cssVarName": "--ds-list-item-size-lg-space",
+          "value": "{🔗 Alias.↔️ Space.XS}",
+          "nativeValue": "{\"value\":0.5,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-8",
+              "figmaName": "Global / Dimension / Space / 8"
+            },
+            {
+              "cssVar": "--ds-space-xs",
+              "figmaName": "Alias / Space / XS"
+            },
+            {
+              "cssVar": "--ds-list-item-size-lg-space",
+              "figmaName": "Component / List / Item / Size / LG / Space"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Size",
+            "LG",
+            "Space"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Size / LG / MinHeight",
+          "cssVarName": "--ds-list-item-size-lg-minheight",
+          "value": "{\"value\":72,\"unit\":\"px\"}",
+          "nativeValue": "{\"value\":72,\"unit\":\"px\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-",
+              "figmaName": "value72unitpx"
+            },
+            {
+              "cssVar": "--ds-list-item-size-lg-minheight",
+              "figmaName": "Component / List / Item / Size / LG / MinHeight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Size",
+            "LG",
+            "MinHeight"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Gap",
+          "cssVarName": "--ds-list-item-gap",
+          "value": "{🔗 Alias.↔️ Space.Base}",
+          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-16",
+              "figmaName": "Global / Dimension / Space / 16"
+            },
+            {
+              "cssVar": "--ds-space-base",
+              "figmaName": "Alias / Space / Base"
+            },
+            {
+              "cssVar": "--ds-list-item-gap",
+              "figmaName": "Component / List / Item / Gap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Gap"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Radius",
+          "cssVarName": "--ds-list-item-radius",
+          "value": "{🔗 Alias.🔵 Radius.LG}",
+          "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-12",
+              "figmaName": "Global / Dimension / Radius / 12"
+            },
+            {
+              "cssVar": "--ds-radius-lg",
+              "figmaName": "Alias / Radius / LG"
+            },
+            {
+              "cssVar": "--ds-list-item-radius",
+              "figmaName": "Component / List / Item / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / ContentGap",
+          "cssVarName": "--ds-list-item-contentgap",
+          "value": "{🌐 Global.📏 Dimension.Space.1}",
+          "nativeValue": "{\"value\":0.0625,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-1",
+              "figmaName": "Global / Dimension / Space / 1"
+            },
+            {
+              "cssVar": "--ds-list-item-contentgap",
+              "figmaName": "Component / List / Item / ContentGap"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "ContentGap"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Color / Text / Base",
+          "cssVarName": "--ds-list-item-color-text-base",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-list-item-color-text-base",
+              "figmaName": "Component / List / Item / Color / Text / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Color",
+            "Text",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Color / Text / Disabled",
+          "cssVarName": "--ds-list-item-color-text-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-list-item-color-text-disabled",
+              "figmaName": "Component / List / Item / Color / Text / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Color",
+            "Text",
             "Disabled"
           ]
         },
         {
-          "name": "🧩 Component / List / Item / Border / Color",
-          "cssVarName": "--ds-list-item-border-color",
-          "value": "{🔗 Alias.▭ Border.Color.Grey}",
-          "nativeValue": "#D0D0D0",
+          "name": "🧩 Component / List / Item / Color / Text / Hover",
+          "cssVarName": "--ds-list-item-color-text-hover",
+          "value": "{🔗 Alias.▭ Border.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
           "inheritance": [
             {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
             },
             {
-              "cssVar": "--ds-border-color-grey",
-              "figmaName": "Alias / Border / Color / Grey"
+              "cssVar": "--ds-border-color-primaryhover",
+              "figmaName": "Alias / Border / Color / PrimaryHover"
             },
             {
-              "cssVar": "--ds-list-item-border-color",
-              "figmaName": "Component / List / Item / Border / Color"
+              "cssVar": "--ds-list-item-color-text-hover",
+              "figmaName": "Component / List / Item / Color / Text / Hover"
             }
           ],
           "path": [
             "🧩 Component",
             "List",
             "Item",
+            "Color",
+            "Text",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Color / Text / Active",
+          "cssVarName": "--ds-list-item-color-text-active",
+          "value": "{🔗 Alias.▭ Border.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-border-color-primaryactive",
+              "figmaName": "Alias / Border / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-list-item-color-text-active",
+              "figmaName": "Component / List / Item / Color / Text / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Color",
+            "Text",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Color / Border / Hover",
+          "cssVarName": "--ds-list-item-color-border-hover",
+          "value": "{🔗 Alias.▭ Border.Color.PrimaryHover}",
+          "nativeValue": "#0014AA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-5",
+              "figmaName": "Global / Color / Sky / 5"
+            },
+            {
+              "cssVar": "--ds-border-color-primaryhover",
+              "figmaName": "Alias / Border / Color / PrimaryHover"
+            },
+            {
+              "cssVar": "--ds-list-item-color-border-hover",
+              "figmaName": "Component / List / Item / Color / Border / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Color",
             "Border",
-            "Color"
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Color / Border / Active",
+          "cssVarName": "--ds-list-item-color-border-active",
+          "value": "{🔗 Alias.▭ Border.Color.PrimaryActive}",
+          "nativeValue": "#000739",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-6",
+              "figmaName": "Global / Color / Primary / 6"
+            },
+            {
+              "cssVar": "--ds-border-color-primaryactive",
+              "figmaName": "Alias / Border / Color / PrimaryActive"
+            },
+            {
+              "cssVar": "--ds-list-item-color-border-active",
+              "figmaName": "Component / List / Item / Color / Border / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Color",
+            "Border",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Color / Border / Base",
+          "cssVarName": "--ds-list-item-color-border-base",
+          "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-border-color-greylight",
+              "figmaName": "Alias / Border / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-list-item-color-border-base",
+              "figmaName": "Component / List / Item / Color / Border / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Color",
+            "Border",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Text / Base",
+          "cssVarName": "--ds-list-item-inverted-color-text-base",
+          "value": "{🔗 Alias.🎨 Surface.OnPrimary}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-text-color-white",
+              "figmaName": "Alias / Text / Color / White"
+            },
+            {
+              "cssVar": "--ds-surface-onprimary",
+              "figmaName": "Alias / Surface / OnPrimary"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-text-base",
+              "figmaName": "Component / List / Item / Inverted / Color / Text / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Text",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Text / Disabled",
+          "cssVarName": "--ds-list-item-inverted-color-text-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.InvertedDisabled}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-hint",
+              "figmaName": "Alias / Text / Color / Hint"
+            },
+            {
+              "cssVar": "--ds-text-color-inverteddisabled",
+              "figmaName": "Alias / Text / Color / InvertedDisabled"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-text-disabled",
+              "figmaName": "Component / List / Item / Inverted / Color / Text / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Text",
+            "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Text / Hover",
+          "cssVarName": "--ds-list-item-inverted-color-text-hover",
+          "value": "{🔗 Alias.🎬 Action.InvertedPrimary.Text.Hover}",
+          "nativeValue": "#A7D1FA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-2",
+              "figmaName": "Global / Color / Sky / 2"
+            },
+            {
+              "cssVar": "--ds-action-invertedprimary-text-hover",
+              "figmaName": "Alias / Action / InvertedPrimary / Text / Hover"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-text-hover",
+              "figmaName": "Component / List / Item / Inverted / Color / Text / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Text",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Text / Active",
+          "cssVarName": "--ds-list-item-inverted-color-text-active",
+          "value": "{🔗 Alias.🎬 Action.InvertedPrimary.Text.Active}",
+          "nativeValue": "#56A7F5",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-3",
+              "figmaName": "Global / Color / Sky / 3"
+            },
+            {
+              "cssVar": "--ds-action-invertedprimary-text-active",
+              "figmaName": "Alias / Action / InvertedPrimary / Text / Active"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-text-active",
+              "figmaName": "Component / List / Item / Inverted / Color / Text / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Text",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Border / Base",
+          "cssVarName": "--ds-list-item-inverted-color-border-base",
+          "value": "{🔗 Alias.▭ Border.Color.InvertedPrimary}",
+          "nativeValue": "#293485",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-4",
+              "figmaName": "Global / Color / Primary / 4"
+            },
+            {
+              "cssVar": "--ds-border-color-invertedprimary",
+              "figmaName": "Alias / Border / Color / InvertedPrimary"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-border-base",
+              "figmaName": "Component / List / Item / Inverted / Color / Border / Base"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Border",
+            "Base"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Border / Hover",
+          "cssVarName": "--ds-list-item-inverted-color-border-hover",
+          "value": "{🔗 Alias.▭ Border.Color.InvertedPrimaryHover}",
+          "nativeValue": "#A7D1FA",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-2",
+              "figmaName": "Global / Color / Sky / 2"
+            },
+            {
+              "cssVar": "--ds-border-color-invertedprimaryhover",
+              "figmaName": "Alias / Border / Color / InvertedPrimaryHover"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-border-hover",
+              "figmaName": "Component / List / Item / Inverted / Color / Border / Hover"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Border",
+            "Hover"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Inverted / Color / Border / Active",
+          "cssVarName": "--ds-list-item-inverted-color-border-active",
+          "value": "{🔗 Alias.▭ Border.Color.InvertedPrimaryActive}",
+          "nativeValue": "#6672CC",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-sky-4",
+              "figmaName": "Global / Color / Sky / 4"
+            },
+            {
+              "cssVar": "--ds-border-color-invertedprimaryactive",
+              "figmaName": "Alias / Border / Color / InvertedPrimaryActive"
+            },
+            {
+              "cssVar": "--ds-list-item-inverted-color-border-active",
+              "figmaName": "Component / List / Item / Inverted / Color / Border / Active"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Inverted",
+            "Color",
+            "Border",
+            "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Accordion / Py",
+          "cssVarName": "--ds-list-item-accordion-py",
+          "value": "{🔗 Alias.↔️ Space.Base}",
+          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-16",
+              "figmaName": "Global / Dimension / Space / 16"
+            },
+            {
+              "cssVar": "--ds-space-base",
+              "figmaName": "Alias / Space / Base"
+            },
+            {
+              "cssVar": "--ds-list-item-accordion-py",
+              "figmaName": "Component / List / Item / Accordion / Py"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Accordion",
+            "Py"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Action / IconSize",
+          "cssVarName": "--ds-list-item-action-iconsize",
+          "value": "{🧩 Component.Icon.Size.SM}",
+          "nativeValue": "{\"value\":0.875,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-icon-size-sm",
+              "figmaName": "Component / Icon / Size / SM"
+            },
+            {
+              "cssVar": "--ds-list-item-action-iconsize",
+              "figmaName": "Component / List / Item / Action / IconSize"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Action",
+            "IconSize"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Title / Font / Size",
+          "cssVarName": "--ds-list-item-title-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.Base}",
+          "nativeValue": "{\"value\":1,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-16",
+              "figmaName": "Global / Font / Size / 16"
+            },
+            {
+              "cssVar": "--ds-text-size-base",
+              "figmaName": "Alias / Text / Size / Base"
+            },
+            {
+              "cssVar": "--ds-list-item-title-font-size",
+              "figmaName": "Component / List / Item / Title / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Title",
+            "Font",
+            "Size"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Title / Font / Weight",
+          "cssVarName": "--ds-list-item-title-font-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Bold}",
+          "nativeValue": "700",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-700",
+              "figmaName": "Global / Font / Weight / 700"
+            },
+            {
+              "cssVar": "--ds-text-weight-bold",
+              "figmaName": "Alias / Text / Weight / Bold"
+            },
+            {
+              "cssVar": "--ds-list-item-title-font-weight",
+              "figmaName": "Component / List / Item / Title / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Title",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Title / Font / Family",
+          "cssVarName": "--ds-list-item-title-font-family",
+          "value": "{🌐 Global.🔤 Font.Family.Heading}",
+          "nativeValue": "[\"BaloiseCreateHeadline\",\"Arial\",\"sans-serif\"]",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-heading",
+              "figmaName": "Global / Font / Family / Heading"
+            },
+            {
+              "cssVar": "--ds-list-item-title-font-family",
+              "figmaName": "Component / List / Item / Title / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Title",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Text / Font / Family",
+          "cssVarName": "--ds-list-item-text-font-family",
+          "value": "{🌐 Global.🔤 Font.Family.Text}",
+          "nativeValue": "[\"BaloiseCreateText\",\"Arial\",\"sans-serif\"]",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-family-text",
+              "figmaName": "Global / Font / Family / Text"
+            },
+            {
+              "cssVar": "--ds-list-item-text-font-family",
+              "figmaName": "Component / List / Item / Text / Font / Family"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Text",
+            "Font",
+            "Family"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Text / Font / Weight",
+          "cssVarName": "--ds-list-item-text-font-weight",
+          "value": "{🔗 Alias.🔤 Text.Weight.Regular}",
+          "nativeValue": "400",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-weight-400",
+              "figmaName": "Global / Font / Weight / 400"
+            },
+            {
+              "cssVar": "--ds-text-weight-regular",
+              "figmaName": "Alias / Text / Weight / Regular"
+            },
+            {
+              "cssVar": "--ds-list-item-text-font-weight",
+              "figmaName": "Component / List / Item / Text / Font / Weight"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Text",
+            "Font",
+            "Weight"
+          ]
+        },
+        {
+          "name": "🧩 Component / List / Item / Text / Font / Size",
+          "cssVarName": "--ds-list-item-text-font-size",
+          "value": "{🔗 Alias.🔤 Text.Size.SM}",
+          "nativeValue": "{\"value\":0.875,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-font-size-14",
+              "figmaName": "Global / Font / Size / 14"
+            },
+            {
+              "cssVar": "--ds-text-size-sm",
+              "figmaName": "Alias / Text / Size / SM"
+            },
+            {
+              "cssVar": "--ds-list-item-text-font-size",
+              "figmaName": "Component / List / Item / Text / Font / Size"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "List",
+            "Item",
+            "Text",
+            "Font",
+            "Size"
           ]
         }
       ],
@@ -33972,8 +33820,8 @@
           "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-2",
-              "figmaName": "Global / Dimension / Radius / 2"
+              "cssVar": "--ds-dimension-radius-12",
+              "figmaName": "Global / Dimension / Radius / 12"
             },
             {
               "cssVar": "--ds-radius-lg",
@@ -35085,8 +34933,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -35331,8 +35179,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -36085,8 +35933,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -37598,8 +37446,8 @@
           "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-2",
-              "figmaName": "Global / Dimension / Radius / 2"
+              "cssVar": "--ds-dimension-radius-12",
+              "figmaName": "Global / Dimension / Radius / 12"
             },
             {
               "cssVar": "--ds-radius-lg",
@@ -40260,8 +40108,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -41253,8 +41101,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -42065,8 +41913,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -42747,8 +42595,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -42878,8 +42726,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -45010,8 +44858,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -46787,8 +46635,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -46812,8 +46660,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -50154,8 +50002,8 @@
           "nativeValue": "{\"value\":0.75,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-2",
-              "figmaName": "Global / Dimension / Radius / 2"
+              "cssVar": "--ds-dimension-radius-12",
+              "figmaName": "Global / Dimension / Radius / 12"
             },
             {
               "cssVar": "--ds-radius-lg",
@@ -50397,10 +50245,10 @@
         },
         {
           "name": "actionTarget",
-          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -50422,9 +50270,6 @@
           ],
           "default": "'_blank'",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "_blank",
               "type": "string"
@@ -50814,8 +50659,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -57779,8 +57624,8 @@
           "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-3",
-              "figmaName": "Global / Dimension / Radius / 3"
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
             },
             {
               "cssVar": "--ds-radius-rounded",
@@ -60417,10 +60262,10 @@
         },
         {
           "name": "actionTarget",
-          "type": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+          "type": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
           "complexType": {
             "original": "ButtonTarget",
-            "resolved": "\"\" | \"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
+            "resolved": "\"_blank\" | \"_parent\" | \"_self\" | \"_top\"",
             "references": {
               "ButtonTarget": {
                 "location": "import",
@@ -60442,9 +60287,6 @@
           ],
           "default": "'_blank'",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "_blank",
               "type": "string"
@@ -60824,8 +60666,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -62628,8 +62470,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -62900,8 +62742,8 @@
           "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
           "inheritance": [
             {
-              "cssVar": "--ds-dimension-radius-1",
-              "figmaName": "Global / Dimension / Radius / 1"
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
             },
             {
               "cssVar": "--ds-radius-base",
@@ -64974,17 +64816,17 @@
   ],
   "typeLibrary": {
     "src/components/accordion/accordion.interfaces.ts::AccordionSummaryLevel": {
-      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+      "declaration": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
       "docstring": "",
       "path": "src/components/accordion/accordion.interfaces.ts"
     },
     "src/components/accordion/accordion.interfaces.ts::AccordionMarker": {
-      "declaration": "\"\" | \"plus\" | \"plus-minus\" | \"none\"",
+      "declaration": "\"plus\" | \"plus-minus\" | \"none\"",
       "docstring": "",
       "path": "src/components/accordion/accordion.interfaces.ts"
     },
     "src/components/accordion/accordion.interfaces.ts::AccordionMarkerPosition": {
-      "declaration": "\"\" | \"left\" | \"right\"",
+      "declaration": "\"left\" | \"right\"",
       "docstring": "",
       "path": "src/components/accordion/accordion.interfaces.ts"
     },
@@ -64994,7 +64836,7 @@
       "path": "src/components/accordion/accordion.interfaces.ts"
     },
     "src/components/accordion/accordion.interfaces.ts::AccordionButtonSize": {
-      "declaration": "\"\" | \"sm\" | \"lg\" | \"xl\"",
+      "declaration": "\"sm\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/components/accordion/accordion.interfaces.ts"
     },
@@ -65034,7 +64876,7 @@
       "path": "src/components/alert/snackbar/snackbar.interfaces.ts"
     },
     "src/components/button/button.interfaces.ts::ButtonTarget": {
-      "declaration": "\"\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\"",
+      "declaration": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\"",
       "docstring": "",
       "path": "src/components/button/button.interfaces.ts"
     },
@@ -65154,7 +64996,7 @@
       "path": "src/components/card/card.interfaces.ts"
     },
     "src/components/card/card.interfaces.ts::CardAlignment": {
-      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
+      "declaration": "\"left\" | \"center\"",
       "docstring": "",
       "path": "src/components/card/card.interfaces.ts"
     },
@@ -65164,12 +65006,12 @@
       "path": "src/components/card/card.interfaces.ts"
     },
     "src/components/card/card.interfaces.ts::CardColor": {
-      "declaration": "\"\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"purple\" | \"red\" | \"yellow\" | \"green\" | \"white\" | \"grey\" | \"blue\" | \"primary-light\" | \"primary-dark\" | \"grey-light\" | \"grey-dark\" | \"blue-light\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"purple-lighter\" | \"green-light\" | \"success-light\" | \"success-dark\" | \"success-darker\" | \"warning-light\" | \"warning-dark\" | \"warning-darker\" | \"danger-light\" | \"danger-dark\" | \"danger-darker\" | \"light-blue\" | \"purple-1\" | \"purple-2\" | \"purple-3\" | \"green-1\" | \"green-2\" | \"green-3\" | \"red-1\" | \"red-2\" | \"red-3\" | \"yellow-1\" | \"yellow-2\" | \"yellow-3\"",
+      "declaration": "\"primary\" | \"dashed\" | \"purple\" | \"red\" | \"yellow\" | \"green\" | \"grey\" | \"red-dark\" | \"yellow-dark\" | \"purple-dark\" | \"green-dark\"",
       "docstring": "",
       "path": "src/components/card/card.interfaces.ts"
     },
     "src/components/card/card.interfaces.ts::CardActionsAlignment": {
-      "declaration": "\"\" | \"left\" | \"right\" | \"center\"",
+      "declaration": "\"left\" | \"right\" | \"center\"",
       "docstring": "",
       "path": "src/components/card/card.interfaces.ts"
     },
@@ -65209,7 +65051,7 @@
       "path": "src/components/carousel/carousel.interfaces.ts"
     },
     "src/components/carousel/carousel.interfaces.ts::CarouselItemColor": {
-      "declaration": "\"\" | \"purple\" | \"red\" | \"yellow\" | \"green\"",
+      "declaration": "\"purple\" | \"red\" | \"yellow\" | \"green\"",
       "docstring": "",
       "path": "src/components/carousel/carousel.interfaces.ts"
     },
@@ -65224,7 +65066,7 @@
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
     "src/components/checkbox/checkbox.interfaces.ts::CheckboxGroupColumns": {
-      "declaration": "4 | 3 | 2 | 1",
+      "declaration": "3 | 2 | 1 | 4",
       "docstring": "",
       "path": "src/components/checkbox/checkbox.interfaces.ts"
     },
@@ -65563,18 +65405,23 @@
       "docstring": "",
       "path": "src/components/label/label.interfaces.ts"
     },
+    "src/components/list/item/item.interfaces.ts::ItemSize": {
+      "declaration": "\"lg\"",
+      "docstring": "",
+      "path": "src/components/list/item/item.interfaces.ts"
+    },
     "src/components/list/item/item.interfaces.ts::ItemActionIcon": {
-      "declaration": "\"\" | \"link\" | \"default\" | \"link-external\" | \"download\"",
+      "declaration": "\"link\" | \"default\" | \"link-external\" | \"download\"",
       "docstring": "",
       "path": "src/components/list/item/item.interfaces.ts"
     },
     "src/components/list/item/item.interfaces.ts::ItemLabelLevel": {
-      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
+      "declaration": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\"",
       "docstring": "",
       "path": "src/components/list/item/item.interfaces.ts"
     },
     "src/components/list/item/item.interfaces.ts::ItemLabelSize": {
-      "declaration": "\"\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | \"base\" | \"2xl\" | \"3xl\"",
+      "declaration": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"lg\" | \"xl\" | \"base\" | \"2xl\" | \"3xl\"",
       "docstring": "",
       "path": "src/components/list/item/item.interfaces.ts"
     },
@@ -65704,7 +65551,7 @@
       "path": "src/components/progress-bar/progress-bar.interfaces.ts"
     },
     "src/components/radio/radio.interfaces.ts::RadioGroupColumns": {
-      "declaration": "4 | 3 | 2 | 1",
+      "declaration": "3 | 2 | 1 | 4",
       "docstring": "",
       "path": "src/components/radio/radio.interfaces.ts"
     },
@@ -65794,7 +65641,7 @@
       "path": "src/components/select/select.interfaces.ts"
     },
     "src/components/shape/shape.interfaces.ts::ShapeColor": {
-      "declaration": "\"purple\" | \"red\" | \"yellow\" | \"green\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\"",
+      "declaration": "\"purple\" | \"red\" | \"yellow\" | \"green\" | \"green-light\" | \"red-light\" | \"purple-light\" | \"yellow-light\"",
       "docstring": "",
       "path": "src/components/shape/shape.interfaces.ts"
     },
@@ -65869,7 +65716,7 @@
       "path": "src/components/tabs/tabs.interfaces.ts"
     },
     "src/components/tag/tag.interfaces.ts::TagColor": {
-      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"purple\" | \"red\" | \"yellow\" | \"green\" | \"disabled\" | \"red-light\" | \"yellow-light\" | \"purple-light\" | \"green-light\" | \"purple-dark\" | \"red-dark\" | \"yellow-dark\" | \"green-dark\"",
+      "declaration": "\"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"purple\" | \"red\" | \"yellow\" | \"green\" | \"disabled\" | \"red-dark\" | \"yellow-dark\" | \"purple-dark\" | \"green-dark\" | \"green-light\" | \"red-light\" | \"purple-light\" | \"yellow-light\"",
       "docstring": "",
       "path": "src/components/tag/tag.interfaces.ts"
     },
@@ -65954,7 +65801,7 @@
       "path": "src/components/toggle/toggle.interfaces.ts"
     },
     "src/components/toggle/toggle.interfaces.ts::ToggleGroupColumns": {
-      "declaration": "4 | 3 | 2 | 1",
+      "declaration": "3 | 2 | 1 | 4",
       "docstring": "",
       "path": "src/components/toggle/toggle.interfaces.ts"
     },

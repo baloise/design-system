@@ -57,7 +57,7 @@
           </ds-item>
 
           <ds-item label="Item 4" description="This is a description for item" disabled>
-            <ds-badge color="purple" size="lg" slot="icon">4</ds-badge>
+            <ds-badge color="disabled" size="lg" slot="icon">4</ds-badge>
           </ds-item>
         </ds-list>
       </section>
@@ -67,6 +67,32 @@
         <span>Linked List</span>
 
         <ds-list>
+          <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
+          <ds-item
+            variant="link"
+            action-icon="link-external"
+            label="External Link"
+            description="Description"
+            href="www.helvetia.com"
+            target="_blank"
+          ></ds-item>
+          <ds-item
+            disabled
+            variant="link"
+            action-icon="link-external"
+            label="Disabled Link"
+            description="Description"
+            href="www.helvetia.com"
+            target="_blank"
+          ></ds-item>
+        </ds-list>
+      </section>
+
+      <!-- Inverted & Large -->
+      <section data-testid="inverted" class="s-bg-inverted">
+        <span>Inverted & Large</span>
+
+        <ds-list inverted size="lg">
           <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
           <ds-item
             variant="link"

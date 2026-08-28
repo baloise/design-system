@@ -36,7 +36,7 @@
   @include vars.local(toast-heading-font-size, var(--ds-alias-text-size-base-device));
   @include vars.local(toast-heading-line-height, var(--ds-alias-text-line-height-heading));
 
-  @include vars.local(toast-content-font-family, var(--ds-alias-text-family-body));
+  @include vars.local(toast-content-font-family, var(--ds-alias-text-family-text));
   @include vars.local(toast-content-font-weight, inherit);
   @include vars.local(toast-content-font-size, var(--ds-alias-text-size-sm-device));
   @include vars.local(toast-content-line-height, var(--ds-alias-text-line-height-body));

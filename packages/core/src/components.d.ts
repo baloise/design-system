@@ -28,7 +28,7 @@ import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } fro
 import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
+import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
@@ -75,7 +75,7 @@ export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } fro
 export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
+export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
@@ -1856,6 +1856,11 @@ export namespace Components {
          */
         "href": string;
         /**
+          * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+          * @default false
+         */
+        "inverted": boolean;
+        /**
           * The label text displayed as a heading inside the item.
           * @default ''
          */
@@ -1873,6 +1878,10 @@ export namespace Components {
           * @default ''
          */
         "rel": string;
+        /**
+          * The size of the item. If not set, the default (base) size is used.
+         */
+        "size"?: ItemSize;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
@@ -1930,13 +1939,24 @@ export namespace Components {
     }
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface DsList {
+        /**
+          * If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant `ds-item` elements.
+          * @default false
+         */
+        "inverted": boolean;
         /**
           * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered": boolean;
+        /**
+          * The size of the list items. If not set, the default (base) size is used. Cascades to descendant `ds-item` elements.
+         */
+        "size"?: ItemSize;
     }
     /**
      * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
@@ -2204,9 +2224,8 @@ export namespace Components {
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
-          * @default ''
          */
-        "align": PaginationAlignment;
+        "align"?: PaginationAlignment;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Disables component
@@ -2233,9 +2252,8 @@ export namespace Components {
         "previous": () => Promise<void>;
         /**
           * Size of the buttons
-          * @default ''
          */
-        "size": PaginationSize;
+        "size"?: PaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
           * @default false
@@ -2268,9 +2286,8 @@ export namespace Components {
         "value": number;
         /**
           * Defines the layout of the pagination
-          * @default ''
          */
-        "variant": PaginationVariant;
+        "variant"?: PaginationVariant;
     }
     /**
      * Popup displays anchored overlay content positioned relative to a trigger element.
@@ -4343,6 +4360,8 @@ declare global {
     };
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface HTMLDsListElement extends Components.DsList, HTMLStencilElement {
     }
@@ -6921,6 +6940,11 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+          * @default false
+         */
+        "inverted"?: boolean;
+        /**
           * The label text displayed as a heading inside the item.
           * @default ''
          */
@@ -6954,6 +6978,10 @@ declare namespace LocalJSX {
           * @default ''
          */
         "rel"?: string;
+        /**
+          * The size of the item. If not set, the default (base) size is used.
+         */
+        "size"?: ItemSize;
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
@@ -7010,13 +7038,24 @@ declare namespace LocalJSX {
     }
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface DsList {
+        /**
+          * If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant `ds-item` elements.
+          * @default false
+         */
+        "inverted"?: boolean;
         /**
           * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered"?: boolean;
+        /**
+          * The size of the list items. If not set, the default (base) size is used. Cascades to descendant `ds-item` elements.
+         */
+        "size"?: ItemSize;
     }
     /**
      * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
@@ -7311,7 +7350,6 @@ declare namespace LocalJSX {
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
-          * @default ''
          */
         "align"?: PaginationAlignment;
         /**
@@ -7335,7 +7373,6 @@ declare namespace LocalJSX {
         "pageRange"?: number;
         /**
           * Size of the buttons
-          * @default ''
          */
         "size"?: PaginationSize;
         /**
@@ -7370,7 +7407,6 @@ declare namespace LocalJSX {
         "value"?: number;
         /**
           * Defines the layout of the pagination
-          * @default ''
          */
         "variant"?: PaginationVariant;
     }
@@ -9209,12 +9245,14 @@ declare namespace LocalJSX {
         "actionIcon": ItemActionIcon;
         "description": string;
         "disabled": boolean;
+        "inverted": boolean;
         "download": string;
         "href": string;
         "label": string;
         "labelLevel": ItemLabelLevel;
         "labelSize": ItemLabelSize;
         "rel": string;
+        "size": ItemSize;
         "target": ButtonTarget;
         "variant": ItemVariant;
     }
@@ -9229,7 +9267,9 @@ declare namespace LocalJSX {
         "valid": boolean;
     }
     interface DsListAttributes {
+        "inverted": boolean;
         "ordered": boolean;
+        "size": ItemSize;
     }
     interface DsLogoAttributes {
         "animated": boolean;
@@ -9822,6 +9862,8 @@ declare module "@stencil/core" {
             "ds-label": LocalJSX.IntrinsicElements["ds-label"] & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
             /**
              * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+             * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+             * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
              */
             "ds-list": LocalJSX.IntrinsicElements["ds-list"] & JSXBase.HTMLAttributes<HTMLDsListElement>;
             /**

@@ -77,10 +77,10 @@ These improvements help our components work seamlessly across all supported fram
 | badge            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | tag              | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | table            | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ✅     | ⬜    |
-| card             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| list             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| card             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| list             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- ALERTS --     | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | notification     | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
@@ -95,7 +95,7 @@ These improvements help our components work seamlessly across all supported fram
 | menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
 | tabs             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | steps            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | footer           | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | sheet            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |

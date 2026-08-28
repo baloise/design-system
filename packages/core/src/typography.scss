@@ -1,7 +1,7 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
 @mixin content($margin: true) {
-  font-family: var(--ds-alias-text-family-body);
+  font-family: var(--ds-alias-text-family-text);
   font-weight: var(--ds-alias-text-weight-regular);
 
   strong,

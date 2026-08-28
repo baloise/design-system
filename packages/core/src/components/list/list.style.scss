@@ -21,27 +21,34 @@ ol.list li details {
   @include vars.focus(list-item);
 
   @include vars.local(list-item-grid-template-columns, 1fr);
-  @include vars.local(list-item-min-height, 3.5rem);
-  @include vars.local(list-item-gap, 1rem);
-  @include vars.local(list-item-space, 0.5rem);
-  @include vars.local(list-item-content-gap, 1px);
+  @include vars.local(list-item-min-height, var(--ds-list-item-size-base-min-height));
+  @include vars.local(list-item-gap, var(--ds-list-item-gap));
+  @include vars.local(list-item-space, var(--ds-list-item-size-base-space));
+  @include vars.local(list-item-content-gap, var(--ds-list-item-content-gap));
 
-  @include vars.local(list-item-color, inherit);
-  @include vars.local(list-item-border-color, var(--ds-list-item-border-color));
-  @include vars.local(list-item-border-width, var(--ds-list-item-border-width, 2px));
-  @include vars.local(list-item-border-radius, 12px);
+  @include vars.local(list-item-color, var(--ds-list-item-color-text-base));
+  @include vars.local(list-item-color-hover, var(--ds-list-item-color-text-hover));
+  @include vars.local(list-item-color-active, var(--ds-list-item-color-text-active));
+  @include vars.local(list-item-color-disabled, var(--ds-list-item-color-text-disabled));
+  @include vars.local(list-item-border-color, var(--ds-alias-border-color-grey-light));
+  @include vars.local(list-item-border-color-hover, var(--ds-alias-border-color-primary-hover));
+  @include vars.local(list-item-border-color-active, var(--ds-alias-border-color-primary-active));
+  @include vars.local(list-item-border-width, var(--ds-alias-border-width-base));
+  @include vars.local(list-item-border-radius, var(--ds-list-item-radius));
 
-  @include vars.local(list-item-accordion-py, var(--ds-alias-space-base-device));
+  @include vars.local(list-item-accordion-py, var(--ds-list-item-accordion-py));
 
-  @include vars.local(list-item-action-icon-size, var(--ds-icon-size-xs));
+  @include vars.local(list-item-action-icon-size, var(--ds-list-item-action-icon-size));
 
-  @include vars.local(list-item-title-size, var(--ds-heading-5-size-device));
-  @include vars.local(list-item-title-weight, var(--ds-alias-text-weight-bold));
-  @include vars.local(list-item-title-family, var(--ds-global-font-family-heading));
+  @include vars.local(list-item-title-size, var(--ds-list-item-title-font-size));
+  @include vars.local(list-item-title-weight, var(--ds-list-item-title-font-weight));
+  @include vars.local(list-item-title-family, var(--ds-list-item-title-font-family));
+  @include vars.local(list-item-title-line-height, var(--ds-list-item-title-line-height));
 
-  @include vars.local(list-item-text-family, var(--ds-global-font-family-body));
-  @include vars.local(list-item-text-weight, var(--ds-alias-text-weight-regular));
-  @include vars.local(list-item-text-size, var(--ds-alias-text-size-sm-device));
+  @include vars.local(list-item-text-family, var(--ds-list-item-text-font-family));
+  @include vars.local(list-item-text-weight, var(--ds-list-item-text-font-weight));
+  @include vars.local(list-item-text-size, var(--ds-list-item-text-font-size));
+  @include vars.local(list-item-text-line-height, var(--ds-list-item-text-line-height));
 }
 
 /**
@@ -50,7 +57,7 @@ ol.list li details {
   */
 @mixin border() {
   content: '';
-  border-radius: 12px;
+  border-radius: var(--_list-item-border-radius);
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -121,6 +128,7 @@ ul.list li .item {
   .item-content + ds-icon {
     --icon-size: var(--_list-item-action-icon-size);
     --icon-inner-size: var(--_list-item-action-icon-size);
+    --icon-color: var(--_list-item-color);
   }
 
   //
@@ -136,6 +144,7 @@ ul.list li .item {
     font-family: var(--_list-item-title-family);
     font-weight: var(--_list-item-title-weight);
     font-size: var(--_list-item-title-size);
+    line-height: var(--_list-item-title-line-height);
     margin: 0;
   }
 
@@ -144,6 +153,7 @@ ul.list li .item {
     font-family: var(--_list-item-text-family);
     font-weight: var(--_list-item-text-weight);
     font-size: var(--_list-item-text-size);
+    line-height: var(--_list-item-text-line-height);
     margin: 0;
   }
 
@@ -153,6 +163,7 @@ ul.list li .item {
     @include border();
     height: var(--_list-item-border-width);
     background: var(--_list-item-border-color);
+    z-index: 1;
   }
 }
 
@@ -172,7 +183,8 @@ ul.list li button.item {
   overflow-wrap: break-word;
   font-family: var(--_list-item-title-family);
   font-weight: var(--ds-alias-text-weight-bold);
-  color: var(--ds-link-color-base);
+  line-height: var(--_list-item-title-line-height);
+  color: var(--_list-item-color);
 
   outline: none;
   text-decoration: none;
@@ -180,26 +192,31 @@ ul.list li button.item {
   &::-moz-focus-inner {
     border: 0;
   }
+}
 
+ol.list li a.item:not(.is-disabled),
+ol.list li button.item:not(.is-disabled),
+ul.list li a.item:not(.is-disabled),
+ul.list li button.item:not(.is-disabled) {
   @include hover {
     &:hover,
     &.is-hovered {
-      --mod-list-item-border-color: var(--ds-link-color-base-hover);
+      --mod-list-item-border-color: var(--_list-item-border-color-hover);
 
-      color: var(--ds-link-color-base-hover);
-      ds-icon {
-        --icon-color: var(--ds-link-color-base-hover);
+      color: var(--_list-item-color-hover);
+      .item-content + ds-icon {
+        --icon-color: var(--_list-item-color-hover);
       }
     }
   }
 
   &:active,
   &.is-pressed {
-    --mod-list-item-border-color: var(--ds-link-color-base-active);
+    --mod-list-item-border-color: var(--_list-item-border-color-active);
 
-    color: var(--ds-link-color-base-active);
-    ds-icon {
-      --icon-color: var(--ds-link-color-base-active);
+    color: var(--_list-item-color-active);
+    .item-content + ds-icon {
+      --icon-color: var(--_list-item-color-active);
     }
   }
 
@@ -254,6 +271,46 @@ ul.list li details {
 }
 
 /**
+  * Inverted
+  * --------------------------------
+  * Can be applied to the list container (ul.list/ol.list) to cascade to all items,
+  * or directly on an individual .item/details element.
+  */
+
+ul.list.is-inverted,
+ol.list.is-inverted,
+ul.list .item.is-inverted,
+ol.list .item.is-inverted,
+ul.list li details.is-inverted,
+ol.list li details.is-inverted {
+  --mod-list-item-color: var(--ds-list-item-inverted-color-text-base);
+  --mod-list-item-color-hover: var(--ds-list-item-inverted-color-text-hover);
+  --mod-list-item-color-active: var(--ds-list-item-inverted-color-text-active);
+  --mod-list-item-color-disabled: var(--ds-list-item-inverted-color-text-disabled);
+  --mod-list-item-border-color: var(--ds-alias-border-color-inverted-primary);
+  --mod-list-item-border-color-hover: var(--ds-alias-border-color-inverted-primary-hover);
+  --mod-list-item-border-color-active: var(--ds-alias-border-color-inverted-primary-active);
+  --mod-list-item-focus: var(--ds-alias-interaction-focus-color-inverted);
+}
+
+/**
+  * Size
+  * --------------------------------
+  * Can be applied to the list container (ul.list/ol.list) to cascade to all items,
+  * or directly on an individual .item/details element.
+  */
+
+ul.list.is-lg,
+ol.list.is-lg,
+ul.list .item.is-lg,
+ol.list .item.is-lg,
+ul.list li details.is-lg,
+ol.list li details.is-lg {
+  --mod-list-item-min-height: var(--ds-list-item-size-lg-min-height);
+  --mod-list-item-space: var(--ds-list-item-size-lg-space);
+}
+
+/**
   * Disabled
   */
 
@@ -264,10 +321,10 @@ ol.list li .item.is-disabled {
   pointer-events: none !important;
   cursor: default !important;
 
-  color: var(--ds-list-item-disabled);
+  color: var(--_list-item-color-disabled);
 
   ds-icon {
-    --icon-color: var(--ds-list-item-disabled);
+    --icon-color: var(--_list-item-color-disabled);
   }
 }
 

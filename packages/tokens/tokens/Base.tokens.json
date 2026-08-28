@@ -276,6 +276,30 @@
             "style": "{🔗 Alias.▭ Border.Style.Solid}"
           }
         },
+        "InvertedPrimary": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.InvertedPrimary}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "InvertedPrimaryHover": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.InvertedPrimaryHover}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "InvertedPrimaryActive": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.InvertedPrimaryActive}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
         "GreyLight": {
           "$type": "border",
           "$value": {
@@ -3097,7 +3121,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         }
       },
@@ -4749,6 +4773,10 @@
         "FontWeight": {
           "$type": "fontWeight",
           "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
+        },
+        "FontFamily": {
+          "$type": "fontFamily",
+          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
         }
       },
       "Detail": {
@@ -4759,6 +4787,10 @@
         "FontWeight": {
           "$type": "fontWeight",
           "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
+        },
+        "FontFamily": {
+          "$type": "fontFamily",
+          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
         }
       }
     },
@@ -6090,14 +6122,138 @@
         }
       },
       "Item": {
-        "Disabled": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
+        "Size": {
+          "Base": {
+            "Space": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.XS}"
+            },
+            "MinHeight": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
+            }
+          },
+          "LG": {
+            "Space": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.XS}"
+            },
+            "MinHeight": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.72}"
+            }
+          }
         },
-        "Border": {
+        "Gap": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Base}"
+        },
+        "Radius": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.🔵 Radius.LG}"
+        },
+        "ContentGap": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.1}"
+        },
+        "Color": {
+          "Text": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Grey}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🔗 Alias.▭ Border.Color.PrimaryHover}"
+            },
+            "Active": {
+              "$type": "color",
+              "$value": "{🔗 Alias.▭ Border.Color.PrimaryActive}"
+            }
+          },
+          "Border": {
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.PrimaryHover}"
+            },
+            "Active": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.PrimaryActive}"
+            },
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+            }
+          }
+        },
+        "Inverted": {
           "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
+            "Text": {
+              "Base": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
+              },
+              "Disabled": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🔤 Text.Color.InvertedDisabled}"
+              },
+              "Hover": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.InvertedPrimary.Text.Hover}"
+              },
+              "Active": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.InvertedPrimary.Text.Active}"
+              }
+            },
+            "Border": {
+              "Base": {
+                "$type": "border",
+                "$value": "{🔗 Alias.▭ Border.Composite.InvertedPrimary}"
+              },
+              "Hover": {
+                "$type": "border",
+                "$value": "{🔗 Alias.▭ Border.Composite.InvertedPrimaryHover}"
+              },
+              "Active": {
+                "$type": "border",
+                "$value": "{🔗 Alias.▭ Border.Composite.InvertedPrimaryActive}"
+              }
+            }
+          }
+        },
+        "Accordion": {
+          "Py": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Base}"
+          }
+        },
+        "Action": {
+          "IconSize": {
+            "$type": "dimension",
+            "$value": "{🧩 Component.Icon.Size.SM}"
+          }
+        },
+        "Title": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Text": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
         }
       }
@@ -7312,19 +7468,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-          }
-        }
-      },
-      "Disabled": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Disabled}"
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         }
       },
@@ -7387,6 +7531,18 @@
       "FontFamily": {
         "$type": "fontFamily",
         "$value": "{🔗 Alias.🔤 Text.Family.Text}"
+      },
+      "Disabled": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.White}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Grey.5}"
+          }
+        }
       }
     },
     "Segment": {
@@ -7794,35 +7950,49 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.🔵 Radius.Base}"
         },
-        "InactiveColor": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.White}"
+        "Color": {
+          "Inactive": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.White}"
+          },
+          "Active": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
+          }
         },
-        "Background": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-        },
-        "ActiveColor": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.Primary}"
-        }
-      },
-      "Disabled": {
-        "TextColor": {
-          "$type": "color",
-          "$value": "{🧩 Component.Button.Color.Disabled.Base.Text}"
-        }
-      },
-      "Text": {
-        "Weight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
+        "Gap": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.2}"
         }
       },
       "Elevation": {
         "Sticky": {
           "$type": "dimension",
           "$value": "{🔗 Alias.🗂️ ZIndex.Sticky}"
+        }
+      },
+      "Size": {
+        "SM": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.2XS}"
+          }
+        },
+        "Base": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.XS}"
+          }
+        }
+      },
+      "Disabled": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
         }
       }
     },
@@ -7918,38 +8088,10 @@
     },
     "Accordion": {
       "Summary": {
-        "Font": {
-          "Weight": {
-            "$type": "fontWeight",
-            "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
-          },
-          "Family": {
-            "$type": "fontFamily",
-            "$value": "{🔗 Alias.🔤 Text.Family.Text}"
-          },
-          "LineHeight": {
-            "$type": "number",
-            "$value": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-          },
-          "Size": {
-            "Mobile": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Mobile}"
-            },
-            "Tablet": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Tablet}"
-            },
-            "Desktop": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Desktop}"
-            }
-          }
-        },
         "Color": {
           "Base": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎬 Action.Primary.Text.Base}"
           },
           "Hover": {
             "$type": "color",
@@ -7959,13 +8101,20 @@
             "$type": "color",
             "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
           }
+        },
+        "Typo": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
         }
       },
       "Radius": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.Base}"
-        }
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.Base}"
       }
     },
     "Tabs": {
@@ -9153,6 +9302,13 @@
           "$type": "dimension",
           "$value": {
             "value": 64,
+            "unit": "px"
+          }
+        },
+        "72": {
+          "$type": "dimension",
+          "$value": {
+            "value": 72,
             "unit": "px"
           }
         }

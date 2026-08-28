@@ -15,10 +15,12 @@ import {
   ITEM_ACTION_ICONS,
   ITEM_LABEL_LEVELS,
   ITEM_LABEL_SIZES,
+  ITEM_SIZES,
   type ItemVariant,
   type ItemActionIcon,
   type ItemLabelLevel,
   type ItemLabelSize,
+  type ItemSize,
 } from './item.interfaces'
 
 type Attributes = {
@@ -117,6 +119,13 @@ export class Item implements DsComponentInterface {
   readonly disabled: boolean = false
 
   /**
+   * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+   */
+  @Prop()
+  @Type('boolean')
+  readonly inverted: boolean = false
+
+  /**
    * This attribute instructs browsers to download a URL instead of navigating to
    * it, so the user will be prompted to save it as a local file. If the attribute
    * has a value, it is used as the pre-filled file name in the Save prompt
@@ -161,6 +170,13 @@ export class Item implements DsComponentInterface {
   @Prop()
   @Type('string')
   readonly rel: string = ''
+
+  /**
+   * The size of the item. If not set, the default (base) size is used.
+   */
+  @Prop()
+  @OneOf(ITEM_SIZES)
+  readonly size?: ItemSize
 
   /**
    * Specifies where to display the linked URL.
@@ -267,6 +283,8 @@ export class Item implements DsComponentInterface {
           class={{
             'is-disabled': this.disabled,
             'is-accordion': this.variant === 'accordion',
+            'is-inverted': this.inverted,
+            [`is-${this.size}`]: hasValue(this.size),
             [`has-label-${labelSize}`]: !!labelSize,
           }}
         >
@@ -321,6 +339,8 @@ export class Item implements DsComponentInterface {
           'is-disabled': this.disabled,
           'is-button': this.variant === 'button',
           'is-link': this.variant === 'link',
+          'is-inverted': this.inverted,
+          [`is-${this.size}`]: hasValue(this.size),
           [`has-label-${labelSize}`]: !!labelSize,
         }}
       >
