@@ -30,7 +30,7 @@ series by [Streamline](https://www.streamlinehq.com).
 These icons are presented in primary and white colors, with specific variations for disabled or invalid states.
 They seamlessly integrate into a wide range of UI elements including buttons, snackbars, navigation, tabs, and lists.
 
-All these icons are included in the package `@baloise/ds-icons`.
+All these icons are included in the package `@baloise/ds-assets`.
 
 ### Colors
 
@@ -47,27 +47,25 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <ds-icon name="file" size="medium" color="primary"></ds-icon>
-            <ds-icon name="file" size="medium" color="primary-light"></ds-icon>
-            {/* <ds-icon name="file" size="medium" color="primary-dark"></ds-icon> */}
+            <ds-icon name="file" size="md" color="primary"></ds-icon>
+            {/* <ds-icon name="file" size="md" color="primary-light"></ds-icon> */}
+            {/* <ds-icon name="file" size="md" color="primary-dark"></ds-icon> */}
           </div>
         </td>
         <td>
           <strong>primary</strong>
           <br />
-          <small>
-            These are the primary colors of the icons. 2nd and 3rd are use for hover and active pseudo state.
-          </small>
+          <small>These are the primary colors of the icons.</small>
         </td>
         <td>
           <small>
             <pre>
               <code>var(--ds-icon-color-primary)</code>
             </pre>
-            <pre>
+            {/* <pre>
               <code>var(--ds-icon-color-primary-light)</code>
             </pre>
-            {/* <pre>
+            <pre>
               <code>var(--ds-icon-color-primary-dark)</code>
             </pre> */}
           </small>
@@ -76,11 +74,11 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="bg-primary p-small">
-            <ds-icon name="date" size="medium" color="white"></ds-icon>
+            <ds-icon name="date" size="md" inverted></ds-icon>
           </div>
         </td>
         <td>
-          <strong>white</strong>
+          <strong>inverted (white)</strong>
           <br />
           <small>Inverted icon color for dark backgrounds.</small>
         </td>
@@ -95,7 +93,7 @@ All these icons are included in the package `@baloise/ds-icons`.
       {/* <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <ds-icon name="picture" size="medium" color="light-blue"></ds-icon>
+            <ds-icon name="picture" size="md" color="light-blue"></ds-icon>
           </div>
         </td>
         <td>
@@ -114,8 +112,8 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <ds-icon name="edit" size="medium" color="grey"></ds-icon>
-            <ds-icon name="edit" size="medium" color="disabled"></ds-icon>
+            <ds-icon name="edit" size="md" color="grey"></ds-icon>
+            <ds-icon name="edit" size="md" disabled></ds-icon>
           </div>
         </td>
         <td>
@@ -139,9 +137,9 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <ds-icon name="info-circle" size="medium" color="success"></ds-icon>
-            {/* <ds-icon name="info-circle" size="medium" color="success-dark"></ds-icon> */}
-            {/* <ds-icon name="info-circle" size="medium" color="success-darker"></ds-icon> */}
+            <ds-icon name="info-circle" size="md" color="success"></ds-icon>
+            {/* <ds-icon name="info-circle" size="md" color="success-dark"></ds-icon> */}
+            {/* <ds-icon name="info-circle" size="md" color="success-darker"></ds-icon> */}
           </div>
         </td>
         <td>
@@ -170,7 +168,7 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <ds-icon name="alert" size="medium" color="warning"></ds-icon>
+            <ds-icon name="alert" size="md" color="warning"></ds-icon>
             {/* <ds-icon name="alert" size="medium" color="warning-dark"></ds-icon> */}
             {/* <ds-icon name="alert" size="medium" color="warning-darker"></ds-icon> */}
           </div>
@@ -201,7 +199,7 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal p-small">
-            <ds-icon name="close" size="medium" color="danger"></ds-icon>
+            <ds-icon name="close" size="md" invalid></ds-icon>
             {/* <ds-icon name="close" size="medium" color="danger-dark"></ds-icon> */}
             {/* <ds-icon name="close" size="medium" color="danger-darker"></ds-icon> */}
           </div>
@@ -249,23 +247,6 @@ All these icons are included in the package `@baloise/ds-icons`.
       <tr>
         <td>
           <div className="flex gap-normal">
-            <ds-icon name="caret-left" size="x-small"></ds-icon>
-            <ds-icon name="caret-down" size="x-small"></ds-icon>
-          </div>
-        </td>
-        <td>
-          <strong>x-small</strong>
-          <br />
-          <small>
-            The smallest size is reserved for back navigation, dropdowns and close symbols on compact components.
-          </small>
-        </td>
-        <td>10 x 10</td>
-        <td>12 x 12</td>
-      </tr>
-      <tr>
-        <td>
-          <div className="flex gap-normal">
             <ds-icon name="trash" size="small"></ds-icon>
             <ds-icon name="audio" size="small"></ds-icon>
           </div>
@@ -290,8 +271,8 @@ All these icons are included in the package `@baloise/ds-icons`.
           <br />
           <small>The default size for UI icons, utilized in buttons, tabs, and various other components.</small>
         </td>
+        <td>14 x 14</td>
         <td>16 x 16</td>
-        <td>18 x 18</td>
       </tr>
       <tr>
         <td>
@@ -307,8 +288,8 @@ All these icons are included in the package `@baloise/ds-icons`.
             The medium size is designed for larger components, such as a sizable close button or the file upload area.
           </small>
         </td>
+        <td>20 x 20</td>
         <td>24 x 24</td>
-        <td>26 x 26</td>
       </tr>
     </tbody>
   </table>
@@ -443,6 +424,10 @@ import ColorCombinations6 from '../assets/images/foundations/colors/ColorCombina
     <LinkCard
       pageTitle="Components/Icon"
       description="The icons are clear, minimal and consistent across all our digital platforms"
+    />
+    <LinkCard
+      pageTitle="Components/BrandIcon"
+      description="Icon displays SVG icons with customizable color, size, rotation, and optional tile background."
     />
   </LinkCards>
 </Footer>

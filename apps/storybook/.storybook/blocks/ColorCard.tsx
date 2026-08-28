@@ -18,10 +18,10 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
         style={{
           minHeight: '32px',
           background: `var(--${colorVariable.name})`,
-          color: ['ds-color-primary-5', 'ds-text-color-primary', 'ds-background-color-primary'].includes(
+          color: ['ds-global-color-primary-5', 'ds-alias-text-color-primary', 'ds-alias-surface-primary'].includes(
             colorVariable.name,
           )
-            ? 'var(--ds-color-white)'
+            ? 'var(--ds-global-color-white)'
             : 'current',
         }}
       >
@@ -30,9 +30,9 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
       <div className={`radius-bottom-lg p-small text-align-center`}>
         <div className="title text-normal text-primary">
           {colorVariable.name
-            .replace('ds-color-', '')
-            .replace('ds-text-color-', '')
-            .replace('ds-background-color-', '')}
+            .replace('ds-global-color-', '')
+            .replace('ds-alias-text-color-', '')
+            .replace('ds-alias-surface-', '')}
         </div>
         <div className="text-small text-primary">{colorVariable.$value}</div>
         {/* <div className="text-small text-primary">{color}</div> */}

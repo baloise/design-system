@@ -18,13 +18,21 @@
         <ds-close></ds-close>
       </section>
 
+      <!-- Sizes -->
+      <section data-testid="sizes">
+        <span>Sizes</span>
+        <ds-close size="sm"></ds-close>
+        <ds-close></ds-close>
+        <ds-close size="md"></ds-close>
+      </section>
+
       <!-- Button -->
       <section data-testid="button">
         <span>Button</span>
         <div class="stack as-row">
-          <ds-close button size="sm"></ds-close>
+          <ds-close button button-size="sm"></ds-close>
           <ds-close button></ds-close>
-          <ds-close button size="medium"></ds-close>
+          <ds-close button button-size="lg"></ds-close>
         </div>
         <div class="stack as-row">
           <ds-close button button-color="secondary"></ds-close>
@@ -47,25 +55,16 @@
       <section data-testid="disabled">
         <span>Disabled</span>
         <div class="stack as-row">
-          <ds-close size="medium" disabled></ds-close>
+          <ds-close size="md" disabled></ds-close>
           <ds-close button disabled></ds-close>
         </div>
-      </section>
-
-      <!-- Sizes -->
-      <section data-testid="sizes">
-        <span>Sizes</span>
-        <ds-close size="small"></ds-close>
-        <ds-close></ds-close>
-        <ds-close size="medium"></ds-close>
       </section>
 
       <!-- Inverted -->
       <section class="s-bg-inverted" data-testid="inverted">
         <span>Inverted</span>
-        <ds-close inverted size="small"></ds-close>
         <ds-close inverted></ds-close>
-        <ds-close inverted size="medium"></ds-close>
+        <ds-close inverted size="md"></ds-close>
         <ds-close inverted button></ds-close>
       </section>
     </main>

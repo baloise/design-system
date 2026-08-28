@@ -66,4 +66,12 @@ A disabled date field is not interactive and is excluded from form submission. U
 
 <CanvasWithCodePen of={DateStories.Disabled} sourceState="shown" overflowVisible={true} />
 
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.Inline}></StoryHeading>
+
+Setting `inline` hides the input field and renders the calendar permanently visible. Use this when you want to embed a date picker directly in the layout without a trigger button or popup. Events behave the same as the standard variant — `dsChange` fires on selection and `dsBlur` follows immediately after.
+
+<CanvasWithCodePen of={DateStories.Inline} sourceState="shown" />
+
 <Footer />

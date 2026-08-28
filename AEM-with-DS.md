@@ -36,6 +36,60 @@ Everything in this document sits inside one pipeline:
 The rest of this document covers step 3 in detail: the accordion (Sites Core Components)
 and the date picker (Adaptive Forms Core Components) as the two worked examples.
 
+## Risks
+
+Risks across the three stages of the pipeline above.
+
+**Figma**
+
+- **Drift** — Library components can diverge from shipped DS code (naming, variants,
+  tokens) if nobody enforces sync between the two.
+- **Shadow contributions** — Without contribution rules, anyone can add local
+  overrides/detached instances that bypass the library and quietly break the
+  "single source" assumption.
+
+**Design system**
+
+- **Shadow DOM ceiling** — Encapsulation makes host-page overrides (theming, third-party
+  CSS, legacy overrides) harder to reach for edge cases.
+- **Version lag** — Sites/blocks can pin an older `ds-*` version, so what's live in prod
+  silently diverges from what's documented in Storybook.
+- **Browser support** — Shadow DOM + CSS custom properties still need fallback testing on
+  older enterprise/intranet browsers.
+- **Capacity** — A handful of people maintain the DS while serving the website,
+  applications, and multiple other brands — too many stakeholders and consumers for the
+  team size, so requests queue up and quality/response time suffers.
+
+**Adobe Experience Manager**
+
+- **HTL override drift** — Overriding a Core Component's HTL to render DS output
+  (as documented above) is a fork; every AEM core-component/service-pack update needs
+  re-validation or the override silently breaks.
+- **Limited resources** — Only a few developers are available to build and maintain the
+  AEM/HTL integration, so keeping pace with Core Component updates, patching, and
+  Adaptive Forms issues is a bottleneck.
+- **Adaptive Forms instability** — Adaptive Forms has a track record of bugs and outages,
+  not just theoretical risk:
+  - **Critical RCE (CVSS 10.0)** — [CVE-2025-54253](https://www.securityweek.com/adobe-issues-out-of-band-patches-for-aem-forms-vulnerabilities-with-public-poc/),
+    an auth-bypass + Struts devmode misconfig, was actively exploited in the wild and
+    added to [CISA's Known Exploited Vulnerabilities catalog](https://thehackernews.com/2025/10/cisa-flags-adobe-aem-flaw-with-perfect.html);
+    Adobe shipped an out-of-band emergency patch.
+  - **Editor performance** — users report the
+    [Adaptive Forms authoring GUI taking 1–2 minutes](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager-forms/adaptive-forms-gui-extremely-slow-when-editing-form-based-on/m-p/616606/highlight/true)
+    to register a click/change on complex forms built from LiveCycle-derived XDP
+    templates.
+  - **Functional regressions after upgrades** — form submissions failing and thank-you-page
+    redirects breaking after service-pack updates
+    ([Adobe Experience League community thread](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/aem-sp-3-and-adaptive-form/m-p/258563/highlight/true)),
+    dropdown data sources not populating without manual refresh.
+  - **Accessibility bug** — hidden table headers on mobile causing screen readers to
+    mis-announce form content.
+- **Support and platform friction** — Adobe support is reported as slow and multi-tiered,
+  with tickets sometimes closed with generic, redirect-only responses; on AEM as a Cloud
+  Service, Adobe manages the infrastructure, so devs/devops can't access logs directly
+  (only via a Cloud Manager download link) and get little feedback on why an environment
+  auto-scaled or degraded ([Top 6 AEM Challenges from the Customer's Perspective](https://www.multidots.com/blog/aem-challenges/)).
+
 ## The core idea
 
 AEM Core Components ship two independent layers per component:

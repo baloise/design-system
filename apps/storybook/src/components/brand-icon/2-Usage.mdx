@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
+import * as BrandIconStories from './brand-icon.stories'
+import { BRAND_ICON_DOC_CONFIG, getBrandIconTabs } from './brand-icon.doc-config'
+
+<Meta title="Components/BrandIcon/Usage" />
+<Banner label={'Usage'} section={BRAND_ICON_DOC_CONFIG.section} color={BRAND_ICON_DOC_CONFIG.color} />
+<BannerTabs of={BrandIconStories} tabs={getBrandIconTabs('usage')} />
+
+## When to Use
+
+- Illustrate product categories or insurance lines (e.g. car, home, travel) in cards, tiles, or overviews
+- Reinforce a section's topic with a large, colorful, decorative visual
+- Pair with a tile background to create a compact category marker
+- Show a disabled or invalid variant when the represented category is unavailable or has a data problem
+
+## When NOT to Use
+
+- As a functional, interactive UI icon — use `ds-icon` for actions, navigation, and status indicators
+- As the only way to identify a category — always pair it with a text label
+- At very small sizes where the illustration's detail is no longer legible
+- To convey urgency or system status (error, warning, success) — brand icons are decorative, not semantic
+
+## Do's and Don'ts
+
+### Pair with a Text Label
+
+Brand icons are decorative illustrations, not self-explanatory symbols. Always accompany them with a label that names the category.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Icon with label',
+      content: (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <ds-brand-icon tile color="green" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+          <span>Car Insurance</span>
+        </div>
+      ),
+      description: 'The label tells users what the illustration represents',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Icon alone',
+      content: (
+        <ds-brand-icon tile color="green" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+      ),
+      description: 'Users must guess which product or category this represents',
+    },
+  ]}
+/>
+
+### Use the Right Icon for the Job
+
+Brand icons are large, illustrative, and decorative. For compact functional icons in buttons, links, or status messages, use `ds-icon` instead.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Brand icon for a category tile',
+      content: (
+        <ds-brand-icon tile color="purple" src="/assets/images/brand-icons/car-purple.svg" size="lg"></ds-brand-icon>
+      ),
+      description: 'Large, colorful illustration fits a category overview',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Brand icon inside a button',
+      content: (
+        <ds-button>
+          <ds-brand-icon src="/assets/images/brand-icons/car-green.svg" size="sm"></ds-brand-icon>
+          Continue
+        </ds-button>
+      ),
+      description: 'Use ds-icon for compact, functional icons inside interactive elements',
+    },
+  ]}
+/>
+
+<Footer />

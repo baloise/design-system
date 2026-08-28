@@ -13,6 +13,8 @@ function makeToken(overrides: Partial<FlatToken>): FlatToken {
     resolvedValue: undefined,
     resolutionError: null,
     figmaId: null,
+    responsive: null,
+    resolvedResponsive: null,
     ...overrides,
   }
 }

@@ -337,6 +337,52 @@ function createCssOnlyComponentEntry(
 }
 
 /**
+ * Extracts the allowed values for props validated with the `@OneOf(SOME_ARRAY)` decorator.
+ *
+ * Props whose public type also accepts a plain `string` (e.g. `IconColor = KnownColor | string`)
+ * get widened by TypeScript to `string` in the generated docs, so the real list of options is
+ * otherwise lost for documentation/Storybook controls. `@OneOf` already carries that canonical
+ * list at runtime, so we recover it here by statically resolving the referenced `as const` array
+ * from the component's own file or its sibling `*.interfaces.ts` file.
+ */
+function extractOneOfPropValues(componentDir: string): Map<string, string[]> {
+  const result = new Map<string, string[]>()
+  if (!existsSync(componentDir)) return result
+
+  let files: string[]
+  try {
+    files = readdirSync(componentDir).filter(f => f.endsWith('.tsx') || f.endsWith('.interfaces.ts'))
+  } catch {
+    return result
+  }
+
+  const arrayValues = new Map<string, string[]>()
+  let tsxContent = ''
+
+  for (const file of files) {
+    const content = readFileSync(join(componentDir, file), 'utf8')
+    if (file.endsWith('.tsx')) tsxContent += content + '\n'
+
+    const arrayRegex = /const\s+(\w+)\s*=\s*\[([\s\S]*?)\]\s*as\s+const/g
+    let arrayMatch: RegExpExecArray | null
+    while ((arrayMatch = arrayRegex.exec(content)) !== null) {
+      const values = [...arrayMatch[2].matchAll(/['"]([^'"]*)['"]/g)].map(v => v[1])
+      arrayValues.set(arrayMatch[1], values)
+    }
+  }
+
+  const oneOfRegex = /@OneOf\((\w+)\)[\s\S]*?readonly\s+(\w+)\s*\??:/g
+  let oneOfMatch: RegExpExecArray | null
+  while ((oneOfMatch = oneOfRegex.exec(tsxContent)) !== null) {
+    const [, arrayName, propName] = oneOfMatch
+    const values = arrayValues.get(arrayName)
+    if (values) result.set(propName, values)
+  }
+
+  return result
+}
+
+/**
  * Custom output target that generates docs-json without timestamp and path information
  * This wraps the standard docs-json output and removes the timestamp field and all path-related properties
  * Also enriches components with design tokens from Base.tokens.json
@@ -372,6 +418,16 @@ export function enrichComponentDocsJson(outputTarget: OutputTargetDocsJson): Out
           const scssStyles = parseScssStyles(_dirPath)
           if (scssStyles.length > 0) {
             componentWithoutPaths.styles = [...(componentWithoutPaths.styles ?? []), ...scssStyles]
+          }
+
+          // Recover the canonical option list for props whose type is widened to `string`
+          // by TypeScript (see extractOneOfPropValues for why)
+          const oneOfValues = extractOneOfPropValues(_dirPath)
+          if (oneOfValues.size > 0 && Array.isArray(componentWithoutPaths.props)) {
+            componentWithoutPaths.props = componentWithoutPaths.props.map((prop: any) => {
+              const values = oneOfValues.get(prop.name)
+              return values ? { ...prop, oneOfValues: values } : prop
+            })
           }
 
           // Extract component name from tag (e.g., "ds-badge" -> "badge", "ds-progress-bar" -> "progressbar")

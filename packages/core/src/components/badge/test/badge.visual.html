@@ -24,21 +24,13 @@
       <section data-testid="colors">
         <span>Colors</span>
         <div class="stack as-row">
-          <ds-badge color="red">R</ds-badge>
-          <ds-badge color="green">G</ds-badge>
-          <ds-badge color="yellow">Y</ds-badge>
-          <ds-badge color="purple">P</ds-badge>
-          <ds-badge color="grey">G</ds-badge>
+          <ds-badge color="disabled">G</ds-badge>
           <ds-badge color="success">S</ds-badge>
           <ds-badge color="warning">W</ds-badge>
           <ds-badge color="danger">D</ds-badge>
         </div>
         <div class="stack as-row">
-          <ds-badge color="red" icon="check"></ds-badge>
-          <ds-badge color="green" icon="check"></ds-badge>
-          <ds-badge color="yellow" icon="check"></ds-badge>
-          <ds-badge color="purple" icon="check"></ds-badge>
-          <ds-badge color="grey" icon="check"></ds-badge>
+          <ds-badge color="disabled" icon="check"></ds-badge>
           <ds-badge color="success" icon="check"></ds-badge>
           <ds-badge color="warning" icon="check"></ds-badge>
           <ds-badge color="danger" icon="check"></ds-badge>
@@ -56,19 +48,19 @@
       <!-- Icon -->
       <section data-testid="icon">
         <span>Icon</span>
-        <ds-badge color="green" icon="check"></ds-badge>
-        <ds-badge color="green" icon="check" size="lg"></ds-badge>
+        <ds-badge color="success" icon="check"></ds-badge>
+        <ds-badge color="success" icon="check" size="lg"></ds-badge>
       </section>
 
       <!-- Attention -->
       <section data-testid="attention">
         <span>Attention</span>
         <div class="stack as-row">
-          <ds-badge color="red" pulse>R</ds-badge>
-          <ds-badge color="green" pulse>G</ds-badge>
-          <ds-badge color="yellow" pulse>Y</ds-badge>
-          <ds-badge color="purple" pulse>P</ds-badge>
-          <ds-badge color="grey" pulse>G</ds-badge>
+          <ds-badge color="danger" pulse>R</ds-badge>
+          <ds-badge color="success" pulse>G</ds-badge>
+          <ds-badge color="warning" pulse>Y</ds-badge>
+          <ds-badge color="info" pulse>P</ds-badge>
+          <ds-badge color="disabled" pulse>G</ds-badge>
         </div>
       </section>
 
@@ -78,7 +70,7 @@
         <div class="stack">
           <!-- Row -->
           <div class="stack as-row">
-            <ds-badge color="green" icon="check" size="lg"></ds-badge>
+            <ds-badge color="success" icon="check" size="lg"></ds-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -87,7 +79,7 @@
           </div>
           <!-- Row -->
           <div class="stack as-row">
-            <ds-badge color="purple" size="lg">2</ds-badge>
+            <ds-badge color="info" size="lg">2</ds-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -96,7 +88,7 @@
           </div>
           <!-- Row -->
           <div class="stack as-row">
-            <ds-badge color="grey" size="lg">3</ds-badge>
+            <ds-badge color="disabled" size="lg">3</ds-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -105,7 +97,7 @@
           </div>
           <!-- Row -->
           <div class="stack as-row">
-            <ds-badge color="grey" icon="document" size="lg"></ds-badge>
+            <ds-badge color="disabled" icon="document" size="lg"></ds-badge>
             <div class="stack-content">
               <p class="title is-5 has-space-none">Heading</p>
               <p>Description</p>
@@ -119,7 +111,7 @@
       <!-- <section data-testid="card-position">
         <span>Card Position</span>
         <article class="card">
-          <ds-badge color="green" icon="check"></ds-badge>
+          <ds-badge color="success" icon="check"></ds-badge>
           <header class="card-header">
             <h3 class="title" id="card-title-1">Header</h3>
           </header>

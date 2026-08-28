@@ -9,13 +9,14 @@ import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMa
 import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
-import { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
+import { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
+import { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
-import { CloseSize } from "./components/close/close.interfaces";
+import { CloseButtonSize, CloseSize } from "./components/close/close.interfaces";
 import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 import { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
@@ -24,8 +25,9 @@ import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./com
 import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
-import { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
+import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -44,7 +46,7 @@ import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } fr
 import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
-import { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
+import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
@@ -54,13 +56,14 @@ export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMa
 export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
-export { ButtonBlurDetail, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
+export { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
+export { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
 export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
 export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
 export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
 export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
 export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
-export { CloseSize } from "./components/close/close.interfaces";
+export { CloseButtonSize, CloseSize } from "./components/close/close.interfaces";
 export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
 export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
 export { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
@@ -69,8 +72,9 @@ export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./com
 export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
-export { IconColor, IconShape, IconSize, IconTileColor } from "./components/icon/icon.interfaces";
+export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
+export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
@@ -89,7 +93,7 @@ export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } fr
 export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
-export { TagCloseClickDetail, TagColor, TagPlacement, TagShape, TagSize } from "./components/tag/tag.interfaces";
+export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
@@ -259,6 +263,44 @@ export namespace Components {
         "size"?: BadgeSize;
     }
     /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
+    interface DsBrandIcon {
+        /**
+          * The color variant of the icon.
+         */
+        "color"?: IconColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src": string;
+        /**
+          * Svg content.
+          * @default ''
+         */
+        "svg": string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+          * @default false
+         */
+        "tile": boolean;
+    }
+    /**
      * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
      */
     interface DsButton {
@@ -283,20 +325,20 @@ export namespace Components {
          */
         "a11yTitle": string;
         /**
-          * If `true` the button is circular and width of the buttons is limited
-          * @default false
+          * A brand icon shown above the label instead of the regular leading/trailing icons. Accepts either a URL to an SVG file or raw `<svg>` markup. When set, `icon` and `iconRight` are ignored.
+          * @default ''
          */
-        "circle": boolean;
+        "brandIcon": string;
+        /**
+          * Size of the brand icon.
+          * @default 'md'
+         */
+        "brandSize": ButtonBrandSize;
         /**
           * The color to use from your application's color palette.
           * @default 'primary'
          */
         "color": ButtonColor;
-        /**
-          * If `true` the button has a dashed border.
-          * @default false
-         */
-        "dashed": boolean;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -368,20 +410,14 @@ export namespace Components {
          */
         "rel": string;
         /**
-          * If `true` the button is rounded.
-          * @default false
-         */
-        "rounded": boolean;
-        /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
          */
         "shadow": boolean;
         /**
           * Size of the button
-          * @default undefined
          */
-        "size": ButtonSize;
+        "size"?: ButtonSize;
         /**
           * If `true` the width of the buttons is limited
           * @default false
@@ -408,10 +444,9 @@ export namespace Components {
      */
     interface DsButtonGroup {
         /**
-          * The value of the button, which is submitted with the form data.
-          * @default ''
+          * Horizontal alignment of the grouped buttons.
          */
-        "align": ButtonGroupAlignment;
+        "align"?: ButtonGroupAlignment;
         /**
           * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
           * @default 'auto'
@@ -834,6 +869,10 @@ export namespace Components {
           * Defines the color of the button variant. Only applicable if `button` is `true`.
          */
         "buttonColor"?: ButtonColor;
+        /**
+          * Define the size of the button variant. Only applicable if `button` is `true`.
+         */
+        "buttonSize"?: CloseButtonSize;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the close component will be disabled and not interactive.
@@ -991,6 +1030,11 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * If `true`, the date picker is presented inline and no input field is shown.
+          * @default false
+         */
+        "inline": boolean;
+        /**
           * If `true` the component gets an invalid style.
           * @default false
          */
@@ -1070,7 +1114,7 @@ export namespace Components {
     interface DsDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'grey'
+          * @default 'base'
          */
         "color": DividerColor;
         /**
@@ -1374,7 +1418,7 @@ export namespace Components {
         /**
           * The theme type of the button.
          */
-        "color"?: IconColor;
+        "color"?: IconColor1;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -1407,14 +1451,9 @@ export namespace Components {
          */
         "shadow": boolean;
         /**
-          * If `true` the icon is displayed in a circle with a background color.
-          * @default ''
-         */
-        "shape": IconShape;
-        /**
           * Defines the size of the icon.
          */
-        "size": IconSize;
+        "size"?: IconSize1;
         /**
           * URL of an SVG file to fetch and display.
           * @default ''
@@ -1425,16 +1464,6 @@ export namespace Components {
           * @default ''
          */
         "svg": string;
-        /**
-          * If `true` the icon acts as a tile with a background color.
-          * @default false
-         */
-        "tile": boolean;
-        /**
-          * If `true` the icon acts as a tile with a background color. Default is purple
-          * @default 'purple'
-         */
-        "tileColor": IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -1709,6 +1738,95 @@ export namespace Components {
         "value": number;
     }
     /**
+     * Input stepper renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface DsInputStepper {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Defines the color of the stepper. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the stepper, which is displayed below the control.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the underlying interactive element used under the hood. Returns the increase button (or decrease, if increase is disabled).
+         */
+        "getInputElement": () => Promise<HTMLElement | undefined>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the stepper is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the stepper, which is displayed above the control.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The maximum value the stepper can take.
+          * @default 10
+         */
+        "max": number;
+        /**
+          * The minimum value the stepper can take.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputStepperId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must have a value before submitting a form. Because the stepper always has a numeric value, this only affects the "optional" suffix on the label.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the stepper. Prefers the increase button; falls back to decrease if the increase is disabled (value at max).
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
+          * @default 1
+         */
+        "step": number;
+        /**
+          * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+          * @default 0
+         */
+        "value": number;
+    }
+    /**
      * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
      */
     interface DsItem {
@@ -1799,10 +1917,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * @default false
-         */
-        "hovered": boolean;
-        /**
           * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
           * @default ''
          */
@@ -1822,10 +1936,6 @@ export namespace Components {
           * @default false
          */
         "noWrap": boolean;
-        /**
-          * @default false
-         */
-        "pressed": boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
@@ -1862,9 +1972,8 @@ export namespace Components {
         "animated": boolean;
         /**
           * Defines the brand of the logo. Default is 'baloise'.
-          * @default ''
          */
-        "brand": LogoBrand;
+        "brand"?: LogoBrand;
         /**
           * Defines the color of the logo.
           * @default 'primary'
@@ -1873,9 +1982,8 @@ export namespace Components {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Size of the logo svg
-          * @default ''
          */
-        "size": LogoSize;
+        "size"?: LogoSize;
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
@@ -2815,9 +2923,8 @@ export namespace Components {
         "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
-        "color": SnackbarColor;
+        "color"?: SnackbarColor;
         /**
           * Defines the heading of the notification.
           * @default ''
@@ -2849,7 +2956,7 @@ export namespace Components {
     interface DsSpinner {
         /**
           * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'blue'
+          * @default 'primary'
          */
         "color": SpinnerColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
@@ -3133,9 +3240,8 @@ export namespace Components {
         "closable": boolean;
         /**
           * The theme type of the tag.
-          * @default ''
          */
-        "color": TagColor;
+        "color"?: TagColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3148,19 +3254,12 @@ export namespace Components {
         "invalid": boolean;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
-          * @default ''
          */
-        "position": TagPlacement;
-        /**
-          * The shape of the tag element like square or pill
-          * @default ''
-         */
-        "shape": TagShape;
+        "position"?: TagPlacement;
         /**
           * The size of the tag element
-          * @default ''
          */
-        "size": TagSize;
+        "size"?: TagSize;
     }
     /**
      * Tag Group arranges multiple tag elements in a horizontal or wrapping layout.
@@ -3173,9 +3272,8 @@ export namespace Components {
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
-          * @default ''
          */
-        "align": TextAlign;
+        "align"?: TextAlign;
         /**
           * If `true` the text is bold
           * @default false
@@ -3183,9 +3281,8 @@ export namespace Components {
         "bold": boolean;
         /**
           * Defines the color of the text.
-          * @default ''
          */
-        "color": TextColor;
+        "color"?: TextColor;
         /**
           * If `true` the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -3196,10 +3293,6 @@ export namespace Components {
           * @default false
          */
         "heading": boolean;
-        /**
-          * @default false
-         */
-        "hovered": boolean;
         /**
           * If `true` the text is shown as a display inline
           * @default false
@@ -3221,10 +3314,6 @@ export namespace Components {
          */
         "noWrap": boolean;
         /**
-          * @default false
-         */
-        "pressed": boolean;
-        /**
           * If `true` adds a text shadow to improve readability on image background
           * @default false
          */
@@ -3235,9 +3324,8 @@ export namespace Components {
         "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
-        "space": TextSpace;
+        "space"?: TextSpace;
         /**
           * If `true` the text has subtitle font family
           * @default false
@@ -3415,9 +3503,8 @@ export namespace Components {
         "closeHandler": (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
-        "color": ToastColor;
+        "color"?: ToastColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * @default 0
@@ -3623,6 +3710,10 @@ export interface DsInputSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputSliderElement;
 }
+export interface DsInputStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsInputStepperElement;
+}
 export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsItemElement;
@@ -3772,6 +3863,15 @@ declare global {
     var HTMLDsBadgeElement: {
         prototype: HTMLDsBadgeElement;
         new (): HTMLDsBadgeElement;
+    };
+    /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
+    interface HTMLDsBrandIconElement extends Components.DsBrandIcon, HTMLStencilElement {
+    }
+    var HTMLDsBrandIconElement: {
+        prototype: HTMLDsBrandIconElement;
+        new (): HTMLDsBrandIconElement;
     };
     interface HTMLDsButtonElementEventMap {
         "dsClick": ButtonClickDetail;
@@ -4206,6 +4306,31 @@ declare global {
     var HTMLDsInputSliderElement: {
         prototype: HTMLDsInputSliderElement;
         new (): HTMLDsInputSliderElement;
+    };
+    interface HTMLDsInputStepperElementEventMap {
+        "dsInput": InputStepperInputDetail;
+        "dsChange": InputStepperChangeDetail;
+        "dsIncrease": InputStepperIncreaseDetail;
+        "dsDecrease": InputStepperDecreaseDetail;
+        "dsFocus": InputStepperFocusDetail;
+        "dsBlur": InputStepperBlurDetail;
+    }
+    /**
+     * Input stepper renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface HTMLDsInputStepperElement extends Components.DsInputStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsInputStepperElementEventMap>(type: K, listener: (this: HTMLDsInputStepperElement, ev: DsInputStepperCustomEvent<HTMLDsInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsInputStepperElementEventMap>(type: K, listener: (this: HTMLDsInputStepperElement, ev: DsInputStepperCustomEvent<HTMLDsInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsInputStepperElement: {
+        prototype: HTMLDsInputStepperElement;
+        new (): HTMLDsInputStepperElement;
     };
     interface HTMLDsItemElementEventMap {
         "dsClick": ButtonClickDetail;
@@ -4854,6 +4979,7 @@ declare global {
         "ds-alert-container": HTMLDsAlertContainerElement;
         "ds-app": HTMLDsAppElement;
         "ds-badge": HTMLDsBadgeElement;
+        "ds-brand-icon": HTMLDsBrandIconElement;
         "ds-button": HTMLDsButtonElement;
         "ds-button-group": HTMLDsButtonGroupElement;
         "ds-card": HTMLDsCardElement;
@@ -4884,6 +5010,7 @@ declare global {
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
         "ds-input-slider": HTMLDsInputSliderElement;
+        "ds-input-stepper": HTMLDsInputStepperElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
@@ -5089,6 +5216,44 @@ declare namespace LocalJSX {
         "size"?: BadgeSize;
     }
     /**
+     * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+     */
+    interface DsBrandIcon {
+        /**
+          * The color variant of the icon.
+         */
+        "color"?: IconColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: IconSize;
+        /**
+          * URL of an SVG file to fetch and display.
+          * @default ''
+         */
+        "src"?: string;
+        /**
+          * Svg content.
+          * @default ''
+         */
+        "svg"?: string;
+        /**
+          * If `true` the icon acts as a tile with a background color.
+          * @default false
+         */
+        "tile"?: boolean;
+    }
+    /**
      * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
      */
     interface DsButton {
@@ -5113,20 +5278,20 @@ declare namespace LocalJSX {
          */
         "a11yTitle"?: string;
         /**
-          * If `true` the button is circular and width of the buttons is limited
-          * @default false
+          * A brand icon shown above the label instead of the regular leading/trailing icons. Accepts either a URL to an SVG file or raw `<svg>` markup. When set, `icon` and `iconRight` are ignored.
+          * @default ''
          */
-        "circle"?: boolean;
+        "brandIcon"?: string;
+        /**
+          * Size of the brand icon.
+          * @default 'md'
+         */
+        "brandSize"?: ButtonBrandSize;
         /**
           * The color to use from your application's color palette.
           * @default 'primary'
          */
         "color"?: ButtonColor;
-        /**
-          * If `true` the button has a dashed border.
-          * @default false
-         */
-        "dashed"?: boolean;
         /**
           * If `true`, the user cannot interact with the button.
           * @default false
@@ -5222,18 +5387,12 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
-          * If `true` the button is rounded.
-          * @default false
-         */
-        "rounded"?: boolean;
-        /**
           * If `true` adds a box shadow to improve readability on image background
           * @default false
          */
         "shadow"?: boolean;
         /**
           * Size of the button
-          * @default undefined
          */
         "size"?: ButtonSize;
         /**
@@ -5262,8 +5421,7 @@ declare namespace LocalJSX {
      */
     interface DsButtonGroup {
         /**
-          * The value of the button, which is submitted with the form data.
-          * @default ''
+          * Horizontal alignment of the grouped buttons.
          */
         "align"?: ButtonGroupAlignment;
         /**
@@ -5727,6 +5885,10 @@ declare namespace LocalJSX {
          */
         "buttonColor"?: ButtonColor;
         /**
+          * Define the size of the button variant. Only applicable if `button` is `true`.
+         */
+        "buttonSize"?: CloseButtonSize;
+        /**
           * If `true` the close component will be disabled and not interactive.
           * @default false
          */
@@ -5880,6 +6042,11 @@ declare namespace LocalJSX {
          */
         "freeSolo"?: boolean;
         /**
+          * If `true`, the date picker is presented inline and no input field is shown.
+          * @default false
+         */
+        "inline"?: boolean;
+        /**
           * If `true` the component gets an invalid style.
           * @default false
          */
@@ -5975,7 +6142,7 @@ declare namespace LocalJSX {
     interface DsDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'grey'
+          * @default 'base'
          */
         "color"?: DividerColor;
         /**
@@ -6295,7 +6462,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button.
          */
-        "color"?: IconColor;
+        "color"?: IconColor1;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
           * @default false
@@ -6327,14 +6494,9 @@ declare namespace LocalJSX {
          */
         "shadow"?: boolean;
         /**
-          * If `true` the icon is displayed in a circle with a background color.
-          * @default ''
-         */
-        "shape"?: IconShape;
-        /**
           * Defines the size of the icon.
          */
-        "size"?: IconSize;
+        "size"?: IconSize1;
         /**
           * URL of an SVG file to fetch and display.
           * @default ''
@@ -6345,16 +6507,6 @@ declare namespace LocalJSX {
           * @default ''
          */
         "svg"?: string;
-        /**
-          * If `true` the icon acts as a tile with a background color.
-          * @default false
-         */
-        "tile"?: boolean;
-        /**
-          * If `true` the icon acts as a tile with a background color. Default is purple
-          * @default 'purple'
-         */
-        "tileColor"?: IconTileColor;
         /**
           * If `true` the icon is rotated 180deg
           * @default false
@@ -6655,6 +6807,114 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     /**
+     * Input stepper renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface DsInputStepper {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Defines the color of the stepper. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the stepper, which is displayed below the control.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the stepper is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the stepper, which is displayed above the control.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The maximum value the stepper can take.
+          * @default 10
+         */
+        "max"?: number;
+        /**
+          * The minimum value the stepper can take.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputStepperId
+         */
+        "name"?: string;
+        /**
+          * Emitted when focus leaves the widget entirely. Tabbing between the two buttons does not emit — see `handleFocusout`.
+         */
+        "onDsBlur"?: (event: DsInputStepperCustomEvent<InputStepperBlurDetail>) => void;
+        /**
+          * Emitted once per successful step. Debounceable via the `debounce` prop.
+         */
+        "onDsChange"?: (event: DsInputStepperCustomEvent<InputStepperChangeDetail>) => void;
+        /**
+          * Emitted after a successful decrease step, in addition to `dsChange`/`dsInput`.
+         */
+        "onDsDecrease"?: (event: DsInputStepperCustomEvent<InputStepperDecreaseDetail>) => void;
+        /**
+          * Emitted when focus enters the widget (either button).
+         */
+        "onDsFocus"?: (event: DsInputStepperCustomEvent<InputStepperFocusDetail>) => void;
+        /**
+          * Emitted after a successful increase step, in addition to `dsChange`/`dsInput`.
+         */
+        "onDsIncrease"?: (event: DsInputStepperCustomEvent<InputStepperIncreaseDetail>) => void;
+        /**
+          * Emitted whenever the value changes via a step. Fires alongside `dsChange`.
+         */
+        "onDsInput"?: (event: DsInputStepperCustomEvent<InputStepperInputDetail>) => void;
+        /**
+          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must have a value before submitting a form. Because the stepper always has a numeric value, this only affects the "optional" suffix on the label.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
+          * @default 1
+         */
+        "step"?: number;
+        /**
+          * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+          * @default 0
+         */
+        "value"?: number;
+    }
+    /**
      * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
      */
     interface DsItem {
@@ -6760,10 +7020,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * @default false
-         */
-        "hovered"?: boolean;
-        /**
           * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
           * @default ''
          */
@@ -6783,10 +7039,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "noWrap"?: boolean;
-        /**
-          * @default false
-         */
-        "pressed"?: boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
           * @default true
@@ -6823,7 +7075,6 @@ declare namespace LocalJSX {
         "animated"?: boolean;
         /**
           * Defines the brand of the logo. Default is 'baloise'.
-          * @default ''
          */
         "brand"?: LogoBrand;
         /**
@@ -6833,7 +7084,6 @@ declare namespace LocalJSX {
         "color"?: LogoColor;
         /**
           * Size of the logo svg
-          * @default ''
          */
         "size"?: LogoSize;
     }
@@ -7848,7 +8098,6 @@ declare namespace LocalJSX {
         "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
         "color"?: SnackbarColor;
         /**
@@ -7891,7 +8140,7 @@ declare namespace LocalJSX {
     interface DsSpinner {
         /**
           * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'blue'
+          * @default 'primary'
          */
         "color"?: SpinnerColor;
         /**
@@ -8189,7 +8438,6 @@ declare namespace LocalJSX {
         "closable"?: boolean;
         /**
           * The theme type of the tag.
-          * @default ''
          */
         "color"?: TagColor;
         /**
@@ -8208,17 +8456,10 @@ declare namespace LocalJSX {
         "onDsCloseClick"?: (event: DsTagCustomEvent<TagCloseClickDetail>) => void;
         /**
           * Choosing left or center the tag is aligned to that side in the ds-card.
-          * @default ''
          */
         "position"?: TagPlacement;
         /**
-          * The shape of the tag element like square or pill
-          * @default ''
-         */
-        "shape"?: TagShape;
-        /**
           * The size of the tag element
-          * @default ''
          */
         "size"?: TagSize;
     }
@@ -8233,7 +8474,6 @@ declare namespace LocalJSX {
     interface DsText {
         /**
           * If `true` the component gets a invalid style.
-          * @default ''
          */
         "align"?: TextAlign;
         /**
@@ -8243,7 +8483,6 @@ declare namespace LocalJSX {
         "bold"?: boolean;
         /**
           * Defines the color of the text.
-          * @default ''
          */
         "color"?: TextColor;
         /**
@@ -8256,10 +8495,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "heading"?: boolean;
-        /**
-          * @default false
-         */
-        "hovered"?: boolean;
         /**
           * If `true` the text is shown as a display inline
           * @default false
@@ -8281,10 +8516,6 @@ declare namespace LocalJSX {
          */
         "noWrap"?: boolean;
         /**
-          * @default false
-         */
-        "pressed"?: boolean;
-        /**
           * If `true` adds a text shadow to improve readability on image background
           * @default false
          */
@@ -8295,7 +8526,6 @@ declare namespace LocalJSX {
         "size"?: TextSize;
         /**
           * Defines at which position the heading has spacing.
-          * @default ''
          */
         "space"?: TextSpace;
         /**
@@ -8486,7 +8716,6 @@ declare namespace LocalJSX {
         "closeHandler"?: (id: string) => void;
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
-          * @default 'base'
          */
         "color"?: ToastColor;
         /**
@@ -8698,6 +8927,15 @@ declare namespace LocalJSX {
         "position": BadgePosition;
         "pulse": boolean;
     }
+    interface DsBrandIconAttributes {
+        "svg": string;
+        "src": string;
+        "size": IconSize;
+        "color": IconColor;
+        "tile": boolean;
+        "disabled": boolean;
+        "invalid": boolean;
+    }
     interface DsButtonAttributes {
         "color": ButtonColor;
         "elementType": ButtonElementType;
@@ -8707,19 +8945,18 @@ declare namespace LocalJSX {
         "target": ButtonTarget;
         "rel": string;
         "download": string;
-        "dashed": boolean;
         "shadow": boolean;
         "square": boolean;
-        "circle": boolean;
         "wide": boolean;
         "flat": boolean;
         "outlined": boolean;
         "inverted": boolean;
         "loading": boolean;
-        "rounded": boolean;
         "icon": string;
         "iconTurn": boolean;
         "iconRight": string;
+        "brandIcon": string;
+        "brandSize": ButtonBrandSize;
         "noWrap": boolean;
         "name": string;
         "value": string;
@@ -8827,6 +9064,7 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "button": boolean;
         "buttonColor": ButtonColor;
+        "buttonSize": CloseButtonSize;
     }
     interface DsContentAttributes {
         "layout": StackLayout;
@@ -8864,6 +9102,7 @@ declare namespace LocalJSX {
         "autocomplete": InputAutocomplete;
         "debounce": number;
         "autoInvalidOff": boolean;
+        "inline": boolean;
         "loading": boolean;
         "min": string | undefined;
         "max": string | undefined;
@@ -8935,9 +9174,6 @@ declare namespace LocalJSX {
         "src": string;
         "size": IconSize;
         "color": IconColor;
-        "shape": IconShape;
-        "tile": boolean;
-        "tileColor": IconTileColor;
         "inline": boolean;
         "inverted": boolean;
         "turn": boolean;
@@ -8996,6 +9232,23 @@ declare namespace LocalJSX {
         "required": boolean;
         "autoInvalidOff": boolean;
     }
+    interface DsInputStepperAttributes {
+        "value": number;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "min": number;
+        "max": number;
+        "step": number;
+        "debounce": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+    }
     interface DsItemAttributes {
         "accordionGroup": string;
         "accordionMarker": AccordionMarker;
@@ -9017,10 +9270,8 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "htmlFor": string;
         "htmlId": string;
-        "hovered": boolean;
         "invalid": boolean;
         "noWrap": boolean;
-        "pressed": boolean;
         "required": boolean;
         "size": LabelSize;
         "valid": boolean;
@@ -9289,7 +9540,6 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "invalid": boolean;
         "position": TagPlacement;
-        "shape": TagShape;
         "size": TagSize;
     }
     interface DsTextAttributes {
@@ -9298,12 +9548,10 @@ declare namespace LocalJSX {
         "color": TextColor;
         "disabled": boolean;
         "heading": boolean;
-        "hovered": boolean;
         "inline": boolean;
         "invalid": boolean;
         "inverted": boolean;
         "noWrap": boolean;
-        "pressed": boolean;
         "shadow": boolean;
         "size": TextSize;
         "space": TextSpace;
@@ -9379,6 +9627,7 @@ declare namespace LocalJSX {
         "ds-alert-container": Omit<DsAlertContainer, keyof DsAlertContainerAttributes> & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes]?: DsAlertContainer[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `attr:${K}`]?: DsAlertContainerAttributes[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `prop:${K}`]?: DsAlertContainer[K] };
         "ds-app": Omit<DsApp, keyof DsAppAttributes> & { [K in keyof DsApp & keyof DsAppAttributes]?: DsApp[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `attr:${K}`]?: DsAppAttributes[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `prop:${K}`]?: DsApp[K] };
         "ds-badge": Omit<DsBadge, keyof DsBadgeAttributes> & { [K in keyof DsBadge & keyof DsBadgeAttributes]?: DsBadge[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `attr:${K}`]?: DsBadgeAttributes[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `prop:${K}`]?: DsBadge[K] };
+        "ds-brand-icon": Omit<DsBrandIcon, keyof DsBrandIconAttributes> & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes]?: DsBrandIcon[K] } & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes as `attr:${K}`]?: DsBrandIconAttributes[K] } & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes as `prop:${K}`]?: DsBrandIcon[K] };
         "ds-button": Omit<DsButton, keyof DsButtonAttributes> & { [K in keyof DsButton & keyof DsButtonAttributes]?: DsButton[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `attr:${K}`]?: DsButtonAttributes[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `prop:${K}`]?: DsButton[K] };
         "ds-button-group": Omit<DsButtonGroup, keyof DsButtonGroupAttributes> & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes]?: DsButtonGroup[K] } & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes as `attr:${K}`]?: DsButtonGroupAttributes[K] } & { [K in keyof DsButtonGroup & keyof DsButtonGroupAttributes as `prop:${K}`]?: DsButtonGroup[K] };
         "ds-card": Omit<DsCard, keyof DsCardAttributes> & { [K in keyof DsCard & keyof DsCardAttributes]?: DsCard[K] } & { [K in keyof DsCard & keyof DsCardAttributes as `attr:${K}`]?: DsCardAttributes[K] } & { [K in keyof DsCard & keyof DsCardAttributes as `prop:${K}`]?: DsCard[K] };
@@ -9409,6 +9658,7 @@ declare namespace LocalJSX {
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
         "ds-input-slider": Omit<DsInputSlider, keyof DsInputSliderAttributes> & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes]?: DsInputSlider[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `attr:${K}`]?: DsInputSliderAttributes[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `prop:${K}`]?: DsInputSlider[K] };
+        "ds-input-stepper": Omit<DsInputStepper, keyof DsInputStepperAttributes> & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes]?: DsInputStepper[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `attr:${K}`]?: DsInputStepperAttributes[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `prop:${K}`]?: DsInputStepper[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
         "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
@@ -9470,6 +9720,10 @@ declare module "@stencil/core" {
              * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
              */
             "ds-badge": LocalJSX.IntrinsicElements["ds-badge"] & JSXBase.HTMLAttributes<HTMLDsBadgeElement>;
+            /**
+             * Icon displays SVG icons with customizable color, size, rotation, and optional tile background.
+             */
+            "ds-brand-icon": LocalJSX.IntrinsicElements["ds-brand-icon"] & JSXBase.HTMLAttributes<HTMLDsBrandIconElement>;
             /**
              * Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.
              */
@@ -9602,6 +9856,10 @@ declare module "@stencil/core" {
              * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
              */
             "ds-input-slider": LocalJSX.IntrinsicElements["ds-input-slider"] & JSXBase.HTMLAttributes<HTMLDsInputSliderElement>;
+            /**
+             * Input stepper renders a numeric value flanked by decrease and increase buttons.
+             */
+            "ds-input-stepper": LocalJSX.IntrinsicElements["ds-input-stepper"] & JSXBase.HTMLAttributes<HTMLDsInputStepperElement>;
             /**
              * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
              */

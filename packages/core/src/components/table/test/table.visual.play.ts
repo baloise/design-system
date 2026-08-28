@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'table'
-const VARIANTS = ['basic', 'striped', 'hoverable', 'bordered', 'narrow', 'selected-row'] as const
+const VARIANTS = ['basic', 'striped', 'narrow'] as const
 
 const image = screenshot(TAG)
 

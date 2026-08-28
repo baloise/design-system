@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { A11yGuidelines, Banner, BannerTabs, Footer } from '../../../.storybook/blocks'
+import * as BrandIconStories from './brand-icon.stories'
+import { BRAND_ICON_DOC_CONFIG, getBrandIconTabs } from './brand-icon.doc-config'
+
+<Meta title="Components/BrandIcon/Accessibility" />
+<Banner label={'Accessibility'} section={BRAND_ICON_DOC_CONFIG.section} color={BRAND_ICON_DOC_CONFIG.color} />
+<BannerTabs of={BrandIconStories} tabs={getBrandIconTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Pair with a Visible Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          The icon renders with <code>aria-hidden="true"</code> and is not announced to screen readers. Always place a
+          visible text label next to it so the represented category is available to everyone.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Use Sufficient Color Contrast',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When using the <code>tile</code> background, verify the icon's fill colors keep enough contrast against the
+          tile background, especially in the <code>disabled</code> and <code>invalid</code> states.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keep a Legible Size',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Use a size large enough that the illustration's details remain distinguishable, particularly for users with
+          low vision.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Rely on the Icon Alone',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not use the icon as the only way to identify a category or product. Screen reader users and users who
+          don't recognize the illustration need a text alternative.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: 'Use Color as the Only State Indicator',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Don't rely solely on the <code>invalid</code> or <code>disabled</code> color change to communicate state —
+          pair it with a text label or surrounding context.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: `aria-hidden`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) - How hiding decorative content from assistive technology works
+- [WCAG 2.2 — Non-text Content (1.1.1)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html) - Why decorative icons need a text alternative elsewhere on the page
+- [WCAG 2.2 — Use of Color (1.4.1)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html) - Why color alone must not convey the icon's state
+
+<Footer />

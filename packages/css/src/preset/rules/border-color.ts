@@ -4,39 +4,29 @@ import { flattenTokens, type RuleMetadata } from '../utils'
 
 /**
  * Generate border utility classes from design tokens.
- * Reads from 🔗 Alias › ▭ Border › Color and Width tokens.
+ * Reads from 🔗 Alias › ▭ Border › Composite (curated width+style+color shorthand
+ * tokens) and Width tokens.
  *
- * Each class sets only the properties for the side(s) it targets:
- *   .border-{color}         — all sides: border-color + border-width + border-style
- *   .border-top-{color}     — top only:  border-top-color + border-top-width + border-top-style
- *   .border-bottom-{color}  — bottom only
- *   .border-left-{color}    — left only
- *   .border-right-{color}   — right only
+ * Each class sets a single shorthand property for the side(s) it targets:
+ *   .border-{name}         — border
+ *   .border-top-{name}     — border-top
+ *   .border-bottom-{name}  — border-bottom
+ *   .border-left-{name}    — border-left
+ *   .border-right-{name}   — border-right
  *
  * Remove helpers:
  *   .border-none, .border-top-none, .border-bottom-none, .border-left-none, .border-right-none
  *
- * Default-color helpers (uses base color token):
+ * Default helpers (alias to the Grey composite):
  *   .border, .border-top, .border-bottom, .border-left, .border-right
  *
  * Width helpers:
- *   .border-width-none, .border-width-base, .border-width-md
+ *   .border-width-none (static 0), .border-width-base
  */
 export function buildBorderColorRules(tokensJsonPath: string) {
   const tokensJson = JSON.parse(readFileSync(tokensJsonPath, 'utf-8'))
 
-  const borderColorTokens = flattenTokens(tokensJson['🔗 Alias']?.['▭ Border']?.Color || {})
-  const borderWidthTokens = flattenTokens(tokensJson['🔗 Alias']?.['▭ Border']?.Width || {})
-
-  // Build a lookup for width tokens by their short name (none, base, md, …)
-  const widthVar = (key: string) => {
-    const t = borderWidthTokens.find(t => t.name === `ds-alias-border-width-${key}`)
-    return t ? `var(--${t.name})` : undefined
-  }
-
-  const widthBase = widthVar('base') ?? 'var(--ds-alias-border-width-base)'
-  const widthNone = widthVar('none') ?? 'var(--ds-alias-border-width-none)'
-  const widthMd = widthVar('md') ?? 'var(--ds-alias-border-width-md)'
+  const borderCompositeTokens = flattenTokens(tokensJson['🔗 Alias']?.['▭ Border']?.Composite || {})
 
   const rules: Rule[] = []
   const metadata: RuleMetadata[] = []
@@ -53,70 +43,30 @@ export function buildBorderColorRules(tokensJsonPath: string) {
     })
   }
 
-  // Each side descriptor: which CSS properties it owns
+  // Each side descriptor: which single shorthand property it owns
   const sides = [
-    {
-      prefix: '',
-      color: 'border-color',
-      width: 'border-width',
-      style: 'border-style',
-    },
-    {
-      prefix: 'top-',
-      color: 'border-top-color',
-      width: 'border-top-width',
-      style: 'border-top-style',
-    },
-    {
-      prefix: 'bottom-',
-      color: 'border-bottom-color',
-      width: 'border-bottom-width',
-      style: 'border-bottom-style',
-    },
-    {
-      prefix: 'left-',
-      color: 'border-left-color',
-      width: 'border-left-width',
-      style: 'border-left-style',
-    },
-    {
-      prefix: 'right-',
-      color: 'border-right-color',
-      width: 'border-right-width',
-      style: 'border-right-style',
-    },
+    { prefix: '', property: 'border' },
+    { prefix: 'top-', property: 'border-top' },
+    { prefix: 'bottom-', property: 'border-bottom' },
+    { prefix: 'left-', property: 'border-left' },
+    { prefix: 'right-', property: 'border-right' },
   ]
 
-  // Color + width + style classes from tokens
-  for (const token of borderColorTokens) {
-    const colorName = token.name.replace('ds-alias-border-color-', '')
+  // Composite shorthand classes from tokens
+  for (const token of borderCompositeTokens) {
+    const name = token.name.replace('ds-alias-border-composite-', '')
     for (const side of sides) {
-      const className = `border-${side.prefix}${colorName}`
-      addRule(
-        className,
-        {
-          [side.color]: `var(--${token.name}) !important`,
-          [side.width]: `${widthBase} !important`,
-          [side.style]: 'solid',
-        },
-        token.name,
-      )
+      const className = `border-${side.prefix}${name}`
+      addRule(className, { [side.property]: `var(--${token.name}) !important` }, token.name)
     }
   }
 
-  // Default-color helpers (uses base color token)
-  const baseColorVar = 'var(--ds-alias-border-color-base)'
+  // Default helpers (alias to the Grey composite)
+  const greyToken = borderCompositeTokens.find(t => t.name === 'ds-alias-border-composite-grey')
+  const defaultVar = greyToken ? `var(--${greyToken.name})` : 'var(--ds-alias-border-composite-grey)'
   for (const side of sides) {
     const className = side.prefix ? `border-${side.prefix.replace(/-$/, '')}` : 'border'
-    addRule(
-      className,
-      {
-        [side.color]: `${baseColorVar} !important`,
-        [side.width]: `${widthBase} !important`,
-        [side.style]: 'solid',
-      },
-      'ds-alias-border-color-base',
-    )
+    addRule(className, { [side.property]: `${defaultVar} !important` }, 'ds-alias-border-composite-grey')
   }
 
   // Remove-border helpers
@@ -127,9 +77,12 @@ export function buildBorderColorRules(tokensJsonPath: string) {
   addRule('border-right-none', { 'border-right': 'none !important' }, 'static')
 
   // Border-width helpers
-  addRule('border-width-none', { 'border-width': `${widthNone} !important` }, 'ds-alias-border-width-none')
-  addRule('border-width-base', { 'border-width': `${widthBase} !important` }, 'ds-alias-border-width-base')
-  addRule('border-width-md', { 'border-width': `${widthMd} !important` }, 'ds-alias-border-width-md')
+  addRule('border-width-none', { 'border-width': '0 !important' }, 'static')
+  addRule(
+    'border-width-base',
+    { 'border-width': 'var(--ds-alias-border-width-base) !important' },
+    'ds-alias-border-width-base',
+  )
 
   return { rules, safelist, metadata }
 }

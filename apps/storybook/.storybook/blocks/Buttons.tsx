@@ -23,7 +23,7 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
         {...linkObj}
         style={{ flex: 1 }}
         className={`sb-unstyled button mb-none flex flex-1 w-full flex-direction-row gap-lg ${
-          color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-secondary'
+          color ? (color === 'grey' ? 'is-tertiary' : `is-brand-${color}`) : 'is-secondary'
         } p-normal text-large`}
       >
         <span className="w-fit flex justify-content-center text-xx-large text-align-center">
@@ -43,7 +43,7 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
       {...linkObj}
       style={{ flex: 1 }}
       className={`sb-unstyled button mb-none flex flex-1 flex-direction-column ${
-        color ? (color === 'grey' ? 'is-tertiary' : `is-tertiary-${color}`) : 'is-secondary'
+        color ? (color === 'grey' ? 'is-tertiary' : `is-brand-${color}`) : 'is-secondary'
       } p-normal text-large`}
     >
       <span className="flex justify-content-center text-xx-large text-align-center">
@@ -198,7 +198,7 @@ export const GridCard = ({ _children, color, pageTitle, svg, label, description 
       <div className="h-full">
         <button
           onClick={() => navigate({ title: pageTitle })}
-          className={`button flex gap-normal justify-content-center align-items-center is-tertiary-${color} p-normal h-full w-full`}
+          className={`button flex gap-normal justify-content-center align-items-center is-brand-${color} p-normal h-full w-full`}
         >
           {svg ? (
             <div style={{ minWidth: '80px' }}>

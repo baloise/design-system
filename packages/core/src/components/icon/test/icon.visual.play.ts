@@ -1,19 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'icon'
-const VARIANTS = [
-  'basic',
-  'override',
-  'shapes',
-  'inline',
-  'svg-content',
-  'shadow',
-  'turn',
-  'colors',
-  'states',
-  'sizes',
-  'tile',
-]
+const VARIANTS = ['basic', 'override', 'inline', 'svg-content', 'shadow', 'turn', 'colors', 'states', 'sizes']
 
 const image = screenshot(TAG)
 

@@ -75,7 +75,7 @@ jobs:
 
       - name: Commit release
         if: ${{ !inputs.dry-run }}
-        uses: EndBug/add-and-commit@v10
+        uses: EndBug/add-and-commit@v11
         with:
           add: "['pnpm-lock.yaml', 'CHANGELOG.md']"
           message: ':bookmark: release: ${{ steps.package-version.outputs.current-version }}'
@@ -122,7 +122,7 @@ jobs:
       # bundled inside the npm packages it depends on.
       - name: Submit SBOM to GitHub dependency graph
         if: ${{ !inputs.dry-run }}
-        uses: advanced-security/spdx-dependency-submission-action@v0.2.0
+        uses: advanced-security/spdx-dependency-submission-action@v0.3.1
         with:
           token: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
           filePath: '.'

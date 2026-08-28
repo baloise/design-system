@@ -26,15 +26,15 @@ export function presetDsUtilities(
     rules: [
       ...tokenSpacingRules,
       ...spacingRules,
-      ...flexRules,
-      ...layoutRules,
       ...bgRules,
       ...borderRules,
       ...borderColorRules,
       ...elevationRules,
       ...interactionRules,
-      ...sizingRules,
       ...typographyRules,
+      ...layoutRules,
+      ...flexRules,
+      ...sizingRules,
     ],
     variants: [...responsiveVariants, ...pseudoVariants],
     preflights: [

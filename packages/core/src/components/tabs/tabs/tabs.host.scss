@@ -39,7 +39,7 @@
   @include vars.local(tabs-tab-border-color-selected, var(--ds-tabs-tab-border-color-selected));
   @include vars.local(tabs-tab-font-weight-selected, var(--ds-tabs-tab-font-weight-selected));
   @include vars.local(tabs-scroll-fade-bg, var(--ds-tabs-scroll-fade-background));
-  @include vars.local(tabs-scroll-btn-radius, var(--ds-button-radius-base));
+  @include vars.local(tabs-scroll-btn-radius, var(--ds-button-size-base-radius));
   @include vars.local(tabs-scroll-btn-color-text, var(--ds-button-color-tertiary-base-text));
   @include vars.local(tabs-scroll-btn-color-hover-background, var(--ds-button-color-tertiary-hover-background));
   @include vars.local(tabs-scroll-btn-color-hover-text, var(--ds-button-color-tertiary-hover-text));

@@ -11,12 +11,10 @@ import {
 } from '@utils'
 import {
   TAG_COLORS,
-  TAG_SHAPES,
   TAG_SIZES,
   TAG_PLACEMENTS,
   type TagColor,
   type TagSize,
-  type TagShape,
   type TagPlacement,
   type TagCloseClickDetail,
 } from './tag.interfaces'
@@ -62,7 +60,7 @@ export class Tag implements DsComponentInterface {
    */
   @Prop()
   @OneOf(TAG_COLORS)
-  readonly color: TagColor = ''
+  readonly color?: TagColor
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -83,21 +81,14 @@ export class Tag implements DsComponentInterface {
    */
   @Prop()
   @OneOf(TAG_PLACEMENTS)
-  readonly position: TagPlacement = ''
-
-  /**
-   * The shape of the tag element like square or pill
-   */
-  @Prop()
-  @OneOf(TAG_SHAPES)
-  readonly shape: TagShape = ''
+  readonly position?: TagPlacement
 
   /**
    * The size of the tag element
    */
   @Prop()
   @OneOf(TAG_SIZES)
-  readonly size: TagSize = ''
+  readonly size?: TagSize
 
   /**
    * Emitted when the input got clicked.
@@ -126,7 +117,6 @@ export class Tag implements DsComponentInterface {
         class={{
           [`is-${this.color}`]: hasValue(this.color),
           [`is-${size}`]: hasValue(this.size),
-          [`is-shape-${this.shape}`]: hasValue(this.shape),
           'is-closable': this.closable,
           'is-disabled': this.disabled,
           'is-invalid': this.invalid,

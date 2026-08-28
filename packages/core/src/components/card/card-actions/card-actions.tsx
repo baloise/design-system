@@ -34,7 +34,7 @@ export class CardActions implements DsComponentInterface {
   render() {
     return (
       <Host role="contentinfo">
-        <ds-button-group class="m-none" align={this.align}>
+        <ds-button-group class="m-none" align={this.align || undefined}>
           <slot />
         </ds-button-group>
       </Host>

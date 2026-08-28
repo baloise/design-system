@@ -36,11 +36,11 @@ export class ButtonGroup implements DsComponentInterface {
    */
 
   /**
-   * The value of the button, which is submitted with the form data.
+   * Horizontal alignment of the grouped buttons.
    */
   @Prop()
   @OneOf(BUTTON_GROUP_ALIGNMENTS)
-  readonly align: ButtonGroupAlignment = ''
+  readonly align?: ButtonGroupAlignment
 
   /**
    * `auto` will position the button items vertical and full width.

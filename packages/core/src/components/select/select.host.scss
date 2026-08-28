@@ -465,8 +465,8 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     @include unselectable();
 
     min-height: 1.5rem;
-    padding-block: var(--ds-tag-space-padding-y-sm);
-    padding-inline: var(--ds-tag-space-padding-x-sm);
+    padding-block: var(--ds-tag-size-sm-space-y);
+    padding-inline: var(--ds-tag-size-sm-space-x);
     border-radius: var(--ds-tag-radius-base);
 
     background-color: var(--_select-tag-background-color);
@@ -475,8 +475,8 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
       color: var(--_select-tag-text-color);
       font-family: var(--_select-tag-family);
       line-height: 1;
-      font-size: var(--ds-tag-font-size-sm);
-      font-weight: var(--ds-tag-font-weight-sm);
+      font-size: var(--ds-tag-size-sm-font-size);
+      font-weight: var(--ds-tag-size-sm-font-weight);
       padding: 0;
     }
 

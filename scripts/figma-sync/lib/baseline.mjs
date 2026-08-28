@@ -8,6 +8,7 @@
  */
 import { existsSync, readFileSync } from 'node:fs'
 import { pathKey } from './alias.mjs'
+import { flattenVariableId, isPushableToken } from './figma-value.mjs'
 
 /** Tolerant of a missing file — there is no baseline yet on a repo's first-ever sync. */
 export function loadSyncStateFile(path) {
@@ -68,16 +69,23 @@ export function buildSyncState({ existingState, baseTokens, mergeCommitSha, sync
   }
 
   for (const token of baseTokens) {
+    if (!isPushableToken(token)) continue
     if (!token.variableId) {
       throw new Error(
         `buildSyncState: token ${pathKey(token.path)} has no variableId — patch ids before building the baseline.`,
       )
     }
-    entries[token.variableId] = {
-      tokenPath: token.path,
-      resolvedValue: token.value,
-      lastModifiedSource: 'code',
-      lastModifiedAt: syncedAt,
+    // A shadow token's variableId is an object of 5 sub-ids, not 1 string —
+    // fan out into one baseline entry per sub-id, each tagged with which
+    // sub-property it represents so a later pull can tell them apart.
+    for (const { id, subProperty } of flattenVariableId(token.variableId)) {
+      entries[id] = {
+        tokenPath: token.path,
+        subProperty,
+        resolvedValue: token.value,
+        lastModifiedSource: 'code',
+        lastModifiedAt: syncedAt,
+      }
     }
   }
 
