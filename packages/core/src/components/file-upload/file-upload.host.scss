@@ -32,7 +32,7 @@
  */
 
 :host {
-  @include vars.local(file-upload-label-family, var(--ds-alias-text-family-body));
+  @include vars.local(file-upload-label-family, var(--ds-alias-text-family-text));
   @include vars.local(file-upload-label-weight, var(--ds-alias-text-weight-bold));
   @include vars.local(file-upload-label-size, var(--ds-alias-text-size-base-device));
   @include vars.local(file-upload-label-line-height, var(--ds-alias-text-line-height-body));

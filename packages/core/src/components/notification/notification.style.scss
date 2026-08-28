@@ -26,7 +26,7 @@ $host-selector: ('#notification');
   @include vars.local(notification-heading-size, var(--ds-alias-text-size-lg-device));
   @include vars.local(notification-heading-line-height, var(--ds-alias-text-line-height-heading));
 
-  @include vars.local(notification-content-family, var(--ds-alias-text-family-body));
+  @include vars.local(notification-content-family, var(--ds-alias-text-family-text));
   @include vars.local(notification-content-weight, inherit);
   @include vars.local(notification-content-size, var(--ds-alias-text-size-base-device));
   @include vars.local(notification-content-line-height, var(--ds-alias-text-line-height-body));

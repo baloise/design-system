@@ -25,10 +25,23 @@ export class CardHeader implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
+  /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
+   * Defines the layout direction of the header content (title, icon, image).
+   */
   @Prop()
   @Required()
   @OneOf(CARD_HEADER_DIRECTIONS)
   readonly direction: CardHeaderDirection = 'row'
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     return (

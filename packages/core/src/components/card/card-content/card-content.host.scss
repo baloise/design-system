@@ -5,4 +5,6 @@
 
 :host {
   @include typography.content();
+
+  color: var(--_card-color-text);
 }

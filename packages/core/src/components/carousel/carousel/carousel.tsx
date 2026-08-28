@@ -50,7 +50,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -99,16 +99,6 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    */
   @Event() dsChange!: EventEmitter<CarouselChangeDetail>
 
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-  }
-
   private trackEl?: HTMLElement
   private resizeObserver?: ResizeObserver
   private intersectionObserver?: IntersectionObserver
@@ -117,6 +107,18 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   private dragStartX = 0
   private dragStartScrollLeft = 0
   private velocityHistory: Array<{ x: number; t: number }> = []
+  // True while a programmatic scroll (from scrollToActive) is in flight. While the browser
+  // animates toward the target, it visually passes through intermediate slides, which would
+  // otherwise cross the IntersectionObserver's 50% threshold and briefly reassign `value` to
+  // whichever slide is mid-transit — causing the active dot to jump backward before catching up.
+  private isProgrammaticScroll = false
+  private programmaticScrollTimeout = 0
+  private snapRestoreTimeout = 0
+
+  /**
+   * LIFECYCLE
+   * ─────────────────────────────────────────────────────
+   */
 
   componentDidLoad() {
     this.setup()
@@ -133,17 +135,16 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     this.resizeObserver?.disconnect()
     this.intersectionObserver?.disconnect()
     this.trackEl?.removeEventListener('scroll', this.checkOverflow)
+    this.trackEl?.removeEventListener('scrollend', this.handleScrollEnd)
+    this.trackEl?.removeEventListener('scrollend', this.restoreSnap)
     cancelAnimationFrame(this.momentumAnimId)
+    clearTimeout(this.programmaticScrollTimeout)
+    clearTimeout(this.snapRestoreTimeout)
   }
 
   /**
-   * PROPERTY VALIDATION
-   * ------------------------------------------------------
-   */
-
-  /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsCarouselItemSelect')
@@ -153,8 +154,23 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+  }
+
+  /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleKeyDown = (ev: KeyboardEvent) => {
@@ -249,6 +265,21 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     // Setting it here causes Chromium to retarget click away from interactive
     // children (carousel-items) when pointerdown and pointerup targets differ.
     el.style.scrollBehavior = 'auto'
+    if (this.variant === 'slide') {
+      // Suspend mandatory scroll-snap for the full drag + settle sequence. Set as an inline
+      // style (not the .is-dragging CSS class) so it survives regardless of Stencil's render
+      // timing — restoring snap while the post-release settle animation is still in flight
+      // causes the browser to interrupt it mid-transit, leaving the track at a partial offset.
+      clearTimeout(this.snapRestoreTimeout)
+      el.removeEventListener('scrollend', this.restoreSnap)
+      el.style.scrollSnapType = 'none'
+    }
+  }
+
+  private restoreSnap = () => {
+    if (this.trackEl) this.trackEl.style.scrollSnapType = ''
+    clearTimeout(this.snapRestoreTimeout)
+    this.trackEl?.removeEventListener('scrollend', this.restoreSnap)
   }
 
   private handlePointerMove = (ev: PointerEvent) => {
@@ -277,11 +308,19 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
     if (this.variant === 'slide') {
       const slideWidth = el.clientWidth
       const travelDx = this.dragStartScrollLeft - el.scrollLeft
-      // Commit next/prev if swipe is fast enough or covers > 25 % of slide width
+      // Keep scroll-snap suspended until the settle animation actually finishes; a fallback
+      // timeout covers browsers/cases where 'scrollend' never fires.
+      clearTimeout(this.snapRestoreTimeout)
+      this.snapRestoreTimeout = window.setTimeout(this.restoreSnap, 800)
+      el.addEventListener('scrollend', this.restoreSnap, { once: true })
+      // Commit next/prev if swipe is fast enough or covers > 25 % of slide width. The target is
+      // computed from dragStartScrollLeft (the aligned position the drag began from), not the
+      // current mid-drag scrollLeft — scrollNext/scrollPrev scroll by a relative clientWidth, which
+      // would overshoot past the neighboring slide since the drag already moved partway there.
       if (velocity > 0.3 || travelDx < -(slideWidth * 0.25)) {
-        this.scrollNext()
+        el.scrollTo({ left: this.dragStartScrollLeft + slideWidth, behavior: 'smooth' })
       } else if (velocity < -0.3 || travelDx > slideWidth * 0.25) {
-        this.scrollPrev()
+        el.scrollTo({ left: this.dragStartScrollLeft - slideWidth, behavior: 'smooth' })
       } else {
         el.scrollTo({ left: this.dragStartScrollLeft, behavior: 'smooth' })
       }
@@ -324,7 +363,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private getItems(): HTMLDsCarouselItemElement[] {
@@ -361,7 +400,12 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   private activateItem(name: string) {
     if (!name || name === this.value) return
+    const items = this.getItems()
     this.value = name
+    // Update activeIndex synchronously alongside value so a re-render never observes
+    // a stale activeIndex — ds-pagination is fed `value={activeIndex + 1}` and a lagging
+    // activeIndex would briefly reset its disabled state, letting rapid clicks overshoot.
+    this.activeIndex = items.findIndex(i => i.name === name)
     this.dsChange.emit({ value: name })
     this.scrollToActive()
   }
@@ -369,9 +413,23 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
   private scrollToActive() {
     const items = this.getItems()
     const active = items.find(i => i.name === this.value)
-    if (active) {
-      active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' })
+    if (!active) return
+
+    if (this.variant === 'slide' && this.trackEl) {
+      this.isProgrammaticScroll = true
+      clearTimeout(this.programmaticScrollTimeout)
+      // Fallback in case 'scrollend' doesn't fire (e.g. scroll is a no-op, or unsupported browser).
+      this.programmaticScrollTimeout = window.setTimeout(this.handleScrollEnd, 800)
+      this.trackEl.addEventListener('scrollend', this.handleScrollEnd, { once: true })
     }
+
+    active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' })
+  }
+
+  private handleScrollEnd = () => {
+    this.isProgrammaticScroll = false
+    clearTimeout(this.programmaticScrollTimeout)
+    this.trackEl?.removeEventListener('scrollend', this.handleScrollEnd)
   }
 
   private initScroll() {
@@ -396,6 +454,9 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
           this.intersectionInitialized = true
           return
         }
+        // A programmatic scroll (triggered by pagination/keyboard nav) passes visually through
+        // intermediate slides on its way to the target; ignore those transient crossings.
+        if (this.isProgrammaticScroll) return
         const visible = entries.find(e => e.isIntersecting && e.intersectionRatio >= 0.5)
         if (!visible) return
         const items = this.getItems()
@@ -413,7 +474,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

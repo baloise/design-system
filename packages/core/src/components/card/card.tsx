@@ -37,6 +37,11 @@ export class Card implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * If `true` the card loses its shadow.
    */
   @Prop()
@@ -64,20 +69,6 @@ export class Card implements DsComponentInterface {
   @Prop()
   @OneOf(CARD_IMAGE_TEASERS)
   readonly imageTeaser?: CardImageTeaser = undefined
-
-  /**
-   * If `true` the card loses its border radius.
-   */
-  @Prop()
-  @Type('boolean')
-  readonly square: boolean = false
-
-  /**
-   * If `true` the cards gets a light border and loses its shadow.
-   */
-  @Prop()
-  @Type('boolean')
-  readonly outlined: boolean = false
 
   /**
    * If `true` the card background color becomes blue.
@@ -112,7 +103,7 @@ export class Card implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CARD_ALIGNMENTS)
-  readonly align: CardAlignment = ''
+  readonly align?: CardAlignment
 
   /**
    * Defines the space of the card content.
@@ -126,7 +117,7 @@ export class Card implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CARD_COLORS)
-  readonly color: CardColor = ''
+  readonly color?: CardColor
 
   private get colorTypeClass(): string {
     const color = !hasValue(this.color) ? '' : `${this.inverted ? 'primary' : this.color}`
@@ -150,8 +141,12 @@ export class Card implements DsComponentInterface {
     return colorMap[color] || color
   }
 
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
+
   render() {
-    const hasOutline = !!this.outlined
     const isImageTeaser = this.imageTeaser !== undefined && this.imageTeaser !== null
     const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
@@ -160,13 +155,11 @@ export class Card implements DsComponentInterface {
         class={{
           [`is-image-teaser`]: isImageTeaser,
           [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser,
-          [`is-square`]: this.square,
           [`is-dense`]: this.dense,
           [`is-${this.colorTypeClass}`]: hasValue(this.color) && this.colorTypeClass !== 'white',
           [`has-space-${space}`]: hasValue(this.space),
-          [`is-outlined`]: hasOutline,
           [`is-fullheight`]: this.fullheight,
-          [`is-flat`]: hasOutline || !!this.flat,
+          [`is-flat`]: !!this.flat,
           [`is-tile`]: !!this.tile,
         }}
       >
