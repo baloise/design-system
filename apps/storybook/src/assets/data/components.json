@@ -30349,6 +30349,7 @@
         ],
         "ds-button": [
           "ds-spinner",
+          "ds-brand-icon",
           "ds-icon"
         ]
       },

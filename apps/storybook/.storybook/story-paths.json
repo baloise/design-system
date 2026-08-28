@@ -270,7 +270,6 @@
   "components-table-testing": "components/table/6-Testing.mdx",
   "components-table-usage": "components/table/2-Usage.mdx",
   "components-table-variants": "components/table/3-Variants.mdx",
-  "components-table-variants-ag-grid": "components/table/variants-ag-grid.mdx",
   "components-tabs-accessibility": "components/tabs/5-Accessibility.mdx",
   "components-tabs-overview": "components/tabs/1-Overview.mdx",
   "components-tabs-styling": "components/tabs/4-Styling.mdx",

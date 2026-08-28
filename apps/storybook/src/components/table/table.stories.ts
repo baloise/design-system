@@ -119,37 +119,3 @@ export const Narrow = Story({
   ),
 })
 Narrow.storyName = '🧩 Narrow'
-
-export const SelectedRow = Story({
-  ...withRender(
-    () => `
-<table class="table is-wide">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Role</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>Admin</td>
-      <td>Active</td>
-    </tr>
-    <tr class="is-selected">
-      <td>Bob</td>
-      <td>Editor</td>
-      <td>Selected</td>
-    </tr>
-    <tr>
-      <td>Carol</td>
-      <td>Viewer</td>
-      <td>Active</td>
-    </tr>
-  </tbody>
-</table>
-`,
-  ),
-})
-SelectedRow.storyName = '🧩 Selected Row'
