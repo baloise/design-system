@@ -122,7 +122,7 @@ jobs:
       # bundled inside the npm packages it depends on.
       - name: Submit SBOM to GitHub dependency graph
         if: ${{ !inputs.dry-run }}
-        uses: advanced-security/spdx-dependency-submission-action@v0.3.1
+        uses: advanced-security/spdx-dependency-submission-action@v0.3.2
         with:
           token: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
           filePath: '.'
