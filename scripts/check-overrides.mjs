@@ -12,13 +12,13 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const workspaceRoot = resolve(__dirname, '..')
 
 const pkg = JSON.parse(readFileSync(resolve(workspaceRoot, 'package.json'), 'utf-8'))
-const ws = yaml.load(readFileSync(resolve(workspaceRoot, 'pnpm-workspace.yaml'), 'utf-8'))
+const ws = load(readFileSync(resolve(workspaceRoot, 'pnpm-workspace.yaml'), 'utf-8'))
 
 const fromPackageJson = { ...pkg.pnpm?.overrides }
 delete fromPackageJson._comment

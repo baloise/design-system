@@ -276,6 +276,30 @@
             "style": "{🔗 Alias.▭ Border.Style.Solid}"
           }
         },
+        "InvertedPrimary": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.InvertedPrimary}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "InvertedPrimaryHover": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.InvertedPrimaryHover}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "InvertedPrimaryActive": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.▭ Border.Color.InvertedPrimaryActive}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
         "GreyLight": {
           "$type": "border",
           "$value": {
@@ -419,6 +443,57 @@
             "width": "{🔗 Alias.▭ Border.Width.Base}",
             "style": "{🔗 Alias.▭ Border.Style.Dashed}"
           }
+        },
+        "None": {
+          "$type": "border",
+          "$value": {
+            "color": "{🌐 Global.🌈 Color.Neutral}",
+            "width": {
+              "value": 0,
+              "unit": "rem"
+            },
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "SurfaceGreyLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.🎨 Surface.GreyLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "SurfaceDangerLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.🎨 Surface.DangerLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "SurfaceSuccessLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.🎨 Surface.SuccessLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "SurfaceInfoLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.🎨 Surface.InfoLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "SurfaceWarningLight": {
+          "$type": "border",
+          "$value": {
+            "color": "{🔗 Alias.🎨 Surface.WarningLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
         }
       }
     },
@@ -559,15 +634,19 @@
       },
       "Base": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Radius.1}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.4}"
       },
       "LG": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Radius.2}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.12}"
       },
       "Rounded": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Radius.3}"
+        "$value": "{🌐 Global.📏 Dimension.Radius.9999}"
+      },
+      "MD": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Radius.6}"
       }
     },
     "🔤 Text": {
@@ -2812,6 +2891,10 @@
       "Filter": {
         "$type": "string",
         "$value": "blur(4px)"
+      },
+      "Color": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Primary.6}"
       }
     },
     "Footer": {
@@ -2900,6 +2983,72 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Mobile}"
         }
+      }
+    },
+    "Hint": {
+      "Color": {
+        "Focus": {
+          "$type": "color",
+          "$value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}"
+        },
+        "Body": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        },
+        "Heading": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        },
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+        }
+      },
+      "Trigger": {
+        "Radius": {
+          "$type": "number",
+          "$value": "{🔗 Alias.🔵 Radius.Rounded}"
+        },
+        "Space": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.2XS}"
+        },
+        "Size": {
+          "$type": "number",
+          "$value": "{🌐 Global.🔤 Font.Size.20}"
+        },
+        "Color": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Primary}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.PrimaryHover}"
+            },
+            "Active": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
+            }
+          }
+        }
+      },
+      "Heading": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Heading.Level.3}"
+      },
+      "Body": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Body.Font}"
+      },
+      "Radius": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🔵 Radius.LG}"
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.SM}"
       }
     },
     "Heading": {
@@ -3097,7 +3246,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         }
       },
@@ -4171,16 +4320,6 @@
       }
     },
     "Card": {
-      "Radius": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.LG}"
-        },
-        "Square": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.Base}"
-        }
-      },
       "Shadow": {
         "Flat": {
           "$type": "shadow",
@@ -4196,344 +4335,268 @@
         }
       },
       "Color": {
-        "Base": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.White}"
-          }
-        },
-        "White": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.White}"
-          }
-        },
         "Primary": {
           "Text": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
+            "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
-          }
-        },
-        "Info": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
           },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Info}"
-          }
-        },
-        "Success": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Success}"
-          }
-        },
-        "Warning": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Warning}"
-          }
-        },
-        "Danger": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Danger}"
-          }
-        },
-        "GreyLight": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.GreyDark}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Primary}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
         "Grey": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Outline": {
             "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.GreyDark}"
+            "$value": "{🔗 Alias.🎨 Surface.OnGrey}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Grey}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         },
-        "RedLighter": {
+        "GreenDark": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnGreen}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
+            "$value": "{🔗 Alias.🎨 Surface.Green}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Green}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "RedLight": {
+        "Green": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.RedLight}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          }
-        },
-        "Red": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Red}"
-          }
-        },
-        "PurpleLighter": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        },
-        "PurpleLight": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.PurpleLight}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        },
-        "Purple": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        },
-        "GreenLighter": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$value": "{🔗 Alias.🎨 Surface.OnGreenLighter}"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreenLighter}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.GreenLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "GreenLight": {
+        "YellowDark": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnYellow}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreenLight}"
+            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Yellow}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "Green": {
+        "Yellow": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
-          },
-          "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
-          },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Green}"
-          }
-        },
-        "YellowLighter": {
-          "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$value": "{🔗 Alias.🎨 Surface.OnYellowLighter}"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.YellowLighter}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.YellowLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "YellowLight": {
+        "RedDark": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnRed}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.YellowLight}"
+            "$value": "{🔗 Alias.🎨 Surface.Red}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Red}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
         },
-        "Yellow": {
+        "Red": {
           "Text": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnRedLighter}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+            "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
           },
-          "Outline": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.RedLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
           }
-        }
-      },
-      "Outline": {
-        "Width": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.▭ Border.Width.Base}"
+        },
+        "PurpleDark": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPurple}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Purple}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.Purple}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
+          }
+        },
+        "Purple": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPurpleLighter}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.PurpleLighter}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
+          }
+        },
+        "Dashed": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": "{🔗 Alias.▭ Border.Composite.GreyDashed}"
+          }
+        },
+        "Base": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
+          },
+          "Border": {
+            "$type": "border",
+            "$value": {
+              "color": "{🔗 Alias.🎨 Surface.White}",
+              "width": "{🔗 Alias.▭ Border.Width.Base}",
+              "style": "{🔗 Alias.▭ Border.Style.Solid}"
+            }
+          }
         }
       },
       "Space": {
         "SM": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.16}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.16}"
+            }
           }
         },
         "Base": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.24}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.24}"
+            }
           }
         },
         "MD": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.24}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.32}"
+            }
           }
         },
         "LG": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.XL.Mobile}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ SpaceOld.2XL.Mobile}"
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+              "tablet": "{🌐 Global.📏 Dimension.Space.32}",
+              "desktop": "{🌐 Global.📏 Dimension.Space.48}"
+            }
           }
         }
+      },
+      "Radius": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.LG}"
       }
     },
     "Close": {
@@ -4835,6 +4898,10 @@
         "FontWeight": {
           "$type": "fontWeight",
           "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
+        },
+        "FontFamily": {
+          "$type": "fontFamily",
+          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
         }
       },
       "Detail": {
@@ -4845,6 +4912,10 @@
         "FontWeight": {
           "$type": "fontWeight",
           "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
+        },
+        "FontFamily": {
+          "$type": "fontFamily",
+          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
         }
       }
     },
@@ -5845,28 +5916,36 @@
       }
     },
     "Notification": {
-      "Radius": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.🔵 Radius.LG}"
-      },
       "Base": {
         "Color": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
           },
-          "Border": {
+          "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "Info": {
@@ -5875,18 +5954,30 @@
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')"
-          },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
+            "$value": "{🌐 Global.🌈 Color.Info.1}"
           },
-          "Border": {
+          "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
+            "$value": "{🌐 Global.🌈 Color.Info.5}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "Success": {
@@ -5895,18 +5986,30 @@
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')"
-          },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
+            "$value": "{🔗 Alias.🎨 Surface.SuccessLighter}"
           },
-          "Border": {
+          "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
+            "$value": "{🌐 Global.🌈 Color.Success.5}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "Warning": {
@@ -5915,18 +6018,30 @@
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
-          },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
+            "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
           },
-          "Border": {
+          "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
+            "$value": "{🌐 Global.🌈 Color.Warning.6B}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "Danger": {
@@ -5935,119 +6050,195 @@
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
-          },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
+            "$value": "{🔗 Alias.🎨 Surface.DangerLighter}"
           },
-          "Border": {
+          "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
+            "$value": "{🌐 Global.🌈 Color.Danger.5}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "OutlineBase": {
         "Color": {
-          "Border": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.2}"
-          },
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.White}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Primary.2}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "OutlinePurple": {
         "Color": {
-          "Border": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Purple}"
-          },
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.Purple}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "OutlineGreen": {
         "Color": {
-          "Border": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Green}"
-          },
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreenLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M15.637 3.247c0.426 0.379 0.486 1.059 0.134 1.518L7.73 15.251l-0.002 0.003c-0.183 0.237-0.413 0.426-0.672 0.555-0.26 0.13-0.543 0.195-0.829 0.191-0.291-0.004-0.577-0.08-0.837-0.219-0.259-0.14-0.485-0.341-0.662-0.588l-2.517-3.488c-0.339-0.47-0.261-1.147 0.175-1.512 0.436-0.365 1.064-0.28 1.403 0.19l2.463 3.414 7.976-10.403c0.352-0.459 0.982-0.524 1.408-0.144z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.Green}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "OutlineYellow": {
         "Color": {
-          "Border": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Yellow}"
-          },
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
           },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.YellowLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.Yellow}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
       "OutlineRed": {
         "Color": {
-          "Border": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Red}"
-          },
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
-          "Icon": {
-            "$type": "string",
-            "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Icon": {
+          "$type": "string",
+          "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M9.333 2c0.805 0 1.458 0.514 1.458 1.148v5.508c0 0.634-0.653 1.148-1.458 1.148s-1.458-0.514-1.458-1.148V3.148C7.875 2.514 8.528 2 9.333 2zM9.333 16c1.289 0 2.334-0.822 2.334-1.836s-1.045-1.836-2.334-1.836S7 13.15 7 14.164 8.044 16 9.333 16z\" fill=\"black\"/></svg>')"
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.Red}"
+        },
+        "Heading": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Heading.Level.4}"
+        },
+        "Body": {
+          "$type": "typography",
+          "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
+      },
+      "Radius": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.MD}"
       }
     },
     "Label": {
@@ -6176,14 +6367,138 @@
         }
       },
       "Item": {
-        "Disabled": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
+        "Size": {
+          "Base": {
+            "Space": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.XS}"
+            },
+            "MinHeight": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
+            }
+          },
+          "LG": {
+            "Space": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.XS}"
+            },
+            "MinHeight": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.72}"
+            }
+          }
         },
-        "Border": {
+        "Gap": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Base}"
+        },
+        "Radius": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.🔵 Radius.LG}"
+        },
+        "ContentGap": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.1}"
+        },
+        "Color": {
+          "Text": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            },
+            "Disabled": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Grey}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🔗 Alias.▭ Border.Color.PrimaryHover}"
+            },
+            "Active": {
+              "$type": "color",
+              "$value": "{🔗 Alias.▭ Border.Color.PrimaryActive}"
+            }
+          },
+          "Border": {
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.PrimaryHover}"
+            },
+            "Active": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.PrimaryActive}"
+            },
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+            }
+          }
+        },
+        "Inverted": {
           "Color": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
+            "Text": {
+              "Base": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
+              },
+              "Disabled": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🔤 Text.Color.InvertedDisabled}"
+              },
+              "Hover": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.InvertedPrimary.Text.Hover}"
+              },
+              "Active": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.InvertedPrimary.Text.Active}"
+              }
+            },
+            "Border": {
+              "Base": {
+                "$type": "border",
+                "$value": "{🔗 Alias.▭ Border.Composite.InvertedPrimary}"
+              },
+              "Hover": {
+                "$type": "border",
+                "$value": "{🔗 Alias.▭ Border.Composite.InvertedPrimaryHover}"
+              },
+              "Active": {
+                "$type": "border",
+                "$value": "{🔗 Alias.▭ Border.Composite.InvertedPrimaryActive}"
+              }
+            }
+          }
+        },
+        "Accordion": {
+          "Py": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Base}"
+          }
+        },
+        "Action": {
+          "IconSize": {
+            "$type": "dimension",
+            "$value": "{🧩 Component.Icon.Size.SM}"
+          }
+        },
+        "Title": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+          }
+        },
+        "Text": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
         }
       }
@@ -6192,12 +6507,6 @@
       "Width": {
         "$type": "dimension",
         "$value": "{🔗 Alias.🗃️ Container.Width.Modal}"
-      },
-      "Radius": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.LG}"
-        }
       },
       "Backdrop": {
         "Opacity": {
@@ -6209,39 +6518,28 @@
           "$value": "{🧩 Component.Backdrop.Filter}"
         }
       },
-      "Heading": {
-        "Family": {
-          "$type": "fontFamily",
-          "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-        },
-        "Weight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-        },
-        "LineHeight": {
-          "$type": "number",
-          "$value": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        },
-        "Size": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.2XL.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.2XL.Tablet}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.2XL.Desktop}"
-          }
-        }
+      "Radius": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.LG}"
       },
       "Color": {
-        "Base": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.White}"
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.White}"
+        }
+      },
+      "Heading": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Heading.Level.3}"
+      },
+      "Space": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Size.16}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Size.16}",
+            "tablet": "{🌐 Global.📏 Dimension.Size.32}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.40}"
           }
         }
       }
@@ -6722,173 +7020,119 @@
       },
       "Primary": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
-          },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Primary.5}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Primary.2}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-            }
-          },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          },
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Success": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Success.5}"
           },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Success.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Success.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
-            }
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.SuccessLighter}"
           }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Info": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Info.5}"
           },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Info.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Info.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
-            }
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
-            }
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Info.1}"
           }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Warning": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Warning.5}"
           },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Warning.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Warning.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
-            }
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
           }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Danger": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Danger.5}"
           },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Danger.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Danger.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
-            }
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.DangerLighter}"
           }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.2}"
+      },
+      "Padding": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.Base}"
+      },
+      "Heading": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Heading.Level.4}"
+      },
+      "Body": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Text.Typo.Paragraph}"
       }
     },
     "Spinner": {
@@ -6960,179 +7204,175 @@
       }
     },
     "Toast": {
-      "Radius": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.🔵 Radius.Base}"
-      },
       "Primary": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
-          },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Primary.5}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Primary.2}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-            }
-          },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          },
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.2}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+          }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Success": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
-          },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Success.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Success.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
-            }
-          },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.SuccessLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Success.5}"
+          },
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Success.3}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Success.6}"
+          }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Info": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
-          },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Info.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Info.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
-            }
-          },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
-            }
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Info.1}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Info.5}"
+          },
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Info.3}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Info.6}"
+          }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Warning": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
-          },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Warning.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Warning.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
-            }
-          },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Warning.6B}"
+          },
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Warning.3}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Warning.6}"
+          }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Danger": {
         "Color": {
-          "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
-          },
-          "ProgressBar": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Danger.6}"
-            }
-          },
-          "ProgressBackground": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Danger.3}"
-            }
-          },
-          "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
-            }
-          },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.DangerLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Danger.5}"
+          },
+          "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Danger.3}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Danger.6}"
+          }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
+      },
+      "Radius": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.MD}"
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.2}"
+      },
+      "Padding": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.Base}"
+      },
+      "Heading": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Heading.Level.5}"
+      },
+      "Body": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Text.Typo.Small}"
       }
     },
     "Tag": {
@@ -7398,19 +7638,7 @@
           },
           "Background": {
             "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-          }
-        }
-      },
-      "Disabled": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Disabled}"
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         }
       },
@@ -7473,6 +7701,18 @@
       "FontFamily": {
         "$type": "fontFamily",
         "$value": "{🔗 Alias.🔤 Text.Family.Text}"
+      },
+      "Disabled": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.White}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Grey.5}"
+          }
+        }
       }
     },
     "Segment": {
@@ -7880,35 +8120,49 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.🔵 Radius.Base}"
         },
-        "InactiveColor": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.White}"
+        "Color": {
+          "Inactive": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.White}"
+          },
+          "Active": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
+          }
         },
-        "Background": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-        },
-        "ActiveColor": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.Primary}"
-        }
-      },
-      "Disabled": {
-        "TextColor": {
-          "$type": "color",
-          "$value": "{🧩 Component.Button.Color.Disabled.Base.Text}"
-        }
-      },
-      "Text": {
-        "Weight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
+        "Gap": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Space.2}"
         }
       },
       "Elevation": {
         "Sticky": {
           "$type": "dimension",
           "$value": "{🔗 Alias.🗂️ ZIndex.Sticky}"
+        }
+      },
+      "Size": {
+        "SM": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.2XS}"
+          }
+        },
+        "Base": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.XS}"
+          }
+        }
+      },
+      "Disabled": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
         }
       }
     },
@@ -8004,38 +8258,10 @@
     },
     "Accordion": {
       "Summary": {
-        "Font": {
-          "Weight": {
-            "$type": "fontWeight",
-            "$value": "{🔗 Alias.🔤 Text.Weight.Regular}"
-          },
-          "Family": {
-            "$type": "fontFamily",
-            "$value": "{🔗 Alias.🔤 Text.Family.Text}"
-          },
-          "LineHeight": {
-            "$type": "number",
-            "$value": "{🔗 Alias.🔤 Text.LineHeight.Text}"
-          },
-          "Size": {
-            "Mobile": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Mobile}"
-            },
-            "Tablet": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Tablet}"
-            },
-            "Desktop": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Desktop}"
-            }
-          }
-        },
         "Color": {
           "Base": {
-            "$type": "string",
-            "$value": "inherit"
+            "$type": "color",
+            "$value": "{🔗 Alias.🎬 Action.Primary.Text.Base}"
           },
           "Hover": {
             "$type": "color",
@@ -8045,13 +8271,20 @@
             "$type": "color",
             "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
           }
+        },
+        "Typo": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+            "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+          }
         }
       },
       "Radius": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.Base}"
-        }
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.Base}"
       }
     },
     "Tabs": {
@@ -8375,10 +8608,6 @@
       }
     },
     "Tooltip": {
-      "Color": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🔤 Text.Color.White}"
-      },
       "Radius": {
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.Base}"
@@ -8391,31 +8620,27 @@
         "$type": "number",
         "$value": "{🔗 Alias.🗂️ ZIndex.Tooltip}"
       },
-      "Font": {
-        "Family": {
-          "$type": "fontFamily",
-          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
+      "Color": {
+        "Text": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.White}"
         },
-        "Size": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Desktop}"
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
         }
       },
-      "LineHeight": {
-        "$type": "number",
-        "$value": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+      "Text": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Text.Typo.Small}"
       },
-      "Px": {
+      "SpaceX": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ SpaceOld.SM.Mobile}"
+        "$value": "{🔗 Alias.↔️ Space.SM}"
       },
-      "Py": {
+      "SpaceY": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ SpaceOld.XS.Mobile}"
-      },
-      "Bg": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
+        "$value": "{🔗 Alias.↔️ Space.XS}"
       }
     },
     "Table": {
@@ -8486,22 +8711,24 @@
         "$value": "{🔗 Alias.🗂️ ZIndex.Popup}"
       },
       "Backdrop": {
-        "Opacity": {
-          "$type": "number",
-          "$value": "{🔗 Alias.🌫️ Opacity.Backdrop}"
-        },
         "Background": {
           "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
+          "$value": "{🧩 Component.Backdrop.Color}"
+        },
+        "Opacity": {
+          "$type": "number",
+          "$value": "{🧩 Component.Backdrop.Opacity}"
         }
       },
-      "Padding": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ SpaceOld.MD.Mobile}"
+      "Color": {
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.White}"
+        }
       },
-      "Background": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.White}"
+      "Space": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.MD}"
       }
     },
     "Drawer": {
@@ -8953,21 +9180,28 @@
             "unit": "rem"
           }
         },
-        "1": {
+        "4": {
           "$type": "dimension",
           "$value": {
             "value": 0.25,
             "unit": "rem"
           }
         },
-        "2": {
+        "6": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0.375,
+            "unit": "rem"
+          }
+        },
+        "12": {
           "$type": "dimension",
           "$value": {
             "value": 0.75,
             "unit": "rem"
           }
         },
-        "3": {
+        "9999": {
           "$type": "dimension",
           "$value": {
             "value": 9999,
@@ -9239,6 +9473,13 @@
           "$type": "dimension",
           "$value": {
             "value": 64,
+            "unit": "px"
+          }
+        },
+        "72": {
+          "$type": "dimension",
+          "$value": {
+            "value": 72,
             "unit": "px"
           }
         }

@@ -49,7 +49,7 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({})
-Basic.storyName = 'Basic'
+Basic.storyName = '🧩 Basic'
 
 export const Striped = Story({
   ...withRender(
@@ -88,7 +88,7 @@ export const Striped = Story({
 `,
   ),
 })
-Striped.storyName = 'Striped'
+Striped.storyName = '🧩 Striped'
 
 export const Narrow = Story({
   ...withRender(
@@ -118,4 +118,4 @@ export const Narrow = Story({
 `,
   ),
 })
-Narrow.storyName = 'Narrow'
+Narrow.storyName = '🧩 Narrow'

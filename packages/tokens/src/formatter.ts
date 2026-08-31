@@ -68,6 +68,21 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
     return wrapReference(refMatch[1], referenceSyntax)
   }
 
+  // A whole-token reference (e.g. Modal.Heading: "{Component.Heading.Level.3}") resolves, by the
+  // time this runs, to a plain object copy of the target's own {fontFamily, fontSize, fontWeight,
+  // lineHeight} — Style Dictionary's reference resolution substitutes the target's raw $value
+  // before any transform sees it, so nothing here can tell "this came from aliasing a whole sibling
+  // typography token" apart from "this token was authored with 4 literal/referenced sub-fields"
+  // except by checking token.original.$value's own shape: a string (not an object) means the whole
+  // token was aliased. In that case each of the 4 longhand declarations should reference that
+  // sibling's own 4 longhands directly (e.g. `var(--ds-heading-level-3-font-family)`), not repeat
+  // its already-resolved literal/reference under this token's name — otherwise the alias silently
+  // degrades into a disconnected copy that drifts if the referenced token ever changes.
+  const wrapReferenceField = (path: string, suffix: string, syntax: 'css' | 'sass'): string => {
+    const name = `${tokenNameToCssVar(path.split('.'))}-${suffix}`
+    return syntax === 'css' ? `var(--${name})` : `$${name}`
+  }
+
   const expanded: TransformedToken[] = []
   for (const token of tokens) {
     if (token.$type !== 'typography') {
@@ -79,10 +94,15 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
     // is) — `token.value` is `undefined` here even though `ds/typography`'s transform runs fine.
     const css = (token.$value ?? token.value) as TypographyCssValue | null | undefined
     if (!css) continue
-    const originalValue = token.original?.$value as Partial<Record<keyof TypographyCssValue, unknown>> | undefined
+    const rawValue = token.original?.$value
+    const wholeTokenRefMatch = typeof rawValue === 'string' ? /^\{(.+)\}$/.exec(rawValue) : null
+    const originalValue = rawValue as Partial<Record<keyof TypographyCssValue, unknown>> | undefined
 
     for (const [field, suffix] of Object.entries(TYPOGRAPHY_CSS_SUFFIXES) as [keyof TypographyCssValue, string][]) {
-      const fieldValue = resolveField(css, field, originalValue)
+      const fieldValue =
+        wholeTokenRefMatch && referenceSyntax
+          ? wrapReferenceField(wholeTokenRefMatch[1], suffix, referenceSyntax)
+          : resolveField(css, field, originalValue)
       expanded.push({
         ...token,
         name: `${token.name}-${suffix}`,

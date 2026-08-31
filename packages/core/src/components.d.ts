@@ -28,7 +28,7 @@ import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } fro
 import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
+import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
@@ -75,7 +75,7 @@ export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } fro
 export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
+export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
@@ -137,9 +137,8 @@ export namespace Components {
         "buttonLabelOpen": string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
-        "buttonSize": AccordionButtonSize;
+        "buttonSize"?: AccordionButtonSize;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -153,14 +152,12 @@ export namespace Components {
         "group": string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
-        "marker": AccordionMarker;
+        "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
-          * @default ''
          */
-        "markerPosition": AccordionMarkerPosition;
+        "markerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -178,9 +175,8 @@ export namespace Components {
         "summaryTitle": boolean;
         /**
           * The visual heading level of the summary.
-          * @default ''
          */
-        "summaryVisualLevel": AccordionSummaryLevel;
+        "summaryVisualLevel"?: AccordionSummaryLevel;
     }
     /**
      * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
@@ -469,9 +465,8 @@ export namespace Components {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
-          * @default ''
          */
-        "align": CardAlignment;
+        "align"?: CardAlignment;
         /**
           * If `true` the card has a hover effect.
           * @default false
@@ -479,9 +474,8 @@ export namespace Components {
         "clickable": boolean;
         /**
           * Defines the color of the card.
-          * @default ''
          */
-        "color": CardColor;
+        "color"?: CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -508,11 +502,6 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the cards gets a light border and loses its shadow.
-          * @default false
-         */
-        "outlined": boolean;
-        /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
          */
@@ -521,11 +510,6 @@ export namespace Components {
           * Defines the space of the card content.
          */
         "space"?: CardSpace;
-        /**
-          * If `true` the card loses its border radius.
-          * @default false
-         */
-        "square": boolean;
         /**
           * If `true` the card gets a tile look, it has a brand icon on the left
           * @default false
@@ -538,9 +522,8 @@ export namespace Components {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
-        "align": CardActionsAlignment;
+        "align"?: CardActionsAlignment;
     }
     /**
      * Card content renders the main content area of a card for grouping body text and media.
@@ -552,6 +535,7 @@ export namespace Components {
      */
     interface DsCardHeader {
         /**
+          * Defines the layout direction of the header content (title, icon, image).
           * @default 'row'
          */
         "direction": CardHeaderDirection;
@@ -640,9 +624,8 @@ export namespace Components {
         "carouselVariant": CarouselVariant;
         /**
           * Background color for product tiles.
-          * @default ''
          */
-        "color": CarouselItemColor;
+        "color"?: CarouselItemColor;
         /**
           * Set by ds-carousel. 1-based position index.
           * @default 0
@@ -1837,14 +1820,12 @@ export namespace Components {
         "accordionGroup": string;
         /**
           * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
-        "accordionMarker": AccordionMarker;
+        "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `variant` is set to `accordion`.
-          * @default ''
          */
-        "accordionMarkerPosition": AccordionMarkerPosition;
+        "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -1852,9 +1833,8 @@ export namespace Components {
         "accordionOpen": boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default ''
          */
-        "actionIcon": ItemActionIcon;
+        "actionIcon"?: ItemActionIcon;
         /**
           * The description text displayed below the label.
           * @default ''
@@ -1876,30 +1856,36 @@ export namespace Components {
          */
         "href": string;
         /**
+          * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+          * @default false
+         */
+        "inverted": boolean;
+        /**
           * The label text displayed as a heading inside the item.
           * @default ''
          */
         "label": string;
         /**
           * The semantic heading level of the label element.
-          * @default ''
          */
-        "labelLevel": ItemLabelLevel;
+        "labelLevel"?: ItemLabelLevel;
         /**
           * The visual size of the label. Defaults to `labelLevel` if not set.
-          * @default ''
          */
-        "labelSize": ItemLabelSize;
+        "labelSize"?: ItemLabelSize;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
           * @default ''
          */
         "rel": string;
         /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default ''
+          * The size of the item. If not set, the default (base) size is used.
          */
-        "target": ButtonTarget;
+        "size"?: ItemSize;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: ButtonTarget;
         /**
           * The visual and functional variant of the item.
           * @default 'default'
@@ -1953,13 +1939,24 @@ export namespace Components {
     }
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface DsList {
+        /**
+          * If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant `ds-item` elements.
+          * @default false
+         */
+        "inverted": boolean;
         /**
           * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered": boolean;
+        /**
+          * The size of the list items. If not set, the default (base) size is used. Cascades to descendant `ds-item` elements.
+         */
+        "size"?: ItemSize;
     }
     /**
      * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
@@ -2104,7 +2101,7 @@ export namespace Components {
          */
         "noIcon": boolean;
         /**
-          * Defines the size of the notification, small, medium or large.
+          * Defines the size of the notification, sm or md.
          */
         "size"?: NotificationSize;
     }
@@ -2227,9 +2224,8 @@ export namespace Components {
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
-          * @default ''
          */
-        "align": PaginationAlignment;
+        "align"?: PaginationAlignment;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Disables component
@@ -2256,9 +2252,8 @@ export namespace Components {
         "previous": () => Promise<void>;
         /**
           * Size of the buttons
-          * @default ''
          */
-        "size": PaginationSize;
+        "size"?: PaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
           * @default false
@@ -2291,9 +2286,8 @@ export namespace Components {
         "value": number;
         /**
           * Defines the layout of the pagination
-          * @default ''
          */
-        "variant": PaginationVariant;
+        "variant"?: PaginationVariant;
     }
     /**
      * Popup displays anchored overlay content positioned relative to a trigger element.
@@ -4366,6 +4360,8 @@ declare global {
     };
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface HTMLDsListElement extends Components.DsList, HTMLStencilElement {
     }
@@ -5091,7 +5087,6 @@ declare namespace LocalJSX {
         "buttonLabelOpen"?: string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
         "buttonSize"?: AccordionButtonSize;
         /**
@@ -5106,12 +5101,10 @@ declare namespace LocalJSX {
         "group"?: string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
         "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
-          * @default ''
          */
         "markerPosition"?: AccordionMarkerPosition;
         /**
@@ -5143,7 +5136,6 @@ declare namespace LocalJSX {
         "summaryTitle"?: boolean;
         /**
           * The visual heading level of the summary.
-          * @default ''
          */
         "summaryVisualLevel"?: AccordionSummaryLevel;
     }
@@ -5446,7 +5438,6 @@ declare namespace LocalJSX {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
-          * @default ''
          */
         "align"?: CardAlignment;
         /**
@@ -5456,7 +5447,6 @@ declare namespace LocalJSX {
         "clickable"?: boolean;
         /**
           * Defines the color of the card.
-          * @default ''
          */
         "color"?: CardColor;
         /**
@@ -5485,11 +5475,6 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the cards gets a light border and loses its shadow.
-          * @default false
-         */
-        "outlined"?: boolean;
-        /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
          */
@@ -5498,11 +5483,6 @@ declare namespace LocalJSX {
           * Defines the space of the card content.
          */
         "space"?: CardSpace;
-        /**
-          * If `true` the card loses its border radius.
-          * @default false
-         */
-        "square"?: boolean;
         /**
           * If `true` the card gets a tile look, it has a brand icon on the left
           * @default false
@@ -5515,7 +5495,6 @@ declare namespace LocalJSX {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "align"?: CardActionsAlignment;
     }
@@ -5529,6 +5508,7 @@ declare namespace LocalJSX {
      */
     interface DsCardHeader {
         /**
+          * Defines the layout direction of the header content (title, icon, image).
           * @default 'row'
          */
         "direction"?: CardHeaderDirection;
@@ -5620,7 +5600,6 @@ declare namespace LocalJSX {
         "carouselVariant"?: CarouselVariant;
         /**
           * Background color for product tiles.
-          * @default ''
          */
         "color"?: CarouselItemColor;
         /**
@@ -6925,12 +6904,10 @@ declare namespace LocalJSX {
         "accordionGroup"?: string;
         /**
           * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
         "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `variant` is set to `accordion`.
-          * @default ''
          */
         "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
@@ -6940,7 +6917,6 @@ declare namespace LocalJSX {
         "accordionOpen"?: boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default ''
          */
         "actionIcon"?: ItemActionIcon;
         /**
@@ -6964,18 +6940,21 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+          * @default false
+         */
+        "inverted"?: boolean;
+        /**
           * The label text displayed as a heading inside the item.
           * @default ''
          */
         "label"?: string;
         /**
           * The semantic heading level of the label element.
-          * @default ''
          */
         "labelLevel"?: ItemLabelLevel;
         /**
           * The visual size of the label. Defaults to `labelLevel` if not set.
-          * @default ''
          */
         "labelSize"?: ItemLabelSize;
         /**
@@ -7000,8 +6979,11 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
+          * The size of the item. If not set, the default (base) size is used.
+         */
+        "size"?: ItemSize;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default ''
          */
         "target"?: ButtonTarget;
         /**
@@ -7056,13 +7038,24 @@ declare namespace LocalJSX {
     }
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface DsList {
+        /**
+          * If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant `ds-item` elements.
+          * @default false
+         */
+        "inverted"?: boolean;
         /**
           * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered"?: boolean;
+        /**
+          * The size of the list items. If not set, the default (base) size is used. Cascades to descendant `ds-item` elements.
+         */
+        "size"?: ItemSize;
     }
     /**
      * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
@@ -7219,7 +7212,7 @@ declare namespace LocalJSX {
          */
         "onDsDidLoad"?: (event: DsNotificationCustomEvent<void>) => void;
         /**
-          * Defines the size of the notification, small, medium or large.
+          * Defines the size of the notification, sm or md.
          */
         "size"?: NotificationSize;
     }
@@ -7357,7 +7350,6 @@ declare namespace LocalJSX {
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
-          * @default ''
          */
         "align"?: PaginationAlignment;
         /**
@@ -7381,7 +7373,6 @@ declare namespace LocalJSX {
         "pageRange"?: number;
         /**
           * Size of the buttons
-          * @default ''
          */
         "size"?: PaginationSize;
         /**
@@ -7416,7 +7407,6 @@ declare namespace LocalJSX {
         "value"?: number;
         /**
           * Defines the layout of the pagination
-          * @default ''
          */
         "variant"?: PaginationVariant;
     }
@@ -8976,8 +8966,6 @@ declare namespace LocalJSX {
         "tile": boolean;
         "dense": boolean;
         "imageTeaser": CardImageTeaser;
-        "square": boolean;
-        "outlined": boolean;
         "inverted": boolean;
         "clickable": boolean;
         "selected": boolean;
@@ -9257,12 +9245,14 @@ declare namespace LocalJSX {
         "actionIcon": ItemActionIcon;
         "description": string;
         "disabled": boolean;
+        "inverted": boolean;
         "download": string;
         "href": string;
         "label": string;
         "labelLevel": ItemLabelLevel;
         "labelSize": ItemLabelSize;
         "rel": string;
+        "size": ItemSize;
         "target": ButtonTarget;
         "variant": ItemVariant;
     }
@@ -9277,7 +9267,9 @@ declare namespace LocalJSX {
         "valid": boolean;
     }
     interface DsListAttributes {
+        "inverted": boolean;
         "ordered": boolean;
+        "size": ItemSize;
     }
     interface DsLogoAttributes {
         "animated": boolean;
@@ -9870,6 +9862,8 @@ declare module "@stencil/core" {
             "ds-label": LocalJSX.IntrinsicElements["ds-label"] & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
             /**
              * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+             * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+             * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
              */
             "ds-list": LocalJSX.IntrinsicElements["ds-list"] & JSXBase.HTMLAttributes<HTMLDsListElement>;
             /**

@@ -33,7 +33,7 @@
   @include vars.local(input-stepper-gap, 0.5rem);
   @include vars.local(input-stepper-value-min-width, 3rem);
   @include vars.local(input-stepper-value-font-weight, var(--ds-alias-text-weight-bold));
-  @include vars.local(input-stepper-value-font-family, var(--ds-alias-text-family-body));
+  @include vars.local(input-stepper-value-font-family, var(--ds-alias-text-family-text));
   @include vars.local(input-stepper-value-color, var(--ds-form-label-color-base));
 }
 

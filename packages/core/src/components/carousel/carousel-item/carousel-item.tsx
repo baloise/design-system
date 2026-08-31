@@ -26,7 +26,7 @@ export class CarouselItem implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -34,7 +34,7 @@ export class CarouselItem implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CAROUSEL_ITEM_COLORS)
-  readonly color: CarouselItemColor = ''
+  readonly color?: CarouselItemColor
 
   /**
    * Set by ds-carousel. The carousel variant this item is part of.
@@ -86,14 +86,10 @@ export class CarouselItem implements DsComponentInterface {
    * Emitted when the user clicks this item (product variant).
    */
   @Event() dsCarouselItemSelect!: EventEmitter<{ name: string }>
-  /**
-   * PROPERTY VALIDATION
-   * ------------------------------------------------------
-   */
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleClick = () => {
@@ -104,7 +100,7 @@ export class CarouselItem implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

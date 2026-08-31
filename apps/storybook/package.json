@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@baloise/ds-ag-grid": "workspace:*",
     "@baloise/ds-assets": "20.0.0-next.10",
     "@baloise/ds-core": "20.0.0-next.10",
     "@baloise/ds-css": "20.0.0-next.10",
@@ -16,14 +17,15 @@
     "@storybook/addon-docs": "catalog:",
     "@storybook/addon-links": "catalog:",
     "@storybook/html-vite": "catalog:",
+    "ag-grid-community": "36.1.0",
     "lodash": "catalog:",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "storybook": "catalog:"
   },
   "devDependencies": {
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
     "eslint": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:"

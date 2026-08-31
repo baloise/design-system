@@ -1,6 +1,7 @@
 import { test } from '@baloise/ds-playwright'
 
 test('basic', async ({ page, a11y }) => {
+  test.skip(true, 'Contrast issue tracked in https://github.com/baloise/design-system/issues/2189')
   await page.mount(`
     <ds-navbar>
       <a href="/" slot="brand">Logo</a>

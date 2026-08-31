@@ -51,69 +51,69 @@ These improvements help our components work seamlessly across all supported fram
 | Component        | Type     | Shadow | Docs | A11y | Visual | Component | Tokens | Figma |
 | ---------------- | -------- | ------ | ---- | ---- | ------ | --------- | ------ | ----- |
 | app              | WC       | ✅     | ⬜   | ⛔   | ⛔     | ✅        | ⛔     | ⛔    |
-| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| icon             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| brand-icon       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| heading          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| text             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| label            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| link             | CSS      | ⛔     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| container        | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
-| form             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
-| grid             | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ❓     | ⬜    |
-| picture          | CSS      | ❓     | ❓   | ✅   | ✅     | ❓        | ❓     | ⬜    |
-| stack & content  | WC & CSS | ⛔     | ✅   | ✅   | ✅     | ✅        | ⛔     | ⬜    |
-| divider          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| spinner          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| progress-bar     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| logo             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| shape            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ❓     | ⬜    |
-| close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| body             | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| icon             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| brand-icon       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| heading          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| text             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| label            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| link             | CSS      | ⛔     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| container        | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ✅     | ⬜    |
+| form             | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ❓     | ⬜    |
+| grid             | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ❓     | ⬜    |
+| picture          | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ❓     | ⬜    |
+| stack & content  | WC & CSS | ⛔     | ⬜   | ✅   | ✅     | ✅        | ⛔     | ⬜    |
+| divider          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| spinner          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| progress-bar     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| logo             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| shape            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ❓     | ⬜    |
+| close            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| button           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- DATA --       | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
-| card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| accordion        | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| carousel         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| unordered-list   | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| ordered-list     | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| description-list | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| badge            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| tag              | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| table            | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ✅     | ⬜    |
+| card             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| list             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- ALERTS --     | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| notification     | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| snackbar         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| toast            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| notification     | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| toast            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- OVERLAY --    | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| modal            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| tooltip          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| popover          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| hint             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| modal            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| popup            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| hint             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| tooltip          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- NAVIGATION -- | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| navbar           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| navbar           | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| tabs             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| steps            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| footer           | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
-| tabs             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| steps            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| pagination       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| footer           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| sheet            | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| sheet            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| input            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| textarea         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| radio            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| toggle           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| checkbox         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| segment          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| number-input     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| file-upload      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| select           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| time-input       | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| date             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| input-slider     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| input-stepper    | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
-| data             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| ag-grid          | Lib      | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
+| input            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| textarea         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| radio            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| toggle           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| checkbox         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| segment          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| select           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| date             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| time-input       | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| number-input     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| input-slider     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| input-stepper    | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| file-upload      | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| ag-grid          | Lib      | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 
 ## Tokens & Figma
 

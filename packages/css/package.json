@@ -44,6 +44,6 @@
     "postcss": "8.5.19",
     "sass": "catalog:",
     "tsx": "catalog:",
-    "unocss": "66.7.5"
+    "unocss": "66.8.1"
   }
 }

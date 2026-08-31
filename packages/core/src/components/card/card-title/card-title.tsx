@@ -26,6 +26,11 @@ export class CardTitle implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * If `true` the card text color becomes white.
    */
   @Prop()
@@ -48,6 +53,11 @@ export class CardTitle implements DsComponentInterface {
   @Prop()
   @OneOf(HEADING_VISUAL_LEVELS)
   readonly visualLevel?: HeadingVisualLevel
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     return (

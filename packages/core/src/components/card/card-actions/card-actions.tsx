@@ -25,11 +25,21 @@ export class CardActions implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * The value of the button, which is submitted with the form data.
    */
   @Prop()
   @OneOf(CARD_ACTIONS_ALIGNMENTS)
-  readonly align: CardActionsAlignment = ''
+  readonly align?: CardActionsAlignment
+
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     return (

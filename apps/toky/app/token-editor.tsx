@@ -366,8 +366,8 @@ type RenderReferenceSearch = (
   ariaLabel: string,
   closeOnSelect?: boolean,
   typeFilter?: string[],
-  // Restricts candidates to these layers — BorderColorField wants Global color primitives
-  // directly, not an Alias-layer indirection like Border.Color.*.
+  // Restricts candidates to these layers — BorderColorField wants Global/Alias color
+  // primitives, not a Component-layer indirection.
   layerFilter?: TokenLayer[],
 ) => ReactNode
 
@@ -847,7 +847,7 @@ function BorderColorField({
                 'Color reference',
                 false,
                 ['color'],
-                ['Global'],
+                ['Global', 'Alias'],
               )
             )}
           </PopoverContent>
