@@ -9,7 +9,7 @@
   "dependencies": {
     "@stencil/core": "catalog:",
     "fs-extra": "catalog:",
-    "replace-in-file": "8.4.0",
+    "replace-in-file": "9.0.0",
     "tslib": "catalog:"
   },
   "devDependencies": {
