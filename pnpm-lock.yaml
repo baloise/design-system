@@ -241,7 +241,7 @@ importers:
         specifier: 'catalog:'
         version: 8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)
       vitest:
-        specifier: 4.1.11
+        specifier: 'catalog:'
         version: 4.1.11(@types/node@24.13.3)(@vitest/ui@4.1.11)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))
     optionalDependencies:
       '@oxc-parser/binding-linux-arm64-gnu':
