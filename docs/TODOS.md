@@ -87,10 +87,10 @@ These improvements help our components work seamlessly across all supported fram
 | snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | toast            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- OVERLAY --    | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| modal            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| tooltip          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| popover          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| hint             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| modal            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| popup            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| hint             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| tooltip          | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- NAVIGATION -- | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | navbar           | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |

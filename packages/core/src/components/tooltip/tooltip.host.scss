@@ -4,31 +4,33 @@
 /**
  * Variables
  * --------------------------------
- * @prop --tooltip-bg: Background color of the tooltip container.
- * @prop --tooltip-color: Text color of the tooltip content.
+ * @prop --tooltip-color-background: Background color of the tooltip container.
+ * @prop --tooltip-color-text: Text color of the tooltip content.
  * @prop --tooltip-max-width: Maximum width of the tooltip container.
  * @prop --tooltip-radius: Border radius of the tooltip container.
  * @prop --tooltip-shadow: Box shadow of the tooltip container.
- * @prop --tooltip-px: Horizontal padding of the tooltip content.
- * @prop --tooltip-py: Vertical padding of the tooltip content.
- * @prop --tooltip-font-family: Font family of the tooltip text.
- * @prop --tooltip-font-size: Font size of the tooltip text.
- * @prop --tooltip-line-height: Line height of the tooltip text.
+ * @prop --tooltip-space-x: Horizontal padding of the tooltip content.
+ * @prop --tooltip-space-y: Vertical padding of the tooltip content.
+ * @prop --tooltip-text-font-family: Font family of the tooltip text.
+ * @prop --tooltip-text-font-weight: Font weight of the tooltip text.
+ * @prop --tooltip-text-font-size: Font size of the tooltip text.
+ * @prop --tooltip-text-line-height: Line height of the tooltip text.
  * @prop --tooltip-z-index: Z-index of the tooltip layer.
  */
 
 :host {
   @include vars.base(tooltip);
-  @include vars.local(tooltip-bg, var(--ds-tooltip-bg));
-  @include vars.local(tooltip-color, var(--ds-tooltip-color));
+  @include vars.local(tooltip-color-background, var(--ds-tooltip-color-background));
+  @include vars.local(tooltip-color-text, var(--ds-tooltip-color-text));
   @include vars.local(tooltip-max-width, auto);
   @include vars.local(tooltip-radius, var(--ds-tooltip-radius));
   @include vars.local(tooltip-shadow, var(--ds-tooltip-shadow));
-  @include vars.local(tooltip-px, var(--ds-tooltip-px));
-  @include vars.local(tooltip-py, var(--ds-tooltip-py));
-  @include vars.local(tooltip-font-family, var(--ds-tooltip-font-family));
-  @include vars.local(tooltip-font-size, var(--ds-tooltip-font-size));
-  @include vars.local(tooltip-line-height, var(--ds-tooltip-line-height));
+  @include vars.local(tooltip-space-x, var(--ds-tooltip-space-x));
+  @include vars.local(tooltip-space-y, var(--ds-tooltip-space-y));
+  @include vars.local(tooltip-text-font-family, var(--ds-tooltip-text-font-family));
+  @include vars.local(tooltip-text-font-weight, var(--ds-tooltip-text-font-weight));
+  @include vars.local(tooltip-text-font-size, var(--ds-tooltip-text-font-size));
+  @include vars.local(tooltip-text-line-height, var(--ds-tooltip-text-line-height));
   @include vars.local(tooltip-z-index, var(--ds-tooltip-z-index));
 }
 
@@ -71,13 +73,14 @@
   box-sizing: border-box;
   width: max-content;
   max-width: var(--_tooltip-max-width);
-  background-color: var(--_tooltip-bg);
+  background-color: var(--_tooltip-color-background);
   border-radius: var(--_tooltip-radius);
   box-shadow: var(--_tooltip-shadow);
-  color: var(--_tooltip-color);
-  font-family: var(--_tooltip-font-family);
-  font-size: var(--_tooltip-font-size);
-  line-height: var(--_tooltip-line-height);
+  color: var(--_tooltip-color-text);
+  font-family: var(--_tooltip-text-font-family);
+  font-weight: var(--_tooltip-text-font-weight);
+  font-size: var(--_tooltip-text-font-size);
+  line-height: var(--_tooltip-text-line-height);
   z-index: var(--_tooltip-z-index);
 }
 
@@ -116,8 +119,8 @@
 
 [part='content'] {
   position: relative;
-  padding-block: var(--_tooltip-py);
-  padding-inline: var(--_tooltip-px);
+  padding-block: var(--_tooltip-space-y);
+  padding-inline: var(--_tooltip-space-x);
   overflow-y: auto;
   max-height: calc(100svh - 8rem);
 }

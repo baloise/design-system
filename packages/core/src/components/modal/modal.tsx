@@ -42,7 +42,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -84,7 +84,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   /**
    * EVENTS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** Emitted before the modal opens. */
@@ -101,7 +101,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback(): void {
@@ -124,7 +124,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** Opens the modal. */
@@ -149,8 +149,34 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private handleCancel = (ev: Event): void => {
+    ev.preventDefault()
+    if (this.closable) {
+      this.open = false
+    }
+  }
+
+  private handleNativeClose = (): void => {
+    // If the browser closed the dialog despite preventDefault (browser quirk),
+    // re-enter the top layer so the backdrop is restored.
+    if (this.open) {
+      this.dialogEl?.showModal()
+    }
+  }
+
+  private handleBackdropClick = (ev: MouseEvent): void => {
+    if (this.closable && ev.target === this.dialogEl) {
+      this.open = false
+    }
+  }
+
+  /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private runOpen(): void {
@@ -185,30 +211,9 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     this.dsDidDismiss.emit()
   }
 
-  private handleCancel = (ev: Event): void => {
-    ev.preventDefault()
-    if (this.closable) {
-      this.open = false
-    }
-  }
-
-  private handleNativeClose = (): void => {
-    // If the browser closed the dialog despite preventDefault (browser quirk),
-    // re-enter the top layer so the backdrop is restored.
-    if (this.open) {
-      this.dialogEl?.showModal()
-    }
-  }
-
-  private handleBackdropClick = (ev: MouseEvent): void => {
-    if (this.closable && ev.target === this.dialogEl) {
-      this.open = false
-    }
-  }
-
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
