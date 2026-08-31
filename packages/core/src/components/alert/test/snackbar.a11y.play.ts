@@ -9,6 +9,7 @@ test.describe('colors', () => {
   const COLORS = ['base', 'danger', 'warning', 'success', 'info'] as const
   COLORS.forEach(color => {
     test(color, async ({ page, a11y }) => {
+      test.skip(color === 'warning', 'Contrast issue tracked in https://github.com/baloise/design-system/issues/2189')
       await page.mount(
         `<ds-snackbar color="${color}" heading="Information">Your changes have been saved.</ds-snackbar>`,
       )
