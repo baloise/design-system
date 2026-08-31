@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@baloise/ds-ag-grid": "workspace:*",
     "@baloise/ds-assets": "20.0.0-next.9",
     "@baloise/ds-core": "20.0.0-next.9",
     "@baloise/ds-css": "20.0.0-next.9",
@@ -16,6 +17,7 @@
     "@storybook/addon-docs": "catalog:",
     "@storybook/addon-links": "catalog:",
     "@storybook/html-vite": "catalog:",
+    "ag-grid-community": "36.1.0",
     "lodash": "catalog:",
     "react": "19.2.8",
     "react-dom": "19.2.8",

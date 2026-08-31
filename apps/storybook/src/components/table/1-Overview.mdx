@@ -7,6 +7,7 @@ import {
   CanvasWithCodePen,
   ComponentPublicMethods,
   Footer,
+  InfoQuote,
 } from '../../../.storybook/blocks'
 import * as TableStories from './table.stories'
 import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
@@ -21,6 +22,17 @@ The **Table** is a CSS-only component for displaying structured tabular data wit
 {/* <ComponentLead component="table" /> */}
 
 <CanvasWithCodePen of={TableStories.Basic} sourceState="shown" />
+
+<InfoQuote>
+  **NEED SORTING, FILTERING, OR LARGE DATASETS?**
+
+  This CSS-only table is built for static or server-rendered data with no JavaScript behaviour. For sortable,
+  filterable grids with pagination or large/dynamic datasets, use the
+  [AG Grid variant](?path=/docs/components-table-variants--ag-grid) — it themes
+  [AG Grid](https://www.ag-grid.com/) with the same Design System tokens and ships ready-made cell renderers for
+  `ds-badge`, `ds-button`, `ds-tag`, and text/icon cells. See [Variants](?path=/docs/components-table-variants-overview--documentation)
+  for the full comparison.
+</InfoQuote>
 
 <ComponentTabs
   tabs={[
