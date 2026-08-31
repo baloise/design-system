@@ -22,6 +22,11 @@ export class HintText implements DsComponentInterface {
 
   @Element() el!: HTMLStencilElement
 
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
+
   render() {
     return (
       <Host style={{ display: 'contents' }}>

@@ -27,6 +27,11 @@ export class ModalHeader implements DsComponentInterface {
     this.el.slot = 'header'
   }
 
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
+
   render() {
     return (
       <Host style={{ display: 'contents' }}>

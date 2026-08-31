@@ -2891,6 +2891,10 @@
       "Filter": {
         "$type": "string",
         "$value": "blur(4px)"
+      },
+      "Color": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Primary.6}"
       }
     },
     "Footer": {
@@ -2979,6 +2983,72 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Mobile}"
         }
+      }
+    },
+    "Hint": {
+      "Color": {
+        "Focus": {
+          "$type": "color",
+          "$value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}"
+        },
+        "Body": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        },
+        "Heading": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        },
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
+        }
+      },
+      "Trigger": {
+        "Radius": {
+          "$type": "number",
+          "$value": "{🔗 Alias.🔵 Radius.Rounded}"
+        },
+        "Space": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.2XS}"
+        },
+        "Size": {
+          "$type": "number",
+          "$value": "{🌐 Global.🔤 Font.Size.20}"
+        },
+        "Color": {
+          "Background": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Primary}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.PrimaryHover}"
+            },
+            "Active": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
+            }
+          }
+        }
+      },
+      "Heading": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Heading.Level.3}"
+      },
+      "Body": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Body.Font}"
+      },
+      "Radius": {
+        "$type": "number",
+        "$value": "{🔗 Alias.🔵 Radius.LG}"
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.SM}"
       }
     },
     "Heading": {
@@ -6438,12 +6508,6 @@
         "$type": "dimension",
         "$value": "{🔗 Alias.🗃️ Container.Width.Modal}"
       },
-      "Radius": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔵 Radius.LG}"
-        }
-      },
       "Backdrop": {
         "Opacity": {
           "$type": "number",
@@ -6454,39 +6518,28 @@
           "$value": "{🧩 Component.Backdrop.Filter}"
         }
       },
-      "Heading": {
-        "Family": {
-          "$type": "fontFamily",
-          "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-        },
-        "Weight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-        },
-        "LineHeight": {
-          "$type": "number",
-          "$value": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
-        },
-        "Size": {
-          "Mobile": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.2XL.Mobile}"
-          },
-          "Tablet": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.2XL.Tablet}"
-          },
-          "Desktop": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.2XL.Desktop}"
-          }
-        }
+      "Radius": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.🔵 Radius.LG}"
       },
       "Color": {
-        "Base": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.White}"
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.White}"
+        }
+      },
+      "Heading": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Heading.Level.3}"
+      },
+      "Space": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Size.16}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Size.16}",
+            "tablet": "{🌐 Global.📏 Dimension.Size.32}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.40}"
           }
         }
       }
@@ -8555,10 +8608,6 @@
       }
     },
     "Tooltip": {
-      "Color": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🔤 Text.Color.White}"
-      },
       "Radius": {
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.Base}"
@@ -8571,31 +8620,27 @@
         "$type": "number",
         "$value": "{🔗 Alias.🗂️ ZIndex.Tooltip}"
       },
-      "Font": {
-        "Family": {
-          "$type": "fontFamily",
-          "$value": "{🔗 Alias.🔤 Text.Family.Text}"
+      "Color": {
+        "Text": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.White}"
         },
-        "Size": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Desktop}"
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
         }
       },
-      "LineHeight": {
-        "$type": "number",
-        "$value": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+      "Text": {
+        "$type": "typography",
+        "$value": "{🧩 Component.Text.Typo.Small}"
       },
-      "Px": {
+      "SpaceX": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ SpaceOld.SM.Mobile}"
+        "$value": "{🔗 Alias.↔️ Space.SM}"
       },
-      "Py": {
+      "SpaceY": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ SpaceOld.XS.Mobile}"
-      },
-      "Bg": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
+        "$value": "{🔗 Alias.↔️ Space.XS}"
       }
     },
     "Table": {
@@ -8666,22 +8711,24 @@
         "$value": "{🔗 Alias.🗂️ ZIndex.Popup}"
       },
       "Backdrop": {
-        "Opacity": {
-          "$type": "number",
-          "$value": "{🔗 Alias.🌫️ Opacity.Backdrop}"
-        },
         "Background": {
           "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
+          "$value": "{🧩 Component.Backdrop.Color}"
+        },
+        "Opacity": {
+          "$type": "number",
+          "$value": "{🧩 Component.Backdrop.Opacity}"
         }
       },
-      "Padding": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ SpaceOld.MD.Mobile}"
+      "Color": {
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.White}"
+        }
       },
-      "Background": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.White}"
+      "Space": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.MD}"
       }
     },
     "Drawer": {
