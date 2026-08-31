@@ -6,7 +6,6 @@ export const decorators: Decorator[] = [
   (Story: any, context: any) => {
     const theme: string = context.globals?.theme ?? ''
     const story = Story()
-    const html: string = story.outerHTML || story
 
     let link = document.getElementById(BRAND_LINK_ID) as HTMLLinkElement | null
     if (theme) {
@@ -17,10 +16,18 @@ export const decorators: Decorator[] = [
         document.head.appendChild(link)
       }
       link.href = `/assets/tokens/${theme}.tokens.css`
-      return `<div data-theme="${theme}">${html}</div>`
+
+      const wrapper = document.createElement('div')
+      wrapper.setAttribute('data-theme', theme)
+      if (typeof story === 'string') {
+        wrapper.innerHTML = story
+      } else {
+        wrapper.append(story)
+      }
+      return wrapper
     } else {
       link?.remove()
-      return html
+      return story
     }
   },
 ]
