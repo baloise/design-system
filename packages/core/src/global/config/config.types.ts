@@ -1,5 +1,5 @@
 import { DsLogger } from '@utils'
-import { FooterLink, FooterSocialLink } from '../../components/footer/footer.interfaces'
+import { AppFooterLink, AppFooterSocialLink } from '../../components/app-footer/app-footer.interfaces'
 
 export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'
 
@@ -27,7 +27,7 @@ export interface DsConfig {
   httpFormSubmit?: boolean
   legalLinks?: {
     [key in DsRegion]?: {
-      [key in DsLanguage]?: FooterLink[]
+      [key in DsLanguage]?: AppFooterLink[]
     }
   }
   legalText?: {
@@ -36,7 +36,7 @@ export interface DsConfig {
     }
   }
   socialLinks?: {
-    [key in DsRegion]?: FooterSocialLink[]
+    [key in DsRegion]?: AppFooterSocialLink[]
   }
   _generateHydrateForCustomElementsOutput?: boolean
   _jmp?: (c: any) => any
@@ -58,7 +58,7 @@ export interface DsConfigState {
   httpFormSubmit: boolean
   legalLinks: {
     [key in DsRegion]?: {
-      [key in DsLanguage]?: FooterLink[]
+      [key in DsLanguage]?: AppFooterLink[]
     }
   }
   legalText: {
@@ -67,7 +67,7 @@ export interface DsConfigState {
     }
   }
   socialLinks: {
-    [key in DsRegion]?: FooterSocialLink[]
+    [key in DsRegion]?: AppFooterSocialLink[]
   }
   _generateHydrateForCustomElementsOutput: boolean
 }

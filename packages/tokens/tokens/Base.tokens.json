@@ -2897,7 +2897,7 @@
         "$value": "{🌐 Global.🌈 Color.Primary.6}"
       }
     },
-    "Footer": {
+    "AppFooter": {
       "Color": {
         "Text": {
           "$type": "color",
@@ -6544,7 +6544,7 @@
         }
       }
     },
-    "Navbar": {
+    "AppNavbar": {
       "Base": {
         "Layout": {
           "Padding": {

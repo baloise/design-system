@@ -11,14 +11,14 @@
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <ds-navbar>
+    <ds-app-navbar>
       <a href="/" slot="brand"><ds-logo color="white"></ds-logo></a>
       <h1 slot="title">Kitchensink</h1>
       <a href="/" slot="menu-start" aria-current="page">Home</a>
       <a href="/about" slot="menu-start">About</a>
       <a href="/contact" slot="menu-start">Contact</a>
       <ds-button slot="actions" color="secondary">Sign In</ds-button>
-    </ds-navbar>
+    </ds-app-navbar>
 
     <main class="container my-lg">
       <ds-card>
@@ -67,6 +67,6 @@
       </ds-card>
     </main>
 
-    <ds-footer legal-text="© 2026 Helvetia Versicherungen"></ds-footer>
+    <ds-app-footer legal-text="© 2026 Helvetia Versicherungen"></ds-app-footer>
   </body>
 </html>
