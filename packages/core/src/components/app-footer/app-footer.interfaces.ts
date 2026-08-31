@@ -1,4 +1,4 @@
-export const APP_FOOTER_CONTAINERS = ['default', 'fluid', 'compact', ''] as const
+export const APP_FOOTER_CONTAINERS = ['default', 'fluid', 'compact'] as const
 export type AppFooterContainer = (typeof APP_FOOTER_CONTAINERS)[number]
 
 export interface AppFooterLink {

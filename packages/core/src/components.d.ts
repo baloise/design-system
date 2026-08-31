@@ -240,9 +240,8 @@ export namespace Components {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
          */
-        "container": AppFooterContainer;
+        "container"?: AppFooterContainer;
         /**
           * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
           * @default false
@@ -275,9 +274,8 @@ export namespace Components {
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
          */
-        "container": AppNavbarContainer;
+        "container"?: AppNavbarContainer;
         /**
           * If `true` the navbar will use a light color scheme.
           * @default false
@@ -5188,7 +5186,6 @@ declare namespace LocalJSX {
     interface DsAppFooter {
         /**
           * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
          */
         "container"?: AppFooterContainer;
         /**
@@ -5222,7 +5219,6 @@ declare namespace LocalJSX {
     interface DsAppNavbar {
         /**
           * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
          */
         "container"?: AppNavbarContainer;
         /**

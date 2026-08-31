@@ -11,5 +11,5 @@ export type DsAppNavbarMenuOpenEnd = DsAppNavbarCustomEvent<void>
 export type DsAppNavbarMenuCloseStart = DsAppNavbarCustomEvent<void>
 export type DsAppNavbarMenuCloseEnd = DsAppNavbarCustomEvent<void>
 
-export const APP_NAVBAR_CONTAINERS = ['default', 'fluid', 'compact', ''] as const
+export const APP_NAVBAR_CONTAINERS = ['default', 'fluid', 'compact'] as const
 export type AppNavbarContainer = (typeof APP_NAVBAR_CONTAINERS)[number]

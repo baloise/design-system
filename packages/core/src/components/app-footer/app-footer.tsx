@@ -45,9 +45,10 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
 
   @Element() el!: HTMLStencilElement
 
-  // ========================================================================
-  // PUBLIC PROPERTY API
-  // ========================================================================
+  /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
 
   @State() brand: DsBrand = defaultConfig.brand
   @State() language: DsLanguage = defaultConfig.language
@@ -63,7 +64,7 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
    */
   @Prop()
   @OneOf(APP_FOOTER_CONTAINERS)
-  readonly container: AppFooterContainer = ''
+  readonly container?: AppFooterContainer
 
   /**
    * If `true` the language selection will be hidden.
@@ -101,15 +102,10 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
    */
   @Event() dsLanguageChange!: EventEmitter<AppFooterLanguageChangeDetail>
 
-  // ========================================================================
-  // LIFECYCLE
-  // ========================================================================
-  // ========================================================================
-  // PROPERTY VALIDATION
-  // ========================================================================
-  // ========================================================================
-  // PUBLIC METHODS
-  // ========================================================================
+  /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
 
   /**
    * @internal define config for the component
@@ -126,9 +122,10 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
     this.socialLinksConfig = state.socialLinks?.[state.region]
   }
 
-  // ========================================================================
-  // PRIVATE METHODS
-  // ========================================================================
+  /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
 
   private hasNamedSlot(name: string): boolean {
     return this.el.querySelector(`[slot="${name}"]`) !== null
@@ -187,9 +184,10 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
     )
   }
 
-  // ========================================================================
-  // RENDER
-  // ========================================================================
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
 
   render() {
     const hasLinksSlot = this.hasNamedSlot('links')

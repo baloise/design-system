@@ -103,7 +103,7 @@ export class AppNavbar implements DsComponentInterface, DsBreakpointObserver, Ds
    */
   @Prop()
   @OneOf(APP_NAVBAR_CONTAINERS)
-  readonly container: AppNavbarContainer = ''
+  readonly container?: AppNavbarContainer
 
   /**
    * Emitted when the sidebar menu starts opening
