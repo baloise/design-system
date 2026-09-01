@@ -45,11 +45,16 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
   @State() region: DsRegion = defaultConfig.region
 
   /**
+   * PUBLIC PROPERTY API
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * Accent color applied to the bottom border track and selected indicator.
    */
   @Prop()
   @OneOf(TABS_COLORS)
-  readonly color: TabsColor = ''
+  readonly color?: TabsColor
 
   /**
    * If `true`, tab buttons expand to fill the available width equally.
@@ -139,7 +144,7 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsTabSelect')
@@ -150,7 +155,7 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private getTabs(): HTMLDsTabElement[] {
@@ -284,6 +289,11 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
     if (el) el.scrollBy({ left: el.clientWidth / 2, behavior: 'smooth' })
   }
 
+  /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
+
   private handleKeyDown = (ev: KeyboardEvent) => {
     if (this.isNavigation()) return
     const focusable = this.getTabs()
@@ -313,7 +323,7 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

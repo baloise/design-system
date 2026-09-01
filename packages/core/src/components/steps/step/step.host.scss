@@ -36,6 +36,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
+  line-height: var(--_steps-step-line-height);
   transition:
     background-color 180ms ease,
     color 180ms ease;
@@ -46,6 +47,7 @@
   cursor: not-allowed;
 }
 
+// line-height: 1 (not the typo token) keeps the invalid icon glyph centered in the circle.
 .step-invalid {
   color: var(--_steps-circle-color-text-invalid);
   font-family: var(--_steps-step-font-family);
@@ -94,6 +96,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
+  line-height: var(--_steps-step-line-height);
   transition: color 180ms ease;
 }
 
@@ -208,6 +211,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
+  line-height: var(--_steps-step-line-height);
   transition: color 180ms ease;
   outline: none;
 }

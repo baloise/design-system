@@ -3,7 +3,7 @@ import type { WorkingToken } from './edit'
 import { KEY_BY_LAYER } from './flatten'
 import { toSlashPath } from './format'
 import { flattenFigmaId } from './figma-map'
-import { invalidSegments, reservedSegments } from './path'
+import { invalidSegments } from './path'
 
 export interface ValidationError {
   tokenKey: string
@@ -49,12 +49,6 @@ export function validateWorkingTokens(working: WorkingToken[]): ValidationError[
       errors.push({
         tokenKey: id,
         message: `"${invalidSegments(token.name).join('", "')}" must be PascalCase, e.g. "BackgroundBlue".`,
-        severity: 'error',
-      })
-    } else if (reservedSegments(token.name).length > 0) {
-      errors.push({
-        tokenKey: id,
-        message: `"${reservedSegments(token.name).join('", "')}" is a reserved word and cannot be used in a token path.`,
         severity: 'error',
       })
     } else if ((pathCounts.get(path) ?? 0) > 1) {

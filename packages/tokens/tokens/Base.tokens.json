@@ -8292,82 +8292,68 @@
         "$type": "dimension",
         "$value": "{🔗 Alias.▭ Border.Width.Base}"
       },
-      "Border": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-        }
-      },
-      "Indicator": {
-        "Height": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.▭ Border.Width.Base}"
-        }
-      },
-      "Panel": {
-        "Padding": {
-          "$type": "string",
-          "$value": "1rem 0"
-        }
-      },
       "Tab": {
-        "Padding": {
-          "$type": "string",
-          "$value": "0.25rem 1rem"
+        "SpaceX": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Base}"
         },
-        "Font": {
-          "Family": {
-            "$type": "fontFamily",
-            "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-          },
-          "Weight": {
-            "$type": "fontWeight",
-            "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-          },
-          "WeightSelected": {
-            "$type": "fontWeight",
-            "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-          },
-          "Size": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Mobile}"
-          }
+        "SpaceY": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.2XS}"
         },
-        "Color": {
-          "Focus": {
-            "$type": "color",
-            "$value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}"
+        "Selected": {
+          "Typo": {
+            "$type": "typography",
+            "$value": {
+              "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+              "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+            }
           },
-          "Hover": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎬 Action.Primary.Text.Hover}"
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
-          },
-          "Selected": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
-          }
-        },
-        "Border": {
           "Color": {
-            "Selected": {
-              "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.Primary}"
+            "Text": {
+              "Hover": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Hover}"
+              },
+              "Active": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
+              },
+              "Base": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Base}"
+              }
             }
           }
-        }
-      },
-      "Vertical": {
-        "Gap": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
+        },
+        "Unselected": {
+          "Typo": {
+            "$type": "typography",
+            "$value": {
+              "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+              "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+            }
+          },
+          "Color": {
+            "Text": {
+              "Hover": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Hover}"
+              },
+              "Active": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
+              },
+              "Base": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+              }
+            }
+          }
         }
       },
       "Scroll": {
@@ -8377,6 +8363,156 @@
             "$value": "{🔗 Alias.🎨 Surface.White}"
           }
         }
+      },
+      "Panel": {
+        "SpaceX": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.None}"
+        },
+        "SpaceY": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Base}"
+        }
+      },
+      "Border": {
+        "Green": {
+          "$type": "border",
+          "$value": "{🔗 Alias.🎬 Action.BrandGreen.Border.Base}"
+        },
+        "Red": {
+          "$type": "border",
+          "$value": "{🔗 Alias.🎬 Action.BrandRed.Border.Base}"
+        },
+        "Yellow": {
+          "$type": "border",
+          "$value": "{🔗 Alias.🎬 Action.BrandYellow.Border.Base}"
+        },
+        "Purple": {
+          "$type": "border",
+          "$value": "{🔗 Alias.🎬 Action.BrandPurple.Border.Base}"
+        },
+        "Base": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+        }
+      },
+      "Indicator": {
+        "Default": {
+          "Unselected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Transparent}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
+            }
+          },
+          "Selected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Primary}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Primary}"
+            }
+          }
+        },
+        "Purple": {
+          "Unselected": {
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
+            },
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandPurple.Border.Base}"
+            }
+          },
+          "Selected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandPurple.Border.Hover}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandPurple.Border.Hover}"
+            }
+          }
+        },
+        "Yellow": {
+          "Unselected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Transparent}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandYellow.Border.Base}"
+            }
+          },
+          "Selected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandYellow.Border.Hover}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandYellow.Border.Hover}"
+            }
+          }
+        },
+        "Green": {
+          "Unselected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Transparent}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandGreen.Border.Base}"
+            }
+          },
+          "Selected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandGreen.Border.Hover}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandGreen.Border.Hover}"
+            }
+          }
+        },
+        "Red": {
+          "Unselected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.▭ Border.Composite.Transparent}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandRed.Border.Base}"
+            }
+          },
+          "Selected": {
+            "Base": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandRed.Border.Hover}"
+            },
+            "Hover": {
+              "$type": "border",
+              "$value": "{🔗 Alias.🎬 Action.BrandRed.Border.Hover}"
+            }
+          }
+        }
+      },
+      "Vertical": {
+        "Gap": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.LG}"
+        }
       }
     },
     "TabPanel": {
@@ -8385,126 +8521,24 @@
         "$value": "1rem 0"
       }
     },
-    "TabsColor": {
-      "PurpleHover": {
-        "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Purple.5}"
-      },
-      "GreenHover": {
-        "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Green.5}"
-      },
-      "RedHover": {
-        "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Red.5}"
-      },
-      "YellowHover": {
-        "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Yellow.5}"
-      },
-      "Purple": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.Purple}"
-      },
-      "Green": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.Green}"
-      },
-      "Red": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.Red}"
-      },
-      "Yellow": {
-        "$type": "color",
-        "$value": "{🔗 Alias.🎨 Surface.Yellow}"
-      }
-    },
     "Steps": {
       "Connector": {
-        "Color": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-        },
         "Height": {
           "$type": "dimension",
           "$value": "{🔗 Alias.▭ Border.Width.Base}"
         },
-        "ColorFilled": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🎨 Surface.Primary}"
-        }
-      },
-      "Circle": {
-        "Size": {
-          "$type": "string",
-          "$value": "2rem"
-        },
-        "SizeSM": {
-          "$type": "string",
-          "$value": "1.5rem"
-        },
         "Color": {
-          "Text": {
+          "Base": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
           },
-          "TextSelected": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "TextDone": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "TextInvalid": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "TextDisabled": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "BG": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Grey}"
-          },
-          "BGSelected": {
+          "Filled": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
-          },
-          "BGDone": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Primary}"
-          },
-          "BGInvalid": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Danger}"
-          },
-          "BGDisabled": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         }
       },
       "Step": {
-        "Font": {
-          "Family": {
-            "$type": "fontFamily",
-            "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-          },
-          "Weight": {
-            "$type": "fontWeight",
-            "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-          },
-          "Size": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.Base.Mobile}"
-          },
-          "SizeSM": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Mobile}"
-          }
-        },
         "Color": {
           "Selected": {
             "$type": "color",
@@ -8518,12 +8552,21 @@
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
           }
-        }
-      },
-      "Panel": {
-        "Padding": {
-          "$type": "string",
-          "$value": "1rem 0"
+        },
+        "Typo": {
+          "Base": {
+            "$type": "typography",
+            "$value": "{🧩 Component.Heading.Level.5}"
+          },
+          "SM": {
+            "$type": "typography",
+            "$value": {
+              "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
+              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
+              "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
+            }
+          }
         }
       },
       "Color": {
@@ -8542,6 +8585,80 @@
         "Yellow": {
           "$type": "color",
           "$value": "{🔗 Alias.🎨 Surface.Yellow}"
+        }
+      },
+      "Circle": {
+        "Color": {
+          "Default": {
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.OnGrey}"
+            },
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Grey}"
+            }
+          },
+          "Selected": {
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
+            },
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Primary}"
+            }
+          },
+          "Done": {
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
+            },
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Primary}"
+            }
+          },
+          "Disabled": {
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.OnGrey}"
+            },
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Grey}"
+            }
+          },
+          "Invalid": {
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.OnDangerDarker}"
+            },
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.DangerDarker}"
+            }
+          }
+        },
+        "Size": {
+          "Base": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
+          },
+          "SM": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
+          }
+        }
+      },
+      "Panel": {
+        "SpaceX": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.None}"
+        },
+        "SpaceY": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Base}"
         }
       }
     },
