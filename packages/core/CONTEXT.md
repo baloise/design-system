@@ -88,6 +88,7 @@ This is enforced automatically, not just by convention: `libs/output-target-web/
 ### Naming Conventions
 
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
+- **Usage-context prefix**: `ds-app-*` for components built for application (product) usage, as opposed to marketing/website usage (e.g. `ds-app-navbar`, `ds-app-footer`). Each usage context gets its own component rather than a variant prop on a shared one — a future website-context navbar would be `ds-web-navbar`, not a prop on `ds-app-navbar`. Unrelated to `ds-app`, the root wrapper component. See ADR-0026.
 - **Event naming**: `ds<Name>` (e.g., `dsChange`, `dsCloseClick`)
 - **Handler naming**: `listenTo<Event>` (@Listen), `<Prop>Changed` (@Watch), `handle<Event>` (DOM handlers)
 - **CSS classes**: `.is-<state>` for states (e.g., `.is-disabled`, `.is-primary`), `.mod-<variant>` for modifiers
@@ -402,7 +403,7 @@ The navbar uses a right-side drawer menu on mobile/tablet viewports. The drawer 
 ### Future Enhancements (Out of Scope)
 
 - [ ] Color themes and styling variants
-- [ ] Multiple interface types (app, website, etc.)
+- [ ] Website-context navbar as a separate `ds-web-navbar` component (resolved as a naming strategy in ADR-0026; not yet built) — this component is `ds-app-navbar`, scoped to application usage
 - [ ] Container width options (fluid, compact, etc.)
 - [ ] Custom hamburger icon or styling
 - [ ] Sub-components if composition needs evolve

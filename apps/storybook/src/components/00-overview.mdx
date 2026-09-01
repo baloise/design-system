@@ -711,9 +711,9 @@ Layout components enable the creation of dynamic and responsive layouts.
       style={{ minHeight: '336px', margin: '32px', overflow: 'hidden' }}
     >
       <header>
-        <ds-navbar>
-          <ds-navbar-brand>Apple Bakery</ds-navbar-brand>
-        </ds-navbar>
+        <ds-app-navbar>
+          <ds-app-navbar-brand>Apple Bakery</ds-app-navbar-brand>
+        </ds-app-navbar>
       </header>
       <main class="flex-1">
         <div class="container my-large">
@@ -747,12 +747,12 @@ Layout components enable the creation of dynamic and responsive layouts.
   </GridComponent>
   <GridComponent
     scale="0.5"
-    label="Footer"
+    label="App Footer"
     fullwidth
-    pageTitle="Components/Footer"
+    pageTitle="Components/App Footer"
     description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
   >
-    <ds-footer></ds-footer>
+    <ds-app-footer></ds-app-footer>
   </GridComponent>
   <GridComponent
     scale="1.2"
@@ -828,26 +828,26 @@ Navigation components facilitate the movement between various views or pages.
   </GridComponent>
   <GridComponent
     scale="0.5"
-    label="Navbar"
+    label="App Navbar"
     fullheight
     fullwidth
     fullscreen
-    pageTitle="Components/Navbar"
+    pageTitle="Components/App Navbar"
     description="A responsive horizontal Navbar that can support logos, buttons, and dropdowns."
   >
-    <ds-navbar interface="app">
-      <ds-navbar-brand href="/" target="_blank">
+    <ds-app-navbar interface="app">
+      <ds-app-navbar-brand href="/" target="_blank">
         App Header
-      </ds-navbar-brand>
-      <ds-navbar-menu>
-        <ds-navbar-menu-start>
+      </ds-app-navbar-brand>
+      <ds-app-navbar-menu>
+        <ds-app-navbar-menu-start>
           <ds-tabs interface="navbar" v-model="myActiveTab">
             <ds-tab-item value="tab-a" label="Tab A"></ds-tab-item>
             <ds-tab-item value="tab-b" label="Tab B"></ds-tab-item>
             <ds-tab-item value="tab-c" label="Tab C"></ds-tab-item>
           </ds-tabs>
-        </ds-navbar-menu-start>
-        <ds-navbar-menu-end>
+        </ds-app-navbar-menu-start>
+        <ds-app-navbar-menu-end>
           <ds-button-group>
             <ds-popover v-model="isActive">
               <ds-button ds-popover-trigger color="light" inverted icon="web">
@@ -875,9 +875,9 @@ Navigation components facilitate the movement between various views or pages.
             </ds-popover>
             <ds-button square color="light" inverted icon="call"></ds-button>
           </ds-button-group>
-        </ds-navbar-menu-end>
-      </ds-navbar-menu>
-    </ds-navbar>
+        </ds-app-navbar-menu-end>
+      </ds-app-navbar-menu>
+    </ds-app-navbar>
     <div class="container mt-normal" style={{ height: '280px' }}>
       <div class="h-full bg-purple-2 radius"></div>
     </div>
