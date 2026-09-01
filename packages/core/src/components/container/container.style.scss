@@ -8,24 +8,31 @@
  */
 
 @use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+body {
+  @include vars.local(container-max-width, var(--ds-alias-container-width-base));
+  @include vars.local(container-space-x, var(--ds-alias-container-space-device));
+  @include vars.local(container-space-y, 0);
+}
 
 .container {
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
   width: auto;
-  padding-left: var(--ds-alias-container-space-device);
-  padding-right: var(--ds-alias-container-space-device);
+  padding-block: var(--_container-space-y);
+  padding-inline: var(--_container-space-x);
 
   @include desktop {
-    max-width: var(--ds-alias-container-width-base);
+    max-width: var(--_container-max-width);
   }
 
   &.is-fluid {
-    max-width: var(--ds-alias-container-width-fluid) !important;
+    --mod-container-max-width: var(--ds-alias-container-width-fluid);
   }
 
   &.is-compact {
-    max-width: var(--ds-alias-container-width-compact) !important;
+    --mod-container-max-width: var(--ds-alias-container-width-compact);
   }
 }

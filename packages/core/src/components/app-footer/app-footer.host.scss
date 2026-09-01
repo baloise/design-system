@@ -7,69 +7,56 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --app-footer-background: Background color of the app-footer.
- * @prop --app-footer-color: Text color of the app-footer.
- * @prop --app-footer-link-color: Color of app-footer links.
- * @prop --app-footer-link-color-hover: Hover color of app-footer links.
- * @prop --app-footer-divider-color: Color of the divider line.
- * @prop --app-footer-content-max-width: Maximum width of app-footer content.
- * @prop --app-footer-padding: Padding of the app-footer element.
- * @prop --app-footer-padding-tablet: Padding of the app-footer element on tablet.
- * @prop --app-footer-content-padding-top: Top padding of the content area.
- * @prop --app-footer-gap-row: Vertical gap in top row.
- * @prop --app-footer-gap-column: Horizontal gap in top row.
- * @prop --app-footer-language-font-family: Font family for language picker.
- * @prop --app-footer-language-font-weight: Font weight for language picker.
- * @prop --app-footer-language-gap: Gap between language picker icon and select.
- * @prop --app-footer-bottom-gap: Gap in bottom row.
- * @prop --app-footer-link-gap: Gap between app-footer links.
- * @prop --app-footer-link-gap-column: Column gap between app-footer links.
- * @prop --app-footer-social-gap: Gap between social links.
- * @prop --app-footer-font-size: Font size for app-footer text.
- * @prop --app-footer-line-height: Line height for app-footer text.
- * @prop --app-footer-social-icon-size: Size of social link icons.
- * @prop --app-footer-social-icon-gap: Gap between text and social icons.
- * @prop --app-footer-social-icon-border-radius: Border radius of social link circles.
- * @prop --app-footer-slotted-margin-right: Right margin for slotted elements.
+ * @prop --app-footer-color-background: Background color of the app-footer.
+ * @prop --app-footer-color-text: Text color of the app-footer.
+ *
+ * @prop --app-footer-font-family: Font family of the app-footer text.
+ * @prop --app-footer-font-size: Font size of the app-footer text.
+ * @prop --app-footer-font-weight: Font weight of the app-footer text.
+ * @prop --app-footer-line-height: Line height of the app-footer text.
+ *
+ * @prop --app-footer-gap: Gap between the app-footer elements.
+ * @prop --app-footer-space-y: Vertical padding of the app-footer.
+ *
+ * @prop --app-footer-link-color: Text color of the app-footer links.
+ * @prop --app-footer-link-color-hover: Text color of the app-footer links on hover.
+ * @prop --app-footer-link-color-active: Text color of the app-footer links when active.
+ *
+ * @prop --app-footer-social-icon-size: Size of the social link icons in the app-footer.
  */
 
 :host {
   @include vars.base(app-footer);
-  @include vars.local(app-footer-background, var(--ds-app-footer-color-background));
-  @include vars.local(app-footer-color, var(--ds-app-footer-color-text));
-  @include vars.local(app-footer-link-color, var(--ds-app-footer-color-link-base));
-  @include vars.local(app-footer-link-color-hover, var(--ds-app-footer-color-link-hover));
-  @include vars.local(app-footer-divider-color, var(--ds-app-footer-color-divider));
-  @include vars.local(app-footer-content-max-width, var(--ds-app-footer-space-content-max-width));
-  @include vars.local(app-footer-padding, var(--ds-app-footer-space-padding-base));
-  @include vars.local(app-footer-content-padding-top, var(--ds-app-footer-space-content-padding-top));
-  @include vars.local(app-footer-gap-row, var(--ds-app-footer-space-gap-row));
-  @include vars.local(app-footer-gap-column, var(--ds-app-footer-space-gap-column));
-  @include vars.local(app-footer-language-font-family, var(--ds-app-footer-typography-language-family));
-  @include vars.local(app-footer-language-font-weight, var(--ds-app-footer-typography-language-weight));
-  @include vars.local(app-footer-language-gap, var(--ds-app-footer-space-language-gap));
-  @include vars.local(app-footer-bottom-gap, var(--ds-app-footer-space-bottom-gap));
-  @include vars.local(app-footer-link-gap, var(--ds-app-footer-space-link-gap));
-  @include vars.local(app-footer-social-gap, var(--ds-app-footer-space-social-gap));
-  @include vars.local(app-footer-font-size, var(--ds-app-footer-typography-font-size));
-  @include vars.local(app-footer-line-height, var(--ds-app-footer-typography-line-height));
-  @include vars.local(app-footer-social-icon-size, var(--ds-app-footer-space-social-icon-size));
-  @include vars.local(app-footer-social-icon-gap, var(--ds-app-footer-space-social-icon-gap));
-  @include vars.local(app-footer-slotted-margin-right, var(--ds-app-footer-space-slotted-margin-right));
+  @include vars.local(app-footer-color-background, var(--ds-app-footer-color-background));
+  @include vars.local(app-footer-color-text, var(--ds-app-footer-color-text));
 
+  @include vars.local(app-footer-font-family, var(--ds-app-footer-typo-font-family));
+  @include vars.local(app-footer-font-size, var(--ds-app-footer-typo-font-size));
+  @include vars.local(app-footer-font-weight, var(--ds-app-footer-typo-font-weight));
+  @include vars.local(app-footer-line-height, var(--ds-app-footer-typo-line-height));
+
+  @include vars.local(app-footer-gap, var(--ds-app-footer-gap));
+  @include vars.local(app-footer-space-y, var(--ds-app-footer-space-y));
+
+  @include vars.local(app-footer-link-color, var(--ds-app-footer-link-color-text-base));
+  @include vars.local(app-footer-link-color-hover, var(--ds-app-footer-link-color-text-hover));
+  @include vars.local(app-footer-link-color-active, var(--ds-app-footer-link-color-text-active));
+
+  @include vars.local(app-footer-social-icon-size, var(--ds-app-footer-social-icon-size));
+}
+
+:host {
   @include vars.styles(app-footer);
 
   display: block;
-  color: var(--_app-footer-color);
-  background: var(--_app-footer-background);
-}
+  color: var(--_app-footer-color-text);
+  background: var(--_app-footer-color-background);
 
-app-footer {
   margin: 0 auto;
-  padding-block: var(--_app-footer-padding);
-  padding-inline: var(--ds-alias-container-space-device);
+  padding-block: var(--_app-footer-space-y);
+  padding-inline: var(--_container-space-x, var(--ds-alias-container-space-device));
   width: 100%;
-  max-width: var(--ds-alias-container-width-base);
+  max-width: var(--_container-max-width, var(--ds-alias-container-width-base));
 
   &.is-fluid {
     max-width: var(--ds-alias-container-width-fluid);
@@ -80,145 +67,155 @@ app-footer {
   }
 }
 
-.top-row {
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_app-footer-gap);
+
+  font-family: var(--_app-footer-font-family);
+  font-size: var(--_app-footer-font-size);
+  font-weight: var(--_app-footer-font-weight);
+  line-height: var(--_app-footer-line-height);
+}
+
+#top {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--_app-footer-gap-row) var(--_app-footer-gap-column);
+  gap: var(--_app-footer-gap);
   justify-content: space-between;
   align-items: flex-start;
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-link {
+    display: inline-flex;
+    color: inherit;
+  }
+
+  .logo-svg {
+    display: inline-flex;
+  }
+
+  .language-picker {
+    align-items: center;
+    border: 0;
+    display: inline-flex;
+    color: var(--_app-footer-color);
+    font-weight: var(--ds-alias-text-weight-bold);
+    gap: calc(var(--_app-footer-gap) / 2);
+    margin: 0 0 0 auto;
+    max-width: 100%;
+    width: auto;
+  }
+
+  .language-picker ds-icon {
+    --icon-color: currentColor;
+    flex-shrink: 0;
+  }
+
+  .language-picker select {
+    appearance: auto;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font: inherit;
+    line-height: 1.3;
+    min-width: auto;
+    padding: 0;
+  }
+
+  .language-picker select:hover,
+  .language-picker select:focus-visible {
+    color: var(--_app-footer-link-color-hover);
+  }
+
+  .language-picker select:active {
+    color: var(--_app-footer-link-color-active);
+  }
 }
 
-.logo-area {
-  display: flex;
-  align-items: center;
-}
-
-.logo-link {
-  display: inline-flex;
-  color: inherit;
-}
-
-.logo-svg {
-  display: inline-flex;
-}
-
-.language-picker {
-  align-items: center;
-  border: 0;
-  color: var(--_app-footer-color);
-  display: inline-flex;
-  font-family: var(--_app-footer-language-font-family);
-  font-weight: var(--_app-footer-language-font-weight);
-  gap: var(--_app-footer-language-gap);
-  margin: 0 0 0 auto;
-  max-width: 100%;
-  width: auto;
-}
-
-.language-picker ds-icon {
-  --icon-color: currentColor;
-  flex-shrink: 0;
-}
-
-.language-picker select {
-  appearance: auto;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  color: inherit;
-  cursor: pointer;
-  flex: 0 0 auto;
-  font: inherit;
-  line-height: 1.3;
-  min-width: auto;
-  padding: 0;
-}
-
-.language-picker select:hover,
-.language-picker select:focus-visible {
-  color: var(--_app-footer-link-color-hover);
-}
-
-.content {
-  padding-top: var(--_app-footer-content-padding-top);
-}
-
-.bottom-row {
+#bottom {
   display: grid;
-  font-size: var(--_app-footer-font-size);
-  gap: var(--_app-footer-bottom-gap);
+  gap: var(--_app-footer-gap);
   grid-template-columns: 1fr;
-  line-height: var(--_app-footer-line-height);
-}
 
-.legal {
-  margin: 0;
-  font-size: var(--_app-footer-font-size);
-  line-height: var(--_app-footer-line-height);
-}
+  .links,
+  .social {
+    min-width: 0;
+  }
 
-.links,
-.social {
-  min-width: 0;
-}
+  .link-list,
+  .social-list {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--_app-footer-gap) / 2) calc(var(--_app-footer-gap));
+    margin: 0;
+    padding: 0;
+  }
 
-.link-list,
-.social-list {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--_app-footer-link-gap);
-  margin: 0;
-  padding: 0;
-}
+  .link-list li,
+  .social-list li {
+    list-style: none;
+  }
 
-.social-list {
-  gap: var(--_app-footer-social-gap);
-}
+  .links a,
+  ::slotted([slot='links']) {
+    color: var(--_app-footer-link-color);
+    text-decoration: none;
+  }
 
-.link-list li,
-.social-list li {
-  list-style: none;
-}
+  .links a:hover,
+  ::slotted([slot='links']:hover) {
+    color: var(--_app-footer-link-color-hover);
+    text-decoration: underline;
+  }
 
-.links a,
-::slotted([slot='links']) {
-  color: var(--_app-footer-link-color);
-  text-decoration: none;
-}
+  .links a:active,
+  ::slotted([slot='links']:active) {
+    color: var(--_app-footer-link-color-active);
+    text-decoration: underline;
+  }
 
-.links a:hover,
-::slotted([slot='links']:hover) {
-  color: var(--_app-footer-link-color-hover);
-  text-decoration: underline;
-}
+  .social a,
+  ::slotted([slot='social-links']) {
+    --icon-color: var(--ds-alias-text-color-white);
+    --icon-size: var(--ds-icon-size-sm);
+    align-items: center;
+    color: var(--_app-footer-link-color);
+    display: inline-flex;
+    height: var(--_app-footer-social-icon-size);
+    justify-content: center;
+    text-decoration: none;
+    width: var(--_app-footer-social-icon-size);
+  }
 
-.social a,
-::slotted([slot='social-links']) {
-  --icon-color: var(--ds-alias-text-color-white);
-  --icon-size: var(--ds-icon-size-sm);
-  align-items: center;
-  color: var(--_app-footer-link-color);
-  display: inline-flex;
-  height: var(--_app-footer-social-icon-size);
-  justify-content: center;
-  text-decoration: none;
-  width: var(--_app-footer-social-icon-size);
-}
+  .social a:hover,
+  ::slotted([slot='social-links']:hover) {
+    --icon-color: var(--_app-footer-link-color-hover);
+    color: var(--_app-footer-link-color-hover);
+  }
 
-.social a:hover,
-::slotted([slot='social-links']:hover) {
-  --icon-color: var(--_app-footer-link-color-hover);
-  color: var(--_app-footer-link-color-hover);
-}
+  .social a:active,
+  ::slotted([slot='social-links']:active) {
+    --icon-color: var(--_app-footer-link-color-active);
+    color: var(--_app-footer-link-color-active);
+  }
 
-::slotted([slot='links']),
-::slotted([slot='social-links']) {
-  margin-right: var(--_app-footer-slotted-margin-right);
+  ::slotted([slot='links']),
+  ::slotted([slot='social-links']) {
+    margin-right: var(--_app-footer-gap);
+  }
 }
 
 @include tablet {
-  .bottom-row {
+  #bottom {
     align-items: start;
     grid-template-columns: 1fr;
   }
@@ -230,7 +227,7 @@ app-footer {
 }
 
 @include desktop {
-  .bottom-row {
+  #bottom {
     align-items: center;
     grid-template-columns: 1fr auto;
     grid-template-areas:

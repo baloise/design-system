@@ -207,7 +207,7 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
             'is-compact': this.container === 'compact',
           }}
         >
-          <div class="top-row">
+          <div id="top">
             <div class="logo-area">{this.renderLogo()}</div>
 
             {!this.hideLanguageSelection && (
@@ -224,13 +224,13 @@ export class AppFooter implements DsComponentInterface, DsConfigObserver {
             )}
           </div>
 
-          <div class="content">
+          <div id="content">
             <slot />
           </div>
 
-          <ds-divider space="sm" color="secondary"></ds-divider>
+          <ds-divider space="none" color="secondary"></ds-divider>
 
-          <div class="bottom-row">
+          <div id="bottom">
             {textToDisplay && <p class="legal">{textToDisplay}</p>}
 
             {showSocial && (

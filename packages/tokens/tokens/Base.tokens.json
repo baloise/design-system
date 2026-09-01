@@ -2899,89 +2899,54 @@
     },
     "AppFooter": {
       "Color": {
-        "Text": {
-          "$type": "color",
-          "$value": "{🔗 Alias.🔤 Text.Color.White}"
-        },
-        "Link": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{🧩 Component.Button.Color.InvertedLink.Hover.Text}"
-          }
-        },
         "Background": {
           "$type": "color",
           "$value": "{🔗 Alias.🎨 Surface.Primary}"
+        },
+        "Text": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.OnPrimary}"
         }
       },
-      "Space": {
-        "GapColumn": {
-          "$type": "string",
-          "$value": "0.5rem 1rem"
-        },
-        "LinkGap": {
-          "$type": "string",
-          "$value": "0.5rem 1.5rem"
-        },
-        "ContentMaxWidth": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.🗃️ Container.Width.Base}"
-        },
-        "Padding": {
-          "Base": {
-            "$type": "string",
-            "$value": "2rem"
+      "Link": {
+        "Color": {
+          "Text": {
+            "Base": {
+              "$type": "color",
+              "$value": "{🧩 Component.Link.Inverted.Base}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{🧩 Component.Link.Inverted.Hover}"
+            },
+            "Active": {
+              "$type": "color",
+              "$value": "{🧩 Component.Link.Inverted.Active}"
+            }
           }
-        },
-        "ContentPaddingTop": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.MD.Mobile}"
-        },
-        "GapRow": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-        },
-        "LanguageGap": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.XS.Mobile}"
-        },
-        "BottomGap": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
-        },
-        "SocialGap": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.XS.Mobile}"
-        },
-        "SocialIconSize": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.LG.Mobile}"
-        },
-        "SocialIconGap": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.XS.Mobile}"
-        },
-        "SlottedMarginRight": {
-          "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ SpaceOld.Base.Mobile}"
         }
       },
-      "Typography": {
-        "LanguageFamily": {
-          "$type": "string",
-          "$value": "{🔗 Alias.🔤 Text.Family.Heading}"
-        },
-        "LanguageWeight": {
-          "$type": "fontWeight",
-          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
-        },
-        "FontSize": {
+      "SpaceY": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.XL}"
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.Base}"
+      },
+      "Typo": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
+          "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+          "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
+          "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
+        }
+      },
+      "SocialIcon": {
+        "Size": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.SizeOld.SM.Mobile}"
+          "$value": "{🌐 Global.🔤 Font.Size.24}"
         }
       }
     },
