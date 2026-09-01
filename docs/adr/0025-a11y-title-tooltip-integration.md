@@ -26,7 +26,7 @@ component's own shadow root. No component in the repo had ever composed
 Considered alternatives:
 
 - Leave `ds-tooltip` composition external, only fixing its reference lookup
-  so consumers *could* wire it up themselves — rejected because it puts the
+  so consumers _could_ wire it up themselves — rejected because it puts the
   accessibility improvement opt-in per call site instead of by default.
 - Pass the trigger element directly into `ds-tooltip` via a new prop/method,
   bypassing id-based lookup entirely — rejected in favor of the smaller,

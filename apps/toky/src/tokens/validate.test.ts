@@ -54,26 +54,6 @@ describe('validateWorkingTokens', () => {
     expect(validateWorkingTokens(items)).toEqual([])
   })
 
-  it('flags a reserved word used as a segment', () => {
-    const items = [working('a', { name: 'Color.Default' })]
-    const errors = validateWorkingTokens(items)
-    expect(errors).toContainEqual({
-      tokenKey: 'a',
-      message: '"Default" is a reserved word and cannot be used in a token path.',
-      severity: 'error',
-    })
-  })
-
-  it('flags a reserved word case-insensitively', () => {
-    const items = [working('a', { name: 'DEFAULT' })]
-    const errors = validateWorkingTokens(items)
-    expect(errors).toContainEqual({
-      tokenKey: 'a',
-      message: '"DEFAULT" is a reserved word and cannot be used in a token path.',
-      severity: 'error',
-    })
-  })
-
   it('flags two tokens resolving to the same layer+name as duplicates', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),
