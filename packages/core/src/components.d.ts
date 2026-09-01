@@ -3115,9 +3115,8 @@ export namespace Components {
     interface DsSteps {
         /**
           * Accent color applied to inactive circles and connector lines.
-          * @default ''
          */
-        "color": StepsColor;
+        "color"?: StepsColor;
         /**
           * Accessible label for the navigation landmark (navigation variant only).
           * @default ''
@@ -3187,9 +3186,8 @@ export namespace Components {
     interface DsTabs {
         /**
           * Accent color applied to the bottom border track and selected indicator.
-          * @default ''
          */
-        "color": TabsColor;
+        "color"?: TabsColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
@@ -8296,7 +8294,6 @@ declare namespace LocalJSX {
     interface DsSteps {
         /**
           * Accent color applied to inactive circles and connector lines.
-          * @default ''
          */
         "color"?: StepsColor;
         /**
@@ -8376,7 +8373,6 @@ declare namespace LocalJSX {
     interface DsTabs {
         /**
           * Accent color applied to the bottom border track and selected indicator.
-          * @default ''
          */
         "color"?: TabsColor;
         /**

@@ -28,7 +28,7 @@ export class Steps implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -36,7 +36,7 @@ export class Steps implements DsComponentInterface {
    */
   @Prop()
   @OneOf(STEPS_COLORS)
-  readonly color: StepsColor = ''
+  readonly color?: StepsColor
 
   /**
    * Accessible label for the navigation landmark (navigation variant only).
@@ -81,7 +81,7 @@ export class Steps implements DsComponentInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsStepSelect')
@@ -92,7 +92,7 @@ export class Steps implements DsComponentInterface {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private getSteps(): HTMLDsStepElement[] {
@@ -149,20 +149,22 @@ export class Steps implements DsComponentInterface {
     const steps = this.getSteps()
     const panels = this.getPanels()
 
-    const effectiveValue = this.value
-
-    const activeStep = steps.find(s => s.name === effectiveValue)
+    // Navigation mode derives the active step from `aria-current` on the slotted <a>
+    // (set by the consumer's router to match the current page), not from `value`.
+    const activeStep = isNav
+      ? steps.find(s => s.querySelector('[aria-current]'))
+      : steps.find(s => s.name === this.value)
     const activeIndex = activeStep ? activeStep.index : 0
 
     steps.forEach(step => {
       step.navigation = isNav
       step.vertical = this.vertical
-      step.selected = isNav ? !!step.querySelector('[aria-current]') : step.name === effectiveValue
+      step.selected = step === activeStep
       step.activeIndex = activeIndex
     })
 
     panels.forEach(panel => {
-      panel.selected = panel.for === effectiveValue
+      panel.selected = panel.for === this.value
     })
   }
 
@@ -182,7 +184,7 @@ export class Steps implements DsComponentInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleKeyDown = (ev: KeyboardEvent) => {
@@ -214,7 +216,7 @@ export class Steps implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
