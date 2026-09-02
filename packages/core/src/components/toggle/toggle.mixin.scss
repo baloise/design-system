@@ -14,57 +14,57 @@
     // layout
     @include vars.local(toggle-gap, 0.5rem);
     @include vars.local(toggle-label-base-color, inherit);
-    @include vars.local(toggle-label-hover-color, var(--ds-global-color-sky-5));
-    @include vars.local(toggle-label-active-color, var(--ds-global-color-primary-6));
+    @include vars.local(toggle-label-hover-color, var(--ds-toggle-label-color-hover));
+    @include vars.local(toggle-label-active-color, var(--ds-toggle-label-color-active));
 
     // dimensions
     @include vars.local(toggle-height, 1.5rem);
     @include vars.local(toggle-width, 2.5rem);
-    @include vars.local(toggle-border-width, var(--ds-alias-border-width-base));
-    @include vars.local(toggle-radius, var(--ds-alias-radius-rounded));
+    @include vars.local(toggle-border-width, var(--ds-toggle-border-width));
+    @include vars.local(toggle-radius, var(--ds-toggle-radius));
 
     // label layout
     @include vars.local(toggle-padding-y, 0.25rem);
     @include vars.local(toggle-min-height, 3rem);
 
     // Tile
-    @include vars.local(toggle-tile-radius, var(--ds-alias-radius-base));
+    @include vars.local(toggle-tile-radius, var(--ds-toggle-tile-radius));
     @include vars.local(toggle-tile-padding, 1rem);
-    @include vars.local(toggle-tile-border-width, var(--ds-alias-border-width-base));
+    @include vars.local(toggle-tile-border-width, var(--ds-toggle-tile-border-width));
 
     @include vars.local(toggle-tile-base-background-color, inherit);
-    @include vars.local(toggle-tile-base-border-color, var(--ds-global-color-grey-3));
+    @include vars.local(toggle-tile-base-border-color, var(--ds-toggle-tile-color-base-border));
 
-    @include vars.local(toggle-tile-hover-background-color, var(--ds-global-color-grey-2));
-    @include vars.local(toggle-tile-hover-border-color, var(--ds-global-color-sky-5));
+    @include vars.local(toggle-tile-hover-background-color, var(--ds-toggle-tile-color-hover-background));
+    @include vars.local(toggle-tile-hover-border-color, var(--ds-toggle-tile-color-hover-border));
 
-    @include vars.local(toggle-tile-active-background-color, var(--ds-global-color-grey-2));
-    @include vars.local(toggle-tile-active-border-color, var(--ds-global-color-primary-6));
+    @include vars.local(toggle-tile-active-background-color, var(--ds-toggle-tile-color-active-background));
+    @include vars.local(toggle-tile-active-border-color, var(--ds-toggle-tile-color-active-border));
 
     // unchecked base
-    @include vars.local(toggle-unchecked-base-color-background, var(--ds-global-color-grey-3));
-    @include vars.local(toggle-unchecked-base-color-tick, var(--ds-global-color-primary-5));
+    @include vars.local(toggle-unchecked-base-color-background, var(--ds-toggle-unchecked-color-base-background));
+    @include vars.local(toggle-unchecked-base-color-tick, var(--ds-toggle-unchecked-color-base-tick));
 
     // unchecked hover
-    @include vars.local(toggle-unchecked-hover-color-background, var(--ds-global-color-grey-3));
-    @include vars.local(toggle-unchecked-hover-color-tick, var(--ds-global-color-sky-5));
+    @include vars.local(toggle-unchecked-hover-color-background, var(--ds-toggle-unchecked-color-hover-background));
+    @include vars.local(toggle-unchecked-hover-color-tick, var(--ds-toggle-unchecked-color-hover-tick));
 
     // unchecked active/pressed
-    @include vars.local(toggle-unchecked-active-color-background, var(--ds-global-color-grey-3));
-    @include vars.local(toggle-unchecked-active-color-tick, var(--ds-global-color-primary-6));
+    @include vars.local(toggle-unchecked-active-color-background, var(--ds-toggle-unchecked-color-active-background));
+    @include vars.local(toggle-unchecked-active-color-tick, var(--ds-toggle-unchecked-color-active-tick));
 
     // checked base
-    @include vars.local(toggle-checked-base-color-background, var(--ds-global-color-success-4));
-    @include vars.local(toggle-checked-base-color-tick, var(--ds-global-color-white));
-    @include vars.local(toggle-checked-base-color-icon, var(--ds-global-color-white));
+    @include vars.local(toggle-checked-base-color-background, var(--ds-toggle-checked-color-base-background));
+    @include vars.local(toggle-checked-base-color-tick, var(--ds-toggle-checked-color-base-tick));
+    @include vars.local(toggle-checked-base-color-icon, var(--ds-toggle-checked-color-base-icon));
 
     // checked hover
-    @include vars.local(toggle-checked-hover-color-background, var(--ds-global-color-success-5));
-    @include vars.local(toggle-checked-hover-color-tick, var(--ds-global-color-white));
+    @include vars.local(toggle-checked-hover-color-background, var(--ds-toggle-checked-color-hover-background));
+    @include vars.local(toggle-checked-hover-color-tick, var(--ds-toggle-checked-color-hover-tick));
 
     // checked active/pressed
-    @include vars.local(toggle-checked-active-color-background, var(--ds-global-color-success-6));
-    @include vars.local(toggle-checked-active-color-tick, var(--ds-global-color-white));
+    @include vars.local(toggle-checked-active-color-background, var(--ds-toggle-checked-color-active-background));
+    @include vars.local(toggle-checked-active-color-tick, var(--ds-toggle-checked-color-active-tick));
   }
 }
 

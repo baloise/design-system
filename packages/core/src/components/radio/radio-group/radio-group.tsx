@@ -71,7 +71,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -198,7 +198,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    */
   @Prop()
   @OneOf(RADIO_TILE_COLORS)
-  readonly tileColor: RadioTileColor = ''
+  readonly tileColor?: RadioTileColor
 
   /**
    * The value of the radio group.
@@ -233,7 +233,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -263,7 +263,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsChange', { capture: true, target: 'document' })
@@ -350,7 +350,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** @internal */
@@ -371,7 +371,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleValueChange = async () => {
@@ -408,7 +408,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private passDownAttributes() {
@@ -466,7 +466,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

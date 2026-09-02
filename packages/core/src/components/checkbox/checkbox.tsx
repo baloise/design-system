@@ -9,6 +9,7 @@ import {
   CheckboxChangeDetail,
   CHECKBOX_LABEL_POSITIONS,
   CHECKBOX_TILE_COLORS,
+  CHECKBOX_GROUP_COLUMNS,
 } from './checkbox.interfaces'
 import { DsComponentInterface } from '@global'
 import { HTMLStencilElement } from '@stencil/core/internal'
@@ -17,8 +18,11 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  * Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.
  *
  * @slot - The checkbox label content.
- * @part checkbox - The native HTML input element.
- * @part container - The checkbox and label wrapper.
+ * @slot hint - A `ds-hint` shown alongside the label. In tile layout it is positioned in the top right corner.
+ * @part label - The label wrapper element.
+ * @part input - The native HTML input element.
+ * @part slot - The content slot wrapper.
+ * @part hint - The hint slot wrapper.
  */
 @Component({
   tag: 'ds-checkbox',
@@ -45,7 +49,7 @@ export class Checkbox implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -127,7 +131,7 @@ export class Checkbox implements DsComponentInterface {
    */
   @Prop()
   @OneOf(CHECKBOX_TILE_COLORS)
-  readonly tileColor: CheckboxTileColor = ''
+  readonly tileColor?: CheckboxTileColor
 
   /**
    * Defines the layout of the input
@@ -147,18 +151,21 @@ export class Checkbox implements DsComponentInterface {
    * @internal
    */
   @Prop()
+  @OneOf(CHECKBOX_GROUP_COLUMNS)
   readonly cols: CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
+  @OneOf(CHECKBOX_GROUP_COLUMNS)
   readonly colsTablet: CheckboxGroupColumns = 1
 
   /**
    * @internal
    */
   @Prop()
+  @OneOf(CHECKBOX_GROUP_COLUMNS)
   readonly colsMobile: CheckboxGroupColumns = 1
 
   /**
@@ -178,7 +185,7 @@ export class Checkbox implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback(): void {
@@ -192,8 +199,8 @@ export class Checkbox implements DsComponentInterface {
   }
 
   /**
-   * LISTENERS
-   * ------------------------------------------------------
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('reset', { capture: true, target: 'document' })
@@ -205,27 +212,37 @@ export class Checkbox implements DsComponentInterface {
   }
 
   /**
-   * LISTENERS
-   * ------------------------------------------------------
-   */
-
-  /**
-   * PUBLIC METHODS
-   * ------------------------------------------------------
-   */
-
-  /**
-   * GETTERS
-   * ------------------------------------------------------
-   */
-
-  /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleChange = (ev: Event) => {
     this.checked = (ev.target as HTMLInputElement).checked
+    this.dsChange.emit(this.checked)
+    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+  }
+
+  private handleClick = (ev: MouseEvent) => {
+    if (this.disabled || this.readonly) {
+      return
+    }
+
+    const element = ev.target as HTMLAnchorElement
+    if (element.href) {
+      return
+    }
+
+    // Prevent the native `<label>` default action, which fails to forward the click to the
+    // input when the slotted content contains its own nested `<label>` element (e.g. `ds-label`).
+    ev.preventDefault()
+
+    // Clicking the hint should open/close its panel without toggling the checkbox.
+    if ((ev.target as HTMLElement).closest?.('[slot="hint"]')) {
+      return
+    }
+
+    this.nativeInput?.focus()
+    this.checked = !this.checked
     this.dsChange.emit(this.checked)
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
   }
@@ -243,8 +260,17 @@ export class Checkbox implements DsComponentInterface {
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private hasHint(): boolean {
+    return this.el.querySelector('[slot="hint"]') !== null
+  }
+
+  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -266,6 +292,7 @@ export class Checkbox implements DsComponentInterface {
           [`has-cols-${this.colsTablet}-tablet`]: this.tile && this.colsTablet > 1,
           [`has-cols-${this.colsMobile}-mobile`]: this.tile && this.colsMobile > 1,
         }}
+        onClick={this.handleClick}
       >
         <label id="label" part="label">
           <input
@@ -287,6 +314,11 @@ export class Checkbox implements DsComponentInterface {
           <div id="slot" part="slot">
             <slot>{this.label}</slot>
           </div>
+          {this.hasHint() && (
+            <div id="hint" part="hint">
+              <slot name="hint"></slot>
+            </div>
+          )}
         </label>
       </Host>
     )

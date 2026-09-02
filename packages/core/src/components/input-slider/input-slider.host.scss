@@ -196,30 +196,30 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-form-description-color: var(--ds-form-description-color-danger);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
 
-  --mod-input-slider-connect-color: var(--ds-form-container-color-danger-border);
-  --mod-input-slider-thumb-border-color: var(--ds-form-container-color-danger-border);
+  --mod-input-slider-connect-color: var(--ds-alias-text-color-danger);
+  --mod-input-slider-thumb-border-color: var(--ds-alias-text-color-danger);
 }
 
 //
 // Valid or Color Success
 // --------------------------------
 :host(.is-success) {
-  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-description-color: var(--ds-form-success-description-color);
 
-  --mod-input-slider-connect-color: var(--ds-form-container-color-success-border);
-  --mod-input-slider-thumb-border-color: var(--ds-form-container-color-success-border);
+  --mod-input-slider-connect-color: var(--ds-alias-text-color-success);
+  --mod-input-slider-thumb-border-color: var(--ds-alias-text-color-success);
 }
 
 //
 // Color Warning
 // --------------------------------
 :host(.is-warning) {
-  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
 
-  --mod-input-slider-connect-color: var(--ds-form-container-color-warning-border);
-  --mod-input-slider-thumb-border-color: var(--ds-form-container-color-warning-border);
+  --mod-input-slider-connect-color: var(--ds-alias-text-color-warning);
+  --mod-input-slider-thumb-border-color: var(--ds-alias-text-color-warning);
 }
 
 //
@@ -257,8 +257,8 @@
     cursor: default;
   }
 
-  --mod-form-label-color: var(--ds-form-label-color-disabled);
-  --mod-form-description-color: var(--ds-form-description-color-disabled);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
 
   --mod-input-slider-track-color: var(--ds-global-color-grey-1);
   --mod-input-slider-connect-color: var(--ds-global-color-grey-3);

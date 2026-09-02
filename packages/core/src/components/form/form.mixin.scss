@@ -22,18 +22,17 @@
  */
 
 @mixin vars-container() {
-  @include vars.local(form-container-background, var(--ds-form-container-color-base-background));
-  @include vars.local(form-container-border-color, var(--ds-form-container-color-base-border));
-  @include vars.local(form-container-border-width, var(--ds-form-container-border-width));
+  @include vars.local(form-container-background, var(--ds-form-default-container-background));
+  @include vars.local(form-container-border, var(--ds-form-default-container-border));
   @include vars.local(form-container-radius, var(--ds-form-container-radius));
 
-  @include vars.local(form-container-hover-background, var(--ds-form-container-color-hover-background));
-  @include vars.local(form-container-active-background, var(--ds-form-container-color-active-background));
-  @include vars.local(form-container-focus-background, var(--ds-form-container-color-focus-background));
+  @include vars.local(form-container-hover-background, var(--ds-form-hover-container-background));
+  @include vars.local(form-container-active-background, var(--ds-form-active-container-background));
+  @include vars.local(form-container-focus-background, var(--ds-form-focus-container-background));
 
-  @include vars.local(form-container-hover-border, var(--ds-form-container-color-hover-border));
-  @include vars.local(form-container-active-border, var(--ds-form-container-color-active-border));
-  @include vars.local(form-container-focus-border, var(--ds-form-container-color-focus-border));
+  @include vars.local(form-container-hover-border, var(--ds-form-hover-container-border));
+  @include vars.local(form-container-active-border, var(--ds-form-active-container-border));
+  @include vars.local(form-container-focus-border, var(--ds-form-focus-container-border));
 }
 
 // $bordered: false drops the background/border/hover/active/focus-within styling entirely,
@@ -53,28 +52,28 @@
       padding-inline: 0.5rem;
 
       background: var(--_form-container-background);
-      border: var(--_form-container-border-width) solid var(--_form-container-border-color);
+      border: var(--_form-container-border);
       border-radius: var(--_form-container-radius);
 
       @include hover {
         &:hover,
         &.is-hovered {
           background: var(--_form-container-hover-background);
-          border-color: var(--_form-container-hover-border);
+          border: var(--_form-container-hover-border);
         }
       }
 
       &:active,
       &.is-pressed {
         background: var(--_form-container-active-background);
-        border-color: var(--_form-container-active-border);
+        border: var(--_form-container-active-border);
       }
 
       &:focus-within,
       &.is-focused {
         &:not(:active) {
           background: var(--_form-container-focus-background);
-          border-color: var(--_form-container-focus-border);
+          border: var(--_form-container-focus-border);
         }
       }
     }
@@ -87,11 +86,11 @@
  */
 
 @mixin vars-label() {
-  @include vars.local(form-label-color, var(--ds-form-label-color-base));
-  @include vars.local(form-label-family, var(--ds-form-label-family));
-  @include vars.local(form-label-weight, var(--ds-form-label-weight));
-  @include vars.local(form-label-line-height, var(--ds-form-label-line-height));
-  @include vars.local(form-label-size, var(--ds-form-label-size-device));
+  @include vars.local(form-label-color, var(--ds-form-default-label-color));
+  @include vars.local(form-label-family, var(--ds-form-default-label-typo-font-family));
+  @include vars.local(form-label-weight, var(--ds-form-default-label-typo-font-weight));
+  @include vars.local(form-label-line-height, var(--ds-form-default-label-typo-line-height));
+  @include vars.local(form-label-size, var(--ds-form-default-label-typo-font-size));
 }
 
 @mixin label($selector: 'label') {
@@ -133,11 +132,11 @@
  */
 
 @mixin vars-description() {
-  @include vars.local(form-description-color, var(--ds-form-description-color-base));
-  @include vars.local(form-description-family, var(--ds-form-description-family));
-  @include vars.local(form-description-weight, var(--ds-form-description-weight));
-  @include vars.local(form-description-line-height, var(--ds-form-description-line-height));
-  @include vars.local(form-description-size, var(--ds-form-description-size-device));
+  @include vars.local(form-description-color, var(--ds-form-default-description-color));
+  @include vars.local(form-description-family, var(--ds-form-default-description-typo-font-family));
+  @include vars.local(form-description-weight, var(--ds-form-default-description-typo-font-weight));
+  @include vars.local(form-description-line-height, var(--ds-form-default-description-typo-line-height));
+  @include vars.local(form-description-size, var(--ds-form-default-description-typo-font-size));
 }
 
 @mixin description($selector: '#description') {

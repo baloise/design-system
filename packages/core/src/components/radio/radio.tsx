@@ -43,9 +43,11 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The radio label content.
  * @slot helper - The helper or hint text below the radio.
+ * @slot hint - A `ds-hint` shown alongside the label. In tile layout it is positioned in the top right corner.
  * @part label - The label wrapper element.
  * @part input - The native HTML input element.
  * @part slot - The content slot wrapper.
+ * @part hint - The hint slot wrapper.
  */
 @Component({
   tag: 'ds-radio',
@@ -77,7 +79,7 @@ export class Radio implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -183,7 +185,7 @@ export class Radio implements DsComponentInterface {
    */
   @Prop()
   @OneOf(RADIO_TILE_COLORS)
-  readonly tileColor: RadioTileColor = ''
+  readonly tileColor?: RadioTileColor
 
   /**
    * A DOMString representing the value of the radio. This is not displayed on the
@@ -209,7 +211,7 @@ export class Radio implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -244,7 +246,7 @@ export class Radio implements DsComponentInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { capture: true, target: 'document' })
@@ -260,7 +262,7 @@ export class Radio implements DsComponentInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -304,7 +306,7 @@ export class Radio implements DsComponentInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handlePointerDown = () => (this.keyboardMode = false)
@@ -349,6 +351,12 @@ export class Radio implements DsComponentInterface {
       return
     }
 
+    // Clicking the hint should open/close its panel without selecting the radio.
+    if ((ev.target as HTMLElement).closest?.('[slot="hint"]')) {
+      ev.preventDefault()
+      return
+    }
+
     if (this.wasFocused) {
       this.focused = true
     }
@@ -358,7 +366,7 @@ export class Radio implements DsComponentInterface {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private get group(): HTMLDsRadioGroupElement | null {
@@ -378,9 +386,13 @@ export class Radio implements DsComponentInterface {
     this.setChecked(this.checked)
   }
 
+  private hasHint(): boolean {
+    return this.el.querySelector('[slot="hint"]') !== null
+  }
+
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -431,6 +443,11 @@ export class Radio implements DsComponentInterface {
           <div id="slot" part="slot">
             <slot></slot>
           </div>
+          {this.hasHint() && (
+            <div id="hint" part="hint">
+              <slot name="hint"></slot>
+            </div>
+          )}
         </label>
       </Host>
     )

@@ -90,7 +90,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -324,54 +324,8 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   @Event() dsChange!: EventEmitter<DateChangeDetail>
 
   /**
-   * PUBLIC LISTENERS
-   * ------------------------------------------------------
-   */
-
-  @Listen('click', { capture: true, target: 'document' })
-  listenToClick(ev: MouseEvent) {
-    this.control.listenOnClick(ev)
-
-    // Close popup on outside-click using composedPath for shadow-DOM awareness.
-    if (this.isOpen) {
-      const path = ev.composedPath() as EventTarget[]
-      const insideCalendar = path.includes(this.popupHostEl ?? this.el)
-      if (!insideCalendar) {
-        raf(() => {
-          this.isOpen = false
-        })
-      }
-    }
-  }
-
-  @Listen('keydown', { target: 'document' })
-  listenToKeyDown(ev: KeyboardEvent) {
-    if (!this.isOpen) return
-    if (isEscapeKey(ev)) {
-      ev.stopPropagation()
-      this.isOpen = false
-    }
-  }
-
-  @Listen('reset', { capture: true, target: 'document' })
-  listenToReset(ev: UIEvent) {
-    this.control.listenOnReset(ev)
-    this.datePicker?.clear({ silent: true })
-    // FormControl schedules a setTimeout that writes the raw ISO value into nativeEl,
-    // bypassing IMask. IMask's internal _value is already correct but the DOM is wrong.
-    // We queue a fix that directly restores the display format to the DOM input.
-    setTimeout(() => {
-      const nativeEl = this.control.nativeEl as HTMLInputElement | undefined
-      if (nativeEl) {
-        nativeEl.value = isoToDisplay(this.value, getDisplayFormat(this.region))
-      }
-      this.datePicker?.syncFromValue(this.value)
-    })
-  }
-
-  /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -430,8 +384,54 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   }
 
   /**
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenToClick(ev: MouseEvent) {
+    this.control.listenOnClick(ev)
+
+    // Close popup on outside-click using composedPath for shadow-DOM awareness.
+    if (this.isOpen) {
+      const path = ev.composedPath() as EventTarget[]
+      const insideCalendar = path.includes(this.popupHostEl ?? this.el)
+      if (!insideCalendar) {
+        raf(() => {
+          this.isOpen = false
+        })
+      }
+    }
+  }
+
+  @Listen('keydown', { target: 'document' })
+  listenToKeyDown(ev: KeyboardEvent) {
+    if (!this.isOpen) return
+    if (isEscapeKey(ev)) {
+      ev.stopPropagation()
+      this.isOpen = false
+    }
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  listenToReset(ev: UIEvent) {
+    this.control.listenOnReset(ev)
+    this.datePicker?.clear({ silent: true })
+    // FormControl schedules a setTimeout that writes the raw ISO value into nativeEl,
+    // bypassing IMask. IMask's internal _value is already correct but the DOM is wrong.
+    // We queue a fix that directly restores the display format to the DOM input.
+    setTimeout(() => {
+      const nativeEl = this.control.nativeEl as HTMLInputElement | undefined
+      if (nativeEl) {
+        nativeEl.value = isoToDisplay(this.value, getDisplayFormat(this.region))
+      }
+      this.datePicker?.syncFromValue(this.value)
+    })
+  }
+
+  /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -472,35 +472,9 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   }
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
    */
-
-  private initMask() {
-    const inputEl = this.control.nativeEl as HTMLInputElement | undefined
-    if (!inputEl) return
-
-    this.dateMask = createDateMask({
-      inputEl,
-      format: getDisplayFormat(this.region),
-      initialValue: this.value,
-      onAccept: isoValue => {
-        this.dsInput.emit(isoValue)
-      },
-      onComplete: isoValue => {
-        if (!checkIsWithinRange(isoValue, this.min, this.max, this.minYearProp, this.maxYearProp, this.allowedDates)) {
-          raf(() => this.dateMask?.syncFromISO(null))
-          return
-        }
-        this.updatingFromMask = true
-        this.value = isoValue
-        this.control.inputValue = isoValue
-        this.datePicker?.syncFromValue(isoValue)
-        this.dsChange.emit(isoValue)
-        this.updatingFromMask = false
-      },
-    })
-  }
 
   private handleClick = (ev: MouseEvent) => {
     this.control.onClick(ev)
@@ -533,8 +507,39 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private initMask() {
+    const inputEl = this.control.nativeEl as HTMLInputElement | undefined
+    if (!inputEl) return
+
+    this.dateMask = createDateMask({
+      inputEl,
+      format: getDisplayFormat(this.region),
+      initialValue: this.value,
+      onAccept: isoValue => {
+        this.dsInput.emit(isoValue)
+      },
+      onComplete: isoValue => {
+        if (!checkIsWithinRange(isoValue, this.min, this.max, this.minYearProp, this.maxYearProp, this.allowedDates)) {
+          raf(() => this.dateMask?.syncFromISO(null))
+          return
+        }
+        this.updatingFromMask = true
+        this.value = isoValue
+        this.control.inputValue = isoValue
+        this.datePicker?.syncFromValue(isoValue)
+        this.dsChange.emit(isoValue)
+        this.updatingFromMask = false
+      },
+    })
+  }
+
+  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

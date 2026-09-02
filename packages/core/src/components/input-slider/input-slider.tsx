@@ -77,7 +77,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -131,7 +131,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
    */
   @Prop()
   @OneOf(INPUT_SLIDER_BRAND_COLORS)
-  readonly brandColor: InputSliderBrandColor = ''
+  readonly brandColor?: InputSliderBrandColor
 
   /**
    * If `true` the component gets an invalid style.
@@ -268,7 +268,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -318,7 +318,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { capture: true, target: 'document' })
@@ -349,7 +349,7 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -380,27 +380,8 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   }
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private setValue(newValue: number) {
-    if (this.value === newValue) return
-    this.value = newValue
-    this.dsChange.emit(newValue)
-  }
-
-  private syncFormValue(value: number) {
-    this.internals.setFormValue(String(value))
-  }
-
-  private syncDisabledState() {
-    this.picker?.setDisabled(this.disabled || this.readonly)
-  }
-
-  /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleFocus = (ev: FocusEvent) => {
@@ -424,8 +405,27 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private setValue(newValue: number) {
+    if (this.value === newValue) return
+    this.value = newValue
+    this.dsChange.emit(newValue)
+  }
+
+  private syncFormValue(value: number) {
+    this.internals.setFormValue(String(value))
+  }
+
+  private syncDisabledState() {
+    this.picker?.setDisabled(this.disabled || this.readonly)
+  }
+
+  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

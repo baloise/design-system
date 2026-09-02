@@ -1,6 +1,6 @@
 export const INPUT_COLORS = ['primary', 'danger', 'success', 'warning', ''] as const
 export const INPUT_AUTOCORRECTS = ['on', 'off', ''] as const
-export const INPUT_INPUT_MODES = ['none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search', ''] as const
+export const INPUT_INPUT_MODES = ['none', 'text', 'tel', 'url', 'email', 'numeric', 'decimal', 'search'] as const
 export const INPUT_MASKS = [
   'vehicle-registration-number',
   'contract-number',
