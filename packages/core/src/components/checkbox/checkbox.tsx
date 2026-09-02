@@ -234,7 +234,7 @@ export class Checkbox implements DsComponentInterface {
 
     // A click on the native input itself already toggles it and fires `change`, which
     // `handleChange` handles. Only intervene for clicks on slotted content. `ev.target` is
-    // retargeted to the host across the shadow boundary, so check the composed path instead.
+    // retarget to the host across the shadow boundary, so check the composed path instead.
     if (ev.composedPath()[0] === this.nativeInput) {
       return
     }
