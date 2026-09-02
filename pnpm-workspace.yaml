@@ -47,6 +47,7 @@ overrides:
   '@hono/node-server@<2.0.5': 2.1.0
   'hono@<4.12.34': 4.13.1
   'nanoid@<3.3.18': 3.3.18
+  'browserslist@<4.28.7': 4.28.8
 
 # Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
