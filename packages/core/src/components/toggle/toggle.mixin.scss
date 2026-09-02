@@ -78,8 +78,8 @@
   cursor: pointer;
   user-select: none;
   color: var(--_toggle-label-base-color);
-  font-family: var(--ds-global-font-family-text);
-  line-height: var(--ds-typography-line-height-base);
+  font-family: var(--ds-alias-text-family-text);
+  line-height: var(--ds-alias-text-line-height-text);
   padding-top: var(--_toggle-padding-y);
   padding-bottom: var(--_toggle-padding-y);
   min-height: var(--_toggle-min-height);
