@@ -35,7 +35,7 @@
 
 :host {
   display: inline-block;
-  width: var(--ds-button-width, fit-content);
+  width: var(--_button-width);
 }
 
 :host #button {

@@ -36,7 +36,7 @@ $host-selector: ('#button');
   @include vars.local(button-color-border-active, var(--ds-button-color-primary-active-border));
   @include vars.local(button-color-background-active, var(--ds-button-color-primary-active-background));
 
-  @include vars.local(button-width, var(--ds-button-width, fit-content));
+  @include vars.local(button-width, fit-content);
 
   @include vars.local(button-gap, var(--ds-button-size-base-gap));
   @include vars.local(button-min-height, var(--ds-button-size-base-min-height));
@@ -206,7 +206,7 @@ $host-selector: ('#button');
 @mixin text-decoration() {
   text-decoration: underline;
   text-underline-offset: 0.25rem;
-  text-decoration-thickness: var(--ds-link-border-width);
+  text-decoration-thickness: var(--ds-link-underline-width);
 }
 
 @include hybrid.host($use-host) {

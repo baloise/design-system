@@ -4,7 +4,7 @@
 @use '../../vars' as vars;
 @use '../form/form.mixin' as form;
 @use '../input/input.mixin' as input;
-@use '../input/clear-button.mixin' as clear-button;
+@use '../close/close.mixin' as close-mx;
 
 // Icons reused by both the single-select checkmark and the multi-select checkbox / deselect buttons,
 // kept as single sources of truth so the two usages of each can't drift apart.
@@ -203,37 +203,37 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
  */
 
 :host(.is-danger) {
-  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
-  --mod-form-description-color: var(--ds-form-description-color-danger);
-  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-border: var(--ds-form-danger-container-border);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-form-container-hover-border: var(--ds-form-danger-container-border);
+  --mod-form-container-active-border: var(--ds-form-danger-container-border);
 }
 
 :host(.is-success) {
-  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
-  --mod-form-description-color: var(--ds-form-description-color-success);
-  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-border: var(--ds-form-success-container-border);
+  --mod-form-description-color: var(--ds-form-success-description-color);
+  --mod-form-container-hover-border: var(--ds-form-success-container-border);
+  --mod-form-container-active-border: var(--ds-form-success-container-border);
 }
 
 :host(.is-warning) {
-  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
-  --mod-form-description-color: var(--ds-form-description-color-warning);
-  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-border: var(--ds-form-warning-container-border);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
+  --mod-form-container-hover-border: var(--ds-form-warning-container-border);
+  --mod-form-container-active-border: var(--ds-form-warning-container-border);
 }
 
 :host(.is-disabled) {
   pointer-events: none;
   cursor: default;
 
-  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
-  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
-  --mod-form-label-color: var(--ds-form-label-color-disabled);
-  --mod-form-description-color: var(--ds-form-description-color-disabled);
+  --mod-form-container-background: var(--ds-form-disabled-container-background);
+  --mod-form-container-border: var(--ds-form-disabled-container-border);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
 
-  --mod-select-color: var(--ds-form-control-color-value-disabled);
-  --mod-select-placeholder: var(--ds-form-control-color-placeholder-disabled);
+  --mod-select-color: var(--ds-form-disabled-control-value-color);
+  --mod-select-placeholder: var(--ds-form-disabled-control-placeholder-color);
 }
 
 /**
@@ -390,36 +390,25 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
 // Clearable button / deselect
 :host {
   .ss-main {
-    @include clear-button.style('.ss-deselect');
+    @include close-mx.style('.ss-deselect', $background: false);
   }
 
   .ss-main .ss-deselect {
-    &::after {
-      position: absolute;
-      content: '';
-      display: block;
-      width: 1rem;
-      height: 1rem;
-      margin-inline: var(--ss-icon-spacing);
-      @include mask-icon($select-icon-close, 80%);
-      background-color: var(--_select-icon-color);
-      transition: transform var(--ss-animation-timing) ease-in-out;
-    }
+    --close-color-icon: var(--_select-icon-color);
+    --close-color-focus: var(--_select-focus-ring-color);
+
+    margin-inline: var(--ss-icon-spacing);
 
     @include hover {
       &:hover,
       &.is-hovered {
-        &::after {
-          background-color: var(--_select-icon-hover-color);
-        }
+        --close-color-icon: var(--_select-icon-hover-color);
       }
     }
 
     &:active,
     &.is-pressed {
-      &::after {
-        background-color: var(--_select-icon-active-color);
-      }
+      --close-color-icon: var(--_select-icon-active-color);
     }
 
     svg {
@@ -467,7 +456,7 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     min-height: 1.5rem;
     padding-block: var(--ds-tag-size-sm-space-y);
     padding-inline: var(--ds-tag-size-sm-space-x);
-    border-radius: var(--ds-tag-radius-base);
+    border-radius: var(--ds-tag-radius);
 
     background-color: var(--_select-tag-background-color);
 
@@ -481,48 +470,17 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     }
 
     .ss-value-delete {
-      position: relative;
-      margin: 0;
-      padding: 0;
-      width: 20px;
-      height: 20px;
-      border: none;
-      border-radius: var(--ds-close-radius);
-      background-color: var(--ds-close-color-background-base);
-      appearance: none;
-      outline: none;
-      margin-left: 0.25rem;
-      margin-right: -0.5rem;
+      @include close-mx.style('&');
 
-      &::after {
-        display: block;
-        content: '';
-        width: 10px;
-        height: 10px;
-        margin-left: 5px;
-        margin-right: 5px;
-        @include mask-icon($select-icon-close);
-        background-color: var(--ds-close-icon-color-base);
-      }
+      --close-size-icon: 20px;
+      --close-color-focus: var(--_select-focus-ring-color);
+
+      margin: 0 -0.5rem 0 0.25rem;
+      padding: 0;
+      box-sizing: border-box;
 
       svg {
         display: none;
-      }
-
-      @include hover {
-        &:hover {
-          background-color: var(--ds-close-color-background-hover);
-        }
-      }
-
-      &:active {
-        background-color: var(--ds-close-color-background-active);
-      }
-
-      &:focus-visible {
-        &:not(:active) {
-          @include focus-shadow(var(--_select-focus-ring-color));
-        }
       }
     }
   }

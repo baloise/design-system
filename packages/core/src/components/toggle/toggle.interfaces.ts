@@ -1,5 +1,5 @@
 export const TOGGLE_GROUP_COLUMNS = [1, 2, 3, 4] as const
-export const TOGGLE_TILE_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
+export const TOGGLE_TILE_COLORS = ['purple', 'green', 'yellow', 'red'] as const
 export const TOGGLE_LABEL_POSITIONS = ['left', 'top', 'right'] as const
 
 export type ToggleGroupColumns = (typeof TOGGLE_GROUP_COLUMNS)[number]

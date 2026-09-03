@@ -48,7 +48,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -77,7 +77,7 @@ export class Toggle implements DsComponentInterface {
    */
   @Prop()
   @OneOf(TOGGLE_TILE_COLORS)
-  readonly color: ToggleTileColor = ''
+  readonly color?: ToggleTileColor
 
   /**
    * @internal
@@ -161,7 +161,9 @@ export class Toggle implements DsComponentInterface {
    * client-side, but on the server this is the value given to the data
    * submitted with the toggle's name.
    */
-  @Prop() readonly value: string | number = 'on'
+  @Prop()
+  @Type('string')
+  readonly value: string | number = 'on'
 
   /**
    * Emitted when the toggle loses focus.
@@ -180,7 +182,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback(): void {
@@ -195,7 +197,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('reset', { capture: true, target: 'document' })
@@ -208,7 +210,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleBlur = (ev: FocusEvent) => {
@@ -231,7 +233,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
