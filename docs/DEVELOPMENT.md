@@ -23,8 +23,8 @@ This guide covers local development setup and common workflows for the Helvetia 
 
 ### Prerequisites
 
-- **Node.js**: >=24 <25 (check with `node --version`)
-- **pnpm**: 10.x (pinned via `packageManager`; check with `pnpm --version`)
+- **Node.js**: >=24 <25 (check with `node --version`; this repo ships an `.nvmrc`)
+- **pnpm**: 11.x — pinned as `pnpm@11.15.1` via `packageManager` in `package.json` (check with `pnpm --version`)
 - **Git**: for cloning and version control
 
 ### Initial Setup
@@ -33,6 +33,12 @@ This guide covers local development setup and common workflows for the Helvetia 
 # Clone the repository
 git clone https://github.com/baloise/design-system.git
 cd design-system
+
+# Switch to the Node.js version from .nvmrc
+nvm use
+
+# Enable Corepack so the pinned pnpm version is used
+corepack enable
 
 # Install dependencies (use ci for reproducible builds)
 pnpm install --frozen-lockfile
@@ -223,6 +229,16 @@ pnpm docs       # Start Storybook to preview stories
 See existing stories for patterns and helpers.
 
 ## Troubleshooting
+
+### `npm install` fails with `EUNSUPPORTEDPROTOCOL` / `catalog:`
+
+Use pnpm, not npm. This workspace declares shared versions as `"catalog:"` in `package.json` files (resolved from `pnpm-workspace.yaml`). npm does not understand that protocol.
+
+```bash
+nvm use
+corepack enable
+pnpm install --frozen-lockfile
+```
 
 ### Dependencies won't install
 
