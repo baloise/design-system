@@ -1,0 +1,303 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+
+$chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-phone-color: Text color inside the number field.
+ * @prop --input-phone-placeholder: Placeholder text color.
+ * @prop --input-phone-family: Font family of the number field text.
+ * @prop --input-phone-weight: Font weight of the number field text.
+ * @prop --input-phone-size: Font size of the number field text.
+ * @prop --input-phone-line-height: Line height of the number field text.
+ * @prop --input-phone-flag-width: Width of the country flag.
+ * @prop --input-phone-flag-height: Height of the country flag.
+ * @prop --input-phone-popup-background: Background color of the country picker popup.
+ * @prop --input-phone-popup-shadow: Box shadow of the country picker popup.
+ * @prop --input-phone-option-color: Text color of a country option.
+ * @prop --input-phone-option-background: Background color of a country option.
+ * @prop --input-phone-option-hover-background: Background color of a hovered or keyboard-active country option.
+ * @prop --input-phone-option-selected-background: Background color of the selected country option.
+ * @prop --input-phone-option-border: Border color between country options.
+ * @prop --form-container-background: Background color of the input container.
+ * @prop --form-container-border-color: Border color of the input container.
+ * @prop --form-container-border-width: Border width of the input container.
+ * @prop --form-container-radius: Border radius of the input container.
+ * @prop --form-container-hover-background: Container background color on hover.
+ * @prop --form-container-active-background: Container background color when active.
+ * @prop --form-container-focus-background: Container background color when focused.
+ * @prop --form-container-hover-border: Container border color on hover.
+ * @prop --form-container-active-border: Container border color when active.
+ * @prop --form-container-focus-border: Container border color when focused.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include input.vars('input-phone');
+
+  @include vars.local(input-phone-flag-width, calc(var(--ds-alias-space-base) * 1.5));
+  @include vars.local(input-phone-flag-height, var(--ds-alias-space-base));
+  @include vars.local(input-phone-popup-background, var(--ds-select-content-color-background-base));
+  @include vars.local(input-phone-popup-shadow, var(--ds-select-content-shadow));
+  @include vars.local(input-phone-option-color, var(--ds-select-option-color-text-base));
+  @include vars.local(input-phone-option-background, var(--ds-select-option-color-background-base));
+  @include vars.local(input-phone-option-hover-background, var(--ds-select-option-color-background-highlight));
+  @include vars.local(input-phone-option-selected-background, var(--ds-select-option-color-background-selected));
+  @include vars.local(input-phone-option-border, var(--ds-select-option-color-border-base));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  @include form.container();
+  @include form.label();
+  @include form.description();
+
+  @include input.style('input-phone');
+
+  #inner {
+    @include form.field();
+  }
+
+  #container {
+    position: relative;
+  }
+}
+
+/**
+ * Country trigger and number field
+ * --------------------------------
+ */
+
+:host {
+  #country-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    height: 100%;
+    margin: 0;
+    padding-inline: 0.25rem 0.5rem;
+    border: none;
+    border-inline-end: var(--_form-container-border);
+    border-radius: 0;
+    background: transparent;
+    color: var(--_input-phone-color);
+    font-family: var(--_input-phone-family);
+    font-weight: var(--_input-phone-weight);
+    font-size: var(--_input-phone-size);
+    line-height: var(--_input-phone-line-height);
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  .flag {
+    display: block;
+    width: var(--_input-phone-flag-width);
+    height: var(--_input-phone-flag-height);
+    object-fit: cover;
+    border-radius: 0.125rem;
+    flex-shrink: 0;
+    background: var(--_form-container-background);
+  }
+
+  .flag.is-empty {
+    box-shadow: inset 0 0 0 1px var(--_input-phone-option-border);
+  }
+
+  .calling-code {
+    white-space: nowrap;
+  }
+
+  .chevron {
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+    mask-image: $chevron-icon;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--_input-phone-color);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+:host(.is-open) {
+  .chevron {
+    transform: rotate(180deg);
+  }
+}
+
+/**
+ * Country picker popup
+ * --------------------------------
+ */
+
+:host {
+  #popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--ds-alias-z-index-popup);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 18.75rem;
+    margin: 0;
+    background: var(--_input-phone-popup-background);
+    box-shadow: var(--_input-phone-popup-shadow);
+    overflow: hidden;
+  }
+
+  .filter {
+    flex-shrink: 0;
+    padding: 0.5rem;
+    border-bottom: var(--_form-container-border);
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
+      padding: 0.25rem 0.5rem;
+      border: var(--_form-container-border);
+      border-radius: var(--_form-container-radius);
+      background: var(--_form-container-background);
+      color: var(--_input-phone-color);
+      font-family: var(--_input-phone-family);
+      font-size: var(--_input-phone-size);
+      outline: none;
+    }
+  }
+
+  .sr-only {
+    @include sr-only;
+  }
+
+  #country-list {
+    flex: 1;
+    overflow: auto;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--_input-phone-option-border);
+    background: var(--_input-phone-option-background);
+    color: var(--_input-phone-option-color);
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .option.is-selected {
+    background: var(--_input-phone-option-selected-background);
+  }
+
+  .option.is-active {
+    background: var(--_input-phone-option-hover-background);
+  }
+
+  .option-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .option-code {
+    flex-shrink: 0;
+    color: var(--_input-phone-color);
+  }
+
+  .no-results {
+    padding: 0.75rem 0.5rem;
+    color: var(--_input-phone-placeholder);
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+:host(.is-danger) {
+  --mod-form-container-border: var(--ds-form-danger-container-border);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-form-container-hover-border: var(--ds-form-danger-container-border);
+  --mod-form-container-active-border: var(--ds-form-danger-container-border);
+}
+
+:host(.is-success) {
+  --mod-form-container-border: var(--ds-form-success-container-border);
+  --mod-form-description-color: var(--ds-form-success-description-color);
+  --mod-form-container-hover-border: var(--ds-form-success-container-border);
+  --mod-form-container-active-border: var(--ds-form-success-container-border);
+}
+
+:host(.is-warning) {
+  --mod-form-container-border: var(--ds-form-warning-container-border);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
+  --mod-form-container-hover-border: var(--ds-form-warning-container-border);
+  --mod-form-container-active-border: var(--ds-form-warning-container-border);
+}
+
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input,
+  #country-trigger {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-container-background: var(--ds-form-disabled-container-background);
+  --mod-form-container-border: var(--ds-form-disabled-container-border);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
+
+  --mod-input-phone-color: var(--ds-form-disabled-control-value-color);
+  --mod-input-phone-placeholder: var(--ds-form-disabled-control-placeholder-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    .chevron {
+      transition: none;
+    }
+  }
+}
