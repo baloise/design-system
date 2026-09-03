@@ -30,6 +30,7 @@
 
   @include vars.local(brand-icon-tile-size, var(--ds-brand-icon-tile-size-base-mobile));
   @include vars.local(brand-icon-tile-size-tablet, var(--ds-brand-icon-tile-size-base-tablet));
+  @include vars.local(brand-icon-tile-size-desktop, var(--ds-brand-icon-tile-size-base-desktop));
   @include vars.local(brand-icon-tile-color-background, var(--ds-brand-icon-tile-color-purple));
   @include vars.local(brand-icon-tile-radius, var(--ds-brand-icon-tile-radius));
 }
@@ -106,6 +107,12 @@
     height: var(--_brand-icon-tile-size-tablet);
     --mod-brand-icon-size: var(--_brand-icon-tile-size-tablet);
     --mod-brand-icon-inner-size: var(--_brand-icon-tile-size-tablet);
+  }
+
+  @include desktop {
+    height: var(--_brand-icon-tile-size-desktop);
+    --mod-brand-icon-size: var(--_brand-icon-tile-size-desktop);
+    --mod-brand-icon-inner-size: var(--_brand-icon-tile-size-desktop);
   }
 }
 
