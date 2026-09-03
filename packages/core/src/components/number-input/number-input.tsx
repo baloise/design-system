@@ -93,7 +93,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -229,7 +229,9 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   /**
    * The numeric value of the input. `null` means no value.
    */
-  @Prop({ mutable: true, reflect: true }) value: number | null = null
+  @Prop({ mutable: true, reflect: true })
+  @Type('number')
+  value: number | null = null
   @Watch('value')
   valueChanged(newValue: number | null) {
     const isValueNotDefined = newValue === null || isNaN(newValue as number)
@@ -276,7 +278,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -303,7 +305,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { capture: true, target: 'document' })
@@ -343,7 +345,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -373,7 +375,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleInput = (_ev: Event) => {
@@ -440,7 +442,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private get nativeInput(): HTMLInputElement | undefined {
@@ -471,7 +473,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

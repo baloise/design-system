@@ -1,5 +1,4 @@
-import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core'
-import { HTMLStencilElement } from '@stencil/core/internal'
+import { Element, Component, Host, Method, Prop, State, h } from '@stencil/core'
 import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
@@ -13,6 +12,7 @@ import {
 import { i18nDsClose } from './close.i18n'
 import { BUTTON_COLORS, ButtonColor } from '../button/button.interfaces'
 import { CLOSE_BUTTON_SIZES, CLOSE_SIZES, CloseButtonSize, CloseSize } from './close.interfaces'
+import { HTMLStencilElement } from '@stencil/core/internal'
 
 /**
  * Close renders a button element for closing or dismissing UI components with customizable size and color.
@@ -36,8 +36,6 @@ export class Close implements DsComponentInterface, DsConfigObserver {
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
-
-  private rotation = 0
 
   /**
    * PUBLIC PROPERTY API
@@ -103,16 +101,6 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * PRIVATE METHODS
-   * ─────────────────────────────────────────────────────
-   */
-
-  private handleMouseEnter = (): void => {
-    this.rotation += 90
-    this.el.style.setProperty('--_close-icon-rotation', `${this.rotation}deg`)
-  }
-
-  /**
    * RENDER
    * ─────────────────────────────────────────────────────
    */
@@ -154,7 +142,6 @@ export class Close implements DsComponentInterface, DsConfigObserver {
           title={label}
           tabindex="0"
           disabled={this.disabled}
-          onMouseEnter={this.disabled ? undefined : this.handleMouseEnter}
         ></button>
       </Host>
     )

@@ -25,7 +25,13 @@ import {
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
-import { INPUT_COLORS, INPUT_INPUT_MODES, InputColor, InputAutocomplete } from '../input/input.interfaces'
+import {
+  INPUT_AUTOCOMPLETES,
+  INPUT_COLORS,
+  INPUT_INPUT_MODES,
+  InputColor,
+  InputAutocomplete,
+} from '../input/input.interfaces'
 import {
   TextareaWrap,
   TextareaInputMode,
@@ -75,7 +81,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -89,7 +95,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop()
-  @Type('string')
+  @OneOf(INPUT_AUTOCOMPLETES)
   readonly autocomplete: InputAutocomplete = 'off'
 
   /**
@@ -151,7 +157,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
    */
   @Prop()
   @OneOf(INPUT_INPUT_MODES)
-  readonly inputmode: TextareaInputMode = ''
+  readonly inputmode?: TextareaInputMode
 
   /**
    * If `true` the component gets an invalid style.
@@ -226,14 +232,16 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
   /**
    * The value of the textarea.
    */
-  @Prop({ mutable: true, reflect: true }) value: string | null = null
+  @Prop({ mutable: true, reflect: true })
+  @Type('string')
+  value: string | null = null
 
   /**
    * Indicates how the control wraps text.
    */
   @Prop()
   @OneOf(TEXTAREA_WRAPS)
-  readonly wrap: TextareaWrap = ''
+  readonly wrap?: TextareaWrap
 
   /**
    * Emitted when a keyboard input occurred.
@@ -267,7 +275,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -292,7 +300,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { capture: true, target: 'document' })
@@ -307,7 +315,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -347,7 +355,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleClick = (ev: MouseEvent) => {
@@ -368,7 +376,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

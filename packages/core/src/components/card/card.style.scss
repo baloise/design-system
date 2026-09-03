@@ -350,9 +350,11 @@ $spaces: ('sm', 'md', 'lg');
 
     @include tablet() {
       --mod-card-padding-left: calc(
-        var(--ds-card-space-base-device) + var(--ds-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+        var(--ds-card-space-base-device) + var(--ds-brand-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
       );
-      --mod-card-header-margin-left: calc(calc(var(--ds-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+      --mod-card-header-margin-left: calc(
+        calc(var(--ds-brand-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2)
+      );
     }
   }
 }
@@ -364,9 +366,11 @@ $spaces: ('sm', 'md', 'lg');
 
     @include tablet() {
       --mod-card-padding-left: calc(
-        var(--ds-card-space-base-device) + var(--ds-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
+        var(--ds-card-space-base-device) + var(--ds-brand-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
       );
-      --mod-card-header-margin-left: calc(calc(var(--ds-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2));
+      --mod-card-header-margin-left: calc(
+        calc(var(--ds-brand-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2)
+      );
     }
   }
 }

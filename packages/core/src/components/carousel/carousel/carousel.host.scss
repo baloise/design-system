@@ -10,7 +10,7 @@
 
 :host {
   @include vars.local(carousel-gap, var(--ds-carousel-gap));
-  @include vars.local(carousel-radius, var(--ds-carousel-radius, var(--ds-alias-radius-base)));
+  @include vars.local(carousel-radius, var(--ds-alias-radius-base));
   @include vars.local(carousel-control-color, var(--ds-carousel-control-color));
   @include vars.local(carousel-scroll-fade-bg, var(--ds-carousel-scroll-fade-bg));
   @include vars.local(

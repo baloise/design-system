@@ -4,7 +4,7 @@
 @use '../../vars' as vars;
 @use '../form/form.mixin' as form;
 @use '../input/input.mixin' as input;
-@use '../input/clear-button.mixin' as clear-button;
+@use '../close/close.mixin' as close-mx;
 @use '../button/button.mixin' as button-mx;
 
 /**
@@ -202,7 +202,7 @@
     }
   }
 
-  @include clear-button.style();
+  @include close-mx.style('#clear', $background: false);
 }
 
 /**
@@ -253,24 +253,24 @@
  */
 
 :host(.is-danger) {
-  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
-  --mod-form-description-color: var(--ds-form-description-color-danger);
-  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-border: var(--ds-form-danger-container-border);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-form-container-hover-border: var(--ds-form-danger-container-border);
+  --mod-form-container-active-border: var(--ds-form-danger-container-border);
 }
 
 :host(.is-success) {
-  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
-  --mod-form-description-color: var(--ds-form-description-color-success);
-  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-border: var(--ds-form-success-container-border);
+  --mod-form-description-color: var(--ds-form-success-description-color);
+  --mod-form-container-hover-border: var(--ds-form-success-container-border);
+  --mod-form-container-active-border: var(--ds-form-success-container-border);
 }
 
 :host(.is-warning) {
-  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
-  --mod-form-description-color: var(--ds-form-description-color-warning);
-  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-border: var(--ds-form-warning-container-border);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
+  --mod-form-container-hover-border: var(--ds-form-warning-container-border);
+  --mod-form-container-active-border: var(--ds-form-warning-container-border);
 }
 
 :host(.is-disabled) {
@@ -288,13 +288,13 @@
     --icon-color: var(--_date-trigger-icon-color-disabled);
   }
 
-  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
-  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
-  --mod-form-label-color: var(--ds-form-label-color-disabled);
-  --mod-form-description-color: var(--ds-form-description-color-disabled);
+  --mod-form-container-background: var(--ds-form-disabled-container-background);
+  --mod-form-container-border: var(--ds-form-disabled-container-border);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
 
-  --mod-date-color: var(--ds-form-control-color-value-disabled);
-  --mod-date-placeholder: var(--ds-form-control-color-placeholder-disabled);
+  --mod-date-color: var(--ds-form-disabled-control-value-color);
+  --mod-date-placeholder: var(--ds-form-disabled-control-placeholder-color);
 }
 
 /**

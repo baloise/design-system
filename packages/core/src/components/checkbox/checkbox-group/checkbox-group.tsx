@@ -73,7 +73,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -200,7 +200,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    */
   @Prop()
   @OneOf(CHECKBOX_TILE_COLORS)
-  readonly tileColor: CheckboxTileColor = ''
+  readonly tileColor?: CheckboxTileColor
 
   /**
    * The value of the control.
@@ -242,7 +242,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -272,7 +272,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsBlur', { capture: true, target: 'document' })
@@ -314,7 +314,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -329,7 +329,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleValueChange = async () => {
@@ -357,7 +357,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private formatValueToArray(value: any): any[] {
@@ -419,7 +419,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

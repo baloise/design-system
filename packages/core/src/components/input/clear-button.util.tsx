@@ -19,9 +19,5 @@ export const ClearButton: FunctionalComponent<ClearButtonProps> = ({
 }) => {
   if (!value || disabled || readonly) return null
   const label = i18nDsClearButton[language].clear
-  return (
-    <button id="clear" part="clear" type="button" aria-label={label} title={label} onClick={onClick}>
-      <ds-icon name="close" size="sm"></ds-icon>
-    </button>
-  )
+  return <button id="clear" part="clear" type="button" aria-label={label} title={label} onClick={onClick}></button>
 }
