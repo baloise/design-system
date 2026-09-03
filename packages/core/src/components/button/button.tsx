@@ -218,7 +218,7 @@ export class Button implements DsComponentInterface {
    */
   @Prop()
   @OneOf(BUTTON_BRAND_SIZES)
-  readonly brandSize: ButtonBrandSize = 'md'
+  readonly brandSize: ButtonBrandSize
 
   /**
    * The label of the button will not break

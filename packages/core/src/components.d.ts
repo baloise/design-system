@@ -392,7 +392,6 @@ export namespace Components {
         "brandIcon": string;
         /**
           * Size of the brand icon.
-          * @default 'md'
          */
         "brandSize": ButtonBrandSize;
         /**
@@ -5334,7 +5333,6 @@ declare namespace LocalJSX {
         "brandIcon"?: string;
         /**
           * Size of the brand icon.
-          * @default 'md'
          */
         "brandSize"?: ButtonBrandSize;
         /**

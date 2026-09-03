@@ -212,14 +212,6 @@
         }
       },
       "Composite": {
-        "Grey": {
-          "$type": "border",
-          "$value": {
-            "color": "{🔗 Alias.▭ Border.Color.Grey}",
-            "width": "{🔗 Alias.▭ Border.Width.Base}",
-            "style": "{🔗 Alias.▭ Border.Style.Solid}"
-          }
-        },
         "GreyDashed": {
           "$type": "border",
           "$value": {
@@ -491,6 +483,14 @@
           "$type": "border",
           "$value": {
             "color": "{🔗 Alias.🎨 Surface.WarningLight}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
+        },
+        "Grey": {
+          "$type": "border",
+          "$value": {
+            "color": "{🌐 Global.🌈 Color.Grey.2}",
             "width": "{🔗 Alias.▭ Border.Width.Base}",
             "style": "{🔗 Alias.▭ Border.Style.Solid}"
           }
@@ -1513,10 +1513,6 @@
         "$type": "color",
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
-      "Hover": {
-        "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Grey.1}"
-      },
       "Backdrop": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.6}"
@@ -1568,6 +1564,10 @@
       "Selected": {
         "$type": "color",
         "$value": "{🌐 Global.🌈 Color.Primary.1B}"
+      },
+      "Hover": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Grey.0}"
       }
     },
     "🎬 Action": {
@@ -2663,10 +2663,6 @@
           }
         }
       },
-      "SpaceY": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.XL}"
-      },
       "Gap": {
         "$type": "dimension",
         "$value": "{🔗 Alias.↔️ Space.Base}"
@@ -2685,6 +2681,10 @@
           "$type": "dimension",
           "$value": "{🌐 Global.📏 Dimension.Size.24}"
         }
+      },
+      "SpaceY": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.LG}"
       }
     },
     "Hint": {
@@ -2892,18 +2892,6 @@
           }
         }
       },
-      "Info": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
-          }
-        }
-      },
       "Success": {
         "Color": {
           "Text": {
@@ -3035,6 +3023,18 @@
         "LineHeight": {
           "$type": "number",
           "$value": "{🔗 Alias.🔤 Text.LineHeight.Single}"
+        }
+      },
+      "Info": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPrimaryLighter}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.PrimaryLighter}"
+          }
         }
       }
     },
@@ -3929,7 +3929,7 @@
           },
           "SpaceX": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.LG}"
+            "$value": "{🔗 Alias.↔️ Space.MD}"
           }
         },
         "SM": {
@@ -3995,10 +3995,6 @@
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.XS}"
           },
-          "SpaceX": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.LG}"
-          },
           "MinHeight": {
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.56}"
@@ -4006,6 +4002,10 @@
           "MinWidth": {
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.56}"
+          },
+          "SpaceX": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.MD}"
           }
         }
       }
@@ -4422,6 +4422,40 @@
         }
       }
     },
+    "DataItem": {
+      "Label": {
+        "FontWeight": {
+          "$type": "fontWeight",
+          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
+        },
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        }
+      },
+      "Value": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        }
+      },
+      "Color": {
+        "Required": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+        },
+        "Disabled": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
+        }
+      },
+      "Border": {
+        "Bottom": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
+        }
+      }
+    },
     "Date": {
       "Calendar": {
         "Weight": {
@@ -4683,21 +4717,7 @@
           "$value": "{🔗 Alias.🔵 Radius.Base}"
         },
         "Size": {
-          "XL": {
-            "Mobile": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.64}"
-            },
-            "Tablet": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.96}"
-            },
-            "Desktop": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.96}"
-            }
-          },
-          "Base": {
+          "SM": {
             "Mobile": {
               "$type": "dimension",
               "$value": "{🌐 Global.📏 Dimension.Size.32}"
@@ -4711,7 +4731,7 @@
               "$value": "{🌐 Global.📏 Dimension.Size.48}"
             }
           },
-          "LG": {
+          "Base": {
             "Mobile": {
               "$type": "dimension",
               "$value": "{🌐 Global.📏 Dimension.Size.48}"
@@ -4723,6 +4743,20 @@
             "Desktop": {
               "$type": "dimension",
               "$value": "{🌐 Global.📏 Dimension.Size.64}"
+            }
+          },
+          "LG": {
+            "Mobile": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.64}"
+            },
+            "Tablet": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.96}"
+            },
+            "Desktop": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.96}"
             }
           }
         }
@@ -6189,7 +6223,7 @@
             },
             "Base": {
               "$type": "border",
-              "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+              "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
             }
           }
         },
@@ -6299,14 +6333,7 @@
       },
       "Space": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Size.16}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Size.16}",
-            "tablet": "{🌐 Global.📏 Dimension.Size.32}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.40}"
-          }
-        }
+        "$value": "{🔗 Alias.↔️ Space.MD}"
       }
     },
     "AppNavbar": {
@@ -6687,20 +6714,6 @@
                 "$value": "{🧩 Component.Button.Color.Tertiary.Active.Border}"
               }
             },
-            "Text": {
-              "Base": {
-                "$type": "color",
-                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Base.Text}"
-              },
-              "Hover": {
-                "$type": "color",
-                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Hover.Text}"
-              },
-              "Active": {
-                "$type": "color",
-                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Active.Text}"
-              }
-            },
             "Background": {
               "Base": {
                 "$type": "color",
@@ -6708,11 +6721,25 @@
               },
               "Hover": {
                 "$type": "color",
-                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Hover.Background}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Hover.Background}"
               },
               "Active": {
                 "$type": "color",
-                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Active.Background}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Active.Background}"
+              }
+            },
+            "Text": {
+              "Base": {
+                "$type": "color",
+                "$value": "{🧩 Component.Button.Color.Tertiary.Base.Text}"
+              },
+              "Hover": {
+                "$type": "color",
+                "$value": "{🧩 Component.Button.Color.Tertiary.Hover.Text}"
+              },
+              "Active": {
+                "$type": "color",
+                "$value": "{🧩 Component.Button.Color.Tertiary.Active.Text}"
               }
             }
           }
@@ -8308,7 +8335,7 @@
         },
         "Base": {
           "$type": "border",
-          "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
         }
       },
       "Indicator": {
@@ -8443,13 +8470,13 @@
           "$value": "{🔗 Alias.▭ Border.Width.Base}"
         },
         "Color": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-          },
           "Filled": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
           }
         }
       },
@@ -8466,6 +8493,10 @@
           "Base": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
           }
         },
         "Typo": {
@@ -8535,13 +8566,13 @@
             }
           },
           "Disabled": {
-            "Text": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.OnGrey}"
-            },
             "Background": {
               "$type": "color",
               "$value": "{🔗 Alias.🎨 Surface.Grey}"
+            },
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
             }
           },
           "Invalid": {
@@ -8558,11 +8589,11 @@
         "Size": {
           "Base": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
+            "$value": "{🌐 Global.📏 Dimension.Size.32}"
           },
           "SM": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
+            "$value": "{🌐 Global.📏 Dimension.Size.24}"
           }
         }
       },
@@ -8681,10 +8712,6 @@
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Cell": {
-        "Border": {
-          "$type": "border",
-          "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
-        },
         "PaddingX": {
           "$type": "string",
           "$value": "0.75em"
@@ -8692,6 +8719,10 @@
         "PaddingY": {
           "$type": "string",
           "$value": "0.5em"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
         }
       },
       "Head": {

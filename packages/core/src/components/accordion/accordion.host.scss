@@ -142,23 +142,23 @@
 }
 
 :host(.is-h1) {
-  --mod-accordion-summary-font-size: var(--ds-heading-1-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-level-1-font-size);
 }
 
 :host(.is-h2) {
-  --mod-accordion-summary-font-size: var(--ds-heading-2-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-level-2-font-size);
 }
 
 :host(.is-h3) {
-  --mod-accordion-summary-font-size: var(--ds-heading-3-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-level-3-font-size);
 }
 
 :host(.is-h4) {
-  --mod-accordion-summary-font-size: var(--ds-heading-4-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-level-4-font-size);
 }
 
 :host(.is-h5) {
-  --mod-accordion-summary-font-size: var(--ds-heading-5-size-device);
+  --mod-accordion-summary-font-size: var(--ds-heading-level-5-font-size);
 }
 
 //

@@ -36,7 +36,7 @@ $host-selector: ('#notification');
   @include vars.local(notification-icon, var(--ds-notification-base-icon));
   @include vars.local(notification-icon-display, block);
 
-  @include vars.local(notification-space, var(--ds-card-space-base-device, 1.5rem));
+  @include vars.local(notification-space, var(--ds-card-space-base, 1.5rem));
   @include vars.local(notification-icon-space, 1.5rem);
 
   @include vars.local(notification-close-offset, 2rem); // extra space reserved when a close button is present

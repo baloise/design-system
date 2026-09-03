@@ -31,6 +31,7 @@
   @include vars.local(brand-icon-tile-size, var(--ds-brand-icon-tile-size-base-mobile));
   @include vars.local(brand-icon-tile-size-tablet, var(--ds-brand-icon-tile-size-base-tablet));
   @include vars.local(brand-icon-tile-size-desktop, var(--ds-brand-icon-tile-size-base-desktop));
+
   @include vars.local(brand-icon-tile-color-background, var(--ds-brand-icon-tile-color-purple));
   @include vars.local(brand-icon-tile-radius, var(--ds-brand-icon-tile-radius));
 }
@@ -131,19 +132,26 @@ $icon-sizes: ('sm', 'lg');
     --mod-brand-icon-size: var(--ds-brand-icon-size-#{$size});
     --mod-brand-icon-inner-size: var(--ds-brand-icon-size-#{$size});
   }
+
+  :host(.is-#{$size}.is-tile) {
+    --mod-brand-icon-tile-size: var(--ds-brand-icon-tile-size-#{$size}-mobile);
+    --mod-brand-icon-tile-size-tablet: var(--ds-brand-icon-tile-size-#{$size}-tablet);
+    --mod-brand-icon-tile-size-desktop: var(--ds-brand-icon-tile-size-#{$size}-desktop);
+    // --mod-brand-icon-inner-size: var(--ds-brand-icon-tile-size-#{$size});
+  }
 }
 
 //
 // Tile Sizes
-:host(.is-tile.is-sm) {
-  --mod-brand-icon-tile-size: var(--ds-brand-icon-tile-size-sm-mobile);
-  --mod-brand-icon-tile-size-tablet: var(--ds-brand-icon-tile-size-sm-tablet);
-}
+// :host(.is-tile.is-sm) {
+//   --mod-brand-icon-tile-size: var(--ds-brand-icon-tile-size-sm);
+//   --mod-brand-icon-tile-size-tablet: var(--ds-brand-icon-tile-size-sm);
+// }
 
-:host(.is-tile.is-lg) {
-  --mod-brand-icon-tile-size: var(--ds-brand-icon-tile-size-lg-mobile);
-  --mod-brand-icon-tile-size-tablet: var(--ds-brand-icon-tile-size-lg-tablet);
-}
+// :host(.is-tile.is-lg) {
+//   --mod-brand-icon-tile-size: var(--ds-brand-icon-tile-size-lg);
+//   --mod-brand-icon-tile-size-tablet: var(--ds-brand-icon-tile-size-lg);
+// }
 
 //
 // Colors
