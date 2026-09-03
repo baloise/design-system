@@ -63,8 +63,9 @@
     appearance: none;
     border: none;
     background: none;
-    width: calc(var(--_hint-trigger-size) + var(--_hint-trigger-space));
-    height: calc(var(--_hint-trigger-size) + var(--_hint-trigger-space));
+    padding: var(--_hint-trigger-space);
+    width: var(--_hint-trigger-size);
+    height: var(--_hint-trigger-size);
     border-radius: var(--_hint-trigger-radius);
     cursor: pointer;
     color: var(--_hint-trigger-color-background-base);
@@ -87,8 +88,8 @@
     }
 
     ds-icon {
-      --icon-size: var(--_hint-trigger-size);
-      --icon-inner-size: var(--_hint-trigger-size);
+      --icon-size: calc(var(--_hint-trigger-size) - var(--_hint-trigger-space));
+      --icon-inner-size: calc(var(--_hint-trigger-size) - var(--_hint-trigger-space));
     }
   }
 }

@@ -2715,10 +2715,6 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.↔️ Space.2XS}"
         },
-        "Size": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Size.16}"
-        },
         "Color": {
           "Background": {
             "Base": {
@@ -2734,6 +2730,10 @@
               "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
             }
           }
+        },
+        "Size": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.24}"
         }
       },
       "Heading": {
