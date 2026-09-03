@@ -1,0 +1,13 @@
+<h2>Input demo</h2>
+
+<p data-testid="input-value">Input value: {{ inputValue() }}</p>
+<ds-input data-testid="input" name="smoke-test-input" [value]="inputValue()" (dsInput)="onInput($event)" />
+
+<form [formGroup]="reactiveForm">
+  <ds-input data-testid="reactive-input" name="reactive-input" label="Name" formControlName="name" />
+</form>
+<p data-testid="reactive-value">Reactive value: {{ reactiveForm.controls.name.value }}</p>
+<button data-testid="toggle-reactive-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-value" type="button" (click)="setReactiveFormValue()">Set to Carol</button>

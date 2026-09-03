@@ -8,6 +8,8 @@ import { rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { generateAngularMeta } from '../packages/core/config/generate-angular-meta.mjs'
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const coreRoot = resolve(__dirname, '../packages/core')
 
@@ -38,7 +40,17 @@ function buildStencil() {
 }
 
 // ============================================================================
-// 2. Clean up stray output folders
+// 2. Generate Angular meta (per-component Inputs/Outputs constants)
+// ============================================================================
+// `generateAngularMeta()` itself skips when Stencil hasn't (re)written proxies.ts (dev/docs builds) — see
+// its own doc comment — so this doesn't need to separately re-derive that same condition from env vars.
+async function generateMeta() {
+  console.log('🅰️ Generating Angular meta...')
+  await generateAngularMeta()
+}
+
+// ============================================================================
+// 3. Clean up stray output folders
 // ============================================================================
 async function cleanUp() {
   console.log('🧹 Cleaning up temporary folders...')
@@ -65,7 +77,9 @@ async function main() {
     buildStencil()
     console.log()
 
-    await cleanUp()
+    // Independent of each other (meta is derived from proxies.ts, cleanup just removes stray folders), so
+    // run them concurrently instead of paying the sum of both durations.
+    await Promise.all([generateMeta(), cleanUp()])
 
     console.log('\n✨ Core build complete!')
   } catch (err) {

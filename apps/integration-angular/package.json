@@ -13,6 +13,7 @@
     "@angular/common": "22.1.4",
     "@angular/compiler": "22.1.4",
     "@angular/core": "22.1.4",
+    "@angular/forms": "22.1.4",
     "@angular/platform-browser": "22.1.4",
     "@baloise/ds-angular": "workspace:*",
     "@baloise/ds-css": "workspace:*",
