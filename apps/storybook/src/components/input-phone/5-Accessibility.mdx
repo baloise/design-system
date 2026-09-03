@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { A11yGuidelines, Banner, BannerTabs, Footer } from '../../../.storybook/blocks'
+import * as InputPhoneStories from './input-phone.stories'
+import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-config'
+
+<Meta title="Components/InputPhone/Accessibility" />
+
+<Banner label={'Accessibility'} section={INPUTPHONE_DOC_CONFIG.section} color={INPUTPHONE_DOC_CONFIG.color} />
+
+<BannerTabs of={InputPhoneStories} tabs={getInputPhoneTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Always Provide a Label',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Set a descriptive <code>label</code>. It is associated with the national-number field and included in the
+          country trigger's accessible name, so both controls have context.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Explain Invalid State in Text',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          When <code>invalid</code> is set, provide <code>invalidText</code> (or the <code>invalid-text</code> slot) so
+          assistive technology can announce why the value needs to change.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Keep Country Identity in Text, Not the Flag',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Flags are decorative. The trigger already exposes the localized country name and calling code — do not add a
+          redundant <code>alt</code> or <code>aria-label</code> on a custom flag.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't Omit the Label",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Never leave <code>label</code> empty. Without it, screen reader users hear a calling code and a number field
+          with no indication that they belong together as a phone number.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't Treat Formatting as Validation",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Do not assume a formatted value is a reachable phone number. Pair <code>invalid</code> with application-side
+          checks and an <code>invalidText</code> message rather than relying on grouping spaces.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: `<input type="tel">` / `inputmode="tel"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/tel) - Why the national field is `type="text"` with `inputmode="tel"`
+- [MDN: ARIA listbox role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listbox_role) - Pattern used by the country picker
+- [WCAG 2.2 — Name, Role, Value (4.1.2)](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) - Applies to the labeled number field and country trigger
+
+<Footer />

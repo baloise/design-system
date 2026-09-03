@@ -1,0 +1,27 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as InputPhoneStories from './input-phone.stories'
+import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-config'
+
+<Meta title="Components/InputPhone/Input Phone" />
+
+<Banner label={'Input Phone'} section={INPUTPHONE_DOC_CONFIG.section} color={INPUTPHONE_DOC_CONFIG.color} />
+
+<BannerTabs of={InputPhoneStories} tabs={getInputPhoneTabs('overview')} />
+
+<ComponentLead component="input-phone" />
+
+<CanvasWithCodePen of={InputPhoneStories.Basic} sourceState="shown" overflowVisible={true} />
+
+<Controls of={InputPhoneStories.Basic} />
+
+<ComponentPublicMethods component="input-phone" />
+
+<Footer />

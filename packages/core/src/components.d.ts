@@ -6879,7 +6879,7 @@ declare namespace LocalJSX {
          */
         "onDsChange"?: (event: DsInputPhoneCustomEvent<PhoneChangeDetail>) => void;
         /**
-          * Emitted when the selected country changes through the picker or a pasted international number.
+          * Emitted when the selected country changes through the picker.
          */
         "onDsCountryChange"?: (event: DsInputPhoneCustomEvent<PhoneCountryChangeDetail>) => void;
         /**
