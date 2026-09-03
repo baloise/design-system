@@ -30,6 +30,7 @@ $host-selector: ('#card');
   @include vars.local(card-padding-bottom, var(--ds-card-space-base));
 
   @include vars.local(card-header-grid-template-columns, 1fr auto);
+  @include vars.local(card-header-margin-left, 0);
 
   // only works without the mixin local() because of the grid-template-areas syntax
   --_card-header-grid-template-areas: var(
@@ -351,6 +352,7 @@ $spaces: ('sm', 'md', 'lg');
       --mod-card-padding-left: calc(
         var(--ds-card-space-base) + var(--ds-brand-icon-tile-size-lg) + calc(var(--_card-gap) / 2)
       );
+      --mod-card-header-margin-left: calc(calc(var(--ds-brand-icon-tile-size-lg) * -1) - calc(var(--_card-gap) / 2));
     }
   }
 }
@@ -364,6 +366,7 @@ $spaces: ('sm', 'md', 'lg');
       --mod-card-padding-left: calc(
         var(--ds-card-space-base) + var(--ds-brand-icon-tile-size-lg) + calc(var(--_card-gap) / 2)
       );
+      --mod-card-header-margin-left: calc(calc(var(--ds-brand-icon-tile-size-lg) * -1) - calc(var(--_card-gap) / 2));
     }
   }
 }
