@@ -25,8 +25,7 @@
  * @prop --form-field-gap - Gap between form field elements (label, input, help text).
  *
  * @prop --form-container-background - Background color of form control container.
- * @prop --form-container-border-color - Border color of form control container.
- * @prop --form-container-border-width - Border width of form control container.
+ * @prop --form-container-border - Border (width, style, color) of form control container.
  * @prop --form-container-radius - Border radius of form control container.
  * @prop --form-container-hover-background - Background color on hover state.
  * @prop --form-container-active-background - Background color on active state.
@@ -94,7 +93,7 @@
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  background: var(--ds-form-description-color-danger);
+  background: var(--ds-form-danger-description-color);
 }
 
 // Add space to reserve it for upcoming help text so the user will not have any flickering.
@@ -306,10 +305,10 @@
 // --------------------------------
 .field.is-invalid,
 .field.is-danger {
-  --mod-form-container-border-color: var(--ds-form-container-color-danger-border);
-  --mod-form-description-color: var(--ds-form-description-color-danger);
-  --mod-form-container-hover-border: var(--ds-form-container-color-danger-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-danger-border);
+  --mod-form-container-border: var(--ds-form-danger-container-border);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-form-container-hover-border: var(--ds-form-danger-container-border);
+  --mod-form-container-active-border: var(--ds-form-danger-container-border);
 }
 
 //
@@ -317,20 +316,20 @@
 // --------------------------------
 .field.is-valid,
 .field.is-success {
-  --mod-form-container-border-color: var(--ds-form-container-color-success-border);
-  --mod-form-description-color: var(--ds-form-description-color-success);
-  --mod-form-container-hover-border: var(--ds-form-container-color-success-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-success-border);
+  --mod-form-container-border: var(--ds-form-success-container-border);
+  --mod-form-description-color: var(--ds-form-success-description-color);
+  --mod-form-container-hover-border: var(--ds-form-success-container-border);
+  --mod-form-container-active-border: var(--ds-form-success-container-border);
 }
 
 //
 // Color Warning
 // --------------------------------
 .field.is-warning {
-  --mod-form-container-border-color: var(--ds-form-container-color-warning-border);
-  --mod-form-description-color: var(--ds-form-description-color-warning);
-  --mod-form-container-hover-border: var(--ds-form-container-color-warning-border);
-  --mod-form-container-active-border: var(--ds-form-container-color-warning-border);
+  --mod-form-container-border: var(--ds-form-warning-container-border);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
+  --mod-form-container-hover-border: var(--ds-form-warning-container-border);
+  --mod-form-container-active-border: var(--ds-form-warning-container-border);
 }
 
 //
@@ -347,20 +346,20 @@
     cursor: default;
   }
 
-  --mod-form-container-background: var(--ds-form-container-color-disabled-background);
-  --mod-form-container-border-color: var(--ds-form-container-color-disabled-border);
-  --mod-form-label-color: var(--ds-form-label-color-disabled);
-  --mod-form-description-color: var(--ds-form-description-color-disabled);
+  --mod-form-container-background: var(--ds-form-disabled-container-background);
+  --mod-form-container-border: var(--ds-form-disabled-container-border);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
 
-  --mod-form-color: var(--ds-form-control-color-value-disabled);
-  --mod-form-placeholder: var(--ds-form-control-color-placeholder-disabled);
+  --mod-form-color: var(--ds-form-disabled-control-value-color);
+  --mod-form-placeholder: var(--ds-form-disabled-control-placeholder-color);
 
-  --mod-input-color: var(--ds-form-control-color-value-disabled);
-  --mod-input-placeholder: var(--ds-form-control-color-placeholder-disabled);
+  --mod-input-color: var(--ds-form-disabled-control-value-color);
+  --mod-input-placeholder: var(--ds-form-disabled-control-placeholder-color);
 
-  --mod-textarea-color: var(--ds-form-control-color-value-disabled);
-  --mod-textarea-placeholder: var(--ds-form-control-color-placeholder-disabled);
+  --mod-textarea-color: var(--ds-form-disabled-control-value-color);
+  --mod-textarea-placeholder: var(--ds-form-disabled-control-placeholder-color);
 
-  --mod-select-color: var(--ds-form-control-color-value-disabled);
-  --mod-select-placeholder: var(--ds-form-control-color-placeholder-disabled);
+  --mod-select-color: var(--ds-form-disabled-control-value-color);
+  --mod-select-placeholder: var(--ds-form-disabled-control-placeholder-color);
 }

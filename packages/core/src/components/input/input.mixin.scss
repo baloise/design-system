@@ -25,13 +25,13 @@
  */
 
 @mixin vars($prefix) {
-  @include vars.local(#{$prefix}-family, var(--ds-form-control-family));
-  @include vars.local(#{$prefix}-weight, var(--ds-form-control-weight));
-  @include vars.local(#{$prefix}-line-height, var(--ds-form-control-line-height));
-  @include vars.local(#{$prefix}-size, var(--ds-form-control-size-device));
+  @include vars.local(#{$prefix}-family, var(--ds-form-default-control-typo-font-family));
+  @include vars.local(#{$prefix}-weight, var(--ds-form-default-control-typo-font-weight));
+  @include vars.local(#{$prefix}-line-height, var(--ds-form-default-control-typo-line-height));
+  @include vars.local(#{$prefix}-size, var(--ds-form-default-control-typo-font-size));
 
-  @include vars.local(#{$prefix}-color, var(--ds-form-control-color-value-base));
-  @include vars.local(#{$prefix}-placeholder, var(--ds-form-control-color-placeholder-base));
+  @include vars.local(#{$prefix}-color, var(--ds-form-default-control-value-color));
+  @include vars.local(#{$prefix}-placeholder, var(--ds-form-default-control-placeholder-color));
 }
 
 @mixin style($prefix, $selector: '#input') {

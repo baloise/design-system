@@ -13,6 +13,10 @@
 
 @mixin style($prefix, $selector: '#textarea') {
   @include input.style($prefix, $selector);
+
+  textarea {
+    padding: 0;
+  }
 }
 
 /**
@@ -26,7 +30,7 @@
 
 @mixin container($prefix, $selector: '#container') {
   #{$selector} {
-    align-items: flex-start;
+    align-items: center;
     padding-block: 0.5rem;
   }
 }

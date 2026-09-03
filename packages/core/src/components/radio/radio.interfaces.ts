@@ -1,5 +1,5 @@
 export const RADIO_GROUP_COLUMNS = [1, 2, 3, 4] as const
-export const RADIO_TILE_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
+export const RADIO_TILE_COLORS = ['purple', 'green', 'yellow', 'red'] as const
 export const RADIO_LABEL_POSITIONS = ['left', 'top', 'right'] as const
 
 export type RadioGroupColumns = (typeof RADIO_GROUP_COLUMNS)[number]
