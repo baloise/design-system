@@ -8,6 +8,8 @@ import { rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { generateAngularMeta } from '../packages/core/config/generate-angular-meta.mjs'
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const coreRoot = resolve(__dirname, '../packages/core')
 
@@ -38,7 +40,19 @@ function buildStencil() {
 }
 
 // ============================================================================
-// 2. Clean up stray output folders
+// 2. Generate Angular meta (per-component Inputs/Outputs constants)
+// ============================================================================
+// Skipped in dev/docs builds, where AngularGenerator() doesn't run and proxies.ts isn't (re)written.
+async function generateMeta() {
+  if (process.env.DS_DEVELOPMENT === 'true' || process.env.DS_DOCUMENTATION === 'true') {
+    return
+  }
+  console.log('🅰️ Generating Angular meta...')
+  await generateAngularMeta()
+}
+
+// ============================================================================
+// 3. Clean up stray output folders
 // ============================================================================
 async function cleanUp() {
   console.log('🧹 Cleaning up temporary folders...')
@@ -63,6 +77,9 @@ async function main() {
     console.log('🏗️ Building core...\n')
 
     buildStencil()
+    console.log()
+
+    await generateMeta()
     console.log()
 
     await cleanUp()

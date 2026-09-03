@@ -9,6 +9,7 @@ import {
   OnInit,
 } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
+import { DsInputInputs, DsInputOutputs } from '../generated/meta'
 import { DsInput as DsInputElement } from '../generated/proxies'
 import { DsValueAccessor } from './value-accessor'
 
@@ -19,47 +20,16 @@ import { DsValueAccessor } from './value-accessor'
  * without any extra opt-in step.
  *
  * `inputs`/`outputs` are re-declared rather than inherited: Angular's compiler resolves a component's inputs
- * and outputs statically from its own `@Component` decorator at build time. Keep this list in sync with the
- * `@Component` decorator for `DsInput` in `../generated/proxies.ts` whenever `ds-input`'s props/events change.
+ * and outputs statically from its own `@Component` decorator at build time. `DsInputInputs`/`DsInputOutputs`
+ * are generated from `../generated/proxies.ts` (see `packages/core/config/generate-angular-meta.mjs`), so
+ * this stays in sync automatically whenever `ds-input`'s props/events change — no manual list to maintain.
  */
 @Component({
   selector: 'ds-input',
   template: '<ng-content></ng-content>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: [
-    'accept',
-    'allowedKeyPress',
-    'autoInvalidOff',
-    'autocapitalize',
-    'autocomplete',
-    'autocorrect',
-    'autofocus',
-    'color',
-    'debounce',
-    'description',
-    'disabled',
-    'inputmode',
-    'invalid',
-    'invalidText',
-    'label',
-    'loading',
-    'mask',
-    'max',
-    'maxLength',
-    'min',
-    'minLength',
-    'multiple',
-    'name',
-    'pattern',
-    'placeholder',
-    'readonly',
-    'required',
-    'spellcheck',
-    'suffix',
-    'type',
-    'value',
-  ],
-  outputs: ['dsBlur', 'dsKeyPress', 'dsFocus', 'dsClick', 'dsInput', 'dsChange'],
+  inputs: DsInputInputs,
+  outputs: DsInputOutputs,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
