@@ -40,6 +40,9 @@ export class DsValueAccessor<
 > implements ControlValueAccessor {
   private ngControl: NgControl | null = null
   private statusSubscription?: Subscription
+  // The `AbstractControl` instance currently backing `statusSubscription`, so `subscribeToControl()` can
+  // tell a rebind (e.g. a consumer replacing the whole `FormGroup`) apart from a no-op re-check.
+  private subscribedControl: NgControl['control'] = null
   private destroyed = false
 
   private onChange: (value: Element[K]) => void = () => {}
@@ -85,11 +88,38 @@ export class DsValueAccessor<
         return
       }
 
-      // `events` (not `statusChanges`) so a bare `markAsTouched()`/`markAllAsTouched()` — e.g. a
-      // submit-button pattern with no value or status change — still re-derives invalid state.
-      this.statusSubscription = this.ngControl?.control?.events?.subscribe(() => this.updateInvalidState())
-      this.updateInvalidState()
+      // Also re-derives invalid state as a side effect (see `subscribeToControl()`).
+      this.subscribeToControl()
     })
+  }
+
+  /**
+   * Re-checks `NgControl.control` against the instance `statusSubscription` is currently attached to, and
+   * re-subscribes if it changed. `NgControl.control` is a plain property, not observable: a consumer
+   * replacing the whole bound form (e.g. `this.form = new FormGroup({...})` rather than `patchValue`/
+   * `reset`) makes the directive (e.g. `FormControlName`) repoint `control` at a new `AbstractControl`
+   * with no event marking the swap, so without this check `statusSubscription` would keep listening to
+   * the old, discarded control and `invalid`/`invalidText` would freeze at their pre-swap values. Called
+   * from `writeValue()` (see there) rather than a lifecycle hook: Angular's forms machinery always calls
+   * `writeValue()` as part of `setUpControl()` when a directive like `FormControlName` re-points `control`
+   * at a new instance — synchronously, as part of checking the *host* view, so this fires reliably even
+   * when the wrapper component itself is `OnPush` and not otherwise marked dirty.
+   */
+  private subscribeToControl(): void {
+    const control = this.ngControl?.control ?? null
+    if (control === this.subscribedControl) {
+      return
+    }
+
+    this.statusSubscription?.unsubscribe()
+    this.subscribedControl = control
+    // `events` (not `statusChanges`) so a bare `markAsTouched()`/`markAllAsTouched()` — e.g. a
+    // submit-button pattern with no value or status change — still re-derives invalid state.
+    this.statusSubscription = control?.events?.subscribe(() => this.updateInvalidState())
+    // Re-derive immediately too: the new control's `touched`/`invalid` state may already differ from
+    // the old one (e.g. the new control is already touched-and-invalid), and nothing else guarantees a
+    // fresh `events` emission right after the swap.
+    this.updateInvalidState()
   }
 
   destroy(): void {
@@ -97,9 +127,14 @@ export class DsValueAccessor<
     this.element.removeEventListener(this.config.changeEvent, this.handleChange)
     this.element.removeEventListener(this.config.blurEvent, this.handleBlur)
     this.statusSubscription?.unsubscribe()
+    this.subscribedControl = null
   }
 
   writeValue(value: Element[K]): void {
+    // Also re-checks the subscribed control (see `subscribeToControl()`): Angular calls `writeValue()`
+    // synchronously whenever `setUpControl()` (re-)runs, which includes a consumer swapping the whole
+    // bound `AbstractControl`, so this is the reliable point to notice that rather than a lifecycle hook.
+    this.subscribeToControl()
     this.element[this.config.valueProp] = value
   }
 
@@ -169,30 +204,34 @@ export function withValueAccessor<Element extends EventTarget & DsFormElement, K
     return class extends Base implements ControlValueAccessor, OnInit, OnDestroy {
       // Public rather than private: a mixin's anonymous class type is part of this function's public return
       // type, and TS can't emit a `.d.ts` declaration for an exported type that has a private/protected member.
-      readonly cva = new DsValueAccessor<Element, K>(inject(ElementRef).nativeElement, inject(Injector), config)
+      readonly controlValueAccessor = new DsValueAccessor<Element, K>(
+        inject(ElementRef).nativeElement,
+        inject(Injector),
+        config,
+      )
 
       ngOnInit(): void {
-        this.cva.init()
+        this.controlValueAccessor.init()
       }
 
       ngOnDestroy(): void {
-        this.cva.destroy()
+        this.controlValueAccessor.destroy()
       }
 
       writeValue(value: Element[K]): void {
-        this.cva.writeValue(value)
+        this.controlValueAccessor.writeValue(value)
       }
 
       registerOnChange(fn: (value: Element[K]) => void): void {
-        this.cva.registerOnChange(fn)
+        this.controlValueAccessor.registerOnChange(fn)
       }
 
       registerOnTouched(fn: () => void): void {
-        this.cva.registerOnTouched(fn)
+        this.controlValueAccessor.registerOnTouched(fn)
       }
 
       setDisabledState(isDisabled: boolean): void {
-        this.cva.setDisabledState(isDisabled)
+        this.controlValueAccessor.setDisabledState(isDisabled)
       }
     }
   }
