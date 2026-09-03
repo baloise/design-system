@@ -1,4 +1,4 @@
-import { Directive, ElementRef, inject, Injector, OnDestroy, OnInit } from '@angular/core'
+import { Injector } from '@angular/core'
 import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms'
 import { Subscription } from 'rxjs'
 
@@ -11,24 +11,33 @@ interface DsFormElement {
 }
 
 /**
- * Shared `ControlValueAccessor` base for design-system form components. Subclasses declare which
- * DOM event carries value changes (`changeEvent`) and which property holds the value (`valueProp`);
- * the rest — writeValue/registerOnChange/registerOnTouched/setDisabledState, plus deriving
- * `invalid`/`invalidText` from `NgControl` once the control is touched — is handled here.
+ * `ControlValueAccessor` logic shared by the design-system's form-component wrappers, used via composition
+ * rather than inheritance: the concrete wrapper (e.g. `DsInput`) already extends the generated proxy class
+ * for its inputs/outputs, and Angular doesn't allow a `@Directive()` to extend a `@Component()` (`NG0903`) —
+ * so this can't be a base class the wrapper also `extends`. Instead the wrapper constructs one as a field
+ * (`new DsValueAccessor(inject(ElementRef).nativeElement, inject(Injector), config)`) and delegates its four
+ * `ControlValueAccessor` methods plus `init`/`destroy` (from the wrapper's own `ngOnInit`/`ngOnDestroy`) to
+ * it. Deliberately a plain, undecorated class implementing no Angular-recognized lifecycle interface (no
+ * `@Injectable()`, no `OnInit`/`OnDestroy`) — it's always constructed and driven manually, never resolved or
+ * hooked into by Angular's own DI/lifecycle machinery, so `element`/`injector` are passed in explicitly by
+ * the wrapper's own `inject()` calls rather than this class calling `inject()` itself.
+ *
+ * Subclasses configure which DOM event carries value changes (`changeEvent`) and which property holds the
+ * value (`valueProp`); this handles writeValue/registerOnChange/registerOnTouched/setDisabledState, plus
+ * deriving `invalid`/`invalidText` from `NgControl` once the control is touched.
  */
-@Directive()
-export abstract class DsValueAccessor<Value> implements ControlValueAccessor, OnInit, OnDestroy {
-  protected abstract readonly changeEvent: string
-  protected abstract readonly valueProp: string
-
-  private readonly elementRef = inject(ElementRef<HTMLElement & DsFormElement>)
-  private readonly injector = inject(Injector)
-
+export class DsValueAccessor<Value> implements ControlValueAccessor {
   private ngControl: NgControl | null = null
   private statusSubscription?: Subscription
 
   private onChange: (value: Value) => void = () => {}
   private onTouched: () => void = () => {}
+
+  constructor(
+    private readonly element: HTMLElement & DsFormElement,
+    private readonly injector: Injector,
+    private readonly config: { changeEvent: string; valueProp: string },
+  ) {}
 
   private readonly handleChange = (event: Event) => {
     this.onChange((event as CustomEvent<Value>).detail)
@@ -39,14 +48,13 @@ export abstract class DsValueAccessor<Value> implements ControlValueAccessor, On
     this.updateInvalidState()
   }
 
-  ngOnInit(): void {
-    // Resolved lazily via the injector (not the constructor) to avoid a circular dependency:
-    // NgControl depends on the NG_VALUE_ACCESSOR this directive provides.
+  init(): void {
+    // Resolved lazily (not from the constructor) to avoid a circular dependency: NgControl depends on the
+    // NG_VALUE_ACCESSOR the wrapper component provides.
     this.ngControl = this.injector.get(NgControl, null)
 
-    const element = this.elementRef.nativeElement
-    element.addEventListener(this.changeEvent, this.handleChange)
-    element.addEventListener('dsBlur', this.handleBlur)
+    this.element.addEventListener(this.config.changeEvent, this.handleChange)
+    this.element.addEventListener('dsBlur', this.handleBlur)
 
     // `NgControl.control` (e.g. `FormControlName.control`) is assigned by that directive's own
     // `ngOnChanges`, which may not have run yet at this point — sibling directives on the same
@@ -60,15 +68,14 @@ export abstract class DsValueAccessor<Value> implements ControlValueAccessor, On
     })
   }
 
-  ngOnDestroy(): void {
-    const element = this.elementRef.nativeElement
-    element.removeEventListener(this.changeEvent, this.handleChange)
-    element.removeEventListener('dsBlur', this.handleBlur)
+  destroy(): void {
+    this.element.removeEventListener(this.config.changeEvent, this.handleChange)
+    this.element.removeEventListener('dsBlur', this.handleBlur)
     this.statusSubscription?.unsubscribe()
   }
 
   writeValue(value: Value): void {
-    this.elementRef.nativeElement[this.valueProp] = value
+    this.element[this.config.valueProp] = value
   }
 
   registerOnChange(fn: (value: Value) => void): void {
@@ -80,11 +87,11 @@ export abstract class DsValueAccessor<Value> implements ControlValueAccessor, On
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.elementRef.nativeElement.disabled = isDisabled
+    this.element.disabled = isDisabled
   }
 
   private updateInvalidState(): void {
-    const element = this.elementRef.nativeElement
+    const element = this.element
     if (element.autoInvalidOff) {
       return
     }

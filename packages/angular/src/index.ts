@@ -13,4 +13,4 @@ export const bootstrapDesignSystem = (config: DsAngularConfig = {}) => {
 
 export * from './generated/proxies'
 export * from './forms/value-accessor'
-export * from './forms/text-value-accessor'
+export { DsInput } from './forms/ds-input'

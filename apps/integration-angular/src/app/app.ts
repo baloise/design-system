@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsButton, DsCheckbox, DsInput, TextValueAccessor } from '@baloise/ds-angular'
+import { DsButton, DsCheckbox, DsInput } from '@baloise/ds-angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
   return (control): ValidationErrors | null => (control.value ? null : { required: message })
@@ -8,7 +8,7 @@ const requiredWithMessage = (message: string): ValidatorFn => {
 
 @Component({
   selector: 'app-root',
-  imports: [DsButton, DsInput, DsCheckbox, ReactiveFormsModule, TextValueAccessor],
+  imports: [DsButton, DsInput, DsCheckbox, ReactiveFormsModule],
   templateUrl: './app.html',
 })
 export class App {
