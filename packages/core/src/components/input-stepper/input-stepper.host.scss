@@ -34,7 +34,7 @@
   @include vars.local(input-stepper-value-min-width, 3rem);
   @include vars.local(input-stepper-value-font-weight, var(--ds-alias-text-weight-bold));
   @include vars.local(input-stepper-value-font-family, var(--ds-alias-text-family-text));
-  @include vars.local(input-stepper-value-color, var(--ds-form-label-color-base));
+  @include vars.local(input-stepper-value-color, var(--ds-form-default-label-color));
 }
 
 /**
@@ -77,31 +77,31 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-form-description-color: var(--ds-form-description-color-danger);
-  --mod-input-stepper-value-color: var(--ds-form-container-color-danger-border);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-input-stepper-value-color: var(--ds-alias-text-color-danger);
 }
 
 //
 // Valid or Color Success
 // --------------------------------
 :host(.is-success) {
-  --mod-form-description-color: var(--ds-form-description-color-success);
+  --mod-form-description-color: var(--ds-form-success-description-color);
 }
 
 //
 // Color Warning
 // --------------------------------
 :host(.is-warning) {
-  --mod-form-description-color: var(--ds-form-description-color-warning);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
 }
 
 //
 // Disabled (also covers `readonly`, treated as equivalent at the field level — see input-stepper.tsx)
 // --------------------------------
 :host(.is-disabled) {
-  --mod-form-label-color: var(--ds-form-label-color-disabled);
-  --mod-form-description-color: var(--ds-form-description-color-disabled);
-  --mod-input-stepper-value-color: var(--ds-form-label-color-disabled);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
+  --mod-input-stepper-value-color: var(--ds-form-disabled-label-color);
 
   &,
   #label,

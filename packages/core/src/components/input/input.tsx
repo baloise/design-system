@@ -87,7 +87,7 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -324,7 +324,9 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
    * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
    * in other framework integrations.
    */
-  @Prop({ reflect: true }) readonly autoInvalidOff: boolean = false
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * Emitted when a keyboard input occurred.
@@ -357,33 +359,8 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   @Event() dsChange!: EventEmitter<InputChangeDetail>
 
   /**
-   * LISTENERS
-   * ------------------------------------------------------
-   */
-
-  @Listen('click', { capture: true, target: 'document' })
-  listenToClick(ev: UIEvent) {
-    this.control.listenOnClick(ev)
-  }
-
-  @Listen('reset', { capture: true, target: 'document' })
-  listenToReset(ev: UIEvent) {
-    this.control.listenOnReset(ev)
-  }
-
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-  }
-
-  /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -408,8 +385,23 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   }
 
   /**
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenToClick(ev: UIEvent) {
+    this.control.listenOnClick(ev)
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  listenToReset(ev: UIEvent) {
+    this.control.listenOnReset(ev)
+  }
+
+  /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -440,19 +432,19 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   }
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
+   * @internal define config for the component
    */
-
-  private getRawValue(): string {
-    return (this.value || '').toString()
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
-  private getFormattedValue(): string {
-    const value = this.getRawValue()
-    const suffix = hasValue(this.suffix) && hasValue(value) ? ' ' + this.suffix : ''
-    return `${value}${suffix}`
-  }
+  /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
 
   private handleKeydown = (ev: KeyboardEvent) => {
     if (this.mask !== undefined) {
@@ -485,8 +477,24 @@ export class Input implements DsComponentInterface, FieldInterface, FormControlI
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private getRawValue(): string {
+    const value = (this.value || '').toString()
+    return value
+  }
+
+  private getFormattedValue(): string {
+    const value = this.getRawValue()
+    const suffix = hasValue(this.suffix) && hasValue(value) ? ' ' + this.suffix : ''
+    return `${value}${suffix}`
+  }
+
+  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

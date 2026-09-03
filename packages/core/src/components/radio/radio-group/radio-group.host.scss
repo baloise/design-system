@@ -57,7 +57,7 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-radio-group-description-color: var(--ds-form-description-color-danger);
+  --mod-radio-group-description-color: var(--ds-form-danger-description-color);
 }
 
 //
@@ -72,8 +72,8 @@
     cursor: default;
   }
 
-  --mod-radio-group-label-color: var(--ds-form-label-color-disabled);
-  --mod-radio-group-description-color: var(--ds-form-description-color-disabled);
+  --mod-radio-group-label-color: var(--ds-form-disabled-label-color);
+  --mod-radio-group-description-color: var(--ds-form-disabled-description-color);
 }
 
 //

@@ -357,8 +357,8 @@ $size-aliases: (
 
   ds-badge,
   ::slotted(ds-badge) {
-    --badge-color-background: var(--ds-badge-grey-color-background);
-    --badge-color-text: var(--ds-badge-grey-color-text);
+    --badge-color-background: var(--ds-badge-disabled-color-background);
+    --badge-color-text: var(--ds-badge-disabled-color-text);
   }
 }
 

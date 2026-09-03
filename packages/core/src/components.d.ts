@@ -789,9 +789,8 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile checkbox.
-          * @default ''
          */
-        "tileColor": CheckboxTileColor;
+        "tileColor"?: CheckboxTileColor;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
           * @default 'on'
@@ -890,9 +889,8 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile checkbox.
-          * @default ''
          */
-        "tileColor": CheckboxTileColor;
+        "tileColor"?: CheckboxTileColor;
         /**
           * The value of the control.
           * @default []
@@ -1665,9 +1663,8 @@ export namespace Components {
         "autoInvalidOff": boolean;
         /**
           * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
-          * @default ''
          */
-        "brandColor": InputSliderBrandColor;
+        "brandColor"?: InputSliderBrandColor;
         /**
           * Defines the color of the slider. The default value is `primary`.
           * @default 'primary'
@@ -2472,9 +2469,8 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile radio.
-          * @default ''
          */
-        "tileColor": RadioTileColor;
+        "tileColor"?: RadioTileColor;
         "updateState": () => Promise<void>;
         /**
           * A DOMString representing the value of the radio. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the radio's name.
@@ -2574,9 +2570,8 @@ export namespace Components {
         "tile": boolean;
         /**
           * Defines the color of the tile checkbox.
-          * @default ''
          */
-        "tileColor": RadioTileColor;
+        "tileColor"?: RadioTileColor;
         /**
           * The value of the radio group.
          */
@@ -3377,9 +3372,8 @@ export namespace Components {
         "getInputElement": () => Promise<HTMLTextAreaElement>;
         /**
           * A hint to the browser for which keyboard to display.
-          * @default ''
          */
-        "inputmode": TextareaInputMode;
+        "inputmode"?: TextareaInputMode;
         /**
           * If `true` the component gets an invalid style.
           * @default false
@@ -3442,9 +3436,8 @@ export namespace Components {
         "value": string | null;
         /**
           * Indicates how the control wraps text.
-          * @default ''
          */
-        "wrap": TextareaWrap;
+        "wrap"?: TextareaWrap;
     }
     /**
      * Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.
@@ -3539,9 +3532,8 @@ export namespace Components {
         "checked": boolean;
         /**
           * Defines the color of the tile toggle.
-          * @default ''
          */
-        "color": ToggleTileColor;
+        "color"?: ToggleTileColor;
         /**
           * @default 1
          */
@@ -5786,7 +5778,6 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile checkbox.
-          * @default ''
          */
         "tileColor"?: CheckboxTileColor;
         /**
@@ -5902,7 +5893,6 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile checkbox.
-          * @default ''
          */
         "tileColor"?: CheckboxTileColor;
         /**
@@ -6717,7 +6707,6 @@ declare namespace LocalJSX {
         "autoInvalidOff"?: boolean;
         /**
           * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
-          * @default ''
          */
         "brandColor"?: InputSliderBrandColor;
         /**
@@ -7598,7 +7587,6 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile radio.
-          * @default ''
          */
         "tileColor"?: RadioTileColor;
         /**
@@ -7713,7 +7701,6 @@ declare namespace LocalJSX {
         "tile"?: boolean;
         /**
           * Defines the color of the tile checkbox.
-          * @default ''
          */
         "tileColor"?: RadioTileColor;
         /**
@@ -8570,7 +8557,6 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * A hint to the browser for which keyboard to display.
-          * @default ''
          */
         "inputmode"?: TextareaInputMode;
         /**
@@ -8651,7 +8637,6 @@ declare namespace LocalJSX {
         "value"?: string | null;
         /**
           * Indicates how the control wraps text.
-          * @default ''
          */
         "wrap"?: TextareaWrap;
     }
@@ -8754,7 +8739,6 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         /**
           * Defines the color of the tile toggle.
-          * @default ''
          */
         "color"?: ToggleTileColor;
         /**

@@ -54,7 +54,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -177,7 +177,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -208,7 +208,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsWillUpdate', { capture: true, target: 'document' })
@@ -229,7 +229,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** @internal */
@@ -259,7 +259,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleInputChange = (itemValue: any) => {
@@ -287,7 +287,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private readItemsFromSlot() {
@@ -358,7 +358,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

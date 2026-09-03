@@ -78,7 +78,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -157,13 +157,6 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   @Watch('max')
   protected maxChanged() {
     this.clampToRange()
-  }
-
-  private clampToRange() {
-    const clamped = clampValue(this.value, this.min, this.max)
-    if (clamped !== this.value) {
-      this.value = clamped
-    }
   }
 
   /**
@@ -251,7 +244,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -267,7 +260,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { capture: true, target: 'document' })
@@ -298,7 +291,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -323,36 +316,8 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   }
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private syncFormValue(value: number) {
-    this.internals.setFormValue(String(value))
-  }
-
-  private effectiveStep(): number {
-    if (!Number.isFinite(this.step) || this.step <= 0) {
-      if (!this.stepWarned) {
-        console.warn(
-          `[ds-input-stepper] \`step\` must be a positive number, got ${this.step}. Falling back to ${STEP_FALLBACK}.`,
-        )
-        this.stepWarned = true
-      }
-      return STEP_FALLBACK
-    }
-    return this.step
-  }
-
-  private commit(next: number) {
-    this.value = next
-    this.dsInput.emit(next)
-    this.dsChange.emit(next)
-  }
-
-  /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleIncrease = () => {
@@ -420,8 +385,43 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private clampToRange() {
+    const clamped = clampValue(this.value, this.min, this.max)
+    if (clamped !== this.value) {
+      this.value = clamped
+    }
+  }
+
+  private syncFormValue(value: number) {
+    this.internals.setFormValue(String(value))
+  }
+
+  private effectiveStep(): number {
+    if (!Number.isFinite(this.step) || this.step <= 0) {
+      if (!this.stepWarned) {
+        console.warn(
+          `[ds-input-stepper] \`step\` must be a positive number, got ${this.step}. Falling back to ${STEP_FALLBACK}.`,
+        )
+        this.stepWarned = true
+      }
+      return STEP_FALLBACK
+    }
+    return this.step
+  }
+
+  private commit(next: number) {
+    this.value = next
+    this.dsInput.emit(next)
+    this.dsChange.emit(next)
+  }
+
+  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -446,7 +446,13 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             ref={el => (this.decreaseButtonEl = el as HTMLDsButtonElement)}
             part="decrease"
             data-testid="ds-input-stepper-decrease"
-            color="secondary"
+            color={
+              this.invalid
+                ? 'danger'
+                : this.color === 'danger' || this.color === 'warning' || this.color === 'success'
+                  ? this.color
+                  : 'secondary'
+            }
             size="sm"
             square
             icon="minus"
@@ -464,7 +470,13 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             ref={el => (this.increaseButtonEl = el as HTMLDsButtonElement)}
             part="increase"
             data-testid="ds-input-stepper-increase"
-            color="secondary"
+            color={
+              this.invalid
+                ? 'danger'
+                : this.color === 'danger' || this.color === 'warning' || this.color === 'success'
+                  ? this.color
+                  : 'secondary'
+            }
             size="sm"
             square
             icon="plus"
