@@ -8,7 +8,11 @@
  * parent class. Importing these generated constants instead of hand-listing every prop keeps that
  * declaration in sync with the underlying Stencil component automatically.
  *
- * Run as part of `pnpm --filter @baloise/ds-core build`, after Stencil has (re)written proxies.ts.
+ * Run as part of `pnpm --filter @baloise/ds-core build`, after Stencil has (re)written proxies.ts. Safe to
+ * call unconditionally: `proxies.ts` only exists when Stencil's `AngularGenerator()` output target actually
+ * ran (it's skipped in dev/docs builds — see `stencil.config.ts`), so its presence on disk is itself the
+ * single source of truth for whether there's anything to generate meta from, rather than the caller having
+ * to separately re-derive the same dev/docs condition from env vars and risk drifting out of sync with it.
  */
 import { readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
@@ -19,11 +23,25 @@ const proxiesFile = resolve(__dirname, '../../angular/src/generated/proxies.ts')
 const metaFile = resolve(__dirname, '../../angular/src/generated/meta.ts')
 
 export async function generateAngularMeta() {
-  const source = await readFile(proxiesFile, 'utf-8')
+  let source
+  try {
+    source = await readFile(proxiesFile, 'utf-8')
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      console.log('\x1b[90mSkipped Angular meta generation — proxies.ts was not generated this build\x1b[0m')
+      return
+    }
+    throw err
+  }
 
   // Each component is wrapped in its own `@ProxyCmp({ ... }) @Component({ ... }) export class Xyz { ... }`
-  // block; split on `@ProxyCmp(` so every chunk below contains exactly one component's decorators.
-  const chunks = source.split('@ProxyCmp(').slice(1)
+  // block. Find every `@ProxyCmp(` occurrence and slice from one to the next (rather than the naive
+  // `split('@ProxyCmp(').slice(1)`, where every chunk ran to the end of the file) so each chunk covers
+  // exactly its own component: a block missing an `inputs`/`outputs` array falls back to `[]` instead of
+  // silently matching the next component's array, and matching work per component stays bounded to its
+  // own block instead of the ever-shrinking remainder of the file.
+  const starts = [...source.matchAll(/@ProxyCmp\(/g)].map(match => match.index)
+  const chunks = starts.map((start, i) => source.slice(start, starts[i + 1] ?? source.length))
 
   const components = chunks.map(chunk => {
     const className = chunk.match(/export class (\w+)/)?.[1]

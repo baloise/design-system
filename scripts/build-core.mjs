@@ -42,11 +42,9 @@ function buildStencil() {
 // ============================================================================
 // 2. Generate Angular meta (per-component Inputs/Outputs constants)
 // ============================================================================
-// Skipped in dev/docs builds, where AngularGenerator() doesn't run and proxies.ts isn't (re)written.
+// `generateAngularMeta()` itself skips when Stencil hasn't (re)written proxies.ts (dev/docs builds) — see
+// its own doc comment — so this doesn't need to separately re-derive that same condition from env vars.
 async function generateMeta() {
-  if (process.env.DS_DEVELOPMENT === 'true' || process.env.DS_DOCUMENTATION === 'true') {
-    return
-  }
   console.log('🅰️ Generating Angular meta...')
   await generateAngularMeta()
 }
@@ -79,10 +77,9 @@ async function main() {
     buildStencil()
     console.log()
 
-    await generateMeta()
-    console.log()
-
-    await cleanUp()
+    // Independent of each other (meta is derived from proxies.ts, cleanup just removes stray folders), so
+    // run them concurrently instead of paying the sum of both durations.
+    await Promise.all([generateMeta(), cleanUp()])
 
     console.log('\n✨ Core build complete!')
   } catch (err) {

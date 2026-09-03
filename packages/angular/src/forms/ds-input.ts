@@ -1,23 +1,14 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  forwardRef,
-  inject,
-  Injector,
-  OnDestroy,
-  OnInit,
-} from '@angular/core'
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DsInputInputs, DsInputOutputs } from '../generated/meta'
 import { DsInput as DsInputElement } from '../generated/proxies'
-import { DsValueAccessor } from './value-accessor'
+import { withValueAccessor } from './value-accessor'
 
 /**
  * Wraps the generated `ds-input` proxy with `ControlValueAccessor` support (value: `string | null`, change
- * event: `dsChange`). Consumers only ever import `DsInput` to use `<ds-input>` at all, so registering
- * `NG_VALUE_ACCESSOR` here — rather than on a separate directive — means `formControlName`/`ngModel` work
- * without any extra opt-in step.
+ * event: `dsChange`) via the `withValueAccessor` mixin — see `value-accessor.ts` for what that wires up.
+ * Consumers only ever import `DsInput` to use `<ds-input>` at all, so registering `NG_VALUE_ACCESSOR` here —
+ * rather than on a separate directive — means `formControlName`/`ngModel` work without any extra opt-in step.
  *
  * `inputs`/`outputs` are re-declared rather than inherited: Angular's compiler resolves a component's inputs
  * and outputs statically from its own `@Component` decorator at build time. `DsInputInputs`/`DsInputOutputs`
@@ -38,33 +29,8 @@ import { DsValueAccessor } from './value-accessor'
     },
   ],
 })
-export class DsInput extends DsInputElement implements ControlValueAccessor, OnInit, OnDestroy {
-  private readonly cva = new DsValueAccessor<string | null>(inject(ElementRef).nativeElement, inject(Injector), {
-    changeEvent: 'dsChange',
-    valueProp: 'value',
-  })
-
-  ngOnInit(): void {
-    this.cva.init()
-  }
-
-  ngOnDestroy(): void {
-    this.cva.destroy()
-  }
-
-  writeValue(value: string | null): void {
-    this.cva.writeValue(value)
-  }
-
-  registerOnChange(fn: (value: string | null) => void): void {
-    this.cva.registerOnChange(fn)
-  }
-
-  registerOnTouched(fn: () => void): void {
-    this.cva.registerOnTouched(fn)
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.cva.setDisabledState(isDisabled)
-  }
-}
+export class DsInput extends withValueAccessor<HTMLDsInputElement, 'value'>({
+  changeEvent: 'dsChange',
+  blurEvent: 'dsBlur',
+  valueProp: 'value',
+})(DsInputElement) {}

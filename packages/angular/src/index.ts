@@ -10,9 +10,9 @@ export const bootstrapDesignSystem = (config: DsAngularConfig = {}) => {
     httpFormSubmit: false,
   })
 }
-// Export order matters here: the explicit component exports below must come after
-// './generated/proxies' so that they override the auto-generated ones, ensuring the
-// versions wired up with the ValueAccessors are the ones consumers actually import.
+// A named export (e.g. `DsInput` below) always wins over a colliding `export *` regardless of statement
+// order, so this override doesn't depend on where it's placed relative to './generated/proxies' — it's
+// listed after purely for readability, to read as "the generated proxies, then their overrides".
 export * from './generated/proxies'
 export * from './forms/value-accessor'
 export { DsInput } from './forms/ds-input'
