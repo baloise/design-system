@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
+import * as InputPhoneStories from './input-phone.stories'
+import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-config'
+
+<Meta title="Components/InputPhone/Usage" />
+<Banner label={'Usage'} section={INPUTPHONE_DOC_CONFIG.section} color={INPUTPHONE_DOC_CONFIG.color} />
+<BannerTabs of={InputPhoneStories} tabs={getInputPhoneTabs('usage')} />
+
+## When to Use
+
+- Collecting an international phone number in a form, with the country visible next to the national number
+- When the submitted value should be a single E.164 string (for example `+41791234567`)
+- When users may belong to more than one country, or the available countries should be restricted with `countries`
+
+## When NOT to Use
+
+- For a single-country national number with no country picker — use `ds-input` with `input-mode="tel"`
+- For validating whether a number can receive calls or SMS — this field only formats; the application owns validation
+- For selecting a country without entering a number — use `ds-select`
+
+## Do's and Don'ts
+
+### Seed a Starting Country
+
+Give the field a starting country with `initialCountry` so users are not staring at an empty calling code.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Starting country set',
+      contentIsLeftAligned: true,
+      content: <ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>,
+      description: 'The trigger shows a flag and calling code immediately',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No starting country in a single-market form',
+      contentIsLeftAligned: true,
+      content: <ds-input-phone label="Phone number"></ds-input-phone>,
+      description: 'Users must open the picker before they can type a local number',
+    },
+  ]}
+/>
+
+### Restrict to Countries You Support
+
+When the product only serves a few markets, pass `countries` so the picker does not list every territory.
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Allow-list of markets',
+      contentIsLeftAligned: true,
+      content: <ds-input-phone label="Phone number" countries="CH,DE,FR,IT" initial-country="CH"></ds-input-phone>,
+      description: 'Only the countries the form accepts are selectable',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Worldwide list for a local form',
+      contentIsLeftAligned: true,
+      content: <ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>,
+      description: 'Users can pick a country the backend will reject',
+    },
+  ]}
+/>
+
+<Footer />

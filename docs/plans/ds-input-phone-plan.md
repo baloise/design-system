@@ -8,9 +8,12 @@ Related ADRs:
 [0023](../adr/0023-ds-input-phone-bespoke-country-picker.md),
 [0024](../adr/0024-ds-input-phone-lazy-svg-flags.md).
 
-Testing is explicitly out of scope for this plan (no unit/integration/E2E/
-visual-regression tests) — the only required artifact besides the component
-is `input-phone.visual.html`, for manual verification.
+The original planning session scoped automated tests and Storybook
+documentation out. The implementation follow-up expands delivery to the
+repository's standard new-component checklist: unit, interaction, visual,
+accessibility, and Page Object coverage plus the complete Storybook
+documentation set. `input-phone.visual.html` remains the manual-verification
+fixture and visual-regression source.
 
 ## Decisions locked in (do not relitigate without discussion)
 
@@ -268,10 +271,9 @@ checkable before moving on):
   (`aria-describedby`, `aria-invalid`, label association) — no additional
   work beyond what `ds-input` already does, since the number field is a
   literal `Field`-wrapped native `<input>`.
-- Manual screen-reader pass (NVDA/VoiceOver) required before considering
-  Phase 6 done — no automated a11y test will be written per the "testing
-  out of scope" constraint, so this is a manual-only checklist item (see
-  Phase 9).
+- Automated axe coverage runs against the default, state, restricted-country,
+  and open-picker variants. A manual screen-reader pass (NVDA/VoiceOver) is
+  still required before considering Phase 6 done (see Phase 9).
 
 ## Phase 7 — Visual examples (`input-phone.visual.html`)
 
@@ -319,6 +321,20 @@ confirm final format")
   with pre-filled `value`s, to visually confirm each country's distinct
   national format renders correctly.
 
+## Phase 7a — Automated tests and Storybook documentation
+
+- Add Vitest coverage for country-list normalization/filtering, localized
+  names, number formatting, country detection, and caret helpers.
+- Add Playwright component coverage for E.164 event payloads, blur formatting,
+  picker selection and keyboard behavior, pasted international numbers,
+  allow-list fallback, disabled/readonly behavior, and form reset.
+- Add axe accessibility coverage, including the open country picker, plus
+  visual-regression coverage for all visual fixture sections.
+- Add and export `DsInputPhone` from `packages/playwright`.
+- Add the standard Storybook set under
+  `apps/storybook/src/components/input-phone/`: stories, doc config, and six
+  MDX pages (Overview, Usage, Variants, Styling, Accessibility, Testing).
+
 ## Phase 8 — Bundle-size review
 
 - **Entry point**: `libphonenumber-js/min`. Imports used: `AsYouType`,
@@ -351,7 +367,7 @@ confirm final format")
 
 ## Phase 9 — Manual verification checklist
 
-Since automated testing is out of scope, verify manually against
+Alongside the automated suite, verify manually against
 `input-phone.visual.html` before considering the component done:
 
 - [ ] Default/empty state renders with no console errors.

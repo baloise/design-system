@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+  ComponentParts,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as InputPhoneStories from './input-phone.stories'
+import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-config'
+
+<Meta title="Components/InputPhone/Styling" />
+
+<Banner label={'Styling'} section={INPUTPHONE_DOC_CONFIG.section} color={INPUTPHONE_DOC_CONFIG.color} />
+
+<BannerTabs of={InputPhoneStories} tabs={getInputPhoneTabs('styling')} />
+
+<ComponentParts component="input-phone" />
+
+<ComponentCssVariables component="input-phone" />
+
+<ComponentDesignTokens component="input-phone" />
+
+<Footer />

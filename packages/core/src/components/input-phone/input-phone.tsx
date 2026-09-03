@@ -217,7 +217,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
   @Event() dsChange!: EventEmitter<PhoneChangeDetail>
 
   /**
-   * Emitted when the selected country changes through the picker or a pasted international number.
+   * Emitted when the selected country changes through the picker.
    */
   @Event() dsCountryChange!: EventEmitter<PhoneCountryChangeDetail>
 
@@ -289,12 +289,12 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
     }
   }
 
-  @Listen('reset', { capture: true, target: 'document' })
+  @Listen('reset', { target: 'document' })
   listenToReset(ev: UIEvent) {
     const form = ev.target as HTMLElement
     if (form?.contains(this.el)) {
-      this.setInternalValue(this.initialValue)
-      this.setInternalCountry(this.initialResolvedCountry, { emit: false, reformat: true })
+      this.setInternalCountry(this.initialResolvedCountry, { emit: false, reformat: false })
+      this.applyExternalValue(this.initialValue)
     }
   }
 
@@ -784,9 +784,13 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
                 onKeyDown={this.handleFilterKeyDown}
               />
             </div>
+            <span id="country-list-label" class="sr-only">
+              {i18n.selectCountry}
+            </span>
             <div
               id="country-list"
               role="listbox"
+              aria-labelledby="country-list-label"
               aria-activedescendant={this.activeCode ? this.optionId(this.activeCode) : undefined}
             >
               {visible.length === 0 && <div class="no-results">{i18n.noResults}</div>}

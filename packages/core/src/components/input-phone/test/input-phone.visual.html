@@ -59,6 +59,23 @@
         ></ds-input-phone>
       </section>
 
+      <section data-testid="invalid-slot">
+        <span>Invalid Text Slot</span>
+        <ds-input-phone label="Invalid slot" initial-country="CH" invalid>
+          <span slot="invalid-text">Please include the country and national number</span>
+        </ds-input-phone>
+      </section>
+
+      <section data-testid="valid">
+        <span>Valid</span>
+        <ds-input-phone label="Valid" initial-country="CH" value="+41791234567" color="success"></ds-input-phone>
+      </section>
+
+      <section data-testid="warning">
+        <span>Warning</span>
+        <ds-input-phone label="Warning" initial-country="CH" value="+41791234567" color="warning"></ds-input-phone>
+      </section>
+
       <section data-testid="description">
         <span>Description</span>
         <ds-input-phone
@@ -101,6 +118,25 @@
         <ds-input-phone label="IT" initial-country="IT" value="+393312345678"></ds-input-phone>
         <ds-input-phone label="US" initial-country="US" value="+12025551234"></ds-input-phone>
         <ds-input-phone label="JP" initial-country="JP" value="+819012345678"></ds-input-phone>
+      </section>
+
+      <!-- Form Reset -->
+      <section data-testid="form-reset">
+        <span>Form Reset</span>
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <ds-input-phone
+            required
+            name="phone"
+            label="Phone number"
+            initial-country="CH"
+            value="+41791234567"
+          ></ds-input-phone>
+
+          <ds-button-group>
+            <ds-button element-type="submit" color="primary">Submit</ds-button>
+            <ds-button data-testid="button-reset" element-type="reset" color="link">Reset</ds-button>
+          </ds-button-group>
+        </form>
       </section>
     </main>
   </body>

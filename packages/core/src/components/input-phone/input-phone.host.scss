@@ -106,6 +106,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     border: none;
     border-inline-end: var(--_form-container-border);
     border-radius: 0;
+    outline: none;
     background: transparent;
     color: var(--_input-phone-color);
     font-family: var(--_input-phone-family);
