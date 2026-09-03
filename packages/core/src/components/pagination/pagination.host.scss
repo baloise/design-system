@@ -9,32 +9,24 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --pagination-gap-mobile: Gap between pagination items on mobile.
- * @prop --pagination-gap-tablet: Gap between pagination items on tablet.
- * @prop --pagination-gap-desktop: Gap between pagination items on desktop.
+ * @prop --pagination-gap: Gap between pagination items.
  * @prop --pagination-dots-background: Background color of the ellipsis dots.
  * @prop --pagination-dots-radius: Border radius of the ellipsis dots.
- * @prop --pagination-item-color-background: Background color of pagination buttons.
- * @prop --pagination-item-color-text: Text color of pagination buttons.
- * @prop --pagination-item-color-background-active: Background color of active/current button.
- * @prop --pagination-item-color-text-active: Text color of active/current button.
- * @prop --pagination-button-min-width: Minimum width of pagination button items.
- * @prop --pagination-button-min-height: Minimum height of pagination button items.
+ * @prop --pagination-dots-gap: Gap between the ellipsis dots.
  */
 
 :host {
   @include vars.base(pagination);
-  @include vars.local(pagination-gap-mobile, var(--ds-pagination-gap-mobile));
-  @include vars.local(pagination-gap-tablet, var(--ds-pagination-gap-tablet));
-  @include vars.local(pagination-gap-desktop, var(--ds-pagination-gap-desktop));
+  @include vars.local(pagination-gap, var(--ds-pagination-size-base-gap));
 
-  @include vars.local(pagination-dots-background, var(--ds-pagination-dots-background));
-  @include vars.local(pagination-dots-radius, var(--ds-pagination-dots-radius));
-  @include vars.local(pagination-disabled-text-color, var(--ds-pagination-disabled-text-color));
+  @include vars.local(pagination-disabled-color, var(--ds-pagination-disabled-color));
   @include vars.local(pagination-elevation-sticky, var(--ds-pagination-elevation-sticky));
-  @include vars.local(pagination-text-weight, var(--ds-pagination-text-weight));
-  @include vars.local(pagination-dots-inactive-color, var(--ds-pagination-dots-inactive-color));
-  @include vars.local(pagination-dots-active-color, var(--ds-pagination-dots-active-color));
+
+  @include vars.local(pagination-dots-radius, var(--ds-pagination-dots-radius));
+  @include vars.local(pagination-dots-background, var(--ds-pagination-dots-color-background));
+  @include vars.local(pagination-dots-inactive-color, var(--ds-pagination-dots-color-inactive));
+  @include vars.local(pagination-dots-active-color, var(--ds-pagination-dots-color-active));
+  @include vars.local(pagination-dots-gap, var(--ds-pagination-dots-gap));
 }
 
 /**
@@ -58,19 +50,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: var(--_pagination-gap-mobile);
+      gap: var(--_pagination-gap);
 
       order: 2;
       width: unset;
       text-align: center;
-
-      @include tablet {
-        gap: var(--_pagination-gap-tablet);
-      }
-
-      @include desktop {
-        gap: var(--_pagination-gap-desktop);
-      }
     }
   }
 
@@ -106,15 +90,15 @@
   pointer-events: none;
 
   #ellipsis {
-    color: var(--_pagination-disabled-text-color);
+    color: var(--_pagination-disabled-color);
   }
 }
 
 // Size
 // --------------------------------
 
-:host(.is-size-small) {
-  --mod-pagination-gap: 0.125rem;
+:host(.is-size-sm) {
+  --mod-pagination-gap: var(--ds-pagination-size-sm-gap);
 
   #ellipsis {
     width: 2rem;
@@ -141,17 +125,6 @@
 // Dots Variant
 // --------------------------------
 
-:host(.is-variant-dots) {
-  --_pagination-dots-background: var(--ds-alias-background-color-grey);
-}
-
-:host(.is-variant-dots) #previous.is-disabled,
-:host(.is-variant-dots) #next.is-disabled {
-  background: transparent;
-  border-color: transparent;
-  opacity: 0.35;
-}
-
 :host(.is-variant-dots) .dots {
   order: 2;
   max-width: 88px;
@@ -164,7 +137,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.125rem;
+  gap: var(--_pagination-dots-gap);
 
   li {
     display: flex;
@@ -173,7 +146,7 @@
   }
 
   strong {
-    font-weight: var(--_pagination-text-weight);
+    font-weight: var(--ds-alias-text-weight-bold);
   }
 
   button.dot {

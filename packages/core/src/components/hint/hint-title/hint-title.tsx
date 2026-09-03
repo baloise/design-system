@@ -26,6 +26,11 @@ export class HintTitle implements DsComponentInterface {
     this.el.slot = 'title'
   }
 
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
+
   render() {
     return (
       <Host style={{ display: 'contents' }}>

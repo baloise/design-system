@@ -13,8 +13,10 @@
  * @prop --description-list-grid-column-gap: Defines the gap between columns in the description list.
  * @prop --description-list-term-color: Defines the text color for the term (dt) element.
  * @prop --description-list-term-weight: Defines the font weight for the term (dt) element.
+ * @prop --description-list-term-family: Defines the font family for the term (dt) element.
  * @prop --description-list-detail-color: Defines the text color for the detail (dd) element.
  * @prop --description-list-detail-weight: Defines the font weight for the detail (dd) element.
+ * @prop --description-list-detail-family: Defines the font family for the detail (dd) element.
  */
 
 dl.description-list {
@@ -25,9 +27,11 @@ dl.description-list {
 
   @include vars.local(description-list-term-color, var(--ds-description-list-term-color));
   @include vars.local(description-list-term-weight, var(--ds-description-list-term-font-weight));
+  @include vars.local(description-list-term-family, var(--ds-description-list-term-font-family));
 
   @include vars.local(description-list-detail-color, var(--ds-description-list-detail-color));
   @include vars.local(description-list-detail-weight, var(--ds-description-list-detail-font-weight));
+  @include vars.local(description-list-detail-family, var(--ds-description-list-detail-font-family));
 }
 
 /**
@@ -51,6 +55,7 @@ dl.description-list {
 
     color: var(--_description-list-term-color);
     font-weight: var(--_description-list-term-weight);
+    font-family: var(--_description-list-term-family);
   }
 
   dd {
@@ -58,6 +63,7 @@ dl.description-list {
 
     color: var(--_description-list-detail-color);
     font-weight: var(--_description-list-detail-weight);
+    font-family: var(--_description-list-detail-family);
 
     @include mobile() {
       &:not(:last-child) {

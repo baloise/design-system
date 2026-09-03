@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
+import { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
+import { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
 import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 import { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
 import { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
@@ -23,16 +25,14 @@ import { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocus
 import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
 import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
-import { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
+import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
 import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
-import { NavbarContainer } from "./components/navbar/navbar.interfaces";
 import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -55,6 +55,8 @@ import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } f
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
+export { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
+export { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
 export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
 export { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
 export { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
@@ -70,16 +72,14 @@ export { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocus
 export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
 export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
 export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
-export { FooterContainer, FooterLanguageChangeDetail } from "./components/footer/footer.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemVariant } from "./components/list/item/item.interfaces";
+export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
 export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
 export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
-export { NavbarContainer } from "./components/navbar/navbar.interfaces";
 export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
 export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
 export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
@@ -137,9 +137,8 @@ export namespace Components {
         "buttonLabelOpen": string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
-        "buttonSize": AccordionButtonSize;
+        "buttonSize"?: AccordionButtonSize;
         /**
           * If `true` the button is expanded to full width. Only applies if `button` is `true`.
           * @default false
@@ -153,14 +152,12 @@ export namespace Components {
         "group": string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
-        "marker": AccordionMarker;
+        "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
-          * @default ''
          */
-        "markerPosition": AccordionMarkerPosition;
+        "markerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -178,9 +175,8 @@ export namespace Components {
         "summaryTitle": boolean;
         /**
           * The visual heading level of the summary.
-          * @default ''
          */
-        "summaryVisualLevel": AccordionSummaryLevel;
+        "summaryVisualLevel"?: AccordionSummaryLevel;
     }
     /**
      * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
@@ -234,6 +230,71 @@ export namespace Components {
           * Sets focus on the given elements using the app's focus-visible handling.
          */
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
+    }
+    /**
+     * AppFooter renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface DsAppFooter {
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+         */
+        "container"?: AppFooterContainer;
+        /**
+          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
+          * @default false
+         */
+        "disableDefaultLinks": boolean;
+        /**
+          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
+          * @default false
+         */
+        "disableDefaultSocialLinks": boolean;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
+         */
+        "legalText": string | undefined;
+    }
+    /**
+     * AppNavbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface DsAppNavbar {
+        /**
+          * Closes the sidebar menu
+         */
+        "closeSidebar": () => Promise<void>;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+         */
+        "container"?: AppNavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light": boolean;
+        "listenToResize": () => Promise<void>;
+        /**
+          * If `true` the navbar will open the sidebar menu.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Opens the sidebar menu
+         */
+        "openSidebar": () => Promise<void>;
+        /**
+          * Toggles the sidebar menu open/closed state
+         */
+        "toggleSidebar": () => Promise<void>;
     }
     /**
      * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
@@ -469,9 +530,8 @@ export namespace Components {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
-          * @default ''
          */
-        "align": CardAlignment;
+        "align"?: CardAlignment;
         /**
           * If `true` the card has a hover effect.
           * @default false
@@ -479,9 +539,8 @@ export namespace Components {
         "clickable": boolean;
         /**
           * Defines the color of the card.
-          * @default ''
          */
-        "color": CardColor;
+        "color"?: CardColor;
         /**
           * If `true` the card gets a smaller padding.
           * @default false
@@ -508,11 +567,6 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the cards gets a light border and loses its shadow.
-          * @default false
-         */
-        "outlined": boolean;
-        /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
          */
@@ -521,11 +575,6 @@ export namespace Components {
           * Defines the space of the card content.
          */
         "space"?: CardSpace;
-        /**
-          * If `true` the card loses its border radius.
-          * @default false
-         */
-        "square": boolean;
         /**
           * If `true` the card gets a tile look, it has a brand icon on the left
           * @default false
@@ -538,9 +587,8 @@ export namespace Components {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
-        "align": CardActionsAlignment;
+        "align"?: CardActionsAlignment;
     }
     /**
      * Card content renders the main content area of a card for grouping body text and media.
@@ -552,6 +600,7 @@ export namespace Components {
      */
     interface DsCardHeader {
         /**
+          * Defines the layout direction of the header content (title, icon, image).
           * @default 'row'
          */
         "direction": CardHeaderDirection;
@@ -640,9 +689,8 @@ export namespace Components {
         "carouselVariant": CarouselVariant;
         /**
           * Background color for product tiles.
-          * @default ''
          */
-        "color": CarouselItemColor;
+        "color"?: CarouselItemColor;
         /**
           * Set by ds-carousel. 1-based position index.
           * @default 0
@@ -1281,39 +1329,6 @@ export namespace Components {
         "value": File[];
     }
     /**
-     * Footer renders application level legal links, language selection, and social links.
-     * Link content is slot first to keep links crawlable and SEO friendly.
-     * Links and social media are shown by default unless disabled.
-     */
-    interface DsFooter {
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
-         */
-        "container": FooterContainer;
-        /**
-          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
-          * @default false
-         */
-        "disableDefaultLinks": boolean;
-        /**
-          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
-          * @default false
-         */
-        "disableDefaultSocialLinks": boolean;
-        /**
-          * If `true` the language selection will be hidden.
-          * @default false
-         */
-        "hideLanguageSelection": boolean;
-        /**
-          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
-          * @default undefined
-         */
-        "legalText": string | undefined;
-    }
-    /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
     interface DsHeading {
@@ -1837,14 +1852,12 @@ export namespace Components {
         "accordionGroup": string;
         /**
           * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
-        "accordionMarker": AccordionMarker;
+        "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `variant` is set to `accordion`.
-          * @default ''
          */
-        "accordionMarkerPosition": AccordionMarkerPosition;
+        "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
           * If `true` the accordion is open.
           * @default false
@@ -1852,9 +1865,8 @@ export namespace Components {
         "accordionOpen": boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default ''
          */
-        "actionIcon": ItemActionIcon;
+        "actionIcon"?: ItemActionIcon;
         /**
           * The description text displayed below the label.
           * @default ''
@@ -1876,30 +1888,36 @@ export namespace Components {
          */
         "href": string;
         /**
+          * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+          * @default false
+         */
+        "inverted": boolean;
+        /**
           * The label text displayed as a heading inside the item.
           * @default ''
          */
         "label": string;
         /**
           * The semantic heading level of the label element.
-          * @default ''
          */
-        "labelLevel": ItemLabelLevel;
+        "labelLevel"?: ItemLabelLevel;
         /**
           * The visual size of the label. Defaults to `labelLevel` if not set.
-          * @default ''
          */
-        "labelSize": ItemLabelSize;
+        "labelSize"?: ItemLabelSize;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
           * @default ''
          */
         "rel": string;
         /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default ''
+          * The size of the item. If not set, the default (base) size is used.
          */
-        "target": ButtonTarget;
+        "size"?: ItemSize;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: ButtonTarget;
         /**
           * The visual and functional variant of the item.
           * @default 'default'
@@ -1953,13 +1971,24 @@ export namespace Components {
     }
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface DsList {
+        /**
+          * If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant `ds-item` elements.
+          * @default false
+         */
+        "inverted": boolean;
         /**
           * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered": boolean;
+        /**
+          * The size of the list items. If not set, the default (base) size is used. Cascades to descendant `ds-item` elements.
+         */
+        "size"?: ItemSize;
     }
     /**
      * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
@@ -2034,40 +2063,6 @@ export namespace Components {
     interface DsModalHeader {
     }
     /**
-     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
-     */
-    interface DsNavbar {
-        /**
-          * Closes the sidebar menu
-         */
-        "closeSidebar": () => Promise<void>;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
-         */
-        "container": NavbarContainer;
-        /**
-          * If `true` the navbar will use a light color scheme.
-          * @default false
-         */
-        "light": boolean;
-        "listenToResize": () => Promise<void>;
-        /**
-          * If `true` the navbar will open the sidebar menu.
-          * @default false
-         */
-        "open": boolean;
-        /**
-          * Opens the sidebar menu
-         */
-        "openSidebar": () => Promise<void>;
-        /**
-          * Toggles the sidebar menu open/closed state
-         */
-        "toggleSidebar": () => Promise<void>;
-    }
-    /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
      */
     interface DsNotification {
@@ -2104,7 +2099,7 @@ export namespace Components {
          */
         "noIcon": boolean;
         /**
-          * Defines the size of the notification, small, medium or large.
+          * Defines the size of the notification, sm or md.
          */
         "size"?: NotificationSize;
     }
@@ -2227,9 +2222,8 @@ export namespace Components {
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
-          * @default ''
          */
-        "align": PaginationAlignment;
+        "align"?: PaginationAlignment;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Disables component
@@ -2256,9 +2250,8 @@ export namespace Components {
         "previous": () => Promise<void>;
         /**
           * Size of the buttons
-          * @default ''
          */
-        "size": PaginationSize;
+        "size"?: PaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
           * @default false
@@ -2291,9 +2284,8 @@ export namespace Components {
         "value": number;
         /**
           * Defines the layout of the pagination
-          * @default ''
          */
-        "variant": PaginationVariant;
+        "variant"?: PaginationVariant;
     }
     /**
      * Popup displays anchored overlay content positioned relative to a trigger element.
@@ -3123,9 +3115,8 @@ export namespace Components {
     interface DsSteps {
         /**
           * Accent color applied to inactive circles and connector lines.
-          * @default ''
          */
-        "color": StepsColor;
+        "color"?: StepsColor;
         /**
           * Accessible label for the navigation landmark (navigation variant only).
           * @default ''
@@ -3195,9 +3186,8 @@ export namespace Components {
     interface DsTabs {
         /**
           * Accent color applied to the bottom border track and selected indicator.
-          * @default ''
          */
-        "color": TabsColor;
+        "color"?: TabsColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true`, tab buttons expand to fill the available width equally.
@@ -3666,6 +3656,14 @@ export interface DsAppCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAppElement;
 }
+export interface DsAppFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsAppFooterElement;
+}
+export interface DsAppNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsAppNavbarElement;
+}
 export interface DsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsButtonElement;
@@ -3698,10 +3696,6 @@ export interface DsFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsFileUploadElement;
 }
-export interface DsFooterCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsFooterElement;
-}
 export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
@@ -3721,10 +3715,6 @@ export interface DsItemCustomEvent<T> extends CustomEvent<T> {
 export interface DsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsModalElement;
-}
-export interface DsNavbarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsNavbarElement;
 }
 export interface DsNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3854,6 +3844,51 @@ declare global {
     var HTMLDsAppElement: {
         prototype: HTMLDsAppElement;
         new (): HTMLDsAppElement;
+    };
+    interface HTMLDsAppFooterElementEventMap {
+        "dsLanguageChange": AppFooterLanguageChangeDetail;
+    }
+    /**
+     * AppFooter renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface HTMLDsAppFooterElement extends Components.DsAppFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsAppFooterElementEventMap>(type: K, listener: (this: HTMLDsAppFooterElement, ev: DsAppFooterCustomEvent<HTMLDsAppFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsAppFooterElementEventMap>(type: K, listener: (this: HTMLDsAppFooterElement, ev: DsAppFooterCustomEvent<HTMLDsAppFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsAppFooterElement: {
+        prototype: HTMLDsAppFooterElement;
+        new (): HTMLDsAppFooterElement;
+    };
+    interface HTMLDsAppNavbarElementEventMap {
+        "dsMenuOpenStart": void;
+        "dsMenuOpenEnd": void;
+        "dsMenuCloseStart": void;
+        "dsMenuCloseEnd": void;
+    }
+    /**
+     * AppNavbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface HTMLDsAppNavbarElement extends Components.DsAppNavbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsAppNavbarElementEventMap>(type: K, listener: (this: HTMLDsAppNavbarElement, ev: DsAppNavbarCustomEvent<HTMLDsAppNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsAppNavbarElementEventMap>(type: K, listener: (this: HTMLDsAppNavbarElement, ev: DsAppNavbarCustomEvent<HTMLDsAppNavbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsAppNavbarElement: {
+        prototype: HTMLDsAppNavbarElement;
+        new (): HTMLDsAppNavbarElement;
     };
     /**
      * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
@@ -4187,28 +4222,6 @@ declare global {
         prototype: HTMLDsFileUploadElement;
         new (): HTMLDsFileUploadElement;
     };
-    interface HTMLDsFooterElementEventMap {
-        "dsLanguageChange": FooterLanguageChangeDetail;
-    }
-    /**
-     * Footer renders application level legal links, language selection, and social links.
-     * Link content is slot first to keep links crawlable and SEO friendly.
-     * Links and social media are shown by default unless disabled.
-     */
-    interface HTMLDsFooterElement extends Components.DsFooter, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsFooterElementEventMap>(type: K, listener: (this: HTMLDsFooterElement, ev: DsFooterCustomEvent<HTMLDsFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsFooterElement: {
-        prototype: HTMLDsFooterElement;
-        new (): HTMLDsFooterElement;
-    };
     /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
@@ -4366,6 +4379,8 @@ declare global {
     };
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface HTMLDsListElement extends Components.DsList, HTMLStencilElement {
     }
@@ -4426,29 +4441,6 @@ declare global {
     var HTMLDsModalHeaderElement: {
         prototype: HTMLDsModalHeaderElement;
         new (): HTMLDsModalHeaderElement;
-    };
-    interface HTMLDsNavbarElementEventMap {
-        "dsMenuOpenStart": void;
-        "dsMenuOpenEnd": void;
-        "dsMenuCloseStart": void;
-        "dsMenuCloseEnd": void;
-    }
-    /**
-     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
-     */
-    interface HTMLDsNavbarElement extends Components.DsNavbar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsNavbarElementEventMap>(type: K, listener: (this: HTMLDsNavbarElement, ev: DsNavbarCustomEvent<HTMLDsNavbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsNavbarElement: {
-        prototype: HTMLDsNavbarElement;
-        new (): HTMLDsNavbarElement;
     };
     interface HTMLDsNotificationElementEventMap {
         "dsCloseClick": NotificationCloseClickDetail;
@@ -4978,6 +4970,8 @@ declare global {
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
         "ds-app": HTMLDsAppElement;
+        "ds-app-footer": HTMLDsAppFooterElement;
+        "ds-app-navbar": HTMLDsAppNavbarElement;
         "ds-badge": HTMLDsBadgeElement;
         "ds-brand-icon": HTMLDsBrandIconElement;
         "ds-button": HTMLDsButtonElement;
@@ -5002,7 +4996,6 @@ declare global {
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
         "ds-file-upload": HTMLDsFileUploadElement;
-        "ds-footer": HTMLDsFooterElement;
         "ds-heading": HTMLDsHeadingElement;
         "ds-hint": HTMLDsHintElement;
         "ds-hint-text": HTMLDsHintTextElement;
@@ -5018,7 +5011,6 @@ declare global {
         "ds-modal": HTMLDsModalElement;
         "ds-modal-body": HTMLDsModalBodyElement;
         "ds-modal-header": HTMLDsModalHeaderElement;
-        "ds-navbar": HTMLDsNavbarElement;
         "ds-notification": HTMLDsNotificationElement;
         "ds-number-input": HTMLDsNumberInputElement;
         "ds-pagination": HTMLDsPaginationElement;
@@ -5052,7 +5044,7 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K]?: never };
 
     /**
      * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
@@ -5091,7 +5083,6 @@ declare namespace LocalJSX {
         "buttonLabelOpen"?: string;
         /**
           * The size of the button. Only applies if `button` is `true`.
-          * @default ''
          */
         "buttonSize"?: AccordionButtonSize;
         /**
@@ -5106,12 +5097,10 @@ declare namespace LocalJSX {
         "group"?: string;
         /**
           * The marker variant. Only applies if `button` is `false`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
         "marker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `button` is `false`.
-          * @default ''
          */
         "markerPosition"?: AccordionMarkerPosition;
         /**
@@ -5143,7 +5132,6 @@ declare namespace LocalJSX {
         "summaryTitle"?: boolean;
         /**
           * The visual heading level of the summary.
-          * @default ''
          */
         "summaryVisualLevel"?: AccordionSummaryLevel;
     }
@@ -5187,6 +5175,76 @@ declare namespace LocalJSX {
           * @default false
          */
         "ready"?: boolean;
+    }
+    /**
+     * AppFooter renders application level legal links, language selection, and social links.
+     * Link content is slot first to keep links crawlable and SEO friendly.
+     * Links and social media are shown by default unless disabled.
+     */
+    interface DsAppFooter {
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+         */
+        "container"?: AppFooterContainer;
+        /**
+          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
+          * @default false
+         */
+        "disableDefaultLinks"?: boolean;
+        /**
+          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
+          * @default false
+         */
+        "disableDefaultSocialLinks"?: boolean;
+        /**
+          * If `true` the language selection will be hidden.
+          * @default false
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
+          * @default undefined
+         */
+        "legalText"?: string | undefined;
+        /**
+          * Emitted when the language select value changes.
+         */
+        "onDsLanguageChange"?: (event: DsAppFooterCustomEvent<AppFooterLanguageChangeDetail>) => void;
+    }
+    /**
+     * AppNavbar provides semantic navigation with responsive sidebar menu and keyboard support.
+     */
+    interface DsAppNavbar {
+        /**
+          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
+         */
+        "container"?: AppNavbarContainer;
+        /**
+          * If `true` the navbar will use a light color scheme.
+          * @default false
+         */
+        "light"?: boolean;
+        /**
+          * Emitted when the sidebar menu finishes closing
+         */
+        "onDsMenuCloseEnd"?: (event: DsAppNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts closing
+         */
+        "onDsMenuCloseStart"?: (event: DsAppNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu finishes opening
+         */
+        "onDsMenuOpenEnd"?: (event: DsAppNavbarCustomEvent<void>) => void;
+        /**
+          * Emitted when the sidebar menu starts opening
+         */
+        "onDsMenuOpenStart"?: (event: DsAppNavbarCustomEvent<void>) => void;
+        /**
+          * If `true` the navbar will open the sidebar menu.
+          * @default false
+         */
+        "open"?: boolean;
     }
     /**
      * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
@@ -5446,7 +5504,6 @@ declare namespace LocalJSX {
     interface DsCard {
         /**
           * Defines the text alignment of the card content.
-          * @default ''
          */
         "align"?: CardAlignment;
         /**
@@ -5456,7 +5513,6 @@ declare namespace LocalJSX {
         "clickable"?: boolean;
         /**
           * Defines the color of the card.
-          * @default ''
          */
         "color"?: CardColor;
         /**
@@ -5485,11 +5541,6 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the cards gets a light border and loses its shadow.
-          * @default false
-         */
-        "outlined"?: boolean;
-        /**
           * If `true` the card gets a light background to indicate a selection.
           * @default false
          */
@@ -5498,11 +5549,6 @@ declare namespace LocalJSX {
           * Defines the space of the card content.
          */
         "space"?: CardSpace;
-        /**
-          * If `true` the card loses its border radius.
-          * @default false
-         */
-        "square"?: boolean;
         /**
           * If `true` the card gets a tile look, it has a brand icon on the left
           * @default false
@@ -5515,7 +5561,6 @@ declare namespace LocalJSX {
     interface DsCardActions {
         /**
           * The value of the button, which is submitted with the form data.
-          * @default ''
          */
         "align"?: CardActionsAlignment;
     }
@@ -5529,6 +5574,7 @@ declare namespace LocalJSX {
      */
     interface DsCardHeader {
         /**
+          * Defines the layout direction of the header content (title, icon, image).
           * @default 'row'
          */
         "direction"?: CardHeaderDirection;
@@ -5620,7 +5666,6 @@ declare namespace LocalJSX {
         "carouselVariant"?: CarouselVariant;
         /**
           * Background color for product tiles.
-          * @default ''
          */
         "color"?: CarouselItemColor;
         /**
@@ -6335,42 +6380,6 @@ declare namespace LocalJSX {
         "value"?: File[];
     }
     /**
-     * Footer renders application level legal links, language selection, and social links.
-     * Link content is slot first to keep links crawlable and SEO friendly.
-     * Links and social media are shown by default unless disabled.
-     */
-    interface DsFooter {
-        /**
-          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
-         */
-        "container"?: FooterContainer;
-        /**
-          * If `true` the default legal links from config will not be rendered. User must provide links via the `links` slot.
-          * @default false
-         */
-        "disableDefaultLinks"?: boolean;
-        /**
-          * If `true` the default social links from config will not be rendered. User must provide social links via the `social-links` slot.
-          * @default false
-         */
-        "disableDefaultSocialLinks"?: boolean;
-        /**
-          * If `true` the language selection will be hidden.
-          * @default false
-         */
-        "hideLanguageSelection"?: boolean;
-        /**
-          * Copyright and address text below the divider. If not provided, uses the text from config based on region and language.
-          * @default undefined
-         */
-        "legalText"?: string | undefined;
-        /**
-          * Emitted when the language select value changes.
-         */
-        "onDsLanguageChange"?: (event: DsFooterCustomEvent<FooterLanguageChangeDetail>) => void;
-    }
-    /**
      * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
      */
     interface DsHeading {
@@ -6925,12 +6934,10 @@ declare namespace LocalJSX {
         "accordionGroup"?: string;
         /**
           * The marker variant. Only applies if `variant` is set to `accordion`. If `''` the default marker is used, if `plus` a plus icon is used and if `plus-minus` a plus icon for closed and a minus icon for open state is used.
-          * @default ''
          */
         "accordionMarker"?: AccordionMarker;
         /**
           * The position of the marker. Only applies if `variant` is set to `accordion`.
-          * @default ''
          */
         "accordionMarkerPosition"?: AccordionMarkerPosition;
         /**
@@ -6940,7 +6947,6 @@ declare namespace LocalJSX {
         "accordionOpen"?: boolean;
         /**
           * The action icon variant. Controls which icon is displayed for `link` and `button` variants.
-          * @default ''
          */
         "actionIcon"?: ItemActionIcon;
         /**
@@ -6964,18 +6970,21 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * If `true`, the item uses an inverted color scheme for use on dark backgrounds such as the primary surface.
+          * @default false
+         */
+        "inverted"?: boolean;
+        /**
           * The label text displayed as a heading inside the item.
           * @default ''
          */
         "label"?: string;
         /**
           * The semantic heading level of the label element.
-          * @default ''
          */
         "labelLevel"?: ItemLabelLevel;
         /**
           * The visual size of the label. Defaults to `labelLevel` if not set.
-          * @default ''
          */
         "labelSize"?: ItemLabelSize;
         /**
@@ -7000,8 +7009,11 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
+          * The size of the item. If not set, the default (base) size is used.
+         */
+        "size"?: ItemSize;
+        /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
-          * @default ''
          */
         "target"?: ButtonTarget;
         /**
@@ -7056,13 +7068,24 @@ declare namespace LocalJSX {
     }
     /**
      * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+     * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+     * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
      */
     interface DsList {
+        /**
+          * If `true`, the list uses an inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant `ds-item` elements.
+          * @default false
+         */
+        "inverted"?: boolean;
         /**
           * If `true`, renders an ordered list (`<ol>`); otherwise renders an unordered list (`<ul>`).
           * @default false
          */
         "ordered"?: boolean;
+        /**
+          * The size of the list items. If not set, the default (base) size is used. Cascades to descendant `ds-item` elements.
+         */
+        "size"?: ItemSize;
     }
     /**
      * Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.
@@ -7143,42 +7166,6 @@ declare namespace LocalJSX {
     interface DsModalHeader {
     }
     /**
-     * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
-     */
-    interface DsNavbar {
-        /**
-          * Sets the inner content container width. Accepts `'default'`, `'fluid'`, or `'compact'`. Matches the `ds-container` sizing variants.
-          * @default ''
-         */
-        "container"?: NavbarContainer;
-        /**
-          * If `true` the navbar will use a light color scheme.
-          * @default false
-         */
-        "light"?: boolean;
-        /**
-          * Emitted when the sidebar menu finishes closing
-         */
-        "onDsMenuCloseEnd"?: (event: DsNavbarCustomEvent<void>) => void;
-        /**
-          * Emitted when the sidebar menu starts closing
-         */
-        "onDsMenuCloseStart"?: (event: DsNavbarCustomEvent<void>) => void;
-        /**
-          * Emitted when the sidebar menu finishes opening
-         */
-        "onDsMenuOpenEnd"?: (event: DsNavbarCustomEvent<void>) => void;
-        /**
-          * Emitted when the sidebar menu starts opening
-         */
-        "onDsMenuOpenStart"?: (event: DsNavbarCustomEvent<void>) => void;
-        /**
-          * If `true` the navbar will open the sidebar menu.
-          * @default false
-         */
-        "open"?: boolean;
-    }
-    /**
      * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
      */
     interface DsNotification {
@@ -7219,7 +7206,7 @@ declare namespace LocalJSX {
          */
         "onDsDidLoad"?: (event: DsNotificationCustomEvent<void>) => void;
         /**
-          * Defines the size of the notification, small, medium or large.
+          * Defines the size of the notification, sm or md.
          */
         "size"?: NotificationSize;
     }
@@ -7357,7 +7344,6 @@ declare namespace LocalJSX {
     interface DsPagination {
         /**
           * Align the buttons to start, center or end
-          * @default ''
          */
         "align"?: PaginationAlignment;
         /**
@@ -7381,7 +7367,6 @@ declare namespace LocalJSX {
         "pageRange"?: number;
         /**
           * Size of the buttons
-          * @default ''
          */
         "size"?: PaginationSize;
         /**
@@ -7416,7 +7401,6 @@ declare namespace LocalJSX {
         "value"?: number;
         /**
           * Defines the layout of the pagination
-          * @default ''
          */
         "variant"?: PaginationVariant;
     }
@@ -8310,7 +8294,6 @@ declare namespace LocalJSX {
     interface DsSteps {
         /**
           * Accent color applied to inactive circles and connector lines.
-          * @default ''
          */
         "color"?: StepsColor;
         /**
@@ -8390,7 +8373,6 @@ declare namespace LocalJSX {
     interface DsTabs {
         /**
           * Accent color applied to the bottom border track and selected indicator.
-          * @default ''
          */
         "color"?: TabsColor;
         /**
@@ -8920,6 +8902,18 @@ declare namespace LocalJSX {
         "ready": boolean;
         "logger": string;
     }
+    interface DsAppFooterAttributes {
+        "container": AppFooterContainer;
+        "hideLanguageSelection": boolean;
+        "disableDefaultLinks": boolean;
+        "disableDefaultSocialLinks": boolean;
+        "legalText": string | undefined;
+    }
+    interface DsAppNavbarAttributes {
+        "open": boolean;
+        "light": boolean;
+        "container": AppNavbarContainer;
+    }
     interface DsBadgeAttributes {
         "icon": string;
         "size": BadgeSize;
@@ -8976,8 +8970,6 @@ declare namespace LocalJSX {
         "tile": boolean;
         "dense": boolean;
         "imageTeaser": CardImageTeaser;
-        "square": boolean;
-        "outlined": boolean;
         "inverted": boolean;
         "clickable": boolean;
         "selected": boolean;
@@ -9144,13 +9136,6 @@ declare namespace LocalJSX {
         "hasFileList": boolean;
         "autoInvalidOff": boolean;
     }
-    interface DsFooterAttributes {
-        "container": FooterContainer;
-        "hideLanguageSelection": boolean;
-        "disableDefaultLinks": boolean;
-        "disableDefaultSocialLinks": boolean;
-        "legalText": string | undefined;
-    }
     interface DsHeadingAttributes {
         "level": HeadingLevel;
         "visualLevel": HeadingVisualLevel;
@@ -9257,12 +9242,14 @@ declare namespace LocalJSX {
         "actionIcon": ItemActionIcon;
         "description": string;
         "disabled": boolean;
+        "inverted": boolean;
         "download": string;
         "href": string;
         "label": string;
         "labelLevel": ItemLabelLevel;
         "labelSize": ItemLabelSize;
         "rel": string;
+        "size": ItemSize;
         "target": ButtonTarget;
         "variant": ItemVariant;
     }
@@ -9277,7 +9264,9 @@ declare namespace LocalJSX {
         "valid": boolean;
     }
     interface DsListAttributes {
+        "inverted": boolean;
         "ordered": boolean;
+        "size": ItemSize;
     }
     interface DsLogoAttributes {
         "animated": boolean;
@@ -9290,11 +9279,6 @@ declare namespace LocalJSX {
         "closable": boolean;
         "modalWidth": number;
         "fullscreen": boolean;
-    }
-    interface DsNavbarAttributes {
-        "open": boolean;
-        "light": boolean;
-        "container": NavbarContainer;
     }
     interface DsNotificationAttributes {
         "alert": boolean;
@@ -9626,6 +9610,8 @@ declare namespace LocalJSX {
         "ds-accordion": Omit<DsAccordion, keyof DsAccordionAttributes> & { [K in keyof DsAccordion & keyof DsAccordionAttributes]?: DsAccordion[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `attr:${K}`]?: DsAccordionAttributes[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `prop:${K}`]?: DsAccordion[K] };
         "ds-alert-container": Omit<DsAlertContainer, keyof DsAlertContainerAttributes> & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes]?: DsAlertContainer[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `attr:${K}`]?: DsAlertContainerAttributes[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `prop:${K}`]?: DsAlertContainer[K] };
         "ds-app": Omit<DsApp, keyof DsAppAttributes> & { [K in keyof DsApp & keyof DsAppAttributes]?: DsApp[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `attr:${K}`]?: DsAppAttributes[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `prop:${K}`]?: DsApp[K] };
+        "ds-app-footer": Omit<DsAppFooter, keyof DsAppFooterAttributes> & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes]?: DsAppFooter[K] } & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes as `attr:${K}`]?: DsAppFooterAttributes[K] } & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes as `prop:${K}`]?: DsAppFooter[K] };
+        "ds-app-navbar": Omit<DsAppNavbar, keyof DsAppNavbarAttributes> & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes]?: DsAppNavbar[K] } & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes as `attr:${K}`]?: DsAppNavbarAttributes[K] } & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes as `prop:${K}`]?: DsAppNavbar[K] };
         "ds-badge": Omit<DsBadge, keyof DsBadgeAttributes> & { [K in keyof DsBadge & keyof DsBadgeAttributes]?: DsBadge[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `attr:${K}`]?: DsBadgeAttributes[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `prop:${K}`]?: DsBadge[K] };
         "ds-brand-icon": Omit<DsBrandIcon, keyof DsBrandIconAttributes> & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes]?: DsBrandIcon[K] } & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes as `attr:${K}`]?: DsBrandIconAttributes[K] } & { [K in keyof DsBrandIcon & keyof DsBrandIconAttributes as `prop:${K}`]?: DsBrandIcon[K] };
         "ds-button": Omit<DsButton, keyof DsButtonAttributes> & { [K in keyof DsButton & keyof DsButtonAttributes]?: DsButton[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `attr:${K}`]?: DsButtonAttributes[K] } & { [K in keyof DsButton & keyof DsButtonAttributes as `prop:${K}`]?: DsButton[K] };
@@ -9650,7 +9636,6 @@ declare namespace LocalJSX {
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
         "ds-file-upload": Omit<DsFileUpload, keyof DsFileUploadAttributes> & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes]?: DsFileUpload[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `attr:${K}`]?: DsFileUploadAttributes[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `prop:${K}`]?: DsFileUpload[K] };
-        "ds-footer": Omit<DsFooter, keyof DsFooterAttributes> & { [K in keyof DsFooter & keyof DsFooterAttributes]?: DsFooter[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `attr:${K}`]?: DsFooterAttributes[K] } & { [K in keyof DsFooter & keyof DsFooterAttributes as `prop:${K}`]?: DsFooter[K] };
         "ds-heading": Omit<DsHeading, keyof DsHeadingAttributes> & { [K in keyof DsHeading & keyof DsHeadingAttributes]?: DsHeading[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `attr:${K}`]?: DsHeadingAttributes[K] } & { [K in keyof DsHeading & keyof DsHeadingAttributes as `prop:${K}`]?: DsHeading[K] };
         "ds-hint": Omit<DsHint, keyof DsHintAttributes> & { [K in keyof DsHint & keyof DsHintAttributes]?: DsHint[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `attr:${K}`]?: DsHintAttributes[K] } & { [K in keyof DsHint & keyof DsHintAttributes as `prop:${K}`]?: DsHint[K] };
         "ds-hint-text": DsHintText;
@@ -9666,7 +9651,6 @@ declare namespace LocalJSX {
         "ds-modal": Omit<DsModal, keyof DsModalAttributes> & { [K in keyof DsModal & keyof DsModalAttributes]?: DsModal[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `attr:${K}`]?: DsModalAttributes[K] } & { [K in keyof DsModal & keyof DsModalAttributes as `prop:${K}`]?: DsModal[K] };
         "ds-modal-body": DsModalBody;
         "ds-modal-header": DsModalHeader;
-        "ds-navbar": Omit<DsNavbar, keyof DsNavbarAttributes> & { [K in keyof DsNavbar & keyof DsNavbarAttributes]?: DsNavbar[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `attr:${K}`]?: DsNavbarAttributes[K] } & { [K in keyof DsNavbar & keyof DsNavbarAttributes as `prop:${K}`]?: DsNavbar[K] };
         "ds-notification": Omit<DsNotification, keyof DsNotificationAttributes> & { [K in keyof DsNotification & keyof DsNotificationAttributes]?: DsNotification[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `attr:${K}`]?: DsNotificationAttributes[K] } & { [K in keyof DsNotification & keyof DsNotificationAttributes as `prop:${K}`]?: DsNotification[K] };
         "ds-number-input": Omit<DsNumberInput, keyof DsNumberInputAttributes> & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes]?: DsNumberInput[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `attr:${K}`]?: DsNumberInputAttributes[K] } & { [K in keyof DsNumberInput & keyof DsNumberInputAttributes as `prop:${K}`]?: DsNumberInput[K] };
         "ds-pagination": Omit<DsPagination, keyof DsPaginationAttributes> & { [K in keyof DsPagination & keyof DsPaginationAttributes]?: DsPagination[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `attr:${K}`]?: DsPaginationAttributes[K] } & { [K in keyof DsPagination & keyof DsPaginationAttributes as `prop:${K}`]?: DsPagination[K] };
@@ -9716,6 +9700,16 @@ declare module "@stencil/core" {
              * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
              */
             "ds-app": LocalJSX.IntrinsicElements["ds-app"] & JSXBase.HTMLAttributes<HTMLDsAppElement>;
+            /**
+             * AppFooter renders application level legal links, language selection, and social links.
+             * Link content is slot first to keep links crawlable and SEO friendly.
+             * Links and social media are shown by default unless disabled.
+             */
+            "ds-app-footer": LocalJSX.IntrinsicElements["ds-app-footer"] & JSXBase.HTMLAttributes<HTMLDsAppFooterElement>;
+            /**
+             * AppNavbar provides semantic navigation with responsive sidebar menu and keyboard support.
+             */
+            "ds-app-navbar": LocalJSX.IntrinsicElements["ds-app-navbar"] & JSXBase.HTMLAttributes<HTMLDsAppNavbarElement>;
             /**
              * Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.
              */
@@ -9819,12 +9813,6 @@ declare module "@stencil/core" {
              */
             "ds-file-upload": LocalJSX.IntrinsicElements["ds-file-upload"] & JSXBase.HTMLAttributes<HTMLDsFileUploadElement>;
             /**
-             * Footer renders application level legal links, language selection, and social links.
-             * Link content is slot first to keep links crawlable and SEO friendly.
-             * Links and social media are shown by default unless disabled.
-             */
-            "ds-footer": LocalJSX.IntrinsicElements["ds-footer"] & JSXBase.HTMLAttributes<HTMLDsFooterElement>;
-            /**
              * Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.
              */
             "ds-heading": LocalJSX.IntrinsicElements["ds-heading"] & JSXBase.HTMLAttributes<HTMLDsHeadingElement>;
@@ -9870,6 +9858,8 @@ declare module "@stencil/core" {
             "ds-label": LocalJSX.IntrinsicElements["ds-label"] & JSXBase.HTMLAttributes<HTMLDsLabelElement>;
             /**
              * List renders semantic HTML list elements (ordered or unordered) for grouping related items.
+             * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface. Cascades to descendant ds-item elements.
+             * @variant is-lg - Large size, increasing the minimum row height of descendant ds-item elements.
              */
             "ds-list": LocalJSX.IntrinsicElements["ds-list"] & JSXBase.HTMLAttributes<HTMLDsListElement>;
             /**
@@ -9892,10 +9882,6 @@ declare module "@stencil/core" {
              * the heading text through the slot chain without crossing shadow boundaries.
              */
             "ds-modal-header": LocalJSX.IntrinsicElements["ds-modal-header"] & JSXBase.HTMLAttributes<HTMLDsModalHeaderElement>;
-            /**
-             * Navbar provides semantic navigation with responsive sidebar menu and keyboard support.
-             */
-            "ds-navbar": LocalJSX.IntrinsicElements["ds-navbar"] & JSXBase.HTMLAttributes<HTMLDsNavbarElement>;
             /**
              * Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.
              */

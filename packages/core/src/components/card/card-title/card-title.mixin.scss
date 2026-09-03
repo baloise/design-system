@@ -1,5 +1,7 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
 @mixin style() {
+  --mod-heading-color: var(--_card-color-text);
+
   grid-area: title;
 }

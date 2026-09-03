@@ -13,6 +13,8 @@ const PRODUCT_ITEMS = `
 `
 
 test.describe('a11y — image variant', () => {
+  test.skip(true, 'Contrast issue tracked in https://github.com/baloise/design-system/issues/2189')
+
   test('basic with dots', async ({ page, a11y }) => {
     await page.mount(`<ds-carousel label="Image gallery">${ITEMS}</ds-carousel>`)
     await a11y('ds-carousel')

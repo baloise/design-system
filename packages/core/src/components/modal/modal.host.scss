@@ -5,23 +5,27 @@
  * @prop --modal-background: Background color of the modal dialog.
  * @prop --modal-radius: Border radius of the modal dialog.
  * @prop --modal-backdrop-opacity: Opacity of the backdrop overlay.
+ * @prop --modal-backdrop-filter: Backdrop filter of the backdrop overlay.
  * @prop --modal-heading-family: Font family of the modal title.
  * @prop --modal-heading-weight: Font weight of the modal title.
  * @prop --modal-heading-size: Font size of the modal title.
  * @prop --modal-heading-line-height: Line height of the modal title.
+ * @prop --modal-space: Responsive inner spacing of the modal dialog.
  */
 
 // ─── Variables ────────────────────────────────────────────────────────────────
 
 :host {
-  @include vars.local(modal-background, var(--ds-modal-color-base-background));
-  @include vars.local(modal-radius, var(--ds-modal-radius-base));
-  @include vars.local(modal-backdrop-opacity, var(--ds-backdrop-opacity));
-  @include vars.local(modal-heading-family, var(--ds-modal-heading-family));
-  @include vars.local(modal-heading-weight, var(--ds-modal-heading-weight));
-  @include vars.local(modal-heading-size, var(--ds-modal-heading-size-device));
+  @include vars.local(modal-background, var(--ds-modal-color-background));
+  @include vars.local(modal-radius, var(--ds-modal-radius));
+  @include vars.local(modal-backdrop-opacity, var(--ds-modal-backdrop-opacity));
+  @include vars.local(modal-backdrop-filter, var(--ds-modal-backdrop-filter));
+  @include vars.local(modal-heading-family, var(--ds-modal-heading-font-family));
+  @include vars.local(modal-heading-weight, var(--ds-modal-heading-font-weight));
+  @include vars.local(modal-heading-size, var(--ds-modal-heading-font-size));
   @include vars.local(modal-heading-line-height, var(--ds-modal-heading-line-height));
   @include vars.local(modal-width, var(--ds-modal-width));
+  @include vars.local(modal-space, var(--ds-modal-space-device));
 
   display: contents;
 }
@@ -43,7 +47,7 @@
 
   background: var(--_modal-background);
   border-radius: var(--_modal-radius);
-  padding: 1rem;
+  padding: var(--_modal-space);
 
   // Animation initial state — must come after all: unset
   opacity: 0;
@@ -53,11 +57,6 @@
   @include tablet {
     width: var(--_modal-width);
     max-height: calc(100vh - 6rem);
-    padding: 1.5rem;
-  }
-
-  @include desktop {
-    padding: 2.5rem;
   }
 }
 
@@ -83,6 +82,7 @@
 
 :host dialog::backdrop {
   @include backdrop();
+  backdrop-filter: var(--_modal-backdrop-filter);
   opacity: var(--_modal-backdrop-opacity);
 }
 
@@ -106,39 +106,20 @@
 
 :host ds-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-
-  @include tablet {
-    top: 1.5rem;
-    right: 1.5rem;
-  }
-
-  @include desktop {
-    top: 2.5rem;
-    right: 2.5rem;
-  }
+  top: var(--_modal-space);
+  right: var(--_modal-space);
 }
 
 // ─── Title ────────────────────────────────────────────────────────────────────
 
 :host #modal-title {
-  padding-right: 3rem;
-  margin: 0 0 1rem;
+  // Clears the absolutely positioned close button: --close-size-icon (1.5rem) + a 0.5rem gap.
+  padding-right: calc(var(--_modal-space) + 2rem);
+  margin: 0 0 var(--_modal-space);
   font-family: var(--_modal-heading-family);
   font-weight: var(--_modal-heading-weight);
   font-size: var(--_modal-heading-size);
   line-height: var(--_modal-heading-line-height);
-
-  @include tablet {
-    padding-right: 3.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  @include desktop {
-    padding-right: 4.5rem;
-    margin-bottom: 2.5rem;
-  }
 }
 
 // ─── Body ─────────────────────────────────────────────────────────────────────
@@ -148,24 +129,10 @@
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  @include tablet {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  @include desktop {
-    margin-left: -2.5rem;
-    margin-right: -2.5rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
+  margin-left: calc(-1 * var(--_modal-space));
+  margin-right: calc(-1 * var(--_modal-space));
+  padding-left: var(--_modal-space);
+  padding-right: var(--_modal-space);
 }
 
 // ─── Actions ──────────────────────────────────────────────────────────────────
@@ -175,15 +142,7 @@
   justify-content: flex-end;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
-
-  @include tablet {
-    margin-top: 1.5rem;
-  }
-
-  @include desktop {
-    margin-top: 2.5rem;
-  }
+  margin-top: var(--_modal-space);
 }
 
 :host #modal-actions:empty {

@@ -37,6 +37,8 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
 
+  private rotation = 0
+
   /**
    * PUBLIC PROPERTY API
    * ─────────────────────────────────────────────────────
@@ -101,6 +103,16 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private handleMouseEnter = (): void => {
+    this.rotation += 90
+    this.el.style.setProperty('--_close-icon-rotation', `${this.rotation}deg`)
+  }
+
+  /**
    * RENDER
    * ─────────────────────────────────────────────────────
    */
@@ -142,6 +154,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
           title={label}
           tabindex="0"
           disabled={this.disabled}
+          onMouseEnter={this.disabled ? undefined : this.handleMouseEnter}
         ></button>
       </Host>
     )

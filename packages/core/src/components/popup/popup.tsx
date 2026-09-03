@@ -57,7 +57,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -165,7 +165,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   /**
    * EVENTS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** Emitted before the popup opens. */
@@ -182,7 +182,7 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback(): void {
@@ -210,40 +210,8 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * PUBLIC METHODS
-   * ------------------------------------------------------
-   */
-
-  /** Opens the popup. */
-  @Method()
-  async present(): Promise<void> {
-    this.open = true
-  }
-
-  /** Closes the popup. */
-  @Method()
-  async dismiss(): Promise<void> {
-    this.open = false
-  }
-
-  /** Toggles the popup open or closed. */
-  @Method()
-  async toggle(): Promise<void> {
-    this.open ? this.dismiss() : this.present()
-  }
-
-  /**
-   * @internal
-   */
-  @Method()
-  @ListenToConfig()
-  async configChanged(state: DsConfigState): Promise<void> {
-    this.animated = state.animated
-  }
-
-  /**
-   * LISTENERS
-   * ------------------------------------------------------
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { target: 'document' })
@@ -281,8 +249,49 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  /** Opens the popup. */
+  @Method()
+  async present(): Promise<void> {
+    this.open = true
+  }
+
+  /** Closes the popup. */
+  @Method()
+  async dismiss(): Promise<void> {
+    this.open = false
+  }
+
+  /** Toggles the popup open or closed. */
+  @Method()
+  async toggle(): Promise<void> {
+    this.open ? this.dismiss() : this.present()
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: DsConfigState): Promise<void> {
+    this.animated = state.animated
+  }
+
+  /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private handleCloseClick = (): void => {
+    this.dismiss()
+  }
+
+  /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private get shouldTrapFocus(): boolean {
@@ -422,17 +431,8 @@ export class Popup implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
-   * EVENT BINDING
-   * ------------------------------------------------------
-   */
-
-  private handleCloseClick = (): void => {
-    this.dismiss()
-  }
-
-  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

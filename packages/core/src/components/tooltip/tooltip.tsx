@@ -2,7 +2,7 @@ import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/d
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { DsComponentInterface } from '@global'
-import { Logger, type LogInstance, dsBrowser, OneOf } from '@utils'
+import { Logger, type LogInstance, dsBrowser, OneOf, Type } from '@utils'
 import {
   TOOLTIP_PLACEMENTS,
   type TooltipPlacement,
@@ -45,13 +45,14 @@ export class Tooltip implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
    * Id of the reference element. Defaults to the trigger element.
    */
   @Prop()
+  @Type('string')
   readonly reference: string = ''
 
   /**
@@ -65,18 +66,21 @@ export class Tooltip implements DsComponentInterface {
    * Offset in pixels from the trigger element to the tooltip.
    */
   @Prop()
+  @Type('number')
   readonly offset: number = 8
 
   /**
    * Defines the maximum width of the tooltip content in pixels.
    */
   @Prop()
+  @Type('number')
   readonly contentWidth: number | undefined = undefined
 
   /**
    * When true, the tooltip is shown immediately on load without user interaction.
    */
   @Prop()
+  @Type('boolean')
   readonly open: boolean = false
 
   @Watch('contentWidth')
@@ -128,8 +132,8 @@ export class Tooltip implements DsComponentInterface {
   }
 
   /**
-   * INTERNAL METHODS
-   * ------------------------------------------------------
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -206,7 +210,7 @@ export class Tooltip implements DsComponentInterface {
 
   /**
    * GETTERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private get triggerElement(): HTMLElement | null {
@@ -216,7 +220,7 @@ export class Tooltip implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

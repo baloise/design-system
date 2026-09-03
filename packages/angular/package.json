@@ -35,12 +35,12 @@
     "tslib": "catalog:"
   },
   "devDependencies": {
-    "@angular/common": "22.0.8",
-    "@angular/compiler-cli": "22.0.8",
-    "@angular/core": "22.0.8",
-    "@angular/forms": "22.0.8",
+    "@angular/common": "22.1.4",
+    "@angular/compiler-cli": "22.1.4",
+    "@angular/core": "22.1.4",
+    "@angular/forms": "22.1.4",
     "eslint": "catalog:",
-    "ng-packagr": "22.0.2",
+    "ng-packagr": "22.1.1",
     "rxjs": "7.8.2",
     "typescript": "6.0.3"
   }

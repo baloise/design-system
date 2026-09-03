@@ -12,9 +12,9 @@ const meta: Meta<Args> = {
   ...withRender(
     () => `<ds-app class="has-sticky-footer">
   <header>
-    <ds-navbar>
-      <ds-navbar-brand>App Title</ds-navbar-brand>
-    </ds-navbar>
+    <ds-app-navbar>
+      <ds-app-navbar-brand>App Title</ds-app-navbar-brand>
+    </ds-app-navbar>
   </header>
   <main>
     <div class="container my-large">
@@ -22,9 +22,9 @@ const meta: Meta<Args> = {
       <!-- Page content -->
     </div>
   </main>
-  <ds-footer>
+  <ds-app-footer>
     <!-- Footer content -->
-  </ds-footer>
+  </ds-app-footer>
   </ds-app>`,
   ),
 }

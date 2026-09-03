@@ -88,6 +88,7 @@ This is enforced automatically, not just by convention: `libs/output-target-web/
 ### Naming Conventions
 
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
+- **Usage-context prefix**: `ds-app-*` for components built for application (product) usage, as opposed to marketing/website usage (e.g. `ds-app-navbar`, `ds-app-footer`). Each usage context gets its own component rather than a variant prop on a shared one — a future website-context navbar would be `ds-web-navbar`, not a prop on `ds-app-navbar`. Unrelated to `ds-app`, the root wrapper component. See ADR-0026.
 - **Event naming**: `ds<Name>` (e.g., `dsChange`, `dsCloseClick`)
 - **Handler naming**: `listenTo<Event>` (@Listen), `<Prop>Changed` (@Watch), `handle<Event>` (DOM handlers)
 - **CSS classes**: `.is-<state>` for states (e.g., `.is-disabled`, `.is-primary`), `.mod-<variant>` for modifiers
@@ -402,7 +403,7 @@ The navbar uses a right-side drawer menu on mobile/tablet viewports. The drawer 
 ### Future Enhancements (Out of Scope)
 
 - [ ] Color themes and styling variants
-- [ ] Multiple interface types (app, website, etc.)
+- [ ] Website-context navbar as a separate `ds-web-navbar` component (resolved as a naming strategy in ADR-0026; not yet built) — this component is `ds-app-navbar`, scoped to application usage
 - [ ] Container width options (fluid, compact, etc.)
 - [ ] Custom hamburger icon or styling
 - [ ] Sub-components if composition needs evolve
@@ -548,6 +549,57 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
   (`nouislider/dist/nouislider.css`) is still imported for the structural
   position plumbing pointer-dragging depends on; only its cosmetic layer is
   overridden.
+
+## Phone Field (ds-input-phone)
+
+`ds-input-phone` is a planned form control (see
+[docs/plans/ds-input-phone-plan.md](../../docs/plans/ds-input-phone-plan.md))
+for entering an international phone number: a country picker (flag +
+calling code) paired with a national-number text field, formatted via
+`libphonenumber-js`. It is **standalone** — its own native `<input>` and its
+own `Field` wrapper, a sibling to `ds-input`/`ds-select` rather than
+composing either. Shared vocabulary:
+
+- **Model value** — the canonical `value`, an **E.164 string**
+  (e.g. `+41791234567`). Self-contained (encodes the country), unambiguous,
+  what a form submits. Never the thing the user directly edits.
+- **National number** — the digits displayed and typed into the number
+  field (e.g. `79 123 45 67`), always relative to the currently selected
+  country. Reformatted live via `AsYouType` while typing, and again on blur
+  for a stable final form. Carried alongside `value`/`country` in
+  `dsChange`/`dsInput` event payloads as `nationalNumber` so consumers don't
+  need to re-derive it from the E.164 string.
+- **`initialCountry`** — uncontrolled seed for the starting country,
+  read once. **`country`** — the live/controlled current selection,
+  readable and settable after first render, updated by user interaction or
+  externally, and re-validated against `countries` whenever either changes.
+  Distinct props because a form control that lets a user actively repick
+  its country needs "starting state" and "current state" to not be the same
+  slot.
+- **`countries`** — the available-country allow-list,
+  `string | string[]` (comma-separated attribute or array prop); `undefined`
+  means all countries. If `country` names a country outside `countries`,
+  the component logs a dev warning and falls back to `countries`' first
+  entry — a developer misconfiguration, not a user-facing error state (the
+  DS's `invalid`/error-state vocabulary stays reserved for
+  application/user validation, which this component explicitly does not
+  perform).
+- **Country picker** — a bespoke internal button + `aria-haspopup="listbox"`
+  popup (not an extension of `ds-select`); see
+  [docs/adr/0023-ds-input-phone-bespoke-country-picker.md](../../docs/adr/0023-ds-input-phone-bespoke-country-picker.md).
+  Country display names come from `Intl.DisplayNames`, keyed off the
+  existing `language` `FieldInterface` prop — no shipped translation
+  dataset.
+- **Flags are supplementary, not the accessible name.** Each flag SVG is
+  `aria-hidden`; the country's localized name is always present as visible/
+  accessible text next to it. Flags are loaded per-country and lazily —
+  only for countries actually rendered, never as a full sprite/bundle — see
+  [docs/adr/0024-ds-input-phone-lazy-svg-flags.md](../../docs/adr/0024-ds-input-phone-lazy-svg-flags.md).
+- **No validation.** The component formats for display; it never calls
+  `isValidPhoneNumber`/`isPossiblePhoneNumber` or otherwise judges
+  correctness. That is application responsibility. Uses
+  `libphonenumber-js/min` (formatting-only metadata for all countries, no
+  extended validation data) accordingly.
 
 ## Modal Overlay Pattern (ds-modal)
 

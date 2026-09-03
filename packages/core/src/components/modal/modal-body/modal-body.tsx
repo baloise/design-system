@@ -27,6 +27,11 @@ export class ModalBody implements DsComponentInterface {
     this.el.slot = 'body'
   }
 
+  /**
+   * RENDER
+   * ─────────────────────────────────────────────────────
+   */
+
   render() {
     return (
       <Host>

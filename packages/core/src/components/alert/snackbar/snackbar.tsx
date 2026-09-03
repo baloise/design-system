@@ -29,7 +29,12 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The snackbar message content.
  * @slot action - The action button (if used).
- * @part snackbar - The snackbar container element.
+ * @part icon - The icon element.
+ * @part content - The content wrapper containing the heading and message.
+ * @part heading - The snackbar heading.
+ * @part message - The snackbar message element.
+ * @part action - The action button group.
+ * @part button - The action button element.
  * @part close - The close button element.
  */
 @Component({
@@ -275,9 +280,9 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
         {/* Icon                                  */}
         {/* --------------------------------------*/}
         {iconName && !svgContent && (
-          <ds-icon part="icon" id="icon" name={iconName} color={this.color} size={'xl'}></ds-icon>
+          <ds-icon part="icon" id="icon" name={iconName} color={this.color} size={'md'}></ds-icon>
         )}
-        {svgContent && <ds-icon id="icon" part="icon" svg={svgContent} size={'xl'}></ds-icon>}
+        {svgContent && <ds-brand-icon id="icon" part="icon" svg={svgContent} size={'sm'}></ds-brand-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}

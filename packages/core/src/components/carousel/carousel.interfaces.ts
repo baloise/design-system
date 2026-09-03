@@ -4,7 +4,7 @@ export type CarouselVariant = (typeof CAROUSEL_VARIANTS)[number]
 export const CAROUSEL_CONTROLS = ['dots', 'large', 'none'] as const
 export type CarouselControls = (typeof CAROUSEL_CONTROLS)[number]
 
-export const CAROUSEL_ITEM_COLORS = ['', 'purple', 'green', 'red', 'yellow'] as const
+export const CAROUSEL_ITEM_COLORS = ['purple', 'green', 'red', 'yellow'] as const
 export type CarouselItemColor = (typeof CAROUSEL_ITEM_COLORS)[number]
 
 export interface CarouselCustomEvent<T> extends CustomEvent<T> {
